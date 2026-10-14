@@ -115,6 +115,7 @@ class GraphTests(unittest.TestCase):
         g=build_graph(demo_snapshot())
         e=next(e for e in g['edges'] if e['evidence_record'].get('name')=='Demo rectal cancer')
         self.assertIn('evidence_disease_name_differs_from_selected_term',e['review_reasons'])
+        self.assertNotEqual(e['object'], g['disease_node_id'])
 
     def test_source_scores_are_not_confidence(self):
         g=build_graph(demo_snapshot())
@@ -334,6 +335,28 @@ class LocalServerTests(unittest.TestCase):
         self.assertEqual(data['graph']['data_kind'],'synthetic_demo')
         with urlopen(self.url+'/api/download/'+data['run_id']) as r:
             self.assertTrue(r.read().startswith(b'PK'))
+
+    def test_review_api_preserves_source_and_rejects_bad_decisions(self):
+        with self.post('/api/build', {'mode': 'demo'}) as r: original = json.loads(r.read())
+        assertion = next(a for a in original['graph']['assertions'] if a['kind'] == 'disease_association'
+                         and 'accepted' in a['allowed_transitions'])
+        body = {'run_id': original['run_id'], 'assertion_id': assertion['id'],
+                'state': 'accepted', 'reviewer': 'HTTP test reviewer', 'reason': 'Synthetic review test'}
+        with self.post('/api/review', body) as r: reviewed = json.loads(r.read())
+        self.assertNotEqual(original['run_id'], reviewed['run_id'])
+        self.assertEqual(reviewed['graph']['assertion_summary']['lifecycle_counts']['accepted'], 1)
+        self.assertEqual(reviewed['graph']['snapshot_sha256'], original['graph']['snapshot_sha256'])
+        with urlopen(self.url+'/api/run/'+reviewed['run_id']) as r:
+            reopened = json.loads(r.read())
+        self.assertEqual(reopened['graph'], reviewed['graph'])
+        with urlopen(self.url+'/api/run/'+original['run_id']) as r:
+            self.assertEqual(json.loads(r.read())['graph']['assertion_summary']['lifecycle_counts']['accepted'], 0)
+        with self.post('/api/review', {**body, 'run_id': reviewed['run_id'], 'state': 'obsolete'}) as r:
+            obsolete = json.loads(r.read())
+        self.assertEqual(len(obsolete['graph']['review_events']), 2)
+        for change in [{'run_id': '../outside'}, {'reviewer': ''}, {'state': 'obsolete'}, {'assertion_id': 'unknown'}]:
+            with self.assertRaises(HTTPError) as ctx: self.post('/api/review', {**body, **change})
+            self.assertEqual(ctx.exception.code, 400)
 
     def test_cross_origin_rejected(self):
         with self.assertRaises(HTTPError) as ctx:self.post('/api/build',{'mode':'demo'},'https://example.com')

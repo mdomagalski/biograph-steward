@@ -6,6 +6,7 @@ scores remain unmodified and are never combined into a confidence probability.
 from __future__ import annotations
 
 from collections import Counter
+from copy import deepcopy
 import csv
 import json
 from pathlib import Path
@@ -14,6 +15,7 @@ from typing import Any
 from urllib.parse import quote, urlparse
 
 from .client import digest, utcnow, write_json
+from . import __version__
 
 LEVELS = {"Tclin", "Tchem", "Tbio", "Tdark"}
 UNIPROT = re.compile(r"^(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-[1-9][0-9]*)?$")
@@ -82,7 +84,7 @@ def verify_snapshot(snapshot: dict) -> None:
         raise ValueError("Snapshot is missing its target list.")
 
 
-def build_graph(snapshot: dict) -> dict:
+def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict:
     verify_snapshot(snapshot)
     demo = snapshot["data_kind"] == "synthetic_demo"
     disease = snapshot["disease"]
@@ -119,6 +121,7 @@ def build_graph(snapshot: dict) -> dict:
             "evidence_record": record, "record_locators": [locator], "duplicate_count": 0,
             "snapshot_sha256": snapshot["content_sha256"], "data_kind": snapshot["data_kind"],
             "biologically_validated": False,
+            "qualifiers": {"disease": obj if kind in {"disease_association", "disease_filtered_membership"} else None},
         }
 
     for i, row in enumerate(snapshot["targets"]):
@@ -173,9 +176,20 @@ def build_graph(snapshot: dict) -> dict:
             if not text(record.get("reference")) and not text(record.get("evidence")):
                 edge_reasons.append("reference_and_evidence_missing")
             record_name = text(record.get("name"))
-            if record_name and record_name.casefold() != disease["name"].strip().casefold():
+            if not record_name:
+                quarantine.append({"reason": "explicit_disease_context_missing", "locator": locator,
+                                   "subject": pid, "record": record})
+                continue
+            record_did = did
+            if record_name.casefold() != disease["name"].strip().casefold():
                 edge_reasons.append("evidence_disease_name_differs_from_selected_term")
-            add_edge(pid, "biolink:associated_with", did, record, locator, edge_reasons,
+                edge_reasons.append("unresolved_disease_ontology_id")
+                record_did = ("demo:disease:source:" if demo else "pharos.disease:") + quote(record_name, safe="")
+                nodes.setdefault(record_did, {"id": record_did, "name": record_name,
+                    "category": "biolink:Disease", "identifier_mapped": False,
+                    "source_identifier": None, "url": None, "tdl": None, "sym": None,
+                    "data_kind": snapshot["data_kind"]})
+            add_edge(pid, "biolink:associated_with", record_did, record, locator, edge_reasons,
                      "disease_association", record.get("source"), record.get("reference"))
         pathways = row.get("pathways") or []
         if not isinstance(pathways, list):
@@ -207,6 +221,8 @@ def build_graph(snapshot: dict) -> dict:
     for pid, row in target_rows.items():
         associated = [e for e in edges.values() if e["subject"] == pid and e["object"] == did]
         row["association_record_count"] = len(associated)
+        row["other_disease_record_count"] = sum(e["subject"] == pid and e["predicate"] == "biolink:associated_with"
+                                                and e["object"] != did for e in edges.values())
         row["reported_sources"] = sorted({text(e["primary_source_raw"]) for e in associated if text(e["primary_source_raw"])})
         row["review_record_count"] = sum(e["status"] == "needs_review" for e in associated)
         row["pathway_count"] = len({e["object"] for e in edges.values() if e["subject"] == pid and e["predicate"] == "biolink:participates_in"})
@@ -223,7 +239,7 @@ def build_graph(snapshot: dict) -> dict:
         "duplicate_target_records": duplicate_rows,
         "tdl_counts": dict(sorted(Counter(r["tdl"] for r in target_rows.values()).items())),
     }
-    return {"graph_format": "biograph-steward.evidence-graph.v1", "data_kind": snapshot["data_kind"],
+    graph = {"graph_format": "biograph-steward.evidence-graph.v2", "data_kind": snapshot["data_kind"],
             "disease": disease, "disease_node_id": did, "summary": summary,
             "nodes": sorted(nodes.values(), key=lambda n: n["id"]),
             "edges": sorted(edges.values(), key=lambda e: e["id"]),
@@ -234,6 +250,22 @@ def build_graph(snapshot: dict) -> dict:
             "interpretation": "Known database associations and annotations, not predictions or validated targets. "
                               "Passed structural checks does not mean scientifically verified. "
                               "Pathway membership is not disease-specific evidence."}
+    graph["question_scope"] = {
+        "template": "pharos_disease_inspection.v1",
+        "question": f"Which proteins does Pharos associate with {disease['name']}, and which pathways annotate them?",
+        "disease": {"id": did, "name": disease["name"]},
+        "relation_families": ["disease_association", "pathway_membership"],
+        "limits": deepcopy(snapshot["query_settings"]),
+        "pathways_are_disease_specific": False,
+        "unsupported_requirements": ["variant-specific response", "therapy resistance", "causal conclusions"],
+    }
+    from .assertions import build_assertions, assertion_summary
+    graph["review_events"] = deepcopy(review_events) if review_events is not None else []
+    graph["assertions"] = build_assertions(graph, graph["review_events"])
+    graph["assertion_summary"] = assertion_summary(graph["assertions"])
+    from .benchmark import audit_graph
+    graph['benchmark_readiness'] = audit_graph(graph)
+    return graph
 
 
 def _write_tsv(path: Path, rows: list[dict], columns: list[str]) -> None:
@@ -250,21 +282,29 @@ def _write_tsv(path: Path, rows: list[dict], columns: list[str]) -> None:
             writer.writerow(flat)
 
 
-def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build") -> dict:
-    graph = build_graph(snapshot)
+def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review_events: list[dict] | None = None) -> dict:
+    graph = build_graph(snapshot, review_events)
     directory = Path(directory)
     if directory.exists() and any(directory.iterdir()):
         raise ValueError("Output directory is not empty. Choose a new directory to preserve previous runs.")
     directory.mkdir(parents=True, exist_ok=True)
     write_json(directory / "snapshot.json", snapshot)
     write_json(directory / "graph.json", graph)
+    write_json(directory / "assertions.json", graph["assertions"])
+    write_json(directory / "review_events.json", graph["review_events"])
+    write_json(directory / "question_scope.json", graph["question_scope"])
+    _write_tsv(directory / "assertions.tsv", graph["assertions"],
+               ["id", "subject", "predicate", "object", "kind", "qualifiers", "lifecycle_state",
+                "validation_status", "evidence_edge_ids", "publications", "revision", "snapshot_sha256"])
+    from .benchmark import write_audit
+    write_audit(graph['benchmark_readiness'], directory)
     write_json(directory / "source_licenses.json", snapshot.get("source_licenses", []))
     for i, record in enumerate(snapshot.get("requests", [])):
         write_json(directory / "raw_responses" / f"{i:03d}.json", record)
     _write_tsv(directory / "nodes.tsv", graph["nodes"],
                ["id", "name", "category", "sym", "tdl", "identifier_mapped", "url", "data_kind"])
     _write_tsv(directory / "edges.tsv", graph["edges"],
-               ["id", "subject", "predicate", "object", "status", "review_reasons", "aggregator",
+               ["id", "assertion_id", "subject", "predicate", "object", "qualifiers", "status", "review_reasons", "aggregator",
                 "primary_source_raw", "reference_raw", "publications", "source_scores_raw",
                 "record_locators", "snapshot_sha256", "data_kind"])
     _write_tsv(directory / "targets.tsv", graph["targets"],
@@ -280,7 +320,9 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build") -> dic
         {"step": "publish_inspection_graph", "result": "No predictive model or LLM was run."},
     ]
     write_json(directory / "pipeline_trace.json", trace)
-    manifest = {"starter_version": "0.1.0", "created_at": utcnow(), "run_mode": run_mode,
+    manifest = {"starter_version": __version__, "graph_format": graph['graph_format'],
+                "assertion_summary": graph['assertion_summary'], "review_event_count": len(graph['review_events']),
+                "created_at": utcnow(), "run_mode": run_mode,
                 "data_kind": snapshot["data_kind"], "endpoint": snapshot.get("endpoint"),
                 "database_version": snapshot.get("db_version"), "schema_check": snapshot.get("schema_check"),
                 "snapshot_sha256": snapshot["content_sha256"], "query_settings": snapshot["query_settings"],

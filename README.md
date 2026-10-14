@@ -1,4 +1,4 @@
-# BioGraph Steward: Pharos-first starter
+# BioGraph Steward: Pharos evidence workbench
 
 A runnable starting point for **CRC Target Scout**, the first BioGraph Steward use case.
 
@@ -6,7 +6,7 @@ Instead of asking separate people to design disconnected components, start with 
 
 ```text
 Search a disease -> select the exact Pharos term -> retrieve a bounded target list
--> retain evidence and pathway annotations -> check structure -> inspect and export
+-> retain source records -> build qualified assertions -> inspect, review and export
 ```
 
 ## Quick start
@@ -22,11 +22,13 @@ Open `http://127.0.0.1:8765` if a browser does not open automatically. Use `py` 
 
 Read [START_HERE.md](START_HERE.md) for the team walkthrough.
 
+The next implementation milestone is broader Pharos retrieval and evidence normalization, followed by cohort/evidence review and qualified external additions. The [live coverage audit](docs/PHAROS_COVERAGE_AUDIT.md) found that the 99-protein extract contains only 806 of 9,540 available pathway rows. It also documents existing Reactome, LinkedOmicsKB/CPTAC and Harmonizome overlap. See [the challenge build plan](docs/BUILD_PLAN.md) for the revised sequence and use of the organizer's linked guides.
+
 ### What was actually tested
 
 The offline workflow, mocked API pagination, normalization, evidence preservation, caching, exports, local HTTP endpoints and browser interactions were tested. The package includes a synthetic demonstration with explicit labels throughout. **It does not include a real Pharos snapshot.**
 
-Live requests could not be executed from the development runtime because external hostnames did not resolve. GraphQL queries were checked against the public NCATS source schema and resolver logic. This is not equivalent to a successful live API integration test. Run `python3 app.py doctor` on your network before treating the connector as live-validated. No failure silently falls back to synthetic data.
+On October 14, 2026, `doctor` successfully checked the live Pharos API (`pharos319`), and a paginated colorectal adenocarcinoma retrieval returned all 99 reported targets. Earlier packaged validation notes describe an older environment with DNS failures. The live run is saved locally under `runs/`, not distributed as an example dataset. Run `python3 app.py doctor` to check current availability. No failure silently falls back to synthetic data.
 
 ## What the prototype does now
 
@@ -38,6 +40,10 @@ Live requests could not be executed from the development runtime because externa
 - Writes a small graph using Biolink category/predicate labels, plus provenance-bearing evidence records. This is a minimal alignment, not a claim of full KGX/Biolink validation.
 - Flags incomplete evidence or disease-name mismatches for review. Invalid identifiers and exact duplicate target records go into a quarantine log, and original data remain in the snapshot.
 - Presents a graph, target table, development-level filter, evidence inspector and review queue.
+- Groups supporting records into qualified assertions with stable claim IDs and evidence revisions. Unknown qualifiers remain null; no variant/therapy context is inferred.
+- Records human decisions separately from structural validation, with reviewer, reason and timestamp. Each decision creates a new run; earlier runs and snapshots remain intact.
+- Starts the graph in an accepted-assertions view. Use **Inspect candidates** for raw/unreviewed evidence. Saved run URLs reopen review history.
+- Connects records naming another disease to a separate local disease node. Records with no explicit disease context are retained in quarantine rather than assigned to the selected disease.
 - Saves an offline HTML report and machine-readable artifacts; any saved snapshot can be replayed without network calls.
 
 ## Commands
@@ -65,6 +71,18 @@ python3 app.py replay --snapshot runs/pharos_crc_01/snapshot.json --out runs/rep
 # Export the actual GraphQL requests for inspection
 python3 app.py queries --out queries
 
+# Audit a saved snapshot and prepare one review row per protein-disease pair
+python3 app.py audit --snapshot runs/pharos_crc_01/snapshot.json --out runs/audit_01
+
+# Record a decision using an actual ID from assertions.json
+python3 app.py review --run runs/pharos_crc_01 --assertion 'assertion:ACTUAL_ID' \
+  --state provisional --reviewer 'Reviewer name' --reason 'Evidence reviewed and rationale' \
+  --out runs/reviewed_01
+
+# Replay the exact snapshot AND its review history
+python3 app.py replay --snapshot runs/reviewed_01/snapshot.json \
+  --reviews runs/reviewed_01/review_events.json --out runs/reviewed_replay
+
 # Run the test suite without installing pytest
 python3 -m unittest discover -s tests -v
 ```
@@ -89,8 +107,12 @@ A SHA-256 digest detects accidental snapshot edits; it is not a digital signatur
 |---|---|
 | `report.html` | Standalone, interactive inspection view. No external JavaScript/CDN required. |
 | `graph.json` | Full node/evidence-edge representation, summary, review reasons and caveats. |
+| `assertions.json`, `assertions.tsv` | Qualified claims, contributing evidence IDs, lifecycle states and evidence revisions. |
+| `review_events.json` | Ordered human decisions bound to the exact snapshot and assertion revision. |
+| `question_scope.json` | Supported disease-inspection question, relation families, configured limits and unsupported requirements. |
+| `review_parent.json` | For review runs, identifies the original run and preceding event count. |
 | `nodes.tsv` | Stable identifiers, labels, Biolink categories, target-development levels and mapping status. |
-| `edges.tsv` | One row per distinct evidence assertion, with source, references and raw-source locator. Not one row per unique biological pair. |
+| `edges.tsv` | One row per distinct source-evidence record, with assertion ID, source, references and raw-source locator. |
 | `targets.tsv` | One row per retrieved unique protein, in display order; not a prediction ranking. |
 | `snapshot.json` | Disease, target records, query settings, retrieval limits, request envelopes and integrity hash. |
 | `raw_responses/*.json` | Successful GraphQL request/response envelopes with UTC retrieval times and response hashes. |
@@ -98,8 +120,14 @@ A SHA-256 digest detects accidental snapshot edits; it is not a digital signatur
 | `run_manifest.json` | Parameters, version information when returned, cache use, checks and explicit model/LLM-not-run flags. |
 | `pipeline_trace.json` | Human-readable workflow steps. |
 | `source_licenses.json` | Source-license metadata as returned by Pharos, when available. Missing metadata is not permission to redistribute. |
+| `benchmark_readiness.json` | Pair/evidence counts, citation coverage and missing prerequisites for model comparison. |
+| `review_candidates.tsv` | One row per reported protein–disease pair with evidence IDs and blank reviewer fields. Review candidates are not training labels. Worksheet import is not yet implemented. |
 
 The JSON outputs are canonical for downstream programming. TSV cells beginning with spreadsheet-formula characters are escaped for safer manual opening.
+
+Every new build or replay includes the benchmark audit. It does not train a model or assign positive/negative labels. Summaries such as `2 PubMed IDs` are not counted as explicit citations; an explicit PMID or reference URL is only a presence check, not verification of support. An excluded or absent association is never converted into a negative label.
+
+Version 0.2 writes graph format v2 while retaining raw snapshot format v1. Replaying older snapshots applies the current context rules, so derived graphs and pair counts may change; original snapshots are never rewritten. Without `--reviews`, replay creates candidate assertions. With `--reviews`, decisions must match the exact snapshot and evidence revision. The local reviewer field is a recorded name, not authenticated identity. See [the data contract](docs/DATA_CONTRACT.md).
 
 ## Scientific interpretation
 
@@ -107,7 +135,7 @@ The JSON outputs are canonical for downstream programming. TSV cells beginning w
 
 - `passed_structural_checks` means usable identifiers and minimal provenance passed the implemented rules. It does not mean correct biology.
 - `needs_review` means a record is inspectable but has a stated issue, such as missing source information, an unresolved identifier mapping or a disease-name mismatch.
-- Quarantine here handles malformed/duplicate records. It does not implement an LLM hallucination detector or determine whether a biological relationship is false.
+- Input quarantine handles malformed/duplicate records and records missing disease context. It does not implement an LLM hallucination detector or determine whether a biological relationship is false.
 - Development-level labels are retained as supplied. Do not treat Tbio and Tdark as interchangeable, or assume every Tbio protein is poorly studied.
 - The graph shows known retrieved links, not new target hypotheses. Source-score values retain their original scale and must not be compared as calibrated probabilities across sources.
 - Two source names or references do not prove independent evidence.
@@ -121,12 +149,12 @@ The organizer brief requires an agent-built, contextualized graph and a fair hel
 
 After one live run is understood, add one change at a time:
 
-1. Define the benchmark cohort and evidence policy from actual retrieved records; split unique protein-disease pairs before training.
-2. Add one contextual source, such as selected ROBOKOP pathways or PPI edges, preserving its provenance. Pharos pathway annotations already present here are not external enrichment.
+1. Complete bounded Pharos retrieval and normalize overlapping evidence. Then define the cohort and evidence policy; split unique protein-disease pairs before training.
+2. Add qualified context, such as CIViC assertions or detailed CPTAC measurements, with record- and study-level overlap checks. Pharos already includes pathways, PPIs and links to many candidate sources; a new connector is not proof of new evidence.
 3. Compare the same model and split on Pharos-only and externally enriched variants. Block held-out labels, duplicates, inverse links and disease-equivalent leakage from model inputs.
 4. Add an agent planner that chooses and invokes these existing tools. Avoid giving an LLM unrestricted graph-write access.
 
-CPTAC/PDC data, ROBOKOP, GNNs, link prediction and model-generated answers are **not implemented in v0.1**. Neither is continuous source monitoring. Explicit refresh and snapshot replay provide a reproducible foundation, not a claim of automatic maintenance.
+CPTAC/PDC data, ROBOKOP, GNNs, link prediction and model-generated answers are **not implemented in v0.2**. Neither is continuous source monitoring. Explicit refresh and snapshot replay provide a reproducible foundation, not a claim of automatic maintenance.
 
 ## Code map
 
@@ -136,6 +164,8 @@ This is one local application, not microservices.
 app.py                         Entry point; run this first
 biograph_steward/client.py      Read-only requests, pagination, cache and schema checks
 biograph_steward/graph.py       Normalization, evidence graph, checks and exports
+biograph_steward/assertions.py  Qualified claims and review-state validation
+biograph_steward/reviews.py     Immutable review runs and history replay
 biograph_steward/webapp.py      Local HTTP endpoints and standalone report generator
 biograph_steward/ui.html        Browser interface, no build step
 biograph_steward/demo.py        Clearly synthetic software fixture

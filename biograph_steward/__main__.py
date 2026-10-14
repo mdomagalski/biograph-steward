@@ -32,11 +32,22 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("demo", help="Build the explicitly SYNTHETIC offline demo.")
     p.add_argument("--out", type=Path, default=Path("runs/demo"))
-    p = sub.add_parser("replay", help="Rebuild exactly from an exported snapshot without network access.")
+    p = sub.add_parser("replay", help="Rebuild a snapshot with the current transformer without network access.")
     p.add_argument("--snapshot", type=Path, required=True)
+    p.add_argument("--reviews", type=Path, help="Preserve review events from this exact snapshot.")
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("review", help="Record a human assertion decision in a new immutable run.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--assertion", required=True)
+    p.add_argument("--state", choices=["candidate", "accepted", "provisional", "quarantined", "rejected", "obsolete"], required=True)
+    p.add_argument("--reviewer", required=True)
+    p.add_argument("--reason", required=True)
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("queries", help="Export readable GraphQL requests used by this starter.")
     p.add_argument("--out", type=Path, default=Path("queries"))
+    p = sub.add_parser("audit", help="Prepare benchmark readiness and pair-level review files from a snapshot.")
+    p.add_argument("--snapshot", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
     args = parser.parse_args(argv)
     try:
         if args.command is None:
@@ -53,6 +64,17 @@ def main(argv: list[str] | None = None) -> int:
                                 ("disease_targets", TARGETS), ("database_version", VERSION), ("source_licenses", LICENSES)]:
                 (args.out / (name + ".graphql")).write_text(query + "\n", encoding="utf-8")
             print(args.out.resolve())
+            return 0
+        if args.command == "audit":
+            from .benchmark import save_audit
+            audit = save_audit(json.loads(args.snapshot.read_text(encoding="utf-8")), args.out)
+            print(json.dumps({key: audit[key] for key in
+                              ['status', 'data_kind', 'disease', 'counts', 'required_actions']}, indent=2))
+            return 0
+        if args.command == "review":
+            from .reviews import review_run
+            graph = review_run(args.run, args.out, args.assertion, args.state, args.reviewer, args.reason)
+            print(json.dumps({"assertions": graph["assertion_summary"], "out": str(args.out.resolve())}, indent=2))
             return 0
         if args.command in {"doctor", "search", "build"}:
             client = PharosClient(args.endpoint, cache_dir=args.cache_dir, timeout=args.timeout, refresh=args.refresh)
@@ -75,7 +97,9 @@ def main(argv: list[str] | None = None) -> int:
         else:
             snapshot = json.loads(args.snapshot.read_text(encoding="utf-8"))
         from .graph import save_run
-        graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build")
+        events = (json.loads(args.reviews.read_text(encoding="utf-8"))
+                  if args.command == "replay" and args.reviews else None)
+        graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build", review_events=events)
         print(json.dumps({"data_kind": graph["data_kind"], "summary": graph["summary"],
                           "report": str((args.out / "report.html").resolve())}, indent=2))
         if graph["data_kind"] == "synthetic_demo":

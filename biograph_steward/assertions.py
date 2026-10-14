@@ -1,0 +1,122 @@
+"""Qualified assertions and explicit human review, separate from source records.
+
+This is a project-local contract, not full Biolink/LinkML validation. Review
+acceptance is a recorded human decision, never an automatically inferred label.
+"""
+from __future__ import annotations
+
+from collections import Counter
+from copy import deepcopy
+from datetime import datetime
+
+from .client import digest, utcnow
+
+QUALIFIERS = ("disease", "variant", "therapy", "species", "tissue", "cell_line", "response")
+TRANSITIONS = {
+    "candidate": {"accepted", "provisional", "quarantined", "rejected"},
+    "provisional": {"accepted", "quarantined", "rejected", "obsolete"},
+    "accepted": {"provisional", "quarantined", "rejected", "obsolete"},
+    "quarantined": {"candidate", "rejected"},
+    "rejected": {"candidate"},
+    "obsolete": {"candidate"},
+}
+
+
+def assertion_identity(subject: str, predicate: str, obj: str,
+                       kind: str, qualifiers: dict) -> dict:
+    if not all(isinstance(v, str) and v.strip() for v in (subject, predicate, obj, kind)):
+        raise ValueError("Assertions require subject, predicate, object and kind.")
+    if set(qualifiers) - set(QUALIFIERS):
+        raise ValueError("Unsupported assertion qualifier.")
+    if any(v is not None and (not isinstance(v, str) or not v.strip()) for v in qualifiers.values()):
+        raise ValueError("Qualifier values must be nonempty identifiers/text or null.")
+    return {"subject": subject, "predicate": predicate, "object": obj,
+            "kind": kind, "qualifiers": {k: qualifiers.get(k) for k in QUALIFIERS}}
+
+
+def build_assertions(graph: dict, events: list[dict] | None = None) -> list[dict]:
+    groups = {}
+    for edge in graph["edges"]:
+        identity = assertion_identity(edge["subject"], edge["predicate"], edge["object"],
+                                      edge["record_kind"], edge.get("qualifiers", {}))
+        aid = "assertion:" + digest(identity)[:24]
+        edge["assertion_id"] = aid
+        group = groups.setdefault(aid, {"id": aid, **identity, "evidence_edge_ids": [],
+            "structurally_usable_evidence_ids": [], "review_reasons": [],
+            "publications": [], "source_names": [], "lifecycle_state": "candidate",
+            "review_history": [], "data_kind": graph["data_kind"],
+            "snapshot_sha256": graph["snapshot_sha256"], "biologically_validated": False})
+        group["evidence_edge_ids"].append(edge["id"])
+        if edge["status"] == "passed_structural_checks":
+            group["structurally_usable_evidence_ids"].append(edge["id"])
+        group["review_reasons"].extend(edge["review_reasons"])
+        group["publications"].extend(edge["publications"])
+        if edge.get("primary_source_raw"):
+            group["source_names"].append(str(edge["primary_source_raw"]))
+    for group in groups.values():
+        for field in ("evidence_edge_ids", "structurally_usable_evidence_ids", "review_reasons",
+                      "publications", "source_names"):
+            group[field] = sorted(set(group[field]))
+        group["revision"] = digest({"identity": group["id"], "evidence": group["evidence_edge_ids"]})
+        group["validation_status"] = ("has_structurally_usable_evidence"
+            if group["structurally_usable_evidence_ids"] else "needs_review")
+        group["independent_evidence_count"] = None
+        group["origin_note"] = "Source records and publications are not independent experiment counts."
+    if events is not None and not isinstance(events, list):
+        raise ValueError("Review events must be a list.")
+    for sequence, event in enumerate(events or [], 1):
+        if not isinstance(event, dict) or event.get("sequence") != sequence:
+            raise ValueError("Review history sequence is invalid.")
+        group = groups.get(event.get("assertion_id"))
+        if group is None:
+            raise ValueError("Review refers to an unknown assertion.")
+        if event.get("snapshot_sha256") != graph["snapshot_sha256"] or event.get("revision") != group["revision"]:
+            raise ValueError("Review belongs to another snapshot or assertion revision; review the new evidence.")
+        if event.get("from_state") != group["lifecycle_state"]:
+            raise ValueError("Review history has a stale lifecycle state.")
+        validate_decision(group, event.get("to_state"), event.get("reviewer"), event.get("reason"))
+        try:
+            timestamp = datetime.fromisoformat(event["created_at"])
+            if timestamp.utcoffset() is None:
+                raise ValueError("Timezone is required.")
+        except (KeyError, TypeError, ValueError) as exc:
+            raise ValueError("Review timestamp must include a timezone.") from exc
+        group["lifecycle_state"] = event["to_state"]
+        group["review_history"].append(deepcopy(event))
+    for group in groups.values():
+        group["allowed_transitions"] = sorted(state for state in TRANSITIONS[group["lifecycle_state"]]
+            if state != "accepted" or (group["structurally_usable_evidence_ids"]
+                                        and group["kind"] != "disease_filtered_membership"))
+    return sorted(groups.values(), key=lambda a: a["id"])
+
+
+def validate_decision(assertion: dict, state: str, reviewer: str, reason: str) -> None:
+    if not isinstance(state, str) or state not in TRANSITIONS.get(assertion["lifecycle_state"], set()):
+        raise ValueError("Invalid lifecycle transition.")
+    if not isinstance(reviewer, str) or not reviewer.strip() or len(reviewer) > 200:
+        raise ValueError("A reviewer name of 1–200 characters is required.")
+    if not isinstance(reason, str) or not reason.strip() or len(reason) > 4000:
+        raise ValueError("A review reason of 1–4000 characters is required.")
+    if state == "accepted" and (not assertion["structurally_usable_evidence_ids"]
+                                or assertion["kind"] == "disease_filtered_membership"):
+        raise ValueError("Acceptance requires structurally usable evidence; membership alone is insufficient.")
+
+
+def new_review_event(graph: dict, assertion_id: str, state: str,
+                     reviewer: str, reason: str) -> dict:
+    assertion = next((a for a in graph["assertions"] if a["id"] == assertion_id), None)
+    if assertion is None:
+        raise ValueError("Unknown assertion.")
+    validate_decision(assertion, state, reviewer, reason)
+    return {"sequence": len(graph.get("review_events", [])) + 1,
+            "assertion_id": assertion_id, "revision": assertion["revision"],
+            "snapshot_sha256": graph["snapshot_sha256"],
+            "from_state": assertion["lifecycle_state"], "to_state": state,
+            "reviewer": reviewer.strip(), "reason": reason.strip(), "created_at": utcnow()}
+
+
+def assertion_summary(assertions: list[dict]) -> dict:
+    counts = Counter(a["lifecycle_state"] for a in assertions)
+    return {"assertions": len(assertions),
+            "lifecycle_counts": {state: counts[state] for state in TRANSITIONS},
+            "acceptance_note": "Acceptance records human review; it is not an experimental label or automatic biological validation."}

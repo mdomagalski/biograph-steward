@@ -48,6 +48,19 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             if path == "/health":
                 self.json_reply({"status": "local_server_running", "live_pharos_checked": False})
                 return
+            match = re.fullmatch(r"/api/run/([A-Za-z0-9_-]{1,80})", path)
+            if match:
+                from .reviews import read_run
+                folder = (runs_dir / match.group(1)).resolve()
+                if folder.parent != runs_dir or not folder.is_dir():
+                    self.json_reply({"error": "Run not found"}, 404)
+                    return
+                try:
+                    _, _, graph = read_run(folder)
+                    self.json_reply({"run_id": match.group(1), "graph": graph})
+                except (ValueError, TypeError, OSError) as exc:
+                    self.json_reply({"error": str(exc)}, 400)
+                return
             match = re.fullmatch(r"/api/download/([A-Za-z0-9_-]{1,80})", path)
             if match:
                 folder = runs_dir / match.group(1)
@@ -84,6 +97,19 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if path == "/api/search":
                     client = PharosClient(endpoint, cache_dir=cache_dir, timeout=timeout)
                     self.json_reply(client.search(body.get("term", "")))
+                    return
+                if path == "/api/review":
+                    from .reviews import review_run
+                    source_id = body.get("run_id", "")
+                    if not isinstance(source_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,80}", source_id):
+                        raise ValueError("Invalid source run ID.")
+                    source = (runs_dir / source_id).resolve()
+                    if source.parent != runs_dir or not source.is_dir():
+                        raise ValueError("Source run not found.")
+                    run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "_" + uuid4().hex[:8]
+                    graph = review_run(source, runs_dir / run_id, body.get("assertion_id"),
+                                       body.get("state"), body.get("reviewer"), body.get("reason"))
+                    self.json_reply({"run_id": run_id, "graph": graph})
                     return
                 if path != "/api/build":
                     self.json_reply({"error": "Not found"}, 404)
