@@ -1,0 +1,2 @@
+# No third-party Python dependencies are required.
+# Requires Python >= 3.10; launch with python3 app.py.

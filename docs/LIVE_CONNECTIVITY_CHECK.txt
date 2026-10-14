@@ -1,0 +1,1 @@
+ERROR: Cannot reach Pharos (<urlopen error [Errno -3] Temporary failure in name resolution>). Check network/VPN/proxy and run 'python app.py doctor'. For the offline demonstration explicitly choose Demo; it is synthetic, not Pharos data.

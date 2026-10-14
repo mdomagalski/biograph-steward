@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.pharos_cache/
+runs/
+.venv/
+.env
+.DS_Store

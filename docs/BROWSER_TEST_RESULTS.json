@@ -1,0 +1,9 @@
+{
+  "title": "BioGraph Steward | Pharos Starter",
+  "demo_banner": "SYNTHETIC DEMO - not retrieved Pharos data and not a scientific result.",
+  "graph_nodes": 11,
+  "download_filename": "SYNTHETIC_DEMO_graph.json",
+  "js_errors": [],
+  "standalone_report": "passed with in-memory HTML rendering; browser navigation is restricted in this environment",
+  "mobile_page_width": "passed"
+}

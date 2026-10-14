@@ -1,0 +1,3 @@
+query SourceLicenses {
+  dataSourceCounts { dataSource url license licenseURL }
+}

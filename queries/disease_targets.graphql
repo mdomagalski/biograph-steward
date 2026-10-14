@@ -1,0 +1,12 @@
+query DiseaseTargets($disease: String!, $top: Int!, $skip: Int!, $pathwayTop: Int!, $includePathways: Boolean!) {
+  targets(filter: {associatedDisease: $disease}) {
+    count
+    targets(top: $top, skip: $skip) {
+      uniprot sym name tdl fam
+      diseaseAssociationDetails {
+        name dataType evidence reference source score conf zscore log2foldchange pvalue
+      }
+      pathways(top: $pathwayTop) @include(if: $includePathways) { pwid name type sourceID url }
+    }
+  }
+}

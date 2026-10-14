@@ -1,0 +1,6 @@
+query SearchDiseases($term: String!, $top: Int!, $skip: Int!) {
+  diseases(filter: {term: $term}) {
+    count
+    diseases(top: $top, skip: $skip) { name mondoID associationCount }
+  }
+}

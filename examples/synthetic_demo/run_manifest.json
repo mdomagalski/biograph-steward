@@ -1,0 +1,51 @@
+{
+  "starter_version": "0.1.0",
+  "created_at": "2026-10-12T01:21:51.053361+00:00",
+  "run_mode": "build",
+  "data_kind": "synthetic_demo",
+  "endpoint": null,
+  "database_version": null,
+  "schema_check": {
+    "status": "synthetic_fixture_only"
+  },
+  "snapshot_sha256": "c8fb4085462b0e734571518b858ab7bf09e8cf73ab8ffd0c9823655547be0ad6",
+  "query_settings": {
+    "max_targets": 8,
+    "page_size": 8,
+    "pathway_top": 5
+  },
+  "retrieval": {
+    "total_targets_reported": 8,
+    "records_retrieved": 8,
+    "truncated": false,
+    "pages": []
+  },
+  "summary": {
+    "target_rows_received": 8,
+    "proteins": 6,
+    "pathways": 4,
+    "nodes": 11,
+    "evidence_edges": 18,
+    "unique_association_pairs": 6,
+    "passed_structural_checks": 15,
+    "needs_review": 3,
+    "quarantined_records": 2,
+    "duplicate_target_records": 1,
+    "tdl_counts": {
+      "Tbio": 2,
+      "Tchem": 1,
+      "Tclin": 1,
+      "Tdark": 2
+    }
+  },
+  "network_cache_hits": 0,
+  "upstream_retrieval_times": [],
+  "biological_validation_performed": false,
+  "link_prediction_performed": false,
+  "llm_used": false,
+  "warnings": [
+    "SYNTHETIC DEMONSTRATION: all proteins, associations, pathways, scores and sources are invented.",
+    "This run is not Pharos data, not a benchmark and not scientific evidence."
+  ],
+  "license_note": "Software and retrieved data have separate terms. Review source_licenses.json and upstream licenses before redistributing."
+}

@@ -1,0 +1,7 @@
+id	symbol	name	tdl	family	association_record_count	reported_sources	review_record_count	pathway_count
+demo:protein:DEMO_PROTEIN_001	DEMO_P1	Synthetic protein 1	Tclin	DEMO_FAMILY	2	"[""SYNTHETIC_SOURCE_A"", ""SYNTHETIC_SOURCE_B""]"	0	2
+demo:protein:DEMO_PROTEIN_002	DEMO_P2	Synthetic protein 2	Tchem	DEMO_FAMILY	1	"[""SYNTHETIC_SOURCE_A""]"	0	2
+demo:protein:DEMO_PROTEIN_003	DEMO_P3	Synthetic protein 3	Tbio	DEMO_FAMILY	1	"[""SYNTHETIC_SOURCE_A""]"	0	2
+demo:protein:DEMO_PROTEIN_004	DEMO_P4	Synthetic protein 4	Tbio	DEMO_FAMILY	1	[]	1	2
+demo:protein:DEMO_PROTEIN_005	DEMO_P5	Synthetic protein 5	Tdark	DEMO_FAMILY	1	[]	1	1
+demo:protein:DEMO_PROTEIN_006	DEMO_P6	Synthetic protein 6	Tdark	DEMO_FAMILY	1	"[""SYNTHETIC_SOURCE_A""]"	1	2

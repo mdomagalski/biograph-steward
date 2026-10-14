@@ -1,0 +1,8 @@
+query DiseaseInfo($name: String!) {
+  disease(name: $name) {
+    name mondoID associationCount directAssociationCount
+    mondoDescription doDescription
+    dids { id dataSources doName }
+    targetCounts { name value }
+  }
+}
