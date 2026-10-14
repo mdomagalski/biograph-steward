@@ -29,12 +29,16 @@ This starter implements only a bounded Pharos ingestion/inspection foundation. I
 
    Included as the organizer-recommended starting resource. Direct retrieval returned an access error during this session; its contents were not used to assert current operational details.
 
-## What is verified, and what is not
+## Current live verification — October 14, 2026
+
+Live queries now succeed. The API reported `pharos319`; the exact colorectal adenocarcinoma retrieval returned all 99 reported proteins. An expanded audit retrieved and count-checked all 9,540 pathway rows for those proteins, inventoried other relation families, and inspected source overlap. See [PHAROS_COVERAGE_AUDIT.md](PHAROS_COVERAGE_AUDIT.md) for counts, primary sources, limitations and reproducible local artifacts. These responses are saved locally in `runs/`, not bundled as distributable examples. The application still uses its original narrow retrieval; the audit is not an implemented connector expansion.
+
+## Earlier packaged validation boundary
 
 - The API queries are grounded in the public NCATS schema and use separate variables for user input.
 - The connector's request/response, pagination, error, caching and normalization logic was tested with synthetic mock responses.
 - Browser and local-server behavior were tested independently of the external API.
-- The development runtime could not resolve the external Pharos hostname. No live Pharos JSON response was obtained or bundled.
+- At the time of the earlier packaged validation, the development runtime could not resolve the external Pharos hostname. No live Pharos JSON response was obtained or bundled in that validation. The current live audit above supersedes the connectivity limitation.
 - The included synthetic graph is unmistakably labeled in the UI, snapshots, exports and documentation.
 - The GitHub schema describes source code, not a guaranteed contract for every deployed instance. The live `doctor` command checks the expected fields, followed by the user's first real extraction.
 
