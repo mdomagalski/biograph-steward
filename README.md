@@ -36,6 +36,8 @@ The optional planner supports an API endpoint or an explicitly selected, already
 
 [Study and treatment context](docs/STUDY_CONTEXT.md) now appears alongside CIViC summaries: per-record levels and study titles, original descriptions, treatment-list limits and shared citations. The same details are exported without inferring monotherapy or changing graph review states.
 
+The proposed [source-verifier contract](docs/VERIFIER_PROTOCOL.md) now has an [external benchmark plan and SciFact preparation command](docs/VERIFICATION_BENCHMARKS.md). Expert labels are kept separate from model inputs; the prepared data has not yet been used to evaluate a verifier.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
