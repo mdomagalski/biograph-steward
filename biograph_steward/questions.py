@@ -252,6 +252,11 @@ def answer_text(answer):
         lines.insert(0, 'SYNTHETIC DEMONSTRATION — not scientific evidence.\n')
     for item in answer['summary']:
         lines.append(item['text'] + ' ' + ' '.join('[' + cid + ']' for cid in item['citation_ids']))
+        if item.get('context_text'):lines.append(item['context_text'])
+    from .civic_context import context_text, overview_text
+    if answer.get('source_context_overview') is not None:lines += ['',overview_text(answer['source_context_overview'])]
+    contexts=[context_text(c) for c in answer['citations'] if c.get('study_context')]
+    if contexts:lines += ['', 'Source context by record:', *contexts]
     lines += ['', 'Scope and limitations:', *['- ' + s for s in answer['limitations']], '', 'Evidence references:']
     for c in answer['citations']:
         lines.append(f"[{c['id']}] {c['assertion_id']} | {c['review_state']} | sources: {', '.join(c['source_names']) or 'not supplied'} | evidence: {', '.join(c['used_evidence_edge_ids'])}")
@@ -267,13 +272,17 @@ def answer_text(answer):
 def answer_html(answer):
     esc = lambda value: escape(str(value), quote=True)
     statements = []
+    from .civic_context import context_html, overview_html
+    overview=overview_html(answer['source_context_overview']) if answer.get('source_context_overview') is not None else ''
+    by_id={c['id']:c for c in answer['citations']}
     for s in answer['summary']:
         refs = ' '.join(f'<a href="#{esc(cid)}">[{esc(cid)}]</a>' for cid in s['citation_ids'])
-        statements.append(f'<li>{esc(s["text"])} {refs}</li>')
+        contexts=''.join(context_html(by_id[cid]) for cid in s['citation_ids'])
+        statements.append(f'<li>{esc(s["text"])} {refs}{contexts}</li>')
     citations = ''.join(f'<details id="{esc(c["id"])}"><summary>[{esc(c["id"])}] {esc(c["assertion_id"])} — {esc(c["review_state"])}</summary><pre>{esc(json.dumps(c,indent=2))}</pre></details>' for c in answer['citations'])
     return ('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>BioGraph Steward — guided evidence result</title><style>body{max-width:1050px;margin:40px auto;padding:20px;font:16px/1.6 system-ui;color:#172b3a}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:16px}li,details{margin:14px 0}a{color:#086b85}</style>'
-            '<h1>' + esc(answer['question']) + '</h1><p>' + esc(answer['data_kind']) + '</p><p>' + esc(answer['overview']) + '</p><ul>' + ''.join(statements) + '</ul><h2>Scope and limitations</h2><ul>'
+            '<h1>' + esc(answer['question']) + '</h1><p>' + esc(answer['data_kind']) + '</p><p>' + esc(answer['overview']) + '</p>'+overview+'<ul>' + ''.join(statements) + '</ul><h2>Scope and limitations</h2><ul>'
             + ''.join('<li>'+esc(s)+'</li>' for s in answer['limitations']) + '</ul><h2>Evidence passports</h2>' + citations
             + '<h2>Reproducible question scope</h2><pre>' + esc(json.dumps({k: answer[k] for k in ['plan','snapshot_created_at','database_version','snapshot_sha256','graph_basis_sha256','answer_sha256','civic_snapshot_sha256','civic_created_at','discordant_annotations','overlap_summary'] if k in answer},indent=2)) + '</pre></html>')
 
@@ -295,3 +304,9 @@ def save_answer(answer, directory):
         rows = [{"protein_id": r['protein']['id'], "protein_symbol": r['protein'].get('sym'), **p} for r in answer['results'] for p in r['paths']]
         columns=['protein_id','protein_symbol','id','kind','review_status','node_ids','assertion_ids','citation_ids']
     _write_tsv(directory/'paths.tsv',rows,columns)
+    contexts=[{'citation_id':c['id'],'assertion_id':c['assertion_id'],**r}
+              for c in answer['citations'] for r in c.get('study_context',{}).get('records',[])]
+    if answer.get('source_context_overview') is not None:
+        _write_tsv(directory/'evidence_context.tsv',contexts,['citation_id','assertion_id','evidence_id','evidence_level',
+                   'evidence_level_label','evidence_direction','significance','variant_origin','therapy_label','therapy_interaction',
+                   'therapy_scope_note','source_reference','source_title','description','record_locators','snapshot_sha256','paper_check'])

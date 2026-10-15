@@ -349,14 +349,18 @@ def score_evaluation(path,output,*,case_reviews=None,answer_reviews=None,evidenc
 
 
 def evaluation_html(result,metrics):
+    from .civic_context import context_html, overview_html
     esc=lambda s:escape(str(s),quote=True)
     display=lambda v:'Pending' if v is None else esc(v)
     table=''.join('<tr><td>'+esc(arm)+'</td><td>'+str(m['answered_cases'])+'/'+str(m['cases'])+'</td><td>'+str(m['unjudged_or_uncertain_returned'])+'</td><td>'+display(m['judged_precision'])+'</td><td>'+display(m['review_pool_recall'])+'</td><td>'+display(m['approved_plan_agreement'])+'</td></tr>' for arm,m in metrics['arms'].items())
     observations=[]
     for o in result['observations']:
-        a=o.get('answer') or {};statements=''.join('<li>'+esc(s['text'])+' '+esc(' '.join('['+cid+']' for cid in s['citation_ids']))+'</li>' for s in a.get('summary',[]))
+        a=o.get('answer') or {};by_id={c['id']:c for c in a.get('citations',[])}
+        statements=''.join('<li>'+esc(s['text'])+' '+esc(' '.join('['+cid+']' for cid in s['citation_ids']))
+                           +''.join(context_html(by_id[cid]) for cid in s['citation_ids'])+'</li>' for s in a.get('summary',[]))
         citations=''.join('<details><summary>'+esc(c['id']+' | '+c['kind']+' | '+c['review_state'])+'</summary><pre>'+esc(json.dumps(c,indent=2))+'</pre></details>' for c in a.get('citations',[]))
-        observations.append('<details><summary>'+esc(o['case_id']+' | '+o['variant']+' | '+o['status'])+'</summary><p>'+esc(o['question'])+'</p><p>'+esc(o['reason'])+'</p><ul>'+statements+'</ul><details><summary>Plan and execution trace</summary><pre>'+esc(json.dumps({k:o[k] for k in ['observation_id','output_sha256','plan','trace','returned_units']},indent=2))+'</pre></details>'+citations+'</details>')
+        overview=overview_html(a['source_context_overview']) if a.get('source_context_overview') is not None else ''
+        observations.append('<details><summary>'+esc(o['case_id']+' | '+o['variant']+' | '+o['status'])+'</summary><p>'+esc(o['question'])+'</p><p>'+esc(o['reason'])+'</p>'+overview+'<ul>'+statements+'</ul><details><summary>Plan and execution trace</summary><pre>'+esc(json.dumps({k:o[k] for k in ['observation_id','output_sha256','plan','trace','returned_units']},indent=2))+'</pre></details>'+citations+'</details>')
     evidence=[]
     for u in result['pool']:
         link='<a href="'+esc(u['source_url'])+'" target="_blank" rel="noopener noreferrer">Open source record</a>' if u['source_url'] else ''

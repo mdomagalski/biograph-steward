@@ -43,7 +43,7 @@ class CivicHttpTests(unittest.TestCase):
         with urlopen(self.url+'/api/question/'+answer['question_id']) as r:self.assertEqual(json.loads(r.read()),answer)
         with urlopen(self.url+'/api/download/'+answer['question_id']) as r:
             names={Path(n).name for n in ZipFile(BytesIO(r.read())).namelist()}
-        self.assertTrue({'question.json','summary.txt','paths.tsv','report.html'}<=names)
+        self.assertTrue({'question.json','summary.txt','paths.tsv','report.html','evidence_context.tsv'}<=names)
         citation=answer['answer']['citations'][0]
         review=self.post('/api/review',{'run_id':rid,'assertion_id':citation['assertion_id'],'state':'accepted',
                                        'reviewer':'Software test','reason':'Invented test fixture only'})

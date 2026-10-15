@@ -34,6 +34,8 @@ The [evaluation runner and reviewer worksheets](docs/EVALUATION.md) compare froz
 
 The optional planner supports an API endpoint or an explicitly selected, already authenticated Codex CLI. See [configuration and isolation](docs/EVALUATION.md#optional-signed-in-codex-cli) and the [three-case source-review notes](docs/PILOT_REVIEW.md). Those AI-prepared notes leave human judgments pending.
 
+[Study and treatment context](docs/STUDY_CONTEXT.md) now appears alongside CIViC summaries: per-record levels and study titles, original descriptions, treatment-list limits and shared citations. The same details are exported without inferring monotherapy or changing graph review states.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.

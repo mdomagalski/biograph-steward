@@ -14,7 +14,9 @@ $('plannerForm').addEventListener('submit',async event=>{
     $('plannerStatus').textContent=r.status+': '+r.reason;
     const plan=el('details');plan.append(el('summary','Proposed scope and model/tool trace'),el('pre',JSON.stringify(r.trace,null,2)));$('plannerResult').append(plan);
     const zip=el('a','Download planner trace and cited output ZIP');zip.href='/api/download/'+encodeURIComponent(r.plan_id);$('plannerResult').append(zip);
-    if(r.answer){$('plannerResult').append(el('p',r.answer.overview));for(const s of r.answer.summary)$('plannerResult').append(el('p',s.text+' '+s.citation_ids.map(id=>'['+id+']').join(' ')));
+    if(r.answer){$('plannerResult').append(el('p',r.answer.overview));if(r.answer.source_context_overview)$('plannerResult').append(renderCivicContextOverview(r.answer));
+      for(const s of r.answer.summary){$('plannerResult').append(el('p',s.text+' '+s.citation_ids.map(id=>'['+id+']').join(' ')));
+        for(const cid of s.citation_ids){const c=r.answer.citations.find(c=>c.id===cid);if(c?.study_context)$('plannerResult').append(renderCivicContexts(c));}}
       for(const c of r.answer.citations){const details=el('details');details.append(el('summary','['+c.id+'] '+c.review_state+' | '+c.kind));for(const e of c.evidence_records)details.append(evidenceCard(e));$('plannerResult').append(details);}
     }
   }catch(error){$('plannerStatus').textContent=error.message;}

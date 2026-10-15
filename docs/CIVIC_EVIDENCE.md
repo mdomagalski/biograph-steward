@@ -1,5 +1,7 @@
 # Scoped CIViC variant–therapy evidence
 
+The v0.6.2 [study and treatment context display](STUDY_CONTEXT.md) adds per-record levels, study titles, original descriptions and shared-source counts beside summaries, with a source-bound context TSV export.
+
 Implemented and live-checked October 15, 2026. This is a deterministic research inspection workflow, with source-specific response annotations and explicit local human review. It is not a treatment recommendation, a source-paper entailment checker or a prediction result.
 
 ## Use in the app

@@ -4,6 +4,7 @@ from copy import deepcopy
 
 from .client import digest
 from .questions import graph_basis, INSPECTABLE
+from .civic_context import citation_context, context_overview
 
 TEMPLATE = "civic_variant_therapy.v1"
 
@@ -51,6 +52,7 @@ def answer_civic_question(graph, *, profile="all", therapy="both", view="accepte
                       "used_evidence_edge_ids":[e["id"] for e in evidence],"source_record_count":len(evidence),
                       "evidence_records":deepcopy(evidence),"publications":deepcopy(a["publications"]),
                       "overlap":[deepcopy(overlap[e["evidence_record"]["id"]]) for e in evidence]}
+            citation['study_context']=citation_context(citation)
             citations.append(citation)
             did=a["qualifiers"]["disease"]
             path={"id":"path:"+digest({"assertion":a["id"],"revision":a["revision"]})[:20],"kind":a["kind"],
@@ -67,7 +69,8 @@ def answer_civic_question(graph, *, profile="all", therapy="both", view="accepte
             prefix="Accepted locally" if a["lifecycle_state"] == "accepted" else "Candidate — local review required"
             statement=(f"{prefix}: CIViC {direction} {effect} for the complete molecular profile {nodes[mid]['name']} "
                        f"with {therapy_label} in {nodes[did]['name']} ({did}); variant origin {origin}, evidence level(s) {levels}.")
-            summary.append({"path_id":path["id"],"profile_id":mid,"review_status":path["review_status"],"text":statement,"citation_ids":[cid]})
+            summary.append({"path_id":path["id"],"profile_id":mid,"review_status":path["review_status"],"text":statement,
+                            "context_text":citation['study_context']['summary']+' '+' '.join(citation['study_context']['therapy_notes']),"citation_ids":[cid]})
         results.append({"profile":deepcopy(nodes[mid]),"paths":paths,"eligible_path_count":len(records),"omitted_paths":len(records)-len(paths)})
     # Alert only on comparable source qualifications. Study/assay context is
     # still in the record text, so differing annotations are not adjudicated contradictions.
@@ -102,11 +105,13 @@ def answer_civic_question(graph, *, profile="all", therapy="both", view="accepte
             "matching_profiles":len(grouped),"returned_profiles":len(results),"omitted_profiles":len(grouped)-len(results),
             "results":results,"summary":summary,"citations":citations,"nodes":[deepcopy(nodes[n]) for n in sorted(used_nodes)],
             "discordant_annotations":alerts,"overlap_summary":{k:deepcopy(v) for k,v in report["overlap"].items() if k != "rows"},
+            "source_context_overview":context_overview([r for c in citations for r in c['study_context']['records']]),
             "limitations":["CIViC Colorectal Cancer (DOID:9256) remains separate from the Pharos disease. No disease equivalence or subtype transfer is inferred.",
                 "Complete molecular profiles, raw profile expressions, variant origin and therapy sets are retained. Combination/sequential/substitute evidence does not establish a single-drug effect.",
                 "SUPPORTS and DOES_NOT_SUPPORT qualify the stated significance separately. Not supporting sensitivity is not automatically resistance.",
                 "CIViC ACCEPTED is an editorial source status, not local acceptance. Only explicit local review produces an accepted answer.",
                 "Evidence levels and source descriptions retain mixed clinical and preclinical conditions. No automated source-paper entailment or patient-specific treatment recommendation is performed.",
+                "A single drug in a CIViC therapy list does not establish monotherapy. Study design, population, co-treatments and assays require the original source description and paper; this display does not extract or verify them.",
                 "Flagged, deprecated/retracted, pending-revision, unsupported and unmapped items are excluded with reasons in civic_report.json.",
                 "Coverage describes the exact gene-name search, DOID, source status and ingredient therapy IDs. Other diseases, named regimen entities and submitted items were not searched.",
                 "No matching Pharos reference does not prove new or independent evidence. Shared PMID references are reported without counting them as independent experiments.",

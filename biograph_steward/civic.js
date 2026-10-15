@@ -50,6 +50,32 @@ function bindCivicAnswer(answer,id){
   $('civicLimit').value=answer.plan.max_results;$('civicPaths').value=answer.plan.max_paths_per_profile;
   history.replaceState(null,'','?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id));renderCivicQuestion();
 }
+function renderCivicContexts(citation){
+  const box=el('div',undefined,'source-context'),context=citation.study_context;
+  if(!context){box.append(el('p','This saved answer predates the source-context display. Run the question again to include it.','small'));return box;}
+  box.append(el('p',context.summary,'small'));
+  for(const note of context.therapy_notes)box.append(el('p',note,'small'));
+  for(const group of context.overview.shared_references)box.append(el('p',group.reference+' is shared by '+group.evidence_ids.join(', ')+'; independent experiment count is unresolved.','small'));
+  for(const record of context.records){
+    const card=el('div',undefined,'source-record');
+    card.append(el('strong',record.evidence_id+' | '+record.evidence_level+' — '+record.evidence_level_label),el('p',record.source_title));
+    const details=el('details');details.append(el('summary','Source description and references — '+record.evidence_id),
+      el('p','CIViC therapy list: '+record.therapy_label),el('p','Source description (as reported): '+record.description));
+    const source=el('a','Open CIViC record');source.href=record.evidence_url;source.target='_blank';source.rel='noopener noreferrer';details.append(source);
+    if(record.publication_url){const p=el('p'),link=el('a',record.source_reference);link.href=record.publication_url;link.target='_blank';link.rel='noopener noreferrer';p.append(link);details.append(p);}
+    details.append(el('p','Record locator: '+record.record_locators.join('; '),'small'));card.append(details);box.append(card);
+  }
+  const note=el('p',context.context_note+' ','small'),levels=el('a','CIViC level definitions');levels.href=context.level_definitions_url;levels.target='_blank';levels.rel='noopener noreferrer';note.append(levels);box.append(note);
+  return box;
+}
+function renderCivicContextOverview(answer){
+  const box=el('div',undefined,'notice'),context=answer.source_context_overview;if(!context)return box;
+  box.append(el('p','Displayed sources: '+context.displayed_records+' CIViC items / '+context.cited_sources+' distinct cited sources. '+context.scope_note));
+  for(const group of context.shared_references)box.append(el('p',group.reference+' is shared by '+group.evidence_ids.join(', ')+'.'));
+  if(context.unresolved_source_records)box.append(el('p',context.unresolved_source_records+' displayed items have unresolved source references.'));
+  if(!context.displayed_records)box.append(el('p','No source items are shown in this view. An empty result does not establish biological absence.'));
+  return box;
+}
 function renderCivicQuestion(){
   const answer=civicAnswer;if(!answer)return;
   $('civicOutput').classList.remove('hidden');$('civicPassport').replaceChildren();
@@ -61,12 +87,14 @@ function renderCivicQuestion(){
   $('civicAlerts').classList.toggle('hidden',!answer.discordant_annotations.length);
   $('civicAlerts').textContent=answer.discordant_annotations.length+' comparable profile/therapy groups have differing response annotations or directions. Review study conditions before interpreting them as contradictions; some may be outside the display cap.';
   $('civicSummary').replaceChildren();
+  if(answer.source_context_overview)$('civicSummary').append(renderCivicContextOverview(answer));
   for(const result of answer.results){
     const box=el('details',undefined,'evidence');box.open=result.profile.id===civicSelection;
     box.append(el('summary',result.profile.name+' | '+result.paths.length+' response assertions shown'));
     box.ontoggle=()=>{if(!box.open)return;civicSelection=result.profile.id;for(const other of $('civicSummary').children)if(other!==box&&other.tagName==='DETAILS')other.open=false;$('civicPassport').replaceChildren();renderCivicGraph();};
     for(const s of answer.summary.filter(s=>s.profile_id===result.profile.id)){
       const p=el('p',s.text+' ');for(const cid of s.citation_ids){const b=el('button','['+cid+']','citation-link');b.type='button';b.setAttribute('aria-label','Inspect CIViC evidence '+cid);b.onclick=()=>inspectCivicCitation(cid);p.append(b);}box.append(p);
+      for(const cid of s.citation_ids){const c=answer.citations.find(c=>c.id===cid);if(c)box.append(renderCivicContexts(c));}
     }
     if(result.omitted_paths)box.append(el('p',result.omitted_paths+' additional eligible assertions omitted by the per-profile limit.','small'));
     $('civicSummary').append(box);
@@ -95,8 +123,8 @@ function inspectCivicCitation(id){
   const full=el('button','Open assertion and record a review','secondary');full.onclick=()=>{
     $('inspectionDetails').open=true;$('evidenceView').value='inspection';$('assertionFamily').value=c.kind;$('assertionProtein').value='all';tablePage=0;activeTab='assertions';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab==='assertions'));render();inspectAssertion(c.assertion_id);
     const back=el('button','Back to therapy question','secondary');back.onclick=()=>$('civicQuestion').scrollIntoView({block:'start'});$('inspector').prepend(back);$('inspector').scrollIntoView({block:'start'});
-  };box.append(full);
-  for(const e of c.evidence_records){const r=e.evidence_record;box.append(el('h4','CIViC evidence '+r.id+' | source '+r.status+' | level '+r.evidenceLevel),el('p','Molecular profile: '+r.molecularProfile.name+' | expression: '+r.molecularProfile.rawName),el('p','Disease: '+r.disease.name+' | DOID:'+r.disease.doid),el('p','Treatment: '+r.therapies.map(t=>t.name).join(r.therapyInteractionType==='SUBSTITUTES'?' or ':r.therapyInteractionType==='SEQUENTIAL'?' / ':' + ')+' | '+(r.therapyInteractionType||'single therapy record')),
+  };box.append(full,renderCivicContexts(c));
+  for(const e of c.evidence_records){const r=e.evidence_record;box.append(el('h4','CIViC evidence '+r.id+' | source '+r.status+' | level '+r.evidenceLevel),el('p','Molecular profile: '+r.molecularProfile.name+' | expression: '+r.molecularProfile.rawName),el('p','Disease: '+r.disease.name+' | DOID:'+r.disease.doid),el('p','CIViC therapy list: '+r.therapies.map(t=>t.name).join(r.therapyInteractionType==='SUBSTITUTES'?' or ':r.therapyInteractionType==='SEQUENTIAL'?' / ':' + ')+' | '+(r.therapyInteractionType||'one drug listed; regimen not established')),
       el('p','Source citation: '+(r.source.citation||r.source.title||r.source.citationId)));
     const link=el('a','Open CIViC source record');link.href='https://civicdb.org/evidence/'+r.id;link.target='_blank';link.rel='noopener noreferrer';box.append(link);
     if(r.source.sourceType==='PUBMED'&&/^\d+$/.test(r.source.citationId)){const p=el('p'),a=el('a','Open PubMed '+r.source.citationId);a.href='https://pubmed.ncbi.nlm.nih.gov/'+r.source.citationId+'/';a.target='_blank';a.rel='noopener noreferrer';p.append(a);box.append(p);}
