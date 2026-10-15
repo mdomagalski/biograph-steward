@@ -5,8 +5,8 @@ A runnable starting point for **CRC Target Scout**, the first BioGraph Steward u
 Instead of asking separate people to design disconnected components, start with one shared flow:
 
 ```text
-Search a disease -> select the exact Pharos term -> retrieve a bounded target list
--> retain source records -> build qualified assertions -> inspect, review and export
+Select an exact disease -> retrieve a scoped cohort -> ask a guided question
+-> inspect evidence paths and cited summaries -> review assertions and export
 ```
 
 ## Quick start
@@ -22,7 +22,7 @@ Open `http://127.0.0.1:8765` if a browser does not open automatically. Use `py` 
 
 Read [START_HERE.md](START_HERE.md) for the team walkthrough.
 
-The **fuller scoped Pharos profile is implemented**: paginated pathways and GO, bounded interaction neighborhoods restricted to the selected cohort, drug listings, selected tissue-expression records and publication discovery. Every family has a per-protein coverage report. See [scoped retrieval and live validation](docs/SCOPED_RETRIEVAL.md). These remain Pharos baseline data; GO, interaction, drug and expression context now forms qualified candidate assertions with source crosswalks and reciprocal deduplication; see [normalization and validation](docs/CONTEXT_NORMALIZATION.md). The focused question workflow and qualified external evidence are next.
+The **fuller scoped Pharos profile is implemented**: paginated pathways and GO, bounded interaction neighborhoods restricted to the selected cohort, drug listings, selected tissue-expression records and publication discovery. Every family has a per-protein coverage report. See [scoped retrieval and live validation](docs/SCOPED_RETRIEVAL.md). These remain Pharos baseline data; GO, interaction, drug and expression context now forms qualified candidate assertions with source crosswalks and reciprocal deduplication; see [normalization and validation](docs/CONTEXT_NORMALIZATION.md). The [guided question workflow](docs/GUIDED_QUESTIONS.md) now finds scoped interaction/shared-pathway evidence and produces cited summaries. Variant–therapy evidence and qualified external additions are next.
 
 ### What was actually tested
 
@@ -31,6 +31,8 @@ The offline workflow, mocked API pagination, normalization, evidence preservatio
 On October 14, 2026, `doctor` successfully checked the live Pharos API (`pharos319`), and a paginated colorectal adenocarcinoma retrieval returned all 99 reported targets. Earlier packaged validation notes describe an older environment with DNS failures. The live run is saved locally under `runs/`, not distributed as an example dataset. Run `python3 app.py doctor` to check current availability. No failure silently falls back to synthetic data.
 
 ## What the prototype does now
+
+- Guides a supported protein-neighborhood question through explicit scope, a compact evidence graph, cited summaries and saved/exportable results. Accepted paths require every assertion to be accepted; candidate exploration is explicit.
 
 - Finds candidate disease names through Pharos and requires an explicit choice.
 - Retrieves target records with UniProt identifiers, symbols, target-development level, family and disease-specific association details.
@@ -76,6 +78,10 @@ python3 app.py replay --snapshot runs/pharos_crc_01/snapshot.json --out runs/rep
 
 # Export the actual GraphQL requests for inspection
 python3 app.py queries --out queries
+
+# Ask a guided question of a saved source run (default view: accepted only)
+python3 app.py question --run runs/crc_scoped_01 --protein UniProtKB:P01116 \
+  --view candidates --out runs/question_01
 
 # Audit a saved snapshot and prepare one review row per protein-disease pair
 python3 app.py audit --snapshot runs/pharos_crc_01/snapshot.json --out runs/audit_01
@@ -137,7 +143,7 @@ The JSON outputs are canonical for downstream programming. TSV cells beginning w
 
 Every new build or replay includes the benchmark audit. It does not train a model or assign positive/negative labels. Summaries such as `2 PubMed IDs` are not counted as explicit citations; an explicit PMID or reference URL is only a presence check, not verification of support. An excluded or absent association is never converted into a negative label.
 
-Version 0.3 writes graph format v3 while retaining raw snapshot format v1. The seven legacy qualifier slots preserve existing claim IDs; optional observation qualifiers qualify the new statements. See [the normalization contract](docs/CONTEXT_NORMALIZATION.md). Replaying older snapshots applies the current context rules, so derived graphs and pair counts may change; original snapshots are never rewritten. Without `--reviews`, replay creates candidate assertions. With `--reviews`, decisions must match the exact snapshot and evidence revision. The local reviewer field is a recorded name, not authenticated identity. See [the data contract](docs/DATA_CONTRACT.md).
+Version 0.4 writes graph format v3 while retaining raw snapshot format v1. The seven legacy qualifier slots preserve existing claim IDs; optional observation qualifiers qualify the new statements. See [the normalization contract](docs/CONTEXT_NORMALIZATION.md). Replaying older snapshots applies the current context rules, so derived graphs and pair counts may change; original snapshots are never rewritten. Without `--reviews`, replay creates candidate assertions. With `--reviews`, decisions must match the exact snapshot and evidence revision. The local reviewer field is a recorded name, not authenticated identity. See [the data contract](docs/DATA_CONTRACT.md).
 
 ## Scientific interpretation
 

@@ -294,6 +294,8 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
     graph["summary"]["assertions_by_kind"] = dict(sorted(Counter(a["kind"] for a in graph["assertions"]).items()))
     from .benchmark import audit_graph
     graph['benchmark_readiness'] = audit_graph(graph)
+    from .questions import graph_basis
+    graph['question_basis_sha256'] = graph_basis(graph)
     return graph
 
 

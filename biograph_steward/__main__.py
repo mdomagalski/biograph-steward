@@ -48,6 +48,14 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--reviewer", required=True)
     p.add_argument("--reason", required=True)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("question", help="Answer a scoped protein-neighborhood question from a saved run.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--protein", required=True, help="Exact protein ID or unambiguous symbol in this cohort.")
+    p.add_argument("--relations", choices=["interactions", "shared_pathways"], nargs="+", default=["interactions", "shared_pathways"])
+    p.add_argument("--view", choices=["accepted", "candidates"], default="accepted")
+    p.add_argument("--max-results", type=int, default=8)
+    p.add_argument("--max-paths", type=int, default=2)
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("queries", help="Export readable GraphQL requests used by this starter.")
     p.add_argument("--out", type=Path, default=Path("queries"))
     p = sub.add_parser("audit", help="Prepare benchmark readiness and pair-level review files from a snapshot.")
@@ -62,6 +70,16 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "serve":
             from .webapp import serve
             serve(args.port, args.runs_dir, args.endpoint, args.cache_dir, not args.no_browser, args.timeout)
+            return 0
+        if args.command == "question":
+            from .reviews import read_run
+            from .questions import answer_question, save_answer
+            _, _, graph = read_run(args.run)
+            answer = answer_question(graph, args.protein, relations=args.relations, view=args.view,
+                                     max_results=args.max_results, max_paths=args.max_paths, source_run=args.run.name)
+            save_answer(answer, args.out)
+            print(json.dumps({"question": answer["question"], "overview": answer["overview"],
+                              "availability": answer["availability"], "report": str((args.out / "report.html").resolve())}, indent=2))
             return 0
         if args.command == "queries":
             args.out.mkdir(parents=True, exist_ok=True)

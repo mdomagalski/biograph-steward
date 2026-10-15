@@ -4,7 +4,7 @@ Assessment date: October 14, 2026; updated after the first alignment implementat
 
 ## Decision
 
-The inspection/review and scoped retrieval checkpoints are committed. The current increment adds qualified Pharos annotation assertions and is ready for validation and commit; the focused question workflow is next. A full download of Pharos is not required by the proposal, which explicitly promises focused, question-scoped graphs.
+The inspection/review and scoped retrieval checkpoints are committed. The current increment adds qualified Pharos annotation assertions and is ready for validation and commit; the [focused question workflow](GUIDED_QUESTIONS.md) now adds deterministic scoped path queries, cited summaries and immutable question exports. Variant–therapy evidence remains subsequent work. A full download of Pharos is not required by the proposal, which explicitly promises focused, question-scoped graphs.
 
 The application is a useful foundation consistent with the project's direction. It is not yet an implementation of the promised evidence-first agent. More records alone will not close the principal gaps.
 
@@ -72,7 +72,7 @@ These contracts should be established before the large pull; they do not require
 
 1. Preserve the tested checkpoint in Git.
 2. Completed: minimum scope/assertion/lifecycle contracts and an explicit snapshot migration policy. Extend them with source-specific qualifiers as new adapters arrive.
-3. Implemented: scoped pathways, GO, cohort PPIs, selected expression, drug listings and target-linked publication discovery, with count reconciliation and raw provenance. These context families now produce qualified candidate assertions; next deliver the focused question workflow and recover claim-specific citations; target-linked publications do not establish support for disease claims.
+3. Implemented: scoped pathways, GO, cohort PPIs, selected expression, drug listings and target-linked publication discovery, with count reconciliation and raw provenance. These context families now produce qualified candidate assertions; the focused question workflow is implemented, while claim-specific literature recovery remains pending; target-linked publications do not establish support for disease claims.
 4. Deliver one working question workflow with a CIViC qualified-evidence adapter and persistent review decisions. In the experimental-data work, select a versioned CPTAC COAD study and distinguish newly represented measurements from existing LinkedOmicsKB links.
 5. Add manifest comparison and an inspectable change report, then evaluate pruning, usability and the required same-model baseline/enrichment comparison.
 

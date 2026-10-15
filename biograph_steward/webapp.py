@@ -17,7 +17,8 @@ from .client import PharosClient, ENDPOINT, PharosError
 def report_html(graph: dict | None = None) -> str:
     template = Path(__file__).with_name("ui.html").read_text(encoding="utf-8")
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
-    return template.replace("__EMBEDDED_GRAPH__", data)
+    script = Path(__file__).with_name("guided.js").read_text(encoding="utf-8")
+    return template.replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
 
 def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
@@ -61,6 +62,20 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 except (ValueError, TypeError, OSError) as exc:
                     self.json_reply({"error": str(exc)}, 400)
                 return
+            match = re.fullmatch(r"/api/question/([A-Za-z0-9_-]{1,80})", path)
+            if match:
+                from .questions import verify_answer
+                folder = (runs_dir / match.group(1)).resolve()
+                if folder.parent != runs_dir or not (folder / "question.json").is_file():
+                    self.json_reply({"error": "Question result not found"}, 404)
+                    return
+                try:
+                    answer = json.loads((folder / "question.json").read_text(encoding="utf-8"))
+                    verify_answer(answer)
+                    self.json_reply({"question_id": match.group(1), "answer": answer})
+                except (ValueError, TypeError, OSError) as exc:
+                    self.json_reply({"error": str(exc)}, 400)
+                return
             match = re.fullmatch(r"/api/download/([A-Za-z0-9_-]{1,80})", path)
             if match:
                 folder = runs_dir / match.group(1)
@@ -97,6 +112,25 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if path == "/api/search":
                     client = PharosClient(endpoint, cache_dir=cache_dir, timeout=timeout)
                     self.json_reply(client.search(body.get("term", "")))
+                    return
+                if path == "/api/question":
+                    from .questions import answer_question, save_answer
+                    from .reviews import read_run
+                    allowed = {"run_id", "protein", "relations", "view", "max_results", "max_paths", "template"}
+                    if set(body) - allowed:
+                        raise ValueError("Unsupported question fields; use the guided protein-neighborhood scope.")
+                    source_id = body.get("run_id", "")
+                    if not isinstance(source_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,80}", source_id):
+                        raise ValueError("Invalid source run ID.")
+                    source = (runs_dir / source_id).resolve()
+                    if source.parent != runs_dir or not source.is_dir():
+                        raise ValueError("Source run not found.")
+                    _, _, graph = read_run(source)
+                    options = {k: v for k, v in body.items() if k not in {"run_id", "protein"}}
+                    answer = answer_question(graph, body.get("protein"), source_run=source_id, **options)
+                    question_id = "question_" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "_" + uuid4().hex[:8]
+                    save_answer(answer, runs_dir / question_id)
+                    self.json_reply({"question_id": question_id, "answer": answer})
                     return
                 if path == "/api/review":
                     from .reviews import review_run

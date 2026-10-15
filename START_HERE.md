@@ -54,6 +54,10 @@ python3 app.py doctor
 python3 app.py search colorectal
 ```
 
+## Ask a guided evidence question
+
+After building or reopening a run, use **Ask a scoped question**. Choose a protein, connection type and evidence view; inspect the disease scope and limits, then choose **Find evidence paths**. An empty accepted view offers candidate exploration when inspectable paths exist. Expand a result to show its compact graph, then select a summary reference to inspect the evidence or record a review. Question results save separately and their URLs reopen the source and answer together. Download the question ZIP for the cited summary, paths and source evidence. See [the guided question contract](docs/GUIDED_QUESTIONS.md).
+
 ## What to show at the next meeting
 
 Open the first successful live report and ask together:
@@ -62,4 +66,4 @@ Open the first successful live report and ask together:
 - Which source records explain one selected protein-disease connection?
 - Which records need scientific review before becoming benchmark labels?
 
-The app now includes a collapsed **Evaluation — benchmark readiness** section and exports a pair-level review worksheet. The [live coverage audit](docs/PHAROS_COVERAGE_AUDIT.md) found substantial Pharos data missing from our extract and overlap with proposed external sources. Scoped Pharos retrieval is now implemented. The new context now links to qualified candidate assertions. Filter by **Assertion family** and **Assertion protein**, or open a source record and choose **Review normalized assertion**. Interaction passports preserve both endpoint views; expression passports preserve tissue/cell labels, assay and absent/zero measurements. See [the normalization contract](docs/CONTEXT_NORMALIZATION.md). The focused question workflow, frozen cohort and qualified external additions are next. The benchmark evaluates this evidence workbench. See [the build plan](docs/BUILD_PLAN.md) for the revised sequence and source decisions.
+The app now includes a collapsed **Evaluation — benchmark readiness** section and exports a pair-level review worksheet. The [live coverage audit](docs/PHAROS_COVERAGE_AUDIT.md) found substantial Pharos data missing from our extract and overlap with proposed external sources. Scoped Pharos retrieval is now implemented. The new context now links to qualified candidate assertions. Filter by **Assertion family** and **Assertion protein**, or open a source record and choose **Review normalized assertion**. Interaction passports preserve both endpoint views; expression passports preserve tissue/cell labels, assay and absent/zero measurements. See [the normalization contract](docs/CONTEXT_NORMALIZATION.md). The guided question workflow is now implemented. The frozen cohort and qualified variant–therapy evidence are next. The benchmark evaluates this evidence workbench. See [the build plan](docs/BUILD_PLAN.md) for the revised sequence and source decisions.

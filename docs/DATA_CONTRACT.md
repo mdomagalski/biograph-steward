@@ -1,4 +1,4 @@
-# Evidence workbench data contract — v0.3
+# Evidence workbench data contract — v0.4
 
 Raw snapshots remain `biograph-steward.pharos.v1`. Derived graphs now use `biograph-steward.evidence-graph.v3`. Old snapshots are verified and transformed with current rules without modification. Old derived graphs are not silently rewritten. Replaying the same snapshot with a newer transformer can intentionally change disease-context mapping and audit counts.
 
@@ -81,3 +81,7 @@ Snapshot v1 optionally includes `retrieval.context` and `targets[].pharos_contex
 ## Qualified source context
 
 See [context normalization v0.3](CONTEXT_NORMALIZATION.md) for the local predicate semantics, optional qualifier slots, reciprocal grouping, measurement context, provenance pointers, review boundaries and migration behavior. Existing disease/pathway claim IDs and evidence revisions remain stable. `source_record_count` counts raw source views, while `evidence_edge_ids` identifies evidence groups; `independent_evidence_count` remains null. No expression units, GO relation/polarity, species, treatment response or disease-specific support are inferred.
+
+## Guided question results
+
+`biograph-steward.guided-question.v1` binds a deterministic question to the exact source snapshot, graph/review basis and guided parameters. Each returned path lists its nodes, assertion IDs, review states and evidence references; every summary statement cites the complete path. Only exact-term disease associations and structurally usable context qualify. Accepted paths require all assertions to be accepted. See [the question contract](GUIDED_QUESTIONS.md) for limits, citation semantics, output files and persistence. This adds a graph-basis hash without changing existing claim identity or raw snapshots.
