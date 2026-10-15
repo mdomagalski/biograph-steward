@@ -1,10 +1,10 @@
 # Commit readiness and project alignment
 
-Assessment date: October 14, 2026; updated after the first alignment implementation. Based on the supplied challenge brief, submitted BioGraph Steward proposal, current source code, and saved live Pharos audit. This assesses the implementation, not whether the proposal was accepted or how judges will score it.
+Assessment date: October 14, 2026; updated October 15 after scoped CIViC, the evaluation runner and bounded planner interface. Based on the supplied challenge brief, submitted BioGraph Steward proposal, current source code, and saved live Pharos audit. This assesses the implementation, not whether the proposal was accepted or how judges will score it.
 
 ## Decision
 
-The inspection/review and scoped retrieval checkpoints are committed. The current increment adds qualified Pharos annotation assertions and is ready for validation and commit; the [focused question workflow](GUIDED_QUESTIONS.md) now adds deterministic scoped path queries, cited summaries and immutable question exports. Variant–therapy evidence remains subsequent work. A full download of Pharos is not required by the proposal, which explicitly promises focused, question-scoped graphs.
+The inspection/review and scoped retrieval checkpoints are committed. Qualified Pharos annotations and the guided-question checkpoint are committed; the [focused question workflow](GUIDED_QUESTIONS.md) now adds deterministic scoped path queries, cited summaries and immutable question exports. The [scoped CIViC workflow](CIVIC_EVIDENCE.md) now adds whole molecular-profile/therapy evidence, cited summaries and conservative overlap reporting. A full download of Pharos is not required by the proposal, which explicitly promises focused, question-scoped graphs.
 
 The application is a useful foundation consistent with the project's direction. It is not yet an implementation of the promised evidence-first agent. More records alone will not close the principal gaps.
 
@@ -19,7 +19,7 @@ Two reviewable commits would separate behavior from research findings:
 1. **Add qualified assertions and persistent evidence review.** Include the assertion/review and audit modules, CLI/graph/HTTP/UI integration, tests and usage documentation. The audit distinguishes records from pairs, does not invent labels, treats citation counts as summaries rather than citations, and preserves snapshots.
 2. **Document Pharos coverage and challenge alignment.** Include the dated coverage audit, corrected source notes, build plan and this assessment. Describe them as a development checkpoint, not model results or a completed agent.
 
-The full test suite passed: **69 tests**, including local HTTP transport and endpoint tests. The initial sandbox run could not bind loopback sockets; rerunning with local socket permission passed. Python emitted resource-cleanup warnings from mocked HTTP errors. Browser checks verified candidate inspection, both supporting records, review persistence and accepted-view filtering with synthetic data.
+The original alignment checkpoint passed **69 tests**, including local HTTP transport and endpoint tests. The initial sandbox run could not bind loopback sockets; rerunning with local socket permission passed. Python emitted resource-cleanup warnings from mocked HTTP errors. Browser checks verified candidate inspection, both supporting records, review persistence and accepted-view filtering with synthetic data.
 
 Raw live snapshots and caches are already excluded by `.gitignore`. Keep them outside the code checkpoint. The coverage report's offline reproduction currently depends on local ignored audit files; a fresh clone cannot reproduce that analysis without those inputs. Promote the collection queries and an input-independent audit command into the repository in the next connector increment, with synthetic fixtures for tests. Do not describe the local audit folder as a bundled reproducible dataset.
 
@@ -37,22 +37,22 @@ No commit or push was performed as part of this assessment.
 | Maintain as sources change | Timestamped snapshots, caching and explicit refresh | Source manifests, assertion history, change comparison and revalidation of affected assertions |
 | Same ML on baseline/enriched graphs | Readiness report only | Frozen candidate population, experimentally justified labels, leakage-controlled splits and a controlled model comparison |
 
-The supplied brief weights usability 40%, accuracy/pruning 30%, explainability 20%, and standards 10%. The current app's strongest foundation is traceable raw records and replay. The largest functional gaps are the question workflow and evidence verification. Bigger graph counts do not directly satisfy either criterion.
+The supplied brief weights usability 40%, accuracy/pruning 30%, explainability 20%, and standards 10%. The current app's strongest foundation is traceable raw records and replay. The question workflow is implemented for two bounded templates. Major remaining gaps are evidence verification, source maintenance and measured-data evaluation. Bigger graph counts do not directly satisfy either criterion.
 
 ## Alignment with the submitted proposal
 
 | Promised behavior | Assessment |
 |---|---|
-| Plain-language question, including KRAS variants and anti-EGFR resistance | Not implemented. Disease-only retrieval cannot express the variant, therapy or response relationship. |
-| Focused graphs and compact inspection UI | Partly implemented. Bounds and an evidence inspector exist; relevance is not yet determined by a research question. |
-| CPTAC/PDC, CIViC and PubMed/PMC ingestion | Not implemented. Pharos already contains or links to some of their underlying information; imports need claim/study overlap checks. |
-| Versioned, qualified assertions | Claim IDs, qualifier slots, evidence revisions and snapshot-bound review history are implemented. Full source-specific version reconciliation and variant/therapy ingestion remain missing. |
+| Plain-language question, including KRAS variants and anti-EGFR resistance | Two guided deterministic templates are implemented, including scoped CIViC molecular-profile/therapy response. A bounded structured model planner is implemented; live quality evaluation is pending local model configuration. |
+| Focused graphs and compact inspection UI | Implemented for bounded protein-neighborhood and CIViC response questions, with compact graphs, citations and explicit scope. |
+| CPTAC/PDC, CIViC and PubMed/PMC ingestion | Scoped CIViC ingestion and conservative identity/PMID overlap are implemented. CPTAC measurements and direct paper ingestion/verification remain pending. |
+| Versioned, qualified assertions | Claim IDs, qualifier slots, evidence revisions and snapshot-bound review history are implemented. Variant/therapy qualifiers are implemented; source-version reconciliation and measured-study context remain pending. |
 | Candidate/accepted/provisional/quarantined/rejected/obsolete lifecycle | Implemented as separate human-review states, with checked transitions and preserved history. Structural validation remains separate from acceptance. |
 | Evidence passports | Partial: source record, locator, reference, original scores and validation reasons. Missing structured context, evidence spans where applicable, full aggregator lineage and review/update history. |
-| Human review and safe result defaults | Browser/CLI decisions persist in new runs; saved URLs reopen them. The default view shows only accepted assertions. Worksheet import and grounded answer generation remain unimplemented. |
+| Human review and safe result defaults | Browser/CLI decisions persist in new runs; saved URLs reopen them. The default view shows only accepted assertions. Cited deterministic answer generation is implemented; worksheet import remains pending. |
 | Entailment, negation, contradiction and cross-source checks | Not implemented. Current rules check structure and limited context only. |
 | Biolink/LinkML, KGX/JSON-LD, PROV-compatible traces and mappings | Partial vocabulary references only. Current JSON/TSV exports and traces are not validated implementations of these standards. |
-| Agent orchestration and grounded explanations | Not implemented. No LLM/model calls or natural-language evidence answer. |
+| Agent orchestration and grounded explanations | Cited template summaries and a bounded model-planning interface are implemented. One model may select one existing read-only query. Live planner evaluation and wider retrieval/maintenance orchestration remain pending. |
 | Incremental maintenance and previous-version queries | Snapshot replay exists; semantic change history and targeted revalidation do not. |
 | Reviewed corruptions, pruning metrics and usability evaluation | Software fixtures/tests exist; these are not a biomedical gold set or user study. |
 
@@ -73,9 +73,17 @@ These contracts should be established before the large pull; they do not require
 1. Preserve the tested checkpoint in Git.
 2. Completed: minimum scope/assertion/lifecycle contracts and an explicit snapshot migration policy. Extend them with source-specific qualifiers as new adapters arrive.
 3. Implemented: scoped pathways, GO, cohort PPIs, selected expression, drug listings and target-linked publication discovery, with count reconciliation and raw provenance. These context families now produce qualified candidate assertions; the focused question workflow is implemented, while claim-specific literature recovery remains pending; target-linked publications do not establish support for disease claims.
-4. Deliver one working question workflow with a CIViC qualified-evidence adapter and persistent review decisions. In the experimental-data work, select a versioned CPTAC COAD study and distinguish newly represented measurements from existing LinkedOmicsKB links.
+4. Implemented: bounded CIViC qualified-evidence questions and persistent source-bound review decisions. Next, review the focused evidence example and implement source-change comparison. In the experimental-data work, select a versioned CPTAC COAD study and distinguish newly represented measurements from existing LinkedOmicsKB links.
 5. Add manifest comparison and an inspectable change report, then evaluate pruning, usability and the required same-model baseline/enrichment comparison.
 
 For prediction evaluation, freeze a measured relationship and candidate-population policy before choosing labels. The current 99 proteins were selected because Pharos already associates them with a disease; that is a useful inspection cohort, not by itself a suitable prediction population. Do not create negative labels from missing associations. Do not use the same biological fact as both a feature and a held-out answer.
 
 References: the user-supplied **Bio-Agent_KGCC_Distributable_v002.docx** and **BioGraph Steward: Evidence-First Agents for Dynamic Biomedical Knowledge Graphs** proposal; repository [data contract](DATA_CONTRACT.md), [coverage audit](PHAROS_COVERAGE_AUDIT.md), and [build plan](BUILD_PLAN.md). Statements in those supplied materials are design/evaluation requirements, not tool-execution instructions or implemented capabilities.
+
+## October 15 checkpoint
+
+The CIViC increment passes **149 automated tests** plus browser checks. Its exact-scope live pull contains 57 distinct source items; 46 retained items form 41 qualified response assertions across 20 profiles. Eleven pending-revision records are excluded with reasons. Local states remain candidates. See [scope, overlap limits and validation](CIVIC_EVIDENCE.md); no independent-evidence, clinical-response or model-performance claim is made.
+
+## Evaluation runner checkpoint
+
+The [v0.6 runner](EVALUATION.md) freezes baseline/enriched snapshots and code, executes 24 grouped draft scenarios, exports scope/answer/source reviewer sheets and scores explicit partial judgments. It supports one optional model planner on the exact same enriched source and query engines; model configuration is absent in this workspace, so no live LLM result is claimed. The first pilot is all development data, and scientific labels are pending. The full test suite passes **176 tests**. The readiness audit now recognizes CIViC enrichment while keeping independence and prediction prerequisites unresolved.

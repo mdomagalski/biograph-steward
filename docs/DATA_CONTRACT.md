@@ -1,4 +1,4 @@
-# Evidence workbench data contract — v0.4
+# Evidence workbench data contract — v0.6
 
 Raw snapshots remain `biograph-steward.pharos.v1`. Derived graphs now use `biograph-steward.evidence-graph.v3`. Old snapshots are verified and transformed with current rules without modification. Old derived graphs are not silently rewritten. Replaying the same snapshot with a newer transformer can intentionally change disease-context mapping and audit counts.
 
@@ -85,3 +85,17 @@ See [context normalization v0.3](CONTEXT_NORMALIZATION.md) for the local predica
 ## Guided question results
 
 `biograph-steward.guided-question.v1` binds a deterministic question to the exact source snapshot, graph/review basis and guided parameters. Each returned path lists its nodes, assertion IDs, review states and evidence references; every summary statement cites the complete path. Only exact-term disease associations and structurally usable context qualify. Accepted paths require all assertions to be accepted. See [the question contract](GUIDED_QUESTIONS.md) for limits, citation semantics, output files and persistence. This adds a graph-basis hash without changing existing claim identity or raw snapshots.
+
+## CIViC source sidecar and response assertions
+
+Version 0.5 preserves the primary Pharos snapshot and adds a separately hashed `civic_snapshot.json` sidecar. `read_run`, replay and review runs normalize both sources, with source-specific locators and licenses. Existing Pharos assertion IDs, evidence revisions and decisions are unchanged. The graph's additive `civic_snapshot_sha256` enters the question basis when present. CIViC review events bind to this hash in addition to the primary snapshot and assertion revision.
+
+New optional qualifiers `evidence_direction`, `variant_origin`, `therapy_interaction` and `evidence_type` enter identity only when supplied. A `variant_therapy_response` assertion connects a complete CIViC molecular profile to an exact local therapy set; disease, response significance and direction remain separate. Source status and level are evidence metadata. Local candidates are not accepted by CIViC editorial acceptance. Project-local predicates/categories are not full Biolink validation.
+
+The `civic_variant_therapy.v1` question template uses profile results, complete qualified response paths, source citations and both snapshot hashes. It shares immutable question/ZIP persistence with the protein-neighborhood template while keeping the biological scope separate. See [the full adapter contract and validation](CIVIC_EVIDENCE.md).
+
+## Frozen workbench evaluation and planning
+
+`evaluation-suite.v1` copies the minimal raw source/review bundles, hashes their bytes, records the derived graph/review basis, reference-scope cases, question groups/splits, engine file hashes and fixed display budgets. A source or implementation change requires a new suite. `evaluation-result.v1` stores each workflow output, proposed plan/trace, source-unit pool and hashes. Reviewer imports bind to immutable case/output/unit IDs and hashes. Unknown judgments never become negatives, and acceptance of a graph assertion remains independent of evaluation review.
+
+The planner catalogue omits reference plans, source statements and reviewer judgments. One strict JSON proposal selects an existing protein-neighborhood query, a complete-profile CIViC query or abstention. Validated application code executes at most one read-only local query. Invalid/incomplete/refused/unavailable model outputs remain explicit, with no model fallback. Model-request/schema/catalogue hashes and returned usage are traced; credentials are not persisted. Replay and injected-test proposals have distinct non-live labels. See [schemas, metrics and review protocol](EVALUATION.md).

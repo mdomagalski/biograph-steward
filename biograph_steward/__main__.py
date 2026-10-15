@@ -40,6 +40,7 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("replay", help="Rebuild a snapshot with the current transformer without network access.")
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--reviews", type=Path, help="Preserve review events from this exact snapshot.")
+    p.add_argument("--civic-snapshot", type=Path, help="Replay this verified CIViC sidecar without network access.")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("review", help="Record a human assertion decision in a new immutable run.")
     p.add_argument("--run", type=Path, required=True)
@@ -56,8 +57,44 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-results", type=int, default=8)
     p.add_argument("--max-paths", type=int, default=2)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("civic", help="Add the bounded KRAS/DOID:9256 CIViC source to a new Pharos run.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--snapshot", type=Path, help="Use a saved CIViC snapshot instead of the live API.")
+    p.add_argument("--max-items", type=int, default=100, help="Live retrieval cap per therapy, maximum 200.")
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("therapy-question", help="Query whole molecular-profile/therapy evidence from a CIViC-enriched run.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--profile", default="all", help="Exact CIViC.molecularprofile:<id>, or all.")
+    p.add_argument("--therapy", choices=["both","cetuximab","panitumumab"], default="both")
+    p.add_argument("--view", choices=["accepted","candidates"], default="accepted")
+    p.add_argument("--max-results", type=int, default=8)
+    p.add_argument("--max-paths", type=int, default=3)
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("queries", help="Export readable GraphQL requests used by this starter.")
     p.add_argument("--out", type=Path, default=Path("queries"))
+    p = sub.add_parser("evaluation-init", help="Freeze Pharos/enriched sources and draft evaluation questions.")
+    p.add_argument("--baseline",type=Path,required=True)
+    p.add_argument("--enriched",type=Path,required=True)
+    p.add_argument("--reviewed",type=Path)
+    p.add_argument("--cases",type=Path)
+    p.add_argument("--max-results",type=int,default=8)
+    p.add_argument("--max-paths",type=int,default=3)
+    p.add_argument("--out",type=Path,required=True)
+    p = sub.add_parser("evaluation-run", help="Compare fixed-source deterministic tools and an optional single model planner.")
+    p.add_argument("--suite",type=Path,required=True)
+    p.add_argument("--planner",choices=['none','live','replay'],default='none')
+    p.add_argument("--replay",type=Path)
+    p.add_argument("--out",type=Path,required=True)
+    p = sub.add_parser("evaluation-score", help="Score reviewer worksheets into a new result directory.")
+    p.add_argument("--result",type=Path,required=True)
+    p.add_argument("--case-reviews",type=Path)
+    p.add_argument("--answer-reviews",type=Path)
+    p.add_argument("--evidence-reviews",type=Path)
+    p.add_argument("--out",type=Path,required=True)
+    p = sub.add_parser("plan-question", help="Plan and execute one research question through the bounded model planner.")
+    p.add_argument("--run",type=Path,required=True)
+    p.add_argument("--question",required=True)
+    p.add_argument("--out",type=Path,required=True)
     p = sub.add_parser("audit", help="Prepare benchmark readiness and pair-level review files from a snapshot.")
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
@@ -71,6 +108,47 @@ def main(argv: list[str] | None = None) -> int:
             from .webapp import serve
             serve(args.port, args.runs_dir, args.endpoint, args.cache_dir, not args.no_browser, args.timeout)
             return 0
+        if args.command == 'evaluation-init':
+            from .evaluation import freeze_suite
+            cases=json.loads(args.cases.read_text()) if args.cases else None
+            suite=freeze_suite(args.baseline,args.enriched,args.out,cases=cases,reviewed=args.reviewed,max_results=args.max_results,max_paths=args.max_paths)
+            print(json.dumps({'suite_sha256':suite['suite_sha256'],'cases':len(suite['cases']),'reference_status':suite['reference_status']},indent=2))
+            return 0
+        if args.command == 'evaluation-run':
+            from .evaluation import run_evaluation
+            from .planning import ModelPlanner,RecordedPlanner,PlannerUnavailable
+            planner=None;note=None
+            if args.planner=='live':
+                try:planner=ModelPlanner()
+                except PlannerUnavailable as exc:note=str(exc)
+            elif args.planner=='replay':
+                if not args.replay:raise ValueError('Replay mode requires --replay; it is not live agent evidence.')
+                planner=RecordedPlanner(json.loads(args.replay.read_text()))
+            result,metrics=run_evaluation(args.suite,args.out,planner=planner,planner_note=note)
+            print(json.dumps({'status':metrics['status'],'cases':metrics['cases'],'planner_kind':result['planner_kind'],
+                              'scientific_improvement_established':False,'report':str((args.out/'report.html').resolve())},indent=2))
+            return 0
+        if args.command == 'evaluation-score':
+            from .evaluation import score_evaluation
+            metrics=score_evaluation(args.result,args.out,case_reviews=args.case_reviews,answer_reviews=args.answer_reviews,evidence_reviews=args.evidence_reviews)
+            print(json.dumps(metrics,indent=2))
+            return 0
+        if args.command == 'plan-question':
+            from .reviews import read_run
+            from .planning import ModelPlanner,execute_plan
+            from .evaluation import _new_directory
+            from .client import write_json
+            from .questions import save_answer
+            _,_,graph=read_run(args.run)
+            planner=ModelPlanner();trace=planner.plan(args.question,graph)
+            output=_new_directory(args.out)
+            write_json(output/'planner_trace.json',trace)
+            if trace['status']!='validated':raise ValueError('Model plan failed validation; trace saved. No query was executed.')
+            result=execute_plan(trace['plan'],graph,source_run=args.run.name)
+            write_json(output/'execution.json',{k:v for k,v in result.items() if k!='answer'})
+            if result['answer']:save_answer(result['answer'],output/'answer')
+            print(json.dumps({'status':result['status'],'reason':result['reason'],'trace':str((output/'planner_trace.json').resolve())},indent=2))
+            return 0
         if args.command == "question":
             from .reviews import read_run
             from .questions import answer_question, save_answer
@@ -80,6 +158,30 @@ def main(argv: list[str] | None = None) -> int:
             save_answer(answer, args.out)
             print(json.dumps({"question": answer["question"], "overview": answer["overview"],
                               "availability": answer["availability"], "report": str((args.out / "report.html").resolve())}, indent=2))
+            return 0
+        if args.command == "civic":
+            from .reviews import read_run
+            from .graph import save_run
+            from .civic import CivicClient
+            snapshot, events, graph = read_run(args.run)
+            if graph.get("civic"):
+                raise ValueError("This run already has a CIViC source. Start from a Pharos-only run; refresh reconciliation is not implemented.")
+            if snapshot["data_kind"] == "synthetic_demo" and not args.snapshot:
+                raise ValueError("Live CIViC cannot be mixed with a synthetic Pharos source.")
+            civic = json.loads(args.snapshot.read_text(encoding="utf-8")) if args.snapshot else CivicClient().retrieve(args.max_items)
+            result = save_run(snapshot,args.out,run_mode="civic_enrichment",review_events=events,civic_snapshot=civic)
+            print(json.dumps({k:result["civic"][k] for k in ['retrieved_items','normalized_items','coverage','mapping']},indent=2))
+            return 0
+        if args.command == "therapy-question":
+            from .reviews import read_run
+            from .civic_questions import answer_civic_question
+            from .questions import save_answer
+            _, _, graph = read_run(args.run)
+            answer=answer_civic_question(graph,profile=args.profile,therapy=args.therapy,view=args.view,
+                                         max_results=args.max_results,max_paths=args.max_paths,source_run=args.run.name)
+            save_answer(answer,args.out)
+            print(json.dumps({"question":answer["question"],"overview":answer["overview"],"availability":answer["availability"],
+                              "discordant_groups":len(answer["discordant_annotations"]),"report":str((args.out/'report.html').resolve())},indent=2))
             return 0
         if args.command == "queries":
             args.out.mkdir(parents=True, exist_ok=True)
@@ -92,6 +194,9 @@ def main(argv: list[str] | None = None) -> int:
             for family in DEFAULT_LIMITS:
                 query, _ = page_query(family, [("P01116", 0, 25)], "colon rectum")
                 (args.out / ("scoped_" + family + ".graphql")).write_text(query + "\n", encoding="utf-8")
+            from .civic import RESOLVE, EVIDENCE
+            (args.out / 'civic_scope.graphql').write_text(RESOLVE+'\n',encoding='utf-8')
+            (args.out / 'civic_evidence.graphql').write_text(EVIDENCE+'\n',encoding='utf-8')
             print(args.out.resolve())
             return 0
         if args.command == "audit":
@@ -131,7 +236,9 @@ def main(argv: list[str] | None = None) -> int:
         from .graph import save_run
         events = (json.loads(args.reviews.read_text(encoding="utf-8"))
                   if args.command == "replay" and args.reviews else None)
-        graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build", review_events=events)
+        civic = (json.loads(args.civic_snapshot.read_text(encoding="utf-8"))
+                 if args.command == "replay" and args.civic_snapshot else None)
+        graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build", review_events=events,civic_snapshot=civic)
         print(json.dumps({"data_kind": graph["data_kind"], "summary": graph["summary"],
                           "report": str((args.out / "report.html").resolve())}, indent=2))
         if graph["data_kind"] == "synthetic_demo":

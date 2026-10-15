@@ -60,10 +60,10 @@ Omitting `--view` uses accepted-only evidence. An unambiguous symbol is accepted
 
 ## Validation
 
-The full test suite passes: **126 tests**. A verified CLI example is saved in `runs/kras_guided_question_verified_20261014/`; reopen it in the running app at `http://127.0.0.1:8766/?run=crc_normalized_verified_20261014&question=kras_guided_question_verified_20261014`.
+At the guided-question checkpoint, **126 tests** passed; the subsequent CIViC increment brings the full suite to **149**. A verified CLI example is saved in `runs/kras_guided_question_verified_20261014/`; reopen it in the running app at `http://127.0.0.1:8766/?run=crc_normalized_verified_20261014&question=kras_guided_question_verified_20261014`.
 
 The saved 99-protein colorectal adenocarcinoma cohort yields **76 inspectable proteins and 1,065 eligible paths around KRAS** using both relationships. Accepted-only results are empty because that live cohort has no accepted path assertions. Default candidate output returns the first eight proteins with up to two paths each; the complete match count remains visible. These are source-annotation paths, not independent experiments or a discovery result.
 
 Tests cover exact disease scope, rejection of membership-only/context-generalized paths, acceptance of every path assertion, reverse PPI lookup, shared-path witnesses, bounded ordering, citation resolution, ambiguity, unknown coverage, snapshot/review trace changes, immutable exports, HTML escaping, API validation and saved-answer integrity. Browser QA verifies candidate exploration, compact summaries, citation-to-passport navigation and saved-question reopening. An explicitly synthetic reviewed path verifies accepted-only output; changing one assertion to provisional clears the answer and removes the path from the accepted result. No live biomedical assertion was accepted by these checks.
 
-The next product increment is the proposed variant–therapy evidence adapter and a question template that preserves those conditions, followed by measured source-overlap and evaluation work.
+The subsequent [CIViC increment](CIVIC_EVIDENCE.md) implements a separate molecular-profile/therapy response template with qualified conditions and overlap accounting. The protein-neighborhood template remains unchanged in scientific scope. Evidence-policy review, source-change comparison and the frozen measured cohort are next.

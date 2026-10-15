@@ -22,7 +22,7 @@ Open `http://127.0.0.1:8765` if a browser does not open automatically. Use `py` 
 
 Read [START_HERE.md](START_HERE.md) for the team walkthrough.
 
-The **fuller scoped Pharos profile is implemented**: paginated pathways and GO, bounded interaction neighborhoods restricted to the selected cohort, drug listings, selected tissue-expression records and publication discovery. Every family has a per-protein coverage report. See [scoped retrieval and live validation](docs/SCOPED_RETRIEVAL.md). These remain Pharos baseline data; GO, interaction, drug and expression context now forms qualified candidate assertions with source crosswalks and reciprocal deduplication; see [normalization and validation](docs/CONTEXT_NORMALIZATION.md). The [guided question workflow](docs/GUIDED_QUESTIONS.md) now finds scoped interaction/shared-pathway evidence and produces cited summaries. Variant–therapy evidence and qualified external additions are next.
+The **fuller scoped Pharos profile is implemented**: paginated pathways and GO, bounded interaction neighborhoods restricted to the selected cohort, drug listings, selected tissue-expression records and publication discovery. Every family has a per-protein coverage report. See [scoped retrieval and live validation](docs/SCOPED_RETRIEVAL.md). These remain Pharos baseline data; GO, interaction, drug and expression context now forms qualified candidate assertions with source crosswalks and reciprocal deduplication; see [normalization and validation](docs/CONTEXT_NORMALIZATION.md). The [guided question workflow](docs/GUIDED_QUESTIONS.md) now finds scoped interaction/shared-pathway evidence and produces cited summaries. A [bounded CIViC integration](docs/CIVIC_EVIDENCE.md) now adds whole molecular-profile/therapy response annotations, source/publication passports and overlap accounting.
 
 ### What was actually tested
 
@@ -30,13 +30,18 @@ The offline workflow, mocked API pagination, normalization, evidence preservatio
 
 On October 14, 2026, `doctor` successfully checked the live Pharos API (`pharos319`), and a paginated colorectal adenocarcinoma retrieval returned all 99 reported targets. Earlier packaged validation notes describe an older environment with DNS failures. The live run is saved locally under `runs/`, not distributed as an example dataset. Run `python3 app.py doctor` to check current availability. No failure silently falls back to synthetic data.
 
+The [evaluation runner and reviewer worksheets](docs/EVALUATION.md) compare frozen Pharos/enriched sources and an optional bounded question-planning model. Scientific judgments stay pending until reviewed; live model calls require local configuration.
+
 ## What the prototype does now
 
+- Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
+- Provides one structured question-planning model interface that calls the existing read-only engines, with explicit unavailable/replay/test modes.
+- Supports a scoped CIViC KRAS/Colorectal Cancer therapy-response question, preserving complete profiles, therapy sets, evidence directions and separate source/local review states. See [scope, use and validation](docs/CIVIC_EVIDENCE.md).
 - Guides a supported protein-neighborhood question through explicit scope, a compact evidence graph, cited summaries and saved/exportable results. Accepted paths require every assertion to be accepted; candidate exploration is explicit.
 
 - Finds candidate disease names through Pharos and requires an explicit choice.
 - Retrieves target records with UniProt identifiers, symbols, target-development level, family and disease-specific association details.
-- Offers a quick pathway preview or fuller scoped retrieval with per-family caps and a global row budget. This remains a **Pharos-only extract**.
+- Offers a quick pathway preview or fuller scoped retrieval with per-family caps and a global row budget. This retrieval profile remains a **Pharos-only extract**; CIViC is an explicit separate enrichment step.
 - Reports scanned, retained, capped, inconsistent and unrequested data separately. Filters interaction partners to the selected cohort and expression records to explicitly entered tissue words.
 - Provides a paginated source-context browser linked to qualified candidate assertions, with raw-response provenance, reciprocal interaction grouping and explicit tissue/assay observations. Human decisions control acceptance; publication discovery is kept separate.
 - Preserves source names, references, raw evidence and source-specific scores without combining them into a confidence value.
@@ -143,7 +148,7 @@ The JSON outputs are canonical for downstream programming. TSV cells beginning w
 
 Every new build or replay includes the benchmark audit. It does not train a model or assign positive/negative labels. Summaries such as `2 PubMed IDs` are not counted as explicit citations; an explicit PMID or reference URL is only a presence check, not verification of support. An excluded or absent association is never converted into a negative label.
 
-Version 0.4 writes graph format v3 while retaining raw snapshot format v1. The seven legacy qualifier slots preserve existing claim IDs; optional observation qualifiers qualify the new statements. See [the normalization contract](docs/CONTEXT_NORMALIZATION.md). Replaying older snapshots applies the current context rules, so derived graphs and pair counts may change; original snapshots are never rewritten. Without `--reviews`, replay creates candidate assertions. With `--reviews`, decisions must match the exact snapshot and evidence revision. The local reviewer field is a recorded name, not authenticated identity. See [the data contract](docs/DATA_CONTRACT.md).
+Version 0.6 writes graph format v3 while retaining raw snapshot format v1. The seven legacy qualifier slots preserve existing claim IDs; optional observation qualifiers qualify the new statements. See [the normalization contract](docs/CONTEXT_NORMALIZATION.md). Replaying older snapshots applies the current context rules, so derived graphs and pair counts may change; original snapshots are never rewritten. Without `--reviews`, replay creates candidate assertions. With `--reviews`, decisions must match the exact snapshot and evidence revision. The local reviewer field is a recorded name, not authenticated identity. See [the data contract](docs/DATA_CONTRACT.md).
 
 ## Scientific interpretation
 
@@ -166,11 +171,11 @@ The organizer brief requires an agent-built, contextualized graph and a fair hel
 After one live run is understood, add one change at a time:
 
 1. Complete bounded Pharos retrieval and normalize overlapping evidence. Then define the cohort and evidence policy; split unique protein-disease pairs before training.
-2. Add qualified context, such as CIViC assertions or detailed CPTAC measurements, with record- and study-level overlap checks. Pharos already includes pathways, PPIs and links to many candidate sources; a new connector is not proof of new evidence.
+2. Review the implemented CIViC qualified-evidence example, then add selected CPTAC measurements with record- and study-level overlap checks. Pharos already includes pathways, PPIs and links to many candidate sources; a new connector is not proof of new evidence.
 3. Compare the same model and split on Pharos-only and externally enriched variants. Block held-out labels, duplicates, inverse links and disease-equivalent leakage from model inputs.
 4. Add an agent planner that chooses and invokes these existing tools. Avoid giving an LLM unrestricted graph-write access.
 
-CPTAC/PDC data, ROBOKOP, GNNs, link prediction and model-generated answers are **not implemented in v0.2**. Neither is continuous source monitoring. Explicit refresh and snapshot replay provide a reproducible foundation, not a claim of automatic maintenance.
+CPTAC/PDC measurements, ROBOKOP, GNNs and link prediction remain unimplemented. The optional model plans scope; scientific answer statements continue to come from deterministic source-query tools. Neither is continuous source monitoring. Explicit refresh and snapshot replay provide a reproducible foundation, not a claim of automatic maintenance.
 
 ## Code map
 
@@ -214,3 +219,12 @@ The UI binds only to `127.0.0.1`. Do not expose it as a production web service. 
 See [docs/SOURCE_NOTES.md](docs/SOURCE_NOTES.md) for official source links and the distinction between source-supported API behavior, implementation choices and unverified live integration.
 
 The included software is offered under the MIT license. That does **not** relicense Pharos or its constituent source datasets. Review upstream terms before redistributing cached real data. Demo fixtures are authored synthetic examples, not copies of the Pharos database.
+
+## Evaluate the workbench and planner
+
+```bash
+python3 app.py evaluation-init --baseline runs/crc_pharos_01 --enriched runs/crc_civic_01 --out runs/eval_suite_01
+python3 app.py evaluation-run --suite runs/eval_suite_01 --out runs/eval_results_01
+```
+
+Open the generated `report.html` and complete its scope, answer and evidence review worksheets. Configure a model locally and use `--planner live` for a separate result against the same frozen sources. See [configuration, reviewer instructions and metric limits](docs/EVALUATION.md). The supplied 24 questions are draft development scenarios, not biomedical gold answers or a held-out test.

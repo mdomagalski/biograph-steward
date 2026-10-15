@@ -15,7 +15,8 @@ QUALIFIERS = ("disease", "variant", "therapy", "species", "tissue", "cell_line",
 # Nullable core slots retain their v2 identity representation. New slots only
 # enter identity when supplied, so old claim IDs and human decisions survive.
 CONTEXT_QUALIFIERS = ("go_aspect", "tissue_label", "assay", "observation_id",
-                      "measurement_value", "measurement_qualifier", "measurement_unit")
+                      "measurement_value", "measurement_qualifier", "measurement_unit",
+                      "evidence_direction", "variant_origin", "therapy_interaction", "evidence_type")
 TRANSITIONS = {
     "candidate": {"accepted", "provisional", "quarantined", "rejected"},
     "provisional": {"accepted", "quarantined", "rejected", "obsolete"},
@@ -83,6 +84,8 @@ def build_assertions(graph: dict, events: list[dict] | None = None) -> list[dict
             raise ValueError("Review refers to an unknown assertion.")
         if event.get("snapshot_sha256") != graph["snapshot_sha256"] or event.get("revision") != group["revision"]:
             raise ValueError("Review belongs to another snapshot or assertion revision; review the new evidence.")
+        if group["kind"] == "variant_therapy_response" and event.get("civic_snapshot_sha256") != graph.get("civic_snapshot_sha256"):
+            raise ValueError("Review belongs to a different CIViC source snapshot; review the new evidence.")
         if event.get("from_state") != group["lifecycle_state"]:
             raise ValueError("Review history has a stale lifecycle state.")
         validate_decision(group, event.get("to_state"), event.get("reviewer"), event.get("reason"))
@@ -119,11 +122,14 @@ def new_review_event(graph: dict, assertion_id: str, state: str,
     if assertion is None:
         raise ValueError("Unknown assertion.")
     validate_decision(assertion, state, reviewer, reason)
-    return {"sequence": len(graph.get("review_events", [])) + 1,
+    event = {"sequence": len(graph.get("review_events", [])) + 1,
             "assertion_id": assertion_id, "revision": assertion["revision"],
             "snapshot_sha256": graph["snapshot_sha256"],
             "from_state": assertion["lifecycle_state"], "to_state": state,
             "reviewer": reviewer.strip(), "reason": reason.strip(), "created_at": utcnow()}
+    if assertion["kind"] == "variant_therapy_response":
+        event["civic_snapshot_sha256"] = graph["civic_snapshot_sha256"]
+    return event
 
 
 def assertion_summary(assertions: list[dict]) -> dict:

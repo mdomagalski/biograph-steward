@@ -101,13 +101,16 @@ def audit_graph(graph: dict) -> dict:
     check('labels_unreviewed', 'Review association type and evidence before assigning benchmark labels. Structural checks do not establish experimental support.')
     check('comparison_population_missing', 'Add a declared comparison population. Proteins absent from this disease extract are unlabeled, not proven negatives.')
     check('split_not_defined', 'Freeze a pair-level train/validation/test split; keep duplicate, reverse and disease-equivalent links out of held-out model inputs.')
-    check('external_enrichment_missing', 'Add independently retrieved context to a copy of the baseline. Pathways returned by Pharos remain part of the Pharos baseline.')
+    if graph.get('civic'):
+        check('enrichment_independence_unresolved', 'Scoped CIViC enrichment is present. Review source overlap and underlying-study independence before claiming new evidence.')
+    else:
+        check('external_enrichment_missing', 'Add independently retrieved context to a copy of the baseline. Pathways returned by Pharos remain part of the Pharos baseline.')
     check('model_comparison_not_run', 'Evaluate the same model, candidate population, splits and training budget on both graph versions.')
 
     return {
         'audit_format': 'biograph-steward.benchmark-readiness.v2',
         'status': 'not_ready',
-        'scope': 'Single Pharos disease snapshot; no label review, comparison population or training is implemented.',
+        'scope': 'Pharos disease-label readiness audit; scoped CIViC enrichment present, with independence unresolved.' if graph.get('civic') else 'Single Pharos disease snapshot; no label review, comparison population or training is implemented.',
         'data_kind': graph['data_kind'], 'disease': graph['disease']['name'],
         'disease_id': did, 'snapshot_sha256': graph['snapshot_sha256'],
         'counts': {

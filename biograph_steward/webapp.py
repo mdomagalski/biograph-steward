@@ -18,6 +18,8 @@ def report_html(graph: dict | None = None) -> str:
     template = Path(__file__).with_name("ui.html").read_text(encoding="utf-8")
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     script = Path(__file__).with_name("guided.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("civic.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("planner.js").read_text(encoding="utf-8")
     return template.replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
 
@@ -43,6 +45,20 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
 
         def do_GET(self):
             path = urlparse(self.path).path
+            match=re.fullmatch(r"/api/evaluation/([A-Za-z0-9_-]{1,80})/(report\.html|case_reviews\.tsv|answer_reviews\.tsv|evidence_reviews\.tsv|metrics\.json)?",path)
+            if match:
+                folder=(runs_dir/match.group(1)).resolve();name=match.group(2) or 'report.html'
+                if folder.parent!=runs_dir or not (folder/'metrics.json').is_file() or not (folder/name).is_file() or (folder/name).is_symlink():
+                    self.json_reply({'error':'Evaluation artifact not found'},404);return
+                content_type='text/html; charset=utf-8' if name=='report.html' else 'application/json' if name.endswith('.json') else 'text/tab-separated-values; charset=utf-8'
+                self.reply((folder/name).read_bytes(),content_type=content_type,filename=name if name.endswith('.tsv') else None)
+                return
+            if path=='/api/planner':
+                from .planning import ModelPlanner,PlannerUnavailable
+                try:
+                    planner=ModelPlanner();self.json_reply({'configured':True,'model':planner.model,'endpoint':planner.endpoint,'api':planner.api})
+                except (ValueError,TypeError) as exc:self.json_reply({'configured':False,'reason':str(exc)})
+                return
             if path == "/":
                 self.reply(report_html().encode(), content_type="text/html; charset=utf-8")
                 return
@@ -109,6 +125,25 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
+                if path=='/api/plan':
+                    from .planning import ModelPlanner,execute_plan
+                    from .reviews import read_run
+                    from .client import write_json
+                    from .questions import save_answer
+                    if set(body)!={'run_id','question'}:raise ValueError('Use only run_id and question for one bounded plan.')
+                    source_id=body.get('run_id','')
+                    if not isinstance(source_id,str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}',source_id):raise ValueError('Invalid source run ID.')
+                    source=(runs_dir/source_id).resolve()
+                    if source.parent!=runs_dir or not source.is_dir():raise ValueError('Source run not found.')
+                    _,_,graph=read_run(source);planner=ModelPlanner();trace=planner.plan(body.get('question'),graph)
+                    qid='plan_'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'_'+uuid4().hex[:8]
+                    folder=runs_dir/qid;folder.mkdir();write_json(folder/'planner_trace.json',trace)
+                    if trace['status']!='validated':
+                        self.json_reply({'plan_id':qid,'status':'invalid_plan','reason':trace.get('error'),'trace':trace,'answer':None});return
+                    result=execute_plan(trace['plan'],graph,source_run=source_id)
+                    write_json(folder/'execution.json',{k:v for k,v in result.items() if k!='answer'})
+                    if result['answer']:save_answer(result['answer'],folder/'answer')
+                    self.json_reply({'plan_id':qid,'trace':trace,**result});return
                 if path == "/api/search":
                     client = PharosClient(endpoint, cache_dir=cache_dir, timeout=timeout)
                     self.json_reply(client.search(body.get("term", "")))
@@ -131,6 +166,39 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     question_id = "question_" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "_" + uuid4().hex[:8]
                     save_answer(answer, runs_dir / question_id)
                     self.json_reply({"question_id": question_id, "answer": answer})
+                    return
+                if path in {"/api/civic", "/api/therapy-question"}:
+                    from .reviews import read_run
+                    from .civic import CivicClient
+                    from .graph import save_run
+                    from .civic_questions import answer_civic_question
+                    from .questions import save_answer
+                    allowed = {"run_id","max_items"} if path == "/api/civic" else {"run_id","profile","therapy","view","max_results","max_paths"}
+                    if set(body) - allowed:
+                        raise ValueError("Unsupported CIViC scope fields. Use the guided KRAS/DOID:9256 workflow.")
+                    source_id=body.get("run_id", "")
+                    if not isinstance(source_id,str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,80}",source_id):
+                        raise ValueError("Invalid source run ID.")
+                    source=(runs_dir/source_id).resolve()
+                    if source.parent != runs_dir or not source.is_dir():
+                        raise ValueError("Source run not found.")
+                    snapshot, events, graph = read_run(source)
+                    if path == "/api/civic":
+                        if graph.get("civic"):
+                            raise ValueError("This run already includes CIViC. Reopen its saved evidence; source refresh reconciliation is not implemented.")
+                        if graph["data_kind"] == "synthetic_demo":
+                            raise ValueError("Live CIViC cannot be mixed with a synthetic Pharos source.")
+                        if not any(t["id"] == "UniProtKB:P01116" for t in graph["targets"]):
+                            raise ValueError("This cohort does not contain the supported KRAS protein UniProtKB:P01116.")
+                        civic=CivicClient(timeout=timeout).retrieve(body.get("max_items",100))
+                        run_id="civic_"+datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")+"_"+uuid4().hex[:8]
+                        result=save_run(snapshot,runs_dir/run_id,run_mode="civic_enrichment",review_events=events,civic_snapshot=civic)
+                        self.json_reply({"run_id":run_id,"graph":result})
+                    else:
+                        answer=answer_civic_question(graph,source_run=source_id,**{k:v for k,v in body.items() if k != "run_id"})
+                        qid="therapy_"+datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")+"_"+uuid4().hex[:8]
+                        save_answer(answer,runs_dir/qid)
+                        self.json_reply({"question_id":qid,"answer":answer})
                     return
                 if path == "/api/review":
                     from .reviews import review_run

@@ -87,7 +87,7 @@ def verify_snapshot(snapshot: dict) -> None:
         raise ValueError("Snapshot is missing its target list.")
 
 
-def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict:
+def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_snapshot: dict | None = None) -> dict:
     verify_snapshot(snapshot)
     demo = snapshot["data_kind"] == "synthetic_demo"
     disease = snapshot["disease"]
@@ -230,6 +230,10 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
     context = context_records(snapshot, quarantine)
     attach_response_provenance(context, snapshot)
     normalization = normalize_context(context, nodes, quarantine, add_edge, snapshot)
+    civic_report = None
+    if civic_snapshot is not None:
+        from .civic import normalize_civic
+        civic_report = normalize_civic(civic_snapshot, snapshot, nodes, edges, quarantine, add_edge)
 
     for pid, row in target_rows.items():
         associated = [e for e in edges.values() if e["subject"] == pid and e["object"] == did]
@@ -274,6 +278,9 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
     }
     graph["context_records"] = context
     graph["normalization"] = normalization
+    if civic_report is not None:
+        graph["civic"] = civic_report
+        graph["civic_snapshot_sha256"] = civic_snapshot["content_sha256"]
     graph["context_metadata"] = [{"uniprot": t.get("uniprot"), "symbol": t.get("sym"),
                                   **t["pharos_context"].get("metadata", {})}
                                  for t in snapshot["targets"] if isinstance(t, dict) and isinstance(t.get("pharos_context"), dict)]
@@ -313,13 +320,20 @@ def _write_tsv(path: Path, rows: list[dict], columns: list[str]) -> None:
             writer.writerow(flat)
 
 
-def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review_events: list[dict] | None = None) -> dict:
-    graph = build_graph(snapshot, review_events)
+def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review_events: list[dict] | None = None,
+             civic_snapshot: dict | None = None) -> dict:
+    graph = build_graph(snapshot, review_events, civic_snapshot)
     directory = Path(directory)
     if directory.exists() and any(directory.iterdir()):
         raise ValueError("Output directory is not empty. Choose a new directory to preserve previous runs.")
     directory.mkdir(parents=True, exist_ok=True)
     write_json(directory / "snapshot.json", snapshot)
+    if civic_snapshot is not None:
+        write_json(directory / "civic_snapshot.json", civic_snapshot)
+        write_json(directory / "civic_report.json", graph["civic"])
+        write_json(directory / "civic_overlap.json", graph["civic"]["overlap"])
+        for i, record in enumerate(civic_snapshot["requests"]):
+            write_json(directory / "civic_raw_responses" / f"{i:03d}.json", record)
     write_json(directory / "graph.json", graph)
     write_json(directory / "assertions.json", graph["assertions"])
     write_json(directory / "context_records.json", graph["context_records"])
@@ -341,7 +355,7 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
                 "validation_status", "evidence_edge_ids", "source_record_count", "publications", "normalization_notes", "revision", "snapshot_sha256"])
     from .benchmark import write_audit
     write_audit(graph['benchmark_readiness'], directory)
-    write_json(directory / "source_licenses.json", snapshot.get("source_licenses", []))
+    write_json(directory / "source_licenses.json", snapshot.get("source_licenses", []) + ([civic_snapshot["source_license"]] if civic_snapshot else []))
     for i, record in enumerate(snapshot.get("requests", [])):
         write_json(directory / "raw_responses" / f"{i:03d}.json", record)
     _write_tsv(directory / "nodes.tsv", graph["nodes"],
@@ -363,6 +377,11 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
         {"step": "normalize_source_context", "result": graph["normalization"]},
         {"step": "publish_inspection_graph", "result": "No predictive model or LLM was run."},
     ]
+    if civic_snapshot is not None:
+        trace.insert(-1,{"step":"normalize_scoped_civic_source","result":{
+            "snapshot_sha256":civic_snapshot["content_sha256"],"policy":civic_snapshot["policy"],
+            "retrieved_items":graph["civic"]["retrieved_items"],"normalized_items":graph["civic"]["normalized_items"],
+            "excluded_items":len(graph["civic"]["excluded_items"]),"local_acceptance_inferred":False}})
     write_json(directory / "pipeline_trace.json", trace)
     manifest = {"starter_version": __version__, "graph_format": graph['graph_format'],
                 "assertion_summary": graph['assertion_summary'], "normalization_policy": graph["normalization"]["policy"], "review_event_count": len(graph['review_events']),
@@ -376,6 +395,10 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
                 "biological_validation_performed": False, "link_prediction_performed": False,
                 "llm_used": False, "warnings": snapshot.get("warnings", []),
                 "license_note": "Software and retrieved data have separate terms. Review source_licenses.json and upstream licenses before redistributing."}
+    if civic_snapshot is not None:
+        manifest["civic"] = {"snapshot_sha256":civic_snapshot["content_sha256"],"created_at":civic_snapshot["created_at"],
+                             "source_version":civic_snapshot.get("source_version"),"policy":civic_snapshot["policy"],
+                             "coverage":graph["civic"]["coverage"],"mapping":graph["civic"]["mapping"]}
     write_json(directory / "run_manifest.json", manifest)
     from .webapp import report_html
     (directory / "report.html").write_text(report_html(graph), encoding="utf-8")

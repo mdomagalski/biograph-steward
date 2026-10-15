@@ -17,12 +17,15 @@ INSPECTABLE = {"candidate", "provisional", "accepted"}
 
 
 def graph_basis(graph):
-    return digest({"snapshot": graph["snapshot_sha256"], "graph_format": graph["graph_format"],
+    basis = {"snapshot": graph["snapshot_sha256"], "graph_format": graph["graph_format"],
                    "normalization": graph.get("normalization", {}).get("policy"),
                    "nodes": graph["nodes"],
                    "assertions": [{k: a.get(k) for k in ("id", "revision", "lifecycle_state", "qualifiers")}
                                   for a in graph.get("assertions", [])],
-                   "review_events": graph.get("review_events", [])})
+                   "review_events": graph.get("review_events", [])}
+    if graph.get("civic_snapshot_sha256"):
+        basis["civic_snapshot"] = graph["civic_snapshot_sha256"]
+    return digest(basis)
 
 
 def resolve_protein(graph, selector):
@@ -255,6 +258,9 @@ def answer_text(answer):
     lines += ['', 'Source snapshot time: ' + answer['snapshot_created_at'],
               'Database version: ' + str(answer.get('database_version') or 'not supplied'),
               'Snapshot: ' + answer['snapshot_sha256'], 'Graph/review basis: ' + answer['graph_basis_sha256']]
+    if answer.get('civic_snapshot_sha256'):
+        lines += ['CIViC snapshot: ' + answer['civic_snapshot_sha256'], 'CIViC retrieval: ' + answer['civic_created_at'],
+                  'Discordant annotations: ' + json.dumps(answer['discordant_annotations'],ensure_ascii=True)]
     return '\n'.join(lines) + '\n'
 
 
@@ -269,7 +275,7 @@ def answer_html(answer):
             '<title>BioGraph Steward — guided evidence result</title><style>body{max-width:1050px;margin:40px auto;padding:20px;font:16px/1.6 system-ui;color:#172b3a}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:16px}li,details{margin:14px 0}a{color:#086b85}</style>'
             '<h1>' + esc(answer['question']) + '</h1><p>' + esc(answer['data_kind']) + '</p><p>' + esc(answer['overview']) + '</p><ul>' + ''.join(statements) + '</ul><h2>Scope and limitations</h2><ul>'
             + ''.join('<li>'+esc(s)+'</li>' for s in answer['limitations']) + '</ul><h2>Evidence passports</h2>' + citations
-            + '<h2>Reproducible question scope</h2><pre>' + esc(json.dumps({k: answer[k] for k in ['plan','snapshot_created_at','database_version','snapshot_sha256','graph_basis_sha256','answer_sha256']},indent=2)) + '</pre></html>')
+            + '<h2>Reproducible question scope</h2><pre>' + esc(json.dumps({k: answer[k] for k in ['plan','snapshot_created_at','database_version','snapshot_sha256','graph_basis_sha256','answer_sha256','civic_snapshot_sha256','civic_created_at','discordant_annotations','overlap_summary'] if k in answer},indent=2)) + '</pre></html>')
 
 
 def save_answer(answer, directory):
@@ -282,6 +288,10 @@ def save_answer(answer, directory):
     (directory/'summary.txt').write_text(answer_text(answer),encoding='utf-8')
     (directory/'report.html').write_text(answer_html(answer),encoding='utf-8')
     from .graph import _write_tsv
-    rows = [{"protein_id": r['protein']['id'], "protein_symbol": r['protein'].get('sym'), **p}
-            for r in answer['results'] for p in r['paths']]
-    _write_tsv(directory/'paths.tsv',rows,['protein_id','protein_symbol','id','kind','review_status','node_ids','assertion_ids','citation_ids'])
+    if answer['template'] == 'civic_variant_therapy.v1':
+        rows=[{"profile_id":r['profile']['id'],"profile_name":r['profile']['name'],**p} for r in answer['results'] for p in r['paths']]
+        columns=['profile_id','profile_name','id','kind','review_status','node_ids','assertion_ids','citation_ids']
+    else:
+        rows = [{"protein_id": r['protein']['id'], "protein_symbol": r['protein'].get('sym'), **p} for r in answer['results'] for p in r['paths']]
+        columns=['protein_id','protein_symbol','id','kind','review_status','node_ids','assertion_ids','citation_ids']
+    _write_tsv(directory/'paths.tsv',rows,columns)
