@@ -73,3 +73,7 @@ Benchmark audit v2 counts only associations to the selected disease in its pair 
 Do not train on all exported columns. Disease-association text, references, source scores, labels and inverse/equivalent edges may expose held-out answers. A future benchmark must deliberately select permissible features after pair-level splitting and leakage review.
 
 The display order is alphabetical by symbol/identifier, not scientific priority. The source API order governs the bounded retrieval, not a model score. Scores on an evidence card are original source values, not output from this prototype.
+
+## Scoped retrieval extension
+
+Snapshot v1 optionally includes `retrieval.context` and `targets[].pharos_context`. Older snapshots remain readable. The scoped profile replaces preview pathways with paginated source rows; GO, PPI, drug, expression and publication records are exported as `context_records` and remain separate from reviewed graph assertions. Exact duplicate context records share an entry with multiple snapshot locators; reciprocal PPIs remain source records, not independent experiments. Source response envelopes are copied before enriching target rows and their hashes are verified on replay. See [the scoped contract](SCOPED_RETRIEVAL.md) for filters, limits, completion statuses and intentionally unrequested collections.

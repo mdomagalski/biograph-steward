@@ -22,7 +22,7 @@ Open `http://127.0.0.1:8765` if a browser does not open automatically. Use `py` 
 
 Read [START_HERE.md](START_HERE.md) for the team walkthrough.
 
-The next implementation milestone is broader Pharos retrieval and evidence normalization, followed by cohort/evidence review and qualified external additions. The [live coverage audit](docs/PHAROS_COVERAGE_AUDIT.md) found that the 99-protein extract contains only 806 of 9,540 available pathway rows. It also documents existing Reactome, LinkedOmicsKB/CPTAC and Harmonizome overlap. See [the challenge build plan](docs/BUILD_PLAN.md) for the revised sequence and use of the organizer's linked guides.
+The **fuller scoped Pharos profile is implemented**: paginated pathways and GO, bounded interaction neighborhoods restricted to the selected cohort, drug listings, selected tissue-expression records and publication discovery. Every family has a per-protein coverage report. See [scoped retrieval and live validation](docs/SCOPED_RETRIEVAL.md). These remain Pharos baseline data; source-aware assertion normalization and qualified external evidence are the next steps.
 
 ### What was actually tested
 
@@ -34,7 +34,9 @@ On October 14, 2026, `doctor` successfully checked the live Pharos API (`pharos3
 
 - Finds candidate disease names through Pharos and requires an explicit choice.
 - Retrieves target records with UniProt identifiers, symbols, target-development level, family and disease-specific association details.
-- Optionally retrieves a capped set of pathway annotations through Pharos itself. This remains a **Pharos-only extract**, not an externally enriched graph.
+- Offers a quick pathway preview or fuller scoped retrieval with per-family caps and a global row budget. This remains a **Pharos-only extract**.
+- Reports scanned, retained, capped, inconsistent and unrequested data separately. Filters interaction partners to the selected cohort and expression records to explicitly entered tissue words.
+- Provides a paginated context browser with raw records, source metadata and coverage. New context families are not automatically promoted to reviewed assertions or supporting citations.
 - Preserves source names, references, raw evidence and source-specific scores without combining them into a confidence value.
 - Maps explicit MONDO identifiers, UniProt identifiers and recognizable Reactome pathway identifiers. Other pathways retain clearly local Pharos IDs; no name-based ontology mapping is invented.
 - Writes a small graph using Biolink category/predicate labels, plus provenance-bearing evidence records. This is a minimal alignment, not a claim of full KGX/Biolink validation.
@@ -64,6 +66,10 @@ python3 app.py search colorectal
 # Build using an EXACT NAME returned by the search
 python3 app.py build --disease "EXACT DISEASE NAME FROM SEARCH" \
   --max-targets 25 --page-size 25 --pathways 5 --out runs/pharos_crc_01
+
+# Fuller scoped pull of the audited 99-protein cohort (expression scope is explicit)
+python3 app.py build --disease "colorectal adenocarcinoma" --max-targets 100 \
+  --profile scoped --tissue-term "colon rectum" --out runs/crc_scoped_01
 
 # Recreate output from a previously saved snapshot, without internet
 python3 app.py replay --snapshot runs/pharos_crc_01/snapshot.json --out runs/replayed_01
@@ -107,6 +113,9 @@ A SHA-256 digest detects accidental snapshot edits; it is not a digital signatur
 |---|---|
 | `report.html` | Standalone, interactive inspection view. No external JavaScript/CDN required. |
 | `graph.json` | Full node/evidence-edge representation, summary, review reasons and caveats. |
+| `retrieval_coverage.json`, `retrieval_coverage.tsv` | Scoped-profile counts, status, limits, exclusions and response-page pointers per protein/family. |
+| `context_records.json`, `context_records.tsv` | Inspectable source context, exact-duplicate grouping and original snapshot locators; separate from assertions. |
+| `context_metadata.json` | Per-protein source inventory and affiliate links; links do not imply external data retrieval. |
 | `assertions.json`, `assertions.tsv` | Qualified claims, contributing evidence IDs, lifecycle states and evidence revisions. |
 | `review_events.json` | Ordered human decisions bound to the exact snapshot and assertion revision. |
 | `question_scope.json` | Supported disease-inspection question, relation families, configured limits and unsupported requirements. |

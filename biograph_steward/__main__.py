@@ -27,7 +27,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--disease", required=True)
     p.add_argument("--max-targets", type=int, default=25)
     p.add_argument("--page-size", type=int, default=25)
-    p.add_argument("--pathways", type=int, default=5)
+    p.add_argument("--pathways", type=int, default=5, help="Preview profile only: pathways per target.")
+    p.add_argument("--profile", choices=["preview", "scoped"], default="preview")
+    p.add_argument("--tissue-term", default="", help="Scoped expression search words, e.g. 'colon rectum'. Empty skips expression.")
+    from .retrieval import DEFAULT_LIMITS
+    for family, limit in DEFAULT_LIMITS.items():
+        p.add_argument("--" + family + "-limit", type=int, default=limit, help="Scoped profile per-target cap (0 skips).")
     p.add_argument("--skip-schema-check", action="store_true")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("demo", help="Build the explicitly SYNTHETIC offline demo.")
@@ -63,6 +68,12 @@ def main(argv: list[str] | None = None) -> int:
             for name, query in [("search_diseases", SEARCH), ("disease_info", DISEASE),
                                 ("disease_targets", TARGETS), ("database_version", VERSION), ("source_licenses", LICENSES)]:
                 (args.out / (name + ".graphql")).write_text(query + "\n", encoding="utf-8")
+            from .retrieval import metadata_query, page_query, DEFAULT_LIMITS
+            query, _ = metadata_query(["P01116"])
+            (args.out / "scoped_metadata.graphql").write_text(query + "\n", encoding="utf-8")
+            for family in DEFAULT_LIMITS:
+                query, _ = page_query(family, [("P01116", 0, 25)], "colon rectum")
+                (args.out / ("scoped_" + family + ".graphql")).write_text(query + "\n", encoding="utf-8")
             print(args.out.resolve())
             return 0
         if args.command == "audit":
@@ -90,7 +101,10 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"{d.get('mondoID') or '(no MONDO ID)'}\t{d['name']}")
                 return 0
             snapshot = client.build_snapshot(args.disease, args.max_targets, args.page_size,
-                                             args.pathways, not args.skip_schema_check)
+                                             args.pathways, not args.skip_schema_check, profile=args.profile,
+                                             context_limits={family: getattr(args, family + "_limit") for family in DEFAULT_LIMITS},
+                                             tissue_term=args.tissue_term,
+                                             progress=lambda message: print(message, file=sys.stderr, flush=True))
         elif args.command == "demo":
             from .demo import demo_snapshot
             snapshot = demo_snapshot()

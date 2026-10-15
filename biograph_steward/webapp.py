@@ -123,7 +123,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                                           refresh=bool(body.get("refresh", False)))
                     snapshot = client.build_snapshot(
                         disease=body.get("disease", ""), max_targets=int(body.get("max_targets", 25)),
-                        pathway_top=int(body.get("pathway_top", 5)), check_schema=bool(body.get("check_schema", True)))
+                        pathway_top=int(body.get("pathway_top", 5)), check_schema=bool(body.get("check_schema", True)),
+                        profile=body.get("profile", "preview"), tissue_term=body.get("tissue_term", ""))
                 else:
                     raise ValueError("Choose 'demo' or 'live' explicitly.")
                 run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "_" + uuid4().hex[:8]

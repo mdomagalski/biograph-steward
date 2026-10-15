@@ -39,11 +39,13 @@ A prebuilt version is in `examples/synthetic_demo/report.html`; open it without 
 
 Select **Live Pharos API**. Search for `colorectal`. Choose the exact disease returned by Pharos; do not assume colorectal cancer, colorectal carcinoma and a subtype are interchangeable.
 
-Leave the first run at **25 targets** and **5 pathways per target**. Click **Build Pharos inspection graph**.
+For the scoped CRC example, choose **colorectal adenocarcinoma**, keep **Fuller scoped context** and **100 targets**, and enter `colon rectum` under **Tissue words**. Click **Build Pharos inspection graph**. The build may take several minutes. Inspect **Retrieval coverage** and filter **Inspect retrieved context** by family and protein. Leave tissue words empty to skip expression for other diseases until an appropriate tissue scope is chosen.
+
+Choose **Quick pathway preview**, **25 targets** and **5 pathways per target** for a smaller connectivity check.
 
 A successful live run is explicitly labeled `live_pharos`. It saves responses and their retrieval times. If the API fails, the program stops with the error; it never substitutes demonstration data.
 
-**Live verification update, October 14, 2026:** the Pharos connectivity/schema check passed and a paginated retrieval returned all 99 reported colorectal adenocarcinoma proteins. The saved local report is `runs/crc_baseline_audited_20261014/report.html`. Availability can change; the commands below check your current connection.
+**Live verification update, October 14, 2026:** the Pharos connectivity/schema check passed and a paginated retrieval returned all 99 reported colorectal adenocarcinoma proteins. The fuller verified local report is `runs/crc_scoped_verified_20261014/report.html`; see [its coverage and limits](docs/SCOPED_RETRIEVAL.md). Availability can change; the commands below check your current connection.
 
 For diagnosis:
 
@@ -60,4 +62,4 @@ Open the first successful live report and ask together:
 - Which source records explain one selected protein-disease connection?
 - Which records need scientific review before becoming benchmark labels?
 
-The app now includes a collapsed **Evaluation — benchmark readiness** section and exports a pair-level review worksheet. The [live coverage audit](docs/PHAROS_COVERAGE_AUDIT.md) found substantial Pharos data missing from our extract and overlap with proposed external sources. The next deliverable is expanded Pharos retrieval with evidence normalization, followed by a frozen cohort, reviewed evidence and qualified external additions. The benchmark evaluates this evidence workbench. See [the build plan](docs/BUILD_PLAN.md) for the revised sequence and source decisions.
+The app now includes a collapsed **Evaluation — benchmark readiness** section and exports a pair-level review worksheet. The [live coverage audit](docs/PHAROS_COVERAGE_AUDIT.md) found substantial Pharos data missing from our extract and overlap with proposed external sources. Scoped Pharos retrieval is now implemented. The next deliverable is source-aware normalization of the added context into qualified assertions, followed by a frozen cohort, reviewed evidence and qualified external additions. The benchmark evaluates this evidence workbench. See [the build plan](docs/BUILD_PLAN.md) for the revised sequence and source decisions.

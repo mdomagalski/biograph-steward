@@ -78,6 +78,9 @@ def verify_snapshot(snapshot: dict) -> None:
     body = {k: v for k, v in snapshot.items() if k != "content_sha256"}
     if not expected or expected != digest(body):
         raise ValueError("Snapshot integrity check failed. Do not silently edit raw input; rebuild it.")
+    for record in snapshot.get("requests", []):
+        if record.get("response_sha256") != digest(record.get("response")):
+            raise ValueError("Source response integrity check failed; rebuild from the untouched API cache or endpoint.")
     if not isinstance(snapshot.get("disease"), dict) or not snapshot["disease"].get("name"):
         raise ValueError("Snapshot is missing its selected disease.")
     if not isinstance(snapshot.get("targets"), list):
@@ -259,6 +262,15 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
         "pathways_are_disease_specific": False,
         "unsupported_requirements": ["variant-specific response", "therapy resistance", "causal conclusions"],
     }
+    from .context import context_records
+    graph["context_records"] = context_records(snapshot)
+    graph["context_metadata"] = [{"uniprot": t.get("uniprot"), "symbol": t.get("sym"),
+                                  **t["pharos_context"].get("metadata", {})}
+                                 for t in snapshot["targets"] if isinstance(t, dict) and "pharos_context" in t]
+    if snapshot.get("retrieval", {}).get("context"):
+        graph["question_scope"]["question"] = (f"Which proteins does Pharos associate with {disease['name']}, "
+            "and what pathway, functional, interaction, drug, tissue and literature context is available for this cohort?")
+        graph["question_scope"]["context_families"] = list(snapshot["retrieval"]["context"]["summary"])
     from .assertions import build_assertions, assertion_summary
     graph["review_events"] = deepcopy(review_events) if review_events is not None else []
     graph["assertions"] = build_assertions(graph, graph["review_events"])
@@ -291,6 +303,17 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
     write_json(directory / "snapshot.json", snapshot)
     write_json(directory / "graph.json", graph)
     write_json(directory / "assertions.json", graph["assertions"])
+    write_json(directory / "context_records.json", graph["context_records"])
+    write_json(directory / "context_metadata.json", graph["context_metadata"])
+    _write_tsv(directory / "context_records.tsv", graph["context_records"],
+               ["id", "subject", "symbol", "family", "label", "source", "record", "record_locators",
+                "snapshot_sha256", "review_status", "interpretation"])
+    coverage = snapshot.get("retrieval", {}).get("context")
+    if coverage is not None:
+        write_json(directory / "retrieval_coverage.json", coverage)
+        _write_tsv(directory / "retrieval_coverage.tsv", coverage["targets"],
+                   ["uniprot", "symbol", "family", "available", "available_before_scope", "retrieved", "retained",
+                    "excluded_by_scope", "limit", "status", "issues", "pages"])
     write_json(directory / "review_events.json", graph["review_events"])
     write_json(directory / "question_scope.json", graph["question_scope"])
     _write_tsv(directory / "assertions.tsv", graph["assertions"],

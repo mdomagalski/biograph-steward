@@ -5,6 +5,7 @@ are not silently accepted. Live failures NEVER fall back to demonstration data.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 import hashlib
 import json
 import os
@@ -215,11 +216,19 @@ class PharosClient:
         return {"status": "required_fields_present", "schema_source": SCHEMA_SOURCE}
 
     def build_snapshot(self, disease: str, max_targets: int = 25, page_size: int = 25,
-                       pathway_top: int = 5, check_schema: bool = True) -> dict:
+                       pathway_top: int = 5, check_schema: bool = True, *,
+                       profile: str = "preview", context_limits: dict | None = None,
+                       tissue_term: str = "", progress: Callable | None = None) -> dict:
         if not isinstance(disease, str) or not disease.strip() or len(disease) > 200:
             raise ValueError("Select an exact Pharos disease name (1-200 characters).")
         if not 1 <= max_targets <= 500 or not 1 <= page_size <= 100 or not 0 <= pathway_top <= 25:
             raise ValueError("Use 1-500 targets, 1-100 records/page, and 0-25 pathways/target.")
+        if profile not in {"preview", "scoped"}:
+            raise ValueError("Retrieval profile must be preview or scoped.")
+        from .retrieval import settings, retrieve_context
+        limits, tissue_term = settings(context_limits, tissue_term)
+        if profile == "scoped":
+            pathway_top = 0  # Scoped retrieval replaces preview pathways with paginated rows.
         start = len(self.records)
         schema_check = self.check_schema() if check_schema else {"status": "explicitly_skipped"}
         version = self.execute(VERSION).get("dbVersion")
@@ -260,7 +269,7 @@ class PharosClient:
                 raise PharosError("Pharos repeated a target page; stopped to avoid silently duplicating results.")
             seen_pages.add(fingerprint)
             pages.append({"skip": skip, "requested": top, "returned": len(rows)})
-            targets.extend(rows)
+            targets.extend(deepcopy(rows))
             skip += len(rows)
             if len(rows) < top or (total is not None and skip >= total):
                 exhausted = True
@@ -275,6 +284,18 @@ class PharosClient:
             warnings.append("Target cap reached: this is a bounded extract, not the complete Pharos disease graph.")
         if pathway_top:
             warnings.append(f"Pathway context is capped at {pathway_top} records per target in API order; it is not exhaustive.")
+        coverage = None
+        if profile == "scoped":
+            coverage = retrieve_context(self, targets, limits, tissue_term, progress)
+            for row in coverage["targets"]:
+                for page in row["pages"]:
+                    page["request_index"] -= start
+            warnings.append("Scoped context is general protein annotation, not disease-specific evidence. "
+                            "Publications are discovery records, not supporting citations for association claims.")
+            if any(r["status"] in {"capped", "budget_limited", "inconsistent"} for r in coverage["targets"]):
+                warnings.append("Some context families are capped, budget-limited or inconsistent; consult retrieval_coverage.json.")
+            warnings.append("GO, interaction, drug, expression and literature records are inspectable context; "
+                            "they are not automatically promoted to reviewed graph assertions.")
         source_licenses: list[dict] = []
         try:
             source_licenses = self.execute(LICENSES).get("dataSourceCounts") or []
@@ -285,9 +306,12 @@ class PharosClient:
             "created_at": utcnow(), "endpoint": self.endpoint, "db_version": version,
             "disease": info, "targets": targets, "requests": self.records[start:],
             "source_licenses": source_licenses, "schema_check": schema_check,
-            "query_settings": {"max_targets": max_targets, "page_size": page_size, "pathway_top": pathway_top},
+            "query_settings": {"max_targets": max_targets, "page_size": page_size, "pathway_top": pathway_top,
+                               "profile": profile, **({"context_limits": limits, "tissue_term": tissue_term} if coverage else {})},
             "retrieval": {"total_targets_reported": total, "records_retrieved": len(targets),
                           "truncated": truncated, "pages": pages}, "warnings": warnings,
         }
+        if coverage is not None:
+            snapshot["retrieval"]["context"] = coverage
         snapshot["content_sha256"] = digest(snapshot)
         return snapshot

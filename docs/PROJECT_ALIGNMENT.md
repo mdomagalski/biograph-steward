@@ -10,7 +10,7 @@ The application is a useful foundation consistent with the project's direction. 
 
 ## Implemented since the initial assessment
 
-The first alignment increment now adds qualified assertions, evidence revisions, corrected disease-context mapping, human lifecycle transitions, immutable review runs, CLI/browser review, saved-run reopening and an accepted-assertions default view. Benchmark readiness is a collapsed evaluation section. See [validation results](ALIGNMENT_VALIDATION.md) and the [exact commit instructions](COMMIT_GUIDE.md). Broader Pharos retrieval remains the next connector task.
+The first alignment increment now adds qualified assertions, evidence revisions, corrected disease-context mapping, human lifecycle transitions, immutable review runs, CLI/browser review, saved-run reopening and an accepted-assertions default view. Benchmark readiness is a collapsed evaluation section. See [validation results](ALIGNMENT_VALIDATION.md) and the [exact commit instructions](COMMIT_GUIDE.md). The next connector increment is now implemented: [fuller scoped Pharos retrieval](SCOPED_RETRIEVAL.md), with explicit coverage and a context inspector. New context families still require source-aware assertion normalization and biological review.
 
 ## What is worth committing now
 
@@ -72,7 +72,7 @@ These contracts should be established before the large pull; they do not require
 
 1. Preserve the tested checkpoint in Git.
 2. Completed: minimum scope/assertion/lifecycle contracts and an explicit snapshot migration policy. Extend them with source-specific qualifiers as new adapters arrive.
-3. Complete relevant Pharos coverage: pathways with reported-count reconciliation, bounded PPI neighborhoods, GO, selected expression/drug data and claim-specific citation discovery. Save counts, filters and unresolved mappings. Reuse the saved 9,540-row audit for offline development rather than redownloading unchanged data unnecessarily.
+3. Implemented: scoped pathways, GO, cohort PPIs, selected expression, drug listings and target-linked publication discovery, with count reconciliation and raw provenance. Next normalize these context families and recover claim-specific citations; target-linked publications do not establish support for disease claims.
 4. Deliver one working question workflow with a CIViC qualified-evidence adapter and persistent review decisions. In the experimental-data work, select a versioned CPTAC COAD study and distinguish newly represented measurements from existing LinkedOmicsKB links.
 5. Add manifest comparison and an inspectable change report, then evaluate pruning, usability and the required same-model baseline/enrichment comparison.
 
