@@ -104,14 +104,16 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
     seen_rows: set[str] = set()
 
     def add_edge(subject: str, predicate: str, obj: str, record: dict, locator: str,
-                 reasons: list[str], kind: str, source: Any, reference: Any = None):
+                 reasons: list[str], kind: str, source: Any, reference: Any = None, **attributes):
         identity = {"subject": subject, "predicate": predicate, "object": obj,
                     "record": record, "kind": kind}
+        if "qualifiers" in attributes:
+            identity["qualifiers"] = attributes["qualifiers"]
         eid = "edge:" + digest(identity)[:20]
         if eid in edges:
             edges[eid]["record_locators"].append(locator)
             edges[eid]["duplicate_count"] += 1
-            return
+            return eid
         edges[eid] = {
             "id": eid, "subject": subject, "predicate": predicate, "object": obj,
             "status": "needs_review" if reasons else "passed_structural_checks",
@@ -126,6 +128,8 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
             "biologically_validated": False,
             "qualifiers": {"disease": obj if kind in {"disease_association", "disease_filtered_membership"} else None},
         }
+        edges[eid].update(attributes)
+        return eid
 
     for i, row in enumerate(snapshot["targets"]):
         pointer = f"snapshot.json#/targets/{i}"
@@ -221,6 +225,12 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
         target_rows[pid] = {"id": pid, "symbol": row.get("sym"), "name": row["name"],
                             "tdl": nodes[pid]["tdl"], "family": row.get("fam")}
 
+    from .context import context_records, attach_response_provenance
+    from .normalization import normalize_context
+    context = context_records(snapshot, quarantine)
+    attach_response_provenance(context, snapshot)
+    normalization = normalize_context(context, nodes, quarantine, add_edge, snapshot)
+
     for pid, row in target_rows.items():
         associated = [e for e in edges.values() if e["subject"] == pid and e["object"] == did]
         row["association_record_count"] = len(associated)
@@ -242,7 +252,7 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
         "duplicate_target_records": duplicate_rows,
         "tdl_counts": dict(sorted(Counter(r["tdl"] for r in target_rows.values()).items())),
     }
-    graph = {"graph_format": "biograph-steward.evidence-graph.v2", "data_kind": snapshot["data_kind"],
+    graph = {"graph_format": "biograph-steward.evidence-graph.v3", "data_kind": snapshot["data_kind"],
             "disease": disease, "disease_node_id": did, "summary": summary,
             "nodes": sorted(nodes.values(), key=lambda n: n["id"]),
             "edges": sorted(edges.values(), key=lambda e: e["id"]),
@@ -262,11 +272,11 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
         "pathways_are_disease_specific": False,
         "unsupported_requirements": ["variant-specific response", "therapy resistance", "causal conclusions"],
     }
-    from .context import context_records
-    graph["context_records"] = context_records(snapshot)
+    graph["context_records"] = context
+    graph["normalization"] = normalization
     graph["context_metadata"] = [{"uniprot": t.get("uniprot"), "symbol": t.get("sym"),
                                   **t["pharos_context"].get("metadata", {})}
-                                 for t in snapshot["targets"] if isinstance(t, dict) and "pharos_context" in t]
+                                 for t in snapshot["targets"] if isinstance(t, dict) and isinstance(t.get("pharos_context"), dict)]
     if snapshot.get("retrieval", {}).get("context"):
         graph["question_scope"]["question"] = (f"Which proteins does Pharos associate with {disease['name']}, "
             "and what pathway, functional, interaction, drug, tissue and literature context is available for this cohort?")
@@ -275,6 +285,13 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None) -> dict
     graph["review_events"] = deepcopy(review_events) if review_events is not None else []
     graph["assertions"] = build_assertions(graph, graph["review_events"])
     graph["assertion_summary"] = assertion_summary(graph["assertions"])
+    edge_lookup = {e["id"]: e for e in graph["edges"]}
+    for record in context:
+        record["assertion_ids"] = sorted({edge_lookup[eid]["assertion_id"] for eid in record["normalized_evidence_edge_ids"]})
+    for family, counts in normalization["families"].items():
+        counts["assertions"] = len({aid for r in context if r["family"] == family for aid in r["assertion_ids"]})
+    graph["question_scope"]["relation_families"] = sorted({a["kind"] for a in graph["assertions"]})
+    graph["summary"]["assertions_by_kind"] = dict(sorted(Counter(a["kind"] for a in graph["assertions"]).items()))
     from .benchmark import audit_graph
     graph['benchmark_readiness'] = audit_graph(graph)
     return graph
@@ -305,9 +322,10 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
     write_json(directory / "assertions.json", graph["assertions"])
     write_json(directory / "context_records.json", graph["context_records"])
     write_json(directory / "context_metadata.json", graph["context_metadata"])
+    write_json(directory / "normalization_report.json", graph["normalization"])
     _write_tsv(directory / "context_records.tsv", graph["context_records"],
                ["id", "subject", "symbol", "family", "label", "source", "record", "record_locators",
-                "snapshot_sha256", "review_status", "interpretation"])
+                "snapshot_sha256", "review_status", "interpretation", "normalization_status", "normalized_evidence_edge_ids", "assertion_ids"])
     coverage = snapshot.get("retrieval", {}).get("context")
     if coverage is not None:
         write_json(directory / "retrieval_coverage.json", coverage)
@@ -318,7 +336,7 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
     write_json(directory / "question_scope.json", graph["question_scope"])
     _write_tsv(directory / "assertions.tsv", graph["assertions"],
                ["id", "subject", "predicate", "object", "kind", "qualifiers", "lifecycle_state",
-                "validation_status", "evidence_edge_ids", "publications", "revision", "snapshot_sha256"])
+                "validation_status", "evidence_edge_ids", "source_record_count", "publications", "normalization_notes", "revision", "snapshot_sha256"])
     from .benchmark import write_audit
     write_audit(graph['benchmark_readiness'], directory)
     write_json(directory / "source_licenses.json", snapshot.get("source_licenses", []))
@@ -329,7 +347,7 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
     _write_tsv(directory / "edges.tsv", graph["edges"],
                ["id", "assertion_id", "subject", "predicate", "object", "qualifiers", "status", "review_reasons", "aggregator",
                 "primary_source_raw", "reference_raw", "publications", "source_scores_raw",
-                "record_locators", "snapshot_sha256", "data_kind"])
+                "record_locators", "source_record_count", "normalization_notes", "observation", "annotation_context", "context_record_ids", "retrieval_provenance", "snapshot_sha256", "data_kind"])
     _write_tsv(directory / "targets.tsv", graph["targets"],
                ["id", "symbol", "name", "tdl", "family", "association_record_count",
                 "reported_sources", "review_record_count", "pathway_count"])
@@ -340,11 +358,12 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
         {"step": "select_disease", "result": snapshot["disease"]["name"]},
         {"step": "retrieve", "result": snapshot["retrieval"], "data_kind": snapshot["data_kind"]},
         {"step": "normalize_and_check", "result": graph["summary"]},
+        {"step": "normalize_source_context", "result": graph["normalization"]},
         {"step": "publish_inspection_graph", "result": "No predictive model or LLM was run."},
     ]
     write_json(directory / "pipeline_trace.json", trace)
     manifest = {"starter_version": __version__, "graph_format": graph['graph_format'],
-                "assertion_summary": graph['assertion_summary'], "review_event_count": len(graph['review_events']),
+                "assertion_summary": graph['assertion_summary'], "normalization_policy": graph["normalization"]["policy"], "review_event_count": len(graph['review_events']),
                 "created_at": utcnow(), "run_mode": run_mode,
                 "data_kind": snapshot["data_kind"], "endpoint": snapshot.get("endpoint"),
                 "database_version": snapshot.get("db_version"), "schema_check": snapshot.get("schema_check"),

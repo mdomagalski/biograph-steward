@@ -12,6 +12,10 @@ from datetime import datetime
 from .client import digest, utcnow
 
 QUALIFIERS = ("disease", "variant", "therapy", "species", "tissue", "cell_line", "response")
+# Nullable core slots retain their v2 identity representation. New slots only
+# enter identity when supplied, so old claim IDs and human decisions survive.
+CONTEXT_QUALIFIERS = ("go_aspect", "tissue_label", "assay", "observation_id",
+                      "measurement_value", "measurement_qualifier", "measurement_unit")
 TRANSITIONS = {
     "candidate": {"accepted", "provisional", "quarantined", "rejected"},
     "provisional": {"accepted", "quarantined", "rejected", "obsolete"},
@@ -26,12 +30,13 @@ def assertion_identity(subject: str, predicate: str, obj: str,
                        kind: str, qualifiers: dict) -> dict:
     if not all(isinstance(v, str) and v.strip() for v in (subject, predicate, obj, kind)):
         raise ValueError("Assertions require subject, predicate, object and kind.")
-    if set(qualifiers) - set(QUALIFIERS):
+    if set(qualifiers) - set(QUALIFIERS + CONTEXT_QUALIFIERS):
         raise ValueError("Unsupported assertion qualifier.")
     if any(v is not None and (not isinstance(v, str) or not v.strip()) for v in qualifiers.values()):
         raise ValueError("Qualifier values must be nonempty identifiers/text or null.")
     return {"subject": subject, "predicate": predicate, "object": obj,
-            "kind": kind, "qualifiers": {k: qualifiers.get(k) for k in QUALIFIERS}}
+            "kind": kind, "qualifiers": {**{k: qualifiers.get(k) for k in QUALIFIERS},
+                **{k: qualifiers[k] for k in CONTEXT_QUALIFIERS if qualifiers.get(k) is not None}}}
 
 
 def build_assertions(graph: dict, events: list[dict] | None = None) -> list[dict]:
@@ -45,17 +50,23 @@ def build_assertions(graph: dict, events: list[dict] | None = None) -> list[dict
             "structurally_usable_evidence_ids": [], "review_reasons": [],
             "publications": [], "source_names": [], "lifecycle_state": "candidate",
             "review_history": [], "data_kind": graph["data_kind"],
+            "normalization_notes": [], "source_record_count": 0,
+            "symmetric": edge.get("symmetric", False),
             "snapshot_sha256": graph["snapshot_sha256"], "biologically_validated": False})
         group["evidence_edge_ids"].append(edge["id"])
         if edge["status"] == "passed_structural_checks":
             group["structurally_usable_evidence_ids"].append(edge["id"])
         group["review_reasons"].extend(edge["review_reasons"])
         group["publications"].extend(edge["publications"])
-        if edge.get("primary_source_raw"):
+        group["normalization_notes"].extend(edge.get("normalization_notes", []))
+        group["source_record_count"] += edge.get("source_record_count", len(edge["record_locators"]))
+        if edge.get("evidence_sources"):
+            group["source_names"].extend(edge["evidence_sources"])
+        elif edge.get("primary_source_raw"):
             group["source_names"].append(str(edge["primary_source_raw"]))
     for group in groups.values():
         for field in ("evidence_edge_ids", "structurally_usable_evidence_ids", "review_reasons",
-                      "publications", "source_names"):
+                      "publications", "source_names", "normalization_notes"):
             group[field] = sorted(set(group[field]))
         group["revision"] = digest({"identity": group["id"], "evidence": group["evidence_edge_ids"]})
         group["validation_status"] = ("has_structurally_usable_evidence"

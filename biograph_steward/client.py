@@ -294,8 +294,8 @@ class PharosClient:
                             "Publications are discovery records, not supporting citations for association claims.")
             if any(r["status"] in {"capped", "budget_limited", "inconsistent"} for r in coverage["targets"]):
                 warnings.append("Some context families are capped, budget-limited or inconsistent; consult retrieval_coverage.json.")
-            warnings.append("GO, interaction, drug, expression and literature records are inspectable context; "
-                            "they are not automatically promoted to reviewed graph assertions.")
+            warnings.append("GO, interaction, drug and expression annotations become candidate assertions; "
+                            "human acceptance is separate. Literature remains discovery-only.")
         source_licenses: list[dict] = []
         try:
             source_licenses = self.execute(LICENSES).get("dataSourceCounts") or []

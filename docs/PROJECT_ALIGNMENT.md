@@ -4,13 +4,13 @@ Assessment date: October 14, 2026; updated after the first alignment implementat
 
 ## Decision
 
-Commit the tested inspection/audit checkpoint before starting the next feature. Do not wait for a larger dataset to preserve this work. Then establish the assertion and question-scope contracts, expand Pharos retrieval within that scope, and implement the evidence workflow. A full download of Pharos is not required by the proposal, which explicitly promises focused, question-scoped graphs.
+The inspection/review and scoped retrieval checkpoints are committed. The current increment adds qualified Pharos annotation assertions and is ready for validation and commit; the focused question workflow is next. A full download of Pharos is not required by the proposal, which explicitly promises focused, question-scoped graphs.
 
 The application is a useful foundation consistent with the project's direction. It is not yet an implementation of the promised evidence-first agent. More records alone will not close the principal gaps.
 
 ## Implemented since the initial assessment
 
-The first alignment increment now adds qualified assertions, evidence revisions, corrected disease-context mapping, human lifecycle transitions, immutable review runs, CLI/browser review, saved-run reopening and an accepted-assertions default view. Benchmark readiness is a collapsed evaluation section. See [validation results](ALIGNMENT_VALIDATION.md) and the [exact commit instructions](COMMIT_GUIDE.md). The next connector increment is now implemented: [fuller scoped Pharos retrieval](SCOPED_RETRIEVAL.md), with explicit coverage and a context inspector. New context families still require source-aware assertion normalization and biological review.
+The first alignment increment now adds qualified assertions, evidence revisions, corrected disease-context mapping, human lifecycle transitions, immutable review runs, CLI/browser review, saved-run reopening and an accepted-assertions default view. Benchmark readiness is a collapsed evaluation section. See [validation results](ALIGNMENT_VALIDATION.md) and the [exact commit instructions](COMMIT_GUIDE.md). The next connector increment is now implemented: [fuller scoped Pharos retrieval](SCOPED_RETRIEVAL.md), with explicit coverage and a context inspector. GO, PPI, drug and expression context now has [source-aware annotation normalization](CONTEXT_NORMALIZATION.md), with biological review and further mappings still pending.
 
 ## What is worth committing now
 
@@ -72,7 +72,7 @@ These contracts should be established before the large pull; they do not require
 
 1. Preserve the tested checkpoint in Git.
 2. Completed: minimum scope/assertion/lifecycle contracts and an explicit snapshot migration policy. Extend them with source-specific qualifiers as new adapters arrive.
-3. Implemented: scoped pathways, GO, cohort PPIs, selected expression, drug listings and target-linked publication discovery, with count reconciliation and raw provenance. Next normalize these context families and recover claim-specific citations; target-linked publications do not establish support for disease claims.
+3. Implemented: scoped pathways, GO, cohort PPIs, selected expression, drug listings and target-linked publication discovery, with count reconciliation and raw provenance. These context families now produce qualified candidate assertions; next deliver the focused question workflow and recover claim-specific citations; target-linked publications do not establish support for disease claims.
 4. Deliver one working question workflow with a CIViC qualified-evidence adapter and persistent review decisions. In the experimental-data work, select a versioned CPTAC COAD study and distinguish newly represented measurements from existing LinkedOmicsKB links.
 5. Add manifest comparison and an inspectable change report, then evaluate pruning, usability and the required same-model baseline/enrichment comparison.
 

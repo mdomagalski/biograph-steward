@@ -22,7 +22,7 @@ Open `http://127.0.0.1:8765` if a browser does not open automatically. Use `py` 
 
 Read [START_HERE.md](START_HERE.md) for the team walkthrough.
 
-The **fuller scoped Pharos profile is implemented**: paginated pathways and GO, bounded interaction neighborhoods restricted to the selected cohort, drug listings, selected tissue-expression records and publication discovery. Every family has a per-protein coverage report. See [scoped retrieval and live validation](docs/SCOPED_RETRIEVAL.md). These remain Pharos baseline data; source-aware assertion normalization and qualified external evidence are the next steps.
+The **fuller scoped Pharos profile is implemented**: paginated pathways and GO, bounded interaction neighborhoods restricted to the selected cohort, drug listings, selected tissue-expression records and publication discovery. Every family has a per-protein coverage report. See [scoped retrieval and live validation](docs/SCOPED_RETRIEVAL.md). These remain Pharos baseline data; GO, interaction, drug and expression context now forms qualified candidate assertions with source crosswalks and reciprocal deduplication; see [normalization and validation](docs/CONTEXT_NORMALIZATION.md). The focused question workflow and qualified external evidence are next.
 
 ### What was actually tested
 
@@ -36,7 +36,7 @@ On October 14, 2026, `doctor` successfully checked the live Pharos API (`pharos3
 - Retrieves target records with UniProt identifiers, symbols, target-development level, family and disease-specific association details.
 - Offers a quick pathway preview or fuller scoped retrieval with per-family caps and a global row budget. This remains a **Pharos-only extract**.
 - Reports scanned, retained, capped, inconsistent and unrequested data separately. Filters interaction partners to the selected cohort and expression records to explicitly entered tissue words.
-- Provides a paginated context browser with raw records, source metadata and coverage. New context families are not automatically promoted to reviewed assertions or supporting citations.
+- Provides a paginated source-context browser linked to qualified candidate assertions, with raw-response provenance, reciprocal interaction grouping and explicit tissue/assay observations. Human decisions control acceptance; publication discovery is kept separate.
 - Preserves source names, references, raw evidence and source-specific scores without combining them into a confidence value.
 - Maps explicit MONDO identifiers, UniProt identifiers and recognizable Reactome pathway identifiers. Other pathways retain clearly local Pharos IDs; no name-based ontology mapping is invented.
 - Writes a small graph using Biolink category/predicate labels, plus provenance-bearing evidence records. This is a minimal alignment, not a claim of full KGX/Biolink validation.
@@ -115,6 +115,7 @@ A SHA-256 digest detects accidental snapshot edits; it is not a digital signatur
 | `graph.json` | Full node/evidence-edge representation, summary, review reasons and caveats. |
 | `retrieval_coverage.json`, `retrieval_coverage.tsv` | Scoped-profile counts, status, limits, exclusions and response-page pointers per protein/family. |
 | `context_records.json`, `context_records.tsv` | Inspectable source context, exact-duplicate grouping and original snapshot locators; separate from assertions. |
+| `normalization_report.json` | Per-family source rows, evidence groups, assertions, reciprocal views, statuses and normalization policy. |
 | `context_metadata.json` | Per-protein source inventory and affiliate links; links do not imply external data retrieval. |
 | `assertions.json`, `assertions.tsv` | Qualified claims, contributing evidence IDs, lifecycle states and evidence revisions. |
 | `review_events.json` | Ordered human decisions bound to the exact snapshot and assertion revision. |
@@ -136,7 +137,7 @@ The JSON outputs are canonical for downstream programming. TSV cells beginning w
 
 Every new build or replay includes the benchmark audit. It does not train a model or assign positive/negative labels. Summaries such as `2 PubMed IDs` are not counted as explicit citations; an explicit PMID or reference URL is only a presence check, not verification of support. An excluded or absent association is never converted into a negative label.
 
-Version 0.2 writes graph format v2 while retaining raw snapshot format v1. Replaying older snapshots applies the current context rules, so derived graphs and pair counts may change; original snapshots are never rewritten. Without `--reviews`, replay creates candidate assertions. With `--reviews`, decisions must match the exact snapshot and evidence revision. The local reviewer field is a recorded name, not authenticated identity. See [the data contract](docs/DATA_CONTRACT.md).
+Version 0.3 writes graph format v3 while retaining raw snapshot format v1. The seven legacy qualifier slots preserve existing claim IDs; optional observation qualifiers qualify the new statements. See [the normalization contract](docs/CONTEXT_NORMALIZATION.md). Replaying older snapshots applies the current context rules, so derived graphs and pair counts may change; original snapshots are never rewritten. Without `--reviews`, replay creates candidate assertions. With `--reviews`, decisions must match the exact snapshot and evidence revision. The local reviewer field is a recorded name, not authenticated identity. See [the data contract](docs/DATA_CONTRACT.md).
 
 ## Scientific interpretation
 

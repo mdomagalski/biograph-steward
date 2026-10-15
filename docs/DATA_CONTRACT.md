@@ -1,6 +1,6 @@
-# Evidence workbench data contract — v0.2
+# Evidence workbench data contract — v0.3
 
-Raw snapshots remain `biograph-steward.pharos.v1`. Derived graphs now use `biograph-steward.evidence-graph.v2`. Old snapshots are verified and transformed with current rules without modification. Old derived graphs are not silently rewritten. Replaying the same snapshot with a newer transformer can intentionally change disease-context mapping and audit counts.
+Raw snapshots remain `biograph-steward.pharos.v1`. Derived graphs now use `biograph-steward.evidence-graph.v3`. Old snapshots are verified and transformed with current rules without modification. Old derived graphs are not silently rewritten. Replaying the same snapshot with a newer transformer can intentionally change disease-context mapping and audit counts.
 
 ## A node
 
@@ -76,4 +76,8 @@ The display order is alphabetical by symbol/identifier, not scientific priority.
 
 ## Scoped retrieval extension
 
-Snapshot v1 optionally includes `retrieval.context` and `targets[].pharos_context`. Older snapshots remain readable. The scoped profile replaces preview pathways with paginated source rows; GO, PPI, drug, expression and publication records are exported as `context_records` and remain separate from reviewed graph assertions. Exact duplicate context records share an entry with multiple snapshot locators; reciprocal PPIs remain source records, not independent experiments. Source response envelopes are copied before enriching target rows and their hashes are verified on replay. See [the scoped contract](SCOPED_RETRIEVAL.md) for filters, limits, completion statuses and intentionally unrequested collections.
+Snapshot v1 optionally includes `retrieval.context` and `targets[].pharos_context`. Older snapshots remain readable. The scoped profile replaces preview pathways with paginated source rows; GO, PPI, drug, expression and publication records are exported as `context_records` and link to normalized candidate assertions for GO, PPI, drug listings and expression observations. Publications remain discovery-only. Exact duplicate context records share an entry with multiple snapshot locators; reciprocal PPIs remain source records, not independent experiments. Source response envelopes are copied before enriching target rows and their hashes are verified on replay. See [the scoped contract](SCOPED_RETRIEVAL.md) for filters, limits, completion statuses and intentionally unrequested collections.
+
+## Qualified source context
+
+See [context normalization v0.3](CONTEXT_NORMALIZATION.md) for the local predicate semantics, optional qualifier slots, reciprocal grouping, measurement context, provenance pointers, review boundaries and migration behavior. Existing disease/pathway claim IDs and evidence revisions remain stable. `source_record_count` counts raw source views, while `evidence_edge_ids` identifies evidence groups; `independent_evidence_count` remains null. No expression units, GO relation/polarity, species, treatment response or disease-specific support are inferred.
