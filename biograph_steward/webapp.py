@@ -54,9 +54,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 self.reply((folder/name).read_bytes(),content_type=content_type,filename=name if name.endswith('.tsv') else None)
                 return
             if path=='/api/planner':
-                from .planning import ModelPlanner,PlannerUnavailable
+                from .planning import configured_planner,PlannerUnavailable
                 try:
-                    planner=ModelPlanner();self.json_reply({'configured':True,'model':planner.model,'endpoint':planner.endpoint,'api':planner.api})
+                    planner=configured_planner();self.json_reply({'configured':True,'model':planner.model,'endpoint':planner.endpoint,'api':planner.api})
                 except (ValueError,TypeError) as exc:self.json_reply({'configured':False,'reason':str(exc)})
                 return
             if path == "/":
@@ -126,7 +126,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
                 if path=='/api/plan':
-                    from .planning import ModelPlanner,execute_plan
+                    from .planning import configured_planner,execute_plan
                     from .reviews import read_run
                     from .client import write_json
                     from .questions import save_answer
@@ -135,7 +135,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if not isinstance(source_id,str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}',source_id):raise ValueError('Invalid source run ID.')
                     source=(runs_dir/source_id).resolve()
                     if source.parent!=runs_dir or not source.is_dir():raise ValueError('Source run not found.')
-                    _,_,graph=read_run(source);planner=ModelPlanner();trace=planner.plan(body.get('question'),graph)
+                    _,_,graph=read_run(source);planner=configured_planner();trace=planner.plan(body.get('question'),graph)
                     qid='plan_'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'_'+uuid4().hex[:8]
                     folder=runs_dir/qid;folder.mkdir();write_json(folder/'planner_trace.json',trace)
                     if trace['status']!='validated':

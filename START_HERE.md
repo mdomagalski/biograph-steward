@@ -6,7 +6,7 @@ A local browser application for this first question:
 
 > Which proteins does Pharos associate with a selected disease, what target-development levels does it report, and which pathways annotate those proteins?
 
-This is the first inspection step for **BioGraph Steward / CRC Target Scout**. It is not yet a target-prediction model or an autonomous AI agent.
+This is the first inspection step for **BioGraph Steward / CRC Target Scout**. Guided tools run without a model. An optional bounded question-planning agent can select a supported read-only query; the application still produces the cited answer. The controlled target-prediction experiment remains pending.
 
 ## Open it
 

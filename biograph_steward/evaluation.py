@@ -93,7 +93,8 @@ def freeze_suite(baseline, enriched, output, *, cases=None, reviewed=None, max_r
               'engine_files':engine_fingerprint(),'sources':sources,'cases':cases,
               'budgets':{'max_results':max_results,'max_paths':max_paths},
               'reference_status':'draft_scope_plans_not_biomedical_gold',
-              'protocol':{'model_calls_per_case':1,'local_query_calls_per_case':1,'network_retrieval':False,
+              'protocol':{'model_calls_per_case':1,'model_call_unit':'One API request or one CLI planning turn; CLI internal HTTP attempts are not exposed.',
+                          'local_query_calls_per_case':1,'network_retrieval':False,
                           'views':'Use each reference plan’s explicit view; planner must preserve it.',
                           'review_pool':'Union of returned source units plus scoped raw CIViC items, including exclusions. Pharos pool is display-bounded.',
                           'metrics':'Descriptive reviewed-pool metrics; no predictive-model or clinical-performance claim.'}}
@@ -158,7 +159,7 @@ def build_pool(cases,graphs,observations,enriched_civic):
     return rows
 
 
-def run_evaluation(suite_dir,output,*,planner=None,planner_note=None):
+def run_evaluation(suite_dir,output,*,planner=None,planner_note=None,progress=None):
     suite,graphs=load_suite(suite_dir)
     output=Path(output).resolve();suite_dir=Path(suite_dir).resolve()
     if output==suite_dir or suite_dir in output.parents or output in suite_dir.parents:raise ValueError("Save results outside the frozen suite directory.")
@@ -169,7 +170,7 @@ def run_evaluation(suite_dir,output,*,planner=None,planner_note=None):
     # every row. The mapping remains available; this is not a blinded study.
     ordered=sorted(arms,key=lambda name:digest([suite['suite_sha256'],name]))
     variants={name:'V'+str(i+1) for i,name in enumerate(ordered)}
-    for case in suite['cases']:
+    for case_index,case in enumerate(suite['cases'],1):
         for arm in arms:
             started=time.perf_counter();graph=graphs['enriched' if arm=='planner' else arm]
             plan=deepcopy(case['reference_plan']);trace=None
@@ -181,11 +182,12 @@ def run_evaluation(suite_dir,output,*,planner=None,planner_note=None):
                     try:
                         trace=planner.plan(case['question'],graph);plan=trace.get('plan')
                         if trace.get('status')!='validated' or plan is None:
-                            result={'status':'invalid_plan','reason':trace.get('error','Invalid planner output'),'answer':None,'tool_calls':0}
+                            result={'status':'planner_error' if trace.get('status')=='planner_error' else 'invalid_plan',
+                                    'reason':trace.get('error','Invalid planner output'),'answer':None,'tool_calls':0}
                         else:result=execute_plan(plan,graph,source_run=arm,**suite['budgets'])
                     except (ValueError,TypeError) as exc:
                         trace={'planner_kind':getattr(planner,'kind','unknown'),'status':'planner_error',
-                               'model_calls':1 if getattr(planner,'kind','') in {'live_model','injected_test_model'} else 0,
+                               'model_calls':1 if getattr(planner,'kind','') in {'live_model','live_codex_cli','injected_test_model'} else 0,
                                'usage':None,'error':str(exc)}
                         plan=None;result={'status':'planner_error','reason':str(exc),'answer':None,'tool_calls':0}
             else:result=execute_plan(plan,graph,source_run=arm,**suite['budgets'])
@@ -197,6 +199,7 @@ def run_evaluation(suite_dir,output,*,planner=None,planner_note=None):
             obs['draft_plan_agreement']=(semantic_plan(plan)==semantic_plan(case['reference_plan']) if plan is not None
                                          else False if arm=='planner' and planner is not None else None)
             obs['output_sha256']=digest(obs);observations.append(obs)
+        if progress:progress(f"Completed case {case_index}/{len(suite['cases'])}: {case['id']} (planner: {observations[-1]['status']}).")
     civic=read_civic(suite_dir/'sources'/'enriched')
     pool=build_pool(suite['cases'],graphs,observations,civic)
     result={'evaluation_format':RESULT_FORMAT,'created_at':utcnow(),'suite_sha256':suite['suite_sha256'],

@@ -121,6 +121,16 @@ class PlannerUnavailable(ValueError):
     pass
 
 
+def configured_planner():
+    """Explicit provider selection; never silently reuse another provider/auth path."""
+    provider=os.environ.get('BIOGRAPH_PLANNER_PROVIDER','api')
+    if provider=='api':return ModelPlanner()
+    if provider=='codex':
+        from .codex_planner import CodexPlanner
+        return CodexPlanner()
+    raise PlannerUnavailable('BIOGRAPH_PLANNER_PROVIDER must be api or codex. No model was called.')
+
+
 class ModelPlanner:
     """One Responses or Chat Completions request; no agent framework required."""
     def __init__(self,model=None,endpoint=None,api=None,transport=None):

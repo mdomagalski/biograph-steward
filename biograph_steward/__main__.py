@@ -82,7 +82,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--out",type=Path,required=True)
     p = sub.add_parser("evaluation-run", help="Compare fixed-source deterministic tools and an optional single model planner.")
     p.add_argument("--suite",type=Path,required=True)
-    p.add_argument("--planner",choices=['none','live','replay'],default='none')
+    p.add_argument("--planner",choices=['none','live','codex','replay'],default='none')
     p.add_argument("--replay",type=Path)
     p.add_argument("--out",type=Path,required=True)
     p = sub.add_parser("evaluation-score", help="Score reviewer worksheets into a new result directory.")
@@ -116,15 +116,20 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == 'evaluation-run':
             from .evaluation import run_evaluation
-            from .planning import ModelPlanner,RecordedPlanner,PlannerUnavailable
+            from .planning import configured_planner,RecordedPlanner,PlannerUnavailable
             planner=None;note=None
-            if args.planner=='live':
-                try:planner=ModelPlanner()
+            if args.planner in {'live','codex'}:
+                try:
+                    if args.planner=='codex':
+                        from .codex_planner import CodexPlanner
+                        planner=CodexPlanner()
+                    else:planner=configured_planner()
                 except PlannerUnavailable as exc:note=str(exc)
             elif args.planner=='replay':
                 if not args.replay:raise ValueError('Replay mode requires --replay; it is not live agent evidence.')
                 planner=RecordedPlanner(json.loads(args.replay.read_text()))
-            result,metrics=run_evaluation(args.suite,args.out,planner=planner,planner_note=note)
+            result,metrics=run_evaluation(args.suite,args.out,planner=planner,planner_note=note,
+                                         progress=lambda message:print(message,file=sys.stderr,flush=True))
             print(json.dumps({'status':metrics['status'],'cases':metrics['cases'],'planner_kind':result['planner_kind'],
                               'scientific_improvement_established':False,'report':str((args.out/'report.html').resolve())},indent=2))
             return 0
@@ -135,13 +140,13 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == 'plan-question':
             from .reviews import read_run
-            from .planning import ModelPlanner,execute_plan
+            from .planning import configured_planner,execute_plan
             from .evaluation import _new_directory
             from .client import write_json
             from .questions import save_answer
             _,_,graph=read_run(args.run)
-            planner=ModelPlanner();trace=planner.plan(args.question,graph)
             output=_new_directory(args.out)
+            planner=configured_planner();trace=planner.plan(args.question,graph)
             write_json(output/'planner_trace.json',trace)
             if trace['status']!='validated':raise ValueError('Model plan failed validation; trace saved. No query was executed.')
             result=execute_plan(trace['plan'],graph,source_run=args.run.name)

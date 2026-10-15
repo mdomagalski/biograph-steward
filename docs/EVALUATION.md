@@ -82,7 +82,7 @@ The tool contract currently cannot express extra filters such as monotherapy-onl
 
 ### Configure a live model locally
 
-No model service was configured when this increment was built. No live LLM performance is claimed. The implementation supports the OpenAI Responses API and a Chat Completions-compatible endpoint, without adding Python dependencies. It uses [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs?api-mode=responses), rejects incomplete/refused/malformed responses and makes no automatic model fallback or repair retries.
+The implementation supports the OpenAI Responses API, a Chat Completions-compatible endpoint, and an explicit signed-in Codex CLI option, without adding Python dependencies. The API adapter uses [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs?api-mode=responses), rejects incomplete/refused/malformed responses and makes no automatic model fallback or repair retries.
 
 For OpenAI, set `OPENAI_API_KEY` locally and `BIOGRAPH_PLANNER_MODEL` to a model available to your account that supports structured output. Do not paste keys into chat or commit them. The app does not automatically load `.env`. No default model is guessed.
 
@@ -98,13 +98,30 @@ python3 app.py plan-question --run runs/crc_civic_final_20261015 \
 
 For a local compatible server, set `BIOGRAPH_PLANNER_ENDPOINT` to the full endpoint URL, `BIOGRAPH_PLANNER_API=chat_completions` (or `responses`), and `BIOGRAPH_PLANNER_MODEL`. Use `BIOGRAPH_PLANNER_API_KEY` only if that server requires one. The OpenAI key is used only for `api.openai.com`; it is not sent to a custom endpoint. HTTPS is required outside loopback. Embedded URL credentials and query/fragment secrets are rejected; TLS verification is never disabled.
 
+### Optional signed-in Codex CLI
+
+If Codex CLI is already installed and authenticated, `--planner codex` uses that existing local session. Set `BIOGRAPH_CODEX_MODEL` explicitly to an available model; `BIOGRAPH_CODEX_BIN` optionally selects the executable. No authentication file is read by this application, no key is copied, and no API-to-CLI fallback occurs. Follow the official [non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode) and [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference) for CLI setup and supported flags.
+
+```bash
+BIOGRAPH_CODEX_MODEL='<available-model>' python3 app.py evaluation-run \
+  --suite runs/evaluation_suite_01 --planner codex --out runs/evaluation_codex_01
+
+# Explicitly enable this provider for the browser or plan-question command:
+BIOGRAPH_PLANNER_PROVIDER=codex BIOGRAPH_CODEX_MODEL='<available-model>' \
+  python3 app.py serve --port 8766 --no-browser
+```
+
+Each question starts an ephemeral, read-only CLI session in an empty temporary directory, with user configuration ignored, shell/apps/hooks/subagents/memories/remote plugins disabled, and web search disabled. Only the question, source entity catalogue, tool contract and JSON schema are supplied. A final plan is accepted only after one completed planning turn and an event stream containing no tool items. Unknown events, tool attempts, incomplete output and 90-second timeouts fail closed without a local query. Managed CLI requirements still apply. Private reasoning and raw CLI stderr are not saved.
+
+Traces record `live_codex_cli`, the requested model (not a claimed independently verified served-model identity), CLI version, prompt/schema hashes, event type labels and returned token usage. `model_calls=1` means **one requested CLI planning turn**; CLI transport retries are not exposed, so HTTP-attempt counts and dollar cost remain unknown. The app makes no repair turn or provider fallback. Injected CLI tests remain `injected_test_model`.
+
 Restart the app in that configured environment to enable **Plan a research question with one model agent**. `/api/planner` reports configuration readiness without disclosing keys; it does not verify model availability/account access. `/api/plan` saves the proposed plan, validation and local-tool trace plus any cited result. A configured provider may still reject a request or model name.
 
 An explicit `--planner replay --replay recorded.json` mode supports offline transport tests/reproduction. Recorded keys bind the exact question/catalogue hash. Its report says `recorded_replay`, counts zero live model calls and is never presented as a live agent evaluation. Mock-model tests similarly say `injected_test_model`. With no configured model, `--planner live` records the model arm as not run while completing the deterministic comparison.
 
 ## Validation and next decision
 
-The automated suite passes **176 tests** covering fixed source bytes/code, question groups, withheld reference data, single-call limits, malformed plans, exact IDs, source gaps, human-review gates, source/worksheet integrity, metrics and local HTTP transport. Mock/replay model responses verify behavior; they do not demonstrate real model planning quality.
+The automated suite covers fixed source bytes/code, question groups, withheld reference data, bounded planning, malformed plans, exact IDs, source gaps, human-review gates, source/worksheet integrity, metrics and local HTTP transport. CLI tests additionally check the isolated prompt/environment, tool-event rejection, timeout behavior and absence of credentials/private reasoning in traces. Mock/replay responses verify behavior; they do not demonstrate real model planning quality.
 
 After the pilot review and a configured live-model run, inspect paired answer quality, unsupported statements, lost relevant evidence and effort. Keep the planner only if it provides useful question interpretation without worsening the evidence contract. Freeze a separate held-out question set before tuning for a test result. The measured candidate population, experimental relationship labels, leakage audit and same-model baseline/enrichment prediction experiment remain separate pending work.
 
@@ -113,3 +130,15 @@ After the pilot review and a configured live-model run, inspect paired answer qu
 The verified suite is `runs/evaluation_suite_verified_20261015/` and its first result is `runs/evaluation_pilot_verified_20261015/`. Open `http://127.0.0.1:8766/api/evaluation/evaluation_pilot_verified_20261015/` while the local server is running. The report provides individual TSV downloads; the existing run download route exports the full result ZIP.
 
 The Pharos arm returned answers for 8/24 questions, had 8 scoped-source gaps and abstained on 8 unsupported scenarios. The enriched deterministic arm returned answers for 14/24, had two no-evidence outputs and abstained on the same eight unsupported scenarios. The reviewer pool contains 259 question/source rows covering 97 unique source units. These are **observed coverage counts**, not adjudicated correctness or independent experiments. The planner arm is `not_run` for all 24 cases because no model was configured. Scientific precision, review-pool recall and approved-plan agreement are null pending review.
+
+### Live CLI follow-up — v0.6.1
+
+The follow-up suite is `runs/evaluation_suite_codex_20261015/` (SHA-256 `5dd3fa7e282546b31854efa0efd94508bb433cb12d043bb9a8d1a76d638230cb`), with results in `runs/evaluation_live_codex_20261015/`. It preserves the initial pilot's exact question specifications and source file bytes while recording the new implementation. The earlier suite/result remains unchanged.
+
+The requested model was `gpt-6-astra`, through existing CLI authentication, with `codex-cli 0.162.0-alpha.17.2`. All 24 single-turn plans validated and matched the **draft** reference plans: 14 answers, two no-evidence outputs and eight abstentions. No tool events were observed in the model sessions. The planner then invoked 16 bounded application queries. It returned the same source units and summary statements as the enriched deterministic workflow for every case. Deterministic outputs also match the preceding pilot. This supports question-to-scope interpretation on these development examples; **it establishes no scientific improvement over the graph or guided workflow**.
+
+CLI-reported usage totals 334,589 input tokens and 1,993 output tokens, including CLI overhead; pricing and internal HTTP-attempt counts are unknown. Per-question CLI time was about 6–10 seconds. These overheads matter when deciding whether natural-language planning is worth using instead of guided controls. The initial connectivity probe and separate browser smoke test are outside the 24-case evaluation.
+
+Open `http://127.0.0.1:8766/api/evaluation/evaluation_live_codex_20261015/` for the full result. The smaller packet is `runs/three_case_review_20261015/`, served at `http://127.0.0.1:8766/api/evaluation/three_case_review_20261015/`. It retains the original full result's IDs/hashes and contains 3 scope rows, 9 workflow-output rows and 20 question/source rows covering 10 unique CIViC items. Partial sheets can be scored against the full result. All judgment/reviewer/time fields remain blank. [AI-prepared source-check notes](PILOT_REVIEW.md) identify treatment-context and study-design issues for adjudication; they are not human scientific labels.
+
+Validation: **181 tests passed**, plus a live browser check confirming monotherapy-only abstention and saved trace export. Next, adjudicate the three cases and decide which source qualifiers must be surfaced before collecting held-out questions or extending agent responsibilities.

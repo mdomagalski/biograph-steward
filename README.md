@@ -32,6 +32,8 @@ On October 14, 2026, `doctor` successfully checked the live Pharos API (`pharos3
 
 The [evaluation runner and reviewer worksheets](docs/EVALUATION.md) compare frozen Pharos/enriched sources and an optional bounded question-planning model. Scientific judgments stay pending until reviewed; live model calls require local configuration.
 
+The optional planner supports an API endpoint or an explicitly selected, already authenticated Codex CLI. See [configuration and isolation](docs/EVALUATION.md#optional-signed-in-codex-cli) and the [three-case source-review notes](docs/PILOT_REVIEW.md). Those AI-prepared notes leave human judgments pending.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
