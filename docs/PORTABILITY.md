@@ -72,6 +72,33 @@ docker compose exec steward python app.py demo --out /data/runs/synthetic_demo_0
 
 `BIOGRAPH_PYTHON_IMAGE` can pin an approved Python 3.12 image by digest for a controlled build. The default is `python:3.12-slim`; that tag is not an immutable image identity. Record the resolved image ID for a frozen deployment.
 
+## Check the running deployment
+
+Run the smoke command from the same checkout/version as the running service. It uses only invented demo records; it does not retrieve Pharos/CIViC or change scientific review state. The default requests no model inference. Use new output directories each time:
+
+```bash
+python3 app.py deployment-smoke \
+  --base-url http://127.0.0.1:8766 \
+  --out "$BIOGRAPH_DATA_DIR/runs/deployment_before_restart_01"
+```
+
+For a Secure Link, replace `--base-url` with its exact root HTTPS URL. Supply the app's existing `BIOGRAPH_ACCESS_TOKEN` to this command through the environment. This is the workspace access token, not the model API key. The origin defaults to that URL; `--browser-origin` can specify the approved external origin when testing a proxy through a local connection. Redirects are rejected, so a proxy login page cannot silently receive forwarded credentials.
+
+The checks cover service version, anonymous/authenticated access, the browser-origin guard, saving an explicitly synthetic graph, and answering a candidate-pathway question with matching source hashes and citations. A failed check exits with status 1 and retains `report.json`; invalid settings or an existing output directory fail before testing. A successful initial report is also a receipt for the next check.
+
+Restart the actual service while keeping the data mount/directory. For Compose, run `docker compose restart steward`; for a VM process, stop and start it with the same environment. Then reopen the saved data:
+
+```bash
+python3 app.py deployment-smoke \
+  --base-url http://127.0.0.1:8766 \
+  --receipt "$BIOGRAPH_DATA_DIR/runs/deployment_before_restart_01/report.json" \
+  --out "$BIOGRAPH_DATA_DIR/runs/deployment_after_restart_01"
+```
+
+Receipt mode performs only reads against the service and checks the same source, review basis and saved answer. It writes a new local report. It cannot independently attest that an operator restarted the service; CI performs a real container restart between those two commands. Receipt mode never requests another model turn.
+
+After configuring the model below, repeat the initial command with `--with-planner` and a new output directory. This explicitly requests one model plan using the demo catalogue. It checks the planned scope and compares execution with the equivalent deterministic query. Failed or timed-out model requests are not retried. `planner_http_requests` counts requests to the app; `reported_model_calls` is the app's trace metadata and remains unknown if that response is unavailable. Token usage and served model names remain provider-reported metadata. Neither a successful deployment check nor synthetic model success establishes biomedical accuracy. Use the separate training benchmark before evaluating a new model scientifically.
+
 ## Configure a shared model for planner and verifier
 
 All model IDs and full endpoint URLs are explicit. This example describes the **request protocol**, not an installed model:
@@ -145,8 +172,8 @@ Native Bedrock Converse/SigV4 integration, AWS credential-chain handling, S3 art
 
 ## Verification status
 
-On October 19, 2026, the 224-test suite passed on macOS with Python 3.14 and with a normally installed core package on Python 3.12; each skipped the one optional NeMo test. That test passed separately using the real NeMo Agent Toolkit 1.8.0 CLI against a local mock model. Installed HTML assets also loaded outside the checkout without NeMo dependencies. Deployment YAML and CI shell syntax were checked. Docker is not available on the development machine, so the image has not been built locally.
+On October 19, 2026, the full 232-test suite passed on macOS with Python 3.14, skipping the one optional NeMo test. The original 224-test regression suite and the eight new deployment tests also passed against a normally installed core package on Python 3.12. The optional test passed separately using the real NeMo Agent Toolkit 1.8.0 CLI against a local mock model. A CLI smoke run reopened the same graph and cited answer after a real local app-process restart. Installed HTML assets loaded outside the checkout without NeMo dependencies. Deployment YAML and CI shell syntax were checked. Docker is not available on the development machine, so the image has not been built locally.
 
 Use `python3 -m unittest discover -s tests -q` for core tests, and the optional environment's Python with `-p test_nvidia_workflow.py` for the real Toolkit smoke test. Local mock services exercise NIM request formatting, source/quote validation, failure accounting, redirect blocking, authentication, exact proxy origins and fixed-source execution. Mock service success is not a live NIM inference result.
 
-The GitHub Actions portability workflow checks Linux Python versions, installed package assets, the optional NeMo workflow and Docker startup/restart persistence. Adding that workflow does not mean CI or the image has already run. A live Brev Secure Link, actual workspace model and AWS service still require deployment smoke tests with the provided workspace configuration.
+The GitHub Actions portability workflow checks Linux Python versions, installed package assets, the optional NeMo workflow and Docker startup/restart persistence using the deployment-smoke command above. Adding that workflow does not mean CI or the image has already run. A live Brev Secure Link, actual workspace model and AWS service still require deployment smoke tests with the provided workspace configuration.

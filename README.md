@@ -24,6 +24,8 @@ Read [START_HERE.md](START_HERE.md) for the team walkthrough.
 
 Version **0.8.0** adds [Brev/Docker deployment and shared model-provider configuration](docs/PORTABILITY.md): persistent run/cache paths, protected shared hosting, NVIDIA NIM support for both planner and verifier, and an optional NeMo Agent Toolkit workflow. The core still needs no extra Python packages. Workspace-specific endpoints and cloud access are configured explicitly; live Brev/NIM/AWS deployment has not been verified.
 
+Use `python3 app.py deployment-smoke --base-url http://127.0.0.1:8766 --out runs/deployment_smoke_01` against a running service to check synthetic data, cited answers and access controls without model calls. See the deployment guide for post-restart receipt checks and the explicit `--with-planner` model test.
+
 The **fuller scoped Pharos profile is implemented**: paginated pathways and GO, bounded interaction neighborhoods restricted to the selected cohort, drug listings, selected tissue-expression records and publication discovery. Every family has a per-protein coverage report. See [scoped retrieval and live validation](docs/SCOPED_RETRIEVAL.md). These remain Pharos baseline data; GO, interaction, drug and expression context now forms qualified candidate assertions with source crosswalks and reciprocal deduplication; see [normalization and validation](docs/CONTEXT_NORMALIZATION.md). The [guided question workflow](docs/GUIDED_QUESTIONS.md) now finds scoped interaction/shared-pathway evidence and produces cited summaries. A [bounded CIViC integration](docs/CIVIC_EVIDENCE.md) now adds whole molecular-profile/therapy response annotations, source/publication passports and overlap accounting.
 
 ### What was actually tested

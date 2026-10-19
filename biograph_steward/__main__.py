@@ -113,8 +113,23 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--result', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
     sub.add_parser('runtime-check', help='Inspect deployment/model configuration without inference or source requests.')
+    p = sub.add_parser('deployment-smoke', help='Check a running app with synthetic data; optionally request one model plan.')
+    p.add_argument('--base-url', required=True, help='Root HTTPS deployment URL or loopback HTTP URL.')
+    p.add_argument('--browser-origin', help='Exact browser origin; defaults to the deployment URL.')
+    p.add_argument('--with-planner', action='store_true', help='Explicitly request one live model plan against the synthetic run.')
+    p.add_argument('--receipt', type=Path, help='Reopen the same saved data from an earlier successful report; no writes/model calls.')
+    p.add_argument('--timeout', type=int, default=120)
+    p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'deployment-smoke':
+            from .deployment_smoke import run_smoke
+            report = run_smoke(args.base_url, args.out, with_planner=args.with_planner, receipt=args.receipt,
+                               origin=args.browser_origin, timeout=args.timeout)
+            print(json.dumps({'status': report['status'], 'checks': report['checks'],
+                              'reported_model_calls': report['reported_model_calls'],
+                              'report': str((args.out / 'report.json').resolve())}, indent=2))
+            return 0 if report['status'] == 'passed' else 1
         if args.command in {'verification-run', 'verification-score'}:
             from .verification_evaluation import run_verification, rescore_verification
             if args.command == 'verification-run':
