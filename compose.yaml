@@ -1,0 +1,20 @@
+services:
+  steward:
+    build:
+      context: .
+      args:
+        PYTHON_IMAGE: ${BIOGRAPH_PYTHON_IMAGE:-python:3.12-slim}
+    ports:
+      - "${BIOGRAPH_PUBLISH_HOST:-127.0.0.1}:${BIOGRAPH_PORT:-8766}:8766"
+    env_file: .env
+    environment:
+      BIOGRAPH_HOST: 0.0.0.0
+      BIOGRAPH_PORT: "8766"
+      BIOGRAPH_DATA_DIR: /data
+      BIOGRAPH_ACCESS_TOKEN: ${BIOGRAPH_ACCESS_TOKEN:?Set a generated workspace access token in .env}
+    volumes:
+      - steward-data:/data
+    restart: unless-stopped
+
+volumes:
+  steward-data:

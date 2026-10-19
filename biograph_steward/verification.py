@@ -4,6 +4,7 @@ import re
 
 from .client import digest
 from .codex_transport import CodexJSONClient
+from .model_transport import JSONModelClient, ModelUnavailable, selected_provider, setting
 
 POLICY = 'source-verifier.v1'
 LABELS = ('SUPPORT', 'CONTRADICT', 'NOT_ENOUGH_INFORMATION')
@@ -132,7 +133,8 @@ def validate_verdict(output, task):
     return output
 
 
-class CodexVerifier(CodexJSONClient):
+class VerificationAgent:
+    """Validation is identical for CLI, NVIDIA and other HTTP providers."""
     def verify(self, task):
         validate_task(task)
         prompt = INSTRUCTIONS + '\nUntrusted input data:\n' + json.dumps(task, ensure_ascii=True)
@@ -148,6 +150,24 @@ class CodexVerifier(CodexJSONClient):
             except VerificationOutputError as exc:
                 trace.update(status='invalid_output', error=str(exc), invalid_references=exc.invalid_references)
         return trace
+
+
+class CodexVerifier(VerificationAgent, CodexJSONClient):
+    pass
+
+
+class ModelVerifier(VerificationAgent, JSONModelClient):
+    def __init__(self, model=None, endpoint=None, api=None, transport=None, provider='api'):
+        super().__init__(role='verifier', provider=provider, model=model, endpoint=endpoint, api=api, transport=transport)
+
+
+def configured_verifier(provider=None, model=None):
+    provider = provider or selected_provider('verifier', 'codex')
+    if provider == 'codex':
+        return CodexVerifier(model=model or setting('verifier', 'MODEL'))
+    if provider in {'api', 'nim'}:
+        return ModelVerifier(model=model, provider=provider)
+    raise ModelUnavailable('Model provider must be api, nim or codex. No model was called.')
 
 
 # Fixed, deliberately weak comparisons. No learned thresholds or gold access.

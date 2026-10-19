@@ -1,5 +1,7 @@
 # Run the source verifier
 
+For a Brev/Linux environment, shared NIM/API configuration or Docker, use the [portability guide](PORTABILITY.md). The desktop Codex commands below remain supported; their Mac executable path does not apply to a Linux VM. `verification-run --verifier configured` uses the role/shared provider, while `--verifier nim` or `api` selects that HTTP provider explicitly.
+
 The browser app and benchmark runner are separate commands in the same application. Start the app in one terminal:
 
 ```bash

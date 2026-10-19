@@ -1,10 +1,11 @@
-"""Small local browser interface. Standard library only; bind to loopback only."""
+"""Standard-library HTTP interface; loopback by default, explicit protected hosting."""
 from __future__ import annotations
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from io import BytesIO
 import json
 from pathlib import Path
 import re
+import socket
 from urllib.parse import urlparse
 from uuid import uuid4
 import webbrowser
@@ -12,6 +13,8 @@ import zipfile
 from datetime import datetime, timezone
 
 from .client import PharosClient, ENDPOINT, PharosError
+from .runtime import AccessPolicy, runs_directory, cache_directory
+from . import __version__
 
 
 def report_html(graph: dict | None = None) -> str:
@@ -24,11 +27,23 @@ def report_html(graph: dict | None = None) -> str:
 
 
 def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
-                  cache_dir: Path | None = None, timeout: float = 30) -> ThreadingHTTPServer:
+                  cache_dir: Path | None = None, timeout: float = 30, *, host='127.0.0.1',
+                  allowed_origins=(), access_token=None) -> ThreadingHTTPServer:
+    policy = AccessPolicy(host, allowed_origins, access_token)
     runs_dir = Path(runs_dir).resolve()
     runs_dir.mkdir(parents=True, exist_ok=True)
 
     class Handler(BaseHTTPRequestHandler):
+        def authenticate(self):
+            if policy.authenticated(self.headers.get('Authorization')):
+                return True
+            self.send_response(401)
+            self.send_header('WWW-Authenticate', 'Basic realm="BioGraph Steward", charset="UTF-8"')
+            self.send_header('Cache-Control', 'no-store')
+            self.send_header('Content-Length', '0')
+            self.end_headers()
+            return False
+
         def reply(self, payload: bytes, status: int = 200, content_type: str = "application/json", filename: str | None = None):
             self.send_response(status)
             self.send_header("Content-Type", content_type)
@@ -45,6 +60,11 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
 
         def do_GET(self):
             path = urlparse(self.path).path
+            if path == '/healthz':
+                self.json_reply({'status': 'ok', 'version': __version__})
+                return
+            if not self.authenticate():
+                return
             match=re.fullmatch(r"/api/evaluation/([A-Za-z0-9_-]{1,80})/(report\.html|case_reviews\.tsv|answer_reviews\.tsv|evidence_reviews\.tsv|metrics\.json)?",path)
             if match:
                 folder=(runs_dir/match.group(1)).resolve();name=match.group(2) or 'report.html'
@@ -94,7 +114,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             match = re.fullmatch(r"/api/download/([A-Za-z0-9_-]{1,80})", path)
             if match:
-                folder = runs_dir / match.group(1)
+                folder = (runs_dir / match.group(1)).resolve()
                 if not folder.is_dir() or folder.parent != runs_dir:
                     self.json_reply({"error": "Run not found"}, 404)
                     return
@@ -108,12 +128,12 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             self.json_reply({"error": "Not found"}, 404)
 
         def do_POST(self):
+            if not self.authenticate():
+                return
             origin = self.headers.get("Origin")
-            if origin:
-                parsed = urlparse(origin)
-                if parsed.hostname not in {"127.0.0.1", "localhost", "::1"} or parsed.port != self.server.server_port:
-                    self.json_reply({"error": "Only same-local-server requests are allowed."}, 403)
-                    return
+            if not policy.allows_origin(origin, self.server.server_port):
+                self.json_reply({"error": "Browser origin is not explicitly allowed."}, 403)
+                return
             if self.headers.get("Content-Type", "").split(";")[0] != "application/json":
                 self.json_reply({"error": "Use application/json."}, 415)
                 return
@@ -235,15 +255,23 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             except (ValueError, TypeError, PharosError, OSError) as exc:
                 self.json_reply({"error": str(exc)}, 400)
 
-    return ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    if ':' in host:
+        class IPv6Server(ThreadingHTTPServer):
+            address_family = socket.AF_INET6
+        return IPv6Server((host, port), Handler)
+    return ThreadingHTTPServer((host, port), Handler)
 
 
-def serve(port: int = 8765, runs_dir: Path = Path("runs"), endpoint: str = ENDPOINT,
-          cache_dir: Path | None = Path(".pharos_cache"), open_browser: bool = True,
-          timeout: float = 30):
-    server = create_server(port, runs_dir, endpoint, cache_dir, timeout)
-    url = f"http://127.0.0.1:{server.server_port}"
-    print(f"BioGraph Steward: {url}\nLocal-only server. Ctrl+C stops it.", flush=True)
+def serve(port: int = 8765, runs_dir: Path | None = None, endpoint: str = ENDPOINT,
+          cache_dir: Path | None = None, open_browser: bool = True,
+          timeout: float = 30, *, host='127.0.0.1', allowed_origins=(), access_token=None):
+    runs_dir = runs_directory() if runs_dir is None else runs_dir
+    cache_dir = cache_directory() if cache_dir is None else cache_dir
+    server = create_server(port, runs_dir, endpoint, cache_dir, timeout, host=host,
+                           allowed_origins=allowed_origins, access_token=access_token)
+    address = f'[{host}]' if ':' in host else host
+    url = f"http://{address}:{server.server_port}"
+    print(f"BioGraph Steward: {url}\nRuns: {Path(runs_dir).resolve()}\nCtrl+C stops it.", flush=True)
     if open_browser:
         webbrowser.open(url)
     try:

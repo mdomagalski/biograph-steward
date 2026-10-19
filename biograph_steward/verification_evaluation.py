@@ -10,9 +10,9 @@ import re
 
 from . import __version__
 from .client import digest, write_json
-from .verification import (POLICY, INSTRUCTIONS, VERDICT_SCHEMA, LABELS, CodexVerifier,
+from .verification import (POLICY, INSTRUCTIONS, VERDICT_SCHEMA, LABELS,
                            VerificationOutputError, baseline_verdict, binding,
-                           validate_task, validate_verdict)
+                           validate_task, validate_verdict, configured_verifier)
 
 BASELINES = ('accept_all', 'always_insufficient', 'lexical_overlap')
 
@@ -134,8 +134,8 @@ def _prediction(task, trace):
 
 def run_verification(benchmark, output, mode='baselines', model=None, limit=None,
                      verifier=None, progress=None, workers=1):
-    if mode not in {'baselines', 'codex'} or type(workers) is not int or not 1 <= workers <= 4:
-        raise ValueError('Choose baselines/codex and 1–4 workers.')
+    if mode not in {'baselines', 'codex', 'nim', 'api', 'configured'} or type(workers) is not int or not 1 <= workers <= 4:
+        raise ValueError('Choose baselines/codex/nim/api/configured and 1–4 workers.')
     if limit is not None and (type(limit) is not int or limit < 1):
         raise ValueError('Limit must be a positive number of claim/abstract pairs.')
     source = Path(benchmark).resolve()
@@ -153,8 +153,12 @@ def run_verification(benchmark, output, mode='baselines', model=None, limit=None
     # Stable hash selection never consults expert labels. A limit is a smoke pilot.
     tasks = sorted(tasks, key=lambda t: (digest(t['id']), t['id']))[:limit]
     out = _new_output(output, source)
-    if mode == 'codex' and verifier is None:
-        verifier = CodexVerifier(model=model)
+    if mode != 'baselines' and verifier is None:
+        try:
+            verifier = configured_verifier(None if mode == 'configured' else mode, model=model)
+        except ValueError:
+            out.rmdir()  # Configuration failed before any artifact or inference call.
+            raise
     write_rows(out / 'inputs.jsonl', tasks)
     write_json(out / 'benchmark_manifest.json', manifest)
     contract = {'policy': POLICY, 'instructions': INSTRUCTIONS, 'schema': VERDICT_SCHEMA,
@@ -162,6 +166,12 @@ def run_verification(benchmark, output, mode='baselines', model=None, limit=None
                 'baselines': {'accept_all': 'SUPPORT, first sentence as arbitrary citation',
                               'always_insufficient': 'NOT_ENOUGH_INFORMATION, no citations',
                               'lexical_overlap': 'SUPPORT if best sentence covers >=0.5 of non-stopword claim tokens; otherwise insufficient'}}
+    if verifier is not None:
+        contract['model_settings'] = {'provider': getattr(verifier, 'provider', 'codex'),
+                                      'api': getattr(verifier, 'api', None),
+                                      'timeout_seconds': getattr(verifier, 'timeout', 90),
+                                      'max_output_tokens': getattr(verifier, 'max_output_tokens', None)}
+        contract['timeout_seconds'] = contract['model_settings']['timeout_seconds']
     write_json(out / 'contract.json', contract)
     run = {'format': 'biograph-steward.source-verifier-result.v1', 'status': 'predicting',
            'created_at': datetime.now(timezone.utc).isoformat(), 'app_version': __version__,
@@ -182,7 +192,7 @@ def run_verification(benchmark, output, mode='baselines', model=None, limit=None
         for baseline in BASELINES:
             baseline_rows[baseline].append({'id': task['id'], **binding(task), 'status': 'validated',
                                             'verdict': baseline_verdict(task, baseline)})
-    if mode == 'codex':
+    if mode != 'baselines':
         def verify(index, task):
             try:
                 trace = verifier.verify(task)
@@ -255,7 +265,7 @@ def _score_run(result):
                                'Source entailment is not clinical truth or improved graph prediction.']}
     for baseline in BASELINES:
         metrics['comparisons'][baseline] = score_predictions(tasks, gold, baselines[baseline])
-    if run['mode'] == 'codex':
+    if run['mode'] != 'baselines':
         predictions = read_rows(result / 'predictions.jsonl')
         usage = Counter(); usage_pairs = 0; latency = []; model_calls = 0
         for row in predictions:
@@ -267,16 +277,19 @@ def _score_run(result):
                 raise ValueError('Saved model trace bytes changed.')
             trace = json.loads(path.read_text())
             model_calls += trace.get('model_calls', 0)
-            if trace.get('usage') is not None:
+            if trace.get('usage'):
                 usage.update(trace['usage']); usage_pairs += 1
             if isinstance(trace.get('latency_ms'), (float, int)):
                 latency.append(trace['latency_ms'])
         metrics['comparisons']['verifier'] = score_predictions(tasks, gold, predictions)
+        uses_cli = run['mode'] == 'codex' or run['verifier_kind'] == 'live_codex_cli'
         metrics['execution'] = {'requested_model_turns': model_calls, 'usage_reported_pairs': usage_pairs,
                                 'usage_totals': dict(usage), 'cost': None,
-                                'call_count_basis': 'Requested CLI turns; internal HTTP attempts are not exposed.',
+                                'call_count_basis': ('Requested CLI turns; internal HTTP attempts are not exposed.' if uses_cli
+                                                     else 'One HTTP request per turn; no redirects, retries or repair calls.'),
                                 'mean_turn_latency_ms': sum(latency) / len(latency) if latency else None,
-                                'model_identity_basis': 'Requested model; CLI does not independently return served model identity.'}
+                                'model_identity_basis': ('Requested model; CLI does not independently return served model identity.' if uses_cli
+                                                         else 'Provider-returned model metadata; serving identity is not independently attested.')}
     return metrics
 
 

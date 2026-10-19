@@ -1,0 +1,7 @@
+# Install .[nvidia] into a Python 3.12 environment first.
+# Model settings come from BIOGRAPH_MODEL_* / BIOGRAPH_PLANNER_* at runtime.
+workflow:
+  _type: biograph_question
+  source_run: ${BIOGRAPH_NAT_SOURCE_RUN}
+  max_results: 8
+  max_paths: 3

@@ -22,6 +22,8 @@ Open `http://127.0.0.1:8765` if a browser does not open automatically. Use `py` 
 
 Read [START_HERE.md](START_HERE.md) for the team walkthrough.
 
+Version **0.8.0** adds [Brev/Docker deployment and shared model-provider configuration](docs/PORTABILITY.md): persistent run/cache paths, protected shared hosting, NVIDIA NIM support for both planner and verifier, and an optional NeMo Agent Toolkit workflow. The core still needs no extra Python packages. Workspace-specific endpoints and cloud access are configured explicitly; live Brev/NIM/AWS deployment has not been verified.
+
 The **fuller scoped Pharos profile is implemented**: paginated pathways and GO, bounded interaction neighborhoods restricted to the selected cohort, drug listings, selected tissue-expression records and publication discovery. Every family has a per-protein coverage report. See [scoped retrieval and live validation](docs/SCOPED_RETRIEVAL.md). These remain Pharos baseline data; GO, interaction, drug and expression context now forms qualified candidate assertions with source crosswalks and reciprocal deduplication; see [normalization and validation](docs/CONTEXT_NORMALIZATION.md). The [guided question workflow](docs/GUIDED_QUESTIONS.md) now finds scoped interaction/shared-pathway evidence and produces cited summaries. A [bounded CIViC integration](docs/CIVIC_EVIDENCE.md) now adds whole molecular-profile/therapy response annotations, source/publication passports and overlap accounting.
 
 ### What was actually tested
@@ -218,7 +220,7 @@ Successful responses are cached for 24 hours in `.pharos_cache/`. Choose **Refre
 
 The client retries only transient HTTP/network failures, with bounded waits. It rejects GraphQL partial-error responses. A schema mismatch stops a live build. The `--skip-schema-check` option exists for endpoints where introspection is disabled; use it only after reviewing the published schema. It does not suppress errors in the actual data queries.
 
-The UI binds only to `127.0.0.1`. Do not expose it as a production web service. Stop it with Ctrl+C. No company/client data or credentials are needed.
+The UI defaults to `127.0.0.1`. Protected shared hosting requires an access token and explicit HTTPS browser origins; see [the deployment guide](docs/PORTABILITY.md). This remains a single-workspace prototype, without individual reviewer authentication. Stop it with Ctrl+C. Public-data inspection needs no company/client data.
 
 ## Source basis and licensing
 

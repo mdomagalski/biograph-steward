@@ -1,5 +1,7 @@
 # Frozen-source evaluation and one bounded question planner — v0.6
 
+The v0.8 portability increment adds `--planner nim` and shared/role-specific model configuration. See [Brev/NIM setup](PORTABILITY.md). `--planner live` uses the configured provider; Codex and replay remain available. A frozen suite's engine fingerprint intentionally changes with the new adapter: initialize a new suite before collecting new-model results, and retain earlier suites/reports unchanged.
+
 The runner compares the expanded Pharos baseline with its CIViC-enriched copy and a single question-planning model using the same deterministic tools. It exports source-bound reviewer worksheets and a read-only HTML report. This is a research-workbench evaluation, separate from the challenge's still-pending controlled prediction experiment.
 
 The included 24 questions are **draft development scenarios**, grouped into 15 question families. Paraphrases are not independent biological observations. Reference plans specify scope; they are not biomedical answers, paper-verified labels or a held-out test. A reviewer must approve scope and adjudicate evidence before scientific accuracy is reported. The supplied pilot has no held-out test cases.

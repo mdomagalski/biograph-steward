@@ -1,8 +1,10 @@
 from __future__ import annotations
 import argparse
 import json
+import os
 from pathlib import Path
 import sys
+from .runtime import runs_directory, cache_directory
 from .client import PharosClient, PharosError, ENDPOINT, VERSION, SEARCH, DISEASE, TARGETS, LICENSES
 
 
@@ -11,12 +13,14 @@ def main(argv: list[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="command")
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--endpoint", default=ENDPOINT)
-    common.add_argument("--cache-dir", type=Path, default=Path(".pharos_cache"))
+    common.add_argument("--cache-dir", type=Path, default=cache_directory())
     common.add_argument("--timeout", type=float, default=30)
     common.add_argument("--refresh", action="store_true")
     p = sub.add_parser("serve", parents=[common], help="Start the local browser interface (default).")
-    p.add_argument("--port", type=int, default=8765)
-    p.add_argument("--runs-dir", type=Path, default=Path("runs"))
+    p.add_argument("--port", type=int, default=os.environ.get("BIOGRAPH_PORT", "8765"))
+    p.add_argument("--host", default=os.environ.get("BIOGRAPH_HOST", "127.0.0.1"))
+    p.add_argument("--allowed-origin", action="append", default=None, help="Exact HTTPS origin allowed for a protected reverse proxy; repeat for multiple origins.")
+    p.add_argument("--runs-dir", type=Path, default=runs_directory())
     p.add_argument("--no-browser", action="store_true")
     sub.add_parser("doctor", parents=[common], help="Test live connectivity and required GraphQL fields.")
     p = sub.add_parser("search", parents=[common], help="Search disease names; choose an exact returned term.")
@@ -36,7 +40,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--skip-schema-check", action="store_true")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("demo", help="Build the explicitly SYNTHETIC offline demo.")
-    p.add_argument("--out", type=Path, default=Path("runs/demo"))
+    p.add_argument("--out", type=Path, default=runs_directory()/"demo")
     p = sub.add_parser("replay", help="Rebuild a snapshot with the current transformer without network access.")
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--reviews", type=Path, help="Preserve review events from this exact snapshot.")
@@ -82,7 +86,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--out",type=Path,required=True)
     p = sub.add_parser("evaluation-run", help="Compare fixed-source deterministic tools and an optional single model planner.")
     p.add_argument("--suite",type=Path,required=True)
-    p.add_argument("--planner",choices=['none','live','codex','replay'],default='none')
+    p.add_argument("--planner",choices=['none','live','codex','nim','replay'],default='none')
     p.add_argument("--replay",type=Path)
     p.add_argument("--out",type=Path,required=True)
     p = sub.add_parser("evaluation-score", help="Score reviewer worksheets into a new result directory.")
@@ -100,14 +104,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser('verification-run', help='Evaluate a bounded source verifier against prepared SciFact expert annotations.')
     p.add_argument('--benchmark', type=Path, required=True)
-    p.add_argument('--verifier', choices=['baselines', 'codex'], default='baselines')
-    p.add_argument('--model', help='Explicit Codex model, or set BIOGRAPH_CODEX_MODEL.')
+    p.add_argument('--verifier', choices=['baselines', 'codex', 'nim', 'api', 'configured'], default='baselines')
+    p.add_argument('--model', help='Explicit model ID; otherwise use role/shared model configuration.')
     p.add_argument('--limit', type=int, help='Fixed hash-selected pair limit for a smoke pilot; omit for the full input set.')
     p.add_argument('--workers', type=int, default=1, help='Concurrent independent verification turns, 1–4.')
     p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser('verification-score', help='Recompute metrics from a completed immutable verification result, without model calls.')
     p.add_argument('--result', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    sub.add_parser('runtime-check', help='Inspect deployment/model configuration without inference or source requests.')
     args = parser.parse_args(argv)
     try:
         if args.command in {'verification-run', 'verification-score'}:
@@ -121,13 +126,21 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps({'status': metrics['status'], 'comparisons': metrics['comparisons'],
                               'report': str((args.out / 'report.html').resolve())}, indent=2))
             return 0
-        if args.command is None:
+        if args.command == 'runtime-check':
+            from .portability import runtime_status
+            status = runtime_status()
+            print(json.dumps(status, indent=2))
+            return 0 if status['hosting']['valid'] else 2
+        if args.command is None or args.command == 'serve':
             from .webapp import serve
-            serve()
-            return 0
-        if args.command == "serve":
-            from .webapp import serve
-            serve(args.port, args.runs_dir, args.endpoint, args.cache_dir, not args.no_browser, args.timeout)
+            host = args.host if args.command else os.environ.get('BIOGRAPH_HOST', '127.0.0.1')
+            origins = ((args.allowed_origin if args.allowed_origin is not None else os.environ.get('BIOGRAPH_ALLOWED_ORIGINS', ''))
+                       if args.command else os.environ.get('BIOGRAPH_ALLOWED_ORIGINS', ''))
+            options = {'host': host, 'allowed_origins': origins, 'access_token': os.environ.get('BIOGRAPH_ACCESS_TOKEN')}
+            if args.command:
+                serve(args.port, args.runs_dir, args.endpoint, args.cache_dir, not args.no_browser, args.timeout, **options)
+            else:
+                serve(port=int(os.environ.get('BIOGRAPH_PORT', '8765')), **options)
             return 0
         if args.command == 'evaluation-init':
             from .evaluation import freeze_suite
@@ -139,11 +152,12 @@ def main(argv: list[str] | None = None) -> int:
             from .evaluation import run_evaluation
             from .planning import configured_planner,RecordedPlanner,PlannerUnavailable
             planner=None;note=None
-            if args.planner in {'live','codex'}:
+            if args.planner in {'live','codex','nim'}:
                 try:
                     if args.planner=='codex':
                         from .codex_planner import CodexPlanner
                         planner=CodexPlanner()
+                    elif args.planner=='nim':planner=configured_planner(provider='nim')
                     else:planner=configured_planner()
                 except PlannerUnavailable as exc:note=str(exc)
             elif args.planner=='replay':

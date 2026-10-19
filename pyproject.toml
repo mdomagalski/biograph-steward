@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "biograph-steward"
+version = "0.8.0"
+description = "Bounded, provenance-preserving biomedical evidence workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+# Optional toolkit environment: Python 3.11–3.13; tested separately from core.
+nvidia = ["nvidia-nat-core==1.8.0", "packaging==25.0"]
+
+[project.scripts]
+biograph-steward = "biograph_steward.__main__:main"
+
+[project.entry-points."nat.plugins"]
+nat_biograph = "biograph_steward.nvidia_workflow"
+
+[tool.setuptools.packages.find]
+include = ["biograph_steward*"]
+
+[tool.setuptools.package-data]
+biograph_steward = ["*.html", "*.js", "*.json"]

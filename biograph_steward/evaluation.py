@@ -187,7 +187,7 @@ def run_evaluation(suite_dir,output,*,planner=None,planner_note=None,progress=No
                         else:result=execute_plan(plan,graph,source_run=arm,**suite['budgets'])
                     except (ValueError,TypeError) as exc:
                         trace={'planner_kind':getattr(planner,'kind','unknown'),'status':'planner_error',
-                               'model_calls':1 if getattr(planner,'kind','') in {'live_model','live_codex_cli','injected_test_model'} else 0,
+                               'model_calls':1 if getattr(planner,'kind','') in {'live_model','live_nim','live_codex_cli','injected_test_model'} else 0,
                                'usage':None,'error':str(exc)}
                         plan=None;result={'status':'planner_error','reason':str(exc),'answer':None,'tool_calls':0}
             else:result=execute_plan(plan,graph,source_run=arm,**suite['budgets'])

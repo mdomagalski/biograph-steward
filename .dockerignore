@@ -1,0 +1,15 @@
+*
+!Dockerfile
+!app.py
+!LICENSE
+!biograph_steward/
+!biograph_steward/**
+!scripts/
+!scripts/**
+**/__pycache__/
+**/*.py[cod]
+**/.env
+**/.env.*
+**/.git/
+**/runs/
+**/.pharos_cache/
