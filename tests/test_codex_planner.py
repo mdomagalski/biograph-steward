@@ -22,7 +22,7 @@ def events():
 class CodexPlanningTests(unittest.TestCase):
     def setUp(self):
         p, c = fixture(); self.graph = build_graph(p, civic_snapshot=c)
-        self.which = patch('biograph_steward.codex_planner.shutil.which', return_value='/test/codex')
+        self.which = patch('biograph_steward.codex_transport.shutil.which', return_value='/test/codex')
         self.which.start(); self.addCleanup(self.which.stop)
 
     def runner(self, plan=None, stream=None, failure=None, calls=None):
@@ -81,7 +81,7 @@ class CodexPlanningTests(unittest.TestCase):
             with self.assertRaises(PlannerUnavailable):configured_planner()
         with patch.dict('os.environ',{'BIOGRAPH_PLANNER_PROVIDER':'codex'}), patch('biograph_steward.codex_planner.CodexPlanner',return_value='explicit'):
             self.assertEqual(configured_planner(),'explicit')
-        with patch('biograph_steward.codex_planner.shutil.which',return_value=None):
+        with patch('biograph_steward.codex_transport.shutil.which',return_value=None):
             with self.assertRaises(PlannerUnavailable):CodexPlanner(model='test')
         with self.assertRaises(PlannerUnavailable):CodexPlanner(model='bad\nmodel')
 

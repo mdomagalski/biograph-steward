@@ -234,3 +234,18 @@ python3 app.py evaluation-run --suite runs/eval_suite_01 --out runs/eval_results
 ```
 
 Open the generated `report.html` and complete its scope, answer and evidence review worksheets. Configure a model locally and use `--planner live` for a separate result against the same frozen sources. See [configuration, reviewer instructions and metric limits](docs/EVALUATION.md). The supplied 24 questions are draft development scenarios, not biomedical gold answers or a held-out test.
+
+## Evaluate the source verifier
+
+The source verifier judges one claim against one supplied abstract, independently of the question planner. It cites exact numbered sentences and has no graph-write authority. SciFact expert annotations supply its answer key; the project owner does not need to invent biomedical labels.
+
+```bash
+# Offline baselines; use a new output directory each time.
+python3 app.py verification-run \
+  --benchmark runs/scifact_verification_document_holdout_20261015 \
+  --out runs/verifier_baselines_02
+```
+
+See [run commands for the live verifier and saved reports](docs/RUNNING_VERIFIER.md), the [verification contract](docs/VERIFIER_PROTOCOL.md) and [dataset preparation/licensing](docs/VERIFICATION_BENCHMARKS.md). Source-interpretation scores do not establish clinical truth or improved graph prediction.
+
+The [initial document-disjoint development evaluation](docs/VERIFIER_RESULTS_20261015.md) matched 94/119 expert labels (79.0%), versus 62/119 (52.1%) for the fixed lexical baseline. Support recall was 72.0%, so assessments remain advisory.

@@ -98,8 +98,29 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("audit", help="Prepare benchmark readiness and pair-level review files from a snapshot.")
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser('verification-run', help='Evaluate a bounded source verifier against prepared SciFact expert annotations.')
+    p.add_argument('--benchmark', type=Path, required=True)
+    p.add_argument('--verifier', choices=['baselines', 'codex'], default='baselines')
+    p.add_argument('--model', help='Explicit Codex model, or set BIOGRAPH_CODEX_MODEL.')
+    p.add_argument('--limit', type=int, help='Fixed hash-selected pair limit for a smoke pilot; omit for the full input set.')
+    p.add_argument('--workers', type=int, default=1, help='Concurrent independent verification turns, 1–4.')
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('verification-score', help='Recompute metrics from a completed immutable verification result, without model calls.')
+    p.add_argument('--result', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command in {'verification-run', 'verification-score'}:
+            from .verification_evaluation import run_verification, rescore_verification
+            if args.command == 'verification-run':
+                metrics = run_verification(args.benchmark, args.out, mode=args.verifier, model=args.model,
+                                          limit=args.limit, workers=args.workers,
+                                          progress=lambda message: print(message, file=sys.stderr, flush=True))
+            else:
+                metrics = rescore_verification(args.result, args.out)
+            print(json.dumps({'status': metrics['status'], 'comparisons': metrics['comparisons'],
+                              'report': str((args.out / 'report.html').resolve())}, indent=2))
+            return 0
         if args.command is None:
             from .webapp import serve
             serve()
