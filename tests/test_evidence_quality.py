@@ -24,9 +24,9 @@ class TestVerifier:
     kind = 'injected_test_model'
     model = 'INVENTED-SOFTWARE-TEST'
     def __init__(self, mode='correct'):
-        self.mode = mode; self.calls = []
+        self.mode = mode; self.calls = []; self.schemas = []
     def generate(self, prompt, schema, policy, audit):
-        task = json.loads(prompt.split('\nUntrusted input data:\n')[1]); self.calls.append(task)
+        task = json.loads(prompt.split('\nUntrusted input data:\n')[1]); self.calls.append(task); self.schemas.append(deepcopy(schema))
         verdict = 'SUPPORT'
         if self.mode == 'correct' and 'Altered' in task['claim']:
             verdict = 'NOT_ENOUGH_INFORMATION'
@@ -38,7 +38,10 @@ class TestVerifier:
                     (' CHANGED' if self.mode == 'bad_quote' else '')}],
                'explanation': 'Invented fixture judgment only.', 'context_matches': [],
                'context_mismatches': [], 'missing_details': [], 'follow_up': ''}
-        return {**audit, 'status': 'completed', 'output': out, 'model_calls': 1}
+        if self.mode == 'wrong_identity':
+            out['task_id'] = task['id'].removeprefix('task-')
+        return {**audit, 'status': 'completed', 'output': out, 'model_calls': 1,
+                'schema_sha256': digest(schema)}
 
 
 class QualityTests(unittest.TestCase):
@@ -94,6 +97,9 @@ class QualityTests(unittest.TestCase):
             self.assertEqual(set(task), {'id', 'claim_id', 'document_id', 'claim', 'document'})
             self.assertRegex(task['id'], r'^task-[a-f0-9]{24}$')
             self.assertNotIn('expected', json.dumps(task)); self.assertNotIn('reference_kind', json.dumps(task))
+        for task, schema in zip(verifier.calls, verifier.schemas):
+            self.assertEqual(schema['properties']['task_id']['enum'], [task['id']])
+            self.assertEqual(schema['properties']['verdict']['enum'], ['SUPPORT', 'CONTRADICT', 'NOT_ENOUGH_INFORMATION'])
         self.assertEqual(m['arms']['assisted']['supported_controls_retained'], 1)
         self.assertEqual(m['arms']['assisted']['unsupported_test_cases_retained'], 0)
         self.assertEqual(m['arms']['assisted']['flag_recall'], 1)
@@ -106,7 +112,7 @@ class QualityTests(unittest.TestCase):
             self.assertTrue(all(p['case']['kind'] == 'original_annotation' for p in passports))
 
     def test_invalid_output_errors_and_false_support_remain_in_denominators(self):
-        for mode in ['bad_quote', 'fail', 'accept']:
+        for mode in ['bad_quote', 'wrong_identity', 'fail', 'accept']:
             v = TestVerifier(mode); m = run_quality(self.packet, self.root / mode, mode='api', verifier=v)
             self.assertEqual(len(v.calls), 4); self.assertEqual(m['model_requests'], 4)
             if mode == 'accept':

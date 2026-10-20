@@ -26,7 +26,7 @@ async function appendQualityFindings(assertion,container){
     if(!data.passports.length){box.append(el('p','No assessment matches this exact source and assertion revision. No support is inferred.','small'));return;}
     for(const p of data.passports){
       const c=p.case,o=p.observation,a=o.assessment;
-      box.append(el('p',p.lifecycle_note,'notice'),el('p','Verifier: '+(a?.verdict||o.status)+' | Recommendation: '+o.decisions.assisted),
+      box.append(el('h5',p.report_name),el('p',p.lifecycle_note,'notice'),el('p','Verifier: '+(a?.verdict||o.status)+' | Recommendation: '+o.decisions.assisted),
         el('p',a?.explanation||o.findings.map(f=>f.detail).join('; ')||'No semantic verification was run.'));
       if(a){box.append(el('p','Context mismatches: '+(a.context_mismatches.join('; ')||'none reported'),'small'),el('p','Missing details: '+(a.missing_details.join('; ')||'none reported'),'small'));}
       for(const e of a?.evidence||[]){const quote=el('blockquote',e.quote);box.append(quote,el('p',c.selection.passages[e.sentence_index].locator,'small'));}

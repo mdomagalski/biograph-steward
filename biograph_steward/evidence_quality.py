@@ -185,6 +185,7 @@ def prepare_quality(packet, literature, output, *, specs=None):
                'source_records': [r for r in panel if r['item_id'] in {c['item_id'] for c in cases}],
                'papers': [papers[pmid] for pmid in sorted({c['source_pmid'] for c in cases})]}
     contract = {'policy': POLICY, 'engine': engine(), 'arms': list(ARMS),
+                'model_identity_binding': 'guided_enum.v2',
                 'instructions_sha256': digest(INSTRUCTIONS), 'schema_sha256': digest(VERDICT_SCHEMA),
                 'selection': 'Six predeclared saved-paper anchors; one retained annotation per paper in SHA order. Reused development sources.',
                 'reference_scope': LIMITATION, 'human_scientific_labels': 0,
@@ -256,6 +257,21 @@ def decisions(case, trace):
     return {'original': KEEP, 'deterministic': deterministic, 'assisted': assisted}
 
 
+class TaskBoundVerifier:
+    """Constrain routing metadata during generation; never repair an answer.
+
+    The request still contains the exact task and response validation remains
+    mandatory. This supplies no expected verdict, rationale or case-kind label.
+    """
+    def __init__(self, verifier, task_id):
+        self.verifier = verifier; self.task_id = task_id
+
+    def generate(self, prompt, schema, policy, audit):
+        schema = deepcopy(schema)
+        schema['properties']['task_id']['enum'] = [self.task_id]
+        return self.verifier.generate(prompt, schema, policy, audit)
+
+
 def score_quality(cases, references, observations, *, assisted_run=True):
     by_id = {r['id']: r for r in references}
     result = {}
@@ -303,6 +319,7 @@ def run_quality(packet, output, *, mode='none', model=None, verifier=None, progr
     execution = {'format': POLICY + '.execution', 'created_at': utcnow(), 'packet_sha256': p['packet_sha256'],
                  'mode': mode, 'model_requested': getattr(verifier, 'model', None),
                  'verifier_kind': getattr(verifier, 'kind', 'not_run'),
+                 'model_identity_binding': contract.get('model_identity_binding', 'free_string.v1'),
                  'eligible_model_turns': sum(not deterministic_findings(c) for c in cases),
                  'model_settings': {k: getattr(verifier, k, None) for k in
                      ['endpoint', 'api', 'prompt_profile', 'max_output_tokens', 'timeout']}}
@@ -313,7 +330,8 @@ def run_quality(packet, output, *, mode='none', model=None, verifier=None, progr
         trace = {'status': 'blocked_integrity' if findings else 'not_run', 'model_calls': 0, 'verdict': None}
         if not findings and verifier is not None:
             try:
-                trace = assess_task({'task': c['task']}, verifier)
+                bound = TaskBoundVerifier(verifier, c['task']['id']) if contract.get('model_identity_binding') == 'guided_enum.v2' else verifier
+                trace = assess_task({'task': c['task']}, bound)
             except Exception as exc:
                 # Domain/provider failure consumes this case; never retry or claim success.
                 trace = {'status': 'execution_error', 'model_calls': 1, 'verdict': None,
@@ -383,6 +401,11 @@ def verify_quality_result(path):
         if f.is_symlink() or sha(f) != o['trace_sha256'] or sha(f) != m['trace_files'][name]:
             raise ValueError('Quality trace changed.')
         t = _read(f)
+        expected_schema = deepcopy(VERDICT_SCHEMA)
+        if contract.get('model_identity_binding') == 'guided_enum.v2':
+            expected_schema['properties']['task_id']['enum'] = [c['task']['id']]
+        if t.get('schema_sha256') is not None and t['schema_sha256'] != digest(expected_schema):
+            raise ValueError('Quality response schema differs from the frozen identity contract.')
         if t['status'] == 'validated':
             if any(t.get(k) != v for k, v in binding(c['task']).items()):
                 raise ValueError('Quality model input binding changed.')

@@ -20,6 +20,8 @@ All views use the same case inventory:
 
 This yields 18 blocked integrity cases and at most 24 requested verification turns. Inputs contain only a claim and the numbered source text. The existing tool-disabled verifier contract applies: one turn, no repair, retry, fallback or additional retrieval; decisive outputs require up to three exact supplied quotations. Exact quotations establish reference fidelity, not entailment. Execution settings and traces are retained. Errors remain in the denominator. An offline run reports the assisted arm as not run; abstaining on everything cannot be presented as a successful verifier run.
 
+The initial `free_string.v1` execution is preserved separately. The model dropped the `task-` prefix when returning opaque task identifiers, so otherwise well-formed responses failed identity validation. Follow-up packets explicitly freeze `guided_enum.v2`: each request constrains the output schema's `task_id` to the exact supplied identifier. This changes routing metadata, not permissible verdicts, passages, references or inference budgets. Wrong identifiers still fail validation; no completed output is repaired. The two executions remain distinct development comparisons, not independent scientific replications. Existing frozen packets and saved results retain their original contract and remain replayable.
+
 Report flag precision/recall on the 36 scored source-contract cases, unsupported test cases retained, supported controls retained, false-flag rate and false-quarantine rate. A review request counts as a flag but not as a quarantine proposal; those rates remain separate. Empty precision denominators are null. Original annotations are displayed and assessed but excluded from these metrics. Model failures, verdict counts and exact-quotation validation accompany the metrics. No model or graph policy is promoted automatically.
 
 ## Commands
@@ -68,6 +70,8 @@ This uses the existing local vLLM model, not a NIM deployment or AWS service. No
 The app's **Evidence-quality comparison** section lists verified completed results and their reports/ZIPs. Reports provide three retained-preview filters, the complete findings, exact source passages, explicit before/after edits, source identities and unscored originals. Hidden preview cases remain in the export.
 
 For real CIViC edges, the existing evidence passport shows only the unmodified-annotation assessment, bound to the exact Pharos snapshot, CIViC snapshot and assertion revision. Synthetic edits never attach to real graph edges. A mismatched snapshot/revision yields no assessment, not implied support. Invalid saved results are withheld. The protected read-only endpoint is `/api/evidence-quality`; scoped passports use `?run=RUN_ID&assertion=ASSERTION_ID`. Existing authentication/origin rules apply.
+
+The general assertion table also includes molecular-profile assertions through their protein crosswalks. Previously its final row filter required the subject itself to be a protein, hiding CIViC profile edges even after selecting that family. The dedicated therapy-question workflow and the source records are unchanged.
 
 Use the existing human-review form to approve any actual state transition. It records reviewer, reason and time in a new run and preserves the original. Model recommendations cannot invoke that form or create human identities. `reviewer_worksheet.json` in the export is blank; edit a copy for independent adjudication. Importing it does not yet apply reviews or create gold labels.
 
