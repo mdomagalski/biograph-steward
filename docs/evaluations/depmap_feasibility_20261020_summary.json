@@ -126,7 +126,53 @@
     "status": "passed"
   },
   "deployment": {
-    "status": "pending",
-    "report_run": "depmap_feasibility_20261020"
+    "status": "passed",
+    "host": "biograph-steward-dev",
+    "tests_run": 341,
+    "optional_skips": 1,
+    "app_python": "3.12",
+    "app_image_sha256": "dd635a34ab167d5f59624a7384ed00bcfdab2aae8bec1e034e027904411fa4c9",
+    "source_run": "depmap_source_24q4_v1_20261020",
+    "report_run": "depmap_feasibility_20261020",
+    "report_url": "http://127.0.0.1:8767/api/evaluation/depmap_feasibility_20261020/",
+    "git_sync": {
+      "status": "passed",
+      "head": "2368256f85911c22f89c2f349a84a7b69591fc1c",
+      "clean": true,
+      "bundle_sha256": "d83f08ec3a7c109307352aed983f25b399cb8492b765edaa130cc00e58284024"
+    },
+    "source_transfer_and_replay": {
+      "status": "passed",
+      "files": 22,
+      "archive_sha256": "12ac44d57d4ec1738022145f1dc5a993be4c4d97d90e14fd09cf9a03c8db5128",
+      "source_sha256": "9af9529d09770e40b4ea764d16df7774d72121c2a43eb0f9510fbeb5409c4b15",
+      "result_sha256": "11b78da40fee02543a693cbf755333ba6ef07623e03beb1c0553adef9c364083",
+      "source_checksums_verified": true,
+      "coverage_reproduced_on_brev": true,
+      "crosswalk_model_inventory_leakage_and_policy_reproduced_byte_exact": true,
+      "model_requests": 0
+    },
+    "http_check": {
+      "status": "passed",
+      "checks": {
+        "anonymous_report_and_export_rejected": true,
+        "report_and_metrics_match_saved_bytes": true,
+        "complete_export_matches_all_saved_files": true,
+        "score_matrix_not_in_report_export": true,
+        "five_historical_reports_preserved_byte_exact": true
+      },
+      "hashes": {
+        "report.html": "c879855228cf118398e096166534fb41e5ed408ce7cfb23d4f20fd9436cb2517",
+        "metrics.json": "c42a2b4a2ce7f49df91bcb1540b91b60ddfb9c1b533eb1136da381e153f88147"
+      },
+      "export_files": 11,
+      "browser_rendering_verified": false,
+      "model_requests": 0
+    }
+  },
+  "implementation_commit": "2368256f85911c22f89c2f349a84a7b69591fc1c",
+  "validation_log_sha256": {
+    "local": "9f88e1b102892344792f18d3df3eaaa248ab90a59a11b6dfdb61d1b411689e54",
+    "brev": "6e025f84669e96d385b94c2ba2040df95367bf87124efc33396298aeb6e49d4d"
   }
 }

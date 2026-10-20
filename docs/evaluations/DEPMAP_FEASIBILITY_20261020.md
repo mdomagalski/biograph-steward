@@ -47,3 +47,14 @@ This audit establishes practical coverage and identifies leakage controls. It do
 ## Reproduction
 
 See [workflow and source contracts](../DEPMAP_AUDIT.md). Source files remain at `runs/depmap_feasibility_20261020/source/`, the first local preparation at `audit/`, and the final report at `final_audit/`. No historical report or cohort was overwritten. The [machine-readable record](depmap_feasibility_20261020_summary.json) binds the final audit, source, mapping, Pharos/CIViC controls and code fingerprint. Full source download receipts remain separate from the report; the export contains coverage/provenance, not the large score matrix or effect values.
+
+
+## Validation and deployment
+
+Implementation commit: `2368256f85911c22f89c2f349a84a7b69591fc1c`. The local Python 3.14 and Brev app-image Python 3.12 suites each ran **341 tests with one optional integration skipped**, with no failures. Test data are invented software fixtures, not scientific labels.
+
+Brev received all nine source files plus publisher metadata/manifest and the report (22 files total). Publisher checksums and all SHA-256 identities passed again inside the container. A separate offline Brev replay reproduced coverage and the gene crosswalk, model inventory, matrix-column inventory, leakage findings and proposed feature policy byte for byte under the identical code fingerprint. The preserved local result was not replaced by its replay.
+
+The app-only rebuild is healthy. Authenticated report/metrics and all 11 report-ZIP files matched saved bytes; anonymous report/ZIP access was rejected. The large gene-effect matrix is preserved separately and omitted from the report export. All five earlier source/cohort/planning reports remained byte-identical. Browser rendering was not independently verified. No model inference, training, GPU-serving changes or graph review actions were performed.
+
+With the existing SSH tunnel active, open the [protected audit report](http://127.0.0.1:8767/api/evaluation/depmap_feasibility_20261020/) or [download its coverage/provenance export](http://127.0.0.1:8767/api/download/depmap_feasibility_20261020). Frozen source files are on Brev at `/data/runs/depmap_source_24q4_v1_20261020/`; the report is at `/data/runs/depmap_feasibility_20261020/` and its validation replay is kept separately in a hidden runs directory.
