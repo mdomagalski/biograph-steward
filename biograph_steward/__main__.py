@@ -116,6 +116,27 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--run",type=Path,required=True)
     p.add_argument("--question",required=True)
     p.add_argument("--out",type=Path,required=True)
+    p = sub.add_parser('crc-pilot-prepare', help='Freeze deterministic CRC queries and a disclosed source-evidence panel.')
+    p.add_argument('--baseline', type=Path, required=True)
+    p.add_argument('--enriched', type=Path, required=True)
+    p.add_argument('--items', type=int, default=20)
+    p.add_argument('--cases', type=Path, help='Optional deterministic query specifications; not scientific gold labels.')
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('crc-pilot-literature', help='Retrieve bounded PubMed and linked PMC text for the frozen panel.')
+    p.add_argument('--packet', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('cptac-inspect', help='Freeze a processed CPTAC colon matrix and report exact cohort mappings.')
+    p.add_argument('--pharos-run', type=Path, required=True)
+    p.add_argument('--matrix', type=Path, help='Optional existing source file; otherwise download the declared matrix.')
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('crc-pilot-run', help='Report source value with optional advisory passage verification; no gold labels or graph writes.')
+    p.add_argument('--packet', type=Path, required=True)
+    p.add_argument('--literature', type=Path, required=True)
+    p.add_argument('--cptac', type=Path)
+    p.add_argument('--verifier', choices=['none', 'codex', 'configured', 'api', 'nim'], default='none')
+    p.add_argument('--model')
+    p.add_argument('--workers', type=int, default=2)
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser("audit", help="Prepare benchmark readiness and pair-level review files from a snapshot.")
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
@@ -139,6 +160,31 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'crc-pilot-prepare':
+            from .crc_pilot import prepare_pilot
+            r = prepare_pilot(args.baseline, args.enriched, args.out, size=args.items,
+                              cases=json.loads(args.cases.read_text()) if args.cases else None)
+            print(json.dumps({'packet_sha256': r['packet_sha256'], 'selection': r['selection'], 'model_calls': 0}, indent=2))
+            return 0
+        if args.command == 'crc-pilot-literature':
+            from .crc_pilot import retrieve_pilot_literature
+            r = retrieve_pilot_literature(args.packet, args.out)
+            print(json.dumps({'manifest_sha256': r['manifest_sha256'], 'publications': len(r['requested_pmids']), 'model_calls': 0}, indent=2))
+            return 0
+        if args.command == 'cptac-inspect':
+            from .cptac import prepare_cptac
+            r = prepare_cptac(args.pharos_run, args.out, matrix=args.matrix)
+            print(json.dumps({'sidecar_sha256': r['sidecar_sha256'], 'genes': r['analysis']['gene_rows'],
+                              'samples': r['analysis']['sample_columns'], 'matched_pharos_genes': r['analysis']['cohort_gene_rows_matching_pharos']}, indent=2))
+            return 0
+        if args.command == 'crc-pilot-run':
+            from .crc_pilot import run_pilot
+            r = run_pilot(args.packet, args.literature, args.out, cptac=args.cptac, mode=args.verifier,
+                          model=args.model, workers=args.workers,
+                          progress=lambda msg: print(msg, file=sys.stderr, flush=True))
+            print(json.dumps({k: r[k] for k in ['panel_items', 'unique_publications', 'views', 'model_requests',
+                                               'scientific_accuracy', 'scientific_improvement_established']}, indent=2))
+            return 0
         if args.command == 'planning-regression-prepare':
             from .planning_comparison import prepare_regression
             packet = prepare_regression(args.control_result, args.source_suite, args.out,
