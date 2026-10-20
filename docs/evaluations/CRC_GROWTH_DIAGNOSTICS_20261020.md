@@ -1,5 +1,7 @@
 # Development source ablations and a fresh gene reserve — October 20, 2026
 
+Follow-up: the [full-cohort retrieval and fresh comparison](CRC_FRESH_COMPARISON_20261020.md) is complete. The reserve is now consumed; pathway-only did not meet the predeclared improvement rule. The notes below retain the earlier development-stage results and reservation state.
+
 **Pathway variants are promising hypotheses; no new improvement has been confirmed.** Following the [negative/inconclusive first comparison](CRC_GROWTH_COMPARISON_20261020.md), the diagnostic runner separated source blocks, audited all original test-gene rank changes and reserved 256 untouched genes. Every score below reuses the already exposed 52-gene holdout. These are development diagnostics, not a second independent test.
 
 ## What the ablations show

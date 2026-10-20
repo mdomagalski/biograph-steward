@@ -56,6 +56,8 @@ python3 app.py fresh-compare \
 
 The runner first verifies the freeze, exact implementation fingerprint and all pinned source bytes without parsing reserved effects. It loads only the development block, fits all declared models and controls, then saves models, preprocessing, donor maps and every prediction in `sealed_predictions.json`. Only then does it create an exclusive `.reserved_gene_test_access_*.json` ledger beside the pinned source directory, keyed by source and test-gene identities. Any overlapping gene set in another preserved ledger for that source is rejected, even under a different protocol identity. Preserve the ledger and partial output after a post-access failure; diagnose/recover from the same sealed predictions rather than rerunning model selection.
 
+When moving or publishing a consumed test to another machine, preserve its exposure ledger beside that machine's pinned source directory too. The result export retains the byte-identical receipt as `test_access_receipt.json`; copy it under its source/test-gene digest ledger name. Merely importing a report is insufficient to protect another source location from a rerun. The recorded Brev deployment mirrors this prior exposure and tests that a repeat fails before source loading or fitting.
+
 The report gives primary metrics/interval/decision, every secondary arm and control, and every reserved gene's ranks and source-linked pathway contributions. These are statistical explanations, not causal target validity. Attribution, source licenses, full feature input rows and source locators are retained. The full original source matrix and large Pharos response packet remain separate from the result export.
 
 ```python

@@ -64,9 +64,11 @@ The [first scored comparison](docs/evaluations/CRC_GROWTH_COMPARISON_20261020.md
 
 The [development diagnostic workflow](docs/GROWTH_DIAGNOSTICS.md) separates pathway, expression and BioPlex blocks, checks fixed late combination and decomposes the recorded rank changes. A separate hash-based reservation excludes all previously exposed genes and shared protein components before selecting a fresh gene holdout. Development scores cannot establish a new improvement.
 
-The [recorded diagnostic run](docs/evaluations/CRC_GROWTH_DIAGNOSTICS_20261020.md) found a promising exposed-data pathway-only score of 0.553, versus 0.381 for full Pharos, while the original validation set still nominated CPTAC-only. It reserves 256 new genes with zero gene/product overlap; their outcomes remain unopened. The disagreement and source-block results motivate the next frozen comparison rather than an automatic model or graph-pruning change.
+The [recorded diagnostic run](docs/evaluations/CRC_GROWTH_DIAGNOSTICS_20261020.md) found an exposed-data pathway-only score of 0.553, versus 0.381 for full Pharos, while the original validation set still nominated CPTAC-only. Its 256-gene reserve was subsequently consumed only after a fresh freeze and prediction seal, as recorded below.
 
 The [fresh comparison workflow](docs/FRESH_GROWTH_COMPARISON.md) retrieves Pharos context over the full development/reserve union, freezes one primary pathway-only contrast and all secondary controls, and seals every prediction before source-bound reserved-gene access. It preserves all earlier pilots and forbids another test of overlapping reserved genes under a different protocol identity.
+
+The [completed fresh comparison](docs/evaluations/CRC_FRESH_COMPARISON_20261020.md) verified 419,049 Pharos context rows across all 512 genes, then tested the reserved 256 genes once. Pathway-only did **not** demonstrate improvement: Spearman 0.264 versus 0.261 for full restricted Pharos (change +0.003; paired 95% interval −0.127 to +0.128). Pharos+CPTAC scored 0.323 as a descriptive secondary result. All controls, source files and gene passports are preserved; no production feature or evidence-pruning policy was changed.
 
 ## What the prototype does now
 
