@@ -4,6 +4,8 @@ This workflow measures source coverage and performs advisory claim-to-passage ch
 
 The [first recorded pilot](evaluations/CRC_EVIDENCE_VALUE_20261020.md) includes the actual results, source-access gaps, measurement counts, unresolved mappings and complete experiment identities. Its executed packet is `runs/crc_evidence_value_20261020/final_packet/`; the initial unexecuted `packet/` preparation is retained separately after a pre-inference metadata-label correction.
 
+The [subsequent context/cohort result](evaluations/CRC_CONTEXT_COHORT_20261020.md) preserves this pilot and adds an AI-assisted source-scope overlay plus a crosswalk accounting for every measured gene. Use the [mapping/follow-up commands](COHORT_MAPPING.md) for that increment; no historical verdict or packet fingerprint is rewritten.
+
 ## Frozen sources and selection
 
 Use a Pharos-only run and its CIViC-enriched copy with the same primary snapshot and review events. The default six deterministic questions reuse KRAS/EGFR context, G13D/cetuximab, G12C/panitumumab, a complete complex profile and the locally accepted G13D counterpart. They are development examples, not an unseen evaluation. Custom specifications can be supplied with `--cases`.
@@ -35,7 +37,7 @@ Preparation copies raw sources, freezes the current code and budgets, executes t
 
 The selected CPTAC source is the PNNL gene-level tumor/normal log2-ratio matrix linked by the [LinkedOmics CPTAC-COAD catalogue](https://www.linkedomics.org/data_download/CPTAC-COAD/) and the [PDC000116 study](https://pdc.cancer.gov/pdc/study/PDC000116), associated with [Vasaikar et al., Cell 2019](https://doi.org/10.1016/j.cell.2019.03.030). The complete matrix and its missing values are preserved. The candidate population is the source's complete measured-gene list, rather than the disease-associated Pharos subset.
 
-Mapping is limited to exact reported symbols in the frozen Pharos cohort. Ambiguous mappings are retained with all IDs; unmatched genes are not assigned fabricated UniProt identifiers. Whole-proteome identifier resolution remains pending. The sidecar reports observed sample counts and descriptive median source ratios. Abundance is not a causal-disease or drug-response label. Pharos may already link to the same experiment through LinkedOmicsKB; quantitative detail is not automatically independent evidence. `--matrix` accepts a local file but records its source identity as caller-declared rather than independently verified.
+The original sidecar's mapping is limited to exact reported symbols in the frozen Pharos cohort. The separate [cohort mapper](COHORT_MAPPING.md) now accounts for all 6,422 measured rows using frozen human HGNC/UniProt registries, resolving 6,415 and retaining seven ambiguous names. It preserves gene/product granularity and does not replace this historical sidecar. The sidecar reports observed sample counts and descriptive median source ratios. Abundance is not a causal-disease or drug-response label. Pharos may already link to the same experiment through LinkedOmicsKB; quantitative detail is not automatically independent evidence. `--matrix` accepts a local file but records its source identity as caller-declared rather than independently verified.
 
 ## Advisory assessment
 

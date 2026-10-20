@@ -137,6 +137,20 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--model')
     p.add_argument('--workers', type=int, default=2)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('identifier-registry', help='Freeze the official HGNC and reviewed human UniProt identifier tables.')
+    p.add_argument('--downloads', type=Path, help='Optional existing downloads with hash-checked retrieval.json receipts.')
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('cptac-map', help='Account for every measured gene and preserve ambiguous gene/product mappings.')
+    p.add_argument('--cptac', type=Path, required=True)
+    p.add_argument('--pharos-run', type=Path, required=True)
+    p.add_argument('--registry', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('source-adjudicate', help='Record an AI-authored source-context overlay without changing original verdicts or graph states.')
+    p.add_argument('--pilot', type=Path, required=True)
+    p.add_argument('--literature', type=Path, required=True)
+    p.add_argument('--decision', type=Path, required=True)
+    p.add_argument('--mapping', type=Path)
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser("audit", help="Prepare benchmark readiness and pair-level review files from a snapshot.")
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
@@ -160,6 +174,21 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'identifier-registry':
+            from .cohort_mapping import collect_registry
+            r = collect_registry(args.out, downloads=args.downloads)
+            print(json.dumps({k: r[k] for k in ['registry_sha256', 'hgnc_records', 'uniprot_records']}, indent=2))
+            return 0
+        if args.command == 'cptac-map':
+            from .cohort_mapping import map_cohort
+            r = map_cohort(args.cptac, args.pharos_run, args.registry, args.out)
+            print(json.dumps({'result_sha256': r['result_sha256'], **r['summary']}, indent=2))
+            return 0
+        if args.command == 'source-adjudicate':
+            from .source_adjudication import adjudicate_source
+            r = adjudicate_source(args.pilot, args.literature, args.decision, args.out, mapping=args.mapping)
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'item_id', 'decision', 'human_scientific_labels', 'graph_assertions_changed']}, indent=2))
+            return 0
         if args.command == 'crc-pilot-prepare':
             from .crc_pilot import prepare_pilot
             r = prepare_pilot(args.baseline, args.enriched, args.out, size=args.items,

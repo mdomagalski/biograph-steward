@@ -1,0 +1,138 @@
+{
+  "format": "biograph-steward.ai-context-decision.v1",
+  "author_kind": "ai_assistant",
+  "method": "Assistant inspection of the cached primary-paper results, relevant discussion, methods and figure-caption text; no new verifier API run or independent expert review.",
+  "item_id": 947,
+  "record_sha256": "98342ae599bc1d3c1e051fa80551043d1c211c9a79d9ca221c25ae0a1cd7270b",
+  "pmid": "20956938",
+  "decision": "scope_warning_core_preclinical_finding_supported",
+  "summary": "The KRAS-mutant preclinical combination-response finding is supported within the tested models. Retain a warning about the description: wild-type controls responded to cetuximab alone, and mild monotherapy effects and culture conditions need qualification. The original whole-annotation CONTRADICT verdict remains recorded; it should not be interpreted as disproving the scoped mutant finding.",
+  "proposed_scoped_summary": "In LS180, LoVo and HCT116 KRAS-mutant colorectal models, cetuximab plus dasatinib reduced proliferation under PDL/laminin culture conditions and inhibited xenograft growth. Cetuximab alone was ineffective in these tested mutant xenografts; dasatinib alone had limited, non-significant tumor-growth effects. SW48 and CaCo2 were wild-type controls sensitive to cetuximab alone. HCT116 showed a more modest combination response. These are preclinical observations, without demonstrated clinical benefit.",
+  "findings": [
+    {
+      "id": "mutant_combination",
+      "status": "supported_in_scope",
+      "explanation": "The source supports reduced proliferation and tumor growth under combined cetuximab and dasatinib in the tested LS180, LoVo and HCT116 KRAS-mutant models. This is preclinical evidence, not a claim about all KRAS variants or patient benefit.",
+      "sources": [
+        {
+          "locator": "/article/body/sec[2]/sec[2]/p[1]",
+          "text_sha256": "121a5cdfc1421fcb6e5bdca140aa6e7fdc103a404901bde3d00d98c960004a1c"
+        },
+        {
+          "locator": "/article/body/sec[2]/sec[4]/p[3]",
+          "text_sha256": "4a4032057a248599daaceac25da84aa030362245c8b72dc9a077103193d569cd"
+        },
+        {
+          "locator": "/article/body/sec[2]/sec[4]/p[5]",
+          "text_sha256": "bd77e39958bc29cb1fd1c14f51f64e16be0a745d4a60caff1a503e963853762a"
+        }
+      ]
+    },
+    {
+      "id": "wild_type_controls",
+      "status": "scope_warning",
+      "explanation": "SW48 and CaCo2 were cetuximab-sensitive wild-type controls. Their monotherapy response does not contradict the KRAS-mutant combination finding. Wording that extends combination-only efficacy to all five named lines is misleading; the combination experiments described here used the three mutant lines.",
+      "sources": [
+        {
+          "locator": "/article/body/sec[2]/sec[4]/p[2]",
+          "text_sha256": "679a209274fa61e2bc4afa4a24a6107c53cf8c00fa010bb477bce713bd27ca81"
+        },
+        {
+          "locator": "/article//fig[@id=\"F4\"]/caption",
+          "text_sha256": "27d58f5af69eec1520fa2f86a8574c07c61af25367f66b1c21507b0b7831c4e8"
+        },
+        {
+          "locator": "/article//fig[@id=\"F5\"]/caption",
+          "text_sha256": "c9416510ca8fc0095c312533c961fecd276c0551dcb5e091972553a359ad6807"
+        }
+      ]
+    },
+    {
+      "id": "monotherapy_qualification",
+      "status": "scope_warning",
+      "explanation": "The paper reports mild dasatinib growth inhibition in vitro and minimal, non-significant tumor-growth delay in some mutant xenografts. The phrase neither monotherapy had efficacy must not become a universal assertion of no biological effect or a formal synergy claim.",
+      "sources": [
+        {
+          "locator": "/article/body/sec[2]/sec[2]/p[1]",
+          "text_sha256": "121a5cdfc1421fcb6e5bdca140aa6e7fdc103a404901bde3d00d98c960004a1c"
+        },
+        {
+          "locator": "/article/body/sec[2]/sec[4]/p[3]",
+          "text_sha256": "4a4032057a248599daaceac25da84aa030362245c8b72dc9a077103193d569cd"
+        }
+      ]
+    },
+    {
+      "id": "experimental_context",
+      "status": "scope_warning",
+      "explanation": "The in-vitro resistance pattern depended on PDL/laminin culture conditions; mutant cells responded differently on plastic or fibronectin. HCT116 had a more modest combination response. Preserve these context limits rather than generalizing to every experimental setting.",
+      "sources": [
+        {
+          "locator": "/article/body/sec[2]/sec[2]/p[1]",
+          "text_sha256": "121a5cdfc1421fcb6e5bdca140aa6e7fdc103a404901bde3d00d98c960004a1c"
+        },
+        {
+          "locator": "/article/body/sec[3]/p[2]",
+          "text_sha256": "0e254cb709bb6765e1704f85906be5d52d3055414f7f683494a80726e1c13dd5"
+        },
+        {
+          "locator": "/article/body/sec[3]/p[4]",
+          "text_sha256": "70109105c4d4697c2e1f87488e57608d11d7dda23211a515d09df08b20922e8f"
+        }
+      ]
+    },
+    {
+      "id": "clinical_translation",
+      "status": "not_established",
+      "explanation": "Cell lines and mouse xenografts supply no demonstrated patient response or clinical recommendation. The paper proposes further clinical investigation; this overlay does not validate the whole CIViC profile or every KRAS variant.",
+      "sources": [
+        {
+          "locator": "/article/body/sec[3]/p[6]",
+          "text_sha256": "fd9006a3d84ca4c762331e11a3d292645bf1b1c9bb395a531072faa12460a9fc"
+        },
+        {
+          "locator": "/article/body/sec[4]/sec[7]/p[1]",
+          "text_sha256": "67ba95ee2e1d4a848b078980be79d93e96c4a9adc2d2d26476322d44da40c671"
+        }
+      ]
+    },
+    {
+      "id": "variant_origin",
+      "status": "not_established",
+      "explanation": "The supplied methods sequence cell-line DNA; these passages do not independently establish the annotated somatic origin through matched-normal or germline analysis. This remains an evidentiary gap rather than a contradiction.",
+      "sources": [
+        {
+          "locator": "/article/body/sec[4]/sec[4]/p[1]",
+          "text_sha256": "15e69236eaf482399627d62b8d04f6b423c46b2d7ab48a2a06855806c11f6411"
+        },
+        {
+          "locator": "/article/body/sec[2]/sec[1]/p[1]",
+          "text_sha256": "e6b466e2d462d19b27aab27eda231572823ff1bdae0d0b1c2e21f90d33f49a8c"
+        }
+      ]
+    }
+  ],
+  "reviewed_source_locators": [
+    "/article//fig[@id=\"F2\"]/caption",
+    "/article//fig[@id=\"F4\"]/caption",
+    "/article//fig[@id=\"F5\"]/caption",
+    "/article/body/sec[2]/sec[1]/p[1]",
+    "/article/body/sec[2]/sec[2]/p[1]",
+    "/article/body/sec[2]/sec[4]/p[2]",
+    "/article/body/sec[2]/sec[4]/p[3]",
+    "/article/body/sec[2]/sec[4]/p[5]",
+    "/article/body/sec[3]/p[2]",
+    "/article/body/sec[3]/p[4]",
+    "/article/body/sec[3]/p[6]",
+    "/article/body/sec[4]/sec[10]/p[1]",
+    "/article/body/sec[4]/sec[4]/p[1]",
+    "/article/body/sec[4]/sec[7]/p[1]"
+  ],
+  "limitations": [
+    "AI-assisted source adjudication, not independent expert review or a scientific gold label.",
+    "Relevant cached text and figure captions were inspected; figure images, supplements and raw experimental data were not independently analyzed.",
+    "The scoped finding does not establish every qualification of the complete annotation; somatic origin remains unverified from these passages.",
+    "No accepted graph assertion, source annotation, historical machine verdict or human review worksheet is changed.",
+    "No clinical recommendation, formal drug-synergy calculation or prediction-performance improvement is established."
+  ]
+}

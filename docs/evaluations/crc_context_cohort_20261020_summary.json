@@ -1,0 +1,170 @@
+{
+  "format": "biograph-steward.crc-context-cohort-summary.v1",
+  "recorded_date": "2026-10-20",
+  "original_pilot_result_sha256": "7dcecc66c0a6eef83b29d93ee50c54a5db8120574f1ad9f0b9a76b4854324593",
+  "mapping_result_sha256": "de0313162790c33cde712c34c1811efaad6e5715b80082980b93ebbe632889da",
+  "cohort_sha256": "d2a356a93211fbd012cbfd813908d6af8e82ab410e7cb5e0476efe7adcd2c8f3",
+  "registry_sha256": "1b801ad86c6f57d38e4112b55488ba8b7d82ef93e4aee638b9d816bcf1a3e988",
+  "adjudication_result_sha256": "4a7586d4b4ed075b4a83c96bfe839a89622b08470a8765924d4c932b61d2ff7e",
+  "decision_sha256": "87e921123a08a8bada2d99d1d8d19b05d6540e91571f0fc1a1be46caa5328660",
+  "matrix_sha256": "28907966ebe2fdd7c41b1913da1c15a15ffd7eac4f30a1f87c499a487b8454cc",
+  "cptac_sidecar_sha256": "ad190c3ffe25e578ee3330f584eec5fb6d442b9b6e81d445d3b5fa0aa8fccfd7",
+  "mapping": {
+    "measured_gene_rows": 6422,
+    "sample_columns": 96,
+    "observed_values": 551952,
+    "missing_values": 64560,
+    "mapping_status_counts": {
+      "ambiguous_registry_relation": 7,
+      "approved_symbol": 6176,
+      "unique_registry_relation": 239
+    },
+    "resolved_gene_rows": 6415,
+    "unresolved_or_ambiguous_rows": 7,
+    "identifier_eligible_gene_rows": 6415,
+    "protein_context_eligible_gene_rows": 6399,
+    "resolved_rows_with_multiple_protein_candidates": 19,
+    "resolved_rows_without_confirmed_reviewed_product": 16,
+    "duplicate_resolved_gene_groups": 0,
+    "pharos_proteins": 99,
+    "pharos_proteins_linked_to_measured_gene": 45,
+    "measured_rows_linked_to_pharos": 44,
+    "original_exact_symbol_rows": 44,
+    "labels_created": 0,
+    "graph_assertions_created": 0,
+    "protein_specific_measurements_created": 0
+  },
+  "ambiguous_rows": [
+    {
+      "reported_symbol": "AIM1",
+      "candidate_genes": [
+        {
+          "hgnc_id": "HGNC:11390",
+          "approved_symbol": "AURKB"
+        },
+        {
+          "hgnc_id": "HGNC:16472",
+          "approved_symbol": "SLC45A2"
+        },
+        {
+          "hgnc_id": "HGNC:356",
+          "approved_symbol": "CRYBG1"
+        }
+      ]
+    },
+    {
+      "reported_symbol": "HIST2H2AA4",
+      "candidate_genes": [
+        {
+          "hgnc_id": "HGNC:29668",
+          "approved_symbol": "H2AC19"
+        },
+        {
+          "hgnc_id": "HGNC:4736",
+          "approved_symbol": "H2AC18"
+        }
+      ]
+    },
+    {
+      "reported_symbol": "HN1L",
+      "candidate_genes": [
+        {
+          "hgnc_id": "HGNC:14122",
+          "approved_symbol": "CRAMP1"
+        },
+        {
+          "hgnc_id": "HGNC:14137",
+          "approved_symbol": "JPT2"
+        }
+      ]
+    },
+    {
+      "reported_symbol": "MPP6",
+      "candidate_genes": [
+        {
+          "hgnc_id": "HGNC:18167",
+          "approved_symbol": "PALS2"
+        },
+        {
+          "hgnc_id": "HGNC:7214",
+          "approved_symbol": "MPHOSPH6"
+        }
+      ]
+    },
+    {
+      "reported_symbol": "QARS",
+      "candidate_genes": [
+        {
+          "hgnc_id": "HGNC:3418",
+          "approved_symbol": "EPRS1"
+        },
+        {
+          "hgnc_id": "HGNC:9751",
+          "approved_symbol": "QARS1"
+        }
+      ]
+    },
+    {
+      "reported_symbol": "SARS",
+      "candidate_genes": [
+        {
+          "hgnc_id": "HGNC:10537",
+          "approved_symbol": "SARS1"
+        },
+        {
+          "hgnc_id": "HGNC:17697",
+          "approved_symbol": "SARS2"
+        }
+      ]
+    },
+    {
+      "reported_symbol": "SEPT2",
+      "candidate_genes": [
+        {
+          "hgnc_id": "HGNC:15848",
+          "approved_symbol": "SEPTIN6"
+        },
+        {
+          "hgnc_id": "HGNC:7729",
+          "approved_symbol": "SEPTIN2"
+        }
+      ]
+    }
+  ],
+  "source_adjudication": {
+    "item_id": 947,
+    "pmid": "20956938",
+    "decision": "scope_warning_core_preclinical_finding_supported",
+    "summary": "The KRAS-mutant preclinical combination-response finding is supported within the tested models. Retain a warning about the description: wild-type controls responded to cetuximab alone, and mild monotherapy effects and culture conditions need qualification. The original whole-annotation CONTRADICT verdict remains recorded; it should not be interpreted as disproving the scoped mutant finding.",
+    "original_verdicts": {
+      "abstract": "NOT_ENOUGH_INFORMATION",
+      "augmented": "CONTRADICT"
+    },
+    "source_scope": {
+      "cached_body_blocks": 35,
+      "available_passages_including_abstract_and_captions": 42,
+      "reviewed_text_blocks": 14,
+      "figure_images_reviewed": false,
+      "supplements_reviewed": false,
+      "independent_raw_data_reanalysis": false
+    }
+  },
+  "human_scientific_labels": 0,
+  "scientific_accuracy": null,
+  "scientific_improvement_established": false,
+  "new_verifier_model_requests": 0,
+  "graph_assertions_changed": 0,
+  "source_records_changed": 0,
+  "original_verdicts_changed": 0,
+  "local_validation": {
+    "core_tests": 333,
+    "optional_skips": 1,
+    "status": "passed",
+    "loopback_proxy_note": "Initial attempt had one existing loopback HTTP test intercepted by Squid; rerun with explicit NO_PROXY and no_proxy passed."
+  },
+  "deployment": {
+    "status": "pending",
+    "mapping_run": "crc_cohort_mapping_20261020",
+    "adjudication_run": "crc_context_adjudication_20261020"
+  }
+}

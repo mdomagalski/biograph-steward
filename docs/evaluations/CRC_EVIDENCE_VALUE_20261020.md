@@ -4,6 +4,8 @@ This increment moves from planning reliability to actual source checking and mea
 
 The result demonstrates a working biological-evidence inspection workflow. **It does not establish scientific accuracy, clinical truth or improved graph prediction.** Human scientific labels remain zero; no graph assertions or review states were changed.
 
+A [separate source-context and measured-cohort follow-up](CRC_CONTEXT_COHORT_20261020.md) now records an AI-assisted adjudication and whole-matrix identifier accounting. The first-run results below remain historical and unchanged.
+
 ## Observed source-checking results
 
 | Inventory or outcome | First run |
