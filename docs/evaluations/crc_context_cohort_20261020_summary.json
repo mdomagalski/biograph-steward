@@ -163,8 +163,64 @@
     "loopback_proxy_note": "Initial attempt had one existing loopback HTTP test intercepted by Squid; rerun with explicit NO_PROXY and no_proxy passed."
   },
   "deployment": {
-    "status": "pending",
+    "status": "passed",
+    "host": "biograph-steward-dev",
+    "app_python": "3.12",
+    "app_image_sha256": "bc65f3a8af239b216e9e6c6edf9a64d6494a5efa64960a4806d75f1ae57901e5",
+    "core_tests": 333,
+    "optional_skips": 1,
     "mapping_run": "crc_cohort_mapping_20261020",
-    "adjudication_run": "crc_context_adjudication_20261020"
+    "adjudication_run": "crc_context_adjudication_20261020",
+    "mapping_report_url": "http://127.0.0.1:8767/api/evaluation/crc_cohort_mapping_20261020/",
+    "adjudication_report_url": "http://127.0.0.1:8767/api/evaluation/crc_context_adjudication_20261020/",
+    "git_sync": {
+      "status": "passed",
+      "head": "e0310380a1d615aafdb00b41b588257d3384c0c8",
+      "clean": true,
+      "bundle_sha256": "e10b88a5fb09d7f3cf3100a38cd08eb10c84b67802598bad7db5df4ce74f8858"
+    },
+    "artifact_transfer": {
+      "status": "passed",
+      "files": 20,
+      "archive_sha256": "882ba35153f20d88b9d9aa66f5d37e4e5cacd757b9f452a3c7dcff533a33bff8",
+      "mapping_result_sha256": "de0313162790c33cde712c34c1811efaad6e5715b80082980b93ebbe632889da",
+      "adjudication_result_sha256": "4a7586d4b4ed075b4a83c96bfe839a89622b08470a8765924d4c932b61d2ff7e",
+      "old_pilot_result_sha256": "7dcecc66c0a6eef83b29d93ee50c54a5db8120574f1ad9f0b9a76b4854324593",
+      "new_verifier_model_requests": 0
+    },
+    "http_check": {
+      "status": "passed",
+      "checks": {
+        "crc_cohort_mapping_20261020": {
+          "anonymous_report_and_zip_rejected": true,
+          "report_and_metrics_match_saved_bytes": true,
+          "zip_preserves_all_frozen_files": true,
+          "zip_files": 11
+        },
+        "crc_context_adjudication_20261020": {
+          "anonymous_report_and_zip_rejected": true,
+          "report_and_metrics_match_saved_bytes": true,
+          "zip_preserves_all_frozen_files": true,
+          "zip_files": 9
+        },
+        "historical_pilot_and_both_planning_reports_preserved": true
+      },
+      "hashes": {
+        "crc_cohort_mapping_20261020/report.html": "d9319feb587b4b1b807a749a6d65add9cad68931f5180df6fca173c81e53a74d",
+        "crc_cohort_mapping_20261020/metrics.json": "35831de6274a58f72f2cfb0351674f9e546a69aadcd750071ea33cf961e29b69",
+        "crc_context_adjudication_20261020/report.html": "ca4216ee53f67aad760ee21c447578a8f96af7dc96cd0a83da7bf80ec4a1988c",
+        "crc_context_adjudication_20261020/metrics.json": "42cafce817a83e0948962c5c24449751a198222413694eaff9f40293cf8db523",
+        "crc_evidence_value_20261020/report.html": "8905da599e5cd8ec65f7f20c8e1a677a59e3620477ed73f55a8127cefc6a39e0",
+        "scoped_targets_v4_live_20261020/report.html": "979cf90e03c981dc7171ba4047e5c5b105c03f45e95559dda6129052b063f17d",
+        "planning_challenge_live_20261020/report.html": "8134eef8c2cafcfbd26db8f6abe8fe84010b01c745b959bf76e36e6f95f79e10"
+      },
+      "browser_rendering_verified": false,
+      "new_verifier_model_requests": 0
+    }
+  },
+  "implementation_commit": "e0310380a1d615aafdb00b41b588257d3384c0c8",
+  "validation_logs": {
+    "local_sha256": "b0ab26c04f481e6dfd8ff9e38cee40b33e9da9b3c4af032e6cd000b5138a5552",
+    "brev_sha256": "56d698878787a94601a906a8ef5dbdabe11092dff4b6e9fb55bde489c1b392df"
   }
 }

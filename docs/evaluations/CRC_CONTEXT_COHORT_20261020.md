@@ -45,4 +45,14 @@ Workflow and reproduction commands: [measured cohort mapping](../COHORT_MAPPING.
 
 The mapping ZIP contains all matrix rows, all gene/product candidates, frozen registry TSVs and receipts, cohort IDs, the original matrix and the bounded Pharos identifier list. The adjudication ZIP contains original item/assessments/traces, the AI decision and source-bound text references. Verification replays identifier joins from frozen inputs and confirms historical pilot hashes without rewriting the historical engine identity. Test fixtures are invented software cases, never scientific gold.
 
+Implementation commit: `e0310380a1d615aafdb00b41b588257d3384c0c8`. Both the local Python 3.14 suite and the Brev Python 3.12 app-image suite ran **333 tests with one optional integration skipped**, with no failures. The initial local attempt encountered an existing loopback integration test through Squid; the explicit loopback proxy bypass passed. Source-rights provenance was then added and the final complete local suite passed again.
+
+Brev received 20 files in two separate immutable report roots. The app-only rebuild is healthy; no new verifier requests or GPU model changes were made. Mapping reproduction and all artifact hashes passed inside the container. Protected HTTP checks matched report/metrics and every ZIP member to the local bytes; anonymous report/ZIP access was rejected. The original evidence pilot and both historical planning reports were byte-identical. Browser rendering was not independently verified.
+
+With the existing SSH tunnel active, open these protected reports in Chrome:
+
+- [Context adjudication](http://127.0.0.1:8767/api/evaluation/crc_context_adjudication_20261020/)
+- [Complete measured cohort crosswalk](http://127.0.0.1:8767/api/evaluation/crc_cohort_mapping_20261020/)
+- [Cohort export, including matrix and registry inputs](http://127.0.0.1:8767/api/download/crc_cohort_mapping_20261020)
+
 Independent scientific labels remain **zero**, scientific accuracy remains **null**, and graph improvement remains **unestablished**. A prediction experiment still needs a defined biological endpoint, defensible labels, target-appropriate baseline features and source/study leakage controls. This increment supplies the measured identifier population and a traceable context correction proposal; abundance alone does not establish causal disease or drug-response truth.
