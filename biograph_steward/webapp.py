@@ -25,6 +25,7 @@ def report_html(graph: dict | None = None, *, protected=False) -> str:
     script += '\n' + Path(__file__).with_name("civic.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("planner.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("quality.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("source_facts.js").read_text(encoding="utf-8")
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
@@ -36,7 +37,7 @@ def login_return_path(value):
         return '/'
     try:
         parsed = urlsplit(value)
-        report = re.fullmatch(r'/api/evaluation/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', parsed.path)
+        report = re.fullmatch(r'/api/(?:evaluation|source-facts|fact-check)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', parsed.path)
         if (parsed.scheme or parsed.netloc or parsed.fragment or not value.startswith('/') or
                 not (parsed.path == '/' or (report and not parsed.query))):
             return '/'
@@ -144,12 +145,48 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return_to = '/'
                 self.login_page(return_to)
                 return
-            report_navigation = (re.fullmatch(r'/api/evaluation/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', path)
+            report_navigation = (re.fullmatch(r'/api/(?:evaluation|source-facts|fact-check)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', path)
                                  and 'text/html' in self.headers.get('Accept', '').lower())
             if (path == '/' or report_navigation) and not self.authenticated():
                 self.login_page(self.path)
                 return
             if not self.authenticate():
+                return
+            if path == '/api/source-facts':
+                from .source_fact_workflow import load_fact_artifact
+                reports = []; invalid = 0
+                for folder in sorted(runs_dir.iterdir()):
+                    if (not folder.is_dir() or folder.is_symlink() or
+                            not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', folder.name) or
+                            not (folder / 'source_fact_manifest.json').is_file()):
+                        continue
+                    try:
+                        manifest, payload = load_fact_artifact(folder)
+                        if manifest['kind'] != 'facts':
+                            continue
+                        reports.append({'name': folder.name, 'source_id': payload['source_id'],
+                                        'records': len(payload['records']), 'coverage_gaps': len(payload['coverage_gaps']),
+                                        'report_url': '/api/source-facts/' + folder.name + '/'})
+                    except (ValueError, TypeError, KeyError, OSError):
+                        invalid += 1
+                self.json_reply({'reports': reports, 'invalid_reports_withheld': invalid, 'graph_mutations': 0})
+                return
+            match = re.fullmatch(r'/api/(source-facts|fact-check)/([A-Za-z0-9_-]{1,80})/(report\.html|source_facts\.json|comparison\.json)?', path)
+            if match:
+                from .source_fact_workflow import load_fact_artifact, FILES
+                folder = runs_dir / match.group(2)
+                name = match.group(3) or 'report.html'
+                if folder.is_symlink() or folder.resolve().parent != runs_dir or not folder.is_dir():
+                    self.json_reply({'error': 'Source-fact artifact not found.'}, 404); return
+                try:
+                    manifest, _ = load_fact_artifact(folder)
+                    expected_kind = 'facts' if match.group(1) == 'source-facts' else 'comparison'
+                    if manifest['kind'] != expected_kind or name not in {'report.html', FILES[expected_kind]}:
+                        self.json_reply({'error': 'Source-fact artifact not found.'}, 404); return
+                    self.reply((folder / name).read_bytes(), content_type=(
+                        'text/html; charset=utf-8' if name == 'report.html' else 'application/json'))
+                except (ValueError, TypeError, KeyError, OSError):
+                    self.json_reply({'error': 'Source-fact artifact failed integrity checks.'}, 400)
                 return
             if path == '/api/evidence-quality':
                 from .evidence_quality import POLICY, verify_quality_result, quality_passports
@@ -251,10 +288,19 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             match = re.fullmatch(r"/api/download/([A-Za-z0-9_-]{1,80})", path)
             if match:
+                if (runs_dir / match.group(1)).is_symlink():
+                    self.json_reply({'error': 'Run not found'}, 404); return
                 folder = (runs_dir / match.group(1)).resolve()
                 if not folder.is_dir() or folder.parent != runs_dir:
                     self.json_reply({"error": "Run not found"}, 404)
                     return
+                if (folder / 'source_fact_manifest.json').is_file():
+                    try:
+                        from .source_fact_workflow import load_fact_artifact
+                        load_fact_artifact(folder)
+                    except (ValueError, TypeError, KeyError, OSError):
+                        self.json_reply({'error': 'Source-fact artifact failed integrity checks.'}, 400)
+                        return
                 if (folder / 'metrics.json').is_file():
                     try:
                         if json.loads((folder / 'metrics.json').read_text()).get('format') == 'crc-source-consistency.v1.result':
@@ -298,6 +344,22 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
+                if path == '/api/fact-check':
+                    from .source_fact_workflow import save_fact_check, load_fact_artifact
+                    if set(body) != {'facts_id', 'claim'}:
+                        raise ValueError('Use only facts_id and claim for one saved source-fact check.')
+                    source_id = body['facts_id']
+                    if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+                        raise ValueError('Invalid source-fact run ID.')
+                    source = runs_dir / source_id
+                    if source.is_symlink() or source.resolve().parent != runs_dir or not source.is_dir():
+                        raise ValueError('Source-fact run not found.')
+                    check_id = 'fact_check_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
+                    save_fact_check(source, body['claim'], runs_dir / check_id)
+                    _, payload = load_fact_artifact(runs_dir / check_id)
+                    self.json_reply({'check_id': check_id, 'status': payload['comparison']['status'],
+                                     'report_url': '/api/fact-check/' + check_id + '/', 'graph_mutations': 0})
+                    return
                 if path=='/api/plan':
                     from .planning import configured_planner,execute_plan
                     from .reviews import read_run

@@ -235,6 +235,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--verifier', choices=['configured', 'api', 'nim', 'codex'], default='configured')
     p.add_argument('--model')
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('source-facts', help='Compile draft result records from one verified saved abstract; no model or graph changes.')
+    p.add_argument('--literature', type=Path, required=True)
+    p.add_argument('--pmid', required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('fact-check', help='Compare a narrowly supported claim with saved source-fact records; always requests review.')
+    p.add_argument('--facts', type=Path, required=True)
+    p.add_argument('--claim', required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('source-facts-verify', help='Replay saved fact provenance, associations, comparisons and reports without inference.')
+    p.add_argument('--result', type=Path, required=True)
     p = sub.add_parser('verification-run', help='Evaluate a bounded source verifier against prepared SciFact expert annotations.')
     p.add_argument('--benchmark', type=Path, required=True)
     p.add_argument('--verifier', choices=['baselines', 'codex', 'nim', 'api', 'configured'], default='baselines')
@@ -255,6 +265,20 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'source-facts':
+            from .source_fact_workflow import build_source_facts
+            print(json.dumps(build_source_facts(args.literature, args.pmid, args.out), indent=2))
+            return 0
+        if args.command == 'fact-check':
+            from .source_fact_workflow import save_fact_check
+            print(json.dumps(save_fact_check(args.facts, args.claim, args.out), indent=2))
+            return 0
+        if args.command == 'source-facts-verify':
+            from .source_fact_workflow import load_fact_artifact
+            m, _ = load_fact_artifact(args.result)
+            print(json.dumps({'artifact_sha256': m['artifact_sha256'], 'kind': m['kind'],
+                              'status': 'verified', 'graph_mutations': 0, 'model_requests_replayed': 0}, indent=2))
+            return 0
         if args.command == 'context-prepare':
             from .context_evaluation import prepare_context
             print(json.dumps(prepare_context(args.literature, args.previous_literature, args.out), indent=2))
