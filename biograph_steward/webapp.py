@@ -29,13 +29,15 @@ def report_html(graph: dict | None = None, *, protected=False) -> str:
 
 
 def login_return_path(value):
-    """Preserve a saved question's root URL, never redirect to another site."""
+    """Preserve saved root/report links, never redirect to another site or API action."""
     if (not isinstance(value, str) or len(value) > 2048 or value.startswith('//') or '\\' in value
             or any(ord(c) < 32 or ord(c) > 126 for c in value)):
         return '/'
     try:
         parsed = urlsplit(value)
-        if parsed.scheme or parsed.netloc or parsed.path != '/' or parsed.fragment or not value.startswith('/'):
+        report = re.fullmatch(r'/api/evaluation/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', parsed.path)
+        if (parsed.scheme or parsed.netloc or parsed.fragment or not value.startswith('/') or
+                not (parsed.path == '/' or (report and not parsed.query))):
             return '/'
     except ValueError:
         return '/'
@@ -115,7 +117,10 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             self.send_header("Content-Length", str(len(payload)))
             self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header("Cache-Control", "no-store")
-            self.send_header('Referrer-Policy', 'no-referrer')
+            # no-referrer turns native form POST origins into "null" in browsers,
+            # defeating our explicit Origin check. Keep same-origin form context
+            # while suppressing referrers entirely for external destinations.
+            self.send_header('Referrer-Policy', 'same-origin')
             self.send_header('X-Frame-Options', 'DENY')
             if filename:
                 self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
@@ -130,7 +135,17 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             if path == '/healthz':
                 self.json_reply({'status': 'ok', 'version': __version__})
                 return
-            if path == '/' and not self.authenticated():
+            if path == '/auth/login':
+                try:
+                    fields = parse_qs(urlparse(self.path).query, max_num_fields=1)
+                    return_to = fields.get('return_to', ['/'])[0]
+                except ValueError:
+                    return_to = '/'
+                self.login_page(return_to)
+                return
+            report_navigation = (re.fullmatch(r'/api/evaluation/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', path)
+                                 and 'text/html' in self.headers.get('Accept', '').lower())
+            if (path == '/' or report_navigation) and not self.authenticated():
                 self.login_page(self.path)
                 return
             if not self.authenticate():

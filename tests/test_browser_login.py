@@ -77,6 +77,38 @@ class BrowserLoginTests(unittest.TestCase):
                 self.assertEqual(code, 401); self.assertNotIn('WWW-Authenticate', headers)
             self.assertEqual(list(root.iterdir()), [])
 
+    def test_native_forms_preserve_same_origin_and_the_login_get_route_is_public(self):
+        with hosted() as (url, _):
+            for route in ['/', '/auth/login']:
+                code, headers, page = self.request(url+route)
+                self.assertEqual(code, 200)
+                self.assertEqual(headers['Referrer-Policy'], 'same-origin')
+                self.assertIn(b'action="/auth/login"', page)
+            _, headers, _ = self.login(url)
+            code, headers, page = self.request(url+'/', headers={'Cookie': headers['Set-Cookie'].split(';')[0]})
+            self.assertEqual(code, 200); self.assertIn(b'/auth/logout', page)
+            self.assertEqual(headers['Referrer-Policy'], 'same-origin')
+
+    def test_html_report_navigation_signs_in_and_returns_to_report_but_api_clients_stay_unauthorized(self):
+        with hosted() as (url, root):
+            folder = root / 'saved_report'; folder.mkdir()
+            (folder/'metrics.json').write_text('{}'); (folder/'report.html').write_text('<h1>Saved source report</h1>')
+            route = '/api/evaluation/saved_report/'
+            code, _, body = self.request(url+route)
+            self.assertEqual(code, 401); self.assertNotIn(b'<form', body)
+            code, headers, body = self.request(url+route, headers={'Accept': 'text/html,application/xhtml+xml'})
+            self.assertEqual(code, 200); self.assertIn(('value="'+route+'"').encode(), body)
+            code, headers, _ = self.login(url, return_to=route)
+            self.assertEqual(code, 303); self.assertEqual(headers['Location'], route)
+            code, _, body = self.request(url+route, headers={'Cookie': headers['Set-Cookie'].split(';')[0]})
+            self.assertEqual(code, 200); self.assertIn(b'Saved source report', body)
+            for route in ['/api/evaluation/saved_report/metrics.json', '/api/download/saved_report']:
+                code, _, _ = self.request(url+route, headers={'Accept': 'text/html'})
+                self.assertEqual(code, 401)
+            self.assertEqual(login_return_path('/api/evaluation/saved_report/report.html'), '/api/evaluation/saved_report/report.html')
+            for route in ['/api/evaluation/../secret/', '/api/evaluation/saved_report/?x=1', '/api/evaluation/saved_report/metrics.json', '/api/download/saved_report']:
+                self.assertEqual(login_return_path(route), '/')
+
     def test_login_and_cookie_writes_require_an_explicit_approved_origin(self):
         with hosted() as (url, root):
             for origin in ['https://evil.example.org', 'null', 'http://localhost:9']:
