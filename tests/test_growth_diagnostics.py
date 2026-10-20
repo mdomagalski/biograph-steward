@@ -80,6 +80,9 @@ class AblationTests(unittest.TestCase):
                 self.assertEqual(result, verify_diagnostics(root / 'diagnostics'))
             self.assertEqual(result['parent_result_sha256'], parent['result_sha256']); self.assertEqual(result['additional_ridge_fits'], 24)
             self.assertFalse(result['fresh_test_executed']); self.assertFalse(result['scientific_improvement_established'])
+            self.assertIn('original/experimental_source_manifest.json', result['files'])
+            self.assertEqual((root / 'diagnostics/original/protocol_references.json').read_bytes(),
+                (root / 'comparison/protocol_references.json').read_bytes())
             models = json.loads((root / 'diagnostics/models.json').read_text())
             self.assertTrue(all(block_of(k) == 'expression' for k in models['expression_only']['model']['coefficients']))
             # Altered pathways cannot affect an expression-only model.

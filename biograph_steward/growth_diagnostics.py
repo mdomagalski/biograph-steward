@@ -152,7 +152,8 @@ def run_diagnostics(comparison, output, *, progress=None):
     partitions = _read(comparison, 'protocol_partitions.json'); outcomes = _read(comparison, 'fit_outcomes.json')
     test = _read(comparison, 'test_outcomes.json'); ids = test['gene_ids']; original = _read(comparison, 'fitted_models.json')
     out = new_output(output, comparison); copies = ['protocol_features.json', 'protocol_source_inputs.json', 'protocol_partitions.json',
-        'fit_outcomes.json', 'test_outcomes.json', 'fitted_models.json', 'sealed_predictions.json', 'gene_passports.json', 'metrics.json']
+        'fit_outcomes.json', 'test_outcomes.json', 'fitted_models.json', 'sealed_predictions.json', 'gene_passports.json',
+        'experimental_source_manifest.json', 'protocol_references.json', 'protocol_source_review.json', 'metrics.json']
     for name in copies: (out / 'original' / name).parent.mkdir(parents=True, exist_ok=True); (out / 'original' / name).write_bytes((comparison / name).read_bytes())
     models = {name: original[name] for name in ORIGINAL_ARMS}
     for name in ABLATIONS:
@@ -199,7 +200,8 @@ def _verify_files(path, expected):
 def verify_diagnostics(path):
     path = Path(path)
     original = ['protocol_features.json', 'protocol_source_inputs.json', 'protocol_partitions.json', 'fit_outcomes.json',
-        'test_outcomes.json', 'fitted_models.json', 'sealed_predictions.json', 'gene_passports.json', 'metrics.json']
+        'test_outcomes.json', 'fitted_models.json', 'sealed_predictions.json', 'gene_passports.json',
+        'experimental_source_manifest.json', 'protocol_references.json', 'protocol_source_review.json', 'metrics.json']
     r = _verify_files(path, ['original/' + n for n in original] + ['models.json', 'scores.json', 'rank_audit.json', 'development_proposal.json'])
     if r['policy'] != POLICY or r['fresh_test_executed'] or r['original_score_matrix_opened'] or r['fresh_dependency_values_loaded']:
         raise ValueError('Development-only scope changed.')
@@ -331,6 +333,9 @@ def render_diagnostics(result, audit):
         '<h2>Rank errors and coverage</h2><pre>' + escape(json.dumps({k: result[k] for k in ['ranking_error', 'coverage']}, indent=2)) + '</pre>'
         '<h2>All 52 exposed genes</h2><p>Positive rank-error reduction means that the enriched rank moved closer to the measured rank. Contributions sum to saved predictions; they are not biological causes.</p>'
         '<table><tr><th>Gene / recorded decomposition</th><th>Pharos rank</th><th>Enriched rank</th><th>Measured rank</th><th>Error reduction</th></tr>' + genes + '</table>'
+        '<p>Saved experimental values: Broad Institute, <a href="https://doi.org/10.25452/figshare.plus.27993248.v1">DepMap 24Q4 Public v1</a>, '
+        '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Values are negated and grouped as specified by the original protocol. '
+        'The export retains the publisher source manifest and original source-review/reference records for Pharos, CPTAC and BioPlex.</p>'
         '<h2>Limits and reproducibility</h2><pre>' + escape(json.dumps(result, indent=2)) + '</pre>')
 
 
