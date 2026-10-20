@@ -2,7 +2,7 @@
 
 This increment prepares the next experiment without Brev, a GPU, source retrieval or live model calls. The served `tool_shapes_v3` planner is unchanged. Earlier successful and failed reports remain historical records.
 
-The [saved October 20 preparation](evaluations/PLANNING_CHALLENGE_PREP_20261020.md) includes the local deterministic results, six pending reference/constraint conflicts and verified artifact identities. No live model score exists for this new set.
+The [saved October 20 preparation](evaluations/PLANNING_CHALLENGE_PREP_20261020.md) includes the local deterministic results, six pending reference/constraint conflicts and verified artifact identities. After explicitly AI-attributed engineering scope review, the unchanged planner's [first live comparison](evaluations/PLANNING_CHALLENGE_LIVE_20261020.md) matched 22/32 plans and exposed seven queries with incorrect scope. Human and biomedical validation remain pending. Preserve this result before using these cases to tune a new protocol.
 
 The package includes `biograph_steward/planning_challenge_cases.json`: **32 AI-prepared scope questions in 16 paired families**, using the same frozen Pharos/CIViC catalogue. There are 23 draft query references and nine draft abstentions. Each family stays wholly in the `test` split. That split means prospective model evaluation; it does **not** establish an independent biomedical benchmark. The author saw the earlier development questions. Source entities and some capabilities overlap, and semantic independence has not been established.
 

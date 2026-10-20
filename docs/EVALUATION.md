@@ -12,6 +12,8 @@ The included 24 questions are **draft development scenarios**, grouped into 15 q
 
 The separate [prospective planning workflow](PROSPECTIVE_PLANNING.md) prepares 32 additional draft questions in 16 paired families against the unchanged v3 planner and exact control sources. It detects simple case reuse, provides blank scope-review sheets before inference, and distinguishes offline application-constraint diagnostics from live model performance. The cases are AI-prepared same-source challenges, not an independent biological benchmark.
 
+Its [first live run](evaluations/PLANNING_CHALLENGE_LIVE_20261020.md), after explicitly AI-attributed engineering review, matched 22/32 scope plans and executed seven queries with incorrect scope. Six mismatches were predetermined by application constraints. The earlier development and new prospective scores use different cases; they are not a paired software-version comparison. Human-approved references and scientific judgments remain absent.
+
 ## Run the comparison
 
 ```bash
