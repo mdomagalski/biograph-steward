@@ -52,6 +52,8 @@ The [DepMap feasibility audit](docs/evaluations/DEPMAP_FEASIBILITY_20261020.md) 
 
 The [matched Pharos panel workflow](docs/MATCHED_PHAROS_PANEL.md) freezes measured genes by stable-ID hash before explicit-ID retrieval. It preserves unavailable products, source caps and provisional feature exclusions without disease-filtered selection or dependency scoring.
 
+The [October 20 matched pull](docs/evaluations/MATCHED_PHAROS_PANEL_20261020.md) covers all 256 selected genes through 256 resolved protein products, with 207,430 raw annotation rows and explicit source-policy exclusions. Source review and a frozen scoring protocol remain necessary before the biological comparison.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
