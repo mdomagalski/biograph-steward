@@ -113,6 +113,8 @@ class CRCPilotTests(unittest.TestCase):
         self.assertTrue(all(r['scientific_judgment'] is None for r in panel))
         self.assertTrue(all(o['trace'] is None for o in result['observations']))
         self.assertFalse(p['selection']['independent_or_unseen_test'])
+        self.assertIn('g13d_focus_items', p['selection'])
+        self.assertNotIn('previously_inspected_g13d_items_reused', p['selection'])
         with self.assertRaises(ValueError): prepare_pilot(self.base, self.enriched, self.packet, cases=cases())
 
     def test_offline_result_has_no_fabricated_verifier_success_and_escapes_source_html(self):

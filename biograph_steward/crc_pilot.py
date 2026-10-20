@@ -132,7 +132,7 @@ def prepare_pilot(baseline, enriched, output, *, size=20, cases=None):
               'suite_sha256': suite['suite_sha256'], 'deterministic_evaluation_sha256': result['evaluation_sha256'],
               'selection': {'policy': 'Known G13D source items first, then ascending SHA-256 of other source item IDs.',
                             'requested_items': size, 'selected_items': len(panel), 'available_items': len(civic['items']),
-                            'previously_inspected_g13d_items_reused': sum(r['source_record']['molecularProfile']['name'] == 'KRAS G13D' for r in panel),
+                            'g13d_focus_items': sum(r['source_record']['molecularProfile']['name'] == 'KRAS G13D' for r in panel),
                             'independent_or_unseen_test': False},
               'pmids': pmids, 'files': {'panel.json': sha(output / 'panel.json'),
                                       'suite/suite.json': sha(output / 'suite/suite.json'),
