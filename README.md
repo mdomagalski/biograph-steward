@@ -74,6 +74,8 @@ The [completed fresh comparison](docs/evaluations/CRC_FRESH_COMPARISON_20261020.
 
 The [recorded evidence-quality comparison](docs/evaluations/CRC_EVIDENCE_QUALITY_20261020.md) finds that deterministic checks flag 18/30 injected errors while retaining all six supported controls. The verifier-assisted preview flags 24/30 but retains only three controls; five of its six extra flags come from invalid outputs. This is not demonstrated biological pruning improvement. Model assessments remain advisory, with source-bound passages visible in assertion passports.
 
+The optional [context verifier](docs/CONTEXT_VERIFICATION.md) adds compact, unique citations, exact claim/source context spans and conservative checks before an assertion enters a supported preview. A separately frozen comparison tests valid paraphrases and context errors from new CRC publications against the existing verifier. Raw verdicts, output failures and eligibility decisions remain distinct; automatic graph changes remain disabled.
+
 - Compares original, deterministic and advisory-verifier views in a [source-consistency pilot](docs/EVIDENCE_QUALITY.md), with exact passages, explicit synthetic edits, false-flag accounting and source-bound findings in CIViC assertion passports. Synthetic test cases never alter the graph or serve as biomedical gold.
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
 - Provides one structured question-planning model interface that calls the existing read-only engines, with explicit unavailable/replay/test modes.

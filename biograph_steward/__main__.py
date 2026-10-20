@@ -219,6 +219,22 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser('quality-verify', help='Replay saved evidence-quality metrics, citations and findings without inference.')
     p.add_argument('--result', type=Path, required=True)
+    p = sub.add_parser('context-prepare', help='Freeze fresh publication claims and a paired context-verifier protocol.')
+    p.add_argument('--literature', type=Path, required=True)
+    p.add_argument('--previous-literature', type=Path, action='append', required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('context-run', help='Compare legacy and context verification on identical frozen source windows.')
+    p.add_argument('--packet', type=Path, required=True)
+    p.add_argument('--verifier', choices=['none', 'configured', 'api', 'nim', 'codex'], default='none')
+    p.add_argument('--model')
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('context-verify', help='Replay the context comparison without inference.')
+    p.add_argument('--result', type=Path, required=True)
+    p = sub.add_parser('context-assess', help='Check one provided claim/source task with exact context spans; advisory only.')
+    p.add_argument('--task', type=Path, required=True)
+    p.add_argument('--verifier', choices=['configured', 'api', 'nim', 'codex'], default='configured')
+    p.add_argument('--model')
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser('verification-run', help='Evaluate a bounded source verifier against prepared SciFact expert annotations.')
     p.add_argument('--benchmark', type=Path, required=True)
     p.add_argument('--verifier', choices=['baselines', 'codex', 'nim', 'api', 'configured'], default='baselines')
@@ -239,6 +255,34 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'context-prepare':
+            from .context_evaluation import prepare_context
+            print(json.dumps(prepare_context(args.literature, args.previous_literature, args.out), indent=2))
+            return 0
+        if args.command == 'context-run':
+            from .context_evaluation import run_context
+            r = run_context(args.packet, args.out, mode=args.verifier, model=args.model,
+                            progress=lambda s: print(s, file=sys.stderr, flush=True))
+            print(json.dumps(r, indent=2))
+            return 0
+        if args.command == 'context-verify':
+            from .context_evaluation import verify_context_result
+            r = verify_context_result(args.result)
+            print(json.dumps({'result_sha256': r['result_sha256'], 'status': 'verified',
+                              'graph_mutations': 0, 'model_requests_replayed': 0}, indent=2))
+            return 0
+        if args.command == 'context-assess':
+            from .context_verification import verify_context
+            from .verification import configured_verifier, validate_task
+            from .crc_pilot import new_output
+            from .client import write_json
+            task = json.loads(args.task.read_text()); validate_task(task)
+            verifier = configured_verifier(None if args.verifier == 'configured' else args.verifier, model=args.model)
+            out = new_output(args.out, args.task)
+            trace = verify_context(task, verifier)
+            write_json(out / 'task.json', task); write_json(out / 'trace.json', trace)
+            print(json.dumps({'status': trace['status'], 'gate': trace['gate'], 'graph_mutations': 0}, indent=2))
+            return 0
         if args.command == 'quality-prepare':
             from .evidence_quality import prepare_quality
             print(json.dumps(prepare_quality(args.packet, args.literature, args.out), indent=2))

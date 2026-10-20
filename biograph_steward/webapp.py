@@ -153,6 +153,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             if path == '/api/evidence-quality':
                 from .evidence_quality import POLICY, verify_quality_result, quality_passports
+                from .context_evaluation import POLICY as CONTEXT_POLICY, verify_context_result
                 from .reviews import read_run
                 try:
                     fields = parse_qs(urlparse(self.path).query, max_num_fields=2)
@@ -174,14 +175,15 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                             continue
                         try:
                             m = json.loads((folder / 'metrics.json').read_text())
-                            if m.get('format') != POLICY + '.result':
+                            if m.get('format') not in {POLICY + '.result', CONTEXT_POLICY + '.result'}:
                                 continue
-                            m = verify_quality_result(folder)
+                            is_context = m['format'] == CONTEXT_POLICY + '.result'
+                            m = verify_context_result(folder) if is_context else verify_quality_result(folder)
                             reports.append({'name': folder.name, 'cases': m['cases'],
                                 'model_requests': m['model_requests'], 'result_sha256': m['result_sha256'],
                                 'report_url': '/api/evaluation/' + folder.name + '/',
                                 'download_url': '/api/download/' + folder.name})
-                            if graph is not None:
+                            if graph is not None and not is_context:
                                 passports.extend({'report_name': folder.name, **v} for v in
                                     quality_passports(folder, graph, fields['assertion'][0]))
                         except (ValueError, TypeError, KeyError, OSError):
@@ -200,6 +202,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if json.loads((folder/'metrics.json').read_text()).get('format') == 'crc-source-consistency.v1.result':
                         from .evidence_quality import verify_quality_result
                         verify_quality_result(folder)
+                    elif json.loads((folder/'metrics.json').read_text()).get('format') == 'context-comparison.v1.result':
+                        from .context_evaluation import verify_context_result
+                        verify_context_result(folder)
                 except (ValueError, TypeError, KeyError, OSError):
                     self.json_reply({'error':'Evidence-quality artifact failed integrity checks.'},400);return
                 content_type='text/html; charset=utf-8' if name=='report.html' else 'application/json' if name.endswith('.json') else 'text/tab-separated-values; charset=utf-8'
@@ -255,6 +260,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         if json.loads((folder / 'metrics.json').read_text()).get('format') == 'crc-source-consistency.v1.result':
                             from .evidence_quality import verify_quality_result
                             verify_quality_result(folder)
+                        elif json.loads((folder / 'metrics.json').read_text()).get('format') == 'context-comparison.v1.result':
+                            from .context_evaluation import verify_context_result
+                            verify_context_result(folder)
                     except (ValueError, TypeError, KeyError, OSError):
                         self.json_reply({'error': 'Evidence-quality artifact failed integrity checks.'}, 400)
                         return
