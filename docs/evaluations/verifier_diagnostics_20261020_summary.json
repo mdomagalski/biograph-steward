@@ -1,0 +1,316 @@
+{
+  "format": "verifier-diagnostics-development-summary.v1",
+  "created_at": "2026-10-20T22:21:18.376146+00:00",
+  "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+  "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+  "generation_requests": 45,
+  "biological_claim_classification_requests": 0,
+  "source_only_biological_extraction_requests": 4,
+  "experiments": [
+    {
+      "name": "synthetic",
+      "packet_sha256": "26ae75f9f92131328f43c796daf52fc46825a6c69e13d9df577f80fec4b14abc",
+      "result_sha256": "5d4764d6eec0c85c7edfcc57419418ebefd55579590e446338260fd240ad4662",
+      "requests": 12,
+      "summary": {
+        "arms": {
+          "guided": {
+            "cases": 6,
+            "valid": 6,
+            "reference_matches": 2,
+            "confusion": {
+              "SUPPORT": {
+                "NOT_ENOUGH_INFORMATION": 2
+              },
+              "CONTRADICT": {
+                "NOT_ENOUGH_INFORMATION": 2
+              },
+              "NOT_ENOUGH_INFORMATION": {
+                "NOT_ENOUGH_INFORMATION": 2
+              }
+            },
+            "labels": {
+              "NOT_ENOUGH_INFORMATION": 6
+            },
+            "by_window": {}
+          },
+          "ordinary": {
+            "cases": 6,
+            "valid": 6,
+            "reference_matches": 2,
+            "confusion": {
+              "SUPPORT": {
+                "NOT_ENOUGH_INFORMATION": 2
+              },
+              "CONTRADICT": {
+                "NOT_ENOUGH_INFORMATION": 2
+              },
+              "NOT_ENOUGH_INFORMATION": {
+                "NOT_ENOUGH_INFORMATION": 2
+              }
+            },
+            "labels": {
+              "NOT_ENOUGH_INFORMATION": 6
+            },
+            "by_window": {}
+          }
+        },
+        "synthetic_pass": false
+      }
+    },
+    {
+      "name": "prompt_result",
+      "packet_sha256": "49869d62bd7cc6e8484ec4e3986a964962446189b97367b582b117c70d5a33c3",
+      "result_sha256": "10ec583f3439db80dd7f79a83a1c92e14793180c9b408909e030c831d468446c",
+      "requests": 2,
+      "summary": {
+        "policies": {
+          "current": {
+            "cases": 0,
+            "valid": 0,
+            "reference_matches": 0,
+            "labels": {},
+            "confusion": {
+              "SUPPORT": {},
+              "CONTRADICT": {},
+              "NOT_ENOUGH_INFORMATION": {}
+            }
+          },
+          "neutral": {
+            "cases": 0,
+            "valid": 0,
+            "reference_matches": 0,
+            "labels": {},
+            "confusion": {
+              "SUPPORT": {},
+              "CONTRADICT": {},
+              "NOT_ENOUGH_INFORMATION": {}
+            }
+          }
+        },
+        "wire_pass": false
+      }
+    },
+    {
+      "name": "prompt_result_delimited",
+      "packet_sha256": "5c89f12259794d5c1e35ee6dfc9676050ebb0bb254460d05f09867f7dfd2e7e4",
+      "result_sha256": "bd0af71f2c626a86f40b22f107a32b55a49886fe3771d9a5ca1efe7471a5c99e",
+      "requests": 8,
+      "summary": {
+        "policies": {
+          "current": {
+            "cases": 3,
+            "valid": 3,
+            "reference_matches": 2,
+            "labels": {
+              "SUPPORT": 1,
+              "NOT_ENOUGH_INFORMATION": 2
+            },
+            "confusion": {
+              "SUPPORT": {
+                "SUPPORT": 1
+              },
+              "CONTRADICT": {
+                "NOT_ENOUGH_INFORMATION": 1
+              },
+              "NOT_ENOUGH_INFORMATION": {
+                "NOT_ENOUGH_INFORMATION": 1
+              }
+            }
+          },
+          "neutral": {
+            "cases": 3,
+            "valid": 3,
+            "reference_matches": 2,
+            "labels": {
+              "SUPPORT": 1,
+              "NOT_ENOUGH_INFORMATION": 2
+            },
+            "confusion": {
+              "SUPPORT": {
+                "SUPPORT": 1
+              },
+              "CONTRADICT": {
+                "NOT_ENOUGH_INFORMATION": 1
+              },
+              "NOT_ENOUGH_INFORMATION": {
+                "NOT_ENOUGH_INFORMATION": 1
+              }
+            }
+          }
+        },
+        "wire_pass": true
+      }
+    },
+    {
+      "name": "reasoning_synthetic",
+      "packet_sha256": "a674df2cd3233f9b07e1d8adb952acd390f8154b82c8f4fd807f59b27afbceb3",
+      "result_sha256": "bef4b791cd1a8add8b32eda6d9ae7ac374c864125b28c4884b07fa88ee9147be",
+      "requests": 6,
+      "summary": {
+        "arms": {
+          "ordinary": {
+            "cases": 6,
+            "valid": 6,
+            "reference_matches": 2,
+            "confusion": {
+              "SUPPORT": {
+                "NOT_ENOUGH_INFORMATION": 2
+              },
+              "CONTRADICT": {
+                "NOT_ENOUGH_INFORMATION": 2
+              },
+              "NOT_ENOUGH_INFORMATION": {
+                "NOT_ENOUGH_INFORMATION": 2
+              }
+            },
+            "labels": {
+              "NOT_ENOUGH_INFORMATION": 6
+            },
+            "by_window": {}
+          }
+        },
+        "synthetic_pass": false
+      }
+    },
+    {
+      "name": "fewshot_off_synthetic",
+      "packet_sha256": "33afc60491a03524be0806e220a36a20ba7e45d898198e8048b57dfc75c401d3",
+      "result_sha256": "10fcdfda243cf1a47e4e7444e8ed0c86bbe7c302e57f0869b6c441ebffd3d59c",
+      "requests": 6,
+      "summary": {
+        "arms": {
+          "ordinary": {
+            "cases": 6,
+            "valid": 6,
+            "reference_matches": 2,
+            "confusion": {
+              "SUPPORT": {
+                "SUPPORT": 1,
+                "NOT_ENOUGH_INFORMATION": 1
+              },
+              "CONTRADICT": {
+                "NOT_ENOUGH_INFORMATION": 2
+              },
+              "NOT_ENOUGH_INFORMATION": {
+                "SUPPORT": 1,
+                "NOT_ENOUGH_INFORMATION": 1
+              }
+            },
+            "labels": {
+              "SUPPORT": 2,
+              "NOT_ENOUGH_INFORMATION": 4
+            },
+            "by_window": {}
+          }
+        },
+        "synthetic_pass": false
+      }
+    },
+    {
+      "name": "fewshot_on_synthetic",
+      "packet_sha256": "dcaea4229b171a33df25a22921d4cf8bb55dd45e8decaaf76577f0af8c726daf",
+      "result_sha256": "db5781a7208cb4fdbbfec0a5491236daa77f1dff94578ec68c77eb4413d15a72",
+      "requests": 6,
+      "summary": {
+        "arms": {
+          "ordinary": {
+            "cases": 6,
+            "valid": 6,
+            "reference_matches": 2,
+            "confusion": {
+              "SUPPORT": {
+                "NOT_ENOUGH_INFORMATION": 2
+              },
+              "CONTRADICT": {
+                "NOT_ENOUGH_INFORMATION": 2
+              },
+              "NOT_ENOUGH_INFORMATION": {
+                "NOT_ENOUGH_INFORMATION": 2
+              }
+            },
+            "labels": {
+              "NOT_ENOUGH_INFORMATION": 6
+            },
+            "by_window": {}
+          }
+        },
+        "synthetic_pass": false
+      }
+    },
+    {
+      "name": "source_facts",
+      "packet_sha256": "e1740b5571d40ce92da41ee1f4b57b100eb0703b2189b9139a98419f77622870",
+      "result_sha256": "8e2b3b5496d4ca4e3398f29856bc3da8ef133de65f5b3764556ff62c1e222cdb",
+      "requests": 4,
+      "summary": {
+        "arms": {
+          "ordinary": {
+            "cases": 0,
+            "valid": 0,
+            "reference_matches": 0,
+            "confusion": {
+              "SUPPORT": {},
+              "CONTRADICT": {},
+              "NOT_ENOUGH_INFORMATION": {}
+            },
+            "labels": {},
+            "by_window": {}
+          }
+        },
+        "synthetic_pass": null
+      }
+    }
+  ],
+  "source_facts_ai_review": {
+    "result_sha256": "8e2b3b5496d4ca4e3398f29856bc3da8ef133de65f5b3764556ff62c1e222cdb",
+    "review_sha256": "be76c3e9ca1f4f725ba225139501012e43cda4de1f4a902d3be4b61cdef8970f",
+    "requested_core_fact_coverage": {
+      "answers": 4,
+      "covered": 4
+    },
+    "answers_with_explicit_extra_error_or_scope_error": 2,
+    "whole_answer_accuracy": null,
+    "independent_human_labels": 0
+  },
+  "native_reasoning_observed": true,
+  "scientific_accuracy": null,
+  "biological_graph_improvement_established": false,
+  "default_app_configuration_changed": false,
+  "graph_mutations": 0,
+  "previous_context_result_sha256": "11c29c521832605eb9c2ad4a50689707cb1843377ee7179e62b384c34d005acd",
+  "tests": {
+    "full_suite": 423,
+    "skipped": 1,
+    "failures": 0
+  },
+  "next_step": "Test claim-free structured source facts with exact provenance and no free-form extra assertions; compare claims in application code. Current direct classifier is not suitable for promotion.",
+  "development_diagnostic_generation_requests": 44,
+  "unscored_native_runtime_control_requests": 1,
+  "native_reasoning_observed_in_classification": false,
+  "native_reasoning_observed_in_official_control": true,
+  "native_runtime_control": {
+    "request_sha256": "f37ee4bf3fc892578ae8e20630d4c7f7b0ea75816a6869b14dd01c59c4d8681a",
+    "response_sha256": "3b64089f7e523ebcbedb600227a8350611dbd8f4fafc5c8e737075bc5e0b5f81",
+    "status": "completed_fact_answer",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 29,
+      "total_tokens": 738,
+      "completion_tokens": 709
+    },
+    "reasoning_present": true,
+    "reasoning_metadata": [
+      {
+        "format": "tagged_content",
+        "characters": 2062,
+        "sha256": "551f62e0c42045c37a4a77111ba74bb2e6a60786e7dad53799787aba4f14a02f",
+        "scope": "reasoning_only"
+      }
+    ],
+    "code_sha256": "060caab12223aa11a54a2daa17499ec0b3cc342f029b9b2d0a78536dc6a5f637",
+    "trace_file_sha256": "350edc2e4e8744cd66b6d142e56ee4c7cbb79c363029a129e9dd5add509c93d7",
+    "scored": false
+  },
+  "interpretation": "The same serving configuration produces native reasoning on an official model-card example. No native reasoning is observed in the tested verification configurations. Model task calibration and source-fact grounding remain the bottlenecks; this does not establish a universal incapacity or a decoder-only cause."
+}
