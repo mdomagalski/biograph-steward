@@ -58,6 +58,8 @@ The [comparison-freeze workflow](docs/COMPARISON_PROTOCOL.md) materializes revie
 
 The [frozen October 20 protocol](docs/evaluations/CRC_GROWTH_PROTOCOL_20261020.md) preserves 3,788 unique gene–pathway memberships and 34 qualifying BioPlex gene pairs, with exact 153/51/52 gene assignments. The next increment implements the runner and executes the restricted Pharos versus Pharos+CPTAC comparison.
 
+The [CPU comparison runner](docs/GROWTH_COMPARISON.md) implements that exact protocol, including train-only transforms, equal tuning budgets, CPTAC-only/coverage/random/permutation controls, a pre-test prediction seal and source-linked rank-change passports. It uses no third-party Python packages or model service.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.

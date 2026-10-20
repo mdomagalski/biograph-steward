@@ -179,6 +179,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--pharos-code', type=Path, required=True)
     p.add_argument('--repository-tree', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('growth-compare', help='Execute the exact frozen growth pilot, sealing predictions before one test-outcome access.')
+    p.add_argument('--protocol', type=Path, required=True)
+    p.add_argument('--source', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser('verification-run', help='Evaluate a bounded source verifier against prepared SciFact expert annotations.')
     p.add_argument('--benchmark', type=Path, required=True)
     p.add_argument('--verifier', choices=['baselines', 'codex', 'nim', 'api', 'configured'], default='baselines')
@@ -199,6 +203,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'growth-compare':
+            from .growth_comparison import run_comparison
+            r = run_comparison(args.protocol, args.source, args.out,
+                               progress=lambda message: print(message, file=sys.stderr, flush=True))
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'arms', 'primary_spearman_delta', 'paired_interval', 'decision']}, indent=2))
+            return 0
         if args.command == 'comparison-freeze':
             from .comparison_protocol import freeze_protocol
             r = freeze_protocol(args.panel, args.retrieval, args.mapping, args.out,
