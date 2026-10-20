@@ -79,6 +79,8 @@ Completion criteria: reproducible metrics artifact with split and source hashes;
 
 ### 5 Add the governed agent and maintenance loop
 
+The [evidence-quality increment](EVIDENCE_QUALITY.md) now freezes a source-consistency panel, compares original/deterministic/verifier-assisted previews and connects unmodified source assessments to exact-revision assertion passports. Controlled edits and extractive controls measure a limited text/identity contract, not independent biological pruning accuracy. Model recommendations remain advisory; source maintenance and independent scientific review remain pending.
+
 Implemented: a single structured question-planning model interface, deterministic tool execution and a frozen-source evaluation runner with reviewer worksheets. Live planner evaluation remains pending model configuration; the initial pilot has no scientific gold judgments. Extend this into the broader planner → retrieval → normalization → verification → query workflow. NeMo Agent Toolkit integration remains an optional subsequent orchestration/tracing step. A model may propose a bounded retrieval plan; validated application code controls graph changes. Provide a deterministic path for reproducibility and an optional Bedrock/NIM adapter.
 
 Add source manifests, versioned assertion history and explicit refresh comparison. Revalidate affected assertions, mark superseded evidence obsolete and preserve prior snapshots. A missing record in a capped or failed retrieval must not be interpreted as a retraction. Record all agent decisions and human overrides.

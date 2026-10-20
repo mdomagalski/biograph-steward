@@ -208,6 +208,17 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--panel', type=Path, required=True)
     p.add_argument('--comparison', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('quality-prepare', help='Freeze a source-consistency panel and explicit synthetic edits from saved CRC papers.')
+    p.add_argument('--packet', type=Path, required=True)
+    p.add_argument('--literature', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('quality-run', help='Compare unfiltered, deterministic and advisory-verifier views without changing graph states.')
+    p.add_argument('--packet', type=Path, required=True)
+    p.add_argument('--verifier', choices=['none', 'configured', 'api', 'nim', 'codex'], default='none')
+    p.add_argument('--model')
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('quality-verify', help='Replay saved evidence-quality metrics, citations and findings without inference.')
+    p.add_argument('--result', type=Path, required=True)
     p = sub.add_parser('verification-run', help='Evaluate a bounded source verifier against prepared SciFact expert annotations.')
     p.add_argument('--benchmark', type=Path, required=True)
     p.add_argument('--verifier', choices=['baselines', 'codex', 'nim', 'api', 'configured'], default='baselines')
@@ -228,6 +239,22 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'quality-prepare':
+            from .evidence_quality import prepare_quality
+            print(json.dumps(prepare_quality(args.packet, args.literature, args.out), indent=2))
+            return 0
+        if args.command == 'quality-run':
+            from .evidence_quality import run_quality
+            r = run_quality(args.packet, args.out, mode=args.verifier, model=args.model,
+                            progress=lambda s: print(s, file=sys.stderr, flush=True))
+            print(json.dumps(r, indent=2))
+            return 0
+        if args.command == 'quality-verify':
+            from .evidence_quality import verify_quality_result
+            r = verify_quality_result(args.result)
+            print(json.dumps({'result_sha256': r['result_sha256'], 'status': 'verified',
+                              'graph_mutations': r['graph_mutations'], 'model_requests_replayed': 0}, indent=2))
+            return 0
         if args.command == 'fresh-cohort':
             from .fresh_retrieval import prepare_union
             r = prepare_union(args.panel, args.reservation, args.diagnostics, args.out)

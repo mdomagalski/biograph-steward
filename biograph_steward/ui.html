@@ -17,6 +17,7 @@ main{max-width:1368px;padding:24px;margin:auto}h2{font-size:20px;margin:0 0 12px
 <header><div class="eyebrow">BIOGRAPH STEWARD / EVIDENCE WORKBENCH</div><h1>Follow each claim to its evidence.</h1><p>Scope the data. Inspect assertions. Record your review.</p></header>
 <main>
 __AUTH_CONTROL__
+<details class="card" id="qualityPanel"><summary>Evidence-quality comparison</summary><p>Compare the original assertions, deterministic checks and advisory source verification. Inspect exact passages and proposed review reasons; existing graph states stay unchanged.</p><div id="qualityReports"></div></details>
 <details id="controls" class="card" open><summary>Data source and retrieval</summary>
 <h2>1. Choose a data source</h2>
 <div class="modes"><label><input type="radio" name="mode" value="demo" checked> Offline demonstration</label><label><input type="radio" name="mode" value="live"> Live Pharos API</label></div>
@@ -190,6 +191,7 @@ function inspectAssertion(id){
   const context=Object.entries(a.qualifiers).filter(([,value])=>value!==null);$('inspector').append(el('p','Context: '+(context.map(([k,v])=>k+' = '+v).join('; ')||'Not supplied; do not infer disease, variant or therapy context.'),'small'));
   const ids=new Set(a.evidence_edge_ids);graph.edges.filter(e=>ids.has(e.id)).forEach(e=>$('inspector').append(evidenceCard(e)));
   const reviewHistory=el('details');reviewHistory.append(el('summary','Review history ('+a.review_history.length+')'),el('pre',JSON.stringify(a.review_history,null,2)));$('inspector').append(reviewHistory);
+  appendQualityFindings(a,$('inspector'));
   if(!runId){$('inspector').append(el('p','This saved report is read-only. Record reviews in the running app or with the review command.','small'));return;}
   const form=el('form'),reviewer=el('input'),reason=el('textarea'),state=el('select'),button=el('button','Save review in a new run');
   reviewer.id='reviewActor';reason.id='reviewReason';state.id='reviewState';reviewer.type='text';reviewer.required=true;reviewer.maxLength=200;reason.required=true;reason.maxLength=4000;reason.rows=3;reason.style.width='100%';

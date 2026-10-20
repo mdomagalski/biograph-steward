@@ -1,0 +1,62 @@
+[
+  {
+    "id": "panitumumab-wild-type",
+    "pmid": "18316791",
+    "passage_index": 3,
+    "claim": "Panitumumab monotherapy efficacy in mCRC is confined to patients with WT KRAS tumors.",
+    "changes": [
+      {"type": "disease_context", "before": "mCRC", "after": "metastatic pancreatic cancer", "reason": "The supplied abstract reports colorectal cancer, not pancreatic cancer."},
+      {"type": "variant_context", "before": "WT KRAS", "after": "KRAS G12C-mutant", "reason": "Wild-type efficacy cannot support a G12C-mutant efficacy claim."}
+    ]
+  },
+  {
+    "id": "g13d-qualified-association",
+    "pmid": "20978259",
+    "passage_index": 5,
+    "claim": "In this analysis, use of cetuximab was associated with longer overall and progression-free survival among patients with chemotherapy-refractory colorectal cancer with p.G13D-mutated tumors than with other KRAS-mutated tumors. Evaluation of cetuximab therapy in these tumors in prospective randomized trials may be warranted.",
+    "changes": [
+      {"type": "variant_context", "before": "p.G13D", "after": "p.G12C", "reason": "The described subgroup is G13D; the supplied abstract does not establish this claim for G12C."},
+      {"type": "disease_context", "before": "colorectal cancer", "after": "pancreatic cancer", "reason": "The supplied analysis concerns colorectal cancer, not pancreatic cancer."}
+    ]
+  },
+  {
+    "id": "dasatinib-combination-model",
+    "pmid": "20956938",
+    "passage_index": 0,
+    "claim": "Treatment with cetuximab and dasatinib showed a greater antiproliferative effect on KRAS mutant lines when compared with either agent alone in vitro and in vivo.",
+    "changes": [
+      {"type": "regimen_context", "before": "cetuximab and dasatinib", "after": "cetuximab monotherapy", "reason": "The combination result does not support a monotherapy result against the same comparators."},
+      {"type": "model_population", "before": "KRAS mutant lines", "after": "patients with KRAS mutant tumors", "reason": "Cell-line and xenograft findings do not establish this patient-population effect."}
+    ]
+  },
+  {
+    "id": "g13d-nonsignificance",
+    "pmid": "26623049",
+    "passage_index": 0,
+    "claim": "The univariate analysis revealed no significant difference in PFS or OS between the patients with KRAS p.G13D mutations and those with other mutations (median PFS, 4.5 vs. 2.8 months, respectively; P=0.65; and median OS, 15.3 vs. 8.9 months, respectively; P=0.51).",
+    "changes": [
+      {"type": "statistical_qualification", "before": "no significant difference", "after": "a statistically significant difference", "reason": "The source explicitly reports nonsignificant univariate results; a directional trend is not significance."},
+      {"type": "variant_context", "before": "p.G13D", "after": "p.G12C", "reason": "The reported comparison concerns G13D, not G12C."}
+    ]
+  },
+  {
+    "id": "meta-analysis-qualification",
+    "pmid": "26812186",
+    "passage_index": 3,
+    "claim": "This meta-analysis demonstrates no significant difference between KRAS G13D and other KRAS MT tumours in terms of treatment benefit from anti-EGFR mAbs for mCRC.",
+    "changes": [
+      {"type": "negation", "before": "no significant difference", "after": "a significant difference", "reason": "Removing the negation reverses the source's stated statistical conclusion."},
+      {"type": "disease_context", "before": "mCRC", "after": "metastatic pancreatic cancer", "reason": "The supplied meta-analysis is in metastatic colorectal cancer."}
+    ]
+  },
+  {
+    "id": "cetuximab-chemotherapy-cohort",
+    "pmid": "20619739",
+    "passage_index": 1,
+    "claim": "We analysed objective response, progression-free survival (PFS), and overall survival in molecularly defined subgroups of the 649 chemotherapy-refractory patients treated with cetuximab plus chemotherapy.",
+    "changes": [
+      {"type": "regimen_context", "before": "cetuximab plus chemotherapy", "after": "cetuximab monotherapy", "reason": "The source's specified 649-patient cohort received combination therapy."},
+      {"type": "treatment_setting", "before": "chemotherapy-refractory", "after": "previously untreated", "reason": "Previously untreated is a different treatment setting from the reported chemotherapy-refractory cohort."}
+    ]
+  }
+]

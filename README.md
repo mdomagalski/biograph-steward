@@ -72,6 +72,7 @@ The [completed fresh comparison](docs/evaluations/CRC_FRESH_COMPARISON_20261020.
 
 ## What the prototype does now
 
+- Compares original, deterministic and advisory-verifier views in a [source-consistency pilot](docs/EVIDENCE_QUALITY.md), with exact passages, explicit synthetic edits, false-flag accounting and source-bound findings in CIViC assertion passports. Synthetic test cases never alter the graph or serve as biomedical gold.
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
 - Provides one structured question-planning model interface that calls the existing read-only engines, with explicit unavailable/replay/test modes.
 - Supports a scoped CIViC KRAS/Colorectal Cancer therapy-response question, preserving complete profiles, therapy sets, evidence directions and separate source/local review states. See [scope, use and validation](docs/CIVIC_EVIDENCE.md).
