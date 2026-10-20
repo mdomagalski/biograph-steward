@@ -75,6 +75,56 @@ class EntityResolutionTests(unittest.TestCase):
         for question in ['BETA interactions.', 'UNKNOWN interactions.', 'ALPHA in Colorectal Cancer.']:
             with self.assertRaises(ValueError): validate_bindings(p, resolve_mentions(question, c))
 
+    def test_repeated_mentions_keep_original_spans_but_deduplicate_identities(self):
+        text = 'Inspect (alpha) and ALPHA, then ALPHA\n  Z12Q with cetuximab.'
+        r = resolve_mentions(text, inventory())
+        self.assertEqual(resolved_ids(r, 'proteins'), ['UniProtKB:TEST_A'])
+        self.assertEqual(len(r['proteins']['mentions']), 3)
+        self.assertEqual(resolved_ids(r, 'profiles'), ['CIViC.molecularprofile:1'])
+        for kind in ['proteins', 'profiles', 'therapies']:
+            for mention in r[kind]['mentions']:
+                self.assertEqual(text[mention['start']:mention['end']], mention['surface'])
+
+    def test_duplicate_complete_profile_labels_stay_ambiguous_even_with_contained_matches(self):
+        c = inventory()
+        c['profiles'].append({'id': 'CIViC.molecularprofile:3', 'name': 'BETA Gain AND NOT ALPHA Z12Q'})
+        r = resolve_mentions('BETA Gain AND NOT ALPHA Z12Q with cetuximab.', c)
+        self.assertEqual(resolved_ids(r, 'profiles'), [])
+        self.assertEqual(len(r['profiles']['ambiguous_mentions']), 1)
+        self.assertEqual(r['profiles']['ambiguous_mentions'][0]['ids'],
+                         ['CIViC.molecularprofile:2', 'CIViC.molecularprofile:3'])
+        r = resolve_mentions('CIViC.molecularprofile:3 with cetuximab.', c)
+        self.assertEqual(resolved_ids(r, 'profiles'), ['CIViC.molecularprofile:3'])
+
+    def test_complete_or_profiles_preserve_identity_across_case_and_whitespace(self):
+        c = inventory()
+        c['profiles'].append({'id': 'CIViC.molecularprofile:4', 'name': 'ALPHA Z12Q OR BETA Gain'})
+        for text in ['ALPHA Z12Q OR BETA Gain', 'alpha\t z12q or beta gain']:
+            r = resolve_mentions(text, c)
+            self.assertEqual(resolved_ids(r, 'profiles'), ['CIViC.molecularprofile:4'])
+            self.assertFalse(r['profiles']['incomplete_compound_mentions'])
+
+    def test_identifier_boundaries_do_not_bind_longer_profile_numbers_or_unicode_symbols(self):
+        for text in ['CIViC.molecularprofile:10', 'CIViC.molecularprofile:1_extra']:
+            self.assertEqual(resolved_ids(resolve_mentions(text, inventory()), 'profiles'), [])
+        for text in ['ΑLPHA', 'ALPHА', '𝔸LPHA', 'ALPHAβ']:
+            self.assertEqual(resolved_ids(resolve_mentions(text, inventory()), 'proteins'), [])
+
+    def test_resolution_is_identity_only_and_does_not_remove_negated_or_background_mentions(self):
+        r = resolve_mentions('ALPHA is background, not a target; inspect BETA. Do not query cetuximab.', inventory())
+        self.assertEqual(resolved_ids(r, 'proteins'), ['UniProtKB:TEST_A', 'UniProtKB:TEST_B'])
+        self.assertEqual(resolved_ids(r, 'therapies'), ['cetuximab'])
+        # Scope/intent handling must not mistake this identity inventory for a plan.
+        self.assertNotIn('action', r)
+
+    def test_question_bounds_are_checked_without_catalogue_mutation(self):
+        c = inventory(); before = deepcopy(c)
+        for text in [None, 42, '', ' \n ', 'x' * 4001]:
+            with self.subTest(text=type(text).__name__):
+                with self.assertRaises(ValueError): resolve_mentions(text, c)
+        resolve_mentions('ALPHA ' + 'x' * 3994, c)
+        self.assertEqual(c, before)
+
 
 class ToolContractTests(unittest.TestCase):
     def setUp(self):

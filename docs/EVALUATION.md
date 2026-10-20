@@ -10,6 +10,8 @@ The runner compares the expanded Pharos baseline with its CIViC-enriched copy an
 
 The included 24 questions are **draft development scenarios**, grouped into 15 question families. Paraphrases are not independent biological observations. Reference plans specify scope; they are not biomedical answers, paper-verified labels or a held-out test. A reviewer must approve scope and adjudicate evidence before scientific accuracy is reported. The supplied pilot has no held-out test cases.
 
+The separate [prospective planning workflow](PROSPECTIVE_PLANNING.md) prepares 32 additional draft questions in 16 paired families against the unchanged v3 planner and exact control sources. It detects simple case reuse, provides blank scope-review sheets before inference, and distinguishes offline application-constraint diagnostics from live model performance. The cases are AI-prepared same-source challenges, not an independent biological benchmark.
+
 ## Run the comparison
 
 ```bash

@@ -59,6 +59,27 @@ class RequestScopeTests(unittest.TestCase):
         for text in ['Prove ALPHA causes disease.', 'Accepted ALPHA interactions.', 'Candidate ALPHA shared pathways.']:
             with self.assertRaises(ValueError): validate_request_scope(p, self.scope(text))
 
+    def test_multiple_protein_anchors_and_unavailable_civic_cannot_be_silently_substituted(self):
+        s = self.scope('Candidate interactions for ALPHA and BETA.')
+        self.assertIn('unresolved_or_multiple_protein_anchors', s['unsupported_requirements'])
+        text = 'Candidate CIViC response for ALPHA Z12Q containing cetuximab.'
+        s = request_scope(text, resolve_mentions(text, inventory()), False)
+        self.assertIn('civic_source_unavailable', s['unsupported_requirements'])
+        text = 'Candidate ALPHA interactions.'
+        s = request_scope(text, resolve_mentions(text, inventory()), False)
+        self.assertFalse(s['unsupported_requirements'])
+
+    def test_candidate_view_negations_and_newlines_preserve_the_existing_contract(self):
+        for text in ['ALPHA interactions: no unreviewed candidates.',
+                     'ALPHA interactions: exclude\nall candidates.',
+                     'ALPHA interactions without any unreviewed candidates.']:
+            self.assertEqual(self.scope(text)['view'], 'accepted')
+        self.assertEqual(self.scope('Include\nunreviewed candidates: ALPHA interactions.')['view'], 'candidates')
+
+    def test_one_request_for_two_tool_families_is_outside_the_contract(self):
+        s = self.scope('Candidate ALPHA interactions and ALPHA Z12Q response containing cetuximab.')
+        self.assertIn('multiple_tool_requirements', s['unsupported_requirements'])
+
 
 class ToolShapeTests(unittest.TestCase):
     def setUp(self):
@@ -95,6 +116,18 @@ class ToolShapeTests(unittest.TestCase):
         trace = model.plan('Prove that '+self.profile+' causes cancer with cetuximab.', self.graph)
         self.assertEqual(trace['status'], 'invalid_plan'); self.assertIsNone(trace['plan']); self.assertEqual(len(calls), 2)
         self.assertEqual(trace['model_calls'], 1)
+
+    def test_complete_profile_and_both_therapies_are_bound_without_changing_the_graph(self):
+        before = deepcopy(self.graph)
+        text = self.question + ' Also include panitumumab as a requested therapy.'
+        _, schema, _, audit, resolution = planning_request(text, self.graph, 'tool_shapes_v3')
+        query = schema['anyOf'][1]['properties']
+        self.assertEqual(query['therapy']['enum'], ['both'])
+        self.assertEqual(query['profile_id']['enum'], ['CIViC.molecularprofile:81'])
+        validate_planned_output({**civic_plan(), 'therapy': 'both'}, self.graph, resolution, audit['request_scope'])
+        with self.assertRaises(ValueError):
+            validate_planned_output(civic_plan(), self.graph, resolution, audit['request_scope'])
+        self.assertEqual(self.graph, before)
 
 
 if __name__ == '__main__': unittest.main()

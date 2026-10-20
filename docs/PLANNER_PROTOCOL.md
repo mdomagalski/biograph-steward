@@ -31,3 +31,5 @@ The new experiment keeps the model revision, image, reasoning-off profile, infer
 The changed component is a **hybrid planning protocol**: deterministic lexical binding, focused catalogue, tool instructions, constrained output choices and post-generation checks. V3 additionally changes the output shapes and request-scope checks. Any improvement belongs to that package; it is not evidence that the model learned new knowledge, that a graph was biologically improved or that these development cases form an unseen benchmark. New held-out questions and source review are still needed.
 
 The completed [v3 comparison](evaluations/TOOL_SHAPES_V3_20261019.md) records the successful development result alongside both earlier failures, with a machine-readable per-case summary.
+
+The [prospective planning packet](PROSPECTIVE_PLANNING.md) retains that exact planner implementation while preparing new scope cases, negative tests and review criteria locally. Its offline constraint audit can expose a reference/schema conflict without making a model call. Do not repair the v3 policy using those cases and still call their later evaluation unseen.

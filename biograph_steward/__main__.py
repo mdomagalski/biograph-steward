@@ -95,6 +95,17 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--answer-reviews",type=Path)
     p.add_argument("--evidence-reviews",type=Path)
     p.add_argument("--out",type=Path,required=True)
+    p = sub.add_parser('planning-prepare', help='Freeze fresh scope-review cases against the unchanged planner; no model calls.')
+    p.add_argument('--baseline', type=Path, required=True)
+    p.add_argument('--enriched', type=Path, required=True)
+    p.add_argument('--cases', type=Path, default=Path(__file__).with_name('planning_challenge_cases.json'))
+    p.add_argument('--prior-suite', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('planning-compare', help='Run an offline baseline or scope-reviewed live planning comparison.')
+    p.add_argument('--packet', type=Path, required=True)
+    p.add_argument('--scope-reviews', type=Path, help='Completed copy of the packet worksheet; all scopes must be approved for inference.')
+    p.add_argument('--planner', choices=['none', 'live'], default='none')
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser("plan-question", help="Plan and execute one research question through the bounded model planner.")
     p.add_argument("--run",type=Path,required=True)
     p.add_argument("--question",required=True)
@@ -122,6 +133,22 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'planning-prepare':
+            from .planning_comparison import prepare_comparison
+            packet = prepare_comparison(args.baseline, args.enriched, args.out,
+                                        cases=json.loads(args.cases.read_text(encoding='utf-8')), prior_suite=args.prior_suite)
+            print(json.dumps({'packet_sha256': packet['packet_sha256'], 'cases': packet['overlap_audit']['cases'],
+                              'reference_status': packet['reference_status'], 'model_called': False,
+                              'review': str((args.out / 'review.html').resolve())}, indent=2))
+            return 0
+        if args.command == 'planning-compare':
+            from .planning_comparison import run_comparison
+            summary = run_comparison(args.packet, args.out, live=args.planner == 'live', scope_reviews=args.scope_reviews,
+                                     progress=lambda message: print(message, file=sys.stderr, flush=True))
+            print(json.dumps({k: summary[k] for k in ['planner_kind', 'cases', 'draft_plan_comparisons',
+                                                    'draft_plan_matches', 'reported_model_calls',
+                                                    'scientific_improvement_established']}, indent=2))
+            return 0
         if args.command == 'deployment-smoke':
             from .deployment_smoke import run_smoke
             report = run_smoke(args.base_url, args.out, with_planner=args.with_planner, receipt=args.receipt,
