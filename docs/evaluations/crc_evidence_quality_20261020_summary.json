@@ -1,0 +1,872 @@
+{
+  "format": "biograph-steward.evidence-quality-summary.v1",
+  "date": "2026-10-20",
+  "selection": "Six saved CRC publications, 42 development cases: six exact-excerpt controls, 30 injected source-contract errors and six unscored original annotations. AI-authored references, no independent biomedical gold.",
+  "initial": {
+    "format": "crc-source-consistency.v1.result",
+    "packet_sha256": "6a86fea5a9eed6dfb09740ba1b47eebf98666ebd39426cc24d40d9dd8198334f",
+    "execution_sha256": "3a7c678afeb3b2f17fdf3290db7354a2c06bacc2a8d07805c7a11b251ff9eef4",
+    "cases": 42,
+    "publications": 6,
+    "mode": "configured",
+    "model_requested": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "verifier_kind": "live_model",
+    "model_requests": 24,
+    "status_counts": {
+      "invalid_output": 20,
+      "blocked_integrity": 18,
+      "validated": 4
+    },
+    "machine_verdict_counts": {
+      "NOT_ENOUGH_INFORMATION": 3,
+      "SUPPORT": 1
+    },
+    "decisive_assessments": 1,
+    "valid_exact_citation_assessments": 1,
+    "citation_note": "Exact quotation fidelity only; citation correctness does not establish entailment.",
+    "source_provenance_completeness": 1.0,
+    "binding_or_citation_integrity_failures": 18,
+    "invalid_model_outputs": 20,
+    "model_execution_errors": 0,
+    "arms": {
+      "original": {
+        "status": "completed",
+        "cases": 42,
+        "scored_source_contract_cases": 36,
+        "unscored_original_annotations": 6,
+        "supported_controls": 6,
+        "injected_source_contract_errors": 30,
+        "supported_controls_retained": 6,
+        "unsupported_test_cases_retained": 30,
+        "flag_precision": null,
+        "flag_recall": 0.0,
+        "false_flag_count": 0,
+        "false_flag_rate": 0.0,
+        "false_quarantine_count": 0,
+        "false_quarantine_rate": 0.0,
+        "action_counts": {
+          "retain_unverified": 42
+        },
+        "by_case_kind": {
+          "citation_binding": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "citation_span": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "disease_context": {
+            "cases": 3,
+            "flagged": 0
+          },
+          "identifier_binding": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "model_population": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "negation": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "regimen_context": {
+            "cases": 2,
+            "flagged": 0
+          },
+          "source_excerpt": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "statistical_qualification": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "treatment_setting": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "variant_context": {
+            "cases": 3,
+            "flagged": 0
+          }
+        }
+      },
+      "deterministic": {
+        "status": "completed",
+        "cases": 42,
+        "scored_source_contract_cases": 36,
+        "unscored_original_annotations": 6,
+        "supported_controls": 6,
+        "injected_source_contract_errors": 30,
+        "supported_controls_retained": 6,
+        "unsupported_test_cases_retained": 12,
+        "flag_precision": 1.0,
+        "flag_recall": 0.6,
+        "false_flag_count": 0,
+        "false_flag_rate": 0.0,
+        "false_quarantine_count": 0,
+        "false_quarantine_rate": 0.0,
+        "action_counts": {
+          "retain_unverified": 24,
+          "propose_quarantine": 18
+        },
+        "by_case_kind": {
+          "citation_binding": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "citation_span": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "disease_context": {
+            "cases": 3,
+            "flagged": 0
+          },
+          "identifier_binding": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "model_population": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "negation": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "regimen_context": {
+            "cases": 2,
+            "flagged": 0
+          },
+          "source_excerpt": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "statistical_qualification": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "treatment_setting": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "variant_context": {
+            "cases": 3,
+            "flagged": 0
+          }
+        }
+      },
+      "assisted": {
+        "status": "completed",
+        "cases": 42,
+        "scored_source_contract_cases": 36,
+        "unscored_original_annotations": 6,
+        "supported_controls": 6,
+        "injected_source_contract_errors": 30,
+        "supported_controls_retained": 0,
+        "unsupported_test_cases_retained": 1,
+        "flag_precision": 0.8285714285714286,
+        "flag_recall": 0.9666666666666667,
+        "false_flag_count": 6,
+        "false_flag_rate": 1.0,
+        "false_quarantine_count": 0,
+        "false_quarantine_rate": 0.0,
+        "action_counts": {
+          "request_review": 23,
+          "propose_quarantine": 18,
+          "retain_source_supported": 1
+        },
+        "by_case_kind": {
+          "citation_binding": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "citation_span": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "disease_context": {
+            "cases": 3,
+            "flagged": 3
+          },
+          "identifier_binding": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "model_population": {
+            "cases": 1,
+            "flagged": 1
+          },
+          "negation": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "regimen_context": {
+            "cases": 2,
+            "flagged": 2
+          },
+          "source_excerpt": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "statistical_qualification": {
+            "cases": 1,
+            "flagged": 1
+          },
+          "treatment_setting": {
+            "cases": 1,
+            "flagged": 1
+          },
+          "variant_context": {
+            "cases": 3,
+            "flagged": 3
+          }
+        }
+      }
+    },
+    "human_scientific_labels": 0,
+    "scientific_accuracy": null,
+    "scientific_improvement_established": false,
+    "graph_mutations": 0,
+    "interpretation": "Development source-consistency pilot. Exact-excerpt controls and AI-authored synthetic-edit references are not independently reviewed biological gold. Original CIViC claims are unscored. Related cases share six publications; counts are not independent studies. Source support is not clinical truth. All changes are advisory previews; no graph state is changed.",
+    "pharos_snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+    "civic_snapshot_sha256": "6f4874e83a967357a493b7089897420996541a03ef588bfaaa6fb28b44f08bc3",
+    "files": {
+      "cases.json": "06ea9f92f0dfba261d1fb8383f17d3ac325d3a3a7b2ffa281c1d3f0018e6fc6b",
+      "contract.json": "c0a72ff24d52341d56959f642a860cafbf4c12747a25109dc3fa0d23949b0c0a",
+      "execution.json": "7020921f1dd6931e430161fa9cd3787ffab99f55b7626d11a3c1334eb830bf39",
+      "observations.json": "a5e27d03962d1d4c0e6f2167e903c4712d6c5dd7b3abaa7a662f520d931a2fbf",
+      "packet.json": "f7450fcf6983294d69f37b43150726f35a8907c9f5666ceae02b015339778542",
+      "references.json": "5507b375ff4fea31aa196ae3ef6caaf40747aa4d1e60af304f828104323e93b6",
+      "reviewer_worksheet.json": "a52da7daf117f086fc5ee9ccf86edc9de88cfb5f063b7037079221288528841d",
+      "sources.json": "def858fd3408c22a479ba9c09784c93b706d730201f33fef6702c13cb7dda874"
+    },
+    "trace_files": {
+      "quality-panitumumab-wild-type-control.json": "fea3ab85bc70377563d847b4ff955d24020c524f0412a6d47f187708f7733ed7",
+      "quality-panitumumab-wild-type-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-panitumumab-wild-type-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-panitumumab-wild-type-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-panitumumab-wild-type-edit-1.json": "3b42d9bda871bdd798a30314311379e7245d0a2ad3d76b5ce26c1ecb41c0dfa6",
+      "quality-panitumumab-wild-type-edit-2.json": "a8f5433fdbebf5b8634c1f2872bfedafeb3f2bdb03b917dda0cc964393302817",
+      "quality-panitumumab-wild-type-original.json": "3d6140c23beb07f15afab1d5d318afcbb873f41fa48bae2a4799bb9914ffac0c",
+      "quality-g13d-qualified-association-control.json": "445e507e92aae7af866c9d41e56f3488d1ecc651b865ab3b2ee75b1dc24eda07",
+      "quality-g13d-qualified-association-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-qualified-association-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-qualified-association-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-qualified-association-edit-1.json": "8624efb76065ca171d1f08b3a7866f91d6d7ab34236a5b78fee65fb2dccaf970",
+      "quality-g13d-qualified-association-edit-2.json": "566f6f12f14f00838b408c2114a299641e4018b4e50bcbdb96cde1e2b0cc19e0",
+      "quality-g13d-qualified-association-original.json": "76a4ea9f20b40d8b9370fadaf4f5aaf4f0059ce2b73ff7bac56a01e5871ad6a2",
+      "quality-dasatinib-combination-model-control.json": "f55fb8b2b3705c23a2b379a31b662885191b18090170b365706909d38a79e586",
+      "quality-dasatinib-combination-model-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-dasatinib-combination-model-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-dasatinib-combination-model-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-dasatinib-combination-model-edit-1.json": "7488d536d5f283a378d99000eab70e15d7dd9a109128113d0a97abb70a4bbfde",
+      "quality-dasatinib-combination-model-edit-2.json": "5f336f767c4c6414cada62175dd0eb38e5f49915b3ad5fe2a7423728ce62d438",
+      "quality-dasatinib-combination-model-original.json": "88acfd5cc49759ca399bd8ab4f389d9f3ad52938925dc62569c7c1c7652013c3",
+      "quality-g13d-nonsignificance-control.json": "1305c29885116734a1c2c21c952e46cb3578a7fdc7c3d629b74a49eedd79872f",
+      "quality-g13d-nonsignificance-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-nonsignificance-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-nonsignificance-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-nonsignificance-edit-1.json": "710091826a030cab5404598a90d101498f5e2a6b4c0c6b55e1eed2b26b21f5e2",
+      "quality-g13d-nonsignificance-edit-2.json": "f3c4d1ea05d4fce29e59519758eb076c6a64679ed8fd6250e0673a0dfa7105a8",
+      "quality-g13d-nonsignificance-original.json": "91aa7d1e7ae245c2fb6efa3ddb0a65d9f48f815c5b3f99624f280edc12865d47",
+      "quality-meta-analysis-qualification-control.json": "ed251a993b6e05a61ee775112e98ff2e64f86b15c10b031cc4dd1487e0f861af",
+      "quality-meta-analysis-qualification-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-meta-analysis-qualification-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-meta-analysis-qualification-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-meta-analysis-qualification-edit-1.json": "c7a438474cc889dcbf3a87ca3eafb00afa79a937a0e28be40c8939d06892a992",
+      "quality-meta-analysis-qualification-edit-2.json": "39d48c92beb0750115389c6ad1ce38b9150e3eeb2e51457230492a78986ab06f",
+      "quality-meta-analysis-qualification-original.json": "dff14caa58a98c3885ef036829b2568539aa6ab4293d1f4ef86ef9bbdb0337a4",
+      "quality-cetuximab-chemotherapy-cohort-control.json": "9be12956845ae39fb8d6bd1db0ee69140047d7439a1601ad3417a65fb48bf40a",
+      "quality-cetuximab-chemotherapy-cohort-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-cetuximab-chemotherapy-cohort-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-cetuximab-chemotherapy-cohort-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-cetuximab-chemotherapy-cohort-edit-1.json": "ed4bbf943100e5696d264950f2efe75da2b45f08bd4dad1bb35b3fa3b0be2aac",
+      "quality-cetuximab-chemotherapy-cohort-edit-2.json": "dc030f220e21c09468c281f0d43ec1bccb076f7fbeb84571601042a54b16de43",
+      "quality-cetuximab-chemotherapy-cohort-original.json": "b47a58c3b43709482b293d3bf8986184314108f3f745e77df4a943c7460932bc"
+    },
+    "report_sha256": "8a743f23fb6114ed84047d3de0d2f69e260c702eba1fc0f03e2235010c66876e",
+    "result_sha256": "04935be9f7dba554d93c297936e6a2d5a40efba6dc3031c026bc4486e73e3357"
+  },
+  "follow_up": {
+    "format": "crc-source-consistency.v1.result",
+    "packet_sha256": "f0cc9db5080342af63a829b280b3e484c35140528d34f1bc25b5584d43e57070",
+    "execution_sha256": "7ccf8a22d73d95c0d31f0f1da2abf4fd1cb45bb21e78d2e5782edd2721fc98d7",
+    "cases": 42,
+    "publications": 6,
+    "mode": "configured",
+    "model_requested": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "verifier_kind": "live_model",
+    "model_requests": 24,
+    "status_counts": {
+      "validated": 15,
+      "blocked_integrity": 18,
+      "invalid_output": 9
+    },
+    "machine_verdict_counts": {
+      "SUPPORT": 12,
+      "NOT_ENOUGH_INFORMATION": 3
+    },
+    "decisive_assessments": 12,
+    "valid_exact_citation_assessments": 12,
+    "citation_note": "The app binds exact text to model-selected passage IDs; this checks locators, not entailment or model verbatim copying.",
+    "source_provenance_completeness": 1.0,
+    "binding_or_citation_integrity_failures": 18,
+    "invalid_model_outputs": 9,
+    "model_execution_errors": 0,
+    "arms": {
+      "original": {
+        "status": "completed",
+        "cases": 42,
+        "scored_source_contract_cases": 36,
+        "unscored_original_annotations": 6,
+        "supported_controls": 6,
+        "injected_source_contract_errors": 30,
+        "supported_controls_retained": 6,
+        "unsupported_test_cases_retained": 30,
+        "flag_precision": null,
+        "flag_recall": 0.0,
+        "false_flag_count": 0,
+        "false_flag_rate": 0.0,
+        "false_quarantine_count": 0,
+        "false_quarantine_rate": 0.0,
+        "action_counts": {
+          "retain_unverified": 42
+        },
+        "by_case_kind": {
+          "citation_binding": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "citation_span": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "disease_context": {
+            "cases": 3,
+            "flagged": 0
+          },
+          "identifier_binding": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "model_population": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "negation": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "regimen_context": {
+            "cases": 2,
+            "flagged": 0
+          },
+          "source_excerpt": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "statistical_qualification": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "treatment_setting": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "variant_context": {
+            "cases": 3,
+            "flagged": 0
+          }
+        }
+      },
+      "deterministic": {
+        "status": "completed",
+        "cases": 42,
+        "scored_source_contract_cases": 36,
+        "unscored_original_annotations": 6,
+        "supported_controls": 6,
+        "injected_source_contract_errors": 30,
+        "supported_controls_retained": 6,
+        "unsupported_test_cases_retained": 12,
+        "flag_precision": 1.0,
+        "flag_recall": 0.6,
+        "false_flag_count": 0,
+        "false_flag_rate": 0.0,
+        "false_quarantine_count": 0,
+        "false_quarantine_rate": 0.0,
+        "action_counts": {
+          "retain_unverified": 24,
+          "propose_quarantine": 18
+        },
+        "by_case_kind": {
+          "citation_binding": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "citation_span": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "disease_context": {
+            "cases": 3,
+            "flagged": 0
+          },
+          "identifier_binding": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "model_population": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "negation": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "regimen_context": {
+            "cases": 2,
+            "flagged": 0
+          },
+          "source_excerpt": {
+            "cases": 6,
+            "flagged": 0
+          },
+          "statistical_qualification": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "treatment_setting": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "variant_context": {
+            "cases": 3,
+            "flagged": 0
+          }
+        }
+      },
+      "assisted": {
+        "status": "completed",
+        "cases": 42,
+        "scored_source_contract_cases": 36,
+        "unscored_original_annotations": 6,
+        "supported_controls": 6,
+        "injected_source_contract_errors": 30,
+        "supported_controls_retained": 3,
+        "unsupported_test_cases_retained": 6,
+        "flag_precision": 0.8888888888888888,
+        "flag_recall": 0.8,
+        "false_flag_count": 3,
+        "false_flag_rate": 0.5,
+        "false_quarantine_count": 0,
+        "false_quarantine_rate": 0.0,
+        "action_counts": {
+          "retain_source_supported": 12,
+          "propose_quarantine": 18,
+          "request_review": 12
+        },
+        "by_case_kind": {
+          "citation_binding": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "citation_span": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "disease_context": {
+            "cases": 3,
+            "flagged": 1
+          },
+          "identifier_binding": {
+            "cases": 6,
+            "flagged": 6
+          },
+          "model_population": {
+            "cases": 1,
+            "flagged": 1
+          },
+          "negation": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "regimen_context": {
+            "cases": 2,
+            "flagged": 1
+          },
+          "source_excerpt": {
+            "cases": 6,
+            "flagged": 3
+          },
+          "statistical_qualification": {
+            "cases": 1,
+            "flagged": 1
+          },
+          "treatment_setting": {
+            "cases": 1,
+            "flagged": 0
+          },
+          "variant_context": {
+            "cases": 3,
+            "flagged": 2
+          }
+        }
+      }
+    },
+    "human_scientific_labels": 0,
+    "scientific_accuracy": null,
+    "scientific_improvement_established": false,
+    "graph_mutations": 0,
+    "interpretation": "Development source-consistency pilot. Exact-excerpt controls and AI-authored synthetic-edit references are not independently reviewed biological gold. Original CIViC claims are unscored. Related cases share six publications; counts are not independent studies. Source support is not clinical truth. All changes are advisory previews; no graph state is changed.",
+    "pharos_snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+    "civic_snapshot_sha256": "6f4874e83a967357a493b7089897420996541a03ef588bfaaa6fb28b44f08bc3",
+    "files": {
+      "cases.json": "06ea9f92f0dfba261d1fb8383f17d3ac325d3a3a7b2ffa281c1d3f0018e6fc6b",
+      "contract.json": "51bfe2509e55b336739197ec5d0ac41e25be9bc70924932196769d2f15da35fb",
+      "execution.json": "fdd4f8169d54d19cc24853809f29cfcc9bb9f14c77e2e2950be04f3e40a276ad",
+      "observations.json": "2a0707f7068f226eda0fe322a8caff2d93b5993b40f0086747d8dde501a0dad5",
+      "packet.json": "f404b8d00170ec333eff91761de673d3a5dfb77544402d50733cbf96cf03d4a5",
+      "references.json": "5507b375ff4fea31aa196ae3ef6caaf40747aa4d1e60af304f828104323e93b6",
+      "reviewer_worksheet.json": "a52da7daf117f086fc5ee9ccf86edc9de88cfb5f063b7037079221288528841d",
+      "sources.json": "def858fd3408c22a479ba9c09784c93b706d730201f33fef6702c13cb7dda874"
+    },
+    "trace_files": {
+      "quality-panitumumab-wild-type-control.json": "8af2a95c193d5e88b85119b0b17b53d49cebb8c086b519034871a315cd9eb371",
+      "quality-panitumumab-wild-type-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-panitumumab-wild-type-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-panitumumab-wild-type-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-panitumumab-wild-type-edit-1.json": "ce05db07d21509e2d93554d2798db01ede5cab8768e122c9213ad77129822999",
+      "quality-panitumumab-wild-type-edit-2.json": "107d224285c20594425e1fd0d86600bf73d153ba82f17df265e823fb95bd6412",
+      "quality-panitumumab-wild-type-original.json": "5d90c080cf2adadaa4224702233cdc696f0d231b7e005a59e80e2a125f50e9fe",
+      "quality-g13d-qualified-association-control.json": "63ff0f0c45c23a9626a0367021a182e4407fa1ecaee289f50827dfbd30c0de34",
+      "quality-g13d-qualified-association-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-qualified-association-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-qualified-association-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-qualified-association-edit-1.json": "477b50227cd244b9c9f7661826e48a8f511f89df0d1400dc0642e4ca40c49f0c",
+      "quality-g13d-qualified-association-edit-2.json": "c3b5657a5fbf36f0d3b6fcab81b35c5e22567855716a66386d859b7bd37632c2",
+      "quality-g13d-qualified-association-original.json": "fc87123af8d1389592fc4a25f0a769abdcdd684d140d49e1a279317d9c165dd7",
+      "quality-dasatinib-combination-model-control.json": "2d34b5b7f74d6566f4e1e851fb7f91841d55233756eeaf78e82393050a8ee502",
+      "quality-dasatinib-combination-model-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-dasatinib-combination-model-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-dasatinib-combination-model-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-dasatinib-combination-model-edit-1.json": "c1b64d864ff1e0dbf7557c34ba0bb727fe328b5533f24579922e7c78d3ac25a1",
+      "quality-dasatinib-combination-model-edit-2.json": "a0f1f3121292e07d95a103c3db3bae9cef88efdf617f4efeeb2502716663ac71",
+      "quality-dasatinib-combination-model-original.json": "8d04b083a666f983d7f4db1bdfc64da4abe1d4b4e4e3d69eab81ee562c00f46b",
+      "quality-g13d-nonsignificance-control.json": "22960a8cdd42ab1cd4c7648c961cc6134a475a00da312aa7bbbb9cda1a1cca9d",
+      "quality-g13d-nonsignificance-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-nonsignificance-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-nonsignificance-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-g13d-nonsignificance-edit-1.json": "cbc7049e4faa1282381e44d284993973d177e1bb723c7f6e8cdeb0e036267971",
+      "quality-g13d-nonsignificance-edit-2.json": "78fd8014afa51a153dd0feb2a25de84f795a43d0a59650840e34a680761a2a16",
+      "quality-g13d-nonsignificance-original.json": "1b3509a0c24bf8add8be7a879f8e3ecd34ac180394a88015623069409bd8f8e7",
+      "quality-meta-analysis-qualification-control.json": "3e4c341c7ff5228da67c176ddaf1a06149739a37b4f781bb1bf3d4386a84a5ab",
+      "quality-meta-analysis-qualification-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-meta-analysis-qualification-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-meta-analysis-qualification-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-meta-analysis-qualification-edit-1.json": "785f99c67f8d5e1eb2b14d6fa0d168b08feec3745d183784b032205c6c5e870f",
+      "quality-meta-analysis-qualification-edit-2.json": "b0c00fa42e09a5b4bfda3d4b564f3c9d78e02c46c590478761099524377f8774",
+      "quality-meta-analysis-qualification-original.json": "bde4b427084cda978347e86ab40bd2c7a4e84602e114feff1ec1dfd1d07ec152",
+      "quality-cetuximab-chemotherapy-cohort-control.json": "a37d4973def494bf17e4cc0947410c041a51fe644773d48e9e22f1a439fd7e5a",
+      "quality-cetuximab-chemotherapy-cohort-identifier.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-cetuximab-chemotherapy-cohort-citation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-cetuximab-chemotherapy-cohort-quotation.json": "15065f97ee12206561210dba4324aa15447ede3b171934e0d8cb5ac7980e8b5b",
+      "quality-cetuximab-chemotherapy-cohort-edit-1.json": "69f922d73fed3237904b453b0319ba7d52ddbde25aed78eee2d69a1d6ee9b70a",
+      "quality-cetuximab-chemotherapy-cohort-edit-2.json": "4e77428227b79d26b2cb77e29927a5b0c8c53e796281514bae5d12e2794827fd",
+      "quality-cetuximab-chemotherapy-cohort-original.json": "87fe46b296ada91079f3e79c23d2d784f70ae1dfd4ff33a441b7144593dabc2b"
+    },
+    "report_sha256": "2efe71e87c072912ed3ecaf0c358eacb9e28349a20bbfdc7707c61b7339adbe8",
+    "result_sha256": "2c3b8b2798a070d68641c4f7f360c8af4bfe3ca478441e5276f1f6c6a75d565a"
+  },
+  "engine_commits": {
+    "initial": "654fd15ed73d8890b6934416e718b96108869dd6",
+    "identity_only_unexecuted": "78c26cbd1a835a3c0925a87643dc90dc3c17af14",
+    "follow_up": "099d8e153a1fdf18fb3040ba69d7fef7a739fab0"
+  },
+  "same_claims_references_and_sources": true,
+  "total_requested_model_turns": 48,
+  "identity_only_packet_executed": false,
+  "semantic_edit_outcomes": [
+    {
+      "case_id": "quality-panitumumab-wild-type-edit-1",
+      "status": "validated",
+      "verdict": "SUPPORT",
+      "action": "retain_source_supported"
+    },
+    {
+      "case_id": "quality-panitumumab-wild-type-edit-2",
+      "status": "validated",
+      "verdict": "SUPPORT",
+      "action": "retain_source_supported"
+    },
+    {
+      "case_id": "quality-g13d-qualified-association-edit-1",
+      "status": "invalid_output",
+      "verdict": null,
+      "action": "request_review"
+    },
+    {
+      "case_id": "quality-g13d-qualified-association-edit-2",
+      "status": "validated",
+      "verdict": "SUPPORT",
+      "action": "retain_source_supported"
+    },
+    {
+      "case_id": "quality-dasatinib-combination-model-edit-1",
+      "status": "invalid_output",
+      "verdict": null,
+      "action": "request_review"
+    },
+    {
+      "case_id": "quality-dasatinib-combination-model-edit-2",
+      "status": "invalid_output",
+      "verdict": null,
+      "action": "request_review"
+    },
+    {
+      "case_id": "quality-g13d-nonsignificance-edit-1",
+      "status": "invalid_output",
+      "verdict": null,
+      "action": "request_review"
+    },
+    {
+      "case_id": "quality-g13d-nonsignificance-edit-2",
+      "status": "validated",
+      "verdict": "NOT_ENOUGH_INFORMATION",
+      "action": "request_review"
+    },
+    {
+      "case_id": "quality-meta-analysis-qualification-edit-1",
+      "status": "validated",
+      "verdict": "SUPPORT",
+      "action": "retain_source_supported"
+    },
+    {
+      "case_id": "quality-meta-analysis-qualification-edit-2",
+      "status": "invalid_output",
+      "verdict": null,
+      "action": "request_review"
+    },
+    {
+      "case_id": "quality-cetuximab-chemotherapy-cohort-edit-1",
+      "status": "validated",
+      "verdict": "SUPPORT",
+      "action": "retain_source_supported"
+    },
+    {
+      "case_id": "quality-cetuximab-chemotherapy-cohort-edit-2",
+      "status": "validated",
+      "verdict": "SUPPORT",
+      "action": "retain_source_supported"
+    }
+  ],
+  "semantic_errors_total": 12,
+  "semantic_errors_retained_as_supported": 6,
+  "semantic_errors_flagged_by_valid_nei": 1,
+  "semantic_errors_withheld_due_invalid_output": 5,
+  "follow_up_invalid_output_reasons": {
+    "Malformed source passage selection.": 3,
+    "Invalid, altered or duplicate source reference.": 6
+  },
+  "incomplete_responses_at_token_limit": [
+    {
+      "case_id": "quality-g13d-qualified-association-edit-1",
+      "error": "Model returned malformed, refused, incomplete or disallowed output.",
+      "completion_tokens": 3000
+    },
+    {
+      "case_id": "quality-g13d-nonsignificance-original",
+      "error": "Model returned malformed, refused, incomplete or disallowed output.",
+      "completion_tokens": 3000
+    },
+    {
+      "case_id": "quality-meta-analysis-qualification-edit-2",
+      "error": "Model returned malformed, refused, incomplete or disallowed output.",
+      "completion_tokens": 3000
+    }
+  ],
+  "decision": "Do not enable automatic evidence pruning. Deterministic checks retain all six supported controls. Assisted checks retain only three, admit six semantic errors and obtain five of six extra flags through invalid-output abstention.",
+  "scientific_accuracy": null,
+  "scientific_improvement_established": false,
+  "human_scientific_labels": 0,
+  "graph_mutations": 0,
+  "tests": {
+    "local": {
+      "count": 394,
+      "skipped": 1,
+      "failures": 0,
+      "sha256": "21948f5081ad6de90077475662fab8bcbf9357d471ada4b5418c835bd3116ea4"
+    },
+    "brev": {
+      "biograph-steward-steward-1": {
+        "image_id": "sha256:6af666e374a1f4cce935cc33c67f1f2f000e8c886a928d9ecf17e25f818a11c9",
+        "started_at": "2026-10-20T18:10:33.157460655Z",
+        "health": "healthy"
+      },
+      "biograph-steward-local-model-1": {
+        "image_id": "sha256:d1a544bfefdcd51fb42a9cc64d29df092127a7f1706f7a284aac26e5c48c468d",
+        "started_at": "2026-10-20T15:35:18.693972677Z",
+        "health": "healthy"
+      },
+      "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+      "git_head": "099d8e153a1fdf18fb3040ba69d7fef7a739fab0",
+      "linux_test_logs": {
+        "quality_tests.log": {
+          "sha256": "6eb324e267528a4e2500fde624b9022eb5d92f60e3ed22c04efc16e1623c4ffe",
+          "tests": 394,
+          "skipped": 1,
+          "failures": 0
+        },
+        "quality_identity_tests.log": {
+          "sha256": "9a10d11147c7c681daaedcbdc8178f7bae3aacdf51b9a70c4318403ad051a6fb",
+          "tests": 394,
+          "skipped": 1,
+          "failures": 0
+        },
+        "quality_selection_tests.log": {
+          "sha256": "a3de3ded31aeeca429d1b55c74b90363de5468b72dc55ff19e6938f30b0b4897",
+          "tests": 394,
+          "skipped": 1,
+          "failures": 0
+        }
+      },
+      "model_restarted_for_this_increment": false
+    }
+  },
+  "http": {
+    "status": "passed",
+    "reports_and_metrics_byte_exact": true,
+    "full_zip_files_byte_exact": {
+      "crc_evidence_quality_20261020": 52,
+      "crc_evidence_quality_v2_20261020": 52
+    },
+    "anonymous_access_rejected": true,
+    "original_annotation_passports": 2,
+    "synthetic_edits_on_real_edges": 0,
+    "twelve_historical_reports_preserved": true,
+    "graph_mutations": 0,
+    "model_requests": 0
+  },
+  "reports": {
+    "initial": "http://127.0.0.1:8767/api/evaluation/crc_evidence_quality_20261020/",
+    "follow_up": "http://127.0.0.1:8767/api/evaluation/crc_evidence_quality_v2_20261020/",
+    "source_workbench": "http://127.0.0.1:8767/?run=crc_evidence_quality_source_20261020"
+  },
+  "receipts": {
+    "pre_execution_receipt.json": {
+      "created_at": "2026-10-20T17:50:32.194974+00:00",
+      "head": "654fd15ed73d8890b6934416e718b96108869dd6",
+      "packet_sha256": "6a86fea5a9eed6dfb09740ba1b47eebf98666ebd39426cc24d40d9dd8198334f",
+      "model_requests_so_far": 0,
+      "tests": {
+        "count": 394,
+        "skipped": 1,
+        "failures": 0,
+        "log_sha256": "65ed6e829383b406d87de1686d40ca39c135091663576396b34a14f450321c1d"
+      },
+      "fresh_dependency_values_loaded": false,
+      "graph_mutations": 0
+    },
+    "pre_execution_v2_receipt.json": {
+      "created_at": "2026-10-20T18:01:05.056603+00:00",
+      "head": "78c26cbd1a835a3c0925a87643dc90dc3c17af14",
+      "packet_sha256": "16e9a10ccac6a6f1e9dca722d52364aeaf5218712000b479990cbc87e6502216",
+      "model_identity_binding": "guided_enum.v2",
+      "same_inputs_as_first": {
+        "cases.json": true,
+        "references.json": true,
+        "sources.json": true
+      },
+      "follow_up_model_requests_so_far": 0,
+      "budget": 24,
+      "adaptation_reason": "First responses omit the task- prefix from the opaque identity. Constrain only routing metadata; no answer repair or semantic-policy change.",
+      "tests": {
+        "count": 394,
+        "skipped": 1,
+        "failures": 0,
+        "log_sha256": "13aea3cd3d021b503f7d9ac8c28c2a7e106504a3406d5ad9afd7dd8bbe51a989"
+      },
+      "fresh_dependency_values_loaded": false,
+      "graph_mutations": 0
+    },
+    "pre_execution_selection_receipt.json": {
+      "created_at": "2026-10-20T18:08:58.158269+00:00",
+      "head": "099d8e153a1fdf18fb3040ba69d7fef7a739fab0",
+      "packet_sha256": "f0cc9db5080342af63a829b280b3e484c35140528d34f1bc25b5584d43e57070",
+      "first_result_sha256": "04935be9f7dba554d93c297936e6a2d5a40efba6dc3031c026bc4486e73e3357",
+      "same_claims_references_and_sources": true,
+      "model_identity_binding": "guided_enum.v2",
+      "citation_binding": "source_index.v2",
+      "previous_identity_only_packet_executed": false,
+      "follow_up_model_requests_so_far": 0,
+      "budget": 24,
+      "changes": "Select supplied passage IDs; app binds source text. Constrain task identity. Do not repair any completed response or change a semantic judgment. Evidence selection instructions/schema change explicitly.",
+      "tests": {
+        "count": 394,
+        "skipped": 1,
+        "failures": 0,
+        "log_sha256": "21948f5081ad6de90077475662fab8bcbf9357d471ada4b5418c835bd3116ea4"
+      },
+      "fresh_dependency_values_loaded": false,
+      "graph_mutations": 0
+    },
+    "transfer_receipt.json": {
+      "status": "passed",
+      "files": 8,
+      "packet_sha256": "6a86fea5a9eed6dfb09740ba1b47eebf98666ebd39426cc24d40d9dd8198334f",
+      "source_graph_bound": true,
+      "engine_exact": true,
+      "model_requests": 0,
+      "graph_mutations": 0
+    },
+    "transfer_receipt_v2.json": {
+      "status": "passed",
+      "files": 5,
+      "packet_sha256": "f0cc9db5080342af63a829b280b3e484c35140528d34f1bc25b5584d43e57070",
+      "source_graph_bound": true,
+      "engine_exact": true,
+      "model_requests": 0,
+      "graph_mutations": 0
+    },
+    "export_receipt.json": {
+      "status": "passed",
+      "result_sha256": "04935be9f7dba554d93c297936e6a2d5a40efba6dc3031c026bc4486e73e3357",
+      "archive_sha256": "2efb7bb21689f9ab4e0c89c87e10513f4bfd99eeb7313a1cd0398f02f82cf953",
+      "files": 52,
+      "model_requests": 24,
+      "local_metrics_and_quotes_replayed": true,
+      "new_model_calls": 0,
+      "graph_mutations": 0
+    },
+    "export_receipt_v2.json": {
+      "status": "passed",
+      "result_sha256": "2c3b8b2798a070d68641c4f7f360c8af4bfe3ca478441e5276f1f6c6a75d565a",
+      "archive_sha256": "f8487470def63543f2168cf282c050b45988fad11f8e61042034e6cf3ffcb87d",
+      "files": 52,
+      "model_requests": 24,
+      "local_metrics_and_quotes_replayed": true,
+      "new_model_calls": 0,
+      "graph_mutations": 0
+    }
+  },
+  "browser_verification": {
+    "browser": "Chrome",
+    "scope": "Local preview of the exact saved result artifacts and unchanged source inputs; production HTTP/ZIP bytes checked separately.",
+    "report_rendered": true,
+    "assisted_preview_visible_cases": 12,
+    "profile_assertions_visible": 41,
+    "original_case_inspected": 2004,
+    "source_verifier_status": "validated",
+    "source_verdict": "SUPPORT",
+    "source_quotations_and_locators_visible": true,
+    "human_review_state": "candidate",
+    "human_review_state_changed": false,
+    "synthetic_cases_attached_to_real_edges": false,
+    "screenshot": "runs/crc_evidence_quality_20261020/comparison-overview.png",
+    "screenshot_sha256": "4196de1ddc12574b21b328d6eb3ab61df0f8c123fb3b6b6dc2f259d67dea0cd5"
+  }
+}
