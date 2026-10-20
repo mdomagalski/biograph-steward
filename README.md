@@ -50,6 +50,8 @@ The [CRC evidence-value pilot](docs/CRC_EVIDENCE_PILOT.md) connects deterministi
 
 The [DepMap feasibility audit](docs/evaluations/DEPMAP_FEASIBILITY_20261020.md) identifies 63 screened colorectal cell lines and 6,273 matched measured genes in the pinned public 24Q4 archive. It preserves sample groups, missingness and source overlap, and proposes a dependency-leakage policy. It runs no biological ranking; a fair comparison still needs matched, label-independent Pharos features and a frozen endpoint.
 
+The [matched Pharos panel workflow](docs/MATCHED_PHAROS_PANEL.md) freezes measured genes by stable-ID hash before explicit-ID retrieval. It preserves unavailable products, source caps and provisional feature exclusions without disease-filtered selection or dependency scoring.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.

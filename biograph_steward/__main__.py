@@ -164,6 +164,14 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("audit", help="Prepare benchmark readiness and pair-level review files from a snapshot.")
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser('matched-panel-prepare', help='Freeze an outcome-blind hash-selected measured-gene panel before Pharos retrieval.')
+    p.add_argument('--audit', type=Path, required=True)
+    p.add_argument('--mapping', type=Path, required=True)
+    p.add_argument('--size', type=int, default=256)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('matched-panel-retrieve', help='Retrieve explicit-ID Pharos context for a frozen panel, without disease filtering or outcome values.')
+    p.add_argument('--panel', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser('verification-run', help='Evaluate a bounded source verifier against prepared SciFact expert annotations.')
     p.add_argument('--benchmark', type=Path, required=True)
     p.add_argument('--verifier', choices=['baselines', 'codex', 'nim', 'api', 'configured'], default='baselines')
@@ -184,6 +192,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'matched-panel-prepare':
+            from .matched_panel import prepare_panel
+            r = prepare_panel(args.audit, args.mapping, args.out, size=args.size)
+            print(json.dumps({k: r[k] for k in ['panel_sha256', 'eligible_genes', 'selected_genes', 'unique_protein_candidates']}, indent=2))
+            return 0
+        if args.command == 'matched-panel-retrieve':
+            from .matched_panel import retrieve_panel
+            r = retrieve_panel(args.panel, args.out, progress=lambda message: print(message, file=sys.stderr, flush=True))
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'selected_genes', 'target_resolution_counts', 'provisional_feature_counts', 'retrieval', 'ready_for_prediction_comparison']}, indent=2))
+            return 0
         if args.command == 'depmap-freeze':
             from .depmap_audit import freeze_depmap
             r = freeze_depmap(args.downloads, args.out)
