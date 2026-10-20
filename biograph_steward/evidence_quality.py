@@ -29,6 +29,13 @@ LIMITATION = ('Development source-consistency pilot. Exact-excerpt controls and 
               'references are not independently reviewed biological gold. Original CIViC claims are unscored. '
               'Related cases share six publications; counts are not independent studies. '
               'Source support is not clinical truth. All changes are advisory previews; no graph state is changed.')
+SELECTION_INSTRUCTIONS = INSTRUCTIONS.replace(
+    'For SUPPORT/CONTRADICT cite at most three complete supplied passages, copied\n'
+    'exactly with their sentence_index values; retain all material qualifications.',
+    'For SUPPORT/CONTRADICT select at most three complete supplied passages by\n'
+    'sentence_index only; retain every passage needed for material qualifications.\n'
+    'Do not generate quotation text. The application attaches exact saved source\n'
+    'text to your selected indices; selecting a passage does not itself prove support.')
 
 
 def engine():
@@ -186,11 +193,13 @@ def prepare_quality(packet, literature, output, *, specs=None):
                'papers': [papers[pmid] for pmid in sorted({c['source_pmid'] for c in cases})]}
     contract = {'policy': POLICY, 'engine': engine(), 'arms': list(ARMS),
                 'model_identity_binding': 'guided_enum.v2',
-                'instructions_sha256': digest(INSTRUCTIONS), 'schema_sha256': digest(VERDICT_SCHEMA),
+                'citation_binding': 'source_index.v2',
+                'instructions_sha256': digest(SELECTION_INSTRUCTIONS),
+                'schema_sha256': digest(selection_schema()),
                 'selection': 'Six predeclared saved-paper anchors; one retained annotation per paper in SHA order. Reused development sources.',
                 'reference_scope': LIMITATION, 'human_scientific_labels': 0,
                 'model_input_fields': ['id', 'claim_id', 'document_id', 'claim', 'document'],
-                'inference': 'One turn per structurally usable case, no retries/repair/fallback/tools; labels and edit descriptions withheld.',
+                'inference': 'One turn per structurally usable case, no retries/repair/fallback/tools; labels and edit descriptions withheld. Model selects passage IDs; app binds exact text without changing judgments.',
                 'decision_policy': 'Binding failure -> propose quarantine. Valid SUPPORT -> retain source-supported. CONTRADICT -> propose quarantine. NEI/error -> request review. No lifecycle writes.',
                 'metrics_policy': 'All three arms share inventory. Errors count as review, never support. Score retain-vs-flag references only; originals unscored. False quarantine and any false flag are separate.',
                 'promotion_policy': 'No automatic promotion or pruning. Descriptive source-contract comparison only.',
@@ -257,16 +266,54 @@ def decisions(case, trace):
     return {'original': KEEP, 'deterministic': deterministic, 'assisted': assisted}
 
 
+def selection_schema(task=None):
+    schema = deepcopy(VERDICT_SCHEMA)
+    item = schema['properties']['evidence']['items']
+    item['properties'].pop('quote'); item['required'] = ['sentence_index']
+    if task is not None:
+        schema['properties']['task_id']['enum'] = [task['id']]
+        item['properties']['sentence_index']['enum'] = list(range(len(task['document']['sentences'])))
+    return schema
+
+
+def bind_selection(task, output):
+    """Bind an index-only selection to source bytes; never edit a semantic field."""
+    if not isinstance(output, dict) or not isinstance(output.get('evidence'), list):
+        raise ValueError('Malformed source passage selection.')
+    bound = deepcopy(output)
+    sentences = task['document']['sentences']
+    for e in bound['evidence']:
+        if (not isinstance(e, dict) or set(e) != {'sentence_index'} or
+                type(e['sentence_index']) is not int or not 0 <= e['sentence_index'] < len(sentences)):
+            raise ValueError('Invalid source passage selection; no repair.')
+        e['quote'] = sentences[e['sentence_index']]['text']
+    validate_verdict(bound, task)
+    return bound
+
+
 class TaskBoundVerifier:
     """Constrain routing metadata during generation; never repair an answer.
 
     The request still contains the exact task and response validation remains
     mandatory. This supplies no expected verdict, rationale or case-kind label.
     """
-    def __init__(self, verifier, task_id):
-        self.verifier = verifier; self.task_id = task_id
+    def __init__(self, verifier, task_id, *, task=None):
+        self.verifier = verifier; self.task_id = task_id; self.task = task
 
     def generate(self, prompt, schema, policy, audit):
+        if self.task is not None:
+            trace = self.verifier.generate(SELECTION_INSTRUCTIONS + '\nUntrusted input data:\n' +
+                json.dumps(self.task, ensure_ascii=True), selection_schema(self.task),
+                POLICY + '.selection.v2', {**audit, 'instructions_sha256': digest(SELECTION_INSTRUCTIONS)})
+            trace['citation_binding'] = 'source_index.v2'
+            trace['raw_selection_output'] = deepcopy(trace.get('output'))
+            if trace['status'] == 'completed':
+                try:
+                    trace['output'] = bind_selection(self.task, trace['output'])
+                except (ValueError, TypeError, KeyError):
+                    trace.update(status='invalid_output', output=None,
+                                 error='Invalid passage selection or verdict; no repair.')
+            return trace
         schema = deepcopy(schema)
         schema['properties']['task_id']['enum'] = [self.task_id]
         return self.verifier.generate(prompt, schema, policy, audit)
@@ -320,6 +367,7 @@ def run_quality(packet, output, *, mode='none', model=None, verifier=None, progr
                  'mode': mode, 'model_requested': getattr(verifier, 'model', None),
                  'verifier_kind': getattr(verifier, 'kind', 'not_run'),
                  'model_identity_binding': contract.get('model_identity_binding', 'free_string.v1'),
+                 'citation_binding': contract.get('citation_binding', 'model_quotation.v1'),
                  'eligible_model_turns': sum(not deterministic_findings(c) for c in cases),
                  'model_settings': {k: getattr(verifier, k, None) for k in
                      ['endpoint', 'api', 'prompt_profile', 'max_output_tokens', 'timeout']}}
@@ -330,7 +378,9 @@ def run_quality(packet, output, *, mode='none', model=None, verifier=None, progr
         trace = {'status': 'blocked_integrity' if findings else 'not_run', 'model_calls': 0, 'verdict': None}
         if not findings and verifier is not None:
             try:
-                bound = TaskBoundVerifier(verifier, c['task']['id']) if contract.get('model_identity_binding') == 'guided_enum.v2' else verifier
+                bound = TaskBoundVerifier(verifier, c['task']['id'],
+                    task=c['task'] if contract.get('citation_binding') == 'source_index.v2' else None
+                    ) if contract.get('model_identity_binding') == 'guided_enum.v2' else verifier
                 trace = assess_task({'task': c['task']}, bound)
             except Exception as exc:
                 # Domain/provider failure consumes this case; never retry or claim success.
@@ -369,7 +419,9 @@ def _metrics(p, cases, refs, sources, observations, execution):
             'machine_verdict_counts': dict(Counter(o['assessment']['verdict'] for o in validated)),
             'decisive_assessments': len(decisive),
             'valid_exact_citation_assessments': len(decisive),
-            'citation_note': 'Exact quotation fidelity only; citation correctness does not establish entailment.',
+            'citation_note': ('The app binds exact text to model-selected passage IDs; this checks locators, not entailment or model verbatim copying.'
+                              if execution.get('citation_binding') == 'source_index.v2' else
+                              'Exact quotation fidelity only; citation correctness does not establish entailment.'),
             'source_provenance_completeness': sum(bool(c['source_record_sha256'] and c['selection']['passages']) for c in cases) / len(cases),
             'binding_or_citation_integrity_failures': sum(bool(deterministic_findings(c)) for c in cases),
             'invalid_model_outputs': sum(o['status'] == 'invalid_output' for o in observations),
@@ -402,7 +454,9 @@ def verify_quality_result(path):
             raise ValueError('Quality trace changed.')
         t = _read(f)
         expected_schema = deepcopy(VERDICT_SCHEMA)
-        if contract.get('model_identity_binding') == 'guided_enum.v2':
+        if contract.get('citation_binding') == 'source_index.v2':
+            expected_schema = selection_schema(c['task'])
+        elif contract.get('model_identity_binding') == 'guided_enum.v2':
             expected_schema['properties']['task_id']['enum'] = [c['task']['id']]
         if t.get('schema_sha256') is not None and t['schema_sha256'] != digest(expected_schema):
             raise ValueError('Quality response schema differs from the frozen identity contract.')
@@ -410,6 +464,8 @@ def verify_quality_result(path):
             if any(t.get(k) != v for k, v in binding(c['task']).items()):
                 raise ValueError('Quality model input binding changed.')
             validate_verdict(t['verdict'], c['task'])
+            if contract.get('citation_binding') == 'source_index.v2' and bind_selection(c['task'], t['raw_selection_output']) != t['verdict']:
+                raise ValueError('Quality source selection binding changed.')
         if (o['assessment'] != t.get('verdict') or o['status'] != t['status']
                 or o['model_calls'] != t.get('model_calls', 0)
                 or o['decisions'] != decisions(c, t) or o['findings'] != deterministic_findings(c)):

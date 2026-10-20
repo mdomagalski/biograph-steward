@@ -38,6 +38,10 @@ class TestVerifier:
                     (' CHANGED' if self.mode == 'bad_quote' else '')}],
                'explanation': 'Invented fixture judgment only.', 'context_matches': [],
                'context_mismatches': [], 'missing_details': [], 'follow_up': ''}
+        if 'quote' not in schema['properties']['evidence']['items']['properties']:
+            for e in out['evidence']:
+                if self.mode != 'smuggled_quote': e.pop('quote')
+                if self.mode == 'bad_quote': e['sentence_index'] = -1
         if self.mode == 'wrong_identity':
             out['task_id'] = task['id'].removeprefix('task-')
         return {**audit, 'status': 'completed', 'output': out, 'model_calls': 1,
@@ -100,6 +104,7 @@ class QualityTests(unittest.TestCase):
         for task, schema in zip(verifier.calls, verifier.schemas):
             self.assertEqual(schema['properties']['task_id']['enum'], [task['id']])
             self.assertEqual(schema['properties']['verdict']['enum'], ['SUPPORT', 'CONTRADICT', 'NOT_ENOUGH_INFORMATION'])
+            self.assertNotIn('quote', schema['properties']['evidence']['items']['properties'])
         self.assertEqual(m['arms']['assisted']['supported_controls_retained'], 1)
         self.assertEqual(m['arms']['assisted']['unsupported_test_cases_retained'], 0)
         self.assertEqual(m['arms']['assisted']['flag_recall'], 1)
@@ -107,12 +112,16 @@ class QualityTests(unittest.TestCase):
         self.assertEqual(m['graph_mutations'], 0)
         self.assertEqual(original, {p.name: p.read_bytes() for p in self.enriched.iterdir() if p.is_file()})
         self.assertEqual(verify_quality_result(out), m)
+        for f in (out / 'traces').glob('*.json'):
+            trace = json.loads(f.read_text())
+            if trace['status'] == 'validated':
+                for e in trace['raw_selection_output']['evidence']: self.assertEqual(set(e), {'sentence_index'})
         for a in self.graph['assertions']:
             passports = quality_passports(out, self.graph, a['id'])
             self.assertTrue(all(p['case']['kind'] == 'original_annotation' for p in passports))
 
     def test_invalid_output_errors_and_false_support_remain_in_denominators(self):
-        for mode in ['bad_quote', 'wrong_identity', 'fail', 'accept']:
+        for mode in ['bad_quote', 'smuggled_quote', 'wrong_identity', 'fail', 'accept']:
             v = TestVerifier(mode); m = run_quality(self.packet, self.root / mode, mode='api', verifier=v)
             self.assertEqual(len(v.calls), 4); self.assertEqual(m['model_requests'], 4)
             if mode == 'accept':
