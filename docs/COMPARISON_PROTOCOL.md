@@ -56,4 +56,4 @@ from biograph_steward.comparison_protocol import verify_protocol
 verify_protocol('runs/crc_growth_protocol_20261020/frozen')
 ```
 
-The next increment implements and tests the training/evaluation runner against this exact packet, then executes the first comparison. GPU inference and AWS provisioning are unnecessary for this CPU-sized experiment.
+The [CPU runner](GROWTH_COMPARISON.md) now implements this exact packet. Its [first executed comparison](evaluations/CRC_GROWTH_COMPARISON_20261020.md) found no demonstrated incremental gain from the CPTAC summary. GPU inference and AWS provisioning were unnecessary. This protocol and its consumed holdout remain historical; changed feature or tuning policies require a new experiment.

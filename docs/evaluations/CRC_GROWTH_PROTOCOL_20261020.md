@@ -1,5 +1,7 @@
 # Frozen growth-dependency protocol — October 20, 2026
 
+Follow-up: the [first scored execution](CRC_GROWTH_COMPARISON_20261020.md) is now complete and found no demonstrated incremental gain. The notes below describe the earlier outcome-blind freeze; its packet remains unchanged.
+
 **The source-reviewed feature packet and scoring protocol are frozen. No dependency values have been loaded, no predictor has been fitted and biological improvement remains untested.** This follows the [matched Pharos panel](MATCHED_PHAROS_PANEL_20261020.md). Existing source pulls, graphs and reports remain historical and unchanged.
 
 ## Source review and materialized features

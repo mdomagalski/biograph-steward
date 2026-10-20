@@ -56,9 +56,11 @@ The [October 20 matched pull](docs/evaluations/MATCHED_PHAROS_PANEL_20261020.md)
 
 The [comparison-freeze workflow](docs/COMPARISON_PROTOCOL.md) materializes reviewed source channels, deduplicated features and grouped gene/model partitions, and freezes the endpoint, preprocessing, ridge-model budget and controls before loading dependency values. It does not yet fit or score predictors.
 
-The [frozen October 20 protocol](docs/evaluations/CRC_GROWTH_PROTOCOL_20261020.md) preserves 3,788 unique gene–pathway memberships and 34 qualifying BioPlex gene pairs, with exact 153/51/52 gene assignments. The next increment implements the runner and executes the restricted Pharos versus Pharos+CPTAC comparison.
+The [frozen October 20 protocol](docs/evaluations/CRC_GROWTH_PROTOCOL_20261020.md) preserves 3,788 unique gene–pathway memberships and 34 qualifying BioPlex gene pairs, with exact 153/51/52 gene assignments.
 
 The [CPU comparison runner](docs/GROWTH_COMPARISON.md) implements that exact protocol, including train-only transforms, equal tuning budgets, CPTAC-only/coverage/random/permutation controls, a pre-test prediction seal and source-linked rank-change passports. It uses no third-party Python packages or model service.
+
+The [first scored comparison](docs/evaluations/CRC_GROWTH_COMPARISON_20261020.md) found **no demonstrated incremental gain**: held-out Spearman was 0.381 for restricted Pharos and 0.260 with CPTAC added (change −0.121; paired 95% interval −0.393 to +0.188). The result, controls and all 52 test-gene passports are preserved. This is a retrospective growth-ranking pilot; the challenge's graph-link prediction and pruning comparison remain pending.
 
 ## What the prototype does now
 
