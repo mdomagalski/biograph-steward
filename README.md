@@ -76,6 +76,8 @@ The [recorded evidence-quality comparison](docs/evaluations/CRC_EVIDENCE_QUALITY
 
 The optional [context verifier](docs/CONTEXT_VERIFICATION.md) adds compact, unique citations, exact claim/source context spans and conservative checks before an assertion enters a supported preview. A separately frozen comparison tests valid paraphrases and context errors from new CRC publications against the existing verifier. Raw verdicts, output failures and eligibility decisions remain distinct; automatic graph changes remain disabled.
 
+The [18-case context comparison](docs/evaluations/CRC_CONTEXT_VERIFICATION_20261020.md) withholds 7/9 edited claims with literal review checks while retaining all nine valid controls. The legacy verifier admits 8/9 edits; the new context verifier fails validation on all 18 cases. Its withholding is not successful reasoning. The model tool stays experimental and is not enabled by default.
+
 - Compares original, deterministic and advisory-verifier views in a [source-consistency pilot](docs/EVIDENCE_QUALITY.md), with exact passages, explicit synthetic edits, false-flag accounting and source-bound findings in CIViC assertion passports. Synthetic test cases never alter the graph or serve as biomedical gold.
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
 - Provides one structured question-planning model interface that calls the existing read-only engines, with explicit unavailable/replay/test modes.
