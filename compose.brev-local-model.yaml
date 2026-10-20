@@ -1,0 +1,71 @@
+# Linux/Brev only. Both services bind the host loopback explicitly.
+# docker compose -f compose.yaml -f compose.brev-local-model.yaml up -d --build
+services:
+  steward:
+    network_mode: host
+    ports: !reset []
+    environment:
+      BIOGRAPH_HOST: 127.0.0.1
+      BIOGRAPH_PLANNER_PROVIDER: api
+      BIOGRAPH_PLANNER_MODEL: nvidia/Llama-3.1-Nemotron-Nano-8B-v1
+      BIOGRAPH_PLANNER_ENDPOINT: http://127.0.0.1:8000/v1/chat/completions
+      # This names the guided_json request format; the server is vLLM, not NIM.
+      BIOGRAPH_PLANNER_API: nim_chat
+      BIOGRAPH_PLANNER_PROMPT_PROFILE: nemotron_nano_v1
+      BIOGRAPH_PLANNER_MAX_OUTPUT_TOKENS: "1600"
+      BIOGRAPH_PLANNER_TIMEOUT: "120"
+  local-model:
+    image: ${BIOGRAPH_VLLM_IMAGE:-vllm/vllm-openai:v0.8.5@sha256:6cf9808ca8810fc6c3fd0451c2e7784fb224590d81f7db338e7eaf3c02a33d33}
+    network_mode: host
+    shm_size: 4gb
+    environment:
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      VLLM_NO_USAGE_STATS: "1"
+      DO_NOT_TRACK: "1"
+      VLLM_USE_V1: "0"
+    command:
+      - --model
+      - nvidia/Llama-3.1-Nemotron-Nano-8B-v1
+      - --revision
+      - 54641c1611fcff44fa4865626462445e0a153fc7
+      - --tokenizer-revision
+      - 54641c1611fcff44fa4865626462445e0a153fc7
+      - --served-model-name
+      - nvidia/Llama-3.1-Nemotron-Nano-8B-v1
+      - --host
+      - 127.0.0.1
+      - --port
+      - "8000"
+      - --dtype
+      - bfloat16
+      - --max-model-len
+      - "16384"
+      - --max-num-seqs
+      - "1"
+      - --gpu-memory-utilization
+      - "0.75"
+      - --enforce-eager
+      - --disable-log-requests
+      - --generation-config
+      - vllm
+      - --guided-decoding-backend
+      - xgrammar
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - local-model-cache:/root/.cache/huggingface
+    healthcheck:
+      test: [CMD, python3, -c, "from urllib.request import ProxyHandler,build_opener; build_opener(ProxyHandler({})).open('http://127.0.0.1:8000/health', timeout=3).read()"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10m
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  local-model-cache:

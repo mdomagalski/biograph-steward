@@ -4,6 +4,8 @@ The core v0.8.0 app was deployed and tested on a Brev Ubuntu VM using source com
 
 Artifact names and machine timestamps use UTC, so the corresponding deployment receipts are labeled `20261020`.
 
+The later [local Nemotron increment](LOCAL_MODEL.md) connects the planner through a separate loopback-only vLLM service. Use both `compose.yaml` and `compose.brev-local-model.yaml` when recreating that current deployment. Its [first live comparison](evaluations/NEMOTRON_20261019.md) failed the planning usefulness check; the checkpoint below describes the preceding core-only deployment and does not imply successful model planning.
+
 ## Verified environment
 
 - One NVIDIA L40S, 48 GB; driver 565.57.01.

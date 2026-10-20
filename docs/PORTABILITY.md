@@ -103,6 +103,8 @@ After configuring the model below, repeat the initial command with `--with-plann
 
 ## Configure a shared model for planner and verifier
 
+For the tested local NVIDIA-model serving configuration, see [Local Nemotron on Brev](LOCAL_MODEL.md). Its Linux-only Compose overlay keeps the app and vLLM model on VM loopback and enables only the planner. The NIM setup below remains a separate option.
+
 All model IDs and full endpoint URLs are explicit. This example describes the **request protocol**, not an installed model:
 
 ```bash
@@ -126,7 +128,7 @@ Choose the API supported by the exact endpoint and model. The [NIM structured-ge
 
 `BIOGRAPH_PLANNER_*` and `BIOGRAPH_VERIFIER_*` override the shared settings for a single role. For example `BIOGRAPH_PLANNER_MODEL` overrides `BIOGRAPH_MODEL_ID`; `BIOGRAPH_VERIFIER_API` overrides `BIOGRAPH_MODEL_API`. Empty explicit values do not silently reuse another setting.
 
-Shared settings are `BIOGRAPH_MODEL_PROVIDER`, `BIOGRAPH_MODEL_ID`, `BIOGRAPH_MODEL_ENDPOINT`, `BIOGRAPH_MODEL_API`, `BIOGRAPH_MODEL_API_KEY`, `BIOGRAPH_MODEL_MAX_OUTPUT_TOKENS` and `BIOGRAPH_MODEL_TIMEOUT`. Output budgets are 128–8192 tokens; timeouts are 1–300 seconds. Defaults are 1600 tokens/45 seconds for the planner and 3000 tokens/90 seconds for the HTTP verifier. These are configured budgets, not observed token usage.
+Shared settings are `BIOGRAPH_MODEL_PROVIDER`, `BIOGRAPH_MODEL_ID`, `BIOGRAPH_MODEL_ENDPOINT`, `BIOGRAPH_MODEL_API`, `BIOGRAPH_MODEL_API_KEY`, `BIOGRAPH_MODEL_MAX_OUTPUT_TOKENS`, `BIOGRAPH_MODEL_TIMEOUT` and `BIOGRAPH_MODEL_PROMPT_PROFILE`. Role-specific settings override them. Prompt profiles are `standard` (the default) and explicit `nemotron_nano_v1` (NVIDIA Nano v1's reasoning-off system switch with the complete task policy in the user message). Output budgets are 128–8192 tokens; timeouts are 1–300 seconds. Defaults are 1600 tokens/45 seconds for the planner and 3000 tokens/90 seconds for the HTTP verifier. These are configured budgets, not observed token usage.
 
 Providers are `api`, `nim` or `codex`. Without shared/role configuration, the existing planner defaults to `api` and verifier to `codex`. `OPENAI_API_KEY` is used only for `api.openai.com` and is never sent to custom endpoints. Other endpoints use the role/shared API key; the NIM provider can use `NVIDIA_API_KEY` when no role/shared key was set. Codex retains its existing CLI login and `BIOGRAPH_CODEX_MODEL` / `BIOGRAPH_CODEX_BIN` configuration; the Mac executable path is not portable to Brev.
 

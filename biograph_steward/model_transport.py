@@ -52,6 +52,9 @@ class JSONModelClient:
             raise ModelUnavailable('Configure an explicit model ID. No model was called.')
         if not isinstance(self.endpoint, str) or self.api not in {'responses', 'chat_completions', 'nim_chat'}:
             raise ModelUnavailable('Configure a full endpoint and a supported model API. No model was called.')
+        self.prompt_profile = setting(role, 'PROMPT_PROFILE', 'standard')
+        if self.prompt_profile not in {'standard', 'nemotron_nano_v1'}:
+            raise ModelUnavailable('Model prompt profile must be standard or nemotron_nano_v1. No model was called.')
         try:
             u = urlparse(self.endpoint); u.port  # Validate malformed/out-of-range ports.
         except ValueError:
@@ -84,6 +87,12 @@ class JSONModelClient:
         instructions, marker, data = prompt.partition('\nUntrusted input data:\n')
         messages = ([{'role': 'system', 'content': instructions}, {'role': 'user', 'content': data}]
                     if marker else [{'role': 'user', 'content': prompt}])
+        if self.prompt_profile == 'nemotron_nano_v1':
+            # NVIDIA's Nano v1 contract reserves the system message for this
+            # switch and places task instructions in the user message. Keep the
+            # complete policy and delimited untrusted catalogue in that message.
+            messages = [{'role': 'system', 'content': 'detailed thinking off'},
+                        {'role': 'user', 'content': prompt}]
         fmt = {'type': 'json_schema', 'name': re.sub(r'[^A-Za-z0-9_]', '_', policy)[:64],
                'strict': True, 'schema': schema_definition}
         payload = {'model': self.model}
@@ -99,6 +108,7 @@ class JSONModelClient:
                            guided_json=schema_definition, max_tokens=self.max_output_tokens)
         trace = {'provider_kind': self.kind, 'provider_requested': self.provider, 'policy': policy,
                  'model_requested': self.model, 'model_returned': None, 'endpoint': self.endpoint, 'api': self.api,
+                 'prompt_profile': self.prompt_profile,
                  'model_calls': 1, 'transport_requests': 1, 'usage': None, 'cost': None,
                  'cost_note': 'No price table assumed; returned token counts are recorded.',
                  **(audit or {}), 'schema_sha256': digest(schema_definition), 'request_sha256': digest(payload),
