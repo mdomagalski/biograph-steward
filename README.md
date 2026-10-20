@@ -48,13 +48,15 @@ The [source-verifier contract](docs/VERIFIER_PROTOCOL.md) has an [external bench
 
 The [CRC evidence-value pilot](docs/CRC_EVIDENCE_PILOT.md) connects deterministic source comparisons to primary publication passages and a processed CPTAC measurement sidecar. Its [first recorded run](docs/evaluations/CRC_EVIDENCE_VALUE_20261020.md) covers 20 annotations/12 publications: 19 abstract checks were inconclusive; three paired full-text checks produced two advisory SUPPORT verdicts and one context-sensitive CONTRADICT flag. The [source-context and cohort follow-up](docs/evaluations/CRC_CONTEXT_COHORT_20261020.md) records an AI-assisted scope warning while preserving those verdicts. It accounts for all 6,422 measured genes, resolving 6,415 and retaining seven ambiguous names. CUX1 is one gene with two valid protein links, without protein-specific measurements. Human scientific labels, independent study counts and graph-prediction improvement remain unestablished.
 
-The [DepMap feasibility audit](docs/evaluations/DEPMAP_FEASIBILITY_20261020.md) identifies 63 screened colorectal cell lines and 6,273 matched measured genes in the pinned public 24Q4 archive. It preserves sample groups, missingness and source overlap, and proposes a dependency-leakage policy. It runs no biological ranking; a fair comparison still needs matched, label-independent Pharos features and a frozen endpoint.
+The [DepMap feasibility audit](docs/evaluations/DEPMAP_FEASIBILITY_20261020.md) identifies 63 screened colorectal cell lines and 6,273 matched measured genes in the pinned public 24Q4 archive. It preserves sample groups, missingness and source overlap, and proposes a dependency-leakage policy. The matched retrieval and protocol follow-ups below prepare the comparison inputs without biological rankings.
 
 The [matched Pharos panel workflow](docs/MATCHED_PHAROS_PANEL.md) freezes measured genes by stable-ID hash before explicit-ID retrieval. It preserves unavailable products, source caps and provisional feature exclusions without disease-filtered selection or dependency scoring.
 
-The [October 20 matched pull](docs/evaluations/MATCHED_PHAROS_PANEL_20261020.md) covers all 256 selected genes through 256 resolved protein products, with 207,430 raw annotation rows and explicit source-policy exclusions. Source review and a frozen scoring protocol remain necessary before the biological comparison.
+The [October 20 matched pull](docs/evaluations/MATCHED_PHAROS_PANEL_20261020.md) covers all 256 selected genes through 256 resolved protein products, with 207,430 raw annotation rows and explicit provisional source-policy exclusions.
 
 The [comparison-freeze workflow](docs/COMPARISON_PROTOCOL.md) materializes reviewed source channels, deduplicated features and grouped gene/model partitions, and freezes the endpoint, preprocessing, ridge-model budget and controls before loading dependency values. It does not yet fit or score predictors.
+
+The [frozen October 20 protocol](docs/evaluations/CRC_GROWTH_PROTOCOL_20261020.md) preserves 3,788 unique gene–pathway memberships and 34 qualifying BioPlex gene pairs, with exact 153/51/52 gene assignments. The next increment implements the runner and executes the restricted Pharos versus Pharos+CPTAC comparison.
 
 ## What the prototype does now
 
