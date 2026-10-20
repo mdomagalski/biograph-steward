@@ -1,9 +1,14 @@
 """Portable runtime paths and explicit HTTP access policy; no secret logging."""
 import base64
+import hashlib
 import hmac
+from http.cookies import CookieError, SimpleCookie
 import ipaddress
 import os
 from pathlib import Path
+import secrets
+import threading
+import time
 from urllib.parse import urlsplit
 
 
@@ -36,6 +41,56 @@ def loopback_host(host):
         return ipaddress.ip_address(host).is_loopback
     except ValueError:
         return False
+
+
+class BrowserSessions:
+    """Bounded, opaque browser sessions; restarting the server revokes them."""
+    cookie_name = 'biograph_session'
+    lifetime = 8 * 60 * 60
+    capacity = 256
+
+    def __init__(self):
+        self._sessions = {}
+        self._lock = threading.Lock()
+
+    def _key(self, cookie):
+        if not isinstance(cookie, str) or len(cookie) > 8192:
+            return None
+        try:
+            value = SimpleCookie(cookie).get(self.cookie_name)
+            if value and len(value.value) == 43 and value.value.isascii():
+                return hashlib.sha256(value.value.encode('ascii')).digest()
+        except CookieError:
+            pass
+        return None
+
+    def authenticated(self, cookie):
+        key = self._key(cookie)
+        with self._lock:
+            expires = self._sessions.get(key, 0)
+            if expires > time.monotonic():
+                return True
+            self._sessions.pop(key, None)
+            return False
+
+    def issue(self):
+        value = secrets.token_urlsafe(32)
+        now = time.monotonic()
+        with self._lock:
+            self._sessions = {k: expires for k, expires in self._sessions.items() if expires > now}
+            if len(self._sessions) >= self.capacity:
+                self._sessions.pop(next(iter(self._sessions)))
+            self._sessions[hashlib.sha256(value.encode('ascii')).digest()] = now + self.lifetime
+        return value
+
+    def revoke(self, cookie):
+        with self._lock:
+            self._sessions.pop(self._key(cookie), None)
+
+    def cookie_header(self, value='', *, secure=False):
+        age = self.lifetime if value else 0
+        return (f'{self.cookie_name}={value}; Path=/; HttpOnly; SameSite=Strict; Max-Age={age}'
+                + ('; Secure' if secure else ''))
 
 
 class AccessPolicy:

@@ -1,48 +1,113 @@
 """Standard-library HTTP interface; loopback by default, explicit protected hosting."""
 from __future__ import annotations
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from html import escape
 from io import BytesIO
 import json
 from pathlib import Path
 import re
 import socket
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse, urlsplit
 from uuid import uuid4
 import webbrowser
 import zipfile
 from datetime import datetime, timezone
 
 from .client import PharosClient, ENDPOINT, PharosError
-from .runtime import AccessPolicy, runs_directory, cache_directory
+from .runtime import AccessPolicy, BrowserSessions, runs_directory, cache_directory
 from . import __version__
 
 
-def report_html(graph: dict | None = None) -> str:
+def report_html(graph: dict | None = None, *, protected=False) -> str:
     template = Path(__file__).with_name("ui.html").read_text(encoding="utf-8")
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     script = Path(__file__).with_name("guided.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("civic.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("planner.js").read_text(encoding="utf-8")
-    return template.replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
+    auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
+    return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
+
+
+def login_return_path(value):
+    """Preserve a saved question's root URL, never redirect to another site."""
+    if (not isinstance(value, str) or len(value) > 2048 or value.startswith('//') or '\\' in value
+            or any(ord(c) < 32 or ord(c) > 126 for c in value)):
+        return '/'
+    try:
+        parsed = urlsplit(value)
+        if parsed.scheme or parsed.netloc or parsed.path != '/' or parsed.fragment or not value.startswith('/'):
+            return '/'
+    except ValueError:
+        return '/'
+    return value
 
 
 def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                   cache_dir: Path | None = None, timeout: float = 30, *, host='127.0.0.1',
                   allowed_origins=(), access_token=None) -> ThreadingHTTPServer:
     policy = AccessPolicy(host, allowed_origins, access_token)
+    sessions = BrowserSessions()
     runs_dir = Path(runs_dir).resolve()
     runs_dir.mkdir(parents=True, exist_ok=True)
 
     class Handler(BaseHTTPRequestHandler):
+        def authenticated(self):
+            return (policy.authenticated(self.headers.get('Authorization'))
+                    or sessions.authenticated(self.headers.get('Cookie')))
+
         def authenticate(self):
-            if policy.authenticated(self.headers.get('Authorization')):
+            if self.authenticated():
                 return True
-            self.send_response(401)
-            self.send_header('WWW-Authenticate', 'Basic realm="BioGraph Steward", charset="UTF-8"')
+            # Native Basic challenges fail in some embedded browsers. Explicit
+            # Basic/Bearer API headers still work; browser users use the form.
+            self.json_reply({'error': 'Sign in to the workspace to continue.'}, 401)
+            return False
+
+        def login_page(self, return_to='/', *, failed=False):
+            html = Path(__file__).with_name('login.html').read_text(encoding='utf-8')
+            error = '<p class="error" role="alert">Access token was not recognized. Try again.</p>' if failed else ''
+            html = html.replace('__RETURN_TO__', escape(login_return_path(return_to), quote=True)).replace('__ERROR__', error)
+            self.reply(html.encode(), 403 if failed else 200, 'text/html; charset=utf-8')
+
+        def auth_form(self, path):
+            origin = self.headers.get('Origin')
+            if not origin or not policy.allows_origin(origin, self.server.server_port):
+                self.json_reply({'error': 'Browser origin is not explicitly allowed.'}, 403)
+                return
+            secure = urlsplit(origin).scheme == 'https'
+            if path == '/auth/logout':
+                if not self.authenticate():
+                    return
+                sessions.revoke(self.headers.get('Cookie'))
+                self.redirect('/', sessions.cookie_header(secure=secure))
+                return
+            if self.headers.get('Content-Type', '').split(';')[0] != 'application/x-www-form-urlencoded':
+                self.json_reply({'error': 'Use the workspace sign-in form.'}, 415)
+                return
+            try:
+                length = int(self.headers.get('Content-Length', '0'))
+                if not 1 <= length <= 8192:
+                    raise ValueError
+                fields = parse_qs(self.rfile.read(length).decode('utf-8'), keep_blank_values=True, max_num_fields=2)
+                if set(fields) != {'token', 'return_to'} or any(len(v) != 1 for v in fields.values()):
+                    raise ValueError
+            except (ValueError, UnicodeError):
+                self.json_reply({'error': 'Invalid sign-in form.'}, 400)
+                return
+            return_to = login_return_path(fields['return_to'][0])
+            if not policy.authenticated('Bearer ' + fields['token'][0]):
+                self.login_page(return_to, failed=True)
+                return
+            sessions.revoke(self.headers.get('Cookie'))
+            self.redirect(return_to, sessions.cookie_header(sessions.issue(), secure=secure))
+
+        def redirect(self, location, cookie):
+            self.send_response(303)
+            self.send_header('Location', location)
+            self.send_header('Set-Cookie', cookie)
             self.send_header('Cache-Control', 'no-store')
             self.send_header('Content-Length', '0')
             self.end_headers()
-            return False
 
         def reply(self, payload: bytes, status: int = 200, content_type: str = "application/json", filename: str | None = None):
             self.send_response(status)
@@ -50,6 +115,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             self.send_header("Content-Length", str(len(payload)))
             self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header("Cache-Control", "no-store")
+            self.send_header('Referrer-Policy', 'no-referrer')
+            self.send_header('X-Frame-Options', 'DENY')
             if filename:
                 self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
             self.end_headers()
@@ -62,6 +129,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             path = urlparse(self.path).path
             if path == '/healthz':
                 self.json_reply({'status': 'ok', 'version': __version__})
+                return
+            if path == '/' and not self.authenticated():
+                self.login_page(self.path)
                 return
             if not self.authenticate():
                 return
@@ -80,7 +150,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 except (ValueError,TypeError) as exc:self.json_reply({'configured':False,'reason':str(exc)})
                 return
             if path == "/":
-                self.reply(report_html().encode(), content_type="text/html; charset=utf-8")
+                self.reply(report_html(protected=policy.token is not None).encode(), content_type="text/html; charset=utf-8")
                 return
             if path == "/health":
                 self.json_reply({"status": "local_server_running", "live_pharos_checked": False})
@@ -128,10 +198,15 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             self.json_reply({"error": "Not found"}, 404)
 
         def do_POST(self):
+            path = urlparse(self.path).path
+            if path in {'/auth/login', '/auth/logout'}:
+                self.auth_form(path)
+                return
             if not self.authenticate():
                 return
             origin = self.headers.get("Origin")
-            if not policy.allows_origin(origin, self.server.server_port):
+            cookie_auth = policy.token is not None and not policy.authenticated(self.headers.get('Authorization'))
+            if (cookie_auth and not origin) or not policy.allows_origin(origin, self.server.server_port):
                 self.json_reply({"error": "Browser origin is not explicitly allowed."}, 403)
                 return
             if self.headers.get("Content-Type", "").split(";")[0] != "application/json":

@@ -130,10 +130,14 @@ def run_smoke(base_url, output, *, with_planner=False, receipt=None, origin=None
                 'Service health/version differs from this checkout.')
         report['service_version'] = health['version']; passed()
         phase = 'authentication'
-        code, _ = client.request('/', authenticated=False)
+        code, _ = client.request('/health', authenticated=False)
         require(code == (401 if client.token else 200), 'Unexpected anonymous access policy.')
+        code, login = client.request('/', authenticated=False)
+        require(code == 200 and (not client.token or b'action="/auth/login"' in login),
+                'Browser sign-in page could not be opened.')
         code, ui = client.request('/')
-        require(code == 200 and b'BioGraph' in ui, 'Authenticated UI could not be opened.')
+        require(code == 200 and b'BioGraph' in ui and b'action="/auth/login"' not in ui,
+                'Authenticated UI could not be opened.')
         report['authentication_required'] = client.token is not None; passed()
         if prior:
             phase = 'saved_source_reopens'

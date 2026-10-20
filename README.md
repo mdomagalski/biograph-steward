@@ -22,7 +22,7 @@ Open `http://127.0.0.1:8765` if a browser does not open automatically. Use `py` 
 
 Read [START_HERE.md](START_HERE.md) for the team walkthrough.
 
-Version **0.8.0** adds [Brev/Docker deployment and shared model-provider configuration](docs/PORTABILITY.md): persistent run/cache paths, protected shared hosting, NVIDIA NIM support for both planner and verifier, and an optional NeMo Agent Toolkit workflow. The core still needs no extra Python packages. Workspace-specific endpoints and cloud access are configured explicitly; live Brev/NIM/AWS deployment has not been verified.
+Version **0.8.0** adds [Brev/Docker deployment and shared model-provider configuration](docs/PORTABILITY.md): persistent run/cache paths, protected shared hosting, NVIDIA NIM support for both planner and verifier, and an optional NeMo Agent Toolkit workflow. The core still needs no extra Python packages. [Core deployment on Brev](docs/BREV_DEPLOYMENT.md) passed the Linux tests and authenticated Docker restart checks on October 19, 2026 (EDT). Live NIM inference and AWS integration remain unverified.
 
 Use `python3 app.py deployment-smoke --base-url http://127.0.0.1:8766 --out runs/deployment_smoke_01` against a running service to check synthetic data, cited answers and access controls without model calls. See the deployment guide for post-restart receipt checks and the explicit `--with-planner` model test.
 
