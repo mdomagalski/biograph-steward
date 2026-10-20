@@ -158,6 +158,12 @@ def feature_view(members, targets):
 
 def retrieve_panel(panel_path, output, *, client=None, progress=None):
     panel_path = Path(panel_path); panel, members = load_panel(panel_path)
+    return retrieve_explicit_panel(panel_path, output, panel, members, client=client, progress=progress)
+
+
+def retrieve_explicit_panel(panel_path, output, panel, members, *, client=None, progress=None):
+    """Shared transport after a caller verifies its own immutable panel contract."""
+    panel_path = Path(panel_path)
     out = new_output(output, panel_path)
     client = client or PharosClient(cache_dir=Path('.pharos_cache') / ('matched_' + panel['panel_sha256']), retries=0)
     start = len(client.records); ids = sorted({p['uniprot_id'].removeprefix('UniProtKB:') for g in members for p in g['protein_candidates']})
