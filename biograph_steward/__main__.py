@@ -151,6 +151,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--decision', type=Path, required=True)
     p.add_argument('--mapping', type=Path)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('depmap-freeze', help='Verify and freeze the explicitly pinned public 24Q4 v1 archive downloads.')
+    p.add_argument('--downloads', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('depmap-audit', help='Audit colorectal CRISPR coverage and source leakage without biological rankings or model calls.')
+    p.add_argument('--source', type=Path, required=True)
+    p.add_argument('--mapping', type=Path, required=True)
+    p.add_argument('--pharos-run', type=Path, required=True)
+    p.add_argument('--enriched-run', type=Path)
+    p.add_argument('--probe', type=Path, help='Optional verified historical Pharos response envelope.')
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser("audit", help="Prepare benchmark readiness and pair-level review files from a snapshot.")
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
@@ -174,6 +184,17 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'depmap-freeze':
+            from .depmap_audit import freeze_depmap
+            r = freeze_depmap(args.downloads, args.out)
+            print(json.dumps({k: r[k] for k in ['source_sha256', 'release', 'doi']}, indent=2))
+            return 0
+        if args.command == 'depmap-audit':
+            from .depmap_audit import run_audit
+            r = run_audit(args.source, args.mapping, args.pharos_run, args.out,
+                          enriched_run=args.enriched_run, probe_file=args.probe)
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'coverage_feasible', 'ready_for_prediction_comparison', 'coverage', 'leakage']}, indent=2))
+            return 0
         if args.command == 'identifier-registry':
             from .cohort_mapping import collect_registry
             r = collect_registry(args.out, downloads=args.downloads)

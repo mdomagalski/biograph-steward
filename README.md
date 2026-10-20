@@ -48,6 +48,8 @@ The [source-verifier contract](docs/VERIFIER_PROTOCOL.md) has an [external bench
 
 The [CRC evidence-value pilot](docs/CRC_EVIDENCE_PILOT.md) connects deterministic source comparisons to primary publication passages and a processed CPTAC measurement sidecar. Its [first recorded run](docs/evaluations/CRC_EVIDENCE_VALUE_20261020.md) covers 20 annotations/12 publications: 19 abstract checks were inconclusive; three paired full-text checks produced two advisory SUPPORT verdicts and one context-sensitive CONTRADICT flag. The [source-context and cohort follow-up](docs/evaluations/CRC_CONTEXT_COHORT_20261020.md) records an AI-assisted scope warning while preserving those verdicts. It accounts for all 6,422 measured genes, resolving 6,415 and retaining seven ambiguous names. CUX1 is one gene with two valid protein links, without protein-specific measurements. Human scientific labels, independent study counts and graph-prediction improvement remain unestablished.
 
+The [DepMap feasibility audit](docs/evaluations/DEPMAP_FEASIBILITY_20261020.md) identifies 63 screened colorectal cell lines and 6,273 matched measured genes in the pinned public 24Q4 archive. It preserves sample groups, missingness and source overlap, and proposes a dependency-leakage policy. It runs no biological ranking; a fair comparison still needs matched, label-independent Pharos features and a frozen endpoint.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
