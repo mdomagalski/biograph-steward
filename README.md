@@ -64,6 +64,8 @@ The [first scored comparison](docs/evaluations/CRC_GROWTH_COMPARISON_20261020.md
 
 The [development diagnostic workflow](docs/GROWTH_DIAGNOSTICS.md) separates pathway, expression and BioPlex blocks, checks fixed late combination and decomposes the recorded rank changes. A separate hash-based reservation excludes all previously exposed genes and shared protein components before selecting a fresh gene holdout. Development scores cannot establish a new improvement.
 
+The [recorded diagnostic run](docs/evaluations/CRC_GROWTH_DIAGNOSTICS_20261020.md) found a promising exposed-data pathway-only score of 0.553, versus 0.381 for full Pharos, while the original validation set still nominated CPTAC-only. It reserves 256 new genes with zero gene/product overlap; their outcomes remain unopened. The disagreement and source-block results motivate the next frozen comparison rather than an automatic model or graph-pruning change.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
