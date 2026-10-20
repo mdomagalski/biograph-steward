@@ -44,7 +44,9 @@ The optional planner supports an API endpoint or an explicitly selected, already
 
 [Study and treatment context](docs/STUDY_CONTEXT.md) now appears alongside CIViC summaries: per-record levels and study titles, original descriptions, treatment-list limits and shared citations. The same details are exported without inferring monotherapy or changing graph review states.
 
-The proposed [source-verifier contract](docs/VERIFIER_PROTOCOL.md) now has an [external benchmark plan and SciFact preparation command](docs/VERIFICATION_BENCHMARKS.md). Expert labels are kept separate from model inputs; the prepared data has not yet been used to evaluate a verifier.
+The [source-verifier contract](docs/VERIFIER_PROTOCOL.md) has an [external benchmark workflow](docs/VERIFICATION_BENCHMARKS.md) and a [recorded SciFact component evaluation](docs/VERIFIER_RESULTS_20261015.md). Expert labels stay separate from model inputs. Its supplied-abstract scores do not establish CRC-specific accuracy or graph-prediction improvement.
+
+The [CRC evidence-value pilot](docs/CRC_EVIDENCE_PILOT.md) now connects deterministic source comparisons to primary publication passages and a processed CPTAC measurement sidecar. Its [first recorded run](docs/evaluations/CRC_EVIDENCE_VALUE_20261020.md) covers 20 annotations/12 publications: 19 abstract checks were inconclusive; three paired full-text checks produced two advisory SUPPORT verdicts and one context-sensitive CONTRADICT flag. The matrix has 6,422 gene rows and 96 sample columns, with 43 unique cohort-symbol mappings and one unresolved CUX1 crosswalk. Human scientific labels, independent study counts and graph-prediction improvement remain unestablished.
 
 ## What the prototype does now
 

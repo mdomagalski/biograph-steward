@@ -2,6 +2,8 @@
 
 This workflow measures source coverage and performs advisory claim-to-passage checks on a frozen CRC evidence panel. It uses deterministic graph queries, the existing source-qualified CIViC records, primary publication text and one processed CPTAC colon-cancer matrix. It does not tune the question planner, manufacture biomedical gold labels, modify graph review states or measure predictive improvement.
 
+The [first recorded pilot](evaluations/CRC_EVIDENCE_VALUE_20261020.md) includes the actual results, source-access gaps, measurement counts, unresolved mappings and complete experiment identities. Its executed packet is `runs/crc_evidence_value_20261020/final_packet/`; the initial unexecuted `packet/` preparation is retained separately after a pre-inference metadata-label correction.
+
 ## Frozen sources and selection
 
 Use a Pharos-only run and its CIViC-enriched copy with the same primary snapshot and review events. The default six deterministic questions reuse KRAS/EGFR context, G13D/cetuximab, G12C/panitumumab, a complete complex profile and the locally accepted G13D counterpart. They are development examples, not an unseen evaluation. Custom specifications can be supplied with `--cases`.
