@@ -66,6 +66,8 @@ The [development diagnostic workflow](docs/GROWTH_DIAGNOSTICS.md) separates path
 
 The [recorded diagnostic run](docs/evaluations/CRC_GROWTH_DIAGNOSTICS_20261020.md) found a promising exposed-data pathway-only score of 0.553, versus 0.381 for full Pharos, while the original validation set still nominated CPTAC-only. It reserves 256 new genes with zero gene/product overlap; their outcomes remain unopened. The disagreement and source-block results motivate the next frozen comparison rather than an automatic model or graph-pruning change.
 
+The [fresh comparison workflow](docs/FRESH_GROWTH_COMPARISON.md) retrieves Pharos context over the full development/reserve union, freezes one primary pathway-only contrast and all secondary controls, and seals every prediction before source-bound reserved-gene access. It preserves all earlier pilots and forbids another test of overlapping reserved genes under a different protocol identity.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.

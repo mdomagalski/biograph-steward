@@ -15,25 +15,26 @@ from biograph_steward.matched_panel import POLICY as OLD_POLICY
 from biograph_steward.growth_diagnostics import select_reserve
 from test_comparison_protocol import invented_inputs
 from test_matched_panel import PanelAPI, inputs
+from test_growth_comparison import expanded_inputs
 
 
-def union_fixture(root):
-    data = invented_inputs(); population = deepcopy(data['members'])
+def union_fixture(root, *, old_size=6, reserve_size=2, expanded=False):
+    data = expanded_inputs() if expanded else invented_inputs(); population = deepcopy(data['members'])
     for row in population: row['selection_hash'] = digest({'policy': OLD_POLICY, 'hgnc_id': row['hgnc_id']})
-    population.sort(key=lambda r: (r['selection_hash'], r['hgnc_id'])); old = population[:6]
+    population.sort(key=lambda r: (r['selection_hash'], r['hgnc_id'])); old = population[:old_size]
     prior = partitions(old, data['models']); fit = [gid for g in prior['genes'] if g['split'] in {'train', 'validation'} for gid in g['hgnc_ids']]
     exposed_test = [gid for g in prior['genes'] if g['split'] == 'test' for gid in g['hgnc_ids']]
     exposure = {'fit_gene_ids': fit, 'exposed_test_gene_ids': exposed_test}
-    reserved, _, _ = select_reserve(population, set(fit + exposed_test), size=2)
+    reserved, _, _ = select_reserve(population, set(fit + exposed_test), size=reserve_size)
     for name in ['panel', 'reservation', 'diagnostics']: (root / name).mkdir()
     p = root / 'panel'; s = root / 'reservation'
     write_json(p / 'eligible_population.json', population); write_json(p / 'crc_models.json', data['models'])
-    panel = {'selected_genes': 6, 'eligible_genes': 10, 'cohort_mapping_result_sha256': 'MAP', 'depmap_source_sha256': 'DEPMAP',
+    panel = {'selected_genes': old_size, 'eligible_genes': len(population), 'cohort_mapping_result_sha256': 'MAP', 'depmap_source_sha256': 'DEPMAP',
         'files': {n: sha(p / n) for n in ['eligible_population.json', 'crc_models.json']}}
     panel['panel_sha256'] = digest(panel)
     write_json(s / 'prior_exposure.json', exposure); write_json(s / 'reserved_members.json', reserved); write_json(s / 'model_partitions.json', prior['models'])
     reserve = {'previous_panel_sha256': panel['panel_sha256'], 'parent_result_sha256': 'PARENT', 'depmap_source_sha256': 'DEPMAP',
-        'requested_reserve_genes': 2, 'files': {n: sha(s / n) for n in ['prior_exposure.json', 'model_partitions.json']}}
+        'requested_reserve_genes': reserve_size, 'files': {n: sha(s / n) for n in ['prior_exposure.json', 'model_partitions.json']}}
     reserve['result_sha256'] = digest(reserve)
     diagnostic = {'parent_result_sha256': 'PARENT', 'development_proposal': {'candidate': 'cptac_only'}}; diagnostic['result_sha256'] = digest(diagnostic)
     with patch('biograph_steward.fresh_retrieval.load_panel', return_value=(panel, old)), \

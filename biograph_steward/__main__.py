@@ -186,6 +186,24 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser('growth-diagnose', help='Ablate source blocks using already exposed saved pilot outcomes; no fresh test.')
     p.add_argument('--comparison', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('fresh-cohort', help='Bind the original development panel and untouched gene reserve into one Pharos scope.')
+    p.add_argument('--panel', type=Path, required=True)
+    p.add_argument('--reservation', type=Path, required=True)
+    p.add_argument('--diagnostics', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('fresh-retrieve', help='Retrieve and verify consistent Pharos context over the complete development/reserve union.')
+    p.add_argument('--cohort', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('fresh-freeze', help='Freeze the pathway primary hypothesis, secondary arms and controls before reserved outcome access.')
+    p.add_argument('--cohort', type=Path, required=True)
+    p.add_argument('--retrieval', type=Path, required=True)
+    p.add_argument('--mapping', type=Path, required=True)
+    p.add_argument('--reference-protocol', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('fresh-compare', help='Execute one frozen reserved-gene comparison with source-bound exposure protection.')
+    p.add_argument('--protocol', type=Path, required=True)
+    p.add_argument('--source', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser('growth-reserve', help='Reserve untouched gene/product components after a completed pilot without opening experimental scores.')
     p.add_argument('--panel', type=Path, required=True)
     p.add_argument('--comparison', type=Path, required=True)
@@ -210,6 +228,26 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'fresh-cohort':
+            from .fresh_retrieval import prepare_union
+            r = prepare_union(args.panel, args.reservation, args.diagnostics, args.out)
+            print(json.dumps({k: r[k] for k in ['panel_sha256', 'selected_genes', 'requested_proteins', 'fresh_dependency_values_loaded']}, indent=2))
+            return 0
+        if args.command == 'fresh-retrieve':
+            from .fresh_retrieval import retrieve_union
+            r = retrieve_union(args.cohort, args.out, progress=lambda s: print(s, file=sys.stderr, flush=True))
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'selected_genes', 'requested_proteins', 'version_consistent', 'retrieval']}, indent=2))
+            return 0
+        if args.command == 'fresh-freeze':
+            from .fresh_growth import freeze_fresh
+            r = freeze_fresh(args.cohort, args.retrieval, args.mapping, args.reference_protocol, args.out)
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'partition_counts', 'primary_candidate', 'fresh_dependency_values_loaded']}, indent=2))
+            return 0
+        if args.command == 'fresh-compare':
+            from .fresh_growth import run_fresh
+            r = run_fresh(args.protocol, args.source, args.out, progress=lambda s: print(s, file=sys.stderr, flush=True))
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'primary_spearman_delta', 'paired_interval', 'decision', 'arms']}, indent=2))
+            return 0
         if args.command == 'growth-diagnose':
             from .growth_diagnostics import run_diagnostics
             r = run_diagnostics(args.comparison, args.out,
