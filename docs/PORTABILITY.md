@@ -105,6 +105,8 @@ After configuring the model below, repeat the initial command with `--with-plann
 
 For the tested local NVIDIA-model serving configuration, see [Local Nemotron on Brev](LOCAL_MODEL.md). Its Linux-only Compose overlay keeps the app and vLLM model on VM loopback and enables only the planner. The NIM setup below remains a separate option.
 
+The [compute readiness guide](COMPUTE_READINESS.md) distinguishes verified development hosting from pending production/AWS work. AWS is not required for local-model evaluation; a private artifact backup/restore workflow is the suggested first AWS integration.
+
 All model IDs and full endpoint URLs are explicit. This example describes the **request protocol**, not an installed model:
 
 ```bash
@@ -127,6 +129,8 @@ Do not enter the placeholders literally. A self-hosted NIM on the same VM can us
 Choose the API supported by the exact endpoint and model. The [NIM structured-generation guide](https://docs.nvidia.com/nim/large-language-models/1.14.0/structured-generation.html) documents `guided_json`. Deployments differ; unsupported fields/schema features fail explicitly rather than causing a fallback or repair call. The current NIM/model version, hardware, context capacity and endpoint capabilities still need a live workspace check.
 
 `BIOGRAPH_PLANNER_*` and `BIOGRAPH_VERIFIER_*` override the shared settings for a single role. For example `BIOGRAPH_PLANNER_MODEL` overrides `BIOGRAPH_MODEL_ID`; `BIOGRAPH_VERIFIER_API` overrides `BIOGRAPH_MODEL_API`. Empty explicit values do not silently reuse another setting.
+
+`BIOGRAPH_PLANNER_PROTOCOL` selects `catalogue_v1` (the compatibility default) or explicit `entity_tools_v2`. The latter adds exact catalogue mention binding and separate tool contracts; see [the protocol and audit limits](PLANNER_PROTOCOL.md). It is independent of the serving API and model prompt profile. Set it before initializing a planner; changing it requires a separately recorded experiment.
 
 Shared settings are `BIOGRAPH_MODEL_PROVIDER`, `BIOGRAPH_MODEL_ID`, `BIOGRAPH_MODEL_ENDPOINT`, `BIOGRAPH_MODEL_API`, `BIOGRAPH_MODEL_API_KEY`, `BIOGRAPH_MODEL_MAX_OUTPUT_TOKENS`, `BIOGRAPH_MODEL_TIMEOUT` and `BIOGRAPH_MODEL_PROMPT_PROFILE`. Role-specific settings override them. Prompt profiles are `standard` (the default) and explicit `nemotron_nano_v1` (NVIDIA Nano v1's reasoning-off system switch with the complete task policy in the user message). Output budgets are 128–8192 tokens; timeouts are 1–300 seconds. Defaults are 1600 tokens/45 seconds for the planner and 3000 tokens/90 seconds for the HTTP verifier. These are configured budgets, not observed token usage.
 

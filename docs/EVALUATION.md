@@ -4,6 +4,8 @@ The v0.8 portability increment adds `--planner nim` and shared/role-specific mod
 
 The [first live Nemotron comparison on Brev](evaluations/NEMOTRON_20261019.md) completed all 24 development questions. Its all-abstention result is retained as a failure of planning usefulness, with scientific metrics pending. See the [local model setup](LOCAL_MODEL.md) to reproduce the configured serving environment.
 
+The next [planning protocol](PLANNER_PROTOCOL.md) is an explicitly selected hybrid of exact lexical binding and model tool selection. Comparisons reuse the development questions with that reuse disclosed; a new engine fingerprint requires a new frozen suite. Source files, reference cases and display budgets must be checked against the first experiment rather than refreshing or relabeling them.
+
 The runner compares the expanded Pharos baseline with its CIViC-enriched copy and a single question-planning model using the same deterministic tools. It exports source-bound reviewer worksheets and a read-only HTML report. This is a research-workbench evaluation, separate from the challenge's still-pending controlled prediction experiment.
 
 The included 24 questions are **draft development scenarios**, grouped into 15 question families. Paraphrases are not independent biological observations. Reference plans specify scope; they are not biomedical answers, paper-verified labels or a held-out test. A reviewer must approve scope and adjudicate evidence before scientific accuracy is reported. The supplied pilot has no held-out test cases.

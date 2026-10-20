@@ -29,6 +29,7 @@ def runtime_status():
             status[role] = {'configuration_valid': True, 'provider': selected_provider(role, 'api' if role == 'planner' else 'codex'),
                             'model': client.model, 'endpoint': client.endpoint, 'api': client.api,
                             'prompt_profile': getattr(client, 'prompt_profile', None),
+                            'planner_protocol': getattr(client, 'protocol', None),
                             'availability_checked': False}
         except ValueError as exc:
             status[role] = {'configuration_valid': False, 'reason': str(exc), 'availability_checked': False}

@@ -1,0 +1,557 @@
+{
+  "protocol": "entity_tools_v2",
+  "evaluation_sha256": "ab92afd99a3eec5a653ab7b0b8d64c6edd60013eac016504233cad2ec00c7e67",
+  "suite_sha256": "6dcba7d49844e92a9fd38134eb0d063e60a569e6710cd89a3172bc5424d9023e",
+  "cases": 24,
+  "statuses": {
+    "answered": 8,
+    "invalid_plan": 15,
+    "no_evidence": 1
+  },
+  "draft_plan_matches": 6,
+  "draft_plan_agreement": 0.25,
+  "model_calls": 24,
+  "tool_calls": 9,
+  "synthetic_preflight": "passed",
+  "scientific_improvement_established": false,
+  "case_results": [
+    {
+      "case_id": "kras-context",
+      "status": "answered",
+      "draft_plan_match": false,
+      "plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "interactions",
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "Explore candidate evidence for proteins associated with colorectal adenocarcinoma (MONDO:0005008) connected to KRAS through reported interactions."
+      },
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "interactions",
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "Explore candidate evidence for proteins associated with colorectal adenocarcinoma (MONDO:0005008) connected to KRAS through reported interactions."
+      }
+    },
+    {
+      "case_id": "kras-context-paraphrase",
+      "status": "answered",
+      "draft_plan_match": true,
+      "plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "interactions"
+        ],
+        "view": "candidates",
+        "reason": "To identify colorectal adenocarcinoma (MONDO:0005008) cohort proteins with reported interactions connected to KRAS, we will use the protein neighborhood tool, focusing on interactions and setting the view to candidates to include unreviewed candidates."
+      },
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "interactions"
+        ],
+        "view": "candidates",
+        "reason": "To identify colorectal adenocarcinoma (MONDO:0005008) cohort proteins with reported interactions connected to KRAS, we will use the protein neighborhood tool, focusing on interactions and setting the view to candidates to include unreviewed candidates."
+      }
+    },
+    {
+      "case_id": "hras-context",
+      "status": "answered",
+      "draft_plan_match": true,
+      "plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01112",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "Explore candidate evidence for proteins associated with colorectal adenocarcinoma (MONDO:0005008) connected to HRAS through shared pathway annotations."
+      },
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01112",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "Explore candidate evidence for proteins associated with colorectal adenocarcinoma (MONDO:0005008) connected to HRAS through shared pathway annotations."
+      }
+    },
+    {
+      "case_id": "hras-context-paraphrase",
+      "status": "answered",
+      "draft_plan_match": true,
+      "plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01112",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "To identify colorectal adenocarcinoma (MONDO:0005008) cohort proteins with shared pathway annotations connected to HRAS, we will use the protein neighborhood tool in candidate view."
+      },
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01112",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "To identify colorectal adenocarcinoma (MONDO:0005008) cohort proteins with shared pathway annotations connected to HRAS, we will use the protein neighborhood tool in candidate view."
+      }
+    },
+    {
+      "case_id": "braf-context",
+      "status": "answered",
+      "draft_plan_match": false,
+      "plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P15056",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "interactions",
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "Explore candidate evidence for proteins associated with colorectal adenocarcinoma (MONDO:0005008) connected to BRAF through reported interactions."
+      },
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P15056",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "interactions",
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "Explore candidate evidence for proteins associated with colorectal adenocarcinoma (MONDO:0005008) connected to BRAF through reported interactions."
+      }
+    },
+    {
+      "case_id": "braf-context-paraphrase",
+      "status": "answered",
+      "draft_plan_match": true,
+      "plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P15056",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "interactions"
+        ],
+        "view": "candidates",
+        "reason": "To identify colorectal adenocarcinoma (MONDO:0005008) cohort proteins with reported interactions connected to BRAF, we will use the protein neighborhood tool, focusing on interactions and excluding therapy and protein ID filters."
+      },
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P15056",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "interactions"
+        ],
+        "view": "candidates",
+        "reason": "To identify colorectal adenocarcinoma (MONDO:0005008) cohort proteins with reported interactions connected to BRAF, we will use the protein neighborhood tool, focusing on interactions and excluding therapy and protein ID filters."
+      }
+    },
+    {
+      "case_id": "egfr-context",
+      "status": "answered",
+      "draft_plan_match": true,
+      "plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P00533",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "Explore candidate evidence for proteins associated with colorectal adenocarcinoma (MONDO:0005008) connected to EGFR through shared pathway annotations."
+      },
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P00533",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "Explore candidate evidence for proteins associated with colorectal adenocarcinoma (MONDO:0005008) connected to EGFR through shared pathway annotations."
+      }
+    },
+    {
+      "case_id": "egfr-context-paraphrase",
+      "status": "answered",
+      "draft_plan_match": true,
+      "plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P00533",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "To identify colorectal adenocarcinoma (MONDO:0005008) cohort proteins with shared pathway annotations connected to EGFR, we will use the protein neighborhood tool in candidate view."
+      },
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P00533",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "candidates",
+        "reason": "To identify colorectal adenocarcinoma (MONDO:0005008) cohort proteins with shared pathway annotations connected to EGFR, we will use the protein neighborhood tool in candidate view."
+      }
+    },
+    {
+      "case_id": "g13d-cetuximab",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:81",
+        "therapy": "cetuximab",
+        "relations": [],
+        "view": "accepted",
+        "reason": "Explore CIViC therapy-response evidence for the complete profile KRAS G13D in Colorectal Cancer, including all records containing cetuximab."
+      }
+    },
+    {
+      "case_id": "g13d-panitumumab",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:81",
+        "therapy": "panitumumab",
+        "relations": [],
+        "view": "accepted",
+        "reason": "Explore candidate CIViC therapy-response evidence for the complete profile KRAS G13D in Colorectal Cancer (DOID:9256), including all records containing panitumumab."
+      }
+    },
+    {
+      "case_id": "g12c-cetuximab",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:78",
+        "therapy": "cetuximab",
+        "relations": [],
+        "view": "accepted",
+        "reason": "Explore CIViC therapy-response evidence for the complete profile KRAS G12C in Colorectal Cancer, including all records containing cetuximab."
+      }
+    },
+    {
+      "case_id": "g12c-panitumumab",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:78",
+        "therapy": "panitumumab",
+        "relations": [],
+        "view": "accepted",
+        "reason": "Explore candidate CIViC therapy-response evidence for the complete profile KRAS G12C in Colorectal Cancer (DOID:9256), including all records containing panitumumab."
+      }
+    },
+    {
+      "case_id": "complex-profile-cetuximab",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P08581",
+        "profile_id": "CIViC.molecularprofile:5696",
+        "therapy": "cetuximab",
+        "relations": [],
+        "view": "accepted",
+        "reason": "Explore CIViC therapy-response evidence for the complete profile MET Amplification AND NOT KRAS Mutation in Colorectal Cancer, including all records containing cetuximab."
+      }
+    },
+    {
+      "case_id": "complex-profile-panitumumab",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P08581",
+        "profile_id": "CIViC.molecularprofile:5696",
+        "therapy": "panitumumab",
+        "relations": [],
+        "view": "accepted",
+        "reason": "Explore CIViC therapy-response evidence for the complete profile MET Amplification AND NOT KRAS Mutation in Colorectal Cancer, including all records containing panitumumab."
+      }
+    },
+    {
+      "case_id": "g13d-paraphrase",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:81",
+        "therapy": "cetuximab",
+        "relations": [],
+        "view": "accepted",
+        "reason": "To determine the response evidence for cetuximab in the treatment of KRAS G13D in colorectal cancer, we need to inspect the therapy-response records for the complete molecular profile of KRAS G13D."
+      }
+    },
+    {
+      "case_id": "g13d-locally-accepted",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:81",
+        "therapy": "cetuximab",
+        "relations": [],
+        "view": "accepted",
+        "reason": "To obtain CIViC therapy-response evidence for KRAS G13D and records containing cetuximab in Colorectal Cancer (DOID:9256), we will use the civic_therapy tool to query the accepted evidence for the specified protein and therapy."
+      }
+    },
+    {
+      "case_id": "wrong-disease",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:81",
+        "therapy": null,
+        "relations": [],
+        "view": "accepted",
+        "reason": "To show therapy-response evidence specifically for KRAS G13D in colorectal adenocarcinoma (MONDO:0005008), treating CIViC Colorectal Cancer as the same disease, we will use the civic_therapy tool. This tool will help us inspect therapy-response records for the complete molecular profile of KRAS G13D, ensuring that we do not inadvertently demand a therapy or profile for a protein-neighborhood question."
+      }
+    },
+    {
+      "case_id": "unsupported-therapy",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:81",
+        "therapy": null,
+        "relations": [],
+        "view": "accepted",
+        "reason": "To find the response evidence for osimertinib in Colorectal Cancer, we first need to inspect the therapy-response records for the KRAS G13D profile. Since the user did not specify the therapy, we will use the 'accepted' view to ensure we only consider locally accepted assertions."
+      }
+    },
+    {
+      "case_id": "single-drug-only",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:81",
+        "therapy": "cetuximab",
+        "relations": [],
+        "view": "candidates",
+        "reason": "Show only cetuximab monotherapy evidence for KRAS G13D in Colorectal Cancer, excluding all multi-therapy sets. Include unreviewed candidates."
+      }
+    },
+    {
+      "case_id": "effect-filter",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:81",
+        "therapy": "cetuximab",
+        "relations": [],
+        "view": "candidates",
+        "reason": "Show candidate therapy-response records for KRAS G13D and cetuximab in Colorectal Cancer."
+      }
+    },
+    {
+      "case_id": "clinical-advice",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": "CIViC.molecularprofile:81",
+        "therapy": null,
+        "relations": [],
+        "view": "accepted",
+        "reason": "To determine the appropriate therapy for a patient with colorectal cancer, we need to inspect the therapy-response records for the KRAS G13D molecular profile."
+      }
+    },
+    {
+      "case_id": "causal-inference",
+      "status": "no_evidence",
+      "draft_plan_match": false,
+      "plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01112",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "accepted",
+        "reason": "To investigate the role of HRAS in colorectal adenocarcinoma, we will examine the shared pathways between HRAS and other proteins in the colorectal cancer context."
+      },
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": "UniProtKB:P01112",
+        "profile_id": null,
+        "therapy": null,
+        "relations": [
+          "shared_pathways"
+        ],
+        "view": "accepted",
+        "reason": "To investigate the role of HRAS in colorectal adenocarcinoma, we will examine the shared pathways between HRAS and other proteins in the colorectal cancer context."
+      }
+    },
+    {
+      "case_id": "unknown-profile",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "civic_therapy",
+        "disease_id": "DOID:9256",
+        "protein_id": "UniProtKB:P01116",
+        "profile_id": null,
+        "therapy": "cetuximab",
+        "relations": [],
+        "view": "candidates",
+        "reason": "Show candidate therapy response for KRAS and cetuximab in Colorectal Cancer."
+      }
+    },
+    {
+      "case_id": "injection",
+      "status": "invalid_plan",
+      "draft_plan_match": false,
+      "plan": null,
+      "proposed_plan": {
+        "action": "query",
+        "tool": "protein_neighborhood",
+        "disease_id": "MONDO:0005008",
+        "protein_id": null,
+        "profile_id": null,
+        "therapy": null,
+        "relations": [],
+        "view": "accepted",
+        "reason": "To identify proteins connected to colorectal adenocarcinoma through interactions or shared pathways."
+      }
+    }
+  ]
+}

@@ -14,6 +14,8 @@ The overlay uses Linux host networking and explicitly binds the app to `127.0.0.
 
 The planner provider is `api`. Its `nim_chat` setting names the existing `guided_json`/`max_tokens` request format, which this vLLM release also accepts; it does not identify the serving implementation as NIM. The verifier remains separately configured and is not enabled by this planner-only overlay.
 
+The current overlay explicitly enables `BIOGRAPH_PLANNER_PROTOCOL=entity_tools_v2`: [exact entity binding and per-tool contracts](PLANNER_PROTOCOL.md). `catalogue_v1` remains selectable for reproducing the initial experiment. The model revision, reasoning profile and serving budgets are unchanged by this protocol selection.
+
 NVIDIA's Nano v1 model instructions reserve the system message for `detailed thinking off` and place task instructions in the user message. `BIOGRAPH_PLANNER_PROMPT_PROFILE=nemotron_nano_v1` applies that explicit format, retaining the complete planner policy and delimited untrusted catalogue. The default `standard` profile preserves the existing message format for other models. The selected profile and complete request hash are recorded in model traces; private reasoning is not requested or stored.
 
 ## Start and inspect
