@@ -161,7 +161,7 @@ def retrieve_panel(panel_path, output, *, client=None, progress=None):
     return retrieve_explicit_panel(panel_path, output, panel, members, client=client, progress=progress)
 
 
-def retrieve_explicit_panel(panel_path, output, panel, members, *, client=None, progress=None):
+def retrieve_explicit_panel(panel_path, output, panel, members, *, client=None, progress=None, context_batch_sizes=None):
     """Shared transport after a caller verifies its own immutable panel contract."""
     panel_path = Path(panel_path)
     out = new_output(output, panel_path)
@@ -188,7 +188,8 @@ def retrieve_explicit_panel(panel_path, output, panel, members, *, client=None, 
         if progress:
             progress(f'Explicit identities: {min(offset + BATCH_SIZE, len(ids))}/{len(ids)} proteins')
     limits = panel['retrieval_contract']['limits']; row_budget = sum(limits.values()) * len(ids)
-    coverage = retrieve_context(client, targets, limits, panel['retrieval_contract']['tissue_words'], progress, row_budget=row_budget) if targets else None
+    coverage = retrieve_context(client, targets, limits, panel['retrieval_contract']['tissue_words'], progress, row_budget=row_budget,
+                                batch_sizes=context_batch_sizes) if targets else None
     if coverage:
         for row in coverage['targets']:
             for page in row['pages']:

@@ -117,7 +117,8 @@ def load_union(path):
 def retrieve_union(cohort, output, *, client=None, progress=None):
     panel, members = load_union(cohort)
     client = client or PharosClient(cache_dir=Path('.pharos_cache') / ('fresh_union_' + panel['panel_sha256']), refresh=True, retries=2)
-    result = retrieve_explicit_panel(cohort, output, panel, members, client=client, progress=progress)
+    result = retrieve_explicit_panel(cohort, output, panel, members, client=client, progress=progress,
+                                    context_batch_sizes={'expressions': 1})
     verify_union_retrieval(output)
     return result
 

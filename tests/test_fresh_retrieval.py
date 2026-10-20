@@ -78,6 +78,9 @@ class FreshRetrievalTests(unittest.TestCase):
             by_id = {t['uniprot']: t for t in source['targets']}
             self.assertEqual(by_id['P04637']['pharos_context']['ppis'][0]['target']['uniprot'], 'P00533')
             self.assertEqual(result['retrieval']['ppis']['retained'], 1)
+            expression_calls = [c for c in api.calls if 'Scoped_expressions(' in c['query']]
+            self.assertTrue(expression_calls)
+            self.assertTrue(all(len([k for k in c['variables'] if k.startswith('id')]) == 1 for c in expression_calls))
 
     def test_incomplete_family_is_rejected_without_replacing_member(self):
         with tempfile.TemporaryDirectory() as tmp:

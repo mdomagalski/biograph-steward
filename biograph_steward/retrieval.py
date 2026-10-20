@@ -104,9 +104,12 @@ def _target(data, alias, uid):
     return row
 
 
-def retrieve_context(client, targets, limits, tissue_term="", progress=None, *, row_budget=ROW_BUDGET):
+def retrieve_context(client, targets, limits, tissue_term="", progress=None, *, row_budget=ROW_BUDGET, batch_sizes=None):
     """Attach context to seed targets, retaining out-of-cohort PPIs only in raw responses."""
     limits, tissue_term = settings(limits, tissue_term)
+    batch_sizes = batch_sizes or {}
+    if (set(batch_sizes) - set(limits) or any(type(v) is not int or not 1 <= v <= BATCH_SIZE for v in batch_sizes.values())):
+        raise ValueError("Family batch sizes must be between 1 and the normal request batch size.")
     ids = [t.get("uniprot") for t in targets]
     if any(not isinstance(uid, str) or not uid for uid in ids) or len(set(ids)) != len(ids):
         raise PharosError("Scoped retrieval requires distinct, nonempty seed UniProt identifiers.")
@@ -150,7 +153,7 @@ def retrieve_context(client, targets, limits, tissue_term="", progress=None, *, 
                 for s in pending:
                     s["coverage"]["status"] = "budget_limited"
                 break
-            for s in pending[:BATCH_SIZE]:
+            for s in pending[:batch_sizes.get(family, BATCH_SIZE)]:
                 if remaining <= 0:
                     break  # Reserved for this batch; short pages may release budget.
                 c = s["coverage"]
@@ -226,10 +229,12 @@ def retrieve_context(client, targets, limits, tissue_term="", progress=None, *, 
                            "excluded_by_scope": sum(r["excluded_by_scope"] for r in selected),
                            "available": sum(r["available"] for r in selected) if all(r["available"] is not None for r in selected) else None,
                            "target_statuses": dict(Counter(r["status"] for r in selected))}
-    return {"profile": "scoped.v1", "limits_per_target": limits, "row_budget": row_budget,
+    result = {"profile": "scoped.v1", "limits_per_target": limits, "row_budget": row_budget,
             "rows_retrieved": used, "scope": {"seed_uniprots": ids, "ppi_partners": "selected_cohort_only",
             "ppi_confidence": 400, "tissue_search": tissue_term or None,
             "expression_search_semantics": "Local case-insensitive whole-word OR matching of tissue labels after a bounded scan; not an ontology mapping. Pharos tissue full-text search failed in live validation (missing index).",
             "publications": "Target-linked discovery metadata in API order; not disease-specific supporting citations."},
             "not_requested": NOT_REQUESTED, "summary": summary, "targets": rows,
             "completeness_note": "Complete means fetched rows match reported counts for these seed targets and filters. Exhausted means a short page was observed without a matching count endpoint. Offset pagination is not an atomic upstream snapshot."}
+    if batch_sizes: result['transport_batch_sizes'] = batch_sizes
+    return result
