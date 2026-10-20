@@ -9,7 +9,12 @@ graph mutation or human-review authority.
 
 The compact schema caps the explanation at 300 characters and each span at 220.
 Evidence indices must be unique, valid, and no more numerous than the available
-passages (maximum three). Local validation remains mandatory with guided decoding.
+passages (maximum three). The pinned Brev decoder receives a basic fixed boolean
+map with one slot per available passage (`fixed_passage_map.v4`). String lengths
+and the three-selection bound are enforced locally, rather than asking that
+decoder to enforce unsupported advanced schema keywords. The original bounded
+array schema is retained for replay of the interrupted infrastructure attempt.
+Local validation remains mandatory with guided decoding.
 Invalid fields, duplicates, truncation and altered spans are errors; the tool
 never deduplicates, retries or repairs an answer.
 
@@ -65,7 +70,12 @@ edit names, rationale sets and expected dimensions are withheld. Labels are pars
 for scoring only after predictions close. One legacy v2 passage-index turn and
 one compact context turn run per case, with alternating order and the same model
 and budgets. No retries, fallback, retrieval or tools. A changed engine requires
-a new packet; a new result directory is always required. Reusing inspected
+a new packet; a new result directory is always required. The first advanced-schema
+attempt timed out in the decoder fallback and was stopped, preserving one completed
+legacy response, one context timeout and one interrupted context request. The
+fixed-map follow-up uses byte-identical claims, sources and references; it is a
+compatibility follow-up on the predeclared panel, not a new independent fresh test.
+Reusing inspected
 publications is development work, not another fresh test.
 
 Five views show all-source retention, literal checks, legacy SUPPORT, compact raw

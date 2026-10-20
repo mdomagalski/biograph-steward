@@ -38,6 +38,12 @@ SUPPORT/CONTRADICT require at least one evidence index. NEI may cite context gap
 If any material field is mismatch or unknown, do not return SUPPORT. Explain the
 specific limiting context in at most 300 characters. Copy task_id exactly.
 """
+WIRE_INSTRUCTIONS = INSTRUCTIONS.replace(
+    'Use unique evidence passage indices, at most three and no more than available.\n'
+    'SUPPORT/CONTRADICT require at least one evidence index. NEI may cite context gaps.',
+    'Evidence is a fixed map of supplied passage indices to booleans: true selects\n'
+    'that passage, false leaves it unselected. Select at most three passages.\n'
+    'SUPPORT/CONTRADICT require at least one selected passage. NEI may cite gaps.')
 
 
 def schema(task):
@@ -58,6 +64,35 @@ def schema(task):
         'context': {'type': 'object', 'additionalProperties': False,
                     'properties': {a: deepcopy(context) for a in AXES}, 'required': list(AXES)}},
         'required': ['task_id', 'verdict', 'evidence', 'explanation', 'context']}
+
+
+def wire_schema(task):
+    """Basic schema supported by the pinned native decoder; bounds stay local.
+
+    A fixed boolean map gives each available passage exactly one selection slot.
+    Advanced string/array keywords caused the v3 infrastructure attempt to time
+    out in an alternate decoder. Do not remove those bounds from local validation.
+    """
+    s = schema(task)
+    s['properties']['explanation'].pop('minLength'); s['properties']['explanation'].pop('maxLength')
+    for v in s['properties']['context']['properties'].values():
+        v['properties']['claim_span'].pop('maxLength'); v['properties']['source_span'].pop('maxLength')
+    indices = [str(i) for i in range(len(task['document']['sentences']))]
+    s['properties']['evidence'] = {'type': 'object', 'additionalProperties': False,
+        'properties': {i: {'type': 'boolean'} for i in indices}, 'required': indices}
+    return s
+
+
+def bind_wire(task, raw):
+    """Decode fixed selections, attaching no new judgment or missing field."""
+    if not isinstance(raw, dict) or not isinstance(raw.get('evidence'), dict):
+        raise ValueError('Expected fixed passage selection map.')
+    expected = [str(i) for i in range(len(task['document']['sentences']))]
+    if set(raw['evidence']) != set(expected) or any(type(v) is not bool for v in raw['evidence'].values()):
+        raise ValueError('Incorrect fixed passage selection slots.')
+    bound = deepcopy(raw); bound['evidence'] = [int(i) for i in expected if raw['evidence'][i]]
+    validate(bound, task)
+    return bound
 
 
 # Deliberately small literal vocabulary. No disease hierarchy, cross-gene variant
@@ -176,18 +211,21 @@ def eligibility(task, output):
             'limitation': 'Literal presence and model span alignment are not entailment. Missing/ambiguous context requires review, not rejection.'}
 
 
-def verify_context(task, verifier):
+def verify_context(task, verifier, *, fixed_map=True):
     validate_task(task)
-    trace = verifier.generate(INSTRUCTIONS + '\nUntrusted input data:\n' + json.dumps(task, ensure_ascii=True),
-        schema(task), POLICY, {**binding(task), 'instructions_sha256': digest(INSTRUCTIONS)})
+    instructions = WIRE_INSTRUCTIONS if fixed_map else INSTRUCTIONS
+    definition = wire_schema(task) if fixed_map else schema(task)
+    trace = verifier.generate(instructions + '\nUntrusted input data:\n' + json.dumps(task, ensure_ascii=True),
+        definition, POLICY, {**binding(task), 'instructions_sha256': digest(instructions)})
     raw = trace.pop('output', None)
-    trace.update(raw_output=raw, assessment=None, gate=eligibility(task, None))
+    trace.update(raw_output=raw, assessment=None, gate=eligibility(task, None),
+                 citation_binding='fixed_passage_map.v4' if fixed_map else 'source_index.v3')
     if trace['status'] == 'completed':
         try:
             if any(trace.get(k) != v for k, v in binding(task).items()):
                 raise ValueError('Context task binding changed.')
-            validate(raw, task)
-            trace.update(status='validated', assessment=raw, gate=eligibility(task, raw))
+            assessment = bind_wire(task, raw) if fixed_map else validate(raw, task)
+            trace.update(status='validated', assessment=assessment, gate=eligibility(task, assessment))
         except (ValueError, TypeError, KeyError) as exc:
             trace.update(status='invalid_output', error=str(exc))
     return trace

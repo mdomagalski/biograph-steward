@@ -12,8 +12,8 @@ import re
 import shutil
 
 from .client import digest, utcnow, write_json
-from .context_verification import (AXES, INSTRUCTIONS, POLICY as VERIFIER_POLICY,
-    schema, validate, verify_context, eligibility, literal_checks)
+from .context_verification import (AXES, INSTRUCTIONS, WIRE_INSTRUCTIONS, POLICY as VERIFIER_POLICY,
+    schema, wire_schema, bind_wire, validate, verify_context, eligibility, literal_checks)
 from .crc_pilot import assess_task, new_output, sha
 from .evidence_quality import (TaskBoundVerifier, SELECTION_INSTRUCTIONS, selection_schema,
     bind_selection, engine)
@@ -88,8 +88,9 @@ def prepare_context(literature, previous, output, *, specs=None):
     shutil.copytree(literature, out / 'literature')
     contract = {'policy': POLICY, 'engine': engine(), 'created_at': utcnow(),
         'arms': list(ARMS), 'legacy_instructions': SELECTION_INSTRUCTIONS,
-        'context_instructions': INSTRUCTIONS, 'context_policy': VERIFIER_POLICY,
-        'context_schema_sha256': {t['id']: digest(schema(t)) for t in tasks},
+        'context_instructions': WIRE_INSTRUCTIONS, 'context_policy': VERIFIER_POLICY,
+        'context_citation_binding': 'fixed_passage_map.v4',
+        'context_schema_sha256': {t['id']: digest(wire_schema(t)) for t in tasks},
         'legacy_schema_sha256': {t['id']: digest(selection_schema(t)) for t in tasks},
         'model_input_fields': ['id', 'claim_id', 'document_id', 'claim', 'document'],
         'calls': 'One legacy and one context turn per case; sequential, alternating arm order; no retries, repairs, tools or fallback.',
@@ -131,7 +132,8 @@ def load_packet(folder, *, check_engine=True):
         doc, selection = source_document(papers[str(task['document_id'])], '', 'abstract')
         if row != {'id': task['id'], 'selection': selection} or task['document'] != doc:
             raise ValueError('Context supplied source binding changed.')
-        if (contract['context_schema_sha256'][task['id']] != digest(schema(task)) or
+        definition = wire_schema(task) if contract.get('context_citation_binding') == 'fixed_passage_map.v4' else schema(task)
+        if (contract['context_schema_sha256'][task['id']] != digest(definition) or
                 contract['legacy_schema_sha256'][task['id']] != digest(selection_schema(task))):
             raise ValueError('Context schema differs from frozen protocol.')
     return p, tasks, contract
@@ -217,7 +219,8 @@ def run_context(packet, output, *, mode='none', model=None, verifier=None, progr
             if verifier is not None:
                 try:
                     trace = (assess_task({'task': task}, TaskBoundVerifier(verifier, task['id'], task=task))
-                             if arm == 'legacy_v2' else verify_context(task, verifier))
+                             if arm == 'legacy_v2' else verify_context(task, verifier,
+                                 fixed_map=contract.get('context_citation_binding') == 'fixed_passage_map.v4'))
                 except Exception as exc:
                     trace.update(status='execution_error', model_calls=1, error=type(exc).__name__)
             pair[arm] = trace
@@ -274,7 +277,8 @@ def verify_context_result(folder):
                         raise ValueError('Legacy citation binding changed.')
                 else:
                     validate(trace['assessment'], task)
-                    if trace['assessment'] != trace['raw_output']:
+                    bound = bind_wire(task, trace['raw_output']) if contract.get('context_citation_binding') == 'fixed_passage_map.v4' else trace['raw_output']
+                    if trace['assessment'] != bound:
                         raise ValueError('Context output was repaired.')
             if arm == 'context_v3' and trace['gate'] != eligibility(task, trace['assessment']):
                 raise ValueError('Context eligibility check does not replay.')

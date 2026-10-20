@@ -11,7 +11,7 @@ from urllib.request import ProxyHandler, build_opener
 
 from biograph_steward.client import digest
 from biograph_steward.context_verification import (AXES, schema, validate, eligibility,
-    literal_checks, verify_context)
+    literal_checks, verify_context, wire_schema, bind_wire)
 from biograph_steward.context_evaluation import (prepare_context, run_context,
     verify_context_result, load_packet)
 from biograph_steward.evidence_quality import verify_quality_result
@@ -43,6 +43,9 @@ class Fake:
                 o['context']['qualification'] = {'relation': 'mismatch', 'claim_span': 'altered',
                     'source_span': 'Invented', 'index': 0}
             if self.mode == 'duplicate': o['evidence'] = [0, 0]
+            if definition['properties']['evidence']['type'] == 'object':
+                o['evidence'] = {str(i): i == 0 for i in range(len(t['document']['sentences']))}
+                if self.mode == 'duplicate': o['evidence']['extra'] = True
         else:
             o = {'task_id': t['id'], 'verdict': 'NOT_ENOUGH_INFORMATION' if 'altered' in t['claim'] else 'SUPPORT',
                  'evidence': [] if 'altered' in t['claim'] else [{'sentence_index': 0}],
@@ -88,8 +91,19 @@ class ContextTests(unittest.TestCase):
     def test_citation_or_span_failure_is_not_repaired(self):
         trace = verify_context(task(), Fake('duplicate'))
         self.assertEqual(trace['status'], 'invalid_output'); self.assertIsNone(trace['assessment'])
-        self.assertEqual(trace['raw_output']['evidence'], [0, 0])
+        self.assertIn('extra', trace['raw_output']['evidence'])
         self.assertFalse(trace['gate']['support_eligible'])
+
+    def test_native_wire_map_is_unique_and_bounds_remain_mandatory_locally(self):
+        t = task(); definition = wire_schema(t)
+        self.assertEqual(definition['properties']['evidence']['required'], ['0'])
+        self.assertNotIn('maxLength', json.dumps(definition))
+        raw = output(t); raw['evidence'] = {'0': True}
+        self.assertEqual(bind_wire(t, raw)['evidence'], [0])
+        raw['explanation'] = 'x' * 301
+        with self.assertRaises(ValueError): bind_wire(t, raw)
+        raw = output(t); raw['evidence'] = {'0': 1}
+        with self.assertRaises(ValueError): bind_wire(t, raw)
 
 
 class ComparisonTests(unittest.TestCase):
