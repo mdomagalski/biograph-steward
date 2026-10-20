@@ -172,6 +172,13 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser('matched-panel-retrieve', help='Retrieve explicit-ID Pharos context for a frozen panel, without disease filtering or outcome values.')
     p.add_argument('--panel', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('comparison-freeze', help='Review source channels and freeze features/partitions/scoring rules without opening dependency values.')
+    p.add_argument('--panel', type=Path, required=True)
+    p.add_argument('--retrieval', type=Path, required=True)
+    p.add_argument('--mapping', type=Path, required=True)
+    p.add_argument('--pharos-code', type=Path, required=True)
+    p.add_argument('--repository-tree', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser('verification-run', help='Evaluate a bounded source verifier against prepared SciFact expert annotations.')
     p.add_argument('--benchmark', type=Path, required=True)
     p.add_argument('--verifier', choices=['baselines', 'codex', 'nim', 'api', 'configured'], default='baselines')
@@ -192,6 +199,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'comparison-freeze':
+            from .comparison_protocol import freeze_protocol
+            r = freeze_protocol(args.panel, args.retrieval, args.mapping, args.out,
+                                pharos_code=args.pharos_code, repository_tree=args.repository_tree)
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'genes', 'models', 'source_review', 'partition_counts', 'protocol_frozen', 'dependency_values_loaded']}, indent=2))
+            return 0
         if args.command == 'matched-panel-prepare':
             from .matched_panel import prepare_panel
             r = prepare_panel(args.audit, args.mapping, args.out, size=args.size)

@@ -54,6 +54,8 @@ The [matched Pharos panel workflow](docs/MATCHED_PHAROS_PANEL.md) freezes measur
 
 The [October 20 matched pull](docs/evaluations/MATCHED_PHAROS_PANEL_20261020.md) covers all 256 selected genes through 256 resolved protein products, with 207,430 raw annotation rows and explicit source-policy exclusions. Source review and a frozen scoring protocol remain necessary before the biological comparison.
 
+The [comparison-freeze workflow](docs/COMPARISON_PROTOCOL.md) materializes reviewed source channels, deduplicated features and grouped gene/model partitions, and freezes the endpoint, preprocessing, ridge-model budget and controls before loading dependency values. It does not yet fit or score predictors.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
