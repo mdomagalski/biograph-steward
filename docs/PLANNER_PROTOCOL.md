@@ -42,7 +42,7 @@ Only simple standalone negative disclaimers such as “Do not recommend a drug�
 
 V1–v3 payload contracts are retained. The offline check compares all 168 contracts across the original 24 and subsequent 32 cases. On the 32 reused cases, the v4 application forces nine abstentions and leaves 23 query-or-abstain choices to the model. These diagnostics describe constraints, not model accuracy.
 
-The next comparison is explicitly a **paired regression after tuning**, using the exact 32 questions, draft references, submitted AI engineering review, source bytes, graph-review events and display budgets from the v3 control. They are no longer unseen cases. Preparation verifies the historical control result and source hashes, records its identity, and freezes a new engine fingerprint. Running it requires the exact same review worksheet; a differently edited or approved worksheet is rejected before constructing a live planner.
+The [completed v4 comparison](evaluations/SCOPED_TARGETS_V4_20261020.md) is explicitly a **paired regression after tuning**, using the exact 32 questions, draft references, submitted AI engineering review, source bytes, graph-review events and display budgets from the v3 control. It matched 26/32 scope plans with zero wrong-scope queries, while unnecessarily declining six supported requests. They are no longer unseen cases. Preparation verifies the historical control result and source hashes, records its identity, and freezes a new engine fingerprint. Running it requires the exact same review worksheet; a differently edited or approved worksheet is rejected before constructing a live planner.
 
 ```sh
 python app.py planning-regression-prepare \

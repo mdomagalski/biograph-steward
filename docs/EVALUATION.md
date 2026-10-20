@@ -14,6 +14,8 @@ The separate [prospective planning workflow](PROSPECTIVE_PLANNING.md) prepares 3
 
 Its [first live run](evaluations/PLANNING_CHALLENGE_LIVE_20261020.md), after explicitly AI-attributed engineering review, matched 22/32 scope plans and executed seven queries with incorrect scope. Six mismatches were predetermined by application constraints. The earlier development and new prospective scores use different cases; they are not a paired software-version comparison. Human-approved references and scientific judgments remain absent.
 
+The [paired v4 regression](evaluations/SCOPED_TARGETS_V4_20261020.md) reuses those exact cases, sources, scope reviews and serving configuration after refining target handling. It matched 26/32 plans, with zero wrong-scope queries and all 17 executed outputs equal to the deterministic enriched arm. Eight cases improved and four regressed; six supported requests were declined. The new `planning-regression-prepare` command binds a changed planner to the historical control and identical review worksheet. This is regression evidence after tuning, not another prospective or biomedical validation result.
+
 ## Run the comparison
 
 ```bash

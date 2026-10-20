@@ -1,6 +1,8 @@
 # Fresh planning cases and the next comparison
 
-This increment prepares the next experiment without Brev, a GPU, source retrieval or live model calls. The served `tool_shapes_v3` planner is unchanged. Earlier successful and failed reports remain historical records.
+This page documents the original prospective preparation of the unchanged `tool_shapes_v3` planner at source revision `5da22020289cb9915564305638bc8cf02b65e282`. Its commands and “unchanged” controls describe that historical revision. Earlier successful and failed reports remain historical records.
+
+The current Brev overlay selects [scoped_targets_v4](PLANNER_PROTOCOL.md). The 32 cases below have now informed that refinement and must be treated as regression/development cases. Use `planning-regression-prepare` for the paired v4 comparison; do not recreate this prospective experiment against changed planner code or describe reused cases as unseen.
 
 The [saved October 20 preparation](evaluations/PLANNING_CHALLENGE_PREP_20261020.md) includes the local deterministic results, six pending reference/constraint conflicts and verified artifact identities. After explicitly AI-attributed engineering scope review, the unchanged planner's [first live comparison](evaluations/PLANNING_CHALLENGE_LIVE_20261020.md) matched 22/32 plans and exposed seven queries with incorrect scope. Human and biomedical validation remain pending. Preserve this result before using these cases to tune a new protocol.
 
