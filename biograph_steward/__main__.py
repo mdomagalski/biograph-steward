@@ -183,6 +183,13 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--protocol', type=Path, required=True)
     p.add_argument('--source', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('growth-diagnose', help='Ablate source blocks using already exposed saved pilot outcomes; no fresh test.')
+    p.add_argument('--comparison', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('growth-reserve', help='Reserve untouched gene/product components after a completed pilot without opening experimental scores.')
+    p.add_argument('--panel', type=Path, required=True)
+    p.add_argument('--comparison', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser('verification-run', help='Evaluate a bounded source verifier against prepared SciFact expert annotations.')
     p.add_argument('--benchmark', type=Path, required=True)
     p.add_argument('--verifier', choices=['baselines', 'codex', 'nim', 'api', 'configured'], default='baselines')
@@ -203,6 +210,17 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'growth-diagnose':
+            from .growth_diagnostics import run_diagnostics
+            r = run_diagnostics(args.comparison, args.out,
+                                progress=lambda message: print(message, file=sys.stderr, flush=True))
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'arms', 'ranking_error', 'development_proposal', 'fresh_test_executed']}, indent=2))
+            return 0
+        if args.command == 'growth-reserve':
+            from .growth_diagnostics import reserve_fresh
+            r = reserve_fresh(args.panel, args.comparison, args.out)
+            print(json.dumps({k: r[k] for k in ['result_sha256', 'reserved_genes', 'gene_overlap_with_previous', 'protein_overlap_with_previous', 'fresh_dependency_values_loaded']}, indent=2))
+            return 0
         if args.command == 'growth-compare':
             from .growth_comparison import run_comparison
             r = run_comparison(args.protocol, args.source, args.out,

@@ -62,6 +62,8 @@ The [CPU comparison runner](docs/GROWTH_COMPARISON.md) implements that exact pro
 
 The [first scored comparison](docs/evaluations/CRC_GROWTH_COMPARISON_20261020.md) found **no demonstrated incremental gain**: held-out Spearman was 0.381 for restricted Pharos and 0.260 with CPTAC added (change −0.121; paired 95% interval −0.393 to +0.188). The result, controls and all 52 test-gene passports are preserved. This is a retrospective growth-ranking pilot; the challenge's graph-link prediction and pruning comparison remain pending.
 
+The [development diagnostic workflow](docs/GROWTH_DIAGNOSTICS.md) separates pathway, expression and BioPlex blocks, checks fixed late combination and decomposes the recorded rank changes. A separate hash-based reservation excludes all previously exposed genes and shared protein components before selecting a fresh gene holdout. Development scores cannot establish a new improvement.
+
 ## What the prototype does now
 
 - Freezes source snapshots and implementation hashes, runs grouped pilot questions, exports three source-bound review sheets, and scores partial human judgments without treating unknowns as negatives.
