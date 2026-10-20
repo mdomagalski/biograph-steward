@@ -1,6 +1,6 @@
 # Planning protocols for exact entity binding and tool use
 
-`BIOGRAPH_PLANNER_PROTOCOL` selects `catalogue_v1`, `entity_tools_v2` or `tool_shapes_v3`. The current Brev overlay explicitly selects v3. The compatibility default outside that overlay remains v1. Every protocol retains one model request and at most one validated read-only graph query.
+`BIOGRAPH_PLANNER_PROTOCOL` selects `catalogue_v1`, `entity_tools_v2`, `tool_shapes_v3` or `scoped_targets_v4`. The current Brev overlay explicitly selects v4. The compatibility default outside that overlay remains v1. Every protocol retains one model request and at most one validated read-only graph query.
 
 ## What changed
 
@@ -33,3 +33,27 @@ The changed component is a **hybrid planning protocol**: deterministic lexical b
 The completed [v3 comparison](evaluations/TOOL_SHAPES_V3_20261019.md) records the successful development result alongside both earlier failures, with a machine-readable per-case summary.
 
 The [prospective planning packet](PROSPECTIVE_PLANNING.md) retains that exact planner implementation while preparing new scope cases, negative tests and review criteria locally. Its offline constraint audit can expose a reference/schema conflict without making a model call. Do not repair the v3 policy using those cases and still call their later evaluation unseen.
+
+## Protocol v4: requested targets and bounded clause polarity
+
+The [first prospective v3 run](evaluations/PLANNING_CHALLENGE_LIVE_20261020.md) matched 22/32 draft scope plans and executed seven queries with the wrong scope. V4 addresses observed application constraints as well as model instructions. `target_scope.py` retains raw catalogue mentions in the audit, then distinguishes requested entities from explicit background or excluded mentions. It handles bounded negation for relations, evidence views and all-profile requests; rejects contradictory scopes and unsupported exclusion filters; and checks exact source disease identities. Unknown compound-profile extensions are detected case-insensitively before a contained known profile can become a query target. Whole known AND/OR/NOT profiles remain intact.
+
+Only simple standalone negative disclaimers such as “Do not recommend a drug” are removed from capability detection. Positive unsupported instructions and coordinated or ambiguous negative clauses remain visible and can require abstention. These are conservative lexical rules, not a general language parser or a clinical safety classifier. Unfamiliar phrasing can still be declined or misinterpreted. Model instructions continue to permit supported queries with no evidence, and require a short explanation consistent with the returned plan. A provider that ignores the schema still faces the same post-generation scope checks.
+
+V1–v3 payload contracts are retained. The offline check compares all 168 contracts across the original 24 and subsequent 32 cases. On the 32 reused cases, the v4 application forces nine abstentions and leaves 23 query-or-abstain choices to the model. These diagnostics describe constraints, not model accuracy.
+
+The next comparison is explicitly a **paired regression after tuning**, using the exact 32 questions, draft references, submitted AI engineering review, source bytes, graph-review events and display budgets from the v3 control. They are no longer unseen cases. Preparation verifies the historical control result and source hashes, records its identity, and freezes a new engine fingerprint. Running it requires the exact same review worksheet; a differently edited or approved worksheet is rejected before constructing a live planner.
+
+```sh
+python app.py planning-regression-prepare \
+  --control-result runs/brev_planning_challenge_20261020/live/planning_challenge_live_20261020 \
+  --source-suite runs/planning_challenge_20261020/suite \
+  --scope-reviews runs/planning_challenge_review_20261020/scope_reviews_ai_engineering.tsv \
+  --out runs/scoped_targets_v4_20261020/packet
+python app.py planning-compare \
+  --packet runs/scoped_targets_v4_20261020/packet \
+  --scope-reviews runs/planning_challenge_review_20261020/scope_reviews_ai_engineering.tsv \
+  --out runs/scoped_targets_v4_20261020/deterministic
+```
+
+Preparation and the default comparison above make no model requests. For live inference, configure `scoped_targets_v4` and add `--planner live` with a new output directory. Retain the first result without retries or repair. The submitted review is AI-assisted engineering scope review, not human or independent biomedical validation. A subsequent generalization claim requires a genuinely new, separately reviewed packet.

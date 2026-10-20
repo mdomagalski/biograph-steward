@@ -15,7 +15,7 @@ from biograph_steward.evaluation import freeze_suite
 from biograph_steward.graph import save_run
 from biograph_steward.planning import ModelPlanner, catalogue
 from biograph_steward.planning_comparison import (PLANNER_FILES, audit_cases, load_packet,
-                                                prepare_comparison, read_scope_reviews,
+                                                prepare_comparison, prepare_regression, read_scope_reviews,
                                                 run_comparison, scope_audit)
 from test_civic import fixture
 from test_evaluation import cases, edit_sheet
@@ -230,6 +230,95 @@ class ProspectiveComparisonTests(unittest.TestCase):
         audit = audit_cases(cs, prior)
         self.assertEqual(audit['cases'], 32); self.assertEqual(audit['question_groups'], 16)
         self.assertTrue(all(sum(c['group'] == group for c in cs) == 2 for group in {c['group'] for c in cs}))
+
+    def regression_control(self):
+        self.prepare(); sheet = self.approved_sheet(); plans = iter([civic_plan(), abstain_plan()])
+        planner = ModelPlanner(model='test', endpoint='http://localhost:9999',
+                               transport=lambda _: response(next(plans)), protocol='tool_shapes_v3')
+        control = self.root / 'control'
+        run_comparison(self.packet, control, planner=planner, scope_reviews=sheet)
+        return control, sheet
+
+    def test_regression_packet_preserves_cases_sources_budgets_and_discloses_tuning(self):
+        control, sheet = self.regression_control(); target = self.root / 'regression'
+        packet = prepare_regression(control, self.packet / 'suite', target, scope_reviews=sheet)
+        loaded, suite = load_packet(target)
+        prior = json.loads((self.packet / 'suite/suite.json').read_text())
+        self.assertEqual(loaded, packet)
+        self.assertEqual(suite['cases'], prior['cases'])
+        for arm in ['pharos', 'enriched']:
+            for key in ['files', 'graph_basis_sha256', 'pharos_snapshot_sha256', 'civic_snapshot_sha256', 'review_events_sha256']:
+                self.assertEqual(suite['sources'][arm][key], prior['sources'][arm][key])
+        self.assertEqual(suite['budgets'], prior['budgets'])
+        self.assertEqual(packet['experiment_kind'], 'regression_after_tuning')
+        self.assertTrue(packet['case_reuse_disclosed']); self.assertFalse(packet['planner_unchanged_from_prior'])
+        self.assertIn('target_scope.py', packet['planner_files'])
+        self.assertIn('not an unseen test', (target / 'review.html').read_text())
+        self.assertEqual(read_scope_reviews(self.fresh, target / 'case_reviews.tsv')['approved'], 0)
+
+    def test_regression_rejects_changed_reviews_control_and_source_before_preparation(self):
+        control, sheet = self.regression_control(); target = self.root / 'regression'
+        original = sheet.read_bytes()
+        edit_sheet(sheet, lambda rows: rows[0].update(notes='Different but approved review.'))
+        with self.assertRaisesRegex(ValueError, 'exact scope-approved'):
+            prepare_regression(control, self.packet / 'suite', target, scope_reviews=sheet)
+        sheet.write_bytes(original)
+        source = self.packet / 'suite/sources/enriched/snapshot.json'
+        original_source = source.read_bytes(); source.write_bytes(original_source + b'\n')
+        with self.assertRaisesRegex(ValueError, 'source bytes changed'):
+            prepare_regression(control, self.packet / 'suite', target, scope_reviews=sheet)
+        source.write_bytes(original_source)
+        evaluation = control / 'evaluation.json'; raw = evaluation.read_bytes()
+        result = json.loads(raw); result['planner_kind'] = 'changed'
+        evaluation.write_text(json.dumps(result))
+        with self.assertRaises(ValueError):
+            prepare_regression(control, self.packet / 'suite', target, scope_reviews=sheet)
+        self.assertFalse(target.exists())
+
+    def test_regression_checks_identical_reviews_before_constructing_live_planner(self):
+        control, sheet = self.regression_control(); target = self.root / 'regression'
+        prepare_regression(control, self.packet / 'suite', target, scope_reviews=sheet)
+        edit_sheet(sheet, lambda rows: rows[0].update(notes='Changed review.'))
+        with patch('biograph_steward.planning.configured_planner') as factory:
+            with self.assertRaisesRegex(ValueError, 'exact control scope-review'):
+                run_comparison(target, self.root / 'regression-live', live=True, scope_reviews=sheet)
+            factory.assert_not_called()
+
+    def test_regression_binds_control_review_to_its_recorded_comparison(self):
+        control, sheet = self.regression_control()
+        edit_sheet(sheet, lambda rows: rows[0].update(notes='Both worksheet files changed.'))
+        (control / 'scope_reviews_submitted.tsv').write_bytes(sheet.read_bytes())
+        with self.assertRaisesRegex(ValueError, 'exact scope-approved'):
+            prepare_regression(control, self.packet / 'suite', self.root / 'regression', scope_reviews=sheet)
+
+    def test_regression_injected_calls_preserve_wrong_plan_and_explicit_control_identity(self):
+        control, sheet = self.regression_control(); target = self.root / 'regression'
+        packet = prepare_regression(control, self.packet / 'suite', target, scope_reviews=sheet)
+        calls = []
+        def transport(payload):
+            calls.append(payload)
+            return response(abstain_plan())
+        planner = ModelPlanner(model='test', endpoint='http://localhost:9999', transport=transport,
+                               protocol='scoped_targets_v4')
+        summary = run_comparison(target, self.root / 'regression-result', planner=planner, scope_reviews=sheet)
+        self.assertEqual(summary['draft_plan_matches'], 1); self.assertEqual(len(calls), 2)
+        self.assertEqual(summary['control_evaluation_sha256'], packet['control_evaluation_sha256'])
+        self.assertEqual(summary['experiment_kind'], 'regression_after_tuning')
+        self.assertFalse(summary['scientific_improvement_established'])
+        for forbidden in ['reference_plan', 'new-scope-query', 'INVENTED SOFTWARE TEST statement']:
+            self.assertNotIn(forbidden, json.dumps(calls))
+
+    def test_cli_prepares_regression_and_runs_offline_with_control_reviews(self):
+        control, sheet = self.regression_control(); target = self.root / 'cli-regression'
+        with redirect_stdout(StringIO()):
+            self.assertEqual(main(['planning-regression-prepare', '--control-result', str(control),
+                                   '--source-suite', str(self.packet / 'suite'), '--scope-reviews', str(sheet),
+                                   '--out', str(target)]), 0)
+            self.assertEqual(main(['planning-compare', '--packet', str(target), '--scope-reviews', str(sheet),
+                                   '--out', str(self.root / 'cli-regression-result')]), 0)
+        summary = json.loads((self.root / 'cli-regression-result/comparison.json').read_text())
+        self.assertEqual(summary['reported_model_calls'], 0)
+        self.assertEqual(summary['experiment_kind'], 'regression_after_tuning')
 
 
 if __name__ == '__main__': unittest.main()

@@ -16,7 +16,7 @@ import unicodedata
 from .client import digest, utcnow, write_json
 from .evaluation import (CASE_FIELDS, SOURCE_FILES, SUITE_FORMAT, _file_sha, _new_directory,
                          engine_fingerprint, evaluation_html, freeze_suite,
-                         load_suite, run_evaluation, score_result, validate_cases)
+                         load_suite, run_evaluation, score_result, validate_cases, verify_result)
 from .graph import _write_tsv
 from .planning import planning_request, selected_protocol, validate_planned_output
 from .questions import verify_answer
@@ -177,14 +177,16 @@ def scope_audit(cases, graph, protocol):
             'interpretation': 'Constraint diagnostics against unapproved draft scope references. Not model accuracy; abstention is always permitted.'}
 
 
-def _review_html(cases, inventory, overlap):
+def _review_html(cases, inventory, overlap, *, regression=False):
     esc = lambda value: escape(str(value), quote=True)
     sections = ''.join('<section><h2>' + esc(c['id']) + '</h2><p>Family: ' + esc(c['group']) +
                        '</p><p>' + esc(c['question']) + '</p><pre>' + esc(json.dumps(c['reference_plan'], indent=2)) +
                        '</pre></section>' for c in cases)
+    context = ('Regression cases used to develop the new protocol. A control run already exists; this is not an unseen test.' if regression else
+               'AI-prepared drafts. No model inference has run. All judgments remain blank.')
     return ('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>Prospective planning scope review</title><style>body{max-width:1000px;margin:40px auto;padding:20px;font:16px/1.6 system-ui}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:14px}section{border-top:1px solid #ccd;padding:16px 0}</style>'
-            '<h1>Prospective planning scope review</h1><p>AI-prepared drafts. No model inference has run. All judgments remain blank. '
+            '<h1>Planning scope review</h1><p>' + context + ' '
             'Read the question and contract before inspecting scope_audit.json; parser behavior is not the reference standard.</p>'
             '<p>Edit a copy of case_reviews.tsv: yes / no / uncertain, reviewer and notes. Rejected scope requires a new packet. '
             'A live comparison requires every reference approved; software cannot attest reviewer independence or expertise.</p><ol>' +
@@ -240,6 +242,68 @@ def prepare_comparison(baseline, enriched, output, *, cases, prior_suite, protoc
     return packet
 
 
+def prepare_regression(control_result, source_suite, output, *, scope_reviews, protocol='scoped_targets_v4'):
+    """Freeze a changed planner against the exact prior cases, data and reviews."""
+    from .planning import catalogue, tool_contracts
+    protocol = selected_protocol(protocol)
+    if protocol != 'scoped_targets_v4':
+        raise ValueError('The current refinement protocol is scoped_targets_v4.')
+    control_result, source_suite, output = map(lambda p: Path(p).resolve(), [control_result, source_suite, output])
+    for source in [control_result, source_suite]:
+        if output == source or source in output.parents or output in source.parents:
+            raise ValueError('Save the regression packet outside historical controls.')
+    control = json.loads((control_result / 'evaluation.json').read_text(encoding='utf-8'))
+    verify_result(control)
+    comparison = json.loads((control_result / 'comparison.json').read_text(encoding='utf-8'))
+    if (comparison.get('comparison_sha256') != digest({k: v for k, v in comparison.items() if k != 'comparison_sha256'}) or
+            comparison.get('evaluation_sha256') != control['evaluation_sha256'] or
+            comparison.get('suite_sha256') != control['suite_sha256']):
+        raise ValueError('Control comparison integrity or evaluation binding failed.')
+    prior = _prior_manifest(source_suite)
+    if control['suite_sha256'] != prior['suite_sha256'] or control['suite'] != prior:
+        raise ValueError('Control result and frozen source suite do not match.')
+    if set(prior['sources']) != {'pharos', 'enriched'} or control['planner_kind'] in {'not_run', 'recorded_replay'}:
+        raise ValueError('Use an executed two-source planning control, not an offline/replay result.')
+    cases = prior['cases']
+    review = read_scope_reviews(cases, scope_reviews)
+    if (not review['all_approved'] or review['worksheet_sha256'] != _file_sha(control_result / 'scope_reviews_submitted.tsv') or
+            review['worksheet_sha256'] != comparison['scope_review']['worksheet_sha256']):
+        raise ValueError('Reuse the exact scope-approved worksheet submitted for the control.')
+    for arm in ['pharos', 'enriched']:
+        for filename, sha in prior['sources'][arm]['files'].items():
+            if _file_sha(source_suite / 'sources' / arm / filename) != sha:
+                raise ValueError('Control source bytes changed.')
+    output = _new_directory(output)
+    suite = freeze_suite(source_suite / 'sources/pharos', source_suite / 'sources/enriched',
+                         output / 'suite', cases=cases, **prior['budgets'])
+    for arm in ['pharos', 'enriched']:
+        for key in ['files', 'graph_basis_sha256', 'pharos_snapshot_sha256', 'civic_snapshot_sha256', 'review_events_sha256']:
+            if suite['sources'][arm][key] != prior['sources'][arm][key]:
+                raise ValueError('Regression source/review controls changed.')
+    _, graphs = load_suite(output / 'suite')
+    inventory = {'catalogue': catalogue(graphs['enriched']), 'tool_contracts': tool_contracts(graphs['enriched'])}
+    write_json(output / 'scope_audit.json', scope_audit(cases, graphs['enriched'], protocol))
+    write_json(output / 'catalogue_and_tools.json', inventory)
+    _write_tsv(output / 'case_reviews.tsv', _case_rows(cases), CASE_FIELDS)
+    (output / 'review.html').write_text(_review_html(cases, inventory, {}, regression=True), encoding='utf-8')
+    packet = {'packet_format': PACKET_FORMAT, 'created_at': utcnow(), 'suite_sha256': suite['suite_sha256'],
+              'cases_sha256': digest(cases), 'planner_protocol': protocol,
+              'planner_files': {name: suite['engine_files'][name] for name in (*PLANNER_FILES, 'target_scope.py')},
+              'planner_unchanged_from_prior': False, 'source_bytes_reviews_budgets_unchanged': True,
+              'experiment_kind': 'regression_after_tuning', 'control_evaluation_sha256': control['evaluation_sha256'],
+              'control_suite_sha256': prior['suite_sha256'], 'control_planner_kind': control['planner_kind'],
+              'control_scope_worksheet_sha256': review['worksheet_sha256'],
+              'case_reuse_disclosed': True, 'rubric': RUBRIC,
+              'reference_status': 'Same scope references/review as control; not independent biomedical labels.',
+              'independent_scope_review_verified': False, 'model_evaluation_run': False,
+              'scientific_improvement_established': False,
+              'artifacts': {name: _file_sha(output / name) for name in
+                            ['suite/suite.json', 'scope_audit.json', 'catalogue_and_tools.json', 'case_reviews.tsv', 'review.html']}}
+    packet['packet_sha256'] = digest(packet)
+    write_json(output / 'packet.json', packet)
+    return packet
+
+
 def load_packet(path):
     path = Path(path)
     packet = json.loads((path / 'packet.json').read_text(encoding='utf-8'))
@@ -253,8 +317,9 @@ def load_packet(path):
         if (path / name).is_symlink() or _file_sha(path / name) != sha:
             raise ValueError('Planning packet artifact changed; edit a copy of the review sheet.')
     suite, _ = load_suite(path / 'suite')
+    planner_files = (*PLANNER_FILES, 'target_scope.py') if packet['planner_protocol'] == 'scoped_targets_v4' else PLANNER_FILES
     if (suite['suite_sha256'] != packet['suite_sha256'] or digest(suite['cases']) != packet['cases_sha256'] or
-            packet['planner_files'] != {name: suite['engine_files'][name] for name in PLANNER_FILES}):
+            packet['planner_files'] != {name: suite['engine_files'][name] for name in planner_files}):
         raise ValueError('Planning packet and suite bindings differ.')
     return packet, suite
 
@@ -298,6 +363,10 @@ def comparison_summary(result, packet, review):
                'scientific_improvement_established': False, 'citation_support_accuracy': None,
                'interpretation': 'Hybrid planning on same-source prospective cases; scope approval does not establish biological accuracy or reviewer independence.',
                'case_results': rows}
+    if packet.get('experiment_kind') == 'regression_after_tuning':
+        summary.update(experiment_kind='regression_after_tuning', case_reuse_disclosed=True,
+                       control_evaluation_sha256=packet['control_evaluation_sha256'],
+                       interpretation='Paired same-case regression after tuning; not an unseen test or biological validation.')
     summary['comparison_sha256'] = digest(summary)
     return summary
 
@@ -308,6 +377,8 @@ def run_comparison(packet_dir, output, *, live=False, scope_reviews=None, planne
         raise ValueError('Save comparison results outside the immutable planning packet.')
     packet, suite = load_packet(packet_dir)
     review = read_scope_reviews(suite['cases'], scope_reviews)
+    if packet.get('experiment_kind') == 'regression_after_tuning' and review['worksheet_sha256'] != packet['control_scope_worksheet_sha256']:
+        raise ValueError('Use the exact control scope-review worksheet for this paired regression.')
     if (live or planner is not None) and not review['all_approved']:
         raise ValueError('Approve every scope reference in a separate worksheet before model inference. No model was called.')
     if live and planner is not None:

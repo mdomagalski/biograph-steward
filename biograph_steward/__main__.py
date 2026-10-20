@@ -101,6 +101,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--cases', type=Path, default=Path(__file__).with_name('planning_challenge_cases.json'))
     p.add_argument('--prior-suite', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('planning-regression-prepare', help='Freeze a changed planner against identical control cases, sources and scope review.')
+    p.add_argument('--control-result', type=Path, required=True)
+    p.add_argument('--source-suite', type=Path, required=True)
+    p.add_argument('--scope-reviews', type=Path, required=True)
+    p.add_argument('--protocol', choices=['scoped_targets_v4'], default='scoped_targets_v4')
+    p.add_argument('--out', type=Path, required=True)
     p = sub.add_parser('planning-compare', help='Run an offline baseline or scope-reviewed live planning comparison.')
     p.add_argument('--packet', type=Path, required=True)
     p.add_argument('--scope-reviews', type=Path, help='Completed copy of the packet worksheet; all scopes must be approved for inference.')
@@ -133,6 +139,14 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'planning-regression-prepare':
+            from .planning_comparison import prepare_regression
+            packet = prepare_regression(args.control_result, args.source_suite, args.out,
+                                        scope_reviews=args.scope_reviews, protocol=args.protocol)
+            print(json.dumps({'packet_sha256': packet['packet_sha256'], 'experiment_kind': packet['experiment_kind'],
+                              'control_evaluation_sha256': packet['control_evaluation_sha256'],
+                              'model_called': False}, indent=2))
+            return 0
         if args.command == 'planning-prepare':
             from .planning_comparison import prepare_comparison
             packet = prepare_comparison(args.baseline, args.enriched, args.out,
