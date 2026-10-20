@@ -19,7 +19,7 @@ class CodexPlanner(CodexJSONClient):
         else:
             trace['proposed_plan'] = proposed
             try:
-                trace.update(status='validated', plan=validate_planned_output(proposed, graph, resolution))
+                trace.update(status='validated', plan=validate_planned_output(proposed, graph, resolution, audit.get('request_scope')))
             except (ValueError, TypeError):
                 trace.update(status='invalid_plan', error='Codex output failed the supported plan schema or source scope.')
         return trace

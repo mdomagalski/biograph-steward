@@ -8,7 +8,7 @@ The Brev setup is complete for the current single-workspace development workflow
 | App access | Token sign-in, protected APIs, approved browser origins and loopback SSH forwarding tested through HTTP. Automated in-app visual inspection remains unverified. |
 | Persistence | Named volumes, saved-source/answer hashes and real app restart/reopen checks passed. VM deletion still requires an external backup policy. |
 | Real public data | Frozen Pharos/CIViC snapshots copied, validated and opened in Brev; this does not establish a new live API retrieval on Brev. |
-| Planning evaluation | First live development run recorded, including its all-abstention failure; protocol changes require a separate new comparison. |
+| Planning evaluation | Three separate live development comparisons recorded, including both failed protocols. The [latest hybrid protocol](evaluations/TOOL_SHAPES_V3_20261019.md) matched 24/24 draft plans on reused cases; held-out performance is unknown. |
 | NeMo/NIM | Optional NeMo wrapper tested with the real Toolkit CLI against a local mock. The Brev serving stack is vLLM, not NIM, and no broader challenge-agent discovery has been deployed. |
 | Scientific accuracy | Source review, held-out biological evaluation and the challenge's controlled baseline/enrichment prediction experiment remain separate work. |
 | Production operations | Individual user authorization, managed monitoring, external backups and restore policy remain unimplemented. |

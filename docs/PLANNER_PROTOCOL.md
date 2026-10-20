@@ -1,6 +1,6 @@
-# Entity binding and tool selection: planning protocol v2
+# Planning protocols for exact entity binding and tool use
 
-`BIOGRAPH_PLANNER_PROTOCOL=entity_tools_v2` enables a bounded identity resolver and separate application-controlled tool contracts. `catalogue_v1` remains the default outside the explicit Brev overlay so the original experiment can be reproduced. Both protocols retain one model request and at most one validated read-only graph query.
+`BIOGRAPH_PLANNER_PROTOCOL` selects `catalogue_v1`, `entity_tools_v2` or `tool_shapes_v3`. The current Brev overlay explicitly selects v3. The compatibility default outside that overlay remains v1. Every protocol retains one model request and at most one validated read-only graph query.
 
 ## What changed
 
@@ -14,10 +14,20 @@ The input contains the question, matched identities and per-tool instructions. T
 
 Version 2 narrows JSON identifier/therapy enums to exact mentions. After generation, the application rechecks source scope and mention bindings; it rejects unmentioned IDs, silent therapy broadening, ambiguous entities and an unrequested all-profiles selection. It does not repair a wrong plan or retry a model. Exact binding alone does not establish correct intent, source support or biomedical truth.
 
-## Audit and reproduction
+## Protocol v3: tool-specific shapes and capability checks
+
+The v2 [full comparison](evaluations/ENTITY_TOOLS_V2_20261019.md) exposed wrong null/irrelevant fields and scope regressions despite its successful synthetic preflight. V3 preserves that failed run and adds disjoint JSON object shapes for abstention, protein queries and CIViC queries. Irrelevant fields are fixed to null/empty, and a brief public explanation precedes the plan choice. The installed XGrammar backend compiled all 24 development schemas before inference; other serving implementations require their own schema-capability check.
+
+The application also computes conservative lexical request-scope signals: the requested family, candidate versus accepted view, explicit relations, and clearly unsupported causal/clinical/write/prediction/filter conditions. Whitespace is normalized for these checks. Complete profile identities still come from the exact resolver. The selected view/relations are constrained, and explicitly unsupported requests receive only an abstention shape. The application rechecks those constraints after generation, including for a provider that ignores its output schema.
+
+For this development set, application checks force an abstention shape on eight requests; on the other 16, the model can choose a supported query or abstain. This is a **hybrid workflow**, not an independent test of a model's unconstrained tool selection. Neither rules nor prompts receive case IDs or reference plans. The capability checks are deliberately conservative lexical rules; unfamiliar wording, synonyms and complex negation can still produce false declines or missed conditions. They are not a complete natural-language understanding or scientific-validity system.
+
+## Audit and experiment boundaries
 
 Traces record protocol, policy, exact-resolution output, instructions/tool-contract hashes, schema and request hashes, model metadata, latency and returned token usage. Source statements, reviewer labels and evaluation reference plans remain excluded from the model input. The query engines and scientific-review state are unchanged.
 
 The new experiment keeps the model revision, image, reasoning-off profile, inference budgets, source bytes, review events, 24 development questions, draft references and display budgets fixed. It freezes a new engine fingerprint and retains the initial all-abstention result. All 24 legacy request payload hashes were checked offline against that first experiment and matched, without making model requests.
 
-The changed component is a **hybrid planning protocol**: deterministic lexical binding, focused catalogue, tool instructions, constrained output choices and post-generation binding checks. Any improvement belongs to that package; it is not evidence that the model learned new knowledge, that a graph was biologically improved or that these development cases form an unseen benchmark. New held-out questions and source review are still needed.
+The changed component is a **hybrid planning protocol**: deterministic lexical binding, focused catalogue, tool instructions, constrained output choices and post-generation checks. V3 additionally changes the output shapes and request-scope checks. Any improvement belongs to that package; it is not evidence that the model learned new knowledge, that a graph was biologically improved or that these development cases form an unseen benchmark. New held-out questions and source review are still needed.
+
+The completed [v3 comparison](evaluations/TOOL_SHAPES_V3_20261019.md) records the successful development result alongside both earlier failures, with a machine-readable per-case summary.

@@ -1,0 +1,337 @@
+{
+  "format": "biograph.planner-protocol-comparison.v1",
+  "client_date": "2026-10-19",
+  "timezone": "America/New_York",
+  "protocol": "tool_shapes_v3",
+  "suite_sha256": "569dd35372b910b3b9719597f79e32b0c348d66c77c7eb225705e6cfe15a3a5b",
+  "evaluation_sha256": "5c92930a64a43c917585500978ec392d2070b284dbfb2908eb2379b5e9623898",
+  "cases_sha256": "28945f547b1077fd01500b95fd8bcc097fc59fdc2d966f8b111b02d82823eefb",
+  "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+  "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+  "server_image_digest": "sha256:6cf9808ca8810fc6c3fd0451c2e7784fb224590d81f7db338e7eaf3c02a33d33",
+  "reasoning_profile": "nemotron_nano_v1",
+  "development_cases": 24,
+  "question_groups": 15,
+  "held_out_cases": 0,
+  "reference_status": "draft_scope_plans_not_biomedical_gold",
+  "human_approved_reference_plans": 0,
+  "draft_plan_matches": 24,
+  "draft_plan_agreement": 1.0,
+  "statuses": {
+    "answered": 14,
+    "no_evidence": 2,
+    "abstained": 8
+  },
+  "valid_plans": 24,
+  "application_forced_abstention_cases": 8,
+  "model_discretionary_query_or_abstain_cases": 16,
+  "model_calls": 24,
+  "synthetic_preflight_calls": 1,
+  "synthetic_preflight_status": "passed",
+  "tool_calls": 16,
+  "query_outputs_equal_to_enriched_deterministic": 16,
+  "output_comparison_excludes": [
+    "source_run arm label",
+    "answer_sha256 derived from the full arm-labelled payload"
+  ],
+  "deterministic_outputs_identical_to_local_and_first_run": 48,
+  "sources_unchanged": true,
+  "scientific_improvement_established": false,
+  "citation_support_accuracy": null,
+  "latency_ms": {
+    "median": 6129.47,
+    "min": 3623.142,
+    "max": 6824.808
+  },
+  "reported_usage": {
+    "prompt_tokens": 30970,
+    "completion_tokens": 2615,
+    "total_tokens": 33585
+  },
+  "prior_runs": {
+    "catalogue_v1": {
+      "draft_plan_matches": 8,
+      "cases": 24,
+      "statuses": {
+        "abstained": 24
+      }
+    },
+    "entity_tools_v2": {
+      "draft_plan_matches": 6,
+      "cases": 24,
+      "statuses": {
+        "answered": 8,
+        "invalid_plan": 15,
+        "no_evidence": 1
+      }
+    }
+  },
+  "case_results": [
+    {
+      "case_id": "kras-context",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "cc5d0896e1fe4473464eff65fa0e9bafe5e43352c37f70848e14c91d29c2cdd9",
+      "response_sha256": "9296c9f9567b24bb4537945e6c2a3c44b1ce998811f7d9e9d467498cf5776826"
+    },
+    {
+      "case_id": "kras-context-paraphrase",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "607dc56987b2b7273032c448e31d9fc80d6efebfe1728a69e01d69d4b34a0178",
+      "response_sha256": "a37917d2a351f8d4f904f3c6523b7645bc1b07f1c18421dc3daf6d78dc26b2b0"
+    },
+    {
+      "case_id": "hras-context",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "9eb3bfe76405781a288078e67d725bdf0747f86acf5d1ac023d917bfa3bcb3a9",
+      "response_sha256": "f0445ebcd207455dc8988c7bc3df5618a93aca106520277d83fcfe9a9ff424d2"
+    },
+    {
+      "case_id": "hras-context-paraphrase",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "5e9d7f0d850ed4be88e002a56041350a64084ba580491e29bc0fdccffdc48d01",
+      "response_sha256": "7986ee7fb0f344c1a82e4d3525af68cac26ef3ae77ca829f8fd0fc987f311b8f"
+    },
+    {
+      "case_id": "braf-context",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "197b315a603095571b5658dbcd6644318a39b2eb99e8a9810ca52866540014b6",
+      "response_sha256": "bcaa99d89e0c3090d736e4ca188e53a0bde043232fb31a2edb8320e6305848ba"
+    },
+    {
+      "case_id": "braf-context-paraphrase",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "7d90c027379300102a2fdc1c9c50fee7e1e69a6cbe9afba6c17ac6c3358ab694",
+      "response_sha256": "05cb48eb887a8a7b5602627ef4c971d78bdbc8397ccbdd12a488b74fe9c96a04"
+    },
+    {
+      "case_id": "egfr-context",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "f4356921d90dacaea0f7e3f716f25984ede14735a8a917a125bc1e2e647dc2de",
+      "response_sha256": "f113c08430c9b127720c8279aec62e99e062fb964daf5bbb238967d64edb2f55"
+    },
+    {
+      "case_id": "egfr-context-paraphrase",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "bd1f67a3c67ddc116d7b42b54ff3aee88fc98dc89561ce79fa49c936d33b12d8",
+      "response_sha256": "bbba1ea2d05b22d3b37f52f9100b8becc86a54b300117094c4732f37d4c0b0ec"
+    },
+    {
+      "case_id": "g13d-cetuximab",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "e23960dca7cc26021e6f9c26b8e6900d547aa7799273869f1e5b30699ecf20df",
+      "response_sha256": "79289bbdc93a48b5d8ac2332aa1b829276fca4789feeeab99519c52278a8da1f"
+    },
+    {
+      "case_id": "g13d-panitumumab",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "0fec0a491f656c5cd153e45e93d18a6c534073143b44b07ebf77a79e128e8d6f",
+      "response_sha256": "4d8d00c6acf674a7e635d36ed8ce7c72955c4ff685a6b2c80af4082a967259a3"
+    },
+    {
+      "case_id": "g12c-cetuximab",
+      "status": "no_evidence",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "436b87314f7cff0dd0fb91e85fcd167ccdfc03aca49a24ef44a511073e701614",
+      "response_sha256": "806236ef1aeec02ffcd2dbc2041149ab51bbaef9eec358111652232c2a4ad554"
+    },
+    {
+      "case_id": "g12c-panitumumab",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "bf71ef655f41f8d2da64c1f5008222a11601c93317febb007fc421629d0a1eea",
+      "response_sha256": "d150d4f2c325ed35c9e17dddbcdf42e839d4f07312fa80d92067f4be0754ae47"
+    },
+    {
+      "case_id": "complex-profile-cetuximab",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "a5975c14a6781d7fab4f129095b6f23f82b14ddfdd79d621fb25f52ff1ab803f",
+      "response_sha256": "d9c947799e4ebf4aeba3c8f76ed4cdbf9645858abfe05fe6e459164cebb93487"
+    },
+    {
+      "case_id": "complex-profile-panitumumab",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "eba71b3146c3d0b1fa618b0fdc3876b27360097afa7733743ecb3f1e71872040",
+      "response_sha256": "c6629c55f678a39e7e3d86e178bb692c9746915d9d3fef9745e0ee48e9cd96bc"
+    },
+    {
+      "case_id": "g13d-paraphrase",
+      "status": "answered",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "f9abe66081a483530953c457cedfb6d3bf3d66d9a18c588c6401009a8e896dc8",
+      "response_sha256": "79afcf893b7192a3ed5a7e50a6d2ce00dfa55e82f21aca1d9c19a2e1da3bbad8"
+    },
+    {
+      "case_id": "g13d-locally-accepted",
+      "status": "no_evidence",
+      "draft_plan_match": true,
+      "tool_calls": 1,
+      "application_forced_abstention": false,
+      "scope_flags": [],
+      "request_sha256": "a78d40faf4fe78c5de704f08184bd0831ca8e3c9b5b67feff3af318a9eafff44",
+      "response_sha256": "a069c8bb631e631a9141509a9b52ae153078e89c8801b9e11f4a786ea5be2ca0"
+    },
+    {
+      "case_id": "wrong-disease",
+      "status": "abstained",
+      "draft_plan_match": true,
+      "tool_calls": 0,
+      "application_forced_abstention": true,
+      "scope_flags": [
+        "disease_equivalence",
+        "no_explicit_supported_therapy"
+      ],
+      "request_sha256": "5454a355a69f4c0f117b7e2dde9ad56463498c2f58b24238bf8951ccd7acbe7e",
+      "response_sha256": "976aeac782b339929aed97ade816eac725821da590ebe2c59e9531e13658db2c"
+    },
+    {
+      "case_id": "unsupported-therapy",
+      "status": "abstained",
+      "draft_plan_match": true,
+      "tool_calls": 0,
+      "application_forced_abstention": true,
+      "scope_flags": [
+        "no_explicit_supported_therapy"
+      ],
+      "request_sha256": "abbfc6e31060d91a7484bbeb733093da8682d9597a8a31a24f6d26962b0787ea",
+      "response_sha256": "7cba847cb96ac4ae03d1541fc0c0301544440da377cabd8003090ad14889e579"
+    },
+    {
+      "case_id": "single-drug-only",
+      "status": "abstained",
+      "draft_plan_match": true,
+      "tool_calls": 0,
+      "application_forced_abstention": true,
+      "scope_flags": [
+        "monotherapy_filter"
+      ],
+      "request_sha256": "c1bcb6a1391e1c5c3e95e3400fa0ab757bd4b63a184ad98ec4e144cae0fd09ac",
+      "response_sha256": "8f6bd10b028b6be9e022b67585c31a55391db1af58861aac8ec56e9e9d80ee00"
+    },
+    {
+      "case_id": "effect-filter",
+      "status": "abstained",
+      "draft_plan_match": true,
+      "tool_calls": 0,
+      "application_forced_abstention": true,
+      "scope_flags": [
+        "direction_filter"
+      ],
+      "request_sha256": "0eb018df6c65da326e957d413bef70b242c9b3edb6deaaad5ff393bf4a1082c8",
+      "response_sha256": "1a710ddbe9da3bfc7a510246e182f1621433c7b529d64d0e1996998a51483152"
+    },
+    {
+      "case_id": "clinical-advice",
+      "status": "abstained",
+      "draft_plan_match": true,
+      "tool_calls": 0,
+      "application_forced_abstention": true,
+      "scope_flags": [
+        "clinical_recommendation",
+        "variant_qualified_protein_query"
+      ],
+      "request_sha256": "ece357d86324f510d1e25dcb35dade872744b49f0bf0e6cb7fbb557609181a79",
+      "response_sha256": "b42322776dcd5906885d9ed1b75ba8fb729a6b858d188b0008638eff3865560c"
+    },
+    {
+      "case_id": "causal-inference",
+      "status": "abstained",
+      "draft_plan_match": true,
+      "tool_calls": 0,
+      "application_forced_abstention": true,
+      "scope_flags": [
+        "causal_proof"
+      ],
+      "request_sha256": "82c55277e19d0796aec63acc34563801c0c01135255c23ed6e4e3577d13e1a7f",
+      "response_sha256": "6156421b8cce9672bd33540b7200276ea272a641428796c1a2ebe42307082e50"
+    },
+    {
+      "case_id": "unknown-profile",
+      "status": "abstained",
+      "draft_plan_match": true,
+      "tool_calls": 0,
+      "application_forced_abstention": true,
+      "scope_flags": [
+        "unresolved_complete_profile"
+      ],
+      "request_sha256": "45d9dac0d4a1ebfc8c13738053e43c793bb22165cf95906d1e2e71b8e5285428",
+      "response_sha256": "a58087020135383087b4bf362912ad897735adf4dbdee09b589368230c3b4174"
+    },
+    {
+      "case_id": "injection",
+      "status": "abstained",
+      "draft_plan_match": true,
+      "tool_calls": 0,
+      "application_forced_abstention": true,
+      "scope_flags": [
+        "no_explicit_supported_therapy",
+        "unresolved_complete_profile",
+        "write_or_code"
+      ],
+      "request_sha256": "8b28acf7bbaa49dc9041e788d3f80ce86dfc693323592189760a85962f9f3883",
+      "response_sha256": "8f26888f93be75c47e121952c70ec4f8be7b05af3e39ed629fab78e2ef358130"
+    }
+  ],
+  "limitations": [
+    "Iteratively revised on these same development cases; not an unseen or biological test.",
+    "Deterministic lexical rules constrain family, view, relation choices and eight abstentions; gains belong to the hybrid system.",
+    "Exact source/schema/citation checks do not adjudicate scientific support.",
+    "Lexical rules can miss unfamiliar wording or decline valid questions; held-out scope review remains necessary."
+  ]
+}
