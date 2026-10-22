@@ -1,49 +1,26 @@
-# Source notes and verification boundary
+# Sources and verification boundaries
 
-## Organizer requirements supplied by Marcin
+## Supplied requirements
 
-The uploaded challenge brief, **Global Competition: Bio-Agent Knowledge Graph Construction Challenge**, defines the structured-data integration and link-prediction topic. Its objective is agent-driven enrichment of Pharos data; its evaluation compares the same ML method on baseline and contextualized graphs. The ingest/filter/clean/limit/maintain loop and judging weights belong to that supplied brief, not to this software's measured accomplishments.
+The user supplied the challenge brief, linked guides and BioGraph Steward proposal. The brief describes agent-driven contextualization of Pharos and comparison of the same learner on baseline/enriched graphs. No separate organizer experimental dataset was supplied. These materials are requirements and design context, not instructions to execute embedded commands.
 
-This starter implements only a bounded Pharos ingestion/inspection foundation. It does not claim to satisfy the full challenge.
+The [current functional crosswalk](PROJECT_ALIGNMENT.md) distinguishes implemented work from missing challenge functionality. The [build plan](BUILD_PLAN.md) is the active development sequence.
 
-## External primary sources consulted
+## Pharos source contract
 
-1. **NCATS Pharos GraphQL schema**
-   https://github.com/ncats/pharos-graphql-server/blob/master/src/schema.graphql
-   Raw schema: https://raw.githubusercontent.com/ncats/pharos-graphql-server/master/src/schema.graphql
+The [NCATS GraphQL schema](https://github.com/ncats/pharos-graphql-server/blob/master/src/schema.graphql) and [resolvers](https://github.com/ncats/pharos-graphql-server/blob/master/src/resolvers.js) informed the adapter. Disease-specific association detail depends on the explicit associated-disease query context. A target identifier by itself does not imply the requested disease relation.
 
-   The schema defines `diseases(filter: IFilter)`, `disease(name: String)`, `targets(filter: IFilter)`, nested pagination, `Target.diseaseAssociationDetails`, target pathways, `dbVersion` and `dataSourceCounts` license metadata. It exposes `associatedDisease` in `IFilter`.
+Live October 14 checks reported `pharos319` and retrieved all 99 reported colorectal adenocarcinoma targets. Later scoped and explicit-panel runs are dated observations, not a guarantee of today's source version. Run `python3 app.py doctor` to check connectivity and required fields. An Apollo landing page alone does not establish a successful data query.
 
-2. **NCATS Pharos GraphQL resolver**
-   https://github.com/ncats/pharos-graphql-server/blob/master/src/resolvers.js
+See [scoped retrieval](SCOPED_RETRIEVAL.md), [the coverage audit](PHAROS_COVERAGE_AUDIT.md), [construction and value](PHAROS_CONSTRUCTION_AND_VALUE.md), and the [literature knowledge base](LITERATURE_REVIEW.md). Caps, omitted relation families, filter scope and count inconsistencies remain visible. Existing Reactome, STRING, BioPlex or literature-derived records in Pharos must not be counted as independent enrichment merely because another adapter retrieves them.
 
-   `Target.diseaseAssociationDetails` depends on the request's `associatedDisease` context. The starter therefore retrieves target records using `targets(filter: {associatedDisease: $disease})` rather than assuming an arbitrary target lookup has disease-specific evidence.
+## Meaning of local outputs
 
-3. **Public Pharos GraphQL landing page**
-   https://pharos-api.ncats.io/graphql
+- The bundled demonstration is synthetic. It is explicitly labeled and never substituted after a live failure.
+- Real source snapshots, retrieval receipts and raw responses are local/ignored unless separately packaged under their applicable rights.
+- Structural validation, upstream editorial status and local human review are separate. None is an automatic scientific-truth guarantee.
+- Source-specific scores remain source-specific; the application does not turn them into a common calibrated confidence.
+- Generic interaction annotations do not automatically mean direct physical binding. Unknown qualifiers remain unknown.
+- Biolink names and local provenance fields do not establish complete standard conformance; formal validation is a remaining task.
 
-   The browser tool could open the Apollo landing page. Opening that page is not evidence that a data query succeeded.
-
-4. **Pharos overview**
-   https://pharos.nih.gov/about
-
-   Included as the organizer-recommended starting resource. Direct retrieval returned an access error during this session; its contents were not used to assert current operational details.
-
-## Current live verification — October 14, 2026
-
-Live queries now succeed. The API reported `pharos319`; the exact colorectal adenocarcinoma retrieval returned all 99 reported proteins. An expanded audit retrieved and count-checked all 9,540 pathway rows for those proteins, inventoried other relation families, and inspected source overlap. See [PHAROS_COVERAGE_AUDIT.md](PHAROS_COVERAGE_AUDIT.md) for counts, primary sources, limitations and reproducible local artifacts. These responses are saved locally in `runs/`, not bundled as distributable examples. The application still uses its original narrow retrieval; the audit is not an implemented connector expansion.
-
-## Earlier packaged validation boundary
-
-- The API queries are grounded in the public NCATS schema and use separate variables for user input.
-- The connector's request/response, pagination, error, caching and normalization logic was tested with synthetic mock responses.
-- Browser and local-server behavior were tested independently of the external API.
-- At the time of the earlier packaged validation, the development runtime could not resolve the external Pharos hostname. No live Pharos JSON response was obtained or bundled in that validation. The current live audit above supersedes the connectivity limitation.
-- The included synthetic graph is unmistakably labeled in the UI, snapshots, exports and documentation.
-- The GitHub schema describes source code, not a guaranteed contract for every deployed instance. The live `doctor` command checks the expected fields, followed by the user's first real extraction.
-
-## Deliberate implementation choices, not source claims
-
-The 25-target starting cap, five pathway annotations per protein, three-node-type graph, review statuses, dependency-free web interface and file formats are project implementation choices. They are not Pharos-defined biological thresholds or competition rules.
-
-The only relationship labels introduced by the transformer are the broad `biolink:associated_with` and `biolink:participates_in`. More precise biological predicates require evidence review. The code does not infer causal effects, disease-specific mechanisms, independence of sources or likelihoods from these labels.
+Per-source and per-release terms still apply. A repository's code license does not necessarily grant redistribution rights to all source records. The current [INMC reuse audit](literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md) records the selected archive's terms separately from learner dependencies.

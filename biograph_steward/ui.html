@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BioGraph Steward | Pharos Starter</title>
+<title>BioGraph Steward | Evidence workbench</title>
 <style>
 :root{--ink:#172b3a;--muted:#52697b;--line:#d9e3e9;--paper:#f4f7f9;--navy:#102e42;--teal:#147c83;--amber:#9b650e;--red:#a53d40;--white:#fff}
 *{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper)}
@@ -11,14 +11,23 @@ main{max-width:1368px;padding:24px;margin:auto}h2{font-size:20px;margin:0 0 12px
 @media(max-width:850px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}main{padding:14px}h1{font-size:26px}}
 .citation-link{padding:2px 6px;margin:0 2px;background:#e8eff3;color:#086b85;font-size:13px}.citation-link:hover{text-decoration:underline}#guidedQuestion>h2{font-size:24px}#controls>summary,#inspectionDetails>summary{font-size:16px;font-weight:600}#controls[open]>summary{margin-bottom:14px}
 .source-context{border-left:3px solid var(--line);padding-left:14px;margin:12px 0 24px}.source-record{background:#f4f7f9;border:1px solid var(--line);border-radius:6px;padding:12px;margin:10px 0;font-size:13px;overflow-wrap:anywhere}.source-record strong{color:var(--navy)}
+.work-navigation{position:sticky;top:0;z-index:5;padding:12px 16px;box-shadow:0 2px 8px #102e4212}.work-navigation p{margin:6px 0 0}[id]{scroll-margin-top:150px}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #147c83;outline-offset:3px}
 </style>
 </head>
 <body>
 <header><div class="eyebrow">BIOGRAPH STEWARD / EVIDENCE WORKBENCH</div><h1>Follow each claim to its evidence.</h1><p>Scope the data. Inspect assertions. Record your review.</p></header>
 <main>
 __AUTH_CONTROL__
-<details class="card" id="qualityPanel"><summary>Evidence-quality comparison</summary><p>Compare the original assertions, deterministic checks and advisory source verification. Inspect exact passages and proposed review reasons; existing graph states stay unchanged.</p><div id="qualityReports"></div></details>
-<details class="card" id="sourceFactsPanel"><summary>Source facts and claim checks</summary><p>Inspect draft response-rate and survival-significance records with exact source spans. Check a claim against one complete record; every result requires review.</p><div id="sourceFactReports"></div></details>
+<section class="card" id="savedWorkPanel" aria-labelledby="savedWorkTitle">
+<h2 id="savedWorkTitle">Continue with saved evidence</h2>
+<p>Open a saved graph and its questions. Real source annotations remain separate from local review decisions.</p>
+<p><a id="savedExample" class="hidden" href="#">Open a saved real example</a> · <a href="#refreshPanel" onclick="document.getElementById('refreshPanel').open=true">Comparison history</a></p>
+<details id="savedWorkDetails"><summary>Saved graphs and answers</summary>
+<form id="savedWorkForm"><label for="savedRun">Saved graph</label><select id="savedRun" disabled></select>
+<label for="savedQuestion" style="margin-top:12px">Saved answer or graph</label><select id="savedQuestion" disabled></select>
+<p><button id="openSavedWork" disabled>Open saved work</button> <button id="reloadSavedWork" type="button" class="secondary">Reload saved work</button></p></form></details>
+<p id="savedWorkStatus" class="small" role="status"></p></section>
+
 <details id="controls" class="card" open><summary>Data source and retrieval</summary>
 <h2>1. Choose a data source</h2>
 <div class="modes"><label><input type="radio" name="mode" value="demo" checked> Offline demonstration</label><label><input type="radio" name="mode" value="live"> Live Pharos API</label></div>
@@ -31,6 +40,13 @@ __AUTH_CONTROL__
 <div id="status" class="notice hidden" role="status"></div>
 </details>
 <section id="results" class="hidden">
+<nav class="card work-navigation" aria-label="Evidence workflow"><div class="row">
+<button id="navQuestion" type="button" class="secondary">1. Question</button>
+<button id="navGraph" type="button" class="secondary" disabled>2. Graph</button>
+<button id="navAnswer" type="button" disabled>3. Answer</button>
+<button id="navSources" type="button" class="secondary" disabled>4. Sources</button>
+</div><p id="workNavigationHint" class="small" role="status"></p></nav>
+
 <div id="dataBanner" class="notice"></div>
 <div class="row"><div class="grow"><h2 id="diseaseTitle" style="margin-bottom:0"></h2><div id="runSubtitle" class="small"></div></div><button id="downloadJson" class="secondary">Download graph JSON</button><a id="downloadZip" class="hidden" href="#">Download run ZIP</a></div>
 <div style="margin:18px 0"><label for="questionWorkflow">Research question</label><select id="questionWorkflow"><option value="connections">Protein interactions and shared pathways</option><option value="therapy">KRAS molecular profiles and therapy response — CIViC</option></select></div>
@@ -43,7 +59,7 @@ __AUTH_CONTROL__
 <p id="questionStatus" class="small" role="status"></p>
 <div id="questionOutput" class="hidden"><div id="questionModeBadge" class="notice"></div><p id="questionOverview"></p><button id="questionExplore" class="secondary hidden">Explore candidate paths</button><div class="row" style="margin:12px 0"><button id="questionJson" class="secondary">Download question JSON</button><a id="questionZip" href="#">Download summary, paths and evidence ZIP</a></div>
 <section id="questionGraphSection"><h3 id="questionGraphTitle">Evidence graph</h3><div id="questionGraph" class="graph-box"></div><p id="questionGraphNote" class="small"></p></section>
-<h3>Traceable summary</h3><p class="small">Each statement is assembled from its cited database assertions. Select a reference to inspect the source evidence.</p><div id="questionSummary"></div><div id="questionCitation"></div>
+<h3 id="questionAnswerTitle">Traceable summary</h3><p class="small">Each statement is assembled from its cited database assertions. Select a reference to inspect the source evidence.</p><div id="questionSummary"></div><div id="questionCitation"></div>
 <details style="margin-top:15px"><summary>Coverage, missing evidence and interpretation limits</summary><ul id="questionGaps"></ul><pre id="questionTrace"></pre></details></div></section>
 <section id="civicQuestion" class="card hidden"><h2>Inspect variant–therapy evidence</h2>
 <p>What CIViC evidence reports sensitivity or resistance for KRAS-containing molecular profiles and selected therapies?</p>
@@ -55,7 +71,7 @@ __AUTH_CONTROL__
 <button id="civicRun" type="submit" style="margin-top:15px">Find therapy evidence</button></form></div><p id="civicStatus" class="small" role="status"></p>
 <div id="civicOutput" class="hidden"><p id="civicMode" class="notice"></p><p id="civicOverview"></p><button id="civicExplore" class="secondary hidden">Explore candidate evidence</button><p><a id="civicZip" href="#">Download cited summary, paths and evidence ZIP</a></p>
 <div id="civicAlerts" class="notice warn hidden"></div><h3 id="civicGraphTitle">Qualified evidence graph</h3><div id="civicGraph" class="graph-box"></div><p class="small">Solid teal: locally accepted. Dashed amber: requires local review. Disease and variant origin are conditions on the response assertion. A reported response annotation is not a causal or treatment recommendation.</p>
-<h3>Traceable therapy summary</h3><div id="civicSummary"></div><div id="civicPassport"></div><details><summary>Interpretation limits and reproducible scope</summary><ul id="civicGaps"></ul><pre id="civicTrace"></pre></details></div></section>
+<h3 id="civicAnswerTitle">Traceable therapy summary</h3><div id="civicSummary"></div><div id="civicPassport"></div><details><summary>Interpretation limits and reproducible scope</summary><ul id="civicGaps"></ul><pre id="civicTrace"></pre></details></div></section>
 <details id="inspectionDetails" class="card"><summary>Inspect all source data, assertions and review decisions</summary>
 <div class="notice"><strong>Supported inspection question:</strong> <span id="scopeQuestion"></span><p class="small">Pathways provide general context. Variant-specific therapy response and causal conclusions require additional evidence.</p></div>
 <div class="row"><div class="grow"><label for="evidenceView">Evidence view</label><select id="evidenceView"><option value="accepted">Accepted through human review</option><option value="inspection">Inspect all records and candidate assertions</option></select></div><button id="inspectCandidates" class="secondary">Inspect candidates</button></div><p id="viewNote" class="small"></p>
@@ -70,7 +86,15 @@ __AUTH_CONTROL__
 <details class="card" id="benchmarkPanel"><summary>Evaluation — benchmark readiness</summary><div id="benchmarkSummary"></div><details><summary>What is needed before comparing predictions?</summary><ol id="benchmarkActions"></ol><p class="small">The run ZIP includes benchmark_readiness.json and review_candidates.tsv. The worksheet groups selected-disease evidence by pair; it does not assign training labels.</p></details></details>
 </details>
 </section>
-<footer>BioGraph Steward | Guided evidence questions, source passports and human review. Variant–therapy evidence, biological verification, source updates and model comparison remain under development.</footer>
+<details class="card" id="refreshPanel"><summary>Compare saved evidence snapshots</summary>
+<p>Compare an earlier run with a newly retrieved run. Inspect changed assertions and distinguish comparable removals from incomplete or differently scoped retrieval.</p>
+<form id="refreshForm"><div class="row"><div class="grow"><label for="refreshBefore">Earlier run</label><select id="refreshBefore" required></select></div><div class="grow"><label for="refreshAfter">Newer run</label><select id="refreshAfter" required></select></div></div>
+<p><label><input id="refreshCarry" type="checkbox"> Carry compatible prior reviews into the new run</label></p>
+<p class="small">Carryover preserves eligible prior decisions with their original history. It does not create a new scientific judgment. Original runs remain available.</p>
+<button id="refreshCompare" type="submit">Compare snapshots</button> <button id="refreshReload" type="button" class="secondary">Reload saved runs</button></form>
+<p id="refreshStatus" role="status"></p><div id="refreshResult"></div><div id="refreshHistory"></div></details>
+
+<footer>BioGraph Steward | Guided evidence questions, source passports and human review. Scoped CIViC evidence and saved snapshot comparisons are available. Scientific improvement remains unestablished.</footer>
 </main>
 <script id="embeddedData" type="application/json">__EMBEDDED_GRAPH__</script>
 <script>
@@ -100,7 +124,7 @@ function showGraph(g){
     if(![...$('disease').options].some(o=>o.value===g.disease.name)){const option=el('option',g.disease.name+' | '+(g.disease.mondoID||'No MONDO ID'));option.value=g.disease.name;$('disease').append(option);}
     $('disease').value=g.disease.name;$('cap').value=limits.max_targets||25;$('paths').value=limits.pathway_top??5;$('tissueTerm').value=limits.tissue_term||'';
   }
-  $('controls').open=false;graph=g;nodeIndex=new Map(g.nodes.map(n=>[n.id,n]));contextPage=0;tablePage=0;$('results').classList.remove('hidden');const demo=g.data_kind==='synthetic_demo';$('dataBanner').className='notice'+(demo?' warn':'');$('dataBanner').textContent=demo?'SYNTHETIC DEMO - not retrieved Pharos data and not a scientific result.':(g.civic?'PHAROS + SCOPED CIViC — source annotations, not validated predictions. Diseases remain source-specific; local review is separate from CIViC editorial status.':'PHAROS EXTRACT - database-reported associations, not validated predictions. Cached source retrieval times are retained in the run manifest.');$('diseaseTitle').textContent=g.disease.name;$('runSubtitle').textContent=(g.disease.mondoID||'No disease ontology ID')+' | Snapshot '+g.snapshot_created_at+' | Database version '+(g.db_version||'not supplied');$('stats').replaceChildren();for(const [key,label] of [['proteins','Proteins'],['evidence_edges','Evidence groups'],['needs_review','Edges needing review'],['quarantined_records','Quarantined records']]){const c=el('div',undefined,'stat');c.append(el('div',g.summary[key],'number'),el('div',label,'label'));$('stats').append(c);}$('warnings').replaceChildren();for(const w of g.warnings||[])$('warnings').append(el('p',w,'small'));$('warnings').append(el('p',g.interpretation,'small'));$('technical').textContent=JSON.stringify({data_kind:g.data_kind,retrieval:g.retrieval,summary:g.summary,snapshot_sha256:g.snapshot_sha256},null,2);if(runId){$('downloadZip').href='/api/download/'+encodeURIComponent(runId);$('downloadZip').classList.remove('hidden');}$('tdlFilter').value='all';$('scopeQuestion').textContent=g.question_scope?.question||'Which proteins does Pharos associate with this selected disease?';setupAssertionFilters();setupContext();setupQuestion();setupCivic();setupPlanner();render();$('inspector').replaceChildren(el('p','Choose an assertion or protein to inspect its evidence.','muted'));}
+  $('controls').open=false;graph=g;nodeIndex=new Map(g.nodes.map(n=>[n.id,n]));contextPage=0;tablePage=0;$('results').classList.remove('hidden');const demo=g.data_kind==='synthetic_demo';$('dataBanner').className='notice'+(demo?' warn':'');$('dataBanner').textContent=demo?'SYNTHETIC DEMO - not retrieved Pharos data and not a scientific result.':(g.civic?'PHAROS + SCOPED CIViC — source annotations, not validated predictions. Diseases remain source-specific; local review is separate from CIViC editorial status.':'PHAROS EXTRACT - database-reported associations, not validated predictions. Cached source retrieval times are retained in the run manifest.');$('diseaseTitle').textContent=g.disease.name;$('runSubtitle').textContent=(g.disease.mondoID||'No disease ontology ID')+' | Snapshot '+g.snapshot_created_at+' | Database version '+(g.db_version||'not supplied');$('stats').replaceChildren();for(const [key,label] of [['proteins','Proteins'],['evidence_edges','Evidence groups'],['needs_review','Edges needing review'],['quarantined_records','Quarantined records']]){const c=el('div',undefined,'stat');c.append(el('div',g.summary[key],'number'),el('div',label,'label'));$('stats').append(c);}$('warnings').replaceChildren();for(const w of g.warnings||[])$('warnings').append(el('p',w,'small'));$('warnings').append(el('p',g.interpretation,'small'));$('technical').textContent=JSON.stringify({data_kind:g.data_kind,retrieval:g.retrieval,summary:g.summary,snapshot_sha256:g.snapshot_sha256},null,2);if(runId){$('downloadZip').href='/api/download/'+encodeURIComponent(runId);$('downloadZip').classList.remove('hidden');}$('tdlFilter').value='all';$('scopeQuestion').textContent=g.question_scope?.question||'Which proteins does Pharos associate with this selected disease?';setupAssertionFilters();setupContext();setupQuestion();setupCivic();setupPlanner();setupRefresh();render();updateWorkNavigation();$('inspector').replaceChildren(el('p','Choose an assertion or protein to inspect its evidence.','muted'));}
 function setupAssertionFilters(){
   const previousFamily=$('assertionFamily').value,previousProtein=$('assertionProtein').value;
   $('assertionFamily').replaceChildren(el('option','All relationships'));$('assertionFamily').options[0].value='all';
@@ -192,7 +216,6 @@ function inspectAssertion(id){
   const context=Object.entries(a.qualifiers).filter(([,value])=>value!==null);$('inspector').append(el('p','Context: '+(context.map(([k,v])=>k+' = '+v).join('; ')||'Not supplied; do not infer disease, variant or therapy context.'),'small'));
   const ids=new Set(a.evidence_edge_ids);graph.edges.filter(e=>ids.has(e.id)).forEach(e=>$('inspector').append(evidenceCard(e)));
   const reviewHistory=el('details');reviewHistory.append(el('summary','Review history ('+a.review_history.length+')'),el('pre',JSON.stringify(a.review_history,null,2)));$('inspector').append(reviewHistory);
-  appendQualityFindings(a,$('inspector'));
   if(!runId){$('inspector').append(el('p','This saved report is read-only. Record reviews in the running app or with the review command.','small'));return;}
   const form=el('form'),reviewer=el('input'),reason=el('textarea'),state=el('select'),button=el('button','Save review in a new run');
   reviewer.id='reviewActor';reason.id='reviewReason';state.id='reviewState';reviewer.type='text';reviewer.required=true;reviewer.maxLength=200;reason.required=true;reason.maxLength=4000;reason.rows=3;reason.style.width='100%';
@@ -250,7 +273,7 @@ for(const id of ['contextFamily','contextTarget'])$(id).addEventListener('change
 $('contextPrev').onclick=()=>{contextPage--;renderContext();};$('contextNext').onclick=()=>{contextPage++;renderContext();};
 const embedded=JSON.parse($('embeddedData').textContent);if(embedded){$('controls').classList.add('hidden');showGraph(embedded);}else{
   const savedRun=new URLSearchParams(location.search).get('run');
-  if(savedRun)(async()=>{busy(true);try{const response=await fetch('/api/run/'+encodeURIComponent(savedRun));const result=await response.json();if(!response.ok)throw new Error(result.error||'Could not reopen run');runId=result.run_id;showGraph(result.graph);const savedQuestion=new URLSearchParams(location.search).get('question');if(savedQuestion)await reopenQuestion(savedQuestion);status('Saved run reopened with its review history.');}catch(error){status(error.message,true);}finally{busy(false);}})();
+  if(savedRun)(async()=>{busy(true);try{const response=await fetch('/api/run/'+encodeURIComponent(savedRun));const result=await response.json();if(!response.ok)throw new Error(result.error||'Could not reopen run');runId=result.run_id;showGraph(result.graph);const savedQuestion=new URLSearchParams(location.search).get('question');if(savedQuestion){await reopenQuestion(savedQuestion);navigateWork('answer');}status('Saved run reopened with its review history.');}catch(error){status(error.message,true);}finally{busy(false);}})();
 }
 </script>
 </body></html>

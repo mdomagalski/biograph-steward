@@ -1,75 +1,55 @@
-# Start here: one shared prototype, not separate workstreams
+# Start here
 
-## What we have
+BioGraph Steward lets the team inspect scoped biomedical evidence and follow each answer back to its source. The workbench is usable now; the matched graph-prediction comparison is being prepared separately.
 
-A local browser application for this first question:
+## Start locally
 
-> Which proteins does Pharos associate with a selected disease, what target-development levels does it report, and which pathways annotate those proteins?
+From the repository directory:
 
-This is the first inspection step for **BioGraph Steward / CRC Target Scout**. Guided tools run without a model. An optional bounded question-planning agent can select a supported read-only query; the application still produces the cited answer. The controlled target-prediction experiment remains pending.
-
-## Open it
-
-Unzip the project. In a terminal, change into the `biograph-steward-pharos` folder and run:
-
-```bash
+```sh
 python3 app.py
 ```
 
-Requires Python 3.10 or newer. There is nothing to install with pip. On Windows, `py app.py` may be the appropriate command instead.
+Use Python 3.10 or newer. No pip installation is needed for the core app. Open `http://127.0.0.1:8765/` and keep the terminal running; Ctrl+C stops it.
 
-The browser opens at `http://127.0.0.1:8765`. Keep the terminal open. Press Ctrl+C in the terminal to stop the application.
+## Try the evidence workflow
 
-## First: understand the software together
+1. Choose **Offline demonstration**, then **Build synthetic demonstration**. This contains invented records and is for software inspection only.
+2. Select **Inspect candidates**. New assertions have no local scientific approval; the accepted view may be empty.
+3. Open a protein or assertion, then its source passport. Inspect identifiers, qualifications, raw evidence and provenance.
+4. Ask a supported question in **Ask a scoped question**. Follow **Question → Graph → Answer → Sources** and open a citation.
+5. On the synthetic example, record a review with a reviewer and reason to test the workflow. It creates a new run and preserves the earlier version.
+6. Download the graph or question ZIP. New answer exports include the source context and review state.
 
-Select **Offline demonstration**, then **Build synthetic demonstration**.
+If real runs already exist, **Open a saved real example** or **Saved graphs and answers** opens them directly. A fresh checkout does not include live source snapshots.
 
-The demo is deliberately synthetic. It contains no downloaded Pharos records and must never be shown as scientific evidence or challenge performance. It lets everyone explore the software before troubleshooting API access.
+## Retrieve actual Pharos evidence
 
-1. Click **Inspect candidates**. New assertions are unreviewed, so the accepted view starts empty. Click an assertion or a protein.
-2. Open its raw evidence and provenance.
-3. Filter to Tbio or Tdark. These are the source's development-level labels, not scores calculated by this application.
-4. Open **Needs review** and **Quarantine**. Notice missing source information, a differing disease label, a duplicate record, and a missing protein identifier.
-5. Open an assertion passport, choose a decision and enter a reviewer and reason. In the synthetic demo this tests the workflow only. Saving creates a new run and updates its URL; reloading that URL preserves the review.
-6. Download the run ZIP. It includes assertions, review events, tables, the original snapshot and validation results.
+Choose **Live Pharos API**, search for `colorectal`, and select the exact returned disease. Related disease names are not automatically equivalent.
 
-A prebuilt version is in `examples/synthetic_demo/report.html`; open it without starting Python to inspect the synthetic output only.
+For the existing CRC demonstration, select **colorectal adenocarcinoma**, **Fuller scoped context**, and a cap of **100 targets**. Use `colon rectum` as tissue words only for this explicit expression scope. After retrieval, inspect **Retrieval coverage** for caps, omitted families and errors. A failed request stops with an error; it never becomes synthetic evidence.
 
-## Second: replace the synthetic input with live Pharos
+A smaller **Quick pathway preview** with 25 targets is useful for checking connectivity. The CLI diagnostics are:
 
-Select **Live Pharos API**. Search for `colorectal`. Choose the exact disease returned by Pharos; do not assume colorectal cancer, colorectal carcinoma and a subtype are interchangeable.
-
-For the scoped CRC example, choose **colorectal adenocarcinoma**, keep **Fuller scoped context** and **100 targets**, and enter `colon rectum` under **Tissue words**. Click **Build Pharos inspection graph**. The build may take several minutes. Inspect **Retrieval coverage** and filter **Inspect retrieved context** by family and protein. Leave tissue words empty to skip expression for other diseases until an appropriate tissue scope is chosen.
-
-Choose **Quick pathway preview**, **25 targets** and **5 pathways per target** for a smaller connectivity check.
-
-A successful live run is explicitly labeled `live_pharos`. It saves responses and their retrieval times. If the API fails, the program stops with the error; it never substitutes demonstration data.
-
-**Live verification update, October 14, 2026:** the Pharos connectivity/schema check passed and a paginated retrieval returned all 99 reported colorectal adenocarcinoma proteins. The fuller verified local report is `runs/crc_scoped_verified_20261014/report.html`; see [its coverage and limits](docs/SCOPED_RETRIEVAL.md). Availability can change; the commands below check your current connection.
-
-For diagnosis:
-
-```bash
+```sh
 python3 app.py doctor
 python3 app.py search colorectal
 ```
 
-## Ask a guided evidence question
+[Scoped retrieval](docs/SCOPED_RETRIEVAL.md) describes the data boundaries. [CIViC evidence](docs/CIVIC_EVIDENCE.md) describes the supported molecular-profile/therapy query and bounded retrieval. Inspect complete profiles and therapy sets; a multi-drug annotation does not establish a single-drug effect.
 
-After building or reopening a run, use **Ask a scoped question**. Choose a protein, connection type and evidence view; inspect the disease scope and limits, then choose **Find evidence paths**. An empty accepted view offers candidate exploration when inspectable paths exist. Expand a result to show its compact graph, then select a summary reference to inspect the evidence or record a review. Question results save separately and their URLs reopen the source and answer together. Download the question ZIP for the cited summary, paths and source evidence. See [the guided question contract](docs/GUIDED_QUESTIONS.md).
+## Review, reopen and compare
 
-## What to show at the next meeting
+Source editorial status and our local review state are separate. A model output is not a human review. Empty accepted-only answers can be correct when no local assertions have been accepted; candidate exploration remains explicit.
 
-Open the first successful live report and ask together:
+Saved URLs reopen the graph and question. **Comparison history** provides read-only access to saved snapshot comparisons. File integrity and compatibility with the current implementation are checked separately; an older comparison may require its original source version for replay. See [snapshot comparison](docs/SNAPSHOT_REFRESH.md).
 
-- Is this the intended disease, and is our target cap obvious?
-- Which source records explain one selected protein-disease connection?
-- Which records need scientific review before becoming benchmark labels?
+## Optional planner and hosting
 
-The app now includes a collapsed **Evaluation — benchmark readiness** section and exports a pair-level review worksheet. The [live coverage audit](docs/PHAROS_COVERAGE_AUDIT.md) found substantial Pharos data missing from our extract and overlap with proposed external sources. Scoped Pharos retrieval is now implemented. The new context now links to qualified candidate assertions. Filter by **Assertion family** and **Assertion protein**, or open a source record and choose **Review normalized assertion**. Interaction passports preserve both endpoint views; expression passports preserve tissue/cell labels, assay and absent/zero measurements. See [the normalization contract](docs/CONTEXT_NORMALIZATION.md). The guided question workflow is now implemented. The [CIViC variant–therapy workflow](docs/CIVIC_EVIDENCE.md) is now implemented: select its research-question option on a KRAS-containing live cohort, retrieve the bounded source, and inspect candidate or locally accepted evidence. The frozen cohort, measured-data policy and source-change comparison are next. The benchmark evaluates this evidence workbench. See [the build plan](docs/BUILD_PLAN.md) for the revised sequence and source decisions.
+The **Plan a research question with one model agent** panel requires a configured model. It selects one supported read-only query or abstains; application code executes the query and renders the cited answer. It does not retrieve new sources or decide scientific truth. See [planner configuration](docs/PLANNER_PROTOCOL.md).
 
-## Evaluation and first planning agent
+For Docker/Brev and token-protected access, use [portability](docs/PORTABILITY.md). The local demonstration and current input audits need no GPU or AWS account.
 
-The [evaluation guide](docs/EVALUATION.md) walks through freezing the Pharos/enriched sources, running 24 draft pilot questions and reviewing the three TSV worksheets. Start with one G13D/cetuximab candidate case, its accepted-only counterpart and one unsupported question. Leave scientific support blank until the underlying evidence has been checked.
+## Where development stands
 
-The app also has a collapsed **Plan a research question with one model agent** panel. It becomes available after a model endpoint, model name and required credentials are configured locally and the server restarted. An unavailable model is explicit; no replay or heuristic output is substituted. The planner chooses one existing query or abstains, while the application executes the source-grounded tools.
+The active research task is the [INMC input-readiness investigation](docs/evaluations/INMC_INPUT_READINESS_20261022.md), followed by a frozen Pharos-versus-enriched graph comparison if the assay and source-overlap gates pass. Earlier experiments and their outcomes are in the [archive ledger](docs/EXPERIMENT_HISTORY.md), not the active product menus. The [build plan](docs/BUILD_PLAN.md) lists remaining work and challenge limitations.

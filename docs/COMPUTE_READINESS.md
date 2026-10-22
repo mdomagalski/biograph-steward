@@ -1,6 +1,6 @@
 # Compute readiness and the AWS boundary
 
-The Brev setup is complete for the current single-workspace development workflow. That is narrower than production readiness or completion of the challenge evaluation.
+The recorded Brev checks established a working single-workspace development setup. Recheck the actual running service after an instance restart. This is narrower than production readiness or completion of the challenge evaluation.
 
 | Capability | Status and limit |
 |---|---|
@@ -8,7 +8,7 @@ The Brev setup is complete for the current single-workspace development workflow
 | App access | Token sign-in, protected APIs, approved browser origins and loopback SSH forwarding tested through HTTP. Automated in-app visual inspection remains unverified. |
 | Persistence | Named volumes, saved-source/answer hashes and real app restart/reopen checks passed. VM deletion still requires an external backup policy. |
 | Real public data | Frozen Pharos/CIViC snapshots copied, validated and opened in Brev; this does not establish a new live API retrieval on Brev. |
-| Planning evaluation | Development runs and a [first prospective comparison](evaluations/PLANNING_CHALLENGE_LIVE_20261020.md) recorded. V3 matched 24/24 reused development plans but 22/32 new AI-reviewed scope plans, including seven incorrectly scoped queries. Independent/biomedical performance remains unknown. |
+| Planning evaluation | Development runs and a [first prospective comparison](EXPERIMENT_HISTORY.md#reopening-an-archived-file "Archive file: docs/evaluations/PLANNING_CHALLENGE_LIVE_20261020.md") recorded. V3 matched 24/24 reused development plans but 22/32 new AI-reviewed scope plans, including seven incorrectly scoped queries. Independent/biomedical performance remains unknown. |
 | NeMo/NIM | Optional NeMo wrapper tested with the real Toolkit CLI against a local mock. The Brev serving stack is vLLM, not NIM, and no broader challenge-agent discovery has been deployed. |
 | Scientific accuracy | Source review, held-out biological evaluation and the challenge's controlled baseline/enrichment prediction experiment remain separate work. |
 | Production operations | Individual user authorization, managed monitoring, external backups and restore policy remain unimplemented. |
@@ -22,4 +22,4 @@ This is an architectural recommendation, not a completed integration. S3 is AWS'
 
 An account will also be needed if we later choose an AWS-hosted model service or Neptune graph storage. Neither is necessary to resolve the observed planning failures, and neither should be represented as implemented by the generic HTTP transport. Native Bedrock authentication/Converse, S3 adapters and Neptune ingestion/query support are still absent.
 
-The supplied challenge brief mentions AWS credits in its competition tracks and provides Neptune resources. That is not evidence that credits are already active in this project account. The existing Brev budget is not treated as an AWS budget. No key creation or account provisioning is needed for the current experiment.
+The supplied challenge brief mentions AWS credits in its competition tracks and provides Neptune resources. That is not evidence that credits are already active in this project account. The existing Brev budget is not treated as an AWS budget. No key creation or account provisioning is needed for the current local INMC preparation.

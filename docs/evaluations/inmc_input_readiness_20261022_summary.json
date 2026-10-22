@@ -1,0 +1,419 @@
+{
+  "AWS_used": false,
+  "Brev_used": false,
+  "audit_date": "2026-10-22",
+  "audit_validation": {
+    "existing_identifier_tests_passed": 9,
+    "new_input_contract_tests_passed": 7,
+    "scientific_performance_measured": false
+  },
+  "author_artifacts": {
+    "assay_codebook_identified": false,
+    "fig5": {
+      "columns": [
+        "Positive",
+        "Negative",
+        "Unsign",
+        "Method"
+      ],
+      "role": "aggregate_method_counts",
+      "rows_including_header": 8
+    },
+    "fig6": {
+      "columns": [
+        "source",
+        "target"
+      ],
+      "pair_records_inspected": false,
+      "role": "author_exported_positive_pairs",
+      "rows_including_header": 1178
+    },
+    "label_contract_pending": [
+      "partial_negative_assays",
+      "Not scored",
+      "cross_assay_interference_and_failures"
+    ],
+    "negative_pair_table_identified": false,
+    "receipts": [
+      {
+        "bytes": 154665,
+        "file": "41467_2023_37079_MOESM4_ESM.xlsx",
+        "inspection": "published methods; workbook structure and headers only, no individual pair records",
+        "sha256": "ddd4428ceb28f224802217509a740f86c824631623c9f805bf212904987d2b21",
+        "source": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10033937/supplementaryFiles"
+      },
+      {
+        "bytes": 2685841,
+        "file": "41467_2023_37079_MOESM1_ESM.pdf",
+        "inspection": "published methods; workbook structure and headers only, no individual pair records",
+        "sha256": "f515a5100bc0932fd224bfc1960d51f27deebeb2c6cc4129fb1cca026ae6ef93",
+        "source": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10033937/supplementaryFiles"
+      }
+    ],
+    "source_data_sheets": 13
+  },
+  "cleanup": {
+    "historical_model_calls": false,
+    "historical_packet_source_hashes_verified": [
+      4,
+      5
+    ],
+    "runtime_sources_changed": false,
+    "scope": "shared_invented_test_fixtures_and_script_inventory",
+    "targeted_tests_passed": 12
+  },
+  "graph_assertions_created": 0,
+  "identifier_history": {
+    "mapping_changes_applied": false,
+    "receipts": [
+      {
+        "id": "ENSG00000184258",
+        "retrieval_note": "reused response saved by initial attempt",
+        "sha256": "e384e7d73c82dccc233a06c83326c70ed5c4743f334d349a9e7d8e067990e286",
+        "status": "ok",
+        "url": "https://rest.ensembl.org/archive/id/ENSG00000184258?content-type=application/json"
+      },
+      {
+        "id": "ENSG00000213204",
+        "retrieved_at": "2026-10-22T22:11:30.296092+00:00",
+        "sha256": "e7cb8b8c2ce2b95c2b17b53875727caf162341110598cb610d5b7e47541c7082",
+        "status": "ok",
+        "url": "https://rest.ensembl.org/archive/id/ENSG00000213204?content-type=application/json"
+      },
+      {
+        "id": "ENSG00000264058",
+        "retrieved_at": "2026-10-22T22:11:51.697328+00:00",
+        "sha256": "827d9fb111c8b101199829d0c19d11705077b9700a6d92172af8643b013dc9c4",
+        "status": "ok",
+        "url": "https://rest.ensembl.org/archive/id/ENSG00000264058?content-type=application/json"
+      },
+      {
+        "id": "ENSG00000268500",
+        "retrieved_at": "2026-10-22T22:11:55.816720+00:00",
+        "sha256": "301cffb0addbf060321e869f158ef489b9b506d1b3851c10dd486d2548534011",
+        "status": "ok",
+        "url": "https://rest.ensembl.org/archive/id/ENSG00000268500?content-type=application/json"
+      }
+    ],
+    "responses": {
+      "ENSG00000184258": {
+        "assembly": "GRCh38",
+        "id": "ENSG00000184258",
+        "is_current": "",
+        "latest": "ENSG00000184258.7",
+        "peptide": null,
+        "possible_replacement": [],
+        "release": "99",
+        "type": "Gene",
+        "version": 7
+      },
+      "ENSG00000213204": {
+        "assembly": "GRCh38",
+        "id": "ENSG00000213204",
+        "is_current": "1",
+        "latest": "ENSG00000213204.8",
+        "peptide": null,
+        "possible_replacement": [],
+        "release": "116",
+        "type": "Gene",
+        "version": 8
+      },
+      "ENSG00000264058": {
+        "assembly": "GRCh38",
+        "id": "ENSG00000264058",
+        "is_current": "1",
+        "latest": "ENSG00000264058.2",
+        "peptide": null,
+        "possible_replacement": [],
+        "release": "116",
+        "type": "Gene",
+        "version": 2
+      },
+      "ENSG00000268500": {
+        "assembly": "GRCh38",
+        "id": "ENSG00000268500",
+        "is_current": "1",
+        "latest": "ENSG00000268500.10",
+        "peptide": null,
+        "possible_replacement": [],
+        "release": "116",
+        "type": "Gene",
+        "version": 10
+      }
+    },
+    "xref_receipts": [
+      {
+        "error": "HTTP Error 503: Service Unavailable",
+        "id": "ENSG00000213204",
+        "retrieved_at": "2026-10-22T22:14:00.495319+00:00",
+        "status": "failed",
+        "url": "https://rest.ensembl.org/xrefs/id/ENSG00000213204?external_db=HGNC;object_type=gene;content-type=application/json"
+      },
+      {
+        "id": "ENSG00000264058",
+        "retrieved_at": "2026-10-22T22:14:00.495730+00:00",
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "status": "ok",
+        "url": "https://rest.ensembl.org/xrefs/id/ENSG00000264058?external_db=HGNC;object_type=gene;content-type=application/json"
+      },
+      {
+        "id": "ENSG00000268500",
+        "retrieved_at": "2026-10-22T22:14:00.495819+00:00",
+        "sha256": "4c7fac24457facb638450bde8ea8632302887b7dc9fa0f3fef5f3da760150ec7",
+        "status": "ok",
+        "url": "https://rest.ensembl.org/xrefs/id/ENSG00000268500?external_db=HGNC;object_type=gene;content-type=application/json"
+      }
+    ],
+    "xref_responses": {
+      "ENSG00000213204": [],
+      "ENSG00000264058": [],
+      "ENSG00000268500": [
+        {
+          "db_display_name": "HGNC Symbol",
+          "dbname": "HGNC",
+          "description": "sialic acid binding Ig like lectin 5",
+          "display_id": "SIGLEC5",
+          "info_text": "Generated via refseq_manual",
+          "info_type": "DEPENDENT",
+          "primary_id": "HGNC:10874",
+          "synonyms": [
+            "CD170",
+            "CD33L2",
+            "OB-BP2",
+            "SIGLEC-5"
+          ],
+          "version": "0"
+        }
+      ]
+    },
+    "xref_retry_receipt": {
+      "id": "ENSG00000213204",
+      "retrieved_at": "2026-10-22T22:15:30.083935+00:00",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "ok",
+      "url": "https://rest.ensembl.org/xrefs/id/ENSG00000213204?external_db=HGNC;object_type=gene;content-type=application/json"
+    }
+  },
+  "input_audit": {
+    "archive_sha256": "2200fce435e0705470dda73f1dc870e6b6a7b9bee621c8697099dfd38b49ae62",
+    "counts": {
+      "gene_mapping_status": {
+        "unique": 1801,
+        "unresolved": 4
+      },
+      "off_diagonal_pairs_both_exact_unique_gene_mapping": 2771,
+      "off_diagonal_pairs_both_single_unshared_reviewed_product": 2753,
+      "panel_duplicate_or_reverse_rows": 0,
+      "panel_genes": 1805,
+      "panel_genes_in_training": 1805,
+      "panel_off_diagonal_pairs": 2781,
+      "panel_pairs_in_training": 0,
+      "panel_rows": 3276,
+      "panel_self_pairs": 495,
+      "panel_unique_unordered_pairs": 3276,
+      "product_mapping_status": {
+        "multiple": 4,
+        "none": 24,
+        "unique": 1777
+      },
+      "training_genes": 8272,
+      "training_rows": 52548,
+      "training_unique_unordered_pairs": 52548
+    },
+    "created_at": "2026-10-22T22:14:58.309466+00:00",
+    "exposure": {
+      "binary_labels_derived": false,
+      "final_cohort_selected": false,
+      "individual_outcomes_displayed": false,
+      "outcome_codes_processed_for_vocabulary": true,
+      "predictions_generated": false
+    },
+    "format": "biograph-steward.inmc-input-audit.v1",
+    "limitations": [
+      "Gene-level source identifiers do not specify assay isoforms.",
+      "Coverage counts are feasibility diagnostics, not eligibility or performance.",
+      "Assay semantics and Pharos source overlap require separate investigation."
+    ],
+    "registry_sha256": "1b801ad86c6f57d38e4112b55488ba8b7d82ef93e4aee638b9d816bcf1a3e988",
+    "registry_sources": [
+      {
+        "bytes": 16982321,
+        "file": "hgnc_complete_set.txt",
+        "final_url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+        "headers": {
+          "Content-Length": "16982321",
+          "Content-Type": "text/plain;charset=utf-8",
+          "ETag": "\"cfb3e2337755e56baa4fa648a96765b2\"",
+          "Last-Modified": "Fri, 16 Oct 2026 13:36:15 GMT"
+        },
+        "retrieved_at": "2026-10-20T13:42:17Z",
+        "sha256": "12363916be36f8f6f91879b0faade4eeaac973722de7136ec61329b77f2c2f91",
+        "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt"
+      },
+      {
+        "bytes": 3282787,
+        "file": "uniprot_reviewed_human_symbols.tsv",
+        "final_url": "https://rest.uniprot.org/uniprotkb/stream?query=%28organism_id%3A9606%29+AND+%28reviewed%3Atrue%29&format=tsv&fields=accession%2Cid%2Cgene_primary%2Cgene_synonym%2Cxref_hgnc%2Cxref_geneid%2Corganism_id%2Cprotein_name",
+        "headers": {
+          "Content-Type": "text/plain;format=tsv",
+          "X-UniProt-Release": "2026_03",
+          "X-UniProt-Release-Date": "02-September-2026"
+        },
+        "retrieved_at": "2026-10-20T13:44:18Z",
+        "sha256": "80d55d7f33b1cfe253e30900ea346053aeac8d7fd7d16f75235e132884304505",
+        "url": "https://rest.uniprot.org/uniprotkb/stream?query=%28organism_id%3A9606%29+AND+%28reviewed%3Atrue%29&format=tsv&fields=accession%2Cid%2Cgene_primary%2Cgene_synonym%2Cxref_hgnc%2Cxref_geneid%2Corganism_id%2Cprotein_name"
+      }
+    ],
+    "schema": {
+      "actual_format": "tsv_despite_xls_suffix",
+      "vocabularies": {
+        "freq": [
+          "1",
+          "2",
+          "NULL"
+        ],
+        "score_assay1": [
+          "Auto-activator",
+          "Negative",
+          "Not scored",
+          "Not tested",
+          "Positive"
+        ],
+        "score_assay2": [
+          "Auto-activator",
+          "Negative",
+          "Not scored",
+          "Not tested",
+          "Positive"
+        ],
+        "score_assay3": [
+          "Auto-activator",
+          "Negative",
+          "Not scored",
+          "Not tested",
+          "Positive"
+        ]
+      }
+    },
+    "script_sha256": "d16fea3e76c81152f6b6590ca5e5f1596bbbdddd67bf336a7f1762c18dfd92a4",
+    "source_member_sha256": {
+      "PPI-Prediction/Experimental validation/PPI_prediction_validation_result_20210624.xls": "062a8762ba05ba330a49386394e638926f6dc960cdc54bd1792a031cbeff18ca",
+      "PPI-Prediction/Interactomes/HuRI.csv": "c312a9ae5f24479944775287624604db6e449a435011874d201224263f3fdc4c"
+    }
+  },
+  "new_model_runs": 0,
+  "outcome_exposure_note": "Assay code strings processed only for schema vocabulary; no per-pair outcome displayed or binary label derived. Published aggregate outcomes previously read. IDs and source context processed for mapping and overlap.",
+  "pharos_overlap_audit": {
+    "limitations": [
+      "No evidence of source independence: absence of direct pair overlap does not establish absence of indirect, publication or feature leakage.",
+      "Pair projection is only on uniquely resolved reviewed human products; no symbol or isoform guessing.",
+      "Raw response views include out-of-panel partners excluded from the retained graph and are not equivalent to uniform full-panel retrieval.",
+      "The 2026 registry and Pharos snapshot postdate INMC panel publication and do not support prospective accuracy claims.",
+      "No INMC assay label or frequency value was decoded, inspected, summarized or evaluated."
+    ],
+    "panel": {
+      "archive_sha256": "2200fce435e0705470dda73f1dc870e6b6a7b9bee621c8697099dfd38b49ae62",
+      "entities": 1805,
+      "member": "PPI-Prediction/Experimental validation/PPI_prediction_validation_result_20210624.xls",
+      "member_sha256": "062a8762ba05ba330a49386394e638926f6dc960cdc54bd1792a031cbeff18ca",
+      "off_diagonal_pairs": 2781,
+      "rows": 3276,
+      "self_pairs": 495,
+      "unique_unordered_pairs": 3276
+    },
+    "panel_read_boundary": "Only raw bytes before the second tab are ASCII-decoded per data row; the remaining freq/assay columns remain opaque bytes.",
+    "pharos": {
+      "db_version_after": "pharos319",
+      "db_version_before": "pharos319",
+      "file_sha256": "4f386fcfdea775631b7bbf8cd176996923cfeebb4061b59c6dd4dd988651a94a",
+      "panel_genes_covered_by_seed_targets": 43,
+      "panel_off_diagonal_pairs_with_both_strict_products_as_seeds": 3,
+      "path": "runs/crc_fresh_comparison_20261020/retrieval_serial/snapshot.json",
+      "raw_ppi_response_views": {
+        "off_diagonal_panel_pair_overlap": 2,
+        "overlap_pair_source_bundles": {
+          "BioPlex,STRINGDB": 1,
+          "Reactome,STRINGDB": 1
+        },
+        "panel_genes_with_any_endpoint": 1337,
+        "panel_pair_overlap": 2,
+        "property_presence_counts": {
+          "Data Source": 81787,
+          "Novelty": 81687,
+          "Score": 79331,
+          "fam": 32935,
+          "p_int": 5721,
+          "p_ni": 5661,
+          "p_wrong": 2490,
+          "tdl": 81787
+        },
+        "protein_entities": 14479,
+        "source_bundle_view_counts": {
+          "BioPlex": 2371,
+          "BioPlex,Reactome,STRINGDB": 129,
+          "BioPlex,STRINGDB": 3221,
+          "Reactome": 85,
+          "Reactome,STRINGDB": 1483,
+          "STRINGDB": 74498
+        },
+        "strict_single_product_panel_pair_overlap": 2,
+        "unique_protein_pairs": 79812,
+        "unique_unambiguous_gene_pairs": 78220,
+        "view_count": 81787
+      },
+      "retained_ppi": {
+        "off_diagonal_panel_pair_overlap": 0,
+        "overlap_pair_source_bundles": {},
+        "panel_genes_with_any_endpoint": 39,
+        "panel_pair_overlap": 0,
+        "property_presence_counts": {
+          "Data Source": 3950,
+          "Novelty": 3950,
+          "Score": 3880,
+          "fam": 1502,
+          "p_int": 224,
+          "p_ni": 224,
+          "p_wrong": 90,
+          "tdl": 3950
+        },
+        "protein_entities": 484,
+        "source_bundle_view_counts": {
+          "BioPlex": 68,
+          "BioPlex,Reactome,STRINGDB": 16,
+          "BioPlex,STRINGDB": 140,
+          "Reactome": 2,
+          "Reactome,STRINGDB": 70,
+          "STRINGDB": 3654
+        },
+        "strict_single_product_panel_pair_overlap": 0,
+        "unique_protein_pairs": 1975,
+        "unique_unambiguous_gene_pairs": 1975,
+        "view_count": 3950
+      },
+      "snapshot_sha256": "dae2e60819473882b09b67256826de24a451f5f3b0a24b28815b7018beb3eec4",
+      "strict_single_product_panel_genes_covered_by_seed_targets": 43,
+      "target_count": 512
+    },
+    "purpose": "IDs-only overlap feasibility; no outcome value parsed, decoded or scored. Existing CRC-scoped snapshot is incomplete for INMC and is not a prospective source snapshot.",
+    "registry": {
+      "confirmed_unshared_reviewed_product_count_histogram": {
+        "0": 20,
+        "1": 1777,
+        "2": 4
+      },
+      "exact_approved_hgnc_ensembl_mapped_entities": 1801,
+      "path": "runs/crc_adjudication_mapping_20261020/registry",
+      "registry_sha256": "1b801ad86c6f57d38e4112b55488ba8b7d82ef93e4aee638b9d816bcf1a3e988",
+      "strict_single_product_entities": 1777,
+      "unresolved_or_ambiguous_entities": 4
+    }
+  },
+  "remaining_gates": [
+    "assay_partial_failure_interpretation",
+    "unresolved_gene_to_context_mappings",
+    "consistent_full_panel_pharos_retrieval",
+    "pair_source_and_derived_feature_embargo",
+    "final_fixed_comparison_protocol"
+  ],
+  "status": "identifier_and_source_audit_complete_label_contract_pending"
+}

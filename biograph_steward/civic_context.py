@@ -12,6 +12,64 @@ CONTEXT_NOTE = ('Study design, population, co-treatments and assay details are n
                 'paper verification is not recorded by this display.')
 
 
+def answer_display_coverage(answer):
+    """Disclose existing question filters/caps without changing evidence selection.
+
+    Deriving this from the saved result also supports answers created before the
+    disclosure field was introduced; their stored bytes and hashes stay intact.
+    """
+    if answer.get('template') != 'civic_variant_therapy.v1':
+        return None
+    results = answer.get('results', [])
+    accepted = answer.get('plan', {}).get('view') == 'accepted'
+    availability = answer.get('availability', {})
+    profiles = [{'profile_id': r['profile']['id'], 'profile_name': r['profile']['name'],
+                 'shown': len(r['paths']), 'eligible': r['eligible_path_count'],
+                 'omitted': r['omitted_paths']} for r in results]
+    shown = sum(r['shown'] for r in profiles)
+    eligible = availability.get('accepted_assertions' if accepted else 'inspectable_assertions')
+    matching = answer.get('matching_profiles', len(results) + answer.get('omitted_profiles', 0))
+    omitted_profiles = answer.get('omitted_profiles', matching - len(results))
+    view_label = 'locally accepted view' if accepted else 'candidate/accepted view'
+    count_text = f'{shown} of {eligible}' if eligible is not None else str(shown)
+    notices = [f'Display coverage: {count_text} eligible response assertions shown across '
+               f'{len(results)} of {matching} matching molecular profiles in the {view_label}.',
+               f'{omitted_profiles} matching molecular profiles omitted by the profile display limit.']
+    for r in profiles:
+        notices.append(f"{r['profile_name']} ({r['profile_id']}): {r['shown']} of {r['eligible']} eligible response assertions shown; "
+                       f"{r['omitted']} omitted by the per-profile display limit.")
+    discordant = len(answer.get('discordant_annotations', []))
+    if discordant:
+        notices.append(f'Differing annotations: {discordant} comparable profile/therapy groups in this question\'s selected view '
+                       'have differing response annotations or directions. These are not adjudicated contradictions; '
+                       'relevant assertions may be outside the display limits.')
+    if accepted and not shown:
+        inspectable = availability.get('inspectable_assertions')
+        count_note = (f'{inspectable} structurally inspectable candidate/accepted assertions match this question before the local-review filter. '
+                      if inspectable is not None else '')
+        notices.append('No locally accepted response assertions are shown. ' + count_note +
+                       'An empty accepted view does not establish absence of candidate evidence or biological absence.')
+    notices.append('Coverage counts describe the retrieved source and selected question view; they do not establish complete CIViC or literature coverage.')
+    return {'policy': 'civic-answer-display-coverage.v1', 'view': answer.get('plan', {}).get('view'),
+            'shown_profiles': len(results), 'matching_profiles': matching, 'omitted_profiles': omitted_profiles,
+            'shown_assertions': shown, 'eligible_assertions': eligible,
+            'omitted_assertions': eligible - shown if eligible is not None else None,
+            'profiles': profiles, 'discordant_groups': discordant, 'notices': notices}
+
+
+def display_coverage_text(answer):
+    coverage = answer.get('display_coverage') or answer_display_coverage(answer)
+    return '\n'.join(coverage['notices']) if coverage else ''
+
+
+def display_coverage_html(answer):
+    coverage = answer.get('display_coverage') or answer_display_coverage(answer)
+    if not coverage:
+        return ''
+    return ('<section class="display-coverage" aria-label="Evidence display coverage"><strong>Evidence display coverage</strong>'
+            + ''.join('<p>' + escape(line, quote=True) + '</p>' for line in coverage['notices']) + '</section>')
+
+
 def record_context(edge):
     r = edge['evidence_record']; source = r.get('source') or {}
     therapies = r.get('therapies') or []; interaction = r.get('therapyInteractionType')

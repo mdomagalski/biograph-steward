@@ -248,6 +248,9 @@ def verify_answer(answer):
 
 def answer_text(answer):
     lines = [answer['question'], '', answer['overview'], '']
+    from .civic_context import display_coverage_text
+    coverage = display_coverage_text(answer)
+    if coverage: lines += [coverage, '']
     if answer['data_kind'] == 'synthetic_demo':
         lines.insert(0, 'SYNTHETIC DEMONSTRATION — not scientific evidence.\n')
     for item in answer['summary']:
@@ -272,7 +275,8 @@ def answer_text(answer):
 def answer_html(answer):
     esc = lambda value: escape(str(value), quote=True)
     statements = []
-    from .civic_context import context_html, overview_html
+    from .civic_context import context_html, overview_html, display_coverage_html
+    coverage = display_coverage_html(answer)
     overview=overview_html(answer['source_context_overview']) if answer.get('source_context_overview') is not None else ''
     by_id={c['id']:c for c in answer['citations']}
     for s in answer['summary']:
@@ -281,10 +285,48 @@ def answer_html(answer):
         statements.append(f'<li>{esc(s["text"])} {refs}{contexts}</li>')
     citations = ''.join(f'<details id="{esc(c["id"])}"><summary>[{esc(c["id"])}] {esc(c["assertion_id"])} — {esc(c["review_state"])}</summary><pre>{esc(json.dumps(c,indent=2))}</pre></details>' for c in answer['citations'])
     return ('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>BioGraph Steward — guided evidence result</title><style>body{max-width:1050px;margin:40px auto;padding:20px;font:16px/1.6 system-ui;color:#172b3a}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:16px}li,details{margin:14px 0}a{color:#086b85}</style>'
-            '<h1>' + esc(answer['question']) + '</h1><p>' + esc(answer['data_kind']) + '</p><p>' + esc(answer['overview']) + '</p>'+overview+'<ul>' + ''.join(statements) + '</ul><h2>Scope and limitations</h2><ul>'
+            '<title>BioGraph Steward — guided evidence result</title><style>body{max-width:1050px;margin:40px auto;padding:20px;font:16px/1.6 system-ui;color:#172b3a}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:16px}li,details{margin:14px 0}a{color:#086b85}.display-coverage{background:#fff8e7;border:1px solid #c9a75e;padding:16px;margin:20px 0}</style>'
+            '<h1>' + esc(answer['question']) + '</h1><p>' + esc(answer['data_kind']) + '</p><p>' + esc(answer['overview']) + '</p>'+coverage+overview+'<ul>' + ''.join(statements) + '</ul><h2>Scope and limitations</h2><ul>'
             + ''.join('<li>'+esc(s)+'</li>' for s in answer['limitations']) + '</ul><h2>Evidence passports</h2>' + citations
             + '<h2>Reproducible question scope</h2><pre>' + esc(json.dumps({k: answer[k] for k in ['plan','snapshot_created_at','database_version','snapshot_sha256','graph_basis_sha256','answer_sha256','civic_snapshot_sha256','civic_created_at','discordant_annotations','overlap_summary'] if k in answer},indent=2)) + '</pre></html>')
+
+
+def evidence_context_rows(answer):
+    """Flatten saved source records with the qualifications needed outside the app.
+
+    This is an export projection, not a new answer or an extraction from prose.
+    In particular, source editorial status and local review remain separate,
+    and the complete profile and therapy set stay on each source-item row.
+    """
+    rows = []
+    for citation in answer['citations']:
+        edges = {e['id']: e for e in citation['evidence_records']}
+        for context in citation.get('study_context', {}).get('records', []):
+            edge = edges.get(context.get('edge_id'), {})
+            record = edge.get('evidence_record', {})
+            profile = record.get('molecularProfile') or {}
+            disease = record.get('disease') or {}
+            source = record.get('source') or {}
+            therapies = record.get('therapies', context.get('therapy_members', []))
+            rows.append({
+                **deepcopy(context),
+                'citation_id': citation['id'], 'assertion_id': citation['assertion_id'],
+                'assertion_revision': citation.get('revision'),
+                'local_review_state': citation['review_state'], 'source_status': record.get('status'),
+                'profile_id': citation['subject'], 'profile_name': profile.get('name'),
+                'profile_expression': profile.get('rawName'), 'profile_variants': deepcopy(profile.get('variants', [])),
+                'disease_id': citation.get('qualifiers', {}).get('disease'), 'disease_name': disease.get('name'),
+                'source_disease_id': 'CIViC.disease:' + str(disease['id']) if disease.get('id') is not None else None,
+                'therapy_set_id': citation['object'], 'therapy_members': deepcopy(therapies),
+                'therapy_ids': ['CIViC.therapy:' + str(t['id']) for t in therapies],
+                'evidence_type': record.get('evidenceType'),
+                'source_id': 'CIViC.source:' + str(source['id']) if source.get('id') is not None else None,
+                'source_type': source.get('sourceType'),
+                'retrieval_provenance': deepcopy(edge.get('retrieval_provenance', [])),
+                'source_run': answer.get('source_run'), 'answer_sha256': answer['answer_sha256'],
+                'graph_basis_sha256': answer['graph_basis_sha256'],
+            })
+    return rows
 
 
 def save_answer(answer, directory):
@@ -304,9 +346,11 @@ def save_answer(answer, directory):
         rows = [{"protein_id": r['protein']['id'], "protein_symbol": r['protein'].get('sym'), **p} for r in answer['results'] for p in r['paths']]
         columns=['protein_id','protein_symbol','id','kind','review_status','node_ids','assertion_ids','citation_ids']
     _write_tsv(directory/'paths.tsv',rows,columns)
-    contexts=[{'citation_id':c['id'],'assertion_id':c['assertion_id'],**r}
-              for c in answer['citations'] for r in c.get('study_context',{}).get('records',[])]
     if answer.get('source_context_overview') is not None:
-        _write_tsv(directory/'evidence_context.tsv',contexts,['citation_id','assertion_id','evidence_id','evidence_level',
+        _write_tsv(directory/'evidence_context.tsv',evidence_context_rows(answer),['citation_id','assertion_id','evidence_id','evidence_level',
                    'evidence_level_label','evidence_direction','significance','variant_origin','therapy_label','therapy_interaction',
-                   'therapy_scope_note','source_reference','source_title','description','record_locators','snapshot_sha256','paper_check'])
+                   'therapy_scope_note','source_reference','source_title','description','record_locators','snapshot_sha256','paper_check',
+                   'assertion_revision','local_review_state','source_status','profile_id','profile_name','profile_expression',
+                   'profile_variants','disease_id','disease_name','source_disease_id','therapy_set_id','therapy_ids','therapy_members',
+                   'evidence_type','edge_id','evidence_url','source_id','source_type','source_citation','publication_year',
+                   'publication_url','retrieval_provenance','source_run','answer_sha256','graph_basis_sha256'])

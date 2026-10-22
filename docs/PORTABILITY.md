@@ -1,6 +1,6 @@
 # Brev and model-provider portability — v0.8.0
 
-The core app remains standard-library Python 3.10+. Use Python 3.12 for the optional NeMo Agent Toolkit environment. This increment adds explicit hosting configuration, persistent run/cache paths, a shared HTTP model transport, NVIDIA NIM request support and one optional NeMo workflow. It does not provision cloud resources or include a model.
+The core app remains standard-library Python 3.10+. Use Python 3.12 for the optional NeMo Agent Toolkit environment. The retained deployment supports explicit hosting configuration, persistent run/cache paths, model transport for the bounded planner, NVIDIA NIM request formatting and one optional NeMo workflow. It does not provision cloud resources or include a model.
 
 ## Start in a Brev VM
 
@@ -25,7 +25,7 @@ Then open <http://127.0.0.1:8766/>. Keep local and remote ports identical for th
 
 `BIOGRAPH_DATA_DIR` sets defaults for `runs/` and `cache/` beneath that directory. `BIOGRAPH_RUNS_DIR` and `BIOGRAPH_CACHE_DIR` override those individually; `--runs-dir` and `--cache-dir` override the environment for commands that expose them. Commands requiring `--out` still need an explicit output path. Data paths do not automatically move old runs.
 
-The default `runs/`, cache and the example `workspace-data/` directories are excluded from Git. If choosing another data directory inside the checkout, add it to `.gitignore` before retrieving sources. A clone starts with the synthetic example and code. Retrieve new sources, prepare SciFact using [the benchmark guide](VERIFICATION_BENCHMARKS.md), or copy frozen run directories with their manifests and hashes. A directory existing on this Mac is not automatically available in Brev. Back up the VM data directory; VM deletion is not an artifact-storage policy.
+The default `runs/`, cache and the example `workspace-data/` directories are excluded from Git. If choosing another data directory inside the checkout, add it to `.gitignore` before retrieving sources. A clone starts with the synthetic example and code. Retrieve new sources or copy compatible frozen workbench runs with their manifests and hashes. Closed experiment packets belong with the separate [archive checkout](EXPERIMENT_HISTORY.md). A directory existing on this Mac is not automatically available in Brev. Back up the VM data directory; VM deletion is not an artifact-storage policy.
 
 ## Brev secure links and shared browser access
 
@@ -44,7 +44,7 @@ Replace the placeholder with the workspace's actual origin, without a path. The 
 
 The browser shows a sign-in page: enter **the configured workspace token**. A successful sign-in sets an opaque `HttpOnly`, `SameSite=Strict` session cookie for up to eight hours. HTTPS browser origins receive a `Secure` cookie; a loopback SSH tunnel uses its local HTTP origin. Sign out revokes that session, and restarting the app revokes all browser sessions. Saved run/question links survive sign-in. Native HTTP Basic prompts are avoided because some embedded browsers cannot use them.
 
-`/auth/login` also serves the sign-in form directly. Navigating to an HTML evaluation report while signed out shows the form and returns to that same report after sign-in; programmatic report/metrics/download clients still receive HTTP 401 without credentials. Return links are restricted to root question URLs and exact local HTML report paths. Responses use `Referrer-Policy: same-origin`: this preserves the browser Origin for native sign-in/sign-out forms while suppressing referrers to external sites. `no-referrer` makes native form POSTs send `Origin: null` in Chrome and conflicts with the required explicit-origin check. Null, missing and foreign origins remain rejected for browser forms.
+`/auth/login` also serves the sign-in form directly. Navigating to a supported HTML snapshot-comparison report while signed out shows the form and returns to that same report after sign-in; programmatic report/metrics/download clients still receive HTTP 401 without credentials. Return links are restricted to root question URLs and exact local HTML report paths. Responses use `Referrer-Policy: same-origin`: this preserves the browser Origin for native sign-in/sign-out forms while suppressing referrers to external sites. `no-referrer` makes native form POSTs send `Origin: null` in Chrome and conflicts with the required explicit-origin check. Null, missing and foreign origins remain rejected for browser forms.
 
 Programmatic clients may send `Authorization: Bearer <workspace-token>`; explicit Basic headers (`steward` and the workspace token) remain supported. Browser cookie writes, sign-in and sign-out also require an explicit approved `Origin`; CLI requests with explicit API credentials need no Origin. The token protects all workspace data and actions. Anonymous access is limited to service status/version at `/healthz` and the sign-in form. Keep credentials in the deployment's secret configuration, never in URLs or Git. This shared workspace token does not authenticate an individual scientific reviewer or provide per-user authorization.
 
@@ -66,6 +66,8 @@ Compose publishes port 8766 on host loopback by default and persists `/data` in 
 If replacing the named volume with a host bind mount, make that directory writable by UID/GID 10001. The application does not change ownership of existing user datasets.
 
 The Python app does not load `.env`; Compose does. For VM operation export settings in the process environment instead. Do not source the file as executable shell code. `.env.example` is a template, not a working model configuration.
+
+After removing modules or assets, build distributions from a clean checkout or clean build staging. A new wheel output directory alone does not clear setuptools' intermediate files: stale `build/` or `*.egg-info/` content can retain removed code. Before rebuilding an existing workspace, move aside or remove only generated `build/`, `dist/` and package `*.egg-info/` artifacts, then inspect the resulting wheel. Keep scientific `runs/` and source `cache/` intact. This follows the pinned upstream guidance on [stale build caches](https://github.com/pypa/setuptools/blob/v80.9.0/docs/userguide/miscellaneous.rst) and [orphaned package-data files](https://github.com/pypa/setuptools/blob/v80.9.0/docs/userguide/datafiles.rst).
 
 Run a CLI job against the same persistent volume:
 
@@ -101,57 +103,43 @@ python3 app.py deployment-smoke \
 
 Receipt mode performs only reads against the service and checks the same source, review basis and saved answer. It writes a new local report. It cannot independently attest that an operator restarted the service; CI performs a real container restart between those two commands. Receipt mode never requests another model turn.
 
-After configuring the model below, repeat the initial command with `--with-planner` and a new output directory. This explicitly requests one model plan using the demo catalogue. It checks the planned scope and compares execution with the equivalent deterministic query. Failed or timed-out model requests are not retried. `planner_http_requests` counts requests to the app; `reported_model_calls` is the app's trace metadata and remains unknown if that response is unavailable. Token usage and served model names remain provider-reported metadata. Neither a successful deployment check nor synthetic model success establishes biomedical accuracy. Use the separate training benchmark before evaluating a new model scientifically.
+After configuring the model below, repeat the initial command with `--with-planner` and a new output directory. This explicitly requests one model plan using the demo catalogue. It checks the planned scope and compares execution with the equivalent deterministic query. Failed or timed-out model requests are not retried. `planner_http_requests` counts requests to the app; `reported_model_calls` is the app's trace metadata and remains unknown if that response is unavailable. Token usage and served model names remain provider-reported metadata. Neither a successful deployment check nor synthetic model success establishes biomedical accuracy. A scientific quality claim requires a separately justified and frozen evaluation.
 
-## Configure a shared model for planner and verifier
+## Configure the optional planner
 
-For the tested local NVIDIA-model serving configuration, see [Local Nemotron on Brev](LOCAL_MODEL.md). Its Linux-only Compose overlay keeps the app and vLLM model on VM loopback and enables only the planner. The NIM setup below remains a separate option.
+The tested local NVIDIA-model setup is documented in [Local Nemotron on Brev](LOCAL_MODEL.md). The Linux overlay keeps the app and vLLM model on VM loopback. NIM is a separate supported request format, not the currently tested serving implementation.
 
-The [compute readiness guide](COMPUTE_READINESS.md) distinguishes verified development hosting from pending production/AWS work. AWS is not required for local-model evaluation; a private artifact backup/restore workflow is the suggested first AWS integration.
+All model IDs and full endpoint URLs are explicit. This describes the request configuration, not an installed service:
 
-All model IDs and full endpoint URLs are explicit. This example describes the **request protocol**, not an installed model:
-
-```bash
+```sh
 export BIOGRAPH_MODEL_PROVIDER=nim
 export BIOGRAPH_MODEL_ID='YOUR_WORKSPACE_MODEL_ID'
 export BIOGRAPH_MODEL_ENDPOINT='https://YOUR_MODEL_HOST/v1/chat/completions'
 export BIOGRAPH_MODEL_API=nim_chat
-# Supply BIOGRAPH_MODEL_API_KEY using the workspace secret configuration if needed.
+export BIOGRAPH_PLANNER_PROTOCOL=scoped_targets_v4
+# Supply BIOGRAPH_MODEL_API_KEY through the deployment's secret configuration if needed.
 python3 app.py runtime-check
 ```
 
-Do not enter the placeholders literally. A self-hosted NIM on the same VM can use `http://127.0.0.1:8000/v1/chat/completions`. Non-loopback HTTP is rejected. Inside the app container, loopback is the app container, not the host VM or another service; use an approved HTTPS model endpoint, or run the app on the VM alongside a loopback-published NIM.
+Replace the placeholders with actual endpoint values. A model served on the same VM can use `http://127.0.0.1:8000/v1/chat/completions`; non-loopback HTTP is rejected. Inside a normal container, loopback refers to that container. Use the documented Linux host-network overlay or an approved HTTPS endpoint for the intended service.
 
 | API setting | Request contract |
 |---|---|
-| `nim_chat` | Chat Completions response envelope; `guided_json`, `max_tokens`, `temperature=0`, no `store` field. |
-| `chat_completions` | `response_format` with strict `json_schema`, `max_completion_tokens`, `store=false`. |
-| `responses` | `text.format` with strict `json_schema`, `max_output_tokens`, `store=false`. |
+| `nim_chat` | Chat Completions envelope; `guided_json`, `max_tokens`, `temperature=0`, no `store` field |
+| `chat_completions` | Strict `json_schema` in `response_format`, `max_completion_tokens`, `store=false` |
+| `responses` | Strict `json_schema` in `text.format`, `max_output_tokens`, `store=false` |
 
-Choose the API supported by the exact endpoint and model. The [NIM structured-generation guide](https://docs.nvidia.com/nim/large-language-models/1.14.0/structured-generation.html) documents `guided_json`. Deployments differ; unsupported fields/schema features fail explicitly rather than causing a fallback or repair call. The current NIM/model version, hardware, context capacity and endpoint capabilities still need a live workspace check.
+Match the exact endpoint's supported schema and API. The [version-specific NIM guide](https://docs.nvidia.com/nim/large-language-models/1.14.0/structured-generation.html) documents `guided_json`; unsupported fields or schema features fail explicitly. Live NIM inference remains unverified for this project.
 
-`BIOGRAPH_PLANNER_*` and `BIOGRAPH_VERIFIER_*` override the shared settings for a single role. For example `BIOGRAPH_PLANNER_MODEL` overrides `BIOGRAPH_MODEL_ID`; `BIOGRAPH_VERIFIER_API` overrides `BIOGRAPH_MODEL_API`. Empty explicit values do not silently reuse another setting.
+Shared settings are `BIOGRAPH_MODEL_PROVIDER`, `BIOGRAPH_MODEL_ID`, `BIOGRAPH_MODEL_ENDPOINT`, `BIOGRAPH_MODEL_API`, `BIOGRAPH_MODEL_API_KEY`, `BIOGRAPH_MODEL_MAX_OUTPUT_TOKENS`, `BIOGRAPH_MODEL_TIMEOUT` and `BIOGRAPH_MODEL_PROMPT_PROFILE`. `BIOGRAPH_PLANNER_*` overrides them for the planner; for example, `BIOGRAPH_PLANNER_MODEL` overrides `BIOGRAPH_MODEL_ID`. Empty explicit values do not silently reuse another setting. The default HTTP planner budget is 1,600 output tokens and 45 seconds; the Brev overlay specifies its own timeout.
 
-`BIOGRAPH_PLANNER_PROTOCOL` selects `catalogue_v1` (the compatibility default), `entity_tools_v2` (exact mention binding/tool contracts), `tool_shapes_v3` (tool-specific output shapes and request-scope checks) or `scoped_targets_v4` (bounded clause polarity, background targets and compound-profile checks). The Brev overlay selects v4. See [the protocol and audit limits](PLANNER_PROTOCOL.md). It is independent of the serving API and model prompt profile. Set it before initializing a planner; changing it requires a separately recorded experiment.
+Providers are `api`, `nim` or an explicitly configured authenticated `codex` CLI. Model keys are distinct from the workspace access token. `OPENAI_API_KEY` is used only for `api.openai.com`; custom endpoints use their configured key. NIM can use `NVIDIA_API_KEY` when no role/shared key is set. CLI authentication and executable paths are local to the machine running the service.
 
-Shared settings are `BIOGRAPH_MODEL_PROVIDER`, `BIOGRAPH_MODEL_ID`, `BIOGRAPH_MODEL_ENDPOINT`, `BIOGRAPH_MODEL_API`, `BIOGRAPH_MODEL_API_KEY`, `BIOGRAPH_MODEL_MAX_OUTPUT_TOKENS`, `BIOGRAPH_MODEL_TIMEOUT` and `BIOGRAPH_MODEL_PROMPT_PROFILE`. Role-specific settings override them. Prompt profiles are `standard` (the default) and explicit `nemotron_nano_v1` (NVIDIA Nano v1's reasoning-off system switch with the complete task policy in the user message). Output budgets are 128–8192 tokens; timeouts are 1–300 seconds. Defaults are 1600 tokens/45 seconds for the planner and 3000 tokens/90 seconds for the HTTP verifier. These are configured budgets, not observed token usage.
+Use the `standard` prompt profile for ordinary models, or the explicit `nemotron_nano_v1` profile for the documented NVIDIA Nano v1 reasoning-off format. [Planner protocols](PLANNER_PROTOCOL.md) describe the selected query contract and compatibility defaults.
 
-Providers are `api`, `nim` or `codex`. Without shared/role configuration, the existing planner defaults to `api` and verifier to `codex`. `OPENAI_API_KEY` is used only for `api.openai.com` and is never sent to custom endpoints. Other endpoints use the role/shared API key; the NIM provider can use `NVIDIA_API_KEY` when no role/shared key was set. Codex retains its existing CLI login and `BIOGRAPH_CODEX_MODEL` / `BIOGRAPH_CODEX_BIN` configuration; the Mac executable path is not portable to Brev.
+One bounded request may produce at most one application-validated read-only query. Redirects, retries, repair calls and external tool execution are disabled. Invalid responses do not execute a query. Traces include request/schema hashes, configured budgets and returned model/usage metadata, without API keys or private reasoning. Loopback model requests bypass system proxies; remote HTTPS requests retain configured proxy and certificate settings.
 
-Both HTTP agents use one bounded request. Redirects, retries, external tool execution and repair calls are disabled. Invalid, truncated, refused or tool-calling responses cannot execute a query or become a source assessment. Exact sentence validation and source hashes remain mandatory. Traces record provider/protocol, requested and returned model IDs, request/schema hashes, budgets and returned usage; no API key or private reasoning is saved. Provider/model names are reported metadata, not independent attestation of the server implementation.
-
-Loopback model requests bypass environment/system proxies so local model credentials stay on the local connection. Remote HTTPS model calls continue to use the configured proxy and certificate settings.
-
-After configuring an actual provider, first run a small **training** smoke test:
-
-```bash
-python3 app.py verification-run \
-  --benchmark "$BIOGRAPH_DATA_DIR/runs/scifact_verification_train_01" \
-  --verifier configured --limit 5 --workers 1 \
-  --out "$BIOGRAPH_DATA_DIR/runs/nim_training_smoke_01"
-```
-
-Prepare that benchmark directory first. `--verifier nim` / `api` / `codex` explicitly selects a provider; `configured` uses the role/shared provider. The default remains offline `baselines`. Each new model needs its own evaluation and new immutable output directory. The October 15 GPT/Codex results are not NVIDIA or Bedrock results. Existing question-evaluation suites freeze code fingerprints; initialize a new suite for the updated engine, while preserving old reports.
+After configuring the actual provider, use the deployment smoke command above with `--with-planner` and a new output directory. This requests one synthetic plan and checks its execution against the deterministic query. Old verifier/scientific experiment commands are available only in the [research archive](EXPERIMENT_HISTORY.md).
 
 ## Optional NeMo Agent Toolkit workflow
 
@@ -184,7 +172,7 @@ Native Bedrock Converse/SigV4 integration, AWS credential-chain handling, S3 art
 
 On October 19, 2026, the full 232-test suite passed on macOS with Python 3.14, skipping the one optional NeMo test. The original 224-test regression suite and the eight new deployment tests also passed against a normally installed core package on Python 3.12. The optional test passed separately using the real NeMo Agent Toolkit 1.8.0 CLI against a local mock model. A CLI smoke run reopened the same graph and cited answer after a real local app-process restart. Installed HTML assets loaded outside the checkout without NeMo dependencies. Deployment YAML and CI shell syntax were checked. Docker is not available on the development machine, so the image has not been built locally.
 
-Use `python3 -m unittest discover -s tests -q` for core tests, and the optional environment's Python with `-p test_nvidia_workflow.py` for the real Toolkit smoke test. Local mock services exercise NIM request formatting, source/quote validation, failure accounting, redirect blocking, authentication, exact proxy origins and fixed-source execution. Mock service success is not a live NIM inference result.
+The counts above describe that historical deployment checkpoint, not the consolidated test suite. Use `python3 -m unittest discover -s tests -q` for current core tests, and the optional environment's Python with `-p test_nvidia_workflow.py` for the real Toolkit smoke test. Local mock services exercise NIM request formatting, source/query validation, failure accounting, redirect blocking, authentication, exact proxy origins and fixed-source execution. Mock service success is not a live NIM inference result.
 
 On October 19, 2026 (EDT), the core app was also built and deployed on an actual Brev L40S VM: the 232-test Linux suite passed (one optional NeMo test skipped), protected UI and synthetic question checks passed, and unchanged saved data reopened after a real container restart. The SSH-forwarded browser-origin check passed as well. See the [deployment checkpoint](BREV_DEPLOYMENT.md) for configuration and the unresolved local-model driver requirement. No live model inference or real-source retrieval was performed in that deployment test.
 

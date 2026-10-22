@@ -328,7 +328,7 @@ class LocalServerTests(unittest.TestCase):
 
     def test_ui_served(self):
         with urlopen(self.url) as r:
-            self.assertIn('Pharos Starter',r.read().decode())
+            self.assertIn('<title>BioGraph Steward | Evidence workbench</title>',r.read().decode())
 
     def test_demo_http_and_zip(self):
         with self.post('/api/build',{'mode':'demo'}) as r:data=json.loads(r.read())

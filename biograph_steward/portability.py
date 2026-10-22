@@ -22,17 +22,15 @@ def runtime_status():
                              'allowed_origins': [list(o) for o in sorted(policy.origins)]}
     except ValueError as exc:
         status['hosting'] = {'valid': False, 'reason': str(exc)}
-    from .verification import configured_verifier
-    for role, factory in [('planner', configured_planner), ('verifier', configured_verifier)]:
-        try:
-            client = factory()
-            status[role] = {'configuration_valid': True, 'provider': selected_provider(role, 'api' if role == 'planner' else 'codex'),
-                            'model': client.model, 'endpoint': client.endpoint, 'api': client.api,
-                            'prompt_profile': getattr(client, 'prompt_profile', None),
-                            'planner_protocol': getattr(client, 'protocol', None),
-                            'availability_checked': False}
-        except ValueError as exc:
-            status[role] = {'configuration_valid': False, 'reason': str(exc), 'availability_checked': False}
+    try:
+        client = configured_planner()
+        status['planner'] = {'configuration_valid': True, 'provider': selected_provider('planner', 'api'),
+                             'model': client.model, 'endpoint': client.endpoint, 'api': client.api,
+                             'prompt_profile': getattr(client, 'prompt_profile', None),
+                             'planner_protocol': getattr(client, 'protocol', None),
+                             'availability_checked': False}
+    except ValueError as exc:
+        status['planner'] = {'configuration_valid': False, 'reason': str(exc), 'availability_checked': False}
     return status
 
 

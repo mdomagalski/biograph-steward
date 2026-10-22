@@ -1,0 +1,4 @@
+# Isolated CPU feasibility check, verified with Python 3.12.4 on macOS arm64.
+# Not an application dependency set or a verified Brev/CUDA installation.
+pykeen==1.11.1
+torch==2.6.0

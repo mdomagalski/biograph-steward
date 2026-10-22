@@ -4,7 +4,7 @@ The core v0.8.0 app was deployed and tested on a Brev Ubuntu VM using source com
 
 Artifact names and machine timestamps use UTC, so the corresponding deployment receipts are labeled `20261020`.
 
-The later [local Nemotron increment](LOCAL_MODEL.md) connects the planner through a separate loopback-only vLLM service. Use both `compose.yaml` and `compose.brev-local-model.yaml` when recreating that current deployment. Its [first live comparison](evaluations/NEMOTRON_20261019.md) failed the planning usefulness check; the checkpoint below describes the preceding core-only deployment and does not imply successful model planning.
+The later [local Nemotron increment](LOCAL_MODEL.md) connects the planner through a separate loopback-only vLLM service. Use both `compose.yaml` and `compose.brev-local-model.yaml` when recreating that current deployment. Its [first live comparison](EXPERIMENT_HISTORY.md#reopening-an-archived-file "Archive file: docs/evaluations/NEMOTRON_20261019.md") failed the planning usefulness check; the checkpoint below describes the preceding core-only deployment and does not imply successful model planning.
 
 ## Verified environment
 
@@ -59,7 +59,7 @@ Stopping the Brev VM stops compute billing while retaining its storage. Stop the
 
 ## Local-model readiness
 
-The planner and source verifier remain unconfigured on this deployment. The GPU is available, but that is not evidence that a model is serving.
+At this October 19 core-deployment checkpoint, the planner and source verifier were unconfigured. The later local-model setup is documented separately; GPU availability alone does not establish model readiness. Closed verifier workflows are now in the research archive.
 
 The installed driver requires a deliberate NIM release choice: [NIM 2.0.13 prerequisites](https://docs.nvidia.com/nim/large-language-models/2.0.13/get-started/prerequisites.html) specify driver 580 or later, while this VM has 565.57.01. The [NIM 1.8 prerequisites](https://docs.nvidia.com/nim/large-language-models/1.8.0/getting-started.html) specify driver 560 or later and describe NGC authentication. A compatible older release is an option to verify, not a tested inference result. Resolve the exact image, model access and driver requirements before loading a model; the core app deployment does not require a driver change.
 

@@ -11,6 +11,9 @@ from urllib.error import HTTPError
 from urllib.parse import urlencode
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 
+from biograph_steward.demo import demo_snapshot
+from biograph_steward.graph import save_run
+from biograph_steward.refresh_workflow import run_refresh
 from biograph_steward.runtime import BrowserSessions
 from biograph_steward.webapp import create_server, login_return_path, report_html
 
@@ -91,9 +94,10 @@ class BrowserLoginTests(unittest.TestCase):
 
     def test_html_report_navigation_signs_in_and_returns_to_report_but_api_clients_stay_unauthorized(self):
         with hosted() as (url, root):
-            folder = root / 'saved_report'; folder.mkdir()
-            (folder/'metrics.json').write_text('{}'); (folder/'report.html').write_text('<h1>Saved source report</h1>')
-            route = '/api/evaluation/saved_report/'
+            snapshot = demo_snapshot()
+            save_run(snapshot, root/'before'); save_run(snapshot, root/'after')
+            run_refresh(root/'before', root/'after', root/'saved_report')
+            route = '/api/refresh/saved_report/'
             code, _, body = self.request(url+route)
             self.assertEqual(code, 401); self.assertNotIn(b'<form', body)
             code, headers, body = self.request(url+route, headers={'Accept': 'text/html,application/xhtml+xml'})
@@ -101,12 +105,12 @@ class BrowserLoginTests(unittest.TestCase):
             code, headers, _ = self.login(url, return_to=route)
             self.assertEqual(code, 303); self.assertEqual(headers['Location'], route)
             code, _, body = self.request(url+route, headers={'Cookie': headers['Set-Cookie'].split(';')[0]})
-            self.assertEqual(code, 200); self.assertIn(b'Saved source report', body)
-            for route in ['/api/evaluation/saved_report/metrics.json', '/api/download/saved_report']:
+            self.assertEqual(code, 200); self.assertIn(b'Assertion observations', body)
+            for route in ['/api/refresh/saved_report/comparison.json', '/api/download/saved_report']:
                 code, _, _ = self.request(url+route, headers={'Accept': 'text/html'})
                 self.assertEqual(code, 401)
-            self.assertEqual(login_return_path('/api/evaluation/saved_report/report.html'), '/api/evaluation/saved_report/report.html')
-            for route in ['/api/evaluation/../secret/', '/api/evaluation/saved_report/?x=1', '/api/evaluation/saved_report/metrics.json', '/api/download/saved_report']:
+            self.assertEqual(login_return_path('/api/refresh/saved_report/report.html'), '/api/refresh/saved_report/report.html')
+            for route in ['/api/refresh/../secret/', '/api/refresh/saved_report/?x=1', '/api/refresh/saved_report/comparison.json', '/api/download/saved_report']:
                 self.assertEqual(login_return_path(route), '/')
 
     def test_login_and_cookie_writes_require_an_explicit_approved_origin(self):

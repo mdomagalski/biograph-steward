@@ -1,0 +1,289 @@
+{
+  "AWS_used": false,
+  "Brev_used": false,
+  "application_graph_changed": false,
+  "audit_date": "2026-10-22",
+  "claims_not_established": [
+    "scientific_accuracy",
+    "graph_enrichment_benefit",
+    "CRC_treatment_response",
+    "proteome_wide_generalization",
+    "prospective_novelty",
+    "Brev_GPU_runtime_compatibility"
+  ],
+  "controls": [
+    {
+      "model": "ComplEx",
+      "status": "runtime_smoke_passed"
+    },
+    {
+      "model": "MPS_topology",
+      "status": "released_source_inspected_complete_pipeline_not_run"
+    }
+  ],
+  "decision": "advance_inmc_panel_to_preparation_gates",
+  "local_runtime": {
+    "biomedical_inputs_used": false,
+    "common_configuration": {
+      "dataset": "Nations",
+      "device": "cpu",
+      "evaluation_kwargs": {
+        "batch_size": 32
+      },
+      "evaluator": "RankBasedEvaluator",
+      "evaluator_kwargs": {
+        "filtered": true
+      },
+      "negative_sampler": "basic",
+      "negative_sampler_kwargs": {
+        "filtered": true,
+        "filterer": "python-set",
+        "num_negs_per_pos": 1
+      },
+      "random_seed": 42,
+      "training_kwargs": {
+        "batch_size": 128,
+        "num_epochs": 2
+      },
+      "training_loop": "sLCWA",
+      "use_testing_data": false,
+      "use_tqdm": false
+    },
+    "evaluation_partition": "validation",
+    "model_configurations": {
+      "ComplEx": {
+        "embedding_dim": 16
+      },
+      "RGCN": {
+        "decomposition": "bases",
+        "decomposition_kwargs": {
+          "num_bases": 2
+        },
+        "embedding_dim": 16,
+        "num_layers": 1
+      }
+    },
+    "note": "Nations loader may load its test file; test outcomes are not evaluated.",
+    "packages": {
+      "Jinja2": "3.1.6",
+      "Mako": "1.4.3",
+      "MarkupSafe": "3.0.4",
+      "PyYAML": "6.0.3",
+      "SQLAlchemy": "2.1.6",
+      "alembic": "1.20.1",
+      "backports.zstd": "1.8.0",
+      "certifi": "2026.10.19",
+      "charset-normalizer": "3.5.2",
+      "class-resolver": "0.8.2",
+      "click": "8.5.0",
+      "click-default-group": "1.2.4",
+      "cloudpickle": "3.1.2",
+      "colorlog": "6.12.0",
+      "dataclasses-json": "0.6.7",
+      "docdata": "0.0.5",
+      "filelock": "4.2.4",
+      "fsspec": "2026.9.0",
+      "idna": "3.20",
+      "joblib": "1.6.0",
+      "marshmallow": "3.26.2",
+      "more-click": "0.1.3",
+      "more-itertools": "11.2.1",
+      "mpmath": "1.3.0",
+      "mypy_extensions": "1.1.0",
+      "narwhals": "2.27.1",
+      "networkx": "3.7",
+      "numpy": "2.5.4",
+      "optuna": "5.0.0",
+      "packaging": "26.3",
+      "pandas": "3.1.0",
+      "pip": "24.0",
+      "pykeen": "1.11.1",
+      "pystow": "0.10.3",
+      "python-dateutil": "3.0.0",
+      "requests": "2.34.2",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "setuptools": "84.2.1",
+      "six": "1.17.0",
+      "sympy": "1.13.1",
+      "tabulate": "0.10.0",
+      "threadpoolctl": "3.7.0",
+      "torch": "2.6.0",
+      "torch-ppr": "0.0.8",
+      "torch_max_mem": "0.1.6",
+      "tqdm": "4.70.1",
+      "typing-inspect": "0.9.0",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.5",
+      "urllib3": "2.8.0"
+    },
+    "platform": "macOS-26.7.1-arm64-arm-64bit",
+    "purpose": "engineering_feasibility_only",
+    "python": "3.12.4",
+    "script_sha256": "f502509820776ee07436aca6be19456f0207a154d02d1ff9f14b53558c3879af",
+    "started_at": "2026-10-22T21:48:11.434046+00:00"
+  },
+  "local_smoke_results": [
+    {
+      "device": "cpu",
+      "evaluation_seconds": 0.043968915939331055,
+      "losses": [
+        5.820751520303579,
+        5.6309691942655125
+      ],
+      "model": "ComplEx",
+      "status": "passed",
+      "training_entities": 14,
+      "training_relations": 55,
+      "training_seconds": 0.2932920455932617,
+      "training_triples": 1592,
+      "validation_metrics": {
+        "both.realistic.hits_at_10": 0.9447236180904522,
+        "both.realistic.inverse_harmonic_mean_rank": 0.3462361991405487
+      }
+    },
+    {
+      "device": "cpu",
+      "evaluation_seconds": 0.022123098373413086,
+      "losses": [
+        0.9769411774782034,
+        0.933207970399123
+      ],
+      "model": "RGCN",
+      "status": "passed",
+      "training_entities": 14,
+      "training_relations": 55,
+      "training_seconds": 0.2944331169128418,
+      "training_triples": 1592,
+      "validation_metrics": {
+        "both.realistic.hits_at_10": 0.9547738693467337,
+        "both.realistic.inverse_harmonic_mean_rank": 0.3914337158203125
+      }
+    }
+  ],
+  "pending_gates": [
+    "assay_code_mapping",
+    "identifier_and_population_coverage",
+    "shared_training_scaffold",
+    "pair_source_and_text_leakage",
+    "verified_nonduplicative_enrichment",
+    "adapter_and_topology_baseline_check",
+    "protocol_freeze",
+    "biomedical_comparison"
+  ],
+  "primary_learner": {
+    "default_decoder": "DistMult",
+    "model": "RGCN",
+    "package": "pykeen",
+    "version": "1.11.1"
+  },
+  "prior_consumed_holdouts_preserved": true,
+  "prior_smoke_failure": {
+    "attempt": "nations_smoke_v1",
+    "cause": "PyStow_default_cache_outside_writable_workspace",
+    "failure_receipt_preserved": true,
+    "resolution": "documented_PYSTOW_HOME_environment_configuration",
+    "stage": "import_before_training",
+    "upstream_library_modified": false
+  },
+  "report": "docs/literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md",
+  "reserve_dataset": {
+    "archive_doi": "10.5281/zenodo.4648011",
+    "archive_downloaded": false,
+    "deposit_license": {
+      "id": "cc-by-4.0"
+    },
+    "files": [
+      {
+        "bytes": 10246299,
+        "checksum": "md5:e64122c89bcd0e71816014f09c2c58df",
+        "name": "IDG-DREAM-Challenge-Analysis-ncomms.zip"
+      },
+      {
+        "bytes": 30694116,
+        "checksum": "md5:f5c42e78f912bfcdd7ea60279bb4c7e8",
+        "name": "source_data.zip"
+      },
+      {
+        "bytes": 256010,
+        "checksum": "md5:3756f22f4f1f0a0e10ee0ecaa35b3fee",
+        "name": "IDG-DREAM-Drug-Kinase-Challenge-ncomms.zip"
+      }
+    ],
+    "metadata_checked": true,
+    "name": "IDG-DREAM kinase challenge"
+  },
+  "schema_version": 1,
+  "selected_dataset": {
+    "archive_bytes": 5666524,
+    "archive_doi": "10.5281/zenodo.7681817",
+    "archive_file": "PPI-Prediction.zip",
+    "archive_md5": "ccf0f64bb4581b467cbbdcefca6f0e72",
+    "archive_sha256": "2200fce435e0705470dda73f1dc870e6b6a7b9bee621c8697099dfd38b49ae62",
+    "archive_url": "https://zenodo.org/api/records/7681817/files/PPI-Prediction.zip/content",
+    "current_repository_tree_sha": "5e2f7beb596987de7b97a0cf48900915a64aad99",
+    "current_tree_equated_to_archive": false,
+    "deposit_license": {
+      "id": "cc-by-4.0"
+    },
+    "eligible_off_diagonal_pair_count": null,
+    "included_software_license": "MIT",
+    "individual_outcome_records_decoded": false,
+    "label_rule_finalized": false,
+    "name": "INMC experimentally tested human protein pairs",
+    "paper_doi": "10.1038/s41467-023-37079-7",
+    "paper_pmid": "36949045",
+    "primary_endpoint": "retrospective_source_blocked_assay_outcome_recovery_among_nominated_off_diagonal_human_protein_pairs",
+    "published_aggregate_results_read": true,
+    "published_nominated_pairs": 3276,
+    "published_positive_interactions": 1177,
+    "technical_statuses_to_resolve": [
+      "negative_in_all_successfully_tested_assays_vs_all_three",
+      "autoactivation",
+      "not_tested",
+      "failed_controls",
+      "partial_assay_success"
+    ],
+    "upstream_md5_verified": true,
+    "usable_assay_negative_count": null
+  },
+  "source_receipts": [
+    {
+      "bytes": 60186,
+      "file": "inmc_tree.json",
+      "sha256": "ad2d3adc6d376d7fae7b22fe82ba600695ff09eddb9e903453f19f7798548179",
+      "url": "https://api.github.com/repos/spxuw/PPI-Prediction-Project/git/trees/master?recursive=1"
+    },
+    {
+      "bytes": 3731,
+      "file": "inmc_readme.txt",
+      "sha256": "62c6056d2e4f77503f9d0d070ca70239e0a9cc75886d036bdd26f6d13b376814",
+      "url": "https://raw.githubusercontent.com/spxuw/PPI-Prediction-Project/master/README.md"
+    },
+    {
+      "bytes": 1067,
+      "file": "inmc_license.txt",
+      "sha256": "2b1d9b8473d878ad30276e6c6b85290a9ed78ad5a5c1b2d135830cb2a388e860",
+      "url": "https://raw.githubusercontent.com/spxuw/PPI-Prediction-Project/master/LICENSE"
+    },
+    {
+      "bytes": 87779,
+      "file": "pykeen_pypi.json",
+      "sha256": "a3887bd88333d966e3f6dfa400d45c86054e2f0a17895f2a0d32273c439e4055",
+      "url": "https://pypi.org/pypi/pykeen/1.11.1/json"
+    },
+    {
+      "bytes": 3586,
+      "file": "inmc_zenodo_metadata.json",
+      "sha256": "dbc73ad1889fc4becafbfbacc4da6787839b04d61d8476f612bcb36a8fb6969b",
+      "url": "https://zenodo.org/api/records/7681817"
+    },
+    {
+      "bytes": 6905,
+      "file": "dream_zenodo_metadata.json",
+      "sha256": "3fd5cff0481cd41c8b94cac990c75f0182c045ff799942fda3b3d1ff1e9c39d5",
+      "url": "https://zenodo.org/api/records/4648011"
+    }
+  ],
+  "status": "candidate_selected_runtime_smoke_passed_biomedical_evaluation_pending"
+}

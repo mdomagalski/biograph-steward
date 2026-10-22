@@ -12,7 +12,7 @@ from urllib.request import Request, urlopen
 
 from .client import digest, utcnow, write_json
 from .cptac import inspect_matrix, load_cptac
-from .crc_pilot import new_output, sha
+from .file_utils import new_output, sha
 from .reviews import read_run
 
 HGNC_URL = 'https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt'

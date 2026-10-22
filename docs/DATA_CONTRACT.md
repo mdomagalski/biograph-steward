@@ -56,6 +56,8 @@ Acceptance requires at least one structurally usable source record and an explic
 
 Each event records sequence, assertion ID/revision, exact snapshot hash, previous/new state, reviewer, reason and a timezone-qualified timestamp. Replaying events checks those identities and the transition sequence. Events from another snapshot are rejected rather than carried forward automatically. The reviewer is a local name field, not authenticated identity, and these local files are not cryptographically signed.
 
+The separate [snapshot-comparison workflow](SNAPSHOT_REFRESH.md) can create new, target-bound inherited review events after conservative compatibility checks. These record the tool as actor and preserve the original event, source/target hashes and comparison ancestry; they are not fresh human adjudications. Legacy cross-snapshot replay remains prohibited. This first version accepts ordinary parents only and does not chain inherited histories.
+
 Browser and CLI reviews create a new run directory, retaining the same raw snapshot and appending the decision to a copy of the prior history. The original run remains unchanged. `review_parent.json` records the parent run name. Multiple decisions from the same original run create separate branches; there is no multi-user merge service.
 
 `review_events.json` can be supplied to `replay --reviews` to preserve decisions. Replaying only a snapshot intentionally starts all assertions as candidates. A saved `?run=...` URL reopens the snapshot and review history in the local app. Offline HTML reports are read-only.
@@ -64,7 +66,7 @@ The accepted UI view is the default. Inspection mode exposes candidates and all 
 
 ## Question scope and audit boundary
 
-`question_scope.json` records the supported disease-inspection template, exact disease, relation families and configured limits. This is a deterministic description of the current query, not a natural-language planner. Pathways remain general protein context; the app cannot yet answer variant-specific therapy response or causal questions.
+`question_scope.json` records the Pharos disease-inspection template, exact disease, relation families and configured limits. This file is a deterministic scope description; the optional planner is described below. Pathways remain general protein context. The separate CIViC question template supports qualified molecular-profile/therapy source annotations, as described below; neither template establishes causal effects or recommends treatment.
 
 Benchmark audit v2 counts only associations to the selected disease in its pair worksheet. Other-disease records are listed separately, and proteins without selected-disease evidence remain unlabeled. Historical v1 counts can differ because v1 attached mismatched records to the selected disease. Human review states are not automatically converted to prediction labels.
 
@@ -94,8 +96,8 @@ New optional qualifiers `evidence_direction`, `variant_origin`, `therapy_interac
 
 The `civic_variant_therapy.v1` question template uses profile results, complete qualified response paths, source citations and both snapshot hashes. It shares immutable question/ZIP persistence with the protein-neighborhood template while keeping the biological scope separate. See [the full adapter contract and validation](CIVIC_EVIDENCE.md).
 
-## Frozen workbench evaluation and planning
+## Bounded planning
 
-`evaluation-suite.v1` copies the minimal raw source/review bundles, hashes their bytes, records the derived graph/review basis, reference-scope cases, question groups/splits, engine file hashes and fixed display budgets. A source or implementation change requires a new suite. `evaluation-result.v1` stores each workflow output, proposed plan/trace, source-unit pool and hashes. Reviewer imports bind to immutable case/output/unit IDs and hashes. Unknown judgments never become negatives, and acceptance of a graph assertion remains independent of evaluation review.
+The planner catalogue omits reference plans, source statements and reviewer judgments. One strict JSON proposal selects an existing protein-neighborhood query, a complete-profile CIViC query or abstention. Validated application code executes at most one read-only local query. Invalid/incomplete/refused/unavailable model outputs remain explicit, with no model fallback. Request/schema/catalogue hashes and returned usage are traced; credentials are not persisted. See [the current planner contract](PLANNER_PROTOCOL.md).
 
-The planner catalogue omits reference plans, source statements and reviewer judgments. One strict JSON proposal selects an existing protein-neighborhood query, a complete-profile CIViC query or abstention. Validated application code executes at most one read-only local query. Invalid/incomplete/refused/unavailable model outputs remain explicit, with no model fallback. Model-request/schema/catalogue hashes and returned usage are traced; credentials are not persisted. Replay and injected-test proposals have distinct non-live labels. See [schemas, metrics and review protocol](EVALUATION.md).
+The retired frozen-source evaluation suites and their review worksheets remain source-bound historical artifacts in the [research archive](EXPERIMENT_HISTORY.md). They are not part of the current application command surface. Their labels and model judgments do not become local assertion acceptance or fresh prediction labels after consolidation.

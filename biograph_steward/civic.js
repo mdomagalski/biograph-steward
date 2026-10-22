@@ -3,6 +3,7 @@ let civicAnswer=null,civicQuestionId=null,civicSelection=null,civicBusy=false;
 function switchQuestionWorkflow(){
   const therapy=$('questionWorkflow').value==='therapy';
   $('guidedQuestion').classList.toggle('hidden',therapy);$('civicQuestion').classList.toggle('hidden',!therapy);
+  updateWorkNavigation();
 }
 function setupCivic(){
   civicAnswer=null;civicQuestionId=null;civicSelection=null;
@@ -33,12 +34,13 @@ function civicScopeChanged(){
   civicAnswer=null;civicQuestionId=null;$('civicOutput').classList.add('hidden');$('civicPassport').replaceChildren();
   $('civicStatus').textContent='Scope changed. Find therapy evidence to refresh the answer.';
   if(runId)history.replaceState(null,'','?run='+encodeURIComponent(runId));
+  updateWorkNavigation();
 }
 async function runCivicQuestion(){
   if(civicBusy||!runId||!$('civicForm').reportValidity())return;
   const options=civicOptions();civicBusy=true;for(const input of $('civicForm').elements)input.disabled=true;
   civicScopeChanged();$('civicStatus').textContent='Finding qualified response assertions and assembling source citations...';
-  try{const result=await api('/api/therapy-question',{run_id:runId,...options});bindCivicAnswer(result.answer,result.question_id);$('civicStatus').textContent='Therapy question saved with both source hashes and the current review basis.';}
+  try{const result=await api('/api/therapy-question',{run_id:runId,...options});bindCivicAnswer(result.answer,result.question_id);$('civicStatus').textContent='Therapy question saved with both source hashes and the current review basis.';navigateWork('answer');}
   catch(error){$('civicStatus').textContent=error.message;}
   finally{civicBusy=false;for(const input of $('civicForm').elements)input.disabled=false;$('civicRun').disabled=!runId;}
 }
@@ -48,7 +50,7 @@ function bindCivicAnswer(answer,id){
   $('questionWorkflow').value='therapy';switchQuestionWorkflow();
   $('civicProfile').value=answer.plan.profile;$('civicTherapy').value=answer.plan.therapy;$('civicView').value=answer.plan.view;
   $('civicLimit').value=answer.plan.max_results;$('civicPaths').value=answer.plan.max_paths_per_profile;
-  history.replaceState(null,'','?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id));renderCivicQuestion();
+  history.replaceState(null,'','?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id));renderCivicQuestion();updateWorkNavigation();
 }
 function renderCivicContexts(citation){
   const box=el('div',undefined,'source-context'),context=citation.study_context;
@@ -68,6 +70,34 @@ function renderCivicContexts(citation){
   const note=el('p',context.context_note+' ','small'),levels=el('a','CIViC level definitions');levels.href=context.level_definitions_url;levels.target='_blank';levels.rel='noopener noreferrer';note.append(levels);box.append(note);
   return box;
 }
+function civicDisplayCoverageNotices(answer){
+  if(answer.template!=='civic_variant_therapy.v1')return [];
+  if(answer.display_coverage)return answer.display_coverage.notices;
+  // Compatibility for historical saved answers: disclose their recorded caps
+  // without modifying the answer, its selection, or its integrity hash.
+  const results=answer.results||[],accepted=answer.plan?.view==='accepted',availability=answer.availability||{},
+    shown=results.reduce((sum,r)=>sum+r.paths.length,0),eligible=availability[accepted?'accepted_assertions':'inspectable_assertions'],
+    matching=answer.matching_profiles??(results.length+(answer.omitted_profiles||0)),omitted=answer.omitted_profiles??(matching-results.length),
+    count=eligible===undefined?String(shown):shown+' of '+eligible,
+    notices=['Display coverage: '+count+' eligible response assertions shown across '+results.length+' of '+matching+' matching molecular profiles in the '+(accepted?'locally accepted view.':'candidate/accepted view.'),
+      omitted+' matching molecular profiles omitted by the profile display limit.'];
+  for(const r of results)notices.push(r.profile.name+' ('+r.profile.id+'): '+r.paths.length+' of '+r.eligible_path_count+' eligible response assertions shown; '+r.omitted_paths+' omitted by the per-profile display limit.');
+  const discordant=(answer.discordant_annotations||[]).length;
+  if(discordant)notices.push('Differing annotations: '+discordant+' comparable profile/therapy groups in this question\'s selected view have differing response annotations or directions. These are not adjudicated contradictions; relevant assertions may be outside the display limits.');
+  if(accepted&&!shown)notices.push('No locally accepted response assertions are shown. '+
+    (availability.inspectable_assertions===undefined?'':availability.inspectable_assertions+' structurally inspectable candidate/accepted assertions match this question before the local-review filter. ')+
+    'An empty accepted view does not establish absence of candidate evidence or biological absence.');
+  notices.push('Coverage counts describe the retrieved source and selected question view; they do not establish complete CIViC or literature coverage.');
+  return notices;
+}
+
+function renderCivicDisplayCoverage(answer){
+  const box=el('div',undefined,'notice warn');box.setAttribute('aria-label','Evidence display coverage');
+  box.append(el('strong','Evidence display coverage'));
+  for(const text of civicDisplayCoverageNotices(answer))box.append(el('p',text));
+  return box;
+}
+
 function renderCivicContextOverview(answer){
   const box=el('div',undefined,'notice'),context=answer.source_context_overview;if(!context)return box;
   box.append(el('p','Displayed sources: '+context.displayed_records+' CIViC items / '+context.cited_sources+' distinct cited sources. '+context.scope_note));
@@ -84,9 +114,9 @@ function renderCivicQuestion(){
   $('civicExplore').classList.toggle('hidden',answer.plan.view!=='accepted'||answer.returned_profiles>0||answer.availability.inspectable_assertions===0);
   $('civicExplore').textContent='Explore '+answer.availability.inspectable_assertions+' candidate/accepted assertions';
   $('civicZip').href='/api/download/'+encodeURIComponent(civicQuestionId);
-  $('civicAlerts').classList.toggle('hidden',!answer.discordant_annotations.length);
-  $('civicAlerts').textContent=answer.discordant_annotations.length+' comparable profile/therapy groups have differing response annotations or directions. Review study conditions before interpreting them as contradictions; some may be outside the display cap.';
+  $('civicAlerts').classList.add('hidden'); // Shared coverage notice below includes scoped differing annotations.
   $('civicSummary').replaceChildren();
+  $('civicSummary').append(renderCivicDisplayCoverage(answer));
   if(answer.source_context_overview)$('civicSummary').append(renderCivicContextOverview(answer));
   for(const result of answer.results){
     const box=el('details',undefined,'evidence');box.open=result.profile.id===civicSelection;
@@ -96,10 +126,8 @@ function renderCivicQuestion(){
       const p=el('p',s.text+' ');for(const cid of s.citation_ids){const b=el('button','['+cid+']','citation-link');b.type='button';b.setAttribute('aria-label','Inspect CIViC evidence '+cid);b.onclick=()=>inspectCivicCitation(cid);p.append(b);}box.append(p);
       for(const cid of s.citation_ids){const c=answer.citations.find(c=>c.id===cid);if(c)box.append(renderCivicContexts(c));}
     }
-    if(result.omitted_paths)box.append(el('p',result.omitted_paths+' additional eligible assertions omitted by the per-profile limit.','small'));
     $('civicSummary').append(box);
   }
-  if(answer.omitted_profiles)$('civicSummary').append(el('p',answer.omitted_profiles+' additional profiles omitted by the result limit.','small'));
   $('civicGaps').replaceChildren();for(const text of answer.limitations)$('civicGaps').append(el('li',text));
   $('civicTrace').textContent=JSON.stringify({plan:answer.plan,availability:answer.availability,discordant_annotations:answer.discordant_annotations,overlap:answer.overlap_summary,pharos_snapshot_sha256:answer.snapshot_sha256,civic_snapshot_sha256:answer.civic_snapshot_sha256,civic_created_at:answer.civic_created_at,graph_basis_sha256:answer.graph_basis_sha256,answer_sha256:answer.answer_sha256},null,2);
   renderCivicGraph();

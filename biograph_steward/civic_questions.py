@@ -4,7 +4,7 @@ from copy import deepcopy
 
 from .client import digest
 from .questions import graph_basis, INSPECTABLE
-from .civic_context import citation_context, context_overview
+from .civic_context import citation_context, context_overview, answer_display_coverage
 
 TEMPLATE = "civic_variant_therapy.v1"
 
@@ -121,5 +121,6 @@ def answer_civic_question(graph, *, profile="all", therapy="both", view="accepte
             "engine":"deterministic_graph_query","llm_used":False}
     if graph["data_kind"] == "synthetic_demo":
         answer["limitations"].insert(0,"SYNTHETIC SOFTWARE DEMONSTRATION — not biomedical evidence.")
+    answer['display_coverage'] = answer_display_coverage(answer)
     answer["answer_sha256"]=digest(answer)
     return answer

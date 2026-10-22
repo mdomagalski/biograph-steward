@@ -5,7 +5,8 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from biograph_steward.civic_context import record_context
+from biograph_steward.civic_context import record_context, answer_display_coverage
+from biograph_steward.client import digest
 from biograph_steward.civic_questions import answer_civic_question
 from biograph_steward.graph import build_graph
 from biograph_steward.questions import answer_html, answer_text, save_answer, verify_answer
@@ -91,5 +92,59 @@ class CivicContextTests(unittest.TestCase):
         self.assertFalse(empty['summary']);self.assertFalse(empty['citations'])
         self.assertEqual(empty['source_context_overview']['displayed_records'],0)
 
+    def test_caps_disclose_both_hidden_profiles_and_assertions_before_the_exported_claims(self):
+        api=CivicAPI();extra=api.row(104,'RESISTANCE')
+        extra['molecularProfile'].update(id=82,name='ZZZ INVENTED profile',rawName='#VID82')
+        extra['molecularProfile']['variants'][0].update(id=82,name='ZZZ INVENTED variant')
+        api.rows.append(extra)
+        p,c=fixture(api);graph=build_graph(p,civic_snapshot=c);before=deepcopy(graph)
+        answer=answer_civic_question(graph,view='candidates',max_results=1,max_paths=1)
+        coverage=answer['display_coverage']
+        self.assertEqual((coverage['shown_assertions'],coverage['eligible_assertions'],coverage['omitted_assertions']),(1,5,4))
+        self.assertEqual((coverage['shown_profiles'],coverage['matching_profiles'],coverage['omitted_profiles']),(1,2,1))
+        self.assertEqual((coverage['profiles'][0]['shown'],coverage['profiles'][0]['eligible'],coverage['profiles'][0]['omitted']),(1,4,3))
+        self.assertEqual(coverage['discordant_groups'],1)
+        for output in (answer_text(answer),answer_html(answer)):
+            self.assertIn('1 of 5 eligible response assertions shown',output)
+            self.assertIn('1 matching molecular profiles omitted',output)
+            self.assertIn('3 omitted by the per-profile display limit',output)
+            self.assertIn('not adjudicated contradictions',output)
+            self.assertIn('relevant assertions may be outside the display limits',output)
+            self.assertLess(output.index('1 of 5 eligible response assertions shown'),output.index('CIViC does not support'))
+        self.assertEqual(graph,before)
+        verify_answer(answer)
+
+    def test_display_coverage_uses_selected_therapy_and_review_view_not_whole_graph(self):
+        p,c=fixture();graph=build_graph(p,civic_snapshot=c)
+        pan=answer_civic_question(graph,view='candidates',therapy='panitumumab')
+        self.assertEqual(pan['display_coverage']['eligible_assertions'],1)
+        self.assertEqual(pan['display_coverage']['discordant_groups'],0)
+        self.assertNotIn('Differing annotations:',answer_text(pan))
+        accepted=answer_civic_question(graph,view='accepted')
+        self.assertEqual(accepted['display_coverage']['eligible_assertions'],0)
+        for output in (answer_text(accepted),answer_html(accepted)):
+            self.assertIn('4 structurally inspectable candidate/accepted assertions match this question before the local-review filter',output)
+            self.assertIn('does not establish absence of candidate evidence or biological absence',output)
+        self.assertFalse(accepted['results']);self.assertFalse(accepted['citations'])
+        self.assertEqual(accepted['display_coverage']['discordant_groups'],0)
+
+    def test_old_saved_answer_gets_equivalent_coverage_without_changing_saved_content(self):
+        p,c=fixture();answer=answer_civic_question(build_graph(p,civic_snapshot=c),view='candidates',max_paths=1)
+        old=deepcopy(answer);old.pop('display_coverage');old.pop('answer_sha256');old['answer_sha256']=digest(old)
+        before=deepcopy(old)
+        self.assertEqual(answer_display_coverage(old),answer['display_coverage'])
+        for render in (answer_text,answer_html):
+            output=render(old)
+            self.assertIn('1 of 4 eligible response assertions shown',output)
+            self.assertIn('3 omitted by the per-profile display limit',output)
+        self.assertEqual(old,before);verify_answer(old)
+
+    def test_profile_names_are_escaped_in_coverage_html(self):
+        api=CivicAPI()
+        for r in api.rows:r['molecularProfile']['name']='INVENTED <img src=x onerror=alert(1)>'
+        p,c=fixture(api);answer=answer_civic_question(build_graph(p,civic_snapshot=c),view='candidates',max_paths=1)
+        html=answer_html(answer)
+        self.assertIn('&lt;img src=x onerror=alert(1)&gt;',html)
+        self.assertNotIn('<img ',html)
 
 if __name__=='__main__':unittest.main()

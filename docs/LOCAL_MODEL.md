@@ -12,7 +12,7 @@ The Linux-only `compose.brev-local-model.yaml` overlay connects the existing app
 
 The overlay uses Linux host networking and explicitly binds the app to `127.0.0.1:8766` and the model to `127.0.0.1:8000`. It removes the base Compose port mapping. It does not expose either API publicly or change the configured browser-origin allowlist. App data and model downloads use separate persistent named volumes.
 
-The planner provider is `api`. Its `nim_chat` setting names the existing `guided_json`/`max_tokens` request format, which this vLLM release also accepts; it does not identify the serving implementation as NIM. The verifier remains separately configured and is not enabled by this planner-only overlay.
+The planner provider is `api`. Its `nim_chat` setting names the existing `guided_json`/`max_tokens` request format, which this vLLM release also accepts; it does not identify the serving implementation as NIM. The active integration is the bounded planner; retired source-verifier workflows belong to the research archive.
 
 The current overlay explicitly enables `BIOGRAPH_PLANNER_PROTOCOL=scoped_targets_v4`: [exact entity binding, target scope and per-tool shapes](PLANNER_PROTOCOL.md). `catalogue_v1`, `entity_tools_v2` and `tool_shapes_v3` remain selectable for reproducing the earlier experiments. The model revision, reasoning profile and serving budgets are unchanged by this protocol selection.
 
@@ -34,28 +34,8 @@ Use both Compose files when recreating this deployment. The model initially down
 
 Keep the existing Mac-to-Brev SSH forward and open `http://127.0.0.1:8767/`. After selecting a saved run, the existing experimental question planner uses this local model. Deterministic guided questions remain available separately.
 
-## Evaluate without changing the sources
+## Check the deployment
 
-Use `deployment-smoke --with-planner` once for a small synthetic integration check. A valid model response that selects the wrong scope still fails that check; do not turn a recorded failure into a successful receipt.
+Use `deployment-smoke --with-planner` with a new output directory for one synthetic integration check. A valid response that selects the wrong scope still fails the check. Do not turn a recorded failure into a successful receipt.
 
-For a development comparison, initialize a new suite using the current engine and the unchanged public-source snapshots, then run:
-
-```bash
-docker compose -f compose.yaml -f compose.brev-local-model.yaml exec -T steward \
-  python app.py evaluation-run --suite /data/runs/YOUR_NEW_SUITE \
-  --planner live --out /data/runs/YOUR_NEW_RESULTS
-```
-
-The runner issues one model request for each question and retains invalid plans, errors and abstentions. Compare the planner with the deterministic `enriched` arm on the exact same graph and display budgets. Agreement with draft scope plans is an engineering diagnostic. Citation identity and unchanged source hashes do not establish whether a scientific claim is true; leave scientific judgments pending until source review. The supplied 24 questions are development scenarios, not a held-out biomedical benchmark.
-
-See [the evaluation protocol](EVALUATION.md) for frozen-suite creation, case families, reviewer sheets and metric definitions. A prompt, model, engine or source change needs a new recorded experiment; retain earlier failures and results.
-
-## Stop or revert
-
-To release GPU memory without deleting its model cache:
-
-```bash
-docker compose -f compose.yaml -f compose.brev-local-model.yaml stop local-model
-```
-
-That stops model inference, not VM compute billing. Stop the Brev instance when it is no longer needed. To return the app to its base deployment, stop `local-model` and recreate `steward` with `docker compose -f compose.yaml up -d --build steward`. Neither operation requires removing the persistent volumes.
+The planner's earlier comparison runners and results are in the [research archive](EXPERIMENT_HISTORY.md). Their scope-agreement scores do not establish scientific accuracy or graph improvement. Current scientific work is [INMC input preparation](evaluations/INMC_INPUT_READINESS_20261022.md), which does not need this model or GPU.

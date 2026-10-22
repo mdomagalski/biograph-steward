@@ -1,5 +1,7 @@
 # Pharos coverage and evidence overlap audit
 
+**Repository scope note (October 22):** this is a dated source/methods review. Its historical observations remain useful; the [current build plan](BUILD_PLAN.md) supersedes old next-step proposals. Closed study implementations and reports are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
+
 Verified on October 14, 2026 against the live public API, which reported `pharos319`.
 
 ## Finding and decision

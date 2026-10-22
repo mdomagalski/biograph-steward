@@ -20,7 +20,7 @@ function updateQuestionPlan(){
   $('questionPlan').textContent='Exact disease: '+graph.disease.name+' ('+(graph.disease.mondoID||graph.disease_node_id)+'). Search '+graph.targets.length+' retrieved proteins around '+name+'. '+($('questionView').value==='accepted'?'Use accepted paths only.':'Explore accepted and candidate paths; unreviewed evidence stays labeled.')+' Return up to '+$('questionLimit').value+' proteins and '+$('questionPaths').value+' paths per protein.';
   $('questionScope').textContent=JSON.stringify({disease:graph.disease,protein:t?.id,cohort_targets:graph.targets.length,target_cohort_capped:graph.retrieval.truncated,limits:graph.question_scope?.limits,context_scope:graph.retrieval.context?.scope,filters:'Exact-term disease associations and structurally usable context. Rejected, quarantined and obsolete assertions are excluded.'},null,2);
 }
-function questionScopeChanged(){updateQuestionPlan();questionAnswer=null;questionId=null;$('questionOutput').classList.add('hidden');$('questionStatus').textContent='Scope changed. Find evidence paths to refresh the answer.';if(runId)history.replaceState(null,'','?run='+encodeURIComponent(runId));}
+function questionScopeChanged(){updateQuestionPlan();questionAnswer=null;questionId=null;$('questionOutput').classList.add('hidden');$('questionStatus').textContent='Scope changed. Find evidence paths to refresh the answer.';if(runId)history.replaceState(null,'','?run='+encodeURIComponent(runId));updateWorkNavigation();}
 function bindQuestionAnswer(answer,id){
   if(answer.source_run!==runId||answer.graph_basis_sha256!==graph.question_basis_sha256)throw new Error('This question result belongs to a different source run or review state. Run the question again.');
   questionAnswer=answer;questionId=id;questionSelection=answer.results[0]?.protein.id||null;
@@ -34,8 +34,8 @@ async function runQuestion(){
   if(!$('questionForm').reportValidity())return;
   questionBusy=true;for(const input of $('questionForm').elements)input.disabled=true;
   $('questionOutput').classList.add('hidden');questionAnswer=null;questionId=null;history.replaceState(null,'','?run='+encodeURIComponent(runId));
-  $('questionStatus').textContent='Finding exact-scope evidence paths and assembling their citations...';
-  try{const response=await api('/api/question',{run_id:runId,...questionOptions()});bindQuestionAnswer(response.answer,response.question_id);$('questionStatus').textContent='Question result saved with its source snapshot, review basis and citations.';}
+  updateWorkNavigation();$('questionStatus').textContent='Finding exact-scope evidence paths and assembling their citations...';
+  try{const response=await api('/api/question',{run_id:runId,...questionOptions()});bindQuestionAnswer(response.answer,response.question_id);$('questionStatus').textContent='Question result saved with its source snapshot, review basis and citations.';navigateWork('answer');}
   catch(error){$('questionStatus').textContent=error.message;}
   finally{questionBusy=false;for(const input of $('questionForm').elements)input.disabled=false;$('questionRun').disabled=!runId;}
 }
@@ -61,7 +61,7 @@ function renderQuestion(){
   if(answer.omitted_proteins)$('questionSummary').append(el('p',answer.omitted_proteins+' additional matching proteins omitted by the result limit. Ordering is alphabetical.','small'));
   $('questionGaps').replaceChildren();for(const text of answer.limitations)$('questionGaps').append(el('li',text));
   $('questionTrace').textContent=JSON.stringify({snapshot_sha256:answer.snapshot_sha256,graph_basis_sha256:answer.graph_basis_sha256,review_events_sha256:answer.review_events_sha256,answer_sha256:answer.answer_sha256,availability:answer.availability,selected_coverage:answer.plan.selected_coverage,excluded_assertions:answer.excluded_assertions},null,2);
-  $('questionGraphSection').classList.toggle('hidden',!answer.results.length);renderQuestionGraph();
+  $('questionGraphSection').classList.toggle('hidden',!answer.results.length);renderQuestionGraph();updateWorkNavigation();
 }
 function renderQuestionGraph(){
   const answer=questionAnswer,result=answer?.results.find(r=>r.protein.id===questionSelection);if(!result)return;

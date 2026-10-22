@@ -18,14 +18,27 @@ from .runtime import AccessPolicy, BrowserSessions, runs_directory, cache_direct
 from . import __version__
 
 
+def verify_saved_refresh(folder: Path) -> None:
+    """A missing receipt must not turn an incomplete refresh into an ordinary run."""
+    markers = ('refresh_receipt.json', 'refresh_comparison.json', 'refresh_report.html', 'refresh_inputs')
+    required = any((folder / name).exists() or (folder / name).is_symlink() for name in markers)
+    manifest_file = folder / 'run_manifest.json'
+    if manifest_file.is_file():
+        manifest = json.loads(manifest_file.read_text(encoding='utf-8'))
+        required = required or isinstance(manifest, dict) and manifest.get('run_mode') == 'refresh'
+    if required:
+        from .refresh_workflow import verify_refresh
+        verify_refresh(folder)
+
+
 def report_html(graph: dict | None = None, *, protected=False) -> str:
     template = Path(__file__).with_name("ui.html").read_text(encoding="utf-8")
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     script = Path(__file__).with_name("guided.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("civic.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("planner.js").read_text(encoding="utf-8")
-    script += '\n' + Path(__file__).with_name("quality.js").read_text(encoding="utf-8")
-    script += '\n' + Path(__file__).with_name("source_facts.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("refresh.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("workspaces.js").read_text(encoding="utf-8")
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
@@ -37,7 +50,7 @@ def login_return_path(value):
         return '/'
     try:
         parsed = urlsplit(value)
-        report = re.fullmatch(r'/api/(?:evaluation|source-facts|fact-check)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', parsed.path)
+        report = re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', parsed.path)
         if (parsed.scheme or parsed.netloc or parsed.fragment or not value.startswith('/') or
                 not (parsed.path == '/' or (report and not parsed.query))):
             return '/'
@@ -113,7 +126,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             self.send_header('Content-Length', '0')
             self.end_headers()
 
-        def reply(self, payload: bytes, status: int = 200, content_type: str = "application/json", filename: str | None = None):
+        def reply(self, payload: bytes, status: int = 200, content_type: str = "application/json", filename: str | None = None, *, content_security_policy: str | None = None):
             self.send_response(status)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(payload)))
@@ -124,6 +137,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             # while suppressing referrers entirely for external destinations.
             self.send_header('Referrer-Policy', 'same-origin')
             self.send_header('X-Frame-Options', 'DENY')
+            if content_security_policy:
+                self.send_header("Content-Security-Policy", content_security_policy)
             if filename:
                 self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
             self.end_headers()
@@ -131,6 +146,18 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
 
         def json_reply(self, obj: dict, status: int = 200):
             self.reply(json.dumps(obj, ensure_ascii=True, allow_nan=False).encode(), status)
+
+        def refresh_failure(self, folder, exc):
+            from .refresh_archive import archive_id
+            from .refresh_workflow import RefreshRuntimeMismatch
+            if isinstance(exc, RefreshRuntimeMismatch):
+                identifier = archive_id(folder.relative_to(runs_dir).as_posix())
+                self.json_reply({'error': str(exc), 'error_code': 'refresh_runtime_mismatch',
+                                 'saved_files_integrity': 'passed', 'current_replay': 'not_performed',
+                                 'archive_url': '/api/refresh-archive/' + identifier + '/'}, 409)
+            else:
+                self.json_reply({'error': 'Snapshot comparison failed saved-file integrity or replay checks.',
+                                 'error_code': 'refresh_verification_failed'}, 400)
 
         def do_GET(self):
             path = urlparse(self.path).path
@@ -145,107 +172,82 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return_to = '/'
                 self.login_page(return_to)
                 return
-            report_navigation = (re.fullmatch(r'/api/(?:evaluation|source-facts|fact-check)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', path)
+            report_navigation = (re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', path)
                                  and 'text/html' in self.headers.get('Accept', '').lower())
             if (path == '/' or report_navigation) and not self.authenticated():
                 self.login_page(self.path)
                 return
             if not self.authenticate():
                 return
-            if path == '/api/source-facts':
-                from .source_fact_workflow import load_fact_artifact
-                reports = []; invalid = 0
-                for folder in sorted(runs_dir.iterdir()):
-                    if (not folder.is_dir() or folder.is_symlink() or
-                            not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', folder.name) or
-                            not (folder / 'source_fact_manifest.json').is_file()):
+            if path == '/api/workspaces':
+                from .workspaces import saved_workspaces
+                self.json_reply(saved_workspaces(runs_dir))
+                return
+            if path == '/api/refresh-history':
+                from .refresh_archive import list_archives
+                self.json_reply(list_archives(runs_dir))
+                return
+            match = re.fullmatch(r'/api/refresh-archive/([0-9a-f]{64})/(report\.html|comparison\.json|refresh_comparison\.json|graph\.json|review_events\.json|refresh_receipt\.json|refresh_inputs/(?:before|after)/(?:snapshot|graph|review_events|run_manifest|civic_snapshot)\.json)?', path)
+            if match:
+                from .refresh_archive import archived_report, find_archive
+                from .refresh_workflow import verify_refresh_files
+                folder = find_archive(runs_dir, match.group(1))
+                if folder is None:
+                    self.json_reply({'error': 'Comparison archive not found.'}, 404); return
+                try:
+                    receipt = verify_refresh_files(folder)
+                    name = match.group(2) or 'report.html'
+                    if name == 'report.html':
+                        self.reply(archived_report(folder, receipt).encode(), content_type='text/html; charset=utf-8',
+                                   content_security_policy="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'")
+                    else:
+                        name = {'comparison.json': 'refresh_comparison.json'}.get(name, name)
+                        if name != 'refresh_receipt.json' and name not in receipt['files']:
+                            self.json_reply({'error': 'Archived file not found.'}, 404); return
+                        self.reply((folder / name).read_bytes(), content_type='application/json')
+                except (ValueError, TypeError, KeyError, OSError):
+                    self.json_reply({'error': 'Comparison archive failed saved-file integrity checks; contents withheld.',
+                                     'error_code': 'refresh_archive_integrity_failed'}, 400)
+                return
+            if path == '/api/refresh-runs':
+                choices = []
+                for folder in sorted(runs_dir.iterdir(), key=lambda p: p.name, reverse=True):
+                    if (folder.is_symlink() or not folder.is_dir() or
+                            not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', folder.name)):
                         continue
                     try:
-                        manifest, payload = load_fact_artifact(folder)
-                        if manifest['kind'] != 'facts':
+                        if any((folder / name).is_symlink() for name in ('run_manifest.json', 'snapshot.json', 'graph.json')):
                             continue
-                        reports.append({'name': folder.name, 'source_id': payload['source_id'],
-                                        'records': len(payload['records']), 'coverage_gaps': len(payload['coverage_gaps']),
-                                        'report_url': '/api/source-facts/' + folder.name + '/'})
+                        manifest = json.loads((folder / 'run_manifest.json').read_text(encoding='utf-8'))
+                        if (not isinstance(manifest, dict) or not (folder / 'snapshot.json').is_file() or
+                                manifest.get('data_kind') not in {'live_pharos', 'synthetic_demo'} or
+                                manifest.get('run_mode') == 'refresh' or
+                                not isinstance(manifest.get('graph_format'), str) or
+                                type(manifest.get('review_event_count')) is not int or manifest['review_event_count'] < 0 or
+                                not isinstance(manifest.get('created_at'), str)):
+                            continue
+                        verify_saved_refresh(folder)
+                        choices.append({'run_id': folder.name, 'data_kind': manifest['data_kind'],
+                                        'created_at': manifest.get('created_at'),
+                                        'reviews': manifest.get('review_event_count', 0)})
                     except (ValueError, TypeError, KeyError, OSError):
-                        invalid += 1
-                self.json_reply({'reports': reports, 'invalid_reports_withheld': invalid, 'graph_mutations': 0})
+                        continue
+                self.json_reply({'runs': choices, 'note': 'Selection metadata only; comparison verifies the saved inputs.'})
                 return
-            match = re.fullmatch(r'/api/(source-facts|fact-check)/([A-Za-z0-9_-]{1,80})/(report\.html|source_facts\.json|comparison\.json)?', path)
+            match = re.fullmatch(r'/api/refresh/([A-Za-z0-9_-]{1,80})/(report\.html|comparison\.json|refresh_comparison\.json|graph\.json|review_events\.json|refresh_receipt\.json|refresh_inputs/(?:before|after)/(?:snapshot|graph|review_events|run_manifest|civic_snapshot)\.json)?', path)
             if match:
-                from .source_fact_workflow import load_fact_artifact, FILES
-                folder = runs_dir / match.group(2)
-                name = match.group(3) or 'report.html'
+                from .refresh_workflow import verify_refresh
+                folder = runs_dir / match.group(1)
                 if folder.is_symlink() or folder.resolve().parent != runs_dir or not folder.is_dir():
-                    self.json_reply({'error': 'Source-fact artifact not found.'}, 404); return
+                    self.json_reply({'error': 'Snapshot comparison not found.'}, 404); return
                 try:
-                    manifest, _ = load_fact_artifact(folder)
-                    expected_kind = 'facts' if match.group(1) == 'source-facts' else 'comparison'
-                    if manifest['kind'] != expected_kind or name not in {'report.html', FILES[expected_kind]}:
-                        self.json_reply({'error': 'Source-fact artifact not found.'}, 404); return
+                    verify_refresh(folder)
+                    name = match.group(2) or 'refresh_report.html'
+                    name = {'comparison.json':'refresh_comparison.json', 'report.html':'refresh_report.html'}.get(name, name)
                     self.reply((folder / name).read_bytes(), content_type=(
-                        'text/html; charset=utf-8' if name == 'report.html' else 'application/json'))
-                except (ValueError, TypeError, KeyError, OSError):
-                    self.json_reply({'error': 'Source-fact artifact failed integrity checks.'}, 400)
-                return
-            if path == '/api/evidence-quality':
-                from .evidence_quality import POLICY, verify_quality_result, quality_passports
-                from .context_evaluation import POLICY as CONTEXT_POLICY, verify_context_result
-                from .reviews import read_run
-                try:
-                    fields = parse_qs(urlparse(self.path).query, max_num_fields=2)
-                    if set(fields) - {'run', 'assertion'} or any(len(v) != 1 for v in fields.values()):
-                        raise ValueError('Invalid evidence-quality scope.')
-                    graph = None
-                    if fields:
-                        if set(fields) != {'run', 'assertion'} or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', fields['run'][0]):
-                            raise ValueError('Supply an exact run and assertion.')
-                        folder = (runs_dir / fields['run'][0]).resolve()
-                        if folder.parent != runs_dir:
-                            raise ValueError('Invalid source run.')
-                        graph = read_run(folder)[2]
-                    reports = []; passports = []; invalid = 0
-                    for folder in sorted(runs_dir.iterdir()):
-                        if (not folder.is_dir() or folder.is_symlink() or
-                                not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', folder.name) or
-                                not (folder / 'metrics.json').is_file()):
-                            continue
-                        try:
-                            m = json.loads((folder / 'metrics.json').read_text())
-                            if m.get('format') not in {POLICY + '.result', CONTEXT_POLICY + '.result'}:
-                                continue
-                            is_context = m['format'] == CONTEXT_POLICY + '.result'
-                            m = verify_context_result(folder) if is_context else verify_quality_result(folder)
-                            reports.append({'name': folder.name, 'cases': m['cases'],
-                                'model_requests': m['model_requests'], 'result_sha256': m['result_sha256'],
-                                'report_url': '/api/evaluation/' + folder.name + '/',
-                                'download_url': '/api/download/' + folder.name})
-                            if graph is not None and not is_context:
-                                passports.extend({'report_name': folder.name, **v} for v in
-                                    quality_passports(folder, graph, fields['assertion'][0]))
-                        except (ValueError, TypeError, KeyError, OSError):
-                            invalid += 1
-                    self.json_reply({'reports': reports, 'passports': passports,
-                                     'invalid_reports_withheld': invalid, 'graph_mutations': 0})
+                        'application/json' if name.endswith('.json') else 'text/html; charset=utf-8'))
                 except (ValueError, TypeError, KeyError, OSError) as exc:
-                    self.json_reply({'error': str(exc)}, 400)
-                return
-            match=re.fullmatch(r"/api/evaluation/([A-Za-z0-9_-]{1,80})/(report\.html|case_reviews\.tsv|answer_reviews\.tsv|evidence_reviews\.tsv|metrics\.json)?",path)
-            if match:
-                folder=(runs_dir/match.group(1)).resolve();name=match.group(2) or 'report.html'
-                if folder.parent!=runs_dir or not (folder/'metrics.json').is_file() or not (folder/name).is_file() or (folder/name).is_symlink():
-                    self.json_reply({'error':'Evaluation artifact not found'},404);return
-                try:
-                    if json.loads((folder/'metrics.json').read_text()).get('format') == 'crc-source-consistency.v1.result':
-                        from .evidence_quality import verify_quality_result
-                        verify_quality_result(folder)
-                    elif json.loads((folder/'metrics.json').read_text()).get('format') == 'context-comparison.v1.result':
-                        from .context_evaluation import verify_context_result
-                        verify_context_result(folder)
-                except (ValueError, TypeError, KeyError, OSError):
-                    self.json_reply({'error':'Evidence-quality artifact failed integrity checks.'},400);return
-                content_type='text/html; charset=utf-8' if name=='report.html' else 'application/json' if name.endswith('.json') else 'text/tab-separated-values; charset=utf-8'
-                self.reply((folder/name).read_bytes(),content_type=content_type,filename=name if name.endswith('.tsv') else None)
+                    self.refresh_failure(folder, exc)
                 return
             if path=='/api/planner':
                 from .planning import configured_planner,PlannerUnavailable
@@ -266,9 +268,13 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if folder.parent != runs_dir or not folder.is_dir():
                     self.json_reply({"error": "Run not found"}, 404)
                     return
+                from .refresh_workflow import RefreshRuntimeMismatch
                 try:
+                    verify_saved_refresh(folder)
                     _, _, graph = read_run(folder)
                     self.json_reply({"run_id": match.group(1), "graph": graph})
+                except RefreshRuntimeMismatch as exc:
+                    self.refresh_failure(folder, exc)
                 except (ValueError, TypeError, OSError) as exc:
                     self.json_reply({"error": str(exc)}, 400)
                 return
@@ -294,24 +300,38 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not folder.is_dir() or folder.parent != runs_dir:
                     self.json_reply({"error": "Run not found"}, 404)
                     return
-                if (folder / 'source_fact_manifest.json').is_file():
-                    try:
-                        from .source_fact_workflow import load_fact_artifact
-                        load_fact_artifact(folder)
-                    except (ValueError, TypeError, KeyError, OSError):
-                        self.json_reply({'error': 'Source-fact artifact failed integrity checks.'}, 400)
-                        return
-                if (folder / 'metrics.json').is_file():
-                    try:
-                        if json.loads((folder / 'metrics.json').read_text()).get('format') == 'crc-source-consistency.v1.result':
-                            from .evidence_quality import verify_quality_result
-                            verify_quality_result(folder)
-                        elif json.loads((folder / 'metrics.json').read_text()).get('format') == 'context-comparison.v1.result':
-                            from .context_evaluation import verify_context_result
-                            verify_context_result(folder)
-                    except (ValueError, TypeError, KeyError, OSError):
-                        self.json_reply({'error': 'Evidence-quality artifact failed integrity checks.'}, 400)
-                        return
+                try:
+                    verify_saved_refresh(folder)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.refresh_failure(folder, exc)
+                    return
+                # Only current product artifacts are downloadable. Historical
+                # studies require their archived implementation and integrity checks.
+                try:
+                    if any((folder / name).exists() or (folder / name).is_symlink()
+                           for name in ('source_fact_manifest.json', 'biomedbert_manifest.json', 'metrics.json')):
+                        raise ValueError('Historical study artifacts are available through the research archive.')
+                    if (folder / 'run_manifest.json').is_file():
+                        from .reviews import read_run
+                        read_run(folder)
+                    elif (folder / 'question.json').is_file():
+                        from .questions import verify_answer
+                        verify_answer(json.loads((folder / 'question.json').read_text(encoding='utf-8')))
+                    elif (folder / 'planner_trace.json').is_file():
+                        trace = json.loads((folder / 'planner_trace.json').read_text(encoding='utf-8'))
+                        if not isinstance(trace, dict) or trace.get('status') not in {'validated', 'invalid_plan', 'planner_error'}:
+                            raise ValueError('Unsupported planner trace.')
+                        answer_file = folder / 'answer' / 'question.json'
+                        if answer_file.is_file():
+                            from .questions import verify_answer
+                            verify_answer(json.loads(answer_file.read_text(encoding='utf-8')))
+                    else:
+                        raise ValueError('This is not a current graph, question or planner artifact.')
+                    if any(file.is_symlink() for file in folder.rglob('*')):
+                        raise ValueError('Artifact exports must not contain symbolic links.')
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                    return
                 buffer = BytesIO()
                 with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
                     for file in sorted(folder.rglob("*")):
@@ -344,21 +364,26 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
-                if path == '/api/fact-check':
-                    from .source_fact_workflow import save_fact_check, load_fact_artifact
-                    if set(body) != {'facts_id', 'claim'}:
-                        raise ValueError('Use only facts_id and claim for one saved source-fact check.')
-                    source_id = body['facts_id']
-                    if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
-                        raise ValueError('Invalid source-fact run ID.')
-                    source = runs_dir / source_id
-                    if source.is_symlink() or source.resolve().parent != runs_dir or not source.is_dir():
-                        raise ValueError('Source-fact run not found.')
-                    check_id = 'fact_check_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
-                    save_fact_check(source, body['claim'], runs_dir / check_id)
-                    _, payload = load_fact_artifact(runs_dir / check_id)
-                    self.json_reply({'check_id': check_id, 'status': payload['comparison']['status'],
-                                     'report_url': '/api/fact-check/' + check_id + '/', 'graph_mutations': 0})
+                if path == '/api/refresh-compare':
+                    from .refresh_workflow import run_refresh
+                    if set(body) != {'before_run', 'after_run', 'carry_reviews'} or type(body['carry_reviews']) is not bool:
+                        raise ValueError('Use before_run, after_run and a boolean carry_reviews.')
+                    sources = []
+                    for field in ('before_run', 'after_run'):
+                        value = body[field]
+                        if not isinstance(value, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', value):
+                            raise ValueError('Invalid saved run ID.')
+                        folder = runs_dir / value
+                        if folder.is_symlink() or folder.resolve().parent != runs_dir or not folder.is_dir():
+                            raise ValueError('Saved run not found.')
+                        verify_saved_refresh(folder)
+                        sources.append(folder)
+                    run_id = 'refresh_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
+                    result = run_refresh(*sources, runs_dir / run_id, carry_reviews=body['carry_reviews'])
+                    self.json_reply({'run_id': run_id, 'graph': result['graph'],
+                                     'comparison': result['comparison'],
+                                     'report_url': '/api/refresh/' + run_id + '/',
+                                     'download_url': '/api/download/' + run_id})
                     return
                 if path=='/api/plan':
                     from .planning import configured_planner,execute_plan
@@ -443,6 +468,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     source = (runs_dir / source_id).resolve()
                     if source.parent != runs_dir or not source.is_dir():
                         raise ValueError("Source run not found.")
+                    verify_saved_refresh(source)
                     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "_" + uuid4().hex[:8]
                     graph = review_run(source, runs_dir / run_id, body.get("assertion_id"),
                                        body.get("state"), body.get("reviewer"), body.get("reason"))

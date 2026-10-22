@@ -1,0 +1,593 @@
+{
+  "review_date": "2026-10-21",
+  "review_type": "structured literature and methods review; not exhaustive systematic review",
+  "topic_record_count": 51,
+  "distinct_source_family_count": 47,
+  "registry_counts": {
+    "cross_cutting_sources_20261021.json": 9,
+    "evaluation_sources_20261021.json": 14,
+    "integration_sources_20261021.json": 14,
+    "verification_sources_20261021.json": 14
+  },
+  "deduplication_rule": "Four identical method/resource families appearing in verification and evaluation are cross-references, not separate papers. A family may include a paper plus official artifacts. Other papers/specifications remain distinct.",
+  "alias_to_canonical": {
+    "EVAL08": "VER01",
+    "EVAL09": "VER06",
+    "EVAL10": "VER04",
+    "EVAL11": "VER08"
+  },
+  "sources": [
+    {
+      "canonical_id": "CROSS01",
+      "topic_ids": [
+        "CROSS01"
+      ],
+      "title": "PRISMA Extension for Scoping Reviews (PRISMA-ScR): Checklist and Explanation",
+      "year": 2018,
+      "primary_url": "https://www.prisma-statement.org/scoping",
+      "registry_files": [
+        "cross_cutting_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "CROSS02",
+      "topic_ids": [
+        "CROSS02"
+      ],
+      "title": "The FAIR Guiding Principles for scientific data management and stewardship",
+      "year": 2016,
+      "primary_url": "https://www.nature.com/articles/sdata201618",
+      "registry_files": [
+        "cross_cutting_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "CROSS03",
+      "topic_ids": [
+        "CROSS03"
+      ],
+      "title": "ECO: the Evidence and Conclusion Ontology, an update for 2022",
+      "year": 2022,
+      "primary_url": "https://doi.org/10.1093/nar/gkab1025",
+      "registry_files": [
+        "cross_cutting_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "CROSS04",
+      "topic_ids": [
+        "CROSS04"
+      ],
+      "title": "SEPIO: A Semantic Model for the Integration and Analysis of Scientific Evidence",
+      "year": 2016,
+      "primary_url": "https://ceur-ws.org/Vol-1747/IT605_ICBO2016.pdf",
+      "registry_files": [
+        "cross_cutting_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "CROSS05",
+      "topic_ids": [
+        "CROSS05"
+      ],
+      "title": "GA4GH Variant Annotation Specification 1.1.0",
+      "year": 2026,
+      "primary_url": "https://va-spec.ga4gh.org/en/1.1.0/",
+      "registry_files": [
+        "cross_cutting_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "CROSS06",
+      "topic_ids": [
+        "CROSS06"
+      ],
+      "title": "Micropublications: a semantic model for claims, evidence, arguments and annotations in biomedical communications",
+      "year": 2014,
+      "primary_url": "https://doi.org/10.1186/2041-1480-5-28",
+      "registry_files": [
+        "cross_cutting_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "CROSS07",
+      "topic_ids": [
+        "CROSS07"
+      ],
+      "title": "The anatomy of a nanopublication",
+      "year": 2010,
+      "primary_url": "https://doi.org/10.3233/ISU-2010-0613",
+      "registry_files": [
+        "cross_cutting_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "CROSS08",
+      "topic_ids": [
+        "CROSS08"
+      ],
+      "title": "ECO-CollecTF: A Corpus of Annotated Evidence-Based Assertions in Biomedical Manuscripts",
+      "year": 2021,
+      "primary_url": "https://doi.org/10.3389/frma.2021.674205",
+      "registry_files": [
+        "cross_cutting_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "CROSS09",
+      "topic_ids": [
+        "CROSS09"
+      ],
+      "title": "Building evidence-based knowledge graphs from full-text literature for disease-specific biomedical reasoning",
+      "year": 2026,
+      "primary_url": "https://arxiv.org/html/2603.28325v1",
+      "registry_files": [
+        "cross_cutting_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL01",
+      "topic_ids": [
+        "EVAL01"
+      ],
+      "title": "Cochrane Handbook, Chapter 5: Collecting data",
+      "year": "current guidance, accessed 2026",
+      "primary_url": "https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-05",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL02",
+      "topic_ids": [
+        "EVAL02"
+      ],
+      "title": "GRADE: an emerging consensus on rating quality of evidence and strength of recommendations",
+      "year": 2008,
+      "primary_url": "https://pmc.ncbi.nlm.nih.gov/articles/2335261/",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL03",
+      "topic_ids": [
+        "EVAL03"
+      ],
+      "title": "RoB 2: a revised tool for assessing risk of bias in randomised trials",
+      "year": 2019,
+      "primary_url": "https://doi.org/10.1136/bmj.l4898",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL04",
+      "topic_ids": [
+        "EVAL04"
+      ],
+      "title": "CIViC Assertion, evidence level and evidence direction curation guidance",
+      "year": "living guidance, accessed 2026",
+      "primary_url": "https://docs.civicdb.org/en/latest/curating/assertions.html",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL05",
+      "topic_ids": [
+        "EVAL05"
+      ],
+      "title": "Benchmarking the impact of data leakage on the performance of knowledge graph embedding models for biomedical link prediction",
+      "year": 2026,
+      "primary_url": "https://pubmed.ncbi.nlm.nih.gov/42623034/",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL06",
+      "topic_ids": [
+        "EVAL06"
+      ],
+      "title": "Node-degree aware edge sampling mitigates inflated classification performance in biomedical random walk-based graph representation learning",
+      "year": 2024,
+      "primary_url": "https://doi.org/10.1093/bioadv/vbae036",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL07",
+      "topic_ids": [
+        "EVAL07"
+      ],
+      "title": "Open Graph Benchmark: Datasets for Machine Learning on Graphs; ogbl-biokg protocol",
+      "year": 2020,
+      "primary_url": "https://arxiv.org/abs/2005.00687",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL12",
+      "topic_ids": [
+        "EVAL12"
+      ],
+      "title": "On Calibration of Modern Neural Networks",
+      "year": 2017,
+      "primary_url": "https://proceedings.mlr.press/v70/guo17a.html",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL13",
+      "topic_ids": [
+        "EVAL13"
+      ],
+      "title": "Selective Classification for Deep Neural Networks",
+      "year": 2017,
+      "primary_url": "https://papers.neurips.cc/paper_files/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "EVAL14",
+      "topic_ids": [
+        "EVAL14"
+      ],
+      "title": "Conformal Prediction: A Gentle Introduction",
+      "year": 2023,
+      "primary_url": "https://arxiv.org/abs/2107.07511",
+      "registry_files": [
+        "evaluation_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT01",
+      "topic_ids": [
+        "INT01"
+      ],
+      "title": "Pharos 2023: an integrated resource for the understudied human proteome",
+      "year": 2023,
+      "primary_url": "https://doi.org/10.1093/nar/gkac1033",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT02",
+      "topic_ids": [
+        "INT02"
+      ],
+      "title": "Pharos400 Release Notes and TDL Updates",
+      "year": 2026,
+      "primary_url": "https://opendata.ncats.nih.gov/public/pharos/pharos400_readme.html",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT03",
+      "topic_ids": [
+        "INT03"
+      ],
+      "title": "Biolink Model: A universal schema for knowledge graphs in clinical, biomedical, and translational science",
+      "year": 2022,
+      "primary_url": "https://doi.org/10.1111/cts.13302",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT04",
+      "topic_ids": [
+        "INT04"
+      ],
+      "title": "A Simple Standard for Sharing Ontological Mappings (SSSOM)",
+      "year": 2022,
+      "primary_url": "https://doi.org/10.1093/database/baac035",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT05",
+      "topic_ids": [
+        "INT05"
+      ],
+      "title": "Prediction and curation of missing biomedical identifier mappings with Biomappings",
+      "year": 2023,
+      "primary_url": "https://doi.org/10.1093/bioinformatics/btad130",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT06",
+      "topic_ids": [
+        "INT06"
+      ],
+      "title": "Translator NodeNormalization",
+      "year": null,
+      "primary_url": "https://github.com/NCATSTranslator/NodeNormalization",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT07",
+      "topic_ids": [
+        "INT07"
+      ],
+      "title": "PROV-O: The PROV Ontology",
+      "year": 2013,
+      "primary_url": "https://www.w3.org/TR/prov-o/",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT08",
+      "topic_ids": [
+        "INT08"
+      ],
+      "title": "Systematic integration of biomedical knowledge prioritizes drugs for repurposing",
+      "year": 2017,
+      "primary_url": "https://doi.org/10.7554/eLife.26726",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT09",
+      "topic_ids": [
+        "INT09"
+      ],
+      "title": "Building a knowledge graph to enable precision medicine",
+      "year": 2023,
+      "primary_url": "https://doi.org/10.1038/s41597-023-01960-3",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT10",
+      "topic_ids": [
+        "INT10"
+      ],
+      "title": "An open source knowledge graph ecosystem for the life sciences",
+      "year": 2024,
+      "primary_url": "https://doi.org/10.1038/s41597-024-03171-w",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT11",
+      "topic_ids": [
+        "INT11"
+      ],
+      "title": "Introduction to GO annotations",
+      "year": null,
+      "primary_url": "https://www.geneontology.org/docs/go-annotations/",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT12",
+      "topic_ids": [
+        "INT12"
+      ],
+      "title": "Open Targets association scoring and data pipeline documentation",
+      "year": null,
+      "primary_url": "https://github.com/opentargets/platform-docs/blob/main/associations.md",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT13",
+      "topic_ids": [
+        "INT13"
+      ],
+      "title": "Gilda: biomedical entity text normalization with machine-learned disambiguation as a service",
+      "year": 2022,
+      "primary_url": "https://doi.org/10.1093/bioadv/vbac034",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "INT14",
+      "topic_ids": [
+        "INT14"
+      ],
+      "title": "Unifying the identification of biomedical entities with the Bioregistry",
+      "year": 2022,
+      "primary_url": "https://doi.org/10.1038/s41597-022-01807-3",
+      "registry_files": [
+        "integration_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER01",
+      "topic_ids": [
+        "EVAL08",
+        "VER01"
+      ],
+      "title": "Fact or Fiction: Verifying Scientific Claims",
+      "year": 2020,
+      "primary_url": "https://aclanthology.org/2020.emnlp-main.609/",
+      "registry_files": [
+        "evaluation_sources_20261021.json",
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER02",
+      "topic_ids": [
+        "VER02"
+      ],
+      "title": "SciFact-Open: Towards open-domain scientific claim verification",
+      "year": 2022,
+      "primary_url": "https://aclanthology.org/2022.findings-emnlp.347/",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER03",
+      "topic_ids": [
+        "VER03"
+      ],
+      "title": "MultiVerS: Improving scientific claim verification with weak supervision and full-document context",
+      "year": 2022,
+      "primary_url": "https://aclanthology.org/2022.findings-naacl.6/",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER04",
+      "topic_ids": [
+        "EVAL10",
+        "VER04"
+      ],
+      "title": "Evidence Inference 2.0: More Data, Better Models",
+      "year": 2020,
+      "primary_url": "https://aclanthology.org/2020.bionlp-1.13/",
+      "registry_files": [
+        "evaluation_sources_20261021.json",
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER05",
+      "topic_ids": [
+        "VER05"
+      ],
+      "title": "A Corpus with Multi-Level Annotations of Patients, Interventions and Outcomes to Support Language Processing for Medical Literature",
+      "year": 2018,
+      "primary_url": "https://aclanthology.org/P18-1019/",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER06",
+      "topic_ids": [
+        "EVAL09",
+        "VER06"
+      ],
+      "title": "NLI4CT: Multi-Evidence Natural Language Inference for Clinical Trial Reports",
+      "year": 2023,
+      "primary_url": "https://aclanthology.org/2023.emnlp-main.1041/",
+      "registry_files": [
+        "evaluation_sources_20261021.json",
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER07",
+      "topic_ids": [
+        "VER07"
+      ],
+      "title": "SemEval-2024 Task 2: Safe Biomedical Natural Language Inference for Clinical Trials",
+      "year": 2024,
+      "primary_url": "https://aclanthology.org/2024.semeval-1.271/",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER08",
+      "topic_ids": [
+        "EVAL11",
+        "VER08"
+      ],
+      "title": "Evaluating Language Models for Biomedical Fact-Checking: A Benchmark Dataset for Cancer Variant Interpretation Verification",
+      "year": 2025,
+      "primary_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12458922/",
+      "registry_files": [
+        "evaluation_sources_20261021.json",
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER09",
+      "topic_ids": [
+        "VER09"
+      ],
+      "title": "MedCPT: Contrastive Pre-trained Transformers with large-scale PubMed search logs for zero-shot biomedical information retrieval",
+      "year": 2023,
+      "primary_url": "https://doi.org/10.1093/bioinformatics/btad651",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER10",
+      "topic_ids": [
+        "VER10"
+      ],
+      "title": "A dataset for evaluating clinical research claims in large language models",
+      "year": 2025,
+      "primary_url": "https://doi.org/10.1038/s41597-025-04417-x",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER11",
+      "topic_ids": [
+        "VER11"
+      ],
+      "title": "MS²: Multi-Document Summarization of Medical Studies",
+      "year": 2021,
+      "primary_url": "https://aclanthology.org/2021.emnlp-main.594/",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER12",
+      "topic_ids": [
+        "VER12"
+      ],
+      "title": "Automated Metrics for Medical Multi-Document Summarization Disagree with Human Evaluations",
+      "year": 2023,
+      "primary_url": "https://aclanthology.org/2023.acl-long.549/",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER13",
+      "topic_ids": [
+        "VER13"
+      ],
+      "title": "RobotReviewer: evaluation of a system for automatically assessing bias in clinical trials",
+      "year": 2015,
+      "primary_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4713900/",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    },
+    {
+      "canonical_id": "VER14",
+      "topic_ids": [
+        "VER14"
+      ],
+      "title": "CIViC MCP: integrating large language models with the Clinical Interpretations of Variants in Cancer",
+      "year": 2026,
+      "primary_url": "https://doi.org/10.1093/bioadv/vbag209",
+      "registry_files": [
+        "verification_sources_20261021.json"
+      ]
+    }
+  ]
+}

@@ -279,7 +279,7 @@ def configured_planner(provider=None, model=None):
 
 
 class ModelPlanner(JSONModelClient):
-    """HTTP planner using the same bounded JSON transport as source verification."""
+    """HTTP planner using the bounded JSON model transport."""
     def __init__(self, model=None, endpoint=None, api=None, transport=None, provider='api', protocol=None):
         self.protocol = selected_protocol(protocol)
         super().__init__(role='planner', provider=provider, model=model, endpoint=endpoint, api=api, transport=transport)

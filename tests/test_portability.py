@@ -22,11 +22,9 @@ from biograph_steward.model_transport import JSONModelClient, ModelUnavailable
 from biograph_steward.planning import ModelPlanner, configured_planner
 from biograph_steward.portability import BoundedQuestionWorkflow, runtime_status
 from biograph_steward.runtime import AccessPolicy, runs_directory, cache_directory
-from biograph_steward.verification import ModelVerifier, configured_verifier
 from biograph_steward.webapp import create_server
 from test_civic import fixture
 from test_planning import civic_plan, response
-from test_verification import task, verdict
 
 TOKEN = 'invented-workspace-token-for-tests-only'
 
@@ -64,66 +62,45 @@ class ModelTransportTests(unittest.TestCase):
         p, c = fixture(); from biograph_steward.graph import build_graph
         self.graph = build_graph(p, civic_snapshot=c)
 
-    def test_nim_planner_and_verifier_use_same_bounded_http_protocol(self):
-        t = task()
+    def test_nim_planner_uses_bounded_http_protocol(self):
         def reply(payload):
-            is_verifier = 'task_id' in payload['guided_json']['properties']
-            return 200, {}, json.dumps(chat(verdict(t) if is_verifier else civic_plan())).encode()
+            return 200, {}, json.dumps(chat(civic_plan())).encode()
         with mock_model(reply) as (endpoint, calls), patch.dict(os.environ, {'BIOGRAPH_MODEL_API_KEY': TOKEN}):
             planner = ModelPlanner(model='test-model', endpoint=endpoint, provider='nim')
-            verifier = ModelVerifier(model='test-model', endpoint=endpoint, provider='nim')
-            a = planner.plan('Inspect invented candidates.', self.graph); b = verifier.verify(t)
-        self.assertEqual([a['status'], b['status']], ['validated', 'validated'])
-        self.assertEqual(a['planner_kind'], 'live_nim'); self.assertEqual(b['verifier_kind'], 'live_nim')
-        self.assertEqual(len(calls), 2)
+            trace = planner.plan('Inspect invented candidates.', self.graph)
+        self.assertEqual(trace['status'], 'validated')
+        self.assertEqual(trace['planner_kind'], 'live_nim')
+        self.assertEqual(len(calls), 1)
         for call in calls:
             self.assertEqual(call['authorization'], 'Bearer ' + TOKEN)
             self.assertIn('guided_json', call['payload']); self.assertIn('max_tokens', call['payload'])
             for forbidden in ('store', 'max_completion_tokens', 'tools', 'tool_choice'):
                 self.assertNotIn(forbidden, call['payload'])
-        for trace in (a, b):
-            self.assertEqual(trace['model_calls'], 1); self.assertEqual(trace['transport_requests'], 1)
-            self.assertNotIn(TOKEN, json.dumps(trace))
+        self.assertEqual(trace['model_calls'], 1); self.assertEqual(trace['transport_requests'], 1)
+        self.assertNotIn(TOKEN, json.dumps(trace))
 
     def test_role_settings_override_shared_values_without_provider_fallback(self):
         env = {'BIOGRAPH_MODEL_PROVIDER': 'nim', 'BIOGRAPH_MODEL_ID': 'shared-model',
                'BIOGRAPH_MODEL_ENDPOINT': 'http://localhost:9999/v1/chat/completions',
                'BIOGRAPH_PLANNER_MODEL': 'planner-model', 'BIOGRAPH_PLANNER_API': 'chat_completions',
-               'BIOGRAPH_VERIFIER_MAX_OUTPUT_TOKENS': '2000'}
+               'BIOGRAPH_PLANNER_MAX_OUTPUT_TOKENS': '2000'}
         with patch.dict(os.environ, env):
-            a, b = configured_planner(), configured_verifier()
-            self.assertEqual((a.model, b.model), ('planner-model', 'shared-model'))
-            self.assertEqual((a.api, b.api), ('chat_completions', 'nim_chat'))
-            self.assertEqual(b.max_output_tokens, 2000)
-        for role in ('PLANNER', 'VERIFIER'):
-            with patch.dict(os.environ, {f'BIOGRAPH_{role}_PROVIDER': 'unknown'}):
-                with self.assertRaises(ModelUnavailable):
-                    (configured_planner if role == 'PLANNER' else configured_verifier)()
+            planner = configured_planner()
+            self.assertEqual(planner.model, 'planner-model')
+            self.assertEqual(planner.api, 'chat_completions')
+            self.assertEqual(planner.max_output_tokens, 2000)
+        with patch.dict(os.environ, {'BIOGRAPH_PLANNER_PROVIDER': 'unknown'}):
+            with self.assertRaises(ModelUnavailable):
+                configured_planner()
 
-    def test_invalid_quotes_and_tool_attempts_fail_without_repair(self):
-        t = task(); bad_quote = verdict(t); bad_quote['evidence'][0]['quote'] = 'altered'
-        tool = chat(verdict(t)); tool['choices'][0]['message']['tool_calls'] = [{'name': 'shell'}]
-        long = chat(verdict(t)); long['choices'][0]['finish_reason'] = 'length'
-        for raw in [chat(bad_quote), tool, long]:
+    def test_tool_attempts_and_truncated_outputs_fail_without_repair(self):
+        tool = chat(civic_plan()); tool['choices'][0]['message']['tool_calls'] = [{'name': 'shell'}]
+        long = chat(civic_plan()); long['choices'][0]['finish_reason'] = 'length'
+        for raw in [tool, long]:
             calls = []
             def transport(payload): calls.append(payload); return raw
-            trace = ModelVerifier(model='test', endpoint='http://localhost:9999', provider='nim', transport=transport).verify(t)
-            self.assertEqual(trace['status'], 'invalid_output'); self.assertIsNone(trace['verdict']); self.assertEqual(len(calls), 1)
-        self.assertEqual(ModelVerifier(model='test', endpoint='http://localhost:9999', transport=lambda _: chat(bad_quote),
-                                       api='chat_completions').verify(t)['invalid_references'], 1)
-
-    def test_api_and_nim_keep_schema_failures_in_the_evaluation_denominator(self):
-        from test_verification import RunnerTests
-        from biograph_steward.verification_evaluation import run_verification
-        fixture_case = RunnerTests(); fixture_case.setUp()
-        try:
-            for mode in ('api', 'nim', 'configured'):
-                adapter = ModelVerifier(model='test', endpoint='http://localhost:9999', api='chat_completions', transport=lambda _: {})
-                metrics = run_verification(fixture_case.benchmark, fixture_case.root/mode, mode=mode, verifier=adapter)
-                self.assertEqual(metrics['comparisons']['verifier']['error_rate'], 1)
-                self.assertEqual(metrics['comparisons']['verifier']['pairs'], 4)
-        finally:
-            fixture_case.doCleanups()
+            trace = ModelPlanner(model='test', endpoint='http://localhost:9999', provider='nim', transport=transport).plan('Question', self.graph)
+            self.assertEqual(trace['status'], 'invalid_plan'); self.assertIsNone(trace['plan']); self.assertEqual(len(calls), 1)
 
     def test_redirect_does_not_forward_credentials_or_make_a_second_request(self):
         with mock_model(lambda _: (200, {}, json.dumps(chat(civic_plan())).encode())) as (target, second):
@@ -173,8 +150,8 @@ class ModelTransportTests(unittest.TestCase):
         calls = []
         def timeout(payload):
             calls.append(payload); raise TimeoutError('PRIVATE EXCEPTION')
-        trace = ModelVerifier(model='test', endpoint='http://localhost:9999', provider='nim', transport=timeout).verify(task())
-        self.assertEqual(trace['status'], 'model_error'); self.assertIsNone(trace['verdict'])
+        trace = ModelPlanner(model='test', endpoint='http://localhost:9999', provider='nim', transport=timeout).plan('Question', self.graph)
+        self.assertEqual(trace['status'], 'planner_error'); self.assertIsNone(trace['plan'])
         self.assertEqual(len(calls), 1); self.assertNotIn('PRIVATE EXCEPTION', json.dumps(trace))
 
 
@@ -211,7 +188,7 @@ class HostingTests(unittest.TestCase):
             with patch.object(JSONModelClient, 'generate') as generate:
                 status = runtime_status(); generate.assert_not_called()
             self.assertEqual(runs_directory(), Path(root)/'runs'); self.assertEqual(cache_directory(), Path(root)/'cache')
-            self.assertTrue(status['planner']['configuration_valid']); self.assertTrue(status['verifier']['configuration_valid'])
+            self.assertTrue(status['planner']['configuration_valid']); self.assertNotIn('verifier', status)
             self.assertNotIn(TOKEN, json.dumps(status)); self.assertFalse((Path(root)/'runs').exists())
             with patch.dict(os.environ, {'BIOGRAPH_RUNS_DIR': root+'/other'}):
                 self.assertEqual(runs_directory(), Path(root)/'other')

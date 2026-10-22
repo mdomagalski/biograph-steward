@@ -41,6 +41,7 @@ Question outputs are written to a new directory, preserving source runs. The ZIP
 | `question.json` | Scope, bounded paths, results, complete cited evidence, coverage gaps and trace hashes. |
 | `summary.txt` | Plain-text summary, evidence references, limitations and source/review hashes. |
 | `paths.tsv` | One row per returned path, with protein, nodes, assertions, citations and review status. |
+| `evidence_context.tsv` | Source and local review status, molecular-profile/therapy/disease context where present, citations and hashes. |
 | `report.html` | Standalone read-only summary with expandable evidence and reproducible scope. |
 
 A human decision creates a new source run and clears the displayed answer. Re-run the question to use that review state; old question artifacts remain historical. No biomedical assertion is accepted by running a question. The full graph's `question_basis_sha256` is additive metadata; raw snapshots and existing claim IDs/revisions are preserved.
@@ -66,4 +67,4 @@ The saved 99-protein colorectal adenocarcinoma cohort yields **76 inspectable pr
 
 Tests cover exact disease scope, rejection of membership-only/context-generalized paths, acceptance of every path assertion, reverse PPI lookup, shared-path witnesses, bounded ordering, citation resolution, ambiguity, unknown coverage, snapshot/review trace changes, immutable exports, HTML escaping, API validation and saved-answer integrity. Browser QA verifies candidate exploration, compact summaries, citation-to-passport navigation and saved-question reopening. An explicitly synthetic reviewed path verifies accepted-only output; changing one assertion to provisional clears the answer and removes the path from the accepted result. No live biomedical assertion was accepted by these checks.
 
-The subsequent [CIViC increment](CIVIC_EVIDENCE.md) implements a separate molecular-profile/therapy response template with qualified conditions and overlap accounting. The protein-neighborhood template remains unchanged in scientific scope. Evidence-policy review, source-change comparison and the frozen measured cohort are next.
+The subsequent [CIViC increment](CIVIC_EVIDENCE.md) implements a separate molecular-profile/therapy response template with qualified conditions and overlap accounting. The protein-neighborhood template remains unchanged in scientific scope. Use the [current build plan](BUILD_PLAN.md) for remaining work; historical checkpoint recommendations do not define a new experiment.

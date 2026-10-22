@@ -90,6 +90,6 @@ Of the retained items, one shares an explicit PMID with retrieved Pharos publica
 - [Evidence model](https://docs.civicdb.org/en/latest/model/evidence.html) and [molecular-profile conditions](https://docs.civicdb.org/en/latest/about/faq.html)
 - [CIViC content license: CC0-1.0](https://docs.civicdb.org/en/latest/about/faq.html); source publication text and linked third-party content have their own terms.
 
-Next: evidence-policy review of the focused example, source-change comparison, and the independently selected CPTAC candidate population/measurement policy needed for the controlled evaluation.
+Current development priorities are in the [build plan](BUILD_PLAN.md). The INMC investigation is separate from this scoped CRC inspection workflow; neither source counts nor qualified detail establish predictive improvement.
 
 Local verified example: `http://127.0.0.1:8766/?run=crc_civic_final_20261015&question=civic_g13d_final_20261015`.

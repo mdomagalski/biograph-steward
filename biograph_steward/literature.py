@@ -19,7 +19,7 @@ def text(node):
 
 
 def fetch(url):
-    req = Request(url, headers={'User-Agent': 'BioGraphSteward/CRC-evidence-pilot read-only'})
+    req = Request(url, headers={'User-Agent': 'BioGraphSteward/source-retrieval read-only'})
     with urlopen(req, timeout=35) as response:
         raw = response.read(20_000_001)
     if len(raw) > 20_000_000:
@@ -149,25 +149,3 @@ def load_literature(path):
     if digest(papers) != manifest['papers_sha256'] or {p['pmid'] for p in papers} != set(manifest['requested_pmids']):
         raise ValueError('Literature inventory changed.')
     return manifest, {p['pmid']: p for p in papers}
-
-
-def source_document(paper, claim, view):
-    if view not in {'abstract', 'augmented'}:
-        raise ValueError('Unknown source view.')
-    chosen = list(paper['abstract'])
-    full = paper['full_text'] if view == 'augmented' else []
-    if full:
-        terms = set(re.findall(r'[a-z0-9]+', claim.casefold())) - {'the', 'and', 'with', 'for', 'from', 'that', 'were', 'was'}
-        order = sorted(range(len(full)), key=lambda i: (-len(terms & set(re.findall(r'[a-z0-9]+', full[i]['text'].casefold()))), i))[:12]
-        selected = sorted({j for i in order for j in [i - 1, i, i + 1] if 0 <= j < len(full)})
-        chosen += [full[i] for i in selected]
-    passages = []; used = 0
-    for p in chosen:
-        if len(passages) < 90 and used + len(p['text']) <= 28_000:
-            passages.append(p); used += len(p['text'])
-    document = {'title': paper['title'], 'sentences': [{'index': i, 'text': p['text']} for i, p in enumerate(passages)]}
-    return document, {'view': view, 'selection_policy': 'All abstract blocks, then top 12 lexical-overlap body paragraphs with immediate neighbors; bounded whole blocks.',
-                      'passages': [{'index': i, 'locator': p['locator'], 'section': p['section'], 'text_sha256': digest(p['text'])} for i, p in enumerate(passages)],
-                      'available_abstract_blocks': len(paper['abstract']), 'available_body_blocks': len(full),
-                      'selected_blocks': len(passages), 'full_text_exhaustively_reviewed': False,
-                      'limitation': 'Selected passages can omit material qualifiers or tables; insufficient information applies only to this supplied text.'}

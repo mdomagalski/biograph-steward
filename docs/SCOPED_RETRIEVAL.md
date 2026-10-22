@@ -60,7 +60,7 @@ Development runs `runs/crc_scoped_20261014/` and `runs/scoped_probe/` are **not 
 
 The retrieval checkpoint initially exposed new families as source context. Version 0.3 now normalizes GO, PPI, drug and expression records into qualified candidate assertions, while preserving the raw input and keeping publications as discovery records. See [the normalization contract and results](CONTEXT_NORMALIZATION.md). Acceptance, biological validation, chemical mapping and claim-specific citation support remain separate work.
 
-GTEx's separate endpoint, non-drug ligands, drug activities, GWAS, LINCS, GeneRIF text/full text and community API datasets are explicitly unrequested. GO negation/context not exposed by these fields is not inferred. The proposed variant–therapy evidence workflow and study-level overlap accounting remain subsequent work.
+GTEx's separate endpoint, non-drug ligands, drug activities, GWAS, LINCS, GeneRIF text/full text and community API datasets are explicitly unrequested. GO negation/context not exposed by these fields is not inferred. The separate [CIViC workflow](CIVIC_EVIDENCE.md) provides bounded variant–therapy annotations; underlying-study independence remains unresolved.
 
 All **85 tests passed**, including local HTTP tests. The suite covers pagination, caps, missing/changing counts, page overlap, null/error handling, cohort boundaries, tissue filtering, unchanged source envelopes, replay, exports and citation isolation. Browser checks passed for a live scoped build, saved-run loading, KRAS publication provenance, tissue filters, context pagination and the 9,640-record assertion table. No browser console errors were reported. Live data and generated reports remain ignored by Git and are not bundled as redistributable fixtures.
 
