@@ -1,0 +1,63 @@
+{
+  "AWS_used": false,
+  "Brev_used": false,
+  "assay_contract_file": "docs/evaluations/inmc_assay_contract_20261022.json",
+  "assay_contract_sha256": "af69729fae9ced83651b4dc4912e82bd2c03de51c53ab3ae3c0819d79388a4a7",
+  "contract_metadata_clarification": {
+    "change": "Explicitly disclose code-vocabulary decoding; no eligibility or outcome rule changed.",
+    "previous_copy": "runs/inmc_mapping_followup_20261022/assay_contract_initial_wording.json",
+    "previous_sha256": "462e9affa6a4fcdfd81d1740ca755ad52ae3cd92fa0b00517209b18088ecd7ab"
+  },
+  "date": "2026-10-22",
+  "frozen_registry_changed": false,
+  "individual_outcomes_opened": false,
+  "input_audit_counts": {
+    "distinct_context_accessions": 1797,
+    "gene_mapping_status": {
+      "unique": 1801,
+      "unresolved": 4
+    },
+    "genes_with_confirmed_reviewed_context": 1800,
+    "off_diagonal_pairs_both_exact_unique_gene_mapping": 2771,
+    "off_diagonal_pairs_both_single_unshared_reviewed_product": 2753,
+    "panel_duplicate_or_reverse_rows": 0,
+    "panel_genes": 1805,
+    "panel_genes_in_training": 1805,
+    "panel_off_diagonal_pairs": 2781,
+    "panel_pairs_in_training": 0,
+    "panel_rows": 3276,
+    "panel_self_pairs": 495,
+    "panel_unique_unordered_pairs": 3276,
+    "product_mapping_status": {
+      "multiple": 4,
+      "none": 5,
+      "shared_only": 19,
+      "unique": 1777
+    },
+    "shared_context_accessions": 12,
+    "training_genes": 8272,
+    "training_rows": 52548,
+    "training_unique_unordered_pairs": 52548
+  },
+  "interpretation": "Shared reviewed products are context links, not unique assay identities. Historical identifier observations are recorded without applying automatic replacements.",
+  "mapping_overrides_applied": 0,
+  "model_calls": 0,
+  "outcome_codes_processed_for_unassociated_vocabulary": true,
+  "pair_level_outcome_labels_inspected": false,
+  "registry_sha256": "1b801ad86c6f57d38e4112b55488ba8b7d82ef93e4aee638b9d816bcf1a3e988",
+  "scientific_performance_measured": false,
+  "source_inventory": {
+    "runs/inmc_mapping_followup_20261022/assay_contract_initial_wording.json": "462e9affa6a4fcdfd81d1740ca755ad52ae3cd92fa0b00517209b18088ecd7ab",
+    "runs/inmc_mapping_followup_20261022/input_audit_v2/context_targets.json": "d671121dc17dafbafeed1963d22d9b0fa42751381364ab98da2249b0c3d4f187",
+    "runs/inmc_mapping_followup_20261022/input_audit_v2/identifier_mappings.json": "d219ab94958494f2d93bd2a868336fa33139d21214ba2a830027d71bfde5e31d",
+    "runs/inmc_mapping_followup_20261022/input_audit_v2/report.json": "eb0dfc1ca11bcd14a6b9a84eafa3d4bbef0d8268dd0284f1e845e4de75828992",
+    "runs/inmc_mapping_followup_20261022/observations.json": "a421bdd218ff61000618f0b9b36c7369cbb9b25235cbf4438ca95caca73bb709",
+    "runs/inmc_mapping_followup_20261022/retrieval_followup.json": "2131b275e92f0c242a52193c89a913516884b04bc7ee7af98cf74649d11bf17b",
+    "runs/inmc_mapping_followup_20261022/retrieval_network_retry.json": "16725ffba28f168e03eecad28b9fb8ee615007c35e192e34c291188795e790eb"
+  },
+  "status": "assay_rule_declared_and_context_inventory_corrected",
+  "validation": {
+    "existing_registry_tests_passed": 9,
+    "input_audit_tests_passed": 9
+  }
+}

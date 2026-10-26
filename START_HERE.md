@@ -1,6 +1,6 @@
 # Start here
 
-BioGraph Steward lets the team inspect scoped biomedical evidence and follow each answer back to its source. The workbench is usable now; the matched graph-prediction comparison is being prepared separately.
+BioGraph Steward lets the team inspect scoped biomedical evidence and follow each answer back to its source. The workbench is usable now. A bounded graph-prediction comparison is complete; it did not demonstrate a consistent benefit from adding GO hierarchy.
 
 ## Start locally
 
@@ -24,6 +24,12 @@ Use Python 3.10 or newer. No pip installation is needed for the core app. Open `
 If real runs already exist, **Open a saved real example** or **Saved graphs and answers** opens them directly. A fresh checkout does not include live source snapshots.
 
 ## Retrieve actual Pharos evidence
+
+For a declared protein cohort, use **Build from a protein cohort**. Enter
+1–25 exact UniProt accessions, select the focus protein and source profile, then
+build. The graph and a cited candidate answer are saved together. The synthetic
+construction example exercises the same path without network access. See
+[construction and replay](docs/CONSTRUCTION.md) for limits and commands.
 
 Choose **Live Pharos API**, search for `colorectal`, and select the exact returned disease. Related disease names are not automatically equivalent.
 
@@ -52,4 +58,23 @@ For Docker/Brev and token-protected access, use [portability](docs/PORTABILITY.m
 
 ## Where development stands
 
-The active research task is the [INMC input-readiness investigation](docs/evaluations/INMC_INPUT_READINESS_20261022.md), followed by a frozen Pharos-versus-enriched graph comparison if the assay and source-overlap gates pass. Earlier experiments and their outcomes are in the [archive ledger](docs/EXPERIMENT_HISTORY.md), not the active product menus. The [build plan](docs/BUILD_PLAN.md) lists remaining work and challenge limitations.
+The [INMC comparison](docs/evaluations/INMC_COMPARISON_20261023.md) is complete and its test panel is consumed. The subsequent [Lambourne assay corroboration](docs/evaluations/LAMBOURNE_CORROBORATION_20261025.md) is also complete: all 3,222 nominated pairs are retained, with 2,676 assay eligible and 2,674 comparator eligible. Detection is 334/1,966 (17.0%) among Pharos-represented pairs versus 42/708 (5.9%) among resolved no-matches. Without observed HuRI/INMC pair overlap, rates are 74/1,619 (4.6%) versus 16/650 (2.5%). Study independence remains unresolved; this measures bounded assay concordance, not improvement caused by Steward. Both panels are now consumed.
+
+The deterministic construction milestone now connects a declared protein cohort to the existing retrieval adapters, a published workbench graph and a traceable answer/export. Agent-selected construction is still pending; current model planning queries saved disease graphs only. The [delivery sequence](docs/BUILD_PLAN.md#delivery-sequence-and-completion-criteria) separates product delivery, biological evaluation and the missing organizer gold reference. Earlier experiments and their outcomes remain in the [archive ledger](docs/EXPERIMENT_HISTORY.md).
+
+The [standards audit](docs/STANDARD_EXPORT.md) now publishes a bounded KGX
+projection with the full original source packet. It reports upstream schema
+and domain conflicts explicitly, so it is not a full conformance claim.
+The [reference decision](docs/literature/REFERENCE_COMPARATOR_DECISION_20261025.md)
+limits the completed assessment to retrospective corroboration; the lineage
+audit could not certify an independent prediction test. The completed
+[assay evidence publication](docs/ASSAY_EVIDENCE.md) exposes all 3,222 observations
+in a standalone immutable layer and offline viewer, with 2,676 qualified edges,
+3,173 protein nodes and all 546 excluded assays retained. Its 42 detected
+Pharos no-matches remain a bounded inspection filter. The
+[publication record](docs/evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md)
+preserves study/construct context, nondetections and original Pharos evidence;
+it does not automatically prune or accept interactions. General attachment to
+ordinary workbench runs is not yet implemented. Independent improvement
+evaluation remains separate, and this consumed panel cannot become an unseen
+test after prediction, enrichment or eligibility tuning.

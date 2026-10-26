@@ -3,7 +3,7 @@
 BioGraph Steward is a source-traceable biomedical evidence workbench built around **Pharos** and bounded **CIViC** evidence. Its current product flow is:
 
 ```text
-Choose an exact disease → retrieve a scoped graph → ask a guided question
+Choose an exact disease or protein cohort → retrieve a scoped graph → ask a guided question
 → inspect the cited answer and source context → review and export
 ```
 
@@ -19,10 +19,13 @@ Open `http://127.0.0.1:8765/`. A fresh checkout includes an explicitly synthetic
 
 ## Current capabilities
 
+- [Bounded cohort construction](docs/CONSTRUCTION.md): 1–25 exact protein accessions, a fixed source profile, published graph, cited candidate answer and offline-verifiable export. This deterministic flow needs no model.
 - Scoped Pharos retrieval with pagination, explicit limits and per-protein coverage reporting for pathways, GO, interactions, drugs, selected expression and publication discovery.
 - Qualified assertions, raw-source provenance, immutable snapshots and separate local human-review states.
 - Guided protein-neighborhood and CIViC molecular-profile/therapy questions, with compact evidence graphs, deterministic cited summaries and complete evidence-context exports.
 - Saved graphs and answers, source passports, and comparison of saved snapshots with guarded review carryover.
+- Source-bound graph handoff, explicit keep/prune/abstain files, and exact external-reference alignment with raw labels preserved; official gold scoring awaits its contract.
+- [Bounded KGX export audit](docs/STANDARD_EXPORT.md), with a complete preserved source packet, mapping ledgers and separate upstream validation results. Full standard conformance remains unresolved.
 - An optional bounded model planner that selects an existing read-only query. Deterministic guided questions work without it.
 - Local/Docker/Brev operation, protected shared access and persistent data directories. Model inference is optional.
 
@@ -30,11 +33,37 @@ These capabilities preserve and expose source evidence. They do not establish cl
 
 ## Current investigation
 
-The challenge calls for the **same graph learner on baseline and enriched graphs**, evaluated against held-out measured relationships. That comparison is still pending.
+The challenge calls for the **same graph learner on baseline and enriched graphs**, evaluated against held-out measured relationships. A bounded supporting comparison is now complete; the official organizer reference is still unavailable.
 
-We are preparing the published **INMC experimentally tested human protein-pair panel**, reusing PyKEEN's R-GCN and simpler controls. Runtime smoke tests passed on non-biomedical data. The input audit maps 1,801 of 1,805 panel gene identifiers; assay inclusion, mapping exceptions and consistent Pharos retrieval still need resolution before labels and a comparison are frozen. This is an assay-specific PPI component evaluation, not a CRC treatment-response task.
+Organizer Slack excerpts supplied October 23 also mention a **Pharos gold set**.
+Its artifact and scoring contract remain unavailable to us. The [local handoff interface](docs/GOLD_SET_INTERFACE.md) now exports verified graph packets and aligns explicitly mapped references without guessing label meanings. The study below is
+a provisional supporting evaluation, not a substitute for the official reference;
+see the [updated alignment](docs/PROJECT_ALIGNMENT.md#organizer-clarifications-supplied-october-23).
 
-Read the [reuse decision](docs/literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md), [input-readiness report](docs/evaluations/INMC_INPUT_READINESS_20261022.md), and [next steps](docs/BUILD_PLAN.md). No biological improvement is claimed.
+The published **INMC experimentally tested human protein-pair panel** was evaluated using native PyKEEN R-GCN and a ComplEx control. The [paired evaluation graphs](docs/evaluations/INMC_PAIRED_GRAPH_20261023.md) share 10,350 nodes and 2,570 qualified-scope Pharos GO annotation pairs; only 315 official GO hierarchy edges differ. All Pharos interactions are excluded from learner inputs, including the 277 reserved-pair exposures. After the graph/runtime/scorer freeze, all 12 model runs completed locally and the author reference reconciled. On 1,751 eligible measured pairs, mean AP changed from **0.719833 to 0.720135**, with mixed seed effects. [The result](docs/evaluations/INMC_COMPARISON_20261023.md) does **not** demonstrate a consistent hierarchy benefit. This is an assay-specific retrospective PPI component evaluation, not a CRC treatment-response task or an official challenge score. The panel is now a consumed holdout.
+
+Read the [reuse decision](docs/literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md), [assay/identity decision](docs/evaluations/INMC_READINESS_FOLLOWUP_20261022.md), [completed source audit](docs/evaluations/INMC_PHAROS_UNIFORM_20261022.md), [measured result](docs/evaluations/INMC_COMPARISON_20261023.md), and [next steps](docs/BUILD_PLAN.md). No general biological improvement is claimed.
+
+The subsequent [Lambourne assay corroboration](docs/evaluations/LAMBOURNE_CORROBORATION_20261025.md)
+is complete after freezing the author-consistent adapter, eligibility and Pharos
+comparator. All **3,222 nominated pairs** remain accounted for: 2,676 are assay
+eligible and 2,674 also have complete Pharos identity coverage. Detection is
+**334/1,966 (17.0%)** among represented pairs and **42/708 (5.9%)** among resolved
+no-matches. In the prespecified stratum without observed HuRI/INMC pair overlap,
+the rates are **74/1,619 (4.6%)** and **16/650 (2.5%)**. These are conditional
+assay-concordance results; study independence remains unresolved and Steward
+improvement was not tested. This panel is now consumed and cannot support new
+prediction, enrichment or protocol tuning as an unseen test.
+
+The [qualified assay evidence publication](docs/ASSAY_EVIDENCE.md) now preserves
+all 3,222 observations in a standalone immutable layer and offline inspection
+view: 2,676 qualified observation edges, 3,173 protein nodes and 546 excluded
+assays retained in the audit. The 42 detections without a bounded Pharos match
+are an inspection filter, not independently validated new interactions.
+Study/construct context, nondetections and original Pharos records remain
+explicit. See the [publication record](docs/evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md).
+General source attachment to ordinary workbench runs remains unimplemented;
+this publication does not establish prediction gain or replace independent evaluation.
 
 ## Repository scope
 
@@ -45,7 +74,10 @@ Read the [reuse decision](docs/literature/MEASURED_LINK_BENCHMARK_REUSE_20261022
 | Team walkthrough | [START_HERE](START_HERE.md) |
 | Current plan and challenge gaps | [Build plan](docs/BUILD_PLAN.md), [alignment](docs/PROJECT_ALIGNMENT.md) |
 | Evidence and source contracts | [Data contract](docs/DATA_CONTRACT.md), [Pharos retrieval](docs/SCOPED_RETRIEVAL.md), [CIViC](docs/CIVIC_EVIDENCE.md) |
+| Explicit cohort construction | [Request, publish, inspect and replay](docs/CONSTRUCTION.md) |
 | Questions, review and updates | [Guided questions](docs/GUIDED_QUESTIONS.md), [study context](docs/STUDY_CONTEXT.md), [snapshot comparison](docs/SNAPSHOT_REFRESH.md) |
+| Gold-reference handoff | [Packet export, edge decisions and exact alignment](docs/GOLD_SET_INTERFACE.md) |
+| Standards audit | [Bounded KGX projection and separate validator results](docs/STANDARD_EXPORT.md) |
 | Optional model and deployment | [Planner](docs/PLANNER_PROTOCOL.md), [portability](docs/PORTABILITY.md), [local Nemotron](docs/LOCAL_MODEL.md) |
 | Research and current scripts | [Literature knowledge base](docs/LITERATURE_REVIEW.md), [scripts](scripts/README.md) |
 

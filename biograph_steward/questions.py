@@ -12,6 +12,7 @@ from pathlib import Path
 from .client import digest, write_json
 
 TEMPLATE = "disease_protein_neighborhood.v1"
+COHORT_TEMPLATE = "cohort_protein_neighborhood.v1"
 RELATIONS = ("interactions", "shared_pathways")
 INSPECTABLE = {"candidate", "provisional", "accepted"}
 
@@ -43,9 +44,12 @@ def resolve_protein(graph, selector):
 
 
 def answer_question(graph, protein, *, relations=None, view="accepted", max_results=8,
-                    max_paths=2, template=TEMPLATE, source_run=None):
-    if template != TEMPLATE:
-        raise ValueError("Unsupported question template. Use the guided protein-neighborhood question.")
+                    max_paths=2, template=None, source_run=None):
+    cohort = graph.get("scope", {}).get("kind") == "protein_cohort"
+    expected_template = COHORT_TEMPLATE if cohort else TEMPLATE
+    template = expected_template if template is None else template
+    if template != expected_template:
+        raise ValueError("Unsupported question template for this graph scope. Use the matching guided protein-neighborhood question.")
     if view not in {"accepted", "candidates"}:
         raise ValueError("Evidence view must be accepted or candidates.")
     if type(max_results) is not int or not 1 <= max_results <= 30:
@@ -59,7 +63,7 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
     anchor = resolve_protein(graph, protein)
     nodes = {n["id"]: n for n in graph["nodes"]}
     seed_ids = {t["id"] for t in graph["targets"]}
-    did, disease = graph["disease_node_id"], graph["disease"]["name"]
+    did, disease = (None, None) if cohort else (graph["disease_node_id"], graph["disease"]["name"])
     edges = {e["id"]: e for e in graph["edges"]}
     usable, disease_links, memberships, interactions = {}, {}, defaultdict(dict), defaultdict(list)
     excluded = Counter()
@@ -80,6 +84,9 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
             excluded["context_qualified_assertions_outside_template"] += 1
             continue
         if a["kind"] == "disease_association":
+            if cohort:
+                excluded["disease_associations_outside_cohort_template"] += 1
+                continue
             if (a["subject"] not in seed_ids or a["object"] != did or a["qualifiers"].get("disease") != did):
                 excluded["other_disease_associations"] += 1
                 continue
@@ -120,7 +127,7 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
     total_paths, accepted_paths = 0, 0
     for uid in sorted(seed_ids - {anchor}, key=lambda x: (label(x).casefold(), x)):
         association = disease_links.get(uid)
-        if not association:
+        if not cohort and not association:
             continue
         chosen, path_count, accepted_count = [], 0, 0
         counts = Counter()
@@ -138,12 +145,19 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
 
         if "interactions" in relations:
             for annotation in sorted(interactions.get(uid, []), key=lambda a: a["id"]):
-                consider("interaction", [did, uid, anchor], [association, annotation])
+                if cohort:
+                    consider("interaction", [anchor, uid], [annotation])
+                else:
+                    consider("interaction", [did, uid, anchor], [association, annotation])
         if "shared_pathways" in relations:
             common = memberships.get(anchor, {}).keys() & memberships.get(uid, {}).keys()
             for wid in sorted(common, key=lambda x: (label(x).casefold(), x)):
-                consider("shared_pathway", [did, uid, wid, anchor],
-                         [association, memberships[uid][wid], memberships[anchor][wid]])
+                if cohort:
+                    consider("shared_pathway", [anchor, wid, uid],
+                             [memberships[anchor][wid], memberships[uid][wid]])
+                else:
+                    consider("shared_pathway", [did, uid, wid, anchor],
+                             [association, memberships[uid][wid], memberships[anchor][wid]])
         inspectable_proteins += bool(path_count)
         accepted_proteins += bool(accepted_count)
         total_paths += path_count
@@ -179,17 +193,20 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
             p["citation_ids"] = [citation_index[aid] for aid in p["assertion_ids"]]
             prefix = "Accepted path" if p["review_status"] == "accepted" else "Candidate path (requires review)"
             if p["kind"] == "interaction":
-                statement = f"Pharos reports an exact-term association between {label(uid)} ({uid}) and {disease}, and an interaction annotation connecting {label(uid)} with {label(anchor)}."
+                statement = (f"Pharos reports an interaction annotation connecting {label(anchor)} ({anchor}) with {label(uid)} ({uid})."
+                             if cohort else f"Pharos reports an exact-term association between {label(uid)} ({uid}) and {disease}, and an interaction annotation connecting {label(uid)} with {label(anchor)}.")
             else:
-                wid = p["node_ids"][2]
-                statement = f"Pharos reports an exact-term association between {label(uid)} ({uid}) and {disease}; {label(uid)} and {label(anchor)} have annotations for the shared pathway {label(wid)} ({wid})."
+                wid = p["node_ids"][1 if cohort else 2]
+                statement = (f"Pharos annotates {label(anchor)} ({anchor}) and {label(uid)} ({uid}) to the shared pathway {label(wid)} ({wid})."
+                             if cohort else f"Pharos reports an exact-term association between {label(uid)} ({uid}) and {disease}; {label(uid)} and {label(anchor)} have annotations for the shared pathway {label(wid)} ({wid}).")
             summary.append({"path_id": p["id"], "protein_id": uid, "review_status": p["review_status"],
                             "text": prefix + ": " + statement, "citation_ids": p["citation_ids"]})
     if not matches:
         overview = ("No fully accepted evidence paths were found in this saved cohort."
                     if view == "accepted" else "No inspectable evidence paths were found within this saved cohort and the selected relationships.")
     else:
-        overview = f"Showing {len(matches)} of {total_matches} matching proteins in the saved {disease} cohort, using {'accepted paths only' if view == 'accepted' else 'accepted and candidate paths for inspection'}."
+        scope_name = graph["scope"]["name"] if cohort else disease + " cohort"
+        overview = f"Showing {len(matches)} of {total_matches} matching proteins in the saved {scope_name}, using {'accepted paths only' if view == 'accepted' else 'accepted and candidate paths for inspection'}."
     coverage = graph.get("retrieval", {}).get("context", {})
     settings = graph.get("question_scope", {}).get("limits", {})
     selected_coverage = {family: deepcopy(coverage.get("summary", {}).get(family))
@@ -201,8 +218,15 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
             "Evidence references point to stored database assertions. Source records without explicit supporting references still require citation recovery.",
             "Records failing structural checks, unmapped pathway identities, and rejected, quarantined or obsolete assertions are excluded.",
             "Protein ordering is alphabetical; path order puts interactions before pathways, then sorts pathway labels. It is not a confidence ranking."]
+    if cohort:
+        gaps[0] = "Results cover the exactly resolved proteins in the declared cohort; cohort membership does not imply a disease association."
+        gaps.append("A missing path is not evidence of no biological relationship. Retrieval limits, unresolved identities and unreviewed evidence remain explicit.")
+        unresolved = [row for row in graph["scope"]["resolutions"] if row["status"] != "resolved"]
+        if unresolved:
+            gaps.append(f"{len(unresolved)} requested protein identifiers were not resolved exactly and could not form evidence paths; consult the cohort resolution records.")
     if graph["retrieval"].get("truncated"):
-        gaps.append("The disease cohort is capped; proteins outside the extract were not searched.")
+        gaps.append("The cohort retrieval is capped; records beyond the declared limits were not searched." if cohort else
+                    "The disease cohort is capped; proteins outside the extract were not searched.")
     if any(value is None for value in selected_coverage.values()):
         gaps.append("Per-family retrieval coverage is unavailable for some selected relationships. A preview pathway cap is not evidence of complete coverage.")
     for family, c in selected_coverage.items():
@@ -213,10 +237,10 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
             gaps.append(f"{family_label} retrieval has limits or unresolved coverage statuses; consult the scope report.")
     if graph["data_kind"] == "synthetic_demo":
         gaps.insert(0, "SYNTHETIC SOFTWARE DEMONSTRATION. All results are invented test data, not scientific evidence.")
-    used_nodes = {did, anchor} | {n for r in matches for p in r["paths"] for n in p["node_ids"]}
+    used_nodes = ({anchor} if cohort else {did, anchor}) | {n for r in matches for p in r["paths"] for n in p["node_ids"]}
     connection = "reported interaction annotations or shared pathway annotations" if len(relations) == 2 else (
         "reported interaction annotations" if relations[0] == "interactions" else "shared pathway annotations")
-    answer = {"question_format": "biograph-steward.guided-question.v1", "template": TEMPLATE,
+    answer = {"question_format": "biograph-steward.guided-question.v1", "template": template,
               "source_run": source_run, "data_kind": graph["data_kind"], "snapshot_sha256": graph["snapshot_sha256"],
               "snapshot_created_at": graph["snapshot_created_at"], "database_version": graph.get("db_version"),
               "graph_basis_sha256": graph_basis(graph), "review_events_sha256": digest(graph.get("review_events", [])),
@@ -235,6 +259,13 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
               "nodes": [deepcopy(nodes[uid]) for uid in sorted(used_nodes)], "limitations": gaps,
               "interpretation": "Database-reported evidence paths for inspection. Human acceptance records review; it does not establish experimental labels or clinical truth.",
               "engine": "deterministic_graph_query", "llm_used": False}
+    if cohort:
+        answer["question"] = f"Which other proteins in {graph['scope']['name']} have {connection} with {label(anchor)}?"
+        answer["plan"]["disease"] = None
+        answer["plan"]["scope"] = deepcopy(graph["scope"])
+        answer["plan"]["filter_policy"] = ("Exactly resolved cohort proteins and structurally usable interaction or shared-pathway annotations. "
+            "Every assertion in an accepted path must be accepted; no disease association is required or inferred.")
+        answer["plan"]["unsupported_requirements"] = ["disease association inference", "physical binding inference", "variant-specific response", "therapy resistance", "causal conclusions"]
     answer["answer_sha256"] = digest(answer)
     return answer
 

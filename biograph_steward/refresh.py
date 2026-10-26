@@ -201,6 +201,8 @@ def _load(directory):
 
 
 def _scope(snapshot):
+    if (snapshot.get('scope') or {}).get('kind') == 'protein_cohort':
+        raise ValueError('Cohort refresh comparison is not implemented. Publish a separate construction and preserve both runs.')
     context = snapshot.get('retrieval', {}).get('context')
     return {'data_kind': snapshot['data_kind'], 'endpoint': snapshot.get('endpoint'),
         'disease': {'id': snapshot['disease'].get('mondoID'),

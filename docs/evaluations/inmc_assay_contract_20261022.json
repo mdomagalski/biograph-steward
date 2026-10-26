@@ -1,0 +1,94 @@
+{
+  "adaptation": "Narrower complete-scored subset, not reproduction of the authors full-panel adjudication.",
+  "author_positive_workbook_sha256": "ddd4428ceb28f224802217509a740f86c824631623c9f805bf212904987d2b21",
+  "coverage_reporting": [
+    "all nominated/off-diagonal/self-pair denominators",
+    "complete-scored and each excluded code pattern",
+    "mapping and context coverage by stratum",
+    "graph-degree distribution by stratum",
+    "missing scores without shrinking the candidate set differently by arm"
+  ],
+  "decided_at": "2026-10-22T22:42:52.938687+00:00",
+  "eligibility": {
+    "all_fields_must_be_one_of": [
+      "Positive",
+      "Negative"
+    ],
+    "excluded_known_codes": [
+      "Auto-activator",
+      "Not tested",
+      "Not scored"
+    ],
+    "freq": "Opaque raw provenance only; never eligibility, label, feature, weight or ranking input.",
+    "otherwise_positive_partial_rows": "exclude_from_primary_too",
+    "required_fields": [
+      "score_assay1",
+      "score_assay2",
+      "score_assay3"
+    ],
+    "unexpected_or_empty_codes": "stop_materialization_for_source_review"
+  },
+  "evidence": [
+    {
+      "title": "Wang et al. 2023, INMC methods and Figure 5",
+      "url": "https://doi.org/10.1038/s41467-023-37079-7"
+    },
+    {
+      "title": "Luck et al. 2020, HuRI assay complementarity",
+      "url": "https://doi.org/10.1038/s41586-020-2188-x"
+    },
+    {
+      "title": "Choi et al. 2019, empirical assay benchmarking",
+      "url": "https://doi.org/10.1038/s41467-019-11809-2"
+    },
+    {
+      "title": "Lambourne et al. 2026, orthogonal assay and source-history benchmarking",
+      "url": "https://doi.org/10.1038/s41467-026-70942-x"
+    }
+  ],
+  "exposure": {
+    "author_positive_pairs_opened": false,
+    "binary_labels_derived": false,
+    "individual_assay_outcomes_opened": false,
+    "outcome_codes_processed_for_unassociated_vocabulary": true,
+    "pair_level_outcome_labels_inspected": false,
+    "scientific_predictions_generated": false
+  },
+  "format": "biograph-steward.inmc-assay-contract.v1",
+  "full_model_comparison_frozen": false,
+  "limitations": [
+    "Method-nominated and complete-scored populations are selected; failure missingness is not known to be random.",
+    "Shared Y2H technology between training scaffold and panel can reward assay-compatible patterns.",
+    "Current Pharos postdates the experiment; direct-pair masking alone does not establish temporal independence.",
+    "Unresolved construct/isoform identity is not repaired by a present-day gene-product cross-reference."
+  ],
+  "masking": "Mask all original candidate pairs and all linked-product equivalents, including reverse and self-equivalent projections, across raw evidence, graph assertions and derived features in both arms. Block PMID 36949045 and identifiable derivatives.",
+  "outcomes": {
+    "assay_detected": "Eligible row with at least one Positive.",
+    "assay_not_detected": "Eligible row with three Negative scores; not universal biological noninteraction.",
+    "duplicate_or_reverse_rows": "Stop for contradictory codes; preserve source orientation and report duplicates before deduplication.",
+    "unsupported_states": "Do not impute or use author-positive-list complement."
+  },
+  "population": {
+    "candidate_pairs": 3276,
+    "identity": "Original ENSG identifiers remain separate; unordered pair equivalence is used only for evaluation and masking.",
+    "mapping_or_context_missingness_excludes_pairs": false,
+    "off_diagonal_nominations": 2781,
+    "original_gene_ids": 1805,
+    "self_pairs_separate": 495
+  },
+  "reference_reconciliation": "After the full comparison freeze, reconcile eligible positives with author Fig.6. A discrepancy blocks performance reporting pending source review. The subset need not match published full-panel totals.",
+  "remaining_before_outcome_materialization": [
+    "audit uniform Pharos baseline and permitted enrichment",
+    "freeze shared scaffold and candidate-equivalence masks",
+    "freeze independent development data, learner budgets/seeds, scoring, missing-score policy and dependence-aware uncertainty",
+    "test eventual outcome adapter on synthetic patterns only"
+  ],
+  "source_archive_sha256": "2200fce435e0705470dda73f1dc870e6b6a7b9bee621c8697099dfd38b49ae62",
+  "source_member_sha256": {
+    "PPI-Prediction/Experimental validation/PPI_prediction_validation_result_20210624.xls": "062a8762ba05ba330a49386394e638926f6dc960cdc54bd1792a031cbeff18ca",
+    "PPI-Prediction/Interactomes/HuRI.csv": "c312a9ae5f24479944775287624604db6e449a435011874d201224263f3fdc4c"
+  },
+  "status": "assay_and_population_rules_fixed_before_pair_level_outcome_inspection",
+  "task": "Retrospective recovery of recorded Y2H detection outcomes among nominated off-diagonal pairs with three definitive assay codes."
+}

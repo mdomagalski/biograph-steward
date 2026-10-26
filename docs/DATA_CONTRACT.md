@@ -2,6 +2,15 @@
 
 Raw snapshots remain `biograph-steward.pharos.v1`. Derived graphs now use `biograph-steward.evidence-graph.v3`. Old snapshots are verified and transformed with current rules without modification. Old derived graphs are not silently rewritten. Replaying the same snapshot with a newer transformer can intentionally change disease-context mapping and audit counts.
 
+The additive explicit-cohort form uses `disease: null` and
+`scope.kind: protein_cohort`. Its ordered `requested_uniprot` list and
+`resolutions` preserve every requested accession, including `not_found` and
+`identity_mismatch` cases. Only exact resolutions become target records; no
+disease node or disease-membership assertion is inferred. The construction
+request, fixed tool/profile plan, raw exchanges and coverage are bound into the
+snapshot. See [construction publication](CONSTRUCTION.md) for the sealed receipt,
+recorded-response replay and source-bound export contract.
+
 ## A node
 
 `id`, `name`, `category`, `data_kind`, `identifier_mapped`, and optional `sym`, `tdl`, `family`, `source_identifier`, `url`.
@@ -11,7 +20,9 @@ Raw snapshots remain `biograph-steward.pharos.v1`. Derived graphs now use `biogr
 - A missing disease ontology ID is represented with a clearly local `pharos.disease:` identifier and causes associated edges to need review.
 - A source record naming a different disease gets a separate local disease node with that exact label; it is never attached to the selected disease. The application has not resolved that label to an ontology. A source record with no disease name is retained in input quarantine and creates no association edge.
 - Explicit Reactome pathway source IDs are preserved as `REACT:` identifiers. Other pathway records retain local `pharos.pathway:` IDs pending a verified crosswalk.
-- Demo nodes use `demo:` identifiers and cannot pass the normal live identifier parser.
+- The original disease demo uses `demo:` identifiers. The cohort construction
+  demo uses real-shaped accessions with invented records and remains explicitly
+  `synthetic_demo`; identifier syntax must never be used to infer source authenticity.
 
 ## An evidence edge
 
@@ -101,3 +112,21 @@ The `civic_variant_therapy.v1` question template uses profile results, complete 
 The planner catalogue omits reference plans, source statements and reviewer judgments. One strict JSON proposal selects an existing protein-neighborhood query, a complete-profile CIViC query or abstention. Validated application code executes at most one read-only local query. Invalid/incomplete/refused/unavailable model outputs remain explicit, with no model fallback. Request/schema/catalogue hashes and returned usage are traced; credentials are not persisted. See [the current planner contract](PLANNER_PROTOCOL.md).
 
 The retired frozen-source evaluation suites and their review worksheets remain source-bound historical artifacts in the [research archive](EXPERIMENT_HISTORY.md). They are not part of the current application command surface. Their labels and model judgments do not become local assertion acceptance or fresh prediction labels after consolidation.
+
+## Separate assay observation publication
+
+The additive [assay evidence publication](ASSAY_EVIDENCE.md) has its own local
+`biograph-steward.lambourne-assay-evidence.v1` contract and
+`biograph-steward.assay-observation-graph.v1` graph. It is not embedded in snapshot
+v1 or evidence-graph v3 and must not be represented as a normal Pharos run or
+validated KGX subset. It reuses existing qualified assertion semantics while
+preserving the complete consumed-assessment/source bundle.
+
+Its local `assay_observation` kind carries assay, observation ID, participant
+species and measured outcome. Eligible detected/nondetected observations have
+qualified edges; failed/ineligible observations remain in the complete ledger.
+The original AD/DB construct roles, confirmation values, source rows and Pharos
+lookup context remain distinct. Nothing is automatically accepted or pruned,
+and ordinary guided questions do not turn these observations into unqualified
+protein interactions. General saved-run attachment and maintenance are separate
+future integration tasks.

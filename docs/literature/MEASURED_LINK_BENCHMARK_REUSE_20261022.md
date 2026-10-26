@@ -2,6 +2,8 @@
 
 Date: October 22, 2026. Status: **candidate selected; upstream learner smoke-tested; biomedical preparation and comparison pending**.
 
+**Latest input decision:** the [assay and identity follow-up](../evaluations/INMC_READINESS_FOLLOWUP_20261022.md) fixes a complete-scored subset before outcome decoding and preserves shared gene–product context. The full model comparison and label materialization remain pending.
+
 **Subsequent preparation:** the [input-readiness audit](../evaluations/INMC_INPUT_READINESS_20261022.md) now records actual identifier/scaffold coverage, raw Pharos pair overlap, and an available author-exported positive reference. Partial-negative/failure semantics remain unresolved. Assay vocabulary was processed in that later audit without displaying per-pair outcomes or deriving binary labels. Statements below describe this earlier selection-stage exposure.
 
 ## Decision

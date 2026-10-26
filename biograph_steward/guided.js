@@ -5,7 +5,8 @@ function setupQuestion(){
   const previous=$('questionProtein').value;questionAnswer=null;questionId=null;questionSelection=null;
   $('questionProtein').replaceChildren();
   for(const t of graph.targets){const o=el('option',(t.symbol||t.id)+' | '+t.id);o.value=t.id;$('questionProtein').append(o);}
-  const preferred=graph.targets.find(t=>t.id===previous)||graph.targets.find(t=>t.symbol==='KRAS')||graph.targets[0];
+  const focus=graph.construction?.request?.focus_uniprot||graph.construction?.plan?.focus_uniprot||graph.scope?.focus_uniprot||graph.cohort?.focus_uniprot;
+  const preferred=graph.targets.find(t=>t.id===previous)||graph.targets.find(t=>t.id==='UniProtKB:'+focus)||graph.targets.find(t=>t.symbol==='KRAS')||graph.targets[0];
   if(preferred)$('questionProtein').value=preferred.id;
   $('questionOutput').classList.add('hidden');$('questionCitation').replaceChildren();
   $('questionRun').disabled=!runId||!graph.targets.length;
@@ -16,9 +17,11 @@ function updateQuestionPlan(){
   if(!graph)return;
   const t=graph.targets.find(t=>t.id===$('questionProtein').value),name=t?.symbol||t?.id||'a selected protein';
   const option=$('questionRelations').value,rel=option==='both'?'reported interactions or shared pathways':option==='interactions'?'reported interactions':'shared pathways';
-  $('questionText').textContent='Which other proteins associated with '+graph.disease.name+' have '+rel+' with '+name+'?';
-  $('questionPlan').textContent='Exact disease: '+graph.disease.name+' ('+(graph.disease.mondoID||graph.disease_node_id)+'). Search '+graph.targets.length+' retrieved proteins around '+name+'. '+($('questionView').value==='accepted'?'Use accepted paths only.':'Explore accepted and candidate paths; unreviewed evidence stays labeled.')+' Return up to '+$('questionLimit').value+' proteins and '+$('questionPaths').value+' paths per protein.';
-  $('questionScope').textContent=JSON.stringify({disease:graph.disease,protein:t?.id,cohort_targets:graph.targets.length,target_cohort_capped:graph.retrieval.truncated,limits:graph.question_scope?.limits,context_scope:graph.retrieval.context?.scope,filters:'Exact-term disease associations and structurally usable context. Rejected, quarantined and obsolete assertions are excluded.'},null,2);
+  const cohort=!graph.disease,scope=cohort?'in this protein cohort':'associated with '+graph.disease.name;
+  $('guidedQuestionDescription').textContent=cohort?'Find proteins in the declared cohort connected to a selected protein through reported interactions or shared pathway annotations.':'Find disease-associated proteins connected to a selected protein through reported interactions or shared pathway annotations.';
+  $('questionText').textContent='Which other proteins '+scope+' have '+rel+' with '+name+'?';
+  $('questionPlan').textContent=(cohort?'Explicit protein cohort. ':'Exact disease: '+graph.disease.name+' ('+(graph.disease.mondoID||graph.disease_node_id)+'). ')+'Search '+graph.targets.length+' retrieved proteins around '+name+'. '+($('questionView').value==='accepted'?'Use accepted paths only.':'Explore accepted and candidate paths; unreviewed evidence stays labeled.')+' Return up to '+$('questionLimit').value+' proteins and '+$('questionPaths').value+' paths per protein.';
+  $('questionScope').textContent=JSON.stringify({disease:graph.disease,cohort:graph.scope||graph.cohort||graph.question_scope?.cohort,protein:t?.id,cohort_targets:graph.targets.length,target_cohort_capped:graph.retrieval.truncated,limits:graph.question_scope?.limits,context_scope:graph.retrieval.context?.scope,filters:(cohort?'Declared cohort membership':'Exact-term disease associations')+' and structurally usable context. Rejected, quarantined and obsolete assertions are excluded.'},null,2);
 }
 function questionScopeChanged(){updateQuestionPlan();questionAnswer=null;questionId=null;$('questionOutput').classList.add('hidden');$('questionStatus').textContent='Scope changed. Find evidence paths to refresh the answer.';if(runId)history.replaceState(null,'','?run='+encodeURIComponent(runId));updateWorkNavigation();}
 function bindQuestionAnswer(answer,id){
@@ -65,10 +68,11 @@ function renderQuestion(){
 }
 function renderQuestionGraph(){
   const answer=questionAnswer,result=answer?.results.find(r=>r.protein.id===questionSelection);if(!result)return;
-  const nodes=new Map(answer.nodes.map(n=>[n.id,n])),did=answer.plan.disease.id,anchor=answer.plan.protein.id;
-  const pathwayIds=[...new Set(result.paths.filter(p=>p.kind==='shared_pathway').map(p=>p.node_ids[2]))];
-  const h=Math.max(270,pathwayIds.length*70+80),pos={[did]:{x:105,y:h/2},[result.protein.id]:{x:350,y:h/2},[anchor]:{x:865,y:h/2}};
-  pathwayIds.forEach((id,i)=>pos[id]={x:610,y:55+i*(h-110)/Math.max(1,pathwayIds.length-1)});
+  const nodes=new Map(answer.nodes.map(n=>[n.id,n])),did=answer.plan.disease?.id,anchor=answer.plan.protein.id;
+  const pathwayIds=[...new Set(result.paths.filter(p=>p.kind==='shared_pathway').flatMap(p=>p.node_ids.filter(id=>nodes.get(id)?.category==='biolink:Pathway')))];
+  const h=Math.max(270,pathwayIds.length*70+80),pos={[result.protein.id]:{x:did?350:150,y:h/2},[anchor]:{x:850,y:h/2}};
+  if(did)pos[did]={x:105,y:h/2};
+  pathwayIds.forEach((id,i)=>pos[id]={x:did?610:500,y:55+i*(h-110)/Math.max(1,pathwayIds.length-1)});
   const svg=svgEl('svg',{viewBox:'0 0 1000 '+h,role:'img','aria-label':'Evidence paths for '+(result.protein.sym||result.protein.id)});
   const required=new Set(result.paths.flatMap(p=>p.assertion_ids));
   for(const citation of answer.citations.filter(c=>required.has(c.assertion_id))){
@@ -76,7 +80,7 @@ function renderQuestionGraph(){
     const accepted=citation.review_state==='accepted',line=svgEl('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:accepted?'#147c83':'#b58236','stroke-width':3,'stroke-dasharray':accepted?'':'7 4',tabindex:0,role:'button','aria-label':'Inspect evidence '+citation.id});
     const title=svgEl('title');title.textContent='['+citation.id+'] '+relationLabel(citation.predicate)+' | '+citation.review_state;line.append(title);line.style.cursor='pointer';line.onclick=()=>inspectQuestionCitation(citation.id);line.onkeydown=e=>{if(e.key==='Enter')inspectQuestionCitation(citation.id);};svg.append(line);
   }
-  for(const [id,p] of Object.entries(pos)){const n=nodes.get(id),label=n.sym||n.name,g=svgEl('g');g.append(svgEl('rect',{x:p.x-92,y:p.y-20,width:184,height:40,rx:7,fill:id===did?'#fff0d4':n.category==='biolink:Pathway'?'#eeedf7':'#e2f2f1',stroke:'#76909d'}));const text=svgEl('text',{x:p.x,y:p.y+4,'text-anchor':'middle','font-size':12,fill:'#172b3a'});text.textContent=label.length>24?label.slice(0,23)+'…':label;const title=svgEl('title');title.textContent=label+' | '+id;g.append(text,title);svg.append(g);}
+  for(const [id,p] of Object.entries(pos)){const n=nodes.get(id);if(!n)continue;const label=n.sym||n.name||id,g=svgEl('g');g.append(svgEl('rect',{x:p.x-92,y:p.y-20,width:184,height:40,rx:7,fill:id===did?'#fff0d4':n.category==='biolink:Pathway'?'#eeedf7':'#e2f2f1',stroke:'#76909d'}));const text=svgEl('text',{x:p.x,y:p.y+4,'text-anchor':'middle','font-size':12,fill:'#172b3a'});text.textContent=label.length>24?label.slice(0,23)+'…':label;const title=svgEl('title');title.textContent=label+' | '+id;g.append(text,title);svg.append(g);}
   $('questionGraphTitle').textContent='Evidence graph: '+(result.protein.sym||result.protein.id)+' ↔ '+(answer.plan.protein.sym||anchor);
   $('questionGraph').replaceChildren(svg);$('questionGraphNote').textContent='Solid teal: accepted assertion. Dashed amber: requires review. Lines show reported relationships, without implying causal direction. Select a line or a summary reference to inspect its evidence.';
 }

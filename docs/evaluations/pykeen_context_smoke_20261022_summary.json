@@ -1,0 +1,75 @@
+{
+  "arms": {
+    "complex_scaffold": {
+      "adjacency_triples": null,
+      "initial_parameters_sha256": "61aea0add38709e9864390adfff0420a3f9e693ade1ee296ed31b21fdc87bcc3",
+      "optimizer_steps": 2,
+      "positive_batch_sha256": "f20b2da915e67748321675500b10a2df1bb94f6b3cb7575fd8eebc7ee9c397a8",
+      "reserved_or_dev_negative_proposals_removed": 40,
+      "status": "passed",
+      "supervision_triples": 12,
+      "training_seconds": 0.11625095800263807
+    },
+    "rgcn_context": {
+      "adjacency_triples": 18,
+      "initial_parameters_sha256": "d0e1f1e37ccc3a8c013b4054c106c18d7c7692282d3bfd17ae3216769ffb20d8",
+      "optimizer_steps": 2,
+      "positive_batch_sha256": "f20b2da915e67748321675500b10a2df1bb94f6b3cb7575fd8eebc7ee9c397a8",
+      "reserved_or_dev_negative_proposals_removed": 49,
+      "status": "passed",
+      "supervision_triples": 12,
+      "training_seconds": 0.12255708399607101
+    },
+    "rgcn_enriched": {
+      "adjacency_triples": 21,
+      "initial_parameters_sha256": "d0e1f1e37ccc3a8c013b4054c106c18d7c7692282d3bfd17ae3216769ffb20d8",
+      "optimizer_steps": 2,
+      "positive_batch_sha256": "f20b2da915e67748321675500b10a2df1bb94f6b3cb7575fd8eebc7ee9c397a8",
+      "reserved_or_dev_negative_proposals_removed": 46,
+      "status": "passed",
+      "supervision_triples": 12,
+      "training_seconds": 0.12101158400037093
+    },
+    "rgcn_scaffold": {
+      "adjacency_triples": 12,
+      "initial_parameters_sha256": "d0e1f1e37ccc3a8c013b4054c106c18d7c7692282d3bfd17ae3216769ffb20d8",
+      "optimizer_steps": 2,
+      "positive_batch_sha256": "f20b2da915e67748321675500b10a2df1bb94f6b3cb7575fd8eebc7ee9c397a8",
+      "reserved_or_dev_negative_proposals_removed": 41,
+      "status": "passed",
+      "supervision_triples": 12,
+      "training_seconds": 0.14027954199991655
+    }
+  },
+  "artifacts": {
+    "manifest.json": "d8ad11010ebc7ff8f82f81f9d666a6448940cf343938e828ad6ebf4a6eb66d78",
+    "report.json": "3bf511cc40f4fbf4e750e6ec5239db4072c7d8fda34109a28418ad393c5bb95c",
+    "runtime.log": "ab63809801e6c592c83a075545090ee4f722ed66d4425e5278ced38daef220b5"
+  },
+  "biological_quality_measured": false,
+  "biomedical_inputs_used": false,
+  "date": "2026-10-22",
+  "device": "cpu",
+  "earlier_attempt": "attempt1 passed; attempt2 adds initial-parameter hash verification and explicit negative-draw limitation.",
+  "format": "biograph-steward.pykeen-context-smoke-summary.v1",
+  "limitations": [
+    "Full supervision batch per epoch: verifies identical batch contents, not arbitrary minibatch schedules.",
+    "Negative proposals use the same sampler and filter contract; byte-identical draws across arms are not asserted.",
+    "Dropout disabled for this wiring smoke; scientific hyperparameters are not selected.",
+    "Same optimizer steps do not imply same wall-clock cost: RGCN adjacency sizes differ.",
+    "Synthetic scores and losses are engineering diagnostics, not prediction-quality metrics.",
+    "No biological scaling, CUDA environment, protocol freeze or dataset evaluation was exercised."
+  ],
+  "local_run_directory": "runs/pykeen_context_smoke_20261022/attempt2",
+  "packages": {
+    "numpy": "2.5.4",
+    "pykeen": "1.11.1",
+    "torch": "2.6.0"
+  },
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "probe_reserved_or_dev_negative_proposals_removed": 325,
+  "purpose": "engineering_only",
+  "python": "3.12.4",
+  "script_sha256": "c8122f7df2eb761036aec9531c3863c3e8f5b67bd6a9a29ae81a0087288478b5",
+  "status": "passed"
+}

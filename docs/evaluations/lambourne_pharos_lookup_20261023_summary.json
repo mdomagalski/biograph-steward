@@ -1,0 +1,497 @@
+{
+  "all_resolved_ppi_counts_reconciled": true,
+  "assay_eligibility_determined": false,
+  "author_commit": "fb05ab3ca2cc0fcaf402bb0df568e95a5158178b",
+  "author_panel_sha256": "477add8e6cfadc726a609b60cbc1089269741b0a00b75751cd37358fa40b28f2",
+  "candidate_property_distributions": [
+    {
+      "nonnumeric_observations": 40,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 40,
+      "property_name": "Data Source",
+      "source_bundle": "BioPlex"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 1.53957047,
+      "numeric_median": 0.034462414999999996,
+      "numeric_min": 0.00103909,
+      "numeric_observations": 40,
+      "observations": 40,
+      "property_name": "Novelty",
+      "source_bundle": "BioPlex"
+    },
+    {
+      "nonnumeric_observations": 17,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 17,
+      "property_name": "fam",
+      "source_bundle": "BioPlex"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.999999871,
+      "numeric_median": 0.9949286070000001,
+      "numeric_min": 0.897867292,
+      "numeric_observations": 40,
+      "observations": 40,
+      "property_name": "p_int",
+      "source_bundle": "BioPlex"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.09495164,
+      "numeric_median": 0.0046768695,
+      "numeric_min": 1e-09,
+      "numeric_observations": 40,
+      "observations": 40,
+      "property_name": "p_ni",
+      "source_bundle": "BioPlex"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.097527209,
+      "numeric_median": 4.295e-06,
+      "numeric_min": 1e-09,
+      "numeric_observations": 32,
+      "observations": 32,
+      "property_name": "p_wrong",
+      "source_bundle": "BioPlex"
+    },
+    {
+      "nonnumeric_observations": 40,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 40,
+      "property_name": "tdl",
+      "source_bundle": "BioPlex"
+    },
+    {
+      "nonnumeric_observations": 242,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 242,
+      "property_name": "Data Source",
+      "source_bundle": "BioPlex,Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 9.64444444,
+      "numeric_median": 0.016122434999999997,
+      "numeric_min": 9.731e-05,
+      "numeric_observations": 242,
+      "observations": 242,
+      "property_name": "Novelty",
+      "source_bundle": "BioPlex,Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.999,
+      "numeric_median": 0.999,
+      "numeric_min": 0.928,
+      "numeric_observations": 242,
+      "observations": 242,
+      "property_name": "Score",
+      "source_bundle": "BioPlex,Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 101,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 101,
+      "property_name": "fam",
+      "source_bundle": "BioPlex,Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 1.0,
+      "numeric_median": 0.99999403,
+      "numeric_min": 0.750000029,
+      "numeric_observations": 242,
+      "observations": 242,
+      "property_name": "p_int",
+      "source_bundle": "BioPlex,Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.249999971,
+      "numeric_median": 1.9334e-05,
+      "numeric_min": 1e-09,
+      "numeric_observations": 206,
+      "observations": 206,
+      "property_name": "p_ni",
+      "source_bundle": "BioPlex,Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.201066804,
+      "numeric_median": 6.000000000000001e-09,
+      "numeric_min": 1e-09,
+      "numeric_observations": 68,
+      "observations": 68,
+      "property_name": "p_wrong",
+      "source_bundle": "BioPlex,Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 242,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 242,
+      "property_name": "tdl",
+      "source_bundle": "BioPlex,Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 1142,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 1142,
+      "property_name": "Data Source",
+      "source_bundle": "BioPlex,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 14.23728814,
+      "numeric_median": 0.03154333,
+      "numeric_min": 6.103e-05,
+      "numeric_observations": 1142,
+      "observations": 1142,
+      "property_name": "Novelty",
+      "source_bundle": "BioPlex,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.999,
+      "numeric_median": 0.994,
+      "numeric_min": 0.15,
+      "numeric_observations": 1142,
+      "observations": 1142,
+      "property_name": "Score",
+      "source_bundle": "BioPlex,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 419,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 419,
+      "property_name": "fam",
+      "source_bundle": "BioPlex,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 1.0,
+      "numeric_median": 0.999885841,
+      "numeric_min": 0.750075331,
+      "numeric_observations": 1142,
+      "observations": 1142,
+      "property_name": "p_int",
+      "source_bundle": "BioPlex,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.249924636,
+      "numeric_median": 0.000159208,
+      "numeric_min": 1e-09,
+      "numeric_observations": 1050,
+      "observations": 1050,
+      "property_name": "p_ni",
+      "source_bundle": "BioPlex,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.152788552,
+      "numeric_median": 1.035e-07,
+      "numeric_min": 1e-09,
+      "numeric_observations": 300,
+      "observations": 300,
+      "property_name": "p_wrong",
+      "source_bundle": "BioPlex,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 1142,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 1142,
+      "property_name": "tdl",
+      "source_bundle": "BioPlex,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 474,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 474,
+      "property_name": "Data Source",
+      "source_bundle": "Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.78184288,
+      "numeric_median": 0.00641656,
+      "numeric_min": 1.819e-05,
+      "numeric_observations": 474,
+      "observations": 474,
+      "property_name": "Novelty",
+      "source_bundle": "Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.999,
+      "numeric_median": 0.994,
+      "numeric_min": 0.521,
+      "numeric_observations": 474,
+      "observations": 474,
+      "property_name": "Score",
+      "source_bundle": "Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 160,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 160,
+      "property_name": "fam",
+      "source_bundle": "Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 474,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 474,
+      "property_name": "tdl",
+      "source_bundle": "Reactome,STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 2752,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 2752,
+      "property_name": "Data Source",
+      "source_bundle": "STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 12.71700805,
+      "numeric_median": 0.01935799,
+      "numeric_min": 1.457e-05,
+      "numeric_observations": 2751,
+      "observations": 2751,
+      "property_name": "Novelty",
+      "source_bundle": "STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 0,
+      "numeric_max": 0.999,
+      "numeric_median": 0.941,
+      "numeric_min": 0.4,
+      "numeric_observations": 2752,
+      "observations": 2752,
+      "property_name": "Score",
+      "source_bundle": "STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 834,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 834,
+      "property_name": "fam",
+      "source_bundle": "STRINGDB"
+    },
+    {
+      "nonnumeric_observations": 2752,
+      "numeric_max": null,
+      "numeric_median": null,
+      "numeric_min": null,
+      "numeric_observations": 0,
+      "observations": 2752,
+      "property_name": "tdl",
+      "source_bundle": "STRINGDB"
+    }
+  ],
+  "code_sha256": {
+    "biograph_steward/client.py": "a9877c663c8790fd364d398b40f1f6cdf0d9ccd5b27378127cf4d3d3456bc3bb",
+    "biograph_steward/retrieval.py": "c8d4e24d9c4846bfd505d2db8a1a552b637dc1d43a2e154c835919e0aaf015b6",
+    "scripts/audit_lambourne_pharos_lookup.py": "79876932b3e641da2d6d969555062ebd430a8b5137bc51c29fe4890288f9846b",
+    "scripts/audit_lambourne_reference.py": "38ad78ec07753a5e6c53143cdb1fa5579277267bc08b915fd0a9a30da0c6fd15",
+    "scripts/audit_pharos_inventory.py": "68f97be0ee72a60f9464193c5f99fc947401567e015ebacf079e3c48259d236f",
+    "scripts/retrieve_pharos_inventory.py": "6b64d8753188d57965513f1ce54b147a00f7b44579c72157735323af00ec4391",
+    "tests/test_lambourne_pharos_lookup.py": "86db7e94459bc4994826f13662621835cc0efa1a390f4e375b0e2d84801cf56a",
+    "tests/test_pharos_inventory.py": "bdf03d558896fa697bfa7cf22120906cb753ff4ab08d24b1be113f00fb5eefcd"
+  },
+  "completed_chunks": 64,
+  "counts": {
+    "asymmetric_matching_pairs_both_resolved": 0,
+    "both_direction_matching_pairs": 2325,
+    "fully_resolved_no_observed_overlap_current_or_prior_any_route_pairs": 825,
+    "huri_either_mapping_pairs": 442,
+    "inmc_either_mapping_pairs": 7,
+    "newly_observed_pharos_pairs": 1678,
+    "no_observed_overlap_current_or_prior_any_route_pairs": 827,
+    "pair_lookup_statuses": {
+      "no_match_both_endpoints_resolved": 895,
+      "no_match_one_endpoint_resolved": 2,
+      "present_in_raw_ppi": 2325
+    },
+    "previous_pharos_pairs_not_returned_now": 0,
+    "provider_bundle_asymmetric_pairs_both_resolved": 0,
+    "published_pairs": 3222,
+    "raw_matching_pairs": 2325,
+    "raw_matching_source_views": 4650,
+    "raw_source_views": 552451,
+    "requested_products": 3173,
+    "resolution_statuses": {
+      "not_found": 1,
+      "resolved": 3172
+    },
+    "resolved_products": 3172,
+    "retained_matching_pairs": 2325,
+    "retained_matching_source_views": 4650,
+    "retained_source_views": 179330
+  },
+  "created_at": "2026-10-24T01:35:19.626394+00:00",
+  "db_version": "pharos319",
+  "endpoint": "https://pharos-api.ncats.io/graphql",
+  "format": "biograph-steward.lambourne-pharos-lookup-summary.v1",
+  "graph_published": false,
+  "independence_established": false,
+  "limitations": [
+    "A no-match applies only to the declared Pharos endpoint, accession identity and confidence filter.",
+    "Provider labels and scores are source properties, not independent studies or calibrated truth probabilities.",
+    "Properties remain grouped by exact provider bundle and property name; scores are never pooled across providers.",
+    "A returned identity mismatch is retained for investigation and never substituted for an author accession.",
+    "Exact product overlap and prior gene-crosswalk overlap do not resolve assayed isoform or construct identity.",
+    "All published identity pairs remain in the denominator, including unresolved targets and assay eligibility unknown.",
+    "No observed overlap does not establish source or temporal independence; pair-level source studies remain to audit.",
+    "API label pharos319 and count reconciliation do not certify upstream source import dates or an atomic database snapshot.",
+    "TargetNeighbor props may omit numeric zero; missing values are not filled from assumptions.",
+    "Five supported pair-detail probes and one unkeyed version request did not recover study lineage; other routes are not ruled out."
+  ],
+  "local_artifacts_sha256": {
+    "runs/lambourne_pharos_lookup_20261023/audit/pair_lookup.json": "7fe8b829debc9dbba938ef5020356aacada0ce66fada732f5e27a60e0edc4dae",
+    "runs/lambourne_pharos_lookup_20261023/audit/report.json": "5b7a3b46abdc719885a979559f2a38f043deb6b5c118bc571d06dcf812d22519",
+    "runs/lambourne_pharos_lookup_20261023/preparation/evidence_probe/metadata_schema_receipt.json": "ff9315fc5a88317327e475a3d79ee86a9b2d4088bf20c5eaa412d04d9d7fded1",
+    "runs/lambourne_pharos_lookup_20261023/preparation/evidence_probe/pair_details_receipt.json": "9c9d832d135e783d6f7d1d319c543e58dc0b9f7a4fd83d554aab5a66ffdd5a88",
+    "runs/lambourne_pharos_lookup_20261023/preparation/evidence_probe/review.json": "88c02b351a1c352dd0a6639ac8e9ea75ee433fd9055e1c4f479e7b0fecaeabae",
+    "runs/lambourne_pharos_lookup_20261023/preparation/evidence_probe/targetList_receipt.json": "084456531e3d403fec6521c9f86af65975c378df851defaea78e405ce10fa451",
+    "runs/lambourne_pharos_lookup_20261023/preparation/prior_code_sha256.json": "e34065d7e3cfae28d7f2aeb78fcbb636b3a2b314be4815144b966a48880ea1e0",
+    "runs/lambourne_pharos_lookup_20261023/preparation/schema_probe_receipt.json": "5582551289603bdef0289a997cb23fedb2409e1ca26f4f400af687714688a12b",
+    "runs/lambourne_pharos_lookup_20261023/retrieval/context_targets.json": "e529c1ab20bafc92382eb5a14bad1f79cc5cccd3a1eece9d184271b829483ee8",
+    "runs/lambourne_pharos_lookup_20261023/retrieval/plan.json": "d3f7e7f4901f7996fd5a18990897d9b8257dfbfdf06ec2c694841be208d27f45",
+    "runs/lambourne_pharos_lookup_20261023/retrieval/source.json": "91fc4f031418d312552a7ff63d2f2c9c26359bde55acc7429467cd82fa4d259d",
+    "runs/lambourne_pharos_lookup_20261023/retrieval/summary.json": "37fa31be269ea2a64795de50f55932120e1b7bce53a3364e4b2c161dc809866a",
+    "runs/lambourne_reference_audit_20261023/identity_audit_v3/report.json": "f4bd5e51a28935e9cf5d673f7c0e17c5b0492760eba2e8d15f2d07c938148cbd"
+  },
+  "matching_pairs_by_provider_bundle": {
+    "BioPlex": 20,
+    "BioPlex,Reactome,STRINGDB": 121,
+    "BioPlex,STRINGDB": 571,
+    "Reactome,STRINGDB": 237,
+    "STRINGDB": 1376
+  },
+  "outcome_fields_decoded": false,
+  "performance_evaluated": false,
+  "ppi_confidence_filter": 400,
+  "ppi_coverage": {
+    "available": 552451,
+    "excluded_by_scope": 373121,
+    "retained": 179330,
+    "retrieved": 552451,
+    "target_statuses": {
+      "complete": 3172
+    }
+  },
+  "ppi_limit_per_target": 5000,
+  "prior_identity_report_sha256": "f4bd5e51a28935e9cf5d673f7c0e17c5b0492760eba2e8d15f2d07c938148cbd",
+  "profile": "ppi",
+  "property_name_counts": {
+    "Data Source": 552451,
+    "Novelty": 551839,
+    "Score": 537189,
+    "fam": 220536,
+    "p_int": 38564,
+    "p_ni": 37989,
+    "p_wrong": 17053,
+    "tdl": 552451
+  },
+  "reference_named_property_counts": {},
+  "report_date_timezone": "America/New_York",
+  "retrieval_finished": true,
+  "retrieval_plan_sha256": "d01e7b258c948ac68ea9abcb285b3ba8ca9f8d7cdd94cfcccb3d3624a7d802cf",
+  "retrieval_summary_sha256": "56d08d492a783833d1204c4af2abbeea99fe2e2d9c735a75f7aec8e06cdc5b23",
+  "successful_chunk_source_envelopes": 2033,
+  "supplementary_capability_probe": {
+    "data_versions": {
+      "interpretation": "The current unkeyed response for the checked target did not supply STRING, BioPlex, Reactome or PPI source versions. This is not proof that no other API path or upstream metadata could supply them.",
+      "keys_argument_supplied": false,
+      "official_implementation_scope": "Target.dataVersions delegates to VersionInfo.getVersion(keys); the saved resolver ignores target identity. An omitted keys argument selects all input_version rows joined to ncats_dataSource.",
+      "requested_target": "P01116",
+      "returned_ppi_source_versions": [],
+      "returned_source_keys": [
+        "Expression",
+        "GTEx",
+        "JensenLab textmining mentions",
+        "NCBI",
+        "Uberon"
+      ]
+    },
+    "evidence_null_rows": 5,
+    "explicit_zero_recovered_rows": 1,
+    "interaction_type_null_rows": 5,
+    "limitations": [
+      "Five pair probes do not establish that evidence is absent for every PPI row.",
+      "Evidence is a free string; nonempty values would need semantic validation before treating them as publication or study identifiers.",
+      "Public source code commit is a verified implementation reference, not proof of the deployed server binary or database import revision.",
+      "Upstream source files and release-specific study lineage remain to audit; source bundle labels alone do not establish independence."
+    ],
+    "official_code_commit": "3feb5ac7e450b3c6b767651f0fe1f39994085380",
+    "pairs_checked": 5
+  },
+  "unresolved_accessions": [
+    {
+      "chunk": "chunks/01700.json",
+      "request_index": 7,
+      "requested_uniprot": "Q5TEC6",
+      "response_pointer": "/data/t0",
+      "returned": null,
+      "status": "not_found"
+    }
+  ],
+  "validation": {
+    "actual_source_reconciliation_passed": true,
+    "brev_used": false,
+    "focused_tests": {
+      "test_lambourne_pharos_lookup.py": 16,
+      "test_pharos_inventory.py": 24
+    },
+    "focused_tests_passed": 40,
+    "independent_raw_response_pair_join_passed": true,
+    "model_requests": 0
+  }
+}

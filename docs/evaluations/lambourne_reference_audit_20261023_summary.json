@@ -1,0 +1,189 @@
+{
+  "assay_eligibility_determined": false,
+  "author_commit": "fb05ab3ca2cc0fcaf402bb0df568e95a5158178b",
+  "author_files_sha256": {
+    "data/internal/ensembl_to_uniprot_mapping.tsv": "786cd83e026d752c9e7fde1a6827a2c18ce32fea2c955e91557e16b6c0ab30bb",
+    "data/internal/uniprot_ac_to_orf_id_used_for_Zhang_et_al_experiment.tsv": "b03bc31f4c0880697fd7a2d1bfe7a34889773e9317858986825910ffa77849d5",
+    "supplementary_tables/Y2H_v1_pairwise_test_AlphaFoldRoseTTAFold_human.tsv": "477add8e6cfadc726a609b60cbc1089269741b0a00b75751cd37358fa40b28f2"
+  },
+  "candidate_product_coverage": {
+    "not_previously_queried_products": 2741,
+    "previously_queried_products": 432,
+    "published_products": 3173
+  },
+  "created_at": "2026-10-23T21:46:15.986307+00:00",
+  "format": "biograph-steward.lambourne-identity-audit.v1",
+  "groups": {
+    "entire_author_export": {
+      "author_crosswalk_ambiguous_endpoint_pairs": 396,
+      "author_crosswalk_both_single_gene_pairs": 4104,
+      "author_crosswalk_missing_endpoint_pairs": 114,
+      "author_orf_crosswalk_mismatch_rows": 179,
+      "both_endpoints_queried_and_no_observed_overlap_pairs": 38,
+      "distinct_products": 4187,
+      "distinct_unordered_product_pairs": 4613,
+      "duplicate_or_reciprocal_mapped_rows": 160,
+      "huri_author_crosswalk_match_pairs": 465,
+      "huri_either_mapping_match_pairs": 469,
+      "huri_registry_match_pairs": 469,
+      "inmc_author_crosswalk_match_pairs": 27,
+      "inmc_either_mapping_match_pairs": 27,
+      "inmc_registry_match_pairs": 27,
+      "no_observed_pair_overlap_any_route_pairs": 3544,
+      "pharos_queried_endpoints_pairs": {
+        "0": 3357,
+        "1": 984,
+        "2": 272
+      },
+      "pharos_requested_endpoints_pairs": {
+        "0": 3357,
+        "1": 984,
+        "2": 272
+      },
+      "pharos_retained_match_pairs": 210,
+      "pharos_status_pairs": {
+        "not_found_both_endpoints_queried": 62,
+        "not_found_one_endpoint_queried": 379,
+        "present_in_saved_raw_ppi": 815,
+        "unassessed_neither_endpoint_queried": 3357
+      },
+      "rows_missing_product_identity": 2,
+      "self_pairs": 6,
+      "source_rows": 4775
+    },
+    "published_af_rf_nominations": {
+      "author_crosswalk_ambiguous_endpoint_pairs": 294,
+      "author_crosswalk_both_single_gene_pairs": 2914,
+      "author_crosswalk_missing_endpoint_pairs": 14,
+      "author_orf_crosswalk_mismatch_rows": 0,
+      "both_endpoints_queried_and_no_observed_overlap_pairs": 20,
+      "distinct_products": 3173,
+      "distinct_unordered_product_pairs": 3222,
+      "duplicate_or_reciprocal_mapped_rows": 0,
+      "huri_author_crosswalk_match_pairs": 440,
+      "huri_either_mapping_match_pairs": 442,
+      "huri_registry_match_pairs": 442,
+      "inmc_author_crosswalk_match_pairs": 7,
+      "inmc_either_mapping_match_pairs": 7,
+      "inmc_registry_match_pairs": 7,
+      "no_observed_pair_overlap_any_route_pairs": 2342,
+      "pharos_queried_endpoints_pairs": {
+        "0": 2330,
+        "1": 708,
+        "2": 184
+      },
+      "pharos_requested_endpoints_pairs": {
+        "0": 2330,
+        "1": 708,
+        "2": 184
+      },
+      "pharos_retained_match_pairs": 146,
+      "pharos_status_pairs": {
+        "not_found_both_endpoints_queried": 38,
+        "not_found_one_endpoint_queried": 207,
+        "present_in_saved_raw_ppi": 647,
+        "unassessed_neither_endpoint_queried": 2330
+      },
+      "rows_missing_product_identity": 0,
+      "self_pairs": 0,
+      "source_rows": 3222
+    }
+  },
+  "independence_established": false,
+  "inmc_archive_sha256": "2200fce435e0705470dda73f1dc870e6b6a7b9bee621c8697099dfd38b49ae62",
+  "limitations": [
+    "Nomination metadata is not assay eligibility; result column stays opaque.",
+    "No match in scoped/thresholded saved Pharos responses is not global absence.",
+    "Gene crosswalk matches flag possible overlap, not assayed isoform/construct identity.",
+    "Unmatched pairs may have shared studies or derivative evidence; no temporal independence certified.",
+    "Current Pharos source rows lack study-level provenance; provider labels are not independent evidence.",
+    "Duplicate or reciprocal rows retained; no outcome aggregation rule inferred."
+  ],
+  "local_artifacts_sha256": {
+    "runs/lambourne_reference_audit_20261023/author_review/historical_human_preprocessing_excerpt.py.txt": "3b19208518ade67f9b4bbb212df67e7db80dc08b2db63321cec39883dba8d362",
+    "runs/lambourne_reference_audit_20261023/author_review/historical_human_preprocessing_receipt.json": "398644cac473831f80f7f5e6e52da189da14484099332b7298986b1f34c95a1f",
+    "runs/lambourne_reference_audit_20261023/author_review/publisher_supplementary22.xlsx": "d02ad6b31e6c80e758211cf6cb303982e6f29ad6d8fc86f671ce6a183493d43d",
+    "runs/lambourne_reference_audit_20261023/identity_audit_v3/identity_rows.json": "6bd313bfb546ab5b86e7568b0d161eca06ae5ed557984291af398e1d402b5b9d",
+    "runs/lambourne_reference_audit_20261023/identity_audit_v3/pair_exposure.json": "9aeba18244e6bae6b6968fa930bd5479d3dced23a4e391d5e07b1ad62dd71bf7",
+    "runs/lambourne_reference_audit_20261023/identity_audit_v3/report.json": "f4bd5e51a28935e9cf5d673f7c0e17c5b0492760eba2e8d15f2d07c938148cbd",
+    "runs/lambourne_reference_audit_20261023/next_lookup_inventory.json": "e529c1ab20bafc92382eb5a14bad1f79cc5cccd3a1eece9d184271b829483ee8",
+    "runs/lambourne_reference_audit_20261023/repository_tree.json": "5ee2cbc3f407414cc69a0127943ebf497a878eecb3ef7c5417978c465af58b7e",
+    "runs/lambourne_reference_audit_20261023/source_receipts.json": "0cc1b2509bd07fe350827902f274b96af9e28b71f6340244c7f79e017ef7d279"
+  },
+  "nomination_metadata_counts": [
+    {
+      "metadata": [
+        "Lit-BM-24",
+        "Lit-BM-24",
+        "NULL",
+        "NULL"
+      ],
+      "rows": 222
+    },
+    {
+      "metadata": [
+        "RRS_UniProt",
+        "RRS_UniProt",
+        "NULL",
+        "NULL"
+      ],
+      "rows": 231
+    },
+    {
+      "metadata": [
+        "Zhang_et_al",
+        "Zhang_et_al",
+        "True",
+        "False"
+      ],
+      "rows": 824
+    },
+    {
+      "metadata": [
+        "Zhang_et_al",
+        "Zhang_et_al",
+        "True",
+        "True"
+      ],
+      "rows": 3222
+    },
+    {
+      "metadata": [
+        "hsPRS-v2",
+        "hsPRS-v2",
+        "NULL",
+        "NULL"
+      ],
+      "rows": 120
+    },
+    {
+      "metadata": [
+        "hsRRS-v2",
+        "hsRRS-v2",
+        "NULL",
+        "NULL"
+      ],
+      "rows": 156
+    }
+  ],
+  "outcome_fields_decoded": false,
+  "performance_evaluated": false,
+  "pharos_plan_sha256": "ad6d8ed9b55057e5f86e7414669c69b6a9318d5312cfd0eaeba1b82dad0d2e39",
+  "pharos_raw_records_scanned": 203054,
+  "pharos_reference_property_counts": {},
+  "pharos_resolved_queried_products": 1794,
+  "pharos_retained_records_scanned": 23968,
+  "pharos_summary_sha256": "35d865e26b73bf4386c17400f7e4eddb289de0bc01ba313ce119e6513610548a",
+  "pharos_version": "pharos319",
+  "registry_sha256": "1b801ad86c6f57d38e4112b55488ba8b7d82ef93e4aee638b9d816bcf1a3e988",
+  "script_sha256": "38ad78ec07753a5e6c53143cdb1fa5579277267bc08b915fd0a9a30da0c6fd15",
+  "source_receipts_sha256": "0cc1b2509bd07fe350827902f274b96af9e28b71f6340244c7f79e017ef7d279",
+  "validation": {
+    "brev_used": false,
+    "new_pharos_retrieval_started": false,
+    "outcome_decoder_added": false,
+    "scientific_accuracy_evaluated": false,
+    "synthetic_tests_passed": 20
+  },
+  "whole_export_orf_crosswalk_mismatch_rows": 179
+}

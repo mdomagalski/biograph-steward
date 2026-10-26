@@ -6,6 +6,15 @@ The primary app flow now asks a supported question over a saved, verified cohort
 
 This is a deterministic graph query with a bounded, cited summary. Free-form question interpretation, variant–therapy response and causal inference remain outside this template.
 
+The separate `cohort_protein_neighborhood.v1` template supports an explicitly
+constructed protein cohort: “Which other proteins in this cohort have reported
+interaction annotations or shared pathways with the selected protein?” It
+requires no disease association. Its paths are protein → protein or protein →
+pathway → protein; `plan.disease` is null and `plan.scope` retains the exact
+cohort and unresolved identities. The same review, citation and result-limit
+rules apply. [Construction publication](CONSTRUCTION.md) saves an initial
+candidate-view answer automatically; the original disease template is unchanged.
+
 ## Use the app
 
 Build or reopen a source run. **Ask a scoped question** appears first; retrieval controls and the full data/review workbench remain expandable.

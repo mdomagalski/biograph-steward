@@ -15,6 +15,29 @@ def audit_graph(graph: dict) -> dict:
     """Accept a graph built from a verified snapshot; preserve all evidence IDs."""
     from .graph import safe_url, text
 
+    if graph.get('scope', {}).get('kind') == 'protein_cohort':
+        return {
+            'audit_format': 'biograph-steward.benchmark-readiness.v2',
+            'status': 'not_applicable',
+            'scope': 'Disease-label readiness does not apply to an explicitly selected protein cohort.',
+            'data_kind': graph['data_kind'], 'disease': None, 'disease_id': None,
+            'snapshot_sha256': graph['snapshot_sha256'],
+            'counts': {
+                'proteins': len(graph['targets']), 'association_records': 0,
+                'other_disease_records': 0, 'proteins_without_selected_disease_evidence': None,
+                'unique_reported_pairs': 0, 'pairs_for_review': 0,
+                'pairs_without_review_candidate': 0, 'records_with_explicit_citation': 0,
+                'records_without_explicit_citation': 0,
+                'reviewed_positive_labels': 0, 'reviewed_negative_labels': 0,
+            },
+            'association_data_types': {}, 'reported_source_counts': {},
+            'excluded_record_reason_counts': {}, 'pairs': [], 'other_disease_edge_ids': [],
+            'required_actions': [{'code': 'evaluation_task_not_defined',
+                'message': 'Declare a reference task, source-overlap controls and a fixed comparison before using this graph for scientific evaluation.'}],
+            'interpretation': 'Cohort membership is a retrieval selection, not a disease association or benchmark label. '
+                              'Source annotations and unresolved identifiers remain inspectable; no predictive improvement has been measured.',
+        }
+
     did = graph['disease_node_id']
     nodes = {n['id']: n for n in graph['nodes']}
     proteins = {n['id'] for n in graph['nodes'] if n['category'] == 'biolink:Protein'}

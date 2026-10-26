@@ -38,7 +38,35 @@ The archive also retains source-curation audits, all intermediate failures, diag
 - NLI4CT public test reuse, checkpoint training/development overlap and the 128-case context diagnostic remain disclosed in their reports.
 - CIViC context-QA references are provisional AI-authored/reviewed development judgments, with disclosed trial overlap; exact citation binding is not an expert support label.
 - The CT-Corpus experiments inspected training material. Their 33 validation and 41 test publications remained reserved at this checkpoint. Moving the implementation does not authorize opening those labels.
-- The current INMC audit inspected source identities and assay-code vocabulary, not per-pair outcomes; it generated no binary labels or predictions. Its [readiness report](evaluations/INMC_INPUT_READINESS_20261022.md) defines the remaining gates.
+- The original INMC audit inspected identities/code vocabulary only. The subsequent [frozen restricted Pharos/GO comparison](evaluations/INMC_COMPARISON_20261023.md) opened the assay and author-positive reference on **October 23, 2026 at 15:10:21 UTC**, after completing all fixed predictions. The panel is now consumed: 1,751 primary pairs were scored, with no consistent hierarchy benefit demonstrated. It cannot become an unseen test again after model, source or qualification tuning. This new reusable evaluation pipeline is on the active branch, not in the older archive commit above.
+
+## Current reference exposure history
+
+The October 23 [external human PPI reference audit](evaluations/LAMBOURNE_REFERENCE_AUDIT_20261023.md)
+read Lambourne nomination metadata and identifiers, plus author preprocessing
+source. It downloaded opaque outcome-containing files but **did not decode
+pair-level assay results**, determine assay eligibility, train or score models.
+At that point the 3,222 published nominations were not a frozen test cohort. Their overlaps
+with consumed INMC pairs and known training/source pairs are recorded; changing
+reference publications does not reset those exposure boundaries.
+
+The subsequent [focused PPI lookup](evaluations/LAMBOURNE_PHAROS_LOOKUP_20261023.md)
+queried the complete author accession inventory and found 2,325 represented
+pairs. It preserved the prior snapshots and outcome boundary. No new assay
+eligibility selection, graph training or scoring occurred.
+
+The October 25 [frozen assay corroboration](evaluations/LAMBOURNE_CORROBORATION_20261025.md)
+subsequently opened outcomes at **October 26, 2026 00:28:58 UTC** (October 25
+locally). All 3,222 nomination statuses reconciled against the raw author
+export. Of 2,676 assay-eligible pairs, 2,674 had a resolved Pharos comparator:
+334/1,966 represented pairs were detected versus 42/708 resolved no-match
+pairs. Without either prespecified HuRI/INMC flag the fractions were 74/1,619
+and 16/650. All 546 assay exclusions and two unresolved pairs remain visible.
+This is retrospective assay corroboration, not independent Pharos accuracy
+or Steward improvement. **The panel is now consumed**; changes developed
+using it require a separate evaluation reference. No prior result or failure
+was overwritten. This implementation is on the active branch, not in the
+older archive commit.
 
 ## Reopening an archived file
 

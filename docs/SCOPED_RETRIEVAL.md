@@ -32,6 +32,25 @@ Metadata is collected in batches of five proteins. Ordinary pages contain at mos
 
 Counts for PPI sources overlap: only its `Total` count is the denominator. Expression counts describe all scanned tissues, not the retained tissue subset. Unknown counts stay null. Completeness is relative to the selected seed cohort and API filters; a target-capped disease cohort remains incomplete even if every fetched protein's annotations are complete.
 
+### Explicit inventory retrieval (October 22)
+
+The separate [inventory script](../scripts/retrieve_pharos_inventory.py) reuses
+this retriever for the current measured-link preparation. It does not use the
+disease-filtered `build_snapshot` entrypoint. The low-level API now accepts
+`expression_scope="all"` and a declared `ppi_cohort` covering the full inventory.
+These explicit options preserve all tissue observations and links across
+retrieval chunks; the existing workbench defaults above are unchanged.
+All-expression mode rejects a simultaneous tissue search. A declared PPI
+cohort must contain every target in the current chunk.
+
+The inventory script reserves the sum of the per-target limits for every
+requested accession, stores immutable completed chunks and raw envelopes,
+checks the API version before and after each chunk, and preserves the full
+gene/product inventory even when a target is unresolved. See [script
+instructions](../scripts/README.md). Its output is a source-staging packet,
+not a disease-workbench snapshot, an approved prediction graph, or an atomic
+copy of the full Pharos database.
+
 ## Verified local result
 
 Exact disease: **colorectal adenocarcinoma, MONDO:0005008**; all **99 of 99** reported targets. Local run: `runs/crc_scoped_verified_20261014/`.

@@ -50,7 +50,7 @@ def context_records(snapshot, quarantine=None):
     return sorted(groups.values(), key=lambda r: (r["symbol"] or "", r["family"], r["id"]))
 
 
-def attach_response_provenance(records, snapshot):
+def attach_response_provenance(records, snapshot, *, families=None):
     """Link retained context to exact raw response rows, including cache times."""
     lookup = {}
     for entry in records:
@@ -60,7 +60,7 @@ def attach_response_provenance(records, snapshot):
     envelopes = snapshot.get('requests', [])
     coverage = snapshot.get('retrieval', {}).get('context', {})
     for row in coverage.get('targets', []):
-        if row['family'] not in NOTES:
+        if row['family'] not in (NOTES if families is None else families):
             continue
         for page in row.get('pages', []):
             index = page['request_index']

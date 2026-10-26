@@ -1,0 +1,6 @@
+# Optional standards audit environment, Python 3.12. Kept outside the core app.
+kgx==2.7.0
+bmt==1.4.8
+linkml==1.10.0
+linkml-runtime==1.10.0
+jsonschema==4.26.0

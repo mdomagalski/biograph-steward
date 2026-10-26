@@ -69,7 +69,38 @@ class MappingTests(unittest.TestCase):
         self.assertEqual(row["product_status"], "multiple")
         self.assertEqual(len(row["protein_candidates"]), 4)
         self.assertEqual(row["unshared_reviewed_products"], ["UniProtKB:P00001", "UniProtKB:P00002"])
+        self.assertEqual(row["shared_reviewed_products"], ["UniProtKB:P00003"])
+        self.assertNotIn("UniProtKB:P00004", row["confirmed_reviewed_products"])
         self.assertFalse(row["assay_isoform_assignment_established"])
+
+    def test_shared_product_is_not_missing_and_retrieval_does_not_collapse_genes(self):
+        shared = {"uniprot_id": "UniProtKB:P00001", "status": "reviewed_human_hgnc_match",
+                  "shared_across_genes": True}
+        registry = SimpleNamespace(genes={
+            "HGNC:1": {"status": "Approved", "ensembl_gene_id": A},
+            "HGNC:2": {"status": "Approved", "ensembl_gene_id": B},
+        }, products=lambda gid: [shared])
+        rows = audit.map_identifiers({A, B, C}, registry)
+        self.assertEqual([row["product_status"] for row in rows], ["shared_only", "shared_only", "none"])
+        roster = audit.context_targets(rows)
+        self.assertEqual(roster["panel_gene_ids"], [A, B, C])
+        self.assertEqual(roster["panel_genes_without_confirmed_context"], [C])
+        self.assertEqual(len(roster["targets"]), 1)
+        target = roster["targets"][0]
+        self.assertEqual(target["panel_gene_ids"], [A, B])
+        self.assertEqual(target["hgnc_ids"], ["HGNC:1", "HGNC:2"])
+        self.assertTrue(target["shared_across_registry_genes"])
+        self.assertFalse(roster["evaluation_cohort_selected"])
+        self.assertFalse(roster["assay_construct_identity_established"])
+
+    def test_unconfirmed_product_never_enters_retrieval_roster(self):
+        registry = SimpleNamespace(genes={"HGNC:1": {"status": "Approved", "ensembl_gene_id": A}},
+            products=lambda gid: [{"uniprot_id": "UniProtKB:P00001", "status": "registry_conflict",
+                                    "shared_across_genes": False}])
+        rows = audit.map_identifiers({A}, registry)
+        self.assertEqual(rows[0]["product_status"], "unconfirmed")
+        self.assertEqual(audit.context_targets(rows)["targets"], [])
+        self.assertEqual(audit.context_targets(rows)["panel_genes_without_confirmed_context"], [A])
 
 
 if __name__ == "__main__":

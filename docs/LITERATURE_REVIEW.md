@@ -1,8 +1,70 @@
 # Literature knowledge base for BioGraph Steward
 
+**October 25 recency and validation follow-up:** a focused check of recent
+primary work supports the design principles below, without demonstrating a
+benefit for this implementation. This was not an exhaustive systematic update.
+
+- [Brière et al., Bioinformatics, August 2026](https://academic.oup.com/bioinformatics/article/42/8/btag608/8767164)
+  evaluate train/test redundancy and test-selection effects across biomedical
+  graphs; performance on an independent Orphanet reference can be much worse
+  than on conventional splits. The [author repository](https://github.com/galadrielbriere/data_leakage_kge_benchmark)
+  provides an MIT-licensed implementation. This supports our source-overlap
+  checks and restrained external-validity claims; it does not establish that
+  our frozen panel is independent. The code was inspected as a methods source,
+  not installed as a replacement learner or adopted as a new benchmark.
+- [Wang et al., DeepEvidence, July 2026](https://www.nature.com/articles/s42256-026-01266-0)
+  use question-driven exploration and explicit evidence graphs. Task-specific
+  benchmarks and expert rubrics assess different capabilities separately;
+  contextual conflict handling and uncertainty remain limitations. Our inference
+  is that an evidence graph and bounded tool selection are defensible design
+  choices. Their results do not transfer to our model, sources or task. Its
+  [official code](https://github.com/RyanWangZf/BioDSA/tree/main/biodsa/agents/deepevidence)
+  is a candidate for a future scoped reuse review, not a selected dependency.
+- [Lambourne et al., April 2026](https://www.nature.com/articles/s41467-026-70942-x)
+  distinguish interaction interpretations and evaluate experimental detection
+  with assay-specific sensitivity. This supports preserving assay context and
+  keeping nondetection separate from universal falsity. Reading public methods
+  and aggregate findings does not make our panel prospectively hidden; no
+  individual assay outcome table was opened in this follow-up.
+
+The practical conclusion is to execute the frozen, bounded corroboration
+assessment while closing engineering gaps separately. The [closure criteria](BUILD_PLAN.md#gap-closure-and-biological-validation)
+distinguish code-controlled acceptance tests, source/standard dependencies and
+the stronger reference requirements for demonstrating improvement.
+
+**October 25 decisions:** the [export-standard investigation](literature/EXPORT_STANDARD_REUSE_20261025.md)
+checks the actual pinned KGX/Biolink implementation, identifies reproduced
+schema/domain limits and adopts plain interchange rows with complete evidence
+sidecars. The [reference/comparator decision](literature/REFERENCE_COMPARATOR_DECISION_20261025.md)
+closes the Pharos PPI import-lineage audit as unresolved and selects retrospective
+assay corroboration against the frozen lookup, without certifying an independent
+prediction test or selecting another enrichment. These are dated additions to
+the earlier review, not a new literature census or biological result.
+
+**October 23 implementation follow-through:** the [restricted Pharos/GO graph report](evaluations/INMC_PAIRED_GRAPH_20261023.md)
+records the applied GAF-informed exclusions, original-identity masks, shared
+graph vocabulary and native three-hop R-GCN checks. Two reproduced PyKEEN 1.11.1
+integration issues use supported library paths, with pinned-source explanations.
+This implements the selected bounded study; it does not expand the historical
+literature census or establish biological improvement by itself.
+The [completed comparison](evaluations/INMC_COMPARISON_20261023.md) subsequently
+measured nearly unchanged AP with mixed seed effects. Hierarchy enrichment is
+not promoted as an improvement; the consumed panel cannot support fresh tuning
+claims.
+
 **Repository scope note (October 22):** this is a dated source/methods review. Its historical observations remain useful; the [current build plan](BUILD_PLAN.md) supersedes old next-step proposals. Closed study implementations and reports are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
 
 Review date: **October 21, 2026**. Status: structured literature and methods review, with primary papers, official documentation and artifact checks. It is not an exhaustive systematic review, an independent scientific audit of our graph, or a new performance result.
+
+**October 22 follow-up:** the [INMC assay and identity review](evaluations/INMC_READINESS_FOLLOWUP_20261022.md) records primary-methods support for a complete-scored Y2H endpoint, official shared-gene/product semantics and identifier-history evidence. It also checks the 2026 experimental assessment of AI interactome mapping for assay sensitivity and source-independence limitations. These are additional dated sources outside the original 47-family census; no new biological performance result was generated.
+
+**October 22 source and library follow-through:** the [GO qualification reuse review](literature/PHAROS_GO_QUALIFICATION_REUSE_20261022.md)
+verifies the Pharos319/400 delivery boundary, missing annotation qualifications,
+the official GAF representation/parser and known GO–PPI source confounding.
+The [native PyKEEN context smoke](evaluations/PYKEEN_CONTEXT_SMOKE_20261022.md)
+demonstrates separate adjacency and supervision factories, reserved-pair negative
+filtering and fixed-pair scoring on invented data. These are source and
+engineering findings, not an enriched biological graph or prediction result.
 
 ## Purpose and decision
 
@@ -90,9 +152,60 @@ This sequence proposes research-led checks. It does not authorize claims of impr
 
 ## Maintenance rule for this knowledge base
 
+**October 23 external-reference follow-through (G03/G04/G10):** the
+[Lambourne human panel audit](evaluations/LAMBOURNE_REFERENCE_AUDIT_20261023.md)
+reproduced 3,222 published nominations without decoding assay outcomes. It found
+647 pairs already represented in saved raw Pharos responses, 442 potential HuRI
+matches and seven INMC overlaps; these counts overlap. Neither endpoint had
+been queried for 2,330 pairs. The author repository history supplies the missing
+assay export transformation, including failed-test states and sorted identity
+semantics. A separate paper is therefore an external-study candidate, not an
+automatically independent test. Provider-specific source lineage and coverage
+remain unresolved; no model or new performance experiment was run.
+
+**October 23 coverage follow-up:** the [focused PPI lookup](evaluations/LAMBOURNE_PHAROS_LOOKUP_20261023.md)
+closes the unqueried-inventory gap: 3,172/3,173 exact resolutions and 2,325/3,222
+represented pairs, with all source counts reconciled. The supported Pharos
+pair-details and data-version queries were checked before proposing external
+retrieval. Five sampled details recover explicit null/zero values but no study
+lineage; the checked version response lacks PPI provider releases. Upstream
+study provenance remains unresolved, and no missing score or pair was relabeled
+as a negative. See that report for pinned official code, probes and limitations.
+
 For each future increment, cite the relevant source IDs and record the verified remaining gap. Recheck upstream version-dependent facts when implementation begins. Add a dated note when new evidence changes a conclusion; preserve prior evaluations. Record whether artifacts were merely described, inspected, reproduced or evaluated on our task. A failed reproduction is a result to retain, not a reason to replace the benchmark repeatedly.
 
-No scheduled monitoring was created. This review added documentation only: no model execution, compute start, graph migration, new biomedical assertion acceptance or reserved-label inspection.
+**October 25 assay follow-through (G03/G04/G10):** the
+[completed Lambourne corroboration](evaluations/LAMBOURNE_CORROBORATION_20261025.md)
+reused the official historical preprocessing, verified its nullable semantics
+with pandas 1.4.3 on synthetic cases, then froze the comparator before opening
+pair outcomes. All 3,222 nominations reconciled. Among eligible pairs,
+334/1,966 Pharos-represented and 42/708 resolved no-match pairs were detected;
+without the prespecified HuRI/INMC flags, the fractions were 74/1,619 and
+16/650. These are local observations, not a literature-established effect.
+They retain the documented distinction between assay detection, source
+representation and biological truth. Imported-study independence remains
+unresolved; no graph-change effect was tested. The public panel is now
+consumed. A qualified assay evidence overlay is a concrete next candidate,
+but its imported observations cannot also serve as its independent accuracy
+test. This adds an execution record, not a new broad literature-search count.
+
+**October 25 evidence-representation follow-through (G03/G04/G11):** the focused
+[IMEx/PSI-MI reuse gate](literature/ASSAY_EVIDENCE_REUSE_20261025.md) confirmed the
+existing method/participant/publication representation and conditional-negative
+curation limits. The paper's IM-30553 deposition was checked through documented
+public interfaces with a positive control; matching records were not returned,
+without concluding that curation had not occurred. The
+[bounded observation publication](evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md)
+therefore reuses the verified author tables, preserving all 3,222 observations
+and their assay/construct/source qualifications. It introduces no new learned
+score, pruning rule or benchmark. Its standalone inspection view makes source
+context available; user benefit and independent biological improvement remain
+unmeasured. This closes that finite implementation step rather than opening
+another source/model search.
+
+No scheduled monitoring was created. The original broad review added documentation
+only. Dated follow-through notes above disclose later execution and outcome
+access; they do not change the original review's scope.
 
 ## Relationship to earlier project reviews
 

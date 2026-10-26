@@ -1,0 +1,92 @@
+{
+  "format": "biograph-steward.construction-check.v1",
+  "run": "construction_crc_proteins_v3_20261023",
+  "source_snapshot_sha256": "7955768ab047fed8a7773237f678846dd2f251e06dba4a6b75e477c9572c583d",
+  "graph_sha256": "09a614a048a9924b09c300f8706af00a7639f55cad4ded57f2b7d80d5735ff4d",
+  "answer_sha256": "17f5c2cddcacc0a72905698cd4f514b46eee4472784709f6a3163cccfeb040bf",
+  "publication_receipt_sha256": "3f873226bb38b393b4f2352d73cef6c46df8c40d2b6cbc45a38c88774b05114b",
+  "database_version": "pharos319",
+  "accessions": [
+    "P00533",
+    "P01116",
+    "P15056"
+  ],
+  "exact_resolutions": 3,
+  "nodes": 1009,
+  "evidence_edges": 1103,
+  "assertions": 1103,
+  "assertion_states": {
+    "candidate": 1103,
+    "provisional": 0,
+    "accepted": 0,
+    "quarantined": 0,
+    "rejected": 0,
+    "obsolete": 0
+  },
+  "source_envelopes": 12,
+  "coverage": {
+    "pathways": {
+      "retrieved": 829,
+      "retained": 829,
+      "excluded_by_scope": 0,
+      "available": 829,
+      "target_statuses": {
+        "complete": 3
+      }
+    },
+    "go": {
+      "retrieved": 237,
+      "retained": 237,
+      "excluded_by_scope": 0,
+      "available": 237,
+      "target_statuses": {
+        "complete": 3
+      }
+    },
+    "ppis": {
+      "retrieved": 2303,
+      "retained": 6,
+      "excluded_by_scope": 2297,
+      "available": 2303,
+      "target_statuses": {
+        "complete": 3
+      }
+    },
+    "drugs": {
+      "retrieved": 34,
+      "retained": 34,
+      "excluded_by_scope": 0,
+      "available": 34,
+      "target_statuses": {
+        "complete": 3
+      }
+    },
+    "expressions": {
+      "retrieved": 0,
+      "retained": 0,
+      "excluded_by_scope": 0,
+      "available": 2638,
+      "target_statuses": {
+        "not_requested": 3
+      }
+    },
+    "publications": {
+      "retrieved": 60,
+      "retained": 60,
+      "excluded_by_scope": 0,
+      "available": 11772,
+      "target_statuses": {
+        "capped": 3
+      }
+    }
+  },
+  "matching_proteins": 2,
+  "summary_sentences": 4,
+  "citations": 6,
+  "edges_with_raw_source_locators": 1103,
+  "offline_source_bytes_unchanged": true,
+  "source_response_replay_passed": true,
+  "gold_packet_verified": true,
+  "llm_used": false,
+  "biological_validation_performed": false
+}

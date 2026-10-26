@@ -98,6 +98,64 @@ class RetrievalTests(unittest.TestCase):
         self.assertEqual(coverage['summary']['expressions']['target_statuses'],{'not_requested':2})
         self.assertEqual(coverage['summary']['expressions']['retrieved'],0)
 
+    def test_all_expression_scope_preserves_every_tissue_and_absence_observation(self):
+        api = ContextAPI()
+        targets = deepcopy(api.rows)
+        coverage = retrieve_context(PharosClient(transport=api), targets, DEFAULT_LIMITS,
+                                    expression_scope='all')
+        self.assertEqual(targets[0]['pharos_context']['expressions'],
+                         api.context['P04637']['expressions'])
+        self.assertEqual(coverage['summary']['expressions']['retrieved'], 3)
+        self.assertEqual(coverage['summary']['expressions']['retained'], 3)
+        self.assertEqual(coverage['summary']['expressions']['excluded_by_scope'], 0)
+        self.assertEqual(coverage['summary']['expressions']['target_statuses'], {'complete': 2})
+        self.assertEqual(coverage['scope']['expression_scope'], 'all')
+        self.assertIsNone(coverage['scope']['tissue_search'])
+        self.assertIn('no tissue filter', coverage['scope']['expression_search_semantics'])
+
+    def test_declared_ppi_cohort_retains_cross_chunk_links_without_fetching_extra_targets(self):
+        api = ContextAPI()
+        targets = deepcopy(api.rows[:1])
+        cohort = [row['uniprot'] for row in api.rows]
+        coverage = retrieve_context(PharosClient(transport=api), targets, DEFAULT_LIMITS,
+                                    ppi_cohort=cohort)
+        self.assertEqual([r['target']['uniprot'] for r in targets[0]['pharos_context']['ppis']], ['P00533'])
+        self.assertEqual(coverage['summary']['ppis']['retrieved'], 2)
+        self.assertEqual(coverage['summary']['ppis']['retained'], 1)
+        self.assertEqual(coverage['summary']['ppis']['excluded_by_scope'], 1)
+        self.assertEqual(coverage['scope']['seed_uniprots'], ['P04637'])
+        self.assertEqual(coverage['scope']['ppi_partners'], 'declared_cohort_only')
+        self.assertEqual(coverage['scope']['ppi_cohort_uniprots'], sorted(cohort))
+        self.assertEqual({value for call in api.calls for key, value in call['variables'].items()
+                          if key.startswith('id')}, {'P04637'})
+
+    def test_default_ppi_cohort_remains_requested_targets_only(self):
+        api = ContextAPI()
+        targets = deepcopy(api.rows[:1])
+        coverage = retrieve_context(PharosClient(transport=api), targets, DEFAULT_LIMITS)
+        self.assertEqual(targets[0]['pharos_context']['ppis'], [])
+        self.assertEqual(coverage['summary']['ppis']['excluded_by_scope'], 2)
+        self.assertEqual(coverage['scope']['ppi_partners'], 'selected_cohort_only')
+        self.assertNotIn('ppi_cohort_uniprots', coverage['scope'])
+        self.assertEqual(coverage['scope']['expression_scope'], 'tissue')
+        self.assertEqual(coverage['summary']['expressions']['target_statuses'], {'not_requested': 1})
+
+    def test_invalid_explicit_scopes_fail_before_network_requests(self):
+        invalid = [
+            {'expression_scope': 'unknown'}, {'expression_scope': []},
+            {'expression_scope': 'all', 'tissue_term': 'colon'},
+            {'ppi_cohort': 'P04637'}, {'ppi_cohort': ['P04637', 'P04637']},
+            {'ppi_cohort': ['P04637', '']}, {'ppi_cohort': ['P04637', {}]},
+            {'ppi_cohort': ['P00533']}, {'ppi_cohort': []},
+        ]
+        for kwargs in invalid:
+            with self.subTest(kwargs=kwargs):
+                api = ContextAPI()
+                with self.assertRaises(ValueError):
+                    retrieve_context(PharosClient(transport=api), deepcopy(api.rows[:1]),
+                                     DEFAULT_LIMITS, **kwargs)
+                self.assertEqual(api.calls, [])
+
     def test_zero_limit_never_sends_top_zero(self):
         api=ContextAPI();self.build(api,context_limits={k:0 for k in DEFAULT_LIMITS})
         self.assertFalse(any('Scoped_' in c['query'] for c in api.calls))

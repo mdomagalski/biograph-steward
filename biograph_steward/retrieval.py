@@ -104,16 +104,32 @@ def _target(data, alias, uid):
     return row
 
 
-def retrieve_context(client, targets, limits, tissue_term="", progress=None, *, row_budget=ROW_BUDGET, batch_sizes=None):
-    """Attach context to seed targets, retaining out-of-cohort PPIs only in raw responses."""
+def retrieve_context(client, targets, limits, tissue_term="", progress=None, *, row_budget=ROW_BUDGET, batch_sizes=None,
+                     expression_scope="tissue", ppi_cohort=None):
+    """Attach context with explicit expression and PPI endpoint scope.
+
+    A declared PPI cohort permits chunked retrieval without losing links between
+    chunks. Out-of-cohort PPIs remain only in the untouched source responses.
+    """
     limits, tissue_term = settings(limits, tissue_term)
+    if not isinstance(expression_scope, str) or expression_scope not in {"tissue", "all"}:
+        raise ValueError("Expression scope must be tissue or all.")
+    if expression_scope == "all" and tissue_term:
+        raise ValueError("All-expression scope cannot also specify a tissue search.")
     batch_sizes = batch_sizes or {}
     if (set(batch_sizes) - set(limits) or any(type(v) is not int or not 1 <= v <= BATCH_SIZE for v in batch_sizes.values())):
         raise ValueError("Family batch sizes must be between 1 and the normal request batch size.")
     ids = [t.get("uniprot") for t in targets]
     if any(not isinstance(uid, str) or not uid for uid in ids) or len(set(ids)) != len(ids):
         raise PharosError("Scoped retrieval requires distinct, nonempty seed UniProt identifiers.")
-    cohort = set(ids)
+    if ppi_cohort is not None:
+        if (not isinstance(ppi_cohort, list) or
+                any(not isinstance(uid, str) or not uid for uid in ppi_cohort) or
+                len(set(ppi_cohort)) != len(ppi_cohort)):
+            raise ValueError("PPI cohort must be a list of distinct, nonempty UniProt identifiers.")
+        if not set(ids).issubset(ppi_cohort):
+            raise ValueError("PPI cohort must include every requested target.")
+    cohort = set(ids if ppi_cohort is None else ppi_cohort)
     metadata = {}
     for start in range(0, len(ids), BATCH_SIZE):
         batch = ids[start:start + BATCH_SIZE]
@@ -138,7 +154,7 @@ def retrieve_context(client, targets, limits, tissue_term="", progress=None, *, 
                      "retrieved": 0, "retained": 0, "excluded_by_scope": 0,
                      "limit": limit, "status": "not_requested" if not limit else "pending",
                      "pages": [], "issues": [], "observed_counts": [total]}
-            if family == "expressions" and not tissue_term:
+            if family == "expressions" and expression_scope == "tissue" and not tissue_term:
                 state["status"] = "not_requested"
                 state["issues"].append("A tissue search is required; no disease-to-tissue mapping was inferred.")
             if state["status"] == "pending" and expected == 0:
@@ -201,8 +217,9 @@ def retrieve_context(client, targets, limits, tissue_term="", progress=None, *, 
                 if family == "expressions":
                     if any(not isinstance(r.get("tissue"), str) for r in page):
                         raise PharosError(f"Missing expression tissue for {uid}.")
-                    retained = [r for r in page if any(re.search(r"\b" + re.escape(word) + r"\b", r["tissue"], re.I)
-                                                     for word in tissue_term.split())]
+                    if expression_scope == "tissue":
+                        retained = [r for r in page if any(re.search(r"\b" + re.escape(word) + r"\b", r["tissue"], re.I)
+                                                         for word in tissue_term.split())]
                 c["retained"] += len(retained)
                 c["excluded_by_scope"] += len(page) - len(retained)
                 destination = s["target"] if family == "pathways" else s["target"]["pharos_context"]
@@ -230,11 +247,15 @@ def retrieve_context(client, targets, limits, tissue_term="", progress=None, *, 
                            "available": sum(r["available"] for r in selected) if all(r["available"] is not None for r in selected) else None,
                            "target_statuses": dict(Counter(r["status"] for r in selected))}
     result = {"profile": "scoped.v1", "limits_per_target": limits, "row_budget": row_budget,
-            "rows_retrieved": used, "scope": {"seed_uniprots": ids, "ppi_partners": "selected_cohort_only",
+            "rows_retrieved": used, "scope": {"seed_uniprots": ids,
+            "ppi_partners": "selected_cohort_only" if ppi_cohort is None else "declared_cohort_only",
             "ppi_confidence": 400, "tissue_search": tissue_term or None,
-            "expression_search_semantics": "Local case-insensitive whole-word OR matching of tissue labels after a bounded scan; not an ontology mapping. Pharos tissue full-text search failed in live validation (missing index).",
+            "expression_scope": expression_scope,
+            "expression_search_semantics": ("All expression endpoint rows within the declared limits; no tissue filter, disease mapping, or cross-source scale combination."
+                if expression_scope == "all" else "Local case-insensitive whole-word OR matching of tissue labels after a bounded scan; not an ontology mapping. Pharos tissue full-text search failed in live validation (missing index)."),
             "publications": "Target-linked discovery metadata in API order; not disease-specific supporting citations."},
             "not_requested": NOT_REQUESTED, "summary": summary, "targets": rows,
             "completeness_note": "Complete means fetched rows match reported counts for these seed targets and filters. Exhausted means a short page was observed without a matching count endpoint. Offset pagination is not an atomic upstream snapshot."}
     if batch_sizes: result['transport_batch_sizes'] = batch_sizes
+    if ppi_cohort is not None: result['scope']['ppi_cohort_uniprots'] = sorted(cohort)
     return result

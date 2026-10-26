@@ -1,0 +1,99 @@
+{
+  "format": "biograph-steward.assay-evidence-publication-summary.v1",
+  "date_local": "2026-10-25",
+  "publication_content_sha256": "315f666f686736e86241dc802d68d09f69a35860d4d7ae91d053447e085e22e9",
+  "publication_directory": "runs/lambourne_assay_evidence_20261025",
+  "created_at": "2026-10-26T00:54:37.415297+00:00",
+  "bindings": {
+    "protocol_sha256": "f3601f4e96393a2d1d2352e655ba0745000b5e4d209a83656a3cba08b0598351",
+    "result_sha256": "1738a688ad8709eb270a6a7fec6458c64add4ec9768e4f2526f1f35474be1aee",
+    "source_sha256": {
+      "panel": "477add8e6cfadc726a609b60cbc1089269741b0a00b75751cd37358fa40b28f2",
+      "raw": "51433c18341467df559096eba1bad6a98e7fe4976166a498d2881270586d7db2",
+      "orf_map": "b03bc31f4c0880697fd7a2d1bfe7a34889773e9317858986825910ffa77849d5"
+    },
+    "artifact_sha256": {
+      "rows": "c08a84bc4901c40e7506a8103e0805318a34d17ffa2169aa509945ab8ca3eb31",
+      "lookup": "7fe8b829debc9dbba938ef5020356aacada0ce66fada732f5e27a60e0edc4dae"
+    }
+  },
+  "summary": {
+    "observations": 3222,
+    "assay_status_counts": {
+      "autoactivator": 41,
+      "detected": 376,
+      "failed_sequence_confirmation": 478,
+      "not_detected": 2300,
+      "test_failed": 27
+    },
+    "assay_evaluable": 2676,
+    "assay_excluded": 546,
+    "comparator_evaluable": 2674,
+    "graph_nodes": 3173,
+    "graph_edges": 2676,
+    "graph_assertions": 2676,
+    "detected_without_bounded_pharos_match": 42,
+    "pharos_records_modified": 0,
+    "automatically_accepted_assertions": 0,
+    "independently_validated_new_interactions": null
+  },
+  "implementation_sha256": {
+    "scripts/publish_lambourne_evidence.py": "624e60e8213e3c0611954cf5ed24acc0da4affb02c7cf8f9d09b57eeb76d2be3",
+    "biograph_steward/lambourne_evidence.py": "90439f88cc6b4c9503f4c2c75d863ecc8caa70c7b07ce1836ea813b31a60f9d4",
+    "biograph_steward/assertions.py": "0d13da0cd1da3b9db3306bd2a0a8b1a5fda1635f6531e18c956d844d064eca0d",
+    "biograph_steward/graph.py": "8607348642663b25833f1397e591dc2de7c897a2e324c8abfd9e0dd45a3f8dea"
+  },
+  "files": {
+    "evidence.json": "adf357e3901b4d2eb5354b51b4d24d3dee78789d8839f65f7f5ef33f46d51aba",
+    "graph.json": "d11675a26c013abbb4355d6467286ad2e2c592ae4524c126a5a2894c010b9403",
+    "index.html": "0053b570fb63b27a18e8c36eb4dd46fa210047af5aa6c0fa957d376bb46fd593"
+  },
+  "validation": {
+    "core_regression": {
+      "tests_run": 675,
+      "skipped": 26,
+      "failures": 0,
+      "errors": 0,
+      "passed": true
+    },
+    "projection_tests": {
+      "tests_run": 12,
+      "passed": true
+    },
+    "publication_tests": {
+      "tests_run": 14,
+      "passed": true
+    },
+    "actual_publication_replay_passed": true,
+    "copied_original_files_byte_equal": true,
+    "copied_original_file_count": 25,
+    "preview_and_final_html_identical": true,
+    "browser": {
+      "status": "blocked",
+      "checks_completed": 0,
+      "page_opened": false,
+      "reason": "Preferred browser bootstrap rejected by macOS code-signature validation; browser bridge unavailable; native Chrome connection blocked and aborted.",
+      "unverified": [
+        "visual rendering",
+        "interactive filters",
+        "candidate shortcut",
+        "pagination",
+        "source-detail expansion",
+        "browser navigation of links"
+      ],
+      "automated_html_checks": "HTML payload escaping, filter controls and required outcome/lookup options passed in publication tests."
+    }
+  },
+  "literature_basis": "docs/literature/ASSAY_EVIDENCE_REUSE_20261025.md",
+  "literature_receipts_sha256": "5fc6792acc3b6ed8e6da7ca08052651d19e20b5c1af7fb0e7fec3c29b478c9ca",
+  "baseline_modified": false,
+  "automatic_pruning": false,
+  "independent_validation_performed": false,
+  "prediction_improvement_measured": false,
+  "standard_conformance_claimed": false,
+  "ordinary_workbench_attachment_implemented": false,
+  "outcomes_consumed": true,
+  "brev_used": false,
+  "scope": "Standalone qualified observation graph and offline source inspection; not a fresh scientific evaluation.",
+  "content_sha256": "085d454365d15c3f1824ce2ff91520c8ac9caf53e8918efca7cfeee65450002e"
+}

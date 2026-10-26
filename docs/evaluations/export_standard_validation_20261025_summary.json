@@ -1,0 +1,62 @@
+{
+  "assessment_date": "2026-10-25",
+  "assessment_timezone": "America/New_York",
+  "run": "runs/export_standard_validation_v2_20261025",
+  "profile": "biograph-steward.kgx-reactome-pathways.v1",
+  "source_packet_id": "packet:1464c710da2f26e14c31e2b847b1024fe90b199f8cce7057e1f865e376075839",
+  "source_graph_sha256": "09a614a048a9924b09c300f8706af00a7639f55cad4ded57f2b7d80d5735ff4d",
+  "projection_manifest_sha256": "b216f5e1529d367d117daf87c7b34b889d0c23d2c355789413f95a1f68ed3372",
+  "projection_sha256": "99edbde36e3b4d76ba53f0b0ad6de0b552a118513c194fbf78c15b6208279443",
+  "validation_content_sha256": "3ab75c1dee25a7e9d76013e171f84c35a7385ce8356971045f04bcc8094aa83a",
+  "counts": {
+    "source_nodes": 1009,
+    "source_edges": 1103,
+    "source_assertions": 1103,
+    "projected_nodes": 171,
+    "projected_edges": 236,
+    "excluded_edges": 867,
+    "exclusions_by_reason": {
+      "annotation_bundle_not_mapped_to_a_concrete_standard_interaction_predicate": 3,
+      "go_relation_polarity_and_extensions_unavailable": 237,
+      "listing_does_not_assert_a_standard_drug_target_relation": 34,
+      "pathway_requires_exact_mapped_reactome_identity_and_source": 593
+    }
+  },
+  "packages": {
+    "kgx": "2.7.0",
+    "bmt": "1.4.8",
+    "linkml": "1.10.0",
+    "linkml-runtime": "1.10.0",
+    "jsonschema": "4.26.0"
+  },
+  "validation": {
+    "kgx_status": "passed",
+    "kgx_roundtrip_status": "passed",
+    "roundtrip_changed_records": 0,
+    "published_json_schema_status": "failed",
+    "schema_errors": {
+      "node:enum": 171
+    },
+    "domain_status": "review_required",
+    "domain_issue_count": 236
+  },
+  "preserved_failed_integration_run": "runs/export_standard_validation_20261025",
+  "full_standard_conformance_claimed": false,
+  "biological_validation_performed": false,
+  "new_assay_outcomes_decoded": false,
+  "verification": {
+    "core_suite": {
+      "tests": 599,
+      "skipped": 23,
+      "failures": 0
+    },
+    "optional_validator_tests": {
+      "tests": 5,
+      "skipped": 0,
+      "failures": 0
+    },
+    "original_construction_verified": true,
+    "strict_offline_projection_verified": true
+  },
+  "content_sha256": "8cfb2823fb885c861a093463be6852672a1f26a6ddead3c3668ea8e556fd6f4e"
+}

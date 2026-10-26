@@ -15,6 +15,12 @@ def read_civic(source: Path):
 def read_run(source: Path) -> tuple[dict, list, dict]:
     source = Path(source)
     snapshot = json.loads((source / 'snapshot.json').read_text(encoding='utf-8'))
+    manifest_path = source / 'run_manifest.json'
+    manifest = json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.exists() else {}
+    if (manifest.get('run_mode') == 'construction' or (source / 'construction_receipt.json').exists()
+            or (snapshot.get('construction') and not manifest)):
+        from .construction import verify_construction_run
+        verify_construction_run(source)
     events_file = source / 'review_events.json'
     events = json.loads(events_file.read_text(encoding='utf-8')) if events_file.exists() else []
     return snapshot, events, build_graph(snapshot, events, read_civic(source))

@@ -39,6 +39,7 @@ def report_html(graph: dict | None = None, *, protected=False) -> str:
     script += '\n' + Path(__file__).with_name("planner.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("refresh.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("workspaces.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("construction.js").read_text(encoding="utf-8")
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
@@ -281,6 +282,10 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             match = re.fullmatch(r"/api/question/([A-Za-z0-9_-]{1,80})", path)
             if match:
                 from .questions import verify_answer
+                from .reviews import read_run
+                if (runs_dir / match.group(1)).is_symlink():
+                    self.json_reply({"error": "Question result not found"}, 404)
+                    return
                 folder = (runs_dir / match.group(1)).resolve()
                 if folder.parent != runs_dir or not (folder / "question.json").is_file():
                     self.json_reply({"error": "Question result not found"}, 404)
@@ -288,8 +293,13 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 try:
                     answer = json.loads((folder / "question.json").read_text(encoding="utf-8"))
                     verify_answer(answer)
+                    if answer.get('source_run') == folder.name:
+                        # Construction publishes the graph and initial answer in
+                        # one immutable run. Its receipt must be checked even if
+                        # the question alone has a valid content hash.
+                        read_run(folder)
                     self.json_reply({"question_id": match.group(1), "answer": answer})
-                except (ValueError, TypeError, OSError) as exc:
+                except (ValueError, TypeError, KeyError, OSError) as exc:
                     self.json_reply({"error": str(exc)}, 400)
                 return
             match = re.fullmatch(r"/api/download/([A-Za-z0-9_-]{1,80})", path)
@@ -316,7 +326,11 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         read_run(folder)
                     elif (folder / 'question.json').is_file():
                         from .questions import verify_answer
-                        verify_answer(json.loads((folder / 'question.json').read_text(encoding='utf-8')))
+                        answer = json.loads((folder / 'question.json').read_text(encoding='utf-8'))
+                        verify_answer(answer)
+                        if answer.get('source_run') == folder.name:
+                            from .reviews import read_run
+                            read_run(folder)
                     elif (folder / 'planner_trace.json').is_file():
                         trace = json.loads((folder / 'planner_trace.json').read_text(encoding='utf-8'))
                         if not isinstance(trace, dict) or trace.get('status') not in {'validated', 'invalid_plan', 'planner_error'}:
@@ -395,7 +409,10 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if not isinstance(source_id,str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}',source_id):raise ValueError('Invalid source run ID.')
                     source=(runs_dir/source_id).resolve()
                     if source.parent!=runs_dir or not source.is_dir():raise ValueError('Source run not found.')
-                    _,_,graph=read_run(source);planner=configured_planner();trace=planner.plan(body.get('question'),graph)
+                    _,_,graph=read_run(source)
+                    if graph.get('scope', {}).get('kind') == 'protein_cohort':
+                        raise ValueError('Use the guided protein-cohort question. Model planning for construction cohorts is not supported.')
+                    planner=configured_planner();trace=planner.plan(body.get('question'),graph)
                     qid='plan_'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'_'+uuid4().hex[:8]
                     folder=runs_dir/qid;folder.mkdir();write_json(folder/'planner_trace.json',trace)
                     if trace['status']!='validated':
@@ -407,6 +424,37 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if path == "/api/search":
                     client = PharosClient(endpoint, cache_dir=cache_dir, timeout=timeout)
                     self.json_reply(client.search(body.get("term", "")))
+                    return
+                if path == '/api/construct':
+                    from .construction import (demo_construction_snapshot, plan_construction,
+                                               publish_construction, run_construction)
+                    allowed = {'mode', 'accessions', 'focus_uniprot', 'profile', 'relations', 'refresh'}
+                    if set(body) - allowed:
+                        raise ValueError('Unsupported construction fields. Use a bounded protein cohort, focus protein and retrieval profile.')
+                    mode = body.get('mode', 'live')
+                    if mode not in {'live', 'demo'}:
+                        raise ValueError("Choose 'demo' or 'live' explicitly.")
+                    if 'refresh' in body and type(body['refresh']) is not bool:
+                        raise ValueError('refresh must be a boolean.')
+                    if mode == 'demo':
+                        if set(body) != {'mode'}:
+                            raise ValueError('The synthetic construction example has a fixed cohort and scope. Use only mode: demo.')
+                        snapshot = demo_construction_snapshot()
+                    else:
+                        request = {key: value for key, value in body.items() if key not in {'mode', 'refresh'}}
+                        # Validate every scope field before creating a transport
+                        # or accessing the public source.
+                        plan_construction(request)
+                    run_id = 'construct_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
+                    if mode == 'demo':
+                        result = publish_construction(snapshot, runs_dir / run_id)
+                    else:
+                        client = PharosClient(endpoint, cache_dir=cache_dir, timeout=timeout,
+                                              refresh=body.get('refresh', False))
+                        result = run_construction(client, request, runs_dir / run_id)
+                    self.json_reply({'run_id': run_id, 'graph': result['graph'],
+                                     'question_id': run_id if result['question'] is not None else None,
+                                     'question': result['question'], 'construction': result['construction']})
                     return
                 if path == "/api/question":
                     from .questions import answer_question, save_answer
@@ -443,6 +491,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if source.parent != runs_dir or not source.is_dir():
                         raise ValueError("Source run not found.")
                     snapshot, events, graph = read_run(source)
+                    if graph.get('scope', {}).get('kind') == 'protein_cohort':
+                        raise ValueError('CIViC retrieval and therapy questions require the existing disease-cohort workflow.')
                     if path == "/api/civic":
                         if graph.get("civic"):
                             raise ValueError("This run already includes CIViC. Reopen its saved evidence; source refresh reconciliation is not implemented.")

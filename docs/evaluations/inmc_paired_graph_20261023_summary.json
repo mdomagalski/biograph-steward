@@ -1,0 +1,157 @@
+{
+  "assay_outcomes_loaded": false,
+  "author_positive_pairs_opened": false,
+  "biological_accuracy_measured": false,
+  "counts": {
+    "GO": {
+      "additional_excluded_selected_rows": 37,
+      "ancestor_nodes_beyond_direct_terms_and_immediate_parents": 11,
+      "closure_nodes": 281,
+      "exclusion_reasons": {
+        "current_goa_context_extension_unresolved": 463,
+        "current_goa_distinct_product_form": 45,
+        "current_goa_masked_pair_with_from": 91,
+        "current_goa_possible_negation": 4,
+        "not_in_cellular_component_is_a_branch": 14895,
+        "obsolete_GO_term": 1947,
+        "outside_IDA_HDA_scope": 16682,
+        "outside_cellular_component_scope": 16145,
+        "protein_complex_subtree": 656
+      },
+      "hierarchy_edges": 315,
+      "hierarchy_edges_with_directly_annotated_child": 233,
+      "prequalification_closure_nodes": 285,
+      "prequalification_hierarchy_edges": 319,
+      "prequalification_pairs": 2607,
+      "prequalification_products": 995,
+      "prequalification_terms": 211,
+      "retained_annotation_pairs": 2570,
+      "retained_direct_terms": 207,
+      "retained_multiple_current_goa_matches": 14,
+      "retained_products": 991,
+      "retained_without_current_goa_match": 1924,
+      "selected_scope_diagnostic_exclusion_reasons": {
+        "current_goa_context_extension_unresolved": 35,
+        "current_goa_distinct_product_form": 4,
+        "current_goa_possible_negation": 1
+      },
+      "source_go_rows": 23283
+    },
+    "arms": {
+      "baseline": 103768,
+      "enriched": 104083,
+      "scaffold": 99394
+    },
+    "candidate_pairs": 3276,
+    "candidate_self_pairs": 495,
+    "development_pairs": 2611,
+    "entities": 10350,
+    "entity_types": {
+      "go_term": 281,
+      "original_gene": 8272,
+      "reviewed_product_context": 1797
+    },
+    "excluded_pharos_ppi_reserved_or_development_rows": 664,
+    "excluded_pharos_ppi_retained_rows": 23968,
+    "gene_product_context_links": 1804,
+    "masked_gene_pairs": 5894,
+    "masked_product_pairs": 3876,
+    "original_scaffold_pairs": 52548,
+    "panel_isolated_after_development": 16,
+    "scaffold_reserved_equivalent_exclusions": 0,
+    "supervised_directed_triples": 99394,
+    "supervised_unordered_pairs": 49937
+  },
+  "execution": {
+    "cuda_runtime": null,
+    "device": "cpu",
+    "packages": {
+      "numpy": "2.5.4",
+      "pykeen": "1.11.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "torch": "2.6.0"
+    },
+    "python": "3.12.4"
+  },
+  "files": {
+    "annotation_dispositions.jsonl": "a88000b270a21ba65e611ab775365a027863fb54f4a6e5a854687d9482261971",
+    "arms/baseline.tsv": "ef73ee78339b33ede66a2a1de7e43b2d5779f3afdd049d1f568c48b7168854d8",
+    "arms/enriched.tsv": "b135b0468fa2b530daef1d566522d8c1e71515f711c81c669eeba2ce02067bc5",
+    "arms/scaffold.tsv": "8591a1ca9a684f8e4f4595176495746a9a5cdf27096b99b35f04d5c6fd9de3bc",
+    "assay_contract.json": "af69729fae9ced83651b4dc4912e82bd2c03de51c53ab3ae3c0819d79388a4a7",
+    "candidates.json": "11a9d52d38d8e6e78732e96cc4b408974fdaa8e5468499396ecc9fad36899e0d",
+    "development_pairs.json": "5c230a4a05d24caa7d3c979cbd186c170f895eb723c0895413186ea5aa0977ca",
+    "entities.json": "bd36c5edd8dbcab64f86d4f66bd392ca84dd6d8d611c41b1837a960a1b1d04e5",
+    "excluded_pharos_ppi.jsonl": "e803c3db10d259532739d35aff272cc6c7d39b635f1401c99af0273265fb961d",
+    "excluded_source_families.json": "7382c215a37415a0461934808cd356b0a6818599c020a83fd879aa44de7a04f3",
+    "protocol.json": "606fdc338cdf2b8189ce082a7a20426be30dbbdd6a781757f4f86bf11b181592",
+    "relations.json": "d0a1b2215768e6455bb9627afe05f11839e74bf820952cc01f65e4e1b43ccd22",
+    "source_inventory.json": "d671121dc17dafbafeed1963d22d9b0fa42751381364ab98da2249b0c3d4f187",
+    "split.json": "a9a9cb6365516fd1079e3569e8d54957cfe3b4aab5fcb6600d0cd67f584737d5",
+    "supervision.tsv": "8591a1ca9a684f8e4f4595176495746a9a5cdf27096b99b35f04d5c6fd9de3bc",
+    "validation/hierarchy_manifest.json": "728c476366bcff8d391c7bf0758fe878586989bb240f1ebcaa237c043fa5c650",
+    "validation/hierarchy_smoke.json": "cfb77ea643ac638c58dbe3c3a5c6879fc24f048b5d83689dafc010d65930a12b",
+    "validation/parent_graph_report.json": "f75d41dbfc3006ff830322a28d24d03aaa772d71b557578a16ec26b76532ed8c",
+    "validation/resource_runtime.json": "14591d76a13adc7fdc194bcf24ef2279346d0fd23d8c16dcbb338623bd998bd5",
+    "validation/resource_smoke.json": "28463f4dc063f0bb219bd2d0a95279093b80a922b2ff16d0c383b04c65b10d20"
+  },
+  "format": "biograph-steward.inmc-paired-preparation-summary.v1",
+  "frozen_at": "2026-10-23T14:54:38.268501+00:00",
+  "frozen_content_sha256": "4ceb26db63bb04e111710c9dbf713c0b9407098a24f462d3d1c5447774e73d6f",
+  "frozen_packet": "runs/inmc_paired_graphs_20261023/frozen_cpu",
+  "invariants": {
+    "candidate_nodes_preserved": true,
+    "no_GOA_protein_annotations_added": true,
+    "no_Pharos_PPI_in_any_arm": true,
+    "no_disease_membership_invented": true,
+    "only_hierarchy_added": true,
+    "same_supervision": true,
+    "same_union_vocabulary": true
+  },
+  "limitations": [
+    "Current sources postdate the assay panel; this is not temporal or study-independent validation.",
+    "Unknown Pharos GO source references and polarity remain unknown; no complete derivative-evidence exclusion is claimed.",
+    "IDA/HDA and the complex exclusion are a risk-reduction adaptation, not a certified quality ranking.",
+    "A shared reviewed UniProt entry supplies context, not assayed construct/isoform identity.",
+    "The nominated single-study panel and complete-scored subset are selected populations."
+  ],
+  "prepared_content_sha256": "aae8ab20a55d3e1f756c7513115a1ac102d98d94deb2f0dbc57b014dac598c29",
+  "prepared_packet": "runs/inmc_paired_graphs_20261023/qualified_v2",
+  "receipt_scope": "Preparation and freeze state only; later prediction/label results are separate artifacts.",
+  "resource_smoke": {
+    "arms": [
+      {
+        "arm": "rgcn_baseline",
+        "initial_parameters_sha256": "5a43e8cebf52bae7b715f0c9f9c34ee6b063163c8be79520a378f9d663242c10",
+        "optimizer_steps": 25,
+        "positive_batch_sha256": "95acb74cb743475b7ed58fa6ae4703010aa2316c320aed22390ad684d2b6b286",
+        "seed": 17,
+        "training_seconds": 2.9808992500038585
+      },
+      {
+        "arm": "rgcn_enriched",
+        "initial_parameters_sha256": "5a43e8cebf52bae7b715f0c9f9c34ee6b063163c8be79520a378f9d663242c10",
+        "optimizer_steps": 25,
+        "positive_batch_sha256": "95acb74cb743475b7ed58fa6ae4703010aa2316c320aed22390ad684d2b6b286",
+        "seed": 17,
+        "training_seconds": 3.002857583007426
+      }
+    ],
+    "status": "passed"
+  },
+  "scoring_implementation": {
+    "path": "biograph_steward/inmc_outcomes.py",
+    "sha256": "081aad215925a0b7031078d5d77e34d108ca74b58f63fbebeae382ca079e7ce3"
+  },
+  "source_hashes": {
+    "archive": "2200fce435e0705470dda73f1dc870e6b6a7b9bee621c8697099dfd38b49ae62",
+    "assay_contract": "af69729fae9ced83651b4dc4912e82bd2c03de51c53ab3ae3c0819d79388a4a7",
+    "audit_overlaps": "03f19c08e0428b328ebb88b7d242896fc4ac2b1d9b333fa46632a4d8b32f4a2f",
+    "audit_report": "c0a2f5738b6246ce39bd879f464f700b10d7bb921efaa6d24d447a2282069460",
+    "goa_staged": "fa43f15abfc11d490ad01c137e40a8e34fd3b00ae52e67fa0478d05a01b37fca",
+    "goa_summary": "6246bb4e7fd07b0cf52de6058f499e4fe51ba15b0f8689d0ab62a7ed1cc8b1aa",
+    "ontology": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273"
+  },
+  "status": "comparison_frozen_before_reserved_predictions"
+}

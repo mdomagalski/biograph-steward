@@ -1,0 +1,255 @@
+{
+  "artifacts": {
+    "runs/inmc_comparison_20261023/cpu/report.json": "556797ca110ba43f42d7e7bc15ac8e0e76ac7ad1fecdacc363352ca5d41eb409",
+    "runs/inmc_comparison_20261023/runtime_before_scoring.txt": "f841c24974ec3a2eb44a33f324cf62bbc7945f00fa50e08a4f0b43ce4b0c180f",
+    "runs/inmc_comparison_20261023/scored/coverage.json": "77c5f6ef98b8529718d1323f20013e17be2c1fbff1d24c8df29a359bb89147f0",
+    "runs/inmc_comparison_20261023/scored/exposure_started.json": "23330c4002e1d5919d9c4e745d2c64606675117321f8495cd8577d0567468992",
+    "runs/inmc_comparison_20261023/scored/gate.json": "95b356eb983151995953eccbe87a8dffc1e80255e3f754f2d6c60427c844be56",
+    "runs/inmc_comparison_20261023/scored/metrics.json": "908f05b833fe1f58fdfd638caf8814004a5034bcc2eb7cb49a94c29c5591e50d",
+    "runs/inmc_comparison_20261023/scored/outcomes.json": "7f3dc99b4e3fd6226b221ac1472bbef3592168671a6a742faecc78aecc36fee7",
+    "runs/inmc_comparison_20261023/scored/report.json": "e839450fe5b3553579c671aaa0cf30889fa31c66fe17fd59a47fb3895cf2a9a1"
+  },
+  "author_reference_rows": 1177,
+  "author_reference_unordered_pairs": 1177,
+  "completed_at": "2026-10-23T15:10:34.079289+00:00",
+  "coverage": {
+    "primary_pairs_by_qualified_GO_endpoint_count": {
+      "0": 498,
+      "1": 831,
+      "2": 422
+    },
+    "primary_pairs_with_isolated_endpoint": 12
+  },
+  "execution": {
+    "Brev_used": false,
+    "completed_models": 12,
+    "language_model_requests": 0,
+    "runtime": {
+      "cuda_runtime": null,
+      "device": "cpu",
+      "packages": {
+        "numpy": "2.5.4",
+        "pykeen": "1.11.1",
+        "scikit-learn": "1.9.1",
+        "scipy": "1.18.1",
+        "torch": "2.6.0"
+      },
+      "python": "3.12.4"
+    },
+    "seconds": 704.7193362910039,
+    "total_optimizer_updates": 6000
+  },
+  "exposure_started_at": "2026-10-23T15:10:21.168035+00:00",
+  "formal_confidence_interval": null,
+  "format": "biograph-steward.inmc-comparison-summary.v1",
+  "holdout_consumed": true,
+  "leave_one_gene_out_delta_ranges": {
+    "101": {
+      "average_precision": {
+        "maximum": 0.0056914478352505515,
+        "minimum": 0.0026599266221507545
+      },
+      "roc_auc": {
+        "maximum": 0.003082051171233502,
+        "minimum": 0.0021834181597496505
+      }
+    },
+    "17": {
+      "average_precision": {
+        "maximum": -0.0023507783531874216,
+        "minimum": -0.007268819341830213
+      },
+      "roc_auc": {
+        "maximum": -0.00035046330703703,
+        "minimum": -0.0016306185443321075
+      }
+    },
+    "43": {
+      "average_precision": {
+        "maximum": 0.00305860771553057,
+        "minimum": 0.0004504665575252309
+      },
+      "roc_auc": {
+        "maximum": 0.0027702832545447587,
+        "minimum": 0.001727407295358474
+      }
+    }
+  },
+  "limitations": [
+    "Method-nominated and complete-scored populations are selected; failure missingness is not known to be random.",
+    "Shared Y2H technology between training scaffold and panel can reward assay-compatible patterns.",
+    "Current Pharos postdates the experiment; direct-pair masking alone does not establish temporal independence.",
+    "Unresolved construct/isoform identity is not repaired by a present-day gene-product cross-reference.",
+    "Retrospective recovery of recorded complete-scored Y2H detection, not universal biological accuracy.",
+    "The holdout has now been accessed; it cannot be relabelled an unseen test for further tuning.",
+    "Openpyxl loads workbook-level shared strings; only Fig.6 is used as the author-positive reference.",
+    "Unknown Pharos references/polarity and post-assay sources prevent complete derivative-evidence exclusion.",
+    "Secondary baseline-versus-scaffold gains also vary by seed.",
+    "This run does not establish equivalence, statistical nonsignificance or optimal model-family performance."
+  ],
+  "mean_hierarchy_deltas": {
+    "average_precision": 0.0003012583409900034,
+    "roc_auc": 0.0013742476429044286
+  },
+  "means_by_arm": {
+    "complex_scaffold": {
+      "average_precision": 0.411943680918453,
+      "roc_auc": 0.501958113324359
+    },
+    "rgcn_baseline": {
+      "average_precision": 0.719833457688268,
+      "roc_auc": 0.8173165015874545
+    },
+    "rgcn_enriched": {
+      "average_precision": 0.7201347160292579,
+      "roc_auc": 0.818690749230359
+    },
+    "rgcn_scaffold": {
+      "average_precision": 0.6838782755574567,
+      "roc_auc": 0.799690359391852
+    }
+  },
+  "metric_unit": "ranking score, not assertion correctness fraction",
+  "metrics_by_arm_seed": {
+    "complex_scaffold": {
+      "101": {
+        "average_precision": 0.4019145984612367,
+        "roc_auc": 0.4947050653135613
+      },
+      "17": {
+        "average_precision": 0.4206180934037905,
+        "roc_auc": 0.5088784158818602
+      },
+      "43": {
+        "average_precision": 0.41329835089033184,
+        "roc_auc": 0.5022908587776556
+      }
+    },
+    "rgcn_baseline": {
+      "101": {
+        "average_precision": 0.7236846842831643,
+        "roc_auc": 0.8176064272505145
+      },
+      "17": {
+        "average_precision": 0.7310833487828423,
+        "roc_auc": 0.8209584139549697
+      },
+      "43": {
+        "average_precision": 0.7047323399987973,
+        "roc_auc": 0.8133846635568794
+      }
+    },
+    "rgcn_enriched": {
+      "101": {
+        "average_precision": 0.7273834655268233,
+        "roc_auc": 0.8202451968238421
+      },
+      "17": {
+        "average_precision": 0.7263977936077477,
+        "roc_auc": 0.8200953275580143
+      },
+      "43": {
+        "average_precision": 0.7066228889532029,
+        "roc_auc": 0.8157317233092205
+      }
+    },
+    "rgcn_scaffold": {
+      "101": {
+        "average_precision": 0.6729846626543312,
+        "roc_auc": 0.7928110924666607
+      },
+      "17": {
+        "average_precision": 0.7385954250517153,
+        "roc_auc": 0.8214749276746982
+      },
+      "43": {
+        "average_precision": 0.6400547389663236,
+        "roc_auc": 0.784785058034197
+      }
+    }
+  },
+  "nominated_pairs": 3276,
+  "off_diagonal_nominations": 2781,
+  "paired_hierarchy_comparison": {
+    "baseline_arm": "rgcn_baseline",
+    "deltas_by_seed": {
+      "101": {
+        "average_precision": 0.003698781243658966,
+        "roc_auc": 0.0026387695733276484
+      },
+      "17": {
+        "average_precision": -0.004685555175094613,
+        "roc_auc": -0.0008630863969554259
+      },
+      "43": {
+        "average_precision": 0.0018905489544056575,
+        "roc_auc": 0.002347059752341063
+      }
+    },
+    "enriched_arm": "rgcn_enriched"
+  },
+  "population_strata": {
+    "off_diagonal_complete": {
+      "negatives": 1014,
+      "pairs": 1751,
+      "positives": 737
+    },
+    "off_diagonal_excluded": {
+      "negatives": 0,
+      "pairs": 1030,
+      "positives": 0
+    },
+    "self_complete": {
+      "negatives": 161,
+      "pairs": 287,
+      "positives": 126
+    },
+    "self_excluded": {
+      "negatives": 0,
+      "pairs": 208,
+      "positives": 0
+    }
+  },
+  "prediction_report_sha256": "556797ca110ba43f42d7e7bc15ac8e0e76ac7ad1fecdacc363352ca5d41eb409",
+  "primary_eligible_fraction_of_off_diagonal": 0.6296296296296297,
+  "primary_eligible_pairs": 1751,
+  "primary_metric": "average_precision",
+  "primary_negative_pairs": 1014,
+  "primary_positive_fraction": 0.4209023415191319,
+  "primary_positive_pairs": 737,
+  "reference_reconciliation": {
+    "author_complement_used_for_negatives": false,
+    "author_positives_outside_eligible_subset": 314,
+    "eligible_negative_pairs": 1175,
+    "eligible_pairs_checked": 2038,
+    "eligible_positive_pairs": 863,
+    "status": "passed"
+  },
+  "scoring_implementation": {
+    "path": "biograph_steward/inmc_outcomes.py",
+    "sha256": "081aad215925a0b7031078d5d77e34d108ca74b58f63fbebeae382ca079e7ce3"
+  },
+  "scoring_report_sha256": "e839450fe5b3553579c671aaa0cf30889fa31c66fe17fd59a47fb3895cf2a9a1",
+  "scoring_runtime": {
+    "et_xmlfile": "2.0.0",
+    "openpyxl": "3.1.5",
+    "packages": {
+      "numpy": "2.5.4",
+      "pykeen": "1.11.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "torch": "2.6.0"
+    },
+    "python": "3.12.4"
+  },
+  "scoring_wrapper_sha256": "4eddc9aefe2232ffbf75413fc58e63d387b3e048f86142e1db1df863d71e364b",
+  "sources": {
+    "archive_sha256": "2200fce435e0705470dda73f1dc870e6b6a7b9bee621c8697099dfd38b49ae62",
+    "panel_member": "PPI-Prediction/Experimental validation/PPI_prediction_validation_result_20210624.xls",
+    "panel_sha256": "062a8762ba05ba330a49386394e638926f6dc960cdc54bd1792a031cbeff18ca",
+    "workbook_sha256": "ddd4428ceb28f224802217509a740f86c824631623c9f805bf212904987d2b21"
+  },
+  "statistical_significance_claimed": false,
+  "status": "completed_no_consistent_hierarchy_gain_demonstrated",
+  "task": "retrospective recorded assay-detection recovery"
+}

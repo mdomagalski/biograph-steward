@@ -46,6 +46,8 @@ class BoundedQuestionWorkflow:
             raise ValueError('Workflow budgets are 1–30 results and 1–5 paths.')
         self.source = Path(source_run).resolve()
         self.snapshot, self.events, self.graph = read_run(self.source)
+        if self.graph.get('scope', {}).get('kind') == 'protein_cohort':
+            raise ValueError('The model workflow supports disease-scoped saved graphs only. Use the deterministic protein-cohort question; no model was called.')
         self.planner = planner if planner is not None else configured_planner()
         self.budgets = {'max_results': max_results, 'max_paths': max_paths}
 

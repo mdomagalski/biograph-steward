@@ -1,0 +1,312 @@
+{
+  "author_positive_pairs_opened": false,
+  "brev_compute_used": false,
+  "candidate_counts": {
+    "equivalent_unordered_product_pairs": 3264,
+    "original_candidate_rows": 3276,
+    "original_gene_count": 1805,
+    "original_pairs_without_mapped_context": 12,
+    "original_pairs_without_resolved_pharos_context": 14,
+    "original_self_pairs": 495,
+    "original_unordered_candidate_pairs": 3276,
+    "requested_accessions": 1797,
+    "resolved_accessions": 1794,
+    "self_equivalent_product_pairs": 494
+  },
+  "comparison_frozen": false,
+  "feature_use_approved": false,
+  "format": "biograph-steward.uniform-source-preparation-receipt.v1",
+  "go_exposure_details": {
+    "extension": {
+      "candidates": 9,
+      "evidence_codes": {
+        "EXP": 1,
+        "IDA": 6,
+        "IMP": 2,
+        "IPI": 1
+      },
+      "products": 8,
+      "rows": 10,
+      "self_equivalent_rows": 6
+    },
+    "with_from": {
+      "candidates": 352,
+      "evidence_codes": {
+        "IBA": 683,
+        "IGI": 3,
+        "IPI": 269
+      },
+      "products": 348,
+      "rows": 955,
+      "self_equivalent_rows": 747
+    }
+  },
+  "go_source": {
+    "annotation_extension_rows": 3766,
+    "blocked_reference_rows": 0,
+    "covered_accessions": 1790,
+    "evidence_counts": {
+      "EXP": 1232,
+      "HDA": 926,
+      "HEP": 8,
+      "HMP": 16,
+      "HTP": 76,
+      "IBA": 5996,
+      "IC": 139,
+      "IDA": 10571,
+      "IEA": 13545,
+      "IEP": 82,
+      "IGI": 176,
+      "IKR": 4,
+      "IMP": 2330,
+      "IPI": 80432,
+      "ISA": 163,
+      "ISM": 1,
+      "ISO": 1,
+      "ISS": 2850,
+      "NAS": 1582,
+      "ND": 8,
+      "RCA": 32,
+      "TAS": 11690
+    },
+    "inputs": {
+      "gaf_sha256": "a0afba19dfb1f8fa996bc1bdcd61fd0c9bd4cf0d2bf2509d09ac86993c0e70a2",
+      "inventory_sha256": "d671121dc17dafbafeed1963d22d9b0fa42751381364ab98da2249b0c3d4f187",
+      "pharos_retrieval": {
+        "db_version": "pharos319",
+        "input_files": {
+          "context_targets.json": "d671121dc17dafbafeed1963d22d9b0fa42751381364ab98da2249b0c3d4f187",
+          "gene_coverage.json": "a93166b5881145f3716b57b9259794967d1439daaa7dd6537725ea56a8877a05",
+          "plan.json": "cf0e5ba6543310587ee6fdfede3652b58a31a7c59f1926780d9c04512704dc6e",
+          "source.json": "f97e9a45eb048eea48fa99e59e579a54ab2e23a3fc77d9c86aa2d70f8231076e",
+          "summary.json": "b30e94fffd4fca897142ae45a3a095ad70f2d66817f45a46fcc320346371dcf6"
+        },
+        "inventory_sha256": "d671121dc17dafbafeed1963d22d9b0fa42751381364ab98da2249b0c3d4f187",
+        "path": "/Users/42573/biograph-steward-pharos/runs/inmc_pharos_uniform_20261022/retrieval",
+        "retrieval_plan_sha256": "ad6d8ed9b55057e5f86e7414669c69b6a9318d5312cfd0eaeba1b82dad0d2e39",
+        "retrieval_summary_sha256": "35d865e26b73bf4386c17400f7e4eddb289de0bc01ba313ce119e6513610548a"
+      },
+      "provenance_validator_sha256": {
+        "scripts/audit_pharos_inventory.py": "68f97be0ee72a60f9464193c5f99fc947401567e015ebacf079e3c48259d236f",
+        "scripts/retrieve_pharos_inventory.py": "96208e301ebc27f01f2e450368efcb187638e735d464558db0da425aebdb5edd"
+      },
+      "script_sha256": "51e0f6610f75092a22c32fd78e8737e93205828f4615e03f120516f484b84cbd"
+    },
+    "inventory_accessions": 1797,
+    "negated_rows": 143,
+    "pair_exposure_counts": {
+      "extension_rows": 10,
+      "with_from_rows": 955
+    },
+    "parser": {
+      "function": "Bio.UniProt.GOA.gafiterator",
+      "package": "biopython",
+      "version": "1.88"
+    },
+    "pharos_compared_accessions": 1794,
+    "projection_group_comparison": {
+      "goa_only_projection": 35865,
+      "multiple_records_projection": 798,
+      "one_to_one_projection": 5817,
+      "pharos_only_projection": 16668
+    },
+    "projection_group_details": {
+      "goa_only_projection": {
+        "blocked_reference_goa_rows": 0,
+        "extension_goa_rows": 3239,
+        "extension_reserved_pair_goa_rows": 10,
+        "goa_rows": 119521,
+        "groups": 35865,
+        "negated_goa_rows": 138,
+        "pharos_rows": 0,
+        "with_from_reserved_pair_goa_rows": 832
+      },
+      "multiple_records_projection": {
+        "blocked_reference_goa_rows": 0,
+        "extension_goa_rows": 110,
+        "extension_reserved_pair_goa_rows": 0,
+        "goa_rows": 6510,
+        "groups": 798,
+        "negated_goa_rows": 4,
+        "pharos_rows": 798,
+        "with_from_reserved_pair_goa_rows": 56
+      },
+      "one_to_one_projection": {
+        "blocked_reference_goa_rows": 0,
+        "extension_goa_rows": 417,
+        "extension_reserved_pair_goa_rows": 0,
+        "goa_rows": 5817,
+        "groups": 5817,
+        "negated_goa_rows": 1,
+        "pharos_rows": 5817,
+        "with_from_reserved_pair_goa_rows": 67
+      },
+      "pharos_only_projection": {
+        "blocked_reference_goa_rows": 0,
+        "extension_goa_rows": 0,
+        "extension_reserved_pair_goa_rows": 0,
+        "goa_rows": 0,
+        "groups": 16668,
+        "negated_goa_rows": 0,
+        "pharos_rows": 16668,
+        "with_from_reserved_pair_goa_rows": 0
+      }
+    },
+    "retained_rows": 131860,
+    "source_rows": 910476,
+    "staged_annotations_sha256": "fa43f15abfc11d490ad01c137e40a8e34fd3b00ae52e67fa0478d05a01b37fca"
+  },
+  "hierarchy_scope_feasibility": {
+    "all_obsolete_terms": 566,
+    "all_rows_with_obsolete_terms": 1947,
+    "ancestor_closure_edges": 319,
+    "ancestor_closure_nodes": 285,
+    "direct_go_terms": 211,
+    "features_generated": false,
+    "missing_current_term_ids": [],
+    "model_requests": 0,
+    "networkx": "3.7",
+    "ontology_direction": "child_to_parent_is_a_only",
+    "ontology_is_a_graph_is_dag": true,
+    "ontology_sha256": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273",
+    "outcome_values_loaded": false,
+    "pharos_go_rows": 23283,
+    "probe_sha256": "66425b65c3315daed9bb3ef1b5e6f7ff3fa0a6df64470894a558babf60e2b558",
+    "purpose": "outcome_blind_scope_feasibility_not_graph_or_protocol_freeze",
+    "retained_annotation_rows": 2607,
+    "retained_distinct_product_go_pairs": 2607,
+    "retained_products": 995,
+    "retrieval_plan_sha256": "ad6d8ed9b55057e5f86e7414669c69b6a9318d5312cfd0eaeba1b82dad0d2e39",
+    "retrieval_summary_sha256": "35d865e26b73bf4386c17400f7e4eddb289de0bc01ba313ce119e6513610548a",
+    "scoped_obsolete_terms": 31,
+    "scoped_rows_with_obsolete_terms": 194
+  },
+  "inventory_sha256": "d671121dc17dafbafeed1963d22d9b0fa42751381364ab98da2249b0c3d4f187",
+  "limits": [
+    "Bounded Pharos319 endpoint; one expression cap and seven original genes without resolved Pharos context.",
+    "Projection matches are not verified GO record identity across source vintages.",
+    "With/From or extension literal matches are diagnostic; their biological roles differ.",
+    "Pair masks inventoried but not applied to learner graphs; source and study independence are not certified.",
+    "Local raw source artifacts are ignored and not distributed in this receipt."
+  ],
+  "local_artifacts": {
+    "runs/inmc_go_feasibility_20261022/hierarchy_scope/probe.py": "66425b65c3315daed9bb3ef1b5e6f7ff3fa0a6df64470894a558babf60e2b558",
+    "runs/inmc_go_feasibility_20261022/hierarchy_scope/summary.json": "d10c9d75287a2d3d67282173610f7379885342995751278441c6ca9803e8696a",
+    "runs/inmc_go_feasibility_20261022/pharos_join/summary.json": "6246bb4e7fd07b0cf52de6058f499e4fe51ba15b0f8689d0ab62a7ed1cc8b1aa",
+    "runs/inmc_pharos_uniform_20261022/audit/overlaps.json": "03f19c08e0428b328ebb88b7d242896fc4ac2b1d9b333fa46632a4d8b32f4a2f",
+    "runs/inmc_pharos_uniform_20261022/audit/report.json": "c0a2f5738b6246ce39bd879f464f700b10d7bb921efaa6d24d447a2282069460",
+    "runs/inmc_pharos_uniform_20261022/retrieval/plan.json": "cf0e5ba6543310587ee6fdfede3652b58a31a7c59f1926780d9c04512704dc6e",
+    "runs/inmc_pharos_uniform_20261022/retrieval/summary.json": "b30e94fffd4fca897142ae45a3a095ad70f2d66817f45a46fcc320346371dcf6"
+  },
+  "model_requests": 0,
+  "outcome_values_loaded": false,
+  "pair_overlap": {
+    "raw": {
+      "matching_source_views": 552,
+      "matching_unordered_product_pairs": 276,
+      "matching_views_by_provider": {
+        "BioPlex": 10,
+        "Reactome": 4,
+        "STRINGDB": 550
+      },
+      "original_candidate_pairs_matched": 277,
+      "source_views_scanned": 203054
+    },
+    "retained": {
+      "matching_source_views": 552,
+      "matching_unordered_product_pairs": 276,
+      "matching_views_by_provider": {
+        "BioPlex": 10,
+        "Reactome": 4,
+        "STRINGDB": 550
+      },
+      "original_candidate_pairs_matched": 277,
+      "source_views_scanned": 23968
+    }
+  },
+  "retrieval": {
+    "all_requested_families_count_reconciled": false,
+    "completed_chunks": 72,
+    "db_versions": [
+      "pharos319"
+    ],
+    "families": {
+      "drugs": {
+        "available": 238,
+        "excluded_by_scope": 0,
+        "retained": 238,
+        "retrieved": 238,
+        "target_statuses": {
+          "complete": 1794
+        }
+      },
+      "expressions": {
+        "available": 992979,
+        "excluded_by_scope": 0,
+        "retained": 990593,
+        "retrieved": 990593,
+        "target_statuses": {
+          "capped": 1,
+          "complete": 1793
+        }
+      },
+      "go": {
+        "available": 23283,
+        "excluded_by_scope": 0,
+        "retained": 23283,
+        "retrieved": 23283,
+        "target_statuses": {
+          "complete": 1794
+        }
+      },
+      "pathways": {
+        "available": 29593,
+        "excluded_by_scope": 0,
+        "retained": 29593,
+        "retrieved": 29593,
+        "target_statuses": {
+          "complete": 1794
+        }
+      },
+      "ppis": {
+        "available": 203054,
+        "excluded_by_scope": 179086,
+        "retained": 23968,
+        "retrieved": 203054,
+        "target_statuses": {
+          "complete": 1794
+        }
+      },
+      "publications": {
+        "available": 123292,
+        "excluded_by_scope": 0,
+        "retained": 0,
+        "retrieved": 0,
+        "target_statuses": {
+          "not_requested": 1794
+        }
+      }
+    },
+    "genes_with_resolved_context": 1798,
+    "original_gene_count": 1805,
+    "requested_accessions": 1797,
+    "resolution_statuses": {
+      "not_found": 3,
+      "resolved": 1794
+    },
+    "retrieval_finished": true,
+    "successful_source_envelopes": 6195
+  },
+  "retrieval_plan_sha256": "ad6d8ed9b55057e5f86e7414669c69b6a9318d5312cfd0eaeba1b82dad0d2e39",
+  "retrieval_summary_sha256": "35d865e26b73bf4386c17400f7e4eddb289de0bc01ba313ce119e6513610548a",
+  "scientific_improvement_measured": false,
+  "stage": "source_preparation_not_comparison_freeze",
+  "validation": {
+    "biological_accuracy_evaluated": false,
+    "core_optional_skipped": 2,
+    "core_suite_passed": 375,
+    "core_suite_tests_run": 377,
+    "independent_review_material_issues_remaining": 0,
+    "isolated_biopython_1_88_go_tests_passed": 23
+  }
+}

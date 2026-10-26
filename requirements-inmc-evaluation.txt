@@ -1,0 +1,11 @@
+# Direct evaluation dependencies observed in the October 23 CPU run.
+# Python 3.12.4 on macOS arm64; not a verified Brev/CUDA installation.
+# Use an isolated environment, not the application's core environment.
+-r requirements-graph-ml-smoke.txt
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.9.1
+networkx==3.7
+# Native parser for the authenticated, post-freeze author reference only.
+openpyxl==3.1.5
+et_xmlfile==2.0.0

@@ -1,4 +1,4 @@
-"""Turn one Pharos disease extract into a provenance-bearing, inspectable graph.
+"""Turn a scoped Pharos extract into a provenance-bearing, inspectable graph.
 
 This is structural validation, NOT biological verification. Association source
 scores remain unmodified and are never combined into a confidence probability.
@@ -81,25 +81,63 @@ def verify_snapshot(snapshot: dict) -> None:
     for record in snapshot.get("requests", []):
         if record.get("response_sha256") != digest(record.get("response")):
             raise ValueError("Source response integrity check failed; rebuild from the untouched API cache or endpoint.")
-    if not isinstance(snapshot.get("disease"), dict) or not snapshot["disease"].get("name"):
-        raise ValueError("Snapshot is missing its selected disease.")
     if not isinstance(snapshot.get("targets"), list):
         raise ValueError("Snapshot is missing its target list.")
+    scope = snapshot.get("scope")
+    if scope is None:
+        if not isinstance(snapshot.get("disease"), dict) or not snapshot["disease"].get("name"):
+            raise ValueError("Snapshot is missing its selected disease.")
+        return
+    if (not isinstance(scope, dict) or scope.get("kind") != "protein_cohort"
+            or not isinstance(scope.get("name"), str) or not scope["name"].strip()
+            or "disease" not in snapshot or snapshot["disease"] is not None):
+        raise ValueError("A protein cohort needs an explicit scope name and no selected disease.")
+    requested = scope.get("requested_uniprot")
+    if (not isinstance(requested, list) or not requested
+            or any(not isinstance(uid, str) or not UNIPROT.fullmatch(uid) for uid in requested)
+            or len(set(requested)) != len(requested)):
+        raise ValueError("Protein cohort scope needs unique exact UniProt accessions.")
+    resolutions = scope.get("resolutions")
+    if (not isinstance(resolutions, list) or len(resolutions) != len(requested)
+            or any(not isinstance(row, dict) for row in resolutions)
+            or [row.get("requested_uniprot") for row in resolutions] != requested):
+        raise ValueError("Protein cohort resolution records must cover the requested accessions in order.")
+    resolved = []
+    for row in resolutions:
+        if "returned_uniprot" not in row:
+            raise ValueError("Protein cohort resolution must record the returned identifier, including null when absent.")
+        uid, returned, status = row["requested_uniprot"], row.get("returned_uniprot"), row.get("status")
+        if status == "resolved" and returned == uid:
+            resolved.append(uid)
+        elif status == "not_found" and returned is None:
+            pass
+        elif status == "identity_mismatch" and returned != uid:
+            pass
+        else:
+            raise ValueError("Protein cohort resolution status contradicts the returned identifier.")
+    targets = snapshot["targets"]
+    if (any(not isinstance(row, dict) for row in targets)
+            or [row.get("uniprot") for row in targets] != resolved):
+        raise ValueError("Protein cohort targets must be the exact resolved accessions in request order.")
 
 
 def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_snapshot: dict | None = None) -> dict:
     verify_snapshot(snapshot)
     demo = snapshot["data_kind"] == "synthetic_demo"
+    cohort = (snapshot.get("scope") or {}).get("kind") == "protein_cohort"
+    if cohort and civic_snapshot is not None:
+        raise ValueError("CIViC enrichment is not supported for a disease-free protein cohort.")
     disease = snapshot["disease"]
-    did, disease_mapped = disease_id(disease, demo)
+    did, disease_mapped = (None, False) if cohort else disease_id(disease, demo)
     provenance_resource = "SYNTHETIC_DEMO" if demo else "Pharos"
-    nodes = {did: {"id": did, "name": disease["name"], "category": "biolink:Disease",
+    nodes = {} if cohort else {did: {"id": did, "name": disease["name"], "category": "biolink:Disease",
                    "identifier_mapped": disease_mapped, "source_identifier": disease.get("mondoID"),
                    "url": None if demo else "https://pharos.nih.gov/diseases/" + quote(disease["name"], safe=""),
                    "tdl": None, "sym": None, "data_kind": snapshot["data_kind"]}}
     edges: dict[str, dict] = {}
     quarantine: list[dict] = []
     target_rows: dict[str, dict] = {}
+    cohort_pathway_records: dict[str, dict] = {}
     duplicate_rows = 0
     seen_rows: set[str] = set()
 
@@ -157,7 +195,7 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
         elif nodes[pid].get("tdl") != tdl:
             quarantine.append({"reason": "conflicting_target_metadata", "locator": pointer, "record": row})
         reasons = []
-        if not disease_mapped and not demo:
+        if not cohort and not disease_mapped and not demo:
             reasons.append("unresolved_disease_ontology_id")
         if tdl not in LEVELS:
             reasons.append("unrecognized_target_development_level")
@@ -167,7 +205,11 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
         if not isinstance(records, list):
             quarantine.append({"reason": "malformed_association_details", "locator": pointer, "record": row})
             records = []
-        if not records:
+        if cohort and records:
+            quarantine.append({"reason": "disease_associations_outside_protein_cohort_scope",
+                               "locator": pointer + "/diseaseAssociationDetails", "record": records})
+            records = []
+        if not cohort and not records:
             membership = {"evidence": None, "source": None, "reference": None,
                           "note": "Returned in a disease-filtered target list; detailed association evidence absent."}
             add_edge(pid, "biolink:associated_with", did, membership, pointer,
@@ -220,13 +262,22 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
                 edge_reasons.append("primary_source_missing")
             if not pathway_mapped and not demo:
                 edge_reasons.append("local_pathway_identifier_needs_mapping")
-            add_edge(pid, "biolink:participates_in", wid, pathway, locator, edge_reasons,
-                     "pathway_membership", pathway.get("type"))
+            eid = add_edge(pid, "biolink:participates_in", wid, pathway, locator, edge_reasons,
+                           "pathway_membership", pathway.get("type"))
+            if cohort:
+                cohort_pathway_records.setdefault(eid, {"subject": pid, "family": "pathways", "record": pathway})
         target_rows[pid] = {"id": pid, "symbol": row.get("sym"), "name": row["name"],
                             "tdl": nodes[pid]["tdl"], "family": row.get("fam")}
 
     from .context import context_records, attach_response_provenance
     from .normalization import normalize_context
+    if cohort_pathway_records:
+        attach_response_provenance(list(cohort_pathway_records.values()), snapshot, families={"pathways"})
+        for eid, record in cohort_pathway_records.items():
+            edges[eid]["retrieval_provenance"] = {
+                "aggregator": provenance_resource, "database_version": snapshot.get("db_version"),
+                "source_responses": record["source_response_locators"],
+            }
     context = context_records(snapshot, quarantine)
     attach_response_provenance(context, snapshot)
     normalization = normalize_context(context, nodes, quarantine, add_edge, snapshot)
@@ -267,7 +318,17 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
             "interpretation": "Known database associations and annotations, not predictions or validated targets. "
                               "Passed structural checks does not mean scientifically verified. "
                               "Pathway membership is not disease-specific evidence."}
+    if "construction" in snapshot:
+        graph["construction"] = deepcopy(snapshot["construction"])
     graph["question_scope"] = {
+        "template": "pharos_protein_cohort_inspection.v1",
+        "question": "What source-reported annotations connect the proteins in " + snapshot["scope"]["name"] + "?",
+        "cohort": deepcopy(snapshot["scope"]),
+        "relation_families": [],
+        "limits": deepcopy(snapshot["query_settings"]),
+        "pathways_are_disease_specific": False,
+        "unsupported_requirements": ["disease association inference", "physical binding inference", "causal conclusions"],
+    } if cohort else {
         "template": "pharos_disease_inspection.v1",
         "question": f"Which proteins does Pharos associate with {disease['name']}, and which pathways annotate them?",
         "disease": {"id": did, "name": disease["name"]},
@@ -285,9 +346,18 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
                                   **t["pharos_context"].get("metadata", {})}
                                  for t in snapshot["targets"] if isinstance(t, dict) and isinstance(t.get("pharos_context"), dict)]
     if snapshot.get("retrieval", {}).get("context"):
-        graph["question_scope"]["question"] = (f"Which proteins does Pharos associate with {disease['name']}, "
-            "and what pathway, functional, interaction, drug, tissue and literature context is available for this cohort?")
+        if not cohort:
+            graph["question_scope"]["question"] = (f"Which proteins does Pharos associate with {disease['name']}, "
+                "and what pathway, functional, interaction, drug, tissue and literature context is available for this cohort?")
         graph["question_scope"]["context_families"] = list(snapshot["retrieval"]["context"]["summary"])
+    if cohort:
+        graph["scope"] = deepcopy(snapshot["scope"])
+        graph["unresolved_targets"] = [deepcopy(row) for row in snapshot["scope"]["resolutions"] if row["status"] != "resolved"]
+        graph["summary"]["requested_proteins"] = len(snapshot["scope"]["requested_uniprot"])
+        graph["summary"]["resolution_statuses"] = dict(sorted(Counter(row["status"] for row in snapshot["scope"]["resolutions"]).items()))
+        graph["interpretation"] = ("Source-reported annotations for an explicitly requested protein cohort. "
+            "No disease association is inferred from cohort membership. Interaction annotations can include functional associations; "
+            "physical binding and causal effects are not inferred. Passed structural checks does not mean scientifically verified.")
     from .assertions import build_assertions, assertion_summary
     graph["review_events"] = deepcopy(review_events) if review_events is not None else []
     graph["assertions"] = build_assertions(graph, graph["review_events"])
@@ -350,6 +420,9 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
                     "excluded_by_scope", "limit", "status", "issues", "pages"])
     write_json(directory / "review_events.json", graph["review_events"])
     write_json(directory / "question_scope.json", graph["question_scope"])
+    if graph.get("scope", {}).get("kind") == "protein_cohort":
+        write_json(directory / "cohort_scope.json", graph["scope"])
+        write_json(directory / "target_resolution.json", graph["scope"]["resolutions"])
     _write_tsv(directory / "assertions.tsv", graph["assertions"],
                ["id", "subject", "predicate", "object", "kind", "qualifiers", "lifecycle_state",
                 "validation_status", "evidence_edge_ids", "source_record_count", "publications", "normalization_notes", "revision", "snapshot_sha256"])
@@ -371,7 +444,8 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
         for row in graph["quarantine"]:
             handle.write(json.dumps(row, ensure_ascii=True) + "\n")
     trace = [
-        {"step": "select_disease", "result": snapshot["disease"]["name"]},
+        ({"step": "select_protein_cohort", "result": graph["scope"]} if graph.get("scope") else
+         {"step": "select_disease", "result": snapshot["disease"]["name"]}),
         {"step": "retrieve", "result": snapshot["retrieval"], "data_kind": snapshot["data_kind"]},
         {"step": "normalize_and_check", "result": graph["summary"]},
         {"step": "normalize_source_context", "result": graph["normalization"]},
@@ -395,6 +469,8 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
                 "biological_validation_performed": False, "link_prediction_performed": False,
                 "llm_used": False, "warnings": snapshot.get("warnings", []),
                 "license_note": "Software and retrieved data have separate terms. Review source_licenses.json and upstream licenses before redistributing."}
+    if graph.get("scope", {}).get("kind") == "protein_cohort":
+        manifest["scope"] = graph["scope"]
     if civic_snapshot is not None:
         manifest["civic"] = {"snapshot_sha256":civic_snapshot["content_sha256"],"created_at":civic_snapshot["created_at"],
                              "source_version":civic_snapshot.get("source_version"),"policy":civic_snapshot["policy"],

@@ -76,19 +76,62 @@ def map_identifiers(identifiers: set[str], registry) -> list[dict]:
     for identifier in sorted(identifiers):
         gids = sorted(index.get(identifier, []))
         products = registry.products(gids[0]) if len(gids) == 1 else []
+        confirmed = [product["uniprot_id"] for product in products
+                     if product["status"] == "reviewed_human_hgnc_match"]
         usable = [product["uniprot_id"] for product in products
                   if product["status"] == "reviewed_human_hgnc_match"
                   and product["shared_across_genes"] is False]
+        shared = [product["uniprot_id"] for product in products
+                  if product["status"] == "reviewed_human_hgnc_match"
+                  and product["shared_across_genes"] is True]
         mappings.append({
             "ensembl_gene_id": identifier,
             "hgnc_ids": gids,
             "gene_status": "unique" if len(gids) == 1 else "unresolved" if not gids else "ambiguous",
             "protein_candidates": products,
+            "confirmed_reviewed_products": confirmed,
             "unshared_reviewed_products": usable,
-            "product_status": "unique" if len(usable) == 1 else "none" if not usable else "multiple",
+            "shared_reviewed_products": shared,
+            "product_status": ("multiple" if len(usable) > 1 else "unique" if usable else
+                               "shared_only" if shared else "unconfirmed" if products else "none"),
             "assay_isoform_assignment_established": False,
         })
     return mappings
+
+
+def context_targets(mappings: list[dict]) -> dict:
+    """Deduplicate retrieval requests, never gene identities or measured pairs.
+
+    UniProt permits several genes to share an entry. Such entries can supply
+    context with explicit links; they cannot identify the assayed construct.
+    """
+    targets = {}
+    without_context = []
+    for row in mappings:
+        if not row["confirmed_reviewed_products"]:
+            without_context.append(row["ensembl_gene_id"])
+        for product in row["protein_candidates"]:
+            if product["status"] != "reviewed_human_hgnc_match":
+                continue
+            target = targets.setdefault(product["uniprot_id"], {
+                "uniprot_id": product["uniprot_id"], "panel_gene_ids": set(),
+                "hgnc_ids": set(), "shared_across_registry_genes": False,
+            })
+            target["panel_gene_ids"].add(row["ensembl_gene_id"])
+            target["hgnc_ids"].update(row["hgnc_ids"])
+            target["shared_across_registry_genes"] |= product["shared_across_genes"] is True
+    records = [{**targets[key], "panel_gene_ids": sorted(targets[key]["panel_gene_ids"]),
+                "hgnc_ids": sorted(targets[key]["hgnc_ids"])} for key in sorted(targets)]
+    return {
+        "format": "biograph-steward.inmc-context-targets.v1",
+        "panel_gene_ids": sorted(row["ensembl_gene_id"] for row in mappings),
+        "panel_genes_without_confirmed_context": sorted(without_context),
+        "targets": records,
+        "use": "Retrieval inventory only; preserve every original gene and candidate pair.",
+        "assay_construct_identity_established": False,
+        "evaluation_cohort_selected": False,
+        "shared_entry_rule": "Fetch once and retain all gene links; do not merge gene nodes or assign assay labels to products.",
+    }
 
 
 def audit(archive: Path, registry_path: Path) -> tuple[dict, list[dict]]:
@@ -105,10 +148,11 @@ def audit(archive: Path, registry_path: Path) -> tuple[dict, list[dict]]:
     panel_pairs = {tuple(sorted(pair)) for pair in panel}
     training_pairs = {tuple(sorted(pair)) for pair in training}
     mappings = map_identifiers(entities, registry)
+    targets = context_targets(mappings)
     by_id = {row["ensembl_gene_id"]: row for row in mappings}
     off_diagonal = {pair for pair in panel_pairs if pair[0] != pair[1]}
     report = {
-        "format": "biograph-steward.inmc-input-audit.v1",
+        "format": "biograph-steward.inmc-input-audit.v2",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "script_sha256": sha256(Path(__file__).read_bytes()),
         "archive_sha256": ARCHIVE_SHA256,
@@ -130,6 +174,9 @@ def audit(archive: Path, registry_path: Path) -> tuple[dict, list[dict]]:
             "panel_pairs_in_training": len(panel_pairs & training_pairs),
             "gene_mapping_status": dict(Counter(row["gene_status"] for row in mappings)),
             "product_mapping_status": dict(Counter(row["product_status"] for row in mappings)),
+            "genes_with_confirmed_reviewed_context": len(entities) - len(targets["panel_genes_without_confirmed_context"]),
+            "distinct_context_accessions": len(targets["targets"]),
+            "shared_context_accessions": sum(target["shared_across_registry_genes"] for target in targets["targets"]),
             "off_diagonal_pairs_both_exact_unique_gene_mapping": sum(
                 all(by_id[value]["gene_status"] == "unique" for value in pair) for pair in off_diagonal),
             "off_diagonal_pairs_both_single_unshared_reviewed_product": sum(
@@ -156,7 +203,10 @@ def main() -> None:
         raise ValueError("Output directory already exists")
     report, mappings = audit(args.archive, args.registry)
     args.output_dir.mkdir(parents=True, exist_ok=False)
-    for name, data in (("report.json", report), ("identifier_mappings.json", mappings)):
+    targets = context_targets(mappings)
+    targets.update(archive_sha256=report["archive_sha256"], registry_sha256=report["registry_sha256"])
+    for name, data in (("report.json", report), ("identifier_mappings.json", mappings),
+                       ("context_targets.json", targets)):
         with (args.output_dir / name).open("x", encoding="utf-8") as stream:
             json.dump(data, stream, indent=2, sort_keys=True, allow_nan=False)
             stream.write("\n")

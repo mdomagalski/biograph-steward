@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 
 from .questions import verify_answer
+from .client import digest
 
 
 def saved_workspaces(root: Path) -> dict:
@@ -29,6 +30,16 @@ def saved_workspaces(root: Path) -> dict:
                     or not str(manifest.get('graph_format', '')).startswith('biograph-steward.evidence-graph.')
                     or not isinstance(manifest.get('created_at'), str)):
                 raise ValueError('Unsupported workspace metadata')
+            if manifest.get('run_mode') == 'construction':
+                receipt_file = folder / 'construction_receipt.json'
+                if receipt_file.is_symlink():
+                    raise ValueError('Invalid construction receipt')
+                receipt = json.loads(receipt_file.read_text(encoding='utf-8'))
+                if (receipt.get('status') != 'published'
+                        or receipt.get('snapshot_sha256') != manifest.get('snapshot_sha256')
+                        or receipt.get('content_sha256') != digest({k: v for k, v in receipt.items()
+                                                                    if k != 'content_sha256'})):
+                    raise ValueError('Incomplete construction publication')
             runs.append({'run_id': folder.name, 'created_at': manifest['created_at'],
                          'data_kind': manifest['data_kind'], 'has_civic': bool(manifest.get('civic')),
                          'url': '/?run=' + folder.name, 'questions': []})

@@ -26,3 +26,10 @@ what remains unresolved; do not infer missing assay or identifier semantics.
 
 This is the user's standing preference for work in this repository. Routine
 source checks and investigation do not require another confirmation.
+
+## Brev compute
+
+Before work requires the Brev-hosted model or GPU, tell the user what will run
+so they can start the instance. Tell them when that compute is no longer needed.
+Local source review, identifier audits and ordinary retrieval do not require
+the Brev instance to stay on. Do not start paid compute automatically.

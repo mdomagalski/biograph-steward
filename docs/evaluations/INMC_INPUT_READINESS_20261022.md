@@ -2,6 +2,8 @@
 
 Date: October 22, 2026. **Identifier and existing-source audits completed; assay-label contract and full-panel Pharos baseline remain pending.** No biomedical model was run.
 
+**Subsequent follow-up:** the [assay and identity review](INMC_READINESS_FOLLOWUP_20261022.md) declares a narrower complete-scored assay task and separates shared products from missing context. The updated inventory contains 1,797 accessions linked to 1,800 original genes. The dated counts and gaps below describe the first audit; its saved receipt remains unchanged.
+
 This follows the [dataset/learner reuse decision](../literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md). The [machine-readable receipt](inmc_input_readiness_20261022_summary.json) records source hashes, counts, exposure and remaining gates. Local raw artifacts are under `runs/inmc_readiness_20261022/` and `runs/link_prediction_reuse_audit_20261022/`.
 
 ## What the released inputs support

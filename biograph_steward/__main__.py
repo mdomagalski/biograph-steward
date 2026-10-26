@@ -39,6 +39,26 @@ def main(argv: list[str] | None = None) -> int:
         p.add_argument("--" + family + "-limit", type=int, default=limit, help="Scoped profile per-target cap (0 skips).")
     p.add_argument("--skip-schema-check", action="store_true")
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("construct", parents=[common],
+                       help="Construct and publish a bounded exact-accession Pharos graph and cited inspection answer.")
+    source = p.add_mutually_exclusive_group(required=True)
+    source.add_argument("--accessions", nargs="+", help="1–25 exact UniProt accessions; no symbol or fuzzy resolution.")
+    source.add_argument("--snapshot", type=Path, help="Publish a saved construction snapshot offline with its original request.")
+    source.add_argument("--demo", action="store_true", help="Use the explicitly synthetic construction fixture; no network.")
+    p.add_argument("--focus-uniprot", help="Exact accession within --accessions for the cited neighborhood answer.")
+    p.add_argument("--profile", choices=["ppi", "context"], default="ppi")
+    p.add_argument("--relations", choices=["interactions", "shared_pathways"], nargs="+", default=["interactions"])
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("construction-verify", help="Verify a saved construction publication and its source/answer bindings offline.")
+    p.add_argument("--run", type=Path, required=True)
+    p = sub.add_parser("standards-resources", help="Download hash-pinned official Biolink resources into a new folder.")
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("standards-export", help="Publish a bounded KGX projection and actual upstream validation audit; requires optional audit environment.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--resources", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("standards-verify", help="Verify export integrity and mapping replay offline; does not rerun upstream validators.")
+    p.add_argument("--run", type=Path, required=True)
     p = sub.add_parser("demo", help="Build the explicitly SYNTHETIC offline demo.")
     p.add_argument("--out", type=Path, default=runs_directory()/"demo")
     p = sub.add_parser("replay", help="Rebuild a snapshot with the current transformer without network access.")
@@ -102,6 +122,23 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("audit", help="Prepare benchmark readiness and pair-level review files from a snapshot.")
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("gold-export", help="Export a verified source-bound graph packet; no official gold scoring.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("gold-verify", help="Verify saved gold-interface packet files without fetching or inference.")
+    p.add_argument("--packet", type=Path, required=True)
+    p = sub.add_parser("gold-decisions", help="Validate explicit edge dispositions separately from review states.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--decisions", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("gold-reference-template", help="Create a baseline-bound mapping template for a future reference.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("gold-align", help="Align a declared reference exactly; preserve raw labels without scoring.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--reference", type=Path, required=True)
+    p.add_argument("--mapping", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
     sub.add_parser('runtime-check', help='Inspect deployment/model configuration without inference or source requests.')
     p = sub.add_parser('deployment-smoke', help='Check a running app with synthetic data; optionally request one model plan.')
     p.add_argument('--base-url', required=True, help='Root HTTPS deployment URL or loopback HTTP URL.')
@@ -112,6 +149,89 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == "standards-resources":
+            from .standards_validation import prepare_resources
+            result = prepare_resources(args.out)
+            print(json.dumps({"biolink_model_version": result["biolink_model_version"],
+                              "resources": str(args.out.resolve())}, indent=2))
+            return 0
+        if args.command in {"standards-export", "standards-verify"}:
+            from .standard_export import export_standard, verify_standard
+            result = (export_standard(args.packet, args.out, args.resources)
+                      if args.command == "standards-export" else verify_standard(args.run))
+            validation = result["validation"]
+            print(json.dumps({"operation": args.command, "counts": result["counts"],
+                "recorded_validation_status": {key: validation[key]["status"] for key in
+                    ("kgx", "published_json_schema", "kgx_jsonl_roundtrip", "declared_domain_range_and_predicate_audit")},
+                "full_standard_conformance_claimed": False, "biological_validation_performed": False,
+                "report": str(((args.out if args.command == "standards-export" else args.run) / "report.json").resolve())}, indent=2))
+            return 0
+        if args.command == "construct":
+            from .construction import (demo_construction_snapshot, publish_construction,
+                                       run_construction)
+            if args.accessions is not None:
+                request = {"accessions": args.accessions, "focus_uniprot": args.focus_uniprot,
+                           "profile": args.profile, "relations": args.relations}
+                client = PharosClient(args.endpoint, cache_dir=args.cache_dir,
+                                      timeout=args.timeout, refresh=args.refresh)
+                result = run_construction(client, request, args.out)
+            else:
+                if args.focus_uniprot is not None or args.profile != "ppi" or args.relations != ["interactions"] or args.refresh:
+                    raise ValueError("Offline snapshot and demo publication preserve their saved/fixed request; live scope and refresh options do not apply.")
+                if args.demo:
+                    snapshot = demo_construction_snapshot()
+                else:
+                    from .gold_packet import _read
+                    source_directory = args.snapshot.resolve().parent
+                    destination = args.out.resolve()
+                    if ((source_directory / 'run_manifest.json').exists()
+                            and (destination == source_directory or source_directory in destination.parents)):
+                        raise ValueError("Republish outside the saved source run to preserve its immutable files.")
+                    snapshot = _read(args.snapshot)
+                result = publish_construction(snapshot, args.out)
+            graph, question = result["graph"], result["question"]
+            summary = {"data_kind": graph["data_kind"], "summary": graph["summary"],
+                       "answer_status": result["construction"]["answer_status"],
+                       "answer": question["overview"] if question is not None else None,
+                       "report": str((args.out / "report.html").resolve()),
+                       "publication": str(args.out.resolve())}
+            if question is not None:
+                summary["answer_report"] = str((args.out / "answer/report.html").resolve())
+            print(json.dumps(summary, indent=2))
+            return 0
+        if args.command == "construction-verify":
+            from .construction import verify_construction_run
+            receipt = verify_construction_run(args.run)
+            print(json.dumps({"status": "construction_publication_verified",
+                              "answer_status": receipt["answer_status"],
+                              "run": str(args.run.resolve())}, indent=2))
+            return 0
+        if args.command in {"gold-export", "gold-verify", "gold-decisions", "gold-reference-template", "gold-align"}:
+            if args.command == "gold-export":
+                from .gold_packet import export_packet
+                result = export_packet(args.run, args.out)
+                summary = {key: result[key] for key in ("packet_id", "data_kind", "counts")}
+            elif args.command == "gold-verify":
+                from .gold_packet import load_packet
+                result, _ = load_packet(args.packet)
+                summary = {"status": "packet_integrity_verified", "packet_id": result["packet_id"],
+                           "official_scoring_performed": False}
+            elif args.command == "gold-decisions":
+                from .gold_packet import save_decisions
+                result = save_decisions(args.packet, args.decisions, args.out)
+                summary = {"packet_id": result["packet_id"], "counts": result["counts"]}
+            elif args.command == "gold-reference-template":
+                from .gold_reference import mapping_template
+                result = mapping_template(args.packet, args.out)
+                summary = {"status": "template_requires_reference_metadata", "baseline": result["baseline"]}
+            else:
+                from .gold_reference import align_reference
+                result = align_reference(args.packet, args.reference, args.mapping, args.out)
+                summary = {"status": result["status"], "summary": result["summary"], "metrics": None}
+            if args.command != "gold-verify":
+                summary["output"] = str(args.out.resolve())
+            print(json.dumps(summary, indent=2))
+            return 0
         if args.command == 'identifier-registry':
             from .cohort_mapping import collect_registry
             r = collect_registry(args.out, downloads=args.downloads)
@@ -159,6 +279,8 @@ def main(argv: list[str] | None = None) -> int:
             from .client import write_json
             from .questions import save_answer
             _,_,graph=read_run(args.run)
+            if graph.get('scope', {}).get('kind') == 'protein_cohort':
+                raise ValueError('The model planner supports disease-scoped saved graphs only. Use the deterministic question command for this protein cohort; no model was called.')
             output=new_output(args.out, args.run)
             planner=configured_planner();trace=planner.plan(args.question,graph)
             write_json(output/'planner_trace.json',trace)
@@ -183,6 +305,8 @@ def main(argv: list[str] | None = None) -> int:
             from .graph import save_run
             from .civic import CivicClient
             snapshot, events, graph = read_run(args.run)
+            if graph.get('scope', {}).get('kind') == 'protein_cohort':
+                raise ValueError('The CIViC adapter requires its declared disease scope and cannot enrich a disease-free protein cohort. No CIViC request was made.')
             if graph.get("civic"):
                 raise ValueError("This run already has a CIViC source. Start from a Pharos-only run; refresh reconciliation is not implemented.")
             if snapshot["data_kind"] == "synthetic_demo" and not args.snapshot:
