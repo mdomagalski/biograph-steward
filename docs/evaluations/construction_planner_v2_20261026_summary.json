@@ -1,0 +1,187 @@
+{
+  "format": "biograph-steward.construction-planner-result-summary.v1",
+  "policy": "biograph-steward.bounded-construction-planner.v2",
+  "interpretation": "Development agreement with explicit deterministic requests; not a held-out scientific benchmark, biological accuracy, graph improvement, or source retrieval evaluation.",
+  "model_configuration": {
+    "provider": "api",
+    "planner_kind": "live_model",
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "endpoint": "http://127.0.0.1:8010/v1/chat/completions",
+    "api": "nim_chat",
+    "prompt_profile": "nemotron_nano_v1",
+    "max_output_tokens": 1600,
+    "timeout_seconds": 120,
+    "cli_version": null
+  },
+  "summary": {
+    "completed_cases": 12,
+    "scope_matches": 0,
+    "unsupported_requests_constructed": 0,
+    "invalid_plans": 0,
+    "planner_errors": 12,
+    "recorded_model_calls": 12,
+    "returned_token_totals": {},
+    "usage_available_cases": 0,
+    "total_latency_ms": 616.148,
+    "median_latency_ms": 51.209,
+    "cost": null,
+    "cost_note": "No provider prices or GPU billing allocation assumed; returned usage and latency recorded.",
+    "source_calls": 0,
+    "biological_accuracy_measured": false
+  },
+  "supported_cases": 4,
+  "supported_matches": 0,
+  "unsupported_cases": 8,
+  "unsupported_matches": 0,
+  "unchanged_from_v1": [
+    "cases",
+    "model configuration",
+    "question/scope",
+    "instructions",
+    "tool contract"
+  ],
+  "manifest_sha256": "90dcf35e62b553c135dcb0fd5d54be0314f2efcb12a3a96a8bb099688d9f9d3c",
+  "comparison_sha256": "04763174aa6a6c3723b8abaa2440cff1ae5dfe7cc80214b77663b5d9852b2a65",
+  "rows": [
+    {
+      "case_id": "ppi_full",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "pathways",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "context",
+        "relations": [
+          "shared_pathways"
+        ]
+      },
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "both",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "context",
+        "relations": [
+          "interactions",
+          "shared_pathways"
+        ]
+      },
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "subset",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533"
+        ],
+        "focus_uniprot": "P00533",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "unknown_identity",
+      "scope_match": false,
+      "expected_request": null,
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "ambiguous_relation",
+      "scope_match": false,
+      "expected_request": null,
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "physical_only",
+      "scope_match": false,
+      "expected_request": null,
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "clinical",
+      "scope_match": false,
+      "expected_request": null,
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "prune",
+      "scope_match": false,
+      "expected_request": null,
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "url",
+      "scope_match": false,
+      "expected_request": null,
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "prediction",
+      "scope_match": false,
+      "expected_request": null,
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    },
+    {
+      "case_id": "assay_filter",
+      "scope_match": false,
+      "expected_request": null,
+      "status": "planner_error",
+      "proposed_plan": null,
+      "construction_request": null
+    }
+  ]
+}

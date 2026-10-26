@@ -5,9 +5,10 @@ The construction flow connects an exact accession request to bounded Pharos retr
 The fixed form selects the cohort and supported profile directly. The optional
 [construction planner](CONSTRUCTION_AGENT.md) now selects a permitted request
 from a question and an explicitly supplied cohort, or abstains. The same
-deterministic constructor executes it after validation. Live model performance
-and intended-user usefulness require separate checks; this is not an autonomous
-research loop or biological evidence classifier.
+deterministic constructor executes it after validation. The [live development
+check](evaluations/CONSTRUCTION_PLANNER_20261026.md) found that all four supported
+planning tasks still failed after a structural correction. This feature remains
+experimental; explicit cohort selection is the working construction path.
 
 The product milestone is a reproducible graph publication. It does not establish improved predictions, scientific accuracy, independent experimental evidence or accepted biological claims.
 

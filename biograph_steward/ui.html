@@ -48,7 +48,7 @@ __AUTH_CONTROL__
 <button id="constructionSubmit" type="submit">Build graph and answer</button>
 <p class="small">Source annotations remain candidates for review. Saving a graph does not accept its assertions or establish biological accuracy.</p>
 <details id="constructionAgentPanel"><summary>Let the agent choose a retrieval plan</summary>
-<p>Describe the interaction or shared-pathway question for the cohort above. The agent can select a smaller cohort and retrieval profile, or decline an unsupported request. Inspect its choice before building.</p>
+<p><strong>Experimental planner.</strong> Describe the interaction or shared-pathway question for the cohort above. The agent can select a smaller cohort and retrieval profile, or decline a request. It can misunderstand valid questions; inspect every choice before building.</p>
 <label for="constructionAgentQuestion">Question for this cohort</label><textarea id="constructionAgentQuestion" rows="3" maxlength="4000" style="width:100%;font:inherit;padding:9px 10px" placeholder="Retrieve reported interactions among this cohort, focused on the selected protein."></textarea>
 <div class="row"><button type="button" id="constructionPlanButton" class="secondary">Plan from question</button><button type="button" id="constructionPlannedBuild" disabled>Build planned graph</button></div>
 <p id="constructionPlanStatus" role="status"></p><div id="constructionPlanPreview"></div>

@@ -1,5 +1,10 @@
 # Construction and submission checkpoint — October 26, 2026
 
+**Later live result:** the [planner evaluation](CONSTRUCTION_PLANNER_20261026.md)
+subsequently completed after access was restored. Structural fixes reduced
+invalid plans, but all four supported tasks still failed. This note preserves the
+earlier local checkpoint; use the linked result for current model status.
+
 The bounded question planner is connected to deterministic graph construction,
 and the retained graph plus full decision ledger can be downloaded with the
 complete retrieved baseline and qualified assay sources. This checkpoint closes

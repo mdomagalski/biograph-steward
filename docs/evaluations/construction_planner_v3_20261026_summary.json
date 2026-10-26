@@ -1,0 +1,311 @@
+{
+  "format": "biograph-steward.construction-planner-result-summary.v1",
+  "policy": "biograph-steward.bounded-construction-planner.v3",
+  "interpretation": "Development agreement with explicit deterministic requests; not a held-out scientific benchmark, biological accuracy, graph improvement, or source retrieval evaluation.",
+  "model_configuration": {
+    "provider": "api",
+    "planner_kind": "live_model",
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "endpoint": "http://127.0.0.1:8010/v1/chat/completions",
+    "api": "nim_chat",
+    "prompt_profile": "nemotron_nano_v1",
+    "max_output_tokens": 1600,
+    "timeout_seconds": 120,
+    "cli_version": null
+  },
+  "summary": {
+    "completed_cases": 12,
+    "scope_matches": 7,
+    "unsupported_requests_constructed": 0,
+    "invalid_plans": 1,
+    "planner_errors": 0,
+    "recorded_model_calls": 12,
+    "returned_token_totals": {
+      "prompt_tokens": 8208,
+      "total_tokens": 8882,
+      "completion_tokens": 674
+    },
+    "usage_available_cases": 12,
+    "total_latency_ms": 22635.269,
+    "median_latency_ms": 1542.169,
+    "cost": null,
+    "cost_note": "No provider prices or GPU billing allocation assumed; returned usage and latency recorded.",
+    "source_calls": 0,
+    "biological_accuracy_measured": false
+  },
+  "supported_cases": 4,
+  "supported_matches": 0,
+  "unsupported_cases": 8,
+  "unsupported_matches": 7,
+  "unchanged_from_v1": [
+    "cases",
+    "model configuration",
+    "question/scope",
+    "instructions",
+    "tool contract"
+  ],
+  "manifest_sha256": "9459c6c819d2cfbbad936ceb1f7461d14fbf35662fc22660084758f5fcd5ce22",
+  "comparison_sha256": "db72abbd090b4eff85dc5a126a263642ac388587328ea18108ca5838422976ed",
+  "rows": [
+    {
+      "case_id": "ppi_full",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "pathways",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "context",
+        "relations": [
+          "shared_pathways"
+        ]
+      },
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "both",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "context",
+        "relations": [
+          "interactions",
+          "shared_pathways"
+        ]
+      },
+      "status": "validated",
+      "proposed_plan": {
+        "reason": "construct",
+        "action": "construct",
+        "tool": "construct_cohort",
+        "profile": "ppi",
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      }
+    },
+    {
+      "case_id": "subset",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533"
+        ],
+        "focus_uniprot": "P00533",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "unknown_identity",
+      "scope_match": false,
+      "expected_request": null,
+      "status": "invalid_plan",
+      "proposed_plan": {
+        "reason": "Permitted request",
+        "action": "construct",
+        "tool": "construct_cohort",
+        "profile": "ppi",
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116",
+          "P00533"
+        ],
+        "focus_uniprot": "P04637",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "ambiguous_relation",
+      "scope_match": true,
+      "expected_request": null,
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "physical_only",
+      "scope_match": true,
+      "expected_request": null,
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "clinical",
+      "scope_match": true,
+      "expected_request": null,
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "prune",
+      "scope_match": true,
+      "expected_request": null,
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "url",
+      "scope_match": true,
+      "expected_request": null,
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "prediction",
+      "scope_match": true,
+      "expected_request": null,
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    },
+    {
+      "case_id": "assay_filter",
+      "scope_match": true,
+      "expected_request": null,
+      "status": "abstained",
+      "proposed_plan": {
+        "reason": "Abstain",
+        "action": "abstain",
+        "tool": null,
+        "profile": null,
+        "accessions": [],
+        "focus_uniprot": null,
+        "relations": []
+      },
+      "construction_request": null
+    }
+  ]
+}

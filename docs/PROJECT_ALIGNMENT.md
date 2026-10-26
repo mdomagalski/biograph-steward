@@ -50,8 +50,9 @@ without an invented disease assertion. The
 [real publication check](evaluations/CONSTRUCTION_PUBLICATION_20261023.md)
 demonstrates that boundary. The optional [construction planner](CONSTRUCTION_AGENT.md)
 now selects permitted retrieval requests and preserves its provenance through
-the published graph. Local integration is tested; live performance and user
-usefulness are pending. Cohort-compatible maintenance/evidence-action policies
+the published graph. Local integration is tested; the [live comparison](evaluations/CONSTRUCTION_PLANNER_20261026.md)
+found all four supported tasks still failed after structural correction. Keep the
+planner experimental. Actual user usefulness and cohort-compatible maintenance/evidence-action policies
 remain functional gaps.
 AWS/Neptune, a UI rewrite and more agents are not prerequisites.
 
@@ -92,7 +93,7 @@ This does not replace the organizer reference or incremental-prediction evaluati
 
 | Function | Current implementation | Remaining gap |
 |---|---|---|
-| Ingest heterogeneous biomedical evidence | Scoped Pharos/CIViC retrieval, reusable adapters, exact-cohort publication with optional bounded model selection, qualified assay attachments and a frozen restricted learner projection | Live construction-agent assessment; deployed source/study lineage remains unresolved |
+| Ingest heterogeneous biomedical evidence | Scoped Pharos/CIViC retrieval, reusable adapters, exact-cohort publication with optional bounded model selection, qualified assay attachments and a frozen restricted learner projection | Construction-agent task selection failed its supported development cases; deployed source/study lineage remains unresolved |
 | Filter for the question and limit graph size | Exact disease choice, scoped queries, relation/row budgets, coverage disclosures | Broader agent-controlled retrieval under explicit budgets |
 | Normalize and trace assertions | Qualified assertions, stable source locators, original context, separate local review, immutable snapshots and bounded KGX export with the source bundle retained | Resolve documented standard-validation issues; complete source/study lineage only where authoritative metadata permits |
 | Clean erroneous or irrelevant links | Structural checks, exact deduplication, explicit review states | Scientifically justified filtering with measured false removals; no automatic model pruning is enabled |
@@ -106,7 +107,7 @@ The supplied judging weights are usability 40%, accuracy/pruning 30%, explainabi
 
 | Promised capability | Current status |
 |---|---|
-| Plain-language/scoped question to graph and answer | Guided saved-graph queries plus exact-protein construction/publication and cited cohort answers. Optional bounded model selection is connected to construction, with live performance and user assessment pending. |
+| Plain-language/scoped question to graph and answer | Guided saved-graph queries plus exact-protein construction/publication and cited cohort answers. Optional bounded model selection is connected to construction, but all four supported live development tasks failed. Keep experimental; actual user assessment remains pending. |
 | Qualified, versioned assertions and review lifecycle | Implemented local assertion identity, evidence revisions, review events and immutable runs. Local acceptance differs from upstream curation status. |
 | CIViC, CPTAC/PDC and PubMed/PMC evidence | CIViC integration is active. Literature and processed CPTAC adapters remain reusable; general PDC-native ingestion and dependable automatic extraction are not implemented. |
 | Entity and ontology harmonization | Supported explicit identifiers and registry mappings; unresolved/multiple mappings preserved. This is a bounded subset, not comprehensive HGVS/SO/ChEBI/NCIt/ECO normalization. |

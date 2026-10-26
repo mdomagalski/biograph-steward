@@ -6,6 +6,11 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+try:
+    from jsonschema import Draft202012Validator
+except ImportError:
+    Draft202012Validator = None
+
 from biograph_steward.client import digest
 from biograph_steward.construction_planning import (
     ConstructionPlanner, configured_construction_planner, construction_planning_request,
@@ -80,8 +85,11 @@ class ConstructionPlanningTests(unittest.TestCase):
         self.assertEqual(trace["scope"], original)
         self.assertEqual(verify_construction_plan_trace(trace), trace["construction_request"])
         schema = calls[0]["text"]["format"]["schema"]
-        self.assertEqual(schema["properties"]["accessions"]["items"]["enum"], original["accessions"])
-        self.assertFalse(schema["additionalProperties"])
+        self.assertEqual(len(schema["anyOf"]), 3)
+        for branch in schema["anyOf"]:
+            self.assertFalse(branch["additionalProperties"])
+            if branch["properties"]["action"]["enum"] == ["construct"]:
+                self.assertEqual(branch["properties"]["accessions"]["items"]["enum"], original["accessions"])
         serialized = json.dumps(calls)
         for secret in ("expected_request", "reference_plan", "assay_outcome", "source_statement"):
             self.assertNotIn(secret, serialized)
@@ -240,6 +248,77 @@ class ConstructionPlanningTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             compare_construction_cases(planner(proposal(), calls), cases)
         self.assertEqual(calls, [])
+
+    def test_schema_revision_preserves_instructions_tool_contract_and_fixed_cases(self):
+        # Bound to the preserved v1 live development run; this is a schema-only
+        # regression, not a post-result prompt, task or capability change.
+        _, _, policy, audit = construction_planning_request(scope())
+        self.assertTrue(policy.endswith(".v3"))
+        self.assertEqual(audit["instructions_sha256"], "cf601f2a1293ef9109ab4b09c7b5c6593ba6c05379795173200f26acca42fdc0")
+        self.assertEqual(audit["tool_contract_sha256"], "353a346725a1abb58943ca2dec5e1231f8acf0be9c45734f4e4d1a62ba77a657")
+        self.assertEqual(digest(fixed_construction_cases()), "ff30a385c91a6b7f0d8d6eb159925964da732b1c03505f68a1bc969bf319e388")
+
+    def test_prior_trace_is_not_silently_reinterpreted_as_current_contract(self):
+        for version in ("v1", "v2"):
+            trace = planner(proposal()).plan(scope())
+            trace["format"] = trace["policy"] = "biograph-steward.bounded-construction-planner." + version
+            with self.subTest(version=version), self.assertRaises(ValueError):
+                verify_construction_plan_trace(reseal(trace))
+
+    def test_schema_omits_decoder_item_limits_but_application_retains_bounds(self):
+        schema = construction_planning_request(scope())[1]
+        serialized = json.dumps(schema)
+        for keyword in ("minItems", "maxItems", "uniqueItems", "contains", "minContains", "maxContains"):
+            self.assertNotIn('"' + keyword + '"', serialized)
+        for p in (proposal(accessions=[]), proposal(accessions=["P04637"] * 26),
+                  proposal(accessions=["P04637", "P04637"]),
+                  proposal(accessions=["P00533"], focus_uniprot="P04637")):
+            with self.subTest(proposal=p), self.assertRaises(ValueError):
+                validate_construction_plan(p, scope())
+
+
+@unittest.skipIf(Draft202012Validator is None, "Optional jsonschema validator is not installed in the core environment.")
+class ConstructionBranchSchemaTests(unittest.TestCase):
+    def test_complete_branches_accept_legal_shapes(self):
+        schema = construction_planning_request(scope())[1]
+        Draft202012Validator.check_schema(schema)
+        validator = Draft202012Validator(schema)
+        legal = [abstention(), proposal(),
+                 proposal(accessions=["P04637", "P00533"], focus_uniprot="P00533")]
+        legal.extend(proposal(profile="context", relations=r) for r in (
+            ["interactions"], ["shared_pathways"], ["interactions", "shared_pathways"],
+            ["shared_pathways", "interactions"]))
+        for plan in legal:
+            with self.subTest(plan=plan):
+                self.assertTrue(validator.is_valid(plan))
+                validate_construction_plan(plan, scope())
+
+    def test_complete_branches_reject_seven_observed_v1_invalid_proposals(self):
+        # Exact structural forms observed on the fixed development cases. These
+        # have no biological labels or source evidence; repeated forms remain
+        # separate to preserve the seven-case failure count.
+        mixed_full = proposal(reason="Abstain", action="abstain", relations=[])
+        mixed_empty = proposal(reason="Abstain", action="abstain", accessions=[], focus_uniprot=None, relations=[])
+        observed = [mixed_full, mixed_empty,
+                    proposal(reason="Construct interaction and shared pathway evidence for the supplied cohort, focused on P04637.",
+                             relations=["interactions", "shared_pathways"]),
+                    mixed_full, mixed_full, mixed_empty, mixed_full]
+        validator = Draft202012Validator(construction_planning_request(scope())[1])
+        self.assertEqual(len(observed), 7)
+        for index, plan in enumerate(observed):
+            with self.subTest(index=index):
+                self.assertFalse(validator.is_valid(plan))
+                with self.assertRaises(ValueError):
+                    validate_construction_plan(plan, scope())
+
+    def test_branches_do_not_replace_deterministic_cohort_guards(self):
+        validator = Draft202012Validator(construction_planning_request(scope())[1])
+        for plan in [proposal(accessions=[]), proposal(accessions=["P04637"] * 26),
+                     proposal(accessions=["P04637", "P04637"]),
+                     proposal(accessions=["P00533"], focus_uniprot="P04637")]:
+            self.assertTrue(validator.is_valid(plan))
+            with self.assertRaises(ValueError):
+                validate_construction_plan(plan, scope())
 
 
 if __name__ == "__main__":

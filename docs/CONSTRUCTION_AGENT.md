@@ -18,6 +18,37 @@ specifies the reasoning-mode system message and greedy decoding for reasoning of
 The existing `nemotron_nano_v1` profile retains those settings. This is a vLLM
 deployment of the NVIDIA model; it is not a verified NIM deployment.
 
+### Current contract and deployed decoder
+
+Policy `biograph-steward.bounded-construction-planner.v3` uses separate complete
+`anyOf` branches for abstention, PPI construction and context construction. It
+reuses the branch pattern already in `planning_scope.tool_schema`; literal empty
+arrays and whole-array relation enums prevent contradictory output shapes.
+
+The [vLLM 0.8.5 feature detector](https://github.com/vllm-project/vllm/blob/v0.8.5/vllm/model_executor/guided_decoding/utils.py)
+and [backend selection](https://github.com/vllm-project/vllm/blob/v0.8.5/vllm/model_executor/guided_decoding/__init__.py)
+switch away from XGrammar for array item limits. The current schema omits those
+keywords. Application code still enforces cohort cardinality, uniqueness, focus
+membership and exact identity authorization before retrieval. The installed
+vLLM 0.8.5 / XGrammar 0.1.18 preflight and grammar checks passed all 27 controls.
+
+[XGrammar's version-specific tests](https://github.com/mlc-ai/xgrammar/blob/v0.1.18/tests/python/test_json_schema_converter.py)
+and [converter](https://github.com/mlc-ai/xgrammar/blob/v0.1.18/cpp/json_schema_converter.cc)
+support these branch/constant patterns. Direct grammar checks alone do not cover
+the serving layer's backend selection; both checks are required.
+
+The [live development result](evaluations/CONSTRUCTION_PLANNER_20261026.md)
+improved from 5/12 to 7/12 scope matches and reduced invalid plans from seven to
+one, but **all four supported construction tasks still failed**. Three were
+declined and one omitted requested pathways. The planner remains experimental;
+useful task selection is unproven. Schema validity cannot establish intent.
+
+The evaluation note preserves the initial v1 failure and the intermediate v2
+serving rejection, exact source snapshots and unchanged case/prompt/model
+bindings. V1 traces require checkpoint `dd04e58`; v2 has its preserved module.
+Current verification does not silently reinterpret old traces. Other providers'
+schema restrictions require separate endpoint validation.
+
 The adapter also reuses the existing HTTP provider options and isolated Codex
 transport when explicitly configured. It introduces no new API key or serving
 service. Existing configuration and licenses remain applicable; see
@@ -25,9 +56,9 @@ service. Existing configuration and licenses remain applicable; see
 
 Documented capability: constrained JSON output. Verified local integration:
 exact field, identity, profile and relation checks; trace binding; single-call
-transport and failure handling with injected responses. Unresolved until a live
-comparison: whether the configured model consistently interprets questions and
-abstains for unsupported conditions. Schema validity cannot establish that.
+transport and failure handling with injected responses. Live checks found
+unreliable task selection despite the structural repair. Intended-user usefulness
+and broader model performance remain unproven.
 
 ## Input and permitted selection
 

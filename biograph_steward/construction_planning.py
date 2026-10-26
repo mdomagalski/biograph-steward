@@ -14,7 +14,7 @@ from .client import digest, utcnow
 from .construction import plan_construction, PROFILES
 from .model_transport import JSONModelClient, ModelUnavailable, selected_provider, setting
 
-POLICY = "biograph-steward.bounded-construction-planner.v1"
+POLICY = "biograph-steward.bounded-construction-planner.v3"
 SCOPE_FIELDS = {"question", "accessions", "focus_uniprot"}
 PLAN_FIELDS = {"reason", "action", "tool", "profile", "accessions", "focus_uniprot", "relations"}
 INSTRUCTIONS = """Select one permitted Pharos cohort-construction request, or abstain.
@@ -61,18 +61,33 @@ def validate_construction_scope(scope):
 
 def construction_planning_request(scope):
     scope = validate_construction_scope(scope)
-    schema = {"type": "object", "additionalProperties": False,
-              "required": ["reason", "action", "tool", "profile", "accessions", "focus_uniprot", "relations"],
-              "properties": {
-                  "reason": {"type": "string"},
-                  "action": {"type": "string", "enum": ["construct", "abstain"]},
-                  "tool": {"type": ["string", "null"], "enum": ["construct_cohort", None]},
-                  "profile": {"type": ["string", "null"], "enum": ["ppi", "context", None]},
-                  "accessions": {"type": "array", "items": {"type": "string", "enum": scope["accessions"]},
-                                 "maxItems": len(scope["accessions"])},
-                  "focus_uniprot": {"type": ["string", "null"], "enum": scope["accessions"] + [None]},
-                  "relations": {"type": "array", "items": {"type": "string", "enum": ["interactions", "shared_pathways"]},
-                                "maxItems": 2}}}
+    # Reuse planning_scope.tool_schema's union of complete object shapes.
+    # XGrammar 0.1.18 supports anyOf/const/enum. vLLM 0.8.5 switches to another
+    # backend if item-limit keywords are present, so omit them here. Literal
+    # arrays enforce abstention and legal relation sets; application validation
+    # still owns cohort cardinality/uniqueness/focus before any source access.
+    order = ["reason", "action", "tool", "profile", "accessions", "focus_uniprot", "relations"]
+    def branch(properties):
+        return {"type": "object", "additionalProperties": False, "required": order,
+                "properties": {key: properties[key] for key in order}}
+    def exact(value):
+        return {"type": "string", "enum": [value]}
+    null = {"type": "null"}
+    empty = {"type": "array", "const": []}
+    abstain = branch({"reason": {"type": "string"}, "action": exact("abstain"),
+                      "tool": null, "profile": null, "accessions": empty,
+                      "focus_uniprot": null, "relations": empty})
+    common = {"reason": {"type": "string"}, "action": exact("construct"),
+              "tool": exact("construct_cohort"),
+              "accessions": {"type": "array", "items": {"type": "string", "enum": scope["accessions"]}},
+              "focus_uniprot": {"type": "string", "enum": scope["accessions"]}}
+    ppi = branch({**common, "profile": exact("ppi"),
+                  "relations": {"type": "array", "enum": [["interactions"]]}})
+    context = branch({**common, "profile": exact("context"),
+                      "relations": {"type": "array", "enum": [
+                          ["interactions"], ["shared_pathways"],
+                          ["interactions", "shared_pathways"], ["shared_pathways", "interactions"]]}})
+    schema = {"anyOf": [abstain, ppi, context]}
     contracts = {"tool": "construct_cohort", "profiles": deepcopy(PROFILES),
                  "identity_scope": "Only the supplied exact accessions; no alias resolution or new identities.",
                  "evidence_state": "candidate", "source": "configured Pharos adapter only",

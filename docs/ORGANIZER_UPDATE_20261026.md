@@ -79,9 +79,10 @@ remains unresolved; do not rename the export to imply either property.
    preservation, explicit abstention and every removal on controlled fixtures.
    Extend packet preservation for qualified assay sources without flattening
    their biological meaning.
-3. Execute the prepared bounded construction-agent comparison against deterministic
-   execution. Announce the specific model run before requiring Brev. Use the
-   same complete example for a short team walkthrough, recording answer/source
+3. The [bounded construction-agent comparison](evaluations/CONSTRUCTION_PLANNER_20261026.md)
+   is complete. Structural correction reduced invalid plans, but supported task
+   selection still failed. Keep the planner experimental. Use the verified
+   deterministic example for a short team walkthrough, recording answer/source
    discovery, decision interpretation and export obstacles. This is an initial
    usability pilot, not a replacement for intended-user evaluation.
 4. Prepare the selected [IntAct/IMEx public reference](literature/PUBLIC_REFERENCE_OPTIONS_20261026.md)
