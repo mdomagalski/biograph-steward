@@ -78,3 +78,13 @@ it does not automatically prune or accept interactions. General attachment to
 ordinary workbench runs is not yet implemented. Independent improvement
 evaluation remains separate, and this consumed panel cannot become an unseen
 test after prediction, enrichment or eligibility tuning.
+
+## Inspect qualified assay observations
+
+A saved live protein cohort can now attach the completed assay publication.
+Open **Qualified assay evidence**, choose a saved publication, and attach it
+to a new run. The panel preserves detected, nondetected and excluded observations
+for pairs within that cohort. Source downloads and review decisions retain their
+publication bindings. See [the attachment guide](docs/ASSAY_WORKBENCH.md) for
+commands, source requirements and current export limits. This is an evidence
+inspection workflow, not a new scientific-accuracy result.

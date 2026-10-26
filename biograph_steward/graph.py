@@ -121,7 +121,8 @@ def verify_snapshot(snapshot: dict) -> None:
         raise ValueError("Protein cohort targets must be the exact resolved accessions in request order.")
 
 
-def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_snapshot: dict | None = None) -> dict:
+def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_snapshot: dict | None = None,
+                *, assay_attachment: dict | None = None) -> dict:
     verify_snapshot(snapshot)
     demo = snapshot["data_kind"] == "synthetic_demo"
     cohort = (snapshot.get("scope") or {}).get("kind") == "protein_cohort"
@@ -285,6 +286,13 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
     if civic_snapshot is not None:
         from .civic import normalize_civic
         civic_report = normalize_civic(civic_snapshot, snapshot, nodes, edges, quarantine, add_edge)
+    if assay_attachment is not None:
+        from .assay_attachment import validate_attachment
+        validate_attachment(snapshot, assay_attachment)
+        for edge in assay_attachment["edges"]:
+            if edge["id"] in edges or any(edge[k] not in target_rows for k in ("subject", "object")):
+                raise ValueError("Assay edge conflicts with a source edge or expands the resolved cohort.")
+            edges[edge["id"]] = deepcopy(edge)
 
     for pid, row in target_rows.items():
         associated = [e for e in edges.values() if e["subject"] == pid and e["object"] == did]
@@ -342,6 +350,11 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
     if civic_report is not None:
         graph["civic"] = civic_report
         graph["civic_snapshot_sha256"] = civic_snapshot["content_sha256"]
+    if assay_attachment is not None:
+        graph["assay_evidence"] = deepcopy(assay_attachment["summary"])
+        graph["assay_observations"] = deepcopy(assay_attachment["observations"])
+        graph["assay_publication_sha256"] = assay_attachment["publication_sha256"]
+        graph["assay_attachment_sha256"] = assay_attachment["content_sha256"]
     graph["context_metadata"] = [{"uniprot": t.get("uniprot"), "symbol": t.get("sym"),
                                   **t["pharos_context"].get("metadata", {})}
                                  for t in snapshot["targets"] if isinstance(t, dict) and isinstance(t.get("pharos_context"), dict)]
@@ -358,6 +371,11 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
         graph["interpretation"] = ("Source-reported annotations for an explicitly requested protein cohort. "
             "No disease association is inferred from cohort membership. Interaction annotations can include functional associations; "
             "physical binding and causal effects are not inferred. Passed structural checks does not mean scientifically verified.")
+    if assay_attachment is not None:
+        graph["interpretation"] += (" The attached study records qualified assay observations for pairs whose two endpoints "
+            "resolve within this cohort. Nondetection is not absence of a biological interaction; failed assays remain in the "
+            "observation ledger without edges. The original frozen Pharos lookup is preserved as historical context. "
+            "No automatic acceptance, pruning or independent biological validation is performed.")
     from .assertions import build_assertions, assertion_summary
     graph["review_events"] = deepcopy(review_events) if review_events is not None else []
     graph["assertions"] = build_assertions(graph, graph["review_events"])
@@ -391,13 +409,27 @@ def _write_tsv(path: Path, rows: list[dict], columns: list[str]) -> None:
 
 
 def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review_events: list[dict] | None = None,
-             civic_snapshot: dict | None = None) -> dict:
-    graph = build_graph(snapshot, review_events, civic_snapshot)
+             civic_snapshot: dict | None = None, assay_attachment: dict | None = None,
+             assay_source: Path | None = None) -> dict:
+    if (assay_attachment is None) != (assay_source is None):
+        raise ValueError("Assay replay requires both its sidecar and complete preserved source publication.")
+    assay_files = None
+    if assay_attachment is not None:
+        from .assay_attachment import source_material
+        assay_files = source_material(snapshot, assay_attachment, assay_source)
+    graph = build_graph(snapshot, review_events, civic_snapshot, assay_attachment=assay_attachment)
     directory = Path(directory)
     if directory.exists() and any(directory.iterdir()):
         raise ValueError("Output directory is not empty. Choose a new directory to preserve previous runs.")
     directory.mkdir(parents=True, exist_ok=True)
     write_json(directory / "snapshot.json", snapshot)
+    if assay_attachment is not None:
+        write_json(directory / "assay_attachment.json", assay_attachment)
+        write_json(directory / "assay_observations.json", graph["assay_observations"])
+        for name, raw in assay_files.items():
+            path = directory / "assay_source" / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(raw)
     if civic_snapshot is not None:
         write_json(directory / "civic_snapshot.json", civic_snapshot)
         write_json(directory / "civic_report.json", graph["civic"])
@@ -428,7 +460,9 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
                 "validation_status", "evidence_edge_ids", "source_record_count", "publications", "normalization_notes", "revision", "snapshot_sha256"])
     from .benchmark import write_audit
     write_audit(graph['benchmark_readiness'], directory)
-    write_json(directory / "source_licenses.json", snapshot.get("source_licenses", []) + ([civic_snapshot["source_license"]] if civic_snapshot else []))
+    write_json(directory / "source_licenses.json", snapshot.get("source_licenses", [])
+               + ([civic_snapshot["source_license"]] if civic_snapshot else [])
+               + ([assay_attachment["source_license"]] if assay_attachment else []))
     for i, record in enumerate(snapshot.get("requests", [])):
         write_json(directory / "raw_responses" / f"{i:03d}.json", record)
     _write_tsv(directory / "nodes.tsv", graph["nodes"],
@@ -456,6 +490,8 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
             "snapshot_sha256":civic_snapshot["content_sha256"],"policy":civic_snapshot["policy"],
             "retrieved_items":graph["civic"]["retrieved_items"],"normalized_items":graph["civic"]["normalized_items"],
             "excluded_items":len(graph["civic"]["excluded_items"]),"local_acceptance_inferred":False}})
+    if assay_attachment is not None:
+        trace.insert(-1, {"step": "attach_cohort_assay_observations", "result": graph["assay_evidence"]})
     write_json(directory / "pipeline_trace.json", trace)
     manifest = {"starter_version": __version__, "graph_format": graph['graph_format'],
                 "assertion_summary": graph['assertion_summary'], "normalization_policy": graph["normalization"]["policy"], "review_event_count": len(graph['review_events']),
@@ -475,6 +511,10 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
         manifest["civic"] = {"snapshot_sha256":civic_snapshot["content_sha256"],"created_at":civic_snapshot["created_at"],
                              "source_version":civic_snapshot.get("source_version"),"policy":civic_snapshot["policy"],
                              "coverage":graph["civic"]["coverage"],"mapping":graph["civic"]["mapping"]}
+    if assay_attachment is not None:
+        manifest["assay_evidence"] = graph["assay_evidence"]
+        manifest["assay_publication_sha256"] = graph["assay_publication_sha256"]
+        manifest["assay_attachment_sha256"] = graph["assay_attachment_sha256"]
     write_json(directory / "run_manifest.json", manifest)
     from .webapp import report_html
     (directory / "report.html").write_text(report_html(graph), encoding="utf-8")

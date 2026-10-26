@@ -181,3 +181,14 @@ meanings, baseline relationship, held-out rules and required scoring/submission
 format. We must also decide explicitly how abstentions, unmatched rows,
 quarantined records and many-to-one mappings enter that protocol. No assay
 outcomes or reserved INMC labels are opened by this workflow.
+
+## Qualified assay attachment boundary
+
+The current packet profile rejects runs carrying the new assay attachment.
+It must not silently strip those observations or their original source bundle.
+Use the ordinary complete run ZIP for these graphs until qualified packet
+preservation is implemented. See [the attachment contract](ASSAY_WORKBENCH.md).
+Organizer final labels may remain hidden; the official adapter needs their task,
+baseline, label meanings, identifiers and scoring interface rather than access
+to final answers. [Public references](literature/PUBLIC_REFERENCE_OPTIONS_20261026.md)
+remain available for explicitly scoped local evaluation.

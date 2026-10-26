@@ -72,7 +72,7 @@ derivative of the same consumed assessment. It is never a fresh scientific
 evaluation. `runs/` is ignored by Git, so a fresh clone needs the saved source
 packet as well as the code. Upstream source rights continue to apply.
 
-## Scope and stop point
+## Original publication scope and subsequent attachment
 
 This increment ends at a replayable observation graph and inspection view. It
 adds no source search, extraction pipeline, learner, model sweep or experiment.
@@ -89,6 +89,8 @@ new independent evidence.
 Preserving and exposing qualified evidence is a measured engineering property.
 It does not prove that this layer improves prediction or answers a biomedical
 user's question better. This consumed panel cannot independently validate its
-own addition. General workbench attachment, broader standards exchange,
-user-task evaluation and any independently justified improvement comparison
-remain separate tasks; they are not bundled into this publication.
+own addition. A subsequent [workbench increment](ASSAY_WORKBENCH.md) now attaches
+selected observations to exact live protein cohorts, preserving complete sources
+and review bindings. Broader standards exchange, user-task evaluation and an
+independently justified improvement comparison remain separate tasks. Historical
+exact verification uses the [checkpoint implementation](evaluations/CHECKPOINT_REPLAY_20261026.md).

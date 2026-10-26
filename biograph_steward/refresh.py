@@ -143,6 +143,9 @@ def _metadata_shapes(snapshot):
 
 def _load(directory):
     directory = Path(directory)
+    if any((directory / name).exists() or (directory / name).is_symlink()
+           for name in ('assay_attachment.json', 'assay_source')):
+        raise ValueError('Assay-attached runs do not yet support refresh or gold-interface replay. Use the complete ordinary run export.')
     try:
         files = {name: hashlib.sha256((directory / name).read_bytes()).hexdigest()
                  for name in PARENT_FILES if (directory / name).is_file()}

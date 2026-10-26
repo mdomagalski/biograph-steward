@@ -1,0 +1,29 @@
+{
+  "check": "qualified_assay_workbench_integration",
+  "date": "2026-10-26",
+  "source_run": "runs/assay_cohort_source_20261026",
+  "attached_run": "runs/assay_workbench_v2_20261026",
+  "source_publication_sha256": "315f666f686736e86241dc802d68d09f69a35860d4d7ae91d053447e085e22e9",
+  "attachment_sha256": "267ea9d9a699c627d83c08eaf63a75027136a8050c326eacc47f6607bec14381",
+  "graph_file_sha256": "ad3ae55806870c974f9ad0bdf1352acccf929fb4220e727df0f4e4e601ada673",
+  "cohort": [
+    "P22674",
+    "P38936"
+  ],
+  "selection_reason": "First observation in the existing consumed publication order, selected before examining its outcome; product integration case only.",
+  "source_files_preserved_byte_identical": 29,
+  "pharos_edges_before": 1,
+  "pharos_edges_unchanged": true,
+  "pharos_assertions_unchanged": true,
+  "qualified_assay_edges": 1,
+  "selected_observations": 1,
+  "assay_status_counts": {
+    "detected": 1
+  },
+  "all_assay_assertions_candidate": true,
+  "saved_run_replay": "passed",
+  "rendered_report_matches_current_renderer": true,
+  "browser_visual_acceptance": "not_performed_browser_bridge_unavailable",
+  "scientific_improvement_tested": false,
+  "new_independent_reference_opened": false
+}

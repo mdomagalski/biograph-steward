@@ -22,6 +22,7 @@ Open `http://127.0.0.1:8765/`. A fresh checkout includes an explicitly synthetic
 - [Bounded cohort construction](docs/CONSTRUCTION.md): 1–25 exact protein accessions, a fixed source profile, published graph, cited candidate answer and offline-verifiable export. This deterministic flow needs no model.
 - Scoped Pharos retrieval with pagination, explicit limits and per-protein coverage reporting for pathways, GO, interactions, drugs, selected expression and publication discovery.
 - Qualified assertions, raw-source provenance, immutable snapshots and separate local human-review states.
+- [Qualified assay attachment](docs/ASSAY_WORKBENCH.md): selected cohort observations, original assay context, source-preserving reviews and complete run exports.
 - Guided protein-neighborhood and CIViC molecular-profile/therapy questions, with compact evidence graphs, deterministic cited summaries and complete evidence-context exports.
 - Saved graphs and answers, source passports, and comparison of saved snapshots with guarded review carryover.
 - Source-bound graph handoff, explicit keep/prune/abstain files, and exact external-reference alignment with raw labels preserved; official gold scoring awaits its contract.
@@ -36,7 +37,7 @@ These capabilities preserve and expose source evidence. They do not establish cl
 The challenge calls for the **same graph learner on baseline and enriched graphs**, evaluated against held-out measured relationships. A bounded supporting comparison is now complete; the official organizer reference is still unavailable.
 
 Organizer Slack excerpts supplied October 23 also mention a **Pharos gold set**.
-Its artifact and scoring contract remain unavailable to us. The [local handoff interface](docs/GOLD_SET_INTERFACE.md) now exports verified graph packets and aligns explicitly mapped references without guessing label meanings. The study below is
+Its scoring contract remains unavailable to us; final test labels can reasonably remain hidden. [Public references](docs/literature/PUBLIC_REFERENCE_OPTIONS_20261026.md) can support bounded local assessments. The [local handoff interface](docs/GOLD_SET_INTERFACE.md) now exports verified graph packets and aligns explicitly mapped references without guessing label meanings. The study below is
 a provisional supporting evaluation, not a substitute for the official reference;
 see the [updated alignment](docs/PROJECT_ALIGNMENT.md#organizer-clarifications-supplied-october-23).
 
@@ -62,8 +63,7 @@ assays retained in the audit. The 42 detections without a bounded Pharos match
 are an inspection filter, not independently validated new interactions.
 Study/construct context, nondetections and original Pharos records remain
 explicit. See the [publication record](docs/evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md).
-General source attachment to ordinary workbench runs remains unimplemented;
-this publication does not establish prediction gain or replace independent evaluation.
+The [workbench attachment](docs/ASSAY_WORKBENCH.md) now selects both-endpoint observations for an exact live protein cohort, preserves the entire original publication and supports inspection/review/replay. Gold/KGX export and cohort refresh for attached runs remain unsupported and fail explicitly. This integration does not establish prediction gain or replace independent evaluation.
 
 ## Repository scope
 

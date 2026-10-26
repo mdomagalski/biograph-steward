@@ -69,7 +69,9 @@ The 42 detected bounded no-matches are an inspection filter, not independently
 validated new interactions. Study/construct context, nondetections and original
 Pharos records remain explicit, without automatic acceptance or pruning. See the
 [publication record](evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md).
-General source attachment to ordinary workbench runs is not yet implemented.
+The [ordinary workbench attachment](ASSAY_WORKBENCH.md) now preserves selected
+cohort observations, source-bound review and full run downloads. Qualified
+gold/KGX export and cohort maintenance for attached runs remain unsupported.
 This does not replace the organizer reference or incremental-prediction evaluation.
 
 ## Functional coverage

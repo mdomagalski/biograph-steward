@@ -51,6 +51,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("construction-verify", help="Verify a saved construction publication and its source/answer bindings offline.")
     p.add_argument("--run", type=Path, required=True)
+    p = sub.add_parser("assay-attach", help="Attach a saved qualified assay publication to an exact Pharos protein cohort offline.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--publication", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("standards-resources", help="Download hash-pinned official Biolink resources into a new folder.")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("standards-export", help="Publish a bounded KGX projection and actual upstream validation audit; requires optional audit environment.")
@@ -65,6 +69,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--reviews", type=Path, help="Preserve review events from this exact snapshot.")
     p.add_argument("--civic-snapshot", type=Path, help="Replay this verified CIViC sidecar without network access.")
+    p.add_argument("--assay-run", type=Path, help="Preserve the validated assay sidecar and complete source publication from this run.")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("review", help="Record a human assertion decision in a new immutable run.")
     p.add_argument("--run", type=Path, required=True)
@@ -149,6 +154,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'assay-attach':
+            from .assay_attachment import attach_assay
+            graph = attach_assay(args.run, args.publication, args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'assay_evidence': graph['assay_evidence']}, indent=2))
+            return 0
         if args.command == "standards-resources":
             from .standards_validation import prepare_resources
             result = prepare_resources(args.out)
@@ -392,7 +402,19 @@ def main(argv: list[str] | None = None) -> int:
                   if args.command == "replay" and args.reviews else None)
         civic = (json.loads(args.civic_snapshot.read_text(encoding="utf-8"))
                  if args.command == "replay" and args.civic_snapshot else None)
-        graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build", review_events=events,civic_snapshot=civic)
+        assay, assay_source = None, None
+        if args.command == 'replay':
+            if args.assay_run:
+                from .assay_attachment import read_assay
+                assay = read_assay(args.assay_run)
+                if assay is None:
+                    raise ValueError('The supplied assay run has no qualified assay attachment.')
+                assay_source = args.assay_run / 'assay_source'
+            elif any((args.snapshot.parent / name).exists() or (args.snapshot.parent / name).is_symlink()
+                     for name in ('assay_attachment.json', 'assay_source')):
+                raise ValueError('Use --assay-run to preserve this snapshot’s attached assay source during replay.')
+        graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build", review_events=events,
+                         civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source)
         print(json.dumps({"data_kind": graph["data_kind"], "summary": graph["summary"],
                           "report": str((args.out / "report.html").resolve())}, indent=2))
         if graph["data_kind"] == "synthetic_demo":

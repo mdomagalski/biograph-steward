@@ -26,6 +26,9 @@ def graph_basis(graph):
                    "review_events": graph.get("review_events", [])}
     if graph.get("civic_snapshot_sha256"):
         basis["civic_snapshot"] = graph["civic_snapshot_sha256"]
+    if graph.get("assay_attachment_sha256"):
+        basis["assay_attachment"] = graph["assay_attachment_sha256"]
+        basis["assay_publication"] = graph["assay_publication_sha256"]
     return digest(basis)
 
 

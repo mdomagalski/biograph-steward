@@ -128,5 +128,11 @@ qualified edges; failed/ineligible observations remain in the complete ledger.
 The original AD/DB construct roles, confirmation values, source rows and Pharos
 lookup context remain distinct. Nothing is automatically accepted or pruned,
 and ordinary guided questions do not turn these observations into unqualified
-protein interactions. General saved-run attachment and maintenance are separate
-future integration tasks.
+protein interactions. The [ordinary workbench attachment](ASSAY_WORKBENCH.md)
+uses a separate `biograph-steward.assay-attachment.v1` sidecar and preserves
+the original publication under `assay_source/`. Both endpoints must resolve
+inside the exact live cohort. The source Pharos snapshot is unchanged; the
+combined evidence graph carries explicit assay publication/selection bindings,
+qualified observation edges and a complete selected ledger. Review replay pins
+both bindings. Full run exports preserve these sources; cohort maintenance
+and the current gold/KGX packet profile reject attached runs explicitly.

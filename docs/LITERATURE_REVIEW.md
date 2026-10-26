@@ -203,6 +203,17 @@ context available; user benefit and independent biological improvement remain
 unmeasured. This closes that finite implementation step rather than opening
 another source/model search.
 
+**October 26 product integration and public-reference decision:** the
+[qualified workbench attachment](ASSAY_WORKBENCH.md) reuses that source
+representation and the existing assertion lifecycle. Both endpoints must resolve
+inside a declared live cohort; source material, failures and review bindings
+remain intact. It adds no biological score or new prediction experiment. The
+[finite public-reference audit](literature/PUBLIC_REFERENCE_OPTIONS_20261026.md)
+selects IntAct/IMEx for bounded evidence-fidelity preparation. Public reference
+data can support local assessment while organizer final labels remain hidden;
+source overlap and endpoint compatibility still determine which scientific
+claims are defensible. No new reference outcomes were downloaded in this audit.
+
 No scheduled monitoring was created. The original broad review added documentation
 only. Dated follow-through notes above disclose later execution and outcome
 access; they do not change the original review's scope.

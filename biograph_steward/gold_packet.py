@@ -164,6 +164,10 @@ def _source_bindings(run_manifest, snapshot, civic, graph):
     an evaluation handoff must additionally reject contradictory source labels.
     Presence matters even when the expected source value is explicitly null.
     """
+    if any(key in graph or key in run_manifest for key in
+           ('assay_evidence', 'assay_observations', 'assay_publication_sha256', 'assay_attachment_sha256')):
+        raise ValueError('Assay attachments are outside this gold-interface packet version. Use the complete ordinary run export.')
+
     def require(actual, expected, label):
         if (not isinstance(actual, dict)
                 or any(key not in actual or canonical(actual[key]) != canonical(value)

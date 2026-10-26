@@ -40,6 +40,7 @@ def report_html(graph: dict | None = None, *, protected=False) -> str:
     script += '\n' + Path(__file__).with_name("refresh.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("workspaces.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("construction.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("assay.js").read_text(encoding="utf-8")
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
@@ -183,6 +184,55 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             if path == '/api/workspaces':
                 from .workspaces import saved_workspaces
                 self.json_reply(saved_workspaces(runs_dir))
+                return
+            if path == '/api/assay-publications':
+                from .client import digest
+                publications = []
+                for folder in sorted(runs_dir.iterdir()):
+                    if (folder.is_symlink() or not folder.is_dir()
+                            or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', folder.name)):
+                        continue
+                    receipt = folder / 'publication.json'
+                    if receipt.is_symlink() or not receipt.is_file():
+                        continue
+                    try:
+                        manifest = json.loads(receipt.read_text(encoding='utf-8'))
+                        if (manifest.get('format') != 'biograph-steward.lambourne-evidence-publication.v1'
+                                or manifest.get('content_sha256') != digest({k: v for k, v in manifest.items()
+                                                                            if k != 'content_sha256'})):
+                            continue
+                        publications.append({'publication_id': folder.name,
+                                             'publication_sha256': manifest['content_sha256']})
+                    except (ValueError, TypeError, AttributeError, OSError):
+                        continue
+                self.json_reply({'publications': publications,
+                                 'verification': 'Receipt metadata only; full verification occurs on attachment.'})
+                return
+            match = re.fullmatch(r'/api/assay-source/([A-Za-z0-9_-]{1,80})/(.+)', path)
+            if match:
+                from .reviews import read_run
+                folder = runs_dir / match.group(1)
+                relative = Path(match.group(2))
+                try:
+                    if (folder.is_symlink() or not folder.is_dir() or relative.is_absolute()
+                            or not re.fullmatch(r'[A-Za-z0-9_./-]+', match.group(2))
+                            or any(part in {'.', '..'} for part in match.group(2).split('/'))):
+                        raise ValueError('Invalid assay source path.')
+                    _, _, graph = read_run(folder)
+                    if not graph.get('assay_evidence'):
+                        raise ValueError('This run has no attached assay publication.')
+                    source = folder / 'assay_source'
+                    manifest = json.loads((source / 'publication.json').read_text(encoding='utf-8'))
+                    if relative.as_posix() not in {'publication.json', *manifest['files']}:
+                        raise ValueError('File is outside the attached publication.')
+                    file = source / relative
+                    if file.is_symlink() or not file.is_file() or source.resolve() not in file.resolve().parents:
+                        raise ValueError('Assay source is not a regular published file.')
+                    # Source files are data, never active same-origin HTML or scripts.
+                    self.reply(file.read_bytes(), content_type='application/json' if file.suffix == '.json'
+                               else 'text/plain; charset=utf-8', filename=file.name)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
                 return
             if path == '/api/refresh-history':
                 from .refresh_archive import list_archives
@@ -378,6 +428,23 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
+                if path == '/api/assay-attach':
+                    from .assay_attachment import attach_assay
+                    if set(body) != {'run_id', 'publication_id'}:
+                        raise ValueError('Use only run_id and publication_id for a saved assay attachment.')
+                    sources = []
+                    for key in ('run_id', 'publication_id'):
+                        value = body[key]
+                        if not isinstance(value, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', value):
+                            raise ValueError('Invalid saved workspace identifier.')
+                        folder = runs_dir / value
+                        if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                            raise ValueError('Saved workspace source not found.')
+                        sources.append(folder)
+                    run_id = 'assay_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
+                    graph = attach_assay(*sources, runs_dir / run_id)
+                    self.json_reply({'run_id': run_id, 'graph': graph})
+                    return
                 if path == '/api/refresh-compare':
                     from .refresh_workflow import run_refresh
                     if set(body) != {'before_run', 'after_run', 'carry_reviews'} or type(body['carry_reviews']) is not bool:

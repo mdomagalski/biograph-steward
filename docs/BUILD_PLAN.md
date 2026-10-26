@@ -1,6 +1,6 @@
 # Current build plan
 
-Updated October 25, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication, the bounded Lambourne assay-corroboration report and its standalone qualified observation publication are complete; study independence remains unresolved. The first bounded measured PPI comparison found no consistent incremental hierarchy benefit. Both assessed panels are consumed. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
+Updated October 26, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication, the bounded Lambourne assay-corroboration report and its standalone qualified observation publication are complete; study independence remains unresolved. The first bounded measured PPI comparison found no consistent incremental hierarchy benefit. Both assessed panels are consumed. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
 
 ## Delivery sequence and completion criteria
 
@@ -39,8 +39,10 @@ standalone immutable layer and offline viewer: 3,222 observations, 2,676 qualifi
 edges and 3,173 protein nodes, with 546 excluded assays retained in the audit.
 Its 42 detections without a bounded Pharos match are a filter over the complete
 source collection. Study/construct context and nondetections remain explicit;
-no Pharos record is pruned or automatically accepted. General attachment to
-ordinary workbench runs is not yet implemented. The
+no Pharos record is pruned or automatically accepted. The [workbench attachment](ASSAY_WORKBENCH.md) now selects observations whose
+both endpoints resolve within an explicit live protein cohort. Inspection,
+review, replay and full run downloads preserve the source publication.
+Cohort refresh and gold/KGX export for attached runs still fail explicitly. The
 [publication record](evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md) establishes
 source-preserving integration, not independently demonstrated prediction gain.
 
@@ -62,8 +64,11 @@ meaning or remove the source qualifications.
 The deterministic publication boundary, finite reference decision and bounded
 assay-corroboration report and standalone observation publication are now complete. Missing organizer labels or complete
 study lineage do not block product integration, qualified standard validation or replay. The
-official gold artifact, label meanings and scoring contract remain external
-dependencies; the local handoff is already implemented.
+official baseline, label meanings and scoring contract remain external
+dependencies; final labels may stay hidden. The local handoff is already implemented.
+The [public-reference decision](literature/PUBLIC_REFERENCE_OPTIONS_20261026.md)
+selects IntAct/IMEx for bounded evidence-fidelity preparation, not as an
+automatically independent prediction benchmark.
 
 **Decision limits:** no scientific improvement is promised by this plan. The
 specific enrichment that adds useful information beyond Pharos remains
@@ -182,8 +187,8 @@ freeze. Source independence remains unverified and this panel is consumed.
 The [completed observation publication](ASSAY_EVIDENCE.md) retains nondetections,
 failures and full assay context in a standalone layer and offline viewer.
 It leaves original Pharos records intact and does not expose these observations
-as unqualified interaction paths. General attachment to ordinary workbench runs
-remains separate. This panel must not serve as unseen evaluation after prediction,
+as unqualified interaction paths. Source attachment to exact live cohorts is now implemented; qualified
+gold/KGX export and maintenance of attached runs remain separate. This panel must not serve as unseen evaluation after prediction,
 enrichment or protocol tuning. No new model run is selected; the remaining
 product boundaries are bounded agent construction, cohort maintenance, qualified
 exchange and usability.

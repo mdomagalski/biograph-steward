@@ -66,6 +66,10 @@ def build_assertions(graph: dict, events: list[dict] | None = None) -> list[dict
         elif edge.get("primary_source_raw"):
             group["source_names"].append(str(edge["primary_source_raw"]))
     for group in groups.values():
+        if group["kind"] == "assay_observation" and graph.get("assay_publication_sha256"):
+            group["data_kind"] = "published_assay_observations"
+            group["assay_publication_sha256"] = graph["assay_publication_sha256"]
+            group["assay_attachment_sha256"] = graph["assay_attachment_sha256"]
         for field in ("evidence_edge_ids", "structurally_usable_evidence_ids", "review_reasons",
                       "publications", "source_names", "normalization_notes"):
             group[field] = sorted(set(group[field]))
@@ -86,6 +90,9 @@ def build_assertions(graph: dict, events: list[dict] | None = None) -> list[dict
             raise ValueError("Review belongs to another snapshot or assertion revision; review the new evidence.")
         if group["kind"] == "variant_therapy_response" and event.get("civic_snapshot_sha256") != graph.get("civic_snapshot_sha256"):
             raise ValueError("Review belongs to a different CIViC source snapshot; review the new evidence.")
+        if group["kind"] == "assay_observation" and any(
+                event.get(key) != graph.get(key) for key in ("assay_publication_sha256", "assay_attachment_sha256")):
+            raise ValueError("Review belongs to a different assay publication or cohort selection; review the new evidence.")
         if event.get("from_state") != group["lifecycle_state"]:
             raise ValueError("Review history has a stale lifecycle state.")
         validate_decision(group, event.get("to_state"), event.get("reviewer"), event.get("reason"))
@@ -129,6 +136,9 @@ def new_review_event(graph: dict, assertion_id: str, state: str,
             "reviewer": reviewer.strip(), "reason": reason.strip(), "created_at": utcnow()}
     if assertion["kind"] == "variant_therapy_response":
         event["civic_snapshot_sha256"] = graph["civic_snapshot_sha256"]
+    if assertion["kind"] == "assay_observation" and graph.get("assay_publication_sha256"):
+        for key in ("assay_publication_sha256", "assay_attachment_sha256"):
+            event[key] = graph[key]
     return event
 
 
