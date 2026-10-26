@@ -47,6 +47,12 @@ __AUTH_CONTROL__
 <p><label><input id="constructionRefresh" type="checkbox"> Retrieve fresh source responses</label></p>
 <button id="constructionSubmit" type="submit">Build graph and answer</button>
 <p class="small">Source annotations remain candidates for review. Saving a graph does not accept its assertions or establish biological accuracy.</p>
+<details id="constructionAgentPanel"><summary>Let the agent choose a retrieval plan</summary>
+<p>Describe the interaction or shared-pathway question for the cohort above. The agent can select a smaller cohort and retrieval profile, or decline an unsupported request. Inspect its choice before building.</p>
+<label for="constructionAgentQuestion">Question for this cohort</label><textarea id="constructionAgentQuestion" rows="3" maxlength="4000" style="width:100%;font:inherit;padding:9px 10px" placeholder="Retrieve reported interactions among this cohort, focused on the selected protein."></textarea>
+<div class="row"><button type="button" id="constructionPlanButton" class="secondary">Plan from question</button><button type="button" id="constructionPlannedBuild" disabled>Build planned graph</button></div>
+<p id="constructionPlanStatus" role="status"></p><div id="constructionPlanPreview"></div>
+</details>
 <details><summary>Try the construction flow offline</summary><p class="notice warn">This example uses three fixed protein accessions with invented annotations and sources. It demonstrates construction and publication only.</p><button id="constructionDemo" type="button" class="secondary">Build synthetic construction example</button></details>
 <p id="constructionStatus" role="status"></p><div id="constructionProgress"></div>
 </form>
@@ -63,6 +69,7 @@ __AUTH_CONTROL__
 
 <div id="dataBanner" class="notice"></div>
 <section id="constructionPublication" class="card hidden" aria-labelledby="constructionPublicationTitle"><h2 id="constructionPublicationTitle">Published graph</h2><p id="constructionPublicationSummary"></p><div id="constructionPublicationCoverage"></div><details><summary>Construction plan, source coverage and publication trace</summary><pre id="constructionPublicationTrace"></pre></details></section>
+<section id="submissionPanel" class="card"><h2>Graph and decision export</h2><p>Prepare the complete source baseline, a retained graph and one decision per input evidence edge. This initial export marks every edge as undecided and retains it. Existing review states are preserved separately.</p><button type="button" id="submissionExport" class="secondary">Export graph with undecided ledger</button><p id="submissionStatus" role="status"></p><div id="submissionDownload"></div></section>
 <section id="assayPanel" class="card hidden"><h2>Qualified assay evidence</h2>
 <p>Inspect study-specific observations for pairs within the selected protein cohort. Detections, nondetections and excluded assays retain their original context.</p>
 <form id="assayAttachForm"><label for="assayPublication">Saved assay publication</label><select id="assayPublication"></select><button id="assayAttach" type="submit" style="margin-top:12px">Attach observations in a new run</button></form><p id="assayStatus" class="small" role="status"></p>

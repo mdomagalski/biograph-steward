@@ -2,6 +2,52 @@
 
 Updated October 26, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication, the bounded Lambourne assay-corroboration report and its standalone qualified observation publication are complete; study independence remains unresolved. The first bounded measured PPI comparison found no consistent incremental hierarchy benefit. Both assessed panels are consumed. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
 
+## Report and submission update received October 26
+
+The [new organizer guidance](ORGANIZER_UPDATE_20261026.md) supplies the midpoint
+report template (due EOD October 27; final November 17) and says subgraphs will
+be compared to a whole graph, ideally submitting both the graph and decision
+record. Keep the report as a working draft and update it with completed work
+before submission. The explicit export gap is now closed for the demonstrated
+source profile: a retained graph travels alongside the full retrieved baseline
+and exhaustive keep/prune/abstain ledger, including qualified assay sources.
+The [real submission example](evaluations/SUBMISSION_DEMO_20261026.md) verifies
+the extracted package independently, with every original edge undecided and
+retained. Controlled pruning is tested on invented fixtures only.
+Keep scope selection distinct from biological pruning. The actual baseline,
+formats, units and treatment of abstention/confidence remain organizer questions;
+hidden final labels are not required for preparation. AWS credits are received,
+but adding cloud services is not a prerequisite for these tasks.
+
+## Focus for the remaining day before the midpoint report
+
+The immediate goal is one complete, inspectable demonstration, with the report
+revised afterwards. Export and local construction integration are implemented;
+live model agreement and the actual-user walkthrough remain pending. These are
+submission/functionality advances, not evidence of biological improvement.
+
+1. Completed: the graph-plus-decisions export on an existing real cohort with
+   qualified assay evidence. Deliver the retained graph, a decision for every
+   input evidence edge, the unchanged source baseline and an exact change
+   summary. Check replay, source context, support mappings and conservative
+   retention of abstentions. Scope omissions are not pruning decisions.
+2. Implemented: reuse the existing planner and construction tools for bounded
+   [agent-selected construction](CONSTRUCTION_AGENT.md). Twelve supported,
+   ambiguous and unsupported requests are frozen before live comparison;
+   compare scope, graph, provenance, abstention,
+   failures and cost with deterministic execution. Prepare locally; announce
+   the concrete model run before asking for Brev.
+3. Run the prepared [team walkthrough](USER_WALKTHROUGH_20261026.md) of that same example: construct/inspect the
+   graph, find an answer, follow its evidence, interpret a decision and export.
+   Record completion and obstacles. A team pilot can identify usability issues;
+   it does not substitute for later intended biomedical-user assessment.
+
+Keep the selected IntAct/IMEx evidence-fidelity preparation bounded. Define the
+task and check overlap before using it as a reference; comparing an imported
+curated record with itself would establish only copying fidelity. This work
+must not become another open-ended benchmark search. Independent predictive
+benefit remains unproven and requires a separately justified assessment.
+
 ## Delivery sequence and completion criteria
 
 The release target is one reproducible flow: a researcher supplies a bounded
@@ -13,9 +59,10 @@ the same source-bound graph can be exported for evaluation.
 The [deterministic construction/publication path](CONSTRUCTION.md) now accepts
 1–25 exact protein accessions and publishes a graph, cited candidate answer and
 source-bound export without a selected disease. It reuses the existing source
-adapter and normalization. The current model planner still selects a read-only
-query over a saved disease graph; agent-selected construction remains a separate
-gap. Preserve the CRC/CIViC user demonstration; the PPI study is a
+adapter and normalization. The optional construction planner now selects a
+bounded request before retrieval and preserves its trace through publication,
+attachment, review, replay and export. Its live comparison remains separate
+from the saved-disease question planner. Preserve the CRC/CIViC user demonstration; the PPI study is a
 separate link-prediction component evaluation and does not validate oncology
 treatment claims.
 
@@ -42,7 +89,8 @@ source collection. Study/construct context and nondetections remain explicit;
 no Pharos record is pruned or automatically accepted. The [workbench attachment](ASSAY_WORKBENCH.md) now selects observations whose
 both endpoints resolve within an explicit live protein cohort. Inspection,
 review, replay and full run downloads preserve the source publication.
-Cohort refresh and gold/KGX export for attached runs still fail explicitly. The
+Cohort refresh and KGX mapping for attached runs still fail explicitly; the
+local source-preserving gold packet now supports these runs. The
 [publication record](evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md) establishes
 source-preserving integration, not independently demonstrated prediction gain.
 
@@ -55,7 +103,7 @@ meaning or remove the source qualifications.
 
 | Order | Deliverable | Completion evidence |
 |---|---|---|
-| 1 | One bounded construction/publication flow using current adapters | Deterministic path complete: a declared exact-protein request reaches retrieval, normalization, an inspectable saved graph and a cited answer/export. Calls, budgets, identities, qualifications and exclusions are recorded. Agent-selected construction remains separate. |
+| 1 | One bounded construction/publication flow using current adapters | Deterministic path and optional bounded agent selection are implemented with local integration checks. A declared exact-protein request reaches retrieval, normalization, an inspectable saved graph and a cited answer/export. Live model comparison and user testing remain. |
 | 2 | A finite reference and comparator decision | Decision complete: use the frozen full-panel Pharos presence comparator for retrospective Lambourne assay corroboration, with unresolved source lineage. No-go for a new predictive enrichment comparison until an additional information source/change is justified independently of these outcomes. |
 | 3 | Frozen biological assessment, then conditional matched improvement testing | Lambourne baseline corroboration complete: author-consistent adapter, eligibility, full candidate inventory, strata and report frozen before outcome decoding; all 3,222 pairs reconcile. This is not an improvement test and the panel is consumed. A future enrichment test must separately fix exclusions, projections, development/test boundaries, metrics, dependence treatment, seeds and budget; use matched learners/candidates and a simple-addition control. Preserve results even without gain. |
 | 4 | Tested filtering, maintenance and exchange | Check controlled identifier/context/citation corruptions and source changes; report false removals, abstentions and update errors. Preserve reversible decisions. Validate the chosen vocabulary/schema/export subset using existing tools; controlled cases establish engineering behavior, not broad scientific truth. Use the organizer reference for its actual task once supplied. |
@@ -82,8 +130,8 @@ stay consumed. Human-reviewed or curated evidence is still needed for claims
 that exceed the mechanical checks and the selected assay endpoint.
 
 The core architecture does not need replacement. Remaining framework design is
-concentrated in three boundaries: agent selection of permitted construction
-tools against the deterministic baseline; a cohort-compatible maintenance and
+concentrated in three boundaries: live assessment of implemented construction
+selection against the deterministic baseline; a cohort-compatible maintenance and
 evidence-action policy; and qualified standard mappings with explicit treatment
 of unresolved validation findings. Biological acceptance criteria, actual-user
 testing and submission packaging remain work as well. AWS, a new graph store
@@ -99,7 +147,7 @@ for another framework redesign:
 
 | Boundary | Work under our control | Completion evidence or external limit |
 |---|---|---|
-| Agent-selected construction | Reuse the existing planner and construction tools with fixed profiles, exact identities, budgets and abstention | On a frozen request set, compare supported scope/tool selection, resulting graph, provenance, cost and failures against deterministic execution; announce before the live model run |
+| Agent-selected construction | Implemented using existing transports and deterministic tools, fixed profiles, exact supplied identities, budgets and abstention | Twelve development cases are prepared; live scope/tool agreement and a same-input graph comparison remain pending. Local checks cover unsupported operations, invalid output and provenance propagation |
 | Explicit-cohort maintenance | Extend the existing snapshot/review rules to cohort graphs; retain source changes and reversible decisions | Controlled changes in identity, context, evidence and source withdrawal are detected; incompatible reviews do not carry over; missing or old evidence is not silently declared biologically false |
 | Qualified exchange | Maintain the audited subset and source-preserving ledgers; extend only documented semantic mappings | Exact roundtrip and appropriate upstream checks pass for every claimed profile; full conformance remains dependent on resolution of the recorded model/schema constraints and adequate source semantics |
 | Bounded biological assessment | Complete: tested author-consistent assay adapter, frozen eligibility and full-panel Pharos comparator, one assessment and offline replay | All 3,222 nominations reconcile; 2,676 assay eligible, 2,674 comparator eligible. Detection/nondetection, failures, unresolved identities and exposure strata are recorded. This is retrospective assay concordance, not general Pharos accuracy or an improvement effect; the panel is consumed |
@@ -170,7 +218,7 @@ The completed sequence and its preserved constraints are:
 
 Next, include the measured result and limitations in the progress report, review
 source coverage and reusable-method fit on development material, and obtain the
-organizer reference when available. Do not start another source/model variation
+organizer evaluation contract when available; final labels may remain hidden. Do not start another source/model variation
 on this test panel as though it were fresh. Any new improvement claim needs a
 separately justified protocol and independent reference. Product construction,
 qualified interoperability and user-task validation remain distinct work below.
@@ -188,10 +236,11 @@ The [completed observation publication](ASSAY_EVIDENCE.md) retains nondetections
 failures and full assay context in a standalone layer and offline viewer.
 It leaves original Pharos records intact and does not expose these observations
 as unqualified interaction paths. Source attachment to exact live cohorts is now implemented; qualified
-gold/KGX export and maintenance of attached runs remain separate. This panel must not serve as unseen evaluation after prediction,
-enrichment or protocol tuning. No new model run is selected; the remaining
-product boundaries are bounded agent construction, cohort maintenance, qualified
-exchange and usability.
+local gold export now preserves the qualified sources; KGX mapping and maintenance
+of attached runs remain separate. This panel must not serve as unseen evaluation
+after prediction, enrichment or protocol tuning. The selected model check concerns
+construction scope, not new biology. Remaining boundaries include live agent
+assessment, cohort maintenance, qualified standards mapping and usability.
 
 PyKEEN runtime checks on Nations, the [invented context/supervision smoke](evaluations/PYKEEN_CONTEXT_SMOKE_20261022.md), and the three-layer hierarchy probe passed. Reproduced pinned-runtime issues use supported ordinary batching and the native disabled-dropout branch; the [graph report](evaluations/INMC_PAIRED_GRAPH_20261023.md) explains why. These checks establish implementation behavior, not biomedical accuracy or GPU capacity. Tell the user when a concrete run requires Brev; its language-model server is unnecessary for this graph learner.
 
@@ -199,9 +248,9 @@ PyKEEN runtime checks on Nations, the [invented context/supervision smoke](evalu
 
 | Gap | Reviewable completion criterion |
 |---|---|
-| Official reference evaluation | Local handoff is implemented; obtain the actual gold artifact and contract, validate its mapping, then add task-specific scoring |
+| Official reference evaluation | Retained graph, exhaustive ledger and complete qualified source handoff are implemented and verified on a real example. Obtain the evaluation contract for organizer-run scoring; hidden final labels need not be released. Use local alignment only for an explicitly supplied development/public reference |
 | Measured graph-link comparison | First retrospective restricted comparison and Lambourne baseline corroboration complete; no consistent hierarchy gain or independently demonstrated Steward improvement. Both panels are consumed; independent prediction validation, justified enrichment and official judging alignment remain |
-| Bounded agent construction | Deterministic cohort retrieval/publication is implemented with recorded calls and budgets. Agent selection and its comparison against the deterministic path remain |
+| Bounded agent construction | Planner selection and deterministic execution are connected with persistent provenance and tested locally. Live comparison against fixed requests and a same-input graph remains |
 | Validated interoperability | Bounded KGX Reactome projection, preserved source bundle and round-trip checks now exist. Resolve the documented category-array and predicate-domain findings before claiming broader conformance; keep mappings and exclusions explicit |
 | Evidence filtering/pruning | Define task-compatible evidence actions and references; measure false removals and abstention. Assay nondetection does not automatically invalidate a functional association or co-complex relation |
 | Maintenance | Extend guarded comparison to explicit cohorts; controlled source-change cases must distinguish changed evidence, scope/cap absence and withdrawal while preserving review continuity |

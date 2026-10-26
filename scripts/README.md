@@ -4,6 +4,8 @@ This directory contains preparation tools for the active measured-link investiga
 
 | Script | Purpose |
 |---|---|
+| [verify_submission_demo.py](verify_submission_demo.py) | Export an existing real assay-attached cohort with a retained graph, all-undecided ledger and complete sources; verify an extracted ZIP and source preservation. No inference, new source retrieval or biological scoring. |
+| [evaluate_construction_planner.py](evaluate_construction_planner.py) | Freeze twelve development scope/tool-selection cases, then explicitly run one model call per case with incremental traces and results. No source retrieval or scientific-accuracy claim. |
 | [audit_inmc_inputs.py](audit_inmc_inputs.py) | Verify the pinned INMC archive, input schema and identifier coverage using the existing frozen HGNC/UniProt registry. Export a deduplicated context-retrieval inventory while retaining shared products and all original genes. Does not derive binary assay labels, select a final cohort or train a model. |
 | [retrieve_pharos_inventory.py](retrieve_pharos_inventory.py) | Retrieve the audited accession inventory in resumable, integrity-checked chunks. Preserve cross-chunk interaction links, all tissue labels, unresolved identities and original gene mappings. Stages raw Pharos records; does not approve features or load assay outcomes. |
 | [audit_pharos_inventory.py](audit_pharos_inventory.py) | Verify a completed retrieval and inventory direct candidate-pair overlaps in raw and retained interaction rows. Reads only original pair identities from the pinned experimental archive; does not remove graph edges or decode outcomes. |

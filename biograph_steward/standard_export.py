@@ -23,6 +23,11 @@ RECEIPT = "projection_manifest.json"
 
 def project_graph(graph):
     """Project only supported exact source meanings, with a complete ledger."""
+    if (any(key in graph for key in ('assay_evidence', 'assay_observations',
+                                    'assay_publication_sha256', 'assay_attachment_sha256'))
+            or any(edge.get('record_kind') == 'assay_observation' for edge in graph['edges'])):
+        raise ValueError('Qualified assay observations are outside this KGX profile. '
+                         'Use the complete source-preserving gold packet; a qualified standard mapping is not implemented.')
     nodes = {n["id"]: n for n in graph["nodes"]}
     assertions = {a["id"]: a for a in graph["assertions"]}
     edges, ledger, included_nodes = [], [], set()

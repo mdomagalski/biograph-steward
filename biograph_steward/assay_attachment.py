@@ -183,7 +183,7 @@ def read_assay(source):
 
 def attach_assay(source, publication, output):
     """Publish a new ordinary workbench run; preserve both input directories."""
-    from .reviews import read_run, read_civic
+    from .reviews import read_run, read_civic, preserve_construction_plan
     from .graph import save_run
     source, publication, output = map(lambda p: Path(p).absolute(), (source, publication, output))
     if output.exists() or output.is_symlink() or any(
@@ -201,6 +201,7 @@ def attach_assay(source, publication, output):
         graph = save_run(snapshot, stage, run_mode="assay_attachment", review_events=events,
                          civic_snapshot=read_civic(source), assay_attachment=attachment,
                          assay_source=publication)
+        preserve_construction_plan(source, stage)
         if read_run(stage)[2] != graph:
             raise ValueError("Attached assay run failed ordinary workbench replay.")
         if output.exists():

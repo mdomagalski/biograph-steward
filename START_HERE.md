@@ -60,7 +60,17 @@ For Docker/Brev and token-protected access, use [portability](docs/PORTABILITY.m
 
 The [INMC comparison](docs/evaluations/INMC_COMPARISON_20261023.md) is complete and its test panel is consumed. The subsequent [Lambourne assay corroboration](docs/evaluations/LAMBOURNE_CORROBORATION_20261025.md) is also complete: all 3,222 nominated pairs are retained, with 2,676 assay eligible and 2,674 comparator eligible. Detection is 334/1,966 (17.0%) among Pharos-represented pairs versus 42/708 (5.9%) among resolved no-matches. Without observed HuRI/INMC pair overlap, rates are 74/1,619 (4.6%) versus 16/650 (2.5%). Study independence remains unresolved; this measures bounded assay concordance, not improvement caused by Steward. Both panels are now consumed.
 
-The deterministic construction milestone now connects a declared protein cohort to the existing retrieval adapters, a published workbench graph and a traceable answer/export. Agent-selected construction is still pending; current model planning queries saved disease graphs only. The [delivery sequence](docs/BUILD_PLAN.md#delivery-sequence-and-completion-criteria) separates product delivery, biological evaluation and the missing organizer gold reference. Earlier experiments and their outcomes remain in the [archive ledger](docs/EXPERIMENT_HISTORY.md).
+The construction flow connects a declared protein cohort to retrieval, an
+inspectable graph and a cited answer. The optional
+[construction planner](docs/CONSTRUCTION_AGENT.md) can now select a permitted
+request from your question; inspect its choice before building. The **Graph and
+decision export** button prepares the complete source baseline, retained graph
+and an all-undecided ledger without inventing pruning judgments. See the
+[team walkthrough](docs/USER_WALKTHROUGH_20261026.md) for tasks to try.
+The [delivery sequence](docs/BUILD_PLAN.md#delivery-sequence-and-completion-criteria)
+separates product delivery, biological evaluation and the unknown official
+scoring contract. Earlier experiments and outcomes remain in the
+[archive ledger](docs/EXPERIMENT_HISTORY.md).
 
 The [standards audit](docs/STANDARD_EXPORT.md) now publishes a bounded KGX
 projection with the full original source packet. It reports upstream schema

@@ -1,16 +1,20 @@
 # Pharos reference handoff
 
-Updated October 25, 2026.
+Updated October 26, 2026.
 
 Verified on invented fixtures and an existing scoped Pharos/CIViC graph; see the
 [verification record](evaluations/GOLD_SET_INTERFACE_20261023.md).
 
 The workbench can now export a source-bound graph packet, record explicit edge
 dispositions, and align a declared reference table to that packet. This is the
-reusable interface we can complete before the organizers supply their gold set.
+reusable interface we can prepare for organizer-run scoring without receiving
+hidden final test labels.
 It does **not** compute scientific accuracy or implement an official challenge
 scoring protocol. The reference artifact, scope, baseline release, label meanings,
-split rules and required submission format remain unknown.
+split rules and required submission format remain unknown. The
+[latest organizer reply](ORGANIZER_UPDATE_20261026.md) supports preparing both
+the resulting subgraph and the decision ledger; it does not disclose the exact
+whole-graph comparison contract.
 
 Everything here runs locally with the core Python app. It needs no model, Brev
 instance, API key, AWS account or new source retrieval. The commands create new
@@ -93,6 +97,7 @@ python3 app.py gold-decisions \
   --packet runs/gold_demo_packet \
   --decisions runs/gold_demo_decisions.json \
   --out runs/gold_demo_dispositions
+python3 app.py gold-decisions-verify --run runs/gold_demo_dispositions
 ```
 
 The unchanged template is valid and reports all edges as unassessed abstentions.
@@ -103,10 +108,39 @@ not been established.
 
 The output includes the full independently verifiable `baseline_packet/`, exact
 decision bytes, all original nodes, an `edge_dispositions.jsonl` ledger and
-separate keep/prune/abstain ID lists in the report.
-The original graph remains available, including pruned and unassessed edges.
-This is a reversible handoff, not a newly adjudicated graph or an assertion that
-the organizers require this particular format.
+separate keep/prune/abstain ID lists in the report. It also materializes
+`retained_graph.json` and matching `retained_*.jsonl` inventories. **Only explicit
+`prune` edges are removed from that view.** Both `keep` and `abstain` edges remain;
+all original nodes survive, including isolated nodes. The baseline retains every
+original edge and source record. Scope exclusions are not pruning decisions.
+
+The existing assertion builder recomputes evidence groups, usable support,
+publications, source names, source-record counts and revisions from retained
+edges. An unchanged assertion keeps its recorded review status and history.
+Partial removal creates a candidate revision with no carried review decision;
+the previous review remains in the baseline. Assertions with no retained
+support are absent from the resulting graph. `assertion_changes.jsonl` records
+all original assertions, retained/pruned support and review carryover explicitly.
+A local prune decision is not an automatic biological rejection or gold label.
+
+Context records and quarantine remain available. Context support links refer
+only to retained edges/assertions, with original links recorded in each row's
+`retention` metadata. Context normalization statuses continue to describe source
+processing. For assay attachments, all selected observations—including failed
+assays—remain in `retained_assay_observations.jsonl`; a pruned observation's
+`graph_edge_id` becomes null, while its original ID and disposition remain in
+`retention`. Detection status, qualifications, participants and raw evidence
+are preserved. Pruning a view never changes the original assay finding.
+
+The disposition report uses `biograph-steward.edge-dispositions.v2` and hashes
+every preserved/derived file. `load_decisions()` verifies the complete inventory
+and reproduces the materialized support from the baseline and decision ledger;
+it detects both byte changes and stale/resealed derived mappings. This uses the
+existing assertion builder without network access or source normalization.
+The derived graph is an explicitly marked local view, not a new replayable
+source snapshot or a claim of full KGX/Biolink conformance. The organizer has
+not specified this particular format. Historical v1 disposition reports are
+preserved unchanged; the new verifier accepts v2 packages.
 
 ## Prepare an external reference mapping
 
@@ -184,10 +218,24 @@ outcomes or reserved INMC labels are opened by this workflow.
 
 ## Qualified assay attachment boundary
 
-The current packet profile rejects runs carrying the new assay attachment.
-It must not silently strip those observations or their original source bundle.
-Use the ordinary complete run ZIP for these graphs until qualified packet
-preservation is implemented. See [the attachment contract](ASSAY_WORKBENCH.md).
+The source-preserving packet accepts qualified assay attachments. It copies the
+sidecar, complete `assay_source/` publication and licenses byte-for-byte beneath
+`source/`, alongside the combined graph and a separate
+`assay_observations.jsonl` ledger. Failed/non-evaluable observations remain in
+that ledger without manufactured evidence edges. Export replays the ordinary
+run; offline loading verifies nested source receipts, deterministic observation
+reprojection, graph qualifications and publication/selection-bound reviews.
+It does not rebuild the saved Pharos graph or rerun the consumed assessment.
+The packet remains usable without the original directories or network access.
+
+Every combined evidence edge receives a default `abstain`, including reviewed
+assay observations. Nondetection is not grounds to prune a Pharos association,
+and source absence/out-of-cohort observations are not negative labels. The
+restricted Reactome KGX exporter still rejects this richer source profile until
+a separate qualified standards mapping exists. No full Biolink, PSI-MI, IMEx
+curation or biological-validation claim is made. See
+[the attachment contract](ASSAY_WORKBENCH.md) and the existing
+[PSI-MI/IMEx literature gate](literature/ASSAY_EVIDENCE_REUSE_20261025.md).
 Organizer final labels may remain hidden; the official adapter needs their task,
 baseline, label meanings, identifiers and scoring interface rather than access
 to final answers. [Public references](literature/PUBLIC_REFERENCE_OPTIONS_20261026.md)

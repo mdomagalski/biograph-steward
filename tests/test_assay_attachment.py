@@ -229,14 +229,13 @@ class AssayAttachmentTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "explicit live Pharos cohort"):
                 attach_assay(source, self.publication, self.output)
 
-    def test_refresh_and_gold_export_explicitly_reject_assay_run(self):
+    def test_refresh_still_rejects_assay_run_while_gold_preserves_it(self):
         from biograph_steward.refresh import compare_runs
         self.attach()
-        with self.assertRaisesRegex(ValueError, "Assay"):
-            export_packet(self.output, self.root / "packet")
+        packet = export_packet(self.output, self.root / "packet")
+        self.assertIn('assay_attachment.json', packet['input_files'])
         with self.assertRaisesRegex(ValueError, "Assay"):
             compare_runs(self.source, self.output)
-        self.assertFalse((self.root / "packet").exists())
 
     def test_existing_output_and_reattachment_rejected(self):
         self.attach()

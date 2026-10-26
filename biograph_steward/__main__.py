@@ -51,6 +51,14 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("construction-verify", help="Verify a saved construction publication and its source/answer bindings offline.")
     p.add_argument("--run", type=Path, required=True)
+    p = sub.add_parser("construction-plan", help="Ask the configured model for one bounded construction plan; no source retrieval.")
+    p.add_argument("--question", required=True)
+    p.add_argument("--accessions", nargs="+", required=True)
+    p.add_argument("--focus-uniprot", required=True)
+    p.add_argument("--out", type=Path, required=True, help="New directory for the audited plan, including abstentions and failures.")
+    p = sub.add_parser("construction-execute", parents=[common], help="Execute a saved validated construction plan and publish its source trace.")
+    p.add_argument("--plan", type=Path, required=True, help="Saved construction_planner_trace.json file.")
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("assay-attach", help="Attach a saved qualified assay publication to an exact Pharos protein cohort offline.")
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--publication", type=Path, required=True)
@@ -136,6 +144,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--packet", type=Path, required=True)
     p.add_argument("--decisions", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("gold-decisions-verify", help="Verify a retained graph against its full baseline and explicit decisions offline.")
+    p.add_argument("--run", type=Path, required=True)
     p = sub.add_parser("gold-reference-template", help="Create a baseline-bound mapping template for a future reference.")
     p.add_argument("--packet", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
@@ -154,6 +164,36 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--out', type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == "construction-plan":
+            from .construction_planning import (configured_construction_planner,
+                validate_construction_scope, save_construction_plan)
+            if args.out.exists() or args.out.is_symlink():
+                raise ValueError("Choose a new immutable plan output directory.")
+            scope = validate_construction_scope({"question": args.question,
+                "accessions": args.accessions, "focus_uniprot": args.focus_uniprot})
+            trace = configured_construction_planner().plan(scope)
+            save_construction_plan(trace, args.out / "construction_planner_trace.json")
+            print(json.dumps({"status": trace["status"], "request": trace["construction_request"],
+                "trace": str((args.out / "construction_planner_trace.json").resolve()),
+                "source_calls": 0}, indent=2))
+            return 0
+        if args.command == "construction-execute":
+            from .construction import run_planned_construction
+            from .construction_planning import verify_construction_plan_trace
+            trace = json.loads(args.plan.read_text(encoding="utf-8"))
+            verify_construction_plan_trace(trace)
+            client = PharosClient(args.endpoint, cache_dir=args.cache_dir,
+                                  timeout=args.timeout, refresh=args.refresh)
+            result = run_planned_construction(client, trace, args.out)
+            print(json.dumps({"status": "published", "publication": str(args.out.resolve()),
+                "answer_status": result["construction"]["answer_status"],
+                "planning_trace_sha256": result["construction"]["planning_trace_sha256"]}, indent=2))
+            return 0
+        if args.command == "gold-decisions-verify":
+            from .gold_packet import load_decisions
+            result = load_decisions(args.run)
+            print(json.dumps({"status": "retained_graph_verified", "run": str(args.run.resolve())}, indent=2))
+            return 0
         if args.command == 'assay-attach':
             from .assay_attachment import attach_assay
             graph = attach_assay(args.run, args.publication, args.out)
@@ -413,8 +453,45 @@ def main(argv: list[str] | None = None) -> int:
             elif any((args.snapshot.parent / name).exists() or (args.snapshot.parent / name).is_symlink()
                      for name in ('assay_attachment.json', 'assay_source')):
                 raise ValueError('Use --assay-run to preserve this snapshot’s attached assay source during replay.')
-        graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build", review_events=events,
-                         civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source)
+        planning_source, planning_bytes = None, None
+        if args.command == 'replay':
+            from .reviews import read_construction_plan, preserve_construction_plan, read_run
+            sources = [args.snapshot.parent]
+            if args.assay_run and args.assay_run.resolve() != args.snapshot.parent.resolve():
+                sources.append(args.assay_run)
+            for source in sources:
+                raw = read_construction_plan(source)
+                if raw is not None:
+                    if planning_bytes is not None and raw != planning_bytes:
+                        raise ValueError('Replay inputs carry different construction planner traces.')
+                    planning_source, planning_bytes = source, raw
+        if planning_source is not None:
+            import tempfile
+            import shutil
+            output = args.out.absolute()
+            if (output.exists() or output.is_symlink() or output.resolve() == planning_source.resolve()
+                    or planning_source.resolve() in output.resolve().parents
+                    or output.resolve() in planning_source.resolve().parents):
+                raise ValueError('Choose a new immutable replay output outside the planned source run.')
+            output.parent.mkdir(parents=True, exist_ok=True)
+            stage = Path(tempfile.mkdtemp(prefix='.planned-replay-', dir=output.parent))
+            try:
+                graph = save_run(snapshot, stage, run_mode='replay', review_events=events,
+                                 civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source)
+                preserve_construction_plan(planning_source, stage)
+                if (stage / 'construction_planner_trace.json').read_bytes() != planning_bytes:
+                    raise ValueError('Construction planner trace changed during replay preparation.')
+                if read_run(stage)[2] != graph:
+                    raise ValueError('Planned replay failed its complete source and provenance checks.')
+                if output.exists() or output.is_symlink():
+                    raise ValueError('Replay output appeared during preparation; choose a new directory.')
+                stage.rename(output)
+            finally:
+                if stage.exists():
+                    shutil.rmtree(stage)
+        else:
+            graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build", review_events=events,
+                             civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source)
         print(json.dumps({"data_kind": graph["data_kind"], "summary": graph["summary"],
                           "report": str((args.out / "report.html").resolve())}, indent=2))
         if graph["data_kind"] == "synthetic_demo":

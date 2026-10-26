@@ -1,6 +1,6 @@
 # Current project alignment
 
-Assessment updated October 25, 2026, against the organizer materials, proposal and Slack excerpts supplied by the user. The excerpts have no message dates or direct source permalinks here and were not independently retrieved from Slack. This is a functional crosswalk, not a claim of organizer approval. Older assessments and experiment implementations are on the [archive branch](EXPERIMENT_HISTORY.md).
+Assessment updated October 26, 2026, against the organizer materials, proposal and Slack excerpts supplied by the user. The excerpts have no message dates or direct source permalinks here and were not independently retrieved from Slack. This is a functional crosswalk, not a claim of organizer approval. Older assessments and experiment implementations are on the [archive branch](EXPERIMENT_HISTORY.md).
 
 ## Organizer requirements
 
@@ -10,22 +10,32 @@ The supplied brief asks for an agent-built contextualized graph and the **same g
 
 | Supplied statement | Consequence for this project |
 |---|---|
-| Open source should have an MIT- or Apache-2-licensed GitHub repository | The tracked software LICENSE is MIT. That does not relicense upstream data; the latest local increment still needs a reviewable commit/publication. |
+| Open source should have an MIT- or Apache-2-licensed GitHub repository | The tracked software LICENSE is MIT. That does not relicense upstream data; current increments are committed locally; GitHub publication of the latest commits remains pending. |
 | Other data may be included as long as Pharos is represented | Pharos plus CIViC and a bounded ontology addition are within the stated source scope; there is no instruction to restrict the project to structured Pharos alone. |
 | Evaluation is partly predefined in introductory materials | Keep the supplied judging criteria, but do not infer missing executable scoring rules or submission formats. |
 | PyTorch Geometric subgraph extraction would be nice | Treat a tested interoperability adapter as useful, not as a requirement to replace PyKEEN or the app. |
 | Gold set for Pharos; judges for additional data, in response to pruning/usability questions | Obtain the actual reference and determine what it labels. Do not assume it is an experimentally measured PPI prediction test or that it certifies added-source biology. |
 | Brev credits sent; AWS credits expected later | This describes credit provisioning, not an AWS deployment requirement. The excerpts do not supply dates from which to calculate availability. |
 
-Questions about a common baseline download, its release/scope, gold-label
-semantics, held-out edges, scoring identifiers/formats and whether to submit a
-pruned graph or per-edge decisions remain unanswered in these excerpts. The
-participant's proposed keep/prune/confidence format is a question, not an
-organizer requirement. Do not manufacture confidence scores or use local review
+Those October 23 excerpts left the graph-versus-decisions choice unanswered.
+The [additional organizer update received October 26](ORGANIZER_UPDATE_20261026.md)
+now says subgraphs will be compared with the whole graph and asks to ideally send
+both. In context, prepare both the resulting graph and an edge-decision ledger.
+The specific baseline/version, comparison unit, scope, formats and confidence
+handling remain unspecified. A numeric confidence requirement cannot be inferred
+from the participant's question. Do not manufacture scores or use local review
 states as gold labels.
 
-**Priority adjustment:** biological validation should now be the main workstream,
-with the organizer reference integrated once available. The [completed INMC/GO
+The verified midpoint template is due EOD October 27, with final submission on
+November 17. AWS credits have been received according to the user; deployment
+is still untested and is not a newly stated judging requirement.
+
+**Priority adjustment:** demonstrating biological value remains the main
+unresolved scientific objective. The immediate pre-report work closes a complete
+construction/export demonstration and starts a user walkthrough; those are
+functionality and usability advances, not proof of biological improvement.
+Reflect the organizer evaluation contract in the submission exports once
+clarified. The [completed INMC/GO
 comparison](evaluations/INMC_COMPARISON_20261023.md) is a complementary measured-PPI
 study; it found no consistent hierarchy gain and does not stand in for the official Pharos evaluation.
 If the gold set evaluates pruning rather than link prediction, these remain
@@ -38,16 +48,19 @@ The [deterministic construction/publication flow](CONSTRUCTION.md) now accepts
 publishes an inspectable graph, cited answer and replayable source-bound bundle
 without an invented disease assertion. The
 [real publication check](evaluations/CONSTRUCTION_PUBLICATION_20261023.md)
-demonstrates that boundary. The optional model planner still queries saved
-graphs; it does not select construction tools. Bounded agent construction and
-cohort-compatible maintenance/evidence-action policies remain functional gaps.
+demonstrates that boundary. The optional [construction planner](CONSTRUCTION_AGENT.md)
+now selects permitted retrieval requests and preserves its provenance through
+the published graph. Local integration is tested; live performance and user
+usefulness are pending. Cohort-compatible maintenance/evidence-action policies
+remain functional gaps.
 AWS/Neptune, a UI rewrite and more agents are not prerequisites.
 
 The [gold-reference handoff](GOLD_SET_INTERFACE.md) now covers source-bound graph
 and decision exports plus exact alignment of a declared reference table. It
-preserves raw labels, qualifications and unassessed edges. This closes the local
-handoff boundary, not the unknown official schema/scoring contract or biological
-validation gap. The [standard-export increment](STANDARD_EXPORT.md) adds a
+preserves raw labels, qualifications and unassessed edges. This implements source and decision handoff, not a complete submission:
+the [retained graph and qualified source package](evaluations/SUBMISSION_DEMO_20261026.md)
+are now materialized and verified. The unknown official schema/scoring contract
+and biological validation gap remain. The [standard-export increment](STANDARD_EXPORT.md) adds a
 bounded KGX Reactome projection while preserving the complete source bundle.
 Official validator and JSONL round-trip checks are recorded, with the upstream
 category-array schema and predicate-domain issues left explicit; full Biolink
@@ -71,14 +84,15 @@ Pharos records remain explicit, without automatic acceptance or pruning. See the
 [publication record](evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md).
 The [ordinary workbench attachment](ASSAY_WORKBENCH.md) now preserves selected
 cohort observations, source-bound review and full run downloads. Qualified
-gold/KGX export and cohort maintenance for attached runs remain unsupported.
+gold-packet export now preserves those sources. KGX mapping and cohort
+maintenance for attached runs remain unsupported.
 This does not replace the organizer reference or incremental-prediction evaluation.
 
 ## Functional coverage
 
 | Function | Current implementation | Remaining gap |
 |---|---|---|
-| Ingest heterogeneous biomedical evidence | Scoped Pharos/CIViC retrieval, reusable source/identity adapters, deterministic exact-cohort graph publication without disease assertions, uniform INMC staging and a frozen restricted learner projection | Bounded agent selection of construction tools; deployed source/study lineage remains unresolved |
+| Ingest heterogeneous biomedical evidence | Scoped Pharos/CIViC retrieval, reusable adapters, exact-cohort publication with optional bounded model selection, qualified assay attachments and a frozen restricted learner projection | Live construction-agent assessment; deployed source/study lineage remains unresolved |
 | Filter for the question and limit graph size | Exact disease choice, scoped queries, relation/row budgets, coverage disclosures | Broader agent-controlled retrieval under explicit budgets |
 | Normalize and trace assertions | Qualified assertions, stable source locators, original context, separate local review, immutable snapshots and bounded KGX export with the source bundle retained | Resolve documented standard-validation issues; complete source/study lineage only where authoritative metadata permits |
 | Clean erroneous or irrelevant links | Structural checks, exact deduplication, explicit review states | Scientifically justified filtering with measured false removals; no automatic model pruning is enabled |
@@ -92,12 +106,12 @@ The supplied judging weights are usability 40%, accuracy/pruning 30%, explainabi
 
 | Promised capability | Current status |
 |---|---|
-| Plain-language/scoped question to graph and answer | Guided saved-graph queries plus deterministic exact-protein construction/publication and cited cohort answers. One bounded model planner queries saved disease graphs; agent-selected retrieval/construction is still missing. |
+| Plain-language/scoped question to graph and answer | Guided saved-graph queries plus exact-protein construction/publication and cited cohort answers. Optional bounded model selection is connected to construction, with live performance and user assessment pending. |
 | Qualified, versioned assertions and review lifecycle | Implemented local assertion identity, evidence revisions, review events and immutable runs. Local acceptance differs from upstream curation status. |
 | CIViC, CPTAC/PDC and PubMed/PMC evidence | CIViC integration is active. Literature and processed CPTAC adapters remain reusable; general PDC-native ingestion and dependable automatic extraction are not implemented. |
 | Entity and ontology harmonization | Supported explicit identifiers and registry mappings; unresolved/multiple mappings preserved. This is a bounded subset, not comprehensive HGVS/SO/ChEBI/NCIt/ECO normalization. |
 | Biolink/LinkML, KGX/JSON-LD, SSSOM and PROV-style traces | Bounded KGX Reactome projection with source bundle, official checks and JSONL round trip. Category-array schema and predicate-domain findings remain explicit. Full conformance and formal SSSOM/PROV/JSON-LD delivery are not claimed. |
-| Agent orchestration | Optional NeMo wrapper around one bounded planner/query workflow. A governed construction/maintenance loop is still missing. |
+| Agent orchestration | Optional NeMo saved-graph query wrapper and bounded model-selected construction executed by deterministic code. An autonomous maintenance/research loop is not implemented. |
 | Evidence strength and confidence | Source-native observations and qualifications are preserved. No validated combined confidence or certified independent-study count is available. |
 | Reproducibility and deployment | Core Python app, tests, synthetic demo, Docker/Brev configuration and pinned optional model setup. Real source data and historical runs remain local/ignored. |
 

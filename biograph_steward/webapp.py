@@ -381,6 +381,13 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         if answer.get('source_run') == folder.name:
                             from .reviews import read_run
                             read_run(folder)
+                    elif (folder / 'retained_graph.json').is_file():
+                        from .gold_packet import load_decisions
+                        load_decisions(folder)
+                    elif (folder / 'construction_planner_trace.json').is_file():
+                        from .construction_planning import verify_construction_plan_trace
+                        verify_construction_plan_trace(json.loads(
+                            (folder / 'construction_planner_trace.json').read_text(encoding='utf-8')))
                     elif (folder / 'planner_trace.json').is_file():
                         trace = json.loads((folder / 'planner_trace.json').read_text(encoding='utf-8'))
                         if not isinstance(trace, dict) or trace.get('status') not in {'validated', 'invalid_plan', 'planner_error'}:
@@ -428,6 +435,39 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
+                if path == '/api/construction-plan':
+                    from .construction_planning import (validate_construction_scope,
+                        configured_construction_planner, save_construction_plan)
+                    scope = validate_construction_scope(body)
+                    trace = configured_construction_planner().plan(scope)
+                    plan_id = 'construction_plan_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
+                    save_construction_plan(trace, runs_dir / plan_id / 'construction_planner_trace.json')
+                    self.json_reply({'plan_id': plan_id, 'trace': trace})
+                    return
+                if path == '/api/submission-export':
+                    from .gold_packet import export_packet, save_decisions, load_decisions
+                    import tempfile
+                    import shutil
+                    if set(body) != {'run_id'}:
+                        raise ValueError('Use a saved run_id to export the graph and unassessed decisions.')
+                    source_id = body['run_id']
+                    if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+                        raise ValueError('Invalid source run ID.')
+                    source = runs_dir / source_id
+                    if source.is_symlink() or not source.is_dir() or source.resolve().parent != runs_dir:
+                        raise ValueError('Saved source run not found.')
+                    run_id = 'submission_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
+                    stage = Path(tempfile.mkdtemp(prefix='.submission-', dir=runs_dir))
+                    try:
+                        packet = stage / 'packet'
+                        export_packet(source, packet)
+                        save_decisions(packet, packet / 'decisions.template.json', runs_dir / run_id)
+                        report, _ = load_decisions(runs_dir / run_id)
+                    finally:
+                        shutil.rmtree(stage)
+                    self.json_reply({'run_id': run_id, 'report': report,
+                                     'download_url': '/api/download/' + run_id})
+                    return
                 if path == '/api/assay-attach':
                     from .assay_attachment import attach_assay
                     if set(body) != {'run_id', 'publication_id'}:
@@ -494,19 +534,32 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return
                 if path == '/api/construct':
                     from .construction import (demo_construction_snapshot, plan_construction,
-                                               publish_construction, run_construction)
-                    allowed = {'mode', 'accessions', 'focus_uniprot', 'profile', 'relations', 'refresh'}
+                                               publish_construction, run_construction, run_planned_construction)
+                    allowed = {'mode', 'accessions', 'focus_uniprot', 'profile', 'relations', 'refresh', 'plan_id'}
                     if set(body) - allowed:
                         raise ValueError('Unsupported construction fields. Use a bounded protein cohort, focus protein and retrieval profile.')
                     mode = body.get('mode', 'live')
-                    if mode not in {'live', 'demo'}:
-                        raise ValueError("Choose 'demo' or 'live' explicitly.")
+                    if mode not in {'live', 'demo', 'planned'}:
+                        raise ValueError("Choose 'demo', 'live' or 'planned' explicitly.")
                     if 'refresh' in body and type(body['refresh']) is not bool:
                         raise ValueError('refresh must be a boolean.')
                     if mode == 'demo':
                         if set(body) != {'mode'}:
                             raise ValueError('The synthetic construction example has a fixed cohort and scope. Use only mode: demo.')
                         snapshot = demo_construction_snapshot()
+                    elif mode == 'planned':
+                        from .construction_planning import verify_construction_plan_trace
+                        if set(body) - {'mode', 'plan_id', 'refresh'} or 'plan_id' not in body:
+                            raise ValueError('Execute only the saved plan_id; request fields cannot override it.')
+                        plan_id = body['plan_id']
+                        if not isinstance(plan_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', plan_id):
+                            raise ValueError('Invalid saved construction plan ID.')
+                        folder = runs_dir / plan_id
+                        if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir or any(p.is_symlink() for p in folder.rglob('*')):
+                            raise ValueError('Saved construction plan not found.')
+                        trace = json.loads((folder / 'construction_planner_trace.json').read_text(encoding='utf-8'))
+                        if verify_construction_plan_trace(trace) is None:
+                            raise ValueError('This plan abstained or failed; no source retrieval was performed.')
                     else:
                         request = {key: value for key, value in body.items() if key not in {'mode', 'refresh'}}
                         # Validate every scope field before creating a transport
@@ -518,7 +571,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     else:
                         client = PharosClient(endpoint, cache_dir=cache_dir, timeout=timeout,
                                               refresh=body.get('refresh', False))
-                        result = run_construction(client, request, runs_dir / run_id)
+                        result = (run_planned_construction(client, trace, runs_dir / run_id)
+                                  if mode == 'planned' else run_construction(client, request, runs_dir / run_id))
                     self.json_reply({'run_id': run_id, 'graph': result['graph'],
                                      'question_id': run_id if result['question'] is not None else None,
                                      'question': result['question'], 'construction': result['construction']})

@@ -1,5 +1,12 @@
 # Qualified assay workbench integration — October 26, 2026
 
+**Later checkpoint:** the [complete submission demonstration](SUBMISSION_DEMO_20261026.md)
+subsequently closed gold-packet and retained-graph export for this assay profile.
+The [construction and handoff checkpoint](CONSTRUCTION_HANDOFF_20261026.md)
+records the later planner integration and regression checks. The results below
+describe the earlier workbench checkpoint; its original checks and artifacts
+are preserved.
+
 The [bounded attachment](../ASSAY_WORKBENCH.md) is implemented and checked on
 invented regression fixtures and a real source publication. This is product
 integration and source-fidelity verification, not a scientific improvement test.

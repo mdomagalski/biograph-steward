@@ -20,12 +20,13 @@ Open `http://127.0.0.1:8765/`. A fresh checkout includes an explicitly synthetic
 ## Current capabilities
 
 - [Bounded cohort construction](docs/CONSTRUCTION.md): 1–25 exact protein accessions, a fixed source profile, published graph, cited candidate answer and offline-verifiable export. This deterministic flow needs no model.
+- [Optional construction planner](docs/CONSTRUCTION_AGENT.md): select a bounded request from a question and explicit cohort, inspect the plan, then build with the same deterministic tools. Planning provenance survives publication and export; live performance is evaluated separately.
 - Scoped Pharos retrieval with pagination, explicit limits and per-protein coverage reporting for pathways, GO, interactions, drugs, selected expression and publication discovery.
 - Qualified assertions, raw-source provenance, immutable snapshots and separate local human-review states.
 - [Qualified assay attachment](docs/ASSAY_WORKBENCH.md): selected cohort observations, original assay context, source-preserving reviews and complete run exports.
 - Guided protein-neighborhood and CIViC molecular-profile/therapy questions, with compact evidence graphs, deterministic cited summaries and complete evidence-context exports.
 - Saved graphs and answers, source passports, and comparison of saved snapshots with guarded review carryover.
-- Source-bound graph handoff, explicit keep/prune/abstain files, and exact external-reference alignment with raw labels preserved; official gold scoring awaits its contract.
+- Source-bound graph handoff, materialized retained graph and exhaustive keep/prune/abstain ledger, including qualified assay sources. Exact external-reference alignment preserves raw labels; official gold scoring awaits its contract. See the [real export verification](docs/evaluations/SUBMISSION_DEMO_20261026.md).
 - [Bounded KGX export audit](docs/STANDARD_EXPORT.md), with a complete preserved source packet, mapping ledgers and separate upstream validation results. Full standard conformance remains unresolved.
 - An optional bounded model planner that selects an existing read-only query. Deterministic guided questions work without it.
 - Local/Docker/Brev operation, protected shared access and persistent data directories. Model inference is optional.

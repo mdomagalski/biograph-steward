@@ -182,17 +182,27 @@ def _implementation():
     return {name: sha(Path(__file__).with_name(name + ".py")) for name in names}
 
 
-def publish_construction(snapshot, out):
+def publish_construction(snapshot, out, *, planning_trace=None):
     """Verify offline, stage all artifacts, then publish the directory atomically."""
     out = Path(out).absolute()
     if out.exists() or out.is_symlink():
         raise ValueError("Choose a new immutable construction output directory.")
     verify_construction_snapshot(snapshot)
+    if planning_trace is not None:
+        from .construction_planning import verify_construction_plan_trace
+        planned_request = verify_construction_plan_trace(planning_trace)
+        if planned_request is None or planned_request != snapshot["construction"]["request"]:
+            raise ValueError("The validated construction plan does not match this source request.")
     out.parent.mkdir(parents=True, exist_ok=True)
     stage = Path(tempfile.mkdtemp(prefix=".construction-", dir=out.parent))
     packet_stage = stage.with_name(stage.name + "-packet")
     try:
         graph = save_run(snapshot, stage, run_mode="construction")
+        if planning_trace is not None:
+            write_json(stage / "construction_planner_trace.json", planning_trace)
+            manifest = json.loads((stage / "run_manifest.json").read_text(encoding="utf-8"))
+            manifest["construction_planner_trace_sha256"] = digest(planning_trace)
+            write_json(stage / "run_manifest.json", manifest)
         if any(not row.get("source_response_locators") for row in graph["context_records"]):
             raise ValueError("A retained context record lacks a raw source locator.")
         if any(not (edge.get("retrieval_provenance") or {}).get("source_responses") for edge in graph["edges"]):
@@ -224,6 +234,12 @@ def publish_construction(snapshot, out):
                    "llm_used": False, "biological_validation_performed": False,
                    "official_scoring_performed": False, "files": _files(stage)}
         receipt["implementation_sha256"] = _implementation()
+        if planning_trace is not None:
+            receipt["selection_mode"] = "validated_model_plan"
+            receipt["llm_used"] = planning_trace.get("planner_kind", "").startswith("live_")
+            receipt["execution_llm_used"] = False
+            receipt["planning_trace_sha256"] = digest(planning_trace)
+            receipt["planner_implementation_sha256"] = sha(Path(__file__).with_name("construction_planning.py"))
         receipt["content_sha256"] = digest(receipt)
         write_json(stage / RECEIPT, receipt)
         verify_construction_run(stage)
@@ -244,6 +260,17 @@ def run_construction(client, request, out):
     if Path(out).exists() or Path(out).is_symlink():
         raise ValueError("Choose a new immutable construction output directory.")
     return publish_construction(construct_snapshot(client, request), out)
+
+
+def run_planned_construction(client, trace, out):
+    """Execute only a validated bounded plan; the model never fetches evidence."""
+    from .construction_planning import verify_construction_plan_trace
+    request = verify_construction_plan_trace(trace)
+    if request is None:
+        raise ValueError("This construction plan cannot execute; inspect its abstention or error.")
+    if Path(out).exists() or Path(out).is_symlink():
+        raise ValueError("Choose a new immutable construction output directory.")
+    return publish_construction(construct_snapshot(client, request), out, planning_trace=trace)
 
 
 def verify_construction_run(directory):
@@ -277,12 +304,28 @@ def verify_construction_run(directory):
                 or receipt.get("source_envelopes") != len(snapshot["requests"])
                 or receipt.get("verification") != "recorded_response_replay_and_graph_rebuild"
                 or any(receipt.get(key) is not False for key in
-                       ("llm_used", "biological_validation_performed", "official_scoring_performed"))):
+                       ("biological_validation_performed", "official_scoring_performed"))):
             raise ValueError("Published graph or plan does not match its recorded source.")
         from .questions import answer_question, verify_answer
         answer_path = folder / "question.json"
         resolved = {t["uniprot"] for t in snapshot["targets"]}
         request = receipt["request"]
+        planning_path = folder / "construction_planner_trace.json"
+        if planning_path.exists() or receipt.get("selection_mode") is not None:
+            from .construction_planning import verify_construction_plan_trace
+            trace = json.loads(planning_path.read_text())
+            if (receipt.get("selection_mode") != "validated_model_plan"
+                    or receipt.get("llm_used") is not trace.get("planner_kind", "").startswith("live_")
+                    or receipt.get("execution_llm_used") is not False
+                    or receipt.get("planning_trace_sha256") != digest(trace)
+                    or manifest.get("construction_planner_trace_sha256") != digest(trace)
+                    or receipt.get("planner_implementation_sha256") != sha(Path(__file__).with_name("construction_planning.py"))
+                    or verify_construction_plan_trace(trace) != request):
+                raise ValueError("Construction planner trace does not match the published request.")
+        elif any(key in receipt for key in ("planning_trace_sha256", "planner_implementation_sha256")):
+            raise ValueError("Construction planner trace is missing.")
+        elif receipt.get("llm_used") is not False:
+            raise ValueError("Deterministic construction cannot claim a model call.")
         if request["focus_uniprot"] in resolved:
             answer = json.loads(answer_path.read_text())
             verify_answer(answer)

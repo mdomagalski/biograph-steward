@@ -1,5 +1,6 @@
 // A bounded, deterministic construction request. Evidence answers come from Python.
-let constructionBusy=false;
+let constructionBusy=false,constructionPlanId=null,constructionPlanGeneration=0;
+function clearConstructionPlan(){constructionPlanGeneration++;constructionPlanId=null;$('constructionPlannedBuild').disabled=true;$('constructionPlanPreview').replaceChildren();$('constructionPlanStatus').textContent='';}
 function constructionAccessions(){return $('constructionProteins').value.split(/[\s,]+/).filter(Boolean);}
 function updateConstructionQuestion(){
   const accessions=constructionAccessions(),previous=$('constructionFocus').value;
@@ -17,6 +18,7 @@ function updateConstructionQuestion(){
 }
 function constructionProgress(message,error=false){const box=$('constructionStatus');box.className=error?'notice error':'notice';box.textContent=message;}
 function setupConstructionPublication(g,receipt=null){
+  clearConstructionPlan();$('submissionStatus').textContent='';$('submissionDownload').replaceChildren();
   const cohort=!g.disease,scope=g.scope||g.cohort||{},construction=g.construction,demo=g.data_kind==='synthetic_demo';
   const therapy=[...$('questionWorkflow').options].find(o=>o.value==='therapy');
   if(therapy)therapy.disabled=cohort;
@@ -42,7 +44,8 @@ function setupConstructionPublication(g,receipt=null){
   if(requested.length){$('constructionProteins').value=requested.join(', ');$('constructionProfile').value=construction.request?.profile||construction.plan?.profile||'ppi';updateConstructionQuestion();const focus=construction.request?.focus_uniprot||construction.plan?.focus_uniprot;if(requested.includes(focus))$('constructionFocus').value=focus;updateConstructionQuestion();}
 }
 async function constructGraph(mode='live'){
-  const demo=mode==='demo';
+  const demo=mode==='demo',planned=mode==='planned';
+  if(planned&&!constructionPlanId){constructionProgress('Plan the question before building.',true);return;}
   if(constructionBusy||(!demo&&!$('constructionForm').reportValidity()))return;
   const accessions=constructionAccessions();
   if(!demo&&(!accessions.length||accessions.length>25)){constructionProgress('Enter between 1 and 25 exact UniProt accessions.',true);return;}
@@ -50,7 +53,7 @@ async function constructGraph(mode='live'){
   const accessionPattern=/^(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-[1-9][0-9]*)?$/;
   const invalid=accessions.filter(accession=>!accessionPattern.test(accession));
   if(!demo&&invalid.length){constructionProgress('Use exact UniProt accessions, not gene symbols or aliases. Check: '+invalid.join(', '),true);return;}
-  const relation=$('constructionRelations').value,request=demo?{mode:'demo'}:{mode:'live',accessions,focus_uniprot:$('constructionFocus').value,profile:$('constructionProfile').value,relations:relation==='both'?['interactions','shared_pathways']:[relation],refresh:$('constructionRefresh').checked};
+  const relation=$('constructionRelations').value,request=demo?{mode:'demo'}:planned?{mode:'planned',plan_id:constructionPlanId,refresh:$('constructionRefresh').checked}:{mode:'live',accessions,focus_uniprot:$('constructionFocus').value,profile:$('constructionProfile').value,relations:relation==='both'?['interactions','shared_pathways']:[relation],refresh:$('constructionRefresh').checked};
   constructionBusy=true;busy(true);for(const input of $('constructionForm').elements)input.disabled=true;
   $('constructionProgress').replaceChildren();constructionProgress(demo?'Building the explicitly synthetic construction example…':'Resolving the declared proteins, retrieving bounded Pharos evidence, and saving the graph with a cited answer. This can take several minutes.');
   let publishedRun=null;
@@ -64,9 +67,44 @@ async function constructGraph(mode='live'){
     constructionProgress(answered?'Graph and cited answer saved. Inspect source coverage, unresolved identities and candidate evidence before drawing conclusions.':'Graph and source trace saved. No initial answer was generated because the focus protein did not resolve exactly.');
     status(answered?'Construction completed. The graph, answer and source trace are saved together.':'Graph publication completed with an unresolved focus protein; no initial answer was generated.');loadSavedWork();loadRefreshRuns();
   }catch(error){constructionProgress(error.message,true);status((publishedRun?'Graph saved as '+publishedRun+', but the display could not finish: ':'Construction did not complete: ')+error.message,true);}
-  finally{constructionBusy=false;for(const input of $('constructionForm').elements)input.disabled=false;busy(false);updateConstructionQuestion();}
+  finally{constructionBusy=false;for(const input of $('constructionForm').elements)input.disabled=false;busy(false);updateConstructionQuestion();$('constructionPlannedBuild').disabled=!constructionPlanId;}
 }
+async function planConstructionGraph(){
+  if(constructionBusy||!$('constructionForm').reportValidity())return;
+  clearConstructionPlan();
+  const generation=constructionPlanGeneration;
+  const question=$('constructionAgentQuestion').value.trim();
+  if(!question){$('constructionPlanStatus').textContent='Enter the question you want the agent to plan.';return;}
+  constructionBusy=true;busy(true);for(const input of $('constructionForm').elements)input.disabled=true;
+  $('constructionPlanStatus').textContent='Planning one bounded request with the configured model. No source evidence is being retrieved yet…';
+  try{
+    const result=await api('/api/construction-plan',{question,accessions:constructionAccessions(),focus_uniprot:$('constructionFocus').value});
+    if(generation!==constructionPlanGeneration)return;
+    const trace=result.trace,request=trace.construction_request;
+    $('constructionPlanStatus').textContent=(trace.status==='validated'?'Plan ready for inspection. ':trace.status==='abstained'?'The agent declined this request. ':'No executable plan was produced. ')+(trace.validated_plan?.reason||trace.error||'');
+    const preview=$('constructionPlanPreview');
+    if(request){constructionPlanId=result.plan_id;preview.append(table(['Choice','Planned retrieval'],[{cells:['Proteins',request.accessions.join(', ')]},{cells:['Focus',request.focus_uniprot]},{cells:['Evidence',request.profile]},{cells:['Answer connections',request.relations.join(', ')]}]));}
+    const link=el('a','Download the planning record');link.href='/api/download/'+encodeURIComponent(result.plan_id);preview.append(link);
+  }catch(error){if(generation===constructionPlanGeneration)$('constructionPlanStatus').textContent=error.message;}
+  finally{constructionBusy=false;for(const input of $('constructionForm').elements)input.disabled=false;busy(false);$('constructionPlannedBuild').disabled=!constructionPlanId;}
+}
+async function exportSubmission(){
+  if(!runId){$('submissionStatus').textContent='Open a saved workspace graph before exporting.';return;}
+  const sourceRun=runId;
+  $('submissionExport').disabled=true;$('submissionDownload').replaceChildren();$('submissionStatus').textContent='Verifying sources and preparing the graph with its complete decision ledger…';
+  try{
+    const result=await api('/api/submission-export',{run_id:sourceRun});
+    if(runId!==sourceRun)return;
+    $('submissionStatus').textContent='Export verified. Every input edge remains undecided and retained; no biological pruning was performed.';
+    const link=el('a','Download graph, decisions and complete sources');link.href=result.download_url;$('submissionDownload').append(link);
+  }catch(error){if(runId===sourceRun)$('submissionStatus').textContent=error.message;}
+  finally{$('submissionExport').disabled=false;}
+}
+$('constructionPlanButton').addEventListener('click',planConstructionGraph);
+$('constructionPlannedBuild').addEventListener('click',()=>constructGraph('planned'));
+$('constructionAgentQuestion').addEventListener('input',clearConstructionPlan);
+$('submissionExport').addEventListener('click',exportSubmission);
 $('constructionForm').addEventListener('submit',event=>{event.preventDefault();constructGraph();});
 $('constructionDemo').addEventListener('click',()=>constructGraph('demo'));
-for(const id of ['constructionProteins','constructionFocus','constructionProfile','constructionRelations'])$(id).addEventListener(id==='constructionProteins'?'input':'change',updateConstructionQuestion);
+for(const id of ['constructionProteins','constructionFocus','constructionProfile','constructionRelations'])$(id).addEventListener(id==='constructionProteins'?'input':'change',()=>{clearConstructionPlan();updateConstructionQuestion();});
 updateConstructionQuestion();
