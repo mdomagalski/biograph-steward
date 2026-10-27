@@ -2,7 +2,7 @@
   "project": "BioGraph Steward",
   "branchName": "codex/reactome-context-development",
   "description": "Prepare one reproducible, literature-supported Reactome-context development comparison using existing Pharos data and native PyKEEN. This backlog ends at validated preparation and guarded execution handoff; it does not authorize a real assay comparison or claim biological improvement.",
-  "planningStatus": "prepared_not_started",
+  "planningStatus": "running_sequential",
   "executionMode": "sequential",
   "decision": "docs/literature/REACTOME_CONTEXT_INTERVENTION_20261026.md",
   "selectionRecord": "docs/evaluations/reactome_context_intervention_20261026_selection.json",
@@ -47,7 +47,9 @@
         "Use invented CPU cases to exercise actual message passing through the membership relation and the original gene-to-product links, with shared vocabulary and missing-context endpoints. Tiny synthetic controls may use fewer updates, explicitly separated from the fixed 500-update real-run budget. Verify finite predictions and paired parameter/batch fingerprints using installed native dependencies; skipped native checks do not count as completion.",
         "Keep all real-data commands dry during this story. Record synthetic proof and intended runtime requirements. Report a dependency or semantics blocker rather than changing the selected model, budget or experiment."
       ],
-      "dependsOn": ["REACTOME-001"],
+      "dependsOn": [
+        "REACTOME-001"
+      ],
       "priority": 2,
       "passes": false,
       "notes": "The old runner is specifically guarded for three graph adjacencies, GO is_a enrichment and four model arms. It cannot execute this two-arm design unchanged. Reuse its established native-library behavior under a new explicit contract; do not repurpose old predictions or falsify old proof receipts."
@@ -65,7 +67,9 @@
         "Provide exact next commands and a preparation receipt for the saved real graphs, explicitly pending actual-device resource check and final freeze. Verify required native checks; do not load real outcomes or perform actual resource fitting during backlog execution.",
         "Update the active build plan with completed engineering evidence and remaining scientific limits. Do not change the midpoint report to claim measured biological improvement or independent usability. Stop after readiness; ask the root orchestrator to announce the separate compute phase."
       ],
-      "dependsOn": ["REACTOME-002"],
+      "dependsOn": [
+        "REACTOME-002"
+      ],
       "priority": 3,
       "passes": false,
       "notes": "A completed loop prepares a correctly guarded comparison; it is not the comparison itself. A later fixed negative result is a valid scientific deliverable. No score-driven implementation loop or automatic acceptance/pruning is authorized."

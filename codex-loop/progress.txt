@@ -13,3 +13,9 @@
 - Launch prerequisite: review and checkpoint the current report/selection changes separately so loop workers do not include unrelated work in story commits. The installed .agents skill source is not an implementation change from this backlog.
 - Intended completion: validated paired graphs, native synthetic controls and guarded execution/scoring handoff. Actual-device resource proof, final real freeze and the six-run comparison follow as a separately announced phase.
 - Scientific stopping rule: preserve all original results and report the one fixed comparison, including no improvement. No repeated search until a favorable score appears.
+
+## 2026-10-26 - Authorized sequential run
+- User requested implementation of the selected next steps and a fixed biological comparison for the report; an independent colleague walkthrough is unavailable and is not a blocker.
+- Preparation stories run sequentially on codex/reactome-context-development. The subsequent announced real-data execution is outside these implementation stories.
+- Prior report/selection/backlog checkpoint: 9887b00. Locally installed nested skill checkout remains ignored and unchanged.
+- Preflight: Git/main resolve, clean checkpoint, Python3.12.4, unittest command and subagents available. No static typecheck configured; no UI story requires a browser. Native scientific dependencies are being restored in an isolated writable environment.
