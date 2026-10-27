@@ -19,3 +19,15 @@
 - Preparation stories run sequentially on codex/reactome-context-development. The subsequent announced real-data execution is outside these implementation stories.
 - Prior report/selection/backlog checkpoint: 9887b00. Locally installed nested skill checkout remains ignored and unchanged.
 - Preflight: Git/main resolve, clean checkpoint, Python3.12.4, unittest command and subagents available. No static typecheck configured; no UI story requires a browser. Native scientific dependencies are being restored in an isolated writable environment.
+
+## 2026-10-26T22:34:52-04:00 - REACTOME-001
+- Implemented: separate source-bound Reactome projection and fail-closed validator. Exact saved memberships join the pinned original graph without changing candidates, masks, supervision, GO policy or original identities. Every pathway source row retains disposition, raw hashes, source locators and qualifications.
+- Files changed: scripts/prepare_reactome_context_graphs.py; tests/test_reactome_projection.py; docs/evaluations/REACTOME_CONTEXT_GRAPH_20261026.md; docs/evaluations/reactome_context_graph_20261026_summary.json; docs/BUILD_PLAN.md; this log and PRD story status.
+- Actual preparation: runs/reactome_context_graphs_20261026_final; 11,138 eligible memberships / 982 products / 1,490 pathways; shared 11,840 entities / 5 relations. Baseline 103,768 adjacency triples, Reactome 114,906. All 3,276 nominations retained. Outcome-independent endpoint coverage 0/1/2: 712 / 1,207 / 1,357. These are nominations, not the later 1,751 complete-scored denominator. Earlier preparation drafts remain preserved and are not the handoff.
+- Checks: pinned native project interpreter; 16 Reactome controls, 13 existing GO projection controls, 34 Pharos inventory/source controls pass without skips. Actual preparation and independent --validate pass; git diff --check clean. No static typecheck is configured.
+- Browser verification: not applicable; no UI changed.
+- Boundaries: no model fitting, assay scoring, outcome decoding, reserved IntAct access, Brev/AWS access or old-contract modification. Real execution remains unfrozen pending native synthetic proof and exact-device resource proof.
+- Learnings for future iterations:
+  - The saved target pathways live at target.pathways, while other context families live under target.pharos_context. Raw source_rows(..., 'pathways') and target.pathways are reconciled independently.
+  - Use validate_prepared_packet(folder) and the ARMS/RELATION constants for the next explicit two-arm adapter; returned arms are already mapped to the same ordered union vocabularies. Native library fitting is intentionally outside this story.
+---

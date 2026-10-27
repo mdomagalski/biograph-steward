@@ -32,7 +32,7 @@
       ],
       "dependsOn": [],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "notes": "The existing scripts/prepare_inmc_graphs.py intentionally excludes non-GO families. The workbench and standard export already handle exact Reactome membership. Use those established semantics; do not infer molecular form, pathway role or direct binding."
     },
     {
