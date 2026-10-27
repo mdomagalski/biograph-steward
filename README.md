@@ -47,6 +47,8 @@ The published **INMC experimentally tested human protein-pair panel** was evalua
 
 Read the [reuse decision](docs/literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md), [assay/identity decision](docs/evaluations/INMC_READINESS_FOLLOWUP_20261022.md), [completed source audit](docs/evaluations/INMC_PHAROS_UNIFORM_20261022.md), [measured result](docs/evaluations/INMC_COMPARISON_20261023.md), and [next steps](docs/BUILD_PLAN.md). No general biological improvement is claimed.
 
+A subsequent [fixed Reactome-context development comparison](docs/evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md) adds 11,138 exact memberships already retrieved from Pharos. All six matched R-GCN fits completed after resource checks and an execution freeze. On the same 1,751 assay pairs, mean AP was **0.717794 versus 0.719605**, with two positive seed differences and one negative: **no consistent benefit is demonstrated**. Coverage and gene-influence diagnostics are reported. This consumed-panel comparison is closed without further tuning; it is not independent validation or a new binding-evidence source.
+
 The subsequent [Lambourne assay corroboration](docs/evaluations/LAMBOURNE_CORROBORATION_20261025.md)
 is complete after freezing the author-consistent adapter, eligibility and Pharos
 comparator. All **3,222 nominated pairs** remain accounted for: 2,676 are assay

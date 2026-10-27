@@ -1,6 +1,6 @@
 # Current build plan
 
-Updated October 26, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication, the bounded Lambourne assay-corroboration report and its standalone qualified observation publication are complete; study independence remains unresolved. The first bounded measured PPI comparison found no consistent incremental hierarchy benefit. Both assessed panels are consumed. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
+Updated October 26, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication, the bounded Lambourne assay-corroboration report and its standalone qualified observation publication are complete; study independence remains unresolved. The first measured PPI comparison found no consistent hierarchy benefit. The subsequent fixed Reactome-context comparison is also complete: mean AP increased slightly (0.717794 to 0.719605), with mixed seed effects and no consistent benefit demonstrated. Both assessed panels are consumed. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
 
 ## Report and submission update received October 26
 
@@ -313,7 +313,7 @@ PyKEEN runtime checks on Nations, the [invented context/supervision smoke](evalu
 | Gap | Reviewable completion criterion |
 |---|---|
 | Official reference evaluation | Retained graph, exhaustive ledger and complete qualified source handoff are implemented and verified on a real example. Obtain the evaluation contract for organizer-run scoring; hidden final labels need not be released. Use local alignment only for an explicitly supplied development/public reference |
-| Measured graph-link comparison | First restricted comparison and Lambourne corroboration complete; no consistent hierarchy gain. The [selected Reactome pair](evaluations/REACTOME_CONTEXT_GRAPH_20261026.md) now contains 11,138 exact memberships, with unchanged original candidates, masks and supervision. Native two-arm controls and the [guarded handoff](evaluations/REACTOME_CONTEXT_HANDOFF_20261026.md) now pass full invented preparation/freeze/scoring replay. Real execution remains explicitly unfrozen pending separately announced intended-device resource proof; the fixed six-fit run and consumed-panel scoring follow only then. Independent confirmation and official judging alignment remain |
+| Measured graph-link comparison | The [fixed Reactome assessment](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md) is complete after actual CPU resource proof and immutable freeze: six matched 500-update fits, 1,751 unchanged assay pairs, full reconciliation, coverage and influence diagnostics. Mean AP +0.001812 with mixed seed effects; no consistent gain. Close this candidate without further panel-specific tuning. Independent confirmation and official judging alignment remain |
 | Bounded agent construction | Planner selection and deterministic execution are connected with persistent provenance. Latest tool V2 comparison matched 3/4 supported requests but admitted 2/8 unsupported requests; earlier JSON failures remain preserved. No live agent-built graph parity is established. Keep experimental and investigate the documented task-selection limitation before another change |
 | Validated interoperability | Bounded KGX Reactome projection, preserved source bundle and round-trip checks now exist. Resolve the documented category-array and predicate-domain findings before claiming broader conformance; keep mappings and exclusions explicit |
 | Evidence filtering/pruning | Define task-compatible evidence actions and references; measure false removals and abstention. Assay nondetection does not automatically invalidate a functional association or co-complex relation |
@@ -322,6 +322,23 @@ PyKEEN runtime checks on Nations, the [invented context/supervision smoke](evalu
 | Packaging | Fresh-clone instructions, source/license manifests, dependency pins, fetchable or redistributable examples and separate archived history |
 
 Use established implementations before filling these gaps with custom infrastructure. Recheck official versions, task assumptions, licenses and training/evaluation overlap. When a new scientific or integration issue appears, record what literature documents, what our implementation demonstrates and what remains unresolved.
+
+## Completed Reactome assessment and next scientific step
+
+The [completed comparison](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md)
+tests 11,138 exact memberships already retrieved from Pharos, with no new source
+or inferred binding edges. AP seed differences were +0.018822, -0.023891 and
++0.010505; their mean was +0.001812. Coverage availability itself carries ranking
+signal, and one descriptive gene omission reverses the small mean difference.
+This does not establish consistent predictive benefit or independent biological
+accuracy. The fixed six-run candidate is closed; do not sweep this consumed panel.
+
+Include the completed biological assessment in the midpoint report. Next,
+qualify study overlap and an independent evaluation scope before another
+improvement claim, and align export/scoring details with the organizer contract
+when supplied. The independent colleague walkthrough is unavailable now and
+remains planned; it does not block reporting this completed assessment. Local
+CPU execution sufficed, so Brev and AWS are not required for this result.
 
 ## Delivery context
 

@@ -131,7 +131,7 @@ question-view scope; its independent usability effect is unmeasured.
 | Normalize and trace assertions | Qualified assertions, stable source locators, original context, separate local review, immutable snapshots and bounded KGX export with the source bundle retained | Resolve documented standard-validation issues; complete source/study lineage only where authoritative metadata permits |
 | Clean erroneous or irrelevant links | Structural checks, exact deduplication, explicit review states | Scientifically justified filtering with measured false removals; no automatic model pruning is enabled |
 | Maintain the graph | Saved snapshots, explicit comparison and guarded review carryover | Cohort-compatible maintenance/evidence-action policy and controlled source-change/withdrawal validation |
-| Compare baseline and enriched graphs | Frozen Pharos/GO projection, native PyKEEN four-arm/three-seed run, authenticated assay reconciliation and paired metrics on 1,751 measured pairs; completed Lambourne full-panel Pharos/assay corroboration | No consistent hierarchy gain. Lambourne corroboration does not establish independent improvement; both panels are consumed. A justified graph change, independent evaluation and official judging alignment remain |
+| Compare baseline and enriched graphs | Frozen Pharos/GO comparison and subsequent exact Reactome-membership addition, matched native PyKEEN runs, authenticated assay reconciliation and coverage/influence reporting on 1,751 pairs; completed Lambourne corroboration | No consistent hierarchy or Reactome gain demonstrated. Both panels are consumed. Independent evaluation, task-compatible evidence/pruning assessment and official judging alignment remain |
 | Explain and support users | Guided questions, compact graphs, deterministic cited summaries, source passports and context exports | Actual biomedical-user evaluation; source fidelity is not scientific truth |
 
 The supplied judging weights are usability 40%, accuracy/pruning 30%, explainability 20% and standards 10%. Those weights make preservation, usable inspection, measured prediction/pruning and interoperability separate deliverables.
@@ -164,16 +164,19 @@ The submitted proposal copies differ in the usability answer: one later copy rep
 
 The [build plan](BUILD_PLAN.md) is the active sequence. The [literature knowledge base](LITERATURE_REVIEW.md) preserves known limitations and reuse checks. Closed extraction, verifier and prompt-comparison sequences are historical evidence, not an active task queue.
 
-## Selected biological comparison October 26
+## Completed biological comparison October 26
 
 The [Reactome intervention decision](literature/REACTOME_CONTEXT_INTERVENTION_20261026.md)
-selects one fixed development test of existing Pharos context. The restricted
-Pharos/GO R-GCN graph will be compared with the same graph plus exact Reactome
-memberships, using matched learners, a shared vocabulary and unchanged assay
-pairs, masks, seeds and update budgets. This closes intervention selection,
-not projection, execution readiness or demonstration of biological value.
-The saved retrieval already contains the memberships; adding a direct Reactome
-source is unnecessary for this comparison. No direct protein-pair labels are
-created from pathway sharing. The consumed INMC outcomes and unresolved source
-lineage limit conclusions to retrospective development; independent confirmation
-remains separate. No training or reserved IntAct assessment ran in this increment.
+selected one fixed development test of existing Pharos context. The
+[completed assessment](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md)
+compares the restricted Pharos/GO R-GCN graph with the same graph plus 11,138 exact
+Reactome memberships, using matched learners, shared vocabularies and unchanged
+assay pairs, masks, seeds and update budgets. All six full fits and authenticated
+scoring passed after actual CPU resource proof and execution freeze. On 1,751
+eligible pairs, mean AP was 0.717794 versus 0.719605, with mixed seed effects;
+no consistent incremental benefit is demonstrated. Coverage and descriptive
+gene influence qualify this small average difference. The fixed candidate is
+closed without further tuning. Pathway sharing creates no direct binding labels.
+Consumed outcomes and unresolved source lineage limit conclusions to development;
+independent confirmation and organizer scoring remain separate. Reserved IntAct
+interaction bodies remain unopened.
