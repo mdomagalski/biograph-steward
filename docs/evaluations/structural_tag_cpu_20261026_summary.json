@@ -1,0 +1,35 @@
+{
+  "format": "biograph-steward.structural-tag-cpu-observation.v1",
+  "created_at": "2026-10-26T18:50:22.306635+00:00",
+  "status": "cpu_compatibility_passed",
+  "preparation_manifest_sha256": "272673e5bf12999489f72118177d4b67c84f2403a59e0b765f31e92d872d0845",
+  "result_sha256": "c0ecb00af53caa1403d184c09a3188ffd8eb2b6c81e62317f6f18c42f97e1867",
+  "runtime_receipt_sha256": "c45947b7f418dceefcd4d5e1ddb920ab489ea5e8acc868226bfcbaec27b020d3",
+  "wrapper_sha256": "93fab2a358ef3325e6eb4e6557eb515f98e9e2ebddd2a05ee4ddf75394093411",
+  "versions": {
+    "vllm": "0.8.5",
+    "xgrammar": "0.1.18"
+  },
+  "image_repo_digests": [
+    "vllm/vllm-openai@sha256:6cf9808ca8810fc6c3fd0451c2e7784fb224590d81f7db338e7eaf3c02a33d33"
+  ],
+  "image_identity_verified_by_outer_launcher": true,
+  "runtime_result_self_attests_image": false,
+  "helper_controls_passed": 7,
+  "grammar_controls_passed": 23,
+  "application_only_cases_requiring_strict_validation": 7,
+  "model_calls": 0,
+  "source_calls": 0,
+  "inference_performed": false,
+  "engine_started_by_check": false,
+  "model_weights_loaded_by_check": false,
+  "nano_tokenizer_checked": false,
+  "gpu_access_requested_by_check": false,
+  "network_access_enabled_for_check": false,
+  "existing_deployment_changed": false,
+  "elapsed_cpu_harness_seconds": 8.906,
+  "existing_service_observation": "The existing V0 model container auto-started when the VM resumed. It was left unchanged; the check used a separate no-device runc container.",
+  "interpretation": "Installed request conversion, V1 validation and synthetic grammar behavior passed. V0 rejection reproduced with a synthetic tokenizer. No V1 engine startup, Nano tokenizer compatibility, model performance, semantic intent or biological accuracy is established.",
+  "next_step": "Separately frozen isolated V1 startup and at most two planning-format requests, preserving the original V0 service and all prior results.",
+  "content_sha256": "12d3e7cd3c68fe98fbe45c750731480e8122e1deba8d1ea25b8a0c0659cddca0"
+}

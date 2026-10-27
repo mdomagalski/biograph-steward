@@ -1,0 +1,22 @@
+{
+  "format": "biograph-steward.nano-tool-format-observation.v1",
+  "created_at": "2026-10-26T16:23:48.905696+00:00",
+  "model_calls": 2,
+  "result_sha256": "a5c349a0a405277643e6cc013d44cfd6bf4ab088620895dba517eae880de608d",
+  "manifest_sha256": "6147c5ade5df035033afb7b8ff7946dd9f002acf2b39c9a4402365a9d65460ba",
+  "runtime_observation_sha256": "cf84f28e209bc9ad122d2c344bf9581b530898d2f438081f5c098e3371432ca1",
+  "observed_format": "Textual TOOLCALL tags containing a JSON array of function name and arguments; no native tool_calls envelope.",
+  "supported_case": "ppi_full",
+  "supported_arguments_equal_frozen_expected_request": true,
+  "existing_constructor_validation_passed": true,
+  "unsupported_case": "clinical",
+  "unsupported_observation": "The response states it cannot select cancer treatment and describes its retrieval-only capability.",
+  "source_calls": 0,
+  "tool_execution": false,
+  "prompt_tokens": 738,
+  "completion_tokens": 109,
+  "request_latency_ms_sum": 3302.785,
+  "interpretation": "Two consumed development examples only. No general planner accuracy, BFCL reproduction, graph construction, biological gain or causal attribution to the prompt wrapper is established. Production planner remains unchanged and its earlier supported result remains 0/4.",
+  "next_step": "Verify a bounded adapter for this observed format using existing JSON/constructor validators, then freeze and run the full construction comparison.",
+  "content_sha256": "8b70a41174bc9f71f098088fbcb30b202129e8dcfc478a4a874c7db690edb7af"
+}

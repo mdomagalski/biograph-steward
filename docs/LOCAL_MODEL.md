@@ -6,6 +6,7 @@ The Linux-only `compose.brev-local-model.yaml` overlay connects the existing app
 
 - Model and tokenizer revision: `54641c1611fcff44fa4865626462445e0a153fc7`.
 - Server: vLLM `0.8.5`, image digest `sha256:6cf9808ca8810fc6c3fd0451c2e7784fb224590d81f7db338e7eaf3c02a33d33`.
+- Engine: the overlay explicitly sets `VLLM_USE_V1=0`. V0 and V1 do not expose identical structured-output capabilities in this release.
 - Verified container runtime: PyTorch `2.6.0+cu124`, CUDA `12.4`, on the VM's NVIDIA L40S and driver `565.57.01`.
 - BF16 weights, 16,384-token context, one concurrent sequence, 75% GPU-memory budget, eager execution and guided JSON output. These are configured limits, not a throughput benchmark.
 - Planner: one request, at most 1,600 output tokens, 120-second timeout, no retries, no repair calls and at most one application-controlled read-only query.
@@ -13,6 +14,29 @@ The Linux-only `compose.brev-local-model.yaml` overlay connects the existing app
 The overlay uses Linux host networking and explicitly binds the app to `127.0.0.1:8766` and the model to `127.0.0.1:8000`. It removes the base Compose port mapping. It does not expose either API publicly or change the configured browser-origin allowlist. App data and model downloads use separate persistent named volumes.
 
 The planner provider is `api`. Its `nim_chat` setting names the existing `guided_json`/`max_tokens` request format, which this vLLM release also accepts; it does not identify the serving implementation as NIM. The active integration is the bounded planner; retired source-verifier workflows belong to the research archive.
+
+The optional Nano tool-format investigation found that vLLM 0.8.5 implements
+`response_format.type=structural_tag` in its V1 XGrammar backend, while the
+configured V0 backend has no corresponding grammar branch. It cannot be added
+to the current deployment as a request-only change. See the
+[pinned engine compatibility gate](literature/CONSTRUCTION_PLANNING_REUSE_20261026.md#pinned-engine-compatibility-gate)
+for the version-specific source evidence and subsequent bounded checks. The
+deployed engine remains V0; the separate V1 diagnostic is recorded below.
+This limits a proposed decoder remedy; it does not explain
+the previous unconstrained tool-interface errors, which never requested that
+decoder.
+
+The subsequent [CPU compatibility check](evaluations/structural_tag_cpu_20261026_summary.json)
+passed in the exact cached image without GPU access or a model server. It
+verified request conversion, V1 validation and synthetic grammar behavior.
+The subsequent [isolated V1 diagnostic](evaluations/nemotron_v1_structural_probe_20261026_summary.json)
+also passed startup with the cached pinned model and completed two requests:
+the supported example returned its expected arguments, and the clinical example
+returned no call and text declining treatment selection. The temporary server
+used explicit chunked prefill with 2,048 batch tokens and disabled prefix caching.
+It was removed afterward; the original V0 service was restored and verified
+healthy. This demonstrates bounded serving/format compatibility, not general
+planning improvement or a production engine migration. No graph was constructed.
 
 The current overlay explicitly enables `BIOGRAPH_PLANNER_PROTOCOL=scoped_targets_v4`: [exact entity binding, target scope and per-tool shapes](PLANNER_PROTOCOL.md). `catalogue_v1`, `entity_tools_v2` and `tool_shapes_v3` remain selectable for reproducing the earlier experiments. The model revision, reasoning profile and serving budgets are unchanged by this protocol selection.
 

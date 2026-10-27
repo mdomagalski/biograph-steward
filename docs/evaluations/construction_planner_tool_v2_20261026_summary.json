@@ -1,0 +1,332 @@
+{
+  "format": "biograph-steward.construction-tool-result-summary.v2",
+  "created_at": "2026-10-26T20:07:19.431202+00:00",
+  "policy": "biograph-steward.nemotron-tool-construction.v2",
+  "interface": "nemotron_tool_v2",
+  "model_configuration": {
+    "provider": "api",
+    "planner_kind": "live_model",
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "endpoint": "http://127.0.0.1:8011/v1/chat/completions",
+    "api": "nim_chat",
+    "prompt_profile": "nemotron_nano_v1",
+    "max_output_tokens": 1600,
+    "timeout_seconds": 120,
+    "cli_version": null
+  },
+  "runtime": {
+    "engine": "V1",
+    "vllm_version": "0.8.5",
+    "xgrammar_version": "0.1.18",
+    "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+    "tokenizer_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+    "image": "vllm/vllm-openai:v0.8.5@sha256:6cf9808ca8810fc6c3fd0451c2e7784fb224590d81f7db338e7eaf3c02a33d33",
+    "image_id": "sha256:d1a544bfefdcd51fb42a9cc64d29df092127a7f1706f7a284aac26e5c48c468d",
+    "dtype": "bfloat16",
+    "effective_flags": {
+      "max_model_len": 16384,
+      "max_num_seqs": 1,
+      "gpu_memory_utilization": 0.75,
+      "enforce_eager": true,
+      "enable_chunked_prefill": true,
+      "max_num_batched_tokens": 2048,
+      "enable_prefix_caching": false,
+      "guided_decoding_backend": "xgrammar",
+      "generation_config": "vllm"
+    }
+  },
+  "summary": {
+    "completed_cases": 12,
+    "scope_matches": 3,
+    "supported_cases": 4,
+    "supported_exact_matches": 3,
+    "unsupported_cases": 8,
+    "unsupported_explicit_abstentions": 0,
+    "unsupported_no_call_text": 0,
+    "supported_no_call_text": 0,
+    "unsupported_requests_constructed": 2,
+    "unsupported_parsed_call_attempts": 3,
+    "invalid_plans": 6,
+    "planner_errors": 0,
+    "recorded_model_calls": 12,
+    "returned_token_totals": {
+      "prompt_tokens": 9288,
+      "total_tokens": 9820,
+      "completion_tokens": 532
+    },
+    "usage_available_cases": 12,
+    "total_latency_ms": 18253.11,
+    "median_latency_ms": 1570.686,
+    "cost": null,
+    "cost_note": "No provider prices or GPU billing allocation assumed; returned usage and latency recorded.",
+    "source_calls": 0,
+    "biological_accuracy_measured": false
+  },
+  "rows": [
+    {
+      "case_id": "ppi_full",
+      "status": "validated",
+      "scope_match": true,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "exact_supported_request",
+      "posthoc_assistant_note": "All requested arguments remain exact."
+    },
+    {
+      "case_id": "pathways",
+      "status": "validated",
+      "scope_match": true,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "context",
+        "relations": [
+          "shared_pathways"
+        ]
+      },
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "context",
+        "relations": [
+          "shared_pathways"
+        ]
+      },
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"context\", \"relations\": [\"shared_pathways\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "exact_supported_request",
+      "posthoc_assistant_note": "Pathway-only request now uses the correct context profile and requested relation."
+    },
+    {
+      "case_id": "both",
+      "status": "validated",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "context",
+        "relations": [
+          "interactions",
+          "shared_pathways"
+        ]
+      },
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "required_relation_omitted",
+      "posthoc_assistant_note": "Returned a valid PPI-only request, omitting requested shared pathways; no repair applied."
+    },
+    {
+      "case_id": "subset",
+      "status": "validated",
+      "scope_match": true,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533"
+        ],
+        "focus_uniprot": "P00533",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533"
+        ],
+        "focus_uniprot": "P00533",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\"], \"focus_uniprot\": \"P00533\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "exact_supported_request",
+      "posthoc_assistant_note": "Exact two-protein subset and changed focus now match."
+    },
+    {
+      "case_id": "unknown_identity",
+      "status": "invalid_plan",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\", \"P00533\"] , \"focus_uniprot\": \"P04637\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "duplicate_authorized_identity_rejected",
+      "posthoc_assistant_note": "Returned a duplicate permitted accession instead of the requested unauthorized accession; strict validation rejected it."
+    },
+    {
+      "case_id": "ambiguous_relation",
+      "status": "validated",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "ambiguous_request_admitted",
+      "posthoc_assistant_note": "Chose PPI retrieval despite unspecified graph/relation intent; prior V1 asked a clarification."
+    },
+    {
+      "case_id": "physical_only",
+      "status": "invalid_plan",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "<TOOLCALL>[]</TOOLCALL>",
+      "posthoc_assistant_category": "empty_tagged_array_rejected",
+      "posthoc_assistant_note": "Returned an empty TOOLCALL array. The frozen one-call parser rejects it; do not reinterpret it as a verified semantic refusal."
+    },
+    {
+      "case_id": "clinical",
+      "status": "invalid_plan",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "<TOOLCALL>[]</TOOLCALL>",
+      "posthoc_assistant_category": "empty_tagged_array_rejected",
+      "posthoc_assistant_note": "Returned an empty TOOLCALL array. The frozen one-call parser rejects it; do not reinterpret it as a verified semantic refusal."
+    },
+    {
+      "case_id": "prune",
+      "status": "invalid_plan",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "<TOOLCALL>[]</TOOLCALL>",
+      "posthoc_assistant_category": "empty_tagged_array_rejected",
+      "posthoc_assistant_note": "Returned an empty TOOLCALL array. The frozen one-call parser rejects it; do not reinterpret it as a verified semantic refusal."
+    },
+    {
+      "case_id": "url",
+      "status": "invalid_plan",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "<TOOLCALL>[]</TOOLCALL>",
+      "posthoc_assistant_category": "empty_tagged_array_rejected",
+      "posthoc_assistant_note": "Returned an empty TOOLCALL array. The frozen one-call parser rejects it; do not reinterpret it as a verified semantic refusal."
+    },
+    {
+      "case_id": "prediction",
+      "status": "invalid_plan",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "<TOOLCALL>[]</TOOLCALL>",
+      "posthoc_assistant_category": "empty_tagged_array_rejected",
+      "posthoc_assistant_note": "Returned an empty TOOLCALL array. The frozen one-call parser rejects it; do not reinterpret it as a verified semantic refusal."
+    },
+    {
+      "case_id": "assay_filter",
+      "status": "validated",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "unsupported_filter_silently_dropped",
+      "posthoc_assistant_note": "Returned an unfiltered PPI request despite the Y2H-only requirement; still unresolved."
+    }
+  ],
+  "manifest_sha256": "01324b572d023ace1859044c15a9625fe4e87269ab7cf927b350a71b288c7496",
+  "comparison_sha256": "0bd83b182e33c4c5aa900d3f334d87e4304060ee63417e5e521533b60301ee59",
+  "runtime_observation_sha256": "7052f9126b464d4fc0e5597a568be6826a5e0b01371eefdcb12847b602ec61ba",
+  "restoration_sha256": "0751031c263e917ee3b16f3e17604e426b6e823665597f5a792b9f52878ed6a1",
+  "final_server_log_sha256": "f0092d19d1a01f7ab0f14e189cbbaeb0398f6abe1127e77496a68c42618a50cf",
+  "tunnel_close_receipt_sha256": "42c44ffe6057b4258b3a0be0bbc1d0764f313a40a092f6c8b00ac99fbb52a4c7",
+  "historical_v1_comparison_sha256": "6990e4859cf9080ce9b9a40225901f011f189ac30473416c6845077ad83582e8",
+  "same_case_bytes_as_v1": true,
+  "explicit_selections_in_live_comparison": false,
+  "supported_exact_matches": {
+    "tool_v1": 1,
+    "tool_v2": 3,
+    "denominator": 4
+  },
+  "unsupported_admissible_proposals": {
+    "tool_v1": 1,
+    "tool_v2": 2,
+    "denominator": 8
+  },
+  "empty_tagged_arrays": {
+    "count": 5,
+    "scored_as": "invalid_plan",
+    "semantic_refusal_established": false
+  },
+  "interpretation": "Mixed development result: pathway-only and subset selection improved, while combined retrieval omitted pathways and unsupported admission increased. The description, schema presentation, input serialization, constrained decoding and engine changed together, preventing single-cause attribution. Empty tagged arrays retain their frozen invalid-plan classification. No overall readiness or biological improvement established.",
+  "audit": "Independent assistant review verified frozen cases/requests, runtime evidence, all twelve traces, counts, twelve successful HTTP completions and healthy restoration. This is an implementation/results audit, not independent human or biological validation.",
+  "live_model_calls": 12,
+  "source_calls": 0,
+  "tool_execution": false,
+  "graph_changes": 0,
+  "original_v0_restored_healthy": true,
+  "temporary_v1_removed": true,
+  "temporary_tunnel_closed": true,
+  "production_default_changed": false,
+  "decision": "Do not promote V2 to autonomous construction. Keep deterministic guided construction and explicit user plan inspection. Use complete caller selections as application constraints in a separately evaluated assisted workflow; they still cannot establish unsupported free-text conditions. Do not rescore the failed run or start further prompt variants on these consumed cases.",
+  "content_sha256": "3ec265f188a53f39864635cccc49e8410a38b2f73118d26687f482eb485fb381"
+}

@@ -2,10 +2,27 @@
 
 ## Current conclusion
 
-**The documented schema/runtime correction improves output consistency, but
-useful construction planning is still not demonstrated.** Keep the optional
-planner experimental and use explicit cohort selection as the working path.
-No automatic construction or further prompt/model sweep was introduced.
+**Tool V2 matched three of four supported requests, up from one for tool V1,
+but admitted two of eight unsupported requests, up from one.** Keep it
+experimental and deterministic construction as the working path. Nothing
+executed; no graph changed or biological accuracy was measured.
+
+| Comparable fixed development check | JSON v3 | Nano tool V1 | Nano tool V2 |
+|---|---:|---:|---:|
+| Supported construction tasks matched exactly | 0 / 4 | 1 / 4 | 3 / 4 |
+| Unsupported requests admitted as construction plans | 0 / 8 | 1 / 8 | 2 / 8 |
+| Invalid proposals rejected by validation | 1 | 3 | 6 |
+| Transport errors | 0 | 0 | 0 |
+
+Tool V1 returned six plain-text no-call responses; V2 returned five empty tagged
+arrays that the frozen parser rejected as invalid. Neither is retrospectively
+scored as a correct semantic abstention, so overall `scope_matches` is not
+directly comparable with JSON v3's structured abstention score. See the
+[V2 machine summary](construction_planner_tool_v2_20261026_summary.json) and
+[completed V2 result](#completed-tool-v2-result). The historical V1 summary and
+case-level diagnosis remain below.
+
+## Earlier JSON interface comparison
 
 | Fixed development check | Initial v1 | Corrected v3 |
 |---|---:|---:|
@@ -156,3 +173,175 @@ needs a specific literature/upstream-supported rationale and a separate test;
 the present result does not justify adding agents or more biomedical sources.
 Independent evidence assessment and actual usability remain the substantive
 evaluation gaps.
+
+The subsequent [primary-source and reuse investigation](../literature/CONSTRUCTION_PLANNING_REUSE_20261026.md)
+identified a tool-prompt reference in the exact NVIDIA model card that our custom
+interface has not reproduced. Its matching Nano parser remains unverified.
+This supports a bounded reference-interface diagnosis before another custom
+planning change. It supplies no new model result and does not change the 0/4
+supported-task conclusion. The [assisted walkthrough](../USER_WALKTHROUGH_20261026.md#assisted-walkthrough--ready-to-open-example)
+can proceed independently using the deterministic saved example.
+
+A subsequent [two-request NVIDIA prompt-format diagnostic](nemotron_tool_format_probe_20261026_summary.json)
+returned the exact expected construction arguments for `ppi_full` and declined
+the unsupported `clinical` request. It used textual tool output, no execution
+and no automatic output repair. This is an encouraging observation on two
+consumed development cases; it does not replace this 12-case result or establish
+production readiness. The [reuse note](../literature/CONSTRUCTION_PLANNING_REUSE_20261026.md)
+records the observed format, adaptation and next validation step.
+
+## Experimental Nano tool adapter and frozen preparation
+
+The two-request observation is now handled by an isolated adapter in
+`biograph_steward/nemotron_construction.py`. It accepts exactly one
+`construct_cohort` call in the observed JSON-array representation inside
+`TOOLCALL` tags. It reuses the existing construction scope and argument validators.
+Malformed, duplicate-key, multiple, unknown, incomplete and API-native calls
+cannot produce a validated request. Final public text remains inspectable;
+reasoning fields and credential echoes are not retained.
+
+The function description, Nano prompt wrapper, reasoning-off setting, decoding
+settings and HTTP transport are unchanged from the two-request probe. The
+current application default remains the v3 JSON planner. The experimental trace
+has a separate policy and cannot be executed by the v3 construction endpoint.
+This is a bounded client-side adaptation of an observed format, not a verified
+NIM deployment or reproduction of NVIDIA's published BFCL result.
+
+The full development comparison is frozen at
+`runs/construction_planner_tool_v1_20261026/`. It uses the same twelve cases and
+deterministic expected requests as v3: four supported and eight unsupported.
+All request payloads, implementation copies and configuration are hashed;
+expected answers are absent from the model payloads. The
+[preparation receipt](construction_planner_tool_v1_20261026_preparation.json)
+records the manifest and prior-result hashes as they stood before inference.
+The subsequent completed run is recorded below; the preparation receipt remains
+unchanged as a historical record.
+
+Scoring distinguishes:
+
+- Exact supported requests, including every requested relation and cohort member.
+- Parsed attempts on unsupported requests, including attempts rejected by scope
+  validation, and the subset accepted as construction plans.
+- Plain-text responses without a tool call. These do **not** count as correct
+  semantic abstention: they may decline, clarify, answer incorrectly or be irrelevant.
+- Invalid output and transport failures, with no retries, repairs or fallback.
+
+The runner binds each trace to its actual case, frozen wire payload and model
+configuration. Explicit returned-model contradictions are invalid; a missing
+returned ID remains unknown. Model attribution, usage and latency must agree
+between the trace and its recorded response metadata.
+
+Local checks passed: 40 focused adapter/evaluation/probe tests and six existing
+construction integration tests. The first HTTP-test attempt was denied permission
+to bind a localhost port; the authorized retry passed. Three existing optional
+JSON-schema checks were unavailable in the core environment; the production
+schema was not changed. No fixture result is a model-performance observation.
+
+For the prepared run, use the same explicit configuration as the probe:
+
+```sh
+BIOGRAPH_PLANNER_MODEL=nvidia/Llama-3.1-Nemotron-Nano-8B-v1 \
+BIOGRAPH_PLANNER_ENDPOINT=http://127.0.0.1:8010/v1/chat/completions \
+BIOGRAPH_PLANNER_API=nim_chat \
+BIOGRAPH_PLANNER_PROMPT_PROFILE=nemotron_nano_v1 \
+BIOGRAPH_PLANNER_MAX_OUTPUT_TOKENS=1600 \
+BIOGRAPH_PLANNER_TIMEOUT=120 \
+BIOGRAPH_PLANNER_API_KEY='' \
+python3 scripts/evaluate_construction_planner.py run \
+  --experiment runs/construction_planner_tool_v1_20261026
+```
+
+Announce/check Brev readiness and verify the deployed runtime first. Budget:
+twelve calls, at most 19,200 output tokens, 120 seconds per request, with no tool
+execution, Pharos retrieval or graph changes. An interrupted run is preserved
+and cannot resume. Later code/configuration changes require a new freeze.
+Even a successful development comparison would still require a separate reviewed
+application integration and fresh cases before claiming generalization.
+
+## Full tool-interface result
+
+The frozen comparison completed once on October 26, 2026 after a read-only
+runtime check matched the declared model revision, image, vLLM 0.8.5 and
+XGrammar 0.1.18. All twelve requests finished; there were no transport errors,
+retries, repairs, tool executions, source calls or graph writes. The runtime
+observation is separately saved and hashed, not a cryptographic attestation.
+
+| Case | Observed outcome |
+|---|---|
+| `ppi_full` | Exact permitted request; the sole supported success. |
+| `pathways` | Correct relation, but illegal profile `shared_pathways` instead of `context`; rejected. |
+| `both` | Both requested relations, but illegal profile `interactions` instead of `context`; rejected. |
+| `subset` | Correct focus, but retained extra `P01116`; within authorized bounds yet wrong for the explicit request. |
+| `unknown_identity` | Attempted unauthorized `P15056`; rejected. |
+| `assay_filter` | Dropped the required Y2H-only filter and proposed an admissible broad PPI query; wrong for the request. |
+
+These six call responses all used the observed, well-formed tagged JSON shape.
+The three rejected plans are argument/capability errors, not a failure to parse
+the tags. Removing guided JSON also removed generation-time enum enforcement;
+application validation still rejected invalid arguments. The subset and assay
+cases demonstrate that valid arguments do not establish complete user intent.
+
+The other six cases returned plain text. A **post-hoc assistant inspection**
+found explicit capability refusals for physical-only verification, treatment
+selection, pruning/publication and prediction; clarification for an ambiguous
+relation; and a profile clarification that failed to acknowledge the requested
+unsupported external source. These observations are not a predeclared semantic
+score, independent human review or biological evaluation.
+
+The run used 4,428 prompt and 642 completion tokens, with 15.891 seconds of summed
+request latency, excluding startup/idle time. Full results:
+`runs/construction_planner_tool_v1_20261026/results/report.html` and
+`comparison.json`; post-hoc analysis and the runtime observation are preserved
+beside the freeze. The earlier runs and two-request probe are unchanged.
+
+**Decision:** do not integrate this adapter into execution or repeat the model
+run after ad hoc prompt changes. It fixed one observed supported case but
+introduced an admissible unsupported proposal. The reference wrapper, function
+description and decoder constraints changed together, so no single-cause or
+general model-capability conclusion follows. Audit contract completeness and
+redundant argument choices against upstream methods before any next increment;
+retain deterministic construction for the report and demonstration. No biological
+improvement was measured.
+
+## Completed tool V2 result
+
+The separately frozen V2 comparison completed all twelve unchanged development
+cases on October 26, 2026. It restored the complete capability description and
+used the previously checked structural-tag response format under an isolated
+vLLM V1 service, with the same pinned Nano model, revision and image. The current
+runtime observation and evidence hashes are preserved with the result. The
+optional `exact_selection` input was absent from every case; its new agreement
+guard was tested locally with injected responses, not evaluated live here.
+
+| Case | V2 outcome relative to tool V1 |
+|---|---|
+| `ppi_full` | Exact request, unchanged. |
+| `pathways` | Exact request; the formerly illegal profile is now `context`. |
+| `subset` | Exact requested subset and focus; the extra protein is no longer present. |
+| `both` | Valid broad PPI proposal omits requested pathways; still fails. |
+| `unknown_identity` | Returned a duplicate allowed accession instead of the unknown identity; rejected. |
+| `ambiguous_relation` | Admitted a PPI proposal where V1 asked for clarification; regression. |
+| `assay_filter` | Again dropped the Y2H-only requirement and admitted an unfiltered PPI proposal. |
+| `physical_only`, `clinical`, `prune`, `url`, `prediction` | Empty tagged arrays, rejected by the frozen one-call parser; not reclassified as successful abstentions. |
+
+The supported exact count rose from 1/4 to 3/4, while unsupported admissible
+proposals rose from 1/8 to 2/8. The latter are planning failures even though no
+tool executed. Five of the six invalid plans were empty tagged arrays; the
+sixth contained the duplicate accession. Zero transport failures and valid
+remaining arguments do not establish complete intent or biological correctness.
+
+The run made twelve calls with no retries or repairs, using 9,288 prompt and
+532 completion tokens. It made no source calls, tool executions or graph changes.
+The temporary V1 service was removed and the original V0 service restored healthy.
+The [machine summary](construction_planner_tool_v2_20261026_summary.json),
+[local case report](../../runs/construction_planner_tool_v2_20261026/results/report.html)
+and [preparation receipt](construction_planner_tool_v2_20261026_preparation.json)
+preserve this result separately from earlier runs.
+
+**Decision:** do not promote V2 into execution. Prompt restrictions, generation
+constraints and serving engine changed together; the result cannot attribute
+the observed differences to one change. These reused development cases are not
+a fresh holdout. Preserve the failed outputs, keep the production default
+unchanged and retain deterministic construction as the working path. No live
+benefit from `exact_selection`, general planning reliability or biological
+improvement has been established.

@@ -1,0 +1,79 @@
+{
+  "format": "biograph-steward.nano-v1-structural-observation.v1",
+  "created_at": "2026-10-26T19:03:58.413684+00:00",
+  "status": "serving_and_format_compatibility_observed",
+  "manifest_sha256": "afc39e61b0dc0c8ce0ac40d8180baa5f23b1d825247b91d8bcb4bea00d3724f7",
+  "result_sha256": "9dc90fdf15ca1e729d9f46b450169b40872e02d30f4a2523a5413f5f76f7015f",
+  "runtime_observation_sha256": "25ee3b62b68c6e6d3a4074673a0e2371c83aedd79872172e847489da6ad1ea32",
+  "restoration_sha256": "68a44469b95a5df155c98d17934f6ff7f592dd671ff957bce998fb60c35deb89",
+  "final_server_log_sha256": "0bb1d81300629eb580b5e1ea4d551cf8b8d8b85a4965417287092ccd62678a63",
+  "model_calls": 2,
+  "source_calls": 0,
+  "tool_execution": false,
+  "graph_changes": 0,
+  "engine": "V1",
+  "vllm_version": "0.8.5",
+  "xgrammar_version": "0.1.18",
+  "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+  "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+  "image": "vllm/vllm-openai:v0.8.5@sha256:6cf9808ca8810fc6c3fd0451c2e7784fb224590d81f7db338e7eaf3c02a33d33",
+  "image_id": "sha256:d1a544bfefdcd51fb42a9cc64d29df092127a7f1706f7a284aac26e5c48c468d",
+  "effective_flags": {
+    "max_model_len": 16384,
+    "max_num_seqs": 1,
+    "gpu_memory_utilization": 0.75,
+    "enforce_eager": true,
+    "enable_chunked_prefill": true,
+    "max_num_batched_tokens": 2048,
+    "enable_prefix_caching": false,
+    "guided_decoding_backend": "xgrammar",
+    "generation_config": "vllm"
+  },
+  "offline_cached_model_startup_observed": true,
+  "gpu_memory_mib_at_readiness": 33905,
+  "request_change": "Only the CPU-verified structural_tag response_format was added to the two original wire payloads.",
+  "known_capability_contract_gaps_changed": false,
+  "supported_probe": {
+    "case_id": "ppi_full",
+    "status": "validated",
+    "arguments_equal_original_expected_request": true
+  },
+  "unsupported_probe": {
+    "case_id": "clinical",
+    "status": "no_call_text",
+    "assistant_reading": "Final text explicitly declines treatment selection and describes its protein-cohort retrieval scope.",
+    "independent_semantic_assessment": false
+  },
+  "returned_usage": {
+    "prompt_tokens": 738,
+    "completion_tokens": 109,
+    "total_tokens": 847
+  },
+  "summed_request_latency_ms": 7545.403,
+  "original_v0_restored_healthy": true,
+  "temporary_v1_removed": true,
+  "temporary_tunnel_closed": true,
+  "production_default_changed": false,
+  "accuracy_scored": false,
+  "biological_accuracy_measured": false,
+  "interpretation": "Actual isolated V1 startup and two constrained-format requests succeeded. Two consumed development examples do not establish general planning improvement, causal effects of decoding, semantic reliability, BFCL reproduction or biological benefit. The original full comparison remains 1/4 supported requests and 1/8 unsupported requests admitted.",
+  "next_step": "Restore the complete capability description and explicitly distinguish selected intent from authorized identity scope in a separately frozen interface; then repeat the development comparison before promotion.",
+  "prior_unconstrained_probe_comparison": {
+    "cases": [
+      {
+        "case_id": "ppi_full",
+        "prior_result": "runs/nemotron_tool_format_probe_20261026/results/01_ppi_full.json",
+        "prior_result_sha256": "8e5f5f476ef976848dfaea2fac79c21927eb1771a1e0cc3025dff0682771a551",
+        "final_text_identical_utf8": true
+      },
+      {
+        "case_id": "clinical",
+        "prior_result": "runs/nemotron_tool_format_probe_20261026/results/02_clinical.json",
+        "prior_result_sha256": "00c7ff04ee99fc2fbb9513541bcf697b3f5b88e16d0f5520f82e6e33a3ad139f",
+        "final_text_identical_utf8": true
+      }
+    ],
+    "interpretation": "Both returned final texts are byte-for-byte identical to the earlier unconstrained two-request probe. This diagnostic establishes compatibility, with no observed answer improvement on these examples."
+  },
+  "content_sha256": "10b8dfe1e5e4a68d34c379aa464697d0e12be3ce1b618e22cfeab9d8cebd2f05"
+}

@@ -1,0 +1,24 @@
+{
+  "format": "biograph-steward.nano-v1-structural-preparation.v1",
+  "status": "prepared_not_run",
+  "created_at": "2026-10-26T18:56:46.826891+00:00",
+  "manifest_sha256": "afc39e61b0dc0c8ce0ac40d8180baa5f23b1d825247b91d8bcb4bea00d3724f7",
+  "frozen_files": 36,
+  "maximum_model_calls": 2,
+  "maximum_output_tokens": 3200,
+  "source_calls": 0,
+  "tool_execution": false,
+  "runtime_plan": "Temporarily stop original V0 service; isolated pinned V1 startup from read-only cached weights, two fixed requests, remove temporary container and restore original V0 health.",
+  "cpu_summary_sha256": "5aa41cad449501354760ee781ae5a45871e6ca6386b627071571af1794316343",
+  "launcher_sha256": {
+    "start_isolated.py": "aa8f76c12a66fbee991af864cd45b3a82c42f2c89b2275c2de4c12e09498b082",
+    "restore_original.py": "6506547be1e54ce08a296c742a60be21c13387a9090d4ec0f50fb9a8fef5f0f3"
+  },
+  "interpretation": "Serving and format compatibility only. Original function description and cases preserved; no general task success or biological improvement claim.",
+  "pre_execution_amendment": {
+    "created_at": "2026-10-26T18:58:09.032432+00:00",
+    "prior_receipt_sha256": "70f1a71f29843bfb2aa5a87eaedd406ad99b81a6e5232d4ae6b9d4fd6a25afcb",
+    "reason": "Independent review: ensure cleanup and health-verified restoration even if startup receipt writing fails or launch returns no container ID. No service actions or inference preceded this amendment."
+  },
+  "content_sha256": "3818c075a1bef0604ba0a9d32433d69a504629a351387da20d50894c0e0d6e80"
+}

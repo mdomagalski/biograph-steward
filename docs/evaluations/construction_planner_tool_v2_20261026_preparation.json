@@ -1,0 +1,62 @@
+{
+  "format": "biograph-steward.construction-tool-preparation.v2",
+  "created_at": "2026-10-26T19:53:40.510689+00:00",
+  "status": "prepared_not_run",
+  "interface": "nemotron_tool_v2",
+  "policy": "biograph-steward.nemotron-tool-construction.v2",
+  "manifest_sha256": "01324b572d023ace1859044c15a9625fe4e87269ab7cf927b350a71b288c7496",
+  "cases_sha256": "ff30a385c91a6b7f0d8d6eb159925964da732b1c03505f68a1bc969bf319e388",
+  "case_count": 12,
+  "supported_cases": 4,
+  "unsupported_cases": 8,
+  "maximum_model_calls": 12,
+  "maximum_output_tokens": 19200,
+  "same_case_bytes_as_v1": true,
+  "exact_selection_in_comparison": false,
+  "historical_v1_comparison_sha256": "6990e4859cf9080ce9b9a40225901f011f189ac30473416c6845077ad83582e8",
+  "verified_structural_schema_reference": "runs/nemotron_v1_structural_probe_20261026/response_format.json",
+  "verified_structural_schema_sha256": "f66429a664f87a3516731f9ca3de52c92d0b21d8aaa816b5774b73e4a1e2e5e3",
+  "structural_schema_unchanged": true,
+  "implementation_sha256": {
+    "biograph_steward/construction_planning.py": "63a6267ca8ed05a8564d24bbf62a81873574b1993fdc187f7aaddb6f4cd4dace",
+    "biograph_steward/model_transport.py": "5f8e2474c6921061b5cc598d1ac1f53f13ca4995fc60cad91e8150a59dd4be94",
+    "biograph_steward/codex_transport.py": "954723b9738b8857e7ebae4067aef27d1c9a498a270c71c1f2ac848a6671490f",
+    "biograph_steward/construction.py": "93675c1ba24a1d5ac1df13cf5ec588a45f39fde485f4ee44b4a94e07c5430a30",
+    "biograph_steward/client.py": "a9877c663c8790fd364d398b40f1f6cdf0d9ccd5b27378127cf4d3d3456bc3bb",
+    "biograph_steward/file_utils.py": "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6",
+    "scripts/evaluate_construction_planner.py": "1bd786f7c7e22777ff15c865c5f02cb63a3bd72a44656505043e9a7b7f1ffa48",
+    "compose.brev-local-model.yaml": "e780974f2256e7e19b00797d60d0898d64915964aadbd7ce868071efc70ee126",
+    "biograph_steward/nemotron_construction.py": "6d449f035ff824a7779586e780be0516030e31eed8ff3c2581251aebe323cc9d",
+    "scripts/probe_nemotron_tool_interface.py": "dc1a1c49fa6e9f3b35decfc1b7117626db613f77b16905a45ef34baf2e9a8d66",
+    "biograph_steward/nemotron_construction_v2.py": "6c29004cbb88178e801b27ec8afaf9fb42cc803bda6e25a9d0cad5f83e3d9e1f",
+    "biograph_steward/graph.py": "26265acf7a7e55934ee399aefc7749ff0ed09fdabb0c6e9d49b5210f83a3ecd0",
+    "biograph_steward/retrieval.py": "c8d4e24d9c4846bfd505d2db8a1a552b637dc1d43a2e154c835919e0aaf015b6",
+    "biograph_steward/__init__.py": "d0cf1ce10e845d71f276f8c7c5b1a7a9a5dc7def45e48d82a6ddfb38147c2641"
+  },
+  "runtime_preparation": {
+    "start_isolated.py": {
+      "source": "runs/nemotron_v1_runtime_20261026/start_isolated.py",
+      "source_sha256": "aa8f76c12a66fbee991af864cd45b3a82c42f2c89b2275c2de4c12e09498b082",
+      "prepared_sha256": "a8ddf5f159c1c8e034882200ad4911028e1ee62ba1e64b5f0cfd988189ef1f38"
+    },
+    "restore_original.py": {
+      "source": "runs/nemotron_v1_runtime_20261026/restore_original.py",
+      "source_sha256": "6506547be1e54ce08a296c742a60be21c13387a9090d4ec0f50fb9a8fef5f0f3",
+      "prepared_sha256": "eb68d7e143f5e0cf606e7b1ee12a45f7042c4de4ee63e530b2297604dfec178e"
+    }
+  },
+  "runtime_preparation_change": "Only temporary container name changes from the tested lifecycle scripts; verify actual original service identity/health before running.",
+  "local_validation": "Focused offline adapter, scope, transport, comparison and trace checks passed; live performance unmeasured. All twelve historical v1 traces still verify.",
+  "known_limitations": [
+    "Optional exact_selection is an experimental Python caller input, not a UI or production API feature.",
+    "Explicit selection agreement cannot establish that unsupported free-text conditions were honored.",
+    "No-call text is not automatically counted as a correct semantic refusal.",
+    "This development comparison changes the contract and decoding/runtime together; it is not a causal ablation or biological evaluation."
+  ],
+  "live_model_calls": 0,
+  "source_calls": 0,
+  "tool_execution": false,
+  "production_default_changed": false,
+  "remaining": "Await Brev readiness, verify current original service, launch tested isolated V1, record fresh runtime observation, execute this frozen comparison once, restore original service and report outcomes.",
+  "content_sha256": "6b3a6e30c5fa3845e5db1bfe0f3650bbb1a717411167d41102f72c39273a90f4"
+}

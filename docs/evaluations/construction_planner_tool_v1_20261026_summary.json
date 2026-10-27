@@ -1,0 +1,271 @@
+{
+  "format": "biograph-steward.construction-tool-result-summary.v1",
+  "created_at": "2026-10-26T18:10:22.289404+00:00",
+  "policy": "biograph-steward.nemotron-tool-construction.v1",
+  "interface": "nemotron_tool_v1",
+  "model_configuration": {
+    "provider": "api",
+    "planner_kind": "live_model",
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "endpoint": "http://127.0.0.1:8010/v1/chat/completions",
+    "api": "nim_chat",
+    "prompt_profile": "nemotron_nano_v1",
+    "max_output_tokens": 1600,
+    "timeout_seconds": 120,
+    "cli_version": null
+  },
+  "summary": {
+    "completed_cases": 12,
+    "scope_matches": 1,
+    "supported_cases": 4,
+    "supported_exact_matches": 1,
+    "unsupported_cases": 8,
+    "unsupported_explicit_abstentions": 0,
+    "unsupported_no_call_text": 6,
+    "supported_no_call_text": 0,
+    "unsupported_requests_constructed": 1,
+    "unsupported_parsed_call_attempts": 2,
+    "invalid_plans": 3,
+    "planner_errors": 0,
+    "recorded_model_calls": 12,
+    "returned_token_totals": {
+      "prompt_tokens": 4428,
+      "total_tokens": 5070,
+      "completion_tokens": 642
+    },
+    "usage_available_cases": 12,
+    "total_latency_ms": 15891.234,
+    "median_latency_ms": 1329.612,
+    "cost": null,
+    "cost_note": "No provider prices or GPU billing allocation assumed; returned usage and latency recorded.",
+    "source_calls": 0,
+    "biological_accuracy_measured": false
+  },
+  "rows": [
+    {
+      "case_id": "ppi_full",
+      "status": "validated",
+      "scope_match": true,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "exact_supported_request",
+      "posthoc_assistant_note": "All requested arguments match."
+    },
+    {
+      "case_id": "pathways",
+      "status": "invalid_plan",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "context",
+        "relations": [
+          "shared_pathways"
+        ]
+      },
+      "construction_request": null,
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"shared_pathways\", \"relations\": [\"shared_pathways\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "invalid_profile_enum",
+      "posthoc_assistant_note": "Returned profile shared_pathways; permitted values are ppi/context. Requested relation was present."
+    },
+    {
+      "case_id": "both",
+      "status": "invalid_plan",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "context",
+        "relations": [
+          "interactions",
+          "shared_pathways"
+        ]
+      },
+      "construction_request": null,
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"interactions\", \"relations\": [\"interactions\", \"shared_pathways\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "invalid_profile_enum",
+      "posthoc_assistant_note": "Returned profile interactions; permitted values are ppi/context. Both requested relations were present."
+    },
+    {
+      "case_id": "subset",
+      "status": "validated",
+      "scope_match": false,
+      "expected_request": {
+        "accessions": [
+          "P04637",
+          "P00533"
+        ],
+        "focus_uniprot": "P00533",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P00533",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P00533\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "requested_subset_not_respected",
+      "posthoc_assistant_note": "Returned extra P01116 despite explicit two-protein request. Selected focus was correct."
+    },
+    {
+      "case_id": "unknown_identity",
+      "status": "invalid_plan",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P15056\", \"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "unauthorized_identity_blocked",
+      "posthoc_assistant_note": "Attempted P15056 outside the authorized cohort; validation rejected it."
+    },
+    {
+      "case_id": "ambiguous_relation",
+      "status": "no_call_text",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "To provide you with the most accurate graph, could you please specify the focus you'd like: either 'ppi' for protein-protein interactions or 'context' for shared pathways?",
+      "posthoc_assistant_category": "clarification_requested",
+      "posthoc_assistant_note": "Asks whether interactions or pathways are desired; no call. This is post-hoc textual inspection."
+    },
+    {
+      "case_id": "physical_only",
+      "status": "no_call_text",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "I'm sorry for the confusion, but I'm unable to perform this task as it involves physical binding verification, which is beyond my capabilities. I recommend consulting a database or a scientific resource for such information.",
+      "posthoc_assistant_category": "unsupported_capability_declined",
+      "posthoc_assistant_note": "States physical-binding verification is unavailable; no call."
+    },
+    {
+      "case_id": "clinical",
+      "status": "no_call_text",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "I'm sorry for the inconvenience, but I'm unable to select a treatment for your cancer. My capabilities are limited to retrieving information about specific protein cohorts based on the UniProt accessions you provide.",
+      "posthoc_assistant_category": "unsupported_capability_declined",
+      "posthoc_assistant_note": "Declines treatment selection; no call."
+    },
+    {
+      "case_id": "prune",
+      "status": "no_call_text",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "I'm sorry for the inconvenience, but I'm unable to perform this task as it involves modifying and publishing a graph, which is beyond my capabilities.",
+      "posthoc_assistant_category": "unsupported_capability_declined",
+      "posthoc_assistant_note": "Declines graph modification/publication; no call."
+    },
+    {
+      "case_id": "url",
+      "status": "no_call_text",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "To proceed, I need to know the specific focus you'd like - either 'ppi' for profile protein interactions or 'context' for pathways. Could you please specify?",
+      "posthoc_assistant_category": "unsupported_source_not_acknowledged",
+      "posthoc_assistant_note": "Asks for an interaction/pathway choice without acknowledging that the requested alternate source is unavailable; no call."
+    },
+    {
+      "case_id": "prediction",
+      "status": "no_call_text",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": null,
+      "final_text": "I'm sorry for the inconvenience, but I'm unable to predict new physical interactions between proteins. My capabilities are limited to retrieving and providing information based on existing data.",
+      "posthoc_assistant_category": "unsupported_capability_declined",
+      "posthoc_assistant_note": "Declines prediction of new interactions; no call."
+    },
+    {
+      "case_id": "assay_filter",
+      "status": "validated",
+      "scope_match": false,
+      "expected_request": null,
+      "construction_request": {
+        "accessions": [
+          "P04637",
+          "P00533",
+          "P01116"
+        ],
+        "focus_uniprot": "P04637",
+        "profile": "ppi",
+        "relations": [
+          "interactions"
+        ]
+      },
+      "final_text": "<TOOLCALL>[{\"name\": \"construct_cohort\", \"arguments\": {\"accessions\": [\"P04637\", \"P00533\", \"P01116\"], \"focus_uniprot\": \"P04637\", \"profile\": \"ppi\", \"relations\": [\"interactions\"]}}]</TOOLCALL>",
+      "posthoc_assistant_category": "unsupported_filter_silently_dropped",
+      "posthoc_assistant_note": "Returns an admissible unfiltered interaction plan despite the required Y2H-only filter. No execution occurred."
+    }
+  ],
+  "manifest_sha256": "0cdcb9ea78a8b21e36fda58583a7d162f044e8e7f0679416e878557dfeeb1e9b",
+  "comparison_sha256": "6990e4859cf9080ce9b9a40225901f011f189ac30473416c6845077ad83582e8",
+  "runtime_observation_sha256": "4a73fd8350ddfa0a23b030eb2a260b3802c87ea7f90e4ff009f09517f531acf7",
+  "prior_v3_comparison_sha256": "db72abbd090b4eff85dc5a126a263642ac388587328ea18108ca5838422976ed",
+  "same_cases_and_model_configuration_as_v3": true,
+  "comparable_supported_matches": {
+    "v3": 0,
+    "tool_v1": 1,
+    "denominator": 4
+  },
+  "unsupported_admissible_construction_proposals": {
+    "v3": 0,
+    "tool_v1": 1,
+    "denominator": 8
+  },
+  "no_call_text_review": {
+    "method": "Post-hoc assistant inspection of public final text; not a predeclared automated score or independent human/biological review.",
+    "clear_declines": 4,
+    "clarification_for_ambiguous_request": 1,
+    "clarification_without_acknowledging_unsupported_source": 1
+  },
+  "interpretation": "Small supported-task gain with remaining argument/scope failures and an unsupported assay restriction dropped. Not ready for production integration. The different abstention representations prevent a like-for-like overall scope-match comparison. Prompt/function presentation and decoder constraints changed together; no single-cause attribution or biological improvement claim.",
+  "live_model_calls": 12,
+  "source_calls": 0,
+  "tool_execution": false,
+  "production_default_changed": false,
+  "decision": "Keep deterministic construction as the working path; preserve this failed/mixed run and diagnose contract completeness and redundant arguments against upstream guidance before another implementation or inference.",
+  "content_sha256": "b55716d51bfc48850e67ac7764ab5069b7edde42e373b3ef899423d26fceafce"
+}
