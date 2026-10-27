@@ -24,9 +24,11 @@ but adding cloud services is not a prerequisite for these tasks.
 The immediate goal is one complete, inspectable demonstration, with the report
 revised afterwards. Export and local construction integration are implemented.
 The [live planner comparison](evaluations/CONSTRUCTION_PLANNER_20261026.md) is
-complete: schema/runtime repair reduced invalid outputs, but all four supported
-tasks still failed. Keep planning experimental and deterministic construction as
-the working path. Actual-user assessment and biological benefit remain unproven.
+complete: the JSON schema/runtime repair reduced invalid outputs but still
+failed all four supported tasks. The later experimental tool V2 interface
+matched 3/4 supported requests but admitted 2/8 unsupported ones. Keep planning
+experimental and deterministic construction as the working path. Actual-user
+assessment and biological benefit remain unproven.
 
 1. Completed: the graph-plus-decisions export on an existing real cohort with
    qualified assay evidence. Deliver the retained graph, a decision for every
@@ -54,8 +56,22 @@ scoring. Four reserved interaction files remain unopened. Keep this assessment
 bounded; independent predictive benefit remains unproven and requires a
 separately justified assessment. The
 [provenance readiness review](evaluations/INTACT_PROVENANCE_READINESS_20261026.md)
-completed the bounded bibliographic check; richer source provenance and a frozen
-final execution path remain required. Reserved interaction bodies stay unopened.
+completed the bounded bibliographic check. The subsequent
+[official XML development check](evaluations/INTACT_XML_PROVENANCE_20261026.md)
+now supplies richer experiment/figure context and preserves a source-curation
+caution. All corresponding checked fields agree, with one explicitly expanded
+three-participant interaction explaining 14 MITAB rows versus 13 XML objects.
+Study independence, reserved overlap and a frozen final execution path remain
+unresolved. Reserved interaction bodies stay unopened.
+
+The [core packaging check](evaluations/core_packaging_20261026_summary.json)
+now builds and installs the committed `586ec35` snapshot with the declared
+setuptools 80.9.0 backend. The installed entry point replays synthetic graph,
+answer and graph-plus-decisions exports with application network access denied;
+all packaged UI assets retain their source bytes. The minimum Python 3.10
+synthetic replay also passes. This closes the local packaging check, not an
+actual GitHub clone, real-data demonstration, browser/user assessment or cloud
+deployment. Those remain separate delivery checks.
 
 ## Delivery sequence and completion criteria
 
@@ -156,7 +172,7 @@ for another framework redesign:
 
 | Boundary | Work under our control | Completion evidence or external limit |
 |---|---|---|
-| Agent-selected construction | Implemented using existing transports and deterministic tools, fixed profiles, exact supplied identities, budgets and abstention | Live development agreement improved from 5/12 to 7/12 after schema/runtime correction, but 0/4 supported tasks matched. The real-cohort request was declined; no agent-built graph parity is claimed. Keep experimental; see the recorded failure analysis |
+| Agent-selected construction | Implemented using existing transports and deterministic tools, fixed profiles, exact supplied identities, budgets and abstention | Latest experimental tool V2 matched 3/4 supported development requests but admitted 2/8 unsupported requests. Earlier JSON failures remain preserved; no agent-built graph parity is claimed. The deployed planner now has locally tested explicit-selection guards and plan review. Keep experimental |
 | Explicit-cohort maintenance | Extend the existing snapshot/review rules to cohort graphs; retain source changes and reversible decisions | Controlled changes in identity, context, evidence and source withdrawal are detected; incompatible reviews do not carry over; missing or old evidence is not silently declared biologically false |
 | Qualified exchange | Maintain the audited subset and source-preserving ledgers; extend only documented semantic mappings | Exact roundtrip and appropriate upstream checks pass for every claimed profile; full conformance remains dependent on resolution of the recorded model/schema constraints and adequate source semantics |
 | Bounded biological assessment | Complete: tested author-consistent assay adapter, frozen eligibility and full-panel Pharos comparator, one assessment and offline replay | All 3,222 nominations reconcile; 2,676 assay eligible, 2,674 comparator eligible. Detection/nondetection, failures, unresolved identities and exposure strata are recorded. This is retrospective assay concordance, not general Pharos accuracy or an improvement effect; the panel is consumed |

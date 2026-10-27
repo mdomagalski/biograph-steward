@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.biograph</groupId>
+  <artifactId>intact-xml-reader-bridge</artifactId>
+  <version>0.1.0</version>
+  <name>BioGraph Steward isolated official PSI-MI XML reader bridge</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>11</maven.compiler.release>
+  </properties>
+  <repositories>
+    <repository>
+      <id>ebi-official-pst-release</id>
+      <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release/</url>
+      <releases><enabled>true</enabled><checksumPolicy>fail</checksumPolicy></releases>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+  </repositories>
+  <dependencies>
+    <dependency>
+      <groupId>psidev.psi.mi.jami</groupId>
+      <artifactId>jami-xml</artifactId>
+      <version>3.9.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.13.2</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.1</version>
+        <configuration><release>11</release></configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.8.1</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -203,6 +203,15 @@ bibliographic metadata for all eight publications, with no reserved interaction
 body access. Bibliographic identity alone did not close the shared-study gate;
 participant/pair overlap and full study provenance remain unresolved.
 
+The subsequent [official XML development check](evaluations/INTACT_XML_PROVENANCE_20261026.md)
+is complete on only the four consumed studies. All 238 selected-field comparisons
+agree across 14 MITAB rows and 13 XML objects; two explicitly spoke-expanded
+RNA-containing rows map to one three-participant interaction. The four eligible
+protein records and original mask remain unchanged. Richer experiment/figure
+context and a curation caveat are preserved, but independence, reserved overlap
+and final execution readiness remain unresolved. This separate helper does not
+modify or supersede the frozen original reader/importer/evaluator.
+
 Data reuse follows the dedicated
 [IntAct CC BY 4.0 statement](https://raw.githubusercontent.com/intact-portal/intact-portal-documentation/b5d5bb35365739d4942e9ca250a2cf4fbaa14c62/about/license-privacy.md),
 with attribution to IntAct/IMEx and the original publications. The download guide's

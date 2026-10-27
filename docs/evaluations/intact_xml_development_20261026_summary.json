@@ -1,0 +1,409 @@
+{
+  "format": "biograph-steward.intact-xml-development-summary.v1",
+  "prepared_date": "2026-10-26",
+  "recorded_at": "2026-10-27T01:21:49.460894+00:00",
+  "status": "development_xml_provenance_inspected_critical_fields_equal_with_record_multiplicity",
+  "scope": "Controlled official PSI-MI XML2.5.4 inspection of exactly the four consumed development studies, and critical official-reader field parity against their unchanged original14 MITAB evidence rows. This is not reserved scoring, a study-independence conclusion, scientific accuracy or all42-column cross-format fidelity.",
+  "bindings": {
+    "xml_contract": {
+      "path": "docs/evaluations/intact_xml_20261026_contract.json",
+      "sha256": "fa305464e1b80288773ac7bebe46c5905801c47e01b715ee012d63e9cf22f1dc"
+    },
+    "pre_access": {
+      "path": "runs/intact_xml_development_preaccess_20261026_attempt_02/pre_access.json",
+      "sha256": "68dbc6f565a7e7b9324ea7ece9d4850d31a6f4fbb82745c2be1c4bf48ef95ab5"
+    },
+    "synthetic_controls": {
+      "path": "runs/intact_xml_validation_20261026/controls_attempt_03/report.json",
+      "sha256": "a2482a7d1953fb57666250e28e744a1d879eff2404cf7503db122e45cc627a12"
+    },
+    "official_xml_runtime_build_receipt": {
+      "path": "runs/intact_xml_validation_20261026/build05_receipt.json",
+      "sha256": "9b31f17daa253139443af0545c452c3774b82b75aec5f4a5174ba1dec3d51b7d"
+    },
+    "inspection_report": {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/report.json",
+      "sha256": "88b575f4627ac8f05f61671710553354eeb6465c15c1d8122a08e6088b9c3650"
+    },
+    "qualified_provenance": {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/qualified_provenance.jsonl",
+      "sha256": "1b5b16b9b77bd5b6751245d2a00abe2ad61e13b2745f6428d96aa1f7e8ebbe83"
+    },
+    "original_mitab_identity_inventory": {
+      "path": "runs/intact_xml_development_expectations_20261026/manifest.json",
+      "sha256": "4a732ca52b88f9d440b77dad5bee0fa72bad8b13b1c0f36b6dd48a5b2b385b3e"
+    }
+  },
+  "pre_access_integrity": {
+    "pre_access_and_report_content_seals_valid": true,
+    "runtime_matches_passing_controls": true,
+    "current_runtime_bindings_digest": "02295f808cbb77c5975359066cc3c3614eab9109203d7a8494980c143cd18963",
+    "code_bindings_match_pre_access": true,
+    "original_pins_unchanged": {
+      "runs/intact_development_inspection_20261026/report.json": {
+        "sha256": "f329ef329ce23eaf3ac403890208fa5526a57124999251e7c746f3da667719c2",
+        "unchanged": true
+      },
+      "runs/intact_development_inspection_20261026/row_ledger.jsonl": {
+        "sha256": "232ad603873331a0f19e3447ec8c430e93dd7b5802367190be8cd956c6a16a2b",
+        "unchanged": true
+      },
+      "runs/intact_development_inspection_20261026/40075158_reader.jsonl": {
+        "sha256": "e9389e26b9169d46aff2f44d106dcc15d6f19667ce872ef47fe1eb17ff3a1cbb",
+        "unchanged": true
+      },
+      "runs/intact_development_inspection_20261026/40404733_reader.jsonl": {
+        "sha256": "c588b5ebac1791957ee80f9d4f38228980c15cf65e65830c037656a3f740781c",
+        "unchanged": true
+      },
+      "runs/intact_development_inspection_20261026/40071126_reader.jsonl": {
+        "sha256": "a81d210892ea39df01391a632c1c62dab33d2d59d4943d9ddf7b6d8c676f82ae",
+        "unchanged": true
+      },
+      "runs/intact_development_inspection_20261026/40739265_reader.jsonl": {
+        "sha256": "f3481bdbf7d34393aabb2c6be8f6ac10dff4fae3454efbfac9ce632e142e4615",
+        "unchanged": true
+      },
+      "runs/intact_fidelity_preparation_20261026/opaque_sources/40075158.txt": {
+        "sha256": "d65a5243b53ef51719d03a797c7b15dd7f7b03cc7019897c3d311d8756149e56",
+        "unchanged": true
+      },
+      "runs/intact_fidelity_preparation_20261026/opaque_sources/40404733.txt": {
+        "sha256": "19f3325086266f76dbf7910b798756d8a13bc56bd45d826f7308267d75c86738",
+        "unchanged": true
+      },
+      "runs/intact_fidelity_preparation_20261026/opaque_sources/40071126.txt": {
+        "sha256": "211cde6738435a6f49a9f67b932d4d2f0f9fbc9022464f188b5542ab17a576a7",
+        "unchanged": true
+      },
+      "runs/intact_fidelity_preparation_20261026/opaque_sources/40739265.txt": {
+        "sha256": "5c28e098ea83e319a7ae7352640baef64c10ebd51d724ff0522ed4e3360f4ad8",
+        "unchanged": true
+      },
+      "docs/evaluations/intact_fidelity_20261026_protocol.json": {
+        "sha256": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a",
+        "unchanged": true
+      },
+      "docs/evaluations/intact_fidelity_20261026_semantic_amendment.json": {
+        "sha256": "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c",
+        "unchanged": true
+      },
+      "docs/evaluations/intact_fidelity_20261026_preparation.json": {
+        "sha256": "e5c35e3f927e62d2c1094c4d19edaf33406940fba26eeadd397c6f156c2af5ea",
+        "unchanged": true
+      }
+    },
+    "selected_sources_only": [
+      "40075158",
+      "40404733",
+      "40071126",
+      "40739265"
+    ],
+    "reserved_bodies_read_hashed_or_queried": false
+  },
+  "reader": {
+    "implementation": "Official PSI-JAMI jami-xml/core3.9.4 ExtendedPsiXml interaction-evidence APIs; source-qualified lists retained.",
+    "xml_version": "v2_5_4",
+    "maximum_bytes_per_source": 2097152,
+    "synthetic_controls": 9,
+    "control_checks": {
+      "passed": 283,
+      "total": 283
+    },
+    "python_unit_tests": 20,
+    "real_reader_failures": 0,
+    "real_listener_diagnostics": 0,
+    "real_external_entity_resolver_attempts": 0,
+    "network_schema_validation": false,
+    "source_receipt_and_reader_input_hashes_matched": true,
+    "physical_primaryRef_parity_claimed": false,
+    "identity_scope": "Exact MI:0356 identity-qualified reference in the relevant database; MI:0662 imex-primary and official imex_id retained separately. Official MI:0360 secondary-ac semantics are recognized, but are outside the predeclared literal-identity join."
+  },
+  "development": {
+    "publications": 4,
+    "publication_ids": [
+      "40075158",
+      "40404733",
+      "40071126",
+      "40739265"
+    ],
+    "xml_files": 4,
+    "xml_evidence_records": 13,
+    "qualified_provenance_records": 13,
+    "original_mitab_physical_rows": 18,
+    "original_mitab_evidence_rows": 14,
+    "original_eligible_rows": 4,
+    "eligible_mask_unchanged": true,
+    "critical_field_checks": {
+      "equal": 238,
+      "different": 0,
+      "unresolved": 0
+    },
+    "eligible_critical_field_checks": {
+      "equal": 68,
+      "different": 0,
+      "unresolved": 0
+    },
+    "critical_comparison_fields": [
+      "Evidence identity aliases and selected publication PMID",
+      "Detection method and interaction-type PSI-MI identifiers",
+      "Negative official-reader value",
+      "All experiment host taxids and source labels",
+      "Exact typed participant identity, taxonomy/type and biological/experimental roles matched to MITAB A/B by identity rather than XML order"
+    ],
+    "evidence_id_bijection": false,
+    "row_alignment": "Every original MITAB row maps to exactly one XML record; one XML record maps to two original MITAB rows, so the source-row/XML-record mapping is not bijective.",
+    "per_publication": [
+      {
+        "publication_id": "40075158",
+        "original_mitab_evidence_rows": 2,
+        "xml_evidence_records": 2,
+        "original_eligible_rows": 0,
+        "critical_field_checks": {
+          "equal": 34,
+          "different": 0,
+          "unresolved": 0
+        },
+        "evidence_id_bijection": true,
+        "unmatched_xml_records": []
+      },
+      {
+        "publication_id": "40404733",
+        "original_mitab_evidence_rows": 5,
+        "xml_evidence_records": 4,
+        "original_eligible_rows": 2,
+        "critical_field_checks": {
+          "equal": 85,
+          "different": 0,
+          "unresolved": 0
+        },
+        "evidence_id_bijection": false,
+        "unmatched_xml_records": []
+      },
+      {
+        "publication_id": "40071126",
+        "original_mitab_evidence_rows": 4,
+        "xml_evidence_records": 4,
+        "original_eligible_rows": 2,
+        "critical_field_checks": {
+          "equal": 68,
+          "different": 0,
+          "unresolved": 0
+        },
+        "evidence_id_bijection": true,
+        "unmatched_xml_records": []
+      },
+      {
+        "publication_id": "40739265",
+        "original_mitab_evidence_rows": 3,
+        "xml_evidence_records": 3,
+        "original_eligible_rows": 0,
+        "critical_field_checks": {
+          "equal": 51,
+          "different": 0,
+          "unresolved": 0
+        },
+        "evidence_id_bijection": true,
+        "unmatched_xml_records": []
+      }
+    ],
+    "multiplicity_finding": {
+      "publication_id": "40404733",
+      "mitab_source_lines": [
+        3,
+        4
+      ],
+      "xml_evidence_sequence": 4,
+      "xml_participant_count": 3,
+      "interaction_evidence_identifiers": [
+        {
+          "database": "intact",
+          "id": "EBI-70852445",
+          "qualifier_mi_id": "MI:0356"
+        }
+      ],
+      "participants": [
+        {
+          "xml_source_index": 1,
+          "xml_id": 5691544,
+          "name": "ago2_human",
+          "interactor_type_mi_id": "MI:0326",
+          "interactor_type_label": "protein"
+        },
+        {
+          "xml_source_index": 2,
+          "xml_id": 5691545,
+          "name": "hsa-mir-122-5p",
+          "interactor_type_mi_id": "MI:2204",
+          "interactor_type_label": "mirna"
+        },
+        {
+          "xml_source_index": 3,
+          "xml_id": 5691546,
+          "name": "mrna_kat2a",
+          "interactor_type_mi_id": "MI:0324",
+          "interactor_type_label": "mrna"
+        }
+      ],
+      "row_alignment": [
+        {
+          "mitab_source_line": 3,
+          "xml_evidence_sequence": 4,
+          "participant_alignment": [
+            {
+              "mitab_side": "A",
+              "xml_source_index": 1,
+              "xml_id": 5691544
+            },
+            {
+              "mitab_side": "B",
+              "xml_source_index": 2,
+              "xml_id": 5691545
+            }
+          ]
+        },
+        {
+          "mitab_source_line": 4,
+          "xml_evidence_sequence": 4,
+          "participant_alignment": [
+            {
+              "mitab_side": "A",
+              "xml_source_index": 1,
+              "xml_id": 5691544
+            },
+            {
+              "mitab_side": "B",
+              "xml_source_index": 3,
+              "xml_id": 5691546
+            }
+          ]
+        }
+      ],
+      "interpretation": "The two original MITAB rows explicitly carry MI:1060 spoke-expansion annotations and are distinct pair views of one three-participant XML evidence record: AGO2 with a microRNA, and AGO2 with an mRNA. The two RNAs are different source participants. This source-annotated n-ary/spoke representation must not be removed as duplicate rows or counted as independent XML evidence records. Both rows were already excluded from the fixed human-protein eligible subset; no source representation was repaired or expanded by this comparison.",
+      "xml_participant_order_preserved": true,
+      "mitab_source_rows_preserved": true,
+      "automatic_deduplication_or_expansion": false,
+      "source_expansion_annotations": [
+        {
+          "mitab_source_line": 3,
+          "source_column_1based": 16,
+          "raw_literal": "psi-mi:\"MI:1060\"(spoke expansion)",
+          "official_values": [
+            {
+              "mi_id": "MI:1060",
+              "mod_id": null,
+              "par_id": null,
+              "name": "spoke expansion",
+              "full_name": "spoke expansion"
+            }
+          ]
+        },
+        {
+          "mitab_source_line": 4,
+          "source_column_1based": 16,
+          "raw_literal": "psi-mi:\"MI:1060\"(spoke expansion)",
+          "official_values": [
+            {
+              "mi_id": "MI:1060",
+              "mod_id": null,
+              "par_id": null,
+              "name": "spoke expansion",
+              "full_name": "spoke expansion"
+            }
+          ]
+        }
+      ]
+    },
+    "replacement_reselection_or_retuning": false,
+    "eligible_expansion_qualification": "The four eligible protein rows are different source observations and have no expansion annotation supplied; their binary experimental origin remains unknown. The excluded PMID40404733 lines3/4 explicitly have MI:1060 spoke-expansion annotations."
+  },
+  "source_artifacts": [
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158.xml",
+      "sha256": "5c1729c65ccb71ef720a0b77467a9e4a1ba870d5f2bf45ae0453e04e1d668cd6"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_http_receipt.json",
+      "sha256": "99379599fc563aa4c6beb31308a4e36c8fc7696a34a52216ee5f94b5291d61b4"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733.xml",
+      "sha256": "9637aea2ced4811c98e809f986d5d1d28fd535f5f90d5cc9c24be6016c152150"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_http_receipt.json",
+      "sha256": "cc07c0efb795077862bbc3aa46d9bf9d4c1db589fa94a8dca07ed1e94d22d7c7"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126.xml",
+      "sha256": "4e66cde0481fa55ca12b8f50541ac0d83b95a081292a27a44fac7a1de73b8678"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_http_receipt.json",
+      "sha256": "2a209c0f998bcd24a877db65ba254d65f217a4700ca7f39bfaaaeac393062251"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265.xml",
+      "sha256": "3bd86354b2b1c0b4143697e7688199b4250ba664deaafaf8328045f2db9fc0e3"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_http_receipt.json",
+      "sha256": "d6fc6bd88299853c581302e42bfc5207b6fd649d1c8d865f9f3c67fab3390eb2"
+    }
+  ],
+  "provenance_audit": {
+    "qualified_interaction_publication_and_experiment_xrefs_annotations_preserved": true,
+    "study_reuse": "not_determined",
+    "study_independence": "not_determined",
+    "interpretation": "Qualified source statements are now available for review. Generic see-also, shared methods, absent annotations or shared participants do not establish reuse or independence. No provenance connected-component decision or final exclusion was made.",
+    "reserved_final_scored": false
+  },
+  "limitations": [
+    "238 matching critical-field checks are reader-level parity on consumed development data, not238 independent observations or scientific assertions.",
+    "Fourteen MITAB source rows represent13 XML evidence records; this format multiplicity must remain explicit.",
+    "The eligible four-row mask remains fixed; excluded RNA/mouse rows do not enter the eligible protein-evidence denominator.",
+    "XML physical primaryRef origin and explicit/default negative markup are not inferred from JAMI model defaults or preferred identifiers.",
+    "The two excluded n-ary pair views explicitly carry MI:1060 spoke-expansion annotations. Separately, absent expansion annotations on the four eligible protein rows do not establish binary experimental origin or direct binding.",
+    "No all42-column cross-format losslessness, XSD conformance, source independence, biological accuracy or graph-prediction improvement is established.",
+    "Reserved source bodies remain unopened and unqueried; no reserved-study evaluation is reported."
+  ],
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "graph_changes": false,
+  "scientific_accuracy_measured": false,
+  "independent_biological_validation": false,
+  "reserved_final_studies_opened": [],
+  "content_sha256": "8cbe5a7605f817f83687a9cfa4ad2ade33c176e8a5d3ead5c77213e57c126a9a"
+}

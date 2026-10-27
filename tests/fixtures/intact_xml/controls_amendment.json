@@ -1,0 +1,82 @@
+{
+  "format": "biograph-steward.intact-xml-controls-amendment.v1",
+  "original_inventory_sha256": "eccec60a30e993591bb43ef41ebf29c163a85345564d4f856ab73096aa4a0f62",
+  "reason": "Author-source onUnresolvedReference callback quarantine; partial prefix preservation; full-list scoped context; stronger no-external-resolution observation. No selected XML source accessed. Original six fixtures and first outcome immutable.",
+  "strengthen_existing": {
+    "external_entity": {
+      "require_resolver_attempt_count": 0,
+      "require_error_category": "undeclared_or_disabled_entity",
+      "forbid_error_types": [
+        "UnknownHostException",
+        "ConnectException",
+        "SocketException",
+        "FileNotFoundException"
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "unresolved_interactor_reference",
+      "file": "unresolved_interactor_reference.xml",
+      "synthetic": true,
+      "sha256": "2f48b4861ce3ad71a67f4fc3a6bb7af1fbd6faacdd643fbee31ca6c055978d0a",
+      "expected": {
+        "status": "quarantined",
+        "required_callback": "onUnresolvedReference"
+      }
+    },
+    {
+      "id": "valid_prefix_then_malformed",
+      "file": "valid_prefix_then_malformed.xml",
+      "synthetic": true,
+      "sha256": "dc5bc59beaa97814182de75fd12a3db7dfd30bc7999dfc50dca8bc08e43f537d",
+      "expected": {
+        "status": "failed",
+        "evidence_count": 1
+      }
+    },
+    {
+      "id": "multiple_hosts_and_scoped_roles",
+      "file": "multiple_hosts_and_scoped_roles.xml",
+      "synthetic": true,
+      "sha256": "9a03a3ea3a9af42a9b219815210894179be9777d2e055145a856479f11d05c1e",
+      "expected": {
+        "status": "parsed",
+        "evidence_count": 1,
+        "negative": false,
+        "typed_provenance": true,
+        "experiment_count": 2,
+        "host_taxids": [
+          4932,
+          9606
+        ],
+        "detection_method_ids": [
+          "MI:0018",
+          "MI:0001"
+        ],
+        "experimental_role_ids": [
+          [
+            "MI:0496",
+            "MI:0498"
+          ],
+          [
+            "MI:0498"
+          ]
+        ],
+        "role_experiment_ids": [
+          [
+            [
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            []
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -105,6 +105,13 @@ and complete gold packet. These consumed positive co-IP records do not establish
 biological accuracy, novelty or prediction gain. Four reserved interaction files remain
 unopened; provenance/overlap assessment and final-study suitability remain open.
 
+The [official XML development check](evaluations/INTACT_XML_PROVENANCE_20261026.md)
+now verifies the richer provenance route on those four consumed studies.
+Corresponding checked fields agree; two explicitly spoke-expanded RNA-containing
+rows map to one three-participant XML interaction. The four eligible protein
+records are unchanged. Experiment/figure context and a source-curation caveat
+are preserved, without certifying study independence or biological accuracy.
+
 ## Functional coverage
 
 | Function | Current implementation | Remaining gap |
@@ -130,7 +137,7 @@ The supplied judging weights are usability 40%, accuracy/pruning 30%, explainabi
 | Biolink/LinkML, KGX/JSON-LD, SSSOM and PROV-style traces | Bounded KGX Reactome projection with source bundle, official checks and JSONL round trip. Category-array schema and predicate-domain findings remain explicit. Full conformance and formal SSSOM/PROV/JSON-LD delivery are not claimed. |
 | Agent orchestration | Optional NeMo saved-graph query wrapper and bounded model-selected construction executed by deterministic code. An autonomous maintenance/research loop is not implemented. |
 | Evidence strength and confidence | Source-native observations and qualifications are preserved. No validated combined confidence or certified independent-study count is available. |
-| Reproducibility and deployment | Core Python app, tests, synthetic demo, Docker/Brev configuration and pinned optional model setup. Real source data and historical runs remain local/ignored. |
+| Reproducibility and deployment | Core Python app, tests, synthetic demo, Docker/Brev configuration and pinned optional model setup. An isolated committed-snapshot build/install with the declared backend and installed synthetic graph/answer/export replay passes; packaged UI assets are preserved. Actual GitHub clone, intended-user real-data replay and cloud deployment remain unverified. Real source data and historical runs remain local/ignored. |
 
 Current substitutions are deliberate: the lightweight web UI fills the inspection role without Streamlit; local JSON-backed graphs support the bounded workload without Neptune; the tested NVIDIA model is served through vLLM rather than NIM. Installing proposed brands would not itself close a functional gap. AWS, OpenSearch or additional serving backends should be introduced only for a concrete requirement.
 
@@ -138,7 +145,7 @@ Current substitutions are deliberate: the lightweight web UI fills the inspectio
 
 - **Measured task and learner:** the [INMC/PyKEEN review](literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md) checks experimental meaning, released artifacts, licenses and runtime. The [input-readiness audit](evaluations/INMC_INPUT_READINESS_20261022.md) records unresolved assay, identity and source-overlap issues before training.
 - **Reference/comparator:** the [finite decision](literature/REFERENCE_COMPARATOR_DECISION_20261025.md) closes the import-lineage investigation as unresolved; the [baseline-only retrospective assay report](evaluations/LAMBOURNE_CORROBORATION_20261025.md) and [standalone qualified observation publication](ASSAY_EVIDENCE.md) are complete. Do not tune new prediction, enrichment or eligibility rules on this consumed panel. Source-preserving integration is not evidence of prediction gain; additional predictive enrichment remains unselected.
-- **Evidence assessment:** the [IntAct/IMEx preparation](INTACT_FIDELITY_PREPARATION.md) pins eight publication artifacts and a frozen source-fidelity protocol, with a mandatory semantic amendment. Official-reader controls, four-study development inspection and the real workbench/answer/export comparison are complete. All four eligible development records pass source fidelity. Four reserved interaction files remain unopened. The code is frozen at `bca13a7`; the [partial provenance audit](evaluations/INTACT_PROVENANCE_READINESS_20261026.md) leaves shared-study provenance, pair overlap and final-path readiness unresolved. Biological accuracy and prediction gain remain unestablished.
+- **Evidence assessment:** the [IntAct/IMEx preparation](INTACT_FIDELITY_PREPARATION.md) pins eight publication artifacts and a frozen source-fidelity protocol, with a mandatory semantic amendment. Official-reader controls, four-study development inspection and the real workbench/answer/export comparison are complete. All four eligible development records pass source fidelity. The original implementation remains frozen at `bca13a7`. A separate [official XML provenance check](evaluations/INTACT_XML_PROVENANCE_20261026.md) now reconciles the consumed development rows with richer source context and explicit n-ary grouping. Four reserved interaction files remain unopened; shared-study provenance, pair overlap and final-path readiness remain unresolved. Biological accuracy and prediction gain remain unestablished.
 - **Interoperability:** the [bounded export](STANDARD_EXPORT.md) uses existing [KGX](https://biolink.github.io/kgx/) checks and documents what remains unresolved. Continue to respect [Biolink qualifiers](https://biolink.github.io/biolink-model/association-examples-with-qualifiers/), [LinkML validation](https://linkml.io/linkml/data/validating-data.html) and [SSSOM](https://mapping-commons.github.io/sssom/) semantics. A passing round trip or a standard-looking label is not full conformance.
 - **Additional graph sources:** ROBOKOP, OptimusKG and direct Reactome are conditional candidates. Existing Pharos content and upstream reuse must be checked first; another aggregator does not imply independent evidence. See the [integration review](literature/BIOMEDICAL_INTEGRATION_REVIEW_20261021.md).
 - **Agent and cloud guidance:** NeMo and the organizer's Neptune examples may help orchestration and deployment, but generated example data must remain synthetic. Current data/query contracts remain the scientific boundary.

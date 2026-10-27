@@ -1,0 +1,75 @@
+{
+  "format": "biograph-steward.intact-xml-development-contract.v1",
+  "prepared_date": "2026-10-26",
+  "claim": "Development-only official XML provenance inspection and bounded critical-field parity with already consumed MITAB evidence. Not biological truth, study-independence certification, a reserved result or full cross-format fidelity.",
+  "release": {
+    "directory": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psi25/pmid/2025/",
+    "format": "PSI-MI XML 2.5.4 as declared by official release README",
+    "named_release": "2026-10-17",
+    "selection_reason": "Directory metadata lists October24 exports matching the MITAB family date better than PSI3 October18. Timestamps do not prove equal contents; exact identity/field parity is measured and differences remain visible.",
+    "allowlist": [
+      {
+        "publication_id": "40075158",
+        "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psi25/pmid/2025/40075158.xml"
+      },
+      {
+        "publication_id": "40404733",
+        "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psi25/pmid/2025/40404733.xml"
+      },
+      {
+        "publication_id": "40071126",
+        "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psi25/pmid/2025/40071126.xml"
+      },
+      {
+        "publication_id": "40739265",
+        "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psi25/pmid/2025/40739265.xml"
+      }
+    ],
+    "maximum_source_bytes": 2097152,
+    "requests": "One exact HTTPS GET per allowlisted publication; no redirects, retries, ZIPs, replacement, source switching or reserved queries."
+  },
+  "access": {
+    "before_selected_access": "Freeze this contract, synthetic control inventory and passing controls, code, class files, JARs, JVM, original MITAB reference pins and exact URLs in pre_access.json; prepare does not fetch or decode selected XML.",
+    "retrieval": "Require explicit pre_access SHA; preserve retrieval-start receipt, bounded opaque bytes/hash, HTTP headers, and exposure-start receipt before invoking official XML parser. Failure remains consumed and is not replaced.",
+    "reserved_final": "No body access, hashing, parsing or queries for any reserved study. No glob over opaque_sources.",
+    "xml_parser": "Official PSI-JAMI jami-xml/core 3.9.4 ExtendedPsiXml interaction-evidence APIs only. No custom biological XML parser. External entities/DTDs/network resolvers disabled. No network schema validation.",
+    "all_failures": "Keep failed controls, partial source/reader streams, terminal diagnostics and failure reports in exclusive new output directories."
+  },
+  "provenance": {
+    "preserve": [
+      "Interaction identifiers/xrefs/annotations and imex_id",
+      "Every experiment and experiment-scoped role/host association, source local IDs/locators",
+      "Publication identifiers/xrefs/annotations, exact qualifier database+accession",
+      "Experiment xrefs/comments including uniprot-dr-export annotation",
+      "Exact participant accession including isoform, taxon/type, biological and experimental role, source order, hosts, detection/type, negative reader value"
+    ],
+    "interpretation": "Qualified xrefs and comments remain auditable provenance statements. Generic see-also, shared method citations, missing annotations or shared participants do not automatically prove study reuse or independence. Reader defaults are not evidence that source markup was explicit.",
+    "audit_status": "Potential relationships are listed for review; no automatic connected-component exclusion/final scoring is performed."
+  },
+  "parity": {
+    "reference": "Pinned original four development MITAB reader outputs and 18-row ledger, checked by existing load_reference. All14 evidence rows remain expected regardless original human-protein eligibility; eligible4 retain original mask.",
+    "unit": "Original source artifact SHA + physical row + evidence identifiers; XML record sequence/local ID remains separately locatable.",
+    "identity": "Exact IntAct interaction ID and typed IMEx identity aliases. Arbitrary generic see-also is not an evidence identity alias. Require one-to-one source-row/XML record mapping; report missing, extra and multiplicity without repair or explosion.",
+    "participant_alignment": "Match each MITAB A/B primary database+accession to exact XML interactor source primary reference. Preserve XML source order independently. Missing, duplicate/homomer or ambiguous identity is unresolved; never pick convenient orientation.",
+    "critical_fields": [
+      "Evidence ID/alias and publication PMID",
+      "Exact participant source primary database+accession inclisoform",
+      "Participant taxonomy and interaction type IDs",
+      "Participant biological/experimental role IDs by exact source identity",
+      "Detection method IDs, negative reader value and all experiment host taxids/labels"
+    ],
+    "format_differences": "Report n-ary/binary expansion, multiple experiments, source qualifier differences and missing/default values explicitly. Never reinterpret absent MITAB expansion as binary origin. Compare fields available in both formats; do not claim all42columns cross-format lossless.",
+    "metrics": "All14 row-accounting plus unique evidence-ID bijection; each critical field equal/different/unresolved. Original4eligible reported separately. No tuning, substitution or ranking change from findings."
+  },
+  "frozen_dependencies": {
+    "docs/evaluations/intact_fidelity_20261026_protocol.json": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a",
+    "docs/evaluations/intact_fidelity_20261026_semantic_amendment.json": "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c",
+    "runs/intact_provenance_metadata_20261026_attempt_02/distribution_metadata/psi25_2025_directory.txt": "7ab78043600f49c8cda87573764d7a94ec69a11e6d465e46588940f70157bf09",
+    "runs/intact_provenance_metadata_20261026_attempt_02/distribution_metadata/psi25_readme.txt": "6e9c12ee068aefde889bbbbfed0333eb2635fd70379cb54404bcf315045abb49",
+    "runs/intact_xml_development_expectations_20261026/manifest.json": "4a732ca52b88f9d440b77dad5bee0fa72bad8b13b1c0f36b6dd48a5b2b385b3e"
+  },
+  "synthetic_inventory_sha256": "eccec60a30e993591bb43ef41ebf29c163a85345564d4f856ab73096aa4a0f62",
+  "gpu_required": false,
+  "model_calls": 0,
+  "selected_xml_accessed_when_prepared": false
+}
