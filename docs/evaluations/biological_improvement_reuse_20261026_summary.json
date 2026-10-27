@@ -1,0 +1,133 @@
+{
+  "format": "biograph-steward.biological-improvement-reuse-review.v1",
+  "prepared_date": "2026-10-26",
+  "recorded_at": "2026-10-27T01:35:27.157596+00:00",
+  "status": "one_published_method_reviewed_not_adopted_not_scored",
+  "candidate": "SNOOPPI: sequence-normalized direct molecular interaction qualification",
+  "decision": {
+    "method": "Relevant reuse candidate; complete source-code-only classification and terms review before adoption. Do not build a custom substitute during that review.",
+    "independent_reference": "Not established; derived from IntAct, with no exact study/evidence/sequence overlap assessment here.",
+    "can_run_biological_score_now": false,
+    "next_compute_needed": false,
+    "next_finite_step": "Audit author classification rules without notebook outputs or labels; verify license scope, tested/generated negatives, exact sequence identity and absent-expansion handling. Then adopt verified scope or close candidate.",
+    "retrospective_development_comparison": "Allowed after one literature-supported task-compatible intervention is fixed; consumed outcomes are development, never fresh validation. Match candidates/learner/seeds/budget, keep scored labels/derivatives out of inputs, preserve all prior results. Unknown Pharos lineage limits interpretation but does not forbid a clearly labeled internal paired effect.",
+    "confirmatory_independent_claim": "Requires fresh suitably separated evidence and declared overlap/leakage limits; source-fidelity inputs cannot serve as concealed biological validation."
+  },
+  "primary_sources": [
+    {
+      "kind": "primary_paper",
+      "url": "https://academic.oup.com/bioinformatics/article/42/10/btag736/8866686",
+      "doi": "10.1093/bioinformatics/btag736",
+      "access": "Publisher-indexed full method content returned by web search; initial direct publisher open failed. Published aggregate model outcomes were exposed."
+    },
+    {
+      "kind": "author_repository",
+      "url": "https://github.com/sophievincoff/snooppi",
+      "git_ref_sha": "5b27ef506caa89d6c43f0e6579382dc901436a6f",
+      "github_license": null,
+      "inspection": "Repository metadata/tree plus explicit source/config/docs only; no notebooks, outputs or data files."
+    },
+    {
+      "kind": "author_dataset_card_and_schema",
+      "url": "https://huggingface.co/datasets/ChatterjeeLab/SNOOPPI",
+      "revision": "45e4f02204a135eeb26158e189bb253d0e677679",
+      "declared_license_field": null,
+      "data_rows_downloaded": false
+    },
+    {
+      "kind": "author_archive_metadata",
+      "concept_url": "https://doi.org/10.5281/zenodo.22116350",
+      "resolved_version_doi": "10.5281/zenodo.22116351",
+      "declared_record_license": "cc-by-4.0",
+      "archive_bytes": 3568525998,
+      "archive_downloaded": false
+    },
+    {
+      "kind": "primary_context_method",
+      "url": "https://www.nature.com/articles/s41467-020-19942-z"
+    },
+    {
+      "kind": "primary_leakage_method",
+      "url": "https://academic.oup.com/bioinformatics/article/42/8/btag608/8767164",
+      "official_code": "https://github.com/galadrielbriere/data_leakage_kge_benchmark"
+    }
+  ],
+  "verified_limitations": [
+    "Sequence/proteoform-level direct-contact endpoint differs from unqualified gene/protein associations.",
+    "Some binding-region negatives are generated variants; they must not be relabeled as exact measured nondetections.",
+    "Final cleaning/classification notebook was not fetched or audited because notebook outputs may expose real rows.",
+    "Current download config retrieves mutable IntAct current/all.zip despite historical-release output filename.",
+    "Current tested local XML helper is bounded to XML2.5.4 and does not project full exact sequences/features; author processor reads PSI-MI3.0.",
+    "No recognized GitHub license/root license and no setup license declaration; separate Zenodo CC-BY4.0 record does not establish MIT/Apache permission for all hosting artifacts.",
+    "HuggingFace metadata partitions are outcome classes, not train/dev/test partitions; schema includes label-derived annotations that cannot be prediction inputs.",
+    "Absent expansion marker alone cannot override our mandatory no-binary-origin-inference policy.",
+    "Study/evidence, mutation-family and sequence overlap are not assessed; deployed Pharos source lineage remains unresolved."
+  ],
+  "access_scope": {
+    "methodology_and_metadata_only": true,
+    "http_requests_retained": 16,
+    "public_aggregate_findings_exposed": true,
+    "label_or_pair_or_sequence_tables_downloaded": false,
+    "notebooks_downloaded": false,
+    "archive_downloaded": false,
+    "model_weights_downloaded": false,
+    "reserved_interaction_sources_opened": [],
+    "reserved_interaction_sources_hashed": [],
+    "model_calls": 0,
+    "gpu_runs": 0,
+    "software_installed": false,
+    "author_pipeline_executed": false,
+    "score_generated": false,
+    "dataset_adopted": false
+  },
+  "bindings": {
+    "note": {
+      "path": "docs/literature/BIOLOGICAL_IMPROVEMENT_REUSE_DECISION_20261026.md",
+      "sha256": "69fb78414ac1f61b0c4190748b60e12107c44395855849ecf2c31eae7917de71"
+    },
+    "http_receipts": {
+      "path": "runs/snooppi_method_review_20261026/http_receipts.json",
+      "sha256": "6698a38c6efbac6d07dca591edee30c70e93d6adb9788dbcb91dfdb5de7f79af"
+    },
+    "repository_metadata": {
+      "path": "runs/snooppi_method_review_20261026/github_repo.json",
+      "sha256": "4e93d4849495975358fb4981d37b56190240b7eb8a1255c50451e08547973a18"
+    },
+    "repository_ref": {
+      "path": "runs/snooppi_method_review_20261026/github_ref.json",
+      "sha256": "7d5b96f97e840401e418e21948f96fcbd74575c237fc4c0697ae0e35a38313a7"
+    },
+    "repository_tree_metadata": {
+      "path": "runs/snooppi_method_review_20261026/github_tree.json",
+      "sha256": "1ee84df5dd5e3021fd04c57666eeaa14c9edf584a0392c14c6f8973490f07cbd"
+    },
+    "dataset_metadata": {
+      "path": "runs/snooppi_method_review_20261026/hf_metadata.json",
+      "sha256": "b8e25d879889c390954b5c3943108da0c0453b3b33087c40aff11cb8e9958938"
+    },
+    "dataset_card": {
+      "path": "runs/snooppi_method_review_20261026/hf_README.md",
+      "sha256": "12cc8b667e44cbc196d4116072e3f7e342c1c33a9cfd9b61a8f343ccb5f7044d"
+    },
+    "archive_metadata": {
+      "path": "runs/snooppi_method_review_20261026/zenodo_metadata.json",
+      "sha256": "61f5351df155158c26489240cfa623c2221829e1f3966a4041fa436882ee7cd0"
+    },
+    "source_processor": {
+      "path": "runs/snooppi_method_review_20261026/interactome__data__process__intact.py",
+      "sha256": "c395d88e165e65f78b2ee5ba153bec6933a297ab59d7aeb682192b5b4f945b35"
+    },
+    "download_config": {
+      "path": "runs/snooppi_method_review_20261026/configs__download__intact.yaml",
+      "sha256": "c976ed4165ada2329136c6541e2263bde8535e7d406dcbc692668f8857cd1c82"
+    },
+    "environment": {
+      "path": "runs/snooppi_method_review_20261026/environment.yaml",
+      "sha256": "dd4c926654be086dfd03fccc97ae48e492a8598c1eca29b07c9ee8a37ffd09ad"
+    },
+    "reconstruction_instructions": {
+      "path": "runs/snooppi_method_review_20261026/interactome__REPRODUCE.md",
+      "sha256": "c7e3ec739debe723c7f45dee5c4296fc0598601cf0addc94b7acf89ff7cc90be"
+    }
+  }
+}

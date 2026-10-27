@@ -1,0 +1,108 @@
+{
+  "format": "biograph-steward.final-rules-walkthrough-summary.v1",
+  "prepared_date": "2026-10-26",
+  "status": "rules_preflight_verified_development_audit_complete_assisted_walkthrough_recorded",
+  "bindings": {
+    "final_rules": {
+      "path": "docs/evaluations/intact_final_evaluation_20261026_rules.json",
+      "sha256": "46fe9949619a7ccbd9af549d1fd68d51b3f65abd042e8f87323d4bff3626f946"
+    },
+    "rules_note": {
+      "path": "docs/evaluations/INTACT_FINAL_EVALUATION_RULES_20261026.md",
+      "sha256": "8443eb7c7b117899109f043f5c3f0616e8ab94a138ed1828bf8340f0c3613d9e"
+    },
+    "checker": {
+      "path": "scripts/check_intact_final_readiness.py",
+      "sha256": "4063b8b212119795ab972d7ee0dce8fcdcfd07a9fd57c45f02c6372955572f2b"
+    },
+    "checker_tests": {
+      "path": "tests/test_intact_final_readiness.py",
+      "sha256": "0a93621afc2296e4d3a4042e1eb295fbd52f48ba27669f1153904590c849f95d"
+    },
+    "readiness_result": {
+      "path": "runs/final_rules_walkthrough_20261026/readiness.json",
+      "sha256": "42db34fd0a51971e310679e0a70e0401abaadaeefbd2e5c1fc1dd67ac8cb0949"
+    },
+    "development_provenance_audit": {
+      "path": "docs/evaluations/intact_development_provenance_audit_20261026_summary.json",
+      "sha256": "13e95f1d72359c16b72dc74096a4109140671790421ea825ce051f1d4321d3c4"
+    },
+    "method_reuse_decision": {
+      "path": "docs/evaluations/biological_improvement_reuse_20261026_summary.json",
+      "sha256": "cf4666ef991f746cdddc0bb4bb6c6090b14834d54743474d39c5d15bef28a98b"
+    },
+    "walkthrough_note": {
+      "path": "docs/USER_WALKTHROUGH_FINAL_20261026.md",
+      "sha256": "f367ab59552bf1646526f8353401002af8db7c0ce01d7183eeb0ff2b3e615de8"
+    },
+    "assisted_session": {
+      "path": "runs/final_rules_walkthrough_20261026/assisted_session.json",
+      "sha256": "f619c558195baf22528b442bdd68a55cb10d6367e386297e452fe38bbbe92b46"
+    },
+    "ui_http_receipt": {
+      "path": "runs/final_rules_walkthrough_20261026/ui_guidance_http_receipt.json",
+      "sha256": "8c7467b5b9d3a2a47f6f0cceb31c11c5927cb00524248025bf164df64f4ea264"
+    },
+    "original_comparison_integrity": {
+      "path": "runs/final_rules_walkthrough_20261026/original_comparison_integrity.json",
+      "sha256": "fa49a7cef9f827047c859925c95369764a604649ca805cd74aab87b20457d1c2"
+    },
+    "ui_copy": {
+      "path": "biograph_steward/ui.html",
+      "sha256": "274533fc165110d51f9d70e63530a5c1e37a93712ff1ed471eaaa2e753b3d6a2"
+    },
+    "export_status_copy": {
+      "path": "biograph_steward/construction.js",
+      "sha256": "7d35dc790578362c74ffdb327b46aaf0122517a8f0d9975b0475f16e7032b45d"
+    }
+  },
+  "checks": {
+    "prepare_only_gate_unit_tests": 9,
+    "unit_tests_passed": true,
+    "edited_js_syntax": "passed",
+    "current_guidance_served_http": 200,
+    "independent_prepare_only_review": "passed",
+    "original_comparison16_pins_unchanged": true
+  },
+  "final_assessment": {
+    "rules_specified": true,
+    "executable_full_flow_sealed": false,
+    "reserved_bodies_read_hashed_or_queried": false,
+    "reserved_pair_participant_overlap": "not_assessed_requires_sealed_full_flow",
+    "score_generated": false,
+    "preflight_authorizes_access": false
+  },
+  "development_audit": {
+    "eligible_source_rows": 4,
+    "protein_pairs": 2,
+    "curated_experiments": 3,
+    "publications": 2,
+    "study_independence": "not_established",
+    "one_eligible_pair_present_in_saved_pharos_cohort": true,
+    "whole_pharos_novelty_claimed": false
+  },
+  "walkthrough": {
+    "assisted_participants": 1,
+    "source_link_and_accession_correct": true,
+    "package_and_named_files_self_reported_found": true,
+    "export_scope_confusion_reported": true,
+    "ui_scope_and_file_guide_added": true,
+    "clarity_recheck": "user reported Clear now after guided refresh",
+    "prey_definition": "correct assisted proposed definition",
+    "out_of_scope_comprehension": "unscored; explanation supplied",
+    "independent_or_population_success_claimed": false,
+    "export_format_changed": false,
+    "source_or_decision_changed": false
+  },
+  "biological_comparison": {
+    "first_GO_comparison": "no consistent gain; prior results unchanged",
+    "second_run_started": false,
+    "development_path": "One literature-supported task-compatible intervention may be tested retrospectively on consumed outcomes with matched controls and no fresh-validation claim. Scored labels remain outside predictor inputs.",
+    "confirmatory_path": "Requires suitably separated reference and declared leakage/exposure limits.",
+    "present_scientific_gap": "No verified task-compatible intervention ready; SNOOPPI not adopted and exact sequence/proteoform inputs not projected."
+  },
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "paid_compute_started": false,
+  "github_pushed": false
+}

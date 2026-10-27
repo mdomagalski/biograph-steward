@@ -73,6 +73,36 @@ synthetic replay also passes. This closes the local packaging check, not an
 actual GitHub clone, real-data demonstration, browser/user assessment or cloud
 deployment. Those remain separate delivery checks.
 
+The [bounded development provenance audit](evaluations/INTACT_DEVELOPMENT_PROVENANCE_AUDIT_20261026.md)
+is now complete: the four eligible observations represent two pairs, three
+curated experiments and two publications. Study independence remains unknown.
+The [final rules and preparation check](evaluations/INTACT_FINAL_EVALUATION_RULES_20261026.md)
+preserve the source denominator, n-ary groups and known-overlap exclusions.
+The preflight is intentionally blocked for reserved access: a separate full-flow
+orchestrator, its synthetic/development replay and an immutable execution receipt
+are still required. Reserved overlap has not been measured.
+
+The [assisted walkthrough continuation](USER_WALKTHROUGH_FINAL_20261026.md)
+now records a correct construct-source/accession lookup and a reported export
+confusion. The export covers the whole saved workspace, including separate assay
+records, whereas the answer diagram selects the current question's evidence.
+The UI now explains that scope and the three key package files. The user
+reported “Clear now” after a guided refresh and gave a correct assisted prey
+definition. This is a positive assisted clarity recheck, not measured independent
+task success; the separate out-of-scope comprehension check remains unscored.
+
+Biological-improvement design proceeds alongside these checks; it must not wait
+for every framework feature or be replaced by a fidelity score. The first
+GO-hierarchy intervention found no consistent gain. A
+[single focused reuse check](literature/BIOLOGICAL_IMPROVEMENT_REUSE_DECISION_20261026.md)
+found SNOOPPI's sequence-aware qualification relevant but unsuitable as a drop-in
+independent gold set. No second prediction experiment is ready until a verified, task-compatible
+intervention and fixed comparison are selected. Already-consumed assay outcomes
+can support a clearly labeled retrospective development comparison, with scored
+labels excluded from inputs and all attempts preserved. Independent/fresh
+evidence is needed for confirmation and source-novelty claims, not every internal
+paired effect. Unknown Pharos lineage remains a disclosed interpretation limit.
+
 ## Delivery sequence and completion criteria
 
 The release target is one reproducible flow: a researcher supplies a bounded

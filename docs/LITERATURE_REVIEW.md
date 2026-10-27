@@ -1,5 +1,20 @@
 # Literature knowledge base for BioGraph Steward
 
+**October 26 provenance and biological-improvement boundary:** the
+[development audit](evaluations/INTACT_DEVELOPMENT_PROVENANCE_AUDIT_20261026.md)
+uses IntAct's existing experiment, caution and shared-dataset rules. Four eligible
+records are two pairs, three curated experiment records and two publications;
+these units do not certify independent replication. The
+[final rules](evaluations/INTACT_FINAL_EVALUATION_RULES_20261026.md) preserve that
+uncertainty and keep reserved interaction access behind a complete executable
+freeze. The [focused SNOOPPI review](literature/BIOLOGICAL_IMPROVEMENT_REUSE_DECISION_20261026.md)
+checks one existing sequence/proteoform qualification method and author artifacts.
+It is not adopted as a new source or independent reference: it derives labels
+from IntAct and includes generated sequence negatives. This method review does
+not establish a new biological improvement or justify a model run. Biological
+comparison design should proceed in parallel, with a concrete graph change and
+compatible measured reference fixed before outcome access.
+
 **October 25 recency and validation follow-up:** a focused check of recent
 primary work supports the design principles below, without demonstrating a
 benefit for this implementation. This was not an exhaustive systematic update.

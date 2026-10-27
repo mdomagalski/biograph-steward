@@ -112,6 +112,16 @@ rows map to one three-participant XML interaction. The four eligible protein
 records are unchanged. Experiment/figure context and a source-curation caveat
 are preserved, without certifying study independence or biological accuracy.
 
+The follow-up [development provenance audit](evaluations/INTACT_DEVELOPMENT_PROVENANCE_AUDIT_20261026.md)
+now identifies three curated experiments behind the four eligible records and
+closes the bounded development inventory with independence unverified.
+[Final assessment rules](evaluations/INTACT_FINAL_EVALUATION_RULES_20261026.md)
+are specified and metadata-checked; the executable full-flow freeze and reserved
+overlap assessment remain pending. The assisted user correctly selected the
+construct crosswalk and found its accession, then reported difficulty relating
+the export to the app graph. UI guidance now explains whole-workspace versus
+question-view scope; its independent usability effect is unmeasured.
+
 ## Functional coverage
 
 | Function | Current implementation | Remaining gap |

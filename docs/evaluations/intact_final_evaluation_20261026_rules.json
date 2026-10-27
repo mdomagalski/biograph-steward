@@ -1,0 +1,115 @@
+{
+  "format": "biograph-steward.intact-final-evaluation-rules.v1",
+  "prepared_date": "2026-10-26",
+  "status": "rules_specified_not_an_execution_freeze",
+  "claim": "Reserved source-fidelity assessment of qualified integration, readable answer and complete export. Not biological truth, independent prediction, pair-disjoint generalization or organizer scoring.",
+  "original_protocol": {
+    "path": "docs/evaluations/intact_fidelity_20261026_protocol.json",
+    "sha256": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a"
+  },
+  "semantic_amendment": {
+    "path": "docs/evaluations/intact_fidelity_20261026_semantic_amendment.json",
+    "sha256": "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c"
+  },
+  "reserved_publication_ids": [
+    "39833857",
+    "40211762",
+    "39972491",
+    "40555359"
+  ],
+  "development_publication_ids": [
+    "40075158",
+    "40404733",
+    "40071126",
+    "40739265"
+  ],
+  "selection": "Keep the original four reserved files, split and release; never replace, re-rank or choose by their proteins, eligibility, outcomes or favorable coverage.",
+  "metadata_bindings": [
+    {
+      "path": "docs/evaluations/intact_fidelity_20261026_preparation.json",
+      "sha256": "e5c35e3f927e62d2c1094c4d19edaf33406940fba26eeadd397c6f156c2af5ea"
+    },
+    {
+      "path": "docs/evaluations/intact_xml_development_20261026_summary.json",
+      "sha256": "8ce120a625fd44be4cb6495240161f7b9cf76cb49b2536bcb097e57922832a2c"
+    },
+    {
+      "path": "docs/evaluations/intact_evidence_flow_20261026_summary.json",
+      "sha256": "471ad5bf2f7e59fd70a0781e72d54c2c41e4fdd5d787d86ec305a2163cc5d630"
+    },
+    {
+      "path": "docs/evaluations/intact_provenance_readiness_20261026_summary.json",
+      "sha256": "7fe965c888df254689c5f71d18553091defe391bba53c2c7bf811140f8ed9d43"
+    },
+    {
+      "path": "docs/evaluations/intact_development_provenance_audit_20261026_summary.json",
+      "sha256": "13e95f1d72359c16b72dc74096a4109140671790421ea825ce051f1d4321d3c4"
+    }
+  ],
+  "rules": {
+    "unknown_lineage_is_independent": false,
+    "source_eligibility_denominator": "all_source_eligible_records_before_cohort_resolution",
+    "overlap_exclusions_change_source_eligibility": false,
+    "participant_pair_overlap_is_automatic_study_exclusion": false,
+    "missing_pairs_are_negative_evidence": false,
+    "nondetection_is_universal_negative": false,
+    "post_access_reselection_or_retuning": false,
+    "no_eligible_studies_result": "not_evaluable_not_zero_or_success",
+    "ambiguous_reference_or_unresolved_parser_semantics": "stop_scoring_preserve_failure_and_consumed_status",
+    "source_eligibility": "Unchanged original protocol: both exact unambiguous UniProtKB source primary identifiers, explicitly only human taxa9606 and proteinMI0326; traceable source/evidence/publication incl selectedPMID. Isoforms, constructs, literal missing states and all ineligible rows retained.",
+    "object_reduction": "Eligible source identity remains in denominator even if official object loses context or downstream resolution, attachment, answer or export fails; such incompleteness is a miss, not a new eligibility exclusion.",
+    "grouping": "Retain every original physical row and n-ary/XML interaction identity. Expanded rows may share one source experiment/object; never count pair views, reciprocal assays, figures or experiment accessions as independent biological replications.",
+    "source_and_model_defaults": "Preserve negative literaltrue/false/- and default provenance. XML model defaults cannot prove explicit markup. Absent expansion means annotation notsupplied, never proof of binary origin/direct binding.",
+    "reference_ambiguity": "Non-bijective MITAB/XML mapping is not automatically an error: account for source-annotated n-ary expansion. Unexplained identity/participant mismatch or ambiguous reference projection stops scoring; do not silently collapse/repair.",
+    "provenance_gate": "Audit exact PMID/DOI/evidence identities and explicit shared primary/subsidiary dataset annotations against a declared consumed inventory before scoring. Exclude known consumed-linked connectedstudycomponents without replacement. Generic see-also, method citation, shared pair/protein or ownIMEx registration alone cannot establish shared or independent data.",
+    "unresolved_provenance": "Keep incomplete/ambiguous lineage visible. Missing annotations cannot certify independence. Ambiguous potentially shared dataset interpretation requires adjudication before scoring; if retained with no explicit shared link, label study independence unverified.",
+    "exclusion_accounting": "Preserve source-eligible counts before study-level provenance exclusions, excludedstudycomponents/counts/reasons and finalscoreeligible counts separately. Pair/participant flags never silently alter source eligibility.",
+    "overlap_report": "Report exact unordered source-accession pair, oriented participant identities and evidence/experiment/study overlap against development and declared consumed references. Retain isoforms. Shared protein/pair flags describe exposure; a source-fidelity test is not a pair-disjoint prediction test.",
+    "no_graph_action": "No scientific acceptance, graph deletion or calibrated confidence follows from source-fidelity scores."
+  },
+  "provenance_semantics": {
+    "official_manual": "https://github.com/intact-portal/intact-portal-documentation/blob/b5d5bb35365739d4942e9ca250a2cf4fbaa14c62/docs/curation-manual/special-cases.md",
+    "qualification": "Shared datasets require the primary/subsidiary experiment comment context. see-also also appears for errata/DOI aliases. uniprot-dr-export:No or imex-primary alone is not a study-reuse classifier.",
+    "article_status": "Record known correction/retraction/republication metadata separately. Existing ESummary check is not article-level clearance; do not infer absence of alerts."
+  },
+  "metrics": {
+    "units": "Original source evidence-row locator; also report original evidence/experiment groups and perpublication macro summaries.",
+    "coverage": "Complete answer/export rows / all final-assessment eligible rows after explicit study-level provenance exclusions; show originalsourceeligible denominator and removedstudycomponents separately.",
+    "strict_fidelity": "Rows with every applicable originalfieldgroup and locator preserved / sameeligible denominator. Incomplete answers, abstention and downstreamfailed rows countasmisses.",
+    "conditional_fidelity": "Show among completedoutputs, alwaysalongside coverage.",
+    "critical_errors": [
+      "wrong identity/source/PMID/role side",
+      "lost context/expansion/negative origin",
+      "unsupported directness or invented context",
+      "merged purportedly independent evidence",
+      "missing source/answer/export"
+    ],
+    "strata": "All original negative/expansion/type/method/missing-context strata with counts; empty strata unevaluated.",
+    "uncertainty": "Descriptive finite-panel microcounts and perpublication macro results. No independence-assuming pair bootstrap or broadaccuracy estimate."
+  },
+  "full_flow_commitments_required_before_access": [
+    "Separate final orchestration and reference loader leave all original development guards untouched; no four-row or dev-only count assumption.",
+    "Freeze actual official MITAB/XML reader/runtime/controls, rawref loader, importer, answer/export evaluator and exact source URLs/receipts before any reserved body read/hash/parse.",
+    "Test invented lineage/sharedstudy, repeatedpair, n-ary, malformed/default, unresolvedidentity, missingoutput and emptystrata cases plus a consumeddevelopment replay before finalfreeze.",
+    "Freeze complete consumed-reference inventory or explicitly bound incompleteness, exact overlap semantics and article-status check scope.",
+    "Freeze exact question template, deterministic focus/order, profile/caps/batching/identityresolution/failure policy and any Pharosretrieval state before finalidentitiesvisible. No selection of successfullyresolvedrows.",
+    "Write immutable pre-access receipt with allcode/input/runtimehashes; one controlled fixed execution preserves failures and exposure. No new model/agentarm without separatelyfrozen contract."
+  ],
+  "execution_readiness": {
+    "status": "not_ready",
+    "full_flow_runner": null,
+    "synthetic_checks": null,
+    "development_checks": null,
+    "immutable_bindings_declared": false,
+    "remaining_checks": [
+      "Implement and independently verify a thin separate final full-flow orchestrator using existing pure helpers; current entrypoints intentionally support development only.",
+      "Complete its synthetic cases and consumeddevelopment replay, preserving row/experiment multiplicity and source-eligible denominators.",
+      "Bind the consumed inventory and declared scope of lineage/article-status checks.",
+      "Seal one immutable execution receipt before auditing reserved provenance/overlap and scoring."
+    ]
+  },
+  "prepare_only_checker_authorizes_reserved_access": false,
+  "reserved_bodies_accessed_for_these_rules": false,
+  "model_or_gpu_required_for_rules_and_walkthrough": false,
+  "biological_improvement_boundary": "Design now in parallel. One published task-compatible intervention may be tried in a predeclared matched retrospective/development comparison on already-consumed outcomes, without labeling them unseen or independently confirmatory. Keep scored labels/derivatives outside predictor inputs; outcomes used for fitting yield training performance. Compare Pharos, same-information plain addition and Steward qualification where applicable, with matched learner/candidates/seeds/budget. Fresh suitably separated evidence is needed for confirmatory external generalization or source-novelty claims. The current IntAct reserved panel only tests source fidelity. No verified compatible intervention is ready yet; this is distinct from unknown Pharos lineage."
+}

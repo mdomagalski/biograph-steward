@@ -106,7 +106,7 @@ async function exportSubmission(){
   try{
     const result=await api('/api/submission-export',{run_id:sourceRun});
     if(runId!==sourceRun)return;
-    $('submissionStatus').textContent='Export verified. Every input edge remains undecided and retained; no biological pruning was performed.';
+    $('submissionStatus').textContent='Whole-workspace export verified, including qualified assay observations. Every input evidence record remains undecided and retained; no biological pruning was performed.';
     const link=el('a','Download graph, decisions and complete sources');link.href=result.download_url;$('submissionDownload').append(link);
   }catch(error){if(runId===sourceRun)$('submissionStatus').textContent=error.message;}
   finally{$('submissionExport').disabled=false;}
