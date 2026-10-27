@@ -24,6 +24,7 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 - [Bounded cohort construction](docs/CONSTRUCTION.md): 1–25 exact protein accessions, a fixed source profile, published graph, cited candidate answer and offline-verifiable export. This deterministic flow needs no model.
 - [Experimental construction planner](docs/CONSTRUCTION_AGENT.md): propose a bounded request for inspection against explicit cohort/form choices. Planning provenance survives publication and export. The [guided live check](docs/evaluations/GUIDED_CONSTRUCTION_ASSESSMENT_20261027.md) still failed all four supported tasks; use deterministic construction.
 - Scoped Pharos retrieval with pagination, explicit limits and per-protein coverage reporting for pathways, GO, interactions, drugs, selected expression and publication discovery.
+- [Record-level evidence overlap](docs/EVIDENCE_OVERLAP.md): inspect exact protein-pair overlap, shared record/publication identifiers, added assay context and unresolved lineage; export explicit identity mappings targeting SSSOM 1.0. Three saved development workspaces were audited, and all 14 exported mapping rows passed three official validators and preservation checks. The audit does not merge or prune records, pool confidence or establish independent corroboration.
 - Qualified assertions, raw-source provenance, immutable snapshots and separate local human-review states.
 - [Qualified assay attachment](docs/ASSAY_WORKBENCH.md): selected cohort observations, original assay context, source-preserving reviews and complete run exports.
 - [Qualified IntAct source evidence](docs/INTACT_EVIDENCE_WORKBENCH.md): official-reader-backed records, readable experimental context and a dedicated traceable source question using the existing attachment/export framework. The real Pharos-attached flow preserves all four eligible development records through answer and gold export; this measures source fidelity, not biological accuracy.
@@ -35,6 +36,8 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 - Local/Docker/Brev operation, protected shared access and persistent data directories. Model inference is optional.
 
 These capabilities preserve and expose source evidence. They do not establish clinical correctness, independent study replication, or improved biological prediction. Models do not approve or prune assertions automatically.
+
+The [current release check](docs/evaluations/PHAROS_RELEASE_CHECK_20261027.md) confirms that our configured public API still reports `pharos319`; the client reads that label from the service. Official Pharos400 identity/TDL tables are available, but an equivalent complete 400 graph endpoint or dump was not verified in the checked official materials. Preserve source releases explicitly rather than relabelling old relationships. The current focus is SSSOM identity provenance and record-level overlap on existing development cohorts.
 
 The [reserved IntAct assessment](docs/evaluations/INTACT_FINAL_ASSESSMENT_20261027.md) executed once and stopped without a final score. It exposed a comparator defect for structural identifiers; captured XML preserves those identifiers. The standards-supported correction now passes a [complete consumed-data replay](docs/evaluations/INTACT_CONSUMED_FLOW_20261027.md): both eligible records survive Pharos attachment, the readable answer and the exported source packet. The original stopped result remains unscored. A [fresh four-study panel](docs/evaluations/FRESH_INTACT_REFERENCE_20261027.md) is selected from metadata only; its source bodies remain unopened. Source preservation does not establish biological accuracy or graph improvement.
 
@@ -82,6 +85,7 @@ The [workbench attachment](docs/ASSAY_WORKBENCH.md) now selects both-endpoint ob
 | Team walkthrough | [START_HERE](START_HERE.md) |
 | Current plan and challenge gaps | [Build plan](docs/BUILD_PLAN.md), [alignment](docs/PROJECT_ALIGNMENT.md) |
 | Evidence and source contracts | [Data contract](docs/DATA_CONTRACT.md), [Pharos retrieval](docs/SCOPED_RETRIEVAL.md), [CIViC](docs/CIVIC_EVIDENCE.md) |
+| Identity and evidence overlap | [SSSOM profile, record-level audit and release boundaries](docs/EVIDENCE_OVERLAP.md) |
 | Explicit cohort construction | [Request, publish, inspect and replay](docs/CONSTRUCTION.md) |
 | Questions, review and updates | [Guided questions](docs/GUIDED_QUESTIONS.md), [study context](docs/STUDY_CONTEXT.md), [snapshot comparison](docs/SNAPSHOT_REFRESH.md) |
 | Gold-reference handoff | [Packet export, edge decisions and exact alignment](docs/GOLD_SET_INTERFACE.md) |

@@ -67,6 +67,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--protein", help="Optional exact UniProt accession inside the saved cohort.")
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("evidence-overlap", help="Report record-level overlap and added context from a saved assay-enriched run offline.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("evidence-overlap-verify", help="Verify a saved record-level overlap report and its source bindings offline.")
+    p.add_argument("--report", type=Path, required=True, help="Published overlap report directory.")
     p = sub.add_parser("standards-resources", help="Download hash-pinned official Biolink resources into a new folder.")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("standards-export", help="Publish a bounded KGX projection and actual upstream validation audit; requires optional audit environment.")
@@ -211,6 +216,17 @@ def main(argv: list[str] | None = None) -> int:
             answer = answer_assay_question(graph, args.protein, source_run=args.run.name)
             save_answer(answer, args.out)
             print(json.dumps({'output': str(args.out.resolve()), 'overview': answer['overview']}, indent=2))
+            return 0
+        if args.command in {"evidence-overlap", "evidence-overlap-verify"}:
+            from .evidence_overlap import publish_overlap, verify_overlap
+            output = args.out if args.command == "evidence-overlap" else args.report
+            result = (publish_overlap(args.run, output) if args.command == "evidence-overlap"
+                      else verify_overlap(output))
+            summary = {"operation": args.command, "summary": result["summary"],
+                       "report": str((output / "report.json").resolve())}
+            if args.command == "evidence-overlap-verify":
+                summary["status"] = "evidence_overlap_verified"
+            print(json.dumps(summary, indent=2))
             return 0
         if args.command == "standards-resources":
             from .standards_validation import prepare_resources

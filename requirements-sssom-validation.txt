@@ -1,0 +1,9 @@
+# Optional SSSOM artifact audit environment; no core application dependency.
+# Tested on Python 3.12.14. sssom 0.4.21 pins this prerelease schema upstream.
+# With uv, install using: uv pip install --prerelease=allow -r requirements-sssom-validation.txt
+# Run explicit JsonSchema, PrefixMapCompleteness and StrictCurieFormat checks.
+# Also compare input/parsed/document row counts: upstream parsing can drop rows.
+# The installed 0.4.21 strict=True parser has an inverted standard-metadata guard;
+# use the default parser plus all three official validators, not a local patch.
+sssom==0.4.21
+sssom-schema==1.1.0a5
