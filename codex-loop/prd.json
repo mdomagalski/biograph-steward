@@ -71,7 +71,7 @@
         "REACTOME-002"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "notes": "A completed loop prepares a correctly guarded comparison; it is not the comparison itself. A later fixed negative result is a valid scientific deliverable. No score-driven implementation loop or automatic acceptance/pruning is authorized."
     }
   ]

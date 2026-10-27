@@ -1,0 +1,226 @@
+{
+  "boundaries": {
+    "Brev_access": false,
+    "independent_validation": false,
+    "paid_compute_started": false,
+    "real_graph_fitting": false,
+    "real_outcomes_opened": false,
+    "real_resource_fitting": false,
+    "reserved_IntAct_access": false,
+    "scientific_improvement_measured": false
+  },
+  "checks": {
+    "fresh_process_native_cache_runtime_check": "passed_cpu_pykeen1.11.1_torch2.6.0",
+    "invented_full_native_prepare_validate_resource_freeze_predict_score": "passed",
+    "logs": {
+      "runs/reactome_context_003_original_freeze_20261026.log": "8529dccfdbe756b3ec97ee51d08ab1da5e43e024a2f6016174e9fac8c5ee1e81",
+      "runs/reactome_context_003_original_outcomes_20261026.log": "fc83d0a7c9dc46385f8b30094371fc9c9b1915352eeaf6b6463a1b7cf86a3239",
+      "runs/reactome_context_003_original_scoring_20261026.log": "5e4618e480729a795c3058b6646b4d230b30735d6c8d0ad5524181b4cb0c447e",
+      "runs/reactome_context_003_tests_20261026.log": "fc08775b517ccf22aa426f3d92e6b7510158197324bc9f97d8419283395f8880",
+      "runs/reactome_context_003_validation_20261026.log": "e8431d8653d0f197fb13df659180f10fd9a610489bf83aba2580dd1a275c47bc",
+      "runs/reactome_context_native_20261026_handoff_final.log": "4ce9770792df058b4bf865f5ef4f86f27b8b21eb07a46952fcd4d1ead9243461"
+    },
+    "original_freeze_tests": 9,
+    "original_outcomes_tests": 14,
+    "original_scoring_tests": 16,
+    "reactome_tests": 44,
+    "real_1751_guard_rejects_invented_denominator": true,
+    "skips": 0,
+    "test_fixture_primary_denominator": 3,
+    "test_overrides_are_unittest_patches_only": true,
+    "typecheck": "not_configured",
+    "ui": "not_applicable"
+  },
+  "content_sha256": "7eacf8195fec28a016d6aaff8fbba859c0863ed43e5b33d012aa4f24b6bb6390",
+  "created_at": "2026-10-27T03:03:53.949368+00:00",
+  "expected_outputs": {
+    "execution": "runs/reactome_context_execution_20261026_cpu/execution.json",
+    "metrics": "runs/reactome_context_comparison_20261026_cpu/scored/metrics.json",
+    "prediction_report": "runs/reactome_context_comparison_20261026_cpu/predictions/report.json",
+    "score_report": "runs/reactome_context_comparison_20261026_cpu/scored/report.json"
+  },
+  "format": "biograph-steward.reactome-context-handoff-readiness.v1",
+  "fully_frozen": false,
+  "graph": {
+    "dry_validation": "passed_no_fitting",
+    "graph_input_files": {
+      "arms/rgcn_baseline.tsv": "ef73ee78339b33ede66a2a1de7e43b2d5779f3afdd049d1f568c48b7168854d8",
+      "arms/rgcn_reactome.tsv": "6c9086fab2cf36d2747f83d236cfc3ac853e9f45a8bf81713c3df8404188b0a3",
+      "assay_contract.json": "af69729fae9ced83651b4dc4912e82bd2c03de51c53ab3ae3c0819d79388a4a7",
+      "candidates.json": "11a9d52d38d8e6e78732e96cc4b408974fdaa8e5468499396ecc9fad36899e0d",
+      "coverage.json": "982a42d2160844fdd785bd4b9c17aa96595fd977d3eed1fd79129093f4a01444",
+      "development_pairs.json": "5c230a4a05d24caa7d3c979cbd186c170f895eb723c0895413186ea5aa0977ca",
+      "eligible_memberships.tsv": "83cd8bc582c3cae6c770819813ce3f21a72b1dfe9dc1251cb9e375a03be4f6e1",
+      "entities.json": "7b95830d9317fb224ae86f0a5db62bcc9cd4b58a7779ba0362cb3710fca36c1b",
+      "membership_dispositions.jsonl": "6b6b78a381c382c28448f2c62f6988939ada583d314615dfe1bcc7fc20b1d534",
+      "protocol.json": "06b40c46ef608c9e4a8a0516a5d45baa3371d897a9532ed98251207df57feb2e",
+      "relations.json": "dc515dd3da8a62360e7e8127a3f59911c30ad264b2a3522dd6f2ed349dd5d3c3",
+      "source_inventory.json": "d671121dc17dafbafeed1963d22d9b0fa42751381364ab98da2249b0c3d4f187",
+      "split.json": "a9a9cb6365516fd1079e3569e8d54957cfe3b4aab5fcb6600d0cd67f584737d5",
+      "supervision.tsv": "8591a1ca9a684f8e4f4595176495746a9a5cdf27096b99b35f04d5c6fd9de3bc"
+    },
+    "path": "runs/reactome_context_graphs_20261026_final",
+    "report_sha256": "6e3d23033d29fcd25c0c05ced35d4f6d8ec215c5b6afdc3edfb9c2c1c3bd43ad"
+  },
+  "handoff_implementation_sha256": {
+    "biograph_steward/inmc_outcomes.py": "081aad215925a0b7031078d5d77e34d108ca74b58f63fbebeae382ca079e7ce3",
+    "scripts/audit_inmc_inputs.py": "b1c6b611d42633182431184fb460f9ac37cac87194dc6b26812552e6ea48e76d",
+    "scripts/freeze_reactome_context.py": "81bcc325c52797057ca9393176b25169f188717d3fc4cfaeaace239fcf8616a8",
+    "scripts/score_inmc_comparison.py": "4eddc9aefe2232ffbf75413fc58e63d387b3e048f86142e1db1df863d71e364b",
+    "scripts/score_reactome_context.py": "7a44bf62b4b1baa05dab917c5a44bec5dddaff445bf592dd0dce725ea4b6fd03"
+  },
+  "implementation_sha256": {
+    "biograph_steward/client.py": "a9877c663c8790fd364d398b40f1f6cdf0d9ccd5b27378127cf4d3d3456bc3bb",
+    "biograph_steward/file_utils.py": "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6",
+    "biograph_steward/graph.py": "26265acf7a7e55934ee399aefc7749ff0ed09fdabb0c6e9d49b5210f83a3ecd0",
+    "scripts/audit_pharos_inventory.py": "68f97be0ee72a60f9464193c5f99fc947401567e015ebacf079e3c48259d236f",
+    "scripts/prepare_inmc_graphs.py": "a1c82d0eb9684f33fc84c47c3d35eea43877872959e5caa311344378ef90721e",
+    "scripts/prepare_reactome_context_graphs.py": "3b169670850b9cbca395fc1c3acdded37d2f4711447e38bb0ec5a6d5b5381131",
+    "scripts/retrieve_pharos_inventory.py": "6b64d8753188d57965513f1ce54b147a00f7b44579c72157735323af00ec4391",
+    "scripts/run_inmc_comparison.py": "906abcfb6b01c18c27bfecc04d8364718589ca7d59e7976e619836804d5674ac",
+    "scripts/run_reactome_context.py": "ad31baa3928aa0fce08b92e94203c04840a34b92d5c2d36e4810b5c65828b1e7"
+  },
+  "limitations": [
+    "Consumed development panel; source postdates assays and study lineage remains unverified.",
+    "Membership is not direct binding; engineering success is not biological accuracy.",
+    "Same exact runtime/device is required for freeze, fitting and scoring.",
+    "Independent benefit, biological truth, official evaluation and usability remain unestablished."
+  ],
+  "next_commands_in_order": [
+    "runs/reactome_context_runtime_20261026/venv/bin/python scripts/run_reactome_context.py --graph runs/reactome_context_graphs_20261026_final --output-dir runs/reactome_context_resource_20261026_cpu --device cpu --resource-check",
+    "runs/reactome_context_runtime_20261026/venv/bin/python scripts/freeze_reactome_context.py --graph runs/reactome_context_graphs_20261026_final --synthetic-check runs/reactome_context_native_20261026_handoff_final/report.json --resource-check runs/reactome_context_resource_20261026_cpu/report.json --device cpu --output-dir runs/reactome_context_execution_20261026_cpu",
+    "runs/reactome_context_runtime_20261026/venv/bin/python scripts/run_reactome_context.py --graph runs/reactome_context_graphs_20261026_final --execution-packet runs/reactome_context_execution_20261026_cpu --device cpu --output-dir runs/reactome_context_comparison_20261026_cpu/predictions",
+    "runs/reactome_context_runtime_20261026/venv/bin/python scripts/score_reactome_context.py --graph runs/reactome_context_graphs_20261026_final --execution-packet runs/reactome_context_execution_20261026_cpu --predictions runs/reactome_context_comparison_20261026_cpu/predictions --archive runs/link_prediction_reuse_audit_20261022/inmc_release_v1.zip --workbook /private/tmp/inmc_official_source_data.xlsx --device cpu --output-dir runs/reactome_context_comparison_20261026_cpu/scored"
+  ],
+  "prior_synthetic_proof_preserved": {
+    "current_runner_binding": false,
+    "path": "runs/reactome_context_native_20261026_final/report.json",
+    "reason": "Superseded by added handoff admission guard; historical receipt is unmodified.",
+    "sha256": "ca91c41347ec616d4f16ffcf394aa9e23e0b7efa651ccc9387afe9cd2f3cc03a"
+  },
+  "profile": {
+    "arms": [
+      "rgcn_baseline",
+      "rgcn_reactome"
+    ],
+    "batching": {
+      "automatic_memory_optimization": false,
+      "drop_last": false,
+      "num_workers": 0,
+      "sampler": null
+    },
+    "decoder": "DistMultInteraction",
+    "loss": "SoftplusLoss",
+    "model": {
+      "activation": "relu",
+      "edge_dropout": null,
+      "embedding_dim": 32,
+      "num_bases": 4,
+      "num_layers": 3,
+      "self_loop_dropout": 0.0
+    },
+    "optimizer_updates_per_arm_seed": 500,
+    "planned_full_runs": 6,
+    "planned_total_optimizer_updates": 3000,
+    "training": {
+      "batch_size": 4096,
+      "learning_rate": 0.001,
+      "num_epochs": 20,
+      "num_negs_per_pos": 16,
+      "optimizer": "Adam",
+      "seeds": [
+        17,
+        43,
+        101
+      ]
+    }
+  },
+  "remaining": [
+    "Announce separate real compute phase.",
+    "Exact-device resource proof on saved graph.",
+    "Immutable execution freeze using current synthetic and actual resource proofs.",
+    "Six fixed 500-update fits.",
+    "Authenticated consumed-panel reporting; report mixed/negative results and stop."
+  ],
+  "reporting_contract": {
+    "coverage_only_scores": [
+      0,
+      1,
+      2
+    ],
+    "independent_validation": false,
+    "influence": "descriptive_leave_one_original_gene_out",
+    "population": "consumed_INMC_development",
+    "primary_detected_pairs": 737,
+    "primary_eligible_pairs": 1751,
+    "primary_metric": "average_precision",
+    "primary_nondetected_pairs": 1014,
+    "score_aggregation": "mean_of_forward_and_reverse",
+    "secondary_metric": "roc_auc",
+    "seed_aggregation": "arithmetic_mean",
+    "statistical_significance_claimed": false
+  },
+  "status": "engineering_ready_actual_resource_and_freeze_pending",
+  "synthetic_proof": {
+    "execution": {
+      "cuda_runtime": null,
+      "device": "cpu",
+      "device_name": "cpu",
+      "installed_sources_sha256": {
+        "pykeen.losses": "766f793c189648dcc7b4e3aca2996cc418b3f3528a8dec0a90ca09b1aab0d0c5",
+        "pykeen.models.base": "e2b643b42a3eef16bcbfdba1169a3956ce3beba5a9719d18d6df1428f4a3ed91",
+        "pykeen.models.nbase": "db2ee08df9c7bafe68770e98d95ea7935a70c1ff9d707617200c9ddb5a310c80",
+        "pykeen.models.unimodal.rgcn": "97b1604ff52e50e01f4da7b104a2bea5305e41ece4e3d48de790f20465956716",
+        "pykeen.nn.init": "198e849882f6e1e16c19b65fc1a8a1aa1ce9bd9baa8181cb193e5d39fa8c4b10",
+        "pykeen.nn.message_passing": "6f936bd765703a158ce39e84972be7a4b730ba44c56802880576e3d01a704232",
+        "pykeen.nn.modules": "b5a22fc57515344b8b72fef8f7888ce9bef8146ab538682b3c0d538c3be53a57",
+        "pykeen.nn.representation": "7b68c825e7b9630422165a7885af2b7954350dd45af4b5d20708a8b5c84c39da",
+        "pykeen.nn.utils": "09bfdab12eecf3cb7fc30b675e7b5e7778bdef57c5d8de86b94f455b465955a4",
+        "pykeen.nn.weighting": "a87fc4d0e2288b1d4245fc69db7a05386fa55e137b8fb286fdf74c521f6a6144",
+        "pykeen.predict": "4dc982b90dc69a5e02cb12349f16ea4f37ce72db79eca04a5836c33a7853dc02",
+        "pykeen.sampling.filtering": "56660379f7f5eb122d77dce2593d97f16fc73233d84624a0fec11f13454a6319",
+        "pykeen.sampling.negative_sampler": "f0f9635cf647d9e9d6792238cdbf57e1fc1d06803337e8300c74d89d18998952",
+        "pykeen.sampling.pseudo_type": "a0f56ad6065436b24cf03080de8b027db209ad831ea9cbc81cbca21d696e50f7",
+        "pykeen.training.callbacks": "5614930aac58cefe5e7bc74a3ab7a4ded2d3e3a3f87f00c42164a9485c6f66aa",
+        "pykeen.training.slcwa": "1ca4177fd6b69c274ad92132c249a7650a511e622c709b4166ca7e2aa1374f0a",
+        "pykeen.training.training_loop": "2c1c765e42b072b364ea0ba2dd6e71bfd1cdac43c31afe69cc7f43e135329b8e",
+        "pykeen.triples.instances": "0d7f934d9dd7d456f8fcf176aac0d448f7474169b14771d6ca1ef965545ce368",
+        "pykeen.triples.triples_factory": "ee5dcb4cb4f46dfa2928ab770d2a695080203f170fe22e3365a01400cf1d29d4",
+        "pykeen.utils": "e5c35f5a514248e4ea835214332fb25ce758e095245fef3d1b2e241ed9fce94c",
+        "torch.nn.functional": "724c30072ca0cb69228553a636b2937ff88b60a2a2c80b806bd2a3827033e2b6",
+        "torch.nn.init": "eb86f725f12e5cd6256b723d6c29f0ccf0cfef90310de7bd2cffa26b69416cd7",
+        "torch.nn.modules.dropout": "1fc9974c3cf2078dd4bc257f73afb6a6714adfec2e9d099d47cf923e766d3490",
+        "torch.optim.adam": "5ba7c74c92c77703395798022e09351159fb18d235d27c212c3b8eb02920ffdb",
+        "torch.utils.data.dataloader": "f08b241c088e66361a4c7a526a55ee4e9eafd3b08beeedbfc90896ec06fcb3d3",
+        "torch.utils.data.sampler": "5e358667c9d38f298af375b95925d89270545c652b64f13049d50e53df8f4e06"
+      },
+      "machine": "arm64",
+      "packages": {
+        "networkx": "3.7",
+        "numpy": "2.5.4",
+        "pykeen": "1.11.1",
+        "scikit-learn": "1.9.1",
+        "scipy": "1.18.1",
+        "torch": "2.6.0"
+      },
+      "platform": "macOS-26.7.1-arm64-arm-64bit",
+      "python": "3.12.4",
+      "torch_threads": 1
+    },
+    "path": "runs/reactome_context_native_20261026_handoff_final/report.json",
+    "schedule": {
+      "batch_size": 8,
+      "epochs": 2,
+      "runs": 6,
+      "seeds": [
+        17,
+        43,
+        101
+      ],
+      "total_updates": 24,
+      "updates_per_arm_seed": 4
+    },
+    "sha256": "dc6e2b8f5a61029b91d901c66381b775101e3a3ad72d92ed2e2e9f1762c1b4e4",
+    "status": "passed"
+  }
+}

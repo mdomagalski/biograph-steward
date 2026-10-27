@@ -44,3 +44,16 @@
   - Native numeric-zero edge dropout consumes adjacency-sized RNG; use its supported None branch after verifying zero self-loop dropout. Observe both negative proposals and masks without changing sampling.
   - The adapter exposes profile(), implementation_bindings(), runtime_binding(device), validate_packet(), validate_proof(), validate_execution(), run_synthetic() and run(). The separate execution.json contract is documented in code; resource mode is both arms/seed17/one epoch and constructs zero prediction queries.
 ---
+
+## 2026-10-26T23:01:37-04:00 - REACTOME-003
+- Implemented: separate immutable execution freeze and fixed two-arm scorer using the original file/proof safety, source parser, assay eligibility and native metrics. Full fitting now validates handoff/helper hashes and reporting contract before training; all six complete prediction/checkpoint/query/adjacency/runtime/code/source bindings precede any outcome read. Reporting retains 1751 eligible off-diagonal pairs (737 detected/1014 nondetected), paired AP/ROC-AUC and arithmetic means, tied 0/1/2 coverage diagnostic and strata, original context coverage and descriptive gene-removal influence.
+- Files changed: scripts/freeze_reactome_context.py; scripts/score_reactome_context.py; narrow admission update in scripts/run_reactome_context.py; tests/test_reactome_handoff.py; docs/evaluations/REACTOME_CONTEXT_HANDOFF_20261026.md and machine-readable readiness summary; docs/BUILD_PLAN.md; this log and PRD status.
+- Checks: 44 Reactome controls including 13 new handoff controls and actual invented native prepare/validate/resource/freeze/six-fit/score wiring; original freeze (9), scoring (16) and outcomes (14) controls, all pass with no skips in the pinned interpreter. Real graph dry validation passes without fitting; selected 500 updates per arm/seed and 3000 total unchanged. git diff --check passes; no typecheck configured.
+- Current native proof: runs/reactome_context_native_20261026_handoff_final/report.json, invented CPU, 24 updates across 6 runs. It supersedes the prior story 002 proof for current-code admission only; earlier receipts and proof are preserved unchanged. The readiness summary binds its SHA, current code, prepared graphs and exact next commands.
+- Browser verification: not applicable; no UI changed.
+- Boundaries: real resource proof, actual execution freeze, six real fits and consumed-panel scoring remain pending separately announced compute. No real outcome/source archive/workbook body read, reserved IntAct access, Brev/paid compute or historical-result changes occurred. No biological improvement, significance, independent validation or usability claim is made; the midpoint report remains unchanged.
+- Learnings for future iterations:
+  - Separate execution packets must be checked before spending the full fitting budget as well as at scoring; bind reused source/parser/scorer helpers alongside the outcome adapter.
+  - Freeze creation authenticates native proof artifacts, not only report seals. An earlier proof becomes stale after a bound runner edit; preserve it and create a new immutable current proof.
+  - Scoring requires the exact frozen runtime/device, including installed native source fingerprints. Test-only tiny schedules/populations cannot satisfy the real 1751 denominator.
+---

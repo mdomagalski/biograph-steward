@@ -649,7 +649,10 @@ def run(graph, output, *, device, resource_check=False, execution_packet=None):
     mode = "resource_check" if resource_check else "full"
     try:
         if not resource_check:
-            validate_execution(packet, execution_packet, execution)
+            # Late import avoids a module cycle and enforces the scoring handoff
+            # before spending the six-fit budget, not only at outcome access.
+            from freeze_reactome_context import validate_freeze
+            validate_freeze(packet, execution_packet, execution)
         elif execution_packet is not None:
             raise ValueError("Resource mode cannot consume a final execution packet.")
         _write(output / "manifest.json", {"mode": mode, "execution": execution, "profile": profile(),
