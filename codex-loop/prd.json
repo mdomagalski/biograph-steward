@@ -51,7 +51,7 @@
         "REACTOME-001"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "notes": "The old runner is specifically guarded for three graph adjacencies, GO is_a enrichment and four model arms. It cannot execute this two-arm design unchanged. Reuse its established native-library behavior under a new explicit contract; do not repurpose old predictions or falsify old proof receipts."
     },
     {

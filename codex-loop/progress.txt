@@ -31,3 +31,16 @@
   - The saved target pathways live at target.pathways, while other context families live under target.pharos_context. Raw source_rows(..., 'pathways') and target.pathways are reconciled independently.
   - Use validate_prepared_packet(folder) and the ARMS/RELATION constants for the next explicit two-arm adapter; returned arms are already mapped to the same ordered union vocabularies. Native library fitting is intentionally outside this story.
 ---
+
+## 2026-10-26T22:49:02-04:00 - REACTOME-002
+- Implemented: separate fixed native two-arm adapter with exact selected R-GCN/loss/optimizer/batching/typed-negative behavior, graph/source/code validation, complete arm/seed budget checks, five matched audit fingerprints, no-query resource mode and a separate freeze-proof interface. Historical scripts and prepared packet remain unchanged.
+- Files changed: scripts/run_reactome_context.py; tests/test_reactome_runner.py; docs/evaluations/REACTOME_CONTEXT_NATIVE_20261026.md; docs/evaluations/reactome_context_native_20261026_summary.json; this log and PRD story status.
+- Native proof: runs/reactome_context_native_20261026_final/report.json; invented CPU fixture only, six runs at four updates each (24 total), identical per-seed initial parameters/positive batches/negative proposals/filter masks/accepted negatives, finite symmetric exact-query predictions. Analytical probes retain the actual 32D/four-basis/three-layer architecture and demonstrate two-hop pathway-to-gene and three-hop other-product-to-gene transport, isolated/missing-context exclusion and native cache invalidation. This does not claim four-hop gene-to-gene transport or biological accuracy.
+- Checks: 31 Reactome projection/runner tests; 17 existing runner tests with BIOGRAPH_TEST_GRAPH_ML=1; three existing hierarchy tests, all in pinned project interpreter, no skips. Real prepared-packet dry validator passed with unchanged 99,394 supervision triples, 25 batches/epoch, 500 updates per arm/seed and 3,000 planned total. git diff --check passed; no static typecheck configured.
+- Browser verification: not applicable; no UI changed.
+- Boundaries: no real graph fitting/resource fitting, real assay queries, outcome loading, reserved IntAct access, Brev access or paid compute. Exact-device resource proof, final freeze and real execution remain pending. Earlier attempts/test-failure logs remain preserved.
+- Learnings for future iterations:
+  - Native train() resets parameters; first pre_batch observes the actual initial named parameters. User post_batch callbacks precede the optimizer callback, so validate callback counts against final Adam state.
+  - Native numeric-zero edge dropout consumes adjacency-sized RNG; use its supported None branch after verifying zero self-loop dropout. Observe both negative proposals and masks without changing sampling.
+  - The adapter exposes profile(), implementation_bindings(), runtime_binding(device), validate_packet(), validate_proof(), validate_execution(), run_synthetic() and run(). The separate execution.json contract is documented in code; resource mode is both arms/seed17/one epoch and constructs zero prediction queries.
+---
