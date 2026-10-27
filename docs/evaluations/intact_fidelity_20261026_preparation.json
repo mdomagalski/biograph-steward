@@ -1,0 +1,203 @@
+{
+  "format": "biograph-steward.intact-fidelity-preparation-receipt.v1",
+  "created_at": "2026-10-26T22:24:52.036438+00:00",
+  "status": "protocol_frozen_and_official_source_bytes_pinned_not_parsed",
+  "claim": "Reference preparation for bounded source fidelity. No IntAct importer/evaluator, source interpretation, independent biological accuracy or graph improvement is demonstrated.",
+  "bindings": {
+    "protocol": {
+      "path": "docs/evaluations/intact_fidelity_20261026_protocol.json",
+      "sha256": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a"
+    },
+    "preparer": {
+      "path": "scripts/prepare_intact_fidelity_reference.py",
+      "sha256": "b2d7eb064e69507dd7e4502d2088d7b8e63acde1e0af2d27629befd66c4006aa"
+    },
+    "panel": {
+      "path": "runs/intact_fidelity_preparation_20261026/panel.json",
+      "sha256": "38c0b5929bc0c02213ffd66f6c4e7d68924351c3651273a78ce851b5f873de89"
+    },
+    "directory_metadata": {
+      "path": "runs/intact_fidelity_preparation_20261026/sources/release_directory.html",
+      "sha256": "a58c6311b8904314426333ac4c1f83059b6497128c364f197f323b5e6519ed6b"
+    },
+    "directory_receipt": {
+      "path": "runs/intact_fidelity_preparation_20261026/release_directory_receipt.json",
+      "sha256": "419769419e1bec1e6a9ce38736fa031589f6e48f0796c993837282a6051c5d4e"
+    },
+    "source_metadata_receipts": {
+      "path": "runs/intact_fidelity_preparation_20261026/source_metadata_receipts.json",
+      "sha256": "bb6ba20d85ac002c7216092c77deadcf9cbdaf93e4fce50c3679cee92d6739a3"
+    },
+    "retrieval_receipt": {
+      "path": "runs/intact_fidelity_preparation_20261026/opaque_sources/retrieval_receipt.json",
+      "sha256": "714e029f93450976f13bd71d08905b6b27b5b54a750b22bdc8f31b851d424c37"
+    }
+  },
+  "selection": {
+    "official_release": "2026-10-17",
+    "publication_year_directory": "2025",
+    "directory_publication_files": 56,
+    "metadata_eligible_publications": 12,
+    "selected_publications": 8,
+    "development_publications": 4,
+    "reserved_final_publications": 4,
+    "selection_basis": "Technical size band and salted filename SHA rank; no candidate rows, Pharos absence, biological outcome or model performance."
+  },
+  "sources": [
+    {
+      "publication_id": "pubmed:40075158",
+      "filename": "40075158.txt",
+      "split": "development",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/40075158.txt",
+      "bytes": 4091,
+      "sha256": "d65a5243b53ef51719d03a797c7b15dd7f7b03cc7019897c3d311d8756149e56",
+      "retrieved_at": "2026-10-26T22:23:16.580649+00:00",
+      "local_path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40075158.txt",
+      "candidate_rows_decoded": false,
+      "reference_labels_materialized": false,
+      "eligibility_status": "not_audited",
+      "study_relation_audit": "pending"
+    },
+    {
+      "publication_id": "pubmed:40404733",
+      "filename": "40404733.txt",
+      "split": "development",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/40404733.txt",
+      "bytes": 29714,
+      "sha256": "19f3325086266f76dbf7910b798756d8a13bc56bd45d826f7308267d75c86738",
+      "retrieved_at": "2026-10-26T22:23:18.331044+00:00",
+      "local_path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40404733.txt",
+      "candidate_rows_decoded": false,
+      "reference_labels_materialized": false,
+      "eligibility_status": "not_audited",
+      "study_relation_audit": "pending"
+    },
+    {
+      "publication_id": "pubmed:40071126",
+      "filename": "40071126.txt",
+      "split": "development",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/40071126.txt",
+      "bytes": 20866,
+      "sha256": "211cde6738435a6f49a9f67b932d4d2f0f9fbc9022464f188b5542ab17a576a7",
+      "retrieved_at": "2026-10-26T22:23:22.099379+00:00",
+      "local_path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40071126.txt",
+      "candidate_rows_decoded": false,
+      "reference_labels_materialized": false,
+      "eligibility_status": "not_audited",
+      "study_relation_audit": "pending"
+    },
+    {
+      "publication_id": "pubmed:40739265",
+      "filename": "40739265.txt",
+      "split": "development",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/40739265.txt",
+      "bytes": 14776,
+      "sha256": "5c28e098ea83e319a7ae7352640baef64c10ebd51d724ff0522ed4e3360f4ad8",
+      "retrieved_at": "2026-10-26T22:23:24.556444+00:00",
+      "local_path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40739265.txt",
+      "candidate_rows_decoded": false,
+      "reference_labels_materialized": false,
+      "eligibility_status": "not_audited",
+      "study_relation_audit": "pending"
+    },
+    {
+      "publication_id": "pubmed:39833857",
+      "filename": "39833857.txt",
+      "split": "reserved_final",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/39833857.txt",
+      "bytes": 15298,
+      "sha256": "7862a8d068d9a48c9ed9c5b83ed3609419d2fe6f484bb5a1802865204af10eff",
+      "retrieved_at": "2026-10-26T22:23:26.104530+00:00",
+      "local_path": "runs/intact_fidelity_preparation_20261026/opaque_sources/39833857.txt",
+      "candidate_rows_decoded": false,
+      "reference_labels_materialized": false,
+      "eligibility_status": "not_audited",
+      "study_relation_audit": "pending"
+    },
+    {
+      "publication_id": "pubmed:40211762",
+      "filename": "40211762.txt",
+      "split": "reserved_final",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/40211762.txt",
+      "bytes": 6849,
+      "sha256": "b52e1aeeb39a678d65d61cc7ad2e29e8dff48bc549920ed1f9953da77896428e",
+      "retrieved_at": "2026-10-26T22:23:30.885479+00:00",
+      "local_path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40211762.txt",
+      "candidate_rows_decoded": false,
+      "reference_labels_materialized": false,
+      "eligibility_status": "not_audited",
+      "study_relation_audit": "pending"
+    },
+    {
+      "publication_id": "pubmed:39972491",
+      "filename": "39972491.txt",
+      "split": "reserved_final",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/39972491.txt",
+      "bytes": 15693,
+      "sha256": "8839f5e874e5d7c5de16aa8594662f24b9ff19d8bb277d42d5fd0a09bda03317",
+      "retrieved_at": "2026-10-26T22:23:36.217251+00:00",
+      "local_path": "runs/intact_fidelity_preparation_20261026/opaque_sources/39972491.txt",
+      "candidate_rows_decoded": false,
+      "reference_labels_materialized": false,
+      "eligibility_status": "not_audited",
+      "study_relation_audit": "pending"
+    },
+    {
+      "publication_id": "pubmed:40555359",
+      "filename": "40555359.txt",
+      "split": "reserved_final",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/40555359.txt",
+      "bytes": 23764,
+      "sha256": "77278dbce186867aa257e99196f71f2557bc3f48913e45642ffadd4df132d810",
+      "retrieved_at": "2026-10-26T22:23:38.413757+00:00",
+      "local_path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40555359.txt",
+      "candidate_rows_decoded": false,
+      "reference_labels_materialized": false,
+      "eligibility_status": "not_audited",
+      "study_relation_audit": "pending"
+    }
+  ],
+  "total_downloaded_source_bytes": 131051,
+  "data_license": {
+    "name": "CC-BY-4.0",
+    "statement_url": "https://raw.githubusercontent.com/intact-portal/intact-portal-documentation/b5d5bb35365739d4942e9ca250a2cf4fbaa14c62/about/license-privacy.md",
+    "statement_sha256": "89358bd2d5a198e97754e1de5c7522dcce3f8687d9fa84828b9d61f1cb1c7202",
+    "attribution": "IntAct molecular interaction database / IMEx contributors; original selected publications identified above."
+  },
+  "upstream_tooling": {
+    "name": "PSI-JAMI jami-mitab evidence reader",
+    "source_commit": "b66f63654d5878b918aad74af60054b1be0437a8",
+    "parent_pom_version": "3.9.4",
+    "license": "Apache-2.0 (pinned POM)",
+    "source_reviewed": true,
+    "installed_built_or_executed": false,
+    "verified_gap": "Reader may choose the first of some multi-valued terms and infer interactor type. Raw cells plus listener diagnostics must be retained; lossy structured mappings must be flagged. No custom biological parser introduced."
+  },
+  "exposure": {
+    "directory_and_format_tooling_metadata_visible": true,
+    "selected_source_body_bytes_downloaded_after_freeze": true,
+    "source_rows_decoded_parsed_or_displayed": false,
+    "publication_abstracts_opened": false,
+    "reference_labels_materialized": false,
+    "development_rows_consumed": false,
+    "reserved_final_rows_consumed": false,
+    "pharos_and_model_training_overlap": "unknown; no independent holdout claim"
+  },
+  "readiness": {
+    "protocol_frozen": true,
+    "source_bytes_and_license_pinned": true,
+    "reader_installed_validated": false,
+    "source_format_and_human_eligibility_checked": false,
+    "study_group_and_duplicate_audit_complete": false,
+    "adapter_implemented": false,
+    "evaluation_executed": false,
+    "scientific_accuracy_score_available": false,
+    "next_step": "Lock official reader/tooling, validate synthetic semantics and diagnostics; then inspect development studies only. Freeze adapter before reserved final access."
+  },
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "pharos_calls": 0,
+  "graph_changes": 0,
+  "verification": "Five offline synthetic preparation guards passed; all eight opaque blobs match size/hash receipts. These are engineering checks, not biological validation.",
+  "content_sha256": "d56d9cdea11f025a8b75da9dc11e3a854aa77a1cf0d6214ccd1733f600e21507"
+}

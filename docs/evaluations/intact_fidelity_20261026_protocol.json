@@ -1,0 +1,183 @@
+{
+  "format": "biograph-steward.intact-fidelity-preparation.v1",
+  "contract_name": "IntAct qualified-evidence source fidelity v1",
+  "prepared_date": "2026-10-26",
+  "claim": "Does deterministic integration and its user-facing answer/export preserve the supplied curated evidence? This is source fidelity, not generic truth, scientific accuracy, independent link prediction or organizer scoring.",
+  "selection": {
+    "directory": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/",
+    "release": "2026-10-17 (named official release path; HTTP bytes additionally pinned)",
+    "publication_year_directory": "2025; latest completed publication-year directory chosen as a finite recent panel, not a temporal holdout",
+    "metadata_access_before_freeze": "Official directory filenames, rounded sizes and timestamps, format/curation/tool sources. No publication abstracts, candidate MITAB rows or outcomes inspected.",
+    "metadata_eligibility": "Numeric PMID .txt filename; Apache displayed size parsed as binary K/M units; approximate size 4096..65536 bytes inclusive.",
+    "rationale": "Technical size bound for a small source-fidelity panel; not a representative or biology-stratified sample. Source size can correlate with study size; no generalization claim.",
+    "salt": "biograph-intact-fidelity-v1\n",
+    "ranking": "Ascending hex SHA-256(UTF-8(salt + filename)), tie-break filename; first eight eligible metadata entries only.",
+    "publication_count": 8,
+    "development_publications": 4,
+    "reserved_final_publications": 4,
+    "split": "Ranks 1..4 development; ranks 5..8 reserved_final; all rows from a publication stay together.",
+    "maximum_source_bytes": 65536,
+    "source_body_policy": "After this protocol and panel receipt are frozen, fetch the eight exact URLs as opaque bytes, hash them and save HTTP receipts. Do not decode rows in this preparation.",
+    "no_replacement": "Access/size/format failure or no eligible human rows is reported; do not replace a file based on its contents or results.",
+    "prohibited_selection": [
+      "No Pharos absence filter",
+      "No choice by positive/negative values, directness, proteins, model outcomes or favorable coverage",
+      "No source switching after seeing results"
+    ]
+  },
+  "eligibility_for_later_evaluation": {
+    "format": "Exactly PSI-MITAB 2.7 (42 columns), validated with the pinned official reader and listener diagnostics before reference projection.",
+    "participants": "Both source primary participant identifiers must contain exactly one unambiguous UniProtKB identifier each, each participant taxonomy must explicitly resolve only to NCBI taxid 9606, and each source interactor type must explicitly include exactly MI:0326 (protein). Missing/inferred protein type is not accepted for the primary panel.",
+    "source_identity": "Source database, publication identifiers and interaction evidence identifiers must be present and unambiguous; publication list must contain the selected file PMID. Missing/conflicting values stay in the excluded ledger.",
+    "isoforms_constructs": "Preserve exact source accession including isoform suffix, side/orientation and feature/construct text. No canonical collapse, gene remapping or sequence/context inference.",
+    "negative_expanded_and_missing": "Do not exclude qualified negative evidence, expansion rows or missing optional context. Keep raw fields and separate strata. An unavailable stratum is not evaluated and is never filled by post-hoc source choice.",
+    "all_rows_accounted": "Headers, comments, malformed, unsupported, nonhuman, ambiguous and ineligible records receive explicit counts/reasons. Excluded source rows remain locatable; never become negative interaction evidence."
+  },
+  "field_contract": [
+    {
+      "group": "participant_identity",
+      "columns_1based": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11,
+        21,
+        22,
+        33,
+        34
+      ],
+      "rule": "Preserve A/B identity, alternative identifiers, aliases, participant taxonomies and types/checksums. Primary identity remains the exact source accession; aliases and xrefs do not silently replace it."
+    },
+    {
+      "group": "source_and_publication",
+      "columns_1based": [
+        8,
+        9,
+        13,
+        14,
+        25,
+        31,
+        32,
+        35
+      ],
+      "rule": "Preserve all source/publication/evidence identifiers, author text, dates and interaction checksum. Provide direct IntAct evidence and PubMed links plus frozen artifact SHA and source row locator; do not synthesize an IMEx accession."
+    },
+    {
+      "group": "detection_and_type",
+      "columns_1based": [
+        7,
+        12,
+        41,
+        42
+      ],
+      "rule": "Preserve every PSI-MI accession/label and participant identification method. Explain interaction type exactly as supplied; no direct-binding inference from binary format, bait/prey, two hybrid, source confidence or co-complex association. No unpinned ontology ancestry expansion."
+    },
+    {
+      "group": "roles_and_experimental_context",
+      "columns_1based": [
+        17,
+        18,
+        19,
+        20,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "rule": "Preserve biological roles separately from experimental roles and keep A/B orientation. Preserve host and annotations/parameters without equating human participants to a human assay host or inferring tissue/disease/construct semantics."
+    },
+    {
+      "group": "complex_expansion",
+      "columns_1based": [
+        14,
+        16
+      ],
+      "rule": "Retain exact expansion method and shared original interaction identifier. Expanded rows are evidence representations, not independent direct-binding experiments. A blank expansion cell is source-default true-binary representation, without upgrading interaction directness."
+    },
+    {
+      "group": "negative",
+      "columns_1based": [
+        36
+      ],
+      "rule": "Preserve literal true/false/-. Official MITAB27 defines - as false (positive evidence) by default; retain that default provenance separately from an explicitly false cell. A true value denotes source-curated negative interaction evidence in context, not universal absence. Do not turn an absent pair, malformed cell or failed import into negative evidence."
+    },
+    {
+      "group": "features_and_stoichiometry",
+      "columns_1based": [
+        37,
+        38,
+        39,
+        40
+      ],
+      "rule": "Preserve feature strings/ranges and stoichiometry including meaningful zero and missing -. Do not infer a full sequence, exact construct identity or validated assay controls from them."
+    },
+    {
+      "group": "other_missing_values_and_confidence",
+      "columns_1based": [
+        15,
+        23,
+        24
+      ],
+      "rule": "Preserve literal source confidence and cross-references; missing optional values remain not supplied. Do not convert MIscore to a calibrated truth probability. Retain every other raw column even if outside a structured projection."
+    }
+  ],
+  "upstream_reuse": {
+    "format_commit": "https://github.com/HUPO-PSI/miTab/blob/301904541d716b767d02a67f3413907952844ea1/PSI-MITAB27Format.md",
+    "curation_commit": "https://github.com/intact-portal/intact-portal-documentation/tree/b5d5bb35365739d4942e9ca250a2cf4fbaa14c62/docs/curation-manual",
+    "reader": "PSI-JAMI jami-mitab interaction-evidence reader, not modelled/light/clustered interaction objects",
+    "reader_source_commit": "b66f63654d5878b918aad74af60054b1be0437a8",
+    "parent_pom_version": "3.9.4; README release badge is stale and is not a runtime version",
+    "software_license": "Apache-2.0 as declared in the pinned POM; actual dependency lock/build remains pending",
+    "verified_source_limitations": "JAMI can select only the first of some multi-valued roles/types/methods/hosts/expansion terms with parser listener events, and can infer type from identifiers. Retain raw cells and all diagnostics; fail the structured projection for lossy/unsupported mappings rather than silently accepting them.",
+    "no_custom_biology_parser": "Preparation uses only directory metadata and opaque bytes. Reader installation and full format-conformance controls precede a later minimal projection adapter."
+  },
+  "license": {
+    "data": "CC-BY-4.0",
+    "statement": "https://raw.githubusercontent.com/intact-portal/intact-portal-documentation/b5d5bb35365739d4942e9ca250a2cf4fbaa14c62/about/license-privacy.md",
+    "attribution": "IntAct molecular interaction database / IMEx contributors; cite the IntAct resource paper and original selected publications; retain license, evidence identifiers, release URL and retrieval/hash receipts in derivatives.",
+    "scope": "The dedicated data license covers MITAB. The download guide general Apache statement is not used to relicense interaction data."
+  },
+  "exposure_and_grouping": {
+    "current_status": "Metadata exposed; no reference rows decoded, no labels materialized, no model or graph run.",
+    "reference_input": "For lossless import, the curated MITAB is intentionally the importer input. This is source fidelity and is not a concealed-label extraction benchmark.",
+    "reserved_final": "Do not display/decode reserved rows in development investigation. A fixed evaluator may parse them only after adapter/output commitments are frozen. If a human or development agent inspects values, mark the study consumed and report that status; never silently replace it.",
+    "study_relation_gate": "Before scoring a final subset, audit publication/source annotations for explicitly shared primary/secondary study provenance. If a final study is linked to development/previously consumed evidence, exclude that component from final scoring without replacement and record the reason; no hidden-independent claim while this audit is pending.",
+    "repeated_pairs_and_participants": "Keep publication groups intact and report dev/final exact-pair and participant overlap flags. Source-fidelity assessment does not claim pair-disjoint prediction; show overlap rather than pretending database separation ensures independence.",
+    "pharos_and_pretraining": "Presence in Pharos/STRING/other aggregates and language-model pretraining is unknown. No independent biological improvement claim is authorized by this panel.",
+    "historical_panels": "INMC/Lambourne/CIViC and all prior planner experiments remain consumed and unchanged. Known primary publication overlap must be recorded if later discovered."
+  },
+  "later_comparison": {
+    "arms": [
+      "Direct source view as reference-access baseline",
+      "Deterministic qualified import, answer and export on exactly the same eligible rows",
+      "Optional agent-assisted interpretation only after its input/output contract is separately frozen; no agent call authorized by this preparation"
+    ],
+    "units": "Primary unit is a source evidence-row locator (release + artifact SHA + 1-based source line + evidence IDs), never a deduplicated gene pair. Also aggregate per publication so a large study cannot dominate.",
+    "frozen_metrics": [
+      "Raw row and eligible row accounting; study counts and reasons for exclusions",
+      "Coverage = eligible rows with a complete answer/export divided by all eligible rows",
+      "Strict fidelity = eligible rows preserving every applicable field group and locator divided by all eligible rows; abstentions/incomplete outputs count as misses",
+      "Conditional fidelity among completed outputs, always alongside coverage",
+      "Per-field correct/nonmissing preservation, lost explicit values, unsupported additions and missing-state preservation; show numerators and denominators",
+      "Critical error counts: wrong identity/source/publication/role side, unsupported directness, lost expansion, wrong negative/default semantics, invented context, accidental merged independent evidence",
+      "Macro average of per-publication strict fidelity, plus raw micro counts; development and reserved-final reported separately",
+      "Stratum coverage for negative true/false/default, expansion present/absent, source type/method, optional context present/missing; no score for empty strata"
+    ],
+    "correctness_reference": "Raw frozen cells plus validated official parsing semantics. Byte preservation alone is necessary but does not establish correct user-facing explanation. JAMI output alone is not an infallible gold if its diagnostics indicate information loss.",
+    "no_primary_single_number": "Do not average away critical semantic errors or call these metrics scientific accuracy. No predeclared prediction gain, source pruning or graph-edge deletion.",
+    "stop_rules": "Stop final assessment if no eligible studies/rows, unresolved parser semantics or ambiguous reference projection. Record not evaluable; tune only on development data. No rerank/reselection after outcomes."
+  },
+  "readiness": {
+    "contract_frozen_before_rows": true,
+    "official_source_artifact_pin": "Next opaque retrieval receipt binds actual bytes; eligibility unknown until later parser gate.",
+    "reader_installed_and_validated": false,
+    "adapter_implemented": false,
+    "fidelity_score_available": false,
+    "gpu_required": false
+  }
+}

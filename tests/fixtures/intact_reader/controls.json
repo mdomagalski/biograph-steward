@@ -1,0 +1,1086 @@
+{
+  "format": "biograph-steward.intact-reader-synthetic-controls.v1",
+  "created_date": "2026-10-26",
+  "synthetic_only": true,
+  "candidate_reference_rows_accessed": false,
+  "purpose": "Exercise the pinned official JAMI evidence reader and retain its limitations before any reference-row projection.",
+  "reader": "PSI-JAMI jami-mitab 3.9.4 InteractionEvidence reader, not light/modelled/clustered objects",
+  "upstream_commit": "b66f63654d5878b918aad74af60054b1be0437a8",
+  "mitab_source_jar_sha256": "2ba7e3357a78f951eaa002d01b79c359ee2a79ffde7063b58981ebef984b7c99",
+  "format_spec_sha256": "3c40e5f457a08a5e360f25e825d8c5ed192184d13733476adf184a2cb6c92b4c",
+  "protocol_sha256": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a",
+  "semantic_amendment_sha256": "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c",
+  "expected_semantics": "reader_expected values are source-derived controls, not observed execution results. Null interaction_count explicitly leaves recovery outcome observational. source_semantics/application_expected are requirements independently governed by raw cells, frozen protocol and amendment; JAMI output alone is not gold.",
+  "listener_contract": "Capture callback method names including inherited MIFileParserListener, public category and source locators. Minimum counts tolerate additional valid diagnostics; exact empty counts are controls for silent normalization and baseline only. Never compare generated log prose.",
+  "projection_contract": "Observation aliases use conceptual field names in this fixture contract; tests must read the real Java-wrapper API projection, never implement an alternative biological parser to satisfy expectations.",
+  "case_count": 30,
+  "baseline_columns_1based": {
+    "1": "uniprotkb:P12345-2",
+    "2": "uniprotkb:Q12345",
+    "3": "refseq:NP_000001",
+    "4": "refseq:NP_000002",
+    "5": "unknown:synthetic_a(display_short)",
+    "6": "unknown:synthetic_b(display_short)",
+    "7": "psi-mi:\"MI:0006\"(anti bait coimmunoprecipitation)",
+    "8": "Synthetic et al.(2000)",
+    "9": "pubmed:99999999",
+    "10": "taxid:9606(human)",
+    "11": "taxid:9606(Homo sapiens)",
+    "12": "psi-mi:\"MI:0914\"(association)",
+    "13": "psi-mi:\"MI:0469\"(intact)",
+    "14": "intact:EBI-SYNTHETIC-0001",
+    "15": "intact-miscore:0.50",
+    "16": "-",
+    "17": "psi-mi:\"MI:0499\"(unspecified role)",
+    "18": "psi-mi:\"MI:0499\"(unspecified role)",
+    "19": "psi-mi:\"MI:0496\"(bait)",
+    "20": "psi-mi:\"MI:0498\"(prey)",
+    "21": "psi-mi:\"MI:0326\"(protein)",
+    "22": "psi-mi:\"MI:0326\"(protein)",
+    "23": "-",
+    "24": "-",
+    "25": "-",
+    "26": "comment:\"synthetic participant A\"",
+    "27": "comment:\"synthetic participant B\"",
+    "28": "comment:\"synthetic control, not reference evidence\"",
+    "29": "taxid:4932(Saccharomyces cerevisiae)",
+    "30": "-",
+    "31": "2000/01/01",
+    "32": "2000/01/02",
+    "33": "rogid:syntheticA",
+    "34": "rogid:syntheticB",
+    "35": "rigid:syntheticInteraction",
+    "36": "false",
+    "37": "binding site:23-45(synthetic region)",
+    "38": "-",
+    "39": "1",
+    "40": "1",
+    "41": "psi-mi:\"MI:0102\"(sequence tag identification)",
+    "42": "psi-mi:\"MI:0102\"(sequence tag identification)"
+  },
+  "cases": [
+    {
+      "id": "baseline_explicit_false",
+      "input_tsv": "baseline_explicit_false.tsv",
+      "sha256": "2b93835611ed07099712678900ac6321ce3dc12a7be09003f33effdab12877a7",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {},
+      "reader_expected": {
+        "interaction_count": 1,
+        "negative": false,
+        "detection_method_id": "MI:0006",
+        "interaction_type_id": "MI:0914",
+        "host_taxid": 4932,
+        "participant_taxids": [
+          9606,
+          9606
+        ],
+        "participant_type_ids": [
+          "MI:0326",
+          "MI:0326"
+        ],
+        "experimental_role_ids": [
+          "MI:0496",
+          "MI:0498"
+        ],
+        "biological_role_ids": [
+          "MI:0499",
+          "MI:0499"
+        ],
+        "participant_stoichiometry": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "participant_identification_method_ids": [
+          [
+            "MI:0102"
+          ],
+          [
+            "MI:0102"
+          ]
+        ],
+        "listener_exact_counts": {}
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {
+        "negative_literal": "false",
+        "negative_origin": "explicit",
+        "expansion_annotation_supplied": false,
+        "explicit_protein_type": [
+          true,
+          true
+        ],
+        "participant_id_values": [
+          "P12345-2",
+          "Q12345"
+        ]
+      },
+      "notes": "Wholly invented association. Human participant taxonomies coexist with yeast assay host; bait/prey remain experimental roles. Isoform suffix remains exact. Confidence 0.50 is literal source text, not calibrated probability."
+    },
+    {
+      "id": "negative_default",
+      "input_tsv": "negative_default.tsv",
+      "sha256": "8f29fc4c8cac2956c35f02c5de11662b70c7d6d6e0c6fae1413435a27ad1a199",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "36": "-"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "negative": false
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {
+        "negative_literal": "-",
+        "negative_origin": "mitab27_default_false",
+        "expansion_annotation_supplied": false
+      },
+      "notes": "The negative default is defined by the format. It is not a rule for any other absent field."
+    },
+    {
+      "id": "negative_true",
+      "input_tsv": "negative_true.tsv",
+      "sha256": "463d94c4d8231205d61900815103813386cde27738a2c9b46d0fead4cfe9193f",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "36": "true"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "negative": true
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {
+        "negative_literal": "true",
+        "negative_origin": "explicit"
+      },
+      "notes": "Qualified synthetic negative observation; not universal absence or a missing pair."
+    },
+    {
+      "id": "negative_invalid_maybe",
+      "input_tsv": "negative_invalid_maybe.tsv",
+      "sha256": "10fdfe66bad73293e6a6567b902ee5afc2d8cc5f19832ccdafe0f587bd8c0477",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "36": "maybe"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "negative": false,
+        "listener_exact_counts": {}
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "quarantine_reasons": [
+          "negative_literal_invalid"
+        ],
+        "must_not_use_reader_false_as_positive_evidence": true
+      },
+      "source_semantics": {},
+      "notes": "Verified source limitation: MitabLineParser.negative calls Boolean.parseBoolean on free text. A successful parse is insufficient for true/false/- conformance."
+    },
+    {
+      "id": "expanded_spoke",
+      "input_tsv": "expanded_spoke.tsv",
+      "sha256": "3a61b5d367001a481f4b21605d50d9aa6745cec67574d045727bdc28ccb7ea7f",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "16": "psi-mi:\"MI:1060\"(spoke expansion)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "expansion_mi_ids": [
+          "MI:1060"
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {
+        "expansion_annotation_supplied": true,
+        "original_interaction_ids": [
+          "EBI-SYNTHETIC-0001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "roles_reversed",
+      "input_tsv": "roles_reversed.tsv",
+      "sha256": "254adb530cd29ba597b966072a91ce70fc79f6362d7d5bcb8e99733e6ebf4b6e",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "19": "psi-mi:\"MI:0498\"(prey)",
+        "20": "psi-mi:\"MI:0496\"(bait)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "experimental_role_ids": [
+          "MI:0498",
+          "MI:0496"
+        ],
+        "biological_role_ids": [
+          "MI:0499",
+          "MI:0499"
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {},
+      "notes": "Side orientation is intentional; no bait=A shortcut."
+    },
+    {
+      "id": "host_in_vitro",
+      "input_tsv": "host_in_vitro.tsv",
+      "sha256": "1ce2a9c5ee1d997d2fc4b92afe81fb1ab147eac2acce8b65a5e6b6834aeb3e38",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "29": "taxid:-1(in vitro)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "host_taxid": -1,
+        "participant_taxids": [
+          9606,
+          9606
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {},
+      "notes": "Special host code from MITAB27; does not replace participant taxonomies."
+    },
+    {
+      "id": "participant_nonhuman",
+      "input_tsv": "participant_nonhuman.tsv",
+      "sha256": "b58006caa35d4ec773de49015b169d3149f7b2ef0f85266ec19d478fbdc868a1",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "11": "taxid:10090(mouse)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_taxids": [
+          9606,
+          10090
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "primary_panel_eligible": false,
+        "exclusion_reasons": [
+          "participant_taxonomy_not_explicitly_human"
+        ]
+      },
+      "source_semantics": {},
+      "notes": ""
+    },
+    {
+      "id": "participant_taxonomy_missing",
+      "input_tsv": "participant_taxonomy_missing.tsv",
+      "sha256": "a7cef7657ce40006d0d4db4dc3c56190fe4cfcd345037b1807ad73d6b4800672",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "10": "-"
+      },
+      "reader_expected": {
+        "interaction_count": 1
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "primary_panel_eligible": false,
+        "exclusion_reasons": [
+          "participant_taxonomy_not_explicitly_human"
+        ]
+      },
+      "source_semantics": {
+        "participant_taxonomy_supplied": [
+          false,
+          true
+        ]
+      },
+      "notes": "Reader defaults/inference cannot establish explicit human provenance."
+    },
+    {
+      "id": "participant_type_missing",
+      "input_tsv": "participant_type_missing.tsv",
+      "sha256": "15255ba2f063d86ef877c9c5d4a0212425eb5791e427275af53f6b56381998b3",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "21": "-"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_type_ids": [
+          "MI:0326",
+          "MI:0326"
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "primary_panel_eligible": false,
+        "exclusion_reasons": [
+          "participant_type_missing_or_inferred"
+        ]
+      },
+      "source_semantics": {
+        "explicit_protein_type": [
+          false,
+          true
+        ]
+      },
+      "notes": "Expected UniProt-based type inference is retained as inferred and excluded from the explicit-type primary panel. Do not require a listener warning for this inference."
+    },
+    {
+      "id": "multiple_unique_identifiers",
+      "input_tsv": "multiple_unique_identifiers.tsv",
+      "sha256": "69dd7129b23549e4b9fd27d4ab6f23dc52802f59c326133a5b5c0da4552009ff",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "1": "uniprotkb:P12345-2|uniprotkb:P12346"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "listener_minimum_counts": {
+          "onSeveralUniqueIdentifiers": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "primary_panel_eligible": false,
+        "exclusion_reasons": [
+          "primary_identifier_ambiguous"
+        ]
+      },
+      "source_semantics": {},
+      "notes": "Both raw identifiers remain available; reader preferred identifier does not disambiguate source."
+    },
+    {
+      "id": "multiple_participant_taxa",
+      "input_tsv": "multiple_participant_taxa.tsv",
+      "sha256": "bbe4cddb3f1ba709a8e5fd5808857754f5f1ae53d5ec33db8464cdf7d39e27f8",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "10": "taxid:9606(human)|taxid:10090(mouse)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_taxids": [
+          9606,
+          9606
+        ],
+        "listener_minimum_counts": {
+          "onSeveralOrganismFound": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "primary_panel_eligible": false,
+        "exclusion_reasons": [
+          "participant_taxonomy_ambiguous"
+        ]
+      },
+      "source_semantics": {},
+      "notes": ""
+    },
+    {
+      "id": "multiple_biological_roles",
+      "input_tsv": "multiple_biological_roles.tsv",
+      "sha256": "4651ebed9588d69305f12536a0802f13ef3d934a94cf19d6778974e8f10b8675",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "17": "psi-mi:\"MI:0499\"(unspecified role)|psi-mi:\"MI:0684\"(ancillary)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "biological_role_ids": [
+          "MI:0499",
+          "MI:0499"
+        ],
+        "listener_minimum_counts": {
+          "onSeveralCvTermsFound": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "structured_projection_lossless": false,
+        "loss_reasons": [
+          "biological_role_multivalue_truncated"
+        ]
+      },
+      "source_semantics": {},
+      "notes": ""
+    },
+    {
+      "id": "multiple_experimental_roles",
+      "input_tsv": "multiple_experimental_roles.tsv",
+      "sha256": "1966d603b755cd4b242c42385a203c922726d187feb13631bfaf008ebccc044c",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "19": "psi-mi:\"MI:0496\"(bait)|psi-mi:\"MI:0498\"(prey)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "experimental_role_ids": [
+          "MI:0496",
+          "MI:0498"
+        ],
+        "listener_minimum_counts": {
+          "onSeveralCvTermsFound": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "structured_projection_lossless": false,
+        "loss_reasons": [
+          "experimental_role_multivalue_truncated"
+        ]
+      },
+      "source_semantics": {},
+      "notes": ""
+    },
+    {
+      "id": "multiple_interactor_types",
+      "input_tsv": "multiple_interactor_types.tsv",
+      "sha256": "f8569795b67ae86574aabb7bfcc3fccfc8b9f11b4d9816e3281bd5b359aaeeb2",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "21": "psi-mi:\"MI:0326\"(protein)|psi-mi:\"MI:0327\"(peptide)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_type_ids": [
+          "MI:0326",
+          "MI:0326"
+        ],
+        "listener_minimum_counts": {
+          "onSeveralCvTermsFound": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "primary_panel_eligible": false,
+        "structured_projection_lossless": false,
+        "exclusion_reasons": [
+          "participant_type_ambiguous"
+        ],
+        "loss_reasons": [
+          "interactor_type_multivalue_truncated"
+        ]
+      },
+      "source_semantics": {},
+      "notes": "Protein/peptide MI IDs are copied from official 3.9.4 Protein.java constants."
+    },
+    {
+      "id": "multiple_detection_methods",
+      "input_tsv": "multiple_detection_methods.tsv",
+      "sha256": "ea6616cd9fb2ac63aa9faaad8697c535cad68f5d68dcbe5968b9bdc3fff887c0",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "7": "psi-mi:\"MI:0006\"(anti bait coimmunoprecipitation)|psi-mi:\"MI:0001\"(interaction detection method)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "detection_method_id": "MI:0006",
+        "listener_minimum_counts": {
+          "onSeveralCvTermsFound": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "structured_projection_lossless": false,
+        "loss_reasons": [
+          "interaction_detection_multivalue_truncated"
+        ]
+      },
+      "source_semantics": {},
+      "notes": "Both MI IDs derive from the pinned specification; the broad parent is deliberately second. No ontology ancestry is evaluated."
+    },
+    {
+      "id": "multiple_interaction_types",
+      "input_tsv": "multiple_interaction_types.tsv",
+      "sha256": "fbf279eaf95ebf2f0cdbcdce5677a67fa2c1ddfe71e6075a4f93173c2f3c9b67",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "12": "psi-mi:\"MI:0914\"(association)|psi-mi:\"MI:0190\"(interaction type)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "interaction_type_id": "MI:0914",
+        "listener_minimum_counts": {
+          "onSeveralCvTermsFound": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "structured_projection_lossless": false,
+        "loss_reasons": [
+          "interaction_type_multivalue_truncated"
+        ]
+      },
+      "source_semantics": {},
+      "notes": ""
+    },
+    {
+      "id": "multiple_hosts",
+      "input_tsv": "multiple_hosts.tsv",
+      "sha256": "3ccc1daf973b8f54c46c5f59db8bf9fd072daf1636331f9206b9c5706a694f88",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "29": "taxid:4932(Saccharomyces cerevisiae)|taxid:9606(human)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "host_taxid": 4932,
+        "listener_minimum_counts": {
+          "onSeveralHostOrganismFound": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "structured_projection_lossless": false,
+        "loss_reasons": [
+          "host_multivalue_truncated"
+        ]
+      },
+      "source_semantics": {},
+      "notes": ""
+    },
+    {
+      "id": "multiple_expansion_methods",
+      "input_tsv": "multiple_expansion_methods.tsv",
+      "sha256": "435f2c57a4b5fdff4a4a1dd8e0256af30715cf22acba25a2d84c1dad39df52df",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "16": "psi-mi:\"MI:1060\"(spoke expansion)|psi-mi:\"MI:1061\"(matrix expansion)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "expansion_mi_ids": [
+          "MI:1060"
+        ],
+        "listener_minimum_counts": {
+          "onSeveralCvTermsFound": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "structured_projection_lossless": false,
+        "loss_reasons": [
+          "expansion_multivalue_truncated"
+        ]
+      },
+      "source_semantics": {},
+      "notes": "Matrix expansion MI ID is copied from official 3.9.4 Annotation.java constant."
+    },
+    {
+      "id": "multiple_stoichiometry",
+      "input_tsv": "multiple_stoichiometry.tsv",
+      "sha256": "78b6ad6ac512f67bf02e749f628806a470ea98c9b4cb2efdcfe1ab5a5ad37962",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "39": "1|2"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_stoichiometry": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "listener_minimum_counts": {
+          "onSeveralStoichiometryFound": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "structured_projection_lossless": false,
+        "loss_reasons": [
+          "stoichiometry_multivalue_truncated"
+        ]
+      },
+      "source_semantics": {},
+      "notes": "Official reader accepts a collection but retains the first; the stricter single-numerical MITAB27 cell interpretation must be reported separately."
+    },
+    {
+      "id": "multiple_identification_methods",
+      "input_tsv": "multiple_identification_methods.tsv",
+      "sha256": "afd928f163e0c6991af6f67b6030485987bc0996f0e1fe25601f3b15d03e1a4b",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "41": "psi-mi:\"MI:0102\"(sequence tag identification)|psi-mi:\"MI:0002\"(participant identification method)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_identification_method_ids": [
+          [
+            "MI:0102",
+            "MI:0002"
+          ],
+          [
+            "MI:0102"
+          ]
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {},
+      "notes": "Unlike interaction detection methods, participant identification methods are retained as a collection by the evidence parser."
+    },
+    {
+      "id": "stoichiometry_zero_homooligomer",
+      "input_tsv": "stoichiometry_zero_homooligomer.tsv",
+      "sha256": "5cfae77f65e136e2bfdcabda4b8fd5243fe451571841b44fb8944998eb8b22b7",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "2": "uniprotkb:P12345-2",
+        "39": "0",
+        "40": "0"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_stoichiometry": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {
+        "stoichiometry_supplied": [
+          true,
+          true
+        ]
+      },
+      "notes": "Specifically allowed zero; it must not collapse to missing or fail a positive-only integer validator."
+    },
+    {
+      "id": "stoichiometry_missing",
+      "input_tsv": "stoichiometry_missing.tsv",
+      "sha256": "f2d614dc23f4dfa7358015c11d20519298338be1f3d7089679439d46d6514950",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "39": "-",
+        "40": "-"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_stoichiometry": [
+          null,
+          null
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {
+        "stoichiometry_supplied": [
+          false,
+          false
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "stoichiometry_invalid_text",
+      "input_tsv": "stoichiometry_invalid_text.tsv",
+      "sha256": "f17d7c079d98dbbcbd0ac059f958cedf5a3179d7a987c5f70c8d0ca23e50d72e",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "39": "not_an_integer"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_stoichiometry": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "listener_minimum_counts": {
+          "onInvalidStoichiometry": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "quarantine_reasons": [
+          "reader_invalid_stoichiometry"
+        ],
+        "must_not_use_reader_zero_as_source_value": true
+      },
+      "source_semantics": {},
+      "notes": "Official parser catches NumberFormatException and supplies zero with a listener event; source zero and recovered zero must remain distinct."
+    },
+    {
+      "id": "quoted_reserved_characters",
+      "input_tsv": "quoted_reserved_characters.tsv",
+      "sha256": "cad91206d6c0a8c5c1f68509601843a6882a9f48c8e7966bd3279eceed64e75a",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "26": "comment:\"synthetic \\\"quoted\\\" text with | pipes : colons (braces)\""
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "participant_annotation_text_contains": [
+          "synthetic \"quoted\" text with | pipes : colons (braces)",
+          null
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown"
+      },
+      "source_semantics": {},
+      "notes": "MITAB27 quoting surrounds each value; embedded quotes use backslash escaping. Quoted pipe is not a value separator."
+    },
+    {
+      "id": "malformed_feature_range",
+      "input_tsv": "malformed_feature_range.tsv",
+      "sha256": "ea3000d3d797a7836ce49cd589c317a2719c2a2fb882e9ab1f6811f522ea3f84",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "37": "binding site:not_a_range(synthetic region)"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "listener_minimum_counts": {
+          "onInvalidSyntax": 1
+        }
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "quarantine_reasons": [
+          "reader_invalid_syntax"
+        ]
+      },
+      "source_semantics": {},
+      "notes": "Callback category and location matter; no brittle generated parser message assertion."
+    },
+    {
+      "id": "short_mitab25_row",
+      "input_tsv": "short_mitab25_row.tsv",
+      "sha256": "55e1419e133a5509167db231ba10310c925a4807b7ffe1d3191d6aa1bae4ad3f",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        15
+      ],
+      "changed_columns_1based": {},
+      "reader_expected": {
+        "interaction_count": 1
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": false,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "quarantine_reasons": [
+          "column_count_not_42"
+        ]
+      },
+      "source_semantics": {},
+      "notes": "JAMI supports MITAB2.5 as well; reader acceptance cannot certify the frozen MITAB2.7 protocol."
+    },
+    {
+      "id": "truncated_41_columns",
+      "input_tsv": "truncated_41_columns.tsv",
+      "sha256": "fb8716160447ed07ea6abac54a89d8856406545a22681e9bb175ff06076ba078",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        41
+      ],
+      "changed_columns_1based": {},
+      "reader_expected": {
+        "interaction_count": null
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": false,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "quarantine_reasons": [
+          "column_count_not_42"
+        ]
+      },
+      "source_semantics": {},
+      "notes": "Record actual official-reader recovery/diagnostics; application column gate must quarantine regardless. No guessed parse outcome."
+    },
+    {
+      "id": "extra_43_columns",
+      "input_tsv": "extra_43_columns.tsv",
+      "sha256": "9be0cb3e9060a522eba67699ee74bfa1aa2f68492d6147db00f072ec3e817868",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        43
+      ],
+      "changed_columns_1based": {},
+      "reader_expected": {
+        "interaction_count": null
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": false,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "quarantine_reasons": [
+          "column_count_not_42"
+        ]
+      },
+      "source_semantics": {},
+      "notes": "Record actual reader response; exact42-column protocol boundary governs eligibility."
+    },
+    {
+      "id": "optional_context_missing",
+      "input_tsv": "optional_context_missing.tsv",
+      "sha256": "2d972294a8e7d677a8345e61c48343b7f54745140b649f567a3f11f519c11278",
+      "synthetic": true,
+      "source_line_count": 1,
+      "raw_column_counts": [
+        42
+      ],
+      "changed_columns_1based": {
+        "3": "-",
+        "4": "-",
+        "8": "-",
+        "23": "-",
+        "24": "-",
+        "25": "-",
+        "26": "-",
+        "27": "-",
+        "28": "-",
+        "29": "-",
+        "30": "-",
+        "31": "-",
+        "32": "-",
+        "33": "-",
+        "34": "-",
+        "35": "-",
+        "37": "-",
+        "38": "-",
+        "39": "-",
+        "40": "-",
+        "41": "-",
+        "42": "-"
+      },
+      "reader_expected": {
+        "interaction_count": 1,
+        "host_taxid": null,
+        "participant_stoichiometry": [
+          null,
+          null
+        ],
+        "participant_identification_method_ids": [
+          [],
+          []
+        ]
+      },
+      "application_expected": {
+        "mitab27_column_count_valid": true,
+        "projection_must_not_claim_direct_binding": true,
+        "binary_origin_from_absent_expansion": "unknown",
+        "must_not_invent_optional_context": true
+      },
+      "source_semantics": {
+        "host_supplied": false,
+        "participant_annotations_supplied": [
+          false,
+          false
+        ],
+        "features_supplied": [
+          false,
+          false
+        ],
+        "stoichiometry_supplied": [
+          false,
+          false
+        ]
+      },
+      "notes": "Explicit human proteins and source identity remain; missing optional experimental context must stay not supplied."
+    }
+  ]
+}

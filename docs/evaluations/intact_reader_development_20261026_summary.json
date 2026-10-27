@@ -1,0 +1,248 @@
+{
+  "format": "biograph-steward.intact-reader-development-summary.v1",
+  "prepared_date": "2026-10-26",
+  "status": "official_reader_validated_development_suitability_checked_not_fidelity_scored",
+  "reader": "PSI-JAMI jami-mitab/core 3.9.4",
+  "upstream_commit": "b66f63654d5878b918aad74af60054b1be0437a8",
+  "java_runtime": "Temurin 21.0.1",
+  "maven_version": "3.10.0",
+  "runtime_dependencies": [
+    {
+      "path": "/Users/42573/biograph-steward-pharos/runs/intact_reader_validation_20261026/m2/psidev/psi/mi/jami/jami-mitab/3.9.4/jami-mitab-3.9.4.jar",
+      "sha256": "a97e8bd2e3b76a1c53a7a33cfc9e14dcef48bc0a3f44db437dd6ccce9e6dd82b",
+      "bytes": 309058
+    },
+    {
+      "path": "/Users/42573/biograph-steward-pharos/runs/intact_reader_validation_20261026/m2/psidev/psi/mi/jami/jami-core/3.9.4/jami-core-3.9.4.jar",
+      "sha256": "1fd6adbc24fd4b19c658cd615361deba29b1cb49b198e5e3a4b0d289f87789fe",
+      "bytes": 774121
+    },
+    {
+      "path": "/Users/42573/biograph-steward-pharos/runs/intact_reader_validation_20261026/m2/net/sf/jgrapht/jgrapht/0.8.3/jgrapht-0.8.3.jar",
+      "sha256": "4526b2e40de7c6c22f5ce3011aca3483698189d0bb49983ea951e4f71e3b92c9",
+      "bytes": 245266
+    },
+    {
+      "path": "/Users/42573/biograph-steward-pharos/runs/intact_reader_validation_20261026/m2/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar",
+      "sha256": "45d32ac61ef8a744b464c54c2b3414be571016dd46bfc2bec226761cf7ae457a",
+      "bytes": 66519
+    },
+    {
+      "path": "/Users/42573/biograph-steward-pharos/runs/intact_reader_validation_20261026/m2/com/google/code/gson/gson/2.13.2/gson-2.13.2.jar",
+      "sha256": "dd0ce1b55a3ed2080cb70f9c655850cda86c206862310009dcb5e5c95265a5e0",
+      "bytes": 289901
+    },
+    {
+      "path": "/Users/42573/biograph-steward-pharos/runs/intact_reader_validation_20261026/m2/com/google/errorprone/error_prone_annotations/2.41.0/error_prone_annotations-2.41.0.jar",
+      "sha256": "a56e782b5b50811ac204073a355a21d915a2107fce13ec711331ad036f660fcc",
+      "bytes": 20389
+    }
+  ],
+  "bindings": {
+    "synthetic_controls": {
+      "path": "runs/intact_reader_validation_20261026/controls_attempt_02/report.json",
+      "sha256": "3ffdd7023974addf30b69fd6e35461f507013374182883dfbbe2354e25286ab5"
+    },
+    "preserved_initial_failure": {
+      "path": "runs/intact_reader_validation_20261026/controls_attempt_01/report.json",
+      "sha256": "a8449d01d91c733b5172ea1cd310c4e22b4e3273021ff0487119c4e84ff77582"
+    },
+    "development_inspection": {
+      "path": "runs/intact_development_inspection_20261026/report.json",
+      "sha256": "f329ef329ce23eaf3ac403890208fa5526a57124999251e7c746f3da667719c2"
+    },
+    "all_row_ledger": {
+      "path": "runs/intact_development_inspection_20261026/row_ledger.jsonl",
+      "sha256": "232ad603873331a0f19e3447ec8c430e93dd7b5802367190be8cd956c6a16a2b"
+    },
+    "bridge_source": {
+      "path": "tools/intact_reader/src/main/java/org/biograph/IntactReader.java",
+      "sha256": "ccd1348a878625247efeea6cc6364fd5f62cbdb8937848b3da56e1a865fb608c"
+    },
+    "pom": {
+      "path": "tools/intact_reader/pom.xml",
+      "sha256": "310a2721a9a1859984e55f0767d19efe4b648ced39b3e2f00da2514ef5a35b53"
+    },
+    "synthetic_inventory": {
+      "path": "tests/fixtures/intact_reader/controls.json",
+      "sha256": "de2e90ac9ec81c04bd0257f8a589ce9c750dcb0b4e13c7bab4adf595984e212f"
+    },
+    "source_artifact_comparison": {
+      "path": "runs/intact_reader_validation_20261026/upstream/source_commit_comparison.json",
+      "sha256": "f405048696efb7bd83a594c968172f424eebd46571b268ee5d3037e977d9ad93"
+    }
+  },
+  "synthetic_validation": {
+    "original_controls": 30,
+    "supplemental_controls": 2,
+    "checks": {
+      "total": 3193,
+      "passed": 3193,
+      "failed": 0
+    },
+    "initial_attempt": {
+      "status": "failed",
+      "failed_checks": 5,
+      "reason": "Upstream error_skipToNext prints parser-error prose to stdout. Bridge now routes upstream stdout to retained stderr while parsing, then emits JSON through original stream. Original fixtures unchanged."
+    }
+  },
+  "development": {
+    "studies": [
+      {
+        "publication_id": "pubmed:40075158",
+        "physical_rows": 3,
+        "source_sha256": "d65a5243b53ef51719d03a797c7b15dd7f7b03cc7019897c3d311d8756149e56",
+        "counts": {
+          "header": 1,
+          "eligible": 0,
+          "evidence": 2,
+          "excluded_evidence": 2
+        },
+        "exclusion_reasons": {
+          "primary_identifier_missing_or_ambiguous_a": 2,
+          "participant_type_not_only_explicit_protein_a": 2,
+          "primary_identifier_missing_or_ambiguous_b": 2,
+          "participant_type_not_only_explicit_protein_b": 2
+        },
+        "object_projection_limitations": {},
+        "reader_callbacks": {},
+        "eligible_negative_literals": {},
+        "eligible_expansion_annotation": {}
+      },
+      {
+        "publication_id": "pubmed:40404733",
+        "physical_rows": 6,
+        "source_sha256": "19f3325086266f76dbf7910b798756d8a13bc56bd45d826f7308267d75c86738",
+        "counts": {
+          "header": 1,
+          "eligible": 2,
+          "evidence": 5,
+          "excluded_evidence": 3
+        },
+        "exclusion_reasons": {
+          "primary_identifier_missing_or_ambiguous_a": 1,
+          "participant_type_not_only_explicit_protein_a": 1,
+          "primary_identifier_missing_or_ambiguous_b": 3,
+          "participant_type_not_only_explicit_protein_b": 3
+        },
+        "object_projection_limitations": {},
+        "reader_callbacks": {},
+        "eligible_negative_literals": {
+          "false": 2
+        },
+        "eligible_expansion_annotation": {
+          "not_supplied": 2
+        }
+      },
+      {
+        "publication_id": "pubmed:40071126",
+        "physical_rows": 5,
+        "source_sha256": "211cde6738435a6f49a9f67b932d4d2f0f9fbc9022464f188b5542ab17a576a7",
+        "counts": {
+          "header": 1,
+          "eligible": 2,
+          "evidence": 4,
+          "excluded_evidence": 2
+        },
+        "exclusion_reasons": {
+          "primary_identifier_missing_or_ambiguous_a": 2,
+          "participant_type_not_only_explicit_protein_a": 2,
+          "primary_identifier_missing_or_ambiguous_b": 2,
+          "participant_type_not_only_explicit_protein_b": 2
+        },
+        "object_projection_limitations": {},
+        "reader_callbacks": {},
+        "eligible_negative_literals": {
+          "false": 2
+        },
+        "eligible_expansion_annotation": {
+          "not_supplied": 2
+        }
+      },
+      {
+        "publication_id": "pubmed:40739265",
+        "physical_rows": 4,
+        "source_sha256": "5c28e098ea83e319a7ae7352640baef64c10ebd51d724ff0522ed4e3360f4ad8",
+        "counts": {
+          "header": 1,
+          "eligible": 0,
+          "evidence": 3,
+          "excluded_evidence": 3
+        },
+        "exclusion_reasons": {
+          "primary_identifier_missing_or_ambiguous_a": 1,
+          "participant_type_not_only_explicit_protein_a": 1,
+          "primary_identifier_missing_or_ambiguous_b": 1,
+          "participant_type_not_only_explicit_protein_b": 1,
+          "participant_taxonomy_not_only_explicit_human_a": 2,
+          "participant_taxonomy_not_only_explicit_human_b": 2
+        },
+        "object_projection_limitations": {},
+        "reader_callbacks": {},
+        "eligible_negative_literals": {},
+        "eligible_expansion_annotation": {}
+      }
+    ],
+    "physical_rows": 18,
+    "headers": 4,
+    "evidence_rows": 14,
+    "eligible_rows": 4,
+    "eligible_studies": 2,
+    "distinct_unordered_eligible_protein_pairs": 2,
+    "excluded_rows": 10,
+    "exclusion_context": {
+      "rows_involving_RNA": 8,
+      "mouse_protein_rows": 2
+    },
+    "all_evidence_rows_parsed": true,
+    "all_raw_lines_and_cells_reconciled": true,
+    "reader_listener_events": 0,
+    "eligible_strata": {
+      "negative_false_explicit": 4,
+      "negative_true": 0,
+      "negative_default": 0,
+      "expansion_supplied": 0,
+      "expansion_not_supplied": 4,
+      "detection_method_MI_0006_anti_bait_coimmunoprecipitation": 4,
+      "interaction_type_MI_0915_physical_association": 4,
+      "source_database_MI_0471_MINT": 4
+    },
+    "interpretation": "Four qualified source rows across two pairs/publications, not four independent biological confirmations. Reciprocal roles and source-side orientation remain separate. RNA and mouse rows are outside this declared task, not erroneous biological evidence.",
+    "source_context": "MINT-curated records distributed through IntAct/IMEx. Full official host fields retain explicit Hep3B, KTC-1 and CAL-62 labels; the abbreviated interaction-object projection exposes only host taxid and is not a complete fidelity reference."
+  },
+  "known_limitations": [
+    "JAMI interaction objects reduce some multi-valued fields; full official field-parser collections and raw cells are separately retained.",
+    "JAMI infers missing protein types; source-explicit types govern primary eligibility.",
+    "The bridge interaction-object JSON is an abbreviated view, not a full MITAB27 reference projection. No warning does not imply every source label or field has reached an answer/export; full official field collections and all raw cells remain available.",
+    "JAMI silently maps invalid negative text to false; strict raw literal guard quarantines it.",
+    "No expansion annotation does not establish binary origin or direct binding.",
+    "This small metadata-size-selected development panel has no eligible real negative/expanded examples; synthetic controls alone do not establish real-data performance in those strata.",
+    "A deterministic qualified import, human-readable answer and export have not yet been evaluated.",
+    "Publication/study provenance and prior-source/pair overlap audit remains pending before reserved scoring."
+  ],
+  "exposure": {
+    "development_studies_opened": [
+      "40075158",
+      "40404733",
+      "40071126",
+      "40739265"
+    ],
+    "reserved_final_studies_opened": [],
+    "source_replacement": false,
+    "original_protocol_or_panel_changed": false
+  },
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "pharos_calls": 0,
+  "graph_changes": 0,
+  "scientific_accuracy_measured": false,
+  "next_step": "Build the deterministic qualified-evidence import/answer/export on these four development rows. Freeze it and its evaluator, then audit reserved suitability/provenance before any final scoring. No replacement of zero-eligible studies.",
+  "independent_replay": {
+    "reviewer": "separate code agent",
+    "status": "passed_no_blocking_discrepancy",
+    "scope": "Four authorized development byte hashes, raw line/cell/side reconciliation, eligibility, runtime and controls bindings, exposure ordering and unchanged original preparation. Not human scientific adjudication.",
+    "reserved_bodies_opened": false,
+    "development_report_sha256": "f329ef329ce23eaf3ac403890208fa5526a57124999251e7c746f3da667719c2",
+    "ledger_sha256": "232ad603873331a0f19e3447ec8c430e93dd7b5802367190be8cd956c6a16a2b"
+  }
+}

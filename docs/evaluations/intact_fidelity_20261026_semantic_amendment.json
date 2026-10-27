@@ -1,0 +1,43 @@
+{
+  "format": "biograph-steward.intact-fidelity-semantic-amendment.v1",
+  "created_at": "2026-10-26T22:28:12.166743+00:00",
+  "reason": "Independent source review identified an unsupported converse inference in the frozen complex-expansion rule: a missing annotation was incorrectly described as affirmative true-binary origin.",
+  "original_protocol_path": "docs/evaluations/intact_fidelity_20261026_protocol.json",
+  "original_protocol_sha256": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a",
+  "original_panel_sha256": "38c0b5929bc0c02213ffd66f6c4e7d68924351c3651273a78ce851b5f873de89",
+  "original_preparation_receipt_sha256": "e5c35e3f927e62d2c1094c4d19edaf33406940fba26eeadd397c6f156c2af5ea",
+  "immutable_history": "Original protocol, panel, downloaded blobs, retrieval receipts and preparation receipt remain byte-for-byte unchanged. No reselection, changed split or outcome inspection.",
+  "replacement": {
+    "path": "/field_contract/4/rule",
+    "group": "complex_expansion",
+    "original": "Retain exact expansion method and shared original interaction identifier. Expanded rows are evidence representations, not independent direct-binding experiments. A blank expansion cell is source-default true-binary representation, without upgrading interaction directness.",
+    "corrected": "Retain exact supplied expansion method and shared original interaction identifier. Expanded rows are evidence representations, not independent direct-binding experiments. A blank expansion cell (-) means no expansion annotation was supplied; preserve that missing annotation. It does not establish true-binary experimental origin or absence of n-ary expansion. Assert such origin only if supported by additional explicit source evidence; do not infer interaction directness."
+  },
+  "effect_on_metrics": "The existing expansion-present/absent stratum refers only to source annotation presence. Strict fidelity and unsupported-context error counts must use this amended rule. No metric denominator, eligibility, source selection or study split changes.",
+  "reference_values_accessed_for_amendment": false,
+  "candidate_blob_rows_decoded": false,
+  "labels_materialized": false,
+  "evaluation_previously_executed": false,
+  "evidence": [
+    {
+      "local_path": "runs/intact_fidelity_preparation_20261026/sources/MITAB27.md",
+      "sha256": "3c40e5f457a08a5e360f25e825d8c5ed192184d13733476adf184a2cb6c92b4c",
+      "url": "https://github.com/HUPO-PSI/miTab/blob/301904541d716b767d02a67f3413907952844ea1/PSI-MITAB27Format.md",
+      "location": "Complex expansion column definition (line 31)",
+      "finding": "The standard recommends expansion annotation for expanded n-ary data and says true binary records use -. This is not an assertion that every - record has true-binary origin.",
+      "access_kind": "previously_pinned_format_or_author_parser_source_only"
+    },
+    {
+      "local_path": "runs/intact_fidelity_preparation_20261026/sources/jami_AbstractInteractionLineParser.java",
+      "sha256": "de17b24e2048e95d154345181ceb9b19dac2573f8f89e159da1cbe2901acd869",
+      "url": "https://github.com/MICommunity/psi-jami/blob/b66f63654d5878b918aad74af60054b1be0437a8/jami-mitab/src/main/java/psidev/psi/mi/jami/tab/io/parser/AbstractInteractionLineParser.java#L641-L651",
+      "location": "initialiseExpansionMethod lines 641-651",
+      "finding": "Empty expansion collections add no annotation; this method does not set an affirmative binary-origin flag.",
+      "access_kind": "previously_pinned_format_or_author_parser_source_only"
+    }
+  ],
+  "replay_guard_path": "scripts/verify_intact_fidelity_preparation.py",
+  "replay_guard_sha256": "ced2e1e5e71e0c055e85ba15b46d294c2809dbb1c3c9f03518e26cff2a31a750",
+  "required_acknowledgement": "Any future interpretation/evaluation must bind the original protocol and this amendment file SHA-256, and replay through the amended preparation guard before opening reference rows. The old artifact-only freeze checker is not a semantic authorization.",
+  "content_sha256": "3f2223fd11393c9d05a8178f65ab13d0d54c26d1d6afb427b39f72daca253280"
+}
