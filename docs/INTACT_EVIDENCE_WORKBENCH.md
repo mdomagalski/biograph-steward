@@ -12,7 +12,9 @@ Four qualified source rows, covering two human protein pairs in two publications
 are available from the four consumed development studies. All 18 physical rows
 (four headers and 14 evidence records) remain preserved; eight RNA-containing
 rows and two mouse PPIs are outside the declared primary task. No study was
-replaced. Four reserved interaction files remain unopened.
+replaced. The later [reserved assessment](evaluations/INTACT_FINAL_ASSESSMENT_20261027.md)
+opened the four original studies once and stopped at a structural-identifier
+comparison defect. They are now consumed; no final fidelity score is available.
 
 Each qualified observation retains its exact source A/B identifiers and roles,
 MINT attribution, IntAct and IMEx identifiers, publication, full host labels,
@@ -160,12 +162,14 @@ This is a consumed, small development panel, entirely explicit-positive co-IP
 evidence. Real negative evidence, default-flag and supplied-expansion strata are empty;
 synthetic controls do not fill them. No statistical generalization, scientific
 accuracy, source novelty or gain over Pharos follows. Keep the adapter/evaluator
-frozen and complete the required provenance/overlap audit before any
-reserved-study scoring. Brev can remain off.
+frozen. The separate reserved path subsequently stopped before provenance/overlap
+scoring, as recorded below. Brev can remain off.
 
 The implementation is now committed locally at `bca13a7`, following the reader
 checkpoint `dabbffb`. The [provenance readiness review](evaluations/INTACT_PROVENANCE_READINESS_20261026.md)
 completed a bounded bibliographic check but did not establish study independence.
-Reserved publication titles/identifiers have been inspected; the four reserved
-interaction bodies remain unopened. Richer provenance and a separately frozen
-final path remain required before reserved scoring.
+At that checkpoint, only reserved bibliographic metadata had been inspected.
+The separately frozen October 27 execution now supplies a preserved stop and a
+verified comparator diagnosis, not a final score. Its original source/parser
+bytes remain intact; repairing and replaying these consumed records cannot
+establish fresh validation.

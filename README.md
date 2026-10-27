@@ -22,7 +22,7 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 ## Current capabilities
 
 - [Bounded cohort construction](docs/CONSTRUCTION.md): 1–25 exact protein accessions, a fixed source profile, published graph, cited candidate answer and offline-verifiable export. This deterministic flow needs no model.
-- [Optional construction planner](docs/CONSTRUCTION_AGENT.md): select a bounded request from a question and explicit cohort, inspect the plan, then build with the same deterministic tools. Planning provenance survives publication and export; live performance is evaluated separately.
+- [Experimental construction planner](docs/CONSTRUCTION_AGENT.md): propose a bounded request for inspection against explicit cohort/form choices. Planning provenance survives publication and export. The [guided live check](docs/evaluations/GUIDED_CONSTRUCTION_ASSESSMENT_20261027.md) still failed all four supported tasks; use deterministic construction.
 - Scoped Pharos retrieval with pagination, explicit limits and per-protein coverage reporting for pathways, GO, interactions, drugs, selected expression and publication discovery.
 - Qualified assertions, raw-source provenance, immutable snapshots and separate local human-review states.
 - [Qualified assay attachment](docs/ASSAY_WORKBENCH.md): selected cohort observations, original assay context, source-preserving reviews and complete run exports.
@@ -35,6 +35,8 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 - Local/Docker/Brev operation, protected shared access and persistent data directories. Model inference is optional.
 
 These capabilities preserve and expose source evidence. They do not establish clinical correctness, independent study replication, or improved biological prediction. Models do not approve or prune assertions automatically.
+
+The [reserved IntAct assessment](docs/evaluations/INTACT_FINAL_ASSESSMENT_20261027.md) executed once and stopped without a final score. It exposed a comparator defect for structural identifiers; captured XML preserves those identifiers. A [separate development check](docs/evaluations/INTACT_IDENTITY_PROJECTION_DEVELOPMENT_20261027.md) verifies the comparator correction at component level. All four studies are consumed; the full assessment remains unscored.
 
 ## Current investigation
 

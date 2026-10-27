@@ -62,8 +62,9 @@ The [INMC comparison](docs/evaluations/INMC_COMPARISON_20261023.md) is complete 
 
 The construction flow connects a declared protein cohort to retrieval, an
 inspectable graph and a cited answer. The optional
-[construction planner](docs/CONSTRUCTION_AGENT.md) is experimental: the live
-development check still failed all four supported planning tasks. Use the explicit
+[construction planner](docs/CONSTRUCTION_AGENT.md) is experimental: the latest
+[guided live check](docs/evaluations/GUIDED_CONSTRUCTION_ASSESSMENT_20261027.md)
+still failed all four supported planning tasks. Use the explicit
 cohort form for construction; inspect any optional model plan before building. The **Graph and
 decision export** button prepares the complete source baseline, retained graph
 and an all-undecided ledger without inventing pruning judgments. See the

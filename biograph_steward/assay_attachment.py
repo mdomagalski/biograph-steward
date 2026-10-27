@@ -66,6 +66,9 @@ Exact scientific replay uses the original checkpoint and its recorded runtime.
     from .intact_publication import FORMAT as INTACT_FORMAT, load_projection
     if manifest.get("format") == INTACT_FORMAT:
         return load_projection(manifest, files)
+    from .intact_final_publication import FORMAT as FINAL_FORMAT, load_projection as load_final
+    if manifest.get("format") == FINAL_FORMAT:
+        return load_final(manifest, files)
     if (manifest.get("format") != PUBLICATION_FORMAT
             or not isinstance(manifest.get("implementation_sha256"), dict)
             or not manifest["implementation_sha256"]

@@ -1,6 +1,6 @@
 # Current build plan
 
-Updated October 26, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication, the bounded Lambourne assay-corroboration report and its standalone qualified observation publication are complete; study independence remains unresolved. The first measured PPI comparison found no consistent hierarchy benefit. The subsequent fixed Reactome-context comparison is also complete: mean AP increased slightly (0.717794 to 0.719605), with mixed seed effects and no consistent benefit demonstrated. Both assessed panels are consumed. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
+Updated October 27, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication and clean-install real-data/browser delivery are verified. The reserved IntAct assessment executed once and stopped on a verified structural-identifier comparator defect, with no final score; all four studies are consumed. The current guided NVIDIA check still failed all four supported tasks. The GO and Reactome biological comparisons found no consistent gain. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
 
 ## Report and submission update received October 26
 
@@ -19,7 +19,7 @@ formats, units and treatment of abstention/confidence remain organizer questions
 hidden final labels are not required for preparation. AWS credits are received,
 but adding cloud services is not a prerequisite for these tasks.
 
-## Focus for the remaining day before the midpoint report
+## Focus for the midpoint report day
 
 The immediate goal is one complete, inspectable demonstration, with the report
 revised afterwards. Export and local construction integration are implemented.
@@ -29,6 +29,13 @@ failed all four supported tasks. The later experimental tool V2 interface
 matched 3/4 supported requests but admitted 2/8 unsupported ones. Keep planning
 experimental and deterministic construction as the working path. Actual-user
 assessment and biological benefit remain unproven.
+
+The [October 27 guided assessment](evaluations/GUIDED_CONSTRUCTION_ASSESSMENT_20261027.md)
+now tests the current JSON v3 planner with explicit form choices. Eight calls
+completed: the four supported tasks still failed, one mismatch was blocked,
+and the real-cohort request abstained. No new source calls or agent-built graph
+followed. This measures the guard's limited contribution; it does not replace the
+historical interface results or justify another prompt/model sweep.
 
 1. Completed: the graph-plus-decisions export on an existing real cohort with
    qualified assay evidence. Deliver the retained graph, a decision for every
@@ -51,8 +58,9 @@ The [IntAct/IMEx development flow](INTACT_EVIDENCE_WORKBENCH.md) now passes
 source fidelity on all four eligible records through a real Pharos-attached
 graph, readable answer and complete gold export. This measures preservation of
 the curated source, not biological accuracy. The implementation is committed and
-frozen at `bca13a7`; provenance/overlap must be audited before reserved-study
-scoring. Four reserved interaction files remain unopened. Keep this assessment
+frozen at `bca13a7`. The separate [reserved assessment](evaluations/INTACT_FINAL_ASSESSMENT_20261027.md)
+later opened the original four studies once under its execution freeze and stopped
+before provenance/overlap scoring. All four are now consumed. Keep this assessment
 bounded; independent predictive benefit remains unproven and requires a
 separately justified assessment. The
 [provenance readiness review](evaluations/INTACT_PROVENANCE_READINESS_20261026.md)
@@ -61,8 +69,15 @@ completed the bounded bibliographic check. The subsequent
 now supplies richer experiment/figure context and preserves a source-curation
 caution. All corresponding checked fields agree, with one explicitly expanded
 three-participant interaction explaining 14 MITAB rows versus 13 XML objects.
-Study independence, reserved overlap and a frozen final execution path remain
-unresolved. Reserved interaction bodies stay unopened.
+Study independence and reserved overlap remain unresolved. The final execution
+path is now implemented and its consumed-development full-flow replay passes,
+but the reserved reference gate exposed a comparator scope mismatch: XML preserves
+structural identity references that a restricted comparison helper omits. The
+stopped result remains unscored. A [separate component correction](evaluations/INTACT_IDENTITY_PROJECTION_DEVELOPMENT_20261027.md)
+now passes invented controls and the saved consumed-reader check: only the three
+alias comparisons change. The narrow record join and all other field checks stay
+unchanged. This is not a full-flow replay or a final score; integrating the
+documented correction and qualifying a fresh reference remain next.
 
 The [core packaging check](evaluations/core_packaging_20261026_summary.json)
 built and installed the committed `586ec35` snapshot with the declared
@@ -90,9 +105,11 @@ is now complete: the four eligible observations represent two pairs, three
 curated experiments and two publications. Study independence remains unknown.
 The [final rules and preparation check](evaluations/INTACT_FINAL_EVALUATION_RULES_20261026.md)
 preserve the source denominator, n-ary groups and known-overlap exclusions.
-The preflight is intentionally blocked for reserved access: a separate full-flow
-orchestrator, its synthetic/development replay and an immutable execution receipt
-are still required. Reserved overlap has not been measured.
+That prepare-only checker remains a historical metadata check. A separate
+full-flow runner, passing invented controls, consumed replay and immutable
+execution receipt now exist. Its single reserved execution stopped at cross-format
+identity comparison before overlap assessment or scoring. No final fidelity,
+independence or scientific-accuracy result follows.
 
 The [assisted walkthrough continuation](USER_WALKTHROUGH_FINAL_20261026.md)
 now records a correct construct-source/accession lookup and a reported export
@@ -323,7 +340,7 @@ PyKEEN runtime checks on Nations, the [invented context/supervision smoke](evalu
 |---|---|
 | Official reference evaluation | Retained graph, exhaustive ledger and complete qualified source handoff are implemented and verified on a real example. Obtain the evaluation contract for organizer-run scoring; hidden final labels need not be released. Use local alignment only for an explicitly supplied development/public reference |
 | Measured graph-link comparison | The [fixed Reactome assessment](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md) is complete after actual CPU resource proof and immutable freeze: six matched 500-update fits, 1,751 unchanged assay pairs, full reconciliation, coverage and influence diagnostics. Mean AP +0.001812 with mixed seed effects; no consistent gain. Close this candidate without further panel-specific tuning. Independent confirmation and official judging alignment remain |
-| Bounded agent construction | Planner selection and deterministic execution are connected with persistent provenance. Latest tool V2 comparison matched 3/4 supported requests but admitted 2/8 unsupported requests; earlier JSON failures remain preserved. No live agent-built graph parity is established. Keep experimental and investigate the documented task-selection limitation before another change |
+| Bounded agent construction | Planner selection and deterministic execution are connected with persistent provenance. The latest guided v3 check failed all four supported tasks; the guard blocked one mismatch and the real-cohort plan abstained. Earlier interfaces/results stay preserved. Keep experimental; no agent-built parity or useful task interpretation is established |
 | Validated interoperability | Bounded KGX Reactome projection, preserved source bundle and round-trip checks now exist. Resolve the documented category-array and predicate-domain findings before claiming broader conformance; keep mappings and exclusions explicit |
 | Evidence filtering/pruning | Define task-compatible evidence actions and references; measure false removals and abstention. Assay nondetection does not automatically invalidate a functional association or co-complex relation |
 | Maintenance | Extend guarded comparison to explicit cohorts; controlled source-change cases must distinguish changed evidence, scope/cap absence and withdrawal while preserving review continuity |
