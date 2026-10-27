@@ -1,0 +1,139 @@
+{
+  "format": "biograph-steward.clean-install-real-demo-summary.v1",
+  "prepared_date": "2026-10-26",
+  "status": "passed_cli_browser_download_and_reopen",
+  "source_commit": "e874c4b49965b96bdc84d7147e95959b886aa383",
+  "scope": "Automated engineering demonstration on a clean local installation with an explicitly supplied saved real cohort.",
+  "installation": {
+    "actual_local_clone": true,
+    "build_backend": "setuptools80.9.0",
+    "python": "3.12.14",
+    "core_package": "biograph-steward0.8.0",
+    "wheel_sha256": "da95769c33a25a4722d5d5016fd1bdc427f754f8038d549080313b85f40eecf6",
+    "installed_module_origins_verified": true,
+    "working_directory_outside_checkout": true,
+    "installed_code_and_assets_match_checkout": true
+  },
+  "browser_runtime": {
+    "browser": "Google Chrome 156.0.8078.48",
+    "playwright": "1.62.1",
+    "node": "24.19.0",
+    "isolated_profile": true,
+    "preferred_browser_unavailable_fallback_recorded": true
+  },
+  "summary": {
+    "baseline_nodes": 2,
+    "retained_nodes": 2,
+    "baseline_edges": 2,
+    "retained_edges": 2,
+    "assertions": 2,
+    "review_events": 0,
+    "cited_question_results": 1,
+    "citations": 1,
+    "decisions": {
+      "keep": 0,
+      "prune": 0,
+      "abstain": 2
+    },
+    "original_source_files": 62,
+    "authoritative_source_files": 36,
+    "handoff_files": 57,
+    "selected_assay_observations": 1,
+    "assay_status_counts": {
+      "detected": 1
+    },
+    "evidence_by_kind": {
+      "assay_observation": 1,
+      "protein_interaction": 1
+    }
+  },
+  "workflow": [
+    "Clean local clone and pinned-backend wheel build.",
+    "Install wheel in a fresh venv; verify installed module origins outside either source checkout.",
+    "Replay real P22674/P38936 cohort with its full qualified assay attachment and source reviews.",
+    "Create cited candidate answer from installed CLI and guided browser controls.",
+    "Inspect STRINGDB passport with missing reference disclosed, and separate qualified Y2H outcome/construct context.",
+    "Export an all-abstain/null-confidence graph and download the actual browser ZIP.",
+    "Verify the extracted package with installed CLI; relocate its36 authoritative source files unchanged.",
+    "Reopen the recovered source in a second installed-app workspace; reproduce identical answer results, citations and source/review basis."
+  ],
+  "browser_checks": {
+    "installed_browser_app_reopens_real_cohort": true,
+    "guided_controls_generate_candidate_answer": true,
+    "one_cited_cdkn1a_result": true,
+    "candidate_state_visible": true,
+    "missing_string_reference_disclosed": true,
+    "qualified_assay_and_construct_roles_visible": true,
+    "same_pair_source_types_remain_separate": true,
+    "whole_workspace_and_undecided_explanation_visible": true,
+    "ui_export_and_actual_download_complete": true,
+    "download_verified_by_installed_cli": true,
+    "downloaded_baseline_relocated_without_byte_changes": true,
+    "downloaded_source_reopens_in_separate_workspace": true,
+    "reopened_answer_results_and_citations_identical": true,
+    "reopened_graph_and_snapshot_basis_identical": true,
+    "all_real_dispositions_abstain_null_confidence": true,
+    "no_new_review_or_prune": true,
+    "all_five_screenshots_visually_inspected": true,
+    "no_page_javascript_errors": true,
+    "no_external_page_requests": true
+  },
+  "original_source_files_unchanged": 62,
+  "browser_question_url": "http://127.0.0.1:8791/?run=real_cohort&question=question_20261027T034230Z_a1fa3732",
+  "original_source_preserved": true,
+  "new_human_review_events": 0,
+  "real_prune_decisions": 0,
+  "license_scope": {
+    "code": "MIT",
+    "upstream_source_metadata_records": 84,
+    "pharos_rows_with_missing_grant": 83,
+    "source_data_redistribution_verified": false,
+    "note": "Code licensing and local source availability do not establish blanket data-redistribution permission."
+  },
+  "artifacts": [
+    {
+      "path": "runs/clean_install_real_demo_20261026/attempt_01/result.json",
+      "sha256": "495e25207ba7f82b5753da479067ee73bf1542e4dcf90c851f800082d80e543c"
+    },
+    {
+      "path": "runs/clean_install_real_demo_20261026/browser_01/report.json",
+      "sha256": "1929d67080f59041c990c6a9a29e2306f4ed26001afea6fb1f82898232bae75c"
+    },
+    {
+      "path": "runs/clean_install_real_demo_20261026/cli_independent_review.json",
+      "sha256": "d5405a4bd997d38c6cf8a20b0b4d785897d50f68be33a217207bc5542fcd5c6f"
+    },
+    {
+      "path": "runs/clean_install_real_demo_20261026/browser_independent_review.json",
+      "sha256": "608ff1615e46424e1947f04a921524dcb4bfe14a302b8c60f69a524b4a7c35ce"
+    },
+    {
+      "path": "runs/clean_install_real_demo_20261026/attempt_01/submission_handoff.zip",
+      "sha256": "fb3e033a8e00d631ca5c8f75a8939df3896b0f37f7ad032b2c411c5e89341084"
+    },
+    {
+      "path": "runs/clean_install_real_demo_20261026/browser_01/browser_downloaded_handoff.zip",
+      "sha256": "38811ca6038d6c7a38543b769398ffc6ccf1da0e39ce23e35270c7def8185e87"
+    }
+  ],
+  "technical_guide": "docs/evaluations/CLEAN_INSTALL_REAL_DEMO_20261026.md",
+  "github_publication_verified": false,
+  "human_usability_measured": false,
+  "scientific_accuracy_measured": false,
+  "independent_biological_improvement_demonstrated": false,
+  "new_source_retrieval": false,
+  "new_outcomes_opened": false,
+  "reserved_intact_interaction_bodies_accessed": false,
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "brev_or_aws_used": false,
+  "application_edits": false,
+  "report_not_sent": true,
+  "limitations": [
+    "Real inputs are separate from the source checkout; reproducibility requires their authorized availability.",
+    "Automated source/answer/browser verification does not substitute for the unavailable independent user walkthrough.",
+    "The assay panel is already consumed; no fresh scientific evaluation or biological-improvement claim.",
+    "Local committed clone is not remote GitHub availability or cloud deployment.",
+    "Original upstream reference/license gaps remain visible."
+  ]
+}

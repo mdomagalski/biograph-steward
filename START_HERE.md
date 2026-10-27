@@ -85,8 +85,8 @@ in a standalone immutable layer and offline viewer, with 2,676 qualified edges,
 Pharos no-matches remain a bounded inspection filter. The
 [publication record](docs/evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md)
 preserves study/construct context, nondetections and original Pharos evidence;
-it does not automatically prune or accept interactions. General attachment to
-ordinary workbench runs is not yet implemented. Independent improvement
+it does not automatically prune or accept interactions. Qualified attachment to
+saved live protein cohorts is implemented, as described below. Independent improvement
 evaluation remains separate, and this consumed panel cannot become an unseen
 test after prediction, enrichment or eligibility tuning.
 

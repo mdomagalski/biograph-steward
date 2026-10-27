@@ -17,6 +17,8 @@ python3 app.py
 
 Open `http://127.0.0.1:8765/`. A fresh checkout includes an explicitly synthetic demonstration; real source snapshots are retrieved separately and are not bundled. Start with [the walkthrough](START_HERE.md).
 
+The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_20261026.md) now verifies a fresh local clone and installed wheel using an existing two-protein source packet. The installed app generates a cited answer, displays the separate assay context, downloads the complete graph/decision package and reopens its recovered source with identical citations. Reproduction requires the authorized real-data input separately; this is automated delivery verification, not independent user or biological validation.
+
 ## Current capabilities
 
 - [Bounded cohort construction](docs/CONSTRUCTION.md): 1–25 exact protein accessions, a fixed source profile, published graph, cited candidate answer and offline-verifiable export. This deterministic flow needs no model.
@@ -67,7 +69,7 @@ assays retained in the audit. The 42 detections without a bounded Pharos match
 are an inspection filter, not independently validated new interactions.
 Study/construct context, nondetections and original Pharos records remain
 explicit. See the [publication record](docs/evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md).
-The [workbench attachment](docs/ASSAY_WORKBENCH.md) now selects both-endpoint observations for an exact live protein cohort, preserves the entire original publication and supports inspection/review/replay. Gold/KGX export and cohort refresh for attached runs remain unsupported and fail explicitly. This integration does not establish prediction gain or replace independent evaluation.
+The [workbench attachment](docs/ASSAY_WORKBENCH.md) now selects both-endpoint observations for an exact live protein cohort, preserves the entire original publication and supports inspection/review/replay and graph-plus-decisions export. KGX export and cohort refresh for attached runs remain unsupported and fail explicitly. This integration does not establish prediction gain or replace independent evaluation.
 
 ## Repository scope
 

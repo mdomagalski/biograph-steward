@@ -65,13 +65,25 @@ Study independence, reserved overlap and a frozen final execution path remain
 unresolved. Reserved interaction bodies stay unopened.
 
 The [core packaging check](evaluations/core_packaging_20261026_summary.json)
-now builds and installs the committed `586ec35` snapshot with the declared
+built and installed the committed `586ec35` snapshot with the declared
 setuptools 80.9.0 backend. The installed entry point replays synthetic graph,
 answer and graph-plus-decisions exports with application network access denied;
 all packaged UI assets retain their source bytes. The minimum Python 3.10
-synthetic replay also passes. This closes the local packaging check, not an
-actual GitHub clone, real-data demonstration, browser/user assessment or cloud
-deployment. Those remain separate delivery checks.
+synthetic replay also passed. That check established local packaging; it did not
+cover a remote GitHub clone, real-data demonstration, browser/user assessment or
+cloud deployment. The subsequent check below closes the local real-data and
+automated browser portions.
+
+The subsequent [clean-install real-data demonstration](evaluations/CLEAN_INSTALL_REAL_DEMO_20261026.md)
+passes on an actual local clone of `e874c4b`, a wheel built with setuptools
+80.9.0 and a fresh runtime environment. Installed CLI/public APIs reopen the
+existing qualified cohort, generate a cited candidate answer and verify the
+extracted all-abstain submission. The isolated Chrome workflow also passes actual
+question creation, source inspection, ZIP download and reopening its recovered
+source in a second installed-app workspace, with identical answer citations and
+source basis. Intended-user assessment, remote GitHub availability and biological
+improvement remain separate. This closes the current local real-data delivery
+check without requiring Brev, AWS or new scientific outcomes.
 
 The [bounded development provenance audit](evaluations/INTACT_DEVELOPMENT_PROVENANCE_AUDIT_20261026.md)
 is now complete: the four eligible observations represent two pairs, three
@@ -96,20 +108,17 @@ for every framework feature or be replaced by a fidelity score. The first
 GO-hierarchy intervention found no consistent gain. A
 [single focused reuse check](literature/BIOLOGICAL_IMPROVEMENT_REUSE_DECISION_20261026.md)
 found SNOOPPI's sequence-aware qualification relevant but unsuitable as a drop-in
-independent gold set. The [selected Reactome context intervention](literature/REACTOME_CONTEXT_INTERVENTION_20261026.md)
-now fixes one retrospective development comparison: the restricted Pharos/GO
-R-GCN baseline versus the same graph plus exact Reactome memberships already
-retrieved from Pharos. The saved source inventory has 11,138 memberships; eligible
-learner edges and coverage remain unknown until projection preflight. This uses
-existing Pharos information rather than adding an independent evidence source.
-Both arms must share the union vocabulary, supervision, candidates, masks,
-seeds and budget; the baseline is rerun, and a coverage-only diagnostic is
-predeclared. No training has run. Projection checks, synthetic paired controls,
-resource preflight and a new execution freeze come next. Already-consumed assay outcomes
-can support a clearly labeled retrospective development comparison, with scored
-labels excluded from inputs and all attempts preserved. Independent/fresh
-evidence is needed for confirmation and source-novelty claims, not every internal
-paired effect. Unknown Pharos lineage remains a disclosed interpretation limit.
+independent gold set. The [fixed Reactome context comparison](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md)
+is now complete: six matched 500-update fits compared the restricted Pharos/GO
+R-GCN baseline with the same graph plus 11,138 exact memberships already retrieved
+from Pharos. Both arms shared the union vocabulary, supervision, candidates,
+masks, seeds and budget after projection, synthetic controls, resource proof and
+execution freeze. On the unchanged 1,751-pair consumed panel, mean AP rose from
+0.717794 to 0.719605, with mixed seed effects and no consistent benefit
+demonstrated. The coverage diagnostic and influence analysis are recorded;
+the fixed candidate is closed without further panel-specific tuning. Unknown
+Pharos lineage remains a disclosed limit, and independent confirmation requires
+a separately justified evaluation scope.
 
 ## Delivery sequence and completion criteria
 
@@ -167,8 +176,8 @@ meaning or remove the source qualifications.
 | Order | Deliverable | Completion evidence |
 |---|---|---|
 | 1 | One bounded construction/publication flow using current adapters | Deterministic path and optional bounded agent selection are implemented with local integration checks. A declared exact-protein request reaches retrieval, normalization, an inspectable saved graph and a cited answer/export. The live comparison found unreliable task selection; the optional planner remains experimental and actual user testing remains. |
-| 2 | A finite reference and comparator decision | Lambourne retrospective corroboration is complete, with unresolved source lineage. One additional comparison is selected: exact Reactome context already in Pharos, assessed on the consumed INMC development panel. This is not independent confirmation. |
-| 3 | Frozen biological assessment, then conditional matched improvement testing | The selected two-arm Reactome test fixes the original INMC denominator, learner, paired seeds/budget and coverage diagnostic. Projection, paired synthetic controls, resource check and an immutable execution freeze remain; no training has run. Preserve every result and stop after the fixed comparison, including no gain. |
+| 2 | A finite reference and comparator decision | Lambourne retrospective corroboration and the fixed Reactome comparison are complete, with unresolved source lineage. The latter uses existing Pharos context on the consumed INMC development panel; independent confirmation remains. |
+| 3 | Frozen biological assessment, then conditional matched improvement testing | The fixed two-arm Reactome test completed six matched 500-update fits on 1,751 unchanged pairs after controls, resource proof and execution freeze. Mean AP +0.001812 had mixed seed effects; no consistent benefit was demonstrated. Preserve the result and close this candidate without further panel-specific tuning. |
 | 4 | Tested filtering, maintenance and exchange | Check controlled identifier/context/citation corruptions and source changes; report false removals, abstentions and update errors. Preserve reversible decisions. Validate the chosen vocabulary/schema/export subset using existing tools; controlled cases establish engineering behavior, not broad scientific truth. Use the organizer reference for its actual task once supplied. |
 | 5 | A reproducible, usable submission | Another person can install, replay a saved example, build a bounded graph, trace an answer, inspect a change and export it. Record task completion/errors/time with intended users. Include dependency/source/license manifests, graph artifacts, methods, results, limitations and a short demo. |
 
@@ -182,8 +191,8 @@ selects IntAct/IMEx for bounded evidence-fidelity preparation, not as an
 automatically independent prediction benchmark.
 
 **Decision limits:** no scientific improvement is promised by this plan. The
-selected Reactome comparison tests representation of existing Pharos context;
-whether it adds predictive value is unmeasured. The lineage audit is closed with an unresolved result and the Lambourne study
+completed Reactome comparison measured representation of existing Pharos context
+and found mixed seed effects without consistent benefit. The lineage audit is closed with an unresolved result and the Lambourne study
 is classified as retrospective corroboration. Reopen independence only with
 deployment-specific import/evidence metadata. Do not repeatedly switch references
 or add sources/models until a score improves. A valid negative result completes
@@ -319,7 +328,7 @@ PyKEEN runtime checks on Nations, the [invented context/supervision smoke](evalu
 | Evidence filtering/pruning | Define task-compatible evidence actions and references; measure false removals and abstention. Assay nondetection does not automatically invalidate a functional association or co-complex relation |
 | Maintenance | Extend guarded comparison to explicit cohorts; controlled source-change cases must distinguish changed evidence, scope/cap absence and withdrawal while preserving review continuity |
 | Usability | Actual biomedical-user task completion, errors, time and interpretation checks |
-| Packaging | Fresh-clone instructions, source/license manifests, dependency pins, fetchable or redistributable examples and separate archived history |
+| Packaging | Local clone/install/replay instructions, dependency pins and source/license manifests are verified. Remote GitHub availability and authorized fetchable or redistributable examples remain; preserve archived history separately |
 
 Use established implementations before filling these gaps with custom infrastructure. Recheck official versions, task assumptions, licenses and training/evaluation overlap. When a new scientific or integration issue appears, record what literature documents, what our implementation demonstrates and what remains unresolved.
 
