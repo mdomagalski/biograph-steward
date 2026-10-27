@@ -1,6 +1,6 @@
 # Current build plan
 
-Updated October 27, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication and clean-install real-data/browser delivery are verified. The reserved IntAct assessment executed once and stopped on a verified structural-identifier comparator defect, with no final score; all four studies are consumed. The current guided NVIDIA check still failed all four supported tasks. The GO and Reactome biological comparisons found no consistent gain. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
+Updated October 27, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication and clean-install real-data/browser delivery are verified. The reserved IntAct assessment stopped without a score; its identifier-comparator correction now passes a complete consumed-data replay, preserving both eligible records through the answer and export. A fresh four-study panel is selected but unopened. The current guided NVIDIA check still failed all four supported tasks. The GO and Reactome biological comparisons found no consistent gain. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
 
 ## Report and submission update received October 26
 
@@ -76,8 +76,21 @@ structural identity references that a restricted comparison helper omits. The
 stopped result remains unscored. A [separate component correction](evaluations/INTACT_IDENTITY_PROJECTION_DEVELOPMENT_20261027.md)
 now passes invented controls and the saved consumed-reader check: only the three
 alias comparisons change. The narrow record join and all other field checks stay
-unchanged. This is not a full-flow replay or a final score; integrating the
-documented correction and qualifying a fresh reference remain next.
+unchanged. That component checkpoint is preserved. The subsequent
+[complete consumed-data replay](evaluations/INTACT_CONSUMED_FLOW_20261027.md)
+now passes: all 18 physical rows remain accounted for; both eligible observations
+survive native Pharos construction, attachment, readable answer and export.
+The three zero-eligible studies remain unevaluated, rather than successes.
+All 70 source-file preservation checks pass. The old implementation is archived
+at its exact checkpoint before active code advances. The stopped final result
+is unchanged and this replay is not fresh validation.
+
+The [new reference selection](evaluations/FRESH_INTACT_REFERENCE_20261027.md)
+takes all four remaining metadata-eligible studies from the original directory,
+without biological filtering or replacement. Their bodies remain unopened.
+Next, use the expanded consumed inventory and freeze the complete new execution
+before accessing those sources. No model or GPU is needed for these fidelity
+checks; biological improvement remains a separate measured-link question.
 
 The [core packaging check](evaluations/core_packaging_20261026_summary.json)
 built and installed the committed `586ec35` snapshot with the declared

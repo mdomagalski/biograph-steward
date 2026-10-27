@@ -17,10 +17,12 @@ from .assertions import build_assertions, assertion_summary
 from .intact_evidence import (
     FORMAT as EVIDENCE_FORMAT, SOURCE_KIND, RELEASE, PREDICATE, LICENSE,
     _sha, _check_eligible, _values, _participants, _qualifications, _groups,
-    _citations, _terms, _identifier, answer_observation, publication_html,
+    _citations, _terms, _identifier, answer_observation, publication_html as _publication_html,
 )
 
 FORMAT = "biograph-steward.intact-final-evidence-publication.v1"
+CONSUMED_FORMAT = "biograph-steward.intact-consumed-evidence-publication.v1"
+ORIGIN_RESERVED_SHA = "7c1f59b4696bd5b6f4b7760d22405f04f358fc46dfd7ea5f0464a98de3492788"
 DEVELOPMENT = ("40075158", "40404733", "40071126", "40739265")
 RESERVED = ("39833857", "40211762", "39972491", "40555359")
 LIMITATIONS = [
@@ -38,14 +40,28 @@ def _scope(bindings):
     if not isinstance(bindings, dict):
         raise ValueError("Explicit final-assessment bindings are required.")
     split = bindings.get("assessment_split")
-    expected = RESERVED if split == "reserved_final" else DEVELOPMENT if split == "development_replay" else None
+    expected = (RESERVED if split in {"reserved_final", "consumed_reserved_replay"}
+                else DEVELOPMENT if split == "development_replay" else None)
     if (expected is None or bindings.get("publication_ids") != list(expected)
             or not _sha(bindings.get("execution_freeze_sha256"))
             or any(not isinstance(bindings.get(k), dict) or set(bindings[k]) != set(expected)
                    or any(not _sha(v) for v in bindings[k].values())
                    for k in ("source_sha256", "reader_sha256"))):
         raise ValueError("Require the exact original four-study split and a bound pre-access freeze.")
+    if split == "consumed_reserved_replay" and (
+            bindings.get("origin_reserved_freeze_sha256") != ORIGIN_RESERVED_SHA
+            or not _sha(bindings.get("historical_code_receipt_sha256"))):
+        raise ValueError("Consumed replay requires its unchanged origin and historical implementation archive.")
     return expected
+
+
+def publication_html(evidence):
+    page = _publication_html(evidence)
+    if evidence.get("bindings", {}).get("assessment_split") == "consumed_reserved_replay":
+        page = page.replace("</h1>", '</h1><p class="notice" data-assessment-split="consumed_reserved_replay">'
+            '<strong>Consumed-data development replay.</strong> These studies were already opened in a '
+            'stopped assessment. This replay is an integration check, not fresh validation or a final score.</p>', 1)
+    return page
 
 
 def build_evidence(records, ledger, bindings):
@@ -138,6 +154,9 @@ def build_evidence(records, ledger, bindings):
         "assay_evaluable":len(observations),"assay_excluded":0,"graph_nodes":len(nodes),"graph_edges":len(edges),
         "assay_status_counts":dict(Counter(o["assay_status"] for o in observations)),"independent_evidence_count":None,
         "pharos_records_modified":0,"automatically_accepted_assertions":0,"reserved_final_rows_opened":bindings["assessment_split"] == "reserved_final"}
+    if bindings["assessment_split"] == "consumed_reserved_replay":
+        summary.update(assessment_split="consumed_reserved_replay", consumed_input_replay=True,
+                       fresh_validation_performed=False, original_reserved_assessment_status="stopped_unscored")
     graph={"graph_format":"biograph-steward.assay-observation-graph.v1","data_kind":"published_assay_observations",
         "snapshot_sha256":bindings["result_sha256"],"nodes":sorted(nodes.values(),key=lambda x:x["id"]),
         "edges":sorted(edges,key=lambda x:x["id"]),"review_events":[],"biologically_validated":False,
@@ -189,7 +208,7 @@ def load_projection(manifest, files):
     required = {"LICENSE.md", "protocol.json", "semantic_amendment.json", "execution_freeze.json",
                 "inspection_report.json", "row_ledger.jsonl", "controls_report.json",
                 "xml_controls_report.json", "evidence.json", "graph.json", "index.html"}
-    if (manifest.get("format") != FORMAT or not required <= set(files)
+    if (manifest.get("format") not in {FORMAT, CONSUMED_FORMAT} or not required <= set(files)
             or not isinstance(manifest.get("implementation_sha256"), dict)
             or not manifest["implementation_sha256"]
             or any(not _sha(v) for v in manifest["implementation_sha256"].values())
@@ -200,6 +219,9 @@ def load_projection(manifest, files):
     try:
         bindings = manifest["bindings"]
         pmids = _scope(bindings)
+        consumed = bindings["assessment_split"] == "consumed_reserved_replay"
+        if manifest["format"] != (CONSUMED_FORMAT if consumed else FORMAT):
+            raise ValueError("Consumed development publications cannot use a reserved-assessment envelope.")
         for filename, field in (("protocol.json", "protocol_sha256"),
                 ("semantic_amendment.json", "amendment_sha256"),
                 ("execution_freeze.json", "execution_freeze_sha256"),
@@ -212,11 +234,28 @@ def load_projection(manifest, files):
                 or bindings["amendment_sha256"] != "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c"):
             raise ValueError("The original protocol and mandatory semantic amendment must remain unchanged.")
         freeze = _decode(files["execution_freeze.json"])
-        if (not _sealed(freeze) or freeze.get("format") != "biograph-steward.intact-final-execution-freeze.v1"
-                or freeze.get("pre_access") is not True
+        expected_freeze_format = ("biograph-steward.intact-consumed-flow-freeze.v1" if consumed
+                                  else "biograph-steward.intact-final-execution-freeze.v1")
+        access_key = "pre_captured_stream_access" if consumed else "pre_access"
+        if (not _sealed(freeze) or freeze.get("format") != expected_freeze_format
+                or freeze.get(access_key) is not True
                 or freeze.get("publication_ids") != list(pmids)
                 or freeze.get("assessment_split") != bindings["assessment_split"]):
             raise ValueError("Require the complete sealed pre-access execution freeze for this exact split.")
+        if consumed:
+            origin_bytes = files["origin_execution_freeze.json"]
+            archive_bytes = files["historical_code_archive_receipt.json"]
+            archive = _decode(archive_bytes)
+            origin = _decode(origin_bytes)
+            if (hashlib.sha256(origin_bytes).hexdigest() != ORIGIN_RESERVED_SHA
+                    or freeze.get("origin_reserved_freeze_sha256") != ORIGIN_RESERVED_SHA
+                    or freeze.get("scientific_accuracy_measured") is not False
+                    or hashlib.sha256(archive_bytes).hexdigest() != bindings["historical_code_receipt_sha256"]
+                    or freeze.get("historical_code_receipt_sha256") != bindings["historical_code_receipt_sha256"]
+                    or not _sealed(archive) or archive.get("frozen_execution_sha256") != ORIGIN_RESERVED_SHA
+                    or {row["source_path"]: row["sha256"] for row in archive["files"]}
+                       != origin["implementation_sha256"]):
+                raise ValueError("Consumed replay must retain its stopped origin and historical code bindings.")
         controls = _decode(files["controls_report.json"])
         xml_controls = _decode(files["xml_controls_report.json"])
         for obj, fmt, runtime_key, access_key in (
@@ -228,7 +267,8 @@ def load_projection(manifest, files):
                     or obj.get("runtime_bindings") != bindings.get(runtime_key)):
                 raise ValueError("Passing original reader/runtime controls must accompany the final publication.")
         inspection = _decode(files["inspection_report.json"])
-        expected_status = ("final_inspected_not_fidelity_scored" if bindings["assessment_split"] == "reserved_final"
+        expected_status = ("consumed_development_inspected_not_final_score" if consumed else
+                           "final_inspected_not_fidelity_scored" if bindings["assessment_split"] == "reserved_final"
                            else "development_full_flow_replay_not_final_score")
         if (inspection.get("status") != expected_status
                 or inspection.get("publication_ids") != list(pmids)
@@ -260,7 +300,8 @@ def publish_material(files, catalog, bindings, inspection, output):
     for name, obj in (("evidence.json", evidence), ("graph.json", evidence["graph"])):
         files[name] = (json.dumps(obj, indent=2, ensure_ascii=True) + "\n").encode()
     files["index.html"] = publication_html(evidence).encode()
-    manifest = {"format": FORMAT, "created_at": utcnow(), "bindings": deepcopy(bindings),
+    manifest_format = CONSUMED_FORMAT if bindings["assessment_split"] == "consumed_reserved_replay" else FORMAT
+    manifest = {"format": manifest_format, "created_at": utcnow(), "bindings": deepcopy(bindings),
                 "source_catalog": deepcopy(catalog), "summary": evidence["summary"],
                 "implementation_sha256": {"final_projection": sha(__file__),
                     "shared_field_projection": sha(Path(__file__).with_name("intact_evidence.py"))},

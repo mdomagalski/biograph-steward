@@ -321,7 +321,8 @@ def export_packet(run, output):
         if projection is intact_evidence:
             implementation['intact_publication'] = sha(intact_publication.__file__)
             from . import intact_final_publication
-            if _decode(material['assay_source/publication.json']).get('format') == intact_final_publication.FORMAT:
+            if _decode(material['assay_source/publication.json']).get('format') in {
+                    intact_final_publication.FORMAT, intact_final_publication.CONSUMED_FORMAT}:
                 implementation['intact_final_publication'] = sha(intact_final_publication.__file__)
     if 'construction_planner_trace.json' in material:
         from . import construction_planning

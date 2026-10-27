@@ -36,7 +36,7 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 
 These capabilities preserve and expose source evidence. They do not establish clinical correctness, independent study replication, or improved biological prediction. Models do not approve or prune assertions automatically.
 
-The [reserved IntAct assessment](docs/evaluations/INTACT_FINAL_ASSESSMENT_20261027.md) executed once and stopped without a final score. It exposed a comparator defect for structural identifiers; captured XML preserves those identifiers. A [separate development check](docs/evaluations/INTACT_IDENTITY_PROJECTION_DEVELOPMENT_20261027.md) verifies the comparator correction at component level. All four studies are consumed; the full assessment remains unscored.
+The [reserved IntAct assessment](docs/evaluations/INTACT_FINAL_ASSESSMENT_20261027.md) executed once and stopped without a final score. It exposed a comparator defect for structural identifiers; captured XML preserves those identifiers. The standards-supported correction now passes a [complete consumed-data replay](docs/evaluations/INTACT_CONSUMED_FLOW_20261027.md): both eligible records survive Pharos attachment, the readable answer and the exported source packet. The original stopped result remains unscored. A [fresh four-study panel](docs/evaluations/FRESH_INTACT_REFERENCE_20261027.md) is selected from metadata only; its source bodies remain unopened. Source preservation does not establish biological accuracy or graph improvement.
 
 ## Current investigation
 
