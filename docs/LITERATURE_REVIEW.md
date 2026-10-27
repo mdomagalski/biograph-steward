@@ -214,6 +214,16 @@ data can support local assessment while organizer final labels remain hidden;
 source overlap and endpoint compatibility still determine which scientific
 claims are defensible. No new reference outcomes were downloaded in this audit.
 
+**October 26 IntAct follow-through:** the official PSI-JAMI 3.9.4 reader passed
+controls before the four development studies were inspected. The mandatory
+expansion amendment preserves unknown binary origin when no annotation is
+supplied. The [completed workbench flow](INTACT_EVIDENCE_WORKBENCH.md) passes
+source fidelity on four eligible records through the real Pharos-attached
+graph, readable answer and gold export. This is an integration result on consumed
+positive co-IP evidence, not biological accuracy or independent prediction gain.
+Four reserved studies remain unopened; provenance/overlap audit and final-study
+suitability remain required.
+
 No scheduled monitoring was created. The original broad review added documentation
 only. Dated follow-through notes above disclose later execution and outcome
 access; they do not change the original review's scope.

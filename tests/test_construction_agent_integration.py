@@ -85,10 +85,19 @@ class ConstructionAgentHttpTests(unittest.TestCase):
     tearDown = http_fixtures.ConstructionHttpTests.tearDown
     request = http_fixtures.ConstructionHttpTests.request
 
-    def plan(self, output=None):
+    def selection(self, **changes):
+        return {'accessions': ['P04637', 'P00533'], 'focus_uniprot': 'P04637',
+                'profile': 'ppi', 'relations': ['interactions'], **changes}
+
+    def planned_body(self, planned, **changes):
+        return {'mode': 'planned', 'plan_id': planned['plan_id'],
+                'exact_selection': self.selection(), 'plan_reviewed': True, **changes}
+
+    def plan(self, output=None, selection=None):
         model = planner(output or proposal(accessions=['P04637', 'P00533']))
         with patch('biograph_steward.construction_planning.configured_construction_planner', return_value=model):
-            with self.request('/api/construction-plan', scope(accessions=['P04637', 'P00533'])) as response:
+            with self.request('/api/construction-plan', {**scope(accessions=['P04637', 'P00533']),
+                                'exact_selection': selection or self.selection()}) as response:
                 return json.loads(response.read())
 
     def test_plan_build_export_and_download(self):
@@ -97,7 +106,7 @@ class ConstructionAgentHttpTests(unittest.TestCase):
             with ZipFile(BytesIO(response.read())) as archive:
                 self.assertTrue(any(name.endswith('/construction_planner_trace.json') for name in archive.namelist()))
         with patch('biograph_steward.webapp.PharosClient', return_value=PharosClient(transport=self.api)):
-            with self.request('/api/construct', {'mode': 'planned', 'plan_id': planned['plan_id']}) as response:
+            with self.request('/api/construct', self.planned_body(planned)) as response:
                 built = json.loads(response.read())
         with self.request('/api/submission-export', {'run_id': built['run_id']}) as response:
             exported = json.loads(response.read())
@@ -121,8 +130,8 @@ class ConstructionAgentHttpTests(unittest.TestCase):
             configured.assert_not_called()
         planned = self.plan(abstention())
         for body in [
-            {'mode': 'planned', 'plan_id': planned['plan_id']},
-            {'mode': 'planned', 'plan_id': planned['plan_id'], 'accessions': ['P04637']},
+            self.planned_body(planned),
+            self.planned_body(planned, accessions=['P04637']),
             {'mode': 'planned', 'plan_id': '../outside'},
         ]:
             with self.assertRaises(HTTPError) as error:
@@ -138,9 +147,39 @@ class ConstructionAgentHttpTests(unittest.TestCase):
         trace['construction_request']['accessions'] = ['P01116']
         path.write_text(json.dumps(trace))
         with self.assertRaises(HTTPError) as error:
-            self.request('/api/construct', {'mode': 'planned', 'plan_id': planned['plan_id']})
+            self.request('/api/construct', self.planned_body(planned))
         self.assertEqual(error.exception.code, 400)
         error.exception.close()
+        self.assertEqual(self.api.calls, [])
+
+    def test_missing_or_invalid_selection_never_configures_model(self):
+        base = scope(accessions=['P04637', 'P00533'])
+        for body in [base, {**base, 'exact_selection': None},
+                     {**base, 'exact_selection': self.selection(accessions=['P15056'], focus_uniprot='P15056')},
+                     {**base, 'exact_selection': self.selection(profile='ppi', relations=['shared_pathways'])}]:
+            with self.subTest(body=body), patch('biograph_steward.construction_planning.configured_construction_planner') as configured:
+                with self.assertRaises(HTTPError) as error:
+                    self.request('/api/construction-plan', body)
+                self.assertEqual(error.exception.code, 400)
+                error.exception.close()
+                configured.assert_not_called()
+
+    def test_mismatch_unreviewed_changed_or_missing_choices_never_create_source_client(self):
+        matching = self.plan()
+        mismatch = self.plan(selection=self.selection(profile='context', relations=['interactions', 'shared_pathways']))
+        self.assertEqual(mismatch['trace']['status'], 'invalid_plan')
+        bodies = [self.planned_body(mismatch),
+                  self.planned_body(matching, plan_reviewed=False),
+                  self.planned_body(matching, plan_reviewed=1),
+                  self.planned_body(matching, exact_selection=self.selection(focus_uniprot='P00533')),
+                  {'mode':'planned', 'plan_id': matching['plan_id']}]
+        for body in bodies:
+            with self.subTest(body=body), patch('biograph_steward.webapp.PharosClient') as client:
+                with self.assertRaises(HTTPError) as error:
+                    self.request('/api/construct', body)
+                self.assertEqual(error.exception.code, 400)
+                error.exception.close()
+                client.assert_not_called()
         self.assertEqual(self.api.calls, [])
 
 

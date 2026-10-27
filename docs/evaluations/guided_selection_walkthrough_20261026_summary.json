@@ -1,0 +1,74 @@
+{
+  "format": "biograph-steward.guided-selection-walkthrough.v1",
+  "created_at": "2026-10-26T22:32:32.710442+00:00",
+  "status": "developer_enforcement_and_source_export_checks_passed",
+  "implementation_sha256": {
+    "biograph_steward/guided_construction.py": "2aca8d7a25ce23d0a8491fb00886f665b31cca12d4af3e685b170bae15dd768f",
+    "biograph_steward/construction_planning.py": "bbc7151c4bac5565f6cd9aef491fdfc67e2c2ed4699508f009ba5649d01e4ffc",
+    "biograph_steward/webapp.py": "564242e1571e7b7564fbc52fa9d2e9a79eeadb16b5143ba65d2c4c8d030b6bba",
+    "biograph_steward/construction.js": "31da5a716b264953b3bd2dcfa02a7b16abb16417905ca7a1a200280459ba2761",
+    "biograph_steward/ui.html": "35e50df3ed2699bb4b0d00aad133bbb543c92184ad1a2352d004a6b4499d9d45"
+  },
+  "artifact_sha256": {
+    "runs/guided_selection_walkthrough_20261026/source_export_verification.json": "cf94bf01d2abf75f04154fd71091c2f20b4604b18d81d94af506b68d2097a1da",
+    "runs/guided_selection_walkthrough_ui_v2_20261026/verification.json": "3b7cdca07f583b9bc4d00f910dcd74338f77fdf5300875204c1d7314cca4f53f",
+    "runs/guided_selection_walkthrough_ui_v2_20261026/injected_model_fixtures.json": "59bb50e31c9ce4f3b73ede24bb24a4e1bc2bd24417aea64cdf57795aebafe73c",
+    "runs/guided_selection_walkthrough_ui_v2_20261026/matching_review.png": "8d7306e411c014255c7c0e386e6731b5f5bd099f472000c2d1d494a0e065ea1e",
+    "runs/guided_selection_walkthrough_ui_v2_20261026/blocked_mismatch.png": "85b26c296b25705b4ea7a8dc1e95297601b0ab808fb7302f69491e8c3b076b21",
+    "runs/guided_selection_walkthrough_20261026/assay_sources.png": "decd44780572eb82be64efdda37c9b50b67f4e141c69bdd079efc445a90641d5",
+    "runs/guided_selection_walkthrough_20261026/export_controls.png": "7b4213af8a2a6dde81bad1e88e194e92ecb6b98f3c43ead8e6faea7e540502e2",
+    "runs/guided_selection_walkthrough_20261026/submission_handoff.zip": "e10a46b093d7b73b629cc6f304b96427dab54ef605fc7e6f186a47ed5f698af9"
+  },
+  "checks": {
+    "canonical_choice_validation_before_model": true,
+    "mismatch_blocked_before_source_transport": true,
+    "unreviewed_or_changed_request_blocked": true,
+    "stale_ui_results_invalidated": true,
+    "matching_ui_plan_requires_review": true,
+    "omitted_pathways_visible_and_build_disabled": true,
+    "guard_propagates_through_publication_packet_review_replay_and_assay_attachment": true,
+    "guard_implementation_hash_bound_and_rechecked": true,
+    "real_saved_sources_downloaded": true,
+    "real_export_decisions_and_original_records_reopen": true
+  },
+  "source_export": {
+    "source_run": "runs/assay_workbench_v2_20261026",
+    "source_files_matching_export": 36,
+    "counts": {
+      "keep": 0,
+      "prune": 0,
+      "abstain": 2
+    }
+  },
+  "model_evidence": "Injected model responses exercise application behavior; no new live model accuracy measurement.",
+  "source_evidence": "Real saved Pharos/assay example for source links/export; guarded publication propagation tested with invented source responses.",
+  "historical_model_scores_unchanged": {
+    "supported_exact": "3/4",
+    "unsupported_admitted": "2/8"
+  },
+  "independent_review": "No guard/selection/stale-state bypass found. Missing guard implementation binding was added and tested. Thirty-six historical planner traces still verify.",
+  "live_model_calls": 0,
+  "new_pharos_retrieval_calls": 0,
+  "biological_accuracy_measured": false,
+  "participant_usability_evaluation": false,
+  "limits": [
+    "Matching choices does not validate every free-text condition.",
+    "Review checkbox records caller acknowledgement, not biological adjudication.",
+    "Human walkthrough steps and a live selection-bound comparison remain unmeasured."
+  ],
+  "developer_attempts": [
+    {
+      "path": "runs/guided_selection_walkthrough_20261026",
+      "state": "Source/export passed; later UI navigation from saved read view was interrupted."
+    },
+    {
+      "path": "runs/guided_selection_walkthrough_ui_20261026",
+      "state": "UI matched/blocked checks reached; test expected internal key rather than displayed label."
+    },
+    {
+      "path": "runs/guided_selection_walkthrough_ui_v2_20261026",
+      "state": "Passed after selecting new-work root and using displayed label; no application patch from those two test corrections."
+    }
+  ],
+  "content_sha256": "5717c62a513b62aa73a0e69cc868e3348ef73b1f8630507c82495a5fa202b6fd"
+}

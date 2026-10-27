@@ -1,7 +1,14 @@
 // A bounded, deterministic construction request. Evidence answers come from Python.
-let constructionBusy=false,constructionPlanId=null,constructionPlanGeneration=0;
-function clearConstructionPlan(){constructionPlanGeneration++;constructionPlanId=null;$('constructionPlannedBuild').disabled=true;$('constructionPlanPreview').replaceChildren();$('constructionPlanStatus').textContent='';}
+let constructionBusy=false,constructionPlanId=null,constructionPlanGeneration=0,constructionPlanContext=null;
+function clearConstructionPlan(){constructionPlanGeneration++;constructionPlanId=null;constructionPlanContext=null;$('constructionPlanReviewed').checked=false;$('constructionPlanReviewed').disabled=true;$('constructionPlannedBuild').disabled=true;$('constructionPlanPreview').replaceChildren();$('constructionPlanStatus').textContent='';}
 function constructionAccessions(){return $('constructionProteins').value.split(/[\s,]+/).filter(Boolean);}
+function constructionExactSelection(){const relation=$('constructionRelations').value;return {accessions:constructionAccessions(),focus_uniprot:$('constructionFocus').value,profile:$('constructionProfile').value,relations:relation==='both'?['interactions','shared_pathways']:[relation]};}
+function constructionSelectionMatches(left,right){
+  const sameMembers=(a,b)=>Array.isArray(a)&&Array.isArray(b)&&a.length===b.length&&new Set(a).size===a.length&&new Set(b).size===b.length&&[...a].sort().every((value,index)=>value===[...b].sort()[index]);
+  return !!left&&!!right&&sameMembers(left.accessions,right.accessions)&&left.focus_uniprot===right.focus_uniprot&&left.profile===right.profile&&sameMembers(left.relations,right.relations);
+}
+function constructionCurrentContext(){return JSON.stringify({question:$('constructionAgentQuestion').value.trim(),selection:constructionExactSelection(),refresh:$('constructionRefresh').checked});}
+function updateConstructionPlanControls(){const current=!!constructionPlanId&&constructionPlanContext===constructionCurrentContext();$('constructionPlanReviewed').disabled=constructionBusy||!current;$('constructionPlannedBuild').disabled=constructionBusy||!current||!$('constructionPlanReviewed').checked;}
 function updateConstructionQuestion(){
   const accessions=constructionAccessions(),previous=$('constructionFocus').value;
   $('constructionFocus').replaceChildren();
@@ -45,7 +52,8 @@ function setupConstructionPublication(g,receipt=null){
 }
 async function constructGraph(mode='live'){
   const demo=mode==='demo',planned=mode==='planned';
-  if(planned&&!constructionPlanId){constructionProgress('Plan the question before building.',true);return;}
+  if(planned&&(!constructionPlanId||constructionPlanContext!==constructionCurrentContext())){clearConstructionPlan();constructionProgress('The form has changed or no matching plan is ready. Check the question again before building.',true);return;}
+  if(planned&&!$('constructionPlanReviewed').checked){constructionProgress('Review the selected proteins, evidence and proposed plan, then check the review box before building.',true);return;}
   if(constructionBusy||(!demo&&!$('constructionForm').reportValidity()))return;
   const accessions=constructionAccessions();
   if(!demo&&(!accessions.length||accessions.length>25)){constructionProgress('Enter between 1 and 25 exact UniProt accessions.',true);return;}
@@ -53,7 +61,7 @@ async function constructGraph(mode='live'){
   const accessionPattern=/^(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-[1-9][0-9]*)?$/;
   const invalid=accessions.filter(accession=>!accessionPattern.test(accession));
   if(!demo&&invalid.length){constructionProgress('Use exact UniProt accessions, not gene symbols or aliases. Check: '+invalid.join(', '),true);return;}
-  const relation=$('constructionRelations').value,request=demo?{mode:'demo'}:planned?{mode:'planned',plan_id:constructionPlanId,refresh:$('constructionRefresh').checked}:{mode:'live',accessions,focus_uniprot:$('constructionFocus').value,profile:$('constructionProfile').value,relations:relation==='both'?['interactions','shared_pathways']:[relation],refresh:$('constructionRefresh').checked};
+  const selection=constructionExactSelection(),request=demo?{mode:'demo'}:planned?{mode:'planned',plan_id:constructionPlanId,exact_selection:selection,plan_reviewed:true,refresh:$('constructionRefresh').checked}:{mode:'live',...selection,refresh:$('constructionRefresh').checked};
   constructionBusy=true;busy(true);for(const input of $('constructionForm').elements)input.disabled=true;
   $('constructionProgress').replaceChildren();constructionProgress(demo?'Building the explicitly synthetic construction example…':'Resolving the declared proteins, retrieving bounded Pharos evidence, and saving the graph with a cited answer. This can take several minutes.');
   let publishedRun=null;
@@ -67,7 +75,7 @@ async function constructGraph(mode='live'){
     constructionProgress(answered?'Graph and cited answer saved. Inspect source coverage, unresolved identities and candidate evidence before drawing conclusions.':'Graph and source trace saved. No initial answer was generated because the focus protein did not resolve exactly.');
     status(answered?'Construction completed. The graph, answer and source trace are saved together.':'Graph publication completed with an unresolved focus protein; no initial answer was generated.');loadSavedWork();loadRefreshRuns();
   }catch(error){constructionProgress(error.message,true);status((publishedRun?'Graph saved as '+publishedRun+', but the display could not finish: ':'Construction did not complete: ')+error.message,true);}
-  finally{constructionBusy=false;for(const input of $('constructionForm').elements)input.disabled=false;busy(false);updateConstructionQuestion();$('constructionPlannedBuild').disabled=!constructionPlanId;}
+  finally{constructionBusy=false;for(const input of $('constructionForm').elements)input.disabled=false;busy(false);updateConstructionQuestion();updateConstructionPlanControls();}
 }
 async function planConstructionGraph(){
   if(constructionBusy||!$('constructionForm').reportValidity())return;
@@ -75,18 +83,21 @@ async function planConstructionGraph(){
   const generation=constructionPlanGeneration;
   const question=$('constructionAgentQuestion').value.trim();
   if(!question){$('constructionPlanStatus').textContent='Enter the question you want the agent to plan.';return;}
+  const exactSelection=constructionExactSelection(),context=constructionCurrentContext();
   constructionBusy=true;busy(true);for(const input of $('constructionForm').elements)input.disabled=true;
   $('constructionPlanStatus').textContent='Planning one bounded request with the configured model. No source evidence is being retrieved yet…';
   try{
-    const result=await api('/api/construction-plan',{question,accessions:constructionAccessions(),focus_uniprot:$('constructionFocus').value});
-    if(generation!==constructionPlanGeneration)return;
-    const trace=result.trace,request=trace.construction_request;
-    $('constructionPlanStatus').textContent=(trace.status==='validated'?'Plan ready for inspection. ':trace.status==='abstained'?'The agent declined this request. ':'No executable plan was produced. ')+(trace.validated_plan?.reason||trace.error||'');
+    const result=await api('/api/construction-plan',{question,accessions:exactSelection.accessions,focus_uniprot:exactSelection.focus_uniprot,exact_selection:exactSelection});
+    if(generation!==constructionPlanGeneration||context!==constructionCurrentContext())return;
+    const trace=result.trace,request=trace.model_construction_request||trace.construction_request,matching=trace.status==='validated'&&constructionSelectionMatches(trace.exact_selection,exactSelection)&&constructionSelectionMatches(trace.construction_request,exactSelection)&&constructionSelectionMatches(request,exactSelection);
+    $('constructionPlanStatus').textContent=(matching?'The proposed plan matches your exact choices. Review it before building. ':request?'Build blocked: this plan has not passed the exact-selection check. Edit the form or question and check it again. ':trace.status==='abstained'?'The agent declined this request. ':'No executable plan was produced. ')+(trace.validated_plan?.reason||trace.error||'');
     const preview=$('constructionPlanPreview');
-    if(request){constructionPlanId=result.plan_id;preview.append(table(['Choice','Planned retrieval'],[{cells:['Proteins',request.accessions.join(', ')]},{cells:['Focus',request.focus_uniprot]},{cells:['Evidence',request.profile]},{cells:['Answer connections',request.relations.join(', ')]}]));}
+    const describe=(selection,key)=>{if(!selection)return 'No proposal';const value=selection[key];if(key==='profile')return ({ppi:'Reported interactions',context:'Interactions and broader context'})[value]||value||'Not supplied';if(key==='relations'&&Array.isArray(value))return value.map(relation=>({interactions:'Reported interactions',shared_pathways:'Shared pathways'})[relation]||relation).join('; ');return Array.isArray(value)?value.join(', '):value||'Not supplied';};
+    preview.append(table(['Choice','Your exact selection','Model proposal'],[['Proteins','accessions'],['Focus','focus_uniprot'],['Evidence','profile'],['Answer connections','relations']].map(([label,key])=>({cells:[label,describe(exactSelection,key),describe(request,key)]}))));
+    if(matching){constructionPlanId=result.plan_id;constructionPlanContext=context;}
     const link=el('a','Download the planning record');link.href='/api/download/'+encodeURIComponent(result.plan_id);preview.append(link);
-  }catch(error){if(generation===constructionPlanGeneration)$('constructionPlanStatus').textContent=error.message;}
-  finally{constructionBusy=false;for(const input of $('constructionForm').elements)input.disabled=false;busy(false);$('constructionPlannedBuild').disabled=!constructionPlanId;}
+  }catch(error){if(generation===constructionPlanGeneration&&context===constructionCurrentContext())$('constructionPlanStatus').textContent=error.message;}
+  finally{constructionBusy=false;for(const input of $('constructionForm').elements)input.disabled=false;busy(false);updateConstructionPlanControls();}
 }
 async function exportSubmission(){
   if(!runId){$('submissionStatus').textContent='Open a saved workspace graph before exporting.';return;}
@@ -103,6 +114,8 @@ async function exportSubmission(){
 $('constructionPlanButton').addEventListener('click',planConstructionGraph);
 $('constructionPlannedBuild').addEventListener('click',()=>constructGraph('planned'));
 $('constructionAgentQuestion').addEventListener('input',clearConstructionPlan);
+$('constructionPlanReviewed').addEventListener('change',updateConstructionPlanControls);
+$('constructionRefresh').addEventListener('change',clearConstructionPlan);
 $('submissionExport').addEventListener('click',exportSubmission);
 $('constructionForm').addEventListener('submit',event=>{event.preventDefault();constructGraph();});
 $('constructionDemo').addEventListener('click',()=>constructGraph('demo'));

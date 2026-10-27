@@ -36,18 +36,21 @@ the working path. Actual-user assessment and biological benefit remain unproven.
 2. Implemented: reuse the existing planner and construction tools for bounded
    [agent-selected construction](CONSTRUCTION_AGENT.md). The fixed live comparison
    completed, and the documented structural repair was retested. Useful planning
-   remains unproven (0/4 supported tasks matched); preserve the failures and
-   inspect existing methods before choosing another change. No model sweep or
-   agent-built real-graph comparison is justified by these results.
+   remains unreliable: the later tool V2 check matched 3/4 supported requests
+   but admitted 2/8 unsupported requests. Preserve the earlier 0/4 JSON result
+   and keep experimental; no model sweep or agent-built real-graph comparison
+   is justified by these results.
 3. Run the prepared [team walkthrough](USER_WALKTHROUGH_20261026.md) of that same example: construct/inspect the
    graph, find an answer, follow its evidence, interpret a decision and export.
    Record completion and obstacles. A team pilot can identify usability issues;
    it does not substitute for later intended biomedical-user assessment.
 
-Keep the selected IntAct/IMEx evidence-fidelity preparation bounded. Define the
-task and check overlap before using it as a reference; comparing an imported
-curated record with itself would establish only copying fidelity. This work
-must not become another open-ended benchmark search. Independent predictive
+The [IntAct/IMEx development flow](INTACT_EVIDENCE_WORKBENCH.md) now passes
+source fidelity on all four eligible records through a real Pharos-attached
+graph, readable answer and complete gold export. This measures preservation of
+the curated source, not biological accuracy. Commit/freeze the implementation
+and audit provenance/overlap before reserved-study scoring. Four reserved
+studies remain unopened. Keep this assessment bounded; independent predictive
 benefit remains unproven and requires a separately justified assessment.
 
 ## Delivery sequence and completion criteria
@@ -253,7 +256,7 @@ PyKEEN runtime checks on Nations, the [invented context/supervision smoke](evalu
 |---|---|
 | Official reference evaluation | Retained graph, exhaustive ledger and complete qualified source handoff are implemented and verified on a real example. Obtain the evaluation contract for organizer-run scoring; hidden final labels need not be released. Use local alignment only for an explicitly supplied development/public reference |
 | Measured graph-link comparison | First retrospective restricted comparison and Lambourne baseline corroboration complete; no consistent hierarchy gain or independently demonstrated Steward improvement. Both panels are consumed; independent prediction validation, justified enrichment and official judging alignment remain |
-| Bounded agent construction | Planner selection and deterministic execution are connected with persistent provenance. Live comparison found 0/4 supported task matches after structural correction; no live agent-built graph parity is established. Keep experimental and investigate the documented task-selection limitation before another change |
+| Bounded agent construction | Planner selection and deterministic execution are connected with persistent provenance. Latest tool V2 comparison matched 3/4 supported requests but admitted 2/8 unsupported requests; earlier JSON failures remain preserved. No live agent-built graph parity is established. Keep experimental and investigate the documented task-selection limitation before another change |
 | Validated interoperability | Bounded KGX Reactome projection, preserved source bundle and round-trip checks now exist. Resolve the documented category-array and predicate-domain findings before claiming broader conformance; keep mappings and exclusions explicit |
 | Evidence filtering/pruning | Define task-compatible evidence actions and references; measure false removals and abstention. Assay nondetection does not automatically invalidate a functional association or co-complex relation |
 | Maintenance | Extend guarded comparison to explicit cohorts; controlled source-change cases must distinguish changed evidence, scope/cap absence and withdrawal while preserving review continuity |

@@ -1,0 +1,481 @@
+{
+  "format": "biograph-steward.intact-evidence-flow-summary.v1",
+  "prepared_date": "2026-10-26",
+  "recorded_at": "2026-10-26T23:58:38.086306+00:00",
+  "status": "development_source_fidelity_passed",
+  "scope": "Deterministic integration of four consumed IntAct/IMEx development records with a real exact-cohort Pharos graph, readable source-qualified answer and complete gold packet.",
+  "reader": "Official PSI-JAMI jami-mitab/core 3.9.4; full official field collections and original raw cells retained.",
+  "bindings": {
+    "original_protocol": {
+      "path": "docs/evaluations/intact_fidelity_20261026_protocol.json",
+      "sha256": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a"
+    },
+    "mandatory_semantic_amendment": {
+      "path": "docs/evaluations/intact_fidelity_20261026_semantic_amendment.json",
+      "sha256": "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c"
+    },
+    "original_preparation": {
+      "path": "docs/evaluations/intact_fidelity_20261026_preparation.json",
+      "sha256": "e5c35e3f927e62d2c1094c4d19edaf33406940fba26eeadd397c6f156c2af5ea"
+    },
+    "reader_development_summary": {
+      "path": "docs/evaluations/intact_reader_development_20261026_summary.json",
+      "sha256": "09aab11c88948c1bf7cb1691165f815d78699d2cd116544c5a5e317555f9c78f"
+    },
+    "source_publication": {
+      "path": "runs/intact_evidence_publication_verified_20261026/publication.json",
+      "sha256": "123253a4d91b2c4f9cd0321be185b847c91a4296946d05a51bd756ad7ee8b3ba"
+    },
+    "source_publication_fidelity": {
+      "path": "runs/intact_source_publication_fidelity_20261026_attempt_01/report.json",
+      "sha256": "0cb81a2053d539350cc8ea79fc6d9ca082bc4b771f133d60e524ef9d96d1ea2a"
+    },
+    "full_comparison_preparation": {
+      "path": "runs/intact_workbench_comparison_prepared_20261026/preparation.json",
+      "sha256": "6a9aecf15e3d871ff452eb7226acef0f8ed3326ccb99931541f0902e1cb9f259"
+    },
+    "pharos_baseline_snapshot": {
+      "path": "runs/intact_cohort_source_20261026/snapshot.json",
+      "sha256": "919311fff92774de80f2535375b9466b644dc904e4b9557713d0eafd10dcc7ec"
+    },
+    "pharos_baseline_graph": {
+      "path": "runs/intact_cohort_source_20261026/graph.json",
+      "sha256": "95c3efb8d7c9a3bfc5d2993f8838809e9c9ed72b164fd084660f6d1ccfcb814e"
+    },
+    "attached_run_manifest": {
+      "path": "runs/intact_workbench_20261026/run_manifest.json",
+      "sha256": "7b3a97f0c34b43c9cdf028952231841597eb8063bf0d30df020a123d3d08eee1"
+    },
+    "attached_graph": {
+      "path": "runs/intact_workbench_20261026/graph.json",
+      "sha256": "411a91f1a93123cc7c1fa0ede7f40b9fc54e1f0a73f239084dff6b89b1e697a6"
+    },
+    "answer": {
+      "path": "runs/intact_answer_20261026/question.json",
+      "sha256": "7d2a6f5348aca2bb07cbdc29af4ec74e8af211e507275a7480501c3772ef67f3"
+    },
+    "readable_answer": {
+      "path": "runs/intact_answer_20261026/report.html",
+      "sha256": "abf8f08b5c28b9cabbedc3efcd8c12eb48a59560c08224570d9d33c14ddb0ec6"
+    },
+    "answer_evidence_export": {
+      "path": "runs/intact_answer_20261026/assay_evidence.jsonl",
+      "sha256": "6f53e7b87204a5f6cd1e1c8f35718e0475aed811f7b18c51e23df55af4603949"
+    },
+    "gold_packet": {
+      "path": "runs/intact_gold_packet_20261026/packet_manifest.json",
+      "sha256": "711d81664fe8613fc704bf8c390f184c5ecb5d37b91d147c2e92bdfbff2ff4f5"
+    },
+    "gold_decisions": {
+      "path": "runs/intact_gold_packet_20261026/decisions.template.json",
+      "sha256": "54c488b96d80988181ce9230ee577e997ac946efe646ef9c67d10d6c8c396fa2"
+    },
+    "full_comparison_report": {
+      "path": "runs/intact_workbench_fidelity_20261026_attempt_01/report.json",
+      "sha256": "9ad661c8556280786d8899351cddaf8f14e4029dd96bea3f83dfacb731939658"
+    },
+    "http_verification": {
+      "path": "runs/intact_workbench_comparison_prepared_20261026/http_verification.json",
+      "sha256": "6f201ce0c885779029976ba756635ab65944701e5712c3e39a87bcd53bf395cd"
+    }
+  },
+  "pre_comparison_integrity": {
+    "preparation_pins_matched": {
+      "biograph_steward/intact_evidence.py": true,
+      "biograph_steward/intact_publication.py": true,
+      "biograph_steward/assay_attachment.py": true,
+      "biograph_steward/assay_questions.py": true,
+      "biograph_steward/questions.py": true,
+      "biograph_steward/gold_packet.py": true,
+      "biograph_steward/graph.py": true,
+      "biograph_steward/assertions.py": true,
+      "biograph_steward/reviews.py": true,
+      "scripts/evaluate_intact_evidence_fidelity.py": true,
+      "scripts/publish_intact_development.py": true,
+      "runs/intact_cohort_source_20261026/snapshot.json": true,
+      "runs/intact_cohort_source_20261026/graph.json": true,
+      "runs/intact_evidence_publication_verified_20261026/publication.json": true,
+      "runs/intact_development_inspection_20261026/report.json": true,
+      "runs/intact_development_inspection_20261026/row_ledger.jsonl": true
+    },
+    "comparison_input_hashes_matched": 36,
+    "ordering": "Preparation receipt precedes attached run manifest, evaluator input commitment and final report.",
+    "preparation_created_at": "2026-10-26T23:49:54.347590+00:00",
+    "attached_run_created_at": "2026-10-26T23:49:55.116877+00:00",
+    "comparison_commitment_created_at": "2026-10-26T23:50:52.788160+00:00",
+    "comparison_report_created_at": "2026-10-26T23:50:53.087749+00:00",
+    "note": "These are saved SHA-256 bindings; no Git commit or authenticated publisher identity is implied."
+  },
+  "development": {
+    "studies_consumed": [
+      "40075158",
+      "40404733",
+      "40071126",
+      "40739265"
+    ],
+    "physical_rows": 18,
+    "evidence_rows": 14,
+    "eligible_rows": 4,
+    "excluded_evidence_rows": 10,
+    "eligible_publications": 2,
+    "distinct_unordered_eligible_pairs": 2,
+    "exclusions": {
+      "rows_involving_RNA": 8,
+      "mouse_protein_rows": 2
+    },
+    "replacement_performed": false,
+    "eligible_evidence": "MINT-curated anti-bait co-immunoprecipitation; physical association; explicit false negative flag; no expansion annotation supplied.",
+    "unevaluated_real_strata": [
+      "negative true",
+      "default false flag",
+      "supplied complex expansion"
+    ]
+  },
+  "stages": {
+    "source_publication": {
+      "status": "passed",
+      "assessment_stage": "source_publication_fidelity_only",
+      "coverage": {
+        "numerator": 4,
+        "denominator": 4,
+        "value": 1.0,
+        "status": "evaluated"
+      },
+      "strict_fidelity": {
+        "numerator": 4,
+        "denominator": 4,
+        "value": 1.0,
+        "status": "evaluated"
+      },
+      "independent_validation": false
+    },
+    "full_pharos_attached_flow": {
+      "status": "passed",
+      "coverage": {
+        "numerator": 4,
+        "denominator": 4,
+        "value": 1.0,
+        "status": "evaluated"
+      },
+      "strict_fidelity": {
+        "numerator": 4,
+        "denominator": 4,
+        "value": 1.0,
+        "status": "evaluated"
+      },
+      "conditional_fidelity": {
+        "numerator": 4,
+        "denominator": 4,
+        "value": 1.0,
+        "status": "evaluated"
+      },
+      "per_field_group": {
+        "participant_identity": {
+          "raw_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "structured_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "readable_covered": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        },
+        "source_and_publication": {
+          "raw_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "structured_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "readable_covered": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        },
+        "detection_and_type": {
+          "raw_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "structured_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "readable_covered": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        },
+        "roles_and_experimental_context": {
+          "raw_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "structured_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "readable_covered": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        },
+        "complex_expansion": {
+          "raw_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "structured_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "readable_covered": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        },
+        "negative": {
+          "raw_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "structured_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "readable_covered": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        },
+        "features_and_stoichiometry": {
+          "raw_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "structured_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "readable_covered": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        },
+        "other_missing_values_and_confidence": {
+          "raw_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "structured_preserved": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "readable_covered": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        }
+      },
+      "per_publication": [
+        {
+          "publication_id": "pubmed:40075158",
+          "strict_fidelity": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "unevaluated_empty_stratum"
+          }
+        },
+        {
+          "publication_id": "pubmed:40404733",
+          "strict_fidelity": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        },
+        {
+          "publication_id": "pubmed:40071126",
+          "strict_fidelity": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        },
+        {
+          "publication_id": "pubmed:40739265",
+          "strict_fidelity": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "unevaluated_empty_stratum"
+          }
+        }
+      ],
+      "strata": {
+        "negative_literal": {
+          "true": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "unevaluated_empty_stratum"
+          },
+          "false": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          },
+          "-": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "unevaluated_empty_stratum"
+          }
+        },
+        "expansion_stratum": {
+          "supplied": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "unevaluated_empty_stratum"
+          },
+          "not_supplied": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "evaluated"
+          }
+        }
+      },
+      "source_preservation_checks_all_passed": true
+    }
+  },
+  "real_graph": {
+    "accessions": [
+      "Q9HCE5",
+      "Q8WYQ5",
+      "Q9UI95",
+      "Q7Z3K3"
+    ],
+    "all_four_exact_resolutions": true,
+    "original_pharos_nodes_and_targets_preserved": true,
+    "original_pharos_edges_preserved": true,
+    "original_edges": 1,
+    "original_edge_source": "STRINGDB, POGZ–MAD2L2",
+    "added_qualified_observations": 4,
+    "total_edges": 5,
+    "all_assertions_candidate": true,
+    "automatic_acceptance_or_pruning": false
+  },
+  "handoff": {
+    "packet_id": "packet:130e52188040eb540154a5b9d706cc5940b88c16e585ef0967741e654d16ae05",
+    "counts": {
+      "nodes": 4,
+      "edges": 5,
+      "assertions": 5,
+      "context_records": 2,
+      "quarantine": 0,
+      "assay_observations": 4
+    },
+    "input_files": 29,
+    "decisions": {
+      "abstain": 5,
+      "confidence": null
+    },
+    "all_42_raw_columns_per_eligible_record_preserved": true,
+    "readable_field_groups_per_record": 8,
+    "complete_original_source_and_exclusion_ledger_preserved": true,
+    "http_checks": {
+      "run_reopens": true,
+      "answer_reopens": true,
+      "answer_zip_qualified_rows": true,
+      "answer_zip_html_exact": true,
+      "run_zip_all_source_files": true,
+      "run_zip_no_reserved_bodies": true,
+      "source_download_matches_frozen_bytes": true
+    },
+    "frontend_state_and_source_tamper_guard_checks": "passed",
+    "browser_visual_layout_verified": false
+  },
+  "independent_replay": {
+    "reviewer": "separate code agent",
+    "status": "passed_no_blocking_findings",
+    "scope": "Pre-comparison pins, fresh Pharos response bindings, original graph preservation, source roles/hosts/identifiers, answer and packet verification. Not human scientific adjudication.",
+    "reserved_bodies_opened": false
+  },
+  "reserved_final_studies_opened": [],
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "biological_accuracy_measured": false,
+  "prediction_improvement_measured": false,
+  "source_independence_or_novelty_established": false,
+  "standards_conformance_established": false,
+  "limitations": [
+    "Four eligible rows from two studies and two protein pairs; all four original studies remain accounted for.",
+    "Eligible real negative/default-polarity and expanded strata are empty and remain unevaluated.",
+    "No independent biological accuracy, direct-binding inference, graph-prediction improvement or organizer score is measured.",
+    "The earlier source-publication and later full-flow scores reuse the same consumed development records; they are not independent replications.",
+    "Hash and source-fidelity checks do not establish authenticity, scientific truth or intended-user usability.",
+    "The local qualified graph is not a newly validated PSI-MI/Biolink/KGX interchange format.",
+    "Real artifacts remain outside Git; reproduction requires the pinned source material or separately authorized retrieval."
+  ],
+  "next_step": "Commit/freeze adapter and evaluator, then audit explicit study provenance and prior-source/participant/pair overlap before any reserved-study scoring. Do not open reserved bodies or tune on them in this increment."
+}

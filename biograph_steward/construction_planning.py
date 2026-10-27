@@ -172,6 +172,11 @@ def verify_construction_plan_trace(trace):
     The digest detects alteration, not authorship. It is not an attestation that
     a model or the source annotations are scientifically correct.
     """
+    # The guided application record has its own policy and retains the original
+    # v3 trace unchanged. Historical v3 verification below is not reinterpreted.
+    from .guided_construction import POLICY as GUIDED_POLICY, verify_guided_construction_trace
+    if isinstance(trace, dict) and trace.get("format") == GUIDED_POLICY:
+        return verify_guided_construction_trace(trace)
     try:
         if (not isinstance(trace, dict) or trace.get("format") != POLICY
                 or trace.get("policy") != POLICY

@@ -281,6 +281,9 @@ def verify_answer(answer):
 
 
 def answer_text(answer):
+    if answer.get('template') == 'qualified_assay_evidence.v1':
+        from .assay_questions import answer_text as qualified_text
+        return qualified_text(answer)
     lines = [answer['question'], '', answer['overview'], '']
     from .civic_context import display_coverage_text
     coverage = display_coverage_text(answer)
@@ -307,6 +310,9 @@ def answer_text(answer):
 
 
 def answer_html(answer):
+    if answer.get('template') == 'qualified_assay_evidence.v1':
+        from .assay_questions import answer_html as qualified_html
+        return qualified_html(answer)
     esc = lambda value: escape(str(value), quote=True)
     statements = []
     from .civic_context import context_html, overview_html, display_coverage_html
@@ -372,6 +378,10 @@ def save_answer(answer, directory):
     write_json(directory/'question.json', answer)
     (directory/'summary.txt').write_text(answer_text(answer),encoding='utf-8')
     (directory/'report.html').write_text(answer_html(answer),encoding='utf-8')
+    if answer.get('template') == 'qualified_assay_evidence.v1':
+        from .assay_questions import save_extra_files
+        save_extra_files(answer, directory)
+        return
     from .graph import _write_tsv
     if answer['template'] == 'civic_variant_therapy.v1':
         rows=[{"profile_id":r['profile']['id'],"profile_name":r['profile']['name'],**p} for r in answer['results'] for p in r['paths']]

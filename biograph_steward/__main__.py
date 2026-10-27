@@ -63,6 +63,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--publication", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("assay-question", help="Read source-qualified IntAct evidence, preserving experiment context; no unqualified interaction inference.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--protein", help="Optional exact UniProt accession inside the saved cohort.")
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("standards-resources", help="Download hash-pinned official Biolink resources into a new folder.")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("standards-export", help="Publish a bounded KGX projection and actual upstream validation audit; requires optional audit environment.")
@@ -198,6 +202,15 @@ def main(argv: list[str] | None = None) -> int:
             from .assay_attachment import attach_assay
             graph = attach_assay(args.run, args.publication, args.out)
             print(json.dumps({'output': str(args.out.resolve()), 'assay_evidence': graph['assay_evidence']}, indent=2))
+            return 0
+        if args.command == 'assay-question':
+            from .assay_questions import answer_assay_question
+            from .questions import save_answer
+            from .reviews import read_run
+            graph = read_run(args.run)[2]
+            answer = answer_assay_question(graph, args.protein, source_run=args.run.name)
+            save_answer(answer, args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'overview': answer['overview']}, indent=2))
             return 0
         if args.command == "standards-resources":
             from .standards_validation import prepare_resources

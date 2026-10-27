@@ -137,3 +137,12 @@ For an external reference, the [public-resource audit](literature/PUBLIC_REFEREN
 selects IntAct/IMEx for bounded evidence-fidelity preparation. Organizer final
 labels may remain hidden; their task, baseline, label meanings and scoring
 interface are the information needed for the official handoff.
+
+The [IntAct adapter and dedicated source-evidence question](INTACT_EVIDENCE_WORKBENCH.md)
+now reuse this attachment and export framework. They preserve the MITAB evidence
+model and use a separate inspector; the Lambourne construct and frozen-lookup
+explanation is not applied to IntAct records. The real source publication is
+available offline. The real Pharos-attached import, readable answer and gold
+export now pass source fidelity on all four eligible development records.
+The small positive-only panel does not establish biological accuracy or gain
+over Pharos; four reserved studies remain unopened.

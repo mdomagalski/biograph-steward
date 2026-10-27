@@ -31,6 +31,25 @@ def verify_saved_refresh(folder: Path) -> None:
         verify_refresh(folder)
 
 
+def verify_qualified_question_source(answer, runs_dir):
+    """A saved qualified answer cannot outlive changed or missing source bytes."""
+    if answer.get('template') != 'qualified_assay_evidence.v1':
+        return
+    from .reviews import read_run
+    from .questions import graph_basis
+    source_id = answer.get('source_run')
+    if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+        raise ValueError('Qualified answer source run is missing or invalid.')
+    source = Path(runs_dir) / source_id
+    if source.is_symlink() or source.resolve().parent != Path(runs_dir).resolve() or not source.is_dir():
+        raise ValueError('Qualified answer source run is unavailable.')
+    graph = read_run(source)[2]
+    if (answer.get('graph_basis_sha256') != graph_basis(graph)
+            or any(answer.get(key) != graph.get(key) for key in
+                   ('snapshot_sha256', 'assay_attachment_sha256', 'assay_publication_sha256'))):
+        raise ValueError('Qualified answer belongs to different source evidence or review state.')
+
+
 def report_html(graph: dict | None = None, *, protected=False) -> str:
     template = Path(__file__).with_name("ui.html").read_text(encoding="utf-8")
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
@@ -197,7 +216,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         continue
                     try:
                         manifest = json.loads(receipt.read_text(encoding='utf-8'))
-                        if (manifest.get('format') != 'biograph-steward.lambourne-evidence-publication.v1'
+                        if (manifest.get('format') not in {'biograph-steward.lambourne-evidence-publication.v1',
+                                                         'biograph-steward.intact-evidence-publication.v1'}
                                 or manifest.get('content_sha256') != digest({k: v for k, v in manifest.items()
                                                                             if k != 'content_sha256'})):
                             continue
@@ -343,6 +363,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 try:
                     answer = json.loads((folder / "question.json").read_text(encoding="utf-8"))
                     verify_answer(answer)
+                    verify_qualified_question_source(answer, runs_dir)
                     if answer.get('source_run') == folder.name:
                         # Construction publishes the graph and initial answer in
                         # one immutable run. Its receipt must be checked even if
@@ -378,6 +399,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         from .questions import verify_answer
                         answer = json.loads((folder / 'question.json').read_text(encoding='utf-8'))
                         verify_answer(answer)
+                        verify_qualified_question_source(answer, runs_dir)
                         if answer.get('source_run') == folder.name:
                             from .reviews import read_run
                             read_run(folder)
@@ -438,8 +460,16 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if path == '/api/construction-plan':
                     from .construction_planning import (validate_construction_scope,
                         configured_construction_planner, save_construction_plan)
-                    scope = validate_construction_scope(body)
-                    trace = configured_construction_planner().plan(scope)
+                    from .guided_construction import validate_guided_selection, guard_construction_trace
+                    if set(body) != {'question', 'accessions', 'focus_uniprot', 'exact_selection'}:
+                        raise ValueError('Supply the cohort question and its complete explicit selection.')
+                    scope = validate_construction_scope({key: body[key] for key in
+                                                        ('question', 'accessions', 'focus_uniprot')})
+                    selection = validate_guided_selection(scope, body['exact_selection'])
+                    model_trace = configured_construction_planner().plan(scope)
+                    if model_trace.get('scope') != scope:
+                        raise ValueError('The returned plan differs from the supplied question or cohort.')
+                    trace = guard_construction_trace(model_trace, selection)
                     plan_id = 'construction_plan_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
                     save_construction_plan(trace, runs_dir / plan_id / 'construction_planner_trace.json')
                     self.json_reply({'plan_id': plan_id, 'trace': trace})
@@ -484,6 +514,23 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     run_id = 'assay_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
                     graph = attach_assay(*sources, runs_dir / run_id)
                     self.json_reply({'run_id': run_id, 'graph': graph})
+                    return
+                if path == '/api/assay-question':
+                    from .assay_questions import answer_assay_question
+                    from .questions import save_answer
+                    from .reviews import read_run
+                    if set(body) - {'run_id', 'protein'}:
+                        raise ValueError('Use only run_id and an optional exact protein for qualified evidence.')
+                    source_id = body.get('run_id', '')
+                    if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+                        raise ValueError('Invalid source run ID.')
+                    source = runs_dir / source_id
+                    if source.is_symlink() or source.resolve().parent != runs_dir or not source.is_dir():
+                        raise ValueError('Source run not found.')
+                    answer = answer_assay_question(read_run(source)[2], body.get('protein'), source_run=source_id)
+                    question_id = 'assay_question_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
+                    save_answer(answer, runs_dir / question_id)
+                    self.json_reply({'question_id': question_id, 'answer': answer})
                     return
                 if path == '/api/refresh-compare':
                     from .refresh_workflow import run_refresh
@@ -535,7 +582,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if path == '/api/construct':
                     from .construction import (demo_construction_snapshot, plan_construction,
                                                publish_construction, run_construction, run_planned_construction)
-                    allowed = {'mode', 'accessions', 'focus_uniprot', 'profile', 'relations', 'refresh', 'plan_id'}
+                    allowed = {'mode', 'accessions', 'focus_uniprot', 'profile', 'relations', 'refresh', 'plan_id',
+                               'exact_selection', 'plan_reviewed'}
                     if set(body) - allowed:
                         raise ValueError('Unsupported construction fields. Use a bounded protein cohort, focus protein and retrieval profile.')
                     mode = body.get('mode', 'live')
@@ -549,8 +597,12 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         snapshot = demo_construction_snapshot()
                     elif mode == 'planned':
                         from .construction_planning import verify_construction_plan_trace
-                        if set(body) - {'mode', 'plan_id', 'refresh'} or 'plan_id' not in body:
-                            raise ValueError('Execute only the saved plan_id; request fields cannot override it.')
+                        from .guided_construction import (POLICY as GUIDED_POLICY,
+                                                          validate_guided_selection)
+                        if (set(body) - {'mode', 'plan_id', 'refresh', 'exact_selection', 'plan_reviewed'}
+                                or not {'plan_id', 'exact_selection', 'plan_reviewed'} <= set(body)
+                                or body['plan_reviewed'] is not True):
+                            raise ValueError('Review the saved plan and supply its current explicit selection before building.')
                         plan_id = body['plan_id']
                         if not isinstance(plan_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', plan_id):
                             raise ValueError('Invalid saved construction plan ID.')
@@ -558,8 +610,12 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir or any(p.is_symlink() for p in folder.rglob('*')):
                             raise ValueError('Saved construction plan not found.')
                         trace = json.loads((folder / 'construction_planner_trace.json').read_text(encoding='utf-8'))
+                        if trace.get('format') != GUIDED_POLICY:
+                            raise ValueError('Create a guided plan with explicit choices before building through this interface.')
                         if verify_construction_plan_trace(trace) is None:
                             raise ValueError('This plan abstained or failed; no source retrieval was performed.')
+                        if validate_guided_selection(trace['scope'], body['exact_selection']) != trace['exact_selection']:
+                            raise ValueError('The current choices differ from the saved plan. Plan and review again.')
                     else:
                         request = {key: value for key, value in body.items() if key not in {'mode', 'refresh'}}
                         # Validate every scope field before creating a transport

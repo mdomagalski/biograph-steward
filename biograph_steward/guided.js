@@ -43,8 +43,8 @@ async function runQuestion(){
   finally{questionBusy=false;for(const input of $('questionForm').elements)input.disabled=false;$('questionRun').disabled=!runId;}
 }
 async function reopenQuestion(id){
-  try{const response=await fetch('/api/question/'+encodeURIComponent(id)),result=await response.json();if(!response.ok)throw new Error(result.error||'Could not reopen question');if(result.answer.template==='civic_variant_therapy.v1'){bindCivicAnswer(result.answer,result.question_id);$('civicStatus').textContent='Saved therapy question reopened against the same sources and review state.';return;}bindQuestionAnswer(result.answer,result.question_id);$('questionStatus').textContent='Saved question reopened against the same source and review state.';}
-  catch(error){$('questionStatus').textContent=error.message;$('civicStatus').textContent=error.message;}
+  try{const response=await fetch('/api/question/'+encodeURIComponent(id)),result=await response.json();if(!response.ok)throw new Error(result.error||'Could not reopen question');if(result.answer.template==='qualified_assay_evidence.v1'){bindAssayAnswer(result.answer,result.question_id);return;}if(result.answer.template==='civic_variant_therapy.v1'){bindCivicAnswer(result.answer,result.question_id);$('civicStatus').textContent='Saved therapy question reopened against the same sources and review state.';return;}bindQuestionAnswer(result.answer,result.question_id);$('questionStatus').textContent='Saved question reopened against the same source and review state.';}
+  catch(error){$('questionStatus').textContent=error.message;$('civicStatus').textContent=error.message;$('assayQuestionStatus').textContent=error.message;}
 }
 function renderQuestion(){
   const answer=questionAnswer;if(!answer)return;

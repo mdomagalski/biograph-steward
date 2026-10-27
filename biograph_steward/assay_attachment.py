@@ -63,6 +63,9 @@ Historical implementation pins are preserved, not compared to today's code.
 Exact scientific replay uses the original checkpoint and its recorded runtime.
 """
     manifest, files = _capture(publication, "publication.json")
+    from .intact_publication import FORMAT as INTACT_FORMAT, load_projection
+    if manifest.get("format") == INTACT_FORMAT:
+        return load_projection(manifest, files)
     if (manifest.get("format") != PUBLICATION_FORMAT
             or not isinstance(manifest.get("implementation_sha256"), dict)
             or not manifest["implementation_sha256"]
@@ -136,8 +139,12 @@ def prepare_attachment(snapshot, manifest, evidence):
                "historical_scientific_replay_performed": False,
                "automatic_acceptance_performed": False, "automatic_pruning_performed": False,
                "biological_validation_performed": False, "independent_evidence_count": None,
-               "lookup_note": "Pharos match labels describe the original frozen comparison lookup, not a new lookup of this cohort.",
+               "lookup_note": ("No Pharos match or novelty lookup is supplied by this IntAct attachment."
+                               if evidence.get("source_kind") == "intact_mitab27" else
+                               "Pharos match labels describe the original frozen comparison lookup, not a new lookup of this cohort."),
                "limitations": deepcopy(evidence["limitations"])}
+    if evidence.get("source_kind") == "intact_mitab27":
+        summary.update(source_kind="intact_mitab27", source_accounting=deepcopy(evidence["summary"]))
     value = {"format": FORMAT, "snapshot_sha256": snapshot["content_sha256"],
              "publication_sha256": manifest["content_sha256"],
              "publication_evidence_sha256": manifest["files"]["evidence.json"],
@@ -147,6 +154,8 @@ def prepare_attachment(snapshot, manifest, evidence):
              "source_license": {"source": "Lambourne et al. author publication",
                  "license_file": "assay_source/source/freeze/source/LICENSE",
                  "note": "The preserved author repository license covers its stated software/material scope; this attachment does not assign a new data license. Consult original paper and source terms before redistribution."}}
+    if evidence.get("source_kind") == "intact_mitab27":
+        value["source_license"] = deepcopy(evidence["source_license"])
     value["content_sha256"] = digest(value)
     return value
 

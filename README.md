@@ -24,6 +24,7 @@ Open `http://127.0.0.1:8765/`. A fresh checkout includes an explicitly synthetic
 - Scoped Pharos retrieval with pagination, explicit limits and per-protein coverage reporting for pathways, GO, interactions, drugs, selected expression and publication discovery.
 - Qualified assertions, raw-source provenance, immutable snapshots and separate local human-review states.
 - [Qualified assay attachment](docs/ASSAY_WORKBENCH.md): selected cohort observations, original assay context, source-preserving reviews and complete run exports.
+- [Qualified IntAct source evidence](docs/INTACT_EVIDENCE_WORKBENCH.md): official-reader-backed records, readable experimental context and a dedicated traceable source question using the existing attachment/export framework. The real Pharos-attached flow preserves all four eligible development records through answer and gold export; this measures source fidelity, not biological accuracy.
 - Guided protein-neighborhood and CIViC molecular-profile/therapy questions, with compact evidence graphs, deterministic cited summaries and complete evidence-context exports.
 - Saved graphs and answers, source passports, and comparison of saved snapshots with guarded review carryover.
 - Source-bound graph handoff, materialized retained graph and exhaustive keep/prune/abstain ledger, including qualified assay sources. Exact external-reference alignment preserves raw labels; official gold scoring awaits its contract. See the [real export verification](docs/evaluations/SUBMISSION_DEMO_20261026.md).

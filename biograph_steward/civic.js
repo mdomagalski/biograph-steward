@@ -1,8 +1,8 @@
 // Source-specific guided question. All scientific summary text comes from Python.
 let civicAnswer=null,civicQuestionId=null,civicSelection=null,civicBusy=false;
 function switchQuestionWorkflow(){
-  const therapy=$('questionWorkflow').value==='therapy';
-  $('guidedQuestion').classList.toggle('hidden',therapy);$('civicQuestion').classList.toggle('hidden',!therapy);
+  const mode=$('questionWorkflow').value, therapy=mode==='therapy';
+  $('guidedQuestion').classList.toggle('hidden',mode!=='connections');$('civicQuestion').classList.toggle('hidden',!therapy);
   updateWorkNavigation();
 }
 function setupCivic(){
@@ -160,7 +160,7 @@ function inspectCivicCitation(id){
   }
   const overlap=el('details');overlap.append(el('summary','Pharos overlap and source trace'),el('pre',JSON.stringify({overlap:c.overlap,assertion_id:c.assertion_id,revision:c.revision,civic_snapshot_sha256:civicAnswer.civic_snapshot_sha256,pharos_snapshot_sha256:civicAnswer.snapshot_sha256},null,2)));box.append(overlap);box.scrollIntoView({block:'nearest'});
 }
-$('questionWorkflow').addEventListener('change',switchQuestionWorkflow);
+$('questionWorkflow').addEventListener('change',()=>{switchQuestionWorkflow();if($('questionWorkflow').value==='assay')navigateWork('question');});
 $('civicRetrieve').onclick=retrieveCivic;
 $('civicForm').addEventListener('submit',e=>{e.preventDefault();runCivicQuestion();});
 for(const id of ['civicProfile','civicTherapy','civicView','civicLimit','civicPaths'])$(id).addEventListener('change',civicScopeChanged);

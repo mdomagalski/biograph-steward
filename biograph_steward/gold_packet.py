@@ -313,8 +313,13 @@ def export_packet(run, output):
     implementation = {**_code_hashes(), 'gold_packet': sha(__file__), 'file_utils': sha(file_utils.__file__)}
     if assay is not None:
         from . import assay_attachment, lambourne_evidence
+        from . import intact_evidence, intact_publication
+        projection = (intact_evidence if assay["summary"].get("source_kind") == "intact_mitab27"
+                      else lambourne_evidence)
         implementation.update({'assay_attachment': sha(assay_attachment.__file__),
-                               'assay_observation_projection': sha(lambourne_evidence.__file__)})
+                               'assay_observation_projection': sha(projection.__file__)})
+        if projection is intact_evidence:
+            implementation['intact_publication'] = sha(intact_publication.__file__)
     if 'construction_planner_trace.json' in material:
         from . import construction_planning
         implementation['construction_planning'] = sha(construction_planning.__file__)

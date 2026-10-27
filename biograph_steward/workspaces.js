@@ -23,14 +23,19 @@ async function loadSavedWork(){
   }catch(error){$('savedWorkStatus').textContent=error.message;}
 }
 function updateWorkNavigation(){
-  const therapy=$('questionWorkflow').value==='therapy',answer=therapy?civicAnswer:questionAnswer;
+  const mode=$('questionWorkflow').value, therapy=mode==='therapy',answer=mode==='assay'?assayAnswer:therapy?civicAnswer:questionAnswer;
   $('navGraph').disabled=!answer?.results.length;
   $('navAnswer').disabled=!answer;
   $('navSources').disabled=!answer?.citations.length;
   $('workNavigationHint').textContent=answer?'Your answer is ready. Open the graph, read the summary, or inspect a cited source.':'Choose a question and find evidence to open its graph, answer and sources.';
 }
 function navigateWork(step){
-  const therapy=$('questionWorkflow').value==='therapy';let target;
+  const mode=$('questionWorkflow').value,therapy=mode==='therapy';let target;
+  if(mode==='assay'){
+    target=$(step==='question'?'assayQuestionControls':step==='graph'?'assayGraphTitle':step==='sources'?'assayAnswerRecords':'assayAnswerTitle');
+    if(target){target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start'});}
+    return;
+  }
   if(step==='question')target=$(therapy?'civicQuestion':'guidedQuestion');
   if(step==='graph')target=$(therapy?'civicGraphTitle':'questionGraphTitle');
   if(step==='answer')target=$(therapy?'civicAnswerTitle':'questionAnswerTitle');
