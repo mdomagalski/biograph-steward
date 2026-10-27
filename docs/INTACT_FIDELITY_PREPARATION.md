@@ -2,7 +2,7 @@
 
 Prepared October 26, 2026. **The official reader is now validated and the four
 development studies have been inspected: four eligible human-protein evidence
-rows across two publications.** The four reserved studies remain unopened.
+rows across two publications.** The four reserved interaction files remain unopened.
 A complete real Pharos-attached import/answer/export comparison now passes
 source fidelity on all four eligible development rows. See the
 [workbench result](INTACT_EVIDENCE_WORKBENCH.md) and
@@ -193,9 +193,15 @@ claim. No file was replaced because of its eligibility or outcome.
 The deterministic qualified import, readable answer and complete export are now
 implemented and tested against those four rows and synthetic edge cases. The
 full real comparison passed 4/4 source fidelity; it does not add a biological
-accuracy or independent-prediction result. The reserved subset remains untouched
-until the adapter and scoring projection are committed and frozen, followed by
-the required provenance/overlap audit. Final-study suitability remains unknown.
+accuracy or independent-prediction result. Reserved interaction bodies remain
+untouched while the required provenance/overlap audit and final execution path
+are unresolved. Final-study suitability remains unknown.
+
+Follow-through: the adapter/evaluator checkpoint is now `bca13a7`. The
+[readiness audit](evaluations/INTACT_PROVENANCE_READINESS_20261026.md) inspected
+bibliographic metadata for all eight publications, with no reserved interaction
+body access. Bibliographic identity alone did not close the shared-study gate;
+participant/pair overlap and full study provenance remain unresolved.
 
 Data reuse follows the dedicated
 [IntAct CC BY 4.0 statement](https://raw.githubusercontent.com/intact-portal/intact-portal-documentation/b5d5bb35365739d4942e9ca250a2cf4fbaa14c62/about/license-privacy.md),

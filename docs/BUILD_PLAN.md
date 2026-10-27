@@ -48,10 +48,14 @@ the working path. Actual-user assessment and biological benefit remain unproven.
 The [IntAct/IMEx development flow](INTACT_EVIDENCE_WORKBENCH.md) now passes
 source fidelity on all four eligible records through a real Pharos-attached
 graph, readable answer and complete gold export. This measures preservation of
-the curated source, not biological accuracy. Commit/freeze the implementation
-and audit provenance/overlap before reserved-study scoring. Four reserved
-studies remain unopened. Keep this assessment bounded; independent predictive
-benefit remains unproven and requires a separately justified assessment.
+the curated source, not biological accuracy. The implementation is committed and
+frozen at `bca13a7`; provenance/overlap must be audited before reserved-study
+scoring. Four reserved interaction files remain unopened. Keep this assessment
+bounded; independent predictive benefit remains unproven and requires a
+separately justified assessment. The
+[provenance readiness review](evaluations/INTACT_PROVENANCE_READINESS_20261026.md)
+completed the bounded bibliographic check; richer source provenance and a frozen
+final execution path remain required. Reserved interaction bodies stay unopened.
 
 ## Delivery sequence and completion criteria
 

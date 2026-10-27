@@ -1,0 +1,511 @@
+{
+  "format": "biograph-steward.intact-provenance-readiness-summary.v1",
+  "prepared_date": "2026-10-26",
+  "recorded_at": "2026-10-27T00:42:26.385309+00:00",
+  "status": "partial_metadata_audit_complete_reserved_scoring_not_ready",
+  "implementation_freeze": {
+    "commits": {
+      "nvidia_comparisons": "7aa13c3a00925caaa9d6f52cd19dd333ffaf52f6",
+      "official_reader_and_preparation": "dabbffb4fcdf967dbc438857a51176c400f73667",
+      "active_workbench_and_guard": "bca13a7f1db4df0a3533cdeb6a09cb2a9a368675"
+    },
+    "working_tree_clean_before_metadata_access": true,
+    "all_16_original_precomparison_pins_still_match": true,
+    "pushed_to_github": false
+  },
+  "bindings": {
+    "original_protocol": {
+      "path": "docs/evaluations/intact_fidelity_20261026_protocol.json",
+      "sha256": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a"
+    },
+    "mandatory_amendment": {
+      "path": "docs/evaluations/intact_fidelity_20261026_semantic_amendment.json",
+      "sha256": "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c"
+    },
+    "original_preparation": {
+      "path": "docs/evaluations/intact_fidelity_20261026_preparation.json",
+      "sha256": "e5c35e3f927e62d2c1094c4d19edaf33406940fba26eeadd397c6f156c2af5ea"
+    },
+    "source_fidelity_result": {
+      "path": "docs/evaluations/intact_evidence_flow_20261026_summary.json",
+      "sha256": "471ad5bf2f7e59fd70a0781e72d54c2c41e4fdd5d787d86ec305a2163cc5d630"
+    },
+    "original_curation_manual": {
+      "path": "runs/intact_fidelity_preparation_20261026/sources/IntAct_special_cases.md",
+      "sha256": "9ee8a3a65fd6773a03e9256c4ee60c60a1dfb107c28fe85af408332b0b36013b"
+    },
+    "metadata_pre_access": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/pre_access.json",
+      "sha256": "a23202ca5de8ad7a86cde087fbf497a2a782bda4606bd00f30735c3b3d76e140"
+    },
+    "metadata_script": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/audit_metadata.py",
+      "sha256": "7bca6350c8fd45f6f0a82e3f01710ba40579c7142c2ffac6c159f30592b20eea"
+    },
+    "metadata_receipts": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/http_receipts.json",
+      "sha256": "cd99c55d8854619813f1575d570a9b7e6ea0e2c3ff40fa782b2de77746781a14"
+    },
+    "metadata_result": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/report.json",
+      "sha256": "bb15e499408e8d63dc58f015a3bd0ea8fcb44e0ff0a3cad547886c2fdb09ea2f"
+    },
+    "selected_pubmed_summaries": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/selected_esummary.json",
+      "sha256": "cc08035359cfb0ec7b3a9bcb85a5e446b374bec4d3675ea68c64b3df28f2a282"
+    },
+    "pubmed_database_metadata": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/pubmed_einfo.json",
+      "sha256": "2d9f32b706db6d65fed88cf4da0d15231c25eae27c43c61fffe7e51fd476db7a"
+    },
+    "consumed_anchor_lite": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/consumed_anchor_lite.json",
+      "sha256": "a657ccdaf78699eebfb8983d720e0d6a714b42adb78272cb888bfdb7ce8d0a1e"
+    },
+    "official_graph_schema": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/intact_graph_schema.json",
+      "sha256": "9c3cdb668cf7792a3353eca2b6c6774838e9395c4f07717fe9414821e771889f"
+    },
+    "preserved_metadata_network_failure": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_01/http_receipts.json",
+      "sha256": "9d3329603c6e4102f7174773159faf8466c15142d910830a133217eabfe21aad"
+    },
+    "development_provenance_pre_access": {
+      "path": "runs/intact_development_provenance_20261026/pre_access.json",
+      "sha256": "a4b942b85e835c18cf1445506ad4964c2baa6e9c54cea9a89247eaedf9c726c4"
+    },
+    "development_provenance_script": {
+      "path": "runs/intact_development_provenance_20261026/retrieve_development_provenance.py",
+      "sha256": "35f1c818b959edbeae18b215d90ac6f6b0644bbd8c0ca0e77fc3938868d080b1"
+    },
+    "development_provenance_failure_report": {
+      "path": "runs/intact_development_provenance_20261026/report.json",
+      "sha256": "8b122f8557396fe311a1cc730656194530f0038e67385c12a64b3caee177e399"
+    },
+    "development_provenance_failure_receipts": {
+      "path": "runs/intact_development_provenance_20261026/http_receipts.json",
+      "sha256": "f074ddac0ae278247268b0091c62036b67f601c2da92d14717a06565f25b87fe"
+    },
+    "route_probe_pre_access": {
+      "path": "runs/intact_development_provenance_20261026_attempt_02/pre_access.json",
+      "sha256": "3bd2d9b149eba424d4655fbc2bbc3b244faaca87d4bd1fc2e1728e6da531669c"
+    },
+    "route_probe_script": {
+      "path": "runs/intact_development_provenance_20261026_attempt_02/probe_routes.py",
+      "sha256": "88b9ae7f500a8a42e22cc34fac319dc71017ff3ac44281c6e6790880c78dc696"
+    },
+    "route_probe_receipts": {
+      "path": "runs/intact_development_provenance_20261026_attempt_02/http_receipts.json",
+      "sha256": "fc3efe6b79c54c317885a768384aebddd813c1e298371c159c7c262ac123af96"
+    },
+    "empty_documented_full_response": {
+      "path": "runs/intact_development_provenance_20261026_attempt_02/documented_full.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "empty_current_details_response": {
+      "path": "runs/intact_development_provenance_20261026_attempt_02/current_details.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "current_reader_bridge": {
+      "path": "tools/intact_reader/src/main/java/org/biograph/IntactReader.java",
+      "sha256": "ccd1348a878625247efeea6cc6364fd5f62cbdb8937848b3da56e1a865fb608c"
+    },
+    "distribution_retrieve_metadata_py": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/distribution_metadata/retrieve_metadata.py",
+      "sha256": "77c1b72e5cbb372e43226fb3ad0df57dac6711f880e05d1317660078117143fe"
+    },
+    "distribution_http_receipts_json": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/distribution_metadata/http_receipts.json",
+      "sha256": "8f03daf5507877ffc872113e7f397e1068d290bdb4d41de04b27738d4a9f3058"
+    },
+    "distribution_psi25_readme_txt": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/distribution_metadata/psi25_readme.txt",
+      "sha256": "6e9c12ee068aefde889bbbbfed0333eb2635fd70379cb54404bcf315045abb49"
+    },
+    "distribution_psi30_readme_txt": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/distribution_metadata/psi30_readme.txt",
+      "sha256": "afa70a0e3b1d8aa0ce34b44c8b09d8f239016e4db0b546c3dd154e838e00de5b"
+    },
+    "distribution_psi25_2025_directory_txt": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/distribution_metadata/psi25_2025_directory.txt",
+      "sha256": "7ab78043600f49c8cda87573764d7a94ec69a11e6d465e46588940f70157bf09"
+    },
+    "distribution_psi30_2025_directory_txt": {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/distribution_metadata/psi30_2025_directory.txt",
+      "sha256": "320c51f3bcd9159aab83e483d454dc4ebb3e024e706545f0ce84bd7cec0533c3"
+    }
+  },
+  "bibliographic_checks": {
+    "selected_records_resolved": 8,
+    "selected_publications": [
+      {
+        "pmid": "40075158",
+        "split": "development",
+        "identifiers": [
+          {
+            "type": "pubmed",
+            "value": "40075158"
+          },
+          {
+            "type": "pmc",
+            "value": "PMC11903784"
+          },
+          {
+            "type": "pmcid",
+            "value": "pmc-id: PMC11903784;"
+          },
+          {
+            "type": "doi",
+            "value": "10.1038/s41698-025-00859-z"
+          },
+          {
+            "type": "pii",
+            "value": "10.1038/s41698-025-00859-z"
+          }
+        ],
+        "pubtypes": [
+          "Journal Article"
+        ],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "recordstatus": "PubMed"
+      },
+      {
+        "pmid": "40404733",
+        "split": "development",
+        "identifiers": [
+          {
+            "type": "pubmed",
+            "value": "40404733"
+          },
+          {
+            "type": "pmc",
+            "value": "PMC12098893"
+          },
+          {
+            "type": "pmcid",
+            "value": "pmc-id: PMC12098893;"
+          },
+          {
+            "type": "doi",
+            "value": "10.1038/s41598-025-02129-1"
+          },
+          {
+            "type": "pii",
+            "value": "10.1038/s41598-025-02129-1"
+          }
+        ],
+        "pubtypes": [
+          "Journal Article"
+        ],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE"
+      },
+      {
+        "pmid": "40071126",
+        "split": "development",
+        "identifiers": [
+          {
+            "type": "pubmed",
+            "value": "40071126"
+          },
+          {
+            "type": "pmc",
+            "value": "PMC11890915"
+          },
+          {
+            "type": "pmcid",
+            "value": "pmc-id: PMC11890915;"
+          },
+          {
+            "type": "doi",
+            "value": "10.1007/s13205-025-04231-7"
+          },
+          {
+            "type": "pii",
+            "value": "4231"
+          }
+        ],
+        "pubtypes": [
+          "Journal Article"
+        ],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "recordstatus": "PubMed"
+      },
+      {
+        "pmid": "40739265",
+        "split": "development",
+        "identifiers": [
+          {
+            "type": "pubmed",
+            "value": "40739265"
+          },
+          {
+            "type": "pmc",
+            "value": "PMC12312308"
+          },
+          {
+            "type": "pmcid",
+            "value": "pmc-id: PMC12312308;"
+          },
+          {
+            "type": "doi",
+            "value": "10.1186/s13287-025-04526-9"
+          },
+          {
+            "type": "pii",
+            "value": "10.1186/s13287-025-04526-9"
+          }
+        ],
+        "pubtypes": [
+          "Journal Article"
+        ],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE"
+      },
+      {
+        "pmid": "39833857",
+        "split": "reserved_final",
+        "identifiers": [
+          {
+            "type": "pubmed",
+            "value": "39833857"
+          },
+          {
+            "type": "pmc",
+            "value": "PMC11744942"
+          },
+          {
+            "type": "pmcid",
+            "value": "pmc-id: PMC11744942;"
+          },
+          {
+            "type": "doi",
+            "value": "10.1186/s13075-025-03475-1"
+          },
+          {
+            "type": "pii",
+            "value": "10.1186/s13075-025-03475-1"
+          }
+        ],
+        "pubtypes": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE"
+      },
+      {
+        "pmid": "40211762",
+        "split": "reserved_final",
+        "identifiers": [
+          {
+            "type": "pubmed",
+            "value": "40211762"
+          },
+          {
+            "type": "pmc",
+            "value": "PMC11995769"
+          },
+          {
+            "type": "pmcid",
+            "value": "pmc-id: PMC11995769;"
+          },
+          {
+            "type": "doi",
+            "value": "10.1080/0886022X.2025.2484632"
+          }
+        ],
+        "pubtypes": [
+          "Journal Article"
+        ],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE"
+      },
+      {
+        "pmid": "39972491",
+        "split": "reserved_final",
+        "identifiers": [
+          {
+            "type": "pubmed",
+            "value": "39972491"
+          },
+          {
+            "type": "pmc",
+            "value": "PMC11841292"
+          },
+          {
+            "type": "pmcid",
+            "value": "pmc-id: PMC11841292;"
+          },
+          {
+            "type": "doi",
+            "value": "10.1186/s12929-025-01121-1"
+          },
+          {
+            "type": "pii",
+            "value": "10.1186/s12929-025-01121-1"
+          }
+        ],
+        "pubtypes": [
+          "Journal Article"
+        ],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE"
+      },
+      {
+        "pmid": "40555359",
+        "split": "reserved_final",
+        "identifiers": [
+          {
+            "type": "pubmed",
+            "value": "40555359"
+          },
+          {
+            "type": "doi",
+            "value": "10.1038/s41586-025-09302-6"
+          },
+          {
+            "type": "pii",
+            "value": "10.1038/s41586-025-09302-6"
+          }
+        ],
+        "pubtypes": [
+          "Journal Article"
+        ],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE"
+      }
+    ],
+    "selected_doi_alias_matches": [],
+    "consumed_anchor_scope": "Four named core references: INMC, HuRI, Choi assay benchmarking and Lambourne. Not all earlier CIViC, cancer-claim or other consumed references.",
+    "consumed_anchor_results": [
+      {
+        "doi": "10.1038/s41467-026-70942-x",
+        "pmid": "41935050",
+        "pmcid": "PMC13230783",
+        "source": "MED",
+        "id": "41935050"
+      },
+      {
+        "doi": "10.1038/s41467-023-37079-7",
+        "pmid": "36949045",
+        "pmcid": "PMC10033937",
+        "source": "MED",
+        "id": "36949045"
+      },
+      {
+        "doi": "10.1038/s41586-020-2188-x",
+        "pmid": "32296183",
+        "pmcid": "PMC7169983",
+        "source": "MED",
+        "id": "32296183"
+      },
+      {
+        "doi": "10.1038/s41467-019-11809-2",
+        "pmid": "31467278",
+        "pmcid": "PMC6715725",
+        "source": "MED",
+        "id": "31467278"
+      }
+    ],
+    "missing_anchor_dois": [],
+    "selected_anchor_identifier_matches": [],
+    "correction_retraction_clearance_performed": false,
+    "reason": "ESummary metadata were retrieved, but EInfo exposed no qualifying correction/retraction/republication linkname. No article-level correction relationship check was performed; missing flags are not clearance."
+  },
+  "verified_provenance_gap": {
+    "existing_curation_model": "IntAct manual section 10.6 records shared primary/subsidiary data through publication cross-references plus experiment annotations/comments. Generic see-also or uniprot-dr-export:No alone is insufficient.",
+    "mitab_scope": "MITAB column9 preserves cited identifiers, not all qualified publication/experiment cross-references and annotations.",
+    "current_bridge_scope": "Exports publication identifiers, pubmed/doi/imex and interaction annotations/xrefs; omits publication and experiment xrefs/annotations.",
+    "official_supported_fields": "The inspected Graph schema declares Publication.xrefs/annotations and Experiment.xrefs/annotations through detailsOld depth2. Current details declares publicationXrefs/Annotations but no full Experiment.",
+    "schema_not_runtime_proof": true,
+    "missing_links_do_not_establish_independence": true
+  },
+  "development_only_route_check": {
+    "first_attempt": "Four already-consumed eligible development ACs returned JSON parse errors. That first script did not preserve undecodable raw response bytes, so HTTP/body claims are not made from those errors.",
+    "followup_record": "EBI-70852459 (consumed development PMID40404733)",
+    "preserved_responses": [
+      {
+        "route": "documented_full",
+        "url": "https://www.ebi.ac.uk/intact/ws/graph/interaction/detailsOld?ac=EBI-70852459&depth=2",
+        "status": 200,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "json_parsed": false
+      },
+      {
+        "route": "current_details",
+        "url": "https://www.ebi.ac.uk/intact/ws/graph/interaction/details/EBI-70852459",
+        "status": 200,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "json_parsed": false
+      }
+    ],
+    "finding": "Both documented routes returned HTTP200 and zero bytes for this checked development record. No richer provenance values were obtained.",
+    "cause": "unresolved; no inference of missing curation, universal API failure or graph-index lag",
+    "frozen_mitab_reference_replaced": false,
+    "new_source_fidelity_score": false,
+    "upstream_check": "Finite official documentation/repository/issue review found no verified explanation of the empty responses. Missing-accession/null-return conventions and graph-index lag remain unverified hypotheses."
+  },
+  "exposure": {
+    "reserved_bibliographic_metadata_opened": true,
+    "bibliographic_fields": "PMID, DOI/PMC aliases, title, publication types/status and attributes. Titles remain in ignored receipts; no wholly unseen-publication claim.",
+    "abstracts_or_full_text_opened": false,
+    "reserved_mitab_bodies_opened": false,
+    "reserved_bodies_hashed_by_this_increment": false,
+    "reserved_participant_pair_values_opened": false,
+    "reserved_interaction_api_called": false,
+    "reserved_study_replacement": false
+  },
+  "pending_gates": [
+    "Complete shared-study provenance using the existing qualified publication/experiment source model; unavailable values remain unresolved.",
+    "Exact participant/pair overlap remains unevaluated while reserved identities stay closed.",
+    "Current inspector, publisher, catalog validator and fidelity runner intentionally accept the development reference only; a separately tested/frozen final path is required before reserved scoring.",
+    "Preserve no-replacement, the original eligibility/denominator rules, mandatory semantic amendment and all consumed-panel boundaries."
+  ],
+  "scientific_accuracy_measured": false,
+  "independent_biological_improvement_established": false,
+  "automatic_acceptance_or_pruning": false,
+  "final_scoring_performed": false,
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "decision": "Keep the tested source-fidelity result. Do not score or expose reserved rows yet, and do not widen the existing development allowlists as a shortcut.",
+  "next_bounded_work": "Verify a richer official PSI-MI publication/experiment provenance path on development controls, then prepare and freeze a separate final execution path. Do not create a new annotation ontology, prompt sweep or independent-truth claim.",
+  "official_xml_distribution": {
+    "versioned_per_publication_routes_verified": true,
+    "psi25": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psi25/pmid/2025/",
+      "readme_format_version": "2.5.4",
+      "development_xml_filename_entries_present": true,
+      "displayed_export_timestamp": "2026-10-24 11:46"
+    },
+    "psi30": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psi30/pmid/2025/",
+      "readme_format_version": "3.0.0",
+      "development_xml_filename_entries_present": true,
+      "displayed_export_timestamp": "2026-10-18 14:45"
+    },
+    "selected_xml_or_zip_files_downloaded": false,
+    "record_parity_established": false,
+    "runtime_reader_compatibility_established": false,
+    "decision": "Use the official XML/JAMI route only after a bounded development-only dependency/field-coverage and exact evidence-ID reconciliation check. Shared release names do not establish record parity."
+  },
+  "updated_at": "2026-10-27T00:48:16.831145+00:00"
+}

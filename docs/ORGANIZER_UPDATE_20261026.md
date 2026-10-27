@@ -93,10 +93,14 @@ remains unresolved; do not rename the export to imply either property.
    synthetic controls; the four development studies contain four eligible
    human-protein evidence rows across two publications. The other ten rows
    involve RNA or mouse proteins and remain in the exclusion ledger. Four
-   reserved studies remain unopened. The [real source-faithful workbench flow](INTACT_EVIDENCE_WORKBENCH.md)
+   reserved interaction files remain unopened. The [real source-faithful workbench flow](INTACT_EVIDENCE_WORKBENCH.md)
    now passes import, readable-answer and gold-export fidelity on all four
-   eligible development records, preserving the original Pharos graph. Commit
-   and freeze the adapter/evaluator, then audit provenance/overlap before final scoring. Public
+   eligible development records, preserving the original Pharos graph. The code
+   was committed and frozen at `bca13a7`. The [bounded provenance review](evaluations/INTACT_PROVENANCE_READINESS_20261026.md)
+   resolved bibliographic identifiers but left shared-study provenance and
+   reserved pair overlap unresolved. The current final-assessment gap is richer
+   publication/experiment provenance plus a separately frozen execution path;
+   reserved interaction files remain unopened. Public
    references remain useful; neither a different database nor these new Slack
    statements establish source independence or general scientific accuracy.
 
@@ -146,14 +150,14 @@ not a verified NVIDIA NIM deployment or reproduced BFCL evaluation.
 | [Prediction comparison](evaluations/inmc_comparison_20261023_summary.json) | No consistent GO-hierarchy gain across three seeds on 1,751 eligible measured pairs. | Fixed task and consumed panel; no general failure or equivalence claim. |
 | [Published assay comparison](evaluations/lambourne_corroboration_20261025_summary.json) | 3,222 nominated pairs: 376 detections, 2,300 nondetections and 546 excluded tests. Forty-two detections lacked a match in the bounded saved Pharos lookup. | Additional assay context, not 42 novel or independently validated interactions. Source overlap and incomplete lineage constrain independence. |
 | [Assisted walkthrough](USER_WALKTHROUGH_20261026.md) | A participant located key evidence and reported a terminology problem; a partial recheck captured a broadly correct bait definition. Source/export integrity checks passed separately. | One assisted participant and incomplete tasks; no measured usability improvement. |
-| [IntAct/IMEx source-fidelity flow](INTACT_EVIDENCE_WORKBENCH.md) | Official-reader-backed records retain source roles, hosts, references and qualifications through the real Pharos-attached graph, readable answer and gold export: 4/4 eligible development records pass fidelity. All 14 source evidence rows remain accounted for. | Two pairs from two eligible publications, all positive co-immunoprecipitation; real negative/default and expanded strata remain unevaluated. Four reserved studies remain unopened. Biological accuracy, novelty and prediction gain are not established. |
+| [IntAct/IMEx source-fidelity flow](INTACT_EVIDENCE_WORKBENCH.md) | Official-reader-backed records retain source roles, hosts, references and qualifications through the real Pharos-attached graph, readable answer and gold export: 4/4 eligible development records pass fidelity. All 14 source evidence rows remain accounted for. | Two pairs from two eligible publications, all positive co-immunoprecipitation; real negative/default and expanded strata remain unevaluated. Four reserved interaction files remain unopened. Biological accuracy, novelty and prediction gain are not established. |
 
 Before submission, report the completed NVIDIA comparison and keep deterministic
 construction as the demonstration path. Prioritize completion of the assisted
 source/export walkthrough and a concise demonstration using these existing
 artifacts. Do not delay the report for new databases, model sweeps or AWS
-deployment. The IntAct development flow is now demonstrated. Freeze the
-implementation and complete the provenance/overlap audit before reserved-study
+deployment. The IntAct development flow is now demonstrated. Keep the
+implementation frozen and complete the provenance/overlap audit before reserved-study
 assessment; passing source fidelity does not resolve biological validation.
 
 ## Remaining clarification to request
