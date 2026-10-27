@@ -96,8 +96,16 @@ for every framework feature or be replaced by a fidelity score. The first
 GO-hierarchy intervention found no consistent gain. A
 [single focused reuse check](literature/BIOLOGICAL_IMPROVEMENT_REUSE_DECISION_20261026.md)
 found SNOOPPI's sequence-aware qualification relevant but unsuitable as a drop-in
-independent gold set. No second prediction experiment is ready until a verified, task-compatible
-intervention and fixed comparison are selected. Already-consumed assay outcomes
+independent gold set. The [selected Reactome context intervention](literature/REACTOME_CONTEXT_INTERVENTION_20261026.md)
+now fixes one retrospective development comparison: the restricted Pharos/GO
+R-GCN baseline versus the same graph plus exact Reactome memberships already
+retrieved from Pharos. The saved source inventory has 11,138 memberships; eligible
+learner edges and coverage remain unknown until projection preflight. This uses
+existing Pharos information rather than adding an independent evidence source.
+Both arms must share the union vocabulary, supervision, candidates, masks,
+seeds and budget; the baseline is rerun, and a coverage-only diagnostic is
+predeclared. No training has run. Projection checks, synthetic paired controls,
+resource preflight and a new execution freeze come next. Already-consumed assay outcomes
 can support a clearly labeled retrospective development comparison, with scored
 labels excluded from inputs and all attempts preserved. Independent/fresh
 evidence is needed for confirmation and source-novelty claims, not every internal
@@ -159,8 +167,8 @@ meaning or remove the source qualifications.
 | Order | Deliverable | Completion evidence |
 |---|---|---|
 | 1 | One bounded construction/publication flow using current adapters | Deterministic path and optional bounded agent selection are implemented with local integration checks. A declared exact-protein request reaches retrieval, normalization, an inspectable saved graph and a cited answer/export. The live comparison found unreliable task selection; the optional planner remains experimental and actual user testing remains. |
-| 2 | A finite reference and comparator decision | Decision complete: use the frozen full-panel Pharos presence comparator for retrospective Lambourne assay corroboration, with unresolved source lineage. No-go for a new predictive enrichment comparison until an additional information source/change is justified independently of these outcomes. |
-| 3 | Frozen biological assessment, then conditional matched improvement testing | Lambourne baseline corroboration complete: author-consistent adapter, eligibility, full candidate inventory, strata and report frozen before outcome decoding; all 3,222 pairs reconcile. This is not an improvement test and the panel is consumed. A future enrichment test must separately fix exclusions, projections, development/test boundaries, metrics, dependence treatment, seeds and budget; use matched learners/candidates and a simple-addition control. Preserve results even without gain. |
+| 2 | A finite reference and comparator decision | Lambourne retrospective corroboration is complete, with unresolved source lineage. One additional comparison is selected: exact Reactome context already in Pharos, assessed on the consumed INMC development panel. This is not independent confirmation. |
+| 3 | Frozen biological assessment, then conditional matched improvement testing | The selected two-arm Reactome test fixes the original INMC denominator, learner, paired seeds/budget and coverage diagnostic. Projection, paired synthetic controls, resource check and an immutable execution freeze remain; no training has run. Preserve every result and stop after the fixed comparison, including no gain. |
 | 4 | Tested filtering, maintenance and exchange | Check controlled identifier/context/citation corruptions and source changes; report false removals, abstentions and update errors. Preserve reversible decisions. Validate the chosen vocabulary/schema/export subset using existing tools; controlled cases establish engineering behavior, not broad scientific truth. Use the organizer reference for its actual task once supplied. |
 | 5 | A reproducible, usable submission | Another person can install, replay a saved example, build a bounded graph, trace an answer, inspect a change and export it. Record task completion/errors/time with intended users. Include dependency/source/license manifests, graph artifacts, methods, results, limitations and a short demo. |
 
@@ -174,8 +182,8 @@ selects IntAct/IMEx for bounded evidence-fidelity preparation, not as an
 automatically independent prediction benchmark.
 
 **Decision limits:** no scientific improvement is promised by this plan. The
-specific enrichment that adds useful information beyond Pharos remains
-unselected. The lineage audit is closed with an unresolved result and the study
+selected Reactome comparison tests representation of existing Pharos context;
+whether it adds predictive value is unmeasured. The lineage audit is closed with an unresolved result and the Lambourne study
 is classified as retrospective corroboration. Reopen independence only with
 deployment-specific import/evidence metadata. Do not repeatedly switch references
 or add sources/models until a score improves. A valid negative result completes
@@ -305,7 +313,7 @@ PyKEEN runtime checks on Nations, the [invented context/supervision smoke](evalu
 | Gap | Reviewable completion criterion |
 |---|---|
 | Official reference evaluation | Retained graph, exhaustive ledger and complete qualified source handoff are implemented and verified on a real example. Obtain the evaluation contract for organizer-run scoring; hidden final labels need not be released. Use local alignment only for an explicitly supplied development/public reference |
-| Measured graph-link comparison | First retrospective restricted comparison and Lambourne baseline corroboration complete; no consistent hierarchy gain or independently demonstrated Steward improvement. Both panels are consumed; independent prediction validation, justified enrichment and official judging alignment remain |
+| Measured graph-link comparison | First restricted comparison and Lambourne corroboration complete; no consistent hierarchy gain. Reactome context addition is selected for one fixed retrospective development comparison, with projection/preflight/freeze pending. Independent confirmation and official judging alignment remain |
 | Bounded agent construction | Planner selection and deterministic execution are connected with persistent provenance. Latest tool V2 comparison matched 3/4 supported requests but admitted 2/8 unsupported requests; earlier JSON failures remain preserved. No live agent-built graph parity is established. Keep experimental and investigate the documented task-selection limitation before another change |
 | Validated interoperability | Bounded KGX Reactome projection, preserved source bundle and round-trip checks now exist. Resolve the documented category-array and predicate-domain findings before claiming broader conformance; keep mappings and exclusions explicit |
 | Evidence filtering/pruning | Define task-compatible evidence actions and references; measure false removals and abstention. Assay nondetection does not automatically invalidate a functional association or co-complex relation |

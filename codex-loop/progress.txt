@@ -1,0 +1,15 @@
+## Codebase Patterns
+- Read AGENTS.md and the selected Reactome intervention before implementation. Prefer supported upstream behavior over a new algorithm or workaround.
+- Historical scientific scripts, packets, exposure ledgers and hash-bound receipts are immutable inputs. New experiments need a separate explicit contract.
+- Source fidelity, biological prediction, study independence and usability are different assessments. Passing engineering checks proves none of the other claims.
+- The core test runner is python -m unittest discover -s tests. Use focused tests first and the pinned optional graph environment for native checks; an optional skip does not satisfy a story's required native check.
+- Never scan runs/ broadly or follow unreviewed paths inside metadata. Reserved IntAct interaction bodies must remain unread, unlisted, unhashed and unqueried.
+- This backlog permits local source preparation and invented CPU controls only. Announce real resource checks or experiments separately; do not start Brev or paid compute.
+
+## 2026-10-26 - Backlog preparation
+- Prepared: three sequential, dependent stories for the selected Reactome-context development comparison.
+- Status: no story started; all passes fields are false. No branch created, loop worker launched, experiment fitted or real outcomes scored.
+- Existing-solution review: pathway context is an established candidate feature; Pharos already supplies the exact membership records. Current GO-only preparation and four-arm runner intentionally cannot execute the selected two-arm experiment unchanged.
+- Launch prerequisite: review and checkpoint the current report/selection changes separately so loop workers do not include unrelated work in story commits. The installed .agents skill source is not an implementation change from this backlog.
+- Intended completion: validated paired graphs, native synthetic controls and guarded execution/scoring handoff. Actual-device resource proof, final real freeze and the six-run comparison follow as a separately announced phase.
+- Scientific stopping rule: preserve all original results and report the one fixed comparison, including no improvement. No repeated search until a favorable score appears.

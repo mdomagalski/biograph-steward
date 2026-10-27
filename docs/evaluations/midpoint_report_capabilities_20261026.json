@@ -1,0 +1,94 @@
+{
+  "format": "biograph-steward.midpoint-capabilities-report.v1",
+  "prepared_date": "2026-10-26",
+  "status": "capabilities_revision_rendered_and_visually_verified",
+  "artifact": {
+    "path": "runs/midpoint_report_capabilities_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+    "sha256": "ce622a1babe4d363c7c3bcfbb62052d24aa44f4ca7bf83952805ed639d2813e5",
+    "pages": 2
+  },
+  "previous_drafts_preserved": [
+    {
+      "path": "runs/midpoint_report_revision_20261026/BioGraph_Steward_Midpoint_Check_In_Revised.docx",
+      "sha256": "872a98ddc75ec048595e2c30d023b8b0fa867266a04796ffa0af3fbebf1afb3c"
+    },
+    {
+      "path": "runs/midpoint_report_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "8b93ce51f77973e3133af8b23b400d97942bbda1d813ea72c5f885cb806433c4"
+    }
+  ],
+  "organizer_format_preserved": true,
+  "narrative": {
+    "summary": "BioGraph Steward connects scoped questions to Pharos-based evidence graphs, cited answers and auditable exports. The core workflow is operational; our focus is now measuring biological value and validating usability.",
+    "accomplishments": [
+      "Built a guided Pharos/CIViC workbench with source inspection, review of proposed changes and exports preserving the full graph, original evidence and edge decisions.",
+      "Integrated IntAct/IMEx records with the official JAMI reader and PSI-MI vocabulary. Development checks preserve identities, assay methods and references; richer XML audits retain experiment context.",
+      "Connected NVIDIA Nemotron through vLLM for optional construction planning, with explicit scope checks and user review. Deterministic execution supports the current workflow while broader agent reliability remains under development.",
+      "Established reproducible comparisons with PyKEEN R-GCN and ComplEx. Adding Gene Ontology hierarchy gave no consistent gain; next we will test Reactome context already retrieved from Pharos.",
+      "Published qualified assay observations, including nondetections. Assisted user feedback improved export guidance. MIT-licensed code passes isolated build, installation and offline replay checks; Docker/Brev configuration is available."
+    ],
+    "blockers": [
+      "The core workflow is ready for assessment. We still need to demonstrate improved biological predictions and verify that the evaluation evidence is sufficiently independent of our inputs.",
+      "Final evaluation rules are prepared. We will freeze the evaluation workflow, check for overlap between evaluation evidence and graph inputs, and run an independent user pilot.",
+      "Clarification of the organizer baseline, scoring and submission format will guide final packaging. Brev compute and AWS credits are available; infrastructure access is not currently a blocker."
+    ],
+    "milestones": [
+      "Compare the fixed Pharos/GO graph with the same graph plus Reactome memberships, holding the learner and assay pairs constant; report development results and coverage effects.",
+      "Complete source and overlap checks, test preservation of curated evidence, and run an independent colleague walkthrough.",
+      "Release a reproducible demonstration with manifests and evaluation results; verify real-data replay and deploy on AWS if the demonstration requires it."
+    ],
+    "assumptions": [
+      "Team name BioGraph Steward",
+      "Open Source track",
+      "Yellow Minor Risks status"
+    ]
+  },
+  "editorial_scope": "Capabilities, incorporated tools/methods and remaining work. Historical request counts omitted. Source consistency is distinguished from prediction gain; independent user success is not claimed.",
+  "narrative_word_count": 300,
+  "intervention_status": "Reactome-only context selected; projection, preflight and execution freeze pending; no training run",
+  "evidence": [
+    {
+      "path": "docs/evaluations/core_packaging_20261026_summary.json",
+      "sha256": "fda9b853ab1c910ad5867e964f4c0d42512cd44a761135a0e8481d719ebd724f"
+    },
+    {
+      "path": "docs/evaluations/intact_xml_development_20261026_summary.json",
+      "sha256": "8ce120a625fd44be4cb6495240161f7b9cf76cb49b2536bcb097e57922832a2c"
+    },
+    {
+      "path": "docs/evaluations/intact_development_provenance_audit_20261026_summary.json",
+      "sha256": "13e95f1d72359c16b72dc74096a4109140671790421ea825ce051f1d4321d3c4"
+    },
+    {
+      "path": "docs/evaluations/intact_evidence_flow_20261026_summary.json",
+      "sha256": "471ad5bf2f7e59fd70a0781e72d54c2c41e4fdd5d787d86ec305a2163cc5d630"
+    },
+    {
+      "path": "docs/evaluations/inmc_comparison_20261023_summary.json",
+      "sha256": "f35cbb171e2344f07289baffbc653afd2919622b4236e3d5979c18935e6caa5f"
+    },
+    {
+      "path": "docs/evaluations/final_rules_walkthrough_20261026_summary.json",
+      "sha256": "68065c12da95fd1e089ac4253b7f5ecba67476efb761a3bab869ebde47c4c27e"
+    },
+    {
+      "path": "docs/evaluations/reactome_context_intervention_20261026_selection.json",
+      "sha256": "ed7d0efb4995c605f986943842be9d3d45e8fba1dbffad2405a29e9b9c6a08fe"
+    },
+    {
+      "path": "docs/USER_WALKTHROUGH_FINAL_20261026.md",
+      "sha256": "f367ab59552bf1646526f8353401002af8db7c0ce01d7183eeb0ff2b3e615de8"
+    }
+  ],
+  "qa_receipt": {
+    "path": "runs/midpoint_report_capabilities_20261026/fidelity_qa.json",
+    "sha256": "e1b1a50949d1fb957cd74a809a407d9ea3ac0e28147a103c1700a36f3cfa64a4"
+  },
+  "high_level_report_excludes_unit_test_counts": true,
+  "historical_planner_request_counts_omitted": true,
+  "biological_improvement_claimed": false,
+  "independent_user_success_claimed": false,
+  "report_not_sent": true,
+  "reserved_bodies_accessed": false,
+  "model_or_gpu_required": false
+}

@@ -1,0 +1,74 @@
+{
+  "project": "BioGraph Steward",
+  "branchName": "codex/reactome-context-development",
+  "description": "Prepare one reproducible, literature-supported Reactome-context development comparison using existing Pharos data and native PyKEEN. This backlog ends at validated preparation and guarded execution handoff; it does not authorize a real assay comparison or claim biological improvement.",
+  "planningStatus": "prepared_not_started",
+  "executionMode": "sequential",
+  "decision": "docs/literature/REACTOME_CONTEXT_INTERVENTION_20261026.md",
+  "selectionRecord": "docs/evaluations/reactome_context_intervention_20261026_selection.json",
+  "guardrails": [
+    "Follow AGENTS.md. Check actual dependency versions, official documentation and published methods before custom work. Reuse existing verified code where compatible; explain any remaining integration gap.",
+    "Use only the selected saved Pharos snapshot and original graph inputs. Do not retrieve a newer source, introduce another resource, change eligibility or sweep models, thresholds, seeds or features.",
+    "INMC is consumed development material. Keep outcomes and known derivatives outside predictor inputs. Preserve the original comparison, exposure ledger, frozen packets, scripts, scorer and all historical result hashes.",
+    "Do not read, list, hash, search or query reserved IntAct interaction files or their contents. Do not widen final-study allowlists or run the reserved assessment.",
+    "Only synthetic CPU fitting is permitted in this backlog. No fitting on the real assay graph, actual assay scoring, real-graph resource fitting, Brev access, paid compute, model-server calls, AWS provisioning, deployment, email or GitHub push.",
+    "A passing story means engineering acceptance criteria are satisfied. A biological gain is never an acceptance criterion. Record failures and stop on unresolved source semantics rather than inventing a mapping.",
+    "The exact-device resource check, final execution freeze, six real model fits and consumed-panel scoring are a subsequent announced phase. Do not mark the real execution packet fully frozen without its actual passing runtime proof."
+  ],
+  "userStories": [
+    {
+      "id": "REACTOME-001",
+      "title": "Prepare source-bound Reactome paired graphs",
+      "description": "As a researcher, I need the selected Pharos pathway context represented in a matched graph pair so the comparison tests one known information family rather than a change in population or source release.",
+      "acceptanceCriteria": [
+        "Implement a separate versioned preparation entry point for this experiment; do not change the historical GO-only projection or weaken its validations. Reuse existing source-manifest, original-identity and product-mapping helpers where their contracts fit.",
+        "Verify the selection record and original source/graph bindings before use. Read only declared snapshot members. Baseline triples, original supervision, candidate identities, split and equivalence masks reproduce the pinned originals.",
+        "Add only exact source-listed human Reactome product-to-pathway memberships. Preserve stable IDs, source locators, raw-row hashes, qualifications and every inclusion/exclusion reason. Sharing a pathway never creates a protein-pair or direct-binding assertion.",
+        "Both arms share the same ordered union entity and relation vocabularies. The intervention-minus-baseline edge difference equals precisely the eligible membership ledger; neither arm contains direct Pharos PPI context or added GO hierarchy edges.",
+        "Produce actual source and eligible-projection counts, duplicate/conflict dispositions and outcome-independent endpoint coverage, including absent context. Available inventory counts 11,138 memberships / 982 products / 1,490 pathways are source checks, not assumed learner-edge counts.",
+        "Preserve all original candidates, including those with zero Reactome context. Construct the predeclared 0/1/2 endpoint-coverage diagnostic without loading outcome values or computing assay metrics.",
+        "Synthetic tests cover invalid or conflicting pathway IDs, duplicates, unknown products, shared product mappings, absent context, changed source hashes and attempts to add direct protein-pair edges. Relevant existing source/projection tests pass with required dependencies actually present.",
+        "Save a source-bound preparation receipt and update current readiness documentation with measured counts and remaining limits. No experiment training, scientific scoring or reserved-source access occurs."
+      ],
+      "dependsOn": [],
+      "priority": 1,
+      "passes": false,
+      "notes": "The existing scripts/prepare_inmc_graphs.py intentionally excludes non-GO families. The workbench and standard export already handle exact Reactome membership. Use those established semantics; do not infer molecular form, pathway role or direct binding."
+    },
+    {
+      "id": "REACTOME-002",
+      "title": "Verify the two-arm native learner path",
+      "description": "As an evaluator, I need a tested two-arm execution path so any later score change can be attributed to the selected context addition under matched training conditions.",
+      "acceptanceCriteria": [
+        "Implement a separate versioned two-arm profile or adapter using the tested PyKEEN 1.11.1 / torch 2.6.0 native R-GCN approach. Preserve historical prepare/run/freeze/scoring scripts and their original contracts. Avoid a new learning algorithm or a generic experiment framework.",
+        "Require exactly rgcn_baseline and rgcn_reactome, with selected seeds 17/43/101, three layers, 32 dimensions, four bases, SoftplusLoss, Adam 0.001, 20 epochs, batch size 4096 and 16 typed negative proposals per positive. Plan 500 optimizer updates per arm/seed and 3000 across six full runs; verify the actual schedule before real execution.",
+        "Preserve supported disabled-dropout and ordinary native batching behavior. Enforce identical per-seed initialization, positive minibatch schedules, supervision, candidate/development identity filters and optimizer update counts; retain fingerprints for later audit.",
+        "Reject changed graph/source/code hashes, unsafe paths, mismatched vocabularies or masks, forbidden relation deltas and incomplete arm/seed runs. A resource-check mode must never score actual assay candidates.",
+        "Use invented CPU cases to exercise actual message passing through the membership relation and the original gene-to-product links, with shared vocabulary and missing-context endpoints. Tiny synthetic controls may use fewer updates, explicitly separated from the fixed 500-update real-run budget. Verify finite predictions and paired parameter/batch fingerprints using installed native dependencies; skipped native checks do not count as completion.",
+        "Keep all real-data commands dry during this story. Record synthetic proof and intended runtime requirements. Report a dependency or semantics blocker rather than changing the selected model, budget or experiment."
+      ],
+      "dependsOn": ["REACTOME-001"],
+      "priority": 2,
+      "passes": false,
+      "notes": "The old runner is specifically guarded for three graph adjacencies, GO is_a enrichment and four model arms. It cannot execute this two-arm design unchanged. Reuse its established native-library behavior under a new explicit contract; do not repurpose old predictions or falsify old proof receipts."
+    },
+    {
+      "id": "REACTOME-003",
+      "title": "Prepare guarded freeze and scoring handoff",
+      "description": "As a researcher, I need one auditable handoff from validated graphs to fixed execution and reporting, so the subsequent comparison can run once and retain an interpretable negative or positive result.",
+      "acceptanceCriteria": [
+        "Prepare separate source/code/graph/scorer/runtime binding and freeze commands compatible with this two-arm profile. Reuse verified file safety, native metric and original assay-eligibility helpers where possible, preserving historical scripts and receipts.",
+        "A real freeze requires actual passing synthetic controls plus resource proof for the exact graph, runner and intended device/runtime. Missing, stale or synthetic-only resource proof leaves the real packet explicitly not frozen and real fitting blocked.",
+        "Implement the fixed reporting contract on invented outcomes: same bidirectional aggregation, original eligibility semantics, AP primary, ROC-AUC secondary, every paired seed delta and their mean, coverage strata, coverage-only diagnostic and descriptive leave-one-gene-out influence.",
+        "Require complete finite predictions for every eligible pair; no arm-specific removal or favorable subset. The real denominator remains the original 1751 eligible off-diagonal pairs; synthetic fixtures use their own declared denominator and cannot impersonate that real-data check. Missing outputs and empty strata remain explicit, with no formal significance or independent-validation claim.",
+        "Exercise the full prepare/validate/freeze/score wiring using synthetic fixtures only. Tests cover incomplete predictions, mismatched runtime/code/graphs, corrupt proof, changed candidates and masks, zero coverage, tied coverage scores and negative or mixed model deltas.",
+        "Provide exact next commands and a preparation receipt for the saved real graphs, explicitly pending actual-device resource check and final freeze. Verify required native checks; do not load real outcomes or perform actual resource fitting during backlog execution.",
+        "Update the active build plan with completed engineering evidence and remaining scientific limits. Do not change the midpoint report to claim measured biological improvement or independent usability. Stop after readiness; ask the root orchestrator to announce the separate compute phase."
+      ],
+      "dependsOn": ["REACTOME-002"],
+      "priority": 3,
+      "passes": false,
+      "notes": "A completed loop prepares a correctly guarded comparison; it is not the comparison itself. A later fixed negative result is a valid scientific deliverable. No score-driven implementation loop or automatic acceptance/pruning is authorized."
+    }
+  ]
+}

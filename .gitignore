@@ -12,3 +12,5 @@ runs/
 build/
 dist/
 .DS_Store
+# Locally installed skill packages may contain their own Git repositories.
+/.agents/

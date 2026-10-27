@@ -1,5 +1,17 @@
 # Literature knowledge base for BioGraph Steward
 
+**October 26 intervention selection:** the [Reactome context decision](literature/REACTOME_CONTEXT_INTERVENTION_20261026.md)
+checks the official resource/data model and the published ppiPre co-pathway
+method before selecting one graph change. Exact memberships already retrieved
+from Pharos are omitted from the restricted learner projection. Adding that
+one family is a testable use of existing information, not a new source or an
+inferred direct interaction. The two-arm retrospective INMC comparison fixes
+the same learner, candidate population and budget, includes an annotation-coverage
+diagnostic and preserves earlier negative results. Published co-pathway results
+do not establish benefit for our human Y2H endpoint. Source lineage remains
+unverified; projection/preflight and an execution freeze are still required.
+No code from the GPL-2 ppiPre package was adopted, and no model run occurred.
+
 **October 26 provenance and biological-improvement boundary:** the
 [development audit](evaluations/INTACT_DEVELOPMENT_PROVENANCE_AUDIT_20261026.md)
 uses IntAct's existing experiment, caution and shared-dataset rules. Four eligible

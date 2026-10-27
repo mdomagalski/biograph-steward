@@ -154,7 +154,7 @@ Current substitutions are deliberate: the lightweight web UI fills the inspectio
 ## Reuse decisions that guide the next increment
 
 - **Measured task and learner:** the [INMC/PyKEEN review](literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md) checks experimental meaning, released artifacts, licenses and runtime. The [input-readiness audit](evaluations/INMC_INPUT_READINESS_20261022.md) records unresolved assay, identity and source-overlap issues before training.
-- **Reference/comparator:** the [finite decision](literature/REFERENCE_COMPARATOR_DECISION_20261025.md) closes the import-lineage investigation as unresolved; the [baseline-only retrospective assay report](evaluations/LAMBOURNE_CORROBORATION_20261025.md) and [standalone qualified observation publication](ASSAY_EVIDENCE.md) are complete. Do not tune new prediction, enrichment or eligibility rules on this consumed panel. Source-preserving integration is not evidence of prediction gain; additional predictive enrichment remains unselected.
+- **Reference/comparator:** the [finite decision](literature/REFERENCE_COMPARATOR_DECISION_20261025.md) closes the import-lineage investigation as unresolved; the [baseline-only retrospective assay report](evaluations/LAMBOURNE_CORROBORATION_20261025.md) and [standalone qualified observation publication](ASSAY_EVIDENCE.md) are complete. Do not treat this consumed panel as unseen. Source-preserving integration is not evidence of prediction gain. The [Reactome context decision](literature/REACTOME_CONTEXT_INTERVENTION_20261026.md) separately selects one matched INMC development comparison, without claiming independent confirmation.
 - **Evidence assessment:** the [IntAct/IMEx preparation](INTACT_FIDELITY_PREPARATION.md) pins eight publication artifacts and a frozen source-fidelity protocol, with a mandatory semantic amendment. Official-reader controls, four-study development inspection and the real workbench/answer/export comparison are complete. All four eligible development records pass source fidelity. The original implementation remains frozen at `bca13a7`. A separate [official XML provenance check](evaluations/INTACT_XML_PROVENANCE_20261026.md) now reconciles the consumed development rows with richer source context and explicit n-ary grouping. Four reserved interaction files remain unopened; shared-study provenance, pair overlap and final-path readiness remain unresolved. Biological accuracy and prediction gain remain unestablished.
 - **Interoperability:** the [bounded export](STANDARD_EXPORT.md) uses existing [KGX](https://biolink.github.io/kgx/) checks and documents what remains unresolved. Continue to respect [Biolink qualifiers](https://biolink.github.io/biolink-model/association-examples-with-qualifiers/), [LinkML validation](https://linkml.io/linkml/data/validating-data.html) and [SSSOM](https://mapping-commons.github.io/sssom/) semantics. A passing round trip or a standard-looking label is not full conformance.
 - **Additional graph sources:** ROBOKOP, OptimusKG and direct Reactome are conditional candidates. Existing Pharos content and upstream reuse must be checked first; another aggregator does not imply independent evidence. See the [integration review](literature/BIOMEDICAL_INTEGRATION_REVIEW_20261021.md).
@@ -163,3 +163,17 @@ Current substitutions are deliberate: the lightweight web UI fills the inspectio
 The submitted proposal copies differ in the usability answer: one later copy repeats an ontology list. The current product and planned user testing provide a concrete usability account regardless of that form discrepancy; this audit does not infer which copy was submitted.
 
 The [build plan](BUILD_PLAN.md) is the active sequence. The [literature knowledge base](LITERATURE_REVIEW.md) preserves known limitations and reuse checks. Closed extraction, verifier and prompt-comparison sequences are historical evidence, not an active task queue.
+
+## Selected biological comparison October 26
+
+The [Reactome intervention decision](literature/REACTOME_CONTEXT_INTERVENTION_20261026.md)
+selects one fixed development test of existing Pharos context. The restricted
+Pharos/GO R-GCN graph will be compared with the same graph plus exact Reactome
+memberships, using matched learners, a shared vocabulary and unchanged assay
+pairs, masks, seeds and update budgets. This closes intervention selection,
+not projection, execution readiness or demonstration of biological value.
+The saved retrieval already contains the memberships; adding a direct Reactome
+source is unnecessary for this comparison. No direct protein-pair labels are
+created from pathway sharing. The consumed INMC outcomes and unresolved source
+lineage limit conclusions to retrospective development; independent confirmation
+remains separate. No training or reserved IntAct assessment ran in this increment.
