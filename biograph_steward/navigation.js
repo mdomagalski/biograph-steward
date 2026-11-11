@@ -3,6 +3,7 @@
 const workspaceNames=['data','ask','evidence','compare','export'];
 const workspaceSuffix={data:'Data',ask:'Ask',evidence:'Evidence',compare:'Compare',export:'Export'};
 let workspaceView='data',workspaceLoaded=false,inspectionRequest=0,pathRequest=0;
+let neptuneRequest=0,neptuneStatusRequest=0,neptuneConfigured=false;
 function workspaceHashTarget(){try{return $(decodeURIComponent(location.hash.slice(1)));}catch(_){return null;}}
 function showWorkspaceView(name,{focus=false,persist=true}={}){
   if(!workspaceNames.includes(name))return;
@@ -65,6 +66,7 @@ function setupWorkspace(){
   $('pathExploreStatus').textContent='Searches this saved graph only. No source retrieval or model call is made.';
   $('sourceGuideButton').disabled=!runId;$('pathExploreButton').disabled=!runId;
   $('sourceGuideSearch').value='';populateSourceGuide();populatePathEntities();
+  setupNeptune();
   const relations=[...new Set((graph.assertions||[]).map(a=>a.predicate))].sort();
   $('pathPredicate').replaceChildren(el('option','All saved relationship types'));$('pathPredicate').options[0].value='';
   for(const predicate of relations){const option=el('option',relationLabel(predicate));option.value=predicate;$('pathPredicate').append(option);}
@@ -101,6 +103,61 @@ function populatePathEntities(){
     if(items.some(n=>n.id===previous))$(id).value=previous;
   }
   $('pathEntityCount').textContent=matches.length+' matching entities. '+(matches.length>300?'Showing the first 300; narrow the search. Current selections remain available.':'');
+}
+function populateNeptuneNodes(){
+  if(!graph)return;
+  const query=$('neptuneNodeSearch').value.trim().toLowerCase(),previous=$('neptuneNode').value;
+  const matches=graph.nodes.filter(node=>!query||[node.id,node.name,node.sym].some(value=>typeof value==='string'&&value.toLowerCase().includes(query)));
+  const shown=matches.slice(0,300),selected=graph.nodes.find(node=>node.id===previous);
+  if(selected&&!shown.some(node=>node.id===previous))shown.push(selected);
+  $('neptuneNode').replaceChildren();
+  for(const node of shown){const option=el('option',(node.sym||node.name||node.id)+' · '+node.id);option.value=node.id;$('neptuneNode').append(option);}
+  if(shown.some(node=>node.id===previous))$('neptuneNode').value=previous;
+  $('neptuneNodeCount').textContent=matches.length+' matching entities. '+(matches.length>300?'Showing the first 300; narrow the search. Current selection remains available.':'');
+  $('neptuneRead').disabled=!runId||!neptuneConfigured||!shown.length;
+}
+async function setupNeptune(){
+  const request=++neptuneStatusRequest,sourceRun=runId;
+  neptuneRequest++;
+  neptuneConfigured=false;$('neptuneOutput').replaceChildren();$('neptuneNodeSearch').value='';populateNeptuneNodes();
+  $('neptuneWorkspace').textContent='Current saved workspace: '+(sourceRun||'not saved')+' · '+graph.nodes.length+' entities · '+graph.edges.length+' evidence records';
+  if(!sourceRun){$('neptuneStatus').textContent='Open a saved workspace in the app to use Neptune.';return;}
+  $('neptuneStatus').textContent='Checking Neptune configuration…';
+  try{
+    const response=await fetch('/api/neptune-status'),value=await response.json();
+    if(!response.ok)throw new Error(value.error||'Neptune configuration could not be read.');
+    if(request!==neptuneStatusRequest||sourceRun!==runId)return;
+    neptuneConfigured=value.configured===true&&value.backend==='neptune';populateNeptuneNodes();
+    $('neptuneStatus').textContent=neptuneConfigured?'Neptune configured. Select an entity to verify and read its evidence.':'Neptune is not configured for this workspace.';
+  }catch(error){if(request===neptuneStatusRequest)$('neptuneStatus').textContent=error.message;}
+}
+function invalidateNeptuneSelection(){
+  neptuneRequest++;$('neptuneOutput').replaceChildren();
+  $('neptuneRead').disabled=!runId||!neptuneConfigured||!$('neptuneNode').value;
+  if(neptuneConfigured)$('neptuneStatus').textContent='Selection changed. Read Neptune to inspect this entity.';
+}
+async function readNeptuneSelection(){
+  if(!runId||!neptuneConfigured)return;
+  const request=++neptuneRequest,sourceRun=runId,sourceSnapshot=graph.snapshot_sha256,nodeId=$('neptuneNode').value;
+  $('neptuneRead').disabled=true;$('neptuneOutput').replaceChildren();$('neptuneStatus').textContent='Verifying the saved graph in Neptune and reading selected evidence…';
+  try{
+    const result=await api('/api/neptune-inspect',{run_id:sourceRun,node_id:nodeId,limit:Number($('neptuneLimit').value)});
+    if(request!==neptuneRequest||sourceRun!==runId)return;
+    if(result.backend!=='neptune'||result.source_run!==sourceRun||result.snapshot_sha256!==sourceSnapshot||result.node_id!==nodeId||result.read_only!==true||!result.full_parity_verified_at)throw new Error('Neptune result does not match this saved workspace and entity.');
+    const box=$('neptuneOutput');
+    box.append(el('p','Read from AWS Neptune · full source parity verified '+result.full_parity_verified_at,'notice'),
+      el('p','Dataset: '+result.dataset_id,'small'),el('p',result.edges.length+' evidence records and '+result.assertions.length+' qualified claims returned.'+(result.truncated?' The record limit was reached; increase it to inspect more.':'')));
+    for(const guide of result.source_guides||[]){
+      const card=el('section',undefined,'evidence');card.append(el('p',guide.summary),el('p','Local review state: '+guide.review.state,'small'));
+      const button=el('button','Inspect complete saved source','secondary');button.type='button';button.onclick=()=>{loadSourceGuide(guide.selection.id);$('sourceGuide').scrollIntoView({block:'start'});};card.append(button);
+      for(const link of (guide.links||[]).filter(link=>['publication','source_record'].includes(link.kind)).slice(0,2)){const line=el('p');line.append(guideLink(link));card.append(line);}
+      box.append(card);
+    }
+    if(result.guides_omitted)box.append(el('p','Showing the first three source guides. Other returned claims remain available through Guided source inspection.','small'));
+    if(!result.edge_ids.length)box.append(el('p','No incident evidence records for this entity in the saved workspace.','small'));
+    $('neptuneStatus').textContent='Neptune read verified. Source qualifications and review states were preserved.';
+  }catch(error){if(request===neptuneRequest)$('neptuneStatus').textContent=error.message;}
+  finally{if(request===neptuneRequest)$('neptuneRead').disabled=!neptuneConfigured||!$('neptuneNode').value;}
 }
 function guideLink(link){
   const a=el('a',link.label);a.href=link.url;a.target='_blank';a.rel='noopener noreferrer';return a;
@@ -223,6 +280,10 @@ $('sourceGuideSelection').addEventListener('change',invalidateSourceGuide);
 $('pathEntitySearch').addEventListener('input',()=>{invalidateExploration();populatePathEntities();});
 for(const id of ['pathSource','pathTarget','pathHops','pathView','pathPredicate'])$(id).addEventListener('change',invalidateExploration);
 $('sourceGuideForm').addEventListener('submit',event=>{event.preventDefault();loadSourceGuide($('sourceGuideSelection').value);});
+$('neptuneNodeSearch').addEventListener('input',()=>{populateNeptuneNodes();invalidateNeptuneSelection();});
+$('neptuneNode').addEventListener('change',invalidateNeptuneSelection);
+$('neptuneLimit').addEventListener('change',invalidateNeptuneSelection);
+$('neptuneForm').addEventListener('submit',event=>{event.preventDefault();readNeptuneSelection();});
 $('pathExploreForm').addEventListener('submit',event=>{event.preventDefault();runPathExploration();});
 $('loadSupportComparators').onclick=async()=>{
   $('supportComparatorStatus').textContent='Checking saved local assessments…';

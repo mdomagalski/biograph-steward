@@ -190,8 +190,64 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--receipt', type=Path, help='Reopen the same saved data from an earlier successful report; no writes/model calls.')
     p.add_argument('--timeout', type=int, default=120)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('neptune-export', help='Project one verified saved graph to lossless Neptune openCypher CSV; no cloud calls.')
+    p.add_argument('--run', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    neptune_common = argparse.ArgumentParser(add_help=False)
+    neptune_common.add_argument('--neptune-endpoint', default=os.environ.get('BIOGRAPH_NEPTUNE_ENDPOINT'))
+    neptune_common.add_argument('--aws-region', default=os.environ.get('BIOGRAPH_AWS_REGION', os.environ.get('AWS_REGION')))
+    p = sub.add_parser('neptune-load', parents=[neptune_common], help='Start the official Neptune bulk loader; requires explicit temporary import permissions.')
+    p.add_argument('--source-s3-uri', required=True)
+    p.add_argument('--loader-role-arn', required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('neptune-load-status', parents=[neptune_common], help='Read an existing Neptune loader job status.')
+    p.add_argument('--load-id', required=True)
+    p.add_argument('--out', type=Path, required=True)
+    for name, help_text in [('neptune-verify', 'Compare every Neptune record and relationship with the verified saved graph.'),
+                            ('neptune-export-verified', 'Reconstruct this graph from verified Neptune records into a new export directory.'),
+                            ('neptune-inspect', 'Read an exact entity neighborhood from Neptune and verify its source bindings.')]:
+        p = sub.add_parser(name, parents=[neptune_common], help=help_text)
+        p.add_argument('--run', type=Path, required=True)
+        p.add_argument('--out', type=Path, required=True)
+        if name == 'neptune-inspect':
+            p.add_argument('--node-id', required=True)
+            p.add_argument('--limit', type=int, default=100)
     args = parser.parse_args(argv)
     try:
+        if args.command and args.command.startswith('neptune-'):
+            from .client import write_json
+            from .neptune import export_projection, Mirror
+            if args.out.exists() or args.out.is_symlink():
+                raise ValueError('Choose a new output path for the Neptune receipt or projection.')
+            if args.command == 'neptune-export':
+                from .reviews import read_run
+                result = export_projection(read_run(args.run)[2], args.out)
+            else:
+                if not args.neptune_endpoint or not args.aws_region:
+                    raise ValueError('Supply the private Neptune HTTPS endpoint and its AWS region.')
+                mirror = Mirror(args.neptune_endpoint, args.aws_region)
+                if args.command == 'neptune-load':
+                    result = mirror.load(args.source_s3_uri, args.loader_role_arn, parallelism='LOW')
+                elif args.command == 'neptune-load-status':
+                    result = mirror.loader_status(args.load_id)
+                else:
+                    from .reviews import read_run
+                    graph = read_run(args.run)[2]
+                    if args.command == 'neptune-export-verified':
+                        result = mirror.export_graph(graph, args.out)
+                    else:
+                        result = (mirror.verify(graph) if args.command == 'neptune-verify'
+                                  else mirror.inspect(graph, args.node_id, limit=args.limit))
+                if args.command != 'neptune-export-verified':
+                    write_json(args.out, result)
+            summary = {key: result[key] for key in
+                       ('dataset_id', 'graph_sha256', 'counts', 'status', 'truncated', 'payload')
+                       if key in result}
+            if 'edge_ids' in result:
+                summary['returned_evidence_edges'] = len(result['edge_ids'])
+            print(json.dumps({'operation': args.command, 'output': str(args.out.resolve()),
+                              **summary}, indent=2))
+            return 0
         if args.command == "construction-plan":
             from .construction_planning import (configured_construction_planner,
                 validate_construction_scope, save_construction_plan)

@@ -164,9 +164,17 @@ This integrates our workflow into NeMo; it does not discover or authorize other 
 
 ## AWS boundary
 
+For a concrete CPU workbench deployment, use the [AWS deployment guide](../deploy/aws/README.md).
+Its CloudFormation templates provide private versioned S3 releases/backups,
+encrypted persistent EBS and SSM browser access using the existing Docker app.
+Local offline checks do not establish a live AWS deployment; account access,
+regional resource validation and the deployed smoke check remain required.
+
 The HTTP transport can target a selected compatible Bedrock API endpoint using provider `api` and an explicitly supplied service API key, if the exact model/endpoint accepts that protocol and schema. This has not been tested against a live AWS account. [Bedrock API support](https://docs.aws.amazon.com/bedrock/latest/userguide/apis.html) varies by model and endpoint.
 
-Native Bedrock Converse/SigV4 integration, AWS credential-chain handling, S3 artifact export/import and Neptune remain later work. This increment does not read AWS credentials, create AWS resources or claim AWS deployment readiness. It preserves local artifact contracts so those adapters can be added without changing scientific review state.
+An optional [Neptune Database query mirror](../deploy/aws/NEPTUNE.md) now preserves the complete saved graph through the official openCypher loader and IAM-authenticated AWS SDK. Its app view verifies source parity before exposing database records. Source packets and review ledgers remain authoritative; a successful mirror load is not biological validation. Live AWS runtime and recovery acceptance must be recorded separately from local checks.
+
+Native Bedrock Converse/SigV4 integration and in-app S3 artifact export/import remain later work. The HTTP model transport does not read AWS credentials. The separate deployment scripts use the AWS CLI credential chain and EC2 instance role while preserving ordinary workspace files and scientific review state.
 
 ## Verification status
 

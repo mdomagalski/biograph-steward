@@ -1,0 +1,582 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Private production-class Neptune Database comparison add-on. Requires an eligible Paid Plan. One writer by default; no HA claim. Creates billable resources.",
+  "Parameters": {
+    "VpcId": {
+      "Type": "AWS::EC2::VPC::Id"
+    },
+    "DbSubnetA": {
+      "Type": "AWS::EC2::Subnet::Id",
+      "Description": "Existing subnet in PrimaryAvailabilityZone, same VPC as the workbench."
+    },
+    "DbSubnetB": {
+      "Type": "AWS::EC2::Subnet::Id",
+      "Description": "Existing subnet in SecondaryAvailabilityZone, a different AZ in the same VPC."
+    },
+    "PrimaryAvailabilityZone": {
+      "Type": "AWS::EC2::AvailabilityZone::Name"
+    },
+    "SecondaryAvailabilityZone": {
+      "Type": "AWS::EC2::AvailabilityZone::Name"
+    },
+    "AppSecurityGroupId": {
+      "Type": "AWS::EC2::SecurityGroup::Id",
+      "Description": "AppSecurityGroupId output from the workbench stack."
+    },
+    "AppInstanceRoleName": {
+      "Type": "String",
+      "AllowedPattern": "[A-Za-z0-9_+=,.@-]{1,64}",
+      "Description": "InstanceRoleName output from the workbench stack. No managed project role."
+    },
+    "ArtifactBucket": {
+      "Type": "String",
+      "AllowedPattern": "[a-z0-9][a-z0-9.-]+[a-z0-9]",
+      "MinLength": 3,
+      "MaxLength": 63,
+      "Description": "Existing private artifact bucket in this region/account."
+    },
+    "GraphObjectPrefix": {
+      "Type": "String",
+      "Default": "neptune/import/",
+      "AllowedPattern": "[A-Za-z0-9][A-Za-z0-9._/-]*/",
+      "Description": "Dedicated import prefix ending in slash; loader and temporary upload role are limited to it."
+    },
+    "EngineVersion": {
+      "Type": "String",
+      "AllowedPattern": "[0-9][A-Za-z0-9.-]{2,31}",
+      "Description": "Required exact Neptune engine version returned by describe-db-engine-versions in this region; verify db.r6g.large is orderable."
+    },
+    "EnableReader": {
+      "Type": "String",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "Description": "Optional same-class reader in the second AZ for a later explicit failover test."
+    },
+    "AllowInitialGraphImport": {
+      "Type": "String",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "Description": "Temporary deployment phase only: enable loader/query-write and import-prefix uploads; set false and verify revocation before acceptance."
+    },
+    "CreateS3GatewayEndpoint": {
+      "Type": "String",
+      "Default": "true",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "Description": "Set false only if an existing same-region S3 gateway endpoint covers both DB subnet route tables."
+    },
+    "S3RouteTableIds": {
+      "Type": "CommaDelimitedList",
+      "Description": "Existing effective route table IDs for both DB subnets. Shared IDs appear only once; required when creating the endpoint."
+    }
+  },
+  "Rules": {
+    "DistinctSubnets": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Equals": [
+                  {
+                    "Ref": "DbSubnetA"
+                  },
+                  {
+                    "Ref": "DbSubnetB"
+                  }
+                ]
+              }
+            ]
+          },
+          "AssertDescription": "Supply two different subnet IDs."
+        },
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Equals": [
+                  {
+                    "Ref": "PrimaryAvailabilityZone"
+                  },
+                  {
+                    "Ref": "SecondaryAvailabilityZone"
+                  }
+                ]
+              }
+            ]
+          },
+          "AssertDescription": "Supply two different availability zones matching the subnet IDs."
+        }
+      ]
+    }
+  },
+  "Conditions": {
+    "MakeReader": {
+      "Fn::Equals": [
+        {
+          "Ref": "EnableReader"
+        },
+        "true"
+      ]
+    },
+    "InitialImport": {
+      "Fn::Equals": [
+        {
+          "Ref": "AllowInitialGraphImport"
+        },
+        "true"
+      ]
+    },
+    "MakeS3Endpoint": {
+      "Fn::Equals": [
+        {
+          "Ref": "CreateS3GatewayEndpoint"
+        },
+        "true"
+      ]
+    }
+  },
+  "Resources": {
+    "NeptuneSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Private Neptune HTTPS; ingress only from the workbench group.",
+        "VpcId": {
+          "Ref": "VpcId"
+        },
+        "SecurityGroupEgress": [
+          {
+            "IpProtocol": "tcp",
+            "FromPort": 443,
+            "ToPort": 443,
+            "CidrIp": "0.0.0.0/0",
+            "Description": "HTTPS to S3 through the gateway endpoint."
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Application",
+            "Value": "BioGraphSteward"
+          }
+        ]
+      }
+    },
+    "AppToNeptuneIngress": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "GroupId": {
+          "Ref": "NeptuneSecurityGroup"
+        },
+        "IpProtocol": "tcp",
+        "FromPort": 8182,
+        "ToPort": 8182,
+        "SourceSecurityGroupId": {
+          "Ref": "AppSecurityGroupId"
+        },
+        "Description": "Existing workbench only; no public CIDR."
+      }
+    },
+    "AppToNeptuneEgress": {
+      "Type": "AWS::EC2::SecurityGroupEgress",
+      "Properties": {
+        "GroupId": {
+          "Ref": "AppSecurityGroupId"
+        },
+        "IpProtocol": "tcp",
+        "FromPort": 8182,
+        "ToPort": 8182,
+        "DestinationSecurityGroupId": {
+          "Ref": "NeptuneSecurityGroup"
+        },
+        "Description": "Neptune HTTPS in the same VPC."
+      }
+    },
+    "DbSubnetGroup": {
+      "Type": "AWS::Neptune::DBSubnetGroup",
+      "Properties": {
+        "DBSubnetGroupDescription": "Two existing availability-zone subnets for the private graph store.",
+        "SubnetIds": [
+          {
+            "Ref": "DbSubnetA"
+          },
+          {
+            "Ref": "DbSubnetB"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Application",
+            "Value": "BioGraphSteward"
+          }
+        ]
+      }
+    },
+    "S3GatewayEndpoint": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Condition": "MakeS3Endpoint",
+      "Properties": {
+        "VpcId": {
+          "Ref": "VpcId"
+        },
+        "VpcEndpointType": "Gateway",
+        "ServiceName": {
+          "Fn::Sub": "com.amazonaws.${AWS::Region}.s3"
+        },
+        "RouteTableIds": {
+          "Ref": "S3RouteTableIds"
+        },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": "s3:*",
+              "Resource": "*"
+            }
+          ]
+        }
+      }
+    },
+    "NeptuneLoaderRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "rds.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "ReadExactGraphImportPrefix",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "BucketLocation",
+                  "Effect": "Allow",
+                  "Action": "s3:GetBucketLocation",
+                  "Resource": {
+                    "Fn::Sub": "arn:${AWS::Partition}:s3:::${ArtifactBucket}"
+                  }
+                },
+                {
+                  "Sid": "ListImportPrefix",
+                  "Effect": "Allow",
+                  "Action": "s3:ListBucket",
+                  "Resource": {
+                    "Fn::Sub": "arn:${AWS::Partition}:s3:::${ArtifactBucket}"
+                  },
+                  "Condition": {
+                    "StringLike": {
+                      "s3:prefix": {
+                        "Fn::Sub": "${GraphObjectPrefix}*"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Sid": "ReadImportObjects",
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:GetObjectVersion"
+                  ],
+                  "Resource": {
+                    "Fn::Sub": "arn:${AWS::Partition}:s3:::${ArtifactBucket}/${GraphObjectPrefix}*"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Application",
+            "Value": "BioGraphSteward"
+          }
+        ]
+      }
+    },
+    "NeptuneCluster": {
+      "Type": "AWS::Neptune::DBCluster",
+      "DeletionPolicy": "Snapshot",
+      "UpdateReplacePolicy": "Snapshot",
+      "Properties": {
+        "EngineVersion": {
+          "Ref": "EngineVersion"
+        },
+        "IamAuthEnabled": true,
+        "StorageEncrypted": true,
+        "DeletionProtection": true,
+        "BackupRetentionPeriod": 7,
+        "CopyTagsToSnapshot": true,
+        "DBSubnetGroupName": {
+          "Ref": "DbSubnetGroup"
+        },
+        "VpcSecurityGroupIds": [
+          {
+            "Ref": "NeptuneSecurityGroup"
+          }
+        ],
+        "DBPort": 8182,
+        "AssociatedRoles": [
+          {
+            "RoleArn": {
+              "Fn::GetAtt": [
+                "NeptuneLoaderRole",
+                "Arn"
+              ]
+            }
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Application",
+            "Value": "BioGraphSteward"
+          }
+        ]
+      }
+    },
+    "WriterInstance": {
+      "Type": "AWS::Neptune::DBInstance",
+      "DeletionPolicy": "Delete",
+      "UpdateReplacePolicy": "Delete",
+      "Properties": {
+        "DBClusterIdentifier": {
+          "Ref": "NeptuneCluster"
+        },
+        "DBInstanceClass": "db.r6g.large",
+        "AvailabilityZone": {
+          "Ref": "PrimaryAvailabilityZone"
+        },
+        "PubliclyAccessible": false,
+        "AutoMinorVersionUpgrade": false,
+        "Tags": [
+          {
+            "Key": "Application",
+            "Value": "BioGraphSteward"
+          }
+        ]
+      }
+    },
+    "ReaderInstance": {
+      "Type": "AWS::Neptune::DBInstance",
+      "Condition": "MakeReader",
+      "DeletionPolicy": "Delete",
+      "UpdateReplacePolicy": "Delete",
+      "Properties": {
+        "DBClusterIdentifier": {
+          "Ref": "NeptuneCluster"
+        },
+        "DBInstanceClass": "db.r6g.large",
+        "AvailabilityZone": {
+          "Ref": "SecondaryAvailabilityZone"
+        },
+        "PubliclyAccessible": false,
+        "AutoMinorVersionUpgrade": false,
+        "Tags": [
+          {
+            "Key": "Application",
+            "Value": "BioGraphSteward"
+          }
+        ]
+      }
+    },
+    "AppReadOnlyPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": {
+          "Fn::Sub": "${AWS::StackName}-graph-read-only"
+        },
+        "Roles": [
+          {
+            "Ref": "AppInstanceRoleName"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "OpenCypherReadOnly",
+              "Effect": "Allow",
+              "Action": "neptune-db:ReadDataViaQuery",
+              "Resource": {
+                "Fn::Sub": "arn:${AWS::Partition}:neptune-db:${AWS::Region}:${AWS::AccountId}:${NeptuneCluster.ClusterResourceId}/*"
+              },
+              "Condition": {
+                "StringEquals": {
+                  "neptune-db:QueryLanguage": "OpenCypher"
+                }
+              }
+            },
+            {
+              "Sid": "EngineHealth",
+              "Effect": "Allow",
+              "Action": "neptune-db:GetEngineStatus",
+              "Resource": {
+                "Fn::Sub": "arn:${AWS::Partition}:neptune-db:${AWS::Region}:${AWS::AccountId}:${NeptuneCluster.ClusterResourceId}/*"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "InitialGraphImportPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Condition": "InitialImport",
+      "Properties": {
+        "PolicyName": {
+          "Fn::Sub": "${AWS::StackName}-initial-graph-import"
+        },
+        "Roles": [
+          {
+            "Ref": "AppInstanceRoleName"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "InitialOpenCypherWrite",
+              "Effect": "Allow",
+              "Action": "neptune-db:WriteDataViaQuery",
+              "Resource": {
+                "Fn::Sub": "arn:${AWS::Partition}:neptune-db:${AWS::Region}:${AWS::AccountId}:${NeptuneCluster.ClusterResourceId}/*"
+              },
+              "Condition": {
+                "StringEquals": {
+                  "neptune-db:QueryLanguage": "OpenCypher"
+                }
+              }
+            },
+            {
+              "Sid": "InitialBulkLoader",
+              "Effect": "Allow",
+              "Action": [
+                "neptune-db:StartLoaderJob",
+                "neptune-db:GetLoaderJobStatus",
+                "neptune-db:ListLoaderJobs",
+                "neptune-db:CancelLoaderJob"
+              ],
+              "Resource": {
+                "Fn::Sub": "arn:${AWS::Partition}:neptune-db:${AWS::Region}:${AWS::AccountId}:${NeptuneCluster.ClusterResourceId}/*"
+              }
+            },
+            {
+              "Sid": "PassOnlyLoaderRole",
+              "Effect": "Allow",
+              "Action": "iam:PassRole",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "NeptuneLoaderRole",
+                  "Arn"
+                ]
+              },
+              "Condition": {
+                "StringEquals": {
+                  "iam:PassedToService": "rds.amazonaws.com"
+                }
+              }
+            },
+            {
+              "Sid": "StageImportFiles",
+              "Effect": "Allow",
+              "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:GetObjectVersion",
+                "s3:AbortMultipartUpload",
+                "s3:ListMultipartUploadParts"
+              ],
+              "Resource": {
+                "Fn::Sub": "arn:${AWS::Partition}:s3:::${ArtifactBucket}/${GraphObjectPrefix}*"
+              }
+            },
+            {
+              "Sid": "ListStagedImports",
+              "Effect": "Allow",
+              "Action": "s3:ListBucket",
+              "Resource": {
+                "Fn::Sub": "arn:${AWS::Partition}:s3:::${ArtifactBucket}"
+              },
+              "Condition": {
+                "StringLike": {
+                  "s3:prefix": {
+                    "Fn::Sub": "${GraphObjectPrefix}*"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "ClusterIdentifier": {
+      "Value": {
+        "Ref": "NeptuneCluster"
+      }
+    },
+    "ClusterResourceId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "NeptuneCluster",
+          "ClusterResourceId"
+        ]
+      }
+    },
+    "Endpoint": {
+      "Value": {
+        "Fn::Sub": "https://${NeptuneCluster.Endpoint}:${NeptuneCluster.Port}"
+      }
+    },
+    "ReaderEndpoint": {
+      "Value": {
+        "Fn::Sub": "https://${NeptuneCluster.ReadEndpoint}:${NeptuneCluster.Port}"
+      }
+    },
+    "SecurityGroupId": {
+      "Value": {
+        "Ref": "NeptuneSecurityGroup"
+      }
+    },
+    "LoaderRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "NeptuneLoaderRole",
+          "Arn"
+        ]
+      }
+    },
+    "ImportSource": {
+      "Value": {
+        "Fn::Sub": "s3://${ArtifactBucket}/${GraphObjectPrefix}"
+      }
+    },
+    "InitialImportEnabled": {
+      "Value": {
+        "Ref": "AllowInitialGraphImport"
+      }
+    },
+    "ConfigurationBoundary": {
+      "Value": "One private db.r6g.large writer by default. Bulk import permission is disabled by default; revoke it before acceptance. A reader is optional and must be tested before HA claims."
+    }
+  }
+}

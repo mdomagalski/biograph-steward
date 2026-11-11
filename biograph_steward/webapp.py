@@ -4,9 +4,11 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from html import escape
 from io import BytesIO
 import json
+import os
 from pathlib import Path
 import re
 import socket
+from threading import Lock
 from urllib.parse import parse_qs, urlparse, urlsplit
 from uuid import uuid4
 import webbrowser
@@ -101,11 +103,27 @@ def login_return_path(value):
 
 def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                   cache_dir: Path | None = None, timeout: float = 30, *, host='127.0.0.1',
-                  allowed_origins=(), access_token=None) -> ThreadingHTTPServer:
+                  allowed_origins=(), access_token=None, neptune_mirror=None) -> ThreadingHTTPServer:
     policy = AccessPolicy(host, allowed_origins, access_token)
     sessions = BrowserSessions()
     runs_dir = Path(runs_dir).resolve()
     runs_dir.mkdir(parents=True, exist_ok=True)
+    # One mirror per server preserves its verified-dataset cache across reads.
+    # Configuration/status never resolves credentials or contacts AWS.
+    neptune_endpoint = os.environ.get('BIOGRAPH_NEPTUNE_ENDPOINT', '').strip()
+    neptune_region = os.environ.get('BIOGRAPH_AWS_REGION', '').strip()
+    neptune_state = {'mirror': neptune_mirror}
+    neptune_lock = Lock()
+    neptune_configured = neptune_mirror is not None or bool(neptune_endpoint)
+
+    def get_neptune_mirror():
+        if not neptune_configured:
+            return None
+        with neptune_lock:
+            if neptune_state['mirror'] is None:
+                from .neptune import Mirror
+                neptune_state['mirror'] = Mirror(neptune_endpoint, neptune_region)
+            return neptune_state['mirror']
 
     class Handler(BaseHTTPRequestHandler):
         def authenticated(self):
@@ -218,6 +236,10 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 self.login_page(self.path)
                 return
             if not self.authenticate():
+                return
+            if path == '/api/neptune-status':
+                self.json_reply({'configured': neptune_configured,
+                                 'backend': 'neptune' if neptune_configured else None})
                 return
             if path == '/api/workspaces':
                 from .workspaces import saved_workspaces
@@ -543,8 +565,16 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
-                if path in {'/api/explore', '/api/inspect-source'}:
+                if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect'}:
                     from .reviews import read_run
+                    if path == '/api/neptune-inspect':
+                        if set(body) - {'run_id', 'node_id', 'limit'} or not {'run_id', 'node_id'} <= set(body):
+                            raise ValueError('Supply only the saved run, exact entity identifier and optional record limit.')
+                        if (not isinstance(body['node_id'], str) or not body['node_id']
+                                or len(body['node_id']) > 300):
+                            raise ValueError('Choose an exact saved entity identifier.')
+                        if type(body.get('limit', 20)) is not int or not 1 <= body.get('limit', 20) <= 100:
+                            raise ValueError('Use a record limit from 1 to 100.')
                     identifier = body.get('run_id')
                     if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
                         raise ValueError('Supply an exact saved run identifier.')
@@ -553,6 +583,33 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         raise ValueError('Saved workspace not found.')
                     verify_saved_refresh(folder)
                     graph = read_run(folder)[2]
+                    if path == '/api/neptune-inspect':
+                        from .client import digest
+                        from .inspection import inspect_selection
+                        if body['node_id'] not in {node['id'] for node in graph['nodes']}:
+                            raise ValueError('Entity is outside this saved workspace.')
+                        if not neptune_configured:
+                            self.json_reply({'error': 'AWS Neptune is not configured for this workspace.',
+                                             'backend': None}, 503)
+                            return
+                        try:
+                            result = get_neptune_mirror().inspect(graph, body['node_id'], limit=body.get('limit', 20))
+                            if (result.get('graph_sha256') != digest(graph)
+                                    or result.get('node_id') != body['node_id']):
+                                raise ValueError('Neptune selection does not match the verified saved workspace.')
+                            selection_ids = list(dict.fromkeys(result['assertion_ids'] or result['edge_ids']))
+                            guides = [inspect_selection(graph, selection, run_id=identifier)
+                                      for selection in selection_ids[:3]]
+                        except Exception:
+                            # SDK errors can include signed URLs or account details. No file
+                            # fallback may masquerade as a successful Neptune read.
+                            self.json_reply({'error': 'Neptune read or source-parity verification failed. No saved-file fallback was used.',
+                                             'backend': 'neptune'}, 503)
+                            return
+                        self.json_reply({**result, 'backend': 'neptune', 'source_run': identifier,
+                            'snapshot_sha256': graph['snapshot_sha256'], 'read_only': True,
+                            'source_guides': guides, 'guides_omitted': max(0, len(selection_ids) - len(guides))})
+                        return
                     if path == '/api/explore':
                         from .exploration import explore_paths
                         if set(body) - {'run_id', 'source', 'target', 'max_hops', 'view', 'predicates'}:
