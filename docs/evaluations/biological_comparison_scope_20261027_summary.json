@@ -1,0 +1,116 @@
+{
+  "created_at": "2026-10-27T16:00:18.518352+00:00",
+  "status": "scope_prepared_predictor_inputs_pending",
+  "scope": "Retrospective recordedhumanY2Hv1 component comparison: STRING12.5 functionalretrieval versus its physicaloverlay",
+  "preparation": "runs/biological_comparison_scope_20261027_attempt_03",
+  "preparation_report_sha256": "a801584b5830340f0c2b2a6b718d81ed80f6bf41874dfa615158bb30e436ecef",
+  "counts": {
+    "candidate_pairs": 3222,
+    "accessions": 3173,
+    "assay_eligible": 2676,
+    "assay_excluded": 546,
+    "assay_exclusion_reasons": {
+      "autoactivator": 41,
+      "failed_sequence_confirmation": 478,
+      "test_failed": 27
+    },
+    "historical_pharos_comparator_eligible": 2674,
+    "assay_eligible_but_historical_pharos_unresolved": 2,
+    "pharos_states": {
+      "no_match_both_endpoints_resolved": 895,
+      "present_in_raw_ppi": 2325,
+      "no_match_one_endpoint_resolved": 2
+    },
+    "consumed_intact_exact_single_uniprot_pairs": 6,
+    "consumed_intact_exact_pair_overlap": 0
+  },
+  "pharos_field_availability": {
+    "matching_source_views": 4650,
+    "source_record_field_counts": {
+      "nid": 4650,
+      "props": 4650,
+      "target": 4650,
+      "type": 4650
+    },
+    "source_property_name_counts": {
+      "Data Source": 4650,
+      "Novelty": 4649,
+      "Score": 4610,
+      "fam": 1531,
+      "p_int": 1424,
+      "p_ni": 1296,
+      "p_wrong": 400,
+      "tdl": 4650
+    },
+    "MImerge_MIscore_prerequisite_literal_field_counts": {
+      "publication": 0,
+      "curated_interaction_identifier": 0,
+      "detection_method": 0,
+      "interaction_type": 0,
+      "experimental_host": 0,
+      "MIscore": 0
+    },
+    "interpretation": "Literal field availability, not recovered study lineage; local nid and provider bundle are not curated evidence identities."
+  },
+  "methods": {
+    "qualification": {
+      "report": "runs/qualification_method_scope_20261027/report.json",
+      "sha256": "92325ab2926718a2a50acbc21c7a65db361fd2de182c65055f0830b3245f74be",
+      "runtime_probe": "runs/qualification_method_scope_20261027/string_known_pair_typed.tsv",
+      "http_requests": 1,
+      "pair_is_already_consumed": true,
+      "full_cohort_scores_captured": false
+    },
+    "published_network_baseline": {
+      "report": "runs/neteval_method_scope_20261027/report.json",
+      "sha256": "fd7935b2d65d48f36abf5e2b8f17f73a0755584de46fdd9c0988fcb4e09d7dd2",
+      "synthetic_native_conformance_passed": true,
+      "full_candidate_adapter_implemented": false
+    }
+  },
+  "archive_execution": {
+    "checkpoint": "3f7c462d517ce5793c9af99fce65922a97f9159c",
+    "receipt": "runs/biological_scope_verifier_20261027_attempt_03/execution_receipt.json",
+    "receipt_sha256": "311ceeb8b6a88fa070b6c7733ebf8d5267cb1d291464405d01a7dee513927f53",
+    "original_implementation_pins_verified": 10,
+    "new_extension_matches_current_script": true
+  },
+  "verification": {
+    "new_synthetic_tests_passed": 7,
+    "combined_existing_and_new_tests_passed": 33,
+    "source_payload_hashes_verified": true,
+    "archived_implementation_hashes_verified": true
+  },
+  "next_component": {
+    "arms": [
+      "STRING12.5 functional retrieval score",
+      "STRING12.5 physical overlay of the same functional retrieval"
+    ],
+    "assessment": "fixed task-compatible ranking component comparison",
+    "historical_pharos_lookup_role": "descriptive anchor, not a third matched source-release arm",
+    "predictor_inputs_prepared": false,
+    "mapping_and_score_censoring_policies_fixed": false,
+    "three_arm_steward_comparison_ready": false,
+    "remaining_gap": "No adequate same-information addition versus qualified-evidence input contrast; current Pharos records lack MImerge/MIscore prerequisites."
+  },
+  "remaining_execution_work": [
+    "Implement and test official locusmapping binding and complete pair-query coverage",
+    "Preserve numeric, unreturned-under-profile, ambiguous identity and technicalfailure states separately",
+    "Bind actual request/scoring code to declared ordinalunrankedlast policy before fullcohort predictor retrieval",
+    "Report all2676eligible, coverage, commonnumeric diagnostics and exposurestrata without tuning"
+  ],
+  "claim_limits": {
+    "data_is_consumed_development": true,
+    "scientific_accuracy_measured": false,
+    "biological_gain_measured": false,
+    "steward_three_arm_effect_measured": false,
+    "independence_established": false
+  },
+  "preservation": {
+    "frozen_assessment_files_edited": false,
+    "app_behavior_changed_by_this_increment": false,
+    "fresh_intact_bodies_opened": false,
+    "new_evaluation_outcomes_accessed": false,
+    "model_or_gpu_used": false
+  }
+}

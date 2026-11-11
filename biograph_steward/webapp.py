@@ -33,6 +33,24 @@ def verify_saved_refresh(folder: Path) -> None:
 
 def verify_qualified_question_source(answer, runs_dir):
     """A saved qualified answer cannot outlive changed or missing source bytes."""
+    if answer.get('plan', {}).get('ranking') == 'physical':
+        from .reviews import read_run
+        from .questions import answer_question
+        source_id = answer.get('source_run')
+        if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+            raise ValueError('Physical priority answer source run is missing or invalid.')
+        source = Path(runs_dir) / source_id
+        if source.is_symlink() or source.resolve().parent != Path(runs_dir).resolve() or not source.is_dir():
+            raise ValueError('Physical priority answer source run is unavailable.')
+        graph = read_run(source)[2]
+        plan = answer['plan']
+        expected = answer_question(graph, plan['protein']['id'], relations=plan['relations'],
+            view=plan['view'], max_results=plan['max_results'], max_paths=plan['max_paths_per_protein'],
+            template=answer['template'], source_run=source_id, ranking='physical',
+            ranking_source=answer['physical_ranking_source'])
+        if expected != answer:
+            raise ValueError('Physical priority answer differs from its source graph, review state or saved query.')
+        return
     if answer.get('template') != 'qualified_assay_evidence.v1':
         return
     from .reviews import read_run
@@ -60,6 +78,7 @@ def report_html(graph: dict | None = None, *, protected=False) -> str:
     script += '\n' + Path(__file__).with_name("workspaces.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("construction.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("assay.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("navigation.js").read_text(encoding="utf-8")
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
@@ -204,6 +223,44 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 from .workspaces import saved_workspaces
                 self.json_reply(saved_workspaces(runs_dir))
                 return
+            if path == '/api/support-comparators':
+                from .support_comparator import load_preparation
+                reports = []
+                for folder in sorted(runs_dir.iterdir(), reverse=True):
+                    prepared = folder / 'prepared'
+                    if (folder.is_symlink() or not folder.is_dir()
+                            or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', folder.name)
+                            or prepared.is_symlink() or not (prepared / 'manifest.json').is_file()):
+                        continue
+                    try:
+                        report, _ = load_preparation(prepared)
+                    except (ValueError, TypeError, KeyError, OSError):
+                        continue
+                    reports.append({'id': folder.name, 'status': report['status'],
+                        'case_count': report['case_count'], 'unique_query_count': report['unique_query_count'],
+                        'hosted_model_calls': report['hosted_model_calls'],
+                        'url': '/api/support-comparator/' + folder.name + '/report.html'})
+                self.json_reply({'reports': reports[:20]})
+                return
+            match = re.fullmatch(r'/api/support-comparator/([A-Za-z0-9_-]{1,80})/(report\.html|report\.json|cases\.json|manifest\.json|sampled_edges_development\.csv|OPTIMUSKG_LICENSE\.txt)', path)
+            if match:
+                from .support_comparator import load_preparation
+                folder = runs_dir / match.group(1)
+                prepared = folder / 'prepared'
+                if (folder.is_symlink() or prepared.is_symlink() or not prepared.is_dir()
+                        or folder.resolve().parent != runs_dir):
+                    self.json_reply({'error': 'Comparator assessment not found.'}, 404)
+                    return
+                try:
+                    load_preparation(prepared)
+                    name = match.group(2)
+                    content_type = ('text/html; charset=utf-8' if name.endswith('.html') else
+                                    'application/json' if name.endswith('.json') else
+                                    'text/csv; charset=utf-8' if name.endswith('.csv') else 'text/plain; charset=utf-8')
+                    self.reply((prepared / name).read_bytes(), content_type=content_type)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
             if path == '/api/assay-publications':
                 from .client import digest
                 publications = []
@@ -332,6 +389,31 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             if path == "/health":
                 self.json_reply({"status": "local_server_running", "live_pharos_checked": False})
                 return
+            match = re.fullmatch(r"/api/assay-source-reuse/([A-Za-z0-9_-]{1,80})(?:/(report\.html|report\.json|records\.jsonl))?", path)
+            if match:
+                from .assay_source_reuse import read_reuse, reuse_view
+                folder = runs_dir / match.group(1)
+                if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                    self.json_reply({"error": "Run not found"}, 404)
+                    return
+                try:
+                    from .reviews import read_run
+                    verify_saved_refresh(folder)
+                    read_run(folder)
+                    if match.group(2) is None:
+                        self.json_reply(reuse_view(folder, match.group(1)))
+                    else:
+                        if read_reuse(folder) is None:
+                            self.json_reply({"error": "No source-reuse supplement for this run"}, 404)
+                            return
+                        name = {"report.html": "source_reuse.html", "report.json": "source_reuse.json",
+                                "records.jsonl": "source_reuse_records.jsonl"}[match.group(2)]
+                        self.reply((folder / name).read_bytes(), content_type=(
+                            "text/html; charset=utf-8" if name.endswith(".html") else
+                            "application/x-ndjson" if name.endswith(".jsonl") else "application/json"))
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({"error": str(exc)}, 400)
+                return
             match = re.fullmatch(r"/api/run/([A-Za-z0-9_-]{1,80})", path)
             if match:
                 from .reviews import read_run
@@ -351,7 +433,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             match = re.fullmatch(r"/api/question/([A-Za-z0-9_-]{1,80})", path)
             if match:
-                from .questions import verify_answer
+                from .questions import verify_answer, verify_ranking_files
                 from .reviews import read_run
                 if (runs_dir / match.group(1)).is_symlink():
                     self.json_reply({"error": "Question result not found"}, 404)
@@ -363,6 +445,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 try:
                     answer = json.loads((folder / "question.json").read_text(encoding="utf-8"))
                     verify_answer(answer)
+                    verify_ranking_files(answer, folder)
                     verify_qualified_question_source(answer, runs_dir)
                     if answer.get('source_run') == folder.name:
                         # Construction publishes the graph and initial answer in
@@ -395,10 +478,13 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if (folder / 'run_manifest.json').is_file():
                         from .reviews import read_run
                         read_run(folder)
+                        from .assay_source_reuse import read_reuse
+                        read_reuse(folder)
                     elif (folder / 'question.json').is_file():
-                        from .questions import verify_answer
+                        from .questions import verify_answer, verify_ranking_files
                         answer = json.loads((folder / 'question.json').read_text(encoding='utf-8'))
                         verify_answer(answer)
+                        verify_ranking_files(answer, folder)
                         verify_qualified_question_source(answer, runs_dir)
                         if answer.get('source_run') == folder.name:
                             from .reviews import read_run
@@ -457,6 +543,38 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
+                if path in {'/api/explore', '/api/inspect-source'}:
+                    from .reviews import read_run
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved run identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    graph = read_run(folder)[2]
+                    if path == '/api/explore':
+                        from .exploration import explore_paths
+                        if set(body) - {'run_id', 'source', 'target', 'max_hops', 'view', 'predicates'}:
+                            raise ValueError('Unsupported path exploration option.')
+                        result = explore_paths(graph, body.get('source'), body.get('target'),
+                            max_hops=body.get('max_hops', 2), view=body.get('view', 'candidates'),
+                            predicates=body.get('predicates'), max_paths=20, max_expansions=2000)
+                        result['source_run'] = identifier
+                    else:
+                        from .inspection import inspect_selection
+                        from .assay_source_reuse import reuse_view
+                        if set(body) != {'run_id', 'selection_id'}:
+                            raise ValueError('Supply only the saved run and selected source assertion.')
+                        try:
+                            source_reuse = reuse_view(folder, identifier)
+                        except ValueError:
+                            source_reuse = {'status': 'unverifiable', 'source_run': identifier,
+                                'observations': [], 'reason': 'Saved source-reuse supplement could not be verified; reuse remains unresolved.'}
+                        result = inspect_selection(graph, body['selection_id'], run_id=identifier,
+                            source_reuse=source_reuse)
+                    self.json_reply(result)
+                    return
                 if path == '/api/construction-plan':
                     from .construction_planning import (validate_construction_scope,
                         configured_construction_planner, save_construction_plan)
@@ -636,7 +754,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if path == "/api/question":
                     from .questions import answer_question, save_answer
                     from .reviews import read_run
-                    allowed = {"run_id", "protein", "relations", "view", "max_results", "max_paths", "template"}
+                    allowed = {"run_id", "protein", "relations", "view", "max_results", "max_paths", "template", "ranking"}
                     if set(body) - allowed:
                         raise ValueError("Unsupported question fields; use the guided protein-neighborhood scope.")
                     source_id = body.get("run_id", "")

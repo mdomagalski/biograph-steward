@@ -7,6 +7,8 @@ from collections import Counter, defaultdict
 from copy import deepcopy
 from html import escape
 import json
+import csv
+import io
 from pathlib import Path
 
 from .client import digest, write_json
@@ -47,7 +49,8 @@ def resolve_protein(graph, selector):
 
 
 def answer_question(graph, protein, *, relations=None, view="accepted", max_results=8,
-                    max_paths=2, template=None, source_run=None):
+                    max_paths=2, template=None, source_run=None,
+                    ranking="alphabetical", ranking_source=None):
     cohort = graph.get("scope", {}).get("kind") == "protein_cohort"
     expected_template = COHORT_TEMPLATE if cohort else TEMPLATE
     template = expected_template if template is None else template
@@ -63,6 +66,12 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
     if not isinstance(relations, (list, tuple)) or not relations or any(r not in RELATIONS for r in relations):
         raise ValueError("Select interactions, shared_pathways, or both.")
     relations = [r for r in RELATIONS if r in relations]
+    if ranking not in {"alphabetical", "physical"}:
+        raise ValueError("Choose alphabetical order or physical association priority.")
+    if ranking == "alphabetical" and ranking_source is not None:
+        raise ValueError("A physical ranking source requires the physical priority option.")
+    if ranking == "physical" and "interactions" not in relations:
+        raise ValueError("Physical association priority requires reported interaction paths; shared pathways alone are not ranked physically.")
     anchor = resolve_protein(graph, protein)
     nodes = {n["id"]: n for n in graph["nodes"]}
     seed_ids = {t["id"] for t in graph["targets"]}
@@ -172,6 +181,19 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
                         "eligible_path_count": sum(counts.values()), "matched_relations": dict(counts),
                         "omitted_paths": sum(counts.values()) - len(chosen),
                         "review_status": next(iter(states)) if len(states) == 1 else "mixed_review_states"})
+    ranking_packet = None
+    ranking_info = None
+    if ranking == "physical":
+        if not any(row['matched_relations'].get('interaction', 0) for row in matches):
+            raise ValueError("No eligible interaction paths are available for physical priority in this evidence view. Explore candidate paths or choose alphabetical order.")
+        from .physical_ranking import collect_ranking, verify_packet
+        ranking_packet = (collect_ranking(graph, anchor, matches) if ranking_source is None else ranking_source)
+        verify_packet(ranking_packet, graph=graph, candidates=matches, anchor=anchor)
+        by_id = {row['protein']['id']: row for row in matches}
+        for uid, row in by_id.items():
+            row['physical_priority'] = _physical_priority(ranking_packet, uid)
+        matches = [by_id[row['protein_id']] for row in _physical_order(ranking_packet)]
+        ranking_info = _physical_summary(ranking_packet)
     total_matches = len(matches)
     matches = matches[:max_results]
     required = list(dict.fromkeys(aid for r in matches for p in r["paths"] for aid in p["assertion_ids"]))
@@ -210,6 +232,8 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
     else:
         scope_name = graph["scope"]["name"] if cohort else disease + " cohort"
         overview = f"Showing {len(matches)} of {total_matches} matching proteins in the saved {scope_name}, using {'accepted paths only' if view == 'accepted' else 'accepted and candidate paths for inspection'}."
+    if ranking_packet is not None:
+        overview += " Matching interaction partners are ordered by available STRING 12.5 physical association scores; unranked matches follow."
     coverage = graph.get("retrieval", {}).get("context", {})
     settings = graph.get("question_scope", {}).get("limits", {})
     selected_coverage = {family: deepcopy(coverage.get("summary", {}).get(family))
@@ -221,6 +245,12 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
             "Evidence references point to stored database assertions. Source records without explicit supporting references still require citation recovery.",
             "Records failing structural checks, unmapped pathway identities, and rejected, quarantined or obsolete assertions are excluded.",
             "Protein ordering is alphabetical; path order puts interactions before pathways, then sorts pathway labels. It is not a confidence ranking."]
+    if ranking_packet is not None:
+        gaps[5] = ("Protein order prioritizes native STRING 12.5 physical association scores, with alphabetical ties and unranked matches last. "
+                   "Only matches with an eligible Pharos interaction path receive this priority; pathway-only matches remain unranked.")
+        gaps += ["STRING physical scores predict proximity or co-complex association, not proof of direct binding, interaction strength, disease relevance or independent experimental confirmation.",
+                 "The current STRING ranking supplement is separate from the saved Pharos release and may reuse evidence already aggregated there. Scores do not change graph relationships or local review states.",
+                 "Coverage describes only eligible matching interaction partners in this question; a missing score is not evidence of no interaction."]
     if cohort:
         gaps[0] = "Results cover the exactly resolved proteins in the declared cohort; cohort membership does not imply a disease association."
         gaps.append("A missing path is not evidence of no biological relationship. Retrieval limits, unresolved identities and unreviewed evidence remain explicit.")
@@ -269,8 +299,76 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
         answer["plan"]["filter_policy"] = ("Exactly resolved cohort proteins and structurally usable interaction or shared-pathway annotations. "
             "Every assertion in an accepted path must be accepted; no disease association is required or inferred.")
         answer["plan"]["unsupported_requirements"] = ["disease association inference", "physical binding inference", "variant-specific response", "therapy resistance", "causal conclusions"]
+    if ranking_packet is not None:
+        answer['plan']['ranking'] = 'physical'
+        answer['ranking'] = ranking_info
+        answer['physical_ranking_source'] = deepcopy(ranking_packet)
     answer["answer_sha256"] = digest(answer)
     return answer
+
+
+def _physical_priority(packet, uid):
+    annotation = packet['annotations'][uid]
+    candidate = next(row for row in packet['requested_candidates'] if row['protein_id'] == uid)
+    return {'state': annotation['views']['physical']['state'],
+            'physical_score': annotation['views']['physical']['native_score'],
+            'functional_score': annotation['views']['functional']['native_score'],
+            'source_release': packet['source_release'], 'has_interaction': candidate['has_interaction']}
+
+
+def _physical_order(packet):
+    def key(row):
+        priority = _physical_priority(packet, row['protein_id'])
+        numeric = priority['state'] == 'numeric'
+        return (not numeric, -priority['physical_score'] if numeric else 0,
+                row['label'].casefold(), row['protein_id'])
+    return sorted(packet['requested_candidates'], key=key)
+
+
+def _physical_summary(packet):
+    counts = Counter(row['views']['physical']['state'] for row in packet['annotations'].values())
+    total = len(packet['requested_candidates'])
+    return {'source_release': packet['source_release'], 'retrieved_at': packet['created_at'],
+            'matching_proteins': total, 'numeric_scored': counts['numeric'],
+            'unranked_proteins': total - counts['numeric'], 'states': dict(sorted(counts.items())),
+            'packet_sha256': packet['content_sha256'],
+            'ordering': 'Native physical score descending; alphabetical ties; unranked matches last.'}
+
+
+def _physical_text(priority):
+    if priority['state'] == 'numeric':
+        return f"STRING {priority['source_release']} physical association score: {priority['physical_score']:.3f}"
+    labels = {'not_interaction_path': 'Pathway-only match; not ranked physically',
+              'no_returned_functional_row': 'No STRING row returned under this query profile',
+              'physical_not_returned_under_profile': 'Physical score unavailable under this query profile',
+              'unmapped': 'Endpoint mapping unavailable', 'ambiguous': 'Endpoint mapping unresolved',
+              'collapsed_representative': 'Both endpoints map to one representative'}
+    return labels.get(priority['state'], priority['state'])
+
+
+def _verify_physical_answer(answer):
+    from .physical_ranking import verify_packet
+    packet = answer.get('physical_ranking_source')
+    verify_packet(packet)
+    if (answer.get('plan', {}).get('ranking') != 'physical'
+            or answer.get('graph_basis_sha256') != packet['graph_basis_sha256']
+            or answer.get('snapshot_sha256') != packet['snapshot_sha256']
+            or answer['plan']['protein']['id'] != packet['anchor']
+            or answer.get('ranking') != _physical_summary(packet)):
+        raise ValueError('Physical priority source, scope or coverage differs from the saved answer.')
+    ordered = _physical_order(packet)
+    limit = answer['plan']['max_results']
+    if (type(limit) is not int or not 1 <= limit <= 30
+            or [row['protein']['id'] for row in answer['results']] != [row['protein_id'] for row in ordered[:limit]]
+            or answer['matching_proteins'] != len(ordered)
+            or answer['returned_proteins'] != len(answer['results'])
+            or answer['omitted_proteins'] != len(ordered) - len(answer['results'])):
+        raise ValueError('Physical priority order or result denominator changed.')
+    for row in answer['results']:
+        priority = _physical_priority(packet, row['protein']['id'])
+        if (row.get('physical_priority') != priority
+                or priority['has_interaction'] != bool(row['matched_relations'].get('interaction', 0))):
+            raise ValueError('Returned physical priority differs from its captured source.')
 
 
 def verify_answer(answer):
@@ -278,6 +376,8 @@ def verify_answer(answer):
         raise ValueError("Unsupported guided question format.")
     if answer.get("answer_sha256") != digest({k: v for k, v in answer.items() if k != "answer_sha256"}):
         raise ValueError("Question result integrity check failed.")
+    if answer.get('plan', {}).get('ranking') == 'physical' or 'physical_ranking_source' in answer:
+        _verify_physical_answer(answer)
 
 
 def answer_text(answer):
@@ -285,6 +385,11 @@ def answer_text(answer):
         from .assay_questions import answer_text as qualified_text
         return qualified_text(answer)
     lines = [answer['question'], '', answer['overview'], '']
+    if answer.get('ranking') is not None:
+        info = answer['ranking']
+        lines += [f"Physical priority source: STRING {info['source_release']} | retrieved {info['retrieved_at']}",
+                  f"Numeric scores for {info['numeric_scored']} of {info['matching_proteins']} matching proteins; {info['unranked_proteins']} remain unranked.",
+                  'Result order:', *[f"- {r['protein'].get('sym') or r['protein']['name']} ({r['protein']['id']}): {_physical_text(r['physical_priority'])}" for r in answer['results']], '']
     from .civic_context import display_coverage_text
     coverage = display_coverage_text(answer)
     if coverage: lines += [coverage, '']
@@ -318,6 +423,16 @@ def answer_html(answer):
     from .civic_context import context_html, overview_html, display_coverage_html
     coverage = display_coverage_html(answer)
     overview=overview_html(answer['source_context_overview']) if answer.get('source_context_overview') is not None else ''
+    priority_html = ''
+    if answer.get('ranking') is not None:
+        info = answer['ranking']
+        priority_html = ('<h2>Physical association priority</h2><p>STRING ' + esc(info['source_release'])
+            + ' · retrieved ' + esc(info['retrieved_at']) + '. Numeric scores for '
+            + esc(info['numeric_scored']) + ' of ' + esc(info['matching_proteins'])
+            + ' matching proteins. Predicted proximity/co-complex association; direct binding is not established.</p><ol>'
+            + ''.join('<li>' + esc(r['protein'].get('sym') or r['protein']['name']) + ' ('
+                      + esc(r['protein']['id']) + '): ' + esc(_physical_text(r['physical_priority'])) + '</li>'
+                      for r in answer['results']) + '</ol>')
     by_id={c['id']:c for c in answer['citations']}
     for s in answer['summary']:
         refs = ' '.join(f'<a href="#{esc(cid)}">[{esc(cid)}]</a>' for cid in s['citation_ids'])
@@ -326,7 +441,7 @@ def answer_html(answer):
     citations = ''.join(f'<details id="{esc(c["id"])}"><summary>[{esc(c["id"])}] {esc(c["assertion_id"])} — {esc(c["review_state"])}</summary><pre>{esc(json.dumps(c,indent=2))}</pre></details>' for c in answer['citations'])
     return ('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>BioGraph Steward — guided evidence result</title><style>body{max-width:1050px;margin:40px auto;padding:20px;font:16px/1.6 system-ui;color:#172b3a}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:16px}li,details{margin:14px 0}a{color:#086b85}.display-coverage{background:#fff8e7;border:1px solid #c9a75e;padding:16px;margin:20px 0}</style>'
-            '<h1>' + esc(answer['question']) + '</h1><p>' + esc(answer['data_kind']) + '</p><p>' + esc(answer['overview']) + '</p>'+coverage+overview+'<ul>' + ''.join(statements) + '</ul><h2>Scope and limitations</h2><ul>'
+            '<h1>' + esc(answer['question']) + '</h1><p>' + esc(answer['data_kind']) + '</p><p>' + esc(answer['overview']) + '</p>'+coverage+overview+priority_html+'<ul>' + ''.join(statements) + '</ul><h2>Scope and limitations</h2><ul>'
             + ''.join('<li>'+esc(s)+'</li>' for s in answer['limitations']) + '</ul><h2>Evidence passports</h2>' + citations
             + '<h2>Reproducible question scope</h2><pre>' + esc(json.dumps({k: answer[k] for k in ['plan','snapshot_created_at','database_version','snapshot_sha256','graph_basis_sha256','answer_sha256','civic_snapshot_sha256','civic_created_at','discordant_annotations','overlap_summary'] if k in answer},indent=2)) + '</pre></html>')
 
@@ -378,6 +493,9 @@ def save_answer(answer, directory):
     write_json(directory/'question.json', answer)
     (directory/'summary.txt').write_text(answer_text(answer),encoding='utf-8')
     (directory/'report.html').write_text(answer_html(answer),encoding='utf-8')
+    if answer.get('physical_ranking_source') is not None:
+        write_json(directory/'physical_ranking_source.json', answer['physical_ranking_source'])
+        (directory/'physical_priority.tsv').write_text(_physical_tsv(answer['physical_ranking_source']), encoding='utf-8')
     if answer.get('template') == 'qualified_assay_evidence.v1':
         from .assay_questions import save_extra_files
         save_extra_files(answer, directory)
@@ -398,3 +516,49 @@ def save_answer(answer, directory):
                    'profile_variants','disease_id','disease_name','source_disease_id','therapy_set_id','therapy_ids','therapy_members',
                    'evidence_type','edge_id','evidence_url','source_id','source_type','source_citation','publication_year',
                    'publication_url','retrieval_provenance','source_run','answer_sha256','graph_basis_sha256'])
+
+
+def _physical_tsv(packet):
+    output = io.StringIO(newline='')
+    writer = csv.writer(output, delimiter='\t', lineterminator='\n')
+    writer.writerow(['protein_id', 'label', 'state', 'physical_score', 'functional_score', 'source_release', 'has_interaction'])
+    for row in _physical_order(packet):
+        priority = _physical_priority(packet, row['protein_id'])
+        writer.writerow([row['protein_id'], row['label'], priority['state'],
+                         '' if priority['physical_score'] is None else priority['physical_score'],
+                         '' if priority['functional_score'] is None else priority['functional_score'],
+                         priority['source_release'], priority['has_interaction']])
+    return output.getvalue()
+
+
+def _physical_paths_bytes(answer):
+    """Replay path serialization with the existing spreadsheet-safe writer."""
+    from tempfile import TemporaryDirectory
+    from .graph import _write_tsv
+    rows = [{"protein_id": row['protein']['id'],
+             "protein_symbol": row['protein'].get('sym'), **path}
+            for row in answer['results'] for path in row['paths']]
+    columns = ['protein_id', 'protein_symbol', 'id', 'kind', 'review_status',
+               'node_ids', 'assertion_ids', 'citation_ids']
+    with TemporaryDirectory(prefix='biograph-question-export-') as folder:
+        path = Path(folder) / 'paths.tsv'
+        _write_tsv(path, rows, columns)
+        return path.read_bytes()
+
+
+def verify_ranking_files(answer, directory):
+    """Replay source and readable exports for the opted-in physical answer."""
+    if answer.get('physical_ranking_source') is None:
+        return
+    from .assay_attachment import _ordinary, _decode
+    directory = Path(directory)
+    packet = answer['physical_ranking_source']
+    if (_decode(_ordinary(directory/'physical_ranking_source.json')) != packet
+            or _ordinary(directory/'physical_priority.tsv').decode('utf-8') != _physical_tsv(packet)):
+        raise ValueError('Physical ranking export files differ from the saved source packet.')
+    expected = {'summary.txt': answer_text(answer).encode('utf-8'),
+                'report.html': answer_html(answer).encode('utf-8'),
+                'paths.tsv': _physical_paths_bytes(answer)}
+    for name, raw in expected.items():
+        if _ordinary(directory/name) != raw:
+            raise ValueError('Physical ranking readable export differs from the saved answer: ' + name)

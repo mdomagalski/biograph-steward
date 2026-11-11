@@ -1,16 +1,130 @@
 # Current build plan
 
-Updated October 27, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication and clean-install real-data/browser delivery are verified. The reserved IntAct assessment stopped without a score; its identifier-comparator correction now passes a complete consumed-data replay, preserving both eligible records through the answer and export. A fresh four-study panel is selected but unopened. The current guided NVIDIA check still failed all four supported tasks. The GO and Reactome biological comparisons found no consistent gain. Retired experiments and old next-step proposals are preserved in the [experiment archive](EXPERIMENT_HISTORY.md).
+## Five-day completion focus — November 11
 
-## Current priority: identity provenance and record-level overlap
+Finish the delivered product and presentation before adding capabilities. The [final submission draft](FINAL_SUBMISSION.md) consolidates the demo, strongest measured results, artifact inventory and six-slide story. The [current alignment](PROJECT_ALIGNMENT.md) maps the implementation to the organizer criteria.
+
+| Day | Outcome |
+|---|---|
+| 1 | Freeze the supported app scope, update entry documentation and prepare the intended code/results release checkpoint. |
+| 2 | Designate a portable demonstration route and the graph/source/decision artifacts judges will receive; retain upstream terms. |
+| 3 | Perform one final install/start/question/source/export check on the release candidate and fix only observed delivery defects. |
+| 4 | Finish the short presentation and record the fixed end-to-end walkthrough. |
+| 5 | Assemble the submission inventory, confirm access and leave a delivery buffer. |
+
+PaperQA3 is optional: zero calls are required for app completion. Three distinct prepared prompts can support a small web-interface illustration if the account's free credits cover them. Do not add paid API access, new sources, a new graph store, another learner sweep, AWS migration or further planner experiments to the critical path. The latest native-ranking result is a supporting component result; Steward-specific biological gain and automatic scientific pruning remain unestablished.
+
+The peer repository was checked again on November 11: its public main remains `37b33e9a5e36acbe26a689924699a185c8c2aa7b`, unchanged from the previous review. No new peer capability requires a scope change.
+
+The [November 11 release gate](evaluations/release_candidate_20261111_summary.json) now passes isolated install, service startup, cited questions and current real graph/decision ZIP replay. The current source can be checkpointed without another experimental dependency.
+
+## Preserved implementation record
+
+Updated October 29, 2026. The active product is the source-traceable evidence workbench. Deterministic construction/publication and real-data browser delivery are verified. The fresh IntAct source-preservation assessment completed at 4/8 coverage; its separate consumed-data reliability replay reached 8/8 without replacing the original result. The guided NVIDIA planner remains unreliable. GO and Reactome comparisons found no consistent biological gain. Retired experiments remain in the [experiment archive](EXPERIMENT_HISTORY.md).
+
+## Navigation and support-search increment — October 29
+
+Task tabs now separate saved data, scoped questions/path exploration, guided source inspection, comparison and export. Existing source passports and review handlers remain in use. The new read-only path explorer preserves direction, explicit symmetry, qualifiers and review states, with result/work limits. The source guide reuses the existing assay and CIViC explanations and distinguishes missing references from original source links.
+
+The [OptimusKG support-search assessment](evaluations/support_search_comparator_20261029_summary.json) prepares five consumed development assertions using the author's exact pinned prompt. Those claims produce three distinct queries, demonstrating that broad endpoint support cannot distinguish some qualified assertions. The preparation and imported-result checks are implemented; no hosted PaperQA3 calls have run. Live execution still needs separate Edison access and current cost verification. It supplies a support-search comparator, not scientific-accuracy gold or an automatic pruning rule.
+
+The [delivery record](evaluations/navigation_guidance_20261029_summary.json) records source-preservation, HTTP, desktop and mobile checks. A current-version source-reuse workspace was republished from the existing trace without changing original graph bytes; old receipts remain unchanged. These are delivery/method-fit advances, not new biological validation.
+
+## Midpoint report delivery
+
+The [updated report record](evaluations/midpoint_report_strong_20261027.json)
+now includes the completed native STRING comparison, its coverage trade-off,
+the operational priority feature, and explicit remaining scientific work.
+The two-page organizer form was rendered and visually checked; earlier drafts
+remain unchanged and the report has not been sent.
+The [five-minute demonstration](evaluations/MIDPOINT_DEMONSTRATION_20261027.md)
+uses saved BRAF and qualified-source answers. The source-reuse example has been
+republished offline into a new current-compatible workspace, preserving its
+historical publication and all original evidence.
+
+The [fresh assessment readiness review](evaluations/INTACT_FRESH_READINESS_20261027.md)
+identifies the remaining bounded execution adapter and complete qualified-alias
+overlap check. The [fresh assessment](evaluations/INTACT_FRESH_ASSESSMENT_20261027.md) is now executed: 4/8 observations completed, with two retrieval timeouts accounting for four misses. All four studies are consumed; the separate reliability replay does not replace this result. The [prediction decision](evaluations/NEXT_BIOLOGICAL_COMPARISON_DECISION_20261027.md)
+is no-go for another fit until a source-supported change actually reaches the
+learner's graph/features. Ordering and provenance flags do not change those
+inputs; native PyKEEN already removes duplicate triples. These are concrete
+evaluation gaps, not reasons to start another source or model sweep.
+
+## Completed native-score comparison and next scientific boundary
+
+The [comparison scope](BIOLOGICAL_COMPARISON_SCOPE.md) is now fixed around
+recorded human Y2H-v1 detection on the consumed Lambourne panel. The
+[offline preparation](evaluations/BIOLOGICAL_COMPARISON_SCOPE_20261027.md)
+preserves all 3,222 nominations, 2,676 assay-eligible pairs, original constructs,
+exclusions and exposure flags. The [frozen STRING 12.5 comparison](evaluations/STRING_COMPONENT_COMPARISON_20261027.md)
+is complete: full-panel average precision on all 2,676 eligible pairs was
+**0.172827 for functional scores versus 0.190056 for the physical overlay**.
+Explicit numeric coverage decreased from **88.3% to 72.4%**. On the same 1,938
+jointly numeric pairs, AP was **0.176919 versus 0.199278**. This is a retrospective
+source-component ranking result, not independent biological validation or a
+Steward-versus-Pharos gain; the old Pharos lookup remains a descriptive anchor.
+Native retrieval, state accounting, scoring and offline replay are complete,
+without a learner, GPU or model.
+
+The selected [STRING 12.0 temporal control](evaluations/STRING_TEMPORAL_CONTROL_20261027.md)
+is also complete on the same 2,676 eligible pairs. Native functional average
+precision was **0.149732**, versus **0.161223** for the separately queried native
+physical network, a difference of **+0.011491**. Numeric coverage was **93.4%
+versus 75.2%**. On the actual 2,013 jointly numeric pairs, AP was **0.150794
+versus 0.165078**. All 291 planned source requests completed in 291 attempts;
+offline replay and a separate arithmetic review verified the result. The
+modest task-specific ranking benefit persists with the older fixed source.
+This is a development control selected after the consumed 12.5 result, not an
+unseen reference, independent biological confirmation or Steward graph gain.
+The separate native 12.0 networks and 12.5 typed overlay have different source
+profiles, so between-release changes cannot isolate study ingestion. Preserve
+both results and close this control without further version or threshold sweeps.
+The [product increment](PHYSICAL_ASSOCIATION_PRIORITY.md) now offers native
+STRING 12.5 physical association scores as an optional question-specific priority.
+The existing form keeps alphabetical order as its default. Scoring covers all
+eligible interaction matches before the result limit; zero, missing scores and
+pathway-only matches stay explicit. The source packet and readable exports
+replay against the saved graph without new retrieval. This preserves functional
+coverage, evidence paths and review states; it does not filter the graph or add
+independent evidence. The [real BRAF check](evaluations/PHYSICAL_PRIORITY_PRODUCT_CHECK_20261027.md)
+preserves all 21 matching proteins: 14 have native physical scores and seven
+remain explicitly unranked. Source bytes, evidence paths and review states are
+unchanged; offline replay and HTTP export checks pass. Local browser tooling
+blocked the visual walkthrough. No model or GPU is needed.
+
+The proposed Steward three-arm comparison is not ready: aggregate Pharos rows
+lack MImerge/MIscore prerequisites, the small consumed IntAct set has zero
+exact overlap with the nominated panel, and the previous INMC learner excludes
+all Pharos PPI. Do not launch a learner without a verified difference in its
+actual graph/features. Preserve this completed component result and its exposure
+and coverage limits; a later software-contribution test still needs a verified
+same-information representation contrast and a suitable separate reference.
+UI expansion and the unopened IntAct fidelity assessment remain separate work.
+
+The October 27 [independence review](evaluations/STRING_REFERENCE_INDEPENDENCE_20261027.md)
+documents known HuRI input and physical-score calibration reuse, verifies the
+actual 12.5 evidence schema through a bounded metadata capture, and checks
+three current public-reference candidates. None qualifies as immediate independent
+confirmation of this endpoint. That dated review records the selection and
+archive/API probe for the now-completed 12.0 control above. Its implementation-bound
+protocol, 13-column adapter, capture and scoring are complete. No additional
+reference-body access, source sweep or model run follows from that review.
+
+## Completed preparation: identity provenance and record-level overlap
 
 The [saved-workspace overlap audit](EVIDENCE_OVERLAP.md) is implemented and exercised on three consumed development workspaces. It reports exact pair overlap, qualified local claim agreement, shared PMID/interaction/structural identifiers, scoped experiment metadata, added context and unresolved lineage separately. Both current IntAct observations match a Pharos pair; the older development example has two matched and two bounded no-match observations; the selected Lambourne observation also matches. Do not infer novel evidence from a second database name, or absence from capped or failed retrieval. This audit does not merge, prune or pool confidence.
 
-The SSSOM 1.0 output profile accepts only exact primary UniProt accessions with isoforms preserved; labels, gene-to-protein links and generic cross-references do not establish protein identity. All 14 exported rows passed three official validators and a complete row/provenance roundtrip in an isolated optional environment. This validates the narrow exported profile, not full standards interoperability or biological correctness. Preserve the four fresh IntAct studies unopened until their separately reviewed execution freeze.
+The SSSOM 1.0 output profile accepts only exact primary UniProt accessions with isoforms preserved; labels, gene-to-protein links and generic cross-references do not establish protein identity. All 14 exported rows passed three official validators and a complete row/provenance roundtrip in an isolated optional environment. This validates the narrow exported profile, not full standards interoperability or biological correctness. Preserve the original four-study result and its now-consumed boundary; do not reuse these studies as an unseen test.
 
 The [fresh release check](evaluations/PHAROS_RELEASE_CHECK_20261027.md) confirms that the configured public service still reports `pharos319`. This is not a version selector in our code. Official 400 public tables provide identity and TDL summaries; a complete equivalent 400 API or SQL dump was not verified in the checked official distribution. Preserve historical relationship snapshots. Any current 400 identity reconciliation must be a separate, source-versioned mapping layer, not a claim that 319 interactions were updated. A full retrieval migration requires a verified source and compatibility check.
 
-Next, investigate the experiment provenance absent from the baseline projection and the missing XML-reader companion in the older development publication, reusing existing official artifacts before extending retrieval. Then select one task-specific qualification intervention and compare it with simple addition of the same information. Use the overlap report to declare known shared evidence, unknown lineage and exclusions before a new freeze. MImerge/IMEx methods and the published biomedical leakage audit guide this boundary; they do not manufacture missing experimental provenance. No independent corroboration or new biological performance result is claimed. This increment uses local inspection and needs no model or GPU; the CLI was tested, while browser and independent-user checks remain separate.
+The [source-update supplement](PHAROS_SOURCE_UPDATE.md) checks the richer official details route for the actual consumed pair and adds scoped 400 identity/TDL records. Both detail directions still return null evidence/type; both 400 rows are canonical Tbio and support exact identifier correspondence. Existing graph relationships and overlap classifications remain unchanged. Full-source 400 scan counts/hashes are capture-time assertions because only selected original rows were retained; offline replay verifies retained records, not selection completeness.
+
+The [provider trace](evaluations/PROVIDER_PAIR_LINEAGE_20261027.md) now resolves one exact current-STRING reuse: its user-observed experiment row links IM-30398-1, the same curated record as attached IntAct EBI-67107463. Typed official source and raw XML verify the alias, experiment and study chain. The STRING database view also confirms Reactome resource reuse; current Reactome records contain one base receptor complex reused within four additional contexts. Preserve user-observed viewer evidence separately from HTTP/API captures. Second-record reuse, exact Reactome supporting IDs within STRING and historical Pharos import lineage remain unresolved.
+
+The [shared-record workbench supplement](ASSAY_SOURCE_REUSE.md) now exposes that status in the assay table, observation inspector and guided source answer. A new copied workspace preserves every original byte and carries the replayable trace/proof in its normal ZIP. The source record shared with current STRING is user-assisted; the other record and both historical Pharos import links remain unresolved. Graph, review and saved-answer formats are unchanged.
+
+The source-field and cohort audit supplied the input boundaries for the completed native-score component above. A later ordinary-addition versus qualified-addition comparison still requires adequate identical evidence inputs and an actual representation contrast. The older development publication's missing XML companion remains a separate fidelity gap; it did not gate this component. Source reuse and structural fidelity do not establish biological improvement.
 
 ## Report and submission update received October 26
 

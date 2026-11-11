@@ -1,11 +1,90 @@
 // Qualified assay records remain distinct from unqualified interaction paths.
 let assayPage=0, assayEpoch=0, assayAnswer=null, assayQuestionId=null;
+let assayReuseState={status:'unavailable'}, assayReuseViews={table:[],inspector:[],answer:[]};
 function assayLabel(value){return String(value??'Not supplied').replaceAll('_',' ');}
+function assayReuseLink(label,url){
+  if(typeof url!=='string')return null;
+  const reportPath=runId?'/api/assay-source-reuse/'+encodeURIComponent(runId)+'/report.html':null;
+  let href;
+  if(url===reportPath)href=url;
+  else{
+    try{const parsed=new URL(url);if(!['https:','http:'].includes(parsed.protocol)||parsed.username||parsed.password)return null;href=parsed.href;}
+    catch{return null;}
+  }
+  const link=el('a',label);link.href=href;return link;
+}
+function assayReuseObservation(id){return assayReuseState.status==='available'?assayReuseState.data.observations.find(row=>row.observation_id===id):null;}
+function assayReuseDownloadLink(){
+  if(assayReuseState.status!=='available'||typeof runId!=='string'||!(/^[A-Za-z0-9_-]{1,80}$/).test(runId)||assayReuseState.data.source_run!==runId)return null;
+  const link=el('a','Download run ZIP with audit and proof');link.href='/api/download/'+encodeURIComponent(runId);return link;
+}
+function assayReuseLabel(id){
+  const row=assayReuseObservation(id);
+  if(row?.current_string_status==='confirmed_user_assisted')return 'Shared record in current STRING 12.5 (user-assisted)';
+  if(row)return 'Current STRING reuse unresolved';
+  if(assayReuseState.status==='loading')return 'Checking saved source-reuse audit…';
+  if(assayReuseState.status==='unverifiable')return 'Source-reuse audit could not be verified';
+  return 'No verified source-reuse annotation';
+}
+function fillAssayReuseView(view){
+  const {box,id,detail}=view,row=assayReuseObservation(id);
+  if(!detail){box.textContent=assayReuseLabel(id);return;}
+  box.replaceChildren(el('h4','Source reuse audit'),el('p',assayReuseLabel(id),'notice'));
+  if(row){
+    box.append(el('p',row.explanation),el('p','Source record identifiers: '+row.record_ids.join(' · '),'small'));
+    box.append(el('p',row.current_string_status==='confirmed_user_assisted'?'The shared record was identified through a user-assisted source-link observation. This is not an independent replication.':'This record was not resolved in the observed STRING evidence view. That does not establish that it is absent from STRING.'));
+  }
+  box.append(el('p','Reuse in the original '+(graph?.db_version||'Pharos snapshot')+' import remains unresolved. This audit does not establish additional independent evidence or biological improvement. The assay context and local review are retained.','small'));
+  if(assayReuseState.status==='unverifiable')box.append(el('p','The saved audit could not be verified for this workspace. No shared-record conclusion is displayed.','small'));
+  const links=el('p');
+  for(const citation of row?.evidence_links||[]){if(!citation||typeof citation.label!=='string')continue;const link=assayReuseLink(citation.label,citation.url);if(!link)continue;if(links.childNodes.length)links.append(document.createTextNode(' · '));links.append(link);}
+  if(assayReuseState.status==='available'){
+    const report=assayReuseLink('Verified source-reuse report',assayReuseState.data.report_url);
+    if(report){if(links.childNodes.length)links.append(document.createTextNode(' · '));links.append(report);}
+    const download=assayReuseDownloadLink();if(download){if(links.childNodes.length)links.append(document.createTextNode(' · '));links.append(download);}
+    box.append(el('p','The audit supplement and copied proof are included in Download run ZIP. Saved-answer JSON and graph/decision exports retain their existing contents.','small'));
+  }
+  if(links.childNodes.length)box.append(links);
+}
+function assayReuseView(id,group,detail=false){
+  const box=el(detail?'section':'span');box.dataset.sourceReuseObservation=id;
+  const view={box,id,detail};assayReuseViews[group].push(view);fillAssayReuseView(view);return box;
+}
+function refreshAssayReuseViews(){for(const views of Object.values(assayReuseViews))for(const view of views)fillAssayReuseView(view);}
+async function loadAssaySourceReuse(epoch,sourceRun,basis){
+  const current=()=>epoch===assayEpoch&&runId===sourceRun&&graph?.question_basis_sha256===basis;
+  if(!sourceRun){assayReuseState={status:'unavailable'};refreshAssayReuseViews();return;}
+  try{
+    const response=await fetch('/api/assay-source-reuse/'+encodeURIComponent(sourceRun)), data=await response.json();
+    if(!current())return;
+    if(!response.ok)throw new Error('Source-reuse audit could not be verified.');
+    if(!['available','unavailable'].includes(data.status)||data.source_run!==sourceRun)throw new Error('Source-reuse workspace mismatch.');
+    if(data.status==='available'){
+      for(const [key,graphKey] of [['graph_basis_sha256','question_basis_sha256'],['snapshot_sha256','snapshot_sha256'],['assay_attachment_sha256','assay_attachment_sha256'],['assay_publication_sha256','assay_publication_sha256']]){
+        if(typeof data[key]!=='string'||!data[key]||data[key]!==graph[graphKey])throw new Error('Source-reuse source basis mismatch.');
+      }
+      if(!Array.isArray(data.observations))throw new Error('Source-reuse observations are missing.');
+      const ids=new Set();
+      for(const row of data.observations){
+        const source=(graph.assay_observations||[]).find(item=>item.id===row.observation_id);
+        if(!source||ids.has(row.observation_id)||!Array.isArray(row.products)||JSON.stringify([...row.products].sort())!==JSON.stringify([...source.products].sort())||row.study!==source.study)throw new Error('Source-reuse observation mismatch.');
+        if(row.provider!=='STRING'||row.provider_version!=='12.5'||row.historical_pharos_reuse!==null||!['confirmed_user_assisted','unknown_not_observed'].includes(row.current_string_status)||!Array.isArray(row.record_ids)||!row.record_ids.length||!row.record_ids.every(id=>typeof id==='string'&&id.length)||typeof row.explanation!=='string'||!Array.isArray(row.evidence_links))throw new Error('Source-reuse qualification mismatch.');
+        if(row.observation_provenance!==(row.current_string_status==='confirmed_user_assisted'?'user_assisted_source_link':'not_observed'))throw new Error('Source-reuse observation provenance mismatch.');
+        ids.add(row.observation_id);
+      }
+      const reportPath='/api/assay-source-reuse/'+encodeURIComponent(sourceRun)+'/report.html';
+      if(data.report_url!==reportPath)throw new Error('Source-reuse report route mismatch.');
+    }
+    assayReuseState={status:data.status,data};
+  }catch(error){if(!current())return;assayReuseState={status:'unverifiable'};}
+  refreshAssayReuseViews();
+}
 async function setupAssay(){
   const epoch=++assayEpoch, attached=!!graph?.assay_evidence;
   const eligible=graph?.scope?.kind==='protein_cohort'&&graph?.data_kind==='live_pharos';
   const intact=graph?.assay_evidence?.source_kind==='intact_mitab27';
   assayAnswer=null;assayQuestionId=null;$('assayAnswerOutput').classList.add('hidden');
+  assayReuseState={status:attached?'loading':'unavailable'};assayReuseViews={table:[],inspector:[],answer:[]};
   $('assayQuestionControls').classList.toggle('hidden',!intact);$('assayWorkflowOption').disabled=!intact;
   if(!intact&&$('questionWorkflow').value==='assay'){$('questionWorkflow').value='connections';switchQuestionWorkflow();}
   updateWorkNavigation();
@@ -21,7 +100,7 @@ async function setupAssay(){
     $('assayProtein').replaceChildren(el('option','All cohort proteins'));
     $('assayProtein').options[0].value='all';
     for(const target of graph.targets){const option=el('option',nodeLabel(target.id)+' · '+target.id);option.value=target.id;$('assayProtein').append(option);}
-    $('assayOutcome').value='all';renderAssays();return;
+    $('assayOutcome').value='all';renderAssays();await loadAssaySourceReuse(epoch,runId,graph.question_basis_sha256);return;
   }
   if(!eligible||!runId)return;
   $('assayAttach').disabled=true;$('assayPublication').replaceChildren();
@@ -35,11 +114,12 @@ async function setupAssay(){
   }catch(error){if(epoch===assayEpoch)$('assayStatus').textContent=error.message;}
 }
 function renderAssays(){
+  assayReuseViews.table=[];assayReuseViews.inspector=[];
   const protein=$('assayProtein').value, outcome=$('assayOutcome').value;
   const rows=(graph?.assay_observations||[]).filter(r=>(protein==='all'||r.products.includes(protein))&&(outcome==='all'||(outcome==='excluded'?!r.evaluable:r.assay_status===outcome)));
   const size=25;assayPage=Math.min(assayPage,Math.max(0,Math.ceil(rows.length/size)-1));
-  $('assayRows').replaceChildren(table(['Protein pair','Assay outcome','Evidence'],rows.slice(assayPage*size,(assayPage+1)*size).map(row=>({
-    cells:[row.products.join(' ↔ '),assayLabel(row.assay_status),row.evaluable?'Qualified observation':'Excluded assay; no graph edge'],click:()=>inspectAssay(row)}))));
+  $('assayRows').replaceChildren(table(['Protein pair','Assay outcome','Evidence','Source reuse'],rows.slice(assayPage*size,(assayPage+1)*size).map(row=>({
+    cells:[row.products.join(' ↔ '),assayLabel(row.assay_status),row.evaluable?'Qualified observation':'Excluded assay; no graph edge',assayReuseView(row.id,'table')],click:()=>inspectAssay(row)}))));
   $('assayPage').textContent=rows.length+' matching observations'+(rows.length?' · Page '+(assayPage+1)+' of '+Math.ceil(rows.length/size):'');
   $('assayPrev').disabled=assayPage===0;$('assayNext').disabled=(assayPage+1)*size>=rows.length;
   $('assayInspector').replaceChildren(el('p','Select an observation for its assay conditions and source records.','small'));
@@ -50,9 +130,11 @@ function assaySourceLink(label,path){
   return link;
 }
 function inspectAssay(row){
+  assayReuseViews.inspector=[];
   if(row.source_kind==='intact_mitab27'){inspectIntactAssay(row);return;}
   const box=$('assayInspector'), assay=row.original.assay, constructs=row.constructs||{};
   box.replaceChildren(el('h3',row.products.join(' ↔ ')),el('p','Assay: '+assayLabel(row.assay)+' · Outcome: '+assayLabel(row.assay_status)));
+  box.append(assayReuseView(row.id,'inspector',true));
   if(row.assay_status==='detected')box.append(el('p','The authors reported a positive result for this assay and construct combination. This does not establish an interaction in every biological setting.','notice'));
   box.append(el('h4','Constructs used in this assay'));
   box.append(el('p','Constructs are engineered DNA reagents used to make the test proteins. The authors’ ORF IDs identify the protein-coding clones used in those reagents.'));
@@ -90,6 +172,7 @@ $('assayAttachForm').addEventListener('submit',async event=>{
   try{
     const result=await api('/api/assay-attach',{run_id:runId,publication_id:$('assayPublication').value});
     runId=result.run_id;history.replaceState(null,'','?run='+encodeURIComponent(runId));showGraph(result.graph);
+    if(typeof revealWorkspaceTarget==='function')revealWorkspaceTarget($('assayPanel'));
     $('assayPanel').scrollIntoView({block:'start'});status('Assay observations saved with the original Pharos cohort and complete source publication.');loadSavedWork();
   }catch(error){$('assayStatus').textContent=error.message;button.disabled=false;}
 });
@@ -116,6 +199,7 @@ function appendIntactLinks(box,citations){
 function inspectIntactAssay(row){
   const box=$('assayInspector');box.replaceChildren(el('h3',row.products.join(' ↔ ')),el('p','Source-qualified IntAct / IMEx record · '+assayLabel(row.assay_status)));
   box.append(el('p','Source curation, experimental outcome and local review are separate. This record does not establish direct binding or disease relevance.','notice'));
+  box.append(assayReuseView(row.id,'inspector',true));
   appendIntactLinks(box,row.display.citations);appendIntactGroups(box,row.display.field_groups);
   const links=el('p');links.append(assaySourceLink('Publication receipt','publication.json'),document.createTextNode(' · '),assaySourceLink('Original MITAB source',row.source_file),document.createTextNode(' · '),assaySourceLink('Complete source-row ledger','row_ledger.jsonl'));box.append(links);
   const edge=graph.edges.find(e=>e.id===row.graph_edge_id),assertion=edge&&graph.assertions.find(a=>a.id===edge.assertion_id);
@@ -129,10 +213,11 @@ function bindAssayAnswer(answer,id){
   $('assayAnswerDownload').href='/api/download/'+encodeURIComponent(id);
   $('assayAnswerGraph').replaceChildren(table(['Source participant A','Qualified evidence record','Source participant B'],answer.results.map(row=>({cells:[row.source_observation.products[0],row.citation_id+' · '+row.source_observation.assay_status,row.source_observation.products[1]],click:()=>document.getElementById('assay-'+row.citation_id).scrollIntoView({block:'start'})}))));
   const box=$('assayAnswerRecords');box.replaceChildren();
+  assayReuseViews.answer=[];
   for(const row of answer.results){
     const section=el('section');section.id='assay-'+row.citation_id;section.dataset.observationId=row.observation_id;
     section.append(el('h3','['+row.citation_id+'] Source evidence record'),el('p','Local review: '+assayLabel(row.local_review_state)+' — separate from source curation and outcome.','notice'));
-    appendIntactLinks(section,row.citations);appendIntactGroups(section,row.field_groups);box.append(section);
+    section.append(assayReuseView(row.observation_id,'answer',true));appendIntactLinks(section,row.citations);appendIntactGroups(section,row.field_groups);box.append(section);
   }
   const limits=el('details');limits.append(el('summary','Scope, coverage and limitations'));for(const note of answer.limitations)limits.append(el('p',note));limits.append(el('pre',JSON.stringify(answer.source_attachment_summary,null,2)));box.append(limits);
   $('assayQuestionStatus').textContent='Saved qualified answer. All outcomes and local review states within the selected protein scope are retained.';updateWorkNavigation();

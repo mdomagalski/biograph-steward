@@ -1,0 +1,60 @@
+{
+  "format": "biograph-steward.next-biological-comparison-decision.v1",
+  "decision_date": "2026-10-27",
+  "status": "no_go_for_new_predictive_fit_no_verified_steward_specific_input_contrast",
+  "report": "docs/evaluations/NEXT_BIOLOGICAL_COMPARISON_DECISION_20261027.md",
+  "report_sha256": "c4aa92602b142881f0b3d5d28048b6657fbed99d8fe0ee9bd7081283b5119331",
+  "selected_new_predictive_comparison": null,
+  "verified_current_change": "Native STRING physical-score ordering of the same eligible Pharos question matches; no saved graph or learner-input change.",
+  "immediate_bottleneck": "No adequate standards-respecting same-information contrast has been projected into inputs consumed by the existing learner.",
+  "unknown_lineage_is_blanket_development_prohibition": false,
+  "independent_biological_improvement_demonstrated": false,
+  "source_fidelity_equals_scientific_accuracy": false,
+  "reserved_study_bodies_accessed": false,
+  "new_biological_outcomes_accessed": false,
+  "new_predictive_fit_run": false,
+  "paid_compute_used": false,
+  "dependency_probe": {
+    "path": "runs/next_biological_decision_20261027/pykeen_duplicate_probe.json",
+    "sha256": "38b1243ea162ac881aa681a295a3f83afc1778f7e15f5509479b822f5f00f3e7",
+    "kind": "synthetic_dependency_probe_not_biological_evaluation",
+    "dependency": "PyKEEN",
+    "version": "1.11.1",
+    "input_rows_before": 2,
+    "input_rows_after": 1,
+    "native_triples_before": [
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "native_triples_after": [
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "same_native_triples": true,
+    "same_entity_mapping": true,
+    "same_relation_mapping": true,
+    "trained": false,
+    "biological_data_read": false
+  },
+  "next_deliverables": [
+    "Update the midpoint report with completed component results and product demonstration.",
+    "Freeze the complete new four-study IntAct fidelity execution before any reserved body access; retain source-fidelity claim boundaries.",
+    "Require a concrete standards-respecting source-to-feature difference consumed by the learner before reopening a predictive comparison; otherwise preserve the explicit no-go."
+  ],
+  "rechecked_primary_or_official_sources": [
+    "https://link.springer.com/content/pdf/10.1038/s44320-024-00077-y.pdf",
+    "https://github.com/sarah-n-wright/Network_Evaluation_Tools",
+    "https://www.nature.com/articles/s41467-023-37079-7",
+    "https://academic.oup.com/database/article/doi/10.1093/database/bau131/2433131",
+    "https://www.nature.com/articles/s41467-020-19942-z",
+    "https://string-db.org/help/scores/",
+    "https://raw.githubusercontent.com/pykeen/pykeen/v1.11.1/src/pykeen/triples/triples_factory.py",
+    "https://raw.githubusercontent.com/pykeen/pykeen/v1.11.1/src/pykeen/models/unimodal/rgcn.py"
+  ]
+}

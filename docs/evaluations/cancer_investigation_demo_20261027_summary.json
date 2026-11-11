@@ -1,0 +1,295 @@
+{
+  "format": "biograph-steward.cancer-investigation-demo-summary.v1",
+  "prepared_date": "2026-10-27",
+  "status": "coherent_saved_source_journey_and_scoped_handoff_verified",
+  "landing": "runs/cancer_investigation_demo_20261027/index.html",
+  "landing_sha256": "f1cd1dc8dd3a2c3e97e968f7905e43e5f9e78c6592e6e0bfbf0f8a094f2b262c",
+  "source_run": "crc_civic_final_20261015",
+  "same_graph_and_review_basis": true,
+  "graph_basis_sha256": "363cb975d6110115fe5e4aa6a77d41308b179d12dfe93b7362e61e6dee69a8bd",
+  "source_bytes_unchanged": true,
+  "source_inventory_sha256": {
+    "crc_civic_final_20261015": "83e02e5ed6f6a5492b3daf6e5f9554aa45a9efc55f950995563216b44751377f",
+    "question_20261027T180832Z_781f7543": "d3c6bef2a204428a632f0a6f318002ac9276cec958661bd469c407fae9d81355",
+    "therapy_20261022T124550Z_10a87bec": "ebca34e0b3cb6e946cf9b6058e0369b56e1d39d3345f88f41289be5f4121a0b1"
+  },
+  "questions": {
+    "neighborhood": "question_20261027T180832Z_781f7543",
+    "therapy": "therapy_cancer_demo_20261027",
+    "historical_therapy_exact_current_replay": true
+  },
+  "neighborhood": {
+    "anchor": "UniProtKB:P15056",
+    "selected_neighbor": {
+      "protein_id": "UniProtKB:P01116",
+      "symbol": "KRAS",
+      "review_state": "candidate_evidence",
+      "physical_priority": {
+        "state": "numeric",
+        "physical_score": 0.999,
+        "functional_score": 0.999,
+        "source_release": "12.5",
+        "has_interaction": true
+      }
+    },
+    "matching_proteins": 21,
+    "native_numeric_physical_scores": 14,
+    "unranked": 7
+  },
+  "therapy": {
+    "complete_profile": {
+      "id": "CIViC.molecularprofile:79",
+      "name": "KRAS G12D",
+      "sym": null,
+      "tdl": null,
+      "category": "biograph:MolecularProfile",
+      "identifier_mapped": true,
+      "data_kind": "live_civic",
+      "url": "https://civicdb.org/molecular-profiles/79",
+      "variants": [
+        {
+          "id": 79,
+          "name": "G12D",
+          "deprecated": false,
+          "flagged": false,
+          "link": "/variants/79",
+          "feature": {
+            "id": 30,
+            "name": "KRAS",
+            "deprecated": false,
+            "featureInstance": {
+              "__typename": "Gene",
+              "entrezId": 3845
+            }
+          }
+        }
+      ],
+      "profile_expression": "#VID79",
+      "protein_ids": [
+        "UniProtKB:P01116"
+      ]
+    },
+    "disease": {
+      "id": "DOID:9256",
+      "name": "Colorectal Cancer"
+    },
+    "response_assertions": 3,
+    "source_items": 3,
+    "distinct_cited_pmids": 2,
+    "independent_studies": null,
+    "omitted_assertions": 0,
+    "records": [
+      {
+        "evidence_id": "CIViC.evidence:2207",
+        "evidence_level": "B",
+        "evidence_level_label": "Clinical evidence",
+        "evidence_direction": "SUPPORTS",
+        "significance": "RESISTANCE",
+        "variant_origin": "SOMATIC",
+        "therapy_members": [
+          {
+            "id": 16,
+            "name": "Cetuximab",
+            "ncitId": "C1723",
+            "deprecated": false,
+            "link": "/therapies/16"
+          }
+        ],
+        "therapy_interaction": null,
+        "source_reference": "PMID:20619739",
+        "local_review_state": "candidate",
+        "source_editorial_status": "ACCEPTED"
+      },
+      {
+        "evidence_id": "CIViC.evidence:6316",
+        "evidence_level": "C",
+        "evidence_level_label": "Case study",
+        "evidence_direction": "SUPPORTS",
+        "significance": "RESISTANCE",
+        "variant_origin": "SOMATIC",
+        "therapy_members": [
+          {
+            "id": 28,
+            "name": "Panitumumab",
+            "ncitId": "C1857",
+            "deprecated": false,
+            "link": "/therapies/28"
+          },
+          {
+            "id": 16,
+            "name": "Cetuximab",
+            "ncitId": "C1723",
+            "deprecated": false,
+            "link": "/therapies/16"
+          }
+        ],
+        "therapy_interaction": "SUBSTITUTES",
+        "source_reference": "PMID:19223544",
+        "local_review_state": "candidate",
+        "source_editorial_status": "ACCEPTED"
+      },
+      {
+        "evidence_id": "CIViC.evidence:2193",
+        "evidence_level": "C",
+        "evidence_level_label": "Case study",
+        "evidence_direction": "SUPPORTS",
+        "significance": "RESISTANCE",
+        "variant_origin": "SOMATIC",
+        "therapy_members": [
+          {
+            "id": 28,
+            "name": "Panitumumab",
+            "ncitId": "C1857",
+            "deprecated": false,
+            "link": "/therapies/28"
+          }
+        ],
+        "therapy_interaction": null,
+        "source_reference": "PMID:20619739",
+        "local_review_state": "candidate",
+        "source_editorial_status": "ACCEPTED"
+      }
+    ]
+  },
+  "field_fidelity": {
+    "source_to_answer_raw_records_equal": true,
+    "answer_to_export_all_qualified_fields_equal": true,
+    "verified_fields": [
+      "answer_sha256",
+      "assertion_id",
+      "description",
+      "disease_id",
+      "disease_name",
+      "evidence_direction",
+      "evidence_level",
+      "graph_basis_sha256",
+      "local_review_state",
+      "profile_expression",
+      "profile_id",
+      "profile_name",
+      "profile_variants",
+      "record_locators",
+      "significance",
+      "snapshot_sha256",
+      "source_reference",
+      "source_run",
+      "source_status",
+      "source_title",
+      "therapy_ids",
+      "therapy_interaction",
+      "therapy_members",
+      "variant_origin"
+    ]
+  },
+  "scoped_handoff": {
+    "format": "biograph-steward.cancer-demo-handoff.v1",
+    "created_at": "2026-10-27T19:09:23.415999+00:00",
+    "historical_source_run": "crc_civic_final_20261015",
+    "replayed_source_run": "crc_cancer_demo_replay_20261027",
+    "initial_export_guard": "Original graph correctly rejected: saved graph does not exactly replay under current readiness diagnostics.",
+    "diagnostic_only_diff": [
+      {
+        "path": "/benchmark_readiness/required_actions/4/code",
+        "before": "external_enrichment_missing",
+        "after": "enrichment_independence_unresolved"
+      },
+      {
+        "path": "/benchmark_readiness/required_actions/4/message",
+        "before": "Add independently retrieved context to a copy of the baseline. Pathways returned by Pharos remain part of the Pharos baseline.",
+        "after": "Scoped CIViC enrichment is present. Review source overlap and underlying-study independence before claiming new evidence."
+      },
+      {
+        "path": "/benchmark_readiness/scope",
+        "before": "Single Pharos disease snapshot; no label review, comparison population or training is implemented.",
+        "after": "Pharos disease-label readiness audit; scoped CIViC enrichment present, with independence unresolved."
+      }
+    ],
+    "scientific_graph_equal": true,
+    "source_snapshot_review_bytes_equal": [
+      "snapshot.json",
+      "civic_snapshot.json",
+      "review_events.json"
+    ],
+    "question_basis_sha256": "363cb975d6110115fe5e4aa6a77d41308b179d12dfe93b7362e61e6dee69a8bd",
+    "original_sources_unchanged": true,
+    "historical_graph_preserved_separately": true,
+    "historical_graph_sha256": "d37c6690da820803eb891dbbbee0a788ce7420bc3dd367139cb6bc4a34c9087b",
+    "replayed_graph_sha256": "e23c99c79ee9b1c2fc012957170d3116f7aad62ed2930ef06e7f62299e250050",
+    "packet_id": "packet:023bf2cb155e814c0bba976d58219d770ac1a7fde592ee052000920a043f3945",
+    "packet_counts": {
+      "nodes": 9746,
+      "edges": 15717,
+      "assertions": 15712,
+      "context_records": 9152,
+      "quarantine": 11
+    },
+    "dispositions": {
+      "keep": 0,
+      "prune": 0,
+      "abstain": 15717
+    },
+    "all_confidence_null": true,
+    "all_nodes_edges_assertions_equal_after_retention": true,
+    "retained_variant_therapy_assertions": 41,
+    "graph_handoff_report_sha256": "ac9b3310d84dfe0f426d24ca0590d1520e70990d71aaa700c037e4cbce706f3c",
+    "download_sha256": "2bdaa8f91a0669aa4b63e99e2e417ab7fee446703ba6fb2cfe8eb62fca06660f",
+    "download_bytes": 36354369,
+    "extracted_handoff_verified": true,
+    "official_submission_format_approved": false,
+    "new_biomedical_source_retrieval": false,
+    "biological_validation_performed": false,
+    "scientific_pruning_performed": false,
+    "model_or_gpu_used": false
+  },
+  "http": {
+    "format": "biograph-steward.cancer-demo-http-check.v1",
+    "checked_at": "2026-10-27T19:10:30.929762+00:00",
+    "base": "http://127.0.0.1:8794",
+    "checks": {
+      "/healthz": {
+        "status": 200,
+        "bytes": 36,
+        "sha256": "212d14c47a18970a8d40d570c812a41de0bdd3985c7a926c76cddfc94a5df891"
+      },
+      "/api/question/question_20261027T180832Z_781f7543": {
+        "status": 200,
+        "bytes": 531445,
+        "sha256": "ef1422f9df0de791da7dc656487641693ff61caf6e4c27b0f8e706dd272c9284"
+      },
+      "/api/question/therapy_cancer_demo_20261027": {
+        "status": 200,
+        "bytes": 53855,
+        "sha256": "955c8dba413070876f038db0fff024cbe075c6a7a6bd9a6fcf24ccf697523bde"
+      },
+      "/api/download/question_20261027T180832Z_781f7543": {
+        "status": 200,
+        "bytes": 141697,
+        "sha256": "b4d819df0c81f3f8fbdfe7f9d05a8366e1b686895ef26b6250e7b47bd20e70d6"
+      },
+      "/api/download/therapy_cancer_demo_20261027": {
+        "status": 200,
+        "bytes": 30070,
+        "sha256": "260e13f4a2c0537a046b3eca697068cf8331b3bc8348750ce83cd2c4d5ae422a"
+      }
+    },
+    "saved_answer_and_zip_files_equal": true,
+    "browser_visual_check_completed": false,
+    "new_biomedical_source_retrieval": false
+  },
+  "checks": {
+    "landing_links": 18,
+    "landing_javascript_syntax_and_port_state_verified": true,
+    "extracted_handoff_verifies": true,
+    "new_biomedical_source_retrieval": false,
+    "new_scientific_assertions": false,
+    "protein_path_infers_therapy_response": false,
+    "disease_equivalence_inferred": false,
+    "model_or_gpu_used": false,
+    "fresh_reference_bodies_opened": false,
+    "browser_visual_walkthrough_completed": false,
+    "independent_user_walkthrough_completed": false,
+    "independent_biological_validation": false
+  },
+  "artifact_receipt": "runs/cancer_investigation_demo_20261027/verification.json",
+  "artifact_receipt_sha256": "eff2168e4d1238f08481ce8bb4b3070e15349dfd03d7908acf3477a43b2b7e7f"
+}

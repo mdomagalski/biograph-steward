@@ -325,7 +325,15 @@ def execute(freeze_path,expected_sha):
     save_new(output/'report.json',seal(result));return result
 
 
-def _execute(freeze,freeze_path,expected_sha,output):
+def _execute(freeze,freeze_path,expected_sha,output, *, source_loader=None,
+             lineage_auditor=None, freeze_verifier=None, pharos_factory=None,
+             publication_extras=None, inspection_status=None, eligible_check=None,
+             fatal_exception=None):
+    # Explicit internal dependency hooks support a separately validated fresh
+    # contract. Public prepare/execute retain their original exact-panel guards.
+    load_sources=source_loader or inspect_sources
+    audit_sources=lineage_auditor or provenance_audit
+    verify_execution=freeze_verifier or verify_freeze
     from biograph_steward import intact_final_publication as final
     from biograph_steward.assay_attachment import attach_assay
     from biograph_steward.assay_questions import answer_assay_question
@@ -333,8 +341,8 @@ def _execute(freeze,freeze_path,expected_sha,output):
     from biograph_steward.reviews import read_run
     from biograph_steward.gold_packet import export_packet,load_packet
     from biograph_steward.construction import run_construction,publish_construction
-    records,ledger,xml,files,catalog,studies=inspect_sources(freeze,freeze_path,expected_sha,output)
-    audit=provenance_audit(xml,records,load_json(freeze['consumed_inventory']))
+    records,ledger,xml,files,catalog,studies=load_sources(freeze,freeze_path,expected_sha,output)
+    audit=audit_sources(xml,records,load_json(freeze['consumed_inventory']))
     excluded=set(audit['excluded_publication_ids'])
     if freeze['assessment_split']=='development_replay':
         # The four consumed studies are intentionally replayed for engineering
@@ -348,8 +356,9 @@ def _execute(freeze,freeze_path,expected_sha,output):
     references=[{'ledger':l,'reader_record':r['reader_record']} for l,r in zip(ledger,records)]
     finalrefs=[r for r in references if r['ledger']['publication_id'].removeprefix('pubmed:') not in excluded]
     eligible=[r for r in finalrefs if r['ledger']['eligible']]
+    if eligible_check is not None:eligible_check(references,eligible)
     ledgerraw=''.join(canonical(item)+'\n' for item in ledger).encode()
-    inspection={'status':'development_full_flow_replay_not_final_score' if freeze['assessment_split']=='development_replay' else 'final_inspected_not_fidelity_scored',
+    inspection={'status':inspection_status or ('development_full_flow_replay_not_final_score' if freeze['assessment_split']=='development_replay' else 'final_inspected_not_fidelity_scored'),
         'publication_ids':freeze['publication_ids'],'studies':studies,'bindings':{
         'controls_report_sha256':sha(freeze['controls_report']),'runtime_bindings':freeze['mitab_runtime'],'execution_freeze_sha256':sha(freeze_path)}}
     files.update({'row_ledger.jsonl':ledgerraw,'protocol.json':(ROOT/PROTOCOL).read_bytes(),
@@ -367,6 +376,11 @@ def _execute(freeze,freeze_path,expected_sha,output):
         'xml_reader_runtime':freeze['xml_runtime'],'xml_controls_report_sha256':sha(freeze['xml_controls_report']),
         'publication_ids':freeze['publication_ids'],'assessment_split':freeze['assessment_split'],
         'execution_freeze_sha256':sha(freeze_path),'release':'2026-10-17'}
+    if publication_extras is not None:
+        extra_files,extra_bindings=publication_extras(freeze,output)
+        if set(extra_files)&set(files) or set(extra_bindings)&set(bindings):
+            raise ValueError('Additional publication bindings may not replace original source fields.')
+        files.update(extra_files);bindings.update(extra_bindings)
     final.publish_material(files,catalog,bindings,inspection,output/'publication')
     grouped=defaultdict(list)
     for ref in eligible:grouped[participant_pair(ref['reader_record'])].append(ref)
@@ -374,7 +388,7 @@ def _execute(freeze,freeze_path,expected_sha,output):
     batches=[('development',eligible)] if freeze['assessment_split']=='development_replay' and eligible else [(str(i).zfill(4),grouped[p]) for i,p in enumerate(sorted(grouped),1)]
     evaluated_rows=[];globals=[];failures=[];preservation=[]
     for name,refs in batches:
-        verify_freeze(freeze_path,expected_sha)
+        verify_execution(freeze_path,expected_sha)
         folder=output/('batch_'+name);folder.mkdir()
         empty=None
         try:
@@ -383,7 +397,7 @@ def _execute(freeze,freeze_path,expected_sha,output):
                 publish_construction(saved,folder/'cohort')
             else:
                 ids=sorted({x['id'] for ref in refs for side in ('a','b') for x in ((ref['reader_record'].get('source_fields') or {}).get('primary_ids_'+side) or {}).get('values',[]) if ((x.get('database') or {}).get('name') or '').lower()=='uniprotkb'})
-                run_construction(PharosClient(endpoint=ENDPOINT,cache_dir=None,timeout=30,retries=0),
+                run_construction(pharos_factory(folder) if pharos_factory else PharosClient(endpoint=ENDPOINT,cache_dir=None,timeout=30,retries=0),
                     {'accessions':ids,'focus_uniprot':ids[0],'profile':'ppi','relations':['interactions']},folder/'cohort')
             attach_assay(folder/'cohort',output/'publication',folder/'attached')
             _,_,graph=read_run(folder/'attached')
@@ -411,13 +425,14 @@ def _execute(freeze,freeze_path,expected_sha,output):
             save_new(folder/'evaluation.json',evaluation)
             evaluated_rows+=evaluation['rows'];globals+=evaluation['global_checks']
         except Exception as exc:
+            if fatal_exception is not None and isinstance(exc,fatal_exception):raise
             failure={'batch':name,'error_type':type(exc).__name__,'error':str(exc),'eligible_rows':len(refs)}
             failures.append(failure);save_new(folder/'failure.json',failure)
             empty=evaluate_rows(refs,[],[],[],[],'',graph_edges=[],columns=field_groups())
             evaluated_rows+=empty['rows'];globals+=empty['global_checks']
     evaluation={'rows':evaluated_rows,'global_checks':globals}
     metrics=summarize(evaluation,finalrefs,freeze['publication_ids'])
-    verify_freeze(freeze_path,expected_sha)
+    verify_execution(freeze_path,expected_sha)
     passed=bool(eligible) and not failures and all(x['passed'] for x in globals+preservation) and metrics['strict_fidelity']['numerator']==len(eligible)
     return {'format':'biograph-steward.intact-final-fidelity.v1','created_at':utcnow(),
         'status':'passed' if passed else 'not_evaluable' if not eligible else 'failed',

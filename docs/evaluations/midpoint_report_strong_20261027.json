@@ -1,0 +1,100 @@
+{
+  "format": "biograph-steward.midpoint-results-report.v1",
+  "prepared_date": "2026-10-27",
+  "status": "ready_for_user_review_rendered_and_visually_verified",
+  "artifact": {
+    "path": "runs/midpoint_report_strong_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+    "sha256": "04f52bc31438d2e54fde3061030d29a16f48773e3c315642b17c9eb89951e7b5",
+    "pages": 2
+  },
+  "organizer_format_preserved": true,
+  "previous_drafts_preserved": [
+    {
+      "path": "runs/midpoint_report_consumed_flow_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "8e474716eeec741e8e3ba95cb7ac79ca80f69f6ae192bbd56e831cf87958d7b7",
+      "pages": 2
+    },
+    {
+      "path": "runs/midpoint_report_evaluation_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "409a629d1d9c41300ed62633fa5b2717398262f07093715e31c8d8bf88f5122b",
+      "pages": 2
+    },
+    {
+      "path": "runs/midpoint_report_delivery_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "66ada23c3fd2cea0d679a35d308e37b1f23124fc8f29a0fb3f1d5de13e5f68e0",
+      "pages": 2
+    },
+    {
+      "path": "runs/midpoint_report_biological_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "246971ccdbd7d162fd2a856278738f572dda5f16f1a73cc8a75e87287c5975ab",
+      "pages": 2
+    },
+    {
+      "path": "runs/midpoint_report_capabilities_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "ce622a1babe4d363c7c3bcfbb62052d24aa44f4ca7bf83952805ed639d2813e5",
+      "pages": 2
+    },
+    {
+      "path": "runs/midpoint_report_revision_20261026/BioGraph_Steward_Midpoint_Check_In_Revised.docx",
+      "sha256": "872a98ddc75ec048595e2c30d023b8b0fa867266a04796ffa0af3fbebf1afb3c"
+    },
+    {
+      "path": "runs/midpoint_report_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "8b93ce51f77973e3133af8b23b400d97942bbda1d813ea72c5f885cb806433c4"
+    }
+  ],
+  "narrative": {
+    "summary": "We now have an operational Pharos-based workbench linking scoped questions to evidence graphs, cited answers and auditable exports. Completed comparisons informed a task-specific ranking feature. The next scientific objective is to demonstrate a predictive benefit from Steward's evidence qualification.",
+    "accomplishments": [
+      "Built a guided Pharos/CIViC workbench with cited answers, evidence graphs and exports preserving the original graph and every edge decision. Clean installation and real-data replay are verified.",
+      "Integrated IntAct/IMEx with the official JAMI reader and PSI-MI standards. Added exact UniProt mappings in SSSOM format and record-level reuse checks; development replay preserves curated assay context through answers and exports.",
+      "Fixed PyKEEN R-GCN tests found no consistent GO/Reactome gain. On 2,676 assay-tested pairs, native STRING physical versus functional scores ranked detections with average precision 0.190 versus 0.173 and numeric coverage 72.4% versus 88.3%; an older-source control agreed.",
+      "Implemented optional STRING physical-association priority with saved source responses. The BRAF demonstration retains all 21 matching proteins, including seven without physical scores, and preserves evidence paths and review states.",
+      "Connected NVIDIA Nemotron through vLLM on Brev with scope checks and plan review. Deterministic construction works; autonomous task selection remains experimental. AWS credits are available."
+    ],
+    "blockers": [
+      "The main scientific gap is a demonstrated benefit from Steward's qualification beyond the same source information. Existing ranking comparisons use development data; upstream source reuse limits independent interpretation.",
+      "Checked Pharos interaction records lack detailed assay provenance, so we keep missing context and verified reuse explicit. The fresh IntAct assessment needs a tested runner before opening the selected studies. Independent user assessment also remains pending.",
+      "Please confirm the baseline graph version, expected export formats and treatment of undecided edges in the subgraph comparison. Brev access and AWS credits are available."
+    ],
+    "milestones": [
+      "Freeze and complete the fresh source-preservation assessment. Publish one repeatable biological case study with a clear claim-to-source trace.",
+      "Verify a source-supported change to the learner's actual graph inputs. Run a matched comparison only if that change is established; complete an independent user walkthrough.",
+      "Finalize the Pharos subgraph, complete edge-decision ledger, licensed code, evaluation results and reproducible demonstration in the organizers' required format."
+    ],
+    "assumptions": [
+      "Team name BioGraph Steward",
+      "Open Source track",
+      "Yellow Minor Risks status"
+    ]
+  },
+  "narrative_words": 339,
+  "evidence_references": {
+    "docs/evaluations/reactome_context_comparison_20261026_summary.json": "98b7efdd6c4abe5bc9c147854ec64a6025eb17f459611d5a12923d8d595fb10c",
+    "docs/evaluations/inmc_comparison_20261023_summary.json": "f35cbb171e2344f07289baffbc653afd2919622b4236e3d5979c18935e6caa5f",
+    "docs/evaluations/string_component_comparison_20261027_summary.json": "6b14ae808390d02db564588a8f9de76c45dc6af19d68ddf60b012940be988fd4",
+    "docs/evaluations/string_temporal_control_20261027_summary.json": "2d0bdff0e077d13bdbdb9fca50e1c7a3f51f614c50d3ed70cf11c589475d109e",
+    "docs/evaluations/physical_priority_product_check_20261027_summary.json": "9c1849982414972acfa4d00bee1076478e589cda728f4fc22e8337b3acccb269",
+    "docs/evaluations/intact_consumed_flow_20261027_summary.json": "8890c5dd1c3ecde8cd32c69d3e7c1ca1839a4fd8023693d14c09cf370717b287",
+    "docs/evaluations/guided_construction_live_20261027_summary.json": "fbcbb758bbe87b3327446726fab1d8b8f0206ce8ac1e216a1a1610fb8c7626de",
+    "docs/evaluations/clean_install_real_demo_20261026_summary.json": "8df0b72cb5a16b5bc1aa61599759bd7791b41150b00633a44891ba21d446d772",
+    "docs/evaluations/intact_fresh_reference_20261027_selection.json": "90e84d56fbbe043db2437a29df895608215d20de40c0b784c70db95140be5a98",
+    "docs/evaluations/next_biological_comparison_decision_20261027_summary.json": "b53e46234fe3e98d870ed8dc94a0551c0c00c1060294fe5e00d355cc7927f6f1",
+    "docs/evaluations/intact_fresh_readiness_20261027_summary.json": "42862d3a8acf122beae73839e4a7d6f3dec8754a359fa06259aebb6ccb12e2ae",
+    "runs/midpoint_demonstration_20261027/verification.json": "a3f334721795789126a6c8c57cd67c40b0d8cf4ced9a2b5127da4516d4fd1f9d"
+  },
+  "qa_receipt": {
+    "path": "runs/midpoint_report_strong_20261027/fidelity_qa.json",
+    "sha256": "b92ba829f2c555284dec1743cfff38e19e18cf491598829fa712b82e2335af7c"
+  },
+  "high_level_test_and_planner_counts_omitted": true,
+  "STRING_result_role": "retrospective_native_source_component_comparison_not_Steward_graph_gain",
+  "current_demonstration": "docs/evaluations/MIDPOINT_DEMONSTRATION_20261027.md",
+  "fresh_assessment_status": "readiness_review_complete_tested_frozen_fresh_execution_adapter_still_required",
+  "fresh_reference_bodies_unopened": true,
+  "next_prediction_decision": "no_fit_until_actual_source_supported_learner_input_contrast_verified",
+  "independent_biological_validation_claimed": false,
+  "independent_user_success_claimed": false,
+  "paid_compute_used": false,
+  "report_not_sent": true
+}

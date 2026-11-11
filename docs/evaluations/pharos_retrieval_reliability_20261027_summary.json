@@ -1,0 +1,491 @@
+{
+  "format": "biograph-steward.pharos-retrieval-reliability-summary.v1",
+  "created_at": "2026-10-27T19:53:06.378144+00:00",
+  "status": "passed",
+  "assessment_split": "consumed_retrieval_reliability",
+  "finding": "All eight consumed source observations completed the ordinary pipeline; one native retry recovered a real PPI-query timeout and three source-license queries reused the first validated response.",
+  "diagnosis": {
+    "original_failed_operation": "SourceLicenses",
+    "failed_batches": [
+      "0001",
+      "0002"
+    ],
+    "failed_before_target_or_PPI_retrieval": true,
+    "source_of_timeout": "unresolved: upstream/backend vs network, VPN or proxy",
+    "existing_capabilities": "Native PharosClient retries and verified success-only TTL cache; the original frozen fresh runner deliberately disabled both.",
+    "fix": "Reuse existing native retry/cache behavior in consumed engineering work; add per-attempt observability without another transport or retry layer."
+  },
+  "original_fresh_result": {
+    "report_sha256": "12b98cb5c3bcfd3b7b9e062c3470ebddb9ce3ffbbb80db306bfc3f3257d9a5ca",
+    "status": "failed",
+    "coverage": {
+      "numerator": 4,
+      "denominator": 8,
+      "value": 0.5,
+      "status": "evaluated"
+    },
+    "strict_fidelity": {
+      "numerator": 4,
+      "denominator": 8,
+      "value": 0.5,
+      "status": "evaluated"
+    }
+  },
+  "current_consumed_result": {
+    "coverage": {
+      "numerator": 8,
+      "denominator": 8,
+      "value": 1.0,
+      "status": "evaluated"
+    },
+    "strict_fidelity": {
+      "numerator": 8,
+      "denominator": 8,
+      "value": 1.0,
+      "status": "evaluated"
+    },
+    "conditional_fidelity": {
+      "numerator": 8,
+      "denominator": 8,
+      "value": 1.0,
+      "status": "evaluated"
+    },
+    "macro_strict_fidelity": 1.0,
+    "all_original_pairs_retained": true,
+    "eligible_observations": 8,
+    "exact_pairs": 4,
+    "per_publication": [
+      {
+        "publication_id": "pubmed:39938803",
+        "coverage": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0,
+          "status": "evaluated"
+        },
+        "strict_fidelity": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0,
+          "status": "evaluated"
+        }
+      },
+      {
+        "publication_id": "pubmed:40108405",
+        "coverage": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0,
+          "status": "evaluated"
+        },
+        "strict_fidelity": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0,
+          "status": "evaluated"
+        }
+      },
+      {
+        "publication_id": "pubmed:40752540",
+        "coverage": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0,
+          "status": "evaluated"
+        },
+        "strict_fidelity": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0,
+          "status": "evaluated"
+        }
+      },
+      {
+        "publication_id": "pubmed:40088780",
+        "coverage": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0,
+          "status": "evaluated"
+        },
+        "strict_fidelity": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0,
+          "status": "evaluated"
+        }
+      }
+    ],
+    "aggregate_checks": {
+      "performed": 368,
+      "passed": 368
+    },
+    "field_error_counts": {},
+    "terminal_failures": []
+  },
+  "transport": {
+    "logical_requests": 27,
+    "actual_attempts": 25,
+    "started_events": 25,
+    "finished_events": 25,
+    "retry_scheduled": 1,
+    "attempt_outcomes": {
+      "transport_succeeded": 24,
+      "retry_scheduled": 1
+    },
+    "validated_logical_responses": 27,
+    "cache_hits": 3,
+    "license_validated_responses": 4,
+    "license_cache_hits": 3
+  },
+  "policy": {
+    "endpoint": "https://pharos-api.ncats.io/graphql",
+    "timeout_seconds": 30,
+    "retries": 2,
+    "cache_ttl_hours": 24,
+    "cache_scope": "new empty directory shared only within this run",
+    "maximum_logical_requests": 28,
+    "maximum_logical_requests_per_pair": 7,
+    "maximum_actual_attempts": 84,
+    "maximum_actual_attempts_per_pair": 21,
+    "maximum_response_bytes": 25000000,
+    "attempt_accounting": "native urlopen invocations; urllib redirect hops are not separately counted",
+    "redirects": "existing native urllib behavior; no replacement transport",
+    "version_checks": "uncached before and after every cohort",
+    "source_eligible_rows": 8,
+    "exact_pairs": [
+      [
+        "A0A1B0GWG4",
+        "O14649"
+      ],
+      [
+        "O14656",
+        "Q8NFQ8"
+      ],
+      [
+        "O95863",
+        "P0C2W1"
+      ],
+      [
+        "P06400",
+        "Q01094"
+      ]
+    ]
+  },
+  "database_version": "pharos319",
+  "live_recovered_requests": [
+    {
+      "batch": 4,
+      "logical_request": 5,
+      "operation_name": "Scoped_ppis",
+      "failed_attempt": {
+        "error_type": "TimeoutError",
+        "error": "The read operation timed out",
+        "stage": "open",
+        "elapsed_seconds": 30.060706749965902,
+        "http_status": null,
+        "response_bytes": 0,
+        "retry_wait_seconds": 1
+      },
+      "successful_attempt": 2,
+      "successful_elapsed_seconds": 0.781093375000637
+    }
+  ],
+  "pair_results": [
+    {
+      "pair": [
+        "A0A1B0GWG4",
+        "O14649"
+      ],
+      "eligible_rows": 2,
+      "logical_requests": 6,
+      "actual_attempts": 6,
+      "offline_construction_replay_verified": true
+    },
+    {
+      "pair": [
+        "O14656",
+        "Q8NFQ8"
+      ],
+      "eligible_rows": 2,
+      "logical_requests": 7,
+      "actual_attempts": 6,
+      "offline_construction_replay_verified": true
+    },
+    {
+      "pair": [
+        "O95863",
+        "P0C2W1"
+      ],
+      "eligible_rows": 2,
+      "logical_requests": 7,
+      "actual_attempts": 6,
+      "offline_construction_replay_verified": true
+    },
+    {
+      "pair": [
+        "P06400",
+        "Q01094"
+      ],
+      "eligible_rows": 2,
+      "logical_requests": 7,
+      "actual_attempts": 7,
+      "offline_construction_replay_verified": true
+    }
+  ],
+  "empty_strata_unevaluated": [
+    {
+      "group": "negative_literal",
+      "stratum": "true"
+    },
+    {
+      "group": "negative_literal",
+      "stratum": "-"
+    },
+    {
+      "group": "expansion_stratum",
+      "stratum": "supplied"
+    },
+    {
+      "group": "detection_method_literal",
+      "stratum": "-"
+    },
+    {
+      "group": "interaction_type_literal",
+      "stratum": "-"
+    },
+    {
+      "group": "host_context",
+      "stratum": "all_missing"
+    },
+    {
+      "group": "host_context",
+      "stratum": "some_missing"
+    },
+    {
+      "group": "biological_roles",
+      "stratum": "all_missing"
+    },
+    {
+      "group": "biological_roles",
+      "stratum": "some_missing"
+    },
+    {
+      "group": "experimental_roles",
+      "stratum": "all_missing"
+    },
+    {
+      "group": "experimental_roles",
+      "stratum": "some_missing"
+    },
+    {
+      "group": "features_and_stoichiometry",
+      "stratum": "all_supplied"
+    }
+  ],
+  "pre_live_controls": {
+    "status": "review_and_controls_passed",
+    "tests_passed": 39,
+    "new_live_calls_at_review": 0,
+    "implementation_sha256": {
+      "biograph_steward/client.py": "cdadf97d4d994028ac863c188d2c4446ade1a65e231df8157dc484f8c7fc264d",
+      "scripts/run_pharos_reliability.py": "7ba7423c71b17a5d13e1e0aaa6618ea23858f4e42b2d787ca9560f59fb061023",
+      "tests/test_client_reliability.py": "69f04600fc18786173c144a92cdece3cd2be2a46f60750c60b1fc042950d7bb8",
+      "tests/test_pharos_reliability.py": "62750fcb238e075f60f6d8b07211cf88603e7d7e78f49afa3181c65ef977ed21"
+    }
+  },
+  "source_review": {
+    "path": "runs/pharos_retrieval_reliability_20261027/source_review.json",
+    "status": "sources_checked_before_fix",
+    "primary_sources": [
+      {
+        "url": "https://github.com/ncats/pharos-graphql-server/blob/3feb5ac7e450b3c6b767651f0fe1f39994085380/src/resolvers.js#L335-L356",
+        "finding": "dataSourceCounts resolver performs joins, global aggregate counts and grouping even when license fields alone are selected",
+        "deployed_commit_verified": false
+      },
+      {
+        "url": "https://github.com/ncats/pharos-graphql-server/issues?q=is%3Aissue+timeout",
+        "finding": "Bounded GitHubAPI repositorysearch returned0 matchingissues; not proof that no service issue exists",
+        "captured_response": "upstream/issue_search.json"
+      },
+      {
+        "url": "https://docs.python.org/3.12/library/urllib.request.html",
+        "finding": "Timeout applies to blockingoperations; system/environmentproxysettings can participate. An exception alone cannot distinguish endpoint from proxy/network latency."
+      },
+      {
+        "url": "https://urllib3.readthedocs.io/en/stable/reference/urllib3.util.html",
+        "finding": "Existing retryimplementations use bounded counts, backoff and attempt history. We reuse the project existingretryloop rather than introduce a second layer orHTTPdependency."
+      },
+      {
+        "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+        "finding": "Bounded retries at one layer can handle partial/transient failures; backoff avoids magnifyingload. A timeout does not locate the cause."
+      },
+      {
+        "url": "https://pypath.omnipathdb.org/_modules/pypath/inputs/pharos.html",
+        "finding": "Pharos client documents that large targetchunks can timeout; that remedy does not address these failures before any target/PPI request. No GPLcode copied."
+      }
+    ],
+    "unknowns": [
+      "Service/backend vs network/VPN/proxy cause",
+      "Exact deployed Pharos servercommit",
+      "Whether retries are needed on nextlive run"
+    ]
+  },
+  "independent_artifact_audit": {
+    "status": "passed",
+    "checks_performed": 214,
+    "checks_passed": 214,
+    "scope": "Independent post-execution artifact and accounting audit, with offline rerun of the existing raw/JAMI-field oracle. Not independent biological validation.",
+    "external_queries_performed": 0,
+    "runner_reexecuted": false,
+    "canonical_oracle_all_four_equal": true,
+    "receipt_path": "runs/pharos_reliability_consumed_20261027_attempt_01/independent_result_audit_v2.json",
+    "prior_receipt_preserved": true,
+    "audit_revision_reason": "Initial auditor compared Python tuples directly with JSON-decoded arrays; exact canonical JSON comparison retained every field and changed no assessment result."
+  },
+  "historical_preservation": {
+    "manifest_path": "runs/pharos_retrieval_reliability_20261027/preservation_before.json",
+    "files_before": 646,
+    "files_verified_after": 646,
+    "changed_paths": [],
+    "original_fresh_result_unchanged": true
+  },
+  "claim_boundaries": {
+    "consumed_data_engineering_only": true,
+    "fresh_validation": false,
+    "scientific_accuracy_measured": false,
+    "independent_biological_validation_performed": false,
+    "biological_prediction_improvement_demonstrated": false,
+    "causal_effect_on_long_term_reliability_established": false,
+    "study_independence": "unverified",
+    "negative_true_and_supplied_expansion_strata": "unevaluated_empty_stratum"
+  },
+  "new_IntAct_requests": 0,
+  "Java_reader_runs": 0,
+  "model_calls": 0,
+  "GPU_runs": 0,
+  "next_step_boundary": "Keep the original fresh result unchanged; use ordinary verified retrieval/replay for future work. Biological improvement still requires an established evidence/input contrast and a separate evaluation boundary.",
+  "artifact_bindings": [
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/report.json",
+      "sha256": "690817519f16a3f1d417ab1ee8754f04680da7a7c34e3ca2ce58955e3d16103c",
+      "bytes": 15402
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/started.json",
+      "sha256": "7b987f38c48d0e106f25981e6678db7bfa725906d430ef89f00fbbc3f65b7cae",
+      "bytes": 1799
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/index.html",
+      "sha256": "a4026d54214901ec798eceb34770b172facf009646b9052bbee6df50dacd2a28",
+      "bytes": 10782
+    },
+    {
+      "path": "docs/evaluations/PHAROS_RETRIEVAL_RELIABILITY_20261027.md",
+      "sha256": "884a5941598f5967c3a0e36ad3e3abd038b581daf4ca8b2457e664c48d495442",
+      "bytes": 7128
+    },
+    {
+      "path": "runs/pharos_retrieval_reliability_20261027/source_review.json",
+      "sha256": "faebe9e1cb5d4ff4da0f10015715facad2bc0ae11517cc3b0eac2011a33db55c",
+      "bytes": 3105
+    },
+    {
+      "path": "runs/pharos_retrieval_reliability_20261027/pre_live_review.json",
+      "sha256": "71a329ab14b8e2954f5579aa20c7baceaf61b648011ca8592787888e27b241bc",
+      "bytes": 1485
+    },
+    {
+      "path": "runs/pharos_retrieval_reliability_20261027/preservation_before.json",
+      "sha256": "ff7e2a3c2af3f2b0e7b25d57bcde5791106a6b883f4eca0bd1e72d130079bea9",
+      "bytes": 109081
+    },
+    {
+      "path": "runs/pharos_retrieval_reliability_20261027/root_postcheck.json",
+      "sha256": "42f61dc3b4b6f97cd4a75949a2e3f50a83fee0c7e0a31662a488bbcea051576a",
+      "bytes": 828
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/independent_result_audit.json",
+      "sha256": "ce6af7b0d8a0ccf1b27420a8cb320da757a323ad6248cfcf8a8d9eb1d16a19fb",
+      "bytes": 22818
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/independent_result_audit_v2.json",
+      "sha256": "5eb071f3843367e742b119c2a78e825e888e14c3c31b0c042096822b15a91d15",
+      "bytes": 37776
+    },
+    {
+      "path": "runs/intact_fresh_assessment_20261027/execution/report.json",
+      "sha256": "12b98cb5c3bcfd3b7b9e062c3470ebddb9ce3ffbbb80db306bfc3f3257d9a5ca",
+      "bytes": 31443387
+    },
+    {
+      "path": "runs/intact_fresh_assessment_20261027/execution/publication/publication.json",
+      "sha256": "5ec96db501fe0b0f51bf3fadbe574c67d75d1c686b615e376b411fc9757bd769",
+      "bytes": 28565
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0001/http_attempts.jsonl",
+      "sha256": "d84dd7b0b6c375436b4a0a033d0d34fbffbe5dc7ea7f5c3a78e104d996b8a324",
+      "bytes": 5742
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0001/logical_requests.jsonl",
+      "sha256": "b48c1539a4df7dafcdedc28871208cf989d62e9502e3c8f1727685811275bb11",
+      "bytes": 43588
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0001/evaluation.json",
+      "sha256": "2a7d56ca34fa7818ecf1a5c44fa5441d7b884539a92f852288fa9aecd03f054e",
+      "bytes": 4379992
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0002/http_attempts.jsonl",
+      "sha256": "841e7748eb71ea6c56de896ec5326ebcc0f69a91d67e33fefe3dce57eedfe2df",
+      "bytes": 5744
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0002/logical_requests.jsonl",
+      "sha256": "611b20cbf09d09c0ad18b3422656d2a8fb9b5a588dca5fb15909bc20c97654b7",
+      "bytes": 105809
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0002/evaluation.json",
+      "sha256": "b663030d609b68f7928ed17b79ef82a331baf328512806801059c7bc0baa82fa",
+      "bytes": 5342292
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0003/http_attempts.jsonl",
+      "sha256": "3f02f2f31a89045f6fca74fa81bade347b07ca4d563157423d89ba7c9f29eb15",
+      "bytes": 5755
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0003/logical_requests.jsonl",
+      "sha256": "3dcd3f310a52be3bba077c532d8bfec1929a557e45bda8651680b15ced0bace7",
+      "bytes": 155987
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0003/evaluation.json",
+      "sha256": "1709fa3bc5f555e5a4585dba02ca57b086be17ee59c750e90215f5a0d5bfac6c",
+      "bytes": 4824284
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0004/http_attempts.jsonl",
+      "sha256": "1f06979ad3dc7f947ec8187890b5e5b0c8f792d0ed080b87af3ca3f6abafff35",
+      "bytes": 6737
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0004/logical_requests.jsonl",
+      "sha256": "dd2ce5b5213db6ddd9bc592b33e0b8212964293c849347c1d6a04f8cf2dd711d",
+      "bytes": 219607
+    },
+    {
+      "path": "runs/pharos_reliability_consumed_20261027_attempt_01/batch_0004/evaluation.json",
+      "sha256": "498e2dc9abdfc11a574ca8428f84800cf4accde40699b6323ad9e7e52a7ffc9b",
+      "bytes": 24503016
+    }
+  ],
+  "content_sha256": "c81c7b561761ebf4d6e863293dc7274ba8c6bca41975510a5bd501e1c1687718"
+}

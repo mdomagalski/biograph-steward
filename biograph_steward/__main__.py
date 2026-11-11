@@ -72,6 +72,25 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("evidence-overlap-verify", help="Verify a saved record-level overlap report and its source bindings offline.")
     p.add_argument("--report", type=Path, required=True, help="Published overlap report directory.")
+    p = sub.add_parser("assay-source-reuse", help="Copy a saved assay workspace and expose its existing verified provider source-link trace offline.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--trace", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("assay-source-reuse-verify", help="Verify a portable source-reuse supplement without changing graph or review decisions.")
+    p.add_argument("--run", type=Path, required=True)
+    p = sub.add_parser("pharos-pair-details", help="Capture the sole saved overlap pair through official Pharos details; three uncached requests.")
+    p.add_argument("--overlap", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("pharos400-intake", help="Download the official 400 identity table once and retain only exact requested protein rows and source receipts.")
+    p.add_argument("--accessions", nargs="+", required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("pharos-source-update", help="Publish a separate offline overlap supplement using saved pair details and scoped 400 identity intake.")
+    p.add_argument("--overlap", type=Path, required=True)
+    p.add_argument("--details", type=Path, required=True)
+    p.add_argument("--identities", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("pharos-source-update-verify", help="Replay a saved source supplement offline without changing the original graph.")
+    p.add_argument("--report", type=Path, required=True)
     p = sub.add_parser("standards-resources", help="Download hash-pinned official Biolink resources into a new folder.")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("standards-export", help="Publish a bounded KGX projection and actual upstream validation audit; requires optional audit environment.")
@@ -217,6 +236,16 @@ def main(argv: list[str] | None = None) -> int:
             save_answer(answer, args.out)
             print(json.dumps({'output': str(args.out.resolve()), 'overview': answer['overview']}, indent=2))
             return 0
+        if args.command in {"assay-source-reuse", "assay-source-reuse-verify"}:
+            from .assay_source_reuse import publish_reuse_workspace, read_reuse
+            output = args.out if args.command == "assay-source-reuse" else args.run
+            result = (publish_reuse_workspace(args.run, args.trace, output)
+                      if args.command == "assay-source-reuse" else read_reuse(output))
+            if result is None:
+                raise ValueError("This workspace has no source-reuse supplement.")
+            print(json.dumps({"operation": args.command, "summary": result["summary"],
+                "report": str((output / "source_reuse.json").resolve())}, indent=2))
+            return 0
         if args.command in {"evidence-overlap", "evidence-overlap-verify"}:
             from .evidence_overlap import publish_overlap, verify_overlap
             output = args.out if args.command == "evidence-overlap" else args.report
@@ -227,6 +256,26 @@ def main(argv: list[str] | None = None) -> int:
             if args.command == "evidence-overlap-verify":
                 summary["status"] = "evidence_overlap_verified"
             print(json.dumps(summary, indent=2))
+            return 0
+        if args.command == "pharos-pair-details":
+            from .pharos_source_update import capture_pair_details
+            result = capture_pair_details(args.overlap, args.out)
+            print(json.dumps({"status": result["status"], "database_version": result["db_version_before"],
+                "receipt": str((args.out / "receipt.json").resolve())}, indent=2))
+            return 0
+        if args.command == "pharos400-intake":
+            from .pharos400_identity import capture_intake
+            result = capture_intake(args.accessions, args.out)
+            print(json.dumps({"source_version": "pharos400", "selected_rows": len(result["subset"]["selected_rows"]),
+                "intake": str(args.out.resolve())}, indent=2))
+            return 0
+        if args.command in {"pharos-source-update", "pharos-source-update-verify"}:
+            from .pharos_source_update import publish_source_update, verify_source_update
+            result = (publish_source_update(args.overlap, args.details, args.identities, args.out)
+                      if args.command == "pharos-source-update" else verify_source_update(args.report))
+            output = args.out if args.command == "pharos-source-update" else args.report
+            print(json.dumps({"operation": args.command, "summary": result["summary"],
+                "report": str((output / "report.json").resolve())}, indent=2))
             return 0
         if args.command == "standards-resources":
             from .standards_validation import prepare_resources

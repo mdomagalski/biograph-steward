@@ -87,7 +87,7 @@ def _tuple_tree(value):
     return tuple(_tuple_tree(item) for item in value) if isinstance(value,(list,tuple)) else value
 
 
-def provenance_audit(xml_by_study, records, consumed):
+def provenance_audit(xml_by_study, records, consumed, *, identity_projector=None):
     """Audit exact exposure and conservatively stop on qualified lineage ambiguity.
 
     Generic citations, matching proteins and IMEx registrations do not imply
@@ -113,7 +113,7 @@ def provenance_audit(xml_by_study, records, consumed):
         for record in objects:
             evidence = record['evidence']
             ids = [xref_tuple(x) for x in references(evidence)]
-            exact_evidence_overlap = sorted(xml_evidence_ids(evidence)&evidence_ids)
+            exact_evidence_overlap = sorted((identity_projector or xml_evidence_ids)(evidence)&evidence_ids)
             if exact_evidence_overlap: touched.add(pmid)
             experiments = evidence.get('experiments') or []
             evidence_groups.append({'publication_id':pmid,'evidence_sequence':record['evidence_sequence'],

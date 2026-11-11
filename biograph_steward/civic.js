@@ -52,6 +52,13 @@ function bindCivicAnswer(answer,id){
   $('civicLimit').value=answer.plan.max_results;$('civicPaths').value=answer.plan.max_paths_per_profile;
   history.replaceState(null,'','?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id));renderCivicQuestion();updateWorkNavigation();
 }
+function civicRelatedLiteratureLink(pmid){
+  if(typeof pmid!=='string'||!(/^[1-9]\d*$/).test(pmid))return null;
+  const link=el('a','Explore related literature · Linked Discoveries');
+  link.href='https://linkeddiscoveries.ncbi.nlm.nih.gov/'+pmid+'/';link.target='_blank';link.rel='noopener noreferrer';
+  link.title='Related publications are discovery leads, not independent confirmation.';
+  return link;
+}
 function renderCivicContexts(citation){
   const box=el('div',undefined,'source-context'),context=citation.study_context;
   if(!context){box.append(el('p','This saved answer predates the source-context display. Run the question again to include it.','small'));return box;}
@@ -64,7 +71,9 @@ function renderCivicContexts(citation){
     const details=el('details');details.append(el('summary','Source description and references — '+record.evidence_id),
       el('p','CIViC therapy list: '+record.therapy_label),el('p','Source description (as reported): '+record.description));
     const source=el('a','Open CIViC record');source.href=record.evidence_url;source.target='_blank';source.rel='noopener noreferrer';details.append(source);
-    if(record.publication_url){const p=el('p'),link=el('a',record.source_reference);link.href=record.publication_url;link.target='_blank';link.rel='noopener noreferrer';p.append(link);details.append(p);}
+    if(record.publication_url){const p=el('p'),link=el('a',record.source_reference);link.href=record.publication_url;link.target='_blank';link.rel='noopener noreferrer';p.append(link);
+      const reference=typeof record.source_reference==='string'&&/^PMID:([1-9]\d*)$/.exec(record.source_reference),related=civicRelatedLiteratureLink(reference?reference[1]:null);
+      if(related)p.append(el('span',' · '),related);details.append(p);}
     details.append(el('p','Record locator: '+record.record_locators.join('; '),'small'));card.append(details);box.append(card);
   }
   const note=el('p',context.context_note+' ','small'),levels=el('a','CIViC level definitions');levels.href=context.level_definitions_url;levels.target='_blank';levels.rel='noopener noreferrer';note.append(levels);box.append(note);
@@ -150,12 +159,13 @@ function inspectCivicCitation(id){
   box.append(el('p','Conditions: '+Object.entries(c.qualifiers).filter(([,v])=>v!==null).map(([k,v])=>k+' = '+v).join('; '),'small'));
   const full=el('button','Open assertion and record a review','secondary');full.onclick=()=>{
     $('inspectionDetails').open=true;$('evidenceView').value='inspection';$('assertionFamily').value=c.kind;$('assertionProtein').value='all';tablePage=0;activeTab='assertions';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab==='assertions'));render();inspectAssertion(c.assertion_id);
-    const back=el('button','Back to therapy question','secondary');back.onclick=()=>$('civicQuestion').scrollIntoView({block:'start'});$('inspector').prepend(back);$('inspector').scrollIntoView({block:'start'});
+    const back=el('button','Back to therapy question','secondary');back.onclick=()=>{const target=$('civicQuestion');if(typeof revealWorkspaceTarget==='function')revealWorkspaceTarget(target);target.scrollIntoView({block:'start'});};$('inspector').prepend(back);$('inspector').scrollIntoView({block:'start'});
   };box.append(full,renderCivicContexts(c));
   for(const e of c.evidence_records){const r=e.evidence_record;box.append(el('h4','CIViC evidence '+r.id+' | source '+r.status+' | level '+r.evidenceLevel),el('p','Molecular profile: '+r.molecularProfile.name+' | expression: '+r.molecularProfile.rawName),el('p','Disease: '+r.disease.name+' | DOID:'+r.disease.doid),el('p','CIViC therapy list: '+r.therapies.map(t=>t.name).join(r.therapyInteractionType==='SUBSTITUTES'?' or ':r.therapyInteractionType==='SEQUENTIAL'?' / ':' + ')+' | '+(r.therapyInteractionType||'one drug listed; regimen not established')),
       el('p','Source citation: '+(r.source.citation||r.source.title||r.source.citationId)));
     const link=el('a','Open CIViC source record');link.href='https://civicdb.org/evidence/'+r.id;link.target='_blank';link.rel='noopener noreferrer';box.append(link);
-    if(r.source.sourceType==='PUBMED'&&/^\d+$/.test(r.source.citationId)){const p=el('p'),a=el('a','Open PubMed '+r.source.citationId);a.href='https://pubmed.ncbi.nlm.nih.gov/'+r.source.citationId+'/';a.target='_blank';a.rel='noopener noreferrer';p.append(a);box.append(p);}
+    if(r.source.sourceType==='PUBMED'&&/^\d+$/.test(r.source.citationId)){const p=el('p'),a=el('a','Open PubMed '+r.source.citationId);a.href='https://pubmed.ncbi.nlm.nih.gov/'+r.source.citationId+'/';a.target='_blank';a.rel='noopener noreferrer';p.append(a);
+      const related=civicRelatedLiteratureLink(r.source.citationId);if(related)p.append(el('span',' · '),related);box.append(p);}
     box.append(evidenceCard(e));
   }
   const overlap=el('details');overlap.append(el('summary','Pharos overlap and source trace'),el('pre',JSON.stringify({overlap:c.overlap,assertion_id:c.assertion_id,revision:c.revision,civic_snapshot_sha256:civicAnswer.civic_snapshot_sha256,pharos_snapshot_sha256:civicAnswer.snapshot_sha256},null,2)));box.append(overlap);box.scrollIntoView({block:'nearest'});

@@ -1,0 +1,82 @@
+{
+  "format": "biograph-steward.release-candidate-summary.v1",
+  "date": "2026-11-11",
+  "status": "offline_install_start_and_real_export_passed",
+  "package_version": "0.8.0",
+  "installed_gate": {
+    "receipt": "runs/release_candidate_20261111/install_gate_01/receipt.json",
+    "status": "passed",
+    "checks": [
+      {
+        "check": "offline_pinned_wheel_build",
+        "status": "passed"
+      },
+      {
+        "check": "installed_new_modules_and_all_package_assets_match_source_outside_checkout",
+        "status": "passed"
+      },
+      {
+        "check": "synthetic_demo_to_cited_candidate_question",
+        "status": "passed"
+      },
+      {
+        "check": "graph_baseline_retained_graph_and_exhaustive_abstain_ledger",
+        "status": "passed"
+      },
+      {
+        "check": "installed_service_start_health_auth_origin_and_saved_question",
+        "status": "passed"
+      }
+    ],
+    "service_checks": [
+      {
+        "check": "health",
+        "status": "passed"
+      },
+      {
+        "check": "authentication",
+        "status": "passed"
+      },
+      {
+        "check": "browser_origin_guard",
+        "status": "passed"
+      },
+      {
+        "check": "synthetic_source",
+        "status": "passed"
+      },
+      {
+        "check": "traceable_deterministic_question",
+        "status": "passed"
+      },
+      {
+        "check": "source_unchanged",
+        "status": "passed"
+      }
+    ],
+    "wheel_sha256": "314652eb7e53dd604ee0d57b65f922d2a55cabdbd808debae04fe1934e04dd31",
+    "source_files_match": true
+  },
+  "real_export": {
+    "receipt": "runs/submission_release_20261111/verification.json",
+    "status": "passed",
+    "package": "runs/submission_release_20261111/submission_handoff.zip",
+    "nodes": 2,
+    "edges": 2,
+    "abstentions": 2,
+    "original_source_files_unchanged": 62,
+    "verifier_checks_passed": 12,
+    "sha256": "56dabcb3c5531edda5ce922df70b1d92a49abebc40f6e5d458a3322fe713790b"
+  },
+  "models_called": 0,
+  "external_source_requests": 0,
+  "paid_compute_used": false,
+  "scientific_accuracy_measured": false,
+  "new_biological_gain_claimed": false,
+  "remaining_release_work": [
+    "GitHub publication of the current candidate",
+    "Final recorded walkthrough and presentation",
+    "Organizer handoff/access and artifact inventory"
+  ],
+  "scope": "Release delivery uses existing consumed sources and existing verifiers, not a new scientific assessment."
+}

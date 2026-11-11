@@ -33,7 +33,7 @@ function navigateWork(step){
   const mode=$('questionWorkflow').value,therapy=mode==='therapy';let target;
   if(mode==='assay'){
     target=$(step==='question'?'assayQuestionControls':step==='graph'?'assayGraphTitle':step==='sources'?'assayAnswerRecords':'assayAnswerTitle');
-    if(target){target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start'});}
+    if(target){if(typeof revealWorkspaceTarget==='function')revealWorkspaceTarget(target);target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start'});}
     return;
   }
   if(step==='question')target=$(therapy?'civicQuestion':'guidedQuestion');
@@ -47,6 +47,7 @@ function navigateWork(step){
     else{if(!$('questionCitation').children.length&&citationId)inspectQuestionCitation(citationId);target=$('questionCitation');}
   }
   if(target){
+    if(typeof revealWorkspaceTarget==='function')revealWorkspaceTarget(target);
     for(const name of ['Question','Graph','Answer','Sources']){const button=$('nav'+name),active=name.toLowerCase()===step;button.classList.toggle('secondary',!active);if(active)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');}
     target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start'});
   }

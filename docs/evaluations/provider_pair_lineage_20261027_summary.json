@@ -1,0 +1,174 @@
+{
+  "format": "biograph-steward.provider-pair-lineage-development-summary.v1",
+  "created_at": "2026-10-27T14:04:50.832691+00:00",
+  "scope": {
+    "pair": [
+      "Q7RTX0",
+      "Q8TE23"
+    ],
+    "taxon": 9606,
+    "existing_intact_study": "PMID:40555359",
+    "assessment": "Consumed development case only"
+  },
+  "confirmed_shared_record": {
+    "status": "confirmed_user_assisted_exact_curated_record",
+    "source_record_id": "imex:IM-30398-1",
+    "identity_aliases": [
+      "imex:IM-30398-1",
+      "intact:EBI-67107463"
+    ],
+    "observation_id": "intact.observation:a754cd5fc65a7eff30279fa1",
+    "publication": "PMID:40555359",
+    "source_experiment_ids": [
+      "intact:EBI-67107458"
+    ],
+    "source_experiment_identity_exposed_by_string_api": false,
+    "string_link_provenance": {
+      "recorded_at": "2026-10-27T13:58:25.733452+00:00",
+      "observation_provenance": "User copied the source link from the STRING Lab Experiments row naming TAS1R2/TAS1R3 and 3D electron microscopy. Assistant could not inspect the browser DOM.",
+      "as_supplied": "ebi.ac.uk/intact/query/IM-30398-1",
+      "source_namespace": "imex",
+      "source_record_id": "IM-30398-1",
+      "source_record_curie": "imex:IM-30398-1",
+      "pair_display_labels": [
+        "TAS1R2",
+        "TAS1R3"
+      ],
+      "method_label": "3D electron microscopy",
+      "method_mi_id_from_existing_source": "MI:0410",
+      "automated_string_api_exposes_this_record_link": false,
+      "automated_intact_page_open": "Web tool could not load the client application; no new source body captured. Existing official typed source is used for identity verification.",
+      "interpretation": "Exact curated record reuse in current STRING confirmed with user-assisted viewer observation and existing source identity aliases. Historical Pharos319 import and second attached record remain unresolved."
+    },
+    "official_source_reader": {
+      "file": "/Users/42573/biograph-steward-pharos/runs/intact_consumed_flow_20261027_attempt_01/execution/batch_0001/attached/assay_source/provenance/40555359_reader.jsonl",
+      "sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "line": 1,
+      "source_xml_locator": {
+        "line": 385,
+        "column": 13
+      }
+    },
+    "identity_qualification": "IMEx MI:0662 imex-primary; IntAct MI:0356 identity in the same preserved official-reader evidence object.",
+    "independent_additional_record_over_current_string": false,
+    "historical_pharos_record_inclusion_verified": false
+  },
+  "reactome": {
+    "version": "97",
+    "base_complex": "R-HSA-444621.2",
+    "total_pair_specific_contexts": 5,
+    "additional_reusing_contexts": 4,
+    "resource_reuse_in_string": "User-observed explicit Reactome source labels",
+    "exact_record_ids_from_string_view": null,
+    "direct_reaction_reference_pmids": [
+      "11917125",
+      "17506496",
+      "21795555",
+      "24360415",
+      "25853419",
+      "26377607"
+    ],
+    "publication_comparison_scope": "Direct literatureReference fields of four captured pair-specific reactions only; excludes summation references and unexpanded generic contexts."
+  },
+  "second_intact_record_reuse": null,
+  "historical_pharos": {
+    "source_release_label": "pharos319",
+    "provider_import_release": null,
+    "current_provider_records_attested_as_original_inputs": false,
+    "reason": "Current upstream views and historical loader recipes are not the deployed source-file/build manifest."
+  },
+  "verified_independent_evidence_count": null,
+  "scientific_accuracy_or_predictive_gain_measured": false,
+  "original_graph_modified": false,
+  "verification": {
+    "exact_offline_replay": true,
+    "all_six_original_input_directory_inventories_unchanged": true,
+    "provider_capture_inputs_unchanged": true,
+    "user_link_alias_independently_verified_in_raw_xml_typed_reader_and_mitab": true,
+    "independent_software_source_review_completed": true,
+    "independent_biological_validation": false,
+    "visual_browser_inspection_by_assistant": false,
+    "user_assisted_source_link_observation": true,
+    "models_or_gpu_used": false
+  },
+  "limitations": [
+    "Reactome resource reuse and one exact IntAct record reuse are user-assisted viewer observations. The automated STRING exports did not expose these original record links.",
+    "The second attached IntAct record IM-30398-5 was not identified in the inspected viewer excerpt. Missing observation does not establish nonreuse.",
+    "Both visible STRING database lists were truncated. No absence or complete source count can be inferred.",
+    "Transferred animal evidence is distinct from human evidence and is not an additional human experiment.",
+    "Different publication IDs do not certify independent experiments.",
+    "Current Reactome97/STRING12.5 cannot relabel or certify the historical Pharos319 imports.",
+    "The preserved Reactome subreport says five complexes reuse the base; the precise count is one base plus four reusers, five contexts total.",
+    "The browser connection failed after the user completed the site human check. User observations are labelled separately from HTTP captures."
+  ],
+  "artifacts": {
+    "runs/provider_pair_lineage_20261027_attempt_01/report.json": {
+      "sha256": "ccd397efac43f58761967d8cc15782c3118e463edb05bb2a10e90a2528928d66",
+      "bytes": 23958
+    },
+    "runs/provider_pair_lineage_20261027_attempt_01/index.html": {
+      "sha256": "50de4d640a40748453ffe0a255d869dfae66668408dfe66c6a0bbbab22d7e6da",
+      "bytes": 8228
+    },
+    "runs/provider_pair_lineage_20261027_attempt_01/record_reuse.jsonl": {
+      "sha256": "938144e723d5e583373d71d31dbfb249304738495f5ebf40b8d58a2a3a2cb553",
+      "bytes": 679
+    },
+    "runs/provider_pair_lineage_20261027_attempt_01/manifest.json": {
+      "sha256": "5fa89a705b4c8cf30b9d8b605d31cd0e2f2fec244e26b0e270ef7ea0f10920bf",
+      "bytes": 526
+    },
+    "runs/provider_pair_lineage_20261027_attempt_01/publish.py": {
+      "sha256": "0651e80e33f85f30d1025f81b1a59ec081d07af4889314c62b61120f385d027c",
+      "bytes": 22083
+    },
+    "runs/provider_pair_lineage_review_20261027/report.json": {
+      "sha256": "35f479ea8c6b8207904628b08aa5d24c47e8dd40c15a9ee89f5da90666dda537",
+      "bytes": 36980
+    },
+    "runs/provider_pair_lineage_review_20261027/user_link_review_01.json": {
+      "sha256": "8455ec64b1e288ed4b6886c23dfc3c9e7e7eb2f6e9b1716b385a1d676834708f",
+      "bytes": 4478
+    },
+    "runs/provider_pair_lineage_review_20261027/integrated_review_01.json": {
+      "sha256": "6659dc7246571edba3b998a8c41cd7104fe5ff07799b3ce34940025ac01d9045",
+      "bytes": 6530
+    },
+    "runs/provider_pair_lineage_20261027_preparation/scope.json": {
+      "sha256": "bd91454fb1cf48655bafd0ff5f3cdeabc8781b2c03076567d17700a79e4618a0",
+      "bytes": 11585
+    },
+    "runs/provider_pair_lineage_20261027_preparation/browser_access.json": {
+      "sha256": "9bc247631912fa28406a0b60c8c7e9da757e0cc4a197d44f46b486db462ca419",
+      "bytes": 703
+    },
+    "runs/provider_pair_lineage_20261027_preparation/user_edge_popup.json": {
+      "sha256": "93d1fa8f110f042cbc7e28809c33a93e0096864c96eb51bf818fa9737aa0e01d",
+      "bytes": 816
+    },
+    "runs/provider_pair_lineage_20261027_preparation/user_database_view.txt": {
+      "sha256": "30bcd3492c18937e0986a73e12b05cb896479a2cac0674824d2c3bb836427c4d",
+      "bytes": 3760
+    },
+    "runs/provider_pair_lineage_20261027_preparation/user_database_view.json": {
+      "sha256": "a502d467b5296040392a061ae5b5358090fda639918d0d633cfb3da41476c7eb",
+      "bytes": 1163
+    },
+    "runs/provider_pair_lineage_20261027_preparation/user_experimental_view.json": {
+      "sha256": "78cbf52b4e9452fa08cffb1cb3aa618c0f565fedb600d33aa6f3a794a8baaf7b",
+      "bytes": 1135
+    },
+    "runs/provider_pair_lineage_20261027_preparation/user_intact_record_link.json": {
+      "sha256": "e33beb9ca789ba22169a7e2e7d79b787d754c9ea9d9a45d178dfbfe994dbadf6",
+      "bytes": 1026
+    },
+    "runs/reactome_pair_lineage_20261027_attempt_01/report.json": {
+      "sha256": "59ce78d430adc6fdd7402e2baa9abf6c4f30ce16ef1d0c607ff0c44a37d22504",
+      "bytes": 83222
+    },
+    "runs/string_pair_lineage_20261027_attempt_01/report.json": {
+      "sha256": "1aadb1ed23a6c3b71f2eb44b9381e955263ba3d8a918299e928a554ee59c9066",
+      "bytes": 30623
+    }
+  }
+}

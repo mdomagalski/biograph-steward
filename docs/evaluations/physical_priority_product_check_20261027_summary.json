@@ -1,0 +1,270 @@
+{
+  "format": "biograph-steward.physical-priority-product-check.v1",
+  "checked_at": "2026-10-27T18:08:42.431902+00:00",
+  "source_run": "crc_civic_final_20261015",
+  "source_pharos_release": "pharos319",
+  "source_snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+  "source_graph_basis_sha256": "363cb975d6110115fe5e4aa6a77d41308b179d12dfe93b7362e61e6dee69a8bd",
+  "source_files_unchanged": true,
+  "question_id": "question_20261027T180832Z_781f7543",
+  "answer_sha256": "ef642d8fbb020a69c7c2931b4e38e1a3acaf2a90bc827cddca7a8e9e2f0f2a4f",
+  "packet_sha256": "c8bb703eb8ca8d4af812aa15d40aebfab3907ef64ad5bd0a1666d9682a2d8595",
+  "source_release": "12.5",
+  "retrieved_at": "2026-10-27T18:08:32.004703+00:00",
+  "matching_proteins": 21,
+  "ranking": {
+    "source_release": "12.5",
+    "retrieved_at": "2026-10-27T18:08:32.004703+00:00",
+    "matching_proteins": 21,
+    "numeric_scored": 14,
+    "unranked_proteins": 7,
+    "states": {
+      "numeric": 14,
+      "physical_not_returned_under_profile": 7
+    },
+    "packet_sha256": "c8bb703eb8ca8d4af812aa15d40aebfab3907ef64ad5bd0a1666d9682a2d8595",
+    "ordering": "Native physical score descending; alphabetical ties; unranked matches last."
+  },
+  "alphabetical_order": [
+    "AKT1",
+    "ARAF",
+    "CAMK2B",
+    "CTNNB1",
+    "EGFR",
+    "FBXW7",
+    "HRAS",
+    "KRAS",
+    "MAP2K1",
+    "MAP2K7",
+    "MLH1",
+    "NRAS",
+    "NTRK1",
+    "PIK3CA",
+    "PRKCA",
+    "PRKCB",
+    "PRKCH",
+    "PRKCQ",
+    "PTEN",
+    "RPS6KA2",
+    "TP53"
+  ],
+  "physical_order": [
+    {
+      "symbol": "ARAF",
+      "protein_id": "UniProtKB:P10398",
+      "state": "numeric",
+      "physical_score": 0.999,
+      "functional_score": 0.999,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "HRAS",
+      "protein_id": "UniProtKB:P01112",
+      "state": "numeric",
+      "physical_score": 0.999,
+      "functional_score": 0.999,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "KRAS",
+      "protein_id": "UniProtKB:P01116",
+      "state": "numeric",
+      "physical_score": 0.999,
+      "functional_score": 0.999,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "MAP2K1",
+      "protein_id": "UniProtKB:Q02750",
+      "state": "numeric",
+      "physical_score": 0.999,
+      "functional_score": 0.999,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "NRAS",
+      "protein_id": "UniProtKB:P01111",
+      "state": "numeric",
+      "physical_score": 0.999,
+      "functional_score": 0.999,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "AKT1",
+      "protein_id": "UniProtKB:P31749",
+      "state": "numeric",
+      "physical_score": 0.966,
+      "functional_score": 0.983,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "MAP2K7",
+      "protein_id": "UniProtKB:O14733",
+      "state": "numeric",
+      "physical_score": 0.802,
+      "functional_score": 0.825,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "FBXW7",
+      "protein_id": "UniProtKB:Q969H0",
+      "state": "numeric",
+      "physical_score": 0.627,
+      "functional_score": 0.884,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "NTRK1",
+      "protein_id": "UniProtKB:P04629",
+      "state": "numeric",
+      "physical_score": 0.5,
+      "functional_score": 0.683,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "PRKCA",
+      "protein_id": "UniProtKB:P17252",
+      "state": "numeric",
+      "physical_score": 0.456,
+      "functional_score": 0.952,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "RPS6KA2",
+      "protein_id": "UniProtKB:Q15349",
+      "state": "numeric",
+      "physical_score": 0.456,
+      "functional_score": 0.604,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "PTEN",
+      "protein_id": "UniProtKB:P60484",
+      "state": "numeric",
+      "physical_score": 0.351,
+      "functional_score": 0.942,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "TP53",
+      "protein_id": "UniProtKB:P04637",
+      "state": "numeric",
+      "physical_score": 0.297,
+      "functional_score": 0.915,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "MLH1",
+      "protein_id": "UniProtKB:P40692",
+      "state": "numeric",
+      "physical_score": 0.18,
+      "functional_score": 0.882,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "CAMK2B",
+      "protein_id": "UniProtKB:Q13554",
+      "state": "physical_not_returned_under_profile",
+      "physical_score": null,
+      "functional_score": 0.449,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "CTNNB1",
+      "protein_id": "UniProtKB:P35222",
+      "state": "physical_not_returned_under_profile",
+      "physical_score": null,
+      "functional_score": 0.763,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "EGFR",
+      "protein_id": "UniProtKB:P00533",
+      "state": "physical_not_returned_under_profile",
+      "physical_score": null,
+      "functional_score": 0.577,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "PIK3CA",
+      "protein_id": "UniProtKB:P42336",
+      "state": "physical_not_returned_under_profile",
+      "physical_score": null,
+      "functional_score": 0.91,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "PRKCB",
+      "protein_id": "UniProtKB:P05771",
+      "state": "physical_not_returned_under_profile",
+      "physical_score": null,
+      "functional_score": 0.908,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "PRKCH",
+      "protein_id": "UniProtKB:P24723",
+      "state": "physical_not_returned_under_profile",
+      "physical_score": null,
+      "functional_score": 0.652,
+      "source_release": "12.5",
+      "has_interaction": true
+    },
+    {
+      "symbol": "PRKCQ",
+      "protein_id": "UniProtKB:Q04759",
+      "state": "physical_not_returned_under_profile",
+      "physical_score": null,
+      "functional_score": 0.677,
+      "source_release": "12.5",
+      "has_interaction": true
+    }
+  ],
+  "path_and_evidence_content_equal": true,
+  "local_review_states_equal": true,
+  "request_count": 3,
+  "attempt_count": 3,
+  "offline_replay_equal": true,
+  "http_reopen_equal": true,
+  "zip_projection_files_equal": true,
+  "selector_inside_existing_question_form": true,
+  "browser_visual_check": "not_completed_local_browser_runtime_failures",
+  "independent_biological_validation": false,
+  "brew_or_gpu_used": false,
+  "app_url": "http://127.0.0.1:8794/?run=crc_civic_final_20261015&question=question_20261027T180832Z_781f7543",
+  "source_file_count": 191,
+  "source_file_inventory_sha256": "83e02e5ed6f6a5492b3daf6e5f9554aa45a9efc55f950995563216b44751377f",
+  "software_checks": {
+    "python_question_cohort_backend": 50,
+    "python_http": 16,
+    "javascript_state": 21,
+    "browser_visual_check_completed": false
+  },
+  "implementation_sha256": {
+    "biograph_steward/physical_ranking.py": "f3782347d33069b7bdb6e81e78d436973fec144f2fc73c2f3db20268956f2e7b",
+    "biograph_steward/questions.py": "84a2334c37ebc2eda013fc000076b49c0c0070e0aaa0259783c0c953ad1c7643",
+    "biograph_steward/webapp.py": "230501de50e5e17aa45d1b38f42db619efbfbd4da32fa570fa0bb2bf9ce07eed",
+    "biograph_steward/guided.js": "61e35ccd80fc6d50281935064821e567432c9bbe0bde13f5bd49cd1f1dbdd993",
+    "biograph_steward/ui.html": "0c1e535576156ebb05525361fe34612a3ae26df68f7e304c4dd6364e83b6dad7"
+  },
+  "local_evidence": "runs/physical_priority_product_check_20261027/verification.json"
+}

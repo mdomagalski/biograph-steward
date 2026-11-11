@@ -1,182 +1,69 @@
 # Current project alignment
 
-Assessment updated October 26, 2026, against the organizer materials, proposal and Slack excerpts supplied by the user. The excerpts have no message dates or direct source permalinks here and were not independently retrieved from Slack. This is a functional crosswalk, not a claim of organizer approval. Older assessments and experiment implementations are on the [archive branch](EXPERIMENT_HISTORY.md).
+Updated November 11, 2026, against the organizer brief, proposal and organizer Slack excerpts supplied by the user. This is a functional crosswalk, not organizer approval. The supplied excerpts were not independently retrieved from Slack. Earlier assessments and retired experiments remain in the [archive ledger](EXPERIMENT_HISTORY.md).
 
-## Organizer requirements
+BioGraph Steward delivers a focused Pharos evidence workbench: bounded construction, qualified source integration, guided questions and multihop inspection, evidence passports, review history, snapshot comparison and source-preserving exports. The working path uses explicit user choices and deterministic execution; the optional model planner remains experimental. The final submission should present this working semi-autonomous workflow, its measured results and its scientific limits.
 
-The supplied brief asks for an agent-built contextualized graph and the **same graph-learning method on baseline and enriched graphs to predict held-out experimentally measured relationships**. The newly supplied Slack excerpts mention a Pharos gold set, but its artifact and scoring contract have not been received or inspected. Current graph size, verifier scores and export quality do not demonstrate prediction gain or agreement with that reference.
+## Organizer requirements and judging crosswalk
 
-## Organizer clarifications supplied October 23
+The brief permits **autonomous or semi-autonomous software**. Its topic is structured-data integration and link prediction: an agent builds contextualized graphs, then the **same graph-learning method** is applied to baseline and enriched graphs to predict held-out experimentally measured relationships. Our paired learner comparisons are complete; they do not demonstrate consistent incremental benefit.
 
-| Supplied statement | Consequence for this project |
-|---|---|
-| Open source should have an MIT- or Apache-2-licensed GitHub repository | The tracked software LICENSE is MIT. That does not relicense upstream data. This checkpoint includes the guided-construction and IntAct increments; GitHub publication of the latest work remains pending. |
-| Other data may be included as long as Pharos is represented | Pharos plus CIViC and a bounded ontology addition are within the stated source scope; there is no instruction to restrict the project to structured Pharos alone. |
-| Evaluation is partly predefined in introductory materials | Keep the supplied judging criteria, but do not infer missing executable scoring rules or submission formats. |
-| PyTorch Geometric subgraph extraction would be nice | Treat a tested interoperability adapter as useful, not as a requirement to replace PyKEEN or the app. |
-| Gold set for Pharos; judges for additional data, in response to pruning/usability questions | Obtain the actual reference and determine what it labels. Do not assume it is an experimentally measured PPI prediction test or that it certifies added-source biology. |
-| Brev credits sent; AWS credits expected later | This describes credit provisioning, not an AWS deployment requirement. The excerpts do not supply dates from which to calculate availability. |
-
-Those October 23 excerpts left the graph-versus-decisions choice unanswered.
-The [additional organizer update received October 26](ORGANIZER_UPDATE_20261026.md)
-now says subgraphs will be compared with the whole graph and asks to ideally send
-both. In context, prepare both the resulting graph and an edge-decision ledger.
-The specific baseline/version, comparison unit, scope, formats and confidence
-handling remain unspecified. A numeric confidence requirement cannot be inferred
-from the participant's question. Do not manufacture scores or use local review
-states as gold labels.
-
-The verified midpoint template is due EOD October 27, with final submission on
-November 17. AWS credits have been received according to the user; deployment
-is still untested and is not a newly stated judging requirement.
-
-**Priority adjustment:** demonstrating biological value remains the main
-unresolved scientific objective. The immediate pre-report work closes a complete
-construction/export demonstration and starts a user walkthrough; those are
-functionality and usability advances, not proof of biological improvement.
-Reflect the organizer evaluation contract in the submission exports once
-clarified. The [completed INMC/GO
-comparison](evaluations/INMC_COMPARISON_20261023.md) is a complementary measured-PPI
-study; it found no consistent hierarchy gain and does not stand in for the official Pharos evaluation.
-If the gold set evaluates pruning rather than link prediction, these remain
-separate evaluations. The INMC outcomes were opened after its full freeze and
-prediction run; they are now consumed. Do not invent an official protocol while
-the organizer contract is unknown or relabel this panel as unseen after tuning.
-
-The [deterministic construction/publication flow](CONSTRUCTION.md) now accepts
-1–25 exact protein accessions, reuses existing retrieval/normalization code and
-publishes an inspectable graph, cited answer and replayable source-bound bundle
-without an invented disease assertion. The
-[real publication check](evaluations/CONSTRUCTION_PUBLICATION_20261023.md)
-demonstrates that boundary. The optional [construction planner](CONSTRUCTION_AGENT.md)
-now selects permitted retrieval requests and preserves its provenance through
-the published graph. Local integration is tested. JSON v3 matched none of four
-supported development requests, followed by one of four for tool V1. The
-[latest tool V2 comparison](evaluations/construction_planner_tool_v2_20261026_summary.json)
-matched three of four, while admitting two of eight unsupported requests. Keep
-the planner experimental. The current UI/API now requires exact form choices,
-shows them alongside the model proposal, blocks mismatches and requires explicit
-plan review before execution. This wrapper retains the unchanged JSON v3 model
-prompt/provider; tool V2 remains outside production execution. The live
-comparison did not exercise the new guard, so its measured results remain
-unchanged. The guard does not validate arbitrary free-text conditions. Actual
-user usefulness and cohort-compatible
-maintenance/evidence-action policies remain functional gaps.
-AWS/Neptune, a UI rewrite and more agents are not prerequisites.
-
-The [gold-reference handoff](GOLD_SET_INTERFACE.md) now covers source-bound graph
-and decision exports plus exact alignment of a declared reference table. It
-preserves raw labels, qualifications and unassessed edges. This implements source and decision handoff, not a complete submission:
-the [retained graph and qualified source package](evaluations/SUBMISSION_DEMO_20261026.md)
-are now materialized and verified. The unknown official schema/scoring contract
-and biological validation gap remain. The [standard-export increment](STANDARD_EXPORT.md) adds a
-bounded KGX Reactome projection while preserving the complete source bundle.
-Official validator and JSONL round-trip checks are recorded, with the upstream
-category-array schema and predicate-domain issues left explicit; full Biolink
-conformance is not claimed.
-
-The [Lambourne assay corroboration](evaluations/LAMBOURNE_CORROBORATION_20261025.md)
-is complete under the frozen [reference/comparator decision](literature/REFERENCE_COMPARATOR_DECISION_20261025.md).
-It retains all 3,222 nominations: 2,676 are assay eligible and 2,674 comparator
-eligible. Detection is 334/1,966 (17.0%) among Pharos-represented pairs and 42/708
-(5.9%) among resolved no-matches; without observed HuRI/INMC pair overlap, rates
-are 74/1,619 (4.6%) and 16/650 (2.5%). Exact imported study lineage remains
-unavailable, so these conditional assay results are not certified independent
-validation or a test of Steward improvement. The panel is consumed; no new
-prediction, enrichment or protocol tuning may treat it as unseen. The completed
-[qualified assay publication](ASSAY_EVIDENCE.md) preserves all 3,222 observations
-in a standalone immutable layer and offline viewer: 2,676 qualified observation
-edges, 3,173 protein nodes and 546 excluded assays retained in the audit.
-The 42 detected bounded no-matches are an inspection filter, not independently
-validated new interactions. Study/construct context, nondetections and original
-Pharos records remain explicit, without automatic acceptance or pruning. See the
-[publication record](evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md).
-The [ordinary workbench attachment](ASSAY_WORKBENCH.md) now preserves selected
-cohort observations, source-bound review and full run downloads. Qualified
-gold-packet export now preserves those sources. KGX mapping and cohort
-maintenance for attached runs remain unsupported.
-This does not replace the organizer reference or incremental-prediction evaluation.
-
-The [IntAct development flow](INTACT_EVIDENCE_WORKBENCH.md) now uses the same
-attachment, review and export framework. A real four-protein Pharos run retains
-its original graph and adds four separately qualified records across two pairs.
-All four eligible records pass source-fidelity checks through a readable answer
-and complete gold packet. These consumed positive co-IP records do not establish
-biological accuracy, novelty or prediction gain. Four reserved interaction files remain
-unopened; provenance/overlap assessment and final-study suitability remain open.
-
-The [official XML development check](evaluations/INTACT_XML_PROVENANCE_20261026.md)
-now verifies the richer provenance route on those four consumed studies.
-Corresponding checked fields agree; two explicitly spoke-expanded RNA-containing
-rows map to one three-participant XML interaction. The four eligible protein
-records are unchanged. Experiment/figure context and a source-curation caveat
-are preserved, without certifying study independence or biological accuracy.
-
-The follow-up [development provenance audit](evaluations/INTACT_DEVELOPMENT_PROVENANCE_AUDIT_20261026.md)
-now identifies three curated experiments behind the four eligible records and
-closes the bounded development inventory with independence unverified.
-[Final assessment rules](evaluations/INTACT_FINAL_EVALUATION_RULES_20261026.md)
-are specified and metadata-checked; the executable full-flow freeze and reserved
-overlap assessment remain pending. The assisted user correctly selected the
-construct crosswalk and found its accession, then reported difficulty relating
-the export to the app graph. UI guidance now explains whole-workspace versus
-question-view scope; its independent usability effect is unmeasured.
-
-## Functional coverage
-
-| Function | Current implementation | Remaining gap |
+| Judging criterion | Delivered evidence | Remaining limitation |
 |---|---|---|
-| Ingest heterogeneous biomedical evidence | Scoped Pharos/CIViC retrieval, reusable adapters, exact-cohort publication with optional bounded model selection, qualified assay attachments and a frozen restricted learner projection | Latest experimental planner matched 3/4 supported development requests but admitted 2/8 unsupported requests; deployed source/study lineage remains unresolved |
-| Filter for the question and limit graph size | Exact disease choice, scoped queries, relation/row budgets, coverage disclosures; explicit protein-cohort choices checked against model proposals with visible plan review | Arbitrary free-text conditions remain unverified; broader agent-controlled retrieval under explicit budgets |
-| Normalize and trace assertions | Qualified assertions, stable source locators, original context, separate local review, immutable snapshots and bounded KGX export with the source bundle retained | Resolve documented standard-validation issues; complete source/study lineage only where authoritative metadata permits |
-| Clean erroneous or irrelevant links | Structural checks, exact deduplication, explicit review states | Scientifically justified filtering with measured false removals; no automatic model pruning is enabled |
-| Maintain the graph | Saved snapshots, explicit comparison and guarded review carryover | Cohort-compatible maintenance/evidence-action policy and controlled source-change/withdrawal validation |
-| Compare baseline and enriched graphs | Frozen Pharos/GO comparison and subsequent exact Reactome-membership addition, matched native PyKEEN runs, authenticated assay reconciliation and coverage/influence reporting on 1,751 pairs; completed Lambourne corroboration | No consistent hierarchy or Reactome gain demonstrated. Both panels are consumed. Independent evaluation, task-compatible evidence/pruning assessment and official judging alignment remain |
-| Explain and support users | Guided questions, compact graphs, deterministic cited summaries, source passports and context exports | Actual biomedical-user evaluation; source fidelity is not scientific truth |
+| **Usability — 40%**: accessible to non-KG experts; useful contextualized multihop work | Five task tabs; guided questions; deterministic cited summaries; bounded paths up to three hops; guided source inspection; assisted feedback on assay/construct and export explanations. Desktop/mobile delivery is recorded in the [October 29 receipt](evaluations/navigation_guidance_20261029_summary.json). | Independent intended-user evaluation is unestablished. Guided controls are the dependable entry point; arbitrary plain-language interpretation is not verified. |
+| **Accuracy and pruning — 30%**: remove erroneous or contextually irrelevant data | Identifier/type/provenance checks, quarantine, reciprocal/source-view normalization, explicit review and keep/prune/abstain decisions; completed measured graph comparisons and native-score assessment below. | No validated automatic biological pruning or Steward-specific prediction gain. Structural validity and local acceptance are not experimental truth. The demonstrated real handoff retains all undecided edges. |
+| **Explainability — 20%**: trace why an edge connects its entities | Qualified assertions, source/version/record locators, readable assay and CIViC conditions, source-reuse flags, immutable snapshots, complete source packets and reviewed decision history. | Exact imported study lineage and independent-study counts remain unresolved where source metadata is absent. A second database label is not independent evidence. |
+| **Standards — 10%**: explicit, if imperfect vocabulary/schema references; consistent and specific representations | Stable UniProt and source identifiers, Biolink categories and mapped predicates, qualified local relations, [bounded KGX validation](STANDARD_EXPORT.md) and [SSSOM mapping audit](EVIDENCE_OVERLAP.md). | Full KGX/Biolink/JSON-LD/PROV interoperability is not established. Known upstream schema/domain conflicts and unsupported mappings remain explicit; local predicates are not silently strengthened to pass validation. |
 
-The supplied judging weights are usability 40%, accuracy/pruning 30%, explainability 20% and standards 10%. Those weights make preservation, usable inspection, measured prediction/pruning and interoperability separate deliverables.
+The organizer's ontology examples distinguish protein-coding genes, proteins and their translation relation. Our demonstrated entities remain source-specific; gene-to-protein links or labels do not establish protein identity. Only vocabularies and mappings used by the actual demonstration should be claimed.
 
-## Proposal commitments and implementation choices
+## Organizer clarifications and submission boundary
 
-| Promised capability | Current status |
+| Supplied statement | Submission consequence |
 |---|---|
-| Plain-language/scoped question to graph and answer | Guided saved-graph queries plus exact-protein construction/publication and cited cohort answers. The UI/API checks unchanged v3 proposals against explicit form choices and requires visible plan review. The October 27 guided live check still failed all four supported tasks; one mismatch was blocked and the real-cohort request abstained. Earlier tool V2 remains outside production execution. Deterministic construction works; useful model interpretation and intended-user success remain unestablished. |
-| Qualified, versioned assertions and review lifecycle | Implemented local assertion identity, evidence revisions, review events and immutable runs. Local acceptance differs from upstream curation status. |
-| CIViC, CPTAC/PDC and PubMed/PMC evidence | CIViC integration is active. Literature and processed CPTAC adapters remain reusable; general PDC-native ingestion and dependable automatic extraction are not implemented. |
-| Entity and ontology harmonization | Supported explicit identifiers and registry mappings; unresolved/multiple mappings preserved. This is a bounded subset, not comprehensive HGVS/SO/ChEBI/NCIt/ECO normalization. |
-| Biolink/LinkML, KGX/JSON-LD, SSSOM and PROV-style traces | Bounded KGX Reactome projection with source bundle, official checks and JSONL round trip. Category-array schema and predicate-domain findings remain explicit. Full conformance and formal SSSOM/PROV/JSON-LD delivery are not claimed. |
-| Agent orchestration | Optional NeMo saved-graph query wrapper and bounded model-selected construction executed by deterministic code. An autonomous maintenance/research loop is not implemented. |
-| Evidence strength and confidence | Source-native observations and qualifications are preserved. No validated combined confidence or certified independent-study count is available. |
-| Reproducibility and deployment | Core Python app, synthetic demo, Docker/Brev configuration and pinned optional model setup. Clean local clone/wheel installation, installed real-cohort replay and isolated Chrome question/source/download/reopening now pass; packaged UI assets and source bytes are preserved. Remote GitHub availability, intended-user evaluation and current cloud deployment remain unverified. Real inputs require separate authorized availability; source-data redistribution is not inferred from the code license. |
+| Open-source entries should have an MIT- or Apache-2-licensed GitHub repository | The software LICENSE is MIT. Deliver the current code through the final repository; upstream data retain their own terms. The current local candidate passes isolated install/start/export checks; GitHub publication remains pending. |
+| Additional data may be included as long as Pharos is represented | Scoped Pharos plus CIViC, qualified assay evidence and bounded context additions satisfy the stated source scope. Adding another aggregator is not required. |
+| Evaluation is partly predefined; a Pharos gold set is mentioned | The actual artifact and scoring contract have not been received or inspected. Our local assessments are supporting evidence, not an official score. Hidden labels need not be obtained to finish the app and handoff. |
+| PyTorch Geometric subgraph extraction would be nice | Treat this as a useful interoperability suggestion, not a requirement to replace the executed PyKEEN comparison or the current graph engine. |
+| Gold set for Pharos; judges for additional data | Keep Pharos-reference evaluation, added-source assessment, prediction and usability claims distinct. Do not invent the undisclosed reference's label meanings. |
+| Subgraphs will be compared with the whole graph; ideally send both | Prepare the resulting scoped graph and exhaustive edge-decision ledger, with the preserved source baseline. The [October 26 update](ORGANIZER_UPDATE_20261026.md) does not specify baseline release, comparison unit, file schema or confidence handling. |
+| Brev/AWS credits provided | Credits enable optional compute; AWS/Neptune deployment is not established as a judging requirement. AWS credits have been received according to the user. |
 
-Current substitutions are deliberate: the lightweight web UI fills the inspection role without Streamlit; local JSON-backed graphs support the bounded workload without Neptune; the tested NVIDIA model is served through vLLM rather than NIM. Installing proposed brands would not itself close a functional gap. AWS, OpenSearch or additional serving backends should be introduced only for a concrete requirement.
+The supplied schedule sets final submission on **November 17, 2026**; the midpoint report deadline was October 27. The closing plan should use the remaining time for release, a reproducible demonstration and presentation. Numeric confidence must remain absent where uncalibrated; local review states must not become gold labels.
 
-## Reuse decisions that guide the next increment
+## Working product and proposal coverage
 
-- **Measured task and learner:** the [INMC/PyKEEN review](literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md) checks experimental meaning, released artifacts, licenses and runtime. The [input-readiness audit](evaluations/INMC_INPUT_READINESS_20261022.md) records unresolved assay, identity and source-overlap issues before training.
-- **Reference/comparator:** the [finite decision](literature/REFERENCE_COMPARATOR_DECISION_20261025.md) closes the import-lineage investigation as unresolved; the [baseline-only retrospective assay report](evaluations/LAMBOURNE_CORROBORATION_20261025.md) and [standalone qualified observation publication](ASSAY_EVIDENCE.md) are complete. Do not treat this consumed panel as unseen. Source-preserving integration is not evidence of prediction gain. The [Reactome context decision](literature/REACTOME_CONTEXT_INTERVENTION_20261026.md) separately selects one matched INMC development comparison, without claiming independent confirmation.
-- **Evidence assessment:** the [IntAct/IMEx preparation](INTACT_FIDELITY_PREPARATION.md) pins eight publication artifacts and a frozen source-fidelity protocol, with a mandatory semantic amendment. Official-reader controls, four-study development inspection and the real workbench/answer/export comparison are complete. All four eligible development records pass source fidelity. The original implementation remains frozen at `bca13a7`. A separate [official XML provenance check](evaluations/INTACT_XML_PROVENANCE_20261026.md) now reconciles the consumed development rows with richer source context and explicit n-ary grouping. Four reserved interaction files remain unopened; shared-study provenance, pair overlap and final-path readiness remain unresolved. Biological accuracy and prediction gain remain unestablished.
-- **Interoperability:** the [bounded export](STANDARD_EXPORT.md) uses existing [KGX](https://biolink.github.io/kgx/) checks and documents what remains unresolved. Continue to respect [Biolink qualifiers](https://biolink.github.io/biolink-model/association-examples-with-qualifiers/), [LinkML validation](https://linkml.io/linkml/data/validating-data.html) and [SSSOM](https://mapping-commons.github.io/sssom/) semantics. A passing round trip or a standard-looking label is not full conformance.
-- **Additional graph sources:** ROBOKOP, OptimusKG and direct Reactome are conditional candidates. Existing Pharos content and upstream reuse must be checked first; another aggregator does not imply independent evidence. See the [integration review](literature/BIOMEDICAL_INTEGRATION_REVIEW_20261021.md).
-- **Agent and cloud guidance:** NeMo and the organizer's Neptune examples may help orchestration and deployment, but generated example data must remain synthetic. Current data/query contracts remain the scientific boundary.
+| Proposal commitment | Current implementation and boundary |
+|---|---|
+| Question → focused graph → grounded answer | [Construction](CONSTRUCTION.md) takes 1–25 exact UniProt accessions, a focus and fixed source profile, then publishes a graph and cited candidate answer. Saved protein-neighborhood and scoped CIViC questions, bounded multihop paths and source guidance work locally. Model proposals require visible scope review; the [latest guided live assessment](evaluations/GUIDED_CONSTRUCTION_ASSESSMENT_20261027.md) failed all four supported tasks. Keep model planning experimental. |
+| Heterogeneous source ingestion and harmonization | Scoped Pharos and CIViC retrieval, official-reader-backed IntAct/PSI-MI records and qualified assay attachments are active. Exact identifiers, unresolved mappings, original qualifiers and coverage limits are preserved. Literature and processed CPTAC adapters remain reusable; general PDC-native ingestion and reliable automatic literature extraction are not delivered. |
+| Versioned assertions, evidence passports and lifecycle | Qualified assertion identity, evidence revisions, candidate/accepted/provisional/quarantined/rejected/obsolete states, review events and immutable runs are implemented. Source editorial status remains separate from local human review. |
+| Evidence verification, confidence and pruning | Deterministic validation and source-fidelity checks are implemented. Review and disposition exports preserve uncertainty and reasons. Entailment/negation/contradiction agents, calibrated combined confidence, scientific pruning precision/recall and certified independent-study counts are not established. |
+| Version-aware maintenance | Saved snapshots, explicit comparison and guarded review carryover work for supported profiles. Autonomous update scheduling and general cohort/assay-compatible maintenance are not implemented. Unsupported paths fail explicitly. |
+| Standards and exchange | A full source packet, resulting graph and exhaustive decisions are available through the [handoff interface](GOLD_SET_INTERFACE.md). A bounded Reactome KGX projection and official checks preserve the original evidence; category-array schema and predicate-domain conflicts remain documented. Fourteen exported SSSOM-profile rows passed official validators and preservation checks. Full PROV-O, JSON-LD and comprehensive vocabulary normalization are not claimed. |
+| Agent tools and deployment | Optional NeMo Agent Toolkit registration, saved-graph question workflow and bounded model-selected construction are implemented. The tested NVIDIA model uses vLLM; NIM/Bedrock, a swarm, Neptune and OpenSearch are not required for the current bounded workflow. Core Python, local/Docker/Brev configuration and protected shared access are available; current AWS deployment is unverified. |
+| Reproducibility and usability | [Clean clone/wheel delivery](evaluations/CLEAN_INSTALL_REAL_DEMO_20261026.md), saved real-source reopening, source/download checks and the newer [desktop/mobile navigation delivery](evaluations/navigation_guidance_20261029_summary.json) are recorded. A fresh checkout includes a synthetic demonstration; real inputs require separate permitted availability. Assisted feedback improved explanations, without establishing independent usability success. |
 
-The submitted proposal copies differ in the usability answer: one later copy repeats an ontology list. The current product and planned user testing provide a concrete usability account regardless of that form discrepancy; this audit does not infer which copy was submitted.
+The lightweight web interface and local JSON-backed graph fulfill the bounded inspection role. Installing the proposed brands would not itself close a functional gap. The proposal copies differ in the usability answer—one repeats an ontology list—so this crosswalk does not infer which copy was submitted.
 
-The [build plan](BUILD_PLAN.md) is the active sequence. The [literature knowledge base](LITERATURE_REVIEW.md) preserves known limitations and reuse checks. Closed extraction, verifier and prompt-comparison sequences are historical evidence, not an active task queue.
+## Completed assessments and defensible results
 
-## Completed biological comparison October 26
+| Assessment | Recorded result | Interpretation |
+|---|---|---|
+| Same-learner Pharos/GO hierarchy comparison | Matched native PyKEEN R-GCN runs and a ComplEx control completed on 1,751 eligible measured pairs. Mean AP changed from **0.719833 to 0.720135**, with mixed seed effects. See [INMC comparison](evaluations/INMC_COMPARISON_20261023.md). | No consistent hierarchy benefit. The panel was opened after its freeze/run and is now consumed. |
+| Same-learner Reactome-context comparison | Six matched R-GCN fits tested the same graph plus **11,138 exact Pharos-retrieved memberships** on the same 1,751 pairs. Mean AP **0.717794 → 0.719605**, with mixed seed effects. See [Reactome comparison](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md). | No consistent incremental benefit. This closed development comparison does not show independent evidence added through Reactome or justify another sweep. |
+| Native STRING task-specific ranking | On **2,676 eligible pairs**, physical versus functional AP was **0.190056 versus 0.172827**, with numeric coverage **72.4% versus 88.3%**. The fixed 12.0 temporal control agreed in direction: **0.161223 versus 0.149732**, coverage **75.2% versus 93.4%**. See [component comparison](evaluations/STRING_COMPONENT_COMPARISON_20261027.md) and [temporal control](evaluations/STRING_TEMPORAL_CONTROL_20261027.md). | A positive retrospective source-ranking result with a coverage trade-off; it supports optional physical priority. It is not a Steward-versus-Pharos graph-learning gain or independent biological validation. |
+| Lambourne assay corroboration/publication | All **3,222 nominations** remain accounted for: 2,676 assay eligible, 2,674 comparator eligible. Detection was **334/1,966 (17.0%)** among represented pairs versus **42/708 (5.9%)** among resolved no-matches; without observed HuRI/INMC pair overlap, **74/1,619 (4.6%)** versus **16/650 (2.5%)**. The publication preserves 2,676 qualified edges, 3,173 protein nodes and 546 excluded assays. See [corroboration](evaluations/LAMBOURNE_CORROBORATION_20261025.md) and [publication](evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md). | Conditional assay concordance. The 42 detected no-matches are an inspection filter, not independently validated new interactions. The panel is consumed. |
+| IntAct source preservation | Four eligible development records passed the workbench/answer/export checks; official XML review preserved experiment and n-ary context. The original [reserved assessment](evaluations/INTACT_FINAL_ASSESSMENT_20261027.md) stopped without a score after exposing an identifier-comparator defect. The separate [fresh four-study assessment](evaluations/INTACT_FRESH_ASSESSMENT_20261027.md) then completed at **4/8** end-to-end coverage: two Pharos timeouts caused four misses, while completed observations preserved assessed fields. | Development success, the stopped assessment and the fresh result remain distinct. All four fresh studies are now consumed; they are not awaiting opening or a new freeze. These checks measure source fidelity, not scientific truth. |
+| Retrieval reliability follow-up | A separate [consumed-data replay](evaluations/PHAROS_RETRIEVAL_RELIABILITY_20261027.md) completed **8/8** observations through native retries/cache and preserved source context. | Engineering recovery; it does not replace the original 4/8 fresh result or create new biological validation. |
+| Source reuse, delivery and handoff | The [October 29 delivery](evaluations/navigation_guidance_20261029_summary.json) republishes the existing trace into a new immutable workspace: one user-assisted exact shared record and one unresolved record, with original graph bytes preserved. The [submission example](evaluations/SUBMISSION_DEMO_20261026.md) materializes retained graph, complete ledger and source baseline; all real-example decisions are abstentions. | Auditable additional context and delivery, not independent replication or demonstrated biological pruning. Old source-bound receipts remain preserved. |
 
-The [Reactome intervention decision](literature/REACTOME_CONTEXT_INTERVENTION_20261026.md)
-selected one fixed development test of existing Pharos context. The
-[completed assessment](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md)
-compares the restricted Pharos/GO R-GCN graph with the same graph plus 11,138 exact
-Reactome memberships, using matched learners, shared vocabularies and unchanged
-assay pairs, masks, seeds and update budgets. All six full fits and authenticated
-scoring passed after actual CPU resource proof and execution freeze. On 1,751
-eligible pairs, mean AP was 0.717794 versus 0.719605, with mixed seed effects;
-no consistent incremental benefit is demonstrated. Coverage and descriptive
-gene influence qualify this small average difference. The fixed candidate is
-closed without further tuning. Pathway sharing creates no direct binding labels.
-Consumed outcomes and unresolved source lineage limit conclusions to development;
-independent confirmation and organizer scoring remain separate. Reserved IntAct
-interaction bodies remain unopened.
+Imported source/study lineage remains unresolved where authoritative metadata is missing. The [comparison decision](evaluations/NEXT_BIOLOGICAL_COMPARISON_DECISION_20261027.md) closes further fitting until a verified change actually reaches the learner's graph or features; ordering and provenance displays do not change those inputs. Existing studies must not be presented as unseen after further tuning.
+
+## Optional literature comparator and completion focus
+
+The [OptimusKG support-search assessment](evaluations/support_search_comparator_20261029_summary.json) preserves the author's pinned prompt and prepares five consumed assertions. They produce three distinct endpoint queries: some assay-qualified claims and broader annotations become identical questions. The workflow may find literature support, but its endpoint-only query does not adjudicate every saved predicate, assay or condition. Hosted results have not been produced; a missing search result would remain unresolved.
+
+**PaperQA3 is optional and is not a submission dependency.** Its account access, allowances and interface/API conditions require their own current check before use. An alternative model or local package must be named as a different comparator. The working app, saved demonstration and presentation need no paid literature service.
+
+Finish the current release, a permitted reproducible real-data package, the graph-plus-ledger handoff and a short presentation organized around the judging criteria. Prioritize useful source inspection, preservation and measured results. Keep additional sources, new model/threshold searches, cloud migration and broader standards profiles outside the closing scope. The [build plan](BUILD_PLAN.md) is the active delivery sequence; the [literature knowledge base](LITERATURE_REVIEW.md) preserves prior methods and known limitations.

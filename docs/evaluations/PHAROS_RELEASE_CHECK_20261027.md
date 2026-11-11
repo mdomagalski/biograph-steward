@@ -14,6 +14,18 @@ This establishes an API-versus-distribution difference, not its cause. No comple
 4. Use SSSOM to record each asserted mapping's relation, source and target releases, evidence and ambiguity. Isoforms, alternate products and one-to-many accession replacements must not be silently collapsed into exact protein identity.
 5. Migrate full graph retrieval when an official 400 full-data location is verified, required schema and source coverage checked, and a new snapshot frozen. No default endpoint, cache or historical data changed in this audit.
 
+## Follow-up: architectural claims and the next bounded audit
+
+The official 400 notes support expanded protein coverage and improved grouping/provenance. They still describe a MySQL-backed system. They do not establish that the public tables expose every interaction's original experiment or experimentally measured isoform-specific activities. The [2023 Pharos paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC9825581/) already describes refreshed-source ETL; legacy Pharos should not be characterized as entirely static or without source provenance. Treat 319/400 as the documented release labels rather than assuming semantic-version expansions.
+
+**Identity import boundary:** the 400 notes explicitly allow different product rows to share `uniprot_id`. Internal `id` supports row traceability, not a new public protein namespace. An anchor is not necessarily a biological canonical protein. A future adapter must preserve row locators, grouping and explicit isoform identities; matching base accessions alone must not make distinct products equivalent. The current SSSOM output is narrow identifier correspondence on consumed 319 workspaces, not a completed 319-to-400 migration.
+
+Before custom provenance reconstruction, use the supported pair-details route on the already-consumed current example. Our [earlier focused lookup](LAMBOURNE_PHAROS_LOOKUP_20261023.md) preserved all returned PPI properties and found null evidence/type in five separate detail probes. That finding does not settle the current pair or every upstream record. Preserve a separate receipt and retain unknown lineage when source fields remain empty.
+
+Then inspect a separately versioned 400 identity/TDL subset for the same consumed proteins, check its actual keys and ambiguities, and export only defensible SSSOM correspondences. Record-level evidence overlap remains a separate audit: a newer target table cannot establish independent experiments. Do not reopen the fresh IntAct panel, alter historical comparisons or migrate graph relationships for this check. No Brev/model/GPU is required.
+
+**Completed follow-up:** the [source-update supplement](../PHAROS_SOURCE_UPDATE.md) captures the current pair through the supported details route (both evidence/type fields still null) and imports two exact 400 canonical Tbio rows. Both identifier correspondences passed the official SSSOM checks and preservation roundtrip. The original overlap and graph remain unchanged. Complete-source selection is not replayed offline because only selected CSV records were retained.
+
 ## Receipt and limits
 
 [`pharos_release_check_20261027_summary.json`](pharos_release_check_20261027_summary.json) records the conclusions, source URLs and artifact hashes. `runs/pharos_release_check_20261027/` contains the request contract, raw official metadata pages, raw version response, HTTP receipts and report. There were three bounded metadata GETs and one version POST, zero retries, no redirects and no cache. No CSV/SQL table bodies, targets, interactions, assays, articles, abstracts, or fresh reserved study records were requested. No model or GPU compute was used.

@@ -1,0 +1,74 @@
+{
+  "format": "biograph-steward.navigation-guidance-delivery.v1",
+  "created_at": "2026-10-29T15:56:31.788060+00:00",
+  "status": "local_implementation_and_browser_verification_complete",
+  "features": {
+    "task_navigation": [
+      "Data & saved work",
+      "Ask & explore",
+      "Evidence & sources",
+      "Compare & assess",
+      "Export"
+    ],
+    "guided_source_inspection": "Saved source facts, original references when supplied, conditions, review state, missing context and bounded reuse. Existing IntAct/CIViC/PSI-MI explanations are reused.",
+    "path_exploration": "Deterministic paths up to three hops, direction and explicit symmetry preserved, candidate/provisional states retained, fixed work/result caps and exact source-inspection links.",
+    "support_comparator": "Five consumed development assertions produce three distinct exact upstream queries; two groups collapse different qualified assertions. Prepared and assessed locally, not executed against hosted PaperQA3."
+  },
+  "upstream_checks": [
+    "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/",
+    "https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.simple_paths.all_simple_paths.html",
+    "https://arxiv.org/html/2604.27269v3",
+    "https://github.com/mims-harvard/OptimusKG/blob/4fb352919ef6d7ecc5093277b5daf08f44ce6d60/cli/commands/evals/paperqa.py"
+  ],
+  "checks": {
+    "python_exploration": 10,
+    "python_inspection": 11,
+    "python_support_comparator": 10,
+    "python_http": 7,
+    "javascript_existing_regressions": 25,
+    "automated_tests_total": 63,
+    "browser_desktop_mobile_checks": 18,
+    "browser_javascript_errors": [],
+    "git_diff_check": "passed",
+    "syntax_checks": "passed"
+  },
+  "current_reuse_replay": {
+    "workspace": "runs/source_reuse_workbench_20261029",
+    "original_trace": "runs/provider_pair_lineage_20261027_attempt_01",
+    "graph_sha256": "2a32d432b1112f981c676c83344948c3c3e75ee595f9d9cce85e2f15388b9ede",
+    "same_source_graph_bytes": true,
+    "shared_record_user_assisted": 1,
+    "unresolved_record": 1,
+    "historical_pharos_inclusion": "unresolved",
+    "old_workspace_preserved": true
+  },
+  "artifacts": {
+    "preview": "http://127.0.0.1:8795/?run=source_reuse_workbench_20261029&view=ask",
+    "comparator": "runs/support_search_comparator_20261029/prepared/report.html",
+    "browser_checks": "runs/navigation_guidance_20261029/browser_checks.json",
+    "return_checks": "runs/navigation_guidance_20261029/return_checks.json"
+  },
+  "scope_boundaries": {
+    "models_called": 0,
+    "paid_compute_used": false,
+    "new_source_retrievals": 0,
+    "original_graphs_modified": false,
+    "heldout_material_opened": false,
+    "scientific_accuracy_measured": false,
+    "biological_improvement_established": false,
+    "commit_created": false
+  },
+  "remaining": [
+    "Live PaperQA3 comparison needs separate Edison API access, current cost verification and recorded hosted service metadata.",
+    "Independent user walkthrough and biological benefit remain unestablished. Source inspection and navigation do not supply scientific truth labels."
+  ],
+  "implementation_sha256": {
+    "biograph_steward/navigation.js": "233f3718ec83993850c9b9ed232e8bd0088649b7807e15838452f7089c48c459",
+    "biograph_steward/exploration.py": "2f50244e4b56dd64a1faa723b49d4ae136c31844123bf114101b74e3af0f23e5",
+    "biograph_steward/inspection.py": "8b500babcb5a2a58dbe052e6f97af0c706b23b0402a0b71c73a0f06216b80de3",
+    "biograph_steward/support_comparator.py": "cf75d230be226373510972d3ef0c7cd4d8a893fdd2f27a2a959c18b78b65a803",
+    "biograph_steward/ui.html": "2fb162cc27b68b704452795dc998b720dae10614035c5d8b8fccdcfdd1586fb5",
+    "biograph_steward/webapp.py": "34c89ac77cc3de04b98f0e947a6c817ef082f3ef7dbbc629082dddcc1f3b2e3b",
+    "biograph_steward/workspaces.js": "580b5deb925d5279ad8f3564324e8eb440c1644b7f165b4f9dd173d7bb75c67b"
+  }
+}

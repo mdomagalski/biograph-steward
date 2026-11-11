@@ -1,0 +1,25 @@
+{
+  "report": "/Users/42573/biograph-steward-pharos/runs/midpoint_report_screenshot_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+  "report_sha256": "184dca0e1e356d5035c9aa4ec880f8330c1b1402284c39da1a0185a4d56b74ce",
+  "pages": 3,
+  "main_form_pages": 2,
+  "actual_app_screenshot": true,
+  "screenshot_sha256": "48b4d0eef5d8fb2f0948f0def8e399e316992e46104558403209f085f9d16a8d",
+  "capture_receipt_sha256": "4a96aee4b4963957a8104f015de1ffbd8291454983765deae8ae75031d998a6f",
+  "clarifications": [
+    "Organizers Pharos evaluation baseline release or dated whole-graph snapshot",
+    "Code repository public under MIT on final submission dateNovember17,2026",
+    "Actual screenshot caption and local review/source editorial distinction"
+  ],
+  "email_draft": "/Users/42573/biograph-steward-pharos/runs/midpoint_report_screenshot_20261027/Email_to_Organizers.txt",
+  "email_draft_sha256": "69f8f32e26551077bab159d1168d79c8757173974f5633302b42226aa7bb0079",
+  "qa": "/Users/42573/biograph-steward-pharos/runs/midpoint_report_screenshot_20261027/fidelity_qa.json",
+  "qa_sha256": "13d3df1f157d33f738ccb18b21f2faf7ade14143cb68d3fbc3f0403ef27b132d",
+  "prior_reports_preserved": 10,
+  "evidence_pins_verified": 22,
+  "message_sent": false,
+  "access_granted": false,
+  "visibility_changed": false,
+  "compute_used": false,
+  "independent_visual_and_email_clarity_review": "pass"
+}

@@ -1,5 +1,61 @@
 # Literature knowledge base for BioGraph Steward
 
+**October 27 temporal control completed:** the [executed older-source assessment](evaluations/STRING_TEMPORAL_CONTROL_20261027.md)
+follows the official 12.0 native format and the already selected AP/coverage
+rules. On the unchanged 2,676 measured pairs, functional AP is 0.149732 and
+physical AP 0.161223; numeric coverage is 93.4% and 75.2%. The same 2,013 jointly
+numeric pairs also favor physical scores. Source-response replay and standalone
+arithmetic verification pass. The direction agrees with the 12.5 component,
+supporting question-specific physical prioritization rather than universal
+edge correctness. The source paper's locus/co-complex semantics and earlier
+HuRI exposure still limit interpretation. The control is closed without further
+version/threshold tuning; no independent gold set or Steward-specific graph gain
+is established. The entries below retain the earlier pre-execution decisions.
+
+**October 27 source independence follow-up:** the [focused audit](evaluations/STRING_REFERENCE_INDEPENDENCE_20261027.md)
+checks official calibration/input documentation and the actual 12.5 SQL schema,
+using a bounded metadata prefix rather than inferring missing evidence from the
+API. It also checks the PPI-bias, Flock and BioGraphBench-PPI author artifacts or
+primary methods; none is adopted as an independent measured-Y2H reference.
+The selected older-source temporal control uses STRING's documented fixed
+releases and the later assay-panel chronology. The archived API probe passed;
+cohort execution still requires its own native-format adapter/freeze. This is
+a development control on consumed outcomes, not an unseen confirmation or a
+new biological performance result. No new reference-outcome file was opened.
+
+**October 27 native-score follow-through:** the [completed component assessment](evaluations/STRING_COMPONENT_COMPARISON_20261027.md)
+uses STRING's existing physical overlay and scikit-learn AP after the scope and
+actual implementation were frozen. On 2,676 assay-eligible pairs, AP is
+0.172827 for functional scores and 0.190056 for the physical overlay, with lower
+numeric coverage (88.3% versus 72.4%). The same jointly numeric population also
+favors the physical view. Standalone arithmetic/source-projection review
+reproduced these results. This demonstrates task-specific retrospective ranking
+utility, not independent biological truth or a Steward-specific graph gain.
+Source/reference reuse remains unresolved; 285 of 376 detections have HuRI
+exposure flags. No confidence formula, learner fitting, threshold tuning or new
+reference-body access was introduced. The earlier preparation entry below
+records the pre-execution decision, not the final execution status.
+
+**October 27 biological comparison scope:** the [scope repair](BIOLOGICAL_COMPARISON_SCOPE.md)
+checks actual population and evidence availability before choosing another arm.
+MImerge/MIscore already implement evidence reconciliation/scoring, but the
+Pharos aggregate rows lack their prerequisites and the small consumed IntAct
+set has no exact pair overlap with the selected Lambourne nominations.
+Native IntAct confidence is preserved in raw records; recomputing it from an
+incomplete study subset would not reproduce the source score.
+
+The [Wright network evaluation](https://link.springer.com/article/10.1038/s44320-024-00077-y)
+and official neteval/MPS code were inspected. The published topology method
+passed synthetic conformance; its full evaluator is not adopted because it
+changes our candidate/reference population. The selected immediate component
+uses existing STRING functional scores versus physical annotations on the
+same typed retrieval, with their documented coverage/missingness boundary.
+A consumed-pair API probe verified the actual schema. This supports a finite
+retrospective comparison, not a new source-independence or improvement claim.
+The [preparation report](evaluations/BIOLOGICAL_COMPARISON_SCOPE_20261027.md)
+records pins, licenses, source limits, all 3,222 nominations and remaining
+execution gates. No fresh reference-body access or predictor fitting occurred.
+
 **October 26 intervention selection:** the [Reactome context decision](literature/REACTOME_CONTEXT_INTERVENTION_20261026.md)
 checks the official resource/data model and the published ppiPre co-pathway
 method before selecting one graph change. Exact memberships already retrieved

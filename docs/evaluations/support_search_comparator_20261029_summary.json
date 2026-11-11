@@ -1,0 +1,106 @@
+{
+  "format": "biograph-steward.support-search-comparator-assessment.v1",
+  "date": "2026-10-29",
+  "decision": "Suitable to assess as a broad support-search comparator; not a qualified-claim truth/pruning evaluator.",
+  "upstream": {
+    "repository": "https://github.com/mims-harvard/OptimusKG",
+    "commit": "4fb352919ef6d7ecc5093277b5daf08f44ce6d60",
+    "source_sha256": {
+      "cli/commands/evals/paperqa.py": "c644f197187c3faa701b958235a0e6836e9dac67b84add672a5c1dbdba5251f6",
+      "cli/commands/evals/sample_edges.py": "d2929cc717fcc3b871b6156b4c6a0f867097021736adafa7b97e7a87816cec4a",
+      "conf/base/evals.yml": "9026fb3c5701d4b3533c2d9ba9aa5a5372704415cbbe7ce4b699d2b481c4fd32",
+      "LICENSE": "8331be831422b5915d317e9c7d81be59f410526fe29e34d8c3fc2c90655ffe0a"
+    },
+    "source_executed": false,
+    "code_license": "MIT; original notice preserved with prepared prompt text",
+    "graph_downloaded": false
+  },
+  "published_method": {
+    "paper": "https://arxiv.org/html/2604.27269v3",
+    "endpoint_only_prompt": true,
+    "sampler_treats_non_neighbors_as_controls": true,
+    "nonedges_are_verified_biological_negatives": false,
+    "hosted_runner": "EdisonClient with JobNames.LITERATURE",
+    "local_paperqa2_equivalence": false
+  },
+  "local_demonstration": {
+    "partition": "consumed_development",
+    "assertions": 5,
+    "unique_exact_upstream_queries": 3,
+    "same_query_groups_for_distinct_assertions": 2,
+    "query_collisions": [
+      {
+        "query_sha256": "3040c42df5311f268971fd3745f6c8b6d5d254c9290318a313b8ec6f136414b9",
+        "case_ids": [
+          "support-case:e2990b78e7771aec3f1550f5",
+          "support-case:bdf43264588ffd76701d985c"
+        ]
+      },
+      {
+        "query_sha256": "882cce52f2a1e0d30b99ec012a6c9ed94ec4177484e32a537eec27c201135e84",
+        "case_ids": [
+          "support-case:d82e528f76733521cab7b4ee",
+          "support-case:76a2a23318fc7d5fb46c9945"
+        ]
+      }
+    ],
+    "source_graph_bytes_unchanged": true,
+    "reuse_verification_counts": {
+      "no_supplement_available": 2,
+      "unchanged_historical_supplement_not_replayed": 3
+    },
+    "qualified_scope_preserved_locally": true,
+    "qualified_scope_sent_to_original_prompt": false,
+    "no_negative_labels_generated": true
+  },
+  "conclusion": "The integration demonstrates a query-scope limitation before any paid inference: assay-specific observations and Pharos interaction annotations for the same pair can receive an identical author query. Search results may help find sources but cannot by themselves adjudicate those distinct assertions.",
+  "implemented": {
+    "module": "biograph_steward/support_comparator.py",
+    "prepare_script": "scripts/prepare_support_comparator.py",
+    "methods": [
+      "prepare_comparator",
+      "load_preparation",
+      "inspect_results"
+    ],
+    "source_prompt_extraction": "hash-pinned AST literal read; no third-party import or execution",
+    "results": "Partial author submit/poll CSVs are bound to prepared case/request IDs; failed/pending/invalid/no-successful-answer states remain unresolved; rating 1 is no_support_reported, never contradicted."
+  },
+  "remaining_before_hosted_execution": [
+    "Obtain user-provided Edison API access and verify current cost; Brev is not the same service.",
+    "Record selected dated service alias/agent metadata and SDK environment; original runner does not pin its hosted agent.",
+    "Preserve raw results and citation metadata; do not treat returned citations as independently checked.",
+    "Predeclare citation/source reuse and qualified-claim inspection scope before drawing a scientific conclusion."
+  ],
+  "known_local_issue": "The source-reuse workbench carries an older code binding. Its bytes pass original inventory checks, but current read_reuse() replay rejects implementation hashes. The comparator preserves those findings explicitly as historical/not-replayed; it does not bypass or weaken read_reuse().",
+  "source_links": [
+    "https://github.com/mims-harvard/OptimusKG/blob/4fb352919ef6d7ecc5093277b5daf08f44ce6d60/cli/commands/evals/paperqa.py#L43-L70",
+    "https://github.com/mims-harvard/OptimusKG/blob/4fb352919ef6d7ecc5093277b5daf08f44ce6d60/cli/commands/evals/sample_edges.py#L436-L509",
+    "https://docs.edisonscientific.com/edison-client/readme",
+    "https://github.com/Future-House/paper-qa/discussions/1211",
+    "https://advances.edisonscientific.com/research/edison-literature-agent/"
+  ],
+  "artifacts": {
+    "report": "/Users/42573/biograph-steward-pharos/runs/support_search_comparator_20261029/prepared/report.html",
+    "prepared_manifest_sha256": "b6e3c1e6368a6aa999faddb294e083bb72238eb53aa60afa97e90a6eaa2d9c1e",
+    "cases_sha256": "482bc5511030086a292bb56ae503e481346d7cb557a20eaaaec7477c0364d7f8"
+  },
+  "validation": {
+    "unittest_command": "python3 -m unittest discover -s tests -p 'test_support_comparator.py' -v",
+    "tests_passed": 10,
+    "source_graph_checks": {
+      "/Users/42573/biograph-steward-pharos/runs/assay_workbench_v2_20261026": true,
+      "/Users/42573/biograph-steward-pharos/runs/source_reuse_workbench_20261027": true
+    }
+  },
+  "hosted_calls": 0,
+  "model_calls": 0,
+  "gpu_calls": 0,
+  "source_graph_modified": false,
+  "scientific_accuracy_measured": false,
+  "predictive_gain_measured": false,
+  "implementation_sha256": {
+    "biograph_steward/support_comparator.py": "cf75d230be226373510972d3ef0c7cd4d8a893fdd2f27a2a959c18b78b65a803",
+    "scripts/prepare_support_comparator.py": "455b0b9d0c8327b9eab9d612e7d22f1f58fb5819c3c5e6237863206555aacfe4",
+    "tests/test_support_comparator.py": "2725d1874ebc0553f5d15fa5b8adbbfe9fef26026b3ba8a5ed7459a37e1f5245"
+  }
+}

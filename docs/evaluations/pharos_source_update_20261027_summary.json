@@ -1,0 +1,177 @@
+{
+  "format": "biograph-steward.pharos-source-update-development-summary.v1",
+  "created_at": "2026-10-27T13:33:40.642286+00:00",
+  "scope": "Two already-consumed proteins and one pair from the current saved IntAct workspace; no new evaluation panel.",
+  "source_workspace": "/Users/42573/biograph-steward-pharos/runs/evidence_overlap_intact_20261027_attempt_02",
+  "summary": {
+    "workspace_observations": 2,
+    "pair_details_directional_rows": 2,
+    "pair_details_null_evidence_rows": 2,
+    "mapping_rows": 2,
+    "unresolved_mapping_endpoints": 0,
+    "experiment_lineage": "unresolved",
+    "independent_evidence_count": null,
+    "baseline_modified": false,
+    "graph_relationships_updated": 0,
+    "automatic_merges": 0,
+    "automatic_pruning": 0,
+    "model_calls": 0,
+    "scientific_accuracy_measured": false
+  },
+  "identity_tdl_comparison": [
+    {
+      "source_record_locator": "urn:sha256:53075ec817a0d9258836fbba573b95be9b5ff6df70654bd5c5d0715cf4f150f2#csv-row=101754&physical-lines=101754-101754",
+      "source_internal_row_id": "IFXProtein:E84NE82",
+      "source_uniprot_id": "Q7RTX0",
+      "source_isoform": "",
+      "source_grouping": "canonical",
+      "pharos400_tdl": "Tbio",
+      "pharos400_version": "pharos400",
+      "baseline_tdl": "Tbio",
+      "baseline_version": "pharos319",
+      "exact_identifier_correspondence": true,
+      "unresolved_reasons": []
+    },
+    {
+      "source_record_locator": "urn:sha256:53075ec817a0d9258836fbba573b95be9b5ff6df70654bd5c5d0715cf4f150f2#csv-row=146728&physical-lines=146728-146728",
+      "source_internal_row_id": "IFXProtein:88B7YSL",
+      "source_uniprot_id": "Q8TE23",
+      "source_isoform": "",
+      "source_grouping": "canonical",
+      "pharos400_tdl": "Tbio",
+      "pharos400_version": "pharos400",
+      "baseline_tdl": "Tbio",
+      "baseline_version": "pharos319",
+      "exact_identifier_correspondence": true,
+      "unresolved_reasons": []
+    }
+  ],
+  "pair_details_source": {
+    "endpoint": "https://pharos-api.ncats.io/graphql",
+    "database_version": "pharos319",
+    "successful_uncached_requests": 3,
+    "directional_rows": 2,
+    "evidence_null_rows": 2,
+    "interaction_type_null_rows": 2,
+    "records_are_separate_from_frozen_baseline": true
+  },
+  "pharos400_source": {
+    "url": "https://opendata.ncats.nih.gov/public/pharos/pharos400_tdls_full.csv",
+    "bytes": 87201549,
+    "sha256": "53075ec817a0d9258836fbba573b95be9b5ff6df70654bd5c5d0715cf4f150f2",
+    "source_row_count_capture_reported": 166833,
+    "selected_rows": 2,
+    "integrity": {
+      "preserved_selected_records_verified": true,
+      "full_source_csv_retained": false,
+      "selection_completeness_replayed_offline": false,
+      "source_hash_and_complete_scan_counts": "capture-time assertions"
+    }
+  },
+  "validation": {
+    "focused_tests": 52,
+    "failures": 0,
+    "skips": 0,
+    "test_modules": [
+      "test_pharos400_identity",
+      "test_pharos_source_update",
+      "test_evidence_mapping",
+      "test_evidence_overlap",
+      "test_evidence_overlap_cli"
+    ],
+    "official_sssom_mapping_rows": 2,
+    "official_checks": [
+      "JsonSchema",
+      "PrefixMapCompleteness",
+      "StrictCurieFormat"
+    ],
+    "preservation_roundtrip": true,
+    "independent_software_review_artifact_checks": 48,
+    "independent_biomedical_validation": false,
+    "visual_browser_check_performed": false
+  },
+  "preservation": {
+    "source_inputs_unchanged": true,
+    "original_overlap_replay_passed": true,
+    "baseline_modified": false,
+    "source_update_replay_passed": true,
+    "fresh_intact_study_bodies_opened": 0,
+    "models_or_gpu_calls": 0
+  },
+  "limitations": [
+    "The original baseline and overlap report remain unchanged; these are separately captured source supplements.",
+    "Matching database release labels do not certify an atomic snapshot or identical upstream records.",
+    "Reciprocal detail views are not independent experiments. Null evidence does not prove absence of supporting studies.",
+    "Nonempty free-text evidence would need verified identifier semantics before it could resolve overlap.",
+    "400 identity/TDL annotation rows do not refresh 319 interaction evidence or establish isoform-specific activity.",
+    "Unmapped product rows remain unresolved. A shared base accession does not establish product equivalence.",
+    "Independent experimental support, biological accuracy and predictive benefit remain unverified.",
+    "Complete-source CSV selection is not replayed offline; full-source hash and scan counts are capture-time assertions.",
+    "No complete400graphinterface migration, independent experimental support or biological benefit is demonstrated."
+  ],
+  "artifacts": {
+    "runs/pharos_source_update_20261027_attempt_01/report.json": {
+      "sha256": "9c874bfc41dafb85e6a4d08ceaf4f16bac02fe44829d45f008894ebf0f99794f",
+      "bytes": 31492
+    },
+    "runs/pharos_source_update_20261027_attempt_01/manifest.json": {
+      "sha256": "bfed8801173e96fc15ce6a5884aa489abef4b7c9590e44f2d38de6c46288d301",
+      "bytes": 1092
+    },
+    "runs/pharos_source_update_20261027_attempt_01/index.html": {
+      "sha256": "7cb838c688145a79dcc28660005a12a796849eb5f7201650df8a0fb0b1e03f08",
+      "bytes": 26738
+    },
+    "runs/pharos_source_update_20261027_attempt_01/mappings.json": {
+      "sha256": "b17a712211fcb211e9f58f452f32e5154d1af3e5a1ee66a3c194eaf5d39b58a2",
+      "bytes": 6071
+    },
+    "runs/pharos_source_update_20261027_attempt_01/mappings.sssom.tsv": {
+      "sha256": "0967f4ed95eb8a97f847f265cb529912faaea6015472578e56a21acb64612e85",
+      "bytes": 3443
+    },
+    "runs/pharos_source_update_20261027_attempt_01/records.jsonl": {
+      "sha256": "66fb7ba36374a2e48854b31e32722f91b880dc85a32f938c98c31ec3130951cf",
+      "bytes": 1236
+    },
+    "runs/pharos_pair_details_intake_20261027_attempt_01/request_contract.json": {
+      "sha256": "9735c0f2e1f93a4a0e1d6608f60fbeb048245d970bf1d79685244c4c6250e594",
+      "bytes": 1429
+    },
+    "runs/pharos_pair_details_intake_20261027_attempt_01/receipt.json": {
+      "sha256": "e9b0fa1f74a2cb86fad13d383ee843f43966795fec91b5df0660d04f65c7d756",
+      "bytes": 3117
+    },
+    "runs/pharos400_identity_intake_20261027_attempt_02/request_contract.json": {
+      "sha256": "1d92fc9c8b6a04e78b2eba425f1d46d3e4b6824cc14308bc4d36bbba62290dd2",
+      "bytes": 1001
+    },
+    "runs/pharos400_identity_intake_20261027_attempt_02/http_receipt.json": {
+      "sha256": "0b1ba1795a44d0b34e54739702675674b5f6dec58e212ef4c9eb0736d69954f0",
+      "bytes": 1700
+    },
+    "runs/pharos400_identity_intake_20261027_attempt_02/selected_rows.json": {
+      "sha256": "1d6816c696ebe3bffbd21b0d887c6ce07676aa4db7ea95bdd1a208ef2b551c8d",
+      "bytes": 5316
+    },
+    "runs/pharos_source_update_sssom_validation_20261027/report.json": {
+      "sha256": "7c9f74b868cbf2d5efbe52f2ca4a42b70d7c80745a3c9370b2c3977fbe49aab4",
+      "bytes": 2436
+    },
+    "runs/pharos_source_update_review_20261027/report.json": {
+      "sha256": "f76fe2a2bbca890a51d2ca74ff7b3799a082343b3546fec9d5c008495fecf2db",
+      "bytes": 15465
+    },
+    "runs/pharos400_identity_adapter_review_20261027_attempt_02/report.json": {
+      "sha256": "b31c0945a249714f6f77d17becdd0a7652a690ff24dda796907ed0c6fb686d21",
+      "bytes": 2339
+    }
+  },
+  "implementation_sha256": {
+    "pharos_source_update": "320e736980ed56629bbfcf0ea8a623e01535b511767df6d267efaf32593b5f53",
+    "pharos400_identity": "8b7b9bb97252adb6b349d524086a0fe94ce8b2bf3def94f248f209aa4a3a5003",
+    "evidence_mapping": "ffb612cc124d722f0e9ddcf7dcb9a6526ec87dd171fcd816bcb953b2d90221d6",
+    "client": "a9877c663c8790fd364d398b40f1f6cdf0d9ccd5b27378127cf4d3d3456bc3bb",
+    "file_utils": "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6"
+  }
+}

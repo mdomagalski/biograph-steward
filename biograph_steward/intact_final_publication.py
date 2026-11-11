@@ -1,9 +1,9 @@
 """Separate frozen IntAct assessment publication; historical development guards stay intact.
 
 The row projection adapts the existing qualified-evidence implementation and reuses
-its pure field, citation and readable-display helpers. Scope is exactly the four
-original reserved studies or the four consumed studies for a named replay. This
-module accepts supplied bytes only; it never fetches or opens reserved sources.
+its pure field, citation and readable-display helpers. Each named assessment has
+its own exact four-study scope and envelope. This module accepts supplied bytes
+only; it never fetches or discovers reserved sources.
 """
 from collections import Counter
 from copy import deepcopy
@@ -22,6 +22,12 @@ from .intact_evidence import (
 
 FORMAT = "biograph-steward.intact-final-evidence-publication.v1"
 CONSUMED_FORMAT = "biograph-steward.intact-consumed-evidence-publication.v1"
+FRESH_FORMAT = "biograph-steward.intact-fresh-evidence-publication.v1"
+FRESH_SPLIT = "fresh_source_fidelity"
+FRESH = ("39938803", "40108405", "40752540", "40088780")
+FRESH_SELECTION_SHA = "90e84d56fbbe043db2437a29df895608215d20de40c0b784c70db95140be5a98"
+CONSUMED_INVENTORY_SHA = "60e0a4db76cdda74279da1280e45c43b40413b435d25120141da0b8e38369dbc"
+FRESH_ALIAS_RULE = "All MI:0356 database identities; IMEx MI:0662 and explicit imex_id; no generic see-also"
 ORIGIN_RESERVED_SHA = "7c1f59b4696bd5b6f4b7760d22405f04f358fc46dfd7ea5f0464a98de3492788"
 DEVELOPMENT = ("40075158", "40404733", "40071126", "40739265")
 RESERVED = ("39833857", "40211762", "39972491", "40555359")
@@ -41,7 +47,8 @@ def _scope(bindings):
         raise ValueError("Explicit final-assessment bindings are required.")
     split = bindings.get("assessment_split")
     expected = (RESERVED if split in {"reserved_final", "consumed_reserved_replay"}
-                else DEVELOPMENT if split == "development_replay" else None)
+                else DEVELOPMENT if split == "development_replay"
+                else FRESH if split == FRESH_SPLIT else None)
     if (expected is None or bindings.get("publication_ids") != list(expected)
             or not _sha(bindings.get("execution_freeze_sha256"))
             or any(not isinstance(bindings.get(k), dict) or set(bindings[k]) != set(expected)
@@ -52,6 +59,11 @@ def _scope(bindings):
             bindings.get("origin_reserved_freeze_sha256") != ORIGIN_RESERVED_SHA
             or not _sha(bindings.get("historical_code_receipt_sha256"))):
         raise ValueError("Consumed replay requires its unchanged origin and historical implementation archive.")
+    if split == FRESH_SPLIT and (
+            bindings.get("fresh_selection_sha256") != FRESH_SELECTION_SHA
+            or bindings.get("consumed_inventory_sha256") != CONSUMED_INVENTORY_SHA
+            or not _sha(bindings.get("provenance_overlap_sha256"))):
+        raise ValueError("Fresh assessment requires its exact metadata selection, consumed inventory and overlap bindings.")
     return expected
 
 
@@ -61,6 +73,11 @@ def publication_html(evidence):
         page = page.replace("</h1>", '</h1><p class="notice" data-assessment-split="consumed_reserved_replay">'
             '<strong>Consumed-data development replay.</strong> These studies were already opened in a '
             'stopped assessment. This replay is an integration check, not fresh validation or a final score.</p>', 1)
+    if evidence.get("bindings", {}).get("assessment_split") == FRESH_SPLIT:
+        page = page.replace("</h1>", '</h1><p class="notice" data-assessment-split="fresh_source_fidelity">'
+            '<strong>Fresh source-fidelity assessment.</strong> This publication preserves supplied curation '
+            'under a separately frozen four-study selection. It does not establish biological truth, '
+            'independent experimental confirmation or prediction improvement.</p>', 1)
     return page
 
 
@@ -157,6 +174,10 @@ def build_evidence(records, ledger, bindings):
     if bindings["assessment_split"] == "consumed_reserved_replay":
         summary.update(assessment_split="consumed_reserved_replay", consumed_input_replay=True,
                        fresh_validation_performed=False, original_reserved_assessment_status="stopped_unscored")
+    if bindings["assessment_split"] == FRESH_SPLIT:
+        summary.update(assessment_split=FRESH_SPLIT, fresh_source_rows_opened=True,
+                       source_fidelity_only=True, independent_biological_validation_performed=False,
+                       biological_prediction_improvement_measured=False)
     graph={"graph_format":"biograph-steward.assay-observation-graph.v1","data_kind":"published_assay_observations",
         "snapshot_sha256":bindings["result_sha256"],"nodes":sorted(nodes.values(),key=lambda x:x["id"]),
         "edges":sorted(edges,key=lambda x:x["id"]),"review_events":[],"biologically_validated":False,
@@ -202,13 +223,90 @@ def records_from_material(files, catalog, bindings):
     return records
 
 
+def _fresh_material(files, bindings, freeze):
+    """Bind a fresh envelope to preselected metadata and the captured audit."""
+    from .assay_attachment import _decode
+    metadata = {}
+    for filename, field in (("fresh_selection.json", "fresh_selection_sha256"),
+                            ("consumed_inventory.json", "consumed_inventory_sha256"),
+                            ("provenance_overlap.json", "provenance_overlap_sha256")):
+        raw = files[filename]
+        if hashlib.sha256(raw).hexdigest() != bindings[field]:
+            raise ValueError("Fresh assessment source binding changed: " + filename)
+        metadata[filename] = _decode(raw)
+    if (any(freeze.get(field) != bindings[field] for field in
+            ("fresh_selection_sha256", "consumed_inventory_sha256"))
+            or freeze.get("scientific_accuracy_measured") is not False
+            or freeze.get("independent_validation_performed") is not False):
+        raise ValueError("Fresh assessment freeze must bind the selected inputs and source-fidelity claim.")
+    selection = metadata["fresh_selection.json"]
+    inventory = metadata["consumed_inventory.json"]
+    if (selection.get("format") != "biograph-steward.intact-fresh-reference-metadata-selection.v1"
+            or [row.get("publication_id") for row in selection.get("selected", [])]
+               != ["pubmed:" + pmid for pmid in FRESH]
+            or inventory.get("format") != "biograph-steward.intact-consumed-inventory.v1"
+            or inventory.get("inventory_revision") != 2):
+        raise ValueError("Fresh assessment metadata scope differs from its declared four-study selection.")
+    audit = metadata["provenance_overlap.json"]
+    if (not isinstance(audit, dict)
+            or audit.get("format") != "biograph-steward.intact-complete-qualified-alias-audit.v1"
+            or audit.get("complete_identity_aliases_checked") is not True
+            or audit.get("consumed_inventory_sha256") != bindings["consumed_inventory_sha256"]
+            or audit.get("qualified_alias_rule") != FRESH_ALIAS_RULE
+            or audit.get("status") != "bounded_audit_complete_independence_unverified"
+            or audit.get("study_independence") != "unverified"
+            or audit.get("ambiguous_dataset_statements") != []
+            or not isinstance(audit.get("excluded_publication_ids"), list)
+            or not set(audit["excluded_publication_ids"]) <= set(FRESH)):
+        raise ValueError("Fresh assessment requires its complete qualified-alias audit without unresolved dataset lineage.")
+    expected = []
+    consumed_ids = {tuple(identity) for identity in inventory["evidence_ids"]}
+    for pmid in FRESH:
+        raw_xml = files["provenance/" + pmid + ".xml"]
+        stream = [_decode(line) for line in files["provenance/" + pmid + "_reader.jsonl"].splitlines()]
+        if not stream or not all(isinstance(row, dict) for row in stream):
+            raise ValueError("Fresh XML reader stream is missing its complete framing.")
+        summary = stream[-1]
+        rows = stream[:-1]
+        if (summary.get("record_kind") != "file_summary"
+                or summary.get("input_sha256") != hashlib.sha256(raw_xml).hexdigest()
+                or summary.get("input_bytes") != len(raw_xml)
+                or summary.get("evidence_count") != len(rows)
+                or any(row.get("format") != "biograph-steward.intact-xml-evidence.v1" for row in stream)
+                or any(row.get("record_kind") != "evidence" for row in rows)
+                or [row.get("evidence_sequence") for row in rows] != list(range(1, len(rows) + 1))):
+            raise ValueError("Fresh XML reader framing or source fingerprint changed.")
+        for row in rows:
+            evidence = row["evidence"]
+            identities = set()
+            # Replay the existing complete_identity_ids and xml_evidence_ids
+            # projections over official-reader fields, without a scripts import.
+            for reference in list(evidence.get("identifiers") or []) + list(evidence.get("xrefs") or []):
+                database = ((reference.get("database") or {}).get("name") or "").lower()
+                accession = reference.get("id")
+                qualifier = (reference.get("qualifier") or {}).get("mi_id")
+                if database and accession and (qualifier == "MI:0356"
+                        or database == "imex" and qualifier == "MI:0662"):
+                    identities.add((database, accession))
+            if evidence.get("imex_id"):
+                identities.add(("imex", evidence["imex_id"]))
+            overlap = identities & consumed_ids
+            expected.append({"publication_id": pmid, "evidence_sequence": row["evidence_sequence"],
+                "identity_ids": [list(identity) for identity in sorted(identities)],
+                "exact_consumed_alias_overlap": [list(identity) for identity in sorted(overlap)]})
+            if overlap and pmid not in audit["excluded_publication_ids"]:
+                raise ValueError("An exact consumed evidence alias must remain an assessment study exclusion.")
+    if audit.get("full_qualified_alias_evidence") != expected:
+        raise ValueError("Fresh qualified-alias audit does not replay from complete preserved reader records.")
+
+
 def load_projection(manifest, files):
     """Reproduce only a separately frozen assessment publication, including zero rows."""
     from .assay_attachment import _decode, _sealed
     required = {"LICENSE.md", "protocol.json", "semantic_amendment.json", "execution_freeze.json",
                 "inspection_report.json", "row_ledger.jsonl", "controls_report.json",
                 "xml_controls_report.json", "evidence.json", "graph.json", "index.html"}
-    if (manifest.get("format") not in {FORMAT, CONSUMED_FORMAT} or not required <= set(files)
+    if (manifest.get("format") not in {FORMAT, CONSUMED_FORMAT, FRESH_FORMAT} or not required <= set(files)
             or not isinstance(manifest.get("implementation_sha256"), dict)
             or not manifest["implementation_sha256"]
             or any(not _sha(v) for v in manifest["implementation_sha256"].values())
@@ -220,7 +318,9 @@ def load_projection(manifest, files):
         bindings = manifest["bindings"]
         pmids = _scope(bindings)
         consumed = bindings["assessment_split"] == "consumed_reserved_replay"
-        if manifest["format"] != (CONSUMED_FORMAT if consumed else FORMAT):
+        fresh = bindings["assessment_split"] == FRESH_SPLIT
+        expected_format = FRESH_FORMAT if fresh else CONSUMED_FORMAT if consumed else FORMAT
+        if manifest["format"] != expected_format:
             raise ValueError("Consumed development publications cannot use a reserved-assessment envelope.")
         for filename, field in (("protocol.json", "protocol_sha256"),
                 ("semantic_amendment.json", "amendment_sha256"),
@@ -234,7 +334,8 @@ def load_projection(manifest, files):
                 or bindings["amendment_sha256"] != "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c"):
             raise ValueError("The original protocol and mandatory semantic amendment must remain unchanged.")
         freeze = _decode(files["execution_freeze.json"])
-        expected_freeze_format = ("biograph-steward.intact-consumed-flow-freeze.v1" if consumed
+        expected_freeze_format = ("biograph-steward.intact-fresh-execution-freeze.v1" if fresh
+                                  else "biograph-steward.intact-consumed-flow-freeze.v1" if consumed
                                   else "biograph-steward.intact-final-execution-freeze.v1")
         access_key = "pre_captured_stream_access" if consumed else "pre_access"
         if (not _sealed(freeze) or freeze.get("format") != expected_freeze_format
@@ -256,6 +357,8 @@ def load_projection(manifest, files):
                     or {row["source_path"]: row["sha256"] for row in archive["files"]}
                        != origin["implementation_sha256"]):
                 raise ValueError("Consumed replay must retain its stopped origin and historical code bindings.")
+        if fresh:
+            _fresh_material(files, bindings, freeze)
         controls = _decode(files["controls_report.json"])
         xml_controls = _decode(files["xml_controls_report.json"])
         for obj, fmt, runtime_key, access_key in (
@@ -267,7 +370,8 @@ def load_projection(manifest, files):
                     or obj.get("runtime_bindings") != bindings.get(runtime_key)):
                 raise ValueError("Passing original reader/runtime controls must accompany the final publication.")
         inspection = _decode(files["inspection_report.json"])
-        expected_status = ("consumed_development_inspected_not_final_score" if consumed else
+        expected_status = ("fresh_inspected_not_fidelity_scored" if fresh else
+                           "consumed_development_inspected_not_final_score" if consumed else
                            "final_inspected_not_fidelity_scored" if bindings["assessment_split"] == "reserved_final"
                            else "development_full_flow_replay_not_final_score")
         if (inspection.get("status") != expected_status
@@ -300,7 +404,8 @@ def publish_material(files, catalog, bindings, inspection, output):
     for name, obj in (("evidence.json", evidence), ("graph.json", evidence["graph"])):
         files[name] = (json.dumps(obj, indent=2, ensure_ascii=True) + "\n").encode()
     files["index.html"] = publication_html(evidence).encode()
-    manifest_format = CONSUMED_FORMAT if bindings["assessment_split"] == "consumed_reserved_replay" else FORMAT
+    manifest_format = (FRESH_FORMAT if bindings["assessment_split"] == FRESH_SPLIT
+                       else CONSUMED_FORMAT if bindings["assessment_split"] == "consumed_reserved_replay" else FORMAT)
     manifest = {"format": manifest_format, "created_at": utcnow(), "bindings": deepcopy(bindings),
                 "source_catalog": deepcopy(catalog), "summary": evidence["summary"],
                 "implementation_sha256": {"final_projection": sha(__file__),
