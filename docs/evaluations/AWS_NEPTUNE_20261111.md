@@ -23,6 +23,7 @@ entity count.
 | Complete graph parity | All **34,823 Neptune vertices and 15,717 relationships** matched the saved projection, including preserved records, identifiers and endpoints. Database reconstruction reproduced the complete source graph digest below. |
 | Scoped evidence inspection | The prepared question identifies **8 relevant evidence records**, **38 outside its scope**, and **2 discordance groups**. Five assertions passed the additional full-context parity check. These are scope/context checks, not accuracy labels. |
 | Workspace access and persistence | Automated HTTP checks passed authentication, browser-origin handling, source guides and restart persistence. A harmless write query was rejected with **403** after import permissions were disabled. |
+| Browser workflow | Chrome sign-in, live Neptune inspection, guided source explanation, exact question, graph, summary and source-passport navigation passed. The saved browser answer matches the complete frozen deterministic reference; no original graph or review state changed. |
 | Workspace recovery | **191 workspace files** restored byte-identically; the recovered workspace reopened under the release image with network access disabled. |
 | Database failover | Manual promotion from AZ **2b** to **2a** completed. Complete record parity, database reconstruction and scoped evidence parity passed again. A three-minute probe recorded 77 successful reads and 8 interrupted reads, with recovery observed about 16 seconds after the first failed probe. This sampled interval is not an availability guarantee. |
 | Native snapshot recovery | Manual snapshot restored to a separate private, encrypted, IAM-enabled cluster. Complete record parity, database reconstruction and the scoped evidence answer passed on the restored database. The temporary instance, cluster and extra read permission were then removed. The original database, manual snapshot and versioned workspace backup remain available. |
@@ -42,9 +43,20 @@ checks establish faithful deployment and a traceable database mirror, rather
 than new scientific evidence. The two-AZ database test does not establish full
 application high availability or a production SLA.
 
-Fresh human browser inspection awaits sign-in after the restart test. The Brev
-model comparison has not run in this checkpoint. Its clarified candidate-view
-input and complete five-path display bound were verified offline before inference.
+The browser walkthrough used user-assisted sign-in and automated inspection;
+it was not an independent colleague's usability or biological review. Unfiltered
+profile inspection returned nine evidence records/six claims; applying the
+cetuximab question scope selected eight records/five claims. The remaining
+record describes panitumumab alone. All nine records remain in the frozen graph.
+The [subsequent bounded Nemotron check](NEMOTRON_NEPTUNE_PLANNER_20261111.md)
+abstained on the supported question; the deterministic workflow remains the
+delivery path. The model result does not change the successful database checks.
+
+![Guided evidence graph in the deployed workbench](../images/guided_civic_graph_20261111.jpg)
+
+The screenshot shows the guided question's saved-workspace graph. All five
+claims remain candidates. Direct Neptune record inspection was verified
+separately; this diagram is not evidence of scientific validation.
 
 Private receipts remain in ignored local directories:
 
