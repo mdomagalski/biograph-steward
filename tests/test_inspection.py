@@ -61,6 +61,36 @@ class InspectionTests(unittest.TestCase):
         self.assertEqual(view["reuse"]["status"], "saved_scope_overlap_annotation")
         self.assertIn("not establish biological truth", view["review"]["note"])
 
+    def test_civic_first_explanation_preserves_study_type_and_complete_treatment_context(self):
+        pharos, civic = civic_fixture()
+        graph = build_graph(pharos, civic_snapshot=civic)
+        edge = next(e for e in graph["edges"] if e["record_kind"] == "variant_therapy_response"
+                    and len(e["evidence_record"]["therapies"]) > 1)
+        edge["evidence_record"]["evidenceLevel"] = "C"
+        before = deepcopy(graph)
+        view = inspect_selection(graph, edge["id"])
+        text = next(q["answer"] for q in view["questions"] if q["id"] == "what-shows")
+        self.assertIn("C — Case study", text)
+        record = edge["evidence_record"]
+        for therapy in record["therapies"]:
+            self.assertIn(therapy["name"], text)
+        for value in (record["molecularProfile"]["name"], record["disease"]["name"], record["evidenceDirection"]):
+            self.assertIn(value, text)
+        self.assertIn("ingredient filter does not isolate a single-drug effect", text)
+        self.assertIn("not a new confidence estimate", text)
+        self.assertEqual(view["review"]["state"], "candidate")
+        self.assertEqual(graph, before)
+
+    def test_unmapped_civic_level_is_preserved_without_a_clinical_category_guess(self):
+        pharos, civic = civic_fixture()
+        graph = build_graph(pharos, civic_snapshot=civic)
+        edge = next(e for e in graph["edges"] if e["record_kind"] == "variant_therapy_response")
+        edge["evidence_record"]["evidenceLevel"] = "SOURCE_FUTURE_LEVEL"
+        view = inspect_selection(graph, edge["id"])
+        text = next(q["answer"] for q in view["questions"] if q["id"] == "what-shows")
+        self.assertIn("SOURCE_FUTURE_LEVEL — Unmapped source level", text)
+        self.assertNotIn("— Clinical evidence", text)
+
     def test_lambourne_guide_retains_constructs_without_assigning_protein_roles(self):
         graph = lambourne_graph()
         observation = next(o for o in graph["assay_observations"] if o["assay_status"] == "detected")

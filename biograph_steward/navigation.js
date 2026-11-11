@@ -107,8 +107,29 @@ function guideLink(link){
 }
 function fieldList(fields){
   const list=el('dl',undefined,'guide-facts');
-  for(const [key,value] of Object.entries(fields||{})){
-    list.append(el('dt',key.replaceAll('_',' ')),el('dd',typeof value==='object'?JSON.stringify(value):value??'Not supplied'));
+  const rows=Array.isArray(fields)?fields:Object.entries(fields||{}).map(([key,value])=>({label:key.replaceAll('_',' '),value}));
+  const valueText=value=>{
+    if(value===null||value===undefined)return 'Not supplied';
+    if(typeof value!=='object')return String(value);
+    if(!Array.isArray(value)){
+      const label=typeof value.label==='string'?value.label:typeof value.name==='string'?value.name:null;
+      if(label)return label+(value.id!==null&&value.id!==undefined?' ('+String(value.id)+')':'');
+    }
+    return JSON.stringify(value,null,2);
+  };
+  for(const field of rows){
+    const value=field.value,description=el('dd');
+    if(Array.isArray(value)){
+      if(!value.length)description.append(el('span','No values supplied'));
+      else{const items=el('ul');for(const item of value)items.append(el('li',valueText(item)));description.append(items);}
+    }else description.append(el('span',valueText(value)));
+    // Readable labels never replace the original value, grouping or source locator.
+    if(Array.isArray(fields)||value!==null&&typeof value==='object'){
+      const raw=el('details');raw.append(el('summary',Array.isArray(fields)?'Original source field':'Complete recorded value'));
+      if(Array.isArray(field.columns))raw.append(el('p','Source columns: '+field.columns.join(', '),'small'));
+      raw.append(el('pre',JSON.stringify(Array.isArray(fields)?field:value,null,2)));description.append(raw);
+    }
+    list.append(el('dt',field.label??'Source field'),description);
   }
   return list;
 }
@@ -148,7 +169,10 @@ function renderSourceGuide(result){
   sources.append(el('h4','Source trail'));
   for(const source of result.source_records){
     const card=el('div',undefined,'source-record');
-    card.append(el('strong',(source.source_labels||[]).join(', ')||source.aggregator||'Source label not supplied'),el('p','Reference: '+source.reference_status.replaceAll('_',' ')));
+    card.append(el('strong','Source record'),
+      el('p','Retrieved through: '+(source.aggregator||'Not supplied')),
+      el('p','Source labels supplied: '+((source.source_labels||[]).join(', ')||'Not supplied')),
+      el('p','Reference: '+source.reference_status.replaceAll('_',' ')));
     for(const id of source.link_ids||[]){const link=links.get(id);if(link){const p=el('p');p.append(guideLink(link));card.append(p);}}
     sources.append(card);
   }

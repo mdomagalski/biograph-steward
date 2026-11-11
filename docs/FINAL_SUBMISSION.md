@@ -44,7 +44,7 @@ Evidence: [STRING comparison](evaluations/STRING_COMPONENT_COMPARISON_20261027.m
 
 The [November 11 release check](evaluations/release_candidate_20261111_summary.json) passed isolated package installation, service startup, cited questions and current real graph/decision export without a paid service or new source retrieval.
 
-## Six-slide presentation outline
+## Six-slide presentation draft
 
 | Slide | Main point | Visual or demonstration |
 |---|---|---|
@@ -54,6 +54,8 @@ The [November 11 release check](evaluations/release_candidate_20261111_summary.j
 | 4. What the measurements show | Native physical prioritization helps this task with lower coverage; matched context enrichment showed no consistent gain | AP and coverage table above |
 | 5. Preserve meaning across resources | Identifiers, source lineage, full assay conditions and reuse checks prevent unsupported strengthening or double counting | A source passport and shared-record example |
 | 6. Deliverables and limits | MIT software, reproducible graph/source packet, decisions and evaluation artifacts; experimental planning and biological pruning remain bounded gaps | Export contents and concise next scientific step |
+
+A six-slide editable presentation draft now uses current app captures and separate native charts for average precision and numeric coverage. The interpretation examples display labeled IntAct fields, distinct retrieval/source labels and the existing CIViC study level with its full treatment scope. The [interpretation delivery record](evaluations/interpretation_delivery_20261111_summary.json) documents these display changes and their source checks.
 
 The optional NVIDIA Nemotron/NAT integration belongs on slide 2 or in the technical appendix. The current planner is experimental; the primary demonstration uses supported guided tools. Show implemented methods and useful behavior before architecture details.
 

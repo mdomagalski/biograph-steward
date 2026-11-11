@@ -161,6 +161,7 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
         raise ValueError("Invalid workspace identifier.")
     kind, selected, assertion, edges, observations = _selection(graph, selection_id)
     links, link_index, omitted_links, sections, missing = [], {}, [], [], []
+    civic_findings = []
 
     def add_link(label, url, link_kind, *, local=False):
         if not url:
@@ -204,6 +205,22 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
                 if lid: source["link_ids"].append(lid)
             sections.append({"id": "civic-" + edge["id"], "title": "CIViC source context",
                              "text": context["therapy_scope_note"] + " " + CONTEXT_NOTE, "fields": context})
+            # Promote the existing source classifications and complete scope.
+            # Evidence levels describe study types; they are not our confidence.
+            profile = record.get("molecularProfile") or {}
+            disease = record.get("disease") or {}
+            disease_text = disease.get("name") or "not supplied"
+            if disease.get("doid"):
+                disease_text += " (DOID:" + str(disease["doid"]) + ")"
+            civic_findings.append(
+                context["evidence_id"] + ": source evidence level "
+                + str(context["evidence_level"] or "not supplied") + " — " + context["evidence_level_label"]
+                + ". Reported significance: " + str(context["significance"] or "not supplied")
+                + ". Source direction: " + str(context["evidence_direction"] or "not supplied")
+                + ". Complete molecular profile: " + str(profile.get("name") or "not supplied")
+                + ". Disease: " + disease_text
+                + ". Complete therapy list: " + (context["therapy_label"] or "not supplied")
+                + ". " + context["therapy_scope_note"])
         source["reference_status"] = ("references_supplied" if source["link_ids"] else "primary_reference_not_supplied")
         if not source["link_ids"]:
             missing.append({"field": "primary_reference", "edge_id": edge["id"],
@@ -277,7 +294,10 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
                   if reuse["records"] else reuse["note"] if reuse["status"] == "unverifiable_saved_annotation"
                   else "Source reuse remains unresolved for this selection. " + INDEPENDENCE_NOTE)
     questions = [
-        {"id": "what-shows", "question": "What does this record show?", "answer": summary, "link_ids": []},
+        {"id": "what-shows", "question": "What does this record show?",
+         "answer": (" ".join(civic_findings) + " Evidence levels are the source's study-type categories, "
+                    "not a new confidence estimate or local review decision.") if civic_findings else summary,
+         "link_ids": []},
         {"id": "review-state", "question": "Has it been accepted or biologically verified?", "answer": review_text, "link_ids": []},
         {"id": "source-trace", "question": "Where can I inspect its original support?", "answer":
             "Open the original record or publication when supplied. Saved source copies and locators show what this workspace actually retrieved; a source label alone is not a reference.", "link_ids": reference_links},
