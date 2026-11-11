@@ -6,8 +6,11 @@ The NVIDIA model can remain in Brev; no AWS GPU, Bedrock or Neptune is required.
 The optional [Neptune Database deployment](NEPTUNE.md) extends this workbench
 with a private persistent graph for the production-style comparison and
 snapshot/recovery test. That add-on requires a Paid Plan.
-The target account and template validation are verified; a live workbench has
-not been deployed and runtime behavior on AWS remains unverified.
+The November 11 live checkpoint deployed a `t3.large` workbench and the optional
+Neptune add-on on a Paid Plan. Automated access, persistence and recovery checks
+passed; see the [deployment assessment](../../docs/evaluations/AWS_NEPTUNE_20261111.md)
+for the tested scope and remaining checks. The CPU-only Free Plan path below
+remains a separate starting option.
 
 ## Start with the Free Plan
 
@@ -23,9 +26,11 @@ On November 11, 2026, authenticated read-only AWS checks verified the owned
 target account in **us-east-2**, `t3.small` eligibility, an available us-east-2a
 subnet with an active internet-gateway route, and an Amazon Linux 2023 x86_64
 AMI marked Free Tier eligible. Both templates passed real AWS template
-validation before this default-instance adjustment. No deployment resources
-have been created. Bootstrap, container memory sufficiency, app startup, SSM
-access, persistence and backups still need their live checks.
+validation before this default-instance adjustment. At that preflight checkpoint,
+no deployment resources had been created, and bootstrap, app startup, SSM access,
+persistence and backups had not been tested live. The later
+[live checkpoint](../../docs/evaluations/AWS_NEPTUNE_20261111.md) used `t3.large`;
+it does not establish sufficient memory for the `t3.small` default.
 
 Use the **owned** project selected during setup; a previously inspected shared
 project is excluded. Account identifiers and private preflight receipts belong
@@ -66,12 +71,12 @@ include this template's services. [Project policies](https://docs.aws.amazon.com
 still apply; no need for advanced features has been established. Keep the S3
 bucket, EC2 instance and EBS volume in the verified target region.
 
-### External promotional credits later
+### External promotional credits
 
-External challenge credit is separate and remains unredeemed. The Free Plan is
-ineligible for other promotional credits; only a later decision to redeem that
-award requires upgrading to a Paid Plan. The user completes plan changes and
-redemption privately. Private award details and codes are not stored here.
+External challenge-credit redemption and its status are handled privately.
+The Free Plan is ineligible for other promotional credits; the November 11
+Neptune checkpoint already uses a Paid Plan. Private award details, balances
+and codes are not stored here.
 
 The [AWS Settings redemption flow](https://docs.aws.amazon.com/accounts/latest/reference/view-redeem-credits.html)
 is Billing → Current charges → available credits → Redeem credit. Eligible
@@ -79,7 +84,7 @@ credits automatically apply across projects the user owns. On a Paid Plan,
 usage beyond applicable credits can incur charges. Its optional [project spend
 limits](https://docs.aws.amazon.com/accounts/latest/reference/create-spend-limit.html)
 exclude credits and apply to pre-tax charges; they are separate from the credit
-balance and from the current Free Plan cap.
+balance and from a Free Plan cap.
 
 ## Resources and access
 

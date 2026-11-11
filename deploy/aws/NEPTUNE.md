@@ -18,8 +18,11 @@ award emails or codes in the repository. [Supported services](https://docs.aws.a
 Use a selected account and region, not a default browser project. Verify
 `EXPECTED_ACCOUNT_ID`, the available credit and applicable plan before creation.
 Review current regional Neptune pricing, including storage, I/O, backups and
-the temporary second instance used for recovery. This template has not yet
-been deployed; local tests are not evidence of successful AWS startup.
+the temporary instance used for recovery. The
+[November 11 live assessment](../../docs/evaluations/AWS_NEPTUNE_20261111.md)
+records successful deployment, database reconstruction, failover and snapshot
+recovery for the frozen cohort. Repeat these checks for a new deployment;
+local tests alone do not establish successful AWS startup.
 
 The November 11 Ohio pricing API checkpoint returned $0.3287/hour for a
 Standard db.r6g.large writer: about $47.33 for six continuous days of database
@@ -217,9 +220,23 @@ backup. For an independent property-graph export, reuse AWS's
 [neptune-export CLI](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-export.html)
 on the VPC host; native engine export is currently for RDF. Export from a frozen
 graph or clone to obtain consistent results. No Batch export service is needed
-for the initial bounded cohort. Successful restore/export verification remains
-pending until executed on the deployed database.
+for the initial bounded cohort. The
+[November 11 live assessment](../../docs/evaluations/AWS_NEPTUNE_20261111.md)
+records successful export and snapshot-recovery verification for this mirror.
+Each new dataset or deployment still needs its own verification receipts.
 
 An optional second-AZ reader can be enabled with `EnableReader=true` after the
 single-writer comparison works. Only then run and record a real failover test;
 the default one-writer configuration is not presented as an HA deployment.
+
+Use `DBClusterMembers[].IsClusterWriter` to identify the current writer, rather
+than inferring its role from a CloudFormation logical name. Initial concurrent
+instance creation and later failovers can change which physical instance owns
+that role. Before setting `EnableReader=false`, confirm that the physical
+instance mapped to `WriterInstance` is the current writer; promote it and verify
+fresh reads first if necessary. Otherwise the update could remove the current
+writer. The application uses the cluster endpoint and reports failed reads
+without substituting local files. Reconnect and verify after promotion; brief
+read interruptions are expected during failover. See the
+[cluster-member and failover API](https://docs.aws.amazon.com/neptune/latest/userguide/api-clusters.html)
+and [endpoint guidance](https://docs.aws.amazon.com/neptune/latest/userguide/feature-overview-endpoints.html).

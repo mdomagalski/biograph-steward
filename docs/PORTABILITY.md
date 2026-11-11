@@ -1,6 +1,6 @@
 # Brev and model-provider portability — v0.8.0
 
-The core app remains standard-library Python 3.10+. Use Python 3.12 for the optional NeMo Agent Toolkit environment. The retained deployment supports explicit hosting configuration, persistent run/cache paths, model transport for the bounded planner, NVIDIA NIM request formatting and one optional NeMo workflow. It does not provision cloud resources or include a model.
+The core app remains standard-library Python 3.10+. Use Python 3.12 for the optional NeMo Agent Toolkit environment. The retained deployment supports explicit hosting configuration, persistent run/cache paths, model transport for the bounded planner, NVIDIA NIM request formatting and one optional NeMo workflow. The core app itself does not provision cloud resources or include a model; the optional AWS deployment templates are described below.
 
 ## Start in a Brev VM
 
@@ -167,12 +167,14 @@ This integrates our workflow into NeMo; it does not discover or authorize other 
 For a concrete CPU workbench deployment, use the [AWS deployment guide](../deploy/aws/README.md).
 Its CloudFormation templates provide private versioned S3 releases/backups,
 encrypted persistent EBS and SSM browser access using the existing Docker app.
-Local offline checks do not establish a live AWS deployment; account access,
-regional resource validation and the deployed smoke check remain required.
+The [November 11 live AWS checkpoint](evaluations/AWS_NEPTUNE_20261111.md)
+records deployment, automated access, persistence and recovery acceptance for
+the scoped workbench. Each new deployment still requires its own account,
+regional-resource and runtime checks.
 
 The HTTP transport can target a selected compatible Bedrock API endpoint using provider `api` and an explicitly supplied service API key, if the exact model/endpoint accepts that protocol and schema. This has not been tested against a live AWS account. [Bedrock API support](https://docs.aws.amazon.com/bedrock/latest/userguide/apis.html) varies by model and endpoint.
 
-An optional [Neptune Database query mirror](../deploy/aws/NEPTUNE.md) now preserves the complete saved graph through the official openCypher loader and IAM-authenticated AWS SDK. Its app view verifies source parity before exposing database records. Source packets and review ledgers remain authoritative; a successful mirror load is not biological validation. Live AWS runtime and recovery acceptance must be recorded separately from local checks.
+An optional [Neptune Database query mirror](../deploy/aws/NEPTUNE.md) now preserves the complete saved graph through the official openCypher loader and IAM-authenticated AWS SDK. Its app view verifies source parity before exposing database records. Source packets and review ledgers remain authoritative; a successful mirror load is not biological validation. The [November 11 assessment](evaluations/AWS_NEPTUNE_20261111.md) records successful live parity, failover and snapshot-recovery checks separately from local tests.
 
 Native Bedrock Converse/SigV4 integration and in-app S3 artifact export/import remain later work. The HTTP model transport does not read AWS credentials. The separate deployment scripts use the AWS CLI credential chain and EC2 instance role while preserving ordinary workspace files and scientific review state.
 
@@ -184,4 +186,4 @@ The counts above describe that historical deployment checkpoint, not the consoli
 
 On October 19, 2026 (EDT), the core app was also built and deployed on an actual Brev L40S VM: the 232-test Linux suite passed (one optional NeMo test skipped), protected UI and synthetic question checks passed, and unchanged saved data reopened after a real container restart. The SSH-forwarded browser-origin check passed as well. See the [deployment checkpoint](BREV_DEPLOYMENT.md) for configuration and the unresolved local-model driver requirement. No live model inference or real-source retrieval was performed in that deployment test.
 
-The GitHub Actions portability workflow checks Linux Python versions, installed package assets, the optional NeMo workflow and Docker startup/restart persistence using the deployment-smoke command above. The Brev run does not establish a successful GitHub Actions run. A live Brev Secure Link, actual workspace model and AWS service still require their own deployment checks.
+The GitHub Actions portability workflow checks Linux Python versions, installed package assets, the optional NeMo workflow and Docker startup/restart persistence using the deployment-smoke command above. The Brev run does not establish a successful GitHub Actions run. A live Brev Secure Link and actual workspace model require their own deployment checks; the [November 11 AWS assessment](evaluations/AWS_NEPTUNE_20261111.md) records the separate workbench and Neptune checks without model inference.
