@@ -8,7 +8,7 @@ BioGraph Steward turns a bounded Pharos research question into an inspectable gr
 
 Our evaluations distinguish useful task-specific ranking from graph-learning improvement. Native STRING physical scores improved retrospective prioritization with reduced numeric coverage; adding GO or Reactome context did not demonstrate a consistent prediction benefit. Those findings guided the app toward transparent evidence inspection and optional prioritization, with automatic scientific pruning left unvalidated.
 
-The [latest biological assessment](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md)
+The [graph-retention assessment](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md)
 compares preselected graph views against OpenCell coassociation calls. At the
 same pruning budget, the fixed experimental-support view retains 272/284
 strictly mapped positives, versus 269/284 for native confidence; Network
@@ -28,6 +28,15 @@ The small captured-Tdark subgroup does not share that primary-view gain:
 primary and native each retain 12/16 strictly mapped positives, while Network
 Enhancement retains 16/16. This post hoc descriptor is not a subgroup winner
 selection or proof of general benefit for understudied targets.
+
+A subsequent [published curated-signature comparison](evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md)
+increases scored perturbation-target cases from 31 to 39 out of 105 and improves
+study-weighted normalized rank from 0.680898 to 0.576408 across 14 evaluable
+study groups. The gain is mainly coverage-driven; shared-target ranking is
+mixed. This optional offline comparison is a supporting biological result,
+not a new default app inference feature, a baseline-versus-enriched GNN gain
+or whole-graph scientific accuracy. It preserves a failed initial execution
+and labels the corrected reader run as a technical replay after exposure.
 
 The current CRC source workspace adds 290 SIGNOR regulatory records with
 direction, sites, experimental organism and cell/tissue context. Twenty-four
@@ -61,6 +70,10 @@ Current local examples:
 
 These are source-specific demonstrations. The taste-receptor example is separate from the cancer question. Retain source licenses and attribution when delivering real packets; software MIT licensing does not relicense upstream data. Provide a bounded retrieval recipe when a packet cannot be redistributed.
 
+The current release ZIP is the small two-protein delivery check. Designate and
+verify the full CRC example and its separate matching package for judges;
+local run IDs are not a judge-accessible distribution route by themselves.
+
 ## Completed biological source enrichment
 
 The [versioned source increment](BIOLOGICAL_SOURCE_UPDATE.md) adds 858 STRING 12.5
@@ -91,6 +104,7 @@ remains failed. Both limitations remain part of the delivered assessment.
 | Native STRING 12.0 control, same consumed panel | AP 0.149732 functional versus 0.161223 physical; coverage 93.4% versus 75.2% | Direction agreed with the selected older-source control; independent validation remains unresolved |
 | Matched R-GCN GO-hierarchy comparison | AP 0.719833 versus 0.720135 on 1,751 measured pairs, with mixed seed effects | No consistent hierarchy benefit demonstrated |
 | Matched R-GCN Reactome-context comparison | AP 0.717794 versus 0.719605 on the consumed panel, with mixed seed effects | No consistent context benefit demonstrated |
+| Published curated-signature source choice | 31/105 → 39/105 scored target cases; study-weighted rank 0.680898 → 0.576408 | Positive coverage-driven perturbation recovery, mixed shared-target ranking; source reuse/label limitations and technical-replay boundary remain explicit |
 | Source delivery | Fresh IntAct assessment 4/8; separate consumed reliability replay 8/8 | Retrieval/source-preservation results; the replay does not replace the original assessment |
 
 The OpenCell table describes the original fixed views. The later connectivity
@@ -128,7 +142,7 @@ The optional NVIDIA Nemotron/NAT integration belongs on slide 2 or in the techni
 | App and demonstration | Working local five-tab workflow; source packets and historical desktop/mobile checks exist | Select the final example, record the walkthrough and provide a portable route for judges |
 | Graph and decisions | Current CRC packet preserves its original sources and has an all-abstention ledger. Separate historical primary/native pruned packages have complete source baselines and exhaustive keep/prune/abstain ledgers; safeguarded exports preserve all original components | Deliver clearly named source-workspace and experimental-pruning packages with their different scopes |
 | Standards | Explicit vocabulary references, bounded KGX profile and SSSOM audit | Link the implemented profile and documented conformance limits |
-| Scientific assessment | Fixed OpenCell and conditional HCT116 retention comparisons, matched learner controls and source-qualified context exist; biological accuracy and CRC-specific pruning benefit remain unproven | Present results, comparators and denominators together; preserve negative/mixed outcomes |
+| Scientific assessment | Retention comparisons, matched learner controls, source-qualified context and a positive curated-signature recovery comparison exist; whole-graph biological accuracy and CRC-specific pruning benefit remain unproven | Present source-choice utility separately from graph-learning/pruning benefit, with comparators, denominators and negative/mixed outcomes |
 | Final submission format | Supplied brief and Slack updates guide the handoff; exact final file schema remains unspecified | Follow any later organizer instructions; keep this inventory ready |
 
 The supplied rubric weights usability 40%, accuracy/pruning 30%, explainability 20% and standards 10%. Semi-autonomous construction is allowed. AWS, Neptune and PaperQA3 are not stated prerequisites. See the [current organizer/proposal crosswalk](PROJECT_ALIGNMENT.md).

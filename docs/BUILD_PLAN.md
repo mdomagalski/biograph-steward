@@ -1,5 +1,26 @@
 # Current build plan
 
+## Current boundary — November 12
+
+The bounded workbench has its main framework components, including a tested
+private AWS/Neptune mirror. Delivery still needs the designated judge-accessible
+CRC example, complete graph/source/decision handoff, final walkthrough and
+GitHub release. The two-protein smoke-test package does not by itself supply
+that full demonstration.
+
+The [curated-signature comparison](evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md)
+now gives a bounded positive recovery result: 31 → 39 scored target cases out
+of 105, with mixed shared-target performance. This is an optional evaluation,
+not a newly enabled app source or evidence of improved Pharos edge truth.
+The same-learner comparison is implemented but has no consistent enrichment
+gain; reliable free-text planning and biological pruning remain open.
+
+Continue biological qualification through source-scoped stable-ID mappings and
+a site/context inspection view over existing SIGNOR records, using the current
+provenance, mapping and review tools. Preserve source distinctions and old
+evaluation boundaries. The [updated crosswalk](PROJECT_ALIGNMENT.md) separates
+these scoped advances from broader proposal ambitions.
+
 ## Five-day completion focus — November 11
 
 Finish the delivered product and presentation before adding capabilities. The [final submission draft](FINAL_SUBMISSION.md) consolidates the demo, strongest measured results, artifact inventory and six-slide story. The [current alignment](PROJECT_ALIGNMENT.md) maps the implementation to the organizer criteria.
