@@ -68,6 +68,11 @@ catalysis assertion: one quoted H2B statement is background, and the Mst1/Mst2
 paper's direct PKC assay uses Mst2. Automatic substitution with STK4 would
 therefore overstate what was verified.
 
+The [subsequent primary review](SOURCE_CLAIM_QUALIFICATION_20261112.md)
+found that generic H2B also appears in an experimental assay/control in the
+Sirt1 paper. That refines the background-only implication without establishing
+the exact H2BC3/Ser15 assertion.
+
 Four flagged assertions share a citation/site with kinase-named records already
 in the old prior. This is an evidence-reuse warning, not proof of identical
 assay contexts or four independent experiments. Neither global MST1 nor global

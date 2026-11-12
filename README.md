@@ -35,6 +35,9 @@ The [coverage follow-up](docs/evaluations/KINASE_COVERAGE_GAPS_20261112.md)
 traces the missing scores and documents five source citation/entity mismatches.
 Its candidate expansion is held for review; identifier compatibility alone does
 not validate a biological assertion.
+The [source-claim qualification](docs/evaluations/SOURCE_CLAIM_QUALIFICATION_20261112.md)
+adds primary-evidence dispositions, construct metadata and a separately selected
+genetic-perturbation reference; its external comparison has not yet been run.
 
 ## Run the workbench
 

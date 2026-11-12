@@ -1,0 +1,218 @@
+{
+  "format": "biograph-steward.source-claim-and-external-reference-qualification.v1",
+  "created_at": "2026-11-12T16:37:43.973149+00:00",
+  "hash_policy": "Existing client.digest sorted compact JSON, ensure_ascii=True",
+  "scope": "Primary-evidence/source eligibility and external reference selection; no new biological performance comparison.",
+  "source_release": {
+    "name": "SIGNOR Oct2026",
+    "sha256": "63db6f65e9148e81354f564c3c3cdfc9ee45dc421553bd0926e5fae511ef9d06"
+  },
+  "claim_review": {
+    "primary_ledger_seal": "b087f9ad457b888ca1bfd54998f0f8698ea9a3326095ddeb87225b7b125ca23b",
+    "review_type": "AI-assisted scoped primary-source assessment, with separate agent review; not human-expert acceptance or new experimental replication.",
+    "claims": [
+      {
+        "source_record_id": "SIGNOR-171005",
+        "source_data_record_ordinal": 733,
+        "project_canonical_source_row_sha256": "c18cbc69e9a21645d407a240debd29a887c0a8c4878124d5f3cb956382c93984",
+        "reported_enzyme": "P26927",
+        "reported_target": "P33778",
+        "reported_site": "Ser15",
+        "source_PMID": "21212262",
+        "primary_entity_support": "The paper's MST1 is the mammalian STE20-like serine/threonine kinase, not P26927 hepatocyte growth factor-like protein.",
+        "substrate_site_qualification": "Generic H2B was used in an assay, but H2BC3 and canonical Ser15 are not established.",
+        "inference_disposition_recommendation": "Do not admit this exact literal-accession direct kinase/site assertion; preserve source observation and require a separately qualified corrected assertion.",
+        "graph_review_state_changed": false
+      },
+      {
+        "source_record_id": "SIGNOR-277179",
+        "source_data_record_ordinal": 13071,
+        "project_canonical_source_row_sha256": "964b20bc994e7f6486b1d7d619d5dd8e04c83510e16a4e86503aa484a42d90bd",
+        "reported_enzyme": "P26927",
+        "reported_target": "P17252",
+        "reported_site": "Ser226",
+        "source_PMID": "26414765",
+        "primary_entity_support": "The paper studies Hippo-family Mst1/Mst2 kinases, not P26927. The detailed phosphosite experiment names Mst2 rather than Mst1.",
+        "substrate_site_qualification": "PKCalpha Ser226 is supported in an Mst2 experiment; Mst1-specific direct catalysis is not established.",
+        "inference_disposition_recommendation": "Do not admit this exact literal-accession direct kinase/site assertion; preserve source observation and require a separately qualified corrected assertion.",
+        "graph_review_state_changed": false
+      },
+      {
+        "source_record_id": "SIGNOR-114289",
+        "source_data_record_ordinal": 30484,
+        "project_canonical_source_row_sha256": "e860156ef69a631a505a5e78a39a50bba59f660d988393797ce3a71de618abfa",
+        "reported_enzyme": "P26927",
+        "reported_target": "Q13043",
+        "reported_site": "Thr183",
+        "source_PMID": "11805089",
+        "primary_entity_support": "The paper concerns mammalian STE20-like MST kinase; source literal P26927 is a different protein.",
+        "substrate_site_qualification": "The site remains source-reported pending primary figure/construct validation; the accessible abstract does not prove the complete enzyme-site edge.",
+        "inference_disposition_recommendation": "Do not admit this exact literal-accession direct kinase/site assertion; preserve source observation and require a separately qualified corrected assertion.",
+        "graph_review_state_changed": false
+      },
+      {
+        "source_record_id": "SIGNOR-277178",
+        "source_data_record_ordinal": 34297,
+        "project_canonical_source_row_sha256": "810cce73c79d56d7f35f0a1e7aaf26a536149b32ffd1065753e48c407c6cc58e",
+        "reported_enzyme": "P26927",
+        "reported_target": "P17252",
+        "reported_site": "Thr228",
+        "source_PMID": "26414765",
+        "primary_entity_support": "The paper studies Hippo-family Mst1/Mst2 kinases, not P26927. The detailed phosphosite experiment names Mst2 rather than Mst1.",
+        "substrate_site_qualification": "PKCalpha Thr228 is supported in an Mst2 experiment; Mst1-specific direct catalysis is not established.",
+        "inference_disposition_recommendation": "Do not admit this exact literal-accession direct kinase/site assertion; preserve source observation and require a separately qualified corrected assertion.",
+        "graph_review_state_changed": false
+      },
+      {
+        "source_record_id": "SIGNOR-250265",
+        "source_data_record_ordinal": 37677,
+        "project_canonical_source_row_sha256": "371ed166a41344cc52c5cf4bfec08852495060386fb9e2c611e0f745dbd769b3",
+        "reported_enzyme": "Q15118",
+        "reported_target": "Q16513",
+        "reported_site": "Thr816",
+        "source_PMID": "10753910",
+        "primary_entity_support": "The primary title/abstract explicitly identifies 3-phosphoinositide-dependent protein kinase1, current PDPK1/O15530, not mitochondrial PDK1/Q15118.",
+        "substrate_site_qualification": "The site remains source-reported pending primary figure/construct validation; the accessible abstract does not prove the complete enzyme-site edge.",
+        "inference_disposition_recommendation": "Do not admit this exact literal-accession direct kinase/site assertion; preserve source observation and require a separately qualified corrected assertion.",
+        "graph_review_state_changed": false
+      }
+    ],
+    "generic_H2B_experimental_use_confirmed_in_primary_text": true,
+    "specific_H2BC3_Ser15_experiment_established": false,
+    "kinase_named_counterparts_are_independent_or_automatically_validated": false,
+    "global_MST1_or_PDK1_replacement_justified": false
+  },
+  "existing_grounding_method_check": {
+    "tool": "Official Gilda/FamPlex/Adeft service",
+    "url": "https://grounding.indra.bio/",
+    "hosted_advertised_version": "1.4.1",
+    "reviewed_documentation_version": "1.6.1",
+    "version_equivalence_assumed": false,
+    "model_catalog_count": 1008,
+    "initial_requests_including_name_only": 7,
+    "initial_name_only_requests": 2,
+    "citation_context_followup_requests": 2,
+    "total_grounding_requests": 9,
+    "metadata_requests": 2,
+    "short_result_seal": "b92674da08cdd863f8379758d9ec4a18a8c576575202c40a91b7398a71af183f",
+    "citation_context_result_seal": "fe494e253c6245e39207d4cea174d1ea2e9ec8a4a4594e7a3d964279519e647c",
+    "final_interpretation_seal": "0e0ba85e08c172c891e621e05e31654c22f9911082ef3e1abfa3fc95b197bcec",
+    "observed_resolution": "Abbreviated PDH source sentence suggested PDPK1; actual primary title+abstract changed top candidate to PDK1. PRK citation context retained PDPK1. MST1 inspected cases rank curated STK4 without context disambiguation.",
+    "suitable_role": "Ranked conflict candidates for source review, with citation context and all native candidates preserved.",
+    "scientific_accuracy_or_generalization_estimated": false,
+    "specific_training_PMID_overlap_known": false,
+    "gene_grounding_establishes_protein_construct_site_or_catalytic_truth": false,
+    "automatic_source_replacements": 0
+  },
+  "signature_source_fit": {
+    "decision_file_sha256": "b309a6295674ad21601787484455940aeadf1c3a8aba444ea10ce286b666ec48",
+    "preferred_direction": "Curated evidence grounding first, then a source-qualified curated comparator; iKiP remains a separate in-vitro signature comparator rather than default prior replacement",
+    "typed_layer": "kinase-gene-labelled, site-centric in-vitro signature membership",
+    "eligible_in_principle": true,
+    "activity_readiness_demonstrated": false,
+    "native_cell_catalytic_edges_qualified": false,
+    "candidate_activated": false,
+    "source_construct_gap_partly_resolved": true,
+    "parent_S5_sha256": "82f7ca9a665a2447b71a37d091eaa50423f35e153eda19536472c62f62e72ff5",
+    "primary_parent": {
+      "PMID": "31324866",
+      "DOI": "10.1038/s41598-019-46385-4",
+      "accession": "PXD011366"
+    },
+    "reanalysis": {
+      "PMID": "35608653",
+      "DOI": "10.1021/acs.jproteome.2c00198",
+      "is_new_independent_experiment": false
+    },
+    "eligibility_rule": "Published comparator requires at least five distinct measured target sites per kinase; this is not an accuracy guarantee and was not retroactively applied to the completed study.",
+    "published_comparator": {
+      "primary_DOI": "10.1038/s41467-025-59779-y",
+      "author_correction_DOI_checked": "10.1038/s41467-025-62094-1",
+      "correction_interpretation": "Figure4-6 caption headings were reordered; no performance-result reversal stated",
+      "published_code_commit": "cb307997317fc7e296f1a5537269928351e24633",
+      "release": "natcomms",
+      "archive_version_DOI": "10.5281/zenodo.15118823",
+      "no_new_inference_method_recommended": true,
+      "iKiP_coverage_does_not_establish_accuracy": true,
+      "curated_combination_terms_and_exact_input_release_still_to_be_qualified": true,
+      "OmniPath_subset_not_yet_shown_superior_in_this_project": true
+    },
+    "source_rights": "iKiP CC BY-NC4.0 content and row-derived audit remain private/ignored; software MIT is separate. No NC rows or private candidate match counts are included."
+  },
+  "external_reference": {
+    "study": {
+      "pmid": "41669566",
+      "doi": "10.1080/19768354.2026.2625524",
+      "pmcid": "PMC12885026",
+      "kind": "Human HCT116 stable genetic perturbation, paired total proteome/phosphoproteome",
+      "primary_targets": [
+        "MAPK1",
+        "PLK1",
+        "PAK4"
+      ],
+      "separate_context_target": "PIK3CA",
+      "license": "CC BY-NC4 article/supplement metadata; keep external workbooks private/untracked, separate from MIT software.",
+      "published_workbooks_transport_verified": true,
+      "visible_S2_sheet": "Supplementary table S2",
+      "visible_S2_xml": "xl/worksheets/sheet2.xml",
+      "first_S2_sheet_is_hidden_protein_table": true,
+      "no_sample_values_or_row_counts_inspected": true
+    },
+    "selection_seal": "10465342fd12416a16bc79015da60c400ecff36a00ff641cca58900229c299e8",
+    "selection_preceded_quantitative_workbook_download": true,
+    "header_receipt_seal": "45650189a0741dc6bd85d922f84f422c676799cd4c9d9483c49bec26406e7ec6",
+    "final_eligibility_seal": "830edae4648a51ed2bff5cea7fc0507dbcc5bc091062d1e9f96ed3fb489215a0",
+    "exposure_clarification_seal": "4d6e5b88e090bb5e68bdb22963287f0b5331981faf437245fde38abbfe3f4316",
+    "incidental_qualitative_search_exposure": true,
+    "biologically_blinded_literature_discovery": false,
+    "quantitative_outcomes_or_author_kinase_score_rows_inspected": false,
+    "workbook_metadata": [
+      {
+        "filename": "TACS_A_2625524_SM2316.xlsx",
+        "sha256": "168017da3b175df6837bcb0d5f65471bab998e4e8ac0b946e3fc04dac6bfc5b7",
+        "bytes": 11083625,
+        "visible_sheet": "Supplementary table S1",
+        "worksheet": "xl/worksheets/sheet1.xml"
+      },
+      {
+        "filename": "TACS_A_2625524_SM2317.xlsx",
+        "sha256": "75685d5aa9850bfcac5dbb610634a7437fb78090caf8bd1f80bed5f42e142fd0",
+        "bytes": 12412014,
+        "visible_sheet": "Supplementary table S2",
+        "worksheet": "xl/worksheets/sheet2.xml"
+      }
+    ],
+    "explicit_selected_PMID_matches_in_frozen_SIGNOR": 0,
+    "exact_zero_citation_match_proves_no_untagged_reuse": false,
+    "assay_limits": [
+      "Small exploratory external target/signature recovery only; no confirmatory or general biological-gain claim.",
+      "Stable-clone adaptation, unspecified elapsed post-editing time, unspecified independent-clone replication, and no declared site-localization/FDR threshold remain explicit.",
+      "PIK3CA protein phosphosite response is a pathway-context endpoint, not a direct lipid activity measurement.",
+      "A downstream signature score does not establish direct catalytic substrate truth or endogenous target engagement.",
+      "Keep all three declared protein-kinase targets and abstentions; do not replace the reference on poor coverage or declare other kinases true negatives.",
+      "Final method/source/mapping/protein-adjustment/comparator/metric hashes and selected-study source exclusion must be pinned before row access or inference. This is an ordinary existing workflow gate, not a request for new broad research."
+    ],
+    "reserve": "VRK1PXD030599 remains HOLD: official human-vs-Mouse processing metadata conflict;43-file raw/pepXML manifest lacks advertised processed matrix/sample map; matched total-protein output unverified.",
+    "execution_status": "Not run. Pin source/signature/study exclusions, sequence/site mapping, measured-site eligibility, protein-adjustment policy, comparator and metrics before outcome-row access."
+  },
+  "execution": {
+    "new_activity_inference_runs": 0,
+    "Brev_used": false,
+    "new_package_installations": 0,
+    "graph_changes": 0,
+    "biological_performance_improvement_claimed": false,
+    "previous_comparison_unchanged": true
+  },
+  "primary_links": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3044949/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC4618176/",
+    "https://pubmed.ncbi.nlm.nih.gov/11805089/",
+    "https://pubmed.ncbi.nlm.nih.gov/10753910/",
+    "https://pubmed.ncbi.nlm.nih.gov/16436377/",
+    "https://doi.org/10.1038/s41598-019-46385-4",
+    "https://doi.org/10.1021/acs.jproteome.2c00198",
+    "https://doi.org/10.1038/s41467-025-59779-y",
+    "https://doi.org/10.1080/19768354.2026.2625524"
+  ],
+  "content_sha256": "8dcf7028bec32a49fea098c6fae88b63400ba02f611180a1dcb07fee40f21d23"
+}
