@@ -76,6 +76,12 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 
 ## Current capabilities
 
+- [Native GO context and ontology qualification](docs/SCIENTIFIC_QUALIFICATION.md):
+  inspect complete native GOA qualifiers alongside historical Pharos records,
+  and export a separate active-GO-ID view. The executed CRC view excludes 298
+  obsolete-ID records with an exhaustive ledger; 167 explicit replacement
+  proposals remain unapplied. These checks establish source/ontology semantics,
+  not independent biological accuracy.
 - [Automatic task qualification](docs/AUTOMATIC_TASK_QUALIFICATION.md): create a
   separate source-reported direct human phosphoregulation graph with complete
   keep/prune/abstain decisions. The first full CRC view excludes 76 explicitly

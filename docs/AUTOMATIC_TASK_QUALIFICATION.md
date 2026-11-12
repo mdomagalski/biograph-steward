@@ -92,3 +92,7 @@ record. Original sources and their separate redistribution terms remain.
 
 The [executed CRC assessment](evaluations/AUTOMATIC_QUALIFICATION_20261112.md)
 records the first full graph, independent replay and remaining scientific gaps.
+
+The subsequent [GO qualification workflow](SCIENTIFIC_QUALIFICATION.md) adds
+native context recovery and a separate ontology-currentness view. It does not
+change this phosphoregulation profile or combine its exclusions by default.

@@ -97,6 +97,18 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--packet", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
     p.add_argument("--actor", default="BioGraph Steward deterministic task qualification")
+    p = sub.add_parser("qualify-go-context", help="Recover native GAF qualifiers beside the saved graph; compatible tuples do not establish historical record identity.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--gaf", type=Path, required=True)
+    p.add_argument("--gaf-sha256", required=True)
+    p.add_argument("--source-url")
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("qualify-go-ontology", help="Create a separate view with active GO IDs from a pinned ontology; not scientific truth scoring.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--ontology", type=Path, required=True)
+    p.add_argument("--ontology-sha256", required=True)
+    p.add_argument("--actor", default="BioGraph Steward GO ontology compatibility")
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("regulatory-sites", help="Inspect reported sites, phosphate change and experimental context from saved SIGNOR evidence.")
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--protein", default="UniProtKB:P00533")
@@ -378,6 +390,26 @@ def main(argv: list[str] | None = None) -> int:
             report = qualify_task(args.packet, args.out, actor=args.actor)
             print(json.dumps({'output': str(args.out.resolve()), 'profile': report['profile'],
                               'counts': report['counts'], 'retained_package': report['retained_package'],
+                              'report_sha256': report['content_sha256'],
+                              'independent_biological_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'qualify-go-context':
+            from .go_qualification import qualify_go_context
+            report = qualify_go_context(args.packet, args.gaf, args.out,
+                                        expected_gaf_sha256=args.gaf_sha256,
+                                        source_url=args.source_url)
+            print(json.dumps({'output': str(args.out.resolve()),
+                              'report_sha256': report['content_sha256'],
+                              'historical_record_identity_established': False,
+                              'independent_biological_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'qualify-go-ontology':
+            from .go_ontology_qualification import qualify_go_ontology
+            report = qualify_go_ontology(args.packet, args.ontology, args.out,
+                                         ontology_sha256=args.ontology_sha256,
+                                         actor=args.actor)
+            print(json.dumps({'output': str(args.out.resolve()), 'counts': report['counts'],
+                              'retained_package': report['retained_package'],
                               'report_sha256': report['content_sha256'],
                               'independent_biological_accuracy_established': False}, indent=2))
             return 0

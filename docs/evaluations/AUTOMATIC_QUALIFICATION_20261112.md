@@ -113,3 +113,7 @@ reference with adequate coverage, separate from the data used to make decisions.
 The [aggregate summary](automatic_qualification_20261112_summary.json) binds
 the implementation and executed artifacts. Detailed native decisions and
 source/reference receipts remain local; no upstream source rights are changed.
+
+The subsequent [scientific qualification increment](SCIENTIFIC_GAPS_20261112.md)
+has now recovered native GO context alongside the original graph and executed
+an active-ID ontology view. The original task result above remains unchanged.

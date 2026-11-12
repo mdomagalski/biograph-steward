@@ -103,6 +103,13 @@ complete graph/ledger: 175 eligible records, 76 task exclusions and 39 unknowns
 within SIGNOR; all other 16,695 records remain unassessed and retained. This
 is contextual selection, not independent scientific-error detection.
 
+The [GO scientific qualification increment](evaluations/SCIENTIFIC_GAPS_20261112.md)
+adds complete native GAF context and a separate ontology-currentness view:
+298 obsolete-ID GO records are excluded, with 167 unapplied explicit replacement
+proposals. It preserves original evidence and unknown historical joins. This
+addresses a demonstrated semantic issue without claiming experimental truth
+or whole-graph accuracy.
+
 Broader entailment/contradiction verification, calibrated confidence, validated
 automatic scientific-error pruning, independent usability success and general autonomous
 maintenance remain proposal ambitions. They are not delivered merely by the

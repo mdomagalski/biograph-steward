@@ -2,12 +2,16 @@
 
 ## Current boundary — November 12
 
-The [automatic qualification assessment](evaluations/AUTOMATIC_QUALIFICATION_20261112.md)
-now supplies a complete task-specific decision ledger and actual retained graph.
-The next scientific priority is predicate/context-matched reference coverage,
-including recovery of missing native GO qualifiers for the graph's large
-annotation component. Current source eligibility and positive-only retention
-must not be reported as whole-graph accuracy or validated false-edge pruning.
+The [scientific qualification increment](evaluations/SCIENTIFIC_GAPS_20261112.md)
+now preserves 15,888 native GOA records, inventories compatible context for every
+original GO edge, and materializes a separate active-ID graph excluding 298
+obsolete-ID records. Historical identity remains unresolved even for unique
+matches; replacement proposals remain separate. The earlier
+[source/task assessment](evaluations/AUTOMATIC_QUALIFICATION_20261112.md) is unchanged.
+The remaining scientific priority is predicate/context-matched independent
+reference coverage and native relation/taxon/reference qualification. Current
+source eligibility, ontology currency and positive-only retention must not be
+reported as whole-graph accuracy or validated scientific-error pruning.
 
 The bounded workbench has its main framework components, including a tested
 private AWS/Neptune mirror. The complete 99-target CRC workspace is now the
