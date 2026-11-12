@@ -97,7 +97,7 @@ its coverage is unknown, not zero. No interaction rows or new quantitative
 outcomes were opened.
 
 The [official IntAct curation manual](https://raw.githubusercontent.com/intact-portal/intact-portal-documentation/master/assets/intact-curation-manual.pdf)
-links negative experiments with positive controls and preserves experimental
+links negative observations to supporting positive experiments and preserves experimental
 conditions and isoforms. Such observations could support a separately scoped
 physical-interaction test after qualification. They cannot label regulation,
 GO or functional coassociation as false. Negatome's structural noncontact pairs
