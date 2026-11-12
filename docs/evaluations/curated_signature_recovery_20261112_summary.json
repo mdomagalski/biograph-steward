@@ -1,0 +1,554 @@
+{
+  "format": "biograph-steward.curated-signature-recovery-summary.v1",
+  "created_at": "2026-11-12T18:42:24.707408+00:00",
+  "outcome": "Bounded positive source-choice target-recovery and coverage result; not general scientific accuracy or graph-pruning gain",
+  "reference": {
+    "publication": "https://doi.org/10.1093/bioinformatics/btx082",
+    "benchmark_publication": "https://doi.org/10.1038/s41467-025-59779-y",
+    "data": "https://zenodo.org/records/14824013",
+    "known_exposed_parents_excluded": 7,
+    "additional_source_cited_parent_excluded": "20068231",
+    "selected_parents": 16,
+    "selected_conditions": 65,
+    "supplied_selected_reference_records": 118,
+    "qualified_evaluable_parents": 14,
+    "qualified_evaluable_conditions": 61,
+    "qualified_target_cases": 105,
+    "qualified_target_genes": 20,
+    "unresolved_reference_records": 13,
+    "unresolved_reference_reason": "Frozen resolver rejects conflicting secondary-registry aliases even for approved primary names; these are not model negatives or absence of biology",
+    "unresolved_target_tokens": [
+      "ATR",
+      "PRKACA",
+      "RAF1"
+    ],
+    "unscorable_parent_PMIDs": [
+      "24324209",
+      "25003641"
+    ]
+  },
+  "source_profiles": {
+    "original_signor": {
+      "source_reported_regulator_genes": 373,
+      "compatible_binary_memberships": 6114
+    },
+    "published_curated": {
+      "source_reported_regulator_genes": 381,
+      "compatible_binary_memberships": 11727,
+      "native_rows": 15814,
+      "compatible_source_rows": 11741,
+      "compatible_rows_missing_secondary_flank": 71,
+      "curated_origin_reuse_unresolved": true
+    }
+  },
+  "common_candidate_genes": 420,
+  "minimum_finite_distinct_sites": 5,
+  "method": "Published raw RoKAI zscore, identical measured-site background, no globalmean subtraction, imputation, proteinadjustment or propagation",
+  "metric_weighting": "Mean targets percondition, mean conditions perparent, equalparent mean; missing scores rank420",
+  "primary_parent_macros": {
+    "original_signor": {
+      "parents": {
+        "18669648": {
+          "normalized_rank": 0.002380952380952381,
+          "direction_agreement": 1.0,
+          "signed_top5": 1.0,
+          "target_score_coverage": 1.0,
+          "conditions": 1,
+          "cases": 1
+        },
+        "21955146": {
+          "normalized_rank": 0.5758503401360544,
+          "direction_agreement": 0.2857142857142857,
+          "signed_top5": 0.2857142857142857,
+          "target_score_coverage": 0.42857142857142855,
+          "conditions": 1,
+          "cases": 7
+        },
+        "22210691": {
+          "normalized_rank": 0.43954081632653064,
+          "direction_agreement": 0.5357142857142857,
+          "signed_top5": 0.2857142857142857,
+          "target_score_coverage": 0.5714285714285714,
+          "conditions": 4,
+          "cases": 28
+        },
+        "22424773": {
+          "normalized_rank": 0.002380952380952381,
+          "direction_agreement": 1.0,
+          "signed_top5": 1.0,
+          "target_score_coverage": 1.0,
+          "conditions": 2,
+          "cases": 2
+        },
+        "23592840": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 5,
+          "cases": 12
+        },
+        "23612710": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 4,
+          "cases": 4
+        },
+        "23898821": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 2,
+          "cases": 2
+        },
+        "24117733": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 2,
+          "cases": 2
+        },
+        "24204825": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 6,
+          "cases": 6
+        },
+        "24247654": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 2,
+          "cases": 4
+        },
+        "25247763": {
+          "normalized_rank": 0.004761904761904762,
+          "direction_agreement": 1.0,
+          "signed_top5": 1.0,
+          "target_score_coverage": 1.0,
+          "conditions": 1,
+          "cases": 1
+        },
+        "25850435": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 9,
+          "cases": 12
+        },
+        "26060313": {
+          "normalized_rank": 0.5076530612244897,
+          "direction_agreement": 0.35714285714285715,
+          "signed_top5": 0.21428571428571427,
+          "target_score_coverage": 0.5,
+          "conditions": 14,
+          "cases": 16
+        },
+        "26546556": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 8,
+          "cases": 8
+        }
+      },
+      "parent_count": 14,
+      "case_count": 105,
+      "condition_count": 61,
+      "macro": {
+        "normalized_rank": 0.6808977162293488,
+        "direction_agreement": 0.29846938775510207,
+        "signed_top5": 0.2704081632653061,
+        "target_score_coverage": 0.32142857142857145
+      }
+    },
+    "published_curated": {
+      "parents": {
+        "18669648": {
+          "normalized_rank": 0.002380952380952381,
+          "direction_agreement": 1.0,
+          "signed_top5": 1.0,
+          "target_score_coverage": 1.0,
+          "conditions": 1,
+          "cases": 1
+        },
+        "21955146": {
+          "normalized_rank": 0.5853741496598639,
+          "direction_agreement": 0.2857142857142857,
+          "signed_top5": 0.14285714285714285,
+          "target_score_coverage": 0.42857142857142855,
+          "conditions": 1,
+          "cases": 7
+        },
+        "22210691": {
+          "normalized_rank": 0.5085034013605442,
+          "direction_agreement": 0.5,
+          "signed_top5": 0.21428571428571427,
+          "target_score_coverage": 0.5,
+          "conditions": 4,
+          "cases": 28
+        },
+        "22424773": {
+          "normalized_rank": 0.002380952380952381,
+          "direction_agreement": 1.0,
+          "signed_top5": 1.0,
+          "target_score_coverage": 1.0,
+          "conditions": 2,
+          "cases": 2
+        },
+        "23592840": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 5,
+          "cases": 12
+        },
+        "23612710": {
+          "normalized_rank": 0.2517857142857143,
+          "direction_agreement": 0.75,
+          "signed_top5": 0.75,
+          "target_score_coverage": 0.75,
+          "conditions": 4,
+          "cases": 4
+        },
+        "23898821": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 2,
+          "cases": 2
+        },
+        "24117733": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 2,
+          "cases": 2
+        },
+        "24204825": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 6,
+          "cases": 6
+        },
+        "24247654": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 2,
+          "cases": 4
+        },
+        "25247763": {
+          "normalized_rank": 0.002380952380952381,
+          "direction_agreement": 1.0,
+          "signed_top5": 1.0,
+          "target_score_coverage": 1.0,
+          "conditions": 1,
+          "cases": 1
+        },
+        "25850435": {
+          "normalized_rank": 0.34735449735449736,
+          "direction_agreement": 0.6666666666666666,
+          "signed_top5": 0.2222222222222222,
+          "target_score_coverage": 0.6666666666666666,
+          "conditions": 9,
+          "cases": 12
+        },
+        "26060313": {
+          "normalized_rank": 0.36955782312925173,
+          "direction_agreement": 0.6428571428571429,
+          "signed_top5": 0.21428571428571427,
+          "target_score_coverage": 0.6428571428571429,
+          "conditions": 14,
+          "cases": 16
+        },
+        "26546556": {
+          "normalized_rank": 1.0,
+          "direction_agreement": 0.0,
+          "signed_top5": 0.0,
+          "target_score_coverage": 0.0,
+          "conditions": 8,
+          "cases": 8
+        }
+      },
+      "parent_count": 14,
+      "case_count": 105,
+      "condition_count": 61,
+      "macro": {
+        "normalized_rank": 0.5764084602094807,
+        "direction_agreement": 0.4175170068027211,
+        "signed_top5": 0.32454648526077096,
+        "target_score_coverage": 0.42772108843537415
+      }
+    }
+  },
+  "unweighted_scored_target_cases": {
+    "original_signor": 31,
+    "published_curated": 39
+  },
+  "case_transitions": {
+    "both_abstain": 62,
+    "both_scored": 27,
+    "lost_score": 4,
+    "newly_scored": 12,
+    "newly_scored_expected_direction_matches": 12
+  },
+  "parent_rank_tradeoff": {
+    "improve": 4,
+    "tie": 8,
+    "worsen": 2
+  },
+  "common_finite_sensitivity": {
+    "candidate_counts": {
+      "1292_272": 18,
+      "1293_272": 18,
+      "1294_272": 18,
+      "1295_272": 18,
+      "1296_272": 18,
+      "1297_272": 18,
+      "1299_272": 18,
+      "1300_272": 18,
+      "1301_272": 18,
+      "1302_272": 18,
+      "1303_272": 18,
+      "1304_272": 18,
+      "1305_272": 18,
+      "1309_272": 18,
+      "1320_277": 16,
+      "1321_277": 21,
+      "1322_277": 19,
+      "1323_277": 16,
+      "1324_277": 21,
+      "1325_277": 19,
+      "1326_277": 15,
+      "1327_277": 21,
+      "1328_277": 19,
+      "1329_278": 8,
+      "1329_279": 8,
+      "1330_278": 8,
+      "1330_279": 8,
+      "1331_278": 8,
+      "1331_279": 8,
+      "1332_278": 8,
+      "1332_279": 8,
+      "186_57": 25,
+      "186_60": 27,
+      "318_87": 4,
+      "318_93": 4,
+      "321_87": 4,
+      "321_93": 4,
+      "324_87": 3,
+      "327_87": 3,
+      "363_105": 6,
+      "366_108": 5,
+      "369_111": 5,
+      "372_111": 7,
+      "375_111": 6,
+      "378_111": 5,
+      "390_120": 22,
+      "399_129": 21,
+      "411_141": 10,
+      "414_141": 10,
+      "417_141": 10,
+      "420_141": 10,
+      "423_141": 10,
+      "426_144": 19,
+      "426_153": 28,
+      "429_144": 20,
+      "429_153": 28,
+      "474_177": 8,
+      "477_177": 8,
+      "480_177": 8,
+      "483_180": 12,
+      "483_183": 21,
+      "696_222": 13,
+      "702_225": 6,
+      "714_78": 9,
+      "72_72": 15
+    },
+    "case_count": 27,
+    "parent_macros": {
+      "original_signor": {
+        "parents": {
+          "18669648": {
+            "normalized_rank": 0.06666666666666667,
+            "direction_agreement": 1.0,
+            "signed_top5": 1.0,
+            "target_score_coverage": 1.0,
+            "conditions": 1,
+            "cases": 1
+          },
+          "21955146": {
+            "normalized_rank": 0.48148148148148145,
+            "direction_agreement": 0.6666666666666666,
+            "signed_top5": 0.6666666666666666,
+            "target_score_coverage": 1.0,
+            "conditions": 1,
+            "cases": 3
+          },
+          "22210691": {
+            "normalized_rank": 0.29218358395989974,
+            "direction_agreement": 1.0,
+            "signed_top5": 0.5833333333333333,
+            "target_score_coverage": 1.0,
+            "conditions": 4,
+            "cases": 14
+          },
+          "22424773": {
+            "normalized_rank": 0.046536796536796536,
+            "direction_agreement": 1.0,
+            "signed_top5": 1.0,
+            "target_score_coverage": 1.0,
+            "conditions": 2,
+            "cases": 2
+          },
+          "25247763": {
+            "normalized_rank": 0.16666666666666666,
+            "direction_agreement": 1.0,
+            "signed_top5": 1.0,
+            "target_score_coverage": 1.0,
+            "conditions": 1,
+            "cases": 1
+          },
+          "26060313": {
+            "normalized_rank": 0.3611111111111111,
+            "direction_agreement": 0.6666666666666666,
+            "signed_top5": 0.3333333333333333,
+            "target_score_coverage": 1.0,
+            "conditions": 6,
+            "cases": 6
+          }
+        },
+        "parent_count": 6,
+        "case_count": 27,
+        "condition_count": 15,
+        "macro": {
+          "normalized_rank": 0.23577438440377038,
+          "direction_agreement": 0.8888888888888888,
+          "signed_top5": 0.7638888888888888,
+          "target_score_coverage": 1.0
+        }
+      },
+      "published_curated": {
+        "parents": {
+          "18669648": {
+            "normalized_rank": 0.06666666666666667,
+            "direction_agreement": 1.0,
+            "signed_top5": 1.0,
+            "target_score_coverage": 1.0,
+            "conditions": 1,
+            "cases": 1
+          },
+          "21955146": {
+            "normalized_rank": 0.5925925925925926,
+            "direction_agreement": 0.6666666666666666,
+            "signed_top5": 0.3333333333333333,
+            "target_score_coverage": 1.0,
+            "conditions": 1,
+            "cases": 3
+          },
+          "22210691": {
+            "normalized_rank": 0.23483709273182957,
+            "direction_agreement": 1.0,
+            "signed_top5": 0.41666666666666663,
+            "target_score_coverage": 1.0,
+            "conditions": 4,
+            "cases": 14
+          },
+          "22424773": {
+            "normalized_rank": 0.046536796536796536,
+            "direction_agreement": 1.0,
+            "signed_top5": 1.0,
+            "target_score_coverage": 1.0,
+            "conditions": 2,
+            "cases": 2
+          },
+          "25247763": {
+            "normalized_rank": 0.16666666666666666,
+            "direction_agreement": 1.0,
+            "signed_top5": 1.0,
+            "target_score_coverage": 1.0,
+            "conditions": 1,
+            "cases": 1
+          },
+          "26060313": {
+            "normalized_rank": 0.27777777777777773,
+            "direction_agreement": 1.0,
+            "signed_top5": 0.5,
+            "target_score_coverage": 1.0,
+            "conditions": 6,
+            "cases": 6
+          }
+        },
+        "parent_count": 6,
+        "case_count": 27,
+        "condition_count": 15,
+        "macro": {
+          "normalized_rank": 0.2308462654953883,
+          "direction_agreement": 0.9444444444444445,
+          "signed_top5": 0.7083333333333334,
+          "target_score_coverage": 1.0
+        }
+      }
+    }
+  },
+  "measurement_compatibility": {
+    "native_rows": 61180,
+    "mapping_status_counts": {
+      "qualified": 52311,
+      "quarantined": 5138,
+      "protein_context_unresolved": 3731
+    },
+    "qualified_unique_gene_coordinate_proxies": 52311,
+    "ENSP_to_canonical_isoform_verified": false
+  },
+  "execution": {
+    "initial_failed_attempt_retained": true,
+    "corrected_execution": "Technical replay after measurement access and start of reference-label decoding; no source/threshold/metric tuning",
+    "V1_plan_seal": "36263817d869eaf7e920208ee91a8268302d85c68fdb16a95f9433e559d62999",
+    "V2_plan_seal": "334eb232aecdeca11640c5a8741d8c035b43d6c240bb9170aeddc34b19a488e5",
+    "prediction_seal": "d763490dce4e1dfaf6cff647a2369b612bc92e6f6bb733c453cfc1011851cf9e",
+    "result_seal": "7c1e41db696344a5376112cbfcb835839db96e7535e8d8146e9e266a839ee3a3",
+    "independent_recount_seal": "0dc3a08b235d78789af93e750072678f263468177e0808fb35e41948142cbb84",
+    "independent_max_numeric_difference": 1.7763568394002505e-15,
+    "whole_Hernandez_compilation_consumed": true,
+    "model_or_GPU_used": false,
+    "app_graph_or_source_acceptance_changed": false,
+    "original_source_profiles_changed": false
+  },
+  "software": {
+    "working_runner_same_bytes_as_executed": true,
+    "runner_sha256": "3dbd5ea1bae64d0f294ac83a6c788aa0d692efe6de016cc5e2bf0a2ce7df9769",
+    "core_dependencies_changed": false
+  },
+  "boundaries": [
+    "Hernandez is part of method/publication development; no method-independent validation.",
+    "Unknown curated-library peredge citations prevent complete study-disjointness. Known originalSIGNORparentreuse20068231 removedfrombothreferencearms beforeoutcomes.",
+    "Authorlibrary recodes historical source labels/fusions and omits original provenance; compatibility is not catalytictruth.",
+    "Interventionmetadata expectedtargets/directions are surrogate labels, not direct activityassays for allkinases.",
+    "Otherkinases are not biologicalnegatives; no AUROC, precision or scientificaccuracy percentage.",
+    "Unknown compoundselectivity, timing/control quality and context affect labels; no outcome-selected exclusions.",
+    "Whole Hernandez compilation becomes consumed after this run; sourcevalues stayprivate, with upstreamterms separatefromsoftware.",
+    "This tests sourcechoice for kinase-signature targetrecovery; not graphpruning, clinicalprediction or universal questionaccuracy.",
+    "Study-weighted coverage and direction are not scientificaccuracy percentages.",
+    "Common-scorable sensitivity uses different finitecandidate counts and does not replace all-case primary.",
+    "Publishedcurated sources are complementary: fourpreviouslyscored targetcases become unavailable; no automatic replacement/union.",
+    "Source-native memberships/workbooks/rowledgers stayprivate; no underlying source rights are relicensed by public software."
+  ],
+  "content_sha256": "a17cf2dd897004faaaa241821fc7f180b9b4d954eeffe5ec6c27c5d46e8272cf"
+}

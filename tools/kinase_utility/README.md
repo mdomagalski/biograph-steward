@@ -126,6 +126,42 @@ nor a condition-wide sign shift establishes target-specific recovery.
 See the [completed external check](../../docs/evaluations/HCT116_EXTERNAL_COMPARISON_20261112.md)
 for the preserved initial run, explicitly labelled technical replay and limits.
 
+## Published curated-library source comparison
+
+`library_adapter.py` adapts the released benchmarKIN curated CSV with the
+existing gene/product and canonical-site correspondence checks. Present 15-mer
+flanks must agree with the captured reference; explicitly unavailable flanks
+remain unreported. Duplicate membership adds no weight. The separate author
+measurement grammar is `gene|site|ENSG|ENSP`: ENSG must corroborate the captured
+HGNC relation and ENSP remains unverified protein-isoform context. These checks
+do not certify catalytic truth or independent source support.
+
+`run_source_comparison.py` is byte-identical to the working frozen comparison
+runner. It accepts explicit source profiles, candidate genes, conditions,
+parent studies and file/runtime pins. It seals predictions before decoding
+reference targets/signs, keeps missing-target penalties, weights conditions
+within parent studies, and reports a separate common-finite sensitivity. The
+supported CSV schemas are explicit; it does not guess a reader for new studies.
+
+```sh
+PYTHONPATH=.:tools/kinase_utility "$PILOT_PY" tools/kinase_utility/run_source_comparison.py \
+  --plan /absolute/new-source-comparison-plan.json --output /absolute/new-output
+```
+
+The [completed comparison](../../docs/evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md)
+shows increased coverage/recovery but mixed ranking on shared targets. It
+preserves the initial failed transport and labels the corrected execution as
+a technical replay after exposure. The whole reference compilation is consumed.
+Synthetic integration checks cover the actual registry loader, four-field
+transport, changed input bytes, an empty qualified measurement set, prediction
+sealing and hierarchical weighting. No native library or reference data are
+bundled, and the core app and its default dependencies remain unchanged.
+
+The author library lacks per-edge citations and contains historical name/isoform
+projections. Upstream redistribution terms remain separate from the repository
+license. This is a private source-choice comparator, not an automatic graph
+import, replacement, acceptance rule or redistributable source catalogue.
+
 ## Driver commands
 
 The following placeholders require an independently reviewed, frozen input set:

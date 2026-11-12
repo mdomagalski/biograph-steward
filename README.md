@@ -41,6 +41,10 @@ genetic-perturbation reference. The
 [external comparison is now complete](docs/evaluations/HCT116_EXTERNAL_COMPARISON_20261112.md).
 It retains reusable verification tools and exposes measurement/background
 limits; it does not demonstrate a pruning benefit or general scientific accuracy.
+The subsequent [curated-signature comparison](docs/evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md)
+shows a bounded target-recovery and coverage gain across multiple study groups,
+with mixed performance on shared targets. This is source-choice utility, not
+whole-graph accuracy or automatic acceptance of additional biological claims.
 
 ## Run the workbench
 
