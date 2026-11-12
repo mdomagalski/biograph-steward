@@ -1,0 +1,27 @@
+{
+  "format": "biograph-steward.kinase-pilot-preaccess-review-amendment.v1",
+  "created_at": "2026-11-12T13:25:47.520321+00:00",
+  "status": "frozen_before_measurement_or_expected_target_rows",
+  "parent_plan_sha256": "ece0d709d9b7a18109be0efe4bdc2afb47375830417cc3947d061f576275a320",
+  "trigger": "Independent invented adversarial cases exposed ambiguity in primary-population coverage and captured gene sharing. No real outcome was consulted.",
+  "mapping_fix": "When captured HGNC identifiers are supplied, require the distinct identifier set to be exactly the sole resolved HGNC ID; expected ID plus another gene is unresolved, not qualified. Preserve the raw cross-reference and reason.",
+  "reference_scope": "Expected metadata IDs absent from the fixed122 source condition roster are reference-scope errors, not model abstentions. A valid source condition with no finite target score is a model abstention. Preserve all original condition/drug metadata and exclusions.",
+  "primary_population": "Only complete two-cell drug groups used in the primary macro. Coverage floor, per-cell guard and directional summaries for the primary claim use exactly this population; incomplete/unqualified groups are reported separately, never used to pass the primary floor.",
+  "coverage_floor_for_benefit": {
+    "primary_condition_target_cases": 20,
+    "primary_distinct_resolved_target_genes": 5,
+    "primary_cells": 2,
+    "primary_complete_drugs": 5
+  },
+  "bootstrap": "Paired drug-level10000 draws seed20261112 on the same complete-drug population; if fewer than2 drugs, intervals unavailable. No independent-study or clinical-population interpretation.",
+  "benefit_gates": [
+    "Primary mean normalized rank lower than BOTH native and unpruned.",
+    "Primary macro signed top5, expected-direction agreement and target-score coverage not lower than either comparator.",
+    "Same complete-drug per-cell mean rank not worse in either cell against either comparator.",
+    "Report descriptive paired drug-resampling intervals; distinguish point estimate from intervals excluding0. Stronger within-benchmark support requires both rank-difference upper95% bounds<0.",
+    "Coverage floor passes; stronger NE result remains visible and does not replace the preselected primary."
+  ],
+  "same_algorithms_graphs_reference_files_and_exposure_policy": true,
+  "measurement_or_target_access_authorized_now": false,
+  "content_sha256": "c2a7297823b6a7fa493aafe9432bf358fefbc83f24b5cf12df50a69edae33733"
+}

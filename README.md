@@ -25,6 +25,13 @@ context view adds four assay passports to existing relationships, with no new
 nodes, edges or assertions. Native BioPlex row packets are excluded from public
 delivery while their redistribution terms remain unverified.
 
+The later [source qualification and biological-utility comparison](docs/evaluations/SCIENTIFIC_ACCURACY_ROUND2_20261112.md)
+tests expected drug-target recovery with published RoKAI propagation. Across
+53 drugs in two cell lines, the existing pruning rule adds no demonstrated
+benefit over the qualified unpruned graph. Source-coordinate checks, explicit
+abstentions and an [optional evaluation harness](tools/kinase_utility/README.md)
+are retained; the workbench's default dependencies and graph records are unchanged.
+
 ## Run the workbench
 
 Python 3.10 or newer; the core app requires no third-party packages, model, API key or cloud account.

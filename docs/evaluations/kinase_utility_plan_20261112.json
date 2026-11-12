@@ -1,0 +1,100 @@
+{
+  "format": "biograph-steward.fixed-kinase-utility-plan.v1",
+  "created_at": "2026-11-12T13:20:24.941493+00:00",
+  "status": "method_and_metric_selection_frozen_before_measurement_or_expected_target_rows",
+  "execution_gate": "Final source projection/registry/code hashes and fixture reviews must be sealed before measurement preparation. Expected-target metadata remains opaque until prediction artifacts are sealed.",
+  "scientific_question": "Do the previously frozen Pharos PPI masks improve expected intervention-target recovery within an otherwise identical phosphosite-based RoKAI pipeline? This is downstream biological utility, not functional-PPI truth or global scientific accuracy.",
+  "primary_candidate": "rokai_primary_zscore",
+  "primary_comparators": [
+    "rokai_native_zscore",
+    "rokai_unpruned_zscore"
+  ],
+  "secondary_controls": [
+    "rokai_ne_zscore",
+    "rokai_ks_only_zscore",
+    "raw_zscore",
+    "raw_mean"
+  ],
+  "algorithm": {
+    "upstream": "https://github.com/serhan-yilmaz/RoKAI/tree/179c23e5090350e619e82e2536aaf0af9a714137",
+    "source_sha256": {
+      "rokai_core.m": "db1c11a37ef93f2c2c3446b1ca1bfd4d4aa02a8e60a756381e3819c8fec5fca2",
+      "rokai_circuit.m": "287a30206dbdc051b5dcc434def82cc7126e4fa3531a43a05283b6e791be7621",
+      "rokai_inference.m": "8b813f70a02dda5abcd890b4263590fe57550db88ad170311fbc9a8d903a4f08",
+      "rokai_networks.m": "9f388353453982bdfd4c21f74d7f3b6ff72c779345f7be8975848c2859c1314c"
+    },
+    "license": "MIT; separate upstream notice retained. No GPL benchmark code copied.",
+    "implementation": "Unchanged author numeric core/circuit and mean/zscore readout; transport only around it.",
+    "runtime_image": "gnuoctave/octave@sha256:185db7993e000d4f3f6e7bbbf7fb3f999f52e799ea52231ad8a15353381e0dcb",
+    "propagation_defaults": {
+      "KeepMissingSites": true,
+      "DampingFactor": 0.5,
+      "Tau": 100000000
+    },
+    "primary_inference": "zscore",
+    "parameters_fitted_or_selected_after_outcomes": false
+  },
+  "common_inputs": {
+    "KS_prior": "Source-qualified canonical/no-explicit-state human direct SIGNOR phosphorylation, sequence-compatible, then exact parent-study block and unique gene-product-compatible source enzymes before binary dedup. This is an alternative prior, not author PSP replication.",
+    "parent_study_exclusion_PMID": "31959955",
+    "source_citations": "Require positive numeric PMID for retained prior records; preserve all unknown-source rows as excluded, not false. Exact study exclusion does not guarantee removal of untagged reused evidence.",
+    "incidence": 1,
+    "SIGNOR_EFFECT_not_a_phosphorylation_incidence_sign": true,
+    "enzyme_universe": "All eligible source enzymes with >=1 retained KS site and unambiguous gene/canonical-product correspondence. No >=5 source-site cutoff. Same fixed universe in all arms.",
+    "sites": "Union of retained KS sites and all strictly mapped supplied observation sites; retain observed sites without KS edges as isolated input nodes.",
+    "Wsite2site": "Zero sparse matrix, supported ablation; no PSP/PTMcode data.",
+    "PPI": "Only source-attested weighted historical pairs within eligible enzyme universe, using existing frozen memberships. All arms preserve exact original native conductances [0,1], including NE; no new threshold or score replacement."
+  },
+  "reference": {
+    "study": "Hijazi et al. Nat Biotechnol2020",
+    "PMID": "31959955",
+    "DOI": "10.1038/s41587-019-0391-9",
+    "raw_accession": "PXD015943",
+    "artifact_record": "https://zenodo.org/records/14824013",
+    "artifact_license": "CC-BY-4.0; no PSP curated_library loaded.",
+    "measurement_file": "benchmark_data_hijazi.csv",
+    "measurement_sha256": "4d804f54f5891fc1c509fdf79bb69b0ada261366d549856673d095bc3cdd1c43",
+    "expected_metadata_file": "benchmark_metadata_hijazi.csv",
+    "expected_metadata_sha256": "7b1ea19411dfc9bccc7bbec9642d675bc3bd98467387501cb07fb758a012b84f",
+    "conditions": "All122 native unique matrix headers,61 shared treatments in HL60 and MCF7. No outcome-based condition selection.",
+    "units": "Reported processed log2 fold changes supported by primary accepted manuscript; no extra log/normalization. Archive/original-TSV identity and upstream zero/multisite processing remain unresolved.",
+    "known_preprocessing": "Author split compound site assignments, selected minimum-p peptide per site, converted exact0 to missing. Atomic row does not prove an independent localized peptide. Preserve supplied finite0 if any; do not repeat zero removal.",
+    "truth_scope": "Author-assigned expected drug targets and inhibition direction, not directly measured native kinase activities; other kinases are not confirmed biological negatives.",
+    "exposure_quarantine_receipt": "product_scope/rokai_tutorial_incidental_exposure.json",
+    "exposure_rule": "Exclude exact exposed experiment IDs and known exposed parent studies; no dataset switch if coverage poor. Hijazi-specific paper/code has been read for methods, so do not call this completely blinded literature-independent confirmation."
+  },
+  "mapping_and_missingness": {
+    "policy": "source_qualification_frozen_v2/activity_gene_correspondence_amendment.json",
+    "measurement_ID": "Exactly gene_site|gene|site, with internally consistent redundant first field and site fullmatch[STY][1-9][0-9]*. Treat middle field only as author-intended gene token; no lexical accession/ENSP fallback.",
+    "identity": "Existing Registry resolver, unshadowed approved or unique HGNC-curated legacy relation; one reviewed-human unshared product; captured primary gene equals approved gene; exact current reference position/residue. No isoform/construct/allele equivalence.",
+    "duplicates": "For mapped same protein/site/condition use a single distinct finite value only; different finite values are unresolved NaN. No arbitrary averaging or most-significant choice.",
+    "metadata_targets": "Split source semicolon sets and trim delimiters only; normalize by same frozen HGNC rule; duplicate condition/resolved-gene/sign cases collapse with raw provenance. Unknown/ambiguous reference genes or conflicting signs are unscorable reference cases, not method negatives.",
+    "model_abstention": "Valid reference gene lacking an unambiguous finite model target remains in the denominator at worst rank M; report reason/coverage. No silent unscored-target dropping."
+  },
+  "scoring": {
+    "primary": "Signed target rank via scipy.stats.rankdata(negative_expected_signed_scores,method=average), divided by fixed candidate universe M. Missing/unscored model target gets rank M and normalizedrank1. Lower is better.",
+    "macro": "Average qualified distinct expected targets per condition; require one qualified condition in each declared cell per drug; average the two cells per drug, then equally across drugs. Incomplete reference groups are reported separately. Model abstentions do not make a reference condition incomplete.",
+    "secondary": [
+      "Same-macro per-target signed top5 recovery; unscored targets never hits.",
+      "Expected-direction agreement(s*A>0), with zero/opposite/missing separated.",
+      "Coverage and source/identity/reference exclusions, full case accounting.",
+      "Per-cell summaries and predeclared source-degree>=5 diagnostic, no subgroup winner selection."
+    ],
+    "uncertainty": "Paired drug-level bootstrap10000 draws seed20261112; descriptive conditional interval, not independent study/population precision. No AUROC/AUPRC using other kinases as biological negatives.",
+    "coverage_floor_for_aggregate_benefit_claim": {
+      "qualified_condition_target_cases": 20,
+      "distinct_resolved_target_genes": 5,
+      "cells": 2
+    },
+    "benefit_interpretation": "Only state a consistent conditional primary benefit if mean normalized rank improves over BOTH native and unpruned, top5 and expected-direction agreement do not worsen, and neither cell has worse mean rank. Report paired uncertainty and stronger NE control even if it wins. No later candidate promotion or new tuning."
+  },
+  "preservation": {
+    "original_Pharos_and_source_records_unchanged": true,
+    "previous_failed_mixed_results_unchanged": true,
+    "reference_values_not_used_to_select_protocol": true,
+    "unknown_is_not_negative": true,
+    "no_model_inference_required": true
+  },
+  "model_GPU_or_new_paid_infrastructure_started": false,
+  "content_sha256": "ece0d709d9b7a18109be0efe4bdc2afb47375830417cc3947d061f576275a320"
+}
