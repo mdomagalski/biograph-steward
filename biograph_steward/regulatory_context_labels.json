@@ -1,0 +1,280 @@
+{
+  "source": "EBI OLS4, BRENDA Tissue Ontology",
+  "ontology_version_iri": "http://purl.obolibrary.org/obo/bto/releases/2021-10-26/bto.owl",
+  "retrieved_at_utc": "2026-11-12T03:06:53.822697+00:00",
+  "matching_policy": "Exact requested IRI and obo_id inside ontology_name=bto. Labels are display metadata; no synonym, subclass, organism, tissue applicability or host inference.",
+  "source_capture_manifest_content_sha256": "a4adc52940f62652c74c90275569f9db7a4426f90c4cfc34621e94c159f87382",
+  "labels": {
+    "BTO:0000007": {
+      "label": "HEK-293 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000007",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000007",
+      "is_obsolete": false,
+      "source_raw_sha256": "d79aff081cde9199420355d9c1190cd4c5ce2054db1931026228aba59de48826"
+    },
+    "BTO:0000038": {
+      "label": "SW-480 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000038",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000038",
+      "is_obsolete": false,
+      "source_raw_sha256": "f170653946e43f81c97cfa33d8b800efabaa42019e17604c24e09961806503d9"
+    },
+    "BTO:0000093": {
+      "label": "MCF-7 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000093",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000093",
+      "is_obsolete": false,
+      "source_raw_sha256": "501d9d29c6dd013fe74fa05f9aa10783d04944927e9aa002f4091fdee2e3dba1"
+    },
+    "BTO:0000142": {
+      "label": "brain",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000142",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000142",
+      "is_obsolete": false,
+      "source_raw_sha256": "5c1a957291953a76dbe4cc8f4fb84d4ba59499aa20f77ef327440fff37d122d6"
+    },
+    "BTO:0000149": {
+      "label": "breast",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000149",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000149",
+      "is_obsolete": false,
+      "source_raw_sha256": "f282f6aaf239919c6b5a0a1d50da1c61d5742a420be4a391c8bf32fbbc0a5b6b"
+    },
+    "BTO:0000150": {
+      "label": "breast cancer cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000150",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000150",
+      "is_obsolete": false,
+      "source_raw_sha256": "353102ae1c9cede5ae81718e993e4e8282d53a5b5b2799963c8bde9d68c468d6"
+    },
+    "BTO:0000356": {
+      "label": "breast cancer cell line",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000356",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000356",
+      "is_obsolete": false,
+      "source_raw_sha256": "7d78c4b341b7fd28e335f14b7a554a11f676f2b9dc063e757a9acaa46eae2619"
+    },
+    "BTO:0000452": {
+      "label": "fibroblast",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000452",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000452",
+      "is_obsolete": false,
+      "source_raw_sha256": "e90698b266b014589e5226c8193301f425c7b8cd044f27ad6d41c79985600f70"
+    },
+    "BTO:0000527": {
+      "label": "glioblastoma cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000527",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000527",
+      "is_obsolete": false,
+      "source_raw_sha256": "ad2d820939a02a6186fa204c9e178b70ae9d04c9639709c9f8f9dfec3ca0d0f7"
+    },
+    "BTO:0000552": {
+      "label": "HaCaT cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000552",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000552",
+      "is_obsolete": false,
+      "source_raw_sha256": "91b0d18b1d97e79d91b3c91442841e1499f0a4e8850d30aed0a52c178c131847"
+    },
+    "BTO:0000567": {
+      "label": "HeLa cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000567",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000567",
+      "is_obsolete": false,
+      "source_raw_sha256": "15582c98342578e0b2ee3221291491ef4e232d57f62a376756778ecbee06e0e0"
+    },
+    "BTO:0000586": {
+      "label": "colonic cancer cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000586",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000586",
+      "is_obsolete": false,
+      "source_raw_sha256": "24d93f4eebe109c39e24e2119624a0921e4a488b308104555d695aa823c18203"
+    },
+    "BTO:0000671": {
+      "label": "kidney",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000671",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000671",
+      "is_obsolete": false,
+      "source_raw_sha256": "e9f50c0ca60d06ddaeeb2f94901e0bfa0a10c1634d552d9c64f40401bb92409e"
+    },
+    "BTO:0000763": {
+      "label": "lung",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000763",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000763",
+      "is_obsolete": false,
+      "source_raw_sha256": "917de8914f5c78fe02a9c5857f43fee67c91b80d8252d15bac8a8b6381099d4b"
+    },
+    "BTO:0000773": {
+      "label": "lymphoblastoid cell line",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000773",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000773",
+      "is_obsolete": false,
+      "source_raw_sha256": "260e1bc36bdf4e262972990e9fcedd7b47d40eeddd7052fb9b552c15386ae098"
+    },
+    "BTO:0000776": {
+      "label": "B-lymphocyte",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000776",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000776",
+      "is_obsolete": false,
+      "source_raw_sha256": "c8337245f88af6419168500dcac1547a8a5eadf28ef4abb6485049de3c6b197f"
+    },
+    "BTO:0000785": {
+      "label": "lymphoma cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000785",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000785",
+      "is_obsolete": false,
+      "source_raw_sha256": "817f46d5352bb0c5d91bdda4c30192623b1576b917767466b31722067e1dd654"
+    },
+    "BTO:0000887": {
+      "label": "muscle",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000887",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000887",
+      "is_obsolete": false,
+      "source_raw_sha256": "c7c03e65f442a12334531cb8750eb26e5e1eae473390665f8ef07cb7992355eb"
+    },
+    "BTO:0000938": {
+      "label": "neuron",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000938",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000938",
+      "is_obsolete": false,
+      "source_raw_sha256": "1382797358ad2151b371355e0b39847b6b6deedf5a2c4318d23837228e4ec7a2"
+    },
+    "BTO:0000944": {
+      "label": "NIH-3T3 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000944",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000944",
+      "is_obsolete": false,
+      "source_raw_sha256": "022e793626ebc7ef96f5593113b15fb4bf1da04234bbeaec3a12164b38968bea"
+    },
+    "BTO:0000971": {
+      "label": "SAOS-2 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0000971",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0000971",
+      "is_obsolete": false,
+      "source_raw_sha256": "ae9900df643bfb999e1b7efb482336e352d19e469af3211b6d661d6090e5f844"
+    },
+    "BTO:0001109": {
+      "label": "HCT-116 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0001109",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0001109",
+      "is_obsolete": false,
+      "source_raw_sha256": "88bedc4401beb47587de8ebefaacd2fc2c37fe21ed7ce874b2e7ac6727fa0cf6"
+    },
+    "BTO:0001129": {
+      "label": "prostate gland",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0001129",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0001129",
+      "is_obsolete": false,
+      "source_raw_sha256": "6db94157c75c8a2d03fd5360f2556f78954a6c952cea677e15925fb5ca4c2a64"
+    },
+    "BTO:0001271": {
+      "label": "leukemia cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0001271",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0001271",
+      "is_obsolete": false,
+      "source_raw_sha256": "e8742a785a25271c69e7a7cdb6a81bf172e46c4d2956469244320f15d8e5d7e4"
+    },
+    "BTO:0001332": {
+      "label": "DU-145 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0001332",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0001332",
+      "is_obsolete": false,
+      "source_raw_sha256": "eb85e6d9793a60fdea88ce05fef6a7ff179dfbd06187d4c9982a4e9b690dcdcf"
+    },
+    "BTO:0001938": {
+      "label": "U2-OS cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0001938",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0001938",
+      "is_obsolete": false,
+      "source_raw_sha256": "2e4d3a5b6e7585eb580a27cd68b20e6f89b3c11be65fa16b85d7b84e1df71239"
+    },
+    "BTO:0001949": {
+      "label": "HUVEC cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0001949",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0001949",
+      "is_obsolete": false,
+      "source_raw_sha256": "443fd3c2b18a1bc5552ff0de8f0cd88ea8babd1aa3307a591ee5b1faf2aba581"
+    },
+    "BTO:0002137": {
+      "label": "MiaPaCa-2 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0002137",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0002137",
+      "is_obsolete": false,
+      "source_raw_sha256": "057ea00b6b83f531ea36411dc6f64dc4ec84fc1276c42b720176aef80f1cacfe"
+    },
+    "BTO:0002181": {
+      "label": "HEK-293T cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0002181",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0002181",
+      "is_obsolete": false,
+      "source_raw_sha256": "a1264ec8b7c4a52495ad1007ebc612747bce4435ea51320ad642ff42212a6b0f"
+    },
+    "BTO:0002552": {
+      "label": "NCI-H1299 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0002552",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0002552",
+      "is_obsolete": false,
+      "source_raw_sha256": "9c3518c1124525833ce56c969e1cae05e0154fe211e3ca51892641dda35f3319"
+    },
+    "BTO:0002882": {
+      "label": "32D cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0002882",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0002882",
+      "is_obsolete": false,
+      "source_raw_sha256": "c9eb6167cbd57ffa7ef5601befc7425b11e01212210340d9e5190a6e38ec08b3"
+    },
+    "BTO:0003292": {
+      "label": "RAW-264.7 cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0003292",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0003292",
+      "is_obsolete": false,
+      "source_raw_sha256": "48f2e5ae61c3bd86250919d83d111b5ce4ef601475611598097265b880d597be"
+    },
+    "BTO:0003473": {
+      "label": "polymorphonuclear neutrophil",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0003473",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0003473",
+      "is_obsolete": false,
+      "source_raw_sha256": "26863c897f2cf7832d75de9e2ef9f6ba8866d051388fcbb17329069ba78cab8b"
+    },
+    "BTO:0004007": {
+      "label": "porcine aortic endothelial cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0004007",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0004007",
+      "is_obsolete": false,
+      "source_raw_sha256": "05f259625e1a8b307ada92b222c6931133c34b6fdc8617498242eceb61536954"
+    },
+    "BTO:0004055": {
+      "label": "COS cell",
+      "iri": "http://purl.obolibrary.org/obo/BTO_0004055",
+      "url": "https://www.ebi.ac.uk/ols4/api/ontologies/bto/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBTO_0004055",
+      "is_obsolete": false,
+      "source_raw_sha256": "a8819c3ab40804ab0297cd7300401e82ebb8658d8f46462c69f2507896d29d86"
+    }
+  },
+  "format": "biograph-steward.regulatory-context-labels.v1",
+  "upstream_display_dictionary_content_sha256": "874f671e58f0fbdf17fb71f0535bef67221cc2c6ee3cdbfbeee5878b1059340b",
+  "license": {
+    "id": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "BRENDA Tissue Ontology (BTO), BRENDA-Enzymes/BTO contributors; labels supplied through EMBL-EBI OLS4. BioGraph Steward selected 35 exact terms for display without changing their labels.",
+    "source_url": "https://github.com/BRENDA-Enzymes/BTO",
+    "license_source_url": "https://raw.githubusercontent.com/BRENDA-Enzymes/BTO/master/LICENSE.MD",
+    "license_source_sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+    "citation": "Gremse M, Chang A, Schomburg I, Grote A, Scheer M, Ebeling C, Schomburg D. The BRENDA Tissue Ontology (BTO): the first all-integrating ontology of all organisms for enzyme sources. Nucleic Acids Research 39:D507\u2013D513 (2011).",
+    "interpretation": "The license covers this BTO label selection. It does not change the rights in cited papers or other source databases."
+  },
+  "taxon_labels": {
+    "9606": "Homo sapiens",
+    "10090": "Mus musculus",
+    "9534": "Chlorocebus aethiops",
+    "9823": "Sus scrofa",
+    "10116": "Rattus norvegicus"
+  },
+  "taxon_metadata_source": {
+    "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=taxonomy&id=9606,10090,9534,9823,10116&retmode=xml",
+    "sha256": "7f71362c5804bca2dfe678d6032b4396854daa9d9f9b6a4298cafaa4307693e7",
+    "retrieved_at_utc": "2026-11-12T03:20:54.175888+00:00",
+    "interpretation": "Exact taxon-name display labels only; source organism reporting is not independently verified."
+  },
+  "content_sha256": "288e02fbff32d34a956ae5ff597f904b0ac0635dc15c902edabef091ef2334c4"
+}

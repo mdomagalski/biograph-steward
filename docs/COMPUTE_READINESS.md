@@ -1,5 +1,27 @@
 # Compute readiness and the AWS boundary
 
+## Current status — November 12, 2026
+
+AWS deployment is now implemented and tested: the private workbench and
+Neptune mirror passed source-record parity, scoped reads, workspace restart,
+failover and snapshot-recovery checks. This is faithful deployment, not
+scientific validation or a complete migration of all app queries to Neptune.
+See the [completed AWS/Neptune assessment](evaluations/AWS_NEPTUNE_20261111.md)
+and [deployment instructions](../deploy/aws/NEPTUNE.md). Those recorded checks
+are not a claim about continuous service availability.
+
+The existing Brev instance also completed the pinned Network Enhancement
+calculation and full historical graph publication using CPU/memory. The current
+biological source questions and saved comparison viewer need no language model
+or GPU. Their [assessment](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md)
+separates limited positive-retention results from whole-graph scientific
+accuracy. No new infrastructure was created for that increment.
+
+## Historical pre-AWS readiness record
+
+The following October development record is preserved for chronology; its
+statements that AWS/S3/Neptune are absent are superseded by the assessment above.
+
 The recorded Brev checks established a working single-workspace development setup. Recheck the actual running service after an instance restart. This is narrower than production readiness or completion of the challenge evaluation.
 
 | Capability | Status and limit |

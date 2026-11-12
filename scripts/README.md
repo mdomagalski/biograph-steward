@@ -26,6 +26,8 @@ This directory contains preparation tools for the active measured-link investiga
 | [score_inmc_comparison.py](score_inmc_comparison.py) | Authenticate the full frozen prediction population before opening the pinned assay/author sources. Reconcile the reference and use the frozen pure outcome/metric adapter; record any holdout exposure or failure. |
 | [assess_lambourne_corroboration.py](assess_lambourne_corroboration.py) | Freeze the full-panel Pharos comparator and author-consistent assay contract, execute once with a durable first-access receipt, or explicitly replay the saved descriptive result. No model or GPU required. |
 | [publish_lambourne_evidence.py](publish_lambourne_evidence.py) | Reuse the completed assessment to publish an immutable qualified observation graph and offline inspection view, preserving all excluded/nondetected records and copied source receipts. No new assay scoring, automatic pruning or IMEx-conformance claim. |
+| [prepare_ppi_pruning_graph.py](prepare_ppi_pruning_graph.py) / [run_network_enhancement.py](run_network_enhancement.py) / [assess_ppi_pruning.py](assess_ppi_pruning.py) | Optional fixed-budget PPI pruning comparison: publish the audited source graph, invoke external GPL author NE code, freeze separate retained views, then explicitly score consumed assays. See the [CLI guide](../docs/PPI_PRUNING.md); no model/GPU or automatic app-default changes. |
+| [publish_pruning_preview.py](publish_pruning_preview.py) | Publish a verified, compact saved assessment for the app's Compare & assess tab, with per-pair policy choices and assay context. Does not rerun scoring, apply pruning or export full retained graphs. |
 
 Read the [reuse decision](../docs/literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md) and [input-readiness report](../docs/evaluations/INMC_INPUT_READINESS_20261022.md) before running these tools. Use new output directories and preserve source receipts. A runtime smoke does not show biological improvement.
 
@@ -293,3 +295,5 @@ Open its `index.html` to inspect source-qualified observations, including the
 42 detected pairs without a resolved-profile Pharos match. They are not a new
 independent accuracy benchmark. This publication has its own local contract and
 must not be passed off as an ordinary Pharos run or the validated KGX subset.
+
+The [biological source enrichment workflow](../docs/BIOLOGICAL_SOURCE_UPDATE.md) is available through the core `string-source-publish`, `mapit-source-publish` and `biological-update` commands. It reuses complete saved source artifacts and preserves the original graph.

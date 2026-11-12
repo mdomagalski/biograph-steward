@@ -64,14 +64,22 @@ def _source_path(run_id, locator):
     if (not path or path.startswith("/") or "\\" in path
             or any(part in {"", ".", ".."} for part in path.split("/"))):
         return None
-    return ("/api/assay-source/" + run_id + "/" + quote(path, safe="/")
+    if path.startswith("extension_sources/"):
+        if not re.fullmatch(r"extension_sources/(?:string|mapit|signor)/[A-Za-z0-9_./-]+", path):
+            return None
+        route = "/api/extension-source/"
+    else:
+        route = "/api/assay-source/"
+    return (route + run_id + "/" + quote(path, safe="/")
             + ("#" + quote(fragment, safe="=/_-") if fragment else ""))
 
 
 def _selection(graph, selected):
+    observations_all = [dict(row, id=row.get("id") or row.get("observation_id")) for collection in
+                        ("assay_observations", "extension_observations") for row in graph.get(collection, [])]
     matches = [(kind, row) for kind, collection in (
-        ("assertion", "assertions"), ("edge", "edges"), ("observation", "assay_observations"))
-        for row in graph.get(collection, []) if row.get("id") == selected]
+        ("assertion", graph.get("assertions", [])), ("edge", graph.get("edges", [])),
+        ("observation", observations_all)) for row in collection if row.get("id") == selected]
     if len(matches) != 1:
         raise ValueError("Choose one exact assertion, evidence edge or assay observation identifier from this workspace.")
     kind, row = matches[0]
@@ -97,7 +105,8 @@ def _selection(graph, selected):
             raise ValueError("Evidence edge has an unresolved assertion binding.")
     observation_ids = {edge.get("qualifiers", {}).get("observation_id") for edge in edges}
     observations = ([row] if kind == "observation" else
-                    [o for o in graph.get("assay_observations", []) if o["id"] in observation_ids])
+                    [o for o in observations_all if o["id"] in observation_ids
+                     or o.get("graph_edge_id") in {edge["id"] for edge in edges}])
     return kind, row, assertion, edges, observations
 
 
@@ -195,6 +204,22 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
             if isinstance(url, str) and ":" in url and not _publication(url):
                 lid = add_link(label, url, "source_reference")
                 if lid: source["link_ids"].append(lid)
+        if edge.get("extension_source_kind"):
+            for locator in edge.get("record_locators", []):
+                if not isinstance(locator, str) or not locator.startswith("extension_sources/"):
+                    continue
+                url = _source_path(run_id, locator)
+                if url:
+                    lid = add_link("Preserved source record", url, "local_source", local=True)
+                    if lid: source["link_ids"].append(lid)
+            if edge.get("extension_source_kind") == "string":
+                sections.append({"id": "string-" + edge["id"], "title": "Versioned STRING annotation",
+                    "text": ("This separate STRING release supplies native functional and physical-overlay scores. "
+                             "A physical score is not proof of direct binding; the Pharos source record and its historical score remain unchanged."),
+                    "fields": {"source_release": record.get("source_release"),
+                        "native_scores": deepcopy(edge.get("source_scores_raw", {})),
+                        "all_source_channels": deepcopy(record.get("source_row", {})),
+                        "mapping_proof": deepcopy(record.get("mapping_proof", []))}})
         if edge.get("record_kind") == "variant_therapy_response":
             from .civic_context import CONTEXT_NOTE, LEVELS_URL, record_context
             context = record_context(edge)
@@ -221,15 +246,91 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
                 + ". Disease: " + disease_text
                 + ". Complete therapy list: " + (context["therapy_label"] or "not supplied")
                 + ". " + context["therapy_scope_note"])
-        source["reference_status"] = ("references_supplied" if source["link_ids"] else "primary_reference_not_supplied")
-        if not source["link_ids"]:
+        primary = [lid for lid in source["link_ids"] if links[int(lid.rsplit("-", 1)[1]) - 1]["kind"] != "local_source"]
+        source["reference_status"] = ("references_supplied" if primary else
+                                      "preserved_source_only" if source["link_ids"] else "primary_reference_not_supplied")
+        if not primary:
             missing.append({"field": "primary_reference", "edge_id": edge["id"],
                 "note": (", ".join(labels) + " is a source label. " if labels else "")
                 + "This saved edge supplies no resolvable primary record or publication reference; inspect its saved source locators."})
         sources.append(source)
 
     for observation in observations:
-        if observation.get("source_kind") == "intact_mitab27":
+        if (observation["id"].startswith("string-source:")
+                or any(e.get("extension_source_kind") == "string"
+                       and e["id"] == observation.get("graph_edge_id") for e in edges)):
+            sections.append({"id": observation["id"] + ":coverage", "title": "STRING source coverage",
+                "text": "These are source-query and mapping states, not assay outcomes or biological negative labels. Reciprocal rows remain views of one source association.",
+                "fields": {k: deepcopy(observation.get(k)) for k in ("products", "state", "integration_state",
+                    "baseline_pair_present", "functional_score", "physical_score", "mapping_states", "string_ids", "mapping_proof")}})
+            for number in observation.get("network_row_numbers", []):
+                url = _source_path(run_id, "extension_sources/string/capture/network.tsv#row=" + str(number))
+                if url:
+                    add_link("Preserved STRING response row", url, "local_source", local=True)
+            continue
+        if observation.get("source_kind") == "signor":
+            from .regulatory_case_notes import case_notes, context_display, organism_display
+            from .regulatory_questions import _saved_pair_context
+            notes = case_notes(observation)
+            sections.append({"id": observation["id"] + ":literature-check", "title": "Project literature check",
+                "text": notes["interpretation"], "fields": notes})
+            for note in notes["notes"]:
+                for source in note.get("sources", []):
+                    add_link(source.get("material") or "Inspected primary source", source.get("url"), "literature_check")
+            for citation in observation.get("citations", []):
+                add_link(citation.get("label") or citation.get("id") or "Source citation",
+                         citation.get("url"), "publication")
+            for locator in observation.get("source_locators", []):
+                url = _source_path(run_id, locator.get("locator"))
+                if url:
+                    add_link("Preserved regulatory source record", url, "local_source", local=True)
+            sections.append({"id": observation["id"] + ":regulation", "title": "Source-reported regulation",
+                "text": ("Direction, effect, mechanism and site are separate source claims. Phosphorylation alone does not imply activation. "
+                         "Source-reported directness does not independently establish physical binding."),
+                "fields": {k: deepcopy(observation.get(k)) for k in ("products", "source_record_id", "source_release",
+                    "effect_literal", "mechanism_literal", "source_reported_direct", "direct_literal",
+                    "residue_raw", "sequence_raw", "self_regulation")}})
+            sections.append({"id": observation["id"] + ":context", "title": "Reported experimental context",
+                "text": ("Unreported context is unknown. Membership in this colorectal gene cohort does not make a source experiment colorectal-specific. "
+                         "Human protein identifiers and the source experimental organism are separate. Residue coordinates are source values; sequence, isoform and construct equivalence are not inferred."),
+                "fields": {**{k: deepcopy(observation.get(k)) for k in ("cell_context_raw", "cell_context_reporting",
+                    "tissue_context_raw", "tissue_context_reporting", "participant_taxon", "participant_taxon_basis",
+                    "source_experimental_organism_raw", "source_experimental_organism_reporting_state", "assay_host_taxon",
+                    "supporting_sentence_raw", "source_row")},
+                    "cell_display": context_display(observation.get('cell_context_raw', '')),
+                    "tissue_display": context_display(observation.get('tissue_context_raw', '')),
+                    "experimental_organism_display": organism_display(observation)}})
+            reuse = _saved_pair_context(graph, observation['products'])
+            sections.append({"id": observation["id"] + ":pair-coverage", "title": "Existing pair coverage and source reuse",
+                "text": reuse.get('interpretation', 'Self-regulation is separate from the nonself PPI profile.'),
+                "fields": reuse})
+            captured = reuse.get('saved_string_capture')
+            if captured:
+                for number in captured.get('network_row_numbers', []):
+                    url = _source_path(run_id, 'extension_sources/string/capture/network.tsv#row=' + str(number))
+                    if url:
+                        add_link('Preserved STRING pair record', url, 'saved_pair_context', local=True)
+            sections.append({"id": observation["id"] + ":citations", "title": "Citation scope and publication metadata",
+                "text": ("A cited publication can be a review or contain evidence under different conditions. Citation presence does not verify every source claim. "
+                         "Publication types and linked notices are metadata; a missing Review label does not establish primary experimental evidence."),
+                "fields": {"publication_metadata": deepcopy(observation.get("publication_metadata", [])),
+                    "primary_experimental_evidence": observation.get("primary_experimental_evidence", "not_assessed"),
+                    "baseline_nonself_pair_present": observation.get("baseline_nonself_pair_present"),
+                    "independent_evidence_count": None}})
+            continue
+        if observation.get("source_kind") == "mapit":
+            for citation in observation.get("citations", []):
+                add_link(citation.get("label") or citation.get("id") or "Primary study",
+                         citation.get("url"), "publication")
+            sections.append({"id": observation["id"] + ":tissue", "title": "MAP-IT tissue proximity",
+                "text": ("Primary-antibody enrichment in pooled colorectal tumour and adjacent tissue, under the recorded assay and source-key-corrected reanalysis. "
+                         "This is not direct binding, tumour-specific rewiring or independent validation. Isotype−Primary gives negative Beta_Ab for enrichment."),
+                "fields": {k: deepcopy(observation.get(k)) for k in ("assay", "tissue_label", "detection_method",
+                    "interaction_type", "statistics", "statistical_family", "sampling", "source_identity", "source_locators")}})
+            sections.append({"id": observation["id"] + ":archive", "title": "Archived Pharos context",
+                "text": "This bounded historical lookup distinguishes existing archived associations from new workspace coverage. It does not certify novelty in current Pharos or independence from prior experiments.",
+                "fields": deepcopy(observation.get("archive_lookup", {}))})
+        elif observation.get("source_kind") == "intact_mitab27":
             from .intact_evidence import answer_observation
             display = answer_observation(observation)
             for citation in display["citations"]:
@@ -278,6 +379,8 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
         "drug_listing": "This is a target-linked drug listing. It supplies no activity, disease indication or treatment-response assertion.",
         "variant_therapy_response": "Read the complete molecular profile, disease, therapy set, evidence direction and variant origin together. A single variant or drug filter does not establish an isolated effect.",
         "assay_observation": "This is a qualified assay observation between the listed participants. Inspect its method, outcome, constructs and source conditions before interpreting it.",
+        "tissue_proximity_observation": "This is enriched proximity in the recorded colorectal-tissue assay and reanalysis. It does not establish direct binding, tumour-specific rewiring, clinical relevance or independent validation.",
+        "source_regulatory_observation": "This is source-reported regulation with separate effect, mechanism, site and experimental context. It does not establish colorectal applicability or independent biological validation.",
         "excluded_assay_observation": "This source observation has no evidence edge and no assertion to accept. Its exclusion is not a negative biological result.",
     }
     summary = scope_notes.get(record_kind, "This saved relation is shown verbatim. No additional interpretation is defined for its record kind.")

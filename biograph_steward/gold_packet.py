@@ -26,6 +26,8 @@ _SOURCE_REQUIRED = ('snapshot.json', 'graph.json', 'run_manifest.json', 'review_
 _SOURCE_OPTIONAL = ('civic_snapshot.json', 'source_licenses.json', 'construction_planner_trace.json')
 _ASSAY_REQUIRED = ('assay_attachment.json', 'assay_observations.json')
 _ASSAY_KEYS = ('assay_evidence', 'assay_observations', 'assay_publication_sha256', 'assay_attachment_sha256')
+_EXTENSION_REQUIRED = ('evidence_extension.json', 'extension_observations.json')
+_EXTENSION_KEYS = ('evidence_extension', 'evidence_extension_sha256', 'extension_observations')
 _INVENTORIES = {'nodes.jsonl': 'nodes', 'edges.jsonl': 'edges',
                 'assertions.jsonl': 'assertions', 'context.jsonl': 'context_records',
                 'quarantine.jsonl': 'quarantine'}
@@ -117,6 +119,23 @@ def _source_material(run):
             material.update({name: _ordinary(run / name) for name in _ASSAY_REQUIRED})
             files = source_material(_decode(material['snapshot.json']), attachment, run / 'assay_source')
             material.update({'assay_source/' + name: raw for name, raw in files.items()})
+        if any((run / name).exists() or (run / name).is_symlink()
+               for name in (*_EXTENSION_REQUIRED, 'extension_sources')):
+            from .evidence_extension import read_extension, source_material as extension_material
+            from .assay_attachment import _ordinary
+            material.update({name: _ordinary(run / name) for name in _EXTENSION_REQUIRED})
+            snapshot = _decode(material['snapshot.json'])
+            civic = _decode(material['civic_snapshot.json']) if 'civic_snapshot.json' in material else None
+            assay = _decode(material['assay_attachment.json']) if 'assay_attachment.json' in material else None
+            recorded = _decode(material['evidence_extension.json'])
+            baseline = _extension_baseline_view(_decode(material['graph.json']), recorded)
+            extension = read_extension(run, snapshot=snapshot, civic=civic, assay=assay,
+                                       baseline_graph=baseline)
+            if extension is None:
+                raise ValueError('Extension observation ledger has no preserved source extension.')
+            files = extension_material(snapshot, extension, run / 'extension_sources', civic=civic,
+                                       assay=assay, baseline_graph=baseline)
+            material.update({'extension_sources/' + name: raw for name, raw in files.items()})
         return material
     except OSError as exc:
         raise ValueError('Could not preserve source inputs.') from exc
@@ -124,20 +143,33 @@ def _source_material(run):
 
 def _input_names_valid(names):
     names = set(names)
-    ordinary = set(_SOURCE_REQUIRED + _SOURCE_OPTIONAL)
-    assay = set(_ASSAY_REQUIRED)
-    nested = {name for name in names if name.startswith('assay_source/')}
+    allowed = set(_SOURCE_REQUIRED + _SOURCE_OPTIONAL)
     if not set(_SOURCE_REQUIRED) <= names or any(not _safe_relative(name) for name in names):
         return False
+    assay = set(_ASSAY_REQUIRED)
+    nested = {name for name in names if name.startswith('assay_source/')}
     if names & assay or nested:
-        return (assay <= names and 'assay_source/publication.json' in nested
-                and names <= ordinary | assay | nested)
-    return names <= ordinary
+        if not assay <= names or 'assay_source/publication.json' not in nested:
+            return False
+        allowed.update(assay | nested)
+    extension = set(_EXTENSION_REQUIRED)
+    nested = {name for name in names if name.startswith('extension_sources/')}
+    if names & extension or nested:
+        # Adapter-specific inventories and the nonempty source list are checked
+        # against the sealed extension during the inner publication replay.
+        if not extension <= names or not any(
+                re.fullmatch(r'extension_sources/(string|mapit|signor)/publication\.json', name)
+                for name in nested):
+            return False
+        allowed.update(extension | nested)
+    return names <= allowed
 
 
 def _inventories(graph):
     return {**_INVENTORIES, **({'assay_observations.jsonl': 'assay_observations'}
-                             if 'assay_observations' in graph else {})}
+                             if 'assay_observations' in graph else {}),
+            **({'extension_observations.jsonl': 'extension_observations'}
+               if 'extension_observations' in graph else {})}
 
 
 def _construction_plan_binding(trace, snapshot, graph, run_manifest=None):
@@ -204,7 +236,7 @@ def _jsonl(path, rows):
     Path(path).write_text(''.join(canonical(row) + '\n' for row in rows), encoding='utf-8')
 
 
-def _source_bindings(run_manifest, snapshot, civic, graph, assay=None):
+def _source_bindings(run_manifest, snapshot, civic, graph, assay=None, extension=None):
     """Check metadata against its saved sources without rebuilding the graph.
 
     The refresh loader intentionally reports only selected compatibility fields;
@@ -215,6 +247,10 @@ def _source_bindings(run_manifest, snapshot, civic, graph, assay=None):
             or run_manifest.get('run_mode') == 'assay_attachment'
             or any(e.get('record_kind') == 'assay_observation' for e in graph['edges'])):
         raise ValueError('Assay graph is missing its complete preserved attachment.')
+    if extension is None and (any(key in graph or key in run_manifest for key in _EXTENSION_KEYS)
+            or any(e.get('record_kind') == 'tissue_proximity_observation'
+                   or e.get('extension_source_kind') is not None for e in graph['edges'])):
+        raise ValueError('Graph extension is missing its complete preserved sources.')
 
     def require(actual, expected, label):
         if (not isinstance(actual, dict)
@@ -268,8 +304,69 @@ def _source_bindings(run_manifest, snapshot, civic, graph, assay=None):
             assertions = build_assertions(checked, checked['review_events'])
             if assertions != graph['assertions'] or checked['edges'] != graph['edges']:
                 raise ValueError('Graph assay assertion identities or review histories disagree.')
+        if extension is not None:
+            _extension_bindings(run_manifest, snapshot, graph, extension, require)
     except (KeyError, TypeError) as exc:
         raise ValueError('Required source metadata binding is missing or malformed.') from exc
+
+
+def _extension_baseline_view(graph, extension):
+    """Remove declared additions for adapter replay, without rebuilding Pharos.
+
+    Adapters consume the saved node/edge/target inventories only. Their full
+    raw-source replay then checks the declared additions, and _source_bindings
+    rejects missing, extra or altered extension records in the final graph.
+    """
+    try:
+        if not _sealed(extension):
+            raise ValueError('Graph extension content binding changed.')
+        node_ids = {r['id'] for s in extension['sources'].values() for r in s['prepared']['nodes']}
+        edge_ids = {r['id'] for s in extension['sources'].values() for r in s['prepared']['edges']}
+        return {**graph, 'nodes': [r for r in graph['nodes'] if r['id'] not in node_ids],
+                'edges': [r for r in graph['edges'] if r['id'] not in edge_ids]}
+    except (KeyError, TypeError) as exc:
+        raise ValueError('Graph extension has no complete baseline projection.') from exc
+
+
+def _extension_bindings(run_manifest, snapshot, graph, extension, require):
+    """Bind the complete source-specific additions without normalizing Pharos."""
+    if (not _sealed(extension) or extension.get('snapshot_sha256') != snapshot['content_sha256']
+            or not isinstance(extension.get('sources'), dict) or not extension['sources']):
+        raise ValueError('Graph extension source or content binding changed.')
+    binding = {'evidence_extension': extension['summary'],
+               'evidence_extension_sha256': extension['content_sha256']}
+    require(graph, binding, 'Graph extension')
+    require(run_manifest, binding, 'Run manifest extension')
+    expected_nodes, expected_edges, observations = {}, {}, []
+    for source, record in sorted(extension['sources'].items()):
+        if source not in {'string', 'mapit', 'signor'}:
+            raise ValueError('Unsupported graph extension source kind.')
+        prepared = record['prepared']
+        for node in prepared['nodes']:
+            if node['id'] in expected_nodes:
+                raise ValueError('Graph extensions repeat a new node identity.')
+            expected_nodes[node['id']] = node
+        for edge in prepared['edges']:
+            if edge['id'] in expected_edges:
+                raise ValueError('Graph extensions repeat an evidence edge identity.')
+            expected_edges[edge['id']] = {k: v for k, v in edge.items() if k != 'assertion_id'}
+        observations.extend(prepared['observations'])
+    require(graph, {'extension_observations': observations}, 'Graph extension observation ledger')
+    nodes = {node['id']: node for node in graph['nodes']}
+    if any(nodes.get(uid) != node for uid, node in expected_nodes.items()):
+        raise ValueError('Graph extension nodes disagree with their preserved source projection.')
+    actual_edges = {edge['id']: {k: v for k, v in edge.items() if k != 'assertion_id'}
+                    for edge in graph['edges'] if edge['id'] in expected_edges
+                    or edge.get('extension_source_kind') is not None
+                    or edge.get('record_kind') == 'tissue_proximity_observation'}
+    if actual_edges != expected_edges:
+        raise ValueError('Graph extension edges disagree with their preserved source projection.')
+    # Qualifier identities and review revisions are also part of the handoff.
+    from .assertions import build_assertions
+    checked = deepcopy(graph)
+    assertions = build_assertions(checked, checked['review_events'])
+    if assertions != graph['assertions'] or checked['edges'] != graph['edges']:
+        raise ValueError('Graph extension assertion identities or review histories disagree.')
 
 
 def export_packet(run, output):
@@ -278,11 +375,14 @@ def export_packet(run, output):
     material = _source_material(run)
     if refresh_artifact_required(run):
         raise ValueError('Refresh and inherited-review runs require ancestry verification and are not supported here.')
-    assay = None
-    if 'assay_attachment.json' in material:
+    assay, extension = None, None
+    if 'assay_attachment.json' in material or 'evidence_extension.json' in material:
         from .assay_attachment import read_assay
         from .reviews import read_run
         assay = read_assay(run)
+        if 'evidence_extension.json' in material:
+            from .evidence_extension import read_extension
+            extension = read_extension(run)
         snapshot, _, replay = read_run(run)
         refresh._metadata_shapes(snapshot)
         source_manifest = _decode(material['run_manifest.json'])
@@ -296,15 +396,19 @@ def export_packet(run, output):
     graph = _decode(material['graph.json'])
     if canonical(graph) != canonical(loaded['graph']):
         raise ValueError('Saved graph does not exactly replay from its source and review history.')
+    # The replay passed exact equality. Its graph, snapshot and indexes need not
+    # coexist with the next source and packet copies.
+    del loaded
     counts = _graph_inventory(graph)
     snapshot = _decode(material['snapshot.json'])
     civic = _decode(material['civic_snapshot.json']) if 'civic_snapshot.json' in material else None
     _construction_plan_binding(_decode(material['construction_planner_trace.json'])
                                if 'construction_planner_trace.json' in material else None, snapshot, graph,
                                _decode(material['run_manifest.json']))
-    _source_bindings(_decode(material['run_manifest.json']), snapshot, civic, graph, assay)
+    _source_bindings(_decode(material['run_manifest.json']), snapshot, civic, graph, assay, extension)
     licenses = (snapshot.get('source_licenses', []) + ([civic['source_license']] if civic else [])
-                + ([assay['source_license']] if assay else []))
+                + ([assay['source_license']] if assay else [])
+                + (extension['source_licenses'] if extension else []))
     if ('source_licenses.json' in material
             and _decode(material['source_licenses.json']) != licenses):
         raise ValueError('Saved source licenses disagree with the source snapshots.')
@@ -324,6 +428,12 @@ def export_packet(run, output):
             if _decode(material['assay_source/publication.json']).get('format') in {
                     intact_final_publication.FORMAT, intact_final_publication.CONSUMED_FORMAT}:
                 implementation['intact_final_publication'] = sha(intact_final_publication.__file__)
+    if extension is not None:
+        from . import evidence_extension
+        implementation['evidence_extension'] = sha(evidence_extension.__file__)
+        for source in extension['sources']:
+            module = evidence_extension._adapter(source)
+            implementation[source + '_source_projection'] = sha(module.__file__)
     if 'construction_planner_trace.json' in material:
         from . import construction_planning
         implementation['construction_planning'] = sha(construction_planning.__file__)
@@ -379,7 +489,9 @@ def load_packet(folder):
     except (TypeError, ValueError) as exc:
         raise ValueError('Packet timestamp must include a timezone.') from exc
     inventory_names = {*_INVENTORIES, *({'assay_observations.jsonl'}
-                       if 'assay_attachment.json' in manifest['input_files'] else set())}
+                       if 'assay_attachment.json' in manifest['input_files'] else set()),
+                       *({'extension_observations.jsonl'}
+                       if 'evidence_extension.json' in manifest['input_files'] else set())}
     expected = {*inventory_names, 'decisions.template.json',
                 *('source/' + name for name in manifest['input_files']), 'source/source_licenses.json'}
     actual = {p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file()}
@@ -405,7 +517,15 @@ def load_packet(folder):
         assay = read_assay(folder / 'source')
         if _read(folder / 'source/assay_observations.json') != assay['observations']:
             raise ValueError('Preserved assay observation ledger disagrees with its source projection.')
-    _source_bindings(run_manifest, snapshot, civic, graph, assay)
+    extension = None
+    if 'evidence_extension.json' in manifest['input_files']:
+        from .evidence_extension import read_extension
+        recorded = _read(folder / 'source/evidence_extension.json')
+        extension = read_extension(folder / 'source', snapshot=snapshot, civic=civic, assay=assay,
+                                   baseline_graph=_extension_baseline_view(graph, recorded))
+        if _read(folder / 'source/extension_observations.json') != graph.get('extension_observations'):
+            raise ValueError('Preserved extension observation ledger disagrees with its graph.')
+    _source_bindings(run_manifest, snapshot, civic, graph, assay, extension)
     if (not _sealed(snapshot) or civic is not None and not _sealed(civic)
             or not isinstance(run_manifest, dict) or not isinstance(events, list)
             or any(isinstance(e, dict) and 'migration' in e for e in events)
@@ -424,6 +544,13 @@ def load_packet(folder):
             or any(type(n) is not int for n in manifest['counts'].values())
             or counts != manifest['counts']):
         raise ValueError('Packet graph or source identities disagree with the manifest.')
+    licenses = (snapshot.get('source_licenses', []) + ([civic['source_license']] if civic else [])
+                + ([assay['source_license']] if assay else [])
+                + (extension['source_licenses'] if extension else []))
+    origin = 'copied_saved_run' if 'source_licenses.json' in manifest['input_files'] else 'derived_from_preserved_snapshots'
+    # All full-source bindings above are checked before inventory replay. Keep
+    # only the small license projection while loading potentially large JSONL.
+    del snapshot, civic, assay, extension, run_manifest, events
     for name, field in _inventories(graph).items():
         try:
             rows = [_decode(line) for line in (folder / name).read_bytes().splitlines()]
@@ -431,9 +558,7 @@ def load_packet(folder):
             raise ValueError('Cannot read packet inventory.') from exc
         if canonical(rows) != canonical(graph[field]):
             raise ValueError('Packet JSONL inventory disagrees with its graph: ' + name)
-    licenses = (snapshot.get('source_licenses', []) + ([civic['source_license']] if civic else [])
-                + ([assay['source_license']] if assay else []))
-    origin = 'copied_saved_run' if 'source_licenses.json' in manifest['input_files'] else 'derived_from_preserved_snapshots'
+        del rows
     if (manifest['license_material'] != origin or _read(folder / 'source/source_licenses.json') != licenses
             or _read(folder / 'decisions.template.json') != _template(manifest['packet_id'], graph)):
         raise ValueError('Packet license record or default decisions changed.')
@@ -495,6 +620,7 @@ def _retained_graph(manifest, graph, value):
         rebuilt = build_assertions(source_copy, graph['review_events'])
         if rebuilt != graph['assertions'] or source_copy['edges'] != graph['edges']:
             raise ValueError('Baseline assertion/support mapping does not reproduce from its evidence and reviews.')
+        del source_copy, rebuilt
         for record in graph['context_records']:
             ids = record['normalized_evidence_edge_ids']
             if (not isinstance(ids, list) or len(ids) != len(set(ids))
@@ -537,6 +663,9 @@ def _retained_graph(manifest, graph, value):
                   if row['evidence_edge_ids'] == baseline_assertions[row['id']]['evidence_edge_ids'] else row
                   for row in assertions]
     edges = working['edges']
+    # Assertion construction mutates the copied edges only. The other copied
+    # baseline inventories are no longer used; contexts are projected below.
+    del working, baseline_assertions, retained_assertions
     retained_ids = {row['id'] for row in edges}
     contexts = deepcopy(graph['context_records'])
     for record in contexts:
@@ -567,7 +696,8 @@ def _retained_graph(manifest, graph, value):
                       'Edge statuses and context normalization statuses describe original structural processing, not decision labels. '
                       'No new biological validation, confidence calibration, source retrieval or identifier mapping is performed. '
                       'Out-of-scope records are not pruning decisions; scope, source summaries and review events remain in baseline_packet.')}
-    for key in ('civic_snapshot_sha256', 'assay_publication_sha256', 'assay_attachment_sha256'):
+    for key in ('civic_snapshot_sha256', 'assay_publication_sha256', 'assay_attachment_sha256',
+                'evidence_extension_sha256'):
         if key in graph:
             projection[key] = graph[key]
     if 'assay_observations' in graph:
@@ -577,6 +707,19 @@ def _retained_graph(manifest, graph, value):
             baseline_id = observation['graph_edge_id']
             if baseline_id is not None and baseline_id not in by_id:
                 raise ValueError('Baseline assay observation refers to missing evidence.')
+            observation['retention'] = {'baseline_graph_edge_id': baseline_id,
+                                        'decision': by_decision.get(baseline_id)}
+            if baseline_id in pruned:
+                observation['graph_edge_id'] = None
+    if 'extension_observations' in graph:
+        projection['extension_observations'] = deepcopy(graph['extension_observations'])
+        by_decision = {row['edge_id']: row['decision'] for row in value['decisions']}
+        for observation in projection['extension_observations']:
+            if 'graph_edge_id' not in observation:
+                continue
+            baseline_id = observation['graph_edge_id']
+            if baseline_id is not None and baseline_id not in by_id:
+                raise ValueError('Baseline extension observation refers to missing evidence.')
             observation['retention'] = {'baseline_graph_edge_id': baseline_id,
                                         'decision': by_decision.get(baseline_id)}
             if baseline_id in pruned:
@@ -621,19 +764,24 @@ def save_decisions(packet, decisions_path, output):
     copied_manifest, copied_graph = load_packet(baseline)
     if copied_manifest != manifest or copied_graph != graph:
         raise ValueError('Preserved baseline packet changed while copying; disposition report was not sealed.')
+    del copied_manifest, copied_graph
     _jsonl(output / 'nodes.jsonl', graph['nodes'])
     _jsonl(output / 'edge_dispositions.jsonl', value['decisions'])
     write_json(output / 'retained_graph.json', retained)
     for name, field in _inventories(retained).items():
         _jsonl(output / ('retained_' + name), retained[field])
     _jsonl(output / 'assertion_changes.jsonl', retained['assertion_changes'])
-    current, _ = load_packet(packet)
+    current, current_graph = load_packet(packet)
+    del current_graph
     if current != manifest or decisions_path.read_bytes() != decision_bytes:
         raise ValueError('Packet or decisions changed while saving; disposition report was not sealed.')
     report = {**_decision_report_fields(manifest, graph, value, retained), 'created_at': utcnow(),
               'files': {p.relative_to(output).as_posix(): sha(p)
                         for p in sorted(output.rglob('*')) if p.is_file()}}
     write_json(output / 'report.json', _seal(report))
+    # Final replay is unchanged; release construction inputs before it creates
+    # its own fully validated baseline and retained graph.
+    del graph, retained, value
     load_decisions(output)
     return report
 
@@ -682,8 +830,10 @@ def load_decisions(folder):
     projections = {'nodes.jsonl': graph['nodes'], 'edge_dispositions.jsonl': value['decisions'],
                    'assertion_changes.jsonl': retained['assertion_changes'],
                    **{'retained_' + name: retained[field] for name, field in _inventories(retained).items()}}
+    del graph
     for name, rows in projections.items():
         saved = [_decode(line) for line in (folder / name).read_bytes().splitlines()]
         if saved != rows:
             raise ValueError('Disposition JSONL inventory disagrees with its materialized graph: ' + name)
+        del saved
     return report, retained

@@ -9,6 +9,16 @@ Choose an exact disease or protein cohort → retrieve a scoped graph → ask a 
 
 For the final challenge handoff, see the [submission and presentation draft](docs/FINAL_SUBMISSION.md) and [five-day completion scope](docs/BUILD_PLAN.md). The core demonstration requires no paid literature service or GPU.
 
+The [November 12 biological assessment](docs/evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md)
+compares fixed-budget graph views against OpenCell source calls. On the pinned
+author-processed table, the preselected experimental-support view retains
+**272/284** strictly mapped positives, versus **269/284** for native confidence;
+Network Enhancement also retains **272/284**. This is a bounded positive-retention
+result, not whole-graph accuracy or CRC-specific validation. The app exposes the
+comparison separately from the selected workspace. A new source-preserving CRC
+example adds **290 SIGNOR regulatory records** with experimental context,
+source citations and 24 qualified literature notes.
+
 ## Run the workbench
 
 Python 3.10 or newer; the core app requires no third-party packages, model, API key or cloud account.
@@ -43,12 +53,14 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 - Guided protein-neighborhood and CIViC molecular-profile/therapy questions, with compact evidence graphs, deterministic cited summaries and complete evidence-context exports.
 - [Optional physical association priority](docs/PHYSICAL_ASSOCIATION_PRIORITY.md): order an existing protein-neighborhood answer by native STRING 12.5 scores, with explicit missing scores and a saved, replayable source packet. Alphabetical order remains the default; graph relationships, functional context and review states are preserved.
 - Saved graphs and answers, source passports, and comparison of saved snapshots with guarded review carryover.
+- [Versioned biological source enrichment](docs/BIOLOGICAL_SOURCE_UPDATE.md): preserve Pharos while adding a newer STRING layer, qualified EGFR tissue-proximity observations and directed SIGNOR regulation, with source inspection, overlap accounting and portable replay.
+- [Optional PPI pruning comparison](docs/PPI_PRUNING.md): separate source-graph views selected by native STRING scores or the unchanged external Network Enhancement implementation, with protected mixed-provider evidence, complete ledgers and a fixed measured-assay comparison. **Compare & assess** provides a read-only saved preview with policy metrics, searchable pairs, assay observations and source traces. The original workspace graph remains intact.
 - Source-bound graph handoff, materialized retained graph and exhaustive keep/prune/abstain ledger, including qualified assay sources. Exact external-reference alignment preserves raw labels; official gold scoring awaits its contract. See the [real export verification](docs/evaluations/SUBMISSION_DEMO_20261026.md).
 - [Bounded KGX export audit](docs/STANDARD_EXPORT.md), with a complete preserved source packet, mapping ledgers and separate upstream validation results. Full standard conformance remains unresolved.
 - An optional bounded model planner that selects an existing read-only query. Deterministic guided questions work without it.
 - Local/Docker/Brev operation, protected shared access and persistent data directories. Model inference is optional.
 
-These capabilities preserve and expose source evidence. They do not establish clinical correctness, independent study replication, or improved biological prediction. Models do not approve or prune assertions automatically.
+These capabilities preserve and expose source evidence. They do not establish clinical correctness, independent study replication, or general biological prediction gains. Bounded task comparisons report their own coverage and limitations. Language models do not approve or prune assertions automatically.
 
 The [current release check](docs/evaluations/PHAROS_RELEASE_CHECK_20261027.md) confirms that our configured public API still reports `pharos319`; the client reads that label from the service. Official Pharos400 identity/TDL tables are available, but an equivalent complete 400 graph endpoint or dump was not verified in the checked official materials. Preserve source releases explicitly rather than relabelling old relationships.
 
@@ -59,6 +71,10 @@ The October 27 [source-independence review](docs/evaluations/STRING_REFERENCE_IN
 The [reserved IntAct assessment](docs/evaluations/INTACT_FINAL_ASSESSMENT_20261027.md) executed once and stopped without a final score. It exposed a comparator defect for structural identifiers; captured XML preserves those identifiers. The standards-supported correction now passes a [complete consumed-data replay](docs/evaluations/INTACT_CONSUMED_FLOW_20261027.md): both eligible records survive Pharos attachment, the readable answer and the exported source packet. The original stopped result remains unscored. The [fresh four-study assessment](docs/evaluations/INTACT_FRESH_ASSESSMENT_20261027.md) subsequently completed with **4/8 end-to-end coverage and strict fidelity**: two source-license-query timeouts caused four misses; all four completed observations preserved assessed source fields. Those studies are now consumed. Source preservation does not establish biological accuracy or graph improvement.
 
 A separate [retrieval-reliability check](docs/evaluations/PHAROS_RETRIEVAL_RELIABILITY_20261027.md) completed **8/8 observations** using the existing native retry/cache path. Its trace records one actual PPI timeout followed by a successful retry, plus three validated license-cache hits. The original fresh result remains **4/8**; this is consumed-data engineering verification, not new biological validation.
+
+The [fixed PPI pruning comparison](docs/evaluations/PPI_PRUNING_COMPARISON_20261111.md) now measures actual retained graphs from 89,665 source edges. Native-score and Network Enhancement views each retain 73,313 edges while protecting mixed-provider evidence. On the consumed assay panel, NE retains all 334 source-present detections versus 326 for native selection, but retains more nondetections; its slightly lower retained detection fraction fails the predeclared rule for clear superiority. Its secondary raw-score AP increases from 0.152397 to 0.175440 at identical numeric coverage. The earlier STRING physical overlay remains higher at 0.190056 on this panel. These are retrospective tradeoffs, with original source records and complete ledgers preserved; the app's default graph remains unchanged.
+
+[CRC temporal baseline verification](docs/evaluations/PHAROS_TEMPORAL_BASELINE_20261112.md) confirms that all 718 PPI pairs in the existing 99-target CRC input match the archive completed in April 2024. This anchors the unchanged component for the completed MAP-IT tissue-evidence assessment. That pruning endpoint is unscorable: none of 18 evaluable eligible EGFR pairs meets the frozen enrichment rule; one protected enriched pair is retained by all views. The source age and coverage limitations remain explicit; biological improvement is unproven.
 
 ## Current investigation
 

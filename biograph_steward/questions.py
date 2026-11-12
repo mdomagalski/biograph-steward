@@ -31,6 +31,8 @@ def graph_basis(graph):
     if graph.get("assay_attachment_sha256"):
         basis["assay_attachment"] = graph["assay_attachment_sha256"]
         basis["assay_publication"] = graph["assay_publication_sha256"]
+    if graph.get("evidence_extension_sha256"):
+        basis["evidence_extension"] = graph["evidence_extension_sha256"]
     return digest(basis)
 
 

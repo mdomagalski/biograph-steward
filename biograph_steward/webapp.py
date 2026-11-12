@@ -9,7 +9,7 @@ from pathlib import Path
 import re
 import socket
 from threading import Lock
-from urllib.parse import parse_qs, urlparse, urlsplit
+from urllib.parse import parse_qs, unquote, urlparse, urlsplit
 from uuid import uuid4
 import webbrowser
 import zipfile
@@ -80,7 +80,13 @@ def report_html(graph: dict | None = None, *, protected=False) -> str:
     script += '\n' + Path(__file__).with_name("workspaces.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("construction.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("assay.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("biological.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("regulatory.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("pruning.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("validation.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("navigation.js").read_text(encoding="utf-8")
+    script += '\ninitializePruningPreview();\n'
+    script += '\ninitializeBiologicalComparisons();\n'
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
@@ -245,6 +251,110 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 from .workspaces import saved_workspaces
                 self.json_reply(saved_workspaces(runs_dir))
                 return
+            if path == '/api/pruning-previews':
+                from .pruning_preview import list_previews
+                if urlparse(self.path).query:
+                    self.json_reply({'error': 'This assessment list takes no query options.'}, 400)
+                    return
+                self.json_reply(list_previews(runs_dir))
+                return
+            if path == '/api/biological-comparisons':
+                from .biological_validation import list_publications
+                if urlparse(self.path).query:
+                    self.json_reply({'error': 'This comparison list takes no query options.'}, 400)
+                else:
+                    self.json_reply(list_publications(runs_dir))
+                return
+            comparison = re.fullmatch(
+                r'/api/biological-comparison/([A-Za-z0-9_-]{1,80})'
+                r'(?:/(report\.html|files/[A-Za-z0-9_.-]+))?', path)
+            if comparison:
+                from .biological_validation import load_publication, render_html, FILES, QC_FILES
+                identifier, action = comparison.groups()
+                folder = runs_dir / identifier
+                if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                    self.json_reply({'error': 'Saved experimental comparison not found.'}, 404)
+                    return
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('This saved comparison takes no query options.')
+                    if action and action.startswith('files/') and action[6:] not in FILES | QC_FILES:
+                        self.json_reply({'error': 'Comparison download not found.'}, 404)
+                        return
+                    _, summary, files = load_publication(folder)
+                    base = '/api/biological-comparison/' + identifier
+                    if action is None:
+                        summary['id'] = identifier
+                        summary['report_url'] = base + '/report.html'
+                        summary['downloads'] = {name: base + '/files/' + name for name in sorted(files)
+                                                if name in FILES | QC_FILES}
+                        self.json_reply(summary)
+                    elif action == 'report.html':
+                        self.reply(render_html(summary).encode(), content_type='text/html; charset=utf-8')
+                    elif action[6:] in files:
+                        self.reply(files[action[6:]], content_type='application/json', filename=action[6:])
+                    else:
+                        self.json_reply({'error': 'Comparison download not found.'}, 404)
+                except (KeyError, ValueError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc), 'error_code': 'biological_comparison_unavailable'}, 400)
+                return
+            match = re.fullmatch(
+                r'/api/pruning-preview/([A-Za-z0-9_-]{1,80})'
+                r'(?:/(pairs|pair/(?:ppi:|ppi%3[Aa])[0-9a-f]{24}|files/[A-Za-z0-9_.-]+))?', path)
+            if match:
+                from .pruning_preview import load_preview, query_pairs, pair_detail, read_download, DOWNLOAD_FILES
+                identifier, action = match.groups()
+                folder = runs_dir / identifier
+                prepared = folder / 'pruning_preview'
+                if (folder.is_symlink() or prepared.is_symlink() or not prepared.is_dir()
+                        or folder.resolve().parent != runs_dir):
+                    self.json_reply({'error': 'Saved pruning assessment not found.'}, 404)
+                    return
+                try:
+                    query = urlparse(self.path).query
+                    if action == 'pairs':
+                        fields = parse_qs(query, keep_blank_values=True, strict_parsing=True,
+                                          errors='strict', max_num_fields=5)
+                        if (set(fields) - {'arm', 'selection', 'search', 'offset', 'limit'}
+                                or any(len(value) != 1 for value in fields.values())):
+                            raise ValueError('Use each supported pair filter once.')
+                        options = {name: values[0] for name, values in fields.items()}
+                        for name, default in (('offset', '0'), ('limit', '25')):
+                            value = options.get(name, default)
+                            if len(value) > 10 or not re.fullmatch(r'[0-9]+', value):
+                                raise ValueError('Pagination requires whole nonnegative numbers.')
+                            options[name] = int(value)
+                        if not 1 <= options['limit'] <= 100:
+                            raise ValueError('Page size must be between 1 and 100 pairs.')
+                        search = options.get('search', '')
+                        if len(search) > 200 or (search and not search.isprintable()):
+                            raise ValueError('Search must contain at most 200 printable characters.')
+                        self.json_reply(query_pairs(prepared, **options))
+                    else:
+                        if query:
+                            raise ValueError('This assessment resource takes no query options.')
+                        if action is None:
+                            summary = load_preview(prepared)
+                            summary['id'] = identifier
+                            summary['downloads'] = {name: '/api/pruning-preview/' + identifier + '/files/' + name
+                                                    for name in sorted(DOWNLOAD_FILES)}
+                            self.json_reply(summary)
+                        elif action.startswith('pair/'):
+                            pair_identifier = unquote(action[len('pair/'):])
+                            self.json_reply(pair_detail(prepared, pair_identifier))
+                        else:
+                            name = action[len('files/'):]
+                            if name not in DOWNLOAD_FILES:
+                                self.json_reply({'error': 'Assessment download not found.'}, 404)
+                                return
+                            content_type = ('application/json' if name.endswith('.json')
+                                            else 'application/x-ndjson')
+                            self.reply(read_download(prepared, name), content_type=content_type, filename=name)
+                except KeyError:
+                    self.json_reply({'error': 'Pair not found in this saved assessment.'}, 404)
+                except (ValueError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc), 'error_code': 'pruning_preview_unavailable'}, 400)
+                return
             if path == '/api/support-comparators':
                 from .support_comparator import load_preparation
                 reports = []
@@ -330,6 +440,37 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     # Source files are data, never active same-origin HTML or scripts.
                     self.reply(file.read_bytes(), content_type='application/json' if file.suffix == '.json'
                                else 'text/plain; charset=utf-8', filename=file.name)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
+            match = re.fullmatch(r'/api/extension-source/([A-Za-z0-9_-]{1,80})/extension_sources/(string|mapit|signor)/(.+)', path)
+            if match:
+                from .reviews import read_run, read_civic, read_assay
+                from .assay_attachment import _decode, _ordinary
+                from .evidence_extension import SIDECAR, SOURCE, source_material
+                identifier, kind, relative = match.groups()
+                folder = runs_dir / identifier
+                try:
+                    if (folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir
+                            or not re.fullmatch(r'[A-Za-z0-9_./-]+', relative)
+                            or any(part in {'', '.', '..'} for part in relative.split('/'))):
+                        raise ValueError('Invalid biological source path.')
+                    # read_run replays read_extension. Return only bytes from the
+                    # verified publication material, never an arbitrary file path.
+                    snapshot, _, graph = read_run(folder)
+                    if not graph.get('evidence_extension'):
+                        raise ValueError('This workspace has no biological source extension.')
+                    extension = _decode(_ordinary(folder / SIDECAR))
+                    material = source_material(snapshot, extension, folder / SOURCE,
+                        civic=read_civic(folder), assay=read_assay(folder))
+                    key = kind + '/' + relative
+                    if key not in material:
+                        raise ValueError('File is outside the preserved biological publication.')
+                    file = Path(relative)
+                    content_type = ('application/json' if file.suffix == '.json' else
+                                    'application/octet-stream' if file.suffix in {'.rds', '.xlsx'} else
+                                    'text/plain; charset=utf-8')
+                    self.reply(material[key], content_type=content_type, filename=file.name)
                 except (ValueError, TypeError, KeyError, OSError) as exc:
                     self.json_reply({'error': str(exc)}, 400)
                 return
@@ -689,6 +830,41 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     run_id = 'assay_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex[:8]
                     graph = attach_assay(*sources, runs_dir / run_id)
                     self.json_reply({'run_id': run_id, 'graph': graph})
+                    return
+                if path == '/api/regulatory-question':
+                    from .regulatory_questions import answer_regulatory_question
+                    from .reviews import read_run
+                    if set(body) - {'run_id', 'protein', 'direction', 'search', 'offset', 'limit'}:
+                        raise ValueError('Unsupported regulatory source question option.')
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved workspace identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    result = answer_regulatory_question(read_run(folder)[2],
+                        body.get('protein', 'UniProtKB:P00533'), direction=body.get('direction', 'outgoing'),
+                        search=body.get('search', ''), offset=body.get('offset', 0),
+                        limit=body.get('limit', 25), source_run=identifier)
+                    self.json_reply(result)
+                    return
+                if path == '/api/biological-question':
+                    from .biological_questions import answer_biological_question
+                    from .reviews import read_run
+                    if set(body) - {'run_id', 'protein', 'search', 'offset', 'limit'}:
+                        raise ValueError('Unsupported biological evidence question option.')
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved workspace identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    result = answer_biological_question(read_run(folder)[2],
+                        body.get('protein', 'UniProtKB:P00533'), search=body.get('search', ''),
+                        offset=body.get('offset', 0), limit=body.get('limit', 25), source_run=identifier)
+                    self.json_reply(result)
                     return
                 if path == '/api/assay-question':
                     from .assay_questions import answer_assay_question

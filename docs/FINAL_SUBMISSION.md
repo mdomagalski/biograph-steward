@@ -1,12 +1,27 @@
 # BioGraph Steward final submission
 
-Working submission and presentation draft, November 11, 2026. The release scope is a usable Pharos evidence workbench with reproducible source records, qualified graph exploration and measured supporting comparisons. PaperQA3, AWS migration and new sources are optional follow-up work.
+Working submission and presentation draft, November 12, 2026. The release scope is a usable Pharos evidence workbench with reproducible source records, qualified graph exploration and measured supporting comparisons. The private AWS workbench/Neptune mirror is tested; PaperQA3 is optional.
 
 ## Project summary
 
 BioGraph Steward turns a bounded Pharos research question into an inspectable graph, cited answer and source-preserving export. It integrates scoped CIViC and experimental interaction records while retaining identifiers, assay conditions, original references and separate review decisions. Users can explore paths, inspect evidence reuse, compare saved snapshots and export the resulting graph with a complete decision ledger.
 
 Our evaluations distinguish useful task-specific ranking from graph-learning improvement. Native STRING physical scores improved retrospective prioritization with reduced numeric coverage; adding GO or Reactome context did not demonstrate a consistent prediction benefit. Those findings guided the app toward transparent evidence inspection and optional prioritization, with automatic scientific pruning left unvalidated.
+
+The [latest biological assessment](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md)
+compares preselected graph views against OpenCell coassociation calls. At the
+same pruning budget, the fixed experimental-support view retains 272/284
+strictly mapped positives, versus 269/284 for native confidence; Network
+Enhancement also retains 272/284. This is a small positive-retention benefit
+on one study, not whole-graph accuracy or a CRC-specific prediction result.
+The current processed-data check and original frozen assessment remain
+separate. The app exposes both, alongside complete graph/decision exports.
+
+The current CRC source workspace adds 290 SIGNOR regulatory records with
+direction, sites, experimental organism and cell/tissue context. Twenty-four
+source-bound literature notes show what the cited studies establish and what
+remains uncertain. These complement STRING and MAP-IT without automatically
+validating assertions or counting repeated records as independent experiments.
 
 ## Judge walkthrough
 
@@ -16,8 +31,8 @@ For a recorded or source-packet demonstration, use this five-minute sequence:
 
 1. **Ask & explore:** open the saved BRAF question on the 99-protein colorectal-cancer Pharos cohort. Show a bounded question, answer paths and the source/review scope.
 2. Inspect the optional physical ordering: all 21 matching proteins remain available, with 14 scored and seven unranked. Explain what the missing values mean.
-3. **Evidence & sources:** open the separate TAS1R2/TAS1R3 assay example. Show method, participants, outcome and original record links. Explain one shared curated record and one unresolved reuse finding.
-4. **Compare & assess:** show saved snapshot comparison and the measured results below. Literature searching is optional.
+3. **Evidence & sources:** open `crc_evidence_enriched_20261111` and select **Show EGFR tissue evidence**. Show the 120 source-qualified proximity observations, search for ENG, and inspect its statistics, method, exact identity and archived-Pharos context. Explain why additional source records are not independent experiments. The separate TAS1R2/TAS1R3 example remains available for exact curated-record reuse.
+4. **Compare & assess:** show the experimental reference table and its explicit study/mapping limits. Distinguish the historical 3,172-protein assessment from the selected CRC workspace. Open the current processed result and original frozen protocol. Literature searching is optional.
 5. **Export:** identify the retained graph, exhaustive decision ledger and complete original source baseline. Explain whole-workspace versus current-answer scope.
 
 Current local examples:
@@ -28,10 +43,28 @@ Current local examples:
 
 These are source-specific demonstrations. The taste-receptor example is separate from the cancer question. Retain source licenses and attribution when delivering real packets; software MIT licensing does not relicense upstream data. Provide a bounded retrieval recipe when a packet cannot be redistributed.
 
+## Completed biological source enrichment
+
+The [versioned source increment](BIOLOGICAL_SOURCE_UPDATE.md) adds 858 STRING 12.5
+functional-association records to the existing CRC workspace, including 238
+previously unrepresented pairs and newer records for 620 existing pairs. It also
+adds 120 qualified MAP-IT EGFR tissue observations and 119 participant proteins.
+All original source records, assertions and the 99 primary Pharos targets remain
+unchanged. New records remain candidates with separate provenance.
+
+This produces an inspectable graph with 9,865 entities and 16,695 evidence
+records. The source-first EGFR question, statistics, source-group lineage,
+historical overlap states and portable source packages demonstrate the result.
+This is verified biological evidence enrichment, not independent proof of
+scientific accuracy or automatic pruning. The completed MAP-IT pruning endpoint
+is unscorable (zero eligible positives); the previous Lambourne superiority gate
+remains failed. Both limitations remain part of the delivered assessment.
+
 ## Results to present
 
 | Assessment | Result | Interpretation |
 |---|---|---|
+| OpenCell positive retention, equal graph budget | Fixed primary 272/284; native 269/284; Network Enhancement 272/284 | Small scoped retention benefit over native; NE ties. Same-study processed QC is not another fresh confirmation; no precision/accuracy or CRC-specific claim |
 | Native STRING 12.5 ranking, 2,676 eligible measured pairs | AP 0.172827 functional versus 0.190056 physical; numeric coverage 88.3% versus 72.4% | Retrospective source-component prioritization benefit, with a coverage trade-off |
 | Native STRING 12.0 control, same consumed panel | AP 0.149732 functional versus 0.161223 physical; coverage 93.4% versus 75.2% | Direction agreed with the selected older-source control; independent validation remains unresolved |
 | Matched R-GCN GO-hierarchy comparison | AP 0.719833 versus 0.720135 on 1,751 measured pairs, with mixed seed effects | No consistent hierarchy benefit demonstrated |

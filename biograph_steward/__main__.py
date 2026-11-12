@@ -63,6 +63,36 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--publication", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("string-source-publish", help="Replay a saved whole-cohort STRING capture into a versioned source publication offline.")
+    p.add_argument("--capture", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("mapit-source-publish", help="Publish completed, qualified MAP-IT tissue reanalysis records offline.")
+    p.add_argument("--analysis", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("signor-source-publish", help="Publish exact-cohort regulatory records from the pinned SIGNOR release offline.")
+    p.add_argument("--source", type=Path, required=True)
+    p.add_argument("--snapshot", type=Path, required=True)
+    p.add_argument("--pubmed-xml", type=Path)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("biological-update", help="Publish a new source-preserving workspace with STRING, MAP-IT and/or SIGNOR evidence.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--string-publication", type=Path)
+    p.add_argument("--mapit-publication", type=Path)
+    p.add_argument("--signor-publication", type=Path)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("biological-comparison-publish", help="Publish saved fixed-view experimental reference aggregates; no selection, fetching or inference.")
+    p.add_argument("--assessment", type=Path, required=True)
+    p.add_argument("--frozen", type=Path, required=True)
+    p.add_argument("--qualification", type=Path, required=True)
+    p.add_argument("--selection", type=Path, required=True)
+    p.add_argument("--processed-qc", type=Path)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("regulatory-question", help="Inspect saved source-reported regulation with its direction, site and experimental context.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--protein", default="UniProtKB:P00533")
+    p.add_argument("--direction", choices=("incoming", "outgoing", "both"), default="outgoing")
+    p.add_argument("--search", default="")
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("assay-question", help="Read source-qualified IntAct evidence, preserving experiment context; no unqualified interaction inference.")
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--protein", help="Optional exact UniProt accession inside the saved cohort.")
@@ -106,6 +136,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--reviews", type=Path, help="Preserve review events from this exact snapshot.")
     p.add_argument("--civic-snapshot", type=Path, help="Replay this verified CIViC sidecar without network access.")
     p.add_argument("--assay-run", type=Path, help="Preserve the validated assay sidecar and complete source publication from this run.")
+    p.add_argument("--extension-run", type=Path, help="Preserve the validated biological extension and complete source publications from this run.")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("review", help="Record a human assertion decision in a new immutable run.")
     p.add_argument("--run", type=Path, required=True)
@@ -282,6 +313,50 @@ def main(argv: list[str] | None = None) -> int:
             from .assay_attachment import attach_assay
             graph = attach_assay(args.run, args.publication, args.out)
             print(json.dumps({'output': str(args.out.resolve()), 'assay_evidence': graph['assay_evidence']}, indent=2))
+            return 0
+        if args.command == 'string-source-publish':
+            from .string_source_update import publish_capture
+            manifest = publish_capture(args.capture, args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
+            return 0
+        if args.command == 'mapit-source-publish':
+            from .mapit_source import publish_completed_analysis
+            manifest = publish_completed_analysis(args.analysis, args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
+            return 0
+        if args.command == 'signor-source-publish':
+            from .signor_source import publish_release
+            from .assay_attachment import _decode, _ordinary
+            manifest = publish_release(args.source, _decode(_ordinary(args.snapshot)), args.out,
+                                       pubmed_xml=args.pubmed_xml)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
+            return 0
+        if args.command == 'biological-update':
+            from .evidence_extension import publish_extension
+            publications = {k: v for k, v in {'string': args.string_publication,
+                            'mapit': args.mapit_publication, 'signor': args.signor_publication}.items() if v is not None}
+            graph = publish_extension(args.run, publications, args.out)
+            print(json.dumps({'output': str(args.out.resolve()),
+                              'evidence_extension': graph['evidence_extension']}, indent=2))
+            return 0
+        if args.command == 'biological-comparison-publish':
+            from .biological_validation import publish
+            manifest = publish(args.assessment, args.frozen, args.qualification, args.selection,
+                               args.out, processed_qc=args.processed_qc)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication_sha256': manifest['content_sha256'],
+                              'scientific_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'regulatory-question':
+            from .regulatory_questions import answer_regulatory_question
+            from .reviews import read_run
+            from .file_utils import new_output
+            from .client import write_json
+            graph = read_run(args.run)[2]
+            answer = answer_regulatory_question(graph, args.protein, direction=args.direction,
+                                                search=args.search, source_run=args.run.name)
+            output = new_output(args.out, args.run)
+            write_json(output / 'answer.json', answer)
+            print(json.dumps({'output': str(output.resolve()), 'summary': answer['summary']}, indent=2))
             return 0
         if args.command == 'assay-question':
             from .assay_questions import answer_assay_question
@@ -577,6 +652,7 @@ def main(argv: list[str] | None = None) -> int:
         civic = (json.loads(args.civic_snapshot.read_text(encoding="utf-8"))
                  if args.command == "replay" and args.civic_snapshot else None)
         assay, assay_source = None, None
+        extension, extension_source = None, None
         if args.command == 'replay':
             if args.assay_run:
                 from .assay_attachment import read_assay
@@ -584,15 +660,37 @@ def main(argv: list[str] | None = None) -> int:
                 if assay is None:
                     raise ValueError('The supplied assay run has no qualified assay attachment.')
                 assay_source = args.assay_run / 'assay_source'
-            elif any((args.snapshot.parent / name).exists() or (args.snapshot.parent / name).is_symlink()
+            elif not args.extension_run and any((args.snapshot.parent / name).exists() or (args.snapshot.parent / name).is_symlink()
                      for name in ('assay_attachment.json', 'assay_source')):
                 raise ValueError('Use --assay-run to preserve this snapshot’s attached assay source during replay.')
+            if args.extension_run:
+                from .evidence_extension import read_extension
+                from .reviews import read_run, read_civic, read_assay
+                original_snapshot, original_events, _ = read_run(args.extension_run)
+                if original_snapshot != snapshot:
+                    raise ValueError('The extension run belongs to another source snapshot.')
+                extension = read_extension(args.extension_run, snapshot)
+                if extension is None:
+                    raise ValueError('The supplied extension run has no biological sources.')
+                extension_source = args.extension_run / 'extension_sources'
+                if events is None:
+                    events = original_events
+                if civic is None:
+                    civic = read_civic(args.extension_run)
+                if assay is None:
+                    assay = read_assay(args.extension_run)
+                    assay_source = args.extension_run / 'assay_source' if assay else None
+            elif any((args.snapshot.parent / name).exists() or (args.snapshot.parent / name).is_symlink()
+                     for name in ('evidence_extension.json', 'extension_sources')):
+                raise ValueError('Use --extension-run to preserve the biological source additions during replay.')
         planning_source, planning_bytes = None, None
         if args.command == 'replay':
             from .reviews import read_construction_plan, preserve_construction_plan, read_run
             sources = [args.snapshot.parent]
             if args.assay_run and args.assay_run.resolve() != args.snapshot.parent.resolve():
                 sources.append(args.assay_run)
+            if args.extension_run and args.extension_run.resolve() not in {p.resolve() for p in sources}:
+                sources.append(args.extension_run)
             for source in sources:
                 raw = read_construction_plan(source)
                 if raw is not None:
@@ -611,7 +709,8 @@ def main(argv: list[str] | None = None) -> int:
             stage = Path(tempfile.mkdtemp(prefix='.planned-replay-', dir=output.parent))
             try:
                 graph = save_run(snapshot, stage, run_mode='replay', review_events=events,
-                                 civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source)
+                                 civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source,
+                                 evidence_extension=extension, extension_source=extension_source)
                 preserve_construction_plan(planning_source, stage)
                 if (stage / 'construction_planner_trace.json').read_bytes() != planning_bytes:
                     raise ValueError('Construction planner trace changed during replay preparation.')
@@ -625,7 +724,8 @@ def main(argv: list[str] | None = None) -> int:
                     shutil.rmtree(stage)
         else:
             graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build", review_events=events,
-                             civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source)
+                             civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source,
+                             evidence_extension=extension, extension_source=extension_source)
         print(json.dumps({"data_kind": graph["data_kind"], "summary": graph["summary"],
                           "report": str((args.out / "report.html").resolve())}, indent=2))
         if graph["data_kind"] == "synthetic_demo":
