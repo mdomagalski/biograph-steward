@@ -117,6 +117,7 @@ remains failed. Both limitations remain part of the delivered assessment.
 | Matched R-GCN GO-hierarchy comparison | AP 0.719833 versus 0.720135 on 1,751 measured pairs, with mixed seed effects | No consistent hierarchy benefit demonstrated |
 | Matched R-GCN Reactome-context comparison | AP 0.717794 versus 0.719605 on the consumed panel, with mixed seed effects | No consistent context benefit demonstrated |
 | Published curated-signature source choice | 31/105 → 39/105 scored target cases; study-weighted rank 0.680898 → 0.576408 | Positive coverage-driven perturbation recovery, mixed shared-target ranking; source reuse/label limitations and technical-replay boundary remain explicit |
+| Published native GO quality checks | 15,888 records; nine relation repairs and 49 alternative-ID normalizations; zero detected taxon violations | Separate normalized source derivative; 13 extension-context review cases, including four citation/context discrepancies. [Executed assessment](evaluations/SCIENTIFIC_LIMIT_RESOLUTION_20261112.md); no whole-graph accuracy or automatic biological pruning claim |
 | Source delivery | Fresh IntAct assessment 4/8; separate consumed reliability replay 8/8 | Retrieval/source-preservation results; the replay does not replace the original assessment |
 
 The OpenCell table describes the original fixed views. The later connectivity

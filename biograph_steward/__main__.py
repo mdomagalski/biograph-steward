@@ -103,6 +103,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--gaf-sha256", required=True)
     p.add_argument("--source-url")
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("go-context-inspect", help="Inspect exact current GOA source records with their own references and qualifiers; no historical backfill.")
+    p.add_argument("--context", type=Path, required=True)
+    p.add_argument("--protein", required=True)
+    p.add_argument("--go", dest="go_id")
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("qualify-go-ontology", help="Create a separate view with active GO IDs from a pinned ontology; not scientific truth scoring.")
     p.add_argument("--packet", type=Path, required=True)
     p.add_argument("--ontology", type=Path, required=True)
@@ -401,6 +406,18 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps({'output': str(args.out.resolve()),
                               'report_sha256': report['content_sha256'],
                               'historical_record_identity_established': False,
+                              'independent_biological_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'go-context-inspect':
+            from .go_context_inspection import inspect_go_context
+            from .client import write_json
+            from .file_utils import new_output
+            report = inspect_go_context(args.context, args.protein, go_id=args.go_id)
+            folder = new_output(args.out, args.context)
+            write_json(folder / 'go_context_inspection.json', report)
+            print(json.dumps({'output': str(folder.resolve()), 'query': report['query'],
+                              'record_count': report['record_count'],
+                              'report_sha256': report['content_sha256'],
                               'independent_biological_accuracy_established': False}, indent=2))
             return 0
         if args.command == 'qualify-go-ontology':

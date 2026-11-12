@@ -115,6 +115,36 @@ class CompatibilityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exact source projection"):
             go.project_compatibilities({"edges": [edge(object="GO:0000002")]}, [])
 
+    def test_unmatched_diagnostics_preserve_every_exact_subject_go_alternative_without_aliasing(self):
+        rows = [record(8, **{"14": "UniProtKB"}),
+                record(9, **{"6": "IDA", "14": "Other", "8": "P"})]
+        value = go.project_compatibilities({"edges": [edge()]}, rows)[0]
+        self.assertEqual(value["status"], "no_compatible_native_record")
+        self.assertEqual(value["candidate_count"], 0)
+        self.assertEqual(value["native_record_ids"], [])
+        self.assertEqual(value["exact_subject_go_native_record_ids"], [r["id"] for r in rows])
+        self.assertEqual(value["exact_subject_go_candidate_count"], 2)
+        self.assertEqual(value["unmatched_projection_field_differences"], [
+            {"native_record_id": rows[0]["id"], "differing_fields": ["assigned_by"]},
+            {"native_record_id": rows[1]["id"], "differing_fields": ["evidence_code", "assigned_by", "aspect"]}])
+        self.assertEqual(value["diagnostic_status"], "exact_subject_go_present_projection_fields_differ")
+        self.assertEqual(value["pruning_decision"], "abstain")
+        self.assertFalse(value["diagnostic_identity_established"])
+        self.assertFalse(value["historical_record_identity_established"])
+
+    def test_absent_subject_go_and_strict_matches_have_distinct_diagnostic_states(self):
+        absent = go.project_compatibilities({"edges": [edge()]}, [record(**{"4": "GO:0000002"})])[0]
+        self.assertEqual(absent["diagnostic_status"], "no_exact_subject_go_native_record")
+        self.assertEqual(absent["exact_subject_go_native_record_ids"], [])
+        self.assertEqual(absent["unmatched_projection_field_differences"], [])
+        strict = go.project_compatibilities({"edges": [edge()]},
+                                          [record(8), record(9, **{"14": "UniProtKB"})])[0]
+        self.assertEqual(strict["status"], "one_compatible_native_record")
+        self.assertEqual(strict["candidate_count"], 1)
+        self.assertEqual(strict["exact_subject_go_candidate_count"], 2)
+        self.assertEqual(strict["diagnostic_status"], "strict_projection_candidate_present")
+        self.assertEqual(strict["unmatched_projection_field_differences"], [])
+
 
 class NativePacketTests(unittest.TestCase):
     def setUp(self):
@@ -146,6 +176,8 @@ class NativePacketTests(unittest.TestCase):
         self.assertEqual({r["edge_id"] for r in rows}, expected)
         self.assertTrue(all(r["pruning_decision"] == "abstain" for r in rows))
         self.assertEqual(report["counts"]["no_compatible_native_record"], len(expected))
+        self.assertEqual(report["counts"]["unmatched_with_exact_subject_go_native_records"], 0)
+        self.assertEqual(report["counts"]["unmatched_without_exact_subject_go_native_records"], len(expected))
         self.assertEqual((self.out / "source/annotations.gaf.gz").read_bytes(), self.gaf.read_bytes())
         self.assertEqual(report["content_sha256"], digest({k:v for k,v in report.items() if k != "content_sha256"}))
         self.assertFalse(report["scientific_accuracy_measured"])

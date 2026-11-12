@@ -110,6 +110,16 @@ proposals. It preserves original evidence and unknown historical joins. This
 addresses a demonstrated semantic issue without claiming experimental truth
 or whole-graph accuracy.
 
+The [completed native GO quality assessment](evaluations/SCIENTIFIC_LIMIT_RESOLUTION_20261112.md)
+uses the actual ontobio and GAFeRence implementations on 15,888 native records.
+It records nine relation repairs, 49 alternative-ID extension normalizations,
+zero detected taxon violations and separate extension-context findings. A
+read-only current-source inspector preserves references and competing context.
+These methods close specific source-validation gaps without manufacturing
+historical row identities or independent truth labels. A probability sample
+with qualified independent judgments could support accuracy estimation; a
+complete whole-graph gold file is not required.
+
 Broader entailment/contradiction verification, calibrated confidence, validated
 automatic scientific-error pruning, independent usability success and general autonomous
 maintenance remain proposal ambitions. They are not delivered merely by the

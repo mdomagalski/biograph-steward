@@ -31,6 +31,7 @@ LIMITATIONS = [
     "A compatible native row is not identified as the historical Pharos source record, even when unique.",
     "Native qualifiers belong to their preserved GAF row; they do not backfill original graph qualifiers.",
     "Missing native matches remain unknown and are never biological negatives.",
+    "Shared subject-and-term diagnostics do not establish equivalence of evidence codes, assigning databases or aspects; strict compatibility remains unchanged.",
     "Positive and NOT rows may coexist because of context, product forms or conflicting evidence; none is deleted here.",
     "Extension and With/From logical groups are preserved literally, without ontology reasoning or context equivalence inference.",
     "Reference identifiers can alias one reference and are not counted as independent experiments.",
@@ -143,12 +144,14 @@ def read_native_gaf(path, accessions, expected_sha256):
 def project_compatibilities(graph, native_rows):
     """Enumerate every exact projection candidate without selecting a winner."""
     groups = defaultdict(list)
+    subject_go_groups = defaultdict(list)
     ids = set()
     for row in native_rows:
         _need(row["id"] not in ids, "native row IDs repeat.")
         ids.add(row["id"])
         key = (row["subject"], row["go_id"], row["evidence_code"], row["assigned_by"], row["aspect"])
         groups[key].append(row)
+        subject_go_groups[key[:2]].append(row)
     results = []
     for edge in graph["edges"]:
         if edge.get("record_kind") != "go_annotation":
@@ -158,12 +161,30 @@ def project_compatibilities(graph, native_rows):
               "GO edge does not match its exact source projection.")
         key = (edge["subject"], edge["object"], record.get("evidence"), record.get("assigned_by"), record.get("type"))
         candidates = sorted(groups.get(key, []), key=lambda r: r["source_line"])
+        shared_subject_go = sorted(subject_go_groups.get(key[:2], []), key=lambda r: r["source_line"])
+        # Source names and evidence codes are not freely interchangeable.
+        # Preserve every native alternative and the exact differing fields,
+        # without widening the strict key or asserting a historical identity.
+        differences = []
+        if not candidates:
+            for row in shared_subject_go:
+                differing = [field for field, old, new in zip(
+                    ("evidence_code", "assigned_by", "aspect"), key[2:],
+                    (row["evidence_code"], row["assigned_by"], row["aspect"])) if old != new]
+                differences.append({"native_record_id": row["id"], "differing_fields": differing})
         status = ("no_compatible_native_record" if not candidates else "one_compatible_native_record"
                   if len(candidates) == 1 else "multiple_compatible_native_records")
         polarities = sorted({"NOT" if row["negated"] else "positive" for row in candidates})
         results.append({"edge_id": edge["id"], "assertion_id": edge.get("assertion_id"),
             "compatibility_key": list(key), "status": status,
             "native_record_ids": [row["id"] for row in candidates], "candidate_count": len(candidates),
+            "exact_subject_go_native_record_ids": [row["id"] for row in shared_subject_go],
+            "exact_subject_go_candidate_count": len(shared_subject_go),
+            "unmatched_projection_field_differences": differences,
+            "diagnostic_status": ("strict_projection_candidate_present" if candidates else
+                "exact_subject_go_present_projection_fields_differ" if shared_subject_go else
+                "no_exact_subject_go_native_record"),
+            "diagnostic_identity_established": False,
             "candidate_polarities": polarities, "both_positive_and_not_candidates": len(polarities) > 1,
             "candidate_product_forms": sorted({row["gene_product_form_id"] or "" for row in candidates}),
             "candidate_extension_literals": sorted({row["annotation_extension_raw"] for row in candidates}),
@@ -199,6 +220,11 @@ def qualify_go_context(packet, gaf, output, *, expected_gaf_sha256, source_url=N
             "native_product_form_rows": sum(bool(row["gene_product_form_id"]) for row in rows),
             "known_consumed_reference_rows": sum(bool(row["known_consumed_reference_ids"]) for row in rows),
             "edges_with_positive_and_not_candidates": sum(row["both_positive_and_not_candidates"] for row in compatibility),
+            "unmatched_with_exact_subject_go_native_records": sum(
+                row["diagnostic_status"] == "exact_subject_go_present_projection_fields_differ"
+                for row in compatibility),
+            "unmatched_without_exact_subject_go_native_records": sum(
+                row["diagnostic_status"] == "no_exact_subject_go_native_record" for row in compatibility),
             **{key: counts[key] for key in ("no_compatible_native_record", "one_compatible_native_record", "multiple_compatible_native_records")}},
         "historical_native_identity_established": False, "original_qualifiers_backfilled": False,
         "complete_gaf_rules_and_ontology_validation_performed": False,

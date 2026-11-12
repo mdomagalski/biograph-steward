@@ -82,6 +82,13 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
   obsolete-ID records with an exhaustive ledger; 167 explicit replacement
   proposals remain unapplied. These checks establish source/ontology semantics,
   not independent biological accuracy.
+- [Current native GO inspection and published QC](docs/GO_NATIVE_QUALITY.md):
+  query exact preserved source annotations and execute the official GO
+  relation, reference and qualified taxon checks in an optional runtime.
+  The [completed assessment](docs/evaluations/SCIENTIFIC_LIMIT_RESOLUTION_20261112.md)
+  normalizes nine relations and 49 alternative-ID extensions, finds no taxon
+  violations, and traces extension-context issues to primary evidence. It
+  preserves the source graph and does not estimate whole-graph accuracy.
 - [Automatic task qualification](docs/AUTOMATIC_TASK_QUALIFICATION.md): create a
   separate source-reported direct human phosphoregulation graph with complete
   keep/prune/abstain decisions. The first full CRC view excludes 76 explicitly

@@ -5,6 +5,10 @@ not accept evidence, rewrite the source workspace, or calculate whole-graph
 biological accuracy. Use a complete verified Gold source packet and new output
 directories. Keep the original graph and its exhaustive decision ledgers.
 
+For exact current-source inspection and the optional executed ontobio/GAFeRence
+checks, see [native GO quality control](GO_NATIVE_QUALITY.md). That follow-up
+does not transfer current qualifiers into unknown historical records.
+
 ## Recover native GO context
 
 Pharos exposes the GO term, aspect, evidence/ECO code and assigning database.

@@ -1,5 +1,11 @@
 # Scientific qualification: executed GO recovery and pruning
 
+**Follow-up:** the [native GO quality assessment](SCIENTIFIC_LIMIT_RESOLUTION_20261112.md)
+subsequently executes the published relation/reference rules and qualified
+taxon reasoning, adds exact current-source inspection, and diagnoses the
+unmatched historical records. The results below remain the original assessment;
+its statement that full native rules were not executed describes that run.
+
 Two reusable commands now address missing native annotation context and
 obsolete ontology identifiers. The executed CRC result detects and excludes
 **298 obsolete-ID GO records from a separate active-ID view**. This is a

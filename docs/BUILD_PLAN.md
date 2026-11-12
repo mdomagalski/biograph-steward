@@ -8,8 +8,12 @@ original GO edge, and materializes a separate active-ID graph excluding 298
 obsolete-ID records. Historical identity remains unresolved even for unique
 matches; replacement proposals remain separate. The earlier
 [source/task assessment](evaluations/AUTOMATIC_QUALIFICATION_20261112.md) is unchanged.
-The remaining scientific priority is predicate/context-matched independent
-reference coverage and native relation/taxon/reference qualification. Current
+The [native GO follow-up](evaluations/SCIENTIFIC_LIMIT_RESOLUTION_20261112.md)
+now executes published relation/reference rules and actual taxon reasoning on
+all 15,888 native records. It produces a separate normalized derivative,
+identifies extension-context curation cases, and adds exact current-source
+inspection. Independent correctness judgments remain the scientific priority;
+they can cover a probability sample rather than the entire graph. Current
 source eligibility, ontology currency and positive-only retention must not be
 reported as whole-graph accuracy or validated scientific-error pruning.
 
