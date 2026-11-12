@@ -1,5 +1,11 @@
 # Current investigation scripts
 
+For delivery, [prepare_judge_demo.py](prepare_judge_demo.py) reuses the committed
+runtime and verified gold-packet APIs to create separate software-only and local
+full-CRC archives. It preserves the original workspace and an all-abstain edge
+ledger, checks extracted byte inventories and records hashes. It neither
+retrieves data nor clears redistribution rights. See [delivery instructions](../docs/DELIVERY.md).
+
 This directory contains preparation tools for the active measured-link investigation. The workbench CLI is `python3 app.py --help`.
 
 | Script | Purpose |

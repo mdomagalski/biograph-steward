@@ -70,9 +70,20 @@ Current local examples:
 
 These are source-specific demonstrations. The taste-receptor example is separate from the cancer question. Retain source licenses and attribution when delivering real packets; software MIT licensing does not relicense upstream data. Provide a bounded retrieval recipe when a packet cannot be redistributed.
 
-The current release ZIP is the small two-protein delivery check. Designate and
-verify the full CRC example and its separate matching package for judges;
-local run IDs are not a judge-accessible distribution route by themselves.
+The designated full example is now `crc_biological_workspace_20261112`, with
+99 primary targets, 9,865 entities, 16,985 evidence records and 16,980 assertions.
+The [delivery builder](DELIVERY.md) produces the committed core runtime and a
+separate locally verified complete CRC packet, with all-abstain decisions and
+the preserved original baseline. The [five-minute script](DEMO_SCRIPT.md) uses
+the saved BRAF question and new site/context inspector. The earlier two-protein
+ZIP remains an engineering check, not the full final example.
+
+The native graph contains 1,588 KEGG pathway records; blanket redistribution
+permission is not established. The full packet remains local, including for
+judge access until applicable permissions are resolved. The software-only
+archive and bounded retrieval route are independently usable. Final repository
+publication is intended for submission; local run IDs and commits alone do not
+provide external access.
 
 ## Completed biological source enrichment
 
@@ -123,14 +134,20 @@ The [November 11 release check](evaluations/release_candidate_20261111_summary.j
 
 | Slide | Main point | Visual or demonstration |
 |---|---|---|
-| 1. Make Pharos evidence usable | Researchers need bounded questions, interpretable context and access to original support | One actual workbench screenshot |
-| 2. From question to evidence | Scoped retrieval and deterministic tools build the graph; qualified assertions retain source and review history | Question → graph → source → decision → export flow |
-| 3. Explore and inspect | Task navigation, bounded multihop paths and guided source inspection expose what an annotation supports | Short BRAF and qualified-assay walkthrough |
-| 4. What the measurements show | Equal-budget pruning yields small positive-retention gains over native confidence; the published comparator ties or exceeds them | OpenCell/HCT116 retention and scope table above |
-| 5. Preserve meaning across resources | Identifiers, source lineage, full assay conditions and reuse checks prevent unsupported strengthening or double counting | A source passport and shared-record example |
-| 6. Deliverables and limits | MIT software, reproducible graph/source packet, decisions and evaluation artifacts; experimental planning and biological pruning remain bounded gaps | Export contents and concise next scientific step |
+| 1. BioGraph Steward | Pharos evidence for a scoped research question | Title and challenge scope |
+| 2. A bounded question and an inspectable answer | Guided choices lead to cited saved paths; scored and unranked matches remain visible | Actual BRAF answer screenshot |
+| 3. Site and study context | Phosphate addition and reduced protein activity can coexist in one source record | Current BRAF S614 site/context capture |
+| 4. Shared records | Exact source reuse remains visible; another database is not another experiment | IntAct/STRING record and unresolved counterpart |
+| 5. Bounded target recovery | Author-curated signatures improve coverage and study-weighted rank; common-target ranking remains mixed | Editable charts, evaluated denominator and limits |
+| 6. Delivery and scientific boundaries | Complete CRC workspace, decisions and original baseline; separate software/data permissions | Export screenshot, counts and remaining limits |
 
-A six-slide editable presentation draft now uses current app captures and separate native charts for average precision and numeric coverage. The interpretation examples display labeled IntAct fields, distinct retrieval/source labels and the existing CIViC study level with its full treatment scope. The [interpretation delivery record](evaluations/interpretation_delivery_20261111_summary.json) documents these display changes and their source checks.
+A six-slide editable presentation now includes the current site/context capture,
+exact source-reuse example, native charts for scored target cases and normalized
+rank, complete CRC delivery counts and the source-permission boundary. Speaker
+notes preserve the evaluated denominator, mixed shared-target outcome,
+technical-replay status and negative same-learner findings. Earlier presentation
+and [interpretation checks](evaluations/interpretation_delivery_20261111_summary.json)
+remain preserved.
 
 The optional NVIDIA Nemotron/NAT integration belongs on slide 2 or in the technical appendix. The current planner is experimental; the primary demonstration uses supported guided tools. Show implemented methods and useful behavior before architecture details.
 
@@ -139,7 +156,7 @@ The optional NVIDIA Nemotron/NAT integration belongs on slide 2 or in the techni
 | Item | Current state | Finish action |
 |---|---|---|
 | MIT repository and build instructions | Implemented; current source passed the isolated installation/start/export gate | Make the delivered release checkpoint available through GitHub |
-| App and demonstration | Working local five-tab workflow; source packets and historical desktop/mobile checks exist | Select the final example, record the walkthrough and provide a portable route for judges |
+| App and demonstration | Working five-tab flow, full CRC example, site/context desktop/mobile checks, portable builder and five-minute script | Resolve real-source sharing permissions and deliver the chosen route; independent intended-user assessment remains open |
 | Graph and decisions | Current CRC packet preserves its original sources and has an all-abstention ledger. Separate historical primary/native pruned packages have complete source baselines and exhaustive keep/prune/abstain ledgers; safeguarded exports preserve all original components | Deliver clearly named source-workspace and experimental-pruning packages with their different scopes |
 | Standards | Explicit vocabulary references, bounded KGX profile and SSSOM audit | Link the implemented profile and documented conformance limits |
 | Scientific assessment | Retention comparisons, matched learner controls, source-qualified context and a positive curated-signature recovery comparison exist; whole-graph biological accuracy and CRC-specific pruning benefit remain unproven | Present source-choice utility separately from graph-learning/pruning benefit, with comparators, denominators and negative/mixed outcomes |

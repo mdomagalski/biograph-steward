@@ -32,11 +32,11 @@ class RegulatoryHttpTests(unittest.TestCase):
     def tearDown(self):
         self.server.shutdown(); self.server.server_close(); self.thread.join(); self.temp.cleanup()
 
-    def request(self, body, *, auth=True):
+    def request(self, body, *, auth=True, path='/api/regulatory-question'):
         headers = {'Content-Type': 'application/json'}
         if auth:
             headers['Authorization'] = 'Bearer invented-regulatory-fixture-token'
-        return self.opener.open(Request(self.url + '/api/regulatory-question', json.dumps(body).encode(), headers))
+        return self.opener.open(Request(self.url + path, json.dumps(body).encode(), headers))
 
     def error(self, status, body, **options):
         with self.assertRaises(HTTPError) as caught:
@@ -80,6 +80,39 @@ class RegulatoryHttpTests(unittest.TestCase):
                       'id="regulatoryPanel"', '/api/regulatory-question',
                       'Inspect claim, context and citation', 'Unreported'):
             self.assertIn(value, html)
+
+    def test_site_context_endpoint_is_authenticated_filtered_and_read_only(self):
+        before = deepcopy(self.graph)
+        path = '/api/regulatory-sites'
+        self.error(401, {'run_id': 'saved'}, auth=False, path=path)
+        with patch('biograph_steward.client.PharosClient.execute', side_effect=AssertionError('No retrieval')):
+            with self.request({'run_id': 'saved', 'direction': 'both', 'site': 'S1',
+                               'context_reporting': 'unreported'}, path=path) as response:
+                answer = json.loads(response.read())
+        self.assertEqual(answer['format'], 'biograph-steward.regulatory-sites.v1')
+        self.assertEqual(answer['summary']['matching_observations'], 1)
+        view = answer['records'][0]['site_view']
+        self.assertEqual(view['modification_action'], 'phosphate_addition')
+        self.assertFalse(view['reported_site']['canonical_coordinate_verified'])
+        self.assertEqual(self.graph, before)
+        self.assertEqual(list(self.run.iterdir()), [])
+        for options in ({'site': 'S1;T2'}, {'search': 'source'}, {'context_reporting': 'known'},
+                        {'cell_context': 'one;two'}, {'run_id': '../saved'}):
+            self.error(400, {'run_id': 'saved', **options}, path=path)
+
+    def test_site_cli_and_navigation_expose_the_same_explicit_scope(self):
+        out = self.root / 'sites'
+        with redirect_stdout(StringIO()):
+            code = main(['regulatory-sites', '--run', str(self.run), '--direction', 'both',
+                         '--site', 'Ser1', '--out', str(out)])
+        self.assertEqual(code, 0)
+        answer = json.loads((out / 'answer.json').read_text())
+        self.assertEqual(answer['filters']['normalized_reported_site'], 'S1')
+        self.assertEqual(answer['summary']['matching_observations'], 1)
+        html = report_html(self.graph)
+        for text in ('Sites &amp; context', 'id="regulatorySite"', '/api/regulatory-sites',
+                     'Separate protein response', 'Cell and tissue context are both unreported'):
+            self.assertIn(text, html)
 
 
 if __name__ == '__main__':

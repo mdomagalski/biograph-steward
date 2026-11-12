@@ -1,0 +1,57 @@
+{
+  "content_sha256": "e20dd9745ad2875e6d15781a5aa279df1e19a67442cf961a87f861a6fd02078e",
+  "created_at": "2026-11-12T19:38:42.141212+00:00",
+  "existing_results": {
+    "Brev_GPU_or_model_used": false,
+    "biological_accuracy_gain_measured": false,
+    "frozen_gene_only_resolver_changed": false,
+    "graphs_or_reviews_changed": false,
+    "prior_benchmark_rerun_or_relabelled": false
+  },
+  "format": "biograph-steward.scoped-identity-public-summary.v1",
+  "historical_reference": {
+    "automatic_rescues": 0,
+    "benchmark_labels_or_scores_changed": false,
+    "native_stable_target_ID_fields_found": 0,
+    "original_bare_label_rows_audited": 13,
+    "original_exclusions_preserved": true,
+    "rows_remaining_unresolved": 13
+  },
+  "implementation": {
+    "catalytic_truth_established": false,
+    "experimental_proteoform_identity_established": false,
+    "gene_qualification_chooses_protein": false,
+    "global_alias_override": false,
+    "independent_software_review": "PASS_NO_BLOCKING_ISSUES",
+    "module": "tools/kinase_utility/scoped_identity.py",
+    "module_sha256": "b30b346438b3ea2ce46a92d3775fe4612499de138e03b61fc14bbfe9b391c2d0",
+    "new_SSSOM_conformance_claim": false,
+    "publisher_authenticity_established": false,
+    "source_binding": "Declared source/release, full-file SHA256, native record ID, data-record ordinal and canonical decoded raw-row digest.",
+    "synthetic_tests_passed": 12
+  },
+  "limits": [
+    "Current registry correspondence does not prove historical source intent or an assayed construct.",
+    "Gene-only historical rows do not receive stable IDs inferred from present-day lookup.",
+    "Source metadata authenticity and underlying source rights remain separate from byte integrity and MIT software."
+  ],
+  "primary_guidance": [
+    "https://www.genenames.org/help/symbol-report/index.html",
+    "https://hgnc.genenames.org/useful/instructions-to-authors/"
+  ],
+  "provenance": {
+    "historical_primary_review_seal": "7b79d02997ae7d61f57c2400f1af681428ace2a15b018a9ee10ad97289087088",
+    "independent_contract_review_seal": "2d0af22a500bbf0489d4b68f3ee12b5715c8fca2dcd4f39b69a9e77e8b8e646d",
+    "native_rows_and_primary_review_packets_publicly_bundled": false,
+    "source_only_qualification_seal": "e051f7aa963c775e5176b0c26d0d333b85749bbb1792529495db1cb976e2345a"
+  },
+  "scope": "Explicit-identifier correspondence in bound source records; no benchmark, activity inference or historical-label rescue.",
+  "source_records": {
+    "captured_HGNC_gene_records_qualified": 3,
+    "captured_UniProt_literal_protein_records_qualified": 3,
+    "distinct_genes": 3,
+    "independent_experiment_count_established": false,
+    "literal_SIGNOR_records_with_source_UniProt_qualified": 3,
+    "qualified_records_total": 9
+  }
+}

@@ -27,11 +27,23 @@ For a review demonstration, use the synthetic data: open **Inspect all source da
 
 ## Open a real example
 
+A [portable delivery guide](docs/DELIVERY.md) now designates the complete CRC
+workspace and separates the software-only archive from locally verified source
+data. Follow its launch instructions when you have authorized access to that
+packet. The [five-minute demonstration](docs/DEMO_SCRIPT.md) is the presentation
+route; local run IDs alone are not a distribution mechanism.
+
 A fresh checkout includes synthetic fixtures, not retrieved Pharos or assay snapshots. If a real demonstration packet is supplied separately, keep its complete workspace/source folders together and follow the packet's placement instructions. Copying only `graph.json` loses the source and replay context.
 
 With complete saved workspaces available, open **Data & saved work → Saved graphs and answers** or **Open a saved real example**. A saved question URL reopens its graph and answer. Use the saved example for an offline presentation; live retrieval is optional.
 
 For a qualified assay example, **Evidence & sources → Qualified assay evidence** preserves the method, detected or nondetected outcome, experimental roles, original identifiers and excluded observations. The guided inspector exposes source links and unresolved reuse without treating repeated database records as independent experiments. See [assay attachment](docs/ASSAY_WORKBENCH.md) and [IntAct source evidence](docs/INTACT_EVIDENCE_WORKBENCH.md).
+
+For the saved SIGNOR layer, choose **Regulation and experimental context → Sites
+& context**. The BRAF example separates phosphate addition at S614 from the
+reported decrease in protein activity. Exact cell/tissue filters preserve
+missing context and source citations. This [read-only view](docs/SITE_CONTEXT_INSPECTION.md)
+adds no graph assertion or automatic acceptance.
 
 ## Retrieve a new scoped graph
 
@@ -43,6 +55,12 @@ See [construction and replay](docs/CONSTRUCTION.md), [scoped retrieval](docs/SCO
 
 ## What the results establish
 
+- The [curated-signature comparison](docs/evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md)
+  increases scored perturbation-target cases from **31 to 39 of 105**, with
+  study-weighted normalized rank **0.680898 → 0.576408**. This is mainly a
+  coverage gain; shared-target ranking is mixed. It is a corrected technical
+  replay with unresolved source reuse, not whole-graph accuracy, automatic
+  pruning or a new default app signature source.
 - The [fixed STRING comparison](docs/evaluations/STRING_COMPONENT_COMPARISON_20261027.md) found higher average precision for native physical scores than functional scores on 2,676 eligible assay pairs: **0.190056 versus 0.172827**, with lower numeric coverage (**72.4% versus 88.3%**). The [older-release control](docs/evaluations/STRING_TEMPORAL_CONTROL_20261027.md) supports a modest task-specific ranking benefit. These are retrospective source-component results; they do not establish independent validation or a Steward-versus-Pharos graph improvement.
 - The [GO hierarchy comparison](docs/evaluations/INMC_COMPARISON_20261023.md) and [Reactome-context comparison](docs/evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md) found **no consistent prediction benefit**. Their evaluated panels remain consumed development material.
 - The [Lambourne assay corroboration](docs/evaluations/LAMBOURNE_CORROBORATION_20261025.md) found detection in **17.0%** of Pharos-represented eligible pairs versus **5.9%** of resolved no-matches. This is conditional assay concordance; source/study independence remains unresolved. The [qualified publication](docs/ASSAY_EVIDENCE.md) preserves all 3,222 nominations, assay conditions, nondetections and exclusions.

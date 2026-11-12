@@ -77,24 +77,25 @@ The [OptimusKG support-search assessment](evaluations/support_search_comparator_
 
 Finish the current release, a permitted reproducible real-data package, the graph-plus-ledger handoff and a short presentation organized around the judging criteria. Prioritize useful source inspection, preservation and measured results. Keep additional sources, new model/threshold searches, cloud migration and broader standards profiles outside the closing scope. The [build plan](BUILD_PLAN.md) is the active delivery sequence; the [literature knowledge base](LITERATURE_REVIEW.md) preserves prior methods and known limitations.
 
-## Remaining work, ordered by purpose
+## Closing delivery and qualification
 
-1. **Delivery:** designate the exact judge-accessible CRC workspace and matching
-   graph/source/decision packages, plus a portable retrieval route where input
-   redistribution is not cleared. The existing two-protein smoke-test ZIP is
-   not the full CRC demonstration. Finish the walkthrough, presentation and
-   GitHub release; local branch commits do not establish remote delivery.
-2. **Biological qualification:** retain the measured curated-coverage gain and
-   complementary SIGNOR evidence. Qualify source-specific stable identifiers
-   for avoidable alias abstentions, preserving old results and mapping provenance.
-   The [HGNC checker](https://www.genenames.org/help/multi-symbol-checker/)
-   distinguishes approved, alias and previous-symbol matches; a bare historical
-   string is not automatically a stable gene/product identity.
-3. **Interpretation:** a derived phosphosite/context inspector can reuse saved
-   SIGNOR records. [PhosphoSIGNOR](https://signor.uniroma2.it/PhosphoSIGNOR/apis/)
-   distinguishes kinase, phosphatase, substrate and residue queries. This can
-   clarify site incidence versus protein effect without importing duplicate
-   evidence or accepting source claims automatically.
+1. **Delivery:** the complete CRC example is designated and the
+   [portable package builder](DELIVERY.md) preserves its graph, exhaustive
+   abstention ledger and original source baseline. The software-only archive,
+   [five-minute script](DEMO_SCRIPT.md) and refreshed presentation provide a
+   reproducible route. Full native data remain local pending applicable source
+   permission, including KEGG terms. Final GitHub publication and actual judge
+   access remain separate actions; local commits do not establish delivery.
+2. **Biological qualification:** the [source-scoped helper](evaluations/SCOPED_IDENTITY_QUALIFICATION_20261112.md)
+   reuses existing registry and protein checks. Nine records with explicit
+   stable identifiers qualify across three genes; all 13 historical bare-label
+   rows stay unresolved. No current ID is copied into an unsupported old row,
+   and no frozen result is changed.
+3. **Interpretation:** the [read-only site/context view](SITE_CONTEXT_INSPECTION.md)
+   uses saved SIGNOR records and the published PhosphoSIGNOR distinction.
+   Phosphate addition/removal, net protein response, reported coordinates and
+   experimental context remain separate. No duplicate evidence, inferred
+   site-to-protein effect or automatic acceptance is introduced.
 
 Broader entailment/contradiction verification, calibrated confidence, automatic
 scientific pruning, independent usability success and general autonomous

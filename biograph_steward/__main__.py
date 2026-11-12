@@ -93,6 +93,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--selection", type=Path, required=True)
     p.add_argument("--processed-qc", type=Path)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("regulatory-sites", help="Inspect reported sites, phosphate change and experimental context from saved SIGNOR evidence.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--protein", default="UniProtKB:P00533")
+    p.add_argument("--direction", choices=("incoming", "outgoing", "both"), default="both")
+    p.add_argument("--site", default="")
+    p.add_argument("--cell-context", default="")
+    p.add_argument("--tissue-context", default="")
+    p.add_argument("--context-reporting", choices=("all", "reported", "unreported"), default="all")
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("regulatory-question", help="Inspect saved source-reported regulation with its direction, site and experimental context.")
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--protein", default="UniProtKB:P00533")
@@ -359,6 +368,19 @@ def main(argv: list[str] | None = None) -> int:
                                args.out, processed_qc=args.processed_qc)
             print(json.dumps({'output': str(args.out.resolve()), 'publication_sha256': manifest['content_sha256'],
                               'scientific_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'regulatory-sites':
+            from .regulatory_sites import answer_regulatory_sites
+            from .reviews import read_run
+            from .file_utils import new_output
+            from .client import write_json
+            answer = answer_regulatory_sites(read_run(args.run)[2], args.protein,
+                direction=args.direction, site=args.site, cell_context=args.cell_context,
+                tissue_context=args.tissue_context, context_reporting=args.context_reporting,
+                source_run=args.run.name)
+            output = new_output(args.out, args.run)
+            write_json(output / 'answer.json', answer)
+            print(json.dumps({'output': str(output.resolve()), 'summary': answer['summary']}, indent=2))
             return 0
         if args.command == 'regulatory-question':
             from .regulatory_questions import answer_regulatory_question

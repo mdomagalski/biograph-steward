@@ -831,6 +831,27 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     graph = attach_assay(*sources, runs_dir / run_id)
                     self.json_reply({'run_id': run_id, 'graph': graph})
                     return
+                if path == '/api/regulatory-sites':
+                    from .regulatory_sites import answer_regulatory_sites
+                    from .reviews import read_run
+                    if set(body) - {'run_id', 'protein', 'direction', 'site', 'cell_context',
+                                    'tissue_context', 'context_reporting', 'offset', 'limit'}:
+                        raise ValueError('Unsupported site/context question option.')
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved workspace identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    result = answer_regulatory_sites(read_run(folder)[2],
+                        body.get('protein', 'UniProtKB:P00533'), direction=body.get('direction', 'both'),
+                        site=body.get('site', ''), cell_context=body.get('cell_context', ''),
+                        tissue_context=body.get('tissue_context', ''),
+                        context_reporting=body.get('context_reporting', 'all'),
+                        offset=body.get('offset', 0), limit=body.get('limit', 25), source_run=identifier)
+                    self.json_reply(result)
+                    return
                 if path == '/api/regulatory-question':
                     from .regulatory_questions import answer_regulatory_question
                     from .reviews import read_run

@@ -9,6 +9,11 @@ Choose an exact disease or protein cohort → retrieve a scoped graph → ask a 
 
 For the final challenge handoff, see the [submission and presentation draft](docs/FINAL_SUBMISSION.md) and [five-day completion scope](docs/BUILD_PLAN.md). The core demonstration requires no paid literature service or GPU.
 
+The [portable delivery guide](docs/DELIVERY.md) separates the software-only
+runtime from the complete local CRC source/graph/decision package. Follow the
+[five-minute demonstration](docs/DEMO_SCRIPT.md). Real source redistribution
+remains subject to upstream terms; a verified ZIP does not clear those rights.
+
 The [November 12 biological assessment](docs/evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md)
 compares fixed-budget graph views against OpenCell source calls. On the pinned
 author-processed table, the preselected experimental-support view retains
@@ -66,6 +71,15 @@ The **Compare & assess** tab can open saved OptimusKG support-search preparation
 The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_20261026.md) now verifies a fresh local clone and installed wheel using an existing two-protein source packet. The installed app generates a cited answer, displays the separate assay context, downloads the complete graph/decision package and reopens its recovered source with identical citations. Reproduction requires the authorized real-data input separately; this is automated delivery verification, not independent user or biological validation.
 
 ## Current capabilities
+
+- [Reported sites and experimental context](docs/SITE_CONTEXT_INSPECTION.md):
+  inspect phosphate addition/removal separately from the source's net protein
+  effect, with exact source-context filters and citations; no graph mutation,
+  inference or model call.
+- [Source-scoped stable-ID qualification](docs/evaluations/SCOPED_IDENTITY_QUALIFICATION_20261112.md):
+  qualify identifiers physically supplied in bound source rows without choosing
+  a protein from a gene-only label. The optional helper leaves all 13 original
+  unsupported historical target rows unresolved and does not rescore results.
 
 - [Bounded cohort construction](docs/CONSTRUCTION.md): 1–25 exact protein accessions, a fixed source profile, published graph, cited candidate answer and offline-verifiable export. This deterministic flow needs no model.
 - [Retrieval reliability](docs/PHAROS_RETRIEVAL_RELIABILITY.md): reuse native bounded retries and validated caching, with optional durable records of each native HTTP attempt. A separate consumed-data diagnostic preserves all eight eligible observations and the original fresh result.

@@ -3,10 +3,13 @@
 ## Current boundary — November 12
 
 The bounded workbench has its main framework components, including a tested
-private AWS/Neptune mirror. Delivery still needs the designated judge-accessible
-CRC example, complete graph/source/decision handoff, final walkthrough and
-GitHub release. The two-protein smoke-test package does not by itself supply
-that full demonstration.
+private AWS/Neptune mirror. The complete 99-target CRC workspace is now the
+designated delivery example: 9,865 entities, 16,985 evidence records and 16,980
+assertions. The [delivery builder](DELIVERY.md) separates software from its
+full local graph/source/decision packet. The remaining delivery boundary is
+source permission and final publication/access, not another architecture
+increment. KEGG records in the native graph prevent assuming blanket
+redistribution clearance.
 
 The [curated-signature comparison](evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md)
 now gives a bounded positive recovery result: 31 → 39 scored target cases out
@@ -15,11 +18,14 @@ not a newly enabled app source or evidence of improved Pharos edge truth.
 The same-learner comparison is implemented but has no consistent enrichment
 gain; reliable free-text planning and biological pruning remain open.
 
-Continue biological qualification through source-scoped stable-ID mappings and
-a site/context inspection view over existing SIGNOR records, using the current
-provenance, mapping and review tools. Preserve source distinctions and old
-evaluation boundaries. The [updated crosswalk](PROJECT_ALIGNMENT.md) separates
-these scoped advances from broader proposal ambitions.
+The [source-scoped stable-ID helper](evaluations/SCOPED_IDENTITY_QUALIFICATION_20261112.md)
+and [site/context inspector](SITE_CONTEXT_INSPECTION.md) are implemented. Nine
+explicit-ID source records qualify; all 13 unsupported historical labels stay
+unresolved. Saved SIGNOR inspection separates phosphate changes from net
+protein effects without adding evidence or changing old results. The
+[five-minute walkthrough](DEMO_SCRIPT.md) and refreshed six-slide presentation
+consolidate the working product and measured limits. The [updated crosswalk](PROJECT_ALIGNMENT.md)
+separates these scoped advances from broader proposal ambitions.
 
 ## Five-day completion focus — November 11
 
