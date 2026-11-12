@@ -41,15 +41,19 @@ def archive(folder, destination):
         for name in names:
             output.write(Path(folder) / name, name)
     with tempfile.TemporaryDirectory(prefix='biograph-judge-download-') as temporary:
+        # macOS can return /var/folders through its /private/var alias. Replay
+        # requires canonical ordinary roots; resolve our own temporary root
+        # before extraction, without relaxing source-file symlink checks.
+        temporary = Path(temporary).resolve(strict=True)
         with zipfile.ZipFile(destination) as source:
             if set(source.namelist()) != set(names):
                 raise ValueError('Judge archive inventory changed.')
             source.extractall(temporary)
         if inventory(temporary) != names:
             raise ValueError('Extracted judge archive bytes changed.')
-        if (Path(temporary) / 'handoff').exists():
-            _, retained = load_decisions(Path(temporary) / 'handoff')
-            reopened = read_run(Path(temporary) / 'runs' / RUN_ID)[2]
+        if (temporary / 'handoff').exists():
+            _, retained = load_decisions(temporary / 'handoff')
+            reopened = read_run(temporary / 'runs' / RUN_ID)[2]
             if any(retained[key] != reopened[key] for key in ('nodes', 'edges', 'assertions')):
                 raise ValueError('Portable workspace differs from its retained handoff graph.')
     return {'file': Path(destination).name, 'sha256': sha(destination),

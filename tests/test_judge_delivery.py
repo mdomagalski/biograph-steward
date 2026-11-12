@@ -14,12 +14,14 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import prepare_judge_demo as delivery
 
 from biograph_steward.client import digest
+from biograph_steward.assay_attachment import attach_assay
 from biograph_steward.demo import demo_snapshot
 from biograph_steward.file_utils import sha
 from biograph_steward.gold_packet import export_packet, load_decisions, load_packet
 from biograph_steward.graph import save_run
 from biograph_steward.questions import answer_question, verify_answer
 from biograph_steward.reviews import read_run
+from test_assay_attachment import cohort_snapshot, make_publication
 
 
 COMMIT = '0123456789abcdef0123456789abcdef01234567'
@@ -144,6 +146,56 @@ class JudgeDeliveryTests(unittest.TestCase):
                 self.prepare(runtime_builder=runtime)
             runtime.assert_not_called()
         self.assertFalse(self.out.exists())
+
+    def test_archive_temp_alias_replays_assay_packet_without_weakening_source_checks(self):
+        source, publication, attached, packet = (self.root / name for name in
+            ('assay_cohort', 'assay_publication', 'assay_attached', 'assay_packet'))
+        save_run(cohort_snapshot(), source)
+        make_publication(publication)
+        graph = attach_assay(source, publication, attached)
+        export_packet(attached, packet)
+        before = delivery.inventory(packet)
+
+        # Reproduce a system temporary-root alias on every platform, rather
+        # than relying on the host's /var -> /private/var configuration.
+        canonical = self.root / 'canonical_temporary_parent'
+        canonical.mkdir()
+        alias = self.root / 'temporary_parent_alias'
+        alias.symlink_to(canonical, target_is_directory=True)
+        original_temporary = tempfile.TemporaryDirectory
+        returned_names = []
+
+        def aliased_temporary(*args, **kwargs):
+            kwargs['dir'] = alias
+            temporary = original_temporary(*args, **kwargs)
+            returned_names.append(Path(temporary.name))
+            self.assertTrue(alias in Path(temporary.name).parents)
+            return temporary
+
+        output = self.root / 'assay_delivery'
+        with patch.object(delivery.tempfile, 'TemporaryDirectory', side_effect=aliased_temporary), \
+                patch.object(delivery, 'load_decisions', wraps=load_decisions) as replay:
+            result = delivery.prepare(packet, output, ref='invented-release', runtime_builder=tiny_runtime)
+        self.assertEqual(len(returned_names), 2)
+        self.assertTrue(all(not name.exists() for name in returned_names))
+        self.assertTrue(all(Path(call.args[0]) == Path(call.args[0]).resolve()
+                            for call in replay.call_args_list))
+        self.assertEqual(result['decisions']['abstain'], len(graph['edges']))
+        self.assertEqual(delivery.inventory(packet), before)
+
+        extracted = canonical / 'downloaded'
+        with zipfile.ZipFile(output / result['local_data_archive']['file']) as archive:
+            archive.extractall(extracted)
+        report, retained = load_decisions(extracted / 'handoff')
+        reopened = read_run(extracted / 'runs' / delivery.RUN_ID)[2]
+        self.assertEqual(report['counts']['abstain'], len(graph['edges']))
+        self.assertEqual(reopened['assay_observations'], graph['assay_observations'])
+        for key in ('nodes', 'edges', 'assertions'):
+            self.assertEqual(retained[key], reopened[key])
+        # Resolving an internally created extraction root must not permit a
+        # caller-supplied symlink traversal through the actual source reader.
+        with self.assertRaisesRegex(ValueError, 'symlink'):
+            load_decisions(alias / 'downloaded' / 'handoff')
 
     def test_existing_or_nested_output_is_refused_without_changing_source(self):
         before = delivery.inventory(self.packet)
