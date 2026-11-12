@@ -57,7 +57,7 @@ local macOS verification.
 
 Clean-checkout tests use temporary invented metadata, not files in an ignored
 research `runs/` directory. A separate HTTP regression covers CPython 3.10's
-strict parser behavior for an empty query: default pair requests bypass the
+strict parser behavior for an empty query ([upstream source](https://github.com/python/cpython/blob/v3.10.22/Lib/urllib/parse.py)): default pair requests bypass the
 parser, while nonempty queries retain strict validation. No scientific
 implementation or old reference outcome changes through these fixes.
 

@@ -54,19 +54,20 @@ Start with [START_HERE](../START_HERE.md). The core app needs Python 3.10+ and n
 
 For a recorded or source-packet demonstration, use this five-minute sequence:
 
-1. **Ask & explore:** open the saved BRAF question on the 99-protein colorectal-cancer Pharos cohort. Show a bounded question, answer paths and the source/review scope.
-2. Inspect the optional physical ordering: all 21 matching proteins remain available, with 14 scored and seven unranked. Explain what the missing values mean.
-3. **Evidence & sources:** open `crc_biological_workspace_20261112`. Show **EGFR tissue evidence**, then **Regulation and experimental context**. Inspect one tissue observation or the MCC source passport, including conditions, source references and unresolved evidence reuse. Explain why additional source records are not independent experiments. The separate TAS1R2/TAS1R3 example remains available for exact curated-record reuse.
-4. **Compare & assess:** show the experimental reference table and its explicit study/mapping limits. Distinguish the historical 3,172-protein assessment from the selected CRC workspace. Open the current processed result and original frozen protocol. Literature searching is optional.
+1. **Ask & explore:** open the packaged BRAF question on the 99-protein colorectal-cancer Pharos cohort. Show the bounded question, answer paths and source/review scope.
+2. Follow one path and its assertion references. Eight of 21 matching proteins are shown under the explicit result limit; the saved answer has 16 assertion references. Remaining matches are not biologically absent. Candidate paths require review.
+3. **Evidence & sources:** open **Regulation and experimental context → Inhibitory BRAF phosphorylation**. Inspect phosphate addition at Ser614 separately from reduced protein activity, the reported cell context and original PMID. Other saved regulatory and EGFR tissue passports remain available. Explain why added records are not independent experiments; the presentation's TAS1R2/TAS1R3 reuse example is separate from this cancer workspace.
+4. Present the separate experimental results and their explicit study/mapping limits using the slides and repository evaluation reports. Distinguish historical whole-source comparisons from the selected CRC workspace. Optional assessment packets are separate; the portable runtime does not bundle a complete research-run history. Literature searching is optional.
 5. **Export:** identify the retained graph, exhaustive decision ledger and complete original source baseline. Explain whole-workspace versus current-answer scope.
 
 Current local examples:
 
-- BRAF question: `crc_civic_final_20261015` / `question_20261027T180832Z_781f7543`.
+- Packaged BRAF question: `crc_judge_demo` / `question_judge_focus` inside the v3 delivery.
+- Earlier physical-priority example: `crc_civic_final_20261015` / `question_20261027T180832Z_781f7543`.
 - Replay-compatible qualified-source workspace: `source_reuse_workbench_20261029`.
 - Current STRING/MAP-IT/SIGNOR workspace: `crc_biological_workspace_20261112`.
 - Optional local/private cell-model context: `crc_context_qualified_20261112`.
-- Current graph-and-decision package: `runs/submission_release_20261111/submission_handoff.zip`.
+- Complete local CRC package: `runs/final_delivery_v3_20261112/biograph_steward_crc_local.zip`.
 
 These are source-specific demonstrations. The taste-receptor example is separate from the cancer question. Retain source licenses and attribution when delivering real packets; software MIT licensing does not relicense upstream data. Provide a bounded retrieval recipe when a packet cannot be redistributed.
 

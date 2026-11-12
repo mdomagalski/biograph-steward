@@ -16,21 +16,26 @@ engineering/source-preservation result, not another biological benchmark.
 | Software-only archive | 151 committed runtime files plus generated instructions, with no retrieved datasets, Git history or credentials |
 | Presentation | Six editable slides, actual workbench captures, native result charts and explicit scientific/source limits |
 
-Runtime revision: `c714d01183d0d254f2a203e6307103c643395ff6`.
-Later CI/documentation changes do not change this packaged runtime.
+Runtime revision: `41a97bbfbe091545236d4d136a65670590d73289`.
+Later presentation/documentation changes do not change this packaged runtime.
 
 The builder's first full-data extraction exposed a macOS temporary-root alias
 defect. Resolving the internally created extraction root fixed replay without
 weakening source symlink checks. An assay-backed regression preserves both
 successful internal replay and rejection of caller-supplied symlink traversal.
-The unsuccessful package remains preserved separately; the verified release is
-the **v2** package. No new biological reference was opened or rescored.
+The unsuccessful package remains preserved separately. The v2 candidate passed
+local replay; the final **v3** also contains the Python 3.10 empty-query parser
+correction found by Linux CI. Earlier candidates and proofs remain preserved.
+No new biological reference was opened or rescored.
 
 Core portability and the mandatory pinned scientific group use
 [separate standard discovery patterns](../TESTING.md). Their assertions and
-skip policies remain intact. Local checks do not establish GitHub's Linux CI
-success before that workflow actually runs. Optional integrations skipped
-without installed dependencies are not thereby validated.
+skip policies remain intact. All eight GitHub jobs passed for the packaged
+runtime: Python 3.10–3.13 core checks, pinned scientific evaluation, installed
+core portability, container startup and NVIDIA toolkit compatibility.
+Tests also no longer depend on ignored historical research files. Optional
+integrations skipped without installed dependencies are not thereby validated;
+toolkit compatibility is not successful live model planning.
 
 ## Interpretation additions
 

@@ -2,7 +2,7 @@
   "format": "biograph-steward.delivery-readiness-summary.v1",
   "date": "2026-11-12",
   "scope": "Software, source preservation and bounded interpretation delivery; not new biological validation.",
-  "runtime_git_commit": "c714d01183d0d254f2a203e6307103c643395ff6",
+  "runtime_git_commit": "41a97bbfbe091545236d4d136a65670590d73289",
   "source_packet_id": "packet:14265d0e4990da19e1f2538be1f185cf68e378d00152fdb71ca3d8c4f9936a8e",
   "counts": {
     "primary_targets": 99,
@@ -21,14 +21,14 @@
   "archives": {
     "software": {
       "file": "biograph_steward_software.zip",
-      "sha256": "3dddd8e59b235a4a9884798541fe458dc1b27fcd98e5846b63013fb476e1c08e",
-      "bytes": 819985,
+      "sha256": "626e26fcc2f22c24e3e2664806bbde3d9bea846d7576552ab0faa7aa82517179",
+      "bytes": 820029,
       "file_count": 152
     },
     "local_crc": {
       "file": "biograph_steward_crc_local.zip",
-      "sha256": "218281c5f0e4ec25081466ba300bee7655db9cfcb020bc69b6d1d1231177697b",
-      "bytes": 228429731,
+      "sha256": "bbb29d1a7bda768a8105b035680009d25bb03a23e3426a8b0ee137266ff1608d",
+      "bytes": 228429774,
       "file_count": 338
     }
   },
@@ -51,30 +51,35 @@
     "test_servers_stopped": true
   },
   "verification_bindings": {
-    "delivery_content_sha256": "da17cd385bbb12b523d52a87d0b894380582e9007a2a83c450a1ffd6a765b1f2",
-    "consolidated_portability_content_sha256": "2857215e6efd71b41f5496581cfe6d309a2d96c57e9d50740d825b1023105aaa"
+    "delivery_content_sha256": "beb24477f6d3625cd341a85ac8506f088cb3d6a4cf63026c3000e55f28d38a99",
+    "consolidated_portability_content_sha256": "fcae35bb8b15c82fa0c68c067e823a544208e845bc5b9c6d7c0d0db9626914ef"
   },
   "test_groups": {
     "core": {
       "status": "PASS",
-      "python": "3.14.0",
-      "tests": 1530,
-      "skips": 29,
-      "log_sha256": "93c6cca495ca6c9edeeaded73fef84e097f8a62c9456ce35099a03b58240c2bc"
+      "verification": "GitHub Linux matrix, plain and installed core",
+      "python_versions": [
+        "3.10",
+        "3.12",
+        "3.13"
+      ],
+      "current_collected_cases": 1531,
+      "optional_skips": "Retained; see individual job logs."
     },
     "scientific": {
       "status": "PASS",
       "python": "3.12.4",
       "tests": 64,
       "skips": 0,
-      "log_sha256": "4750d0ec4f0abb1ce47aa20caa36ff958fa8886062e43f9ddcf27a5a9fd0c395"
+      "verification": "Local macOS and GitHub Linux pinned dependency environment"
     }
   },
   "test_case_partition_preserved": {
-    "core": 1530,
+    "core": 1531,
     "scientific": 64,
-    "total": 1594,
-    "normalized_case_id_sha256": "7a3b41d16009b8d4f2609a050196b4c51f708831fd023b7285df363213896c78"
+    "total": 1595,
+    "previous_cases_preserved": 1594,
+    "new_compatibility_regression_cases": 1
   },
   "interpretation": {
     "site_context_view": "read_only_saved_SIGNOR",
@@ -88,7 +93,7 @@
   },
   "presentation": {
     "slides": 6,
-    "saved_state_version": 7,
+    "saved_state_version": 9,
     "native_charts": 2,
     "all_slides_rendered_and_inspected": true
   },
@@ -96,9 +101,79 @@
   "model_calls": 0,
   "data_redistribution_cleared": false,
   "source_rights_note": "Full native CRC graph includes 1,588 KEGG pathway records; local verification does not establish sharing permission. Software/data packages are separate.",
-  "github_linux_ci_execution_verified": false,
+  "github_linux_ci_execution_verified": true,
   "repository_visibility_changed": false,
   "biological_accuracy_established_by_increment": false,
   "aws_brev_calls": 0,
-  "content_sha256": "e18574a58f12370c3682eff3bfb72bb77499101b855559f3e2bf0d1475094f1b"
+  "artifact_version": "v3",
+  "github_ci_verified_code_commit": "41a97bbfbe091545236d4d136a65670590d73289",
+  "github_runs": [
+    {
+      "id": 43297573720,
+      "name": "offline-tests",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/mdomagalski/biograph-steward/actions/runs/43297573720",
+      "jobs": [
+        {
+          "name": "scientific-evaluation",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "test (3.10)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "test (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "test (3.13)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        }
+      ]
+    },
+    {
+      "id": 43297573690,
+      "name": "Portability",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/mdomagalski/biograph-steward/actions/runs/43297573690",
+      "jobs": [
+        {
+          "name": "core (3.10)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "core (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "container",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "nvidia",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        }
+      ]
+    }
+  ],
+  "content_sha256": "ccf5af633b4e152b532b256f8df99cb072853bd2e25dfd701f1a40edc0868b0d"
 }

@@ -53,7 +53,7 @@ The final release check must also launch the extracted committed app and replay
 its answer/site API. Synthetic builder tests do not establish compatibility
 with an arbitrary older `--ref`.
 
-The [November 12 v2 delivery check](evaluations/DELIVERY_READINESS_20261112.md)
+The [November 12 v3 delivery check](evaluations/DELIVERY_READINESS_20261112.md)
 completed this actual extracted-app replay for the full CRC graph and separate
 software archive. Its aggregate summary binds the code revision and archive
 checksums; locally generated archives are not stored in Git.
