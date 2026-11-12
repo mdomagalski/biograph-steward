@@ -31,6 +31,10 @@ tests expected drug-target recovery with published RoKAI propagation. Across
 benefit over the qualified unpruned graph. Source-coordinate checks, explicit
 abstentions and an [optional evaluation harness](tools/kinase_utility/README.md)
 are retained; the workbench's default dependencies and graph records are unchanged.
+The [coverage follow-up](docs/evaluations/KINASE_COVERAGE_GAPS_20261112.md)
+traces the missing scores and documents five source citation/entity mismatches.
+Its candidate expansion is held for review; identifier compatibility alone does
+not validate a biological assertion.
 
 ## Run the workbench
 

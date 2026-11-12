@@ -1,0 +1,233 @@
+{
+  "format": "biograph-steward.coverage-gap-exploration-aggregate.v1",
+  "date": "2026-11-12",
+  "hash_policy": "Existing client.digest sorted compact JSON, ensure_ascii=True",
+  "scope": "Development diagnosis of consumed Hijazi reference and source qualification; no new biological comparison.",
+  "previous_comparison_commit": "ac5dd246e397261c16bb5c83bf5c16c0bf18a384",
+  "abstentions": {
+    "condition_target_cases": 38,
+    "affected_genes": 14,
+    "no_raw_same_literal_prior_site_row": 30,
+    "matching_qualified_row_but_supplied_value_missing": 8,
+    "finite_same_literal_site_values_rejected_by_mapping": 0,
+    "finite_values_lost_through_duplicate_aggregation": 0,
+    "raw_missing_value_origin_inferable": false
+  },
+  "assay_coverage": {
+    "qualified_measured_sites": 12101,
+    "qualified_measured_residue_counts": {
+      "T": 1982,
+      "S": 9997,
+      "Y": 122
+    },
+    "missing_cases_in_ten_tyrosine_kinase_genes": 20,
+    "PIK3CD_PIK3CG_cases": 10,
+    "BRAF_MAPK12_cases": 8,
+    "PIK3CG_protein_kinase_activity_must_not_be_excluded": true,
+    "additional_annotations_cannot_supply_unmeasured_phosphosites": true
+  },
+  "by_gene": [
+    {
+      "gene": "BRAF",
+      "enzyme": "UniProtKB:P15056",
+      "missing_cases": 4,
+      "qualified_prior_sites": 8,
+      "prior_residue_counts": {
+        "S": 6,
+        "T": 1,
+        "Y": 1
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "EGFR",
+      "enzyme": "UniProtKB:P00533",
+      "missing_cases": 3,
+      "qualified_prior_sites": 93,
+      "prior_residue_counts": {
+        "Y": 89,
+        "S": 3,
+        "T": 1
+      },
+      "ever_qualified_observed_signature_sites": 1
+    },
+    {
+      "gene": "FLT3",
+      "enzyme": "UniProtKB:P36888",
+      "missing_cases": 2,
+      "qualified_prior_sites": 10,
+      "prior_residue_counts": {
+        "Y": 10
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "FYN",
+      "enzyme": "UniProtKB:P06241",
+      "missing_cases": 1,
+      "qualified_prior_sites": 46,
+      "prior_residue_counts": {
+        "Y": 44,
+        "S": 2
+      },
+      "ever_qualified_observed_signature_sites": 1
+    },
+    {
+      "gene": "IGF1R",
+      "enzyme": "UniProtKB:P08069",
+      "missing_cases": 2,
+      "qualified_prior_sites": 13,
+      "prior_residue_counts": {
+        "Y": 13
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "JAK1",
+      "enzyme": "UniProtKB:P23458",
+      "missing_cases": 2,
+      "qualified_prior_sites": 8,
+      "prior_residue_counts": {
+        "Y": 8
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "JAK2",
+      "enzyme": "UniProtKB:O60674",
+      "missing_cases": 2,
+      "qualified_prior_sites": 27,
+      "prior_residue_counts": {
+        "Y": 26,
+        "S": 1
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "JAK3",
+      "enzyme": "UniProtKB:P52333",
+      "missing_cases": 2,
+      "qualified_prior_sites": 15,
+      "prior_residue_counts": {
+        "Y": 15
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "KDR",
+      "enzyme": "UniProtKB:P35968",
+      "missing_cases": 2,
+      "qualified_prior_sites": 6,
+      "prior_residue_counts": {
+        "Y": 6
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "KIT",
+      "enzyme": "UniProtKB:P10721",
+      "missing_cases": 2,
+      "qualified_prior_sites": 6,
+      "prior_residue_counts": {
+        "Y": 6
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "MAPK12",
+      "enzyme": "UniProtKB:P53778",
+      "missing_cases": 4,
+      "qualified_prior_sites": 7,
+      "prior_residue_counts": {
+        "S": 6,
+        "T": 1
+      },
+      "ever_qualified_observed_signature_sites": 1
+    },
+    {
+      "gene": "PDGFRA",
+      "enzyme": "UniProtKB:P16234",
+      "missing_cases": 2,
+      "qualified_prior_sites": 2,
+      "prior_residue_counts": {
+        "Y": 2
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "PIK3CD",
+      "enzyme": "UniProtKB:O00329",
+      "missing_cases": 6,
+      "qualified_prior_sites": 1,
+      "prior_residue_counts": {
+        "S": 1
+      },
+      "ever_qualified_observed_signature_sites": 0
+    },
+    {
+      "gene": "PIK3CG",
+      "enzyme": "UniProtKB:P48736",
+      "missing_cases": 4,
+      "qualified_prior_sites": 2,
+      "prior_residue_counts": {
+        "S": 2
+      },
+      "ever_qualified_observed_signature_sites": 0
+    }
+  ],
+  "identity_audit": {
+    "candidate_contexts": 393,
+    "literal_reference_contexts_compatible": 392,
+    "previously_excluded_source_proteins_with_current_context": 20,
+    "new_candidate_status": "HOLD; identity qualification does not validate source citation grounding",
+    "source_contexts_with_multiple_present_GeneIDs_unresolved": 1,
+    "missing_secondary_GeneID_is_not_a_conflict": true,
+    "protein_gene_identity_equivalence_claimed": false,
+    "source_proteoform_or_catalytic_role_verified": false,
+    "helper_citation_grounding_status": "not_assessed"
+  },
+  "grounding_review": {
+    "flagged_source_records": 5,
+    "MST1_P26927_records": 4,
+    "PDK1_Q15118_records": 1,
+    "already_represented_kinase_named_same_citation_site_counterparts": 4,
+    "same_experiment_independence_established": false,
+    "automatic_remaps": 0,
+    "current_CRC_290_record_exact_intersection": 0,
+    "alerts_content_sha256": "0b09cd612af461f9b80e32be09b5b1b02796ef87c62084e2f063b354e0a1bd0c",
+    "candidate_HOLD_seal": "d3f6315404a2e51fcf876febf0e2c1931cf1602877e5662f9fe9bba9473e6661"
+  },
+  "MAPK12_trace": {
+    "cases": 4,
+    "excluded_SIGNOR_Tau_records": 2,
+    "supporting_experiment": "Rat SAPK3 and human Tau441 in a reconstituted assay; the T231 antibody signal depends on added dextran sulphate.",
+    "primary_DOI": "10.1016/S0014-5793(97)00483-3",
+    "human_cell_reaction_or_automatic_site_isoform_projection_established": false
+  },
+  "MAPK12_reference_context": {
+    "gene_identity_qualified_cases": 4,
+    "compound_specific_cellular_dose_and_isoform_target_support": "unverified",
+    "study_wide_phosphoproteomics_range_micromolar": [
+      1,
+      10
+    ],
+    "treatment_hours": 1,
+    "separate_DiscoverX_profile_nanomolar": 200,
+    "original_labels_or_scores_changed": false,
+    "labels_declared_definitively_wrong": false
+  },
+  "resource_decisions": {
+    "OmniPath": "Discovery/provenance gateway, not a qualified enzyme-substrate replacement. Inspected strict_evidences reconstructs interaction query evidence only; actual enzyme-substrate header omitted assay context and requested taxonomy fields.",
+    "PTMsigDB": "Typed activity-signature resource; bulk import would mix kinase, perturbation and disease signatures and reuse PSP.",
+    "iKiP": "Author in-vitro signature source; one private table audit performed under separate CC-BY-NC4.0 terms. No raw or row-derived iKiP artifacts included in public repository; zero qualified links imported. Exact assayed constructs/accessions remain unknown because the official parent S5 GET returned an HTML proof-of-work gate.",
+    "Pharos_overlap": "PSP Harmonizome connection already documented. Site/citation/assay granularity can enrich representation without establishing a new independent study. Current Pharos-wide absence or novelty not established."
+  },
+  "implemented": "Read-only audit of explicitly supplied primary UniProt protein context using existing Registry and captured references. Citation grounding, catalytic role and assay identity remain separate.",
+  "driver_activation": "Withdrawn before new activity or measurement preparation; proposal preserved outside tracked code. Original driver/measurement mapper/statistics remain byte-identical.",
+  "new_activity_inference_or_scores": false,
+  "graph_or_review_state_changes": false,
+  "Brev_or_GPU_used": false,
+  "future_evaluation_boundary": "All Hijazi processed artifacts remain consumed; source changes require development labeling and a fresh reference before independent improvement claims.",
+  "next_work": "Resolve source grounding and assay eligibility; qualify a separate gene-level in-vitro signature layer before any activity recheck. No blind source union or automatic coordinate/alias rescue.",
+  "content_sha256": "8163d514a8e756d43a4673007d3d81e8371e4f2362702be88839f6d14bdbc59b"
+}
