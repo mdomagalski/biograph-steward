@@ -8,16 +8,20 @@ benefit or directly measured kinase activity.
 
 The application core remains dependency-free. This directory is optional and
 is not included in the application wheel or the core `tests/` discovery path.
-No source-prior builder, benchmark data or automatic inference runner is included.
+No benchmark data or source-prior builder is bundled. The configured workbook
+runner below adds direct signature scoring; the historical seven-arm RoKAI
+transport remains unchanged.
 
 ## Environment and invented tests
 
 The evaluated Python environment is **Python 3.12.4, NumPy 2.5.4 and SciPy
-1.18.1**. Use an existing matching environment or install the optional dependencies:
+1.18.1**, with **openpyxl 3.1.5** for configured workbook reads. Use an existing
+matching environment or install the optional dependencies:
 
 ```sh
 PILOT_PY=/absolute/path/to/python3.12
-"$PILOT_PY" -m pip install -r tools/kinase_utility/requirements.txt
+"$PILOT_PY" -m pip install -r tools/kinase_utility/requirements.txt \
+  -r tools/kinase_utility/requirements-measurements.txt
 PYTHONPATH=. "$PILOT_PY" -m unittest discover -s tools/kinase_utility -p 'test_*.py' -v
 ```
 
@@ -69,6 +73,58 @@ unchanged.
 
 See the [coverage and grounding follow-up](../../docs/evaluations/KINASE_COVERAGE_GAPS_20261112.md)
 for the source flags, assay limitations and candidate HOLD decision.
+
+## Configured workbook comparisons
+
+`measurement_adapter.py` uses an explicit visible-sheet, positional-column and
+descriptor-grammar contract. Full workbook transport reuses **openpyxl 3.1.5**;
+limited header/descriptor inspection uses selective XML before outcome access.
+Install the additional optional reader dependency with
+`pip install -r tools/kinase_utility/requirements-measurements.txt`.
+
+`signature_comparison.py` accepts arbitrary declared sample groups and target
+cases. It implements positive-intensity mean-log contrasts, explicit duplicate
+and host-protein eligibility, the published raw RoKAI z-score, and descriptive
+signed average-tie target ranks. It has no fixed cell-line, drug or target names.
+It does not perform graph propagation. A partial signature catalogue is
+ineligible for complete-catalogue ranking.
+
+`source_eligibility.py` applies explicit reviewed source-record dispositions
+before link support is collapsed. Reviews bind the release, source bytes,
+record ID, ordinal and canonical raw-row digest. Other eligible supporting
+records survive; unreviewed assertions and abstentions are preserved. The
+helper never maps names globally or judges biological truth.
+
+Run a new, fully pinned execution plan with:
+
+```sh
+PYTHONPATH=. "$PILOT_PY" tools/kinase_utility/run_signature_comparison.py \
+  --plan /absolute/new-execution-plan.json --output /absolute/new-output
+```
+
+The runner validates source roles, candidate contexts, runtime versions,
+workbook contracts and source profiles before opening quantitative rows.
+Optional corroboration may remain unavailable only under a declared field
+contract; missing secondary annotation is not evidence of zero biology.
+Formula/error cells stay unavailable for their own samples; they do not
+invalidate unrelated intervention contrasts when the identity descriptors
+qualify. The output preserves source-cell locators, unresolved rows, missingness,
+per-case abstentions and the prediction seal. Original workbooks remain intact.
+
+New studies need explicit sample/measurement contracts and assay-appropriate
+eligibility rules. A kinase-signature five-site rule is not a general threshold
+for PPI, clinical or literature claims. Unknown semantics require source review,
+not a silent repair. Synthetic tests cover different workbook layouts and
+single-/multi-condition designs; these establish software portability, not
+biological accuracy across all questions.
+
+`signal_diagnostics.py` adds post-scoring background and score-sign summaries.
+It receives no expected signs and changes no predictions or normalization.
+Available-candidate counts are reported with ranks; neither a small catalogue
+nor a condition-wide sign shift establishes target-specific recovery.
+
+See the [completed external check](../../docs/evaluations/HCT116_EXTERNAL_COMPARISON_20261112.md)
+for the preserved initial run, explicitly labelled technical replay and limits.
 
 ## Driver commands
 

@@ -37,7 +37,10 @@ Its candidate expansion is held for review; identifier compatibility alone does
 not validate a biological assertion.
 The [source-claim qualification](docs/evaluations/SOURCE_CLAIM_QUALIFICATION_20261112.md)
 adds primary-evidence dispositions, construct metadata and a separately selected
-genetic-perturbation reference; its external comparison has not yet been run.
+genetic-perturbation reference. The
+[external comparison is now complete](docs/evaluations/HCT116_EXTERNAL_COMPARISON_20261112.md).
+It retains reusable verification tools and exposes measurement/background
+limits; it does not demonstrate a pruning benefit or general scientific accuracy.
 
 ## Run the workbench
 
