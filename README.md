@@ -76,6 +76,11 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 
 ## Current capabilities
 
+- [Automatic task qualification](docs/AUTOMATIC_TASK_QUALIFICATION.md): create a
+  separate source-reported direct human phosphoregulation graph with complete
+  keep/prune/abstain decisions. The first full CRC view excludes 76 explicitly
+  task-incompatible SIGNOR records and retains unknowns. This is not a global
+  biological-false-edge classifier; original workspaces remain preserved.
 - [Reported sites and experimental context](docs/SITE_CONTEXT_INSPECTION.md):
   inspect phosphate addition/removal separately from the source's net protein
   effect, with exact source-context filters and citations; no graph mutation,

@@ -93,6 +93,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--selection", type=Path, required=True)
     p.add_argument("--processed-qc", type=Path)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("qualify-task", help="Create a separate source-reported direct human phosphoregulation view and complete decision ledger; not biological truth scoring.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p.add_argument("--actor", default="BioGraph Steward deterministic task qualification")
     p = sub.add_parser("regulatory-sites", help="Inspect reported sites, phosphate change and experimental context from saved SIGNOR evidence.")
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--protein", default="UniProtKB:P00533")
@@ -368,6 +372,14 @@ def main(argv: list[str] | None = None) -> int:
                                args.out, processed_qc=args.processed_qc)
             print(json.dumps({'output': str(args.out.resolve()), 'publication_sha256': manifest['content_sha256'],
                               'scientific_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'qualify-task':
+            from .task_qualification import qualify_task
+            report = qualify_task(args.packet, args.out, actor=args.actor)
+            print(json.dumps({'output': str(args.out.resolve()), 'profile': report['profile'],
+                              'counts': report['counts'], 'retained_package': report['retained_package'],
+                              'report_sha256': report['content_sha256'],
+                              'independent_biological_accuracy_established': False}, indent=2))
             return 0
         if args.command == 'regulatory-sites':
             from .regulatory_sites import answer_regulatory_sites

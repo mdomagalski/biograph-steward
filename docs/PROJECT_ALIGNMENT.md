@@ -97,8 +97,14 @@ Finish the current release, a permitted reproducible real-data package, the grap
    experimental context remain separate. No duplicate evidence, inferred
    site-to-protein effect or automatic acceptance is introduced.
 
-Broader entailment/contradiction verification, calibrated confidence, automatic
-scientific pruning, independent usability success and general autonomous
+The [automatic task-qualified view](evaluations/AUTOMATIC_QUALIFICATION_20261112.md)
+now applies a fixed, source-bound eligibility policy and materializes a separate
+complete graph/ledger: 175 eligible records, 76 task exclusions and 39 unknowns
+within SIGNOR; all other 16,695 records remain unassessed and retained. This
+is contextual selection, not independent scientific-error detection.
+
+Broader entailment/contradiction verification, calibrated confidence, validated
+automatic scientific-error pruning, independent usability success and general autonomous
 maintenance remain proposal ambitions. They are not delivered merely by the
 existing schema checks, model transport or cloud deployment. The organizer
 brief permits a semi-autonomous workflow and imperfect standards references;

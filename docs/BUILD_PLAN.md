@@ -2,6 +2,13 @@
 
 ## Current boundary — November 12
 
+The [automatic qualification assessment](evaluations/AUTOMATIC_QUALIFICATION_20261112.md)
+now supplies a complete task-specific decision ledger and actual retained graph.
+The next scientific priority is predicate/context-matched reference coverage,
+including recovery of missing native GO qualifiers for the graph's large
+annotation component. Current source eligibility and positive-only retention
+must not be reported as whole-graph accuracy or validated false-edge pruning.
+
 The bounded workbench has its main framework components, including a tested
 private AWS/Neptune mirror. The complete 99-target CRC workspace is now the
 designated delivery example: 9,865 entities, 16,985 evidence records and 16,980

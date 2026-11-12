@@ -1,5 +1,10 @@
 # Optional PPI pruning comparison
 
+For the separate source-context policy, see [automatic task qualification](AUTOMATIC_TASK_QUALIFICATION.md).
+It creates a direct human phosphoregulation view without a ranking budget.
+Its source-eligibility result does not validate the PPI rankers described here
+or classify excluded relationships as globally false.
+
 This CLI workflow creates separate, reproducible graph views and measures their
 utility on an already-consumed human Y2H assay panel. It preserves the original
 source graph and does not change the app's default graph or enable automatic
