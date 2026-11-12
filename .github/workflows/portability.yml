@@ -14,7 +14,6 @@ jobs:
       matrix:
         python: ['3.10', '3.12']
     env:
-      NO_PROXY: 127.0.0.1,localhost,::1
       no_proxy: 127.0.0.1,localhost,::1
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +28,6 @@ jobs:
   nvidia:
     runs-on: ubuntu-latest
     env:
-      NO_PROXY: 127.0.0.1,localhost,::1
       no_proxy: 127.0.0.1,localhost,::1
     steps:
       - uses: actions/checkout@v4

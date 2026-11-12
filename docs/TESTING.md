@@ -18,6 +18,9 @@ Default discovery selects `test*.py`. The core CI matrix uses Python 3.10,
 their dependencies are unavailable; this does not establish that an optional
 integration works. The loopback proxy bypass follows the existing portability
 workflow and keeps temporary local test servers out of system proxy routing.
+Workflow YAML uses only `no_proxy`: GitHub treats environment-map names as
+case-insensitive and rejects both spellings in the same map. Local shell
+commands may export both spellings as shown above.
 
 ## Pinned scientific evaluation
 
