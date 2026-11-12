@@ -129,6 +129,11 @@ panels are consumed and will not be reused as unseen tests.
 Evidence: [STRING comparison](evaluations/STRING_COMPONENT_COMPARISON_20261027.md), [older-source control](evaluations/STRING_TEMPORAL_CONTROL_20261027.md), [INMC comparison](evaluations/INMC_COMPARISON_20261023.md), [Reactome comparison](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md), [fresh source assessment](evaluations/INTACT_FRESH_ASSESSMENT_20261027.md), [reliability replay](evaluations/PHAROS_RETRIEVAL_RELIABILITY_20261027.md).
 
 The [November 11 release check](evaluations/release_candidate_20261111_summary.json) passed isolated package installation, service startup, cited questions and current real graph/decision export without a paid service or new source retrieval.
+The [full November 12 delivery](evaluations/DELIVERY_READINESS_20261112.md) now
+also replays the complete CRC graph, saved cited answer and new site/context
+endpoint from the actual extracted archive, with the full original baseline
+and exhaustive abstention ledger. Separate software-only startup succeeds
+without repository imports or optional dependencies.
 
 ## Six-slide presentation draft
 

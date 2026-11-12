@@ -11,7 +11,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import score_string_temporal as scoring
-from test_string_component_scoring import fixture as original_fixture
+from evaluation_string_component_scoring import fixture as original_fixture
 
 
 def fixture(labels=(False, False, True, True), functional=(.1, .4, .35, .8),

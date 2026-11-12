@@ -61,6 +61,10 @@ python3 app.py
 
 Open `http://127.0.0.1:8765/`. A fresh checkout includes an explicitly synthetic demonstration; real source snapshots are retrieved separately and are not bundled. Start with [the walkthrough](START_HERE.md).
 
+For verification, [core and scientific test instructions](docs/TESTING.md)
+separate ordinary app portability from the pinned optional evaluation runtime.
+The application itself keeps its empty dependency list.
+
 The workbench now separates **Data & saved work**, **Ask & explore**, **Evidence & sources**, **Compare & assess**, and **Export**. Switching tasks keeps the current graph and form selections. Existing saved question links still open their answer.
 
 In **Ask & explore**, bounded path exploration follows up to three saved relationships, respecting direction and explicit symmetry. Each step retains its conditions, source evidence and review state; candidate paths are not promoted to accepted evidence. **Evidence & sources** provides guided source inspection for Pharos, CIViC and assay records, with original references when supplied and explicit missing-context/reuse limits. Both features read the saved workspace without retrieving sources or calling a model.

@@ -1,0 +1,104 @@
+{
+  "format": "biograph-steward.delivery-readiness-summary.v1",
+  "date": "2026-11-12",
+  "scope": "Software, source preservation and bounded interpretation delivery; not new biological validation.",
+  "runtime_git_commit": "c714d01183d0d254f2a203e6307103c643395ff6",
+  "source_packet_id": "packet:14265d0e4990da19e1f2538be1f185cf68e378d00152fdb71ca3d8c4f9936a8e",
+  "counts": {
+    "primary_targets": 99,
+    "nodes": 9865,
+    "edges": 16985,
+    "assertions": 16980,
+    "context_records": 9152,
+    "quarantine": 11,
+    "extension_observations": 5261
+  },
+  "decisions": {
+    "keep": 0,
+    "prune": 0,
+    "abstain": 16985
+  },
+  "archives": {
+    "software": {
+      "file": "biograph_steward_software.zip",
+      "sha256": "3dddd8e59b235a4a9884798541fe458dc1b27fcd98e5846b63013fb476e1c08e",
+      "bytes": 819985,
+      "file_count": 152
+    },
+    "local_crc": {
+      "file": "biograph_steward_crc_local.zip",
+      "sha256": "218281c5f0e4ec25081466ba300bee7655db9cfcb020bc69b6d1d1231177697b",
+      "bytes": 228429731,
+      "file_count": 338
+    }
+  },
+  "original_source_packet_unchanged": true,
+  "independent_software_agent_portability_status": "PASS",
+  "actual_extracted_runtime_checks": {
+    "Python": "3.14.0",
+    "no_repository_import_path": true,
+    "synthetic_CLI_and_HTTP_answer_identical": true,
+    "synthetic_results": 2,
+    "synthetic_citations": 6,
+    "real_saved_CRC_question_matches_HTTP": true,
+    "real_CRC_results": 8,
+    "real_CRC_citations": 16,
+    "complete_original_graph_and_ledger_preserved": true,
+    "read_only_BRAF_Ser614_site_endpoint_matches_preserved_view": true,
+    "selected_site_records": 1,
+    "SIGNOR_observations_in_source": 290,
+    "all_workspace_bytes_unchanged_after_HTTP": true,
+    "test_servers_stopped": true
+  },
+  "verification_bindings": {
+    "delivery_content_sha256": "da17cd385bbb12b523d52a87d0b894380582e9007a2a83c450a1ffd6a765b1f2",
+    "consolidated_portability_content_sha256": "2857215e6efd71b41f5496581cfe6d309a2d96c57e9d50740d825b1023105aaa"
+  },
+  "test_groups": {
+    "core": {
+      "status": "PASS",
+      "python": "3.14.0",
+      "tests": 1530,
+      "skips": 29,
+      "log_sha256": "93c6cca495ca6c9edeeaded73fef84e097f8a62c9456ce35099a03b58240c2bc"
+    },
+    "scientific": {
+      "status": "PASS",
+      "python": "3.12.4",
+      "tests": 64,
+      "skips": 0,
+      "log_sha256": "4750d0ec4f0abb1ce47aa20caa36ff958fa8886062e43f9ddcf27a5a9fd0c395"
+    }
+  },
+  "test_case_partition_preserved": {
+    "core": 1530,
+    "scientific": 64,
+    "total": 1594,
+    "normalized_case_id_sha256": "7a3b41d16009b8d4f2609a050196b4c51f708831fd023b7285df363213896c78"
+  },
+  "interpretation": {
+    "site_context_view": "read_only_saved_SIGNOR",
+    "new_assertions": 0,
+    "inferred_site_effect": false,
+    "canonical_coordinate_verified": false,
+    "source_explicit_identifier_records_qualified": 9,
+    "genes_in_source_identity_check": 3,
+    "historical_bare_label_rows_still_unresolved": 13,
+    "benchmark_results_changed": false
+  },
+  "presentation": {
+    "slides": 6,
+    "saved_state_version": 7,
+    "native_charts": 2,
+    "all_slides_rendered_and_inspected": true
+  },
+  "source_fetches": 0,
+  "model_calls": 0,
+  "data_redistribution_cleared": false,
+  "source_rights_note": "Full native CRC graph includes 1,588 KEGG pathway records; local verification does not establish sharing permission. Software/data packages are separate.",
+  "github_linux_ci_execution_verified": false,
+  "repository_visibility_changed": false,
+  "biological_accuracy_established_by_increment": false,
+  "aws_brev_calls": 0,
+  "content_sha256": "e18574a58f12370c3682eff3bfb72bb77499101b855559f3e2bf0d1475094f1b"
+}

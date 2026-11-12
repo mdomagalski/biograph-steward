@@ -53,6 +53,11 @@ The final release check must also launch the extracted committed app and replay
 its answer/site API. Synthetic builder tests do not establish compatibility
 with an arbitrary older `--ref`.
 
+The [November 12 v2 delivery check](evaluations/DELIVERY_READINESS_20261112.md)
+completed this actual extracted-app replay for the full CRC graph and separate
+software archive. Its aggregate summary binds the code revision and archive
+checksums; locally generated archives are not stored in Git.
+
 Unzip an authorized real package, open a terminal in that directory and run:
 
 ```sh
@@ -90,7 +95,8 @@ does not reproduce the frozen graph byte-for-byte or automatically include
 the separately qualified extension sources. See [scoped retrieval](SCOPED_RETRIEVAL.md)
 and [source enrichment](BIOLOGICAL_SOURCE_UPDATE.md).
 
-The repository is private during preparation and is intended to become public
-at final submission. Repository visibility, source permission and the actual
-organizer handoff remain separate delivery actions. Do not claim an official
-score while the organizer's final scoring contract is unavailable.
+The [source repository](https://github.com/mdomagalski/biograph-steward) is private
+during preparation and is intended to become public at final submission
+(planned for November 17, 2026). Repository visibility, source permission and
+the actual organizer handoff remain separate delivery actions. Do not claim an
+official score while the organizer's final scoring contract is unavailable.
