@@ -18,6 +18,12 @@ result, not whole-graph accuracy or CRC-specific validation. The app exposes the
 comparison separately from the selected workspace. A new source-preserving CRC
 example adds **290 SIGNOR regulatory records** with experimental context,
 source citations and 24 qualified literature notes.
+The [aggregate result summary](docs/evaluations/biological_assessment_20261112_summary.json)
+also records the small conditional HCT116 result, the connectivity safeguard
+and the unscorable structure-backed reference. An optional private HCT116
+context view adds four assay passports to existing relationships, with no new
+nodes, edges or assertions. Native BioPlex row packets are excluded from public
+delivery while their redistribution terms remain unverified.
 
 ## Run the workbench
 

@@ -8,15 +8,17 @@ function setupBiological(){
   $('biologicalAnswer').classList.add('hidden');$('biologicalSearch').value='';
   $('biologicalStatus').textContent='';$('biologicalRows').replaceChildren();
   setupRegulatory();
+  setupBioplexContext();
   if(!enabled)return;
   const source=summary.sources||{},parts=[];
   if(source.string)parts.push('STRING '+(source.string.source_release||'12.5')+': '+source.string.additional_source_records+' versioned association records; '+source.string.new_workspace_pairs+' additional workspace pairs.');
   if(source.mapit)parts.push('MAP-IT: '+source.mapit.qualified_partner_observations+' qualified tissue observations; '+source.mapit.extension_nodes_added+' additional participant proteins.');
   if(source.signor)parts.push('SIGNOR: '+source.signor.qualified_regulatory_observations+' source-reported regulatory records, including '+source.signor.self_regulatory_records+' self-regulatory records.');
+  if(source.bioplex)parts.push('BioPlex HCT116: '+source.bioplex.context_only_observations+' context records for '+source.bioplex.selected_unique_pairs+' existing pairs; no new graph edges.');
   $('biologicalSummary').textContent=parts.join(' ');
   for(const option of $('biologicalView').options)option.disabled=!source[option.value];
-  $('biologicalViewControls').hidden=!source.mapit&&!source.signor;
-  $('biologicalView').value=source.mapit?'mapit':source.signor?'signor':'mapit';
+  $('biologicalViewControls').hidden=!source.mapit&&!source.signor&&!source.bioplex;
+  $('biologicalView').value=source.mapit?'mapit':source.signor?'signor':source.bioplex?'bioplex':'mapit';
   switchBiologicalView();
   $('biologicalAsk').disabled=!source.mapit||!runId;
   if(!source.mapit)$('biologicalStatus').textContent='This saved run includes the STRING update. Open a run with qualified MAP-IT observations for the tissue question.';
@@ -26,6 +28,35 @@ function switchBiologicalView(){
   const source=graph?.evidence_extension?.sources||{},mode=$('biologicalView').value;
   $('biologicalTissueView').hidden=mode!=='mapit'||!source.mapit;
   $('regulatoryPanel').hidden=mode!=='signor'||!source.signor;
+  $('bioplexPanel').hidden=mode!=='bioplex'||!source.bioplex;
+}
+function setupBioplexContext(){
+  const box=$('bioplexRows');box.replaceChildren();
+  const records=(graph?.extension_observations||[]).filter(row=>row.source_kind==='bioplex');
+  for(const row of records){
+    const card=el('article',undefined,'evidence');
+    const bait=row.bait?.symbol||row.bait?.uniprot||'Unreported bait';
+    const prey=row.prey?.symbol||row.prey?.uniprot||'Unreported prey';
+    card.append(el('h4',bait+' and '+prey));
+    card.append(el('p','Recorded bait: '+bait+' · Reported co-isolating prey: '+prey));
+    card.append(el('p','Cell model: '+(row.cell_line_literal||'Unreported')+' · Author inference: gene-level coassociation','small'));
+    const raw=row.source_scores_raw?.pInt;
+    const score=raw!==null&&raw!==undefined&&raw!==''&&Number.isFinite(Number(raw))?String(raw):null;
+    card.append(el('p',score===null?'Companion pair score is unreported or ambiguous; all matched source records remain preserved.':
+      'CompPASS-Plus pInt: '+score+' · Undirected pair-class score; not calibrated biological confidence.','small'));
+    const citations=el('p');
+    for(const citation of row.citations||[]){const link=biologicalCitation(citation);if(link)citations.append(link,document.createTextNode(' '));}
+    card.append(citations);
+    const inspect=el('button','Inspect assay and cell-model context','secondary');inspect.type='button';inspect.disabled=!runId;
+    inspect.onclick=()=>{loadSourceGuide(row.observation_id||row.id);$('sourceGuide').scrollIntoView({block:'start'});};card.append(inspect);
+    const original=(row.baseline_pair_edge_ids||[]).find(id=>(graph?.edges||[]).some(edge=>edge.id===id&&!edge.extension_source_kind));
+    if(original){const baseline=el('button','Inspect original Pharos annotation','secondary');baseline.type='button';baseline.disabled=!runId;
+      baseline.onclick=()=>{loadSourceGuide(original);$('sourceGuide').scrollIntoView({block:'start'});};card.append(document.createTextNode(' '),baseline);}
+    box.append(card);
+  }
+  $('bioplexScope').textContent=records.length?
+    records.length+' saved source-context records from one BioPlex study. Exact study reuse within Pharos or STRING remains unresolved. Source files remain in the private packet; native-data redistribution terms are unverified.':
+    'This saved workspace has no BioPlex context packet.';
 }
 $('biologicalView').onchange=switchBiologicalView;
 async function runBiologicalQuestion(){

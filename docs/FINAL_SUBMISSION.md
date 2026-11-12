@@ -17,11 +17,27 @@ on one study, not whole-graph accuracy or a CRC-specific prediction result.
 The current processed-data check and original frozen assessment remain
 separate. The app exposes both, alongside complete graph/decision exports.
 
+A conditional HCT116 BioPlex comparison retains 247/263 qualified pairs for
+the primary, 246/263 for native confidence and 251/263 for Network Enhancement.
+The one-pair gain is small; prior-assisted source calls prevent treating it
+as independent biological truth. No eligible CRC99 pair exists in this
+historical ranking comparison. A separate structure-backed reference is too
+small after source/exposure qualification to distinguish the graph views.
+
+The small captured-Tdark subgroup does not share that primary-view gain:
+primary and native each retain 12/16 strictly mapped positives, while Network
+Enhancement retains 16/16. This post hoc descriptor is not a subgroup winner
+selection or proof of general benefit for understudied targets.
+
 The current CRC source workspace adds 290 SIGNOR regulatory records with
 direction, sites, experimental organism and cell/tissue context. Twenty-four
 source-bound literature notes show what the cited studies establish and what
 remains uncertain. These complement STRING and MAP-IT without automatically
 validating assertions or counting repeated records as independent experiments.
+Four private HCT116 context records additionally distinguish tagged-expression
+coassociation from endogenous repair function. They add no graph relationships
+and are excluded from public source packets while native-data redistribution
+terms remain unverified.
 
 ## Judge walkthrough
 
@@ -31,7 +47,7 @@ For a recorded or source-packet demonstration, use this five-minute sequence:
 
 1. **Ask & explore:** open the saved BRAF question on the 99-protein colorectal-cancer Pharos cohort. Show a bounded question, answer paths and the source/review scope.
 2. Inspect the optional physical ordering: all 21 matching proteins remain available, with 14 scored and seven unranked. Explain what the missing values mean.
-3. **Evidence & sources:** open `crc_evidence_enriched_20261111` and select **Show EGFR tissue evidence**. Show the 120 source-qualified proximity observations, search for ENG, and inspect its statistics, method, exact identity and archived-Pharos context. Explain why additional source records are not independent experiments. The separate TAS1R2/TAS1R3 example remains available for exact curated-record reuse.
+3. **Evidence & sources:** open `crc_biological_workspace_20261112`. Show **EGFR tissue evidence**, then **Regulation and experimental context**. Inspect one tissue observation or the MCC source passport, including conditions, source references and unresolved evidence reuse. Explain why additional source records are not independent experiments. The separate TAS1R2/TAS1R3 example remains available for exact curated-record reuse.
 4. **Compare & assess:** show the experimental reference table and its explicit study/mapping limits. Distinguish the historical 3,172-protein assessment from the selected CRC workspace. Open the current processed result and original frozen protocol. Literature searching is optional.
 5. **Export:** identify the retained graph, exhaustive decision ledger and complete original source baseline. Explain whole-workspace versus current-answer scope.
 
@@ -39,6 +55,8 @@ Current local examples:
 
 - BRAF question: `crc_civic_final_20261015` / `question_20261027T180832Z_781f7543`.
 - Replay-compatible qualified-source workspace: `source_reuse_workbench_20261029`.
+- Current STRING/MAP-IT/SIGNOR workspace: `crc_biological_workspace_20261112`.
+- Optional local/private cell-model context: `crc_context_qualified_20261112`.
 - Current graph-and-decision package: `runs/submission_release_20261111/submission_handoff.zip`.
 
 These are source-specific demonstrations. The taste-receptor example is separate from the cancer question. Retain source licenses and attribution when delivering real packets; software MIT licensing does not relicense upstream data. Provide a bounded retrieval recipe when a packet cannot be redistributed.
@@ -52,8 +70,10 @@ adds 120 qualified MAP-IT EGFR tissue observations and 119 participant proteins.
 All original source records, assertions and the 99 primary Pharos targets remain
 unchanged. New records remain candidates with separate provenance.
 
-This produces an inspectable graph with 9,865 entities and 16,695 evidence
-records. The source-first EGFR question, statistics, source-group lineage,
+The STRING/MAP-IT increment produced 9,865 entities and 16,695 evidence
+records. The current SIGNOR-enriched workspace has the same 9,865 entities and
+16,985 evidence records, with all original Pharos records unchanged. The
+source-first EGFR question, regulatory passports, statistics, source-group lineage,
 historical overlap states and portable source packages demonstrate the result.
 This is verified biological evidence enrichment, not independent proof of
 scientific accuracy or automatic pruning. The completed MAP-IT pruning endpoint
@@ -65,13 +85,21 @@ remains failed. Both limitations remain part of the delivered assessment.
 | Assessment | Result | Interpretation |
 |---|---|---|
 | OpenCell positive retention, equal graph budget | Fixed primary 272/284; native 269/284; Network Enhancement 272/284 | Small scoped retention benefit over native; NE ties. Same-study processed QC is not another fresh confirmation; no precision/accuracy or CRC-specific claim |
+| HCT116 BioPlex positive retention, equal safeguarded budget | Fixed primary 247/263; native 246/263; Network Enhancement 251/263 | Tiny conditional gain over native; NE retains more. Prior-assisted source calls and uncertain historical training versions limit independence |
+| Structure-backed reference qualification | 13 eligible pairs; four outside the original exposure boundary, from one paper; all graph views tie | Below the fixed reporting floor; unscorable for improvement |
 | Native STRING 12.5 ranking, 2,676 eligible measured pairs | AP 0.172827 functional versus 0.190056 physical; numeric coverage 88.3% versus 72.4% | Retrospective source-component prioritization benefit, with a coverage trade-off |
 | Native STRING 12.0 control, same consumed panel | AP 0.149732 functional versus 0.161223 physical; coverage 93.4% versus 75.2% | Direction agreed with the selected older-source control; independent validation remains unresolved |
 | Matched R-GCN GO-hierarchy comparison | AP 0.719833 versus 0.720135 on 1,751 measured pairs, with mixed seed effects | No consistent hierarchy benefit demonstrated |
 | Matched R-GCN Reactome-context comparison | AP 0.717794 versus 0.719605 on the consumed panel, with mixed seed effects | No consistent context benefit demonstrated |
 | Source delivery | Fresh IntAct assessment 4/8; separate consumed reliability replay 8/8 | Retrieval/source-preservation results; the replay does not replace the original assessment |
 
-The native ranking result supports the app's optional ordering feature. It does not establish a Steward-versus-Pharos graph-learning gain. Existing measured panels are consumed and will not be reused as unseen tests.
+The OpenCell table describes the original fixed views. The later connectivity
+safeguard preserves all 18 original components at the same graph budget;
+primary retention is unchanged, while the native control becomes 268/284.
+That consumed diagnostic is separate from the original result. The native
+ranking result supports the app's optional ordering feature. These results do
+not establish a Steward-versus-Pharos graph-learning gain. Existing measured
+panels are consumed and will not be reused as unseen tests.
 
 Evidence: [STRING comparison](evaluations/STRING_COMPONENT_COMPARISON_20261027.md), [older-source control](evaluations/STRING_TEMPORAL_CONTROL_20261027.md), [INMC comparison](evaluations/INMC_COMPARISON_20261023.md), [Reactome comparison](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md), [fresh source assessment](evaluations/INTACT_FRESH_ASSESSMENT_20261027.md), [reliability replay](evaluations/PHAROS_RETRIEVAL_RELIABILITY_20261027.md).
 
@@ -84,7 +112,7 @@ The [November 11 release check](evaluations/release_candidate_20261111_summary.j
 | 1. Make Pharos evidence usable | Researchers need bounded questions, interpretable context and access to original support | One actual workbench screenshot |
 | 2. From question to evidence | Scoped retrieval and deterministic tools build the graph; qualified assertions retain source and review history | Question → graph → source → decision → export flow |
 | 3. Explore and inspect | Task navigation, bounded multihop paths and guided source inspection expose what an annotation supports | Short BRAF and qualified-assay walkthrough |
-| 4. What the measurements show | Native physical prioritization helps this task with lower coverage; matched context enrichment showed no consistent gain | AP and coverage table above |
+| 4. What the measurements show | Equal-budget pruning yields small positive-retention gains over native confidence; the published comparator ties or exceeds them | OpenCell/HCT116 retention and scope table above |
 | 5. Preserve meaning across resources | Identifiers, source lineage, full assay conditions and reuse checks prevent unsupported strengthening or double counting | A source passport and shared-record example |
 | 6. Deliverables and limits | MIT software, reproducible graph/source packet, decisions and evaluation artifacts; experimental planning and biological pruning remain bounded gaps | Export contents and concise next scientific step |
 
@@ -98,9 +126,9 @@ The optional NVIDIA Nemotron/NAT integration belongs on slide 2 or in the techni
 |---|---|---|
 | MIT repository and build instructions | Implemented; current source passed the isolated installation/start/export gate | Make the delivered release checkpoint available through GitHub |
 | App and demonstration | Working local five-tab workflow; source packets and historical desktop/mobile checks exist | Select the final example, record the walkthrough and provide a portable route for judges |
-| Graph and decisions | Current real package exported and verified, including ZIP extraction/replay; original 62 source files unchanged | Include the designated packet; the demonstrated real ledger is all abstentions |
+| Graph and decisions | Current CRC packet preserves its original sources and has an all-abstention ledger. Separate historical primary/native pruned packages have complete source baselines and exhaustive keep/prune/abstain ledgers; safeguarded exports preserve all original components | Deliver clearly named source-workspace and experimental-pruning packages with their different scopes |
 | Standards | Explicit vocabulary references, bounded KGX profile and SSSOM audit | Link the implemented profile and documented conformance limits |
-| Scientific assessment | Actual matched learner comparisons and native-score supporting results exist | Present results and denominators together; preserve negative/mixed outcomes |
+| Scientific assessment | Fixed OpenCell and conditional HCT116 retention comparisons, matched learner controls and source-qualified context exist; biological accuracy and CRC-specific pruning benefit remain unproven | Present results, comparators and denominators together; preserve negative/mixed outcomes |
 | Final submission format | Supplied brief and Slack updates guide the handoff; exact final file schema remains unspecified | Follow any later organizer instructions; keep this inventory ready |
 
 The supplied rubric weights usability 40%, accuracy/pruning 30%, explainability 20% and standards 10%. Semi-autonomous construction is allowed. AWS, Neptune and PaperQA3 are not stated prerequisites. See the [current organizer/proposal crosswalk](PROJECT_ALIGNMENT.md).

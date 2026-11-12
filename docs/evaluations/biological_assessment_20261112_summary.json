@@ -1,0 +1,317 @@
+{
+  "title": "BioGraph Steward biological assessment: aggregate summary",
+  "date": "2026-11-12",
+  "purpose": "Descriptive public summary of completed frozen results, not a new scoring schema or evaluation protocol.",
+  "main_claim": "Source-preserving graph inspection and connectivity-preserving pruning are implemented. Equal-budget comparisons show modest coassociation-retention gains over native confidence, without a general advantage over Network Enhancement or demonstrated scientific accuracy or CRC99 prediction benefit.",
+  "scope": {
+    "historical_source": "Qualified archived Pharos STRING v11 weighted background, anchored to December 2018 source records; separate from the current CRC99 application workspace.",
+    "source_proteins": 3172,
+    "original_source_pairs": 89665,
+    "qualified_weighted_background_pairs": 87688,
+    "pruning_eligible_pairs": 81416,
+    "eligible_pairs_retained_per_pruned_view": 65132,
+    "eligible_pairs_removed_per_pruned_view": 16284,
+    "mandatory_protected_or_quarantined_pairs_retained": 8249,
+    "total_pairs_retained_per_pruned_view": 73381,
+    "fixed_primary": "Organism-native STRING experiments, native combined confidence secondary, canonical pair ID tie-breaker.",
+    "controls": "Native combined confidence and edge-masked degree product. Published Network Enhancement is an additional comparator; edge-masked MPS and transferred experimental support are exploratory.",
+    "shared_connectivity_safeguard": {
+      "status": "Post-exposure development policy applied equally to all six pre-existing rankings, not fresh biological confirmation.",
+      "shared_native_score_forest_connections": 763,
+      "source_components_preserved": 18,
+      "source_isolates_preserved": 17,
+      "primary_equal_budget_edge_replacements": 29,
+      "primary_new_isolates_avoided": 27,
+      "native_prior_is_explicit": true
+    }
+  },
+  "OpenCell": {
+    "assay_scope": "Author-called IP-MS coassociations in HEK293T; positives only, no qualified complete negative set.",
+    "initial_frozen_figure_data_assessment": {
+      "status": "Original once-opened assessment preserved unchanged; later diagnostics do not replace it.",
+      "eligible_positive_pairs": 292,
+      "evaluable_author_bait_labels": 116,
+      "unguarded_pairs_retained": {
+        "unpruned": 292,
+        "native_top80": 276,
+        "pa_top80": 264,
+        "ne_top80": 277,
+        "human_experimental_top80": 281,
+        "mps_top80": 272,
+        "combined_experimental_top80": 285
+      },
+      "guarded_consumed_diagnostic_pairs_retained": {
+        "native_top80": 275,
+        "pa_top80": 264,
+        "ne_top80": 277,
+        "human_experimental_top80": 281,
+        "mps_top80": 272,
+        "combined_experimental_top80": 285
+      }
+    },
+    "processed_author_table_QC": {
+      "status": "Consumed same-study source/identity QC correction, not another untouched confirmation.",
+      "native_rows": 29922,
+      "strict_per_call": {
+        "eligible_positive_pairs": 284,
+        "evaluable_author_bait_ENSGs": 114,
+        "unguarded_pairs_retained": {
+          "unpruned": 284,
+          "native_top80": 269,
+          "pa_top80": 258,
+          "ne_top80": 272,
+          "human_experimental_top80": 272,
+          "mps_top80": 267,
+          "combined_experimental_top80": 277
+        },
+        "guarded_pairs_retained": {
+          "unpruned": 284,
+          "native_top80": 268,
+          "pa_top80": 258,
+          "ne_top80": 272,
+          "human_experimental_top80": 272,
+          "mps_top80": 267,
+          "combined_experimental_top80": 277
+        }
+      },
+      "entry_family_sensitivity": {
+        "eligible_positive_pairs": 385,
+        "evaluable_author_bait_ENSGs": 133,
+        "unguarded_pairs_retained": {
+          "unpruned": 385,
+          "native_top80": 359,
+          "pa_top80": 344,
+          "ne_top80": 364,
+          "human_experimental_top80": 364,
+          "mps_top80": 353,
+          "combined_experimental_top80": 376
+        },
+        "guarded_pairs_retained": {
+          "unpruned": 385,
+          "native_top80": 358,
+          "pa_top80": 343,
+          "ne_top80": 364,
+          "human_experimental_top80": 364,
+          "mps_top80": 353,
+          "combined_experimental_top80": 376
+        }
+      },
+      "identity_limit": "Entry-family resolution is a declared sensitivity, not exact isoform, sequence, gene-of-origin or construct identification. Ambiguous or missing mappings are not negatives.",
+      "interpretation": "Guarded primary retains 272/284 strict pairs versus 268 for native confidence and 272 for Network Enhancement; entry sensitivity is 364/385 versus 358 native and 364 NE. Unguarded original processed results remain separate. No later winner or threshold was selected."
+    }
+  },
+  "current_Tdark_posthoc_diagnostics": {
+    "scope": "Captured current Pharos TDL labels, not reconstructed 2018 TDL or biological truth. Small descriptive subsets; no subgroup winner selection.",
+    "OpenCell_strict": {
+      "pairs_with_at_least_one_current_Tdark_endpoint": 16,
+      "unguarded_pairs_retained": {
+        "unpruned": 16,
+        "native_top80": 12,
+        "pa_top80": 10,
+        "ne_top80": 16,
+        "human_experimental_top80": 12,
+        "mps_top80": 16,
+        "combined_experimental_top80": 12
+      },
+      "guarded_pairs_retained": {
+        "unpruned": 16,
+        "native_top80": 12,
+        "pa_top80": 10,
+        "ne_top80": 16,
+        "human_experimental_top80": 12,
+        "mps_top80": 16,
+        "combined_experimental_top80": 12
+      }
+    },
+    "OpenCell_entry_family_sensitivity": {
+      "pairs_with_at_least_one_current_Tdark_endpoint": 22,
+      "unguarded_pairs_retained": {
+        "unpruned": 22,
+        "native_top80": 17,
+        "pa_top80": 14,
+        "ne_top80": 22,
+        "human_experimental_top80": 17,
+        "mps_top80": 21,
+        "combined_experimental_top80": 17
+      },
+      "guarded_pairs_retained": {
+        "unpruned": 22,
+        "native_top80": 17,
+        "pa_top80": 14,
+        "ne_top80": 22,
+        "human_experimental_top80": 17,
+        "mps_top80": 21,
+        "combined_experimental_top80": 17
+      }
+    },
+    "conditional_BioPlex": {
+      "pairs_with_at_least_one_current_Tdark_endpoint": 28,
+      "guarded_pairs_retained": {
+        "unpruned": 28,
+        "native_top80": 27,
+        "pa_top80": 20,
+        "ne_top80": 26,
+        "human_experimental_top80": 27,
+        "mps_top80": 25,
+        "combined_experimental_top80": 27
+      },
+      "pairs_with_both_Tdark_endpoints": 0
+    },
+    "interpretation": "Primary and native tie on both studies’ Tdark subsets; relative NE counts differ by study. No general improvement for understudied targets is established."
+  },
+  "conditional_BioPlex_HCT116": {
+    "status": "Conditional CRC-cell-model author-call retention stress check; not independent truth or accuracy validation.",
+    "eligible_unique_core_pairs": 263,
+    "evaluable_exact_author_bait_GeneIDs": 125,
+    "unguarded_pairs_retained": {
+      "unpruned": 263,
+      "native_top80": 246,
+      "pa_top80": 186,
+      "ne_top80": 251,
+      "human_experimental_top80": 247,
+      "mps_top80": 231,
+      "combined_experimental_top80": 243
+    },
+    "guarded_pairs_retained": {
+      "unpruned": 263,
+      "native_top80": 246,
+      "pa_top80": 187,
+      "ne_top80": 251,
+      "human_experimental_top80": 247,
+      "mps_top80": 232,
+      "combined_experimental_top80": 243
+    },
+    "guarded_primary_minus_native_pairs": 1,
+    "primary_vs_native_bait_counts": {
+      "better": 4,
+      "tied": 117,
+      "worse": 4
+    },
+    "interpretation": "Guarded primary retains 247/263 versus 246/263 for native confidence and 251/263 for NE: a one-pair gain over native, with NE higher. Prior-assisted CompPASS labels and unresolved exact historical measurement chronology prevent an independent-validation claim.",
+    "CRC99_scope": {
+      "primary_CRC_targets": 99,
+      "primary_CRC_targets_in_historical_source": 18,
+      "native_directed_rows_with_exact_CRC99_author_labels": 354,
+      "exact_CRC99_labels_in_those_rows": 41,
+      "unique_literal_pairs_in_those_rows": 343,
+      "source_absent_rows_before_reference_exclusions": 349,
+      "source_protected_rows_before_reference_exclusions": 5,
+      "unique_protected_source_pairs": 3,
+      "eligible_source_pairs_before_reference_exclusions": 0,
+      "eligible_core_pairs_after_exclusions": 0,
+      "interpretation": "Zero eligible CRC99 pairs reflects historical source-population coverage, not biological absence or removal by temporal/exposure filters."
+    }
+  },
+  "Complex_Portal_structural_reference": {
+    "status": "Completed consumed source-reader QC; unscorable for improvement because fixed coverage floor is not met.",
+    "fixed_selected_complex_records": 24,
+    "assembly_qualified_complex_records": 13,
+    "qualified_distinct_publications": 12,
+    "generated_unique_curated_coassociation_pairs": 110,
+    "source_pair_categories": {
+      "qualified_eligible": 13,
+      "source_absent": 91,
+      "source_protected": 6
+    },
+    "eligible_source_pairs": 13,
+    "eligible_publications": 1,
+    "original_boundary_previously_unexposed_pairs": 4,
+    "original_boundary_previously_unexposed_publications": 1,
+    "fixed_reporting_floor": {
+      "eligible_pairs": 100,
+      "publications": 5,
+      "passed": false
+    },
+    "all_twelve_views_retain_all_eligible_pairs": true,
+    "retained_pairs_each_view": 13,
+    "retained_original_boundary_unexposed_pairs_each_view": 4,
+    "interpretation": "Both prior 0/24 reader failures remain preserved. Verified RCSB source-contract corrections qualified 13/24 records without relaxing biology. The final 13 eligible pairs come from one publication and every method retains all 13; no method discrimination or gain. The four original-boundary-unexposed pairs do not restore freshness after this panel was consumed."
+  },
+  "current_workspace_interpretation_value": {
+    "BioPlex_existing_pair_context_observations": 4,
+    "new_nodes": 0,
+    "new_edges": 0,
+    "new_assertions": 0,
+    "scope": "Native bait/prey roles, unordered-pair classifier scores, tagged-ORF assay conditions and source-row provenance on pairs already represented in Pharos and STRING.",
+    "biological_value": "Tagged-expression and historical cell-model context clarify why these calls do not establish endogenous repair competence or repair restoration.",
+    "unknowns": "Exact row-level clone, allele, sequence and experimental-batch repair phenotype remain unverified. Underlying-study reuse in Pharos/STRING remains unresolved.",
+    "review_status": "Agent-assisted source/primary-literature qualification; not human-expert review or biological validation.",
+    "native_data_redistribution": "Unverified; complete native publications and derived source rows remain private research artifacts. This summary contains aggregates and commitments only."
+  },
+  "limits": [
+    "Rankings, primary, budgets and initial evaluation boundary remain frozen. Processed QC, the connectivity safeguard and structural reader corrections are consumed diagnostics, not independent confirmations.",
+    "These positive-only references cannot establish pruning precision, false-edge rates, specificity or whole-graph scientific accuracy. Undetected or unmapped pairs are not negatives.",
+    "Pair, row, bait and publication counts are not independent samples or experiment counts; no inferential p-values or confidence intervals are claimed.",
+    "The BioPlex classifier used prior STRING/GeneMANIA training labels; source calls are not independent gold-standard truth for a Pharos/STRING graph.",
+    "Historical graph retention results do not validate the current CRC workspace with 99 targets, direct binding, native/full-length construct equivalence or patient benefit.",
+    "Source-context enrichment preserves original Pharos evidence and separate candidate review states; imported records cannot validate themselves.",
+    "No model inference or new reference-driven parameter search was required for these aggregate results."
+  ],
+  "sealed_result_receipts": {
+    "qualified_historical_source": {
+      "content_sha256": "55f75990b31478de106c4e72976c3f21eb80385c802e4113fa6747d0c3112542"
+    },
+    "original_rank_selection": {
+      "content_sha256": "72d94b69d6ffb73ebddbd79dfe2f77190016d1a1dc0f1e24a31a81b2245581be"
+    },
+    "initial_OpenCell_protocol": {
+      "content_sha256": "8ee92aa9a8499c588bde01bbac5437ceb7d089c3eee95820f07524be6403b868"
+    },
+    "initial_OpenCell_result": {
+      "content_sha256": "c355217c3e5b1445f483b197aeec5894215818cde5f0bcb277c1c3314e3a8cbe"
+    },
+    "processed_OpenCell_protocol": {
+      "content_sha256": "0655cdea64d3ec9ddb428d20f20c623d036f6677787b393358f04120b85b6878"
+    },
+    "processed_OpenCell_result": {
+      "content_sha256": "686fee839aeb4b2483b2eaf855a93fa40679b8c460c6434e80c1b0c4dd59da21"
+    },
+    "shared_forest_protocol": {
+      "content_sha256": "409089c3d9162ea6b2119ccc0ddc6e276f4029ce47f2f828f9b778593108d3e0"
+    },
+    "guarded_initial_OpenCell_diagnostic": {
+      "content_sha256": "885f05b2d50071075b6d370eb05c9f8f5a8ee0b43f5bf429f6fc0029d695883c"
+    },
+    "guarded_processed_OpenCell_diagnostic": {
+      "content_sha256": "2ef30807edfef319dbd98ab2ce89032742b895d45640e758f8a9744543ba0d25"
+    },
+    "posthoc_OpenCell_Tdark_diagnostic": {
+      "content_sha256": "a0e6810c30c03db4838f82d6ddf512215645b70e366413ed743781cc3fe60e77"
+    },
+    "guarded_graph_delivery": {
+      "content_sha256": "7a00eb388fdc8ec61136ba0a257c177df03ea45368dcac04c0a6ac4929f9fdec"
+    },
+    "conditional_BioPlex_protocol": {
+      "content_sha256": "3c992050c9374a5db77308b11a4a9091fd67593d7752ee72491812e49e24bd62"
+    },
+    "conditional_BioPlex_result": {
+      "content_sha256": "e300c25e8705d3b0681de642fac9d877e2e935058e1f923d75ec319c694fd09e"
+    },
+    "conditional_BioPlex_CRC99_scope": {
+      "content_sha256": "76df895d903a0216060c2f5c8086d27897d99e9a8b03468d2551d012eee1e88b"
+    },
+    "consumed_ComplexPortal_reader_QC_protocol": {
+      "content_sha256": "d19f55708af56200aecd5882c15759032084b653b35997eac4d092c088fd02ff"
+    },
+    "consumed_ComplexPortal_reader_QC_result": {
+      "content_sha256": "69c1b9e225fb5130e4b3b7ea2378063dab2c2cde6f7c73d0fda2898a0e83705a"
+    },
+    "private_BioPlex_context_publication": {
+      "content_sha256": "0370953d4eba927793bc52c487f0b76b8a1499be69127179a057d2b4f7f27fbf"
+    }
+  },
+  "primary_source_urls": {
+    "Pharos": "https://doi.org/10.1093/nar/gkac1033",
+    "STRING_v11": "https://doi.org/10.1093/nar/gky1131",
+    "OpenCell_primary_study": "https://doi.org/10.1126/science.abi6983",
+    "OpenCell_author_processed_table": "https://opencell.sf.czbiohub.org/data/datasets/opencell-protein-interactions.csv",
+    "OpenCell_original_figure_artifact": "https://github.com/czbiohub-sf/2021-opencell-figures/blob/e0bedae07e6c1870f54c501bfa9a9120c8c38e09/data/ppi_analysis/precision_recall/opencell.csv",
+    "BioPlex_primary_study": "https://doi.org/10.1016/j.cell.2021.04.011",
+    "BioPlex_official_data": "https://bioplex.hms.harvard.edu/interactions.php",
+    "historical_HCT116_MMR_context_abstract": "https://pubmed.ncbi.nlm.nih.gov/8044777/",
+    "Complex_Portal_primary_resource": "https://doi.org/10.1093/nar/gkae1085",
+    "RCSB_official_Data_API": "https://data.rcsb.org/",
+    "Network_Enhancement": "https://doi.org/10.1038/s41467-018-05469-x",
+    "MPS": "https://doi.org/10.1038/s41467-023-37079-7"
+  }
+}

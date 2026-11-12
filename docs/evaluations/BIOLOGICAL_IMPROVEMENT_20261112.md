@@ -16,7 +16,7 @@ learner, label fitting, channel recombination or outcome-selected threshold is
 used. The published Network Enhancement and edge-masked MPS implementations
 provide additional comparators; MPS is exploratory.
 
-| Fixed graph view | Strict positive pairs retained | Entry-family sensitivity |
+| Fixed graph view, before connectivity safeguard | Strict positive pairs retained | Entry-family sensitivity |
 | --- | ---: | ---: |
 | Original source graph | 284/284 | 385/385 |
 | Organism-native experimental support, fixed primary | **272/284 (95.8%)** | **364/385 (94.5%)** |
@@ -33,6 +33,22 @@ mapped positives and loses one. All nine distinct discordant cases across both
 identity scopes were inspected. Network Enhancement ties the primary on these
 micro-retention endpoints. The better exploratory transfer-channel result does
 not replace the primary after evaluation.
+
+A post hoc diagnostic limits interpretation for understudied targets. Among
+16 strictly mapped positives involving at least one captured Tdark target,
+the primary and native views each retain 12, while Network Enhancement retains
+16. At entry-family resolution the respective counts are 17/22, 17/22 and
+22/22. The structural safeguard does not change these subgroup counts. This
+small descriptive subset does not establish a subgroup winner, but the primary's
+overall gain is not a demonstrated gain for Tdark targets. The TDL labels are
+current captured knowledge context, not reconstructed 2018 classifications or
+biological truth labels. See the [Pharos primary description](https://doi.org/10.1093/nar/gkac1033).
+
+The recent [2026 dark-genome network study](https://doi.org/10.1038/s41598-026-40553-z)
+also uses Pharos-derived annotations and calls for experimental validation of
+its computational predictions. It motivates context-aware investigation; it
+does not supply independent PPI error labels or validate this pruning result.
+No additional graph transformation was introduced on that basis.
 
 The current check uses the author's pinned **29,922-row processed OpenCell
 table**, with explicit target ENSG and per-call prey accessions. Its SHA-256 is
@@ -97,12 +113,26 @@ This is a development safeguard after observing structural loss. Rechecking
 the consumed reference is descriptive, not new independent confirmation.
 Connectivity preservation does not prove biological correctness.
 
+On the consumed processed OpenCell table, the safeguarded primary retains the
+same 272/284 strict and 364/385 entry-family positives. The safeguarded native
+control retains 268/284 and 358/385; the degree-product control retains 258/284
+and 343/385. Network Enhancement remains 272/284 and 364/385. These are separate
+development diagnostics: the extra apparent primary/native difference comes
+from the control's connectivity trade-off, not new primary detections.
+
 The unguarded primary and native graphs have been materialized and fully
 replayed using the existing Gold packet APIs on the running Brev instance.
 Both include the complete baseline and an exhaustive ledger: 65,132 keep,
 16,284 prune and 8,249 abstain. The downloaded archive's 65 files and about
 9.99 GB of uncompressed contents passed streaming hash/inventory verification.
 No large graph was silently substituted with a summary-only export.
+
+The subsequent safeguarded primary and native exports also passed complete
+source/decision replay and exact retained-edge checks. Both preserve all 18
+original connected components and 17 originally isolated proteins. Each has
+65,132 keep, 16,284 prune and 8,249 abstain decisions; its retained graph has
+3,172 nodes and 73,381 edges. These are actual pruned historical packages,
+distinct from the ordinary CRC source workspace's all-abstention ledger.
 
 Source: [statistical limits of global weight thresholds and network backbones](https://doi.org/10.1073/pnas.0808904106).
 
@@ -149,30 +179,82 @@ Sources: [SIGNOR portal and current documentation](https://signor.uniroma2.it/),
 [MCC primary study](https://pubmed.ncbi.nlm.nih.gov/21779472/),
 [BRAF inhibitory phosphorylation study](https://pubmed.ncbi.nlm.nih.gov/27345148/).
 
+## Conditional HCT116 comparison and source context
+
+A separately frozen BioPlex HCT116 comparison yields 263 qualified source
+pairs from 125 evaluable bait genes. At the same safeguarded budget, the
+primary retains **247/263**, native confidence **246/263**, degree product
+**187/263** and Network Enhancement **251/263**. The primary's advantage over
+native is one pair, or 0.38 percentage points; four baits improve, four worsen
+and 117 tie. This is a small conditional result with no general advantage over
+the published comparator.
+
+BioPlex's CompPASS-Plus calls use prior-assisted STRING/GeneMANIA training
+labels; the exact historical training versions are not reported. Excluding
+identified older bait/pair exposure does not establish exact assay chronology
+or complete source independence. The study provides coassociation calls,
+not qualified negatives or direct-binding truth. The entire HCT116 source is
+now consumed and is registered as prior exposure for future tests.
+
+The historical ranking graph has **zero eligible both-CRC99 pairs** in the
+HCT116 source even before exposure filters. Thus this comparison cannot
+establish a CRC-specific pruning gain. In the current CRC workspace all four
+both-cohort HCT116 pairs are already represented by Pharos and the selected
+STRING layer. A provider label does not resolve reuse of the exact HCT116
+study or source record.
+
+`crc_context_qualified_20261112` adds these **four read-only context records**
+to the three-source workspace, with **zero new nodes, edges or assertions**.
+It preserves native bait/prey roles, class scores, row provenance and the
+reported tagged-ORF assay protocol. Historical parental HCT116 mismatch-repair
+deficiency is distinguished from an authenticated clone, allele or verified
+assay-batch phenotype. Coassociation does not establish endogenous repair
+competence, functional rescue, one joint complex or patient benefit. These
+qualifications improve interpretation; they are not independent validation.
+The source notes are agent-assisted, not human expert review.
+
+The native BioPlex tables and derived row packets remain private because
+their redistribution terms have not been verified. Public code, aggregate
+results and source links are separate from those native artifacts.
+
+Sources: [BioPlex primary study and protocol](https://doi.org/10.1016/j.cell.2021.04.011),
+[author downloads](https://bioplex.hms.harvard.edu/interactions.php),
+[primary HCT116 model-context abstract](https://pubmed.ncbi.nlm.nih.gov/8044777/),
+[Cellosaurus HCT116 metadata](https://www.cellosaurus.org/CVCL_0291).
+
 ## Unresolved and negative results
 
 - The previous Lambourne superiority gate remains failed; the MAP-IT pruning
   endpoint remains unscorable. Those results are unchanged.
 - MPS raises local ranking AP on consumed development data but loses many
   source-present detections at the fixed global budget. It is not promoted.
-- A proposed structure-backed Complex Portal reference stopped **before
-  protein-member access**: recent primary-structure citations alone do not
-  certify that every curated member belongs to that experiment. Only two of
-  24 selected records explicitly linked the exact primary PDB as whole-complex
-  identity, below the fixed five-paper coverage floor. Resolving the
-  membership-to-experiment boundary is required before a fresh pair-level
-  claim. No result is manufactured by relaxing the floor.
+- The initial structure-backed Complex Portal protocol stopped before member
+  access because a citation alone did not qualify every curated participant.
+  A later strict assembly/SIFTS check exposed and corrected two source-reader
+  contract errors using official RCSB semantics. The consumed reader correction
+  qualifies 13 of 24 complexes, yielding 13 ranking-eligible pairs from one
+  paper; all views retain all 13. Only four pairs remain outside the original
+  exposure boundary, still from one paper, below the fixed 100-pair/five-paper
+  floor. The reference is **unscorable for improvement**. Initial failures and
+  consumed corrections remain preserved; no threshold or floor was relaxed.
 - Whole-graph error rates, removal precision and CRC-specific predictive gain
   remain unestablished. Imported source records cannot independently validate
   their own integration.
 
 ## Reopen and reproduce
 
+The [aggregate assessment summary](biological_assessment_20261112_summary.json)
+records the original and safeguarded results separately, with source and
+protocol commitments. It contains no native reference rows or individual pair
+identifiers.
+
 In the app, open **Compare & assess → Experimental reference comparison**.
 This historical source-graph comparison is distinct from the selected CRC
 workspace. Its report and original/current protocol downloads preserve the
 assessment boundaries. In **Evidence & sources**, select **Regulation and
-experimental context** and the MCC, BRAF or citation-scope preset.
+experimental context** and the MCC, BRAF or citation-scope preset. In the private
+context-qualified workspace, select **HCT116 mismatch-repair context** and
+inspect the assay/cell-model passport or original Pharos annotation.
 
 The saved data are outside Git. Public result packets contain aggregates and
 commitments; native OpenCell tables and row-level ledgers are not redistributed
@@ -193,3 +275,9 @@ Durable machine-readable receipts are under
 `runs/biological_improvement_8h_20261111/`. No language-model inference was needed
 for these results. Brev supplied existing CPU/memory for the pinned published
 method and full graph publication; no additional compute instance was created.
+
+The final source increment passed the regression suite, real-source replay,
+browser inspection and an isolated offline wheel installation. Its private
+context packet survives graph/decision export with no added graph relationship
+or acceptance state. These checks establish software/source fidelity, not
+scientific accuracy or independent human biological review.

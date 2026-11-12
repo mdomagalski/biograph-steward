@@ -17,7 +17,8 @@ FORMAT = "biograph-steward.evidence-extension.v1"
 SIDECAR = "evidence_extension.json"
 SOURCE = "extension_sources"
 LEDGER = "extension_observations.json"
-ADAPTERS = {"string": "string_source_update", "mapit": "mapit_source", "signor": "signor_source"}
+ADAPTERS = {"string": "string_source_update", "mapit": "mapit_source", "signor": "signor_source",
+            "bioplex": "bioplex_source"}
 
 
 def _adapter(kind):
@@ -50,7 +51,9 @@ def prepare_extension(snapshot, baseline_graph, publications):
                "added_nodes": sum(len(v["prepared"]["nodes"]) for v in sources.values()),
                "preserves_original_pharos": True, "automatic_acceptance": False,
                "independent_validation": False,
-               "interpretation": ("Versioned associations, qualified tissue observations and source-reported regulation; source records are not independent experiment counts."
+               "interpretation": ("Source-preserving biological records and cell-model context; source records are not independent experiment counts."
+                                  if "bioplex" in publications else
+                                  "Versioned associations, qualified tissue observations and source-reported regulation; source records are not independent experiment counts."
                                   if "signor" in publications else
                                   "Versioned source associations and qualified tissue observations; source records are not independent experiment counts.")}
     value = {"format": FORMAT, "snapshot_sha256": snapshot["content_sha256"],

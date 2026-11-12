@@ -53,6 +53,63 @@ The new three-source packet and all-abstain graph/decision export both passed
 offline replay, with every original Pharos entity, evidence record and assertion
 unchanged. The following section preserves the earlier two-source delivery.
 
+## Optional private HCT116 context
+
+`crc_context_qualified_20261112` adds four BioPlex HCT116 source-context
+observations to the three-source workspace. It adds **no nodes, edges,
+assertions or acceptance decisions**. In **Evidence & sources**, select
+**HCT116 mismatch-repair context**. Inspect the recorded bait/prey roles,
+tagged-expression assay setting, exact native scores and source-row links, or
+open the existing Pharos annotation separately. Provider overlap does not
+resolve reuse of the exact study or experiment.
+
+The source's gene-level coassociation inference does not identify an exact
+clone, allele or assay-resolved isoform. Historical parental HCT116
+mismatch-repair deficiency is separate from a verified phenotype of this
+experimental batch; tagged-ORF coassociation does not prove endogenous repair
+competence or functional rescue. The source check is agent-assisted, not human
+expert review. No model account or compute service is needed to inspect it.
+
+The adapter reuses the existing immutable publication, source inspection and
+Gold export lifecycle. It checks the complete pinned companion and directed
+tables, including global GeneID/literal-accession ambiguity, before selecting
+only exact primary-cohort pairs that already exist in Pharos. It never strips
+isoform suffixes or invents role direction from sorted endpoints.
+
+```sh
+python -m biograph_steward bioplex-context-publish \
+  --companion /path/to/BioPlex_HCT116_Network_5.5K_Dec_2019.tsv \
+  --directed /path/to/BioPlex_3.0_HCT116_DirectedEdges.tsv \
+  --snapshot runs/crc_civic_final_20261015/snapshot.json \
+  --out runs/my_private_bioplex_context
+python -m biograph_steward biological-update \
+  --run runs/crc_civic_final_20261015 \
+  --string-publication runs/my_string_publication \
+  --mapit-publication runs/my_mapit_publication \
+  --signor-publication runs/my_signor_publication \
+  --bioplex-publication runs/my_private_bioplex_context \
+  --out runs/my_private_context_workspace
+```
+
+Native-table redistribution terms remain unverified. Complete source
+publications, derived row records, screenshots of those rows and workspace/Gold
+packages containing them stay private. The metadata flag records that boundary;
+it is not a public-export filter. Do not remove files from a sealed package to
+publish it: observations are embedded elsewhere and source replay would break.
+Use the separate aggregate comparison publication for public result delivery.
+
+The actual four-record workspace passed complete source replay, graph/decision
+export and all-abstention recovery. Original Pharos nodes, evidence and
+assertions remain identical. Recomposition updates the added assertions'
+extension-packet binding; their biological content, counts and review states
+remain unchanged. The installed wheel reproduces the context view and its
+inspection boundary outside the checkout, without a model or new retrieval.
+
+Sources: [BioPlex primary study](https://doi.org/10.1016/j.cell.2021.04.011),
+[official source downloads](https://bioplex.hms.harvard.edu/interactions.php).
+
+## Earlier two-source delivery
+
 The completed colorectal-cancer example is `crc_evidence_enriched_20261111`.
 In **Evidence & sources**, select **Show EGFR tissue evidence**. Search the 120
 partner observations, inspect source and assay context, and download the displayed

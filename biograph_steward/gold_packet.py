@@ -158,7 +158,7 @@ def _input_names_valid(names):
         # Adapter-specific inventories and the nonempty source list are checked
         # against the sealed extension during the inner publication replay.
         if not extension <= names or not any(
-                re.fullmatch(r'extension_sources/(string|mapit|signor)/publication\.json', name)
+                re.fullmatch(r'extension_sources/(string|mapit|signor|bioplex)/publication\.json', name)
                 for name in nested):
             return False
         allowed.update(extension | nested)
@@ -339,7 +339,7 @@ def _extension_bindings(run_manifest, snapshot, graph, extension, require):
     require(run_manifest, binding, 'Run manifest extension')
     expected_nodes, expected_edges, observations = {}, {}, []
     for source, record in sorted(extension['sources'].items()):
-        if source not in {'string', 'mapit', 'signor'}:
+        if source not in {'string', 'mapit', 'signor', 'bioplex'}:
             raise ValueError('Unsupported graph extension source kind.')
         prepared = record['prepared']
         for node in prepared['nodes']:

@@ -65,7 +65,7 @@ def _source_path(run_id, locator):
             or any(part in {"", ".", ".."} for part in path.split("/"))):
         return None
     if path.startswith("extension_sources/"):
-        if not re.fullmatch(r"extension_sources/(?:string|mapit|signor)/[A-Za-z0-9_./-]+", path):
+        if not re.fullmatch(r"extension_sources/(?:string|mapit|signor|bioplex)/[A-Za-z0-9_./-]+", path):
             return None
         route = "/api/extension-source/"
     else:
@@ -318,6 +318,44 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
                     "baseline_nonself_pair_present": observation.get("baseline_nonself_pair_present"),
                     "independent_evidence_count": None}})
             continue
+        if observation.get("source_kind") == "bioplex":
+            from .regulatory_questions import _saved_pair_context
+            for citation in observation.get("citations", []):
+                add_link(citation.get("label") or citation.get("id") or "Source reference",
+                         citation.get("url"), "publication" if citation.get("role") in
+                         {"source_study_protocol", "historical_cell_model_context"} else "source_reference")
+            for locator in observation.get("source_locators", []):
+                url = _source_path(run_id, locator.get("locator"))
+                if url:
+                    add_link("Preserved BioPlex source row", url, "local_source", local=True)
+            sections.append({"id": observation["id"] + ":assay-context", "title": "HCT116 assay context",
+                "text": ("Bait is the expressed, tagged product selected for purification; prey is reported as co-isolating with it. "
+                         "These experimental roles do not establish regulatory direction or direct binding. "
+                         "The author interaction inference is at gene level; the exact clone, allele and isoform are not resolved by the native labels."),
+                "fields": {key: deepcopy(observation.get(key)) for key in ("products", "bait", "prey", "cell_line_literal",
+                    "cell_line_id", "cell_line_id_basis", "method_context", "context_qualification",
+                    "context_review", "citations", "baseline_pair_edge_ids", "source_locators")}})
+            sections.append({"id": observation["id"] + ":class-score", "title": "Author pair-class scores",
+                "text": ("These are the undirected companion pair's CompPASS-Plus class scores, not direction-specific assay confidence. "
+                         "They are not calibrated biological truth probabilities and are not combined with STRING scores. "
+                         "Every matched companion record is preserved; no first or best score is chosen."),
+                "fields": {key: deepcopy(observation.get(key)) for key in ("source_scores_raw", "companion_records")}})
+            coverage = _saved_pair_context(graph, observation["products"])
+            sections.append({"id": observation["id"] + ":existing-pair", "title": "Existing pair coverage and reuse",
+                "text": ("This context record adds no graph edge or assertion. Baseline edge pointers refer to already represented endpoints; "
+                         "a BioPlex provider label alone does not identify this exact study, record or cell line. "
+                         "The records share one BioPlex study and do not provide separate independent evidence votes or establish one joint complex."),
+                "fields": coverage})
+            sections.append({"id": observation["id"] + ":limits", "title": "Cell-model limits and source terms",
+                "text": ("The reported study protocol and the nominal parental cell-line background are distinct from a verified clone or assay-batch phenotype. "
+                         "Coassociation cannot establish endogenous mismatch-repair competence or functional rescue. "
+                         "Native-source redistribution rights remain unverified; the complete source packet is private."),
+                "fields": {"limitations": deepcopy(observation.get("limitations", [])),
+                    "biologically_validated": observation.get("biologically_validated"),
+                    "independent_evidence_count": observation.get("independent_evidence_count")}})
+            missing.append({"field": "clone_and_assay_batch",
+                "note": "The exact selected clone/allele, assay-batch genotype and repair activity are unverified; the study's tagged-expression protocol does not establish endogenous function."})
+            continue
         if observation.get("source_kind") == "mapit":
             for citation in observation.get("citations", []):
                 add_link(citation.get("label") or citation.get("id") or "Primary study",
@@ -368,7 +406,10 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
     unknown_qualifiers = sorted(set(qualifiers) - set(QUALIFIERS + CONTEXT_QUALIFIERS))
     if unknown_qualifiers:
         missing.append({"field": "qualifier_interpretation", "note": "Uninterpreted qualifier fields are preserved verbatim: " + ", ".join(unknown_qualifiers) + "."})
-    record_kind = assertion.get("kind") if assertion else (edges[0].get("record_kind") if edges else "excluded_assay_observation")
+    context_only = (not edges and len(observations) == 1 and observations[0].get("source_kind") == "bioplex"
+                    and observations[0].get("record_kind") == "cell_line_coassociation_observation")
+    record_kind = assertion.get("kind") if assertion else (edges[0].get("record_kind") if edges else
+        "cell_line_coassociation_observation" if context_only else "excluded_assay_observation")
     scope_notes = {
         "protein_interaction": "This is a source-reported interaction annotation. Functional association, physical association, direct binding and disease mechanism are different claims; this annotation alone does not establish the latter claims.",
         "pathway_membership": "This record annotates pathway membership. Shared membership alone does not establish direct interaction or disease-specific relevance.",
@@ -381,6 +422,7 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
         "assay_observation": "This is a qualified assay observation between the listed participants. Inspect its method, outcome, constructs and source conditions before interpreting it.",
         "tissue_proximity_observation": "This is enriched proximity in the recorded colorectal-tissue assay and reanalysis. It does not establish direct binding, tumour-specific rewiring, clinical relevance or independent validation.",
         "source_regulatory_observation": "This is source-reported regulation with separate effect, mechanism, site and experimental context. It does not establish colorectal applicability or independent biological validation.",
+        "cell_line_coassociation_observation": "This is saved HCT116 tagged-AP-MS context for an already represented protein pair. It adds no graph edge, assertion or acceptance decision. Co-isolation does not establish direct binding or endogenous cell function.",
         "excluded_assay_observation": "This source observation has no evidence edge and no assertion to accept. Its exclusion is not a negative biological result.",
     }
     summary = scope_notes.get(record_kind, "This saved relation is shown verbatim. No additional interpretation is defined for its record kind.")
@@ -391,7 +433,9 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
     missing.append({"field": "independent_evidence_count", "note": INDEPENDENCE_NOTE})
     reuse = _reuse(graph, edges, observations, source_reuse, run_id, add_link)
     review_state = assertion.get("lifecycle_state", "not_recorded") if assertion else "not_applicable" if not edges else "not_recorded"
-    review_text = "Local review state: " + review_state + ". " + REVIEW_NOTE
+    review_note = ("This source-context record has no assertion to accept or prune. Its agent-assisted source check is not human expert review or biological validation."
+                   if context_only else REVIEW_NOTE)
+    review_text = "Local review state: " + review_state + ". " + review_note
     reference_links = [link["id"] for link in links if link["kind"] in {"publication", "source_record", "source_reference", "local_source"}]
     reuse_text = (" ".join(row["explanation"] for row in reuse["records"])
                   if reuse["records"] else reuse["note"] if reuse["status"] == "unverifiable_saved_annotation"
@@ -413,11 +457,11 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
             "assertion": ({key: deepcopy(assertion.get(key)) for key in
                 ("id", "subject", "predicate", "object", "kind", "lifecycle_state", "validation_status", "revision")}
                 if assertion else None), "qualifiers": qualifiers,
-            "review": {"state": review_state, "note": REVIEW_NOTE}, "summary": summary,
+            "review": {"state": review_state, "note": review_note}, "summary": summary,
             "source_records": sources, "observations": [o["id"] for o in observations],
             "sections": sections, "links": links, "omitted_links": omitted_links,
             "missing_context": missing, "reuse": reuse, "questions": questions,
             "actions": [], "model_calls": 0, "source_fetches": 0,
             "limitations": ["Guidance reports saved source facts; it does not audit papers or establish scientific accuracy.",
                             "This workspace is a bounded extract. Missing entities or references do not establish absence elsewhere.",
-                            REVIEW_NOTE, INDEPENDENCE_NOTE]}
+                            review_note, INDEPENDENCE_NOTE]}

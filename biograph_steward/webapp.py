@@ -443,7 +443,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 except (ValueError, TypeError, KeyError, OSError) as exc:
                     self.json_reply({'error': str(exc)}, 400)
                 return
-            match = re.fullmatch(r'/api/extension-source/([A-Za-z0-9_-]{1,80})/extension_sources/(string|mapit|signor)/(.+)', path)
+            match = re.fullmatch(r'/api/extension-source/([A-Za-z0-9_-]{1,80})/extension_sources/(string|mapit|signor|bioplex)/(.+)', path)
             if match:
                 from .reviews import read_run, read_civic, read_assay
                 from .assay_attachment import _decode, _ordinary

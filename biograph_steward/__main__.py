@@ -74,11 +74,17 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--snapshot", type=Path, required=True)
     p.add_argument("--pubmed-xml", type=Path)
     p.add_argument("--out", type=Path, required=True)
-    p = sub.add_parser("biological-update", help="Publish a new source-preserving workspace with STRING, MAP-IT and/or SIGNOR evidence.")
+    p = sub.add_parser("bioplex-context-publish", help="Create a private, source-bound HCT116 context packet without new graph edges.")
+    p.add_argument("--companion", type=Path, required=True)
+    p.add_argument("--directed", type=Path, required=True)
+    p.add_argument("--snapshot", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("biological-update", help="Publish a new source-preserving workspace with versioned biological evidence and optional cell-model context.")
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--string-publication", type=Path)
     p.add_argument("--mapit-publication", type=Path)
     p.add_argument("--signor-publication", type=Path)
+    p.add_argument("--bioplex-publication", type=Path)
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("biological-comparison-publish", help="Publish saved fixed-view experimental reference aggregates; no selection, fetching or inference.")
     p.add_argument("--assessment", type=Path, required=True)
@@ -331,10 +337,18 @@ def main(argv: list[str] | None = None) -> int:
                                        pubmed_xml=args.pubmed_xml)
             print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
             return 0
+        if args.command == 'bioplex-context-publish':
+            from .bioplex_source import publish_release
+            from .assay_attachment import _decode, _ordinary
+            manifest = publish_release(args.companion, args.directed, _decode(_ordinary(args.snapshot)), args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication_sha256': manifest['content_sha256'],
+                              'private_source_packet': True, 'new_graph_edges': 0}, indent=2))
+            return 0
         if args.command == 'biological-update':
             from .evidence_extension import publish_extension
             publications = {k: v for k, v in {'string': args.string_publication,
-                            'mapit': args.mapit_publication, 'signor': args.signor_publication}.items() if v is not None}
+                            'mapit': args.mapit_publication, 'signor': args.signor_publication,
+                            'bioplex': args.bioplex_publication}.items() if v is not None}
             graph = publish_extension(args.run, publications, args.out)
             print(json.dumps({'output': str(args.out.resolve()),
                               'evidence_extension': graph['evidence_extension']}, indent=2))
