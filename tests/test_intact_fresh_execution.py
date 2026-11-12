@@ -41,6 +41,41 @@ def identity(db, value, qualifier='MI:0356'):
     return {'database': {'name': db}, 'id': value, 'qualifier': {'mi_id': qualifier}}
 
 
+def metadata_fixture(root):
+    """Invented bound metadata for prepare/verify; no ignored captures needed."""
+    def write(name, body):
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(body) if isinstance(body, dict) else body)
+        return path
+
+    directory = write('metadata/directory.html', '<html>Invented directory metadata.</html>')
+    selection = write('metadata/selection.json', {
+        'selected': [{'publication_id': 'pubmed:' + pmid,
+                      'original_metadata_rank': index + 9,
+                      'url': fresh.SOURCE_BASES['mitab'] + pmid + '.txt'}
+                     for index, pmid in enumerate(fresh.FRESH)],
+        'bindings': {'directory_metadata': {
+            'path': str(directory.relative_to(root)), 'sha256': fresh.sha(directory)}}})
+    consumed = write('metadata/consumed.json', inventory())
+    license_path = write('metadata/LICENSE.md', 'Invented license metadata; not a source license.')
+    archived = write('archive/invented.py', '# Invented archived implementation.\n')
+    archive = write('archive/receipt.json', {'files': [{
+        'archived_path': str(archived.relative_to(root)), 'sha256': fresh.sha(archived)}]})
+    implementation = write('scripts/intact_final_common.py', '# Invented implementation binding.\n')
+    # These tracked metadata documents are part of every checkout. Preserve the
+    # production protocol pins, rather than supplying historical source files.
+    for name in (original.PROTOCOL, original.AMENDMENT):
+        target = root / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((fresh.ROOT / name).read_bytes())
+    return ({'ROOT': root, 'SELECTION': selection, 'SELECTION_SHA': fresh.sha(selection),
+             'INVENTORY': consumed, 'INVENTORY_SHA': fresh.sha(consumed),
+             'ARCHIVE': archive, 'ARCHIVE_SHA': fresh.sha(archive),
+             'LICENSE_PATH': license_path, 'ACCESS_MARKER': root / 'access.json'},
+            {str(implementation): fresh.sha(implementation)})
+
+
 class FreshAccountingTests(unittest.TestCase):
     def test_original_scope_guard_stays_closed(self):
         self.assertEqual(study_ids('reserved_final'), fresh.RESERVED)
@@ -184,15 +219,23 @@ class ExecutionBoundaryTests(unittest.TestCase):
         refs[1]['reader_record']['source_fields']['primary_ids_a']['values'][0]['id'] = 'P99999'
         wrappers = [{'reader_record': ref['reader_record']} for ref in refs]
         with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp); freeze_path = root / 'freeze.json'; freeze_path.write_text('{}')
+            root = Path(tmp).resolve(); freeze_path = root / 'freeze.json'; freeze_path.write_text('{}')
             controls = root / 'controls.json'; controls.write_text('{}')
+            # _execute assembles publication metadata before the budget hook.
+            # Supply only invented metadata in an isolated root, so this guard
+            # never depends on a locally captured historical IntAct license.
+            for name in (original.PROTOCOL, original.AMENDMENT,
+                         original.BASE + '/sources/IntAct_license.md'):
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text('Invented publication metadata; no source rows.')
             freeze = {'assessment_split': fresh.SPLIT, 'publication_ids': list(fresh.FRESH),
                       'consumed_inventory': str(controls), 'controls_report': str(controls),
                       'xml_controls_report': str(controls), 'mitab_runtime': {}, 'xml_runtime': {},
                       'implementation_sha256': {}}
             seen = []
             def fail(folder): seen.append(folder); raise fresh.BudgetExceeded('invented fixed budget stop')
-            with patch('biograph_steward.intact_final_publication.publish_material'), self.assertRaises(fresh.BudgetExceeded):
+            with patch.object(original, 'ROOT', root), patch('biograph_steward.intact_final_publication.publish_material'), self.assertRaises(fresh.BudgetExceeded):
                 original._execute(freeze, freeze_path, fresh.sha(freeze_path), root,
                     source_loader=lambda *args: (wrappers, [r['ledger'] for r in refs], {}, {}, [], []),
                     lineage_auditor=lambda *args: {'excluded_publication_ids': [], 'ambiguous_dataset_statements': []},
@@ -220,9 +263,9 @@ class ExecutionBoundaryTests(unittest.TestCase):
             root = Path(tmp).resolve(); paths = []
             for index in range(5):
                 path = root / ('control_%d.json' % index); path.write_text('{}'); paths.append(path)
-            bindings = {str(fresh.ROOT / 'scripts/intact_final_common.py'): fresh.sha(fresh.ROOT / 'scripts/intact_final_common.py')}
+            metadata, bindings = metadata_fixture(root)
             review = {'flow_controls_sha256': fresh.sha(paths[2]), 'rehearsal_report_sha256': fresh.sha(paths[3])}
-            with patch.object(fresh, 'ACCESS_MARKER', root / 'access.json'), patch.object(fresh, 'code_bindings', return_value=bindings), patch.object(fresh, '_verified_report', return_value=review), patch.object(fresh, 'verify_controls_report'), patch.object(fresh, 'verify_xml_controls'), patch.object(original, '_runtime', return_value={'invented': 'reader'}):
+            with patch.multiple(fresh, **metadata), patch.object(fresh, 'code_bindings', return_value=bindings), patch.object(fresh, '_verified_report', return_value=review), patch.object(fresh, 'verify_controls_report'), patch.object(fresh, 'verify_xml_controls'), patch.object(original, '_runtime', return_value={'invented': 'reader'}):
                 freeze = fresh.prepare(root / 'freeze', *paths)
                 path = root / 'freeze/execution_freeze.json'
                 self.assertEqual(fresh.verify_freeze(path, fresh.sha(path)), freeze)

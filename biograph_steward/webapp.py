@@ -313,8 +313,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 try:
                     query = urlparse(self.path).query
                     if action == 'pairs':
-                        fields = parse_qs(query, keep_blank_values=True, strict_parsing=True,
-                                          errors='strict', max_num_fields=5)
+                        # Python 3.10 rejects an empty query in strict mode.
+                        fields = (parse_qs(query, keep_blank_values=True, strict_parsing=True,
+                                           errors='strict', max_num_fields=5) if query else {})
                         if (set(fields) - {'arm', 'selection', 'search', 'offset', 'limit'}
                                 or any(len(value) != 1 for value in fields.values())):
                             raise ValueError('Use each supported pair filter once.')

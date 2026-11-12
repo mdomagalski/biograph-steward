@@ -49,10 +49,17 @@ the metric tests require scikit-learn 1.9.1. Native tests also require PyKEEN
 1.11.1 and Torch 2.6.0. These tests use invented graphs, workbooks and labels;
 they do not rerun the real biological comparisons or require Brev/GPU access.
 
-The new evaluation CI job uses Ubuntu 22.04 and `actions/setup-python` with
-3.12.4. Its Linux execution remains pending the actual GitHub Actions run;
-local macOS verification does not establish Linux success. The core workflow
-continues to test app portability separately.
+The evaluation CI job uses Ubuntu 22.04 and `actions/setup-python` with
+3.12.4. It passed on GitHub after the workflow syntax correction. The core
+workflow tests app portability separately; consult the current branch's
+Actions results for each version rather than inferring Linux success from
+local macOS verification.
+
+Clean-checkout tests use temporary invented metadata, not files in an ignored
+research `runs/` directory. A separate HTTP regression covers CPython 3.10's
+strict parser behavior for an empty query: default pair requests bypass the
+parser, while nonempty queries retain strict validation. No scientific
+implementation or old reference outcome changes through these fixes.
 
 ## Scope preservation
 

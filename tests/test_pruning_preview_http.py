@@ -8,7 +8,7 @@ import threading
 import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
-from urllib.parse import quote, urlencode
+from urllib.parse import parse_qs, quote, urlencode
 from urllib.request import ProxyHandler, Request, build_opener
 
 from biograph_steward.pruning_preview import DOWNLOAD_FILES
@@ -104,6 +104,27 @@ class PruningPreviewHttpTests(unittest.TestCase):
                       PREFIX + "/files/summary.json"):
             with self.subTest(route=route):
                 self.assert_http(401, route, auth=False)
+
+    def test_empty_pair_query_bypasses_parser_and_nonempty_queries_stay_strict(self):
+        # Strict empty-query behavior differs between supported Python versions.
+        with patch("biograph_steward.webapp.parse_qs",
+                   side_effect=AssertionError("Empty query must use default filters")) as parser:
+            for suffix in ("", "?"):
+                with self.subTest(suffix=suffix):
+                    pairs = self.get_json(PREFIX + "/pairs" + suffix)
+                    self.assertEqual((pairs["arm"], pairs["limit"]), ("unpruned", 25))
+            parser.assert_not_called()
+        with patch("biograph_steward.webapp.parse_qs", wraps=parse_qs) as parser:
+            self.assertEqual(self.get_json(PREFIX + "/pairs?limit=1")["limit"], 1)
+            parser.assert_called_once_with("limit=1", keep_blank_values=True,
+                                           strict_parsing=True, errors="strict", max_num_fields=5)
+            for query in ("search", "&"):
+                with self.subTest(query=query):
+                    self.assert_http(400, PREFIX + "/pairs?" + query)
+            self.assertEqual([call.args[0] for call in parser.call_args_list],
+                             ["limit=1", "search", "&"])
+            self.assertTrue(all(call.kwargs["strict_parsing"] for call in parser.call_args_list))
+        self.assertEqual(self.files(), self.before)
 
     def test_bounded_pages_exact_details_and_detection_removal_filter(self):
         first = self.get_json(PREFIX + "/pairs?limit=1&offset=0")
