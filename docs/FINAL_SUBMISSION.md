@@ -78,6 +78,15 @@ whole-graph precision. Fixed native R-GCN comparisons of current-release and
 historical context do not show reliable improvement over count and degree
 controls. These negative results and all UNKNOWNs are included in the report.
 
+A literature-backed inverse-degree context score subsequently shows an
+[exploratory functional-concordance signal](evaluations/RESOURCE_ALLOCATION_CONTEXT_20261113.md)
+above baseline and matched controls across a fixed curve. This is concentration
+relative to a smaller background, with lower absolute affinity at most points.
+It is not an independently confirmed prediction gain and has not been promoted
+to biological pruning or protein-level app ranking. A separate public negative
+benchmark was rejected after source review exposed sampled PPI negatives and
+time-dependent inferred GO labels; they were not used to manufacture accuracy.
+
 ## Judge walkthrough
 
 Start with [START_HERE](../START_HERE.md). The core app needs Python 3.10+ and no model account. A fresh checkout includes the synthetic software demonstration. The existing real examples require their saved source packets; local run directories are not included in Git.

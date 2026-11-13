@@ -10,6 +10,7 @@ from html import escape
 import math
 from pathlib import Path
 import re
+import statistics
 
 from . import gold_packet
 from .assay_attachment import _capture, _decode, _ordinary, _sealed
@@ -17,6 +18,7 @@ from .client import digest, utcnow, write_json
 from .file_utils import new_output, sha
 
 FORMAT = 'biograph-steward.scientific-assessment-publication.v1'
+FORMAT_V2 = 'biograph-steward.scientific-assessment-publication.v2'
 ROLES = {
     'history': 'biograph-steward.historical-WikiPathways-content-verification.v1',
     'wiki_policy': 'biograph-steward.source-faithful-historical-WikiPathways-decisions.v1',
@@ -28,6 +30,17 @@ ROLES = {
 }
 SOURCE_NAMES = {role: 'sources/' + role + '.json' for role in ROLES}
 PUBLIC_FILES = frozenset({*SOURCE_NAMES.values(), 'report.html', 'README.txt'})
+COESS_NAMES = {role: 'sources/coess_' + role + '.json'
+               for role in ('score', 'frozen', 'capture', 'curves', 'controls')}
+ALL_PUBLIC_FILES = PUBLIC_FILES | frozenset(COESS_NAMES.values())
+COESS_SCOPES = ('nonsyntenic', 'all', 'syntenic', 'nonsyntenic_positive', 'nonsyntenic_negative')
+COESS_INTERPRETATION = ('Source qualification did not show a consistent advantage over normalized source context '
+    'and the fixed count and degree controls across the complete primary N=1–10 curves.')
+COESS_BOUNDARY = ('Historical pan-cancer DepMap18Q3 fitness concordance, not a CRC-specific reference, physical '
+    'binding, whole-graph scientific accuracy or proven prediction improvement. This exploratory reference is now '
+    'consumed; possible indirect curation reuse and GO-assisted preprocessing remain disclosed. Two-sided native '
+    'P ranks are not edge-truth probabilities or biological negative labels. Twenty control draws give descriptive '
+    'ranges, not confidence intervals, calibrated null probabilities or significance.')
 ARMS = ('normalized_unqualified', 'fixed_qualified', 'equal_count_random', 'qualified_degree_permutation')
 ARM_LABELS = {'normalized_unqualified': 'Normalized source comparator', 'fixed_qualified': 'Qualified feature view',
     'equal_count_random': 'Equal-count random control', 'qualified_degree_permutation': 'Degree-preserving control'}
@@ -54,6 +67,10 @@ README = ('Scientific assessment publication\n\n'
     'The viewer checks aggregate consistency only. Source compatibility is not independent truth; UNKNOWN remains '
     'unknown. The INMC comparisons are consumed-reference development checks, not prospective confirmation. '
     'Full source, registry, archive and retained-graph reproduction requires the original workspace packages.\n')
+README_V2 = README + ('\nThe optional v2 extension copies five bounded coessentiality aggregate/provenance '
+    'files. Complete curves preserve all 87 arms, five declared scopes and N=1–10. Native pair values, '
+    'per-query labels and matrix payloads are excluded. Source/freeze/capture bindings are checked; '
+    'no scoring, model fitting, endpoint selection or new scientific labels occur in this viewer.\n')
 
 
 def need(ok, message):
@@ -61,9 +78,9 @@ def need(ok, message):
         raise ValueError('Scientific assessment: ' + message)
 
 
-def _bounded(path):
+def _bounded(path, *, limit=250_000):
     path = Path(path)
-    need(path.is_file() and not path.is_symlink() and path.stat().st_size <= 250_000,
+    need(path.is_file() and not path.is_symlink() and path.stat().st_size <= limit,
          'only compact ordinary aggregate reports are accepted.')
     return _ordinary(path)
 
@@ -216,26 +233,179 @@ def _summary(files, pins):
         'raw_reference_rows_included': False, 'scientific_labels_created': False, 'graph_modified_by_viewer': False}
 
 
-def publish(source_reports, output, *, expected_source_pins):
+def _coessentiality_summary(files, pins, base_utility):
+    """Project already-scored aggregates; never open pair values or matrices."""
+    need(set(pins) == set(COESS_NAMES) and all(isinstance(pin, str) and re.fullmatch(r'[0-9a-f]{64}', pin)
+         for pin in pins.values()), 'provide an explicit file pin for each coessentiality aggregate.')
+    values = {}
+    for role, name in COESS_NAMES.items():
+        raw = files[name]
+        need(len(raw) <= 3_000_000 and hashlib.sha256(raw).hexdigest() == pins[role],
+             'coessentiality aggregate differs from its size bound or operator pin: ' + role)
+        values[role] = _decode(raw)
+    score, frozen, capture, curves, controls = [values[k] for k in COESS_NAMES]
+    for role, expected in (
+        ('score', 'biograph-steward.coessentiality-functional-concordance.v1'),
+        ('frozen', 'biograph-steward.coessentiality-frozen-comparison.v1'),
+        ('capture', 'biograph-steward.coessentiality-native-column-capture.v1'),
+    ):
+        need(_sealed(values[role]) and values[role].get('format') == expected,
+             'coessentiality receipt format or seal differs: ' + role)
+    experiment_seals = {e['qualification_kind']: e['frozen_packet_content_sha256']
+                        for e in base_utility['experiments']}
+    need(frozen['source_current_content_sha256'] == experiment_seals['current_release_eligibility']
+         and frozen['source_historical_content_sha256'] == experiment_seals['historical_native_xref_compatibility'],
+         'coessentiality study graph differs from the base utility comparisons.')
+    need(score['frozen_comparison_content_sha256'] == frozen['content_sha256']
+         and score['native_capture_content_sha256'] == capture['content_sha256']
+         and capture['frozen_comparison_content_sha256'] == frozen['content_sha256']
+         and capture['frozen_report_file_sha256'] == pins['frozen']
+         and len(score['input_report_file_sha256']) == 2
+         and set(score['input_report_file_sha256'].values()) == {pins['frozen'], pins['capture']},
+         'coessentiality score, frozen transport continuation and native capture differ.')
+    need(score['files']['curves.json'] == pins['curves']
+         and score['files']['descriptive_control_envelopes.json'] == pins['controls'],
+         'coessentiality curves or controls differ from the sealed scorer inventory.')
+    need(frozen.get('source_deep_replay_completed') is True
+         and frozen.get('scientific_packet_unchanged_since_original_pre_value_freeze') is True
+         and re.fullmatch(r'[0-9a-f]{64}', frozen['original_pre_value_scientific_freeze_content_sha256'])
+         and re.fullmatch(r'[0-9a-f]{64}', frozen['transport_repair_content_sha256'])
+         and capture.get('full_matrix_files_retrieved_or_hashed') is False
+         and score.get('all_N_and_all_arms_reported') is True
+         and all(score.get(k) is False for k in ('scientific_truth_labels_created',
+             'PPIs_or_causal_mechanisms_inferred', 'model_fitted_or_graph_changed', 'FDR_or_significance_reconstructed')),
+         'coessentiality source scope or nonbiological interpretation changed.')
+    query_n = _count(score['query_genes'])
+    pair_n = _count(score['pair_scope_counts']['nonsyntenic'])
+    need(query_n == 92 and pair_n == 3968 and score['pair_scope_counts']['syntenic'] == 218,
+         'the declared coessentiality measured-query/pair frame differs.')
+    need(set(curves) == set(frozen['arm_membership_counts']) and len(curves) == 87
+         and all(set(scopes) == set(COESS_SCOPES) for scopes in curves.values()),
+         'preserve all 87 frozen arms and five declared scopes.')
+    for scopes in curves.values():
+        for points in scopes.values():
+            need([p['N'] for p in points] == list(range(1, 11))
+                 and all(p['query_frame'] == query_n for p in points), 'coessentiality N/query frame differs.')
+            for point in points:
+                for name in ('observed_hit_fraction', 'expected_hit_fraction'):
+                    if point[name] is not None:
+                        _metric(point[name])
+                need(point['enrichment'] is None or (type(point['enrichment']) in (int, float)
+                     and math.isfinite(point['enrichment']) and point['enrichment'] >= 0),
+                     'coessentiality enrichment must be nonnegative, finite or undefined.')
+    primary = {arm: deepcopy(curves[arm]['nonsyntenic']) for arm in ('normalized', 'current', 'historical')}
+    need(all(p['reference_available_queries'] == query_n and p['unavailable_queries'] == 0
+         and p['selected_slots_if_reference_available'] == query_n * p['N']
+         and p['aggregation'] == 'all_fixed_queries' for points in primary.values() for p in points),
+         'primary coessentiality curves must retain all fixed query slots.')
+    projected_controls = {}
+    need(set(controls) == {'current', 'historical'}, 'coessentiality treatment controls differ.')
+    for treatment in ('current', 'historical'):
+        need(set(controls[treatment]) == {'count', 'degree'}, 'coessentiality count/degree controls differ.')
+        projected_controls[treatment] = {}
+        assessment = score['full_curve_descriptive_assessment'][treatment]
+        need(assessment.get('is_statistical_significance_or_generalized_biological_gain') is False
+             and assessment.get('pointwise_above_baseline_and_all_controls_at_every_N') is False
+             and [p['N'] for p in assessment['points']] == list(range(1, 11)),
+             'the recorded negative descriptive full-curve finding differs.')
+        for kind in ('count', 'degree'):
+            need(set(controls[treatment][kind]) == set(COESS_SCOPES), 'control diagnostic scopes differ.')
+            names = [f'{treatment}_{kind}_{i:02}' for i in range(20)]
+            selected = []
+            for scope in COESS_SCOPES:
+                envelope = controls[treatment][kind][scope]
+                need([p['N'] for p in envelope] == list(range(1, 11)), 'control envelope N differs.')
+                for index, point in enumerate(envelope):
+                    vals = [curves[arm][scope][index]['enrichment'] for arm in names]
+                    valid = [x for x in vals if x is not None]
+                    expected = [min(valid), statistics.median(valid), max(valid)] if valid else [None] * 3
+                    actual = [point[k] for k in ('minimum', 'median', 'maximum')]
+                    need(point['draws'] == 20 and point['defined_draws'] == len(valid)
+                         and point.get('not_a_confidence_interval') is True
+                         and all(a == b or (a is not None and b is not None
+                             and math.isclose(a, b, rel_tol=1e-12, abs_tol=1e-12)) for a, b in zip(actual, expected)),
+                         'control envelope does not reproduce its saved aggregate draws.')
+                    if scope == 'nonsyntenic':
+                        fractions = [curves[arm][scope][index]['observed_hit_fraction'] for arm in names]
+                        available = [x for x in fractions if x is not None]
+                        selected.append({**deepcopy(point), 'absolute_hit_fraction': {
+                            'minimum': min(available) if available else None,
+                            'median': statistics.median(available) if available else None,
+                            'maximum': max(available) if available else None,
+                            'defined_draws': len(available)}})
+            projected_controls[treatment][kind] = selected
+    return {'title': 'Experimental fitness concordance: frozen exploratory comparison',
+        'interpretation': COESS_INTERPRETATION, 'scope': COESS_BOUNDARY,
+        'query_genes': query_n, 'primary_pairs': pair_n, 'primary_scope': 'nonsyntenic',
+        'N': list(range(1, 11)), 'arm_count': len(curves), 'scope_count': len(COESS_SCOPES),
+        'primary_curves': primary, 'controls': projected_controls, 'control_draws_per_kind': 20,
+        'all_diagnostic_scopes': list(COESS_SCOPES), 'reference_now_consumed': True,
+        'independent_scientific_truth_assessed': False, 'prediction_gain_established': False,
+        'biological_negatives_assigned': False, 'raw_pair_or_matrix_values_included': False,
+        'scorer_content_sha256': score['content_sha256'],
+        'frozen_content_sha256': frozen['content_sha256'], 'capture_content_sha256': capture['content_sha256'],
+        'original_pre_value_freeze_content_sha256': frozen['original_pre_value_scientific_freeze_content_sha256'],
+        'transport_repair_content_sha256': frozen['transport_repair_content_sha256'],
+        'transport_exposure_scope': frozen['preexisting_exposure_scope'],
+        'source_current_content_sha256': frozen['source_current_content_sha256'],
+        'source_historical_content_sha256': frozen['source_historical_content_sha256'],
+        'limitations': deepcopy(score['limitations']),
+        'sources': [{'role': 'coess_' + role, 'file': name, 'file_sha256': pins[role],
+                     'content_sha256': values[role].get('content_sha256')}
+                    for role, name in COESS_NAMES.items()]}
+
+
+def _publication_summary(files, pins, format_name):
+    summary = _summary(files, {role: pins[role] for role in ROLES})
+    if format_name == FORMAT:
+        need(set(pins) == set(ROLES), 'v1 accepts only its seven aggregate receipts.')
+        return summary
+    need(format_name == FORMAT_V2 and set(pins) == set(ROLES) | {'coess_' + k for k in COESS_NAMES},
+         'v2 requires all declared coessentiality aggregate pins.')
+    extra = _coessentiality_summary(files, {role: pins['coess_' + role] for role in COESS_NAMES},
+                                   _decode(files[SOURCE_NAMES['utility']]))
+    summary['format'] = FORMAT_V2 + '.summary'
+    summary['coessentiality'] = extra
+    summary['sources'] += extra['sources']
+    summary['literature'] += [{'title': 'Wainberg et al.: pan-cancer coessentiality',
+        'url': 'https://doi.org/10.1038/s41588-021-00840-z'},
+        {'title': 'Coessentiality author code', 'url': 'https://github.com/kundajelab/coessentiality'},
+        {'title': 'Native XSwap controls', 'url': 'https://github.com/hetio/xswap'}]
+    return summary
+
+
+def publish(source_reports, output, *, expected_source_pins,
+            coessentiality_reports=None, expected_coessentiality_pins=None):
     """Publish one curated snapshot using explicit operator-selected input pins."""
     need(isinstance(source_reports, dict) and set(source_reports) == set(ROLES), 'supply exactly the seven aggregate source roles.')
     implementation_pin = sha(__file__)
     paths = {role: Path(path) for role, path in source_reports.items()}
     files = {SOURCE_NAMES[role]: _bounded(path) for role, path in paths.items()}
-    summary = _summary(files, expected_source_pins)
-    folder = new_output(output, *paths.values())
+    pins = dict(expected_source_pins)
+    format_name = FORMAT
+    extra_paths = {}
+    if coessentiality_reports is not None or expected_coessentiality_pins is not None:
+        need(isinstance(coessentiality_reports, dict) and set(coessentiality_reports) == set(COESS_NAMES)
+             and isinstance(expected_coessentiality_pins, dict), 'supply all five optional coessentiality aggregates and pins.')
+        extra_paths = {role: Path(path) for role, path in coessentiality_reports.items()}
+        files.update({COESS_NAMES[role]: _bounded(path, limit=3_000_000) for role, path in extra_paths.items()})
+        pins.update({'coess_' + role: pin for role, pin in expected_coessentiality_pins.items()})
+        format_name = FORMAT_V2
+    summary = _publication_summary(files, pins, format_name)
+    folder = new_output(output, *paths.values(), *extra_paths.values())
     for name, raw in files.items():
         target = folder / name
         target.parent.mkdir(exist_ok=True)
         target.write_bytes(raw)
-    files['README.txt'] = README.encode()
+    files['README.txt'] = (README_V2 if format_name == FORMAT_V2 else README).encode()
     files['report.html'] = render_html(summary).encode()
     for name in ('README.txt', 'report.html'):
         (folder / name).write_bytes(files[name])
     need(all(_bounded(paths[role]) == files[SOURCE_NAMES[role]] for role in ROLES)
+         and all(_bounded(path, limit=3_000_000) == files[COESS_NAMES[role]] for role, path in extra_paths.items())
          and sha(__file__) == implementation_pin, 'source or implementation changed during publication.')
-    manifest = {'format': FORMAT, 'created_at': utcnow(), 'summary': summary,
-        'operator_source_pins': dict(expected_source_pins), 'input_pins_authenticate_publisher': False,
+    manifest = {'format': format_name, 'created_at': utcnow(), 'summary': summary,
+        'operator_source_pins': pins, 'input_pins_authenticate_publisher': False,
         'files': {name: hashlib.sha256(raw).hexdigest() for name, raw in files.items()},
         'producer_implementation_sha256': implementation_pin, 'read_only': True,
         'raw_reference_rows_included': False, 'scientific_labels_created': False, 'source_graph_modified': False}
@@ -253,17 +423,21 @@ def load_publication(folder):
     folder = Path(folder)
     need(folder.is_dir() and not folder.is_symlink(), 'publication directory is unavailable or symlinked.')
     folder = folder.resolve()
+    format_name = _decode(_bounded(folder / 'publication.json')).get('format')
+    need(format_name in {FORMAT, FORMAT_V2}, 'unsupported publication format.')
+    expected_files = ALL_PUBLIC_FILES if format_name == FORMAT_V2 else PUBLIC_FILES
     names = {p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file()}
-    need(names == PUBLIC_FILES | {'publication.json'} and not any(p.is_symlink() for p in folder.rglob('*')),
+    need(names == expected_files | {'publication.json'} and not any(p.is_symlink() for p in folder.rglob('*')),
          'publication contains missing or additional files.')
     for name in names:
-        _bounded(folder / name)
+        _bounded(folder / name, limit=3_000_000 if name in COESS_NAMES.values() else 250_000)
     manifest, captured = _capture(folder, 'publication.json')
-    need(manifest.get('format') == FORMAT and all(manifest.get(k) is False for k in (
+    need(manifest.get('format') == format_name and all(manifest.get(k) is False for k in (
          'raw_reference_rows_included', 'scientific_labels_created', 'source_graph_modified', 'input_pins_authenticate_publisher'))
          and manifest.get('read_only') is True, 'publication policy or format changed.')
-    summary = _summary(captured, manifest['operator_source_pins'])
-    need(manifest.get('summary') == summary and captured['README.txt'] == README.encode()
+    summary = _publication_summary(captured, manifest['operator_source_pins'], format_name)
+    expected_readme = README_V2 if format_name == FORMAT_V2 else README
+    need(manifest.get('summary') == summary and captured['README.txt'] == expected_readme.encode()
          and captured['report.html'] == render_html(summary).encode(), 'publication summary or presentation differs from its receipts.')
     return manifest, summary, captured
 
@@ -277,7 +451,7 @@ def list_publications(runs_dir):
         if not path.is_file() or path.stat().st_size > 250_000:
             continue
         try:
-            if _decode(_bounded(path)).get('format') != FORMAT:
+            if _decode(_bounded(path)).get('format') not in {FORMAT, FORMAT_V2}:
                 continue
             manifest, summary, _ = load_publication(folder)
             rows.append({'id': folder.name, 'created_at': manifest['created_at'], 'content_sha256': manifest['content_sha256'], 'summary': summary})
@@ -322,11 +496,50 @@ def render_html(summary):
             parts.append('<tr><td>' + text(row['label']) + '</td><td>' + text(row['unique_memberships']) + '</td><td>'
                 + text(format(row['mean_AP'], '.6f')) + '</td><td>' + text(format(row['mean_AUROC'], '.6f')) + '</td></tr>')
         parts.append('</table>')
-    parts += ['<p>' + text(im['scope']) + '</p><p>' + text(im['decision']) + '</p><h2>Limits and proof</h2><ul>']
+    parts += ['<p>' + text(im['scope']) + '</p><p>' + text(im['decision']) + '</p>']
+    if summary.get('coessentiality') is not None:
+        parts.append(_coessentiality_html(summary['coessentiality']))
+    parts += ['<h2>Limits and proof</h2><ul>']
     parts += ['<li>' + text(item) + '</li>' for item in summary['remaining_gaps']]
     parts += ['</ul><p>Graph: <code>' + text(summary['graph_sha256']) + '</code></p><ul>']
     parts += ['<li><a href="files/' + text(item['file']) + '">' + text(item['role']) + ' source receipt</a>: <code>'
               + text(item['file_sha256']) + '</code></li>' for item in summary['sources']]
     parts += ['</ul><p>' + ' · '.join('<a href="' + text(item['url']) + '" rel="noreferrer">' + text(item['title']) + '</a>'
                                     for item in summary['literature']) + '</p></html>']
+    return ''.join(parts)
+
+
+def _coessentiality_html(coess):
+    """Small optional extension; all scientific numbers are saved aggregates."""
+    text = lambda x: escape(str(x), quote=True)
+    number = lambda x: 'UNKNOWN / undefined' if x is None else format(x, '.6f')
+    envelope = lambda point: ' / '.join(number(point[k]) for k in ('minimum', 'median', 'maximum'))
+    def table(headings, rows):
+        return ('<div style="overflow:auto"><table><tr>' + ''.join('<th>' + text(x) + '</th>' for x in headings)
+            + '</tr>' + ''.join('<tr>' + ''.join('<td>' + text(x) + '</td>' for x in row) + '</tr>' for row in rows)
+            + '</table></div>')
+    arms = ('normalized', 'current', 'historical')
+    labels = ('Normalized source context', 'Current-release eligibility contrast', 'Historical native-xref contrast')
+    parts = ['<h2>' + text(coess['title']) + '</h2><p class=scope>' + text(coess['interpretation']) + '</p>',
+        '<p>' + text(coess['query_genes']) + ' fixed measured-gene queries; ' + text(coess['primary_pairs'])
+        + ' different-chromosome primary pairs; complete N=1–10. Neither source qualification contrast demonstrates prediction improvement.</p>',
+        '<p>' + text(coess['scope']) + '</p><details><summary>Complete primary curves, control ranges and absolute coverage</summary>',
+        '<p>Enrichment is observed shared-context hits divided by query-matched expected hits. Every primary point retains all 92 queries. Opposite query directions are slots, not independent experiments.</p>',
+        table(('N', *labels), [[n] + [number(coess['primary_curves'][a][n-1]['enrichment']) for a in arms] for n in coess['N']])]
+    for treatment, label in zip(arms[1:], labels[1:]):
+        parts += ['<h3>' + text(label) + ': descriptive controls</h3><p>Twenty count-matched and twenty measured-frame degree-preserving draws. Each range is minimum / median / maximum, not a confidence interval.</p>',
+            table(('N', 'Count-matched enrichment', 'Degree-preserving enrichment'), [[n] + [
+                envelope(coess['controls'][treatment][kind][n-1]) for kind in ('count', 'degree')] for n in coess['N']])]
+    parts += ['<h3>Absolute shared-context hit fractions</h3>', table(('N', *labels), [[n] + [
+        number(coess['primary_curves'][a][n-1]['observed_hit_fraction']) for a in arms] for n in coess['N']]),
+        '<details><summary>Absolute hit-fraction ranges for all control draws</summary>',
+        table(('N', 'Current count', 'Current degree', 'Historical count', 'Historical degree'), [[n] + [
+            envelope(coess['controls'][t][k][n-1]['absolute_hit_fraction']) for t in ('current', 'historical')
+            for k in ('count', 'degree')] for n in coess['N']]), '</details></details>',
+        '<details><summary>Frozen identities and diagnostic coverage</summary><p>All ' + text(coess['arm_count'])
+        + ' arms and ' + text(coess['scope_count']) + ' declared scopes remain in the downloadable coess_curves and coess_controls aggregate receipts below. '
+        'Sign-restricted and same-chromosome diagnostics do not replace the primary endpoint. Native pair values and matrix payloads are excluded.</p>',
+        '<p>Original scientific freeze: <code>' + text(coess['original_pre_value_freeze_content_sha256']) + '</code><br>Transport continuation: <code>'
+        + text(coess['transport_repair_content_sha256']) + '</code><br>Native capture: <code>' + text(coess['capture_content_sha256']) + '</code></p>',
+        '<p>' + text(coess['transport_exposure_scope']) + '</p><ul>', *['<li>' + text(x) + '</li>' for x in coess['limitations']], '</ul></details>']
     return ''.join(parts)

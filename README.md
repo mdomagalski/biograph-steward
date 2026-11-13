@@ -29,6 +29,11 @@ whole-graph scientific-accuracy percentage. Current-release and historical
 pathway-context filters showed **no reliable R-GCN improvement over count and
 degree controls**. Original graphs, UNKNOWNs and negative results are preserved.
 
+A separate [inverse-degree context assessment](docs/evaluations/RESOURCE_ALLOCATION_CONTEXT_20261113.md)
+finds an exploratory relative-concentration signal using previously inspected
+pan-cancer coessentiality scores. Absolute affinity usually falls; this does not establish
+prediction or accuracy gains, and it changes no production graph decisions.
+
 Earlier bounded results remain in the [biological assessment](docs/evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md),
 [source-qualification comparison](docs/evaluations/SCIENTIFIC_ACCURACY_ROUND2_20261112.md)
 and [curated-signature assessment](docs/evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md).

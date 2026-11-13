@@ -26,6 +26,16 @@ jobs:
         env:
           PYTHONPATH: .:tests
         run: python -m unittest discover -s tests -p 'evaluation_*.py' -v
+      - name: Check native reference and degree-control mechanics
+        env:
+          PYTHONPATH: .:tests
+        run: >-
+          python -m unittest
+          test_reference_accuracy_go test_reference_accuracy_civic
+          test_reference_accuracy_cornish test_reference_accuracy_design
+          test_reference_accuracy_estimation test_coessentiality_feasibility
+          test_coessentiality_comparison test_coessentiality_resource_allocation
+          test_wiki_utility -v
   go-quality:
     runs-on: ubuntu-22.04
     steps:

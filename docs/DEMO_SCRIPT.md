@@ -3,44 +3,48 @@
 Use the [portable CRC package](DELIVERY.md) only where source access and use are
 authorized. Otherwise use the software-only synthetic walkthrough in
 [START_HERE](../START_HERE.md), explicitly labeling its records as invented.
-Keep the six-slide presentation available for the measured results. No model,
-GPU or cloud session is needed for this saved-data demonstration.
+The [source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
+is the current delivery example when its separately supplied packet is
+available. No model or GPU is needed for saved-data questions. A private AWS
+deployment additionally needs its existing authorized Session Manager tunnel.
 
-1. **Open the question — one minute.** Start the extracted app and open
-   `?run=crc_judge_demo&question=question_judge_focus`. Explain the bounded
-   99-target Pharos cohort. In **Ask & explore**, follow the answer to one source
-   path. Candidate evidence is visible; it is not locally accepted by default.
-   A missing match does not establish absence outside this saved scope.
-2. **Inspect a biological distinction — one minute.** In **Evidence & sources**,
-   choose **Regulation and experimental context** and **Inhibitory BRAF
-   phosphorylation**. The **Sites & context** view shows BRAF S614 phosphate
-   addition separately from the reported reduction in activity. Follow the
-   PMID link and inspect HEK-293T context. Source coordinates and participant
-   identifiers do not verify a canonical sequence or experimental isoform.
-   Filtering to an incompatible cell context gives no matching record; it
-   does not refute the observation.
-3. **Show evidence quality — one minute.** Inspect the source passport, recorded
-   assay conditions and review state. Repeated source records are not separate
-   experiments. The supplementary TAS1R2/TAS1R3 source-reuse slide shows one
-   exact record shared through STRING/IntAct; that is a separate taste-receptor
-   example, not evidence from the CRC workspace. Stable-ID qualification also
-   leaves the 13 unsupported historical target labels unresolved.
-4. **Present the results — one minute.** Use the presentation's fixed
-   curated-signature comparison: scored target cases increase from 31 to 39
-   out of 105; study-weighted normalized rank improves from 0.681 to 0.576.
-   Explain the main coverage gain, mixed shared-target ranking, unresolved
-   source reuse and technical-replay boundary. Same-learner GO/Reactome
-   comparisons found no consistent benefit. Whole-graph accuracy and
-   automatic scientific pruning remain unproven. These assessments are
-   supporting comparisons, not official challenge scores or this CRC graph's
-   validated treatment-response predictions.
-5. **Show the handoff — one minute.** In **Export**, distinguish the current
-   answer diagram from the entire workspace. Locate the complete retained
-   graph, one disposition per original edge and preserved original baseline.
-   All undecided edges remain retained. Show the software-only and local data
-   archives separately, including the source-permission boundary. Close with
-   the delivered scope: guided construction, inspectable evidence, review and
-   reproducible export; optional model planning remains experimental.
+1. **Open the question — one minute.** Open the supplied
+   `source_faithful_workspace_20261113` run. In **Ask & explore**, choose
+   **Qualified WikiPathways source context**, TP53 and eight results. Keep native
+   support selected and find the source paths. The scope is 99 protein products
+   from a frozen Pharos319 colorectal cohort. Candidate review status remains
+   visible; an empty result never means biological absence.
+2. **Follow the graph — one minute.** Select a TP53 path to AKT1 or ATM. Both
+   proteins point to one exact cited pathway model. Explain that shared model
+   context does not assert direct protein binding. Open the native source
+   passport and distinguish a literal protein xref from a gene-level match.
+   The original assertion IDs, evidence and review states remain accessible.
+3. **Verify the source — one minute.** Inspect the full pathway version, archive
+   and original GPML download. A current redirect is not the historical model.
+   Model-wide references and element-attached references have different scope;
+   a citation is not automatically evidence for every protein. Explain the
+   recovered 253/308 exact revisions and the unresolved remainder. Five
+   historically encoded connections excluded by a current-only view are kept.
+4. **Present the assessment — one minute.** In **Compare & assess**, open the
+   supplied complete scientific assessment. Show 373/4,078 GO assertions with
+   compatible experimental curation and 32/100 disease assertions supported
+   by the declared CRC genomic cohort. Their UNKNOWNs stay visible. The fixed
+   R-GCN and binary functional comparisons did not establish improvement over
+   controls. The separately reported inverse-degree result is exploratory
+   relative concentration with a smaller background, not validated accuracy,
+   recall or biological pruning. These are local assessments, not official
+   challenge scores.
+5. **Show the handoff — one minute.** In **Export**, download the complete
+   workspace ZIP. The answer diagram is a question-specific view; the workspace
+   retains 16,687 evidence rows. Locate `source_retained_package/retained_graph.json`,
+   `edge_dispositions.jsonl` beside it and the preserved `baseline_packet`.
+   All abstained rows stay retained. The 298 excluded rows use obsolete GO
+   identifiers in the pinned ontology; they are not 298 proven biological errors.
+   Native source terms remain separate from the MIT software license.
+
+The existing `crc_judge_demo` route and SIGNOR BRAF-site explanation remain
+supplementary demonstrations. The refreshed scientific results should take
+precedence over earlier presentation snapshots until those slides are updated.
 
 The private AWS/Neptune mirror and NVIDIA integration can be described in
 questions. They are implemented supporting capabilities, not prerequisites for

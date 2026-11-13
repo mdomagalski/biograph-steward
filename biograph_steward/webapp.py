@@ -3,6 +3,7 @@ from __future__ import annotations
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from html import escape
 from io import BytesIO
+import gzip
 import json
 import os
 from pathlib import Path
@@ -18,6 +19,25 @@ from datetime import datetime, timezone
 from .client import PharosClient, ENDPOINT, PharosError
 from .runtime import AccessPolicy, BrowserSessions, runs_directory, cache_directory
 from . import __version__
+
+
+def _accepts_gzip(headers):
+    """Require explicit positive gzip weight (RFC9110 12.4.2/12.5.3).
+
+    Wildcards do not opt this application into compression. Any explicit zero
+    weight or malformed gzip entry conservatively retains the identity response.
+    """
+    weights = []
+    for field in headers.get_all('Accept-Encoding', []):
+        for member in field.split(','):
+            if member.split(';', 1)[0].strip().lower() != 'gzip':
+                continue
+            match = re.fullmatch(r'\s*gzip\s*(?:;\s*q\s*=\s*(0(?:\.[0-9]{0,3})?|1(?:\.0{0,3})?)\s*)?',
+                                 member, re.IGNORECASE)
+            if match is None:
+                return False
+            weights.append(float(match.group(1) or '1'))
+    return bool(weights) and all(weight > 0 for weight in weights)
 
 
 def verify_saved_refresh(folder: Path) -> None:
@@ -213,9 +233,20 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             self.end_headers()
 
         def reply(self, payload: bytes, status: int = 200, content_type: str = "application/json", filename: str | None = None, *, content_security_policy: str | None = None):
+            negotiable = (not filename and len(payload) >= 65_536
+                and content_type.split(';', 1)[0].strip().lower() in {'application/json', 'text/html'})
+            compressed = False
+            if negotiable and _accepts_gzip(self.headers):
+                encoded = gzip.compress(payload, compresslevel=1, mtime=0)
+                if len(encoded) < len(payload):
+                    payload, compressed = encoded, True
             self.send_response(status)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(payload)))
+            if negotiable:
+                self.send_header('Vary', 'Accept-Encoding')
+            if compressed:
+                self.send_header('Content-Encoding', 'gzip')
             self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header("Cache-Control", "no-store")
             # no-referrer turns native form POST origins into "null" in browsers,
@@ -298,7 +329,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             assessment = re.fullmatch(r'/api/scientific-assessment/([A-Za-z0-9_-]{1,80})'
                 r'(?:/(report|files/(?:sources/[a-z_]+\.json|README\.txt)))?/?', path)
             if assessment:
-                from .scientific_assessment import load_publication, PUBLIC_FILES
+                from .scientific_assessment import load_publication, ALL_PUBLIC_FILES as PUBLIC_FILES
                 identifier, action = assessment.groups()
                 folder = runs_dir/identifier
                 if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:

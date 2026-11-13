@@ -17,10 +17,42 @@
     const body = add(t, 'tbody');
     rows.forEach(values => { const row = add(body, 'tr'); values.forEach(value => add(row, 'td', value)); });
   }
+  function renderCoessentiality(parent, result) {
+    add(parent, 'h4', result.title);
+    add(parent, 'p', result.interpretation, 'warning');
+    add(parent, 'p', result.query_genes + ' fixed measured-gene queries; ' + result.primary_pairs +
+      ' different-chromosome primary pairs; complete N=1–10. Neither source qualification contrast demonstrates prediction improvement.', 'small');
+    add(parent, 'p', result.scope, 'small');
+    const curves = add(parent, 'details'); add(curves, 'summary', 'Complete primary curves, control ranges and absolute coverage');
+    add(curves, 'p', 'Enrichment is observed shared-context hits divided by query-matched expected hits. Every primary point retains all 92 queries. Opposite query directions are slots, not independent experiments.', 'small');
+    const arms = ['normalized', 'current', 'historical'];
+    const labels = ['Normalized source context', 'Current-release eligibility contrast', 'Historical native-xref contrast'];
+    const range = point => ['minimum', 'median', 'maximum'].map(key => point[key] === null ? 'UNKNOWN / undefined' : metric(point[key])).join(' / ');
+    table(curves, ['N', ...labels], result.N.map(n => [n, ...arms.map(arm => metric(result.primary_curves[arm][n-1].enrichment))]));
+    ['current', 'historical'].forEach((treatment, index) => {
+      add(curves, 'h4', labels[index+1] + ': descriptive controls');
+      add(curves, 'p', 'Twenty count-matched and twenty measured-frame degree-preserving draws. Ranges are minimum / median / maximum, not confidence intervals.', 'small');
+      table(curves, ['N', 'Count-matched enrichment', 'Degree-preserving enrichment'], result.N.map(n =>
+        [n, ...['count', 'degree'].map(kind => range(result.controls[treatment][kind][n-1]))]));
+    });
+    add(curves, 'h4', 'Absolute shared-context hit fractions');
+    table(curves, ['N', ...labels], result.N.map(n => [n, ...arms.map(arm => metric(result.primary_curves[arm][n-1].observed_hit_fraction))]));
+    const fractions = add(curves, 'details'); add(fractions, 'summary', 'Absolute hit-fraction ranges for all control draws');
+    table(fractions, ['N', 'Current count', 'Current degree', 'Historical count', 'Historical degree'], result.N.map(n =>
+      [n, ...['current', 'historical'].flatMap(t => ['count', 'degree'].map(k => range(result.controls[t][k][n-1].absolute_hit_fraction)))]));
+    const proof = add(parent, 'details'); add(proof, 'summary', 'Frozen identities and diagnostic coverage');
+    add(proof, 'p', 'All ' + result.arm_count + ' arms and ' + result.scope_count + ' declared scopes remain in the downloadable coess_curves and coess_controls aggregate receipts below. Sign-restricted and same-chromosome diagnostics do not replace the primary endpoint. Native pair values and matrix payloads are excluded.', 'small');
+    add(proof, 'p', 'Original scientific freeze: ' + result.original_pre_value_freeze_content_sha256, 'small');
+    add(proof, 'p', 'Transport continuation: ' + result.transport_repair_content_sha256, 'small');
+    add(proof, 'p', 'Native capture: ' + result.capture_content_sha256, 'small');
+    add(proof, 'p', result.transport_exposure_scope, 'small');
+    const limits = add(proof, 'ul'); result.limitations.forEach(text => add(limits, 'li', text));
+  }
   function render(container, summary, options = {}) {
     if (typeof container === 'string') container = document.querySelector(container);
     if (!container) throw new Error('Scientific assessment container is unavailable.');
-    if (summary?.format !== 'biograph-steward.scientific-assessment-publication.v1.summary')
+    if (!['biograph-steward.scientific-assessment-publication.v1.summary',
+          'biograph-steward.scientific-assessment-publication.v2.summary'].includes(summary?.format))
       throw new Error('Unsupported scientific assessment snapshot.');
     container.replaceChildren();
     add(container, 'h3', summary.title);
@@ -48,6 +80,7 @@
       table(seeds, ['Feature view', 'Seed', 'AP', 'AUROC'], experiment.arms.flatMap(arm => experiment.seeds.map(seed => [arm.label, seed, metric(arm.AP_by_seed[String(seed)]), metric(arm.AUROC_by_seed[String(seed)])])));
     });
     add(container, 'p', im.scope, 'small'); add(container, 'p', im.decision, 'small');
+    if (summary.coessentiality) renderCoessentiality(container, summary.coessentiality);
     const limits = add(container, 'ul'); summary.remaining_gaps.forEach(text => add(limits, 'li', text));
     const proof = add(container, 'details'); add(proof, 'summary', 'Source receipts, hashes and primary methods');
     add(proof, 'p', 'Graph: ' + summary.graph_sha256, 'small');

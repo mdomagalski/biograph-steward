@@ -18,11 +18,17 @@ and a published CRC genomic cohort provide bounded positive-support coverage,
 not negative labels or an independent whole-graph accuracy estimate. These
 results replace the earlier projection's untested-utility boundary below.
 
-Finish hosted deployment, the fixed functional comparison and release
-presentation. Preserve negative results; do not tune the production graph to
-win on the consumed assay. Remaining scientific work concerns suitable
-independent labels, source lineage and prospective utility, rather than
-another model or graph-store abstraction.
+The fixed [functional comparison](evaluations/COESSENTIALITY_FUNCTIONAL_CONCORDANCE_20261113.md)
+is complete. Its binary result is negative; a separately frozen
+[inverse-degree weighting](evaluations/RESOURCE_ALLOCATION_CONTEXT_20261113.md)
+has an exploratory relative-concentration signal with lower absolute affinity
+at most points. It is not a fresh prediction/accuracy result or a production
+pruning policy. A [distinct genetic-interaction reference](evaluations/HORLBECK_GI_REFERENCE_FEASIBILITY_20261113.md)
+covers too few cohort genes for confirmation.
+
+Finish hosted deployment and release presentation. Remaining scientific work
+concerns suitable independent labels, source lineage and prospective utility,
+rather than another model or graph-store abstraction.
 
 ## November 12 checkpoint
 

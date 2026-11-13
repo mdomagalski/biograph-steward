@@ -139,6 +139,24 @@ are not biological validation. See the
 denominators. The frozen source remains **Pharos319**, with its original snapshot
 date; the new native evidence is versioned separately.
 
-Further functional evaluation and hosted deployment are recorded separately.
-Whole-graph biological precision, prospective prediction gains and clinical
-use remain unestablished.
+The [functional-concordance comparison](COESSENTIALITY_FUNCTIONAL_CONCORDANCE_20261113.md)
+reuses published pan-cancer coessentiality scores and all count/degree controls.
+Its binary-context result is negative. A subsequent, explicitly exploratory
+[resource-allocation weighting](RESOURCE_ALLOCATION_CONTEXT_20261113.md)
+shows higher relative concentration than baseline and matched controls across
+the fixed curve; absolute affinity usually falls. Independent arithmetic
+reproduction validates the calculations, not fresh biological confirmation.
+The app's v2 assessment shows the complete original functional comparison;
+the weighted extension remains a separate research report and does not change
+protein-level app ordering or pruning. Its evaluated unit is 92 measured
+genes, while the app retains 99 protein products.
+
+Saved native/readable exports are checked against the source-replayed answer
+before serving. A bounded process-local reader cache still hashes every
+workspace byte and relevant reader code on each read; it avoids repeated
+semantic replay only for identical inputs and returns fresh objects. Standard
+HTTP gzip reduces the large real answer's wire bytes by 88.6%, with identical
+decompressed content; local latency remains dominated by verification.
+
+Hosted deployment is recorded separately. Whole-graph biological precision,
+prospective prediction gains and clinical use remain unestablished.
