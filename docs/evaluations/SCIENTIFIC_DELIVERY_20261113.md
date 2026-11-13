@@ -20,6 +20,11 @@ show a transferable predictive gain or independent whole-graph accuracy.
   question joins both proteins through the same cited model. It includes native
   GPML downloads, separately scoped references and source status. Shared model
   context is not displayed as a newly established physical interaction.
+- **Direct inspection of curator and mechanistic context.** The existing source
+  guide now opens exact complete CIViC profiles for their Assertions and exact
+  Reactome records for event/complex details. Current lookup context remains
+  separate from historical references and independent evidence counts; clinical
+  status, whole-regimen exceptions and species inference stay explicit.
 - **Private production use.** A complete reconstruction of the corrected Neptune
   dataset matches the retained graph. The app's native-supported TP53 answer,
   downloads, current-GO lookup and real database inspection passed across an
@@ -85,11 +90,12 @@ olfactory-control genes; the Horlbeck genetic-interaction panel has inadequate
 compatible coverage. No unsupported assay conversion or benchmark substitution
 was made simply to obtain a positive result.
 
-The next defensible interpretation increment is **native reaction/complex roles
-and context from already represented Reactome records**. Existing Content Service
+The existing source guide now supplies a bounded route to **native
+reaction/complex roles and context from already represented Reactome records**. Existing Content Service
 and BioPAX tooling can support this without treating the same source as new
-independent evidence. It requires a bounded source question and explicit release
-lineage; it is not a justified new pruning rule or a promised prediction gain.
+independent evidence. Any later automatic extraction still requires a bounded source question and
+explicit release lineage; the lookup is not a new pruning rule or a demonstrated
+prediction gain.
 
 ## Practical limits
 

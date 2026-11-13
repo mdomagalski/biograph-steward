@@ -25,6 +25,19 @@ GO_CONTEXT_NOTE = ("QuickGO looks up this full protein identifier and exact GO t
                    "codes and assigning sources, which may include NOT-qualified records. This separate "
                    "lookup does not identify the historical Pharos record or fill in its unknown relation, "
                    "negation or extensions.")
+CIVIC_CONTEXT_NOTE = ("The current CIViC profile provides Evidence Items and Assertions across diseases "
+                      "and therapies. The page is not restricted to accepted Assertions. "
+                      "Keep the complete molecular profile intact, including complex profiles; check "
+                      "editorial status, disease, the whole therapy set, variant origin and the full "
+                      "clinical description, including combination exclusions. Current records do not "
+                      "automatically match or refute the historical Evidence Item, change local review "
+                      "or establish independent corroboration.")
+REACTOME_CONTEXT_NOTE = ("Open the current Reactome Pathway Browser and select the event or complex to "
+                         "inspect reaction and complex roles, compartment and supporting references, "
+                         "and check whether the event was inferred from another species. "
+                         "Shared pathway membership does not identify a protein's "
+                         "specific role. Current contents do not verify the historical imported release "
+                         "or provide new independent corroboration; the original source link is preserved.")
 
 
 def _text(value):
@@ -71,6 +84,34 @@ def _go_context_url(edge, record):
         return None
     return "https://www.ebi.ac.uk/QuickGO/annotations?" + urlencode(
         (("geneProductId", subject), ("goId", term), ("goUsage", "exact")))
+
+
+def _civic_context_url(edge, record):
+    """Open the exact native profile, without splitting or matching claims."""
+    profile = record.get("molecularProfile")
+    if (edge.get("record_kind") != "variant_therapy_response"
+            or edge.get("primary_source_raw") != "CIViC" or not isinstance(profile, dict)):
+        return None
+    identifier = profile.get("id")
+    if (type(identifier) is not int or identifier <= 0
+            or edge.get("subject") != "CIViC.molecularprofile:" + str(identifier)):
+        return None
+    path = "/molecular-profiles/" + str(identifier)
+    url = "https://civicdb.org" + path
+    if profile.get("link") is not None and profile["link"] not in (path, url):
+        return None
+    return url
+
+
+def _reactome_context_url(edge, record):
+    """Preserve an exact unversioned human stable ID; never strip a suffix."""
+    identifier = record.get("sourceID")
+    if (edge.get("record_kind") != "pathway_membership"
+            or edge.get("primary_source_raw") != "Reactome" or record.get("type") != "Reactome"
+            or not isinstance(identifier, str) or re.fullmatch(r"R-HSA-[1-9][0-9]*", identifier) is None
+            or edge.get("object") != "REACT:" + identifier):
+        return None
+    return "https://reactome.org/content/detail/" + identifier
 
 
 def _source_path(run_id, locator):
@@ -216,12 +257,19 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
             lid = add_link(publication, _publication(publication), "publication")
             if lid: source["link_ids"].append(lid)
         record = edge.get("evidence_record") or {}
-        context_url = _go_context_url(edge, record)
-        if context_url:
-            new_context = (context_url, "context_lookup") not in link_index
-            add_link("Current QuickGO lookup for this protein and exact GO term", context_url, "context_lookup")
-            if new_context:
-                missing.append({"field": "go_annotation_context", "edge_id": edge["id"], "note": GO_CONTEXT_NOTE})
+        for context_url, label, field, note in (
+            (_go_context_url(edge, record), "Current QuickGO lookup for this protein and exact GO term",
+             "go_annotation_context", GO_CONTEXT_NOTE),
+            (_civic_context_url(edge, record), "Current CIViC profile and Assertions",
+             "civic_profile_context", CIVIC_CONTEXT_NOTE),
+            (_reactome_context_url(edge, record), "Current Reactome pathway context",
+             "reactome_pathway_context", REACTOME_CONTEXT_NOTE),
+        ):
+            if context_url:
+                new_context = (context_url, "context_lookup") not in link_index
+                add_link(label, context_url, "context_lookup")
+                if new_context:
+                    missing.append({"field": field, "edge_id": edge["id"], "note": note})
         for label, url in (("Source-supplied record link", record.get("url")),
                            ("Source-supplied reference", edge.get("reference_raw"))):
             if isinstance(url, str) and ":" in url and not _publication(url):

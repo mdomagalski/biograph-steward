@@ -6,11 +6,13 @@ from urllib.parse import parse_qs, urlsplit
 
 from biograph_steward.assertions import build_assertions
 from biograph_steward.graph import build_graph
-from biograph_steward.inspection import _go_context_url, inspect_selection
+from biograph_steward.inspection import (
+    _civic_context_url, _go_context_url, _reactome_context_url, inspect_selection,
+)
 from biograph_steward.intact_evidence import build_evidence as intact_evidence
 from biograph_steward.lambourne_evidence import build_evidence as assay_evidence
 from biograph_steward.questions import graph_basis
-from test_civic import fixture as civic_fixture
+from test_civic import CivicAPI, fixture as civic_fixture
 from test_cohort_graph import fixture as cohort_fixture
 from test_intact_evidence import fixture as intact_fixture
 from test_lambourne_evidence import fixture as assay_fixture
@@ -32,6 +34,185 @@ def intact_graph():
 
 
 class InspectionTests(unittest.TestCase):
+    def test_civic_current_profile_preserves_complex_scope_and_original_references(self):
+        api = CivicAPI()
+        profile = deepcopy(api.rows[0]["molecularProfile"])
+        profile.update(isComplex=True, isMultiVariant=True, rawName="#VID81 AND #VID82")
+        other = deepcopy(profile["variants"][0])
+        other.update(id=82, name="Second invented variant")
+        profile["variants"].append(other)
+        for row in api.rows:
+            row["molecularProfile"] = deepcopy(profile)
+        pharos, civic = civic_fixture(api)
+        graph = build_graph(pharos, civic_snapshot=civic)
+        edge = next(e for e in graph["edges"] if e["record_kind"] == "variant_therapy_response")
+        before = deepcopy(graph)
+        view = inspect_selection(graph, edge["id"])
+        lookup = next(link for link in view["links"] if link["kind"] == "context_lookup")
+        self.assertEqual(lookup["url"], "https://civicdb.org/molecular-profiles/81")
+        self.assertEqual(lookup["label"], "Current CIViC profile and Assertions")
+        context = next(q for q in view["questions"] if q["id"] == "context")
+        trace = next(q for q in view["questions"] if q["id"] == "source-trace")
+        self.assertIn(lookup["id"], context["link_ids"])
+        self.assertNotIn(lookup["id"], trace["link_ids"])
+        self.assertNotIn(lookup["id"], view["source_records"][0]["link_ids"])
+        for phrase in ("Evidence Items and Assertions", "not restricted to accepted Assertions",
+                       "across diseases and therapies", "complex profiles", "editorial status",
+                       "whole therapy set", "variant origin", "combination exclusions",
+                       "automatically match or refute", "change local review", "independent corroboration"):
+            self.assertIn(phrase, context["answer"])
+        self.assertEqual(view["source_records"][0]["reference_status"], "references_supplied")
+        self.assertEqual(edge["subject"], "CIViC.molecularprofile:81")
+        self.assertEqual(edge["evidence_record"]["molecularProfile"]["rawName"], "#VID81 AND #VID82")
+        self.assertEqual(view["review"]["state"], "candidate")
+        self.assertEqual((view["read_only"], view["source_fetches"], view["model_calls"], view["actions"]),
+                         (True, 0, 0, []))
+        self.assertEqual(graph, before)
+
+    def test_civic_lookup_requires_native_profile_identity_and_agreeing_optional_link(self):
+        edge = {"record_kind": "variant_therapy_response", "primary_source_raw": "CIViC",
+                "subject": "CIViC.molecularprofile:81"}
+        for profile in ({"id": 81}, {"id": 81, "link": None},
+                        {"id": 81, "link": "/molecular-profiles/81"},
+                        {"id": 81, "link": "https://civicdb.org/molecular-profiles/81"}):
+            with self.subTest(profile=profile):
+                self.assertEqual(_civic_context_url(edge, {"molecularProfile": profile}),
+                                 "https://civicdb.org/molecular-profiles/81")
+        for identifier in (True, False, 0, -1, 81.0, "81", "081", None):
+            with self.subTest(identifier=identifier):
+                self.assertIsNone(_civic_context_url(edge, {"molecularProfile": {"id": identifier}}))
+        for link in ("", "/molecular-profiles/82", "/variants/81", "/molecular-profiles/081",
+                     "https://civicdb.org/molecular-profiles/81?status=Accepted",
+                     "https://civicdb.org/molecular-profiles/81#assertions",
+                     "https://civicdb.org.evil.example/molecular-profiles/81",
+                     "http://civicdb.org/molecular-profiles/81", "/molecular-profiles/81/", True):
+            with self.subTest(link=link):
+                self.assertIsNone(_civic_context_url(edge, {"molecularProfile": {"id": 81, "link": link}}))
+        for field, value in (("subject", "CIViC.molecularprofile:82"), ("subject", "CIViC.variant:81"),
+                             ("subject", "CIViC.molecularprofile:081"), ("primary_source_raw", "OTHER"),
+                             ("record_kind", "protein_interaction")):
+            with self.subTest(field=field, value=value):
+                self.assertIsNone(_civic_context_url({**edge, field: value}, {"molecularProfile": {"id": 81}}))
+        for profile in (None, [], "81"):
+            self.assertIsNone(_civic_context_url(edge, {"molecularProfile": profile}))
+
+    def test_civic_parallel_records_share_lookup_without_merging_evidence_or_notes(self):
+        api = CivicAPI()
+        api.rows = [api.row(100, "RESISTANCE"), api.row(101, "RESISTANCE")]
+        pharos, civic = civic_fixture(api)
+        graph = build_graph(pharos, civic_snapshot=civic)
+        assertion = next(a for a in graph["assertions"] if a["kind"] == "variant_therapy_response")
+        self.assertEqual(len(assertion["evidence_edge_ids"]), 2)
+        before = deepcopy(graph)
+        view = inspect_selection(graph, assertion["id"])
+        self.assertEqual(len(view["source_records"]), 2)
+        self.assertEqual(sum(link["kind"] == "context_lookup" for link in view["links"]), 1)
+        self.assertEqual(sum(row["field"] == "civic_profile_context" for row in view["missing_context"]), 1)
+        self.assertEqual(sum(link["kind"] == "source_record" for link in view["links"]), 2)
+        self.assertEqual(view["reuse"]["independent_evidence_count"], None)
+        self.assertEqual(graph, before)
+
+    def test_civic_mismatched_lookup_is_omitted_without_changing_original_reference_status(self):
+        pharos, civic = civic_fixture()
+        original = build_graph(pharos, civic_snapshot=civic)
+        original_edge = next(e for e in original["edges"] if e["record_kind"] == "variant_therapy_response")
+        original_view = inspect_selection(original, original_edge["id"])
+        expected_sources = original_view["source_records"]
+        expected_links = {link["id"]: (link["kind"], link["url"]) for link in original_view["links"]}
+        for field, value in (("subject", "CIViC.molecularprofile:82"),
+                             ("profile_id", True), ("profile_id", "81"),
+                             ("profile_link", "/molecular-profiles/82"),
+                             ("primary_source_raw", "OTHER")):
+            with self.subTest(field=field, value=value):
+                graph = deepcopy(original)
+                edge = next(e for e in graph["edges"] if e["id"] == original_edge["id"])
+                if field == "profile_id":
+                    edge["evidence_record"]["molecularProfile"]["id"] = value
+                elif field == "profile_link":
+                    edge["evidence_record"]["molecularProfile"]["link"] = value
+                else:
+                    edge[field] = value
+                before = deepcopy(graph)
+                view = inspect_selection(graph, edge["id"])
+                self.assertFalse(any(link["kind"] == "context_lookup" for link in view["links"]))
+                self.assertEqual([s["reference_status"] for s in view["source_records"]],
+                                 [s["reference_status"] for s in expected_sources])
+                links = {link["id"]: (link["kind"], link["url"]) for link in view["links"]}
+                self.assertEqual([[links[lid] for lid in s["link_ids"]] for s in view["source_records"]],
+                                 [[expected_links[lid] for lid in s["link_ids"]] for s in expected_sources])
+                self.assertEqual((view["source_fetches"], view["model_calls"]), (0, 0))
+                self.assertEqual(graph, before)
+
+    def test_reactome_current_lookup_preserves_old_source_link_and_distinct_context_scope(self):
+        snapshot = cohort_fixture()
+        record = snapshot["targets"][0]["pathways"][0]
+        old_url = "https://idg.reactome.org/PathwayBrowser/#/" + record["sourceID"]
+        record = {**record, "url": old_url}
+        snapshot["targets"][0]["pathways"][0] = record
+        graph = build_graph(resign(snapshot))
+        edge = next(e for e in graph["edges"] if e["record_kind"] == "pathway_membership"
+                    and e["evidence_record"].get("url") == old_url)
+        before = deepcopy(graph)
+        view = inspect_selection(graph, edge["id"])
+        lookup = next(link for link in view["links"] if link["kind"] == "context_lookup")
+        self.assertEqual(lookup["url"], "https://reactome.org/content/detail/" + record["sourceID"])
+        self.assertTrue(any(link["url"] == old_url and link["kind"] == "source_reference"
+                            for link in view["links"]))
+        context = next(q for q in view["questions"] if q["id"] == "context")
+        trace = next(q for q in view["questions"] if q["id"] == "source-trace")
+        self.assertIn(lookup["id"], context["link_ids"])
+        self.assertNotIn(lookup["id"], trace["link_ids"])
+        self.assertNotIn(lookup["id"], view["source_records"][0]["link_ids"])
+        for phrase in ("reaction and complex roles", "compartment", "inferred from another species",
+                       "supporting references", "does not identify a protein's specific role",
+                       "do not verify the historical imported release", "independent corroboration"):
+            self.assertIn(phrase, context["answer"])
+        self.assertEqual((view["read_only"], view["source_fetches"], view["model_calls"], view["actions"]),
+                         (True, 0, 0, []))
+        self.assertEqual(graph, before)
+
+    def test_reactome_lookup_does_not_fill_missing_references_or_repeat_parallel_notes(self):
+        snapshot = cohort_fixture()
+        record = snapshot["targets"][0]["pathways"][0]
+        snapshot["targets"][0]["pathways"].append({**record, "pwid": 555})
+        graph = build_graph(resign(snapshot))
+        assertion = next(a for a in graph["assertions"] if a["kind"] == "pathway_membership"
+                         and len(a["evidence_edge_ids"]) == 2)
+        before = deepcopy(graph)
+        view = inspect_selection(graph, assertion["id"])
+        self.assertEqual(len(view["source_records"]), 2)
+        self.assertEqual(sum(link["kind"] == "context_lookup" for link in view["links"]), 1)
+        self.assertEqual(sum(row["field"] == "reactome_pathway_context" for row in view["missing_context"]), 1)
+        self.assertTrue(all(row["reference_status"] == "primary_reference_not_supplied"
+                            and row["link_ids"] == [] for row in view["source_records"]))
+        self.assertFalse(any(link["kind"] == "publication" for link in view["links"]))
+        self.assertEqual(sum(row["field"] == "primary_reference" for row in view["missing_context"]), 2)
+        self.assertEqual(graph, before)
+
+    def test_reactome_lookup_rejects_alias_versions_nonhuman_and_source_mismatches(self):
+        edge = {"record_kind": "pathway_membership", "primary_source_raw": "Reactome",
+                "object": "REACT:R-HSA-1"}
+        record = {"type": "Reactome", "sourceID": "R-HSA-1"}
+        self.assertEqual(_reactome_context_url(edge, record), "https://reactome.org/content/detail/R-HSA-1")
+        for identifier in ("R-HSA-0", "R-HSA-01", "R-HSA-1.2", "R-MMU-1", "REACT:1",
+                           "R-HSA-1\n", " R-HSA-1", "R-HSA-1?species=9606", 1, None):
+            with self.subTest(identifier=identifier):
+                self.assertIsNone(_reactome_context_url({**edge, "object": "REACT:" + str(identifier)},
+                                                       {**record, "sourceID": identifier}))
+        for field, value in (("object", "REACT:R-HSA-2"), ("object", "R-HSA-1"),
+                             ("primary_source_raw", "STRINGDB,Reactome"), ("primary_source_raw", "reactome"),
+                             ("record_kind", "protein_interaction")):
+            with self.subTest(field=field, value=value):
+                self.assertIsNone(_reactome_context_url({**edge, field: value}, record))
+        self.assertIsNone(_reactome_context_url(edge, {**record, "type": "WikiPathways"}))
+        graph = build_graph(cohort_fixture())
+        native = next(e for e in graph["edges"] if e["record_kind"] == "pathway_membership")
+        native["object"] = "REACT:R-HSA-999"
+        before = deepcopy(graph)
+        self.assertFalse(any(link["kind"] == "context_lookup"
+                             for link in inspect_selection(graph, native["id"])["links"]))
+        self.assertEqual(graph, before)
+
     def test_go_current_lookup_is_exact_and_not_a_historical_primary_reference(self):
         graph = build_graph(cohort_fixture())
         edge = next(e for e in graph["edges"] if e["record_kind"] == "go_annotation")

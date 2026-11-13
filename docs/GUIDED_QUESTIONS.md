@@ -77,3 +77,32 @@ The saved 99-protein colorectal adenocarcinoma cohort yields **76 inspectable pr
 Tests cover exact disease scope, rejection of membership-only/context-generalized paths, acceptance of every path assertion, reverse PPI lookup, shared-path witnesses, bounded ordering, citation resolution, ambiguity, unknown coverage, snapshot/review trace changes, immutable exports, HTML escaping, API validation and saved-answer integrity. Browser QA verifies candidate exploration, compact summaries, citation-to-passport navigation and saved-question reopening. An explicitly synthetic reviewed path verifies accepted-only output; changing one assertion to provisional clears the answer and removes the path from the accepted result. No live biomedical assertion was accepted by these checks.
 
 The subsequent [CIViC increment](CIVIC_EVIDENCE.md) implements a separate molecular-profile/therapy response template with qualified conditions and overlap accounting. The protein-neighborhood template remains unchanged in scientific scope. Use the [current build plan](BUILD_PLAN.md) for remaining work; historical checkpoint recommendations do not define a new experiment.
+
+
+## Current source context, separate from historical support
+
+In **Evidence & sources → Guided source inspection**, “What context is missing
+or should I check?” now offers exact-ID lookups in already represented sources.
+The app builds these links from matching saved identifiers; it performs no live
+fetch or model call, changes no graph or review, and keeps the original source
+links and reference status intact.
+
+| Saved source | Current inspection route | Check before interpreting |
+|---|---|---|
+| GO annotation | QuickGO for the full protein ID and exact GO term | Evidence, NOT, relation, extensions and product forms; a current row is not automatically the historical Pharos row |
+| CIViC response Evidence Item | The complete native molecular-profile page, including its Evidence Items and Assertions | Editorial status, disease, full therapy set, origin and clinical exceptions; the page is not restricted to accepted Assertions and spans other contexts |
+| Reactome pathway membership | The official current stable-ID detail page and event browser | Reaction/complex roles, compartment, whether an event was inferred from another species, and native references |
+
+Complex CIViC profiles remain whole. A related Assertion cannot automatically
+support or refute an old Evidence Item, especially when a combination-treatment
+exclusion changes applicability. Reactome contents are current context, not
+proof of a historical imported revision or new independent corroboration.
+Mismatched identifiers, aliases and unverified Reactome version suffixes do not
+produce a repaired lookup.
+
+The CIViC route follows the source's documented
+[molecular-profile summary](https://docs.civicdb.org/en/latest/model/evidence/molecular_profile.html)
+and its native-ID-filtered Assertion table. Reactome's
+[Details Panel guide](https://reactome.org/userguide/details-panel)
+describes the native event context. These source portals provide further
+inspection, not a new correctness score or treatment recommendation.
