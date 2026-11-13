@@ -5,7 +5,7 @@ const workspaceSuffix={data:'Data',ask:'Ask',evidence:'Evidence',compare:'Compar
 let workspaceView='data',workspaceLoaded=false,inspectionRequest=0,pathRequest=0;
 let neptuneRequest=0,neptuneStatusRequest=0,neptuneConfigured=false;
 function workspaceHashTarget(){try{return $(decodeURIComponent(location.hash.slice(1)));}catch(_){return null;}}
-function showWorkspaceView(name,{focus=false,persist=true}={}){
+function showWorkspaceView(name,{focus=false,persist=true,scroll=false}={}){
   if(!workspaceNames.includes(name))return;
   const button=$('workspaceTab'+workspaceSuffix[name]);
   if(button.disabled)return;
@@ -17,6 +17,7 @@ function showWorkspaceView(name,{focus=false,persist=true}={}){
   }
   if(persist){const url=new URL(location.href);url.searchParams.set('view',name);history.replaceState(null,'',url.pathname+url.search+url.hash);}
   if(focus)button.focus();
+  if(scroll)$('workspace'+workspaceSuffix[name]).scrollIntoView({block:'start'});
 }
 function revealWorkspaceTarget(target){
   if(!target)return;
@@ -37,7 +38,7 @@ function initializeWorkspaceNavigation(){
   $('workspaceContext').append($('results'));
   const tabs=workspaceNames.map(key=>$('workspaceTab'+workspaceSuffix[key]));
   for(const button of tabs){
-    button.onclick=()=>showWorkspaceView(button.dataset.workspace);
+    button.onclick=()=>showWorkspaceView(button.dataset.workspace,{scroll:true});
     button.addEventListener('keydown',event=>{
       const enabled=tabs.filter(tab=>!tab.disabled),index=enabled.indexOf(button);
       let next;
@@ -45,7 +46,7 @@ function initializeWorkspaceNavigation(){
       if(event.key==='ArrowLeft')next=enabled[(index+enabled.length-1)%enabled.length];
       if(event.key==='Home')next=enabled[0];
       if(event.key==='End')next=enabled[enabled.length-1];
-      if(next){event.preventDefault();showWorkspaceView(next.dataset.workspace,{focus:true});}
+      if(next){event.preventDefault();showWorkspaceView(next.dataset.workspace,{focus:true,scroll:true});}
     });
   }
   const followHash=()=>{const target=workspaceHashTarget();if(target){revealWorkspaceTarget(target);if(target.tagName==='DETAILS')target.open=true;}};

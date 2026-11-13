@@ -122,7 +122,7 @@ function renderQuestionGraph(){
   pathwayIds.forEach((id,i)=>pos[id]={x:compact?230:did?610:500,y:55+i*(h-110)/Math.max(1,pathwayIds.length-1)});
   const svg=svgEl('svg',{viewBox:'0 0 '+(compact?460:1000)+' '+h,role:'img','aria-label':'Evidence paths for '+(result.protein.sym||result.protein.id)});
   if(compact){
-    svg.style.minWidth='0';const defs=svgEl('defs');
+    svg.style.minWidth='0';svg.style.maxWidth='760px';svg.style.margin='auto';const defs=svgEl('defs');
     for(const [state,color] of [['candidate','#b58236'],['accepted','#147c83']]){const marker=svgEl('marker',{id:'sourceModelArrow'+state,viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:7,markerHeight:7,orient:'auto-start-reverse'});marker.append(svgEl('path',{d:'M 0 0 L 10 5 L 0 10 z',fill:color}));defs.append(marker);}svg.append(defs);
   }
   function halfSize(id){return compact?(nodes.get(id)?.category==='biolink:Pathway'?{x:105,y:25}:{x:38,y:20}):{x:92,y:20};}
