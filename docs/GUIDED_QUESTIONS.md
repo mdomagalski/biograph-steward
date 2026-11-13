@@ -106,3 +106,10 @@ and its native-ID-filtered Assertion table. Reactome's
 [Details Panel guide](https://reactome.org/userguide/details-panel)
 describes the native event context. These source portals provide further
 inspection, not a new correctness score or treatment recommendation.
+
+
+The [worked B3GALNT2 source inspection](evaluations/NATIVE_REACTOME_WALKTHROUGH_20261113.md)
+shows how existing Reactome context can answer a more specific biological
+question when Wiki annotations are absent. It separates broad shared membership,
+current catalytic modeling and the primary assay's construct/host context.
+This local illustration changes no graph or review decision.

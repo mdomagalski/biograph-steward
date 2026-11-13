@@ -28,6 +28,40 @@ The result is preserved in
 review under `runs/coessentiality_prospective_review_20261113/` (arithmetic seal
 `9ae6a15d…`; availability/claims seal `8f7588d5…`).
 
+## Source coverage beyond the Wiki feature view
+
+A [post hoc source-only diagnostic](source_coverage_20261113_summary.json)
+replays the six frozen Pharos chunks and exact gene/accession joins, without
+opening matrix or ranking outcomes or changing the experiment. Sparsity is not
+confined to Tdark:
+
+| Captured Pharos319 class | Sampled genes | Complete-zero Wiki responses | No eligible historical shared-context partner |
+|---|---:|---:|---:|
+| Tclin | 3 | 1 | 1 |
+| Tchem | 11 | 0 | 3 |
+| Tbio | 85 | 55 | 70 |
+| Tdark | 29 | 28 | 28 |
+
+Of the 102 queries without an eligible historical partner, 74 are non-Tdark.
+The 84 complete-zero raw Wiki responses are a different denominator: having
+an annotation need not supply a partner on another chromosome in this cohort.
+TDL classes describe target development and knowledge availability, not
+biological relevance or guaranteed pathway coverage.
+[Pharos 2023](https://doi.org/10.1093/nar/gkac1033),
+[official current TDL definitions and release boundaries](https://opendata.ncats.nih.gov/public/pharos/pharos400_readme.html).
+The diagnostic retains its captured Pharos319 labels.
+
+Other pathway records already exist in this exact Pharos capture: **Reactome
+614 rows across 73 genes**, **KEGG 151 across 57**, and WikiPathways 585 across
+44. At least one queried pathway provider covers 97/128 genes; 53 of the 84
+zero-Wiki genes have another provider's pathway rows. These are overlapping
+raw annotation counts, not independent experiments, verified reaction roles
+or outcome gains. Other evidence families were not retrieved. This identifies
+an availability limit in the chosen Wiki feature view, without establishing a
+causal explanation of the negative result or authorizing a new fit on consumed
+outcomes. Existing Reactome record inspection is therefore a concrete resource
+already available for source-context work.
+
 ## What the literature explains—and what remains a hypothesis
 
 **Coverage differs across biological questions.** A systematic assessment of
@@ -98,6 +132,10 @@ native event/participant roles for a bounded, version-qualified question.
 Paxtools is a reusable route if BioPAX extraction is later needed; no new
 classifier, paid API or model training is required. This is a feasible source
 interpretation task, not a demonstrated biological-performance improvement.
+The delivered source guide already opens the exact current Reactome record
+and its event browser. It preserves the original imported reference and warns
+about species inference and historical correspondence. Automatic structured
+role extraction remains separate future work.
 
 **NO-GO:** add Paxtools as a new scoring dependency now, reinterpret its native
 relations as assay truth, or compare a different method on the now-consumed

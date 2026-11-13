@@ -4,9 +4,9 @@ The current scientific demonstration is the
 [source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md),
 `source_faithful_workspace_20261113`: **99 primary Pharos targets, 9,865 entities
 and 16,687 retained evidence records**. Its complete ZIP preserves the original
-16,985-record baseline, explicit keep/prune/abstain ledger, native historical
-source proof and saved questions. It is live in the private AWS workbench and
-Neptune. The [current assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
+16,985-record baseline, explicit keep/prune/abstain ledger and native historical
+source proof. Saved questions have separate ZIP downloads. It is live in the
+private AWS workbench and Neptune. The [current assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
 reports source-support coverage and the negative controlled biological results.
 
 The November 12 `crc_biological_workspace_20261112` source and its portable
@@ -16,13 +16,57 @@ MAP-IT and SIGNOR records. The optional private BioPlex context workspace is
 not part of this delivery. The [five-minute script](DEMO_SCRIPT.md) uses the
 supported guided workflow, not the experimental model planner.
 
+The [November 13 software-only archive check](evaluations/software_release_20261113_summary.json)
+pins the same committed runtime used by the corrected hosted app. The extracted
+archive launches with clean Python 3.12 and no site packages, creates a synthetic
+graph, answers a supported question and reopens the saved result after restart.
+No retrieved data or credentials enter that archive. Its local file is
+`runs/software_delivery_20261113/v2/biograph_steward_software.zip`; it has not been
+published or sent to judges.
+
 For the corrected graph, use its existing **Export → complete workspace ZIP**
 and keep every saved source folder together. The all-abstain builder below
 prepares the earlier unqualified example; it does **not** reconstruct the
 corrected decisions or substitute for its source-faithful package. Both real
 data packages remain private and subject to their source terms.
 
-## Two separate packages
+The [actual hosted handoff check](evaluations/hosted_workspace_export_20261113_summary.json)
+downloaded the corrected graph's complete ZIP and its TP53 question ZIP through
+the normal app routes. All 394 source files matched the existing workspace
+byte-for-byte, and the extracted graph, Gold decisions, historical source proof
+and adjacent saved question replayed successfully. This is portable app-export
+verification, separate from the pending cloud-backup recovery drill.
+
+To reopen this corrected example locally, extract the **graph ZIP and question
+ZIP beside one another** into a `runs/` directory. Keep both top-level folder
+names intact, then run the software with `--runs-dir runs`. The graph ZIP alone
+reopens the complete graph but does not silently contain other saved questions.
+Use the question ID supplied with your packet in the URL. The checked local
+files are under `runs/hosted_workspace_export_20261113/`; data access and source
+terms still apply.
+
+## Current offline handoff
+
+The private current bundle is
+`runs/source_faithful_delivery_20261113/biograph_steward_source_faithful_private.zip`.
+It contains the final committed runtime, corrected graph with its full baseline
+and decisions, historical proof and saved TP53 answer in one layout. Unzip into
+a new directory and follow its `README_DEMO.md`:
+
+```sh
+python3 app.py serve --runs-dir runs --host 127.0.0.1 --port 8765 --no-browser
+```
+
+Open `http://127.0.0.1:8765/?run=source_faithful_workspace_20261113&question=question_20261113T070731Z_1079c2ac`.
+Python 3.12 was checked without site packages. No model, GPU, AWS login or new
+source retrieval is needed. The [acceptance summary](evaluations/source_faithful_offline_delivery_20261113_summary.json)
+records stream verification of every archive entry and actual app checks from
+the byte-identical assembly. A further full physical extraction was omitted to
+preserve local disk headroom. This data-bearing bundle remains private and is
+not cleared for redistribution. The separate software-only archive contains no
+retrieved source data.
+
+## Preserved November 12 package builder
 
 `scripts/prepare_judge_demo.py` reuses the existing committed-runtime release
 builder and verified graph/decision interface. It retrieves no data, runs no

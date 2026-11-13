@@ -22,13 +22,28 @@ The fixed [functional comparison](evaluations/COESSENTIALITY_FUNCTIONAL_CONCORDA
 is complete. Its binary result is negative; a separately frozen
 [inverse-degree weighting](evaluations/RESOURCE_ALLOCATION_CONTEXT_20261113.md)
 has an exploratory relative-concentration signal with lower absolute affinity
-at most points. It is not a fresh prediction/accuracy result or a production
-pruning policy. A [distinct genetic-interaction reference](evaluations/HORLBECK_GI_REFERENCE_FEASIBILITY_20261113.md)
+at most points. The [fixed transfer to 128 new genes](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md)
+now fails its controlled comparison across all N=1–10: neither RA nor binary
+shared context beats baseline and all forty controls at any N. This is new-gene
+transfer within the same published study, not independent-study confirmation.
+No automatic biological pruning or app-ranking policy was promoted. A
+[distinct genetic-interaction reference](evaluations/HORLBECK_GI_REFERENCE_FEASIBILITY_20261113.md)
 covers too few cohort genes for confirmation.
 
-Finish hosted deployment and release presentation. Remaining scientific work
-concerns suitable independent labels, source lineage and prospective utility,
-rather than another model or graph-store abstraction.
+Hosted deployment is complete: the corrected graph, saved native answer and
+scientific assessment survived a real service restart, with complete Neptune
+parity and an actual Chrome walkthrough. The existing source guide now exposes
+complete CIViC profile/Assertion context and current Reactome event/complex
+context without counting those lookups as independent evidence. A separate
+128-gene local workspace demonstrates reuse of the same publishers.
+
+Finish release presentation and permitted handoff. A private workspace backup
+is complete; the new isolated recovery check and separate scientific S3 archive
+copy require explicit approval after automatic review blocked their payload
+transfers. Scientific artifacts remain local. Remaining scientific work needs
+suitable independent labels, qualified study lineage and a reference compatible
+with the task, rather than another model, endpoint sweep or graph-store abstraction.
+See the [consolidated delivery assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md).
 
 ## November 12 checkpoint
 

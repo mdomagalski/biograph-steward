@@ -1,8 +1,8 @@
 {
   "format": "biograph-steward.public-source-faithful-release-summary.v1",
-  "runtime_git_commit": "6ddb1b7e99013bb4dfcfabae4561cb511a430f55",
-  "source_bundle_sha256": "5cc67182b2d761c8403dd52ad547dee17c33ffcb55bebc681743367fef107fe1",
-  "image_id": "sha256:1d9868eddf7cac295519a0fefa9b46df259c9b8aeae51e1c843b178866313742",
+  "runtime_git_commit": "902699ee41861be45529b38adeb2b289cf8300b0",
+  "source_bundle_sha256": "08e37d83e0eb830403306e6e9970b28f70974b9b005775784a0de36400833cab",
+  "image_id": "sha256:5240fa8526d39175b8c6930267c3e66748d65d1359d8ac116254e17d757ef8d2",
   "base_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
   "source_run": "source_faithful_workspace_20261113",
   "source_graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
@@ -15,7 +15,7 @@
     "prune_obsolete_GO_ID": 298,
     "abstain_retained": 11636
   },
-  "saved_native_question_id": "question_20261113T070731Z_1079c2ac",
+  "saved_native_question_id": "question_20261113T075313Z_1a76b00f",
   "saved_native_answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
   "source_api_native_download_and_real_service_restart_verified": true,
   "actual_neptune_full_parity_and_entity_read_verified": true,
@@ -27,12 +27,12 @@
   "new_compute_or_public_access": false,
   "source_and_review_bytes_changed": false,
   "biological_accuracy_established": false,
-  "production_acceptance_content_sha256": "75a18f1473fd54a16b4936ecd4ce353f38d53c0e2163c3225faae84238a6a2e8",
+  "production_acceptance_content_sha256": "266e92ba7def1a1c0a04f607676f817d246d8a456f571f05d8f604e9df41a901",
   "observed_timings_seconds": {
-    "initial_source_graph": 86.76574236698798,
-    "native_question_warm": 20.888718039990636,
-    "saved_question_after_real_restart": 96.25830688799033,
-    "full_first_neptune_parity_then_entity_read": 234.69815683798515
+    "initial_source_graph": 84.91324217501096,
+    "native_question_warm": 20.765213920007227,
+    "saved_question_after_real_restart": 89.93805766501464,
+    "full_first_neptune_parity_then_entity_read": 233.6594012340065
   },
   "private_operator_receipts": "runs/qualified_app_20261113/",
   "credentials_accounts_endpoints_omitted": true,
@@ -42,7 +42,7 @@
   },
   "current_lookups_independent_evidence_claimed": false,
   "actual_hosted_browser_walkthrough_verified": true,
-  "browser_walkthrough_content_sha256": "45654c9c8762801299f9c0ece3834f5bb1ae982e3b33b3579be24eb158821663",
+  "browser_walkthrough_content_sha256": "e4e157afc32c820eda0d10fa0fed25c37c9bc79e6703b694746ef3b8aaad7f6a",
   "private_full_workspace_backup_completed": true,
   "isolated_recovery_status": "PREPARED_AND_OFFLINE_TESTED_REMOTE_RECOVERY_NOT_RUN",
   "isolated_recovery_blocker": "Automatic approval review requires explicit approval for script and private backup-receipt transfer.",
@@ -53,5 +53,10 @@
     "S3_uploaded": false,
     "blocker": "Automatic approval review requires explicit approval for this payload and destination."
   },
-  "content_sha256": "e16c54a7f574ed5de0141d6cf467f799c6838c4eb251ea0e4d5cbc1925ea6eb2"
+  "default_qualified_example_url": "/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f",
+  "default_qualified_example_survived_service_restart": true,
+  "backup_scope_note": "Completed corrected-source checkpoint backup; later saved question IDs also have separate local export receipts.",
+  "actual_homepage_corrected_example_opening_verified": true,
+  "previous_context_walkthrough_content_sha256": "45654c9c8762801299f9c0ece3834f5bb1ae982e3b33b3579be24eb158821663",
+  "content_sha256": "cf1b6fcb882babf33726d36bb1a5d2d390dcfbedb82ac44df328dd49cbfbdcd7"
 }

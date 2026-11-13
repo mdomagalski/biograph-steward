@@ -35,7 +35,7 @@ route; local run IDs alone are not a distribution mechanism.
 
 A fresh checkout includes synthetic fixtures, not retrieved Pharos or assay snapshots. If a real demonstration packet is supplied separately, keep its complete workspace/source folders together and follow the packet's placement instructions. Copying only `graph.json` loses the source and replay context.
 
-With complete saved workspaces available, open **Data & saved work → Saved graphs and answers** or **Open a saved real example**. A saved question URL reopens its graph and answer. Use the saved example for an offline presentation; live retrieval is optional.
+With complete saved workspaces available, open **Data & saved work → Saved graphs and answers** or **Open a saved real example**. The shortcut prefers the latest real qualified workspace with a native-supported saved question. A saved question URL reopens its graph and answer. Use the saved example for an offline presentation; live retrieval is optional.
 
 For a supplied **source-faithful qualified workspace**, choose **Ask & explore
 → Qualified WikiPathways source context**. Native support is required by default
@@ -51,6 +51,12 @@ reuses that workflow on a different saved pathway cohort, retaining all 1,470
 records with zero prunes. It requires its complete private packet; the guide
 documents the large proof payload and the negative same-study biological
 comparison separately from this working application example.
+
+With that same supplied local packet, the
+[B3GALNT2 shared-pathway example](http://127.0.0.1:8794/?run=transfer_pathway_workspace_20261113&question=question_b3galnt2_reactome_20261113)
+uses Reactome annotations already present in Pharos even though this protein
+has no Wiki rows. Its candidate paths and current-record guide illustrate
+broader source inspection, with no new biological-validation result.
 
 For a qualified assay example, **Evidence & sources → Qualified assay evidence** preserves the method, detected or nondetected outcome, experimental roles, original identifiers and excluded observations. The guided inspector exposes source links and unresolved reuse without treating repeated database records as independent experiments. See [assay attachment](docs/ASSAY_WORKBENCH.md) and [IntAct source evidence](docs/INTACT_EVIDENCE_WORKBENCH.md).
 

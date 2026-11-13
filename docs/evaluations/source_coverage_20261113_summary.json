@@ -1,0 +1,202 @@
+{
+  "format": "biograph-steward.posthoc-frozen-source-coverage-diagnostic.v2",
+  "created_at": "2026-11-13T07:56:45.631338+00:00",
+  "scope": "One frozen128-gene metadata-uniform sample; source availability only, posthoc, no reference outcomes or new subgroup evaluation.",
+  "Pharos_database_version": "pharos319",
+  "sample_size": 128,
+  "eligible_population_size": 17231,
+  "unknown_TDL_count": 0,
+  "source_chunk_replays": 6,
+  "all_required_identity_pathway_responses_complete": true,
+  "other_families_retrieved": false,
+  "cross_tab": [
+    {
+      "TDL": "Tclin",
+      "sampled_genes": 3,
+      "complete_source_genes": 3,
+      "complete_zero_raw_Wiki": 1,
+      "normalized_has_membership": 2,
+      "historical_has_membership": 2,
+      "normalized_active_shared_context": 2,
+      "historical_active_shared_context": 2,
+      "normalized_zero_shared_context": 1,
+      "historical_zero_shared_context": 1,
+      "raw_Wiki_rows": 22,
+      "normalized_unique_gene_version_links": 18,
+      "historical_unique_gene_version_links": 7
+    },
+    {
+      "TDL": "Tchem",
+      "sampled_genes": 11,
+      "complete_source_genes": 11,
+      "complete_zero_raw_Wiki": 0,
+      "normalized_has_membership": 11,
+      "historical_has_membership": 11,
+      "normalized_active_shared_context": 11,
+      "historical_active_shared_context": 8,
+      "normalized_zero_shared_context": 0,
+      "historical_zero_shared_context": 3,
+      "raw_Wiki_rows": 82,
+      "normalized_unique_gene_version_links": 73,
+      "historical_unique_gene_version_links": 42
+    },
+    {
+      "TDL": "Tbio",
+      "sampled_genes": 85,
+      "complete_source_genes": 85,
+      "complete_zero_raw_Wiki": 55,
+      "normalized_has_membership": 30,
+      "historical_has_membership": 29,
+      "normalized_active_shared_context": 23,
+      "historical_active_shared_context": 15,
+      "normalized_zero_shared_context": 62,
+      "historical_zero_shared_context": 70,
+      "raw_Wiki_rows": 471,
+      "normalized_unique_gene_version_links": 310,
+      "historical_unique_gene_version_links": 53
+    },
+    {
+      "TDL": "Tdark",
+      "sampled_genes": 29,
+      "complete_source_genes": 29,
+      "complete_zero_raw_Wiki": 28,
+      "normalized_has_membership": 1,
+      "historical_has_membership": 1,
+      "normalized_active_shared_context": 1,
+      "historical_active_shared_context": 1,
+      "normalized_zero_shared_context": 28,
+      "historical_zero_shared_context": 28,
+      "raw_Wiki_rows": 10,
+      "normalized_unique_gene_version_links": 9,
+      "historical_unique_gene_version_links": 1
+    },
+    {
+      "TDL": "UNKNOWN",
+      "sampled_genes": 0,
+      "complete_source_genes": 0,
+      "complete_zero_raw_Wiki": 0,
+      "normalized_has_membership": 0,
+      "historical_has_membership": 0,
+      "normalized_active_shared_context": 0,
+      "historical_active_shared_context": 0,
+      "normalized_zero_shared_context": 0,
+      "historical_zero_shared_context": 0,
+      "raw_Wiki_rows": 0,
+      "normalized_unique_gene_version_links": 0,
+      "historical_unique_gene_version_links": 0
+    }
+  ],
+  "historical_zero_context_non_Tdark": 74,
+  "raw_zero_Wiki_non_Tdark": 56,
+  "interpretation": "Observed sparse shared native Wiki context is not confined to Tdark in this sample. This is a descriptive availability result, not a causal explanation, biological negative, performance estimate, subgroup winner or reason to change the frozen evaluation.",
+  "boundaries": [
+    "TDL describes target-development/knowledge classification, not guaranteed WikiPathways coverage, biological relevance or assertion correctness.",
+    "Source presence and native encoded membership differ from having a same-model partner on another chromosome in this fixed sampled frame.",
+    "Historical qualification omits unresolved encoding from a research feature view, not from production biological truth; source uncertainties remain UNKNOWN.",
+    "Counts use the captured Pharos319 labels. Current Pharos400 definitions/version comparisons do not silently replace frozen319 labels.",
+    "Small Tclin/Tchem cell sizes and one reviewed uniquely mapped128-gene sample do not justify population or causal claims.",
+    "All zeros shown are from complete queried pathway responses or the fixed source-context projection; unqueried evidence families are not zeros."
+  ],
+  "primary_sources": [
+    {
+      "url": "https://doi.org/10.1093/nar/gkac1033",
+      "title": "Pharos2023",
+      "scope": "Primary resource construction and TDL knowledge categories; prior repository review plus author-source indexed passages rechecked; directPMC/OUP browser retrieval blocked."
+    },
+    {
+      "url": "https://opendata.ncats.nih.gov/public/pharos/pharos400_readme.html",
+      "scope": "Official current release/TDL definition and319/400 distinction checked; used only for interpretation boundaries, not label refresh."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9487593/",
+      "scope": "Gable2022 primary coverage/annotation-heterogeneity assessment; not a Pharos-TDL causal analysis."
+    }
+  ],
+  "matrix_or_rank_outcomes_opened": false,
+  "new_source_or_reference_data_retrievals": 0,
+  "model_calls": 0,
+  "evaluation_methods_or_subgroups_changed": false,
+  "production_app_changed": false,
+  "raw_provider_coverage": [
+    {
+      "provider_type_literal": "Reactome",
+      "raw_pathway_rows": 614,
+      "unique_frozen_genes_with_at_least_one_row": 73,
+      "fixed_gene_denominator": 128,
+      "provider_aliases_merged": false,
+      "independent_evidence_count_asserted": false
+    },
+    {
+      "provider_type_literal": "WikiPathways",
+      "raw_pathway_rows": 585,
+      "unique_frozen_genes_with_at_least_one_row": 44,
+      "fixed_gene_denominator": 128,
+      "provider_aliases_merged": false,
+      "independent_evidence_count_asserted": false
+    },
+    {
+      "provider_type_literal": "KEGG",
+      "raw_pathway_rows": 151,
+      "unique_frozen_genes_with_at_least_one_row": 57,
+      "fixed_gene_denominator": 128,
+      "provider_aliases_merged": false,
+      "independent_evidence_count_asserted": false
+    },
+    {
+      "provider_type_literal": "PathwayCommons: pid",
+      "raw_pathway_rows": 34,
+      "unique_frozen_genes_with_at_least_one_row": 16,
+      "fixed_gene_denominator": 128,
+      "provider_aliases_merged": false,
+      "independent_evidence_count_asserted": false
+    },
+    {
+      "provider_type_literal": "PathwayCommons: inoh",
+      "raw_pathway_rows": 28,
+      "unique_frozen_genes_with_at_least_one_row": 12,
+      "fixed_gene_denominator": 128,
+      "provider_aliases_merged": false,
+      "independent_evidence_count_asserted": false
+    },
+    {
+      "provider_type_literal": "PathwayCommons: panther",
+      "raw_pathway_rows": 27,
+      "unique_frozen_genes_with_at_least_one_row": 16,
+      "fixed_gene_denominator": 128,
+      "provider_aliases_merged": false,
+      "independent_evidence_count_asserted": false
+    },
+    {
+      "provider_type_literal": "PathwayCommons: netpath",
+      "raw_pathway_rows": 13,
+      "unique_frozen_genes_with_at_least_one_row": 9,
+      "fixed_gene_denominator": 128,
+      "provider_aliases_merged": false,
+      "independent_evidence_count_asserted": false
+    },
+    {
+      "provider_type_literal": "UniProt",
+      "raw_pathway_rows": 13,
+      "unique_frozen_genes_with_at_least_one_row": 13,
+      "fixed_gene_denominator": 128,
+      "provider_aliases_merged": false,
+      "independent_evidence_count_asserted": false
+    },
+    {
+      "provider_type_literal": "PathwayCommons: humancyc",
+      "raw_pathway_rows": 5,
+      "unique_frozen_genes_with_at_least_one_row": 3,
+      "fixed_gene_denominator": 128,
+      "provider_aliases_merged": false,
+      "independent_evidence_count_asserted": false
+    }
+  ],
+  "total_raw_pathway_rows": 1470,
+  "genes_with_any_raw_pathway_provider": 97,
+  "provider_count_semantics": "Exact native Pharos pathway.type labels only; raw stored rows and unique sampled genes, not unique biological facts, source-independent studies, native reaction roles or predictive utility.",
+  "provider_interpretation": "Reactome/KEGG/PathwayCommons metadata already occurs in this frozen Pharos capture; this is not a new independent resource or a result supporting a new fit. The frozen experiment used its declared Wiki feature view only.",
+  "complete_zero_all_pathway_genes": 31,
+  "complete_zero_Wiki_but_another_recorded_pathway_provider_genes": 53,
+  "source_diagnostic_content_sha256": "aa873d00b0b986b71336d2d769cc008e006c80722225fd3d0bbeaea02011672b",
+  "content_sha256": "45d4ce8485ca72a18274db137fb3a7a686a1a5b19b336107a88d5ce902fce2ae"
+}

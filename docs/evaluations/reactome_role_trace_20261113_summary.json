@@ -1,0 +1,89 @@
+{
+  "format": "biograph-steward.current-native-Reactome-source-role-trace.v1",
+  "created_at": "2026-11-13T08:31:35.388562+00:00",
+  "purpose": "Bounded source walkthrough using publisher-documented APIs and primary-paper context; not an app adapter, new graph or experiment.",
+  "current_source_release": "98",
+  "protein": "UniProtKB:Q8NCR0",
+  "gene_symbol": "B3GALNT2",
+  "targeted_Reactome_data_HTTP_attempts": 9,
+  "successful_targeted_data_responses": 8,
+  "failed_targeted_data_responses": 1,
+  "all_critical_current_source_joins_verified": true,
+  "identity_join": "Exact official UniProt/Q8NCR0 mapping and explicit PhysicalEntity.ReferenceEntity databaseName/identifier; no symbol guess or gene/protein identity collapse.",
+  "current_reaction": "R-HSA-8931648.3",
+  "current_catalystActivity_dbId": 8931635,
+  "current_physical_entity": "R-HSA-8878916.1",
+  "current_human_event_isInferred_false_is_curator_metadata_not_experimental_host": true,
+  "current_ancestor_chain_verified": [
+    "R-HSA-8931648",
+    "R-HSA-8932505",
+    "R-HSA-8931838",
+    "R-HSA-5173105",
+    "R-HSA-597592",
+    "R-HSA-392499"
+  ],
+  "primary_paper_scope_limit": "Primary biochemical, localization and disease assays support different parts of the current curator synthesis. Heterologous expression/engineered constructs and unreviewed supplements remain explicit; no independent replication claim.",
+  "original_Pharo319_revision_identity_verified": false,
+  "new_independent_evidence_or_reference_gold_created": false,
+  "source_graph_review_states_frozen_inputs_or_app_changed": false,
+  "source_integrity_receipt_content_sha256": "b77ddc901391d89f2871b5759d86ae25cd97873a06b2b7039578eee642dd8bed",
+  "model_or_GPU_calls": 0,
+  "matrix_or_rank_values_decoded": false,
+  "new_fits_or_scientific_comparisons": 0,
+  "custom_BioPAX_parser_or_dependency_added": false,
+  "data_license": {
+    "id": "CC0",
+    "official_source": "https://reactome.org/license",
+    "scope": "Reactome database data; illustrations/software/papers have separate terms."
+  },
+  "browser_UI_verified": false,
+  "known_remaining_limits": [
+    "No historical Pharos319 Reactome version proof.",
+    "No native-human membrane-topology/luminal-orientation proof from the inspected localization assay alone.",
+    "No whole-graph truth, prediction improvement or pruning validation.",
+    "Current native record links are supplied, but no separate browserUI inspection was performed under the bounded data-request profile."
+  ],
+  "full_source_packet_content_sha256": "98e1132369857c7b96d7daca95ebffc1562e1f0dc4fc45005fa3bb2d628f7b2a",
+  "current_native_record_url": "https://reactome.org/content/detail/R-HSA-8931648",
+  "primary_papers": [
+    {
+      "pmid": "23929950",
+      "pmcid": "PMC3848040",
+      "doi": "10.1126/science.1239951",
+      "title": "SGK196 Is a Glycosylation-Specific O-Mannose Kinase Required for Dystroglycan Function",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/23929950/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3848040/"
+      ],
+      "read_scope": "Official PubMed metadata and indexed PMC body passage around Figure 2; direct PMC open returned a browser challenge. Supplement not reviewed.",
+      "supports": "Secreted transmembrane-domain-deleted B3GALNT2 was incubated with UDP-GalNAc and a GlcNAc-beta4-Man glycopeptide made by GTDC2. MALDI-TOF/MS supported GalNAc transfer (Fig. 2A). The authors integrated this with prior linkage characterization to propose the GalNAc-beta3-GlcNAc-beta4-Man product.",
+      "limits": "A soluble engineered-enzyme assay supports catalytic substrate use; it is not a direct intact-ER topology measurement. SGK196/POMK subsequently phosphorylates the glycan; it should not be presented as B3GALNT2 kinase activity."
+    },
+    {
+      "pmid": "14724282",
+      "doi": "10.1074/jbc.M310614200",
+      "title": "A novel human beta1,3-N-acetylgalactosaminyltransferase that synthesizes a unique carbohydrate structure, GalNAcbeta1-3GlcNAc",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/14724282/",
+        "https://doi.org/10.1074/jbc.M310614200"
+      ],
+      "read_scope": "Official PubMed abstract only; full paper not reviewed.",
+      "supports": "A soluble human enzyme catalytic domain expressed in HEK293T cells transferred GalNAc to GlcNAc-beta1-O-benzyl. Product NMR established a beta1,3 linkage. Tested acceptors included several oligosaccharides and modified fetuin.",
+      "limits": "This earlier biochemical characterization establishes linkage/catalytic activity, not by itself the specific DAG1 O-mannose reaction or ER localization. Type-II membrane topology is described as sequence-based characterization, not a luminal-orientation experiment in the abstract."
+    },
+    {
+      "pmid": "23453667",
+      "pmcid": "PMC3591840",
+      "doi": "10.1016/j.ajhg.2013.01.016",
+      "title": "Mutations in B3GALNT2 Cause Congenital Muscular Dystrophy and Hypoglycosylation of alpha-Dystroglycan",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/23453667/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3591840/"
+      ],
+      "read_scope": "Official PMC Methods, localization Results/Figure 4 and relevant Discussion; supplement not reviewed.",
+      "supports": "V5-tagged human B3GALNT2 constructs were expressed in mouse C2C12 myoblasts. Wild-type protein colocalized with ERp72; Gly247Glu and Val268Met altered localization, whereas Arg292Pro did not. Patient fibroblast/muscle assays separately showed altered functional dystroglycan glycosylation.",
+      "limits": "Colocalization supports ER localization of the expressed protein, not direct native-human-cell topology or proof of substrate/output luminal orientation. Disease/glycosylation assays are distinct from a purified substrate/linkage assay."
+    }
+  ],
+  "content_sha256": "6b9a4e8ea16134f1bf34cc4f13c96220e34fde8ca307a4e534a626cbcd58734c"
+}

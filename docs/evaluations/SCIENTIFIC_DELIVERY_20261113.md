@@ -46,6 +46,14 @@ The actual hosted walkthrough also checked the
 The [sanitized deployment receipt](aws_source_faithful_release_20261113_summary.json)
 binds the deployed runtime, graph, saved answer and actual restart/database checks.
 
+The [complete app-export check](hosted_workspace_export_20261113_summary.json)
+also reopens the normal graph and question ZIPs together. All 394 exported source
+files match the current workspace, and the complete Gold/history proof and
+saved native answer replay exactly. The final standalone runtime also
+regenerates that real native answer with clean Python and no site packages.
+The graph ZIP and separately saved question ZIP must remain adjacent. This verifies the product handoff; it does not
+substitute for the pending private backup-recovery drill.
+
 ## What credible public labels establish
 
 | Axis | Bounded finding | What it cannot establish |
@@ -109,8 +117,41 @@ the second cohort using the same interface.
 Workflow reuse does not reverse the negative comparison above: the new genes
 were evaluated within the **same published study**, not an independent study.
 The existing answer format repeats native proof, producing a roughly **64 MB
-saved question JSON**; this remains an engineering limit. No new scoring,
-retrieval, AWS deployment or Neptune load was needed for this local example.
+saved question JSON**; this remains an engineering limit. A read-only byte
+diagnosis attributes 95.2% to repeated parsed native models. Raw GPML is already
+deduplicated, and existing gzip reduces the HTTP JSON to about 3.13 MB. True
+model-reference deduplication needs a versioned reader/export migration so that
+old answer hashes and complete source replay remain valid. No unversioned patch
+was applied. No new scoring, retrieval, AWS deployment or Neptune load was
+needed for this local example.
+
+### Existing Reactome context for a different question
+
+The [saved B3GALNT2 illustration](http://127.0.0.1:8794/?run=transfer_pathway_workspace_20261113&question=question_b3galnt2_reactome_20261113)
+uses the same 128-gene graph and ordinary shared-pathway question. This protein
+has a complete-zero Wiki response but three imported Reactome records. The
+question shows **8 of 17 matching proteins and 15 candidate paths**, all from
+already retrieved Reactome annotations. The focal protein was selected by
+alphabetical source availability, without reading outcomes. No record, review,
+fit or biological score changed.
+
+The [answer capture](../images/existing_reactome_summary_20261113.png) and
+[source guide](../images/existing_reactome_source_guide_20261113.png) show the
+preserved assertions and separate current publisher lookup. Broad shared
+“Metabolism of proteins” context does not establish a reaction role, physical
+interaction or prediction benefit. The more specific imported “O-linked
+glycosylation” record has no other member in this sampled cohort, which is
+not biological absence elsewhere. See the
+[scoped illustration receipt](b3galnt2_existing_context_20261113_summary.json).
+
+A [worked native-source walkthrough](NATIVE_REACTOME_WALKTHROUGH_20261113.md)
+then traces the exact current B3GALNT2 catalyst and DAG1 glycosylation reaction
+through Reactome's documented APIs and primary studies. Biochemical activity
+has experimental support under specified construct conditions; the localization
+study used tagged human protein in mouse cells. Current human-model metadata
+therefore remains separate from experimental host and native topology. This
+adds a concrete interpretation example, not a historical Pharos319 proof,
+automatic graph update or new independent accuracy label.
 
 ## Literature-guided decisions
 
@@ -120,6 +161,13 @@ of this negative result. RA uses degrees in the supplied cohort, which are
 not full biological pathway sizes. The
 [focused methods review](PATHWAY_TRANSFER_LIMITS_20261113.md) distinguishes these
 verified properties from causal hypotheses.
+
+A [source-only coverage check](source_coverage_20261113_summary.json) also finds
+that 74 of 102 queries without eligible historical Wiki context are non-Tdark.
+Fifty-three genes with no Wiki rows already have other queried pathway data;
+Reactome rows cover 73/128 genes. These overlapping provider annotations supply
+an existing route for context inspection, not independent corroboration or a
+new performance result. No method or sample changed after this diagnostic.
 
 The other proposed routes were screened before execution. PROGENy requires
 appropriate expression/footprint measurements; total proteomics and this sparse
@@ -156,6 +204,21 @@ software licensing does not clear redistribution of every integrated source.
 No Brev/GPU/model inference was needed for this round's CPU evaluation and
 production deployment.
 
+The [software-only release check](software_release_20261113_summary.json)
+also launches the extracted committed runtime with clean Python 3.12 and no
+site packages, builds its explicitly synthetic graph, answers a supported
+question and reopens the same answer after an actual local server restart.
+This is portability evidence, separate from source permission and biological
+validation.
+
+A [private offline demonstration bundle](source_faithful_offline_delivery_20261113_summary.json)
+now combines that runtime, the complete corrected graph/source/decision package
+and saved TP53 answer. Every ZIP entry passed stream byte/CRC checks, and the
+byte-identical assembly passed actual default-example, graph, native-answer and
+download checks with clean Python. A second full physical extraction was not
+performed because local disk headroom was limited. The [delivery guide](../DELIVERY.md#current-offline-handoff)
+provides the one-directory launch route; the data-bearing ZIP remains private.
+
 ## Preservation and operational handoff
 
 The corrected hosted workspace has a completed private S3 backup. A first
@@ -167,7 +230,7 @@ automatic approval review requires explicit approval to transfer that script
 and the private backup receipt. No recovery validation or full VM restoration
 is claimed, and no active files or service were changed by the blocked action.
 
-The complete new scientific artifact archive is retained locally at
+The private archive of ten source/experiment/delivery roots is retained locally at
 `runs/scientific_retention_20261113/scientific_artifacts_20261113.tar.gz`
 (488,560,385 bytes; SHA256
 `227aa64bc35a8d67ff831af6107ba6394ed4ad167db0f8af2b17aef0ec16b438`).
@@ -176,3 +239,8 @@ per-file manifest. Automatic approval review separately blocked its proposed
 private S3 copy until the exact payload and destination are approved. No
 alternate upload was attempted. Local retention is complete; a second remote
 research copy is not claimed. Underlying source terms still apply.
+
+The later source-only coverage diagnostic, B3GALNT2 question and native Reactome
+source/paper review have a separate local addendum archive. Its 42 files were
+stream-verified without changing their originals. It is not part of the earlier
+ten-root archive or a completed cloud copy.

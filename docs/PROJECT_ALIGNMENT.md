@@ -30,6 +30,15 @@ shows reliable prediction gain over the count and degree controls. GO,
 CRC-cohort and CIViC reference scopes remain separate; unresolved claims do
 not acquire truth labels.
 
+The [completed November 13 delivery](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
+now includes actual corrected-graph AWS/Neptune use, native source passports,
+CIViC/Reactome context guides and a second local 128-gene pathway workspace.
+The frozen 128-gene biological comparison did not reproduce the exploratory
+weighting advantage; no automatic biological-pruning policy was promoted.
+Whole-graph precision is not estimable from the admitted positive-only or
+context-mismatched public labels. This is a measured scientific boundary,
+not a missing graph-store or agent-framework component.
+
 ## Organizer requirements and judging crosswalk
 
 The brief permits **autonomous or semi-autonomous software**. Its topic is structured-data integration and link prediction: an agent builds contextualized graphs, then the **same graph-learning method** is applied to baseline and enriched graphs to predict held-out experimentally measured relationships. Our paired learner comparisons are complete; they do not demonstrate consistent incremental benefit.
@@ -53,7 +62,7 @@ The organizer's ontology examples distinguish protein-coding genes, proteins and
 | PyTorch Geometric subgraph extraction would be nice | Treat this as a useful interoperability suggestion, not a requirement to replace the executed PyKEEN comparison or the current graph engine. |
 | Gold set for Pharos; judges for additional data | Keep Pharos-reference evaluation, added-source assessment, prediction and usability claims distinct. Do not invent the undisclosed reference's label meanings. |
 | Subgraphs will be compared with the whole graph; ideally send both | Prepare the resulting scoped graph and exhaustive edge-decision ledger, with the preserved source baseline. The [October 26 update](ORGANIZER_UPDATE_20261026.md) does not specify baseline release, comparison unit, file schema or confidence handling. |
-| Brev/AWS credits provided | Credits enable optional compute; AWS/Neptune deployment is not established as a judging requirement. The private deployment, complete mirror parity, restart, failover and snapshot recovery are now [tested](evaluations/AWS_NEPTUNE_20261111.md). This is not a complete query migration or production SLA. |
+| Brev/AWS credits provided | Credits enable optional compute; AWS/Neptune deployment is not established as a judging requirement. The earlier mirror, restart, failover and snapshot checks are [recorded](evaluations/AWS_NEPTUNE_20261111.md). The [corrected graph deployment](evaluations/aws_source_faithful_release_20261113_summary.json) now passes complete parity, restart and browser checks; its new isolated source recovery remains pending approval. This is not a complete query migration or production SLA. |
 
 The supplied schedule sets final submission on **November 17, 2026**; the midpoint report deadline was October 27. The closing plan should use the remaining time for release, a reproducible demonstration and presentation. Numeric confidence must remain absent where uncalibrated; local review states must not become gold labels.
 
@@ -98,13 +107,14 @@ Finish the current release, a permitted reproducible real-data package, the grap
 
 ## Closing delivery and qualification
 
-1. **Delivery:** the complete CRC example is designated and the
-   [portable package builder](DELIVERY.md) preserves its graph, exhaustive
-   abstention ledger and original source baseline. The software-only archive,
-   [five-minute script](DEMO_SCRIPT.md) and refreshed presentation provide a
-   reproducible route. Full native data remain local pending applicable source
-   permission, including KEGG terms. Final GitHub publication and actual judge
-   access remain separate actions; local commits do not establish delivery.
+1. **Delivery:** the corrected 16,687-record CRC workspace is designated;
+   its full ZIP preserves the original baseline and exhaustive keep/prune/abstain
+   ledger. The earlier all-abstain CRC package remains supplementary in the
+   [delivery guide](DELIVERY.md). The software-only archive and
+   [five-minute script](DEMO_SCRIPT.md) provide a reproducible route. Full native
+   data remain private pending applicable source permission, including KEGG
+   terms. Final public GitHub visibility and actual judge access remain separate
+   actions; private branch delivery does not establish public submission.
 2. **Biological qualification:** the [source-scoped helper](evaluations/SCOPED_IDENTITY_QUALIFICATION_20261112.md)
    reuses existing registry and protein checks. Nine records with explicit
    stable identifiers qualify across three genes; all 13 historical bare-label

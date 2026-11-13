@@ -7,32 +7,41 @@ Choose an exact disease or protein cohort → retrieve a scoped graph → ask a 
 → inspect the cited answer and source context → review and export
 ```
 
-For the final challenge handoff, see the [submission and presentation draft](docs/FINAL_SUBMISSION.md) and [five-day completion scope](docs/BUILD_PLAN.md). The core demonstration requires no paid literature service or GPU.
+See the [November 13 delivery and scientific results](docs/evaluations/SCIENTIFIC_DELIVERY_20261113.md), [submission and presentation draft](docs/FINAL_SUBMISSION.md) and [completion scope](docs/BUILD_PLAN.md). The core demonstration requires no paid literature service or GPU.
 
 The [portable delivery guide](docs/DELIVERY.md) separates the software-only
 runtime from the complete local CRC source/graph/decision package. Follow the
 [five-minute demonstration](docs/DEMO_SCRIPT.md). Real source redistribution
 remains subject to upstream terms; a verified ZIP does not clear those rights.
 
-The [November 13 source-faithful workspace](docs/evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
-puts the verified retained graph into the app: **16,687 evidence rows**, exact
-archived pathway passports and a guided protein → cited model ← protein
-question. It recovered **253/308 cited pathway revisions**, including 15 of the
-20 most frequent source versions. Unresolved pathway evidence stays visible;
-298 obsolete GO identifiers are excluded by a separately dated ontology policy.
-These are source and identifier qualifications, not 298 proven biological errors.
+The [source-faithful workspace](docs/evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
+is deployed in the private AWS workbench and Neptune: **16,687 retained evidence
+records across 99 primary protein targets**, with the original graph, reviews
+and complete decision ledger preserved. Native archives recovered **253/308
+cited WikiPathways revisions**, including 15 of the 20 most frequent source
+versions. Guided protein → cited model ← protein questions expose those native
+records and retain unresolved context. The 298 excluded records have obsolete
+GO identifiers in the pinned July 2026 ontology; they are not experimentally
+disproved relationships. Current CIViC profile and Reactome event lookups help
+users inspect curator context without adding independent evidence or changing
+local review.
 
 The **Compare & assess** tab separates native-source verification, experimental
 GO curation, published CRC cohort support, CIViC expert conclusions and fixed
-prediction comparisons. Positive-only reference matches do not supply a
-whole-graph scientific-accuracy percentage. Current-release and historical
+prediction comparisons. Compatible records cover 373/4,078 original GO
+assertions and 32/100 disease assertions, all retained. These are positive-support
+coverage measurements, not whole-graph precision. Current-release and historical
 pathway-context filters showed **no reliable R-GCN improvement over count and
 degree controls**. Original graphs, UNKNOWNs and negative results are preserved.
 
-A separate [inverse-degree context assessment](docs/evaluations/RESOURCE_ALLOCATION_CONTEXT_20261113.md)
-finds an exploratory relative-concentration signal using previously inspected
-pan-cancer coessentiality scores. Absolute affinity usually falls; this does not establish
-prediction or accuracy gains, and it changes no production graph decisions.
+An earlier [inverse-degree context assessment](docs/evaluations/RESOURCE_ALLOCATION_CONTEXT_20261113.md)
+showed exploratory relative concentration on consumed pan-cancer data, usually
+with lower absolute affinity. The subsequent **fixed transfer to 128 new genes
+and 7,648 nonsyntenic pairs was negative**: neither RA nor binary shared context
+beat baseline and all 40 controls at any N=1–10. See the
+[complete transfer result](docs/evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md).
+No RA ranking or automatic biological pruning was promoted to the app; a
+transferable predictive gain and independent whole-graph accuracy remain unproved.
 
 Earlier bounded results remain in the [biological assessment](docs/evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md),
 [source-qualification comparison](docs/evaluations/SCIENTIFIC_ACCURACY_ROUND2_20261112.md)
@@ -145,7 +154,7 @@ The challenge calls for the **same graph learner on baseline and enriched graphs
 Organizer Slack excerpts supplied October 23 also mention a **Pharos gold set**.
 Its scoring contract remains unavailable to us; final test labels can reasonably remain hidden. [Public references](docs/literature/PUBLIC_REFERENCE_OPTIONS_20261026.md) can support bounded local assessments. The [local handoff interface](docs/GOLD_SET_INTERFACE.md) now exports verified graph packets and aligns explicitly mapped references without guessing label meanings. The study below is
 a provisional supporting evaluation, not a substitute for the official reference;
-see the [updated alignment](docs/PROJECT_ALIGNMENT.md#organizer-clarifications-supplied-october-23).
+see the [updated alignment](docs/PROJECT_ALIGNMENT.md#organizer-clarifications-and-submission-boundary).
 
 The published **INMC experimentally tested human protein-pair panel** was evaluated using native PyKEEN R-GCN and a ComplEx control. The [paired evaluation graphs](docs/evaluations/INMC_PAIRED_GRAPH_20261023.md) share 10,350 nodes and 2,570 qualified-scope Pharos GO annotation pairs; only 315 official GO hierarchy edges differ. All Pharos interactions are excluded from learner inputs, including the 277 reserved-pair exposures. After the graph/runtime/scorer freeze, all 12 model runs completed locally and the author reference reconciled. On 1,751 eligible measured pairs, mean AP changed from **0.719833 to 0.720135**, with mixed seed effects. [The result](docs/evaluations/INMC_COMPARISON_20261023.md) does **not** demonstrate a consistent hierarchy benefit. This is an assay-specific retrospective PPI component evaluation, not a CRC treatment-response task or an official challenge score. The panel is now a consumed holdout.
 

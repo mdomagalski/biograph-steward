@@ -1,129 +1,108 @@
 # BioGraph Steward final submission
 
-Working submission and presentation draft, November 13, 2026. The release scope is a usable Pharos evidence workbench with reproducible source records, qualified graph exploration and measured supporting comparisons. The private AWS workbench/Neptune mirror is tested; PaperQA3 is optional.
+Working submission and presentation draft, November 13, 2026. The current release is a source-faithful Pharos evidence workbench with reproducible records, guided questions and explicit scientific limits. The corrected private AWS workbench and Neptune mirror are tested; PaperQA3 is optional.
 
 ## Project summary
 
-BioGraph Steward turns a bounded Pharos research question into an inspectable graph, cited answer and source-preserving export. It integrates scoped CIViC and experimental interaction records while retaining identifiers, assay conditions, original references and separate review decisions. Users can explore paths, inspect evidence reuse, compare saved snapshots and export the resulting graph with a complete decision ledger.
+BioGraph Steward turns a bounded Pharos research question into an inspectable
+graph, cited answer and source-preserving export. Users can explore shared
+pathway context, inspect experimental and curator records, see evidence reuse,
+and export the graph with its complete decision ledger. Exact identifiers,
+whole molecular profiles and therapy sets, source conditions and local review
+remain distinct throughout.
 
-Our evaluations distinguish useful task-specific ranking from graph-learning improvement. Native STRING physical scores improved retrospective prioritization with reduced numeric coverage; adding GO or Reactome context did not demonstrate a consistent prediction benefit. Those findings guided the app toward transparent evidence inspection and optional prioritization, with automatic scientific pruning left unvalidated.
+The [November 13 delivery and scientific summary](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
+describes the current private AWS workbench and verified Neptune mirror:
+**16,687 retained evidence records across 99 primary protein targets**. The
+original 16,985 records, reviews and keep/prune/abstain ledger remain preserved.
+Native archives recovered **253/308 cited WikiPathways revisions**, including
+15 of the 20 most frequent source versions. The app joins proteins through
+those cited models and exposes their native source passports. Unresolved
+memberships stay visible. The 298 exclusions concern obsolete GO identifiers
+in the pinned July 2026 ontology, not experimentally disproved relationships.
+Current CIViC profile and Reactome event links guide users to curator and
+mechanistic context without treating live lookup results as historical proof
+or independent evidence.
 
-The [graph-retention assessment](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md)
-compares preselected graph views against OpenCell coassociation calls. At the
-same pruning budget, the fixed experimental-support view retains 272/284
-strictly mapped positives, versus 269/284 for native confidence; Network
-Enhancement also retains 272/284. This is a small positive-retention benefit
-on one study, not whole-graph accuracy or a CRC-specific prediction result.
-The current processed-data check and original frozen assessment remain
-separate. The app exposes both, alongside complete graph/decision exports.
+Credible public references provide bounded **support coverage**, not a precision
+estimate: compatible experimental GO curations cover 373/4,078 original GO
+assertions, and a published CRC genomic cohort supports 32/100 disease
+assertions under the declared scopes. All identified support survives. Two
+accepted CIViC expert Assertions are preserved separately, with no exact match
+to the 41 original reported-response contexts. Missing matches remain UNKNOWN;
+independent whole-graph scientific accuracy is not estimable from these labels.
+See the [source-faithful assessment](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md).
 
-A conditional HCT116 BioPlex comparison retains 247/263 qualified pairs for
-the primary, 246/263 for native confidence and 251/263 for Network Enhancement.
-The one-pair gain is small; prior-assisted source calls prevent treating it
-as independent biological truth. No eligible CRC99 pair exists in this
-historical ranking comparison. A separate structure-backed reference is too
-small after source/exposure qualification to distinguish the graph views.
+Biological comparisons remain explicit. Matched R-GCN source-context tests did
+not beat count and degree controls reliably. An exploratory inverse-degree
+context result on consumed coessentiality data was followed by a
+[fixed transfer to 128 new genes and 7,648 nonsyntenic pairs](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md).
+**The transfer was negative:** neither RA nor binary shared context beat
+baseline and all 40 controls at any N=1–10. Absolute historical affinity was
+lower throughout. No RA ranking, automatic biological pruning or new method
+was promoted after this result. Source corrections and inspectability are
+demonstrated; transferable predictive improvement remains unproved.
 
-The small captured-Tdark subgroup does not share that primary-view gain:
-primary and native each retain 12/16 strictly mapped positives, while Network
-Enhancement retains 16/16. This post hoc descriptor is not a subgroup winner
-selection or proof of general benefit for understudied targets.
-
-A subsequent [published curated-signature comparison](evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md)
-increases scored perturbation-target cases from 31 to 39 out of 105 and improves
-study-weighted normalized rank from 0.680898 to 0.576408 across 14 evaluable
-study groups. The gain is mainly coverage-driven; shared-target ranking is
-mixed. This optional offline comparison is a supporting biological result,
-not a new default app inference feature, a baseline-versus-enriched GNN gain
-or whole-graph scientific accuracy. It preserves a failed initial execution
-and labels the corrected reader run as a technical replay after exposure.
-
-The current CRC source workspace adds 290 SIGNOR regulatory records with
-direction, sites, experimental organism and cell/tissue context. Twenty-four
-source-bound literature notes show what the cited studies establish and what
-remains uncertain. These complement STRING and MAP-IT without automatically
-validating assertions or counting repeated records as independent experiments.
-Four private HCT116 context records additionally distinguish tagged-expression
-coassociation from endogenous repair function. They add no graph relationships
-and are excluded from public source packets while native-data redistribution
-terms remain unverified.
-
-The [whole-workspace evidence audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md)
-now spans 180 frozen assertions across all nine families. It verifies preserved
-source fidelity, records 75 cases with examined article/dataset/native-curation
-support and keeps 105 unresolved; this is not an independent accuracy score.
-An optional native-author-reader-backed WikiPathways view excludes 1,892 rows
-from current encoded-membership eligibility across 31 proteins, with all
-unknowns, the baseline and complete decisions preserved. Fuller Pharos activity
-retrieval adds assay/chemical/publication context without inventing potency
-units or independent corroboration. These source-quality results complement
-the unchanged mixed biological-utility comparisons.
-
-A separate [source-version projection](evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
-restores shared WikiPathways context: 1,600 evidence records across 76 proteins
-now share 275 exact cited version resources, with original evidence IDs,
-reviews and revisions preserved. These are source-annotation joins, not new
-protein interactions or a measured biological prediction gain.
-
-The [source-faithful delivery increment](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
-now uses a verified retained graph in the app, with native archived pathway
-passports and a read-only assessment view. It recovered 253/308 exact cited
-model revisions and retains all unresolved Wiki context. The default excludes
-298 obsolete GO identifier records, retaining 16,687 evidence rows. This is
-ontology currency and source qualification, not 298 proven biological errors.
-Experimental GO curations support 373/4,078 original GO assertions and the
-published CRC genomic cohort supports 32/100 disease assertions under the
-declared scopes. All are retained; positive-only coverage does not establish
-whole-graph precision. Fixed native R-GCN comparisons of current-release and
-historical context do not show reliable improvement over count and degree
-controls. These negative results and all UNKNOWNs are included in the report.
-
-A literature-backed inverse-degree context score subsequently shows an
-[exploratory functional-concordance signal](evaluations/RESOURCE_ALLOCATION_CONTEXT_20261113.md)
-above baseline and matched controls across a fixed curve. This is concentration
-relative to a smaller background, with lower absolute affinity at most points.
-It is not an independently confirmed prediction gain and has not been promoted
-to biological pruning or protein-level app ranking. A separate public negative
-benchmark was rejected after source review exposed sampled PPI negatives and
-time-dependent inferred GO labels; they were not used to manufacture accuracy.
+Earlier [retention comparisons](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md),
+[conditional HCT116 assessment](evaluations/HCT116_EXTERNAL_COMPARISON_20261112.md),
+[curated-signature recovery](evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md),
+[whole-workspace audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md) and
+[original version-projection assessment](evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
+remain separate bounded results. Their metrics and limits are retained below
+and in the linked experiment ledger; they do not replace the current negative
+transfer or establish whole-graph biological accuracy.
 
 ## Judge walkthrough
 
 Start with [START_HERE](../START_HERE.md). The core app needs Python 3.10+ and no model account. A fresh checkout includes the synthetic software demonstration. The existing real examples require their saved source packets; local run directories are not included in Git.
 
-For a recorded or source-packet demonstration, use this five-minute sequence:
+The current hosted example is `source_faithful_workspace_20261113`. Use the
+[updated five-minute script](DEMO_SCRIPT.md):
 
-1. **Ask & explore:** open the packaged BRAF question on the 99-protein colorectal-cancer Pharos cohort. Show the bounded question, answer paths and source/review scope.
-2. Follow one path and its assertion references. Eight of 21 matching proteins are shown under the explicit result limit; the saved answer has 16 assertion references. Remaining matches are not biologically absent. Candidate paths require review.
-3. **Evidence & sources:** open **Regulation and experimental context → Inhibitory BRAF phosphorylation**. Inspect phosphate addition at Ser614 separately from reduced protein activity, the reported cell context and original PMID. Other saved regulatory and EGFR tissue passports remain available. Explain why added records are not independent experiments; the presentation's TAS1R2/TAS1R3 reuse example is separate from this cancer workspace.
-4. Present the separate experimental results and their explicit study/mapping limits using the slides and repository evaluation reports. Distinguish historical whole-source comparisons from the selected CRC workspace. Optional assessment packets are separate; the portable runtime does not bundle a complete research-run history. Literature searching is optional.
-5. **Export:** identify the retained graph, exhaustive decision ledger and complete original source baseline. Explain whole-workspace versus current-answer scope.
+1. **Ask & explore:** open the native-supported TP53 question, with eight
+   results and two paths per protein. State the exact frozen Pharos319 scope.
+2. **Graph and answer:** follow TP53 → cited WikiPathways model ← AKT1.
+   Shared source context is not direct protein binding or a new disease mechanism.
+3. **Sources:** open the exact archived GPML, distinguish gene-level compatibility
+   from exact protein-form identity, and inspect the preserved review state.
+   The clinical source guide separately preserves complete therapy/profile context.
+4. **Compare & assess:** show public-reference support coverage and UNKNOWNs.
+   Present the fixed learner result and the negative 128-gene transfer together
+   with their controls and study/exposure limits; neither establishes a gain.
+5. **Export:** identify the retained graph, exhaustive decision ledger and full
+   original baseline. Explain whole-workspace versus current-answer scope.
 
-Current local examples:
+The earlier portable BRAF-site and taste-receptor reuse examples remain
+supplementary. They must retain their original graph, assay and study scope;
+they are not the current TP53 answer or independent biological validation.
 
+Current and preserved local examples:
+
+- Current source-faithful AWS/Neptune workspace: `source_faithful_workspace_20261113`.
 - Packaged BRAF question: `crc_judge_demo` / `question_judge_focus` inside the v3 delivery.
 - Earlier physical-priority example: `crc_civic_final_20261015` / `question_20261027T180832Z_781f7543`.
 - Replay-compatible qualified-source workspace: `source_reuse_workbench_20261029`.
-- Current STRING/MAP-IT/SIGNOR workspace: `crc_biological_workspace_20261112`.
+- Preserved original STRING/MAP-IT/SIGNOR workspace: `crc_biological_workspace_20261112`.
 - Optional local/private cell-model context: `crc_context_qualified_20261112`.
 - Complete local CRC package: `runs/final_delivery_v3_20261112/biograph_steward_crc_local.zip`.
 
 These are source-specific demonstrations. The taste-receptor example is separate from the cancer question. Retain source licenses and attribution when delivering real packets; software MIT licensing does not relicense upstream data. Provide a bounded retrieval recipe when a packet cannot be redistributed.
 
-The designated full example is now `crc_biological_workspace_20261112`, with
-99 primary targets, 9,865 entities, 16,985 evidence records and 16,980 assertions.
-The [delivery builder](DELIVERY.md) produces the committed core runtime and a
-separate locally verified complete CRC packet, with all-abstain decisions and
-the preserved original baseline. The [five-minute script](DEMO_SCRIPT.md) uses
-the saved BRAF question and new site/context inspector. The earlier two-protein
-ZIP remains an engineering check, not the full final example.
+The current full example is `source_faithful_workspace_20261113`, with 99
+primary targets and 16,687 retained evidence records. Its complete source package
+preserves the original graph and exhaustive decisions. The earlier
+`crc_biological_workspace_20261112` baseline has 9,865 entities, 16,985 evidence
+records and 16,980 assertions. Its [portable v3 delivery](DELIVERY.md), original
+all-abstain ledger and BRAF demonstration remain available
+under their original scope. The two-protein ZIP remains an engineering check.
 
-The native graph contains 1,588 KEGG pathway records; blanket redistribution
-permission is not established. The full packet remains local, including for
-judge access until applicable permissions are resolved. The software-only
-archive and bounded retrieval route are independently usable. Final repository
-publication is intended for submission; local run IDs and commits alone do not
-provide external access.
+The source graph includes 1,588 KEGG pathway records; blanket redistribution
+permission is not established. Complete data remain in authorized private
+storage, including the hosted workspace; judge access or packet redistribution
+requires a permitted delivery route. The software-only archive and bounded
+retrieval route remain independently usable. Final repository publication is
+intended for submission; local run IDs and commits alone do not provide
+external access.
 
 ## Completed biological source enrichment
 
@@ -148,6 +127,8 @@ remains failed. Both limitations remain part of the delivered assessment.
 
 | Assessment | Result | Interpretation |
 |---|---|---|
+| Current Wiki-context R-GCN comparison, 1,751 measured pairs | Historical AP 0.71027 versus normalized 0.70978; count control 0.72097 and degree control 0.71133 | Consumed-reference comparison; no reliable predictive gain over controls |
+| Fixed new-gene transfer, 128 queries / 7,648 nonsyntenic pairs | Neither RA nor binary shared context beats baseline and all 40 controls at any N=1–10; historical context reaches 26 queries, with 102 zero-context queries retained | Negative transfer within the same published reference; no accuracy estimate or automatic biological pruning |
 | OpenCell positive retention, equal graph budget | Fixed primary 272/284; native 269/284; Network Enhancement 272/284 | Small scoped retention benefit over native; NE ties. Same-study processed QC is not another fresh confirmation; no precision/accuracy or CRC-specific claim |
 | HCT116 BioPlex positive retention, equal safeguarded budget | Fixed primary 247/263; native 246/263; Network Enhancement 251/263 | Tiny conditional gain over native; NE retains more. Prior-assisted source calls and uncertain historical training versions limit independence |
 | Structure-backed reference qualification | 13 eligible pairs; four outside the original exposure boundary, from one paper; all graph views tie | Below the fixed reporting floor; unscorable for improvement |
@@ -159,6 +140,16 @@ remains failed. Both limitations remain part of the delivered assessment.
 | Published native GO quality checks | 15,888 records; nine relation repairs and 49 alternative-ID normalizations; zero detected taxon violations | Separate normalized source derivative; 13 extension-context review cases, including four citation/context discrepancies. [Executed assessment](evaluations/SCIENTIFIC_LIMIT_RESOLUTION_20261112.md); no whole-graph accuracy or automatic biological pruning claim |
 | Source delivery | Fresh IntAct assessment 4/8; separate consumed reliability replay 8/8 | Retrieval/source-preservation results; the replay does not replace the original assessment |
 
+The historical HCT116 comparison has no eligible CRC99 pair; it does not
+validate this scoped workspace. The curated-signature result spans 14
+evaluable study groups and remains mainly coverage-driven, with mixed
+common-target ranking and its technical replay after exposure disclosed.
+
+The original captured-Tdark descriptor remains unchanged: primary and native
+each retain 12/16 mapped positives, versus 16/16 for Network Enhancement. This
+post hoc subgroup is not a selection rule or general benefit for understudied
+targets.
+
 The OpenCell table describes the original fixed views. The later connectivity
 safeguard preserves all 18 original components at the same graph budget;
 primary retention is unchanged, while the native control becomes 268/284.
@@ -167,7 +158,7 @@ ranking result supports the app's optional ordering feature. These results do
 not establish a Steward-versus-Pharos graph-learning gain. Existing measured
 panels are consumed and will not be reused as unseen tests.
 
-Evidence: [STRING comparison](evaluations/STRING_COMPONENT_COMPARISON_20261027.md), [older-source control](evaluations/STRING_TEMPORAL_CONTROL_20261027.md), [INMC comparison](evaluations/INMC_COMPARISON_20261023.md), [Reactome comparison](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md), [fresh source assessment](evaluations/INTACT_FRESH_ASSESSMENT_20261027.md), [reliability replay](evaluations/PHAROS_RETRIEVAL_RELIABILITY_20261027.md).
+Evidence: [current delivery](evaluations/SCIENTIFIC_DELIVERY_20261113.md), [fixed new-gene transfer](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md), [STRING comparison](evaluations/STRING_COMPONENT_COMPARISON_20261027.md), [older-source control](evaluations/STRING_TEMPORAL_CONTROL_20261027.md), [INMC comparison](evaluations/INMC_COMPARISON_20261023.md), [Reactome comparison](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md), [fresh source assessment](evaluations/INTACT_FRESH_ASSESSMENT_20261027.md), [reliability replay](evaluations/PHAROS_RETRIEVAL_RELIABILITY_20261027.md).
 
 The [November 11 release check](evaluations/release_candidate_20261111_summary.json) passed isolated package installation, service startup, cited questions and current real graph/decision export without a paid service or new source retrieval.
 The [full November 12 delivery](evaluations/DELIVERY_READINESS_20261112.md) now
@@ -180,20 +171,20 @@ without repository imports or optional dependencies.
 
 | Slide | Main point | Visual or demonstration |
 |---|---|---|
-| 1. BioGraph Steward | Pharos evidence for a scoped research question | Title and challenge scope |
-| 2. A bounded question and an inspectable answer | Guided choices lead to cited saved paths; scored and unranked matches remain visible | Actual BRAF answer screenshot |
-| 3. Site and study context | Phosphate addition and reduced protein activity can coexist in one source record | Current BRAF S614 site/context capture |
-| 4. Shared records | Exact source reuse remains visible; another database is not another experiment | IntAct/STRING record and unresolved counterpart |
-| 5. Bounded target recovery | Author-curated signatures improve coverage and study-weighted rank; common-target ranking remains mixed | Editable charts, evaluated denominator and limits |
-| 6. Delivery and scientific boundaries | Complete CRC workspace, decisions and original baseline; separate software/data permissions | Export screenshot, counts and remaining limits |
+| 1. BioGraph Steward | A source-traceable Pharos research workspace | Title, scoped question and software workflow |
+| 2. The corrected graph in actual use | 99 proteins; 16,687 retained records with complete baseline/decisions | [Hosted TP53 graph](images/hosted_source_graph_20261113.png) |
+| 3. Verify what the source actually encodes | 253/308 exact historical revisions; gene-level and protein-level support differ | [Archived source passport](images/hosted_source_passport_20261113.png) |
+| 4. Inspect curator and biological context | Preserve whole therapy combinations and native pathway roles; do not double-count sources | [Clinical source guide](images/hosted_clinical_source_guide_20261113.png) and [Reactome guide](images/hosted_reactome_source_guide_20261113.png) |
+| 5. Test the biological claim | Exploratory concentration did not transfer to 128 new genes; credible labels supply coverage, not precision | [Complete controlled figure](images/functional_concordance_20261113.png), with clear denominators |
+| 6. Delivery and scientific boundaries | Working local/private-cloud app, portable software, complete decisions; independent accuracy remains open | Actual export, [assessment](images/hosted_scientific_assessment_20261113.png) and source-permission boundary |
 
-A six-slide editable presentation now includes the current site/context capture,
-exact source-reuse example, native charts for scored target cases and normalized
-rank, complete CRC delivery counts and the source-permission boundary. Speaker
-notes preserve the evaluated denominator, mixed shared-target outcome,
-technical-replay status and negative same-learner findings. Earlier presentation
-and [interpretation checks](evaluations/interpretation_delivery_20261111_summary.json)
-remain preserved.
+This is the current **slide revision plan**, with actual new captures and a
+complete scientific figure ready for use. The existing editable six-slide deck
+is the earlier November 12 presentation; it has not yet been regenerated with
+these November 13 results. Its previous site/context, source-reuse and target
+recovery material remains preserved. Update that artifact before recording or
+submitting it; the current source-faithful report and negative transfer should
+take precedence over the earlier deck's delivery counts and results emphasis.
 
 The optional NVIDIA Nemotron/NAT integration belongs on slide 2 or in the technical appendix. The current planner is experimental; the primary demonstration uses supported guided tools. Show implemented methods and useful behavior before architecture details.
 
@@ -203,9 +194,9 @@ The optional NVIDIA Nemotron/NAT integration belongs on slide 2 or in the techni
 |---|---|---|
 | MIT repository and build instructions | Implemented; current source passed the isolated installation/start/export gate | Make the delivered release checkpoint available through GitHub |
 | App and demonstration | Working five-tab flow, full CRC example, site/context desktop/mobile checks, portable builder and five-minute script | Resolve real-source sharing permissions and deliver the chosen route; independent intended-user assessment remains open |
-| Graph and decisions | Current CRC packet preserves its original sources and has an all-abstention ledger. Separate historical primary/native pruned packages have complete source baselines and exhaustive keep/prune/abstain ledgers; safeguarded exports preserve all original components | Deliver clearly named source-workspace and experimental-pruning packages with their different scopes |
+| Graph and decisions | Current AWS/Neptune workspace retains 16,687 records across 99 primary targets, with its original baseline and complete decisions preserved; 298 obsolete-GO-ID exclusions are source qualifications. Earlier all-abstain and experimental-pruning packages remain separate | Deliver clearly named current workspace and historical comparison packages under their source terms |
 | Standards | Explicit vocabulary references, bounded KGX profile and SSSOM audit | Link the implemented profile and documented conformance limits |
-| Scientific assessment | Retention comparisons, matched learner controls, source-qualified context and a positive curated-signature recovery comparison exist; whole-graph biological accuracy and CRC-specific pruning benefit remain unproven | Present source-choice utility separately from graph-learning/pruning benefit, with comparators, denominators and negative/mixed outcomes |
+| Scientific assessment | Bounded support coverage, retention comparisons and matched learner controls are recorded. The fixed 128-gene transfer is negative; independent whole-graph accuracy and automatic biological pruning remain unproved | Present current source improvements separately from biological validation, retaining the complete negative transfer and earlier bounded results |
 | Final submission format | Supplied brief and Slack updates guide the handoff; exact final file schema remains unspecified | Follow any later organizer instructions; keep this inventory ready |
 
 The supplied rubric weights usability 40%, accuracy/pruning 30%, explainability 20% and standards 10%. Semi-autonomous construction is allowed. AWS, Neptune and PaperQA3 are not stated prerequisites. See the [current organizer/proposal crosswalk](PROJECT_ALIGNMENT.md).
