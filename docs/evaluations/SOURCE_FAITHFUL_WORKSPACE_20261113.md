@@ -80,6 +80,17 @@ omit a model or revision; these 365 rows / 119 connections remain UNKNOWN.
 Publisher-native GPML or a revision-preserving official deposit would close
 this specific retrieval gap; a current page or nearby revision would not.
 
+The final [bounded recovery review](historical_recovery_limits_20261113_summary.json)
+checked the actual author SQL schema and further publisher metadata. The
+[inspected 2016 SQL tool](https://github.com/wikipathways/wikipathways-sql-releaser/tree/3fc53fd2a58e2a656902c3baa3eced9725dc566c)
+is an unfinished RDF-to-SQLite example, with no GPML or revision-history payload.
+The publisher's [May 2026 Classic notice](https://raw.githubusercontent.com/wikipathways/wikipathways.github.io/586955996dc3b04be26cb83b16836690dc645c11/classic.md)
+describes the old MediaWiki infrastructure as replaced because it was no longer
+maintainable. That documents a retrieval limitation, not universal loss of
+historical versions. These checks recovered no exact models, changed no graph
+decisions and created no biological negatives. Coverage remains 253/308 and
+15/20; a publisher-bound artifact is still required for each unresolved version.
+
 ![Actual archived source passport](../images/source_faithful_passport_20261113.png)
 
 Native model/reference citations and exact element-attached links remain

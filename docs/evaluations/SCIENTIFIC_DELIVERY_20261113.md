@@ -5,6 +5,10 @@ Neptune. Its strongest demonstrated improvement is more faithful, inspectable
 use of source evidence. The completed biological comparisons do **not** yet
 show a transferable predictive gain or independent whole-graph accuracy.
 
+The [two-page project update](../../output/pdf/BioGraph_Steward_Scientific_Update_20261113.pdf)
+provides a concise handoff with an actual app capture, reference denominators
+and the controlled result. The full methods and source boundaries follow here.
+
 ## Delivered
 
 - **16,687 retained evidence records across 99 protein targets.** The original

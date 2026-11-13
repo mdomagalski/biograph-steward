@@ -1,0 +1,71 @@
+{
+  "format": "biograph-steward.historical-recovery-limit-summary.v1",
+  "created_at": "2026-11-13T09:06:43.336673+00:00",
+  "scope": "Final bounded publisher SQL/tool and repository/release metadata review for five unresolved high-frequency exact Wiki revisions.",
+  "new_exact_native_models": 0,
+  "existing_verified_models": 253,
+  "existing_requested_models": 308,
+  "existing_top20_verified_models": 15,
+  "existing_top20_requested_models": 20,
+  "all_missing_memberships_remain_UNKNOWN": true,
+  "missing_models": [
+    {
+      "source_id": "WP2261_r105815",
+      "source_rows": 116,
+      "protein_version_connections": 30
+    },
+    {
+      "source_id": "WP4172_r105775",
+      "source_rows": 76,
+      "protein_version_connections": 25
+    },
+    {
+      "source_id": "WP4223_r105681",
+      "source_rows": 76,
+      "protein_version_connections": 25
+    },
+    {
+      "source_id": "WP4205_r105480",
+      "source_rows": 53,
+      "protein_version_connections": 18
+    },
+    {
+      "source_id": "WP2380_r106165",
+      "source_rows": 44,
+      "protein_version_connections": 21
+    }
+  ],
+  "reviewed_SQL_tool": {
+    "repository": "https://github.com/wikipathways/wikipathways-sql-releaser",
+    "commit": "3fc53fd2a58e2a656902c3baa3eced9725dc566c",
+    "source_blobs_Git_hash_verified": true,
+    "finding": "The inspected 2016 author source is an unfinished RDF-to-SQLite demonstration. Its schema and loader supply no GPML payload or revision-history table. No released exact-revision database artifact was established.",
+    "code_executed": false,
+    "private_report_content_sha256": "a14b3d9afee27ba67a63467414532250d8c831fad93d46ea22c25d12350861a3"
+  },
+  "publisher_Classic_notice": {
+    "source_URL": "https://raw.githubusercontent.com/wikipathways/wikipathways.github.io/586955996dc3b04be26cb83b16836690dc645c11/classic.md",
+    "publisher_page": "https://www.wikipathways.org/classic.html",
+    "commit": "586955996dc3b04be26cb83b16836690dc645c11",
+    "sha256": "839bdd6168029a0f914fb34da8af5b0b1471aeded810bf0d257650613c99294a",
+    "bytes": 690,
+    "read_scope": "Entire short notice. It describes the old MediaWiki infrastructure, the May2026 naming boundary, replacement because it was unmaintainable, and an architect contact route. It does not provide a revision-preserving archive.",
+    "not_a_proof_all_historical_versions_are_lost": true
+  },
+  "additional_metadata_checks": {
+    "exact_tag_edit_dates_not_revision_binding": true,
+    "old_Zenodo_native_ZIP_identical_to_already_examined_backfill": true,
+    "no_new_exact_native_candidate_established": true,
+    "private_report_content_sha256": "c3a1c0ca68a1b8373deb379b5b2bc95accbb9c080a55a90dbd974aa4f415fbc1"
+  },
+  "source_requirement_to_close_gap": "Exact publisher-bound GPML for the requested full revisions followed by the existing native reader/schema qualification. A current model, nearby snapshot, edit date or derived membership is insufficient.",
+  "limitations": [
+    "The inspected catalogues are bounded; no claim that every public or private alternative was searched.",
+    "HTTP and query failures were preserved and not interpreted as empty biological evidence.",
+    "No GPML/schema qualification was run because no exact-bound candidate was recovered."
+  ],
+  "graph_review_labels_fits_or_deployment_changed": false,
+  "new_model_or_GPU_calls": 0,
+  "new_Pharos_queries": 0,
+  "content_sha256": "86c4f9fa0b8935e334abfbceb468a7154b39b92e6b34a055dff101ba87b16e44"
+}
