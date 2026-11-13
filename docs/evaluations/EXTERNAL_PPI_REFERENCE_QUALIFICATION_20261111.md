@@ -1,5 +1,14 @@
 # External PPI reference qualification — November 11, 2026
 
+**Current status — November 13:** this is the preserved pre-execution
+qualification record. The selected MAP-IT data were subsequently opened and
+the [temporal comparison](PHAROS_TEMPORAL_BASELINE_20261112.md) completed;
+its pruning endpoint is unscorable because no evaluable eligible pair meets
+the fixed enrichment rule. Qualified observations were separately
+[published into the source workspace](../BIOLOGICAL_SOURCE_UPDATE.md).
+The historical unopened-state statements below do not make MAP-IT a fresh
+reference or change its completed result.
+
 **Qualification complete; no independent biological score reported.** MAP-IT is
 the selected reference for further controlled preparation because it matches the
 original colorectal-cancer application. Its processed results remain unopened.

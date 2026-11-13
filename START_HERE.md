@@ -27,6 +27,12 @@ For a review demonstration, use the synthetic data: open **Inspect all source da
 
 ## Open a real example
 
+A small [offline Reactome source example](examples/reactome_context_20261113/index.html)
+is included in the checkout, with exact native records, source links and a
+standalone ZIP. It needs no server or account. Its CC0 publisher data and MIT
+viewer have separate notices. It demonstrates current source inspection;
+it is not the full Pharos graph or an independent correctness reference.
+
 A [portable delivery guide](docs/DELIVERY.md) now designates the complete CRC
 workspace and separates the software-only archive from locally verified source
 data. Follow its launch instructions when you have authorized access to that
@@ -75,6 +81,12 @@ For disease-based retrieval, select **Pharos disease cohort**, search for `color
 See [construction and replay](docs/CONSTRUCTION.md), [scoped retrieval](docs/SCOPED_RETRIEVAL.md), and [CIViC evidence](docs/CIVIC_EVIDENCE.md). CIViC queries retain complete molecular profiles, therapy sets and disease context; a multi-drug annotation does not establish a single-drug effect.
 
 ## What the results establish
+
+The [expert-labeled grounding assessment](docs/evaluations/EXPERT_GROUNDING_20261113.md)
+measures source-identity error triage using published curator labels. It remains
+an assisted-review component: publication context reduces false alarms but
+also misses some errors. It performs no automatic identifier replacement or
+biological pruning.
 
 The [November 13 delivery and scientific assessment](docs/evaluations/SCIENTIFIC_DELIVERY_20261113.md)
 collects the current graph changes, public-label coverage, hosted deployment and

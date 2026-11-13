@@ -48,11 +48,37 @@
     add(proof, 'p', result.transport_exposure_scope, 'small');
     const limits = add(proof, 'ul'); result.limitations.forEach(text => add(limits, 'li', text));
   }
+  function renderGrounding(parent, result) {
+    add(parent, 'h4', result.title);
+    add(parent, 'p', result.scope, 'warning');
+    add(parent, 'p', result.interpretation, 'small');
+    const arms = ['lexical', 'sentence', 'publication'], gold = result.metrics_by_arm.lexical.gold_counts;
+    add(parent, 'p', result.split + ' partition: ' + result.admitted_endpoint_cases + '/' + result.primary_frame_cases +
+      ' cases admitted (' + gold.grounding_error + ' native grounding-error; ' + gold.correctly_grounded +
+      ' native correctly-grounded). ' + result.outside_endpoint_cases + ' outside-endpoint cases are not negatives.', 'small');
+    add(parent, 'p', 'Error recall and false-conflict rate retain all cases of their gold class, including abstentions. Conflict precision concerns review proposals, not validated corrections.', 'small');
+    const ratio = (m, k) => (m[k] === null ? 'undefined' : metric(m[k])) + ' (' + m.metric_numerators[k] + '/' + m.metric_denominators[k] + ')';
+    table(parent, ['Fixed context arm', 'Conflict precision', 'Error recall', 'False-conflict rate', 'Resolved coverage', 'Abstentions'], arms.map(arm => {
+      const m = result.metrics_by_arm[arm];
+      return [arm, ...['precision', 'error_recall', 'false_conflict_rate', 'coverage'].map(k => ratio(m, k)), m.abstention_cases];
+    }));
+    const proof = add(parent, 'details'); add(proof, 'summary', 'Resolved-only diagnostics and frozen evaluation identity');
+    add(proof, 'p', 'Resolved-only accuracy is conditional and secondary. The common-resolved intersection contains ' +
+      result.common_resolved_secondary.n_cases + ' cases; it never replaces the complete admitted frame.', 'small');
+    table(proof, ['Fixed context arm', 'Secondary resolved-only accuracy', 'Unresolved', 'Model error'], arms.map(arm => {
+      const m = result.metrics_by_arm[arm]; return [arm, ratio(m, 'resolved_accuracy'), m.status_counts.unresolved, m.status_counts.model_error];
+    }));
+    add(proof, 'p', 'Complete paired transitions and secondary aggregates remain in the source receipt. No case IDs, source text, native tag records or individual predictions are published.', 'small');
+    add(proof, 'p', 'Evaluation freeze: ' + result.evaluation_freeze_content_sha256, 'small');
+    add(proof, 'p', 'Private evaluator report SHA256: ' + result.source_report_file_sha256, 'small');
+    add(proof, 'p', 'Reference data license: ' + result.reference.data_license + '. Integrity commitments do not authenticate the publisher or establish training independence.', 'small');
+  }
   function render(container, summary, options = {}) {
     if (typeof container === 'string') container = document.querySelector(container);
     if (!container) throw new Error('Scientific assessment container is unavailable.');
     if (!['biograph-steward.scientific-assessment-publication.v1.summary',
-          'biograph-steward.scientific-assessment-publication.v2.summary'].includes(summary?.format))
+          'biograph-steward.scientific-assessment-publication.v2.summary',
+          'biograph-steward.scientific-assessment-publication.v3.summary'].includes(summary?.format))
       throw new Error('Unsupported scientific assessment snapshot.');
     container.replaceChildren();
     add(container, 'h3', summary.title);
@@ -81,6 +107,7 @@
     });
     add(container, 'p', im.scope, 'small'); add(container, 'p', im.decision, 'small');
     if (summary.coessentiality) renderCoessentiality(container, summary.coessentiality);
+    if (summary.grounding) renderGrounding(container, summary.grounding);
     const limits = add(container, 'ul'); summary.remaining_gaps.forEach(text => add(limits, 'li', text));
     const proof = add(container, 'details'); add(proof, 'summary', 'Source receipts, hashes and primary methods');
     add(proof, 'p', 'Graph: ' + summary.graph_sha256, 'small');

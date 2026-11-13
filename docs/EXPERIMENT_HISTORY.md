@@ -1,14 +1,58 @@
 # Closed experiments and recovery
 
-The active branch contains the current evidence workbench and INMC preparation tools. Completed or superseded research implementations, their protocols and dated reports were removed from the active tree after preserving the full pre-consolidation source snapshot.
+The active branch contains the current source-traceable workbench, delivery
+tools and explicitly scoped supporting evaluations. During the October 22
+consolidation, completed or superseded earlier implementations, protocols and
+dated reports were removed from the active tree after preserving the full
+pre-consolidation source snapshot. Later evaluations have their own current
+reports and exposure states below.
 
 **Archive branch:** `codex/archive-pre-consolidation-20261022`
 
 **Immutable archive commit:** `602681bc82417720e7a465bd19db7a7500c88f38`
 
-**Status:** local branch only; not pushed to GitHub as part of this consolidation.
+**Status recorded at consolidation:** local branch only; not pushed to GitHub
+as part of that consolidation. This dated record is not a claim about later
+remote publication.
 
 This is an archive of tracked and non-ignored source files, including the uncommitted research work present before cleanup. It does **not** back up ignored `runs/`, downloaded datasets, model weights, environments or credentials. Those local artifacts remain in place and require a separate backup policy. No experiment packet was relabeled, resealed or deleted by this consolidation.
+
+## Current reference status — November 13, 2026
+
+Use this table and the linked completed reports before choosing a reference.
+Earlier selection/readiness documents retain their pre-access wording as
+history; an old statement that data were unopened is not the current exposure
+state or permission to open them again as a fresh test. Source-fidelity,
+curation-concordance, perturbation recovery and measured link prediction have
+different endpoints and cannot exchange their label meanings.
+
+| Reference or study | Current exposure and result boundary | Authoritative current record |
+|---|---|---|
+| INMC measured Y2H panel | Outcomes and author-positive reference were opened after the original freeze. The GO, Reactome and later Wiki-context comparisons use consumed material; no new enrichment may call these pairs unseen. | [Original comparison](evaluations/INMC_COMPARISON_20261023.md), [Reactome comparison](evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md), [current Wiki-context assessment](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md) |
+| Lambourne nominations and measured panel | All 3,222 nominations were accounted for after outcome access. Native STRING scoring, temporal controls and later graph-view development are retrospective reuse; missing detections are not universal biological negatives. | [Assay corroboration](evaluations/LAMBOURNE_CORROBORATION_20261025.md), [native score comparison](evaluations/STRING_COMPONENT_COMPARISON_20261027.md), [older-source control](evaluations/STRING_TEMPORAL_CONTROL_20261027.md) |
+| Original IntAct development/reserved studies | The four development and four original reserved studies are consumed. The reserved execution stopped at a comparator gate and retains its unscored result; the corrected replay is consumed-data engineering evidence. | [Stopped assessment](evaluations/INTACT_FINAL_ASSESSMENT_20261027.md), [complete consumed replay](evaluations/INTACT_CONSUMED_FLOW_20261027.md) |
+| Four subsequently selected IntAct studies | All four were opened and are consumed. The fixed fresh assessment remains 4/8 end-to-end coverage/strict fidelity; its separate reliability replay reached 8/8 and does not replace that result. | [Fresh assessment](evaluations/INTACT_FRESH_ASSESSMENT_20261027.md), [consumed reliability replay](evaluations/PHAROS_RETRIEVAL_RELIABILITY_20261027.md) |
+| MAP-IT EGFR tissue-proximity reference | Processed measurements and the full author-model replay were examined. The fixed pruning endpoint is unscorable because no evaluable eligible pair meets its enrichment rule. Imported observations are source enrichment, not independent validation of their own integration. | [Temporal/source comparison](evaluations/PHAROS_TEMPORAL_BASELINE_20261112.md), [source publication](BIOLOGICAL_SOURCE_UPDATE.md) |
+| OpenCell and conditional HCT116 BioPlex coassociation references | Fixed-view retention results and subsequent processed-data diagnostics are consumed. HCT116 BioPlex is distinct from the CRISPR phosphoproteomics study below; prior-assisted calls and source lineage limit independence. | [Biological retention assessment](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md) |
+| Structure-backed Complex Portal/RCSB qualification | Source/member/assembly correspondence and the corrected eligible pair set were examined. The retained 13-pair result is below the fixed reporting floor; it is unscorable for improvement, not an unopened replacement reference. | [Structure-reference result and preserved failures](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md#unresolved-and-negative-results) |
+| Hijazi drug phosphoproteomics / RoKAI comparison | The complete study is consumed, including the declared targets, 122 measured conditions and fixed comparison. Further source or scoring changes are development reuse. Other kinases are not confirmed biological negatives. | [Source-qualification utility result](evaluations/SCIENTIFIC_ACCURACY_ROUND2_20261112.md) |
+| HCT116 CRISPR-knockout phosphoproteomics | MAPK1, PLK1 and PAK4 conditions were scored. The parser-corrected replay followed outcome exposure and is a technical replay; PAK4 abstention does not make the study fresh. This is not the BioPlex coassociation panel. | [Completed external comparison](evaluations/HCT116_EXTERNAL_COMPARISON_20261112.md) |
+| Published curated kinase signatures | Signature/source-choice results and their declared target-recovery endpoints were examined. The coverage-driven gain and technical-replay boundary do not establish an independent graph-accuracy benchmark. | [Curated-signature comparison](evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md) |
+| Wainberg coessentiality, reported 92-gene and 128-gene cohorts | Both reported endpoints are now consumed. The original binary comparison was negative; RA was exploratory. The separately frozen new-gene transfer was negative against baseline and all 40 controls across N=1–10. New genes within the same study are not independent-study replication. | [Original functional comparison](evaluations/COESSENTIALITY_FUNCTIONAL_CONCORDANCE_20261113.md), [RA extension](evaluations/RESOURCE_ALLOCATION_CONTEXT_20261113.md), [fixed transfer](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md) |
+| Current GO/CRC-cohort/CIViC reference qualifications | The admitted curator/cohort matches and their scope were examined. They supply positive-support coverage or exact-context mismatch, not a representative set of true/false graph judgments. Unmatched claims remain UNKNOWN. | [Source-faithful reference assessment](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md), [whole-workspace source audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md) |
+| Native WikiPathways content and B3GALNT2 Reactome case | Historical models and the worked current reaction/paper context have been inspected. Reuse through another publisher interface is not an independent experimental vote. Neither source-content verification nor this worked case is new whole-graph truth labeling. | [Historical source qualification](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md), [native Reactome walkthrough](evaluations/NATIVE_REACTOME_WALKTHROUGH_20261113.md) |
+
+This is an exposure/status index, not a new freeze, reference selection,
+scoring protocol or scientific result. It changes no original packet, numbers
+or failed execution. Metadata-only and HOLD candidates retain their narrower
+documented access boundaries; this table does not declare their unexamined
+outcomes consumed or authorize opening them. Consult the actual candidate
+receipt and current source lineage before adopting a new endpoint.
+
+The [current delivery and scientific assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
+and [release index](releases/20261113/README.md) supersede dated next-step
+proposals for the active app. The archive outcome table below retains its
+original October 22 scope.
 
 ## Outcome ledger
 
@@ -67,6 +111,19 @@ or Steward improvement. **The panel is now consumed**; changes developed
 using it require a separate evaluation reference. No prior result or failure
 was overwritten. This implementation is on the active branch, not in the
 older archive commit.
+
+## Expert grounding reference exposure
+
+The [November 13 expert-labeled grounding assessment](evaluations/EXPERT_GROUNDING_20261113.md)
+has now consumed its 3,249-case development and 1,045-case reserved source
+partitions. All three native Gilda/Adeft context arms were fixed before label
+access. The reserved endpoint admits 678 cases (80 grounding errors and 598
+correct); other curation categories are not negatives. Publication context
+reduces lexical false alarms 25→18 but correct error flags 31→26. No new method,
+identifier correction or prune was selected from those results. Publicly
+released model-training literature may overlap this reference; the reserve is
+project-unseen, not proven model-unseen biology. Old failures and raw categories
+remain preserved under the reference's CC BY-NC-SA 4.0 terms.
 
 ## Reopening an archived file
 

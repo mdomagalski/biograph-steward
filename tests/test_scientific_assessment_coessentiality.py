@@ -102,7 +102,7 @@ class ScientificAssessmentCoessentialityTests(unittest.TestCase):
         self.assertFalse(value['raw_pair_or_matrix_values_included'])
         self.assertTrue(value['reference_now_consumed'])
         self.assertIn('not a CRC-specific reference', value['scope'])
-        self.assertEqual(set(files), module.ALL_PUBLIC_FILES | {'publication.json'})
+        self.assertEqual(set(files), module.V2_PUBLIC_FILES | {'publication.json'})
         self.assertEqual(json.loads(files['sources/coess_curves.json']), json.loads(self.extra['curves'].read_text()))
         self.assertNotIn('native_pair_values.jsonl', files)
         self.assertEqual(value['controls']['current']['count'][0]['absolute_hit_fraction']['median'], 0.25)

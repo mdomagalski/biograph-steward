@@ -39,6 +39,15 @@ Whole-graph precision is not estimable from the admitted positive-only or
 context-mismatched public labels. This is a measured scientific boundary,
 not a missing graph-store or agent-framework component.
 
+The [expert-labeled source-grounding assessment](evaluations/EXPERT_GROUNDING_20261113.md)
+now adds an executed, separately scoped verification component using published
+INDRA curations and native Gilda/Adeft. It measures error triage on 678 eligible
+reserved source cases, with a false-alarm/recall trade-off rather than a new
+pruning claim. Aggregate results appear in the existing assessment view; optional
+native dependencies stay outside the core app. The
+[CC0 Reactome annex](../examples/reactome_context_20261113/README.md) also gives
+reviewers a small real-source inspection route directly from the repository.
+
 ## Organizer requirements and judging crosswalk
 
 The brief permits **autonomous or semi-autonomous software**. Its topic is structured-data integration and link prediction: an agent builds contextualized graphs, then the **same graph-learning method** is applied to baseline and enriched graphs to predict held-out experimentally measured relationships. Our paired learner comparisons are complete; they do not demonstrate consistent incremental benefit.

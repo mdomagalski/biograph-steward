@@ -21,6 +21,13 @@ See [scoped retrieval](SCOPED_RETRIEVAL.md), [the coverage audit](PHAROS_COVERAG
 - Structural validation, upstream editorial status and local human review are separate. None is an automatic scientific-truth guarantee.
 - Source-specific scores remain source-specific; the application does not turn them into a common calibrated confidence.
 - Generic interaction annotations do not automatically mean direct physical binding. Unknown qualifiers remain unknown.
-- Biolink names and local provenance fields do not establish complete standard conformance; formal validation is a remaining task.
+- Biolink names and local provenance fields do not establish complete standard conformance. The [bounded KGX projection](STANDARD_EXPORT.md) has versioned official validation and known schema/domain limits; full conformance and broader qualified mappings remain unresolved.
 
 Per-source and per-release terms still apply. A repository's code license does not necessarily grant redistribution rights to all source records. The current [INMC reuse audit](literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md) records the selected archive's terms separately from learner dependencies.
+
+The [current delivery index](releases/20261113/README.md) distinguishes the
+software-only archive, complete private source/decision packet, separate saved
+answer and combined offline demonstration. A projection's preserved source
+packet can still contain other providers' records. Check the entire delivered
+packet and its original terms rather than assuming its mapped subset or the
+MIT runtime license clears redistribution.

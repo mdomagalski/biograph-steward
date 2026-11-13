@@ -1,0 +1,8 @@
+# Optional evaluated native runtime; not a dependency of the application core.
+indra==1.24.0
+gilda==1.6.1
+adeft==0.13.0
+scikit-learn==1.9.1
+numpy==2.3.5
+ijson==3.4.0.post0
+simplejson==4.3.0

@@ -1,4 +1,4 @@
-"""Small read-only scientific assessment, bound to seven aggregate receipts.
+"""Read-only scientific assessment with optional source-bound aggregate components.
 
 This is deliberately separate from the OpenCell publication. It checks saved
 aggregate consistency and units, never recreates scientific labels, reads raw
@@ -7,6 +7,7 @@ experimental outcomes, chooses a graph or executes a scientific model.
 from copy import deepcopy
 import hashlib
 from html import escape
+import json
 import math
 from pathlib import Path
 import re
@@ -19,6 +20,24 @@ from .file_utils import new_output, sha
 
 FORMAT = 'biograph-steward.scientific-assessment-publication.v1'
 FORMAT_V2 = 'biograph-steward.scientific-assessment-publication.v2'
+FORMAT_V3 = 'biograph-steward.scientific-assessment-publication.v3'
+GROUNDING_FORMAT = 'biograph-steward.expert-grounding-aggregate.v1'
+GROUNDING_FILE = 'sources/grounding.json'
+GROUNDING_ARMS = ('lexical', 'sentence', 'publication')
+GROUNDING_GOLDS = ('grounding_error', 'correctly_grounded')
+GROUNDING_STATUSES = ('candidate_conflict', 'no_conflict', 'unresolved', 'model_error')
+GROUNDING_METRICS = ('precision', 'error_recall', 'false_conflict_rate', 'coverage', 'resolved_accuracy')
+GROUNDING_SCOPE = ('Expert-curator-relative human-gene grounding-error triage in a published '
+    'stratified mechanistic extraction corpus. Not whole-Pharos precision, protein-form '
+    'validation, independent experimental biology or a biological prediction gain. '
+    'The grounder merges gene/protein names; its training-paper overlap is unestablished. '
+    'A candidate conflict is a review proposal, not a validated replacement or prune.')
+GROUNDING_FLAGS = ('native_grounder_training_paper_independence_established',
+    'automatic_corrections_or_prunes_performed', 'new_gold_labels_created',
+    'underlying_biological_truth_measured', 'whole_graph_accuracy_estimated',
+    'source_graph_or_original_reference_changed')
+GROUNDING_REFERENCE = {'DOI': '10.15252/msb.202211325', 'Zenodo': 7559353,
+    'data_license': 'CC-BY-NC-SA-4.0', 'expert_labels_assigned_by_project_AI': False}
 ROLES = {
     'history': 'biograph-steward.historical-WikiPathways-content-verification.v1',
     'wiki_policy': 'biograph-steward.source-faithful-historical-WikiPathways-decisions.v1',
@@ -32,7 +51,8 @@ SOURCE_NAMES = {role: 'sources/' + role + '.json' for role in ROLES}
 PUBLIC_FILES = frozenset({*SOURCE_NAMES.values(), 'report.html', 'README.txt'})
 COESS_NAMES = {role: 'sources/coess_' + role + '.json'
                for role in ('score', 'frozen', 'capture', 'curves', 'controls')}
-ALL_PUBLIC_FILES = PUBLIC_FILES | frozenset(COESS_NAMES.values())
+V2_PUBLIC_FILES = PUBLIC_FILES | frozenset(COESS_NAMES.values())
+ALL_PUBLIC_FILES = V2_PUBLIC_FILES | {GROUNDING_FILE}
 COESS_SCOPES = ('nonsyntenic', 'all', 'syntenic', 'nonsyntenic_positive', 'nonsyntenic_negative')
 COESS_INTERPRETATION = ('Source qualification did not show a consistent advantage over normalized source context '
     'and the fixed count and degree controls across the complete primary N=1–10 curves.')
@@ -71,6 +91,13 @@ README_V2 = README + ('\nThe optional v2 extension copies five bounded coessenti
     'files. Complete curves preserve all 87 arms, five declared scopes and N=1–10. Native pair values, '
     'per-query labels and matrix payloads are excluded. Source/freeze/capture bindings are checked; '
     'no scoring, model fitting, endpoint selection or new scientific labels occur in this viewer.\n')
+README_GROUNDING = ('\nThe optional v3 grounding component copies one strictly aggregate-only projection '
+    'of a previously scored expert-curation component evaluation. Original case IDs, native curation tags, '
+    'source statements, names, text and individual predictions are excluded. Native reference licensing '
+    'and evaluator/freeze SHA256 commitments remain explicit. Error recall and false-conflict rate '
+    'retain all admitted cases of their respective gold class, including abstentions; resolved-only '
+    'accuracy and the common-resolved subset are labeled secondary. This task is not pooled with '
+    'graph coverage, whole-graph biological accuracy or prediction improvement.\n')
 
 
 def need(ok, message):
@@ -355,27 +382,252 @@ def _coessentiality_summary(files, pins, base_utility):
                     for role, name in COESS_NAMES.items()]}
 
 
+def _keys(value, names, description):
+    need(isinstance(value, dict) and set(value) == set(names), description + ' fields differ; only aggregates are accepted.')
+
+
+def _pin(value):
+    need(isinstance(value, str) and re.fullmatch(r'[0-9a-f]{64}', value), 'an explicit SHA256 pin is required.')
+    return value
+
+
+def _grounding_metrics(value, *, expected_n=None, expected_gold=None):
+    """Check arithmetic from saved counts, without reconstructing case labels."""
+    _keys(value, ('n_cases', 'gold_counts', 'status_counts', 'resolved_cases', 'abstention_cases',
+        'confusion_resolved', 'abstentions_by_gold', 'metric_numerators', 'metric_denominators',
+        *GROUNDING_METRICS), 'grounding metrics')
+    n = _count(value['n_cases'])
+    _keys(value['gold_counts'], GROUNDING_GOLDS, 'grounding endpoint classes')
+    _keys(value['status_counts'], GROUNDING_STATUSES, 'grounding statuses')
+    _keys(value['confusion_resolved'], ('TP', 'FP', 'FN', 'TN'), 'resolved confusion')
+    _keys(value['abstentions_by_gold'], GROUNDING_GOLDS, 'grounding abstentions')
+    gold = {k: _count(v) for k, v in value['gold_counts'].items()}
+    status = {k: _count(v) for k, v in value['status_counts'].items()}
+    confusion = {k: _count(v) for k, v in value['confusion_resolved'].items()}
+    abstentions = value['abstentions_by_gold']
+    for row in abstentions.values():
+        _keys(row, ('unresolved', 'model_error'), 'abstention reasons')
+        for count in row.values():
+            _count(count)
+    resolved = sum(confusion.values())
+    need(sum(gold.values()) == sum(status.values()) == n
+         and _count(value['resolved_cases']) == resolved
+         and _count(value['abstention_cases']) == n - resolved
+         and gold['grounding_error'] == confusion['TP'] + confusion['FN'] + sum(abstentions['grounding_error'].values())
+         and gold['correctly_grounded'] == confusion['FP'] + confusion['TN'] + sum(abstentions['correctly_grounded'].values())
+         and status['candidate_conflict'] == confusion['TP'] + confusion['FP']
+         and status['no_conflict'] == confusion['FN'] + confusion['TN']
+         and all(status[k] == sum(row[k] for row in abstentions.values()) for k in ('unresolved', 'model_error')),
+         'grounding full-denominator counts or abstentions differ.')
+    need((expected_n is None or n == expected_n) and (expected_gold is None or gold == expected_gold),
+         'grounding methods do not retain the same admitted endpoint denominator.')
+    nums = {'precision': confusion['TP'], 'error_recall': confusion['TP'],
+        'false_conflict_rate': confusion['FP'], 'coverage': resolved,
+        'resolved_accuracy': confusion['TP'] + confusion['TN']}
+    dens = {'precision': confusion['TP'] + confusion['FP'], 'error_recall': gold['grounding_error'],
+        'false_conflict_rate': gold['correctly_grounded'], 'coverage': n, 'resolved_accuracy': resolved}
+    for field, expected in (('metric_numerators', nums), ('metric_denominators', dens)):
+        _keys(value[field], GROUNDING_METRICS, field)
+        need({k: _count(v) for k, v in value[field].items()} == expected, 'grounding metric denominators or numerators differ.')
+    for name in GROUNDING_METRICS:
+        actual = value[name]
+        need((actual is None and dens[name] == 0) or (dens[name] > 0 and actual is not None
+             and math.isclose(_metric(actual), nums[name] / dens[name], rel_tol=1e-12, abs_tol=1e-12)),
+             'grounding ratio differs or an undefined value was replaced.')
+    return deepcopy(value)
+
+
+def _grounding_receipt(value):
+    """Accept only a compact aggregate schema; case/tag/text payloads fail closed."""
+    fields = ('format', 'created_at', 'scope', 'reference', 'split', 'primary_frame_cases',
+        'admitted_endpoint_cases', 'outside_endpoint_cases', 'metrics_by_arm', 'common_resolved_secondary',
+        'paired_comparisons', 'source_report_file_sha256', 'source_report_content_sha256',
+        'evaluation_freeze_content_sha256', 'evaluator_implementation_sha256', 'scoring_helper_sha256',
+        'aggregate_producer_implementation_sha256', 'raw_reference_rows_or_case_ids_included',
+        'native_curation_tags_included', *GROUNDING_FLAGS, 'content_sha256')
+    _keys(value, fields, 'grounding receipt')
+    need(_sealed(value) and value['format'] == GROUNDING_FORMAT and value['scope'] == GROUNDING_SCOPE
+         and value['reference'] == GROUNDING_REFERENCE and value['split'] in {'development', 'test'}
+         and isinstance(value['created_at'], str) and value['created_at']
+         and all(value[k] is False for k in (*GROUNDING_FLAGS,
+             'raw_reference_rows_or_case_ids_included', 'native_curation_tags_included')),
+         'grounding reference or separate component scope changed.')
+    for name in ('source_report_file_sha256', 'source_report_content_sha256', 'evaluation_freeze_content_sha256',
+                 'evaluator_implementation_sha256', 'scoring_helper_sha256', 'aggregate_producer_implementation_sha256'):
+        _pin(value[name])
+    n = _count(value['admitted_endpoint_cases'])
+    need(n + _count(value['outside_endpoint_cases']) == _count(value['primary_frame_cases']),
+         'grounding frame and outside-endpoint denominator differ.')
+    metrics = value['metrics_by_arm']
+    _keys(metrics, GROUNDING_ARMS, 'fixed grounding arms')
+    gold = None
+    for arm in GROUNDING_ARMS:
+        _grounding_metrics(metrics[arm], expected_n=n, expected_gold=gold)
+        gold = metrics[arm]['gold_counts']
+    common = value['common_resolved_secondary']
+    _keys(common, ('scope', 'primary', 'n_cases', 'not_a_replacement_for_full_denominator', 'metrics_by_arm'),
+          'common-resolved secondary')
+    common_n = _count(common['n_cases'])
+    need(common['scope'] == 'all_arms_resolved_intersection.secondary.v1' and common['primary'] is False
+         and common['not_a_replacement_for_full_denominator'] is True
+         and max(0, sum(m['resolved_cases'] for m in metrics.values()) - 2 * n) <= common_n
+         <= min(m['resolved_cases'] for m in metrics.values()), 'common-resolved scope or subset size differs.')
+    _keys(common['metrics_by_arm'], GROUNDING_ARMS, 'common-resolved arms')
+    common_gold = None
+    for arm in GROUNDING_ARMS:
+        cm = _grounding_metrics(common['metrics_by_arm'][arm], expected_n=common_n, expected_gold=common_gold)
+        common_gold = cm['gold_counts']
+        need(cm['resolved_cases'] == common_n
+             and all(cm['gold_counts'][k] <= gold[k] for k in GROUNDING_GOLDS)
+             and all(cm['confusion_resolved'][k] <= metrics[arm]['confusion_resolved'][k] for k in ('TP', 'FP', 'FN', 'TN')),
+             'common-resolved metrics are not a secondary subset of the complete frame.')
+    pairs = value['paired_comparisons']
+    need(isinstance(pairs, list) and len(pairs) == 3, 'preserve all three paired grounding comparisons.')
+    seen = set()
+    for pair in pairs:
+        _keys(pair, ('left_arm', 'right_arm', 'all_selected_case_count', 'status_transitions',
+            'correctness_transitions', 'change_direction', 'confusion_count_changes', 'resolved_case_change',
+            'abstention_case_change', 'metric_changes'), 'paired grounding comparison')
+        left, right = pair['left_arm'], pair['right_arm']
+        need(left in metrics and right in metrics and left < right and (left, right) not in seen
+             and _count(pair['all_selected_case_count']) == n and pair['change_direction'] == 'right_minus_left',
+             'paired grounding identities or full denominator differ.')
+        seen.add((left, right))
+        lm, rm = metrics[left], metrics[right]
+        outcomes = ('correct', 'error', 'abstention')
+        outcome_counts = lambda m: {'correct': m['confusion_resolved']['TP'] + m['confusion_resolved']['TN'],
+            'error': m['confusion_resolved']['FP'] + m['confusion_resolved']['FN'], 'abstention': m['abstention_cases']}
+        for key, names, lc, rc in (('status_transitions', GROUNDING_STATUSES, lm['status_counts'], rm['status_counts']),
+                ('correctness_transitions', outcomes, outcome_counts(lm), outcome_counts(rm))):
+            table = pair[key]
+            _keys(table, names, key)
+            for row in table.values():
+                _keys(row, names, key + ' row')
+                for count in row.values():
+                    _count(count)
+            need(all(sum(table[k].values()) == lc[k] and sum(row[k] for row in table.values()) == rc[k]
+                     for k in names), 'paired transitions do not preserve saved method marginal counts.')
+        _keys(pair['confusion_count_changes'], ('TP', 'FP', 'FN', 'TN'), 'confusion changes')
+        expected_changes = {k: rm['confusion_resolved'][k] - lm['confusion_resolved'][k] for k in ('TP', 'FP', 'FN', 'TN')}
+        need(all(type(v) is int for v in pair['confusion_count_changes'].values())
+             and pair['confusion_count_changes'] == expected_changes
+             and type(pair['resolved_case_change']) is int and pair['resolved_case_change'] == rm['resolved_cases'] - lm['resolved_cases']
+             and type(pair['abstention_case_change']) is int and pair['abstention_case_change'] == rm['abstention_cases'] - lm['abstention_cases'],
+             'paired grounding count changes differ.')
+        _keys(pair['metric_changes'], GROUNDING_METRICS, 'paired metric changes')
+        for name in GROUNDING_METRICS:
+            change = pair['metric_changes'][name]
+            expected = rm[name] - lm[name] if lm[name] is not None and rm[name] is not None else None
+            need((expected is None and change is None) or (expected is not None and type(change) in (int, float)
+                 and math.isfinite(change) and math.isclose(change, expected, rel_tol=1e-12, abs_tol=1e-12)),
+                 'paired grounding metric change differs.')
+    return value
+
+
+def prepare_grounding_aggregate(evaluation_report, output_json, *, expected_report_pin):
+    """Project an already-scored private receipt; never copy cases or native tags.
+
+    This does not score labels, execute Gilda or select a winning context arm.
+    Only the fixed aggregate fields below are accessed and copied. The new JSON
+    is suitable for the optional viewer; native NC-SA data remain separate.
+    """
+    raw = _bounded(evaluation_report)
+    implementation_pin = sha(__file__)
+    need(hashlib.sha256(raw).hexdigest() == _pin(expected_report_pin), 'grounding evaluator report differs from its operator pin.')
+    source = _decode(raw)
+    need(_sealed(source) and source.get('format') == 'biograph-steward.expert-grounding-component-evaluation.v1'
+         and source.get('reference') == GROUNDING_REFERENCE and all(source.get(k) is False for k in GROUNDING_FLAGS),
+         'expected a scored grounding component with unchanged separate-task boundaries.')
+    comparison = source['comparison']
+    need(comparison.get('format') == 'biograph-steward.grounding-error-triage-comparison.v1'
+         and all(comparison.get(k) is False for k in ('new_gold_labels_created',
+             'population_scientific_accuracy_or_confidence_intervals_claimed',
+             'source_grounding_scores_treated_as_truth_probabilities'))
+         and comparison['all_selected_case_count'] == source['admitted_endpoint_cases'],
+         'grounding comparison scope or admitted denominator differs.')
+    common = comparison['common_resolved_secondary']
+    value = {'format': GROUNDING_FORMAT, 'created_at': utcnow(), 'scope': GROUNDING_SCOPE,
+        'reference': deepcopy(GROUNDING_REFERENCE), 'split': source['split'],
+        **{k: source[k] for k in ('primary_frame_cases', 'admitted_endpoint_cases', 'outside_endpoint_cases')},
+        'metrics_by_arm': deepcopy(comparison['metrics_by_arm']),
+        'common_resolved_secondary': {k: deepcopy(common[k]) for k in (
+            'scope', 'primary', 'n_cases', 'not_a_replacement_for_full_denominator', 'metrics_by_arm')},
+        'paired_comparisons': deepcopy(comparison['paired_comparisons']),
+        'source_report_file_sha256': expected_report_pin, 'source_report_content_sha256': source['content_sha256'],
+        'evaluation_freeze_content_sha256': source['evaluation_freeze_content_sha256'],
+        'evaluator_implementation_sha256': source['implementation_sha256'],
+        'scoring_helper_sha256': source['scoring_helper_sha256'],
+        'aggregate_producer_implementation_sha256': implementation_pin,
+        'raw_reference_rows_or_case_ids_included': False, 'native_curation_tags_included': False,
+        **{k: False for k in GROUNDING_FLAGS}}
+    value['content_sha256'] = digest(value)
+    _grounding_receipt(value)
+    output = Path(output_json)
+    need(output.suffix == '.json' and not output.exists() and not output.is_symlink(), 'use a new JSON output file.')
+    need(_bounded(evaluation_report) == raw and sha(__file__) == implementation_pin,
+         'grounding evaluator receipt or implementation changed during projection.')
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open('x', encoding='utf-8') as stream:
+        json.dump(value, stream, indent=2, ensure_ascii=False, allow_nan=False)
+        stream.write('\n')
+    return value
+
+
+def _grounding_summary(files, pin):
+    raw = files[GROUNDING_FILE]
+    need(hashlib.sha256(raw).hexdigest() == _pin(pin), 'grounding aggregate differs from its operator pin.')
+    receipt = _grounding_receipt(_decode(raw))
+    return {**deepcopy(receipt), 'title': 'Expert-curator grounding triage: separate component',
+        'unit': 'admitted statement/source grounding cases',
+        'interpretation': 'Native curator labels assess source-to-gene identity proposals. All three fixed context arms and abstentions remain visible; this does not score or automatically correct the Pharos graph.',
+        'sources': [{'role': 'grounding', 'file': GROUNDING_FILE, 'file_sha256': pin,
+                     'content_sha256': receipt['content_sha256']}]}
+
+
 def _publication_summary(files, pins, format_name):
     summary = _summary(files, {role: pins[role] for role in ROLES})
     if format_name == FORMAT:
         need(set(pins) == set(ROLES), 'v1 accepts only its seven aggregate receipts.')
         return summary
-    need(format_name == FORMAT_V2 and set(pins) == set(ROLES) | {'coess_' + k for k in COESS_NAMES},
-         'v2 requires all declared coessentiality aggregate pins.')
-    extra = _coessentiality_summary(files, {role: pins['coess_' + role] for role in COESS_NAMES},
-                                   _decode(files[SOURCE_NAMES['utility']]))
-    summary['format'] = FORMAT_V2 + '.summary'
-    summary['coessentiality'] = extra
-    summary['sources'] += extra['sources']
-    summary['literature'] += [{'title': 'Wainberg et al.: pan-cancer coessentiality',
-        'url': 'https://doi.org/10.1038/s41588-021-00840-z'},
-        {'title': 'Coessentiality author code', 'url': 'https://github.com/kundajelab/coessentiality'},
-        {'title': 'Native XSwap controls', 'url': 'https://github.com/hetio/xswap'}]
+    coess_pins = {'coess_' + k for k in COESS_NAMES}
+    has_coess = bool(set(pins) & coess_pins)
+    expected = set(ROLES) | (coess_pins if has_coess else set())
+    if format_name == FORMAT_V2:
+        need(has_coess and set(pins) == expected, 'v2 requires all declared coessentiality aggregate pins.')
+    else:
+        need(format_name == FORMAT_V3 and set(pins) == expected | {'grounding'},
+             'v3 requires a grounding aggregate and either all or no coessentiality aggregates.')
+    if has_coess:
+        extra = _coessentiality_summary(files, {role: pins['coess_' + role] for role in COESS_NAMES},
+                                       _decode(files[SOURCE_NAMES['utility']]))
+        summary['coessentiality'] = extra
+        summary['sources'] += extra['sources']
+        summary['literature'] += [{'title': 'Wainberg et al.: pan-cancer coessentiality',
+            'url': 'https://doi.org/10.1038/s41588-021-00840-z'},
+            {'title': 'Coessentiality author code', 'url': 'https://github.com/kundajelab/coessentiality'},
+            {'title': 'Native XSwap controls', 'url': 'https://github.com/hetio/xswap'}]
+    if format_name == FORMAT_V3:
+        extra = _grounding_summary(files, pins['grounding'])
+        summary['grounding'] = extra
+        summary['sources'] += extra['sources']
+        summary['literature'] += [{'title': 'Expert-curated mechanistic extraction corpus',
+            'url': 'https://doi.org/10.15252/msb.202211325'},
+            {'title': 'Gilda contextual entity grounding', 'url': 'https://doi.org/10.1093/bioadv/vbac034'}]
+    summary['format'] = format_name + '.summary'
     return summary
 
 
+def _publication_readme(format_name, has_coess):
+    if format_name == FORMAT:
+        return README
+    if format_name == FORMAT_V2:
+        return README_V2
+    return (README_V2 if has_coess else README) + README_GROUNDING
+
+
 def publish(source_reports, output, *, expected_source_pins,
-            coessentiality_reports=None, expected_coessentiality_pins=None):
+            coessentiality_reports=None, expected_coessentiality_pins=None,
+            grounding_report=None, expected_grounding_pin=None):
     """Publish one curated snapshot using explicit operator-selected input pins."""
     need(isinstance(source_reports, dict) and set(source_reports) == set(ROLES), 'supply exactly the seven aggregate source roles.')
     implementation_pin = sha(__file__)
@@ -391,18 +643,27 @@ def publish(source_reports, output, *, expected_source_pins,
         files.update({COESS_NAMES[role]: _bounded(path, limit=3_000_000) for role, path in extra_paths.items()})
         pins.update({'coess_' + role: pin for role, pin in expected_coessentiality_pins.items()})
         format_name = FORMAT_V2
+    grounding_path = None
+    if grounding_report is not None or expected_grounding_pin is not None:
+        need(grounding_report is not None and expected_grounding_pin is not None,
+             'supply the optional sanitized grounding aggregate and its explicit pin together.')
+        grounding_path = Path(grounding_report)
+        files[GROUNDING_FILE] = _bounded(grounding_path)
+        pins['grounding'] = expected_grounding_pin
+        format_name = FORMAT_V3
     summary = _publication_summary(files, pins, format_name)
-    folder = new_output(output, *paths.values(), *extra_paths.values())
+    folder = new_output(output, *paths.values(), *extra_paths.values(), *([grounding_path] if grounding_path else []))
     for name, raw in files.items():
         target = folder / name
         target.parent.mkdir(exist_ok=True)
         target.write_bytes(raw)
-    files['README.txt'] = (README_V2 if format_name == FORMAT_V2 else README).encode()
+    files['README.txt'] = _publication_readme(format_name, bool(extra_paths)).encode()
     files['report.html'] = render_html(summary).encode()
     for name in ('README.txt', 'report.html'):
         (folder / name).write_bytes(files[name])
     need(all(_bounded(paths[role]) == files[SOURCE_NAMES[role]] for role in ROLES)
          and all(_bounded(path, limit=3_000_000) == files[COESS_NAMES[role]] for role, path in extra_paths.items())
+         and (grounding_path is None or _bounded(grounding_path) == files[GROUNDING_FILE])
          and sha(__file__) == implementation_pin, 'source or implementation changed during publication.')
     manifest = {'format': format_name, 'created_at': utcnow(), 'summary': summary,
         'operator_source_pins': pins, 'input_pins_authenticate_publisher': False,
@@ -423,9 +684,13 @@ def load_publication(folder):
     folder = Path(folder)
     need(folder.is_dir() and not folder.is_symlink(), 'publication directory is unavailable or symlinked.')
     folder = folder.resolve()
-    format_name = _decode(_bounded(folder / 'publication.json')).get('format')
-    need(format_name in {FORMAT, FORMAT_V2}, 'unsupported publication format.')
-    expected_files = ALL_PUBLIC_FILES if format_name == FORMAT_V2 else PUBLIC_FILES
+    header = _decode(_bounded(folder / 'publication.json'))
+    format_name = header.get('format')
+    need(format_name in {FORMAT, FORMAT_V2, FORMAT_V3}, 'unsupported publication format.')
+    has_coess = any('coess_' + k in header.get('operator_source_pins', {}) for k in COESS_NAMES)
+    expected_files = (V2_PUBLIC_FILES if has_coess else PUBLIC_FILES)
+    if format_name == FORMAT_V3:
+        expected_files = expected_files | {GROUNDING_FILE}
     names = {p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file()}
     need(names == expected_files | {'publication.json'} and not any(p.is_symlink() for p in folder.rglob('*')),
          'publication contains missing or additional files.')
@@ -436,7 +701,7 @@ def load_publication(folder):
          'raw_reference_rows_included', 'scientific_labels_created', 'source_graph_modified', 'input_pins_authenticate_publisher'))
          and manifest.get('read_only') is True, 'publication policy or format changed.')
     summary = _publication_summary(captured, manifest['operator_source_pins'], format_name)
-    expected_readme = README_V2 if format_name == FORMAT_V2 else README
+    expected_readme = _publication_readme(format_name, has_coess)
     need(manifest.get('summary') == summary and captured['README.txt'] == expected_readme.encode()
          and captured['report.html'] == render_html(summary).encode(), 'publication summary or presentation differs from its receipts.')
     return manifest, summary, captured
@@ -451,7 +716,7 @@ def list_publications(runs_dir):
         if not path.is_file() or path.stat().st_size > 250_000:
             continue
         try:
-            if _decode(_bounded(path)).get('format') not in {FORMAT, FORMAT_V2}:
+            if _decode(_bounded(path)).get('format') not in {FORMAT, FORMAT_V2, FORMAT_V3}:
                 continue
             manifest, summary, _ = load_publication(folder)
             rows.append({'id': folder.name, 'created_at': manifest['created_at'], 'content_sha256': manifest['content_sha256'], 'summary': summary})
@@ -461,7 +726,7 @@ def list_publications(runs_dir):
 
 
 def render_html(summary):
-    """Escape every value; source-proof links name only the seven copied JSONs."""
+    """Escape every value; proof links name only allowlisted aggregate JSONs."""
     e = escape
     n, v, go, crc, cv, im = [summary[k] for k in ('native_history', 'default_view', 'GO', 'CRC_cohort', 'CIViC', 'INMC')]
     text = lambda value: e(str(value), quote=True)
@@ -499,6 +764,8 @@ def render_html(summary):
     parts += ['<p>' + text(im['scope']) + '</p><p>' + text(im['decision']) + '</p>']
     if summary.get('coessentiality') is not None:
         parts.append(_coessentiality_html(summary['coessentiality']))
+    if summary.get('grounding') is not None:
+        parts.append(_grounding_html(summary['grounding']))
     parts += ['<h2>Limits and proof</h2><ul>']
     parts += ['<li>' + text(item) + '</li>' for item in summary['remaining_gaps']]
     parts += ['</ul><p>Graph: <code>' + text(summary['graph_sha256']) + '</code></p><ul>']
@@ -506,6 +773,42 @@ def render_html(summary):
               + text(item['file_sha256']) + '</code></li>' for item in summary['sources']]
     parts += ['</ul><p>' + ' · '.join('<a href="' + text(item['url']) + '" rel="noreferrer">' + text(item['title']) + '</a>'
                                     for item in summary['literature']) + '</p></html>']
+    return ''.join(parts)
+
+
+def _grounding_html(value):
+    """A separate component axis, with full endpoint denominators and abstentions."""
+    text = lambda x: escape(str(x), quote=True)
+    ratio = lambda m, name: ('undefined' if m[name] is None else format(m[name], '.6f')) + (
+        ' (' + str(m['metric_numerators'][name]) + '/' + str(m['metric_denominators'][name]) + ')')
+    arms = value['metrics_by_arm']
+    gold = arms['lexical']['gold_counts']
+    parts = ['<h2>' + text(value['title']) + '</h2><p class=scope>' + text(value['scope']) + '</p>',
+        '<p>' + text(value['interpretation']) + '</p><p>' + text(value['split']) + ' partition: '
+        + text(value['admitted_endpoint_cases']) + '/' + text(value['primary_frame_cases'])
+        + ' cases admitted to this endpoint (' + text(gold['grounding_error']) + ' native grounding-error; '
+        + text(gold['correctly_grounded']) + ' native correctly-grounded). '
+        + text(value['outside_endpoint_cases']) + ' cases remain outside the endpoint; they are not negatives.</p>',
+        '<p>Error recall includes every admitted grounding-error case; false-conflict rate includes every admitted correctly-grounded case. Abstentions stay in those denominators. Precision concerns review proposals, not validated corrections.</p>',
+        '<div style="overflow:auto"><table><tr><th>Fixed context arm</th><th>Conflict precision</th><th>Error recall</th><th>False-conflict rate</th><th>Resolved coverage</th><th>Abstentions</th></tr>']
+    for arm in GROUNDING_ARMS:
+        m = arms[arm]
+        parts.append('<tr><td>' + text(arm) + '</td>' + ''.join('<td>' + text(ratio(m, k)) + '</td>'
+            for k in ('precision', 'error_recall', 'false_conflict_rate', 'coverage'))
+            + '<td>' + text(m['abstention_cases']) + '</td></tr>')
+    parts += ['</table></div><details><summary>Resolved-only diagnostics and frozen evaluation identity</summary>',
+        '<p>Resolved-only accuracy is conditional and secondary. The common-resolved intersection contains '
+        + text(value['common_resolved_secondary']['n_cases']) + ' cases and never replaces the complete admitted frame.</p><ul>']
+    for arm in GROUNDING_ARMS:
+        m = arms[arm]
+        parts.append('<li>' + text(arm) + ': resolved-only accuracy ' + text(ratio(m, 'resolved_accuracy'))
+            + '; unresolved ' + text(m['status_counts']['unresolved']) + '; model error '
+            + text(m['status_counts']['model_error']) + '.</li>')
+    parts += ['</ul><p>Complete paired transitions and secondary aggregates remain in the copied aggregate receipt. No case IDs, source text, native tag records or individual predictions are published.</p>',
+        '<p>Evaluation freeze: <code>' + text(value['evaluation_freeze_content_sha256'])
+        + '</code><br>Private evaluator report SHA256: <code>' + text(value['source_report_file_sha256'])
+        + '</code></p><p>Reference data license: ' + text(value['reference']['data_license'])
+        + '. Source commitments are integrity records, not publisher authentication or proof of training independence.</p></details>']
     return ''.join(parts)
 
 

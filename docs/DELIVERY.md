@@ -1,5 +1,18 @@
 # Delivery and reviewer access
 
+The [November 13 delivery index](releases/20261113/README.md) joins the designated
+runtime, current graph and answer archives, exact checksums and access/source
+boundaries. Its [manifest](releases/20261113/manifest.json) separates runtime
+`902699e` from the later documentation checkpoint and lists relative local
+artifact paths. Preparing the index publishes no assets and changes no graph.
+
+The checkout also includes the small [CC0 Reactome annex](../examples/reactome_context_20261113/README.md)
+for offline real-source inspection. The optional
+[expert-grounding evaluation](evaluations/EXPERT_GROUNDING_20261113.md) has a
+[sanitized result](evaluations/expert_grounding_20261113_aggregate.json) and
+[reproduction tools](../tools/grounding_claims/README.md). These later additions
+do not replace the pinned runtime inside the already prepared archives below.
+
 The current scientific demonstration is the
 [source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md),
 `source_faithful_workspace_20261113`: **99 primary Pharos targets, 9,865 entities

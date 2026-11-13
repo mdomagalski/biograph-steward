@@ -1,0 +1,174 @@
+{
+  "format": "biograph-steward.reactome-context-annex.v1",
+  "created_at": "2026-11-13T13:20:06.746779+00:00",
+  "purpose": "Standalone real publisher-data context annex; not the complete Pharos graph or a biological gold/evaluation result.",
+  "source": "Reactome Content Service",
+  "source_release": 98,
+  "data_license": {
+    "id": "CC0-1.0",
+    "URL": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "publisher_statement_URL": "https://reactome.org/license",
+    "scope": "The exact eight native data responses listed below; not external article content, publisher website HTML, artwork or the full Pharos source packet.",
+    "publisher_policy_capture": {
+      "captured_at": "2026-11-13T08:27:59.454264+00:00",
+      "source_URL": "https://reactome.org/license",
+      "sha256": "f4c8bda7d320ee34775e8d1913dbd1d5a72b15e1da74fbf6cd6cbf71f884c80f",
+      "bytes": 58062,
+      "read_scope": "License Agreement Data clause, with separate graphics/software licenses. Cached policy HTML is not bundled."
+    }
+  },
+  "viewer_and_authored_documentation_license": {
+    "id": "MIT",
+    "file": "LICENSE_CODE.txt"
+  },
+  "original_capture": {
+    "format": "biograph-steward.current-native-Reactome-source-role-trace.v1",
+    "created_at": "2026-11-13T08:31:35.388562+00:00",
+    "content_sha256": "98e1132369857c7b96d7daca95ebffc1562e1f0dc4fc45005fa3bb2d628f7b2a",
+    "full_private_trace_included": false
+  },
+  "data_files": [
+    {
+      "file": "data/Q8NCR0_participating_reactions.json",
+      "bytes": 389,
+      "sha256": "6d34218b954e9dcc0564b25a22ee62cb580fbf11f92be6649be7e421c9bd59da",
+      "source_URL": "https://reactome.org/ContentService/data/mapping/UniProt/Q8NCR0/reactions",
+      "response_URL": "https://reactome.org/ContentService/data/mapping/UniProt/Q8NCR0/reactions",
+      "captured_at": "2026-11-13T08:25:02.646372+00:00",
+      "HTTP_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "data_license": "CC0-1.0"
+    },
+    {
+      "file": "data/physical_entity_R-HSA-8878916.json",
+      "bytes": 7561,
+      "sha256": "25ac9be68ef5e5758069692e0850739fc2d693f70411434110807b16e30d3a2c",
+      "source_URL": "https://reactome.org/ContentService/data/query/R-HSA-8878916",
+      "response_URL": "https://reactome.org/ContentService/data/query/R-HSA-8878916",
+      "captured_at": "2026-11-13T08:28:53.042489+00:00",
+      "HTTP_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "data_license": "CC0-1.0"
+    },
+    {
+      "file": "data/catalyst_activity_8931635.json",
+      "bytes": 1115,
+      "sha256": "d1d28821e449effab9ddb8857a3fc1afe1bf19d95e8615ab620656ed5516fbd7",
+      "source_URL": "https://reactome.org/ContentService/data/query/8931635",
+      "response_URL": "https://reactome.org/ContentService/data/query/8931635",
+      "captured_at": "2026-11-13T08:25:46.546107+00:00",
+      "HTTP_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "data_license": "CC0-1.0"
+    },
+    {
+      "file": "data/reaction_R-HSA-8931648.json",
+      "bytes": 10015,
+      "sha256": "e8f79b8c3d771cb80c0aab416a566e97fa9f8a76e524996ab833e9456c91355d",
+      "source_URL": "https://reactome.org/ContentService/data/query/R-HSA-8931648",
+      "response_URL": "https://reactome.org/ContentService/data/query/R-HSA-8931648",
+      "captured_at": "2026-11-13T08:25:18.629723+00:00",
+      "HTTP_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "data_license": "CC0-1.0"
+    },
+    {
+      "file": "data/reaction_ancestors_R-HSA-8931648.json",
+      "bytes": 2296,
+      "sha256": "b56b5b4711049c726be2751ab0f92c2184faa8ecd795192a740893e311140edc",
+      "source_URL": "https://reactome.org/ContentService/data/event/R-HSA-8931648/ancestors",
+      "response_URL": "https://reactome.org/ContentService/data/event/R-HSA-8931648/ancestors",
+      "captured_at": "2026-11-13T08:28:53.283328+00:00",
+      "HTTP_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "data_license": "CC0-1.0"
+    },
+    {
+      "file": "data/pathway_R-HSA-8931838.json",
+      "bytes": 12432,
+      "sha256": "9df69c80fcb26fbbb4c28ed1a3a22b5679da5404b429e5353331466d1d0a99c0",
+      "source_URL": "https://reactome.org/ContentService/data/query/R-HSA-8931838",
+      "response_URL": "https://reactome.org/ContentService/data/query/R-HSA-8931838",
+      "captured_at": "2026-11-13T08:24:36.178241+00:00",
+      "HTTP_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "data_license": "CC0-1.0"
+    },
+    {
+      "file": "data/pathway_R-HSA-5173105.json",
+      "bytes": 9807,
+      "sha256": "5246eb1da76a12ed7bebf91854c2a0bcd3544b066ddd80c6c2507a5d8731e362",
+      "source_URL": "https://reactome.org/ContentService/data/query/R-HSA-5173105",
+      "response_URL": "https://reactome.org/ContentService/data/query/R-HSA-5173105",
+      "captured_at": "2026-11-13T08:23:51.131307+00:00",
+      "HTTP_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "data_license": "CC0-1.0"
+    },
+    {
+      "file": "data/current_release_text_plain.txt",
+      "bytes": 2,
+      "sha256": "29db0c6782dbd5000559ef4d9e953e300e2b479eed26d887ef3f92b921c06a67",
+      "source_URL": "https://reactome.org/ContentService/data/database/version",
+      "response_URL": "https://reactome.org/ContentService/data/database/version",
+      "captured_at": "2026-11-13T08:28:53.949127+00:00",
+      "HTTP_status": 200,
+      "content_type": "text/plain;charset=UTF-8",
+      "data_license": "CC0-1.0"
+    }
+  ],
+  "authored_files": [
+    {
+      "file": "README.md",
+      "bytes": 3495,
+      "sha256": "09dc771acb61238032c04bae9c55f6cad002b93b6b972a8f028d000aecd987fb"
+    },
+    {
+      "file": "index.html",
+      "bytes": 8607,
+      "sha256": "f2c7feb54625fa89b55ca526ab00edbb01034125583f3e071787ff5cdf3a34b7"
+    },
+    {
+      "file": "DATA_LICENSE.md",
+      "bytes": 1053,
+      "sha256": "e38664614a088fc5b143272080af98f560cadb2f8aca13674fddfcf523468ba1"
+    },
+    {
+      "file": "LICENSE_CODE.txt",
+      "bytes": 1246,
+      "sha256": "57a15858e9851bdbfd32521359fca17661b8a0b0903400561350fab7931308f2"
+    }
+  ],
+  "source_identity": {
+    "UniProt": "Q8NCR0",
+    "gene_name": [
+      "B3GALNT2"
+    ],
+    "physical_entity": "R-HSA-8878916.1",
+    "catalyst_activity_dbId": 8931635,
+    "reaction": "R-HSA-8931648.3",
+    "species_model_field": "Homo sapiens",
+    "isInferred_model_field": false
+  },
+  "preservation": {
+    "all_data_bytes_equal_original_capture": true,
+    "all_native_data_hashes_match_original_capture_report_and_successful_requests": true,
+    "native_JSON_fields_rewritten": false,
+    "original_sources_or_graphs_modified": false,
+    "original_request_headers_or_cookies_included": false,
+    "publisher_HTML_or_articles_included": false,
+    "full_Pharos_source_packet_included": false
+  },
+  "interpretation_limits": [
+    "Current curator metadata are not exact historical Pharos319 contents.",
+    "Human/inference/compartment fields are model assertions, not assay-host or protein-topology proof.",
+    "Nested pathway contexts and citation interfaces are not independent experimental votes.",
+    "No biological truth label, new experiment, prediction gain or automatic graph acceptance/pruning is created."
+  ],
+  "new_source_requests": 0,
+  "model_or_GPU_calls": 0,
+  "cloud_actions": 0,
+  "browser_visual_check_performed": false,
+  "manifest_self_not_in_its_own_authored_file_inventory": true,
+  "content_sha256": "95fb7d3542e2bf08fa0bcd099c8e3cf5e118fd0b95406112b8923c4aa1e17e3f"
+}

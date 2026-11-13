@@ -1,5 +1,14 @@
 # Source claims, experimental signatures and an external reference
 
+**Current status — November 13:** this is the preserved source-review and
+pre-execution selection checkpoint. The selected HCT116 **CRISPR-knockout**
+study was subsequently scored and is consumed. See the
+[completed external comparison](HCT116_EXTERNAL_COMPARISON_20261112.md),
+including the preserved initial parser result and corrected technical replay
+after outcome exposure. This is a different study from the HCT116 BioPlex
+coassociation assessment. The historical unopened-state statements below do
+not designate a fresh holdout.
+
 This follow-up qualifies specific source claims and selects a separate public
 experiment for a future comparison. It does not report a new biological
 performance gain. The completed kinase comparison and the app graph are

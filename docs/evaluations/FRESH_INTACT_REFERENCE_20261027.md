@@ -1,5 +1,13 @@
 # Fresh IntAct reference: metadata selection, not an assessment result
 
+**Current status — November 13:** this is the preserved metadata-selection
+checkpoint. All four selected studies were subsequently opened and are
+consumed. The [fixed fresh assessment](INTACT_FRESH_ASSESSMENT_20261027.md)
+completed at 4/8 end-to-end coverage/strict fidelity; the separate
+[consumed reliability replay](PHAROS_RETRIEVAL_RELIABILITY_20261027.md) reached
+8/8. The replay does not replace the fresh result. Historical unopened-state
+statements below describe selection time, not another available holdout.
+
 Prepared October 27, 2026. Use **all four remaining metadata-eligible studies
 from the original saved IntAct directory** for a separately frozen source-fidelity
 assessment. Their source bodies remain unopened. The corrected comparator must

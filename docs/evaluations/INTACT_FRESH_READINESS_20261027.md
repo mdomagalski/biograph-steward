@@ -1,5 +1,14 @@
 # Fresh IntAct assessment: readiness review
 
+**Current status — November 13:** this is the preserved pre-execution readiness
+review. The four selected studies were subsequently opened and are consumed.
+The [completed fresh assessment](INTACT_FRESH_ASSESSMENT_20261027.md) reported
+4/8 end-to-end coverage/strict fidelity. Its separate
+[consumed reliability replay](PHAROS_RETRIEVAL_RELIABILITY_20261027.md) reached
+8/8 without replacing that result. The remaining-work and unopened-state
+statements below describe the earlier checkpoint and are not current access
+authorization or a fresh evaluation plan.
+
 The existing workbench can construct a Pharos cohort, attach qualified assay
 observations, answer questions with source references and export a verifiable
 graph package. The corrected IntAct identity comparison has also passed this

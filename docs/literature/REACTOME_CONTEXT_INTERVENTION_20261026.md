@@ -1,5 +1,11 @@
 # Selected biological development comparison: Reactome context
 
+**Current status — November 13:** this is the preserved intervention-selection
+record. The [fixed Reactome comparison](../evaluations/REACTOME_CONTEXT_COMPARISON_20261026.md)
+subsequently completed on the consumed INMC panel, with mixed seed effects and
+no consistent incremental benefit. The selected/not-executed status and gates
+below describe selection time; they are not a new freeze or fresh holdout.
+
 October 26, 2026 (America/New_York). **Selected, not executed or frozen.**
 
 Add the exact Reactome protein-to-pathway memberships already retrieved from

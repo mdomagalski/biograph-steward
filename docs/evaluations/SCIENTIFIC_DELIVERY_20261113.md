@@ -9,6 +9,13 @@ The [two-page project update](../../output/pdf/BioGraph_Steward_Scientific_Updat
 provides a concise handoff with an actual app capture, reference denominators
 and the controlled result. The full methods and source boundaries follow here.
 
+The subsequent [expert-labeled grounding assessment](EXPERT_GROUNDING_20261113.md)
+adds an executed source-identity check using published INDRA curations and
+native Gilda/Adeft tools. On 678 eligible reserved cases, publication context
+reduces false alarms from 25 to 18 while detecting 26 rather than 31 grounding
+errors. This measured trade-off supports assisted review; it supplies no new
+biological pruning rule. The two-page update above predates this addition.
+
 ## Delivered
 
 - **16,687 retained evidence records across 99 protein targets.** The original

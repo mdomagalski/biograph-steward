@@ -1,0 +1,584 @@
+{
+  "format": "biograph-steward.grounding-replay-metadata.v1",
+  "original_freeze_content_sha256": "acb70606b94b90bbde8a2828e835678244a5c7e8ddac5b9533ed45b3a42c0c0a",
+  "reference": {
+    "DOI": "10.15252/msb.202211325",
+    "Zenodo": 7559353,
+    "license": "CC-BY-NC-SA-4.0",
+    "curation_policy": "Unanimous native correct vs unanimous native grounding only; other, mixed and absent tags remain outside endpoint."
+  },
+  "method": {
+    "native_Gilda_paper": "10.1093/bioadv/vbac034",
+    "context": "Lexical vs evidence sentence vs exact numeric PMID current PubMed title plus abstract; unavailable remains unresolved.",
+    "Adeft": "All 20 shortforms/19 models covering outcome-free prepared inputs; all 57 native files captured; no outcome-based model selection.",
+    "model_threshold": "Native Gilda load_gilda_models default 0.7; no fitted project threshold or custom replacement.",
+    "prediction_rule": "Compare native top candidate and explicit native mapping aliases to assigned HGNC identity. Other namespace/granularity or unavailable native context remains unresolved."
+  },
+  "split": {
+    "seed": "20261113-grounding-v1",
+    "unit": "Connected components of statement/source/publication/native entity-type-family tokens",
+    "groups_and_source_ids_outcome_free": true,
+    "development_cases": 3249,
+    "reserved_test_cases": 1045,
+    "known_reviewed_source_groups_forced_development": true,
+    "training_paper_overlap_unknown": true
+  },
+  "boundaries": [
+    "External curator-relative component evaluation, not independent experimental biological truth or whole-Pharos precision.",
+    "Gene-level only, not exact protein form, isoform, construct or causal mechanism.",
+    "Original sample is reader/mention-count stratified; no population accuracy inference.",
+    "Training literature overlap unestablished. Test is project-reserved, not proven model-unseen.",
+    "No source changes, auto-replacements, review promotion or biological pruning.",
+    "No new gold labels assigned by project AI. Raw or derived case-level NC-SA material remains private."
+  ],
+  "source_artifact_sha256": {
+    "curations": "02ccca87fb4c8386ae49d420cb4c8257cf769bcaba5692a989bf295ba8d40da5",
+    "corpus_gz": "bf048f3b485990e6d81ee0f2200ea17efe962268427b4f33af932b4f08a434de"
+  },
+  "implementation_sha256": {
+    "tools/grounding_claims/__init__.py": "3fc96da9a8f29fbf4cdc973d2d3438c384429be0f7a6f7d3f771351626eee215",
+    "tools/grounding_claims/native.py": "8259ae0b7fc0af18b291edc3a487dd69a32d6d45a5a68e9cccc64a1cac05d90d",
+    "tools/grounding_claims/context.py": "79602d0ebd3266d44e4863b50272ac9a08cddf0e8042062070cbcd52ff5769f7",
+    "tools/grounding_claims/prepare.py": "0a0f888773b4418bf6afb8fe34e76f62287e250b16488c067dd8ee41c752661d",
+    "tools/grounding_claims/run.py": "e0a4f6dd1f467e16728ca9ada01689b4291e6e5564c811f6cf30563e3f0b961d",
+    "tools/grounding_claims/evaluate.py": "f500b2bc5d2d908cac9d8ecfed11a1ab9f08e3dd53ed06a1e4389cbf41845b3d",
+    "tools/grounding_claims/score.py": "321d09a169952efa883391519f3b65a33c71d6a77962257cb3167632b787e6ee",
+    "biograph_steward/client.py": "cdadf97d4d994028ac863c188d2c4446ade1a65e231df8157dc484f8c7fc264d",
+    "biograph_steward/file_utils.py": "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6",
+    "biograph_steward/literature.py": "22025c84b74e123305630f57c90017623cec6a3c6434f5b17980c6cde3cda1e7"
+  },
+  "source_frame": {
+    "report_file_sha256": "aeeadd1a4883c90212b06bfeb0174a527c478ffc16cce5ea3c40facf0b037c7d",
+    "content_sha256": "831bc3046dde179d5f2a678a30bffc1d7ee920aca1981bcea15fde0574d21a39",
+    "primary_cases": 4294,
+    "files": {
+      "cases.jsonl.gz": "a23b9375066df453e7ccf7ae7ca374568f72fb762df709b92f2a013156d22a19",
+      "frame_coverage.json": "5f4cc4fcc67aaf3976b10afee11cd1feabb81388a8ffb4f11310d82d9314c547",
+      "group_splits.json": "8d58af5cccb6a252dd6956c2a15833edaa8db988c4aea4f9d91d5c2bc3cb5aee",
+      "requested_pmids.json": "0b65215bcc887cc75090265bdc876ee75f638c54ce1ee1544eefd27d3ab61723"
+    }
+  },
+  "pubmed_context": {
+    "manifest_file_sha256": "33042d54289c9478aee12b74577b8c7ecb6549d304c575aed11400f6a8f10476",
+    "content_sha256": "308e9ecf4bd6fe41dfd6929406b67b9a162f8328885174827fc13a2f63aa8777",
+    "requested_pmids_sha256": "b441e8b014ba8d6a90a9c9d26f397734d433bff76cf30e8227562322c1c969d4",
+    "contexts_sha256": "dc0de62fe805d8ba16310e716c7670909e00cfa414b0b4030b49dbca6b84c888",
+    "available_contexts": 2745,
+    "unavailable_contexts": 3,
+    "files": {
+      "pubmed_batch_0066.xml": "7f3e6f5b3070a0f3c1e2883b6907fd22ad8f8415c3c634ef3d444047e4c17ce7",
+      "pubmed_batch_0072.xml": "169e406ec58bb0bee170b2bf433234692c1ee68898e2d0881846b3e599819037",
+      "pubmed_batch_0073.xml": "a7f1ef3dc505845f0616ce30324db975dc7690d599d4578ffc0790d2ccd2dd68",
+      "pubmed_batch_0067.xml": "bf057e2437307ebb130d50fd1c68ef967701e2dc15c3a0799b07af0090dc5f23",
+      "pubmed_batch_0059.xml": "caeb46abc079ddfd893a0746600fa51cb837c68c6b63d1db934c7f944d971ee4",
+      "pubmed_batch_0071.xml": "d5fa3cc9e99d578dc5719223d8bb55327aab5f11bba7a4f32beee0e5f2850352",
+      "pubmed_batch_0065.xml": "40bea16413934a5f7b76643f0fee5194deafe31193624b3d3ee3a5893ac97fc1",
+      "pubmed_batch_0064.xml": "478c3158165f2337b2755352389cb4682c0fc40b63e872b62946dddb5794d740",
+      "pubmed_batch_0070.xml": "ea2f0303b190b690d30b50f305dbc77881dd48cec3d789a6f99725b4eb12ba11",
+      "pubmed_batch_0058.xml": "1ec5317dd4189dcedf0da0f28c56642ac9d6d594e4c10875d979bd255176597b",
+      "pubmed_batch_0074.xml": "3c84897238bc667588e260518c2fe38acdf2ef013c629982da5f28e16145af77",
+      "pubmed_batch_0060.xml": "98f041741708d9991c5b1c1d0c8c7dd63c50bb38c09abc5203ef2a69670f4e33",
+      "pubmed_batch_0048.xml": "f445e440611cbd4781d355139fe8734d3bf97f8c1e5a1b63f1b1b75f12b059a3",
+      "pubmed_batch_0049.xml": "8b8306cd053d80a7b2c40f1613418a03b89614112a5468ca5e16b96c47afa713",
+      "pubmed_batch_0061.xml": "305e42fe148020fc3e159a521ee7a023c4b519366933a9ccdb6f6b67081cef51",
+      "pubmed_batch_0075.xml": "0182814a0e391a026e8d0ac1af15ffc007a1c94750001f4bb62cd67ffc32b6fd",
+      "pubmed_batch_0088.xml": "697b13f6ead0e0df8e77f42a770c068563f4e4981e519835e1def70907a2415e",
+      "pubmed_batch_0063.xml": "f4ed9f5590ddd1d77436923edbb172d529b38f8d69a5690408f11d742b578e47",
+      "pubmed_batch_0077.xml": "36ac7eea1effe7b71a6627f02163015afd3768f4bed620b8acb975eb8fca39bf",
+      "pubmed_batch_0076.xml": "f30b11ff326048a940182d98c5b3e7f01f20ae04d4ea51bdf00291841d21a7dd",
+      "pubmed_batch_0062.xml": "b386ba8e99086681f2e3e0784431f7d34b5da461626978bb6f86399b27f696f2",
+      "pubmed_batch_0089.xml": "ebe0cfc3610fd9bb6b189cb9cb216ddbf41f33512a2551252c081239468f4eb7",
+      "pubmed_batch_0039.xml": "1748bbefec5360bad4f7689a790c7c3eacafddc53b07931fcae4a4d705791368",
+      "pubmed_batch_0005.xml": "1a7387084beed80c8be4e2770025cf83c298d89a5da75025df280f7110f6df41",
+      "pubmed_batch_0011.xml": "ad473f12636297bc89c0eaba9ead18c5cb6eb148180158d1d5ea4511e4f7e2f6",
+      "pubmed_batch_0010.xml": "fb97b948b28ea6e5e53651a1d761a59f1ca64677c681601435cef050a4eefb24",
+      "pubmed_batch_0004.xml": "ba22857b5826f497ba0249c84b873ad21807d87e580fe9cb92a16ab9f64738b6",
+      "pubmed_batch_0038.xml": "1223fea0846e2ae4c3d69c36e30e623b0ec217c3fefeffad34ae0be2469ca00e",
+      "pubmed_batch_0012.xml": "84540337f148f81c4e16314004bf619df96ebb959de950292ae81ad4cc4a0175",
+      "pubmed_batch_0006.xml": "6ce9218518e05b78b33b31adb711630a51584fa0aa2b3650f12f58518136ad39",
+      "pubmed_batch_0007.xml": "596b21516252d66ad9030f11d60f00b3b7577a782da2b6b0ac0a21c658f5adaa",
+      "pubmed_batch_0013.xml": "f1a315db31eed8b55a766781fba363ebd017e57a832178341073457c655be414",
+      "pubmed_batch_0017.xml": "5c1880e83a79ab717c5c580bffb55a0d7c44b6974a33318d8ca5aab22ed6d0f7",
+      "pubmed_batch_0003.xml": "76b3916eedc0bfa818e3b21e9098ec955fee1645c744f5c46e6f3bf955d6bd3d",
+      "pubmed_batch_0002.xml": "172aa64074d7a77bd743ecad6daf8324cace09f1d4001591fc053185b18bf1f0",
+      "pubmed_batch_0016.xml": "266170bba360723c75ec5f9dbd016a189e541adaf3ee2be17890b3df3cdab3bc",
+      "pubmed_batch_0014.xml": "9082f21310b94326e483b3c90bcfb4fbaedffa3d51121b26c9f26e904c0120cf",
+      "pubmed_batch_0028.xml": "463f0a810934da10834472640e1461237e94615fccd332ef4c49b6cf07eef092",
+      "pubmed_batch_0029.xml": "4f85efaa4fe1f1e2ad7abda39732030d0226265c833d94c4dc858f39b02549e2",
+      "pubmed_batch_0015.xml": "ccb3bfd2dead45e20d389ba527e2c2b3b22ca3085ec57b56539f8fe7704d4fdf",
+      "pubmed_batch_0001.xml": "6e004343e8791f56862f0d781168f1330ce9b8ae21716c6fc00a05dfa972b2d9",
+      "pubmed_batch_0018.xml": "27252f205f7572f0b42a204bfd0d96ff6f9b5eb9175472fe97d6b1be151584e8",
+      "pubmed_batch_0024.xml": "1ca4e9ac8988ef0ae42a628b274da297fd190ffb45e55e53d3d608ec9b0cfe67",
+      "pubmed_batch_0030.xml": "17543c5e2d797814962bcf6fd365fbe75913a63a44925942f121393e4fd54497",
+      "pubmed_batch_0031.xml": "7ece31f332046d9f63d5e7a18d1527746f8bbf9d5447586a51ec7352f55fafd0",
+      "pubmed_batch_0025.xml": "3c9b37cc7de8cf9c0953da1162fae57183fbb0e443841597b173c8e7ae68ee63",
+      "pubmed_batch_0019.xml": "11e5d6ed80fc1d318404f94f888c3ee929ce5d7bbbca8ea22c171ffa219a32bf",
+      "contexts.json": "8db60072f431405fd31d38e23c16c7ab834b0c374b8ccda82e719a13e18269dd",
+      "pubmed_batch_0033.xml": "b018aecc8dac307f83f25360fdadd231b90e2c5e5306c3e4f86d6f679d10b477",
+      "pubmed_batch_0027.xml": "339bb03951ec7b314fd5965bdafdf57bcd0dd1d4340ed8468f62d88094509307",
+      "pubmed_batch_0026.xml": "875b13d75fb3b69103f2ffab624e701ca5dd7ea3e9e108cc8ea8b57f495a34b2",
+      "pubmed_batch_0032.xml": "bcac8690a97180addc70fa81066c3bcf6b0eb7afeb0101fdc05de406e1229ae8",
+      "pubmed_batch_0036.xml": "6690f309909ef23c5db07979bf12d1b5271311e25c2f47b6f1fa6eb95a9468d8",
+      "pubmed_batch_0022.xml": "a225c3a78852f465a75b97d6b761467c83cfe73a028a8b69940a1ec38c7e00e3",
+      "pubmed_batch_0023.xml": "472992ea2108ffb21c9a04b11841ef470a3db36ab8650cb9ae5c249ea9bf7a97",
+      "pubmed_batch_0037.xml": "bd9bc681808efee3664f7110ba484c610f91e9ca2b782992b4ff5902df4a50f2",
+      "pubmed_batch_0021.xml": "f1859f40645f2dfa1fdea4b63f4d0bf899ea37c1e886b59f237991640003f1c3",
+      "pubmed_batch_0035.xml": "0e6156f43bfbad726e7eda8b452e0e2041eeb61f00cd7dfa550164288c054d07",
+      "pubmed_batch_0009.xml": "512e482c5c8912c82390f7d45aac43a88361c9ba64d2277553c69777d2057fc2",
+      "pubmed_batch_0008.xml": "ceb3de0b571dc0dd566e7cc86089184c51ef5653e9589f2d3342d292b7163caa",
+      "pubmed_batch_0034.xml": "a4bf7cb27a7db0d33b37b0683acb0d0beea9710968ed18bfea020c8859a67119",
+      "pubmed_batch_0020.xml": "a5575d8ca7bc1fc61d1f2ebf73fc89bb12576625fc960e5c6ce06761a872c0b1",
+      "pubmed_batch_0084.xml": "8df68fa16e56791a806a77524cee9674c60b7f0f365a9c03293b2e9942b41441",
+      "pubmed_batch_0090.xml": "988b2699ff7394d913bd95a6b0362c4698e9d0f99a5c321320b3300f3a47c75d",
+      "pubmed_batch_0047.xml": "d199c1ce1f61596dc3ccc492c0fcba824e7771059a3d2516b90dd0aab832b40b",
+      "pubmed_batch_0053.xml": "11393460f45481b7f772e3f54a5904b95898a78fff90b91c7a4e462021aa0011",
+      "pubmed_batch_0052.xml": "d9703de8d925d53a21c3db2130e99da5aef3697f0cd3486c3d13e51a69742ec6",
+      "pubmed_batch_0046.xml": "5044ec55a2bc2401c8e1a8ae5e23cff56f5b74e263932d42198aec4780df7e90",
+      "pubmed_batch_0091.xml": "caa43e403172f80e3ec30986a1e5bf27bd0f2a2aa5262e6ad0900171bd3a872e",
+      "pubmed_batch_0085.xml": "08841b80295a29946e8fde82e0f0f1f13e51ad569276e7fece0f36a3003d4bd8",
+      "pubmed_batch_0087.xml": "a30a2c8ff59e8c3957617aa2cafa11ac6db4a122470be1b966e273c654132357",
+      "pubmed_batch_0078.xml": "959ec907c732811edd07e8f07936ecbafc26c76945c7f77bce88fb8b554622cd",
+      "pubmed_batch_0050.xml": "cc408b761c2da51883e102406af25ffd3fb995dd2e526b58ed53522cca64f286",
+      "pubmed_batch_0044.xml": "3f1ead6e802f1a584ba9ddab2fb8605f72cb67728560a1fdd8ff60b58ac5c533",
+      "pubmed_batch_0045.xml": "161dde1781a30a889a92e52dcb100d0451ab1db72439528023bd48afa37a1658",
+      "pubmed_batch_0051.xml": "4dd62f34754b4da3c377b7e014f719fad007993929f98d5dbc7734478643ea6a",
+      "pubmed_batch_0079.xml": "dfaa954fe4f902188d94b64ea76cc3928c276d8f1835601c307f4a642e51fd3c",
+      "pubmed_batch_0086.xml": "8e11d3425bce30bc38d4ffce6b6a40e7af0f567902259fcaea5da10a519cf91c",
+      "pubmed_batch_0092.xml": "d28baca64066c49ead9e69b85c31795d293b34184da0b9e5bbe20e5ae36c8930",
+      "pubmed_batch_0082.xml": "c8c1fb30a515f5303866d92b34096406e19192327f31bc1b7126cf8dc21b1da4",
+      "pubmed_batch_0055.xml": "e8f5cf1c199bb90e58111cadf08caad805171c9a577dbf5af1b35f1fb1788b23",
+      "pubmed_batch_0041.xml": "3b44cbca1112a4bc7a71f672b07b0842f16a3e2816964ce20d8020891537c625",
+      "pubmed_batch_0069.xml": "186698d13cd87a204cd1a935719d4c476289811e932a346843ffe64321e6f444",
+      "pubmed_batch_0068.xml": "edcea689cf0e24c6201b9db9c0f6ecce8c4e722ead687415c92ae7d23b6df3d9",
+      "pubmed_batch_0040.xml": "5379e04c0c7491ebea73763dacf04242f2e4412a4c5061996cc7e160595ac183",
+      "requested_pmids.json": "0b65215bcc887cc75090265bdc876ee75f638c54ce1ee1544eefd27d3ab61723",
+      "pubmed_batch_0054.xml": "f74b4f1c2e2c891561fb0e2f6f7044eb3430782990cc30c0e74a7b7d28a010cb",
+      "pubmed_batch_0083.xml": "6ea248e30213879d384c527dfdb80ffb5366dfdd7ba53676d7b9560e3dcb2d1d",
+      "pubmed_batch_0081.xml": "742699ebdb6db5fb55f507674cdfcd90c1c220f4e7164853a4831fafb5700d07",
+      "pubmed_batch_0042.xml": "bcb44b8865447298ee47a2075325efe7bb6dce296c2ccaf0f5328062c12e5b20",
+      "pubmed_batch_0056.xml": "f9ec9577d6d1bad60a5aae3d8a1728cba4b3a0881927874fb52bd81a8c206c2b",
+      "pubmed_batch_0057.xml": "793645ec646dd26a25c3e8cbc8ce86c5916d858db0299a5f03b31fbd3d7041ea",
+      "pubmed_batch_0043.xml": "c8e93772361b97dc0fea2c53783f8fca94f99840e3781ed4c92f4910f8e5f28d",
+      "pubmed_batch_0080.xml": "7071de3d956c97c47863271309fc338b990afcc4c5fc8af386392ad9428ae404"
+    },
+    "policy": "Current PubMed title and nonempty abstract for the exact PMID, joined from existing parsed fields. This is distinct from original native Evidence.text and is not oracle full text. Missing text or access is unavailable, never a biological negative. No PMC/full-text retrieval or automatic context fallback.",
+    "license_note": "Source copyright is retained; public access is not blanket redistribution permission."
+  },
+  "resources": [
+    {
+      "bucket": "gilda",
+      "key": "1.6.1/grounding_terms.tsv.gz",
+      "bytes": 38060066,
+      "etag": "\"9130f0fb43d181e7c70e6dc41e62eaf0-5\"",
+      "last_modified": "2026-06-11T03:57:07+00:00",
+      "version_id": null,
+      "sha256": "b53169c4735d049c0443ab04830b26372dcfeba47845c1fe97392b64f08f2bb8"
+    },
+    {
+      "bucket": "gilda",
+      "key": "1.6.1/gilda_models.json.gz",
+      "bytes": 10530040,
+      "etag": "\"7ac69014582c9d47e65f2abf8e1f9705-2\"",
+      "last_modified": "2026-06-11T03:57:23+00:00",
+      "version_id": null,
+      "sha256": "62c888eeabe4afb484d17d90cf3e8304c9c3a8f1c97b5b3fb7ab41a458340e1f"
+    }
+  ],
+  "adeft": {
+    "version": "0.13.0",
+    "selected_directories": [
+      "ACE",
+      "AHR",
+      "APC&APC_S",
+      "AR",
+      "CAP&CAP_S",
+      "CAS",
+      "CK&CK_S",
+      "CPAP",
+      "ER",
+      "GH",
+      "GR",
+      "IR",
+      "MV",
+      "PC",
+      "PDK1",
+      "PR",
+      "RB&R_B",
+      "RT&RT_S",
+      "TEC&TEC_S"
+    ],
+    "selected_shortforms": [
+      "ACE",
+      "AHR",
+      "APC",
+      "AR",
+      "CAP",
+      "CAS",
+      "CK",
+      "CPAP",
+      "ER",
+      "GH",
+      "GR",
+      "IR",
+      "MV",
+      "PC",
+      "PDK1",
+      "PR",
+      "RB",
+      "RT",
+      "Rb",
+      "TEC"
+    ],
+    "files": [
+      {
+        "bytes": 1592,
+        "sha256": "cdf41ddf20f20cab1a72f572a02e08d6392b153de128358778dceb5f3c8848ec",
+        "publisher_etag_md5": "4830e331418847fc5d5c3300989009a3",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/ACE/ACE_grounding_dict.json"
+      },
+      {
+        "bytes": 392,
+        "sha256": "69579fbcde8d0c4429c5708b64f3f16d16c951fe00456aa90d372e2373b0ea80",
+        "publisher_etag_md5": "28d70bc3b19f51821163bf82370c1bc4",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/ACE/ACE_names.json"
+      },
+      {
+        "bytes": 147382,
+        "sha256": "a1adae873e34dd97233cb21eef08ec62179f469cc032fa6432dcbd756198df6a",
+        "publisher_etag_md5": "c332c1ac00c6773405b108dc4832f237",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/ACE/ACE_model.gz"
+      },
+      {
+        "bytes": 869,
+        "sha256": "9508134773cc86c5a425a5805c4f74fb9142dac07ba21a7540d85414c562d4fd",
+        "publisher_etag_md5": "b6ded9ea8429c62c9cc32d573c988f0e",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/AHR/AHR_grounding_dict.json"
+      },
+      {
+        "bytes": 141,
+        "sha256": "31e4b2dd0e05b46ca55b881d52669f9b84bac478843cf67f89ff1fb032ca3405",
+        "publisher_etag_md5": "78316eedbbbfc1ace30d7cead807bc82",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/AHR/AHR_names.json"
+      },
+      {
+        "bytes": 135508,
+        "sha256": "3ed72bfb90f1d86e3b539fcc47d9d98ff7e4d3f27c079dbe9d090d45ac84b91b",
+        "publisher_etag_md5": "c1256212f91631cb3e98763056ffb66b",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/AHR/AHR_model.gz"
+      },
+      {
+        "bytes": 3059,
+        "sha256": "dab1753b778a6952306e9a52bd2f261a1f35b17bc5a51f9872dae712f45bce1e",
+        "publisher_etag_md5": "ffcf223d786ad0ab10d86ea05676ae0b",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/APC%26APC_S/APC%26APC_S_grounding_dict.json"
+      },
+      {
+        "bytes": 647,
+        "sha256": "cf241f8d6af6e090e04224a34996d6af148bddca84b7c1d74fc429bc7b4e4ace",
+        "publisher_etag_md5": "c52b250fde1ee23b5d8ad35860cb54ed",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/APC%26APC_S/APC%26APC_S_names.json"
+      },
+      {
+        "bytes": 304735,
+        "sha256": "d0604168e611e8b88c1d69cf69bb5d5aa9f00505bf507cb38f1defd6a58d12e4",
+        "publisher_etag_md5": "c29acb010e7dde22245859d0b46c2950",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/APC%26APC_S/APC%26APC_S_model.gz"
+      },
+      {
+        "bytes": 3686,
+        "sha256": "0bcd6ca436ee21866c9bb95851b91765779269a3a7bd19f4db1c1d8cd8133f47",
+        "publisher_etag_md5": "9782a0eb13aa94db6624f4c1f44b78bd",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/AR/AR_grounding_dict.json"
+      },
+      {
+        "bytes": 833,
+        "sha256": "5be75da878b108b64bc3cfc97bb184a0946b09a18aa7f7aa36f24287d07e4826",
+        "publisher_etag_md5": "54fee5b67cea96920516339605c20745",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/AR/AR_names.json"
+      },
+      {
+        "bytes": 238758,
+        "sha256": "a8aab04009dfc328cc1e399198fb8301a3e6f4903ed67d0abeb32a05a8d6f2d2",
+        "publisher_etag_md5": "5d259723d4fb20ead8df8a5339c2d8f5",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/AR/AR_model.gz"
+      },
+      {
+        "bytes": 2869,
+        "sha256": "0397638df8e48a67c19dc79e8670cc776c6799ae34b69ed25c4b4673c5d22be6",
+        "publisher_etag_md5": "96b35f37232f7fbe1f0f8e37a7be0f4a",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CAP%26CAP_S/CAP%26CAP_S_grounding_dict.json"
+      },
+      {
+        "bytes": 1241,
+        "sha256": "099a400ced9ae68764baabe141942522fe82fea948e35b1ef89a85c0836c310e",
+        "publisher_etag_md5": "fe441abbbe5157f4052914bdedbbc196",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CAP%26CAP_S/CAP%26CAP_S_names.json"
+      },
+      {
+        "bytes": 203136,
+        "sha256": "00c7fac9626b3f79c9ae7a8c58d2c1f5c7a711b26205481cb2283d44b204bf89",
+        "publisher_etag_md5": "37286b867521f9d7d28ae8eaedc2485b",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CAP%26CAP_S/CAP%26CAP_S_model.gz"
+      },
+      {
+        "bytes": 2260,
+        "sha256": "369761344979061d78d7d107878f631fc34b71e091e8c450df474ecf006cab33",
+        "publisher_etag_md5": "b8fce602536936483ee0e25c6c9968f5",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CAS/CAS_grounding_dict.json"
+      },
+      {
+        "bytes": 792,
+        "sha256": "6d7bee7647470dd4dcf0c86bba02db3ea1e4e8ec773cbc7dd427f47fdcc21cac",
+        "publisher_etag_md5": "b03e4e45327e5791faf3822015f33ee3",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CAS/CAS_names.json"
+      },
+      {
+        "bytes": 141775,
+        "sha256": "00726a6750780e1a693cbd9b053ffecaf9f582bd015248158b8cce3bb25159da",
+        "publisher_etag_md5": "b4681f5c02c542726b43dd9302a8cf2e",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CAS/CAS_model.gz"
+      },
+      {
+        "bytes": 1248,
+        "sha256": "be2086760af41e549cf4ecf83de7a113c912baeff7bbea35fee4ba30e771b986",
+        "publisher_etag_md5": "231c7fa325f47199461ae90284f386e2",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CK%26CK_S/CK%26CK_S_grounding_dict.json"
+      },
+      {
+        "bytes": 503,
+        "sha256": "7ca84ce745f98f7ce91485b86c2d4c02930b133a8e3d3436cb3ed99889ee65a5",
+        "publisher_etag_md5": "a6edc1b175fe3aa6c0c296fb18f3514d",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CK%26CK_S/CK%26CK_S_names.json"
+      },
+      {
+        "bytes": 157832,
+        "sha256": "3d31240dc52a3202683f077f6e7a623d1b2d1f81ff2c15c83152eb23f19e5d33",
+        "publisher_etag_md5": "5f69d945799dbb23921a7b838303fd91",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CK%26CK_S/CK%26CK_S_model.gz"
+      },
+      {
+        "bytes": 445,
+        "sha256": "a6422de82aa94a210a3c1bde601577cbc95dd8b90f066db59f400f66e61c2a72",
+        "publisher_etag_md5": "f8b3c641611f1dbcece8ed723fb25769",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CPAP/CPAP_grounding_dict.json"
+      },
+      {
+        "bytes": 78,
+        "sha256": "cc31ac3d26f61ea819a8c7667963a279d1bb03b9152ef6e496ba96af1187ffd0",
+        "publisher_etag_md5": "f61f3eb7a92497bada9178cd44245961",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CPAP/CPAP_names.json"
+      },
+      {
+        "bytes": 102633,
+        "sha256": "dfca535f321748a65d670b7e343811cfe402ad29b3422c15eab4a77283a7cdc9",
+        "publisher_etag_md5": "1b1f203584860177f4574c574f5abcc2",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/CPAP/CPAP_model.gz"
+      },
+      {
+        "bytes": 3210,
+        "sha256": "0527f37efdc83645978b98b33813484b10eb8982872f1ebf5bf77d85043df334",
+        "publisher_etag_md5": "8f6fb3896e337cb5ea46c4e73abbfb7e",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/ER/ER_grounding_dict.json"
+      },
+      {
+        "bytes": 600,
+        "sha256": "9c65ccf28145116974bce318cd4c65372aabcfeb0dc965a4afe5b8581d4dd586",
+        "publisher_etag_md5": "aed4c1bea74edbf04a40c3a2aa71569c",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/ER/ER_names.json"
+      },
+      {
+        "bytes": 267160,
+        "sha256": "301671bdda4b3fcd0f49ea6e33797feb9209f83aabe19d290937c208c2d389d0",
+        "publisher_etag_md5": "5cdba714af2d2b8db3b1fd464fce7cf8",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/ER/ER_model.gz"
+      },
+      {
+        "bytes": 1144,
+        "sha256": "df985ddeb427b63e87b1699edf18bb289fbd3cffae61db693e47b837cdad0a24",
+        "publisher_etag_md5": "65f00929bdef182381049a5140ab8eae",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/GH/GH_grounding_dict.json"
+      },
+      {
+        "bytes": 471,
+        "sha256": "80a9ca9fce145e1e3c8b88d73541f8f27e67294120b5a84afccf18b8475383a0",
+        "publisher_etag_md5": "498c35090e9017f2cd09d432c5092d44",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/GH/GH_names.json"
+      },
+      {
+        "bytes": 151572,
+        "sha256": "a6b9229b4ba1c8b6932507ae3da18b62cff04a6e0f244dfc6b7b73be4beff43c",
+        "publisher_etag_md5": "073b88caa52aa6538298ca88a5054590",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/GH/GH_model.gz"
+      },
+      {
+        "bytes": 2277,
+        "sha256": "403122778b19cb7467fcfba31fa9881602ed528ba1dfed6e1c45627f47ef88f7",
+        "publisher_etag_md5": "e4c35c15019febb33fcf611c38196620",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/GR/GR_grounding_dict.json"
+      },
+      {
+        "bytes": 433,
+        "sha256": "1b59e3f5b3b85ed3e08d8d939b7ea74b7f9653b5e6880024141af66c084a622b",
+        "publisher_etag_md5": "8a119a097b9e10ae27b2dc3d5ed4b004",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/GR/GR_names.json"
+      },
+      {
+        "bytes": 189312,
+        "sha256": "4af070e247890cd002f06443497040c6157eac8073ba99d4408c661d9b9ac64e",
+        "publisher_etag_md5": "e0d927737dfa197a31eb031cb76deea3",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/GR/GR_model.gz"
+      },
+      {
+        "bytes": 3306,
+        "sha256": "f2ab60c39e27812d8ab519d0103f738cb06d77e2e147182ade78fb172865841e",
+        "publisher_etag_md5": "e4b775f851a8ee0a740a921808cb1e48",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/IR/IR_grounding_dict.json"
+      },
+      {
+        "bytes": 445,
+        "sha256": "73a9ee1eaf6efa7acb838a98e7fa2a1a210cbe79b8faaf0435cba2ae60bd2d9e",
+        "publisher_etag_md5": "028f57fabf68889447ee130ac0a62740",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/IR/IR_names.json"
+      },
+      {
+        "bytes": 392972,
+        "sha256": "52b17e1511a2b0290ae7f610c4b47a531e98558d65d0b26a49997e416035619c",
+        "publisher_etag_md5": "a5a91251cae2d3607aea29ef9389b5fa",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/IR/IR_model.gz"
+      },
+      {
+        "bytes": 1551,
+        "sha256": "8454f89030a7928f8f23527ce02bb97368c3980cca76b6e7c9bd980339c64c4e",
+        "publisher_etag_md5": "6e2b3fe07ded662a56162508c1f1b86b",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/MV/MV_grounding_dict.json"
+      },
+      {
+        "bytes": 721,
+        "sha256": "e8c51eb323883281a6dd2a561cd6fb0c0eb38f6f88c6371bbc3c173e79101797",
+        "publisher_etag_md5": "f5d48c0927ae64fb03524e3404e23b34",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/MV/MV_names.json"
+      },
+      {
+        "bytes": 179164,
+        "sha256": "fa211d3cd71930da72f548dd58aa79c26a5b06872f8b03dc49f8ef4fc023bb1d",
+        "publisher_etag_md5": "5b24d27c5e0047a7987df8903a252e71",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/MV/MV_model.gz"
+      },
+      {
+        "bytes": 5767,
+        "sha256": "671cea355dd9195b4dd018c076e3f4137f32d0ec602f583deb5a7d8159fc8dad",
+        "publisher_etag_md5": "9bcbc86968c7618dee3360853d797a51",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/PC/PC_grounding_dict.json"
+      },
+      {
+        "bytes": 2147,
+        "sha256": "c0fd071f868ec0668233db4d92b7b1c5f308cb0cc4a4ae64f6d3ad31f17f302b",
+        "publisher_etag_md5": "5a22041b0de31f5b6d8d0f1a44bc502c",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/PC/PC_names.json"
+      },
+      {
+        "bytes": 228368,
+        "sha256": "1063ed94ca223df6d13e2d3a9fe2eba6323dcc4e50edc065e2156e5ed9c1dc0c",
+        "publisher_etag_md5": "1b98c0cbb5f709a5ebeffede4af30f7e",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/PC/PC_model.gz"
+      },
+      {
+        "bytes": 449,
+        "sha256": "b5a08a6411341ad2c54da6fac65cafca03206b1e43192faa37c8666de51aa1cb",
+        "publisher_etag_md5": "0dcf4374f910ce45b599f0c666286a13",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/PDK1/PDK1_grounding_dict.json"
+      },
+      {
+        "bytes": 43,
+        "sha256": "c6322823974c8667b897f611b0be7090c2b641f4228546db8fc1f9a15f5c57d4",
+        "publisher_etag_md5": "23ee7d4515d843163d3a89c84805e05d",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/PDK1/PDK1_names.json"
+      },
+      {
+        "bytes": 100845,
+        "sha256": "6c62fdb5064c55e15e7de0d0c17d94949f26174bfc4ca6fc8ceff51d8fb556ef",
+        "publisher_etag_md5": "9240bcecff0d02958f34d20bbbaf2237",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/PDK1/PDK1_model.gz"
+      },
+      {
+        "bytes": 3755,
+        "sha256": "6cf37da7f93deda6cafc0ab1f73d6762e4c5550b3951253acf8a3e0c7e14e9bb",
+        "publisher_etag_md5": "5bc7d3839d2d93e849330f8afe030081",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/PR/PR_grounding_dict.json"
+      },
+      {
+        "bytes": 1385,
+        "sha256": "1f53fd7e7755b4260898eb6c8efdff189ec124652811cdd5c47c613f1e6d2566",
+        "publisher_etag_md5": "900aa6d7dfd93165159c5204a55380a3",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/PR/PR_names.json"
+      },
+      {
+        "bytes": 191572,
+        "sha256": "bc977f96a6937ec03e73ba3ed033eba7a344d6269f30701452ee606c9082ec2b",
+        "publisher_etag_md5": "48a6cb43b6b61213ca655e9ea7c78697",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/PR/PR_model.gz"
+      },
+      {
+        "bytes": 2332,
+        "sha256": "5b9d9bd46e9a49e82b6625f27e7af708cd28bc00aa98ee340f050d476cd0d908",
+        "publisher_etag_md5": "d5434b05a1278eb5cc671ffff2a0de64",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/RB%26R_B/RB%26R_B_grounding_dict.json"
+      },
+      {
+        "bytes": 323,
+        "sha256": "796c609f131ba64023dcfd7124cac1b05b98e820abe32c0a5c3512c0feab6a15",
+        "publisher_etag_md5": "bafee9dff8855a931491bbdb31f29c51",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/RB%26R_B/RB%26R_B_names.json"
+      },
+      {
+        "bytes": 165279,
+        "sha256": "73eea6afcb733969c27c1b43fddf4edb07c782204a13d63442cd5649f3e7edab",
+        "publisher_etag_md5": "1fc189af6d0b1b68f6c7a86664204bef",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/RB%26R_B/RB%26R_B_model.gz"
+      },
+      {
+        "bytes": 2743,
+        "sha256": "7b7cfc3b3fe4beed5cd8b49981737f0141880656bec2c8cecebf16250108baf1",
+        "publisher_etag_md5": "5b542f814b15738df6410808a80f5422",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/RT%26RT_S/RT%26RT_S_grounding_dict.json"
+      },
+      {
+        "bytes": 743,
+        "sha256": "713ec394b062d7162e3f2bcdd615f96ac10d644d8368b28816127c89e292060b",
+        "publisher_etag_md5": "4d20e449e79719268a2ce099fd01d7b3",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/RT%26RT_S/RT%26RT_S_names.json"
+      },
+      {
+        "bytes": 238270,
+        "sha256": "f32951044e5e07d84551e57e5ee6d9c12b72f0bf003f695859c36c17ee845d81",
+        "publisher_etag_md5": "0ca92d0df7d13fdf0130fd5e913754f6",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/RT%26RT_S/RT%26RT_S_model.gz"
+      },
+      {
+        "bytes": 1172,
+        "sha256": "6c80ef8e3843740bd9f484a424259d8b410e4d0488f3913105f4585533467007",
+        "publisher_etag_md5": "8cd87d48938f7496d1a3a187171b5f17",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/TEC%26TEC_S/TEC%26TEC_S_grounding_dict.json"
+      },
+      {
+        "bytes": 418,
+        "sha256": "805b81061b167ff33ab3223e44996cdde4e1e77c5ebcbf0917525d5001bd0bb4",
+        "publisher_etag_md5": "79b32a7308f0ba7851f9867b5480a372",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/TEC%26TEC_S/TEC%26TEC_S_names.json"
+      },
+      {
+        "bytes": 130868,
+        "sha256": "f7e4b523c3b299244fc8db5e72bc440885777c9c6556e568f4385fa5936f6d97",
+        "publisher_etag_md5": "bbfa6a378994df6f4ad7985603c6f922",
+        "source_url": "https://adeft.s3.amazonaws.com/0.13.0/Models/TEC%26TEC_S/TEC%26TEC_S_model.gz"
+      }
+    ]
+  },
+  "source_exposure_projection_sha256": "5adac4e6429a4a0d65604fa6af3d7593afc7009f88d970eaddbaca6a5ed483fd",
+  "replay_boundary": "Rebased paths, new captures and timestamps change receipt bytes. Compare original source/resource hashes, source inputs, group allocation, counts and scores; a new PubMed refetch is not automatically the frozen capture.",
+  "raw_curation_rows_source_text_predictions_or_identifiers_included": false,
+  "native_gold_categories_per_case_included": false,
+  "data_license": "CC-BY-NC-SA-4.0",
+  "software_license": "MIT",
+  "content_sha256": "9049bbf10669520034c959783a6be9fa4fce5a9bd9216161b3692fe8045446ea"
+}
