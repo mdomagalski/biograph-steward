@@ -1,10 +1,19 @@
 # Closing delivery fixes — November 13
 
-Two reproducible integration issues are fixed in the current checkout. The
-hosted AWS app remains at its separately recorded `902699e` revision; these
-changes have not been deployed there. The
+Two reproducible integration issues are fixed in tested code `0529d2b` and
+are now deployed in the existing private AWS app. The
 [measured receipt](evaluations/delivery_polish_20261113_summary.json) preserves
-the checks, implementation hashes and scope.
+the original local checks, implementation hashes and scope; the subsequent
+[hosted update receipt](evaluations/hosted_polish_update_20261113_summary.json)
+records the actual deployment and acceptance.
+
+The update preserved the existing graph, TP53 question and all 13 native
+question/export files. They reopened after a real service restart, and complete
+Neptune parity plus read-only inspection passed. The approved 16-file aggregate
+publication `scientific_assessment_delivery_20261113` (`09e50f8e…`) is installed
+and verified through the API and catalogue. The previous runtime/image remains
+available for rollback; authentication, permissions and compute resources are
+unchanged. The update is not a new backup-recovery test.
 
 ## Large saved answers
 
@@ -73,6 +82,14 @@ their declared scope. Independent whole-graph precision and transferable
 prediction gains remain unproven. The next delivery priorities are independent
 weekend task feedback, a single designated reviewer build, permitted source-data
 access and the final repository/submission handoff.
+
+The hosted v3 publication contains the grounding component and earlier
+92-query/3,968-pair exploratory assessment. The separately reported negative
+[128-gene/7,648-pair transfer](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md)
+remains part of the scientific assessment. The newer native GO web/QC follow-up
+is tested locally, not included in hosted `0529d2b`. The existing 153,681-byte
+three-page review PDF predates this hosted update and is preserved unchanged;
+the linked hosted receipt gives the current runtime status.
 
 Local CPU is sufficient for these fixes and document preparation. Brev and its
 model may stay off. Keep the existing AWS app and Neptune available while their

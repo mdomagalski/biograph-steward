@@ -35,16 +35,26 @@ now executes native INDRA/Gilda/Adeft checks against published curator labels.
 On 678 eligible reserved source cases, publication context reduces false alarms
 from 25 to 18 while detecting 26 rather than 31 grounding errors. This is a
 separate source-identity review aid, not a new pruning rule or whole-graph
-accuracy estimate. The current local assessment viewer preserves all three
-fixed methods, their full denominators and unresolved cases. This later
-publication is not yet part of the older hosted demo.
+accuracy estimate. The assessment viewer preserves all three fixed methods,
+their full denominators and unresolved cases. Its exact 16-file aggregate
+publication is now installed in the private AWS app under
+`scientific_assessment_delivery_20261113`; it remains a separate component.
 
-Hosted deployment is complete: the corrected graph, saved native answer and
-scientific assessment survived a real service restart, with complete Neptune
-parity and an actual Chrome walkthrough. The existing source guide now exposes
+The [hosted update](evaluations/hosted_polish_update_20261113_summary.json)
+now runs tested code `0529d2b`. The unchanged corrected graph and existing TP53
+question survived a real service restart, with native exports, complete Neptune
+parity and read-only database inspection verified. Authentication, permissions
+and compute resources are unchanged; the prior image and runtime are preserved
+for rollback. The existing source guide exposes
 complete CIViC profile/Assertion context and current Reactome event/complex
 context without counting those lookups as independent evidence. A separate
 128-gene local workspace demonstrates reuse of the same publishers.
+
+The new hosted publication combines grounding with the earlier exploratory
+92-query/3,968-pair source assessment. The negative 128-gene/7,648-pair transfer
+above remains separately reported; deployment does not turn it into a gain.
+The newer native GO web-inspection/QC follow-up is tested locally and is not
+part of hosted code `0529d2b` or its tested software ZIP.
 
 The [isolated checkpoint recovery](evaluations/aws_isolated_recovery_20261113_summary.json)
 has passed: the preserved graph, bound assessment and saved answer replayed
@@ -59,8 +69,10 @@ it is not the full graph or independent corroboration of its assertions.
 
 Use the remaining four days for the permitted reviewer handoff, team feedback
 on Monday, observed usability fixes, and final presentation/access checks.
-The [delivery index](releases/20261113/README.md) separates the tested current
-software from the older hosted/private bundle. Keep source terms, original
+The [delivery index](releases/20261113/README.md) separates the updated hosted
+runtime and tested software from the preserved older private bundle. The dated
+three-page PDF still records pre-update hosting; the hosted receipt gives the
+current status. Keep source terms, original
 failures, consumed references and negative results intact. Remaining biological
 claims require suitably independent labels and task-compatible references;
 new infrastructure does not create those labels. See the

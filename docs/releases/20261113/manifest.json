@@ -117,8 +117,8 @@
     "nodes": 9865,
     "public_scope_receipt": "docs/evaluations/automatic_qualification_20261112_summary.json"
   },
-  "updated_at": "2026-11-13T15:16:36.669454+00:00",
-  "previous_index_content_sha256": "4a37c1683b5f24297e3e7ece7c4aed2a2c714377c9901a02e970abcd281787cc",
+  "updated_at": "2026-11-13T16:06:02.638440+00:00",
+  "previous_index_content_sha256": "09abaff07021a1be9561fe88835cb937a1f2101f66c5eca6a92ff3f326415b8d",
   "initial_existing_asset_stream_verification_scope": "The original five software/workspace/question/combined/PDF files were re-hashed at index creation. The separate Reactome annex was subsequently assembled from exact existing allowlisted source bytes and checked independently; the original five archives/PDF were not changed.",
   "new_archive_extraction_or_repackaging_scope": "The original six assets are unchanged. The separate latest code-only ZIP was prepared and physically extracted/tested under its own receipt; this index does not repackage source workspaces or the prior software ZIPs.",
   "full_mixed_source_data_packages_in_Git": false,
@@ -146,7 +146,7 @@
     "file_count": 163,
     "receipt": "docs/evaluations/software_release_polish_20261113_summary.json",
     "availability": "locally_prepared_and_clean_extracted_tested_not_published",
-    "scope": "Current code-only software polish with optional aggregate grounding viewer. Clean extracted synthetic startup/question/export/restart tested. Hosted and private combined demonstration remain separately pinned to 902699e. Optional native research tools and source data are separate, not bundled.",
+    "scope": "Tested 0529d2b code-only software with optional aggregate grounding viewer; clean extracted synthetic startup/question/export/restart passed. The current private hosted service uses the same code checkpoint, with separate source/publication data. The preserved private combined demo remains 902699e. The newer local native GO web/QC follow-up is not in this ZIP or hosted code.",
     "runtime_source_bundle_sha256": "4da65871f839809816d23d9e0c3ce02a7e8ff4eee731fbf5e2aea98316757224"
   },
   "current_assessment": {
@@ -154,7 +154,11 @@
     "content_sha256": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2",
     "code_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
     "aggregate_receipt": "docs/evaluations/expert_grounding_20261113_aggregate.json",
-    "display_scope": "Separate expert-labeled source-grounding component, not graph truth. Local saved publication; not deployed to AWS by this increment."
+    "display_scope": "Separate expert-labeled source-grounding component plus earlier 92-query/3968-pair exploratory assessment. Exact aggregate publication is installed and API/catalogue-verified in the private hosted 0529d2b app. It is not graph truth; the negative 128-gene/7648-pair transfer remains separately reported.",
+    "code_commit_scope": "Initial grounding publication/viewer implementation checkpoint; current hosted runtime is recorded separately.",
+    "hosted_runtime_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+    "hosted_API_and_catalogue_verified": true,
+    "hosted_receipt": "docs/evaluations/hosted_polish_update_20261113_summary.json"
   },
   "isolated_checkpoint_recovery": {
     "receipt": "docs/evaluations/aws_isolated_recovery_20261113_summary.json",
@@ -183,7 +187,7 @@
     "uploaded": false,
     "scope": "Separate locally retained research archive; the two-file recovery approval did not authorize this transfer."
   },
-  "previous_content_sha256": "4a37c1683b5f24297e3e7ece7c4aed2a2c714377c9901a02e970abcd281787cc",
+  "previous_content_sha256": "09abaff07021a1be9561fe88835cb937a1f2101f66c5eca6a92ff3f326415b8d",
   "preserved_checkout_software": [
     {
       "git_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
@@ -207,9 +211,52 @@
     "code_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
     "receipt": "docs/evaluations/final_review_PDF_20261113_summary.json",
     "availability": "prepared_locally_for_repository_not_published_or_submitted",
-    "scope": "Updated project-authored three-page final review. The earlier two-page scientific update remains in the preserved original assets. This is a project summary, not a source-data package or new scientific evaluation.",
+    "scope": "Dated project-authored three-page final review for code 0529d2b, preserved unchanged. It predates the hosted update and still records the old hosted 902699e status; use current_hosted_runtime and its receipt for the current service. The earlier two-page scientific update also remains preserved. Neither PDF is a source-data package or a new scientific evaluation.",
     "receipt_file_sha256": "484e306b5bcdb6411cecd84047704633fd1c0569afe858d845f9ae887f6d1b23",
-    "receipt_content_sha256": "3de5885b5bb8373f629dc006eccacc3118e7a851251107076c89755114349bfb"
+    "receipt_content_sha256": "3de5885b5bb8373f629dc006eccacc3118e7a851251107076c89755114349bfb",
+    "hosting_status_at_PDF_creation": "902699e; not regenerated after the hosted 0529d2b update."
   },
-  "content_sha256": "09abaff07021a1be9561fe88835cb937a1f2101f66c5eca6a92ff3f326415b8d"
+  "runtime_commit_scope": "Preserved original software/private combined demonstration archives and previous hosted runtime; use current_hosted_runtime for the current service.",
+  "runtime_source_bundle_sha256_scope": "Original 902699e source bundle retained by the preserved artifacts; the updated hosted bundle is recorded separately.",
+  "current_hosted_runtime": {
+    "receipt": "docs/evaluations/hosted_polish_update_20261113_summary.json",
+    "receipt_file_sha256": "75f152af7759641fd80b3c059eff816137a373367bc2308aef38aa4bc0252a18",
+    "receipt_content_sha256": "d83a4604ecfcc7d7e913c023b1a6dfacb86369fde86ecc6a9c0ae5cb8261265f",
+    "status": "PASSED_HOSTED_UPDATE_AND_ACCEPTANCE",
+    "runtime_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+    "service_version": "0.8.0",
+    "runtime_source_archive_sha256": "4da65871f839809816d23d9e0c3ce02a7e8ff4eee731fbf5e2aea98316757224",
+    "runtime_image_id": "sha256:bf3891ee4bd2f653a2644566c2133e58ba7bb981677c116ed353f80808798e88",
+    "base_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+    "previous_runtime_commit": "902699ee41861be45529b38adeb2b289cf8300b0",
+    "previous_image_preserved": "sha256:5240fa8526d39175b8c6930267c3e66748d65d1359d8ac116254e17d757ef8d2",
+    "graph_content_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+    "primary_targets": 99,
+    "retained_evidence_records": 16687,
+    "existing_saved_question_id": "question_20261113T075313Z_1a76b00f",
+    "answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+    "saved_question_files_checked": 13,
+    "saved_question_and_native_exports_unchanged": true,
+    "original_source_manifests_and_old_publications_unchanged": true,
+    "real_service_restart_and_reopen_passed": true,
+    "real_Neptune_parity_and_read_verified": true,
+    "runtime_environment_and_authentication_unchanged": true,
+    "new_permissions_resources_or_public_access": false,
+    "new_question_created": false,
+    "new_assessment": {
+      "id": "scientific_assessment_delivery_20261113",
+      "content_sha256": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2",
+      "exact_files_verified": 16,
+      "source_bytes": 2919824,
+      "explicit_payload_and_private_destination_approval_received": true,
+      "API_and_catalogue_verified": true,
+      "scope": "Grounding plus earlier exploratory source assessment; later 128-gene negative transfer remains separately reported."
+    },
+    "source_fetches_or_model_calls": 0,
+    "GO_context_followup_in_this_runtime": false,
+    "new_backup_recovery_performed": false,
+    "scientific_accuracy_or_prediction_gain_established": false,
+    "scope": "Existing private workbench code and approved aggregate publication update. Original graph/decisions/source records unchanged. No new whole-VM or newer-publication backup recovery test; previous checkpoint recovery scope is preserved. No general latency improvement is claimed."
+  },
+  "content_sha256": "07e6523354a908e710e79818ba24485a5d754873064a98dccf12a8907fdb7ee4"
 }

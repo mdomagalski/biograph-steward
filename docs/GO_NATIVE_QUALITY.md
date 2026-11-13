@@ -6,6 +6,21 @@ versioned source. Keep these roles separate: inspect the historical record,
 inspect a current annotation, or inspect an explicitly normalized derivative.
 None establishes independent experimental truth by itself.
 
+## Optional source inspection in the app
+
+The [native GO workbench guide](NATIVE_GO_CONTEXT_WORKBENCH.md) explains the
+on-demand source inspector, its operator configuration and worked NRAS cases.
+It reuses the existing dependency-free source loader and separately bound
+saved official QC output. Original rows, NOT qualifiers, references, forms and
+context alternatives remain intact; normalization and context warnings do not
+repair the historical Pharos record or establish biological truth.
+
+The feature is disabled by default. Configure `BIOGRAPH_GO_CONTEXT_DIR` and,
+optionally, `BIOGRAPH_GO_QC_DIR` as separate complete ordinary directories
+outside the strict saved workspace. The web request checks original source
+lines and saved output consistency; it does not rerun Biopython, GO rules or
+the reasoner. The native CLI and methods below retain their original scope.
+
 ## Explain historical mismatches
 
 `qualify-go-context` retains its exact five-field compatibility rule. It now

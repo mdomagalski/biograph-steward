@@ -248,3 +248,79 @@ def inspect_go_context(context, protein, *, go_id=None):
         "limitations": deepcopy(LIMITATIONS)}
     result["content_sha256"] = digest(result)
     return result
+
+
+def inspect_go_selection(context, graph, selection_id, *, source_run, source_folder=None, qc=None):
+    """Read preserved native rows for one verified saved GO selection.
+
+    The existing dependency-free loader checks the original GAF lines and
+    complete native frame. This web-facing view does not rerun the optional
+    Biopython parser, ontobio rules or reasoner. A qualified graph may contain
+    fewer edges than its original packet, so its preserved baseline binding is
+    checked explicitly instead of asserting equal retained/baseline hashes.
+    """
+    from .inspection import _selection
+    _need(isinstance(source_run, str) and re.fullmatch(r"[A-Za-z0-9_-]{1,80}", source_run),
+          "provide an exact saved run identifier.")
+    _, _, _, selected_edges, _ = _selection(graph, selection_id)
+    _need(bool(selected_edges) and all(row.get("record_kind") == "go_annotation" for row in selected_edges),
+          "select an existing GO annotation claim.")
+    queries = {(row.get("subject"), row.get("object")) for row in selected_edges}
+    _need(len(queries) == 1, "selected GO records do not share one exact protein and GO term.")
+    protein, term = next(iter(queries))
+    _need(_protein(protein) and isinstance(term, str) and GO_ID.fullmatch(term),
+          "selected GO identifiers are malformed.")
+    report, native, compatible = load_go_context(context)
+    _need(report["snapshot_sha256"] == graph.get("snapshot_sha256"), "native source snapshot differs.")
+    qualified = graph.get("qualified_view")
+    if qualified:
+        _need(isinstance(qualified, dict) and qualified.get("packet_id") == report["packet_id"]
+              and source_folder is not None, "qualified source packet differs or is unavailable.")
+        baseline = Path(source_folder)/"source_retained_package/baseline_packet/source/graph.json"
+        _need(baseline.is_file() and not baseline.is_symlink()
+              and sha(baseline) == report["source_graph_file_sha256"], "preserved baseline source bytes differ.")
+    else:
+        _need(digest(graph) == report["graph_sha256"], "native context belongs to a different source graph.")
+    indexed = {row["edge_id"]: row for row in compatible}
+    selected_compatibility = []
+    for edge in selected_edges:
+        record = edge.get("evidence_record", {})
+        key = [protein, term, record.get("evidence"), record.get("assigned_by"), record.get("type")]
+        matching = indexed.get(edge["id"])
+        _need(matching is not None and matching["compatibility_key"] == key
+              and matching.get("assertion_id") == edge.get("assertion_id")
+              and record.get("goid") == term, "selected GO record does not match its source projection.")
+        selected_compatibility.append(deepcopy(matching))
+    records = [deepcopy(row) for row in native if row["subject"] == protein and row["go_id"] == term]
+    quality = {"status": "not_configured", "method_note": "No saved native GO quality output is configured for this view."}
+    if qc is not None:
+        from .go_context_qc import load_saved_qc
+        quality, native_quality = load_saved_qc(qc, report, native)
+        for row in records:
+            row["saved_quality_control"] = deepcopy(native_quality[row["id"]])
+    strict_ids = sorted({rid for row in selected_compatibility for rid in row["native_record_ids"]})
+    for row in records:
+        row["strict_projection_candidate_for_edge_ids"] = [item["edge_id"] for item in selected_compatibility
+                                                          if row["id"] in item["native_record_ids"]]
+    statuses = {row["status"] for row in selected_compatibility}
+    result = {"format": "biograph-steward.native-go-selection.v1", "read_only": True,
+        "source_run": source_run, "selection_id": selection_id, "snapshot_sha256": graph["snapshot_sha256"],
+        "query": {"protein": protein, "go_id": term}, "record_count": len(records), "records": records,
+        "status": "source_records_available" if records else "no_matching_source_records",
+        "source": deepcopy(report["source"]), "context_report_content_sha256": report["content_sha256"],
+        "compatibility": {"status": next(iter(statuses)) if len(statuses) == 1 else "multiple_projection_keys",
+            "candidate_count": len(strict_ids), "native_record_ids": strict_ids,
+            "source_edge_compatibilities": selected_compatibility}, "quality_control": quality,
+        "counts": {"positive_records": sum(not row["negated"] for row in records),
+                   "not_records": sum(row["negated"] for row in records)},
+        "source_bytes_and_native_scope_verified": True, "optional_native_parser_reexecuted": False,
+        "GO_rules_or_reasoner_reexecuted": False, "historical_record_identity_established": False,
+        "original_qualifiers_backfilled": False, "independent_biological_accuracy_established": False,
+        "biological_absence_inferred": False, "source_graph_mutated": False,
+        "model_calls": 0, "source_fetches": 0,
+        "limitations": [*LIMITATIONS,
+            "Strict five-field compatibility is shown separately from all current-source records for the same exact protein and GO term.",
+            "Saved QC flags concern this separate native annotation and normalized derivative, never an automatic repair or pruning verdict for the historical Pharos edge.",
+            "Only original source-line/frame replay is performed here; optional native parser, GO rules and reasoner execution are not rerun."]}
+    result["content_sha256"] = digest(result)
+    return result

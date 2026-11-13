@@ -151,7 +151,8 @@ def login_return_path(value):
 
 def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                   cache_dir: Path | None = None, timeout: float = 30, *, host='127.0.0.1',
-                  allowed_origins=(), access_token=None, neptune_mirror=None) -> ThreadingHTTPServer:
+                  allowed_origins=(), access_token=None, neptune_mirror=None,
+                  go_context_dir=None, go_qc_dir=None) -> ThreadingHTTPServer:
     policy = AccessPolicy(host, allowed_origins, access_token)
     sessions = BrowserSessions()
     runs_dir = Path(runs_dir).resolve()
@@ -163,6 +164,10 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
     neptune_state = {'mirror': neptune_mirror}
     neptune_lock = Lock()
     neptune_configured = neptune_mirror is not None or bool(neptune_endpoint)
+    # Operator-owned paths only: browsers cannot select a local context/QC path.
+    # Keep these optional packets outside strict saved workspace inventories.
+    go_context_dir = go_context_dir or os.environ.get('BIOGRAPH_GO_CONTEXT_DIR', '').strip() or None
+    go_qc_dir = go_qc_dir or os.environ.get('BIOGRAPH_GO_QC_DIR', '').strip() or None
 
     def get_neptune_mirror():
         if not neptune_configured:
@@ -813,9 +818,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if (marker.exists() or marker.is_symlink() or metadata.get('run_mode') == 'qualified_workspace'
                             or (source_folder/'source_retained_package').exists()
                             or (source_folder/'source_retained_package').is_symlink()):
-                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect'}:
+                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context'}:
                             raise ValueError('This qualified retained workspace is read-only. Query or download it; use its preserved baseline for new retrieval or review.')
-                if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect'}:
+                if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context'}:
                     from .reviews import read_run
                     if path == '/api/neptune-inspect':
                         if set(body) - {'run_id', 'node_id', 'limit'} or not {'run_id', 'node_id'} <= set(body):
@@ -833,6 +838,17 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         raise ValueError('Saved workspace not found.')
                     verify_saved_refresh(folder)
                     graph = read_run(folder)[2]
+                    if path == '/api/native-go-context':
+                        if set(body) != {'run_id', 'selection_id'}:
+                            raise ValueError('Supply only the saved run and selected GO source assertion.')
+                        if go_context_dir is None:
+                            self.json_reply({'error': 'Preserved native GO context is not configured for this workspace.'}, 503)
+                            return
+                        from .go_context_inspection import inspect_go_selection
+                        result = inspect_go_selection(go_context_dir, graph, body['selection_id'],
+                            source_run=identifier, source_folder=folder, qc=go_qc_dir)
+                        self.json_reply(result)
+                        return
                     if path == '/api/neptune-inspect':
                         from .client import digest
                         from .inspection import inspect_selection
@@ -880,6 +896,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                                 'observations': [], 'reason': 'Saved source-reuse supplement could not be verified; reuse remains unresolved.'}
                         result = inspect_selection(graph, body['selection_id'], run_id=identifier,
                             source_reuse=source_reuse)
+                        if go_context_dir is not None:
+                            result['native_go_context'] = {'configured': True,
+                                'eligible': (result.get('assertion') or {}).get('kind') == 'go_annotation'}
                     self.json_reply(result)
                     return
                 if path == '/api/construction-plan':

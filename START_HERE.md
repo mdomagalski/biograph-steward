@@ -17,7 +17,7 @@ Open [the workbench](http://127.0.0.1:8765/). Keep the terminal running; Ctrl+C 
 The [three-page review packet](output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
 summarizes the working product, measured scientific results and delivery routes.
 The [release index](docs/releases/20261113/README.md) identifies the tested
-software separately from the older hosted demonstration.
+software, current hosted demonstration and preserved older private bundle.
 
 The five tabs retain your current graph and selections as you switch tasks.
 

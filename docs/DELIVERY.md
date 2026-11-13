@@ -2,8 +2,8 @@
 
 The [November 13 delivery index](releases/20261113/README.md) joins the designated
 runtime, current graph and answer archives, exact checksums and access/source
-boundaries. Its [manifest](releases/20261113/manifest.json) separates runtime
-`902699e` from the later documentation checkpoint and lists relative local
+boundaries. Its [manifest](releases/20261113/manifest.json) separates the updated
+hosted runtime `0529d2b` from the preserved `902699e` software/private archives and lists relative local
 artifact paths. Preparing the index publishes no assets and changes no graph.
 
 The checkout also includes the small [CC0 Reactome annex](../examples/reactome_context_20261113/README.md)
@@ -22,6 +22,20 @@ source proof. Saved questions have separate ZIP downloads. It is live in the
 private AWS workbench and Neptune. The [current assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
 reports source-support coverage and the negative controlled biological results.
 
+The [hosted update receipt](evaluations/hosted_polish_update_20261113_summary.json)
+records code `0529d2b` and the approved 16-file aggregate publication
+`scientific_assessment_delivery_20261113` (`09e50f8e…`) in actual use. The existing
+TP53 answer and all 13 question/export files are unchanged after a real service
+restart; native replay, publication APIs and complete Neptune parity/read checks
+passed. The former runtime is retained for rollback. No new public access,
+permissions or compute resources were added. This update does not establish
+biological accuracy or extend the earlier backup-recovery claim.
+
+The hosted v3 publication shows grounding plus the earlier 92-query/3,968-pair
+exploratory comparison. The [negative 128-gene/7,648-pair transfer](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md)
+remains separately reported. The newer native GO web/QC follow-up is local-only
+and is not included in hosted `0529d2b`.
+
 The November 12 `crc_biological_workspace_20261112` source and its portable
 all-abstain CRC package remain supplementary, reproducible earlier artifacts.
 They combine the saved Pharos/CIViC workspace with source-qualified STRING,
@@ -29,8 +43,8 @@ MAP-IT and SIGNOR records. The optional private BioPlex context workspace is
 not part of this delivery. The [five-minute script](DEMO_SCRIPT.md) uses the
 supported guided workflow, not the experimental model planner.
 
-The [November 13 software-only archive check](evaluations/software_release_20261113_summary.json)
-pins the same committed runtime used by the corrected hosted app. The extracted
+The [initial November 13 software-only archive check](evaluations/software_release_20261113_summary.json)
+pins the preserved `902699e` runtime. The extracted
 archive launches with clean Python 3.12 and no site packages, creates a synthetic
 graph, answers a supported question and reopens the saved result after restart.
 No retrieved data or credentials enter that archive. Its local file is
@@ -68,12 +82,14 @@ For the latest code-only download, use
 `runs/software_delivery_polish_20261113/biograph_steward_software.zip`
 at commit `0529d2b`, verified by the
 [clean extracted check](evaluations/software_release_polish_20261113_summary.json).
-The [release index](releases/20261113/README.md) separates its checksum and optional
-assessment viewer from the earlier hosted/combined demonstration below.
+The [release index](releases/20261113/README.md) separates its checksum and
+assessment viewer from the earlier combined demonstration below. The current
+hosted code matches this software checkpoint; its real source packets and new
+aggregate publication remain separately supplied data.
 The [closing fixes](DELIVERY_POLISH_20261113.md) preserve saved source bytes
 while reducing HTTP transfer size and removing scratch files from path verification.
 
-The private current bundle is
+The preserved private combined bundle is
 `runs/source_faithful_delivery_20261113/biograph_steward_source_faithful_private.zip`.
 It contains the separately pinned `902699e` runtime, corrected graph with its full baseline
 and decisions, historical proof and saved TP53 answer in one layout. Unzip into

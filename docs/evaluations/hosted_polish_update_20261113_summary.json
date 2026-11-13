@@ -1,0 +1,67 @@
+{
+  "format": "biograph-steward.hosted-polish-update.v1",
+  "created_at": "2026-11-13T16:02:51.296734+00:00",
+  "status": "PASSED_HOSTED_UPDATE_AND_ACCEPTANCE",
+  "runtime_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+  "service_version": "0.8.0",
+  "runtime_source_archive_sha256": "4da65871f839809816d23d9e0c3ce02a7e8ff4eee731fbf5e2aea98316757224",
+  "runtime_image_id": "sha256:bf3891ee4bd2f653a2644566c2133e58ba7bb981677c116ed353f80808798e88",
+  "base_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "previous_runtime_commit": "902699ee41861be45529b38adeb2b289cf8300b0",
+  "previous_image_preserved": "sha256:5240fa8526d39175b8c6930267c3e66748d65d1359d8ac116254e17d757ef8d2",
+  "graph_content_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+  "primary_targets": 99,
+  "retained_evidence_records": 16687,
+  "existing_saved_question_id": "question_20261113T075313Z_1a76b00f",
+  "answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+  "saved_question_files_checked": 13,
+  "saved_question_inventory_sha256": "1acf2d11bd536e26b227e6b585e5346eddf36a39fab5de895c1cc136fd683457",
+  "saved_question_and_native_exports_unchanged": true,
+  "original_source_manifests_and_old_publications_unchanged": true,
+  "new_question_created": false,
+  "real_service_restart_and_reopen_passed": true,
+  "real_Neptune_parity_and_read_verified": true,
+  "Neptune_file_fallback_used": false,
+  "runtime_environment_and_authentication_unchanged": true,
+  "new_permissions_resources_or_public_access": false,
+  "automatic_rollback_needed": false,
+  "candidate_source_replay": {
+    "network": "none",
+    "root_and_saved_sources_read_only": true,
+    "Python": "3.12.16",
+    "native_saved_exports_verified": true
+  },
+  "new_assessment": {
+    "id": "scientific_assessment_delivery_20261113",
+    "content_sha256": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2",
+    "exact_files_verified": 16,
+    "source_bytes": 2919824,
+    "explicit_payload_and_private_destination_approval_received": true,
+    "API_and_catalogue_verified": true,
+    "scope": "Grounding plus earlier exploratory source assessment; later 128-gene negative transfer remains separately reported."
+  },
+  "previous_assessment_content_sha256": "05cc28f1dd520adbb974bac735f8323108ec37e4f82ac4ee8d3df0d1da46e9f7",
+  "private_uploads": {
+    "objects": 6,
+    "bytes": 1033819,
+    "encryption": "AES256",
+    "immutable_new_keys": true,
+    "native_SHA256_verified_for_all": true
+  },
+  "receipt_pins": {
+    "prepare": "78ce83e9492823b61c6909a1f72503668134f9bd189fbc16428f6192ccc1511d",
+    "acceptance": "211dfca9edefdd12360b0b34a38143e2f2f3434d7d13926401f7cced90836863",
+    "activation_record_sha256": "0f6c23f056ab483d3078f7f4b72d97f9bd844a6f9ee49e5406529838a83fc775"
+  },
+  "operator_script_SHA256": {
+    "build_candidate.py": "3e39a963ecd64791a232fc8abfc4ac87d6a93b7583047f093437cb2d47b45363",
+    "api_acceptance_polish.py": "8875b0f7f19d72f16f031e81cd450d661f9cbd784aed3a228a61e2047be1db88",
+    "activate_polish.py": "bc07b03da4f1796a0003b389f058211bd43f1ffbd48f28281e7395ae4e79f279",
+    "run_activation.py": "7fdea70b96ebee2fb60d5042d70d4b516c91b1f1a5e0f4372f769660103a1bde"
+  },
+  "source_fetches_or_model_calls": 0,
+  "GO_context_followup_in_this_runtime": false,
+  "scientific_accuracy_or_prediction_gain_established_by_deployment": false,
+  "scope": "Existing private workbench code and approved aggregate publication update. Original graph/decisions/source records unchanged. No new whole-VM or newer-publication backup recovery test; previous checkpoint recovery scope is preserved. No general latency improvement is claimed.",
+  "content_sha256": "d83a4604ecfcc7d7e913c023b1a6dfacb86369fde86ecc6a9c0ae5cb8261265f"
+}

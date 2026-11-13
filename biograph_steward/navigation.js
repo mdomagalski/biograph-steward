@@ -82,7 +82,7 @@ function claimLabel(a){return nodeLabel(a.subject)+' → '+relationLabel(a.predi
 function populateSourceGuide(){
   if(!graph)return;
   const query=$('sourceGuideSearch').value.trim().toLowerCase(),selected=$('sourceGuideSelection').value;
-  const matches=(graph.assertions||[]).filter(a=>!query||claimLabel(a).toLowerCase().includes(query));
+  const matches=(graph.assertions||[]).filter(a=>!query||[claimLabel(a),a.subject,a.predicate,a.object].some(v=>typeof v==='string'&&v.toLowerCase().includes(query)));
   const shown=matches.slice(0,100);
   $('sourceGuideSelection').replaceChildren();
   for(const a of shown){const option=el('option',claimLabel(a));option.value=a.id;$('sourceGuideSelection').append(option);}
@@ -215,6 +215,7 @@ function renderSourceGuide(result){
   box.replaceChildren(el('h4',heading),el('p','Selected record: '+result.selection.id,'small'),el('p',result.summary),el('p',result.review.note,'notice'));
   const recorded=Object.fromEntries(Object.entries(result.qualifiers).filter(([key,value])=>value!==null&&value!==undefined&&key!=='observation_id'));
   if(Object.keys(recorded).length){const facts=el('div',undefined,'source-record');facts.append(el('strong','Conditions recorded on this claim'),fieldList(recorded));box.append(facts);}
+  if(result.native_go_context?.configured===true&&result.native_go_context?.eligible===true)box.append(nativeGoContextPanel(result));
   const outcome=result.sections.find(section=>section.title==='Source outcome');
   if(outcome)box.append(el('p',outcome.text,'notice'));
   const columns=el('div',undefined,'guide-layout'),questions=el('div'),sources=el('div');
@@ -242,6 +243,100 @@ function renderSourceGuide(result){
   for(const section of result.sections){const details=el('details');details.append(el('summary',section.title),el('p',section.text),fieldList(section.fields));box.append(details);}
   const qualifiers=el('details');qualifiers.append(el('summary','Preserved claim conditions'),fieldList(result.qualifiers));box.append(qualifiers);
   const limits=el('details');limits.append(el('summary','Scope and interpretation limits'));for(const text of result.limitations)limits.append(el('p',text,'small'));box.append(limits);
+}
+function nativeGoContextPanel(guide){
+  const panel=el('section',undefined,'evidence'),button=el('button','Inspect preserved native GO annotations','secondary'),status=el('p','Read the separately preserved native annotation source for this exact protein and GO term.','small'),output=el('div');
+  button.type='button';status.setAttribute('role','status');
+  panel.append(el('h4','Separate native GO source context'),status,button,output);
+  button.onclick=async()=>{
+    const request=inspectionRequest,sourceRun=runId,sourceSnapshot=graph?.snapshot_sha256,selectionId=guide.selection.id;
+    const current=()=>Boolean(sourceRun&&sourceSnapshot)&&request===inspectionRequest&&sourceRun===runId&&sourceSnapshot===graph?.snapshot_sha256&&$('sourceGuideSelection').value===selectionId;
+    if(!current())return;
+    button.disabled=true;output.replaceChildren();status.textContent='Verifying preserved native GO source bytes…';
+    try{
+      const result=await api('/api/native-go-context',{run_id:sourceRun,selection_id:selectionId});
+      if(!current())return;
+      if(result.format!=='biograph-steward.native-go-selection.v1'||result.source_run!==sourceRun||result.selection_id!==selectionId||result.snapshot_sha256!==sourceSnapshot||result.read_only!==true||!Array.isArray(result.records)||result.record_count!==result.records.length||result.query?.protein!==guide.assertion?.subject||result.query?.go_id!==guide.assertion?.object)throw new Error('Preserved native GO context does not match this selected saved claim.');
+      renderNativeGoContext(result,output);
+      status.textContent=result.record_count+' preserved native annotations shown. Historical Pharos record identity remains unresolved; no graph or review was changed.';
+    }catch(error){if(current())status.textContent='Native GO context remains unresolved: '+error.message;}
+    finally{if(current())button.disabled=false;}
+  };
+  return panel;
+}
+function nativeGoReference(identifier){
+  const pmid=/^PMID:([1-9][0-9]*)$/i.exec(identifier);
+  if(pmid)return guideLink({label:identifier,url:'https://pubmed.ncbi.nlm.nih.gov/'+pmid[1]+'/'});
+  const doi=/^DOI:(10\.[0-9]{4,9}\/\S+)$/i.exec(identifier);
+  if(doi)return guideLink({label:identifier,url:'https://doi.org/'+encodeURIComponent(doi[1])});
+  return el('span',identifier);
+}
+function nativeGoGroups(title,groups,raw){
+  const box=el('div');box.append(el('strong',title));
+  if(raw==='')box.append(el('p','No value supplied in this native row.','small'));
+  else{
+    box.append(el('p','Source literals retain OR alternatives and AND groups; identifier meanings are not inferred.','small'));
+    const alternatives=el('ol');
+    for(const [index,group] of (groups||[]).entries())alternatives.append(el('li','Alternative '+(index+1)+': '+group.join(' AND ')));
+    box.append(alternatives);
+  }
+  const original=el('details');original.append(el('summary','Exact source field'),el('pre',raw));box.append(original);return box;
+}
+function nativeGoQuality(record){
+  const box=el('section'),qc=record.saved_quality_control;
+  box.append(el('strong','Separate saved native quality checks'));
+  if(!qc){box.append(el('p','No bound quality-check result is available for this row. No quality pass is implied.','small'));return box;}
+  if(qc.extension_unsatisfiable===true)box.append(el('p','At least one combination of context terms conflicts under the pinned ontology; other alternatives may differ. The base annotation is not judged biologically false.','notice'));
+  if(qc.normalization){
+    if(qc.normalization.base_rule_filtered===true)box.append(el('p','The saved native-rule derivative filtered this base record. The original source row remains visible here; the Pharos graph is unchanged.','notice'));
+    for(const change of qc.normalization.changed_columns||[]){
+      const item=el('div');item.append(el('p','Normalized derivative: '+change.field+' (source column '+change.column+')'),fieldList({original_source_value:change.before,derivative_values:change.after_values}));box.append(item);
+    }
+  }
+  if(qc.taxon_result){
+    const taxon=qc.taxon_result;
+    const message=taxon.negated_annotation_exempt?'Taxon check: this NOT-qualified record is exempt, not a validated taxon pass.':/(?:^|\.)PASS$/.test(String(taxon.result_type))?'No taxon conflict reported by this saved check.':'Taxon check reported '+taxon.result_type+(taxon.message?' · '+taxon.message:'');
+    box.append(el('p',message,'small'));
+  }
+  const raw=el('details');raw.append(el('summary','Selected rule results and complete saved check'));
+  for(const rule of qc.rule_results||[])raw.append(el('p','Selected rule '+rule.rule+': '+rule.result_type+(rule.message?' · '+rule.message:''),'small'));
+  raw.append(el('pre',JSON.stringify(qc,null,2)));box.append(raw);return box;
+}
+function renderNativeGoContext(result,box){
+  box.replaceChildren(el('p','These versioned native GO rows are separate source context. They do not identify or repair the historical Pharos record, establish independent biological truth, or change its review state.','notice'));
+  const headers=Array.isArray(result.source?.headers)?result.source.headers:[];
+  for(const header of headers.filter(value=>/^!(?:date-generated|go-version|generated-by):/.test(value)))box.append(el('p',header,'small'));
+  box.append(el('p','Exact source query: '+result.query.protein+' · '+result.query.go_id,'small'));
+  if(result.compatibility){
+    box.append(el('p','Match to available Pharos fields: '+result.compatibility.candidate_count+' candidate records. Matching these fields does not establish the original annotation identity.','small'));
+  }
+  if(result.quality_control?.status==='verified_saved_output'){
+    box.append(el('p','Separate quality checks: verified saved output.','small'));
+  }else box.append(el('p','No bound saved native quality-check output is configured. No GO quality pass is implied.','small'));
+  if(!result.record_count)box.append(el('p','No matching row was found in this preserved source scope. This is not evidence of biological absence.'));
+  const compatible=new Set(result.compatibility?.native_record_ids||[]);
+  for(const record of result.records){
+    const card=el('article',undefined,'source-record');
+    card.append(el('h4',(record.negated?'NOT annotation':'Positive-polarity annotation')+' · '+record.subject+' · '+record.go_id),
+      el('p','Native relation: '+record.relation_literal+(record.negated?' (qualified by NOT)':'')),
+      el('p','Native source line '+record.source_line+' · '+record.id,'small'),
+      el('p',(Array.isArray(record.strict_projection_candidate_for_edge_ids)?record.strict_projection_candidate_for_edge_ids.length>0:compatible.has(record.id))?'Matches the available Pharos fields; original annotation identity remains unresolved.':'Related native annotation for this exact protein/GO pair; not a strict match to the available Pharos fields.','small'));
+    card.append(fieldList({evidence_code:record.evidence_code,assigned_by:record.assigned_by,annotation_date:record.annotation_date,gene_product_form:record.gene_product_form_id,taxon_ids:record.taxon_ids}));
+    const references=el('div');references.append(el('strong','Native reference identifiers'),el('p','These identifiers may name the same reference; they are not independent experiment counts.','small'));
+    const list=el('ul');for(const identifier of record.reference_identifiers||[]){const item=el('li');item.append(nativeGoReference(identifier));list.append(item);}references.append(list);card.append(references);
+    card.append(nativeGoGroups('Annotation extension',record.extension_or_groups_raw,record.annotation_extension_raw),nativeGoGroups('With/from',record.with_from_or_groups_raw,record.with_from_raw));
+    card.append(nativeGoQuality(record));
+    const raw=el('details');raw.append(el('summary','Exact native source line and complete inspection record'),el('pre',record.raw_line),el('pre',JSON.stringify(record,null,2)));card.append(raw);box.append(card);
+  }
+  const provenance=el('details');provenance.append(el('summary','Source version and inspection boundaries'),fieldList(result.source));
+  if(result.quality_control?.status==='verified_saved_output'){
+    provenance.append(el('p',result.quality_control.method_note,'small'));
+    provenance.append(fieldList({saved_quality_ontology:result.quality_control.ontology,
+      retraction_table_headers:result.quality_control.retracted_reference_headers,
+      ontobio_version:result.quality_control.ontobio_version}));
+    for(const note of result.quality_control.limits||[])provenance.append(el('p',note,'small'));
+  }
+  for(const note of result.limitations||[])provenance.append(el('p',note,'small'));box.append(provenance);
 }
 async function runPathExploration(){
   if(!runId)return;

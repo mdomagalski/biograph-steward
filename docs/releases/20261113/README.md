@@ -22,24 +22,40 @@ preserved at `runs/software_delivery_current_20261113/biograph_steward_software.
 Its checksum is recorded in the manifest's `preserved_checkout_software` entry;
 `CURRENT_SOFTWARE.sha256` now identifies the `0529d2b` ZIP.
 
-The current presentation handoff is the
+The dated presentation packet is the
 [three-page final review](../../../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
 (153,681 bytes), prepared for code `0529d2b`. Its
 [review receipt](../../evaluations/final_review_PDF_20261113_summary.json) and the
 manifest's `current_review` entry record its exact identity and scope. It remains
 a local/repository review artifact; it has not been submitted or published.
+It predates the hosted update below and still records the previous hosted
+runtime. It is preserved unchanged; the hosted receipt gives the current status.
 The original two-page scientific update remains in the preserved assets below.
 
-The hosted app and complete private demo below remain pinned to `902699e`.
-Their existing archives were not silently replaced. The new
-[grounding result](../../evaluations/EXPERT_GROUNDING_20261113.md) is available in
-the local current app and repository; this increment does not deploy it to AWS.
+The private hosted app now runs **`0529d2b`**, verified by its
+[update and acceptance receipt](../../evaluations/hosted_polish_update_20261113_summary.json).
+The existing TP53 question and all 13 native question/export files remain
+unchanged after a real restart, and complete Neptune parity/read checks passed.
+The exact 16-file aggregate publication `scientific_assessment_delivery_20261113`
+(`09e50f8e…`) is installed and API/catalogue-verified. Its grounding component
+and earlier 92-query/3,968-pair exploratory comparison remain separate from
+the [negative 128-gene/7,648-pair transfer](../../evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md).
+The newer native GO web/QC follow-up is local-only, not included in this hosted
+code or its designated software ZIP.
+
+The complete private combined demo and original software archive below remain
+pinned to **`902699e`**. They were not silently replaced. The previous live
+runtime/image is also preserved for rollback. The manifest's top-level
+`runtime_commit` describes those original bundles; `current_hosted_runtime`
+describes the updated service. The new deployment does not extend the earlier
+backup-recovery scope.
 Use `CURRENT_SOFTWARE.sha256` for the new code ZIP and the original
 `CHECKSUMS.sha256` for the preserved artifacts in the table below.
 
 | Item | Pinned revision or identity |
 |---|---|
-| Hosted runtime and original software/private demo archives | `902699ee41861be45529b38adeb2b289cf8300b0` (`0.8.0`) |
+| Current private hosted runtime | `0529d2bc46eb07fcec00acdfe5432c9e5c23147e` (`0.8.0`) |
+| Preserved original software/private demo archives and previous hosted runtime | `902699ee41861be45529b38adeb2b289cf8300b0` (`0.8.0`) |
 | Current code-only software ZIP and final-review code checkpoint | `0529d2bc46eb07fcec00acdfe5432c9e5c23147e` (`0.8.0`; exact commit distinguishes it) |
 | Documentation checkpoint before this index was assembled | `47eb36c25bec3858d29766ba9cfb123475bea825` |
 | Corrected workspace graph | `e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff` |
@@ -145,6 +161,12 @@ reproduce this frozen graph or its qualified extensions automatically. See the
 - The corrected hosted graph passed complete Neptune parity and a real app
   restart. Its graph answers ordinarily use saved files; database inspection
   uses actual read-only Neptune queries.
+- The later `0529d2b` hosted update reopened the same saved TP53 question after
+  restart, with its source/export inventory unchanged. Both older and new
+  aggregate publications verified through normal APIs. Authentication,
+  permissions and resources were unchanged; the previous runtime was preserved
+  for rollback. This is a code/publication deployment check, not a new backup
+  recovery or scientific gain.
 - The completed private workspace backup passed an
   [isolated three-root checkpoint recovery](../../evaluations/aws_isolated_recovery_20261113_summary.json).
   V2 initially stopped at a missing writable temporary directory; its preserved

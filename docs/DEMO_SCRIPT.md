@@ -13,6 +13,12 @@ source-inspection example, not the complete Pharos graph or its historical
 baseline. The [delivery index](releases/20261113/README.md) identifies which
 software, data and assessment are actually supplied.
 
+The private AWS app now uses tested code `0529d2b`; its
+[update receipt](evaluations/hosted_polish_update_20261113_summary.json) verifies
+the existing saved question and native exports after a real restart, with
+complete Neptune parity and read-only database access. The earlier private
+combined archive remains pinned to `902699e`.
+
 1. **Open the question — one minute.** Open the supplied
    `source_faithful_workspace_20261113` run. In **Ask & explore**, choose
    **Qualified WikiPathways source context**, TP53 and eight results. Keep native
@@ -52,12 +58,17 @@ supplementary demonstrations. The refreshed scientific results should take
 precedence over earlier presentation snapshots until those slides are updated.
 
 For a question about claim verification, use the separate
-[expert-grounding result](evaluations/EXPERT_GROUNDING_20261113.md). Its current
-local saved publication is `scientific_assessment_delivery_20261113`; a fresh
-checkout and the older AWS demo do not silently contain it. On 678 eligible
+[expert-grounding result](evaluations/EXPERT_GROUNDING_20261113.md). Its saved
+publication `scientific_assessment_delivery_20261113` is now installed and
+API-verified in the private AWS app. A fresh checkout does not contain that
+separately supplied publication. On 678 eligible
 expert-labeled source cases, publication context reduces false alarms 25→18
 but true error flags 31→26. It supports assisted review, with unresolved cases
 visible; it does not validate or automatically prune the Pharos graph.
+This v3 publication also retains the earlier 92-query/3,968-pair exploratory
+comparison. Present the separately reported negative 128-gene/7,648-pair
+transfer above alongside it. The native GO web-inspection/QC follow-up is
+local-only and is not part of hosted `0529d2b`.
 
 The [existing checkpoint recovery](evaluations/aws_isolated_recovery_20261113_summary.json)
 also passed exact graph, saved-answer and export replay without changing the
@@ -67,5 +78,6 @@ not full VM recovery or the later grounding/software artifacts.
 The private AWS/Neptune mirror and [NVIDIA integration](NVIDIA_INTEGRATION_STATUS_20261113.md)
 can be described in questions. Saved-data inspection uses CPU only; the Brev
 model can stay off. These supporting capabilities do not establish biological
-improvement. Use the current delivery index for report/PDF revisions; the older
-editable slide deck remains a separate artifact until it is actually updated.
+improvement. Use the current delivery index and hosted update receipt for the
+latest status. The existing three-page PDF predates this hosted update; the
+older editable slide deck also remains a separate artifact until updated.
