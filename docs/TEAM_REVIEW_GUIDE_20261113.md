@@ -146,7 +146,8 @@ After extraction of the workspace ZIP, locate
 `source_retained_package/retained_graph.json`, `edge_dispositions.jsonl` beside
 it, and `baseline_packet/source/graph.json` inside that package. Explain how
 the complete workspace differs from the answer diagram. Mark download and
-file-interpretation problems separately.
+file-interpretation problems separately. The optional native GO source/QC
+packet is a separate hosted attachment and is not included in this workspace ZIP.
 
 ### T5. Read the assessment and try another question | 5 minutes
 
