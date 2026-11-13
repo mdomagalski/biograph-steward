@@ -262,7 +262,14 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             self.wfile.write(payload)
 
         def json_reply(self, obj: dict, status: int = 200):
-            self.reply(json.dumps(obj, ensure_ascii=True, allow_nan=False).encode(), status)
+            # RFC8259 network JSON uses UTF-8; escaping every native source
+            # character needlessly expands large evidence responses. Preserve
+            # the previous ASCII representation for legacy lone surrogates.
+            try:
+                payload = json.dumps(obj, ensure_ascii=False, allow_nan=False).encode('utf-8')
+            except UnicodeEncodeError:
+                payload = json.dumps(obj, ensure_ascii=True, allow_nan=False).encode('ascii')
+            self.reply(payload, status)
 
         def refresh_failure(self, folder, exc):
             from .refresh_archive import archive_id

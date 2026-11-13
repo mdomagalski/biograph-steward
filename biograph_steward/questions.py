@@ -591,17 +591,15 @@ def _physical_tsv(packet):
 
 def _physical_paths_bytes(answer):
     """Replay path serialization with the existing spreadsheet-safe writer."""
-    from tempfile import TemporaryDirectory
-    from .graph import _write_tsv
+    from .graph import _write_tsv_rows
     rows = [{"protein_id": row['protein']['id'],
              "protein_symbol": row['protein'].get('sym'), **path}
             for row in answer['results'] for path in row['paths']]
     columns = ['protein_id', 'protein_symbol', 'id', 'kind', 'review_status',
                'node_ids', 'assertion_ids', 'citation_ids']
-    with TemporaryDirectory(prefix='biograph-question-export-') as folder:
-        path = Path(folder) / 'paths.tsv'
-        _write_tsv(path, rows, columns)
-        return path.read_bytes()
+    output = io.StringIO(newline='')
+    _write_tsv_rows(output, rows, columns)
+    return output.getvalue().encode('utf-8')
 
 
 def verify_ranking_files(answer, directory):

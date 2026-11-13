@@ -1,0 +1,100 @@
+{
+  "format": "biograph-steward.delivery-polish.v1",
+  "created_at": "2026-11-13T15:13:44.092807+00:00",
+  "status": "PASSED_LOCAL_CHECKS_NOT_DEPLOYED",
+  "HTTP_saved_question_compatibility": {
+    "format": "biograph-steward.actual-saved-question-HTTP-compatibility.v1",
+    "created_at": "2026-11-13T15:08:00.365537+00:00",
+    "source_question_file_sha256": "9b2bb008e4520c5a737cfb057128f15a9d735ed58cf17cd6d5b5151e2cbc1004",
+    "answer_sha256": "00f662f4c00aab4079bd5ea5218ea9aff8dce86c806b4982b231253afcd15e82",
+    "saved_file_bytes": 64235516,
+    "question_export_files_verified_unchanged": 10,
+    "normal_saved_question_route_with_full_source_and_export_replay": true,
+    "HTTP_status": 200,
+    "Content_Encoding": "gzip",
+    "old_ASCII_identity_bytes": 62181391,
+    "old_gzip1_bytes": 3130544,
+    "new_UTF8_identity_bytes": 27108229,
+    "new_gzip1_bytes": 1624303,
+    "identity_byte_reduction_fraction": 0.5640459538771012,
+    "wire_byte_reduction_fraction": 0.48114353288118616,
+    "response_values_and_original_canonical_answer_hash_identical": true,
+    "input_and_saved_export_bytes_unchanged": true,
+    "new_Pharos_retrievals": 0,
+    "model_or_GPU_calls": 0,
+    "AWS_or_Brev_calls": 0,
+    "owned_local_server_stopped": true,
+    "elapsed_seconds_not_a_controlled_latency_comparison": 8.203681625018362,
+    "scope": "Single actual saved-question compatibility replay; serialization-byte comparison, not biological improvement or general latency claim.",
+    "implementation_SHA256": {
+      "biograph_steward/webapp.py": "563b3b186c61a319720ce23c3d51d8c9347af83d663f1730da8e233fea5e68ab",
+      "biograph_steward/questions.py": "18bdc2bec32472f7fb4ec39b411f3528da7dc462d86fa03c17c87186ec747aef",
+      "biograph_steward/graph.py": "3765dcc6b78fabaf9ed051d01fde26d548e6d8678304067a6fffdb604b35cf2d"
+    },
+    "content_sha256": "15d0a65709b0a32181ba8f6bd8e95334c8fb5efad99ec76e78d5e39117cd2c5c"
+  },
+  "scratch_free_saved_question_replay": {
+    "status": "PASSED",
+    "template": "qualified_pathway_source_context.v1",
+    "saved_answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+    "all_input_files_and_directories_unchanged": true,
+    "input_file_count": 13,
+    "total_input_bytes": 28314833,
+    "input_inventory_sha256": "21723286d2891b839a14b6efc1b75d1bf5c17a807fa3975351d8ff5da96c1e5f",
+    "verification_functions": [
+      "verify_answer",
+      "verify_pathway_files"
+    ],
+    "temporary_file_and_directory_creation_forced_to_fail": true,
+    "write_opens_and_directory_creation_forced_to_fail": true,
+    "guard_observations": {
+      "read_opens": 26,
+      "blocked_write_attempts": 0,
+      "blocked_temp_attempts": 0
+    },
+    "full_source_graph_replay_or_new_answer_generation": false,
+    "source_label_inspection_model_inference_Brev_or_AWS_calls": false,
+    "implementation_sha256": {
+      "biograph_steward/graph.py": "3765dcc6b78fabaf9ed051d01fde26d548e6d8678304067a6fffdb604b35cf2d",
+      "biograph_steward/questions.py": "18bdc2bec32472f7fb4ec39b411f3528da7dc462d86fa03c17c87186ec747aef"
+    },
+    "content_sha256": "f454f4c6ffd62c537ac0b51e8b8a68bc9fd75ed4773d9d4e7978067d0d7283e7"
+  },
+  "verification": {
+    "core_unittest": {
+      "tests_run": 1954,
+      "skipped_optional": 36,
+      "status": "OK",
+      "log_sha256": "fb04e9ce75039a3939d85de8bde780e0e119ba32b2d7c4345a637ccce0414434"
+    },
+    "node_tests": {
+      "tests": 46,
+      "passed": 46,
+      "failed": 0,
+      "skipped": 0,
+      "log_sha256": "dc21e7db2c8aeee5afb12ea30fe6aa1654ea6448a1863ef1794e24dc4fcd803c"
+    },
+    "targeted_read_only_legacy_TSV_and_HTTP_regressions_passed": true
+  },
+  "established_implementations_reused": [
+    {
+      "solution": "UTF-8 JSON and existing gzip transport",
+      "reference": "https://docs.python.org/3.10/library/json.html",
+      "standard": "https://www.rfc-editor.org/rfc/rfc8259",
+      "boundary": "Legacy lone surrogate values fall back to escaped ASCII. Saved JSON format and canonical answer hash remain unchanged."
+    },
+    {
+      "solution": "csv.DictWriter with a text stream and io.StringIO(newline=\"\")",
+      "reference": "https://docs.python.org/3.12/library/csv.html#csv.writer",
+      "boundary": "Shared existing TSV format; same columns, quoting, newline and formula escaping. No scratch files in this verification path."
+    }
+  ],
+  "original_saved_files_or_source_claims_changed": false,
+  "historical_failures_preserved": true,
+  "saved_question_format_migration_or_native_model_deduplication_performed": false,
+  "hosted_AWS_app_updated": false,
+  "model_GPU_Brev_or_AWS_calls": 0,
+  "new_biological_accuracy_or_prediction_gain_established": false,
+  "scope": "Delivery/replay reliability and HTTP serialization of existing saved data. Not independent scientific validation, general latency improvement, or a new biological comparison.",
+  "content_sha256": "438b81f3fa44a404a36e586b6ad5c4bb63ec6cfa062247b028460b5607e07c75"
+}

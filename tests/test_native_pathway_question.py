@@ -3,10 +3,11 @@ from copy import deepcopy
 import hashlib
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 import zipfile
 
 from biograph_steward.client import digest
-from biograph_steward.questions import answer_question, graph_basis, save_answer, verify_answer
+from biograph_steward.questions import answer_question, graph_basis, save_answer, verify_answer, verify_pathway_files
 from biograph_steward.wiki_history import inspect_model, assess_subject
 import test_qualified_workspace as source_fixture
 from test_cohort_mapping import gene, protein, registry
@@ -97,6 +98,38 @@ class NativePathwayQuestionTests(unittest.TestCase):
         archive.write_bytes(b'not the pinned archive')
         with self.assertRaisesRegex(ValueError, 'archive changed'):
             self.question()
+
+    def test_saved_exports_verify_without_scratch_and_still_reject_tampering(self):
+        answer = self.question()
+        original_answer = deepcopy(answer)
+        directory = self.root/'read_only_answer'
+        save_answer(answer, directory)
+        files_before = {p.relative_to(directory): p.read_bytes()
+                        for p in directory.rglob('*') if p.is_file()}
+        ordinary_open = Path.open
+
+        def read_only_open(path, mode='r', *args, **kwargs):
+            if any(flag in mode for flag in 'wax+'):
+                raise AssertionError('Saved-question verification must not write files')
+            return ordinary_open(path, mode, *args, **kwargs)
+
+        def verify_read_only():
+            with patch('tempfile.TemporaryDirectory', side_effect=AssertionError('No scratch directory')), \
+                    patch('tempfile.mkdtemp', side_effect=AssertionError('No scratch directory')), \
+                    patch.object(Path, 'open', new=read_only_open):
+                verify_pathway_files(answer, directory)
+
+        verify_read_only()
+        self.assertEqual(answer, original_answer)
+        self.assertEqual({p.relative_to(directory): p.read_bytes()
+                          for p in directory.rglob('*') if p.is_file()}, files_before)
+        target = directory/'paths.tsv'
+        original_paths = target.read_bytes()
+        target.write_bytes(original_paths + b'INVENTED ALTERED EXPORT\n')
+        with self.assertRaisesRegex(ValueError, 'paths.tsv'):
+            verify_read_only()
+        target.write_bytes(original_paths)
+        verify_read_only()
 
 
 if __name__ == '__main__':

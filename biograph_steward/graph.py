@@ -11,7 +11,7 @@ import csv
 import json
 from pathlib import Path
 import re
-from typing import Any
+from typing import Any, TextIO
 from urllib.parse import quote, urlparse
 
 from .client import digest, utcnow, write_json
@@ -414,18 +414,27 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
     return graph
 
 
+def _write_tsv_rows(handle: TextIO, rows: list[dict], columns: list[str]) -> None:
+    """Write the existing spreadsheet-safe format to a text stream.
+
+    Both ordinary files and StringIO use newline='' so export verification
+    replays the same bytes without requiring temporary filesystem storage.
+    """
+    writer = csv.DictWriter(handle, fieldnames=columns, delimiter="\t", extrasaction="ignore", lineterminator="\n")
+    writer.writeheader()
+    for row in rows:
+        flat = {key: json.dumps(value, ensure_ascii=True) if isinstance(value, (dict, list))
+                else "" if value is None else value for key, value in row.items()}
+        # Prevent formula interpretation when a table is opened in a spreadsheet.
+        for key, value in flat.items():
+            if isinstance(value, str) and value.startswith(("=", "+", "-", "@")):
+                flat[key] = "'" + value
+        writer.writerow(flat)
+
+
 def _write_tsv(path: Path, rows: list[dict], columns: list[str]) -> None:
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=columns, delimiter="\t", extrasaction="ignore", lineterminator="\n")
-        writer.writeheader()
-        for row in rows:
-            flat = {key: json.dumps(value, ensure_ascii=True) if isinstance(value, (dict, list))
-                    else "" if value is None else value for key, value in row.items()}
-            # Prevent formula interpretation when a table is opened in a spreadsheet.
-            for key, value in flat.items():
-                if isinstance(value, str) and value.startswith(("=", "+", "-", "@")):
-                    flat[key] = "'" + value
-            writer.writerow(flat)
+        _write_tsv_rows(handle, rows, columns)
 
 
 def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review_events: list[dict] | None = None,
