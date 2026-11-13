@@ -1,5 +1,10 @@
 # Five-minute challenge demonstration
 
+For the independent weekend teammate review, use the
+[testing guide](TEAM_REVIEW_GUIDE_20261113.md) and its
+[PDF](../output/pdf/BioGraph_Steward_Team_Review_Guide_20261113.pdf).
+This page is the shorter presentation script.
+
 Use the [portable CRC package](DELIVERY.md) only where source access and use are
 authorized. Otherwise use the software-only synthetic walkthrough in
 [START_HERE](../START_HERE.md), explicitly labeling its records as invented.

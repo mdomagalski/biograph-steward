@@ -14,6 +14,13 @@ Open [the workbench](http://127.0.0.1:8765/). Keep the terminal running; Ctrl+C 
 
 ## Reviewer walkthrough
 
+For the weekend teammate review, use the
+[six-page testing guide](output/pdf/BioGraph_Steward_Team_Review_Guide_20261113.pdf),
+its [editable version](docs/TEAM_REVIEW_GUIDE_20261113.md) and the
+[feedback template](docs/TEAM_REVIEW_FEEDBACK_20261113.txt). Feedback is due
+Monday, November 16. The guide separates private full-demo access from the
+repository-only route; a shared HTTPS reviewer URL is not yet available.
+
 The [three-page review packet](output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
 summarizes the working product, measured scientific results and delivery routes.
 The [release index](docs/releases/20261113/README.md) identifies the tested

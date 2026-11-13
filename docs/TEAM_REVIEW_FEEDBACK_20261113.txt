@@ -1,0 +1,42 @@
+BioGraph Steward - teammate feedback
+Please return by Monday, November 16, 2026.
+
+Name / date:
+Access route and workspace:
+Browser / operating system:
+
+Status: I = independent; H = with help; N = not completed; A = not attempted.
+Separate hands-on time from waiting and downloads.
+
+T1 - Find the answer:
+status | hands-on time | waiting | exact obstacle or note
+
+T2 - Inspect the original source:
+status | hands-on time | waiting | exact obstacle or note
+
+T3 - Explain GO source/QC differences:
+status | hands-on time | waiting | exact obstacle or note
+
+T4 - Download and understand exports:
+status | hands-on time | waiting | exact obstacle or note
+
+T5 - Assessment / another question:
+status | hands-on time | waiting | exact obstacle or note
+
+Optional real Reactome annex:
+status | hands-on time | waiting | exact obstacle or note
+
+What did you expect the app to do? Did its result match?
+
+What term, warning, source link or review label was unclear?
+
+What did you think the exported package contains?
+
+Top three changes before submission (mark any blocking issue):
+1.
+2.
+3.
+
+Useful research question you would try next:
+
+Unexpected result / screenshot reference (no access tokens):
