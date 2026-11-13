@@ -1,6 +1,6 @@
 # BioGraph Steward final submission
 
-Working submission and presentation draft, November 13, 2026. The current release is a source-faithful Pharos evidence workbench with reproducible records, guided questions and explicit scientific limits. The corrected private AWS workbench and Neptune mirror are tested; PaperQA3 is optional.
+Working submission and presentation draft, November 13, 2026. The current release is a source-faithful Pharos evidence workbench with reproducible records, guided questions and explicit scientific limits. The corrected private AWS workbench, Neptune mirror and scoped checkpoint recovery are tested. The [final review PDF](../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf) is the current review packet; the editable slide deck remains a separate older artifact. PaperQA3 and another agent platform are optional.
 
 ## Project summary
 
@@ -33,6 +33,15 @@ to the 41 original reported-response contexts. Missing matches remain UNKNOWN;
 independent whole-graph scientific accuracy is not estimable from these labels.
 See the [source-faithful assessment](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md).
 
+A separate [expert-labeled source-grounding evaluation](evaluations/EXPERT_GROUNDING_20261113.md)
+uses published INDRA curations and native Gilda/Adeft. On 678 eligible reserved
+cases, publication context reduces false alarms from 25 to 18 while detecting
+26 rather than 31 grounding errors. The tracked reproduction commands recovered
+all 4,294 prepared source cases and their split exactly. This measures
+source-identity error triage, not correction of the Pharos graph, exact protein-form validation or a new
+automatic pruning policy. Full denominators, outside-endpoint cases and
+abstentions remain explicit.
+
 Biological comparisons remain explicit. Matched R-GCN source-context tests did
 not beat count and degree controls reliably. An exploratory inverse-degree
 context result on consumed coessentiality data was followed by a
@@ -56,6 +65,12 @@ transfer or establish whole-graph biological accuracy.
 
 Start with [START_HERE](../START_HERE.md). The core app needs Python 3.10+ and no model account. A fresh checkout includes the synthetic software demonstration. The existing real examples require their saved source packets; local run directories are not included in Git.
 
+For a checkout-only real-source illustration, open the
+[CC0 Reactome annex](../examples/reactome_context_20261113/README.md).
+It supplies exact native records and an offline inspection page. It is
+current publisher context, separate from the frozen Pharos baseline and
+independent scientific validation.
+
 The current hosted example is `source_faithful_workspace_20261113`. Use the
 [updated five-minute script](DEMO_SCRIPT.md):
 
@@ -69,6 +84,8 @@ The current hosted example is `source_faithful_workspace_20261113`. Use the
 4. **Compare & assess:** show public-reference support coverage and UNKNOWNs.
    Present the fixed learner result and the negative 128-gene transfer together
    with their controls and study/exposure limits; neither establishes a gain.
+   The later local grounding publication, when separately supplied, presents
+   the expert-labeled identity-check trade-off above as its own component.
 5. **Export:** identify the retained graph, exhaustive decision ledger and full
    original baseline. Explain whole-workspace versus current-answer scope.
 
@@ -104,6 +121,15 @@ retrieval route remain independently usable. Final repository publication is
 intended for submission; local run IDs and commits alone do not provide
 external access.
 
+The [successful isolated recovery](evaluations/aws_isolated_recovery_20261113_summary.json)
+replayed the existing backup's graph, bound assessment and saved question,
+including exact answer/export hashes. Live files, configuration and container
+identity stayed unchanged; the post-check service returned HTTP 200. This is
+checkpoint recovery, not full VM/runtime restoration or recovery of the later
+grounding publication and current software ZIP. The
+[delivery index](releases/20261113/README.md) keeps these versions and artifacts
+separate. The other research-archive S3 transfer remains unapproved.
+
 ## Completed biological source enrichment
 
 The [versioned source increment](BIOLOGICAL_SOURCE_UPDATE.md) adds 858 STRING 12.5
@@ -127,6 +153,7 @@ remains failed. Both limitations remain part of the delivered assessment.
 
 | Assessment | Result | Interpretation |
 |---|---|---|
+| Expert-labeled source-grounding component, 678 eligible reserved cases | Lexical: 31 correct error flags / 25 false alarms; publication context: 26 / 18; both leave 103 unresolved | Source-identity review trade-off; published curator-relative labels, not whole-graph accuracy or automatic corrections |
 | Current Wiki-context R-GCN comparison, 1,751 measured pairs | Historical AP 0.71027 versus normalized 0.70978; count control 0.72097 and degree control 0.71133 | Consumed-reference comparison; no reliable predictive gain over controls |
 | Fixed new-gene transfer, 128 queries / 7,648 nonsyntenic pairs | Neither RA nor binary shared context beats baseline and all 40 controls at any N=1–10; historical context reaches 26 queries, with 102 zero-context queries retained | Negative transfer within the same published reference; no accuracy estimate or automatic biological pruning |
 | OpenCell positive retention, equal graph budget | Fixed primary 272/284; native 269/284; Network Enhancement 272/284 | Small scoped retention benefit over native; NE ties. Same-study processed QC is not another fresh confirmation; no precision/accuracy or CRC-specific claim |
@@ -186,20 +213,35 @@ recovery material remains preserved. Update that artifact before recording or
 submitting it; the current source-faithful report and negative transfer should
 take precedence over the earlier deck's delivery counts and results emphasis.
 
-The optional NVIDIA Nemotron/NAT integration belongs on slide 2 or in the technical appendix. The current planner is experimental; the primary demonstration uses supported guided tools. Show implemented methods and useful behavior before architecture details.
+The [current review PDF](../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
+is a separate exportable presentation packet. Its existence does not update
+the older editable six-slide deck described above.
+
+The optional NVIDIA Nemotron/pinned NAT integration belongs in the technical
+appendix. The planner is experimental; the primary demonstration uses supported
+guided tools. The [NVIDIA status](NVIDIA_INTEGRATION_STATUS_20261113.md) records
+the upstream lifecycle change and the qualified decision to defer NemoClaw.
+Show implemented methods and useful behavior before architecture details.
 
 ## Delivery inventory
 
 | Item | Current state | Finish action |
 |---|---|---|
-| MIT repository and build instructions | Implemented; current source passed the isolated installation/start/export gate | Make the delivered release checkpoint available through GitHub |
-| App and demonstration | Working five-tab flow, full CRC example, site/context desktop/mobile checks, portable builder and five-minute script | Resolve real-source sharing permissions and deliver the chosen route; independent intended-user assessment remains open |
+| MIT repository and build instructions | Implemented; current code is on the private review branch and the current software ZIP passes clean extracted startup/question/export/restart checks | Freeze the final reviewed checkpoint and carry out the public repository/release handoff |
+| App and demonstration | Working five-tab flow, full private CRC example, checkout synthetic example, CC0 real-source annex and five-minute script | Gather weekend team feedback for Monday, fix observed interpretation/access issues, and verify the permitted judge access route; independent intended-user assessment remains open |
 | Graph and decisions | Current AWS/Neptune workspace retains 16,687 records across 99 primary targets, with its original baseline and complete decisions preserved; 298 obsolete-GO-ID exclusions are source qualifications. Earlier all-abstain and experimental-pruning packages remain separate | Deliver clearly named current workspace and historical comparison packages under their source terms |
 | Standards | Explicit vocabulary references, bounded KGX profile and SSSOM audit | Link the implemented profile and documented conformance limits |
-| Scientific assessment | Bounded support coverage, retention comparisons and matched learner controls are recorded. The fixed 128-gene transfer is negative; independent whole-graph accuracy and automatic biological pruning remain unproved | Present current source improvements separately from biological validation, retaining the complete negative transfer and earlier bounded results |
+| Scientific assessment | Bounded support coverage, retention/learner controls and expert-labeled grounding triage are recorded. The fixed 128-gene transfer is negative; grounding trades fewer false alarms for missed errors | Present current source improvements and bounded measurements with their denominators; independent whole-graph accuracy and automatic biological pruning remain unproved |
+| Preservation | Existing private checkpoint passed isolated graph/assessment/question recovery; live service and data remained unchanged | Keep scope/version receipts with the handoff; full VM recovery and the separate unapproved research-archive transfer are not completed by that check |
 | Final submission format | Supplied brief and Slack updates guide the handoff; exact final file schema remains unspecified | Follow any later organizer instructions; keep this inventory ready |
 
 The supplied rubric weights usability 40%, accuracy/pruning 30%, explainability 20% and standards 10%. Semi-autonomous construction is allowed. AWS, Neptune and PaperQA3 are not stated prerequisites. See the [current organizer/proposal crosswalk](PROJECT_ALIGNMENT.md).
+
+Core inspection and release polishing use CPU. Keep the Brev model off until
+a specific bounded inference check is planned. Use the existing AWS app and
+Neptune for the hosted demonstration/database inspector when needed; no new
+cloud service or NemoClaw installation is a submission dependency. This
+guidance does not report current account billing or credit consumption.
 
 ## Optional no-spend literature illustration
 

@@ -7,6 +7,11 @@ The [source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.m
 is the current delivery example when its separately supplied packet is
 available. No model or GPU is needed for saved-data questions. A private AWS
 deployment additionally needs its existing authorized Session Manager tunnel.
+The checkout also includes a [CC0 Reactome example](../examples/reactome_context_20261113/README.md)
+with an offline viewer and exact native records. This is a separate current
+source-inspection example, not the complete Pharos graph or its historical
+baseline. The [delivery index](releases/20261113/README.md) identifies which
+software, data and assessment are actually supplied.
 
 1. **Open the question — one minute.** Open the supplied
    `source_faithful_workspace_20261113` run. In **Ask & explore**, choose
@@ -26,17 +31,14 @@ deployment additionally needs its existing authorized Session Manager tunnel.
    recovered 253/308 exact revisions and the unresolved remainder. Five
    historically encoded connections excluded by a current-only view are kept.
 4. **Present the assessment — one minute.** In **Compare & assess**, open the
-   supplied complete scientific assessment. Show 373/4,078 GO assertions with
-   compatible experimental curation and 32/100 disease assertions supported
-   by the declared CRC genomic cohort. Their UNKNOWNs stay visible. The fixed
-   R-GCN and binary functional comparisons did not establish improvement over
-   controls. The separately reported inverse-degree result is exploratory
-   relative concentration with a smaller background, not validated accuracy,
-   recall or biological pruning. Show the [128-gene transfer figure](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md):
-   neither weighting nor the binary diagnostic beat baseline and all fixed
-   controls. This separate same-study comparison did not reproduce the
-   development advantage. These are local assessments, not official challenge
-   scores.
+   supplied scientific assessment. Show compatible experimental GO curation
+   at 373/4,078 original assertions and CRC cohort support at 32/100 disease
+   assertions, with UNKNOWNs retained. These are coverage measurements. Show
+   the [128-gene transfer figure](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md)
+   and state that the fixed views did not beat the baseline and all controls.
+   No automatic biological-pruning policy was promoted. Full methods and
+   earlier bounded results remain in the receipts; these are not official
+   challenge scores.
 5. **Show the handoff — one minute.** In **Export**, download the complete
    workspace ZIP. The answer diagram is a question-specific view; the workspace
    retains 16,687 evidence rows. Locate `source_retained_package/retained_graph.json`,
@@ -49,6 +51,21 @@ The existing `crc_judge_demo` route and SIGNOR BRAF-site explanation remain
 supplementary demonstrations. The refreshed scientific results should take
 precedence over earlier presentation snapshots until those slides are updated.
 
-The private AWS/Neptune mirror and NVIDIA integration can be described in
-questions. They are implemented supporting capabilities, not prerequisites for
-the demonstrated flow or proof of biological improvement.
+For a question about claim verification, use the separate
+[expert-grounding result](evaluations/EXPERT_GROUNDING_20261113.md). Its current
+local saved publication is `scientific_assessment_delivery_20261113`; a fresh
+checkout and the older AWS demo do not silently contain it. On 678 eligible
+expert-labeled source cases, publication context reduces false alarms 25→18
+but true error flags 31→26. It supports assisted review, with unresolved cases
+visible; it does not validate or automatically prune the Pharos graph.
+
+The [existing checkpoint recovery](evaluations/aws_isolated_recovery_20261113_summary.json)
+also passed exact graph, saved-answer and export replay without changing the
+live service. Its scope is the older graph/assessment/question checkpoint,
+not full VM recovery or the later grounding/software artifacts.
+
+The private AWS/Neptune mirror and [NVIDIA integration](NVIDIA_INTEGRATION_STATUS_20261113.md)
+can be described in questions. Saved-data inspection uses CPU only; the Brev
+model can stay off. These supporting capabilities do not establish biological
+improvement. Use the current delivery index for report/PDF revisions; the older
+editable slide deck remains a separate artifact until it is actually updated.

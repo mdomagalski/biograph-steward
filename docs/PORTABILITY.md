@@ -2,6 +2,12 @@
 
 The core app remains standard-library Python 3.10+. Use Python 3.12 for the optional NeMo Agent Toolkit environment. The retained deployment supports explicit hosting configuration, persistent run/cache paths, model transport for the bounded planner, NVIDIA NIM request formatting and one optional NeMo workflow. The core app itself does not provision cloud resources or include a model; the optional AWS deployment templates are described below.
 
+The [November 13 NVIDIA status](NVIDIA_INTEGRATION_STATUS_20261113.md) records
+the upstream Toolkit deprecation/EOL notice and the decision to defer NemoClaw.
+The optional 1.8.0 workflow below is a pinned legacy integration. It remains
+separate from the core application and is not a release prerequisite. Saved
+source questions and release polishing need CPU, not a running Brev model.
+
 ## Start in a Brev VM
 
 Clone the repository into your challenge VM and change into it. No installation is needed for the core app. Choose an absolute persistent directory on that VM:
@@ -143,6 +149,11 @@ After configuring the actual provider, use the deployment smoke command above wi
 
 ## Optional NeMo Agent Toolkit workflow
 
+These commands describe the retained pinned integration. Review the
+[current upstream lifecycle and alternatives](NVIDIA_INTEGRATION_STATUS_20261113.md)
+before adopting it for a new deployment; no silent dependency migration has
+been applied to historical checks or the current core.
+
 Use a dedicated Python 3.12 environment:
 
 ```bash
@@ -179,6 +190,11 @@ An optional [Neptune Database query mirror](../deploy/aws/NEPTUNE.md) now preser
 Native Bedrock Converse/SigV4 integration and in-app S3 artifact export/import remain later work. The HTTP model transport does not read AWS credentials. The separate deployment scripts use the AWS CLI credential chain and EC2 instance role while preserving ordinary workspace files and scientific review state.
 
 ## Verification status
+
+The following dated deployment records preserve their original scope. Current
+code-only startup/restart and checkpoint recovery evidence is linked from the
+[delivery index](releases/20261113/README.md); those newer results do not imply
+a new live model, NIM or agent-platform evaluation.
 
 On October 19, 2026, the full 232-test suite passed on macOS with Python 3.14, skipping the one optional NeMo test. The original 224-test regression suite and the eight new deployment tests also passed against a normally installed core package on Python 3.12. The optional test passed separately using the real NeMo Agent Toolkit 1.8.0 CLI against a local mock model. A CLI smoke run reopened the same graph and cited answer after a real local app-process restart. Installed HTML assets loaded outside the checkout without NeMo dependencies. Deployment YAML and CI shell syntax were checked. Docker is not available on the development machine, so the image has not been built locally.
 

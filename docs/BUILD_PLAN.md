@@ -1,6 +1,6 @@
 # Current build plan
 
-## Current boundary — November 13
+## Current delivery boundary — November 13
 
 The [source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
 is now an actual read-only app run, not only an offline export. It combines
@@ -30,6 +30,15 @@ No automatic biological pruning or app-ranking policy was promoted. A
 [distinct genetic-interaction reference](evaluations/HORLBECK_GI_REFERENCE_FEASIBILITY_20261113.md)
 covers too few cohort genes for confirmation.
 
+The [expert-labeled grounding assessment](evaluations/EXPERT_GROUNDING_20261113.md)
+now executes native INDRA/Gilda/Adeft checks against published curator labels.
+On 678 eligible reserved source cases, publication context reduces false alarms
+from 25 to 18 while detecting 26 rather than 31 grounding errors. This is a
+separate source-identity review aid, not a new pruning rule or whole-graph
+accuracy estimate. The current local assessment viewer preserves all three
+fixed methods, their full denominators and unresolved cases. This later
+publication is not yet part of the older hosted demo.
+
 Hosted deployment is complete: the corrected graph, saved native answer and
 scientific assessment survived a real service restart, with complete Neptune
 parity and an actual Chrome walkthrough. The existing source guide now exposes
@@ -37,13 +46,32 @@ complete CIViC profile/Assertion context and current Reactome event/complex
 context without counting those lookups as independent evidence. A separate
 128-gene local workspace demonstrates reuse of the same publishers.
 
-Finish release presentation and permitted handoff. A private workspace backup
-is complete; the new isolated recovery check and separate scientific S3 archive
-copy require explicit approval after automatic review blocked their payload
-transfers. Scientific artifacts remain local. Remaining scientific work needs
-suitable independent labels, qualified study lineage and a reference compatible
-with the task, rather than another model, endpoint sweep or graph-store abstraction.
-See the [consolidated delivery assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md).
+The [isolated checkpoint recovery](evaluations/aws_isolated_recovery_20261113_summary.json)
+has passed: the preserved graph, bound assessment and saved answer replayed
+with live files, configuration and container identity unchanged. This covers
+the existing checkpoint, not full VM recovery or the newer grounding/software
+artifacts. The separate 488 MB research-archive S3 copy remains unapproved.
+
+The checkout now supplies a small [CC0 Reactome source example](../examples/reactome_context_20261113/README.md)
+with exact native records and an offline viewer. It is a practical real-source
+inspection route when the complete mixed-source Pharos packet is unavailable;
+it is not the full graph or independent corroboration of its assertions.
+
+Use the remaining four days for the permitted reviewer handoff, team feedback
+on Monday, observed usability fixes, and final presentation/access checks.
+The [delivery index](releases/20261113/README.md) separates the tested current
+software from the older hosted/private bundle. Keep source terms, original
+failures, consumed references and negative results intact. Remaining biological
+claims require suitably independent labels and task-compatible references;
+new infrastructure does not create those labels. See the
+[consolidated delivery assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md).
+
+Current NVIDIA lifecycle and compute guidance is in the
+[integration status](NVIDIA_INTEGRATION_STATUS_20261113.md). Local CPU work
+does not require Brev or its model. Use the existing AWS app and Neptune when
+the hosted demonstration or database inspector is needed. Any further live
+model check needs a stated task, fixed request budget and separate result.
+No additional agent platform is a release prerequisite.
 
 ## November 12 checkpoint
 

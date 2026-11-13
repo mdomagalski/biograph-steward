@@ -14,6 +14,11 @@ Open [the workbench](http://127.0.0.1:8765/). Keep the terminal running; Ctrl+C 
 
 ## Reviewer walkthrough
 
+The [three-page review packet](output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
+summarizes the working product, measured scientific results and delivery routes.
+The [release index](docs/releases/20261113/README.md) identifies the tested
+software separately from the older hosted demonstration.
+
 The five tabs retain your current graph and selections as you switch tasks.
 
 1. **Data & saved work:** choose **Offline demonstration**, then **Build synthetic demonstration**. This uses invented records to demonstrate the software. No source retrieval or model call is needed.
@@ -57,6 +62,10 @@ reuses that workflow on a different saved pathway cohort, retaining all 1,470
 records with zero prunes. It requires its complete private packet; the guide
 documents the large proof payload and the negative same-study biological
 comparison separately from this working application example.
+
+The [November 13 delivery polish](docs/DELIVERY_POLISH_20261113.md) reduces HTTP
+response bytes for large saved answers while preserving their original hashes,
+source files and exports. Complete proof payloads can still be large.
 
 With that same supplied local packet, the
 [B3GALNT2 shared-pathway example](http://127.0.0.1:8794/?run=transfer_pathway_workspace_20261113&question=question_b3galnt2_reactome_20261113)

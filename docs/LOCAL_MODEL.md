@@ -2,6 +2,13 @@
 
 The Linux-only `compose.brev-local-model.yaml` overlay connects the existing app to NVIDIA's publicly downloadable [Llama-3.1-Nemotron-Nano-8B-v1](https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-8B-v1), served by [vLLM](https://docs.vllm.ai/en/v0.8.5/deployment/docker.html). This is a vLLM deployment of an NVIDIA model, not an NVIDIA NIM deployment. It requires no hosted inference API or NGC download key. The model's license and upstream notices remain applicable.
 
+This is the preserved model configuration, not a requirement to keep Brev on.
+The [current integration status](NVIDIA_INTEGRATION_STATUS_20261113.md) separates
+Nemotron serving, the legacy optional NAT wrapper and the uninstalled NemoClaw
+stack. The latest [live supported-question check](evaluations/NEMOTRON_NEPTUNE_PLANNER_20261111.md)
+unnecessarily abstained; the delivered guided workflow remains independent of
+the model. Start it only for an explicitly planned fixed inference check.
+
 ## Fixed configuration
 
 - Model and tokenizer revision: `54641c1611fcff44fa4865626462445e0a153fc7`.
@@ -62,4 +69,4 @@ Keep the existing Mac-to-Brev SSH forward and open `http://127.0.0.1:8767/`. Aft
 
 Use `deployment-smoke --with-planner` with a new output directory for one synthetic integration check. A valid response that selects the wrong scope still fails the check. Do not turn a recorded failure into a successful receipt.
 
-The planner's earlier comparison runners and results are in the [research archive](EXPERIMENT_HISTORY.md). Their scope-agreement scores do not establish scientific accuracy or graph improvement. Current scientific work is [INMC input preparation](evaluations/INMC_INPUT_READINESS_20261022.md), which does not need this model or GPU.
+The planner's earlier comparison runners and results are in the [research archive](EXPERIMENT_HISTORY.md). Their scope-agreement scores do not establish scientific accuracy or graph improvement. The old INMC preparation and subsequent comparisons are completed, consumed work; see the [current scientific assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md). Ordinary source inspection, the CPU grounding evaluation and final delivery work do not need this model or GPU.

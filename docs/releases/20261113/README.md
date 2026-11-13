@@ -8,13 +8,27 @@ relative to the repository root. Local paths are not download URLs.
 
 ## Which revision is delivered
 
-The current **code-only software** now uses commit `95d9420`. Its separately
-tested ZIP is `runs/software_delivery_current_20261113/biograph_steward_software.zip`
-(892,060 bytes); see the [clean extracted acceptance receipt](../../evaluations/software_release_current_20261113_summary.json)
+The current **code-only software** now uses commit `0529d2b`. Its separately
+tested ZIP is `runs/software_delivery_polish_20261113/biograph_steward_software.zip`
+(892,290 bytes); see the [clean extracted acceptance receipt](../../evaluations/software_release_polish_20261113_summary.json)
 and [current software checksum](CURRENT_SOFTWARE.sha256). It passes synthetic
 question/export/reopen checks after an actual process restart with clean Python.
 It includes the optional aggregate grounding viewer; native research tools and
 data stay separately available through the repository and documented acquisition.
+
+The earlier `95d9420` software ZIP and its
+[receipt](../../evaluations/software_release_current_20261113_summary.json) remain
+preserved at `runs/software_delivery_current_20261113/biograph_steward_software.zip`.
+Its checksum is recorded in the manifest's `preserved_checkout_software` entry;
+`CURRENT_SOFTWARE.sha256` now identifies the `0529d2b` ZIP.
+
+The current presentation handoff is the
+[three-page final review](../../../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
+(153,681 bytes), prepared for code `0529d2b`. Its
+[review receipt](../../evaluations/final_review_PDF_20261113_summary.json) and the
+manifest's `current_review` entry record its exact identity and scope. It remains
+a local/repository review artifact; it has not been submitted or published.
+The original two-page scientific update remains in the preserved assets below.
 
 The hosted app and complete private demo below remain pinned to `902699e`.
 Their existing archives were not silently replaced. The new
@@ -26,7 +40,7 @@ Use `CURRENT_SOFTWARE.sha256` for the new code ZIP and the original
 | Item | Pinned revision or identity |
 |---|---|
 | Hosted runtime and original software/private demo archives | `902699ee41861be45529b38adeb2b289cf8300b0` (`0.8.0`) |
-| Current code-only software ZIP | `95d9420deb1b1502e39b371df80b62ce8c757fc6` (`0.8.0`; exact commit distinguishes it) |
+| Current code-only software ZIP and final-review code checkpoint | `0529d2bc46eb07fcec00acdfe5432c9e5c23147e` (`0.8.0`; exact commit distinguishes it) |
 | Documentation checkpoint before this index was assembled | `47eb36c25bec3858d29766ba9cfb123475bea825` |
 | Corrected workspace graph | `e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff` |
 | Preserved original baseline graph | `f35f8e0bb66742a3b65d1887ecbc85ead33fd8c5ef9eb5e8015d28934f22d22e` |

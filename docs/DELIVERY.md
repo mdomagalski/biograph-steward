@@ -65,15 +65,17 @@ terms still apply.
 ## Current offline handoff
 
 For the latest code-only download, use
-`runs/software_delivery_current_20261113/biograph_steward_software.zip`
-at commit `95d9420`, verified by the
-[new clean extracted check](evaluations/software_release_current_20261113_summary.json).
+`runs/software_delivery_polish_20261113/biograph_steward_software.zip`
+at commit `0529d2b`, verified by the
+[clean extracted check](evaluations/software_release_polish_20261113_summary.json).
 The [release index](releases/20261113/README.md) separates its checksum and optional
 assessment viewer from the earlier hosted/combined demonstration below.
+The [closing fixes](DELIVERY_POLISH_20261113.md) preserve saved source bytes
+while reducing HTTP transfer size and removing scratch files from path verification.
 
 The private current bundle is
 `runs/source_faithful_delivery_20261113/biograph_steward_source_faithful_private.zip`.
-It contains the final committed runtime, corrected graph with its full baseline
+It contains the separately pinned `902699e` runtime, corrected graph with its full baseline
 and decisions, historical proof and saved TP53 answer in one layout. Unzip into
 a new directory and follow its `README_DEMO.md`:
 

@@ -134,11 +134,21 @@ were evaluated within the **same published study**, not an independent study.
 The existing answer format repeats native proof, producing a roughly **64 MB
 saved question JSON**; this remains an engineering limit. A read-only byte
 diagnosis attributes 95.2% to repeated parsed native models. Raw GPML is already
-deduplicated, and existing gzip reduces the HTTP JSON to about 3.13 MB. True
-model-reference deduplication needs a versioned reader/export migration so that
-old answer hashes and complete source replay remain valid. No unversioned patch
-was applied. No new scoring, retrieval, AWS deployment or Neptune load was
+deduplicated; the initial ASCII HTTP representation compressed to about
+3.13 MB. True model-reference deduplication needs a versioned reader/export
+migration so that old answer hashes and complete source replay remain valid.
+No unversioned change to model references was applied. No new scoring,
+retrieval, AWS deployment or Neptune load was
 needed for this local example.
+
+**November 13 delivery follow-up:** the updated checkout's normal saved-question
+route sends valid native Unicode as UTF-8. On this same frozen answer, decoded HTTP JSON
+decreases from **62.18 to 27.11 MB** and gzip from **3.13 to 1.62 MB** (48.1%
+fewer response-body bytes). The original answer hash and all ten saved export
+files are unchanged; the saved question remains 64,235,516 bytes and parsed
+proof duplication remains. This measures serialization size, not a controlled
+latency comparison or biological improvement. See the
+[delivery polish record](../DELIVERY_POLISH_20261113.md).
 
 ### Existing Reactome context for a different question
 

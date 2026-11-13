@@ -117,10 +117,10 @@
     "nodes": 9865,
     "public_scope_receipt": "docs/evaluations/automatic_qualification_20261112_summary.json"
   },
-  "updated_at": "2026-11-13T14:33:17.628786+00:00",
-  "previous_index_content_sha256": "d537e88c9b787a9dda9cc9cac6bed861f736b0462bd655bd327dca851d0c16de",
+  "updated_at": "2026-11-13T15:16:36.669454+00:00",
+  "previous_index_content_sha256": "4a37c1683b5f24297e3e7ece7c4aed2a2c714377c9901a02e970abcd281787cc",
   "initial_existing_asset_stream_verification_scope": "The original five software/workspace/question/combined/PDF files were re-hashed at index creation. The separate Reactome annex was subsequently assembled from exact existing allowlisted source bytes and checked independently; the original five archives/PDF were not changed.",
-  "new_archive_extraction_or_repackaging_scope": "No extraction or repackaging of the original five artifacts. A separate small Reactome annex ZIP was created and all members were checked against its allowlisted payload.",
+  "new_archive_extraction_or_repackaging_scope": "The original six assets are unchanged. The separate latest code-only ZIP was prepared and physically extracted/tested under its own receipt; this index does not repackage source workspaces or the prior software ZIPs.",
   "full_mixed_source_data_packages_in_Git": false,
   "source_qualified_annex_prepared_for_repository": true,
   "reactome_context_annex": {
@@ -138,16 +138,16 @@
     "new_biological_experiment_or_gold_labels": false
   },
   "current_checkout_software": {
-    "git_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
-    "local_path": "runs/software_delivery_current_20261113/biograph_steward_software.zip",
+    "git_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+    "local_path": "runs/software_delivery_polish_20261113/biograph_steward_software.zip",
     "file": "biograph_steward_software.zip",
-    "sha256": "f06138714c287f2d635513e23c74241162ba8f37fb0ea051d1555d09b1759ae0",
-    "bytes": 892060,
+    "sha256": "433c0684096b2e7d5d1a5a9a43107a9e967a49451b904b6d697fdee8678e6b9e",
+    "bytes": 892290,
     "file_count": 163,
-    "receipt": "docs/evaluations/software_release_current_20261113_summary.json",
+    "receipt": "docs/evaluations/software_release_polish_20261113_summary.json",
     "availability": "locally_prepared_and_clean_extracted_tested_not_published",
-    "scope": "Current code-only extension with optional aggregate grounding viewer. Hosted and private combined demonstration remain the separately pinned 902699e runtime. Optional native research tools and data are in the repository or separately acquired, not bundled.",
-    "runtime_source_bundle_sha256": "e27ecf8e7d61ed51e086fc3927a9aace8683cd4f032afa348132105aa30b519e"
+    "scope": "Current code-only software polish with optional aggregate grounding viewer. Clean extracted synthetic startup/question/export/restart tested. Hosted and private combined demonstration remain separately pinned to 902699e. Optional native research tools and source data are separate, not bundled.",
+    "runtime_source_bundle_sha256": "4da65871f839809816d23d9e0c3ce02a7e8ff4eee731fbf5e2aea98316757224"
   },
   "current_assessment": {
     "publication_id": "scientific_assessment_delivery_20261113",
@@ -183,6 +183,33 @@
     "uploaded": false,
     "scope": "Separate locally retained research archive; the two-file recovery approval did not authorize this transfer."
   },
-  "previous_content_sha256": "d537e88c9b787a9dda9cc9cac6bed861f736b0462bd655bd327dca851d0c16de",
-  "content_sha256": "4a37c1683b5f24297e3e7ece7c4aed2a2c714377c9901a02e970abcd281787cc"
+  "previous_content_sha256": "4a37c1683b5f24297e3e7ece7c4aed2a2c714377c9901a02e970abcd281787cc",
+  "preserved_checkout_software": [
+    {
+      "git_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
+      "local_path": "runs/software_delivery_current_20261113/biograph_steward_software.zip",
+      "file": "biograph_steward_software.zip",
+      "sha256": "f06138714c287f2d635513e23c74241162ba8f37fb0ea051d1555d09b1759ae0",
+      "bytes": 892060,
+      "file_count": 163,
+      "receipt": "docs/evaluations/software_release_current_20261113_summary.json",
+      "availability": "locally_prepared_and_clean_extracted_tested_not_published",
+      "scope": "Current code-only extension with optional aggregate grounding viewer. Hosted and private combined demonstration remain the separately pinned 902699e runtime. Optional native research tools and data are in the repository or separately acquired, not bundled.",
+      "runtime_source_bundle_sha256": "e27ecf8e7d61ed51e086fc3927a9aace8683cd4f032afa348132105aa30b519e"
+    }
+  ],
+  "current_review": {
+    "file": "BioGraph_Steward_Final_Review_20261113.pdf",
+    "local_path": "output/pdf/BioGraph_Steward_Final_Review_20261113.pdf",
+    "bytes": 153681,
+    "sha256": "901ab9f276a0e720266f64e65d6fb29e51b65f76f22c691f3c7e13710c5814e7",
+    "pages": 3,
+    "code_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+    "receipt": "docs/evaluations/final_review_PDF_20261113_summary.json",
+    "availability": "prepared_locally_for_repository_not_published_or_submitted",
+    "scope": "Updated project-authored three-page final review. The earlier two-page scientific update remains in the preserved original assets. This is a project summary, not a source-data package or new scientific evaluation.",
+    "receipt_file_sha256": "484e306b5bcdb6411cecd84047704633fd1c0569afe858d845f9ae887f6d1b23",
+    "receipt_content_sha256": "3de5885b5bb8373f629dc006eccacc3118e7a851251107076c89755114349bfb"
+  },
+  "content_sha256": "09abaff07021a1be9561fe88835cb937a1f2101f66c5eca6a92ff3f326415b8d"
 }
