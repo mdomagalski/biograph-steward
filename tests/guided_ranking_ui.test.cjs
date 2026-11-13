@@ -12,6 +12,11 @@ function harness(){
     return {tag,tagName:tag.toUpperCase(),textContent:text,children:[],value:'',disabled:false,style:{},dataset:{},listeners,
       classList:{add:x=>classes.add(x),remove:x=>classes.delete(x),toggle(x,on){if(on===undefined)on=!classes.has(x);on?classes.add(x):classes.delete(x);},contains:x=>classes.has(x)},
       append(...items){this.children.push(...items);},replaceChildren(...items){this.children=[...items];},
+      querySelector(selector){
+        const match=/^option\[value="([^"]+)"\]$/.exec(selector);
+        if(!match)throw new Error('Unsupported selector in the synthetic DOM: '+selector);
+        return this.children.find(child=>child.tagName==='OPTION'&&child.value===match[1])||null;
+      },
       setAttribute(){},addEventListener(type,listener){listeners[type]=listener;},scrollIntoView(){},reportValidity(){return true;}};
   }
   const $=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id);};

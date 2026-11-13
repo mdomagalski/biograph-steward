@@ -1,8 +1,10 @@
 {
-  "format": "biograph-steward.published-aggregate-figure-source-pins.v1",
-  "figure": "Complete binary and resource-allocation functional-concordance curves",
+  "format": "biograph-steward.published-aggregate-figure-source-pins.v2",
+  "created_at": "2026-11-13T06:30:03.671177+00:00",
+  "figure": "Consumed-reference exploratory curves and prospective new-gene transfer, complete binary/RA/absolute affinity",
   "binary_result_content_sha256": "a0b55ae3b27677ebdfb0892fafdc3754975bf6669d2f5585d2a69abe7875e0f3",
   "RA_result_content_sha256": "795f60cf85d1a19aa805e256377cacc38c0fad2fb1d841044744847392aa492c",
+  "prospective_transfer_result_content_sha256": "ce3791a42208e0c673e62ba8b61b92a0b0a1e90e61b91dc95d964fe3432859ff",
   "source_aggregate_file_sha256": {
     "binary_report": {
       "file": "runs/coessentiality_comparison_20261113/scored_v1/report.json",
@@ -27,11 +29,24 @@
     "ra_controls": {
       "file": "runs/coessentiality_resource_allocation_20261113/scored_v1/control_envelopes.json",
       "sha256": "bc458e2ed7caad9858379afa5aa376ce9382722dd8538992d1bf9cfc9db0c64d"
+    },
+    "transfer_report": {
+      "file": "runs/coessentiality_transfer_20261113/scored_v1/report.json",
+      "sha256": "c8dc5091ce4ddc4458c72307e9c01fdba435564d556cd67c14146cd37448814d"
+    },
+    "transfer_curves": {
+      "file": "runs/coessentiality_transfer_20261113/scored_v1/curves.json",
+      "sha256": "e71bf74a80c1cc6418639dee224107180dc71a218bda60057d467eae637c7a9d"
+    },
+    "transfer_controls": {
+      "file": "runs/coessentiality_transfer_20261113/scored_v1/control_envelopes.json",
+      "sha256": "67da17b59620e980e160875a810bb77041308a5a516b0f87c36e82da217a9563"
     }
   },
-  "render_receipt_content_sha256": "7fc8ac8e215c0ce37e35b9a3befefe13e3680652a130db9d3d1458ec0205a560",
+  "render_receipt_content_sha256": "618a24fe1aadd912f7a7b17ba785c560ed2713e5cbb71735b4c0676c7b871154",
+  "rendered_packet": "runs/coessentiality_figure_20261113/rendered_v3",
   "plotting_script": "tools/coessentiality_feasibility/figure.py",
-  "plotting_script_sha256": "5209c588b3e20e3446b75fc481f4842ad7844d5c19afd1a88f9a83cab5e15638",
+  "plotting_script_sha256": "b296580f9b46f03388c53d544b75ecca079dd204d1d3e181a2ebc231947fa503",
   "runtime": {
     "python_version": "3.12.14",
     "matplotlib_version": "3.10.6",
@@ -49,18 +64,55 @@
     9,
     10
   ],
-  "gene_queries": 92,
-  "primary_nonsyntenic_pairs": 3968,
+  "cohorts": {
+    "exploratory92": {
+      "gene_queries": 92,
+      "primary_nonsyntenic_pairs": 3968,
+      "plotted_source_arms": [
+        "normalized",
+        "current",
+        "historical"
+      ]
+    },
+    "prospective128": {
+      "gene_queries": 128,
+      "primary_nonsyntenic_pairs": 7648,
+      "plotted_source_arms": [
+        "normalized",
+        "historical"
+      ]
+    }
+  },
   "control_draws_per_type_per_contrast": 20,
   "control_bands_are_confidence_intervals": false,
   "new_scoring_or_selection": false,
   "raw_matrix_pair_values_or_gene_outcomes_included": false,
   "independent_accuracy_or_pruning_claim": false,
-  "reference_status": "historical_pan_cancer_consumed_reference",
+  "reference_status": "same_historical_reference_consumed_development_then_prospective_gene_transfer",
   "published_files": {
-    "docs/images/functional_concordance_20261113.png": "26c6bd0507d0b9d420a63e9f82b9b4c144361d2a1777073194e675a911db1c52",
-    "docs/images/functional_concordance_20261113.svg": "2808ed3e72861e93c643bd0e6e7aa98f1cde045f89c2f92c37dbb6975f448b83"
+    "docs/images/functional_concordance_20261113.png": "7662a819dbfcf67287cb3ef001b9e6476f84ce5b28894d9ca98cab59c150e75a",
+    "docs/images/functional_concordance_20261113.svg": "2f489ef069ce3911f6cf5f8d57c37166e668f65e6677ee840421773e4de2dabc"
   },
-  "reproduction": "Run tools/coessentiality_feasibility/figure.py --binary runs/coessentiality_comparison_20261113/scored_v1 --ra runs/coessentiality_resource_allocation_20261113/scored_v1 --out <new-output> in the recorded optional Matplotlib runtime. Full raw matrices and per-gene outcomes are neither needed nor read.",
-  "content_sha256": "1fcbad5be989aa1e96b000d0cf31ef2b07e1a60b2290aaab8529d1d4836ff19a"
+  "previous_published_packet": {
+    "directory": "runs/coessentiality_figure_20261113/previous_published_v1",
+    "preservation_sha256": "e21814cf037f58171a551a7b070b0d2e291aa64589c46c8a82941c9526cc67e2",
+    "original_render": "runs/coessentiality_figure_20261113/rendered_v1"
+  },
+  "independent_prospective_reviews": {
+    "raw_arithmetic": "9ae6a15dbcedd0931229539a8afb829917604ff55d642bae1f79ef6dccac17f2",
+    "availability_and_claims": "8f7588d583303c605a65d2dd3b6061274bac326ac20ac8d73a24eb8fcad6f154"
+  },
+  "reproduction": "Run tools/coessentiality_feasibility/figure.py --binary runs/coessentiality_comparison_20261113/scored_v1 --ra runs/coessentiality_resource_allocation_20261113/scored_v1 --transfer runs/coessentiality_transfer_20261113/scored_v1 --out <new-output> in the recorded optional Matplotlib runtime. Only nine bounded source-bound aggregate JSONs are read; no matrices, pair data, per-gene outcomes, new weights or new scoring.",
+  "presentation_revision": 3,
+  "pooled_OE_is_coverage_adjusted": false,
+  "zero_context_queries_contribute_zero_to_both_pooled_sums": true,
+  "absolute_affinity_means_retain_full_fixed_query_frame": true,
+  "previous_presentation_revision": {
+    "source_publication_content_sha256": "a53cd717879c8f27e2d35772b238fa2e3280d7a655ac2afece4a3d51719c2079",
+    "directory": "runs/coessentiality_figure_20261113/published_revision_v2",
+    "preservation_content_sha256": "334fbe696c7768c3d76292fcbf0f8af6d23a8595ab62f78c3564b9d5a661ab82",
+    "rendered_packet": "runs/coessentiality_figure_20261113/rendered_v2"
+  },
+  "revision_scope": "Presentation wording only: disclose pooled O/E is not coverage-adjusted; all nine inputs and plotted aggregates byte-identical.",
+  "content_sha256": "34cd4626798c6163d0280e7ff696062a0f297488d64ab2e1a4e2fdbbaf714532"
 }

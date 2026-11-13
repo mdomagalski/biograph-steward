@@ -64,6 +64,12 @@ See [construction and replay](docs/CONSTRUCTION.md), [scoped retrieval](docs/SCO
 
 ## What the results establish
 
+The [November 13 delivery and scientific assessment](docs/evaluations/SCIENTIFIC_DELIVERY_20261113.md)
+collects the current graph changes, public-label coverage, hosted deployment and
+completed controls. The [128-gene prospective transfer](docs/evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md)
+did not reproduce the exploratory pathway-weighting advantage. Whole-graph
+precision and transferable pruning gains remain unestablished.
+
 - The [native pathway assessment](docs/evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
   recovers 253/308 exact cited revisions and preserves all UNKNOWNs. Experimental
   GO curation matches 373/4,078 GO assertions; the declared CRC genomic cohort

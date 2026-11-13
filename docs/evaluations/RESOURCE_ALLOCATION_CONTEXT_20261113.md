@@ -39,7 +39,9 @@ The same 3,968 nonsyntenic gene pairs, original native two-sided GLS ranks,
 fractional boundary ties and all ten N points are reused. At each reference
 position, the readout measures RA affinity instead of a binary context hit.
 Expected weighted score uses each query's eligible-partner background.
-All 92 queries stay in the denominator, including zero-source-score queries.
+All 92 queries stay in absolute-mean denominators, including zero-source-score
+queries. Zero-context queries add zero to both sums in pooled O/E; that ratio
+is not itself coverage-adjusted.
 RA can exceed one and is not an edge probability; zero is not a biological
 negative. No native P value is converted into a false-edge label.
 
@@ -52,19 +54,24 @@ All legacy controls remain visible as diagnostics.
 
 ## Complete primary curve
 
-![Complete binary-context, resource-allocation enrichment and absolute-affinity curves](../images/functional_concordance_20261113.png)
+![Complete development and prospective-transfer binary-context, resource-allocation and absolute-affinity curves](../images/functional_concordance_20261113.png)
 
-The complete N=1…10 curves show the distinction between binary context (A),
-degree-aware concentration relative to background (B), and absolute observed
-affinity (C). Control bands are the minimum–maximum of twenty draws per type
-and contrast, **not confidence intervals**. The same 92 measured genes and
-3,968 nonsyntenic pairs remain in every primary point. This is a presentation
-of the consumed-reference exploratory results, not a new accuracy or pruning
-claim. [Editable vector figure](../images/functional_concordance_20261113.svg)
+The top row preserves the exploratory 92-gene/3,968-pair result: binary context
+(A), degree-aware concentration relative to background (B), and absolute
+observed affinity (C). The bottom row adds the fixed prospective 128-gene/
+7,648-pair transfer check (D–F), which **did not meet the full-curve advantage
+criterion**. All N=1…10 and all queries remain in each cohort's absolute-mean denominator,
+including 102 historical-view zero-context queries in the new sample. Control
+bands are minimum–maximum across twenty draws per type and contrast, **not
+confidence intervals**. Both cohorts use the same published reference; this
+is not independent experimental confirmation, calibrated accuracy or a
+pruning claim. The [complete transfer assessment](PROSPECTIVE_GENE_TRANSFER_20261113.md)
+limits interpretation of the earlier exploratory positive.
+[Editable vector figure](../images/functional_concordance_20261113.svg)
 and [aggregate source/runtime pins](functional_concordance_20261113_sources.json)
 are provided; no raw matrix, pair or per-gene outcomes are included.
 
-Observed/expected weighted-context enrichment:
+Original 92-gene observed/expected weighted-context enrichment:
 
 | N | Normalized | Current-release contrast | Historical-xref contrast |
 | ---: | ---: | ---: | ---: |

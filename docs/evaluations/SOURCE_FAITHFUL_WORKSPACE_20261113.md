@@ -14,7 +14,7 @@ compatibility through a pinned registry.
 
 ## What changed in the working graph
 
-The production candidate combines the existing GO identifier policy with
+The deployed retained workspace combines the existing GO identifier policy with
 source-faithful historical WikiPathways qualification through the existing
 Gold decision contract. Conflicting policies fail rather than overwrite one
 another. Source snapshots, original assertions and review history remain in the
@@ -146,6 +146,14 @@ Its binary-context result is negative. A subsequent, explicitly exploratory
 shows higher relative concentration than baseline and matched controls across
 the fixed curve; absolute affinity usually falls. Independent arithmetic
 reproduction validates the calculations, not fresh biological confirmation.
+A subsequently frozen [new-gene transfer check](PROSPECTIVE_GENE_TRANSFER_20261113.md)
+on 128 sampled genes and 7,648 nonsyntenic pairs did **not** reproduce that
+advantage against all forty fixed controls. Sparse historical context remains
+explicit: 102 of 128 queries have zero shared historical context and remain
+in every denominator. Independent arithmetic reproduced all 840 points.
+This is transfer within the same published study, not independent-study
+replication or a whole-proteome accuracy estimate.
+
 The app's v2 assessment shows the complete original functional comparison;
 the weighted extension remains a separate research report and does not change
 protein-level app ordering or pruning. Its evaluated unit is 92 measured
@@ -158,5 +166,6 @@ semantic replay only for identical inputs and returns fresh objects. Standard
 HTTP gzip reduces the large real answer's wire bytes by 88.6%, with identical
 decompressed content; local latency remains dominated by verification.
 
-Hosted deployment is recorded separately. Whole-graph biological precision,
+The private AWS app and actual Neptune inspection now use this corrected graph;
+see the [delivery assessment](SCIENTIFIC_DELIVERY_20261113.md). Whole-graph biological precision,
 prospective prediction gains and clinical use remain unestablished.
