@@ -1,0 +1,46 @@
+{
+  "GO_rules_or_reasoner_reexecuted": false,
+  "all_source_bytes_reproduced": true,
+  "archive_bytes": 16635274,
+  "archive_member_count": 14,
+  "archive_sha256": "f86d29e8023c0f03a22ce6b0aaa957ea51869a0d21135187092c67741f779c15",
+  "cases": [
+    {
+      "GO_ID": "GO:0005794",
+      "extension_unsatisfiable_rows": 0,
+      "matches_original_packet_result": true,
+      "native_rows": 1,
+      "protein": "UniProtKB:P01111",
+      "result_content_sha256": "62d311f120ed2099472329f5c6496d40e935c1826d1f72ff71fb7918ac7c0df1",
+      "selected_assertion_id": "assertion:4ac61dbe47647d68cc336ff4",
+      "strict_projection_candidates": 1
+    },
+    {
+      "GO_ID": "GO:0070062",
+      "extension_unsatisfiable_rows": 1,
+      "matches_original_packet_result": true,
+      "native_rows": 1,
+      "protein": "UniProtKB:P01111",
+      "result_content_sha256": "f1c2d64a5034885bb120e8d559816f57a95b65414a49a98dbf5fa0b3b4fad9e3",
+      "selected_assertion_id": "assertion:19eb11ae22722515120386df",
+      "strict_projection_candidates": 0
+    }
+  ],
+  "content_sha256": "f34e3ad499f86807e3f6f4ec78f83a24fc04f43d5daf39ba45f26a6b3c877111",
+  "context_report_content_sha256": "a0de7e395a5e7cae276a18816f4b51b4a4b0ff71a75777a61cc75fb2dc0a0a92",
+  "current_graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+  "format": "biograph-steward.native-go-portable-export-replay.v1",
+  "input_file_count": 406,
+  "input_files_unchanged": true,
+  "input_inventory_sha256": "726270f36d69198896216a514db7d676b355ad3b5c17997de9800107f0348985",
+  "inspection_reopened_after_local_extraction": true,
+  "manifest_content_sha256": "2eef795448e4edd7ef87196fa4e28af3a50fbf512fe3bbb5acc3de388b70b7b6",
+  "model_GPU_Brev_AWS_calls": 0,
+  "original_graph_sha256": "f35f8e0bb66742a3b65d1887ecbc85ead33fd8c5ef9eb5e8015d28934f22d22e",
+  "permissions_or_public_redistribution_rights_changed": false,
+  "qc_report_content_sha256": "200c0a2d968b2415f69deb36db3da5c227af80c2b60074e30e4701a3e37ee83f",
+  "scientific_labels_or_outcomes_created": false,
+  "source_bytes": 79181773,
+  "source_file_count": 12,
+  "source_retrievals": 0
+}

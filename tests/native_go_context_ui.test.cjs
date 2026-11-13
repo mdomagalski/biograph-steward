@@ -23,26 +23,31 @@ function fixture(){
   const response={format:'biograph-steward.native-go-selection.v1',source_run:'invented_workspace',selection_id:'claim:go',snapshot_sha256:'invented-snapshot',read_only:true,
     source:{headers:['!gaf-version: 2.2','!generated-by: INVENTED','!date-generated: 2026-01-01','!go-version: invented'],gaf_sha256:'a'.repeat(64)},
     query:{protein:record.subject,go_id:record.go_id},record_count:2,records:[record,other],
-    compatibility:{status:'one_compatible_native_record',candidate_count:1,native_record_ids:[record.id]},limitations:['Invented source boundary.'],quality_control:{status:'not_configured'}};
+    compatibility:{status:'one_compatible_native_record',candidate_count:1,native_record_ids:[record.id]},limitations:['Invented source boundary.'],quality_control:{status:'not_configured'},source_bytes_and_native_scope_verified:true};
   const guide={source_run:response.source_run,snapshot_sha256:response.snapshot_sha256,selection:{id:response.selection_id},
     assertion:{subject:record.subject,object:record.go_id,predicate:'biolink:has_go_annotation'},summary:'Invented original Pharos projection',review:{note:'Original review unchanged'},qualifiers:{},
     sections:[],links:[],questions:[],limitations:[],missing_context:[],source_records:[],native_go_context:{configured:true,eligible:true}};
   return {guide,response};
 }
-function harness(apiImpl){
+function harness(apiImpl,fetchImpl){
   const source=fs.readFileSync(path.join(__dirname,'../biograph_steward/navigation.js'),'utf8');
   const helpersStart=source.indexOf('function guideLink(link){'),helpersEnd=source.indexOf('\nasync function loadSourceGuide',helpersStart);
   const start=source.indexOf('function renderSourceGuide(result){'),end=source.indexOf('\nasync function runPathExploration',start);
   assert.ok(helpersStart>=0&&helpersEnd>helpersStart&&start>=0&&end>start);
-  const output=element('div'),selection={value:'claim:go'},calls=[];
-  const context=vm.createContext({el:element,$:id=>id==='sourceGuideSelection'?selection:output,
+  const output=element('div'),selection={value:'claim:go'},calls=[],fetchCalls=[],downloads=[],objectURLs=[],revoked=[];
+  const el=(tag,value)=>{const node=element(tag,value);node.click=()=>downloads.push({href:node.href,download:node.download});return node;};
+  const context=vm.createContext({el,$:id=>id==='sourceGuideSelection'?selection:output,
     graph:{snapshot_sha256:'invented-snapshot'},runId:'invented_workspace',inspectionRequest:7,
     nodeLabel:value=>value,relationLabel:value=>value,document:{createTextNode:value=>element('text',value)},
-    api:async(url,body)=>{calls.push({url,body:clone(body)});return apiImpl(url,body);}});
+    api:async(url,body)=>{calls.push({url,body:clone(body)});return apiImpl(url,body);},
+    fetch:async(url,options)=>{fetchCalls.push({url,options:clone(options)});if(!fetchImpl)throw new Error('Unexpected direct fetch');return fetchImpl(url,options);},
+    URL:{createObjectURL(value){objectURLs.push(value);return 'blob:invented-'+objectURLs.length;},revokeObjectURL(value){revoked.push(value);}},setTimeout(callback){callback();return 1;}});
   vm.runInContext(source.slice(helpersStart,helpersEnd)+'\n'+source.slice(start,end),context);
-  return {context,output,selection,calls,render(guide){context.guide=guide;vm.runInContext('renderSourceGuide(guide)',context);return output;},
-    button(){return descendants(output,'button').find(node=>node.textContent==='Inspect preserved native GO annotations');}};
+  return {context,output,selection,calls,fetchCalls,downloads,objectURLs,revoked,render(guide){context.guide=guide;vm.runInContext('renderSourceGuide(guide)',context);return output;},
+    button(){return descendants(output,'button').find(node=>node.textContent==='Inspect preserved native GO annotations');},
+    downloadButton(){return descendants(output,'button').find(node=>node.textContent==='Download native GO + QC packet');}};
 }
+function zipResponse(blob=async()=>({invented:'ZIP bytes'}),headers={}){return {ok:true,headers:{get:name=>({...{'Content-Type':'application/zip','Content-Disposition':'attachment; filename="native_go_context_qc_invented.zip"'},...headers}[name]??null)},blob};}
 
 test('native GO inspection is opt-in and offered only for configured eligible claims',()=>{
   for(const flags of [undefined,{configured:false,eligible:true},{configured:true,eligible:false},{configured:true,eligible:true}]){
@@ -114,4 +119,40 @@ test('mismatched result bindings and incomplete record counts remain unresolved'
 test('source read failure remains unresolved without a fallback request',async()=>{
   const {guide}=fixture(),ui=harness(async()=>{throw new Error('Preserved source could not be verified.');});ui.render(guide);await ui.button().onclick();
   assert.match(text(ui.output),/Native GO context remains unresolved: Preserved source could not be verified/);assert.equal(ui.calls.length,1);assert.equal(descendants(ui.output,'article').length,0);
+});
+
+test('separate full-packet download requires verified source scope and saved QC',async()=>{
+  for(const [status,scope] of [['not_configured',true],['verified_saved_output',false],['verified_saved_output',true]]){
+    const {guide,response}=fixture();response.quality_control={status,limits:[]};response.source_bytes_and_native_scope_verified=scope;
+    const ui=harness(async()=>response);ui.render(guide);assert.equal(ui.downloadButton(),undefined);await ui.button().onclick();
+    assert.equal(Boolean(ui.downloadButton()),status==='verified_saved_output'&&scope===true);assert.equal(ui.fetchCalls.length,0);
+    if(ui.downloadButton())assert.match(text(ui.output),/contains more source rows than this selected claim/);
+  }
+});
+
+test('native packet downloads through the exact saved-selection POST without browser paths',async()=>{
+  const {guide,response}=fixture();response.quality_control={status:'verified_saved_output'};
+  const ui=harness(async()=>response,async()=>zipResponse());ui.render(guide);await ui.button().onclick();await ui.downloadButton().onclick();
+  assert.deepEqual(ui.fetchCalls,[{url:'/api/download-native-go-context',options:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({run_id:'invented_workspace',selection_id:'claim:go'})}}]);
+  assert.deepEqual(ui.downloads,[{href:'blob:invented-1',download:'native_go_context_qc_invented.zip'}]);assert.deepEqual(ui.revoked,['blob:invented-1']);
+  assert.match(text(ui.output),/keep the matching complete workspace separately/);
+});
+
+test('a stale packet response or Blob cannot trigger a download',async()=>{
+  const {guide,response}=fixture();response.quality_control={status:'verified_saved_output'};
+  let resolve;const pending=new Promise(done=>{resolve=done;}),ui=harness(async()=>response,async()=>pending);
+  ui.render(guide);await ui.button().onclick();const request=ui.downloadButton().onclick();ui.selection.value='claim:other';resolve(zipResponse());await request;
+  assert.equal(ui.downloads.length,0);assert.equal(ui.objectURLs.length,0);
+  let resolveBlob,signal;const blob=new Promise(done=>{resolveBlob=done;}),started=new Promise(done=>{signal=done;});
+  const during=harness(async()=>response,async()=>zipResponse(()=>{signal();return blob;}));during.render(guide);await during.button().onclick();
+  const download=during.downloadButton().onclick();await started;during.context.graph=null;resolveBlob({invented:'ZIP bytes'});await download;
+  assert.equal(during.downloads.length,0);assert.equal(during.objectURLs.length,0);
+});
+
+test('packet export errors and non-ZIP responses never trigger a fallback download',async()=>{
+  for(const failed of [{ok:false,headers:{get:()=>null},json:async()=>({error:'Preserved QC could not be verified.'})},zipResponse(async()=>{throw new Error('Must not read non-ZIP bytes');},{'Content-Type':'application/json'})]){
+    const {guide,response}=fixture();response.quality_control={status:'verified_saved_output'};
+    const ui=harness(async()=>response,async()=>failed);ui.render(guide);await ui.button().onclick();await ui.downloadButton().onclick();
+    assert.equal(ui.downloads.length,0);assert.equal(ui.objectURLs.length,0);assert.equal(ui.fetchCalls.length,1);assert.match(text(ui.output),/Native GO packet was not downloaded/);
+  }
 });

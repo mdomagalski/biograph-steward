@@ -302,6 +302,31 @@ function nativeGoQuality(record){
   for(const rule of qc.rule_results||[])raw.append(el('p','Selected rule '+rule.rule+': '+rule.result_type+(rule.message?' · '+rule.message:''),'small'));
   raw.append(el('pre',JSON.stringify(qc,null,2)));box.append(raw);return box;
 }
+function nativeGoDownloadPanel(result){
+  const box=el('div'),button=el('button','Download native GO + QC packet','secondary'),status=el('p','','small');
+  button.type='button';status.setAttribute('role','status');
+  box.append(el('p','Separate full native GO + saved QC packet; contains more source rows than this selected claim. Keep outside the workspace ZIP.','small'),button,status);
+  button.onclick=async()=>{
+    const request=inspectionRequest,sourceRun=result.source_run,sourceSnapshot=result.snapshot_sha256,selectionId=result.selection_id;
+    const current=()=>request===inspectionRequest&&sourceRun===runId&&sourceSnapshot===graph?.snapshot_sha256&&$('sourceGuideSelection').value===selectionId;
+    if(!current())return;
+    button.disabled=true;status.textContent='Verifying and packing the separate preserved native GO and QC source files…';
+    try{
+      const response=await fetch('/api/download-native-go-context',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({run_id:sourceRun,selection_id:selectionId})});
+      if(!current())return;
+      if(!response.ok){let error;try{error=await response.json();}catch(_){error={};}throw new Error(error.error||'The separate native GO packet could not be exported.');}
+      if((response.headers.get('Content-Type')||'').split(';')[0].trim().toLowerCase()!=='application/zip')throw new Error('The native GO export did not return a ZIP attachment.');
+      const attachment=await response.blob();
+      if(!current())return;
+      const supplied=/\bfilename="([A-Za-z0-9_.-]+\.zip)"/.exec(response.headers.get('Content-Disposition')||'');
+      const url=URL.createObjectURL(attachment),link=el('a');link.href=url;link.download=supplied?supplied[1]:'native_go_context_qc.zip';
+      try{link.click();}finally{setTimeout(()=>URL.revokeObjectURL(url),1000);}
+      status.textContent='Downloaded the separate native GO + QC packet. Follow its README and keep the matching complete workspace separately.';
+    }catch(error){if(current())status.textContent='Native GO packet was not downloaded: '+error.message;}
+    finally{if(current())button.disabled=false;}
+  };
+  return box;
+}
 function renderNativeGoContext(result,box){
   box.replaceChildren(el('p','These versioned native GO rows are separate source context. They do not identify or repair the historical Pharos record, establish independent biological truth, or change its review state.','notice'));
   const headers=Array.isArray(result.source?.headers)?result.source.headers:[];
@@ -313,6 +338,7 @@ function renderNativeGoContext(result,box){
   if(result.quality_control?.status==='verified_saved_output'){
     box.append(el('p','Separate quality checks: verified saved output.','small'));
   }else box.append(el('p','No bound saved native quality-check output is configured. No GO quality pass is implied.','small'));
+  if(result.quality_control?.status==='verified_saved_output'&&result.source_bytes_and_native_scope_verified===true)box.append(nativeGoDownloadPanel(result));
   if(!result.record_count)box.append(el('p','No matching row was found in this preserved source scope. This is not evidence of biological absence.'));
   const compatible=new Set(result.compatibility?.native_record_ids||[]);
   for(const record of result.records){

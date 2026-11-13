@@ -24,6 +24,12 @@ has both packets configured and passed restart/API acceptance. Fresh software
 installations remain unconfigured. The native CLI and methods below retain
 their original scope.
 
+The [portable source-packet download](NATIVE_GO_PORTABLE_EXPORT.md) keeps these
+12 unchanged source/QC files separate from the ordinary workspace ZIP. Its
+local export/extraction replay reopened both NRAS examples identically without
+rerunning the pipeline or changing any original input. Both source and QC
+must be configured for the download; a software checkout alone is insufficient.
+
 ## Explain historical mismatches
 
 `qualify-go-context` retains its exact five-field compatibility rule. It now

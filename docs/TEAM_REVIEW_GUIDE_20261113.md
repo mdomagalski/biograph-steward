@@ -148,6 +148,9 @@ it, and `baseline_packet/source/graph.json` inside that package. Explain how
 the complete workspace differs from the answer diagram. Mark download and
 file-interpretation problems separately. The optional native GO source/QC
 packet is a separate hosted attachment and is not included in this workspace ZIP.
+If the inspected GO panel offers **Download native GO + QC packet**, download
+it separately and read its README. Can you tell why it is separate and where
+it should be extracted? You do not need to configure or rerun it for this review.
 
 ### T5. Read the assessment and try another question | 5 minutes
 

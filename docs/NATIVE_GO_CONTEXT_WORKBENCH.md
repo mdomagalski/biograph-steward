@@ -53,6 +53,12 @@ source retrieval are unnecessary.
 5. Read any separately labeled normalization or context warning. Expand the
    row's QC details for rule IDs and original/derivative values, and the source
    provenance for the ontology and retraction-table versions.
+6. In software supporting the portable-export increment, verified source and
+   saved QC enable **Download native GO + QC packet**. This separate download
+   preserves the full supplied source packet, including rows beyond this
+   selected claim; it does not change the ordinary workspace ZIP. Follow the
+   [portable-export guide](NATIVE_GO_PORTABLE_EXPORT.md) to reopen it outside
+   the matching complete workspace.
 
 All same-protein/same-term native rows remain visible. Rows compatible with the
 exact five available Pharos fields are distinguished from related native rows
@@ -123,3 +129,8 @@ NRAS examples locally. The separate hosted receipt records deployment and API
 acceptance; no new hosted browser walkthrough is claimed. Exact GO IDs are
 searchable alongside displayed claim labels. The older three-root recovery
 check does not cover this later native GO attachment.
+
+The [separate portable-export replay](evaluations/native_go_portable_export_20261113_summary.json)
+verified all 12 source files after ZIP extraction and reopened both NRAS cases
+with identical results. All 406 original input files remained unchanged. This
+local delivery check adds no biological labels or new hosted acceptance claim.

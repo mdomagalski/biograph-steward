@@ -818,9 +818,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if (marker.exists() or marker.is_symlink() or metadata.get('run_mode') == 'qualified_workspace'
                             or (source_folder/'source_retained_package').exists()
                             or (source_folder/'source_retained_package').is_symlink()):
-                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context'}:
+                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context'}:
                             raise ValueError('This qualified retained workspace is read-only. Query or download it; use its preserved baseline for new retrieval or review.')
-                if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context'}:
+                if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context'}:
                     from .reviews import read_run
                     if path == '/api/neptune-inspect':
                         if set(body) - {'run_id', 'node_id', 'limit'} or not {'run_id', 'node_id'} <= set(body):
@@ -838,11 +838,20 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         raise ValueError('Saved workspace not found.')
                     verify_saved_refresh(folder)
                     graph = read_run(folder)[2]
-                    if path == '/api/native-go-context':
+                    if path in {'/api/native-go-context', '/api/download-native-go-context'}:
                         if set(body) != {'run_id', 'selection_id'}:
                             raise ValueError('Supply only the saved run and selected GO source assertion.')
                         if go_context_dir is None:
                             self.json_reply({'error': 'Preserved native GO context is not configured for this workspace.'}, 503)
+                            return
+                        if path == '/api/download-native-go-context':
+                            if go_qc_dir is None:
+                                self.json_reply({'error': 'Both preserved native GO context and saved QC must be configured for this separate download.'}, 503)
+                                return
+                            from .go_context_export import build_go_context_archive
+                            result = build_go_context_archive(go_context_dir, go_qc_dir, graph,
+                                body['selection_id'], source_run=identifier, source_folder=folder)
+                            self.reply(result['content'], content_type='application/zip', filename=result['filename'])
                             return
                         from .go_context_inspection import inspect_go_selection
                         result = inspect_go_selection(go_context_dir, graph, body['selection_id'],
