@@ -56,6 +56,17 @@ Unicode, surrogate fallback, gzip, non-finite values, tamper rejection and saved
 question/export compatibility after a real server restart. These are engineering
 checks, not biological accuracy measurements.
 
+The first GitHub run exposed a test-oracle assumption on Python 3.10: its native
+CSV writer leaves a lone carriage return unquoted when the line terminator is
+LF. Later Python releases include the upstream
+[gh-67044 fix](https://github.com/python/cpython/issues/67044), with selected
+maintenance backports. The regression test now probes that one native CSV
+capability while pinning the remaining bytes exactly. Production serialization
+is unchanged. Legacy byte preservation is relative to the same CSV runtime;
+cross-version byte identity for this edge case is not claimed. Use the recorded
+Python 3.12 environment for exact replay of the supplied real packet. The initial
+failed CI jobs remain available in GitHub Actions.
+
 The [current scientific assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
 and [expert-grounding result](evaluations/EXPERT_GROUNDING_20261113.md) remain in
 their declared scope. Independent whole-graph precision and transferable

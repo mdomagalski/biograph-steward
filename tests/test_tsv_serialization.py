@@ -1,5 +1,6 @@
 """Fixed legacy export bytes and filesystem-free readable-export replay."""
 from copy import deepcopy
+import csv
 import io
 from pathlib import Path
 import tempfile
@@ -22,8 +23,16 @@ class TsvSerializationTests(unittest.TestCase):
             {'id': '@name', 'text': '=formula'},
             {'id': '-prefix', 'text': 'ordinary\rcarriage'},
         ]
-        # Captured from the pre-refactor file writer. This pins quoting,
-        # non-ASCII text, embedded newlines, JSON ordering and safe cells.
+        # CPython gh-67044 changed bare-CR quoting and was backported to
+        # selected maintenance releases. Probe only this native CSV detail;
+        # do not assume that all supported interpreters serialize it alike.
+        # https://github.com/python/cpython/issues/67044
+        native_cr = io.StringIO(newline='')
+        csv.writer(native_cr, delimiter='\t', lineterminator='\n').writerow(['ordinary\rcarriage'])
+        self.assertIn(native_cr.getvalue(), ('ordinary\rcarriage\n', '"ordinary\rcarriage"\n'))
+        cr_cell = native_cr.getvalue()[:-1]
+        # Fixed pre-refactor bytes pin all other quoting, non-ASCII text,
+        # embedded newlines, JSON ordering and spreadsheet-safe cells.
         expected = (
             'id\ttext\tnone\tlist\tmapping\tnumber\tboolean\tmissing\n'
             '\'=1+1\t"Café\t""quoted""\nline\r\nnext"\t\t'
@@ -31,7 +40,7 @@ class TsvSerializationTests(unittest.TestCase):
             '"{""z"": ""\\u03b2"", ""a"": [1, 2]}"\t-3\tFalse\t\n'
             '\'+SUM(A1)\t\'-plain\t\t[]\t{}\t0\tTrue\t\n'
             '\'@name\t\'=formula\t\t\t\t\t\t\n'
-            '\'-prefix\t"ordinary\rcarriage"\t\t\t\t\t\t\n'
+            f'\'-prefix\t{cr_cell}\t\t\t\t\t\t\n'
         ).encode('utf-8')
         before = deepcopy(rows)
         output = io.StringIO(newline='')
