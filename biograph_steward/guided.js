@@ -1,14 +1,14 @@
 // Guided graph questions. Scientific statements come from the Python query engine.
 let questionAnswer=null, questionId=null, questionSelection=null, questionBusy=false;
-function physicalRankingAvailable(){return graph?.data_kind==='live_pharos'&&graph.targets.length>0&&graph.targets.every(t=>/^UniProtKB:(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-[1-9][0-9]*)?$/.test(t.id))&&$('questionRelations').value!=='shared_pathways';}
+function physicalRankingAvailable(){return graph?.data_kind==='live_pharos'&&graph.targets.length>0&&graph.targets.every(t=>/^UniProtKB:(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-[1-9][0-9]*)?$/.test(t.id))&&!['shared_pathways','qualified_pathway_sources'].includes($('questionRelations').value);}
 function updateQuestionRankingControl(){
   const available=physicalRankingAvailable();
   $('questionRankingPhysical').disabled=!available;
   if(!available)$('questionRanking').value='alphabetical';
   $('questionRanking').disabled=questionBusy||!available;
-  $('questionRankingNote').textContent=!available?(graph?.data_kind==='synthetic_demo'?'Physical priority is unavailable for synthetic demo data. It requires a real Pharos cohort with exact UniProt identifiers.':$('questionRelations').value==='shared_pathways'?'Physical priority requires reported interaction paths. Choose interactions or interactions and shared pathways.':'Physical priority requires a real Pharos cohort with exact UniProt identifiers.'):$('questionRanking').value==='physical'?'Queries current STRING scores for up to 100 matching interaction partners before applying the result limit. Unscored and pathway-only matches remain after scored interactions. Source predicts physical proximity or co-complex association; it does not prove direct binding. Ordering supplements the source graph and leaves evidence paths and review states unchanged.':'Alphabetical order uses the saved graph without requesting additional STRING scores. Physical priority is available for up to 100 matching interaction partners.';
+  $('questionRankingNote').textContent=!available?(graph?.data_kind==='synthetic_demo'?'Physical priority is unavailable for synthetic demo data. It requires a real Pharos cohort with exact UniProt identifiers.':['shared_pathways','qualified_pathway_sources'].includes($('questionRelations').value)?'Physical priority requires reported interaction paths. Choose interactions or interactions and shared pathways.':'Physical priority requires a real Pharos cohort with exact UniProt identifiers.'):$('questionRanking').value==='physical'?'Queries current STRING scores for up to 100 matching interaction partners before applying the result limit. Unscored and pathway-only matches remain after scored interactions. Source predicts physical proximity or co-complex association; it does not prove direct binding. Ordering supplements the source graph and leaves evidence paths and review states unchanged.':'Alphabetical order uses the saved graph without requesting additional STRING scores. Physical priority is available for up to 100 matching interaction partners.';
 }
-function questionOptions(){const value=$('questionRelations').value,options={protein:$('questionProtein').value,relations:value==='both'?['interactions','shared_pathways']:[value],view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};if(physicalRankingAvailable()&&$('questionRanking').value==='physical')options.ranking='physical';return options;}
+function questionOptions(){if($('questionRelations').value==='qualified_pathway_sources')return {protein:$('questionProtein').value,relations:['shared_pathways'],template:'qualified_pathway_source_context.v1',source_support:graph.qualified_view?.pathway_history&&$('nativePathwaySupport').checked?'native_supported':'all_source_annotations',view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};const value=$('questionRelations').value,options={protein:$('questionProtein').value,relations:value==='both'?['interactions','shared_pathways']:[value],view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};if(physicalRankingAvailable()&&$('questionRanking').value==='physical')options.ranking='physical';return options;}
 function setupQuestion(){
   const previous=$('questionProtein').value;questionAnswer=null;questionId=null;questionSelection=null;
   $('questionProtein').replaceChildren();
@@ -16,6 +16,9 @@ function setupQuestion(){
   const focus=graph.construction?.request?.focus_uniprot||graph.construction?.plan?.focus_uniprot||graph.scope?.focus_uniprot||graph.cohort?.focus_uniprot;
   const preferred=graph.targets.find(t=>t.id===previous)||graph.targets.find(t=>t.id==='UniProtKB:'+focus)||graph.targets.find(t=>t.symbol==='KRAS')||graph.targets[0];
   if(preferred)$('questionProtein').value=preferred.id;
+  $('questionRelations').querySelector('option[value="qualified_pathway_sources"]')?.remove();
+  if(graph.qualified_view){const option=el('option','Qualified WikiPathways source context');option.value='qualified_pathway_sources';$('questionRelations').append(option);$('questionRelations').value=option.value;$('questionView').value='candidates';}
+  $('nativePathwaySupport').checked=!!graph.qualified_view?.pathway_history;
   $('questionRanking').value='alphabetical';
   $('questionOutput').classList.add('hidden');$('questionCitation').replaceChildren();
   $('questionRun').disabled=!runId||!graph.targets.length;
@@ -25,6 +28,14 @@ function setupQuestion(){
 function updateQuestionPlan(){
   if(!graph)return;
   updateQuestionRankingControl();
+  $('nativePathwaySupportControl').classList.toggle('hidden',!graph.qualified_view?.pathway_history||$('questionRelations').value!=='qualified_pathway_sources');
+  if($('questionRelations').value==='qualified_pathway_sources'){
+    const t=graph.targets.find(t=>t.id===$('questionProtein').value),name=t?.symbol||t?.id||'a selected protein';
+    $('guidedQuestionDescription').textContent='Query the retained graph using exact cited WikiPathways revisions. Repeated source records are grouped; candidate review states stay visible.';
+    $('questionText').textContent='Which retrieved proteins share exact-revision WikiPathways source context with '+name+'?';
+    $('questionPlan').textContent='Read-only qualified graph: '+graph.qualified_view.retained_evidence_edges+' retained evidence edges. A → pathway model ← B describes shared source context. It does not establish a protein interaction or disease mechanism.';
+    $('questionScope').textContent=JSON.stringify(graph.qualified_view,null,2);return;
+  }
   const t=graph.targets.find(t=>t.id===$('questionProtein').value),name=t?.symbol||t?.id||'a selected protein';
   const option=$('questionRelations').value,rel=option==='both'?'reported interactions or shared pathways':option==='interactions'?'reported interactions':'shared pathways';
   const cohort=!graph.disease,scope=cohort?'in this protein cohort':'associated with '+graph.disease.name;
@@ -37,8 +48,8 @@ function questionScopeChanged(){updateQuestionPlan();questionAnswer=null;questio
 function bindQuestionAnswer(answer,id){
   if(answer.source_run!==runId||answer.graph_basis_sha256!==graph.question_basis_sha256)throw new Error('This question result belongs to a different source run or review state. Run the question again.');
   questionAnswer=answer;questionId=id;questionSelection=answer.results[0]?.protein.id||null;
-  $('questionProtein').value=answer.plan.protein.id;$('questionView').value=answer.plan.view;
-  $('questionRelations').value=answer.plan.relations.length===2?'both':answer.plan.relations[0];
+  $('questionProtein').value=answer.plan.protein.id;$('questionView').value=answer.plan.view;$('nativePathwaySupport').checked=answer.plan.source_support==='native_supported';
+  $('questionRelations').value=answer.template==='qualified_pathway_source_context.v1'?'qualified_pathway_sources':answer.plan.relations.length===2?'both':answer.plan.relations[0];
   $('questionLimit').value=answer.plan.max_results;$('questionPaths').value=answer.plan.max_paths_per_protein;
   $('questionRanking').value=answer.plan.ranking||'alphabetical';
   updateQuestionPlan();history.replaceState(null,'','?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id));renderQuestion();
@@ -60,7 +71,8 @@ async function reopenQuestion(id){
 function renderQuestion(){
   const answer=questionAnswer;if(!answer)return;
   $('questionOutput').classList.remove('hidden');$('questionOverview').textContent=answer.overview;
-  $('questionModeBadge').textContent=answer.plan.view==='accepted'?'Accepted paths only':'Candidate exploration — review required';
+  const sourceContext=answer.template==='qualified_pathway_source_context.v1';
+  $('questionModeBadge').textContent=sourceContext?'Qualified retained source context · original reviews preserved':answer.plan.view==='accepted'?'Accepted paths only':'Candidate exploration — review required';
   $('questionModeBadge').className='notice'+(answer.plan.view==='accepted'?'':' warn');
   $('questionExplore').classList.toggle('hidden',answer.plan.view!=='accepted'||answer.availability.inspectable_proteins===0||answer.returned_proteins>0);
   $('questionExplore').textContent='Explore '+answer.availability.inspectable_proteins+' proteins with inspectable paths';
@@ -103,33 +115,68 @@ function questionPhysicalPriorityText(result,ranking){
 function renderQuestionGraph(){
   const answer=questionAnswer,result=answer?.results.find(r=>r.protein.id===questionSelection);if(!result)return;
   const nodes=new Map(answer.nodes.map(n=>[n.id,n])),did=answer.plan.disease?.id,anchor=answer.plan.protein.id;
+  const compact=answer.template==='qualified_pathway_source_context.v1';
   const pathwayIds=[...new Set(result.paths.filter(p=>p.kind==='shared_pathway').flatMap(p=>p.node_ids.filter(id=>nodes.get(id)?.category==='biolink:Pathway')))];
-  const h=Math.max(270,pathwayIds.length*70+80),pos={[result.protein.id]:{x:did?350:150,y:h/2},[anchor]:{x:850,y:h/2}};
+  const h=Math.max(270,pathwayIds.length*(compact?78:70)+80),pos={[result.protein.id]:{x:compact?412:did?350:150,y:h/2},[anchor]:{x:compact?48:850,y:h/2}};
   if(did)pos[did]={x:105,y:h/2};
-  pathwayIds.forEach((id,i)=>pos[id]={x:did?610:500,y:55+i*(h-110)/Math.max(1,pathwayIds.length-1)});
-  const svg=svgEl('svg',{viewBox:'0 0 1000 '+h,role:'img','aria-label':'Evidence paths for '+(result.protein.sym||result.protein.id)});
+  pathwayIds.forEach((id,i)=>pos[id]={x:compact?230:did?610:500,y:55+i*(h-110)/Math.max(1,pathwayIds.length-1)});
+  const svg=svgEl('svg',{viewBox:'0 0 '+(compact?460:1000)+' '+h,role:'img','aria-label':'Evidence paths for '+(result.protein.sym||result.protein.id)});
+  if(compact){
+    svg.style.minWidth='0';const defs=svgEl('defs');
+    for(const [state,color] of [['candidate','#b58236'],['accepted','#147c83']]){const marker=svgEl('marker',{id:'sourceModelArrow'+state,viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:7,markerHeight:7,orient:'auto-start-reverse'});marker.append(svgEl('path',{d:'M 0 0 L 10 5 L 0 10 z',fill:color}));defs.append(marker);}svg.append(defs);
+  }
+  function halfSize(id){return compact?(nodes.get(id)?.category==='biolink:Pathway'?{x:105,y:25}:{x:38,y:20}):{x:92,y:20};}
+  function boundary(a,b,id){const dx=b.x-a.x,dy=b.y-a.y,d=halfSize(id),ratio=1/Math.max(Math.abs(dx)/d.x,Math.abs(dy)/d.y);return{x:a.x+dx*ratio,y:a.y+dy*ratio};}
   const required=new Set(result.paths.flatMap(p=>p.assertion_ids));
   for(const citation of answer.citations.filter(c=>required.has(c.assertion_id))){
     const a=pos[citation.subject],b=pos[citation.object];if(!a||!b)continue;
-    const accepted=citation.review_state==='accepted',line=svgEl('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:accepted?'#147c83':'#b58236','stroke-width':3,'stroke-dasharray':accepted?'':'7 4',tabindex:0,role:'button','aria-label':'Inspect evidence '+citation.id});
+    const from=compact?boundary(a,b,citation.subject):a,to=compact?boundary(b,a,citation.object):b;
+    const accepted=citation.review_state==='accepted',line=svgEl('line',{x1:from.x,y1:from.y,x2:to.x,y2:to.y,stroke:accepted?'#147c83':'#b58236','stroke-width':compact?2:3,'stroke-dasharray':accepted?'':'7 4',tabindex:0,role:'button','aria-label':'Inspect evidence '+citation.id});
+    if(compact)line.setAttribute('marker-end','url(#sourceModelArrow'+(accepted?'accepted':'candidate')+')');
     const title=svgEl('title');title.textContent='['+citation.id+'] '+relationLabel(citation.predicate)+' | '+citation.review_state;line.append(title);line.style.cursor='pointer';line.onclick=()=>inspectQuestionCitation(citation.id);line.onkeydown=e=>{if(e.key==='Enter')inspectQuestionCitation(citation.id);};svg.append(line);
   }
-  for(const [id,p] of Object.entries(pos)){const n=nodes.get(id);if(!n)continue;const label=n.sym||n.name||id,g=svgEl('g');g.append(svgEl('rect',{x:p.x-92,y:p.y-20,width:184,height:40,rx:7,fill:id===did?'#fff0d4':n.category==='biolink:Pathway'?'#eeedf7':'#e2f2f1',stroke:'#76909d'}));const text=svgEl('text',{x:p.x,y:p.y+4,'text-anchor':'middle','font-size':12,fill:'#172b3a'});text.textContent=label.length>24?label.slice(0,23)+'…':label;const title=svgEl('title');title.textContent=label+' | '+id;g.append(text,title);svg.append(g);}
-  $('questionGraphTitle').textContent='Evidence graph: '+(result.protein.sym||result.protein.id)+' ↔ '+(answer.plan.protein.sym||anchor);
-  $('questionGraph').replaceChildren(svg);$('questionGraphNote').textContent='Solid teal: accepted assertion. Dashed amber: requires review. Lines show reported relationships, without implying causal direction. Select a line or a summary reference to inspect its evidence.';
+  for(const [id,p] of Object.entries(pos)){
+    const n=nodes.get(id);if(!n)continue;const label=n.sym||n.name||id,g=svgEl('g'),size=halfSize(id),pathway=n.category==='biolink:Pathway';
+    g.append(svgEl('rect',{x:p.x-size.x,y:p.y-size.y,width:2*size.x,height:2*size.y,rx:7,fill:id===did?'#fff0d4':pathway?'#eeedf7':'#e2f2f1',stroke:'#76909d'}));
+    const text=svgEl('text',{x:p.x,y:p.y+(compact&&pathway?-3:4),'text-anchor':'middle','font-size':compact?13:12,fill:'#172b3a'});
+    const modelId=compact&&pathway?answer.citations.find(c=>c.object===id)?.source_model_id:null;
+    text.textContent=modelId||(label.length>(compact?9:24)?label.slice(0,compact?8:23)+'…':label);
+    const title=svgEl('title');title.textContent=label+' | '+id;g.append(text,title);
+    if(modelId){const name=svgEl('text',{x:p.x,y:p.y+13,'text-anchor':'middle','font-size':11,fill:'#304859'});name.textContent=label.length>29?label.slice(0,28)+'…':label;g.append(name);}svg.append(g);
+  }
+  $('questionGraphTitle').textContent=(compact?'Shared cited models: ':'Evidence graph: ')+(result.protein.sym||result.protein.id)+(compact?' / ':' ↔ ')+(answer.plan.protein.sym||anchor);
+  $('questionGraph').replaceChildren(svg);$('questionGraphNote').textContent=compact?'Both proteins point to the cited pathway model. Dashed lines retain candidate review status. Shared context is not a new protein interaction. Select a line or summary reference to inspect its source.':'Solid teal: accepted assertion. Dashed amber: requires review. Lines show reported relationships, without implying causal direction. Select a line or a summary reference to inspect its evidence.';
 }
 function inspectQuestionCitation(id){
   const c=questionAnswer.citations.find(c=>c.id===id);if(!c)return;
   const box=$('questionCitation');box.replaceChildren(el('h3','['+id+'] Evidence passport'),el('p',nodeLabel(c.subject)+' → '+relationLabel(c.predicate)+' → '+nodeLabel(c.object)),el('p','Review state: '+c.review_state+' | '+c.source_record_count+' source '+(c.source_record_count===1?'row':'rows')+'; independent experiment count unknown.','small'));
   for(const note of c.normalization_notes)box.append(el('p',note,'notice'));
-  const full=el('button','Open full assertion and review','secondary');full.onclick=()=>{
-    $('inspectionDetails').open=true;$('evidenceView').value=c.review_state==='accepted'?'accepted':'inspection';$('assertionFamily').value=c.kind;$('assertionProtein').value=c.subject;tablePage=0;activeTab='assertions';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab==='assertions'));render();inspectAssertion(c.assertion_id);const back=el('button','Back to guided question','secondary');back.onclick=()=>{const target=$('guidedQuestion');if(typeof revealWorkspaceTarget==='function')revealWorkspaceTarget(target);target.scrollIntoView({block:'start'});};$('inspector').prepend(back);$('inspector').scrollIntoView({block:'start'});
+  const sourceIds=c.source_assertion_ids,originalId=sourceIds?.[0]||c.assertion_id;
+  if(sourceIds)box.append(el('p',sourceIds.length+(sourceIds.length===1?' original assertion is grouped':' original assertions are grouped')+' in this reference. Open the first below; all identifiers and records are included in the JSON and evidence ZIP.','small'));
+  const full=el('button',sourceIds?'Open first original assertion':'Open full assertion and review','secondary');full.onclick=()=>{
+    $('inspectionDetails').open=true;$('evidenceView').value=c.review_state==='accepted'?'accepted':'inspection';$('assertionFamily').value=c.kind;$('assertionProtein').value=c.subject;tablePage=0;activeTab='assertions';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab==='assertions'));render();inspectAssertion(originalId);const back=el('button','Back to guided question','secondary');back.onclick=()=>{const target=$('guidedQuestion');if(typeof revealWorkspaceTarget==='function')revealWorkspaceTarget(target);target.scrollIntoView({block:'start'});};$('inspector').prepend(back);$('inspector').scrollIntoView({block:'start'});
   };box.append(full);
-  for(const e of c.evidence_records)box.append(evidenceCard(e));
+  if(c.historical_source)appendPathwayNativePassport(box,c);
+  if(sourceIds){const raw=el('details');raw.append(el('summary','Original source records ('+c.evidence_records.length+')'));for(const e of c.evidence_records)raw.append(evidenceCard(e));box.append(raw);}else for(const e of c.evidence_records)box.append(evidenceCard(e));
   const details=el('details');details.append(el('summary','Assertion, snapshot and review trace'),el('pre',JSON.stringify({assertion_id:c.assertion_id,revision:c.revision,snapshot_sha256:questionAnswer.snapshot_sha256,graph_basis_sha256:questionAnswer.graph_basis_sha256,qualifiers:c.qualifiers},null,2)));box.append(details);box.scrollIntoView({block:'nearest'});
+}
+function appendPathwayNativePassport(box,citation){
+  const native=citation.historical_source,assessment=native.assessment||{},model=native.model;
+  box.append(el('h4','Archived native source check'),el('p',model?'Exact cited model '+citation.source_model_id+' · '+(native.status==='explicitly_encoded_protein_xref'?'literal protein reference':native.status==='compatible_gene_level_xref'?'compatible gene-level reference':'native support unresolved'):'Native support unresolved; no exact archived source model is available for this connection.'));
+  if(!model)return;
+  box.append(el('p','Native model licence: '+(model.native_license_literal||'not supplied')+'. Publisher archive licence: '+(native.selected_archive_proof?.archive_license?.id||native.selected_archive_proof?.archive_license||'not supplied')+'.','small'));
+  box.append(el('p','Gene-level matches use the pinned registry relationship. They do not establish exact historical protein forms. Native XML and archive membership were replayed; the producer’s XSD check was not reexecuted by this app.','small'));
+  const archive=pruningExternalLink('Open the publisher archive',native.selected_archive_proof?.source_url);if(archive)box.append(archive);
+  const payload=questionAnswer.historical_models?.[citation.source_model_id];
+  if(payload){const button=el('button','Download cited native GPML','secondary');button.type='button';button.onclick=()=>{const bytes=Uint8Array.from(atob(payload.gpml_base64),c=>c.charCodeAt(0)),url=URL.createObjectURL(new Blob([bytes],{type:'application/xml'})),a=el('a');a.href=url;a.download=citation.source_model_id+'.gpml';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};box.append(button);}
+  const matches=[...(assessment.exact_protein_matches||[]),...(assessment.compatible_gene_matches||[])],nodes=new Set(matches.map(x=>x.node_xpath));
+  for(const match of matches)box.append(el('p','Native node '+match.node_xpath+': '+(match.native_node.xrefs||[]).map(x=>(x.Database||'namespace unknown')+':'+(x.ID||'identifier missing')).join('; '),'small'));
+  const records=model.publication_records||[],refs=el('details');refs.append(el('summary','Native model citations ('+records.length+')'),el('p','These are native model/reference records. Exact element attachments are labelled; no paper is assumed to support all pathway members or a physical interaction.','small'));
+  for(const record of records){const fields={};for(const field of record.literal_fields||[])fields[field.tag.split('}').pop()]=field.text;const attrs=record.attributes||{},database=fields.DB||attrs.Database,identifier=fields.ID||attrs.ID,attached=(record.native_exact_reference_links||[]).some(x=>nodes.has(x.owner_xpath))||nodes.has(record.owner_xpath);const label=(fields.TITLE||((database||'Source')+':'+(identifier||'identifier not supplied')))+(attached?' · attached to matching native node':' · other/model reference');const p=el('p');if(database==='PubMed'&&/^\d+$/.test(identifier||'')){const a=pruningExternalLink(label,'https://pubmed.ncbi.nlm.nih.gov/'+identifier+'/');p.append(a);}else p.textContent=label;refs.append(p);}box.append(refs);
+  const trace=el('details');trace.append(el('summary','Native model, bridge and archive proof'),el('pre',JSON.stringify(native,null,2)));box.append(trace);
 }
 function downloadQuestionJSON(){if(!questionAnswer)return;const u=URL.createObjectURL(new Blob([JSON.stringify(questionAnswer,null,2)],{type:'application/json'})),a=el('a');a.href=u;a.download='biograph_question.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
 $('questionForm').addEventListener('submit',e=>{e.preventDefault();runQuestion();});
-for(const id of ['questionProtein','questionRelations','questionView','questionLimit','questionPaths','questionRanking'])$(id).addEventListener('change',questionScopeChanged);
+for(const id of ['questionProtein','questionRelations','questionView','questionLimit','questionPaths','questionRanking','nativePathwaySupport'])$(id).addEventListener('change',questionScopeChanged);
 $('questionExplore').onclick=()=>{$('questionView').value='candidates';updateQuestionPlan();runQuestion();};
 $('questionJson').onclick=downloadQuestionJSON;

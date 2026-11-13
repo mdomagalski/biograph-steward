@@ -1,6 +1,6 @@
 # Current project alignment
 
-Updated November 12, 2026, against the organizer brief, proposal and organizer Slack excerpts supplied by the user. This is a functional crosswalk, not organizer approval. The supplied excerpts were not independently retrieved from Slack. Earlier assessments and retired experiments remain in the [archive ledger](EXPERIMENT_HISTORY.md).
+Updated November 13, 2026, against the organizer brief, proposal and organizer Slack excerpts supplied by the user. This is a functional crosswalk, not organizer approval. The supplied excerpts were not independently retrieved from Slack. Earlier assessments and retired experiments remain in the [archive ledger](EXPERIMENT_HISTORY.md).
 
 BioGraph Steward delivers a focused Pharos evidence workbench: bounded construction, qualified source integration, guided questions and multihop inspection, evidence passports, review history, snapshot comparison and source-preserving exports. The working path uses explicit user choices and deterministic execution; the optional model planner remains experimental. The final submission should present this working semi-autonomous workflow, its measured results and its scientific limits.
 
@@ -22,7 +22,13 @@ The separate [exact-version projection](evaluations/WIKIPATHWAYS_VERSION_NORMALI
 joins source annotations that cite the same full WikiPathways version URL.
 This closes a verified shared-context representation gap without changing
 historical graphs, expanding the SSSOM identity contract or asserting new
-biological interactions. No downstream utility result is claimed.
+biological interactions. The [November 13 source-faithful workspace and
+assessment](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md) now puts the
+verified retained graph into actual guided use, opens native archived models
+and tests current/historical context with the same learner. Neither comparison
+shows reliable prediction gain over the count and degree controls. GO,
+CRC-cohort and CIViC reference scopes remain separate; unresolved claims do
+not acquire truth labels.
 
 ## Organizer requirements and judging crosswalk
 

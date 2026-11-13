@@ -14,7 +14,7 @@ async function loadSavedWork(){
     if(!response.ok)throw new Error(data.error||'Could not load saved work.');
     savedWork=data.runs;const selected=$('savedRun').value||runId;
     $('savedRun').replaceChildren();
-    for(const run of savedWork){const label=run.data_kind==='synthetic_demo'?'Synthetic demonstration':run.has_civic?'Pharos + CIViC':'Pharos';const option=el('option',label+' · '+run.run_id+' · '+run.questions.length+' saved answers');option.value=run.run_id;$('savedRun').append(option);}
+    for(const run of savedWork){const label=run.data_kind==='synthetic_demo'?'Synthetic demonstration':run.qualified_view?'Qualified retained graph':run.has_civic?'Pharos + CIViC':'Pharos';const option=el('option',label+' · '+run.run_id+' · '+run.questions.length+' saved answers');option.value=run.run_id;$('savedRun').append(option);}
     if(savedWork.some(r=>r.run_id===selected))$('savedRun').value=selected;
     $('savedRun').disabled=!savedWork.length;chooseSavedRun();
     $('savedExample').classList.toggle('hidden',!data.example_url);

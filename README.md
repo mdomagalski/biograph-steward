@@ -14,42 +14,26 @@ runtime from the complete local CRC source/graph/decision package. Follow the
 [five-minute demonstration](docs/DEMO_SCRIPT.md). Real source redistribution
 remains subject to upstream terms; a verified ZIP does not clear those rights.
 
-The [November 12 biological assessment](docs/evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md)
-compares fixed-budget graph views against OpenCell source calls. On the pinned
-author-processed table, the preselected experimental-support view retains
-**272/284** strictly mapped positives, versus **269/284** for native confidence;
-Network Enhancement also retains **272/284**. This is a bounded positive-retention
-result, not whole-graph accuracy or CRC-specific validation. The app exposes the
-comparison separately from the selected workspace. A new source-preserving CRC
-example adds **290 SIGNOR regulatory records** with experimental context,
-source citations and 24 qualified literature notes.
-The [aggregate result summary](docs/evaluations/biological_assessment_20261112_summary.json)
-also records the small conditional HCT116 result, the connectivity safeguard
-and the unscorable structure-backed reference. An optional private HCT116
-context view adds four assay passports to existing relationships, with no new
-nodes, edges or assertions. Native BioPlex row packets are excluded from public
-delivery while their redistribution terms remain unverified.
+The [November 13 source-faithful workspace](docs/evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
+puts the verified retained graph into the app: **16,687 evidence rows**, exact
+archived pathway passports and a guided protein → cited model ← protein
+question. It recovered **253/308 cited pathway revisions**, including 15 of the
+20 most frequent source versions. Unresolved pathway evidence stays visible;
+298 obsolete GO identifiers are excluded by a separately dated ontology policy.
+These are source and identifier qualifications, not 298 proven biological errors.
 
-The later [source qualification and biological-utility comparison](docs/evaluations/SCIENTIFIC_ACCURACY_ROUND2_20261112.md)
-tests expected drug-target recovery with published RoKAI propagation. Across
-53 drugs in two cell lines, the existing pruning rule adds no demonstrated
-benefit over the qualified unpruned graph. Source-coordinate checks, explicit
-abstentions and an [optional evaluation harness](tools/kinase_utility/README.md)
-are retained; the workbench's default dependencies and graph records are unchanged.
-The [coverage follow-up](docs/evaluations/KINASE_COVERAGE_GAPS_20261112.md)
-traces the missing scores and documents five source citation/entity mismatches.
-Its candidate expansion is held for review; identifier compatibility alone does
-not validate a biological assertion.
-The [source-claim qualification](docs/evaluations/SOURCE_CLAIM_QUALIFICATION_20261112.md)
-adds primary-evidence dispositions, construct metadata and a separately selected
-genetic-perturbation reference. The
-[external comparison is now complete](docs/evaluations/HCT116_EXTERNAL_COMPARISON_20261112.md).
-It retains reusable verification tools and exposes measurement/background
-limits; it does not demonstrate a pruning benefit or general scientific accuracy.
-The subsequent [curated-signature comparison](docs/evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md)
-shows a bounded target-recovery and coverage gain across multiple study groups,
-with mixed performance on shared targets. This is source-choice utility, not
-whole-graph accuracy or automatic acceptance of additional biological claims.
+The **Compare & assess** tab separates native-source verification, experimental
+GO curation, published CRC cohort support, CIViC expert conclusions and fixed
+prediction comparisons. Positive-only reference matches do not supply a
+whole-graph scientific-accuracy percentage. Current-release and historical
+pathway-context filters showed **no reliable R-GCN improvement over count and
+degree controls**. Original graphs, UNKNOWNs and negative results are preserved.
+
+Earlier bounded results remain in the [biological assessment](docs/evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md),
+[source-qualification comparison](docs/evaluations/SCIENTIFIC_ACCURACY_ROUND2_20261112.md)
+and [curated-signature assessment](docs/evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md).
+Those source-choice and coverage findings are separate from the current
+workspace and from whole-graph biological accuracy.
 
 ## Run the workbench
 
@@ -69,7 +53,9 @@ The workbench now separates **Data & saved work**, **Ask & explore**, **Evidence
 
 In **Ask & explore**, bounded path exploration follows up to three saved relationships, respecting direction and explicit symmetry. Each step retains its conditions, source evidence and review state; candidate paths are not promoted to accepted evidence. **Evidence & sources** provides guided source inspection for Pharos, CIViC and assay records, with original references when supplied and explicit missing-context/reuse limits. Both features read the saved workspace without retrieving sources or calling a model.
 
-The **Compare & assess** tab can open saved OptimusKG support-search preparations. The five-case development assessment shows three distinct endpoint queries: different qualified claims can produce the same upstream search. This evaluates method fit, not scientific accuracy. Actual PaperQA3 execution requires separate Edison access and a current cost check; Brev is not required for preparation or inspection.
+The **Compare & assess** tab opens saved scientific assessments with explicit
+reference units, unknowns, controls and source receipts. It can also open
+saved OptimusKG support-search preparations. The five-case development assessment shows three distinct endpoint queries: different qualified claims can produce the same upstream search. This evaluates method fit, not scientific accuracy. Actual PaperQA3 execution requires separate Edison access and a current cost check; Brev is not required for preparation or inspection.
 
 
 The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_20261026.md) now verifies a fresh local clone and installed wheel using an existing two-protein source packet. The installed app generates a cited answer, displays the separate assay context, downloads the complete graph/decision package and reopens its recovered source with identical citations. Reproduction requires the authorized real-data input separately; this is automated delivery verification, not independent user or biological validation.
@@ -79,13 +65,11 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 - [Whole-workspace evidence audit](docs/evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md):
   a frozen 180-assertion probability sample spans all nine source families.
   Exact source fidelity, examined evidence and independent correctness remain
-  separate. The optional native WikiPathways view excludes 1,892 rows from
-  current-source eligibility, preserves unknowns and exports a full ledger;
-  fuller Pharos drug activity context retains assay and value-scale limits.
-  These are source-quality advances, not a whole-graph biological-accuracy score.
-  A separate [exact-version projection](docs/evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
-  joins shared WikiPathways source context while preserving distinct evidence,
-  revisions and the original workspace.
+  separate. The [source-faithful default](docs/evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
+  now retains all unresolved Wiki claims, checks native historical content and
+  uses the exact-version projection in actual guided answers. The earlier
+  current-GMT exclusion is preserved as an ablation, not biological pruning.
+  Fuller Pharos activity context retains assay and value-scale limits.
 - [Native GO context and ontology qualification](docs/SCIENTIFIC_QUALIFICATION.md):
   inspect complete native GOA qualifiers alongside historical Pharos records,
   and export a separate active-GO-ID view. The executed CRC view excludes 298

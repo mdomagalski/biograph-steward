@@ -42,6 +42,7 @@ def saved_workspaces(root: Path) -> dict:
                     raise ValueError('Incomplete construction publication')
             runs.append({'run_id': folder.name, 'created_at': manifest['created_at'],
                          'data_kind': manifest['data_kind'], 'has_civic': bool(manifest.get('civic')),
+                         'qualified_view': manifest.get('run_mode') == 'qualified_workspace',
                          'url': '/?run=' + folder.name, 'questions': []})
         except (ValueError, TypeError, AttributeError, OSError):
             withheld += 1

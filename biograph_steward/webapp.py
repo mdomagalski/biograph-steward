@@ -35,6 +35,25 @@ def verify_saved_refresh(folder: Path) -> None:
 
 def verify_qualified_question_source(answer, runs_dir):
     """A saved qualified answer cannot outlive changed or missing source bytes."""
+    if answer.get('template') == 'qualified_pathway_source_context.v1':
+        from .reviews import read_run
+        from .questions import answer_question
+        source_id = answer.get('source_run')
+        if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+            raise ValueError('Qualified pathway answer source is missing or invalid.')
+        source = Path(runs_dir) / source_id
+        if source.is_symlink() or source.resolve().parent != Path(runs_dir).resolve() or not source.is_dir():
+            raise ValueError('Qualified pathway answer source is unavailable.')
+        graph = read_run(source)[2]
+        from .qualified_workspace import read_pathway_history
+        plan = answer['plan']
+        expected = answer_question(graph, plan['protein']['id'], template=answer['template'],
+            relations=plan['relations'], view=plan['view'], max_results=plan['max_results'],
+            max_paths=plan['max_paths_per_protein'], source_run=source_id,
+            source_support=plan.get('source_support'), pathway_history_source=read_pathway_history(source, graph))
+        if answer != expected:
+            raise ValueError('Qualified pathway answer differs from its retained graph, review state or saved query.')
+        return
     if answer.get('plan', {}).get('ranking') == 'physical':
         from .reviews import read_run
         from .questions import answer_question
@@ -84,9 +103,11 @@ def report_html(graph: dict | None = None, *, protected=False) -> str:
     script += '\n' + Path(__file__).with_name("regulatory.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("pruning.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("validation.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("scientific_assessment.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("navigation.js").read_text(encoding="utf-8")
     script += '\ninitializePruningPreview();\n'
     script += '\ninitializeBiologicalComparisons();\n'
+    script += '\ninitializeScientificAssessments();\n'
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
@@ -98,7 +119,8 @@ def login_return_path(value):
         return '/'
     try:
         parsed = urlsplit(value)
-        report = re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', parsed.path)
+        report = (re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', parsed.path)
+            or re.fullmatch(r'/api/scientific-assessment/[A-Za-z0-9_-]{1,80}/report', parsed.path))
         if (parsed.scheme or parsed.netloc or parsed.fragment or not value.startswith('/') or
                 not (parsed.path == '/' or (report and not parsed.query))):
             return '/'
@@ -236,7 +258,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return_to = '/'
                 self.login_page(return_to)
                 return
-            report_navigation = (re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', path)
+            report_navigation = ((re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', path)
+                                 or re.fullmatch(r'/api/scientific-assessment/[A-Za-z0-9_-]{1,80}/report', path))
                                  and 'text/html' in self.headers.get('Accept', '').lower())
             if (path == '/' or report_navigation) and not self.authenticated():
                 self.login_page(self.path)
@@ -264,6 +287,39 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     self.json_reply({'error': 'This comparison list takes no query options.'}, 400)
                 else:
                     self.json_reply(list_publications(runs_dir))
+                return
+            if path == '/api/scientific-assessments':
+                from .scientific_assessment import list_publications
+                if urlparse(self.path).query:
+                    self.json_reply({'error': 'The assessment list takes no query options.'}, 400)
+                else:
+                    self.json_reply(list_publications(runs_dir))
+                return
+            assessment = re.fullmatch(r'/api/scientific-assessment/([A-Za-z0-9_-]{1,80})'
+                r'(?:/(report|files/(?:sources/[a-z_]+\.json|README\.txt)))?/?', path)
+            if assessment:
+                from .scientific_assessment import load_publication, PUBLIC_FILES
+                identifier, action = assessment.groups()
+                folder = runs_dir/identifier
+                if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                    self.json_reply({'error': 'Scientific assessment not found.'}, 404)
+                    return
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('This fixed assessment takes no query options.')
+                    _, summary, files = load_publication(folder)
+                    if action is None:
+                        self.json_reply({'id': identifier, 'summary': summary})
+                    elif action == 'report':
+                        self.reply(files['report.html'], content_type='text/html; charset=utf-8')
+                    elif action[6:] in PUBLIC_FILES and action[6:] in files:
+                        name = action[6:]
+                        self.reply(files[name], content_type='application/json' if name.endswith('.json') else 'text/plain',
+                            filename=Path(name).name)
+                    else:
+                        self.json_reply({'error': 'Assessment proof not found.'}, 404)
+                except (ValueError, KeyError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
                 return
             comparison = re.fullmatch(
                 r'/api/biological-comparison/([A-Za-z0-9_-]{1,80})'
@@ -707,6 +763,20 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
+                # Retained packages are immutable decision views. Every other
+                # product action must use their preserved ordinary baseline;
+                # rebuilding from the raw snapshot would discard the filter.
+                source_id = body.get('run_id')
+                if isinstance(source_id, str) and re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+                    source_folder = runs_dir / source_id
+                    marker = source_folder / 'qualified_workspace.json'
+                    metadata_path = source_folder / 'run_manifest.json'
+                    metadata = json.loads(metadata_path.read_text(encoding='utf-8')) if metadata_path.is_file() else {}
+                    if (marker.exists() or marker.is_symlink() or metadata.get('run_mode') == 'qualified_workspace'
+                            or (source_folder/'source_retained_package').exists()
+                            or (source_folder/'source_retained_package').is_symlink()):
+                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect'}:
+                            raise ValueError('This qualified retained workspace is read-only. Query or download it; use its preserved baseline for new retrieval or review.')
                 if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect'}:
                     from .reviews import read_run
                     if path == '/api/neptune-inspect':
@@ -1009,7 +1079,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if path == "/api/question":
                     from .questions import answer_question, save_answer
                     from .reviews import read_run
-                    allowed = {"run_id", "protein", "relations", "view", "max_results", "max_paths", "template", "ranking"}
+                    allowed = {"run_id", "protein", "relations", "view", "max_results", "max_paths", "template", "ranking", "source_support"}
                     if set(body) - allowed:
                         raise ValueError("Unsupported question fields; use the guided protein-neighborhood scope.")
                     source_id = body.get("run_id", "")
@@ -1020,6 +1090,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         raise ValueError("Source run not found.")
                     _, _, graph = read_run(source)
                     options = {k: v for k, v in body.items() if k not in {"run_id", "protein"}}
+                    if options.get('template') == 'qualified_pathway_source_context.v1':
+                        from .qualified_workspace import read_pathway_history
+                        options['pathway_history_source'] = read_pathway_history(source, graph)
                     answer = answer_question(graph, body.get("protein"), source_run=source_id, **options)
                     question_id = "question_" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "_" + uuid4().hex[:8]
                     save_answer(answer, runs_dir / question_id)

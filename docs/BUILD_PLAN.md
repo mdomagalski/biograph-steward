@@ -1,6 +1,30 @@
 # Current build plan
 
-## Current boundary — November 12
+## Current boundary — November 13
+
+The [source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
+is now an actual read-only app run, not only an offline export. It combines
+the existing GO identifier policy with exact archived WikiPathways content,
+retaining 16,687 of the original 16,985 evidence rows. Its guided source
+question joins proteins through a cited model and opens native records;
+unresolved Wiki evidence stays in the workspace. The Compare tab presents
+separate source, curation, cohort and prediction assessments.
+
+The archived-content check recovered 253/308 exact model revisions, including
+15 of the 20 most frequent source versions. A controlled native R-GCN
+comparison of normalized, current-release and historical-context views found
+no reliable gain over count and degree controls. Experimental GO curations
+and a published CRC genomic cohort provide bounded positive-support coverage,
+not negative labels or an independent whole-graph accuracy estimate. These
+results replace the earlier projection's untested-utility boundary below.
+
+Finish hosted deployment, the fixed functional comparison and release
+presentation. Preserve negative results; do not tune the production graph to
+win on the consumed assay. Remaining scientific work concerns suitable
+independent labels, source lineage and prospective utility, rather than
+another model or graph-store abstraction.
+
+## November 12 checkpoint
 
 The [whole-workspace audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md)
 now completes 180 frozen cases across all nine assertion families: 75 have
@@ -17,8 +41,8 @@ new pruning/model sweep.
 The [exact-version source projection](evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
 also restores shared WikiPathways context across 76 proteins. It preserves
 all evidence and distinct revisions without modifying the app's old graphs.
-Its integration benefit is measurable; biological prediction utility remains
-untested.
+Its integration benefit is measurable. The November 13 comparison above now
+tests prediction utility without establishing an improvement.
 
 The [scientific qualification increment](evaluations/SCIENTIFIC_GAPS_20261112.md)
 now preserves 15,888 native GOA records, inventories compatible context for every

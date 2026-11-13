@@ -37,6 +37,15 @@ A fresh checkout includes synthetic fixtures, not retrieved Pharos or assay snap
 
 With complete saved workspaces available, open **Data & saved work → Saved graphs and answers** or **Open a saved real example**. A saved question URL reopens its graph and answer. Use the saved example for an offline presentation; live retrieval is optional.
 
+For a supplied **source-faithful qualified workspace**, choose **Ask & explore
+→ Qualified WikiPathways source context**. Native support is required by default
+when its historical packet is attached. Follow a protein → cited model ← protein
+path, then inspect the exact archived GPML and gene/protein matching scope in
+its passport. Shared source context is not a new protein interaction. The
+workspace is read-only: unresolved evidence is retained, and the full workspace
+ZIP includes its original baseline and decision package. See the
+[source-faithful workspace guide](docs/evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md).
+
 For a qualified assay example, **Evidence & sources → Qualified assay evidence** preserves the method, detected or nondetected outcome, experimental roles, original identifiers and excluded observations. The guided inspector exposes source links and unresolved reuse without treating repeated database records as independent experiments. See [assay attachment](docs/ASSAY_WORKBENCH.md) and [IntAct source evidence](docs/INTACT_EVIDENCE_WORKBENCH.md).
 
 For the saved SIGNOR layer, choose **Regulation and experimental context → Sites
@@ -55,6 +64,12 @@ See [construction and replay](docs/CONSTRUCTION.md), [scoped retrieval](docs/SCO
 
 ## What the results establish
 
+- The [native pathway assessment](docs/evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
+  recovers 253/308 exact cited revisions and preserves all UNKNOWNs. Experimental
+  GO curation matches 373/4,078 GO assertions; the declared CRC genomic cohort
+  supports 32/100 disease assertions. These separate positive-support axes
+  cannot establish whole-graph accuracy. The fixed R-GCN comparisons find no
+  reliable pathway-filter improvement over count and degree controls.
 - The [curated-signature comparison](docs/evaluations/CURATED_SIGNATURE_RECOVERY_20261112.md)
   increases scored perturbation-target cases from **31 to 39 of 105**, with
   study-weighted normalized rank **0.680898 → 0.576408**. This is mainly a

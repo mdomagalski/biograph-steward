@@ -62,6 +62,16 @@ def preserve_construction_plan(source: Path, output: Path):
 
 def read_run(source: Path) -> tuple[dict, list, dict]:
     source = Path(source)
+    # A retained view has its own source packet and decision ledger. Never
+    # silently rebuild it from the unfiltered snapshot as an ordinary run.
+    qualified_marker = source / 'qualified_workspace.json'
+    metadata_path = source / 'run_manifest.json'
+    metadata = json.loads(metadata_path.read_text(encoding='utf-8')) if metadata_path.is_file() else {}
+    if (qualified_marker.exists() or qualified_marker.is_symlink()
+            or (source/'source_retained_package').exists() or (source/'source_retained_package').is_symlink()
+            or metadata.get('run_mode') == 'qualified_workspace'):
+        from .qualified_workspace import load_workspace
+        return load_workspace(source)
     snapshot = json.loads((source / 'snapshot.json').read_text(encoding='utf-8'))
     manifest_path = source / 'run_manifest.json'
     manifest = json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.exists() else {}
@@ -76,6 +86,8 @@ def read_run(source: Path) -> tuple[dict, list, dict]:
     if assay is None:
         saved_path = source / 'graph.json'
         saved = json.loads(saved_path.read_text(encoding='utf-8')) if saved_path.is_file() else {}
+        if saved.get('qualified_view'):
+            raise ValueError('Qualified workspace publication marker is missing; the retained filter must not be discarded.')
         if (manifest.get('run_mode') == 'assay_attachment'
                 or any(key in manifest or key in saved for key in assay_keys)):
             raise ValueError('Saved run is missing its recorded assay attachment.')
@@ -129,6 +141,8 @@ def review_run(source: Path, output: Path, assertion_id: str, state: str,
     if source == output.resolve() or source in output.resolve().parents:
         raise ValueError("Save the reviewed run outside the original run directory.")
     snapshot, events, graph = read_run(source)
+    if graph.get('qualified_view'):
+        raise ValueError('This retained workspace is read-only. Review the preserved baseline source, then publish a new decision view.')
     event = new_review_event(graph, assertion_id, state, reviewer, reason)
     assay = read_assay(source)
     from .evidence_extension import read_extension

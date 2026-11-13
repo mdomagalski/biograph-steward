@@ -33,6 +33,8 @@ def graph_basis(graph):
         basis["assay_publication"] = graph["assay_publication_sha256"]
     if graph.get("evidence_extension_sha256"):
         basis["evidence_extension"] = graph["evidence_extension_sha256"]
+    if graph.get("qualified_view"):
+        basis["qualified_view"] = graph["qualified_view"]
     return digest(basis)
 
 
@@ -52,7 +54,17 @@ def resolve_protein(graph, selector):
 
 def answer_question(graph, protein, *, relations=None, view="accepted", max_results=8,
                     max_paths=2, template=None, source_run=None,
-                    ranking="alphabetical", ranking_source=None):
+                    ranking="alphabetical", ranking_source=None, source_support=None,
+                    pathway_history_source=None):
+    if template == 'qualified_pathway_source_context.v1':
+        from .pathway_questions import answer_pathway_question
+        if ranking != 'alphabetical' or ranking_source is not None or relations not in (None, ['shared_pathways']):
+            raise ValueError('Qualified pathway source context uses shared pathways in alphabetical order.')
+        return answer_pathway_question(graph, protein, view=view, max_results=max_results,
+            max_paths=max_paths, source_run=source_run, source_support=source_support,
+            history=pathway_history_source)
+    if source_support is not None or pathway_history_source is not None:
+        raise ValueError('Native pathway source support is available only in its explicit source-context template.')
     cohort = graph.get("scope", {}).get("kind") == "protein_cohort"
     expected_template = COHORT_TEMPLATE if cohort else TEMPLATE
     template = expected_template if template is None else template
@@ -380,6 +392,39 @@ def verify_answer(answer):
         raise ValueError("Question result integrity check failed.")
     if answer.get('plan', {}).get('ranking') == 'physical' or 'physical_ranking_source' in answer:
         _verify_physical_answer(answer)
+    if answer.get('template') == 'qualified_pathway_source_context.v1':
+        from .wiki_projection import version_url
+        import base64
+        from .wiki_history import FULL_ID, inspect_model
+        import hashlib
+        models = answer.get('historical_models', {})
+        for full_id, source in models.items():
+            if not FULL_ID.fullmatch(full_id):
+                raise ValueError('Invalid archived native model identifier.')
+            raw = base64.b64decode(source['gpml_base64'], validate=True)
+            if hashlib.sha256(raw).hexdigest() != source['gpml_sha256']:
+                raise ValueError('Archived native model bytes changed in the question packet.')
+        for citation in answer['citations']:
+            evidence = citation['evidence_records']
+            if (not evidence or citation.get('source_assertion_ids') != sorted({e['assertion_id'] for e in evidence})
+                    or citation.get('used_evidence_edge_ids') != [e['id'] for e in evidence]
+                    or any(e.get('record_kind') != 'pathway_membership'
+                           or e.get('subject') != citation['subject']
+                           or e.get('evidence_record', {}).get('type') != 'WikiPathways'
+                           or not version_url(citation['object'], e['evidence_record'].get('sourceID'))
+                           or e['evidence_record'].get('url') != citation['object'] for e in evidence)):
+                raise ValueError('Qualified pathway source group differs from its original evidence records.')
+            native = citation.get('historical_source')
+            if native and native.get('model'):
+                source = models.get(citation['source_model_id'])
+                if source is None or source['gpml_sha256'] != native['model']['gpml_sha256']:
+                    raise ValueError('Archived native model and citation proof differ.')
+                raw = base64.b64decode(source['gpml_base64'], validate=True)
+                rebuilt = inspect_model(raw, full_source_id=citation['source_model_id'],
+                    archive_member=source['archive_proof']['archive_member'],
+                    validation_receipt=native['model']['author_schema_validation']['producer_receipt'])
+                if rebuilt != native['model']:
+                    raise ValueError('Archived native model fields do not replay from the preserved GPML.')
 
 
 def answer_text(answer):
@@ -495,6 +540,17 @@ def save_answer(answer, directory):
     write_json(directory/'question.json', answer)
     (directory/'summary.txt').write_text(answer_text(answer),encoding='utf-8')
     (directory/'report.html').write_text(answer_html(answer),encoding='utf-8')
+    if answer.get('template') == 'qualified_pathway_source_context.v1':
+        write_json(directory/'source_context_groups.json', answer['citations'])
+        write_json(directory/'qualified_view.json', answer['qualified_view'])
+        if answer.get('historical_models'):
+            import base64
+            native_dir = directory/'historical_models'
+            native_dir.mkdir()
+            for full_id, model in answer['historical_models'].items():
+                (native_dir/(full_id+'.gpml')).write_bytes(base64.b64decode(model['gpml_base64'], validate=True))
+            write_json(native_dir/'provenance.json', {full_id: {k: v for k, v in model.items() if k != 'gpml_base64'}
+                for full_id, model in answer['historical_models'].items()})
     if answer.get('physical_ranking_source') is not None:
         write_json(directory/'physical_ranking_source.json', answer['physical_ranking_source'])
         (directory/'physical_priority.tsv').write_text(_physical_tsv(answer['physical_ranking_source']), encoding='utf-8')
@@ -549,7 +605,8 @@ def _physical_paths_bytes(answer):
 
 
 def verify_ranking_files(answer, directory):
-    """Replay source and readable exports for the opted-in physical answer."""
+    """Replay qualified-pathway or opted-in physical saved export files."""
+    verify_pathway_files(answer, directory)
     if answer.get('physical_ranking_source') is None:
         return
     from .assay_attachment import _ordinary, _decode
@@ -564,3 +621,53 @@ def verify_ranking_files(answer, directory):
     for name, raw in expected.items():
         if _ordinary(directory/name) != raw:
             raise ValueError('Physical ranking readable export differs from the saved answer: ' + name)
+
+
+def verify_pathway_files(answer, directory):
+    """Bind every standalone pathway-question export to its verified answer.
+
+    Source replay is performed by the caller. This additional saved-file check
+    prevents an unchanged inline answer from authenticating altered GPML,
+    provenance, grouped records or readable files in its download package.
+    """
+    if answer.get('template') != 'qualified_pathway_source_context.v1':
+        return
+    import base64
+    from .assay_attachment import _ordinary
+    verify_answer(answer)
+    directory = Path(directory)
+    if directory.is_symlink() or not directory.is_dir():
+        raise ValueError('Qualified pathway exports require an ordinary directory.')
+    directory = directory.resolve()
+    encode_json = lambda value: (json.dumps(value, indent=2, ensure_ascii=True, allow_nan=False) + '\n').encode('utf-8')
+    expected = {'question.json': encode_json(answer),
+                'summary.txt': answer_text(answer).encode('utf-8'),
+                'report.html': answer_html(answer).encode('utf-8'),
+                'paths.tsv': _physical_paths_bytes(answer),
+                'source_context_groups.json': encode_json(answer['citations']),
+                'qualified_view.json': encode_json(answer['qualified_view'])}
+    models = answer.get('historical_models', {})
+    if models:
+        for full_id, model in models.items():
+            # verify_answer already validates exact IDs and inline GPML hashes.
+            expected['historical_models/' + full_id + '.gpml'] = base64.b64decode(model['gpml_base64'], validate=True)
+        expected['historical_models/provenance.json'] = encode_json({
+            full_id: {k: v for k, v in model.items() if k != 'gpml_base64'}
+            for full_id, model in models.items()})
+    expected_dirs = {'historical_models'} if models else set()
+    files, directories = set(), set()
+    for path in directory.rglob('*'):
+        if path.is_symlink():
+            raise ValueError('Qualified pathway exports must not contain symbolic links.')
+        name = path.relative_to(directory).as_posix()
+        if path.is_file():
+            files.add(name)
+        elif path.is_dir():
+            directories.add(name)
+        else:
+            raise ValueError('Qualified pathway exports require ordinary files and directories.')
+    if files != set(expected) or directories != expected_dirs:
+        raise ValueError('Qualified pathway saved export file inventory differs from the saved answer.')
+    for name, raw in expected.items():
+        if _ordinary(directory/name) != raw:
+            raise ValueError('Qualified pathway saved export differs from the saved answer: ' + name)

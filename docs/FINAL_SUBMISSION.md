@@ -1,6 +1,6 @@
 # BioGraph Steward final submission
 
-Working submission and presentation draft, November 12, 2026. The release scope is a usable Pharos evidence workbench with reproducible source records, qualified graph exploration and measured supporting comparisons. The private AWS workbench/Neptune mirror is tested; PaperQA3 is optional.
+Working submission and presentation draft, November 13, 2026. The release scope is a usable Pharos evidence workbench with reproducible source records, qualified graph exploration and measured supporting comparisons. The private AWS workbench/Neptune mirror is tested; PaperQA3 is optional.
 
 ## Project summary
 
@@ -64,6 +64,19 @@ restores shared WikiPathways context: 1,600 evidence records across 76 proteins
 now share 275 exact cited version resources, with original evidence IDs,
 reviews and revisions preserved. These are source-annotation joins, not new
 protein interactions or a measured biological prediction gain.
+
+The [source-faithful delivery increment](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
+now uses a verified retained graph in the app, with native archived pathway
+passports and a read-only assessment view. It recovered 253/308 exact cited
+model revisions and retains all unresolved Wiki context. The default excludes
+298 obsolete GO identifier records, retaining 16,687 evidence rows. This is
+ontology currency and source qualification, not 298 proven biological errors.
+Experimental GO curations support 373/4,078 original GO assertions and the
+published CRC genomic cohort supports 32/100 disease assertions under the
+declared scopes. All are retained; positive-only coverage does not establish
+whole-graph precision. Fixed native R-GCN comparisons of current-release and
+historical context do not show reliable improvement over count and degree
+controls. These negative results and all UNKNOWNs are included in the report.
 
 ## Judge walkthrough
 
