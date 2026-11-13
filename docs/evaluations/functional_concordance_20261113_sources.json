@@ -1,0 +1,66 @@
+{
+  "format": "biograph-steward.published-aggregate-figure-source-pins.v1",
+  "figure": "Complete binary and resource-allocation functional-concordance curves",
+  "binary_result_content_sha256": "a0b55ae3b27677ebdfb0892fafdc3754975bf6669d2f5585d2a69abe7875e0f3",
+  "RA_result_content_sha256": "795f60cf85d1a19aa805e256377cacc38c0fad2fb1d841044744847392aa492c",
+  "source_aggregate_file_sha256": {
+    "binary_report": {
+      "file": "runs/coessentiality_comparison_20261113/scored_v1/report.json",
+      "sha256": "47db981a39df2586ed423ad7a9dd4273db4e7b3134c9e45168c6da95c2a2b01f"
+    },
+    "binary_curves": {
+      "file": "runs/coessentiality_comparison_20261113/scored_v1/curves.json",
+      "sha256": "f7231776283af6c51cf7b16aa61d75ac6c0da20b184e6ae6facb530bd4c8dfce"
+    },
+    "binary_controls": {
+      "file": "runs/coessentiality_comparison_20261113/scored_v1/descriptive_control_envelopes.json",
+      "sha256": "dac2e34abdeea866851fcc6dc767fbdcd3f78e1e3d42455546c392e7b5b72d3d"
+    },
+    "ra_report": {
+      "file": "runs/coessentiality_resource_allocation_20261113/scored_v1/report.json",
+      "sha256": "30148061062010331c1b2474adf70ecbad4175bebc42d9bb22229a01ef816f51"
+    },
+    "ra_curves": {
+      "file": "runs/coessentiality_resource_allocation_20261113/scored_v1/curves.json",
+      "sha256": "e52fd72c0107980086a08f0fee47b92fa6606c329334b6cdb6a4dea530dd96b8"
+    },
+    "ra_controls": {
+      "file": "runs/coessentiality_resource_allocation_20261113/scored_v1/control_envelopes.json",
+      "sha256": "bc458e2ed7caad9858379afa5aa376ce9382722dd8538992d1bf9cfc9db0c64d"
+    }
+  },
+  "render_receipt_content_sha256": "7fc8ac8e215c0ce37e35b9a3befefe13e3680652a130db9d3d1458ec0205a560",
+  "plotting_script": "tools/coessentiality_feasibility/figure.py",
+  "plotting_script_sha256": "5209c588b3e20e3446b75fc481f4842ad7844d5c19afd1a88f9a83cab5e15638",
+  "runtime": {
+    "python_version": "3.12.14",
+    "matplotlib_version": "3.10.6",
+    "backend": "Agg"
+  },
+  "complete_primary_N": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "gene_queries": 92,
+  "primary_nonsyntenic_pairs": 3968,
+  "control_draws_per_type_per_contrast": 20,
+  "control_bands_are_confidence_intervals": false,
+  "new_scoring_or_selection": false,
+  "raw_matrix_pair_values_or_gene_outcomes_included": false,
+  "independent_accuracy_or_pruning_claim": false,
+  "reference_status": "historical_pan_cancer_consumed_reference",
+  "published_files": {
+    "docs/images/functional_concordance_20261113.png": "26c6bd0507d0b9d420a63e9f82b9b4c144361d2a1777073194e675a911db1c52",
+    "docs/images/functional_concordance_20261113.svg": "2808ed3e72861e93c643bd0e6e7aa98f1cde045f89c2f92c37dbb6975f448b83"
+  },
+  "reproduction": "Run tools/coessentiality_feasibility/figure.py --binary runs/coessentiality_comparison_20261113/scored_v1 --ra runs/coessentiality_resource_allocation_20261113/scored_v1 --out <new-output> in the recorded optional Matplotlib runtime. Full raw matrices and per-gene outcomes are neither needed nor read.",
+  "content_sha256": "1fcbad5be989aa1e96b000d0cf31ef2b07e1a60b2290aaab8529d1d4836ff19a"
+}

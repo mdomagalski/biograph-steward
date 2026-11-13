@@ -2,10 +2,11 @@
 from copy import deepcopy
 import json
 import unittest
+from urllib.parse import parse_qs, urlsplit
 
 from biograph_steward.assertions import build_assertions
 from biograph_steward.graph import build_graph
-from biograph_steward.inspection import inspect_selection
+from biograph_steward.inspection import _go_context_url, inspect_selection
 from biograph_steward.intact_evidence import build_evidence as intact_evidence
 from biograph_steward.lambourne_evidence import build_evidence as assay_evidence
 from biograph_steward.questions import graph_basis
@@ -13,6 +14,7 @@ from test_civic import fixture as civic_fixture
 from test_cohort_graph import fixture as cohort_fixture
 from test_intact_evidence import fixture as intact_fixture
 from test_lambourne_evidence import fixture as assay_fixture
+from test_normalization import resign
 
 
 def lambourne_graph():
@@ -30,6 +32,76 @@ def intact_graph():
 
 
 class InspectionTests(unittest.TestCase):
+    def test_go_current_lookup_is_exact_and_not_a_historical_primary_reference(self):
+        graph = build_graph(cohort_fixture())
+        edge = next(e for e in graph["edges"] if e["record_kind"] == "go_annotation")
+        before = deepcopy(graph)
+        view = inspect_selection(graph, edge["id"])
+        lookup = next(link for link in view["links"] if link["kind"] == "context_lookup")
+        self.assertEqual(lookup["url"], "https://www.ebi.ac.uk/QuickGO/annotations?geneProductId="
+                         + edge["subject"].replace(":", "%3A") + "&goId="
+                         + edge["object"].replace(":", "%3A") + "&goUsage=exact")
+        self.assertEqual(parse_qs(urlsplit(lookup["url"]).query), {
+            "geneProductId": [edge["subject"]], "goId": [edge["object"]], "goUsage": ["exact"]})
+        context = next(q for q in view["questions"] if q["id"] == "context")
+        trace = next(q for q in view["questions"] if q["id"] == "source-trace")
+        self.assertIn(lookup["id"], context["link_ids"])
+        self.assertNotIn(lookup["id"], trace["link_ids"])
+        self.assertIn("NOT-qualified", context["answer"])
+        self.assertIn("does not identify the historical Pharos record", context["answer"])
+        self.assertEqual(view["source_records"][0]["reference_status"], "primary_reference_not_supplied")
+        self.assertNotIn(lookup["id"], view["source_records"][0]["link_ids"])
+        self.assertFalse(any(link["kind"] == "publication" for link in view["links"]))
+        self.assertEqual((view["read_only"], view["source_fetches"], view["model_calls"], view["actions"]),
+                         (True, 0, 0, []))
+        self.assertEqual(graph, before)
+
+    def test_go_lookup_omits_tampered_ids_and_inconsistent_source_term(self):
+        base = build_graph(cohort_fixture())
+        original = next(e for e in base["edges"] if e["record_kind"] == "go_annotation")
+        for field, value in (
+            ("subject", "P04637"), ("subject", "UniProtKB:TP53"),
+            ("subject", "UniProtKB:P04637&qualifier=NOT"),
+            ("subject", " UniProtKB:P04637"), ("subject", "UniProtKB:P04637\n"),
+            ("object", "GO:0000001&goUsage=descendants"), ("object", "GO:1"),
+            ("record_goid", "GO:0000002"), ("record_goid", "GO:0000001&qualifier=NOT"),
+        ):
+            with self.subTest(field=field, value=value):
+                graph = deepcopy(base)
+                edge = next(e for e in graph["edges"] if e["id"] == original["id"])
+                if field == "record_goid":
+                    edge["evidence_record"]["goid"] = value
+                else:
+                    edge[field] = value
+                before = deepcopy(graph)
+                view = inspect_selection(graph, edge["id"])
+                self.assertFalse(any(link["kind"] == "context_lookup" for link in view["links"]))
+                self.assertEqual(graph, before)
+
+    def test_go_lookup_preserves_full_product_identifier_and_ignores_other_families(self):
+        # URL construction preserves an explicit form; it does not identify an
+        # isoform as the canonical product or make a scientific mapping claim.
+        edge = {"record_kind": "go_annotation", "subject": "UniProtKB:P04637-2", "object": "GO:0000001"}
+        url = _go_context_url(edge, {"goid": "GO:0000001"})
+        self.assertEqual(parse_qs(urlsplit(url).query)["geneProductId"], ["UniProtKB:P04637-2"])
+        self.assertIsNone(_go_context_url({**edge, "record_kind": "protein_interaction"}, {"goid": edge["object"]}))
+
+    def test_go_lookup_does_not_repeat_guidance_or_merge_parallel_source_records(self):
+        snapshot = cohort_fixture()
+        record = snapshot["targets"][0]["pharos_context"]["go"][0]
+        snapshot["targets"][0]["pharos_context"]["go"].append({**record, "assigned_by": "SECOND", "evidence": "IDA"})
+        graph = build_graph(resign(snapshot))
+        assertion = next(a for a in graph["assertions"] if a["kind"] == "go_annotation"
+                         and len(a["evidence_edge_ids"]) == 2)
+        before = deepcopy(graph)
+        view = inspect_selection(graph, assertion["id"])
+        self.assertEqual(len(view["source_records"]), 2)
+        self.assertEqual(sum(link["kind"] == "context_lookup" for link in view["links"]), 1)
+        self.assertEqual(sum(row["field"] == "go_annotation_context" for row in view["missing_context"]), 1)
+        self.assertTrue(all(row["reference_status"] == "primary_reference_not_supplied"
+                            for row in view["source_records"]))
+        self.assertEqual(graph, before)
+
     def test_provider_label_without_reference_stays_unresolved(self):
         graph = build_graph(cohort_fixture())
         edge = next(e for e in graph["edges"] if e["record_kind"] == "protein_interaction")

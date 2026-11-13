@@ -9,10 +9,10 @@ from __future__ import annotations
 
 from copy import deepcopy
 import re
-from urllib.parse import quote, urlsplit
+from urllib.parse import quote, urlencode, urlsplit
 
 from .assertions import CONTEXT_QUALIFIERS, QUALIFIERS
-from .graph import safe_url
+from .graph import UNIPROT, safe_url
 from .questions import graph_basis
 
 FORMAT = "biograph-steward.source-inspection.v1"
@@ -21,6 +21,10 @@ REVIEW_NOTE = ("Local acceptance records a human review decision. Structural che
                "source editorial acceptance and local review do not establish biological truth.")
 INDEPENDENCE_NOTE = ("Source labels, record aliases, rows and cited publications are not "
                      "independent experiment counts. Missing references do not establish independence.")
+GO_CONTEXT_NOTE = ("QuickGO looks up this full protein identifier and exact GO term across evidence "
+                   "codes and assigning sources, which may include NOT-qualified records. This separate "
+                   "lookup does not identify the historical Pharos record or fill in its unknown relation, "
+                   "negation or extensions.")
 
 
 def _text(value):
@@ -54,6 +58,19 @@ def _publication(identifier):
     if match:
         return "https://doi.org/" + quote(match[1], safe="/().;:_-")
     return None
+
+
+def _go_context_url(edge, record):
+    """Explore the exact stored IDs, without aliases or descendant expansion."""
+    subject, term = edge.get("subject"), edge.get("object")
+    if (edge.get("record_kind") != "go_annotation"
+            or not isinstance(subject, str) or not subject.startswith("UniProtKB:")
+            or UNIPROT.fullmatch(subject[len("UniProtKB:"):]) is None
+            or not isinstance(term, str) or re.fullmatch(r"GO:[0-9]{7}", term) is None
+            or record.get("goid") != term):
+        return None
+    return "https://www.ebi.ac.uk/QuickGO/annotations?" + urlencode(
+        (("geneProductId", subject), ("goId", term), ("goUsage", "exact")))
 
 
 def _source_path(run_id, locator):
@@ -199,6 +216,12 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
             lid = add_link(publication, _publication(publication), "publication")
             if lid: source["link_ids"].append(lid)
         record = edge.get("evidence_record") or {}
+        context_url = _go_context_url(edge, record)
+        if context_url:
+            new_context = (context_url, "context_lookup") not in link_index
+            add_link("Current QuickGO lookup for this protein and exact GO term", context_url, "context_lookup")
+            if new_context:
+                missing.append({"field": "go_annotation_context", "edge_id": edge["id"], "note": GO_CONTEXT_NOTE})
         for label, url in (("Source-supplied record link", record.get("url")),
                            ("Source-supplied reference", edge.get("reference_raw"))):
             if isinstance(url, str) and ":" in url and not _publication(url):
@@ -448,7 +471,7 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
         {"id": "review-state", "question": "Has it been accepted or biologically verified?", "answer": review_text, "link_ids": []},
         {"id": "source-trace", "question": "Where can I inspect its original support?", "answer":
             "Open the original record or publication when supplied. Saved source copies and locators show what this workspace actually retrieved; a source label alone is not a reference.", "link_ids": reference_links},
-        {"id": "context", "question": "What context is missing or should I check?", "answer": " ".join(row["note"] for row in missing), "link_ids": [link["id"] for link in links if link["kind"] in {"construct_crosswalk", "definition"}]},
+        {"id": "context", "question": "What context is missing or should I check?", "answer": " ".join(row["note"] for row in missing), "link_ids": [link["id"] for link in links if link["kind"] in {"construct_crosswalk", "definition", "context_lookup"}]},
         {"id": "reuse", "question": "Is this independent additional evidence?", "answer": reuse_text, "link_ids": [link["id"] for link in links if link["kind"] == "local_reuse"]},
     ]
     return {"format": FORMAT, "read_only": True, "source_run": run_id,

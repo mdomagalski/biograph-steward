@@ -52,6 +52,18 @@ All legacy controls remain visible as diagnostics.
 
 ## Complete primary curve
 
+![Complete binary-context, resource-allocation enrichment and absolute-affinity curves](../images/functional_concordance_20261113.png)
+
+The complete N=1…10 curves show the distinction between binary context (A),
+degree-aware concentration relative to background (B), and absolute observed
+affinity (C). Control bands are the minimum–maximum of twenty draws per type
+and contrast, **not confidence intervals**. The same 92 measured genes and
+3,968 nonsyntenic pairs remain in every primary point. This is a presentation
+of the consumed-reference exploratory results, not a new accuracy or pruning
+claim. [Editable vector figure](../images/functional_concordance_20261113.svg)
+and [aggregate source/runtime pins](functional_concordance_20261113_sources.json)
+are provided; no raw matrix, pair or per-gene outcomes are included.
+
 Observed/expected weighted-context enrichment:
 
 | N | Normalized | Current-release contrast | Historical-xref contrast |
