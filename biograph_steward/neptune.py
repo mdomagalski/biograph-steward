@@ -43,13 +43,17 @@ STRING_FIELDS = ("dataset_id", "inventory", "record_role", "source_id", "record_
 PROPERTIES = [(name, "String") for name in STRING_FIELDS] + [("ordinal", "Long")]
 
 # Fixed query text; values and cursors are always parameters, never interpolated.
+# Bound each ordered page before projecting large preserved record properties.
+# Namespace selection and complete inventory verification remain unchanged.
 _NODES = """MATCH (n)
 WHERE (id(n) STARTS WITH $prefix OR n.dataset_id = $dataset_id) AND id(n) > $after
+WITH n ORDER BY id(n) LIMIT 500
 RETURN id(n) AS db_id, labels(n) AS labels, properties(n) AS props
 ORDER BY db_id LIMIT 500"""
 _EDGES = """MATCH (s)-[e]->(o)
 WHERE (id(e) STARTS WITH $prefix OR e.dataset_id = $dataset_id
        OR id(s) STARTS WITH $prefix OR id(o) STARTS WITH $prefix) AND id(e) > $after
+WITH s,e,o ORDER BY id(e) LIMIT 500
 RETURN id(e) AS db_id, id(s) AS from_id, id(o) AS to_id, type(e) AS edge_type, properties(e) AS props
 ORDER BY db_id LIMIT 500"""
 _NODE = """MATCH (n) WHERE id(n) = $node_id
