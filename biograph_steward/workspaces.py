@@ -47,6 +47,7 @@ def saved_workspaces(root: Path) -> dict:
         except (ValueError, TypeError, AttributeError, OSError):
             withheld += 1
     by_id = {r['run_id']: r for r in runs}
+    native_questions = set()
     for folder in folders:
         path = folder / 'question.json'
         if not path.exists():
@@ -59,21 +60,35 @@ def saved_workspaces(root: Path) -> dict:
             source = by_id.get(answer.get('source_run'))
             if source is None:
                 continue
-            source['questions'].append({'question_id': folder.name, 'question': answer['question'],
+            question = {'question_id': folder.name, 'question': answer['question'],
                 'view': answer['plan']['view'], 'template': answer['template'],
-                'url': source['url'] + '&question=' + folder.name})
+                'url': source['url'] + '&question=' + folder.name}
+            source['questions'].append(question)
+            if (question['template'] == 'qualified_pathway_source_context.v1'
+                    and question['view'] in ('accepted', 'candidates')
+                    and answer['plan'].get('source_support') == 'native_supported'):
+                native_questions.add(folder.name)
         except (ValueError, TypeError, AttributeError, KeyError, OSError):
             withheld += 1
     runs.sort(key=lambda r: (r['created_at'], r['run_id']), reverse=True)
     for run in runs:
         run['questions'].sort(key=lambda q: q['question_id'], reverse=True)
     real = [r for r in runs if r['data_kind'] == 'live_pharos']
-    example = next((r for r in real if r['has_civic'] and r['questions']),
-                   next((r for r in real if r['has_civic']), real[0] if real else None))
     example_url = None
-    if example:
-        question = next((q for q in example['questions'] if q['view'] == 'candidates'), None)
-        example_url = question['url'] if question else example['url']
+    # Prefer the current retained-source workflow when it has a saved native
+    # question. This is catalogue selection only; opening still replays sources.
+    for run in real:
+        native = [q for q in run['questions'] if q['question_id'] in native_questions]
+        if run['qualified_view'] and native:
+            question = next((q for q in native if q['view'] == 'candidates'), native[0])
+            example_url = question['url']
+            break
+    if example_url is None:
+        example = next((r for r in real if r['has_civic'] and r['questions']),
+                       next((r for r in real if r['has_civic']), real[0] if real else None))
+        if example:
+            question = next((q for q in example['questions'] if q['view'] == 'candidates'), None)
+            example_url = question['url'] if question else example['url']
     return {'runs': runs, 'example_url': example_url, 'withheld': withheld,
             'note': 'Saved-run metadata only. Opening a run checks its sources and answer basis. '
                     'Historical answers may require their recorded implementation.'}

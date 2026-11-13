@@ -2,13 +2,18 @@
 from copy import deepcopy
 import json
 from pathlib import Path
+import shutil
 import tempfile
 import unittest
+from unittest.mock import patch
 
+from biograph_steward.client import digest
 from biograph_steward.graph import save_run
 from biograph_steward.questions import answer_question, save_answer
 from biograph_steward.workspaces import saved_workspaces
 from test_questions import fixture
+from test_civic import fixture as civic_fixture
+import test_native_pathway_question as native_fixture
 
 
 class SavedWorkTests(unittest.TestCase):
@@ -54,6 +59,102 @@ class SavedWorkTests(unittest.TestCase):
         result = saved_workspaces(self.root)
         self.assertEqual(result['runs'][0]['data_kind'], 'synthetic_demo')
         self.assertIsNone(result['example_url'])
+
+
+class QualifiedExampleSelectionTests(unittest.TestCase):
+    """Saved live-labelled software fixtures, never biological gold labels."""
+
+    def setUp(self):
+        native_fixture.NativePathwayQuestionTests.setUp(self)
+        pharos, civic = civic_fixture()
+        self.civic_graph = save_run(pharos, self.root / 'old_civic', civic_snapshot=civic)
+        old = answer_question(self.civic_graph, 'P01116', view='candidates', source_run='old_civic')
+        save_answer(old, self.root / 'old_civic_question')
+        self.date('baseline', '2019-01-01T00:00:00Z')
+        self.date('old_civic', '2020-01-01T00:00:00Z')
+        self.date('qualified', '2021-01-01T00:00:00Z')
+
+    def date(self, run_id, value):
+        path = self.root / run_id / 'run_manifest.json'
+        metadata = json.loads(path.read_text()); metadata['created_at'] = value
+        path.write_text(json.dumps(metadata))
+
+    def native_question(self, question_id, *, view='candidates', source_support='native_supported', source_run='qualified'):
+        answer = answer_question(self.graph, self.protein, template='qualified_pathway_source_context.v1',
+            view=view, source_run=source_run, source_support=source_support, pathway_history_source=self.packet)
+        save_answer(answer, self.root / question_id)
+        return answer
+
+    def test_native_qualified_example_precedes_civic_without_source_reads_or_writes(self):
+        self.native_question('native_candidate')
+        before = {p.relative_to(self.root): p.read_bytes() for p in self.root.rglob('*') if p.is_file()}
+        with patch('biograph_steward.reviews.read_run', side_effect=AssertionError('Catalogue read source run')), \
+             patch('biograph_steward.wiki_history.query_history', side_effect=AssertionError('Catalogue reopened source history')), \
+             patch('biograph_steward.client.PharosClient._http', side_effect=AssertionError('Catalogue used network')):
+            result = saved_workspaces(self.root)
+        self.assertEqual(result['example_url'], '/?run=qualified&question=native_candidate')
+        qualified = next(r for r in result['runs'] if r['run_id'] == 'qualified')
+        civic = next(r for r in result['runs'] if r['run_id'] == 'old_civic')
+        self.assertFalse(qualified['has_civic']); self.assertTrue(civic['has_civic'])
+        self.assertEqual(set(qualified['questions'][0]), {'question_id', 'question', 'view', 'template', 'url'})
+        self.assertEqual(before, {p.relative_to(self.root): p.read_bytes() for p in self.root.rglob('*') if p.is_file()})
+
+    def test_native_candidates_precede_newer_accepted_and_all_source_questions(self):
+        self.native_question('question_100_native_candidate')
+        self.native_question('question_200_native_accepted', view='accepted')
+        self.native_question('question_300_all_source_candidate', source_support='all_source_annotations')
+        self.assertEqual(saved_workspaces(self.root)['example_url'],
+                         '/?run=qualified&question=question_100_native_candidate')
+
+    def test_latest_qualified_run_with_native_question_wins(self):
+        self.native_question('question_100_candidate')
+        shutil.copytree(self.root / 'qualified', self.root / 'qualified_new')
+        self.date('qualified_new', '2022-01-01T00:00:00Z')
+        self.native_question('question_200_new_accepted', view='accepted', source_run='qualified_new')
+        self.assertEqual(saved_workspaces(self.root)['example_url'],
+                         '/?run=qualified_new&question=question_200_new_accepted')
+        (self.root / 'question_200_new_accepted/question.json').unlink()
+        self.assertEqual(saved_workspaces(self.root)['example_url'],
+                         '/?run=qualified&question=question_100_candidate')
+
+    def test_bad_and_incomplete_questions_do_not_displace_verified_example(self):
+        original = self.native_question('question_100_good')
+        for name, answer in [('question_300_bad_hash', deepcopy(original)),
+                             ('question_400_incomplete', deepcopy(original))]:
+            folder = self.root / name; folder.mkdir()
+            if name.endswith('bad_hash'):
+                answer['question'] = 'Modified without a new seal'
+            else:
+                del answer['plan']['view']
+                answer['answer_sha256'] = digest({k: v for k, v in answer.items() if k != 'answer_sha256'})
+            (folder / 'question.json').write_text(json.dumps(answer))
+        result = saved_workspaces(self.root)
+        self.assertEqual(result['example_url'], '/?run=qualified&question=question_100_good')
+        self.assertEqual(result['withheld'], 2)
+
+    def test_unknown_native_view_is_not_promoted_as_supported_example(self):
+        self.native_question('question_100_good')
+        altered = self.native_question('question_900_unknown_view')
+        altered['plan']['view'] = 'unsupported_future_view'
+        altered['answer_sha256'] = digest({k: v for k, v in altered.items() if k != 'answer_sha256'})
+        (self.root / 'question_900_unknown_view/question.json').write_text(json.dumps(altered))
+        self.assertEqual(saved_workspaces(self.root)['example_url'],
+                         '/?run=qualified&question=question_100_good')
+
+    def test_synthetic_qualified_native_question_is_not_a_real_example(self):
+        self.native_question('question_native')
+        path = self.root / 'qualified/run_manifest.json'
+        metadata = json.loads(path.read_text()); metadata['data_kind'] = 'synthetic_demo'
+        path.write_text(json.dumps(metadata))
+        self.assertEqual(saved_workspaces(self.root)['example_url'],
+                         '/?run=old_civic&question=old_civic_question')
+
+    def test_existing_civic_fallback_remains_when_no_native_question_exists(self):
+        self.native_question('all_source_only', source_support='all_source_annotations')
+        self.assertEqual(saved_workspaces(self.root)['example_url'],
+                         '/?run=old_civic&question=old_civic_question')
+        (self.root / 'old_civic_question/question.json').unlink()
+        self.assertEqual(saved_workspaces(self.root)['example_url'], '/?run=old_civic')
 
 
 if __name__ == '__main__':
