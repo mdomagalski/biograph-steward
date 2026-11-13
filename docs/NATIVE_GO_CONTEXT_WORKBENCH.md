@@ -31,10 +31,15 @@ outside one another. The browser cannot choose either path. The native source
 can be configured alone; the UI then reports that QC is unavailable and does
 not imply a pass. A configured invalid source or QC output fails closed.
 
-These local packets are not in Git or a fresh checkout. The earlier hosted
-`0529d2b` build does not contain this follow-up feature or its configuration.
-This increment does not transfer source data or deploy another service. Brev,
-its model, a GPU, a paid literature API and fresh source retrieval are unnecessary.
+These packets are not in Git or a fresh checkout. The
+[private hosted update](evaluations/hosted_native_go_20261113_summary.json) runs
+`ea5752e` with the approved, separately installed 12-file native/QC packet.
+Its two configured source paths are outside the saved workspace. API acceptance
+checked the two NRAS cases across a real restart; the earlier local Chrome
+walkthrough remains separate from these hosted API checks. The original graph,
+question, publications and authentication are preserved. Fresh installations
+remain unconfigured. Brev, its model, a GPU, a paid literature API and fresh
+source retrieval are unnecessary.
 
 ## Walk through the source
 
@@ -114,4 +119,7 @@ biological pruning.
 
 The [release checks](evaluations/native_go_release_checks_20261113_summary.json)
 record the full core/JavaScript checks and actual Chrome inspection of the two
-NRAS examples. Exact GO IDs are searchable alongside displayed claim labels.
+NRAS examples locally. The separate hosted receipt records deployment and API
+acceptance; no new hosted browser walkthrough is claimed. Exact GO IDs are
+searchable alongside displayed claim labels. The older three-root recovery
+check does not cover this later native GO attachment.

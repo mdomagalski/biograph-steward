@@ -40,12 +40,13 @@ their full denominators and unresolved cases. Its exact 16-file aggregate
 publication is now installed in the private AWS app under
 `scientific_assessment_delivery_20261113`; it remains a separate component.
 
-The [hosted update](evaluations/hosted_polish_update_20261113_summary.json)
-now runs tested code `0529d2b`. The unchanged corrected graph and existing TP53
-question survived a real service restart, with native exports, complete Neptune
-parity and read-only database inspection verified. Authentication, permissions
-and compute resources are unchanged; the prior image and runtime are preserved
-for rollback. The existing source guide exposes
+The [current hosted update](evaluations/hosted_native_go_20261113_summary.json)
+runs tested code `ea5752e` with the approved separate native GO/QC packet.
+The unchanged corrected graph and existing TP53 question survived a real
+service restart, with native exports, complete Neptune parity and read-only
+database inspection verified. Authentication, permissions and compute resources
+are unchanged; the prior image, runtime and environment are preserved for
+rollback. The existing source guide exposes
 complete CIViC profile/Assertion context and current Reactome event/complex
 context without counting those lookups as independent evidence. A separate
 128-gene local workspace demonstrates reuse of the same publishers.
@@ -53,14 +54,19 @@ context without counting those lookups as independent evidence. A separate
 The new hosted publication combines grounding with the earlier exploratory
 92-query/3,968-pair source assessment. The negative 128-gene/7,648-pair transfer
 above remains separately reported; deployment does not turn it into a gain.
-The newer native GO web-inspection/QC follow-up is tested locally and is not
-part of hosted code `0529d2b` or its tested software ZIP.
+The [native GO inspector](NATIVE_GO_CONTEXT_WORKBENCH.md) now shows preserved
+qualifiers and recorded official QC beside a selected GO claim in that hosted
+app. API acceptance checked the two NRAS examples before and after restart;
+earlier local Chrome checks are separate. These findings qualify native source
+context, not historical Pharos truth or a new pruning rule. Fresh installations
+and the code-only ZIP remain unconfigured and contain no native source packet.
 
 The [isolated checkpoint recovery](evaluations/aws_isolated_recovery_20261113_summary.json)
 has passed: the preserved graph, bound assessment and saved answer replayed
 with live files, configuration and container identity unchanged. This covers
-the existing checkpoint, not full VM recovery or the newer grounding/software
-artifacts. The separate 488 MB research-archive S3 copy remains unapproved.
+the existing checkpoint, not full VM recovery or the newer grounding, native
+GO attachment and software artifacts. The separate 488 MB research-archive S3
+copy remains unapproved.
 
 The checkout now supplies a small [CC0 Reactome source example](../examples/reactome_context_20261113/README.md)
 with exact native records and an offline viewer. It is a practical real-source

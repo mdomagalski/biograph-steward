@@ -1,11 +1,13 @@
 # Closing delivery fixes — November 13
 
 Two reproducible integration issues are fixed in tested code `0529d2b` and
-are now deployed in the existing private AWS app. The
+remain included in the current private AWS runtime `ea5752e`. The
 [measured receipt](evaluations/delivery_polish_20261113_summary.json) preserves
 the original local checks, implementation hashes and scope; the subsequent
-[hosted update receipt](evaluations/hosted_polish_update_20261113_summary.json)
-records the actual deployment and acceptance.
+[initial hosted update receipt](evaluations/hosted_polish_update_20261113_summary.json)
+records their deployment and acceptance. The later
+[native GO hosted receipt](evaluations/hosted_native_go_20261113_summary.json)
+records the current runtime and separately approved source attachment.
 
 The update preserved the existing graph, TP53 question and all 13 native
 question/export files. They reopened after a real service restart, and complete
@@ -59,8 +61,8 @@ preserved under their original code version.
 
 ## Verification and remaining boundaries
 
-The clean Python core suite passed (1,954 tests, 36 optional skips); all 46
-JavaScript tests passed. Regression checks include legacy TSV byte equality,
+At the original polish checkpoint, the clean Python core suite passed (1,954
+tests, 36 optional skips); all 46 JavaScript tests passed. Regression checks include legacy TSV byte equality,
 Unicode, surrogate fallback, gzip, non-finite values, tamper rejection and saved
 question/export compatibility after a real server restart. These are engineering
 checks, not biological accuracy measurements.
@@ -86,8 +88,12 @@ access and the final repository/submission handoff.
 The hosted v3 publication contains the grounding component and earlier
 92-query/3,968-pair exploratory assessment. The separately reported negative
 [128-gene/7,648-pair transfer](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md)
-remains part of the scientific assessment. The newer native GO web/QC follow-up
-is tested locally, not included in hosted `0529d2b`. The existing 153,681-byte
+remains part of the scientific assessment. The native GO web/QC inspector is
+now enabled in hosted `ea5752e` through the separate approved 12-file packet.
+Both NRAS contexts passed API checks before and after restart, with graph,
+question and publication bytes unchanged. This exposes saved source/QC findings;
+it adds no biological correctness labels or automatic pruning. Fresh software
+installations remain unconfigured. The existing 153,681-byte
 three-page review PDF predates this hosted update and is preserved unchanged;
 the linked hosted receipt gives the current runtime status.
 

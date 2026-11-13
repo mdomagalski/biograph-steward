@@ -117,8 +117,8 @@
     "nodes": 9865,
     "public_scope_receipt": "docs/evaluations/automatic_qualification_20261112_summary.json"
   },
-  "updated_at": "2026-11-13T16:06:02.638440+00:00",
-  "previous_index_content_sha256": "09abaff07021a1be9561fe88835cb937a1f2101f66c5eca6a92ff3f326415b8d",
+  "updated_at": "2026-11-13T16:46:30.880352+00:00",
+  "previous_index_content_sha256": "07e6523354a908e710e79818ba24485a5d754873064a98dccf12a8907fdb7ee4",
   "initial_existing_asset_stream_verification_scope": "The original five software/workspace/question/combined/PDF files were re-hashed at index creation. The separate Reactome annex was subsequently assembled from exact existing allowlisted source bytes and checked independently; the original five archives/PDF were not changed.",
   "new_archive_extraction_or_repackaging_scope": "The original six assets are unchanged. The separate latest code-only ZIP was prepared and physically extracted/tested under its own receipt; this index does not repackage source workspaces or the prior software ZIPs.",
   "full_mixed_source_data_packages_in_Git": false,
@@ -138,27 +138,27 @@
     "new_biological_experiment_or_gold_labels": false
   },
   "current_checkout_software": {
-    "git_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
-    "local_path": "runs/software_delivery_polish_20261113/biograph_steward_software.zip",
+    "git_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
+    "local_path": "runs/software_delivery_native_go_20261113/biograph_steward_software.zip",
     "file": "biograph_steward_software.zip",
-    "sha256": "433c0684096b2e7d5d1a5a9a43107a9e967a49451b904b6d697fdee8678e6b9e",
-    "bytes": 892290,
-    "file_count": 163,
-    "receipt": "docs/evaluations/software_release_polish_20261113_summary.json",
+    "sha256": "eb4ff3fdb26ba1f45fec7c056cd3e760c675a854cbc9ddcd3eda948fc78a2527",
+    "bytes": 900492,
+    "file_count": 164,
+    "receipt": "docs/evaluations/software_release_native_go_20261113_summary.json",
     "availability": "locally_prepared_and_clean_extracted_tested_not_published",
-    "scope": "Tested 0529d2b code-only software with optional aggregate grounding viewer; clean extracted synthetic startup/question/export/restart passed. The current private hosted service uses the same code checkpoint, with separate source/publication data. The preserved private combined demo remains 902699e. The newer local native GO web/QC follow-up is not in this ZIP or hosted code.",
-    "runtime_source_bundle_sha256": "4da65871f839809816d23d9e0c3ce02a7e8ff4eee731fbf5e2aea98316757224"
+    "scope": "Code-only package with the optional native GO source/QC inspector and aggregate grounding viewer. The private hosted runtime uses the same ea5752e code checkpoint, with an approved separate native GO source/QC attachment. Native GO source packets are absent from this ZIP and configuration remains disabled by default in fresh installations.",
+    "runtime_source_bundle_sha256": "a0cdedc7491e9f54abe3430226231e78bc24535ec53024ca93ecb63b2991753d"
   },
   "current_assessment": {
     "publication_id": "scientific_assessment_delivery_20261113",
     "content_sha256": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2",
     "code_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
     "aggregate_receipt": "docs/evaluations/expert_grounding_20261113_aggregate.json",
-    "display_scope": "Separate expert-labeled source-grounding component plus earlier 92-query/3968-pair exploratory assessment. Exact aggregate publication is installed and API/catalogue-verified in the private hosted 0529d2b app. It is not graph truth; the negative 128-gene/7648-pair transfer remains separately reported.",
+    "display_scope": "Separate expert-labeled source-grounding component plus earlier 92-query/3968-pair exploratory assessment. The same sealed aggregate publication remains installed and API/catalogue-verified in the private hosted ea5752e app. It is not graph truth; the negative 128-gene/7648-pair transfer remains separately reported.",
     "code_commit_scope": "Initial grounding publication/viewer implementation checkpoint; current hosted runtime is recorded separately.",
-    "hosted_runtime_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+    "hosted_runtime_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
     "hosted_API_and_catalogue_verified": true,
-    "hosted_receipt": "docs/evaluations/hosted_polish_update_20261113_summary.json"
+    "hosted_receipt": "docs/evaluations/hosted_native_go_20261113_summary.json"
   },
   "isolated_checkpoint_recovery": {
     "receipt": "docs/evaluations/aws_isolated_recovery_20261113_summary.json",
@@ -187,7 +187,7 @@
     "uploaded": false,
     "scope": "Separate locally retained research archive; the two-file recovery approval did not authorize this transfer."
   },
-  "previous_content_sha256": "09abaff07021a1be9561fe88835cb937a1f2101f66c5eca6a92ff3f326415b8d",
+  "previous_content_sha256": "f9954a075daf07ac526c830aeae67bfbe86c8d3ed34ac00bed4a934714414436",
   "preserved_checkout_software": [
     {
       "git_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
@@ -198,8 +198,20 @@
       "file_count": 163,
       "receipt": "docs/evaluations/software_release_current_20261113_summary.json",
       "availability": "locally_prepared_and_clean_extracted_tested_not_published",
-      "scope": "Current code-only extension with optional aggregate grounding viewer. Hosted and private combined demonstration remain the separately pinned 902699e runtime. Optional native research tools and data are in the repository or separately acquired, not bundled.",
+      "scope": "Historical preparation scope: Current code-only extension with optional aggregate grounding viewer. Hosted and private combined demonstration remain the separately pinned 902699e runtime. Optional native research tools and data are in the repository or separately acquired, not bundled.",
       "runtime_source_bundle_sha256": "e27ecf8e7d61ed51e086fc3927a9aace8683cd4f032afa348132105aa30b519e"
+    },
+    {
+      "git_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+      "local_path": "runs/software_delivery_polish_20261113/biograph_steward_software.zip",
+      "file": "biograph_steward_software.zip",
+      "sha256": "433c0684096b2e7d5d1a5a9a43107a9e967a49451b904b6d697fdee8678e6b9e",
+      "bytes": 892290,
+      "file_count": 163,
+      "receipt": "docs/evaluations/software_release_polish_20261113_summary.json",
+      "availability": "locally_prepared_and_clean_extracted_tested_not_published",
+      "scope": "Historical preparation scope: Tested 0529d2b code-only software with optional aggregate grounding viewer; clean extracted synthetic startup/question/export/restart passed. The current private hosted service uses the same code checkpoint, with separate source/publication data. The preserved private combined demo remains 902699e. The newer local native GO web/QC follow-up is not in this ZIP or hosted code.",
+      "runtime_source_bundle_sha256": "4da65871f839809816d23d9e0c3ce02a7e8ff4eee731fbf5e2aea98316757224"
     }
   ],
   "current_review": {
@@ -219,44 +231,161 @@
   "runtime_commit_scope": "Preserved original software/private combined demonstration archives and previous hosted runtime; use current_hosted_runtime for the current service.",
   "runtime_source_bundle_sha256_scope": "Original 902699e source bundle retained by the preserved artifacts; the updated hosted bundle is recorded separately.",
   "current_hosted_runtime": {
-    "receipt": "docs/evaluations/hosted_polish_update_20261113_summary.json",
-    "receipt_file_sha256": "75f152af7759641fd80b3c059eff816137a373367bc2308aef38aa4bc0252a18",
-    "receipt_content_sha256": "d83a4604ecfcc7d7e913c023b1a6dfacb86369fde86ecc6a9c0ae5cb8261265f",
-    "status": "PASSED_HOSTED_UPDATE_AND_ACCEPTANCE",
-    "runtime_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+    "status": "PASSED_HOSTED_GO_SOURCE_INSPECTION_AND_ACCEPTANCE",
+    "runtime_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
     "service_version": "0.8.0",
-    "runtime_source_archive_sha256": "4da65871f839809816d23d9e0c3ce02a7e8ff4eee731fbf5e2aea98316757224",
-    "runtime_image_id": "sha256:bf3891ee4bd2f653a2644566c2133e58ba7bb981677c116ed353f80808798e88",
+    "runtime_source_archive_sha256": "a0cdedc7491e9f54abe3430226231e78bc24535ec53024ca93ecb63b2991753d",
+    "runtime_image_id": "sha256:53702eab01eb15a0912e44b4ed5e2685ed6d7a79e261c9abb53735902ae8994e",
     "base_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
-    "previous_runtime_commit": "902699ee41861be45529b38adeb2b289cf8300b0",
-    "previous_image_preserved": "sha256:5240fa8526d39175b8c6930267c3e66748d65d1359d8ac116254e17d757ef8d2",
+    "previous_runtime_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+    "previous_image_preserved": "sha256:bf3891ee4bd2f653a2644566c2133e58ba7bb981677c116ed353f80808798e88",
     "graph_content_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
     "primary_targets": 99,
     "retained_evidence_records": 16687,
     "existing_saved_question_id": "question_20261113T075313Z_1a76b00f",
     "answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
     "saved_question_files_checked": 13,
+    "saved_question_inventory_sha256": "1acf2d11bd536e26b227e6b585e5346eddf36a39fab5de895c1cc136fd683457",
     "saved_question_and_native_exports_unchanged": true,
-    "original_source_manifests_and_old_publications_unchanged": true,
+    "old_source_manifests_and_both_publications_preserved": true,
     "real_service_restart_and_reopen_passed": true,
     "real_Neptune_parity_and_read_verified": true,
-    "runtime_environment_and_authentication_unchanged": true,
+    "Neptune_file_fallback_used": false,
+    "prior_runtime_environment_bytes_preserved_as_prefix": true,
+    "runtime_environment_appended_keys_only": [
+      "BIOGRAPH_GO_CONTEXT_DIR",
+      "BIOGRAPH_GO_QC_DIR"
+    ],
+    "runtime_environment_backup_mode": "0600",
+    "access_token_unchanged": true,
     "new_permissions_resources_or_public_access": false,
-    "new_question_created": false,
-    "new_assessment": {
-      "id": "scientific_assessment_delivery_20261113",
-      "content_sha256": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2",
-      "exact_files_verified": 16,
-      "source_bytes": 2919824,
-      "explicit_payload_and_private_destination_approval_received": true,
-      "API_and_catalogue_verified": true,
-      "scope": "Grounding plus earlier exploratory source assessment; later 128-gene negative transfer remains separately reported."
+    "automatic_rollback_needed": false,
+    "candidate_source_replay": {
+      "network": "none",
+      "root_and_saved_sources_read_only": true,
+      "Python": "3.12.16",
+      "active_service_identity_and_configuration_unchanged": true
     },
+    "native_GO_attachment": {
+      "id": "native_go_context_qc_20261113",
+      "files": 12,
+      "source_bytes": 79181773,
+      "archive_bytes": 16482886,
+      "archive_sha256": "8d08c2f91288cd0712a09041c9a631ca84350dd93c8548fc6f8fb831043b20f1",
+      "transfer_manifest_content_sha256": "2557672550bf64bbfc67fa8b360212ec03f51350a032fc3d049e8c0e1b1dcf8f",
+      "context_report_content_sha256": "a0de7e395a5e7cae276a18816f4b51b4a4b0ff71a75777a61cc75fb2dc0a0a92",
+      "QC_report_content_sha256": "200c0a2d968b2415f69deb36db3da5c227af80c2b60074e30e4701a3e37ee83f",
+      "native_records": 15888,
+      "explicit_payload_and_private_destination_approval_received": true,
+      "API_examples_verified_before_and_after_restart": {
+        "golgi_relation": {
+          "selection_id": "assertion:4ac61dbe47647d68cc336ff4",
+          "GO_ID": "GO:0005794",
+          "native_source_context_content_sha256": "62d311f120ed2099472329f5c6496d40e935c1826d1f72ff71fb7918ac7c0df1",
+          "native_rows": 1,
+          "strict_projection_candidates": 1,
+          "relation_derivative_displayed_without_source_rewrite": true,
+          "non_taxon_context_conflict_kept_separate": false,
+          "historical_identity_or_biological_falsehood_inferred": false
+        },
+        "exosome_context": {
+          "selection_id": "assertion:19eb11ae22722515120386df",
+          "GO_ID": "GO:0070062",
+          "native_source_context_content_sha256": "f1c2d64a5034885bb120e8d559816f57a95b65414a49a98dbf5fa0b3b4fad9e3",
+          "native_rows": 1,
+          "strict_projection_candidates": 0,
+          "relation_derivative_displayed_without_source_rewrite": false,
+          "non_taxon_context_conflict_kept_separate": true,
+          "historical_identity_or_biological_falsehood_inferred": false
+        }
+      },
+      "source_and_saved_QC_bytes_verified": true,
+      "source_graph_or_reviews_changed": false,
+      "historical_row_identity_inferred": false,
+      "new_rule_or_reasoner_execution": false,
+      "new_biological_pruning_decisions": 0
+    },
+    "preserved_assessment_publications": {
+      "scientific_assessment_complete_20261113": "05cc28f1dd520adbb974bac735f8323108ec37e4f82ac4ee8d3df0d1da46e9f7",
+      "scientific_assessment_delivery_20261113": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2"
+    },
+    "assessment_scope": "Grounding plus earlier exploratory source assessment; later 128-gene negative transfer remains separately reported.",
+    "private_uploads": {
+      "objects": 6,
+      "bytes": 17291370,
+      "encryption": "AES256",
+      "immutable_new_keys": true,
+      "native_SHA256_verified_for_all": true
+    },
+    "receipt_pins": {
+      "candidate_preflight_content_sha256": "d47c3b7f45a37761ff0000f2181f42c12820b222eae595bd25809df960f3eec0",
+      "prepare": "bc77d295f1f5cc70dbc8fdc38bd165521cd537f56b707d1b207ffece8fb059b5",
+      "acceptance": "74ed6535658bad8b39dfbc6ea6b947f6bc541cd84c5d7c5d18f803d455e66c34",
+      "activation_record_sha256": "67266144e47ce3f01c913f618153216fed80f43d72ca14e44a6d2304fe18d6d0"
+    },
+    "operator_script_SHA256": {
+      "build_go_candidate.py": "4d0f9b12bc610c8787ab6061f7e24fcfe492f176fdfd04f49b9850e0c2d6cc82",
+      "api_acceptance_go.py": "faf98b4e39efbff01ed4834b71383cff3702981e277446e2209df707452c3688",
+      "activate_go.py": "ce60d31621cd77a4aebc56e462cc85142b836d38f22495b4ba55ff45178a019c",
+      "run_activation_go.py": "6e64083c7d737788ff4f89d311f52095d2c3e7727f38527013b4e558861f263a"
+    },
+    "acceptance_phase_timeout_seconds": 900,
+    "activation_subprocess_timeout_seconds": 3300,
+    "SSM_execution_timeout_seconds": 3600,
+    "hosted_browser_walkthrough_completed": false,
+    "browser_verification_scope": "The same UI passed the earlier local Chrome walkthrough. The hosted browser-control connection timed out before inspection; hosted API acceptance is recorded separately.",
     "source_fetches_or_model_calls": 0,
-    "GO_context_followup_in_this_runtime": false,
+    "new_question_created": false,
     "new_backup_recovery_performed": false,
-    "scientific_accuracy_or_prediction_gain_established": false,
-    "scope": "Existing private workbench code and approved aggregate publication update. Original graph/decisions/source records unchanged. No new whole-VM or newer-publication backup recovery test; previous checkpoint recovery scope is preserved. No general latency improvement is claimed."
+    "scientific_accuracy_or_prediction_gain_established_by_deployment": false,
+    "scope": "Optional native GO context and recorded QC are now inspectable in the existing private workbench. Fresh software installations remain disabled by default and contain no source packet. Current native annotations are separate from historical Pharos claims. The earlier backup recovery excludes this attachment. No general latency gain is claimed.",
+    "receipt": "docs/evaluations/hosted_native_go_20261113_summary.json",
+    "receipt_file_sha256": "c575d0a4beb7208b83b0a1d82991549a4e127e1ea575ab7cfb0e20effaa62a04",
+    "receipt_content_sha256": "8365a11275d374a9d8052e83f11db8bc1117f2759c11ccbb27e66a16dee9e50a"
   },
-  "content_sha256": "07e6523354a908e710e79818ba24485a5d754873064a98dccf12a8907fdb7ee4"
+  "preserved_hosted_runtimes": [
+    {
+      "receipt": "docs/evaluations/hosted_polish_update_20261113_summary.json",
+      "receipt_file_sha256": "75f152af7759641fd80b3c059eff816137a373367bc2308aef38aa4bc0252a18",
+      "receipt_content_sha256": "d83a4604ecfcc7d7e913c023b1a6dfacb86369fde86ecc6a9c0ae5cb8261265f",
+      "status": "PASSED_HOSTED_UPDATE_AND_ACCEPTANCE",
+      "runtime_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+      "service_version": "0.8.0",
+      "runtime_source_archive_sha256": "4da65871f839809816d23d9e0c3ce02a7e8ff4eee731fbf5e2aea98316757224",
+      "runtime_image_id": "sha256:bf3891ee4bd2f653a2644566c2133e58ba7bb981677c116ed353f80808798e88",
+      "base_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+      "previous_runtime_commit": "902699ee41861be45529b38adeb2b289cf8300b0",
+      "previous_image_preserved": "sha256:5240fa8526d39175b8c6930267c3e66748d65d1359d8ac116254e17d757ef8d2",
+      "graph_content_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "primary_targets": 99,
+      "retained_evidence_records": 16687,
+      "existing_saved_question_id": "question_20261113T075313Z_1a76b00f",
+      "answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+      "saved_question_files_checked": 13,
+      "saved_question_and_native_exports_unchanged": true,
+      "original_source_manifests_and_old_publications_unchanged": true,
+      "real_service_restart_and_reopen_passed": true,
+      "real_Neptune_parity_and_read_verified": true,
+      "runtime_environment_and_authentication_unchanged": true,
+      "new_permissions_resources_or_public_access": false,
+      "new_question_created": false,
+      "new_assessment": {
+        "id": "scientific_assessment_delivery_20261113",
+        "content_sha256": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2",
+        "exact_files_verified": 16,
+        "source_bytes": 2919824,
+        "explicit_payload_and_private_destination_approval_received": true,
+        "API_and_catalogue_verified": true,
+        "scope": "Grounding plus earlier exploratory source assessment; later 128-gene negative transfer remains separately reported."
+      },
+      "source_fetches_or_model_calls": 0,
+      "GO_context_followup_in_this_runtime": false,
+      "new_backup_recovery_performed": false,
+      "scientific_accuracy_or_prediction_gain_established": false,
+      "scope": "Existing private workbench code and approved aggregate publication update. Original graph/decisions/source records unchanged. No new whole-VM or newer-publication backup recovery test; previous checkpoint recovery scope is preserved. No general latency improvement is claimed."
+    }
+  ],
+  "previous_index_content_sha256_scope": "Last committed index before the current software ZIP and native GO hosted rollout were indexed.",
+  "previous_content_sha256_scope": "Immediate prior local preparation: ea5752e software ZIP indexed while the hosted service still used 0529d2b.",
+  "content_sha256": "cc81ef2ba24959899aa1b85d8ad27868fe29926710074abdef67544c7de6fb8e"
 }

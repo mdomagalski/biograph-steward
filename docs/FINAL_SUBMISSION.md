@@ -1,6 +1,6 @@
 # BioGraph Steward final submission
 
-Working submission and presentation draft, November 13, 2026. The current release is a source-faithful Pharos evidence workbench with reproducible records, guided questions and explicit scientific limits. The private AWS workbench now runs tested code `0529d2b`; its Neptune mirror and earlier scoped checkpoint recovery are tested separately. The [review PDF](../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf) is the dated three-page packet and still records pre-update hosting; the [hosted update receipt](evaluations/hosted_polish_update_20261113_summary.json) gives the current status. The editable slide deck remains a separate older artifact. PaperQA3 and another agent platform are optional.
+Working submission and presentation draft, November 13, 2026. The current release is a source-faithful Pharos evidence workbench with reproducible records, guided questions and explicit scientific limits. The private AWS workbench now runs tested code `ea5752e`, including the separately configured native GO inspector; its Neptune mirror and earlier scoped checkpoint recovery are tested separately. The [review PDF](../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf) is the dated three-page packet and still records pre-update hosting; the [hosted update receipt](evaluations/hosted_native_go_20261113_summary.json) gives the current status. The editable slide deck remains a separate older artifact. PaperQA3 and another agent platform are optional.
 
 ## Project summary
 
@@ -23,6 +23,13 @@ in the pinned July 2026 ontology, not experimentally disproved relationships.
 Current CIViC profile and Reactome event links guide users to curator and
 mechanistic context without treating live lookup results as historical proof
 or independent evidence.
+
+The hosted [native GO inspector](NATIVE_GO_CONTEXT_WORKBENCH.md) also exposes
+preserved relations, NOT qualifiers, references, forms and context alternatives,
+with separately labeled saved official QC. It makes known source-quality issues
+inspectable without changing the Pharos graph or assuming historical row identity.
+The approved 12-file source/QC attachment remains separate from the code-only
+software and is absent from fresh installations.
 
 Credible public references provide bounded **support coverage**, not a precision
 estimate: compatible experimental GO curations cover 373/4,078 original GO
@@ -78,9 +85,11 @@ current publisher context, separate from the frozen Pharos baseline and
 independent scientific validation.
 
 The current hosted example is `source_faithful_workspace_20261113`, running
-`0529d2b` with existing saved question `question_20261113T075313Z_1a76b00f`.
+`ea5752e` with existing saved question `question_20261113T075313Z_1a76b00f`.
 The update preserved the question/source bytes, authentication and permissions;
-native replay and complete Neptune parity/read checks passed. Use the
+native replay, both GO examples and complete Neptune parity/read checks passed
+across restart. Hosted acceptance used the API; the earlier GO Chrome walkthrough
+was local. Use the
 [updated five-minute script](DEMO_SCRIPT.md):
 
 1. **Ask & explore:** open the native-supported TP53 question, with eight
@@ -90,6 +99,8 @@ native replay and complete Neptune parity/read checks passed. Use the
 3. **Sources:** open the exact archived GPML, distinguish gene-level compatibility
    from exact protein-form identity, and inspect the preserved review state.
    The clinical source guide separately preserves complete therapy/profile context.
+   The optional GO inspector separates original native qualifiers from recorded
+   normalization/context warnings; none becomes a historical correction or truth label.
 4. **Compare & assess:** show public-reference support coverage and UNKNOWNs.
    Present the fixed learner result and the negative 128-gene transfer together
    with their controls and study/exposure limits; neither establishes a gain.
@@ -138,9 +149,10 @@ checkpoint recovery, not full VM/runtime restoration or recovery of the later
 grounding publication and current software ZIP. The
 [delivery index](releases/20261113/README.md) keeps these versions and artifacts
 separate. The other research-archive S3 transfer remains unapproved.
-The later hosted runtime and grounding-publication update did not perform a new
-backup recovery. The newer native GO web-inspection/QC follow-up is tested
-locally and is not part of hosted code `0529d2b` or its tested software archive.
+The later hosted updates, grounding publication and native GO attachment did
+not perform a new backup-recovery test. The native GO feature is now enabled
+in hosted `ea5752e`; its separately installed source packet is absent from the
+code-only software archive. The earlier backup recovery does not cover it.
 
 ## Completed biological source enrichment
 
@@ -242,7 +254,7 @@ Show implemented methods and useful behavior before architecture details.
 | Item | Current state | Finish action |
 |---|---|---|
 | MIT repository and build instructions | Implemented; current code is on the private review branch and the current software ZIP passes clean extracted startup/question/export/restart checks | Freeze the final reviewed checkpoint and carry out the public repository/release handoff |
-| App and demonstration | Hosted `0529d2b` passed real restart, unchanged TP53/native exports and complete Neptune parity/read checks; five-tab flow, checkout synthetic example and CC0 real-source annex remain available | Gather weekend team feedback for Monday, fix observed interpretation/access issues, and verify the permitted judge access route; independent intended-user assessment remains open |
+| App and demonstration | Hosted `ea5752e` passed real restart, unchanged TP53/native exports, both native GO API cases and complete Neptune parity/read checks; five-tab flow, checkout synthetic example and CC0 real-source annex remain available | Gather weekend team feedback for Monday, fix observed interpretation/access issues, and verify the permitted judge access route; independent intended-user assessment remains open |
 | Graph and decisions | Current AWS/Neptune workspace retains 16,687 records across 99 primary targets, with its original baseline and complete decisions preserved; 298 obsolete-GO-ID exclusions are source qualifications. Earlier all-abstain and experimental-pruning packages remain separate | Deliver clearly named current workspace and historical comparison packages under their source terms |
 | Standards | Explicit vocabulary references, bounded KGX profile and SSSOM audit | Link the implemented profile and documented conformance limits |
 | Scientific assessment | Bounded support coverage, retention/learner controls and expert-labeled grounding triage are recorded. The fixed 128-gene transfer is negative; grounding trades fewer false alarms for missed errors | Present current source improvements and bounded measurements with their denominators; independent whole-graph accuracy and automatic biological pruning remain unproved |

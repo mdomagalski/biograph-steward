@@ -8,19 +8,18 @@ relative to the repository root. Local paths are not download URLs.
 
 ## Which revision is delivered
 
-The current **code-only software** now uses commit `0529d2b`. Its separately
-tested ZIP is `runs/software_delivery_polish_20261113/biograph_steward_software.zip`
-(892,290 bytes); see the [clean extracted acceptance receipt](../../evaluations/software_release_polish_20261113_summary.json)
+The current **code-only software** now uses commit `ea5752e`. Its separately
+tested ZIP is `runs/software_delivery_native_go_20261113/biograph_steward_software.zip`
+(900,492 bytes); see the [clean extracted acceptance receipt](../../evaluations/software_release_native_go_20261113_summary.json)
 and [current software checksum](CURRENT_SOFTWARE.sha256). It passes synthetic
 question/export/reopen checks after an actual process restart with clean Python.
-It includes the optional aggregate grounding viewer; native research tools and
-data stay separately available through the repository and documented acquisition.
+It includes the aggregate grounding viewer and optional native GO source/QC
+inspector. GO packets are separate and the inspector is disabled by default;
+see its [source and configuration guide](../../NATIVE_GO_CONTEXT_WORKBENCH.md).
 
-The earlier `95d9420` software ZIP and its
-[receipt](../../evaluations/software_release_current_20261113_summary.json) remain
-preserved at `runs/software_delivery_current_20261113/biograph_steward_software.zip`.
-Its checksum is recorded in the manifest's `preserved_checkout_software` entry;
-`CURRENT_SOFTWARE.sha256` now identifies the `0529d2b` ZIP.
+The earlier `95d9420` and `0529d2b` software ZIPs and their receipts remain
+preserved. Their checksums are recorded in `preserved_checkout_software`;
+`CURRENT_SOFTWARE.sha256` identifies the new `ea5752e` ZIP.
 
 The dated presentation packet is the
 [three-page final review](../../../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
@@ -32,20 +31,24 @@ It predates the hosted update below and still records the previous hosted
 runtime. It is preserved unchanged; the hosted receipt gives the current status.
 The original two-page scientific update remains in the preserved assets below.
 
-The private hosted app now runs **`0529d2b`**, verified by its
-[update and acceptance receipt](../../evaluations/hosted_polish_update_20261113_summary.json).
+The private hosted app now runs **`ea5752e`**, verified by its
+[GO rollout and acceptance receipt](../../evaluations/hosted_native_go_20261113_summary.json).
 The existing TP53 question and all 13 native question/export files remain
 unchanged after a real restart, and complete Neptune parity/read checks passed.
 The exact 16-file aggregate publication `scientific_assessment_delivery_20261113`
 (`09e50f8e…`) is installed and API/catalogue-verified. Its grounding component
 and earlier 92-query/3,968-pair exploratory comparison remain separate from
 the [negative 128-gene/7,648-pair transfer](../../evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md).
-The newer native GO web/QC follow-up is local-only, not included in this hosted
-code or its designated software ZIP.
+Its native GO inspector is enabled with an approved separate 12-file source/QC
+attachment. Both selected NRAS examples verified through the live API before
+and after restart. Current native qualifiers and warnings remain separate from
+historical Pharos records; no graph assertions or decisions changed. The
+code-only ZIP above includes the inspector, with no source packet and disabled
+configuration by default.
 
 The complete private combined demo and original software archive below remain
 pinned to **`902699e`**. They were not silently replaced. The previous live
-runtime/image is also preserved for rollback. The manifest's top-level
+runtime/image (`0529d2b`) is also preserved for rollback. The manifest's top-level
 `runtime_commit` describes those original bundles; `current_hosted_runtime`
 describes the updated service. The new deployment does not extend the earlier
 backup-recovery scope.
@@ -54,9 +57,10 @@ Use `CURRENT_SOFTWARE.sha256` for the new code ZIP and the original
 
 | Item | Pinned revision or identity |
 |---|---|
-| Current private hosted runtime | `0529d2bc46eb07fcec00acdfe5432c9e5c23147e` (`0.8.0`) |
-| Preserved original software/private demo archives and previous hosted runtime | `902699ee41861be45529b38adeb2b289cf8300b0` (`0.8.0`) |
-| Current code-only software ZIP and final-review code checkpoint | `0529d2bc46eb07fcec00acdfe5432c9e5c23147e` (`0.8.0`; exact commit distinguishes it) |
+| Current private hosted runtime | `ea5752e56bad38a7828fcbb3df09303c778470d5` (`0.8.0`; native GO/QC configured separately) |
+| Preserved original software/private demo archives and original hosted runtime | `902699ee41861be45529b38adeb2b289cf8300b0` (`0.8.0`) |
+| Current code-only software ZIP | `ea5752e56bad38a7828fcbb3df09303c778470d5` (`0.8.0`; GO source packets separate) |
+| Dated final-review PDF code checkpoint | `0529d2bc46eb07fcec00acdfe5432c9e5c23147e` |
 | Documentation checkpoint before this index was assembled | `47eb36c25bec3858d29766ba9cfb123475bea825` |
 | Corrected workspace graph | `e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff` |
 | Preserved original baseline graph | `f35f8e0bb66742a3b65d1887ecbc85ead33fd8c5ef9eb5e8015d28934f22d22e` |
@@ -161,12 +165,18 @@ reproduce this frozen graph or its qualified extensions automatically. See the
 - The corrected hosted graph passed complete Neptune parity and a real app
   restart. Its graph answers ordinarily use saved files; database inspection
   uses actual read-only Neptune queries.
-- The later `0529d2b` hosted update reopened the same saved TP53 question after
+- The `0529d2b` hosted update reopened the same saved TP53 question after
   restart, with its source/export inventory unchanged. Both older and new
   aggregate publications verified through normal APIs. Authentication,
   permissions and resources were unchanged; the previous runtime was preserved
   for rollback. This is a code/publication deployment check, not a new backup
   recovery or scientific gain.
+- The subsequent `ea5752e` rollout enabled the native GO source/QC inspector
+  with 12 separately approved files. Both GO examples, unchanged saved answer,
+  native exports and both publications passed API checks across a real restart;
+  complete Neptune parity/read checks passed. Only the two GO source-path
+  settings were appended; the access token and previous environment bytes were
+  preserved. This adds inspectable source context, not new biological pruning.
 - The completed private workspace backup passed an
   [isolated three-root checkpoint recovery](../../evaluations/aws_isolated_recovery_20261113_summary.json).
   V2 initially stopped at a missing writable temporary directory; its preserved
@@ -174,7 +184,7 @@ reproduce this frozen graph or its qualified extensions automatically. See the
   `/tmp`. The restored graph, bound publication and saved answer verified with
   the live files, configuration and container unchanged. This is the existing
   checkpoint, not full VM/runtime recovery or recovery of the newer software
-  and grounding publication. The separate 488 MB research-archive S3 copy
+  and grounding publication or the later native GO attachment. The separate 488 MB research-archive S3 copy
   remains unapproved and has not been uploaded.
 
 MIT software does not relicense source records. The complete graph contains

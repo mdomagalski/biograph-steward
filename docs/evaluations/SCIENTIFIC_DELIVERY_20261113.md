@@ -20,18 +20,28 @@ biological pruning rule. The unchanged two-page update above predates this
 addition and the [completed isolated checkpoint recovery](aws_isolated_recovery_20261113_summary.json);
 the current results and scope are recorded here and in those receipts.
 
-The subsequent [hosted update](hosted_polish_update_20261113_summary.json)
-deploys tested code `0529d2b` and the separately sealed grounding publication
+The [initial hosted update](hosted_polish_update_20261113_summary.json)
+deployed tested code `0529d2b` and the separately sealed grounding publication
 `09e50f8e…`. The original graph, decisions, older publications and 13 saved
 question/export files remain unchanged; real restart and Neptune parity/read
 checks passed. The hosted v3 publication contains grounding plus the earlier
 92-query/3,968-pair exploratory component. The later negative 128-gene transfer
 below remains a separate result. Deployment does not add a scientific gain.
 
-The newer [native GO inspector](../NATIVE_GO_CONTEXT_WORKBENCH.md) is a separate
-optional code increment. It exposes preserved qualifiers and recorded official
-quality findings on demand; it is not part of hosted `0529d2b` and performs no
-automatic graph repair or biological pruning.
+The [current hosted update](hosted_native_go_20261113_summary.json) runs
+`ea5752e` with the approved separate 12-file native GO/QC packet. The
+[native GO inspector](../NATIVE_GO_CONTEXT_WORKBENCH.md) exposes preserved
+qualifiers and recorded official quality findings on demand. Both NRAS cases,
+the original TP53 question, both publications and complete Neptune parity/read
+checks passed across a real restart, with source and review bytes unchanged.
+Hosted verification used the API; the earlier GO Chrome walkthrough was local.
+
+For NRAS/GO:0005794, a compatible native row's `part_of` relation and recorded
+`located_in` derivative remain separate. NRAS/GO:0070062 has a related native
+context warning, but no native row matches all five available Pharos fields.
+That warning does not refute the historical Pharos annotation or the base biological association.
+No graph repair, new label or biological pruning follows from these displays.
+Fresh software installations remain unconfigured and contain no native packet.
 
 ## Delivered
 
@@ -284,7 +294,8 @@ restart, and the verified task-owned temporary staging was removed.
 This verifies the existing checkpoint's source workspace,
 `scientific_assessment_complete_20261113` publication (`05cc28f1…`) and
 `question_20261113T063448Z_f746814c`. It is not full VM/runtime recovery and does
-not cover the later grounding publication or subsequent software updates.
+not cover the later grounding publication, native GO attachment or subsequent
+software updates.
 It creates no biological accuracy or prediction-gain result.
 
 The private archive of ten source/experiment/delivery roots is retained locally at

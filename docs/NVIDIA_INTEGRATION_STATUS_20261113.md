@@ -5,13 +5,15 @@ questions and deterministic, source-bound execution. NVIDIA model and workflow
 integrations are optional. More deployment infrastructure does not provide
 scientific labels or establish that a graph claim is correct.
 
-The [current hosted update](evaluations/hosted_polish_update_20261113_summary.json)
-uses code `0529d2b` on the existing AWS instance, with unchanged authentication
+The [current hosted update](evaluations/hosted_native_go_20261113_summary.json)
+uses code `ea5752e` on the existing AWS instance, with unchanged authentication
 and permissions. Real restart, saved native answer/export replay and complete
 Neptune parity/read checks passed. The separate aggregate grounding publication
-is now API-verified there. This deployment used no Brev model, GPU inference,
-new cloud resources or new biological comparison. The newer native GO web/QC
-follow-up remains local-only and is not included in that hosted code.
+remains API-verified there. The approved separate native GO/QC packet enables
+on-demand source inspection, with both NRAS examples checked through the API
+across restart. This deployment used no Brev model, GPU inference, new cloud
+resources, new rule/reasoner execution or new biological comparison. Fresh
+software installations remain unconfigured; another agent platform is unnecessary.
 
 ## What the project actually uses
 

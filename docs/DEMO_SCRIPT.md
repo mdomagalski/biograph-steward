@@ -13,10 +13,11 @@ source-inspection example, not the complete Pharos graph or its historical
 baseline. The [delivery index](releases/20261113/README.md) identifies which
 software, data and assessment are actually supplied.
 
-The private AWS app now uses tested code `0529d2b`; its
-[update receipt](evaluations/hosted_polish_update_20261113_summary.json) verifies
-the existing saved question and native exports after a real restart, with
-complete Neptune parity and read-only database access. The earlier private
+The private AWS app now uses tested code `ea5752e`; its
+[update receipt](evaluations/hosted_native_go_20261113_summary.json) verifies
+the existing saved question, native exports and separate GO context after a real
+restart, with complete Neptune parity and read-only database access. These are
+hosted API checks; the GO browser walkthrough was local. The earlier private
 combined archive remains pinned to `902699e`.
 
 1. **Open the question — one minute.** Open the supplied
@@ -67,13 +68,22 @@ but true error flags 31→26. It supports assisted review, with unresolved cases
 visible; it does not validate or automatically prune the Pharos graph.
 This v3 publication also retains the earlier 92-query/3,968-pair exploratory
 comparison. Present the separately reported negative 128-gene/7,648-pair
-transfer above alongside it. The native GO web-inspection/QC follow-up is
-local-only and is not part of hosted `0529d2b`.
+transfer above alongside it.
+
+For a source-quality question, the hosted [native GO inspector](NATIVE_GO_CONTEXT_WORKBENCH.md)
+is available on demand. In **Evidence & sources**, search `GO:0005794`, select
+NRAS, open the source guide and inspect the preserved native GO annotations.
+Show the original native `part_of` relation beside the recorded `located_in`
+derivative. For NRAS/`GO:0070062`, distinguish a context warning from biological
+falsity and note that no native row matches all five available Pharos fields.
+Neither example changes the Pharos graph or accepts a claim. The source/QC packets
+remain separate private data; a fresh code-only installation has neither.
 
 The [existing checkpoint recovery](evaluations/aws_isolated_recovery_20261113_summary.json)
 also passed exact graph, saved-answer and export replay without changing the
 live service. Its scope is the older graph/assessment/question checkpoint,
-not full VM recovery or the later grounding/software artifacts.
+not full VM recovery or the later grounding, native GO attachment and software
+artifacts.
 
 The private AWS/Neptune mirror and [NVIDIA integration](NVIDIA_INTEGRATION_STATUS_20261113.md)
 can be described in questions. Saved-data inspection uses CPU only; the Brev
