@@ -117,10 +117,10 @@
     "nodes": 9865,
     "public_scope_receipt": "docs/evaluations/automatic_qualification_20261112_summary.json"
   },
-  "updated_at": "2026-11-13T16:46:30.880352+00:00",
+  "updated_at": "2026-11-13T20:39:38.601576+00:00",
   "previous_index_content_sha256": "07e6523354a908e710e79818ba24485a5d754873064a98dccf12a8907fdb7ee4",
   "initial_existing_asset_stream_verification_scope": "The original five software/workspace/question/combined/PDF files were re-hashed at index creation. The separate Reactome annex was subsequently assembled from exact existing allowlisted source bytes and checked independently; the original five archives/PDF were not changed.",
-  "new_archive_extraction_or_repackaging_scope": "The original six assets are unchanged. The separate latest code-only ZIP was prepared and physically extracted/tested under its own receipt; this index does not repackage source workspaces or the prior software ZIPs.",
+  "new_archive_extraction_or_repackaging_scope": "The original six assets and all prior code-only ZIPs are unchanged. The separate latest 5362b50 code-only ZIP was assembled, physically extracted and tested under its own receipt; source workspace/question archives were not repackaged.",
   "full_mixed_source_data_packages_in_Git": false,
   "source_qualified_annex_prepared_for_repository": true,
   "reactome_context_annex": {
@@ -138,27 +138,28 @@
     "new_biological_experiment_or_gold_labels": false
   },
   "current_checkout_software": {
-    "git_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
-    "local_path": "runs/software_delivery_native_go_20261113/biograph_steward_software.zip",
+    "git_commit": "5362b50b80e38505f24e21d97e7034005a7a51e1",
+    "local_path": "runs/software_delivery_native_go_export_20261113/biograph_steward_software.zip",
     "file": "biograph_steward_software.zip",
-    "sha256": "eb4ff3fdb26ba1f45fec7c056cd3e760c675a854cbc9ddcd3eda948fc78a2527",
-    "bytes": 900492,
-    "file_count": 164,
-    "receipt": "docs/evaluations/software_release_native_go_20261113_summary.json",
+    "sha256": "ed473c27ee1331d06cf78e4f4edcee27e1231a4c0e609653195d9af1eb1c20ad",
+    "bytes": 905085,
+    "file_count": 165,
+    "receipt": "docs/evaluations/software_release_native_go_export_20261113_summary.json",
     "availability": "locally_prepared_and_clean_extracted_tested_not_published",
-    "scope": "Code-only package with the optional native GO source/QC inspector and aggregate grounding viewer. The private hosted runtime uses the same ea5752e code checkpoint, with an approved separate native GO source/QC attachment. Native GO source packets are absent from this ZIP and configuration remains disabled by default in fresh installations.",
-    "runtime_source_bundle_sha256": "a0cdedc7491e9f54abe3430226231e78bc24535ec53024ca93ecb63b2991753d"
+    "scope": "Code-only package with optional native GO source/QC inspection and authenticated packet download, plus the aggregate grounding viewer. Clean-extracted synthetic question/export/restart acceptance passed. Native GO source packets and real saved Pharos workspaces are absent; optional inspection/export require a separate authorized packet and operator configuration. This software packaging does not change the separately recorded hosted runtime.",
+    "runtime_source_bundle_sha256": "b685d13d18cf8d57a66212e8a36126ca8b9dd272730bef21e648a539ba03fddb",
+    "native_GO_source_packet_included": false
   },
   "current_assessment": {
     "publication_id": "scientific_assessment_delivery_20261113",
     "content_sha256": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2",
     "code_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
     "aggregate_receipt": "docs/evaluations/expert_grounding_20261113_aggregate.json",
-    "display_scope": "Separate expert-labeled source-grounding component plus earlier 92-query/3968-pair exploratory assessment. The same sealed aggregate publication remains installed and API/catalogue-verified in the private hosted ea5752e app. It is not graph truth; the negative 128-gene/7648-pair transfer remains separately reported.",
+    "display_scope": "Separate expert-labeled source-grounding component plus earlier 92-query/3968-pair exploratory assessment. The same sealed aggregate publication remains installed and verified over authenticated HTTPS in the current 5362b50 app. It is not graph truth; the negative 128-gene/7648-pair transfer remains separately reported.",
     "code_commit_scope": "Initial grounding publication/viewer implementation checkpoint; current hosted runtime is recorded separately.",
-    "hosted_runtime_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
+    "hosted_runtime_commit": "5362b50b80e38505f24e21d97e7034005a7a51e1",
     "hosted_API_and_catalogue_verified": true,
-    "hosted_receipt": "docs/evaluations/hosted_native_go_20261113_summary.json"
+    "hosted_receipt": "docs/evaluations/reviewer_https_delivery_20261113_summary.json"
   },
   "isolated_checkpoint_recovery": {
     "receipt": "docs/evaluations/aws_isolated_recovery_20261113_summary.json",
@@ -187,7 +188,7 @@
     "uploaded": false,
     "scope": "Separate locally retained research archive; the two-file recovery approval did not authorize this transfer."
   },
-  "previous_content_sha256": "f9954a075daf07ac526c830aeae67bfbe86c8d3ed34ac00bed4a934714414436",
+  "previous_content_sha256": "1f906f4e5875f817505ed2b3c81f1f7ef881db0bca6d1588f07eb6f8cc9763df",
   "preserved_checkout_software": [
     {
       "git_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
@@ -212,6 +213,18 @@
       "availability": "locally_prepared_and_clean_extracted_tested_not_published",
       "scope": "Historical preparation scope: Tested 0529d2b code-only software with optional aggregate grounding viewer; clean extracted synthetic startup/question/export/restart passed. The current private hosted service uses the same code checkpoint, with separate source/publication data. The preserved private combined demo remains 902699e. The newer local native GO web/QC follow-up is not in this ZIP or hosted code.",
       "runtime_source_bundle_sha256": "4da65871f839809816d23d9e0c3ce02a7e8ff4eee731fbf5e2aea98316757224"
+    },
+    {
+      "git_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
+      "local_path": "runs/software_delivery_native_go_20261113/biograph_steward_software.zip",
+      "file": "biograph_steward_software.zip",
+      "sha256": "eb4ff3fdb26ba1f45fec7c056cd3e760c675a854cbc9ddcd3eda948fc78a2527",
+      "bytes": 900492,
+      "file_count": 164,
+      "receipt": "docs/evaluations/software_release_native_go_20261113_summary.json",
+      "availability": "locally_prepared_and_clean_extracted_tested_not_published",
+      "scope": "Historical code-only packaging scope: Code-only package with the optional native GO source/QC inspector and aggregate grounding viewer. The private hosted runtime uses the same ea5752e code checkpoint, with an approved separate native GO source/QC attachment. Native GO source packets are absent from this ZIP and configuration remains disabled by default in fresh installations.",
+      "runtime_source_bundle_sha256": "a0cdedc7491e9f54abe3430226231e78bc24535ec53024ca93ecb63b2991753d"
     }
   ],
   "current_review": {
@@ -231,117 +244,145 @@
   "runtime_commit_scope": "Preserved original software/private combined demonstration archives and previous hosted runtime; use current_hosted_runtime for the current service.",
   "runtime_source_bundle_sha256_scope": "Original 902699e source bundle retained by the preserved artifacts; the updated hosted bundle is recorded separately.",
   "current_hosted_runtime": {
-    "status": "PASSED_HOSTED_GO_SOURCE_INSPECTION_AND_ACCEPTANCE",
-    "runtime_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
+    "status": "PASSED_AUTHENTICATED_HTTPS_NATIVE_EXPORT_REPLAY_AND_COLD_NEPTUNE_READ",
+    "runtime_commit": "5362b50b80e38505f24e21d97e7034005a7a51e1",
     "service_version": "0.8.0",
-    "runtime_source_archive_sha256": "a0cdedc7491e9f54abe3430226231e78bc24535ec53024ca93ecb63b2991753d",
-    "runtime_image_id": "sha256:53702eab01eb15a0912e44b4ed5e2685ed6d7a79e261c9abb53735902ae8994e",
-    "base_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
-    "previous_runtime_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
-    "previous_image_preserved": "sha256:bf3891ee4bd2f653a2644566c2133e58ba7bb981677c116ed353f80808798e88",
-    "graph_content_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
-    "primary_targets": 99,
-    "retained_evidence_records": 16687,
-    "existing_saved_question_id": "question_20261113T075313Z_1a76b00f",
-    "answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
-    "saved_question_files_checked": 13,
-    "saved_question_inventory_sha256": "1acf2d11bd536e26b227e6b585e5346eddf36a39fab5de895c1cc136fd683457",
-    "saved_question_and_native_exports_unchanged": true,
-    "old_source_manifests_and_both_publications_preserved": true,
-    "real_service_restart_and_reopen_passed": true,
-    "real_Neptune_parity_and_read_verified": true,
-    "Neptune_file_fallback_used": false,
-    "prior_runtime_environment_bytes_preserved_as_prefix": true,
-    "runtime_environment_appended_keys_only": [
-      "BIOGRAPH_GO_CONTEXT_DIR",
-      "BIOGRAPH_GO_QC_DIR"
-    ],
-    "runtime_environment_backup_mode": "0600",
-    "access_token_unchanged": true,
-    "new_permissions_resources_or_public_access": false,
-    "automatic_rollback_needed": false,
-    "candidate_source_replay": {
-      "network": "none",
-      "root_and_saved_sources_read_only": true,
-      "Python": "3.12.16",
-      "active_service_identity_and_configuration_unchanged": true
+    "runtime_image_id": "sha256:a63980673300b8876c33f00c334f058a94de5adcbd2081f995db60e840e4719d",
+    "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws",
+    "application_authentication_required": true,
+    "runtime_reconstruction": {
+      "method": "Exact git diff applied with system patch to the verified previous runtime copy, then complete ordinary-file inventory verified against the committed git archive reference.",
+      "previous_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
+      "runtime_files": 164,
+      "full_runtime_inventory_sha256": "9692397bc64085bd58566363e5c922b3cf6bc83872f2360adc8e96d79a97d757",
+      "patch_sha256": "25fa9f3cb25f3be583f84f131836033f7f4b1aa9ff7d7d99e687fb6c9ecb101f",
+      "committed_release_archive_sha256_reference": "b685d13d18cf8d57a66212e8a36126ca8b9dd272730bef21e648a539ba03fddb",
+      "full_runtime_source_archive_uploaded_for_this_update": false,
+      "prior_runtime_preserved_for_rollback": true
     },
-    "native_GO_attachment": {
-      "id": "native_go_context_qc_20261113",
-      "files": 12,
-      "source_bytes": 79181773,
-      "archive_bytes": 16482886,
-      "archive_sha256": "8d08c2f91288cd0712a09041c9a631ca84350dd93c8548fc6f8fb831043b20f1",
-      "transfer_manifest_content_sha256": "2557672550bf64bbfc67fa8b360212ec03f51350a032fc3d049e8c0e1b1dcf8f",
-      "context_report_content_sha256": "a0de7e395a5e7cae276a18816f4b51b4a4b0ff71a75777a61cc75fb2dc0a0a92",
-      "QC_report_content_sha256": "200c0a2d968b2415f69deb36db3da5c227af80c2b60074e30e4701a3e37ee83f",
-      "native_records": 15888,
-      "explicit_payload_and_private_destination_approval_received": true,
-      "API_examples_verified_before_and_after_restart": {
-        "golgi_relation": {
-          "selection_id": "assertion:4ac61dbe47647d68cc336ff4",
-          "GO_ID": "GO:0005794",
-          "native_source_context_content_sha256": "62d311f120ed2099472329f5c6496d40e935c1826d1f72ff71fb7918ac7c0df1",
-          "native_rows": 1,
-          "strict_projection_candidates": 1,
-          "relation_derivative_displayed_without_source_rewrite": true,
-          "non_taxon_context_conflict_kept_separate": false,
-          "historical_identity_or_biological_falsehood_inferred": false
-        },
-        "exosome_context": {
-          "selection_id": "assertion:19eb11ae22722515120386df",
-          "GO_ID": "GO:0070062",
-          "native_source_context_content_sha256": "f1c2d64a5034885bb120e8d559816f57a95b65414a49a98dbf5fa0b3b4fad9e3",
-          "native_rows": 1,
-          "strict_projection_candidates": 0,
-          "relation_derivative_displayed_without_source_rewrite": false,
-          "non_taxon_context_conflict_kept_separate": true,
-          "historical_identity_or_biological_falsehood_inferred": false
-        }
+    "gateway": {
+      "implementation": "Native ECS Express Mode with standard NGINX reverse proxy",
+      "region": "us-east-2",
+      "registry_manifest_digest": "sha256:dc76ac11253d5538005dfe5f827847a8da5f4296358ac1634414acd89c50551c",
+      "one_vCPU": true,
+      "memory_MiB": 2048,
+      "minimum_tasks": 1,
+      "maximum_tasks": 1,
+      "new_billable_gateway_resources_created": true,
+      "TLS_certificate_and_hostname_verified": true,
+      "exact_endpoint_service_ALB_binding_verified": true,
+      "app_ingress_restricted_to_gateway_task_identity_security_group": true,
+      "all_ALB_forward_targets_owned_by_reviewed_service": true,
+      "other_ECS_services_sharing_ALB": 0,
+      "attributes_verified": {
+        "idle_timeout.timeout_seconds": "600",
+        "routing.http.desync_mitigation_mode": "defensive",
+        "routing.http.drop_invalid_header_fields.enabled": "true"
       },
-      "source_and_saved_QC_bytes_verified": true,
-      "source_graph_or_reviews_changed": false,
-      "historical_row_identity_inferred": false,
-      "new_rule_or_reasoner_execution": false,
-      "new_biological_pruning_decisions": 0
+      "credentials_injected_by_gateway": false,
+      "saved_data_query_mode": true,
+      "blocked_POST_routes_tested": [
+        "/api/build",
+        "/api/construct",
+        "/api/plan",
+        "/api/construction-plan",
+        "/api/review",
+        "/api/refresh",
+        "/api/refresh-compare"
+      ],
+      "planner_GET_blocked": true,
+      "query_scope": "Authenticated reads of the saved workspace/publication catalogue and reviewed saved-data query/download routes. New deterministic question artifacts may be saved; construction, live retrieval, model planning and review/source edits are blocked at this ingress.",
+      "security_scan_snapshot": {
+        "initial_finding_count": 5,
+        "final_finding_count": 0,
+        "final_scan_status": "COMPLETE",
+        "scope": "Point-in-time ECR basic image scan; zero reported findings is not a permanent vulnerability-free guarantee.",
+        "vendor_package_fixes_applied": true
+      }
     },
-    "preserved_assessment_publications": {
-      "scientific_assessment_complete_20261113": "05cc28f1dd520adbb974bac735f8323108ec37e4f82ac4ee8d3df0d1da46e9f7",
-      "scientific_assessment_delivery_20261113": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2"
+    "authentication": {
+      "anonymous_API_denied": true,
+      "anonymous_saved_page_serves_sign_in": true,
+      "wrong_token_denied": true,
+      "session_cookie_Secure_HttpOnly_SameSiteStrict": true,
+      "missing_foreign_null_POST_origins_denied": true,
+      "exact_saved_return_to_preserved": true,
+      "logout_revoked_session": true,
+      "existing_access_token_unchanged": true,
+      "SSM_loopback_access_preserved": true,
+      "shared_workspace_credential_not_individual_reviewer_identity": true
     },
-    "assessment_scope": "Grounding plus earlier exploratory source assessment; later 128-gene negative transfer remains separately reported.",
-    "private_uploads": {
-      "objects": 6,
-      "bytes": 17291370,
-      "encryption": "AES256",
-      "immutable_new_keys": true,
-      "native_SHA256_verified_for_all": true
+    "native_GO_attachment_and_download": {
+      "authenticated_HTTPS_download_passed": true,
+      "source_files": 12,
+      "original_source_bytes": 79181773,
+      "archive_bytes": 16635274,
+      "archive_member_count": 14,
+      "archive_sha256": "f86d29e8023c0f03a22ce6b0aaa957ea51869a0d21135187092c67741f779c15",
+      "export_manifest_content_sha256": "2eef795448e4edd7ef87196fa4e28af3a50fbf512fe3bbb5acc3de388b70b7b6",
+      "native_source_inventory_sha256": "d3df19471bdf5f482bb67fc8333594f9c9df7eaa4ab185563544ebaef7e494af",
+      "all_downloaded_source_bytes_equal_preserved_originals": true,
+      "archive_physically_extracted": true,
+      "reopened_selected_examples": 2,
+      "both_reopened_results_equal_original_packet": true,
+      "source_files_changed": false,
+      "historical_Pharos_qualifiers_backfilled": false,
+      "rules_or_reasoner_reexecuted": false,
+      "scope": "Separate current native GO source/QC attachment; not included in the software-only ZIP or ordinary workspace ZIP and not an independent biological truth label."
     },
-    "receipt_pins": {
-      "candidate_preflight_content_sha256": "d47c3b7f45a37761ff0000f2181f42c12820b222eae595bd25809df960f3eec0",
-      "prepare": "bc77d295f1f5cc70dbc8fdc38bd165521cd537f56b707d1b207ffece8fb059b5",
-      "acceptance": "74ed6535658bad8b39dfbc6ea6b947f6bc541cd84c5d7c5d18f803d455e66c34",
-      "activation_record_sha256": "67266144e47ce3f01c913f618153216fed80f43d72ca14e44a6d2304fe18d6d0"
+    "preservation": {
+      "graph_content_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "targets": 99,
+      "retained_evidence_records": 16687,
+      "saved_question_id": "question_20261113T075313Z_1a76b00f",
+      "saved_answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+      "saved_question_and_exports_unchanged": true,
+      "preserved_run_file_counts": {
+        "question_20261113T075313Z_1a76b00f": 13,
+        "scientific_assessment_complete_20261113": 15,
+        "scientific_assessment_delivery_20261113": 16,
+        "source_faithful_workspace_20261113": 394
+      },
+      "native_source_files_unchanged": 12,
+      "preserved_assessment_publication_seals": {
+        "scientific_assessment_complete_20261113": "05cc28f1dd520adbb974bac735f8323108ec37e4f82ac4ee8d3df0d1da46e9f7",
+        "scientific_assessment_delivery_20261113": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2"
+      },
+      "both_assessment_summaries_verified_over_HTTPS": true,
+      "real_app_restart_and_original_API_acceptance_passed": true,
+      "existing_Neptune_read_only_policy_changed": false,
+      "new_backup_recovery_performed": false
     },
-    "operator_script_SHA256": {
-      "build_go_candidate.py": "4d0f9b12bc610c8787ab6061f7e24fcfe492f176fdfd04f49b9850e0c2d6cc82",
-      "api_acceptance_go.py": "faf98b4e39efbff01ed4834b71383cff3702981e277446e2209df707452c3688",
-      "activate_go.py": "ce60d31621cd77a4aebc56e462cc85142b836d38f22495b4ba55ff45178a019c",
-      "run_activation_go.py": "6e64083c7d737788ff4f89d311f52095d2c3e7727f38527013b4e558861f263a"
+    "cold_Neptune_HTTPS_check": {
+      "performed_after_real_service_restart": true,
+      "complete_database_parity_then_incident_read_passed": true,
+      "elapsed_seconds": 247.25315386999864,
+      "saved_file_fallback_used": false,
+      "scope": "A complete parity verification followed by an actual read-only incident query, through the HTTPS gateway; no general latency improvement is claimed."
     },
-    "acceptance_phase_timeout_seconds": 900,
-    "activation_subprocess_timeout_seconds": 3300,
-    "SSM_execution_timeout_seconds": 3600,
-    "hosted_browser_walkthrough_completed": false,
-    "browser_verification_scope": "The same UI passed the earlier local Chrome walkthrough. The hosted browser-control connection timed out before inspection; hosted API acceptance is recorded separately.",
+    "operator_browser_observation": {
+      "completed": true,
+      "browser": "Chrome",
+      "authenticated": true,
+      "saved_graph_catalogue_count": 3,
+      "exact_saved_TP53_question_opened_in_Ask_tab": true,
+      "returned_proteins": 8,
+      "matching_proteins": 54,
+      "candidate_qualifiers_visible": true,
+      "initial_Chrome_connection_error_cleared_before_saved_work_retry": true,
+      "saved_work_fetch_recovered_using_existing_reload_button": true,
+      "network_root_cause_established": false,
+      "independent_teammate_walkthrough": false,
+      "expert_biological_adjudication": false,
+      "scope": "Operator-observed authenticated browser inspection, separate from automated HTTPS acceptance."
+    },
     "source_fetches_or_model_calls": 0,
-    "new_question_created": false,
     "new_backup_recovery_performed": false,
     "scientific_accuracy_or_prediction_gain_established_by_deployment": false,
-    "scope": "Optional native GO context and recorded QC are now inspectable in the existing private workbench. Fresh software installations remain disabled by default and contain no source packet. Current native annotations are separate from historical Pharos claims. The earlier backup recovery excludes this attachment. No general latency gain is claimed.",
-    "receipt": "docs/evaluations/hosted_native_go_20261113_summary.json",
-    "receipt_file_sha256": "c575d0a4beb7208b83b0a1d82991549a4e127e1ea575ab7cfb0e20effaa62a04",
-    "receipt_content_sha256": "8365a11275d374a9d8052e83f11db8bc1117f2759c11ccbb27e66a16dee9e50a"
+    "receipt": "docs/evaluations/reviewer_https_delivery_20261113_summary.json",
+    "receipt_file_sha256": "413a01418b7730d6d361be7997346645767db3a2099361d62188bf4815114edc",
+    "receipt_content_sha256": "14480f2e731df6953332682cf24172f71144d591b33ff3103954ce909137be2e",
+    "scope": "Authenticated saved-data reviewer HTTPS delivery and native GO packet extraction/replay. Current native context remains separate from historical Pharos claims. This is delivery/source fidelity and usability inspection, not independent scientific validation."
   },
   "preserved_hosted_runtimes": [
     {
@@ -383,9 +424,147 @@
       "new_backup_recovery_performed": false,
       "scientific_accuracy_or_prediction_gain_established": false,
       "scope": "Existing private workbench code and approved aggregate publication update. Original graph/decisions/source records unchanged. No new whole-VM or newer-publication backup recovery test; previous checkpoint recovery scope is preserved. No general latency improvement is claimed."
+    },
+    {
+      "status": "PASSED_HOSTED_GO_SOURCE_INSPECTION_AND_ACCEPTANCE",
+      "runtime_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
+      "service_version": "0.8.0",
+      "runtime_source_archive_sha256": "a0cdedc7491e9f54abe3430226231e78bc24535ec53024ca93ecb63b2991753d",
+      "runtime_image_id": "sha256:53702eab01eb15a0912e44b4ed5e2685ed6d7a79e261c9abb53735902ae8994e",
+      "base_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+      "previous_runtime_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+      "previous_image_preserved": "sha256:bf3891ee4bd2f653a2644566c2133e58ba7bb981677c116ed353f80808798e88",
+      "graph_content_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "primary_targets": 99,
+      "retained_evidence_records": 16687,
+      "existing_saved_question_id": "question_20261113T075313Z_1a76b00f",
+      "answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+      "saved_question_files_checked": 13,
+      "saved_question_inventory_sha256": "1acf2d11bd536e26b227e6b585e5346eddf36a39fab5de895c1cc136fd683457",
+      "saved_question_and_native_exports_unchanged": true,
+      "old_source_manifests_and_both_publications_preserved": true,
+      "real_service_restart_and_reopen_passed": true,
+      "real_Neptune_parity_and_read_verified": true,
+      "Neptune_file_fallback_used": false,
+      "prior_runtime_environment_bytes_preserved_as_prefix": true,
+      "runtime_environment_appended_keys_only": [
+        "BIOGRAPH_GO_CONTEXT_DIR",
+        "BIOGRAPH_GO_QC_DIR"
+      ],
+      "runtime_environment_backup_mode": "0600",
+      "access_token_unchanged": true,
+      "new_permissions_resources_or_public_access": false,
+      "automatic_rollback_needed": false,
+      "candidate_source_replay": {
+        "network": "none",
+        "root_and_saved_sources_read_only": true,
+        "Python": "3.12.16",
+        "active_service_identity_and_configuration_unchanged": true
+      },
+      "native_GO_attachment": {
+        "id": "native_go_context_qc_20261113",
+        "files": 12,
+        "source_bytes": 79181773,
+        "archive_bytes": 16482886,
+        "archive_sha256": "8d08c2f91288cd0712a09041c9a631ca84350dd93c8548fc6f8fb831043b20f1",
+        "transfer_manifest_content_sha256": "2557672550bf64bbfc67fa8b360212ec03f51350a032fc3d049e8c0e1b1dcf8f",
+        "context_report_content_sha256": "a0de7e395a5e7cae276a18816f4b51b4a4b0ff71a75777a61cc75fb2dc0a0a92",
+        "QC_report_content_sha256": "200c0a2d968b2415f69deb36db3da5c227af80c2b60074e30e4701a3e37ee83f",
+        "native_records": 15888,
+        "explicit_payload_and_private_destination_approval_received": true,
+        "API_examples_verified_before_and_after_restart": {
+          "golgi_relation": {
+            "selection_id": "assertion:4ac61dbe47647d68cc336ff4",
+            "GO_ID": "GO:0005794",
+            "native_source_context_content_sha256": "62d311f120ed2099472329f5c6496d40e935c1826d1f72ff71fb7918ac7c0df1",
+            "native_rows": 1,
+            "strict_projection_candidates": 1,
+            "relation_derivative_displayed_without_source_rewrite": true,
+            "non_taxon_context_conflict_kept_separate": false,
+            "historical_identity_or_biological_falsehood_inferred": false
+          },
+          "exosome_context": {
+            "selection_id": "assertion:19eb11ae22722515120386df",
+            "GO_ID": "GO:0070062",
+            "native_source_context_content_sha256": "f1c2d64a5034885bb120e8d559816f57a95b65414a49a98dbf5fa0b3b4fad9e3",
+            "native_rows": 1,
+            "strict_projection_candidates": 0,
+            "relation_derivative_displayed_without_source_rewrite": false,
+            "non_taxon_context_conflict_kept_separate": true,
+            "historical_identity_or_biological_falsehood_inferred": false
+          }
+        },
+        "source_and_saved_QC_bytes_verified": true,
+        "source_graph_or_reviews_changed": false,
+        "historical_row_identity_inferred": false,
+        "new_rule_or_reasoner_execution": false,
+        "new_biological_pruning_decisions": 0
+      },
+      "preserved_assessment_publications": {
+        "scientific_assessment_complete_20261113": "05cc28f1dd520adbb974bac735f8323108ec37e4f82ac4ee8d3df0d1da46e9f7",
+        "scientific_assessment_delivery_20261113": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2"
+      },
+      "assessment_scope": "Grounding plus earlier exploratory source assessment; later 128-gene negative transfer remains separately reported.",
+      "private_uploads": {
+        "objects": 6,
+        "bytes": 17291370,
+        "encryption": "AES256",
+        "immutable_new_keys": true,
+        "native_SHA256_verified_for_all": true
+      },
+      "receipt_pins": {
+        "candidate_preflight_content_sha256": "d47c3b7f45a37761ff0000f2181f42c12820b222eae595bd25809df960f3eec0",
+        "prepare": "bc77d295f1f5cc70dbc8fdc38bd165521cd537f56b707d1b207ffece8fb059b5",
+        "acceptance": "74ed6535658bad8b39dfbc6ea6b947f6bc541cd84c5d7c5d18f803d455e66c34",
+        "activation_record_sha256": "67266144e47ce3f01c913f618153216fed80f43d72ca14e44a6d2304fe18d6d0"
+      },
+      "operator_script_SHA256": {
+        "build_go_candidate.py": "4d0f9b12bc610c8787ab6061f7e24fcfe492f176fdfd04f49b9850e0c2d6cc82",
+        "api_acceptance_go.py": "faf98b4e39efbff01ed4834b71383cff3702981e277446e2209df707452c3688",
+        "activate_go.py": "ce60d31621cd77a4aebc56e462cc85142b836d38f22495b4ba55ff45178a019c",
+        "run_activation_go.py": "6e64083c7d737788ff4f89d311f52095d2c3e7727f38527013b4e558861f263a"
+      },
+      "acceptance_phase_timeout_seconds": 900,
+      "activation_subprocess_timeout_seconds": 3300,
+      "SSM_execution_timeout_seconds": 3600,
+      "hosted_browser_walkthrough_completed": false,
+      "browser_verification_scope": "The same UI passed the earlier local Chrome walkthrough. The hosted browser-control connection timed out before inspection; hosted API acceptance is recorded separately.",
+      "source_fetches_or_model_calls": 0,
+      "new_question_created": false,
+      "new_backup_recovery_performed": false,
+      "scientific_accuracy_or_prediction_gain_established_by_deployment": false,
+      "scope": "Optional native GO context and recorded QC are now inspectable in the existing private workbench. Fresh software installations remain disabled by default and contain no source packet. Current native annotations are separate from historical Pharos claims. The earlier backup recovery excludes this attachment. No general latency gain is claimed.",
+      "receipt": "docs/evaluations/hosted_native_go_20261113_summary.json",
+      "receipt_file_sha256": "c575d0a4beb7208b83b0a1d82991549a4e127e1ea575ab7cfb0e20effaa62a04",
+      "receipt_content_sha256": "8365a11275d374a9d8052e83f11db8bc1117f2759c11ccbb27e66a16dee9e50a"
     }
   ],
   "previous_index_content_sha256_scope": "Last committed index before the current software ZIP and native GO hosted rollout were indexed.",
-  "previous_content_sha256_scope": "Immediate prior local preparation: ea5752e software ZIP indexed while the hosted service still used 0529d2b.",
-  "content_sha256": "cc81ef2ba24959899aa1b85d8ad27868fe29926710074abdef67544c7de6fb8e"
+  "previous_content_sha256_scope": "Immediate local predecessor before recording the completed 5362b50 authenticated reviewer HTTPS delivery; its old ea5752e hosted entry is preserved unchanged in preserved_hosted_runtimes. Original bundles, source/assessment seals and current code-only software entries are unchanged.",
+  "content_sha256": "fd594147b660f09060533ff9d2d52a0c1506f20133445308a477c7be579fb696",
+  "current_team_review_guide": {
+    "prepared_at": "2026-11-13T20:36:21.382408+00:00",
+    "PDF_pages": 6,
+    "files": {
+      "output/pdf/BioGraph_Steward_Team_Review_Guide_20261113.pdf": {
+        "bytes": 79215,
+        "sha256": "dd2ccfc6f2e6b220be8d5fb9e5e6647f9f0c06b51bb933190f838141771e519d"
+      },
+      "docs/TEAM_REVIEW_GUIDE_20261113.md": {
+        "bytes": 19563,
+        "sha256": "acc43cdded81e8f7d4f9211d116b246a0da2409374e748ffac24949b1fc2b714"
+      },
+      "docs/TEAM_REVIEW_FEEDBACK_20261113.txt": {
+        "bytes": 1186,
+        "sha256": "c7e009cc92abcb2e9b80442dee815142e7925ecd6ec09b0e00ae670a5492993b"
+      }
+    },
+    "all_pages_visually_reviewed": true,
+    "PDF_text_and_exact_HTTPS_link_verified": true,
+    "shared_HTTPS_endpoint_deployed": true,
+    "feedback_due": "2026-11-16",
+    "independent_teammate_feedback_received": false,
+    "source_data_or_credentials_included": false,
+    "scope": "Current six-page usability instructions, with exact authenticated HTTPS route and separate text feedback form. Independent teammate review and expert biological adjudication remain pending; this document changes no sources or scientific results."
+  }
 }

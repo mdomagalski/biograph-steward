@@ -49,15 +49,16 @@ workspace.
 
 | Route | What you can review |
 |---|---|
-| Authorized AWS workbench | The full current saved example and native GO inspector. The present deployment uses private access. A shared browser-only HTTPS address is planned, not yet verified or supplied in this guide. |
+| Shared AWS reviewer site | [Open the saved TP53 example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask). Includes the real workspace, native GO inspector and separate GO packet download. Use the workspace token supplied privately. |
 | Repository checkout | The synthetic app demonstration and the small real Reactome annex. Repository access alone does not provide the complete Pharos workspace or native GO packet. |
 | Separately arranged saved-data access | Real examples can be reopened with their complete authorized source packets and current software. A graph JSON file alone is insufficient. The preserved older combined bundle does not include the latest GO attachment. |
 
-**An address beginning `127.0.0.1` or `localhost` refers to your own computer.**
-Marcin's local URL will not open his app on yours. A private AWS tunnel requires
-your own authorized AWS access; GitHub membership does not grant it. Sign-in
-information is supplied separately, never in this guide. After a service restart
-you may need to sign in again; saved links remain usable.
+**The shared site needs only a browser and workspace token.** No AWS account,
+Brev instance or local installation is needed. New retrieval, model calls and
+review edits are disabled on this reviewer route; use the saved examples.
+Sign-in information is supplied separately. After a service restart, sign in
+again if needed; saved links remain usable. A `127.0.0.1` or `localhost` address
+refers to your own computer, not Marcin's app.
 
 If full-demo access is unavailable, complete the repository-only tasks below
 and mark the others **not attempted - data/access unavailable**. Please do not
@@ -99,6 +100,10 @@ The five tabs are **Data & saved work**, **Ask & explore**, **Evidence & sources
 is unnecessary. The main cold load can take around 1-2 minutes, and native GO
 inspection around 20 seconds on the tested host. Record waiting separately from
 task difficulty; if an error persists, note it and move on.
+
+If **Failed to fetch** appears, try **Data & saved work > Saved graphs and
+answers > Reload saved work** once. If a connection or proxy error persists,
+record it and use the repository-only route. Keep tokens out of screenshots.
 
 <!-- page -->
 
@@ -304,7 +309,7 @@ priority changes. A plain Teams reply is sufficient.
 [Experiment history](EXPERIMENT_HISTORY.md) |
 [Delivery and data access](DELIVERY.md)
 
-Prepared for the November 13 review checkpoint. The current tested hosted code
-is `ea5752e`; subsequent guide edits do not replace the runtime or source
-packets. Current AWS access is private. A shared HTTPS reviewer link will be
-communicated only after it is configured and checked.
+Prepared for the November 13 review checkpoint. Hosted app code is `5362b50`.
+The shared HTTPS route requires sign-in; the graph, source packets and existing
+saved answer remain unchanged. Guide edits do not replace those source packets
+or establish biological accuracy.

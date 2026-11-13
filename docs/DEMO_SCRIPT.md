@@ -10,20 +10,22 @@ authorized. Otherwise use the software-only synthetic walkthrough in
 [START_HERE](../START_HERE.md), explicitly labeling its records as invented.
 The [source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)
 is the current delivery example when its separately supplied packet is
-available. No model or GPU is needed for saved-data questions. A private AWS
-deployment additionally needs its existing authorized Session Manager tunnel.
+available. No model or GPU is needed for saved-data questions. The
+[shared reviewer example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask)
+uses a browser and separately supplied workspace token. Operators can still use
+the authorized private Session Manager route.
 The checkout also includes a [CC0 Reactome example](../examples/reactome_context_20261113/README.md)
 with an offline viewer and exact native records. This is a separate current
 source-inspection example, not the complete Pharos graph or its historical
 baseline. The [delivery index](releases/20261113/README.md) identifies which
 software, data and assessment are actually supplied.
 
-The private AWS app now uses tested code `ea5752e`; its
-[update receipt](evaluations/hosted_native_go_20261113_summary.json) verifies
-the existing saved question, native exports and separate GO context after a real
-restart, with complete Neptune parity and read-only database access. These are
-hosted API checks; the GO browser walkthrough was local. The earlier private
-combined archive remains pinned to `902699e`.
+The AWS app uses tested code `5362b50`; its
+[reviewer delivery receipt](evaluations/reviewer_https_delivery_20261113_summary.json)
+records real HTTPS session and export checks, complete native GO packet replay,
+preserved graph/question/source files and cold Neptune parity/read access after
+restart. The saved TP53 answer also opened in Chrome. The earlier private
+combined archive remains pinned to `902699e` and excludes later attachments.
 
 1. **Open the question — one minute.** Open the supplied
    `source_faithful_workspace_20261113` run. In **Ask & explore**, choose

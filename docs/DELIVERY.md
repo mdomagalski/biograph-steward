@@ -1,9 +1,26 @@
 # Delivery and reviewer access
 
+## Shared reviewer site
+
+[Open the saved TP53 example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask).
+Use the existing workspace token, supplied separately and privately. Reviewers
+need a browser; AWS credentials, Brev and local setup are unnecessary. The
+[testing guide](TEAM_REVIEW_GUIDE_20261113.md) gives the weekend tasks.
+
+This authenticated route supports saved questions, source inspection, the native
+GO inspector and downloads. Construction, fresh retrieval, model calls and review
+edits are blocked. The shared token admits the valid saved workspaces; it does
+not create individual reviewer roles. Neptune remains private. The
+[delivery receipt](evaluations/reviewer_https_delivery_20261113_summary.json)
+records HTTPS authentication/route checks, full exported GO replay, preserved
+source bytes and a cold Neptune read through the gateway after restart.
+The saved TP53 answer also opened in Chrome. Independent teammate feedback and
+independent whole-graph biological accuracy remain outstanding.
+
 The [November 13 delivery index](releases/20261113/README.md) joins the designated
 runtime, current graph and answer archives, exact checksums and access/source
 boundaries. Its [manifest](releases/20261113/manifest.json) separates the updated
-hosted runtime `ea5752e` from the preserved `902699e` software/private archives and lists relative local
+hosted runtime `5362b50` from the preserved `902699e` software/private archives and lists relative local
 artifact paths. Preparing the index publishes no assets and changes no graph.
 
 The checkout also includes the small [CC0 Reactome annex](../examples/reactome_context_20261113/README.md)
@@ -19,18 +36,20 @@ The current scientific demonstration is the
 and 16,687 retained evidence records**. Its complete ZIP preserves the original
 16,985-record baseline, explicit keep/prune/abstain ledger and native historical
 source proof. Saved questions have separate ZIP downloads. It is live in the
-private AWS workbench and Neptune. The [current assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
+sign-in-protected AWS workbench and private Neptune. The [current assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
 reports source-support coverage and the negative controlled biological results.
 
-The [GO rollout receipt](evaluations/hosted_native_go_20261113_summary.json)
+The earlier [GO rollout receipt](evaluations/hosted_native_go_20261113_summary.json)
 records code `ea5752e` with the approved separate 12-file native GO/QC packet.
+Current `5362b50` adds its separately verified download; the original files remain unchanged.
 The [earlier hosted update](evaluations/hosted_polish_update_20261113_summary.json)
 installed the 16-file aggregate publication
 `scientific_assessment_delivery_20261113` (`09e50f8e…`), which remains in use. The existing
 TP53 answer and all 13 question/export files are unchanged after a real service
 restart; native replay, publication APIs and complete Neptune parity/read checks
-passed. The former runtime is retained for rollback. No new public access,
-permissions or compute resources were added. This update does not establish
+passed. The former runtime is retained for rollback. That source-attachment
+update added no public access, permissions or compute resources; the later
+approved reviewer gateway is described above. Deployment does not establish
 biological accuracy or extend the earlier backup-recovery claim.
 
 The hosted v3 publication shows grounding plus the earlier 92-query/3,968-pair
@@ -83,15 +102,15 @@ terms still apply.
 ## Current offline handoff
 
 For the latest code-only download, use
-`runs/software_delivery_native_go_20261113/biograph_steward_software.zip`
-at commit `ea5752e`, verified by the
-[clean extracted check](evaluations/software_release_native_go_20261113_summary.json).
+`runs/software_delivery_native_go_export_20261113/biograph_steward_software.zip`
+at commit `5362b50`, verified by the
+[clean extracted check](evaluations/software_release_native_go_export_20261113_summary.json).
 The [release index](releases/20261113/README.md) separates its checksum and
 assessment viewer from the earlier combined demonstration below. The current
 hosted code matches this software checkpoint; its real source packets, native
 GO/QC attachment and aggregate publication remain separately supplied data.
 The GO attachment is absent from this ZIP and fresh installations leave its
-inspector disabled until the source paths are configured.
+inspector and native packet download disabled until the source paths are configured.
 The [closing fixes](DELIVERY_POLISH_20261113.md) preserve saved source bytes
 while reducing HTTP transfer size and removing scratch files from path verification.
 

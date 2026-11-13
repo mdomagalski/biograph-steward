@@ -1,6 +1,14 @@
 # Biological assessment and delivery — 13 November 2026
 
-The corrected source graph is now in use in the private AWS workbench and
+**Current delivery:** the protected shared HTTPS reviewer app runs `5362b50`,
+with Neptune remaining private. The [delivery receipt](reviewer_https_delivery_20261113_summary.json)
+records authenticated access, the separate native GO packet download and full
+extraction/reopening of both NRAS examples, plus a cold Neptune read through
+the authenticated HTTPS app.
+Source inventories remain unchanged. This closes a delivery/replay gap; it
+does not add biological labels or change the scientific results below.
+
+The corrected source graph is in use in the AWS workbench and private
 Neptune. Its strongest demonstrated improvement is more faithful, inspectable
 use of source evidence. The completed biological comparisons do **not** yet
 show a transferable predictive gain or independent whole-graph accuracy.
@@ -28,13 +36,13 @@ checks passed. The hosted v3 publication contains grounding plus the earlier
 92-query/3,968-pair exploratory component. The later negative 128-gene transfer
 below remains a separate result. Deployment does not add a scientific gain.
 
-The [current hosted update](hosted_native_go_20261113_summary.json) runs
+The [earlier native GO hosted update](hosted_native_go_20261113_summary.json) deployed
 `ea5752e` with the approved separate 12-file native GO/QC packet. The
 [native GO inspector](../NATIVE_GO_CONTEXT_WORKBENCH.md) exposes preserved
 qualifiers and recorded official quality findings on demand. Both NRAS cases,
 the original TP53 question, both publications and complete Neptune parity/read
 checks passed across a real restart, with source and review bytes unchanged.
-Hosted verification used the API; the earlier GO Chrome walkthrough was local.
+Verification at that checkpoint used the API; the earlier GO Chrome walkthrough was local.
 
 For NRAS/GO:0005794, a compatible native row's `part_of` relation and recorded
 `located_in` derivative remain separate. NRAS/GO:0070062 has a related native
@@ -63,12 +71,13 @@ Fresh software installations remain unconfigured and contain no native packet.
   Reactome records for event/complex details. Current lookup context remains
   separate from historical references and independent evidence counts; clinical
   status, whole-regimen exceptions and species inference stay explicit.
-- **Private production use.** A complete reconstruction of the corrected Neptune
+- **Original private production checkpoint.** A complete reconstruction of the corrected Neptune
   dataset matches the retained graph. The app's native-supported TP53 answer,
   downloads, current-GO lookup and real database inspection passed across an
   actual service restart. The previous cloud dataset and app image remain
   preserved. Normal read-only database permissions were restored; no public
-  access was added.
+  access was added at that checkpoint; the later protected HTTPS reviewer route
+  is recorded above.
 
 The input remains its explicitly dated Pharos319 snapshot. Historical source
 proof and current curator lookups have separate versions; this is not a claim

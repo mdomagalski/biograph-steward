@@ -8,20 +8,31 @@ relative to the repository root. Local paths are not download URLs.
 
 ## Which revision is delivered
 
-The current **code-only software** now uses commit `ea5752e`. Its separately
-tested ZIP is `runs/software_delivery_native_go_20261113/biograph_steward_software.zip`
-(900,492 bytes); see the [clean extracted acceptance receipt](../../evaluations/software_release_native_go_20261113_summary.json)
+The current **code-only software** now uses commit `5362b50`. Its separately
+tested ZIP is `runs/software_delivery_native_go_export_20261113/biograph_steward_software.zip`
+(905,085 bytes); see the [clean extracted acceptance receipt](../../evaluations/software_release_native_go_export_20261113_summary.json)
 and [current software checksum](CURRENT_SOFTWARE.sha256). It passes synthetic
 question/export/reopen checks after an actual process restart with clean Python.
 It includes the aggregate grounding viewer and optional native GO source/QC
-inspector. GO packets are separate and the inspector is disabled by default;
+inspector, plus its authenticated native-source/QC packet download. GO packets
+are separate and the inspector/export remain disabled by default without them;
 see its [source and configuration guide](../../NATIVE_GO_CONTEXT_WORKBENCH.md).
 
-The earlier `95d9420` and `0529d2b` software ZIPs and their receipts remain
+The earlier `95d9420`, `0529d2b` and `ea5752e` software ZIPs and their receipts remain
 preserved. Their checksums are recorded in `preserved_checkout_software`;
-`CURRENT_SOFTWARE.sha256` identifies the new `ea5752e` ZIP.
+`CURRENT_SOFTWARE.sha256` identifies the new `5362b50` ZIP. This code-only
+packaging check does not update the hosted-runtime entry below or demonstrate
+native source inspection without its separate source packet.
 
-The dated presentation packet is the
+For the current teammate review, use the [six-page team guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide_20261113.pdf),
+its [editable instructions](../../TEAM_REVIEW_GUIDE_20261113.md) and
+[copy-and-reply feedback form](../../TEAM_REVIEW_FEEDBACK_20261113.txt).
+Its exact file hashes and completed visual/link checks are recorded in the
+manifest's `current_team_review_guide` entry. Feedback is due Monday, November 16;
+independent teammate review remains pending. No source packet or credential is
+included in these documents.
+
+The earlier dated presentation packet is the
 [three-page final review](../../../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
 (153,681 bytes), prepared for code `0529d2b`. Its
 [review receipt](../../evaluations/final_review_PDF_20261113_summary.json) and the
@@ -31,24 +42,36 @@ It predates the hosted update below and still records the previous hosted
 runtime. It is preserved unchanged; the hosted receipt gives the current status.
 The original two-page scientific update remains in the preserved assets below.
 
-The private hosted app now runs **`ea5752e`**, verified by its
-[GO rollout and acceptance receipt](../../evaluations/hosted_native_go_20261113_summary.json).
+The authenticated hosted app now runs **`5362b50`** at the checked
+[reviewer HTTPS endpoint](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws).
+Reviewers use the existing workspace token, supplied separately; they do not
+need their own AWS login or local tunnel. The
+[HTTPS delivery receipt](../../evaluations/reviewer_https_delivery_20261113_summary.json)
+records TLS, browser cookie authentication, origin checks, the saved-data route
+gate and actual export/reopen verification. Construction, live retrieval, model
+planning and review/source changes are blocked on this reviewer ingress.
 The existing TP53 question and all 13 native question/export files remain
-unchanged after a real restart, and complete Neptune parity/read checks passed.
+unchanged after a real restart. A cold complete Neptune parity check and actual
+read passed through HTTPS in about 247 seconds, without a saved-file fallback.
 The exact 16-file aggregate publication `scientific_assessment_delivery_20261113`
 (`09e50f8e…`) is installed and API/catalogue-verified. Its grounding component
 and earlier 92-query/3,968-pair exploratory comparison remain separate from
 the [negative 128-gene/7,648-pair transfer](../../evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md).
 Its native GO inspector is enabled with an approved separate 12-file source/QC
 attachment. Both selected NRAS examples verified through the live API before
-and after restart. Current native qualifiers and warnings remain separate from
+and after restart. Its separate authenticated source/QC ZIP also passed full
+physical extraction: all 12 source files matched their preserved bytes and both
+selected contexts reopened identically. Current native qualifiers and warnings remain separate from
 historical Pharos records; no graph assertions or decisions changed. The
-code-only ZIP above includes the inspector, with no source packet and disabled
-configuration by default.
+code-only ZIP above includes the inspector/export code, with no source packet
+and disabled configuration by default. Operator inspection in authenticated
+Chrome opened the exact TP53 answer with candidate qualifications; initial
+saved-work fetching recovered using **Reload saved work**. This is
+operator verification, not an independent teammate or biological assessment.
 
 The complete private combined demo and original software archive below remain
 pinned to **`902699e`**. They were not silently replaced. The previous live
-runtime/image (`0529d2b`) is also preserved for rollback. The manifest's top-level
+runtime/images (`0529d2b` and `ea5752e`) are also preserved for rollback. The manifest's top-level
 `runtime_commit` describes those original bundles; `current_hosted_runtime`
 describes the updated service. The new deployment does not extend the earlier
 backup-recovery scope.
@@ -57,9 +80,9 @@ Use `CURRENT_SOFTWARE.sha256` for the new code ZIP and the original
 
 | Item | Pinned revision or identity |
 |---|---|
-| Current private hosted runtime | `ea5752e56bad38a7828fcbb3df09303c778470d5` (`0.8.0`; native GO/QC configured separately) |
+| Current authenticated hosted runtime | `5362b50b80e38505f24e21d97e7034005a7a51e1` (`0.8.0`; native GO/QC configured separately) |
 | Preserved original software/private demo archives and original hosted runtime | `902699ee41861be45529b38adeb2b289cf8300b0` (`0.8.0`) |
-| Current code-only software ZIP | `ea5752e56bad38a7828fcbb3df09303c778470d5` (`0.8.0`; GO source packets separate) |
+| Current code-only software ZIP | `5362b50b80e38505f24e21d97e7034005a7a51e1` (`0.8.0`; GO source packets separate) |
 | Dated final-review PDF code checkpoint | `0529d2bc46eb07fcec00acdfe5432c9e5c23147e` |
 | Documentation checkpoint before this index was assembled | `47eb36c25bec3858d29766ba9cfb123475bea825` |
 | Corrected workspace graph | `e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff` |
@@ -177,6 +200,15 @@ reproduce this frozen graph or its qualified extensions automatically. See the
   complete Neptune parity/read checks passed. Only the two GO source-path
   settings were appended; the access token and previous environment bytes were
   preserved. This adds inspectable source context, not new biological pruning.
+- The `5362b50` reviewer delivery added authenticated HTTPS and a separate
+  native GO packet download. The runtime was reconstructed from the verified
+  previous tree plus the exact git diff, then checked against the committed
+  full runtime file inventory. No full source archive was uploaded for that
+  reconstruction. Cookie/origin/route checks, all 12 downloaded source bytes,
+  complete extraction and two identical reopened contexts passed. The same
+  graph, saved answer and assessment publications remained unchanged. The
+  standard gateway's captured ECR scan reported zero findings after vendor
+  package updates, compared with five initially; this is a point-in-time scan.
 - The completed private workspace backup passed an
   [isolated three-root checkpoint recovery](../../evaluations/aws_isolated_recovery_20261113_summary.json).
   V2 initially stopped at a missing writable temporary directory; its preserved

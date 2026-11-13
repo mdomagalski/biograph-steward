@@ -31,15 +31,16 @@ outside one another. The browser cannot choose either path. The native source
 can be configured alone; the UI then reports that QC is unavailable and does
 not imply a pass. A configured invalid source or QC output fails closed.
 
-These packets are not in Git or a fresh checkout. The
-[private hosted update](evaluations/hosted_native_go_20261113_summary.json) runs
-`ea5752e` with the approved, separately installed 12-file native/QC packet.
-Its two configured source paths are outside the saved workspace. API acceptance
-checked the two NRAS cases across a real restart; the earlier local Chrome
-walkthrough remains separate from these hosted API checks. The original graph,
-question, publications and authentication are preserved. Fresh installations
-remain unconfigured. Brev, its model, a GPU, a paid literature API and fresh
-source retrieval are unnecessary.
+These packets are not in Git or a fresh checkout. The protected shared HTTPS
+reviewer app now runs `5362b50` with the approved separate 12-file native/QC
+packet. Its [current delivery receipt](evaluations/reviewer_https_delivery_20261113_summary.json)
+records authenticated HTTPS inspection and download: all source bytes matched,
+and both NRAS cases reopened identically after full packet extraction. The
+original graph, question, reviews and publications remain unchanged. The
+[earlier private `ea5752e` checkpoint](evaluations/hosted_native_go_20261113_summary.json)
+retains its original restart/API scope. The configured source paths stay
+outside the saved workspace; fresh installations remain unconfigured. Brev,
+its model, a GPU, a paid literature API and fresh retrieval are unnecessary.
 
 ## Walk through the source
 
@@ -53,8 +54,8 @@ source retrieval are unnecessary.
 5. Read any separately labeled normalization or context warning. Expand the
    row's QC details for rule IDs and original/derivative values, and the source
    provenance for the ontology and retraction-table versions.
-6. In software supporting the portable-export increment, verified source and
-   saved QC enable **Download native GO + QC packet**. This separate download
+6. When the source and saved QC verify, choose **Download native GO + QC
+   packet**. This separate download
    preserves the full supplied source packet, including rows beyond this
    selected claim; it does not change the ordinary workspace ZIP. Follow the
    [portable-export guide](NATIVE_GO_PORTABLE_EXPORT.md) to reopen it outside
@@ -125,12 +126,14 @@ biological pruning.
 
 The [release checks](evaluations/native_go_release_checks_20261113_summary.json)
 record the full core/JavaScript checks and actual Chrome inspection of the two
-NRAS examples locally. The separate hosted receipt records deployment and API
-acceptance; no new hosted browser walkthrough is claimed. Exact GO IDs are
+NRAS examples locally. The earlier private hosted receipt records that
+deployment and API acceptance. The current HTTPS receipt adds hosted source
+inspection and full packet replay; the earlier local GO browser checks remain
+their own checkpoint. Exact GO IDs are
 searchable alongside displayed claim labels. The older three-root recovery
 check does not cover this later native GO attachment.
 
-The [separate portable-export replay](evaluations/native_go_portable_export_20261113_summary.json)
+The earlier [local portable-export replay](evaluations/native_go_portable_export_20261113_summary.json)
 verified all 12 source files after ZIP extraction and reopened both NRAS cases
 with identical results. All 406 original input files remained unchanged. This
-local delivery check adds no biological labels or new hosted acceptance claim.
+local delivery check and the subsequent HTTPS replay add no biological labels.

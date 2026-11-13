@@ -19,16 +19,19 @@ The feature is disabled by default. Configure `BIOGRAPH_GO_CONTEXT_DIR` and,
 optionally, `BIOGRAPH_GO_QC_DIR` as separate complete ordinary directories
 outside the strict saved workspace. The web request checks original source
 lines and saved output consistency; it does not rerun Biopython, GO rules or
-the reasoner. The [private hosted `ea5752e` workspace](evaluations/hosted_native_go_20261113_summary.json)
-has both packets configured and passed restart/API acceptance. Fresh software
-installations remain unconfigured. The native CLI and methods below retain
-their original scope.
+the reasoner. The protected shared reviewer app now runs `5362b50` with both
+packets configured. Its [HTTPS delivery receipt](evaluations/reviewer_https_delivery_20261113_summary.json)
+verifies the separate source download and identical NRAS inspection after full
+extraction. The [earlier private `ea5752e` checkpoint](evaluations/hosted_native_go_20261113_summary.json)
+preserves its original restart/API acceptance. Fresh software installations
+remain unconfigured. The native CLI and methods below retain their original scope.
 
 The [portable source-packet download](NATIVE_GO_PORTABLE_EXPORT.md) keeps these
 12 unchanged source/QC files separate from the ordinary workspace ZIP. Its
-local export/extraction replay reopened both NRAS examples identically without
-rerunning the pipeline or changing any original input. Both source and QC
-must be configured for the download; a software checkout alone is insufficient.
+local and subsequent HTTPS export/extraction replays reopened both NRAS examples
+identically without rerunning the pipeline or changing any original input.
+Both source and QC must be configured for the download; a software checkout
+alone is insufficient.
 
 ## Explain historical mismatches
 

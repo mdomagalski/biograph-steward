@@ -1,13 +1,20 @@
 # Closing delivery fixes — November 13
 
+**Current delivery:** the protected shared HTTPS reviewer app runs `5362b50`,
+including these fixes, native GO inspection and its separate source-packet
+download. The [HTTPS receipt](evaluations/reviewer_https_delivery_20261113_summary.json)
+records full export/extraction replay of both NRAS cases and a cold Neptune
+read through the authenticated HTTPS app, with original source files unchanged. These are delivery
+checks, not new biological labels or accuracy results. Earlier checkpoints follow.
+
 Two reproducible integration issues are fixed in tested code `0529d2b` and
-remain included in the current private AWS runtime `ea5752e`. The
+were included in the earlier private AWS runtime `ea5752e`. The
 [measured receipt](evaluations/delivery_polish_20261113_summary.json) preserves
 the original local checks, implementation hashes and scope; the subsequent
 [initial hosted update receipt](evaluations/hosted_polish_update_20261113_summary.json)
 records their deployment and acceptance. The later
 [native GO hosted receipt](evaluations/hosted_native_go_20261113_summary.json)
-records the current runtime and separately approved source attachment.
+records that private checkpoint and separately approved source attachment.
 
 The update preserved the existing graph, TP53 question and all 13 native
 question/export files. They reopened after a real service restart, and complete
@@ -88,14 +95,14 @@ access and the final repository/submission handoff.
 The hosted v3 publication contains the grounding component and earlier
 92-query/3,968-pair exploratory assessment. The separately reported negative
 [128-gene/7,648-pair transfer](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md)
-remains part of the scientific assessment. The native GO web/QC inspector is
-now enabled in hosted `ea5752e` through the separate approved 12-file packet.
+remains part of the scientific assessment. The native GO web/QC inspector was
+enabled at the private `ea5752e` checkpoint through the separate approved 12-file packet.
 Both NRAS contexts passed API checks before and after restart, with graph,
 question and publication bytes unchanged. This exposes saved source/QC findings;
 it adds no biological correctness labels or automatic pruning. Fresh software
 installations remain unconfigured. The existing 153,681-byte
 three-page review PDF predates this hosted update and is preserved unchanged;
-the linked hosted receipt gives the current runtime status.
+the HTTPS receipt above gives the current delivery status.
 
 Local CPU is sufficient for these fixes and document preparation. Brev and its
 model may stay off. Keep the existing AWS app and Neptune available while their

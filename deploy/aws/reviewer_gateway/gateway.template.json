@@ -1,0 +1,99 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "OPTIONAL PAID reviewer HTTPS ingress: ECS Express Mode ALB/certificate/Fargate standard NGINX gateway. Existing app authentication remains required; app data and Neptune remain on the existing host. Requires separate operator approval and app configuration.",
+  "Parameters": {
+    "VpcId": {"Type": "AWS::EC2::VPC::Id"},
+    "PublicSubnetA": {"Type": "AWS::EC2::Subnet::Id"},
+    "PublicSubnetB": {"Type": "AWS::EC2::Subnet::Id"},
+    "ExistingAppSecurityGroupId": {"Type": "AWS::EC2::SecurityGroup::Id"},
+    "GatewayImage": {
+      "Type": "String",
+      "AllowedPattern": "[0-9]{12}\\.dkr\\.ecr\\.[a-z0-9-]+\\.amazonaws\\.com/[a-z0-9][a-z0-9_./-]*@sha256:[a-f0-9]{64}",
+      "Description": "Reviewed gateway image in private ECR pinned by digest, built for linux/amd64. No tags."
+    }
+  },
+  "Rules": {
+    "DistinctSubnets": {
+      "Assertions": [{"Assert": {"Fn::Not": [{"Fn::Equals": [{"Ref": "PublicSubnetA"}, {"Ref": "PublicSubnetB"}]}]}, "AssertDescription": "Supply two distinct public subnets in different availability zones, verified by operator preflight."}]
+    }
+  },
+  "Resources": {
+    "GatewayCluster": {
+      "Type": "AWS::ECS::Cluster",
+      "Properties": {"CapacityProviders": ["FARGATE"]}
+    },
+    "GatewayLogs": {
+      "Type": "AWS::Logs::LogGroup",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {"RetentionInDays": 7}
+    },
+    "ExecutionRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {"Version": "2012-10-17", "Statement": [{"Effect": "Allow", "Principal": {"Service": "ecs-tasks.amazonaws.com"}, "Action": "sts:AssumeRole"}]},
+        "ManagedPolicyArns": [{"Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"}]
+      }
+    },
+    "InfrastructureRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {"Version": "2012-10-17", "Statement": [{"Effect": "Allow", "Principal": {"Service": "ecs.amazonaws.com"}, "Action": "sts:AssumeRole"}]},
+        "ManagedPolicyArns": [{"Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AmazonECSInfrastructureRoleforExpressGatewayServices"}]
+      }
+    },
+    "GatewayTaskIdentity": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "No added ingress. Identity for reviewer gateway task access to the existing app; Express Mode manages the separate ALB ingress path.",
+        "VpcId": {"Ref": "VpcId"},
+        "SecurityGroupEgress": [
+          {"IpProtocol": "tcp", "FromPort": 8766, "ToPort": 8766, "DestinationSecurityGroupId": {"Ref": "ExistingAppSecurityGroupId"}},
+          {"IpProtocol": "tcp", "FromPort": 443, "ToPort": 443, "CidrIp": "0.0.0.0/0"}
+        ]
+      }
+    },
+    "PrivateAppIngress": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "GroupId": {"Ref": "ExistingAppSecurityGroupId"},
+        "IpProtocol": "tcp", "FromPort": 8766, "ToPort": 8766,
+        "SourceSecurityGroupId": {"Ref": "GatewayTaskIdentity"},
+        "Description": "Authenticated reviewer gateway tasks only; no direct public app ingress."
+      }
+    },
+    "GatewayTask": {
+      "Type": "AWS::ECS::TaskDefinition",
+      "Properties": {
+        "RequiresCompatibilities": ["FARGATE"], "NetworkMode": "awsvpc", "Cpu": "1024", "Memory": "2048",
+        "RuntimePlatform": {"CpuArchitecture": "X86_64", "OperatingSystemFamily": "LINUX"},
+        "ExecutionRoleArn": {"Fn::GetAtt": ["ExecutionRole", "Arn"]},
+        "ContainerDefinitions": [{
+          "Name": "Main", "Image": {"Ref": "GatewayImage"}, "Essential": true,
+          "User": "101:101", "LinuxParameters": {"InitProcessEnabled": true},
+          "PortMappings": [{"Name": "http", "ContainerPort": 8080, "Protocol": "tcp", "AppProtocol": "http"}],
+          "LogConfiguration": {"LogDriver": "awslogs", "Options": {"awslogs-group": {"Ref": "GatewayLogs"}, "awslogs-region": {"Ref": "AWS::Region"}, "awslogs-stream-prefix": "reviewer-gateway", "mode": "non-blocking", "max-buffer-size": "1m"}}
+        }]
+      }
+    },
+    "ReviewerGateway": {
+      "Type": "AWS::ECS::ExpressGatewayService",
+      "DependsOn": ["PrivateAppIngress"],
+      "Properties": {
+        "Cluster": {"Ref": "GatewayCluster"},
+        "InfrastructureRoleArn": {"Fn::GetAtt": ["InfrastructureRole", "Arn"]},
+        "TaskDefinitionArn": {"Ref": "GatewayTask"},
+        "HealthCheckPath": "/healthz",
+        "NetworkConfiguration": {"Subnets": [{"Ref": "PublicSubnetA"}, {"Ref": "PublicSubnetB"}], "SecurityGroups": [{"Ref": "GatewayTaskIdentity"}]},
+        "ScalingTarget": {"MinTaskCount": 1, "MaxTaskCount": 1, "AutoScalingMetric": "AVERAGE_CPU", "AutoScalingTargetValue": 60}
+      }
+    }
+  },
+  "Outputs": {
+    "Endpoint": {"Value": {"Fn::GetAtt": ["ReviewerGateway", "Endpoint"]}},
+    "ServiceArn": {"Value": {"Fn::GetAtt": ["ReviewerGateway", "ServiceArn"]}},
+    "GatewayTaskSecurityGroup": {"Value": {"Ref": "GatewayTaskIdentity"}},
+    "LoadBalancerArn": {"Value": {"Fn::GetAtt": ["ReviewerGateway", "ECSManagedResourceArns.IngressPath.LoadBalancerArn"]}},
+    "AfterCreation": {"Value": "Not ready for sharing until native ALB attributes are set to600s, exact HTTPS origin is configured in the existing app, and authenticated browser/cold-read/export checks pass."}
+  }
+}

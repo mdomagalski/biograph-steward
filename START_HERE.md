@@ -18,8 +18,10 @@ For the weekend teammate review, use the
 [six-page testing guide](output/pdf/BioGraph_Steward_Team_Review_Guide_20261113.pdf),
 its [editable version](docs/TEAM_REVIEW_GUIDE_20261113.md) and the
 [feedback template](docs/TEAM_REVIEW_FEEDBACK_20261113.txt). Feedback is due
-Monday, November 16. The guide separates private full-demo access from the
-repository-only route; a shared HTTPS reviewer URL is not yet available.
+Monday, November 16. The [shared reviewer example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask)
+needs only a browser and the workspace token supplied privately. The guide also
+provides the repository-only route. No AWS account or Brev instance is needed
+for the shared saved-data review.
 
 The [three-page review packet](output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
 summarizes the working product, measured scientific results and delivery routes.
