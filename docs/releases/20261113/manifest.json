@@ -101,7 +101,7 @@
     "combined_ZIP_full_physical_extraction_performed": false,
     "combined_extraction_limit": "Omitted to preserve disk headroom; do not label stream/assembly checks as physical combined extraction.",
     "current_AWS_Neptune_full_graph_parity_and_service_restart": true,
-    "isolated_cloud_backup_recovery": "prepared_offline_tested_not_run_awaiting_exact_transfer_approval"
+    "isolated_cloud_backup_recovery": "SUCCESS_OFFLINE_ISOLATED_RECOVERY_VERIFIED"
   },
   "unsupported_builder_reuse": "scripts/prepare_judge_demo.py builds the preserved earlier all-abstain example; it does not reconstruct the current corrected decisions.",
   "independent_whole_graph_accuracy_established": false,
@@ -117,8 +117,8 @@
     "nodes": 9865,
     "public_scope_receipt": "docs/evaluations/automatic_qualification_20261112_summary.json"
   },
-  "updated_at": "2026-11-13T13:47:35.321588+00:00",
-  "previous_index_content_sha256": "83527cbe4410e00ef53b70b16fab27e3466496fca766dae1c6978ba9897a1475",
+  "updated_at": "2026-11-13T14:33:17.628786+00:00",
+  "previous_index_content_sha256": "d537e88c9b787a9dda9cc9cac6bed861f736b0462bd655bd327dca851d0c16de",
   "initial_existing_asset_stream_verification_scope": "The original five software/workspace/question/combined/PDF files were re-hashed at index creation. The separate Reactome annex was subsequently assembled from exact existing allowlisted source bytes and checked independently; the original five archives/PDF were not changed.",
   "new_archive_extraction_or_repackaging_scope": "No extraction or repackaging of the original five artifacts. A separate small Reactome annex ZIP was created and all members were checked against its allowlisted payload.",
   "full_mixed_source_data_packages_in_Git": false,
@@ -156,5 +156,33 @@
     "aggregate_receipt": "docs/evaluations/expert_grounding_20261113_aggregate.json",
     "display_scope": "Separate expert-labeled source-grounding component, not graph truth. Local saved publication; not deployed to AWS by this increment."
   },
-  "content_sha256": "d537e88c9b787a9dda9cc9cac6bed861f736b0462bd655bd327dca851d0c16de"
+  "isolated_checkpoint_recovery": {
+    "receipt": "docs/evaluations/aws_isolated_recovery_20261113_summary.json",
+    "receipt_file_sha256": "51bf54168935c29492b6cecf48286c6e4a353bade1559674134ed4d7de20e389",
+    "receipt_content_sha256": "97570022786a99d501231ca3d100e36ec706aec362808b38102059ecb25d5fce",
+    "status": "SUCCESS_OFFLINE_ISOLATED_RECOVERY_VERIFIED",
+    "scope": "Only the existing successful checkpoint source workspace, bound scientific publication and saved native question. Not the later grounding publication, current software ZIP, full VM or runtime environment.",
+    "recovered_roots": [
+      "runs/source_faithful_workspace_20261113",
+      "runs/scientific_assessment_complete_20261113",
+      "runs/question_20261113T063448Z_f746814c"
+    ],
+    "bound_publication_content_sha256": "05cc28f1dd520adbb974bac735f8323108ec37e4f82ac4ee8d3df0d1da46e9f7",
+    "pinned_replay_image_id": "sha256:884a7e4fc6c19217cbd017df01b4c883ea222bfc709320aba5607507f20f8323",
+    "initial_V2_status": "FAILED_NOT_VALIDATED",
+    "initial_V2_failure_preserved": true,
+    "followup_remedy": "Bounded documented Docker tmpfs for native temporary-file verification; same approved checker and native replay code.",
+    "live_saved_files_configuration_and_container_identity_unchanged": true,
+    "later_grounding_or_current_software_recovered": false,
+    "full_VM_or_runtime_restore_tested": false,
+    "post_recovery_existing_live_health_HTTP_status": 200
+  },
+  "separate_research_archive_S3_copy": {
+    "bytes": 488560385,
+    "approval_status": "NOT_APPROVED",
+    "uploaded": false,
+    "scope": "Separate locally retained research archive; the two-file recovery approval did not authorize this transfer."
+  },
+  "previous_content_sha256": "d537e88c9b787a9dda9cc9cac6bed861f736b0462bd655bd327dca851d0c16de",
+  "content_sha256": "4a37c1683b5f24297e3e7ece7c4aed2a2c714377c9901a02e970abcd281787cc"
 }

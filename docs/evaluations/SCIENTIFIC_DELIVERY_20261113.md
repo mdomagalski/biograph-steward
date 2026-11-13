@@ -14,7 +14,9 @@ adds an executed source-identity check using published INDRA curations and
 native Gilda/Adeft tools. On 678 eligible reserved cases, publication context
 reduces false alarms from 25 to 18 while detecting 26 rather than 31 grounding
 errors. This measured trade-off supports assisted review; it supplies no new
-biological pruning rule. The two-page update above predates this addition.
+biological pruning rule. The unchanged two-page update above predates this
+addition and the [completed isolated checkpoint recovery](aws_isolated_recovery_20261113_summary.json);
+the current results and scope are recorded here and in those receipts.
 
 ## Delivered
 
@@ -63,7 +65,9 @@ files match the current workspace, and the complete Gold/history proof and
 saved native answer replay exactly. The final standalone runtime also
 regenerates that real native answer with clean Python and no site packages.
 The graph ZIP and separately saved question ZIP must remain adjacent. This verifies the product handoff; it does not
-substitute for the pending private backup-recovery drill.
+substitute for the separately completed
+[private checkpoint recovery](aws_isolated_recovery_20261113_summary.json),
+whose three-root scope excludes the later software and grounding assessment.
 
 ## What credible public labels establish
 
@@ -232,14 +236,31 @@ provides the one-directory launch route; the data-bearing ZIP remains private.
 
 ## Preservation and operational handoff
 
-The corrected hosted workspace has a completed private S3 backup. A first
-isolated recovery attempt stopped safely because the older full backup also
-contains runtime symlinks. The revised three-root recovery checker preserves
-strict ordinary-file checks on the selected graph, publication and question;
-eleven offline safety controls pass. Its remote execution remains **pending**:
-automatic approval review requires explicit approval to transfer that script
-and the private backup receipt. No recovery validation or full VM restoration
-is claimed, and no active files or service were changed by the blocked action.
+The corrected hosted workspace has a completed private S3 backup and a
+[successful isolated checkpoint recovery](aws_isolated_recovery_20261113_summary.json).
+The complete 2,032,300,331-byte backup matched its SHA256 sidecar. All 95,881
+archive members passed the name, traversal and duplicate checks; only the 422
+ordinary files belonging to the source workspace, its bound scientific
+publication and saved native question were restored. Unselected runtime links
+were inventoried and never extracted or followed.
+
+The initial V1 attempt stopped at unrelated runtime links. The subsequently
+approved V2 execution verified the archive and selected files, then stopped
+because its read-only validation container lacked temporary scratch space for
+native `paths.tsv` export verification. Both failures remain recorded. A
+follow-up using Docker's [documented ephemeral tmpfs](https://docs.docker.com/engine/storage/tmpfs/)
+provided a bounded 64 MiB `/tmp` while preserving the approved checker, native
+replay code, pinned image, read-only source bind and disabled network. The
+99-target, 16,687-record graph, exact native answer and saved exports replayed
+successfully. Active saved files, configuration and container identity remained
+unchanged, the existing live health endpoint returned HTTP 200 without a
+restart, and the verified task-owned temporary staging was removed.
+
+This verifies the existing checkpoint's source workspace,
+`scientific_assessment_complete_20261113` publication (`05cc28f1…`) and
+`question_20261113T063448Z_f746814c`. It is not full VM/runtime recovery and does
+not cover the later grounding publication or current `95d9420` software ZIP.
+It creates no biological accuracy or prediction-gain result.
 
 The private archive of ten source/experiment/delivery roots is retained locally at
 `runs/scientific_retention_20261113/scientific_artifacts_20261113.tar.gz`

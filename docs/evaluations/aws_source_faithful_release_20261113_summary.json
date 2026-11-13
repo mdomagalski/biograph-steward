@@ -44,8 +44,8 @@
   "actual_hosted_browser_walkthrough_verified": true,
   "browser_walkthrough_content_sha256": "e4e157afc32c820eda0d10fa0fed25c37c9bc79e6703b694746ef3b8aaad7f6a",
   "private_full_workspace_backup_completed": true,
-  "isolated_recovery_status": "PREPARED_AND_OFFLINE_TESTED_REMOTE_RECOVERY_NOT_RUN",
-  "isolated_recovery_blocker": "Automatic approval review requires explicit approval for script and private backup-receipt transfer.",
+  "isolated_recovery_status": "SUCCESS_OFFLINE_ISOLATED_RECOVERY_VERIFIED",
+  "isolated_recovery_blocker": null,
   "new_scientific_research_archive": {
     "retained_locally": true,
     "archive_bytes": 488560385,
@@ -55,8 +55,31 @@
   },
   "default_qualified_example_url": "/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f",
   "default_qualified_example_survived_service_restart": true,
-  "backup_scope_note": "Completed corrected-source checkpoint backup; later saved question IDs also have separate local export receipts.",
+  "backup_scope_note": "Completed corrected-source checkpoint backup and isolated three-root recovery. The recovered saved question is question_20261113T063448Z_f746814c; later question IDs have separate local export receipts. The newer grounding publication and current software ZIP were not recovered.",
   "actual_homepage_corrected_example_opening_verified": true,
   "previous_context_walkthrough_content_sha256": "45654c9c8762801299f9c0ece3834f5bb1ae982e3b33b3579be24eb158821663",
-  "content_sha256": "cf1b6fcb882babf33726d36bb1a5d2d390dcfbedb82ac44df328dd49cbfbdcd7"
+  "isolated_recovery_followup": {
+    "receipt": "docs/evaluations/aws_isolated_recovery_20261113_summary.json",
+    "receipt_file_sha256": "51bf54168935c29492b6cecf48286c6e4a353bade1559674134ed4d7de20e389",
+    "receipt_content_sha256": "97570022786a99d501231ca3d100e36ec706aec362808b38102059ecb25d5fce",
+    "status": "SUCCESS_OFFLINE_ISOLATED_RECOVERY_VERIFIED",
+    "scope": "Only the existing successful checkpoint source workspace, bound scientific publication and saved native question. Not the later grounding publication, current software ZIP, full VM or runtime environment.",
+    "recovered_roots": [
+      "runs/source_faithful_workspace_20261113",
+      "runs/scientific_assessment_complete_20261113",
+      "runs/question_20261113T063448Z_f746814c"
+    ],
+    "bound_publication_content_sha256": "05cc28f1dd520adbb974bac735f8323108ec37e4f82ac4ee8d3df0d1da46e9f7",
+    "pinned_replay_image_id": "sha256:884a7e4fc6c19217cbd017df01b4c883ea222bfc709320aba5607507f20f8323",
+    "initial_V2_status": "FAILED_NOT_VALIDATED",
+    "initial_V2_failure_preserved": true,
+    "followup_remedy": "Bounded documented Docker tmpfs for native temporary-file verification; same approved checker and native replay code.",
+    "live_saved_files_configuration_and_container_identity_unchanged": true,
+    "later_grounding_or_current_software_recovered": false,
+    "full_VM_or_runtime_restore_tested": false,
+    "post_recovery_existing_live_health_HTTP_status": 200
+  },
+  "previous_content_sha256": "cf1b6fcb882babf33726d36bb1a5d2d390dcfbedb82ac44df328dd49cbfbdcd7",
+  "updated_at": "2026-11-13T14:33:17.627522+00:00",
+  "content_sha256": "eb7d282bd7d59a22b6338c2cfd70ece3caf7e6eac881da265bf99183c6a83add"
 }

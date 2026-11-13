@@ -131,9 +131,15 @@ reproduce this frozen graph or its qualified extensions automatically. See the
 - The corrected hosted graph passed complete Neptune parity and a real app
   restart. Its graph answers ordinarily use saved files; database inspection
   uses actual read-only Neptune queries.
-- The completed private workspace backup and the prepared isolated recovery
-  check are separate. The recovery script/receipt transfer and the separate
-  research-archive S3 copy remain approval-gated; this index runs neither.
+- The completed private workspace backup passed an
+  [isolated three-root checkpoint recovery](../../evaluations/aws_isolated_recovery_20261113_summary.json).
+  V2 initially stopped at a missing writable temporary directory; its preserved
+  failure was followed by the same native replay with a bounded ephemeral
+  `/tmp`. The restored graph, bound publication and saved answer verified with
+  the live files, configuration and container unchanged. This is the existing
+  checkpoint, not full VM/runtime recovery or recovery of the newer software
+  and grounding publication. The separate 488 MB research-archive S3 copy
+  remains unapproved and has not been uploaded.
 
 MIT software does not relicense source records. The complete graph contains
 1,588 KEGG pathway records, and provider/model terms remain applicable. A

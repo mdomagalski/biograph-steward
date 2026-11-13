@@ -48,7 +48,11 @@ downloaded the corrected graph's complete ZIP and its TP53 question ZIP through
 the normal app routes. All 394 source files matched the existing workspace
 byte-for-byte, and the extracted graph, Gold decisions, historical source proof
 and adjacent saved question replayed successfully. This is portable app-export
-verification, separate from the pending cloud-backup recovery drill.
+verification, separate from the now completed
+[isolated checkpoint recovery](evaluations/aws_isolated_recovery_20261113_summary.json).
+That recovery replays the existing backup's source workspace, bound scientific
+publication and saved question; it does not restore the latest software,
+grounding assessment or full VM.
 
 To reopen this corrected example locally, extract the **graph ZIP and question
 ZIP beside one another** into a `runs/` directory. Keep both top-level folder

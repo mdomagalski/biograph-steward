@@ -1,0 +1,92 @@
+{
+  "format": "biograph-steward.public-isolated-checkpoint-recovery-summary.v1",
+  "created_at": "2026-11-13T14:30:43.973816+00:00",
+  "status": "SUCCESS_OFFLINE_ISOLATED_RECOVERY_VERIFIED",
+  "approved_S3_operator_payloads": {
+    "files": 2,
+    "bytes": 21680,
+    "native_SHA256_verified": true,
+    "server_side_encryption": [
+      "AES256"
+    ],
+    "public_access_or_IAM_changed": false
+  },
+  "archive": {
+    "bytes": 2032300331,
+    "sha256": "7bc64a28635821323fb18cbdebae2a95d81487dd16d9356c1df1ccb69f81983e",
+    "complete_download_and_SHA256_sidecar_verified": true,
+    "SHA256_verified_again_before_and_after_followup": true,
+    "members": 95881,
+    "selected_ordinary_files": 422,
+    "selected_payload_bytes": 1071498761,
+    "unselected_nonordinary_members_never_extracted_or_followed": true,
+    "all_names_traversal_and_duplicates_validated": true
+  },
+  "recovered_checkpoint": {
+    "roots": [
+      "runs/source_faithful_workspace_20261113",
+      "runs/scientific_assessment_complete_20261113",
+      "runs/question_20261113T063448Z_f746814c"
+    ],
+    "source_graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+    "protein_targets": 99,
+    "retained_evidence_records": 16687,
+    "saved_native_answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+    "saved_question_exports_verified": true,
+    "bound_scientific_publication_content_sha256": "05cc28f1dd520adbb974bac735f8323108ec37e4f82ac4ee8d3df0d1da46e9f7",
+    "restored_file_inventory_sha256": "aed9a86917c3f3c3f04edf5b558d79d17a287a2902b0539ba9def96785a7f50c"
+  },
+  "validation": {
+    "approved_checker_sha256": "cdea7b55315bf7be5bbbc06cdfffc8dba4ad751f16421ae3b67d2683914eda1b",
+    "followup_source_sha256": "3a6eb9a695fb6dd9e782152b34c259ae83315f7aa9ac841aee3a0a485da8c1bd",
+    "pinned_existing_image_id": "sha256:884a7e4fc6c19217cbd017df01b4c883ea222bfc709320aba5607507f20f8323",
+    "python_version": "3.12.16",
+    "network": "none",
+    "source_bind_and_container_root_read_only": true,
+    "tmpfs": "/tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777",
+    "memory_limit": "4g",
+    "CPU_limit": 2,
+    "model_calls": 0,
+    "Pharos_retrievals": 0,
+    "Neptune_writes": 0
+  },
+  "initial_execution": {
+    "status": "FAILED_NOT_VALIDATED",
+    "cause": "Read-only validator lacked a writable temporary directory required by native paths.tsv export verification.",
+    "archive_and_selected_files_were_already_verified": true,
+    "original_failed_receipt_preserved": true,
+    "private_receipt_content_sha256": "3ab2b3d77166b5f1b8b687c08d37aa159e6a5d43b671003d7f8808becf5663ad"
+  },
+  "remedy": {
+    "kind": "Documented Docker ephemeral tmpfs; unchanged approved checker and native replay code.",
+    "official_documentation": "https://docs.docker.com/engine/storage/tmpfs/",
+    "new_S3_payloads_for_followup": 0,
+    "failed_receipt_overwritten": false
+  },
+  "active_saved_source_files_configuration_and_container_identity_unchanged": true,
+  "live_app_restart_or_activation_requested": false,
+  "verified_task_owned_temporary_staging_removed_after_success": true,
+  "cleanup_binding": "Authenticated task-owned failed staging path/owner/full payload; captured and rechecked followup device/inode/owner. Original process inode was not recorded.",
+  "full_VM_or_runtime_restore_tested": false,
+  "later_grounding_publication_or_current_software_recovered": false,
+  "scientific_accuracy_or_prediction_gain_measured": false,
+  "separate_488560385_byte_research_archive_uploaded": false,
+  "private_followup_receipt_content_sha256": "9ea93c4ef8e83470e32c1e8a73e0a086594d01915444b4000261e8f9d0e91209",
+  "completed_at": "2026-11-13T14:29:14.681006+00:00",
+  "observed_seconds": {
+    "initial_attempt": 209.97239412201452,
+    "followup": 127.24201661301777,
+    "offline_native_replay": 99.22140000501531
+  },
+  "private_operator_location": "runs/qualified_app_20261113/approved_recovery_execution_20261113/",
+  "credentials_account_bucket_instance_and_endpoints_omitted": true,
+  "previous_summary_content_sha256": "806285f667755049da21a92c9031916e76561c605104fb12a8fd0ac32fb63583",
+  "post_recovery_existing_live_health_check": {
+    "HTTP": 200,
+    "status": "ok",
+    "version": "0.8.0",
+    "restart_requested": false
+  },
+  "new_paid_compute_resources_IAM_or_database_changes": false,
+  "content_sha256": "97570022786a99d501231ca3d100e36ec706aec362808b38102059ecb25d5fce"
+}
