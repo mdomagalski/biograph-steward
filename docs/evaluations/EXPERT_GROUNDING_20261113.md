@@ -107,6 +107,9 @@ source/resource hashes and the exact outcome-free reviewed-source token list.
 The existing **Compare & assess** view displays the same separate component
 when its saved `scientific_assessment_delivery_20261113` publication is supplied.
 No raw benchmark data enter that app publication.
+The [delivery acceptance summary](grounding_delivery_20261113_summary.json)
+records the app, source-replay and regression checks separately from the
+scientific result.
 
 The [reproduction check](grounding_replay_20261113/reproduction_check.json)
 executed the tracked streaming join and preparation commands against the actual

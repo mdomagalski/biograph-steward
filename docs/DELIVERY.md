@@ -60,6 +60,13 @@ terms still apply.
 
 ## Current offline handoff
 
+For the latest code-only download, use
+`runs/software_delivery_current_20261113/biograph_steward_software.zip`
+at commit `95d9420`, verified by the
+[new clean extracted check](evaluations/software_release_current_20261113_summary.json).
+The [release index](releases/20261113/README.md) separates its checksum and optional
+assessment viewer from the earlier hosted/combined demonstration below.
+
 The private current bundle is
 `runs/source_faithful_delivery_20261113/biograph_steward_source_faithful_private.zip`.
 It contains the final committed runtime, corrected graph with its full baseline

@@ -1,0 +1,66 @@
+{
+  "format": "biograph-steward.grounding-delivery-acceptance.v1",
+  "created_at": "2026-11-13T13:48:03.842778+00:00",
+  "code_git_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
+  "core_regression": {
+    "discovered_tests": 1938,
+    "optional_skips": 36,
+    "initial_run_failed_HTTP_tests": 19,
+    "initial_failure_cause": "System HTTP proxy handled loopback requests; Squid503 replaced expected local status codes.",
+    "existing_CI_setting_reused": "no_proxy=127.0.0.1,localhost,::1",
+    "only_failed_test_ids_replayed": 19,
+    "replay_passed": true,
+    "application_changes_to_hide_proxy_failures": false
+  },
+  "new_reproduction_unit_tests": {
+    "tests": 7,
+    "passed": true
+  },
+  "native_adapter_tests": {
+    "tests": 19,
+    "passed": true
+  },
+  "javascript_state_tests": {
+    "tests": 46,
+    "passed": true
+  },
+  "assessment_HTTP_DOM_tests": {
+    "tests": 43,
+    "passed": true,
+    "versions_preserved": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  "expert_reference_partition_scored_once_without_test_tuning": true,
+  "fixed_source_frame_reproduction": {
+    "cases": 4294,
+    "all_complete_cases_source_inputs_and_splits_equal": true,
+    "published_receipt": "docs/evaluations/grounding_replay_20261113/reproduction_check.json"
+  },
+  "actual_local_browser_check": {
+    "main_app_Compare_and_assess_tab": true,
+    "new_component_rendered_with678_cases_and103_abstentions": true,
+    "standalone_assessment_report_opened": true,
+    "raw_curations_or_individual_predictions_served": false,
+    "full_graph_redisplayed_during_this_check": false,
+    "final_publication_normal_HTTP_report_replayed": true
+  },
+  "local_final_publication": {
+    "id": "scientific_assessment_delivery_20261113",
+    "content_sha256": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2",
+    "note": "Final receipt uses the same verified scores after producer docstring finalization; old preliminary publication retained privately."
+  },
+  "software_archive_receipt": "docs/evaluations/software_release_current_20261113_summary.json",
+  "no_Brev_GPU_new_cloud_or_model_server_calls": true,
+  "AWS_runtime_changed": false,
+  "independent_whole_graph_biological_accuracy_or_automatic_pruning_proved": false,
+  "private_logs_SHA256": {
+    "core_suite.log": "fa3353aa8ccdba9fd8d9528bc3cd645d7213c7bb5fd97cfe30fd7ee61ac20b3f",
+    "loopback_proxy_recheck.log": "aa5766f317ca73babd67d359c2d30992c4f652d2032924e943f934b43d0d14db",
+    "node_suite.log": "9e3726174a44b4df687e729bfd6f3b14b561e724ca3df9169814809627a13d69",
+    "native_adapter_tests.log": "358362262bc3f283cdfd4c4821a323116f97db16a86734eaa06120ea7c16c086"
+  },
+  "content_sha256": "c61f3ddaada40e577fd034a7bd450ecc72914f7d53ad87e63197190330befd38"
+}

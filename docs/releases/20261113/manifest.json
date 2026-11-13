@@ -117,8 +117,8 @@
     "nodes": 9865,
     "public_scope_receipt": "docs/evaluations/automatic_qualification_20261112_summary.json"
   },
-  "updated_at": "2026-11-13T13:23:05.086130+00:00",
-  "previous_index_content_sha256": "5b87a9b791b9e44e3b85cb44d507ce83c3fd14cdda19c58c3504f3774c3f0e08",
+  "updated_at": "2026-11-13T13:47:35.321588+00:00",
+  "previous_index_content_sha256": "83527cbe4410e00ef53b70b16fab27e3466496fca766dae1c6978ba9897a1475",
   "initial_existing_asset_stream_verification_scope": "The original five software/workspace/question/combined/PDF files were re-hashed at index creation. The separate Reactome annex was subsequently assembled from exact existing allowlisted source bytes and checked independently; the original five archives/PDF were not changed.",
   "new_archive_extraction_or_repackaging_scope": "No extraction or repackaging of the original five artifacts. A separate small Reactome annex ZIP was created and all members were checked against its allowlisted payload.",
   "full_mixed_source_data_packages_in_Git": false,
@@ -137,5 +137,24 @@
     "historical_Pharos319_content_verified": false,
     "new_biological_experiment_or_gold_labels": false
   },
-  "content_sha256": "83527cbe4410e00ef53b70b16fab27e3466496fca766dae1c6978ba9897a1475"
+  "current_checkout_software": {
+    "git_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
+    "local_path": "runs/software_delivery_current_20261113/biograph_steward_software.zip",
+    "file": "biograph_steward_software.zip",
+    "sha256": "f06138714c287f2d635513e23c74241162ba8f37fb0ea051d1555d09b1759ae0",
+    "bytes": 892060,
+    "file_count": 163,
+    "receipt": "docs/evaluations/software_release_current_20261113_summary.json",
+    "availability": "locally_prepared_and_clean_extracted_tested_not_published",
+    "scope": "Current code-only extension with optional aggregate grounding viewer. Hosted and private combined demonstration remain the separately pinned 902699e runtime. Optional native research tools and data are in the repository or separately acquired, not bundled.",
+    "runtime_source_bundle_sha256": "e27ecf8e7d61ed51e086fc3927a9aace8683cd4f032afa348132105aa30b519e"
+  },
+  "current_assessment": {
+    "publication_id": "scientific_assessment_delivery_20261113",
+    "content_sha256": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2",
+    "code_commit": "95d9420deb1b1502e39b371df80b62ce8c757fc6",
+    "aggregate_receipt": "docs/evaluations/expert_grounding_20261113_aggregate.json",
+    "display_scope": "Separate expert-labeled source-grounding component, not graph truth. Local saved publication; not deployed to AWS by this increment."
+  },
+  "content_sha256": "d537e88c9b787a9dda9cc9cac6bed861f736b0462bd655bd327dca851d0c16de"
 }
