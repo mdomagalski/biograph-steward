@@ -2,6 +2,18 @@
 
 ## Current boundary — November 12
 
+The [whole-workspace audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md)
+now completes 180 frozen cases across all nine assertion families: 75 have
+examined article/dataset/native-curation support and 105 remain unresolved.
+Independent scientific truth is unreviewed. The unchanged GO filter affects
+zero sampled cases; a separate removed-domain supplement is not pooled into
+that sample. A native-author-reader-backed current WikiPathways view addresses
+record duplication and source-membership gaps across 31 proteins, preserving
+the baseline and exhaustive decisions. The optional Pharos drug-context reader
+uses existing API capabilities before adding another source. Finish delivery
+and credible independent judgments; do not replace these boundaries with a
+new pruning/model sweep.
+
 The [scientific qualification increment](evaluations/SCIENTIFIC_GAPS_20261112.md)
 now preserves 15,888 native GOA records, inventories compatible context for every
 original GO edge, and materializes a separate active-ID graph excluding 298

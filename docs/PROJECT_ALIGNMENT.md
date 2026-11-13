@@ -11,6 +11,13 @@ faithful mirror and inspection path; ordinary answers still use saved workspace
 files. The latest curated-signature recovery gain is an optional offline
 evaluation, not a new default app feature or proof of Pharos edge accuracy.
 
+The [whole-workspace evidence audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md)
+adds a frozen probability sample, source-backed interpretation findings and
+a separate native WikiPathways eligibility export. It exposes repeated source
+representations and missing assay context without counting shared curation as
+independent truth. These advance integration, explainability and reversible
+source qualification; whole-graph biological correctness remains unmeasured.
+
 ## Organizer requirements and judging crosswalk
 
 The brief permits **autonomous or semi-autonomous software**. Its topic is structured-data integration and link prediction: an agent builds contextualized graphs, then the **same graph-learning method** is applied to baseline and enriched graphs to predict held-out experimentally measured relationships. Our paired learner comparisons are complete; they do not demonstrate consistent incremental benefit.

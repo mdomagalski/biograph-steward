@@ -48,6 +48,17 @@ coassociation from endogenous repair function. They add no graph relationships
 and are excluded from public source packets while native-data redistribution
 terms remain unverified.
 
+The [whole-workspace evidence audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md)
+now spans 180 frozen assertions across all nine families. It verifies preserved
+source fidelity, records 75 cases with examined article/dataset/native-curation
+support and keeps 105 unresolved; this is not an independent accuracy score.
+An optional native-author-reader-backed WikiPathways view excludes 1,892 rows
+from current encoded-membership eligibility across 31 proteins, with all
+unknowns, the baseline and complete decisions preserved. Fuller Pharos activity
+retrieval adds assay/chemical/publication context without inventing potency
+units or independent corroboration. These source-quality results complement
+the unchanged mixed biological-utility comparisons.
+
 ## Judge walkthrough
 
 Start with [START_HERE](../START_HERE.md). The core app needs Python 3.10+ and no model account. A fresh checkout includes the synthetic software demonstration. The existing real examples require their saved source packets; local run directories are not included in Git.

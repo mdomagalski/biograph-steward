@@ -24,12 +24,15 @@ commands may export both spellings as shown above.
 
 ## Pinned scientific evaluation
 
-Four modules use `evaluation_*.py` names and run in a separate CI job:
+Seven modules use `evaluation_*.py` names and run in a separate CI job:
 
 - `evaluation_reactome_handoff.py`
 - `evaluation_reactome_runner.py`
 - `evaluation_string_component_scoring.py`
 - `evaluation_string_temporal_scoring.py`
+- `evaluation_go_native_parser.py`
+- `evaluation_go_context_inspection.py`
+- `evaluation_wiki_author_reader.py`
 
 They retain their required dependency/version assertions. Missing scientific
 packages are failures in this group, not new skips. The existing dependency
@@ -63,16 +66,38 @@ implementation or old reference outcome changes through these fixes.
 
 ## Scope preservation
 
-The split renames only those four files and updates their one fixture
-cross-import. Test assertions and skip policies are unchanged. All other test
-modules remain in default discovery; the union of both groups preserves every
-previously collected case. The separate
+The original split renamed four files and updated one fixture cross-import.
+The native GO and WikiPathways integrations extend the optional group without
+changing existing assertions or skip policies. All other test modules remain
+in default discovery; the union of both groups preserves every previously
+collected case. The separate
 [kinase utility tests](../tools/kinase_utility/README.md) retain their existing
 optional command.
 
 No scientific implementation, source data, frozen execution pins or benchmark
 results change through this test-routing increment. Historical receipts retain
 their original filenames and commands.
+
+## Sampled audit and native pathway reader
+
+The [sampled-audit tools](../tools/sampled_audit/README.md) have standard-library
+controls in default discovery. They test source binding, probability weights,
+UNKNOWN preservation, reversible decisions and failure handling with invented
+fixtures. The optional `evaluation_wiki_author_reader.py` executes two
+unmodified MIT-licensed author functions whose exact bytes and license are
+retained in `tests/fixtures/pywikipathways_reader`.
+
+For a smaller isolated Python 3.12 reader environment, install
+`tools/sampled_audit/requirements-pathway-quality.txt` and run:
+
+```sh
+PYTHONPATH=.:tests /path/to/reader-venv/bin/python -m unittest \
+  evaluation_wiki_author_reader -v
+```
+
+The dependency remains optional; default app startup and standard-library
+tests do not import pandas. These controls verify implementation behavior,
+not the truth of biomedical source records or reviewer judgments.
 
 References: [standard unittest discovery](https://docs.python.org/3.12/library/unittest.html#test-discovery)
 and [GitHub Python version/dependency setup](https://docs.github.com/en/actions/tutorials/build-and-test-code/python).

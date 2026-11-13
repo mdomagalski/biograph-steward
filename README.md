@@ -76,6 +76,13 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 
 ## Current capabilities
 
+- [Whole-workspace evidence audit](docs/evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md):
+  a frozen 180-assertion probability sample spans all nine source families.
+  Exact source fidelity, examined evidence and independent correctness remain
+  separate. The optional native WikiPathways view excludes 1,892 rows from
+  current-source eligibility, preserves unknowns and exports a full ledger;
+  fuller Pharos drug activity context retains assay and value-scale limits.
+  These are source-quality advances, not a whole-graph biological-accuracy score.
 - [Native GO context and ontology qualification](docs/SCIENTIFIC_QUALIFICATION.md):
   inspect complete native GOA qualifiers alongside historical Pharos records,
   and export a separate active-GO-ID view. The executed CRC view excludes 298
