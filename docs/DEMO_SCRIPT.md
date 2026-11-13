@@ -32,8 +32,11 @@ deployment additionally needs its existing authorized Session Manager tunnel.
    R-GCN and binary functional comparisons did not establish improvement over
    controls. The separately reported inverse-degree result is exploratory
    relative concentration with a smaller background, not validated accuracy,
-   recall or biological pruning. These are local assessments, not official
-   challenge scores.
+   recall or biological pruning. Show the [128-gene transfer figure](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md):
+   neither weighting nor the binary diagnostic beat baseline and all fixed
+   controls. This separate same-study comparison did not reproduce the
+   development advantage. These are local assessments, not official challenge
+   scores.
 5. **Show the handoff — one minute.** In **Export**, download the complete
    workspace ZIP. The answer diagram is a question-specific view; the workspace
    retains 16,687 evidence rows. Locate `source_retained_package/retained_graph.json`,

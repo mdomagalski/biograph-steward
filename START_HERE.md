@@ -46,6 +46,12 @@ workspace is read-only: unresolved evidence is retained, and the full workspace
 ZIP includes its original baseline and decision package. See the
 [source-faithful workspace guide](docs/evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md).
 
+A [separate local 128-gene demonstration](docs/evaluations/SCIENTIFIC_DELIVERY_20261113.md#separate-local-cohort-demonstration)
+reuses that workflow on a different saved pathway cohort, retaining all 1,470
+records with zero prunes. It requires its complete private packet; the guide
+documents the large proof payload and the negative same-study biological
+comparison separately from this working application example.
+
 For a qualified assay example, **Evidence & sources → Qualified assay evidence** preserves the method, detected or nondetected outcome, experimental roles, original identifiers and excluded observations. The guided inspector exposes source links and unresolved reuse without treating repeated database records as independent experiments. See [assay attachment](docs/ASSAY_WORKBENCH.md) and [IntAct source evidence](docs/INTACT_EVIDENCE_WORKBENCH.md).
 
 For the saved SIGNOR layer, choose **Regulation and experimental context → Sites

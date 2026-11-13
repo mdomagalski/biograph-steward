@@ -1,0 +1,57 @@
+{
+  "format": "biograph-steward.public-source-faithful-release-summary.v1",
+  "runtime_git_commit": "6ddb1b7e99013bb4dfcfabae4561cb511a430f55",
+  "source_bundle_sha256": "5cc67182b2d761c8403dd52ad547dee17c33ffcb55bebc681743367fef107fe1",
+  "image_id": "sha256:1d9868eddf7cac295519a0fefa9b46df259c9b8aeae51e1c843b178866313742",
+  "base_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "source_run": "source_faithful_workspace_20261113",
+  "source_graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+  "source_counts": {
+    "protein_targets": 99,
+    "source_nodes": 9865,
+    "original_evidence_records": 16985,
+    "retained_evidence_records": 16687,
+    "keep": 5051,
+    "prune_obsolete_GO_ID": 298,
+    "abstain_retained": 11636
+  },
+  "saved_native_question_id": "question_20261113T070731Z_1079c2ac",
+  "saved_native_answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+  "source_api_native_download_and_real_service_restart_verified": true,
+  "actual_neptune_full_parity_and_entity_read_verified": true,
+  "database_file_fallback_used": false,
+  "normal_read_only_policy_restored": true,
+  "previous_cloud_dataset_preserved": true,
+  "complete_original_baseline_preserved_in_source_decision_package": true,
+  "complete_original_baseline_also_loaded_to_Neptune": false,
+  "new_compute_or_public_access": false,
+  "source_and_review_bytes_changed": false,
+  "biological_accuracy_established": false,
+  "production_acceptance_content_sha256": "75a18f1473fd54a16b4936ecd4ce353f38d53c0e2163c3225faae84238a6a2e8",
+  "observed_timings_seconds": {
+    "initial_source_graph": 86.76574236698798,
+    "native_question_warm": 20.888718039990636,
+    "saved_question_after_real_restart": 96.25830688799033,
+    "full_first_neptune_parity_then_entity_read": 234.69815683798515
+  },
+  "private_operator_receipts": "runs/qualified_app_20261113/",
+  "credentials_accounts_endpoints_omitted": true,
+  "current_source_context_lookups": {
+    "variant_therapy_response": "https://civicdb.org/molecular-profiles/78",
+    "pathway_membership": "https://reactome.org/content/detail/R-HSA-2219528"
+  },
+  "current_lookups_independent_evidence_claimed": false,
+  "actual_hosted_browser_walkthrough_verified": true,
+  "browser_walkthrough_content_sha256": "45654c9c8762801299f9c0ece3834f5bb1ae982e3b33b3579be24eb158821663",
+  "private_full_workspace_backup_completed": true,
+  "isolated_recovery_status": "PREPARED_AND_OFFLINE_TESTED_REMOTE_RECOVERY_NOT_RUN",
+  "isolated_recovery_blocker": "Automatic approval review requires explicit approval for script and private backup-receipt transfer.",
+  "new_scientific_research_archive": {
+    "retained_locally": true,
+    "archive_bytes": 488560385,
+    "archive_sha256": "227aa64bc35a8d67ff831af6107ba6394ed4ad167db0f8af2b17aef0ec16b438",
+    "S3_uploaded": false,
+    "blocker": "Automatic approval review requires explicit approval for this payload and destination."
+  },
+  "content_sha256": "e16c54a7f574ed5de0141d6cf467f799c6838c4eb251ea0e4d5cbc1925ea6eb2"
+}

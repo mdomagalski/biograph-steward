@@ -36,6 +36,16 @@ The input remains its explicitly dated Pharos319 snapshot. Historical source
 proof and current curator lookups have separate versions; this is not a claim
 that Pharos319 is the latest available Pharos release.
 
+![Corrected hosted workspace: two proteins connected through exact cited models](../images/hosted_source_graph_20261113.png)
+
+The actual hosted walkthrough also checked the
+[native source passport](../images/hosted_source_passport_20261113.png),
+[assessment denominators](../images/hosted_scientific_assessment_20261113.png),
+[clinical context guide](../images/hosted_clinical_source_guide_20261113.png) and
+[Reactome context guide](../images/hosted_reactome_source_guide_20261113.png).
+The [sanitized deployment receipt](aws_source_faithful_release_20261113_summary.json)
+binds the deployed runtime, graph, saved answer and actual restart/database checks.
+
 ## What credible public labels establish
 
 | Axis | Bounded finding | What it cannot establish |
@@ -48,7 +58,16 @@ These are **support-coverage and preservation measurements**. Missing matches
 stay unknown. A probability sample cannot turn positive-only or mismatched
 labels into a calibrated accuracy estimate. Independent whole-graph scientific
 precision remains **not estimable from the admitted labels**; no substitute
-percentage or LLM-consensus truth label is reported. See the
+percentage or LLM-consensus truth label is reported.
+
+A concrete clinical-scope example explains the strict matching rule:
+[CIViC Evidence Item 12264](https://civicdb.org/evidence/12264) reports a complete
+sotorasib–panitumumab regimen, while
+[Assertion 295](https://civicdb.org/assertions/295) explicitly excludes
+panitumumab given with a KRAS G12C inhibitor from its scope. These records
+cannot be turned into contradictory correctness labels by matching only a gene
+and one drug. The new current-profile lookup exposes the curator context while
+preserving that distinction. See the
 [source and reference assessment](SOURCE_FAITHFUL_WORKSPACE_20261113.md).
 
 ## Controlled biological comparisons
@@ -59,8 +78,8 @@ percentage or LLM-consensus truth label is reported. See the
 | Published coessentiality, original 92-gene development scope | Binary shared-context qualification failed its fixed control comparison. An explicitly exploratory native resource-allocation (RA) extension showed greater relative concentration, with usually lower absolute affinity. |
 | Frozen transfer to 128 new sampled genes, 7,648 nonsyntenic pairs | Neither RA nor the binary diagnostic beat baseline and all 40 fixed controls at any N=1–10. Historical context reached only 26 queries; all 102 zero-context queries remained. The development advantage did not transfer. |
 
-Independent software review reproduced the new capture, 321,216 RA weights and
-all 840 curve points exactly. This verifies arithmetic, not independent
+Independent software review replayed the preserved native column bytes,
+321,216 RA weights and all 840 curve points exactly. This verifies arithmetic, not independent
 experimental replication: both functional cohorts use the same published
 study. No favorable N, replacement sample or new method was selected after the
 transfer result. RA weighting and automatic biological pruning were **not**
@@ -73,6 +92,25 @@ Full curves, controls, exposure boundaries and source receipts are in the
 bands are ranges across fixed draws, not confidence intervals. Pooled O/E is
 not coverage-adjusted: zero-context queries add zero to both sums. Absolute
 means and effective coverage therefore remain beside each enrichment ratio.
+
+### Separate local-cohort demonstration
+
+The [saved 128-gene pathway workspace](http://127.0.0.1:8794/?run=transfer_pathway_workspace_20261113&question=question_transfer_pathways_20261113)
+demonstrates the same workflow on different genes using the existing publishers.
+It retains all **1,470 pathway records with zero prunes**, including unresolved
+Wiki annotations; no assertions were accepted. Other annotation families were
+not retrieved. The alphabetically selected ABCC3 question returns three proteins
+with exact native source context. This link requires the complete private saved
+packet and the local server on port 8794; it is not a fresh-checkout example.
+Actual [graph](../images/transfer_source_graph_20261113.png) and
+[source-passport](../images/transfer_source_passport_20261113.png) captures show
+the second cohort using the same interface.
+
+Workflow reuse does not reverse the negative comparison above: the new genes
+were evaluated within the **same published study**, not an independent study.
+The existing answer format repeats native proof, producing a roughly **64 MB
+saved question JSON**; this remains an engineering limit. No new scoring,
+retrieval, AWS deployment or Neptune load was needed for this local example.
 
 ## Literature-guided decisions
 
@@ -117,3 +155,24 @@ The complete data remain in private storage under their source terms. MIT
 software licensing does not clear redistribution of every integrated source.
 No Brev/GPU/model inference was needed for this round's CPU evaluation and
 production deployment.
+
+## Preservation and operational handoff
+
+The corrected hosted workspace has a completed private S3 backup. A first
+isolated recovery attempt stopped safely because the older full backup also
+contains runtime symlinks. The revised three-root recovery checker preserves
+strict ordinary-file checks on the selected graph, publication and question;
+eleven offline safety controls pass. Its remote execution remains **pending**:
+automatic approval review requires explicit approval to transfer that script
+and the private backup receipt. No recovery validation or full VM restoration
+is claimed, and no active files or service were changed by the blocked action.
+
+The complete new scientific artifact archive is retained locally at
+`runs/scientific_retention_20261113/scientific_artifacts_20261113.tar.gz`
+(488,560,385 bytes; SHA256
+`227aa64bc35a8d67ff831af6107ba6394ed4ad167db0f8af2b17aef0ec16b438`).
+It preserves 2,982 files across ten source/experiment/delivery roots, with a
+per-file manifest. Automatic approval review separately blocked its proposed
+private S3 copy until the exact payload and destination are approved. No
+alternate upload was attempted. Local retention is complete; a second remote
+research copy is not claimed. Underlying source terms still apply.

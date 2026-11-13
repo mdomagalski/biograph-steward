@@ -1,11 +1,26 @@
 # Delivery and reviewer access
 
-The designated real example is `crc_biological_workspace_20261112`: **99 primary
-Pharos targets, 9,865 entities, 16,985 evidence records and 16,980 assertions**.
-It combines the saved Pharos/CIViC workspace with source-qualified STRING,
+The current scientific demonstration is the
+[source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md),
+`source_faithful_workspace_20261113`: **99 primary Pharos targets, 9,865 entities
+and 16,687 retained evidence records**. Its complete ZIP preserves the original
+16,985-record baseline, explicit keep/prune/abstain ledger, native historical
+source proof and saved questions. It is live in the private AWS workbench and
+Neptune. The [current assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
+reports source-support coverage and the negative controlled biological results.
+
+The November 12 `crc_biological_workspace_20261112` source and its portable
+all-abstain CRC package remain supplementary, reproducible earlier artifacts.
+They combine the saved Pharos/CIViC workspace with source-qualified STRING,
 MAP-IT and SIGNOR records. The optional private BioPlex context workspace is
 not part of this delivery. The [five-minute script](DEMO_SCRIPT.md) uses the
 supported guided workflow, not the experimental model planner.
+
+For the corrected graph, use its existing **Export → complete workspace ZIP**
+and keep every saved source folder together. The all-abstain builder below
+prepares the earlier unqualified example; it does **not** reconstruct the
+corrected decisions or substitute for its source-faithful package. Both real
+data packages remain private and subject to their source terms.
 
 ## Two separate packages
 

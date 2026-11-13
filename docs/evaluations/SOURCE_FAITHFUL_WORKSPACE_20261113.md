@@ -63,6 +63,23 @@ and nearby revisions were not substituted. The
 documents the migration away from direct historical revision links and the
 use of DOI-pinned archives for reproducible versions.
 
+The five unresolved high-frequency models are explicit retrieval gaps:
+
+| Exact cited version | Original source rows | Unique protein/version connections |
+|---|---:|---:|
+| WP2261_r105815 | 116 | 30 |
+| WP4172_r105775 | 76 | 25 |
+| WP4223_r105681 | 76 | 25 |
+| WP4205_r105480 | 53 | 18 |
+| WP2380_r106165 | 44 | 21 |
+
+A further bounded check replayed all eight archives and checked the official
+GPML repository, exact-path history and documented SQL-release route. No exact
+additional models were recovered. Archive scope and curated-tag selection can
+omit a model or revision; these 365 rows / 119 connections remain UNKNOWN.
+Publisher-native GPML or a revision-preserving official deposit would close
+this specific retrieval gap; a current page or nearby revision would not.
+
 ![Actual archived source passport](../images/source_faithful_passport_20261113.png)
 
 Native model/reference citations and exact element-attached links remain
