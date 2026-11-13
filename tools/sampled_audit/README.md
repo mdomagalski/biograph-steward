@@ -165,6 +165,41 @@ PYTHONPATH=.:tests python3 -m unittest \
 Raw source and dossier data retain provider terms. The software license does
 not clear redistribution of the full underlying graph package.
 
+## Project exact source-version pathway context
+
+`wiki_version_projection.py` applies the existing plain JSONL plus mapping-ledger
+exchange pattern to a **verified Gold retained package**. It groups only exact
+provider/full `WP_rREV` identifiers whose complete native metadata agrees and
+whose source-supplied version URL matches literally. That URL stays verbatim;
+there is no URI identity conversion, namespace guessing or revision collapse.
+
+```sh
+python3 tools/sampled_audit/wiki_version_projection.py export \
+  --retained runs/my_current_wiki_view/retained \
+  --retained-report-sha256 VERIFIED_REPORT_FILE_SHA256 \
+  --out runs/my_wiki_version_projection
+python3 tools/sampled_audit/wiki_version_projection.py verify \
+  --projection runs/my_wiki_version_projection
+```
+
+The projection keeps every represented evidence ID, directed predicate and
+original assertion/review reference. Parallel triples are not merged or
+independent experimental votes. Node, edge, assertion and source-resource
+ledgers account for all inputs; the complete original retained package is
+preserved. Unsupported identities, conflicting metadata and qualified records
+outside this flat profile remain in that source with explicit reasons.
+
+Shared `protein → source version ← protein` context is not a newly inferred
+PPI or a directed two-hop protein path. A source-reported version locator does
+not validate historical content or membership. This is a separate source
+projection, with no full KGX/Biolink validation claim; it changes neither the
+app normalizer nor existing standards/SSSOM identity contracts. See the
+[executed normalization record](../../docs/evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md).
+
+```sh
+PYTHONPATH=.:tests python3 -m unittest test_wiki_version_projection -v
+```
+
 ## Build a cohort-independent WikiPathways reference packet
 
 `prepare_wiki_reference.py` packages provided native files and proof metadata;

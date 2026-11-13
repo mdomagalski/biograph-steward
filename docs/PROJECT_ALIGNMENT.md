@@ -18,6 +18,12 @@ representations and missing assay context without counting shared curation as
 independent truth. These advance integration, explainability and reversible
 source qualification; whole-graph biological correctness remains unmeasured.
 
+The separate [exact-version projection](evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
+joins source annotations that cite the same full WikiPathways version URL.
+This closes a verified shared-context representation gap without changing
+historical graphs, expanding the SSSOM identity contract or asserting new
+biological interactions. No downstream utility result is claimed.
+
 ## Organizer requirements and judging crosswalk
 
 The brief permits **autonomous or semi-autonomous software**. Its topic is structured-data integration and link prediction: an agent builds contextualized graphs, then the **same graph-learning method** is applied to baseline and enriched graphs to predict held-out experimentally measured relationships. Our paired learner comparisons are complete; they do not demonstrate consistent incremental benefit.

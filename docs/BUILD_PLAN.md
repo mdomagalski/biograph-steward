@@ -14,6 +14,12 @@ uses existing API capabilities before adding another source. Finish delivery
 and credible independent judgments; do not replace these boundaries with a
 new pruning/model sweep.
 
+The [exact-version source projection](evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
+also restores shared WikiPathways context across 76 proteins. It preserves
+all evidence and distinct revisions without modifying the app's old graphs.
+Its integration benefit is measurable; biological prediction utility remains
+untested.
+
 The [scientific qualification increment](evaluations/SCIENTIFIC_GAPS_20261112.md)
 now preserves 15,888 native GOA records, inventories compatible context for every
 original GO edge, and materializes a separate active-ID graph excluding 298

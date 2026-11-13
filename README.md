@@ -83,6 +83,9 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
   current-source eligibility, preserves unknowns and exports a full ledger;
   fuller Pharos drug activity context retains assay and value-scale limits.
   These are source-quality advances, not a whole-graph biological-accuracy score.
+  A separate [exact-version projection](docs/evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
+  joins shared WikiPathways source context while preserving distinct evidence,
+  revisions and the original workspace.
 - [Native GO context and ontology qualification](docs/SCIENTIFIC_QUALIFICATION.md):
   inspect complete native GOA qualifiers alongside historical Pharos records,
   and export a separate active-GO-ID view. The executed CRC view excludes 298

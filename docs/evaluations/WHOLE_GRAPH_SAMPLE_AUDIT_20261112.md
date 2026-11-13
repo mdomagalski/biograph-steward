@@ -149,6 +149,23 @@ in today's gene set does not refute historical membership or biological
 function. The reusable native-reference builder requires no cohort judgments;
 a separate minimal packet reproduces all 991 pathways exactly.
 
+### Restoring shared source context
+
+A further [exact-version normalization](WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
+addresses the remaining local-node fragmentation. The 1,600 retained Wiki
+rows originally use 1,600 separate local pathway nodes, although they cite
+only 275 exact version URLs. A separate source projection represents those
+URLs consistently across 76 proteins, retaining all 1,600 evidence IDs and
+1,319 distinct protein/version connections. It exposes 1,133 common-object
+source contexts that the separate local nodes could not share.
+
+These are `protein → cited model ← protein` joins, not new PPIs, symmetric
+memberships or directed protein-to-protein paths. Revisions, uncertainty,
+review history and every original source record remain preserved. The app's
+normalizer, original sample and earlier scientific comparisons are unchanged.
+This repairs source representation; its downstream biological benefit is
+untested.
+
 ## More useful Pharos context without another aggregator
 
 The existing Pharos ligand API supplies activity rows, chemical identifiers

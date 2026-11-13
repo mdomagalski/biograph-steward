@@ -59,6 +59,12 @@ retrieval adds assay/chemical/publication context without inventing potency
 units or independent corroboration. These source-quality results complement
 the unchanged mixed biological-utility comparisons.
 
+A separate [source-version projection](evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
+restores shared WikiPathways context: 1,600 evidence records across 76 proteins
+now share 275 exact cited version resources, with original evidence IDs,
+reviews and revisions preserved. These are source-annotation joins, not new
+protein interactions or a measured biological prediction gain.
+
 ## Judge walkthrough
 
 Start with [START_HERE](../START_HERE.md). The core app needs Python 3.10+ and no model account. A fresh checkout includes the synthetic software demonstration. The existing real examples require their saved source packets; local run directories are not included in Git.
