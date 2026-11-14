@@ -65,3 +65,26 @@ snapshot. Upstream data retain their licenses and attribution; the app's MIT
 license does not relicense source data. See the optional
 [prediction reproduction tools](../tools/cafa_prediction/README.md) and
 [official reference adapter](../tools/cafa_reference/README.md).
+
+## Reading the assessment metrics
+
+- **Fmax:** the best balance of precision and recall across the benchmark's
+  fixed score-cutoff grid. It is not an accuracy percentage or a deployable
+  confidence threshold.
+- **Micro / macro:** micro pools annotation decisions; macro averages
+  protein-level quantities. Their results can differ, so both are retained.
+- **IA:** information-accretion weighting accounts for the information supplied
+  by a function beyond its ontology parents and the task's prior knowledge.
+- **Smin:** the smallest benchmark semantic distance across cutoffs, balancing
+  missing and unsupported predicted information. Lower is better.
+- **Precision / recall:** precision concerns predictions matching the admitted
+  reference; recall concerns reference annotations recovered. An unmatched
+  prediction is not thereby proved biologically false.
+- **Native coverage ratio:** the author's prediction-count/eligible-count
+  readout. Known-annotation exclusions can make those denominators differ;
+  ratios above one are preserved with the normalization caveat.
+- **Paired interval:** uncertainty from resampling the same proteins for both
+  methods. It is conditional on shared genes, graph neighbors and studies.
+- **Expert-reference agreement:** reported literature relations matching
+  curator labels. A source's `None` label concerns that abstract, rather than
+  proof that two entities cannot interact in biology.

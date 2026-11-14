@@ -7,7 +7,7 @@ Choose an exact disease or protein cohort → retrieve a scoped graph → ask a 
 → inspect the cited answer and source context → review and export
 ```
 
-See the [November 13 delivery and scientific results](docs/evaluations/SCIENTIFIC_DELIVERY_20261113.md), [submission and presentation draft](docs/FINAL_SUBMISSION.md) and [completion scope](docs/BUILD_PLAN.md). The core demonstration requires no paid literature service or GPU.
+See the [November 14 measured scientific results](docs/evaluations/SCIENTIFIC_RESULTS_20261114.md), [submission and presentation draft](docs/FINAL_SUBMISSION.md) and [completion scope](docs/BUILD_PLAN.md). The core demonstration requires no paid literature service or GPU. The accepted AWS runtime is `a6a05ff`; its saved historical function inspector exposes six queries and 36 traceable hypotheses.
 
 The [portable delivery guide](docs/DELIVERY.md) separates the software-only
 runtime from the complete local CRC source/graph/decision package. Follow the
@@ -40,8 +40,18 @@ with lower absolute affinity. The subsequent **fixed transfer to 128 new genes
 and 7,648 nonsyntenic pairs was negative**: neither RA nor binary shared context
 beat baseline and all 40 controls at any N=1–10. See the
 [complete transfer result](docs/evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md).
-No RA ranking or automatic biological pruning was promoted to the app; a
-transferable predictive gain and independent whole-graph accuracy remain unproved.
+No RA ranking or automatic biological pruning was promoted after that comparison.
+
+The newer [public CAFA5 comparison](docs/evaluations/SCIENTIFIC_RESULTS_20261114.md)
+finds bounded function-recovery gains: the published GeneMANIA+ method improves
+original-graph biological-process micro-Fmax from **0.1218 to 0.1299**, and fuller
+strictly qualified historical Pharos context with LocalPlus reaches **0.1353**.
+Both positive contrasts are secondary, with paired uncertainty reported;
+they do not establish whole-graph accuracy or superiority over complete Pharos.
+The separate NK/LK tasks do not reliably beat their strongest fixed controls,
+and the fixed pruning views show no reliable benefit. In source-claim checking,
+the tested agent remains inferior to the published specialist; it is not an
+automatic truth gate. Negative results and complete denominators remain visible.
 
 Earlier bounded results remain in the [biological assessment](docs/evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md),
 [source-qualification comparison](docs/evaluations/SCIENTIFIC_ACCURACY_ROUND2_20261112.md)
@@ -68,7 +78,11 @@ The workbench now separates **Data & saved work**, **Ask & explore**, **Evidence
 In **Ask & explore**, bounded path exploration follows up to three saved relationships, respecting direction and explicit symmetry. Each step retains its conditions, source evidence and review state; candidate paths are not promoted to accepted evidence. **Evidence & sources** provides guided source inspection for Pharos, CIViC and assay records, with original references when supplied and explicit missing-context/reuse limits. Both features read the saved workspace without retrieving sources or calling a model.
 
 The **Compare & assess** tab opens saved scientific assessments with explicit
-reference units, unknowns, controls and source receipts. It can also open
+reference units, unknowns, controls and source receipts. Its historical function
+inspector shows saved neighbor contributions, source pairs, training terms and
+annotation-reuse warnings without accepting hypotheses or changing the graph.
+The latest aggregate publication is `scientific_assessment_reference_20261114`;
+see the [current results](docs/evaluations/SCIENTIFIC_RESULTS_20261114.md). It can also open
 saved OptimusKG support-search preparations. The five-case development assessment shows three distinct endpoint queries: different qualified claims can produce the same upstream search. This evaluates method fit, not scientific accuracy. Actual PaperQA3 execution requires separate Edison access and a current cost check; Brev is not required for preparation or inspection.
 
 
@@ -131,7 +145,7 @@ The [clean-install real-data check](docs/evaluations/CLEAN_INSTALL_REAL_DEMO_202
 - An optional bounded model planner that selects an existing read-only query. Deterministic guided questions work without it.
 - Local/Docker/Brev operation, protected shared access and persistent data directories. Model inference is optional.
 
-These capabilities preserve and expose source evidence. They do not establish clinical correctness, independent study replication, or general biological prediction gains. Bounded task comparisons report their own coverage and limitations. Language models do not approve or prune assertions automatically.
+These capabilities preserve and expose source evidence. Measured prediction gains apply to the declared annotation-recovery tasks; clinical correctness, independent study replication and whole-graph biological accuracy are not established. Bounded comparisons retain their coverage and limitations. Language models do not approve or prune assertions automatically. The existing AWS reviewer site stays available for team review; no Brev instance or model server is needed for saved-data inspection.
 
 The [current release check](docs/evaluations/PHAROS_RELEASE_CHECK_20261027.md) confirms that our configured public API still reports `pharos319`; the client reads that label from the service. Official Pharos400 identity/TDL tables are available, but an equivalent complete 400 graph endpoint or dump was not verified in the checked official materials. Preserve source releases explicitly rather than relabelling old relationships.
 
@@ -145,7 +159,7 @@ A separate [retrieval-reliability check](docs/evaluations/PHAROS_RETRIEVAL_RELIA
 
 The [fixed PPI pruning comparison](docs/evaluations/PPI_PRUNING_COMPARISON_20261111.md) now measures actual retained graphs from 89,665 source edges. Native-score and Network Enhancement views each retain 73,313 edges while protecting mixed-provider evidence. On the consumed assay panel, NE retains all 334 source-present detections versus 326 for native selection, but retains more nondetections; its slightly lower retained detection fraction fails the predeclared rule for clear superiority. Its secondary raw-score AP increases from 0.152397 to 0.175440 at identical numeric coverage. The earlier STRING physical overlay remains higher at 0.190056 on this panel. These are retrospective tradeoffs, with original source records and complete ledgers preserved; the app's default graph remains unchanged.
 
-[CRC temporal baseline verification](docs/evaluations/PHAROS_TEMPORAL_BASELINE_20261112.md) confirms that all 718 PPI pairs in the existing 99-target CRC input match the archive completed in April 2024. This anchors the unchanged component for the completed MAP-IT tissue-evidence assessment. That pruning endpoint is unscorable: none of 18 evaluable eligible EGFR pairs meets the frozen enrichment rule; one protected enriched pair is retained by all views. The source age and coverage limitations remain explicit; biological improvement is unproven.
+[CRC temporal baseline verification](docs/evaluations/PHAROS_TEMPORAL_BASELINE_20261112.md) confirms that all 718 PPI pairs in the existing 99-target CRC input match the archive completed in April 2024. This anchors the unchanged component for the completed MAP-IT tissue-evidence assessment. That pruning endpoint is unscorable: none of 18 evaluable eligible EGFR pairs meets the frozen enrichment rule; one protected enriched pair is retained by all views. That MAP-IT endpoint did not establish biological improvement; the newer CAFA5 function-recovery results are a separate task.
 
 ## Current investigation
 

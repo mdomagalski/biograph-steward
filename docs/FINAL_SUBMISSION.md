@@ -1,6 +1,6 @@
 # BioGraph Steward final submission
 
-Working submission and presentation draft, November 13, 2026. The current release is a source-faithful Pharos evidence workbench with reproducible records, guided questions and explicit scientific limits. The private AWS workbench now runs tested code `ea5752e`, including the separately configured native GO inspector; its Neptune mirror and earlier scoped checkpoint recovery are tested separately. The [review PDF](../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf) is the dated three-page packet and still records pre-update hosting; the [hosted update receipt](evaluations/hosted_native_go_20261113_summary.json) gives the current status. The editable slide deck remains a separate older artifact. PaperQA3 and another agent platform are optional.
+Working submission and presentation draft, updated November 14, 2026. The accepted AWS runtime is `a6a05ff`, with the source-faithful workspace, native GO inspector and a separate historical function inspector containing six saved queries and 36 traceable hypotheses. The [current scientific results](evaluations/SCIENTIFIC_RESULTS_20261114.md) report bounded function-recovery gains and all negative controls. The new aggregate publication is `scientific_assessment_reference_20261114`; it is installed and its protected API, catalogue, source downloads and report passed acceptance. Earlier PDFs, slide decks and hosting receipts remain dated checkpoints until replaced.
 
 ## Project summary
 
@@ -11,8 +11,8 @@ and export the graph with its complete decision ledger. Exact identifiers,
 whole molecular profiles and therapy sets, source conditions and local review
 remain distinct throughout.
 
-The [November 13 delivery and scientific summary](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
-describes the current private AWS workbench and verified Neptune mirror:
+The [source delivery summary](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
+describes the existing AWS workbench and verified Neptune mirror:
 **16,687 retained evidence records across 99 primary protein targets**. The
 original 16,985 records, reviews and keep/prune/abstain ledger remain preserved.
 Native archives recovered **253/308 cited WikiPathways revisions**, including
@@ -23,6 +23,20 @@ in the pinned July 2026 ontology, not experimentally disproved relationships.
 Current CIViC profile and Reactome event links guide users to curator and
 mechanistic context without treating live lookup results as historical proof
 or independent evidence.
+
+The [November 14 controlled comparison](evaluations/SCIENTIFIC_RESULTS_20261114.md)
+measures recovery of later CAFA5 curator annotations using historical inputs.
+On 833 eligible biological-process proteins, original-graph LocalPlus micro-Fmax
+is **0.1218**, published GeneMANIA+ reaches **0.1299**, and the fuller historical
+strict-context LocalPlus profile reaches **0.1353**. The two positive contrasts
+are secondary, with paired intervals; the original primary FSS candidate was
+negative. A separate partially known (PK) protein cohort supports bounded transfer;
+no-knowledge (NK) and limited-knowledge (LK) tasks do not reliably beat their
+strongest fixed controls. Fixed pruning
+has no reliable recovery benefit. Fmax is not an accuracy percentage, and these
+results do not establish whole-graph truth or superiority over complete Pharos.
+The tested claim-checking agent remains inferior to the published specialist;
+its judgments are not an automatic acceptance or pruning policy.
 
 The hosted [native GO inspector](NATIVE_GO_CONTEXT_WORKBENCH.md) also exposes
 preserved relations, NOT qualifiers, references, forms and context alternatives,
@@ -49,7 +63,7 @@ source-identity error triage, not correction of the Pharos graph, exact protein-
 automatic pruning policy. Full denominators, outside-endpoint cases and
 abstentions remain explicit.
 
-The exact aggregate publication is now installed in the private AWS app as
+The earlier aggregate publication remains available in the private AWS app as
 `scientific_assessment_delivery_20261113` (`09e50f8e…`), with its API and catalogue
 verified after a real service restart. Its other component is the earlier
 92-query/3,968-pair exploratory comparison. The negative 128-gene/7,648-pair
@@ -62,8 +76,9 @@ context result on consumed coessentiality data was followed by a
 **The transfer was negative:** neither RA nor binary shared context beat
 baseline and all 40 controls at any N=1–10. Absolute historical affinity was
 lower throughout. No RA ranking, automatic biological pruning or new method
-was promoted after this result. Source corrections and inspectability are
-demonstrated; transferable predictive improvement remains unproved.
+was promoted after this result. That earlier transfer remains negative. The
+newer CAFA5 comparisons above measure a separate function-recovery task with
+bounded positive findings.
 
 Earlier [retention comparisons](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md),
 [conditional HCT116 assessment](evaluations/HCT116_EXTERNAL_COMPARISON_20261112.md),
@@ -71,8 +86,9 @@ Earlier [retention comparisons](evaluations/BIOLOGICAL_IMPROVEMENT_20261112.md),
 [whole-workspace audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md) and
 [original version-projection assessment](evaluations/WIKIPATHWAYS_VERSION_NORMALIZATION_20261112.md)
 remain separate bounded results. Their metrics and limits are retained below
-and in the linked experiment ledger; they do not replace the current negative
-transfer or establish whole-graph biological accuracy.
+and in the linked experiment ledger; they do not replace the earlier negative
+coessentiality transfer or the new CAFA5 function-recovery assessment, and do
+not establish whole-graph accuracy.
 
 ## Judge walkthrough
 
@@ -85,12 +101,11 @@ current publisher context, separate from the frozen Pharos baseline and
 independent scientific validation.
 
 The current hosted example is `source_faithful_workspace_20261113`, running
-`ea5752e` with existing saved question `question_20261113T075313Z_1a76b00f`.
-The update preserved the question/source bytes, authentication and permissions;
-native replay, both GO examples and complete Neptune parity/read checks passed
-across restart. Hosted acceptance used the API; the earlier GO Chrome walkthrough
-was local. Use the
-[updated five-minute script](DEMO_SCRIPT.md):
+accepted `a6a05ff` with saved question `question_20261113T075313Z_1a76b00f`.
+Acceptance preserved its graph/question/source bytes and authentication, replayed
+the native GO cases, and verified the separate six function queries/36 notes.
+Earlier Neptune parity and scoped recovery remain separately recorded checks.
+Use the [updated five-minute script](DEMO_SCRIPT.md):
 
 1. **Ask & explore:** open the native-supported TP53 question, with eight
    results and two paths per protein. State the exact frozen Pharos319 scope.
@@ -101,11 +116,11 @@ was local. Use the
    The clinical source guide separately preserves complete therapy/profile context.
    The optional GO inspector separates original native qualifiers from recorded
    normalization/context warnings; none becomes a historical correction or truth label.
-4. **Compare & assess:** show public-reference support coverage and UNKNOWNs.
-   Present the fixed learner result and the negative 128-gene transfer together
-   with their controls and study/exposure limits; neither establishes a gain.
-   The hosted `scientific_assessment_delivery_20261113` publication presents
-   the expert-labeled identity-check trade-off above as its own component.
+4. **Compare & assess:** open the latest scientific publication and explain
+   the CAFA5 gain, comparator, paired uncertainty and secondary status. Retain
+   the negative primary FSS result, NK/LK control limits, pruning result and
+   inferior agent arm. Inspect one saved historical function hypothesis through
+   its neighbor/source pair; it remains an uncalibrated prediction, not acceptance.
 5. **Export:** identify the retained graph, exhaustive decision ledger and full
    original baseline. Explain whole-workspace versus current-answer scope.
 
@@ -149,10 +164,15 @@ checkpoint recovery, not full VM/runtime restoration or recovery of the later
 grounding publication and current software ZIP. The
 [delivery index](releases/20261113/README.md) keeps these versions and artifacts
 separate. The other research-archive S3 transfer remains unapproved.
-The later hosted updates, grounding publication and native GO attachment did
-not perform a new backup-recovery test. The native GO feature is now enabled
-in hosted `ea5752e`; its separately installed source packet is absent from the
-code-only software archive. The earlier backup recovery does not cover it.
+The November 13 updates were outside that earlier recovery scope. A fresh
+November 14 native backup and isolated read-only replay now cover the accepted
+`a6a05ff` app checkpoint: original source workspace and eight-answer question,
+final scientific assessment (including grounding), all six historical function
+queries/36 notes, and the 12-file native GO attachment. Live data, configuration
+and container identity stayed unchanged. This is selected data/checkpoint replay,
+not full VM, credential or Neptune restoration. See the
+[current delivery receipt](evaluations/scientific_hosted_delivery_20261114_summary.json).
+The source packet remains separate from the code-only archive.
 
 ## Completed biological source enrichment
 
@@ -226,16 +246,16 @@ without repository imports or optional dependencies.
 | 2. The corrected graph in actual use | 99 proteins; 16,687 retained records with complete baseline/decisions | [Hosted TP53 graph](images/hosted_source_graph_20261113.png) |
 | 3. Verify what the source actually encodes | 253/308 exact historical revisions; gene-level and protein-level support differ | [Archived source passport](images/hosted_source_passport_20261113.png) |
 | 4. Inspect curator and biological context | Preserve whole therapy combinations and native pathway roles; do not double-count sources | [Clinical source guide](images/hosted_clinical_source_guide_20261113.png) and [Reactome guide](images/hosted_reactome_source_guide_20261113.png) |
-| 5. Test the biological claim | Exploratory concentration did not transfer to 128 new genes; credible labels supply coverage, not precision | [Complete controlled figure](images/functional_concordance_20261113.png), with clear denominators |
-| 6. Delivery and scientific boundaries | Working local/private-cloud app, portable software, complete decisions; independent accuracy remains open | Actual export, [assessment](images/hosted_scientific_assessment_20261113.png) and source-permission boundary |
+| 5. Measure function recovery | Secondary CAFA5 method/context gains, with negative primary, pruning and transfer controls retained | [Current controlled results and figure](evaluations/SCIENTIFIC_RESULTS_20261114.md) |
+| 6. Delivery and scientific boundaries | Working local/private-cloud app, portable software, complete decisions; whole-graph accuracy remains open | Actual export, [assessment](images/hosted_scientific_assessment_20261113.png) and source-permission boundary |
 
 This is the current **slide revision plan**, with actual new captures and a
 complete scientific figure ready for use. The existing editable six-slide deck
 is the earlier November 12 presentation; it has not yet been regenerated with
-these November 13 results. Its previous site/context, source-reuse and target
+the November 14 results. Its previous site/context, source-reuse and target
 recovery material remains preserved. Update that artifact before recording or
-submitting it; the current source-faithful report and negative transfer should
-take precedence over the earlier deck's delivery counts and results emphasis.
+submitting it; the current source-faithful report and complete November 14
+comparison take precedence over the earlier deck's delivery counts and results emphasis.
 
 The [dated review PDF](../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
 is a separate exportable presentation packet. Its 153,681-byte version predates
@@ -254,19 +274,18 @@ Show implemented methods and useful behavior before architecture details.
 | Item | Current state | Finish action |
 |---|---|---|
 | MIT repository and build instructions | Implemented; current code is on the private review branch and the current software ZIP passes clean extracted startup/question/export/restart checks | Freeze the final reviewed checkpoint and carry out the public repository/release handoff |
-| App and demonstration | Hosted `ea5752e` passed real restart, unchanged TP53/native exports, both native GO API cases and complete Neptune parity/read checks; five-tab flow, checkout synthetic example and CC0 real-source annex remain available | Gather weekend team feedback for Monday, fix observed interpretation/access issues, and verify the permitted judge access route; independent intended-user assessment remains open |
+| App and demonstration | Accepted hosted `a6a05ff` preserves TP53/native exports and adds the separate six-query/36-hypothesis function inspector; native GO, five-tab flow, synthetic checkout and CC0 annex remain available | Gather weekend team feedback for Monday, fix observed interpretation/access issues, and verify the permitted judge access route; independent intended-user assessment remains open |
 | Graph and decisions | Current AWS/Neptune workspace retains 16,687 records across 99 primary targets, with its original baseline and complete decisions preserved; 298 obsolete-GO-ID exclusions are source qualifications. Earlier all-abstain and experimental-pruning packages remain separate | Deliver clearly named current workspace and historical comparison packages under their source terms |
 | Standards | Explicit vocabulary references, bounded KGX profile and SSSOM audit | Link the implemented profile and documented conformance limits |
-| Scientific assessment | Bounded support coverage, retention/learner controls and expert-labeled grounding triage are recorded. The fixed 128-gene transfer is negative; grounding trades fewer false alarms for missed errors | Present current source improvements and bounded measurements with their denominators; independent whole-graph accuracy and automatic biological pruning remain unproved |
+| Scientific assessment | Public CAFA5 reference shows secondary method/context PK gains and bounded additional-protein transfer; NK/LK strongest controls are not reliably beaten, pruning has no reliable benefit, and the tested agent trails the published specialist. Earlier negative results remain | Present complete denominators, uncertainty, source/time boundaries and macro/fixed-cutoff trade-offs; whole-graph truth and automatic biological pruning remain open |
 | Preservation | Existing private checkpoint passed isolated graph/assessment/question recovery; live service and data remained unchanged | Keep scope/version receipts with the handoff; full VM recovery and the separate unapproved research-archive transfer are not completed by that check |
 | Final submission format | Supplied brief and Slack updates guide the handoff; exact final file schema remains unspecified | Follow any later organizer instructions; keep this inventory ready |
 
 The supplied rubric weights usability 40%, accuracy/pruning 30%, explainability 20% and standards 10%. Semi-autonomous construction is allowed. AWS, Neptune and PaperQA3 are not stated prerequisites. See the [current organizer/proposal crosswalk](PROJECT_ALIGNMENT.md).
 
-Core inspection and release polishing use CPU. Keep the Brev model off until
-a specific bounded inference check is planned. Use the existing AWS app and
-Neptune for the hosted demonstration/database inspector when needed; no new
-cloud service or NemoClaw installation is a submission dependency. This
+Brev work for this delivery is finished; its instance and model server are not
+needed for review. Keep the existing AWS reviewer app and private Neptune
+available for the team. No new cloud service or NemoClaw installation is a submission dependency. This
 guidance does not report current account billing or credit consumption.
 
 ## Optional no-spend literature illustration

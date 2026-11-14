@@ -20,12 +20,15 @@ source-inspection example, not the complete Pharos graph or its historical
 baseline. The [delivery index](releases/20261113/README.md) identifies which
 software, data and assessment are actually supplied.
 
-The AWS app uses tested code `5362b50`; its
-[reviewer delivery receipt](evaluations/reviewer_https_delivery_20261113_summary.json)
-records real HTTPS session and export checks, complete native GO packet replay,
-preserved graph/question/source files and cold Neptune parity/read access after
-restart. The saved TP53 answer also opened in Chrome. The earlier private
-combined archive remains pinned to `902699e` and excludes later attachments.
+The accepted AWS runtime is `a6a05ff`, including the saved historical
+function-context inspector: six queries and 36 traceable hypotheses. The
+[November 14 results](evaluations/SCIENTIFIC_RESULTS_20261114.md) are the current
+scientific summary. Select `scientific_assessment_reference_20261114` in
+**Compare & assess**; its protected hosted API and source downloads passed acceptance.
+Earlier delivery receipts and combined archives describe their own checkpoints.
+Allow about 1–2 minutes for a cold load of the existing 99-target graph/answer.
+The separate saved function queries respond in under a second on the tested
+host; these are different tasks, not a direct speedup comparison.
 
 1. **Open the question — one minute.** Open the supplied
    `source_faithful_workspace_20261113` run. In **Ask & explore**, choose
@@ -44,15 +47,17 @@ combined archive remains pinned to `902699e` and excludes later attachments.
    a citation is not automatically evidence for every protein. Explain the
    recovered 253/308 exact revisions and the unresolved remainder. Five
    historically encoded connections excluded by a current-only view are kept.
-4. **Present the assessment — one minute.** In **Compare & assess**, open the
-   supplied scientific assessment. Show compatible experimental GO curation
-   at 373/4,078 original assertions and CRC cohort support at 32/100 disease
-   assertions, with UNKNOWNs retained. These are coverage measurements. Show
-   the [128-gene transfer figure](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md)
-   and state that the fixed views did not beat the baseline and all controls.
-   No automatic biological-pruning policy was promoted. Full methods and
-   earlier bounded results remain in the receipts; these are not official
-   challenge scores.
+4. **Present the measured result — one minute.** In **Compare & assess**, open
+   the latest scientific assessment. Show the bounded CAFA5 biological-process
+   result: original-graph LocalPlus **0.1218**, published GeneMANIA+ **0.1299**,
+   and full historical strict-context LocalPlus **0.1353** micro-Fmax. The two
+   positive contrasts are secondary; Fmax is annotation recovery, not an accuracy
+   percentage. NK/LK do not reliably beat their strongest fixed controls,
+   pruning has no reliable benefit, and the tested claim-checking agent remains
+   inferior to the published specialist. Open one saved historical function query
+   and follow a neighbor contribution/source pair; its score is not a probability
+   or an accepted GO annotation. The [complete results](evaluations/SCIENTIFIC_RESULTS_20261114.md)
+   preserve the original negative primary candidate, controls and uncertainty.
 5. **Show the handoff — one minute.** In **Export**, download the complete
    workspace ZIP. The answer diagram is a question-specific view; the workspace
    retains 16,687 evidence rows. Locate `source_retained_package/retained_graph.json`,
@@ -62,8 +67,9 @@ combined archive remains pinned to `902699e` and excludes later attachments.
    Native source terms remain separate from the MIT software license.
 
 The existing `crc_judge_demo` route and SIGNOR BRAF-site explanation remain
-supplementary demonstrations. The refreshed scientific results should take
-precedence over earlier presentation snapshots until those slides are updated.
+supplementary demonstrations. The November 14 scientific results take precedence over earlier presentation
+snapshots. The older negative 128-gene coessentiality transfer remains a separate
+result, not a description of every subsequent transfer task.
 
 For a question about claim verification, use the separate
 [expert-grounding result](evaluations/EXPERT_GROUNDING_20261113.md). Its saved
@@ -74,8 +80,8 @@ expert-labeled source cases, publication context reduces false alarms 25→18
 but true error flags 31→26. It supports assisted review, with unresolved cases
 visible; it does not validate or automatically prune the Pharos graph.
 This v3 publication also retains the earlier 92-query/3,968-pair exploratory
-comparison. Present the separately reported negative 128-gene/7,648-pair
-transfer above alongside it.
+comparison. Retain its separately reported negative 128-gene/7,648-pair transfer when
+discussing that earlier method; do not pool it with CAFA5 annotation recovery.
 
 For a source-quality question, the hosted [native GO inspector](NATIVE_GO_CONTEXT_WORKBENCH.md)
 is available on demand. In **Evidence & sources**, search `GO:0005794`, select
@@ -93,8 +99,14 @@ not full VM recovery or the later grounding, native GO attachment and software
 artifacts.
 
 The private AWS/Neptune mirror and [NVIDIA integration](NVIDIA_INTEGRATION_STATUS_20261113.md)
-can be described in questions. Saved-data inspection uses CPU only; the Brev
-model can stay off. These supporting capabilities do not establish biological
-improvement. Use the current delivery index and hosted update receipt for the
-latest status. The existing three-page PDF predates this hosted update; the
-older editable slide deck also remains a separate artifact until updated.
+can be described in questions. Brev work for this delivery is finished; the
+instance and model server are unnecessary for review. Keep the AWS reviewer
+site available. Saved inspection needs no model calls or fresh retrieval.
+Use the [current scientific results](evaluations/SCIENTIFIC_RESULTS_20261114.md)
+and delivery receipts for scope; older PDFs/slides remain dated checkpoints
+until replaced.
+
+The [November 14 delivery receipt](evaluations/scientific_hosted_delivery_20261114_summary.json)
+records a fresh native backup and isolated replay of the accepted workspace,
+eight-answer question, final assessment, function inspector and native GO
+attachment. It is checkpoint verification, not a VM/Neptune restore.

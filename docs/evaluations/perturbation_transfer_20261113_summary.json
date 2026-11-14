@@ -1,0 +1,1150 @@
+{
+  "format": "biograph-steward.perturbation-transfer-public-summary.v1",
+  "date": "2026-11-13",
+  "claim": "External perturbation-profile functional concordance, not whole-graph truth or direct binding.",
+  "source_counts": {
+    "declared_query_nodes": 3173,
+    "present_graph_nodes": 3172,
+    "all_source_pairs": 89665,
+    "eligible_pairs": 81416,
+    "eligible_retained_per_view": 65132,
+    "protected_source_pairs_retained": 8249,
+    "unique_gene_mapped_nodes": 3139,
+    "mapping_exclusions": {
+      "no_unique_approved_HGNC_gene": 33
+    },
+    "strict_context_nodes": 9756,
+    "eligible_pairs_with_co_complex_context": 16407
+  },
+  "source_lineage": "STRINGv11 Dec2018 and Reactome69 May2019/PathwayCommons12 Sep2019 precede Replogle Dec2021 preprint/2022 experiment publication.",
+  "original_protocol_sha256": "c9acbfcc50e969553be7c39f17f35adca29a64c4c60e3f9f289900abed082d30",
+  "original_results_sha256": "4cb059fb71f2dc24a377231bcd5a5ddb8a832d5f1156b88bb390c284a9ebe5c7",
+  "qc_sensitivity_results_sha256": "50f77ae3379ef93b6922db2219357e826e426eac13c446941dd37efa05441894",
+  "primary": {
+    "status": "fixed-before-expression-values; now consumed",
+    "predeclared_both_context_positive_rule_met": false,
+    "cells": {
+      "K562": {
+        "author_shape": [
+          11258,
+          8248
+        ],
+        "mapped_eligible_perturbations": 1986,
+        "finite_profiles": 1528,
+        "excluded_nonfinite_profiles": 458,
+        "row_exclusions": {
+          "no_unique_graph_gene_mapping": 8917,
+          "duplicate_target_rows": 319,
+          "fewer_than_25_filtered_cells_or_unknown": 36
+        },
+        "signed_k10": {
+          "queries": 1508,
+          "mean_query_r": {
+            "human_experimental_top80": 0.08435761768252455,
+            "native_top80": 0.08755014983814989,
+            "ne_top80": 0.0644670784461346,
+            "pa_top80": 0.06440588501933561,
+            "mps_top80": 0.06209537358182936,
+            "combined_experimental_top80": 0.08499770241939805,
+            "reactome_complex_then_human_experimental": 0.08630837704661717
+          },
+          "candidate_minus_comparator": {
+            "human_experimental_top80": {
+              "queries": 1508,
+              "mean_difference": 0.0019507593640926359,
+              "query_bootstrap_95_interval": [
+                0.0011196933017083436,
+                0.0028092064767408094
+              ],
+              "candidate_higher_queries": 238,
+              "candidate_lower_queries": 151,
+              "tied_queries": 1119,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "native_top80": {
+              "queries": 1508,
+              "mean_difference": -0.001241772791532706,
+              "query_bootstrap_95_interval": [
+                -0.0024809835847659466,
+                8.076108267735614e-06
+              ],
+              "candidate_higher_queries": 397,
+              "candidate_lower_queries": 415,
+              "tied_queries": 696,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "ne_top80": {
+              "queries": 1508,
+              "mean_difference": 0.021841298600482593,
+              "query_bootstrap_95_interval": [
+                0.018519181022848972,
+                0.025197560224361083
+              ],
+              "candidate_higher_queries": 676,
+              "candidate_lower_queries": 383,
+              "tied_queries": 449,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "pa_top80": {
+              "queries": 1508,
+              "mean_difference": 0.02190249202728158,
+              "query_bootstrap_95_interval": [
+                0.018197423646560594,
+                0.026242784943444855
+              ],
+              "candidate_higher_queries": 620,
+              "candidate_lower_queries": 452,
+              "tied_queries": 436,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "mps_top80": {
+              "queries": 1508,
+              "mean_difference": 0.024213003464787827,
+              "query_bootstrap_95_interval": [
+                0.020195767516596116,
+                0.028495113816247048
+              ],
+              "candidate_higher_queries": 640,
+              "candidate_lower_queries": 429,
+              "tied_queries": 439,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "combined_experimental_top80": {
+              "queries": 1508,
+              "mean_difference": 0.0013106746272191392,
+              "query_bootstrap_95_interval": [
+                -0.0002104941264434751,
+                0.002930806632309544
+              ],
+              "candidate_higher_queries": 475,
+              "candidate_lower_queries": 429,
+              "tied_queries": 604,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            }
+          }
+        },
+        "signed_k1": {
+          "queries": 1508,
+          "mean_query_r": {
+            "human_experimental_top80": 0.09281130663177072,
+            "native_top80": 0.10082326731963609,
+            "ne_top80": 0.05803684429367818,
+            "pa_top80": 0.0631938540337565,
+            "mps_top80": 0.05998404668005348,
+            "combined_experimental_top80": 0.0987295332337783,
+            "reactome_complex_then_human_experimental": 0.0984107951440546
+          },
+          "candidate_minus_comparator": {
+            "human_experimental_top80": {
+              "queries": 1508,
+              "mean_difference": 0.005599488512283882,
+              "query_bootstrap_95_interval": [
+                0.0024211718596761074,
+                0.009055906300333469
+              ],
+              "candidate_higher_queries": 182,
+              "candidate_lower_queries": 142,
+              "tied_queries": 1184,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "native_top80": {
+              "queries": 1508,
+              "mean_difference": -0.0024124721755815035,
+              "query_bootstrap_95_interval": [
+                -0.007382586684208371,
+                0.00239406413008583
+              ],
+              "candidate_higher_queries": 349,
+              "candidate_lower_queries": 367,
+              "tied_queries": 792,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "ne_top80": {
+              "queries": 1508,
+              "mean_difference": 0.040373950850376414,
+              "query_bootstrap_95_interval": [
+                0.03249024592433397,
+                0.048310085883007725
+              ],
+              "candidate_higher_queries": 716,
+              "candidate_lower_queries": 529,
+              "tied_queries": 263,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "pa_top80": {
+              "queries": 1508,
+              "mean_difference": 0.035216941110298085,
+              "query_bootstrap_95_interval": [
+                0.027454709587066098,
+                0.04325071601913189
+              ],
+              "candidate_higher_queries": 744,
+              "candidate_lower_queries": 582,
+              "tied_queries": 182,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "mps_top80": {
+              "queries": 1508,
+              "mean_difference": 0.038426748464001105,
+              "query_bootstrap_95_interval": [
+                0.03133948149232227,
+                0.0455966138274472
+              ],
+              "candidate_higher_queries": 759,
+              "candidate_lower_queries": 561,
+              "tied_queries": 188,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "combined_experimental_top80": {
+              "queries": 1508,
+              "mean_difference": -0.00031873808972370513,
+              "query_bootstrap_95_interval": [
+                -0.00465596048414266,
+                0.003877824991200385
+              ],
+              "candidate_higher_queries": 307,
+              "candidate_lower_queries": 321,
+              "tied_queries": 880,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            }
+          }
+        },
+        "signed_k5": {
+          "queries": 1508,
+          "mean_query_r": {
+            "human_experimental_top80": 0.08776987631418966,
+            "native_top80": 0.09327656818423406,
+            "ne_top80": 0.06313436291196398,
+            "pa_top80": 0.06429545275549628,
+            "mps_top80": 0.06148257106408521,
+            "combined_experimental_top80": 0.08983668018309084,
+            "reactome_complex_then_human_experimental": 0.09094667580761431
+          },
+          "candidate_minus_comparator": {
+            "human_experimental_top80": {
+              "queries": 1508,
+              "mean_difference": 0.003176799493424646,
+              "query_bootstrap_95_interval": [
+                0.0019213882848674911,
+                0.0044440120819307675
+              ],
+              "candidate_higher_queries": 250,
+              "candidate_lower_queries": 161,
+              "tied_queries": 1097,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "native_top80": {
+              "queries": 1508,
+              "mean_difference": -0.0023298923766197533,
+              "query_bootstrap_95_interval": [
+                -0.004214298820620992,
+                -0.00044675704808190417
+              ],
+              "candidate_higher_queries": 422,
+              "candidate_lower_queries": 480,
+              "tied_queries": 606,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "ne_top80": {
+              "queries": 1508,
+              "mean_difference": 0.02781231289565033,
+              "query_bootstrap_95_interval": [
+                0.023601690467477315,
+                0.03227757895174442
+              ],
+              "candidate_higher_queries": 747,
+              "candidate_lower_queries": 471,
+              "tied_queries": 290,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "pa_top80": {
+              "queries": 1508,
+              "mean_difference": 0.026651223052118023,
+              "query_bootstrap_95_interval": [
+                0.022179766773441988,
+                0.031621585393662804
+              ],
+              "candidate_higher_queries": 724,
+              "candidate_lower_queries": 527,
+              "tied_queries": 257,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "mps_top80": {
+              "queries": 1508,
+              "mean_difference": 0.029464104743529094,
+              "query_bootstrap_95_interval": [
+                0.025045574284888537,
+                0.034168358936072396
+              ],
+              "candidate_higher_queries": 748,
+              "candidate_lower_queries": 487,
+              "tied_queries": 273,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "combined_experimental_top80": {
+              "queries": 1508,
+              "mean_difference": 0.0011099956245234778,
+              "query_bootstrap_95_interval": [
+                -0.0007913204695422331,
+                0.003013350537050049
+              ],
+              "candidate_higher_queries": 507,
+              "candidate_lower_queries": 441,
+              "tied_queries": 560,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            }
+          }
+        },
+        "absolute_k10": {
+          "mean_query_absolute_r": {
+            "human_experimental_top80": 0.09920415720894087,
+            "native_top80": 0.10205542070626103,
+            "ne_top80": 0.08080570959202105,
+            "pa_top80": 0.08350058821155001,
+            "mps_top80": 0.07966922340046159,
+            "combined_experimental_top80": 0.10014247979254409,
+            "reactome_complex_then_human_experimental": 0.10102685086212601
+          },
+          "candidate_minus_comparator": {
+            "human_experimental_top80": {
+              "queries": 1508,
+              "mean_difference": 0.0018226936531851453,
+              "query_bootstrap_95_interval": [
+                0.0011171382494359087,
+                0.0025889718645710227
+              ],
+              "candidate_higher_queries": 233,
+              "candidate_lower_queries": 156,
+              "tied_queries": 1119,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "native_top80": {
+              "queries": 1508,
+              "mean_difference": -0.0010285698441350358,
+              "query_bootstrap_95_interval": [
+                -0.0021819782039732053,
+                0.0001225211224206614
+              ],
+              "candidate_higher_queries": 411,
+              "candidate_lower_queries": 401,
+              "tied_queries": 696,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "ne_top80": {
+              "queries": 1508,
+              "mean_difference": 0.020221141270104943,
+              "query_bootstrap_95_interval": [
+                0.017209998954681907,
+                0.02346379341695304
+              ],
+              "candidate_higher_queries": 687,
+              "candidate_lower_queries": 372,
+              "tied_queries": 449,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "pa_top80": {
+              "queries": 1508,
+              "mean_difference": 0.017526262650575986,
+              "query_bootstrap_95_interval": [
+                0.014544079849464353,
+                0.020976728521600454
+              ],
+              "candidate_higher_queries": 600,
+              "candidate_lower_queries": 472,
+              "tied_queries": 436,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "mps_top80": {
+              "queries": 1508,
+              "mean_difference": 0.02135762746166442,
+              "query_bootstrap_95_interval": [
+                0.01787676730760616,
+                0.025083272580446854
+              ],
+              "candidate_higher_queries": 668,
+              "candidate_lower_queries": 401,
+              "tied_queries": 439,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "combined_experimental_top80": {
+              "queries": 1508,
+              "mean_difference": 0.0008843710695819145,
+              "query_bootstrap_95_interval": [
+                -0.00044947127950278215,
+                0.0022129826426811917
+              ],
+              "candidate_higher_queries": 478,
+              "candidate_lower_queries": 426,
+              "tied_queries": 604,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            }
+          }
+        },
+        "global_budget_secondary": {
+          "human_experimental_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 24555,
+            "measured_queries_covered": 1472,
+            "conditional_mean_r": 0.1082297549153813
+          },
+          "native_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 24462,
+            "measured_queries_covered": 1479,
+            "conditional_mean_r": 0.10931955300401813
+          },
+          "ne_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 23799,
+            "measured_queries_covered": 1508,
+            "conditional_mean_r": 0.11349047996434616
+          },
+          "pa_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 25878,
+            "measured_queries_covered": 1255,
+            "conditional_mean_r": 0.10978757147835098
+          },
+          "mps_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 25101,
+            "measured_queries_covered": 1309,
+            "conditional_mean_r": 0.11297279979525988
+          },
+          "combined_experimental_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 24740,
+            "measured_queries_covered": 1461,
+            "conditional_mean_r": 0.10773703260490693
+          },
+          "reactome_complex_then_human_experimental": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 24554,
+            "measured_queries_covered": 1472,
+            "conditional_mean_r": 0.1082233311123708
+          }
+        },
+        "measured_eligible_source_pairs": 29857
+      },
+      "RPE1": {
+        "author_shape": [
+          2679,
+          8749
+        ],
+        "mapped_eligible_perturbations": 734,
+        "finite_profiles": 670,
+        "excluded_nonfinite_profiles": 64,
+        "row_exclusions": {
+          "no_unique_graph_gene_mapping": 1732,
+          "duplicate_target_rows": 112,
+          "fewer_than_25_filtered_cells_or_unknown": 101
+        },
+        "signed_k10": {
+          "queries": 662,
+          "mean_query_r": {
+            "human_experimental_top80": 0.3386332090495604,
+            "native_top80": 0.3441013431408522,
+            "ne_top80": 0.3144466325247163,
+            "pa_top80": 0.2842994259060742,
+            "mps_top80": 0.29502756495506144,
+            "combined_experimental_top80": 0.33726644200836986,
+            "reactome_complex_then_human_experimental": 0.3413168470301423
+          },
+          "candidate_minus_comparator": {
+            "human_experimental_top80": {
+              "queries": 662,
+              "mean_difference": 0.0026836379805819685,
+              "query_bootstrap_95_interval": [
+                0.0008258090616529933,
+                0.004547305897671732
+              ],
+              "candidate_higher_queries": 130,
+              "candidate_lower_queries": 89,
+              "tied_queries": 443,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "native_top80": {
+              "queries": 662,
+              "mean_difference": -0.002784496110709914,
+              "query_bootstrap_95_interval": [
+                -0.005607384182289868,
+                -5.3307448729848096e-05
+              ],
+              "candidate_higher_queries": 190,
+              "candidate_lower_queries": 231,
+              "tied_queries": 241,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "ne_top80": {
+              "queries": 662,
+              "mean_difference": 0.026870214505426086,
+              "query_bootstrap_95_interval": [
+                0.020646299244374437,
+                0.0326935728081967
+              ],
+              "candidate_higher_queries": 345,
+              "candidate_lower_queries": 201,
+              "tied_queries": 116,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "pa_top80": {
+              "queries": 662,
+              "mean_difference": 0.05701742112406816,
+              "query_bootstrap_95_interval": [
+                0.04777861806466686,
+                0.06680375880274765
+              ],
+              "candidate_higher_queries": 391,
+              "candidate_lower_queries": 160,
+              "tied_queries": 111,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "mps_top80": {
+              "queries": 662,
+              "mean_difference": 0.04628928207508093,
+              "query_bootstrap_95_interval": [
+                0.03714194992203208,
+                0.05513864466078086
+              ],
+              "candidate_higher_queries": 354,
+              "candidate_lower_queries": 196,
+              "tied_queries": 112,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "combined_experimental_top80": {
+              "queries": 662,
+              "mean_difference": 0.004050405021772489,
+              "query_bootstrap_95_interval": [
+                0.0008976046843574495,
+                0.007431193641911164
+              ],
+              "candidate_higher_queries": 249,
+              "candidate_lower_queries": 228,
+              "tied_queries": 185,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            }
+          }
+        },
+        "signed_k1": {
+          "queries": 662,
+          "mean_query_r": {
+            "human_experimental_top80": 0.35593495590061947,
+            "native_top80": 0.37387244633498395,
+            "ne_top80": 0.30875277261014455,
+            "pa_top80": 0.27721137436533266,
+            "mps_top80": 0.26436972199967973,
+            "combined_experimental_top80": 0.3674540546293193,
+            "reactome_complex_then_human_experimental": 0.3769900879315343
+          },
+          "candidate_minus_comparator": {
+            "human_experimental_top80": {
+              "queries": 662,
+              "mean_difference": 0.021055132030914886,
+              "query_bootstrap_95_interval": [
+                0.012141336487827399,
+                0.030459424185902095
+              ],
+              "candidate_higher_queries": 100,
+              "candidate_lower_queries": 56,
+              "tied_queries": 506,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "native_top80": {
+              "queries": 662,
+              "mean_difference": 0.003117641596550336,
+              "query_bootstrap_95_interval": [
+                -0.009238368701798935,
+                0.014984768813515494
+              ],
+              "candidate_higher_queries": 171,
+              "candidate_lower_queries": 179,
+              "tied_queries": 312,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "ne_top80": {
+              "queries": 662,
+              "mean_difference": 0.0682373153213898,
+              "query_bootstrap_95_interval": [
+                0.04891540407062625,
+                0.08676932207289025
+              ],
+              "candidate_higher_queries": 345,
+              "candidate_lower_queries": 234,
+              "tied_queries": 83,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "pa_top80": {
+              "queries": 662,
+              "mean_difference": 0.09977871356620169,
+              "query_bootstrap_95_interval": [
+                0.07991416012983812,
+                0.11996865519672446
+              ],
+              "candidate_higher_queries": 377,
+              "candidate_lower_queries": 242,
+              "tied_queries": 43,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "mps_top80": {
+              "queries": 662,
+              "mean_difference": 0.11262036593185461,
+              "query_bootstrap_95_interval": [
+                0.09187632442281272,
+                0.13310692513367897
+              ],
+              "candidate_higher_queries": 414,
+              "candidate_lower_queries": 190,
+              "tied_queries": 58,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "combined_experimental_top80": {
+              "queries": 662,
+              "mean_difference": 0.009536033302214992,
+              "query_bootstrap_95_interval": [
+                -0.001648087032940075,
+                0.021197579279484596
+              ],
+              "candidate_higher_queries": 144,
+              "candidate_lower_queries": 148,
+              "tied_queries": 370,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            }
+          }
+        },
+        "signed_k5": {
+          "queries": 662,
+          "mean_query_r": {
+            "human_experimental_top80": 0.34554092090385885,
+            "native_top80": 0.36084360849666103,
+            "ne_top80": 0.315782571643264,
+            "pa_top80": 0.27610988155608024,
+            "mps_top80": 0.2820411773400812,
+            "combined_experimental_top80": 0.3489547895325858,
+            "reactome_complex_then_human_experimental": 0.3519788166593122
+          },
+          "candidate_minus_comparator": {
+            "human_experimental_top80": {
+              "queries": 662,
+              "mean_difference": 0.006437895755453322,
+              "query_bootstrap_95_interval": [
+                0.0032083965737398482,
+                0.009853407861655708
+              ],
+              "candidate_higher_queries": 135,
+              "candidate_lower_queries": 79,
+              "tied_queries": 448,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "native_top80": {
+              "queries": 662,
+              "mean_difference": -0.008864791837348823,
+              "query_bootstrap_95_interval": [
+                -0.013539809623021468,
+                -0.004725504877403832
+              ],
+              "candidate_higher_queries": 191,
+              "candidate_lower_queries": 248,
+              "tied_queries": 223,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "ne_top80": {
+              "queries": 662,
+              "mean_difference": 0.03619624501604817,
+              "query_bootstrap_95_interval": [
+                0.027099174442697604,
+                0.04480252355874583
+              ],
+              "candidate_higher_queries": 358,
+              "candidate_lower_queries": 230,
+              "tied_queries": 74,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "pa_top80": {
+              "queries": 662,
+              "mean_difference": 0.07586893510323192,
+              "query_bootstrap_95_interval": [
+                0.06349014128061707,
+                0.08802270883147845
+              ],
+              "candidate_higher_queries": 390,
+              "candidate_lower_queries": 213,
+              "tied_queries": 59,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "mps_top80": {
+              "queries": 662,
+              "mean_difference": 0.06993763931923101,
+              "query_bootstrap_95_interval": [
+                0.057828194879815255,
+                0.08183299107409578
+              ],
+              "candidate_higher_queries": 380,
+              "candidate_lower_queries": 220,
+              "tied_queries": 62,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "combined_experimental_top80": {
+              "queries": 662,
+              "mean_difference": 0.003024027126726436,
+              "query_bootstrap_95_interval": [
+                -0.0011706860320158069,
+                0.0074237687244398266
+              ],
+              "candidate_higher_queries": 241,
+              "candidate_lower_queries": 222,
+              "tied_queries": 199,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            }
+          }
+        },
+        "absolute_k10": {
+          "mean_query_absolute_r": {
+            "human_experimental_top80": 0.34968196802009505,
+            "native_top80": 0.35436450152879995,
+            "ne_top80": 0.32677085530839267,
+            "pa_top80": 0.3003532727079457,
+            "mps_top80": 0.3088968271268078,
+            "combined_experimental_top80": 0.3483238988617164,
+            "reactome_complex_then_human_experimental": 0.35237137385200284
+          },
+          "candidate_minus_comparator": {
+            "human_experimental_top80": {
+              "queries": 662,
+              "mean_difference": 0.002689405831907835,
+              "query_bootstrap_95_interval": [
+                0.0009165739555551455,
+                0.0045015953345782025
+              ],
+              "candidate_higher_queries": 130,
+              "candidate_lower_queries": 89,
+              "tied_queries": 443,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "native_top80": {
+              "queries": 662,
+              "mean_difference": -0.0019931276767971105,
+              "query_bootstrap_95_interval": [
+                -0.004710861772368471,
+                0.0006079968100191079
+              ],
+              "candidate_higher_queries": 193,
+              "candidate_lower_queries": 228,
+              "tied_queries": 241,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "ne_top80": {
+              "queries": 662,
+              "mean_difference": 0.02560051854361016,
+              "query_bootstrap_95_interval": [
+                0.019725561331063294,
+                0.0312528067721888
+              ],
+              "candidate_higher_queries": 345,
+              "candidate_lower_queries": 201,
+              "tied_queries": 116,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "pa_top80": {
+              "queries": 662,
+              "mean_difference": 0.05201810114405713,
+              "query_bootstrap_95_interval": [
+                0.043373055614706196,
+                0.06071513110636603
+              ],
+              "candidate_higher_queries": 381,
+              "candidate_lower_queries": 170,
+              "tied_queries": 111,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "mps_top80": {
+              "queries": 662,
+              "mean_difference": 0.043474546725195004,
+              "query_bootstrap_95_interval": [
+                0.03520319547022276,
+                0.05161082903526381
+              ],
+              "candidate_higher_queries": 349,
+              "candidate_lower_queries": 201,
+              "tied_queries": 112,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            },
+            "combined_experimental_top80": {
+              "queries": 662,
+              "mean_difference": 0.004047474990286453,
+              "query_bootstrap_95_interval": [
+                0.0010619095075153895,
+                0.007125279017347223
+              ],
+              "candidate_higher_queries": 253,
+              "candidate_lower_queries": 224,
+              "tied_queries": 185,
+              "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+            }
+          }
+        },
+        "global_budget_secondary": {
+          "human_experimental_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 13071,
+            "measured_queries_covered": 656,
+            "conditional_mean_r": 0.3304730294285189
+          },
+          "native_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 13114,
+            "measured_queries_covered": 654,
+            "conditional_mean_r": 0.3310458256819384
+          },
+          "ne_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 12343,
+            "measured_queries_covered": 662,
+            "conditional_mean_r": 0.3463641445207522
+          },
+          "pa_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 14829,
+            "measured_queries_covered": 625,
+            "conditional_mean_r": 0.321954698518881
+          },
+          "mps_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 14371,
+            "measured_queries_covered": 631,
+            "conditional_mean_r": 0.32745689013437573
+          },
+          "combined_experimental_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 12998,
+            "measured_queries_covered": 651,
+            "conditional_mean_r": 0.3321684916807104
+          },
+          "reactome_complex_then_human_experimental": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 13070,
+            "measured_queries_covered": 656,
+            "conditional_mean_r": 0.3304851350587737
+          }
+        },
+        "measured_eligible_source_pairs": 15483
+      }
+    }
+  },
+  "author_nonfinite_column_sensitivity": {
+    "status": "post_exposure_technical_sensitivity_not_fresh_confirmation",
+    "cells": {
+      "K562": {
+        "all_author_rows_used_for_feature_QC": 11258,
+        "original_features": 8248,
+        "finite_features_retained": 8175,
+        "nonfinite_feature_columns_excluded": 73,
+        "mapped_eligible_perturbations": 1986,
+        "finite_nonconstant_profiles": 1986,
+        "constant_or_nonfinite_remaining": [],
+        "queries": 1962,
+        "original_primary_queries": 1508,
+        "mean_query_r": {
+          "human_experimental_top80": 0.08191707104453125,
+          "native_top80": 0.08620761888372881,
+          "ne_top80": 0.06097405577322912,
+          "pa_top80": 0.06079951711918356,
+          "mps_top80": 0.06055733088834353,
+          "combined_experimental_top80": 0.0827202200129598,
+          "reactome_complex_then_human_experimental": 0.08420968821917466
+        },
+        "candidate_minus_comparator": {
+          "human_experimental_top80": {
+            "queries": 1962,
+            "mean_difference": 0.0022926171746433877,
+            "query_bootstrap_95_interval": [
+              0.0015208506097560439,
+              0.0031204415596400234
+            ],
+            "candidate_higher_queries": 332,
+            "candidate_lower_queries": 233,
+            "tied_queries": 1397,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "native_top80": {
+            "queries": 1962,
+            "mean_difference": -0.0019979306645541597,
+            "query_bootstrap_95_interval": [
+              -0.003117527680634382,
+              -0.0008533411269181284
+            ],
+            "candidate_higher_queries": 555,
+            "candidate_lower_queries": 596,
+            "tied_queries": 811,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "ne_top80": {
+            "queries": 1962,
+            "mean_difference": 0.023235632445945523,
+            "query_bootstrap_95_interval": [
+              0.01994704413334574,
+              0.0265286363454465
+            ],
+            "candidate_higher_queries": 908,
+            "candidate_lower_queries": 583,
+            "tied_queries": 471,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "pa_top80": {
+            "queries": 1962,
+            "mean_difference": 0.023410171099991085,
+            "query_bootstrap_95_interval": [
+              0.01979840117584833,
+              0.027131532403134474
+            ],
+            "candidate_higher_queries": 877,
+            "candidate_lower_queries": 631,
+            "tied_queries": 454,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "mps_top80": {
+            "queries": 1962,
+            "mean_difference": 0.023652357330831125,
+            "query_bootstrap_95_interval": [
+              0.02019135935204223,
+              0.027065070990918982
+            ],
+            "candidate_higher_queries": 885,
+            "candidate_lower_queries": 613,
+            "tied_queries": 464,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "combined_experimental_top80": {
+            "queries": 1962,
+            "mean_difference": 0.0014894682062148406,
+            "query_bootstrap_95_interval": [
+              0.00011533481465618113,
+              0.0028216698846380813
+            ],
+            "candidate_higher_queries": 657,
+            "candidate_lower_queries": 599,
+            "tied_queries": 706,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          }
+        },
+        "global_budget_secondary": {
+          "human_experimental_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 40051,
+            "measured_queries_covered": 1928,
+            "conditional_mean_r": 0.10585637974107102
+          },
+          "native_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 39860,
+            "measured_queries_covered": 1933,
+            "conditional_mean_r": 0.10699143782976153
+          },
+          "ne_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 38784,
+            "measured_queries_covered": 1962,
+            "conditional_mean_r": 0.11040057105749611
+          },
+          "pa_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 42004,
+            "measured_queries_covered": 1673,
+            "conditional_mean_r": 0.10816569409455716
+          },
+          "mps_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 40711,
+            "measured_queries_covered": 1721,
+            "conditional_mean_r": 0.1110657456470845
+          },
+          "combined_experimental_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 40455,
+            "measured_queries_covered": 1916,
+            "conditional_mean_r": 0.10480104778977964
+          },
+          "reactome_complex_then_human_experimental": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 40048,
+            "measured_queries_covered": 1928,
+            "conditional_mean_r": 0.10584584238956164
+          }
+        }
+      },
+      "RPE1": {
+        "all_author_rows_used_for_feature_QC": 2679,
+        "original_features": 8749,
+        "finite_features_retained": 8747,
+        "nonfinite_feature_columns_excluded": 2,
+        "mapped_eligible_perturbations": 734,
+        "finite_nonconstant_profiles": 734,
+        "constant_or_nonfinite_remaining": [],
+        "queries": 728,
+        "original_primary_queries": 662,
+        "mean_query_r": {
+          "human_experimental_top80": 0.3413821549851321,
+          "native_top80": 0.3470331938011899,
+          "ne_top80": 0.3169635900442345,
+          "pa_top80": 0.27870879928467224,
+          "mps_top80": 0.2950117286702809,
+          "combined_experimental_top80": 0.3399064164827941,
+          "reactome_complex_then_human_experimental": 0.34477291559286555
+        },
+        "candidate_minus_comparator": {
+          "human_experimental_top80": {
+            "queries": 728,
+            "mean_difference": 0.0033907606077334842,
+            "query_bootstrap_95_interval": [
+              0.001222950222961017,
+              0.005692196660212693
+            ],
+            "candidate_higher_queries": 144,
+            "candidate_lower_queries": 105,
+            "tied_queries": 479,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "native_top80": {
+            "queries": 728,
+            "mean_difference": -0.0022602782083244346,
+            "query_bootstrap_95_interval": [
+              -0.0052453708917933025,
+              0.00066591313195423
+            ],
+            "candidate_higher_queries": 217,
+            "candidate_lower_queries": 264,
+            "tied_queries": 247,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "ne_top80": {
+            "queries": 728,
+            "mean_difference": 0.02780932554863098,
+            "query_bootstrap_95_interval": [
+              0.0220001219156593,
+              0.03413375046487259
+            ],
+            "candidate_higher_queries": 371,
+            "candidate_lower_queries": 244,
+            "tied_queries": 113,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "pa_top80": {
+            "queries": 728,
+            "mean_difference": 0.06606411630819328,
+            "query_bootstrap_95_interval": [
+              0.056527327446894,
+              0.07607299893177494
+            ],
+            "candidate_higher_queries": 436,
+            "candidate_lower_queries": 183,
+            "tied_queries": 109,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "mps_top80": {
+            "queries": 728,
+            "mean_difference": 0.04976118692258458,
+            "query_bootstrap_95_interval": [
+              0.0416229737110213,
+              0.05833680049284497
+            ],
+            "candidate_higher_queries": 390,
+            "candidate_lower_queries": 228,
+            "tied_queries": 110,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          },
+          "combined_experimental_top80": {
+            "queries": 728,
+            "mean_difference": 0.004866499110071407,
+            "query_bootstrap_95_interval": [
+              0.0016316586193589318,
+              0.008118893279569042
+            ],
+            "candidate_higher_queries": 276,
+            "candidate_lower_queries": 271,
+            "tied_queries": 181,
+            "scope": "Descriptive query bootstrap; shared partners and one study limit independence."
+          }
+        },
+        "global_budget_secondary": {
+          "human_experimental_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 15714,
+            "measured_queries_covered": 723,
+            "conditional_mean_r": 0.3311192335651227
+          },
+          "native_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 15758,
+            "measured_queries_covered": 722,
+            "conditional_mean_r": 0.33142458711087386
+          },
+          "ne_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 14782,
+            "measured_queries_covered": 728,
+            "conditional_mean_r": 0.34750809217897505
+          },
+          "pa_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 17846,
+            "measured_queries_covered": 687,
+            "conditional_mean_r": 0.3211068732732712
+          },
+          "mps_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 17278,
+            "measured_queries_covered": 693,
+            "conditional_mean_r": 0.3272140645218275
+          },
+          "combined_experimental_top80": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 15636,
+            "measured_queries_covered": 718,
+            "conditional_mean_r": 0.33147200420657064
+          },
+          "reactome_complex_then_human_experimental": {
+            "eligible_source_pairs_retained": 65132,
+            "measured_pairs_retained": 15713,
+            "measured_queries_covered": 723,
+            "conditional_mean_r": 0.33112982161003973
+          }
+        }
+      }
+    },
+    "policy_wording_erratum": {
+      "original_policy_sha256": "77a8843c538705584f72a5defb2b9c4c71e411af03c76888e6fa97ba41d9ec7c",
+      "executed_adapter_sha256": "e033f871f12468e21b234b8bef2f03a4b68d24f67fa692bcccf135e2ed751ae3",
+      "current_adapter_sha256": "fcf3cb8845660627976657f39bac00775a0807a4b06ebf0b1d227cf5e7490d3f",
+      "correction": "The executed policy mentioned absolute sensitivity, but this sensitivity only computed signed k10 and global-budget coverage. No absolute QC result is claimed. The presentation-only policy wording is corrected in current source; original policy, executed code and all numbers are preserved. No ranking, cohort, feature mask or arithmetic changed."
+    }
+  },
+  "decisions": {
+    "automatic_pruning_promotion": false,
+    "production_graph_changed": false,
+    "ranking_baseline": "Preserve native combined confidence as a strong task-dependent comparator; no universal winner across earlier different assays.",
+    "context": "Use Reactome for source-grounded interpretation; do not count reused provider records as independent corroboration.",
+    "whole_graph_biological_accuracy_established": false,
+    "independent_study_replication_established": false,
+    "different_cell_contexts": true
+  },
+  "validation": {
+    "synthetic_numerical_identity_and_freeze_tests": 9,
+    "primary_independent_SciPy_pair_correlations": 3584,
+    "primary_max_absolute_query_score_difference": 9.992007221626409e-16,
+    "qc_independent_SciPy_pair_correlations": 2107,
+    "qc_max_absolute_query_score_difference": 9.992007221626409e-16
+  },
+  "sources": {
+    "study": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9380471/",
+    "author_catalog": "https://api.figshare.com/v2/articles/20029387",
+    "historical_projection": "https://download.baderlab.org/PathwayCommons/PC2/v12/",
+    "native_relation_semantics": "https://www.pathwaycommons.org/pc2/formats",
+    "author_nonfinite_handling": "https://github.com/thomasmaxwellnorman/Perturbseq_GI/blob/3b25109aeb9c0c2026bd70abd50304a0ad4e5395/perturbseq/cell_population.py#L316-L318"
+  },
+  "licenses": {
+    "Replogle_author_matrices": "CC BY4.0; Replogle and Weissman2022",
+    "Reactome_derived_projection": "CC0; source license retained by Pathway Commons",
+    "Paxtools_source": "MIT; shaded CLI has separately licensed dependencies",
+    "author_processing_code": "LGPL3.0; no author code vendored"
+  },
+  "content_sha256": "a73da43f52644122d2ffd6b0a6858871b926de1fc20f59cb29b500cdc0b49203"
+}

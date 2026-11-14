@@ -1,0 +1,2 @@
+# Preserve rendered document bytes; PDF syntax is not a text diff/merge format.
+*.pdf binary

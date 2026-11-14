@@ -1,8 +1,8 @@
 # BioGraph Steward
-## Team review guide | November 13, 2026
+## Team review guide | Updated November 14, 2026
 
 **Please review over the weekend and send feedback by Monday, November 16.**
-Allow 25-35 minutes, plus loading and downloads. Biological expertise is welcome
+Allow 30-40 minutes, plus loading and downloads. Biological expertise is welcome
 but is not required. We need to learn whether the app's answers, evidence,
 qualifications and exports are understandable. You are not being asked to certify
 the biology.
@@ -18,6 +18,13 @@ as an automatically verified fact.
 **The working route:** choose saved data > ask a guided question > explore the
 graph and answer > inspect sources and warnings > export.
 
+**New for this review:** **Compare & assess** also has six saved historical
+function queries with 36 hypotheses and their source-neighbor contributions.
+The [November 14 scientific results](evaluations/SCIENTIFIC_RESULTS_20261114.md)
+record bounded annotation-recovery gains as well as negative controls. The
+accepted hosted runtime is `a6a05ff`; the latest aggregate publication is named
+`scientific_assessment_reference_20261114` (installed and API-verified).
+
 ### What is integrated
 
 | Component | What it contributes |
@@ -26,7 +33,8 @@ graph and answer > inspect sources and warnings > export.
 | Original-source context | Exact archived WikiPathways models, preserved native GO annotations and recorded quality checks, plus current Reactome record links. These clarify existing annotations; they are not extra independent studies. |
 | Direct CIViC layer | Separately retrieved cancer molecular-profile and therapy-response records, joined to exact Pharos protein identifiers. Complete variant and treatment combinations remain together. |
 | Versioned extensions | Newer STRING associations, MAP-IT observations of nearby proteins in tissue, and SIGNOR activation/inhibition records, with separate provenance and context. Their presence does not establish independence from Pharos's underlying evidence. |
-| Storage and optional planning | AWS hosts the app. Neptune is Amazon's graph database and holds a private mirror of the demonstration graph. NVIDIA/Nemotron planning is optional and experimental; the guided workflow needs no model or GPU. |
+| Historical function comparison | Published graph methods use versioned historical Pharos/STRING context and known-at-the-time GO annotations. Saved hypotheses expose source pairs and neighbor contributions; they are predictions, not accepted annotations. |
+| Storage and optional planning | AWS hosts the app. Neptune is Amazon's graph database and holds a private mirror of the demonstration graph. NVIDIA/Nemotron planning is optional and experimental; the guided workflow needs no model or GPU. Brev work for this delivery is finished. |
 
 ### Scope of the main demonstration
 
@@ -98,8 +106,10 @@ intended example before testing its GO features.
 The five tabs are **Data & saved work**, **Ask & explore**, **Evidence & sources**,
 **Compare & assess**, and **Export**. Start with the saved answer; new retrieval
 is unnecessary. The main cold load can take around 1-2 minutes, and native GO
-inspection around 20 seconds on the tested host. Record waiting separately from
-task difficulty; if an error persists, note it and move on.
+inspection around 20 seconds on the tested host. The separate saved function
+queries respond in under a second; these are different tasks, not a direct
+speedup comparison. Record waiting separately from task difficulty; if an error
+persists, note it and move on.
 
 If **Failed to fetch** appears, try **Data & saved work > Saved graphs and
 answers > Reload saved work** once. If a connection or proxy error persists,
@@ -157,14 +167,25 @@ If the inspected GO panel offers **Download native GO + QC packet**, download
 it separately and read its README. Can you tell why it is separate and where
 it should be extracted? You do not need to configure or rerun it for this review.
 
-### T5. Read the assessment and try another question | 5 minutes
+### T5. Read the assessment and inspect a function hypothesis | 7 minutes
 
-In **Compare & assess**, find one reported result and its stated limitation.
-Can you tell what was measured and what was not? If time permits, return to
-**Ask & explore**, choose ATM or AKT1 with **Qualified WikiPathways source
-context**, explore candidates and accepted evidence, and keep archived native
-references required. Find evidence paths. Report whether scope and any empty
-result are understandable; this is a supported template, not unrestricted chat.
+In **Compare & assess**, select `scientific_assessment_reference_20261114`.
+Find one reported gain, its comparator and a stated limitation. The
+[current results page](evaluations/SCIENTIFIC_RESULTS_20261114.md) provides the
+same findings in prose. Can you distinguish measured
+annotation recovery from the claim that every graph relationship is correct?
+
+Then open the historical function inspector and choose a saved query, such as
+EGFR or TP53. Find one hypothesis, its contributing neighbor and source pair.
+Can you tell that the score is not a probability or an accepted GO annotation?
+Look for prior-annotation reuse or deprecated-term warnings. Explain what you
+would inspect next; no biological judgment is required. These six saved queries
+use a separate historical network, not the 99-target answer diagram.
+
+If time permits, return to **Ask & explore** and try ATM or AKT1 with
+**Qualified WikiPathways source context**, keeping archived native references
+required. Report whether scope and empty results are understandable; this is a
+supported template, not unrestricted chat.
 
 ### Optional: a second real source | 5 minutes
 
@@ -196,6 +217,7 @@ appeared inside the app instead.
 | Molecular profile; therapy set | The complete variant combination and complete treatment combination in a CIViC claim. A combination record cannot be split into separate single-variant or single-drug effects. |
 | Entity resolution; grounding | Matching a name or mention to the intended biological identifier. The same symbol can have several meanings; a plausible name match can still identify the wrong entity. |
 | Source overlap; independent evidence | Different databases can reuse a paper, record or experiment. More database labels do not necessarily mean more independent support. Missing overlap details leave independence unresolved. |
+| CAFA5; Fmax; PK/NK/LK | CAFA5 is a public protein-function prediction reference. Fmax is the best F1 over its benchmark threshold grid, not an accuracy percentage or probability. PK/NK/LK distinguish how much curated function was known before the prediction cutoff. |
 | Coverage; accuracy; prediction | Coverage asks how much a reference can support or assess. Accuracy requires credible correctness labels. Prediction evaluates a specified task against controls. These are different measurements. |
 
 ### Three examples to keep distinct
@@ -224,6 +246,11 @@ appeared inside the app instead.
   GO qualifiers, pathway versions, regulatory effects and source-reuse caveats.
   We recovered 253 of 308 exact cited WikiPathways revisions; the rest stay
   explicitly unresolved.
+- **Prediction gains are measured for a defined task:** on the CAFA5 public
+  temporal reference, the original-graph published GeneMANIA+ method and a fuller
+  historical LocalPlus source profile improve biological-process micro-Fmax.
+  These are secondary annotation-recovery results with paired intervals, not a
+  whole-graph accuracy percentage. See the [complete comparison](evaluations/SCIENTIFIC_RESULTS_20261114.md).
 - **Delivery is reproducible:** the private AWS app, Neptune mirror, saved
   answers, exports and service restart have been checked. Software and data
   remain separately packaged; the earlier backup recovery has a limited scope.
@@ -234,17 +261,19 @@ appeared inside the app instead.
 |---|---|
 | Large language model (LLM) planning and literature extraction | Outputs could have valid structure yet select the wrong entity, miss support, confuse context or decline a supported task. Use the guided route with fixed rules for this review; optional model planning remains experimental. |
 | BioMedBERT and text-support checks | Biomedical language models and natural-language-inference (NLI) methods tested whether text supports a claim. Some task-specific results improved, but false support and context errors remained. These are not automatic truth gates for the delivered graph. |
-| Extra hierarchy/pathway context and automatic biological pruning | No reliable general predictive improvement was established. A fixed transfer to 128 new genes and 7,648 pairs was negative against the baseline and controls. No such pruning or ranking policy was promoted. |
+| Earlier pathway/coessentiality context and biological pruning | The earlier 128-gene/7,648-pair transfer was negative. New CAFA5 results find bounded function-recovery gains, but fixed pruning still has no reliable benefit and the NK/LK tasks do not reliably beat their strongest fixed controls. |
+| Agent-assisted claim verification | The tested agent remains inferior to the published specialist on the bounded source-claim reference. Specialist outputs and uncertainty remain visible; agent judgments are not automatically accepted or used to prune biology. |
 | Expert-labeled source-identity checking | On 678 eligible cases, publication context reduced false alarms from 25 to 18 but detected 26 rather than 31 errors. This is a review trade-off, not automatic identifier correction or whole-graph accuracy. |
 
 ### What remains limited
 
-The app supports source inspection and qualified decisions. **Independent
-whole-graph biological accuracy, validated automatic biological pruning and
-transferable prediction gains remain unproved.** Public reference matches often
-measure positive support or coverage, not correctness of every edge; missing
-matches are not reliable negative labels. Potential source/training overlap
-limits independence.
+The app supports source inspection, qualified decisions and measured temporal
+function recovery. **Whole-graph biological accuracy and validated automatic
+biological pruning remain open.** The positive CAFA5 PK comparisons are secondary
+and do not establish a universal predictor; NK/LK tasks do not reliably beat the
+strongest fixed controls. Public-reference matches and absent annotations
+are not comprehensive positive/negative biology. Source/training overlap and
+same-study dependence remain explicit in the [results](evaluations/SCIENTIFIC_RESULTS_20261114.md).
 
 The demonstration is a scoped frozen capture, not all of Pharos or the latest
 complete release. Current publisher links and native GO context do not recreate
@@ -278,7 +307,7 @@ Unattempted or access-blocked tasks are not failures of biological understanding
 | T2: Inspect the original source |  |  |  |
 | T3: Explain GO source/QC differences |  |  |  |
 | T4: Download and understand exports |  |  |  |
-| T5: Assessment / another question |  |  |  |
+| T5: Assessment / historical function source |  |  |  |
 | Optional Reactome annex |  |  |  |
 
 ### Questions worth answering
@@ -305,11 +334,12 @@ priority changes. A plain Teams reply is sufficient.
 
 [Start and setup](../START_HERE.md) |
 [GO inspection](NATIVE_GO_CONTEXT_WORKBENCH.md) |
-[Scientific assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md) |
+[Current measured results](evaluations/SCIENTIFIC_RESULTS_20261114.md) |
 [Experiment history](EXPERIMENT_HISTORY.md) |
 [Delivery and data access](DELIVERY.md)
 
-Prepared for the November 13 review checkpoint. Hosted app code is `5362b50`.
-The shared HTTPS route requires sign-in; the graph, source packets and existing
-saved answer remain unchanged. Guide edits do not replace those source packets
-or establish biological accuracy.
+Updated November 14; accepted hosted app code is `a6a05ff`. The shared HTTPS
+route requires sign-in; the existing graph, source packets and saved answer
+remain unchanged. The historical function inspector is separate. Keep AWS
+reviewer access available; no Brev instance or model server is needed. This guide
+records review instructions, not an independent biological validation.

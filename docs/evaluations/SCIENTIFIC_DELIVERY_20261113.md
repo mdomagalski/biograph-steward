@@ -1,6 +1,14 @@
 # Biological assessment and delivery — 13 November 2026
 
-**Current delivery:** the protected shared HTTPS reviewer app runs `5362b50`,
+**November 14 update:** the accepted AWS runtime is now `a6a05ff`; the new
+`scientific_assessment_reference_20261114` publication passed protected API,
+source-download and catalogue acceptance. The historical function inspector is
+live. See [current measured results](SCIENTIFIC_RESULTS_20261114.md) for the
+completed CAFA5 and BioRED assessments, including bounded secondary recovery
+gains, negative pruning/knowledge-transfer controls and the unsuccessful agent.
+The November 13 delivery and task-specific conclusions below are dated history.
+
+**November 13 delivery:** the protected shared HTTPS reviewer app runs `5362b50`,
 with Neptune remaining private. The [delivery receipt](reviewer_https_delivery_20261113_summary.json)
 records authenticated access, the separate native GO packet download and full
 extraction/reopening of both NRAS examples, plus a cold Neptune read through
@@ -12,6 +20,36 @@ The corrected source graph is in use in the AWS workbench and private
 Neptune. Its strongest demonstrated improvement is more faithful, inspectable
 use of source evidence. The completed biological comparisons do **not** yet
 show a transferable predictive gain or independent whole-graph accuracy.
+
+The later [external perturbation comparison](PERTURBATION_TRANSFER_20261113.md)
+now tests a historical Reactome co-complex priority against all six existing
+rankings in K562 and RPE1 transcriptomic experiments. The candidate improves
+the previous experimental-support priority slightly but does not beat native
+STRING combined confidence on the primary in either context. Reusing the
+author's documented nonfinite-column handling restores reference coverage and
+preserves that conclusion. The first pass and post-exposure QC sensitivity
+remain separate; neither promotes automatic biological pruning or changes the
+hosted graph. These are two cell contexts from one study, not independent-study
+replication or a whole-graph accuracy percentage.
+
+The subsequent [full GO replacement census](GO_REPLACEMENT_CENSUS_20261113.md)
+accounts for all 167 explicit proposals and identifies 21 nonduplicate
+protein–GO concepts, supported by 24 qualifying native experimental annotation
+records across 15 proteins. Original sources and the hosted graph remain
+unchanged. The source-bound GAF subset is ready for a separate native-GOA
+addition adapter; current qualified-workspace replay does not permit manually
+appending records. This is recoverable annotation coverage, not a newly
+established biological-accuracy or prediction gain.
+
+That adapter gap is now closed in the separate [local native GO recovery
+workspace](NATIVE_GO_RECOVERY_20261113.md): 24 native annotations add 21 concepts
+across 15 proteins and six GO nodes, yielding 16,711 retained evidence records
+and 16,703 assertions. All 16,985 prior evidence payloads and decision rows are
+preserved; new records remain candidates with abstain dispositions. The full
+historical WikiPathways proof was recomputed from the same archived sources and
+bound to the new graph. This is verified annotation coverage recovery, not an
+independent biological-accuracy or prediction gain, and has not been deployed
+to the separate AWS reviewer app.
 
 The [three-page review packet](../../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
 provides an overview of the product, measured results and delivery routes.

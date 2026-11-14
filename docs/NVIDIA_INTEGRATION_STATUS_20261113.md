@@ -1,5 +1,40 @@
 # NVIDIA integration and compute status
 
+## November 14 update: completed source-audit comparison
+
+The latest completed NVIDIA evaluation used the exact served model
+`nvidia/Llama-3.1-Nemotron-Nano-8B-v1`, revision
+`54641c1611fcff44fa4865626462445e0a153fc7`, in bfloat16 on the existing
+vLLM **0.8.5 V0** service. XGrammar **0.1.18** is installed and configured as the
+server default; the native selector routes these `minItems`/`maxItems` schemas
+to **Outlines 0.1.11** (`outlines_core` **0.1.26**), as verified by the sealed
+capability probe. Requests supply `guided_json` without a backend override;
+responses do not independently report backend selection. The bounded
+source-audit controller is the project's Python implementation. Sealed runtime
+observations before and after execution confirm the same model, container and
+configuration.
+
+| Fixed arm | Cases | Model calls | Tool-result reads |
+|---|---:|---:|---:|
+| Bounded source-audit agent | 128 | 512 | 384 |
+| Same model, flat context | 128 | 128 | 384 |
+
+Both arms received the same permitted abstracts, entity contexts and frozen
+specialist outputs. Every agent case read the three tools in the same order;
+adaptive retrieval benefit was not demonstrated. The native BioREDirect
+specialist performed better: exact positive-relation F1 **0.588235**, versus
+**0.486957** for the agent and **0.470588** for flat context. The frozen
+agent-adoption criterion is **false**. These are curator-reference agreement
+results, with the training-exposure and biological-scope limits recorded in the
+[complete BioRED assessment](evaluations/BIORED_SOURCE_RELATIONS_20261113.md)
+and [current scientific results](evaluations/SCIENTIFIC_RESULTS_20261114.md).
+
+The BioRED live-model job is finished. Reviewing saved results in the workbench
+requires no Brev model server or GPU. The earlier planning, deployment and
+platform checks below retain their original November 13 scope and dates.
+
+## November 13 review, retained
+
 Checked November 13, 2026. The supported BioGraph demonstration uses guided
 questions and deterministic, source-bound execution. NVIDIA model and workflow
 integrations are optional. More deployment infrastructure does not provide
