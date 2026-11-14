@@ -85,6 +85,13 @@ proposals; none of the four MFO method intervals establishes a winner.
 Complete populations, unfavorable outcomes and review costs are preserved.
 This distinguishes useful recommendation coverage from validated discovery.
 
+The subsequent [published ProtNote comparison](evaluations/PROTNOTE_COMPARISON_20261114.md)
+tests a distinct full-sequence/function-description predictor on all 547
+sparse-annotation targets, with native-output parity and a prediction axis
+independent of future labels. All six new cells and twelve declared MFO
+contrasts are complete. It does not beat the stronger controls, so it is kept
+as an optional reproducible research baseline rather than a product change.
+
 The [retained-vocabulary GO audit](evaluations/GO_USED_TERM_CONTENT_CURRENCY_20261114.md)
 covers 18,002 IDs in the training vocabulary, saved graph and native inspector.
 It preserves historical meanings and marks literal differences against the

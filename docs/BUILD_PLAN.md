@@ -39,9 +39,12 @@ is complete across all 24 method strata. Excluding the frozen annotation
 baseline before ranking recovers additional supported suggestions, alongside
 many unresolved proposals. All four genuine MFO method intervals cross zero.
 Retain the complete result and cost accounting; do not promote automatic
-acceptance or pruning. [ProtNote qualification](evaluations/PROTNOTE_QUALIFICATION_20261114.md)
-is a separate source-first investigation of a published sequence/text model,
-without a new framework or reference-service dependency.
+acceptance or pruning. The separate [native ProtNote comparison](evaluations/PROTNOTE_COMPARISON_20261114.md)
+is also complete: all 547 targets scored, all six new cells and twelve MFO
+contrasts retained. It does not beat the stronger controls; all four intervals
+favor the annotation baseline and three favor DeepGO. Four LocalPlus contrasts
+cross zero. Keep the qualified optional runner and negative result; do not
+add another app default or broaden this into an automatic truth gate.
 
 The optional [PubMed source-paper utility](SOURCE_PAPER_INSPECTION.md) now works
 without a paid literature API or a benchmark corpus. Native search is its

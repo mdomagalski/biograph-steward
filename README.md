@@ -59,6 +59,13 @@ reference-unmatched suggestions. Neither baseline-aware method establishes an
 MFO advantage over the other. All 24 method rows and 12 contrasts remain
 visible; this is a review-budget utility, without an app/default change.
 
+The [native ProtNote comparison](docs/evaluations/PROTNOTE_COMPARISON_20261114.md)
+is complete on all 547 sparse-annotation targets using full sequences and an
+independent GO-description axis. All 48 old/new outcomes and 12 declared
+contrasts are retained. The published model does not beat the stronger
+controls; all four MFO intervals favor the existing-annotation baseline.
+Its optional, qualified research runner is separate from the application.
+
 The [portable delivery guide](docs/DELIVERY.md) separates the software-only
 runtime from the complete local CRC source/graph/decision package. Follow the
 [five-minute demonstration](docs/DEMO_SCRIPT.md). Real source redistribution

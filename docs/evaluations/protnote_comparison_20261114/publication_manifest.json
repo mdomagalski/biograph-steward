@@ -1,0 +1,14 @@
+{
+  "format": "biograph-steward.protnote-native-evaluation.v1.publication-manifest",
+  "source_report_file_sha256": "9c7012771215b0f23c586905fedc024e8d55851d58623b91e60fc890811a85b7",
+  "files": {
+    "report.json": "e0e0c5ed2bd9b6753f02efd5ffe054d0004df19a12530194b4485bd7be151dbb",
+    "report.html": "2ddbc603120b149f45376e3cc496f840ac3fc58fe4d1b95aeee38de129156f98"
+  },
+  "outcome_slots": 48,
+  "new_outcomes": 6,
+  "MFO_paired_intervals": 12,
+  "operator_paths_or_raw_cases_included": false,
+  "automatic_adoption": false,
+  "content_sha256": "2138909e1796231df8a8e5cfb8459a27955bef5941c6294b3dbee13bafa1bd7b"
+}

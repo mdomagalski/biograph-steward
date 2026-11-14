@@ -95,6 +95,16 @@ and 1,181, respectively. Own-variant support increases by containment, while all
 four genuine MFO method intervals cross zero. This is recommendation utility
 on the same exposed reference, not independent replication or discovery.
 
+The [native ProtNote comparison](PROTNOTE_COMPARISON_20261114.md) then tests a
+published sequence/function-text profile with whole sequences and a fixed
+43,248-term ontology axis independent of target labels. All 547 targets score
+successfully. MFO micro-Fmax is 0.4876/0.5313, versus DeepGO's 0.5589/0.5994
+and the existing-annotation control's 0.5216/0.5980. All four ordinary/IA
+intervals favor the annotation control; three favor DeepGO, with NK ordinary
+crossing zero. All four LocalPlus intervals cross zero. All six aspects/tasks,
+42 earlier outcomes and twelve contrasts remain visible. This completed
+negative development result supports no model or app-default replacement.
+
 In a distinct [native function-call paper-retrieval repeat](native_source_search_20261114/report.html),
 corrected abstract transport produced 4.17% mean reference-paper recall versus
 17.26% for deterministic PubMed search. The same 24 questions had already been
