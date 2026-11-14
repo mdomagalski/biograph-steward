@@ -94,17 +94,16 @@
   }
   function renderFunctionRecovery(parent,result,options) {
     const block=add(parent,'section');add(block,'h4',result.title);
-    add(block,'p',result.scope,'notice');
-    add(block,'p','The reference measures later curator annotations recovered from dated model inputs. Fmax is the best F1 on the benchmark threshold grid; it is not a calibrated confidence or a whole-graph accuracy percentage.','small');
     const rows=result.rows || [], find=(frame,method)=>rows.find(r=>r.frame===frame && r.setting==='partial' && r.namespace==='biological_process' && r.method===method);
     const old=find('primary','localplus'), current=find('primary','strict_alias_localplus');
     if (typeof old?.micro_Fmax==='number' && typeof current?.micro_Fmax==='number') {
       add(block,'p','Original-cohort biological-process micro-Fmax: '+metric(old.micro_Fmax)+' → '+metric(current.micro_Fmax)+' with the strict source profile.','notice');
     }
-    add(block,'p',result.roles?.original_primary?.conclusion || 'The original propagation candidate and its same-source comparator remain in the complete results.','small');
     const primary=['localplus','fastsinksourceplus','genemaniaplus','strict_alias_localplus','global_full_allseeds_fss','official_nonexperimental','official_blast','official_prott5_cosine3'].map(m=>find('primary',m)).filter(Boolean);
     table(block,['Original cohort · BPO','Micro Fmax','IA micro','Macro Fmax','IA macro','IA Smin ↓','Fixed 0.5 F1','Status'],primary.map(r=>[
       methodName(r.method),metric(r.micro_Fmax),metric(r.IA_micro_Fmax),metric(r.macro_Fmax),metric(r.IA_macro_Fmax),metric(r.IA_weighted_Smin),metric(r.fixed_0_5?.F1),r.status]));
+    add(block,'p','Primary micro-Fmax endpoint: '+(result.roles?.original_primary?.conclusion || 'The original propagation candidate and its same-source comparator remain in the complete results.'),'small');
+    add(block,'p','The reference measures later curator annotations recovered from dated model inputs. Fmax is the best F1 on the benchmark threshold grid; it is not a calibrated confidence or a whole-graph accuracy percentage.','small');
     add(block,'p','Read pooled and per-protein metrics together. At an unchanged 0.5 cutoff, precision, recall and coverage can trade off; the app uses these scores as hypotheses, with no automatic acceptance.','small');
     const operating=add(block,'details');add(operating,'summary','Fixed 0.5 operating-point trade-offs');
     table(operating,['Original cohort · BPO','Precision','Recall','F1','Native coverage ratio','Author status'],primary.map(r=>[
@@ -134,6 +133,7 @@
         ...['micro_Fmax','IA_micro_Fmax','macro_Fmax','IA_macro_Fmax','unweighted_Smin','IA_weighted_Smin'].map(k=>metric(r[k])),metric(r.fixed_0_5?.F1)]));populated=true;
     }};
     const limits=add(block,'details');add(limits,'summary','Reference scope, source versions and saved aggregates');
+    add(limits,'p',result.scope,'notice');
     const ul=add(limits,'ul');(result.limitations||[]).forEach(x=>add(ul,'li',x));componentSources(limits,result,options);
   }
   const relationNames={always_None:'Always no reported relation',typed_co_mention:'Typed co-mention',specialist_native:'Published specialist',specialist_type_guard:'Specialist + type guard',flat_context_LLM:'Nano · flat context',source_audit_agent:'Nano · bounded tool agent'};
