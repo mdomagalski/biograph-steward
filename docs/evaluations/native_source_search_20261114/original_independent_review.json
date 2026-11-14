@@ -1,0 +1,178 @@
+{
+  "format": "biograph-steward.native-source-search-independent-review.v1",
+  "created_at": "2026-11-14T16:50:30.361674+00:00",
+  "scope": "Independent set/Fraction arithmetic and seeded resampling; frozen native guard replay. Same24 already consumed reference lists, no new cases or reference-source access.",
+  "status": "passed",
+  "questions": 24,
+  "reference_overlap_values_recomputed": 72,
+  "shared_bootstrap_draws_verified": 2000,
+  "maximum_absolute_numeric_difference": 1.734723475976807e-18,
+  "guard_cases_replayed": 24,
+  "guard_input_files_rechecked": 332,
+  "metrics": {
+    "retained_direct_pubmed": {
+      "mean_reference_recall_at_10": 0.17258986928104575,
+      "mean_reference_hit_at_10": 0.2916666666666667,
+      "fixed_questions": 24
+    },
+    "retained_JSON_v4_base": {
+      "mean_reference_recall_at_10": 0.0625,
+      "mean_reference_hit_at_10": 0.08333333333333333,
+      "fixed_questions": 24
+    },
+    "native_base": {
+      "mean_reference_recall_at_10": 0.0,
+      "mean_reference_hit_at_10": 0,
+      "fixed_questions": 24
+    }
+  },
+  "paired_comparisons": [
+    {
+      "candidate": "native_base",
+      "comparator": "retained_JSON_v4_base",
+      "observed_mean_difference": -0.0625,
+      "paired_95_percentile_interval": [
+        -0.16666666666666669,
+        0.0
+      ],
+      "fraction_draws_above_zero": 0.0
+    },
+    {
+      "candidate": "native_base",
+      "comparator": "retained_direct_pubmed",
+      "observed_mean_difference": -0.17258986928104575,
+      "paired_95_percentile_interval": [
+        -0.32190563725490196,
+        -0.05106209150326796
+      ],
+      "fraction_draws_above_zero": 0.0
+    },
+    {
+      "candidate": "retained_JSON_v4_base",
+      "comparator": "retained_direct_pubmed",
+      "observed_mean_difference": -0.11008986928104575,
+      "paired_95_percentile_interval": [
+        -0.23508986928104575,
+        -0.01286764705882353
+      ],
+      "fraction_draws_above_zero": 0.0
+    }
+  ],
+  "operational_counts": {
+    "native_base": {
+      "fixed_cases": 24,
+      "valid_final_cases": 12,
+      "valid_EMPTY_final_cases": 4,
+      "valid_NONEMPTY_final_cases": 8,
+      "status_counts": {
+        "completed": 12,
+        "no_tool_calls": 10,
+        "empty_tool_calls": 2
+      }
+    },
+    "retained_JSON_v4_base": {
+      "fixed_cases": 24,
+      "valid_final_cases": 13,
+      "valid_EMPTY_final_cases": 7,
+      "valid_NONEMPTY_final_cases": 6,
+      "status_counts": {
+        "completed": 13,
+        "invalid_output": 9,
+        "invalid_action": 2
+      }
+    }
+  },
+  "posthoc_candidate_localization": {
+    "selected_after_observed_zero_final_recall": true,
+    "counts": {
+      "cases_with_any_candidate": 24,
+      "cases_with_reference_candidate": 5,
+      "reference_candidate_pairs": 11,
+      "final_reference_pairs": 0,
+      "no_search_cases": 0,
+      "executed_search_actions": 35,
+      "exact_abstract_get_actions": 12,
+      "reference_candidate_cases_with_nonempty_final_missing_all_gold": 1,
+      "reference_candidate_cases_with_failed_final": 3,
+      "valid_empty_with_candidates": 4,
+      "reference_candidate_cases_with_empty_final": 1
+    },
+    "all_returned_candidate_pool_mean_reference_coverage": 0.1736111111111111,
+    "candidate_pool_size_min_median_max": [
+      2,
+      10.0,
+      20
+    ],
+    "search_source_status_counts": {
+      "completed": 34,
+      "completed_empty": 1
+    },
+    "failure_stage_counts": {
+      "failed_with_candidates": 12
+    },
+    "model_mode_status_counts": [
+      {
+        "mode": "auto",
+        "status": "accepted_tool_call",
+        "calls": 47
+      },
+      {
+        "mode": "auto",
+        "status": "controller_duplicate_rejected",
+        "calls": 12
+      },
+      {
+        "mode": "auto",
+        "status": "empty_tool_calls",
+        "calls": 2
+      },
+      {
+        "mode": "auto",
+        "status": "no_tool_calls",
+        "calls": 10
+      },
+      {
+        "mode": "named_finish",
+        "status": "accepted_tool_call",
+        "calls": 12
+      }
+    ],
+    "model_mode_finish_reason_counts": [
+      {
+        "mode": "auto",
+        "finish_reason": "stop",
+        "calls": 10
+      },
+      {
+        "mode": "auto",
+        "finish_reason": "tool_calls",
+        "calls": 61
+      },
+      {
+        "mode": "named_finish",
+        "finish_reason": "stop",
+        "calls": 12
+      }
+    ],
+    "output_cap_guards": 0,
+    "query_character_lengths_min_median_max": [
+      10,
+      31,
+      49
+    ],
+    "interpretation": "Union candidate coverage (up to20 returned IDs) is an error-localization diagnostic, not the primary top10 endpoint, a new arm, a query selection procedure or a proposed default. An absent historical positive reference is not proof that a retrieved paper is irrelevant/false."
+  },
+  "source_pins": {
+    "protocol_file_sha256": "ecd997f8a16b564cbc44245121c1fee67ca9d3777b8595d63d15fb878dac202e",
+    "prediction_seal_file_sha256": "0b972a9524eb2fc51bc5dea38e02f1fa5a0fddaf06ebee532a55ff76c2d07ecc",
+    "assessment_file_sha256": "d4416439213b5b872b93c53e13c653f7675d5bfc117ca368c5e0df79c6697bac",
+    "old_released_reference_case_file_sha256": "dc118e7d450ec77bb0445b62b4eb349200b32e9c09f2383c54a95b5f8bb6fe3e",
+    "private_native_results_sha256": "7944d5f835e3654a666c47e8f56a78e3d1219b5f47bc8ae28af7d5d219c1db93",
+    "shared_weights_sha256": "880af1f49ec987374e40c53920322c4e969291173d688cd95bdeb03b2750cddd",
+    "review_script_sha256": "269141780c7a688bb444bd37ebf535a7047b6305dba5ebd61bf752a23ade1a4f"
+  },
+  "raw_questions_queries_PMIDs_reference_values_or_model_content_in_aggregate": false,
+  "new_model_or_source_calls": 0,
+  "code_policy_graph_or_scores_changed": false,
+  "content_sha256": "11a1ffb4a4378c98f6a4d8ca1436f9742604113dbd282749efba389cef4e4c45"
+}

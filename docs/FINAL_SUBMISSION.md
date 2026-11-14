@@ -38,6 +38,16 @@ results do not establish whole-graph truth or superiority over complete Pharos.
 The tested claim-checking agent remains inferior to the published specialist;
 its judgments are not an automatic acceptance or pruning policy.
 
+The subsequent [published DeepGO-SE comparison](evaluations/DEEPGO_SE_20261114.md)
+also failed its fixed BPO adoption rule: all four primary paired intervals
+favored retained LocalPlus. These are reused-reference development results;
+the linked record keeps all aspects and separately scoped supplements visible.
+Molecular-function Fmax is higher in both cohorts, with all four exploratory,
+unadjusted intervals above zero; all four cellular-component intervals cross
+zero. This is an aspect-specific research lead, alongside lower fixed-cutoff
+precision, rather than a general replacement decision.
+No DeepGO consumer, graph change or default promotion follows.
+
 The hosted [native GO inspector](NATIVE_GO_CONTEXT_WORKBENCH.md) also exposes
 preserved relations, NOT qualifiers, references, forms and context alternatives,
 with separately labeled saved official QC. It makes known source-quality issues
@@ -283,8 +293,9 @@ Show implemented methods and useful behavior before architecture details.
 
 The supplied rubric weights usability 40%, accuracy/pruning 30%, explainability 20% and standards 10%. Semi-autonomous construction is allowed. AWS, Neptune and PaperQA3 are not stated prerequisites. See the [current organizer/proposal crosswalk](PROJECT_ALIGNMENT.md).
 
-Brev work for this delivery is finished; its instance and model server are not
-needed for review. Keep the existing AWS reviewer app and private Neptune
+Brev's instance and model server are not needed for the saved review workflow.
+Let any optional assessment jobs finish and retrieve their receipts before
+stopping the instance. Keep the existing AWS reviewer app and private Neptune
 available for the team. No new cloud service or NemoClaw installation is a submission dependency. This
 guidance does not report current account billing or credit consumption.
 
@@ -295,5 +306,12 @@ The prepared [support-search assessment](evaluations/support_search_comparator_2
 The existing PubMed/PMC source path and preserved citations remain usable without an Edison account. The optional [source-paper inspection utility](SOURCE_PAPER_INSPECTION.md) now adds pinned BioMCP PubMed discovery, reusing the existing exact-PMID reader. Native mode needs no model; its current binary qualification supports Apple Silicon Macs. A separately evaluated bounded NVIDIA controller can search and open one abstract, with an explicitly selected attributed skill. This is not PaperQA3 execution and is not a new hosted panel.
 
 On the [fixed 24-question public-reference subset](evaluations/COMBINED_CONTEXT_AND_SKILLS_20261114.md#completed-agent-and-skill-assessment), native search recovers 17.26% of reference documents on average versus 6.25% for either error-feedback agent condition. Feedback improves valid final outputs from 10/48 to 31/48, of which 22 are empty; nonempty handoffs increase only from 7 to 9. No reliable skill or retrieval advantage follows. The native route remains the utility's default; captured source papers stay distinct from final model selections and verified claims. No new literature framework or paid service is required for submission.
+
+A later [native function-call development repeat](evaluations/native_source_search_20261114/report.html)
+corrected a verified abstract-transport problem and recovered 4.17% of listed
+reference papers, versus 17.26% for direct PubMed search. All 12 requested
+abstracts resolved, but 12 of 24 final handoffs still failed; the adoption rule
+was not met. The original confounded run remains preserved. Direct PubMed search
+stays the utility default; paper recovery does not establish scientific truth.
 
 Sources: [Edison allowance notice](https://edisonscientific.com/news/we-raised-70m-to-accelerate-science), [PMC developer services](https://pmc.ncbi.nlm.nih.gov/tools/developers/).

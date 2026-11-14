@@ -26,6 +26,32 @@ method checks; no real-graph explanation or app consumer was adopted after the
 combined predictor failed its retention rule. This archive has not been pushed.
 See the [reuse qualification](evaluations/reusable_agent_tools_20261114_summary.json).
 
+The separately tested NVIDIA native-tool controller is preserved outside the
+active application on `codex/archive-native-tools-v3-20261114`, commit
+`0ecd9ab86ae388e375cabb5849a9c03b4b26a995`. Earlier failed protocol sources remain
+on `codex/archive-native-single-call-20261114` at
+`19df088c1ff30c2c77484dd06e9da504d2e91047` and
+`codex/archive-native-auto-finish-20261114` at
+`044ac716cfbca9b359b2dd8f7289bfd67781d042`. The
+[complete retrieval assessment](evaluations/native_source_search_20261114/report.html)
+retains both the transport-confounded run and its corrected repeat. Direct
+PubMed remains the default. These source-only local refs contain no raw model
+responses or reference cases and have not been pushed.
+
+The [DeepGO-SE comparison](evaluations/DEEPGO_SE_20261114.md) retains reusable
+published-method adapters and aggregate delivery tools under
+`tools/deepgo_reference`; it adds no app consumer or default replacement.
+Task-local sensitivity sources are separately preserved on
+`codex/archive-deepgo-max-20261114` at
+`bc41b2a6d2291f48c576e405f1ca1009ec232795`, and
+`codex/archive-deepgo-secondary-uncertainty-20261114` at
+`431206b9d53dc299870078b53182cb2ef219c0fe`. The latter includes the unexecuted
+preparations and the final full-parser version. These are local operational
+source captures, used alongside the maintained adapters, rather than complete
+runtime or data backups; operator paths remain in their configs. They have not
+been pushed, and the earlier primary, failures and exposure boundaries remain
+unchanged.
+
 ## Current reference status — November 14, 2026
 
 Use this table and the linked completed reports before choosing a reference.
@@ -39,6 +65,8 @@ different endpoints and cannot exchange their label meanings.
 |---|---|---|
 | CAFA5 v2 partial-knowledge (PK) function recovery | Fixed native primary and all 240 declared slots are complete: 239 scored, one no-native-curve. The primary FSS candidate failed; secondary same-graph GeneMANIA+ and fuller strict-source LocalPlus have positive conditional BPO differences. The 2,826-target added-protein cohort is same-study transductive transfer. Current GOA had prior project exposure; historical features are enforced without claiming full developer blindness. | [Controlled results](evaluations/SCIENTIFIC_RESULTS_20261114.md), [sanitized PK outcomes](evaluations/cafa_function_recovery_20261114_summary.json) |
 | Full strict-source GeneMANIA+ combination | All six new PK aspect/cohort cells and fixed paired intervals are complete on already consumed annotations. The original BPO contrasts cross zero; the additional cohort has a positive ordinary contrast but an uncertain IA contrast. The fixed retention rule fails, and LocalPlus remains in the product. All earlier 240 outcomes are preserved separately. | [Combination decision](evaluations/COMBINED_CONTEXT_AND_SKILLS_20261114.md#completed-biological-comparison), [sealed all-aspect addendum](evaluations/combined_development_20261114/report.html) |
+| Published DeepGO-SE sequence/ontology profile | Six new fill cells retain all 246 earlier outcomes. All four fixed BPO intervals favor LocalPlus; a separate common-max sensitivity retains all 12 cells and also favors LocalPlus on all four BPO intervals. All four post-hoc MFO intervals favor DeepGO and all four CCO intervals cross zero. These secondary intervals are exploratory and unadjusted; no app consumer or default change follows. Same exposed 6,100-target inference frame, not a fresh reference. | [Method and completed results](evaluations/DEEPGO_SE_20261114.md), [primary and MAX publication](evaluations/deepgo_se_20261114/report.html), [both-secondary uncertainty](evaluations/deepgo_se_secondary_20261114/secondary_uncertainty.html) |
+| Native NVIDIA function-call paper search | Same 24 consumed BioASQ document lists. The original transport-confounded run and corrected repeat remain separate: corrected mean recall is 4.17% versus direct PubMed 17.26%; all 12 requested abstracts complete, but 12 final handoffs fail. Partial positive references do not label every unlisted paper false. No native-controller promotion; source-only local archives preserve protocol failures. | [Complete retrieval assessment](evaluations/native_source_search_20261114/report.html) |
 | CAFA5 no-/limited-knowledge transfer | All six native aspect/task settings and six method arms are consumed. Neither graph method establishes BPO superiority over the non-experimental control; no universal predictor promotion. The GeneMANIA numerical guard correction and count-reduction diagnostic retain their failed executions and do not change forecast scores or the fixed endpoint tolerance. | [Complete transfer readouts](evaluations/cafa_nonpk_transport_20261114_summary.json), [interpretation](evaluations/SCIENTIFIC_RESULTS_20261114.md#transfer-and-pruning) |
 | BioRED / BioCreative VIII source relations | Fixed 128-publication six-arm comparison, complete 16,489 gene-involving candidate pairs and 28,734-row artifact diagnostic are consumed. The bounded NVIDIA agent underperforms the released specialist and fails adoption. Gold entity inputs, unverified checkpoint training membership and source-relative None labels limit the claim. | [Source-relative evaluation](evaluations/BIORED_SOURCE_RELATIONS_20261113.md), [current results](evaluations/SCIENTIFIC_RESULTS_20261114.md#curator-reference-relations-and-the-nvidia-agent) |
 | Replogle 2022 K562/RPE1 normalized Perturb-seq pseudobulk | Both declared expression endpoints are now consumed. Fixed historical co-complex context improves the previous experimental-priority neighbour ranking slightly but loses to native combined confidence on the primary in both cell contexts. The separate author-code nonfinite-column sensitivity improves reference coverage and preserves the conclusion; it is post-exposure, not another confirmation. No production pruning promotion. | [Completed external perturbation comparison](evaluations/PERTURBATION_TRANSFER_20261113.md) |

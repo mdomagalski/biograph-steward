@@ -1,0 +1,122 @@
+{
+  "format": "biograph-steward.native-source-transport-public-protocol.v1",
+  "created_at": "2026-11-14T17:10:25.975738+00:00",
+  "same_original_implementation_file_count": 21,
+  "same_original_implementation_sha256_values": [
+    "05647f8a7bb8d6990899bd25689c5fcd7e20744af47556213d83447143c4768e",
+    "1082077acfc23774e5444639b0c28ba45551edd8c6d4a2f444ffc9cd52e762c0",
+    "1d373e530e060cc85bb0641724e1b536cc75a54ed03279747d4f959ec33e13d2",
+    "22025c84b74e123305630f57c90017623cec6a3c6434f5b17980c6cde3cda1e7",
+    "2318431dcc5866ae96dda243dde0f0f5011c8bd674ecb249817d842ec4fc8329",
+    "38c16a74240719f5868c5e0490572c84187710da89497c4acdf762b312f24e2a",
+    "43192898a49ff870b72d4a96206c3b820b847723411c1f59ab2508f3aae6887c",
+    "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6",
+    "5f8e2474c6921061b5cc598d1ac1f53f13ca4995fc60cad91e8150a59dd4be94",
+    "64f54569f7d674ed886c150cef0893e7d511c8ceaf4e1267f2754da9b5c99d22",
+    "717c4a3bad1717224ca6d64154d1c61c943379a2db37cf0172229c7329742167",
+    "8ac2d5317def728b8552a69650e42e53c48c5d021942e1508f922a6cef1644bf",
+    "8ebde58fa483bb8cded31cdfeaf81996918cbc074141b25417729a5dcd54eb03",
+    "9e4dbe09102abc784f4c81b7452ebe94706827512ad23f8b2f40a77f1ecae7fb",
+    "b48b31c6c070ab5defdff3b6a664221f11cd4644e9be6efeecfefb2bc8587d2d",
+    "c86e12dda4cf2976236a5251825a0f34a9bc7b67bc75142a986048a49f5bcdcf",
+    "c924f62561e274377c3af256b0fb70c8688410fab02bf054064fe686d26cf6c9",
+    "c9d6465f92a2075b03cfc5dff5778a71c7f104bfab523c307bf992751877a2ff",
+    "cc78ac5021e25fec00ae1cfb1bae4ee6fc5e697ca92686d8f5a7b2bb9336040c",
+    "cdadf97d4d994028ac863c188d2c4446ade1a65e231df8157dc484f8c7fc264d",
+    "e7f46393901a278b7dd6c97c930d0c1e0ca604aeba2ed013f547fa397adea80b"
+  ],
+  "original_protocol_file_sha256": "ecd997f8a16b564cbc44245121c1fee67ca9d3777b8595d63d15fb878dac202e",
+  "questions_sha256": "9ea8e3178e28aef78f48d8f1177695f25cc9b3e365f42990eabf70d70dae8140",
+  "original_prediction_seal_file_sha256": "0b972a9524eb2fc51bc5dea38e02f1fa5a0fddaf06ebee532a55ff76c2d07ecc",
+  "repaired_prediction_seal_file_sha256": "117c3cac176e521e6842a0b3217fc27193c845392d13f3d726559a07bc1a875d",
+  "repair_freeze_file_sha256": "64d4fbd49603f2b5e2393d29ba627c22aaca5a8e1c016e1a00b30cb1d36e2fd6",
+  "repair_freeze_content_sha256": "e0bfbb51ad50de32431fc03d6d072cfbccdbf330c891d343c82fa0afa91f4c2a",
+  "environment_only_correction": {
+    "NO_PROXY": "*",
+    "no_proxy": "*"
+  },
+  "TLS_certificate_verification_disabled": false,
+  "cache_policy": {
+    "keep_exact_literal_statuses": [
+      "completed",
+      "completed_empty",
+      "empty"
+    ],
+    "all_tools": true,
+    "selection_uses_questions_reference_labels_or_relevance": false,
+    "all_other_statuses_omitted_from_new_cache_but_preserved_in_original": true,
+    "hardlinks_or_original_cache_edits": false
+  },
+  "original_cache_entries": 122,
+  "seeded_entries": 108,
+  "omitted_entries": 14,
+  "status_counts": [
+    {
+      "tool": "get_abstract",
+      "status": "completed",
+      "kept": true,
+      "entries": 15
+    },
+    {
+      "tool": "get_abstract",
+      "status": "unavailable",
+      "kept": false,
+      "entries": 11
+    },
+    {
+      "tool": "search_pubmed",
+      "status": "completed",
+      "kept": true,
+      "entries": 81
+    },
+    {
+      "tool": "search_pubmed",
+      "status": "completed_empty",
+      "kept": true,
+      "entries": 12
+    },
+    {
+      "tool": "search_pubmed",
+      "status": "partial",
+      "kept": false,
+      "entries": 2
+    },
+    {
+      "tool": "search_pubmed",
+      "status": "unavailable",
+      "kept": false,
+      "entries": 1
+    }
+  ],
+  "cache_preservation": {
+    "old_cache_entry_count": 122,
+    "old_cache_files_byte_verified": 329,
+    "old_cache_unchanged": true,
+    "kept_seed_files_byte_verified": 309,
+    "kept_seed_files_are_ordinary_copies": true,
+    "recaptured_previously_omitted_statuses": [
+      {
+        "tool": "get_abstract",
+        "old_status": "unavailable",
+        "new_status": "completed",
+        "entries": 9
+      }
+    ],
+    "repair_freeze_file_sha256": "64d4fbd49603f2b5e2393d29ba627c22aaca5a8e1c016e1a00b30cb1d36e2fd6",
+    "old_cache_snapshot_file_sha256": "f30a517829bdac80cfa0f5dadb6599cbf4744829a3890276b34038ac3cc9b6f0"
+  },
+  "abstract_availability": {
+    "requested": 12,
+    "completed": 12,
+    "cache_hits": 3,
+    "fresh_fetch_invocations": 9,
+    "identity_resolved": 12,
+    "nonempty_abstract": 12,
+    "distinct_resolved_article_ID_count": 12
+  },
+  "model_prompts_API_budgets_controls_and_metric_policy_changed": false,
+  "development_posthoc_transport_repair": true,
+  "fresh_holdout_or_confirmatory_evidence": false,
+  "new_source_or_model_calls_by_publication": 0,
+  "content_sha256": "328010deed428f9c081acbf07b7bc958231d7d9c618a7f4cfd4846bf8d7e979f"
+}

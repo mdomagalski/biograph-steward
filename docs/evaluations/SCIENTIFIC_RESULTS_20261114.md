@@ -57,6 +57,24 @@ Full-context GeneMANIA+ scores 0.134997 on original-cohort BPO, versus
 positive, while its IA gain remains uncertain. The predeclared retention gate
 fails; the deployed LocalPlus inspector and the original results stay intact.
 
+The newer [published DeepGO-SE comparison](DEEPGO_SE_20261114.md) is a separate
+development reuse of the same exposed CAFA5 outcomes. Its fixed primary BPO
+comparison failed all four positive-interval requirements against full strict
+LocalPlus, which remains retained. All aspects and separately scoped
+postprocessing/secondary uncertainty supplements are reported in that record;
+they do not replace the primary or establish whole-graph accuracy.
+The completed common-max sensitivity also favors LocalPlus on all four BPO
+intervals. All four post-hoc MFO intervals favor DeepGO, while all four CCO
+intervals cross zero. These secondary intervals are unadjusted and exploratory;
+the fixed-0.5 precision and Smin trade-offs remain in the complete report.
+
+In a distinct [native function-call paper-retrieval repeat](native_source_search_20261114/report.html),
+corrected abstract transport produced 4.17% mean reference-paper recall versus
+17.26% for deterministic PubMed search. The same 24 questions had already been
+evaluated; incomplete positive document lists and remaining API handoff failures
+limit interpretation. No agent default was promoted. This measures paper
+recovery, separately from the protein-function results above.
+
 Fmax is the best F1 across the official benchmark threshold grid. It is not an
 accuracy percentage or a calibrated probability. Improvements are metric
 specific: IA-macro Fmax decreases slightly with the fuller LocalPlus profile.

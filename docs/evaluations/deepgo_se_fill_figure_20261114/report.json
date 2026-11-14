@@ -1,0 +1,25 @@
+{
+  "format": "biograph-steward.deepgo-development.v1.fill-figure",
+  "created_at": "2026-11-14T19:53:17.938000+00:00",
+  "source_pins": {
+    "primary_publication_manifest_sha256": "922a37c7875b8c5e9d4f541caa4fe9830e8c66423cadb8580f50a7062be5e338",
+    "primary_public_report_sha256": "81afbab372e4900211b826edf2e31790636fdae8d0f59d9040300c3da2278555",
+    "primary_public_report_content_sha256": "2213d6ad11fd8b279f7c7e53a3eb41e7505bc40341a58bf229c88c94ad3d819b",
+    "prior_246_file_sha256": "1c48a0246b597318f29f793f497d60ae5087d79ab57b3e8028cde38faaee5046",
+    "secondary_publication_manifest_sha256": "a1ca1ee6ab9e3532ff0d7a810e186f286a1a3e0f7edea2f59addd40a8be372f5",
+    "secondary_public_report_sha256": "e1ee9406b5365f88b0b857acff1776c940fc5c50f83b177d89948d4ad55f302a",
+    "secondary_public_report_content_sha256": "66dee4d168d2dd25dee387363818599c44958985e8f26ff597008fad997d3f97",
+    "common_raw_primary_source_report_sha256": "23164e2bb2d68a7275fd5c6caf150084797fd690194ff8a72135132a46990c9b"
+  },
+  "implementation_sha256": "16d79a5fdd37e67b18eff5da8c7caf4ede0d3683edb93ea03d1fb02f0b78c646",
+  "aggregate_reader_sha256": "377308efee06f4f14cd4fca51b5f3ebda1cf6ff0ef2e15091fe05c206ebd7a01",
+  "matplotlib": "3.10.6",
+  "raw_reference_or_forecast_rows_read": false,
+  "new_scientific_scoring": false,
+  "files": {
+    "deepgo_fill_contrasts.svg": "a4e662596f034c6b96785619f9509c8a23b77a357272c3ddf6ad617d82e50f15",
+    "deepgo_fill_contrasts.png": "6be94ebc3acfb207b1500c69f7366fb03a71fe8097ab3c2a5f9758b4331b569c",
+    "plotted_aggregates.json": "be43ea76297e78f7e146580d46d0cec222a916def0274180e9f2bbceb5befa5a"
+  },
+  "content_sha256": "9c625c9dd54b2071744ab8fc3d49ef78760839631de6943f0dcf57fe65990a4a"
+}

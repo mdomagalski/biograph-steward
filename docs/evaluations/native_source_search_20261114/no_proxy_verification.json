@@ -1,0 +1,24 @@
+{
+  "format": "biograph.source-transport-no-proxy-verification.v1",
+  "created_at": "2026-11-14T16:57:32.056705+00:00",
+  "process_exit": 0,
+  "documented_process_environment": {
+    "NO_PROXY": "*",
+    "no_proxy": "*"
+  },
+  "core_source_changed": false,
+  "source_cache_modified": false,
+  "model_calls": 0,
+  "result": {
+    "status": "downloaded",
+    "default_proxy_scheme_keys": [
+      "no"
+    ],
+    "bytes": 14687,
+    "sha256": "dab6e7cefeb8de7cc4df6804f2d681eedec51a40da574cbcf6acf4d08e3c3a8e",
+    "exact_identity_present": true,
+    "nonempty_abstract": true,
+    "TLS_certificate_verification_disabled": false
+  },
+  "content_sha256": "71bc7203639d067dfad276819a008094747e942a49a0ea9390d8f58f463328f0"
+}

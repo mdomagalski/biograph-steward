@@ -17,6 +17,15 @@ outperformed the tested agent on the fixed public-reference subset. The
 bounded agent route and attributed skill remain explicit research options;
 the hosted reviewer interface is unchanged.
 
+The newer [published DeepGO-SE comparison](docs/evaluations/DEEPGO_SE_20261114.md)
+shows higher molecular-function Fmax in both cohorts, with all four exploratory
+intervals above zero, but failed its fixed biological-process adoption rule on
+previously evaluated CAFA5 targets; LocalPlus stays retained. In the separate
+[native function-call retrieval repeat](docs/evaluations/native_source_search_20261114/report.html),
+correcting abstract transport yielded 4.17% reference-paper recall versus
+17.26% for direct PubMed search. Both are development comparisons; neither
+supports a new product default or a whole-graph accuracy claim.
+
 The [portable delivery guide](docs/DELIVERY.md) separates the software-only
 runtime from the complete local CRC source/graph/decision package. Follow the
 [five-minute demonstration](docs/DEMO_SCRIPT.md). Real source redistribution

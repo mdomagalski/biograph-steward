@@ -129,6 +129,40 @@ Each search query is limited to 2,000 characters; native mode passes the entire
 question as its query, so use at most 2,000 characters there. Unsupported input
 is not silently shortened or broadened.
 
+### Troubleshoot a verified Mac system-proxy refusal
+
+An abstract fetch can fail even when native search works: Python's default
+`urllib` opener can discover macOS system proxies when proxy environment
+variables are absent. One paired check in this project reproduced a default
+connection refusal and a successful direct HTTPS fetch for the same record.
+An `URLError` alone does not identify that cause. See Python 3.14's official
+[`getproxies`](https://docs.python.org/3.14/library/urllib.request.html#urllib.request.getproxies)
+and [`ProxyHandler`](https://docs.python.org/3.14/library/urllib.request.html#urllib.request.ProxyHandler)
+documentation.
+
+For that verified local configuration problem, when direct internet access is
+permitted, apply the documented proxy setting to **one new process**:
+
+```sh
+env NO_PROXY='*' no_proxy='*' python3 -m tools.source_search.query \
+  --question 'Pharos TCRD' \
+  --qualification runs/operator_biomcp_mac_v093/qualification.json \
+  --qualification-sha256 "$BIOGRAPH_SOURCE_QUAL_SHA256" \
+  --mode agent --procedure base \
+  --endpoint http://127.0.0.1:8011/v1/chat/completions \
+  --cache runs/source_paper_direct_transport_cache_01 \
+  --output runs/source_paper_direct_transport_01
+```
+
+This uses the optional existing model described above; it does not start Brev.
+Use a **new `--cache` as well as a new `--output`**: unavailable responses are
+saved immutably, so reusing their cache would repeat the saved failure without
+testing the corrected transport. Keep the old cache and report for comparison.
+The process setting leaves global proxy settings, TLS certificate verification
+and project code unchanged. It is not a remedy for access-policy or security
+restrictions, and successful retrieval still requires inspecting the new
+report's source status.
+
 `--procedure reviewed` explicitly adds the attributed evidence-search checklist;
 `base` is the default. Neither is assumed superior. The checklist adapts
 [BioMCP's MIT skill](https://github.com/genomoncology/biomcp/blob/5641de7d7b79b53872f8599dbb4dba22e611dcaf/skills/SKILL.md)

@@ -1,0 +1,37 @@
+{
+  "format": "biograph-steward.native-source-search-abstract-availability-addendum.v1",
+  "created_at": "2026-11-14T16:55:28.143112+00:00",
+  "scope": "Post-hoc descriptive source-status inspection after all native predictions were sealed/scored. Same24cases only; no request retry or new reference/source/model access.",
+  "exact_abstract_get_requests": 12,
+  "status_counts": {
+    "completed": 3,
+    "unavailable": 9
+  },
+  "identity_resolved_requests": 3,
+  "nonempty_abstract_requests": 3,
+  "cached_completed_requests": 3,
+  "fresh_unavailable_requests": 9,
+  "unavailable_error_types": {
+    "URLError": 9
+  },
+  "verified_implementation": "The exact-PMID helper reuses literature.fetch, which calls default urllib.request.urlopen. Unlike the native BioMCP subprocess environment and the separate model transport, it does not select an explicit proxy-free opener.",
+  "official_dependency_contract": {
+    "python_version": "3.14.0",
+    "ProxyHandler_default_calls_getproxies": true,
+    "ProxyHandler_init_source_sha256": "0a845d4a5a037150f013637219069bc2cf2480b2e54ee0925609020b8427b10d",
+    "docs": "https://docs.python.org/3.14/library/urllib.request.html#urllib.request.ProxyHandler"
+  },
+  "causal_limit": "URLError class alone does not identify proxy, DNS, timeout or remote-provider failure. Existing records do not establish its underlying cause or isolate how much it affected the final selections. No private exception content was reconstructed.",
+  "interpretation": "The measured zero final-reference recall remains unchanged. It should not be attributed entirely to model choice or entirely to retrieval;9of12requested abstract contexts were unavailable, alongside the independently observed auto-call and final-handoff failures.",
+  "source_pins": {
+    "native_results_sha256": "7944d5f835e3654a666c47e8f56a78e3d1219b5f47bc8ae28af7d5d219c1db93",
+    "native_prediction_seal_sha256": "0b972a9524eb2fc51bc5dea38e02f1fa5a0fddaf06ebee532a55ff76c2d07ecc",
+    "independent_review_v1_sha256": "2bfe055702c6936c273a19529cdabca50f8adb87433212d54630da7fb9a6975a",
+    "exact_fetch_code_sha256": "22025c84b74e123305630f57c90017623cec6a3c6434f5b17980c6cde3cda1e7",
+    "source_tool_code_sha256": "05647f8a7bb8d6990899bd25689c5fcd7e20744af47556213d83447143c4768e"
+  },
+  "raw_queries_questions_PMIDs_source_or_model_text_in_aggregate": false,
+  "new_model_or_source_calls": 0,
+  "frozen_code_or_scores_changed": false,
+  "content_sha256": "8d43590c95f776347d8768f820195d525e1019e507c96efdc47b3564cac5faec"
+}

@@ -1,0 +1,45 @@
+{
+  "format": "biograph-steward.deepgo-development.v1.inputs",
+  "previous_CAFA_outcomes_exposed": true,
+  "author_root": "/absolute/path/to/author_v1_source/bio-ontology-research-group-deepgo2-46f346f",
+  "code_intake": {
+    "file": "/absolute/path/to/qualification/author_intake.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "modelview": {
+    "file": "/absolute/path/to/modelview/modelview.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "sequences": {
+    "file": "/absolute/path/to/target_sequences/sequences.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "primary_targets": {
+    "file": "/absolute/path/to/frames/primary_targets.txt",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "reserved_targets": {
+    "file": "/absolute/path/to/frames/reserved_targets.txt",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "esm_model": {
+    "file": "/absolute/path/to/esm/esm2_t36_3B_UR50D.pt",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "esm_regression": {
+    "file": "/absolute/path/to/esm/esm2_t36_3B_UR50D-contact-regression.pt",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "runtime_receipt": {
+    "file": "/absolute/path/to/qualification/runtime_receipt.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "source_qualification": {
+    "file": "/absolute/path/to/qualification/selection_receipt.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "evaluation_plan": {
+    "file": "/absolute/path/to/qualification/evaluation_plan.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

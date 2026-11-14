@@ -1,0 +1,75 @@
+{
+  "format": "biograph-steward.native-source-search-publication.v2",
+  "created_at": "2026-11-14T17:56:42.953934+00:00",
+  "scope": "Original confounded and one unchanged-profile transport-corrected development repeat; no fresh accuracy or adoption claim.",
+  "files": {
+    "README.md": {
+      "sha256": "ba64d6420e3b76cd79dc3314154297e061156c8112aab7b62a3b7afcd0606b16",
+      "bytes": 3090
+    },
+    "corrected_independent_review.json": {
+      "sha256": "cdc0ba76a7bdf4354453c86f76347ba967a257fe0069e767c01575f804606ac0",
+      "bytes": 6839
+    },
+    "corrected_transport_assessment.json": {
+      "sha256": "d97f3241b9b6ef7a8de36e355a900704310c130092dca491e22721cd79f73492",
+      "bytes": 9603
+    },
+    "no_proxy_verification.json": {
+      "sha256": "ec64d3403ec7be7e387d0dee597ea5fb3b5e43217afb88d737f551721cb7bdfa",
+      "bytes": 720
+    },
+    "original_abstract_availability.json": {
+      "sha256": "ccdb9bd9bd72e4835fbdadc52da8345d93111fb34a691b0e41446c706e0ace00",
+      "bytes": 2523
+    },
+    "original_assessment.json": {
+      "sha256": "d4416439213b5b872b93c53e13c653f7675d5bfc117ca368c5e0df79c6697bac",
+      "bytes": 9534
+    },
+    "original_independent_review.json": {
+      "sha256": "2bfe055702c6936c273a19529cdabca50f8adb87433212d54630da7fb9a6975a",
+      "bytes": 5795
+    },
+    "report.html": {
+      "sha256": "4d446e5eb0f9e66fd8f72a9d426c2ef8fae7b180207fe8c9cd754bb4b07f061c",
+      "bytes": 8749
+    },
+    "source_runtime.json": {
+      "sha256": "eea847d696f59f92638dab54885364f99b7d0b410ce3aa196ce3ff003db916f8",
+      "bytes": 3853
+    },
+    "summary.json": {
+      "sha256": "39fafb08649c2ae8cdcfd3e849a1d72fa3fd43c589b8c7611e756067b816f639",
+      "bytes": 14683
+    },
+    "transport_diagnostic.json": {
+      "sha256": "c8bc6513b85677bd3be8d7c51b214f199700294159f6e67776d5737113efa2ad",
+      "bytes": 1509
+    },
+    "transport_repair_protocol.json": {
+      "sha256": "bf99e86dc4b08f5fc409ca587ef3c86df65f13ad1130235d52f1d658d66d361b",
+      "bytes": 4806
+    }
+  },
+  "aggregate_sources": {
+    "original_assessment.json": "d4416439213b5b872b93c53e13c653f7675d5bfc117ca368c5e0df79c6697bac",
+    "corrected_transport_assessment.json": "d97f3241b9b6ef7a8de36e355a900704310c130092dca491e22721cd79f73492",
+    "original_independent_review.json": "2bfe055702c6936c273a19529cdabca50f8adb87433212d54630da7fb9a6975a",
+    "corrected_independent_review.json": "cdc0ba76a7bdf4354453c86f76347ba967a257fe0069e767c01575f804606ac0",
+    "original_abstract_availability.json": "ccdb9bd9bd72e4835fbdadc52da8345d93111fb34a691b0e41446c706e0ace00",
+    "transport_diagnostic.json": "c8bc6513b85677bd3be8d7c51b214f199700294159f6e67776d5737113efa2ad",
+    "no_proxy_verification.json": "ec64d3403ec7be7e387d0dee597ea5fb3b5e43217afb88d737f551721cb7bdfa",
+    "source_runtime.json": "eea847d696f59f92638dab54885364f99b7d0b410ce3aa196ce3ff003db916f8"
+  },
+  "prior_publication_preserved_manifest_file_sha256": "b04299160e6cbafc8c6064b794b9750f8455bb89f600316d742ac5d92623793d",
+  "source_archive": {
+    "local_git_ref": "codex/archive-native-tools-v3-20261114",
+    "commit": "0ecd9ab86ae388e375cabb5849a9c03b4b26a995",
+    "role": "Historical experimental native profile; maintained deterministic source-search utility remains separate.",
+    "public_remote_or_push_claimed": false
+  },
+  "renderer_sha256": "2467fad9691734b52145b261a68e5bcb9a8676f278aa65011262c3759bdd59da",
+  "raw_cases_or_operator_paths_in_publication": false,
+  "content_sha256": "fca5f974f8cf21bffb92846ab37004ce3551f99d226b2d714844a77d6e666ef1"
+}
