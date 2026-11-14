@@ -1,0 +1,64 @@
+{
+  "format": "biograph-steward.source-search-recovery-operational-check.v1",
+  "created_at": "2026-11-14T14:02:04.621633+00:00",
+  "counts": {
+    "unskilled_agent": {
+      "original_valid_final_completions": 4,
+      "followup_valid_final_completions": 13,
+      "original_model_calls": 61,
+      "followup_model_calls": 79,
+      "original_statuses": {
+        "completed": 4,
+        "invalid_action": 11,
+        "invalid_output": 9
+      },
+      "followup_statuses": {
+        "completed": 13,
+        "invalid_output": 9,
+        "invalid_action": 2
+      },
+      "explicit_rejected_duplicate_observations": 13
+    },
+    "procedure_skill_agent": {
+      "original_valid_final_completions": 6,
+      "followup_valid_final_completions": 18,
+      "original_model_calls": 56,
+      "followup_model_calls": 80,
+      "original_statuses": {
+        "completed": 6,
+        "invalid_action": 13,
+        "invalid_output": 5
+      },
+      "followup_statuses": {
+        "completed": 18,
+        "invalid_output": 5,
+        "invalid_action": 1
+      },
+      "explicit_rejected_duplicate_observations": 23
+    }
+  },
+  "observed_shared_payload_prefix": {
+    "paired_agent_cases": 48,
+    "cases_with_two_generation_attempts": 48,
+    "same_first_request_payload_cases": 48,
+    "exact_shared_payload_prefix_requests": 117,
+    "completed_output_comparable_prefix_requests": 103,
+    "equal_parsed_output_prefix_requests": 103,
+    "cases_with_parsed_output_change_under_same_payload": 0
+  },
+  "operational_retention_criterion": {
+    "passed": true,
+    "original_valid_finals": 10,
+    "followup_valid_finals": 31,
+    "rule": "More valid final completions overall, with both sealed guard/budget gates intact."
+  },
+  "lineage": {
+    "original_prediction_seal_file_sha256": "7977a9efe2fb1ae2ee203d2784cc15cfecfa5c8ae52b518472c3181705f85e55",
+    "followup_prediction_seal_file_sha256": "0cce2a0624aa2890fb2a85a1358db3c7be937aa5c1f00355bb4f57f67d87143d",
+    "followup_protocol_file_sha256": "22e790bf66637a25b7640cb30ef3fb6b24ca7a9e23d147ea250f43c3e4ff9dfd"
+  },
+  "reference_values_opened": false,
+  "raw_questions_queries_or_article_IDs_in_aggregate": false,
+  "interpretation": "Observed payload/output agreement is recorded, not assumed deterministic model replay. More valid finals alone is not a retrieval or biological-accuracy gain.",
+  "content_sha256": "613103e120dacac3adc558a71647314b05adf4583510496cf07e88862e7a96de"
+}

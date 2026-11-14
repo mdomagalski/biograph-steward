@@ -1,0 +1,177 @@
+{
+  "format": "biograph-steward.source-search-recovery-reference-comparison.v1",
+  "created_at": "2026-11-14T14:12:18.134829+00:00",
+  "scope": "One execution-failure-motivated policy fixed before reference access; same public retrospective24 questions, not independent biological validation.",
+  "operational_retention_criterion": {
+    "passed": true,
+    "original_valid_finals": 10,
+    "followup_valid_finals": 31,
+    "rule": "More valid final completions overall, with both sealed guard/budget gates intact."
+  },
+  "original_primary_skill_minus_base": {
+    "candidate": "procedure_skill_agent",
+    "comparator": "unskilled_agent",
+    "observed_mean_difference": 0.04166666666666667,
+    "paired_95_percentile_interval": [
+      0.0,
+      0.125
+    ],
+    "fraction_draws_above_zero": 0.651
+  },
+  "followup_primary_skill_minus_base": {
+    "candidate": "procedure_skill_agent",
+    "comparator": "unskilled_agent",
+    "observed_mean_difference": 0.0,
+    "paired_95_percentile_interval": [
+      -0.125,
+      0.125
+    ],
+    "fraction_draws_above_zero": 0.354
+  },
+  "same_condition_recovery_differences": [
+    {
+      "agent_condition": "unskilled_agent",
+      "status": "scored",
+      "candidate": "explicit_duplicate_feedback",
+      "comparator": "original_fail_fast",
+      "observed_mean_difference": 0.04166666666666667,
+      "paired_95_percentile_interval": [
+        0.0,
+        0.125
+      ],
+      "fraction_draws_above_zero": 0.6315,
+      "positive_reference_retrieval_interval": false
+    },
+    {
+      "agent_condition": "procedure_skill_agent",
+      "status": "scored",
+      "candidate": "explicit_duplicate_feedback",
+      "comparator": "original_fail_fast",
+      "observed_mean_difference": 0.0,
+      "paired_95_percentile_interval": [
+        0.0,
+        0.0
+      ],
+      "fraction_draws_above_zero": 0.0,
+      "positive_reference_retrieval_interval": false
+    }
+  ],
+  "shared_direct_native_control_mean_recall_at_10": 0.17258986928104575,
+  "observed_shared_payload_prefix": {
+    "paired_agent_cases": 48,
+    "cases_with_two_generation_attempts": 48,
+    "same_first_request_payload_cases": 48,
+    "exact_shared_payload_prefix_requests": 117,
+    "completed_output_comparable_prefix_requests": 103,
+    "equal_parsed_output_prefix_requests": 103,
+    "cases_with_parsed_output_change_under_same_payload": 0
+  },
+  "actual_execution_costs": {
+    "original": {
+      "direct_native_query": {
+        "model_calls": 0,
+        "tokenizer_model_service_requests": 0,
+        "native_process_executions": 22,
+        "direct_fetch_invocations": 0,
+        "cache_hits": 2,
+        "exact_upstream_HTTP_request_count": null,
+        "observed_token_counts": {},
+        "usage_responses": 0,
+        "dollar_cost": null,
+        "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+      },
+      "unskilled_agent": {
+        "model_calls": 61,
+        "tokenizer_model_service_requests": 61,
+        "native_process_executions": 23,
+        "direct_fetch_invocations": 10,
+        "cache_hits": 4,
+        "exact_upstream_HTTP_request_count": null,
+        "observed_token_counts": {
+          "prompt_tokens": 68410,
+          "total_tokens": 81679,
+          "completion_tokens": 13269
+        },
+        "usage_responses": 61,
+        "dollar_cost": null,
+        "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+      },
+      "procedure_skill_agent": {
+        "model_calls": 56,
+        "tokenizer_model_service_requests": 56,
+        "native_process_executions": 22,
+        "direct_fetch_invocations": 3,
+        "cache_hits": 7,
+        "exact_upstream_HTTP_request_count": null,
+        "observed_token_counts": {
+          "prompt_tokens": 66077,
+          "total_tokens": 74489,
+          "completion_tokens": 8412
+        },
+        "usage_responses": 56,
+        "dollar_cost": null,
+        "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+      }
+    },
+    "followup": {
+      "direct_native_query": {
+        "model_calls": 0,
+        "tokenizer_model_service_requests": 0,
+        "native_process_executions": 0,
+        "direct_fetch_invocations": 0,
+        "cache_hits": 24,
+        "exact_upstream_HTTP_request_count": null,
+        "observed_token_counts": {},
+        "usage_responses": 0,
+        "dollar_cost": null,
+        "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+      },
+      "unskilled_agent": {
+        "model_calls": 79,
+        "tokenizer_model_service_requests": 79,
+        "native_process_executions": 0,
+        "direct_fetch_invocations": 3,
+        "cache_hits": 39,
+        "exact_upstream_HTTP_request_count": null,
+        "observed_token_counts": {
+          "prompt_tokens": 92608,
+          "total_tokens": 106674,
+          "completion_tokens": 14066
+        },
+        "usage_responses": 79,
+        "dollar_cost": null,
+        "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+      },
+      "procedure_skill_agent": {
+        "model_calls": 80,
+        "tokenizer_model_service_requests": 80,
+        "native_process_executions": 0,
+        "direct_fetch_invocations": 1,
+        "cache_hits": 32,
+        "exact_upstream_HTTP_request_count": null,
+        "observed_token_counts": {
+          "prompt_tokens": 104283,
+          "total_tokens": 113656,
+          "completion_tokens": 9373
+        },
+        "usage_responses": 80,
+        "dollar_cost": null,
+        "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+      }
+    }
+  },
+  "lineage": {
+    "original_report_file_sha256": "c5965d887ef24dfeea586267b7f34b3bec41b88297c9bc925ae9c858d1ad0121",
+    "followup_report_file_sha256": "ada9bb5f7fbe6fd5860f5bffc557d7f849fc10716bab8e1e42fc67bdbb5b3061",
+    "operational_check_file_sha256": "556c75143236e5439237e2ba89dcdfcbfed84e950d9653f2151ba620085643d1"
+  },
+  "new_reference_source_access_or_model_calls": false,
+  "raw_cases_in_aggregate": false,
+  "limitations": [
+    "Public model-training overlap remains incompletely auditable.",
+    "Reference lists are incomplete positive paper judgments, not comprehensive relevance or biological truth.",
+    "Intervals are conditional question-bootstrap descriptions; no multiplicity-adjusted universal winner is claimed.",
+    "No graph ingestion, independent-evidence vote, or hypothetical cost-saving comparison was performed."
+  ],
+  "content_sha256": "7a0557b7c2076f600d192b034d543034517cca7627ca7dcf63f53e96860887c5"
+}

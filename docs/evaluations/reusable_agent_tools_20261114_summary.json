@@ -219,6 +219,27 @@
       "installed_or_executed": false,
       "source": "https://github.com/NVIDIA/skills/blob/894f2d7dfee49085e84e21c1aad2513bc44a5b6d/README.md",
       "readme_sha256": "d384e899b451e53e73ae9113744e7612b1d2ced534ce807b833333bf234e8be3"
+    },
+    {
+      "name": "MedCPT Cross-Encoder",
+      "official_code_commit": "11e129be74102c98d16a11c310b0b5ce74c1db5e",
+      "official_model_revision": "71caf65d4927987813984f54c284405a13fcca49",
+      "published_objective": "Biomedical article relevance ranking; not biological truth or source-claim entailment.",
+      "input_assumptions": "Query paired with title plus abstract, scalar relevance logit, native max_length512. Native negative construction differs from a lexical-search candidate union.",
+      "license_observation": "Official code carries the NLM US government public-domain notice. HF model card declares public-domain; its LICENSE file is empty, so no additional license text is inferred.",
+      "model_weight_bytes_metadata_only": 437998062,
+      "weights_fetched": false,
+      "runtime_load_tested": false,
+      "compatibility_status": "Stock BERT appears compatible with existing Torch2.6/Transformers4.51.3; not demonstrated by loading.",
+      "demonstrated_local_input_limit": "Only the excluded manual Pharos TCRD capture was inspected: four titles and no abstract fields. One exact abstract-get cannot supply complete native inputs for the candidate union.",
+      "metric_limit": "Reordering at most10 retained papers cannot improve Recall@10.",
+      "training_reference_overlap": "Search logs span2020\u20132022; released BioASQ examples do not establish checkpoint fine-tuning membership or exclusion. No checksum-bound training-log membership manifest was found.",
+      "decision": "DEFER. A larger separately frozen retrieval pool and complete source abstracts would require a distinct source/budget assessment; no new index, data pipeline or experiment is added in this round.",
+      "sources": [
+        "https://doi.org/10.1093/bioinformatics/btad651",
+        "https://github.com/ncbi/MedCPT/tree/11e129be74102c98d16a11c310b0b5ce74c1db5e",
+        "https://huggingface.co/ncbi/MedCPT-Cross-Encoder/tree/71caf65d4927987813984f54c284405a13fcca49"
+      ]
     }
   ],
   "OLS_native_shape_probe": {
@@ -300,5 +321,5 @@
     "contains_credentials": false,
     "new_model_calls_or_installs_for_this_capsule": false
   },
-  "content_sha256": "6f23f6227fbd6f0f5728042905a26c25fe41d88faf2676bd386b8c2ebd0a3604"
+  "content_sha256": "2fc510fc25cb8c5e28b65cc489b115610d598b84f09bd3d37ce5f993189be496"
 }

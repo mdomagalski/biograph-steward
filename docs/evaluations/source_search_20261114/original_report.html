@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BioGraph Steward — Bounded reference-paper retrieval</title><style>body{font:16px/1.55 system-ui,sans-serif;color:#182c3e;background:#f6f8fa;max-width:1180px;margin:32px auto;padding:0 24px}
+h1{font-size:30px;line-height:1.2}h2{font-size:23px}section{background:white;border:1px solid #dbe4ea;border-radius:12px;padding:24px;margin:20px 0}
+.table{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:10px;border-bottom:1px solid #dbe4ea}th{background:#edf2f6}
+a{color:#125c95}code{overflow-wrap:anywhere}.scope{border-left:5px solid #177e89;padding:12px 16px;background:#edf8f8}</style>
+<section><h1>Can a reusable search procedure improve paper retrieval?</h1>
+<p class="scope">Small public retrospective reference-document assessment; not biological truth, model-unseen testing or an official BioASQ submission.</p><p>Twenty-four fixed human-authored BioASQ11 questions: twelve factoid and twelve list questions.
+Both agent arms use the same NVIDIA Nano 8B model, two-search/one-abstract tool budget and four-call cap.
+Only the short attributed search procedure differs. The direct native query has a smaller tool budget and no model cost.</p>
+<p>All fixed forecasts are sealed before selected reference-document values are interpreted. Failed and unavailable cases stay in the denominator.
+This compares paper retrieval, not whether a paper establishes a scientific claim or adds independent evidence beyond Pharos.</p></section>
+<section><h2>All fixed arms</h2><div class="table"><table><thead><tr><th>Method</th><th>Questions</th><th>Scorable references</th>
+<th>Mean Recall@10</th><th>Hit@10</th><th>Returned IDs</th><th>Resolved abstract IDs</th><th>Statuses</th></tr></thead>
+<tbody><tr><td>One native full-question query</td><td>24</td><td>24</td><td>17.26%</td><td>29.17%</td><td>191</td><td>0</td><td>{&quot;completed&quot;: 22, &quot;completed_empty&quot;: 1, &quot;partial&quot;: 1}</td></tr><tr><td>Nano controller, base procedure</td><td>24</td><td>24</td><td>2.08%</td><td>4.17%</td><td>40</td><td>10</td><td>{&quot;completed&quot;: 4, &quot;invalid_action&quot;: 11, &quot;invalid_output&quot;: 9}</td></tr><tr><td>Same controller + reviewed search skill</td><td>24</td><td>24</td><td>6.25%</td><td>8.33%</td><td>21</td><td>5</td><td>{&quot;completed&quot;: 6, &quot;invalid_action&quot;: 13, &quot;invalid_output&quot;: 5}</td></tr></tbody></table></div><p>Recall divides matched reference PMIDs by the question's known-positive document list;
+questions receive equal weight. A returned candidate is a retrieval handoff, not a claim it was opened or verified.</p>
+<ul><li>Same controller + reviewed search skill minus Nano controller, base procedure: +4.17 percentage points; paired 95% interval +0.00 to +12.50 points.</li><li>Same controller + reviewed search skill minus One native full-question query: -11.01 percentage points; paired 95% interval -23.26 to -1.39 points.</li><li>Nano controller, base procedure minus One native full-question query: -15.18 percentage points; paired 95% interval -29.41 to -3.71 points.</li></ul>
+<p>Intervals use 2,000 shared question-bootstrap draws and are conditional descriptions of this small public retrospective sample.</p></section>
+<section><h2>Where can useful retrieval be lost?</h2>
+<p>This separately sealed error-localization diagnostic was chosen after execution failures were observed, before reference release.
+It uses only the first attempted search, including failed, empty and partial results, in native order through ten IDs.
+No search stays empty; later successful queries, best-query selection and unions are excluded.</p>
+<div class="table"><table><thead><tr><th>Agent condition</th><th>First search Recall@10</th><th>Final Recall@10</th>
+<th>Direct native control Recall@10</th><th>First-search statuses</th></tr></thead><tbody><tr><td>Nano controller, base procedure</td><td>11.46%</td><td>2.08%</td><td>17.26%</td><td>{&quot;completed&quot;: 19, &quot;completed_empty&quot;: 2, &quot;no_search&quot;: 3}</td></tr><tr><td>Same controller + reviewed search skill</td><td>18.40%</td><td>6.25%</td><td>17.26%</td><td>{&quot;completed&quot;: 16, &quot;completed_empty&quot;: 3, &quot;no_search&quot;: 4, &quot;partial&quot;: 1}</td></tr></tbody></table></div>
+<p>This locates loss between query retrieval and completion/ranking. It is not a new primary comparison or a validated replacement pipeline.
+It makes no hypothetical cost-saving claim; all actual executed calls remain in the main cost table.</p></section><section><h2>Actual choices and source inspection</h2><h3>Nano controller, base procedure</h3><p>Early finishes: 0; second search used: 6; abstract requested: 10; distinct successfully opened article IDs: 10; controller feedback events: 0.</p><pre>{
+  &quot;no_source_tool&quot;: 3,
+  &quot;search_pubmed&quot;: 11,
+  &quot;search_pubmed &gt; get_abstract&quot;: 4,
+  &quot;search_pubmed &gt; get_abstract &gt; search_pubmed&quot;: 4,
+  &quot;search_pubmed &gt; search_pubmed &gt; get_abstract&quot;: 2
+}</pre><h3>Same controller + reviewed search skill</h3><p>Early finishes: 2; second search used: 7; abstract requested: 5; distinct successfully opened article IDs: 5; controller feedback events: 0.</p><pre>{
+  &quot;no_source_tool&quot;: 4,
+  &quot;search_pubmed&quot;: 13,
+  &quot;search_pubmed &gt; search_pubmed&quot;: 2,
+  &quot;search_pubmed &gt; search_pubmed &gt; get_abstract&quot;: 5
+}</pre>
+<p>Variable trajectories do not establish benefit. Only resolved exact-PMID abstract gets count as successfully opened;
+search-result titles and final handed-off IDs remain distinguishable from read source text.</p></section>
+<section><h2>Recorded execution costs</h2><div class="table"><table><thead><tr><th>Method</th><th>Model requests</th>
+<th>Tokenizer requests</th><th>Native search processes</th><th>Exact-fetch invocations</th><th>Cache hits</th>
+<th>Input tokens</th><th>Output tokens</th><th>Upstream HTTP requests</th></tr></thead><tbody><tr><td>One native full-question query</td><td>0</td><td>0</td><td>22</td><td>0</td><td>2</td><td>unreported</td><td>unreported</td><td>unreported</td></tr><tr><td>Nano controller, base procedure</td><td>61</td><td>61</td><td>23</td><td>10</td><td>4</td><td>68410</td><td>13269</td><td>unreported</td></tr><tr><td>Same controller + reviewed search skill</td><td>56</td><td>56</td><td>22</td><td>3</td><td>7</td><td>66077</td><td>8412</td><td>unreported</td></tr></tbody></table></div>
+<p>Native process counts are not HTTP counts: the pinned upstream client can make more than one exchange internally.
+Token usage is recorded when returned; no dollar-price table is assumed. Shared immutable source captures avoid re-querying identical requests.</p></section>
+<section><h2>Interpretation and reproducibility</h2><ul><li>The public historical dataset may occur in model training; project-new is not model-unseen.</li><li>Reference document lists are incomplete positive judgments; an unlisted paper is not shown irrelevant or biologically false.</li><li>Shared live PubMed infrastructure, sources and model create dependence; question bootstrap intervals are conditional/descriptive.</li><li>All fixed cases, unavailable sources and failed model outputs remain; no post-outcome prompt/model selection.</li><li>Returning candidate IDs is a retrieval handoff, not a claim that all papers were opened/read or support a biological assertion.</li></ul>
+<p>Excluding known viewed publisher examples does not certify unseen evaluation. Complete model-training and native-tool development/tuning membership are not independently audited for these public questions.</p>
+<p>The free capability uses the pinned <a href="https://github.com/genomoncology/biomcp/releases/tag/v0.9.3">BioMCP 0.9.3</a>
+PubMed search plus the existing exact-PMID parser. It does not require paid PaperQA/Edison access.
+Only PubMed is selected; native ontology suggestions are disabled through the published source-disable option.
+Source dataset: <a href="https://doi.org/10.5281/zenodo.7655130">author BioASQ11 deposit</a>, CC-BY-2.5.
+No live graph was changed.</p><pre>{
+  &quot;protocol_file_sha256&quot;: &quot;69ca99f0a5e4258f078d892042325bec7bc81b90521abbbf64cb185cfb6f133a&quot;,
+  &quot;prediction_seal_file_sha256&quot;: &quot;7977a9efe2fb1ae2ee203d2784cc15cfecfa5c8ae52b518472c3181705f85e55&quot;,
+  &quot;policy_file_sha256&quot;: &quot;15641ddc8dd9abf82122cc242aa31c550a24776050164ff21e2880d032e13ce6&quot;,
+  &quot;release_event_content_sha256&quot;: &quot;8ec52a8a659deff0574905f5ea1b7a4f776b4a5a960dd9cff69b430aa71a8569&quot;
+}</pre></section><section><details><summary>Traceability</summary><p>Aggregate content seal: <code>faf5bfbe77c82461e68a438fc12657fc3e7640b51e86305b551e69259bc5a1c1</code>.</p>
+<p>Source abstracts, individual reference labels, model weights and credentials are excluded from this aggregate page.</p></details></section></html>

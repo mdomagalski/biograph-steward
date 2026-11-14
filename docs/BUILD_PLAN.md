@@ -1,5 +1,24 @@
 # Current build plan
 
+## Latest fixed comparisons — November 14
+
+The [current scientific results](evaluations/SCIENTIFIC_RESULTS_20261114.md)
+and accepted AWS runtime `a6a05ff` supersede the older hosted checkpoints below.
+The [combined-method assessment](evaluations/COMBINED_CONTEXT_AND_SKILLS_20261114.md)
+is complete: full-context GeneMANIA+ fails its fixed retention gate, so the
+inspectable full-context LocalPlus method stays in use. Earlier measured gains
+and unfavorable controls remain unchanged.
+
+The optional [PubMed source-paper utility](SOURCE_PAPER_INSPECTION.md) now works
+without a paid literature API or a benchmark corpus. Native search is its
+default. A fixed 24-question public-reference comparison shows that standard
+duplicate-error feedback improves the NVIDIA agent's execution but does not
+establish a retrieval gain; the short reused skill does not beat native
+search. Keep the model route optional and preserve native candidates separately
+from model selections. No additional prompt sweep, framework migration or
+automatic biological pruning is a delivery dependency. This utility is
+repository-only; it is not deployed as a new AWS panel.
+
 ## Current delivery boundary — November 13
 
 The [source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md)

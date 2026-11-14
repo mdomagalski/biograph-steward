@@ -1,0 +1,49 @@
+{
+  "format": "biograph-steward.source-search-pathfree-test-verification.v1",
+  "created_at": "2026-11-14T14:19:57.130911+00:00",
+  "source_receipt_file_sha256": "7fa44cf5f9ba39f9839735c266788d638200d4448a18775f162523fe9cc809db",
+  "source_receipt_content_sha256": "def45254aa10d5915b641bb05b6713b217666181bc0c431a786b0537dd4d2506",
+  "command": "python -m unittest tools.source_search.test_source_search tools.source_search.test_evaluate tools.source_search.test_first_search tools.source_search.test_query -q",
+  "environment": "Repository checkout with isolated pinned ijson3.4.0.post0; no model/source calls.",
+  "observed_completed_execution": {
+    "exit_code": 0,
+    "tests": 52,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "reported_seconds": 2.089,
+    "repeated_for_receipt": false,
+    "record_source": "Completed exec result chunk5dd38b in this task"
+  },
+  "AST_proof": [
+    {
+      "module": "first_search.py",
+      "frozen_source_sha256": "d8e470b69bc84050dce8b1fcd6947263e01d7f4eb92d0c70baa0bc588d5b1f26",
+      "maintained_source_sha256": "9ada13de68ff77a516ab3e2bbba7528dc4fe7b27d691ffddfa82a5fdabc54a6a",
+      "function_count": 5,
+      "all_function_source_segments_identical": true,
+      "AST_outside_CLI_dispatch_identical": true
+    },
+    {
+      "module": "evaluate.py",
+      "frozen_source_sha256": "fcc608b5f18f92a1731f7ea9950f2ce0a8423ec5c4e2441df2780331eef41857",
+      "maintained_source_sha256": "e7f46393901a278b7dd6c97c930d0c1e0ca604aeba2ed013f547fa397adea80b",
+      "function_count": 13,
+      "all_function_source_segments_identical": true,
+      "AST_outside_CLI_dispatch_identical": true
+    }
+  ],
+  "test_source_pins": {
+    "test_source_search.py": "f995e82251eadaaaa4b979f797a0dd70e0d541dc161f4d22a149440ecef7ee8c",
+    "test_evaluate.py": "5850286d903c38c47c7339b03294334743fa8ab7c06adff09ff5dc391d87650e",
+    "test_first_search.py": "affb388bbc13a701480f9218bf11ac7b502008bb94f8bc4ba38b7cdd78a5184b",
+    "test_query.py": "c9939de3c6a866ef84270d957f14d2afede7be2d69b51cbfbf8c71ae967f1797"
+  },
+  "actual_subprocess_CLI_regressions": [
+    "first_search score with synthetic released references",
+    "evaluate compare-recovery with synthetic paired data"
+  ],
+  "frozen_functions_forecasts_policies_or_scored_outcomes_changed": false,
+  "operator_paths_or_raw_cases": false,
+  "content_sha256": "12c6ebda25bf90ebb645142b81e5cbd1908853e00abf1f518e6ff3110a6f9c0d"
+}

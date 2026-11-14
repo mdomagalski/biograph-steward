@@ -1,0 +1,44 @@
+{
+  "format": "biograph-steward.source-search-complete-joint-release-timeline.v2",
+  "created_at": "2026-11-14T14:12:18.149940+00:00",
+  "journal": [
+    {
+      "step": "00_resume_authorized",
+      "sha256": "bf83675b52592664e7aa0567b528d965b2b12101c2ded8a9236ec4b465f2112e"
+    },
+    {
+      "step": "01_original_exact_bytes_verified",
+      "sha256": "be3e07eda48a92ff7c9aaf0a97fa55a4bc20357909853584504fdb739d7e8907"
+    },
+    {
+      "step": "02_current_feedback_restored_verified",
+      "sha256": "b89e675cc1ec09ca1cf94b7b4351af750d63d42e40351e48fd5c63452eb30dcf"
+    },
+    {
+      "step": "03_same24_reference_reuse_begins",
+      "sha256": "413d1bec7c79803e95f37a79e5ddc0909419ed50a55d739da52bd02dcb1c4946"
+    },
+    {
+      "step": "04_all_scoring_completed",
+      "sha256": "3bac2900ba0d129da55ca5c9ff60d8eae98c8707a2f0ec4b812dba0a9926d73e"
+    }
+  ],
+  "prior_joint_first_access_event_sha256": "fb55498aad5bd1696acf24c21cee95bf7c94a1d319658ef741521c501fe4b658",
+  "prior_failed_operator_source_sha256": "91d27d7144211fa23c96b415c3707c3bf6049448b7767dca4d52baef9a3de52c",
+  "operator_source_sha256": "b172215e01fbdbe95ac651a9dc39fd195c2a5fd9aa4cb808648692b4b4b8cf04",
+  "path_adapter_sha256": "11854630359c27dfebdae2510dc5aed4e81fb7c02f0582aa6994137212eb7a26",
+  "first_global_reference_access": "Original v3 score after BOTH prediction sets and both first-attempt outputs sealed.",
+  "later_reference_use": "v4 SAME24positive reference documents, not a second fresh holdout. Per-invocation false-before-event fields are not global exposure claims.",
+  "frozen_scoring_functions_formulas_or_inputs_changed": false,
+  "new_model_calls_or_source_queries": 0,
+  "current_feedback_source_restored_verified": true,
+  "raw_reference_PMIDs_questions_answers_in_timeline": false,
+  "files": {
+    "results_v3/report.json": "c5965d887ef24dfeea586267b7f34b3bec41b88297c9bc925ae9c858d1ad0121",
+    "results_v4/report.json": "ada9bb5f7fbe6fd5860f5bffc557d7f849fc10716bab8e1e42fc67bdbb5b3061",
+    "first_search_results_v3.json": "fbadac6f7a86561f25b69b5d33e1a77aff4f24291be6fab0c3ca854a584f4837",
+    "first_search_results_v4.json": "14f86fd8a8337271b592ef0f49d81e896df34a62fbd9b670f2ce7164860bef34",
+    "recovery_reference_comparison_v1.json": "bd85fe626c89aa6a891839f23dec0ebf5ee991a47da1f72e80a2f8306c60ec39"
+  },
+  "content_sha256": "74c97d8ce198b7624e6dac58d94415177eae1958a70b05f73d73114f4d3fa94e"
+}

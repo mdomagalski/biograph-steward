@@ -1,0 +1,83 @@
+{
+  "format": "biograph-steward.source-paper-operator-demonstrations.v1",
+  "date": "2026-11-14",
+  "scope": "Operator behavior and file/source provenance; not a scientific accuracy or new retrieval-reference evaluation.",
+  "native_default": true,
+  "qualified_binary_platform": "Darwin arm64",
+  "new_hosted_app_panel": false,
+  "automatic_graph_acceptance_or_pruning": false,
+  "Pharos_evidence_reuse_assessed": false,
+  "model_or_tool_calls_added_to_benchmark": 0,
+  "demonstrations": [
+    {
+      "demonstration": "excluded_manual_native",
+      "receipt_file_sha256": "fcf5cfc91c60f0d67ab8a2268a8ea9767a1d1a2e3c96f9843272d5bf22875a4f",
+      "receipt_content_sha256": "9fa5f74018bfe0c155016540b5b22fdf96354ba6b0663ec383c2af2ad661763a",
+      "mode": "native",
+      "workflow_status": "completed",
+      "selection_state": "native_search_results",
+      "captured_candidate_count": 4,
+      "selected_paper_count": 0,
+      "abstract_inspection_count": 0,
+      "cost_observations": {
+        "model_generation_calls": 0,
+        "model_tokenizer_requests": 0,
+        "observed_model_token_counts": {},
+        "controller_rejected_action_attempts": 0,
+        "source_tool_invocations": 1,
+        "native_search_process_executions": 1,
+        "direct_exact_PubMed_fetch_invocations": 0,
+        "source_cache_hits": 0,
+        "exact_upstream_HTTP_request_count": null,
+        "dollar_cost": null
+      },
+      "all_saved_file_hashes_verified": true,
+      "graph_changes": 0,
+      "uses_reference_corpus": false
+    },
+    {
+      "demonstration": "separate_public_agent_failure",
+      "receipt_file_sha256": "f260f7e50515539d4a3a56620e4aadc578c453813cf6a8e545d95d512691b83d",
+      "receipt_content_sha256": "c80ffacd12212f03655904d86b9972c975b905379d2b4526769c3becb0393b27",
+      "mode": "agent",
+      "workflow_status": "invalid_output",
+      "selection_state": "no_valid_final_model_selection",
+      "captured_candidate_count": 0,
+      "selected_paper_count": 0,
+      "abstract_inspection_count": 0,
+      "cost_observations": {
+        "model_generation_calls": 1,
+        "model_tokenizer_requests": 1,
+        "observed_model_token_counts": {
+          "prompt_tokens": 334,
+          "total_tokens": 1534,
+          "completion_tokens": 1200
+        },
+        "controller_rejected_action_attempts": 0,
+        "source_tool_invocations": 0,
+        "native_search_process_executions": 0,
+        "direct_exact_PubMed_fetch_invocations": 0,
+        "source_cache_hits": 0,
+        "exact_upstream_HTTP_request_count": null,
+        "dollar_cost": null
+      },
+      "all_saved_file_hashes_verified": true,
+      "graph_changes": 0,
+      "uses_reference_corpus": false
+    }
+  ],
+  "browser_qa": {
+    "visual_acceptance": false,
+    "screenshot_available": false,
+    "reason": "Browser bootstrap failed and fallback security policy denied the local file; no bypass used.",
+    "static_review_receipt_file_sha256": "dbc84f9bec736f0b63c3b5ffd20c388139e28759a1501bed215151d7bb195609",
+    "static_review_receipt_content_sha256": "09affbc84847087e03d41d12b440626fba389cf83ea9c66e985abd233fdeaf13"
+  },
+  "source_pins": {
+    "query.py": "b1f4f87a43afb6e93d5f00080279fa35bb4c467393a2e455c7e6602756687c19",
+    "agent.py": "c9d6465f92a2075b03cfc5dff5778a71c7f104bfab523c307bf992751877a2ff",
+    "policy.py": "cc78ac5021e25fec00ae1cfb1bae4ee6fc5e697ca92686d8f5a7b2bb9336040c"
+  },
+  "raw_questions_queries_candidate_IDs_references_or_local_paths_in_capsule": false,
+  "content_sha256": "de2f405baf6a65d79a5488848c341ebe1d9ebc9c257649eb25ac0ce146303738"
+}

@@ -139,6 +139,31 @@ released model-training literature may overlap this reference; the reserve is
 project-unseen, not proven model-unseen biology. Old failures and raw categories
 remain preserved under the reference's CC BY-NC-SA 4.0 terms.
 
+## Public paper-search reference exposure — November 14
+
+The [source-search and reusable-skill comparison](evaluations/COMBINED_CONTEXT_AND_SKILLS_20261114.md#completed-agent-and-skill-assessment)
+consumed the selected 24 BioASQ11 positive document lists at
+**November 14, 2026 14:04:06 UTC**, after both original and selective-feedback
+forecast sets and first-attempt diagnostics were sealed. Only selected document
+URLs were used as reference labels; answers/snippets were not model or scoring
+inputs. The public questions are project-new, not proven model- or
+tool-development-unseen. The follow-up reuses the **same 24** reference lists;
+it is not a second fresh holdout.
+
+Native search has mean question-level reference Recall@10 0.172590. Both
+feedback-agent conditions score 0.062500. Standard duplicate-error feedback
+improves valid final outputs 10/48→31/48 but does not pass the retrieval-gain
+criterion; the added procedure has no reliable advantage. First-attempt
+readouts remain error-localization diagnostics rather than replacement primary
+endpoints. No post-label prompt/model sweep follows. Original fail-fast source
+is retained on local branch `codex/archive-source-search-stop-v3-20261114`,
+commit `dac3285cae18df49754fa64680d2f5bcc6273673`. The original completed score,
+failed CLI write and append-only unchanged-function continuation are preserved.
+The executed feedback checkpoint precedes the maintained CLI type repair and
+is separately archived at `f9c709277f2a551fa01c968f7db2608d43f39504` on local
+branch `codex/archive-source-search-feedback-v4-20261114`. Its 19 source files
+match the frozen capture; neither archive has been pushed.
+
 ## Reopening an archived file
 
 Read a report without changing the active checkout:

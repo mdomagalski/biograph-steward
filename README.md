@@ -9,6 +9,14 @@ Choose an exact disease or protein cohort → retrieve a scoped graph → ask a 
 
 See the [November 14 measured scientific results](docs/evaluations/SCIENTIFIC_RESULTS_20261114.md), [submission and presentation draft](docs/FINAL_SUBMISSION.md) and [completion scope](docs/BUILD_PLAN.md). The core demonstration requires no paid literature service or GPU. The accepted AWS runtime is `a6a05ff`; its saved historical function inspector exposes six queries and 36 traceable hypotheses.
 
+The [combined-method and reusable-skill assessment](docs/evaluations/COMBINED_CONTEXT_AND_SKILLS_20261114.md)
+keeps the existing LocalPlus default: combining the earlier improvements did
+not pass its retention rule. An optional [source-paper inspection utility](docs/SOURCE_PAPER_INSPECTION.md)
+adds PubMed discovery without Edison access. Native search needs no model and
+outperformed the tested agent on the fixed public-reference subset. The
+bounded agent route and attributed skill remain explicit research options;
+the hosted reviewer interface is unchanged.
+
 The [portable delivery guide](docs/DELIVERY.md) separates the software-only
 runtime from the complete local CRC source/graph/decision package. Follow the
 [five-minute demonstration](docs/DEMO_SCRIPT.md). Real source redistribution

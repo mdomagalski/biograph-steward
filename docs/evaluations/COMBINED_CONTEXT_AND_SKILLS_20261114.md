@@ -4,6 +4,12 @@ November 14, 2026. This round follows the
 [completed reference assessments](SCIENTIFIC_RESULTS_20261114.md). Previous
 scores, failed executions and exposure boundaries remain unchanged.
 
+The combined predictor did not pass its retention rule, so the current
+full-context LocalPlus inspector stays in use. A reusable PubMed discovery tool
+is now available without Edison access. Standard error feedback improves the
+optional agent's execution, but neither the agent nor the added skill improves
+reference-paper retrieval over the simpler native query in this assessment.
+
 ## Two questions, with separate outcomes
 
 1. Does the unchanged published GeneMANIA+ predictor benefit from the full,
@@ -29,6 +35,7 @@ assertion or improving graph-edge precision.
 | Biomni | Broad biomedical orchestration, including a local-model route and a separate PMID-preserving MCP example | Its legacy PubMed helper can broaden a query without returning the effective query or PMID; the separate native MCP example preserves identity. The full runtime was not qualified here | Keep the already qualified smaller retrieval surface; defer a second broad platform |
 | GeneAgent | Database-guided verification and withholding a source from verifying its own labels | The 132 released human judgments concern the original verification decision, not raw claim truth; only ten gene-set clusters, with a strong always-correct control | Reuse the methodological lesson; keep a separate report-correctness assessment on hold |
 | PathAnchor | Source-bound evidence paths and exact evidence opening | Published evaluation concerns flexible sensors, and much of the capability is already in our guided source/path inspection | Methodological support, not a new biomedical accuracy claim or framework replacement |
+| NCBI MedCPT Cross-Encoder | A published specialist for article relevance, rather than a generic encoder or truth classifier | Its native input includes abstracts, which the inspected search capture lacks. Reordering ten papers cannot improve Recall@10; training-log overlap remains unestablished | Defer a separately frozen larger-pool/abstract comparison; fetch no weights and add no new source budget now |
 | NVIDIA Agent Skills and optional NeMo Agent Toolkit | Product-specific RAG/MCP development guidance and optional workflow instrumentation | The official toolkit documentation announces October 2026 deprecation and end-2026 EOL. That notice concerns the optional orchestration toolkit, not our independently served Nano model | Preserve the pinned optional wrapper for reproduction; add no new framework dependency or migration to this comparison |
 
 The [versioned reuse qualification capsule](reusable_agent_tools_20261114_summary.json)
@@ -90,8 +97,8 @@ that the two earlier gains do not add arithmetically in this development
 comparison. The source profile changes qualification, seeds and graph context
 together, so this is not a pure causal estimate of topology.
 
-At fixed 0.5, the native evaluator omits five new cells with zero prediction
-coverage; those missing precision/recall values remain null. The sixth cell has
+At fixed 0.5, the native evaluator returns no row for five new cells; their
+precision, recall and F1 remain unreported/null. The sixth cell has
 very low recall. No acceptance cutoff follows from Fmax. All six new cells,
 macro/IA/Smin readouts, operating-point trade-offs and the complete earlier
 240-slot inventory remain in the
@@ -109,12 +116,12 @@ literature reader fetches exact PMIDs but does not discover papers. It provides
 a free, bounded support-search option while the separate paid PaperQA3
 comparison remains unexecuted. It does not claim to reproduce PaperQA3.
 
-The planned public-reference comparison uses the original BioASQ11 author
+The completed public-reference comparison uses the original BioASQ11 author
 release, with deterministic selection of 12 factoid and 12 list questions from
 permitted question metadata. Previously exposed documentation examples and
 publisher leads are excluded before selection. Expected documents and answers
 are absent from selection/model payloads and are released for scoring only after
-all three fixed prediction sets are sealed and reviewed. The reference is the
+all fixed original and follow-up forecasts are sealed and reviewed. The reference is the
 original author release on Zenodo, licensed CC-BY-2.5; a differently assembled
 third-party mirror was not substituted. The streaming parser internally decodes
 JSON events, but only question ID, body and type are retained before release.
@@ -158,6 +165,119 @@ not reinterpret a loose synonym as exact equivalence, silently apply a
 replacement, or alter historical ontology meanings. The versioned source
 ontology remains authoritative for dated model labels.
 
+### Standard error feedback, rather than another prompting recipe
+
+The first complete agent run exposed a controller limitation: an exact repeated
+search ended the case before the model could see why the action was rejected.
+The [MCP tool-error contract](https://modelcontextprotocol.io/specification/2026-07-28/server/tools#error-handling),
+[versioned LangGraph ToolNode implementation](https://github.com/langchain-ai/langgraph/blob/prebuilt%3D%3D1.1.1/libs/prebuilt/langgraph/prebuilt/tool_node.py)
+and [ReAct author environment](https://github.com/ysymyth/ReAct/blob/6bdb3a1fd38b8188fc7ba4102969fe483df8fdc9/wikienv.py)
+already provide the relevant pattern: an actionable validation failure can
+become an observation for the next bounded decision.
+
+The separately frozen follow-up adapts that pattern only for literal duplicate
+queries. The rejected action executes no source/cache call, consumes the model
+decision already spent and retains previously retrieved candidates. Four model
+decisions, two actual searches and one exact abstract fetch remain the limits;
+the fourth decision is finish-only. Unknown IDs, changed case identity, other
+invalid shapes/actions and budget violations remain terminal. This is selective
+read-only recovery, not full MCP transport conformance or scientific
+self-verification. The ordinary prompt and skill text remain unchanged; only
+the blocked duplicate produces a new feedback observation.
+
+Both runs retain the same 24 questions and closed reference boundary. Original
+fail-fast source is preserved on local archive branch
+`codex/archive-source-search-stop-v3-20261114`, commit
+`dac3285cae18df49754fa64680d2f5bcc6273673`, rather than maintaining two active
+implementations. Original source/evaluator bytes are restored and verified for
+their own replay; no historical gate is weakened to accept changed code.
+
+A separately fixed diagnostic inspects the **first attempted search**, including
+an empty/failed first attempt, without choosing a better later query or pooling
+candidates. This localizes query-discovery versus final-handoff losses without
+another model call. [Query-rewriting research](https://aclanthology.org/2023.emnlp-main.322/)
+supports separating these stages; we do not reproduce its trained/RL rewriter
+or borrow its reported gains. More valid output alone is not a retrieval or
+biological-accuracy result.
+
+### Completed agent and skill assessment
+
+All 24 selected questions have usable positive reference-document sets. Failed
+final outputs count as empty retrieval and remain in the denominator.
+
+| Workflow | Valid final agent outputs | Mean reference Recall@10 | Questions with a reference hit |
+| --- | ---: | ---: | ---: |
+| Native full-question PubMed search | Not an agent | 17.26% | 7/24 |
+| Original agent, base procedure | 4/24 | 2.08% | 1/24 |
+| Original agent, reviewed skill | 6/24 | 6.25% | 2/24 |
+| Error-feedback agent, base procedure | 13/24 | 6.25% | 2/24 |
+| Error-feedback agent, reviewed skill | 18/24 | 6.25% | 2/24 |
+
+The original skill-minus-base difference is +4.17 percentage points, with a
+paired 95% interval of [0, 12.50]. With error feedback it is zero, with an
+interval of [−12.50, 12.50]. Neither demonstrates a reliable skill advantage.
+Both feedback conditions remain 11.01 points below native search; their
+paired intervals are wholly negative. These are conditional descriptions of a
+small historical sample, not universal rankings of agents or skill libraries.
+
+Selective feedback improves valid final outputs from 10/48 to 31/48 without
+executing duplicate searches or expanding either budget. That passes the
+operational retention rule. The matched retrieval-gain rule does not pass:
+the base-agent increase has an interval touching zero and the skilled-agent
+recall is unchanged. Of the 31 valid follow-up outputs, **22 are empty**:
+seven base-agent and fifteen skilled-agent selections. Nonempty handoffs rise
+only from 7/48 to 9/48. The larger completion count mainly replaces terminal
+duplicate errors with valid empty selections; it is not a relevance or accuracy
+percentage.
+
+The first-attempt diagnostic helps locate the remaining failure. The skilled
+agent's first executed query recovers 18.40% of reference papers on average,
+but its final selection recovers 6.25%; the base agent falls from 11.46% to 6.25%.
+These component readouts do not establish that a new query-rewriting workflow
+beats native search. They show why the operator report keeps captured papers
+visible separately from the model's final selection, including when that
+selection is empty or invalid. No further prompt or model sweep follows this
+assessment.
+
+The follow-up makes 159 model calls versus 117 in the original run. It reuses
+the immutable search cache, so zero new native search processes in its cost
+table means cache reuse, not cost-free initial retrieval. All tool, tokenizer,
+model and exact-fetch costs remain separately reported in the
+[complete aggregate assessment](source_search_20261114/report.html).
+
+Both forecast sets predate the first reference release. The original run opens
+the selected references first; the follow-up reuses **those same 24** references,
+not another fresh holdout. A thin CLI string-to-`Path` error interrupted the
+first diagnostic's final file write after the original main score completed.
+An append-only continuation called the unchanged frozen functions with `Path`
+arguments. The original score, failed operator and access events are preserved;
+no metric, forecast or reference selection changed. The maintained CLI was then
+repaired separately, after all scoring and source captures.
+The exact executed feedback checkpoint is preserved on local archive branch
+`codex/archive-source-search-feedback-v4-20261114`, commit
+`f9c709277f2a551fa01c968f7db2608d43f39504`; all 19 captured files match.
+
+### Reusable source inspection
+
+The [operator guide](../SOURCE_PAPER_INSPECTION.md) explains the optional
+repository utility. Native mode needs no model or benchmark corpus. Agent mode
+uses the existing Nano server and the same read-only budgets; the reviewed
+procedure is an explicit option rather than an automatically installed skill.
+The report distinguishes source candidates, selected papers, exactly opened
+abstracts, publication metadata and unresolved status. Neither mode accepts
+assertions or changes the graph. This utility is not a new hosted app panel.
+
+The native excluded-topic smoke search returned four Pharos/TCRD papers with
+one source process and zero model calls. A separate public taste-receptor
+example stops on an invalid first model response after 1,200 output tokens,
+before any source execution. Its report correctly preserves the failure;
+no retry or prompt change follows. This is an operator demonstration,
+not another biological or retrieval-accuracy cohort. The
+[operator demonstration capsule](source_operator_20261114_summary.json)
+preserves both outcomes and their separate costs. HTML source/link/receipt
+checks are available, but browser rendering was blocked by the browser's
+security policy; no visual-browser acceptance or screenshot is claimed.
+
 ## Explanations must match the predictor
 
 LocalPlus's exact one-hop weight explanation cannot be applied to a global
@@ -191,6 +311,7 @@ scientific runtime into the core app.
 - [Tool-chain silent-failure audit](https://arxiv.org/abs/2609.26836v2),
   [PathAnchor](https://arxiv.org/abs/2609.38766).
 
-The biological combination is complete. The source-search comparison and its
-separately frozen controller-feedback follow-up await closed-forecast reference
-assessment; no retrieval or skill-benefit result is asserted yet.
+The supported defaults remain full-context LocalPlus for the existing function
+inspector and native PubMed search for this optional source-discovery utility.
+The agent can assist source inspection; these measurements do not authorize it
+to certify scientific claims or prune the graph.
