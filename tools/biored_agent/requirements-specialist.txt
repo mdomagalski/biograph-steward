@@ -1,0 +1,7 @@
+# Optional isolated benchmark runtime. Do not install into the app/model server.
+torch==2.6.0
+transformers==4.55.0
+numpy==2.2.6
+pandas==2.3.0
+accelerate==1.9.0
+tqdm==4.67.1
