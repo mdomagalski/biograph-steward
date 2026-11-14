@@ -21,12 +21,7 @@ from tools.reference_accuracy.design import need, read_rows, write_jsonl
 
 FORMAT = "biograph-steward.go-experimental-curation-reference.v1"
 AXIS = "pinned_GO_experimental_annotation_compatibility"
-EXPERIMENTAL = ("EXP", "IDA", "IPI", "IMP", "IGI", "IEP", "HTP", "HDA", "HMP", "HGI", "HEP")
-POLICY = {"strict_projection_fields": ["subject", "GO_ID", "evidence_code", "assigned_by", "aspect"],
-    "experimental_codes": list(EXPERIMENTAL), "positive_only": True,
-    "single_human_taxon_only": True, "no_isoform_or_other_product_form": True,
-    "no_annotation_extensions": True, "with_from_empty_for_unqualified_scope": True,
-    "opposing_strict_NOT_candidate_kept_unknown": True}
+from biograph_steward.go_native_support import EXPERIMENTAL, POLICY, exclusion_reasons
 LIMITATIONS = [
     "External GO curator annotations are not labels assigned by this project's AI.",
     "Annotation and evidence reuse is possible; independent studies or experimental replication are not established.",
@@ -36,21 +31,6 @@ LIMITATIONS = [
     "Reference agreement is not whole-graph scientific accuracy, clinical accuracy or prediction benefit.",
 ]
 
-
-def exclusion_reasons(row):
-    """All context gates are literal; canonical column17 repetition is not an isoform."""
-    reasons = []
-    if row["evidence_code"] not in EXPERIMENTAL:
-        reasons.append("not_experimental_evidence_code")
-    if row["taxon_ids"] != ["taxon:9606"]:
-        reasons.append("not_single_human_taxon")
-    if row["gene_product_form_id"] not in (None, "", row["subject"]):
-        reasons.append("distinct_product_form_not_collapsed")
-    if row["annotation_extension_raw"]:
-        reasons.append("native_annotation_extension_not_in_original_claim")
-    if row["with_from_raw"]:
-        reasons.append("native_with_from_context_not_in_original_claim")
-    return reasons
 
 
 def classify(graph, native, compatibility):

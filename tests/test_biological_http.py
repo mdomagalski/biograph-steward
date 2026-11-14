@@ -17,8 +17,12 @@ class BiologicalHttpTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name).resolve()
         self.folder = self.root / 'saved'; self.folder.mkdir()
-        (self.folder / 'evidence_extension.json').write_text('{}')
         self.graph = fixture()
+        # read_run/source_material are boundary doubles in this transport
+        # fixture. Its saved envelope must still match the verified graph.
+        (self.folder / 'evidence_extension.json').write_text(json.dumps({
+            'content_sha256': self.graph['evidence_extension_sha256'],
+            'summary': self.graph['evidence_extension']}))
         self.snapshot = {'content_sha256': self.graph['snapshot_sha256']}
         self.read = patch('biograph_steward.reviews.read_run', return_value=(self.snapshot, [], self.graph))
         self.read_mock = self.read.start(); self.addCleanup(self.read.stop)
@@ -77,6 +81,12 @@ class BiologicalHttpTests(unittest.TestCase):
             self.error(400, prefix + name)
         (self.root / 'alias').symlink_to(self.folder, target_is_directory=True)
         self.error(400, '/api/extension-source/alias/extension_sources/mapit/source/model.tsv')
+        envelope = self.folder / 'evidence_extension.json'
+        saved = envelope.read_bytes()
+        changed = json.loads(saved); changed['content_sha256'] = '0' * 64
+        envelope.write_text(json.dumps(changed))
+        self.error(400, prefix + 'source/model.tsv')
+        envelope.write_bytes(saved)
         self.material_mock.side_effect = ValueError('Changed source bytes')
         self.error(400, prefix + 'source/model.tsv')
 

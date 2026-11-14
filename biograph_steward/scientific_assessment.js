@@ -12,7 +12,7 @@
   };
   const metric = value => typeof value === 'number' && Number.isFinite(value) ? value.toFixed(6) : 'Unavailable';
   function table(parent, headings, rows) {
-    const t = add(parent, 'table'), head = add(t, 'thead'), tr = add(head, 'tr');
+    const t = add(add(parent, 'div', null, 'scroller'), 'table'), head = add(t, 'thead'), tr = add(head, 'tr');
     headings.forEach(label => add(tr, 'th', label));
     const body = add(t, 'tbody');
     rows.forEach(values => { const row = add(body, 'tr'); values.forEach(value => add(row, 'td', value)); });
@@ -73,12 +73,105 @@
     add(proof, 'p', 'Private evaluator report SHA256: ' + result.source_report_file_sha256, 'small');
     add(proof, 'p', 'Reference data license: ' + result.reference.data_license + '. Integrity commitments do not authenticate the publisher or establish training independence.', 'small');
   }
-  function render(container, summary, options = {}) {
+  const methodNames = {
+    localplus:'Original LocalPlus', fastsinksourceplus:'Original FSS · primary candidate', genemaniaplus:'Original GeneMANIA · secondary',
+    global_full_allseeds_local:'Full-context LocalPlus', strict_alias_localplus:'Full-context LocalPlus · strict source profile',
+    global_full_allseeds_fss:'Full-context FSS', official_blast:'Official BLAST', official_prott5_cosine3:'Official ProtT5 · three neighbors',
+    official_nonexperimental:'Pre-deadline annotation baseline', official_naive:'Official frequency baseline'
+  };
+  const methodName = name => methodNames[name] || name;
+  const namespaceName = name => ({biological_process:'Biological process',molecular_function:'Molecular function',cellular_component:'Cellular component'}[name] || name);
+  const frameName = name => name === 'primary' ? 'Original protein cohort' : name === 'reserved' ? 'Additional protein cohort' : name;
+  const settingName = name => name === 'partial' ? 'Partial knowledge' : name === 'partial_publishedaftert0' ? 'Later-publication subset' : name;
+  function componentSources(parent, component, options) {
+    if (!/^[A-Za-z0-9_-]{1,80}$/.test(options.publicationId || '')) return;
+    const ul=add(parent,'ul');
+    for (const source of component.sources || []) {
+      if (!/^sources\/[a-z_]+\.json$/.test(source.file || '')) continue;
+      const a=add(add(ul,'li'),'a',source.role+' aggregate receipt');
+      a.href='/api/scientific-assessment/'+options.publicationId+'/files/'+source.file;
+    }
+  }
+  function renderFunctionRecovery(parent,result,options) {
+    const block=add(parent,'section');add(block,'h4',result.title);
+    add(block,'p',result.scope,'notice');
+    add(block,'p','The reference measures later curator annotations recovered from dated model inputs. Fmax is the best F1 on the benchmark threshold grid; it is not a calibrated confidence or a whole-graph accuracy percentage.','small');
+    const rows=result.rows || [], find=(frame,method)=>rows.find(r=>r.frame===frame && r.setting==='partial' && r.namespace==='biological_process' && r.method===method);
+    const old=find('primary','localplus'), current=find('primary','strict_alias_localplus');
+    if (typeof old?.micro_Fmax==='number' && typeof current?.micro_Fmax==='number') {
+      add(block,'p','Original-cohort biological-process micro-Fmax: '+metric(old.micro_Fmax)+' → '+metric(current.micro_Fmax)+' with the strict source profile.','notice');
+    }
+    add(block,'p',result.roles?.original_primary?.conclusion || 'The original propagation candidate and its same-source comparator remain in the complete results.','small');
+    const primary=['localplus','fastsinksourceplus','genemaniaplus','strict_alias_localplus','global_full_allseeds_fss','official_nonexperimental','official_blast','official_prott5_cosine3'].map(m=>find('primary',m)).filter(Boolean);
+    table(block,['Original cohort · BPO','Micro Fmax','IA micro','Macro Fmax','IA macro','IA Smin ↓','Fixed 0.5 F1','Status'],primary.map(r=>[
+      methodName(r.method),metric(r.micro_Fmax),metric(r.IA_micro_Fmax),metric(r.macro_Fmax),metric(r.IA_macro_Fmax),metric(r.IA_weighted_Smin),metric(r.fixed_0_5?.F1),r.status]));
+    add(block,'p','Read pooled and per-protein metrics together. At an unchanged 0.5 cutoff, precision, recall and coverage can trade off; the app uses these scores as hypotheses, with no automatic acceptance.','small');
+    const operating=add(block,'details');add(operating,'summary','Fixed 0.5 operating-point trade-offs');
+    table(operating,['Original cohort · BPO','Precision','Recall','F1','Native coverage ratio','Author status'],primary.map(r=>[
+      methodName(r.method),...['PPV','recall','F1','coverage'].map(k=>metric(r.fixed_0_5?.[k])),r.fixed_0_5?.status||r.status]));
+    add(operating,'p','An omitted native point is unavailable, rather than zero. After known-annotation exclusion, the author’s coverage numerator and eligible denominator can differ; a native coverage ratio above one is preserved and qualified in the source receipt.','small');
+    const transfer=add(block,'details');add(transfer,'summary','Additional-cohort transfer and exact reference denominators');
+    add(transfer,'p',result.roles?.transfer || 'This is a separately frozen protein cohort from the same reference study; it is not independent-study replication.','small');
+    const reserved=['strict_alias_localplus','global_full_allseeds_local','global_full_allseeds_fss','official_nonexperimental','official_blast','official_prott5_cosine3'].map(m=>find('reserved',m)).filter(Boolean);
+    table(transfer,['Additional cohort · BPO','Micro Fmax','IA micro','Macro Fmax','IA macro','Status'],reserved.map(r=>[methodName(r.method),metric(r.micro_Fmax),metric(r.IA_micro_Fmax),metric(r.macro_Fmax),metric(r.IA_macro_Fmax),r.status]));
+    table(transfer,['Cohort','Setting','GO aspect','Author-recognized IDs','Eligible proteins','IA-eligible proteins'],(result.denominators || []).map(r=>[
+      frameName(r.frame),settingName(r.setting),namespaceName(r.namespace),r.author_recognized_target_IDs,r.eligible_proteins,r.IA_eligible_proteins]));
+    const uncertainty=add(block,'details');add(uncertainty,'summary','All paired uncertainty comparisons');
+    add(uncertainty,'p','Shared protein resamples retain each protein’s terms together. These conditional intervals do not establish independent biological replication; proteins can share genes, graph neighbors and studies. Observed differences below are computed from the native point estimates, not bootstrap means.','small');
+    table(uncertainty,['Cohort','Candidate − comparator','Readout','Observed difference','Paired 95% interval'],(result.paired_comparisons || []).map(c=>{
+      const key=c.readout==='ordinary'?'micro_Fmax':c.readout==='IA_weighted'?'IA_micro_Fmax':null;
+      const a=rows.find(r=>r.frame===c.frame&&r.setting===c.setting&&r.namespace===c.namespace&&r.method===c.candidate);
+      const b=rows.find(r=>r.frame===c.frame&&r.setting===c.setting&&r.namespace===c.namespace&&r.method===c.comparator);
+      const delta=key&&typeof a?.[key]==='number'&&typeof b?.[key]==='number'?a[key]-b[key]:null;
+      return [frameName(c.frame),methodName(c.candidate)+' − '+methodName(c.comparator),c.readout,metric(delta),
+        Array.isArray(c.paired_95_percentile_interval)?c.paired_95_percentile_interval.map(metric).join(' to '):'Pending'];
+    }));
+    const all=add(block,'details');add(all,'summary','Every declared outcome · '+rows.length+' cohort/setting/method/aspect slots');
+    let populated=false;
+    all.ontoggle=()=>{if(all.open&&!populated){
+      table(all,['Cohort','Setting','GO aspect','Method','Status','Micro Fmax','IA micro','Macro Fmax','IA macro','Smin ↓','IA Smin ↓','Fixed 0.5 F1'],rows.map(r=>[
+        frameName(r.frame),settingName(r.setting),namespaceName(r.namespace),methodName(r.method),r.status,
+        ...['micro_Fmax','IA_micro_Fmax','macro_Fmax','IA_macro_Fmax','unweighted_Smin','IA_weighted_Smin'].map(k=>metric(r[k])),metric(r.fixed_0_5?.F1)]));populated=true;
+    }};
+    const limits=add(block,'details');add(limits,'summary','Reference scope, source versions and saved aggregates');
+    const ul=add(limits,'ul');(result.limitations||[]).forEach(x=>add(ul,'li',x));componentSources(limits,result,options);
+  }
+  const relationNames={always_None:'Always no reported relation',typed_co_mention:'Typed co-mention',specialist_native:'Published specialist',specialist_type_guard:'Specialist + type guard',flat_context_LLM:'Nano · flat context',source_audit_agent:'Nano · bounded tool agent'};
+  function renderAgentReference(parent,result,options) {
+    const block=add(parent,'section');add(block,'h4',result.title);add(block,'p',result.scope,'notice');
+    const primary=result.primary;
+    if (!primary) {add(block,'p','Final sealed relation comparison is not available.');return;}
+    add(block,'p',primary.test_cases+' fixed entity pairs from '+primary.test_publications+' publications. Expert labels concern relations reported in the permitted abstract; native entity annotations are supplied.','small');
+    add(block,'p',primary.agent_default_adoption_criterion_passed
+      ? 'The agent met the frozen numerical adoption criterion on this source-reference task. Provenance and transfer limits still apply.'
+      : 'The agent did not meet the frozen accuracy/F1 adoption criterion and is kept out of the default decision path.','notice');
+    table(block,['Fixed arm','Exactly correct','Exact accuracy','Positive precision','Positive recall','Positive F1','Coverage','Unresolved'],Object.entries(primary.metrics).map(([name,m])=>[
+      relationNames[name]||name,m.exact_correct+'/'+m.cases,metric(m.exact_accuracy),metric(m.exact_positive_relation.precision),metric(m.exact_positive_relation.recall),metric(m.exact_positive_relation.f1),metric(m.coverage),m.unresolved]));
+    const deltas=add(block,'details');add(deltas,'summary','Agent contrasts, tool use and model costs');
+    table(deltas,['Agent versus','Accuracy difference · 95% interval','Positive F1 difference · 95% interval'],Object.entries(primary.agent_paired_comparisons).map(([name,c])=>[
+      relationNames[name]||name,c.accuracy_delta_95pct_paired_bootstrap.map(metric).join(' to '),c.exact_relation_F1_delta_95pct_paired_bootstrap.map(metric).join(' to ')]));
+    table(deltas,['Language-model arm','Model calls','Read tools','Reported input tokens','Reported output tokens','Sum case minutes'],Object.entries(primary.execution_costs).filter(([name])=>name!=='specialist_native').map(([name,c])=>[
+      relationNames[name]||name,c.model_calls,c.tool_reads,c.reported_token_usage?.prompt_tokens??'Unreported',c.reported_token_usage?.completion_tokens??'Unreported',
+      typeof c.sum_case_elapsed_seconds==='number'?(c.sum_case_elapsed_seconds/60).toFixed(1):'Unreported']));
+    add(deltas,'p','The flat control receives the same permitted information in one request. A fixed tool-reading order does not demonstrate adaptive retrieval. Five thousand paired publication bootstrap draws retain within-paper dependence.','small');
+    if(result.gene){const gene=add(block,'details');add(gene,'summary','Complete gene-involving specialist assessment · separate denominator');
+      add(gene,'p',result.gene.cases+' candidate pairs from '+result.gene.publications+' publications. These are the full gene-involving native rows, rather than the one-pair-per-paper agent sample.','small');
+      table(gene,['Arm','Cases','Exact accuracy','Positive precision','Positive recall','Positive F1'],Object.entries(result.gene.metrics).map(([name,m])=>[
+        relationNames[name]||name,m.cases,metric(m.exact_accuracy),metric(m.exact_positive_relation.precision),metric(m.exact_positive_relation.recall),metric(m.exact_positive_relation.f1)]));}
+    if(result.artifact){const artifact=add(block,'details');add(artifact,'summary','Released artifact consistency · all native task rows');
+      add(artifact,'p',result.artifact.native_candidate_rows+' candidate rows from '+result.artifact.native_candidate_publications+' candidate-bearing publications. This compares a single released checkpoint with the paper’s ten-run means; it does not audit its training membership.','small');
+      table(artifact,['Native metric level','Precision','Recall','Single-checkpoint F1','Paper mean F1'],Object.entries(result.artifact.author_metric_reference_agreement).map(([kind,m])=>[
+        kind,metric(m.precision),metric(m.recall),metric(m.f1),metric(result.artifact.paper_reported_10_seed_mean_F1[kind])]));}
+    const proof=add(block,'details');add(proof,'summary','Reference provenance and complete aggregate reports');
+    const ul=add(proof,'ul');(result.limitations||[]).forEach(x=>add(ul,'li',x));componentSources(proof,result,options);
+  }
+  function renderSnapshot(container, summary, options = {}) {
     if (typeof container === 'string') container = document.querySelector(container);
     if (!container) throw new Error('Scientific assessment container is unavailable.');
     if (!['biograph-steward.scientific-assessment-publication.v1.summary',
           'biograph-steward.scientific-assessment-publication.v2.summary',
-          'biograph-steward.scientific-assessment-publication.v3.summary'].includes(summary?.format))
+          'biograph-steward.scientific-assessment-publication.v3.summary',
+          'biograph-steward.scientific-assessment-publication.v4.summary'].includes(summary?.format))
       throw new Error('Unsupported scientific assessment snapshot.');
     container.replaceChildren();
     add(container, 'h3', summary.title);
@@ -129,6 +222,18 @@
       const link = add(row, 'a', source.title); link.href = url.href; link.target = '_blank'; link.rel = 'noopener noreferrer';
     });
     if (base) { const link = add(proof, 'a', 'Open the compact assessment report'); link.href = base + 'report'; }
+    return container;
+  }
+  function render(container,summary,options={}) {
+    if(summary?.format!=='biograph-steward.scientific-assessment-publication.v4.summary')return renderSnapshot(container,summary,options);
+    if(typeof container==='string')container=document.querySelector(container);
+    if(!container)throw new Error('Scientific assessment container is unavailable.');
+    container.replaceChildren();add(container,'h3',summary.title);add(container,'p',summary.scope,'small');
+    if(summary.function_recovery)renderFunctionRecovery(container,summary.function_recovery,options);
+    if(summary.agent_reference_agreement)renderAgentReference(container,summary.agent_reference_agreement,options);
+    const legacy=add(container,'details');add(legacy,'summary','99-target source workspace and earlier component assessments');
+    let shown=false;
+    legacy.ontoggle=()=>{if(legacy.open&&!shown){const body=add(legacy,'div');renderSnapshot(body,{...summary,title:'99-target source workspace',scope:summary.workspace_scope},options);shown=true;}};
     return container;
   }
   window.ScientificAssessment = Object.freeze({render});

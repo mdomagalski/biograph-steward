@@ -1,5 +1,83 @@
 # Official native GO quality-control runner
 
+## Full replacement-proposal census
+
+`audit_replacements.py` is a separate dependency-free audit of the existing
+explicit main-term replacement proposals. It reuses the Gold package and GOA
+source verifiers, exact five-field projection matcher and the existing
+experimental-reference context gates. It applies no repair and changes no
+graph or review. Missing/nonexperimental/context-specific records stay outside
+the qualified recovery scope; they are not false labels.
+
+Supply the original GO qualification directory, the actual retained decision
+package and original native GO context, each with its independently checked
+report file SHA256:
+
+```sh
+python -m unittest tools.go_qualification.test_replacements -v
+python -m tools.go_qualification.audit_replacements \
+  --qualification ORIGINAL_GO_QUALIFICATION \
+  --retained-package ACTUAL_RETAINED_PACKAGE \
+  --context ORIGINAL_NATIVE_GO_CONTEXT --output NEW_AUDIT_DIRECTORY \
+  --qualification-sha256 GO_REPORT_SHA256 \
+  --retained-sha256 RETAINED_REPORT_SHA256 --context-sha256 NATIVE_REPORT_SHA256
+```
+
+Outputs separately enumerate proposal origins, unique protein/replacement
+concepts, exact native rows, concept versus projected-record overlap, and
+qualified nonduplicate current-native candidates. `qualified_recoveries.gaf`
+is an explicitly labelled standard subset of unchanged native annotation bodies,
+not a modified Pharos annotation file. Source licensing and provenance remain
+attached. A canonical protein/new-term overlap is not identity of complete
+native relations, publications, contexts or evidence.
+
+See the [completed167-proposal census](../../docs/evaluations/GO_REPLACEMENT_CENSUS_20261113.md).
+The audit is a source-backed coverage assessment, not independent experimental
+truth or a full GORULE20 repair/conformance claim. The separately sourced GOA
+adapter and the publication workflow below now support applying its qualified
+candidates without rewriting historical Pharos rows.
+
+## Publish native GO recoveries
+
+`publish_recoveries.py` reuses the native GOA adapter, ordinary saved-run replay
+and the Gold decision interface. It preserves old evidence, source publications,
+assertion identities/revisions and exact decision rows, then appends new native
+GO rows with explicit abstentions. Existing extension-bound reviews cause a
+failure when the combined source hash changes; they are never migrated silently.
+
+```sh
+PYTHONPATH=.:tests python -m unittest tools.go_qualification.test_publish_recoveries -v
+python -m tools.go_qualification.publish_recoveries prepare \
+  --census CENSUS_DIRECTORY --qualification ORIGINAL_GO_QUALIFICATION \
+  --retained-package ACTUAL_RETAINED_PACKAGE --context ORIGINAL_NATIVE_GO_CONTEXT \
+  --census-sha256 CENSUS_REPORT_FILE_SHA256 --output NEW_PREPARATION \
+  --publication EXISTING_VERIFIED_GOA_PUBLICATION
+```
+
+`--publication` is optional. When supplied, its complete proof and source-byte
+bindings are replayed before copying it; otherwise the adapter creates it from
+the supplied local artifacts. The new directory contains `goa_publication/`,
+`raw_run/`, `packet/`, `decisions.json`, `retained/` and a sealed
+`recovery_preparation.json`. Preparation does not publish an app workspace.
+
+First recompute the existing WikiPathways history proof against
+`NEW_PREPARATION/packet/source/graph.json`, using the original archived captures.
+Then finalize with its explicit content pin:
+
+```sh
+python -m tools.go_qualification.publish_recoveries finalize \
+  --prepared NEW_PREPARATION --history NEW_GRAPH_BOUND_HISTORY \
+  --history-sha256 HISTORY_CONTENT_SHA256 --output NEW_WORKSPACE
+```
+
+The finalizer refuses an old graph-bound proof, changed prepared files or an
+output inside the sealed preparation. All source data stay separate from the
+code checkout. No new retrieval, LLM or GPU is required. See the
+[actual recovery result](../../docs/evaluations/NATIVE_GO_RECOVERY_20261113.md)
+for counts, source versions, interpretation and deployment scope.
+
+## Published quality-control runtime
+
 This optional runner executes the published **ontobio 2.9.12** implementation
 with the directly pinned **prefixcommons 0.1.12** identifier registry
 on complete, preserved native GAF records. It does not reconstruct historical

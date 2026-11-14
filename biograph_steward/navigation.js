@@ -68,6 +68,7 @@ function setupWorkspace(){
   $('sourceGuideButton').disabled=!runId;$('pathExploreButton').disabled=!runId;
   $('sourceGuideSearch').value='';populateSourceGuide();populatePathEntities();
   setupNeptune();
+  setupNativeGoa();
   const relations=[...new Set((graph.assertions||[]).map(a=>a.predicate))].sort();
   $('pathPredicate').replaceChildren(el('option','All saved relationship types'));$('pathPredicate').options[0].value='';
   for(const predicate of relations){const option=el('option',relationLabel(predicate));option.value=predicate;$('pathPredicate').append(option);}

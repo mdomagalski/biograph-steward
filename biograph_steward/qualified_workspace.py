@@ -29,7 +29,9 @@ _READER_HELPERS = (
     'questions', 'wiki_history', 'human_gene_relation', 'cohort_mapping',
     'assay_attachment', 'lambourne_evidence', 'intact_evidence',
     'intact_publication', 'intact_final_publication', 'evidence_extension',
-    'mapit_source', 'signor_source', 'string_source_update', 'bioplex_source',
+    'mapit_source', 'signor_source', 'string_source_update', 'bioplex_source', 'goa_source',
+    'go_native_support', 'go_replacement_selection', 'go_qualification', 'go_ontology_qualification',
+    'go_context_inspection',
     'construction', 'construction_planning', 'refresh', 'refresh_workflow',
     'guided_construction', 'retrieval', 'string_component', 'literature',
 )

@@ -393,9 +393,14 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
             "observation ledger without edges. The original frozen Pharos lookup is preserved as historical context. "
             "No automatic acceptance, pruning or independent biological validation is performed.")
     if evidence_extension is not None:
-        graph["interpretation"] += (" Separate source additions preserve versioned STRING associations and "
-            "qualified MAP-IT tissue proximity observations. Added source proteins are not Pharos target "
-            "seeds. Neither source agreement nor enrichment establishes independent evidence or direct binding.")
+        if "goa" in evidence_extension.get("sources", {}):
+            graph["interpretation"] += (" Separate native GO annotations retain their recorded relations, "
+                "references and source identities. They remain candidate annotations and do not replace "
+                "historical Pharos records or establish independent experiments, CRC relevance or biological validation.")
+        else:
+            graph["interpretation"] += (" Separate source additions preserve versioned STRING associations and "
+                "qualified MAP-IT tissue proximity observations. Added source proteins are not Pharos target "
+                "seeds. Neither source agreement nor enrichment establishes independent evidence or direct binding.")
     from .assertions import build_assertions, assertion_summary
     graph["review_events"] = deepcopy(review_events) if review_events is not None else []
     graph["assertions"] = build_assertions(graph, graph["review_events"])

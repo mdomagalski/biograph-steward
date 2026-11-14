@@ -17,7 +17,8 @@ QUALIFIERS = ("disease", "variant", "therapy", "species", "tissue", "cell_line",
 CONTEXT_QUALIFIERS = ("go_aspect", "tissue_label", "assay", "observation_id",
                       "measurement_value", "measurement_qualifier", "measurement_unit",
                       "evidence_direction", "variant_origin", "therapy_interaction", "evidence_type",
-                      "regulatory_effect", "regulatory_mechanism", "source_directness", "residue", "sequence")
+                      "regulatory_effect", "regulatory_mechanism", "source_directness", "residue", "sequence",
+                      "go_relation")
 TRANSITIONS = {
     "candidate": {"accepted", "provisional", "quarantined", "rejected"},
     "provisional": {"accepted", "quarantined", "rejected", "obsolete"},

@@ -123,7 +123,7 @@ def _source_path(run_id, locator):
             or any(part in {"", ".", ".."} for part in path.split("/"))):
         return None
     if path.startswith("extension_sources/"):
-        if not re.fullmatch(r"extension_sources/(?:string|mapit|signor|bioplex)/[A-Za-z0-9_./-]+", path):
+        if not re.fullmatch(r"extension_sources/(?:string|mapit|signor|bioplex|goa)/[A-Za-z0-9_./-]+", path):
             return None
         route = "/api/extension-source/"
     else:
@@ -327,6 +327,28 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
         sources.append(source)
 
     for observation in observations:
+        if observation.get("source_kind") == "goa":
+            from .goa_source import validate_native_record
+            from .go_qualification import SPEC as GAF_SPEC
+            native = observation.get("native_record")
+            validate_native_record(native)
+            for citation in observation.get("citations", []):
+                add_link(citation.get("label") or citation.get("id") or "Native GO reference",
+                         citation.get("url"), "publication")
+            add_link("GO annotation relations and source fields", GAF_SPEC, "definition")
+            sections.append({"id": observation["id"] + ":native-go", "title": "Recorded native GO annotation",
+                "text": ("The curator's relation is " + native["relation_literal"] + ". "
+                         "The relation, reference and evidence code belong to this native annotation. "
+                         "They do not reconstruct the omitted qualifiers of a historical Pharos record. "
+                         "Acts upstream of is not converted to involved in or enables."),
+                "fields": {"go_id": native["go_id"], "native_GO_label": observation.get("go_label"),
+                    **{k: deepcopy(native.get(k)) for k in ("subject", "relation_literal", "negated", "aspect",
+                        "evidence_code", "assigned_by", "reference_identifiers", "reference_group_semantics",
+                        "taxon_ids", "gene_product_form_id", "with_from_raw", "annotation_extension_raw",
+                        "annotation_date", "source_gaf_sha256", "source_line", "raw_fields")}}})
+            missing.append({"field": "experimental_conditions_and_disease",
+                "note": "The GO source supplies no disease condition for this annotation. Read the cited paper for experimental conditions; cohort membership does not establish CRC relevance."})
+            continue
         if (observation["id"].startswith("string-source:")
                 or any(e.get("extension_source_kind") == "string"
                        and e["id"] == observation.get("graph_edge_id") for e in edges)):
@@ -487,6 +509,7 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
         "disease_filtered_membership": "A target appeared in a disease-filtered list; detailed association evidence is missing. Membership alone is not a qualified disease assertion.",
         "disease_association": "This is a source-reported disease association. It does not establish a causal mechanism, therapeutic effect or clinical recommendation.",
         "go_annotation": "This record preserves an annotation. The retrieved fields do not resolve GO relation, negation and extensions.",
+        "native_go_annotation": "This is a separately sourced native GO curator annotation with its recorded relation and reference. It remains subject to local review; disease relevance and independent biological validation are not inferred.",
         "expression_observation": "This is a source-reported expression observation on its original scale. Missing units or values are not inferred.",
         "drug_listing": "This is a target-linked drug listing. It supplies no activity, disease indication or treatment-response assertion.",
         "variant_therapy_response": "Read the complete molecular profile, disease, therapy set, evidence direction and variant origin together. A single variant or drug filter does not establish an isolated effect.",

@@ -76,6 +76,14 @@ def project_graph(graph):
                       "primary_knowledge_source": "infores:reactome",
                       "aggregator_knowledge_source": ["infores:pharos"],
                       "publications": deepcopy(edge.get("publications", []))})
+    return _finish_projection(graph, edges, ledger, PROFILE)
+
+
+def _finish_projection(graph, edges, ledger, profile):
+    """Share the existing complete source/edge/node/assertion ledger shape."""
+    nodes = {n["id"]: n for n in graph["nodes"]}
+    assertions = {a["id"]: a for a in graph["assertions"]}
+    included_nodes = {value for edge in edges for value in (edge["subject"], edge["object"])}
     projected_nodes = [{"id": uid, "category": [nodes[uid]["category"]], "name": nodes[uid]["name"]}
                        for uid in sorted(included_nodes)]
     node_ledger = [{"source_node_id": n["id"], "source_node_sha256": digest(n),
@@ -91,7 +99,7 @@ def project_graph(graph):
             "status": "represented" if rows and represented == len(rows) else
                       "partially_represented" if represented else "preserved_in_source_packet",
             "represented_edges": represented, "source_edges": len(rows)}
-    return {"profile": PROFILE, "nodes": projected_nodes, "edges": edges,
+    return {"profile": profile, "nodes": projected_nodes, "edges": edges,
             "edge_mapping": ledger, "node_mapping": node_ledger,
             "assertion_mapping": list(groups.values()),
             "counts": {"source_nodes": len(nodes), "source_edges": len(graph["edges"]),
@@ -105,7 +113,16 @@ def _files(folder):
             if p.is_file() and p != folder / RECEIPT}
 
 
-def export_standard(packet, output, resources_dir):
+def _project(graph, profile):
+    if profile == PROFILE:
+        return project_graph(graph)
+    from .standard_go_export import PROFILE as GO_PROFILE, project_graph as project_go
+    if profile == GO_PROFILE:
+        return project_go(graph)
+    raise ValueError("Unsupported standard projection profile.")
+
+
+def export_standard(packet, output, resources_dir, *, profile=PROFILE):
     """Preserve the source and official standards, then run the actual validators."""
     if Path(packet).is_symlink() or Path(resources_dir).is_symlink():
         raise ValueError("Use ordinary source packet and standards directories, not symlinks.")
@@ -113,7 +130,7 @@ def export_standard(packet, output, resources_dir):
     if output.exists() or output.is_symlink() or packet in output.resolve().parents or resources_dir in output.resolve().parents:
         raise ValueError("Choose a new output outside the source packet and standards resources.")
     manifest, graph = load_packet(packet)
-    projection = project_graph(graph)
+    projection = _project(graph, profile)
     from .standards_validation import validate_projection
     # Verify optional dependencies and resources before making an output.
     validation = validate_projection(projection["nodes"], projection["edges"], resources_dir)
@@ -134,24 +151,31 @@ def export_standard(packet, output, resources_dir):
         for name in ("edge_mapping", "node_mapping", "assertion_mapping"):
             _jsonl(stage / (name + ".jsonl"), projection[name])
         write_json(stage / "validation.json", validation)
-        report = {"profile": PROFILE, "source_packet_id": manifest["packet_id"],
+        report = {"profile": profile, "source_packet_id": manifest["packet_id"],
                   "source_graph_sha256": manifest["graph_sha256"], "data_kind": graph["data_kind"],
                   "counts": projection["counts"], "validation": validation,
                   "full_standard_conformance_claimed": False, "biological_validation_performed": False,
                   "scope_note": "Only mapped, unqualified Reactome pathway-membership records are projected. All other records, review states and qualifications remain in the complete source packet. Passing an algorithm's checks is not full standard conformance or biological truth."}
+        if profile != PROFILE:
+            from .standard_go_export import SCOPE, mapping_contract
+            report["scope_note"] = SCOPE
+            _jsonl(stage / "native_go_records.jsonl", projection["native_go_records"])
+            write_json(stage / "native_go_mapping_contract.json", mapping_contract())
         write_json(stage / "report.json", report)
         (stage / "README.txt").write_text(
             "Bounded KGX projection — inspect report.json and validation.json before use.\n"
             "The full source graph is preserved in source_packet/. Excluded records are not pruned or declared false.\n"
             "Stable IDs and mapping ledgers link the plain KGX rows to full original evidence and assertions in source_packet/.\n"
             "No full standard-conformance or scientific-accuracy claim is made.\n", encoding="utf-8")
-        receipt = {"format": FORMAT, "profile": PROFILE, "created_at": utcnow(),
+        receipt = {"format": FORMAT, "profile": profile, "created_at": utcnow(),
                    "source_packet_id": manifest["packet_id"], "source_graph_sha256": manifest["graph_sha256"],
                    "projection_sha256": digest(projection), "validation_sha256": digest(validation),
                    "implementation_sha256": {"export": sha(__file__),
                        "validation": sha(Path(__file__).with_name("standards_validation.py"))},
                    "files": _files(stage), "full_standard_conformance_claimed": False,
                    "biological_validation_performed": False}
+        if profile != PROFILE:
+            receipt["implementation_sha256"]["native_go"] = sha(Path(__file__).with_name("standard_go_export.py"))
         receipt["content_sha256"] = digest(receipt)
         write_json(stage / RECEIPT, receipt)
         verify_standard(stage)
@@ -171,14 +195,14 @@ def verify_standard(folder):
         raise ValueError("Projection must contain regular files without symlinks.")
     try:
         receipt = _read(folder / RECEIPT)
-        if (receipt.get("format") != FORMAT or receipt.get("profile") != PROFILE
+        if (receipt.get("format") != FORMAT
                 or receipt.get("content_sha256") != digest({k: v for k, v in receipt.items() if k != "content_sha256"})
                 or receipt.get("files") != _files(folder)
                 or receipt.get("full_standard_conformance_claimed") is not False
                 or receipt.get("biological_validation_performed") is not False):
             raise ValueError("Standard projection receipt or files changed.")
         manifest, graph = load_packet(folder / "source_packet")
-        projection = project_graph(graph)
+        projection = _project(graph, receipt.get("profile"))
         if (manifest["packet_id"] != receipt["source_packet_id"]
                 or manifest["graph_sha256"] != receipt["source_graph_sha256"]
                 or digest(projection) != receipt["projection_sha256"]):
@@ -189,6 +213,11 @@ def verify_standard(folder):
             rows = [_decode(line) for line in (folder / (name + ".jsonl")).read_bytes().splitlines()]
             if rows != projection[key]:
                 raise ValueError("Projection rows do not reproduce from their source: " + name)
+        if receipt["profile"] != PROFILE:
+            from .standard_go_export import mapping_contract
+            rows = [_decode(line) for line in (folder / "native_go_records.jsonl").read_bytes().splitlines()]
+            if rows != projection["native_go_records"] or _read(folder / "native_go_mapping_contract.json") != mapping_contract():
+                raise ValueError("Native GO source sidecar or mapping contract does not replay.")
         validation, report = _read(folder / "validation.json"), _read(folder / "report.json")
         resources = verify_resources(folder / "standards")
         if (digest(validation) != receipt["validation_sha256"] or report.get("validation") != validation
@@ -201,7 +230,7 @@ def verify_standard(folder):
                 or report.get("source_packet_id") != manifest["packet_id"]
                 or report.get("source_graph_sha256") != manifest["graph_sha256"]
                 or report.get("data_kind") != graph["data_kind"]
-                or report.get("profile") != PROFILE
+                or report.get("profile") != receipt["profile"]
                 or report.get("counts") != projection["counts"]
                 or report.get("full_standard_conformance_claimed") is not False
                 or report.get("biological_validation_performed") is not False):

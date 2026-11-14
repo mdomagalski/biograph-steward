@@ -1,0 +1,165 @@
+{
+  "format": "biograph-steward.native-go-recovery-summary.v1",
+  "created_at": "2026-11-14T01:12:47.042714+00:00",
+  "workspace": "goa_recovered_workspace_20261113",
+  "status": "published_and_http_export_verified_local_only",
+  "goal": "Make source-qualified current GO recovery candidates usable without rewriting historical Pharos evidence.",
+  "added_native_source_records": 24,
+  "added_relation_qualified_assertions": 21,
+  "proteins_with_additions": 15,
+  "new_GO_nodes": 6,
+  "counts": {
+    "raw_edges": 17009,
+    "raw_assertions": 17001,
+    "raw_nodes": 9871,
+    "retained_edges": 16711,
+    "retained_assertions": 16703
+  },
+  "preservation": {
+    "old_edges": 16985,
+    "added_edges": 24,
+    "old_assertions": 16980,
+    "added_assertions": 21,
+    "old_nodes": 9865,
+    "added_nodes": 6,
+    "old_edge_payloads_sha256": "3779f979fc6eede41f5582ac72c7437bef68ca866b7dda94e8628763808f08a4",
+    "old_node_payloads_sha256": "65e08615251ee9205eaf307f76ecfa7858eb5362ed4118cc6eac1b85a06268b6",
+    "old_assertion_payloads_except_extension_envelope_sha256": "11b0a8043d1f8057a2a8c8acfa81ab9c51b67920a8bff62dd0f91813fa12eb58",
+    "old_decision_rows_sha256": "014c7ff5cb34927f7c66b13ec73f1c35b65846ca8da4a11121575938f7686e40",
+    "old_review_events_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "old_context_records_sha256": "00c0aeeccf8cd751ac0579c9297b135916781cf1f82ad79db71d0fe0c3a612d8",
+    "old_quarantine_sha256": "820349bc0e688520e3c18a50c707ab08ecfc92f6b321abd7b75dd21f72edd90d",
+    "old_payloads_preserved": true,
+    "old_decision_rows_preserved": true,
+    "extension_container_binding_changed": true,
+    "assertion_envelope_exception": "evidence_extension_sha256 only, on existing extension assertions",
+    "review_states_promoted": false
+  },
+  "native_review_state": "candidate",
+  "new_dispositions": "24 abstentions; confidence unspecified",
+  "original_source_decisions_reconsidered": false,
+  "native_evidence_codes": {
+    "IDA": 18,
+    "IMP": 4,
+    "HDA": 2
+  },
+  "native_relations": {
+    "enables": 7,
+    "located_in": 7,
+    "involved_in": 8,
+    "acts_upstream_of": 2
+  },
+  "reference_independence_established": false,
+  "independent_biological_accuracy_established": false,
+  "CRC_specificity_inferred": false,
+  "hosted_reviewer_updated": false,
+  "Brev_required": false,
+  "source_fetches": 0,
+  "model_calls": 0,
+  "bindings": {
+    "publication_content_sha256": "e2a3ca8d637ab0777e73f65a2758775cc37b50ce1e4ab14aa05b6807c5168680",
+    "preparation_content_sha256": "07d41865b85542493e6f7f649fd8717e5d8a5aca000c2bbae2c6c67a57874670",
+    "workspace_content_sha256": "19533fd996d03aaa87b5b0f159ff6df4a084c6896d5ea01e4c74bfb34e66a5b5",
+    "history_content_sha256": "bfbf20a40a7cc1f8e9104a0bd33ccfa7680baf46599d8a7bebcedd39186806bf",
+    "finalization_content_sha256": "9ce8873ad8b06f27eb806a0378011b0cd4e0110776e88c4792f82e18a5bc1706",
+    "HTTP_acceptance_content_sha256": "11f4187af378a18a671ba7bf81a2990fe81781ade03f70ea6dd28b891920918c",
+    "downloaded_workspace_zip_sha256": "07ea5ce2cfa15b1930b46ce64145d23046f5ae3adf885100f87686cd6b937391"
+  },
+  "actual_HTTP_checks": {
+    "questions": [
+      {
+        "protein": "UniProtKB:P04637",
+        "view": "candidates",
+        "records": 6,
+        "concepts": 3,
+        "answer_content_sha256": "fdf8b250a4e17a92aa27f015572ae9b6192aa3965236033cfd847590394fe095"
+      },
+      {
+        "protein": "UniProtKB:Q13315",
+        "view": "candidates",
+        "records": 2,
+        "concepts": 2,
+        "answer_content_sha256": "d7d2508f51bf9bab73702b2fbd88db92e2d7248b49da0b21f2ee7a8bec8a749b"
+      },
+      {
+        "protein": "UniProtKB:P04637",
+        "view": "accepted",
+        "records": 0,
+        "concepts": 0,
+        "answer_content_sha256": "e89e9404d9a3ed378e71dee4eb7c4679ccf6b8faa5f1aaa5e2fc0442dfd3d43c"
+      }
+    ],
+    "source_passport_native_sections": 3,
+    "preserved_source_download_links": 6,
+    "exact_unchanged_candidate_GAF_sha256": "c93405921bf6f41a7cd3a9d1c389b61aef6603fc12a7d6bd2ef0b5a7d52091c0",
+    "workspace_zip_bytes": 220393058,
+    "exported_baseline_edges": 17009,
+    "exported_retained_edges": 16711,
+    "exported_decisions": 17009
+  },
+  "source_scope": "Existing July 28, 2026 native GAF / July 26 ontology in August 5 release; not a newly fetched release or a prospective independent benchmark.",
+  "artifacts": {
+    "publication": "runs/goa_source_publication_20261113",
+    "preparation": "runs/goa_recovery_prepared_20261113",
+    "history": "runs/goa_recovery_history_20261113",
+    "workspace": "runs/goa_recovered_workspace_20261113",
+    "acceptance": "runs/goa_recovery_acceptance_v2_20261113"
+  },
+  "standards": [
+    "https://geneontology.org/docs/go-annotation-file-gaf-format-2.2/",
+    "https://geneontology.org/docs/guide-go-evidence-codes/"
+  ],
+  "limitations": [
+    "These are current curator annotations; historical missing qualifiers are not reconstructed.",
+    "Source support and experiment-type codes do not establish independent truth or disease relevance.",
+    "The prior Pharos graph and source decisions remain unchanged; all new assertions await review.",
+    "No prediction gain was measured by this import."
+  ],
+  "software_validation": {
+    "status": "passed_with_documented_staged_changes",
+    "core_python": {
+      "tests": 2009,
+      "seconds": 327.952,
+      "optional_skips": 36,
+      "passed": true,
+      "log": "/private/tmp/native-goa-regression-20261113.log",
+      "log_sha256": "7a2ff3d2863c3c5fe833f3f64a3513cb4249b76144ac26dd8eb16dda6ce6e287"
+    },
+    "affected_python_after_source_path_fix": {
+      "tests": 68,
+      "seconds": 17.409,
+      "optional_skips": 0,
+      "passed": true,
+      "log": "/private/tmp/native-goa-postfix-http-inspection-final-20261113.log",
+      "log_sha256": "594ac6ac28ae751bc0f59958800c706dbbd8b51382320c708e70118e88fc13ae"
+    },
+    "native_go_ui_final": {
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "log": "/private/tmp/native-goa-js-focused-final-20261113.log",
+      "log_sha256": "7aa5d4485e8d2b2bc15a9cf8f2887ac1b6a1bda14527bf394e2ffc3d191badd6"
+    },
+    "real_publication_source_http": {
+      "tests": 5,
+      "passed": true,
+      "seconds": 4.64,
+      "source_readers_patched": false,
+      "review_receipt": "runs/goa_integration_review_20261113/source_download_fix.json",
+      "review_sha256": "58e7833771bde3338863cfb0828f1962b0a7fbb7ceefeeffdd4491ea5ad22b04"
+    },
+    "receipt_content_sha256": "68c142a417569ea01f6c30484e9b0abb50ceec32e5f7c710b2afc5da3973e8ad"
+  },
+  "browser_walkthrough": {
+    "passed": true,
+    "checks": [
+      "TP53 native GO relationship, exact PubMed reference and candidate status visible",
+      "Accepted-only empty; no candidate promotion",
+      "Guided source passport preserves native conditions and verified source download links",
+      "Raw GAF/provenance remain behind a collapsed technical disclosure"
+    ],
+    "independent_colleague_review": false
+  },
+  "content_sha256": "2f62f806e3b8eb4e902c3d4c41e629ea9f3570d818b9936417782420896bdb64"
+}

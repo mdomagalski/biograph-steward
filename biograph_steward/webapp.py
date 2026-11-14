@@ -21,6 +21,47 @@ from .runtime import AccessPolicy, BrowserSessions, runs_directory, cache_direct
 from . import __version__
 
 
+def _function_context_sources(runs_dir, *, include_notes=False):
+    """Only operator-registered, byte-pinned saved forecasts are exposed."""
+    from .function_context import need
+    root = Path(runs_dir).resolve()
+    index = root / 'function_context_index.json'
+    if not index.exists():
+        return []
+    need(index.is_file() and not index.is_symlink() and index.stat().st_size <= 100_000,
+         'the saved-context index must be an ordinary bounded file.')
+    value = json.loads(index.read_text())
+    need(isinstance(value, dict) and set(value) == {'format', 'publications'}
+         and value['format'] == 'biograph-steward.function-context-index.v1'
+         and isinstance(value['publications'], list) and len(value['publications']) <= 25,
+         'invalid saved-context index.')
+    result, seen = [], set()
+    for row in value['publications']:
+        need(isinstance(row, dict) and set(row) in ({'id', 'manifest_sha256'}, {'id', 'manifest_sha256', 'display_notes'})
+             and isinstance(row['id'], str) and re.fullmatch(r'[A-Za-z0-9_-]{1,80}', row['id'])
+             and row['id'] not in seen and isinstance(row['manifest_sha256'], str)
+             and re.fullmatch(r'[0-9a-f]{64}', row['manifest_sha256']),
+             'invalid or duplicate saved-context registration.')
+        folder = root / row['id']
+        need(folder.is_dir() and not folder.is_symlink() and folder.resolve().parent == root,
+             'a registered context must be an ordinary directory in this data folder.')
+        seen.add(row['id'])
+        source = {'id': row['id'], 'path': folder, 'sha256': row['manifest_sha256']}
+        if 'display_notes' in row:
+            notes = row['display_notes']
+            need(isinstance(notes, dict) and set(notes) == {'id', 'file_sha256'}
+                 and isinstance(notes['id'], str) and re.fullmatch(r'[A-Za-z0-9_-]{1,80}', notes['id'])
+                 and isinstance(notes['file_sha256'], str) and re.fullmatch(r'[0-9a-f]{64}', notes['file_sha256']),
+                 'invalid annotation-overlap registration.')
+            note_folder = root / notes['id']
+            need(note_folder.is_dir() and not note_folder.is_symlink() and note_folder.resolve().parent == root,
+                 'annotation-overlap notes must use an ordinary directory in this data folder.')
+            if include_notes:
+                source.update(notes_path=note_folder/'notes.json', notes_sha256=notes['file_sha256'])
+        result.append(source)
+    return result
+
+
 def _accepts_gzip(headers):
     """Require explicit positive gzip weight (RFC9110 12.4.2/12.5.3).
 
@@ -121,13 +162,16 @@ def report_html(graph: dict | None = None, *, protected=False) -> str:
     script += '\n' + Path(__file__).with_name("assay.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("biological.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("regulatory.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("goa.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("pruning.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("validation.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("scientific_assessment.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("function_context.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("navigation.js").read_text(encoding="utf-8")
     script += '\ninitializePruningPreview();\n'
     script += '\ninitializeBiologicalComparisons();\n'
     script += '\ninitializeScientificAssessments();\n'
+    script += '\ninitializeFunctionContexts();\n'
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
@@ -338,10 +382,53 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 else:
                     self.json_reply(list_publications(runs_dir))
                 return
+            if path == '/api/function-contexts':
+                from .function_context import list_publications
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('Saved function contexts take no query options.')
+                    self.json_reply({'contexts': list_publications(_function_context_sources(runs_dir))})
+                except (ValueError, KeyError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
+            function_context = re.fullmatch(
+                r'/api/function-context/([A-Za-z0-9_-]{1,80})/'
+                r'(query/([A-Z0-9]{6}(?:[A-Z0-9]{4})?)|download/([a-z_]{1,80}))/?', path)
+            if function_context:
+                from .function_context import load_publication, get_query, download_path, load_display_notes
+                identifier, _, protein, download = function_context.groups()
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('This saved context takes no query options.')
+                    source = next((r for r in _function_context_sources(runs_dir, include_notes=True) if r['id'] == identifier), None)
+                    if source is None:
+                        self.json_reply({'error': 'Saved function context not found.'}, 404)
+                        return
+                    if protein:
+                        manifest, queries = load_publication(source['path'], source['sha256'])
+                        display_notes = None
+                        if source.get('notes_path'):
+                            display_notes = load_display_notes(source['notes_path'], source['notes_sha256'], manifest, queries,
+                                                               manifest_file_sha256=source['sha256'])
+                        self.json_reply({'context_id': identifier, 'manifest_sha256': source['sha256'],
+                                         'answer': get_query(manifest, queries, protein), 'display_notes': display_notes})
+                    elif download == 'annotation_overlap' and source.get('notes_path'):
+                        manifest, queries = load_publication(source['path'], source['sha256'])
+                        load_display_notes(source['notes_path'], source['notes_sha256'], manifest, queries,
+                                           manifest_file_sha256=source['sha256'])
+                        self.reply(source['notes_path'].read_bytes(), content_type='application/json', filename='historical_annotation_overlap.json')
+                    else:
+                        file = download_path(source['path'], download, source['sha256'])
+                        content_type = {'.gz': 'application/gzip', '.json': 'application/json',
+                                        '.py': 'text/plain; charset=utf-8'}.get(file.suffix, 'application/octet-stream')
+                        self.reply(file.read_bytes(), content_type=content_type, filename=file.name)
+                except (ValueError, KeyError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
             assessment = re.fullmatch(r'/api/scientific-assessment/([A-Za-z0-9_-]{1,80})'
                 r'(?:/(report|files/(?:sources/[a-z_]+\.json|README\.txt)))?/?', path)
             if assessment:
-                from .scientific_assessment import load_publication, ALL_PUBLIC_FILES as PUBLIC_FILES
+                from .scientific_assessment import load_publication, V4_PUBLIC_FILES as PUBLIC_FILES
                 identifier, action = assessment.groups()
                 folder = runs_dir/identifier
                 if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
@@ -543,7 +630,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 except (ValueError, TypeError, KeyError, OSError) as exc:
                     self.json_reply({'error': str(exc)}, 400)
                 return
-            match = re.fullmatch(r'/api/extension-source/([A-Za-z0-9_-]{1,80})/extension_sources/(string|mapit|signor|bioplex)/(.+)', path)
+            match = re.fullmatch(r'/api/extension-source/([A-Za-z0-9_-]{1,80})/extension_sources/(string|mapit|signor|bioplex|goa)/(.+)', path)
             if match:
                 from .reviews import read_run, read_civic, read_assay
                 from .assay_attachment import _decode, _ordinary
@@ -560,9 +647,16 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     snapshot, _, graph = read_run(folder)
                     if not graph.get('evidence_extension'):
                         raise ValueError('This workspace has no biological source extension.')
-                    extension = _decode(_ordinary(folder / SIDECAR))
-                    material = source_material(snapshot, extension, folder / SOURCE,
-                        civic=read_civic(folder), assay=read_assay(folder))
+                    source_folder = folder
+                    if graph.get('qualified_view'):
+                        from .qualified_workspace import PACKAGE
+                        source_folder = folder / PACKAGE / 'baseline_packet/source'
+                    extension = _decode(_ordinary(source_folder / SIDECAR))
+                    if (extension.get('content_sha256') != graph.get('evidence_extension_sha256')
+                            or extension.get('summary') != graph['evidence_extension']):
+                        raise ValueError('Preserved biological source belongs to a different workspace.')
+                    material = source_material(snapshot, extension, source_folder / SOURCE,
+                        civic=read_civic(source_folder), assay=read_assay(source_folder))
                     key = kind + '/' + relative
                     if key not in material:
                         raise ValueError('File is outside the preserved biological publication.')
@@ -818,7 +912,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if (marker.exists() or marker.is_symlink() or metadata.get('run_mode') == 'qualified_workspace'
                             or (source_folder/'source_retained_package').exists()
                             or (source_folder/'source_retained_package').is_symlink()):
-                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context'}:
+                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/native-go-question'}:
                             raise ValueError('This qualified retained workspace is read-only. Query or download it; use its preserved baseline for new retrieval or review.')
                 if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context'}:
                     from .reviews import read_run
@@ -986,6 +1080,23 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         site=body.get('site', ''), cell_context=body.get('cell_context', ''),
                         tissue_context=body.get('tissue_context', ''),
                         context_reporting=body.get('context_reporting', 'all'),
+                        offset=body.get('offset', 0), limit=body.get('limit', 25), source_run=identifier)
+                    self.json_reply(result)
+                    return
+                if path == '/api/native-go-question':
+                    from .goa_questions import answer_native_go_question
+                    from .reviews import read_run
+                    if set(body) - {'run_id', 'protein', 'view', 'search', 'offset', 'limit'}:
+                        raise ValueError('Unsupported native GO source question option.')
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved workspace identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    result = answer_native_go_question(read_run(folder)[2], body.get('protein', 'UniProtKB:P04637'),
+                        view=body.get('view', 'candidates'), search=body.get('search', ''),
                         offset=body.get('offset', 0), limit=body.get('limit', 25), source_run=identifier)
                     self.json_reply(result)
                     return

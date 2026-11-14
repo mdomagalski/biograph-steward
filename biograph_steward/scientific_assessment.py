@@ -21,6 +21,39 @@ from .file_utils import new_output, sha
 FORMAT = 'biograph-steward.scientific-assessment-publication.v1'
 FORMAT_V2 = 'biograph-steward.scientific-assessment-publication.v2'
 FORMAT_V3 = 'biograph-steward.scientific-assessment-publication.v3'
+FORMAT_V4 = 'biograph-steward.scientific-assessment-publication.v4'
+TASK_LIMIT = 1_000_000
+FUNCTION_FILE = 'sources/function_recovery.json'
+BIORED_FILE = 'sources/biored.json'
+FUNCTION_FORMAT = 'biograph-steward.function-recovery-aggregate.v1'
+BIORED_FORMAT = 'biograph-steward.biored-reference-aggregate.v1'
+# These are the already frozen recipe names, not a menu selected by outcomes.
+FUNCTION_METHODS = {
+    'primary': frozenset(('blast_fss_half', 'blast_local_half', 'cohort_frequency',
+        'fastsinksourceplus', 'fss_graph_human_experimental_top80', 'fss_graph_native_top80',
+        'fss_graph_ne_top80', 'genemaniaplus', 'global_full_allseeds_fss',
+        'global_full_allseeds_fss_originalheads', 'global_full_allseeds_local',
+        'global_full_allseeds_local_originalheads', 'global_full_oldseeds_fss',
+        'global_induced_oldseeds_fss', 'known_frequency', 'localplus', 'official_blast',
+        'official_naive', 'official_nonexperimental', 'official_prott5_cosine1',
+        'official_prott5_cosine3', 'prott5_cosine1_fss_half', 'prott5_cosine1_local_half',
+        'prott5_cosine3_fss_half', 'prott5_cosine3_local_half',
+        'strict_alias_fastsinksourceplus', 'strict_alias_localplus')),
+    'reserved': frozenset(('global_full_allseeds_fss', 'global_full_allseeds_fss_originalheads',
+        'global_full_allseeds_local', 'global_full_allseeds_local_originalheads',
+        'global_full_oldseeds_fss', 'official_blast', 'official_naive',
+        'official_nonexperimental', 'official_prott5_cosine3', 'prott5_cosine3_full_fss_half',
+        'prott5_cosine3_full_local_half', 'strict_alias_fastsinksourceplus', 'strict_alias_localplus')),
+}
+FUNCTION_SCOPE = ('CAFA5 temporal GO annotation recovery on separately frozen primary and reserved human-protein '
+    'frames using historical Pharos/STRING context. Not accuracy of every graph edge, not the 99-target workspace '
+    'edge population, and not an independent-study or inductive unseen-gene validation.')
+BIORED_SCOPE = ('Expert-curator-relative agreement for relations reported in BioCreative VIII abstracts, with gold '
+    'entities supplied. Primary one-pair-per-publication, complete-gene secondary and artifact-consistency scopes '
+    'remain separate. Not whole-Pharos biological truth, canonical-protein grounding or direct binding validation.')
+BIORED_FORMATS = {'primary':'biograph-steward.biored-source-comparison.v1',
+    'gene':'biograph-steward.biored-full-gene-source-assessment.v1',
+    'artifact':'biograph-steward.biored-released-artifact-consistency.v1'}
 GROUNDING_FORMAT = 'biograph-steward.expert-grounding-aggregate.v1'
 GROUNDING_FILE = 'sources/grounding.json'
 GROUNDING_ARMS = ('lexical', 'sentence', 'publication')
@@ -52,7 +85,9 @@ PUBLIC_FILES = frozenset({*SOURCE_NAMES.values(), 'report.html', 'README.txt'})
 COESS_NAMES = {role: 'sources/coess_' + role + '.json'
                for role in ('score', 'frozen', 'capture', 'curves', 'controls')}
 V2_PUBLIC_FILES = PUBLIC_FILES | frozenset(COESS_NAMES.values())
+# Retain the existing v1-v3 API constant; v4 callers opt into the expanded set.
 ALL_PUBLIC_FILES = V2_PUBLIC_FILES | {GROUNDING_FILE}
+V4_PUBLIC_FILES = ALL_PUBLIC_FILES | {FUNCTION_FILE, BIORED_FILE}
 COESS_SCOPES = ('nonsyntenic', 'all', 'syntenic', 'nonsyntenic_positive', 'nonsyntenic_negative')
 COESS_INTERPRETATION = ('Source qualification did not show a consistent advantage over normalized source context '
     'and the fixed count and degree controls across the complete primary N=1–10 curves.')
@@ -584,6 +619,310 @@ def _grounding_summary(files, pin):
                      'content_sha256': receipt['content_sha256']}]}
 
 
+def _task_tree(value, *, sanitize=False, depth=0):
+    """Bound aggregate-only data; strip operator paths without following them."""
+    need(depth<=18, 'aggregate nesting exceeds the component bound.')
+    forbidden={'case_id','pmid','abstract','text','statement','passage','predictions','case_scores',
+               'raw_cases','raw_rows','target_ids','GO_ID','protein_id','multiplicities','model_weights'}
+    if isinstance(value,dict):
+        need(len(value)<=1500 and all(isinstance(k,str) for k in value), 'aggregate object exceeds its bound.')
+        out={}
+        for i,(key,item) in enumerate(value.items()):
+            need(key not in forbidden, 'raw case/text/prediction fields are not public aggregate data.')
+            if key.startswith(('/', 'file:')):
+                need(sanitize and isinstance(item,str) and re.fullmatch('[a-f0-9]{64}',item), 'operator path key in public aggregate.')
+                out['source_'+str(i)]={'file_sha256':item}
+            elif key in {'path','file','source','source_snapshot'} and isinstance(item,str) and item.startswith(('/','file:')):
+                need(sanitize, 'operator path in public aggregate.')
+            else:out[key]=_task_tree(item,sanitize=sanitize,depth=depth+1)
+        return out
+    if isinstance(value,list):
+        need(len(value)<=1500, 'aggregate list exceeds its bound.')
+        return [_task_tree(v,sanitize=sanitize,depth=depth+1) for v in value]
+    if isinstance(value,str):
+        need(len(value)<=16000 and not re.search(r'\b(?:PMID:[0-9]+|GO:[0-9]{7}|UniProtKB:[A-Z0-9]{6})',value),
+             'raw reference/target identifiers are not public aggregate data.')
+        pattern=r'(?:file://)?/(?:Users|home|private|tmp|var)/[^\s\"<>]+'
+        if re.search(pattern,value):
+            need(sanitize, 'operator path in public aggregate.')
+            value=re.sub(pattern,'[operator path removed]',value)
+        return value
+    need(value is None or type(value) in (bool,int,float), 'unsupported aggregate value type.')
+    need(type(value) is not float or math.isfinite(value), 'aggregate numbers must be finite.')
+    return value
+
+
+def _task_source(path, expected):
+    _pin(expected);raw=_bounded(path,limit=TASK_LIMIT)
+    need(hashlib.sha256(raw).hexdigest()==expected, 'task source FILE pin differs.')
+    value=_decode(raw);need(isinstance(value,dict) and _sealed(value), 'task source content seal differs.')
+    return value
+
+
+def _native_coverage(value, denominator):
+    """Author n/ne can retain pre-known rows in n but not in ne; never clamp."""
+    eligible=_count(denominator['eligible_proteins']);recognized=_count(denominator['author_recognized_target_IDs'])
+    need(eligible>0 and type(value) in (int,float) and math.isfinite(value)
+         and 0<=value<=recognized/eligible+1e-12,
+         'native coverage ratio exceeds its recognized/eligible count bound.')
+    return value
+
+
+def _function_receipt(value):
+    _keys(value,('format','created_at','scope','source_report_file_sha256','source_report_content_sha256',
+        'results','raw_cases_or_predictions_included','source_graph_modified','scientific_accuracy_claimed','content_sha256'),
+        'function recovery aggregate')
+    need(_sealed(value) and value['format']==FUNCTION_FORMAT and value['scope']==FUNCTION_SCOPE
+         and all(value[k] is False for k in ('raw_cases_or_predictions_included','source_graph_modified','scientific_accuracy_claimed')),
+         'function recovery aggregate scope changed.')
+    _pin(value['source_report_file_sha256']);_pin(value['source_report_content_sha256'])
+    result=value['results'];_task_tree(result)
+    _keys(result,('format','created_at','status','scientific_task','scope','roles','expected_outcome_slots','status_counts','rows',
+        'denominators','paired_comparisons','uncertainty_reports','runtime','evaluation_contract','reference','caveats','lineage',
+        'source_pins','native_aggregate_source_files_sha256','all_outcomes_including_negatives_and_unsupported_retained',
+        'new_model_threshold_or_target_selection_from_this_projection'),'function source aggregate fields')
+    need(result.get('expected_outcome_slots')==240 and result.get('all_outcomes_including_negatives_and_unsupported_retained') is True
+         and result.get('new_model_threshold_or_target_selection_from_this_projection') is False,
+         'the complete frozen function-comparison outcome frame is required.')
+    rows=result.get('rows');denominators=result.get('denominators')
+    need(isinstance(rows,list) and len(rows)==240 and isinstance(denominators,list) and len(denominators)==12,
+         'preserve all declared rows and native denominator scopes.')
+    frames={'primary':27,'reserved':13};settings={'partial','partial_publishedaftert0'}
+    namespaces={'biological_process','molecular_function','cellular_component'};ds={}
+    for row in denominators:
+        need(isinstance(row,dict) and all(isinstance(row.get(k),str) for k in ('frame','setting','namespace')), 'invalid native denominator record.')
+        key=row['frame'],row['setting'],row['namespace']
+        need(key[0] in frames and key[1] in settings and key[2] in namespaces and key not in ds,'duplicate/unknown native denominator scope.')
+        n=_count(row['eligible_proteins']);ia=_count(row['IA_eligible_proteins'])
+        need(ia<=n and _count(row['author_recognized_target_IDs'])>=n,'native reference denominator differs.')
+        _count(row['post_known_TOI_reference_pairs']);ds[key]=row
+    seen=set();methods={frame:set() for frame in frames};statuses={}
+    for row in rows:
+        need(isinstance(row,dict) and all(isinstance(row.get(k),str) for k in ('frame','setting','namespace','method','status')), 'invalid function outcome row.')
+        need(set(row)<={'frame','setting','namespace','method','status','eligible_proteins','IA_eligible_proteins',
+            'source_curve_sha256','reason','native_curve_rows','micro_Fmax','micro_Fmax_tau','IA_micro_Fmax','IA_micro_Fmax_tau',
+            'macro_Fmax','macro_Fmax_tau','IA_macro_Fmax','IA_macro_Fmax_tau','unweighted_Smin','unweighted_Smin_tau',
+            'IA_weighted_Smin','IA_weighted_Smin_tau','prediction_coverage_at_micro_Fmax','fixed_0_5'},
+            'unexpected case-level field in function outcome row.')
+        frame,setting,ns,method=[row[k] for k in ('frame','setting','namespace','method')]
+        need(frame in frames and setting in settings and ns in namespaces
+             and re.fullmatch('[a-z][a-z0-9_]{0,100}',method),'invalid function outcome identity.')
+        key=frame,setting,ns,method
+        need(key not in seen,'duplicate function outcome slot.');seen.add(key);methods[frame].add(method)
+        denom=ds[frame,setting,ns]
+        need(row.get('eligible_proteins')==denom['eligible_proteins']
+             and row.get('IA_eligible_proteins')==denom['IA_eligible_proteins'],'outcome denominator differs from its native frame.')
+        status=row['status'];need(status in {'scored','pending','no_native_curve','nonfinite_native_curve','unsupported','failed'},'unknown outcome status.')
+        statuses[status]=statuses.get(status,0)+1
+        if status!='scored':
+            need(not set(row)&{'native_curve_rows','micro_Fmax','IA_micro_Fmax','macro_Fmax','IA_macro_Fmax',
+                 'unweighted_Smin','IA_weighted_Smin','prediction_coverage_at_micro_Fmax','fixed_0_5'},
+                 'unscored outcome must not receive a synthetic score.')
+            continue
+        _pin(row['source_curve_sha256'])
+        need(_count(row['native_curve_rows'])>0,'scored outcome lacks a native curve.')
+        for field in ('micro_Fmax','micro_Fmax_tau','IA_micro_Fmax','IA_micro_Fmax_tau','macro_Fmax','macro_Fmax_tau',
+                      'IA_macro_Fmax','IA_macro_Fmax_tau','unweighted_Smin_tau','IA_weighted_Smin_tau'):
+            _metric(row[field])
+        _native_coverage(row['prediction_coverage_at_micro_Fmax'],denom)
+        for field in ('unweighted_Smin','IA_weighted_Smin'):
+            need(type(row[field]) in (int,float) and math.isfinite(row[field]) and row[field]>=0,'invalid saved Smin.')
+        fixed=row.get('fixed_0_5');need(isinstance(fixed,dict) and fixed.get('threshold')==.5
+             and fixed.get('namespace')==ns,'preserve the fixed .5 operating point.')
+        omitted=fixed.get('status')=='author omits thresholds with zero prediction coverage'
+        for field in ('PPV','recall','F1','coverage'):
+            if omitted:need(fixed.get(field) is None,'an omitted author operating point is not zero.')
+            elif field=='coverage':_native_coverage(fixed[field],denom)
+            else:_metric(fixed[field])
+    need(all(methods[k]==FUNCTION_METHODS[k] for k in frames)
+         and result.get('status_counts')==statuses,'declared method/status totals differ.')
+    roles=result.get('roles');need(isinstance(roles,dict) and isinstance(roles.get('original_primary'),dict)
+         and roles['original_primary'].get('candidate')=='fastsinksourceplus'
+         and roles['original_primary'].get('frame')=='primary' and roles['original_primary'].get('metric')=='micro_Fmax'
+         and roles.get('deployed_source_profile')=='strict_alias_localplus', 'the original negative primary and deployed roles must remain explicit.')
+    need(isinstance(result.get('paired_comparisons'),list) and isinstance(result.get('caveats'),list)
+         and result.get('scope',{}).get('whole_graph_biological_truth_or_clinical_utility_claimed') is False
+         and result['scope'].get('no_raw_reference_or_prediction_rows_included') is True,
+         'function reference/interpretation boundary differs.')
+    for pair in result['paired_comparisons']:
+        key=pair['frame'],pair['setting'],pair['namespace'];need(key in ds,'unknown paired comparison scope.')
+        need(pair['candidate'] in methods[key[0]] and pair['comparator'] in methods[key[0]],'paired comparison method outside frozen frame.')
+        _pin(pair['source_report_sha256']);interval=pair['paired_95_percentile_interval']
+        need(isinstance(interval,list) and len(interval)==2 and all(type(v) in (int,float) and math.isfinite(v) and -1<=v<=1 for v in interval)
+             and interval[0]<=interval[1], 'invalid saved paired interval.')
+    return value
+
+
+def prepare_function_recovery_aggregate(source, output_json, *, expected_report_pin):
+    original=_task_source(source,expected_report_pin)
+    need(original.get('format')=='biograph-steward.cafa5-scientific-aggregate-projection.v1', 'expected the sealed CAFA aggregate projection.')
+    allowed={'format','created_at','status','scientific_task','scope','roles','expected_outcome_slots','status_counts','rows',
+        'denominators','paired_comparisons','uncertainty_reports','runtime','evaluation_contract','reference','caveats','lineage',
+        'source_pins','native_aggregate_source_files_sha256','all_outcomes_including_negatives_and_unsupported_retained',
+        'new_model_threshold_or_target_selection_from_this_projection','content_sha256'}
+    need(set(original)<=allowed, 'unexpected fields in function aggregate source.')
+    result=deepcopy(original);result.pop('content_sha256');source_hashes=result['native_aggregate_source_files_sha256']
+    for row in result['rows']:
+        if 'source' in row:
+            need(row['source'] in source_hashes, 'outcome curve has no source FILE pin.')
+            row['source_curve_sha256']=source_hashes[row.pop('source')]
+    result=_task_tree(result,sanitize=True)
+    value={'format':FUNCTION_FORMAT,'created_at':original['created_at'],'scope':FUNCTION_SCOPE,
+        'source_report_file_sha256':expected_report_pin,'source_report_content_sha256':original['content_sha256'],
+        'results':result,'raw_cases_or_predictions_included':False,'source_graph_modified':False,'scientific_accuracy_claimed':False}
+    value['content_sha256']=digest(value);_function_receipt(value)
+    need(not Path(output_json).exists(),'choose a new aggregate output.');write_json(output_json,value);return value
+
+
+def _biored_metrics(value, n=None):
+    fields=('cases','exact_correct','exact_accuracy','coverage','unresolved','exact_positive_relation','entity_pair','native_None_cases','confusion')
+    _keys(value,fields,'BioRED aggregate metrics');total=_count(value['cases'])
+    need(total>0 and (n is None or total==n), 'BioRED complete candidate denominator differs.')
+    labels={'None','Association','Bind','Comparison','Conversion','Cotreatment','Drug_Interaction','Negative_Correlation','Positive_Correlation'}
+    confusion=value['confusion'];need(isinstance(confusion,dict), 'BioRED aggregate confusion table missing.')
+    observed=[]
+    for label,count in confusion.items():
+        pair=label.split(' -> ');need(len(pair)==2 and pair[0] in labels and pair[1] in labels|{'Unresolved'},'unknown aggregate relation label.')
+        observed.append((pair[0],pair[1],_count(count)))
+    need(sum(c for _,_,c in observed)==total,'BioRED confusion denominator differs.')
+    correct=sum(c for g,p,c in observed if g==p);unresolved=sum(c for _,p,c in observed if p=='Unresolved')
+    need(_count(value['exact_correct'])==correct and _count(value['unresolved'])==unresolved
+         and _count(value['native_None_cases'])==sum(c for g,_,c in observed if g=='None'), 'BioRED marginal counts differ.')
+    need(math.isclose(_metric(value['exact_accuracy']),correct/total,abs_tol=1e-12)
+         and math.isclose(_metric(value['coverage']),(total-unresolved)/total,abs_tol=1e-12), 'BioRED accuracy/coverage must retain abstentions.')
+    positives=labels-{'None'}
+    tp=sum(c for g,p,c in observed if g==p and g in positives)
+    fp=sum(c for g,p,c in observed if p in positives and p!=g)
+    fn=sum(c for g,p,c in observed if g in positives and p!=g)
+    ptp=sum(c for g,p,c in observed if g in positives and p in positives)
+    pfp=sum(c for g,p,c in observed if g=='None' and p in positives)
+    pfn=sum(c for g,p,c in observed if g in positives and p not in positives)
+    for name,counts in [('exact_positive_relation',(tp,fp,fn)),('entity_pair',(ptp,pfp,pfn))]:
+        row=value[name];_keys(row,('tp','fp','fn','precision','recall','f1'),'BioRED positive metrics')
+        a,b,c=counts;need(tuple(_count(row[k]) for k in ('tp','fp','fn'))==counts,'BioRED positive confusion counts differ.')
+        for key,expected in [('precision',a/(a+b) if a+b else 0.),('recall',a/(a+c) if a+c else 0.),('f1',2*a/(2*a+b+c) if 2*a+b+c else 0.)]:
+            need(math.isclose(_metric(row[key]),expected,abs_tol=1e-12),'BioRED saved positive metric differs from its confusion counts.')
+    return total
+
+
+def _biored_receipt(value):
+    _keys(value,('format','created_at','scope','reports','raw_cases_or_predictions_included','source_graph_modified',
+                'scientific_accuracy_claimed','content_sha256'),'BioRED aggregate component')
+    need(_sealed(value) and value['format']==BIORED_FORMAT and value['scope']==BIORED_SCOPE
+         and all(value[k] is False for k in ('raw_cases_or_predictions_included','source_graph_modified','scientific_accuracy_claimed')),
+         'BioRED component scope changed.')
+    _keys(value['reports'],BIORED_FORMATS,'BioRED source report roles');reports={}
+    fixed=('always_None','typed_co_mention','specialist_native','specialist_type_guard')
+    for role,entry in value['reports'].items():
+        _keys(entry,('source_report_file_sha256','source_report_content_sha256','report'),'BioRED source binding')
+        _pin(entry['source_report_file_sha256']);_pin(entry['source_report_content_sha256'])
+        report=entry['report'];_task_tree(report)
+        need(isinstance(report,dict) and report.get('format')==BIORED_FORMATS[role], 'BioRED report role/format differs.')
+        reports[role]=report
+        if role=='artifact':continue
+        n=_count(report['test_cases'] if role=='primary' else report['cases'])
+        publications=_count(report['test_publications'] if role=='primary' else report['publications'])
+        need(0<publications<=n and (role!='primary' or publications==n), 'BioRED publication and pair scopes differ.')
+        arms=fixed+('flat_context_LLM','source_audit_agent') if role=='primary' else fixed
+        _keys(report['metrics'],arms,'fixed BioRED arms')
+        for metrics in report['metrics'].values():_biored_metrics(metrics,n)
+        need(sum(_count(c) for c in report['gold_label_counts' if role=='primary' else 'native_gold_label_counts'].values())==n,
+             'BioRED gold-class denominator differs.')
+        groups=report['per_entity_type_metrics'];need(isinstance(groups,dict) and groups,'BioRED relation-family table missing.')
+        for group in groups.values():
+            _keys(group,arms,'BioRED family arms')
+            group_n=None
+            for metrics in group.values():group_n=_biored_metrics(metrics,group_n)
+        need(sum(group[fixed[0]]['cases'] for group in groups.values())==n,'BioRED family scopes do not partition candidates.')
+    primary,gene,artifact=[reports[k] for k in ('primary','gene','artifact')]
+    need(primary['live_graph_changed'] is False and gene['source_graph_changes']==artifact['source_graph_changes']==0
+         and gene['training_performed'] is False and artifact['additional_LLM_requests']==0
+         and artifact['checkpoint_training_membership_independently_audited'] is False,
+         'BioRED graph/training/provenance boundary differs.')
+    need(gene['primary_prediction_freeze_content_sha256']==artifact['primary_prediction_freeze_content_sha256']
+         ==primary['prediction_freeze_content_sha256'], 'BioRED reports do not share the declared prediction boundary.')
+    need(type(primary['agent_default_adoption_criterion_passed']) is bool,'BioRED adoption flag must remain explicit.')
+    comparisons=primary['agent_paired_comparisons']
+    _keys(comparisons,('specialist_native','specialist_type_guard','flat_context_LLM'),'all fixed agent comparators')
+    for pair in comparisons.values():
+        for field in ('accuracy_delta_95pct_paired_bootstrap','exact_relation_F1_delta_95pct_paired_bootstrap'):
+            interval=pair[field];need(isinstance(interval,list) and len(interval)==2
+                and all(type(x) in (int,float) and math.isfinite(x) and -1<=x<=1 for x in interval)
+                and interval[0]<=interval[1],'invalid saved BioRED paired interval.')
+    adopted=all(p[k][0]>0 for p in comparisons.values() for k in
+        ('accuracy_delta_95pct_paired_bootstrap','exact_relation_F1_delta_95pct_paired_bootstrap'))
+    need(primary['agent_default_adoption_criterion_passed']==adopted,'BioRED frozen adoption rule differs from saved intervals.')
+    for field in ('native_candidate_rows','native_candidate_publications','released_corpus_abstracts'):_count(artifact[field])
+    levels=('pair','pair+novelty','relation','relation+novelty','relation+direction','all')
+    for key in ('author_metric_reference_agreement','paper_reported_10_seed_mean_F1','single_checkpoint_minus_paper_mean_F1'):
+        _keys(artifact[key],levels,'all six native artifact metric levels')
+    for level,row in artifact['author_metric_reference_agreement'].items():
+        for metric in ('precision','recall','f1'):_metric(row[metric])
+        mean=_metric(artifact['paper_reported_10_seed_mean_F1'][level]);delta=artifact['single_checkpoint_minus_paper_mean_F1'][level]
+        need(type(delta) in (int,float) and math.isclose(delta,row['f1']-mean,abs_tol=1e-12),'single-checkpoint diagnostic delta differs.')
+    return value
+
+
+def prepare_biored_aggregate(source_reports, output_json, *, expected_report_pins):
+    _keys(source_reports,BIORED_FORMATS,'all three BioRED aggregate reports')
+    _keys(expected_report_pins,BIORED_FORMATS,'all three explicit BioRED FILE pins')
+    reports={}
+    allowed={
+      'primary':{'format','created_at','labels_first_opened_at','frame_content_sha256','comparison_content_sha256',
+        'prediction_freeze_content_sha256','test_cases','test_publications','gold_label_counts','metrics','agent_paired_comparisons',
+        'specialist_vs_co_mention_paired_comparisons','per_entity_type_metrics','execution_costs','agent_default_adoption_criterion_passed',
+        'live_graph_changed','case_scores_sha256','interpretation','limitations','content_sha256'},
+      'gene':{'format','created_at','labels_first_opened_at','frame_content_sha256','predeclaration_content_sha256',
+        'execution_freeze_content_sha256','analysis_freeze_content_sha256','primary_prediction_freeze_content_sha256',
+        'specialist_execution_content_sha256','predictions_sha256','analysis_implementation_sha256','cases','publications',
+        'native_gold_label_counts','metrics','per_entity_type_metrics','publication_cluster_uncertainty','candidate_pairs_per_publication',
+        'runtime','device','reported_specialist_elapsed_seconds','comparison_interpretation','label_scope','sampling_scope',
+        'uncertainty_scope','reference_limitations','source_graph_changes','training_performed','content_sha256'},
+      'artifact':{'format','created_at','labels_first_opened_at','primary_prediction_freeze_content_sha256',
+        'predeclaration_content_sha256','analysis_freeze_content_sha256','gene_execution_content_sha256',
+        'remaining_execution_content_sha256','native_candidate_rows','native_candidate_publications','released_corpus_abstracts',
+        'source_metric_helper_sha256','author_metric_reference_agreement','paper_reported_10_seed_mean_F1',
+        'single_checkpoint_minus_paper_mean_F1','checkpoint_training_membership_independently_audited','interpretation',
+        'scope','decoding','source_graph_changes','additional_LLM_requests','content_sha256'}}
+    for role in BIORED_FORMATS:
+        original=_task_source(source_reports[role],expected_report_pins[role])
+        need(set(original)<=allowed[role] and original.get('format')==BIORED_FORMATS[role], 'unexpected BioRED source fields or role.')
+        result=deepcopy(original);result.pop('content_sha256')
+        reports[role]={'source_report_file_sha256':expected_report_pins[role],
+            'source_report_content_sha256':original['content_sha256'],'report':_task_tree(result,sanitize=True)}
+    value={'format':BIORED_FORMAT,'created_at':reports['primary']['report']['created_at'],'scope':BIORED_SCOPE,
+        'reports':reports,'raw_cases_or_predictions_included':False,'source_graph_modified':False,'scientific_accuracy_claimed':False}
+    value['content_sha256']=digest(value);_biored_receipt(value)
+    need(not Path(output_json).exists(),'choose a new aggregate output.');write_json(output_json,value);return value
+
+
+def _task_summary(files, role, pin):
+    filename=FUNCTION_FILE if role=='function_recovery' else BIORED_FILE
+    need(hashlib.sha256(files[filename]).hexdigest()==_pin(pin),'task aggregate differs from its operator FILE pin.')
+    value=(_function_receipt if role=='function_recovery' else _biored_receipt)(_decode(files[filename]))
+    common={'scope':value['scope'],'scientific_accuracy_claimed':False,
+        'sources':[{'role':role,'file':filename,'file_sha256':pin,'content_sha256':value['content_sha256']}]}
+    if role=='function_recovery':
+        result=value['results']
+        coverage_note=['Native coverage is the unchanged author prediction-count / eligible-reference ratio. Known-term exclusion can leave different numerator and denominator scopes, so some later-publication values exceed1; they are preserved, not clamped or interpreted as biological fractions.']
+        return {**common,'title':'Temporal GO annotation recovery','unit':'Native eligible protein/function annotation benchmark scopes',
+            'rows':deepcopy(result['rows']),'denominators':deepcopy(result['denominators']),
+            'roles':deepcopy(result['roles']),'paired_comparisons':deepcopy(result['paired_comparisons']),
+            'status_counts':deepcopy(result['status_counts']),'frame_scope':deepcopy(result['scope']),
+            'source_metadata':{k:deepcopy(result[k]) for k in ('runtime','reference','evaluation_contract','lineage','source_pins','uncertainty_reports')},
+            'limitations':deepcopy(result['caveats'])+coverage_note}
+    return {**common,'title':'Curator-reference agreement for reported literature relations',
+        'unit':'One source pair per abstract (primary); source-defined candidate pairs (secondary)',
+        **{role:deepcopy(entry['report']) for role,entry in value['reports'].items()},
+        'source_report_pins':{role:{k:v for k,v in entry.items() if k!='report'} for role,entry in value['reports'].items()},
+        'limitations':['Expert source-relation agreement is not whole-graph biological truth or canonical human-protein grounding.',
+            'The released specialist checkpoint fine-tuning membership is not independently audited; gold entities are provided.',
+            'The frozen native inference decoder and the authors separate summary decoder differ for some multi-positive scores; the single-checkpoint comparison with paper seed means is diagnostic, not an exact reproduction.',
+            'The primary and complete-gene candidate denominators differ and are never pooled.',
+            'Native Bind does not automatically establish direct physical binding; source None is abstract-relative.',
+            'All fixed arms, unresolved outputs, source exposure caveats and the frozen adoption flag remain visible.']}
+
+
 def _publication_summary(files, pins, format_name):
     summary = _summary(files, {role: pins[role] for role in ROLES})
     if format_name == FORMAT:
@@ -594,9 +933,13 @@ def _publication_summary(files, pins, format_name):
     expected = set(ROLES) | (coess_pins if has_coess else set())
     if format_name == FORMAT_V2:
         need(has_coess and set(pins) == expected, 'v2 requires all declared coessentiality aggregate pins.')
-    else:
+    elif format_name == FORMAT_V3:
         need(format_name == FORMAT_V3 and set(pins) == expected | {'grounding'},
              'v3 requires a grounding aggregate and either all or no coessentiality aggregates.')
+    else:
+        tasks=set(pins)&{'function_recovery','biored'}
+        need(format_name==FORMAT_V4 and tasks and set(pins)==expected|tasks|({'grounding'} if 'grounding' in pins else set()),
+             'v4 requires declared independent task aggregates and complete optional legacy components.')
     if has_coess:
         extra = _coessentiality_summary(files, {role: pins['coess_' + role] for role in COESS_NAMES},
                                        _decode(files[SOURCE_NAMES['utility']]))
@@ -606,28 +949,44 @@ def _publication_summary(files, pins, format_name):
             'url': 'https://doi.org/10.1038/s41588-021-00840-z'},
             {'title': 'Coessentiality author code', 'url': 'https://github.com/kundajelab/coessentiality'},
             {'title': 'Native XSwap controls', 'url': 'https://github.com/hetio/xswap'}]
-    if format_name == FORMAT_V3:
+    if format_name == FORMAT_V3 or format_name==FORMAT_V4 and 'grounding' in pins:
         extra = _grounding_summary(files, pins['grounding'])
         summary['grounding'] = extra
         summary['sources'] += extra['sources']
         summary['literature'] += [{'title': 'Expert-curated mechanistic extraction corpus',
             'url': 'https://doi.org/10.15252/msb.202211325'},
             {'title': 'Gilda contextual entity grounding', 'url': 'https://doi.org/10.1093/bioadv/vbac034'}]
+    if format_name==FORMAT_V4:
+        summary['workspace_scope']=summary['scope']
+        summary['scope']='Independent task assessments with separate reference frames and units; the legacy 99-target workspace remains a separately scoped component. No pooled scientific-accuracy result is calculated.'
+        for role,name in (('function_recovery','function_recovery'),('biored','agent_reference_agreement')):
+            if role in pins:
+                extra=_task_summary(files,role,pins[role]);summary[name]=extra;summary['sources']+=extra['sources']
     summary['format'] = format_name + '.summary'
     return summary
 
 
-def _publication_readme(format_name, has_coess):
+def _publication_readme(format_name, has_coess, has_grounding=None):
     if format_name == FORMAT:
         return README
     if format_name == FORMAT_V2:
         return README_V2
-    return (README_V2 if has_coess else README) + README_GROUNDING
+    if format_name==FORMAT_V3:
+        return (README_V2 if has_coess else README) + README_GROUNDING
+    return ((README_V2 if has_coess else README) + (README_GROUNDING if has_grounding else '')
+        + '\nThe optional v4 task components have independent reference frames and denominators. '
+        'CAFA temporal annotation recovery and BioRED abstract-relative agreement are not measurements of '
+        'the legacy 99-target graph edges, not pooled whole-graph precision, and not new labels or graph changes. '
+        'Every declared outcome slot and fixed comparison arm remains visible, including pending/unsupported '
+        'outcomes, negative primary results, macro and fixed-operating-point trade-offs. Operator paths and raw '
+        'cases/text/predictions/weights are excluded. Original FILE/content commitments remain explicit.\n')
 
 
 def publish(source_reports, output, *, expected_source_pins,
             coessentiality_reports=None, expected_coessentiality_pins=None,
-            grounding_report=None, expected_grounding_pin=None):
+            grounding_report=None, expected_grounding_pin=None,
+            function_recovery_report=None, expected_function_recovery_pin=None,
+            biored_report=None, expected_biored_pin=None):
     """Publish one curated snapshot using explicit operator-selected input pins."""
     need(isinstance(source_reports, dict) and set(source_reports) == set(ROLES), 'supply exactly the seven aggregate source roles.')
     implementation_pin = sha(__file__)
@@ -651,19 +1010,29 @@ def publish(source_reports, output, *, expected_source_pins,
         files[GROUNDING_FILE] = _bounded(grounding_path)
         pins['grounding'] = expected_grounding_pin
         format_name = FORMAT_V3
+    task_paths={}
+    for role,path,pin,filename in (
+            ('function_recovery',function_recovery_report,expected_function_recovery_pin,FUNCTION_FILE),
+            ('biored',biored_report,expected_biored_pin,BIORED_FILE)):
+        if path is not None or pin is not None:
+            need(path is not None and pin is not None,'task aggregate and explicit FILE pin must be supplied together.')
+            task_paths[role]=Path(path);files[filename]=_bounded(path,limit=TASK_LIMIT);pins[role]=pin
+            format_name=FORMAT_V4
     summary = _publication_summary(files, pins, format_name)
-    folder = new_output(output, *paths.values(), *extra_paths.values(), *([grounding_path] if grounding_path else []))
+    folder = new_output(output, *paths.values(), *extra_paths.values(), *task_paths.values(), *([grounding_path] if grounding_path else []))
     for name, raw in files.items():
         target = folder / name
         target.parent.mkdir(exist_ok=True)
         target.write_bytes(raw)
-    files['README.txt'] = _publication_readme(format_name, bool(extra_paths)).encode()
+    files['README.txt'] = _publication_readme(format_name, bool(extra_paths),grounding_path is not None).encode()
     files['report.html'] = render_html(summary).encode()
     for name in ('README.txt', 'report.html'):
         (folder / name).write_bytes(files[name])
     need(all(_bounded(paths[role]) == files[SOURCE_NAMES[role]] for role in ROLES)
          and all(_bounded(path, limit=3_000_000) == files[COESS_NAMES[role]] for role, path in extra_paths.items())
          and (grounding_path is None or _bounded(grounding_path) == files[GROUNDING_FILE])
+         and all(_bounded(path,limit=TASK_LIMIT)==files[FUNCTION_FILE if role=='function_recovery' else BIORED_FILE]
+                 for role,path in task_paths.items())
          and sha(__file__) == implementation_pin, 'source or implementation changed during publication.')
     manifest = {'format': format_name, 'created_at': utcnow(), 'summary': summary,
         'operator_source_pins': pins, 'input_pins_authenticate_publisher': False,
@@ -671,6 +1040,8 @@ def publish(source_reports, output, *, expected_source_pins,
         'producer_implementation_sha256': implementation_pin, 'read_only': True,
         'raw_reference_rows_included': False, 'scientific_labels_created': False, 'source_graph_modified': False}
     manifest['content_sha256'] = digest(manifest)
+    need(len(json.dumps(manifest).encode())<=(TASK_LIMIT if format_name==FORMAT_V4 else 250_000),
+         'publication manifest exceeds its format bound.')
     write_json(folder / 'publication.json', manifest)
     try:
         return load_publication(folder)[0]
@@ -684,24 +1055,29 @@ def load_publication(folder):
     folder = Path(folder)
     need(folder.is_dir() and not folder.is_symlink(), 'publication directory is unavailable or symlinked.')
     folder = folder.resolve()
-    header = _decode(_bounded(folder / 'publication.json'))
+    header = _decode(_bounded(folder / 'publication.json',limit=TASK_LIMIT))
     format_name = header.get('format')
-    need(format_name in {FORMAT, FORMAT_V2, FORMAT_V3}, 'unsupported publication format.')
+    need(format_name in {FORMAT, FORMAT_V2, FORMAT_V3, FORMAT_V4}, 'unsupported publication format.')
+    if format_name!=FORMAT_V4:_bounded(folder/'publication.json')
     has_coess = any('coess_' + k in header.get('operator_source_pins', {}) for k in COESS_NAMES)
     expected_files = (V2_PUBLIC_FILES if has_coess else PUBLIC_FILES)
-    if format_name == FORMAT_V3:
+    if format_name == FORMAT_V3 or format_name==FORMAT_V4 and 'grounding' in header.get('operator_source_pins',{}):
         expected_files = expected_files | {GROUNDING_FILE}
+    if format_name==FORMAT_V4:
+        expected_files=expected_files|{filename for role,filename in (('function_recovery',FUNCTION_FILE),('biored',BIORED_FILE))
+                                      if role in header.get('operator_source_pins',{})}
     names = {p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file()}
     need(names == expected_files | {'publication.json'} and not any(p.is_symlink() for p in folder.rglob('*')),
          'publication contains missing or additional files.')
     for name in names:
-        _bounded(folder / name, limit=3_000_000 if name in COESS_NAMES.values() else 250_000)
+        _bounded(folder / name, limit=3_000_000 if name in COESS_NAMES.values() else
+                 TASK_LIMIT if format_name==FORMAT_V4 and name in {FUNCTION_FILE,BIORED_FILE,'publication.json','report.html'} else 250_000)
     manifest, captured = _capture(folder, 'publication.json')
     need(manifest.get('format') == format_name and all(manifest.get(k) is False for k in (
          'raw_reference_rows_included', 'scientific_labels_created', 'source_graph_modified', 'input_pins_authenticate_publisher'))
          and manifest.get('read_only') is True, 'publication policy or format changed.')
     summary = _publication_summary(captured, manifest['operator_source_pins'], format_name)
-    expected_readme = _publication_readme(format_name, has_coess)
+    expected_readme = _publication_readme(format_name, has_coess,'grounding' in manifest['operator_source_pins'])
     need(manifest.get('summary') == summary and captured['README.txt'] == expected_readme.encode()
          and captured['report.html'] == render_html(summary).encode(), 'publication summary or presentation differs from its receipts.')
     return manifest, summary, captured
@@ -713,10 +1089,10 @@ def list_publications(runs_dir):
         if folder.is_symlink() or not folder.is_dir() or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', folder.name):
             continue
         path = folder / 'publication.json'
-        if not path.is_file() or path.stat().st_size > 250_000:
+        if not path.is_file() or path.stat().st_size > TASK_LIMIT:
             continue
         try:
-            if _decode(_bounded(path)).get('format') not in {FORMAT, FORMAT_V2, FORMAT_V3}:
+            if _decode(_bounded(path,limit=TASK_LIMIT)).get('format') not in {FORMAT, FORMAT_V2, FORMAT_V3, FORMAT_V4}:
                 continue
             manifest, summary, _ = load_publication(folder)
             rows.append({'id': folder.name, 'created_at': manifest['created_at'], 'content_sha256': manifest['content_sha256'], 'summary': summary})
@@ -727,6 +1103,8 @@ def list_publications(runs_dir):
 
 def render_html(summary):
     """Escape every value; proof links name only allowlisted aggregate JSONs."""
+    if summary.get('format')==FORMAT_V4+'.summary':
+        return _v4_html(summary)
     e = escape
     n, v, go, crc, cv, im = [summary[k] for k in ('native_history', 'default_view', 'GO', 'CRC_cohort', 'CIViC', 'INMC')]
     text = lambda value: e(str(value), quote=True)
@@ -773,6 +1151,69 @@ def render_html(summary):
               + text(item['file_sha256']) + '</code></li>' for item in summary['sources']]
     parts += ['</ul><p>' + ' · '.join('<a href="' + text(item['url']) + '" rel="noreferrer">' + text(item['title']) + '</a>'
                                     for item in summary['literature']) + '</p></html>']
+    return ''.join(parts)
+
+
+def _v4_html(summary):
+    """Keep new reference-task results separate from the legacy graph scope."""
+    esc=lambda v:escape(str(v),quote=True)
+    number=lambda v:'Not reported' if v is None else format(v,'.6f') if type(v) in (int,float) else str(v)
+    def table(headers,rows):
+        return '<div class="table-wrap"><table><thead><tr>'+''.join('<th>'+esc(h)+'</th>' for h in headers)+'</tr></thead><tbody>'+''.join('<tr>'+''.join('<td>'+esc(v)+'</td>' for v in row)+'</tr>' for row in rows)+'</tbody></table></div>'
+    parts=["<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Separate scientific assessment tasks</title>",
+        '<style>body{font:16px system-ui;max-width:1250px;margin:2rem auto;padding:0 1rem;color:#203040}table{border-collapse:collapse;width:100%;font-size:13px}td,th{padding:.6rem;border-bottom:1px solid #ccd5df;text-align:left;vertical-align:top}.table-wrap{overflow:auto}code,pre{overflow-wrap:anywhere;white-space:pre-wrap}.scope{padding:1rem;background:#fff1d5}h2{margin-top:2rem}details{border:1px solid #ccd5df;border-radius:8px;padding:1rem;margin:1rem 0}summary{cursor:pointer;font-weight:600}</style>',
+        '<h1>Scientific assessment: separate tasks and source scopes</h1><p class="scope">'+esc(summary['scope'])+'</p>']
+    function=summary.get('function_recovery')
+    if function:
+        parts+=['<h2>'+esc(function['title'])+'</h2><p>'+esc(function['scope'])+'</p>',
+            '<p>The original propagation primary and every declared control remain visible. Added-context comparisons are secondary; benchmark Fmax thresholds are not deployment confidence. Macro and fixed .5 results must be interpreted alongside pooled micro results.</p>',
+            '<p>'+esc(function['roles']['original_primary'].get('conclusion','Original primary conclusion remains separately declared.'))+'</p>',
+            '<p>Snapshot outcome status: '+esc(function['status_counts'])+'. Missing/unsupported outcomes are not replaced with zero.</p>']
+        for denominator in function['denominators']:
+            key=tuple(denominator[k] for k in ('frame','setting','namespace'))
+            rows=[r for r in function['rows'] if tuple(r[k] for k in ('frame','setting','namespace'))==key]
+            parts+=['<details><summary>'+esc(' · '.join(key))+' — eligible proteins '+esc(denominator['eligible_proteins'])+'; IA eligible '+esc(denominator['IA_eligible_proteins'])+'</summary>',
+                table(['Method','Status','Micro Fmax','IA micro Fmax','Macro Fmax','IA macro Fmax','Fixed .5 precision','Fixed .5 recall','Fixed .5 F1','Fixed .5 native coverage ratio'],
+                    [[r['method'],r['status'],*[number(r.get(k)) for k in ('micro_Fmax','IA_micro_Fmax','macro_Fmax','IA_macro_Fmax')],
+                      *[number((r.get('fixed_0_5') or {}).get(k)) for k in ('PPV','recall','F1','coverage')]] for r in rows]),'</details>']
+        parts+=['<details><summary>All saved paired comparisons</summary>',table(
+            ['Frame / reference','Candidate','Comparator','Readout','Bootstrap mean difference','95% descriptive paired interval'],
+            [[' / '.join(p[k] for k in ('frame','setting','namespace')),p['candidate'],p['comparator'],p.get('readout',''),
+              number(p.get('difference_mean')),str(p['paired_95_percentile_interval'])] for p in function['paired_comparisons']]),
+            '<p>Intervals remain conditional protein resamples; shared studies, graph context and annotation reuse limit independence. Reserved proteins are same-study transductive transfer, not a separate study or inductive unseen-gene test.</p></details>',
+            '<details><summary>Native denominator definitions, historical sources and evaluator/runtime commitments</summary><pre>'
+            +esc(json.dumps({'denominators':function['denominators'],'source_metadata':function['source_metadata']},indent=2))+'</pre></details>',
+            '<ul>'+''.join('<li>'+esc(v)+'</li>' for v in function['limitations'])+'</ul>']
+    bio=summary.get('agent_reference_agreement')
+    if bio:
+        parts+=['<h2>'+esc(bio['title'])+'</h2><p>'+esc(bio['scope'])+'</p>']
+        for role,title in [('primary','Primary agent comparison'),('gene','Complete-gene secondary')]:
+            report=bio[role];n=report['test_cases'] if role=='primary' else report['cases']
+            pubs=report['test_publications'] if role=='primary' else report['publications']
+            parts+=['<h3>'+title+'</h3><p>'+esc(n)+' candidate pairs; '+esc(pubs)+' source publications. Unresolved outputs remain in accuracy and recall denominators.</p>',
+                table(['Fixed arm','Correct / candidates','Exact accuracy','Positive precision','Positive recall','Positive F1','Pair F1','Coverage','Unresolved'],
+                    [[arm,str(m['exact_correct'])+' / '+str(m['cases']),number(m['exact_accuracy']),
+                      *[number(m['exact_positive_relation'][k]) for k in ('precision','recall','f1')],number(m['entity_pair']['f1']),number(m['coverage']),m['unresolved']]
+                     for arm,m in report['metrics'].items()])]
+        primary=bio['primary'];artifact=bio['artifact']
+        parts+=['<p>Frozen agent adoption criterion passed: <strong>'+esc(primary['agent_default_adoption_criterion_passed'])+'</strong>. This is a recorded numerical criterion, not a graph edit or proof of broad biological accuracy.</p>',
+            '<details><summary>All agent comparisons and recorded execution costs</summary><pre>'+esc(json.dumps({'paired_comparisons':primary['agent_paired_comparisons'],'execution_costs':primary['execution_costs']},indent=2))+'</pre></details>',
+            '<details><summary>Complete-gene publication-cluster uncertainty and relation-family scopes</summary><pre>'
+            +esc(json.dumps({k:bio['gene'].get(k) for k in ('publication_cluster_uncertainty','per_entity_type_metrics',
+                'comparison_interpretation','label_scope','sampling_scope','uncertainty_scope','reference_limitations')},indent=2))+'</pre></details>',
+            '<details><summary>Released-artifact diagnostic: all native metric levels</summary><p>'+esc(artifact['interpretation'])+'</p>',
+            '<p>'+esc(artifact['native_candidate_rows'])+' native candidate rows from '+esc(artifact['native_candidate_publications'])
+            +' candidate-bearing publications in '+esc(artifact['released_corpus_abstracts'])+' released abstracts. These are separate denominators from the primary agent and complete-gene assessments.</p>',
+            table(['Level','Precision','Recall','Single-checkpoint F1','Paper mean F1','Difference'],
+                  [[level,*[number(row[k]) for k in ('precision','recall','f1')],number(artifact['paper_reported_10_seed_mean_F1'][level]),number(artifact['single_checkpoint_minus_paper_mean_F1'][level])]
+                   for level,row in artifact['author_metric_reference_agreement'].items()]),'</details>',
+            '<ul>'+''.join('<li>'+esc(v)+'</li>' for v in bio['limitations'])+'</ul>']
+    legacy=deepcopy(summary);legacy['format']=FORMAT_V3+'.summary';legacy['scope']=summary['workspace_scope']
+    old=render_html(legacy);body=old[old.index('<h1>'):].removesuffix('</html>')
+    parts+=['<details><summary>Legacy 99-target workspace: source qualification and earlier development assessments</summary><p>'+esc(summary['workspace_scope'])+'</p>'+body+'</details>',
+        '<h2>Aggregate source commitments</h2><ul>']
+    parts+=['<li><a href="files/'+esc(s['file'])+'">'+esc(s['role'])+'</a>: <code>'+esc(s['file_sha256'])+'</code></li>' for s in summary['sources']]
+    parts+=['</ul><p>Copied aggregate consistency and source hashes are checked; schema-valid output is not proof of factual accuracy. No raw cases, source text, model weights or prediction rows are published.</p></html>']
     return ''.join(parts)
 
 
