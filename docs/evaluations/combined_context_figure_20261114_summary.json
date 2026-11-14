@@ -1,0 +1,14 @@
+{
+  "format": "biograph-steward.combined-development-figure.v1",
+  "created_at": "2026-11-14T13:13:34.329639+00:00",
+  "source_manifest_sha256": "9e11a2c45f9503371118accba1cb948ba2fdc2b5ba6a9c8bd17b6c0a039e0092",
+  "implementation_sha256": "377308efee06f4f14cd4fca51b5f3ebda1cf6ff0ef2e15091fe05c206ebd7a01",
+  "matplotlib": "3.10.6",
+  "raw_reference_or_forecast_rows_read": false,
+  "files": {
+    "combined_context.svg": "8c2f2989460152ce94b4ff6b94c48e79a2ed94a224841cb00450028c99a365ea",
+    "combined_context.png": "d32ffcd9a5d237de53710608af6d6eb1618f528659aa7dbd6401aabdb8980ed8",
+    "plotted_aggregates.json": "4dffa5d8ce5feddbf05fff1732e20e99be40ccb083ea4f50baf5657c9192adb1"
+  },
+  "content_sha256": "5ac5b25cb5615923be66a6f21b5b8f8faf3e3b981c8c2e3dfc6e3fe3c7412b5f"
+}

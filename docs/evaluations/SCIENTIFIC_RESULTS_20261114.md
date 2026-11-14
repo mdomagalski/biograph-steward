@@ -50,6 +50,13 @@ lost by our earlier scoped retrieval; it does not establish superiority over
 the complete original Pharos network. The clean method-only contrast is
 GeneMANIA+ versus LocalPlus on the same original graph.
 
+The subsequent [fixed combination assessment](COMBINED_CONTEXT_AND_SKILLS_20261114.md#completed-biological-comparison)
+did not establish that the two gains stack into a better product default.
+Full-context GeneMANIA+ scores 0.134997 on original-cohort BPO, versus
+0.135290 for full strict LocalPlus. Its additional-cohort ordinary gain is
+positive, while its IA gain remains uncertain. The predeclared retention gate
+fails; the deployed LocalPlus inspector and the original results stay intact.
+
 Fmax is the best F1 across the official benchmark threshold grid. It is not an
 accuracy percentage or a calibrated probability. Improvements are metric
 specific: IA-macro Fmax decreases slightly with the fuller LocalPlus profile.

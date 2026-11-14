@@ -17,6 +17,15 @@ remote publication.
 
 This is an archive of tracked and non-ignored source files, including the uncommitted research work present before cleanup. It does **not** back up ignored `runs/`, downloaded datasets, model weights, environments or credentials. Those local artifacts remain in place and require a separate backup policy. No experiment packet was relabeled, resealed or deleted by this consolidation.
 
+The November 14 global-diffusion explanation prototype is separately preserved
+on local branch `codex/archive-global-influence-readiness-20261114`, commit
+`d23cee6840037bf44f5610e27d216307cd4d19fa`. Its six source files were checked
+byte-for-byte against the archive and a separate source capture before removal
+from the active product tree. The optional GPL prototype passed synthetic
+method checks; no real-graph explanation or app consumer was adopted after the
+combined predictor failed its retention rule. This archive has not been pushed.
+See the [reuse qualification](evaluations/reusable_agent_tools_20261114_summary.json).
+
 ## Current reference status — November 14, 2026
 
 Use this table and the linked completed reports before choosing a reference.
@@ -29,6 +38,7 @@ different endpoints and cannot exchange their label meanings.
 | Reference or study | Current exposure and result boundary | Authoritative current record |
 |---|---|---|
 | CAFA5 v2 partial-knowledge (PK) function recovery | Fixed native primary and all 240 declared slots are complete: 239 scored, one no-native-curve. The primary FSS candidate failed; secondary same-graph GeneMANIA+ and fuller strict-source LocalPlus have positive conditional BPO differences. The 2,826-target added-protein cohort is same-study transductive transfer. Current GOA had prior project exposure; historical features are enforced without claiming full developer blindness. | [Controlled results](evaluations/SCIENTIFIC_RESULTS_20261114.md), [sanitized PK outcomes](evaluations/cafa_function_recovery_20261114_summary.json) |
+| Full strict-source GeneMANIA+ combination | All six new PK aspect/cohort cells and fixed paired intervals are complete on already consumed annotations. The original BPO contrasts cross zero; the additional cohort has a positive ordinary contrast but an uncertain IA contrast. The fixed retention rule fails, and LocalPlus remains in the product. All earlier 240 outcomes are preserved separately. | [Combination decision](evaluations/COMBINED_CONTEXT_AND_SKILLS_20261114.md#completed-biological-comparison), [sealed all-aspect addendum](evaluations/combined_development_20261114/report.html) |
 | CAFA5 no-/limited-knowledge transfer | All six native aspect/task settings and six method arms are consumed. Neither graph method establishes BPO superiority over the non-experimental control; no universal predictor promotion. The GeneMANIA numerical guard correction and count-reduction diagnostic retain their failed executions and do not change forecast scores or the fixed endpoint tolerance. | [Complete transfer readouts](evaluations/cafa_nonpk_transport_20261114_summary.json), [interpretation](evaluations/SCIENTIFIC_RESULTS_20261114.md#transfer-and-pruning) |
 | BioRED / BioCreative VIII source relations | Fixed 128-publication six-arm comparison, complete 16,489 gene-involving candidate pairs and 28,734-row artifact diagnostic are consumed. The bounded NVIDIA agent underperforms the released specialist and fails adoption. Gold entity inputs, unverified checkpoint training membership and source-relative None labels limit the claim. | [Source-relative evaluation](evaluations/BIORED_SOURCE_RELATIONS_20261113.md), [current results](evaluations/SCIENTIFIC_RESULTS_20261114.md#curator-reference-relations-and-the-nvidia-agent) |
 | Replogle 2022 K562/RPE1 normalized Perturb-seq pseudobulk | Both declared expression endpoints are now consumed. Fixed historical co-complex context improves the previous experimental-priority neighbour ranking slightly but loses to native combined confidence on the primary in both cell contexts. The separate author-code nonfinite-column sensitivity improves reference coverage and preserves the conclusion; it is post-exposure, not another confirmation. No production pruning promotion. | [Completed external perturbation comparison](evaluations/PERTURBATION_TRANSFER_20261113.md) |
