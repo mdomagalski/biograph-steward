@@ -34,6 +34,15 @@ Keep the diagnostic and all 24 contrasts; do not add an unvalidated ensemble
 to the application. No new model, data service or framework migration was
 needed for this comparison.
 
+The [nonredundant recommendation comparison](evaluations/NONREDUNDANT_RECOMMENDATIONS_20261114.md)
+is complete across all 24 method strata. Excluding the frozen annotation
+baseline before ranking recovers additional supported suggestions, alongside
+many unresolved proposals. All four genuine MFO method intervals cross zero.
+Retain the complete result and cost accounting; do not promote automatic
+acceptance or pruning. [ProtNote qualification](evaluations/PROTNOTE_QUALIFICATION_20261114.md)
+is a separate source-first investigation of a published sequence/text model,
+without a new framework or reference-service dependency.
+
 The optional [PubMed source-paper utility](SOURCE_PAPER_INSPECTION.md) now works
 without a paid literature API or a benchmark corpus. Native search is its
 default. A fixed 24-question public-reference comparison shows that standard

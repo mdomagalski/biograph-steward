@@ -77,6 +77,14 @@ does not establish a gain over DeepGO in the PK comparisons and is worse in both
 groups. Complete results are retained; agreement is not counted as independent
 experimental evidence and no ensemble is promoted.
 
+A separate [baseline-aware recommendation comparison](evaluations/NONREDUNDANT_RECOMMENDATIONS_20261114.md)
+shows that the reference still contains substantial additional-function
+opportunity. Excluding previously represented annotations before ranking
+recovers more supported suggestions, but adds many reference-unmatched
+proposals; none of the four MFO method intervals establishes a winner.
+Complete populations, unfavorable outcomes and review costs are preserved.
+This distinguishes useful recommendation coverage from validated discovery.
+
 The [retained-vocabulary GO audit](evaluations/GO_USED_TERM_CONTENT_CURRENCY_20261114.md)
 covers 18,002 IDs in the training vocabulary, saved graph and native inspector.
 It preserves historical meanings and marks literal differences against the

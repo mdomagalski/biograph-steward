@@ -53,6 +53,12 @@ contributes more baseline-absent supported terms in each group, descriptively.
 Agreement, added reference coverage and improved ranking remain separate
 claims; no ensemble is promoted.
 
+The [baseline-aware recommendation check](docs/evaluations/NONREDUNDANT_RECOMMENDATIONS_20261114.md)
+finds real later-annotation headroom, but filling vacant review slots adds many
+reference-unmatched suggestions. Neither baseline-aware method establishes an
+MFO advantage over the other. All 24 method rows and 12 contrasts remain
+visible; this is a review-budget utility, without an app/default change.
+
 The [portable delivery guide](docs/DELIVERY.md) separates the software-only
 runtime from the complete local CRC source/graph/decision package. Follow the
 [five-minute demonstration](docs/DEMO_SCRIPT.md). Real source redistribution

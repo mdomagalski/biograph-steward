@@ -85,6 +85,16 @@ released convenience pipeline do not match, and checkpoint-compatible
 preprocessing remains unresolved. It is held without a scored result;
 running an assumed configuration would not be a faithful baseline.
 
+The [nonredundant recommendation comparison](NONREDUNDANT_RECOMMENDATIONS_20261114.md)
+checks a different task: remove already represented baseline terms before
+filling three review slots. It retains all 24 method strata and 12 genuine
+method contrasts. Later-reference opportunity remains substantial, but added
+support accompanies many unresolved proposals. In the larger MFO cohort,
+DeepGO adds 98 supported and 1,814 reference-unmatched terms; LocalPlus adds 46
+and 1,181, respectively. Own-variant support increases by containment, while all
+four genuine MFO method intervals cross zero. This is recommendation utility
+on the same exposed reference, not independent replication or discovery.
+
 In a distinct [native function-call paper-retrieval repeat](native_source_search_20261114/report.html),
 corrected abstract transport produced 4.17% mean reference-paper recall versus
 17.26% for deterministic PubMed search. The same 24 questions had already been
