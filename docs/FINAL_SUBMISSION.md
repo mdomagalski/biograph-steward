@@ -68,6 +68,15 @@ contrasts remain visible. These are previously exposed reference tasks;
 knowledge categories do not imply training-unseen or Pharos Tdark proteins.
 The product default remains unchanged.
 
+A [fixed cross-method overlap assessment](evaluations/METHOD_COMPLEMENTARITY_20261114.md)
+separates shared predictions, unique curator support, ontology-related terms
+and reuse of the historical annotation baseline. Both predictors add distinct
+support; LocalPlus supplies more baseline-absent unique MFO support in all four
+existing frames, descriptively. However, a single fixed rank-fusion shortlist
+does not establish a gain over DeepGO in the PK comparisons and is worse in both NK/LK
+groups. Complete results are retained; agreement is not counted as independent
+experimental evidence and no ensemble is promoted.
+
 The [retained-vocabulary GO audit](evaluations/GO_USED_TERM_CONTENT_CURRENCY_20261114.md)
 covers 18,002 IDs in the training vocabulary, saved graph and native inspector.
 It preserves historical meanings and marks literal differences against the

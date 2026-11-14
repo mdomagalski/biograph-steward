@@ -1,0 +1,16 @@
+{
+  "format": "biograph-steward.method-overlap.v1.publication-manifest",
+  "source_report_file_sha256": "5788098b2beb9e0944629588155589639bbcac4b11f6e02fa4924fae34ec66e1",
+  "source_freeze_file_sha256": "c5279b9d9e1ed890bc423fc4ebe43b488994fe9ad220966554e50d3fb9ffb348",
+  "files": {
+    "report.json": "b03d0867c2db4ab568cdccfedf1858d592fa9f5dc8ff002fc0a24dcf3548a7ef",
+    "report.html": "73a2b6cbd86759b192ec51a5a5b8a3d75d11b02b8d79e15e8b68375466c4cadb"
+  },
+  "overlap_strata": 12,
+  "parent_points": 24,
+  "fusion_points": 12,
+  "paired_comparisons": 24,
+  "operator_paths_or_raw_cases_included": false,
+  "automatic_adoption": false,
+  "content_sha256": "8d7e8d88c3754bd24acef18a83692ad9145c9fbed25e1c837d8d33721ba9597b"
+}

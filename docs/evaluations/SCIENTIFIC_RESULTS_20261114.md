@@ -162,6 +162,41 @@ previous label exposure and unresolved training/homology overlap limit the
 finding; NK/LK is not a proxy for Pharos Tdark or unseen training proteins.
 No new default or accepted graph annotation follows.
 
+The [completed cross-method overlap comparison](METHOD_COMPLEMENTARITY_20261114.md)
+then reconstructs the same top-three selections and distinguishes exact
+agreement, ancestry and reuse of the frozen pre-t0 annotation baseline. All
+earlier PK shortlist marginals reproduce. Exact MFO Jaccard overlap is only
+0.209/0.178 in the two PK cohorts and 0.298/0.253 in NK/LK, but many nonidentical
+terms are related through the ontology. Different lists therefore do not
+automatically represent independent or complementary biological discoveries.
+
+Both methods supply unique supported protein/GO pairs. Among MFO predictions
+unique to each method, the counts absent from the baseline's native closure are:
+
+| Existing frame | DeepGO-only supported pairs absent from baseline | LocalPlus-only supported pairs absent from baseline |
+|---|---:|---:|
+| Original PK | 40 | 58 |
+| Additional PK | 174 | 237 |
+| NK | 3 | 8 |
+| LK | 9 | 17 |
+
+These are descriptive counts on exposed references, not new significance
+tests; they do not establish novelty relative to today's full Pharos. Better total
+annotation recovery and added coverage beyond an older annotation resource
+are different questions. LocalPlus retains a complementary role even where
+its total molecular-function recovery is lower. These are same-study frames,
+with some proteins crossing PK/LK in different aspects; they are not
+independent study replications.
+
+One predeclared, equal-weight reciprocal-rank fusion returns at most three
+terms. Its ordinary supported-slot difference versus DeepGO crosses zero in
+both PK cohorts, and is negative in NK, -0.153846 [-0.247863, -0.068376], and LK,
+-0.177778 [-0.261111, -0.094444]. It improves over LocalPlus in additional PK,
+NK and LK but not reliably in original PK. All twelve diagnostic strata,
+36 parent/fusion point rows and 24 paired contrasts remain visible, including
+BPO/CCO trade-offs. No ensemble/default change follows. Oracle capped-union
+support is a truth-aware ceiling, not achieved prediction performance.
+
 ## What is retained in the product
 
 **Compare & assess** now includes a historical function-context inspector.

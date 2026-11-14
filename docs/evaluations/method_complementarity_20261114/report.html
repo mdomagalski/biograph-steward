@@ -1,0 +1,1237 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Method overlap and fixed-budget fusion</title><style>body{font:16px system-ui;line-height:1.5;max-width:1450px;margin:2rem auto;padding:0 1rem;color:#203343}table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:.6rem;border-bottom:1px solid #ccd5df;text-align:left}.table{overflow:auto}.scope{background:#fff1d5;padding:1rem}details{margin:1rem 0}code{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style><h1>Method overlap and one fixed three-slot combination</h1><p class="scope">DEVELOPMENT on previously exposed CAFA5 outcomes. Shared predictions are not independent biological evidence. PK and NK/LK task masks remain separate; all twelve declared strata are retained. No app default, accepted graph fact or automatic pruning rule changes.</p><p>Exact GO overlap, ancestor relationships and reuse of pre-existing annotations answer different questions. Oracle union support uses reference knowledge and is only a diagnostic upper bound, never a deployable method. Missing curator matches remain unresolved.</p><h2>Declared execution gate</h2><p>{&quot;kind&quot;: &quot;any_MFO_qualified_top3_set_differs&quot;, &quot;not_truth_aware&quot;: true, &quot;passed&quot;: true}</p><h2>All saved matched-budget points</h2><div class="table"><table><thead><tr><th>Frame</th><th>Task</th><th>Aspect</th><th>Method</th><th>Eligible N</th><th>Supported slots / 3-budget</th><th>PPV among returned</th><th>Recall</th><th>Filled budget</th><th>Coverage</th></tr></thead><tbody><tr><td>Original PK</td><td>partial</td><td>BPO</td><td>deepgose</td><td>833</td><td>0.172469</td><td>0.172469</td><td>0.041849</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Original PK</td><td>partial</td><td>MFO</td><td>deepgose</td><td>525</td><td>0.132698</td><td>0.132698</td><td>0.115406</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Original PK</td><td>partial</td><td>CCO</td><td>deepgose</td><td>445</td><td>0.227715</td><td>0.227715</td><td>0.164948</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Original PK</td><td>partial</td><td>BPO</td><td>strict_alias_localplus</td><td>833</td><td>0.205682</td><td>0.205929</td><td>0.049908</td><td>0.998800</td><td>0.998800</td></tr><tr><td>Original PK</td><td>partial</td><td>MFO</td><td>strict_alias_localplus</td><td>525</td><td>0.124444</td><td>0.124682</td><td>0.108227</td><td>0.998095</td><td>0.998095</td></tr><tr><td>Original PK</td><td>partial</td><td>CCO</td><td>strict_alias_localplus</td><td>445</td><td>0.268914</td><td>0.269722</td><td>0.194791</td><td>0.997004</td><td>0.997753</td></tr><tr><td>Additional PK</td><td>partial</td><td>BPO</td><td>deepgose</td><td>2826</td><td>0.183770</td><td>0.183770</td><td>0.052006</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Additional PK</td><td>partial</td><td>MFO</td><td>deepgose</td><td>2192</td><td>0.138686</td><td>0.138686</td><td>0.135957</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Additional PK</td><td>partial</td><td>CCO</td><td>deepgose</td><td>1450</td><td>0.293103</td><td>0.293103</td><td>0.182979</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Additional PK</td><td>partial</td><td>BPO</td><td>strict_alias_localplus</td><td>2826</td><td>0.206063</td><td>0.208274</td><td>0.058315</td><td>0.989384</td><td>0.989384</td></tr><tr><td>Additional PK</td><td>partial</td><td>MFO</td><td>strict_alias_localplus</td><td>2192</td><td>0.118461</td><td>0.119387</td><td>0.116130</td><td>0.992245</td><td>0.992245</td></tr><tr><td>Additional PK</td><td>partial</td><td>CCO</td><td>strict_alias_localplus</td><td>1450</td><td>0.315172</td><td>0.318467</td><td>0.196757</td><td>0.989655</td><td>0.989655</td></tr><tr><td>No knowledge (NK)</td><td>no_knowledge</td><td>BPO</td><td>deepgose</td><td>44</td><td>0.590909</td><td>0.590909</td><td>0.093863</td><td>1.000000</td><td>1.000000</td></tr><tr><td>No knowledge (NK)</td><td>no_knowledge</td><td>MFO</td><td>deepgose</td><td>39</td><td>0.598291</td><td>0.598291</td><td>0.235690</td><td>1.000000</td><td>1.000000</td></tr><tr><td>No knowledge (NK)</td><td>no_knowledge</td><td>CCO</td><td>deepgose</td><td>118</td><td>0.833333</td><td>0.833333</td><td>0.271140</td><td>1.000000</td><td>1.000000</td></tr><tr><td>No knowledge (NK)</td><td>no_knowledge</td><td>BPO</td><td>strict_alias_localplus</td><td>44</td><td>0.484848</td><td>0.533333</td><td>0.077016</td><td>0.909091</td><td>0.909091</td></tr><tr><td>No knowledge (NK)</td><td>no_knowledge</td><td>MFO</td><td>strict_alias_localplus</td><td>39</td><td>0.307692</td><td>0.315789</td><td>0.121212</td><td>0.974359</td><td>0.974359</td></tr><tr><td>No knowledge (NK)</td><td>no_knowledge</td><td>CCO</td><td>strict_alias_localplus</td><td>118</td><td>0.810734</td><td>0.885802</td><td>0.263787</td><td>0.915254</td><td>0.915254</td></tr><tr><td>Limited knowledge (LK)</td><td>limited</td><td>BPO</td><td>deepgose</td><td>227</td><td>0.643172</td><td>0.643172</td><td>0.082533</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Limited knowledge (LK)</td><td>limited</td><td>MFO</td><td>deepgose</td><td>60</td><td>0.672222</td><td>0.672222</td><td>0.203704</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Limited knowledge (LK)</td><td>limited</td><td>CCO</td><td>deepgose</td><td>197</td><td>0.857868</td><td>0.857868</td><td>0.280731</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Limited knowledge (LK)</td><td>limited</td><td>BPO</td><td>strict_alias_localplus</td><td>227</td><td>0.646109</td><td>0.648968</td><td>0.082909</td><td>0.995595</td><td>0.995595</td></tr><tr><td>Limited knowledge (LK)</td><td>limited</td><td>MFO</td><td>strict_alias_localplus</td><td>60</td><td>0.405556</td><td>0.412429</td><td>0.122896</td><td>0.983333</td><td>0.983333</td></tr><tr><td>Limited knowledge (LK)</td><td>limited</td><td>CCO</td><td>strict_alias_localplus</td><td>197</td><td>0.851100</td><td>0.882456</td><td>0.278516</td><td>0.964467</td><td>0.964467</td></tr><tr><td>Original PK</td><td>partial</td><td>BPO</td><td>rrf3</td><td>833</td><td>0.190476</td><td>0.190476</td><td>0.046218</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Original PK</td><td>partial</td><td>MFO</td><td>rrf3</td><td>525</td><td>0.134603</td><td>0.134603</td><td>0.117062</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Original PK</td><td>partial</td><td>CCO</td><td>rrf3</td><td>445</td><td>0.241199</td><td>0.241199</td><td>0.174715</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Additional PK</td><td>partial</td><td>BPO</td><td>rrf3</td><td>2826</td><td>0.201463</td><td>0.201463</td><td>0.057013</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Additional PK</td><td>partial</td><td>MFO</td><td>rrf3</td><td>2192</td><td>0.140055</td><td>0.140055</td><td>0.137299</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Additional PK</td><td>partial</td><td>CCO</td><td>rrf3</td><td>1450</td><td>0.294943</td><td>0.294943</td><td>0.184127</td><td>1.000000</td><td>1.000000</td></tr><tr><td>No knowledge (NK)</td><td>no_knowledge</td><td>BPO</td><td>rrf3</td><td>44</td><td>0.560606</td><td>0.560606</td><td>0.089049</td><td>1.000000</td><td>1.000000</td></tr><tr><td>No knowledge (NK)</td><td>no_knowledge</td><td>MFO</td><td>rrf3</td><td>39</td><td>0.444444</td><td>0.444444</td><td>0.175084</td><td>1.000000</td><td>1.000000</td></tr><tr><td>No knowledge (NK)</td><td>no_knowledge</td><td>CCO</td><td>rrf3</td><td>118</td><td>0.844633</td><td>0.844633</td><td>0.274816</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Limited knowledge (LK)</td><td>limited</td><td>BPO</td><td>rrf3</td><td>227</td><td>0.653451</td><td>0.653451</td><td>0.083852</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Limited knowledge (LK)</td><td>limited</td><td>MFO</td><td>rrf3</td><td>60</td><td>0.494444</td><td>0.494444</td><td>0.149832</td><td>1.000000</td><td>1.000000</td></tr><tr><td>Limited knowledge (LK)</td><td>limited</td><td>CCO</td><td>rrf3</td><td>197</td><td>0.871404</td><td>0.871404</td><td>0.285161</td><td>1.000000</td><td>1.000000</td></tr></tbody></table></div><h2>All paired fusion-versus-parent differences</h2><p>The same three-slot budget applies to every method. Paired conditional percentile intervals use 2,000 shared protein resamples, seed 20261113; they are not multiplicity adjusted or an independent replication.</p><div class="table"><table><thead><tr><th>Frame</th><th>Aspect</th><th>Comparator</th><th>Role</th><th>Point difference</th><th>95% lower</th><th>95% upper</th></tr></thead><tbody><tr><td>Original PK</td><td>BPO</td><td>deepgose</td><td>secondary</td><td>0.018007</td><td>0.007203</td><td>0.029212</td></tr><tr><td>Original PK</td><td>BPO</td><td>strict_alias_localplus</td><td>secondary</td><td>-0.015206</td><td>-0.026421</td><td>-0.004402</td></tr><tr><td>Original PK</td><td>MFO</td><td>deepgose</td><td>designated_focus</td><td>0.001905</td><td>-0.010159</td><td>0.013968</td></tr><tr><td>Original PK</td><td>MFO</td><td>strict_alias_localplus</td><td>designated_focus</td><td>0.010159</td><td>-0.001270</td><td>0.022222</td></tr><tr><td>Original PK</td><td>CCO</td><td>deepgose</td><td>secondary</td><td>0.013483</td><td>-0.005243</td><td>0.030712</td></tr><tr><td>Original PK</td><td>CCO</td><td>strict_alias_localplus</td><td>secondary</td><td>-0.027715</td><td>-0.043446</td><td>-0.011236</td></tr><tr><td>Additional PK</td><td>BPO</td><td>deepgose</td><td>secondary</td><td>0.017693</td><td>0.012031</td><td>0.023237</td></tr><tr><td>Additional PK</td><td>BPO</td><td>strict_alias_localplus</td><td>secondary</td><td>-0.004600</td><td>-0.010383</td><td>0.001533</td></tr><tr><td>Additional PK</td><td>MFO</td><td>deepgose</td><td>designated_focus</td><td>0.001369</td><td>-0.005326</td><td>0.008060</td></tr><tr><td>Additional PK</td><td>MFO</td><td>strict_alias_localplus</td><td>designated_focus</td><td>0.021594</td><td>0.015511</td><td>0.027220</td></tr><tr><td>Additional PK</td><td>CCO</td><td>deepgose</td><td>secondary</td><td>0.001839</td><td>-0.008741</td><td>0.012644</td></tr><tr><td>Additional PK</td><td>CCO</td><td>strict_alias_localplus</td><td>secondary</td><td>-0.020230</td><td>-0.031270</td><td>-0.009879</td></tr><tr><td>No knowledge (NK)</td><td>BPO</td><td>deepgose</td><td>secondary</td><td>-0.030303</td><td>-0.068182</td><td>0.007576</td></tr><tr><td>No knowledge (NK)</td><td>BPO</td><td>strict_alias_localplus</td><td>secondary</td><td>0.075758</td><td>0.007576</td><td>0.151515</td></tr><tr><td>No knowledge (NK)</td><td>MFO</td><td>deepgose</td><td>designated_focus</td><td>-0.153846</td><td>-0.247863</td><td>-0.068376</td></tr><tr><td>No knowledge (NK)</td><td>MFO</td><td>strict_alias_localplus</td><td>designated_focus</td><td>0.136752</td><td>0.068376</td><td>0.213675</td></tr><tr><td>No knowledge (NK)</td><td>CCO</td><td>deepgose</td><td>secondary</td><td>0.011299</td><td>-0.005650</td><td>0.028249</td></tr><tr><td>No knowledge (NK)</td><td>CCO</td><td>strict_alias_localplus</td><td>secondary</td><td>0.033898</td><td>-0.011299</td><td>0.081992</td></tr><tr><td>Limited knowledge (LK)</td><td>BPO</td><td>deepgose</td><td>secondary</td><td>0.010279</td><td>-0.013216</td><td>0.033774</td></tr><tr><td>Limited knowledge (LK)</td><td>BPO</td><td>strict_alias_localplus</td><td>secondary</td><td>0.007342</td><td>-0.019090</td><td>0.035242</td></tr><tr><td>Limited knowledge (LK)</td><td>MFO</td><td>deepgose</td><td>designated_focus</td><td>-0.177778</td><td>-0.261111</td><td>-0.094444</td></tr><tr><td>Limited knowledge (LK)</td><td>MFO</td><td>strict_alias_localplus</td><td>designated_focus</td><td>0.088889</td><td>0.033333</td><td>0.138889</td></tr><tr><td>Limited knowledge (LK)</td><td>CCO</td><td>deepgose</td><td>secondary</td><td>0.013536</td><td>-0.005118</td><td>0.033841</td></tr><tr><td>Limited knowledge (LK)</td><td>CCO</td><td>strict_alias_localplus</td><td>secondary</td><td>0.020305</td><td>-0.006768</td><td>0.050761</td></tr></tbody></table></div><h2>All overlap and oracle diagnostics</h2><p>Complete aggregate sections are retained below without selected target or term identities.</p><details><summary>Original PK / BPO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 832,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 974,
+    &quot;proteins_with_cross_method_related_pair&quot;: 447
+  },
+  &quot;eligible_proteins&quot;: 833,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 100,
+          &quot;selected_pairs&quot;: 512
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 160.75762433433147,
+        &quot;curator_supported_pairs&quot;: 246,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 146,
+          &quot;selected_pairs&quot;: 435
+        },
+        &quot;reference_unmatched_pairs&quot;: 701,
+        &quot;selected_pairs&quot;: 947
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 98,
+          &quot;selected_pairs&quot;: 1097
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 177.07721715471598,
+        &quot;curator_supported_pairs&quot;: 185,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 87,
+          &quot;selected_pairs&quot;: 455
+        },
+        &quot;reference_unmatched_pairs&quot;: 1367,
+        &quot;selected_pairs&quot;: 1552
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 144,
+          &quot;selected_pairs&quot;: 1034
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 194.36158308083688,
+        &quot;curator_supported_pairs&quot;: 268,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 124,
+          &quot;selected_pairs&quot;: 515
+        },
+        &quot;reference_unmatched_pairs&quot;: 1281,
+        &quot;selected_pairs&quot;: 1549
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 342,
+          &quot;selected_pairs&quot;: 2643
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 532.1964245698842,
+        &quot;curator_supported_pairs&quot;: 699,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 357,
+          &quot;selected_pairs&quot;: 1405
+        },
+        &quot;reference_unmatched_pairs&quot;: 3349,
+        &quot;selected_pairs&quot;: 4048
+      }
+    },
+    &quot;intersection_pairs&quot;: 947,
+    &quot;pooled_Jaccard&quot;: 0.23394268774703558,
+    &quot;proteins_with_any_returned&quot;: 833,
+    &quot;proteins_with_different_sets&quot;: 723,
+    &quot;proteins_with_identical_order&quot;: 65,
+    &quot;proteins_with_identical_sets&quot;: 110,
+    &quot;union_pairs&quot;: 4048
+  },
+  &quot;frame&quot;: &quot;primary&quot;,
+  &quot;namespace&quot;: &quot;biological_process&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 312,
+    &quot;best_parent_supported_per_protein&quot;: 628,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 13,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 13,
+    &quot;fixed3_budget_yield&quot;: 0.25650260104041617,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 325,
+    &quot;union_supported_cap3&quot;: 641
+  },
+  &quot;setting&quot;: &quot;partial&quot;
+}</pre></details><details><summary>Original PK / MFO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 525,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 666,
+    &quot;proteins_with_cross_method_related_pair&quot;: 298
+  },
+  &quot;eligible_proteins&quot;: 525,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 52,
+          &quot;selected_pairs&quot;: 375
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 172.1945922000579,
+        &quot;curator_supported_pairs&quot;: 111,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 59,
+          &quot;selected_pairs&quot;: 170
+        },
+        &quot;reference_unmatched_pairs&quot;: 434,
+        &quot;selected_pairs&quot;: 545
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 40,
+          &quot;selected_pairs&quot;: 758
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 218.41132378235915,
+        &quot;curator_supported_pairs&quot;: 98,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 58,
+          &quot;selected_pairs&quot;: 272
+        },
+        &quot;reference_unmatched_pairs&quot;: 932,
+        &quot;selected_pairs&quot;: 1030
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 58,
+          &quot;selected_pairs&quot;: 909
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 167.27910848976185,
+        &quot;curator_supported_pairs&quot;: 85,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 27,
+          &quot;selected_pairs&quot;: 118
+        },
+        &quot;reference_unmatched_pairs&quot;: 942,
+        &quot;selected_pairs&quot;: 1027
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 150,
+          &quot;selected_pairs&quot;: 2042
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 557.8850244721792,
+        &quot;curator_supported_pairs&quot;: 294,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 144,
+          &quot;selected_pairs&quot;: 560
+        },
+        &quot;reference_unmatched_pairs&quot;: 2308,
+        &quot;selected_pairs&quot;: 2602
+      }
+    },
+    &quot;intersection_pairs&quot;: 545,
+    &quot;pooled_Jaccard&quot;: 0.2094542659492698,
+    &quot;proteins_with_any_returned&quot;: 525,
+    &quot;proteins_with_different_sets&quot;: 480,
+    &quot;proteins_with_identical_order&quot;: 14,
+    &quot;proteins_with_identical_sets&quot;: 45,
+    &quot;union_pairs&quot;: 2602
+  },
+  &quot;frame&quot;: &quot;primary&quot;,
+  &quot;namespace&quot;: &quot;molecular_function&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 145,
+    &quot;best_parent_supported_per_protein&quot;: 274,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 1,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 1,
+    &quot;fixed3_budget_yield&quot;: 0.1746031746031746,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 146,
+    &quot;union_supported_cap3&quot;: 275
+  },
+  &quot;setting&quot;: &quot;partial&quot;
+}</pre></details><details><summary>Original PK / CCO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 445,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 408,
+    &quot;proteins_with_cross_method_related_pair&quot;: 239
+  },
+  &quot;eligible_proteins&quot;: 445,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 96,
+          &quot;selected_pairs&quot;: 363
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 170.68112975935517,
+        &quot;curator_supported_pairs&quot;: 190,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 94,
+          &quot;selected_pairs&quot;: 169
+        },
+        &quot;reference_unmatched_pairs&quot;: 342,
+        &quot;selected_pairs&quot;: 532
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 70,
+          &quot;selected_pairs&quot;: 657
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 135.69672152841906,
+        &quot;curator_supported_pairs&quot;: 114,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 44,
+          &quot;selected_pairs&quot;: 146
+        },
+        &quot;reference_unmatched_pairs&quot;: 689,
+        &quot;selected_pairs&quot;: 803
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 108,
+          &quot;selected_pairs&quot;: 645
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 186.8217912262249,
+        &quot;curator_supported_pairs&quot;: 169,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 61,
+          &quot;selected_pairs&quot;: 154
+        },
+        &quot;reference_unmatched_pairs&quot;: 630,
+        &quot;selected_pairs&quot;: 799
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 274,
+          &quot;selected_pairs&quot;: 1665
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 493.1996425139986,
+        &quot;curator_supported_pairs&quot;: 473,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 199,
+          &quot;selected_pairs&quot;: 469
+        },
+        &quot;reference_unmatched_pairs&quot;: 1661,
+        &quot;selected_pairs&quot;: 2134
+      }
+    },
+    &quot;intersection_pairs&quot;: 532,
+    &quot;pooled_Jaccard&quot;: 0.2492970946579194,
+    &quot;proteins_with_any_returned&quot;: 445,
+    &quot;proteins_with_different_sets&quot;: 398,
+    &quot;proteins_with_identical_order&quot;: 14,
+    &quot;proteins_with_identical_sets&quot;: 47,
+    &quot;union_pairs&quot;: 2134
+  },
+  &quot;frame&quot;: &quot;primary&quot;,
+  &quot;namespace&quot;: &quot;cellular_component&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 262,
+    &quot;best_parent_supported_per_protein&quot;: 448,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 4,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 8,
+    &quot;fixed3_budget_yield&quot;: 0.3415730337078652,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 266,
+    &quot;union_supported_cap3&quot;: 456
+  },
+  &quot;setting&quot;: &quot;partial&quot;
+}</pre></details><details><summary>Additional PK / BPO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 2825,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 2909,
+    &quot;proteins_with_cross_method_related_pair&quot;: 1451
+  },
+  &quot;eligible_proteins&quot;: 2826,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 349,
+          &quot;selected_pairs&quot;: 1508
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 552.4924876666004,
+        &quot;curator_supported_pairs&quot;: 907,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 558,
+          &quot;selected_pairs&quot;: 1486
+        },
+        &quot;reference_unmatched_pairs&quot;: 2087,
+        &quot;selected_pairs&quot;: 2994
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 333,
+          &quot;selected_pairs&quot;: 3703
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 628.7070536209212,
+        &quot;curator_supported_pairs&quot;: 651,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 318,
+          &quot;selected_pairs&quot;: 1781
+        },
+        &quot;reference_unmatched_pairs&quot;: 4833,
+        &quot;selected_pairs&quot;: 5484
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 440,
+          &quot;selected_pairs&quot;: 3640
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 702.6638029224066,
+        &quot;curator_supported_pairs&quot;: 840,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 400,
+          &quot;selected_pairs&quot;: 1754
+        },
+        &quot;reference_unmatched_pairs&quot;: 4554,
+        &quot;selected_pairs&quot;: 5394
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 1122,
+          &quot;selected_pairs&quot;: 8851
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 1883.8633442099258,
+        &quot;curator_supported_pairs&quot;: 2398,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 1276,
+          &quot;selected_pairs&quot;: 5021
+        },
+        &quot;reference_unmatched_pairs&quot;: 11474,
+        &quot;selected_pairs&quot;: 13872
+      }
+    },
+    &quot;intersection_pairs&quot;: 2994,
+    &quot;pooled_Jaccard&quot;: 0.21583044982698962,
+    &quot;proteins_with_any_returned&quot;: 2826,
+    &quot;proteins_with_different_sets&quot;: 2520,
+    &quot;proteins_with_identical_order&quot;: 175,
+    &quot;proteins_with_identical_sets&quot;: 306,
+    &quot;union_pairs&quot;: 13872
+  },
+  &quot;frame&quot;: &quot;reserved&quot;,
+  &quot;namespace&quot;: &quot;biological_process&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 1052,
+    &quot;best_parent_supported_per_protein&quot;: 2167,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 25,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 41,
+    &quot;fixed3_budget_yield&quot;: 0.26043878273177634,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 1077,
+    &quot;union_supported_cap3&quot;: 2208
+  },
+  &quot;setting&quot;: &quot;partial&quot;
+}</pre></details><details><summary>Additional PK / MFO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 2191,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 2694,
+    &quot;proteins_with_cross_method_related_pair&quot;: 1169
+  },
+  &quot;eligible_proteins&quot;: 2192,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 184,
+          &quot;selected_pairs&quot;: 1320
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 521.6153778985702,
+        &quot;curator_supported_pairs&quot;: 413,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 229,
+          &quot;selected_pairs&quot;: 661
+        },
+        &quot;reference_unmatched_pairs&quot;: 1568,
+        &quot;selected_pairs&quot;: 1981
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 174,
+          &quot;selected_pairs&quot;: 3344
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 891.9818201589886,
+        &quot;curator_supported_pairs&quot;: 499,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 325,
+          &quot;selected_pairs&quot;: 1251
+        },
+        &quot;reference_unmatched_pairs&quot;: 4096,
+        &quot;selected_pairs&quot;: 4595
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 237,
+          &quot;selected_pairs&quot;: 3978
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 611.3298195275729,
+        &quot;curator_supported_pairs&quot;: 366,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 129,
+          &quot;selected_pairs&quot;: 566
+        },
+        &quot;reference_unmatched_pairs&quot;: 4178,
+        &quot;selected_pairs&quot;: 4544
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 595,
+          &quot;selected_pairs&quot;: 8642
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 2024.9270175851232,
+        &quot;curator_supported_pairs&quot;: 1278,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 683,
+          &quot;selected_pairs&quot;: 2478
+        },
+        &quot;reference_unmatched_pairs&quot;: 9842,
+        &quot;selected_pairs&quot;: 11120
+      }
+    },
+    &quot;intersection_pairs&quot;: 1981,
+    &quot;pooled_Jaccard&quot;: 0.1781474820143885,
+    &quot;proteins_with_any_returned&quot;: 2192,
+    &quot;proteins_with_different_sets&quot;: 2081,
+    &quot;proteins_with_identical_order&quot;: 42,
+    &quot;proteins_with_identical_sets&quot;: 111,
+    &quot;union_pairs&quot;: 11120
+  },
+  &quot;frame&quot;: &quot;reserved&quot;,
+  &quot;namespace&quot;: &quot;molecular_function&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 580,
+    &quot;best_parent_supported_per_protein&quot;: 1187,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 11,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 20,
+    &quot;fixed3_budget_yield&quot;: 0.18354622871046228,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 591,
+    &quot;union_supported_cap3&quot;: 1207
+  },
+  &quot;setting&quot;: &quot;partial&quot;
+}</pre></details><details><summary>Additional PK / CCO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 1450,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 1575,
+    &quot;proteins_with_cross_method_related_pair&quot;: 920
+  },
+  &quot;eligible_proteins&quot;: 1450,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 409,
+          &quot;selected_pairs&quot;: 1208
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 623.4483050883828,
+        &quot;curator_supported_pairs&quot;: 771,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 362,
+          &quot;selected_pairs&quot;: 619
+        },
+        &quot;reference_unmatched_pairs&quot;: 1056,
+        &quot;selected_pairs&quot;: 1827
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 263,
+          &quot;selected_pairs&quot;: 1952
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 568.2145104353917,
+        &quot;curator_supported_pairs&quot;: 504,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 241,
+          &quot;selected_pairs&quot;: 571
+        },
+        &quot;reference_unmatched_pairs&quot;: 2019,
+        &quot;selected_pairs&quot;: 2523
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 407,
+          &quot;selected_pairs&quot;: 2027
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 571.1777661747442,
+        &quot;curator_supported_pairs&quot;: 600,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 193,
+          &quot;selected_pairs&quot;: 451
+        },
+        &quot;reference_unmatched_pairs&quot;: 1878,
+        &quot;selected_pairs&quot;: 2478
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 1079,
+          &quot;selected_pairs&quot;: 5187
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 1762.8405816985319,
+        &quot;curator_supported_pairs&quot;: 1875,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 796,
+          &quot;selected_pairs&quot;: 1641
+        },
+        &quot;reference_unmatched_pairs&quot;: 4953,
+        &quot;selected_pairs&quot;: 6828
+      }
+    },
+    &quot;intersection_pairs&quot;: 1827,
+    &quot;pooled_Jaccard&quot;: 0.26757469244288223,
+    &quot;proteins_with_any_returned&quot;: 1450,
+    &quot;proteins_with_different_sets&quot;: 1323,
+    &quot;proteins_with_identical_order&quot;: 48,
+    &quot;proteins_with_identical_sets&quot;: 127,
+    &quot;union_pairs&quot;: 6828
+  },
+  &quot;frame&quot;: &quot;reserved&quot;,
+  &quot;namespace&quot;: &quot;cellular_component&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 1014,
+    &quot;best_parent_supported_per_protein&quot;: 1760,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 24,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 28,
+    &quot;fixed3_budget_yield&quot;: 0.4110344827586207,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 1038,
+    &quot;union_supported_cap3&quot;: 1788
+  },
+  &quot;setting&quot;: &quot;partial&quot;
+}</pre></details><details><summary>No knowledge (NK) / BPO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 44,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 61,
+    &quot;proteins_with_cross_method_related_pair&quot;: 31
+  },
+  &quot;eligible_proteins&quot;: 44,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 18,
+          &quot;selected_pairs&quot;: 29
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 25.269282998817733,
+        &quot;curator_supported_pairs&quot;: 49,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 31,
+          &quot;selected_pairs&quot;: 38
+        },
+        &quot;reference_unmatched_pairs&quot;: 18,
+        &quot;selected_pairs&quot;: 67
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 11,
+          &quot;selected_pairs&quot;: 38
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 28.300683628966002,
+        &quot;curator_supported_pairs&quot;: 29,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 18,
+          &quot;selected_pairs&quot;: 27
+        },
+        &quot;reference_unmatched_pairs&quot;: 36,
+        &quot;selected_pairs&quot;: 65
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 6,
+          &quot;selected_pairs&quot;: 35
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 5.266586001834625,
+        &quot;curator_supported_pairs&quot;: 15,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 9,
+          &quot;selected_pairs&quot;: 18
+        },
+        &quot;reference_unmatched_pairs&quot;: 38,
+        &quot;selected_pairs&quot;: 53
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 35,
+          &quot;selected_pairs&quot;: 102
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 58.83655262961838,
+        &quot;curator_supported_pairs&quot;: 93,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 58,
+          &quot;selected_pairs&quot;: 83
+        },
+        &quot;reference_unmatched_pairs&quot;: 92,
+        &quot;selected_pairs&quot;: 185
+      }
+    },
+    &quot;intersection_pairs&quot;: 67,
+    &quot;pooled_Jaccard&quot;: 0.3621621621621622,
+    &quot;proteins_with_any_returned&quot;: 44,
+    &quot;proteins_with_different_sets&quot;: 38,
+    &quot;proteins_with_identical_order&quot;: 3,
+    &quot;proteins_with_identical_sets&quot;: 6,
+    &quot;union_pairs&quot;: 185
+  },
+  &quot;frame&quot;: &quot;no_knowledge&quot;,
+  &quot;namespace&quot;: &quot;biological_process&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 33,
+    &quot;best_parent_supported_per_protein&quot;: 84,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 0,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 0,
+    &quot;fixed3_budget_yield&quot;: 0.6363636363636364,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 33,
+    &quot;union_supported_cap3&quot;: 84
+  },
+  &quot;setting&quot;: &quot;no_knowledge&quot;
+}</pre></details><details><summary>No knowledge (NK) / MFO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 39,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 82,
+    &quot;proteins_with_cross_method_related_pair&quot;: 33
+  },
+  &quot;eligible_proteins&quot;: 39,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 6,
+          &quot;selected_pairs&quot;: 25
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 36.945600200065314,
+        &quot;curator_supported_pairs&quot;: 25,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 19,
+          &quot;selected_pairs&quot;: 28
+        },
+        &quot;reference_unmatched_pairs&quot;: 28,
+        &quot;selected_pairs&quot;: 53
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 3,
+          &quot;selected_pairs&quot;: 18
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 67.10557995722918,
+        &quot;curator_supported_pairs&quot;: 45,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 42,
+          &quot;selected_pairs&quot;: 46
+        },
+        &quot;reference_unmatched_pairs&quot;: 19,
+        &quot;selected_pairs&quot;: 64
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 8,
+          &quot;selected_pairs&quot;: 51
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 8.675740976869946,
+        &quot;curator_supported_pairs&quot;: 11,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 3,
+          &quot;selected_pairs&quot;: 10
+        },
+        &quot;reference_unmatched_pairs&quot;: 50,
+        &quot;selected_pairs&quot;: 61
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 17,
+          &quot;selected_pairs&quot;: 94
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 112.72692113416443,
+        &quot;curator_supported_pairs&quot;: 81,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 64,
+          &quot;selected_pairs&quot;: 84
+        },
+        &quot;reference_unmatched_pairs&quot;: 97,
+        &quot;selected_pairs&quot;: 178
+      }
+    },
+    &quot;intersection_pairs&quot;: 53,
+    &quot;pooled_Jaccard&quot;: 0.29775280898876405,
+    &quot;proteins_with_any_returned&quot;: 39,
+    &quot;proteins_with_different_sets&quot;: 36,
+    &quot;proteins_with_identical_order&quot;: 3,
+    &quot;proteins_with_identical_sets&quot;: 3,
+    &quot;union_pairs&quot;: 178
+  },
+  &quot;frame&quot;: &quot;no_knowledge&quot;,
+  &quot;namespace&quot;: &quot;molecular_function&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 15,
+    &quot;best_parent_supported_per_protein&quot;: 73,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 1,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 2,
+    &quot;fixed3_budget_yield&quot;: 0.6410256410256411,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 16,
+    &quot;union_supported_cap3&quot;: 75
+  },
+  &quot;setting&quot;: &quot;no_knowledge&quot;
+}</pre></details><details><summary>No knowledge (NK) / CCO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 118,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 371,
+    &quot;proteins_with_cross_method_related_pair&quot;: 108
+  },
+  &quot;eligible_proteins&quot;: 118,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 66,
+          &quot;selected_pairs&quot;: 72
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 53.09869827927652,
+        &quot;curator_supported_pairs&quot;: 212,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 146,
+          &quot;selected_pairs&quot;: 151
+        },
+        &quot;reference_unmatched_pairs&quot;: 11,
+        &quot;selected_pairs&quot;: 223
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 37,
+          &quot;selected_pairs&quot;: 65
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 53.55432631015358,
+        &quot;curator_supported_pairs&quot;: 83,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 46,
+          &quot;selected_pairs&quot;: 66
+        },
+        &quot;reference_unmatched_pairs&quot;: 48,
+        &quot;selected_pairs&quot;: 131
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 35,
+          &quot;selected_pairs&quot;: 59
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 39.131616536221905,
+        &quot;curator_supported_pairs&quot;: 75,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 40,
+          &quot;selected_pairs&quot;: 42
+        },
+        &quot;reference_unmatched_pairs&quot;: 26,
+        &quot;selected_pairs&quot;: 101
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 138,
+          &quot;selected_pairs&quot;: 196
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 145.78464112565194,
+        &quot;curator_supported_pairs&quot;: 370,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 232,
+          &quot;selected_pairs&quot;: 259
+        },
+        &quot;reference_unmatched_pairs&quot;: 85,
+        &quot;selected_pairs&quot;: 455
+      }
+    },
+    &quot;intersection_pairs&quot;: 223,
+    &quot;pooled_Jaccard&quot;: 0.4901098901098901,
+    &quot;proteins_with_any_returned&quot;: 118,
+    &quot;proteins_with_different_sets&quot;: 89,
+    &quot;proteins_with_identical_order&quot;: 24,
+    &quot;proteins_with_identical_sets&quot;: 29,
+    &quot;union_pairs&quot;: 455
+  },
+  &quot;frame&quot;: &quot;no_knowledge&quot;,
+  &quot;namespace&quot;: &quot;cellular_component&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 121,
+    &quot;best_parent_supported_per_protein&quot;: 323,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 8,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 1,
+    &quot;fixed3_budget_yield&quot;: 0.9152542372881356,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 129,
+    &quot;union_supported_cap3&quot;: 324
+  },
+  &quot;setting&quot;: &quot;no_knowledge&quot;
+}</pre></details><details><summary>Limited knowledge (LK) / BPO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 227,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 336,
+    &quot;proteins_with_cross_method_related_pair&quot;: 181
+  },
+  &quot;eligible_proteins&quot;: 227,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 88,
+          &quot;selected_pairs&quot;: 130
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 155.27698194093765,
+        &quot;curator_supported_pairs&quot;: 287,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 199,
+          &quot;selected_pairs&quot;: 256
+        },
+        &quot;reference_unmatched_pairs&quot;: 99,
+        &quot;selected_pairs&quot;: 386
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 46,
+          &quot;selected_pairs&quot;: 134
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 135.91378937076854,
+        &quot;curator_supported_pairs&quot;: 151,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 105,
+          &quot;selected_pairs&quot;: 161
+        },
+        &quot;reference_unmatched_pairs&quot;: 144,
+        &quot;selected_pairs&quot;: 295
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 53,
+          &quot;selected_pairs&quot;: 135
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 85.00626122843981,
+        &quot;curator_supported_pairs&quot;: 153,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 100,
+          &quot;selected_pairs&quot;: 157
+        },
+        &quot;reference_unmatched_pairs&quot;: 139,
+        &quot;selected_pairs&quot;: 292
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 187,
+          &quot;selected_pairs&quot;: 399
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 376.197032540146,
+        &quot;curator_supported_pairs&quot;: 591,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 404,
+          &quot;selected_pairs&quot;: 574
+        },
+        &quot;reference_unmatched_pairs&quot;: 382,
+        &quot;selected_pairs&quot;: 973
+      }
+    },
+    &quot;intersection_pairs&quot;: 386,
+    &quot;pooled_Jaccard&quot;: 0.39671120246659813,
+    &quot;proteins_with_any_returned&quot;: 227,
+    &quot;proteins_with_different_sets&quot;: 182,
+    &quot;proteins_with_identical_order&quot;: 24,
+    &quot;proteins_with_identical_sets&quot;: 45,
+    &quot;union_pairs&quot;: 973
+  },
+  &quot;frame&quot;: &quot;limited&quot;,
+  &quot;namespace&quot;: &quot;biological_process&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 171,
+    &quot;best_parent_supported_per_protein&quot;: 513,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 6,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 5,
+    &quot;fixed3_budget_yield&quot;: 0.7606461086637298,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 177,
+    &quot;union_supported_cap3&quot;: 518
+  },
+  &quot;setting&quot;: &quot;limited&quot;
+}</pre></details><details><summary>Limited knowledge (LK) / MFO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 60,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 117,
+    &quot;proteins_with_cross_method_related_pair&quot;: 52
+  },
+  &quot;eligible_proteins&quot;: 60,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 13,
+          &quot;selected_pairs&quot;: 32
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 44.82860827793422,
+        &quot;curator_supported_pairs&quot;: 44,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 31,
+          &quot;selected_pairs&quot;: 40
+        },
+        &quot;reference_unmatched_pairs&quot;: 28,
+        &quot;selected_pairs&quot;: 72
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 9,
+          &quot;selected_pairs&quot;: 33
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 129.14633158712022,
+        &quot;curator_supported_pairs&quot;: 77,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 68,
+          &quot;selected_pairs&quot;: 75
+        },
+        &quot;reference_unmatched_pairs&quot;: 31,
+        &quot;selected_pairs&quot;: 108
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 17,
+          &quot;selected_pairs&quot;: 76
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 32.58322855113732,
+        &quot;curator_supported_pairs&quot;: 29,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 12,
+          &quot;selected_pairs&quot;: 29
+        },
+        &quot;reference_unmatched_pairs&quot;: 76,
+        &quot;selected_pairs&quot;: 105
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 39,
+          &quot;selected_pairs&quot;: 141
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 206.55816841619173,
+        &quot;curator_supported_pairs&quot;: 150,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 111,
+          &quot;selected_pairs&quot;: 144
+        },
+        &quot;reference_unmatched_pairs&quot;: 135,
+        &quot;selected_pairs&quot;: 285
+      }
+    },
+    &quot;intersection_pairs&quot;: 72,
+    &quot;pooled_Jaccard&quot;: 0.25263157894736843,
+    &quot;proteins_with_any_returned&quot;: 60,
+    &quot;proteins_with_different_sets&quot;: 57,
+    &quot;proteins_with_identical_order&quot;: 3,
+    &quot;proteins_with_identical_sets&quot;: 3,
+    &quot;union_pairs&quot;: 285
+  },
+  &quot;frame&quot;: &quot;limited&quot;,
+  &quot;namespace&quot;: &quot;molecular_function&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 38,
+    &quot;best_parent_supported_per_protein&quot;: 134,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 1,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 2,
+    &quot;fixed3_budget_yield&quot;: 0.7555555555555555,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 39,
+    &quot;union_supported_cap3&quot;: 136
+  },
+  &quot;setting&quot;: &quot;limited&quot;
+}</pre></details><details><summary>Limited knowledge (LK) / CCO</summary><pre>{
+  &quot;IA_eligible_proteins&quot;: 197,
+  &quot;ancestor_overlap&quot;: {
+    &quot;nonidentical_cross_method_related_pairs&quot;: 671,
+    &quot;proteins_with_cross_method_related_pair&quot;: 190
+  },
+  &quot;eligible_proteins&quot;: 197,
+  &quot;exact_overlap&quot;: {
+    &quot;buckets&quot;: {
+      &quot;both_methods&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 72,
+          &quot;selected_pairs&quot;: 85
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 107.19193384291937,
+        &quot;curator_supported_pairs&quot;: 383,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 311,
+          &quot;selected_pairs&quot;: 316
+        },
+        &quot;reference_unmatched_pairs&quot;: 18,
+        &quot;selected_pairs&quot;: 401
+      },
+      &quot;deepgose_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 29,
+          &quot;selected_pairs&quot;: 62
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 110.72856028960268,
+        &quot;curator_supported_pairs&quot;: 124,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 95,
+          &quot;selected_pairs&quot;: 128
+        },
+        &quot;reference_unmatched_pairs&quot;: 66,
+        &quot;selected_pairs&quot;: 190
+      },
+      &quot;strict_alias_localplus_only&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 35,
+          &quot;selected_pairs&quot;: 72
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 54.15904254310978,
+        &quot;curator_supported_pairs&quot;: 120,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 85,
+          &quot;selected_pairs&quot;: 97
+        },
+        &quot;reference_unmatched_pairs&quot;: 49,
+        &quot;selected_pairs&quot;: 169
+      },
+      &quot;union&quot;: {
+        &quot;baseline_absent&quot;: {
+          &quot;curator_supported_pairs&quot;: 136,
+          &quot;selected_pairs&quot;: 219
+        },
+        &quot;baseline_closure_only&quot;: {
+          &quot;curator_supported_pairs&quot;: 0,
+          &quot;selected_pairs&quot;: 0
+        },
+        &quot;curator_supported_IA&quot;: 272.07953667563214,
+        &quot;curator_supported_pairs&quot;: 627,
+        &quot;literal_released_baseline&quot;: {
+          &quot;curator_supported_pairs&quot;: 491,
+          &quot;selected_pairs&quot;: 541
+        },
+        &quot;reference_unmatched_pairs&quot;: 133,
+        &quot;selected_pairs&quot;: 760
+      }
+    },
+    &quot;intersection_pairs&quot;: 401,
+    &quot;pooled_Jaccard&quot;: 0.5276315789473685,
+    &quot;proteins_with_any_returned&quot;: 197,
+    &quot;proteins_with_different_sets&quot;: 147,
+    &quot;proteins_with_identical_order&quot;: 42,
+    &quot;proteins_with_identical_sets&quot;: 50,
+    &quot;union_pairs&quot;: 760
+  },
+  &quot;frame&quot;: &quot;limited&quot;,
+  &quot;namespace&quot;: &quot;cellular_component&quot;,
+  &quot;oracle&quot;: {
+    &quot;best_parent_baseline_absent_supported_per_protein&quot;: 127,
+    &quot;best_parent_supported_per_protein&quot;: 551,
+    &quot;extra_baseline_absent_supported_slots_over_best_parent_per_protein&quot;: 6,
+    &quot;extra_supported_slots_over_best_parent_per_protein&quot;: 0,
+    &quot;fixed3_budget_yield&quot;: 0.9323181049069373,
+    &quot;ground_truth_aware_ceiling_not_a_deployable_result&quot;: true,
+    &quot;union_baseline_absent_supported_cap3&quot;: 133,
+    &quot;union_supported_cap3&quot;: 551
+  },
+  &quot;setting&quot;: &quot;limited&quot;
+}</pre></details><h2>Interpretation and source qualification</h2><p>The fixed RRF baseline combines ranks with offset 60, equal method weights and the same canonical-ID tie-break. It is an adaptation of an established information-retrieval formula, not a validated biomedical truth score. No score calibration, weight search, new model or post-selection ancestor expansion is performed. Existing annotations are a membership control, not an arbitrarily ordered third voter.</p><ul><li>Previously exposed CAFA5 development reference, not fresh confirmation.</li><li>Marginal support counts do not establish overlap; same ontology, masks and native per-aspect populations must be retained.</li><li>Method agreement is not independent evidence; released training and annotations can overlap.</li><li>GO ancestors are not independent discoveries; exact and hierarchy-related overlap must remain distinct.</li><li>A missing curator match is not a biological negative.</li><li>PK and NK/LK exclusion semantics differ; no pooled accuracy or independent-cohort claim.</li><li>Reciprocal-rank fusion is an adapted truncated-list IR baseline, not a biomedical validation or a learned calibrated ensemble.</li><li>The no-propagation footprint uses a source-pinned, invented-fixture-qualified library API behavior; None is not an advertised CLI propagation mode.</li><li>Canonicalized literal released-baseline forecast membership does not establish raw GOA assertion provenance; the released baseline may itself contain prior propagation.</li><li>Oracle capped-union support is ground-truth-aware diagnostic headroom, not attainable observed prediction performance.</li><li>No tuning of RRF constant, review budget, weights, thresholds or aspect routing follows this run.</li></ul><p><a href="report.json">Complete saved aggregates, native checks and source hashes</a> · <a href="publication_manifest.json">FILE manifest</a></p><p>Source report FILE SHA256: <code>5788098b2beb9e0944629588155589639bbcac4b11f6e02fa4924fae34ec66e1</code></p></html>

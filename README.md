@@ -44,6 +44,15 @@ an advantage over the strong existing nonexperimental-annotation baseline.
 All 42 outcomes and eight contrasts are retained; this remains development
 reuse rather than a new validation or product promotion.
 
+The [cross-method overlap audit](docs/evaluations/METHOD_COMPLEMENTARITY_20261114.md)
+finds complementary curator-supported predictions, including support outside
+the frozen pre-existing annotation baseline. The single fixed rank-fusion
+shortlist does not establish a gain over DeepGO on molecular function and
+performs worse in both sparse-annotation groups. LocalPlus nevertheless
+contributes more baseline-absent supported terms in each group, descriptively.
+Agreement, added reference coverage and improved ranking remain separate
+claims; no ensemble is promoted.
+
 The [portable delivery guide](docs/DELIVERY.md) separates the software-only
 runtime from the complete local CRC source/graph/decision package. Follow the
 [five-minute demonstration](docs/DEMO_SCRIPT.md). Real source redistribution

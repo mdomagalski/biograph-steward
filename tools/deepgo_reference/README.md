@@ -230,3 +230,29 @@ python -m unittest discover -s tools/deepgo_reference -t . -q
 They exercise source/archive boundaries, identity/order/float32 behavior,
 metadata pins, the real evaluator-directory layout and saved-summary handling.
 No biomedical reference case or model is loaded by these tests.
+
+## Cross-method overlap and a fixed combination
+
+`overlap.py` reconstructs the two sealed top-three lists, reproduces the earlier
+PK marginals, preserves the native NK/LK `exclude=None` branch, and separates
+shared/unique reference support from existing-annotation reuse and GO ancestry.
+One fixed equal-weight reciprocal-rank fusion uses offset60, returns at most
+three terms, and runs for all twelve strata only after the declared label-free
+MFO set-difference gate. It changes no predictor, graph, app default or earlier
+result. The [method record](../../docs/evaluations/METHOD_COMPLEMENTARITY_20261114.md)
+describes the published-method adaptation, required source pins and limitations.
+
+In the existing pinned CAFA runtime, with its dependency/source paths already
+configured and all numeric thread counts set to1:
+
+```text
+python -m tools.deepgo_reference.overlap --config SOURCE_FREEZE --expected FREEZE_FILE_SHA256 --output NEW_PRIVATE_OUTPUT
+python -m tools.deepgo_reference.publish_overlap --source SEALED_REPORT --expected REPORT_FILE_SHA256 --freeze SOURCE_FREEZE --freeze-expected FREEZE_FILE_SHA256 --output NEW_PUBLIC_OUTPUT
+```
+
+The private output retains selected native indices and anonymous numeric rows
+on the compute host; only validated aggregate JSON/HTML should be shared.
+`overlap_native_fixture.py` is a required invented-data check in that actual
+native runtime. In particular, it qualifies the version-specific library
+no-propagation behavior used for the canonicalized baseline footprint; it is
+not presented as an advertised CLI mode or original GAF provenance.

@@ -26,6 +26,14 @@ qualified research result; no new reference, default promotion or graph
 acceptance is implied. The planned shortlist, content-audit, sparse-task and
 DPFunc-qualification work is closed at these documented outcomes.
 
+The subsequent [method-overlap assessment](evaluations/METHOD_COMPLEMENTARITY_20261114.md)
+is complete. It identifies complementary support outside the frozen annotation
+baseline but the one fixed rank-fusion shortlist does not beat the stronger
+parent consistently, and harms sparse-annotation MFO recovery versus DeepGO.
+Keep the diagnostic and all 24 contrasts; do not add an unvalidated ensemble
+to the application. No new model, data service or framework migration was
+needed for this comparison.
+
 The optional [PubMed source-paper utility](SOURCE_PAPER_INSPECTION.md) now works
 without a paid literature API or a benchmark corpus. Native search is its
 default. A fixed 24-question public-reference comparison shows that standard
