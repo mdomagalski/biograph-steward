@@ -33,6 +33,7 @@ http {
         "POST:/api/neptune-inspect" 1;
         "POST:/api/native-go-context" 1;
         "POST:/api/download-native-go-context" 1;
+        "POST:/api/native-go-question" 1;
     }
 
     upstream steward {

@@ -95,6 +95,29 @@ reference, with technical fields collapsed. The guided source reader preserved
 the disease-context and source-reuse limits. This local
 increment does not update the separate AWS reviewer workspace or its receipts.
 
+### Delivery boundary — November 14
+
+This remains an optional **complete local workspace**, not an installed shared
+reviewer example. Its 412 ordinary files occupy 1,119,168,923 bytes and include
+the original mixed-source baseline and history. The native GO publication adds
+18 files (75,580,934 bytes), with CC BY 4.0 attribution and preserved local
+provenance paths; the whole workspace is not a path-free, GO-only dataset.
+The native GO consumers and UI are byte-identical to accepted hosted runtime
+`a6a05ff`, so no app-runtime or biological-protocol rewrite is needed. A
+November 14 read-only replay passed the complete workspace and GOA publication
+checks and reproduced all three recorded answer hashes: TP53 candidates
+(six records), ATM candidates (two), and TP53 accepted-only (zero).
+
+The existing deployed reviewer-gateway configuration does not allow
+`POST /api/native-go-question`, which the recovered-annotation form uses.
+Permitted GET downloads alone would not make that form usable. The current
+repository gateway template includes the route, but that does not establish
+its deployment. Sharing this separate workspace would require a reviewed data
+transfer, gateway update, acceptance and a new checkpoint. That optional
+rollout is deferred for this delivery. The already hosted native GO source/QC
+inspector and historical function-context inspector are separate capabilities;
+neither silently adds these 24 annotations to the hosted 99-target workspace.
+
 The actual HTTP acceptance run is preserved at
 `runs/goa_recovery_acceptance_v2_20261113/`: TP53 returns six source records for
 three assertions; ATM returns two records for two assertions; the accepted-only
