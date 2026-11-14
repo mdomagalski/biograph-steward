@@ -71,7 +71,10 @@ def worker(job_path):
     job=json.loads(Path(job_path).read_text());verify(job['input_files_sha256']);call=job['author_call']
     if not(call['exclude'] is None and call['prop']=='fill' and call['norm']=='cafa'
            and call['th_step']==.001 and call['no_orphans'] is True):raise ValueError('Non-exclusion policy differs.')
-    ns='biological_process';out=Path(job['output_dir']);out.mkdir(parents=True,exist_ok=False)
+    ns=job.get('namespace','biological_process')
+    if ns not in ('biological_process','molecular_function','cellular_component'):
+        raise ValueError('Use an explicit native GO namespace.')
+    out=Path(job['output_dir']);out.mkdir(parents=True,exist_ok=False)
     ontologies=update_toi(obo_parser(call['obo_file'],('is_a','part_of'),call['ia'],False),call['toi_file'])
     ground=gt_parser(call['gt_file'],ontologies)
     prediction=pred_parser(job['prediction'],ontologies,ground,'fill',None)
@@ -130,7 +133,8 @@ def run(config,output):
                 plain=Path(tmp)/(method+'.tsv')
                 with gzip.open(spec['file'],'rb') as src,plain.open('wb') as dst:shutil.copyfileobj(src,dst)
                 point=Path(cfg['points'][setting][method]);native=point.with_name('native_outcomes.json')
-                job={'author_call':{'obo_file':cfg['ontology'],'ia':cfg['ia'],'toi_file':cfg['toi'],
+                job={'namespace':cfg.get('namespace','biological_process'),
+                    'author_call':{'obo_file':cfg['ontology'],'ia':cfg['ia'],'toi_file':cfg['toi'],
                     'gt_file':references['truth'],'exclude':None,'prop':'fill','norm':'cafa','th_step':.001,'no_orphans':True},
                     'prediction':str(plain),'exact_point_curves':str(point),'native_outcomes':str(native),
                     'input_files_sha256':{str(point):cfg['input_files_sha256'][str(point)],
@@ -143,7 +147,8 @@ def run(config,output):
             done.append(setting+'/'+method);write(out/'progress.json',{'completed':done,'updated_at':datetime.now(timezone.utc).isoformat()})
     verify(cfg['input_files_sha256'])
     write(out/'report.json',{'format':cfg['format']+'.completed','config_sha256':sha(config),
-        'completed':done,'known_exclusion':None,'source_graph_or_predictions_changed':False,
+        'completed':done,'known_exclusion':None,'namespace':cfg.get('namespace','biological_process'),
+        'source_graph_or_predictions_changed':False,
         'files':{p.relative_to(out).as_posix():sha(p) for p in out.rglob('*') if p.is_file()}})
 
 

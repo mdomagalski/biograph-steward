@@ -112,6 +112,11 @@ Ordinary and IA micro-F must agree at **every** threshold within `1e-12` before
 the existing bootstrap is admitted. Local-versus-four controls is the original
 family; GM-versus-Local/controls is exploratory.
 
+The count-job configuration now accepts an explicit native `namespace` for a
+separately frozen aspect-specific comparison. Omission retains the original
+`biological_process` default. This changes neither native arithmetic nor the
+point-agreement tolerance; prior execution sources and results remain preserved.
+
 ## Preserved integration corrections
 
 The first GM wrapper rejected tiny negative native conjugate-gradient roundoff,

@@ -37,7 +37,8 @@ def _function_context_sources(runs_dir, *, include_notes=False):
          'invalid saved-context index.')
     result, seen = [], set()
     for row in value['publications']:
-        need(isinstance(row, dict) and set(row) in ({'id', 'manifest_sha256'}, {'id', 'manifest_sha256', 'display_notes'})
+        need(isinstance(row, dict) and {'id', 'manifest_sha256'} <= set(row)
+             and set(row) <= {'id', 'manifest_sha256', 'display_notes', 'content_notes'}
              and isinstance(row['id'], str) and re.fullmatch(r'[A-Za-z0-9_-]{1,80}', row['id'])
              and row['id'] not in seen and isinstance(row['manifest_sha256'], str)
              and re.fullmatch(r'[0-9a-f]{64}', row['manifest_sha256']),
@@ -47,17 +48,20 @@ def _function_context_sources(runs_dir, *, include_notes=False):
              'a registered context must be an ordinary directory in this data folder.')
         seen.add(row['id'])
         source = {'id': row['id'], 'path': folder, 'sha256': row['manifest_sha256']}
-        if 'display_notes' in row:
-            notes = row['display_notes']
+        for registration, path_key, sha_key in (('display_notes', 'notes_path', 'notes_sha256'),
+                                                 ('content_notes', 'content_notes_path', 'content_notes_sha256')):
+            if registration not in row:
+                continue
+            notes = row[registration]
             need(isinstance(notes, dict) and set(notes) == {'id', 'file_sha256'}
                  and isinstance(notes['id'], str) and re.fullmatch(r'[A-Za-z0-9_-]{1,80}', notes['id'])
                  and isinstance(notes['file_sha256'], str) and re.fullmatch(r'[0-9a-f]{64}', notes['file_sha256']),
-                 'invalid annotation-overlap registration.')
+                 'invalid separate content/annotation notes registration.')
             note_folder = root / notes['id']
             need(note_folder.is_dir() and not note_folder.is_symlink() and note_folder.resolve().parent == root,
-                 'annotation-overlap notes must use an ordinary directory in this data folder.')
+                 'separate notes must use an ordinary directory in this data folder.')
             if include_notes:
-                source.update(notes_path=note_folder/'notes.json', notes_sha256=notes['file_sha256'])
+                source.update({path_key: note_folder/'notes.json', sha_key: notes['file_sha256']})
         result.append(source)
     return result
 
@@ -395,7 +399,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 r'/api/function-context/([A-Za-z0-9_-]{1,80})/'
                 r'(query/([A-Z0-9]{6}(?:[A-Z0-9]{4})?)|download/([a-z_]{1,80}))/?', path)
             if function_context:
-                from .function_context import load_publication, get_query, download_path, load_display_notes
+                from .function_context import load_publication, get_query, download_path, load_display_notes, load_content_notes
                 identifier, _, protein, download = function_context.groups()
                 try:
                     if urlparse(self.path).query:
@@ -410,13 +414,23 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         if source.get('notes_path'):
                             display_notes = load_display_notes(source['notes_path'], source['notes_sha256'], manifest, queries,
                                                                manifest_file_sha256=source['sha256'])
+                        content_notes = None
+                        if source.get('content_notes_path'):
+                            content_notes = load_content_notes(source['content_notes_path'], source['content_notes_sha256'], manifest, queries,
+                                                               manifest_file_sha256=source['sha256'])
                         self.json_reply({'context_id': identifier, 'manifest_sha256': source['sha256'],
-                                         'answer': get_query(manifest, queries, protein), 'display_notes': display_notes})
+                                         'answer': get_query(manifest, queries, protein), 'display_notes': display_notes,
+                                         'content_notes': content_notes})
                     elif download == 'annotation_overlap' and source.get('notes_path'):
                         manifest, queries = load_publication(source['path'], source['sha256'])
                         load_display_notes(source['notes_path'], source['notes_sha256'], manifest, queries,
                                            manifest_file_sha256=source['sha256'])
                         self.reply(source['notes_path'].read_bytes(), content_type='application/json', filename='historical_annotation_overlap.json')
+                    elif download == 'term_content' and source.get('content_notes_path'):
+                        manifest, queries = load_publication(source['path'], source['sha256'])
+                        load_content_notes(source['content_notes_path'], source['content_notes_sha256'], manifest, queries,
+                                           manifest_file_sha256=source['sha256'])
+                        self.reply(source['content_notes_path'].read_bytes(), content_type='application/json', filename='historical_term_content.json')
                     else:
                         file = download_path(source['path'], download, source['sha256'])
                         content_type = {'.gz': 'application/gzip', '.json': 'application/json',

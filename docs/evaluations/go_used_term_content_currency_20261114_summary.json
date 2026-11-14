@@ -1,0 +1,179 @@
+{
+  "format": "biograph-steward.go-used-term-content-currency.public-summary.v1",
+  "scope": "Saved99-target workspace, retained historical LocalPlus training vocabulary and six saved query candidate IDs, and separate native GOA inspector source; no experimental neural-model heads.",
+  "term_count": 18002,
+  "scope_term_counts": {
+    "retained_2023_predictor_training_head_vocabulary": 17670,
+    "graph_GO_node": 1924,
+    "graph_embedded_GO_mention": 1924,
+    "graph_Pharos_GO_record_vintage_unknown": 1759,
+    "graph_primary_GO_endpoint": 1759,
+    "separate_native_GOA_literal_mention": 1773,
+    "separate_native_GOA_primary_record": 1732,
+    "retained_saved_query_candidate": 27
+  },
+  "source_versions": {
+    "historical_predictor": "2023-01-01",
+    "comparison_snapshot": "2026-07-26",
+    "graph_Pharos_GO_vintage": "UNKNOWN",
+    "latest_release_claimed": false
+  },
+  "separate_native_annotation_source": {
+    "source_generated_literal": "2026-07-28 19:42",
+    "archived_release_url": "https://release.geneontology.org/2026-08-05/annotations/gaf/HUMAN-uniprot.gaf.gz",
+    "annotation_header_go_release": "2026-07-26",
+    "native_rows": 15888,
+    "source_url_authentication_performed": false
+  },
+  "all_record_states_and_flags": {
+    "historical_active": 17912,
+    "comparison_obsolete": 1363,
+    "name_changed": 1951,
+    "definition_text_changed": 2414,
+    "explicit_is_a_part_of_records_changed": 4170,
+    "comparison_active": 16639,
+    "synonym_scope_or_text_records_changed": 931,
+    "historical_obsolete": 26,
+    "historical_not_found": 64
+  },
+  "both_active_only": {
+    "terms": 18002,
+    "both_active": 16623,
+    "explicit_is_a_part_of_records_changed": 2881,
+    "name_changed": 662,
+    "synonym_scope_or_text_records_changed": 802,
+    "any_literal_difference_both_active": 3888,
+    "definition_text_changed": 1125
+  },
+  "both_active_scope_summaries": {
+    "retained_2023_predictor_training_head_vocabulary": {
+      "terms": 17670,
+      "both_active": 16411,
+      "explicit_is_a_part_of_records_changed": 2854,
+      "name_changed": 657,
+      "synonym_scope_or_text_records_changed": 794,
+      "any_literal_difference_both_active": 3854,
+      "definition_text_changed": 1119
+    },
+    "graph_GO_node": {
+      "terms": 1924,
+      "both_active": 1759,
+      "explicit_is_a_part_of_records_changed": 249,
+      "any_literal_difference_both_active": 329,
+      "synonym_scope_or_text_records_changed": 58,
+      "definition_text_changed": 89,
+      "name_changed": 32
+    },
+    "graph_embedded_GO_mention": {
+      "terms": 1924,
+      "both_active": 1759,
+      "explicit_is_a_part_of_records_changed": 249,
+      "any_literal_difference_both_active": 329,
+      "synonym_scope_or_text_records_changed": 58,
+      "definition_text_changed": 89,
+      "name_changed": 32
+    },
+    "graph_Pharos_GO_record_vintage_unknown": {
+      "terms": 1759,
+      "both_active": 1759,
+      "explicit_is_a_part_of_records_changed": 249,
+      "any_literal_difference_both_active": 329,
+      "synonym_scope_or_text_records_changed": 58,
+      "definition_text_changed": 89,
+      "name_changed": 32
+    },
+    "graph_primary_GO_endpoint": {
+      "terms": 1759,
+      "both_active": 1759,
+      "explicit_is_a_part_of_records_changed": 249,
+      "any_literal_difference_both_active": 329,
+      "synonym_scope_or_text_records_changed": 58,
+      "definition_text_changed": 89,
+      "name_changed": 32
+    },
+    "separate_native_GOA_literal_mention": {
+      "terms": 1773,
+      "both_active": 1755,
+      "synonym_scope_or_text_records_changed": 71,
+      "any_literal_difference_both_active": 338,
+      "definition_text_changed": 113,
+      "explicit_is_a_part_of_records_changed": 237,
+      "name_changed": 44
+    },
+    "separate_native_GOA_primary_record": {
+      "terms": 1732,
+      "both_active": 1717,
+      "synonym_scope_or_text_records_changed": 69,
+      "any_literal_difference_both_active": 329,
+      "definition_text_changed": 110,
+      "explicit_is_a_part_of_records_changed": 230,
+      "name_changed": 42
+    },
+    "retained_saved_query_candidate": {
+      "terms": 27,
+      "both_active": 23,
+      "explicit_is_a_part_of_records_changed": 4,
+      "any_literal_difference_both_active": 4
+    }
+  },
+  "source_file_sha256": {
+    "historical_ontology": "0c0062efbb1b199a6a54e62c0c48ff0038d39173aecc7edfab66a20090d5ec2d",
+    "comparison_ontology": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273",
+    "native_records": "59b4ce36b15d4b68d55d09feea84db6f6c070ce7997f6e1ca00b8a75f66adfe4"
+  },
+  "provenance": {
+    "scope_freeze_file_sha256": "2253eb940cf635f2b6ac5cb4abdb0c36bf1bc70537d799406157c3893fd69681",
+    "scope_freeze_content_sha256": "2cf1fe9b12771bbebfc25a9058016222f4c7e77001818376ececf5fe7c2b19b2",
+    "term_frame_file_sha256": "55345f7940e7333f7c1f6a6c38fd9630e6050e7097d810648cbe79f213fa5fc3",
+    "index_manifest_file_sha256": "3c07f97df9c7664e00bfdf20a4b83069640d87eb60ab22175d1ca6828a6d0da1",
+    "index_manifest_content_sha256": "623e31433435e7bf5d69006939e0d389da9c0ceaa155d8fd05b1da7fe43074e5",
+    "index_gzip_file_sha256": "8c8cc386e896d47bec5048c2fd7c44171b3d81178c4dd6040868cc6dcd4d0d52",
+    "code_files_sha256": {
+      "audit.py": "ec57388504004afcb034193798dd27570f2f366b7eb2fdeb050d619ce66f21ca",
+      "go_content_currency.py": "0f855f9b1125db426c736a722a5d82417afe6652c4a33ea831298de6aa1c95b7",
+      "go_ontology_qualification.py": "64e8b3c00ce0f3267b27060f0ca426d2beb6fcbc48c5ed8da0d20a38485a3cd7"
+    },
+    "author_parser_file_sha256": "825e81969a30b5075069c9a5510ae711e0159507c7618a51a05e46dfc0f45d17"
+  },
+  "execution": {
+    "audit_wall_seconds": 6.075843095779419,
+    "audit_peak_RSS_KiB": 763176,
+    "consumer_validation_wall_seconds": 1.400491714477539,
+    "consumer_peak_RSS_KiB": 326760,
+    "compressed_index_bytes": 6357650,
+    "expanded_index_bytes": 71889992,
+    "new_model_gpu_source_calls": 0,
+    "four_synthetic_tests_passed": true
+  },
+  "flags_are_overlapping_literal_record_differences": true,
+  "automatic_action": "none",
+  "biological_accuracy_measured": false,
+  "historical_graph_or_forecasts_changed": false,
+  "semantic_equivalence_claimed": false,
+  "limitations": [
+    "This is literal source-content qualification between two pinned snapshots, not biological accuracy or full ontology equivalence.",
+    "Historical predictions retain their historical term meaning. The comparison snapshot has its own explicit date and is not asserted to be the latest release.",
+    "An explicit parent, synonym, label or definition change requests source-scope inspection; it does not establish a false annotation or authorize pruning.",
+    "Graph Pharos GO vintage remains unknown. Its recorded labels are preserved, not assigned the predictor historical ontology date.",
+    "Missing literal identifiers and declared alternative identifiers or replacements remain source-qualified; no mapping or replacement is applied."
+  ],
+  "primary_sources": [
+    {
+      "title": "GO ontology documentation",
+      "url": "https://geneontology.org/docs/ontology-documentation/"
+    },
+    {
+      "title": "ROBOT diff",
+      "url": "https://robot.obolibrary.org/diff"
+    },
+    {
+      "title": "OAK diff",
+      "url": "https://incatools.github.io/ontology-access-kit/cli.html#diff"
+    },
+    {
+      "title": "Official curator discussion GO0062153",
+      "url": "https://github.com/geneontology/go-ontology/issues/25788"
+    }
+  ],
+  "content_sha256": "b0e75a5133455b6bc10f86072369c6f0ccbc4131030fae1725a313cb656a9b5a"
+}

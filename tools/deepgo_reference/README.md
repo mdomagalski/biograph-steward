@@ -119,6 +119,39 @@ visible. Fmax's optimal benchmark threshold is not an application confidence or
 a prospectively validated acceptance rule. Missing native coverage stays an
 explicit missing status; it is not filled with invented precision/recall.
 
+## Compare a fixed review budget
+
+The separate [shortlist protocol](../../docs/evaluations/DEEPGO_SHORTLIST_20261114.md)
+compares up to three benchmark-qualified terms per protein/aspect from the same
+saved DeepGO and strict Local forecasts. The primary quantity is curator-supported
+slots per fixed three-slot budget, with PPV among returned terms reported
+separately. It reuses native parsing/confusion counts and SciPy paired bootstrap;
+ancestor-pair/IA diagnostics never rerank the candidates. This remains exposed-label
+development work, with the earlier BPO decision and app default unchanged.
+The completed comparison has a positive MFO interval only in the additional
+cohort; the original MFO interval crosses zero, while all BPO/CCO intervals
+favor LocalPlus. The protocol links all outcomes and redundancy/IA diagnostics.
+
+`shortlist.py` requires the source-frozen config and existing isolated CAFA
+runtime; it performs no GPU/model calls. `publish_shortlist.py` accepts only the
+sealed aggregate and matching freeze, preserving all 12 profile cells and six
+paired differences through the existing path sanitizer.
+
+## Lower-knowledge development extension
+
+The [NK/LK assessment](../../docs/evaluations/DEEPGO_NK_LK_20261114.md) reuses
+547 existing targets and the native **no-exclusion** evaluation branch; it does
+not substitute the PK known-mask adapter. All 36 earlier rows plus six DeepGO
+outcomes and eight MFO intervals remain visible. MFO improves versus strict
+LocalPlus in both settings/readouts; every interval against the official
+nonexperimental control crosses zero. No consumer or default changes.
+
+`nonpk_evaluate.py` gates complete bound forecasts and exact service restoration
+before calling existing point/count/bootstrap helpers. `nonpk_publish.py`
+sanitizes only saved aggregates, retaining all 42 outcomes and eight intervals.
+The method record documents exposed-reference, small-population and training
+limitations; these are not whole-graph scientific-accuracy measurements.
+
 ## Publish the saved comparisons
 
 The primary publisher reads only sealed aggregates and preserves all 252

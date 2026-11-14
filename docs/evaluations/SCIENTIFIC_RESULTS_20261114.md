@@ -68,6 +68,23 @@ intervals. All four post-hoc MFO intervals favor DeepGO, while all four CCO
 intervals cross zero. These secondary intervals are unadjusted and exploratory;
 the fixed-0.5 precision and Smin trade-offs remain in the complete report.
 
+The subsequent [matched three-slot comparison](DEEPGO_SHORTLIST_20261114.md)
+measures the same review budget for both methods, rather than selecting their
+best threshold. Molecular-function supported-slot yield improves by 0.02023
+in the additional cohort, with paired interval [0.01049, 0.03042]. The original
+cohort's difference is 0.00825 with interval [-0.01143, 0.02794]. All four
+biological-process/cellular-component contrasts favor LocalPlus. Related
+ancestor/descendant terms frequently share the three slots, so these are not
+three independent discoveries. This exposed-reference development check
+does not establish a consistent molecular-function shortlist advantage in
+both cohorts, a precision estimate for Pharos, or a new default.
+
+[DPFunc's published artifacts](DPFUNC_QUALIFICATION_20261114.md) were also
+qualified before any inference. The paper's feature preparation and the
+released convenience pipeline do not match, and checkpoint-compatible
+preprocessing remains unresolved. It is held without a scored result;
+running an assumed configuration would not be a faithful baseline.
+
 In a distinct [native function-call paper-retrieval repeat](native_source_search_20261114/report.html),
 corrected abstract transport produced 4.17% mean reference-paper recall versus
 17.26% for deterministic PubMed search. The same 24 questions had already been
@@ -130,6 +147,21 @@ strong non-experimental baselines and substantially different task difficulty
 by prior knowledge. These results support a task-specific role for graph
 context, rather than one universally superior predictor.
 
+The [completed DeepGO NK/LK extension](DEEPGO_NK_LK_20261114.md) adds a published
+sequence/ontology predictor to those same, now-exposed reference tasks. It
+preserves 210 earlier forecast rows and adds 337 native inferences across the
+547-target union. Molecular-function micro-Fmax is **0.558882 versus 0.400000**
+for strict LocalPlus in NK, and **0.599418 versus 0.422316** in LK. All four
+ordinary/IA paired intervals favor DeepGO over LocalPlus. However, the strong
+nonexperimental-annotation control scores 0.521600 and 0.597970 respectively;
+all four DeepGO-versus-control intervals cross zero. This supports a bounded
+improvement over the retained graph-based predictor, without establishing a gain beyond that
+existing annotation resource. All 42 method/task/aspect outcomes and eight
+designated MFO contrasts are reported. The small 39-/60-protein MFO frames,
+previous label exposure and unresolved training/homology overlap limit the
+finding; NK/LK is not a proxy for Pharos Tdark or unseen training proteins.
+No new default or accepted graph annotation follows.
+
 ## What is retained in the product
 
 **Compare & assess** now includes a historical function-context inspector.
@@ -151,6 +183,17 @@ also checks labels, definitions and explicit ontology parents: an unchanged GO I
 alone does not establish unchanged meaning. All 32 active displayed rows retain
 identical labels and definition text, while four active terms have changed parent
 records; historical and current closures therefore remain separate.
+
+The [full retained-vocabulary audit](GO_USED_TERM_CONTENT_CURRENCY_20261114.md)
+extends that check to 18,002 distinct IDs across training heads, workspace and
+native-inspector records. Among 16,623 IDs active in both dated snapshots,
+3,888 differ in at least one compared literal field. All 1,759 primary Pharos
+GO endpoint IDs remain active in the pinned July ontology. These are content
+inspection flags, not biological errors; the Pharos annotation vintage remains
+unknown. A separate 90,874-byte projection supplies collapsed historical and
+comparison-source notes for the existing 27 saved candidate IDs. Local API and
+DOM checks preserve the original query scores, annotation notes and downloads.
+This increment has not been deployed to AWS.
 
 ![Hosted historical function inspector](../images/HOSTED_FUNCTION_CONTEXT_20261114.png)
 

@@ -4,6 +4,7 @@ from pathlib import Path
 import tempfile
 import threading
 import unittest
+from unittest.mock import patch
 from urllib.error import HTTPError
 from urllib.request import ProxyHandler, Request, build_opener
 
@@ -140,6 +141,44 @@ class FunctionContextHttpTests(unittest.TestCase):
         self.assertIn('initializeFunctionContexts();', html)
         self.assertIn('Trace a historical function prediction', html)
         self.assertNotIn('data-workspace="function', html)
+
+    def test_optional_content_notes_coexist_with_annotation_notes_without_loading_full_index(self):
+        from test_function_content_notes import notes_fixture
+        fixture=context_fixtures.DisplayNotesTests();fixture.fixture()
+        self.manifest['input_source_pins']=fixture.manifest['input_source_pins']
+        self.manifest['source_versions']=fixture.manifest['source_versions']
+        self.manifest.pop('content_sha256');self.manifest['content_sha256']=digest(self.manifest)
+        manifest_path=self.folder/'publication.json';manifest_path.write_text(json.dumps(self.manifest))
+        manifest_sha=sha(manifest_path)
+        annotation=fixture.report
+        annotation.update(publication_manifest_sha256=manifest_sha,
+                          publication_content_sha256=self.manifest['content_sha256'])
+        annotation['content_sha256']=digest(annotation)
+        content=notes_fixture(self.manifest,{'UniProtKB:P00533':example()},manifest_sha)
+        content['content_sha256']=digest(content)
+        for name,value in (('saved_notes',annotation),('content_notes',content)):
+            folder=self.root/name;folder.mkdir();(folder/'notes.json').write_text(json.dumps(value))
+        row=self.index['publications'][0];row.update(manifest_sha256=manifest_sha,
+            display_notes={'id':'saved_notes','file_sha256':sha(self.root/'saved_notes/notes.json')},
+            content_notes={'id':'content_notes','file_sha256':sha(self.root/'content_notes/notes.json')})
+        self.index_path.write_text(json.dumps(self.index))
+        before={p:p.read_bytes() for p in self.root.rglob('*') if p.is_file()}
+        with patch('biograph_steward.go_content_currency.load_index',side_effect=AssertionError('web request must not open full index')):
+            self.error('/api/function-context/saved_model/download/term_content',401,auth=False)
+            with self.get('/api/function-context/saved_model/query/P00533') as response:value=json.loads(response.read())
+            self.assertEqual(value['answer'],example())
+            self.assertIn('july2026_goa',value['display_notes']['queries']['UniProtKB:P00533'][0])
+            self.assertTrue(value['content_notes']['terms']['GO:0000001']['flags']['definition_text_changed'])
+            self.assertNotIn(str(self.root),json.dumps(value['content_notes']))
+            with self.get('/api/function-context/saved_model/download/term_content') as response:
+                self.assertEqual(response.read(),(self.root/'content_notes/notes.json').read_bytes())
+                self.assertIn('attachment;',response.headers['Content-Disposition'])
+        self.assertEqual(before,{p:p.read_bytes() for p in before})
+        (self.root/'content_notes/notes.json').write_text('{}')
+        self.error('/api/function-context/saved_model/query/P00533')
+        self.error('/api/function-context/saved_model/download/term_content')
+        row['content_notes']['id']='../outside';self.index_path.write_text(json.dumps(self.index))
+        with self.assertRaises(ValueError):_function_context_sources(self.root)
 
 
 if __name__ == '__main__':

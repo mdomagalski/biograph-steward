@@ -1,0 +1,1378 @@
+{
+  "format": "biograph-steward.deepgo-shortlist.v1.public-results",
+  "created_at": "2026-11-14T20:44:16.276206+00:00",
+  "source_report_file_sha256": "1c796671a97e13f75ef71e9a83f1d88329925195ad61965046dfdec2b279f074",
+  "source_report_content_sha256": "709047e0246a1f3772bd93e8effc12a2db83ce76f7108a28eee8e6f61c8360a0",
+  "source_freeze_file_sha256": "b224094b52bd7c810d29a10c8c67037093835e9b1f5d9786665cee08fb558830",
+  "source_freeze_content_sha256": "849172fea28b2435908280ba06f5a3074bc07f69f8552a4b4aabf7f489f70692",
+  "results": {
+    "format": "biograph-steward.deepgo-shortlist.v1.results",
+    "created_at": "2026-11-14T20:42:19.915664+00:00",
+    "freeze_file_sha256": "b224094b52bd7c810d29a10c8c67037093835e9b1f5d9786665cee08fb558830",
+    "runtime": {
+      "python": "3.10.12",
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "pandas": "2.2.3"
+    },
+    "scope": "DEVELOPMENT on previously exposed CAFA5 PK annotations; new fixed-budget endpoint, not fresh confirmation.",
+    "k": 3,
+    "rows": [
+      {
+        "frame": "primary",
+        "namespace": "biological_process",
+        "method": "deepgose",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 833,
+          "TP": 431.0,
+          "reference_unmatched_predictions": 2068.0,
+          "unrecovered_reference_annotations": 9868.0,
+          "PPV_among_returned": 0.172468987595038,
+          "micro_recall": 0.041848723177007476,
+          "micro_F1": 0.06735427410532896,
+          "macro_PPV_including_abstentions": 0.17246898759503804,
+          "macro_recall_including_abstentions": 0.08853464544886926,
+          "prediction_coverage": 1.0,
+          "curator_supported_slots_per_fixed3_budget": 0.172468987595038,
+          "filled_slot_fraction": 1.0,
+          "returned_candidates": 2499,
+          "unused_budget_slots": 0,
+          "shortlists_with_ancestor_related_pair": 634,
+          "ancestor_related_pairs": 1074,
+          "mean_IA_per_returned_term": 0.9913778602021435,
+          "curator_supported_IA_per_fixed3_budget": 0.1351880118003391,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 832,
+          "TP": 337.8348414890474,
+          "reference_unmatched_predictions": 2136.9132348496864,
+          "unrecovered_reference_annotations": 8522.29754059557,
+          "PPV_among_returned": 0.13651282113081067,
+          "micro_recall": 0.0381297735654782,
+          "micro_F1": 0.059609775811617034,
+          "macro_PPV_including_abstentions": 0.15493694320362048,
+          "macro_recall_including_abstentions": 0.08817125065831878,
+          "prediction_coverage": 1.0
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 833,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.842170943040401e-14,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 2.842170943040401e-14,
+              "rc": 2.842170943040401e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 832,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.7284841053187847e-11,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 4.547473508864641e-13,
+              "fn": 2.7284841053187847e-11,
+              "pr": 0.0,
+              "rc": 1.4210854715202004e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "a713188bcb471a7cd3db5951c06604a7e1786153c771b8458ee672075c859de0"
+      },
+      {
+        "frame": "primary",
+        "namespace": "molecular_function",
+        "method": "deepgose",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 525,
+          "TP": 209.0,
+          "reference_unmatched_predictions": 1366.0,
+          "unrecovered_reference_annotations": 1602.0,
+          "PPV_among_returned": 0.1326984126984127,
+          "micro_recall": 0.1154058531198233,
+          "micro_F1": 0.12344949793266391,
+          "macro_PPV_including_abstentions": 0.13269841269841268,
+          "macro_recall_including_abstentions": 0.12368059851641194,
+          "prediction_coverage": 1.0,
+          "curator_supported_slots_per_fixed3_budget": 0.1326984126984127,
+          "filled_slot_fraction": 1.0,
+          "returned_candidates": 1575,
+          "unused_budget_slots": 0,
+          "shortlists_with_ancestor_related_pair": 388,
+          "ancestor_related_pairs": 699,
+          "mean_IA_per_returned_term": 2.0591300196779025,
+          "curator_supported_IA_per_fixed3_budget": 0.2480037561793125,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 525,
+          "TP": 390.60591598241746,
+          "reference_unmatched_predictions": 2852.5238650102797,
+          "unrecovered_reference_annotations": 4032.333986403596,
+          "PPV_among_returned": 0.1204410376271948,
+          "micro_recall": 0.08831363857593903,
+          "micro_F1": 0.10190513055974819,
+          "macro_PPV_including_abstentions": 0.12722999135748028,
+          "macro_recall_including_abstentions": 0.1191451383302312,
+          "prediction_coverage": 1.0
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 525,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.842170943040401e-14,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 2.842170943040401e-14,
+              "rc": 1.4210854715202004e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 525,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 1.2278178473934531e-11,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 2.8421709430404007e-13,
+              "fp": 4.547473508864641e-13,
+              "fn": 1.2278178473934531e-11,
+              "pr": 1.4210854715202004e-14,
+              "rc": 2.1316282072803006e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "afc1fdf42e35c899ec1f9b7f0fdb5fd05123571007cd71f683be962d65545ce0"
+      },
+      {
+        "frame": "primary",
+        "namespace": "cellular_component",
+        "method": "deepgose",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 445,
+          "TP": 304.0,
+          "reference_unmatched_predictions": 1031.0,
+          "unrecovered_reference_annotations": 1539.0,
+          "PPV_among_returned": 0.22771535580524344,
+          "micro_recall": 0.16494845360824742,
+          "micro_F1": 0.19131529263687855,
+          "macro_PPV_including_abstentions": 0.22771535580524344,
+          "macro_recall_including_abstentions": 0.19139280946478218,
+          "prediction_coverage": 1.0,
+          "curator_supported_slots_per_fixed3_budget": 0.22771535580524344,
+          "filled_slot_fraction": 1.0,
+          "returned_candidates": 1335,
+          "unused_budget_slots": 0,
+          "shortlists_with_ancestor_related_pair": 327,
+          "ancestor_related_pairs": 462,
+          "mean_IA_per_returned_term": 1.580877374404825,
+          "curator_supported_IA_per_fixed3_budget": 0.22949651781855746,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 445,
+          "TP": 306.3778512877742,
+          "reference_unmatched_predictions": 1804.0934435426666,
+          "unrecovered_reference_annotations": 2715.9889224287035,
+          "PPV_among_returned": 0.1451703475134871,
+          "micro_recall": 0.10137017583442866,
+          "micro_F1": 0.11937951176180715,
+          "macro_PPV_including_abstentions": 0.1967834161307518,
+          "macro_recall_including_abstentions": 0.17217555846540214,
+          "prediction_coverage": 1.0
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 445,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 4.263256414560601e-14,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 4.263256414560601e-14,
+              "rc": 2.842170943040401e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 445,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.2737367544323206e-12,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 4.547473508864641e-13,
+              "fn": 2.2737367544323206e-12,
+              "pr": 1.4210854715202004e-14,
+              "rc": 1.4210854715202004e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "c9267a5a2bb109ad1baf0c4d8abad7483d9f73d8e9a641dfd60e33339db3e070"
+      },
+      {
+        "frame": "primary",
+        "namespace": "biological_process",
+        "method": "strict_alias_localplus",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 833,
+          "TP": 514.0,
+          "reference_unmatched_predictions": 1982.0,
+          "unrecovered_reference_annotations": 9785.0,
+          "PPV_among_returned": 0.20592948717948717,
+          "micro_recall": 0.049907758034760656,
+          "micro_F1": 0.08034388432981633,
+          "macro_PPV_including_abstentions": 0.20568227290916363,
+          "macro_recall_including_abstentions": 0.1002920499514311,
+          "prediction_coverage": 0.9987995198079231,
+          "curator_supported_slots_per_fixed3_budget": 0.20568227290916366,
+          "filled_slot_fraction": 0.9987995198079231,
+          "returned_candidates": 2496,
+          "unused_budget_slots": 3,
+          "shortlists_with_ancestor_related_pair": 678,
+          "ancestor_related_pairs": 1209,
+          "mean_IA_per_returned_term": 0.6961605748564426,
+          "curator_supported_IA_per_fixed3_budget": 0.14210452477597765,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 832,
+          "TP": 355.11920741516815,
+          "reference_unmatched_predictions": 1379.7923911200812,
+          "unrecovered_reference_annotations": 8505.013174669442,
+          "PPV_among_returned": 0.2046900877917861,
+          "micro_recall": 0.040080575786116616,
+          "micro_F1": 0.06703496617187085,
+          "macro_PPV_including_abstentions": 0.19274293254876473,
+          "macro_recall_including_abstentions": 0.09855497675584592,
+          "prediction_coverage": 0.9987980769230769
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 833,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 5.684341886080802e-14,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 2.842170943040401e-14,
+              "rc": 5.684341886080802e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 832,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.000888343900442e-11,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 7.73070496506989e-12,
+              "fn": 2.000888343900442e-11,
+              "pr": 1.4210854715202004e-13,
+              "rc": 0.0
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "a713188bcb471a7cd3db5951c06604a7e1786153c771b8458ee672075c859de0"
+      },
+      {
+        "frame": "primary",
+        "namespace": "molecular_function",
+        "method": "strict_alias_localplus",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 525,
+          "TP": 196.0,
+          "reference_unmatched_predictions": 1376.0,
+          "unrecovered_reference_annotations": 1615.0,
+          "PPV_among_returned": 0.12468193384223919,
+          "micro_recall": 0.10822749861954721,
+          "micro_F1": 0.11587348507242093,
+          "macro_PPV_including_abstentions": 0.12444444444444444,
+          "macro_recall_including_abstentions": 0.11131935149439537,
+          "prediction_coverage": 0.9980952380952381,
+          "curator_supported_slots_per_fixed3_budget": 0.12444444444444444,
+          "filled_slot_fraction": 0.9980952380952381,
+          "returned_candidates": 1572,
+          "unused_budget_slots": 3,
+          "shortlists_with_ancestor_related_pair": 351,
+          "ancestor_related_pairs": 595,
+          "mean_IA_per_returned_term": 2.0861169692842627,
+          "curator_supported_IA_per_fixed3_budget": 0.21553885758083796,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 525,
+          "TP": 339.4737006898198,
+          "reference_unmatched_predictions": 2939.9021750250427,
+          "unrecovered_reference_annotations": 4083.4662016961943,
+          "PPV_among_returned": 0.10351777702695297,
+          "micro_recall": 0.07675295350648698,
+          "micro_F1": 0.08814847650235451,
+          "macro_PPV_including_abstentions": 0.11034956586990274,
+          "macro_recall_including_abstentions": 0.11197747466248101,
+          "prediction_coverage": 0.9980952380952381
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 525,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.842170943040401e-14,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 2.842170943040401e-14,
+              "rc": 1.4210854715202004e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 525,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 1.3642420526593924e-11,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 1.3642420526593924e-12,
+              "fn": 1.3642420526593924e-11,
+              "pr": 0.0,
+              "rc": 7.105427357601002e-15
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "afc1fdf42e35c899ec1f9b7f0fdb5fd05123571007cd71f683be962d65545ce0"
+      },
+      {
+        "frame": "primary",
+        "namespace": "cellular_component",
+        "method": "strict_alias_localplus",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 445,
+          "TP": 359.0,
+          "reference_unmatched_predictions": 972.0,
+          "unrecovered_reference_annotations": 1484.0,
+          "PPV_among_returned": 0.2697220135236664,
+          "micro_recall": 0.19479110146500273,
+          "micro_F1": 0.22621298046628863,
+          "macro_PPV_including_abstentions": 0.26891385767790266,
+          "macro_recall_including_abstentions": 0.22907856086431244,
+          "prediction_coverage": 0.9977528089887641,
+          "curator_supported_slots_per_fixed3_budget": 0.2689138576779026,
+          "filled_slot_fraction": 0.997003745318352,
+          "returned_candidates": 1331,
+          "unused_budget_slots": 4,
+          "shortlists_with_ancestor_related_pair": 334,
+          "ancestor_related_pairs": 465,
+          "mean_IA_per_returned_term": 1.3141920079807707,
+          "curator_supported_IA_per_fixed3_budget": 0.26779245017646447,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 445,
+          "TP": 357.5029209855801,
+          "reference_unmatched_predictions": 1391.686641636825,
+          "unrecovered_reference_annotations": 2664.863852730899,
+          "PPV_among_returned": 0.204382034185939,
+          "micro_recall": 0.11828575012620773,
+          "micro_F1": 0.14984751128806106,
+          "macro_PPV_including_abstentions": 0.24907621847634354,
+          "macro_recall_including_abstentions": 0.22030009793968297,
+          "prediction_coverage": 0.9977528089887641
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 445,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.842170943040401e-14,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 2.842170943040401e-14,
+              "rc": 2.842170943040401e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 445,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 3.183231456205249e-12,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 5.684341886080802e-14,
+              "fp": 6.821210263296962e-13,
+              "fn": 3.183231456205249e-12,
+              "pr": 2.842170943040401e-14,
+              "rc": 1.4210854715202004e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "c9267a5a2bb109ad1baf0c4d8abad7483d9f73d8e9a641dfd60e33339db3e070"
+      },
+      {
+        "frame": "reserved",
+        "namespace": "biological_process",
+        "method": "deepgose",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 2826,
+          "TP": 1558.0,
+          "reference_unmatched_predictions": 6920.0,
+          "unrecovered_reference_annotations": 28400.0,
+          "PPV_among_returned": 0.18376975701816467,
+          "micro_recall": 0.05200614193203819,
+          "micro_F1": 0.08106983036736394,
+          "macro_PPV_including_abstentions": 0.18376975701816464,
+          "macro_recall_including_abstentions": 0.12332188225739484,
+          "prediction_coverage": 1.0,
+          "curator_supported_slots_per_fixed3_budget": 0.18376975701816467,
+          "filled_slot_fraction": 1.0,
+          "returned_candidates": 8478,
+          "unused_budget_slots": 0,
+          "shortlists_with_ancestor_related_pair": 2075,
+          "ancestor_related_pairs": 3455,
+          "mean_IA_per_returned_term": 0.9799194369988016,
+          "curator_supported_IA_per_fixed3_budget": 0.13932525846750657,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 2825,
+          "TP": 1181.1995412875217,
+          "reference_unmatched_predictions": 7123.80992485317,
+          "unrecovered_reference_annotations": 25978.460730266244,
+          "PPV_among_returned": 0.14222735640497963,
+          "micro_recall": 0.04349095421214365,
+          "micro_F1": 0.06661274727913544,
+          "macro_PPV_including_abstentions": 0.16298311849858318,
+          "macro_recall_including_abstentions": 0.12100332526209845,
+          "prediction_coverage": 1.0
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 2826,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 3.183231456205249e-12,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 3.183231456205249e-12,
+              "rc": 5.684341886080802e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 2825,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 9.458744898438454e-11,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 9.094947017729282e-13,
+              "fp": 2.546585164964199e-11,
+              "fn": 9.458744898438454e-11,
+              "pr": 6.821210263296962e-13,
+              "rc": 1.7053025658242404e-13
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "2e83ee353dfe11f45f4017dc552b8ae3299e93c7aaca08f4f29846cc2613fac9"
+      },
+      {
+        "frame": "reserved",
+        "namespace": "molecular_function",
+        "method": "deepgose",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 2192,
+          "TP": 912.0,
+          "reference_unmatched_predictions": 5664.0,
+          "unrecovered_reference_annotations": 5796.0,
+          "PPV_among_returned": 0.1386861313868613,
+          "micro_recall": 0.13595706618962433,
+          "micro_F1": 0.13730803974706415,
+          "macro_PPV_including_abstentions": 0.1386861313868613,
+          "macro_recall_including_abstentions": 0.12991721794580277,
+          "prediction_coverage": 1.0,
+          "curator_supported_slots_per_fixed3_budget": 0.1386861313868613,
+          "filled_slot_fraction": 1.0,
+          "returned_candidates": 6576,
+          "unused_budget_slots": 0,
+          "shortlists_with_ancestor_related_pair": 1652,
+          "ancestor_related_pairs": 2958,
+          "mean_IA_per_returned_term": 1.925220286816149,
+          "curator_supported_IA_per_fixed3_budget": 0.21496307756349717,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 2191,
+          "TP": 1413.5971980575546,
+          "reference_unmatched_predictions": 11243.152988720556,
+          "unrecovered_reference_annotations": 15061.48815550387,
+          "PPV_among_returned": 0.11168721648107352,
+          "micro_recall": 0.08580211681586078,
+          "micro_F1": 0.09704827532066171,
+          "macro_PPV_including_abstentions": 0.12540678159909052,
+          "macro_recall_including_abstentions": 0.12740821407208452,
+          "prediction_coverage": 1.0
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 2192,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.2737367544323206e-13,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 2.2737367544323206e-13,
+              "rc": 1.1368683772161603e-13
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 2191,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 1.2732925824820995e-10,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 2.9558577807620168e-12,
+              "fp": 3.8198777474462986e-11,
+              "fn": 1.2732925824820995e-10,
+              "pr": 1.7053025658242404e-13,
+              "rc": 5.684341886080802e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "3a5934d50b8ddc9ed06031a3c32f910bb74e17f38901c1fc9cefab8e92540574"
+      },
+      {
+        "frame": "reserved",
+        "namespace": "cellular_component",
+        "method": "deepgose",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 1450,
+          "TP": 1275.0,
+          "reference_unmatched_predictions": 3075.0,
+          "unrecovered_reference_annotations": 5693.0,
+          "PPV_among_returned": 0.29310344827586204,
+          "micro_recall": 0.1829793340987371,
+          "micro_F1": 0.2253048241738823,
+          "macro_PPV_including_abstentions": 0.29310344827586204,
+          "macro_recall_including_abstentions": 0.23359745674417393,
+          "prediction_coverage": 1.0,
+          "curator_supported_slots_per_fixed3_budget": 0.29310344827586204,
+          "filled_slot_fraction": 1.0,
+          "returned_candidates": 4350,
+          "unused_budget_slots": 0,
+          "shortlists_with_ancestor_related_pair": 1027,
+          "ancestor_related_pairs": 1412,
+          "mean_IA_per_returned_term": 1.5008835413983987,
+          "curator_supported_IA_per_fixed3_budget": 0.2739454748330523,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 1450,
+          "TP": 1191.6628155237793,
+          "reference_unmatched_predictions": 5337.180589559254,
+          "unrecovered_reference_annotations": 8666.887021558123,
+          "PPV_among_returned": 0.18252280558544406,
+          "micro_recall": 0.12087607561118821,
+          "micro_F1": 0.1454365313523591,
+          "macro_PPV_including_abstentions": 0.23196047130385625,
+          "macro_recall_including_abstentions": 0.2064938690074451,
+          "prediction_coverage": 1.0
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 1450,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.2737367544323206e-13,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 1.1368683772161603e-13,
+              "rc": 2.2737367544323206e-13
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 1450,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 2.7284841053187847e-12,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 1.5916157281026244e-12,
+              "fp": 2.7284841053187847e-12,
+              "fn": 1.8189894035458565e-12,
+              "pr": 8.526512829121202e-13,
+              "rc": 5.684341886080802e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "79e84568aa1c41f8a4622cab17386f66339136f878642000f38bb2e921e8c1ad"
+      },
+      {
+        "frame": "reserved",
+        "namespace": "biological_process",
+        "method": "strict_alias_localplus",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 2826,
+          "TP": 1747.0,
+          "reference_unmatched_predictions": 6641.0,
+          "unrecovered_reference_annotations": 28211.0,
+          "PPV_among_returned": 0.20827372436814498,
+          "micro_recall": 0.05831497429734962,
+          "micro_F1": 0.09111771762374171,
+          "macro_PPV_including_abstentions": 0.2060627506487379,
+          "macro_recall_including_abstentions": 0.12698205646116442,
+          "prediction_coverage": 0.9893842887473461,
+          "curator_supported_slots_per_fixed3_budget": 0.2060627506487379,
+          "filled_slot_fraction": 0.9893842887473461,
+          "returned_candidates": 8388,
+          "unused_budget_slots": 90,
+          "shortlists_with_ancestor_related_pair": 2249,
+          "ancestor_related_pairs": 3609,
+          "mean_IA_per_returned_term": 0.7566612982344616,
+          "curator_supported_IA_per_fixed3_budget": 0.14804863064272317,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 2825,
+          "TP": 1255.156290589006,
+          "reference_unmatched_predictions": 5091.24781232457,
+          "unrecovered_reference_annotations": 25904.503980964742,
+          "PPV_among_returned": 0.19777440425086942,
+          "micro_recall": 0.04621399082460618,
+          "micro_F1": 0.07492114123349411,
+          "macro_PPV_including_abstentions": 0.19464251306030114,
+          "macro_recall_including_abstentions": 0.1238058689941475,
+          "prediction_coverage": 0.9893805309734514
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 2826,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 6.821210263296962e-13,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 6.821210263296962e-13,
+              "rc": 5.684341886080802e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 2825,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 1.0913936421275139e-10,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 1.3642420526593924e-12,
+              "fp": 1.9099388737231493e-11,
+              "fn": 1.0913936421275139e-10,
+              "pr": 3.410605131648481e-13,
+              "rc": 1.1368683772161603e-13
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "2e83ee353dfe11f45f4017dc552b8ae3299e93c7aaca08f4f29846cc2613fac9"
+      },
+      {
+        "frame": "reserved",
+        "namespace": "molecular_function",
+        "method": "strict_alias_localplus",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 2192,
+          "TP": 779.0,
+          "reference_unmatched_predictions": 5746.0,
+          "unrecovered_reference_annotations": 5929.0,
+          "PPV_among_returned": 0.11938697318007663,
+          "micro_recall": 0.11612999403697079,
+          "micro_F1": 0.11773596312249679,
+          "macro_PPV_including_abstentions": 0.11846107055961069,
+          "macro_recall_including_abstentions": 0.12237723767287609,
+          "prediction_coverage": 0.9922445255474452,
+          "curator_supported_slots_per_fixed3_budget": 0.1184610705596107,
+          "filled_slot_fraction": 0.9922445255474452,
+          "returned_candidates": 6525,
+          "unused_budget_slots": 51,
+          "shortlists_with_ancestor_related_pair": 1490,
+          "ancestor_related_pairs": 2494,
+          "mean_IA_per_returned_term": 1.9911325094234256,
+          "curator_supported_IA_per_fixed3_budget": 0.17228485362319676,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 2191,
+          "TP": 1132.9451974261397,
+          "reference_unmatched_predictions": 11853.746348793202,
+          "unrecovered_reference_annotations": 15342.140156135269,
+          "PPV_among_returned": 0.08723893944766559,
+          "micro_recall": 0.06876718227024127,
+          "micro_F1": 0.07690949539669965,
+          "macro_PPV_including_abstentions": 0.09446184367726727,
+          "macro_recall_including_abstentions": 0.11955982494395628,
+          "prediction_coverage": 0.9922409858512095
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 2192,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 3.410605131648481e-13,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 3.410605131648481e-13,
+              "rc": 5.684341886080802e-14
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 2191,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 1.418811734765768e-10,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 2.2737367544323206e-12,
+              "fp": 3.8198777474462986e-11,
+              "fn": 1.418811734765768e-10,
+              "pr": 2.842170943040401e-14,
+              "rc": 2.2737367544323206e-13
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "3a5934d50b8ddc9ed06031a3c32f910bb74e17f38901c1fc9cefab8e92540574"
+      },
+      {
+        "frame": "reserved",
+        "namespace": "cellular_component",
+        "method": "strict_alias_localplus",
+        "k": 3,
+        "ordinary": {
+          "eligible_proteins": 1450,
+          "TP": 1371.0,
+          "reference_unmatched_predictions": 2934.0,
+          "unrecovered_reference_annotations": 5597.0,
+          "PPV_among_returned": 0.3184668989547038,
+          "micro_recall": 0.19675660160734787,
+          "micro_F1": 0.24323605074070784,
+          "macro_PPV_including_abstentions": 0.31517241379310346,
+          "macro_recall_including_abstentions": 0.2219668681906645,
+          "prediction_coverage": 0.9896551724137931,
+          "curator_supported_slots_per_fixed3_budget": 0.31517241379310346,
+          "filled_slot_fraction": 0.9896551724137931,
+          "returned_candidates": 4305,
+          "unused_budget_slots": 45,
+          "shortlists_with_ancestor_related_pair": 1101,
+          "ancestor_related_pairs": 1625,
+          "mean_IA_per_returned_term": 1.2808228876055174,
+          "curator_supported_IA_per_fixed3_budget": 0.27462668304899546,
+          "shortlist_is_ancestor_closed": false
+        },
+        "IA_weighted": {
+          "eligible_proteins": 1450,
+          "TP": 1194.6260712631297,
+          "reference_unmatched_predictions": 4319.3164598786225,
+          "unrecovered_reference_annotations": 8663.923765818767,
+          "PPV_among_returned": 0.21665551726665577,
+          "micro_recall": 0.12117665285513592,
+          "micro_F1": 0.1554238626564592,
+          "macro_PPV_including_abstentions": 0.2892849758792391,
+          "macro_recall_including_abstentions": 0.19844115947289506,
+          "prediction_coverage": 0.9896551724137931
+        },
+        "native_batch_point_agreement": {
+          "ordinary": {
+            "passed": true,
+            "eligible_proteins": 1450,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 1.7053025658242404e-13,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 0.0,
+              "fp": 0.0,
+              "fn": 0.0,
+              "pr": 5.684341886080802e-14,
+              "rc": 1.7053025658242404e-13
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          },
+          "IA_weighted": {
+            "passed": true,
+            "eligible_proteins": 1450,
+            "columns": [
+              "n",
+              "tp",
+              "fp",
+              "fn",
+              "pr",
+              "rc"
+            ],
+            "max_absolute_column_difference": 1.8189894035458565e-12,
+            "per_column_absolute_differences": {
+              "n": 0.0,
+              "tp": 4.547473508864641e-13,
+              "fp": 0.0,
+              "fn": 1.8189894035458565e-12,
+              "pr": 2.8421709430404007e-13,
+              "rc": 3.979039320256561e-13
+            },
+            "relative_tolerance": 1e-12,
+            "absolute_tolerance": 1e-12,
+            "same_native_function_same_post_known_eligible_frame": true
+          }
+        },
+        "native_reference_protein_order_sha256": "79e84568aa1c41f8a4622cab17386f66339136f878642000f38bb2e921e8c1ad"
+      }
+    ],
+    "paired_comparisons": [
+      {
+        "frame": "primary",
+        "namespace": "biological_process",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "metric": "curator_supported_slots_per_fixed3_budget",
+        "role": "secondary",
+        "eligible_proteins": 833,
+        "point_difference": -0.033213285314125644,
+        "paired_95_percentile_interval": [
+          -0.05202080832332932,
+          -0.01480592236894758
+        ],
+        "bootstrap_mean_difference": -0.033506802721088434,
+        "fraction_draws_above_zero": 0.0
+      },
+      {
+        "frame": "primary",
+        "namespace": "molecular_function",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "metric": "curator_supported_slots_per_fixed3_budget",
+        "role": "designated_focus",
+        "eligible_proteins": 525,
+        "point_difference": 0.008253968253968255,
+        "paired_95_percentile_interval": [
+          -0.011428571428571429,
+          0.02793650793650794
+        ],
+        "bootstrap_mean_difference": 0.008536190476190477,
+        "fraction_draws_above_zero": 0.8035
+      },
+      {
+        "frame": "primary",
+        "namespace": "cellular_component",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "metric": "curator_supported_slots_per_fixed3_budget",
+        "role": "secondary",
+        "eligible_proteins": 445,
+        "point_difference": -0.04119850187265918,
+        "paired_95_percentile_interval": [
+          -0.06891385767790262,
+          -0.011985018726591757
+        ],
+        "bootstrap_mean_difference": -0.04082958801498127,
+        "fraction_draws_above_zero": 0.0025
+      },
+      {
+        "frame": "reserved",
+        "namespace": "biological_process",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "metric": "curator_supported_slots_per_fixed3_budget",
+        "role": "secondary",
+        "eligible_proteins": 2826,
+        "point_difference": -0.022292993630573247,
+        "paired_95_percentile_interval": [
+          -0.031965086105213494,
+          -0.012384996461429583
+        ],
+        "bootstrap_mean_difference": -0.02227937013446567,
+        "fraction_draws_above_zero": 0.0
+      },
+      {
+        "frame": "reserved",
+        "namespace": "molecular_function",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "metric": "curator_supported_slots_per_fixed3_budget",
+        "role": "designated_focus",
+        "eligible_proteins": 2192,
+        "point_difference": 0.020225060827250608,
+        "paired_95_percentile_interval": [
+          0.010488899026763997,
+          0.030417427007299252
+        ],
+        "bootstrap_mean_difference": 0.020334017639902675,
+        "fraction_draws_above_zero": 1.0
+      },
+      {
+        "frame": "reserved",
+        "namespace": "cellular_component",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "metric": "curator_supported_slots_per_fixed3_budget",
+        "role": "secondary",
+        "eligible_proteins": 1450,
+        "point_difference": -0.022068965517241378,
+        "paired_95_percentile_interval": [
+          -0.040229885057471264,
+          -0.004367816091954027
+        ],
+        "bootstrap_mean_difference": -0.022006551724137936,
+        "fraction_draws_above_zero": 0.0075
+      }
+    ],
+    "source_files_sha256": {
+      "source_0": {
+        "file_sha256": "89279b5bf20c642ac0d6bb5d9042cb14e957ddcc77e1440ce5f16a20aa3ff65d"
+      },
+      "source_1": {
+        "file_sha256": "f85600f75bf087e5926905b2310bbc85fee7a4f7dd463560f7119d49e14261ab"
+      },
+      "source_2": {
+        "file_sha256": "4d5763eddda5cf88d7275e4d3d30e1a154ffc4aecbf7005acc150fb09c2c7bb9"
+      },
+      "source_3": {
+        "file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "source_4": {
+        "file_sha256": "446c8a1cbe5238a2527d7d585ad56b36361597503ff30a5f1958f44dcf53a1c7"
+      },
+      "source_5": {
+        "file_sha256": "515664459bec8909df138a422a713058ba3f8a8ddc7e4b0475382459a709cda2"
+      },
+      "source_6": {
+        "file_sha256": "3b0f523f672bab3234e6798b86801514fbd84ea43c38e57e902e7b6e2cc74111"
+      },
+      "source_7": {
+        "file_sha256": "825e81969a30b5075069c9a5510ae711e0159507c7618a51a05e46dfc0f45d17"
+      },
+      "source_8": {
+        "file_sha256": "15c764c44fcd59dfd7986aed228a01975c6575624ec88887e6c0b4c2465f6826"
+      },
+      "source_9": {
+        "file_sha256": "cbaa9327766151c7ff6d2fe8b0c2d5d0715a35d0ac1f419b2735fbab2b43c191"
+      },
+      "source_10": {
+        "file_sha256": "0c0062efbb1b199a6a54e62c0c48ff0038d39173aecc7edfab66a20090d5ec2d"
+      },
+      "source_11": {
+        "file_sha256": "579b85022efc121c920cc47550546ce125dab9c1d51dacc0bbf5812b777dd917"
+      },
+      "source_12": {
+        "file_sha256": "8a063411f3f6bc24ff9fcb663e1ed740513063f25b905ce57d0cb9503108dea0"
+      },
+      "source_13": {
+        "file_sha256": "95f3b0ebf4e67df98296a62090e8d4f7f68f21a69a02b57f68bbde873a3c21dc"
+      },
+      "source_14": {
+        "file_sha256": "82e23d4f752a9de9aef68b7c0252df0dad9ffb7a74adeb1c2a83c789578e3aad"
+      },
+      "source_15": {
+        "file_sha256": "d9f3d3c32423bc54048d16ec4cebaa6bbc84efc087014d3274b28ab77f643387"
+      },
+      "source_16": {
+        "file_sha256": "9fe3e6b245e17ca571d35b3f5c66a89498d600d5948042d320f4a25dbefe9cc0"
+      },
+      "source_17": {
+        "file_sha256": "6649710ac8cdad6f157bbeb8bdcb64c6f802eadfeb83de7720581999bb596255"
+      },
+      "source_18": {
+        "file_sha256": "528f2998979b33081b873304acde4233a75419dada29e8b5d1cd7a30630952e7"
+      },
+      "source_19": {
+        "file_sha256": "d3aae88d3d5949ff96773da0da234f6eb380f8ab414385b6d367f446eb42ce01"
+      },
+      "source_20": {
+        "file_sha256": "73f7719ba2433a437aa0d954bdb1c5cb9b6cd12e48750ed2199b7c9c1cbb8935"
+      },
+      "source_21": {
+        "file_sha256": "9eaadb26a66d84d6241b0783bf89355818df5795aab5e2994f7251eb88f3cc7c"
+      },
+      "source_22": {
+        "file_sha256": "f251e4a69c4fd8a509754be56b50ba25345862ef2664c55ea3388b55bab77cc3"
+      },
+      "source_23": {
+        "file_sha256": "d0cf1ce10e845d71f276f8c7c5b1a7a9a5dc7def45e48d82a6ddfb38147c2641"
+      },
+      "source_24": {
+        "file_sha256": "cdadf97d4d994028ac863c188d2c4446ade1a65e231df8157dc484f8c7fc264d"
+      },
+      "source_25": {
+        "file_sha256": "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6"
+      },
+      "source_26": {
+        "file_sha256": "2b368a9aee239d5d1c5325a4d7c17ff159c40fa3cfe4768aac578adf126c36fd"
+      },
+      "source_27": {
+        "file_sha256": "bfe8000ee13cf77942706f7d8ac33215139d16ce30ecfe29be5905cb1f982019"
+      },
+      "source_28": {
+        "file_sha256": "23164e2bb2d68a7275fd5c6caf150084797fd690194ff8a72135132a46990c9b"
+      },
+      "source_29": {
+        "file_sha256": "9c1c13e7dc1cda377d951632ea9592b87a5298ae60833957bc83947affa23790"
+      }
+    },
+    "numeric_artifact_files_sha256": {
+      "source_0": {
+        "file_sha256": "9af70f04ad91350378446be25bb9e371a589534f9474eb596dbbc447f903dd49"
+      },
+      "source_1": {
+        "file_sha256": "a4948b7e5afba2c7d2c5ab14c1c5f7b7b0c7cfd6e7ba388561c50b4423978240"
+      },
+      "source_2": {
+        "file_sha256": "af0f4fb9f536282823728d431faf2b6a8ae36250d36f3e709fb961a347db9ddb"
+      },
+      "source_3": {
+        "file_sha256": "fe4d579338b432be14df0791ff29ecb37312bf769b986edc554a6cc587b2d848"
+      },
+      "source_4": {
+        "file_sha256": "1552878f42eda595c5b5049bce984001fafc6615801f2121a583a423ee691e94"
+      },
+      "source_5": {
+        "file_sha256": "23b91a748027a0ffc92cac33194ccaaec17075823eb628b93cf2b8bfe9d2bec2"
+      },
+      "source_6": {
+        "file_sha256": "3ba01272cb44e9d8fe4e5fde9b8f5fac46a566331b48600ba07e72d8d53d93d2"
+      },
+      "source_7": {
+        "file_sha256": "dfeaa5ff082706248c4428d6eb556a60354783184b03e266d95dbefd43ad55a4"
+      },
+      "source_8": {
+        "file_sha256": "cd76f4508dcda5b94e9f26b2e5ec56578fe650317983b98941b80ecea1f1aa5e"
+      },
+      "source_9": {
+        "file_sha256": "e188d854e87d96f4393adfc3697651c33cfc152ec40c9348e028e705d662fe2f"
+      },
+      "source_10": {
+        "file_sha256": "825419ae5c0c02513d126772bd042c9a01d1acf05555974755ea47e35a9e21f8"
+      },
+      "source_11": {
+        "file_sha256": "aeb04698b9832818c38aa6e4f17fb53f4ea69ede72ccf0965484727602e463c0"
+      },
+      "source_12": {
+        "file_sha256": "6622262f946778d49e10d0188a5a04943eb58d0a2262b7c18def7827d9015d22"
+      },
+      "source_13": {
+        "file_sha256": "02c4854159a5f8f87a1bd60c1f70a5a5d8ffca08b4beebe6d75518fd9ad8ca44"
+      },
+      "source_14": {
+        "file_sha256": "adc6baec719247b6eb2cbab60c26e555783baa71a18e904fc1d4716212fca980"
+      },
+      "source_15": {
+        "file_sha256": "090b1dd828fd1a3d194dfa86739edd9aa8a407f56729fe322696b99be255595d"
+      },
+      "source_16": {
+        "file_sha256": "6d66e09b955a2b7be52588e0098af478ebe9ce0f101cc7ce12ff3ff466b822ca"
+      },
+      "source_17": {
+        "file_sha256": "4f2a2527bde5b110bfe94637b2a9b9909b96edd959847ef3d090ef79e90e54ba"
+      }
+    },
+    "uncertainty": {
+      "implementation": "scipy.stats.bootstrap",
+      "version": "1.13.1",
+      "paired": true,
+      "draws": 2000,
+      "seed": 20261113,
+      "method": "percentile",
+      "confidence_level": 0.95,
+      "batch": 100,
+      "multiplicity_adjusted": false
+    },
+    "primary_BPO_adoption_rule_changed": false,
+    "app_default_or_consumer_changed": false,
+    "raw_reference_or_forecast_rows_included": false,
+    "limitations": [
+      "New endpoint on already exposed CAFA5PK reference; not fresh confirmation, independent study replication or whole-graph accuracy.",
+      "Native ancestor-related predictions can occupy multiple review slots; the shortlist is not three independent discoveries.",
+      "Curator-supported means agreement with incomplete released reference, not an exhaustive true/false biological claim.",
+      "Benchmark TOI/alias qualification differs from literal raw app display. No post-selection ancestor expansion, no k or score sweep.",
+      "Protein/source/study/graph dependence and dated2021model versus2023Localprior differences remain.",
+      "Original failed BPO adoption gate remains; no automatic app default, graph fact or model consumer change."
+    ],
+    "content_sha256": "709047e0246a1f3772bd93e8effc12a2db83ce76f7108a28eee8e6f61c8360a0"
+  },
+  "development_only": true,
+  "primary_BPO_adoption_rule_unchanged": true,
+  "app_default_or_consumer_changed": false,
+  "operator_paths_or_raw_cases_included": false,
+  "publisher_implementation_sha256": "d634aef0f157fc1988e499134dff050d3ad2f08089bc25ca12ceb7f48fb1ccac",
+  "content_sha256": "6eaea75a08aeeb0658ded7c4915460b2f2d4b8a3e4b51d9fbbff977f98b53675"
+}

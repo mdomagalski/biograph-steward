@@ -26,6 +26,24 @@ correcting abstract transport yielded 4.17% reference-paper recall versus
 17.26% for direct PubMed search. Both are development comparisons; neither
 supports a new product default or a whole-graph accuracy claim.
 
+The [matched three-slot comparison](docs/evaluations/DEEPGO_SHORTLIST_20261114.md)
+narrows the molecular-function finding: the additional cohort favors DeepGO,
+while the original cohort is inconclusive; biological-process and
+cellular-component shortlists favor LocalPlus. A separate
+[18,002-term content audit](docs/evaluations/GO_USED_TERM_CONTENT_CURRENCY_20261114.md)
+qualifies the retained vocabulary against dated GO sources. Its compact notes
+are supported in the existing term detail locally, without changing scores or
+the hosted app. [DPFunc qualification](docs/evaluations/DPFUNC_QUALIFICATION_20261114.md)
+identified unresolved released-feature/checkpoint compatibility; no guessed
+inference is counted as a comparison.
+
+The completed [sparse-annotation extension](docs/evaluations/DEEPGO_NK_LK_20261114.md)
+finds higher molecular-function recovery than LocalPlus in both NK/LK tasks,
+with all four ordinary/IA paired intervals above zero. It does not establish
+an advantage over the strong existing nonexperimental-annotation baseline.
+All 42 outcomes and eight contrasts are retained; this remains development
+reuse rather than a new validation or product promotion.
+
 The [portable delivery guide](docs/DELIVERY.md) separates the software-only
 runtime from the complete local CRC source/graph/decision package. Follow the
 [five-minute demonstration](docs/DEMO_SCRIPT.md). Real source redistribution

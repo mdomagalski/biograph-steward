@@ -296,3 +296,100 @@ def load_display_notes(path,expected_sha256,manifest,queries,*,manifest_file_sha
             'native_annotations_generated':dates[0],'matching_native_ontology':release[1]},
         'inputs':deepcopy(inputs),'scientific_accuracy_claimed':False,'forecast_modified':False,
         'limitations':deepcopy(report.get('limitations',[]))}
+
+
+CONTENT_NOTES = 'biograph-steward.historical-term-content-notes.v1'
+
+
+def load_content_notes(path,expected_sha256,manifest,queries,*,manifest_file_sha256):
+    """Read only a small, source-pinned ontology-content projection.
+
+    Full ontology bodies and the full used-term index are never opened by this
+    web consumer. Date-specific source content qualifies a historical term; it
+    cannot replace a forecast, annotation, identifier or review decision.
+    """
+    from .go_content_currency import validate_term
+    path=Path(path).absolute()
+    need(path.is_file() and not path.is_symlink() and path.stat().st_size<=2*1048576,
+         'content notes must be an ordinary bounded file.')
+    pin=lambda value:isinstance(value,str) and re.fullmatch(r'[a-f0-9]{64}',value)
+    need(pin(expected_sha256) and pin(manifest_file_sha256) and sha(path)==expected_sha256,
+         'explicit content notes/publication FILE SHA differs.')
+    report=json.loads(path.read_text())
+    need(isinstance(report,dict) and set(report)=={'format','publication_manifest_sha256','publication_content_sha256',
+         'source_currency_index','source_versions','terms','queries','scientific_accuracy_claimed','forecast_modified',
+         'semantic_equivalence_claimed','automatic_mapping_or_pruning','graph_modified','limitations','content_sha256'}
+         and report.get('format')==CONTENT_NOTES
+         and report.get('content_sha256')==digest({k:v for k,v in report.items() if k!='content_sha256'}),
+         'content notes format/content seal differs.')
+    need(report.get('publication_manifest_sha256')==manifest_file_sha256
+         and report.get('publication_content_sha256')==manifest.get('content_sha256'),
+         'content notes belong to another historical publication.')
+    need(all(report.get(k) is False for k in ('scientific_accuracy_claimed','forecast_modified',
+         'semantic_equivalence_claimed','automatic_mapping_or_pruning','graph_modified')),
+         'content notes cannot make a biological decision or change a forecast.')
+    source=report.get('source_currency_index')
+    source_pins={'manifest_file_sha256','manifest_content_sha256','term_frame_sha256',
+                 'index_file_sha256','historical_ontology_file_sha256','comparison_ontology_file_sha256'}
+    need(isinstance(source,dict) and set(source)==source_pins|{'term_count'}
+         and all(pin(source[k]) for k in source_pins)
+         and type(source['term_count']) is int and 0<source['term_count']<=50000,
+         'full currency-index provenance is required without operator paths.')
+    need(source['historical_ontology_file_sha256']==manifest.get('input_source_pins',{}).get('ontology',{}).get('sha256'),
+         'content notes historical ontology differs from forecast input.')
+    versions=report.get('source_versions')
+    need(isinstance(versions,dict) and set(versions)=={'historical_predictor','comparison_snapshot',
+         'graph_Pharos_GO_vintage','latest_release_claimed'}
+         and all(isinstance(versions[k],str) and re.fullmatch(r'[0-9]{4}-[0-9]{2}-[0-9]{2}',versions[k])
+                 for k in ('historical_predictor','comparison_snapshot'))
+         and versions['graph_Pharos_GO_vintage']=='UNKNOWN' and versions['latest_release_claimed'] is False,
+         'explicit dated-source/unknown-vintage qualification required.')
+    expected={p:[{'GO_ID':c['GO_ID'],'aspect':c['aspect'],'published_score':c['score'],
+                   'label':c.get('label')} for c in q['candidates']] for p,q in queries.items()}
+    need(report.get('queries')==expected,'content notes do not match the exact saved candidate inventory/order/scores.')
+    expected_ids={c['GO_ID'] for q in queries.values() for c in q['candidates']}
+    terms=report.get('terms')
+    need(isinstance(terms,list) and len(terms)==len(expected_ids)<=225,'complete compact candidate term inventory required.')
+    by_term={}
+    for row in terms:
+        need(isinstance(row,dict) and set(row)=={'term_id','scopes','graph_labels','historical','comparison',
+             'flags','semantic_equivalence_inferred','biological_falsehood_inferred','automatic_action'}
+             and isinstance(row.get('term_id'),str) and row['term_id'] in expected_ids
+             and row['term_id'] not in by_term,'invalid or repeated projected term.')
+        for name in ('historical','comparison'):
+            value=row.get(name)
+            common={'present','state','name','definition','namespace','synonyms','parents'}
+            extras=({'present_in_author_active_view','definition_raw','declared_alt_ids','declared_replaced_by',
+                     'declared_consider','stanza_utf8_sha256'} if name=='historical' else
+                    {'declared_lifecycle','replacement_applied','node_canonical_json_sha256'})
+            need(isinstance(value,dict) and common<=set(value)<=common|extras,
+                 'raw ontology bodies belong in the full offline source index.')
+            need(isinstance(value.get('synonyms'),list) and len(value['synonyms'])<=2000
+                 and all(isinstance(s,dict) and set(s)=={'scope','value'} and isinstance(s['scope'],str)
+                         and s['scope'] in {'EXACT','RELATED','BROAD','NARROW'}
+                         and isinstance(s['value'],str) for s in value['synonyms']), 'projected synonym fields differ.')
+            need(isinstance(value.get('parents'),list) and len(value['parents'])<=500
+                 and all(isinstance(p,dict) and set(p)=={'predicate','object'} and isinstance(p['predicate'],str)
+                         and p['predicate'] in {'is_a','part_of'}
+                         and isinstance(p['object'],str) and re.fullmatch(r'[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+',p['object'])
+                         for p in value['parents']), 'projected explicit parent fields differ.')
+            need(value.get('namespace') is None or isinstance(value['namespace'],str),'invalid projected namespace.')
+            if 'replacement_applied' in value:need(value['replacement_applied'] is False,'content notes cannot apply a replacement.')
+            for key in ('stanza_utf8_sha256','node_canonical_json_sha256'):
+                if key in value:need(pin(value[key]),'projected native source pin differs.')
+            for key in ('declared_alt_ids','declared_replaced_by','declared_consider'):
+                if key in value:need(isinstance(value[key],list) and all(isinstance(x,str) for x in value[key]),'projected lifecycle declarations differ.')
+            if 'declared_lifecycle' in value:
+                life=value['declared_lifecycle']
+                need(isinstance(life,dict) and set(life)=={'state','declared_replaced_by','consider_only','ontology_node_sha256'}
+                     and life['state']==value['state'] and pin(life['ontology_node_sha256'])
+                     and all(isinstance(life[k],list) and all(isinstance(x,str) for x in life[k])
+                             for k in ('declared_replaced_by','consider_only')), 'projected lifecycle source scope differs.')
+        validate_term(row);by_term[row['term_id']]=deepcopy(row)
+    need(set(by_term)==expected_ids,'a saved candidate term is absent from content notes.')
+    need(isinstance(report.get('limitations'),list) and all(isinstance(v,str) for v in report['limitations']),
+         'content note interpretation limits are missing.')
+    return {'format':CONTENT_NOTES,'content_sha256':report['content_sha256'],
+        'source_currency_index':deepcopy(source),'source_versions':deepcopy(versions),
+        'terms':by_term,'scientific_accuracy_claimed':False,'forecast_modified':False,
+        'limitations':deepcopy(report['limitations'])}

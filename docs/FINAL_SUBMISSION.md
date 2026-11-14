@@ -48,6 +48,33 @@ zero. This is an aspect-specific research lead, alongside lower fixed-cutoff
 precision, rather than a general replacement decision.
 No DeepGO consumer, graph change or default promotion follows.
 
+A [matched three-slot development comparison](evaluations/DEEPGO_SHORTLIST_20261114.md)
+then asks whether that molecular-function signal helps a fixed review budget.
+It is positive in the additional cohort and uncertain in the original;
+biological-process and cellular-component comparisons favor LocalPlus.
+Frequently related ontology terms limit the interpretation of three returned
+slots as three discoveries. The complete outcomes remain visible. Separately,
+[DPFunc artifact qualification](evaluations/DPFUNC_QUALIFICATION_20261114.md)
+identified an unresolved feature/checkpoint mismatch, so it was not run with
+assumed settings or presented as a tested alternative.
+
+The [completed sparse-annotation extension](evaluations/DEEPGO_NK_LK_20261114.md)
+finds higher molecular-function recovery than LocalPlus in both NK and LK,
+with all four ordinary/IA paired intervals above zero. Ordinary micro-Fmax
+rises from 0.4000 to 0.5589 and from 0.4223 to 0.5994. All four intervals against
+the stronger existing nonexperimental-annotation control cross zero, so this
+does not establish a benefit beyond that resource. All 42 outcomes and eight
+contrasts remain visible. These are previously exposed reference tasks;
+knowledge categories do not imply training-unseen or Pharos Tdark proteins.
+The product default remains unchanged.
+
+The [retained-vocabulary GO audit](evaluations/GO_USED_TERM_CONTENT_CURRENCY_20261114.md)
+covers 18,002 IDs in the training vocabulary, saved graph and native inspector.
+It preserves historical meanings and marks literal differences against the
+pinned July 2026 source without assigning Pharos an unsupported annotation
+date. Compact, collapsed term notes are implemented and checked locally;
+scores and the AWS workbench remain unchanged by this increment.
+
 The hosted [native GO inspector](NATIVE_GO_CONTEXT_WORKBENCH.md) also exposes
 preserved relations, NOT qualifiers, references, forms and context alternatives,
 with separately labeled saved official QC. It makes known source-quality issues

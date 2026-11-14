@@ -129,3 +129,25 @@ test('verified query opens only the exact configured GET path and preserves resp
   assert.equal(ui.elements.functionContextBody.children.length,0);
   assert.match(ui.elements.functionContextStatus.textContent,/another selection/);
 });
+
+test('compact dated term content preserves historical meaning and escapes source text without a new panel',()=>{
+  const {answer,summary}=fixture(),before=JSON.stringify(answer),ui=harness();
+  const old={state:'active',name:'Historical <img src=x>',definition:'Historical binding definition',
+    parents:[{predicate:'is_a',object:'GO:0008150'}],synonyms:[]};
+  const current={state:'obsolete',name:'Changed comparison label',definition:'Changed definition',parents:[],
+    synonyms:[{scope:'RELATED',value:'<script>not markup</script>'}]};
+  const content={content_sha256:'c'.repeat(64),source_versions:{historical_predictor:'2023-01-01',comparison_snapshot:'2026-07-26'},
+    terms:{'GO:0000001':{historical:old,comparison:current,flags:{name_changed:true,definition_text_changed:true,
+      namespace_changed:false,synonym_scope_or_text_records_changed:true,explicit_is_a_part_of_records_changed:true}}}};
+  ui.context.FunctionContext.render(ui.elements.functionContextBody,answer,summary,'/api/function-context/saved_model/',null,content);
+  const body=ui.elements.functionContextBody,details=nodes(body,'details').find(n=>text(n.children[0]).startsWith('GO term content'));
+  assert.ok(details);assert.notEqual(details.open,true);
+  assert.match(text(details),/2023-01-01/);assert.match(text(details),/2026-07-26/);
+  assert.match(text(details),/Historical binding definition/);assert.match(text(details),/Changed definition/);
+  assert.match(text(details),/is_a GO:0008150/);assert.match(text(details),/Pharos annotation vintage remains unknown/);
+  assert.match(text(details),/not asserted to be the latest/);assert.match(text(details),/no replacement or pruning is applied/);
+  assert.match(text(details),/<script>not markup<\/script>/);
+  assert.equal(nodes(details,'script').length,0);assert.equal(nodes(details,'img').length,0);
+  assert.ok(nodes(body,'a').some(a=>a.href==='/api/function-context/saved_model/download/term_content'));
+  assert.equal(JSON.stringify(answer),before);
+});

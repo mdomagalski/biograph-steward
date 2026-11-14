@@ -1,0 +1,13 @@
+{
+  "format": "biograph-steward.deepgo-nonpk-evaluation.v1.publication-manifest",
+  "source_report_file_sha256": "3d4d269bd23b92c3d2bf830f0031df9c067d1a00ae7c9e9b15fc5a6accd8230d",
+  "files": {
+    "report.json": "4dddce32df61108546300c0403ba3ab72bd34c25367a4b11eda5a05ed8d678db",
+    "report.html": "19a8d6ae3d66440eda7e9d182725dd52e7f3dccb0ae8a300ad7609076fc38053"
+  },
+  "outcome_slots": 42,
+  "MFO_paired_intervals": 8,
+  "operator_paths_or_raw_cases_included": false,
+  "automatic_adoption": false,
+  "content_sha256": "0aa83d00475a4f7ab637491b095b7bfdf1d1203b374b9f9740c2fb0a282072a3"
+}

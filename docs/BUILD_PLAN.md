@@ -9,6 +9,23 @@ is complete: full-context GeneMANIA+ fails its fixed retention gate, so the
 inspectable full-context LocalPlus method stays in use. Earlier measured gains
 and unfavorable controls remain unchanged.
 
+The [fixed-budget shortlist](evaluations/DEEPGO_SHORTLIST_20261114.md) is also
+complete: DeepGO's molecular-function benefit is supported only in the
+additional cohort at three review slots; the original cohort is uncertain,
+and BPO/CCO favor LocalPlus. The [18,002-term GO content audit](evaluations/GO_USED_TERM_CONTENT_CURRENCY_20261114.md)
+is complete, with bounded optional notes integrated in the existing term
+detail locally. No hosted deployment or default change accompanies it.
+[DPFunc](evaluations/DPFUNC_QUALIFICATION_20261114.md) is held at source
+qualification because compatible released feature preparation is unresolved.
+
+The [DeepGO NK/LK extension](evaluations/DEEPGO_NK_LK_20261114.md) is complete,
+including all 42 outcomes and eight designated molecular-function contrasts.
+Both sparse-annotation tasks favor DeepGO over LocalPlus, but neither
+establishes an advantage over the strong annotation control. Keep this as a
+qualified research result; no new reference, default promotion or graph
+acceptance is implied. The planned shortlist, content-audit, sparse-task and
+DPFunc-qualification work is closed at these documented outcomes.
+
 The optional [PubMed source-paper utility](SOURCE_PAPER_INSPECTION.md) now works
 without a paid literature API or a benchmark corpus. Native search is its
 default. A fixed 24-question public-reference comparison shows that standard
