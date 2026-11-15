@@ -22,8 +22,11 @@ graph and answer > inspect sources and warnings > export.
 function queries with 36 hypotheses and their source-neighbor contributions.
 The [November 14 scientific results](evaluations/SCIENTIFIC_RESULTS_20261114.md)
 record bounded annotation-recovery gains as well as negative controls. The
-accepted hosted runtime is `a6a05ff`; the latest aggregate publication is named
-`scientific_assessment_reference_20261114` (installed and API-verified).
+November 14 hosted checkpoint was `a6a05ff`, with aggregate publication
+`scientific_assessment_reference_20261114`. Those dated examples remain available.
+For the November 15 native-source example and current hosted receipt, use the
+[ten-minute supplement](REVIEW_NATIVE_EVIDENCE_20261115.md) and
+[current delivery status](DELIVERY_STATUS_20261115.json).
 
 ### What is integrated
 

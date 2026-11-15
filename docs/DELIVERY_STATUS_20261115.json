@@ -1,4 +1,5 @@
 {
+  "AWS_graph_change_scope": "Four new separately named saved runs added. Earlier qualified default, reviews and Neptune mirror preserved.",
   "authorized_AWS_interpretation_update_complete": true,
   "browser_visual_check": {
     "API_check_is_not_browser_usability_test": true,
@@ -9,6 +10,7 @@
   },
   "closing_delivery_checklist": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
+  "existing_AWS_graph_and_reviews_unchanged": true,
   "format": "biograph-steward.delivery-status.v1",
   "github_review_delivery": {
     "all_remote_asset_digests_reverified": true,
@@ -111,13 +113,36 @@
       "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
       "term_explanations": 27
     },
-    "last_verified_authenticated_runtime": "f6c527a84b68ac0155df4b2c19548c8b88736540",
+    "last_verified_authenticated_runtime": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "native_profiles_update": {
+      "actual_restart_and_full_Neptune_parity_passed": true,
+      "browser_and_restore_checks": "running",
+      "cache_update": "Source-verified web reuse accepted after real restart; original source-reader files and graph/answer hashes unchanged.",
+      "new_workspace": "native_evidence_workspace_20261115",
+      "original_qualified_default_and_Neptune_mirror_unchanged": true,
+      "runtime_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+      "saved_accepted_answer_proteins": 0,
+      "saved_candidate_answer_proteins": 14,
+      "scoped_recovery_and_Gold_export": "passed for235sourcefiles; explicitlyapprovedprivateS3copychecksumverified",
+      "server_saved_data_only": true,
+      "summary": "docs/evaluations/native_profiles_hosted_20261115/summary.json"
+    },
+    "native_reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask",
     "previous_authenticated_acceptance_receipt": {
       "bytes": 3673,
       "path": "docs/evaluations/scientific_hosted_delivery_20261114_summary.json",
       "sha256": "4bca4913524b4a813e2da3c889054dd2a6ae721240a7fe09fc5dcc61142e8c41"
     },
-    "private_Neptune_mirror": "verified at recorded checkpoint; ordinary saved answers use workspace files",
+    "previous_interpretation_update": {
+      "actual_restart_verified": true,
+      "displayed_candidates": 36,
+      "graph_scores_or_model_changed": false,
+      "saved_queries": 6,
+      "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "term_explanations": 27
+    },
+    "previous_verified_runtime": "f6c527a84b68ac0155df4b2c19548c8b88736540",
+    "private_Neptune_mirror": "Full read-only record parity reverified after real restart of0554977; mirror remains the earlier qualified default. New native source profile uses its saved workspace files.",
     "public_entry_check": {
       "TLS_default_verification": true,
       "authenticated_saved_graph_checked": false,
@@ -134,7 +159,7 @@
     "shared_ingress": "saved-data inspection and export only; construction, fresh retrieval, model planning and review edits blocked",
     "workspace_token": "supplied privately; not included in repository or this manifest"
   },
-  "no_AWS_graph_or_review_changes": true,
+  "no_AWS_graph_or_review_changes": false,
   "no_AWS_workbench_mutations": false,
   "no_external_email_or_chat_messages_sent": true,
   "optional_bibliographic_inventory": {
@@ -172,41 +197,20 @@
     "suggested_whole_graph_handoff": "resulting scoped graph, exhaustive edge decisions, complete retrieved baseline; final organizer schema/version unspecified"
   },
   "presentation": {
-    "Artifact_Tool_reimport_passed": true,
-    "MF_CC_strongest_control_limit_visible": true,
-    "Spaces_fallback": "create/connect worked; required authoring tool unavailable. Own empty private draft was trashed; final deliverable is a local editable PPTX.",
-    "all_eight_slides_visually_reviewed": true,
-    "all_nine_slides_visually_reviewed": true,
-    "bytes": 304517,
-    "development_source_summary_sha256": "d2c00101234cfcb1146188b52e3dbad9be60b244301d7c5a892e2af1b69b3f2f",
-    "direct_nonexperimental_GOA_control_visible": true,
-    "earlier_PDFs_and_slides": "dated checkpoints retained; do not silently replace their runtime or result scope",
-    "earlier_v4_receipt": "docs/evaluations/contextual_presentation_20261115_summary.json",
-    "editable_chart_literal_precision": "six decimal places in the Office workbook; complete full-precision statistical results remain in the cited JSON",
-    "existing_eight_source_slides_pixels_text_notes_unchanged": true,
-    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx",
-    "latest_receipt": "docs/evaluations/contextual_presentation_v5_20261115_summary.json",
-    "layout_findings": 0,
-    "layout_warnings": 0,
+    "actual_native_answer_and_source_captures_runtime": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "all_ten_slides_visually_reviewed": true,
+    "bytes": 472850,
+    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx",
+    "latest_receipt": "docs/evaluations/presentation_native_evidence_v8_20261115_summary.json",
+    "latest_receipt_sha256": "f885ec38978a7733ab828fd596749c7189a8d02044c7a8cbec61857cb0be79b5",
     "main_slides": 6,
-    "native_Office_workbook_chart_data_checked": true,
     "native_PowerPoint_application_tested": false,
-    "native_editable_chart_slides": [
-      4
-    ],
-    "native_editable_table_slides": [
-      7,
-      8,
-      9
-    ],
-    "original_chart_literal_values_preserved_not_original_workbook_bytes": true,
-    "screenshots": "previous verified November 13/14 captures, dated in speaker notes; no new hosted UI acceptance claimed",
-    "sha256": "0df543fd5040cd73cc7d94d14ecec0c4ead48b8f9400cfdb3996b3c9338df9eb",
-    "source_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
-    "status": "Nine editable slides; finalized reimport renders and native numeric/package checks passed. New consumed-reference appendix remains separate from original fixed result.",
-    "technical_appendix_slides": 3,
-    "validation_receipt_sha256": "928078a1581895fda3c6f9947a998f84c6392a4f82274ac9c05d0de4724e4168",
-    "visual_receipt_sha256": "928078a1581895fda3c6f9947a998f84c6392a4f82274ac9c05d0de4724e4168"
+    "optional_PDF_export": "Unavailable because bundled renderer lacks a standard font module; editablePPTX/renderedQA complete.",
+    "previous_v7_retained": true,
+    "root_contact_sheet_reviewed": true,
+    "sha256": "c6f3331b7cb9d554024e6d2b658d25e8efdaa70313011792695f877c5e3ed1f1",
+    "source_scope": "Nativeprofile candidatecontext,positivepublicreferencecoverage,alloriginalpredictioncontrols and qualifications retained.",
+    "technical_appendix_slides": 4
   },
   "purpose": "Current judge-facing artifact and capability boundary; prior release manifests remain dated records.",
   "reader_date": {
@@ -215,11 +219,11 @@
     "timezone": "America/New_York"
   },
   "resources": {
-    "AWS_reviewer_service": "retain for teammate saved-data review; interpretation update accepted after real restart, graph and decisions unchanged",
+    "AWS_reviewer_service": "Retain app/gateway/privateNeptune for team review. Runtime47a2e5a accepted after restart and full Neptune parity; native profile and prior qualified default remain separate.",
     "Brev_GPU_or_model_needed_for_review": false,
     "Brev_can_stop_compute_keep_persistent_disk": true,
     "Brev_compute_needed_for_current_work": false,
-    "Brev_instance_state": "RUNNING at completed fit/restore verification; owned work and verified retention transfers are complete, so compute can be stopped while retaining the persistent disk.",
+    "Brev_instance_state": "Not re-polled during this hosted-delivery increment. Current review/export/source work needs no Brev, GPU or model. Historical completion and preservation receipts remain below.",
     "Brev_owned_evaluation_and_source_audit_workers": "All fixed fits and assessments are complete, including the one cross-fitted graph/frequency fit. Original Nemotron service restored exactly and healthy; no new LLM requests were made for either refit.",
     "Brev_owned_worker_completion_receipt_sha256": "357851721cc79c5d85e57fa4bd5b678ed832c604113add9bf68254f6446cc00d",
     "Brev_owned_workers_and_transfers_complete": true,
@@ -271,7 +275,7 @@
         "sha256": "214ed69d5bdd2b9018541a1a32fec13747a2b4b3570f4392c75aa250f093476f"
       }
     },
-    "public_gold_and_native_location_increment": "Completed locally using saved/public bulk sources; no Brev/GPU/model, AWS graph update or new cloud resources were used."
+    "public_gold_and_native_location_increment": "Now deployed as a separate native GO plus STRING physical source profile, with source-bound saved questions and aggregate reference assessment. No new model calls or cloud resources."
   },
   "science": {
     "annotation_prior_followup": {
@@ -514,6 +518,24 @@
       "status": "executed source-qualified public reference comparisons; labels applied with complete denominators",
       "whole_graph_biological_accuracy_established": false
     },
+    "public_reference_app_followup": {
+      "HOU_baseline_native_positive_labels": [
+        "41/51",
+        "44/51"
+      ],
+      "HOU_matched_primary_targets": 31,
+      "OpenCell_aggregate": "docs/evaluations/opencell_localization_20261115/summary.json",
+      "OpenCell_baseline_native_positive_labels": [
+        "30/40",
+        "31/40"
+      ],
+      "OpenCell_matched_primary_targets": 23,
+      "OpenCell_native_after_explicit_provider_study_exclusion": "31/40",
+      "fresh_blind_independent_replication": false,
+      "native_source_graph_changes_acceptance_states": false,
+      "summary": "docs/evaluations/PUBLIC_REFERENCE_APP_20261115.md",
+      "whole_graph_accuracy_percentage": null
+    },
     "same_learner_graph_enrichment_gain_established": false,
     "secondary_CC_mixing_gain": {
       "DeepGO_SE_micro_Fmax": 0.29141414141414135,
@@ -582,19 +604,17 @@
     "core_requires_pip": false,
     "final_public_repository_handoff_completed_by_this_audit": false,
     "latest_indexed_software_ZIP": {
-      "bytes": 661594,
-      "file": "biograph_steward_core_software.zip",
-      "file_count": 124,
-      "path": "runs/software_delivery_core_20261115/biograph_steward_core_software.zip",
-      "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
+      "bytes": 688047,
+      "file": "biograph_steward_core_saved_review_software.zip",
+      "file_count": 129,
+      "sha256": "f688f894ff3933f4b85fdbf62425cbf1e805a01d6852526adcf2bce261a0e993"
     },
-    "latest_indexed_software_ZIP_commit": "9bf202f84949c76904ba8e51a5f83b68f2d58843",
+    "latest_indexed_software_ZIP_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
     "latest_indexed_software_acceptance": {
-      "bytes": 3549,
-      "path": "docs/evaluations/software_release_core_20261115_summary.json",
-      "sha256": "fa88a9bc527c412f25b5be6a3edbe68bd6dbeaceda12c7f86f0ebfb03fd30576"
+      "path": "docs/evaluations/software_release_cached_review_20261115_summary.json",
+      "sha256": "bd20359b2e6642fd950af71bd956d0e3f1ee462b73322bdd01f80532143d7009"
     },
-    "latest_indexed_software_scope": "Supported standalone core subset; optional research and deployment scripts remain available in the full repository and preserved source-runtime tar.",
+    "latest_indexed_software_scope": "Code-only standard-library core; no real source snapshots, weights or reference cases. Normal synthetic export/reopen and explicit saved-data-only policy checked.",
     "native_location_source_profile": {
       "AWS_updated": false,
       "ND_root_no_data_excluded": true,
@@ -631,6 +651,13 @@
       "source_recovery_v1_behavior_preserved": true,
       "status": "implemented and locally replayed through existing GOA source, question, inspection and export flow",
       "targets_with_native_records": 94
+    },
+    "native_physical_and_saved_review_features": {
+      "new_source_data_bundled_in_core_ZIP": false,
+      "ordinary_source_questions": "CLI and app share the native physical reader; source values and identifier/sequence qualifications retained",
+      "review_policy": "docs/SAVED_DATA_REVIEW_MODE.md",
+      "source_guide": "docs/NATIVE_PHYSICAL_SOURCE.md",
+      "status": "deployed and authenticated after real restart"
     },
     "new_core_archive_acceptance": {
       "actual_graph_ledger_and_answer_exports_verified": true,
@@ -685,9 +712,42 @@
       },
       "commit": "5362b50b80e38505f24e21d97e7034005a7a51e1"
     },
+    "prior_indexed_software_before_native_profiles": {
+      "latest_indexed_software_ZIP": {
+        "bytes": 661594,
+        "file": "biograph_steward_core_software.zip",
+        "file_count": 124,
+        "path": "runs/software_delivery_core_20261115/biograph_steward_core_software.zip",
+        "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
+      },
+      "latest_indexed_software_ZIP_commit": "9bf202f84949c76904ba8e51a5f83b68f2d58843",
+      "latest_indexed_software_acceptance": {
+        "bytes": 3549,
+        "path": "docs/evaluations/software_release_core_20261115_summary.json",
+        "sha256": "fa88a9bc527c412f25b5be6a3edbe68bd6dbeaceda12c7f86f0ebfb03fd30576"
+      }
+    },
+    "prior_native_profiles_055_software": {
+      "latest_indexed_software_ZIP": {
+        "bytes": 686402,
+        "file": "biograph_steward_core_saved_review_software.zip",
+        "file_count": 128,
+        "sha256": "220a763d1cd5a0a15b423e8843c4c7196c64dddcefc56ff900b9b8450984a26d"
+      },
+      "latest_indexed_software_ZIP_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+      "latest_indexed_software_acceptance": {
+        "path": "docs/evaluations/software_release_saved_review_20261115_summary.json",
+        "sha256": "cfb9744c0b761a6f6aacbfc2bf1b7277ae8f5de6b73ca532978c952121887b4e"
+      }
+    },
     "published_release_asset_created_by_this_audit": false,
     "repository_visibility": "Verified private during draft-release API handoff; no visibility change",
-    "source_code_commit_at_local_check": "3f4f0ac11bf34bc7942deb2c3939415400fa782e"
+    "saved_native_cache": {
+      "new_cached_core_archive_acceptance": "docs/evaluations/software_release_cached_review_20261115_summary.json",
+      "qualification": "docs/evaluations/saved_native_cache_20261115/qualification.json",
+      "qualified_original_reader_files_unchanged": true
+    },
+    "source_code_commit_at_local_check": "47a2e5aebeabe555c35bfb9e9e46343213752c69"
   },
   "source_version_metadata_check": {
     "biological_target_or_GO_records_requested": false,
@@ -717,7 +777,7 @@
   "unresolved_release_actions": [
     {
       "item": "Final reviewed code checkpoint and code-only software archive",
-      "status": "Dated 9bf202f core-only archive built and passed clean install/export/reopen acceptance locally; final submission tag and publication remain separate release actions."
+      "status": "Tested47a2e5a code-onlycore archive and accepted hostedruntime prepared; final submissiontag/publicpublication remain separate actions."
     },
     {
       "item": "Public MIT GitHub/release handoff for open-source track",
@@ -736,7 +796,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T16:58:34.954831+00:00",
+  "updated_at_UTC": "2026-11-15T21:14:54.866784+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

@@ -1,0 +1,24 @@
+{
+  "format": "biograph-steward.runtime-cache-activation.v1",
+  "commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+  "previous_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+  "image_id": "sha256:1384a64f2e445c42847505b2fa24ee9501f357cee65e1b41fc6140e28a99cd53",
+  "previous_image_id": "sha256:25c18a3f0815107c41fa704a8a6d134b29ed2c85ae47506b96e85409a5adbb9c",
+  "operator_config_sha256": "cd659d3ca028327babea78b07b87ebdcbc30dcb732a345646a33bcc8b1e8f2bd",
+  "existing_profile_ids_checked": [
+    "scientific_assessment_public_reference_20261115_v3",
+    "native_evidence_workspace_20261115",
+    "native_physical_KRAS_question_v3_20261115",
+    "native_physical_KRAS_accepted_v3_20261115"
+  ],
+  "source_data_written": false,
+  "actual_restart_and_authenticated_smoke_passed": true,
+  "old_graph_reviews_sources_function_index_and_environment_unchanged": true,
+  "previous_app_image_configuration_retained": true,
+  "cloud_resources_or_permissions_created": false,
+  "environment_writes_performed": false,
+  "models_or_fresh_retrieval_requested": false,
+  "shared_review_saved_data_only_server_policy": true,
+  "rollback_needed": false,
+  "host_or_operator_process_loss_requires_manual_recovery": true
+}

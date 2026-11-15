@@ -2,26 +2,90 @@
 
 ## Shared reviewer site
 
-[Open the saved TP53 example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask).
-Use the existing workspace token, supplied separately and privately. Reviewers
-need a browser; AWS credentials, Brev and local setup are unnecessary. The
-[testing guide](TEAM_REVIEW_GUIDE_20261113.md) gives the weekend tasks.
+[Open the new saved KRAS example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask), or use the
+[earlier qualified TP53 example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask). Follow the
+[ten-minute native-evidence guide](REVIEW_NATIVE_EVIDENCE_20261115.md) for the
+new example and the [weekend guide](TEAM_REVIEW_GUIDE_20261113.md) for the earlier
+workflow. Independent teammate feedback remains pending.
 
-This authenticated route supports saved questions, source inspection, the native
-GO inspector and downloads. Construction, fresh retrieval, model calls and review
-edits are blocked. The shared token admits the valid saved workspaces; it does
-not create individual reviewer roles. Neptune remains private. The
-[delivery receipt](evaluations/reviewer_https_delivery_20261113_summary.json)
-records HTTPS authentication/route checks, full exported GO replay, preserved
-source bytes and a cold Neptune read through the gateway after restart.
-The saved TP53 answer also opened in Chrome. Independent teammate feedback and
-independent whole-graph biological accuracy remain outstanding.
+The shared reviewer route runs code **`47a2e5a`** with an explicit saved-data-only
+server policy. It supports saved questions, source inspection and downloads.
+Construction, fresh retrieval, model calls and review edits are blocked. The
+shared token admits the valid saved workspaces; it does not create individual
+reviewer roles. Reviewers need a browser and the token supplied privately, with
+no AWS account, Brev instance or model server. The
+[hosted acceptance receipt](evaluations/native_profiles_hosted_20261115/summary.json) records a real service
+restart, authenticated saved-answer/source checks and preservation of the
+older graph, review states, environment and private Neptune connection.
 
-The [current delivery status](DELIVERY_STATUS_20261115.json) distinguishes the
-last verified hosted runtime, **`a6a05ff`**, from the newer locally tested
-**`9bf202f` core software ZIP** in the [November 15 UTC release index](releases/20261115/README.md).
-Its clean-install check needs no real source data or model. These are separate
-checkpoints; a new local archive does not update the reviewer site.
+The [current delivery status](DELIVERY_STATUS_20261115.json) separates runtime,
+code-only software, saved data and scientific results. The new
+[47a2e5a core software ZIP acceptance](evaluations/software_release_cached_review_20261115_summary.json)
+checks clean Python construction, real synthetic exports, fresh reopen and
+saved-data-only denials without real source data, model or cloud access.
+Final tagging, public visibility and actual submission remain separate actions.
+
+## Saved graph and assessment scope
+
+Two separate saved workspaces remain available:
+
+| Workspace | Scope and use |
+|---|---|
+| New native-evidence profile | **99 primary targets, 9,724 entities and 19,310 evidence records**: 15,671 original Pharos records, 3,309 native GOA rows and 330 STRING physical associations. Additions remain candidates. Use the KRAS answer and public-reference comparison. |
+| Earlier qualified retained graph | **99 primary targets, 9,865 entities and 16,687 retained records**, with the 16,985-record input and every keep/prune/abstain decision preserved. Its 298 obsolete-GO-ID exclusions concern identifier currency, not experimentally disproved biology. Use the TP53 pathway example. |
+
+The new source profile does not replace the earlier retained graph or its
+reviews. The private Neptune mirror continues to hold that earlier qualified
+graph. Ordinary saved answers, including the new native profile, use their
+saved workspace files.
+
+The native physical source records 330 pairs, of which **243 already have a
+pair represented in the captured Pharos graph and 87 do not**. These are
+versioned source records and new workspace pairs, not independent experiments
+or discoveries. Exact reciprocal alias and full-sequence checks admit 77 of
+99 targets; 21 sequence mismatches and one missing direct alias stay unresolved.
+A physical association can describe shared-complex membership without direct
+binding. STRING already supplies Pharos, so adding its separately qualified
+physical view does not create an independent evidence vote.
+
+The hosted assessment `scientific_assessment_public_reference_20261115_v3`
+presents bounded reference comparisons. Native GO recovers **44/51 HOU location
+labels versus captured Pharos's 41/51** among 31 matching proteins. It recovers
+**31/40 OpenCell labels versus 30/40** among 23 matching proteins, including
+after removing HPA-assigned rows and explicit OpenCell-study references.
+HOU has shared HPA provider exposure. OpenCell is a previously used, coarse
+HEK293T reference with incomplete sequence/context qualification and unresolved
+indirect reuse. These are positive-label recovery measurements, not precision
+or whole-graph biological-accuracy percentages. The earlier predictor,
+stronger direct GOA controls, unfavorable graph-learner comparisons and failed
+agent results remain reported separately.
+
+The two saved downloads and separate graph-decision handoff serve different purposes:
+
+- **Answer ZIP** contains the focused answer, selected paths and cited evidence.
+- **Run ZIP** preserves the complete saved workspace and attached source files.
+  Saved questions have their own ZIPs and are opened beside the workspace.
+- **Prepared graph and decision handoff** contains `retained_graph.json`, every decision
+  in `edge_dispositions.jsonl`, and the input workspace in
+  `baseline_packet/source/graph.json`. Abstentions remain retained. This input
+  may already contain source extensions; “baseline” in that packet does not
+  universally mean the Pharos-only graph.
+
+The protected reviewer site enables the two saved downloads. It blocks creating
+a new graph-decision package. That third handoff is generated by the operator or
+normal local app; the earlier qualified workspace already preserves its
+retained graph and decisions inside the Run ZIP.
+
+The native data profile and aggregate assessment have separate source terms and
+identities. A successful runtime update is not evidence of biological truth.
+Mixed-source public redistribution, including KEGG material in the earlier
+graph, has not been cleared. Source inspection remains protected.
+
+## Earlier verified checkpoints
+
+The following dated records describe earlier runtimes and packages. Their exact
+checksums, source scopes and recovery boundaries remain preserved. They do not
+substitute for the current acceptance receipt.
 
 The [November 13 delivery index](releases/20261113/README.md) joins the designated
 runtime, graph and answer archives, exact checksums and access/source
@@ -36,13 +100,13 @@ for offline real-source inspection. The optional
 [reproduction tools](../tools/grounding_claims/README.md). These later additions
 do not replace the pinned runtime inside the already prepared archives below.
 
-The current scientific demonstration is the
+The scientific demonstration at that November 13 checkpoint is the
 [source-faithful workspace](evaluations/SOURCE_FAITHFUL_WORKSPACE_20261113.md),
 `source_faithful_workspace_20261113`: **99 primary Pharos targets, 9,865 entities
 and 16,687 retained evidence records**. Its complete ZIP preserves the original
 16,985-record baseline, explicit keep/prune/abstain ledger and native historical
 source proof. Saved questions have separate ZIP downloads. It is live in the
-sign-in-protected AWS workbench and private Neptune. The [current assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
+sign-in-protected AWS workbench and private Neptune. The [dated assessment](evaluations/SCIENTIFIC_DELIVERY_20261113.md)
 reports source-support coverage and the negative controlled biological results.
 
 The earlier [GO rollout receipt](evaluations/hosted_native_go_20261113_summary.json)
@@ -72,7 +136,8 @@ The newer [context-aware prediction assessment](evaluations/CONTEXTUAL_COMBINATI
 is a separate aggregate-only repository/presentation deliverable. Its
 [standalone HTML report](evaluations/contextual_combination_20261115/report.html)
 does not require raw references, a model or the private demonstration packet.
-It has not replaced the hosted publication or changed the source graph.
+It did not replace the hosted publication or change the source graph at that
+checkpoint. The later aggregate assessment is identified above.
 
 The November 12 `crc_biological_workspace_20261112` source and its portable
 all-abstain CRC package remain supplementary, reproducible earlier artifacts.
@@ -114,18 +179,19 @@ Use the question ID supplied with your packet in the URL. The checked local
 files are under `runs/hosted_workspace_export_20261113/`; data access and source
 terms still apply.
 
+
 ## Current offline handoff
 
 For the latest code-only download, use
-`runs/software_delivery_core_20261115/biograph_steward_core_software.zip`
-at commit `9bf202f`, verified by the
-[clean extracted check](evaluations/software_release_core_20261115_summary.json).
+`runs/software_delivery_cached_review_20261115/biograph_steward_core_saved_review_software.zip`
+at commit `47a2e5a`, verified by the
+[clean extracted check](evaluations/software_release_cached_review_20261115_summary.json).
 The [release index](releases/20261115/README.md) records its checksum and exact
 core-only scope. Optional research/deployment scripts remain in the full
-repository. The hosted app remains at its separately verified `a6a05ff`
-checkpoint; real source packets, native GO/QC attachment and aggregate
-publication are separately supplied data.
-The code-only ZIP is now also an asset in the existing private
+repository. The hosted app has its separately accepted `47a2e5a` checkpoint; real source
+packets, native GO/QC attachments and aggregate publications remain separately
+supplied data.
+The earlier `9bf202f` code-only ZIP remains an asset in the existing private
 [draft review release](https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab),
 with the completed aggregate study and slides. Repository writers can review
 those draft assets. Use the tracked `codex/contextual-gain-delivery` review branch for a checkout;

@@ -16,26 +16,26 @@ provides the evidence appendix.
 
 ## Review the application
 
-The [saved TP53 reviewer example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask)
-requires a workspace token supplied separately. Reviewers need a browser,
-without an AWS account, local tunnel or model server. The shared ingress
-allows saved-data inspection and exports; new retrieval, model calls and
-review edits are disabled there.
+[Open the saved native KRAS example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask), using the workspace token supplied
+privately. The [ten-minute guide](REVIEW_NATIVE_EVIDENCE_20261115.md) provides
+five short review tasks: find the 14 candidate result proteins, inspect one
+STRING source record, compare the empty accepted-only view, interpret one
+public-reference result and distinguish answer from workspace downloads.
+No AWS account, local tunnel or model server is needed.
 
-1. In **Ask & explore**, find the written answer and select a TP53–AKT1 path.
-   Both proteins connect to the same cited WikiPathways model. This describes
-   shared source context, without asserting direct physical binding.
-2. Open the **evidence passport**, then **Download cited native GPML**. Locate
-   the exact historical model, original record and review state. Distinguish a
-   compatible gene-level match from exact protein-form identity.
-3. In **Compare & assess**, inspect a saved scientific result and one historical
-   function hypothesis. Its neighbor/source contribution explains the model
-   score; the score does not accept a biological annotation.
-4. In **Export**, download the full workspace and the separate answer ZIP.
-   The answer diagram is a selection; the workspace contains the full graph,
-   original baseline and every keep/prune/abstain disposition.
+The shared reviewer route runs code **`47a2e5a`** with an explicit saved-data-only
+server policy. It supports saved questions, source inspection and downloads.
+Construction, fresh retrieval, model calls and review edits are blocked. The
+shared token admits the valid saved workspaces; it does not create individual
+reviewer roles. Reviewers need a browser and the token supplied privately, with
+no AWS account, Brev instance or model server. The
+[hosted acceptance receipt](evaluations/native_profiles_hosted_20261115/summary.json) records a real service
+restart, authenticated saved-answer/source checks and preservation of the
+older graph, review states, environment and private Neptune connection.
 
-Use the [five-minute demonstration](DEMO_SCRIPT.md) for a presentation, or the
+The [earlier qualified TP53 example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask) remains available with its
+historical WikiPathways passport and identifier-currency decisions. Use the
+[five-minute demonstration](DEMO_SCRIPT.md) for that workflow and the
 [team testing guide](TEAM_REVIEW_GUIDE_20261113.md) to record obstacles and unclear
 terms. Independent teammate feedback remains pending.
 
@@ -58,20 +58,37 @@ access alone does not include the complete mixed-source demonstration packet.
 | Capability | Implemented scope |
 |---|---|
 | Scoped graph construction | Bounded Pharos retrieval and exact-accession construction, with saved requests, coverage and source snapshots. The main demonstration has 99 primary protein targets. |
-| Biological source context | CIViC clinical profiles and complete therapy combinations; qualified STRING, MAP-IT and SIGNOR extensions; separately qualified assay examples; native GO and pathway source inspection. Availability depends on the selected workspace and its source attachments. |
+| Biological source context | CIViC clinical profiles and complete therapy combinations; qualified STRING, MAP-IT and SIGNOR extensions; separately qualified assay examples; native GO locations, sequence-qualified STRING physical associations and pathway source inspection. Availability depends on the selected workspace and its source attachments. |
 | Readable questions and sources | Five task tabs, supported question templates, bounded multihop paths, cited summaries, source versions, original records and unresolved context. |
 | Review and maintenance | Versioned assertions, explicit lifecycle states, immutable snapshots, review history and guarded snapshot comparison. Uncertain records stay visible. |
 | Export and standards | Retained graph, exhaustive decisions and original baseline/source packet. Stable identifiers, explicit Biolink references, a bounded KGX projection and qualified SSSOM mappings retain documented conformance limits. |
 | Local and cloud operation | Dependency-light Python app, Docker/deployment configuration, authenticated AWS reviewer app and private Neptune mirror. Ordinary saved answers use workspace files; the database inspector performs read-only Neptune queries. |
 
-The main retained graph contains **16,687 evidence records across 9,865
-entities**. Its full baseline preserves 16,985 records. The 298 exclusions
-concern obsolete GO identifiers in a pinned ontology; they are not 298
-experimentally disproved relationships. A record count is not a count of
-independent experiments. The main Pharos319 capture is frozen at October 14,
-2026; later publisher context keeps its own source dates. A November 15 UTC
-metadata-only check still returned the public API label `pharos319`; it
-retrieved no biological records and did not replace the frozen demonstration.
+Two separate saved workspaces remain available:
+
+| Workspace | Scope and use |
+|---|---|
+| New native-evidence profile | **99 primary targets, 9,724 entities and 19,310 evidence records**: 15,671 original Pharos records, 3,309 native GOA rows and 330 STRING physical associations. Additions remain candidates. Use the KRAS answer and public-reference comparison. |
+| Earlier qualified retained graph | **99 primary targets, 9,865 entities and 16,687 retained records**, with the 16,985-record input and every keep/prune/abstain decision preserved. Its 298 obsolete-GO-ID exclusions concern identifier currency, not experimentally disproved biology. Use the TP53 pathway example. |
+
+The new source profile does not replace the earlier retained graph or its
+reviews. The private Neptune mirror continues to hold that earlier qualified
+graph. Ordinary saved answers, including the new native profile, use their
+saved workspace files.
+
+The native physical source records 330 pairs, of which **243 already have a
+pair represented in the captured Pharos graph and 87 do not**. These are
+versioned source records and new workspace pairs, not independent experiments
+or discoveries. Exact reciprocal alias and full-sequence checks admit 77 of
+99 targets; 21 sequence mismatches and one missing direct alias stay unresolved.
+A physical association can describe shared-complex membership without direct
+binding. STRING already supplies Pharos, so adding its separately qualified
+physical view does not create an independent evidence vote.
+
+The main Pharos319 capture is frozen at October 14, 2026. Later source context
+keeps its own dates. A November 15 UTC metadata-only API check returned
+`pharos319`; it did not replace the frozen graph or establish equivalence with
+Pharos400 artifacts.
 
 ## What the measurements support
 
@@ -80,7 +97,7 @@ retrieved no biological records and did not replace the frozen demonstration.
 | Does adding context improve the same graph learner over the original baseline? | Matched R-GCN comparisons are complete, with mixed or negative results against their controls. A consistent advantage on the challenge's central enriched-graph link-prediction task remains unestablished. |
 | Can published methods recover later protein-function annotations? | The [completed contextual comparison](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md) improves over retained LocalPlus in both fixed primary views: Fmax 0.05473 → 0.07343 and 0.17155 → 0.21009, with paired intervals above zero. Updating annotations also helps primary BP. Extra learning benefit beyond that updated control is uncertain. Secondary MF/CC gains over LocalPlus do not beat the stronger direct nonexperimental-GOA control; CC favors that control. |
 | Can the app preserve and explain source content? | Original records, qualifications and native exports are replayed. The archive study recovered 253/308 exact cited WikiPathways revisions, with the remainder unresolved. A separate expert-grounding assessment measures a false-alarm/recall trade-off. |
-| Have public curator references actually been applied? | [Yes](evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md). Native GO context recovers 44/51 published positive location labels versus captured Pharos's 41/51 across 31 matched proteins (two improve, 29 unchanged). Two exact clinical claim–evidence projections have human-reviewed support. The same-release physical/functional interaction comparison shows a coverage trade-off, with all unmatched cases and source reuse disclosed. |
+| Have public curator references actually been applied? | [Yes](evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md). Native GO context recovers 44/51 published positive location labels versus captured Pharos's 41/51 across 31 matched proteins (two improve, 29 unchanged). A second OpenCell comparison recovers 31/40 positive categories versus 30/40 among 23 matching proteins, including after HPA/explicit OpenCell-study exclusion. OpenCell is previously used and has cell-context/source-overlap limits. Two exact clinical claim–evidence projections have human-reviewed support. The same-release physical/functional interaction comparison shows a coverage trade-off, with all unmatched cases and source reuse disclosed. |
 | Does the model agent establish biological truth or support automatic pruning? | No. The tested source-claim agent trails the published specialist. The app preserves its results without adopting automatic acceptance or biological pruning. |
 
 Fmax is a benchmark function-recovery score, not a graph-accuracy percentage.
@@ -134,11 +151,13 @@ ranges remain separate from prediction Fmax and confidence intervals.
 The subsequent [public-reference assessment](evaluations/public_gold_20261115/report.html)
 adds bounded, explicitly matched curator-label tasks; it does not turn those
 200 earlier cases into independently adjudicated whole-claim truth labels.
-The [separate local native-location example](evaluations/NATIVE_LOCATION_WORKSPACE_20261115.md)
+The [native-location source profile](evaluations/NATIVE_LOCATION_WORKSPACE_20261115.md)
 puts the source context into the existing answer, source-inspection and export
 flow. All 99 target questions were checked, covering 3,309 records and 429
 candidate concepts across 94 targets, with explicit empty answers for the other
-five. The original/default graph and AWS reviewer deployment are unchanged.
+five. The combined native-evidence profile adds the separately qualified physical
+source and is available as its own hosted workspace. The older/default retained
+graph and its review decisions are preserved.
 
 The [original fixed full report](evaluations/contextual_combination_20261115/report.html),
 [latest development report](evaluations/crossfit_development_20261115/report.html),
@@ -159,8 +178,9 @@ The intended graph handoff preserves these files together:
 
 - `retained_graph.json`: the resulting graph, retaining abstentions.
 - `edge_dispositions.jsonl`: one explicit disposition for each source edge.
-- `baseline_packet/source/graph.json`: the complete retrieved baseline, with
-  surrounding source snapshots and provenance.
+- `baseline_packet/source/graph.json`: the complete input workspace before these
+  decisions, with surrounding source snapshots and provenance. It may already
+  contain source extensions, so this packet baseline is not always Pharos-only.
 
 Final actions are to designate and test the release checkpoint, provide a
 permitted graph/source access route, publish the intended open-source
@@ -169,20 +189,22 @@ The supplied deadline is **November 17, 2026**; the exact final file/scoring
 contract has not been supplied. These local assessments are supporting
 evidence, rather than an official organizer score.
 
-The [prepared core software ZIP](releases/20261115/README.md) passed clean Python
+The [47a2e5a core software ZIP](evaluations/software_release_cached_review_20261115_summary.json) passed clean Python
 construction, answer, actual export and fresh-reopen checks. It is a dated tested
 checkpoint; hosting and final publication remain separate actions.
 
 The review branch is now backed up in the existing private repository, with
 [draft PR #1](https://github.com/mdomagalski/biograph-steward/pull/1) and a
 [private draft release](https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab).
-The four current review files are the tested core ZIP, aggregate report ZIP, editable slides
-and checksums. Draft-release access requires repository write permission;
+The latest named review files are the tested core ZIP, public-reference aggregate
+ZIP, editable slides and checksums; the earlier prediction-study packet remains
+separately available. Draft-release access requires repository write permission;
 tracked reports/slides remain available through the branch checkout. Neither
 main nor public visibility changed.
 
-The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx)
-has six main slides and three technical appendix slides, including the separately labeled current-data development result. The
+The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx)
+has six main slides and four technical appendix slides, including the separately
+labeled current-data development result and public-reference qualifications. The
 [organizer/proposal crosswalk](PROJECT_ALIGNMENT.md) distinguishes delivered
 functionality from broader proposal ambitions. The older release archives,
 PDFs and hosted receipts remain dated checkpoints rather than interchangeable

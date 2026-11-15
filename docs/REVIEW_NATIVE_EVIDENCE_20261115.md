@@ -9,20 +9,26 @@ same protected AWS reviewer site and privately supplied workspace token. A
 browser is sufficient; you need no AWS account, local installation, Brev instance
 or model. Keep the token out of feedback and screenshots.
 
-**Deployment status at drafting: pending.** Marcin will supply the confirmed new
-links after the hosted update passes its checks. The deployment receipt will
-record those URLs at the existing reviewer-site address. The paths below
-identify the intended examples; they are not confirmation that rollout is live.
+**Hosted update verified November 15.** The new examples passed authenticated
+checks after a real restart; the [delivery receipt](evaluations/native_profiles_hosted_20261115/summary.json)
+records the runtime and preservation checks. Sign in with the privately supplied
+workspace token.
 
-| Example | Saved path at the existing reviewer-site address |
+| Example | Open the saved example |
 |---|---|
-| New KRAS candidate answer | `/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask` |
-| Same question, accepted evidence only | `/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_accepted_v3_20261115&view=ask` |
-| New comparison page | `/?run=native_evidence_workspace_20261115&view=compare` — select `scientific_assessment_public_reference_20261115_v3` |
+| New KRAS candidate answer | [14 candidate result proteins](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask) |
+| Same question, accepted evidence only | [0 accepted; 14 inspectable proteins](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_accepted_v3_20261115&view=ask) |
+| New comparison page | [Compare & assess](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&view=compare) — select `scientific_assessment_public_reference_20261115_v3` |
 
 The older saved real example remains a separate workspace. Open the supplied new
 link for these tasks. Allow loading time separately from the ten-minute review;
 if a task stays blocked for about two minutes, record the message and move on.
+
+This source-profile example preserves the historical Pharos baseline for
+comparison. The older **qualified retained** workspace remains the example of
+applied GO identifier-currency decisions. A source-profile workspace, its
+candidate answer and a qualified retained graph have different purposes; the
+new example does not silently replace the retained graph or its decisions.
 
 ## What is included
 
@@ -62,6 +68,9 @@ not used as new evidence records in the example graph.
    no external source website needs to be visited. Report where you found the
    information and which field or term remained unclear. The 243/87 figures
    above describe the whole source addition, not the 14 KRAS results.
+   Here the citation identifies a preserved database record. The physical-link
+   bulk file does not supply a supporting assay paper for every pair; a source
+   citation alone does not establish experimental confirmation.
 
 3. **Understand candidate versus accepted — 2 minutes.** Open the supplied
    accepted-only answer link. It should show **no accepted result proteins**,

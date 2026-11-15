@@ -1,0 +1,59 @@
+{
+  "format": "biograph-steward.native-profiles-scoped-QC-receipt.v1",
+  "status": "SUCCESS_SCOPED_BACKUP_ISOLATED_RESTORE_AND_GOLD_REPLAY",
+  "created_at": "2026-11-15T20:28:37.200885+00:00",
+  "commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+  "image_id": "sha256:25c18a3f0815107c41fa704a8a6d134b29ed2c85ae47506b96e85409a5adbb9c",
+  "config_sha256": "e449ee77ef2a85b23a073acc3d9c01df708f1a5479c7dc0b98cef3997a9bb647",
+  "operator_sha256": "4ef3ae0da1b3e9908d27b76fafbce49d5ba080e964ad63eaa32909b3e5ee43fc",
+  "run_ids": [
+    "native_evidence_workspace_20261115",
+    "scientific_assessment_public_reference_20261115_v3",
+    "native_physical_KRAS_question_v3_20261115",
+    "native_physical_KRAS_accepted_v3_20261115"
+  ],
+  "scope": "Four saved new native-evidence delivery runs only; not a full VM, environment, old workspace or Neptune backup.",
+  "AWS_calls": 0,
+  "service_restart_or_stop_requested": false,
+  "live_graph_or_review_edits_requested": false,
+  "selected_files": 235,
+  "source_bytes": 774580248,
+  "archive": {
+    "file": "native_evidence_delivery_scope.tar.gz",
+    "bytes": 103615305,
+    "sha256": "cf5e6b27f8497b5bf68a0a2c2b76e205c280f0e76a8f61c1ffec38d2a8b74e2f"
+  },
+  "live_sources_config_and_container_unchanged": true,
+  "restored_inventory_sha256": "f7f8b082f83fc03b18acbf1f0c7f70e2893e4212d5d2f3d4302fd5b55734300f",
+  "replay": {
+    "format": "biograph-steward.native-profiles-isolated-replay.v1",
+    "graph_content_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+    "graph_counts": {
+      "nodes": 9724,
+      "edges": 19310,
+      "assertions": 16430
+    },
+    "publication_content_sha256": "845d992a33b40d117380dd68ae1bdb939f575969aae4b06d64931d1b1f7d2d30",
+    "saved_answers": {
+      "native_physical_KRAS_question_v3_20261115": {
+        "answer_sha256": "5d32db49ca6db7718ef37d3ee6394d3c444b08ddca2fd840bf12965888362e56",
+        "returned_proteins": 14
+      },
+      "native_physical_KRAS_accepted_v3_20261115": {
+        "answer_sha256": "288c015dd17349d08b248beb5872fd3cdadc8b98215e4e7db1391526fb68fe44",
+        "returned_proteins": 0
+      }
+    },
+    "Gold_packet_id": "packet:a5853471c3bf1dc4df44b35ea2250b92e19f2844162e74dd20b148baa32f6b6d",
+    "Gold_export_then_verify_passed": true,
+    "complete_physical_raw_sources_and_license_present": true,
+    "model_calls": 0,
+    "fresh_retrievals": 0,
+    "Neptune_calls": 0,
+    "source_or_review_changes": false
+  },
+  "raw_archive_restore_and_Gold_packet_retained": true,
+  "full_VM_or_Neptune_restore_claimed": false,
+  "elapsed_seconds": 842.724894300045,
+  "content_sha256": "6b9e325c475c8423e2864c9486ad11c422ebaa983ccc68e694aa7ba9e12a9c80"
+}

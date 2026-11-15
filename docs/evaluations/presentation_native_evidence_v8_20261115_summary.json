@@ -1,0 +1,79 @@
+{
+  "format": "biograph-steward.challenge-presentation-native-evidence.v8",
+  "final_candidate": "/Users/42573/biograph-steward-pharos/runs/native_profiles_delivery_20261115/presentation_v8/output/validated_v8.pptx",
+  "source_v7_sha256": "c751a1cf34d7637b27fc33d73b8e893d553b772a194795be74f46b0569db0dfd",
+  "sha256": "c6f3331b7cb9d554024e6d2b658d25e8efdaa70313011792695f877c5e3ed1f1",
+  "bytes": 472850,
+  "slides": 10,
+  "main_slides": 6,
+  "appendix_slides": 4,
+  "changed_slides": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10
+  ],
+  "changed_visual_slides": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    9
+  ],
+  "hosted_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+  "hosted_acceptance_sha256": "5b9a30a21e453adaf1c24585a20d0366c11fa38781f08c5b60a90e1d485a9884",
+  "screenshots": {
+    "answer-image": {
+      "path": "/Users/42573/biograph-steward-pharos/runs/native_profiles_delivery_20261115/hosted_visual_qa/attempt_03_networkstable/hosted_native_physical_answer_desktop.png",
+      "sha256": "1511a7161faa0e620d4c292a16e3552fbe46ab8313b620e4453c90745f3b9944",
+      "bytes": 102196
+    },
+    "source-image": {
+      "path": "/Users/42573/biograph-steward-pharos/runs/native_profiles_delivery_20261115/hosted_visual_qa/attempt_03_networkstable/hosted_native_physical_source_focused.png",
+      "sha256": "1c04572a668b020c465e78f55c883384a798da737fb3cb91088b235cec31bd22",
+      "bytes": 224946
+    }
+  },
+  "optional_pdf": {
+    "exported": false,
+    "reason": "Bundled native export reports missing #standard-fonts/Helvetica; no dependency changes or fallback data alteration."
+  },
+  "capture_note": "November 15, 2026, 21:16:48\u201321:17:02 UTC; authenticated saved-data-only hosted reviewer; fixed saved KRAS candidate answer and matching E001 source; no model, retrieval or review change",
+  "HOU_summary_sha256": "f5f92839ac4ab435c2679ac72417b7fa28a68ef9493aeebcda643e86f6155bdb",
+  "OpenCell_summary_sha256": "cd0f40d729701b3446f9596520f1a841dec7d64f85f1eda8615880da1d39bc2f",
+  "scientific_statistics_recomputed": false,
+  "negative_controls_and_stronger_GOA_table_preserved": true,
+  "source_references_and_earlier_decks_preserved": true,
+  "PowerPoint_native_application_opened": false,
+  "visual_review_pending": false,
+  "published_to_output": true,
+  "final": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx",
+  "all_ten_slides_rendered_and_visually_reviewed": true,
+  "appendix_tables_cell_text_identical_to_v7": {
+    "7": true,
+    "8": true,
+    "9": true,
+    "10": true
+  },
+  "unchanged_slides_pixel_identical_to_v7": {
+    "1": true,
+    "7": true,
+    "8": true,
+    "10": true
+  },
+  "PNG_media_embedded_nonempty_and_exact": true,
+  "main_reference_values_and_denominators_checked": true,
+  "actual_runtime_and_acceptance_pin_checked_in_notes": true,
+  "latest_hosted_browser_QA": "Selected actual47a Ask/source/Compare screenshots checked; complete browser QA has a separate receipt and is not established by presentation validation.",
+  "contact_sheet": "runs/native_profiles_delivery_20261115/presentation_v8/contact_sheet.png",
+  "statistics_recomputed": false,
+  "source_v7_preserved": true,
+  "source_v7": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v7.pptx",
+  "package_and_layout_receipt": "runs/native_profiles_delivery_20261115/presentation_v8/file_validation.json",
+  "image_source": "Actual authenticated accepted47a hosted workbench capture, 2026-11-15T21:16:48\u201321:17:02Z; saved data only."
+}

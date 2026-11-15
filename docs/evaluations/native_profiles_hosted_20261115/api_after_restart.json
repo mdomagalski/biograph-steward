@@ -1,0 +1,44 @@
+{
+  "format": "biograph-steward.native-profiles-authenticated-smoke.v1",
+  "runtime_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+  "default_workspace_unchanged": true,
+  "default_saved_answer_unchanged": true,
+  "unauthenticated_workspace_access_denied": true,
+  "saved_data_only_enabled": true,
+  "live_ranking_denied_by_backend": true,
+  "publications": {
+    "scientific_assessment_public_reference_20261115_v3": {
+      "content_sha256": "845d992a33b40d117380dd68ae1bdb939f575969aae4b06d64931d1b1f7d2d30"
+    }
+  },
+  "workspaces": {
+    "native_evidence_workspace_20261115": {
+      "graph_content_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf"
+    }
+  },
+  "questions": {
+    "native_physical_KRAS_question_v3_20261115": {
+      "answer_sha256": "5d32db49ca6db7718ef37d3ee6394d3c444b08ddca2fd840bf12965888362e56",
+      "answer_ZIP_bytes": 77088,
+      "answer_ZIP_sha256": "30a1b5b18448f7165b7a5861b5ce7e16063189d71533b85201ef1b9709de717d"
+    },
+    "native_physical_KRAS_accepted_v3_20261115": {
+      "answer_sha256": "288c015dd17349d08b248beb5872fd3cdadc8b98215e4e7db1391526fb68fe44",
+      "answer_ZIP_bytes": 60050,
+      "answer_ZIP_sha256": "da93a27934105795a1a7ff387e249c9242eda62ef55080e4c3cbf7321ca76a01"
+    }
+  },
+  "native_location_queries": [
+    {
+      "run_id": "native_evidence_workspace_20261115",
+      "candidate_content_sha256": "98804c7386034526f9565ae8559f37cc92d0a6b5b387267c2014e1ff84b0b259",
+      "accepted_content_sha256": "7dcac33b671f08efd3904b58b16f73f37d96e0e0293b7573ce4dadf8cc648da7",
+      "source_passport_verified": true
+    }
+  ],
+  "Neptune_read_only_parity_no_fallback": true,
+  "models_or_fresh_retrieval_requested": false,
+  "review_or_graph_edits_requested": false,
+  "Neptune_mutation_requested": false,
+  "public_resources_created": false
+}

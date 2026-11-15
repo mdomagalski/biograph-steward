@@ -1,0 +1,28 @@
+{
+  "format": "biograph-steward.private-scoped-recovery-upload.v1",
+  "private_storage": true,
+  "source_review_or_service_changes": false,
+  "environment_credentials_or_full_VM_backup": false,
+  "storage_scope": "Existing owned private S3 bucket; exact private object keys retained in the operator receipt.",
+  "files": [
+    {
+      "bytes": 103615305,
+      "sha256": "cf5e6b27f8497b5bf68a0a2c2b76e205c280f0e76a8f61c1ffec38d2a8b74e2f",
+      "S3_checksum_verified": true,
+      "file": "native_evidence_delivery_scope.tar.gz"
+    },
+    {
+      "bytes": 44781,
+      "sha256": "6b943a3e49d618f0f2e98dee5ca542a5d1e91426d40895af41d364278ee1bff9",
+      "S3_checksum_verified": true,
+      "file": "archive_manifest.json"
+    },
+    {
+      "bytes": 2688,
+      "sha256": "6f60a3d5a60680afacc971a192abfb5db34a137d9c48c18fa5e6d86e8ad3ecb7",
+      "S3_checksum_verified": true,
+      "file": "receipt.json"
+    }
+  ],
+  "private_original_copy_receipt_sha256": "960c24fe103a91b03288e9e8759aa9d15d0e6ecf7f7cbb307072501fdfa4a7f7"
+}

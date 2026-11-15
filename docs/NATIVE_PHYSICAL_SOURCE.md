@@ -12,6 +12,12 @@ and [STRING's primary network paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11
 A physical association can mean co-complex proximity; it does not establish
 direct binding. Missing rows and unresolved identities remain unknown.
 
+The delivered combined example is a separately named source-profile workspace.
+It preserves its captured Pharos baseline and adds candidate source records.
+The qualified retained reviewer graph remains a separate example with its
+recorded identifier-currency decisions; no new baseline replacement or universal
+biological pruning is implied.
+
 ## Prepare and attach offline
 
 `string-physical-publish` consumes a sealed live Pharos snapshot and a JSON
@@ -21,7 +27,9 @@ entries: `canonical`, `aliases`, `sequences`, `physical`. Each entry contains
 STRING 12.5 aliases, protein sequences and physical-link bulk files, plus the
 complete reviewed human canonical UniProt FASTA. No selected protein identifiers
 are sent externally. No assay labels, reference outcomes or model predictions
-are loaded.
+are loaded. The production intake supports a declared cohort of **2–250 exact
+canonical human accessions**; the delivered example has 99. Other cohorts use
+the same source replay and identity checks, rather than a KRAS-specific rule.
 
 ```sh
 python3 app.py string-physical-publish --snapshot ORIGINAL/snapshot.json --sources SOURCE_INPUTS.json --out PHYSICAL_PUBLICATION

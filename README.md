@@ -1,78 +1,64 @@
 # BioGraph Steward
 
-For a short product review, start with the [submission overview](docs/SUBMISSION_OVERVIEW.md)
-and [editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx).
-The [delivery status](docs/DELIVERY_STATUS_20261115.json) separates tested local
-software, the last verified hosted checkpoint and remaining release actions.
+BioGraph Steward is a biomedical evidence workbench built around **Pharos**.
+Choose a focused question, explore its evidence graph, inspect the original
+source records, and export the workspace with its baseline and review decisions.
+Native GO, STRING physical associations and bounded CIViC clinical evidence add
+context while retaining their source versions, identifiers and limitations.
 
-BioGraph Steward is a source-traceable biomedical evidence workbench built around **Pharos** and bounded **CIViC** evidence. Its current product flow is:
+**Start reviewing:** [product overview](docs/SUBMISSION_OVERVIEW.md) ·
+[10-minute evidence walkthrough](docs/REVIEW_NATIVE_EVIDENCE_20261115.md) ·
+[editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx).
 
 ```text
-Choose an exact disease or protein cohort → retrieve a scoped graph → ask a guided question
-→ inspect the cited answer and source context → review and export
+Choose a disease or protein cohort → ask a guided question → inspect the cited answer
+→ follow its source records → review and export
 ```
 
-The working reviewer flow includes scoped retrieval, saved graphs and answers,
-original source inspection, versioned review decisions and portable exports.
-The protected AWS reviewer site and private Neptune mirror are deployed.
-Start with the [submission overview](docs/SUBMISSION_OVERVIEW.md) for the hosted
-example and a short account of what is ready.
+## What the app does
 
-[The completed context-aware comparison](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
-shows that the retained Pharos-derived LocalPlus baseline performed worse on
-the declared function-recovery task: the selected contextual model raises
-Fmax from 0.05473 to 0.07343 in the native view and from 0.17155 to 0.21009
-with the starting ontology held fixed, with positive paired intervals in both.
-This baseline uses a historical Pharos-derived network and dated GO supervision;
-the result does not rate the correctness of the raw Pharos database.
-Refreshing LocalPlus's annotations also helps the primary endpoint; the learned model's additional
-primary biological-process advantage over fully current annotations remains
-uncertain. Molecular-function and cellular-component secondary results improve
-over LocalPlus, while the stronger direct nonexperimental-GOA control is not
-beaten (and is better for cellular component).
-A [fixed annotation-preservation follow-up](docs/evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
-shows a trade-off rather than a general remedy; no new default is adopted.
-A separate [current-annotation refit](docs/evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
-also fails to establish improvement over the original selected model. Its
-stronger source controls and unresolved positive/NOT flags are preserved as
-consumed-reference development; the original model is retained.
-A subsequent [cross-fitted graph/frequency fit](docs/evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md)
-achieves Fmax 0.21336 versus 0.18277 for current-curated LocalPlus in the
-fixed-ontology BP view, with a positive paired interval. The native-view
-advantage remains uncertain, and neither view clearly beats the original
-selected model. This development candidate is retained without promotion.
-Whole-graph biological correctness and a consistent enriched-graph prediction
-advantage remain open. Optional research methods are isolated from the core
-application; their unfavorable results and consumed reference boundaries are
-preserved below.
+- Retrieves bounded Pharos cohorts and records pagination, coverage and source dates.
+- Answers guided protein, pathway, location and clinical-evidence questions with cited graph paths.
+- Shows native records, sequence/identifier qualifications, assay conditions and evidence reuse through source inspection.
+- Keeps candidate, accepted and unresolved records distinct; preserves snapshot comparisons and review history.
+- Exports the complete saved workspace or a focused answer, with original sources and explicit graph decisions.
 
-The [whole-workspace reference assessment](docs/evaluations/WHOLE_GRAPH_ACCURACY_COMPLETION_20261115.md)
-has now executed the exact Pharos-only/enriched/retained comparison and checked
-public references for all 200 frozen cases. No fully matched independent
-correctness labels were admitted, so it reports missing-data bounds instead
-of inventing an accuracy percentage. The 298 obsolete-ID corrections and
-preservation of previously matched curator support are verified separately.
+The new [native-source example](docs/REVIEW_NATIVE_EVIDENCE_20261115.md)
+preserves the original 99-protein Pharos cohort. It exposes **429 native protein–location
+concepts across 94 targets** and **330 STRING physical associations**. Of those
+330 pairs, **243 were already represented and 87 were absent** from the captured
+Pharos graph. These are versioned source records and new workspace pairs,
+not independent experiments or new biological discoveries. The
+[physical-source guide](docs/NATIVE_PHYSICAL_SOURCE.md) explains sequence admission,
+missing identities and the difference between physical association and direct binding.
 
-[Public curator references have now also been applied](docs/evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md).
-On 31 matched proteins, richer native GO context recovers **44/51 published
-positive location labels versus 41/51** from the captured Pharos annotations;
-two proteins improve and 29 are unchanged. Two clinical claim–evidence
-projections exactly match published human-reviewed gold. Sequence-qualified
-interaction labels and manual noninteraction records support a fixed,
-same-release functional/physical comparison, which shows a coverage trade-off
-rather than a universal pruning gain. Source reuse and unmatched cases remain
-explicit in the [readable results](docs/evaluations/public_gold_20261115/report.html).
-These separate reference tasks do not relabel the original 200 audit cases or
-establish accuracy of the complete graph.
-The [native-location source-profile example](docs/evaluations/NATIVE_LOCATION_WORKSPACE_20261115.md)
-now makes that source context usable through existing questions, inspection and
-exports: 429 candidate protein–location concepts across 94/99 targets. Its
-all-target delivery census passed; the existing hosted/default graph is unchanged.
+## Measured results
 
-The current review checkout is `codex/contextual-gain-delivery`. The default
-`main` branch remains at its October 26 checkpoint pending review; use the
-[review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery)
-for the documented workflow.
+| Assessment | Captured Pharos or baseline | Added context | Interpretation |
+|---|---:|---:|---|
+| HOU positive location labels; **31/99** proteins matched | **41/51** recovered | **44/51** recovered | Two proteins improve; shared HPA provider exposure remains. |
+| OpenCell imaging categories; **23/99** proteins matched | **30/40** recovered | **31/40** recovered | The gain remains after excluding HPA support and explicit OpenCell references. Tagged HEK293T context and prior reference exposure remain. |
+| Exact human-reviewed clinical claim–evidence projections | No matching claim layer | **2/46** source items match | Added labelled coverage; 44 items remain unmatched, with shared CIViC/study lineage. |
+| Historical protein-function recovery, fixed ontology | LocalPlus Fmax **0.17155** | Selected context model **0.21009** | Positive paired interval versus the historical Pharos-derived baseline. Updating annotations also helps; additional learning benefit over current annotations remains uncertain. |
+
+These are bounded recovery and support assessments, without an accuracy
+percentage for the entire graph. Missing reference labels stay unknown.
+Physical filtering reduces some negative-reference conflicts while losing
+supported positives, so it is not adopted as universal biological pruning.
+Read the [public-reference qualifications](docs/evaluations/PUBLIC_REFERENCE_APP_20261115.md)
+and [complete prediction comparison](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md).
+The [research record](#recorded-scientific-comparisons) preserves the mixed or
+negative graph-enrichment, agent and follow-up results alongside all controls.
+
+The current checkout is the private
+[`codex/contextual-gain-delivery` review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery);
+`main` retains the older checkpoint. The AWS reviewer app and private Neptune
+mirror are deployed. The native-source example and public-reference assessment
+passed authenticated hosted checks after a real service restart. The older
+qualified retained graph and its private Neptune mirror remain separate. [Delivery status](docs/DELIVERY_STATUS_20261115.json)
+separates code, data, hosted checkpoints and release actions. Saved-data review
+needs no model server; optional NVIDIA planning and source-audit agents remain
+experimental.
 
 ## Run the workbench
 
@@ -103,11 +89,12 @@ The **Compare & assess** tab opens saved scientific assessments with explicit
 reference units, unknowns, controls and source receipts. Its historical function
 inspector shows saved neighbor contributions, source pairs, training terms and
 annotation-reuse warnings without accepting hypotheses or changing the graph.
-The latest aggregate publication is `scientific_assessment_reference_20261114`;
-see the [current results](docs/evaluations/SCIENTIFIC_RESULTS_20261114.md).
-The newer [context-aware research report](docs/evaluations/contextual_combination_20261115/report.html)
-is supplied separately in the repository and presentation; it has not replaced
-that hosted publication or the application's default graph.
+The new hosted publication is `scientific_assessment_public_reference_20261115_v3`;
+see the [public-reference qualifications](docs/evaluations/PUBLIC_REFERENCE_APP_20261115.md).
+The earlier historical assessment remains available. The separate
+[context-aware research report](docs/evaluations/contextual_combination_20261115/report.html)
+is supplied in the repository and presentation; its research models have not
+replaced the application's default graph.
 The optional [source-paper utility](docs/SOURCE_PAPER_INSPECTION.md) provides
 PubMed discovery and saved literature-audit inspection. The core review flow
 needs no paid literature API or model server.
@@ -241,7 +228,63 @@ Live retrieval never silently substitutes synthetic data. Keep credentials in lo
 <details>
 <summary>Published baselines, bounded gains, failed comparisons and reference boundaries</summary>
 
-See the [November 14 measured scientific results](docs/evaluations/SCIENTIFIC_RESULTS_20261114.md), [submission and presentation draft](docs/FINAL_SUBMISSION.md) and [completion scope](docs/BUILD_PLAN.md). The core demonstration requires no paid literature service or GPU. The accepted AWS runtime is `a6a05ff`; its saved historical function inspector exposes six queries and 36 traceable hypotheses.
+### Recorded source and reference findings
+
+[The completed context-aware comparison](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+shows that the retained Pharos-derived LocalPlus baseline performed worse on
+the declared function-recovery task: the selected contextual model raises
+Fmax from 0.05473 to 0.07343 in the native view and from 0.17155 to 0.21009
+with the starting ontology held fixed, with positive paired intervals in both.
+This baseline uses a historical Pharos-derived network and dated GO supervision;
+the result does not rate the correctness of the raw Pharos database.
+Refreshing LocalPlus's annotations also helps the primary endpoint; the learned model's additional
+primary biological-process advantage over fully current annotations remains
+uncertain. Molecular-function and cellular-component secondary results improve
+over LocalPlus, while the stronger direct nonexperimental-GOA control is not
+beaten (and is better for cellular component).
+A [fixed annotation-preservation follow-up](docs/evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
+shows a trade-off rather than a general remedy; no new default is adopted.
+A separate [current-annotation refit](docs/evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
+also fails to establish improvement over the original selected model. Its
+stronger source controls and unresolved positive/NOT flags are preserved as
+consumed-reference development; the original model is retained.
+A subsequent [cross-fitted graph/frequency fit](docs/evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md)
+achieves Fmax 0.21336 versus 0.18277 for current-curated LocalPlus in the
+fixed-ontology BP view, with a positive paired interval. The native-view
+advantage remains uncertain, and neither view clearly beats the original
+selected model. This development candidate is retained without promotion.
+Whole-graph biological correctness and a consistent enriched-graph prediction
+advantage remain open. Optional research methods are isolated from the core
+application; their unfavorable results and consumed reference boundaries are
+preserved below.
+
+The [whole-workspace reference assessment](docs/evaluations/WHOLE_GRAPH_ACCURACY_COMPLETION_20261115.md)
+has now executed the exact Pharos-only/enriched/retained comparison and checked
+public references for all 200 frozen cases. No fully matched independent
+correctness labels were admitted, so it reports missing-data bounds instead
+of inventing an accuracy percentage. The 298 obsolete-ID corrections and
+preservation of previously matched curator support are verified separately.
+
+[Public curator references have now also been applied](docs/evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md).
+On 31 matched proteins, richer native GO context recovers **44/51 published
+positive location labels versus 41/51** from the captured Pharos annotations;
+two proteins improve and 29 are unchanged. Two clinical claim–evidence
+projections exactly match published human-reviewed gold. Sequence-qualified
+interaction labels and manual noninteraction records support a fixed,
+same-release functional/physical comparison, which shows a coverage trade-off
+rather than a universal pruning gain. Source reuse and unmatched cases remain
+explicit in the [readable results](docs/evaluations/public_gold_20261115/report.html).
+These separate reference tasks do not relabel the original 200 audit cases or
+establish accuracy of the complete graph.
+The [native-location source-profile example](docs/evaluations/NATIVE_LOCATION_WORKSPACE_20261115.md)
+now makes that source context usable through existing questions, inspection and
+exports: 429 candidate protein–location concepts across 94/99 targets. Its
+all-target delivery census passed. The later combined native-source workspace
+is hosted separately; the older qualified/default graph remains unchanged.
+
+See the [November 14 measured scientific results](docs/evaluations/SCIENTIFIC_RESULTS_20261114.md), [submission and presentation draft](docs/FINAL_SUBMISSION.md) and [completion scope](docs/BUILD_PLAN.md). The core demonstration requires no paid literature service or GPU. The earlier `a6a05ff` checkpoint introduced six saved historical function queries
+and 36 traceable hypotheses. The current accepted AWS runtime is `47a2e5a`;
+see the [delivery receipt](docs/evaluations/native_profiles_hosted_20261115/summary.json).
 
 The [November 15 learned-combination comparison](docs/evaluations/LEARNED_COMBINATION_RESULTS_20261115.md)
 finds a bounded secondary cellular-component prediction gain from mixing graph

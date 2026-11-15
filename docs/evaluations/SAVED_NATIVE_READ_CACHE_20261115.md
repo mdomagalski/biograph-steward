@@ -14,8 +14,8 @@ this mechanism alone.
 loader's single-entry, locked full-fingerprint/deep-copy design. Only ordinary
 saved `biological_extension` runs with their complete ordinary source attachment
 are eligible. Other modes and qualified workspaces pass through the unchanged
-original reader. Only web-serving imports use the wrapper; CLI/scientific readers
-remain unchanged.
+original reader. Only `webapp` reader imports opt into the wrapper. Direct CLI/scientific
+readers continue to use the original reader.
 
 The existing [Python 3.10 memoization documentation](https://docs.python.org/3.10/library/functools.html#functools.lru_cache)
 does not promise once-only execution. The [actual CPython 3.10.12 implementation](https://github.com/python/cpython/blob/v3.10.12/Modules/_functoolsmodule.c#L953-L964)
@@ -60,10 +60,12 @@ blanket rejection policy.
 
 The HTTP graph → candidate answer → accepted answer → complete source passport
 → workspace/answer export sequence performs one original ordinary replay.
-Exact source and answer bytes remain unchanged; retrieval, model and live STRING
+Exact source files and answer contents remain unchanged; retrieval, model and live STRING
 factories stay unused. Warm source tampering is rejected by graph, saved-answer
 and source-passport routes. Existing saved-review, qualified cache/HTTP and
-physical-ranking HTTP regressions remain included.
+physical-ranking HTTP regressions remain included. A further 44 GO-source,
+assay-reuse and export preservation tests passed, including their actual HTTP
+source/download routes. The two focused groups total 93 passing tests.
 
 The existing 99-target native-location workspace was then read by the unchanged
 reader, a cold wrapper and a warm wrapper, with no large files copied and network
@@ -93,3 +95,8 @@ candidate remains separately unpromoted; this adaptation does not use its
 temporary-directory bridge. No biological metrics, source/review states,
 prediction methods or held-out boundaries changed. Hosted rollout and its
 latency check remain separate delivery steps.
+
+The subsequently accepted AWS runtime is `47a2e5a`; its [delivery receipt](native_profiles_hosted_20261115/summary.json)
+records the actual restart, unchanged graph/answers/source inventories and private
+Neptune parity. Hosted browser timing and usability checks are recorded separately
+from the local equality observations above.
