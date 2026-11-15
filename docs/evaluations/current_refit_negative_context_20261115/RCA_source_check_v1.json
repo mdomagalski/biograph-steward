@@ -1,0 +1,24 @@
+{
+  "GAF_sha256": "8db7f75ba9bb33f3778e1641bf4fde107f877e6a6af273b77eaf1ce60ad9e11f",
+  "RCA_bit_level_unique_effect_attributed": false,
+  "RCA_eligible_distinct_BP_protein_term_pairs": 0,
+  "RCA_five_field_rows_after_exact_duplicate_collapse_all_aspects": 4,
+  "RCA_native_grouped_evidence_values": [],
+  "RCA_native_positive_nonreference_valid_BP_context_eligible_rows": 0,
+  "RCA_normalized_fixed_BP_metadata_rows": 0,
+  "format": "biograph-steward.current-refit-RCA-source-check.v1",
+  "labels_or_predictions_changed": false,
+  "model_or_context_rebuilt_changed_or_scored": false,
+  "native_author_source_pins": {
+    "data_scripts/build_evidence_features.py": "35ab8018bd3846950e2eb54963834ff30ac412a5aaa5c147c0dcbea2c4c9e7f2",
+    "protlib/scripts/prop_tsv_sum.py": "19533ce57f2e9e79e1b8de7052649b2ce6ccc6c38f6e197c98803ba1a0ab8646"
+  },
+  "native_reader_sha256": "d21dfb6abae206158944479e2584a455193c3c8a3b427f1993a1be75b34eaac8",
+  "private_RCA_rows_sha256": "6013f16ac299dcea9fdf2084ed0350290ee2ea10d561aafd20d41dbf2bdb2b81",
+  "raw_RCA_aspect_counts": {
+    "C": 3,
+    "F": 1,
+    "P": 0
+  },
+  "raw_exact_fitting_GAF_RCA_rows_all_aspects": 4
+}
