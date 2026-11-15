@@ -9,6 +9,51 @@
   "closing_delivery_checklist": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
   "format": "biograph-steward.delivery-status.v1",
+  "github_review_delivery": {
+    "branch": "codex/contextual-gain-delivery",
+    "draft_pull_request": {
+      "draft": true,
+      "html_url": "https://github.com/mdomagalski/biograph-steward/pull/1",
+      "number": 1,
+      "state": "open"
+    },
+    "draft_release": {
+      "draft": true,
+      "html_url": "https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab",
+      "id": 445853290,
+      "prerelease": true,
+      "tag_name": "review-20261115-contextual"
+    },
+    "final_public_submission": false,
+    "main_modified": false,
+    "private_repository": true,
+    "receipt": "docs/releases/20261115/github_review_delivery.json",
+    "repository_visibility_modified": false,
+    "source_revision": "57506d1091bbe0bd7d478e25f6d40df573f8680d",
+    "source_revision_scope": "Creation checkpoint for the private draft release; the review branch can advance through the documented source-quality addenda.",
+    "uploaded_assets": [
+      {
+        "bytes": 661594,
+        "name": "biograph_steward_core_software.zip",
+        "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
+      },
+      {
+        "bytes": 573822,
+        "name": "biograph_steward_contextual_assessment_20261115.zip",
+        "sha256": "db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5"
+      },
+      {
+        "bytes": 297032,
+        "name": "BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx",
+        "sha256": "7aa583b6f7dd4a5880a5244e1c7180ecf885b2fa1d7f70b97b6ee88dafff5bd6"
+      },
+      {
+        "bytes": 342,
+        "name": "SHA256SUMS.txt",
+        "sha256": "98ffb2acee8ba7dfcf4616c112c0956d7bc1649209a61d824e8a4403d79c5023"
+      }
+    ]
+  },
   "hosted_review": {
     "authenticated_acceptance_receipt": {
       "bytes": 3673,
@@ -35,11 +80,19 @@
     "workspace_token": "supplied privately; not included in repository or this manifest"
   },
   "no_AWS_workbench_mutations": true,
-  "no_external_messages_sent": true,
+  "no_external_email_or_chat_messages_sent": true,
   "optional_bibliographic_inventory": {
     "date_inference_or_model_change": false,
     "publication_ages_verified": false,
     "reason": "Automatic approval review rejected external export of selected reference PMIDs; no queries, retries or bypass. No local metadata cache was available.",
+    "safe_local_alternative": {
+      "absence_interpretation": "unknown, not publication novelty",
+      "method": "official SwissProt reader over exact pre-T0 publisher archive; no external identifier requests or publication-date inference",
+      "native_support_PMID_population": 272,
+      "report": "docs/evaluations/archived_reference_presence_20261115/aggregate_report.json",
+      "status": "complete",
+      "support_PMIDs_present_in_Jan28_archive": 107
+    },
     "status": "not_executed"
   },
   "organizer_contract": {
@@ -97,16 +150,23 @@
     "date": "2026-11-15",
     "timezone": "America/New_York"
   },
+  "resources": {
+    "AWS_reviewer_service": "retain for teammate saved-data review; unchanged in this work",
+    "Brev_GPU_or_model_needed_for_review": false,
+    "Brev_owned_evaluation_and_source_audit_workers": "complete; all owned CPU jobs exited and local copies verified",
+    "Brev_persistent_disk": "retains 46 raw forecast arrays (11.03GB); local numerical/model/source recovery archives are separate"
+  },
   "science": {
-    "historical_global_mixture_primary_success": false,
-    "latest_completed_combination": {
+    "earlier_global_mixture_comparison": {
       "bytes": 21814,
       "path": "docs/evaluations/learned_combination_20261115_summary.json",
       "sha256": "4fe109c972dd0644ded11d88ee1ac5d56dfc517c03b033f23b17f14beed45382"
     },
+    "historical_global_mixture_primary_success": false,
     "latest_contextual_comparison": {
       "PK_MF_and_CC_vs_current_annotation_LocalPlus": "positive conditional unadjusted paired intervals in both views; secondary endpoints",
       "all_target_forecasts_sealed_before_reference_opening": 3300,
+      "archived_reference_presence": "docs/evaluations/archived_reference_presence_20261115/aggregate_report.json",
       "aspect_arm_forecasts": 49,
       "automatic_graph_or_app_promotion": false,
       "bytes": 1477560,
@@ -118,10 +178,12 @@
       "primary_endpoint": "PK biological_process ordinary micro-Fmax",
       "primary_gain_over_current_annotation_LocalPlus_both_views": false,
       "primary_gain_over_retained_LocalPlus_both_views": true,
+      "private_numerical_replay_receipt": "docs/evaluations/contextual_numerical_replay_20261115_summary.json",
       "raw_result_sha256": "2dfebc4e855df8682335484cb39b5100f518363fa74b1b24b66ca3c4cdffdf98",
       "reference_scope": "later curator-annotation recovery, including experimental codes and IC/TAS; not newly performed experiments or whole-Pharos accuracy",
       "sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
       "source_provenance": "docs/evaluations/contextual_combination_20261115/provenance/aggregate_provenance.json",
+      "source_to_known_coherence": "docs/evaluations/contextual_source_coherence_20261115/aggregate.json",
       "standalone_archive": {
         "bytes": 573822,
         "every_manifest_entry_verified": true,
@@ -265,7 +327,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T06:09:33.309815+00:00",
+  "updated_at_UTC": "2026-11-15T07:00:51.840363+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

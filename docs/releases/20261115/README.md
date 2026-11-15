@@ -1,5 +1,16 @@
 # November 15 review candidate and core software checkpoint
 
+The tested core ZIP, aggregate-only assessment ZIP, editable v3 presentation
+and checksums are now uploaded to the existing private repository's
+[draft review release](https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab).
+[Draft PR #1](https://github.com/mdomagalski/biograph-steward/pull/1) preserves
+the current work on `codex/contextual-gain-delivery`; main and public visibility
+are unchanged. GitHub draft releases require repository write access; ordinary
+repository readers can use the branch checkout and its tracked report/slides.
+All four remote asset sizes and SHA256 digests match the
+[delivery receipt](github_review_delivery.json). This is review preparation,
+not final public publication or challenge submission.
+
 The [latest completed scientific result](../../evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
 and [editable v3 presentation](../../../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx)
 are repository deliverables. The self-contained aggregate assessment ZIP is
@@ -9,6 +20,11 @@ It contains 20 checked files: all results/controls, figures and aggregate
 source/numerical audits, without raw reference cases, source archives or weights.
 The [archive receipt](../../evaluations/contextual_assessment_archive_20261115_summary.json)
 records its boundary. Hosting remains separately pinned to `a6a05ff`.
+
+The later [source-chronology addendum](../../evaluations/CONTEXTUAL_SOURCE_CHRONOLOGY_20261115.md)
+and reusable known-mask/archive readers are tracked on the review branch.
+They verify source consistency and qualify novelty without changing the
+immutable primary summary or its original report ZIP.
 
 ## Tested core software
 
@@ -26,7 +42,12 @@ Unzip into a new folder and follow `README_DEMO.md`. Python 3.10+ runs the core 
 
 The [acceptance receipt](../../evaluations/software_release_core_20261115_summary.json) records clean Python 3.12.14 execution without site packages: invented graph construction, a cited answer, actual complete graph/decision and answer ZIP downloads, exhaustive decision verification, fresh extraction of the exported baseline, and identical saved-answer replay after restarting the isolated server. No source retrieval, inference or cloud calls were made. This checks portability and preservation, not browser usability or scientific correctness.
 
-The ZIP is prepared locally and has not been uploaded or published. Repository-only access does not automatically supply files under the ignored `runs/` folder; attach the ZIP as a release artifact when the final handoff is designated. Earlier release indexes and their checksums remain preserved dated checkpoints. See the [submission overview](../../SUBMISSION_OVERVIEW.md) and [delivery status](../../DELIVERY_STATUS_20261115.json) for the product and release boundaries.
+The unchanged ZIP is also an uploaded private draft-release asset. The local
+link above requires the operator's ignored `runs/` folder; use the draft page
+for the uploaded copy when you have the required repository write access.
+Public release remains pending. Earlier indexes and checksums remain dated
+checkpoints. See the [submission overview](../../SUBMISSION_OVERVIEW.md) and
+[delivery status](../../DELIVERY_STATUS_20261115.json) for the product boundaries.
 
 ## Optional research recovery
 
@@ -46,3 +67,15 @@ the [reference-input guard and recipe](../../../tools/contextual_combination/ref
 Preservation does not make a later URL immutable or a consumed benchmark fresh
 again. Source data and optional research code retain their own terms. The
 mixed-source Pharos demonstration graph is a different packet.
+
+The [private numerical-replay receipt](../../evaluations/contextual_numerical_replay_20261115_summary.json)
+also verifies a local 177,886,035-byte archive containing all 636 evaluation
+files, complete source-support provenance, reference masks, executed source,
+seals and 46 forecast-axis metadata files. Every one of its 1,024 members was
+streamed and hash/size checked without local extraction. This archive includes
+case/reference data and was **not uploaded to GitHub or cloud storage**.
+The exact historical graph, 2023 seeds and model ontology were already present
+locally and match their frozen input hashes. The 46 raw forecast arrays
+(11.03 GB) remain on the persistent Brev research disk; stopping compute does
+not replace a separate disk/data preservation decision. This is numerical and
+source replay preservation, not a complete VM backup.

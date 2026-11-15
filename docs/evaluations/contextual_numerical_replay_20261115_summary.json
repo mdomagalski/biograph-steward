@@ -1,0 +1,56 @@
+{
+  "all636_complete_evaluation_artifacts_preserved": true,
+  "all_members_regular_relative_and_unique": true,
+  "archive_bytes": 177886035,
+  "archive_filename": "numerical_replay_bundle_v1.tar.gz",
+  "archive_member_count": 1024,
+  "archive_sha256": "911c4ce7a4dc0fab0dbe8fc30c5bd205dd9b7f73f1589c18b6b14f7ef4764913",
+  "backup_scope": "Numerical replay and source-provenance backup,not a complete VM or all-inference-array backup. Existing exact inputs/models/source snapshots are retained separately.",
+  "cloud_or_model_resources_changed": false,
+  "every_member_stream_hash_and_size_verified_locally": true,
+  "format": "biograph-steward.local-private-numerical-replay-verification.v1",
+  "frozen_forecast_metadata_files_preserved": 46,
+  "full_provenance_and_reference_support_preserved": true,
+  "historical_inputs_already_present_and_hash_matched": {
+    "historical2023_seeds": {
+      "bytes": 1868566,
+      "matches_frozen_remote_input": true,
+      "sha256": "e699fe01fdb65e3dbcbbb2d977da0f87ec00e3f3d85df7586e2c14617b7d1ad8"
+    },
+    "historical_graph": {
+      "bytes": 6730686,
+      "matches_frozen_remote_input": true,
+      "sha256": "41547ab466240f05b99e361f3f1b1f16afbbcd0e2c17d8f0c49d8a8668f0de9b"
+    },
+    "historical_model_ontology": {
+      "bytes": 30992530,
+      "matches_frozen_remote_input": true,
+      "sha256": "0c0062efbb1b199a6a54e62c0c48ff0038d39173aecc7edfab66a20090d5ec2d"
+    }
+  },
+  "local_extraction_performed": false,
+  "manifest_sha256": "ecc56a39752223bc729a86e5c25a1e84479b680f461cd83c290f30d4c6d7d65a",
+  "private_archive_not_for_publication_or_Git": true,
+  "private_historical_inventory_sha256": "cd09e6d07671eb8931aeb113b6e64b4c8193c7e2b0214859410d11d804ca334e",
+  "raw_forecast_arrays_remote_only": {
+    "bytes": 11025913088,
+    "files": 46,
+    "location_description": "Existing persistent Brev research disk; do not delete the VM/disk until separately handled."
+  },
+  "scientific_inputs_or_results_changed": false,
+  "scope_file_counts": {
+    "evaluation_outputs": 636,
+    "executed_source_code": 149,
+    "frozen_forecast_axis_metadata": 46,
+    "native_evaluator_source": 7,
+    "native_reference_helpers": 3,
+    "native_reference_inputs": 12,
+    "provenance_outputs": 7,
+    "qualified_app_reader_source": 97,
+    "sealed_source_metadata": 41,
+    "seals_configs_receipts": 25
+  },
+  "source_receipt_sha256": "6e5ce7928de7e780f15cc17071df6cd0bf32290521f986a7deeaf4e13e3232a4",
+  "uncompressed_payload_bytes": 1386703262,
+  "verification_seconds": 1.419
+}

@@ -1,0 +1,14 @@
+{
+  "aggregate_filename": "source_coherence_adapter.json",
+  "aggregate_sha256": "0ab63d152ac4d5e483376cc2b1ab9eb884d2d5a7adedde08e5ae2acea7b07de8",
+  "all_original_valid_data_counts_and_hashed_case_files_identical": true,
+  "format": "biograph-steward.public-source-coherence-parity-receipt.v1",
+  "native_invented_tests": 10,
+  "no_relabeling_filtering_scoring_or_model_change": true,
+  "old_pilot_preserved": true,
+  "private_parity_receipt_sha256": "64d4ad43b60eefe9d9e0522eb6f09e1404ac6bb0a212393914528cd78beb1f13",
+  "real_admitted_namespace": "biological_process",
+  "skips": 0,
+  "source_code_sha256": "32bca9d39438ad14c57a6b54b1a31f21dd42c1356594f58f364c2f27428f027b",
+  "tests_sha256": "bd18abe6114b0358b6d8fc5c3aa41f456e547063d26b7df024a94091e7b1bbb0"
+}

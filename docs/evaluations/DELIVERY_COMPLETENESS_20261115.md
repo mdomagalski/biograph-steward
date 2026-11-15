@@ -52,3 +52,9 @@ separate qualification. Curator support, source fidelity and independent
 biological truth must not be pooled into one accuracy percentage. The latest
 positive and unfavorable results are retained without automatic graph or
 pruning promotion.
+
+The [full source-chronology check](CONTEXTUAL_SOURCE_CHRONOLOGY_20261115.md)
+detected no missing-known-input bug and now has a reusable, namespace-aware
+read-only adapter. Snapshot-new annotations can still have older assignment
+dates or earlier public evidence; this boundary is recorded without modifying
+the completed benchmark to obtain a favorable result.

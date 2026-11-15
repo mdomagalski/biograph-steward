@@ -1,0 +1,36 @@
+{
+  "aggregate_report_sha256": "d3115d6f54c88a503bd8ab640bbcf68444ce95953beb4e4cd7260a310aacaabd",
+  "all_source_sets_independently_reconstructed_and_checked": true,
+  "complete_archived_human_reference_identifiers": 90324,
+  "external_network_or_selected_identifier_export": false,
+  "format": "biograph-steward.independent-archived-reference-set-check.v1",
+  "identifiers_or_case_mappings_in_receipt": false,
+  "large_DAT_archive_reparsed": false,
+  "local_retention_receipt_sha256": "d95e84357009ca88c1af6e8871d13715dfc2ea9409f67a34b5e49f662865fa39",
+  "local_scope": "Ignored private replay cache only; no large archive transfer or public identifier lists.",
+  "new_performance_metric_labels_or_models": false,
+  "private_inventories_retained_and_hash_verified_on_Mac": true,
+  "private_inventory_bytes": 1421764,
+  "private_inventory_sha256": "aed1be0e0be76b32281fd33ae0c0dab049708a8ca5256c898a7b1dd6e61b229a",
+  "private_membership_bytes": 9867,
+  "private_membership_sha256": "c49b056489b13e594706d9c9e9daf49a977a2f61a341197a6d11c90ad0469950",
+  "publication_years_claim_novelty_or_independent_studies_inferred": false,
+  "views": {
+    "fixed_T0": {
+      "absent_from_archived_human_references": 164,
+      "all_residual_label_pairs": 3243,
+      "distinct_support_rows": 472,
+      "full_source_and_cached_membership_sets_identical": true,
+      "present_in_archived_human_references": 107,
+      "support_PMID_identifiers": 271
+    },
+    "native": {
+      "absent_from_archived_human_references": 165,
+      "all_residual_label_pairs": 3254,
+      "distinct_support_rows": 475,
+      "full_source_and_cached_membership_sets_identical": true,
+      "present_in_archived_human_references": 107,
+      "support_PMID_identifiers": 272
+    }
+  }
+}

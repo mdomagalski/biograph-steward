@@ -125,6 +125,11 @@ core-only scope. Optional research/deployment scripts remain in the full
 repository. The hosted app remains at its separately verified `a6a05ff`
 checkpoint; real source packets, native GO/QC attachment and aggregate
 publication are separately supplied data.
+The code-only ZIP is now also an asset in the existing private
+[draft review release](https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab),
+with the completed aggregate study and slides. Repository writers can review
+those draft assets. The tracked branch provides a checkout route; neither the
+main branch nor repository visibility was changed.
 The GO attachment is absent from this ZIP and fresh installations leave its
 inspector and native packet download disabled until the source paths are configured.
 The earlier `5362b50` software ZIP and its

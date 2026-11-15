@@ -385,6 +385,26 @@ confirmation. Private complete traces and deterministic cases remain separate
 from an aggregate publication. Raw-target source-coverage fields are explicitly
 marked as post-opening descriptive additions, without new performance endpoints.
 
+`source_coherence.py` supplies a reusable read-only check for the source history
+that the upstream association tables do not retain. Configuration declares the
+cutoff, namespace, dated tables, classifier term masks and input hashes. The
+adapter consumes the certified official-parser sidecars, preserves native
+evidence/alias/propagation behavior, and reuses `gt_parser → gt_exclude_parser`
+on the exact evaluation ontology. It distinguishes a missing earlier admitted
+known association from earlier nonreference evidence, NOT context or simple
+absence from the earlier snapshot. Old column-14 dates alone do not establish
+an exclusion bug or publication novelty. Existing completed-seal and assessment
+gates precede access to these inputs.
+
+The same namespace-to-aspect adapter accepts P/F/C; the executed real audit is
+**PK biological process only**. Other namespaces have invented native-helper
+fixtures rather than a real source-audit result. Missing/invalid dates remain
+unknown and empty support views are explicit. A separate descriptive partition
+counts every residual label pair by all its source-row dates: only on/before
+T0, only after T0, mixed, or unknown. These are counts without model-dependent
+selection, performance slices, new exclusions or re-scoring. The exact original
+pilot, engineering failures and later parity receipts remain preserved.
+
 `bibliography.py` is an optional, separately authorized metadata-only follow-up.
 The [CAFA5 preprint](https://www.biorxiv.org/content/10.64898/2026.04.27.716980v2)
 and its released `publishedaftert0` reference distinguish later biocuration
@@ -406,3 +426,17 @@ authorization alone is insufficient. No verified local publication-metadata
 cache was available. Invented tests cover the source/identity, date-precision,
 missingness, publication-boundary and authorization safeguards. No publication
 age or additional accuracy result is claimed from these tests.
+
+The completed safer alternative, `archived_reference_presence.py`, makes no
+external bibliography requests. It streams the exact previously captured
+Swiss-Prot 2026_01 archive through the qualified official Biopython 1.85
+reader, verifies the release-note date and complete member/source fingerprints,
+and inventories references from all reviewed-human records before intersecting
+the complete support sets locally. Five invented/native-reader checks and the
+real complete archive stream passed. The
+[source-chronology addendum](../../docs/evaluations/CONTEXTUAL_SOURCE_CHRONOLOGY_20261115.md)
+records the 107/272 native reference identifiers already cited in that dated
+archive. Other identifiers remain unknown from this check. This is reference
+presence, not publication ages, specific-claim availability or new experimental
+truth. Nothing is re-scored, and the private identifier inventories are absent
+from the aggregate publication and GitHub release.

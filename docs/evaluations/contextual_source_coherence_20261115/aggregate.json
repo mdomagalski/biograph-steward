@@ -1,0 +1,196 @@
+{
+  "annotation_date_cutoff": "20260410",
+  "chronology": "Separate post-opening descriptive/source-coherence audit after immutable numerical archive preservation.",
+  "existing_native_alias_evidence_propagation_and_GT_exclusion_reused": true,
+  "forecast_seal_sha256": "a41920a505c68dcc67891be66381b30eac4a028ddb459c52e7081a7e06250eb9",
+  "format": "biograph-steward.postseal-source-date-coherence.v1",
+  "limits": [
+    "Old annotation dates are not proof a row existed in the earlier snapshot.",
+    "Observed presence/admission/identifier differences do not establish an underlying curation or biological mechanism.",
+    "Source rows and inherited labels are not independent assays; no new accuracy endpoint is computed.",
+    "TOI means the original classifier term intersection; evaluation uses the separately frozen primary term mask."
+  ],
+  "namespace": "biological_process",
+  "native_aspect": "P",
+  "new_labels_rules_scores_thresholds_or_model_choices": false,
+  "private_parent_provenance_report_sha256": "0001d0d6be8dce1a8c117f77e79acf9427b8d7ce1423067673203e5a24224afb",
+  "scope": "Every distinct eligible T1support row for the declared namespace in both native/fixed-T0 PK reference views, regardless of prediction performance.",
+  "source_policy": {
+    "commit": "0ab84edbaddf5fef11125dc8adbd19167c3cc038",
+    "native_AST": {
+      "democafa/datacollection/retrieve_terms.py": "ba24c93da05c399dd2f14302286834c56096b155eb5b3729e5e8030281638bb3",
+      "democafa/utils/ontology.py": "5aa97db03edfd9bdb2af69726b88ede8f42ba85af72968e549a63c83bcb8add6"
+    },
+    "source_pins": {
+      "democafa/datacollection/retrieve_terms.py": "e5909345e09a076e54435fd485f5262c5efbba9e5a0d954116b7aba279445995",
+      "democafa/utils/constants.py": "945ae48cf4f2be290c86960e4b524a5c8e1f2b452b52643ca2766743cb59b46c",
+      "democafa/utils/ontology.py": "730f9c85d991770407cf12956e2ae06869b25e5e292a46e2493fe444b9993eb3"
+    }
+  },
+  "views": {
+    "fixed_T0": {
+      "all_support_row_boolean_counts": {
+        "T0_graph_any_alias_pair_present": 58,
+        "T0_graph_curated_alias_pair_present": 0,
+        "T0_graph_curated_closure_contains_source": 0,
+        "T0_graph_native_mapping_active": 472,
+        "T0_graph_nonreference_alias_pair_present": 58,
+        "T0_graph_nonreference_closure_contains_source": 95,
+        "T0_native_direct_table_contains_source": 0,
+        "T0_native_propagated_table_contains_source": 0,
+        "T0_propagated_and_classifier_TOI_but_missing_from_PK_known": 0,
+        "T0_source_term_in_classifier_TOI": 472,
+        "T0_source_term_in_evaluation_TOI": 472,
+        "T0_source_term_present_in_raw_PK_known": 0,
+        "annotation_date_on_or_before_T0_header": 111,
+        "exact_native_content_T0": 0,
+        "exact_native_content_except_annotation_date_T0": 0,
+        "literal_T0_accession_GO_present": 58,
+        "literal_T0_same_pair_NOT_context": 0,
+        "literal_T0_same_pair_curated_positive_before_ontology_filter": 0,
+        "literal_T0_same_pair_nonreference_positive": 58,
+        "same_evidence_code_and_qualifier_literal_T0": 0,
+        "same_evidence_qualifier_reference_and_literal_context_T0": 0,
+        "view_source_term_differs_from_T0_native_mapping": 0,
+        "view_source_term_in_exact_parsed_known_exclusion": 0
+      },
+      "case_details_contain_literal_protein_GO_or_PMID_IDs": false,
+      "descriptive_presence_categories": {
+        "T0_nonreference_positive_pair_without_curated_pair": 58,
+        "T0_pair_absent_literal_and_T0_native_alias_identity": 414
+      },
+      "label_pair_support_date_partition": {
+        "all_residual_positive_pairs": 3243,
+        "annotation_date_cutoff": "20260410",
+        "counts": {
+          "mixed_on_or_before_and_after_T0": 19,
+          "only_after_T0": 2508,
+          "only_on_or_before_T0": 716,
+          "unknown_or_invalid_support_date": 0
+        },
+        "definition": "Disjoint counts of ALL residual-positive label pairs by dates of ALL supporting rows; any invalid/missing support date or absent support is unknown. No score/threshold/model filtering.",
+        "performance_slice_or_publication_age": false
+      },
+      "old_annotation_date_support_rows": 111,
+      "old_dated_presence_categories": {
+        "T0_nonreference_positive_pair_without_curated_pair": 19,
+        "T0_pair_absent_literal_and_T0_native_alias_identity": 92
+      },
+      "old_dated_support_row_boolean_counts": {
+        "T0_graph_any_alias_pair_present": 19,
+        "T0_graph_curated_alias_pair_present": 0,
+        "T0_graph_curated_closure_contains_source": 0,
+        "T0_graph_native_mapping_active": 111,
+        "T0_graph_nonreference_alias_pair_present": 19,
+        "T0_graph_nonreference_closure_contains_source": 26,
+        "T0_native_direct_table_contains_source": 0,
+        "T0_native_propagated_table_contains_source": 0,
+        "T0_propagated_and_classifier_TOI_but_missing_from_PK_known": 0,
+        "T0_source_term_in_classifier_TOI": 111,
+        "T0_source_term_in_evaluation_TOI": 111,
+        "T0_source_term_present_in_raw_PK_known": 0,
+        "annotation_date_on_or_before_T0_header": 111,
+        "exact_native_content_T0": 0,
+        "exact_native_content_except_annotation_date_T0": 0,
+        "literal_T0_accession_GO_present": 19,
+        "literal_T0_same_pair_NOT_context": 0,
+        "literal_T0_same_pair_curated_positive_before_ontology_filter": 0,
+        "literal_T0_same_pair_nonreference_positive": 19,
+        "same_evidence_code_and_qualifier_literal_T0": 0,
+        "same_evidence_qualifier_reference_and_literal_context_T0": 0,
+        "view_source_term_differs_from_T0_native_mapping": 0,
+        "view_source_term_in_exact_parsed_known_exclusion": 0
+      },
+      "private_hashed_cases_sha256": "db37b165202f4341629df2810cb4d6d7298735a7954d3ff421a1781e78455c12",
+      "residual_pairs_absent_from_exact_parsed_GT": 0,
+      "residual_pairs_present_in_exact_parsed_known_exclusion": 0,
+      "residual_positive_pairs_checked": 3243,
+      "source_to_PK_known_chain_discrepancies": 0,
+      "support_audit_status": "eligible_support_present",
+      "support_rows": 472,
+      "unknown_or_invalid_annotation_date_support_rows": 0
+    },
+    "native": {
+      "all_support_row_boolean_counts": {
+        "T0_graph_any_alias_pair_present": 58,
+        "T0_graph_curated_alias_pair_present": 0,
+        "T0_graph_curated_closure_contains_source": 0,
+        "T0_graph_native_mapping_active": 472,
+        "T0_graph_nonreference_alias_pair_present": 58,
+        "T0_graph_nonreference_closure_contains_source": 95,
+        "T0_native_direct_table_contains_source": 0,
+        "T0_native_propagated_table_contains_source": 0,
+        "T0_propagated_and_classifier_TOI_but_missing_from_PK_known": 0,
+        "T0_source_term_in_classifier_TOI": 472,
+        "T0_source_term_in_evaluation_TOI": 472,
+        "T0_source_term_present_in_raw_PK_known": 0,
+        "annotation_date_on_or_before_T0_header": 111,
+        "exact_native_content_T0": 0,
+        "exact_native_content_except_annotation_date_T0": 0,
+        "literal_T0_accession_GO_present": 58,
+        "literal_T0_same_pair_NOT_context": 0,
+        "literal_T0_same_pair_curated_positive_before_ontology_filter": 0,
+        "literal_T0_same_pair_nonreference_positive": 58,
+        "same_evidence_code_and_qualifier_literal_T0": 0,
+        "same_evidence_qualifier_reference_and_literal_context_T0": 0,
+        "view_source_term_differs_from_T0_native_mapping": 0,
+        "view_source_term_in_exact_parsed_known_exclusion": 0
+      },
+      "case_details_contain_literal_protein_GO_or_PMID_IDs": false,
+      "descriptive_presence_categories": {
+        "T0_nonreference_positive_pair_without_curated_pair": 58,
+        "T0_pair_absent_literal_and_T0_native_alias_identity": 417
+      },
+      "label_pair_support_date_partition": {
+        "all_residual_positive_pairs": 3254,
+        "annotation_date_cutoff": "20260410",
+        "counts": {
+          "mixed_on_or_before_and_after_T0": 15,
+          "only_after_T0": 2537,
+          "only_on_or_before_T0": 702,
+          "unknown_or_invalid_support_date": 0
+        },
+        "definition": "Disjoint counts of ALL residual-positive label pairs by dates of ALL supporting rows; any invalid/missing support date or absent support is unknown. No score/threshold/model filtering.",
+        "performance_slice_or_publication_age": false
+      },
+      "old_annotation_date_support_rows": 111,
+      "old_dated_presence_categories": {
+        "T0_nonreference_positive_pair_without_curated_pair": 19,
+        "T0_pair_absent_literal_and_T0_native_alias_identity": 92
+      },
+      "old_dated_support_row_boolean_counts": {
+        "T0_graph_any_alias_pair_present": 19,
+        "T0_graph_curated_alias_pair_present": 0,
+        "T0_graph_curated_closure_contains_source": 0,
+        "T0_graph_native_mapping_active": 111,
+        "T0_graph_nonreference_alias_pair_present": 19,
+        "T0_graph_nonreference_closure_contains_source": 26,
+        "T0_native_direct_table_contains_source": 0,
+        "T0_native_propagated_table_contains_source": 0,
+        "T0_propagated_and_classifier_TOI_but_missing_from_PK_known": 0,
+        "T0_source_term_in_classifier_TOI": 111,
+        "T0_source_term_in_evaluation_TOI": 111,
+        "T0_source_term_present_in_raw_PK_known": 0,
+        "annotation_date_on_or_before_T0_header": 111,
+        "exact_native_content_T0": 0,
+        "exact_native_content_except_annotation_date_T0": 0,
+        "literal_T0_accession_GO_present": 19,
+        "literal_T0_same_pair_NOT_context": 0,
+        "literal_T0_same_pair_curated_positive_before_ontology_filter": 0,
+        "literal_T0_same_pair_nonreference_positive": 19,
+        "same_evidence_code_and_qualifier_literal_T0": 0,
+        "same_evidence_qualifier_reference_and_literal_context_T0": 0,
+        "view_source_term_differs_from_T0_native_mapping": 0,
+        "view_source_term_in_exact_parsed_known_exclusion": 0
+      },
+      "private_hashed_cases_sha256": "b06411b3e84c8d0b08d767255f6330d3839002d35153f360425b5280ddfe6d8a",
+      "residual_pairs_absent_from_exact_parsed_GT": 0,
+      "residual_pairs_present_in_exact_parsed_known_exclusion": 0,
+      "residual_positive_pairs_checked": 3254,
+      "source_to_PK_known_chain_discrepancies": 0,
+      "support_audit_status": "eligible_support_present",
+      "support_rows": 475,
+      "unknown_or_invalid_annotation_date_support_rows": 0
+    }
+  }
+}

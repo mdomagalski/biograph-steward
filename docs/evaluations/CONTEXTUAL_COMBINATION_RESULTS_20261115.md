@@ -125,6 +125,13 @@ ontology ancestors, rather than separate experiments. Experimental, IC and TAS
 support links are counted separately. This checks the reference's source
 traceability; it is not independent confirmation of every label. Publication
 ages remain unverified, and annotation dates are not used as experiment dates.
+The separate [source-chronology audit](CONTEXTUAL_SOURCE_CHRONOLOGY_20261115.md)
+finds no missing-known-input bug. It explicitly distinguishes later-snapshot
+recovery from first-public-knowledge novelty: 111 supporting rows carry older
+annotation dates, with their complete source-to-known chain checked.
+An offline publisher-archive check also finds 107/272 supporting reference
+identifiers already cited before T0. It does not date the evaluated claims;
+other references remain unresolved, rather than being declared new.
 
 All PK/NK/LK and molecular-function/biological-process/cellular-component
 results are reported. The new NK biological-process reference contains only

@@ -120,8 +120,16 @@ contract has not been supplied. These local assessments are supporting
 evidence, rather than an official organizer score.
 
 The [prepared core software ZIP](releases/20261115/README.md) passed clean Python
-construction, answer, actual export and fresh-reopen checks. It is a dated local
+construction, answer, actual export and fresh-reopen checks. It is a dated tested
 checkpoint; hosting and final publication remain separate actions.
+
+The review branch is now backed up in the existing private repository, with
+[draft PR #1](https://github.com/mdomagalski/biograph-steward/pull/1) and a
+[private draft release](https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab).
+Its four assets are the tested core ZIP, aggregate report ZIP, editable slides
+and checksums. Draft-release access requires repository write permission;
+tracked reports/slides remain available through the branch checkout. Neither
+main nor public visibility changed.
 
 The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx)
 has six main slides and two technical appendix slides. The
