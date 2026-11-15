@@ -83,6 +83,12 @@ retrieved no biological records and did not replace the frozen demonstration.
 | Does the model agent establish biological truth or support automatic pruning? | No. The tested source-claim agent trails the published specialist. The app preserves its results without adopting automatic acceptance or biological pruning. |
 
 Fmax is a benchmark function-recovery score, not a graph-accuracy percentage.
+The measured outcome can be stated directly: **the retained Pharos-derived
+baseline performed worse than the selected contextual predictor on this
+declared task**, with positive paired intervals in both primary views. The
+baseline is LocalPlus on historical Pharos-represented STRING weights with
+dated GO annotations as supervision; it is not an accuracy score for raw
+Pharos or proof that the entire corrected graph is biologically more accurate.
 The latest comparison seals all 3,300 target forecasts before reference opening
 and retains all 18 settings/aspects/views. It reuses ProtBoost and the authors'
 CAFA6 context features with qualified adaptations. Its primary residual-positive

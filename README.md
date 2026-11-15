@@ -19,7 +19,12 @@ Start with the [submission overview](docs/SUBMISSION_OVERVIEW.md) for the hosted
 example and a short account of what is ready.
 
 [The completed context-aware comparison](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
-finds a bounded gain over retained LocalPlus in both fixed primary views.
+shows that the retained Pharos-derived LocalPlus baseline performed worse on
+the declared function-recovery task: the selected contextual model raises
+Fmax from 0.05473 to 0.07343 in the native view and from 0.17155 to 0.21009
+with the starting ontology held fixed, with positive paired intervals in both.
+This baseline uses a historical Pharos-derived network and dated GO supervision;
+the result does not rate the correctness of the raw Pharos database.
 Refreshing LocalPlus's annotations also helps the primary endpoint; the learned model's additional
 primary biological-process advantage over fully current annotations remains
 uncertain. Molecular-function and cellular-component secondary results improve

@@ -1,14 +1,25 @@
 # Cross-fitted graph/frequency context: completed development comparison
 
-**The fixed candidate improves on current-annotation LocalPlus in the
-fixed-ontology PK view, but its native-view interval crosses zero. It does not
-establish an advantage over the previously selected context model. No model,
-graph or pruning policy is promoted.**
+**The retained Pharos-derived graph baseline performed worse on this
+biological-process recovery task.** The new candidate raises Fmax from
+**0.05473 to 0.07113** in the native view and **0.17155 to 0.21336** with the
+starting ontology held fixed; paired intervals favor the candidate in both
+views. Against the stronger current-annotation LocalPlus control, only the
+fixed-ontology interval is positive. Neither view establishes an advantage
+over the previously selected context model. The candidate is retained without
+model, graph or pruning-policy promotion.
 
 This is one completed follow-up on the already consumed April–November 2026
 human GO reference. It measures recovery of later curator annotations, not
 whole-graph biological accuracy or independent experimental confirmation.
 The original study, earlier failures and favorable results remain unchanged.
+
+Here, the baseline is LocalPlus on the historical Pharos-derived STRING
+network with dated GO annotations as supervision. It is not the raw Pharos
+database scored for correctness. The two baseline differences have paired
+95% intervals **[+0.001880, +0.031774]** (native) and
+**[+0.015086, +0.065568]** (fixed T0). These remain conditional, unadjusted
+development intervals on an already consumed reference.
 
 ## Results
 
