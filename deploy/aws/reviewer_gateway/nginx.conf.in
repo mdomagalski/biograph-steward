@@ -30,6 +30,7 @@ http {
         "POST:/api/question" 1;
         "POST:/api/explore" 1;
         "POST:/api/inspect-source" 1;
+        "POST:/api/protein-context" 1;
         "POST:/api/neptune-inspect" 1;
         "POST:/api/native-go-context" 1;
         "POST:/api/download-native-go-context" 1;

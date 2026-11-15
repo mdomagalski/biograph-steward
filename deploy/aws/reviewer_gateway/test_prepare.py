@@ -27,6 +27,7 @@ class PreparationTests(unittest.TestCase):
             self.assertIn('proxy_read_timeout 600s;', config)
             self.assertIn('"POST:/api/question" 1;', config)
             self.assertIn('"POST:/api/download-native-go-context" 1;', config)
+            self.assertIn('"POST:/api/protein-context" 1;', config)
             self.assertIn('"GET:/api/planner" 0;', config)
             self.assertNotIn('"POST:/api/review" 1;', config)
             self.assertNotIn('"POST:/api/plan" 1;', config)

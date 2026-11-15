@@ -171,6 +171,7 @@ def report_html(graph: dict | None = None, *, protected=False) -> str:
     script += '\n' + Path(__file__).with_name("validation.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("scientific_assessment.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("function_context.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("protein_context.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("navigation.js").read_text(encoding="utf-8")
     script += '\ninitializePruningPreview();\n'
     script += '\ninitializeBiologicalComparisons();\n'
@@ -926,9 +927,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if (marker.exists() or marker.is_symlink() or metadata.get('run_mode') == 'qualified_workspace'
                             or (source_folder/'source_retained_package').exists()
                             or (source_folder/'source_retained_package').is_symlink()):
-                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/native-go-question'}:
+                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/native-go-question', '/api/protein-context'}:
                             raise ValueError('This qualified retained workspace is read-only. Query or download it; use its preserved baseline for new retrieval or review.')
-                if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context'}:
+                if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/protein-context'}:
                     from .reviews import read_run
                     if path == '/api/neptune-inspect':
                         if set(body) - {'run_id', 'node_id', 'limit'} or not {'run_id', 'node_id'} <= set(body):
@@ -946,6 +947,32 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         raise ValueError('Saved workspace not found.')
                     verify_saved_refresh(folder)
                     graph = read_run(folder)[2]
+                    if path == '/api/protein-context':
+                        if set(body) != {'run_id', 'selection_id', 'protein'}:
+                            raise ValueError('Supply only the saved run, selected source assertion and exact protein.')
+                        from .protein_context import inspect_selection as inspect_protein_context
+                        native_go = None
+                        native_go_unverified = False
+                        if go_context_dir is not None:
+                            from .inspection import inspect_selection
+                            guide = inspect_selection(graph, body['selection_id'], run_id=identifier)
+                            assertion = guide.get('assertion') or {}
+                            if assertion.get('kind') == 'go_annotation' and assertion.get('subject') == body['protein']:
+                                from .go_context_inspection import inspect_go_selection
+                                try:
+                                    native_go = inspect_go_selection(go_context_dir, graph, body['selection_id'],
+                                        source_run=identifier, source_folder=folder)
+                                except (ValueError, KeyError, TypeError, OSError):
+                                    native_go_unverified = True
+                        result = inspect_protein_context(runs_dir, graph, body['selection_id'],
+                            body['protein'], source_run=identifier, native_go=native_go)
+                        if native_go_unverified:
+                            from .client import digest
+                            result.setdefault('warnings', []).append('The optional native GOA source could not be verified. Its mapping lineage is unresolved; the sequence context remains available.')
+                            result.pop('content_sha256', None)
+                            result['content_sha256'] = digest(result)
+                        self.json_reply(result)
+                        return
                     if path in {'/api/native-go-context', '/api/download-native-go-context'}:
                         if set(body) != {'run_id', 'selection_id'}:
                             raise ValueError('Supply only the saved run and selected GO source assertion.')
@@ -1016,6 +1043,13 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         if go_context_dir is not None:
                             result['native_go_context'] = {'configured': True,
                                 'eligible': (result.get('assertion') or {}).get('kind') == 'go_annotation'}
+                        from .protein_context import selection_contexts
+                        try:
+                            result['protein_context'] = selection_contexts(runs_dir, graph, body['selection_id'])
+                        except (ValueError, KeyError, TypeError, OSError):
+                            # A damaged optional context must not hide the original source guide.
+                            result['protein_context'] = {'configured': True, 'eligible': False,
+                                'status': 'unverifiable_saved_context', 'proteins': []}
                     self.json_reply(result)
                     return
                 if path == '/api/construction-plan':

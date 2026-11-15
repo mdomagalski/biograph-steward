@@ -134,6 +134,13 @@ The workbench now separates **Data & saved work**, **Ask & explore**, **Evidence
 
 In **Ask & explore**, bounded path exploration follows up to three saved relationships, respecting direction and explicit symmetry. Each step retains its conditions, source evidence and review state; candidate paths are not promoted to accepted evidence. **Evidence & sources** provides guided source inspection for Pharos, CIViC and assay records, with original references when supplied and explicit missing-context/reuse limits. Both features read the saved workspace without retrieving sources or calling a model.
 
+The optional [protein sequence and domain inspector](docs/PROTEIN_CONTEXT.md)
+recovers existing Pharos family cross-references and shows saved InterPro matches
+for the exact retrieved sequence. Method and library versions, split regions,
+residue-site records, inspected entry retirement/editorial flags and native GOA
+mapping lineage stay distinguishable. It helps interpret source context; it
+does not count reused annotations as independent evidence or accept new graph edges.
+
 The **Compare & assess** tab opens saved scientific assessments with explicit
 reference units, unknowns, controls and source receipts. Its historical function
 inspector shows saved neighbor contributions, source pairs, training terms and

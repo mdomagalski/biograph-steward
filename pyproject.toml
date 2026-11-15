@@ -27,3 +27,4 @@ include = ["biograph_steward*"]
 
 [tool.setuptools.package-data]
 biograph_steward = ["*.html", "*.js", "*.json"]
+"biograph_steward._vendor.interpro_mcp" = ["LICENSE", "NOTICE"]

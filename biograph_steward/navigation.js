@@ -217,6 +217,13 @@ function renderSourceGuide(result){
   const recorded=Object.fromEntries(Object.entries(result.qualifiers).filter(([key,value])=>value!==null&&value!==undefined&&key!=='observation_id'));
   if(Object.keys(recorded).length){const facts=el('div',undefined,'source-record');facts.append(el('strong','Conditions recorded on this claim'),fieldList(recorded));box.append(facts);}
   if(result.native_go_context?.configured===true&&result.native_go_context?.eligible===true)box.append(nativeGoContextPanel(result));
+  if(result.protein_context?.status==='unverifiable_saved_context')box.append(el('p','The optional saved protein context could not be verified. The original source remains available below.','small'));
+  if(typeof window!=='undefined'&&window.ProteinContext){
+    const sourceRun=runId,sourceSnapshot=graph?.snapshot_sha256,request=inspectionRequest,selectionId=result.selection.id;
+    const context=window.ProteinContext.panel(result,{api,labelForProtein:nodeLabel,
+      isCurrent:()=>Boolean(sourceRun&&sourceSnapshot)&&request===inspectionRequest&&sourceRun===runId&&sourceSnapshot===graph?.snapshot_sha256&&$('sourceGuideSelection').value===selectionId});
+    if(context)box.append(context);
+  }
   const outcome=result.sections.find(section=>section.title==='Source outcome');
   if(outcome)box.append(el('p',outcome.text,'notice'));
   const columns=el('div',undefined,'guide-layout'),questions=el('div'),sources=el('div');
