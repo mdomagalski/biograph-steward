@@ -1,7 +1,7 @@
 # BioGraph Steward
 
 For a short product review, start with the [submission overview](docs/SUBMISSION_OVERVIEW.md)
-and [editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx).
+and [editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx).
 The [delivery status](docs/DELIVERY_STATUS_20261115.json) separates tested local
 software, the last verified hosted checkpoint and remaining release actions.
 
@@ -20,9 +20,13 @@ example and a short account of what is ready.
 
 [The completed context-aware comparison](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
 finds a bounded gain over retained LocalPlus in both fixed primary views.
-Refreshing LocalPlus's annotations also helps; the learned model's additional
+Refreshing LocalPlus's annotations also helps the primary endpoint; the learned model's additional
 primary biological-process advantage over fully current annotations remains
-uncertain; molecular-function and cellular-component secondary results improve.
+uncertain. Molecular-function and cellular-component secondary results improve
+over LocalPlus, while the stronger direct nonexperimental-GOA control is not
+beaten (and is better for cellular component).
+A [fixed annotation-preservation follow-up](docs/evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
+shows a trade-off rather than a general remedy; no new default is adopted.
 Whole-graph biological correctness and a consistent enriched-graph prediction
 advantage remain open. Optional research methods are isolated from the core
 application; their unfavorable results and consumed reference boundaries are

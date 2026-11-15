@@ -14,11 +14,17 @@ LocalPlus in both ontology views: **0.05473 → 0.07343** and
 LocalPlus's annotations also improves both views. Additional learned benefit
 over the fully updated control remains uncertain for primary biological
 process; molecular-function and cellular-component secondary contrasts improve
-in both views. All 3,300 target forecasts
+over LocalPlus in both views, but do not beat the stronger direct
+nonexperimental-GOA control (CC favors it). All 3,300 target forecasts
 were sealed before reference opening; all 18 cells and unfavorable controls
 are retained. These are later-curator function-recovery results, not a
 percentage of correct Pharos edges or a same-learner enriched-graph victory.
 The new research publication has not changed the hosted app, graph or default.
+
+The separate [fixed annotation-preservation follow-up](evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
+is development on consumed labels: it improves the selected CC model while
+remaining below the prior, and harms BP. It is not adopted or presented as
+independent confirmation.
 
 ## Project summary
 
@@ -197,7 +203,8 @@ Use the [updated five-minute script](DEMO_SCRIPT.md):
    normalization/context warnings; none becomes a historical correction or truth label.
 4. **Measured results:** open the separate November 15 standalone report or
    slide 4 for the new fixed primary context gain, annotation-update control
-   and secondary MF/CC findings. The hosted **Compare & assess** publication
+   and secondary MF/CC findings with their stronger nonexperimental-GOA
+   control retained. The hosted **Compare & assess** publication
    remains its explicitly dated November 14 checkpoint. Preserve the earlier
    negative FSS, graph, pruning and agent results. A saved historical function
    hypothesis can be followed through its neighbor/source pair; it remains an
@@ -322,7 +329,7 @@ without repository imports or optional dependencies.
 
 ## Current editable presentation
 
-The [November 15 v3 deck](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx)
+The [November 15 v3 deck](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx)
 contains six main slides and two technical appendices. All eight slides were
 rendered and visually inspected. Its native Office chart/workbook and tables
 match the completed aggregate result; the dated source screenshots remain

@@ -1,0 +1,35 @@
+{
+  "cell_count": 18,
+  "files": {
+    "publication_manifest.json": {
+      "bytes": 934,
+      "sha256": "fc3b632988e93703b93755f0d2d55bb5edbbf7b76de193e4db13d635cc525d7a"
+    },
+    "report.html": {
+      "bytes": 78965,
+      "sha256": "195fefa1692c456f66f6ba712d9655309f1b51578ea5a66c0b6031106bda3dab"
+    },
+    "report.md": {
+      "bytes": 55734,
+      "sha256": "588b5b560cb58bc5c1f9567ce43e6178f4d941ca3c3d094960cb973ef899a554"
+    },
+    "summary.json": {
+      "bytes": 343768,
+      "sha256": "a72b4c75282edbb6acf9b7a832a3ff4fdef8655ff5d9bf5bebc89c01cbb39ec7"
+    }
+  },
+  "invented_tests": 6,
+  "prior_gate_passed_cells": 18,
+  "python": "3.10.12",
+  "raw_cases_draws_or_paths_published": false,
+  "scientific_scores_intervals_or_model_choices_recomputed": false,
+  "skips": 0,
+  "source_aggregate_sha256": "76189617f4285a9b7f8ff253280642849ca1a117d80901b893c260e420601d9d",
+  "source_files": {
+    "tools/contextual_combination/annotation_prior_protocol.json": "af700b19aaa60c74a8f2ad901ce954710e0b9f7c11232db6abe2b7c929188669",
+    "tools/contextual_combination/annotation_prior_report.py": "fd3b9616ebd90a2b21993acbcf7bbcb00661285f1ea2c2e93b646516527043fc",
+    "tools/contextual_combination/report.py": "97990ca3712b59375467850a906ceaaacc0abf285590ffd3d8e89c5bf146007a",
+    "tools/contextual_combination/test_annotation_prior_report.py": "b1252bbb335abb6771e0f3e45fbbc4bcb8e770fbe13b2b442c856ebacabd98bb"
+  },
+  "status": "passed"
+}

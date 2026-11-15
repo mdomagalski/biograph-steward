@@ -1,28 +1,27 @@
 {
+  "CI_comparator_explicitly_retained_LocalPlus": true,
+  "MF_CC_stronger_control_boundary_visible": true,
   "PowerPoint_native_application_opened": false,
+  "actual_GOA_table_numbers_and_saved_CIs_checked": true,
   "actual_chart_values_and_workbook_verified": true,
-  "actual_table_numbers_and_CIs_checked": true,
+  "all_eight_slides_rendered": true,
   "all_eight_slides_visually_reviewed": true,
+  "all_original_images_byte_preserved": true,
   "appendix_slides": 2,
-  "bytes": 297032,
-  "changed_content_slides": [
-    4,
-    7,
-    8
+  "bytes": 298030,
+  "chart_workbook_rebound_with_bundled_literal_snapshot_helper": true,
+  "content_changed_slides": [
+    7
   ],
-  "changed_notes_slides": [
-    1,
-    4,
-    7,
-    8
-  ],
-  "content_visual_receipt_sha256": "b561a2e60d48c6d383fa40409f808744051391c67028206b74f89c2ebdcdc90a",
-  "final": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx",
-  "format": "biograph-steward.challenge-presentation-delivery.v2",
-  "full_native_BP_bootstrap_frames_explicit": true,
+  "content_visual_receipt_sha256": "e44b353c07ca3b4005f39b564ac0e0ae45ee3c9cbfa835c6da554955d2be3cec",
+  "final": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
+  "format": "biograph-steward.challenge-presentation-delivery.v3",
+  "full_BP_bootstrap_frames_explicit": true,
   "layout_fixture_only": false,
   "layout_validation_findings": 0,
   "layout_validation_warnings": 0,
+  "main_BP_slide_pixel_identical_to_v3": true,
+  "main_BP_slide_unchanged": true,
   "main_slides": 6,
   "native_chart_slides": [
     4
@@ -31,17 +30,26 @@
     7,
     8
   ],
-  "positive_MF_CC_secondary_updated_control_contrasts_disclosed_in_notes": true,
+  "new_models_or_metrics": false,
+  "nonexperimental_GOA_visible_in_complete_PK_table": true,
+  "notes_changed_slides": [
+    7,
+    8
+  ],
+  "original_literal_chart_values_preserved": true,
+  "original_workbook_bytes_not_claimed_preserved": true,
+  "privacy_scan_passed": true,
+  "raw_reference_cases_or_sources_read": false,
   "scientific_statistics_recomputed": false,
-  "sha256": "7aa583b6f7dd4a5880a5244e1c7180ecf885b2fa1d7f70b97b6ee88dafff5bd6",
+  "sha256": "e3a96cacedc65c4907feba280156f3bafa47f64a92ea899461aff05403d4a456",
   "slides": 8,
   "source_data_or_cases_read": false,
-  "source_pptx_sha256": "92789b50180e177ed3a6a0b51e1f63758580ea5f13ed6bce59bc4965cbb44c5e",
-  "source_summary_file": "runs/contextual_gain_20261115/publication_v1/summary.json",
+  "source_pptx_sha256": "7aa583b6f7dd4a5880a5244e1c7180ecf885b2fa1d7f70b97b6ee88dafff5bd6",
+  "source_summary_file": "docs/evaluations/contextual_combination_20261115/summary.json",
   "source_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
-  "source_update_and_learning_uncertainty_explicitly_primary_BP": true,
+  "source_workbook_has_no_cell_formulas_or_external_links": true,
   "spaces_fallback": "Previously documented authoring namespace unavailable; targeted local Artifact Tool edit.",
-  "unchanged_source_images_preserved": true,
-  "validation_receipt_sha256": "bbe1106813d01173c08fc8ebc912615eac8709d6a40a1178bb0829a00abaf1cc",
+  "validation_receipt_sha256": "49c8c2e19115f0dd50583d91052f2ed4a1f88e84f74b80303bd2f60c89f1bf88",
+  "visual_review_method": "Updated slide7 inspected directly; all seven other final rendered slides are pixel-identical to the fully visually reviewed v3.",
   "visual_review_pending": false
 }

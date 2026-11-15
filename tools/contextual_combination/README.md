@@ -1,8 +1,9 @@
 # Source-qualified contextual score stacking
 
 This optional research adapter reuses the published ProtBoost graph stacker.
-It changes no app dependency, graph, forecast or acceptance decision. No new
-scientific result follows from passing its runtime fixtures.
+It changes no app dependency, default graph or acceptance decision. Separately
+named research forecasts remain isolated from the application. Passing runtime
+fixtures does not establish a scientific gain.
 
 The verified gap after the global-alpha comparison is narrower than building a
 new protein predictor: two saved predictors contain complementary information,
@@ -15,7 +16,13 @@ that this richer integration improves this project's task over LocalPlus.
 now supports a bounded primary gain over retained LocalPlus in both views.
 The rationale above records the pre-assessment hypothesis. Complete current
 annotations improve LocalPlus too; additional learned primary BP benefit is
-uncertain, with positive secondary MF/CC contrasts. All controls are retained.
+uncertain. Secondary MF/CC gains over LocalPlus do not beat the stronger direct
+nonexperimental-GOA control; CC favors that control. All controls are retained.
+The separate [annotation-preservation development follow-up](../../docs/evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
+finds a trade-off rather than a general remedy and is not adopted. Its
+`annotation_prior_report.py` renderer publishes only completed aggregate
+readouts, preserving all settings, controls and unfavorable contrasts. The
+original summary and success gates remain unchanged.
 
 `goa_context_contract.json` is the immutable preparation contract. Its
 `real_features_or_models_created:false` records that contract's original

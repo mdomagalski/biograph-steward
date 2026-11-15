@@ -13,7 +13,9 @@ supports improvement over retained LocalPlus in both fixed primary views;
 current annotation refresh also improves the baseline. Learned advantage over
 that complete current-data control remains uncertain for primary biological
 process, while molecular-function and cellular-component secondary contrasts
-are positive. This is optional research, not a new app default or proof of
+are positive versus LocalPlus. Neither secondary aspect beats the stronger
+direct nonexperimental-GOA control, which is better for CC.
+This is optional research, not a new app default or proof of
 Pharos edge accuracy. The central same-learner enriched-graph gain remains
 unestablished.
 

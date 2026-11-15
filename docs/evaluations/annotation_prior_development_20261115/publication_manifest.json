@@ -1,0 +1,23 @@
+{
+  "consumed_reference_development_only": true,
+  "evaluation_scores_intervals_or_model_choices_recomputed": false,
+  "files": {
+    "report.html": {
+      "bytes": 78965,
+      "sha256": "195fefa1692c456f66f6ba712d9655309f1b51578ea5a66c0b6031106bda3dab"
+    },
+    "report.md": {
+      "bytes": 55734,
+      "sha256": "588b5b560cb58bc5c1f9567ce43e6178f4d941ca3c3d094960cb973ef899a554"
+    },
+    "summary.json": {
+      "bytes": 343768,
+      "sha256": "a72b4c75282edbb6acf9b7a832a3ff4fdef8655ff5d9bf5bebc89c01cbb39ec7"
+    }
+  },
+  "format": "biograph-steward.annotation-prior-publication.v1",
+  "original_report_sha256": "2dfebc4e855df8682335484cb39b5100f518363fa74b1b24b66ca3c4cdffdf98",
+  "raw_cases_draws_or_paths_published": false,
+  "renderer_source_sha256": "fd3b9616ebd90a2b21993acbcf7bbcb00661285f1ea2c2e93b646516527043fc",
+  "source_aggregate_sha256": "76189617f4285a9b7f8ff253280642849ca1a117d80901b893c260e420601d9d"
+}

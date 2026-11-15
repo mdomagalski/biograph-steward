@@ -77,7 +77,7 @@ retrieved no biological records and did not replace the frozen demonstration.
 | Question tested | Result and interpretation |
 |---|---|
 | Does adding context improve the same graph learner over the original baseline? | Matched R-GCN comparisons are complete, with mixed or negative results against their controls. A consistent advantage on the challenge's central enriched-graph link-prediction task remains unestablished. |
-| Can published methods recover later protein-function annotations? | The [completed contextual comparison](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md) passes its fixed primary rule against retained LocalPlus in both ontology views. Fmax changes from 0.05473 to 0.07343 and from 0.17155 to 0.21009, with paired intervals above zero. Updating LocalPlus's annotations also helps. Learning beyond that complete current-data control remains uncertain for the primary biological-process endpoint; molecular-function and cellular-component secondary contrasts improve in both views. |
+| Can published methods recover later protein-function annotations? | The [completed contextual comparison](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md) improves over retained LocalPlus in both fixed primary views: Fmax 0.05473 → 0.07343 and 0.17155 → 0.21009, with paired intervals above zero. Updating annotations also helps primary BP. Extra learning benefit beyond that updated control is uncertain. Secondary MF/CC gains over LocalPlus do not beat the stronger direct nonexperimental-GOA control; CC favors that control. |
 | Can the app preserve and explain source content? | Original records, qualifications and native exports are replayed. The archive study recovered 253/308 exact cited WikiPathways revisions, with the remainder unresolved. A separate expert-grounding assessment measures a false-alarm/recall trade-off. |
 | Does the model agent establish biological truth or support automatic pruning? | No. The tested source-claim agent trails the published specialist. The app preserves its results without adopting automatic acceptance or biological pruning. |
 
@@ -91,6 +91,11 @@ The earlier [global-mixture primary test](evaluations/LEARNED_COMBINATION_RESULT
 remains failed. Public curator labels
 are incomplete and can share studies or prior training exposure. Whole-graph
 biological accuracy and validated automatic scientific pruning remain open.
+A separate [annotation-preservation development check](evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
+improves the selected cellular-component model but still trails direct GOA,
+and worsens biological process. It is retained without promotion or an
+independent-confirmation claim.
+
 The [latest full report](evaluations/contextual_combination_20261115/report.html),
 [scientific record](evaluations/SCIENTIFIC_RESULTS_20261114.md) and
 [earlier mixture results](evaluations/LEARNED_COMBINATION_RESULTS_20261115.md)
@@ -131,7 +136,7 @@ and checksums. Draft-release access requires repository write permission;
 tracked reports/slides remain available through the branch checkout. Neither
 main nor public visibility changed.
 
-The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx)
+The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx)
 has six main slides and two technical appendix slides. The
 [organizer/proposal crosswalk](PROJECT_ALIGNMENT.md) distinguishes delivered
 functionality from broader proposal ambitions. The older release archives,

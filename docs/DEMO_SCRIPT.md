@@ -59,8 +59,9 @@ host; these are different tasks, not a direct speedup comparison.
    views: **0.05473 → 0.07343** and **0.17155 → 0.21009**, with paired intervals
    above zero. Refreshing LocalPlus's annotations also helps. Extra learned
    benefit over fully updated LocalPlus is uncertain for primary biological
-   process; molecular-function and cellular-component secondary contrasts
-   improve. Fmax measures later curator-annotation recovery, not graph accuracy.
+   process. Secondary molecular-function and cellular-component contrasts improve
+   over LocalPlus, but direct nonexperimental GOA is not clearly beaten for MF
+   and is better for CC. Fmax measures later curator-annotation recovery, not graph accuracy.
    All 3,300 forecasts preceded reference opening. Keep the earlier negative
    graph, pruning and agent results distinct. If staying entirely inside the
    hosted app, use its explicitly dated November 14 assessment and one saved
@@ -76,7 +77,7 @@ host; these are different tasks, not a direct speedup comparison.
 
 The existing `crc_judge_demo` route and SIGNOR BRAF-site explanation remain
 supplementary demonstrations. The new standalone results and
-[editable v3 presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx)
+[editable v4 presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx)
 are the latest scientific handoff. The older negative 128-gene coessentiality transfer remains a separate
 result, not a description of every subsequent transfer task.
 
@@ -108,8 +109,8 @@ not full VM recovery or the later grounding, native GO attachment and software
 artifacts.
 
 The private AWS/Neptune mirror and [NVIDIA integration](NVIDIA_INTEGRATION_STATUS_20261113.md)
-can be described in questions. Brev work for this delivery is finished; the
-instance and model server are unnecessary for review. Keep the AWS reviewer
+can be described in questions. The instance and model server are unnecessary for saved-data review;
+any separate research CPU jobs have their own recorded status. Keep the AWS reviewer
 site available. Saved inspection needs no model calls or fresh retrieval.
 Use the [current scientific results](evaluations/SCIENTIFIC_RESULTS_20261114.md)
 and delivery receipts for scope; older PDFs/slides remain dated checkpoints

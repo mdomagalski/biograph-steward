@@ -16,7 +16,7 @@ Open [the workbench](http://127.0.0.1:8765/). Keep the terminal running; Ctrl+C 
 
 For the current product story and measured limits, read the
 [submission overview](docs/SUBMISSION_OVERVIEW.md) or open the
-[editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx).
+[editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx).
 The [delivery status](docs/DELIVERY_STATUS_20261115.json) identifies dated
 checkpoints and the release actions still pending.
 
@@ -118,8 +118,11 @@ The [completed November 15 comparison](docs/evaluations/CONTEXTUAL_COMBINATION_R
 supports later GO function recovery over retained LocalPlus in both fixed
 primary biological-process views. Refreshing LocalPlus's annotations also
 helps. Learning beyond that fully updated control is uncertain for primary
-biological process, with positive molecular-function and cellular-component
-secondary results. This separate historical function task does not establish
+biological process. Secondary molecular-function and cellular-component results
+improve over LocalPlus; the stronger direct nonexperimental-GOA baseline is
+not clearly beaten for molecular function and is better for cellular component.
+The [current-information table](docs/evaluations/CONTEXTUAL_INFORMATION_CONTROLS_20261115.md)
+shows all three aspects. This separate historical function task does not establish
 whole-graph accuracy or a consistent same-learner enriched-graph gain.
 
 The [expert-labeled grounding assessment](docs/evaluations/EXPERT_GROUNDING_20261113.md)

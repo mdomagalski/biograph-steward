@@ -3,7 +3,8 @@
 **The preselected context model improves on retained LocalPlus in both fixed
 primary reference views. Updating LocalPlus's annotations also helps.
 The learned model's primary biological-process advantage over fully updated
-LocalPlus remains uncertain; secondary function and location results improve.**
+LocalPlus remains uncertain. Secondary function/location gains over LocalPlus
+do not establish an advantage over the stronger nonexperimental-GOA control.**
 
 This November 15 assessment closes the previously pending comparison. It tests
 recovery of later human Gene Ontology (GO) curator annotations, a supporting
@@ -51,7 +52,11 @@ The larger PK secondary groups also favor the selected model against the
 
 These are encouraging aspect-specific findings, with 229/228 and 1,230/1,230
 residual-positive proteins respectively. They remain secondary and do not
-replace the primary biological-process gate. The
+replace the primary biological-process gate. **Direct starting nonexperimental
+GOA annotations are a stronger control:** MF intervals versus that control
+cross zero in both views, and CC favors it in both views. See the
+[complete current-information control table](CONTEXTUAL_INFORMATION_CONTROLS_20261115.md).
+The
 [complete nine-setting contrast table](contextual_combination_20261115/current_annotation_contrasts.md)
 also retains uncertain biological-process and sparse no-knowledge results.
 
@@ -86,7 +91,9 @@ Two annotation controls address different explanations:
   test of the combiner's training supervision.
 
 The defensible conclusion is that **source freshness and contextual
-combination both matter relative to the retained baseline**. Additional
+combination improve this primary comparison relative to the retained baseline**.
+This does not establish a generally best replacement for current source
+information across aspects. Additional
 primary biological-process benefit from learning beyond a fully refreshed
 baseline is unresolved. A
 GCN/MLP contrast also changes depth and capacity, so it does not isolate a
@@ -177,3 +184,12 @@ The method choice follows the [ProtBoost paper](https://arxiv.org/abs/2412.04529
 and [author code](https://github.com/btbpanda/CAFA6-updates/tree/0ee85d2f07f724be1721ea39211f1b364535f976).
 The separation of annotation growth from algorithmic gain follows the
 [CAFA4 assessment preprint, June 2026 revision](https://pmc.ncbi.nlm.nih.gov/articles/PMC13174626/).
+
+## Separate consumed-reference follow-up
+
+The [fixed annotation-preservation check](ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
+uses only the original sealed T0 prior and preserves all 18 settings. It finds
+a trade-off rather than a general remedy: BP worsens, MF remains uncertain,
+and CC improves over the selected model but remains below direct GOA. This
+development result changes none of the study above, its original summary,
+forecasts, reference files or success gates.
