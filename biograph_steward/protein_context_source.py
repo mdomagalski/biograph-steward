@@ -184,6 +184,32 @@ def parse_match_rpc(rpc, expected_md5s=None):
     return rows
 
 
+def parse_entry_response(raw, status, entry):
+    """Preserve native JSON or documented empty204 as explicitly unavailable.
+
+    A no-content lookup is not a retirement record or biological negative.
+    Other statuses and contradictory nonempty204 bodies remain failures.
+    """
+    _need(isinstance(raw, bytes) and type(status) is int and status in (200, 204, 410)
+          and isinstance(entry, str) and ENTRY.fullmatch(entry), "Invalid native entry lookup contract.")
+    if status == 204:
+        _need(raw == b"", "A native204 entry lookup must have an empty body.")
+        return None
+    value = _json(raw)
+    _need(isinstance(value, dict), "Native entry metadata must be a JSON object.")
+    metadata = value.get("metadata") if status == 200 else value
+    _need(isinstance(metadata, dict) and isinstance(metadata.get("accession"), str)
+          and metadata["accession"].upper() == entry, "Native entry identity differs from the exact requested entry.")
+    if status == 410:
+        _need(isinstance(value.get("deletion_date"), str) and value["deletion_date"]
+              and value.get("source_database") == "interpro", "Deleted entry lacks native lifecycle metadata.")
+    else:
+        for field in ("is_llm", "is_reviewed_llm", "is_updated_llm"):
+            _need(field not in metadata or type(metadata[field]) is bool,
+                  "Malformed native editorial-method flag.")
+    return value
+
+
 def _http(url, payload=None):
     _need(url in {MCP_URL, INFO_URL} or re.fullmatch(
         r"https://www\.ebi\.ac\.uk/interpro/api/entry/interpro/IPR[0-9]{6}/\?format=json", url),
@@ -310,28 +336,20 @@ def capture_context(proteins, output, *, runs_dir="runs", client=None, http_tran
         row.update(completed_at=utcnow(), http_status=status, raw_file=raw_file, body_sha256=sha(path),
                http_headers={k: v for k, v in headers.items() if k in
                   {"Content-Type", "Date", "ETag", "Last-Modified", "Retry-After"}})
-        allowed = ({200, 410} if entry is not None else {200, 202}
+        allowed = ({200, 204, 410} if entry is not None else {200, 202}
                    if payload and payload.get("method") == "notifications/initialized" else {200})
         _need(status in allowed and len(raw) <= 25_000_000, "Official lookup failed or exceeded its bounded response size.")
         if not raw and status == 202:
             return None
+        if entry is not None and status == 204:
+            return parse_entry_response(raw, status, entry)
         value = mcp_client._parse_jsonrpc(raw.decode("utf-8")) if rpc else _json(raw)
         if rpc and payload is not None and "id" in payload:
             _need(value.get("id") == payload["id"], "MCP response identity does not match the recorded request.")
         write_json(folder / file, value)
         row.update(response_file=file, file_sha256=sha(folder / file))
         if entry is not None:
-            _need(isinstance(value, dict), "Native entry metadata must be a JSON object.")
-            metadata = value.get("metadata") if status == 200 else value
-            _need(isinstance(metadata, dict) and isinstance(metadata.get("accession"), str)
-                  and metadata["accession"].upper() == entry, "Native entry identity differs from the exact requested entry.")
-            if status == 410:
-                _need(isinstance(value.get("deletion_date"), str) and value["deletion_date"]
-                      and value.get("source_database") == "interpro", "Deleted entry lacks native lifecycle metadata.")
-            else:
-                for field in ("is_llm", "is_reviewed_llm", "is_updated_llm"):
-                    _need(field not in metadata or type(metadata[field]) is bool,
-                          "Malformed native editorial-method flag.")
+            parse_entry_response(raw, status, entry)
         return value
 
     try:
@@ -388,10 +406,14 @@ def capture_context(proteins, output, *, runs_dir="runs", client=None, http_tran
                     for location in match["locations"]:
                         spans = [location] + location["location-fragments"] + [p for s in location.get("sites") or [] for p in s["siteLocations"]]
                         _need(all(p["end"] <= row["sequence_length"] for p in spans), "Native match extends beyond the exact source sequence.")
-        entry_files = {}
+        entry_files, entry_unavailable = {}, {}
         for entry in entries:
-            entry_files[entry] = "interpro/entries/" + entry + ".json"
-            request(ENTRY_URL.format(entry), entry_files[entry], entry=entry)
+            relative = "interpro/entries/" + entry + ".json"
+            native = request(ENTRY_URL.format(entry), relative, entry=entry)
+            if native is None:
+                entry_unavailable[entry] = relative[:-5] + ".raw"
+            else:
+                entry_files[entry] = relative
         after = request(INFO_URL, "interpro/info_after.json")
         _need(_info(before) == _info(after), "Matches API/library release changed during source capture.")
         write_json(folder / "source_requests.json", {"requests": requests})
@@ -400,6 +422,7 @@ def capture_context(proteins, output, *, runs_dir="runs", client=None, http_tran
                  for path in sorted(folder.rglob("*")) if path.is_file()}
         manifest = {"format": FORMAT, "created_at": utcnow(), "proteins": rows, "files": files,
             "entry_files": entry_files,
+            "entry_unavailable": entry_unavailable,
             "info_before_file": "interpro/info_before.json", "info_after_file": "interpro/info_after.json",
             "tools_file": "interpro/tools.json", "requests_file": "source_requests.json", "tool_name": "matchSequences",
             "tool_schema_sha256": digest(tool), "source_code": {"official_mcp_commit": OFFICIAL_COMMIT,

@@ -27,13 +27,27 @@ The same generic capture was then extended to the **98 remaining primary protein
 
 Among the three walkthrough examples, 27 target–InterPro memberships occur in the captured Pharos cross-references; **26 also occur in the current exact-sequence results**. Their recurrence is explicitly treated as reused context.
 
-Across the **99 primary targets**, Pharos supplies **824 distinct protein–InterPro identifier memberships** and the sequence lookup supplies **934**. There are **790 shared memberships**, **34 found only in the captured Pharos cross-references** (29 distinct entry IDs), and **144 found only in the sequence results** (107 distinct entry IDs). Repeated signatures and methods do not add memberships or supporting votes. These are exact identifier comparisons, not annotation-version identity or independent corroboration. The Pharos-only differences remain unresolved: absence from a sequence-match response does not establish retirement, an incorrect annotation or biological absence. Sequence-only identifiers likewise do not establish new biology or experimental support.
+Across the **99 primary targets**, Pharos supplies **824 distinct protein–InterPro identifier memberships** and the sequence lookup supplies **934**. There are **790 shared memberships**, **34 found only in the captured Pharos cross-references** (29 distinct entry IDs), and **144 found only in the sequence results** (107 distinct entry IDs). Repeated signatures and methods do not add memberships or supporting votes. These are exact identifier comparisons, not annotation-version identity or independent corroboration. Absence from a sequence-match response alone does not establish retirement, an incorrect annotation or biological absence. Sequence-only identifiers likewise do not establish new biology or experimental support.
+
+A targeted native entry lookup then qualified **all 29 Pharos-only identifiers**, covering all 34 affected memberships:
+
+| Native entry response | Distinct entry IDs | Protein–entry memberships |
+| --- | ---: | ---: |
+| HTTP200: current entry record supplied | 8 | 11 |
+| HTTP410: explicit entry-retirement record supplied | 20 | 21 |
+| HTTP204: no content; remains unresolved | 1 | 2 |
+
+The no-content identifier is `IPR017986`; the application preserves its empty response and displays an unresolved state without fabricating a JSON annotation. Current entry existence leaves the absence of a sequence match unexplained. Retirement qualifies the entry identifier's currency; protein functions, historical annotation correctness and relationships remain unadjudicated. The app retains the source identifiers and makes no automatic remapping or biological pruning.
+
+For the **8 current identifiers / 11 memberships**, we also checked native `entry.parent` fields and every directed path in the eight captured entry hierarchies. None of the Pharos-only identifiers was a reported parent or captured ancestor of a same-protein matched entry. Two paths ran in the reverse direction: PIK3CA had matched `IPR015433` above Pharos-only `IPR008290`, and PTEN had matched `IPR000387` above Pharos-only `IPR000340`. These broader matches do not validate the more-specific Pharos membership. The other nine memberships had no captured path in either direction. Direct-match counts remain unchanged.
 
 The remaining CCNO cross-reference, `IPR028864`, has a native HTTP410 record with deletion date **25 August2022**. Its former PANTHER signature history is preserved. No replacement is supplied, so the app retains the source identifier and shows the lifecycle warning without remapping or pruning a biological claim. [Native deletion record](https://www.ebi.ac.uk/interpro/api/entry/interpro/IPR028864/?format=json)
 
 EGFR has two additional current entry identifiers. `IPR049328` links to Pfam `PF21314`; `IPR050122` links to PANTHER `PTHR24416`. The latter's native metadata records `is_llm=true` and `is_reviewed_llm=false`. Both return no GO mapping. These distinctions qualify the entry descriptions and prevent an integrated identifier from being presented as automatically curator-reviewed or as new experimental evidence. [Native entry metadata](https://www.ebi.ac.uk/interpro/api/entry/interpro/IPR050122/?format=json), [InterPro2025](https://doi.org/10.1093/nar/gkae1082)
 
 Entry turnover is an established integration issue. InterPro's official release91 notes document its decision to stop integrating changing PANTHER subfamilies and focus on families. That explains why lifecycle checks are necessary; the exact cause of this individual deletion is not asserted. [Official release notes](https://proteinswebteam.github.io/interpro-blog/2022/10/20/InterPro-91.0-latest-developments/)
+
+InterPro's published lifecycle analysis also describes annotation loss following changes to member signatures, sequence coverage and functional specificity. Removal alone therefore cannot label the earlier protein-function assertion incorrect. Our lifecycle lookup records the source's current status while preserving the original annotation. [Sangrador-Vegas etal.,2016](https://doi.org/10.1093/database/baw027)
 
 ## Source-fidelity verification
 
@@ -47,7 +61,9 @@ An independent offline replay verified all eight recorded InterPro raw/parsed re
 
 An additional independent offline audit replayed all five raw/parsed response pairs in the 98-protein packet, reusing the unchanged official parser for MCP/SSE envelopes. It verified all 98 exact source identifiers and sequence hashes, and checked every native match object against the reader output. The only executed MCP tool was `matchSequences`, using sequence MD5 strings. All 99 primary targets were covered by the explicit registration index, while the original workspace's snapshot, graph, manifest and qualification receipt remained byte-identical. This establishes source coverage and fidelity, without adding graph assertions or validating the matched biology.
 
-Invented regression cases additionally cover missing sequence versus unknown MD5 versus known-empty results; exact isoform identifiers; source/hash/release corruption; coordinates outside the bound sequence; and native GOA AND/OR groups, NOT qualifiers, taxa and product forms. The existing GAF wrapper supplies the GOA records. InterPro2GO-derived `IEA` / `GO_REF:0000002` lineage is shown as annotation reuse. [GO method reference](https://geneontology.org/GO_REF/0000002)
+The separately dated entry extension copied all **111 original source files**, the 98 protein records and all 7,908 native matches unchanged. Its independent replay verified 28 native JSON response pairs and the one empty HTTP204 response, reconciled all 34 memberships to those entry outcomes, and confirmed that registration still covers 99/99 primary targets. The extension repeated no Pharos retrieval or sequence-MD5 lookup and made no model calls. A prior strict capture stopped after 12 of the 29 requests, leaving 17 unattempted. Its raw responses and partial audit remain preserved as failed operator evidence; it was never registered as an application source.
+
+Invented regression cases additionally cover missing sequence versus unknown MD5 versus known-empty results; exact isoform identifiers; source/hash/release corruption; coordinates outside the bound sequence; native HTTP204 metadata with empty bytes and no fabricated JSON; and native GOA AND/OR groups, NOT qualifiers, taxa and product forms. The existing GAF wrapper supplies the GOA records. InterPro2GO-derived `IEA` / `GO_REF:0000002` lineage is shown as annotation reuse. [GO method reference](https://geneontology.org/GO_REF/0000002)
 
 A separate actual EGFR selection in the source-faithful workspace verified the native GOA lineage for `GO:0004713` (protein tyrosine kinase activity). All **21 returned native annotation records** were preserved unchanged, including one `IEA` / `GO_REF:0000002` record with separate With/From alternatives `IPR016245` and `IPR020635`, both present in the sequence results. The selected historical Pharos row instead records `IDA` assigned by UniProtKB. Shared protein, term and entry identifiers establish inspectable annotation context; they do not identify that historical row, equate its sequence version or add independent experimental support. The assay selections have no GO claim to bind, so no GO lineage is inferred for them.
 
@@ -55,7 +71,7 @@ Human comprehension remains for the reviewer walkthrough. The delivered improvem
 
 ## Reproduction and evidence
 
-The maintained implementation is `biograph_steward/protein_context_source.py`, `biograph_steward/protein_context.py` and `biograph_steward/protein_context.js`. The generic producer and reader operate on explicitly selected exact protein identifiers; they contain no rules specific to these three proteins. The [upstream qualification](INTERPRO_QUALIFICATION_20261114.md) records method, source and license details.
+The maintained implementation is `biograph_steward/protein_context_source.py`, the entry-only enrichment helper `biograph_steward/protein_context_entries.py`, the offline reader `biograph_steward/protein_context.py` and the view `biograph_steward/protein_context.js`. The generic producer and reader operate on explicitly selected exact protein identifiers; they contain no rules specific to these three proteins. The [upstream qualification](INTERPRO_QUALIFICATION_20261114.md) records method, source and license details.
 
 Real public source payloads remain ignored operator data. Aggregate receipts are:
 
@@ -68,5 +84,10 @@ Real public source payloads remain ignored operator data. Aggregate receipts are
 | `runs/protein_context_primary_20261114_v1/protein_context.json` — remaining 98 primary targets | `7f1205265f9d34a90888940459bb6b8b0d3e423ce5c8a2af38f293cee614fb0e` |
 | `runs/interpro_qualification_20261114/primary_cohort_assessment_v1.json` — independent 98-protein and 99-target coverage audit | `1d6cd7e8a5db16f8dbee595603a8a86c28cb87a4fa4a11263b0758df28528407` |
 | `runs/interpro_qualification_20261114/primary_identifier_overlap_v1.json` — exact identifier overlap across all 99 primary targets | `e77fb94376f562a29c7c0d055ef5c2a394aec9e250e7ad0e3d90a46c833755dd` |
+| `runs/protein_context_primary_entries_20261114_v2/protein_context.json` — immutable native entry extension | `1ed8db27268cbb00c899e77f72be53e63682739ff2e388c02d163a6129becf89` |
+| `runs/interpro_qualification_20261114/primary_entry_lifecycle_assessment_v1.json` — independent 29-entry / 34-membership reconciliation | `b6c5873b09ed4b78c1abf8c83f8bd04cf510b112d12a3e789540374e19c48e08` |
+| `runs/interpro_qualification_20261114/hierarchy_scope_check_v1.json` — native parent and directed-hierarchy check for 8 current IDs / 11 memberships | `40428b631e1aa5dff70749d2f5f60cd07102992f403361d4c8fae72a328540c1` |
+| `runs/interpro_qualification_20261114/partial_entry_lifecycle_assessment_v1.json` — preserved first 12 requests; 17 unattempted | `d0032b1cf4187e1bc54235967923aaf7d5a56d453c1efd343207d82e1f7ec5f3` |
+| `runs/interpro_qualification_20261114/lifecycle_ui_examples_v1.json` — exact FBXW7 unresolved and DCC retired-entry walkthrough selections | `25f9fd8b06d15ca88110b8e14d964c4fade4d7d0b25ceabef1d2175e07b984c4` |
 
 The pinned receipts record exact source files, unchanged-parser identity, reader code pins and replay totals. The audit performed no biological label selection, prediction fitting or graph intervention.

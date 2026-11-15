@@ -82,7 +82,7 @@ class ProteinContext(unittest.TestCase):
             relative = 'interpro/entries/' + identifier + '.json'
             dump(packet.folder / relative, body)
             packet.manifest['entry_files'][identifier] = relative
-            requests.append({'response_file': relative, 'http_status': status, 'method': 'GET',
+            requests.append({'provider': 'InterPro', 'response_file': relative, 'http_status': status, 'method': 'GET',
                 'url': 'https://www.ebi.ac.uk/interpro/api/entry/interpro/' + identifier + '/?format=json',
                 'file_sha256': sha(packet.folder / relative), 'completed_at': packet.manifest['created_at']})
         dump(packet.folder / 'source_requests.json', {'requests': requests}); packet.seal()
@@ -94,6 +94,36 @@ class ProteinContext(unittest.TestCase):
         self.assertTrue(view['entry_metadata'][0]['native_record']['metadata']['is_llm'])
         requests[0]['http_status'] = 410
         dump(packet.folder / 'source_requests.json', {'requests': requests}); packet.seal()
+        with self.assertRaises(ValueError): load_publication(packet.folder, packet.pin)
+
+    def test_native_no_content_is_separate_unresolved_metadata_without_fabricated_json(self):
+        packet = ContractPacket(self.root, self.protein)
+        raw = 'interpro/entries/IPR999999.raw';(packet.folder / raw).parent.mkdir(parents=True, exist_ok=True)
+        (packet.folder / raw).write_bytes(b'')
+        request = {'provider': 'InterPro', 'raw_file': raw, 'body_sha256': sha(packet.folder / raw),
+            'http_status': 204, 'method': 'GET', 'request': None,
+            'started_at': packet.manifest['created_at'], 'completed_at': packet.manifest['created_at'],
+            'url': 'https://www.ebi.ac.uk/interpro/api/entry/interpro/IPR999999/?format=json'}
+        dump(packet.folder / 'source_requests.json', {'requests': [request]})
+        packet.manifest['entry_unavailable'] = {'IPR999999': raw};packet.seal()
+        view = inspect_selection(self.root, self.graph, self.selection, self.protein, 'run')
+        self.assertEqual(view['entry_metadata'], [])
+        row, = view['entry_unavailable']
+        self.assertEqual(row['status'], 'no_content')
+        self.assertFalse(row['biological_negative_inferred'])
+        self.assertNotIn('native_record', row)
+        self.assertEqual(row['source_pointer'], 'source_requests.json#/requests/0')
+        self.assertEqual(row['raw_file'], raw)
+        self.assertEqual(view['sequence']['match_status'], 'found_with_matches')
+        request['http_status'] = 410
+        dump(packet.folder / 'source_requests.json', {'requests': [request]});packet.seal()
+        with self.assertRaises(ValueError): load_publication(packet.folder, packet.pin)
+
+    def test_no_content_body_and_current_entry_are_not_merged_even_after_resigning(self):
+        packet = ContractPacket(self.root, self.protein)
+        packet.manifest['entry_unavailable'] = {'IPR999999': 'interpro/info_before.json'};packet.seal()
+        with self.assertRaises(ValueError): load_publication(packet.folder, packet.pin)
+        packet.manifest['entry_files'] = {'IPR999999': 'interpro/info_before.json'};packet.seal()
         with self.assertRaises(ValueError): load_publication(packet.folder, packet.pin)
 
 

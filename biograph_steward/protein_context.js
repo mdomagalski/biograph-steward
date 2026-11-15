@@ -150,10 +150,16 @@
     }
   }
   function renderEntryMetadata(parent, result) {
-    const records = result.entry_metadata || [];
-    const box = details(parent, 'Entry currency and annotation method (' + records.length + ' inspected)');
+    const records = result.entry_metadata || [], unavailable = result.entry_unavailable || [];
+    const box = details(parent, 'Entry currency and annotation method (' + (records.length + unavailable.length) + ' inspected)');
     add(box, 'p', 'Only explicitly inspected entries have metadata here. Entry retirement concerns a source identifier; it does not establish loss of the protein, its function or its interaction. Editorial flags describe the entry annotation, not the accuracy of a sequence match.', 'small');
-    if (!records.length) {add(box, 'p', 'No entry lifecycle or editorial metadata was captured. No review status is inferred from an integrated entry label.'); return;}
+    if (!records.length && !unavailable.length) {add(box, 'p', 'No entry lifecycle or editorial metadata was captured. No review status is inferred from an integrated entry label.'); return;}
+    for (const record of unavailable) {
+      const item = add(box, 'section', null, 'source-record'), heading = add(item, 'p');
+      entryLink(heading, record.interpro_id);
+      add(item, 'p', 'Entry metadata unavailable. The source returned no content (HTTP 204). Retirement, replacement and editorial status remain unresolved.', 'notice');
+      add(item, 'p', 'Retrieved: ' + literal(record.retrieved_at) + ' · Saved request locator: ' + literal(record.source_pointer), 'small');
+    }
     for (const record of records) {
       const body = record.native_record || {}, metadata = record.http_status === 200 ? (body.metadata || {}) : body;
       const item = add(box, 'section', null, 'source-record');
@@ -187,6 +193,8 @@
     const generated = (result.entry_metadata || []).filter(r => r.http_status === 200 && r.native_record?.metadata?.is_llm === true && r.native_record?.metadata?.is_reviewed_llm === false).length;
     if (retired) add(parent, 'p', retired + ' inspected source ' + (retired === 1 ? 'entry is' : 'entries are') + ' retired. Open “Entry currency and annotation method” below for the native record; no replacement is inferred.', 'notice warn');
     if (generated) add(parent, 'p', generated + ' inspected entry ' + (generated === 1 ? 'annotation is' : 'annotations are') + ' flagged as AI-generated and not yet reviewed. Native metadata is preserved below.', 'notice warn');
+    const unavailable = (result.entry_unavailable || []).length;
+    if (unavailable) add(parent, 'p', unavailable + ' inspected entry ' + (unavailable === 1 ? 'lookup returned' : 'lookups returned') + ' no content. Source status remains unresolved; see the recorded lookup below.', 'notice');
     if (seq.status !== 'sequence_available') {
       add(parent, 'p', 'No usable source sequence was available. No cross-version coordinate mapping was inferred.');
     } else if (result.precomputed_found === false) {

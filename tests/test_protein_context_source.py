@@ -58,7 +58,7 @@ class SourceCaptureTests(unittest.TestCase):
         if url.startswith("https://www.ebi.ac.uk/interpro/api/entry/interpro/"):
             self.assertIsNone(payload)
             status, value = self.entry_response
-            return status, {}, json.dumps(value).encode()
+            return status, {}, value if isinstance(value, bytes) else json.dumps(value).encode()
         if url == INFO_URL:
             self.info_calls += 1
             info = deepcopy(self.info)
@@ -164,6 +164,26 @@ class SourceCaptureTests(unittest.TestCase):
         self.assertEqual(native, self.entry_response[1])
         self.assertFalse(native["metadata"]["is_reviewed_llm"])
         self.assertFalse(manifest["scientific_accuracy_assessed"])
+
+    def test_optional_204_empty_is_explicit_unknown_without_invented_native_json(self):
+        self.entry_response = 204, b""
+        manifest = self.capture(entries=["IPR999999"])
+        self.assertEqual(manifest["entry_files"], {})
+        relative = manifest["entry_unavailable"]["IPR999999"]
+        self.assertEqual((self.output / relative).read_bytes(), b"")
+        self.assertFalse((self.output / "interpro/entries/IPR999999.json").exists())
+        rows = json.loads((self.output / "source_requests.json").read_text())["requests"]
+        row = next(r for r in rows if r.get("raw_file") == relative)
+        self.assertEqual(row["http_status"], 204)
+        self.assertNotIn("response_file", row)
+        self.assertEqual(row["body_sha256"], hashlib.sha256(b"").hexdigest())
+
+    def test_contradictory_nonempty_204_does_not_complete(self):
+        self.entry_response = 204, b'{"metadata":{"accession":"IPR999999"}}'
+        with self.assertRaisesRegex(ValueError, "empty body"):
+            self.capture(entries=["IPR999999"])
+        self.assertFalse((self.output / "protein_context.json").exists())
+        self.assertTrue((self.output / "interpro/entries/IPR999999.raw").exists())
 
     def test_entry_identity_mismatch_and_undocumented_failure_do_not_complete(self):
         for number, response in enumerate(((200, {"metadata": {"accession": "IPR000001"}}),

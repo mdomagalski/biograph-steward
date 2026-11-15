@@ -76,7 +76,7 @@ def _relative(value):
 
 def load_publication(folder, expected_manifest_sha256):
     """Verify one bounded immutable source packet; perform no source calls."""
-    from .protein_context_source import normalize_sequence, parse_match_rpc
+    from .protein_context_source import normalize_sequence, parse_match_rpc, parse_entry_response
     folder = Path(folder).absolute()
     _need(folder.is_dir() and not folder.is_symlink() and _sha(expected_manifest_sha256),
           'ordinary publication folder and exact manifest FILE pin required.')
@@ -136,7 +136,9 @@ def load_publication(folder, expected_manifest_sha256):
     _need(isinstance(requests, dict) and isinstance(requests.get('requests'), list),
           'recorded source request inventory required.')
     entries = manifest.get('entry_files', {})
-    _need(isinstance(entries, dict) and len(entries) <= 100,
+    unavailable = manifest.get('entry_unavailable', {})
+    _need(isinstance(entries, dict) and isinstance(unavailable, dict)
+          and not set(entries) & set(unavailable) and len(set(entries) | set(unavailable)) <= 100,
           'bounded explicit entry metadata required.')
     entry_metadata = {}
     for identifier, name in entries.items():
@@ -148,29 +150,45 @@ def load_publication(folder, expected_manifest_sha256):
         _need(len(receipts) == 1, 'unique native entry request receipt required.')
         receipt = receipts[0]; status = receipt.get('http_status')
         _need(type(status) is int and status in (200, 410)
+              and receipt.get('provider') == 'InterPro'
               and receipt.get('method') == 'GET'
               and receipt.get('url') == 'https://www.ebi.ac.uk/interpro/api/entry/interpro/' + identifier + '/?format=json'
               and receipt.get('file_sha256') == files[name]['sha256'],
               'native entry source/status binding differs.')
-        _need(isinstance(body, dict), 'native entry object required.')
-        if status == 200:
-            _need(isinstance(body.get('metadata'), dict)
-                  and isinstance(body['metadata'].get('accession'), str)
-                  and body['metadata']['accession'].upper() == identifier,
-                  'current native entry identifier differs.')
-            _need(all(key not in body['metadata'] or type(body['metadata'][key]) is bool
-                      for key in ('is_llm', 'is_reviewed_llm', 'is_updated_llm')),
-                  'native entry editorial flags must retain boolean values when supplied.')
-        else:
-            _need(isinstance(body.get('accession'), str)
-                  and body['accession'].upper() == identifier
-                  and body.get('source_database') == 'interpro'
-                  and isinstance(body.get('deletion_date'), str) and body['deletion_date'],
-                  'deleted native entry identifier/date differs.')
+        _need(parse_entry_response((folder / name).read_bytes(), status, identifier) == body,
+              'native entry metadata differs from its parser replay.')
         entry_metadata[identifier] = {'interpro_id': identifier, 'http_status': status,
             'native_record': deepcopy(body), 'source_pointer': name + '#',
             'source_url': receipt['url'], 'retrieved_at': receipt.get('completed_at'),
             'automatic_remapping_performed': False, 'independent_evidence': False}
+    entry_unavailable = {}
+    for identifier, name in unavailable.items():
+        _need(isinstance(identifier, str) and IPR.fullmatch(identifier),
+              'exact unavailable InterPro entry identifier required.')
+        _relative(name)
+        _need(name in files and files[name]['bytes'] == 0,
+              'no-content entry requires inventoried empty native bytes.')
+        receipts = [(index, row) for index, row in enumerate(requests['requests'])
+                    if isinstance(row, dict) and row.get('raw_file') == name]
+        _need(len(receipts) == 1, 'unique native no-content entry request required.')
+        index, receipt = receipts[0]
+        _need(receipt.get('provider') == 'InterPro' and receipt.get('method') == 'GET'
+              and type(receipt.get('http_status')) is int and receipt['http_status'] == 204
+              and receipt.get('request') is None and receipt.get('response_file') is None
+              and receipt.get('url') == 'https://www.ebi.ac.uk/interpro/api/entry/interpro/' + identifier + '/?format=json'
+              and receipt.get('body_sha256') == files[name]['sha256'],
+              'native no-content source/status binding differs.')
+        for key in ('started_at', 'completed_at'):
+            _need(isinstance(receipt.get(key), str)
+                  and datetime.fromisoformat(receipt[key]).tzinfo is not None,
+                  'dated native no-content request required.')
+        _need(datetime.fromisoformat(receipt['started_at']) <= datetime.fromisoformat(receipt['completed_at'])
+              and parse_entry_response((folder / name).read_bytes(), 204, identifier) is None,
+              'native no-content observation differs.')
+        entry_unavailable[identifier] = {'interpro_id': identifier, 'http_status': 204,
+            'source_pointer': manifest['requests_file'] + '#/requests/' + str(index),
+            'raw_file': name, 'source_url': receipt['url'], 'retrieved_at': receipt['completed_at'],
+            'status': 'no_content', 'biological_negative_inferred': False}
     rows = manifest.get('proteins')
     _need(isinstance(rows, list) and 1 <= len(rows) <= 100
           and all(isinstance(row, dict) and _protein(row.get('protein')) for row in rows)
@@ -227,7 +245,7 @@ def load_publication(folder, expected_manifest_sha256):
     _need(set(results) == expected, 'missing or unrequested native MD5 response.')
     return {'manifest': manifest, 'manifest_sha256': expected_manifest_sha256,
             'proteins': proteins, 'info_before': before, 'info_after': after,
-            'entry_metadata': entry_metadata}
+            'entry_metadata': entry_metadata, 'entry_unavailable': entry_unavailable}
 
 
 def registered_contexts(runs_dir):
@@ -393,6 +411,8 @@ def inspect_selection(runs_dir, graph, selection_id, protein, source_run, native
             **{name: deepcopy(target.get(name)) for name in FAMILIES}},
         'entry_metadata': [deepcopy(row) for identifier, row in publication['entry_metadata'].items()
                            if identifier in present or identifier in old_ipr],
+        'entry_unavailable': [deepcopy(row) for identifier, row in publication['entry_unavailable'].items()
+                              if identifier in present or identifier in old_ipr],
         'identifier_overlap': {'shared_interpro_ids': sorted(present & old_ipr),
             'interpro_ids_not_in_captured_pharos_xrefs': sorted(present - old_ipr),
             'pharos_interpro_ids': sorted(x for x in old_ipr if isinstance(x, str)),

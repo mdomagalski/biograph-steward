@@ -12,6 +12,7 @@ from biograph_steward.client import digest
 from biograph_steward.graph import save_run
 from biograph_steward.webapp import create_server, report_html
 from protein_context_fixtures import write_packet
+from protein_context_fixtures import dump, WHEN, IPR
 from test_normalization import fixture
 
 
@@ -71,6 +72,23 @@ class ProteinContextHTTP(unittest.TestCase):
         self.assertTrue(metadata['eligible'])
         self.assertEqual(metadata['proteins'][0]['protein'], self.protein)
         self.assertEqual(metadata['proteins'][0]['manifest_sha256'], self.packet.pin)
+
+    def test_no_content_entry_lookup_is_explicit_unknown_without_a_native_body(self):
+        name = 'interpro/entries/unavailable.raw'
+        path = self.packet.folder / name; path.parent.mkdir(parents=True); path.write_bytes(b'')
+        from biograph_steward.file_utils import sha
+        dump(self.packet.folder / 'source_requests.json', {'requests': [{'provider': 'InterPro',
+            'url': 'https://www.ebi.ac.uk/interpro/api/entry/interpro/' + IPR + '/?format=json',
+            'method': 'GET', 'request': None, 'http_status': 204, 'raw_file': name,
+            'body_sha256': sha(path), 'started_at': WHEN, 'completed_at': WHEN}]})
+        self.packet.manifest['entry_unavailable'] = {IPR: name}; self.packet.seal()
+        with patch('biograph_steward.protein_context_source._http', side_effect=AssertionError('No new lookup')):
+            result = self.request()
+        self.assertEqual(result['entry_metadata'], [])
+        self.assertEqual(result['entry_unavailable'][0]['http_status'], 204)
+        self.assertEqual(result['entry_unavailable'][0]['status'], 'no_content')
+        self.assertFalse(result['entry_unavailable'][0]['biological_negative_inferred'])
+        self.assertNotIn('native_record', result['entry_unavailable'][0])
 
     def test_corrupt_optional_packet_is_explicit_and_original_guide_survives(self):
         source = self.packet.folder / self.packet.manifest['proteins'][0]['pharos_file']

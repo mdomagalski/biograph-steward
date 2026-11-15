@@ -109,3 +109,12 @@ test('retired identifiers and native editorial flags are qualified without remap
   for (const value of ['Retired source entry', '2022-08-25', 'No replacement identifier', 'is_llm', 'is_reviewed_llm',
     'AI-generated and not yet reviewed', 'Not supplied', 'not an additional independent biological confirmation']) assert.ok(visible.includes(value), value);
 });
+test('native no-content responses remain explicit unknowns without a fabricated entry body', () => {
+  const {result} = fixture(), h = harness();
+  result.entry_unavailable = [{interpro_id: 'IPR888888', http_status: 204, status: 'no_content',
+    retrieved_at: '2026-01-01', source_pointer: 'requests.json#/requests/1'}];
+  const visible = text(h.render(result));
+  for (const value of ['1 inspected', 'no content', 'HTTP 204', 'Retirement, replacement and editorial status remain unresolved',
+    'requests.json#/requests/1']) assert.ok(visible.includes(value), value);
+  assert.doesNotMatch(visible, /Retired source entry · deletion date|Entry available when retrieved/);
+});

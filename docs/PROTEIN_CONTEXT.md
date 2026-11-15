@@ -64,6 +64,36 @@ terms. Failed acquisitions retain their failure receipt and never become usable
 context. `protein_context_index.json` explicitly orders registered packets; the
 first covering an exact protein is used. A changed pin fails verification.
 
+## Add entry metadata without repeating protein retrieval
+
+For an already verified packet, the entry-only command preserves its Pharos,
+sequence-match and release files and requests only the explicitly named entry
+metadata. Replace `PARENT_MANIFEST_FILE_SHA256` with the exact SHA256 of the
+parent's `protein_context.json` file.
+
+```sh
+python3 -m biograph_steward.protein_context_entries \
+  --parent runs/my_protein_context \
+  --parent-manifest-sha256 PARENT_MANIFEST_FILE_SHA256 \
+  --entry IPR028864 --entry IPR049328 \
+  --output runs/my_protein_context_entries --register
+```
+
+This makes no Pharos, MCP, sequence-scan or model request. It copies all original
+source bytes and the parent manifest, preserving their retrieval dates and
+source-code pins. New entry bodies and their timed request records have separate
+paths bound to the parent file hash. The existing offline reader must verify the
+derived packet before registration. Explicitly refreshing an entry preserves
+the earlier body and switches only its current metadata pointer.
+
+A native HTTP 410 response supplies a retirement record. An empty HTTP 204
+response means entry metadata is unavailable; it supplies no deletion date,
+replacement or biological negative. Such lookups retain their literal empty
+body and request receipt in `entry_unavailable`, without creating a JSON entry
+record. New entry lookup dates do not update or establish equivalence with the
+original Matches release. Other HTTP failures preserve a failed packet and do
+not replace the registered source.
+
 To move this optional inspector to another installation, transfer its registered
 packet folders and index into that installation's runs directory, keeping the
 folder names and bytes intact. Ordinary graph exports do not implicitly include
