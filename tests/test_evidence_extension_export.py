@@ -247,6 +247,31 @@ class EvidenceExtensionExportTests(unittest.TestCase):
         self.assertEqual(len(read(self.packet / 'source/source_licenses.json')),
                          len(self.snapshot['source_licenses']) + 3)
 
+    def test_explicit_append_preserves_every_existing_source_without_replacing_input(self):
+        publication = self.root / 'publication_native_physical'
+        make_publication(publication, 'string_physical')
+        output = self.root / 'combined_sources'
+        before = {p.relative_to(self.run).as_posix(): sha(p) for p in self.run.rglob('*') if p.is_file()}
+        graph = publish_extension(self.run, {'string_physical': publication}, output, append_sources=True)
+        after = {p.relative_to(self.run).as_posix(): sha(p) for p in self.run.rglob('*') if p.is_file()}
+        self.assertEqual(before, after)
+        self.assertEqual(set(graph['evidence_extension']['sources']), {'string', 'mapit', 'string_physical'})
+        originals = {e['id']: e for e in self.graph['edges']}
+        self.assertTrue(all(e == next(x for x in graph['edges'] if x['id'] == eid) for eid, e in originals.items()))
+        self.assertEqual(read_run(output)[2], graph)
+        self.assertNotEqual(graph['evidence_extension_sha256'], self.graph['evidence_extension_sha256'])
+
+    def test_append_cannot_replace_existing_source_or_rebind_extension_reviews(self):
+        publication = self.root / 'publication_native_physical'
+        make_publication(publication, 'string_physical')
+        with self.assertRaisesRegex(ValueError, 'existing source publications cannot be replaced'):
+            publish_extension(self.run, {'string': publication}, self.root / 'replace_attempt', append_sources=True)
+        assertion = next(a for a in self.graph['assertions'] if a.get('extension_source_kind') == 'mapit')
+        reviewed = self.root / 'reviewed_before_append'
+        review_run(self.run, reviewed, assertion['id'], 'provisional', 'Invented reviewer', 'Fixture only')
+        with self.assertRaisesRegex(ValueError, 'original source collection'):
+            publish_extension(reviewed, {'string_physical': publication}, self.root / 'review_rebind_attempt', append_sources=True)
+
 
 if __name__ == '__main__':
     unittest.main()

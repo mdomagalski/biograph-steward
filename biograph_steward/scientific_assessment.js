@@ -165,13 +165,65 @@
     const proof=add(block,'details');add(proof,'summary','Reference provenance and complete aggregate reports');
     const ul=add(proof,'ul');(result.limitations||[]).forEach(x=>add(ul,'li',x));componentSources(proof,result,options);
   }
+  function renderPublicReference(parent,result,options) {
+    const block=add(parent,'section'),loc=result.localization;
+    add(block,'h4',result.title);add(block,'p',result.scope,'small');
+    const baseline=loc.rows.find(r=>r.arm==='A_raw_Pharos_scope_qualified'&&r.level==='level1');
+    const native=loc.rows.find(r=>r.arm==='B_native_location_scope_qualified'&&r.level==='level1');
+    add(block,'p','Detailed location reference labels recovered: '+baseline.recovered+'/'+baseline.reference_positive+
+      ' with captured Pharos → '+native.recovered+'/'+native.reference_positive+' with native location records.','notice');
+    add(block,'p',loc.matched_proteins+'/'+loc.primary_proteins+' proteins match this reference; '+loc.reference_unknown_proteins+
+      ' have no matching reference label. '+loc.interpretation,'small');
+    table(block,['Fixed source view','Recovered positive labels','Additional outputs: truth unknown'],
+      loc.rows.filter(r=>r.level==='level1').map(r=>[r.label,r.recovered+'/'+r.reference_positive,r.extra_truth_unknown]));
+    const levels=add(block,'details');add(levels,'summary','All predefined location levels and source overlap');
+    table(levels,['Fixed source view','Level','Recovered positive labels'],loc.rows.map(r=>[r.label,r.level,r.recovered+'/'+r.reference_positive]));
+    const ul=add(levels,'ul');loc.limitations.forEach(x=>add(ul,'li',x));
+    add(block,'h4','Human-reviewed cancer claim projections');const cv=result.clinical;
+    add(block,'p',cv.matched_expert_gold_source_records+'/'+cv.source_records+
+      ' evidence records match the released human-reviewed claim and evidence passage. All '+cv.qualified_assertions+
+      ' complete clinical assertions remain unassessed. Candidate review states are unchanged.','small');
+    const clinical=add(block,'details');add(clinical,'summary','Clinical human review, source lineage and benchmark exposure');
+    ['human_label_provenance','source_lineage','version_and_exposure'].forEach(k=>add(clinical,'p',cv[k],'small'));
+    const clinicalLimits=add(clinical,'ul');cv.limitations.forEach(x=>add(clinicalLimits,'li',x));
+    const interactions=add(block,'details');add(interactions,'summary','Functional versus physical networks: every fixed reference panel');
+    add(interactions,'p','Physical filtering removes some negative-reference conflicts and loses supported positive interactions. STRING physical associations include co-complex relationships. Neither source type supplies a universal biological pruning rule.','small');
+    table(interactions,['Fixed panel','Common pairs','Positive / negative labels','Functional AUROC','Physical AUROC'],result.ppi.rows.map(r=>[
+      r.panel,r.pairs,r.arms.functional.positive_pairs+' / '+r.arms.functional.negative_pairs,
+      metric(r.arms.functional.AUROC),metric(r.arms.physical.AUROC)]));
+    add(interactions,'p','AUROC is undefined without both classes. All weighted contrasts use the same pairs with both source scores; missing identity or scores are not biological negatives.','small');
+    add(interactions,'p',result.ppi.source_overlap,'small');
+    const inventory=result.mitocarta;
+    add(block,'p','Mitochondrial inventory control: '+inventory.primary_gene_gold_positive+' positive, '+
+      inventory.primary_gene_gold_explicit_outside_inventory+' explicitly outside the inventory and '+inventory.primary_gene_gold_unknown+
+      ' unknown genes. All fixed source views gave the same inventory result.','small');
+    componentSources(block,result,options);
+  }
+  function renderOpenCell(parent,result,options) {
+    const block=add(parent,'section');add(block,'h4','OpenCell: source-separated localization sensitivity');
+    add(block,'p',result.primary_result,'notice');
+    const unavailable=Object.values(result.identity.excluded_primary_proteins).reduce((a,b)=>a+b,0);
+    add(block,'p',result.scope+' '+unavailable+' proteins are reference-unavailable; they are not negatives.','small');
+    add(block,'p',result.reference_unit,'small');
+    add(block,'p','This is a previously exposed development reference. Exact tagged-protein sequence and hidden citation independence remain unverified.','small');
+    const detail=add(block,'details');add(detail,'summary','All fixed OpenCell source views, reference grades and limitations');
+    const names={'A_raw_Pharos_scope_qualified':'Captured Pharos','A_retained_scope_qualified':'Retained Pharos',
+      'B_native_location_scope_qualified':'Native positive locations','C_native_experimental_scope_qualified':'Experimental records only',
+      'D_native_without_HPA_or_explicit_OpenCell':'Native excluding HPA and explicit OpenCell references'};
+    table(detail,['Source view','Reference grades','Recovered positive labels','Additional outputs: truth unknown'],
+      result.profiles.flatMap(p=>Object.entries(p.arms).map(([a,m])=>[
+        names[a],p.reference_grades.join(' + '),m.recovered_reference_positive_labels+'/'+m.reference_positive_labels,m.extra_predicted_labels_truth_unknown])));
+    const limits=add(detail,'ul');result.limitations.forEach(x=>add(limits,'li',x));
+    componentSources(block,result,options);
+  }
   function renderSnapshot(container, summary, options = {}) {
     if (typeof container === 'string') container = document.querySelector(container);
     if (!container) throw new Error('Scientific assessment container is unavailable.');
     if (!['biograph-steward.scientific-assessment-publication.v1.summary',
           'biograph-steward.scientific-assessment-publication.v2.summary',
           'biograph-steward.scientific-assessment-publication.v3.summary',
-          'biograph-steward.scientific-assessment-publication.v4.summary'].includes(summary?.format))
+          'biograph-steward.scientific-assessment-publication.v4.summary',
+          'biograph-steward.scientific-assessment-publication.v5.summary'].includes(summary?.format))
       throw new Error('Unsupported scientific assessment snapshot.');
     container.replaceChildren();
     add(container, 'h3', summary.title);
@@ -225,10 +277,13 @@
     return container;
   }
   function render(container,summary,options={}) {
-    if(summary?.format!=='biograph-steward.scientific-assessment-publication.v4.summary')return renderSnapshot(container,summary,options);
+    if(!['biograph-steward.scientific-assessment-publication.v4.summary',
+         'biograph-steward.scientific-assessment-publication.v5.summary'].includes(summary?.format))return renderSnapshot(container,summary,options);
     if(typeof container==='string')container=document.querySelector(container);
     if(!container)throw new Error('Scientific assessment container is unavailable.');
     container.replaceChildren();add(container,'h3',summary.title);add(container,'p',summary.scope,'small');
+    if(summary.public_reference)renderPublicReference(container,summary.public_reference,options);
+    if(summary.opencell_localization)renderOpenCell(container,summary.opencell_localization,options);
     if(summary.function_recovery)renderFunctionRecovery(container,summary.function_recovery,options);
     if(summary.agent_reference_agreement)renderAgentReference(container,summary.agent_reference_agreement,options);
     const legacy=add(container,'details');add(legacy,'summary','99-target source workspace and earlier component assessments');

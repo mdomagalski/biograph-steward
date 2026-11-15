@@ -123,7 +123,7 @@ def _source_path(run_id, locator):
             or any(part in {"", ".", ".."} for part in path.split("/"))):
         return None
     if path.startswith("extension_sources/"):
-        if not re.fullmatch(r"extension_sources/(?:string|mapit|signor|bioplex|goa)/[A-Za-z0-9_./-]+", path):
+        if not re.fullmatch(r"extension_sources/(?:string|string_physical|mapit|signor|bioplex|goa)/[A-Za-z0-9_./-]+", path):
             return None
         route = "/api/extension-source/"
     else:
@@ -283,6 +283,15 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
                 if url:
                     lid = add_link("Preserved source record", url, "local_source", local=True)
                     if lid: source["link_ids"].append(lid)
+            if edge.get("extension_source_kind") == "string_physical":
+                sections.append({"id": "native-physical-" + edge["id"], "title": "Native STRING physical association",
+                    "text": ("This is the separate native STRING 12.5 physical network, not the overlay inside a functional query. "
+                        "It predicts physical proximity or co-complex association; it does not establish direct binding. "
+                        "The full canonical/source sequences match through unique reciprocal direct aliases. Historical Pharos sequences and assay constructs are not established by this mapping."),
+                    "fields": {"source_release": record.get("source_release"), "network_type": record.get("network_type"),
+                        "native_scores": deepcopy(edge.get("source_scores_raw", {})),
+                        "mapping_proof": deepcopy(record.get("mapping_proof", [])),
+                        "complete_source_files": deepcopy(record.get("source_files", {}))}})
             if edge.get("extension_source_kind") == "string":
                 sections.append({"id": "string-" + edge["id"], "title": "Versioned STRING annotation",
                     "text": ("This separate STRING release supplies native functional and physical-overlay scores. "
@@ -349,6 +358,18 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
                         "annotation_date", "source_gaf_sha256", "source_line", "raw_fields")}}})
             missing.append({"field": "experimental_conditions_and_disease",
                 "note": "The GO source supplies no disease condition for this annotation. Read the cited paper for experimental conditions; cohort membership does not establish CRC relevance."})
+            continue
+        if observation.get('source_kind') == 'string_physical':
+            sections.append({'id': observation['id'] + ':native-physical-coverage',
+                'title': 'Native physical source coverage and identity',
+                'text': 'A listed row supplies a native physical proximity/co-complex score. Unlisted pairs and excluded identities are unknown coverage states, not negative biological labels. No assay outcome is inferred.',
+                'fields': {k: deepcopy(observation.get(k)) for k in ('products', 'state', 'integration_state',
+                    'identity_unavailable_reason', 'STRING_pair', 'native_physical_score', 'physical_score_0_to_1',
+                    'baseline_pair_present', 'mapping_proof')}})
+            for locator in observation.get('source_locators', []):
+                url = _source_path(run_id, locator.get('locator'))
+                if url:
+                    add_link('Complete physical pair and identity ledger', url, 'local_source', local=True)
             continue
         if (observation["id"].startswith("string-source:")
                 or any(e.get("extension_source_kind") == "string"

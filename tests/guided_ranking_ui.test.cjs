@@ -17,6 +17,7 @@ function harness(){
         if(!match)throw new Error('Unsupported selector in the synthetic DOM: '+selector);
         return this.children.find(child=>child.tagName==='OPTION'&&child.value===match[1])||null;
       },
+      remove(){for(const item of elements.values())item.children=item.children.filter(child=>child!==this);},
       setAttribute(){},addEventListener(type,listener){listeners[type]=listener;},scrollIntoView(){},reportValidity(){return true;}};
   }
   const $=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id);};
@@ -126,4 +127,32 @@ test('failed retrieval clears the old answer and does not silently show alphabet
   assert.equal(h.run('questionAnswer'),null);assert.ok(h.$('questionOutput').classList.contains('hidden'));
   assert.match(h.$('questionStatus').textContent,/Source request failed/);
   assert.equal(h.$('questionRanking').value,'physical');assert.equal(h.$('questionRanking').disabled,false);
+});
+
+
+test('native physical source uses the existing relationship selector and stays separate from live ranking',()=>{
+  const h=harness();h.graph.evidence_extension={sources:{string_physical:{publication_sha256:'invented-native-source',policy:'invented-source-policy'}}};
+  h.run('setupQuestion()');
+  assert.equal(h.$('questionRelations').querySelector('option[value="native_physical"]').textContent,'Native STRING physical associations');
+  assert.equal(h.$('questionRelations').value,'both','Adding a source does not silently replace the default functional question.');
+  h.$('questionRelations').value='native_physical';h.$('questionRanking').value='physical';h.run('updateQuestionPlan()');
+  assert.equal(h.$('questionRanking').value,'alphabetical');assert.equal(h.$('questionRanking').disabled,true);
+  assert.deepEqual(plain(h.run('questionOptions()')),{protein:'UniProtKB:P12345',relations:['interactions'],template:'native_string_physical.v1',view:'candidates',max_results:8,max_paths:2});
+  assert.match(h.$('questionPlan').textContent,/identical complete reference sequences/);
+  assert.match(h.$('questionRankingNote').textContent,/no live STRING request/);
+  assert.match(h.$('questionRankingNote').textContent,/unresolved identities are unknown/);
+  assert.equal(h.calls.length,0);
+  delete h.graph.evidence_extension;h.run('setupQuestion()');
+  assert.equal(h.$('questionRelations').querySelector('option[value="native_physical"]'),null);
+});
+
+test('reopening a native physical answer restores its source mode and preserves review wording',()=>{
+  const h=harness();h.graph.evidence_extension={sources:{string_physical:{publication_sha256:'invented-native-source'}}};h.run('setupQuestion()');
+  const value=answer(h);value.template='native_string_physical.v1';value.plan.relations=['interactions'];
+  bind(h,value);
+  assert.equal(h.$('questionRelations').value,'native_physical');
+  assert.equal(h.$('questionRanking').value,'alphabetical');
+  assert.match(h.$('questionModeBadge').textContent,/Native physical source.*candidates require review/);
+  assert.doesNotMatch(text(h.$('questionSummary')),/Physical association priority/);
+  assert.equal(h.calls.length,0);
 });

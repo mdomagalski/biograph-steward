@@ -66,6 +66,10 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("string-source-publish", help="Replay a saved whole-cohort STRING capture into a versioned source publication offline.")
     p.add_argument("--capture", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("string-physical-publish", help="Publish the separate pinned native STRING physical network with exact sequence admission offline.")
+    p.add_argument("--snapshot", type=Path, required=True)
+    p.add_argument("--sources", type=Path, required=True, help="Pinned four-file generic bulk source manifest.")
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("mapit-source-publish", help="Publish completed, qualified MAP-IT tissue reanalysis records offline.")
     p.add_argument("--analysis", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
@@ -82,6 +86,8 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("biological-update", help="Publish a new source-preserving workspace with versioned biological evidence and optional cell-model context.")
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--string-publication", type=Path)
+    p.add_argument("--string-physical-publication", type=Path)
+    p.add_argument("--append-sources", action="store_true", help="Preserve existing unreviewed source publications while adding a different source kind.")
     p.add_argument("--mapit-publication", type=Path)
     p.add_argument("--signor-publication", type=Path)
     p.add_argument("--bioplex-publication", type=Path)
@@ -190,6 +196,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--run", type=Path, required=True)
     p = sub.add_parser("question", help="Answer a scoped protein-neighborhood question from a saved run.")
     p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--template", choices=["disease_protein_neighborhood.v1", "cohort_protein_neighborhood.v1", "native_string_physical.v1"])
     p.add_argument("--protein", required=True, help="Exact protein ID or unambiguous symbol in this cohort.")
     p.add_argument("--relations", choices=["interactions", "shared_pathways"], nargs="+", default=["interactions", "shared_pathways"])
     p.add_argument("--view", choices=["accepted", "candidates"], default="accepted")
@@ -355,6 +362,12 @@ def main(argv: list[str] | None = None) -> int:
             manifest = publish_capture(args.capture, args.out)
             print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
             return 0
+        if args.command == 'string-physical-publish':
+            from .string_physical_source import publish_sources
+            from .assay_attachment import _decode, _ordinary
+            manifest = publish_sources(_decode(_ordinary(args.snapshot)), _decode(_ordinary(args.sources)), args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
+            return 0
         if args.command == 'mapit-source-publish':
             from .mapit_source import publish_completed_analysis
             manifest = publish_completed_analysis(args.analysis, args.out)
@@ -376,10 +389,10 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == 'biological-update':
             from .evidence_extension import publish_extension
-            publications = {k: v for k, v in {'string': args.string_publication,
+            publications = {k: v for k, v in {'string': args.string_publication, 'string_physical': args.string_physical_publication,
                             'mapit': args.mapit_publication, 'signor': args.signor_publication,
                             'bioplex': args.bioplex_publication}.items() if v is not None}
-            graph = publish_extension(args.run, publications, args.out)
+            graph = publish_extension(args.run, publications, args.out, append_sources=args.append_sources)
             print(json.dumps({'output': str(args.out.resolve()),
                               'evidence_extension': graph['evidence_extension']}, indent=2))
             return 0
@@ -651,7 +664,7 @@ def main(argv: list[str] | None = None) -> int:
             from .questions import answer_question, save_answer
             _, _, graph = read_run(args.run)
             answer = answer_question(graph, args.protein, relations=args.relations, view=args.view,
-                                     max_results=args.max_results, max_paths=args.max_paths, source_run=args.run.name)
+                                     max_results=args.max_results, max_paths=args.max_paths, source_run=args.run.name, template=args.template)
             save_answer(answer, args.out)
             print(json.dumps({"question": answer["question"], "overview": answer["overview"],
                               "availability": answer["availability"], "report": str((args.out / "report.html").resolve())}, indent=2))

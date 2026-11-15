@@ -1,14 +1,14 @@
 // Guided graph questions. Scientific statements come from the Python query engine.
 let questionAnswer=null, questionId=null, questionSelection=null, questionBusy=false;
-function physicalRankingAvailable(){return graph?.data_kind==='live_pharos'&&graph.targets.length>0&&graph.targets.every(t=>/^UniProtKB:(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-[1-9][0-9]*)?$/.test(t.id))&&!['shared_pathways','qualified_pathway_sources'].includes($('questionRelations').value);}
+function physicalRankingAvailable(){return graph?.data_kind==='live_pharos'&&graph.targets.length>0&&graph.targets.every(t=>/^UniProtKB:(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-[1-9][0-9]*)?$/.test(t.id))&&!['shared_pathways','qualified_pathway_sources','native_physical'].includes($('questionRelations').value);}
 function updateQuestionRankingControl(){
   const available=physicalRankingAvailable();
   $('questionRankingPhysical').disabled=!available;
   if(!available)$('questionRanking').value='alphabetical';
   $('questionRanking').disabled=questionBusy||!available;
-  $('questionRankingNote').textContent=!available?(graph?.data_kind==='synthetic_demo'?'Physical priority is unavailable for synthetic demo data. It requires a real Pharos cohort with exact UniProt identifiers.':['shared_pathways','qualified_pathway_sources'].includes($('questionRelations').value)?'Physical priority requires reported interaction paths. Choose interactions or interactions and shared pathways.':'Physical priority requires a real Pharos cohort with exact UniProt identifiers.'):$('questionRanking').value==='physical'?'Queries current STRING scores for up to 100 matching interaction partners before applying the result limit. Unscored and pathway-only matches remain after scored interactions. Source predicts physical proximity or co-complex association; it does not prove direct binding. Ordering supplements the source graph and leaves evidence paths and review states unchanged.':'Alphabetical order uses the saved graph without requesting additional STRING scores. Physical priority is available for up to 100 matching interaction partners.';
+  $('questionRankingNote').textContent=!available?(graph?.data_kind==='synthetic_demo'?'Physical priority is unavailable for synthetic demo data. It requires a real Pharos cohort with exact UniProt identifiers.':['shared_pathways','qualified_pathway_sources','native_physical'].includes($('questionRelations').value)?'Physical priority requires reported interaction paths. Choose interactions or interactions and shared pathways.':'Physical priority requires a real Pharos cohort with exact UniProt identifiers.'):$('questionRanking').value==='physical'?'Queries current STRING scores for up to 100 matching interaction partners before applying the result limit. Unscored and pathway-only matches remain after scored interactions. Source predicts physical proximity or co-complex association; it does not prove direct binding. Ordering supplements the source graph and leaves evidence paths and review states unchanged.':'Alphabetical order uses the saved graph without requesting additional STRING scores. Physical priority is available for up to 100 matching interaction partners.';
 }
-function questionOptions(){if($('questionRelations').value==='qualified_pathway_sources')return {protein:$('questionProtein').value,relations:['shared_pathways'],template:'qualified_pathway_source_context.v1',source_support:graph.qualified_view?.pathway_history&&$('nativePathwaySupport').checked?'native_supported':'all_source_annotations',view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};const value=$('questionRelations').value,options={protein:$('questionProtein').value,relations:value==='both'?['interactions','shared_pathways']:[value],view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};if(physicalRankingAvailable()&&$('questionRanking').value==='physical')options.ranking='physical';return options;}
+function questionOptions(){if($('questionRelations').value==='native_physical')return {protein:$('questionProtein').value,relations:['interactions'],template:'native_string_physical.v1',view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};if($('questionRelations').value==='qualified_pathway_sources')return {protein:$('questionProtein').value,relations:['shared_pathways'],template:'qualified_pathway_source_context.v1',source_support:graph.qualified_view?.pathway_history&&$('nativePathwaySupport').checked?'native_supported':'all_source_annotations',view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};const value=$('questionRelations').value,options={protein:$('questionProtein').value,relations:value==='both'?['interactions','shared_pathways']:[value],view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};if(physicalRankingAvailable()&&$('questionRanking').value==='physical')options.ranking='physical';return options;}
 function setupQuestion(){
   const previous=$('questionProtein').value;questionAnswer=null;questionId=null;questionSelection=null;
   $('questionProtein').replaceChildren();
@@ -18,6 +18,10 @@ function setupQuestion(){
   if(preferred)$('questionProtein').value=preferred.id;
   $('questionRelations').querySelector('option[value="qualified_pathway_sources"]')?.remove();
   if(graph.qualified_view){const option=el('option','Qualified WikiPathways source context');option.value='qualified_pathway_sources';$('questionRelations').append(option);$('questionRelations').value=option.value;$('questionView').value='candidates';}
+  const nativePhysicalSelected=$('questionRelations').value==='native_physical';
+  $('questionRelations').querySelector('option[value="native_physical"]')?.remove();
+  if(graph.evidence_extension?.sources?.string_physical){const option=el('option','Native STRING physical associations');option.value='native_physical';$('questionRelations').append(option);}
+  if(nativePhysicalSelected)$('questionRelations').value=graph.evidence_extension?.sources?.string_physical?'native_physical':'both';
   $('nativePathwaySupport').checked=!!graph.qualified_view?.pathway_history;
   $('questionRanking').value='alphabetical';
   $('questionOutput').classList.add('hidden');$('questionCitation').replaceChildren();
@@ -29,6 +33,14 @@ function updateQuestionPlan(){
   if(!graph)return;
   updateQuestionRankingControl();
   $('nativePathwaySupportControl').classList.toggle('hidden',!graph.qualified_view?.pathway_history||$('questionRelations').value!=='qualified_pathway_sources');
+  if($('questionRelations').value==='native_physical'){
+    const t=graph.targets.find(t=>t.id===$('questionProtein').value),name=t?.symbol||t?.id||'a selected protein';
+    $('guidedQuestionDescription').textContent='Inspect saved native STRING physical associations from the separate complete human source file. Functional and assay evidence remain separate views.';
+    $('questionText').textContent='Which retrieved proteins have native STRING 12.5 physical associations with '+name+'?';
+    $('questionPlan').textContent='Query the saved physical source within '+graph.targets.length+' retrieved proteins, using unique reciprocal aliases and identical complete reference sequences. Physical proximity or co-complex support does not establish direct binding or disease relevance. Candidate records require review.';
+    $('questionRankingNote').textContent='Saved physical source: alphabetical order, no live STRING request. Missing pairs and unresolved identities are unknown; the functional graph remains available through the other relationship choices.';
+    $('questionScope').textContent=JSON.stringify(graph.evidence_extension.sources.string_physical,null,2);return;
+  }
   if($('questionRelations').value==='qualified_pathway_sources'){
     const t=graph.targets.find(t=>t.id===$('questionProtein').value),name=t?.symbol||t?.id||'a selected protein';
     $('guidedQuestionDescription').textContent='Query the retained graph using exact cited WikiPathways revisions. Repeated source records are grouped; candidate review states stay visible.';
@@ -49,7 +61,7 @@ function bindQuestionAnswer(answer,id){
   if(answer.source_run!==runId||answer.graph_basis_sha256!==graph.question_basis_sha256)throw new Error('This question result belongs to a different source run or review state. Run the question again.');
   questionAnswer=answer;questionId=id;questionSelection=answer.results[0]?.protein.id||null;
   $('questionProtein').value=answer.plan.protein.id;$('questionView').value=answer.plan.view;$('nativePathwaySupport').checked=answer.plan.source_support==='native_supported';
-  $('questionRelations').value=answer.template==='qualified_pathway_source_context.v1'?'qualified_pathway_sources':answer.plan.relations.length===2?'both':answer.plan.relations[0];
+  $('questionRelations').value=answer.template==='native_string_physical.v1'?'native_physical':answer.template==='qualified_pathway_source_context.v1'?'qualified_pathway_sources':answer.plan.relations.length===2?'both':answer.plan.relations[0];
   $('questionLimit').value=answer.plan.max_results;$('questionPaths').value=answer.plan.max_paths_per_protein;
   $('questionRanking').value=answer.plan.ranking||'alphabetical';
   updateQuestionPlan();history.replaceState(null,'','?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id));renderQuestion();
@@ -72,7 +84,7 @@ function renderQuestion(){
   const answer=questionAnswer;if(!answer)return;
   $('questionOutput').classList.remove('hidden');$('questionOverview').textContent=answer.overview;
   const sourceContext=answer.template==='qualified_pathway_source_context.v1';
-  $('questionModeBadge').textContent=sourceContext?'Qualified retained source context · original reviews preserved':answer.plan.view==='accepted'?'Accepted paths only':'Candidate exploration — review required';
+  $('questionModeBadge').textContent=answer.template==='native_string_physical.v1'?'Native physical source · '+(answer.plan.view==='accepted'?'accepted annotations':'candidates require review'):sourceContext?'Qualified retained source context · original reviews preserved':answer.plan.view==='accepted'?'Accepted paths only':'Candidate exploration — review required';
   $('questionModeBadge').className='notice'+(answer.plan.view==='accepted'?'':' warn');
   $('questionExplore').classList.toggle('hidden',answer.plan.view!=='accepted'||answer.availability.inspectable_proteins===0||answer.returned_proteins>0);
   $('questionExplore').textContent='Explore '+answer.availability.inspectable_proteins+' proteins with inspectable paths';

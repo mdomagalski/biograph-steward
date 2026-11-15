@@ -15,6 +15,7 @@ from .client import digest, write_json
 
 TEMPLATE = "disease_protein_neighborhood.v1"
 COHORT_TEMPLATE = "cohort_protein_neighborhood.v1"
+NATIVE_PHYSICAL_TEMPLATE = "native_string_physical.v1"
 RELATIONS = ("interactions", "shared_pathways")
 INSPECTABLE = {"candidate", "provisional", "accepted"}
 
@@ -65,8 +66,20 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
             history=pathway_history_source)
     if source_support is not None or pathway_history_source is not None:
         raise ValueError('Native pathway source support is available only in its explicit source-context template.')
-    cohort = graph.get("scope", {}).get("kind") == "protein_cohort"
-    expected_template = COHORT_TEMPLATE if cohort else TEMPLATE
+    native_physical = template == NATIVE_PHYSICAL_TEMPLATE
+    if native_physical:
+        from .string_physical_source import EVIDENCE_TYPE
+        if (graph.get('data_kind') != 'live_pharos'
+                or 'string_physical' not in graph.get('evidence_extension', {}).get('sources', {})):
+            raise ValueError('Open a workspace with the separately sourced native STRING physical profile.')
+        if relations not in (None, ['interactions']) or ranking != 'alphabetical' or ranking_source is not None:
+            raise ValueError('Native physical source questions use saved interaction records in alphabetical order, without live ranking.')
+        relations = ['interactions']
+    cohort = native_physical or graph.get("scope", {}).get("kind") == "protein_cohort"
+    question_scope = graph.get('scope') or {'kind': 'retrieved_protein_cohort',
+        'name': 'retrieved ' + graph.get('disease', {}).get('name', 'Pharos') + ' protein cohort',
+        'resolutions': []}
+    expected_template = NATIVE_PHYSICAL_TEMPLATE if native_physical else COHORT_TEMPLATE if cohort else TEMPLATE
     template = expected_template if template is None else template
     if template != expected_template:
         raise ValueError("Unsupported question template for this graph scope. Use the matching guided protein-neighborhood question.")
@@ -94,6 +107,10 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
     usable, disease_links, memberships, interactions = {}, {}, defaultdict(dict), defaultdict(list)
     excluded = Counter()
     for a in graph.get("assertions", []):
+        if native_physical and (a.get('extension_source_kind') != 'string_physical'
+                or a.get('qualifiers', {}).get('evidence_type') != EVIDENCE_TYPE
+                or a.get('qualifiers', {}).get('species') != 'NCBITaxon:9606'):
+            continue
         if a["kind"] not in {"disease_association", "pathway_membership", "protein_interaction"}:
             continue
         if a["lifecycle_state"] not in INSPECTABLE:
@@ -101,12 +118,15 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
             continue
         evidence = [edges[eid] for eid in a["structurally_usable_evidence_ids"] if eid in edges
                     and edges[eid]["status"] == "passed_structural_checks"]
+        if native_physical:
+            evidence = [e for e in evidence if e.get('extension_source_kind') == 'string_physical']
         if not evidence:
             excluded["assertions_without_structurally_usable_evidence"] += 1
             continue
         # This template does not generalize context-qualified records into
         # unqualified protein-level claims.
-        if any(v is not None for k, v in a["qualifiers"].items() if k != "disease"):
+        ignored = {'disease', 'evidence_type', 'species'} if native_physical else {'disease'}
+        if any(v is not None for k, v in a["qualifiers"].items() if k not in ignored):
             excluded["context_qualified_assertions_outside_template"] += 1
             continue
         if a["kind"] == "disease_association":
@@ -244,7 +264,7 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
         overview = ("No fully accepted evidence paths were found in this saved cohort."
                     if view == "accepted" else "No inspectable evidence paths were found within this saved cohort and the selected relationships.")
     else:
-        scope_name = graph["scope"]["name"] if cohort else disease + " cohort"
+        scope_name = question_scope["name"] if cohort else disease + " cohort"
         overview = f"Showing {len(matches)} of {total_matches} matching proteins in the saved {scope_name}, using {'accepted paths only' if view == 'accepted' else 'accepted and candidate paths for inspection'}."
     if ranking_packet is not None:
         overview += " Matching interaction partners are ordered by available STRING 12.5 physical association scores; unranked matches follow."
@@ -268,7 +288,7 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
     if cohort:
         gaps[0] = "Results cover the exactly resolved proteins in the declared cohort; cohort membership does not imply a disease association."
         gaps.append("A missing path is not evidence of no biological relationship. Retrieval limits, unresolved identities and unreviewed evidence remain explicit.")
-        unresolved = [row for row in graph["scope"]["resolutions"] if row["status"] != "resolved"]
+        unresolved = [row for row in question_scope["resolutions"] if row["status"] != "resolved"]
         if unresolved:
             gaps.append(f"{len(unresolved)} requested protein identifiers were not resolved exactly and could not form evidence paths; consult the cohort resolution records.")
     if graph["retrieval"].get("truncated"):
@@ -307,12 +327,44 @@ def answer_question(graph, protein, *, relations=None, view="accepted", max_resu
               "interpretation": "Database-reported evidence paths for inspection. Human acceptance records review; it does not establish experimental labels or clinical truth.",
               "engine": "deterministic_graph_query", "llm_used": False}
     if cohort:
-        answer["question"] = f"Which other proteins in {graph['scope']['name']} have {connection} with {label(anchor)}?"
+        answer["question"] = f"Which other proteins in {question_scope['name']} have {connection} with {label(anchor)}?"
         answer["plan"]["disease"] = None
-        answer["plan"]["scope"] = deepcopy(graph["scope"])
+        answer["plan"]["scope"] = deepcopy(question_scope)
         answer["plan"]["filter_policy"] = ("Exactly resolved cohort proteins and structurally usable interaction or shared-pathway annotations. "
             "Every assertion in an accepted path must be accepted; no disease association is required or inferred.")
         answer["plan"]["unsupported_requirements"] = ["disease association inference", "physical binding inference", "variant-specific response", "therapy resistance", "causal conclusions"]
+    if native_physical:
+        from .string_physical_source import LIMITATIONS, POLICY
+        answer['question'] = f"Which retrieved proteins have native STRING 12.5 physical associations with {label(anchor)}?"
+        source = graph['evidence_extension']['sources']['string_physical']
+        answer['plan']['source_profile'] = POLICY
+        answer['plan']['source_publication_sha256'] = source['publication_sha256']
+        source_rows = [row for row in graph.get('extension_observations', [])
+            if row.get('source_kind') == 'string_physical' and anchor in row.get('products', [])]
+        proofs = [proof for row in source_rows for product, proof in zip(row['products'], row['mapping_proof']) if product == anchor]
+        if not proofs or any(proof != proofs[0] for proof in proofs):
+            raise ValueError('Selected native physical source identity does not replay consistently across its complete pair ledger.')
+        states = dict(sorted(Counter(row['state'] for row in source_rows).items()))
+        answer['plan']['selected_coverage'] = {'anchor_identity': deepcopy(proofs[0]),
+            'anchor_possible_pairs': len(source_rows), 'anchor_pair_states': states,
+            'whole_cohort_source': deepcopy(source)}
+        answer['plan']['filter_policy'] = ('Only separately captured native physical source records with exact reciprocal alias/full-sequence admission. '
+            'No disease association, direct binding or acceptance is inferred; original functional evidence remains in the workspace.')
+        answer['limitations'] = list(LIMITATIONS) + ['Review acceptance is a local decision, not an independent experimental label.']
+        answer['overview'] += ' Saved native physical source only; original functional and assay views remain available separately.'
+        if proofs[0]['selected_STRING_ID'] is None:
+            answer['overview'] += (' The selected protein is unavailable under exact identity admission ('
+                + proofs[0]['admission'].replace('_', ' ') + '); missing results do not establish biological absence.')
+        else:
+            answer['overview'] += (f" The source lists {states.get('native_physical_association', 0)} physical pairs for this protein; "
+                f"{states.get('native_physical_pair_not_listed', 0)} pairs are not listed and "
+                f"{states.get('identity_unavailable', 0)} have unavailable participant identity. Both missing states remain unknown.")
+        answer['interpretation'] = 'Source-reported physical proximity/co-complex associations with exact reference sequence mapping; candidates require review.'
+        for sentence in answer['summary']:
+            uid = sentence['protein_id']
+            sentence['text'] = ('Accepted source annotation: ' if sentence['review_status'] == 'accepted' else 'Candidate source annotation (requires review): ') + (
+                f"STRING 12.5 lists a native physical association between {label(anchor)} ({anchor}) and {label(uid)} ({uid}). "
+                'This predicts physical proximity or co-complex membership; it does not establish direct binding.')
     if ranking_packet is not None:
         answer['plan']['ranking'] = 'physical'
         answer['ranking'] = ranking_info

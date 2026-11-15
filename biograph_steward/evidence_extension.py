@@ -19,7 +19,8 @@ SIDECAR = "evidence_extension.json"
 SOURCE = "extension_sources"
 LEDGER = "extension_observations.json"
 ADAPTERS = {"string": "string_source_update", "mapit": "mapit_source", "signor": "signor_source",
-            "bioplex": "bioplex_source", "goa": "goa_source"}
+            "bioplex": "bioplex_source", "goa": "goa_source",
+            "string_physical": "string_physical_source"}
 
 
 def _adapter(kind):
@@ -98,7 +99,7 @@ def apply_extension(snapshot, nodes, edges, extension):
                     or edge.get("extension_source_kind") != kind
                     or edge.get("extension_publication_sha256") != source["publication_sha256"]):
                 raise ValueError("Source edge conflicts with its preserved workspace or participants.")
-            expected = {"string": "protein_interaction", "mapit": "tissue_proximity_observation",
+            expected = {"string": "protein_interaction", "string_physical": "protein_interaction", "mapit": "tissue_proximity_observation",
                         "signor": "source_regulatory_observation", "goa": "native_go_annotation"}[kind]
             if edge.get("record_kind") != expected:
                 raise ValueError("Source association and tissue observations must retain their distinct meanings.")
@@ -155,17 +156,27 @@ def read_extension(run, snapshot=None, civic=None, assay=None, baseline_graph=No
     return value
 
 
-def publish_extension(run, publications, output):
+def publish_extension(run, publications, output, *, append_sources=False):
     from .reviews import read_run, read_civic, read_assay, preserve_construction_plan
-    from .graph import save_run
+    from .graph import save_run, build_graph
     run, output = Path(run).absolute(), Path(output).absolute()
     if (output.exists() or output.is_symlink() or run == output
             or run in output.parents or output in run.parents):
         raise ValueError("Choose a new output outside the unchanged source run.")
     snapshot, events, baseline = read_run(run)
-    if read_extension(run, snapshot) is not None:
-        raise ValueError("Compose the supported additions from the original source workspace.")
+    existing = read_extension(run, snapshot)
+    if existing is not None:
+        if not append_sources:
+            raise ValueError("Compose the supported additions from the original source workspace.")
+        if not isinstance(publications, dict) or not publications or set(publications) & set(existing['sources']):
+            raise ValueError('Append only new source kinds; existing source publications cannot be replaced.')
+        if any(event.get('evidence_extension_sha256') for event in events):
+            raise ValueError('Existing extension reviews are bound to their original source collection; append requires a separately reviewed decision workflow.')
+        publications = {**{kind: run / SOURCE / kind for kind in existing['sources']}, **publications}
+        baseline = build_graph(snapshot, events, civic_snapshot=read_civic(run), assay_attachment=read_assay(run))
     extension = prepare_extension(snapshot, baseline, publications)
+    if existing is not None and any(extension['sources'][kind] != value for kind, value in existing['sources'].items()):
+        raise ValueError('Appending a source must preserve every existing source projection and record exactly.')
     import hashlib
     for kind, publication in publications.items():
         manifest, _, _ = _adapter(kind).load_publication(publication)

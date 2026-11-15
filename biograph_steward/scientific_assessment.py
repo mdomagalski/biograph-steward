@@ -22,6 +22,9 @@ FORMAT = 'biograph-steward.scientific-assessment-publication.v1'
 FORMAT_V2 = 'biograph-steward.scientific-assessment-publication.v2'
 FORMAT_V3 = 'biograph-steward.scientific-assessment-publication.v3'
 FORMAT_V4 = 'biograph-steward.scientific-assessment-publication.v4'
+FORMAT_V5 = 'biograph-steward.scientific-assessment-publication.v5'
+PUBLIC_REFERENCE_FILE = 'sources/public_reference.json'
+OPENCELL_FILE = 'sources/opencell_localization.json'
 TASK_LIMIT = 1_000_000
 FUNCTION_FILE = 'sources/function_recovery.json'
 BIORED_FILE = 'sources/biored.json'
@@ -88,6 +91,7 @@ V2_PUBLIC_FILES = PUBLIC_FILES | frozenset(COESS_NAMES.values())
 # Retain the existing v1-v3 API constant; v4 callers opt into the expanded set.
 ALL_PUBLIC_FILES = V2_PUBLIC_FILES | {GROUNDING_FILE}
 V4_PUBLIC_FILES = ALL_PUBLIC_FILES | {FUNCTION_FILE, BIORED_FILE}
+V5_PUBLIC_FILES = V4_PUBLIC_FILES | {PUBLIC_REFERENCE_FILE, OPENCELL_FILE}
 COESS_SCOPES = ('nonsyntenic', 'all', 'syntenic', 'nonsyntenic_positive', 'nonsyntenic_negative')
 COESS_INTERPRETATION = ('Source qualification did not show a consistent advantage over normalized source context '
     'and the fixed count and degree controls across the complete primary N=1–10 curves.')
@@ -938,7 +942,9 @@ def _publication_summary(files, pins, format_name):
              'v3 requires a grounding aggregate and either all or no coessentiality aggregates.')
     else:
         tasks=set(pins)&{'function_recovery','biored'}
-        need(format_name==FORMAT_V4 and tasks and set(pins)==expected|tasks|({'grounding'} if 'grounding' in pins else set()),
+        public = ({'public_reference'} | ({'opencell'} if 'opencell' in pins else set())) if format_name == FORMAT_V5 else set()
+        need(format_name in {FORMAT_V4, FORMAT_V5} and (tasks or public)
+             and set(pins)==expected|tasks|public|({'grounding'} if 'grounding' in pins else set()),
              'v4 requires declared independent task aggregates and complete optional legacy components.')
     if has_coess:
         extra = _coessentiality_summary(files, {role: pins['coess_' + role] for role in COESS_NAMES},
@@ -949,24 +955,44 @@ def _publication_summary(files, pins, format_name):
             'url': 'https://doi.org/10.1038/s41588-021-00840-z'},
             {'title': 'Coessentiality author code', 'url': 'https://github.com/kundajelab/coessentiality'},
             {'title': 'Native XSwap controls', 'url': 'https://github.com/hetio/xswap'}]
-    if format_name == FORMAT_V3 or format_name==FORMAT_V4 and 'grounding' in pins:
+    if format_name == FORMAT_V3 or format_name in {FORMAT_V4, FORMAT_V5} and 'grounding' in pins:
         extra = _grounding_summary(files, pins['grounding'])
         summary['grounding'] = extra
         summary['sources'] += extra['sources']
         summary['literature'] += [{'title': 'Expert-curated mechanistic extraction corpus',
             'url': 'https://doi.org/10.15252/msb.202211325'},
             {'title': 'Gilda contextual entity grounding', 'url': 'https://doi.org/10.1093/bioadv/vbac034'}]
-    if format_name==FORMAT_V4:
+    if format_name in {FORMAT_V4, FORMAT_V5}:
         summary['workspace_scope']=summary['scope']
         summary['scope']='Independent task assessments with separate reference frames and units; the legacy 99-target workspace remains a separately scoped component. No pooled scientific-accuracy result is calculated.'
         for role,name in (('function_recovery','function_recovery'),('biored','agent_reference_agreement')):
             if role in pins:
                 extra=_task_summary(files,role,pins[role]);summary[name]=extra;summary['sources']+=extra['sources']
+    if format_name == FORMAT_V5:
+        from .public_reference_assessment import summary as reference_summary
+        summary['scope'] = ('Separate task assessments with distinct reference frames and units; '
+            'source and study independence are qualified within each task. The legacy 99-target '
+            'workspace remains separately scoped. No pooled scientific-accuracy result is calculated.')
+        extra = reference_summary(files[PUBLIC_REFERENCE_FILE], pins['public_reference'])
+        summary['public_reference'] = extra
+        summary['sources'] += extra['sources']
+        if 'opencell' in pins:
+            from .public_reference_assessment import opencell_summary
+            extra = opencell_summary(files[OPENCELL_FILE], pins['opencell'])
+            summary['opencell_localization'] = extra
+            summary['sources'] += extra['sources']
     summary['format'] = format_name + '.summary'
     return summary
 
 
 def _publication_readme(format_name, has_coess, has_grounding=None):
+    if format_name == FORMAT_V5:
+        return (_publication_readme(FORMAT_V4, has_coess, has_grounding)
+            + '\nThe v5 public-reference appendix preserves all fixed localization arms/levels and six '
+            'same-release interaction panels. Human claim projections and mitochondrial inventory are '
+            'separate tasks. Source overlap, unknown labels and identity exclusions remain explicit; '
+            'separate task scopes do not establish source/study independence. No pooled graph accuracy, '
+            'biological pruning or model inference is performed.\n')
     if format_name == FORMAT:
         return README
     if format_name == FORMAT_V2:
@@ -986,7 +1012,9 @@ def publish(source_reports, output, *, expected_source_pins,
             coessentiality_reports=None, expected_coessentiality_pins=None,
             grounding_report=None, expected_grounding_pin=None,
             function_recovery_report=None, expected_function_recovery_pin=None,
-            biored_report=None, expected_biored_pin=None):
+            biored_report=None, expected_biored_pin=None,
+            public_reference_report=None, expected_public_reference_pin=None,
+            opencell_report=None, expected_opencell_pin=None):
     """Publish one curated snapshot using explicit operator-selected input pins."""
     need(isinstance(source_reports, dict) and set(source_reports) == set(ROLES), 'supply exactly the seven aggregate source roles.')
     implementation_pin = sha(__file__)
@@ -1018,8 +1046,25 @@ def publish(source_reports, output, *, expected_source_pins,
             need(path is not None and pin is not None,'task aggregate and explicit FILE pin must be supplied together.')
             task_paths[role]=Path(path);files[filename]=_bounded(path,limit=TASK_LIMIT);pins[role]=pin
             format_name=FORMAT_V4
+    reference_path = None
+    if public_reference_report is not None or expected_public_reference_pin is not None:
+        need(public_reference_report is not None and expected_public_reference_pin is not None,
+             'public reference report and explicit FILE pin must be supplied together.')
+        reference_path = Path(public_reference_report)
+        files[PUBLIC_REFERENCE_FILE] = _bounded(reference_path, limit=TASK_LIMIT)
+        pins['public_reference'] = expected_public_reference_pin
+        format_name = FORMAT_V5
+    opencell_path = None
+    if opencell_report is not None or expected_opencell_pin is not None:
+        need(reference_path is not None and opencell_report is not None and expected_opencell_pin is not None,
+             'OpenCell appendix requires the public-reference report and explicit FILE pins.')
+        opencell_path = Path(opencell_report)
+        files[OPENCELL_FILE] = _bounded(opencell_path, limit=TASK_LIMIT)
+        pins['opencell'] = expected_opencell_pin
     summary = _publication_summary(files, pins, format_name)
-    folder = new_output(output, *paths.values(), *extra_paths.values(), *task_paths.values(), *([grounding_path] if grounding_path else []))
+    folder = new_output(output, *paths.values(), *extra_paths.values(), *task_paths.values(),
+                        *([grounding_path] if grounding_path else []), *([reference_path] if reference_path else []),
+                        *([opencell_path] if opencell_path else []))
     for name, raw in files.items():
         target = folder / name
         target.parent.mkdir(exist_ok=True)
@@ -1033,6 +1078,8 @@ def publish(source_reports, output, *, expected_source_pins,
          and (grounding_path is None or _bounded(grounding_path) == files[GROUNDING_FILE])
          and all(_bounded(path,limit=TASK_LIMIT)==files[FUNCTION_FILE if role=='function_recovery' else BIORED_FILE]
                  for role,path in task_paths.items())
+         and (reference_path is None or _bounded(reference_path, limit=TASK_LIMIT) == files[PUBLIC_REFERENCE_FILE])
+         and (opencell_path is None or _bounded(opencell_path, limit=TASK_LIMIT) == files[OPENCELL_FILE])
          and sha(__file__) == implementation_pin, 'source or implementation changed during publication.')
     manifest = {'format': format_name, 'created_at': utcnow(), 'summary': summary,
         'operator_source_pins': pins, 'input_pins_authenticate_publisher': False,
@@ -1040,7 +1087,7 @@ def publish(source_reports, output, *, expected_source_pins,
         'producer_implementation_sha256': implementation_pin, 'read_only': True,
         'raw_reference_rows_included': False, 'scientific_labels_created': False, 'source_graph_modified': False}
     manifest['content_sha256'] = digest(manifest)
-    need(len(json.dumps(manifest).encode())<=(TASK_LIMIT if format_name==FORMAT_V4 else 250_000),
+    need(len(json.dumps(manifest).encode())<=(TASK_LIMIT if format_name in {FORMAT_V4, FORMAT_V5} else 250_000),
          'publication manifest exceeds its format bound.')
     write_json(folder / 'publication.json', manifest)
     try:
@@ -1057,21 +1104,25 @@ def load_publication(folder):
     folder = folder.resolve()
     header = _decode(_bounded(folder / 'publication.json',limit=TASK_LIMIT))
     format_name = header.get('format')
-    need(format_name in {FORMAT, FORMAT_V2, FORMAT_V3, FORMAT_V4}, 'unsupported publication format.')
-    if format_name!=FORMAT_V4:_bounded(folder/'publication.json')
+    need(format_name in {FORMAT, FORMAT_V2, FORMAT_V3, FORMAT_V4, FORMAT_V5}, 'unsupported publication format.')
+    if format_name not in {FORMAT_V4, FORMAT_V5}:_bounded(folder/'publication.json')
     has_coess = any('coess_' + k in header.get('operator_source_pins', {}) for k in COESS_NAMES)
     expected_files = (V2_PUBLIC_FILES if has_coess else PUBLIC_FILES)
-    if format_name == FORMAT_V3 or format_name==FORMAT_V4 and 'grounding' in header.get('operator_source_pins',{}):
+    if format_name == FORMAT_V3 or format_name in {FORMAT_V4, FORMAT_V5} and 'grounding' in header.get('operator_source_pins',{}):
         expected_files = expected_files | {GROUNDING_FILE}
-    if format_name==FORMAT_V4:
+    if format_name in {FORMAT_V4, FORMAT_V5}:
         expected_files=expected_files|{filename for role,filename in (('function_recovery',FUNCTION_FILE),('biored',BIORED_FILE))
                                       if role in header.get('operator_source_pins',{})}
+    if format_name == FORMAT_V5:
+        expected_files = expected_files | {PUBLIC_REFERENCE_FILE}
+        if 'opencell' in header.get('operator_source_pins', {}):
+            expected_files = expected_files | {OPENCELL_FILE}
     names = {p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file()}
     need(names == expected_files | {'publication.json'} and not any(p.is_symlink() for p in folder.rglob('*')),
          'publication contains missing or additional files.')
     for name in names:
         _bounded(folder / name, limit=3_000_000 if name in COESS_NAMES.values() else
-                 TASK_LIMIT if format_name==FORMAT_V4 and name in {FUNCTION_FILE,BIORED_FILE,'publication.json','report.html'} else 250_000)
+                 TASK_LIMIT if format_name in {FORMAT_V4, FORMAT_V5} and name in {FUNCTION_FILE,BIORED_FILE,PUBLIC_REFERENCE_FILE,OPENCELL_FILE,'publication.json','report.html'} else 250_000)
     manifest, captured = _capture(folder, 'publication.json')
     need(manifest.get('format') == format_name and all(manifest.get(k) is False for k in (
          'raw_reference_rows_included', 'scientific_labels_created', 'source_graph_modified', 'input_pins_authenticate_publisher'))
@@ -1092,7 +1143,7 @@ def list_publications(runs_dir):
         if not path.is_file() or path.stat().st_size > TASK_LIMIT:
             continue
         try:
-            if _decode(_bounded(path,limit=TASK_LIMIT)).get('format') not in {FORMAT, FORMAT_V2, FORMAT_V3, FORMAT_V4}:
+            if _decode(_bounded(path,limit=TASK_LIMIT)).get('format') not in {FORMAT, FORMAT_V2, FORMAT_V3, FORMAT_V4, FORMAT_V5}:
                 continue
             manifest, summary, _ = load_publication(folder)
             rows.append({'id': folder.name, 'created_at': manifest['created_at'], 'content_sha256': manifest['content_sha256'], 'summary': summary})
@@ -1103,7 +1154,7 @@ def list_publications(runs_dir):
 
 def render_html(summary):
     """Escape every value; proof links name only allowlisted aggregate JSONs."""
-    if summary.get('format')==FORMAT_V4+'.summary':
+    if summary.get('format') in {FORMAT_V4+'.summary', FORMAT_V5+'.summary'}:
         return _v4_html(summary)
     e = escape
     n, v, go, crc, cv, im = [summary[k] for k in ('native_history', 'default_view', 'GO', 'CRC_cohort', 'CIViC', 'INMC')]
@@ -1163,6 +1214,12 @@ def _v4_html(summary):
     parts=["<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Separate scientific assessment tasks</title>",
         '<style>body{font:16px system-ui;max-width:1250px;margin:2rem auto;padding:0 1rem;color:#203040}table{border-collapse:collapse;width:100%;font-size:13px}td,th{padding:.6rem;border-bottom:1px solid #ccd5df;text-align:left;vertical-align:top}.table-wrap{overflow:auto}code,pre{overflow-wrap:anywhere;white-space:pre-wrap}.scope{padding:1rem;background:#fff1d5}h2{margin-top:2rem}details{border:1px solid #ccd5df;border-radius:8px;padding:1rem;margin:1rem 0}summary{cursor:pointer;font-weight:600}</style>',
         '<h1>Scientific assessment: separate tasks and source scopes</h1><p class="scope">'+esc(summary['scope'])+'</p>']
+    if summary.get('public_reference') is not None:
+        from .public_reference_assessment import render_html as reference_html
+        parts.append(reference_html(summary['public_reference']))
+    if summary.get('opencell_localization') is not None:
+        from .public_reference_assessment import opencell_html
+        parts.append(opencell_html(summary['opencell_localization']))
     function=summary.get('function_recovery')
     if function:
         parts+=['<h2>'+esc(function['title'])+'</h2><p>'+esc(function['scope'])+'</p>',

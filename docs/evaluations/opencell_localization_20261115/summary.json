@@ -1,0 +1,287 @@
+{
+  "format": "biograph-steward.OpenCell-localization-public-aggregate.v1",
+  "status": "executed_source_separated_development_comparison",
+  "scope": "Original 99 primary proteins; 23 exact reciprocal UniProt + HGNC ENSG matches to the OpenCell library.",
+  "primary_result": "Positive localization comparison labels recovered: 30/40 for captured and retained Pharos; 31/40 for native all-code annotations; 31/40 after excluding all HPA-assigned supporting rows and explicit OpenCell study references. One protein improves, none worsen.",
+  "reference_unit": "Positive imaging localization in tagged HEK293T cells, harmonized using the original author OC/HPA 12 comparison categories. Categories are intentionally coarse, not GO-class identity.",
+  "identity": {
+    "library_rows": 1310,
+    "unique_accessions": 1310,
+    "reciprocal_unique_proteins": 1310,
+    "reciprocal_accession_and_HGNC_ENSG_matches": 23,
+    "excluded_primary_proteins": {
+      "no_unique_library_accession": 76
+    },
+    "exact_full_tested_protein_sequence_verified": false,
+    "tagged_transcript_and_terminus_retained": true
+  },
+  "profiles": [
+    {
+      "reference_grades": [
+        2,
+        3
+      ],
+      "matched_proteins": 23,
+      "arms": {
+        "A_raw_Pharos_scope_qualified": {
+          "reference_positive_labels": 40,
+          "recovered_reference_positive_labels": 30,
+          "extra_predicted_labels_truth_unknown": 33,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.75,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        },
+        "A_retained_scope_qualified": {
+          "reference_positive_labels": 40,
+          "recovered_reference_positive_labels": 30,
+          "extra_predicted_labels_truth_unknown": 33,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.75,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        },
+        "B_native_location_scope_qualified": {
+          "reference_positive_labels": 40,
+          "recovered_reference_positive_labels": 31,
+          "extra_predicted_labels_truth_unknown": 31,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.775,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        },
+        "C_native_experimental_scope_qualified": {
+          "reference_positive_labels": 40,
+          "recovered_reference_positive_labels": 23,
+          "extra_predicted_labels_truth_unknown": 16,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.575,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        },
+        "D_native_without_HPA_or_explicit_OpenCell": {
+          "reference_positive_labels": 40,
+          "recovered_reference_positive_labels": 31,
+          "extra_predicted_labels_truth_unknown": 26,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.775,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        }
+      },
+      "paired": [
+        {
+          "candidate": "A_retained_scope_qualified",
+          "baseline": "A_raw_Pharos_scope_qualified",
+          "improved_proteins": 0,
+          "worse_proteins": 0,
+          "unchanged_proteins": 23,
+          "net_recovered_labels": 0
+        },
+        {
+          "candidate": "B_native_location_scope_qualified",
+          "baseline": "A_raw_Pharos_scope_qualified",
+          "improved_proteins": 1,
+          "worse_proteins": 0,
+          "unchanged_proteins": 22,
+          "net_recovered_labels": 1
+        },
+        {
+          "candidate": "C_native_experimental_scope_qualified",
+          "baseline": "A_raw_Pharos_scope_qualified",
+          "improved_proteins": 1,
+          "worse_proteins": 7,
+          "unchanged_proteins": 15,
+          "net_recovered_labels": -7
+        },
+        {
+          "candidate": "D_native_without_HPA_or_explicit_OpenCell",
+          "baseline": "A_raw_Pharos_scope_qualified",
+          "improved_proteins": 1,
+          "worse_proteins": 0,
+          "unchanged_proteins": 22,
+          "net_recovered_labels": 1
+        }
+      ]
+    },
+    {
+      "reference_grades": [
+        3
+      ],
+      "matched_proteins": 23,
+      "arms": {
+        "A_raw_Pharos_scope_qualified": {
+          "reference_positive_labels": 32,
+          "recovered_reference_positive_labels": 24,
+          "extra_predicted_labels_truth_unknown": 39,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.75,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        },
+        "A_retained_scope_qualified": {
+          "reference_positive_labels": 32,
+          "recovered_reference_positive_labels": 24,
+          "extra_predicted_labels_truth_unknown": 39,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.75,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        },
+        "B_native_location_scope_qualified": {
+          "reference_positive_labels": 32,
+          "recovered_reference_positive_labels": 25,
+          "extra_predicted_labels_truth_unknown": 37,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.78125,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        },
+        "C_native_experimental_scope_qualified": {
+          "reference_positive_labels": 32,
+          "recovered_reference_positive_labels": 19,
+          "extra_predicted_labels_truth_unknown": 20,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.59375,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        },
+        "D_native_without_HPA_or_explicit_OpenCell": {
+          "reference_positive_labels": 32,
+          "recovered_reference_positive_labels": 25,
+          "extra_predicted_labels_truth_unknown": 32,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 0.78125,
+          "precision": null,
+          "specificity": null,
+          "F1": null
+        }
+      },
+      "paired": [
+        {
+          "candidate": "A_retained_scope_qualified",
+          "baseline": "A_raw_Pharos_scope_qualified",
+          "improved_proteins": 0,
+          "worse_proteins": 0,
+          "unchanged_proteins": 23,
+          "net_recovered_labels": 0
+        },
+        {
+          "candidate": "B_native_location_scope_qualified",
+          "baseline": "A_raw_Pharos_scope_qualified",
+          "improved_proteins": 1,
+          "worse_proteins": 0,
+          "unchanged_proteins": 22,
+          "net_recovered_labels": 1
+        },
+        {
+          "candidate": "C_native_experimental_scope_qualified",
+          "baseline": "A_raw_Pharos_scope_qualified",
+          "improved_proteins": 1,
+          "worse_proteins": 6,
+          "unchanged_proteins": 16,
+          "net_recovered_labels": -5
+        },
+        {
+          "candidate": "D_native_without_HPA_or_explicit_OpenCell",
+          "baseline": "A_raw_Pharos_scope_qualified",
+          "improved_proteins": 1,
+          "worse_proteins": 0,
+          "unchanged_proteins": 22,
+          "net_recovered_labels": 1
+        }
+      ]
+    }
+  ],
+  "source_separation": {
+    "remaining_supporting_native_rows": 2803,
+    "remaining_provider_rows": {
+      "Reactome": 2613,
+      "UniProt": 134,
+      "MGI": 15,
+      "ParkinsonsUK-UCL": 4,
+      "HGNC-UCL": 5,
+      "BHF-UCL": 13,
+      "PINC": 10,
+      "FlyBase": 3,
+      "ComplexPortal": 3,
+      "CAFA": 1,
+      "AgBase": 1,
+      "ARUK-UCL": 1
+    },
+    "excluded_native_rows": {
+      "HPA_assigned_rows": 88
+    },
+    "hidden_indirect_citation_reuse_excluded": false
+  },
+  "gained_label_source_trace": {
+    "newly_recovered_comparison_categories": 1,
+    "proteins": 1,
+    "non_HPA_qualifying_records": 1,
+    "provider": "PINC",
+    "evidence_code": "TAS",
+    "native_annotation_date": "2003-11-19",
+    "study_reference_different_from_OpenCell": true,
+    "primary_supporting_paper_reaudited_in_this_increment": false,
+    "interpretation": "An existing curator annotation dated 2003 supports the same coarse membrane/periphery category seen by later OpenCell imaging. This is not newly discovered biology or proof of the historical content of the 2003 record."
+  },
+  "reference_exposure": {
+    "HOU_contains_OpenCell_derived_localization": true,
+    "HOU_outcomes_already_consumed": true,
+    "OpenCell_current99_cohort_outcome_join_before_freeze": false,
+    "fresh_blind_reference": false,
+    "global_schema_and_label_separator_checked_before_freeze": true,
+    "historical_OpenCell_metadata_contains_localization_categories": true,
+    "new_complete_OpenCell_CSV_retrieved_before_freeze": true,
+    "prior_OpenCell_PPI_comparisons": true
+  },
+  "limitations": [
+    "The reference is tagged HEK293T live-cell microscopy, not an unmodified construct or colorectal tumour. Transcript, terminus and genotyping metadata remain attached; tested full amino-acid equality is unverified.",
+    "Original author 12-category groups deliberately pool compartments; they are comparison categories, not GO identity mappings or direct biological equivalence.",
+    "OpenCell is already part of the consumed HOU benchmark and prior OpenCell PPI work; no independent unseen test or reference selection independence is claimed.",
+    "All HPA assignments and explicit OpenCell study references are excluded in D, but indirect study reuse and historical Pharos study references cannot be fully verified.",
+    "Manual imaging categories are subjective and incomplete; author grade1 weak patterns and unmapped artifact classes are not negatives.",
+    "No inference thresholds, model fitting, graph changes or case-specific queries. This is conditional source-separated concordance, not whole-graph accuracy.",
+    "The mutable portal CSV is pinned to the retrieved bytes; exact equality to the final 2022 supplementary table is not asserted."
+  ],
+  "admission_or_mapping_changed_after_outcomes": false,
+  "scientific_accuracy_percentage_estimated": false,
+  "fresh_blind_reference": false,
+  "new_independent_experiment": false,
+  "whole_graph_accuracy_established": false,
+  "graph_or_model_changed": false,
+  "model_calls": 0,
+  "project_identifiers_sent_externally": false,
+  "sources": {
+    "primary_paper": "https://doi.org/10.1126/science.abi6983",
+    "author_downloads": "https://opencell.sf.czbiohub.org/download",
+    "localization_csv": "https://opencell.sf.czbiohub.org/data/datasets/opencell-localization-annotations.csv",
+    "localization_csv_sha256": "14cf3536d9d3699460dd34e166d001a34e5430fb551488538b9468107f9f10b6",
+    "library_metadata_csv": "https://opencell.sf.czbiohub.org/data/datasets/opencell-library-metadata.csv",
+    "library_metadata_csv_sha256": "92da4a93cee640a50c9745b1c7da31e9316f2014400dd0feacbe4f541b7c82e6",
+    "author_comparison_code": "https://github.com/czbiohub-sf/2021-opencell-figures/tree/e0bedae07e6c1870f54c501bfa9a9120c8c38e09/scripts/annotation_comparisons",
+    "author_processing_policy": "Unchanged grades 2+3 and 12 high-resolution comparison categories; grade 3 alone is a fixed sensitivity.",
+    "code_license": "BSD-3-Clause for original author software; no relabeling of raw source table terms.",
+    "redistribution": "Only aggregate results/provenance are published; raw source, case and construct rows remain local."
+  },
+  "verification": {
+    "numeric_recount": true,
+    "metric_cells": 10,
+    "paired_profiles_checked": 8,
+    "adapter_tests": 8,
+    "frozen_contract_sha256": "eed74f412476307a86f61b042d314d25d52d354551cf965e378449a7e3d2f78c",
+    "private_report_sha256": "167222a94ef02096d67895d9aae9ea025b25580c03e65e73e0a58e85155dbf2f",
+    "private_case_sha256": "7b63bd8e6182b92952ded62fa2cc0146e3c8ba241ed42df8d1435f75bc9c9fb4",
+    "producer_sha256": "c1aa440324af4c0bbb10bbf9fa8ef4c595e640fe0629d4e5c4bc0dbbf05c5a4f",
+    "preserved_failure": "Initial set serialization failure before the outcome join is retained under results_v1; v2 sorts labels without changing scientific policy."
+  }
+}

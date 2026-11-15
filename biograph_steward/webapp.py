@@ -119,6 +119,22 @@ def verify_qualified_question_source(answer, runs_dir):
         if answer != expected:
             raise ValueError('Qualified pathway answer differs from its retained graph, review state or saved query.')
         return
+    if answer.get('template') == 'native_string_physical.v1':
+        from .reviews import read_run
+        from .questions import answer_question
+        source_id = answer.get('source_run')
+        if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+            raise ValueError('Native physical answer source is missing or invalid.')
+        source = Path(runs_dir) / source_id
+        if source.is_symlink() or source.resolve().parent != Path(runs_dir).resolve() or not source.is_dir():
+            raise ValueError('Native physical answer source is unavailable.')
+        plan = answer['plan']
+        expected = answer_question(read_run(source)[2], plan['protein']['id'], template=answer['template'],
+            relations=plan['relations'], view=plan['view'], max_results=plan['max_results'],
+            max_paths=plan['max_paths_per_protein'], source_run=source_id)
+        if expected != answer:
+            raise ValueError('Native physical answer differs from its source records, identity coverage or review state.')
+        return
     if answer.get('plan', {}).get('ranking') == 'physical':
         from .reviews import read_run
         from .questions import answer_question
@@ -443,7 +459,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             assessment = re.fullmatch(r'/api/scientific-assessment/([A-Za-z0-9_-]{1,80})'
                 r'(?:/(report|files/(?:sources/[a-z_]+\.json|README\.txt)))?/?', path)
             if assessment:
-                from .scientific_assessment import load_publication, V4_PUBLIC_FILES as PUBLIC_FILES
+                from .scientific_assessment import load_publication, V5_PUBLIC_FILES as PUBLIC_FILES
                 identifier, action = assessment.groups()
                 folder = runs_dir/identifier
                 if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
@@ -645,7 +661,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 except (ValueError, TypeError, KeyError, OSError) as exc:
                     self.json_reply({'error': str(exc)}, 400)
                 return
-            match = re.fullmatch(r'/api/extension-source/([A-Za-z0-9_-]{1,80})/extension_sources/(string|mapit|signor|bioplex|goa)/(.+)', path)
+            match = re.fullmatch(r'/api/extension-source/([A-Za-z0-9_-]{1,80})/extension_sources/(string|string_physical|mapit|signor|bioplex|goa)/(.+)', path)
             if match:
                 from .reviews import read_run, read_civic, read_assay
                 from .assay_attachment import _decode, _ordinary

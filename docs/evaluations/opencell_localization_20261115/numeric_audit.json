@@ -1,0 +1,124 @@
+{
+  "format": "biograph-steward.opencell-localization-independent-recount.v1",
+  "method": "Separate direct set/count arithmetic on sealed case outputs; no scorer metrics helpers.",
+  "all_checks_passed": true,
+  "metric_cells": 10,
+  "paired_profiles_checked": 8,
+  "checks": [
+    {
+      "grades": [
+        2,
+        3
+      ],
+      "arm": "A_raw_Pharos_scope_qualified",
+      "proteins": 23,
+      "positive_labels": 40,
+      "recovered": 30,
+      "extra_unknown": 33,
+      "verified": true
+    },
+    {
+      "grades": [
+        2,
+        3
+      ],
+      "arm": "A_retained_scope_qualified",
+      "proteins": 23,
+      "positive_labels": 40,
+      "recovered": 30,
+      "extra_unknown": 33,
+      "verified": true
+    },
+    {
+      "grades": [
+        2,
+        3
+      ],
+      "arm": "B_native_location_scope_qualified",
+      "proteins": 23,
+      "positive_labels": 40,
+      "recovered": 31,
+      "extra_unknown": 31,
+      "verified": true
+    },
+    {
+      "grades": [
+        2,
+        3
+      ],
+      "arm": "C_native_experimental_scope_qualified",
+      "proteins": 23,
+      "positive_labels": 40,
+      "recovered": 23,
+      "extra_unknown": 16,
+      "verified": true
+    },
+    {
+      "grades": [
+        2,
+        3
+      ],
+      "arm": "D_native_without_HPA_or_explicit_OpenCell",
+      "proteins": 23,
+      "positive_labels": 40,
+      "recovered": 31,
+      "extra_unknown": 26,
+      "verified": true
+    },
+    {
+      "grades": [
+        3
+      ],
+      "arm": "A_raw_Pharos_scope_qualified",
+      "proteins": 23,
+      "positive_labels": 32,
+      "recovered": 24,
+      "extra_unknown": 39,
+      "verified": true
+    },
+    {
+      "grades": [
+        3
+      ],
+      "arm": "A_retained_scope_qualified",
+      "proteins": 23,
+      "positive_labels": 32,
+      "recovered": 24,
+      "extra_unknown": 39,
+      "verified": true
+    },
+    {
+      "grades": [
+        3
+      ],
+      "arm": "B_native_location_scope_qualified",
+      "proteins": 23,
+      "positive_labels": 32,
+      "recovered": 25,
+      "extra_unknown": 37,
+      "verified": true
+    },
+    {
+      "grades": [
+        3
+      ],
+      "arm": "C_native_experimental_scope_qualified",
+      "proteins": 23,
+      "positive_labels": 32,
+      "recovered": 19,
+      "extra_unknown": 20,
+      "verified": true
+    },
+    {
+      "grades": [
+        3
+      ],
+      "arm": "D_native_without_HPA_or_explicit_OpenCell",
+      "proteins": 23,
+      "positive_labels": 32,
+      "recovered": 25,
+      "extra_unknown": 32,
+      "verified": true
+    }
+  ]
+}
