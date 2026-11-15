@@ -52,9 +52,27 @@ def render(results, fitted, destination):
         delta = primary['methods']['learned_mix']['native_micro_fmax'] - primary['methods'][method]['native_micro_fmax']
         lo, hi = item['paired_95_percentile_interval']
         lines.append(f'| {method} | {delta:+.6f} | [{lo:+.6f}, {hi:+.6f}] |')
+    secondary_rows = []
+    for key in ('PK/biological_process', 'PK/cellular_component'):
+        row = result['strata'].get(key, {})
+        for item in row.get('bootstrap', {}).get('comparisons', []):
+            method = item['comparator']
+            delta = row['methods']['learned_mix']['native_micro_fmax'] - row['methods'][method]['native_micro_fmax']
+            lo, hi = item['paired_95_percentile_interval']
+            secondary_rows.append([key, method, f'{delta:+.6f}', f'[{lo:+.6f}, {hi:+.6f}]'])
     lines += ['', 'Intervals use 2,000 paired whole-protein resamples, seed 20261113. '
         'Per-protein contributions must reproduce every ordinary native curve column within 1e-12 before resampling. '
         'These are conditional, unadjusted descriptive intervals; proteins can share studies and graph neighborhoods.', '',
+        '## Secondary PK results', '',
+        'These contrasts were declared secondary and do not replace the primary endpoint. '
+        'The cellular-component fitter selected the same 50/50 arithmetic as the equal-mixture control; '
+        'any gain over a parent there is a mixing benefit, not evidence that learning the weight helped.', '',
+        '| Setting / GO aspect | Learned mixture minus control | Point difference | Paired 95% interval |',
+        '|---|---|---:|---:|']
+    lines += ['| ' + ' | '.join(row) + ' |' for row in secondary_rows]
+    lines += ['', 'All NK strata have no released reference rows inside this fixed human forecast intersection; '
+        'they are unavailable, not scored zeros. LK populations contain only 9–19 eligible proteins, '
+        'so their results provide limited support for broader transfer.', '',
         '## Interpretation and limits', '',
         'This is one global weight per aspect, not a conditional expert-routing or full stacking model. '
         'The 50/50 control separates a benefit from mixing from a benefit from fitting. '
@@ -102,6 +120,9 @@ def render(results, fitted, destination):
           f"{primary['methods']['learned_mix']['native_micro_fmax'] - primary['methods'][item['comparator']]['native_micro_fmax']:+.6f}",
           '[' + ', '.join(f'{v:+.6f}' for v in item['paired_95_percentile_interval']) + ']']
          for item in boot.get('comparisons', [])])
+    body += '<h2>Secondary PK contrasts</h2><p>Cellular component uses the same 50/50 weight as the equal-mixture control. Gains there support mixing, not a separate learned-weight advantage.</p>'
+    body += table(['Setting / aspect', 'Learned minus control', 'Point difference', 'Paired 95% interval'], secondary_rows)
+    body += '<p>NK reference rows are absent from this fixed intersection. LK groups have only 9–19 eligible proteins.</p>'
     body += ('<p>2,000 paired protein resamples; conditional, unadjusted descriptive intervals. '
              'A weight at 0 or 1 selects a parent and does not establish an ensemble gain.</p>'
              '<h2>Scope and provenance</h2><p>Retrospective external temporal reference, not fully developer-blind. '
