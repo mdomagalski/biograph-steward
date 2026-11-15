@@ -218,7 +218,9 @@ def render(results, destination):
         'Transferring that fixed schedule to this source update is a disclosed development adaptation, not a validated new training recipe.',
         'The LocalPlus control unions retained historical seeds, the matched fitting update, the candidate’s exact augmented4,040-protein positive target repertoire with its fixed-old-ontology ancestors, '
         'and complete current-T0 curated seeds on the unchanged graph and native scorer. '
-        'It does not seed nonexperimental annotations. The direct source-union prior combines current nonexperimental and retained curated memberships at score1 on their complete literal vocabulary.',
+        'It does not seed nonexperimental annotations. The GCN additionally uses the DeepGO-SE parent and 40 nonexperimental context channels. '
+        'This is a stronger annotation control; the comparison does not isolate learning as the sole source of any difference. '
+        'The direct source-union prior combines current nonexperimental and retained curated memberships at score1 on their complete literal vocabulary.',
         'Every earlier BP method remains visible, including the earlier fixed 0.99 annotation-prior follow-up. '
         'All stored contrasts are shown; observed point subtraction is display arithmetic, and no interval, threshold, winner or new success gate is selected by this renderer.',
         'Later-snapshot curator annotations assess annotation recovery, not independent experiments, publication novelty or the percentage of biologically correct Pharos edges. '

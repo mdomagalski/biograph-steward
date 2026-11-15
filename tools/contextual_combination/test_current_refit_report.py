@@ -131,6 +131,7 @@ class PublicationTests(unittest.TestCase):
             self.assertIn('original frozen comparison', md);self.assertIn('no interval, threshold, winner or new success gate', md)
             self.assertEqual(document.count('<details>'), 6)
             self.assertIn('not 867 new output classes', md)
+            self.assertIn('does not isolate learning as the sole source of any difference', md)
             self.assertEqual(public['source_aggregate_sha256'], hashlib.sha256(source.read_bytes()).hexdigest())
             manifest = json.loads((root/'public/publication_manifest.json').read_text())
             self.assertFalse(manifest['evaluation_scores_intervals_or_model_choices_recomputed'])
