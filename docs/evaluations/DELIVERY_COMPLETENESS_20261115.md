@@ -58,3 +58,10 @@ detected no missing-known-input bug and now has a reusable, namespace-aware
 read-only adapter. Snapshot-new annotations can still have older assignment
 dates or earlier public evidence; this boundary is recorded without modifying
 the completed benchmark to obtain a favorable result.
+
+The completed [fixed source-similarity audit](CONTEXTUAL_SEQUENCE_SIMILARITY_20261115.md)
+shows why a future confirmation must qualify protein-family transfer in
+addition to label timing. It changes no existing split, score or success gate.
+The [published annotation-preservation follow-up](ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
+is retained as a development trade-off, without adding a required framework
+component or promoting a new default.

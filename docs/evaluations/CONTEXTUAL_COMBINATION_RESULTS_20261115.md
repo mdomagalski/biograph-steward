@@ -193,3 +193,9 @@ a trade-off rather than a general remedy: BP worsens, MF remains uncertain,
 and CC improves over the selected model but remains below direct GOA. This
 development result changes none of the study above, its original summary,
 forecasts, reference files or success gates.
+
+The separate [sequence-similarity source audit](CONTEXTUAL_SEQUENCE_SIMILARITY_20261115.md)
+finds fitting-set matches for 540/3,300 final forecast proteins at ≥30% identity
+and ≥80% coverage of both sequences. This full-frame source count is not a rate
+for the primary residual-positive subset. Exact duplicate separation does not
+establish distant-family generalization; no scores or splits were changed.

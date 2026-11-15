@@ -96,6 +96,10 @@ improves the selected cellular-component model but still trails direct GOA,
 and worsens biological process. It is retained without promotion or an
 independent-confirmation claim.
 
+The [sequence-similarity audit](evaluations/CONTEXTUAL_SEQUENCE_SIMILARITY_20261115.md)
+also limits any claim of transfer to distant protein families; exact duplicate
+removal does not establish that separation.
+
 The [latest full report](evaluations/contextual_combination_20261115/report.html),
 [scientific record](evaluations/SCIENTIFIC_RESULTS_20261114.md) and
 [earlier mixture results](evaluations/LEARNED_COMBINATION_RESULTS_20261115.md)

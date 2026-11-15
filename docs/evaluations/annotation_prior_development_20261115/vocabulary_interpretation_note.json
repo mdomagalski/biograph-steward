@@ -1,0 +1,10 @@
+{
+  "correction": "The count of seven positive CC prior memberships outside the old learned vocabulary does not bound or isolate their downstream ontology/score contribution. The stronger statement that this omission does not explain the gap is not established. Vocabulary loss, prior suppression and calibration remain untested explanations.",
+  "created_at": "2026-11-15T08:04:52.192059+00:00",
+  "forecasts_source_inputs_results_and_success_gates_changed": false,
+  "format": "biograph-steward.source-only-interpretation-correction.v1",
+  "frozen_plan_and_operator_changed": false,
+  "frozen_plan_sha256": "af700b19aaa60c74a8f2ad901ce954710e0b9f7c11232db6abe2b7c929188669",
+  "new_metrics_ablations_labels_or_model_selection": false,
+  "retained_plan_field": "source_only_qualification.interpretation"
+}

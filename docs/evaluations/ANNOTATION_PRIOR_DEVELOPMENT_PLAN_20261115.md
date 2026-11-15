@@ -15,12 +15,11 @@ forecast that was already sealed before reference opening. The score is an
 uncalibrated ranking heuristic. Nonexperimental source annotations do not
 become biological truth through this operation.
 
-Source-only checks identify a small additional benefit of preserving the full
-prior vocabulary: 51 BP,64 MF and7 CC positive source memberships lie outside
-the old learned axis, across all3,300 targets. Literal and old-native-alias
-counts agree. This cannot explain the large CC gap by itself. Suppression or
-calibration of available priors is a hypothesis, not a demonstrated training
-bug. The existing full-repertoire BCE follows the authors; no custom loss or
+Source-only checks identify information absent from the old learned axis:
+51 BP, 64 MF and 7 CC positive source memberships across all 3,300 targets. Literal and old-native-alias
+counts agree. Their downstream effect has not been isolated. Vocabulary loss,
+suppression or calibration of available priors remain possible explanations,
+not demonstrated training bugs. The existing full-repertoire BCE follows the authors; no custom loss or
 new model fitting is proposed.
 
 The [machine-readable frozen plan](../../tools/contextual_combination/annotation_prior_protocol.json)
@@ -42,3 +41,10 @@ Source: [author CAFA6 postprocessing](https://github.com/btbpanda/CAFA6-updates/
 SHA256 `fd85e98fa815ae7459f99caffb92221f76d5e4a781a4b6e4f0eda51c3ba6d5b2`.
 The Float32 value is exactly `0.9900000095367432`; silently substituting a
 Float64 literal can change a threshold-grid boundary.
+
+Interpretation clarification after independent source-only review: the small
+omission count does not establish its downstream contribution. The immutable
+[machine plan](../../tools/contextual_combination/annotation_prior_protocol.json)
+retains its original pre-execution wording and hash; the
+[correction note](annotation_prior_development_20261115/vocabulary_interpretation_note.json)
+records this limit without changing the operator, data or scores.

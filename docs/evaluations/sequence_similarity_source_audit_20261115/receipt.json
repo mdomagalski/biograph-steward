@@ -1,0 +1,36 @@
+{
+  "MMseqs2_binary_sha256": "b7ef6e0e33df5dd4fa9cf988cbd8b4988c11a3a1255d2c377f13e1bb40c157fb",
+  "MMseqs2_release": "18-8cc5c",
+  "aggregate_sha256": "cd36365a92216196ad36bd0e5a5b1902c7fb85c1b2cefc568dc3d8bc468693aa",
+  "all_declared_directed_role_pairs": 3,
+  "all_declared_identity_cutoffs": [
+    0.3,
+    0.5,
+    0.9
+  ],
+  "all_nine_comparison_cells_preserved": true,
+  "created_at": "2026-11-15T08:04:43.966581+00:00",
+  "format": "biograph-steward.sequence-similarity-public-receipt.v1",
+  "new_model_fits_predictions_or_selection": false,
+  "no_public_AAs_accessions_raw_matches_or_private_paths": true,
+  "operator_invented_tests_passed": 6,
+  "operator_invented_tests_skipped": 0,
+  "operator_qualification_receipt_sha256": "e6475396e1fa722bc65eaa9e4c46d7a8eb3d82e9c40f9dbddd97cf1d6cf2517e",
+  "original_boundaries_and_prediction_results_unchanged": true,
+  "outcome_scores_or_labels_read_for_this_audit": false,
+  "plan_sha256": "52c2b6daf5c60932d1ff29831dad7640ce807a57ab5d4e22e3fe8d9ec55ce537",
+  "private_execution_receipt_sha256": "f4fd2fa24d14e510ac344d4dff057bf0f08c2a26c0d5d9cc5dab72a0b2770c9e",
+  "reproducible_command_sha256": "6e917e80d9ba3e34d779ce92f6d495dcced2abbdcfcb38653e0570dc4ed44b31",
+  "role_counts": {
+    "final": 3300,
+    "fit": 4040,
+    "validation": 797
+  },
+  "role_input_receipt_sha256": "3116f856f72dec464f6d678fb50f17bee9983d82688c2229b9a438815bd7c8ab",
+  "separate_source_review": "passed; development-team source/invented-data review, not independent biological expert review",
+  "source_only": true,
+  "source_operator_sha256": "28cbd8fa8c8035e06e8d6595c6dc7b1c8f0aa0de76d48300c1557fa29c7e9fb4",
+  "status": "complete",
+  "tool_qualification_receipt_sha256": "9032b8419757c7dcc37d54562b980270ce893e9369706d2faf91ce62b621e156",
+  "zero_hit_queries_retained_in_denominators": true
+}

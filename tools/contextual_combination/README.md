@@ -447,3 +447,10 @@ archive. Other identifiers remain unknown from this check. This is reference
 presence, not publication ages, specific-claim availability or new experimental
 truth. Nothing is re-scored, and the private identifier inventories are absent
 from the aggregate publication and GitHub release.
+
+The [fixed sequence-similarity source audit](../../docs/evaluations/CONTEXTUAL_SEQUENCE_SIMILARITY_20261115.md)
+qualifies transfer without reading labels or changing partitions. It detects
+fitting matches for 540/3,300 final source proteins at ≥30% identity and ≥80%
+coverage on both sides. This is the complete forecast frame, not the primary
+residual-positive subset. Exact duplication guards remain verified; distant-
+family and base-predictor training independence are not established.

@@ -156,8 +156,8 @@
   "resources": {
     "AWS_reviewer_service": "retain for teammate saved-data review; unchanged in this work",
     "Brev_GPU_or_model_needed_for_review": false,
-    "Brev_owned_evaluation_and_source_audit_workers": "Both scientific comparisons and chronology audits complete; separate CPU-only sequence-similarity source audit running.",
-    "Brev_persistent_disk": "retains 46 raw forecast arrays (11.03GB); local numerical/model/source recovery archives are separate"
+    "Brev_owned_evaluation_and_source_audit_workers": "All scientific and source-audit CPU jobs complete; small private numerical/source backup transfers closing separately.",
+    "Brev_persistent_disk": "Retains original 46 raw forecast arrays (11.03GB) plus six development arrays. Separate source/model/numerical replay archives are held locally; do not delete the disk."
   },
   "science": {
     "annotation_prior_followup": {
@@ -229,6 +229,18 @@
         0.04897605761315526
       ],
       "mix_micro_Fmax": 0.3341683366733467
+    },
+    "sequence_similarity_source_audit": {
+      "aggregate": "docs/evaluations/sequence_similarity_source_audit_20261115/aggregate.json",
+      "complete_final_frame": 3300,
+      "distant_family_generalization_or_label_leakage_established": false,
+      "exact_cross_role_accession_full_and_first1022_duplicates": 0,
+      "final_with_fit_match_at_30_identity_80_both_coverage": 540,
+      "original_predictions_labels_partitions_or_gates_changed": false,
+      "rate_applied_to_primary_residual_subset": false,
+      "sha256": "cd36365a92216196ad36bd0e5a5b1902c7fb85c1b2cefc568dc3d8bc468693aa",
+      "source_only": true,
+      "status": "complete"
     },
     "validated_automatic_biological_pruning": false,
     "whole_graph_biological_accuracy_established": false

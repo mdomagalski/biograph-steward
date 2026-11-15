@@ -31,8 +31,8 @@ and in all 18 cells the matched annotation-only control reproduces both the
 original prior's point score and each of its 2,000 bootstrap peaks exactly.
 This supports numerical alignment, not biological correctness. Source-only
 checks found just seven positive CC prior memberships outside the learned
-vocabulary across 3,300 targets, so vocabulary omission alone cannot explain
-the earlier large CC gap. A training or calibration cause has not been proved.
+vocabulary across 3,300 targets. Their downstream contribution was not isolated;
+neither vocabulary loss nor a training/calibration cause has been established.
 
 The practical conclusion is to retain the published methods and direct source
 baseline as distinct controls. Forcing all nonexperimental annotations to a
@@ -46,3 +46,7 @@ Source: [pinned CAFA6 author implementation](https://github.com/btbpanda/CAFA6-u
 The [machine-readable publication](annotation_prior_development_20261115/summary.json)
 and its manifest preserve the original source/result bindings without raw
 reference cases, draws or forecast matrices.
+
+An [interpretation correction](annotation_prior_development_20261115/vocabulary_interpretation_note.json)
+qualifies the stronger causal wording in the retained pre-execution plan. The
+plan bytes, operation, forecasts and results remain unchanged.
