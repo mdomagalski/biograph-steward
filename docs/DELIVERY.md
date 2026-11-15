@@ -68,6 +68,11 @@ The [November 14 hosted assessment](evaluations/scientific_hosted_delivery_20261
 is `scientific_assessment_reference_20261114` (v4), including the saved historical
 function inspector and BioRED aggregates. Its authenticated browser check,
 source-preserving backup and isolated recovery are recorded separately.
+The newer [context-aware prediction assessment](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+is a separate aggregate-only repository/presentation deliverable. Its
+[standalone HTML report](evaluations/contextual_combination_20261115/report.html)
+does not require raw references, a model or the private demonstration packet.
+It has not replaced the hosted publication or changed the source graph.
 
 The November 12 `crc_biological_workspace_20261112` source and its portable
 all-abstain CRC package remain supplementary, reproducible earlier artifacts.

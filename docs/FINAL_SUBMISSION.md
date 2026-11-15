@@ -1,6 +1,24 @@
 # BioGraph Steward final submission
 
-Working submission and presentation draft, updated November 14, 2026. The accepted AWS runtime is `a6a05ff`, with the source-faithful workspace, native GO inspector and a separate historical function inspector containing six saved queries and 36 traceable hypotheses. The [current scientific results](evaluations/SCIENTIFIC_RESULTS_20261114.md) report bounded function-recovery gains and all negative controls. The new aggregate publication is `scientific_assessment_reference_20261114`; it is installed and its protected API, catalogue, source downloads and report passed acceptance. Earlier PDFs, slide decks and hosting receipts remain dated checkpoints until replaced.
+Working submission and evidence appendix, updated November 15, 2026. Start
+with the concise [submission overview](SUBMISSION_OVERVIEW.md). The accepted
+AWS runtime remains `a6a05ff`, with the source-faithful workspace, native GO
+inspector and six-query historical function inspector. The hosted assessment
+is `scientific_assessment_reference_20261114`.
+
+The newer [completed context-aware comparison](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+is a separate repository/presentation deliverable. Its fixed primary
+partially-known biological-process test supports improvement over retained
+LocalPlus in both ontology views: **0.05473 → 0.07343** and
+**0.17155 → 0.21009**, with paired intervals wholly above zero. Updating
+LocalPlus's annotations also improves both views. Additional learned benefit
+over the fully updated control remains uncertain for primary biological
+process; molecular-function and cellular-component secondary contrasts improve
+in both views. All 3,300 target forecasts
+were sealed before reference opening; all 18 cells and unfavorable controls
+are retained. These are later-curator function-recovery results, not a
+percentage of correct Pharos edges or a same-learner enriched-graph victory.
+The new research publication has not changed the hosted app, graph or default.
 
 ## Project summary
 
@@ -177,11 +195,13 @@ Use the [updated five-minute script](DEMO_SCRIPT.md):
    The clinical source guide separately preserves complete therapy/profile context.
    The optional GO inspector separates original native qualifiers from recorded
    normalization/context warnings; none becomes a historical correction or truth label.
-4. **Compare & assess:** open the latest scientific publication and explain
-   the CAFA5 gain, comparator, paired uncertainty and secondary status. Retain
-   the negative primary FSS result, NK/LK control limits, pruning result and
-   inferior agent arm. Inspect one saved historical function hypothesis through
-   its neighbor/source pair; it remains an uncalibrated prediction, not acceptance.
+4. **Measured results:** open the separate November 15 standalone report or
+   slide 4 for the new fixed primary context gain, annotation-update control
+   and secondary MF/CC findings. The hosted **Compare & assess** publication
+   remains its explicitly dated November 14 checkpoint. Preserve the earlier
+   negative FSS, graph, pruning and agent results. A saved historical function
+   hypothesis can be followed through its neighbor/source pair; it remains an
+   uncalibrated prediction, not acceptance.
 5. **Export:** identify the retained graph, exhaustive decision ledger and full
    original baseline. Explain whole-workspace versus current-answer scope.
 
@@ -258,6 +278,7 @@ remains failed. Both limitations remain part of the delivered assessment.
 
 | Assessment | Result | Interpretation |
 |---|---|---|
+| New fixed context-aware primary comparison | Learned context vs retained LocalPlus: Δ Fmax +0.01870 [0.00240, 0.03507] and +0.03854 [0.00803, 0.06914] across the two views | Supported bounded annotation-recovery gain; complete current-annotation LocalPlus also improves, and additional learned advantage over it is uncertain. [Full result](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md) |
 | Expert-labeled source-grounding component, 678 eligible reserved cases | Lexical: 31 correct error flags / 25 false alarms; publication context: 26 / 18; both leave 103 unresolved | Source-identity review trade-off; published curator-relative labels, not whole-graph accuracy or automatic corrections |
 | Current Wiki-context R-GCN comparison, 1,751 measured pairs | Historical AP 0.71027 versus normalized 0.70978; count control 0.72097 and degree control 0.71133 | Consumed-reference comparison; no reliable predictive gain over controls |
 | Fixed new-gene transfer, 128 queries / 7,648 nonsyntenic pairs | Neither RA nor binary shared context beats baseline and all 40 controls at any N=1–10; historical context reaches 26 queries, with 102 zero-context queries retained | Negative transfer within the same published reference; no accuracy estimate or automatic biological pruning |
@@ -299,30 +320,36 @@ endpoint from the actual extracted archive, with the full original baseline
 and exhaustive abstention ledger. Separate software-only startup succeeds
 without repository imports or optional dependencies.
 
-## Six-slide presentation draft
+## Current editable presentation
 
-| Slide | Main point | Visual or demonstration |
-|---|---|---|
-| 1. BioGraph Steward | A source-traceable Pharos research workspace | Title, scoped question and software workflow |
-| 2. The corrected graph in actual use | 99 proteins; 16,687 retained records with complete baseline/decisions | [Hosted TP53 graph](images/hosted_source_graph_20261113.png) |
-| 3. Verify what the source actually encodes | 253/308 exact historical revisions; gene-level and protein-level support differ | [Archived source passport](images/hosted_source_passport_20261113.png) |
-| 4. Inspect curator and biological context | Preserve whole therapy combinations and native pathway roles; do not double-count sources | [Clinical source guide](images/hosted_clinical_source_guide_20261113.png) and [Reactome guide](images/hosted_reactome_source_guide_20261113.png) |
-| 5. Measure function recovery | Secondary CAFA5 method/context gains, with negative primary, pruning and transfer controls retained | [Current controlled results and figure](evaluations/SCIENTIFIC_RESULTS_20261114.md) |
-| 6. Delivery and scientific boundaries | Working local/private-cloud app, portable software, complete decisions; whole-graph accuracy remains open | Actual export, [assessment](images/hosted_scientific_assessment_20261113.png) and source-permission boundary |
+The [November 15 v3 deck](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx)
+contains six main slides and two technical appendices. All eight slides were
+rendered and visually inspected. Its native Office chart/workbook and tables
+match the completed aggregate result; the dated source screenshots remain
+unchanged. Native PowerPoint application execution was not tested. The
+[compact receipt](evaluations/contextual_presentation_20261115_summary.json)
+records its exact hash and checks.
 
-This is the current **slide revision plan**, with actual new captures and a
-complete scientific figure ready for use. The existing editable six-slide deck
-is the earlier November 12 presentation; it has not yet been regenerated with
-the November 14 results. Its previous site/context, source-reuse and target
-recovery material remains preserved. Update that artifact before recording or
-submitting it; the current source-faithful report and complete November 14
-comparison take precedence over the earlier deck's delivery counts and results emphasis.
+| Slide | Main point |
+|---|---|
+| 1. BioGraph Steward | A focused Pharos question opens an inspectable graph, supporting records and auditable export. |
+| 2. An inspectable answer | The saved TP53 question and qualified 99-target workspace work through the existing reviewer route. |
+| 3. Source meaning | Original records, exact versions and unresolved gene/protein context remain visible. |
+| 4. Gain over retained LocalPlus | The new fixed primary function result improves in both views; annotation refresh helps; extra primary BP learning benefit remains uncertain. |
+| 5. Guided execution and optional assistance | Supported guided tools are dependable; model planning and verification limits stay explicit. |
+| 6. Review and handoff | Test the answer, source and export, then report unclear steps and terms. |
+| Appendix 7 | All three PK aspects in both views, reference sizes, effects and uncertainty. |
+| Appendix 8 | Judging alignment, delivery scope and remaining scientific limits. |
+
+The earlier v2 deck and older PDFs remain preserved checkpoints. Use the v3
+deck and current results note for the latest presentation; the hosted app is
+still its separately recorded November 14 checkpoint.
 
 The [dated review PDF](../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
 is a separate exportable presentation packet. Its 153,681-byte version predates
 the hosted update and still names the earlier hosted runtime. Preserve it as
 that checkpoint and use the hosted receipt for current status. It has not been
-regenerated, and its existence does not update the older editable six-slide deck.
+regenerated; use the newer editable v3 deck above for the current presentation.
 
 The optional NVIDIA Nemotron/pinned NAT integration belongs in the technical
 appendix. The planner is experimental; the primary demonstration uses supported
@@ -338,7 +365,7 @@ Show implemented methods and useful behavior before architecture details.
 | App and demonstration | Accepted hosted `a6a05ff` preserves TP53/native exports and adds the separate six-query/36-hypothesis function inspector; native GO, five-tab flow, synthetic checkout and CC0 annex remain available | Gather weekend team feedback for Monday, fix observed interpretation/access issues, and verify the permitted judge access route; independent intended-user assessment remains open |
 | Graph and decisions | Current AWS/Neptune workspace retains 16,687 records across 99 primary targets, with its original baseline and complete decisions preserved; 298 obsolete-GO-ID exclusions are source qualifications. Earlier all-abstain and experimental-pruning packages remain separate | Deliver clearly named current workspace and historical comparison packages under their source terms |
 | Standards | Explicit vocabulary references, bounded KGX profile and SSSOM audit | Link the implemented profile and documented conformance limits |
-| Scientific assessment | Public CAFA5 reference shows secondary method/context PK gains and bounded additional-protein transfer; NK/LK strongest controls are not reliably beaten, pruning has no reliable benefit, and the tested agent trails the published specialist. Earlier negative results remain | Present complete denominators, uncertainty, source/time boundaries and macro/fixed-cutoff trade-offs; whole-graph truth and automatic biological pruning remain open |
+| Scientific assessment | The completed later-window context comparison improves on retained LocalPlus in both fixed primary views. Complete current annotation refresh also helps; learned advantage beyond it remains uncertain for primary BP, with positive secondary MF/CC contrasts. Earlier negative graph/pruning/agent results remain. | Present the new bounded result and complete controls, with source/time/population boundaries; whole-graph truth and automatic biological pruning remain open |
 | Preservation | Existing private checkpoint passed isolated graph/assessment/question recovery; live service and data remained unchanged | Keep scope/version receipts with the handoff; full VM recovery and the separate unapproved research-archive transfer are not completed by that check |
 | Final submission format | Supplied brief and Slack updates guide the handoff; exact final file schema remains unspecified | Follow any later organizer instructions; keep this inventory ready |
 

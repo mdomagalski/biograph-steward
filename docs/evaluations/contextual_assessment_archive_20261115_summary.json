@@ -1,0 +1,9 @@
+{
+  "bytes": 573822,
+  "every_manifest_entry_verified": true,
+  "file": "biograph_steward_contextual_assessment_20261115.zip",
+  "format": "biograph-steward.contextual-aggregate-ZIP.v1",
+  "members": 20,
+  "raw_cases_source_archives_predictions_weights_or_credentials": false,
+  "sha256": "db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5"
+}

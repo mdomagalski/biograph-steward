@@ -11,6 +11,17 @@ context or neighboring GO-function predictions. A learned graph stacker is an
 established way to combine those inputs. It remains an empirical hypothesis
 that this richer integration improves this project's task over LocalPlus.
 
+**Completed November 15:** the [fixed assessment](../../docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+now supports a bounded primary gain over retained LocalPlus in both views.
+The rationale above records the pre-assessment hypothesis. Complete current
+annotations improve LocalPlus too; additional learned primary BP benefit is
+uncertain, with positive secondary MF/CC contrasts. All controls are retained.
+
+`goa_context_contract.json` is the immutable preparation contract. Its
+`real_features_or_models_created:false` records that contract's original
+pre-execution state; it is not a live run-status field. Execution receipts,
+source/model hashes and the completed result record the later actual work.
+
 ## Reused implementation
 
 - [ProtBoost primary paper](https://arxiv.org/abs/2412.04529), December 2024.
@@ -360,3 +371,38 @@ Final scores open only after a complete forecast/model-choice/source seal. The
 case-level reference-positive score ledgers preserve every eligible pair, with
 no threshold-based selection. They support a separate source-provenance audit
 and stay distinct from aggregate-only presentation artifacts.
+
+## Post-seal interpretation audits
+
+`provenance.py` joins every native/fixed-T0 PK/BPO residual positive to the
+original GAF rows through the pinned native alias and is_a/part_of policy. It
+retains direct and ancestor links, NOT context, evidence codes, references,
+assigners, annotation dates, extensions, product forms and With/From. Links can
+reuse rows across inherited labels; they do not count independent experiments.
+Matching the same source that constructed the reference verifies traceability
+and admission consistency, rather than providing independent biological
+confirmation. Private complete traces and deterministic cases remain separate
+from an aggregate publication. Raw-target source-coverage fields are explicitly
+marked as post-opening descriptive additions, without new performance endpoints.
+
+`bibliography.py` is an optional, separately authorized metadata-only follow-up.
+The [CAFA5 preprint](https://www.biorxiv.org/content/10.64898/2026.04.27.716980v2)
+and its released `publishedaftert0` reference distinguish later biocuration
+from publication timing; the existing CAFA adapter already uses those official
+subsets. The optional inventory includes every supporting PMID, without
+prediction-score selection, and checks exact MED identifiers in cached
+[Europe PMC lite responses](https://dev.europepmc.org/RestfulWebService).
+[Official field documentation](https://dev.europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf)
+states that `firstPublicationDate` may normalize partial dates and that
+`firstIndexDate` describes indexing. Consequently, inventory bins use only
+recorded publication years, leave all 2026 years cutoff-ambiguous, and preserve
+missing/duplicate/error coverage. They cannot establish experiment dates or
+independent-study counts.
+
+The live bibliographic inventory was **not executed**. Sending the selected
+PMID set externally requires explicit user authorization through
+`user_authorized_sending_selected_PMIDs_to_EuropePMC`; broad descriptive-audit
+authorization alone is insufficient. No verified local publication-metadata
+cache was available. Invented tests cover the source/identity, date-precision,
+missingness, publication-boundary and authorization safeguards. No publication
+age or additional accuracy result is claimed from these tests.

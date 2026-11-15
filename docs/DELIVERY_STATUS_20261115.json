@@ -6,6 +6,7 @@
     "security_changes_or_binary_resigning": false,
     "status": "unavailable in this audit"
   },
+  "closing_delivery_checklist": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
   "format": "biograph-steward.delivery-status.v1",
   "hosted_review": {
@@ -35,6 +36,12 @@
   },
   "no_AWS_workbench_mutations": true,
   "no_external_messages_sent": true,
+  "optional_bibliographic_inventory": {
+    "date_inference_or_model_change": false,
+    "publication_ages_verified": false,
+    "reason": "Automatic approval review rejected external export of selected reference PMIDs; no queries, retries or bypass. No local metadata cache was available.",
+    "status": "not_executed"
+  },
   "organizer_contract": {
     "autonomous_or_semi_autonomous_permitted": true,
     "brief_source": "User-supplied Bio-Agent KG challenge brief and organizer Slack excerpts",
@@ -59,10 +66,11 @@
     "Artifact_Tool_reimport_passed": true,
     "Spaces_fallback": "create/connect worked; required authoring tool unavailable. Own empty private draft was trashed; final deliverable is a local editable PPTX.",
     "all_eight_slides_visually_reviewed": true,
-    "bytes": 292866,
+    "bytes": 297032,
     "earlier_PDFs_and_slides": "dated checkpoints retained; do not silently replace their runtime or result scope",
     "editable_chart_literal_precision": "six decimal places in the Office workbook; complete full-precision statistical results remain in the cited JSON",
-    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v2.pptx",
+    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx",
+    "latest_receipt": "docs/evaluations/contextual_presentation_20261115_summary.json",
     "layout_findings": 0,
     "layout_warnings": 0,
     "main_slides": 6,
@@ -76,26 +84,55 @@
       8
     ],
     "screenshots": "previous verified November 13/14 captures, dated in speaker notes; no new hosted UI acceptance claimed",
-    "sha256": "92789b50180e177ed3a6a0b51e1f63758580ea5f13ed6bce59bc4965cbb44c5e",
-    "status": "prepared_and_locally_validated",
+    "sha256": "7aa583b6f7dd4a5880a5244e1c7180ecf885b2fa1d7f70b97b6ee88dafff5bd6",
+    "source_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+    "status": "v3_completed_result_prepared_and_locally_validated",
     "technical_appendix_slides": 2,
-    "validation_receipt_sha256": "712badbace03c852ed3a738d7650d3914f76288e24847753c19dfaad463349f3",
-    "visual_receipt_sha256": "fd4a49036ca9af5ec2dd3e93a58a26a557e2f0c196780617fe5241489fa3b90f"
+    "validation_receipt_sha256": "bbe1106813d01173c08fc8ebc912615eac8709d6a40a1178bb0829a00abaf1cc",
+    "visual_receipt_sha256": "b561a2e60d48c6d383fa40409f808744051391c67028206b74f89c2ebdcdc90a"
   },
   "purpose": "Current judge-facing artifact and capability boundary; prior release manifests remain dated records.",
   "reader_date": {
     "UTC_research_identifier": "20261115",
-    "date": "2026-11-14",
+    "date": "2026-11-15",
     "timezone": "America/New_York"
   },
   "science": {
-    "combination_primary_success": false,
+    "historical_global_mixture_primary_success": false,
     "latest_completed_combination": {
       "bytes": 21814,
       "path": "docs/evaluations/learned_combination_20261115_summary.json",
       "sha256": "4fe109c972dd0644ded11d88ee1ac5d56dfc517c03b033f23b17f14beed45382"
     },
-    "new_research_comparisons": "in progress in a separate track; no new gains claimed here",
+    "latest_contextual_comparison": {
+      "PK_MF_and_CC_vs_current_annotation_LocalPlus": "positive conditional unadjusted paired intervals in both views; secondary endpoints",
+      "all_target_forecasts_sealed_before_reference_opening": 3300,
+      "aspect_arm_forecasts": 49,
+      "automatic_graph_or_app_promotion": false,
+      "bytes": 1477560,
+      "completed_settings_aspects_views": 18,
+      "current_annotation_LocalPlus_gain_over_retained_both_views": true,
+      "hosted_installation_completed": false,
+      "numeric_audit": "docs/evaluations/contextual_combination_20261115/numeric_audit.json",
+      "path": "docs/evaluations/contextual_combination_20261115/summary.json",
+      "primary_endpoint": "PK biological_process ordinary micro-Fmax",
+      "primary_gain_over_current_annotation_LocalPlus_both_views": false,
+      "primary_gain_over_retained_LocalPlus_both_views": true,
+      "raw_result_sha256": "2dfebc4e855df8682335484cb39b5100f518363fa74b1b24b66ca3c4cdffdf98",
+      "reference_scope": "later curator-annotation recovery, including experimental codes and IC/TAS; not newly performed experiments or whole-Pharos accuracy",
+      "sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+      "source_provenance": "docs/evaluations/contextual_combination_20261115/provenance/aggregate_provenance.json",
+      "standalone_archive": {
+        "bytes": 573822,
+        "every_manifest_entry_verified": true,
+        "file": "biograph_steward_contextual_assessment_20261115.zip",
+        "format": "biograph-steward.contextual-aggregate-ZIP.v1",
+        "members": 20,
+        "raw_cases_source_archives_predictions_weights_or_credentials": false,
+        "sha256": "db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5"
+      }
+    },
+    "new_research_comparisons": "completed fixed contextual comparison; separate repository/presentation artifact, not a hosted default",
     "same_learner_graph_enrichment_gain_established": false,
     "secondary_CC_mixing_gain": {
       "DeepGO_SE_micro_Fmax": 0.29141414141414135,
@@ -228,6 +265,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
+  "updated_at_UTC": "2026-11-15T06:09:33.309815+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

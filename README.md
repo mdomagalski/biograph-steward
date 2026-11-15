@@ -1,7 +1,7 @@
 # BioGraph Steward
 
 For a short product review, start with the [submission overview](docs/SUBMISSION_OVERVIEW.md)
-and [editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v2.pptx).
+and [editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx).
 The [delivery status](docs/DELIVERY_STATUS_20261115.json) separates tested local
 software, the last verified hosted checkpoint and remaining release actions.
 
@@ -18,8 +18,11 @@ The protected AWS reviewer site and private Neptune mirror are deployed.
 Start with the [submission overview](docs/SUBMISSION_OVERVIEW.md) for the hosted
 example and a short account of what is ready.
 
-[Scientific assessments](docs/evaluations/SCIENTIFIC_RESULTS_20261114.md)
-demonstrate source/ontology corrections and bounded function-recovery gains.
+[The completed context-aware comparison](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+finds a bounded gain over retained LocalPlus in both fixed primary views.
+Refreshing LocalPlus's annotations also helps; the learned model's additional
+primary biological-process advantage over fully current annotations remains
+uncertain; molecular-function and cellular-component secondary results improve.
 Whole-graph biological correctness and a consistent enriched-graph prediction
 advantage remain open. Optional research methods are isolated from the core
 application; their unfavorable results and consumed reference boundaries are
@@ -56,6 +59,9 @@ inspector shows saved neighbor contributions, source pairs, training terms and
 annotation-reuse warnings without accepting hypotheses or changing the graph.
 The latest aggregate publication is `scientific_assessment_reference_20261114`;
 see the [current results](docs/evaluations/SCIENTIFIC_RESULTS_20261114.md).
+The newer [context-aware research report](docs/evaluations/contextual_combination_20261115/report.html)
+is supplied separately in the repository and presentation; it has not replaced
+that hosted publication or the application's default graph.
 The optional [source-paper utility](docs/SOURCE_PAPER_INSPECTION.md) provides
 PubMed discovery and saved literature-audit inspection. The core review flow
 needs no paid literature API or model server.

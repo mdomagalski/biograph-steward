@@ -1,6 +1,6 @@
 # Current project alignment
 
-Updated November 13, 2026, against the organizer brief, proposal and organizer Slack excerpts supplied by the user. This is a functional crosswalk, not organizer approval. The supplied excerpts were not independently retrieved from Slack. Earlier assessments and retired experiments remain in the [archive ledger](EXPERIMENT_HISTORY.md).
+Updated November 15, 2026, against the organizer brief, proposal and organizer Slack excerpts supplied by the user. This is a functional crosswalk, not organizer approval. The supplied excerpts were not independently retrieved from Slack. Earlier assessments and retired experiments remain in the [archive ledger](EXPERIMENT_HISTORY.md).
 
 BioGraph Steward delivers a focused Pharos evidence workbench: bounded construction, qualified source integration, guided questions and multihop inspection, evidence passports, review history, snapshot comparison and source-preserving exports. The working path uses explicit user choices and deterministic execution; the optional model planner remains experimental. The final submission should present this working semi-autonomous workflow, its measured results and its scientific limits.
 
@@ -8,8 +8,14 @@ The core architecture is sufficient for this bounded workflow. Completion now
 means final release delivery and stronger biological qualification, rather than
 another graph store or agent framework. The tested AWS/Neptune deployment is a
 faithful mirror and inspection path; ordinary answers still use saved workspace
-files. The latest curated-signature recovery gain is an optional offline
-evaluation, not a new default app feature or proof of Pharos edge accuracy.
+files. The latest [context-aware function comparison](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+supports improvement over retained LocalPlus in both fixed primary views;
+current annotation refresh also improves the baseline. Learned advantage over
+that complete current-data control remains uncertain for primary biological
+process, while molecular-function and cellular-component secondary contrasts
+are positive. This is optional research, not a new app default or proof of
+Pharos edge accuracy. The central same-learner enriched-graph gain remains
+unestablished.
 
 The [whole-workspace evidence audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md)
 adds a frozen probability sample, source-backed interpretation findings and
@@ -55,7 +61,7 @@ The brief permits **autonomous or semi-autonomous software**. Its topic is struc
 | Judging criterion | Delivered evidence | Remaining limitation |
 |---|---|---|
 | **Usability — 40%**: accessible to non-KG experts; useful contextualized multihop work | Five task tabs; guided questions; deterministic cited summaries; bounded paths up to three hops; guided source inspection; assisted feedback on assay/construct and export explanations. Desktop/mobile delivery is recorded in the [October 29 receipt](evaluations/navigation_guidance_20261029_summary.json). | Independent intended-user evaluation is unestablished. Guided controls are the dependable entry point; arbitrary plain-language interpretation is not verified. |
-| **Accuracy and pruning — 30%**: remove erroneous or contextually irrelevant data | Identifier/type/provenance checks, quarantine, reciprocal/source-view normalization, explicit review and keep/prune/abstain decisions; completed measured graph comparisons and native-score assessment below. | No validated automatic biological pruning or Steward-specific prediction gain. Structural validity and local acceptance are not experimental truth. The demonstrated real handoff retains all undecided edges. |
+| **Accuracy and pruning — 30%**: remove erroneous or contextually irrelevant data | Identifier/type/provenance checks, quarantine, reciprocal/source-view normalization, explicit review and keep/prune/abstain decisions; completed graph comparisons and separately scoped function-recovery gains. | No validated automatic biological pruning or consistent same-learner enriched-graph prediction gain. Structural validity and local acceptance are not experimental truth. The demonstrated real handoff retains all undecided edges. |
 | **Explainability — 20%**: trace why an edge connects its entities | Qualified assertions, source/version/record locators, readable assay and CIViC conditions, source-reuse flags, immutable snapshots, complete source packets and reviewed decision history. | Exact imported study lineage and independent-study counts remain unresolved where source metadata is absent. A second database label is not independent evidence. |
 | **Standards — 10%**: explicit, if imperfect vocabulary/schema references; consistent and specific representations | Stable UniProt and source identifiers, Biolink categories and mapped predicates, qualified local relations, [bounded KGX validation](STANDARD_EXPORT.md) and [SSSOM mapping audit](EVIDENCE_OVERLAP.md). | Full KGX/Biolink/JSON-LD/PROV interoperability is not established. Known upstream schema/domain conflicts and unsupported mappings remain explicit; local predicates are not silently strengthened to pass validation. |
 

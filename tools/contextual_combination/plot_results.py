@@ -174,7 +174,7 @@ def _draw(rows, output, stem, *, title, subtitle, caption):
                        loc='left', pad=14, color='#263746', fontsize=11)
         axis.set_xlim(low - padding, high + padding); axis.set_ylim(n - .45, -.65)
         axis.xaxis.set_major_locator(MaxNLocator(nbins=5))
-        axis.xaxis.set_major_formatter(FuncFormatter(lambda x, _: '0' if x == 0 else f'{x:+.2f}'))
+        axis.xaxis.set_major_formatter(FuncFormatter(lambda x, _: '0' if x == 0 else f'{x:+.3g}'))
         axis.set_xlabel('Difference in micro-Fmax', labelpad=8)
         axis.tick_params(axis='both', length=0, pad=7)
         axis.spines[['top', 'right', 'left']].set_visible(False)

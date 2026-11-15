@@ -1,0 +1,13 @@
+{
+  "format": "contextual.raw-public-figure-chain.v1",
+  "status": "passed",
+  "raw_aggregate_sha256": "2dfebc4e855df8682335484cb39b5100f518363fa74b1b24b66ca3c4cdffdf98",
+  "public_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "exact_current_publication_projection": true,
+  "figure_audit_sha256": "3ee11e2779f950023014c06f8f306f8e26ee1175254c8096d259768eed95313a",
+  "figure_receipt_sha256": "23082d0930d890ba9826cdb9bd81524b43b848c6db1c814ca3f33319c8f61d42",
+  "raw_reference_or_forecast_rows_read": false,
+  "new_sampling_model_choice_or_scientific_metric": false,
+  "presentation_only_revision": "three significant digits on axis ticks prevents duplicate rounded labels at small source-update deltas",
+  "old_figure_data_unchanged": true
+}

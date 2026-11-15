@@ -1,6 +1,18 @@
-# November 14 core software checkpoint
+# November 15 review candidate and core software checkpoint
 
-The folder identifier uses November 15 UTC. This is a locally tested standalone core subset at commit `9bf202f84949c76904ba8e51a5f83b68f2d58843`, separate from the last verified AWS runtime and ongoing research comparisons.
+The [latest completed scientific result](../../evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+and [editable v3 presentation](../../../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx)
+are repository deliverables. The self-contained aggregate assessment ZIP is
+`runs/contextual_gain_20261115/final_delivery_v1/biograph_steward_contextual_assessment_20261115.zip`
+(573,822 bytes; SHA256 `db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5`).
+It contains 20 checked files: all results/controls, figures and aggregate
+source/numerical audits, without raw reference cases, source archives or weights.
+The [archive receipt](../../evaluations/contextual_assessment_archive_20261115_summary.json)
+records its boundary. Hosting remains separately pinned to `a6a05ff`.
+
+## Tested core software
+
+The folder identifier uses November 15 UTC. This is a locally tested standalone core subset at commit `9bf202f84949c76904ba8e51a5f83b68f2d58843`, separate from the last verified AWS runtime and completed research comparisons.
 
 [Download the prepared core ZIP](../../../runs/software_delivery_core_20261115/biograph_steward_core_software.zip). It is 661,594 bytes with 124 files; SHA-256:
 

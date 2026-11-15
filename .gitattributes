@@ -1,2 +1,4 @@
 # Preserve rendered document bytes; PDF syntax is not a text diff/merge format.
 *.pdf binary
+# Keep Matplotlib's exact, hash-audited generated SVG bytes, including path spacing.
+docs/evaluations/contextual_combination_20261115/figures/*.svg -whitespace

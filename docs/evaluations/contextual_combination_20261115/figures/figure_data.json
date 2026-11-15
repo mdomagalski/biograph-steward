@@ -1,0 +1,585 @@
+{
+  "source_report_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "context_rows": [
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus",
+      "label": "LocalPlus: retained seeds",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.05473151661492468,
+      "point_difference": 0.01869959183563904,
+      "paired_95_percentile_interval": [
+        0.002396196718535321,
+        0.03506946026592423
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "deepgose",
+      "label": "DeepGO-SE",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.03642212902855173,
+      "point_difference": 0.03700897942201199,
+      "paired_95_percentile_interval": [
+        0.024107049122097494,
+        0.055266553943957665
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_soft",
+      "label": "LocalPlus: matched soft",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.05473151661492468,
+      "point_difference": 0.01869959183563904,
+      "paired_95_percentile_interval": [
+        0.002396196718535321,
+        0.03506946026592423
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "deepgose_soft",
+      "label": "DeepGO-SE: matched soft",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.03704120693537492,
+      "point_difference": 0.036389901515188804,
+      "paired_95_percentile_interval": [
+        0.023531319947324596,
+        0.055117134493349124
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "equal_mix",
+      "label": "Equal mix (50/50)",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.04815476816317948,
+      "point_difference": 0.025276340287384243,
+      "paired_95_percentile_interval": [
+        0.0111701175026805,
+        0.04298715009502002
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "development_alpha_mix",
+      "label": "Development-weighted mix",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.05610003379520108,
+      "point_difference": 0.01733107465536264,
+      "paired_95_percentile_interval": [
+        0.002409787741190193,
+        0.03349629663190209
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_model_axis_raw",
+      "label": "LocalPlus: fixed model axis",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.05473151661492468,
+      "point_difference": 0.01869959183563904,
+      "paired_95_percentile_interval": [
+        0.002396196718535321,
+        0.03506946026592423
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "deepgose_model_axis_raw",
+      "label": "DeepGO-SE: fixed model axis",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.03642212902855173,
+      "point_difference": 0.03700897942201199,
+      "paired_95_percentile_interval": [
+        0.024107049122097494,
+        0.055266553943957665
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "native_T0_nonexperimental",
+      "label": "T0 nonexperimental GOA",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.02547564351770042,
+      "point_difference": 0.047955464932863304,
+      "paired_95_percentile_interval": [
+        0.03525265828354189,
+        0.06674141182762425
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_updated_seeds",
+      "label": "LocalPlus: updated fit labels",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.05529575847075231,
+      "point_difference": 0.018135349979811408,
+      "paired_95_percentile_interval": [
+        0.0023672875698890115,
+        0.03465031885444492
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_updated_seeds_soft",
+      "label": "Updated fit labels + soft",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.05529575847075231,
+      "point_difference": 0.018135349979811408,
+      "paired_95_percentile_interval": [
+        0.0023672875698890115,
+        0.03465031885444492
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "fit_label_frequency",
+      "label": "Fit-label frequency",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.03258367274659111,
+      "point_difference": 0.04084743570397261,
+      "paired_95_percentile_interval": [
+        0.024385662812380148,
+        0.06206442102073667
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_T0_curated",
+      "label": "LocalPlus: all T0 curated",
+      "candidate_Fmax": 0.07343110845056372,
+      "comparator_Fmax": 0.05883765609990394,
+      "point_difference": 0.014593452350659779,
+      "paired_95_percentile_interval": [
+        -0.0019046962634954936,
+        0.03200352643444085
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus",
+      "label": "LocalPlus: retained seeds",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.17154959406989057,
+      "point_difference": 0.038543745591555434,
+      "paired_95_percentile_interval": [
+        0.008029563587861582,
+        0.06913900376583124
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "deepgose",
+      "label": "DeepGO-SE",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.13139095111360133,
+      "point_difference": 0.07870238854784467,
+      "paired_95_percentile_interval": [
+        0.051899722540760036,
+        0.10805563140049013
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_soft",
+      "label": "LocalPlus: matched soft",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.17154959406989057,
+      "point_difference": 0.038543745591555434,
+      "paired_95_percentile_interval": [
+        0.008029563587861582,
+        0.06913900376583124
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "deepgose_soft",
+      "label": "DeepGO-SE: matched soft",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.13209013209013207,
+      "point_difference": 0.07800320757131393,
+      "paired_95_percentile_interval": [
+        0.050545845339033654,
+        0.10729480907614015
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "equal_mix",
+      "label": "Equal mix (50/50)",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.16495751538236156,
+      "point_difference": 0.04513582427908444,
+      "paired_95_percentile_interval": [
+        0.018634262774740704,
+        0.07569440122755423
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "development_alpha_mix",
+      "label": "Development-weighted mix",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.1780297226903631,
+      "point_difference": 0.0320636169710829,
+      "paired_95_percentile_interval": [
+        0.0031408766690300865,
+        0.06260288689525763
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_model_axis_raw",
+      "label": "LocalPlus: fixed model axis",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.17154959406989057,
+      "point_difference": 0.038543745591555434,
+      "paired_95_percentile_interval": [
+        0.008029563587861582,
+        0.06913900376583124
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "deepgose_model_axis_raw",
+      "label": "DeepGO-SE: fixed model axis",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.13139095111360133,
+      "point_difference": 0.07870238854784467,
+      "paired_95_percentile_interval": [
+        0.051899722540760036,
+        0.10805563140049013
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "native_T0_nonexperimental",
+      "label": "T0 nonexperimental GOA",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.14616909419977592,
+      "point_difference": 0.06392424546167008,
+      "paired_95_percentile_interval": [
+        0.043943361492509,
+        0.08586677795477063
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_updated_seeds",
+      "label": "LocalPlus: updated fit labels",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.17518659343754403,
+      "point_difference": 0.03490674622390197,
+      "paired_95_percentile_interval": [
+        0.004884981271375094,
+        0.06621257562626565
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_updated_seeds_soft",
+      "label": "Updated fit labels + soft",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.17518659343754403,
+      "point_difference": 0.03490674622390197,
+      "paired_95_percentile_interval": [
+        0.004884981271375094,
+        0.06621257562626565
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "fit_label_frequency",
+      "label": "Fit-label frequency",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.10727728983688835,
+      "point_difference": 0.10281604982455765,
+      "paired_95_percentile_interval": [
+        0.06555286799749026,
+        0.1409694259061394
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "validation_selected_context",
+      "comparator": "localplus_T0_curated",
+      "label": "LocalPlus: all T0 curated",
+      "candidate_Fmax": 0.210093339661446,
+      "comparator_Fmax": 0.18277132332105414,
+      "point_difference": 0.027322016340391858,
+      "paired_95_percentile_interval": [
+        -0.004239411749048672,
+        0.0595693381796736
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    }
+  ],
+  "source_update_rows": [
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "localplus_updated_seeds",
+      "comparator": "localplus",
+      "label": "Updated fit labels: raw",
+      "candidate_Fmax": 0.05529575847075231,
+      "comparator_Fmax": 0.05473151661492468,
+      "point_difference": 0.000564241855827631,
+      "paired_95_percentile_interval": [
+        -0.0010384935807803623,
+        0.0028394394359043643
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "localplus_updated_seeds_soft",
+      "comparator": "localplus_soft",
+      "label": "Updated fit labels: soft",
+      "candidate_Fmax": 0.05529575847075231,
+      "comparator_Fmax": 0.05473151661492468,
+      "point_difference": 0.000564241855827631,
+      "paired_95_percentile_interval": [
+        -0.0010384935807803623,
+        0.0028394394359043643
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "native",
+      "title": "Native ontology",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "localplus_T0_curated",
+      "comparator": "localplus",
+      "label": "Complete T0 curated: raw",
+      "candidate_Fmax": 0.05883765609990394,
+      "comparator_Fmax": 0.05473151661492468,
+      "point_difference": 0.00410613948497926,
+      "paired_95_percentile_interval": [
+        0.0009633830754390792,
+        0.007544371897042172
+      ],
+      "raw_reference_proteins": 1954,
+      "residual_reference_proteins": 322
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "localplus_updated_seeds",
+      "comparator": "localplus",
+      "label": "Updated fit labels: raw",
+      "candidate_Fmax": 0.17518659343754403,
+      "comparator_Fmax": 0.17154959406989057,
+      "point_difference": 0.003636999367653465,
+      "paired_95_percentile_interval": [
+        5.591514130151716e-05,
+        0.006006898074053461
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "localplus_updated_seeds_soft",
+      "comparator": "localplus_soft",
+      "label": "Updated fit labels: soft",
+      "candidate_Fmax": 0.17518659343754403,
+      "comparator_Fmax": 0.17154959406989057,
+      "point_difference": 0.003636999367653465,
+      "paired_95_percentile_interval": [
+        5.591514130151716e-05,
+        0.006006898074053461
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    },
+    {
+      "view": "fixed_T0",
+      "title": "Fixed-T0 sensitivity",
+      "setting": "PK",
+      "namespace": "biological_process",
+      "candidate": "localplus_T0_curated",
+      "comparator": "localplus",
+      "label": "Complete T0 curated: raw",
+      "candidate_Fmax": 0.18277132332105414,
+      "comparator_Fmax": 0.17154959406989057,
+      "point_difference": 0.011221729251163576,
+      "paired_95_percentile_interval": [
+        0.0042134440313396125,
+        0.017655958722004837
+      ],
+      "raw_reference_proteins": 319,
+      "residual_reference_proteins": 319
+    }
+  ],
+  "point_policy": "observed point difference, never bootstrap mean",
+  "interval_policy": "copy saved intervals exactly; no statistics/model choices recomputed"
+}

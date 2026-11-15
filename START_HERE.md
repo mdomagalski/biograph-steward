@@ -16,7 +16,7 @@ Open [the workbench](http://127.0.0.1:8765/). Keep the terminal running; Ctrl+C 
 
 For the current product story and measured limits, read the
 [submission overview](docs/SUBMISSION_OVERVIEW.md) or open the
-[editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v2.pptx).
+[editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx).
 The [delivery status](docs/DELIVERY_STATUS_20261115.json) identifies dated
 checkpoints and the release actions still pending.
 
@@ -31,8 +31,16 @@ for the shared saved-data review.
 
 The [three-page review packet](output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
 summarizes the working product, measured scientific results and delivery routes.
-The [release index](docs/releases/20261113/README.md) identifies the tested
-software, current hosted demonstration and preserved older private bundle.
+The [current release index](docs/releases/20261115/README.md) identifies the
+tested core software and separate research artifacts. The
+[older data index](docs/releases/20261113/README.md) preserves its dated private
+graph/baseline bundle; current hosting is recorded in the delivery status.
+
+The latest [standalone prediction report](docs/evaluations/contextual_combination_20261115/report.html)
+and [plain-language results](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+are supplied in the repository. They support a bounded improvement over
+retained LocalPlus, with the annotation-freshness control and primary/secondary
+limits visible. This newer study has not replaced the older hosted assessment.
 
 The five tabs retain your current graph and selections as you switch tasks.
 
@@ -105,6 +113,14 @@ For disease-based retrieval, select **Pharos disease cohort**, search for `color
 See [construction and replay](docs/CONSTRUCTION.md), [scoped retrieval](docs/SCOPED_RETRIEVAL.md), and [CIViC evidence](docs/CIVIC_EVIDENCE.md). CIViC queries retain complete molecular profiles, therapy sets and disease context; a multi-drug annotation does not establish a single-drug effect.
 
 ## What the results establish
+
+The [completed November 15 comparison](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+supports later GO function recovery over retained LocalPlus in both fixed
+primary biological-process views. Refreshing LocalPlus's annotations also
+helps. Learning beyond that fully updated control is uncertain for primary
+biological process, with positive molecular-function and cellular-component
+secondary results. This separate historical function task does not establish
+whole-graph accuracy or a consistent same-learner enriched-graph gain.
 
 The [expert-labeled grounding assessment](docs/evaluations/EXPERT_GROUNDING_20261113.md)
 measures source-identity error triage using published curator labels. It remains

@@ -32,6 +32,10 @@ a paired 95% interval wholly above zero in **both** primary views. Use 2,000
 paired whole-protein bootstrap draws, seed 20261113, after per-protein counts
 reproduce every ordinary native curve column within `1e-12`. Intervals are
 conditional and unadjusted. The final threshold grid is `.001`–`.999`.
+Resample the complete native parsed protein frame. The unchanged evaluator can
+retain rows whose positives are all removed by the known-term/TOI masks; their
+predictions can still contribute false positives under its convention. Report
+the raw frame and the smaller residual-positive population separately.
 
 ## Learning and fair controls
 

@@ -17,14 +17,20 @@ the authorized private Session Manager route.
 The checkout also includes a [CC0 Reactome example](../examples/reactome_context_20261113/README.md)
 with an offline viewer and exact native records. This is a separate current
 source-inspection example, not the complete Pharos graph or its historical
-baseline. The [delivery index](releases/20261113/README.md) identifies which
-software, data and assessment are actually supplied.
+baseline. The [current software index](releases/20261115/README.md) and
+[preserved data index](releases/20261113/README.md) distinguish the supplied
+software, research and mixed-source demonstration.
 
 The accepted AWS runtime is `a6a05ff`, including the saved historical
 function-context inspector: six queries and 36 traceable hypotheses. The
-[November 14 results](evaluations/SCIENTIFIC_RESULTS_20261114.md) are the current
-scientific summary. Select `scientific_assessment_reference_20261114` in
+[November 14 results](evaluations/SCIENTIFIC_RESULTS_20261114.md) describe the
+hosted scientific checkpoint. Select `scientific_assessment_reference_20261114` in
 **Compare & assess**; its protected hosted API and source downloads passed acceptance.
+The newer [standalone comparison](evaluations/contextual_combination_20261115/report.html)
+is a separate repository/presentation artifact, summarized in the
+[updated results note](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md).
+Open it in advance if presenting the latest scientific result; it is not yet
+the hosted catalogue's assessment.
 Earlier delivery receipts and combined archives describe their own checkpoints.
 Allow about 1–2 minutes for a cold load of the existing 99-target graph/answer.
 The separate saved function queries respond in under a second on the tested
@@ -47,17 +53,19 @@ host; these are different tasks, not a direct speedup comparison.
    a citation is not automatically evidence for every protein. Explain the
    recovered 253/308 exact revisions and the unresolved remainder. Five
    historically encoded connections excluded by a current-only view are kept.
-4. **Present the measured result — one minute.** In **Compare & assess**, open
-   the latest scientific assessment. Show the bounded CAFA5 biological-process
-   result: original-graph LocalPlus **0.1218**, published GeneMANIA+ **0.1299**,
-   and full historical strict-context LocalPlus **0.1353** micro-Fmax. The two
-   positive contrasts are secondary; Fmax is annotation recovery, not an accuracy
-   percentage. NK/LK do not reliably beat their strongest fixed controls,
-   pruning has no reliable benefit, and the tested claim-checking agent remains
-   inferior to the published specialist. Open one saved historical function query
-   and follow a neighbor contribution/source pair; its score is not a probability
-   or an accepted GO annotation. The [complete results](evaluations/SCIENTIFIC_RESULTS_20261114.md)
-   preserve the original negative primary candidate, controls and uncertainty.
+4. **Present the measured result — one minute.** Switch to the preopened
+   standalone report or slide 4 of the updated presentation. The fixed primary
+   biological-process result improves over retained LocalPlus in both ontology
+   views: **0.05473 → 0.07343** and **0.17155 → 0.21009**, with paired intervals
+   above zero. Refreshing LocalPlus's annotations also helps. Extra learned
+   benefit over fully updated LocalPlus is uncertain for primary biological
+   process; molecular-function and cellular-component secondary contrasts
+   improve. Fmax measures later curator-annotation recovery, not graph accuracy.
+   All 3,300 forecasts preceded reference opening. Keep the earlier negative
+   graph, pruning and agent results distinct. If staying entirely inside the
+   hosted app, use its explicitly dated November 14 assessment and one saved
+   function query instead; do not call it the new comparison. Follow a saved
+   neighbor/source contribution as an explanation, never as accepted biology.
 5. **Show the handoff — one minute.** In **Export**, download the complete
    workspace ZIP. The answer diagram is a question-specific view; the workspace
    retains 16,687 evidence rows. Locate `source_retained_package/retained_graph.json`,
@@ -67,8 +75,9 @@ host; these are different tasks, not a direct speedup comparison.
    Native source terms remain separate from the MIT software license.
 
 The existing `crc_judge_demo` route and SIGNOR BRAF-site explanation remain
-supplementary demonstrations. The November 14 scientific results take precedence over earlier presentation
-snapshots. The older negative 128-gene coessentiality transfer remains a separate
+supplementary demonstrations. The new standalone results and
+[editable v3 presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx)
+are the latest scientific handoff. The older negative 128-gene coessentiality transfer remains a separate
 result, not a description of every subsequent transfer task.
 
 For a question about claim verification, use the separate

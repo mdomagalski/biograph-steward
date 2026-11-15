@@ -8,7 +8,7 @@ NVIDIA model planning and source-audit agents are implemented and evaluated,
 with their limitations retained.
 
 This overview describes the working product and evidence available on
-**November 14, 2026, Eastern time**. Research identifiers ending `20261115`
+**November 15, 2026, Eastern time**. Research identifiers ending `20261115`
 use UTC. The [delivery status](DELIVERY_STATUS_20261115.json) separates the
 verified hosted checkpoint, local software, research results and remaining
 submission actions. The longer [submission record](FINAL_SUBMISSION.md)
@@ -77,18 +77,23 @@ retrieved no biological records and did not replace the frozen demonstration.
 | Question tested | Result and interpretation |
 |---|---|
 | Does adding context improve the same graph learner over the original baseline? | Matched R-GCN comparisons are complete, with mixed or negative results against their controls. A consistent advantage on the challenge's central enriched-graph link-prediction task remains unestablished. |
-| Can published methods recover later protein-function annotations? | Existing controlled CAFA5 comparisons show bounded secondary method/context gains. The [later temporal mixture comparison](evaluations/LEARNED_COMBINATION_RESULTS_20261115.md) finds a cellular-component mixing gain on 447 proteins: micro-Fmax 0.3342 versus LocalPlus 0.3041 and DeepGO-SE 0.2914. The primary molecular-function learned-weight test fails. |
+| Can published methods recover later protein-function annotations? | The [completed contextual comparison](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md) passes its fixed primary rule against retained LocalPlus in both ontology views. Fmax changes from 0.05473 to 0.07343 and from 0.17155 to 0.21009, with paired intervals above zero. Updating LocalPlus's annotations also helps. Learning beyond that complete current-data control remains uncertain for the primary biological-process endpoint; molecular-function and cellular-component secondary contrasts improve in both views. |
 | Can the app preserve and explain source content? | Original records, qualifications and native exports are replayed. The archive study recovered 253/308 exact cited WikiPathways revisions, with the remainder unresolved. A separate expert-grounding assessment measures a false-alarm/recall trade-off. |
 | Does the model agent establish biological truth or support automatic pruning? | No. The tested source-claim agent trails the published specialist. The app preserves its results without adopting automatic acceptance or biological pruning. |
 
 Fmax is a benchmark function-recovery score, not a graph-accuracy percentage.
-The cellular-component gain is a secondary result, with conditional paired
-intervals. It comes from a 50/50 mixture, which the fitter also selects; it does
-not prove an extra advantage from learning weights. Public curator labels
+The latest comparison seals all 3,300 target forecasts before reference opening
+and retains all 18 settings/aspects/views. It reuses ProtBoost and the authors'
+CAFA6 context features with qualified adaptations. Its primary residual-positive
+populations contain 322 and 319 proteins; the unchanged native bootstrap frames
+contain 1,954 and 319. Absolute Fmax across views describes different populations.
+The earlier [global-mixture primary test](evaluations/LEARNED_COMBINATION_RESULTS_20261115.md)
+remains failed. Public curator labels
 are incomplete and can share studies or prior training exposure. Whole-graph
 biological accuracy and validated automatic scientific pruning remain open.
-The [scientific record](evaluations/SCIENTIFIC_RESULTS_20261114.md) and
-[complete mixture results](evaluations/LEARNED_COMBINATION_RESULTS_20261115.md)
+The [latest full report](evaluations/contextual_combination_20261115/report.html),
+[scientific record](evaluations/SCIENTIFIC_RESULTS_20261114.md) and
+[earlier mixture results](evaluations/LEARNED_COMBINATION_RESULTS_20261115.md)
 retain unfavorable controls, sparse populations and unavailable strata.
 
 ## Handoff and remaining release actions
@@ -118,9 +123,14 @@ The [prepared core software ZIP](releases/20261115/README.md) passed clean Pytho
 construction, answer, actual export and fresh-reopen checks. It is a dated local
 checkpoint; hosting and final publication remain separate actions.
 
-The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v2.pptx)
+The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx)
 has six main slides and two technical appendix slides. The
 [organizer/proposal crosswalk](PROJECT_ALIGNMENT.md) distinguishes delivered
 functionality from broader proposal ambitions. The older release archives,
 PDFs and hosted receipts remain dated checkpoints rather than interchangeable
 copies of the latest local code.
+
+The [closing delivery audit](evaluations/DELIVERY_COMPLETENESS_20261115.md)
+maps each expected artifact to its review route. The remaining actions are
+teammate feedback, the permitted source-graph handoff and final repository/release
+publication and submission.

@@ -242,6 +242,18 @@ def render(results, destination):
         points = [number(result['views'][v]['cells'][PRIMARY]['methods'].get(arm, {}).get('native_micro_fmax'))
                   for v in VIEWS]
         lines.append('| ' + LABELS.get(arm, arm) + ' | ' + ' | '.join(points) + ' |')
+    lines += ['', '| Primary view | Full native/bootstrap protein frame | Proteins with residual positive labels |',
+              '|---|---:|---:|']
+    for view in VIEWS:
+        cell = result['views'][view]['cells'][PRIMARY]
+        method = cell['methods'].get(CANDIDATE, {})
+        raw = cell.get('bootstrap', {}).get('raw_proteins', 'unavailable')
+        residual = method.get('eligible_proteins', 'unavailable')
+        lines.append(f'| {view} | {raw} | {residual} |')
+    lines += ['', 'The unchanged native evaluator can retain protein rows whose positive labels are all removed '
+        'by its known-term and term-of-interest masks. Their predictions can still contribute false positives. '
+        'Bootstrap draws retain that full native frame. Absolute Fmax values across the two views therefore '
+        'describe different reference populations; compare methods within each view.']
     lines += ['', 'Fmax is threshold-optimized by the fixed evaluator grid; it is not a deployed confidence threshold. '
         'Intervals below use 2,000 paired whole-protein resamples with shared draws and seed 20261113. '
         'They are conditional, unadjusted descriptive intervals. The point difference and lower interval must both be positive '

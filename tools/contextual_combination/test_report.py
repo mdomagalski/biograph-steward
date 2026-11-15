@@ -143,6 +143,19 @@ class AggregatePublicationTests(unittest.TestCase):
             self.assertEqual(public['views']['fixed_T0']['cells'][PRIMARY]['status'], 'missing_result')
             self.assertNotIn('0.000000', md)
 
+    def test_full_bootstrap_frame_is_distinct_from_residual_positive_population(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            result = invented()
+            result['views']['native']['cells'][PRIMARY]['bootstrap']['raw_proteins'] = 40
+            source = root / 'invented.json'
+            source.write_text(json.dumps(result))
+            render(source, root / 'public')
+            md = (root / 'public/report.md').read_text()
+            self.assertIn('| native | 40 | 12 |', md)
+            self.assertIn('| fixed_T0 | 12 | 12 |', md)
+            self.assertIn('draws retain that full native frame', md)
+
 
 if __name__ == '__main__':
     unittest.main()
