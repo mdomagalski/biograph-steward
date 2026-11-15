@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-11-15T16:33:30.027792+00:00",
+  "does_not_recreate_or_change_reference_labels": true,
+  "files": {
+    "report.html": "5c2dc261fd957106228f007b93caa5fca40b6486cefe1e92e92229b5162ee617",
+    "source_qualification.json": "8f4bc546e7e7fd9ace27996f7dbad05e8477f76f29502cb04ddcd5413686ddba",
+    "summary.json": "f5f92839ac4ab435c2679ac72417b7fa28a68ef9493aeebcda643e86f6155bdb"
+  },
+  "format": "biograph-steward.public-gold-aggregate-publication.v1",
+  "producer_sha256": "df549fd0dc98bf0cedb7ec501e79f31def133a26b7b083f50a18516394788145",
+  "raw_cases_sequences_passages_predictions_or_operator_paths_published": false,
+  "source_report_sha256": {
+    "clinical": "0280f9d10ca75519557c519707361eada708b21b38bb39fa66c1ad9e157f6e15",
+    "historical_ppi": "34678fa1c3784e0717c281799d0c1137a3e7fe3f1643d2a8c8955c1ea57c55ce",
+    "localization": "5cf9221cdbd824691569fce238934a66a400094c3cc171c3c09c588fb8448c6a",
+    "localization_trace": "e41efbe782ec9b2876e72e2997e5144e64eb0414b0a917611943f0c927d6460d",
+    "mitocarta": "dc826f15c755a798f4588d95a0081f58715a64165c7e5e0a3b23b67d89e0aea9",
+    "other_coverage": "56332ff56c6f9efb71bfd224a23da6f1b6d3acc5791c918ae3b81e8333205aa6",
+    "same_release_ppi": "a02e56d3988a9f2527aa3ac7e901345430b238bc18c85a3c10a6e57e981b5511"
+  }
+}

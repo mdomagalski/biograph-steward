@@ -4,9 +4,14 @@ function setupNativeGoa(){
   if(!$('nativeGoaPanel'))return;
   nativeGoaEpoch++;nativeGoaAnswer=null;nativeGoaOffset=0;
   const records=(graph?.extension_observations||[]).filter(r=>r.source_kind==='goa');
+  const locations=graph?.evidence_extension?.sources?.goa?.policy==='complete-cohort-positive-active-CC-located-in-all-codes.v1';
+  $('nativeGoaPanel').querySelector('summary').textContent=locations?'Native GO locations':'Recovered native GO annotations';
+  $('nativeGoaPanel').querySelector('p').textContent=locations?
+    'Read separately sourced positive active cellular-component located_in annotations. All supplied evidence codes remain visible; records are not necessarily experimental or manually reviewed. Candidates require review.':
+    'Read separately sourced GO curator annotations with their recorded relation and references. Candidate records require review; no disease context is inferred.';
   $('nativeGoaPanel').hidden=!records.length;
   $('nativeGoaRows').replaceChildren();$('nativeGoaAnswer').hidden=true;
-  $('nativeGoaStatus').textContent='Choose a protein to inspect the recovered annotations.';
+  $('nativeGoaStatus').textContent='Choose a protein to inspect the native annotations.';
   $('nativeGoaSearch').value='';$('nativeGoaView').value='candidates';
   const represented=new Set(records.filter(r=>r.graph_edge_id).map(r=>r.subject));
   const select=$('nativeGoaProtein');select.replaceChildren();
@@ -34,7 +39,7 @@ async function runNativeGoaQuestion(){
       result.summary?.search!==query.search||result.summary?.offset!==query.offset||result.summary?.limit!==query.limit)
       throw new Error('The native GO answer belongs to different saved evidence.');
     nativeGoaAnswer=result;renderNativeGoaAnswer(result);
-    $('nativeGoaStatus').textContent='Saved curator annotations. No retrieval, model call or review decision was made.';
+    $('nativeGoaStatus').textContent='Saved native annotations with their supplied evidence codes. No retrieval, model call or review decision was made.';
   }catch(error){if(request===nativeGoaEpoch)$('nativeGoaStatus').textContent=error.message;}
   finally{if(request===nativeGoaEpoch)$('nativeGoaAsk').disabled=false;}
 }
@@ -46,7 +51,7 @@ function renderNativeGoaAnswer(answer){
     '. Source records and reference identifiers are not independent experiment counts.','small'));
   if(!answer.concepts.length)box.append(el('p',answer.view==='accepted'?
     'No accepted native GO annotation matches this selection. Inspect candidates to see source-supported records awaiting review.':
-    'No recovered native annotation matches this selection. This does not establish absence of biology or evidence elsewhere.'));
+    'No native annotation matches this selection. This does not establish absence of biology or evidence elsewhere.'));
   for(const concept of answer.concepts){
     const card=el('article',undefined,'evidence');
     card.append(el('h4',concept.subject_label+' · '+concept.relation_literal.replaceAll('_',' ')+' · '+concept.go_label));

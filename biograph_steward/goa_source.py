@@ -26,6 +26,7 @@ FORMAT = "biograph-steward.native-goa-source-publication.v1"
 PROJECTION_FORMAT = "biograph-steward.native-goa-source-projection.v1"
 INTAKE_FORMAT = "biograph-steward.native-goa-source-intake.v1"
 POLICY = "complete-go-frame-explicit-active-replacement-native-annotations.v1"
+LOCATION_POLICY = "complete-cohort-positive-active-CC-located-in-all-codes.v1"
 PREDICATE = "biograph:has_native_go_annotation"
 PREFIX = "extension_sources/goa/"
 INTAKE = "source/intake.json"
@@ -94,14 +95,22 @@ def _cohort(snapshot):
     return sorted(ids)
 
 
-def validate_native_record(row):
+def validate_native_record(row, *, policy=POLICY):
     """Reconstruct the existing full native record and reuse its fixed gate."""
     from .go_native_support import exclusion_reasons
     try:
         rebuilt = go_qualification.native_record(row["source_line"], row["raw_line"],
                     row["raw_fields"], row["parsed"], row["source_gaf_sha256"])
         _need(row == rebuilt, "native record differs from its literal 17-field reconstruction.")
-        _need(row["negated"] is False and not exclusion_reasons(row),
+        _need(policy in {POLICY, LOCATION_POLICY}, "unsupported native source profile.")
+        reasons = exclusion_reasons(row)
+        if policy == LOCATION_POLICY:
+            reasons = [r for r in reasons if r != "not_experimental_evidence_code"]
+            _need(row["aspect"] == "C" and row["relation_literal"] == "located_in",
+                  "location profile requires literal CC located_in annotations.")
+            _need(row["evidence_code"] != "ND" and row["go_id"] != "GO:0005575",
+                  "ND/root records provide no specific supported location.")
+        _need(row["negated"] is False and not reasons,
               "native record is outside the unopposed experimental/context scope.")
         _need(row["relation_literal"] in {"enables", "contributes_to", "located_in", "part_of",
               "is_active_in", "colocalizes_with", "involved_in", "acts_upstream_of",
@@ -126,8 +135,8 @@ def _citation(reference):
             "interpretation": "Identifiers on one native GAF row can alias one cited reference."}
 
 
-def _observation(native, term, origins, source):
-    validate_native_record(native)
+def _observation(native, term, origins, source, *, policy=POLICY):
+    validate_native_record(native, policy=policy)
     _need(isinstance(term.get("lbl"), str) and bool(term["lbl"].strip()),
           "active GO target requires its literal ontology label.")
     return {"id": "goa.observation:" + digest({"native_record_id": native["id"],
@@ -238,14 +247,18 @@ def _projection(folder, files):
 def load_publication(path):
     manifest, material = _capture(path, "publication.json")
     _need(manifest.get("format") == FORMAT and manifest.get("kind") == "goa"
-          and manifest.get("policy") == POLICY and manifest.get("source_license") == SOURCE_LICENSE
+          and manifest.get("policy") in {POLICY, LOCATION_POLICY} and manifest.get("source_license") == SOURCE_LICENSE
           and all(manifest.get(k) is False for k in ("baseline_modified", "automatic_pruning",
               "independent_validation_performed", "standard_conformance_claimed")),
           "publication format, license or scientific policy differs.")
     _need("projection.json" in material and "LICENSE.txt" in material, "projection or source license is missing.")
     source = {name: raw for name, raw in material.items() if name.startswith("source/")}
     try:
-        projection = _projection(path, source)
+        if manifest["policy"] == LOCATION_POLICY:
+            from .goa_locations import projection as location_projection
+            projection = location_projection(path, source)
+        else:
+            projection = _projection(path, source)
     except (KeyError, TypeError, UnicodeError) as exc:
         raise ValueError("Native GOA source: compact source proof is missing or malformed.") from exc
     _need(_decode(material["projection.json"]) == projection
@@ -329,13 +342,17 @@ def prepare(snapshot, baseline_graph, manifest, projection):
     accessions = _cohort(snapshot)
     _need(_sealed(manifest) and manifest.get("format") == FORMAT and manifest.get("kind") == "goa"
           and _sealed(projection) and projection.get("format") == PROJECTION_FORMAT
-          and projection.get("policy") == POLICY
+          and projection.get("policy") in {POLICY, LOCATION_POLICY}
+          and projection.get("policy") == manifest.get("policy")
           and manifest.get("projection_content_sha256") == projection["content_sha256"]
           and projection.get("source_license") == manifest.get("source_license") == SOURCE_LICENSE,
           "source publication/projection binding differs.")
     _need(projection["scope"] == {"snapshot_sha256": snapshot["content_sha256"], "accessions": accessions}
           and baseline_graph.get("snapshot_sha256") == snapshot["content_sha256"],
           "publication belongs to a different exact snapshot/cohort.")
+    if projection["policy"] == LOCATION_POLICY:
+        from .goa_locations import complete_scope
+        complete_scope(snapshot)
     _need(_go_edges(baseline_graph) == projection["baseline_go_edges"],
           "complete baseline GO frame differs; a retained or partial frame is not an intake.")
     primary = {"UniProtKB:" + uid for uid in accessions}
@@ -345,7 +362,7 @@ def prepare(snapshot, baseline_graph, manifest, projection):
     _need(digest(natives) == projection["bindings"]["recoveries_sha256"]
           and len({n["id"] for n in natives}) == len(natives), "selected native record inventory differs.")
     for original in projection["observations"]:
-        native = validate_native_record(original["native_record"])
+        native = validate_native_record(original["native_record"], policy=projection["policy"])
         _need(original["subject"] == native["subject"] and original["go_id"] == native["go_id"]
               and original["go_aspect"] == native["aspect"] and original["relation_literal"] == native["relation_literal"]
               and original["publications"] == native["reference_identifiers"], "observation changes native annotation meaning.")
@@ -394,12 +411,12 @@ def prepare(snapshot, baseline_graph, manifest, projection):
             "retrieval_provenance": {"aggregator": "UniProt GOA", "source_url": row["source"].get("url"),
                 "source_sha256": native["source_gaf_sha256"], "source_line": native["source_line"],
                 "native_record_id": native["id"], "source_responses": [PREFIX + CONTEXT + "source/annotations.gaf.gz"]},
-            "normalization_notes": list(LIMITATIONS)})
+            "normalization_notes": list(projection["limitations"])})
         observations.append(row)
     summary = {**deepcopy(projection["summary"]), "publication_sha256": manifest["content_sha256"],
         "additional_source_records": len(edges), "extension_edges_added": len(edges),
         "extension_nodes_added": len(added_nodes), "primary_Pharos_targets_added": 0,
         "primary_Pharos_records_modified": 0, "baseline_snapshot_sha256": snapshot["content_sha256"],
-        "source_license": deepcopy(SOURCE_LICENSE), "limitations": list(LIMITATIONS)}
+        "source_license": deepcopy(SOURCE_LICENSE), "limitations": list(projection["limitations"])}
     return {"nodes": [added_nodes[k] for k in sorted(added_nodes)],
             "edges": sorted(edges, key=lambda e: e["id"]), "observations": observations, "summary": summary}

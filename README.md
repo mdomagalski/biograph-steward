@@ -53,6 +53,22 @@ correctness labels were admitted, so it reports missing-data bounds instead
 of inventing an accuracy percentage. The 298 obsolete-ID corrections and
 preservation of previously matched curator support are verified separately.
 
+[Public curator references have now also been applied](docs/evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md).
+On 31 matched proteins, richer native GO context recovers **44/51 published
+positive location labels versus 41/51** from the captured Pharos annotations;
+two proteins improve and 29 are unchanged. Two clinical claim–evidence
+projections exactly match published human-reviewed gold. Sequence-qualified
+interaction labels and manual noninteraction records support a fixed,
+same-release functional/physical comparison, which shows a coverage trade-off
+rather than a universal pruning gain. Source reuse and unmatched cases remain
+explicit in the [readable results](docs/evaluations/public_gold_20261115/report.html).
+These separate reference tasks do not relabel the original 200 audit cases or
+establish accuracy of the complete graph.
+The [native-location source-profile example](docs/evaluations/NATIVE_LOCATION_WORKSPACE_20261115.md)
+now makes that source context usable through existing questions, inspection and
+exports: 429 candidate protein–location concepts across 94/99 targets. Its
+all-target delivery census passed; the existing hosted/default graph is unchanged.
+
 The current review checkout is `codex/contextual-gain-delivery`. The default
 `main` branch remains at its October 26 checkpoint pending review; use the
 [review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery)

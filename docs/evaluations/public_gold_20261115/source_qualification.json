@@ -1,0 +1,364 @@
+{
+  "format": "biograph-steward.public-gold-source-qualification.v1",
+  "registers": [
+    {
+      "register": "root_benchmarks",
+      "resources": [
+        {
+          "decision": "Do not use generated DisGeNET labels as expert biomedical truth. YAGO and NELL human labels have a different domain.",
+          "primary": [
+            "https://www.dei.unipd.it/~marches1/papers/ms-vldb-2024.pdf",
+            "https://github.com/KGAccuracyEval/reliable-kg-estimation"
+          ],
+          "resource": "KGAccuracyEval DisGeNET biological gold claim",
+          "status": "EXCLUDED_SYNTHETIC_LABELS",
+          "verified": "Primary paper section6.1 says DisGeNET lacks human-annotated accuracy labels and synthetic labels are generated for its accuracy evaluations. Its Table2 does not provide real DisGeNET accuracy."
+        },
+        {
+          "decision": "Useful distinct agent/tool verification benchmark. Do not transfer CKG-specific support/refute labels to Pharos graph truth.",
+          "license": "Dataset card MIT; inherited upstream source terms remain separate.",
+          "primary": [
+            "https://arxiv.org/html/2407.00466v1",
+            "https://github.com/westlake-autolab/BioKGBench",
+            "https://huggingface.co/datasets/AutoLab-Westlake/BioKGBench-Dataset/tree/4d992e7e735d81cb84d02f86f6489c82479c290e"
+          ],
+          "resource": "BioKGBench KGCheck",
+          "status": "ACTUAL_RELEASE_QUALIFIED_NOT_CURRENT_GRAPH_GOLD",
+          "verified": "Actual20dev+205test records downloaded and parsed. Tasks judge the supplied CKG graph state, attributes and missing records against resources/literature. A refute judgment can mean an omitted STRING interaction, not biological noninteraction."
+        },
+        {
+          "decision": "Reusable source-audit reference, not a label transfer to a different clinical observation. Extraction errors are not negated biology; computational grade fields are not human truth labels.",
+          "license": "Figshare v10 MIT; article and underlying excerpts retain their own terms.",
+          "primary": [
+            "https://arxiv.org/html/2603.28325v4",
+            "https://doi.org/10.6084/m9.figshare.31888399",
+            "https://github.com/ZUST-BIT/EvidenceNet-code"
+          ],
+          "resource": "EvidenceNet released component manual audit",
+          "status": "ACTUAL_RELEASE_QUALIFIED_DIFFERENT_ASSERTIONS",
+          "verified": "Released case sheets and manual-audit labels have exact matching case-ID sets. Labels evaluate the authors own extracted records, entity links, fusions and semantic evidence relations."
+        },
+        {
+          "decision": "Cannot apply unrecovered labels or claim their data are definitively unavailable. No authors contacted; no private identifiers sent.",
+          "primary": [
+            "https://pubmed.ncbi.nlm.nih.gov/40835041/",
+            "https://doi.org/10.1016/j.jbi.2025.104894",
+            "https://aisel.aisnet.org/pacis2024/track11_healthit/track11_healthit/20/"
+          ],
+          "reported_expert_annotated_triplets": 6427,
+          "resource": "MTL-KGV domain-expert triplets",
+          "status": "CANDIDATE_NO_PUBLIC_LABEL_ARTIFACT_LOCATED",
+          "verified": "Primary2025abstract reports expert-labelled SemMedDB triples; related2024conference paper reports3760. Exact-title/acronym/PII searches, primary metadata and Crossref links did not reveal a downloadable label release. Publisher fulltext and conference PDF retrieval returned403; no access control was bypassed."
+        },
+        {
+          "decision": "Useful framework review; not used to manufacture biological accuracy labels.",
+          "primary": [
+            "https://arxiv.org/abs/2508.21774"
+          ],
+          "resource": "Biomedical KG community quality assessment",
+          "status": "QUALIFIED_DOCUMENTATION_TASK_NOT_BIOLOGICAL_GOLD",
+          "verified": "Quality dimensions emphasize documentation, transparency and reusability across biomedical KGs; those checklist outcomes are not assertion-level biological truth labels."
+        }
+      ]
+    },
+    {
+      "register": "clinical_expression",
+      "resources": [
+        {
+          "actual_coverage": {
+            "matching_distinct_assertions": 2,
+            "matching_expert_SUPPORTS_EvidenceItems": 2,
+            "original_EvidenceItems": 46,
+            "original_qualified_assertions": 41,
+            "unmatched_EvidenceItems": 44
+          },
+          "license": "Builder GPL-3.0 inspected not executed; CIViC data CC0; evidence excerpts inherit original article licenses, raw retained privately",
+          "limits": "Exact EI, full old-five-field profile/regimen/disease/type/significance, PMID and passage equality required. Direction/origin/interaction absent from old benchmark stay unassessed. Whole assertion stays UNKNOWN. Prior October model/reference exposure recorded.",
+          "lineage": "Separate typed human review from AI output, but shared CIViC and cited study; one expert not consensus/new experiment",
+          "primary": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC12458922/",
+            "https://github.com/creisle/civicfact/tree/1a767d889b015a836f0f4331afcac5cef165ec7f"
+          ],
+          "reference_task": "Five-field clinical variant claim against an exact evidence passage; single-expert corrected stance",
+          "resource": "CIViC-Fact actual expert manual review",
+          "status": "APPLIED_BOUNDED_HUMAN_GOLD"
+        },
+        {
+          "actual_coverage": {
+            "bulk_rows": 12476,
+            "nonaugmented_overlapping_rows": 35,
+            "overlapping_EvidenceItems": 27,
+            "overlapping_rows": 63
+          },
+          "license": "Dataset evidence-specific licenses; private raw retained",
+          "limits": "Many labels are inherited source/hypothesis/revision labels with no human review; bot review is not independent expert review. Counts cannot be relabelled biological correctness.",
+          "primary": [
+            "https://github.com/creisle/civicfact/tree/1a767d889b015a836f0f4331afcac5cef165ec7f"
+          ],
+          "resource": "CIViC-Fact full 2026-06-09 released build",
+          "status": "APPLIED_ID_COVERAGE_NOT_ALL_HUMAN_GOLD"
+        },
+        {
+          "actual_coverage": {
+            "bulk_rows": 22364,
+            "exact_human_UniProt_and_drug_name_pairs": 168,
+            "human_bulk_rows": 16926,
+            "source_records": 174,
+            "unmatched": 6
+          },
+          "license": "CC-BY-SA-4.0",
+          "limits": "Exact native name/accession current source agreement, no chemical structure crosswalk and possible Pharos upstream reuse; not independent gold or proof of a historical Pharos listing. Unmatched is UNKNOWN, not false.",
+          "primary": [
+            "https://www.drugcentral.org/download",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10692006/",
+            "https://www.drugcentral.org/privacy"
+          ],
+          "resource": "DrugCentral current target-drug bulk",
+          "status": "APPLIED_WHOLE_FAMILY_COVERAGE"
+        },
+        {
+          "actual_coverage": {
+            "exact_gene_symbol_MONDO_candidate_matches": 0,
+            "expert_curated_bulk_rows": 3733,
+            "gene_only_different_disease_records": 49,
+            "source_records": 100
+          },
+          "license": "CC0-1.0",
+          "limits": "Expert positive/disputed/refuted labels qualify a specific monogenic disease and mode of inheritance. Gene-only or disease-ancestor match cannot label the current broad/somatic colorectal association. No mapping rescue or false-negative inference.",
+          "primary": [
+            "https://search.clinicalgenome.org/kb/downloads",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC5473734/",
+            "https://www.clinicalgenome.org/docs/gene-disease-validity-classification-information/",
+            "https://www.clinicalgenome.org/docs/terms-of-use/"
+          ],
+          "resource": "ClinGen Gene-Disease Validity Expert Panels",
+          "status": "APPLIED_WHOLE_FAMILY_COVERAGE_ZERO_EXACT_DISEASE"
+        },
+        {
+          "license": "CC0-1.0",
+          "limits": "Native record acceptance/clinical assertion is useful qualified curation, but not a new independent judgment for the same included source observation; existing application distinguishes candidate vs accepted. Do not silently replace an EvidenceItem with a different profile/regimen assertion.",
+          "primary": [
+            "https://civicdb.org/releases",
+            "https://civicdb.org/releases/licensing"
+          ],
+          "resource": "CIViC Assertions / current accepted evidence items",
+          "status": "EXISTING_SOURCE_CURATOR_AXIS"
+        },
+        {
+          "license": "NCBI public data terms apply",
+          "limits": "Pathogenicity of an exact genomic allele for a condition does not label a multi-variant/codon-level molecular-profile treatment-response observation. Exact assembly/transcript/allele often absent here; no pathogenicity-to-response transfer.",
+          "primary": [
+            "https://www.ncbi.nlm.nih.gov/clinvar/docs/review_status/",
+            "https://www.ncbi.nlm.nih.gov/clinvar/docs/maintenance_use/"
+          ],
+          "resource": "ClinVar expert-panel or practice-guideline records",
+          "status": "QUALIFIED_TASK_MISMATCH"
+        },
+        {
+          "license": "Benchmarking AI requires explicit permission under current published policy; no credentials/permission obtained",
+          "limits": "Public gene/drug lists do not supply a complete freely reusable exact-profile clinical response gold. No unapproved API use or derivative benchmark.",
+          "primary": [
+            "https://faq.oncokb.org/licensing"
+          ],
+          "resource": "OncoKB",
+          "status": "BENCHMARK_LICENSE_REQUIRES_PERMISSION"
+        },
+        {
+          "license": "Current downloads/API subject to account/license terms",
+          "limits": "Full current generic bulk was not publicly downloadable without access; inferred/source-aggregated associations would need direct-curation scope and lineage. ClinGen constituent public CC0 bulk actually tested separately.",
+          "primary": [
+            "https://support.disgenet.com/support/solutions/articles/202000089413-can-i-download-the-disgenet-database-"
+          ],
+          "resource": "DisGeNET curated subset",
+          "status": "CURRENT_BULK_ACCESS_CONSTRAINT"
+        },
+        {
+          "license": "Noncommercial public download terms; commercial download permission not presumed",
+          "limits": "Direct curated marker/mechanism/therapeutic annotation differs from inferred association and does not give universal explicit true-negative labels. No unclear-license bulk ingested.",
+          "primary": [
+            "https://ctdbase.org/downloads/",
+            "https://academic.oup.com/nar/article/53/D1/D1328/7906839"
+          ],
+          "resource": "Comparative Toxicogenomics Database (CTD)",
+          "status": "LICENSE_AND_LABEL_SCOPE_UNRESOLVED"
+        },
+        {
+          "license": "CC0-1.0",
+          "limits": "Gene transcript expression by species/anatomy/stage/sex/condition cannot directly refute protein immunohistochemistry, unnamed Pharos source scales or diseased context. Tissue-only equivalence is insufficient.",
+          "primary": [
+            "https://www.bgee.org/download/gene-expression-calls",
+            "https://www.bgee.org/support/faq"
+          ],
+          "resource": "Bgee healthy baseline expression presence/absence",
+          "status": "QUALIFIED_CONTEXT_MISMATCH"
+        },
+        {
+          "license": "Provider-specific data/use terms; no blanket license inferred",
+          "limits": "HPA is already upstream for many current observations; RNA and protein assays, cell types, qualitative detection and units must remain separate. A newer source value is version concordance, not independent scientific truth.",
+          "primary": [
+            "https://www.proteinatlas.org/about/download",
+            "https://gtexportal.org/home/downloads/adult-gtex"
+          ],
+          "resource": "Human Protein Atlas / GTEx",
+          "status": "SOURCE_REUSE_AND_MEASUREMENT_CONTEXT_LIMIT"
+        },
+        {
+          "license": "Each corpus has separate terms; do not assume code license relicenses clinical text",
+          "limits": "Text relation/NLI support judgments can benchmark extraction/verifier components on released cases; they do not directly label the identity/context/version of current graph assertions. Prior cancer claim and NLI4CT studies remain recorded; no fresh-blind claim.",
+          "primary": [
+            "https://github.com/ncbi/BioRED",
+            "https://github.com/allenai/scifact",
+            "https://github.com/justinlovelace/MedNLI",
+            "https://github.com/ai-systems/nli4ct"
+          ],
+          "resource": "BioRED / SciFact / MedNLI / NLI4CT public expert labels",
+          "status": "EXISTING_PROJECT_EXPOSURE_DIFFERENT_TASK"
+        }
+      ]
+    },
+    {
+      "register": "go_pathway",
+      "resources": [
+        {
+          "actual_result": "98 primary gene units:2positive,1explicit-outside,95unknown. All four fixed arms TP2/FP1/FN0/TN0; no gain or testable discordance. Full218 protein-node coverage only:4positive,1explicit-outside,213unknown.",
+          "admissible_task": "Curator-defined gene-level mitochondrial inventory classification; not historical GO annotation-existence truth or all-context/isoform localization.",
+          "author_data": "https://sites.broadinstitute.org/files/mitocarta/files/documents/human.mitocarta3.0.xls",
+          "id": "MitoCarta3.0",
+          "independence": "Multiple expert literature-guided reviews; GO/UniProt used to nominate literature and other data integrated. Independent curator reference is legitimate, but study reuse and direct experimental independence are unresolved.",
+          "license": "Primary paper CC-BY-NC4.0; free author workbook, separate permissive data license not found. Local reference and aggregate publication only.",
+          "paper": "https://doi.org/10.1093/nar/gkaa1011",
+          "released_judgments": "1136 high-confidence inventory members and 80 explicitly mito-interacting/outside-resident records. The other18031 zero records are unknown, not negatives. One positive uses Ensembl only, so exact numeric GeneID indexing has1135 positives.",
+          "status": "applied_under_root_frozen_contract_69d7f66f_before_cohort_outcome_join"
+        },
+        {
+          "admissible_task": "Released positive-reference label recovery and output agreement under frozen official GO-xref bridge. No biological precision/specificity/F1/MCC inferred from absent labels.",
+          "author_code": "https://github.com/CellProfiling/seq2loc_benchmark/tree/b7855525e49dbb430a0b9d4b365cd84b387a8e6b",
+          "author_data": "https://doi.org/10.5281/zenodo.18435290",
+          "id": "HOU2026",
+          "independence": "HPA/UniProt/OpenCell source and study overlap possible. This is public curator/imaging reference agreement, not new independent experiments.",
+          "license": "Zenodo dataset CC-BY4.0; author code MIT; official UniProt source CC-BY4.0 policy.",
+          "paper": "https://doi.org/10.1038/s41592-026-03142-6",
+          "released_judgments": "3814 exact human canonical protein rows with positive localization label sets at21/9/7 label granularities. Missing compartments are not explicit experimental negatives.",
+          "status": "crosswalk_and_source_metadata_qualified_awaiting_separate_root_freeze_before_cohort_outcomes"
+        },
+        {
+          "admissible_task": "A GO evidence-extraction/source-support component benchmark. Low means submitted text or entity/GO correspondence is wrong, not biological nonfunction.",
+          "author_data": "https://ftp.ncbi.nlm.nih.gov/pub/lu/BC1GN/",
+          "id": "BioCreativeI_Task2",
+          "independence": "Independent GOA curator judgments of submissions; underlying GOA evidence can be shared by Pharos. Protein/article/term/evidence scope must match. No current-cohort outcomes inspected.",
+          "license": "Primary BMC paper CC-BY; publisher says released data freely available. No explicit separate modern permissive license in archive README; retain reference locally pending redistribution qualification.",
+          "paper": "https://doi.org/10.1186/1471-2105-6-S1-S16",
+          "released_judgments": "Curator eval_prot/eval_go high/generally/low labels on human protein/article/GO/evidence-text submissions. Actual released task2.1 has14866 fragments,1565 GO-high/2357 GO-low/642general; task2.2 has5073fragments,273 GO-high/1917 GO-low/213general. Empty evaluations remain unavailable.",
+          "status": "actual_labels_and_README_recovered_fallback_component_reference_not_wholegraph_truth"
+        },
+        {
+          "admissible_task": "Published OWA functional-prediction benchmark or explicitly scoped curator-phylogeny-reference agreement, retaining terms/negative propagation semantics. Not source-annotation existence falsity.",
+          "author_data": "https://lab.dessimoz.org/20_not",
+          "id": "PAINT_OWA2020",
+          "independence": "Experimental positive and expert PAINT-derived negative annotations; not all direct experiments. GOA/PANTHER study and family reuse must be reported; no current-cohort label join performed.",
+          "license": "Paper CC-BY-NC4.0; no separate permissive source/data license in downloaded archive. Local analysis only; author code not vendored into application.",
+          "paper": "https://doi.org/10.1093/bioinformatics/btaa466",
+          "released_judgments": "Native positive/negative test sets and scoring notebooks:2992 weighted-only rows and12613 balanced rows; expert-phylogeny-derived negative GO annotations also released.",
+          "status": "actual_gold_and_native_code_recovered_available_if_HOU_unusable_or_broader_OWA_task_needed"
+        },
+        {
+          "admissible_task": "Negative-selection method comparator, not new expert correctness labels for human graph assertions.",
+          "id": "NoGO2014",
+          "license": "Paper CC-BY; data/code separate author resources.",
+          "paper": "https://doi.org/10.1371/journal.pcbi.1003644",
+          "released_judgments": "NoGO negative lists are predictions by SNOB/NETL/Rocchio from GO annotation patterns. Paper evaluates against future positives and a separate yeast golden set.",
+          "status": "excluded_as_human_expert_gold_predicted_negatives_must_not_be_promoted"
+        },
+        {
+          "admissible_task": "Controlled corruption detection, not real biological false-claim adjudication. BC4GO positive curation can support an extraction-specific task with matching species and evidence.",
+          "id": "GOA_Inconsistency2022",
+          "license": "Paper CC-BY.",
+          "paper": "https://doi.org/10.1093/bioinformatics/btac230",
+          "released_judgments": "Synthetic over-specific/over-broad/irrelevant/incorrect-gene perturbations of gene2go and BC4GO records; original gene2go records assumed consistent despite unknown noise.",
+          "status": "excluded_as_real_biological_negative_gold_synthetic_scope_preserved"
+        },
+        {
+          "admissible_task": "Established pathway-reconstruction baseline, with source-recovery versus experiment scopes preserved. Curated pathway membership can be shared-source reference agreement but not automatically independent new biology.",
+          "author_code": "https://github.com/Reed-CompBio/spras-benchmarking",
+          "id": "SPRAS_Benchmark2026",
+          "license": "MIT framework/repository; upstream dataset terms still apply.",
+          "paper": "https://doi.org/10.64898/2026.08.04.742550",
+          "released_judgments": "Preprint distinguishes controlled PANTHER pathway recovery from experimental omics targets. Current main source inspected contains README/license only after documented temporary deletion/splitting PR64; not a complete direct-ready gold download.",
+          "status": "method_and_author_release_gap_verified_not_custom_reimplemented_or_used_as_truth"
+        }
+      ]
+    },
+    {
+      "register": "ppi_regulation",
+      "resources": [
+        {
+          "author_code": "https://github.com/sophievincoff/snooppi",
+          "labels": {
+            "negative": 5378,
+            "positive": 33625,
+            "unknown": 835083
+          },
+          "license_observed": "PrimaryarticleCC-BY4;officialauthorZenodoarchiveCC-BY4.HFcardhasnoexplicitlicensedatafield;Gitreponolicensefile.Norawdata/codepublicredistributioninthisincrement.",
+          "name": "SNOOPPI",
+          "official_data": "https://huggingface.co/datasets/ChatterjeeLab/SNOOPPI",
+          "primary_reference": "https://doi.org/10.1093/bioinformatics/btag736",
+          "release": "HF45e4f02204a135eeb26158e189bb253d0e677679;IntActrelease251Sep2025",
+          "scientific_scope": "Directbinarysequence-specificphysicalinteraction;nativeexpert-curatedlabelsofpositive/negative/unknown.PTM/mutationexacttestedstatesseparatefromdesignedbinding-regionvariants.",
+          "source_reuse": "AuthorrecurationofIntAct,whichalsofeedsSTRING/Pharos;differentcurationcanbeusedasseparateexpertreference,butsharedstudies/sourceandcalibrationexposurearenotindependentreplication.",
+          "status": "captured_qualified_and_applied"
+        },
+        {
+          "license_observed": "AuthorarchiveCC-BY4compilationlicenseobserved;noassertionthisrelicensesallupstreamcontent;publicrawredistributionnotperformed.",
+          "name": "Negatome1manualunfiltered",
+          "primary_reference": "https://doi.org/10.1093/nar/gkp1026",
+          "scientific_scope": "Manuallyannotatedmammalianprotein-pairnoninteractionwithpublicationIDandassayMI;notactualtestedsequenceorexhaustivecontext.",
+          "source_reuse": "Negatome1becamepartofIntAct;STRINGbenchmark/calibrationexposurepossible.Notassertedindependentassays.",
+          "status": "recovered_qualified_and_applied"
+        },
+        {
+          "license_observed": "CorrectprimaryarticlelicensetextsaysNon-CommercialbutlinksCCBY3;datasetlicensenotresolvedfromdeadsite.AuthorarchiveCC-BY4doesnotautomaticallyoverrideupstreamrights;analysis/privateartifactsonly.",
+          "name": "Negatome2manualstringent",
+          "primary_reference": "https://doi.org/10.1093/nar/gkt1079",
+          "scientific_scope": "Manualexpertliteraturenondetectionlabels;stringentlistfilteredagainstIntActpositives,anexplicitascertainment/dependencequalification.",
+          "source_reuse": "CannotclaimindependentofIntActbecauseofexplicitpositivefilter;nativecuratorjudgmentcanstillbeusedforconditionalbenchmarkagreement.",
+          "status": "recovered_qualified_and_applied_separate_source_filter_stratum"
+        },
+        {
+          "name": "NegatomePDBstructuralnoncontacts",
+          "primary_reference": "https://doi.org/10.1093/nar/gkt1079",
+          "scientific_scope": "Proteinsinsharedstructuralassemblywithoutdirectcontactintheobservedstructure;notuniversalnonbinding/functionalfalse.",
+          "status": "captured_but_not_admitted_as_binary_experimental_noninteraction_gold"
+        },
+        {
+          "name": "IntActexplicitnegativebulkrelease",
+          "official_data": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/intact_negative.txt",
+          "scientific_scope": "Nativeexplicitnegativeexperimentalobservations;species/method/construct/contextmustmatch.Negativegeneticinteractionsarenotphysicalnoninteractionlabels.",
+          "status": "existing_public_bulk_checked_full218_scope"
+        },
+        {
+          "name": "SIGNORconfidenceassessment",
+          "primary_reference": "https://doi.org/10.1093/nar/gkac883",
+          "scientific_scope": "Curatedsignedcausalregulationwithassay/context.NativeconfidencepredictswhetherlinksbelongtocuratedpathwaysusingevidenceandSTRINGscores.",
+          "status": "primary_method_checked_not_an_independent_negative_gold"
+        },
+        {
+          "name": "SCNandTPPNI",
+          "primary_reference": "https://doi.org/10.1093/bioinformatics/btaf148",
+          "scientific_scope": "Subcellular/topology-drivennegative_sampling;TPPNIusesconfigurationmodelandCL3networkstructure.",
+          "status": "primary_method_checked_not_admitted_as_verified_biological_negative_gold"
+        },
+        {
+          "name": "Flock",
+          "scientific_scope": "ReproduciblepipelineforPINDER/PPI3Dstructuralpositives,Negatomeandnewliterature-sourcegeneration.",
+          "status": "public_code_checked_no_released_complete_reference_consumed"
+        }
+      ]
+    }
+  ],
+  "source_register_sha256": [
+    "c5f27f6fbb98b79fb17833dfd62704c23651ca4088137e9db3d8c7a78116dafd",
+    "2d024505b25d7b416468d0dd6a1bc22e2ae594720dc5039de9982bf24ac45a2d",
+    "98149d78db506237c21ba57bb26891f7e58486fd7f971de980c95cf6f1267cdd",
+    "d18aad124285d967fa4483e211bc68b3e4ec3f6ebc98c3b7eb5765d7a99efd62"
+  ]
+}

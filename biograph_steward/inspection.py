@@ -328,10 +328,11 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
 
     for observation in observations:
         if observation.get("source_kind") == "goa":
-            from .goa_source import validate_native_record
+            from .goa_source import POLICY, validate_native_record
             from .go_qualification import SPEC as GAF_SPEC
             native = observation.get("native_record")
-            validate_native_record(native)
+            policy = graph.get("evidence_extension", {}).get("sources", {}).get("goa", {}).get("policy", POLICY)
+            validate_native_record(native, policy=policy)
             for citation in observation.get("citations", []):
                 add_link(citation.get("label") or citation.get("id") or "Native GO reference",
                          citation.get("url"), "publication")
@@ -509,7 +510,7 @@ def inspect_selection(graph, selection_id, *, run_id=None, source_reuse=None):
         "disease_filtered_membership": "A target appeared in a disease-filtered list; detailed association evidence is missing. Membership alone is not a qualified disease assertion.",
         "disease_association": "This is a source-reported disease association. It does not establish a causal mechanism, therapeutic effect or clinical recommendation.",
         "go_annotation": "This record preserves an annotation. The retrieved fields do not resolve GO relation, negation and extensions.",
-        "native_go_annotation": "This is a separately sourced native GO curator annotation with its recorded relation and reference. It remains subject to local review; disease relevance and independent biological validation are not inferred.",
+        "native_go_annotation": "This is a separately sourced native GO annotation with its recorded relation, evidence code and reference. It remains subject to local review; disease relevance and independent biological validation are not inferred.",
         "expression_observation": "This is a source-reported expression observation on its original scale. Missing units or values are not inferred.",
         "drug_listing": "This is a target-linked drug listing. It supplies no activity, disease indication or treatment-response assertion.",
         "variant_therapy_response": "Read the complete molecular profile, disease, therapy set, evidence direction and variant origin together. A single variant or drug filter does not establish an isolated effect.",

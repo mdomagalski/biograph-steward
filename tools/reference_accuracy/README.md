@@ -224,3 +224,55 @@ workspace retains all 32 eligible supported assertions and all 373 separately
 identified GO-compatible assertions. Its 298 removed GO assertions remain
 unresolved by both references. This is a bounded support-preservation result;
 neither reference estimates biological false-removal rate or prediction gain.
+
+## Applied public curator gold, November 15
+
+The [executed results](../../docs/evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md)
+and [aggregate viewer](../../docs/evaluations/public_gold_20261115/report.html)
+add separate source-bound reference tasks. The original 180/20 audit, previous
+GO/CIViC/cohort axes and their consumed-reference boundaries are preserved.
+
+| Adapter | Verified purpose |
+|---|---|
+| `civic_fact_gold.py` | Actual typed human CIViC-Fact judgments for an exact Evidence Item, whole five-field claim, PMID and unchanged evidence paragraph. Source acceptance and model tags are not substituted for a human label. |
+| `mitocarta.py` | Gene-level inventory concordance; explicit mito-interacting categories are separate from the unknown/unlisted population. |
+| `hou.py` | Positive localization-label recovery using fixed explicit GO mappings; unreported locations remain unknown. The unchanged author-map control and source-provenance limits remain visible. |
+| `ppi_references.py` | Source-pinned public Parquet/FASTA/manual-table preparation; canonical sequence/state labels and context-limited assay-pair labels remain separate. |
+| `ppi_gold.py` | Historical functional-network presence/weight proxies on the prepared reference panels, with missing native weights and self-pair limits explicit. |
+| `ppi_network_types.py` | Same-release functional versus physical STRING comparison, with reciprocal explicit accession/sequence identity and a pre-join implementation receipt. |
+
+The verified gaps were source-format and claim-scope interoperability, rather
+than missing biomedical truth-voting algorithms. The adapters reuse existing
+Gold/GAF verification, Biopython/Arrow source readers and scikit-learn metrics.
+They do not execute upstream curation code, call a model or promote/prune graph
+assertions. Native and reference inputs remain separate.
+
+Use an isolated Python **3.12.4** environment with
+`requirements-public-gold.txt`. These optional pins are independent of the
+older prediction/evaluation environment. Scientific packages are imported only
+by actual source-reader/metric commands; default app operation and invented
+core fixtures do not need them.
+
+Start with the [preparation instructions](reproduction/README.md), including
+`ppi_sources.json` and `ppi_preparation.example.json`. GO metadata replay
+reproduces the identity masks and 160/107 crosswalks. Full PPI source preparation
+reproduces all 12 consumed canonical/candidate/state/manual files byte for byte.
+The source data and captured mixed-source workspace are separately required;
+they are not included in a code checkout or relicensed by the app.
+
+```sh
+python3 -m tools.reference_accuracy.civic_fact_gold --help
+python3 -m tools.reference_accuracy.mitocarta --help
+python3 -m tools.reference_accuracy.hou --help
+python3 -m tools.reference_accuracy.ppi_references --help
+python3 -m tools.reference_accuracy.ppi_gold --help
+python3 -m tools.reference_accuracy.ppi_network_types --help
+```
+
+Human label independence from this project's AI is distinct from independent
+studies or source/calibration exposure. Reference overlap is a convenience
+subset, not an unbiased sample of all assertions. HOU's 31 matched proteins,
+CIViC-Fact's 46 records, MitoCarta's 98 gene units and the three PPI frames must
+not be pooled into one scientific accuracy percentage. No current benchmark
+label, missing reference, source-version difference or absent score becomes an
+automatic graph decision.

@@ -80,6 +80,7 @@ retrieved no biological records and did not replace the frozen demonstration.
 | Does adding context improve the same graph learner over the original baseline? | Matched R-GCN comparisons are complete, with mixed or negative results against their controls. A consistent advantage on the challenge's central enriched-graph link-prediction task remains unestablished. |
 | Can published methods recover later protein-function annotations? | The [completed contextual comparison](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md) improves over retained LocalPlus in both fixed primary views: Fmax 0.05473 → 0.07343 and 0.17155 → 0.21009, with paired intervals above zero. Updating annotations also helps primary BP. Extra learning benefit beyond that updated control is uncertain. Secondary MF/CC gains over LocalPlus do not beat the stronger direct nonexperimental-GOA control; CC favors that control. |
 | Can the app preserve and explain source content? | Original records, qualifications and native exports are replayed. The archive study recovered 253/308 exact cited WikiPathways revisions, with the remainder unresolved. A separate expert-grounding assessment measures a false-alarm/recall trade-off. |
+| Have public curator references actually been applied? | [Yes](evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md). Native GO context recovers 44/51 published positive location labels versus captured Pharos's 41/51 across 31 matched proteins (two improve, 29 unchanged). Two exact clinical claim–evidence projections have human-reviewed support. The same-release physical/functional interaction comparison shows a coverage trade-off, with all unmatched cases and source reuse disclosed. |
 | Does the model agent establish biological truth or support automatic pruning? | No. The tested source-claim agent trails the published specialist. The app preserves its results without adopting automatic acceptance or biological pruning. |
 
 Fmax is a benchmark function-recovery score, not a graph-accuracy percentage.
@@ -130,6 +131,14 @@ stored claims. The result provides no biological-accuracy percentage or
 whole-graph superiority claim. It verifies GO-ID currentness and preserves
 all previously matched curator-supported assertions; its logical uncertainty
 ranges remain separate from prediction Fmax and confidence intervals.
+The subsequent [public-reference assessment](evaluations/public_gold_20261115/report.html)
+adds bounded, explicitly matched curator-label tasks; it does not turn those
+200 earlier cases into independently adjudicated whole-claim truth labels.
+The [separate local native-location example](evaluations/NATIVE_LOCATION_WORKSPACE_20261115.md)
+puts the source context into the existing answer, source-inspection and export
+flow. All 99 target questions were checked, covering 3,309 records and 429
+candidate concepts across 94 targets, with explicit empty answers for the other
+five. The original/default graph and AWS reviewer deployment are unchanged.
 
 The [original fixed full report](evaluations/contextual_combination_20261115/report.html),
 [latest development report](evaluations/crossfit_development_20261115/report.html),

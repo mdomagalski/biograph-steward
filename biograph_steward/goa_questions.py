@@ -19,7 +19,7 @@ FORMAT = 'biograph-steward.native-go-question.v1'
 TEMPLATE = 'native_go_evidence.v1'
 KIND = 'native_go_annotation'
 PREDICATE = 'biograph:has_native_go_annotation'
-INTERPRETATION = ('Native GO curator annotations with their recorded relation and supporting reference. '
+INTERPRETATION = ('Native GO annotations with their recorded relation, evidence code and supporting reference. '
     'These are separately sourced additions, not rewritten Pharos records or independent experimental validation. '
     'Membership in this protein cohort does not make the annotation disease-specific.')
 INSPECTABLE = frozenset({'candidate', 'provisional', 'accepted'})
@@ -50,12 +50,12 @@ def _source_copy(observation):
     return {k: deepcopy(v) for k, v in observation.items() if k != 'retention'}
 
 
-def _record(original, graph, nodes, edges, assertions, primary, publication):
+def _record(original, graph, nodes, edges, assertions, primary, publication, policy):
     from .goa_source import _citation, validate_native_record
     saved = _source_copy(original)
     native = saved.get('native_record')
     _need(isinstance(native, dict), 'complete native annotation is missing.')
-    validate_native_record(native)
+    validate_native_record(native, policy=policy)
     subject, term = native['subject'], native['go_id']
     _need(subject in primary and subject in nodes and nodes[subject].get('category') == 'biolink:Protein'
           and term in nodes and nodes[term].get('category') == GO_CATEGORIES[native['aspect']],
@@ -145,7 +145,9 @@ def answer_native_go_question(graph, protein, *, view='candidates', search='', o
     source = [r for r in observations if r.get('source_kind') == 'goa']
     _need(all(isinstance(r.get('id'), str) and r['id'] for r in source)
           and len({r['id'] for r in source}) == len(source), 'native observation identities repeat or are missing.')
-    records = [_record(r, graph, nodes, edges, assertions, set(targets), summary['publication_sha256']) for r in source]
+    from .goa_source import POLICY
+    policy = summary.get('policy', POLICY)
+    records = [_record(r, graph, nodes, edges, assertions, set(targets), summary['publication_sha256'], policy) for r in source]
     present = [r for r in records if r is not None]
     _need({r['graph_edge_id'] for r in present} == {e['id'] for e in edges.values()
           if e.get('extension_source_kind') == 'goa'}, 'native source ledger and current evidence inventory differ.')
@@ -170,7 +172,7 @@ def answer_native_go_question(graph, protein, *, view='candidates', search='', o
     concepts.sort(key=lambda r: (r['go_label'].casefold(), r['go_id'], r['relation_literal'], r['assertion_id']))
     page = concepts[offset:offset + limit]
     result = {'format': FORMAT, 'template': TEMPLATE, 'source_kind': 'goa', 'source_run': source_run,
-        'question': 'Which recovered native GO annotations describe ' + (nodes[protein].get('sym') or nodes[protein].get('name') or protein) + '?',
+        'question': 'Which native GO annotations describe ' + (nodes[protein].get('sym') or nodes[protein].get('name') or protein) + '?',
         'anchor': protein, 'view': view, 'read_only': True, 'model_calls': 0, 'source_fetches': 0,
         'graph_basis_sha256': graph_basis(graph), 'snapshot_sha256': graph['snapshot_sha256'],
         'evidence_extension_sha256': graph['evidence_extension_sha256'],
@@ -186,7 +188,7 @@ def answer_native_go_question(graph, protein, *, view='candidates', search='', o
             'counts_scope': 'Native source records and saved relation-qualified assertions; never independent experiment counts.'},
         'concepts': page, 'records': [r for c in page for r in c['records']],
         'interpretation': INTERPRETATION,
-        'limitations': ['These current curator annotations do not identify the historical Pharos source rows or restore their omitted qualifiers.',
+        'limitations': ['These current native annotations do not identify the historical Pharos source rows or restore their omitted qualifiers.',
             'Native relation literals remain distinct: acts_upstream_of is not converted to involved_in or enables.',
             'Candidate annotations appear only in the candidate view; source support never accepts an assertion automatically.',
             'References can alias the same study and may be reused by Pharos or another database.',

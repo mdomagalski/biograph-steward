@@ -10,6 +10,14 @@ function element(tag,value){return {tag,textContent:value===undefined?'':String(
   hidden:false,value:'',listeners:{},attributes:{},
   append(...items){this.children.push(...items);if(tag==='select'&&!this.value)this.value=items.find(x=>x.tag==='option')?.value||'';},
   replaceChildren(...items){this.children=[...items];if(tag==='select')this.value=items.find(x=>x.tag==='option')?.value||'';},
+  querySelector(selector){
+    assert.match(selector,/^[a-z][a-z0-9]*$/,'This fixture supports literal tag selectors only.');
+    for(const child of this.children){
+      if(child.tag===selector)return child;
+      const match=child.querySelector(selector);if(match)return match;
+    }
+    return null;
+  },
   addEventListener(name,callback){this.listeners[name]=callback;},setAttribute(key,value){this.attributes[key]=value;},
   get options(){return this.children.filter(x=>x.tag==='option');}};}
 function text(node){return node.textContent+' '+node.children.map(text).join(' ');}
@@ -36,6 +44,10 @@ function harness(apiImpl){
   const ids=['nativeGoaPanel','nativeGoaRows','nativeGoaAnswer','nativeGoaStatus','nativeGoaSearch','nativeGoaView',
     'nativeGoaProtein','nativeGoaAsk','nativeGoaPrev','nativeGoaNext','nativeGoaPage','nativeGoaDownload','nativeGoaForm','sourceGuide'];
   const elements=Object.fromEntries(ids.map(id=>[id,element(id==='nativeGoaProtein'||id==='nativeGoaView'?'select':'div')]));
+  elements.nativeGoaPanel=element('details');
+  elements.nativeGoaPanel.append(element('summary','Recovered native GO annotations'),
+    element('p','Read separately sourced GO curator annotations with their recorded relation and references. Candidate records require review; no disease context is inferred.'),
+    elements.nativeGoaForm,elements.nativeGoaStatus,elements.nativeGoaAnswer);
   const calls=[],downloads=[],urls=[],revoked=[],inspection=[];
   const {graph,protein}=fixture();
   const context=vm.createContext({$:id=>elements[id],graph,runId:'invented_run',nodeIndex:new Map([[protein,{sym:'TP53'}]]),
@@ -59,6 +71,25 @@ test('native addition controls are opt-in, hide on unrelated workspaces and reta
   assert.equal(ui.elements.nativeGoaAsk.disabled,false);assert.equal(ui.calls.length,0);
   ui.context.graph.extension_observations=[];ui.setup();
   assert.equal(ui.elements.nativeGoaPanel.hidden,true);assert.equal(ui.elements.nativeGoaAsk.disabled,true);assert.equal(ui.calls.length,0);
+});
+
+test('location profile explains all-code evidence and switching workspaces restores recovery wording',()=>{
+  const ui=harness(async()=>{throw new Error('No automatic read');});
+  const panel=ui.elements.nativeGoaPanel,source=ui.context.graph.evidence_extension.sources.goa;
+  source.policy='complete-cohort-positive-active-CC-located-in-all-codes.v1';ui.setup();
+  assert.equal(panel.querySelector('summary').textContent,'Native GO locations');
+  assert.match(panel.querySelector('p').textContent,/positive active cellular-component located_in/);
+  assert.match(panel.querySelector('p').textContent,/All supplied evidence codes remain visible/);
+  assert.match(panel.querySelector('p').textContent,/not necessarily experimental or manually reviewed/);
+  assert.match(panel.querySelector('p').textContent,/Candidates require review/);
+  for(const legacy of ['complete-go-frame-explicit-active-replacement-native-annotations.v1',undefined]){
+    if(legacy===undefined)delete source.policy;else source.policy=legacy;
+    ui.setup();
+    assert.equal(panel.querySelector('summary').textContent,'Recovered native GO annotations');
+    assert.match(panel.querySelector('p').textContent,/separately sourced GO curator annotations/);
+    assert.doesNotMatch(panel.querySelector('p').textContent,/All supplied evidence codes/);
+  }
+  assert.equal(ui.calls.length,0,'Changing source-profile copy never queries or promotes evidence.');
 });
 
 test('accepted-only empty result stays explicit and never renders candidates',async()=>{

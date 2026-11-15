@@ -270,7 +270,8 @@
         "bytes": 7259128,
         "sha256": "214ed69d5bdd2b9018541a1a32fec13747a2b4b3570f4392c75aa250f093476f"
       }
-    }
+    },
+    "public_gold_and_native_location_increment": "Completed locally using saved/public bulk sources; no Brev/GPU/model, AWS graph update or new cloud resources were used."
   },
   "science": {
     "annotation_prior_followup": {
@@ -459,6 +460,60 @@
     },
     "latest_development_result": "docs/evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md",
     "new_research_comparisons": "Original fixed contextual study and three separately frozen consumed-reference follow-ups complete; cross-fitted graph/frequency candidate retained, no new hosted model or graph default.",
+    "public_curator_reference_assessment": {
+      "PPI_assay_context_reference": {
+        "conflicting_unknown_pairs": 20,
+        "full_sequence_and_context_complete": false,
+        "negative_pairs": 1223,
+        "physical_presence_trades_positive_coverage_for_fewer_negative_reference_conflicts": true,
+        "positive_pairs": 14995
+      },
+      "PPI_canonical_reference": {
+        "advantage_reversed_by_one_negative_study_omission": true,
+        "common_score_negative_pairs": 4,
+        "functional_AUROC": 0.7034944367176634,
+        "historical_frame_proteins": 20412,
+        "negative_pairs": 16,
+        "physical_AUROC": 0.7721372276309689,
+        "positive_pairs": 15326,
+        "same_release_common_score_pairs": 4318
+      },
+      "aggregate_report": "docs/evaluations/public_gold_20261115/report.html",
+      "aggregate_summary": "docs/evaluations/public_gold_20261115/summary.json",
+      "aggregate_summary_sha256": "f5f92839ac4ab435c2679ac72417b7fa28a68ef9493aeebcda643e86f6155bdb",
+      "all_fixed_panels_and_unfavorable_controls_retained": true,
+      "automatic_biological_pruning_adopted": false,
+      "clinical_human_gold": {
+        "exact_supported_claim_evidence_projections": 2,
+        "original_assertions": 41,
+        "original_source_records": 46,
+        "single_human_reviewer": true,
+        "unmatched_source_records": 44,
+        "whole_assertion_judgments_remain_unknown": true
+      },
+      "hosted_scientific_publication_replaced": false,
+      "independent_numeric_audit": "docs/evaluations/public_gold_20261115/numeric_audit.json",
+      "localization_reference": {
+        "Pharos_positive_labels_recovered": 41,
+        "gained_labels_have_shared_HPA_provider_exposure": true,
+        "matched_primary_proteins": 31,
+        "native_positive_labels_recovered": 44,
+        "primary_targets_reference_unavailable": 68,
+        "proteins_improved": 2,
+        "proteins_unchanged": 29,
+        "proteins_worse": 0,
+        "reference_missing_locations_are_negatives": false,
+        "released_positive_labels": 51,
+        "whole_graph_accuracy_estimate": null
+      },
+      "methods": "docs/evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md",
+      "model_calls": 0,
+      "new_models_fitted": 0,
+      "new_reference_labels_assigned_by_AI": false,
+      "original_200_case_audit_relabelled": false,
+      "status": "executed source-qualified public reference comparisons; labels applied with complete denominators",
+      "whole_graph_biological_accuracy_established": false
+    },
     "same_learner_graph_enrichment_gain_established": false,
     "secondary_CC_mixing_gain": {
       "DeepGO_SE_micro_Fmax": 0.29141414141414135,
@@ -540,6 +595,43 @@
       "sha256": "fa88a9bc527c412f25b5be6a3edbe68bd6dbeaceda12c7f86f0ebfb03fd30576"
     },
     "latest_indexed_software_scope": "Supported standalone core subset; optional research and deployment scripts remain available in the full repository and preserved source-runtime tar.",
+    "native_location_source_profile": {
+      "AWS_updated": false,
+      "ND_root_no_data_excluded": true,
+      "accepted_views_checked": 99,
+      "all99_target_questions_checked": true,
+      "all_native_assertions_remain_candidates": true,
+      "all_target_question_census": "docs/evaluations/public_gold_20261115/native_location_question_census.json",
+      "benchmark_inputs_used_for_source_publication": false,
+      "candidate_native_assertions": 429,
+      "candidate_pages_checked": 135,
+      "concepts_absent_from_historical_Pharos": 68,
+      "counts_are_independent_studies": false,
+      "full_GO_pipeline_conformance_claimed": false,
+      "guide": "docs/evaluations/NATIVE_LOCATION_WORKSPACE_20261115.md",
+      "historical_Pharos_pair_overlap": 361,
+      "local_regressions": {
+        "GOA_source_question_HTTP_export_tests": 41,
+        "all_final_groups_passed": true,
+        "clinical_human_gold_tests": 8,
+        "existing_source_inspection_tests": 24,
+        "native_GO_JavaScript_tests": 20,
+        "optional_scientific_dependencies_needed_by_core_fixtures": false,
+        "reference_accuracy_tests": 91
+      },
+      "native_source_records": 3309,
+      "new_source_profile_in_previously_prepared_core_ZIP": false,
+      "original_Pharos_records_preserved": 15671,
+      "original_or_default_workspaces_changed": false,
+      "original_primary_targets": 99,
+      "profile": "complete-cohort-positive-active-CC-located-in-all-codes.v1",
+      "separate_saved_workspace": "native_location_workspace_20261115",
+      "source_profile_summary": "docs/evaluations/public_gold_20261115/native_location_application.json",
+      "source_record_and_concept_union_exact": true,
+      "source_recovery_v1_behavior_preserved": true,
+      "status": "implemented and locally replayed through existing GOA source, question, inspection and export flow",
+      "targets_with_native_records": 94
+    },
     "new_core_archive_acceptance": {
       "actual_graph_ledger_and_answer_exports_verified": true,
       "all_owned_servers_stopped": true,
@@ -644,7 +736,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T15:34:51.181383+00:00",
+  "updated_at_UTC": "2026-11-15T16:58:34.954831+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

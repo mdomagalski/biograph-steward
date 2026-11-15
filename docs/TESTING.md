@@ -99,5 +99,25 @@ The dependency remains optional; default app startup and standard-library
 tests do not import pandas. These controls verify implementation behavior,
 not the truth of biomedical source records or reviewer judgments.
 
+## Public curator-reference and native-location increment
+
+The [public reference assessment](evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md)
+adds ordinary `test_reference_accuracy_*.py`, `test_civic_fact_gold.py` and
+`test_goa_locations.py` fixtures to core discovery. They verify identity,
+evidence/state/context boundaries, missingness, source changes during reads,
+fixed contracts and candidate-preserving source/answer/export behavior without
+scientific packages. Existing GOA HTTP regressions retain authentication,
+origin, source-download and exact-option checks. The native GO JavaScript
+fixtures also exercise location-profile wording and switching back to legacy
+recovery workspaces.
+
+Actual public source preparation and ranking use a separate Python 3.12.4
+environment described in
+[`requirements-public-gold.txt`](../tools/reference_accuracy/requirements-public-gold.txt).
+Those package versions do not replace the older prediction-evaluation pins
+above. The actual source replays, fixed comparisons, independent numeric audit
+and all-99-target saved-question census are recorded separately; invented tests
+do not establish biological accuracy.
+
 References: [standard unittest discovery](https://docs.python.org/3.12/library/unittest.html#test-discovery)
 and [GitHub Python version/dependency setup](https://docs.github.com/en/actions/tutorials/build-and-test-code/python).
