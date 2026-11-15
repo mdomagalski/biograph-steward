@@ -143,6 +143,9 @@ def aggregate(result):
                  'automatic_graph_or_app_promotion', 'reference_interpretation',
                  *(key for key, _ in GATES + SOURCE_GATES)))
     out['protocol'] = protocol_public(result.get('protocol', {}), PROTOCOL)
+    choice_access = result['model_choices'].get('fresh_final_reference_opened')
+    out['fresh_final_reference_opened_at_model_choice'] = (
+        choice_access if type(choice_access) is bool else None)
     out['arm_aspect_scopes'] = {arm: [ns for ns in namespaces if ns in NAMESPACES]
         for arm, namespaces in result['arm_aspect_scopes'].items() if arm in LABELS}
     out['model_choices'] = {ns: {'selected_arm': (row['selected_arm'] if row['selected_arm'] in

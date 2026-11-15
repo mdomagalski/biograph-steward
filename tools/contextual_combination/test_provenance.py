@@ -10,7 +10,7 @@ import unittest
 from unittest.mock import patch
 
 from .provenance import (load_author,canonical_rows,support_index,explain_pairs,
-                         aggregate,check_gate,read_reference_ledger)
+                         aggregate,check_gate,read_reference_ledger,raw_source_coverage)
 
 
 class ProvenanceTests(unittest.TestCase):
@@ -130,6 +130,28 @@ class ProvenanceTests(unittest.TestCase):
         row=self.explain([('P1','GO:2000002')],first,second)[0]['positive_support'][0]
         self.assertFalse(row['T0_exact_native_row_content_present'])
         self.assertTrue(row['T0_native_row_content_except_date_present'])
+
+    def test_descriptive_raw_source_scope_retains_nonadmitted_and_duplicate_rows(self):
+        first,second=self.fixture()
+        before=copy.deepcopy(second)
+        scope=raw_source_coverage(second,{'P1','P2','P3'},self.accepted,self.experimental)
+        self.assertEqual(second,before)
+        self.assertEqual(scope['selected_native_rows'],8)
+        self.assertEqual(scope['target_subjects_with_any_native_row'],2)
+        self.assertEqual(scope['target_subjects_without_native_rows'],1)
+        self.assertEqual(scope['selected_native_NOT_rows'],1)
+        self.assertEqual(scope['reference_admission_positive_rows_before_ontology_projection'],6)
+        self.assertEqual(scope['BPO_reference_admission_positive_rows_before_ontology_projection'],6)
+        self.assertEqual(scope['exact_repeated_native_content_rows'],1)
+        self.assertEqual(scope['selected_row_evidence_families'],
+            {'Experimental':5,'IC':1,'TAS':1,'not_reference_admission':1})
+        for name in ('selected_rows_with_forms','selected_rows_with_extensions','selected_rows_with_with_from'):
+            self.assertEqual(scope[name],1)
+        self.assertFalse(scope['ontology_or_reference_pair_filter_applied'])
+        self.assertFalse(scope['independent_studies_or_complete_study_overlap_established'])
+        self.assertTrue(scope['post_opening_descriptive_audit_not_performance_or_model_selection'])
+        with self.assertRaisesRegex(ValueError,'exact forecast target'):
+            raw_source_coverage(second,{'P1'},self.accepted,self.experimental)
 
     def test_frozen_native_ledger_joins_every_pair_without_threshold_selection(self):
         from tools.learned_combination.reference import file_sha256

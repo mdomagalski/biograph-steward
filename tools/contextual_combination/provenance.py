@@ -169,6 +169,36 @@ def aggregate(explained,native_rows):
         'duplicate_native_lines_preserved':True,'unmatched_predictions_are_biological_negatives':False}
 
 
+def raw_source_coverage(rows,targets,accepted,experimental):
+    """Post-opening descriptive counts before ontology/matching admission.
+
+    These are raw source rows for exact forecast-target identities, across all
+    aspects. They are not extra evaluation endpoints, independent studies or
+    new biological truth labels. Duplicate lines retain their row identities.
+    """
+    subjects={r['subject'].split(':',1)[1] for r in rows}
+    need(subjects<=set(targets),'native source scope exceeds exact forecast target identities.')
+    curated=[r for r in rows if not r['negated'] and r['evidence_code'] in accepted]
+    return {'forecast_target_identities':len(targets),'selected_native_rows':len(rows),
+        'target_subjects_with_any_native_row':len(subjects),
+        'target_subjects_without_native_rows':len(set(targets)-subjects),
+        'selected_native_NOT_rows':sum(r['negated'] for r in rows),
+        'selected_row_aspects':dict(Counter(r['aspect'] for r in rows)),
+        'selected_row_evidence_codes':dict(Counter(r['evidence_code'] for r in rows)),
+        'selected_row_evidence_families':dict(Counter(evidence_family(r['evidence_code'],experimental) for r in rows)),
+        'reference_admission_positive_rows_before_ontology_projection':len(curated),
+        'BPO_reference_admission_positive_rows_before_ontology_projection':sum(r['aspect']=='P' for r in curated),
+        'selected_rows_with_forms':sum(bool(r['gene_product_form_id']) for r in rows),
+        'selected_rows_with_extensions':sum(bool(r['annotation_extension_raw']) for r in rows),
+        'selected_rows_with_with_from':sum(bool(r['with_from_raw']) for r in rows),
+        'selected_rows_with_two_taxa':sum(len(r['taxon_ids'])==2 for r in rows),
+        'selected_rows_matching_existing_consumed_reference_marker':sum(bool(r['known_consumed_reference_ids']) for r in rows),
+        'exact_repeated_native_content_rows':len(rows)-len({r['raw_line_sha256'] for r in rows}),
+        'independent_studies_or_complete_study_overlap_established':False,
+        'ontology_or_reference_pair_filter_applied':False,
+        'post_opening_descriptive_audit_not_performance_or_model_selection':True}
+
+
 def check_gate(config):
     """Authorization must be checked before ANY source/seal path or hash read."""
     need(config.get('format')=='biograph-steward.postseal-provenance.v1'
@@ -228,6 +258,9 @@ def run(config,output):
     t0=helpers['clean_ontology_edges'](obonet.read_obo(cfg['references']['fixed_T0']['obo']['file']))
     need(nx.is_directed_acyclic_graph(t0),'native T0 ontology is cyclic.')
     report={'format':'biograph-steward.postseal-PK-BPO-provenance.v1','source_receipts':source_receipts,
+        'raw_source_coverage':{epoch:raw_source_coverage(rows,targets,accepted,experimental)
+                               for epoch,rows in gafs.items()},
+        'raw_source_coverage_chronology':'Selected-target raw-row coverage counts were specified after the admitted forecast seal/reference opening. They are descriptive source audit fields, not an additional performance endpoint or model choice.',
         'forecast_seal_sha256':config['forecast_seal_sha256'],'primary_assessment_report_sha256':config['completed_assessment_report_sha256'],
         'native_reference_helpers':source,'views':{},'scores_labels_models_choices_or_thresholds_changed':False,
         'limitations':['Experimental,IC,TAS admission families are reported separately.','References on one row may alias one single reference; no independent-study count is inferred.','Dates describe annotation curation, not publication or discovery timing.','Ancestor membership is ontology-derived support, not a direct assay for each ancestor.','NOT is retained but never propagated into positive support.','Native rows retain forms/extensions/with-from; these contexts do not repair or backfill graph claims.','No new metric, deployment threshold, label verdict or model selection is performed.']}

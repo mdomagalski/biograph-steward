@@ -44,7 +44,7 @@ def invented():
                                     'per_protein_counts': [PRIVATE], 'columns': {'tp': 0., PRIVATE: 1.}})
     result = {'created_at': '2026-01-01', 'forecast_seal_sha256': 'b' * 64, 'target_count': 3300,
         'protocol': copy.deepcopy(PROTOCOL), 'arm_aspect_scopes': {a: ['biological_process'] for a in methods},
-        'model_choices': {'selections': {'biological_process': {
+        'model_choices': {'fresh_final_reference_opened': False, 'selections': {'biological_process': {
             # Deliberately inconsistent invented scores demonstrate that the
             # presentation preserves a stored choice instead of selecting one.
             'selected_arm': 'context_mlp', 'validation_scores': {'context_mlp': .2, 'context_gcn': .9},
@@ -89,6 +89,16 @@ class AggregatePublicationTests(unittest.TestCase):
         self.assertEqual(public['views']['native']['cells'][PRIMARY]['methods'][CANDIDATE]['native_micro_fmax'], .7)
         self.assertFalse(public['primary_success_over_literal_LocalPlus_both_views'])
         self.assertTrue(public['current_T0_LocalPlus_gain_both_views'])
+        self.assertIs(public['fresh_final_reference_opened_at_model_choice'], False)
+
+    def test_choice_access_metadata_is_copied_only_as_a_boolean(self):
+        original = invented()
+        original['model_choices']['fresh_final_reference_opened'] = True
+        self.assertIs(aggregate(original)['fresh_final_reference_opened_at_model_choice'], True)
+        original['model_choices']['fresh_final_reference_opened'] = PRIVATE
+        public = aggregate(original)
+        self.assertIsNone(public['fresh_final_reference_opened_at_model_choice'])
+        self.assertNotIn(PRIVATE, json.dumps(public))
 
     def test_reference_absent_and_missing_cells_remain_explicit(self):
         public = aggregate(invented())

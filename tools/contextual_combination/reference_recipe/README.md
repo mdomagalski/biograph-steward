@@ -52,6 +52,13 @@ matching archived copy; never substitute the current release. A matching archive
 URL for those T1 bytes has not been independently established by this delivery
 increment.
 
+The operator has separately retained and locally hash-verified all six exact
+required inputs, including the mutable T1 files. The
+[research recovery index](../../../docs/releases/20261115/README.md#optional-research-recovery)
+records that separate archive. It is not included in a repository checkout or
+the core software ZIP. A matching supplied archive can populate `sources-root`
+without substituting whatever the publisher's current URL serves later.
+
 The T1 GO-basic URL names the August 5 archive, whose recorded content header is
 **July 26, 2026**. The GAF names a later GO-plus release. These are different
 source versions; the fixed-T0 sensitivity below is retained explicitly.
