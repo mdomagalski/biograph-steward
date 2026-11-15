@@ -3,14 +3,15 @@ let biologicalAnswer=null,biologicalOffset=0,biologicalEpoch=0,biologicalTimer=n
 function setupBiological(){
   biologicalEpoch++;biologicalAnswer=null;biologicalOffset=0;
   if(biologicalTimer){clearTimeout(biologicalTimer);biologicalTimer=null;}
-  const summary=graph?.evidence_extension,enabled=!!summary;
+  const summary=graph?.evidence_extension,source=summary?.sources||{};
+  const enabled=['string','mapit','signor','bioplex'].some(kind=>!!source[kind]);
   $('biologicalPanel').classList.toggle('hidden',!enabled);
   $('biologicalAnswer').classList.add('hidden');$('biologicalSearch').value='';
   $('biologicalStatus').textContent='';$('biologicalRows').replaceChildren();
   setupRegulatory();
   setupBioplexContext();
   if(!enabled)return;
-  const source=summary.sources||{},parts=[];
+  const parts=[];
   if(source.string)parts.push('STRING '+(source.string.source_release||'12.5')+': '+source.string.additional_source_records+' versioned association records; '+source.string.new_workspace_pairs+' additional workspace pairs.');
   if(source.mapit)parts.push('MAP-IT: '+source.mapit.qualified_partner_observations+' qualified tissue observations; '+source.mapit.extension_nodes_added+' additional participant proteins.');
   if(source.signor)parts.push('SIGNOR: '+source.signor.qualified_regulatory_observations+' source-reported regulatory records, including '+source.signor.self_regulatory_records+' self-regulatory records.');

@@ -9,7 +9,7 @@ from pathlib import Path
 import re
 
 from .client import digest
-from .goa_source import validate_native_record
+from .goa_source import POLICY, validate_native_record
 from .goa_questions import _record
 from .normalization import GO_CATEGORIES
 from .standard_export import _finish_projection
@@ -93,7 +93,7 @@ def project_graph(graph):
                 # than inventing a second native relation or source validator.
                 if not reasons:
                     _record(edge['evidence_record'],graph,nodes,original_edges,assertions,primary,
-                            edge['extension_publication_sha256'])
+                            edge['extension_publication_sha256'],POLICY)
         ledger.append({'source_edge_id':edge['id'],'source_assertion_id':assertion['id'],
             'source_kind':edge.get('record_kind'),'status':'excluded' if reasons else 'represented',
             'reasons':reasons,'projection_edge_id':None if reasons else edge['id'],

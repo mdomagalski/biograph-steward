@@ -17,7 +17,7 @@ import zipfile
 from datetime import datetime, timezone
 
 from .client import PharosClient, ENDPOINT, PharosError
-from .runtime import AccessPolicy, BrowserSessions, runs_directory, cache_directory
+from .runtime import AccessPolicy, BrowserSessions, runs_directory, cache_directory, SAVED_REVIEW_MESSAGE
 from . import __version__
 
 
@@ -170,10 +170,22 @@ def verify_qualified_question_source(answer, runs_dir):
         raise ValueError('Qualified answer belongs to different source evidence or review state.')
 
 
-def report_html(graph: dict | None = None, *, protected=False) -> str:
+def report_html(graph: dict | None = None, *, protected=False, saved_data_only=False) -> str:
     template = Path(__file__).with_name("ui.html").read_text(encoding="utf-8")
+    if saved_data_only:
+        template = template.replace('<body>', '<body data-saved-data-only="true">')
+        template = template.replace('</head>', '<style>body[data-saved-data-only="true"] #controls,'
+            'body[data-saved-data-only="true"] #plannerPanel,'
+            'body[data-saved-data-only="true"] #refreshPanel,'
+            'body[data-saved-data-only="true"] #civicRetrievePanel,'
+            'body[data-saved-data-only="true"] #assayAttachForm,'
+            'body[data-saved-data-only="true"] #assayQuestionControls,'
+            'body[data-saved-data-only="true"] #civicForm,'
+            'body[data-saved-data-only="true"] #regulatoryForm{display:none!important}</style></head>')
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
-    script = Path(__file__).with_name("guided.js").read_text(encoding="utf-8")
+    capabilities = {"saved_data_only": saved_data_only, "live_physical_ranking": not saved_data_only, "model_planning": not saved_data_only}
+    script = "const appCapabilities=Object.freeze(" + json.dumps(capabilities) + ");\n"
+    script += Path(__file__).with_name("guided.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("civic.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("planner.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("refresh.js").read_text(encoding="utf-8")
@@ -217,8 +229,8 @@ def login_return_path(value):
 def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                   cache_dir: Path | None = None, timeout: float = 30, *, host='127.0.0.1',
                   allowed_origins=(), access_token=None, neptune_mirror=None,
-                  go_context_dir=None, go_qc_dir=None) -> ThreadingHTTPServer:
-    policy = AccessPolicy(host, allowed_origins, access_token)
+                  go_context_dir=None, go_qc_dir=None, saved_data_only=False) -> ThreadingHTTPServer:
+    policy = AccessPolicy(host, allowed_origins, access_token, saved_data_only=saved_data_only)
     sessions = BrowserSessions()
     runs_dir = Path(runs_dir).resolve()
     runs_dir.mkdir(parents=True, exist_ok=True)
@@ -356,7 +368,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
         def do_GET(self):
             path = urlparse(self.path).path
             if path == '/healthz':
-                self.json_reply({'status': 'ok', 'version': __version__})
+                self.json_reply({'status': 'ok', 'version': __version__, 'saved_data_only': policy.saved_data_only})
                 return
             if path == '/auth/login':
                 try:
@@ -373,6 +385,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 self.login_page(self.path)
                 return
             if not self.authenticate():
+                return
+            if not policy.allows_action('GET', path):
+                self.json_reply({'error': SAVED_REVIEW_MESSAGE, 'error_code': 'saved_data_only'}, 403)
                 return
             if path == '/api/neptune-status':
                 self.json_reply({'configured': neptune_configured,
@@ -772,7 +787,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 except (ValueError,TypeError) as exc:self.json_reply({'configured':False,'reason':str(exc)})
                 return
             if path == "/":
-                self.reply(report_html(protected=policy.token is not None).encode(), content_type="text/html; charset=utf-8")
+                self.reply(report_html(protected=policy.token is not None, saved_data_only=policy.saved_data_only).encode(), content_type="text/html; charset=utf-8")
                 return
             if path == "/health":
                 self.json_reply({"status": "local_server_running", "live_pharos_checked": False})
@@ -920,6 +935,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             if (cookie_auth and not origin) or not policy.allows_origin(origin, self.server.server_port):
                 self.json_reply({"error": "Browser origin is not explicitly allowed."}, 403)
                 return
+            if not policy.allows_action('POST', path):
+                self.json_reply({'error': SAVED_REVIEW_MESSAGE, 'error_code': 'saved_data_only'}, 403)
+                return
             if self.headers.get("Content-Type", "").split(";")[0] != "application/json":
                 self.json_reply({"error": "Use application/json."}, 415)
                 return
@@ -931,6 +949,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
+                if not policy.allows_action('POST', path, body):
+                    self.json_reply({'error': SAVED_REVIEW_MESSAGE, 'error_code': 'saved_data_only'}, 403)
+                    return
                 # Retained packages are immutable decision views. Every other
                 # product action must use their preserved ordinary baseline;
                 # rebuilding from the raw snapshot would discard the filter.
@@ -1419,11 +1440,11 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
 
 def serve(port: int = 8765, runs_dir: Path | None = None, endpoint: str = ENDPOINT,
           cache_dir: Path | None = None, open_browser: bool = True,
-          timeout: float = 30, *, host='127.0.0.1', allowed_origins=(), access_token=None):
+          timeout: float = 30, *, host='127.0.0.1', allowed_origins=(), access_token=None, saved_data_only=False):
     runs_dir = runs_directory() if runs_dir is None else runs_dir
     cache_dir = cache_directory() if cache_dir is None else cache_dir
     server = create_server(port, runs_dir, endpoint, cache_dir, timeout, host=host,
-                           allowed_origins=allowed_origins, access_token=access_token)
+                           allowed_origins=allowed_origins, access_token=access_token, saved_data_only=saved_data_only)
     address = f'[{host}]' if ':' in host else host
     url = f"http://{address}:{server.server_port}"
     print(f"BioGraph Steward: {url}\nRuns: {Path(runs_dir).resolve()}\nCtrl+C stops it.", flush=True)

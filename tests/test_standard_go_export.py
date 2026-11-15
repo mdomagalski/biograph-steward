@@ -57,6 +57,19 @@ class NativeGoProjectionTests(unittest.TestCase):
         self.assertIn('assigning_database_without_reviewed_registered_infores_mapping',row['reasons'])
         self.assertEqual(len(result['native_go_records']),5)
 
+    def test_nonexperimental_native_row_stays_in_sidecar_and_excluded_ledger(self):
+        graph=graph_fixture();changed=change_native(graph,1,'Evidence','TAS')
+        before=deepcopy(graph);result=project_graph(graph)
+        self.assertEqual(graph,before)
+        self.assertEqual(len(result['edges']),3)
+        self.assertNotIn(changed['id'],{edge['id'] for edge in result['edges']})
+        self.assertEqual(len(result['native_go_records']),5)
+        original=next(row for row in result['native_go_records'] if row['source_edge_id']==changed['id'])
+        self.assertEqual(original['native_record']['evidence_code'],'TAS')
+        ledger=next(row for row in result['edge_mapping'] if row['source_edge_id']==changed['id'])
+        self.assertEqual(ledger['status'],'excluded')
+        self.assertIn('outside_existing_native_positive_context_gate',ledger['reasons'])
+
     def test_context_or_distinct_product_and_not_rows_do_not_become_unqualified_positive_edges(self):
         for field,value in [('Annotation_Extension','occurs_in(CL:0000000)'),('Gene_Product_Form_ID','UniProtKB:P12345-2'),('Qualifier','NOT|acts_upstream_of')]:
             graph=graph_fixture();change_native(graph,1,field,value)

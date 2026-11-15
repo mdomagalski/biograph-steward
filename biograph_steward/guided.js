@@ -1,12 +1,24 @@
 // Guided graph questions. Scientific statements come from the Python query engine.
 let questionAnswer=null, questionId=null, questionSelection=null, questionBusy=false;
-function physicalRankingAvailable(){return graph?.data_kind==='live_pharos'&&graph.targets.length>0&&graph.targets.every(t=>/^UniProtKB:(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-[1-9][0-9]*)?$/.test(t.id))&&!['shared_pathways','qualified_pathway_sources','native_physical'].includes($('questionRelations').value);}
+function savedReviewOnly(){return typeof appCapabilities!=='undefined'&&appCapabilities.saved_data_only===true;}
+function applySavedReviewControls(){
+  if(!savedReviewOnly())return;
+  for(const id of ['controls','plannerPanel','refreshPanel','civicRetrievePanel','assayAttachForm','assayQuestionControls','civicForm','regulatoryForm'])$(id)?.classList.add('hidden');
+  for(const id of ['assayAsk','civicRun','biologicalAsk','biologicalPrev','biologicalNext','regulatoryAsk','regulatoryExampleMcc','regulatoryExampleBraf','regulatoryExampleContext']){const control=$(id);if(control)control.disabled=true;}
+  const note='Open saved answers or inspect source records. This reviewer site does not create new assay, therapy, tissue or regulation summaries.';
+  for(const id of ['assayStatus','civicStatus','biologicalStatus','regulatoryStatus']){const target=$(id);if(target)target.textContent=note;}
+  if($('submissionExport'))$('submissionExport').disabled=true;
+  if($('submissionStatus'))$('submissionStatus').textContent='Download the saved run ZIP; this reviewer site does not create new decision exports.';
+}
+
+function physicalRankingAvailable(){return !savedReviewOnly()&&graph?.data_kind==='live_pharos'&&graph.targets.length>0&&graph.targets.every(t=>/^UniProtKB:(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-[1-9][0-9]*)?$/.test(t.id))&&!['shared_pathways','qualified_pathway_sources','native_physical'].includes($('questionRelations').value);}
 function updateQuestionRankingControl(){
   const available=physicalRankingAvailable();
   $('questionRankingPhysical').disabled=!available;
+  $('questionRankingPhysical').hidden=savedReviewOnly();
   if(!available)$('questionRanking').value='alphabetical';
   $('questionRanking').disabled=questionBusy||!available;
-  $('questionRankingNote').textContent=!available?(graph?.data_kind==='synthetic_demo'?'Physical priority is unavailable for synthetic demo data. It requires a real Pharos cohort with exact UniProt identifiers.':['shared_pathways','qualified_pathway_sources','native_physical'].includes($('questionRelations').value)?'Physical priority requires reported interaction paths. Choose interactions or interactions and shared pathways.':'Physical priority requires a real Pharos cohort with exact UniProt identifiers.'):$('questionRanking').value==='physical'?'Queries current STRING scores for up to 100 matching interaction partners before applying the result limit. Unscored and pathway-only matches remain after scored interactions. Source predicts physical proximity or co-complex association; it does not prove direct binding. Ordering supplements the source graph and leaves evidence paths and review states unchanged.':'Alphabetical order uses the saved graph without requesting additional STRING scores. Physical priority is available for up to 100 matching interaction partners.';
+  $('questionRankingNote').textContent=savedReviewOnly()?'Saved-data reviewer mode uses the saved graph only. Live physical priority is unavailable; saved native physical associations remain inspectable.':!available?(graph?.data_kind==='synthetic_demo'?'Physical priority is unavailable for synthetic demo data. It requires a real Pharos cohort with exact UniProt identifiers.':['shared_pathways','qualified_pathway_sources','native_physical'].includes($('questionRelations').value)?'Physical priority requires reported interaction paths. Choose interactions or interactions and shared pathways.':'Physical priority requires a real Pharos cohort with exact UniProt identifiers.'):$('questionRanking').value==='physical'?'Queries current STRING scores for up to 100 matching interaction partners before applying the result limit. Unscored and pathway-only matches remain after scored interactions. Source predicts physical proximity or co-complex association; it does not prove direct binding. Ordering supplements the source graph and leaves evidence paths and review states unchanged.':'Alphabetical order uses the saved graph without requesting additional STRING scores. Physical priority is available for up to 100 matching interaction partners.';
 }
 function questionOptions(){if($('questionRelations').value==='native_physical')return {protein:$('questionProtein').value,relations:['interactions'],template:'native_string_physical.v1',view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};if($('questionRelations').value==='qualified_pathway_sources')return {protein:$('questionProtein').value,relations:['shared_pathways'],template:'qualified_pathway_source_context.v1',source_support:graph.qualified_view?.pathway_history&&$('nativePathwaySupport').checked?'native_supported':'all_source_annotations',view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};const value=$('questionRelations').value,options={protein:$('questionProtein').value,relations:value==='both'?['interactions','shared_pathways']:[value],view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};if(physicalRankingAvailable()&&$('questionRanking').value==='physical')options.ranking='physical';return options;}
 function setupQuestion(){
@@ -192,3 +204,5 @@ $('questionForm').addEventListener('submit',e=>{e.preventDefault();runQuestion()
 for(const id of ['questionProtein','questionRelations','questionView','questionLimit','questionPaths','questionRanking','nativePathwaySupport'])$(id).addEventListener('change',questionScopeChanged);
 $('questionExplore').onclick=()=>{$('questionView').value='candidates';updateQuestionPlan();runQuestion();};
 $('questionJson').onclick=downloadQuestionJSON;
+
+applySavedReviewControls();

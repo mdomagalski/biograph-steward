@@ -93,8 +93,21 @@ class BrowserSessions:
                 + ('; Secure' if secure else ''))
 
 
+SAVED_REVIEW_POSTS = frozenset({
+    '/auth/login', '/auth/logout', '/api/question', '/api/explore', '/api/inspect-source',
+    '/api/protein-context', '/api/neptune-inspect', '/api/native-go-context',
+    '/api/download-native-go-context', '/api/native-go-question',
+})
+SAVED_REVIEW_MESSAGE = ('Saved-data review mode: live source ranking, construction, model planning, '
+    'retrieval, review changes and new decision exports are unavailable on this server. '
+    'Saved questions, source inspection and existing downloads remain available.')
+
+
 class AccessPolicy:
-    def __init__(self, host='127.0.0.1', allowed_origins=(), access_token=None):
+    def __init__(self, host='127.0.0.1', allowed_origins=(), access_token=None, *, saved_data_only=False):
+        if type(saved_data_only) is not bool:
+            raise ValueError('saved_data_only must be an explicit boolean.')
+        self.saved_data_only = saved_data_only
         if host != 'localhost':
             try:
                 ipaddress.ip_address(host)
@@ -113,6 +126,27 @@ class AccessPolicy:
             raise ValueError('Remote browser origins require BIOGRAPH_ACCESS_TOKEN.')
         if any(scheme != 'https' and not loopback_host(name) for scheme, name, _ in self.origins):
             raise ValueError('Remote browser origins must use HTTPS.')
+
+    def allows_action(self, method, path, body=None):
+        """Operator-owned action scope, separate from authentication and Origin.
+
+        Match the existing reviewer gateway's saved routes, then inspect parsed
+        JSON for the one saved-question option that can otherwise fetch sources.
+        Host, Origin and client headers never enable or disable this policy.
+        """
+        if not self.saved_data_only:
+            return True
+        if method in {'GET', 'HEAD'}:
+            return path != '/api/planner'
+        if method != 'POST' or path not in SAVED_REVIEW_POSTS:
+            return False
+        return not (path == '/api/question' and body is not None
+                    and body.get('ranking', 'alphabetical') != 'alphabetical')
+
+    def capabilities(self):
+        return {'saved_data_only': self.saved_data_only,
+                'live_physical_ranking': not self.saved_data_only,
+                'model_planning': not self.saved_data_only}
 
     def allows_origin(self, value, port):
         if not value:

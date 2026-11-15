@@ -62,3 +62,41 @@ question profile. Functional evidence and source review states stay available.
 These saved-data features require no model, GPU, Brev instance or fresh source
 retrieval. Hosted installation, software release and teammate usability feedback
 are separate delivery checks.
+
+## GO evidence codes: context, not a confidence hierarchy
+
+GO's [guidelines for external resources](https://geneontology.org/docs/guidelines-external/)
+recommend including valid evidence codes when evaluating existing annotations.
+They explicitly reject a hierarchy of evidence codes and separately advise
+omitting RCA annotations while that code is being retired. An experimental code is not
+automatically a correctness verdict; several source rows are not independent
+confidence votes.
+
+A direct recount of the saved native-location projection found these **3,309
+candidate rows**, with each displayed code agreeing with its preserved native
+record:
+
+| Code | Admitted source rows |
+| --- | ---: |
+| EXP | 136 |
+| HDA | 15 |
+| HTP | 2 |
+| IDA | 448 |
+| IMP | 10 |
+| IPI | 2 |
+| NAS | 9 |
+| TAS | 2,687 |
+| RCA | **0** |
+
+“All eligible codes” means no additional evidence-code filter within the fixed
+identity, relation, taxon and context profile; it does not mean every valid GO
+annotation fits that profile. The experimental-only sensitivity discards
+support: HOU recovery changes from **44/51 to 42/51**, and OpenCell grades 2+3
+from **31/40 to 23/40**. These bounded comparisons do not establish a general
+quality ranking between evidence types.
+
+No RCA row is present in this delivered candidate example. Its frozen profile
+does not implement a dedicated RCA exception: a future capture containing RCA
+needs qualification against the current GO guidance under an explicitly
+versioned profile. This check changes no source, graph, frozen policy or score,
+and does not constitute a new complete GAF validation.

@@ -22,6 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--allowed-origin", action="append", default=None, help="Exact HTTPS origin allowed for a protected reverse proxy; repeat for multiple origins.")
     p.add_argument("--runs-dir", type=Path, default=runs_directory())
     p.add_argument("--no-browser", action="store_true")
+    p.add_argument("--saved-data-only", action="store_true", help="Serve existing data and saved queries; block live retrieval, model planning and source/review edits.")
     sub.add_parser("doctor", parents=[common], help="Test live connectivity and required GraphQL fields.")
     p = sub.add_parser("search", parents=[common], help="Search disease names; choose an exact returned term.")
     p.add_argument("term")
@@ -635,7 +636,8 @@ def main(argv: list[str] | None = None) -> int:
             host = args.host if args.command else os.environ.get('BIOGRAPH_HOST', '127.0.0.1')
             origins = ((args.allowed_origin if args.allowed_origin is not None else os.environ.get('BIOGRAPH_ALLOWED_ORIGINS', ''))
                        if args.command else os.environ.get('BIOGRAPH_ALLOWED_ORIGINS', ''))
-            options = {'host': host, 'allowed_origins': origins, 'access_token': os.environ.get('BIOGRAPH_ACCESS_TOKEN')}
+            options = {'host': host, 'allowed_origins': origins, 'access_token': os.environ.get('BIOGRAPH_ACCESS_TOKEN'),
+                       'saved_data_only': args.saved_data_only if args.command else False}
             if args.command:
                 serve(args.port, args.runs_dir, args.endpoint, args.cache_dir, not args.no_browser, args.timeout, **options)
             else:

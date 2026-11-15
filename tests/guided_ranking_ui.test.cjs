@@ -156,3 +156,24 @@ test('reopening a native physical answer restores its source mode and preserves 
   assert.doesNotMatch(text(h.$('questionSummary')),/Physical association priority/);
   assert.equal(h.calls.length,0);
 });
+
+
+test('operator-owned saved review mode hides live priority and disables new decision export without changing graph',()=>{
+  const h=harness(),before=JSON.stringify(h.graph);h.context.appCapabilities={saved_data_only:true};
+  h.graph.evidence_extension={sources:{string_physical:{publication_sha256:'invented-native-source'}}};
+  const withProfile=JSON.stringify(h.graph);
+  h.run('setupQuestion();applySavedReviewControls()');
+  h.$('questionRanking').value='physical';h.run('updateQuestionPlan()');
+  assert.equal(h.$('questionRankingPhysical').hidden,true);assert.equal(h.$('questionRankingPhysical').disabled,true);
+  assert.equal(h.$('questionRanking').value,'alphabetical');
+  assert.equal(h.$('submissionExport').disabled,true);
+  assert.match(h.$('submissionStatus').textContent,/Download the saved run ZIP.*does not create new decision exports/);
+  assert.ok(h.$('controls').classList.contains('hidden'));assert.ok(h.$('plannerPanel').classList.contains('hidden'));
+  assert.ok(h.$('civicRetrievePanel').classList.contains('hidden'));
+  for(const id of ['assayAsk','civicRun','biologicalAsk','regulatoryAsk','regulatoryExampleMcc','regulatoryExampleBraf','regulatoryExampleContext'])assert.equal(h.$(id).disabled,true);
+  for(const id of ['assayQuestionControls','civicForm','regulatoryForm'])assert.ok(h.$(id).classList.contains('hidden'));
+  assert.match(h.$('biologicalStatus').textContent,/Open saved answers or inspect source records/);
+  h.$('questionRelations').value='native_physical';h.run('updateQuestionPlan()');
+  assert.equal(h.run('questionOptions().template'),'native_string_physical.v1');
+  assert.equal(JSON.stringify(h.graph),withProfile);assert.equal(h.calls.length,0);
+});
