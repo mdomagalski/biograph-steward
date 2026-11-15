@@ -2,11 +2,11 @@
   "AWS_graph_change_scope": "Four new separately named saved runs added. Earlier qualified default, reviews and Neptune mirror preserved.",
   "authorized_AWS_interpretation_update_complete": true,
   "browser_visual_check": {
-    "API_check_is_not_browser_usability_test": true,
-    "known_upstream_issue": "https://github.com/openai/codex/issues/37324",
-    "reason": "Bundled browser-use classic-level native module rejected by macOS code-signature validation before tab access",
-    "security_changes_or_binary_resigning": false,
-    "status": "unavailable in this audit"
+    "in_app_browser": "Unavailable due previously recorded native-module signature issue; no OS/security bypass",
+    "in_app_browser_used": false,
+    "independent_user_usability_test": false,
+    "receipt": "docs/evaluations/native_profiles_hosted_20261115/browser_acceptance.json",
+    "status": "Passed selected actual hosted workflows in installed Chrome desktop and390px viewport"
   },
   "closing_delivery_checklist": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
@@ -14,13 +14,13 @@
   "format": "biograph-steward.delivery-status.v1",
   "github_review_delivery": {
     "all_remote_asset_digests_reverified": true,
-    "artifact_source_revision": "d143c4a4611d7e9ad2cac6256dc2fd469a2eb395",
+    "artifact_source_revision": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
     "branch": "codex/contextual-gain-delivery",
     "current_review_assets": [
-      "biograph_steward_core_software.zip",
-      "biograph_steward_contextual_assessment_20261115_v3.zip",
-      "BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx",
-      "SHA256SUMS_CURRENT_20261115_v3.txt"
+      "biograph_steward_core_saved_review_software.zip",
+      "BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx",
+      "biograph_steward_public_reference_assessment_20261115.zip",
+      "SHA256SUMS_NATIVE_PROFILES_20261115.txt"
     ],
     "draft_pull_request": {
       "draft": true,
@@ -36,73 +36,46 @@
       "tag_name": "untagged-28e4edec341d2cb39dab",
       "target_commitish": "d143c4a4611d7e9ad2cac6256dc2fd469a2eb395"
     },
+    "final_document_branch_head_at_asset_append": "851f2f50921d66199d2fdfc5768c5ed99bd52bfc",
     "final_public_submission": false,
-    "latest_receipt": "docs/releases/20261115/github_review_delivery_v3.json",
+    "latest_receipt": "docs/releases/20261115/github_native_profiles_review_delivery.json",
     "main_modified": false,
+    "previous_v3_handoff_receipt": "docs/releases/20261115/github_review_delivery_v3.json",
     "private_repository": true,
     "receipt": "docs/releases/20261115/github_review_delivery.json",
-    "remote_asset_count": 10,
+    "remote_asset_count": 14,
+    "remote_verification_mode": "GitHub-reportedSHA256andsizepluspreservedassetidentities; no remote byte re-download",
     "repository_visibility_modified": false,
     "source_revision": "57506d1091bbe0bd7d478e25f6d40df573f8680d",
     "source_revision_scope": "Historical creation checkpoint of the private draft; artifact_source_revision and latest_receipt identify the current reviewed assets. The review branch can advance through metadata-only receipts.",
     "uploaded_assets": [
       {
-        "bytes": 297032,
-        "name": "BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx",
-        "sha256": "7aa583b6f7dd4a5880a5244e1c7180ecf885b2fa1d7f70b97b6ee88dafff5bd6"
+        "bytes": 688047,
+        "name": "biograph_steward_core_saved_review_software.zip",
+        "sha256": "f688f894ff3933f4b85fdbf62425cbf1e805a01d6852526adcf2bce261a0e993"
       },
       {
-        "bytes": 298030,
-        "name": "BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
-        "sha256": "e3a96cacedc65c4907feba280156f3bafa47f64a92ea899461aff05403d4a456"
+        "bytes": 472850,
+        "name": "BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx",
+        "sha256": "c6f3331b7cb9d554024e6d2b658d25e8efdaa70313011792695f877c5e3ed1f1"
       },
       {
-        "bytes": 304517,
-        "name": "BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx",
-        "sha256": "0df543fd5040cd73cc7d94d14ecec0c4ead48b8f9400cfdb3996b3c9338df9eb"
+        "bytes": 69109,
+        "name": "biograph_steward_public_reference_assessment_20261115.zip",
+        "sha256": "05bbadd4b7ac14e976444c52a88d3efa0ee52d70aa5ad4b259f5071c4db14f4f"
       },
       {
-        "bytes": 573822,
-        "name": "biograph_steward_contextual_assessment_20261115.zip",
-        "sha256": "db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5"
-      },
-      {
-        "bytes": 655716,
-        "name": "biograph_steward_contextual_assessment_20261115_v2.zip",
-        "sha256": "107c6dbab8fe84d1affe8dce0162fb930db03db0df01d6f6e2526cae3288b975"
-      },
-      {
-        "bytes": 711421,
-        "name": "biograph_steward_contextual_assessment_20261115_v3.zip",
-        "sha256": "1e8b9284f6d7ec32a1fd7cb5cf9cdf04e1de3cb032489f856f195d1fb583db07"
-      },
-      {
-        "bytes": 661594,
-        "name": "biograph_steward_core_software.zip",
-        "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
-      },
-      {
-        "bytes": 342,
-        "name": "SHA256SUMS.txt",
-        "sha256": "98ffb2acee8ba7dfcf4616c112c0956d7bc1649209a61d824e8a4403d79c5023"
-      },
-      {
-        "bytes": 345,
-        "name": "SHA256SUMS_CURRENT_20261115.txt",
-        "sha256": "dea672f7a0ac2a513c2942c67431f62bf8eb836ca59b64aa9cc80669a77853e1"
-      },
-      {
-        "bytes": 345,
-        "name": "SHA256SUMS_CURRENT_20261115_v3.txt",
-        "sha256": "5adaa2c7ec6b31d0ddad68c7da81dfc5acf6c6bc0b58a9df3ec3e1c8f2cea229"
+        "bytes": 361,
+        "name": "SHA256SUMS_NATIVE_PROFILES_20261115.txt",
+        "sha256": "d7bef8c9bc47b79976c93d3c50b7dcda3d57fd7e63c5b43808a381c5ffc81cf4"
       }
     ]
   },
   "hosted_review": {
     "authenticated_acceptance_receipt": {
-      "bytes": 2868,
-      "path": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
-      "sha256": "9fc6449b60a5f21133e2e9d73439bbc2494ec7aaf2f88c3573b6f0033a571361"
+      "path": "docs/evaluations/native_profiles_hosted_20261115/summary.json",
+      "bytes": 7896,
+      "sha256": "8fb559ec00336098a90db89b5029ca3b71bf3f7dac31f5fb06cf9093276a6405"
     },
     "current_authenticated_acceptance_repeated_in_this_audit": true,
     "interpretation_update": {
@@ -116,8 +89,14 @@
     "last_verified_authenticated_runtime": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
     "native_profiles_update": {
       "actual_restart_and_full_Neptune_parity_passed": true,
-      "browser_and_restore_checks": "running",
+      "browser_and_restore_checks": "Passed actual Chrome physical/source/reference and GO/accepted read views plus390px layout;235-file scoped restore/Gold export and approved S3 checksums passed.",
       "cache_update": "Source-verified web reuse accepted after real restart; original source-reader files and graph/answer hashes unchanged.",
+      "gateway_route_sync": {
+        "existing_stack_image_update_complete": true,
+        "native_GO_and_protein_context_saved_routes_synchronized": true,
+        "new_unsafe_actions_permitted": false,
+        "receipt": "docs/evaluations/native_profiles_hosted_20261115/gateway_route_sync.json"
+      },
       "new_workspace": "native_evidence_workspace_20261115",
       "original_qualified_default_and_Neptune_mirror_unchanged": true,
       "runtime_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
@@ -139,10 +118,11 @@
       "graph_scores_or_model_changed": false,
       "saved_queries": 6,
       "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
-      "term_explanations": 27
+      "term_explanations": 27,
+      "runtime_commit": "f6c527a84b68ac0155df4b2c19548c8b88736540"
     },
-    "previous_verified_runtime": "f6c527a84b68ac0155df4b2c19548c8b88736540",
-    "private_Neptune_mirror": "Full read-only record parity reverified after real restart of0554977; mirror remains the earlier qualified default. New native source profile uses its saved workspace files.",
+    "previous_verified_runtime": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+    "private_Neptune_mirror": "Full read-only record parity reverified after real restart of47a2e5a; mirror remains the earlier qualified default. New native source profile uses its saved workspace files.",
     "public_entry_check": {
       "TLS_default_verification": true,
       "authenticated_saved_graph_checked": false,
@@ -157,7 +137,12 @@
     },
     "reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
     "shared_ingress": "saved-data inspection and export only; construction, fresh retrieval, model planning and review edits blocked",
-    "workspace_token": "supplied privately; not included in repository or this manifest"
+    "workspace_token": "supplied privately; not included in repository or this manifest",
+    "previous_interpretation_authenticated_acceptance_receipt": {
+      "bytes": 2868,
+      "path": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "sha256": "9fc6449b60a5f21133e2e9d73439bbc2494ec7aaf2f88c3573b6f0033a571361"
+    }
   },
   "no_AWS_graph_or_review_changes": false,
   "no_AWS_workbench_mutations": false,
@@ -796,7 +781,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T21:14:54.866784+00:00",
+  "updated_at_UTC": "2026-11-15T21:56:09.747883+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

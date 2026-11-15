@@ -1,0 +1,92 @@
+{
+  "format": "biograph-steward.live-gateway-route-sync.v1",
+  "status": "PASSED",
+  "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws",
+  "stack_update_complete": true,
+  "only_GatewayImage_parameter_changed": true,
+  "endpoint_service_ALB_and_task_SG_outputs_unchanged": true,
+  "ALB_600s_defensive_invalid_header_controls_preserved": true,
+  "image_manifest_digest": "sha256:1e960d9ab42b51669281e5ef9555d45061bde5ef75193088aeca171415ba431a",
+  "previous_image_manifest_digest": "sha256:dc76ac11253d5538005dfe5f827847a8da5f4296358ac1634414acd89c50551c",
+  "nginx_conf_sha256": "0051e957902f7720d60c841bc77f5fe3e60295458d443b07a5f1d8017aec1d19",
+  "only_added_POST_routes": [
+    "/api/native-go-question",
+    "/api/protein-context"
+  ],
+  "new_routes_require_authentication": true,
+  "native_GO_candidate_read_succeeded": true,
+  "protein_context_route_reaches_saved_context_validation": true,
+  "protein_context_registered_for_selected_KRAS": false,
+  "missing_context_not_retrieved_or_invented": true,
+  "forbidden_and_unknown_POSTs_still_denied": true,
+  "checks": [
+    {
+      "path": "/api/native-go-question",
+      "authenticated": false,
+      "status": 401,
+      "elapsed_seconds": 0.14125745801720768,
+      "body_sha256": "af495dd25ffd472654020069853947b7092f0528c2eb2994adeef24a62bf6d90"
+    },
+    {
+      "path": "/api/protein-context",
+      "authenticated": false,
+      "status": 401,
+      "elapsed_seconds": 0.12330208404455334,
+      "body_sha256": "af495dd25ffd472654020069853947b7092f0528c2eb2994adeef24a62bf6d90"
+    },
+    {
+      "path": "/api/native-go-question",
+      "authenticated": true,
+      "status": 200,
+      "elapsed_seconds": 23.90686533402186,
+      "body_sha256": "f0ed9fd87e260d6e1461d846c4b4f5d252d049933582ed53ed6f0af2298b73c2"
+    },
+    {
+      "path": "/api/protein-context",
+      "authenticated": true,
+      "status": 400,
+      "elapsed_seconds": 25.073811041889712,
+      "body_sha256": "ab4f0ae93c38f2d43b6f66130c6ee21e260c9419192440627a419e97a9daf994"
+    },
+    {
+      "path": "/api/build",
+      "authenticated": true,
+      "status": 403,
+      "elapsed_seconds": 0.13143870793282986,
+      "body_sha256": "5c05938f1cdb3dd52f5d13f90e9f6f0ebb898133ada6e88ed47eecb22f35919a"
+    },
+    {
+      "path": "/api/review",
+      "authenticated": true,
+      "status": 403,
+      "elapsed_seconds": 0.12225729099009186,
+      "body_sha256": "5c05938f1cdb3dd52f5d13f90e9f6f0ebb898133ada6e88ed47eecb22f35919a"
+    },
+    {
+      "path": "/api/plan",
+      "authenticated": true,
+      "status": 403,
+      "elapsed_seconds": 0.11437020800076425,
+      "body_sha256": "5c05938f1cdb3dd52f5d13f90e9f6f0ebb898133ada6e88ed47eecb22f35919a"
+    },
+    {
+      "path": "/api/refresh-compare",
+      "authenticated": true,
+      "status": 403,
+      "elapsed_seconds": 0.10613691690377891,
+      "body_sha256": "5c05938f1cdb3dd52f5d13f90e9f6f0ebb898133ada6e88ed47eecb22f35919a"
+    },
+    {
+      "path": "/api/route-not-approved",
+      "authenticated": true,
+      "status": 403,
+      "elapsed_seconds": 0.10657304199412465,
+      "body_sha256": "5c05938f1cdb3dd52f5d13f90e9f6f0ebb898133ada6e88ed47eecb22f35919a"
+    }
+  ],
+  "model_calls": 0,
+  "fresh_source_fetches": 0,
+  "app_or_source_review_or_neptune_writes": false,
+  "normal_gateway_task_revision_rollout_occurred": true,
+  "new_IAM_network_or_ALB_resources_requested": false
+}

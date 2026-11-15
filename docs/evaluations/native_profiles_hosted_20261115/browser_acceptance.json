@@ -1,0 +1,133 @@
+{
+  "format": "biograph-steward.hosted-native-evidence-combined-qa.v1",
+  "created_at": "2026-11-15T21:50:37.077759+00:00",
+  "status": "PASSED_COMBINED_SCOPE",
+  "runtime_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+  "runtime_image_id": "sha256:1384a64f2e445c42847505b2fa24ee9501f357cee65e1b41fc6140e28a99cd53",
+  "accepted_runtime_receipt": {
+    "path": "runs/native_profiles_delivery_20261115/runtime_cache_rollout/activation.json",
+    "sha256": "5b9a30a21e453adaf1c24585a20d0366c11fa38781f08c5b60a90e1d485a9884"
+  },
+  "accepted_gateway_receipt": {
+    "path": "runs/native_profiles_delivery_20261115/gateway_sync/live_gateway_receipt.json",
+    "sha256": "97c2ca2332d160da2106ab47c91845da82ea4bedd345a55313d70f0ad77212a9",
+    "image_manifest_digest": "sha256:1e960d9ab42b51669281e5ef9555d45061bde5ef75193088aeca171415ba431a",
+    "nginx_conf_sha256": "0051e957902f7720d60c841bc77f5fe3e60295458d443b07a5f1d8017aec1d19"
+  },
+  "method": "Combined observed checks across one unchanged app runtime; earlier failures retained. Gateway only gained the two already-supported source-read routes between partial and completion QA. This is not a claim of one uninterrupted passing browser run.",
+  "partial_physical_source_compare_qa": {
+    "path": "attempt_03_networkstable/receipt.json",
+    "sha256": "e6716ef26f0b793a03ac41de27b371460eed44b273872493ccaa14eb4c6ce6a6",
+    "checks_before_known_gateway_denial": 28
+  },
+  "gateway_completion_qa": {
+    "path": "attempt_04_go_gateway/receipt.json",
+    "sha256": "176d57e8bfcf4d3e23417dae8838e12262f3a0d95d8b23b6dbb80cc38124a663",
+    "status": "passed",
+    "checks": 17
+  },
+  "observed_coverage": {
+    "physical_source_query": {
+      "candidate_results": 14,
+      "accepted_results": 0,
+      "inspectable_in_accepted_view": 14,
+      "source_release": "STRING12.5",
+      "native_integer_example": 459,
+      "mapping": "both endpoints admitted by exact reciprocal aliases and identical complete canonical/source sequences",
+      "direct_binding_or_independent_validation_inferred": false
+    },
+    "native_GO": {
+      "covered_protein_menu_options": 94,
+      "candidate_POST_status": 200,
+      "returned_concepts_remain_candidate": true,
+      "accepted_POST_status": 200,
+      "accepted_concepts": 0,
+      "model_calls": 0,
+      "source_fetches": 0
+    },
+    "Compare": {
+      "HOU_positive_label_recovery": "41/51 to44/51;31/99 matched",
+      "OpenCell_positive_label_recovery": "30/40 to31/40;23exact reciprocal matches,76reference-unavailable",
+      "prior_exposure_and_overlap_limits_visible": true
+    },
+    "responsive390px_document_widths": {
+      "physical_Ask": 390,
+      "Compare": 390,
+      "native_GO": 390
+    },
+    "saved_data_only_and_hidden_live_controls": true,
+    "browser_JavaScript_errors": 0
+  },
+  "preserved_failure_evidence": {
+    "initial_055_source_timeout": "receipt.json",
+    "initial_47a_browser_network_change": "attempt_02_cached/receipt.json",
+    "subsequent_native_GO_old_gateway403": "attempt_03_networkstable/receipt.json"
+  },
+  "screenshots": {
+    "attempt_03_networkstable/hosted_native_physical_answer_mobile.png": {
+      "bytes": 70798,
+      "sha256": "868efc9ad2616c5d2d1100f10b0c7a16073f3d7f9ad5dc8f82b34066e1c564e2"
+    },
+    "attempt_03_networkstable/hosted_native_physical_mini_passport_focused.png": {
+      "bytes": 185905,
+      "sha256": "444a87ab1a71631cc887cbb02e48f690db4c837a2a23c96b27080f2d7d4074f6"
+    },
+    "attempt_03_networkstable/hosted_compare_mobile.png": {
+      "bytes": 96922,
+      "sha256": "e418fd3d2b0bbead950ba85c825d3bc640e9068accd7a90a42efba7af9de8715"
+    },
+    "attempt_03_networkstable/hosted_native_physical_first_result_focused.png": {
+      "bytes": 25344,
+      "sha256": "a1b38e2c180f496bd32da80589c7288353ec8c44ae8e9ad164a6bcc7c578668d"
+    },
+    "attempt_03_networkstable/hosted_native_physical_answer_desktop.png": {
+      "bytes": 102196,
+      "sha256": "1511a7161faa0e620d4c292a16e3552fbe46ab8313b620e4453c90745f3b9944"
+    },
+    "attempt_03_networkstable/hosted_public_reference_desktop.png": {
+      "bytes": 184476,
+      "sha256": "6ba92fc839d198e6983e330f6bfe762bc32aec316a920ec9a1868a9b357bad93"
+    },
+    "attempt_03_networkstable/hosted_opencell_desktop.png": {
+      "bytes": 179519,
+      "sha256": "a8e3c1ef708d0ba96440e69d56b94c514ca51f4c5f1a13f5935ca200147885a1"
+    },
+    "attempt_03_networkstable/hosted_native_physical_summary_focused.png": {
+      "bytes": 85998,
+      "sha256": "08db44a547a12be0f6c4a04d02e27358d1f92e276435b17e4717924a73339d9e"
+    },
+    "attempt_03_networkstable/hosted_native_physical_graph_desktop.png": {
+      "bytes": 102196,
+      "sha256": "1511a7161faa0e620d4c292a16e3552fbe46ab8313b620e4453c90745f3b9944"
+    },
+    "attempt_03_networkstable/hosted_native_physical_source_desktop.png": {
+      "bytes": 212791,
+      "sha256": "f6ba4a7eb22eaf0aef8f5ba3ab933e921c3d819878bd9d13158f2cd88fe99278"
+    },
+    "attempt_03_networkstable/hosted_native_physical_source_focused.png": {
+      "bytes": 224946,
+      "sha256": "1c04572a668b020c465e78f55c883384a798da737fb3cb91088b235cec31bd22"
+    },
+    "attempt_04_go_gateway/hosted_native_go_mobile.png": {
+      "bytes": 77807,
+      "sha256": "e682cb2e854640990b1f36d752ba084c71018576377b59c3b9bccd17cd79e2d8"
+    },
+    "attempt_04_go_gateway/hosted_native_go_accepted_mobile.png": {
+      "bytes": 77609,
+      "sha256": "e0b44e535662bb5de9caef305979def293ed462e4e72cde6f495d038d56a6186"
+    },
+    "attempt_04_go_gateway/hosted_native_physical_accepted_desktop.png": {
+      "bytes": 134887,
+      "sha256": "60f1f9e2e41d7651867e533f163fdd22c621e0cc2bfd8302b1916763f019978b"
+    },
+    "attempt_04_go_gateway/hosted_native_go_desktop.png": {
+      "bytes": 136301,
+      "sha256": "195bbecde6c9b2e694635dccf89494bd6f6acd63cf1269d894a213d0df731c03"
+    }
+  },
+  "browser_surface": "isolated installed headless Chrome after in-app module signature failure; browser sandbox and normalTLS retained",
+  "models_fresh_source_retrieval_graph_or_review_mutations_requested_by_QA": false,
+  "credentials_or_filled_login_screenshots_saved": false,
+  "all_owned_QA_browsers_closed": true,
+  "scientific_scope": "UI/source-provenance/read-policy checks only. No new biological accuracy, source independence or prediction gain is inferred."
+}

@@ -1,7 +1,7 @@
 {
   "format": "biograph-steward.native-profiles-hosted-delivery-summary.v1",
   "created_at": "2026-11-15T20:29:56.370270+00:00",
-  "status": "HOSTED_CACHE_RUNTIME_ACCEPTED_BROWSER_QA_RUNNING",
+  "status": "HOSTED_NATIVE_EVIDENCE_SAVED_REVIEW_DELIVERY_PASSED",
   "runtime_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
   "previous_runtime_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
   "image_id": "sha256:1384a64f2e445c42847505b2fa24ee9501f357cee65e1b41fc6140e28a99cd53",
@@ -68,8 +68,27 @@
     }
   },
   "browser_visual_QA": {
-    "status": "first source passport timed out after initial graph/answer checks; Compare12checks passed; cache improvement under qualification",
-    "independent_human_usability_study": false
+    "status": "PASSED_PHYSICAL_SOURCE_COMPARE_AND_GO_ACCEPTED_VIEWS_IN_TWO_COMPLETED_PHASES",
+    "browser": "Installed Chrome with normal browser sandbox and TLS verification",
+    "in_app_browser_used": false,
+    "backend_runtime": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "desktop_width": 1440,
+    "mobile_width": 390,
+    "physical_candidate_answer_proteins": 14,
+    "physical_accepted_answer_proteins": 0,
+    "physical_inspectable_proteins_in_accepted_view": 14,
+    "native_GO_target_menu": 94,
+    "native_GO_candidates_remain_candidates": true,
+    "native_GO_accepted_concepts": 0,
+    "full_source_passport_success_seconds_observed": 12.73,
+    "controlled_latency_benchmark_claimed": false,
+    "reference_denominators_and_source_qualifications_visible": true,
+    "credentials_logged_or_login_images_saved": false,
+    "model_or_fresh_retrieval_or_graph_review_changes_requested": false,
+    "earlier_failed_attempts_preserved": true,
+    "independent_human_usability_study": false,
+    "consolidated_receipt": "browser_acceptance.json",
+    "consolidated_receipt_sha256": "747b493afe07f1880e661e86abe4f68521fdb915244c9f0dbd43f18e3465e7f6"
   },
   "scoped_restore_and_Gold_export": {
     "status": "SUCCESS_SCOPED_BACKUP_ISOLATED_RESTORE_AND_GOLD_REPLAY",
@@ -119,5 +138,19 @@
       "bytes": 1832
     }
   },
-  "updated_at": "2026-11-15T21:14:54.864428+00:00"
+  "updated_at": "2026-11-15T21:50:59.683801+00:00",
+  "gateway_sync": {
+    "receipt_file": "gateway_route_sync.json",
+    "receipt_sha256": "97c2ca2332d160da2106ab47c91845da82ea4bedd345a55313d70f0ad77212a9",
+    "stack_image_update_complete": true,
+    "same_endpoint_app_origin_token_network_and_ALB_preserved": true,
+    "only_two_existing_saved_data_read_routes_added": [
+      "/api/native-go-question",
+      "/api/protein-context"
+    ],
+    "new_image_manifest_digest": "sha256:1e960d9ab42b51669281e5ef9555d45061bde5ef75193088aeca171415ba431a",
+    "authenticated_native_GO_queries_work": true,
+    "unregistered_protein_context_remains_explicitly_unavailable": true,
+    "write_model_unknown_routes_still_denied": true
+  }
 }
