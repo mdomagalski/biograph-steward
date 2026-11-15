@@ -324,4 +324,3 @@ def collate_rows(author, dataset, rows, *, device='cpu'):
     return transform_batch(author, default_collate([dataset[int(row)] for row in rows]),
                            dataset.G, device=device,
                            context_channels=getattr(dataset, '_biograph_context_channels', DEFAULT_CONTEXT_CHANNELS))
-

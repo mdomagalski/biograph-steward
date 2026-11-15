@@ -1,0 +1,166 @@
+{
+  "construction_method": {
+    "commit": "c3fd5b9a5226348d88b9efadddb3214c803b80c4",
+    "evidence_selection": "Experimental,IC,TAS",
+    "fixed_T0_view": "Reextract and propagate T1 on same March25 ontology, then unchanged native classifier with graph=graph2=T0",
+    "human_FASTA_filter": "SwissProt source description contains exact OX=9606 token",
+    "native_view": "T0 annotations on March25 ontology; T1 annotations on Aug5 archive containing July26 ontology; unchanged native classifier",
+    "primary_TOI": "Same native reference terms-of-interest for both views; do not substitute fixed-view TOI after seeing scores",
+    "repository": "https://github.com/FriedbergLab/CAFA_forever",
+    "sequence_intersection": "Unchanged native compare_fasta helper"
+  },
+  "executed_driver_snapshots": {
+    "executed/native_fixed_t0_sensitivity_v1.py": {
+      "bytes": 10392,
+      "sha256": "de5ef618e41d73c673853c142444893182283ce50bbdeabed724c9aee63b4348"
+    },
+    "executed/native_window_acquire_v1.py": {
+      "bytes": 6202,
+      "sha256": "e3728c63a2e2caf079eed098ce6f8eb3d2029f363393ee35772de52233adaf48"
+    },
+    "executed/native_window_build_v1.py": {
+      "bytes": 16281,
+      "sha256": "91a0b534089e2191793bea3649ac13a6069a215e600de05fbad0aae7d9a0a829"
+    }
+  },
+  "expected_identity_metadata": {
+    "cache_compatible_sequences": 1584,
+    "fixed_T0_targets": 1690,
+    "fixed_T0_targets_subset_of_native": true,
+    "fresh_or_changed_sequences": 1716,
+    "native_union_targets": 3300,
+    "recorded_counts_are_validation_not_selection_rules": true
+  },
+  "format": "biograph-steward.optional-reference-source-recipe.v1",
+  "limits": [
+    "T1 source URLs are mutable: require exact recorded content hash, size and GAF header date, or supply locally archived identical bytes. Never substitute a newer release.",
+    "Ontology source GAF headers name GO-plus releases different from the available GO-basic snapshots. The declared two-view sensitivity remains necessary.",
+    "Unchanged native reference admission includes IC and TAS as well as experimental codes; preserve these labels separately in interpretation.",
+    "Driver snapshots contain historical execution roots and runtime checks; they are preserved evidence, not portable defaults. The documented portable CLI recipe does not rewrite them.",
+    "Original cache-partition metadata additionally needs the prior forecast full-sequence hash receipt; this optional recipe reproduces reference construction without requiring old model scores.",
+    "No raw annotations, reference cases, source models, credentials or upstream helper bodies are included."
+  ],
+  "native_helpers": {
+    "commit": "0ab84edbaddf5fef11125dc8adbd19167c3cc038",
+    "files_sha256": {
+      "democafa/__init__.py": "2641ff5c11ac3e3ee8e5bccc94301155e58a28055ad7efd22f9535eb266b7206",
+      "democafa/datacollection/__init__.py": "a282ebc2007b9e984ee089e51881ac06fae159f02ecc8f12284b4d43e7977b9b",
+      "democafa/datacollection/compare_fasta.py": "c44b1618673e8a51f3be6d48814667891e4a923f806f635ef166b91e8a75a8a8",
+      "democafa/datacollection/filter_gaf.py": "b91334f2021c16c74550de811e6181950d812f94ef6a8faaefe1161cb6ecfda3",
+      "democafa/datacollection/propagate_and_ia.py": "185aa9569987733405890f26790fdd4a61a7dee9060efcf255419ab91437f49d",
+      "democafa/datacollection/retrieve_terms.py": "e5909345e09a076e54435fd485f5262c5efbba9e5a0d954116b7aba279445995",
+      "democafa/groundtruth/__init__.py": "4f7c878818dc9ad48b52a5cf08d035eacc96eae821b1e05b1218e4ebb4249dc5",
+      "democafa/groundtruth/classify_ground_truth.py": "b3d4ca0ae8ea0255da456587a4a02de3363faa198932cfd8728fd0c622fbe7af",
+      "democafa/groundtruth/process_ground_truth.py": "39f5afceacbf25eb7cb9b4f1bfd728e642e76ba65eb5435432b0bc27105d24ec",
+      "democafa/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "democafa/utils/constants.py": "945ae48cf4f2be290c86960e4b524a5c8e1f2b452b52643ca2766743cb59b46c",
+      "democafa/utils/ia.py": "c65cd8161ad8dd25c470f790680b0142536861b6cbfa0240a58ea5e1d8ab9c71",
+      "democafa/utils/ontology.py": "730f9c85d991770407cf12956e2ae06869b25e5e292a46e2493fe444b9993eb3",
+      "pyproject.toml": "8fc7a2bfdf0926c22ca613b76369eef510f413d05dce2f134c21f4538daccca1",
+      "requirements.txt": "a0f12553b96886184327417d834081a584df69db66929f4adf0c2585ec981216"
+    },
+    "repository": "https://github.com/FriedbergLab/democafa_package",
+    "vendored": false
+  },
+  "receipt_pins": {
+    "construction_driver_receipt_v1.json": "e0426ab20297826cb353dbff44a5083da64e07248816502d9ecc7bb3402de1cb",
+    "construction_qualification_v1.json": "6ae0ce68b839468684092ffabc73cd0bfab68947f68745f0e9525e6456f6f9a8",
+    "opaque_sources_v1.json": "c75cb095a99aadc5516ae794e84512f1ea8c6b0a3b4b29e5165dd1bb989fc349"
+  },
+  "recorded_runtime": {
+    "Bio": "1.85",
+    "networkx": "3.4.2",
+    "numpy": "1.26.4",
+    "obonet": "1.0.0",
+    "pandas": "2.2.3",
+    "python": "3.10.12",
+    "requests": "2.32.3",
+    "scipy": "1.13.1"
+  },
+  "scope": "Reproduce the existing native and fixed-T0 reference construction, not a new benchmark protocol or a core-app requirement.",
+  "source_hash_origin": "Copied from the existing opaque-source qualification receipts. No fresh annotation data or hashes were opened while preparing this delivery manifest.",
+  "sources": {
+    "gaf_t0": {
+      "bytes": 10822793,
+      "header_required": [
+        "!gaf-version: 2.2",
+        "!date-generated: 2026-04-10 09:40",
+        "!generated-by: UniProt"
+      ],
+      "local_name": "goa_human_t0_20260410.gaf.gz",
+      "md5": "fc690aab2f15d8e3d749ac51c6eab807",
+      "mutable_download_URL": false,
+      "required_for_reference": true,
+      "sha256": "8db7f75ba9bb33f3778e1641bf4fde107f877e6a6af273b77eaf1ce60ad9e11f",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/goa_human.gaf.232.gz"
+    },
+    "gaf_t1": {
+      "bytes": 11061135,
+      "header_required": [
+        "!gaf-version: 2.2",
+        "!date-generated: 2026-11-04 15:05",
+        "!generated-by: UniProt"
+      ],
+      "local_name": "goa_human_t1_20261104.gaf.gz",
+      "md5": "933247dd6d91761e365b6649eac91185",
+      "mutable_download_URL": true,
+      "required_for_reference": true,
+      "sha256": "0286e5fc8af8baf07584a6e92bae1e86631fa546094ef60343bb6acb23f221d8",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/GO/goa/HUMAN/goa_human.gaf.gz"
+    },
+    "obo_t0": {
+      "bytes": 32126692,
+      "header_required": [
+        "format-version: 1.2",
+        "data-version: releases/2026-03-25"
+      ],
+      "local_name": "go-basic_t0_20260325.obo",
+      "md5": "edef6334993050e2f86347e23bf37f18",
+      "mutable_download_URL": false,
+      "required_for_reference": true,
+      "sha256": "a77e356737dab39a4f620dce35fc4d6eb531c4b6153af6cacaaa322b49b804bd",
+      "url": "https://release.geneontology.org/2026-03-25/ontology/go-basic.obo"
+    },
+    "obo_t1": {
+      "bytes": 32227785,
+      "header_required": [
+        "format-version: 1.2",
+        "data-version: releases/2026-07-26"
+      ],
+      "local_name": "go-basic_t1_build20260805_content20260726.obo",
+      "md5": "26de643e50af9a1588f9a31062348cc4",
+      "mutable_download_URL": false,
+      "required_for_reference": true,
+      "sha256": "b08d45b268b8c24ccb2513dbbbc7d4df9f6521c099b413f79eb31e06e0fa3bcc",
+      "url": "https://release.geneontology.org/2026-08-05/ontology/go-basic.obo"
+    },
+    "swissprot_t0_archive": {
+      "bytes": 1722763542,
+      "local_name": "uniprot_sprot-only2026_01.tar.gz",
+      "md5": "6042adf20dad1ab62112c9053bdebd20",
+      "mutable_download_URL": false,
+      "required_for_reference": false,
+      "sha256": "b7fb9d3b1b442050b9672a8089e58c392a4d3f28a329bb17e6b18e356ac42e36",
+      "url": "https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2026_01/knowledgebase/uniprot_sprot-only2026_01.tar.gz"
+    },
+    "swissprot_t0_fasta": {
+      "bytes": 93457057,
+      "local_name": "uniprot_sprot_2026_01.fasta.gz",
+      "md5": "5245b19456d9a063b13c46602269bc5f",
+      "mutable_download_URL": false,
+      "obtained_from": "swissprot_t0_archive: existing tools.deepgo_reference.archive allowlisted FASTA-only extraction",
+      "required_for_reference": true,
+      "sha256": "5ba5cb332fc7794ab1c02075a79c8b3d95b573f9b244a38bb53558172e1f9b7b"
+    },
+    "swissprot_t1_fasta": {
+      "bytes": 93867502,
+      "local_name": "uniprot_sprot_2026_04.fasta.gz",
+      "md5": "1be1a2a9a44d67f799bac78caa005a10",
+      "mutable_download_URL": true,
+      "required_for_reference": true,
+      "sha256": "ee99d69f61547d4730fb5e3f71fa574447fbf51f7e841704a3b0f18b98321ac5",
+      "url": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz"
+    }
+  },
+  "study_id": "contextual_gain_20261115_Apr10_Nov4_human"
+}

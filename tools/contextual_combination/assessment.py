@@ -6,6 +6,7 @@ paired protein bootstrap. No alternative metric or annotation construction is
 implemented here. A complete forecast seal must exist before references open.
 """
 import argparse
+import csv
 import json
 import math
 from pathlib import Path
@@ -43,7 +44,8 @@ def validate_source_manifest(spec, targets, *, arm, namespace):
     need(meta.get('final_reference_labels_read_for_forecasting') is False,
          'label-free forecast provenance must be explicit.')
     tolerance = meta.get('upper_roundoff_tolerance', 0.)
-    need(tolerance == 0. or (arm in ('localplus', 'localplus_model_axis_raw')
+    need(tolerance == 0. or (arm in ('localplus', 'localplus_model_axis_raw', 'localplus_updated_seeds',
+                                    'localplus_T0_curated')
                             and tolerance == LOCALPLUS_UPPER_ROUNDOFF),
          'only literal LocalPlus arms may use their qualified upper-roundoff allowance.')
     need(file_sha256(meta['prediction_file']) == meta['prediction_sha256'], 'forecast values changed.')
@@ -168,6 +170,45 @@ def source_slice_points(arrays, definitions):
     return result
 
 
+def reference_pair_indexes(ground_truth, ontology, exclude=None):
+    """Locate all native TOI positives after the existing known-term exclusion.
+
+    This ledger enumerates compatible reference labels, not biological-negative
+    judgments or thresholded prediction successes. Its per-protein cardinality
+    must equal the already native-gated TP+FN counts for every scored arm.
+    """
+    import numpy as np
+
+    columns = np.asarray(ontology.toi)
+    truth = ground_truth.matrix[:, columns].copy()
+    if exclude is not None:
+        need(exclude.ids == ground_truth.ids and exclude.matrix.shape == ground_truth.matrix.shape,
+             'reference-ledger known and truth axes differ.')
+        truth &= ~exclude.matrix[:, columns]
+    rows, local_columns = np.nonzero(truth)
+    return rows, columns[local_columns]
+
+
+def write_reference_scores(path, ids, ontology, rows, columns, values):
+    """Save every reference-positive pair and its frozen model scores."""
+    import numpy as np
+
+    need(all(len(score) == len(rows) for score in values.values()), 'reference-pair score lengths differ.')
+    terms = tuple(node['id'] for node in ontology.terms_list)
+    order = sorted(range(len(rows)), key=lambda i: (str(ids[rows[i]]), terms[columns[i]]))
+    with Path(path).open('x', newline='') as stream:
+        writer = csv.writer(stream, delimiter='\t')
+        writer.writerow(['EntryID', 'term', *values])
+        for i in order:
+            writer.writerow([str(ids[rows[i]]), terms[columns[i]],
+                             *(format(float(v[i]), '.17g') for v in values.values())])
+    return {'file': str(path), 'sha256': file_sha256(path), 'reference_positive_pairs': len(rows),
+            'threshold_used': None, 'all_reference_positive_pairs_retained': True,
+            'unit': 'native TOI curator-compatible protein/GO positive after known exclusion',
+            'negative_biological_labels_included': False,
+            'case_level_artifact_not_an_aggregate_publication': True}
+
+
 def seal(cfg, output):
     """Pin every source/forecast and the choices before any new term decoding.
 
@@ -255,16 +296,17 @@ def bootstrap_contrast(arrays, candidate):
     return result
 
 
-def positive_interval(cell, comparator):
-    if cell.get('status') != 'evaluated' or 'bootstrap' not in cell:
+def positive_interval(cell, comparator, *, candidate=CANDIDATE, bootstrap_key='bootstrap'):
+    if cell.get('status') != 'evaluated' or bootstrap_key not in cell:
         return False
-    boot = cell['bootstrap']
+    boot = cell[bootstrap_key]
     if boot.get('status') == 'unavailable':
         return False
-    contrast = next((c for c in boot['comparisons'] if c['comparator'] == comparator), None)
+    contrast = next((c for c in boot['comparisons']
+                     if c['comparator'] == comparator and c['candidate'] == candidate), None)
     if contrast is None:
         return False
-    candidate_point = cell['methods'][CANDIDATE]['native_micro_fmax']
+    candidate_point = cell['methods'][candidate]['native_micro_fmax']
     control_point = cell['methods'][comparator]['native_micro_fmax']
     return bool(candidate_point is not None and control_point is not None
                 and candidate_point > control_point and contrast['paired_95_percentile_interval'][0] > 0)
@@ -322,6 +364,9 @@ def evaluate(sealed, output):
                         continue
                     arrays = {}
                     ids = np.asarray([p for p, i in sorted(gt[ns].ids.items(), key=lambda item: item[1])])
+                    pair_rows, pair_columns = reference_pair_indexes(
+                        gt[ns], ont[ns], None if ex is None else ex[ns])
+                    pair_scores = {}
                     for arm in arms:
                         if ns not in cfg['arms'][arm]:
                             continue  # Explicit BPO-only extension, not a missing forecast.
@@ -341,6 +386,10 @@ def evaluate(sealed, output):
                         parity = (verify_curve(counts, curve, namespace=ns) if residual else
                                   {'status': 'unscorable_no_residual_reference_proteins'})
                         arrays[arm] = {'ids': ids, 'tau': tau, 'ordinary': counts}
+                        need(np.array_equal(np.bincount(pair_rows, minlength=len(ids)),
+                                            counts[:, 0, 1] + counts[:, 0, 3]),
+                             'reference-pair ledger differs from native residual positives.')
+                        pair_scores[arm] = pred[ns].matrix[pair_rows, pair_columns].copy()
                         np.savez_compressed(frame / (aspect + '_' + arm + '_counts.npz'),
                                             **arrays[arm], eligible=eligible)
                         point = points.get(ns)
@@ -352,12 +401,24 @@ def evaluate(sealed, output):
                         print(now(), 'POINT', view, setting, ns, arm, point, flush=True)
                         del pred, values
                     cell['status'] = 'evaluated'
+                    cell['positive_reference_score_ledger'] = write_reference_scores(
+                        frame / (aspect + '_positive_reference_scores.tsv'),
+                        ids, ont[ns], pair_rows, pair_columns, pair_scores)
                     if receipt.get('source_slices'):
                         cell['source_slice_points'] = source_slice_points(arrays, receipt['source_slices'])
                     if len(ids) > 1 and all(m['status'] == 'evaluated' for m in cell['methods'].values()):
                         cell['bootstrap'] = bootstrap_contrast(arrays, CANDIDATE)
                         cell['GCN_MLP_bootstrap'] = bootstrap_contrast(
                             {k: arrays[k] for k in ('context_gcn', 'context_mlp')}, 'context_gcn')
+                        cell['updated_seed_bootstrap'] = bootstrap_contrast(
+                            {k: arrays[k] for k in ('localplus_updated_seeds', 'localplus')},
+                            'localplus_updated_seeds')
+                        cell['updated_seed_soft_bootstrap'] = bootstrap_contrast(
+                            {k: arrays[k] for k in ('localplus_updated_seeds_soft', 'localplus_soft')},
+                            'localplus_updated_seeds_soft')
+                        cell['current_T0_curated_bootstrap'] = bootstrap_contrast(
+                            {k: arrays[k] for k in ('localplus_T0_curated', 'localplus')},
+                            'localplus_T0_curated')
                     else:
                         cell['bootstrap'] = {'status': 'unavailable',
                             'reason': 'fewer than two native reference proteins or an arm has no native coverage'}
@@ -371,6 +432,21 @@ def evaluate(sealed, output):
             positive_interval(c, arm) for c in primary.values() for arm in ('localplus', 'localplus_soft'))
         report['primary_success_over_nonexperimental_context_both_views'] = all(
             positive_interval(c, 'native_T0_nonexperimental') for c in primary.values())
+        report['primary_success_beyond_raw_and_soft_seed_refresh_both_views'] = all(
+            positive_interval(c, arm) for c in primary.values()
+            for arm in ('localplus_updated_seeds', 'localplus_updated_seeds_soft'))
+        report['updated_seed_LocalPlus_gain_raw_and_soft_both_views'] = all(
+            positive_interval(c, control, candidate=updated, bootstrap_key=key)
+            for c in primary.values()
+            for updated, control, key in (
+                ('localplus_updated_seeds', 'localplus', 'updated_seed_bootstrap'),
+                ('localplus_updated_seeds_soft', 'localplus_soft', 'updated_seed_soft_bootstrap')))
+        report['current_T0_LocalPlus_gain_both_views'] = all(
+            positive_interval(c, 'localplus', candidate='localplus_T0_curated',
+                              bootstrap_key='current_T0_curated_bootstrap')
+            for c in primary.values())
+        report['primary_success_beyond_current_T0_curated_LocalPlus_both_views'] = all(
+            positive_interval(c, 'localplus_T0_curated') for c in primary.values())
         strong_controls = tuple(a for a in arms if a not in (CANDIDATE, *CONTEXT_ARMS))
         report['primary_success_over_all_noncontext_controls_both_views'] = all(
             positive_interval(c, arm) for c in primary.values()

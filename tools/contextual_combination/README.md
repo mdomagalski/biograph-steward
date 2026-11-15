@@ -64,6 +64,9 @@ annotation membership. This is source context, not independent experimental
 truth or another count of corroborating studies. The author pipeline uses
 `no_kaggle`: evidence codes outside its experimental/CAFA set
 `IDA IMP TAS IPI IEP IGI IC EXP HTP HDA HMP HGI HEP`, followed by closure.
+This CAFA group contains curator inference (`IC`) and traceable author
+statements (`TAS`) alongside eleven experimental codes; it is not uniformly
+direct experimental evidence.
 Its legacy parser ignores GAF qualifiers. This project instead prepares a
 strict, source-frozen native nonexperimental baseline, including NOT exclusion.
 That source-admission difference is an explicit adaptation. A released
@@ -291,3 +294,69 @@ the consumed validation frame. The original one-context models and complete
 parent controls remain separate. Passing its invented-data native training,
 prediction and channel-identity tests establishes execution, not a gain in
 scientific accuracy.
+
+## Matching training knowledge and simple controls
+
+The historical LocalPlus parent uses the original global known-at-2023 seeds.
+The context models additionally learn from allowed 2025 curator labels on the
+4,040 fitting proteins. A gain over the retained parent alone therefore cannot
+isolate the value of learned integration from the value of fresher labels.
+
+The fixed freshness control keeps the identical strict graph, native algorithm
+and original seeds, then unions exactly that fitting repertoire. It preserves
+all 988,439 original pairs and adds 44,680 upward-closed annotation cells on
+fitting proteins only, retaining 322 newly eligible heads. Validation and final
+protein annotations are not added. These cells include related ontology terms;
+they are not counts of new experiments. The raw updated predictor and its
+matched fixed-soft version remain separate from the original parent.
+
+The separate `current_annotation.py` control answers a practical question:
+how well does the same graph and LocalPlus perform with the complete available
+current curated repertoire? It runs the unchanged democafa
+`filter_gaf → retrieve_terms(Experimental,IC,TAS) → propagate_and_ia` pipeline
+on the April 10, 2026 GAF, dated reviewed-human SwissProt identities and March
+25 ontology. Exact graph-ID intersection supplies 903,293 closed annotation
+cells on 17,104 graph proteins. Current seeds replace historical seeds;
+withdrawn historical annotations are not unioned back. All eligible current
+heads and all 3,300 final queries remain. This control makes **no earlier
+validation predictions**: April knowledge would look ahead relative to that
+September 2025–March 2026 task. It cannot influence model selection.
+
+The second simple control broadcasts the existing full-fitting marginal prior
+vectors unchanged. This is a Naive-style label-prevalence control, with no
+parameter selection. It uses the same 4,040-protein universe as the stacker's
+prior construction, before aspect/root filtering. It is not a reproduction of
+the official multi-species Naive baseline.
+
+The fixed primary PK/BPO comparison reports paired updated-versus-original
+LocalPlus intervals as well as the contextual-model contrasts, in both native
+and fixed-T0 reference views. More input positives can increase raw scores
+without improving prediction quality; monotonicity is an integration check.
+
+This separation follows the [CAFA4 assessment preprint, version 2, June 12,
+2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC13174626/), section 2.4: it uses
+common ontology terms and older baseline versions to distinguish larger
+training datasets from methodological progress. Its discussion also cautions
+that curation patterns and text-derived information can affect temporal
+benchmarks. The report has not yet been peer reviewed.
+
+## Temporal reference and reproduction
+
+The later human reference uses the unchanged LAFA/democafa construction helpers
+on April 10 and November 4, 2026 source snapshots. Native epoch-specific and
+fixed-T0-ontology views share the same primary term intersection and complete
+3,300-protein prediction union. The available later ontology has July 26
+content, despite an August 5 build URL; that projection limit remains explicit.
+Model selection uses the already-consumed September 2025–March 2026 reference.
+
+The [optional reference recipe](reference_recipe/README.md) preserves the exact
+executed wrapper snapshots, public-source hashes, external-helper versions and
+native CLI calls. It describes the separate runtime/path requirements and
+accepts matching archived files. Mutable current-release URLs must match the
+recorded source hashes; a later download must not silently redefine this study.
+No upstream helper source, benchmark cases or model weights are bundled.
+
+Final scores open only after a complete forecast/model-choice/source seal. The
+case-level reference-positive score ledgers preserve every eligible pair, with
+no threshold-based selection. They support a separate source-provenance audit
+and stay distinct from aggregate-only presentation artifacts.

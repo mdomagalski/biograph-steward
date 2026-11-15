@@ -11,7 +11,7 @@ from unittest.mock import patch
 from . import assessment as module
 from .assessment import (CANDIDATE, REQUIRED_ARMS, bootstrap_contrast, open_seal,
                          positive_interval, seal, validate_source_manifest, validate_source_slices,
-                         select_context_arm)
+                         select_context_arm, reference_pair_indexes)
 from tools.learned_combination.reference import file_sha256
 from tools.learned_combination.runner import NS_ASPECT, write_json
 
@@ -231,6 +231,19 @@ class SealTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'defined before outcomes'):
             validate_source_slices(spec(), ('P00001', 'P00002'))
 
+    def test_reference_pairs_keep_only_native_toi_positives_after_known_exclusion(self):
+        from types import SimpleNamespace
+        np = self.np
+        gt = SimpleNamespace(ids={'p1': 0, 'p2': 1, 'p3': 2}, matrix=np.asarray([
+            [1, 1, 0, 1], [1, 0, 1, 0], [1, 0, 0, 0]], dtype=bool))
+        known = SimpleNamespace(ids=dict(gt.ids), matrix=np.asarray([
+            [1, 1, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0]], dtype=bool))
+        rows, columns = reference_pair_indexes(gt, SimpleNamespace(toi=np.asarray([1, 2, 3])), known)
+        self.assertEqual(list(zip(rows.tolist(), columns.tolist())), [(0, 3), (1, 2)])
+        known.ids = {'p1': 1, 'p2': 0, 'p3': 2}
+        with self.assertRaisesRegex(ValueError, 'known and truth axes differ'):
+            reference_pair_indexes(gt, SimpleNamespace(toi=np.asarray([1, 2, 3])), known)
+
     def test_actual_native_dual_view_scoring_retains_empty_cells_and_zero_contrasts(self):
         try:
             source = os.environ.get('BIOGRAPH_CAFA_AUTHOR_SOURCE',
@@ -279,6 +292,11 @@ class SealTests(unittest.TestCase):
                 self.assertTrue(cell['methods'][arm]['native_curve_agreement']['author_point_agreement_passed'])
             for contrast in cell['bootstrap']['comparisons']:
                 self.assertEqual(contrast['paired_95_percentile_interval'], [0., 0.])
+            ledger = cell['positive_reference_score_ledger']
+            self.assertEqual(ledger['reference_positive_pairs'], 2)
+            self.assertIsNone(ledger['threshold_used'])
+            self.assertTrue(ledger['all_reference_positive_pairs_retained'])
+            self.assertEqual(len(Path(ledger['file']).read_text().splitlines()), 3)
 
 
 if __name__ == '__main__':
