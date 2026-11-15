@@ -1,4 +1,5 @@
 {
+  "authorized_AWS_interpretation_update_complete": true,
   "browser_visual_check": {
     "API_check_is_not_browser_usability_test": true,
     "known_upstream_issue": "https://github.com/openai/codex/issues/37324",
@@ -97,12 +98,25 @@
   },
   "hosted_review": {
     "authenticated_acceptance_receipt": {
+      "bytes": 2868,
+      "path": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "sha256": "9fc6449b60a5f21133e2e9d73439bbc2494ec7aaf2f88c3573b6f0033a571361"
+    },
+    "current_authenticated_acceptance_repeated_in_this_audit": true,
+    "interpretation_update": {
+      "actual_restart_verified": true,
+      "displayed_candidates": 36,
+      "graph_scores_or_model_changed": false,
+      "saved_queries": 6,
+      "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "term_explanations": 27
+    },
+    "last_verified_authenticated_runtime": "f6c527a84b68ac0155df4b2c19548c8b88736540",
+    "previous_authenticated_acceptance_receipt": {
       "bytes": 3673,
       "path": "docs/evaluations/scientific_hosted_delivery_20261114_summary.json",
       "sha256": "4bca4913524b4a813e2da3c889054dd2a6ae721240a7fe09fc5dcc61142e8c41"
     },
-    "current_authenticated_acceptance_repeated_in_this_audit": false,
-    "last_verified_authenticated_runtime": "a6a05ffca8f29cdf82e5781b87c6f3d114a430bd",
     "private_Neptune_mirror": "verified at recorded checkpoint; ordinary saved answers use workspace files",
     "public_entry_check": {
       "TLS_default_verification": true,
@@ -120,7 +134,8 @@
     "shared_ingress": "saved-data inspection and export only; construction, fresh retrieval, model planning and review edits blocked",
     "workspace_token": "supplied privately; not included in repository or this manifest"
   },
-  "no_AWS_workbench_mutations": true,
+  "no_AWS_graph_or_review_changes": true,
+  "no_AWS_workbench_mutations": false,
   "no_external_email_or_chat_messages_sent": true,
   "optional_bibliographic_inventory": {
     "date_inference_or_model_change": false,
@@ -504,7 +519,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T10:09:15.863945+00:00",
+  "updated_at_UTC": "2026-11-15T14:15:52.048687+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

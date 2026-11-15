@@ -1,7 +1,13 @@
 {
   "AWS_saved_reviewer_site_should_remain_available": true,
-  "Brev_compute_needed": false,
-  "Brev_instance_state": "STOPPED",
+  "Brev_compute_needed": true,
+  "Brev_instance_state": "RUNNING",
+  "active_development_fit": {
+    "arm": "crossfit_graph_frequency_context",
+    "new_reference_metrics_completed": false,
+    "source_commit": "44fa771d4d6c7b016ba76fe423dfaf68958069e2",
+    "source_qualification": "docs/evaluations/training_followup_20261115/README.md"
+  },
   "artifact_scientific_source_revision": "d143c4a4611d7e9ad2cac6256dc2fd469a2eb395",
   "core_app_matches_accepted_9bf202f_archive_source": true,
   "created_at": "2026-11-15T10:10:11.602449+00:00",
@@ -25,8 +31,14 @@
     "missing": 0,
     "operator_only_ignored_run_targets_not_bundled": 2
   },
+  "hosted_interpretation_acceptance": {
+    "bytes": 2868,
+    "path": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+    "sha256": "9fc6449b60a5f21133e2e9d73439bbc2494ec7aaf2f88c3573b6f0033a571361"
+  },
   "main_unchanged_at_remote_asset_verification": "586ec35d33e9429dde91057c4130542988a7ca02",
-  "no_AWS_workbench_or_graph_mutations": true,
+  "no_AWS_graph_or_review_mutations": true,
+  "no_AWS_workbench_or_graph_mutations": false,
   "no_raw_reference_cases_forecasts_weights_or_source_archives_published": true,
   "not_established": [
     "Additional primary BP advantage over current-curated-annotation LocalPlus",
@@ -37,7 +49,7 @@
   ],
   "original_primary_manifest_members_unchanged": 19,
   "original_primary_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
-  "owned_Brev_workers_and_transfers_complete": true,
+  "owned_Brev_workers_and_transfers_complete": false,
   "persistent_Brev_disk_retention_still_needed": true,
   "private_review_branch": "codex/contextual-gain-delivery",
   "remaining_actions": [
@@ -56,5 +68,6 @@
     "receipt": "docs/releases/20261115/github_review_delivery_v3.json",
     "total_files": 10
   },
-  "source_similarity_aggregate_sha256": "cd36365a92216196ad36bd0e5a5b1902c7fb85c1b2cefc568dc3d8bc468693aa"
+  "source_similarity_aggregate_sha256": "cd36365a92216196ad36bd0e5a5b1902c7fb85c1b2cefc568dc3d8bc468693aa",
+  "updated_at_UTC": "2026-11-15T14:15:52.049954+00:00"
 }

@@ -1,0 +1,52 @@
+{
+  "Neptune_file_fallback_used": false,
+  "Neptune_full_parity_and_incident_read_verified": true,
+  "accepted_at_UTC": "2026-11-15T14:12:22Z",
+  "activation_receipt": {
+    "bytes": 1761,
+    "path": "docs/evaluations/interpretation_hosted_delivery_20261115/activation.json",
+    "sha256": "bd4867bae2cce62e210463b10a2ca2a4b473de904da3aab37e6755e6760b6af2"
+  },
+  "actual_restart_and_authenticated_API_acceptance": true,
+  "content_notes_sha256": "0ef69137f43b39914b03e1d06e29b0591e83b74bd25fdd9546f08c3c7597e528",
+  "displayed_candidates": 36,
+  "earlier_failed_attempts_retained": true,
+  "final_activation_needed_rollback": false,
+  "format": "biograph-steward.hosted-interpretation-delivery-summary.v1",
+  "fresh_retrievals_model_calls_or_graph_edits": false,
+  "independent_live_state_receipt_sha256": "ab1d6f15d07b70ed1637e226d3a2cc57ac3e6db658d837aaae483a8db148379d",
+  "limitations": [
+    "Term definitions and ontology changes are source context, not biological correctness labels or pruning instructions.",
+    "The comparison ontology is a dated snapshot; Pharos annotation vintage remains unknown.",
+    "API acceptance does not substitute for the pending teammate walkthrough."
+  ],
+  "live_image_id": "sha256:c15f3056b999720397fc62494991153010b50f77d0a24b551d6746a61526e9d9",
+  "native_GO_inspection_and_downloads_verified": true,
+  "new_biological_accuracy_measurement": false,
+  "new_browser_or_independent_usability_test": false,
+  "new_cloud_resources_or_permissions": false,
+  "new_data_files": 1,
+  "new_index_sha256": "8b62191a2be27cf0a2a4000b4886611b1c8c740d721a07d981d796a8575c7d48",
+  "old_index_sha256": "bae27001268dcfd66634d2491bd945d65afb47582081b303e453e777d8731741",
+  "original_graph_answers_scores_and_source_files_preserved": true,
+  "previous_runtime_commit": "a6a05ffca8f29cdf82e5781b87c6f3d114a430bd",
+  "rollback_exercised_and_old_authenticated_examples_verified": true,
+  "rollout_fixes": [
+    "Acceptance uses existing catalogue checksum plus detail id/summary API contract.",
+    "Own inactive staging artifacts retained under unique names before retry; all reserved names checked."
+  ],
+  "runtime_archive_sha256": "163bda3de2c98f7d0530e0e992ab8207a26189c4b6c3398bfb3a5d8ce4725712",
+  "runtime_commit": "f6c527a84b68ac0155df4b2c19548c8b88736540",
+  "saved_answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+  "saved_queries": 6,
+  "scope": "Dated GO term-content explanations for existing saved function examples",
+  "source_graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+  "source_versions": {
+    "comparison_snapshot": "2026-07-26",
+    "graph_Pharos_GO_vintage": "UNKNOWN",
+    "historical_predictor": "2023-01-01",
+    "latest_release_claimed": false
+  },
+  "term_explanations": 27,
+  "workspace_auth_token_origins_and_environment_preserved": true
+}
