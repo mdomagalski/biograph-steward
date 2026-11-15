@@ -62,6 +62,22 @@ class SourceSchemaTests(unittest.TestCase):
         for cfg in cases:
             with self.subTest(cfg=cfg), self.assertRaises(ValueError): module.validate_schema(cfg)
 
+    def test_only_exact_declared_sklearn_source_is_allowed_in_existing_runtime(self):
+        cfg = self.config()
+        splitter = '/data/deepgo/runtime/site-packages/sklearn/model_selection/_split.py'
+        cfg['splitter_runtime']['source'] = {'file': splitter, 'sha256': 'b' * 64}
+        cfg['input_file_pins'][splitter] = 'b' * 64
+        module.validate_schema(cfg)
+        for other in ('/data/deepgo/other/_split.py', '/data/deepgo/runtime/model.py',
+                      '/data/deepgo/runtime/terms.pkl', '/data/deepgo/runtime/scores.npy'):
+            changed = json.loads(json.dumps(cfg)); changed['input_file_pins'][other] = 'c' * 64
+            with self.subTest(path=other), self.assertRaisesRegex(ValueError, 'DeepGO'):
+                module.validate_schema(changed)
+        # Even declaring a differently named file cannot bypass the policy.
+        cfg['splitter_runtime']['source'] = {'file': '/data/deepgo/runtime/model.py', 'sha256': 'c' * 64}
+        cfg['input_file_pins']['/data/deepgo/runtime/model.py'] = 'c' * 64
+        with self.assertRaisesRegex(ValueError, 'DeepGO'): module.validate_schema(cfg)
+
     def test_failed_stage_preserves_configuration_and_failure_receipt(self):
         with tempfile.TemporaryDirectory() as temp:
             output = Path(temp) / 'attempt'; cfg = self.config()

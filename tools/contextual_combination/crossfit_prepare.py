@@ -91,7 +91,14 @@ def validate_schema(cfg):
     for path, digest in cfg['input_file_pins'].items():
         prep._check_path(path)
         need(re.fullmatch('[a-f0-9]{64}', digest) is not None, 'invalid input SHA256.')
-        need(not re.search(r'deepgo|groundtruth|sealed_reference|(?:^|/)truth(?:[./_]|$)', path, re.I),
+        need(not re.search(r'groundtruth|sealed_reference|(?:^|/)truth(?:[./_]|$)', path, re.I),
+             'reference label files cannot enter this producer.')
+        # The existing official sklearn installation happens to live inside
+        # the historical DeepGO runtime directory. Only its explicitly bound
+        # splitter source is allowed; sequence_folds also checks the running
+        # class's actual source path/version/hash before any fold generation.
+        declared_splitter = path == runtime['source']['file'] and Path(path).name == '_split.py'
+        need('deepgo' not in path.lower() or declared_splitter,
              'DeepGO/reference label files cannot enter this producer.')
     need(all(cfg['input_file_pins'].get(s['file']) == s['sha256'] for s in sources),
          'every direct source spec must be pinned.')
