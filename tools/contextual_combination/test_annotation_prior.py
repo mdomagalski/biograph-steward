@@ -174,8 +174,12 @@ class SourceAdmissionTests(_PriorFixture, unittest.TestCase):
             self.assertEqual(set(result['forecasts']), set(NS_ASPECT))
             self.assertEqual(set(result['matched_prior_forecasts']), set(NS_ASPECT))
             self.assertTrue(result['development_only'])
+            self.assertTrue(result['development_after_reference_opening'])
             self.assertTrue(result['reference_previously_consumed'])
-            self.assertFalse(result['models_fitted_or_scores_computed'])
+            self.assertFalse(result['fresh_final_reference_claimed'])
+            self.assertFalse(result['models_fitted'])
+            self.assertFalse(result['scientific_metrics_computed'])
+            self.assertTrue(result['forecast_scores_transformed'])
             self.assertFalse(result['reference_labels_read'])
             for spec in result['forecasts'].values():
                 meta = json.loads(Path(spec['file']).read_text())
@@ -185,6 +189,9 @@ class SourceAdmissionTests(_PriorFixture, unittest.TestCase):
                 self.assertFalse(meta['fresh_final_reference_claimed'])
                 self.assertFalse(meta['automatic_graph_or_app_promotion'])
                 self.assertFalse(meta['final_reference_labels_read_for_forecasting'])
+                self.assertFalse(meta['models_fitted'])
+                self.assertFalse(meta['scientific_metrics_computed'])
+                self.assertTrue(meta['forecast_scores_transformed'])
                 control_spec = result['matched_prior_forecasts'][meta['namespace']]
                 control = json.loads(Path(control_spec['file']).read_text())
                 self.assertEqual(control['terms'], meta['terms'])

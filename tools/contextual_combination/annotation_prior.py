@@ -169,6 +169,8 @@ def run(config, output):
             'original_source_pins': pins, 'operation': audit,
             'development_after_reference_opening': True, 'reference_previously_consumed': True,
             'fresh_final_reference_claimed': False, 'automatic_graph_or_app_promotion': False,
+            'models_fitted': False, 'scientific_metrics_computed': False,
+            'forecast_scores_transformed': True,
             'final_reference_labels_read_for_forecasting': False}
         path = folder / 'predictions.json'; write_json(path, meta)
         results[namespace] = {'file': str(path), 'sha256': file_sha256(path),
@@ -193,8 +195,10 @@ def run(config, output):
                         'existing evaluator canonicalization/fill only, owned by caller'],
         'forecasts': results, 'matched_prior_forecasts': matched,
         'matched_control': 'same union/Float32(.99) operation with exact-zero model; compare to original score1 prior',
-        'development_only': True, 'reference_previously_consumed': True,
-        'models_fitted_or_scores_computed': False, 'reference_labels_read': False}
+        'development_only': True, 'development_after_reference_opening': True,
+        'reference_previously_consumed': True, 'fresh_final_reference_claimed': False,
+        'models_fitted': False, 'scientific_metrics_computed': False,
+        'forecast_scores_transformed': True, 'reference_labels_read': False}
     write_json(output / 'delivery.json', receipt)
     return receipt
 
