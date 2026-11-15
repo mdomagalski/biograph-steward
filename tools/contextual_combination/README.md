@@ -454,3 +454,39 @@ fitting matches for 540/3,300 final source proteins at ≥30% identity and ≥80
 coverage on both sides. This is the complete forecast frame, not the primary
 residual-positive subset. Exact duplication guards remain verified; distant-
 family and base-predictor training independence are not established.
+
+
+## Current-T0 positive-union development refit
+
+The separately frozen [source-update plan](../../docs/evaluations/CURRENT_REFIT_DEVELOPMENT_PLAN_20261115.md)
+addresses an actual information-age difference: original model fitting used
+historical context, while the stronger LocalPlus control already used current
+T0 annotations. `current_refit_prepare.py` retains every original full fitting
+positive and adds only admitted direct current-T0 positives. It recomputes
+priors on the complete 4,040-protein universe and uses the same priors in both
+fitting and final parent features. Raw parent forecasts, the fixed model axis
+and the existing final Boolean context retain their original bytes.
+
+`current_refit.py` runs one fixed BP model with the original architecture and
+training settings. Its native validation callback receives explicitly labeled,
+frozen ordinal priorities for original SWA epochs `[10, 12, 11]`, rather than a
+current validation metric. Native training and parameter averaging are
+unchanged. Transferring these checkpoint positions is a disclosed development
+adaptation; it does not reproduce the author's out-of-fold parent training or
+establish a validated new training recipe.
+
+`current_refit_controls.py` preserves historical information in two stronger
+controls: native LocalPlus on retained/current curated seeds plus the exact
+augmented fitting targets, and a direct binary prior combining nonexperimental
+T0 and retained curated memberships. They preserve complete native source
+vocabularies. Matching annotation information does not make all model inputs
+identical: the GCN also uses DeepGO-SE and 40 source-context channels.
+
+`current_refit_assessment.py` reuses the existing native evaluator and paired
+bootstrap for all six BP setting/view cells. The report adapter projects only
+aggregate scalars from the completed private JSON; embedded draw vectors and
+case-level arrays remain unpublished. This is **development on the consumed
+reference**, with no new primary gate, independent confirmation, graph change
+or automatic adoption. See the [source-context qualification](../../docs/evaluations/CURRENT_REFIT_SOURCE_QUALIFICATIONS_20261115.md)
+for positive/NOT flags and the RCA check. The exact original study, failed
+follow-ups, checkpoints and source receipts remain preserved separately.

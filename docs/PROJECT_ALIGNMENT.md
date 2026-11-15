@@ -19,6 +19,12 @@ This is optional research, not a new app default or proof of
 Pharos edge accuracy. The central same-learner enriched-graph gain remains
 unestablished.
 
+The subsequent [current-annotation refit](evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
+closes the fixed source-refresh follow-up without establishing a better model.
+Its stronger information-union controls and source-context flags are retained;
+no new framework component, default promotion or independent-confirmation claim
+follows from this consumed-reference comparison.
+
 The [whole-workspace evidence audit](evaluations/WHOLE_GRAPH_SAMPLE_AUDIT_20261112.md)
 adds a frozen probability sample, source-backed interpretation findings and
 a separate native WikiPathways eligibility export. It exposes repeated source

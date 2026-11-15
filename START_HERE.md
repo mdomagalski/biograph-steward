@@ -10,6 +10,7 @@ and use **Code → Download ZIP**, or switch an existing clone:
 ```sh
 git fetch origin
 git switch codex/contextual-gain-delivery
+git pull --ff-only origin codex/contextual-gain-delivery
 ```
 
 The default `main` branch remains on an older checkpoint. From the review
@@ -25,7 +26,7 @@ Open [the workbench](http://127.0.0.1:8765/). Keep the terminal running; Ctrl+C 
 
 For the current product story and measured limits, read the
 [submission overview](docs/SUBMISSION_OVERVIEW.md) or open the
-[editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx).
+[editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx).
 The [delivery status](docs/DELIVERY_STATUS_20261115.json) identifies dated
 checkpoints and the release actions still pending.
 
@@ -99,7 +100,8 @@ The [November 13 delivery polish](docs/DELIVERY_POLISH_20261113.md) reduces HTTP
 response bytes for large saved answers while preserving their original hashes,
 source files and exports. Complete proof payloads can still be large.
 
-With that same supplied local packet, the
+With the complete private 128-gene packet and a separate local app server
+listening on port 8794, the
 [B3GALNT2 shared-pathway example](http://127.0.0.1:8794/?run=transfer_pathway_workspace_20261113&question=question_b3galnt2_reactome_20261113)
 uses Reactome annotations already present in Pharos even though this protein
 has no Wiki rows. Its candidate paths and current-record guide illustrate
@@ -133,6 +135,12 @@ not clearly beaten for molecular function and is better for cellular component.
 The [current-information table](docs/evaluations/CONTEXTUAL_INFORMATION_CONTROLS_20261115.md)
 shows all three aspects. This separate historical function task does not establish
 whole-graph accuracy or a consistent same-learner enriched-graph gain.
+
+The completed [current-data refit and source controls](docs/evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
+did not establish an improvement over that original selected model. Its six
+BP cells, source-retention trade-offs and positive/NOT flags are reported
+separately as development on an already consumed reference. It changes no
+model default or hosted workspace.
 
 The [expert-labeled grounding assessment](docs/evaluations/EXPERT_GROUNDING_20261113.md)
 measures source-identity error triage using published curator labels. It remains

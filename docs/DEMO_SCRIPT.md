@@ -2,7 +2,7 @@
 
 For the independent weekend teammate review, use the
 [testing guide](TEAM_REVIEW_GUIDE_20261113.md) and its
-[PDF](../output/pdf/BioGraph_Steward_Team_Review_Guide_20261113.pdf).
+[PDF](../output/pdf/BioGraph_Steward_Team_Review_Guide_20261115.pdf).
 This page is the shorter presentation script.
 
 Use the [portable CRC package](DELIVERY.md) only where source access and use are
@@ -31,6 +31,9 @@ is a separate repository/presentation artifact, summarized in the
 [updated results note](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md).
 Open it in advance if presenting the latest scientific result; it is not yet
 the hosted catalogue's assessment.
+The separate [current-data refit](evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
+is the completed development follow-up in presentation appendix 9. It does
+not improve the original selected model and has not changed the hosted app.
 Earlier delivery receipts and combined archives describe their own checkpoints.
 Allow about 1–2 minutes for a cold load of the existing 99-target graph/answer.
 The separate saved function queries respond in under a second on the tested

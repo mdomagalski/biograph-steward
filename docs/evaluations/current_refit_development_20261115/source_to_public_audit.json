@@ -1,0 +1,13 @@
+{
+  "all_saved_method_and_contrast_scalars_exact": true,
+  "cells": 6,
+  "copied_contrast_rows_checked": 192,
+  "format": "biograph-steward.current-refit-independent-scalar-audit.v1",
+  "independent_biological_assessment": false,
+  "new_intervals_endpoints_model_choices_or_success_gates_computed": false,
+  "point_rows_checked": 132,
+  "private_completed_report_sha256": "b7792b0737835d374f2335735aa254e90a609d9a73bf0bfd9f99f9586065eac0",
+  "private_paths_reference_identifiers_arrays_and_draw_vectors_absent_from_public_summary": true,
+  "public_summary_sha256": "d2c00101234cfcb1146188b52e3dbad9be60b244301d7c5a892e2af1b69b3f2f",
+  "published_file_manifest_verified": true
+}

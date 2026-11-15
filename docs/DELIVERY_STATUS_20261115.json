@@ -94,7 +94,7 @@
       "body_sha256": "d2848f9cc5f1202ca3145c2904e197922ab91965c7edce9e67696593488d7493",
       "bytes_read": 1790,
       "cookies_or_tokens_supplied": false,
-      "created_at": "2026-11-15T02:27:54.610183+00:00",
+      "created_at": "2026-11-15T10:00:53.432801+00:00",
       "final_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
       "has_workspace_login": true,
       "status": 200,
@@ -145,12 +145,16 @@
     "MF_CC_strongest_control_limit_visible": true,
     "Spaces_fallback": "create/connect worked; required authoring tool unavailable. Own empty private draft was trashed; final deliverable is a local editable PPTX.",
     "all_eight_slides_visually_reviewed": true,
-    "bytes": 298030,
+    "all_nine_slides_visually_reviewed": true,
+    "bytes": 304517,
+    "development_source_summary_sha256": "d2c00101234cfcb1146188b52e3dbad9be60b244301d7c5a892e2af1b69b3f2f",
     "direct_nonexperimental_GOA_control_visible": true,
     "earlier_PDFs_and_slides": "dated checkpoints retained; do not silently replace their runtime or result scope",
+    "earlier_v4_receipt": "docs/evaluations/contextual_presentation_20261115_summary.json",
     "editable_chart_literal_precision": "six decimal places in the Office workbook; complete full-precision statistical results remain in the cited JSON",
-    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
-    "latest_receipt": "docs/evaluations/contextual_presentation_20261115_summary.json",
+    "existing_eight_source_slides_pixels_text_notes_unchanged": true,
+    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx",
+    "latest_receipt": "docs/evaluations/contextual_presentation_v5_20261115_summary.json",
     "layout_findings": 0,
     "layout_warnings": 0,
     "main_slides": 6,
@@ -161,16 +165,17 @@
     ],
     "native_editable_table_slides": [
       7,
-      8
+      8,
+      9
     ],
     "original_chart_literal_values_preserved_not_original_workbook_bytes": true,
     "screenshots": "previous verified November 13/14 captures, dated in speaker notes; no new hosted UI acceptance claimed",
-    "sha256": "e3a96cacedc65c4907feba280156f3bafa47f64a92ea899461aff05403d4a456",
+    "sha256": "0df543fd5040cd73cc7d94d14ecec0c4ead48b8f9400cfdb3996b3c9338df9eb",
     "source_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
-    "status": "v4_completed_result_and_strongest_controls_prepared_and_locally_validated",
-    "technical_appendix_slides": 2,
-    "validation_receipt_sha256": "49c8c2e19115f0dd50583d91052f2ed4a1f88e84f74b80303bd2f60c89f1bf88",
-    "visual_receipt_sha256": "e44b353c07ca3b4005f39b564ac0e0ae45ee3c9cbfa835c6da554955d2be3cec"
+    "status": "Nine editable slides; finalized reimport renders and native numeric/package checks passed. New consumed-reference appendix remains separate from original fixed result.",
+    "technical_appendix_slides": 3,
+    "validation_receipt_sha256": "928078a1581895fda3c6f9947a998f84c6392a4f82274ac9c05d0de4724e4168",
+    "visual_receipt_sha256": "928078a1581895fda3c6f9947a998f84c6392a4f82274ac9c05d0de4724e4168"
   },
   "purpose": "Current judge-facing artifact and capability boundary; prior release manifests remain dated records.",
   "reader_date": {
@@ -183,8 +188,10 @@
     "Brev_GPU_or_model_needed_for_review": false,
     "Brev_can_stop_compute_keep_persistent_disk": true,
     "Brev_compute_needed_for_current_work": false,
-    "Brev_owned_evaluation_and_source_audit_workers": "Complete; all owned CPU workers, source searches and backup transfers exited. No Brev GPU/model inference was required in the follow-up.",
-    "Brev_persistent_disk": "Retains original 46 raw forecast arrays (11.03GB) plus six development arrays. Separate source/model/numerical replay archives are held locally; do not delete the disk.",
+    "Brev_instance_state": "STOPPED; confirmed by Brev CLI after all owned jobs and verified backup transfers completed.",
+    "Brev_owned_evaluation_and_source_audit_workers": "All original fixed fits, the one current-data GPU refit, CPU assessments, source audits and verified backup transfers are complete. The original Nemotron service was exactly restored healthy before stopping compute; no new LLM requests were made for the refit.",
+    "Brev_persistent_disk": "Retains original46 dense forecast arrays, six earlier development arrays, three current-refit/control arrays and feature caches. Keep this disk; separate source/model/numerical replay archives are hash-verified locally.",
+    "Brev_stopped_at_verification_UTC": "2026-11-15T10:01:59.360547+00:00",
     "private_followup_replay_preserved_locally": {
       "all36_new_curves_and36_contribution_files": {
         "bytes": 4452653,
@@ -192,6 +199,21 @@
       },
       "all_member_sizes_and_hashes_verified": true,
       "case_level_archives_published": false,
+      "current_refit_all18_curves_counts_report_source": {
+        "bytes": 21167911,
+        "members_verified": 71,
+        "sha256": "d573306989b06d48ce03887ec93cf4d44277b01ff9d4c8e43e6298b240be14bd"
+      },
+      "current_refit_model_source": {
+        "bytes": 4047813,
+        "members_verified": 30,
+        "sha256": "88664f548be3ef608be5bb4727eb379a50647071f7b4c3943a7b9a4c11bcd7ad"
+      },
+      "current_refit_source_preparation_metadata": {
+        "bytes": 581195,
+        "members_verified": 28,
+        "sha256": "bb6095eb0a24d2d7e1366eb6d6a4f9689984140493aaa26f686934e47ae62f82"
+      },
       "development_report_code_and_receipts": {
         "bytes": 10862277,
         "sha256": "5bc01fe25a736dbcba46a890e59e1b4c228f0fc87e14f0a957c4080abdb3c142"
@@ -219,6 +241,55 @@
       "scope": "One fixed published MAX operation with only original sealed T0 nonexperimental prior; development on consumed reference, not independent confirmation",
       "sha256": "a72b4c75282edbb6acf9b7a832a3ff4fdef8655ff5d9bf5bebc89c01cbb39ec7",
       "status": "complete; no general replacement or promotion"
+    },
+    "current_refit_followup": {
+      "BP_cells": 6,
+      "PK_points": {
+        "fixed_T0": {
+          "T0_nonexperimental_plus_retained_curated_prior": 0.13396702807069655,
+          "current_T0_positive_union_context_refit": 0.19683435198244786,
+          "localplus": 0.17154959406989057,
+          "localplus_T0_curated": 0.18277132332105414,
+          "native_T0_nonexperimental": 0.14616909419977592,
+          "retained_and_current_curated_LocalPlus": 0.1769168684422922,
+          "validation_selected_context": 0.210093339661446
+        },
+        "native": {
+          "T0_nonexperimental_plus_retained_curated_prior": 0.023529411764705882,
+          "current_T0_positive_union_context_refit": 0.07306176084099868,
+          "localplus": 0.05473151661492468,
+          "localplus_T0_curated": 0.05883765609990394,
+          "native_T0_nonexperimental": 0.02547564351770042,
+          "retained_and_current_curated_LocalPlus": 0.055951976441273074,
+          "validation_selected_context": 0.07343110845056372
+        }
+      },
+      "RCA_rows_in_BP_context": 0,
+      "all_target_forecasts": 3300,
+      "copied_contrast_rows": 192,
+      "current_validation_metric_computed": false,
+      "development_on_consumed_reference": true,
+      "exact_original_model_service_restored_healthy": true,
+      "flags_also_current_direct_curated_positive": 16,
+      "form_or_extension_fields_resolve_flags": false,
+      "independent_confirmation": false,
+      "independent_scalar_audit": "docs/evaluations/current_refit_development_20261115/source_to_public_audit.json",
+      "method_rows": 132,
+      "model_fits": 1,
+      "new_forecast_arms": 3,
+      "new_native_curves_with_count_agreement": 18,
+      "new_success_gate_or_model_selection": false,
+      "old_public_summaries_unchanged": true,
+      "original_model_graph_and_application_defaults_changed": false,
+      "path": "docs/evaluations/current_refit_development_20261115/summary.json",
+      "plan": "docs/evaluations/CURRENT_REFIT_DEVELOPMENT_PLAN_20261115.md",
+      "positive_NOT_flags": 22,
+      "private_numerical_replay_receipt": "docs/evaluations/current_refit_development_20261115/numerical_replay_receipt.json",
+      "raw_report_sha256": "b7792b0737835d374f2335735aa254e90a609d9a73bf0bfd9f99f9586065eac0",
+      "result_note": "docs/evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md",
+      "sha256": "d2c00101234cfcb1146188b52e3dbad9be60b244301d7c5a892e2af1b69b3f2f",
+      "source_only_context_qualification": "docs/evaluations/CURRENT_REFIT_SOURCE_QUALIFICATIONS_20261115.md",
+      "status": "complete; no established improvement over original selected model; not adopted"
     },
     "earlier_global_mixture_comparison": {
       "bytes": 21814,
@@ -260,7 +331,7 @@
         "sha256": "db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5"
       }
     },
-    "new_research_comparisons": "completed fixed contextual comparison; separate repository/presentation artifact, not a hosted default",
+    "new_research_comparisons": "Original fixed contextual study and two separately frozen consumed-reference follow-ups complete; no new hosted model or graph default.",
     "same_learner_graph_enrichment_gain_established": false,
     "secondary_CC_mixing_gain": {
       "DeepGO_SE_micro_Fmax": 0.29141414141414135,
@@ -417,7 +488,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T08:16:25.660287+00:00",
+  "updated_at_UTC": "2026-11-15T10:01:59.361102+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

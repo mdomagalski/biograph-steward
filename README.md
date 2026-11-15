@@ -1,7 +1,7 @@
 # BioGraph Steward
 
 For a short product review, start with the [submission overview](docs/SUBMISSION_OVERVIEW.md)
-and [editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx).
+and [editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx).
 The [delivery status](docs/DELIVERY_STATUS_20261115.json) separates tested local
 software, the last verified hosted checkpoint and remaining release actions.
 
@@ -27,6 +27,10 @@ over LocalPlus, while the stronger direct nonexperimental-GOA control is not
 beaten (and is better for cellular component).
 A [fixed annotation-preservation follow-up](docs/evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
 shows a trade-off rather than a general remedy; no new default is adopted.
+A separate [current-annotation refit](docs/evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
+also fails to establish improvement over the original selected model. Its
+stronger source controls and unresolved positive/NOT flags are preserved as
+consumed-reference development; the original model is retained.
 Whole-graph biological correctness and a consistent enriched-graph prediction
 advantage remain open. Optional research methods are isolated from the core
 application; their unfavorable results and consumed reference boundaries are

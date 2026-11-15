@@ -97,6 +97,13 @@ improves the selected cellular-component model but still trails direct GOA,
 and worsens biological process. It is retained without promotion or an
 independent-confirmation claim.
 
+A subsequent [fixed current-data refit](evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
+did not improve on the original selected model. All six BP cells and stronger
+source-union controls are retained as development on consumed labels. Adding
+historical memberships back also lowered the direct prior's score in both
+views. This informs source maintenance without declaring those historical
+records biologically false or changing the application.
+
 The [sequence-similarity audit](evaluations/CONTEXTUAL_SEQUENCE_SIMILARITY_20261115.md)
 also limits any claim of transfer to distant protein families; exact duplicate
 removal does not establish that separation.
@@ -141,8 +148,8 @@ and checksums. Draft-release access requires repository write permission;
 tracked reports/slides remain available through the branch checkout. Neither
 main nor public visibility changed.
 
-The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx)
-has six main slides and two technical appendix slides. The
+The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx)
+has six main slides and three technical appendix slides, including the separately labeled current-data development result. The
 [organizer/proposal crosswalk](PROJECT_ALIGNMENT.md) distinguishes delivered
 functionality from broader proposal ambitions. The older release archives,
 PDFs and hosted receipts remain dated checkpoints rather than interchangeable

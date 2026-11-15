@@ -1,6 +1,24 @@
 # Current build plan
 
-## Latest fixed comparisons — November 14
+## Closing work — November 15
+
+The [completed contextual comparison](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+supports a bounded primary function-recovery gain over retained LocalPlus.
+The complete current-annotation comparator remains harder to beat. Both the
+[fixed prior-preservation follow-up](evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
+and the [current-data refit](evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
+are closed development comparisons, with unfavorable outcomes retained and
+no new default adopted. Source chronology, sequence similarity and explicit
+positive/NOT context have been qualified separately.
+
+Complete the [delivery checklist](evaluations/DELIVERY_COMPLETENESS_20261115.md):
+teammate feedback, permitted graph/baseline/decision access, final public
+release and submission. The current review branch, aggregate packet and
+editable presentation are distinct from the accepted AWS runtime. Keep the
+hosted saved-data reviewer site available. No further model sweep is a
+delivery dependency.
+
+## Earlier fixed comparisons — November 14
 
 The [current scientific results](evaluations/SCIENTIFIC_RESULTS_20261114.md)
 and accepted AWS runtime `a6a05ff` supersede the older hosted checkpoints below.

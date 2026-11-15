@@ -26,6 +26,14 @@ is development on consumed labels: it improves the selected CC model while
 remaining below the prior, and harms BP. It is not adopted or presented as
 independent confirmation.
 
+The later [fixed current-annotation refit](evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
+is also complete: it does not establish an improvement over the original
+selected model or an advantage over current-annotation LocalPlus. All six BP
+cells, 132 method rows and 192 contrasts are retained. The stronger annotation
+controls show that adding historical memberships back can harm recovery;
+unresolved positive/NOT source context remains explicit. This is development
+on an already consumed reference, with no graph, model default or hosted update.
+
 ## Project summary
 
 BioGraph Steward turns a bounded Pharos research question into an inspectable
