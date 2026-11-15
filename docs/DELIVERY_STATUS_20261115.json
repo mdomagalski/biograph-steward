@@ -10,14 +10,14 @@
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
   "format": "biograph-steward.delivery-status.v1",
   "github_review_delivery": {
-    "all_seven_asset_digests_reverified": true,
-    "artifact_source_revision": "70a73556e583f0033efc4537388044fff6538257",
+    "all_remote_asset_digests_reverified": true,
+    "artifact_source_revision": "d143c4a4611d7e9ad2cac6256dc2fd469a2eb395",
     "branch": "codex/contextual-gain-delivery",
     "current_review_assets": [
       "biograph_steward_core_software.zip",
-      "biograph_steward_contextual_assessment_20261115_v2.zip",
-      "BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
-      "SHA256SUMS_CURRENT_20261115.txt"
+      "biograph_steward_contextual_assessment_20261115_v3.zip",
+      "BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx",
+      "SHA256SUMS_CURRENT_20261115_v3.txt"
     ],
     "draft_pull_request": {
       "draft": true,
@@ -30,14 +30,15 @@
       "html_url": "https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab",
       "id": 445853290,
       "prerelease": true,
-      "tag_name": "review-20261115-contextual",
-      "target_commitish": "70a73556e583f0033efc4537388044fff6538257"
+      "tag_name": "untagged-28e4edec341d2cb39dab",
+      "target_commitish": "d143c4a4611d7e9ad2cac6256dc2fd469a2eb395"
     },
     "final_public_submission": false,
-    "latest_receipt": "docs/releases/20261115/github_review_delivery_v2.json",
+    "latest_receipt": "docs/releases/20261115/github_review_delivery_v3.json",
     "main_modified": false,
     "private_repository": true,
     "receipt": "docs/releases/20261115/github_review_delivery.json",
+    "remote_asset_count": 10,
     "repository_visibility_modified": false,
     "source_revision": "57506d1091bbe0bd7d478e25f6d40df573f8680d",
     "source_revision_scope": "Historical creation checkpoint of the private draft; artifact_source_revision and latest_receipt identify the current reviewed assets. The review branch can advance through metadata-only receipts.",
@@ -53,6 +54,11 @@
         "sha256": "e3a96cacedc65c4907feba280156f3bafa47f64a92ea899461aff05403d4a456"
       },
       {
+        "bytes": 304517,
+        "name": "BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx",
+        "sha256": "0df543fd5040cd73cc7d94d14ecec0c4ead48b8f9400cfdb3996b3c9338df9eb"
+      },
+      {
         "bytes": 573822,
         "name": "biograph_steward_contextual_assessment_20261115.zip",
         "sha256": "db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5"
@@ -61,6 +67,11 @@
         "bytes": 655716,
         "name": "biograph_steward_contextual_assessment_20261115_v2.zip",
         "sha256": "107c6dbab8fe84d1affe8dce0162fb930db03db0df01d6f6e2526cae3288b975"
+      },
+      {
+        "bytes": 711421,
+        "name": "biograph_steward_contextual_assessment_20261115_v3.zip",
+        "sha256": "1e8b9284f6d7ec32a1fd7cb5cf9cdf04e1de3cb032489f856f195d1fb583db07"
       },
       {
         "bytes": 661594,
@@ -76,6 +87,11 @@
         "bytes": 345,
         "name": "SHA256SUMS_CURRENT_20261115.txt",
         "sha256": "dea672f7a0ac2a513c2942c67431f62bf8eb836ca59b64aa9cc80669a77853e1"
+      },
+      {
+        "bytes": 345,
+        "name": "SHA256SUMS_CURRENT_20261115_v3.txt",
+        "sha256": "5adaa2c7ec6b31d0ddad68c7da81dfc5acf6c6bc0b58a9df3ec3e1c8f2cea229"
       }
     ]
   },
@@ -309,7 +325,7 @@
       "current_annotation_LocalPlus_gain_over_retained_both_views": true,
       "current_information_table": "docs/evaluations/CONTEXTUAL_INFORMATION_CONTROLS_20261115.md",
       "hosted_installation_completed": false,
-      "latest_review_packet": "docs/evaluations/contextual_assessment_review_v2_20261115_summary.json",
+      "latest_review_packet": "docs/evaluations/contextual_assessment_review_v3_20261115_summary.json",
       "numeric_audit": "docs/evaluations/contextual_combination_20261115/numeric_audit.json",
       "path": "docs/evaluations/contextual_combination_20261115/summary.json",
       "primary_endpoint": "PK biological_process ordinary micro-Fmax",
@@ -488,7 +504,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T10:01:59.361102+00:00",
+  "updated_at_UTC": "2026-11-15T10:09:15.863945+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

@@ -6,47 +6,48 @@ Use the current files in the existing private
 | Current file | Purpose |
 |---|---|
 | `biograph_steward_core_software.zip` | Tested standalone MIT core; synthetic demonstration, no real datasets. |
-| `biograph_steward_contextual_assessment_20261115_v2.zip` | Open `START_HERE.html` after extraction: the unchanged completed study, strongest information controls, separate development follow-up and source/sequence audits. |
-| `BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx` | Eight editable slides, including direct nonexperimental-GOA controls and limits. |
-| `SHA256SUMS_CURRENT_20261115.txt` | Checksums for those three current artifacts. |
+| `biograph_steward_contextual_assessment_20261115_v3.zip` | Open `START_HERE.html` after extraction: the original fixed study, both separate development follow-ups and source/sequence/context qualifications. |
+| `BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx` | Nine editable slides: original eight preserved, plus the clearly labeled current-data development appendix. |
+| `SHA256SUMS_CURRENT_20261115_v3.txt` | Checksums for those three current artifacts. |
 
 All current remote sizes and SHA256 digests match the
-[latest delivery receipt](github_review_delivery_v2.json). The older assessment
-ZIP, v3 presentation and original checksums remain dated checkpoints; all seven
-remote assets were retained and verified. The [original receipt](github_review_delivery.json)
-preserves the draft's creation history.
+[latest delivery receipt](github_review_delivery_v3.json). All ten remote
+assets were retained and verified. The [v2 receipt](github_review_delivery_v2.json)
+and [original receipt](github_review_delivery.json) preserve earlier checkpoints.
 
 [Draft PR #1](https://github.com/mdomagalski/biograph-steward/pull/1) holds the
-current work on **`codex/contextual-gain-delivery`**. Use that branch for a fresh
-checkout; `main` is still the older October 26 checkpoint. GitHub draft assets
-require repository write access; other repository readers can use the branch's
-tracked reports, slides, testing guide and source. Main and public visibility
-are unchanged. This is review preparation, not final public submission.
+current work on **`codex/contextual-gain-delivery`**. Use that branch for the
+current checkout; `main` is still the older October 26 checkpoint. Draft assets
+require repository write access. Other repository readers can use the branch's
+tracked reports, slides, testing guide and source. Main and private visibility
+are unchanged. Final public release and submission remain separate actions.
 
-The [latest review packet receipt](../../evaluations/contextual_assessment_review_v2_20261115_summary.json)
-verifies all 51 archive members and every offline HTML link/anchor. The packet is
-655,716 bytes; SHA256
-`107c6dbab8fe84d1affe8dce0162fb930db03db0df01d6f6e2526cae3288b975`.
-It was built from committed aggregate source at `70a7355`. No raw reference
-cases, draw vectors, forecast matrices, weights, credentials or mixed-source
-graph are included. The software and protected graph remain separate.
+The [current packet receipt](../../evaluations/contextual_assessment_review_v3_20261115_summary.json)
+verifies all 68 archive members and every offline HTML link/anchor. The packet
+is 711,421 bytes; SHA256
+`1e8b9284f6d7ec32a1fd7cb5cf9cdf04e1de3cb032489f856f195d1fb583db07`.
+It was built from committed aggregate source at `d143c4a`. Raw cases, draw
+vectors, forecast matrices, weights, credentials and the mixed-source graph
+are excluded. The tested software and protected graph are separate deliverables.
 
-The [completed study](../../evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+The [original fixed comparison](../../evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
 supports bounded primary recovery gains over retained LocalPlus. Current
 annotation refresh also helps; extra primary BP learning benefit remains
 uncertain. Direct nonexperimental GOA is not clearly beaten for MF and is
-better for CC. The separate
-[annotation-preservation follow-up](../../evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
-is a trade-off, not an adopted remedy or independent confirmation.
-[Source chronology](../../evaluations/CONTEXTUAL_SOURCE_CHRONOLOGY_20261115.md)
-and [sequence similarity](../../evaluations/CONTEXTUAL_SEQUENCE_SIMILARITY_20261115.md)
-qualify novelty and transfer. Original primary data and success gates remain
-unchanged. Hosting stays separately pinned to `a6a05ff`.
+better for CC. The [prior-preservation follow-up](../../evaluations/ANNOTATION_PRIOR_DEVELOPMENT_RESULTS_20261115.md)
+is a trade-off. The [current-data refit](../../evaluations/CURRENT_REFIT_DEVELOPMENT_RESULTS_20261115.md)
+did not establish an improvement over the original selected model. Both
+follow-ups remain consumed-reference development and are not adopted.
+[Chronology](../../evaluations/CONTEXTUAL_SOURCE_CHRONOLOGY_20261115.md),
+[sequence similarity](../../evaluations/CONTEXTUAL_SEQUENCE_SIMILARITY_20261115.md)
+and [opposite-polarity source context](../../evaluations/CURRENT_REFIT_SOURCE_QUALIFICATIONS_20261115.md)
+qualify interpretation without creating biological prune labels.
 
-The [testing guide with refreshed repository links](../../../output/pdf/BioGraph_Steward_Team_Review_Guide_20261115.pdf)
-preserves its dated November 13 testing content. Its branch links now open the
-current review checkout; it does not claim a new hosted UI acceptance test or
-updated scientific result.
+The [corrected-link testing guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide_20261115.pdf)
+preserves its dated November 13 testing content. Hosting stays separately
+pinned to `a6a05ff`. Its HTTPS login remains reachable; no new authenticated
+browser acceptance is claimed. Brev is stopped after verified research
+backups. Keep the separate AWS reviewer service available for teammate feedback.
 
 ## Tested core software
 
@@ -113,3 +114,18 @@ the persistent Brev disk. All owned CPU jobs and transfers have finished;
 stopping compute preserves a separate need to retain that disk. The model
 server is unnecessary for saved-data review. Keep the AWS reviewer site
 available for teammate feedback.
+
+
+## Current-data refit recovery
+
+The final refit model, exact three averaging states, executed source and
+receipts are retained in a separately verified private 4,047,813-byte archive
+(SHA256 `88664f548be3ef608be5bb4727eb379a50647071f7b4c3943a7b9a4c11bcd7ad`).
+All 18 new native curves and 18 contribution files, the completed report and
+operators are retained in a 21,167,911-byte archive
+(SHA256 `d573306989b06d48ce03887ec93cf4d44277b01ff9d4c8e43e6298b240be14bd`).
+The [safe execution](../../evaluations/current_refit_development_20261115/execution_qualification.json)
+and [numerical replay](../../evaluations/current_refit_development_20261115/numerical_replay_receipt.json)
+receipts report their verified scope. These private archives were not uploaded
+to GitHub. Three new dense forecasts and their feature caches remain on the
+persistent Brev disk; stopping compute does not replace disk preservation.

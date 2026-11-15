@@ -143,7 +143,7 @@ checkpoint; hosting and final publication remain separate actions.
 The review branch is now backed up in the existing private repository, with
 [draft PR #1](https://github.com/mdomagalski/biograph-steward/pull/1) and a
 [private draft release](https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab).
-Its four assets are the tested core ZIP, aggregate report ZIP, editable slides
+The four current review files are the tested core ZIP, aggregate report ZIP, editable slides
 and checksums. Draft-release access requires repository write permission;
 tracked reports/slides remain available through the branch checkout. Neither
 main nor public visibility changed.
