@@ -192,6 +192,26 @@ function fieldList(fields){
   }
   return list;
 }
+function nativeGoEvidenceHelp(code){
+  // Factual code meanings from the GO Consortium guide; never a truth score.
+  const labels={EXP:'Experiment',IDA:'Direct assay',IPI:'Physical interaction',IMP:'Mutant phenotype',
+    IGI:'Genetic interaction',IEP:'Expression pattern',HTP:'High-throughput experiment',
+    HDA:'High-throughput assay',HMP:'High-throughput mutant phenotype',HGI:'High-throughput genetic interaction',
+    HEP:'High-throughput expression pattern',IBA:'Ancestor-based phylogenetic inference',
+    IBD:'Descendant-based phylogenetic inference',IKR:'Key-residue inference',IRD:'Rapid-divergence inference',
+    ISS:'Sequence or structure similarity',ISO:'Sequence orthology',ISA:'Sequence alignment',
+    ISM:'Sequence model',IGC:'Genomic context',RCA:'Reviewed computational analysis',
+    TAS:'Traceable author statement',NAS:'Non-traceable author statement',IC:'Curator inference',
+    ND:'No biological data available',IEA:'Electronic annotation'};
+  let note='The code describes the support method; it is not a confidence score. Read the reference, polarity and recorded conditions.';
+  if(code==='IPI')note='Inspect With/from and the reference for the interacting entity and assay. This code alone does not establish direct binding.';
+  else if(code==='IEA')note='Automatically assigned rather than individually reviewed. Inspect the recorded method or signature; several resources can reuse the same inference.';
+  else if(['HTP','HDA','HMP','HGI','HEP'].includes(code))note='A high-throughput method supported this annotation. Inspect the study and conditions; the code does not establish a separate targeted validation.';
+  else if(code==='ND')note='The source records a knowledge gap. This does not mean the protein lacks a biological function.';
+  const box=el('details');box.append(el('summary',code+' — '+(Object.hasOwn(labels,code)?labels[code]:'Meaning not listed in this guide')),el('p',note,'small'));
+  const source=el('p');source.append(guideLink({label:'Official evidence-code guide',url:'https://geneontology.org/docs/guide-go-evidence-codes/'}));box.append(source);
+  return box;
+}
 async function loadSourceGuide(selectionId){
   if(!runId)return;
   showWorkspaceView('evidence');
@@ -355,7 +375,7 @@ function renderNativeGoContext(result,box){
       el('p','Native relation: '+record.relation_literal+(record.negated?' (qualified by NOT)':'')),
       el('p','Native source line '+record.source_line+' · '+record.id,'small'),
       el('p',(Array.isArray(record.strict_projection_candidate_for_edge_ids)?record.strict_projection_candidate_for_edge_ids.length>0:compatible.has(record.id))?'Matches the available Pharos fields; original annotation identity remains unresolved.':'Related native annotation for this exact protein/GO pair; not a strict match to the available Pharos fields.','small'));
-    card.append(fieldList({evidence_code:record.evidence_code,assigned_by:record.assigned_by,annotation_date:record.annotation_date,gene_product_form:record.gene_product_form_id,taxon_ids:record.taxon_ids}));
+    card.append(fieldList({evidence_code:record.evidence_code,assigned_by:record.assigned_by,annotation_date:record.annotation_date,gene_product_form:record.gene_product_form_id,taxon_ids:record.taxon_ids}),nativeGoEvidenceHelp(record.evidence_code));
     const references=el('div');references.append(el('strong','Native reference identifiers'),el('p','These identifiers may name the same reference; they are not independent experiment counts.','small'));
     const list=el('ul');for(const identifier of record.reference_identifiers||[]){const item=el('li');item.append(nativeGoReference(identifier));list.append(item);}references.append(list);card.append(references);
     card.append(nativeGoGroups('Annotation extension',record.extension_or_groups_raw,record.annotation_extension_raw),nativeGoGroups('With/from',record.with_from_or_groups_raw,record.with_from_raw));

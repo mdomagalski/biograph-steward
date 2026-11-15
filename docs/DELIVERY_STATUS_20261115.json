@@ -1,0 +1,206 @@
+{
+  "browser_visual_check": {
+    "API_check_is_not_browser_usability_test": true,
+    "known_upstream_issue": "https://github.com/openai/codex/issues/37324",
+    "reason": "Bundled browser-use classic-level native module rejected by macOS code-signature validation before tab access",
+    "security_changes_or_binary_resigning": false,
+    "status": "unavailable in this audit"
+  },
+  "created_at_UTC": "2026-11-15T02:31:16.332158+00:00",
+  "format": "biograph-steward.delivery-status.v1",
+  "hosted_review": {
+    "authenticated_acceptance_receipt": {
+      "bytes": 3673,
+      "path": "docs/evaluations/scientific_hosted_delivery_20261114_summary.json",
+      "sha256": "4bca4913524b4a813e2da3c889054dd2a6ae721240a7fe09fc5dcc61142e8c41"
+    },
+    "current_authenticated_acceptance_repeated_in_this_audit": false,
+    "last_verified_authenticated_runtime": "a6a05ffca8f29cdf82e5781b87c6f3d114a430bd",
+    "private_Neptune_mirror": "verified at recorded checkpoint; ordinary saved answers use workspace files",
+    "public_entry_check": {
+      "TLS_default_verification": true,
+      "authenticated_saved_graph_checked": false,
+      "body_sha256": "d2848f9cc5f1202ca3145c2904e197922ab91965c7edce9e67696593488d7493",
+      "bytes_read": 1790,
+      "cookies_or_tokens_supplied": false,
+      "created_at": "2026-11-15T02:27:54.610183+00:00",
+      "final_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+      "has_workspace_login": true,
+      "status": 200,
+      "url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/"
+    },
+    "reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
+    "shared_ingress": "saved-data inspection and export only; construction, fresh retrieval, model planning and review edits blocked",
+    "workspace_token": "supplied privately; not included in repository or this manifest"
+  },
+  "no_AWS_workbench_mutations": true,
+  "no_external_messages_sent": true,
+  "organizer_contract": {
+    "autonomous_or_semi_autonomous_permitted": true,
+    "brief_source": "User-supplied Bio-Agent KG challenge brief and organizer Slack excerpts",
+    "deadline_timezone_supplied": false,
+    "final_deadline": "2026-11-17",
+    "final_template_received": false,
+    "judging_weights": {
+      "accuracy_and_pruning": 30,
+      "explainability": 20,
+      "standards": 10,
+      "usability": 40
+    },
+    "official_hidden_gold_available": false,
+    "open_source_license_options": [
+      "MIT",
+      "Apache-2.0"
+    ],
+    "same_learner_experimental_heldout_comparison": "implemented; consistent enriched-graph superiority not established",
+    "suggested_whole_graph_handoff": "resulting scoped graph, exhaustive edge decisions, complete retrieved baseline; final organizer schema/version unspecified"
+  },
+  "presentation": {
+    "Artifact_Tool_reimport_passed": true,
+    "Spaces_fallback": "create/connect worked; required authoring tool unavailable. Own empty private draft was trashed; final deliverable is a local editable PPTX.",
+    "all_eight_slides_visually_reviewed": true,
+    "bytes": 292866,
+    "earlier_PDFs_and_slides": "dated checkpoints retained; do not silently replace their runtime or result scope",
+    "editable_chart_literal_precision": "six decimal places in the Office workbook; complete full-precision statistical results remain in the cited JSON",
+    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v2.pptx",
+    "layout_findings": 0,
+    "layout_warnings": 0,
+    "main_slides": 6,
+    "native_Office_workbook_chart_data_checked": true,
+    "native_PowerPoint_application_tested": false,
+    "native_editable_chart_slides": [
+      4
+    ],
+    "native_editable_table_slides": [
+      7,
+      8
+    ],
+    "screenshots": "previous verified November 13/14 captures, dated in speaker notes; no new hosted UI acceptance claimed",
+    "sha256": "92789b50180e177ed3a6a0b51e1f63758580ea5f13ed6bce59bc4965cbb44c5e",
+    "status": "prepared_and_locally_validated",
+    "technical_appendix_slides": 2,
+    "validation_receipt_sha256": "712badbace03c852ed3a738d7650d3914f76288e24847753c19dfaad463349f3",
+    "visual_receipt_sha256": "fd4a49036ca9af5ec2dd3e93a58a26a557e2f0c196780617fe5241489fa3b90f"
+  },
+  "purpose": "Current judge-facing artifact and capability boundary; prior release manifests remain dated records.",
+  "reader_date": {
+    "UTC_research_identifier": "20261115",
+    "date": "2026-11-14",
+    "timezone": "America/New_York"
+  },
+  "science": {
+    "combination_primary_success": false,
+    "latest_completed_combination": {
+      "bytes": 21814,
+      "path": "docs/evaluations/learned_combination_20261115_summary.json",
+      "sha256": "4fe109c972dd0644ded11d88ee1ac5d56dfc517c03b033f23b17f14beed45382"
+    },
+    "new_research_comparisons": "in progress in a separate track; no new gains claimed here",
+    "same_learner_graph_enrichment_gain_established": false,
+    "secondary_CC_mixing_gain": {
+      "DeepGO_SE_micro_Fmax": 0.29141414141414135,
+      "LocalPlus_micro_Fmax": 0.3041076147009369,
+      "eligible_proteins": 447,
+      "fitted_alpha_equals_fixed_half": true,
+      "interpretation": "Secondary bounded temporal function-recovery gain from mixing; no extra learning benefit established.",
+      "learned_vs_LocalPlus_paired_interval": [
+        0.011450611451724147,
+        0.04897605761315526
+      ],
+      "mix_micro_Fmax": 0.3341683366733467
+    },
+    "validated_automatic_biological_pruning": false,
+    "whole_graph_biological_accuracy_established": false
+  },
+  "software": {
+    "LICENSE": {
+      "bytes": 1246,
+      "path": "LICENSE",
+      "sha256": "57a15858e9851bdbfd32521359fca17661b8a0b0903400561350fab7931308f2"
+    },
+    "core_python": ">=3.10",
+    "core_requires_GPU_or_model": false,
+    "core_requires_pip": false,
+    "final_public_repository_handoff_completed_by_this_audit": false,
+    "latest_indexed_software_ZIP": {
+      "bytes": 905085,
+      "file": "biograph_steward_software.zip",
+      "file_count": 165,
+      "sha256": "ed473c27ee1331d06cf78e4f4edcee27e1231a4c0e609653195d9af1eb1c20ad"
+    },
+    "latest_indexed_software_ZIP_commit": "5362b50b80e38505f24e21d97e7034005a7a51e1",
+    "latest_indexed_software_acceptance": {
+      "bytes": 2214,
+      "path": "docs/evaluations/software_release_native_go_export_20261113_summary.json",
+      "sha256": "420534e73bf2ff6456ef5ba52f101204abbdbb7c00c1686f9c9278eb7f31ac3c"
+    },
+    "new_local_synthetic_check": {
+      "UI_browser_visual_check": "unavailable: browser plugin native module rejected by macOS code-signature check",
+      "cloud_calls": 0,
+      "created_at": "2026-11-15T02:19:46.665164+00:00",
+      "format": "biograph-steward.delivery-local-synthetic-check.v1",
+      "graph": {
+        "assertions": 17,
+        "edges": 18,
+        "nodes": 12
+      },
+      "loopback_only": true,
+      "model_calls": 0,
+      "no_parent_paths": true,
+      "page_status": 200,
+      "question_id": "question_20261115T021946Z_ec276f7e",
+      "returned_results": 2,
+      "run_zip_bytes": 123529,
+      "run_zip_sha256": "44916e12a5db399bfce1d3e19f7fffe98aa91c655e636cf51399f4140eee4605",
+      "saved_answer_equal": true,
+      "source_guide_returned": true,
+      "source_retrievals": 0,
+      "synthetic": true,
+      "zip_files": 20
+    },
+    "published_release_asset_created_by_this_audit": false,
+    "repository_visibility": "documented private during preparation; not live-verified here because gh CLI unavailable",
+    "source_code_commit_at_local_check": "3f4f0ac11bf34bc7942deb2c3939415400fa782e"
+  },
+  "unresolved_release_actions": [
+    {
+      "item": "Final reviewed code checkpoint and code-only software archive",
+      "status": "pending after current code changes settle; existing archive remains 5362b50"
+    },
+    {
+      "item": "Public MIT GitHub/release handoff for open-source track",
+      "status": "pending separate publication action; no push or visibility change here"
+    },
+    {
+      "item": "Permitted complete graph/source access for judges",
+      "status": "mixed-source redistribution route unresolved; protected reviewer route, code-only demo and CC0 annex remain distinct options"
+    },
+    {
+      "item": "Independent intended-user feedback",
+      "status": "weekend teammate review requested, due 2026-11-16; not fabricated by agent/API checks"
+    },
+    {
+      "item": "Organizer final template and scoring details",
+      "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
+    }
+  ],
+  "workspace": {
+    "baseline_evidence": 16985,
+    "complete_original_baseline_and_abstentions_preserved": true,
+    "entities": 9865,
+    "excluded_obsolete_GO_ID_records": 298,
+    "exclusion_is_independent_biological_error_label": false,
+    "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+    "handoff_files": [
+      "retained_graph.json",
+      "edge_dispositions.jsonl",
+      "baseline_packet/source/graph.json"
+    ],
+    "name": "source_faithful_workspace_20261113",
+    "primary_targets": 99,
+    "retained_evidence": 16687,
+    "source_capture": "Pharos319, 2026-10-14; extension/publisher context retain separate dates",
+    "source_redistribution": "not cleared as a blanket mixed-source public packet; includes 1,588 KEGG records",
+    "statement_basis": "recorded verified hosted/source packet receipts, not a fresh full graph extraction in this audit"
+  }
+}

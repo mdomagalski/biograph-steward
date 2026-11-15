@@ -1,5 +1,10 @@
 # BioGraph Steward
 
+For a short product review, start with the [submission overview](docs/SUBMISSION_OVERVIEW.md)
+and [editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v2.pptx).
+The [delivery status](docs/DELIVERY_STATUS_20261115.json) separates tested local
+software, the last verified hosted checkpoint and remaining release actions.
+
 BioGraph Steward is a source-traceable biomedical evidence workbench built around **Pharos** and bounded **CIViC** evidence. Its current product flow is:
 
 ```text

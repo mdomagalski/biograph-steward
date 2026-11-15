@@ -31,9 +31,9 @@ outside one another. The browser cannot choose either path. The native source
 can be configured alone; the UI then reports that QC is unavailable and does
 not imply a pass. A configured invalid source or QC output fails closed.
 
-These packets are not in Git or a fresh checkout. The protected shared HTTPS
-reviewer app now runs `5362b50` with the approved separate 12-file native/QC
-packet. Its [current delivery receipt](evaluations/reviewer_https_delivery_20261113_summary.json)
+These packets are not in Git or a fresh checkout. The November 13 protected HTTPS
+reviewer checkpoint ran `5362b50` with the approved separate 12-file native/QC
+packet. Its [dated delivery receipt](evaluations/reviewer_https_delivery_20261113_summary.json)
 records authenticated HTTPS inspection and download: all source bytes matched,
 and both NRAS cases reopened identically after full packet extraction. The
 original graph, question, reviews and publications remain unchanged. The
@@ -41,6 +41,28 @@ original graph, question, reviews and publications remain unchanged. The
 retains its original restart/API scope. The configured source paths stay
 outside the saved workspace; fresh installations remain unconfigured. Brev,
 its model, a GPU, a paid literature API and fresh retrieval are unnecessary.
+
+The [later accepted runtime](evaluations/SCIENTIFIC_RESULTS_20261114.md) is
+recorded separately; the older receipt is not a claim of a new hosted check.
+
+## Evidence-code meanings
+
+The current local source guide offers collapsed plain-language explanations
+beside the original evidence code. These use the
+[GO Consortium's official code guide](https://geneontology.org/docs/guide-go-evidence-codes/).
+For example, `IPI` describes physical-interaction evidence; users still need
+the With/from field, assay and reference to interpret the partner and what
+was measured. `IEA` identifies an automated annotation, which can reuse a
+signature or inference already represented elsewhere. `ND` records missing
+knowledge, rather than absence of biological function.
+
+The [GO knowledgebase paper](https://doi.org/10.1093/genetics/iyad031) explains
+why evidence types and partner/context fields require care. The app does not
+turn these code meanings into a confidence score or automatic review decision.
+Unknown codes remain literal and explicitly unlisted. Raw source records,
+NOT polarity and reference links remain unchanged. The scoped DOM checks
+passed; this local explanation increment has not been deployed or claimed
+as a new browser acceptance test.
 
 ## Walk through the source
 

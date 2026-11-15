@@ -71,11 +71,33 @@ test('native rows preserve polarity, references, forms and OR-of-AND context as 
   const links=descendants(ui.output,'a');
   assert.ok(links.some(a=>a.href==='https://pubmed.ncbi.nlm.nih.gov/36949045/'));
   assert.ok(links.some(a=>a.href==='https://doi.org/10.1000%2Finvented'));
-  assert.ok(links.every(a=>a.href.startsWith('https://pubmed.ncbi.nlm.nih.gov/')||a.href.startsWith('https://doi.org/')));
+  assert.ok(links.every(a=>a.href.startsWith('https://pubmed.ncbi.nlm.nih.gov/')||a.href.startsWith('https://doi.org/')||a.href==='https://geneontology.org/docs/guide-go-evidence-codes/'));
   assert.equal(descendants(ui.output,'img').length,0);assert.equal(descendants(ui.output,'script').length,0);
   assert.match(text(ui.output),/<img src=x onerror="bad\(\)">/);
   const preserved=descendants(ui.output,'pre').filter(node=>node.textContent.startsWith('{')).map(node=>JSON.parse(node.textContent)).filter(value=>value.id?.startsWith('goa.native:'));
   assert.deepEqual(preserved,response.records);assert.equal(JSON.stringify({guide,response}),before);
+});
+
+test('GO code explanations preserve source polarity and distinguish method from truth',async()=>{
+  const {guide,response}=fixture();response.records[0].evidence_code='IPI';response.records[1].evidence_code='IEA';
+  const before=JSON.stringify(response),ui=harness(async()=>response);
+  ui.render(guide);await ui.button().onclick();
+  assert.match(text(ui.output),/IPI — Physical interaction/);
+  assert.match(text(ui.output),/code alone does not establish direct binding/);
+  assert.match(text(ui.output),/With\/from/);
+  assert.match(text(ui.output),/IEA — Electronic annotation/);
+  assert.match(text(ui.output),/Automatically assigned rather than individually reviewed/);
+  assert.match(text(ui.output),/NOT annotation/);
+  assert.ok(descendants(ui.output,'a').some(a=>a.href==='https://geneontology.org/docs/guide-go-evidence-codes/'));
+  assert.equal(JSON.stringify(response),before);
+});
+
+test('unlisted GO codes remain literal and do not acquire an inferred evidence meaning',async()=>{
+  const {guide,response}=fixture();response.records[0].evidence_code='UNLISTED<script>';
+  const ui=harness(async()=>response);ui.render(guide);await ui.button().onclick();
+  assert.match(text(ui.output),/UNLISTED<script> — Meaning not listed in this guide/);
+  assert.match(text(ui.output),/not a confidence score/);
+  assert.equal(descendants(ui.output,'script').length,0);
 });
 
 test('saved QC flags remain derivative-specific and do not imply biological rejection',async()=>{

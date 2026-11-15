@@ -14,6 +14,12 @@ Open [the workbench](http://127.0.0.1:8765/). Keep the terminal running; Ctrl+C 
 
 ## Reviewer walkthrough
 
+For the current product story and measured limits, read the
+[submission overview](docs/SUBMISSION_OVERVIEW.md) or open the
+[editable presentation](output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v2.pptx).
+The [delivery status](docs/DELIVERY_STATUS_20261115.json) identifies dated
+checkpoints and the release actions still pending.
+
 For the weekend teammate review, use the
 [six-page testing guide](output/pdf/BioGraph_Steward_Team_Review_Guide_20261113.pdf),
 its [editable version](docs/TEAM_REVIEW_GUIDE_20261113.md) and the
