@@ -101,7 +101,7 @@ def verify_saved_refresh(folder: Path) -> None:
 def verify_qualified_question_source(answer, runs_dir):
     """A saved qualified answer cannot outlive changed or missing source bytes."""
     if answer.get('template') == 'qualified_pathway_source_context.v1':
-        from .reviews import read_run
+        from .saved_run_cache import read_run
         from .questions import answer_question
         source_id = answer.get('source_run')
         if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
@@ -120,7 +120,7 @@ def verify_qualified_question_source(answer, runs_dir):
             raise ValueError('Qualified pathway answer differs from its retained graph, review state or saved query.')
         return
     if answer.get('template') == 'native_string_physical.v1':
-        from .reviews import read_run
+        from .saved_run_cache import read_run
         from .questions import answer_question
         source_id = answer.get('source_run')
         if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
@@ -136,7 +136,7 @@ def verify_qualified_question_source(answer, runs_dir):
             raise ValueError('Native physical answer differs from its source records, identity coverage or review state.')
         return
     if answer.get('plan', {}).get('ranking') == 'physical':
-        from .reviews import read_run
+        from .saved_run_cache import read_run
         from .questions import answer_question
         source_id = answer.get('source_run')
         if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
@@ -155,7 +155,7 @@ def verify_qualified_question_source(answer, runs_dir):
         return
     if answer.get('template') != 'qualified_assay_evidence.v1':
         return
-    from .reviews import read_run
+    from .saved_run_cache import read_run
     from .questions import graph_basis
     source_id = answer.get('source_run')
     if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
@@ -652,7 +652,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             match = re.fullmatch(r'/api/assay-source/([A-Za-z0-9_-]{1,80})/(.+)', path)
             if match:
-                from .reviews import read_run
+                from .saved_run_cache import read_run
                 folder = runs_dir / match.group(1)
                 relative = Path(match.group(2))
                 try:
@@ -678,7 +678,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             match = re.fullmatch(r'/api/extension-source/([A-Za-z0-9_-]{1,80})/extension_sources/(string|string_physical|mapit|signor|bioplex|goa)/(.+)', path)
             if match:
-                from .reviews import read_run, read_civic, read_assay
+                from .saved_run_cache import read_run
+                from .reviews import read_civic, read_assay
                 from .assay_attachment import _decode, _ordinary
                 from .evidence_extension import SIDECAR, SOURCE, source_material
                 identifier, kind, relative = match.groups()
@@ -800,7 +801,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     self.json_reply({"error": "Run not found"}, 404)
                     return
                 try:
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     verify_saved_refresh(folder)
                     read_run(folder)
                     if match.group(2) is None:
@@ -819,7 +820,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             match = re.fullmatch(r"/api/run/([A-Za-z0-9_-]{1,80})", path)
             if match:
-                from .reviews import read_run
+                from .saved_run_cache import read_run
                 folder = (runs_dir / match.group(1)).resolve()
                 if folder.parent != runs_dir or not folder.is_dir():
                     self.json_reply({"error": "Run not found"}, 404)
@@ -837,7 +838,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             match = re.fullmatch(r"/api/question/([A-Za-z0-9_-]{1,80})", path)
             if match:
                 from .questions import verify_answer, verify_ranking_files
-                from .reviews import read_run
+                from .saved_run_cache import read_run
                 if (runs_dir / match.group(1)).is_symlink():
                     self.json_reply({"error": "Question result not found"}, 404)
                     return
@@ -879,7 +880,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                            for name in ('source_fact_manifest.json', 'biomedbert_manifest.json', 'metrics.json')):
                         raise ValueError('Historical study artifacts are available through the research archive.')
                     if (folder / 'run_manifest.json').is_file():
-                        from .reviews import read_run
+                        from .saved_run_cache import read_run
                         read_run(folder)
                         from .assay_source_reuse import read_reuse
                         read_reuse(folder)
@@ -890,7 +891,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         verify_ranking_files(answer, folder)
                         verify_qualified_question_source(answer, runs_dir)
                         if answer.get('source_run') == folder.name:
-                            from .reviews import read_run
+                            from .saved_run_cache import read_run
                             read_run(folder)
                     elif (folder / 'retained_graph.json').is_file():
                         from .gold_packet import load_decisions
@@ -967,7 +968,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/native-go-question', '/api/protein-context'}:
                             raise ValueError('This qualified retained workspace is read-only. Query or download it; use its preserved baseline for new retrieval or review.')
                 if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/protein-context'}:
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     if path == '/api/neptune-inspect':
                         if set(body) - {'run_id', 'node_id', 'limit'} or not {'run_id', 'node_id'} <= set(body):
                             raise ValueError('Supply only the saved run, exact entity identifier and optional record limit.')
@@ -1149,7 +1150,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return
                 if path == '/api/regulatory-sites':
                     from .regulatory_sites import answer_regulatory_sites
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     if set(body) - {'run_id', 'protein', 'direction', 'site', 'cell_context',
                                     'tissue_context', 'context_reporting', 'offset', 'limit'}:
                         raise ValueError('Unsupported site/context question option.')
@@ -1170,7 +1171,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return
                 if path == '/api/native-go-question':
                     from .goa_questions import answer_native_go_question
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     if set(body) - {'run_id', 'protein', 'view', 'search', 'offset', 'limit'}:
                         raise ValueError('Unsupported native GO source question option.')
                     identifier = body.get('run_id')
@@ -1187,7 +1188,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return
                 if path == '/api/regulatory-question':
                     from .regulatory_questions import answer_regulatory_question
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     if set(body) - {'run_id', 'protein', 'direction', 'search', 'offset', 'limit'}:
                         raise ValueError('Unsupported regulatory source question option.')
                     identifier = body.get('run_id')
@@ -1205,7 +1206,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return
                 if path == '/api/biological-question':
                     from .biological_questions import answer_biological_question
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     if set(body) - {'run_id', 'protein', 'search', 'offset', 'limit'}:
                         raise ValueError('Unsupported biological evidence question option.')
                     identifier = body.get('run_id')
@@ -1223,7 +1224,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if path == '/api/assay-question':
                     from .assay_questions import answer_assay_question
                     from .questions import save_answer
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     if set(body) - {'run_id', 'protein'}:
                         raise ValueError('Use only run_id and an optional exact protein for qualified evidence.')
                     source_id = body.get('run_id', '')
@@ -1260,7 +1261,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return
                 if path=='/api/plan':
                     from .planning import configured_planner,execute_plan
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     from .client import write_json
                     from .questions import save_answer
                     if set(body)!={'run_id','question'}:raise ValueError('Use only run_id and question for one bounded plan.')
@@ -1340,7 +1341,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return
                 if path == "/api/question":
                     from .questions import answer_question, save_answer
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     allowed = {"run_id", "protein", "relations", "view", "max_results", "max_paths", "template", "ranking", "source_support"}
                     if set(body) - allowed:
                         raise ValueError("Unsupported question fields; use the guided protein-neighborhood scope.")
@@ -1361,7 +1362,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     self.json_reply({"question_id": question_id, "answer": answer})
                     return
                 if path in {"/api/civic", "/api/therapy-question"}:
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     from .civic import CivicClient
                     from .graph import save_run
                     from .civic_questions import answer_civic_question
