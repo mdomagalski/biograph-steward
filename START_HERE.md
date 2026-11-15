@@ -4,7 +4,16 @@ BioGraph Steward builds a scoped Pharos-based evidence graph, answers supported 
 
 ## Run locally
 
-From the repository directory, using Python 3.10 or newer:
+For the November review, open the [current branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery)
+and use **Code → Download ZIP**, or switch an existing clone:
+
+```sh
+git fetch origin
+git switch codex/contextual-gain-delivery
+```
+
+The default `main` branch remains on an older checkpoint. From the review
+repository directory, using Python 3.10 or newer:
 
 ```sh
 python3 app.py
@@ -21,7 +30,7 @@ The [delivery status](docs/DELIVERY_STATUS_20261115.json) identifies dated
 checkpoints and the release actions still pending.
 
 For the weekend teammate review, use the
-[six-page testing guide](output/pdf/BioGraph_Steward_Team_Review_Guide_20261113.pdf),
+[six-page testing guide](output/pdf/BioGraph_Steward_Team_Review_Guide_20261115.pdf),
 its [editable version](docs/TEAM_REVIEW_GUIDE_20261113.md) and the
 [feedback template](docs/TEAM_REVIEW_FEEDBACK_20261113.txt). Feedback is due
 Monday, November 16. The [shared reviewer example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask)

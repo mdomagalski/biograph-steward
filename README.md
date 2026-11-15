@@ -32,6 +32,11 @@ advantage remain open. Optional research methods are isolated from the core
 application; their unfavorable results and consumed reference boundaries are
 preserved below.
 
+The current review checkout is `codex/contextual-gain-delivery`. The default
+`main` branch remains at its October 26 checkpoint pending review; use the
+[review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery)
+for the documented workflow.
+
 ## Run the workbench
 
 Python 3.10 or newer; the core app requires no third-party packages, model, API key or cloud account.
@@ -166,7 +171,7 @@ Optional research adapters retain their explicit per-file licenses, including
 the [GPL-3.0-only CAFA evaluator adapters](tools/cafa_reference/NOTICE.md).
 Retrieved data and external model/tool artifacts retain their own terms.
 
-`main` contains the current workbench, reusable source/identity adapters and the current INMC preparation tools. Retired growth-ranking, extraction, verifier and context-QA experiments are preserved on a separate **local archive branch**, rather than mixed into the active application. The [experiment ledger](docs/EXPERIMENT_HISTORY.md) records outcomes, consumed holdouts, exact archive commit and recovery instructions. The archive has not been pushed; ignored run data are not included in Git.
+The current review branch contains the workbench, reusable source/identity adapters and INMC preparation tools. Retired growth-ranking, extraction, verifier and context-QA experiments are preserved on a separate **local archive branch**, rather than mixed into the active application. The [experiment ledger](docs/EXPERIMENT_HISTORY.md) records outcomes, consumed holdouts, exact archive commit and recovery instructions. The archive has not been pushed; ignored run data are not included in Git.
 
 | Area | Guide |
 |---|---|

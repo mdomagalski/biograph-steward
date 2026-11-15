@@ -39,7 +39,8 @@ Use the [five-minute demonstration](DEMO_SCRIPT.md) for a presentation, or the
 [team testing guide](TEAM_REVIEW_GUIDE_20261113.md) to record obstacles and unclear
 terms. Independent teammate feedback remains pending.
 
-For a checkout-only route, follow [START_HERE](../START_HERE.md):
+For a checkout-only route, use `codex/contextual-gain-delivery` and follow
+[START_HERE](../START_HERE.md); default `main` still has the older checkpoint:
 
 ```sh
 python3 app.py

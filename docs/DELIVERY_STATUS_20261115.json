@@ -10,7 +10,15 @@
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
   "format": "biograph-steward.delivery-status.v1",
   "github_review_delivery": {
+    "all_seven_asset_digests_reverified": true,
+    "artifact_source_revision": "70a73556e583f0033efc4537388044fff6538257",
     "branch": "codex/contextual-gain-delivery",
+    "current_review_assets": [
+      "biograph_steward_core_software.zip",
+      "biograph_steward_contextual_assessment_20261115_v2.zip",
+      "BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
+      "SHA256SUMS_CURRENT_20261115.txt"
+    ],
     "draft_pull_request": {
       "draft": true,
       "html_url": "https://github.com/mdomagalski/biograph-steward/pull/1",
@@ -22,20 +30,27 @@
       "html_url": "https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab",
       "id": 445853290,
       "prerelease": true,
-      "tag_name": "review-20261115-contextual"
+      "tag_name": "review-20261115-contextual",
+      "target_commitish": "70a73556e583f0033efc4537388044fff6538257"
     },
     "final_public_submission": false,
+    "latest_receipt": "docs/releases/20261115/github_review_delivery_v2.json",
     "main_modified": false,
     "private_repository": true,
     "receipt": "docs/releases/20261115/github_review_delivery.json",
     "repository_visibility_modified": false,
     "source_revision": "57506d1091bbe0bd7d478e25f6d40df573f8680d",
-    "source_revision_scope": "Creation checkpoint for the private draft release; the review branch can advance through the documented source-quality addenda.",
+    "source_revision_scope": "Historical creation checkpoint of the private draft; artifact_source_revision and latest_receipt identify the current reviewed assets. The review branch can advance through metadata-only receipts.",
     "uploaded_assets": [
       {
-        "bytes": 661594,
-        "name": "biograph_steward_core_software.zip",
-        "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
+        "bytes": 297032,
+        "name": "BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx",
+        "sha256": "7aa583b6f7dd4a5880a5244e1c7180ecf885b2fa1d7f70b97b6ee88dafff5bd6"
+      },
+      {
+        "bytes": 298030,
+        "name": "BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
+        "sha256": "e3a96cacedc65c4907feba280156f3bafa47f64a92ea899461aff05403d4a456"
       },
       {
         "bytes": 573822,
@@ -43,14 +58,24 @@
         "sha256": "db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5"
       },
       {
-        "bytes": 297032,
-        "name": "BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx",
-        "sha256": "7aa583b6f7dd4a5880a5244e1c7180ecf885b2fa1d7f70b97b6ee88dafff5bd6"
+        "bytes": 655716,
+        "name": "biograph_steward_contextual_assessment_20261115_v2.zip",
+        "sha256": "107c6dbab8fe84d1affe8dce0162fb930db03db0df01d6f6e2526cae3288b975"
+      },
+      {
+        "bytes": 661594,
+        "name": "biograph_steward_core_software.zip",
+        "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
       },
       {
         "bytes": 342,
         "name": "SHA256SUMS.txt",
         "sha256": "98ffb2acee8ba7dfcf4616c112c0956d7bc1649209a61d824e8a4403d79c5023"
+      },
+      {
+        "bytes": 345,
+        "name": "SHA256SUMS_CURRENT_20261115.txt",
+        "sha256": "dea672f7a0ac2a513c2942c67431f62bf8eb836ca59b64aa9cc80669a77853e1"
       }
     ]
   },
@@ -156,8 +181,26 @@
   "resources": {
     "AWS_reviewer_service": "retain for teammate saved-data review; unchanged in this work",
     "Brev_GPU_or_model_needed_for_review": false,
-    "Brev_owned_evaluation_and_source_audit_workers": "All scientific and source-audit CPU jobs complete; small private numerical/source backup transfers closing separately.",
-    "Brev_persistent_disk": "Retains original 46 raw forecast arrays (11.03GB) plus six development arrays. Separate source/model/numerical replay archives are held locally; do not delete the disk."
+    "Brev_can_stop_compute_keep_persistent_disk": true,
+    "Brev_compute_needed_for_current_work": false,
+    "Brev_owned_evaluation_and_source_audit_workers": "Complete; all owned CPU workers, source searches and backup transfers exited. No Brev GPU/model inference was required in the follow-up.",
+    "Brev_persistent_disk": "Retains original 46 raw forecast arrays (11.03GB) plus six development arrays. Separate source/model/numerical replay archives are held locally; do not delete the disk.",
+    "private_followup_replay_preserved_locally": {
+      "all36_new_curves_and36_contribution_files": {
+        "bytes": 4452653,
+        "sha256": "baf468077fdbe9b4a547b321137f60330474db4131161ccf2e69424eff76e0e0"
+      },
+      "all_member_sizes_and_hashes_verified": true,
+      "case_level_archives_published": false,
+      "development_report_code_and_receipts": {
+        "bytes": 10862277,
+        "sha256": "5bc01fe25a736dbcba46a890e59e1b4c228f0fc87e14f0a957c4080abdb3c142"
+      },
+      "exact_sequence_source_and_search_replay": {
+        "bytes": 7259128,
+        "sha256": "214ed69d5bdd2b9018541a1a32fec13747a2b4b3570f4392c75aa250f093476f"
+      }
+    }
   },
   "science": {
     "annotation_prior_followup": {
@@ -195,6 +238,7 @@
       "current_annotation_LocalPlus_gain_over_retained_both_views": true,
       "current_information_table": "docs/evaluations/CONTEXTUAL_INFORMATION_CONTROLS_20261115.md",
       "hosted_installation_completed": false,
+      "latest_review_packet": "docs/evaluations/contextual_assessment_review_v2_20261115_summary.json",
       "numeric_audit": "docs/evaluations/contextual_combination_20261115/numeric_audit.json",
       "path": "docs/evaluations/contextual_combination_20261115/summary.json",
       "primary_endpoint": "PK biological_process ordinary micro-Fmax",
@@ -339,6 +383,18 @@
     },
     "scope": "Service-reported database label only; no claim about completeness or equivalence of Pharos400 artifacts."
   },
+  "team_review_guide_link_refresh": {
+    "all_rendered_pages_pixel_identical_to_dated_original": true,
+    "bytes": 79644,
+    "content_date_preserved": "2026-11-13",
+    "current_branch": "codex/contextual-gain-delivery",
+    "file": "output/pdf/BioGraph_Steward_Team_Review_Guide_20261115.pdf",
+    "new_hosted_UI_or_scientific_acceptance_claimed": false,
+    "pages": 6,
+    "receipt": "docs/evaluations/team_review_guide_links_20261115_summary.json",
+    "repository_links_corrected": 8,
+    "sha256": "8d01bc46237776870c90540f03ff241aacecd46692fafa1afe2e8559dacf3087"
+  },
   "unresolved_release_actions": [
     {
       "item": "Final reviewed code checkpoint and code-only software archive",
@@ -361,7 +417,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T07:46:00+00:00",
+  "updated_at_UTC": "2026-11-15T08:16:25.660287+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

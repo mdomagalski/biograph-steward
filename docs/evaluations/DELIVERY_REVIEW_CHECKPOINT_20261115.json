@@ -1,0 +1,56 @@
+{
+  "AWS_saved_reviewer_site_should_remain_available": true,
+  "Brev_compute_needed": false,
+  "artifact_scientific_source_revision": "70a73556e583f0033efc4537388044fff6538257",
+  "core_app_matches_accepted_9bf202f_archive_source": true,
+  "created_at": "2026-11-15T08:16:25.661057+00:00",
+  "current_presentation": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
+  "current_testing_guide": "output/pdf/BioGraph_Steward_Team_Review_Guide_20261115.pdf",
+  "development_summary_sha256": "a72b4c75282edbb6acf9b7a832a3ff4fdef8655ff5d9bf5bebc89c01cbb39ec7",
+  "final_aggregate_packet": {
+    "all_ZIP_member_hashes_and_offline_HTML_links_anchors_verified": true,
+    "bytes": 655716,
+    "file": "biograph_steward_contextual_assessment_20261115_v2.zip",
+    "members": 51,
+    "sha256": "107c6dbab8fe84d1affe8dce0162fb930db03db0df01d6f6e2526cae3288b975"
+  },
+  "format": "biograph-steward.delivery-review-checkpoint.v1",
+  "front_door_link_audit": {
+    "documents": 13,
+    "local_links_checked": 375,
+    "method": "Existing local-file existence only; no claim of external authenticated UI testing.",
+    "missing": 0
+  },
+  "main_unchanged_at_remote_asset_verification": "586ec35d33e9429dde91057c4130542988a7ca02",
+  "no_AWS_workbench_or_graph_mutations": true,
+  "no_raw_reference_cases_forecasts_weights_or_source_archives_published": true,
+  "not_established": [
+    "Additional primary BP advantage over current-curated-annotation LocalPlus",
+    "Whole-graph biological correctness",
+    "Validated automatic biological pruning",
+    "Consistent same-learner enriched-graph prediction gain",
+    "Distant-family generalization"
+  ],
+  "original_primary_manifest_members_unchanged": 19,
+  "original_primary_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "owned_Brev_workers_and_transfers_complete": true,
+  "persistent_Brev_disk_retention_still_needed": true,
+  "private_review_branch": "codex/contextual-gain-delivery",
+  "remaining_actions": [
+    "Independent intended-user feedback on November 16",
+    "Final public MIT release and actual November 17 submission",
+    "Permitted graph, exhaustive decisions and complete retrieved-baseline access for judges",
+    "Untouched reference and qualified family/study/base-model exposure for stronger scientific confirmation"
+  ],
+  "remote_draft_assets": {
+    "all_digests_verified": true,
+    "current_files": 4,
+    "draft_only": true,
+    "main_or_visibility_changed": false,
+    "old_assets_preserved": true,
+    "private": true,
+    "receipt": "docs/releases/20261115/github_review_delivery_v2.json",
+    "total_files": 7
+  },
+  "source_similarity_aggregate_sha256": "cd36365a92216196ad36bd0e5a5b1902c7fb85c1b2cefc568dc3d8bc468693aa"
+}

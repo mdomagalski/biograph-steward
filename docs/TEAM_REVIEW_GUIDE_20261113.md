@@ -74,8 +74,11 @@ spend the review setting up AWS or Brev.
 
 ### Repository-only start
 
-Use the [review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/scientific-accuracy-round2)
-and follow [START_HERE](../START_HERE.md). From the repository directory:
+Use the [review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery)
+and follow [START_HERE](../START_HERE.md). The repository access link was
+refreshed November 15; the dated saved examples and testing steps are preserved.
+Use **Code → Download ZIP** on that branch, or run `git fetch origin` then
+`git switch codex/contextual-gain-delivery` in an existing clone. From that directory:
 
 ```sh
 python3 app.py
