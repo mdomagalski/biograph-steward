@@ -490,3 +490,18 @@ reference**, with no new primary gate, independent confirmation, graph change
 or automatic adoption. See the [source-context qualification](../../docs/evaluations/CURRENT_REFIT_SOURCE_QUALIFICATIONS_20261115.md)
 for positive/NOT flags and the RCA check. The exact original study, failed
 follow-ups, checkpoints and source receipts remain preserved separately.
+
+## Cross-fitted graph/frequency development candidate
+
+The [training qualification](../../docs/evaluations/training_followup_20261115/README.md)
+admits one candidate for native runtime checks, rather than claiming a further
+gain. `crossfit_prepare.py` reuses native LocalPlus, prior and dataset helpers
+for exact-sequence grouped fitting folds, with honest ordered LocalPlus and
+observed-annotation-frequency parents. It rebuilds fitting, validation and
+final base features and retains the original dated 40-channel contexts.
+`crossfit_training.py` binds those inputs around the unchanged native trainer
+and records consumed validation/reference roles in separate outer metadata.
+The [fixed plan](crossfit_protocol.json) permits one 20-epoch BP fit, with all
+earlier controls retained and no automatic app or pruning promotion. Native
+runtime checks and execution must pass before reporting results. PU-GO is
+qualified separately and is excluded from this candidate.

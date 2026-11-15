@@ -1,0 +1,28 @@
+{
+  "actual_proteins_or_annotations_used": false,
+  "author_intent_or_preferred_remedy_established": false,
+  "cases": [
+    {
+      "equal": false,
+      "invented_one_class_positive_logit": 1.0,
+      "invented_one_class_unlabelled_logit": -1.0,
+      "published_equation11_pairwise_unlabelled_term": 0.1269280110429725,
+      "released_source_sign_masked_unlabelled_term": 0.6265233750364457
+    },
+    {
+      "equal": false,
+      "invented_one_class_positive_logit": 0.0,
+      "invented_one_class_unlabelled_logit": 0.0,
+      "published_equation11_pairwise_unlabelled_term": 0.6931471805599453,
+      "released_source_sign_masked_unlabelled_term": 1.3862943611198906
+    }
+  ],
+  "format": "biograph-steward.pu-go-source-algebra-witness.v1",
+  "method_source_AST_sha256": "f91c539ae7d76ebc24a3a19a08dcff7fc204b434bcb287b11c825148b7116609",
+  "models_fitted_or_scientific_metrics_computed": false,
+  "native_PyTorch_source_executed": false,
+  "published_equation": 11,
+  "scope": "Two invented one-class cases, with one positive and one unlabelled sample. This checks literal formula equivalence, not biological performance or native runtime parity.",
+  "source_commit": "7e6bce9c27ccf48e5f6860af4a815525032f7d82",
+  "source_file_sha256": "d55bc5252048c93fbfa240ac35c7bb1471a30046211cad40e6172405758fc0b2"
+}
