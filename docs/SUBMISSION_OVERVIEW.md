@@ -122,6 +122,15 @@ The [sequence-similarity audit](evaluations/CONTEXTUAL_SEQUENCE_SIMILARITY_20261
 also limits any claim of transfer to distant protein families; exact duplicate
 removal does not establish that separation.
 
+The [completed whole-workspace assessment](evaluations/WHOLE_GRAPH_ACCURACY_COMPLETION_20261115.md)
+also compares all captured Pharos-only, enriched and retained assertion IDs.
+It qualifies references for the 180 frozen main cases and 20 separate removed
+cases, but admits no independent correctness labels matching the complete
+stored claims. The result provides no biological-accuracy percentage or
+whole-graph superiority claim. It verifies GO-ID currentness and preserves
+all previously matched curator-supported assertions; its logical uncertainty
+ranges remain separate from prediction Fmax and confidence intervals.
+
 The [original fixed full report](evaluations/contextual_combination_20261115/report.html),
 [latest development report](evaluations/crossfit_development_20261115/report.html),
 [scientific record](evaluations/SCIENTIFIC_RESULTS_20261114.md) and

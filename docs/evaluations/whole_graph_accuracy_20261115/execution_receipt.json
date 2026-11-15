@@ -1,0 +1,54 @@
+{
+  "Brev_required": false,
+  "Pharos_only_graph_sha256": "06147fbd03f772ee11a0cc27395efa8bf9c33c71e2a0f56b5936b9cf2886a906",
+  "comparison_source_sha256": "21e286366ec4690781d603afab65f49c902094789137f0d6833b371ed9b57eaf",
+  "compatible_inspector_sha256": "88a3b5e9826884b76359984c7be74020819ca31c8d7dd93681d8e50cb76d9965",
+  "enriched_source_graph_sha256": "f35f8e0bb66742a3b65d1887ecbc85ead33fd8c5ef9eb5e8015d28934f22d22e",
+  "first_two_operator_attempts_rejected_before_scientific_output": true,
+  "format": "biograph-steward.whole-workspace-scientific-comparison-public-receipt.v1",
+  "frozen_validator_source_sha256": "c2491503e3731dd0529956d8f4a8942f4059b4010771ec9a34021a13b1814834",
+  "graph_family_counts": {
+    "enriched_baseline": {
+      "disease_association": 100,
+      "drug_listing": 174,
+      "expression_observation": 1061,
+      "go_annotation": 4078,
+      "pathway_membership": 9540,
+      "protein_interaction": 1576,
+      "source_regulatory_observation": 290,
+      "tissue_proximity_observation": 120,
+      "variant_therapy_response": 41
+    },
+    "pharos_only": {
+      "disease_association": 100,
+      "drug_listing": 174,
+      "expression_observation": 1061,
+      "go_annotation": 4078,
+      "pathway_membership": 9540,
+      "protein_interaction": 718
+    },
+    "retained": {
+      "disease_association": 100,
+      "drug_listing": 174,
+      "expression_observation": 1061,
+      "go_annotation": 3780,
+      "pathway_membership": 9540,
+      "protein_interaction": 1576,
+      "source_regulatory_observation": 290,
+      "tissue_proximity_observation": 120,
+      "variant_therapy_response": 41
+    }
+  },
+  "historical_inspector_parity_cases": 180,
+  "inspector_compatibility_diagnosis_sha256": "90b2d472132a6c288b161c45c6c64d911e04e2d1b99db9bf16fc8e2abf338c11",
+  "model_calls_by_offline_runner": 0,
+  "original_manifest_had_an_inspector_source_pin": false,
+  "private_inputs_sha256": "819d4bb2fc5f006000bd93e374261c213617d58def8bf362fe529fc9853309dc",
+  "private_provenance_sha256": "267357872d2796feab0576610c917aff3b16bb6d546774ee02c70bb61400d035",
+  "private_result_sha256": "be52280b8431fe82315b1afe3f6775c9808f7732656e4d5d5c069b18e7004e56",
+  "public_raw_cases_identifiers_reference_rows_or_paths": false,
+  "qualified_native_Gold_retained_profile_used": true,
+  "retained_decision_report_sha256": "63986df5a2703344b642a131457b84f3baa04773a21be8fbf61ca8eb071706ab",
+  "source_reference_model_or_review_mutations": false,
+  "statistics_source_sha256": "1b5a59d4c8d92e30d77c0fffb40469cf7533f5939d2d44629ebf1fd2f7cc8244"
+}

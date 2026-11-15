@@ -86,3 +86,10 @@ has also passed authenticated acceptance after a real restart: six saved
 queries, 36 candidates and 27 dated GO explanations, with graph scores and
 decisions preserved. These source explanations are live; the newer development
 fit remains a separately retained research candidate.
+
+The [whole-workspace scientific comparison](WHOLE_GRAPH_ACCURACY_COMPLETION_20261115.md)
+has now executed full source/membership replay and public-reference admission
+for all 200 frozen cases. It produces explicit unknowns and finite-population
+completion ranges, with no scientific-accuracy point estimate: exact independent
+correctness labels remain unavailable. This closes the executable comparison
+gap, while preserving the substantive scientific requirement for those labels.

@@ -485,7 +485,36 @@
       "status": "complete"
     },
     "validated_automatic_biological_pruning": false,
-    "whole_graph_biological_accuracy_established": false
+    "whole_graph_biological_accuracy_established": false,
+    "whole_workspace_scientific_assessment": {
+      "Brev_needed": false,
+      "aggregate_report": "docs/evaluations/whole_graph_accuracy_20261115/report.html",
+      "biological_confidence_interval": null,
+      "code_and_aggregate_result_only_in_review_branch_not_existing_release_assets_or_presentation": true,
+      "graph_assertions": {
+        "enriched_baseline": 16980,
+        "pharos_only": 15671,
+        "retained": 16682
+      },
+      "independent_biological_accuracy_improvement_established": false,
+      "independent_false_labels_admitted": 0,
+      "independent_true_labels_admitted": 0,
+      "main_sample": 180,
+      "missing_data_bounds_are_not_confidence_intervals": true,
+      "numerical_audit": "docs/evaluations/whole_graph_accuracy_20261115/numeric_audit.json",
+      "primary_targets": 99,
+      "reference_artifact_hashes_verified": 201,
+      "reference_qualification": "docs/evaluations/whole_graph_accuracy_20261115/reference_qualification.json",
+      "result_note": "docs/evaluations/WHOLE_GRAPH_ACCURACY_COMPLETION_20261115.md",
+      "scientific_accuracy_estimate": null,
+      "separate_removed_sample": 20,
+      "source_fidelity_or_currentness_not_relabelled_as_biological_truth": true,
+      "source_graph_model_or_AWS_defaults_changed": false,
+      "status": "assessment executed; independent biological accuracy remains unidentified",
+      "summary": "docs/evaluations/whole_graph_accuracy_20261115/summary.json",
+      "summary_sha256": "be52280b8431fe82315b1afe3f6775c9808f7732656e4d5d5c069b18e7004e56",
+      "unresolved_reference_admission_cases": 200
+    }
   },
   "software": {
     "LICENSE": {
@@ -615,7 +644,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T14:47:38.930229+00:00",
+  "updated_at_UTC": "2026-11-15T15:34:51.181383+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

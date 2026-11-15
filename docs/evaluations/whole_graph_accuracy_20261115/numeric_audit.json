@@ -1,0 +1,24 @@
+{
+  "biological_confidence_interval": null,
+  "biological_improvement_established": false,
+  "complete_dossier_and_source_payloads_checked": 200,
+  "distinct_reference_file_pins_checked": 201,
+  "format": "biograph-steward.whole-workspace-independent-numerical-audit-public.v1",
+  "independent_Fraction_coefficient_bounds_equal_saved_result": true,
+  "main_cases": 180,
+  "private_verification_sha256": "aed1ad3ab4090a3012fcaa6e2ac04da77bab7a1ff767e0a4cf37db7e03477657",
+  "qualification": "Independent software/numerical verification within this development session, not independent biological expert adjudication.",
+  "retained_package_file_pins_checked": 100,
+  "scientific_accuracy_point_estimate": null,
+  "scientific_labels": {
+    "false": 0,
+    "true": 0,
+    "unknown": 200
+  },
+  "separate_removed_cases": 20,
+  "shared_reference_lineage_cases": 138,
+  "source_graph_memberships_independently_recounted": true,
+  "source_support_relabelled_as_truth": false,
+  "statistics_module_imported_or_called": false,
+  "unresolved_reference_lineage_cases": 62
+}

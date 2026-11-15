@@ -1,0 +1,424 @@
+{
+  "format": "biograph-steward.finite-population-scientific-bounds.v1",
+  "method_reference": "https://doi.org/10.1080/01621459.2000.10473902",
+  "union_population_assertions": 16980,
+  "explicit_judgment_rows": 200,
+  "unreviewed_census_assertions": 16780,
+  "graphs": {
+    "enriched_baseline": {
+      "population_assertions": 16980,
+      "labels": {
+        "true": 0,
+        "false": 0,
+        "unknown": 16980
+      },
+      "logical_accuracy_bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      },
+      "accuracy_point_estimate": null,
+      "confidence_interval": null,
+      "all_assertions_labelled": false,
+      "scientific_accuracy_independently_established": false
+    },
+    "pharos_only": {
+      "population_assertions": 15671,
+      "labels": {
+        "true": 0,
+        "false": 0,
+        "unknown": 15671
+      },
+      "logical_accuracy_bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      },
+      "accuracy_point_estimate": null,
+      "confidence_interval": null,
+      "all_assertions_labelled": false,
+      "scientific_accuracy_independently_established": false
+    },
+    "retained": {
+      "population_assertions": 16682,
+      "labels": {
+        "true": 0,
+        "false": 0,
+        "unknown": 16682
+      },
+      "logical_accuracy_bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      },
+      "accuracy_point_estimate": null,
+      "confidence_interval": null,
+      "all_assertions_labelled": false,
+      "scientific_accuracy_independently_established": false
+    }
+  },
+  "comparisons": [
+    {
+      "baseline": "pharos_only",
+      "candidate": "retained",
+      "status": "conditional_logical_completion",
+      "baseline_assertions": 15671,
+      "candidate_assertions": 16682,
+      "shared_assertions": 15373,
+      "removed_assertions": 298,
+      "added_assertions": 1309,
+      "unknown_assertions_with_nonzero_coefficient": 16980,
+      "logical_accuracy_difference_bounds": {
+        "lower": -0.07846780961515405,
+        "upper": 0.07846780961515405
+      },
+      "accuracy_difference_point_estimate": null,
+      "confidence_interval": null,
+      "same_assertion_truth_shared_between_graphs": true,
+      "biological_improvement_claimed": false
+    },
+    {
+      "baseline": "enriched_baseline",
+      "candidate": "retained",
+      "status": "conditional_logical_completion",
+      "baseline_assertions": 16980,
+      "candidate_assertions": 16682,
+      "shared_assertions": 16682,
+      "removed_assertions": 298,
+      "added_assertions": 0,
+      "unknown_assertions_with_nonzero_coefficient": 16980,
+      "logical_accuracy_difference_bounds": {
+        "lower": -0.017550058892815076,
+        "upper": 0.017550058892815076
+      },
+      "accuracy_difference_point_estimate": null,
+      "confidence_interval": null,
+      "same_assertion_truth_shared_between_graphs": true,
+      "biological_improvement_claimed": false
+    }
+  ],
+  "sampling_domains": {
+    "original_union_sample": {
+      "purpose": "original_union_probability_sample",
+      "population_assertions": 16980,
+      "sampled_assertions": 180,
+      "pool_with_other_sampling_domains": false,
+      "design_weighted_supplied_label_statuses": {
+        "true": {
+          "weighted_fraction": 0.0,
+          "estimated_design_variance": 0.0,
+          "estimated_design_standard_error": 0.0,
+          "variance_unavailable_non_census_singleton_strata": [],
+          "non_census_strata_with_no_observed_indicator_variation": [
+            "disease_association",
+            "drug_listing",
+            "expression_observation",
+            "go_annotation",
+            "pathway_membership",
+            "protein_interaction",
+            "source_regulatory_observation",
+            "tissue_proximity_observation",
+            "variant_therapy_response"
+          ],
+          "zero_estimated_variance_is_not_certainty": true,
+          "confidence_interval": null,
+          "per_stratum": {
+            "disease_association": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.005889281507656066
+            },
+            "drug_listing": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.010247349823321554
+            },
+            "expression_observation": {
+              "positive_sample_units": 0,
+              "sample_units": 15,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.06248527679623086
+            },
+            "go_annotation": {
+              "positive_sample_units": 0,
+              "sample_units": 35,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.24016489988221437
+            },
+            "pathway_membership": {
+              "positive_sample_units": 0,
+              "sample_units": 60,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.5618374558303887
+            },
+            "protein_interaction": {
+              "positive_sample_units": 0,
+              "sample_units": 20,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.0928150765606596
+            },
+            "source_regulatory_observation": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.01707891637220259
+            },
+            "tissue_proximity_observation": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.007067137809187279
+            },
+            "variant_therapy_response": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.002414605418138987
+            }
+          }
+        },
+        "false": {
+          "weighted_fraction": 0.0,
+          "estimated_design_variance": 0.0,
+          "estimated_design_standard_error": 0.0,
+          "variance_unavailable_non_census_singleton_strata": [],
+          "non_census_strata_with_no_observed_indicator_variation": [
+            "disease_association",
+            "drug_listing",
+            "expression_observation",
+            "go_annotation",
+            "pathway_membership",
+            "protein_interaction",
+            "source_regulatory_observation",
+            "tissue_proximity_observation",
+            "variant_therapy_response"
+          ],
+          "zero_estimated_variance_is_not_certainty": true,
+          "confidence_interval": null,
+          "per_stratum": {
+            "disease_association": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.005889281507656066
+            },
+            "drug_listing": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.010247349823321554
+            },
+            "expression_observation": {
+              "positive_sample_units": 0,
+              "sample_units": 15,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.06248527679623086
+            },
+            "go_annotation": {
+              "positive_sample_units": 0,
+              "sample_units": 35,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.24016489988221437
+            },
+            "pathway_membership": {
+              "positive_sample_units": 0,
+              "sample_units": 60,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.5618374558303887
+            },
+            "protein_interaction": {
+              "positive_sample_units": 0,
+              "sample_units": 20,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.0928150765606596
+            },
+            "source_regulatory_observation": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.01707891637220259
+            },
+            "tissue_proximity_observation": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.007067137809187279
+            },
+            "variant_therapy_response": {
+              "positive_sample_units": 0,
+              "sample_units": 10,
+              "sample_proportion": 0.0,
+              "population_fraction": 0.002414605418138987
+            }
+          }
+        },
+        "unknown": {
+          "weighted_fraction": 1.0,
+          "estimated_design_variance": 0.0,
+          "estimated_design_standard_error": 0.0,
+          "variance_unavailable_non_census_singleton_strata": [],
+          "non_census_strata_with_no_observed_indicator_variation": [
+            "disease_association",
+            "drug_listing",
+            "expression_observation",
+            "go_annotation",
+            "pathway_membership",
+            "protein_interaction",
+            "source_regulatory_observation",
+            "tissue_proximity_observation",
+            "variant_therapy_response"
+          ],
+          "zero_estimated_variance_is_not_certainty": true,
+          "confidence_interval": null,
+          "per_stratum": {
+            "disease_association": {
+              "positive_sample_units": 10,
+              "sample_units": 10,
+              "sample_proportion": 1.0,
+              "population_fraction": 0.005889281507656066
+            },
+            "drug_listing": {
+              "positive_sample_units": 10,
+              "sample_units": 10,
+              "sample_proportion": 1.0,
+              "population_fraction": 0.010247349823321554
+            },
+            "expression_observation": {
+              "positive_sample_units": 15,
+              "sample_units": 15,
+              "sample_proportion": 1.0,
+              "population_fraction": 0.06248527679623086
+            },
+            "go_annotation": {
+              "positive_sample_units": 35,
+              "sample_units": 35,
+              "sample_proportion": 1.0,
+              "population_fraction": 0.24016489988221437
+            },
+            "pathway_membership": {
+              "positive_sample_units": 60,
+              "sample_units": 60,
+              "sample_proportion": 1.0,
+              "population_fraction": 0.5618374558303887
+            },
+            "protein_interaction": {
+              "positive_sample_units": 20,
+              "sample_units": 20,
+              "sample_proportion": 1.0,
+              "population_fraction": 0.0928150765606596
+            },
+            "source_regulatory_observation": {
+              "positive_sample_units": 10,
+              "sample_units": 10,
+              "sample_proportion": 1.0,
+              "population_fraction": 0.01707891637220259
+            },
+            "tissue_proximity_observation": {
+              "positive_sample_units": 10,
+              "sample_units": 10,
+              "sample_proportion": 1.0,
+              "population_fraction": 0.007067137809187279
+            },
+            "variant_therapy_response": {
+              "positive_sample_units": 10,
+              "sample_units": 10,
+              "sample_proportion": 1.0,
+              "population_fraction": 0.002414605418138987
+            }
+          }
+        }
+      },
+      "population_scientific_accuracy_estimate": null,
+      "biological_confidence_interval": null,
+      "interpretation": "Conditional SRSWOR summaries of supplied label availability/status only; not population truth bounds, credible-label validation or correction of adaptive label ascertainment."
+    },
+    "removed_GO_supplement": {
+      "purpose": "separate_removed_domain",
+      "population_assertions": 298,
+      "sampled_assertions": 20,
+      "pool_with_other_sampling_domains": false,
+      "design_weighted_supplied_label_statuses": {
+        "true": {
+          "weighted_fraction": 0.0,
+          "estimated_design_variance": 0.0,
+          "estimated_design_standard_error": 0.0,
+          "variance_unavailable_non_census_singleton_strata": [],
+          "non_census_strata_with_no_observed_indicator_variation": [
+            "go_annotation"
+          ],
+          "zero_estimated_variance_is_not_certainty": true,
+          "confidence_interval": null,
+          "per_stratum": {
+            "go_annotation": {
+              "positive_sample_units": 0,
+              "sample_units": 20,
+              "sample_proportion": 0.0,
+              "population_fraction": 1.0
+            }
+          }
+        },
+        "false": {
+          "weighted_fraction": 0.0,
+          "estimated_design_variance": 0.0,
+          "estimated_design_standard_error": 0.0,
+          "variance_unavailable_non_census_singleton_strata": [],
+          "non_census_strata_with_no_observed_indicator_variation": [
+            "go_annotation"
+          ],
+          "zero_estimated_variance_is_not_certainty": true,
+          "confidence_interval": null,
+          "per_stratum": {
+            "go_annotation": {
+              "positive_sample_units": 0,
+              "sample_units": 20,
+              "sample_proportion": 0.0,
+              "population_fraction": 1.0
+            }
+          }
+        },
+        "unknown": {
+          "weighted_fraction": 1.0,
+          "estimated_design_variance": 0.0,
+          "estimated_design_standard_error": 0.0,
+          "variance_unavailable_non_census_singleton_strata": [],
+          "non_census_strata_with_no_observed_indicator_variation": [
+            "go_annotation"
+          ],
+          "zero_estimated_variance_is_not_certainty": true,
+          "confidence_interval": null,
+          "per_stratum": {
+            "go_annotation": {
+              "positive_sample_units": 20,
+              "sample_units": 20,
+              "sample_proportion": 1.0,
+              "population_fraction": 1.0
+            }
+          }
+        }
+      },
+      "population_scientific_accuracy_estimate": null,
+      "biological_confidence_interval": null,
+      "interpretation": "Conditional SRSWOR summaries of supplied label availability/status only; not population truth bounds, credible-label validation or correction of adaptive label ascertainment."
+    }
+  },
+  "reference_kind_counts": {
+    "expert_curation": 34,
+    "native_source_only": 153,
+    "none": 13
+  },
+  "reference_independence_counts": {
+    "shared": 138,
+    "unresolved": 62
+  },
+  "reference_file_hashes_verified_by_statistics": false,
+  "scientific_label_credibility_verified_by_statistics": false,
+  "confidence_interval": null,
+  "biological_improvement_claimed": false,
+  "limits": [
+    "Bounds condition on correctness of externally admitted exact-claim labels and graph census.",
+    "All unlabelled and unsampled assertions remain unknown; evidence support is not scientific truth.",
+    "Shared assertions have one truth value across graphs, even with different population denominators.",
+    "Logical bounds do not quantify sampling, annotation error, curator dependence or biological uncertainty.",
+    "Separate sample-domain summaries are never pooled or substituted for census logical bounds.",
+    "No independent whole-graph scientific accuracy, statistical significance or automatic graph change is established."
+  ]
+}

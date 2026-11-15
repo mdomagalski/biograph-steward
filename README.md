@@ -46,6 +46,13 @@ advantage remain open. Optional research methods are isolated from the core
 application; their unfavorable results and consumed reference boundaries are
 preserved below.
 
+The [whole-workspace reference assessment](docs/evaluations/WHOLE_GRAPH_ACCURACY_COMPLETION_20261115.md)
+has now executed the exact Pharos-only/enriched/retained comparison and checked
+public references for all 200 frozen cases. No fully matched independent
+correctness labels were admitted, so it reports missing-data bounds instead
+of inventing an accuracy percentage. The 298 obsolete-ID corrections and
+preservation of previously matched curator support are verified separately.
+
 The current review checkout is `codex/contextual-gain-delivery`. The default
 `main` branch remains at its October 26 checkpoint pending review; use the
 [review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery)

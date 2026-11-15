@@ -1,0 +1,33 @@
+{
+  "additional_aggregate_review_receipt": "numeric_audit.json",
+  "files": {
+    "execution_receipt.json": {
+      "bytes": 2569,
+      "sha256": "85c8d52e0d9974be779f13ca58a1ae417a19e881f10faf45560f102feb9f76f6"
+    },
+    "numeric_audit.json": {
+      "bytes": 1063,
+      "sha256": "809c51cd4021cdeff7c5164a4843475ca53d658a9070fce6507f029448fd665d"
+    },
+    "reference_qualification.json": {
+      "bytes": 1882,
+      "sha256": "8dd9019c6b8e405da199da0005175fb3ff3cfa9b8ccfa7886ba762297075ac29"
+    },
+    "report.html": {
+      "bytes": 8261,
+      "sha256": "11af1e0144d626af65f12ea02fdc05de61b75a91001f0720b209736a94e397bc"
+    },
+    "report.md": {
+      "bytes": 6424,
+      "sha256": "54a32cffc25c216182948f47d08b30c9ae1256ab8d59e8c1ae67683098a2d812"
+    },
+    "summary.json": {
+      "bytes": 15612,
+      "sha256": "be52280b8431fe82315b1afe3f6775c9808f7732656e4d5d5c069b18e7004e56"
+    }
+  },
+  "format": "biograph-steward.whole-workspace-assessment-publication.v1",
+  "publisher_source_sha256": "a81c7e38f026615cb4f1a016276fd3f3ca0586ac17a36927224908d3ff2fa9e5",
+  "raw_cases_references_or_local_paths_published": false,
+  "saved_result_copied_without_statistical_recomputation": true
+}

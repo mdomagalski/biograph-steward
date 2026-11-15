@@ -60,8 +60,13 @@ def verify_tree(folder, pins, report_name):
     need(all(sha(folder / name) == pin for name, pin in pins.items()), "frozen input bytes changed.")
 
 
-def load_frozen(audit, packet):
+def load_frozen(audit, packet, *, inspection_reader=None):
     """Replay the complete frozen sample and dossiers against the Gold source."""
+    # Dossiers freeze a rendered source guide as well as the assertion. A
+    # separately qualified historical renderer can reproduce that guide while
+    # every source, sampling and complete-dossier equality check stays active.
+    reader = inspect_selection if inspection_reader is None else inspection_reader
+    need(callable(reader), "source-inspection reader must be callable.")
     audit, packet = Path(audit).absolute(), Path(packet).absolute()
     manifest, graph = gold_packet.load_packet(packet)
     report_pin = sha(audit / "sample_manifest.json")
@@ -113,7 +118,7 @@ def load_frozen(audit, packet):
             "source_edges": source_edges,
             "source_edge_content_sha256": {e["id"]: digest(e) for e in source_edges},
             "endpoint_nodes": [deepcopy(nodes[uid]) for uid in sorted({assertion["subject"], assertion["object"]})],
-            "source_inspection": inspect_selection(graph, assertion["id"]),
+            "source_inspection": reader(graph, assertion["id"]),
             "intervention_disposition_exposed": False, "scientific_judgment": "not assigned by preparation"}
         rebuilt["content_sha256"] = digest(rebuilt)
         need(dossier == rebuilt and row["dossier_content_sha256"] == dossier["content_sha256"],

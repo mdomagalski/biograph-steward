@@ -165,6 +165,71 @@ PYTHONPATH=.:tests python3 -m unittest \
 Raw source and dossier data retain provider terms. The software license does
 not clear redistribution of the full underlying graph package.
 
+## Separate scientific-label comparison
+
+`scientific_comparison.py` binds the captured Pharos-only graph, the complete
+enriched source union and its retained graph to the existing Gold packets and
+frozen samples. It verifies the exact primary cohort, Pharos-origin source
+payloads, shared assertion identities/qualifiers, every frozen dossier and
+each supplied reference-file hash. The original main sample and removed-GO
+supplement keep their separate inclusion probabilities. No graph, decision,
+old evidence judgment or reference source is changed.
+
+Scientific judgments are a new, explicit input axis. Each row binds the original
+case/sample/dossier and assertion hash, stored predicate and claim semantics;
+it declares `scientific_label` as `true`, `false` or `unknown`, reference type,
+exact-context flags and source/study independence. This runner admits nonunknown
+labels only when independence is explicitly qualified. It checks file bytes
+and the declared contract; it cannot establish a curator's expertise or make
+an asserted independence judgment true. Existing source-support statuses are
+never converted into scientific labels. Unmatched or partially matched public
+curation remains unknown.
+
+`scientific_statistics.py` implements the finite-population binary
+[missing-outcome bounds](https://doi.org/10.1080/01621459.2000.10473902):
+`known true / N` through `1 - known false / N`. Unsampled assertions are unknown
+as well. Paired differences share one truth value for each identical assertion
+ID across both graphs. These are logical ranges conditional on the admitted
+labels and fixed graph census, **not confidence intervals**. They do not assume
+that unlabelled assertions are missing at random. Small exhaustive truth-table
+controls check nested and nonnested graphs, adverse outcomes and shared unknown
+claims. Cross-ID biological equivalence is not inferred.
+
+The existing sampling summaries describe supplied-label availability with
+their original design weights. They are not extrapolated biological truth.
+A missing-data completion range from this new census calculation must not be
+confused with the old sampled-evidence completion range. No accuracy point
+estimate is produced for a partially labelled graph, and no biological gain is
+claimed automatically.
+
+```sh
+python3 -m tools.sampled_audit.scientific_comparison \
+  --pharos-graph /path/to/original_pharos_run/graph.json \
+  --retained-package /path/to/current_retained_package \
+  --audit /path/to/original_frozen_audit \
+  --removed-sample /path/to/frozen_removed_GO_sample \
+  --removed-policy-package /path/to/original_GO_retained_package \
+  --judgments /path/to/complete_claim_bound_judgments.jsonl \
+  --out runs/my_scientific_comparison
+```
+
+For the November 12 dossiers, the November 13 source inspector added lookup
+links and explanation text. Rebuilding their display under the newer reader
+correctly fails full-dossier equality. The optional `--frozen-inspector` accepts
+only the qualified historical `inspection.py` with SHA256
+`88a3b5e9826884b76359984c7be74020819ca31c8d7dd93681d8e50cb76d9965`,
+available from project commit `3b2318eda37e9c19eee1d27f8c3ee7eb4b580be7`.
+That reader reproduces all 180 frozen source guides exactly with the checked
+current helpers. It is verified compatible historical code; the original
+sample manifest did not record its inspector hash. The scorer's optional
+`inspection_reader` dependency preserves all source, sampling and complete-case
+equality checks; its default remains the current reader. Unqualified Python
+files are rejected before execution. No old dossier is regenerated or resealed.
+
+The detailed inputs and provenance are private research artifacts. Only
+aggregate results and bounded source/method receipts are suitable for the
+repository's public scientific report.
+
 ## Project exact source-version pathway context
 
 `wiki_version_projection.py` applies the existing plain JSONL plus mapping-ledger

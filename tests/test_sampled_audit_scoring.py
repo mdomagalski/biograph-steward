@@ -78,6 +78,19 @@ class AuditScoringTests(unittest.TestCase):
         self.assertEqual(report["content_sha256"], digest({k: v for k, v in report.items() if k != "content_sha256"}))
         self.assertEqual({p: sha(p) for p in before}, before)
 
+    def test_explicit_renderer_keeps_complete_frozen_dossier_validation(self):
+        called = []
+        def reader(graph, selection):
+            called.append(selection)
+            return scoring.inspect_selection(graph, selection)
+        report, _, _, _, sample = scoring.load_frozen(self.audit, self.packet, inspection_reader=reader)
+        self.assertEqual(len(called), len(sample))
+        self.assertEqual(report['sample_id'], self.sample_report['sample_id'])
+        with self.assertRaisesRegex(ValueError, 'full source assertion/evidence'):
+            scoring.load_frozen(self.audit, self.packet, inspection_reader=lambda graph, selection: {})
+        with self.assertRaisesRegex(ValueError, 'callable'):
+            scoring.load_frozen(self.audit, self.packet, inspection_reader='unqualified renderer')
+
     def test_wrong_case_assertion_sample_dossier_or_actor_fails_before_output(self):
         original = deepcopy(self.reviews)
         for key, value in (("case_id", "absent"), ("assertion_id", "another"), ("stratum", "other"),
