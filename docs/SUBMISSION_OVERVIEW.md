@@ -110,6 +110,10 @@ The supplied deadline is **November 17, 2026**; the exact final file/scoring
 contract has not been supplied. These local assessments are supporting
 evidence, rather than an official organizer score.
 
+The [prepared core software ZIP](releases/20261115/README.md) passed clean Python
+construction, answer, actual export and fresh-reopen checks. It is a dated local
+checkpoint; hosting and final publication remain separate actions.
+
 The [editable presentation](../output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v2.pptx)
 has six main slides and two technical appendix slides. The
 [organizer/proposal crosswalk](PROJECT_ALIGNMENT.md) distinguishes delivered

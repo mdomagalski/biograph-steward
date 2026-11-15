@@ -6,7 +6,7 @@
     "security_changes_or_binary_resigning": false,
     "status": "unavailable in this audit"
   },
-  "created_at_UTC": "2026-11-15T02:31:16.332158+00:00",
+  "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
   "format": "biograph-steward.delivery-status.v1",
   "hosted_review": {
     "authenticated_acceptance_receipt": {
@@ -123,16 +123,33 @@
     "core_requires_pip": false,
     "final_public_repository_handoff_completed_by_this_audit": false,
     "latest_indexed_software_ZIP": {
-      "bytes": 905085,
-      "file": "biograph_steward_software.zip",
-      "file_count": 165,
-      "sha256": "ed473c27ee1331d06cf78e4f4edcee27e1231a4c0e609653195d9af1eb1c20ad"
+      "bytes": 661594,
+      "file": "biograph_steward_core_software.zip",
+      "file_count": 124,
+      "path": "runs/software_delivery_core_20261115/biograph_steward_core_software.zip",
+      "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
     },
-    "latest_indexed_software_ZIP_commit": "5362b50b80e38505f24e21d97e7034005a7a51e1",
+    "latest_indexed_software_ZIP_commit": "9bf202f84949c76904ba8e51a5f83b68f2d58843",
     "latest_indexed_software_acceptance": {
-      "bytes": 2214,
-      "path": "docs/evaluations/software_release_native_go_export_20261113_summary.json",
-      "sha256": "420534e73bf2ff6456ef5ba52f101204abbdbb7c00c1686f9c9278eb7f31ac3c"
+      "bytes": 3549,
+      "path": "docs/evaluations/software_release_core_20261115_summary.json",
+      "sha256": "fa88a9bc527c412f25b5be6a3edbe68bd6dbeaceda12c7f86f0ebfb03fd30576"
+    },
+    "latest_indexed_software_scope": "Supported standalone core subset; optional research and deployment scripts remain available in the full repository and preserved source-runtime tar.",
+    "new_core_archive_acceptance": {
+      "actual_graph_ledger_and_answer_exports_verified": true,
+      "all_owned_servers_stopped": true,
+      "browser_visual_check": false,
+      "clean_python": {
+        "no_site": 1,
+        "site_loaded": false,
+        "site_package_paths": [],
+        "version": "3.12.14"
+      },
+      "cloud_calls": 0,
+      "fresh_extraction_and_saved_answer_reopen_passed": true,
+      "model_calls": 0,
+      "source_fetches": 0
     },
     "new_local_synthetic_check": {
       "UI_browser_visual_check": "unavailable: browser plugin native module rejected by macOS code-signature check",
@@ -158,6 +175,20 @@
       "synthetic": true,
       "zip_files": 20
     },
+    "preserved_November_13_indexed_software_checkpoint": {
+      "acceptance": {
+        "bytes": 2214,
+        "path": "docs/evaluations/software_release_native_go_export_20261113_summary.json",
+        "sha256": "420534e73bf2ff6456ef5ba52f101204abbdbb7c00c1686f9c9278eb7f31ac3c"
+      },
+      "archive": {
+        "bytes": 905085,
+        "file": "biograph_steward_software.zip",
+        "file_count": 165,
+        "sha256": "ed473c27ee1331d06cf78e4f4edcee27e1231a4c0e609653195d9af1eb1c20ad"
+      },
+      "commit": "5362b50b80e38505f24e21d97e7034005a7a51e1"
+    },
     "published_release_asset_created_by_this_audit": false,
     "repository_visibility": "documented private during preparation; not live-verified here because gh CLI unavailable",
     "source_code_commit_at_local_check": "3f4f0ac11bf34bc7942deb2c3939415400fa782e"
@@ -165,7 +196,7 @@
   "unresolved_release_actions": [
     {
       "item": "Final reviewed code checkpoint and code-only software archive",
-      "status": "pending after current code changes settle; existing archive remains 5362b50"
+      "status": "Dated 9bf202f core-only archive built and passed clean install/export/reopen acceptance locally; final submission tag and publication remain separate release actions."
     },
     {
       "item": "Public MIT GitHub/release handoff for open-source track",

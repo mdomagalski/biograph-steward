@@ -17,8 +17,14 @@ source bytes and a cold Neptune read through the gateway after restart.
 The saved TP53 answer also opened in Chrome. Independent teammate feedback and
 independent whole-graph biological accuracy remain outstanding.
 
+The [current delivery status](DELIVERY_STATUS_20261115.json) distinguishes the
+last verified hosted runtime, **`a6a05ff`**, from the newer locally tested
+**`9bf202f` core software ZIP** in the [November 15 UTC release index](releases/20261115/README.md).
+Its clean-install check needs no real source data or model. These are separate
+checkpoints; a new local archive does not update the reviewer site.
+
 The [November 13 delivery index](releases/20261113/README.md) joins the designated
-runtime, current graph and answer archives, exact checksums and access/source
+runtime, graph and answer archives, exact checksums and access/source
 boundaries. Its [manifest](releases/20261113/manifest.json) separates the updated
 hosted runtime `5362b50` from the preserved `902699e` software/private archives and lists relative local
 artifact paths. Preparing the index publishes no assets and changes no graph.
@@ -41,10 +47,10 @@ reports source-support coverage and the negative controlled biological results.
 
 The earlier [GO rollout receipt](evaluations/hosted_native_go_20261113_summary.json)
 records code `ea5752e` with the approved separate 12-file native GO/QC packet.
-Current `5362b50` adds its separately verified download; the original files remain unchanged.
+The November 13 `5362b50` checkpoint added its separately verified download; the original files remain unchanged.
 The [earlier hosted update](evaluations/hosted_polish_update_20261113_summary.json)
 installed the 16-file aggregate publication
-`scientific_assessment_delivery_20261113` (`09e50f8e…`), which remains in use. The existing
+`scientific_assessment_delivery_20261113` (`09e50f8e…`), retained as a dated publication. The existing
 TP53 answer and all 13 question/export files are unchanged after a real service
 restart; native replay, publication APIs and complete Neptune parity/read checks
 passed. The former runtime is retained for rollback. That source-attachment
@@ -52,12 +58,16 @@ update added no public access, permissions or compute resources; the later
 approved reviewer gateway is described above. Deployment does not establish
 biological accuracy or extend the earlier backup-recovery claim.
 
-The hosted v3 publication shows grounding plus the earlier 92-query/3,968-pair
+That earlier v3 publication shows grounding plus the 92-query/3,968-pair
 exploratory comparison. The [negative 128-gene/7,648-pair transfer](evaluations/PROSPECTIVE_GENE_TRANSFER_20261113.md)
 remains separately reported. The [native GO inspector](NATIVE_GO_CONTEXT_WORKBENCH.md)
 now exposes preserved qualifiers, references and recorded QC beside a selected
 claim in the hosted app. Current native context remains separate from the
 historical Pharos record; it supplies no new biological truth or pruning label.
+The [November 14 hosted assessment](evaluations/scientific_hosted_delivery_20261114_summary.json)
+is `scientific_assessment_reference_20261114` (v4), including the saved historical
+function inspector and BioRED aggregates. Its authenticated browser check,
+source-preserving backup and isolated recovery are recorded separately.
 
 The November 12 `crc_biological_workspace_20261112` source and its portable
 all-abstain CRC package remain supplementary, reproducible earlier artifacts.
@@ -102,15 +112,19 @@ terms still apply.
 ## Current offline handoff
 
 For the latest code-only download, use
-`runs/software_delivery_native_go_export_20261113/biograph_steward_software.zip`
-at commit `5362b50`, verified by the
-[clean extracted check](evaluations/software_release_native_go_export_20261113_summary.json).
-The [release index](releases/20261113/README.md) separates its checksum and
-assessment viewer from the earlier combined demonstration below. The current
-hosted code matches this software checkpoint; its real source packets, native
-GO/QC attachment and aggregate publication remain separately supplied data.
+`runs/software_delivery_core_20261115/biograph_steward_core_software.zip`
+at commit `9bf202f`, verified by the
+[clean extracted check](evaluations/software_release_core_20261115_summary.json).
+The [release index](releases/20261115/README.md) records its checksum and exact
+core-only scope. Optional research/deployment scripts remain in the full
+repository. The hosted app remains at its separately verified `a6a05ff`
+checkpoint; real source packets, native GO/QC attachment and aggregate
+publication are separately supplied data.
 The GO attachment is absent from this ZIP and fresh installations leave its
 inspector and native packet download disabled until the source paths are configured.
+The earlier `5362b50` software ZIP and its
+[acceptance receipt](evaluations/software_release_native_go_export_20261113_summary.json)
+remain preserved in the [November 13 index](releases/20261113/README.md).
 The [closing fixes](DELIVERY_POLISH_20261113.md) preserve saved source bytes
 while reducing HTTP transfer size and removing scratch files from path verification.
 

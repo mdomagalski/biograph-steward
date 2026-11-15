@@ -1,0 +1,89 @@
+{
+  "API_synthetic_answer_with_citations": true,
+  "CLI_synthetic_recipe_passed": true,
+  "actual_answer_ZIP_download": {
+    "bytes": 9751,
+    "file_count": 4
+  },
+  "actual_graph_and_decision_ZIP_download": {
+    "bytes": 38492,
+    "file_count": 24
+  },
+  "actual_owned_server_restart": true,
+  "all_owned_servers_stopped": true,
+  "answer_sha256": "8af596074fcabb5d85e7572a229c6f53cf8331e667dbb7f3bbcb492892403252",
+  "archive_path": "runs/software_delivery_core_20261115/biograph_steward_core_software.zip",
+  "browser_visual_test": false,
+  "citation_groups": 6,
+  "cloud_calls": 0,
+  "content_sha256": "2352e0f1360be86a3eba946c186f4b538c760c66dd4530099bd9b253963e1f4c",
+  "core_archive_roots": [
+    "app.py",
+    "LICENSE",
+    "README_DEMO.md",
+    "biograph_steward/"
+  ],
+  "created_at": "2026-11-15T03:10:28.576030+00:00",
+  "distribution_status": "Prepared and checked locally; not uploaded or published.",
+  "exhaustive_abstain_decisions": 18,
+  "format": "biograph-steward.core-subset-software-acceptance.v1",
+  "fresh_export_extraction_and_baseline_source_recovery": true,
+  "git_commit": "9bf202f84949c76904ba8e51a5f83b68f2d58843",
+  "independent_user_or_biological_validation": false,
+  "model_calls": 0,
+  "native_GO_inspection_export_requires_separate_authorized_packet": true,
+  "native_GO_source_packet_included": false,
+  "offline_gold_decision_verification_passed": true,
+  "operator_sha256": "7f7152ab39c36cfdbe6d063f474124147f73a6f031f4570b85c9a76c480a284a",
+  "preserved_baseline_source_graph_equal": true,
+  "preserved_full_runtime_builder_release": {
+    "bundle": "biograph-9bf202f84949c76904ba8e51a5f83b68f2d58843.tar.gz",
+    "bytes": 859148,
+    "cloud_resources_created": false,
+    "created_at": "2026-11-15T03:10:24.992895+00:00",
+    "credentials_included": false,
+    "format": "biograph-steward.aws-source-release.v1",
+    "git_commit": "9bf202f84949c76904ba8e51a5f83b68f2d58843",
+    "sha256": "301bbfae4feef6fbf0ea65b0b3187ea3e09d38be2b567fa0cbef86574e24f434",
+    "source_paths": [
+      ".dockerignore",
+      "Dockerfile",
+      "app.py",
+      "LICENSE",
+      "requirements-aws.txt",
+      "biograph_steward",
+      "scripts",
+      "deploy/aws/bootstrap.sh",
+      "deploy/aws/backup.sh"
+    ]
+  },
+  "private_acceptance_content_sha256": "a71a05c9aa02f515ff8f3bab216e02cc7d380b7786d4cf383c95daa69a432583",
+  "python": {
+    "no_site": 1,
+    "site_loaded": false,
+    "site_package_paths": [],
+    "version": "3.12.14"
+  },
+  "reader_date": {
+    "date": "2026-11-14",
+    "timezone": "America/New_York"
+  },
+  "research_and_deployment_scripts_omitted_from_core_subset": true,
+  "retained_nodes_edges_assertions_equal_source": true,
+  "returned_proteins": 2,
+  "saved_answer_reopened_identically": true,
+  "software_archive": {
+    "bytes": 661594,
+    "file": "biograph_steward_core_software.zip",
+    "file_count": 124,
+    "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
+  },
+  "software_source_bytes_unchanged": true,
+  "source_data_credentials_weights_or_Git_history_in_software_archive": false,
+  "source_fetches": 0,
+  "source_runtime_note": "The full upstream runtime tar uses the unchanged committed allowlist; the standalone ZIP is a supported core subset and omits optional research/deployment scripts. Both are dated local checkpoints, not a hosted rollout.",
+  "status": "passed",
+  "synthetic_graph_sha256": "98533acb0fd9b449a760c7f3b261b9da7aa54dee416f9c7f29bbe7dd54d5b741",
+  "synthetic_only": true,
+  "upstream_vendored_license_notices_preserved": true
+}
