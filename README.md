@@ -151,6 +151,11 @@ The [fixed PPI pruning comparison](docs/evaluations/PPI_PRUNING_COMPARISON_20261
 
 ## Repository scope
 
+The core application and standalone core ZIP use the [MIT license](LICENSE).
+Optional research adapters retain their explicit per-file licenses, including
+the [GPL-3.0-only CAFA evaluator adapters](tools/cafa_reference/NOTICE.md).
+Retrieved data and external model/tool artifacts retain their own terms.
+
 `main` contains the current workbench, reusable source/identity adapters and the current INMC preparation tools. Retired growth-ranking, extraction, verifier and context-QA experiments are preserved on a separate **local archive branch**, rather than mixed into the active application. The [experiment ledger](docs/EXPERIMENT_HISTORY.md) records outcomes, consumed holdouts, exact archive commit and recovery instructions. The archive has not been pushed; ignored run data are not included in Git.
 
 | Area | Guide |

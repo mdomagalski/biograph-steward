@@ -68,7 +68,9 @@ entities**. Its full baseline preserves 16,985 records. The 298 exclusions
 concern obsolete GO identifiers in a pinned ontology; they are not 298
 experimentally disproved relationships. A record count is not a count of
 independent experiments. The main Pharos319 capture is frozen at October 14,
-2026; later publisher context keeps its own source dates.
+2026; later publisher context keeps its own source dates. A November 15 UTC
+metadata-only check still returned the public API label `pharos319`; it
+retrieved no biological records and did not replace the frozen demonstration.
 
 ## What the measurements support
 
@@ -91,8 +93,10 @@ retain unfavorable controls, sparse populations and unavailable strata.
 
 ## Handoff and remaining release actions
 
-The software uses the [MIT license](../LICENSE). Retrieved data retain their
-own terms. The complete graph includes KEGG material, so public redistribution
+The core application uses the [MIT license](../LICENSE). Optional research
+adapters retain their stated licenses, including the
+[GPL-3.0-only evaluator adapters](../tools/cafa_reference/NOTICE.md).
+Retrieved data retain their own terms. The complete graph includes KEGG material, so public redistribution
 of the mixed-source packet has not been cleared. The protected reviewer route,
 code-only demonstration and CC0 annex provide distinct access paths.
 

@@ -334,7 +334,7 @@ Show implemented methods and useful behavior before architecture details.
 
 | Item | Current state | Finish action |
 |---|---|---|
-| MIT repository and build instructions | Implemented; current code is on the private review branch and the current software ZIP passes clean extracted startup/question/export/restart checks | Freeze the final reviewed checkpoint and carry out the public repository/release handoff |
+| MIT core application and build instructions | Implemented; the standalone MIT core ZIP passes clean extracted startup/question/export/restart checks. Optional research adapters retain their explicit per-file licenses. | Freeze the final reviewed checkpoint and carry out the public repository/release handoff |
 | App and demonstration | Accepted hosted `a6a05ff` preserves TP53/native exports and adds the separate six-query/36-hypothesis function inspector; native GO, five-tab flow, synthetic checkout and CC0 annex remain available | Gather weekend team feedback for Monday, fix observed interpretation/access issues, and verify the permitted judge access route; independent intended-user assessment remains open |
 | Graph and decisions | Current AWS/Neptune workspace retains 16,687 records across 99 primary targets, with its original baseline and complete decisions preserved; 298 obsolete-GO-ID exclusions are source qualifications. Earlier all-abstain and experimental-pruning packages remain separate | Deliver clearly named current workspace and historical comparison packages under their source terms |
 | Standards | Explicit vocabulary references, bounded KGX profile and SSSOM audit | Link the implemented profile and documented conformance limits |

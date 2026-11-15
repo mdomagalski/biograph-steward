@@ -193,6 +193,19 @@
     "repository_visibility": "documented private during preparation; not live-verified here because gh CLI unavailable",
     "source_code_commit_at_local_check": "3f4f0ac11bf34bc7942deb2c3939415400fa782e"
   },
+  "source_version_metadata_check": {
+    "biological_target_or_GO_records_requested": false,
+    "created_at": "2026-11-15T03:46:58.138195+00:00",
+    "endpoint": "https://pharos-api.ncats.io/graphql",
+    "frozen_source_graph_retrieved_or_replaced": false,
+    "purpose": "delivery source-version metadata only",
+    "query": "query DatabaseVersion { dbVersion }",
+    "request_count": 1,
+    "result": {
+      "dbVersion": "pharos319"
+    },
+    "scope": "Service-reported database label only; no claim about completeness or equivalence of Pharos400 artifacts."
+  },
   "unresolved_release_actions": [
     {
       "item": "Final reviewed code checkpoint and code-only software archive",

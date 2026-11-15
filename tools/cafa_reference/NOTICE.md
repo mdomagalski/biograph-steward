@@ -9,6 +9,13 @@ They are not application dependencies. The full license text is included as
 `LICENCE.GPL-3.0.txt`. Preserve that license and the original CAFA-evaluator
 attribution when distributing these adapters together with the author source.
 
+The files carrying the same explicit GPL-3.0-only SPDX notice in
+`../learned_combination/` and `../contextual_combination/` retain that license
+as well. They wrap the separately pinned native evaluator and remain optional
+research code, outside the standalone MIT core application ZIP. Other files
+retain their own stated license. The external ProtBoost implementation is
+separately source-pinned Apache-2.0 code and is not vendored into the application.
+
 The NK/LK adapter uses that same evaluator with native `exclude=None` and
 preserves exact author curves and denominators. Its source/prediction release
 gates and optional numerical prediction wrappers do not add the evaluator to
