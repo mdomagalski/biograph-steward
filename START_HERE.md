@@ -142,6 +142,12 @@ BP cells, source-retention trade-offs and positive/NOT flags are reported
 separately as development on an already consumed reference. It changes no
 model default or hosted workspace.
 
+The subsequent [cross-fitted graph/frequency comparison](docs/evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md)
+finds a positive interval over current-curated LocalPlus only in the fixed-T0
+BP/partial-knowledge view. The native view and comparisons to the selected
+model remain uncertain. All six cells are reported as consumed-reference
+development, with no new default or graph decision.
+
 The [expert-labeled grounding assessment](docs/evaluations/EXPERT_GROUNDING_20261113.md)
 measures source-identity error triage using published curator labels. It remains
 an assisted-review component: publication context reduces false alarms but

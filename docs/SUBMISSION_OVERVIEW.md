@@ -104,11 +104,20 @@ historical memberships back also lowered the direct prior's score in both
 views. This informs source maintenance without declaring those historical
 records biologically false or changing the application.
 
+The next [cross-fitted graph/frequency fit](evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md)
+completed one fixed training run and all 3,300 forecasts. In the fixed-T0
+ontology view, BP Fmax improves from current-curated LocalPlus's 0.18277 to
+0.21336 (paired 95% interval for the difference: +0.00409 to +0.05665).
+The native-view interval includes zero, and no clear improvement over the
+original selected model appears in either view. This is a consumed-reference
+development result; the candidate is retained without changing app defaults.
+
 The [sequence-similarity audit](evaluations/CONTEXTUAL_SEQUENCE_SIMILARITY_20261115.md)
 also limits any claim of transfer to distant protein families; exact duplicate
 removal does not establish that separation.
 
-The [latest full report](evaluations/contextual_combination_20261115/report.html),
+The [original fixed full report](evaluations/contextual_combination_20261115/report.html),
+[latest development report](evaluations/crossfit_development_20261115/report.html),
 [scientific record](evaluations/SCIENTIFIC_RESULTS_20261114.md) and
 [earlier mixture results](evaluations/LEARNED_COMBINATION_RESULTS_20261115.md)
 retain unfavorable controls, sparse populations and unavailable strata.

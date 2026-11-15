@@ -1,0 +1,24 @@
+{
+  "consumed_reference_development_only": true,
+  "development_plan_sha256": "22a51e43cc9720bbd5d257c3dfc1fc8d23d1e73f2f39d5c9f854cb3b99621823",
+  "evaluation_scores_intervals_or_model_choices_recomputed": false,
+  "files": {
+    "report.html": {
+      "bytes": 85501,
+      "sha256": "302b744105011f6afb5c1d9bc7b9de94d7828db6dd2e2acb8528e2c52d3d9779"
+    },
+    "report.md": {
+      "bytes": 66349,
+      "sha256": "f0cd138c7a0c3ea6b68d22e48c91f2588d6adf59cfb54cce243af33daf38da74"
+    },
+    "summary.json": {
+      "bytes": 226320,
+      "sha256": "5e12cd3cce8476b54ed12cb5952c52e07acfeb1aacb3c6c9de3b4a1d1417a8c4"
+    }
+  },
+  "format": "biograph-steward.crossfit-development-publication.v1",
+  "original_public_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "raw_cases_draws_or_paths_published": false,
+  "renderer_source_sha256": "33bd2198574cddfcdfa0d48c054930562e5b4ecee0eebceecc4fd557db6c7c80",
+  "source_aggregate_sha256": "f011f327cdc6282e8bf67d0af0f527d19e9e3ce5b5dcf4a0425d6543932915f4"
+}

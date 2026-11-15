@@ -31,6 +31,11 @@ A separate [current-annotation refit](docs/evaluations/CURRENT_REFIT_DEVELOPMENT
 also fails to establish improvement over the original selected model. Its
 stronger source controls and unresolved positive/NOT flags are preserved as
 consumed-reference development; the original model is retained.
+A subsequent [cross-fitted graph/frequency fit](docs/evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md)
+achieves Fmax 0.21336 versus 0.18277 for current-curated LocalPlus in the
+fixed-ontology BP view, with a positive paired interval. The native-view
+advantage remains uncertain, and neither view clearly beats the original
+selected model. This development candidate is retained without promotion.
 Whole-graph biological correctness and a consistent enriched-graph prediction
 advantage remain open. Optional research methods are isolated from the core
 application; their unfavorable results and consumed reference boundaries are

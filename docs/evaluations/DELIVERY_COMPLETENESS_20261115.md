@@ -73,3 +73,16 @@ controls are preserved. The [source-context audit](CURRENT_REFIT_SOURCE_QUALIFIC
 qualifies opposite-polarity records and confirms no RCA input in this BP fit.
 The new development appendix is separate from the original fixed result and
 the unchanged hosted checkpoint.
+
+The subsequent [cross-fitted graph/frequency fit](CROSSFIT_DEVELOPMENT_RESULTS_20261115.md)
+is complete. It improves over current-curated LocalPlus in fixed-T0 BP/PK
+(0.21336 versus 0.18277; paired interval +0.00409 to +0.05665), while the
+native comparison remains uncertain. All six intervals against the original
+selected model include zero. The candidate and complete results are retained;
+no model or graph default is promoted from this consumed-reference assessment.
+
+The [hosted interpretation update](interpretation_hosted_delivery_20261115/summary.json)
+has also passed authenticated acceptance after a real restart: six saved
+queries, 36 candidates and 27 dated GO explanations, with graph scores and
+decisions preserved. These source explanations are live; the newer development
+fit remains a separately retained research candidate.

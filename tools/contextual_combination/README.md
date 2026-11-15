@@ -505,3 +505,12 @@ The [fixed plan](crossfit_protocol.json) permits one 20-epoch BP fit, with all
 earlier controls retained and no automatic app or pruning promotion. Native
 runtime checks and execution must pass before reporting results. PU-GO is
 qualified separately and is excluded from this candidate.
+
+**Execution complete:** native runtime/source checks, the single 20-epoch fit,
+all 3,300 forecasts, and the exact original model-service restoration passed.
+The [completed result](../../docs/evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md)
+retains all 23 methods and 324 paired contrasts. Fixed-T0 PK improves over
+current-curated LocalPlus with a positive unadjusted paired interval; the
+native PK interval includes zero. Neither view establishes improvement over
+the original selected model. This candidate is retained without promotion;
+the comparison is development on previously consumed labels.

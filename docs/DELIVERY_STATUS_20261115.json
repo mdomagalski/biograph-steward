@@ -215,14 +215,16 @@
     "timezone": "America/New_York"
   },
   "resources": {
-    "AWS_reviewer_service": "retain for teammate saved-data review; unchanged in this work",
+    "AWS_reviewer_service": "retain for teammate saved-data review; interpretation update accepted after real restart, graph and decisions unchanged",
     "Brev_GPU_or_model_needed_for_review": false,
     "Brev_can_stop_compute_keep_persistent_disk": true,
     "Brev_compute_needed_for_current_work": false,
-    "Brev_instance_state": "STOPPED; confirmed by Brev CLI after all owned jobs and verified backup transfers completed.",
-    "Brev_owned_evaluation_and_source_audit_workers": "All original fixed fits, the one current-data GPU refit, CPU assessments, source audits and verified backup transfers are complete. The original Nemotron service was exactly restored healthy before stopping compute; no new LLM requests were made for the refit.",
-    "Brev_persistent_disk": "Retains original46 dense forecast arrays, six earlier development arrays, three current-refit/control arrays and feature caches. Keep this disk; separate source/model/numerical replay archives are hash-verified locally.",
-    "Brev_stopped_at_verification_UTC": "2026-11-15T10:01:59.360547+00:00",
+    "Brev_instance_state": "RUNNING at completed fit/restore verification; owned work and verified retention transfers are complete, so compute can be stopped while retaining the persistent disk.",
+    "Brev_owned_evaluation_and_source_audit_workers": "All fixed fits and assessments are complete, including the one cross-fitted graph/frequency fit. Original Nemotron service restored exactly and healthy; no new LLM requests were made for either refit.",
+    "Brev_owned_worker_completion_receipt_sha256": "357851721cc79c5d85e57fa4bd5b678ed832c604113add9bf68254f6446cc00d",
+    "Brev_owned_workers_and_transfers_complete": true,
+    "Brev_persistent_disk": "Retains all original and development forecasts, feature caches and source artifacts, including the two new 3300-by-27942 cross-fitted arrays. Keep the disk; private model and statistical report are also hash-verified locally.",
+    "previous_stopped_checkpoint_UTC": "2026-11-15T10:01:59.360547+00:00",
     "private_followup_replay_preserved_locally": {
       "all36_new_curves_and36_contribution_files": {
         "bytes": 4452653,
@@ -230,6 +232,21 @@
       },
       "all_member_sizes_and_hashes_verified": true,
       "case_level_archives_published": false,
+      "crossfit_full_statistical_report": {
+        "bytes": 36758916,
+        "sha256": "f011f327cdc6282e8bf67d0af0f527d19e9e3ce5b5dcf4a0425d6543932915f4"
+      },
+      "crossfit_model_source": {
+        "bytes": 4049395,
+        "members_verified": 25,
+        "sha256": "85479f8e1c2d334ea6877ccc0f1ff0a75d9fa02ea6d40495e5289d20eeeebacd"
+      },
+      "crossfit_native_curves_counts_and_receipts": {
+        "bytes": 1920243,
+        "members_verified": 21,
+        "public_receipt": "docs/evaluations/training_followup_20261115/numerical_replay_receipt.json",
+        "sha256": "531ee111f56ffe2442cd5a016c85f1965b9638c29d0426939f14d3a52859eaf0"
+      },
       "current_refit_all18_curves_counts_report_source": {
         "bytes": 21167911,
         "members_verified": 71,
@@ -272,6 +289,84 @@
       "scope": "One fixed published MAX operation with only original sealed T0 nonexperimental prior; development on consumed reference, not independent confirmation",
       "sha256": "a72b4c75282edbb6acf9b7a832a3ff4fdef8655ff5d9bf5bebc89c01cbb39ec7",
       "status": "complete; no general replacement or promotion"
+    },
+    "crossfit_graph_frequency_followup": {
+      "BP_cells": 6,
+      "DeepGO_parent_included": false,
+      "PK": {
+        "fixed_T0": {
+          "paired_95_intervals": {
+            "localplus_T0_curated": [
+              0.004094149531379472,
+              0.056651254318151885
+            ],
+            "validation_selected_context": [
+              -0.009905676810819757,
+              0.016443392562401838
+            ]
+          },
+          "raw_reference_proteins": 319,
+          "residual_positive_proteins": 319,
+          "scores": {
+            "crossfit_graph_frequency_context": 0.21336149986796937,
+            "localplus_T0_curated": 0.18277132332105414,
+            "validation_selected_context": 0.210093339661446
+          }
+        },
+        "native": {
+          "paired_95_intervals": {
+            "localplus_T0_curated": [
+              -0.0027566205255707887,
+              0.02753598580710482
+            ],
+            "validation_selected_context": [
+              -0.009760965488269489,
+              0.004917644712983054
+            ]
+          },
+          "raw_reference_proteins": 1954,
+          "residual_positive_proteins": 322,
+          "scores": {
+            "crossfit_graph_frequency_context": 0.07112931756819661,
+            "localplus_T0_curated": 0.05883765609990394,
+            "validation_selected_context": 0.07343110845056372
+          }
+        }
+      },
+      "PU_loss_included": false,
+      "all_six_intervals_versus_original_selected_model_include_zero": true,
+      "bytes": 226320,
+      "combined_profile_adaptation_not_isolated_crossfit_effect": true,
+      "conditional_unadjusted_intervals_on_consumed_reference": true,
+      "contrast_rows": 324,
+      "earlier_public_contrasts_unchanged": 192,
+      "earlier_public_method_rows_and_intervals_unchanged": 132,
+      "exact_original_model_service_restored_healthy": true,
+      "five_exact_sequence_group_folds": true,
+      "forecast_targets": 3300,
+      "independent_confirmation": false,
+      "method_rows": 138,
+      "model_fits": 1,
+      "model_heads": 27942,
+      "native_epochs": 20,
+      "new_success_gate_or_model_selection": false,
+      "original_fitting_labels_and_dated_context_retained": true,
+      "original_model_graph_and_application_defaults_changed": false,
+      "parent_axis": [
+        "localplus",
+        "fit_label_frequency"
+      ],
+      "path": "docs/evaluations/crossfit_development_20261115/summary.json",
+      "plan_sha256": "22a51e43cc9720bbd5d257c3dfc1fc8d23d1e73f2f39d5c9f854cb3b99621823",
+      "positive_interval_over_current_curated_LocalPlus_only_in_fixed_T0_PK": true,
+      "private_model_and_full_statistical_report_hash_verified_locally": true,
+      "public_release_assets_and_presentation_contain_this_new_result": false,
+      "qualification_and_execution": "docs/evaluations/training_followup_20261115/execution.json",
+      "raw_report_sha256": "f011f327cdc6282e8bf67d0af0f527d19e9e3ce5b5dcf4a0425d6543932915f4",
+      "result_note": "docs/evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md",
+      "sha256": "5e12cd3cce8476b54ed12cb5952c52e07acfeb1aacb3c6c9de3b4a1d1417a8c4",
+      "source_commit": "44fa771d4d6c7b016ba76fe423dfaf68958069e2",
+      "status": "complete; retained as a development candidate without promotion"
     },
     "current_refit_followup": {
       "BP_cells": 6,
@@ -362,7 +457,8 @@
         "sha256": "db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5"
       }
     },
-    "new_research_comparisons": "Original fixed contextual study and two separately frozen consumed-reference follow-ups complete; no new hosted model or graph default.",
+    "latest_development_result": "docs/evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md",
+    "new_research_comparisons": "Original fixed contextual study and three separately frozen consumed-reference follow-ups complete; cross-fitted graph/frequency candidate retained, no new hosted model or graph default.",
     "same_learner_graph_enrichment_gain_established": false,
     "secondary_CC_mixing_gain": {
       "DeepGO_SE_micro_Fmax": 0.29141414141414135,
@@ -519,7 +615,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T14:15:52.048687+00:00",
+  "updated_at_UTC": "2026-11-15T14:47:38.930229+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,

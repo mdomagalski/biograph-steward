@@ -1,16 +1,23 @@
 {
   "AWS_saved_reviewer_site_should_remain_available": true,
-  "Brev_compute_needed": true,
-  "Brev_instance_state": "RUNNING",
-  "active_development_fit": {
-    "arm": "crossfit_graph_frequency_context",
-    "new_reference_metrics_completed": false,
-    "source_commit": "44fa771d4d6c7b016ba76fe423dfaf68958069e2",
-    "source_qualification": "docs/evaluations/training_followup_20261115/README.md"
-  },
+  "Brev_compute_needed": false,
+  "Brev_instance_state": "RUNNING at last verification; safe to stop compute and retain persistent disk",
+  "Brev_worker_status_receipt_sha256": "357851721cc79c5d85e57fa4bd5b678ed832c604113add9bf68254f6446cc00d",
   "artifact_scientific_source_revision": "d143c4a4611d7e9ad2cac6256dc2fd469a2eb395",
+  "completed_development_fit": {
+    "arm": "crossfit_graph_frequency_context",
+    "new_reference_metrics_completed": true,
+    "original_model_service_restored_healthy": true,
+    "result_note": "docs/evaluations/CROSSFIT_DEVELOPMENT_RESULTS_20261115.md",
+    "source_commit": "44fa771d4d6c7b016ba76fe423dfaf68958069e2",
+    "source_qualification": "docs/evaluations/training_followup_20261115/README.md",
+    "status": "complete; retained without promotion",
+    "summary_sha256": "5e12cd3cce8476b54ed12cb5952c52e07acfeb1aacb3c6c9de3b4a1d1417a8c4"
+  },
   "core_app_matches_accepted_9bf202f_archive_source": true,
   "created_at": "2026-11-15T10:10:11.602449+00:00",
+  "crossfit_private_numerical_replay_receipt": "docs/evaluations/training_followup_20261115/numerical_replay_receipt.json",
+  "current_draft_assets_and_presentation_contain_new_crossfit_results": false,
   "current_presentation": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx",
   "current_refit_development_summary_sha256": "d2c00101234cfcb1146188b52e3dbad9be60b244301d7c5a892e2af1b69b3f2f",
   "current_testing_guide": "output/pdf/BioGraph_Steward_Team_Review_Guide_20261115.pdf",
@@ -26,6 +33,11 @@
   "front_door_link_audit": {
     "documents": 16,
     "external_links_skipped_not_authenticated_or_browser_tested": 36,
+    "latest_update_check": {
+      "local_links_checked": 213,
+      "missing": 0,
+      "scope": "Seven changed entry/results documents; external links not re-requested. No browser usability claim."
+    },
     "local_links_checked": 504,
     "method": "Local target existence only; no new external authenticated browser/usability or scientific acceptance claim. Archive HTML links/anchors are separately verified.",
     "missing": 0,
@@ -36,6 +48,7 @@
     "path": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
     "sha256": "9fc6449b60a5f21133e2e9d73439bbc2494ec7aaf2f88c3573b6f0033a571361"
   },
+  "latest_crossfit_development_summary_sha256": "5e12cd3cce8476b54ed12cb5952c52e07acfeb1aacb3c6c9de3b4a1d1417a8c4",
   "main_unchanged_at_remote_asset_verification": "586ec35d33e9429dde91057c4130542988a7ca02",
   "no_AWS_graph_or_review_mutations": true,
   "no_AWS_workbench_or_graph_mutations": false,
@@ -49,9 +62,10 @@
   ],
   "original_primary_manifest_members_unchanged": 19,
   "original_primary_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
-  "owned_Brev_workers_and_transfers_complete": false,
+  "owned_Brev_workers_and_transfers_complete": true,
   "persistent_Brev_disk_retention_still_needed": true,
   "private_review_branch": "codex/contextual-gain-delivery",
+  "private_review_branch_contains_new_crossfit_results": true,
   "remaining_actions": [
     "Independent intended-user feedback on November 16",
     "Final public MIT release and actual November 17 submission",
@@ -69,5 +83,5 @@
     "total_files": 10
   },
   "source_similarity_aggregate_sha256": "cd36365a92216196ad36bd0e5a5b1902c7fb85c1b2cefc568dc3d8bc468693aa",
-  "updated_at_UTC": "2026-11-15T14:15:52.049954+00:00"
+  "updated_at_UTC": "2026-11-15T14:47:38.917251+00:00"
 }
