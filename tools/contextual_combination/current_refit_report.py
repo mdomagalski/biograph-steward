@@ -1,9 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-only
 """Aggregate-only publication of the fixed, consumed-reference BP refit.
 
-This adapter reads a completed JSON assessment. It never opens reference rows,
-forecasts, arrays or sampling draws and never computes a scientific endpoint,
-interval, success gate or model choice.
+This adapter reads a completed JSON assessment, including its embedded private
+fields, then projects an explicit scalar allowlist. It opens no reference-row,
+forecast-matrix or per-protein contribution files. Embedded draw vectors remain
+unpublished; no scientific endpoint, interval, success gate or model choice is
+computed here.
 """
 import argparse
 import hashlib
