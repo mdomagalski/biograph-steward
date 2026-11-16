@@ -1,35 +1,59 @@
 # BioGraph Steward
 
-BioGraph Steward helps researchers inspect and qualify biomedical knowledge
-from **NIH Pharos**. Ask a focused question, read its evidence graph, follow a
-claim to its original source, and export the graph with every recorded decision.
+BioGraph Steward is a source-aware research agent built around **NIH Pharos**.
+A model plans a supported question, existing source tools construct its focused
+evidence graph and cited answer, and the agent selects source inspections and
+review proposals. Original evidence, qualifiers and local review states stay
+traceable; the agent does not automatically accept or prune biological claims.
 
 **[Open the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
-using the workspace token supplied privately. Start with the
-**[3:42 narrated tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)** or
-the **[five-minute walkthrough](docs/JUDGE_WALKTHROUGH.md)**.
+with the token supplied privately. The [agent guide](docs/SOURCE_AGENT.md)
+explains question → plan → evidence → proposed review. The latest recorded-agent
+update is **prepared and checked locally; hosted rollout is pending**. The
+[delivery status](docs/DELIVERY_STATUS_20261115.json) identifies accepted hosted
+checkpoints. The existing [3:42 guided-source tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+and [five-minute reader walkthrough](docs/JUDGE_WALKTHROUGH.md) show the separate
+saved-source inspection path; they should not be mistaken for live model execution.
 The [seven-slide overview](output/presentations/BioGraph_Steward_Overview.pptx)
 provides a concise presentation.
 
-The hosted demonstration uses real saved data for a 99-protein colorectal-cancer
-cohort. It replays completed work so reviewers can inspect the same evidence.
-It needs no AWS account, local installation or model server.
+The real examples share a captured **99-protein colorectal-cancer cohort**.
+Reviewers can replay a recorded agent run without an AWS account, local setup or
+running model. Generating a new agent run requires an explicitly configured
+live model; shared saved-data review disables new inference and edits.
 
 ## A short tour
 
 | In the app | What to do | What it demonstrates |
 |---|---|---|
-| **Start here** | Open the real-data example. | One current entry point and an explanation of the task. |
-| **Question & graph** | Read the KRAS answer and select a cited relationship. | A focused answer linked to its graph paths. |
+| **Start here** | Open the current source-agent workflow or its verified recorded run. | The question, model plan, executed source tool and preserved trace. |
+| **Question & graph** | Inspect the cited evidence and the separate guided-reader example. | A focused answer linked to source paths, with result caps explicit. |
 | **Inspect sources** | Inspect the source, identity checks and interpretation. | Where the evidence came from, what it means and what remains unresolved. |
 | **What changed** | Inspect measured comparisons and the retained-graph example. | Added context, applied qualifications and the limits of each result. |
 | **Export** | Download the answer or complete workspace. | The result, its decisions and the original input remain traceable. |
 
-Two examples serve different review questions. The **KRAS evidence example**
+The featured agent record uses an eight-result cap; the separate manual KRAS
+answer displays all 14 matching partners. These are different output limits,
+not different underlying evidence. Two graph examples serve different review
+questions. The **KRAS evidence example**
 shows additional GO annotations and sequence-qualified STRING physical
 associations. Additions remain candidates. The **retained TP53 example** shows
 the graph after identifier qualifications, with exclusions and original inputs
 preserved. These are different graph products within one workflow.
+
+## Recorded agent check
+
+The [fixed current-tool comparison](docs/evaluations/SOURCE_AGENT_RESULTS_20261116.md)
+passed **five supported execution checks**, including a valid empty accepted-only
+query, and **three controller preflight checks** that made no model calls.
+Across the supported cases, **13 Nemotron calls used 972 completion tokens**.
+The complete source query, cited answer and focused graph matched explicit
+deterministic execution; original graph, review and source hashes were unchanged.
+
+This is a workflow result, not 100% scientific accuracy or a prediction gain.
+Application code grounded the identities. Most plans had one query tool plus
+abstention available; the location case had two query choices. The agent's
+source priorities and review options do not silently remove other results.
 
 ## Results and their scope
 
@@ -69,7 +93,7 @@ including unsuccessful methods and controls.
 - CIViC molecular profiles and complete therapy sets in the clinical examples.
 - Qualified assay, SIGNOR, MAP-IT and pathway sources in their respective examples.
 - Candidate and accepted states, review history, explicit graph decisions and source-preserving exports.
-- Optional NVIDIA planning and source-audit agents, plus evaluated specialist methods. The shared reviewer site uses saved guided workflows, with model calls and edits disabled.
+- A current NVIDIA-model source agent for query planning, complete selected-source inspection and adapter-bound review proposals. Older one-call planning and literature-audit experiments remain separately recorded. Shared review replays recorded work with new model calls and edits disabled.
 
 The private AWS app hosts reviewer access. Its Neptune inspector verifies the
 separate retained Pharos graph against its saved source. Ordinary questions
@@ -103,7 +127,7 @@ separates tested software from protected source data and research artifacts.
 
 ## Technical documentation
 
-[Construction](docs/CONSTRUCTION.md) · [Scoped retrieval](docs/SCOPED_RETRIEVAL.md) ·
+[Current source agent](docs/SOURCE_AGENT.md) · [Construction](docs/CONSTRUCTION.md) · [Scoped retrieval](docs/SCOPED_RETRIEVAL.md) ·
 [Source qualification](docs/NATIVE_PHYSICAL_SOURCE.md) · [Export and standards](docs/STANDARD_EXPORT.md) ·
 [Graph and decisions](docs/GOLD_SET_INTERFACE.md) · [Testing](docs/TESTING.md) ·
 [Deployment](docs/PORTABILITY.md)

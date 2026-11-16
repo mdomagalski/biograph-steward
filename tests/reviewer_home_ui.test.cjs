@@ -103,6 +103,13 @@ test('catalogue accepts only a syntactically bounded recorded-agent link and pre
     const bad=harness();bad.configure({reviewer_entry:{...entry,example_url:'/?run=real_current&'+suffix},runs:[]});assert.deepEqual(bad.calls.replace,[]);
   }
 });
+test('an unavailable registered agent is visible while the manual reader remains available',()=>{
+  const h=harness('?run=real_current');real(h);
+  h.configure({reviewer_entry:{...entry,agent_entry_unavailable:true,note:'The featured agent record could not be verified. The guided source reader remains available.'},runs:[]});
+  assert.match(text(h.$('reviewerHomeStatus')),/featured agent record could not be verified/);
+  assert.equal(h.$('reviewerHomeStatus').className,'notice warn');assert.equal(h.$('reviewerAnswer').disabled,false);
+  assert.deepEqual(h.calls.replace,[]);
+});
 test('shared reviewer mode exposes no invented builder route on empty setup',()=>{
   const h=harness('',true);h.configure({reviewer_entry:null,runs:[]});assert.equal(h.$('reviewerOffline').hidden,true);
   h.$('reviewerOpenOffline').onclick();assert.equal(h.$('controls').open,false);
@@ -124,4 +131,9 @@ test('actual page keeps construction collapsed and reviewer steps separate from 
   assert.ok(html.indexOf('id="questionText"')<html.indexOf('id="customQuestionOptions"'));
   assert.ok(html.includes('id="scientificAssessmentHistory"'));assert.ok(html.includes('Synthetic demonstration only.'));
   const login=fs.readFileSync(path.join(root,'biograph_steward/login.html'),'utf8');assert.match(login,/<h1>BioGraph Steward<\/h1>/);assert.ok(login.includes('name="return_to"'));assert.ok(login.includes('type="password"'));
+});
+
+test('a featured agent entry leaves the separate manual card clearly labelled as a source reader',()=>{
+ const h=harness();real(h);h.configure({reviewer_entry:{...entry,agent_job_id:'source_agent_recorded',display_title:'Follow a recorded source-agent workflow'},runs:[]});
+ assert.equal(h.$('reviewerHomeTitle').textContent,'Guided source reader');
 });

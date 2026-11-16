@@ -36,7 +36,7 @@ test('source-agent is the primary Start here entry and manual controls remain av
 });
 test('saved-mode initialization reads config/list only and never silently opens or infers',async()=>{
   const h=harness({saved:true,responses:{'/api/source-agent/status?run_id=invented':{saved_data_only:true,configured:null,enabled:false,catalogue:{tools:[{name:'native_physical'}]}},
-    '/api/source-agent/jobs?run_id=invented':{jobs:[{job_id:'source_agent_invented',actual_model_run:false,status:'completed',question:'Invented fixture'}]}}});
+    '/api/source-agent/jobs?run_id=invented':{jobs:[{job_id:'source_agent_invented',actual_model_run:false,provider_kind:'injected_test_model',status:'completed',question:'Invented fixture'}]}}});
   await h.context.setupSourceAgent();assert.equal(h.$('sourceAgentLive').hidden,true);assert.equal(h.$('sourceAgentRun').disabled,true);
   assert.equal(h.calls.length,2);assert.deepEqual(h.posts,[]);assert.match(text(h.$('sourceAgentJobs')),/Development\/test record/);
   assert.match(text(h.$('sourceAgentStatus')),/No agent is running now/);
@@ -52,7 +52,7 @@ test('configured operator status is explicitly unprobed and only submission trig
 });
 test('recorded result renders all four phases, all citations and nonmutating proposals',()=>{
   const h=harness();h.context.renderSourceAgentJob(job(),{replay:true});const rendered=text(h.$('sourceAgentOutput'));
-  for(const phrase of ['1. Research question','2. Validated tool plan','3. Evidence and source inspection','4. Proposed review decisions','No model or external retrieval runs; saved-source checks verify this record','2 returned citations; 1 selected','[E002]','Needs review · proposal only','3 model calls · 2 tool calls'])assert.ok(rendered.includes(phrase),phrase);
+  for(const phrase of ['1. Question & plan','2. Evidence graph','3. Source inspection','4. Review proposals','No model or external retrieval runs; saved-source checks verify this record','2 returned citations; 1 selected','[E002]','Needs review · proposal only','3 model calls · 2 tool calls'])assert.ok(rendered.includes(phrase),phrase);
   assert.ok(!rendered.includes('undefined'));assert.deepEqual(h.manual,[]);assert.deepEqual(h.posts,[]);
   const download=h.$('sourceAgentOutput').children.at(-1);assert.equal(download.href,'/api/source-agent/job/source_agent_invented/download');
 });
@@ -92,4 +92,30 @@ test('a multi-assertion citation renders every actual source passport and the fu
     inspected_assertion_ids:['claim:a','claim:b'],omitted_assertion_ids:[],complete_citation_inspection:true};
   h.context.renderSourceAgentJob(record);const rendered=text(h.$('sourceAgentOutput'));
   for(const phrase of ['2 source assertions inspected','Source assertion 1 of 2','Source assertion 2 of 2','Second original source assertion','Every source assertion in this selected citation was inspected.'])assert.ok(rendered.includes(phrase),phrase);
+});
+
+test('recorded agent steps show one pane at a time and preserve mouse and keyboard navigation',()=>{
+  const h=harness();h.context.renderSourceAgentJob(job());
+  function all(node){return [node,...node.children.flatMap(item=>typeof item==='string'?[]:all(item))];}
+  const nodes=all(h.$('sourceAgentOutput')),tabs=nodes.filter(n=>n.attributes.role==='tab'),panes=nodes.filter(n=>n.attributes.role==='tabpanel');
+  assert.equal(tabs.length,4);assert.equal(panes.length,4);assert.deepEqual(panes.map(p=>p.hidden),[false,true,true,true]);
+  tabs[1].onclick();assert.deepEqual(panes.map(p=>p.hidden),[true,false,true,true]);assert.match(text(panes[1]),/Recorded annotation/);
+  assert.ok(!text(panes[1]).includes('Invented original source'));
+  tabs[1].handlers.keydown({key:'ArrowRight',preventDefault(){}});assert.deepEqual(panes.map(p=>p.hidden),[true,true,false,true]);assert.match(text(panes[2]),/Invented original source/);
+  tabs[2].handlers.keydown({key:'End',preventDefault(){}});assert.deepEqual(panes.map(p=>p.hidden),[true,true,true,false]);assert.match(text(panes[3]),/Needs review/);
+  tabs[3].handlers.keydown({key:'Home',preventDefault(){}});assert.equal(tabs[0].attributes['aria-selected'],'true');assert.equal(tabs[0].tabIndex,0);
+  assert.deepEqual(h.posts,[]);assert.deepEqual(h.calls,[]);
+});
+
+test('a real zero-call scope guard is labelled separately from an injected fixture or model run',()=>{
+ const h=harness(),record=job('unknown','scope_rejected');record.model_calls=0;record.result.trace.model_calls=0;record.result.plan=null;record.result.answer=null;record.result.inspections=[];record.result.proposals=[];record.result.focus_graph=null;
+ h.context.renderSourceAgentJob(record);const visible=text(h.$('sourceAgentOutput'));assert.match(visible,/Controller guard · no model call/);assert.match(visible,/before inference. No model judgment/);assert.ok(!visible.includes('Development/test record'));assert.deepEqual(h.posts,[]);
+});
+
+test('source inspection exposes recorded source sections without requiring raw JSON',()=>{
+ const h=harness(),record=job();record.result.inspections[0].passport.sections=[{title:'Native STRING physical association',text:'Recorded source-release context.',fields:{source_version:'12.5',native_score:459,normalized_score:0.459}}];
+ h.context.renderSourceAgentJob(record);
+ function nodes(n){return [n,...n.children.flatMap(c=>typeof c==='string'?[]:nodes(c))];}
+ const section=nodes(h.$('sourceAgentOutput')).find(n=>n.tagName==='DETAILS'&&n.children.some(c=>c.tagName==='SUMMARY'&&c.textContent==='Native STRING physical association'));
+ assert.ok(section);assert.match(text(section),/12.5/);assert.match(text(section),/459/);assert.match(text(section),/Recorded source-release context/);assert.deepEqual(h.posts,[]);
 });

@@ -1,25 +1,47 @@
 # BioGraph Steward demonstration
 
-Watch the [3:42 narrated and captioned walkthrough](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
-of the actual hosted app, or read its
-[transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt).
+Use the **[five-minute judge walkthrough](JUDGE_WALKTHROUGH.md)**. Its central
+task follows an actual recorded Nemotron run: a research question, validated
+source query, cited evidence, complete source inspection and grounded review
+proposals. The reviewer can then inspect the applied graph qualifications and
+measured reference result.
 
-Use the **[current five-minute walkthrough](JUDGE_WALKTHROUGH.md)**. It follows
-one coherent product flow through **Start here**, **Question & graph**,
-**Inspect sources**, **What changed** and **Export**.
+The recorded run uses four small steps: **Question & plan**, **Evidence graph**,
+**Source inspection** and **Review proposals**. Continue buttons keep one
+step visible at a time.
 
-Open the [shared reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
-and sign in with the privately supplied token. The demonstration uses real saved
-Pharos data. It shows completed construction and qualifications, rather than
-running a live model or editing the graph during the review.
+The current-source agent has completed its
+[fixed development comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
+Its hosted replay and replacement media are awaiting deployment acceptance.
+Until then, the protected site and canonical tour show the earlier guided
+evidence reader. Check the [delivery status](DELIVERY_STATUS_20261115.json)
+before describing the agent route as hosted.
 
-The KRAS example demonstrates cited candidate evidence and its source limits.
-The retained TP53 example demonstrates applied identifier qualifications and a
-complete decision handoff. The measured comparison reports recovery of known
-reference labels within matched subsets. Keep those outcomes distinct when
-presenting them.
+After acceptance, open the
+[shared reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
+with the privately supplied token and follow the designated recorded agent run.
+The shared session replays genuine saved model work. It does not call a model,
+retrieve new source data or apply review decisions during the demonstration.
 
-For the product scope and scoring map, see the [submission summary](FINAL_SUBMISSION.md).
-Detailed method history is in the [research appendix](RESEARCH_APPENDIX_20261115.md).
-The local invented software fixture is a separate test route and should not be
-used to demonstrate biological results.
+The primary agent answer displays eight of 14 matching KRAS partners under its
+recorded cap. The older manual answer displays all 14 under a different cap.
+The agent's citation priorities preserve the complete returned answer.
+**Retain candidate context** and **Needs review** are proposals, not acceptance
+or graph edits.
+
+Present the outcomes separately: the agent executes source-bound work with
+deterministic result parity; the native location view recovers more known
+reference labels; the retained TP53 workspace applies explicit identifier
+qualifications and preserves every decision. Agent orchestration does not add
+new prediction inputs or establish a prediction gain.
+
+The [canonical narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+and [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) provide
+the current recorded presentation. Its successor will use actual accepted
+hosted UI captures, with edited still states disclosed. Earlier media stays
+in the [dated history](../output/history/20261115_guided_review/README.md).
+
+For the scoring map and limits, use the [submission summary](FINAL_SUBMISSION.md).
+Detailed method history remains in the [research appendix](RESEARCH_APPENDIX_20261115.md).
+The invented local software fixture is a separate test route and supplies no
+biological result.

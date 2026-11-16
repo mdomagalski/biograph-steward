@@ -24,7 +24,7 @@ function harness(){
   const graph={data_kind:'live_pharos',scope:{kind:'protein_cohort'},targets:[{id:'UniProtKB:P12345',symbol:'AAA'},{id:'UniProtKB:Q12345',symbol:'BBB'}],retrieval:{truncated:false},question_basis_sha256:'basis',nodes:[]};
   for(const [id,value] of Object.entries({questionProtein:'UniProtKB:P12345',questionRelations:'both',questionView:'candidates',questionLimit:'8',questionPaths:'2',questionRanking:'alphabetical'}))$(id).value=value;
   $('questionForm').elements=['questionProtein','questionRelations','questionView','questionLimit','questionPaths','questionRanking','questionRun'].map($);
-  const context=vm.createContext({$,graph,runId:'test-run',el:element,svgEl:element,history:{replaceState:(a,b,url)=>urls.push(url)},updateWorkNavigation(){},navigateWork(){},URL,
+  const context=vm.createContext({$,graph,runId:'test-run',el:element,svgEl:element,history:{replaceState:(a,b,url)=>urls.push(url)},updateWorkNavigation(){},navigateWork(){},URL,URLSearchParams,
     api:async(url,body)=>{calls.push({url,body});return await context.response;}});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../biograph_steward/guided.js'),'utf8'),context);
   // The graph renderer is covered by existing evidence-path behavior, not this control harness.
@@ -176,4 +176,14 @@ test('operator-owned saved review mode hides live priority and disables new deci
   h.$('questionRelations').value='native_physical';h.run('updateQuestionPlan()');
   assert.equal(h.run('questionOptions().template'),'native_string_physical.v1');
   assert.equal(JSON.stringify(h.graph),withProfile);assert.equal(h.calls.length,0);
+});
+
+test('automatic exact saved-question reopen preserves its agent link while changed scopes clear it',()=>{
+ const h=harness();
+ h.context.location={search:'?run=test-run&question=saved-question&agent_job=source_agent_recorded&view=data'};
+ bind(h,answer(h));assert.equal(h.urls.at(-1),'?run=test-run&question=saved-question&agent_job=source_agent_recorded&view=data');
+ assert.equal(h.run('savedQuestionURL("new-question")'),'?run=test-run&question=new-question');
+ for(const search of ['?run=other&question=saved-question&agent_job=source_agent_recorded','?run=test-run&question=saved-question&agent_job=..%2Foutside','?run=test-run&question=saved-question&agent_job=source_agent_a&agent_job=source_agent_b']){h.context.location.search=search;assert.equal(h.run('savedQuestionURL("saved-question")'),'?run=test-run&question=saved-question');}
+ h.context.location.search='?run=test-run&question=saved-question&agent_job=source_agent_recorded&view=data';
+ h.run('setupQuestion()');h.$('questionRelations').listeners.change();assert.equal(h.urls.at(-1),'?run=test-run');
 });

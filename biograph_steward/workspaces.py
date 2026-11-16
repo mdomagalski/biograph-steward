@@ -95,6 +95,67 @@ def reviewer_entry(runs: list[dict], example_url: str | None = None, *, native_q
                     'The shared reviewer site uses saved data without model calls or new retrieval.'}
 
 
+
+def registered_source_agent_entry(root, runs, entry):
+    """An operator-pinned recorded example, separate from source workspaces.
+
+    Registration is a presentation preference. It cannot promote an injected
+    test, a failed attempt, a different cohort, or an unverified source result.
+    """
+    registration = Path(root) / 'reviewer_agent_entry.json'
+    if not registration.exists() and not registration.is_symlink():
+        return entry
+    try:
+        if registration.is_symlink() or not registration.is_file() or registration.stat().st_size > 10_000:
+            raise ValueError('Reviewer agent registration must be an ordinary bounded file.')
+        value = json.loads(registration.read_text(encoding='utf-8'))
+        keys = {'format', 'source_run', 'question_id', 'job_id', 'job_manifest_sha256'}
+        if (not isinstance(value, dict) or set(value) != keys
+                or value['format'] != 'biograph-steward.source-agent-reviewer-entry.v1'
+                or any(not isinstance(value[key], str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', value[key])
+                       for key in ('source_run', 'question_id'))
+                or not isinstance(value['job_id'], str) or not re.fullmatch(r'source_agent_[A-Za-z0-9_-]{1,67}', value['job_id'])
+                or not isinstance(value['job_manifest_sha256'], str) or not re.fullmatch(r'[a-f0-9]{64}', value['job_manifest_sha256'])):
+            raise ValueError('Invalid reviewer agent registration.')
+        source = next((run for run in runs if run['run_id'] == value['source_run'] and run['data_kind'] == 'live_pharos'), None)
+        question = next((q for q in (source or {}).get('questions', [])
+                         if q['question_id'] == value['question_id'] and q['template'] == 'native_string_physical.v1'
+                         and q['view'] == 'candidates'), None)
+        if (entry is None or source is None or question is None
+                or question['url'] != entry['example_url']
+                or source.get('snapshot_sha256') != entry.get('snapshot_sha256')):
+            raise ValueError('Registered agent example differs from the current source cohort and cited question.')
+        folder = Path(root) / value['job_id']
+        manifest = folder / 'manifest.json'
+        if folder.is_symlink() or manifest.is_symlink() or not manifest.is_file() or manifest.stat().st_size > 20_000:
+            raise ValueError('Registered agent manifest is unavailable.')
+        if hashlib.sha256(manifest.read_bytes()).hexdigest() != value['job_manifest_sha256']:
+            raise ValueError('Registered agent manifest bytes changed.')
+        from .source_agent_jobs import read_source_agent_job
+        job = read_source_agent_job(folder, root)
+        result, plan = job['result'], job['result'].get('plan') or {}
+        question_file = Path(root) / value['question_id'] / 'question.json'
+        if question_file.is_symlink() or not question_file.is_file() or question_file.stat().st_size > 16_000_000:
+            raise ValueError('Registered manual source question is unavailable.')
+        manual = json.loads(question_file.read_text(encoding='utf-8'))
+        verify_answer(manual)
+        if (job['actual_model_run'] is not True or job['status'] != 'completed' or job['source_run'] != source['run_id']
+                or result.get('data_kind') != 'live_pharos' or plan.get('tool') != 'native_physical'
+                or plan.get('arguments', {}).get('view') != 'candidates'
+                or manual.get('source_run') != source['run_id']
+                or manual.get('graph_basis_sha256') != result['source_bindings']['graph_basis_sha256']
+                or manual.get('plan', {}).get('protein', {}).get('id') != plan.get('arguments', {}).get('protein_id')):
+            raise ValueError('Registered agent is not a completed actual-model run for this exact source question.')
+        return {**entry, 'example_url': question['url'] + '&agent_job=' + value['job_id'] + '&view=data',
+                'display_title': 'Follow a recorded source-agent workflow', 'agent_job_id': value['job_id'],
+                'agent_manifest_sha256': value['job_manifest_sha256'],
+                'note': 'Recorded model-directed query and source inspection. Replaying verifies saved sources without new inference; proposals are not applied.'}
+    except (ValueError, TypeError, KeyError, AttributeError, OSError):
+        if entry is None:
+            return None
+        return {**entry, 'agent_entry_unavailable': True,
+                'note': 'The featured agent record could not be verified. The guided source reader remains available; no other model run was selected.'}
+
 def saved_workspaces(root: Path) -> dict:
     root = Path(root).resolve()
     folders = [p for p in root.iterdir() if p.is_dir() and not p.is_symlink()
@@ -179,6 +240,7 @@ def saved_workspaces(root: Path) -> dict:
             question = next((q for q in example['questions'] if q['view'] == 'candidates'), None)
             example_url = question['url'] if question else example['url']
     entry = reviewer_entry(runs, example_url, native_question_ids=native_questions)
+    entry = registered_source_agent_entry(root, runs, entry)
     if entry:
         example_url = entry['example_url']
     return {'runs': runs, 'example_url': example_url, 'reviewer_entry': entry, 'withheld': withheld,

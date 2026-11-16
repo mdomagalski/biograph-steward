@@ -8,6 +8,13 @@ and sign in with the privately supplied workspace token. Follow the
 real saved evidence and guides the reviewer through **Start here**, **Question
 & graph**, **Inspect sources**, **What changed** and **Export**.
 
+The current-source agent has completed its
+[actual fixed comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
+Its hosted replay is awaiting deployment acceptance. Until the delivery status
+records that update, the protected site and canonical media continue to show
+the earlier guided reader. The new agent record and all evaluation outcomes
+are preserved separately; no hosted availability follows merely from code.
+
 Reviewers need only a browser. No AWS account, local tunnel or Brev/model server
 is needed. The shared site reads completed real-data work. Construction, fresh
 retrieval, live model planning and review edits are disabled during this shared
@@ -23,17 +30,49 @@ The [narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp
 uses actual hosted-app captures, readable crops and captions. It runs for 3:42;
 its [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
-provide the same task-focused introduction.
+provide the earlier guided introduction. Replacement agent media awaits actual
+accepted-host capture. The [dated history](../output/history/20261115_guided_review/README.md)
+preserves those original files unchanged.
+
+## Recorded agent workflow
+
+The [current-source agent](SOURCE_AGENT.md) proposes a validated source query,
+prioritizes returned citations and selects grounded review proposals after
+complete source inspection. Source tools construct the answer and focused graph;
+the model does not replace their statements with free-form scientific claims.
+**Retain candidate context** and **Needs review** accept no assertion and edit
+no graph. The actual primary KRAS model run used three calls and inspected three
+citations. It displays eight of 14 matching proteins under its frozen cap of
+eight; the older manual answer displays all 14 under a different cap.
+
+The eight-case development comparison recorded four nonempty and one valid
+accepted-only empty query with exact deterministic query/answer/focused-graph
+parity. Three unsupported or unresolved requests stopped before a model call.
+All original sources and review states remained unchanged. These are bounded
+task and source-fidelity results, distinct from scientific accuracy or prediction
+gain. Every case outcome remains in the
+[evaluation record](evaluations/source_agent_20261116/summary.json).
+
+After the hosted update is accepted, reviewers can open the designated verified
+model run in **Start here → Agent workflow** and replay it without inference.
+Its four inner tabs separate **Question & plan**, **Evidence graph**,
+**Source inspection** and **Review proposals**, with a Continue button for each
+next step.
+The saved agent-record download requires its complete source workspace beside
+it for verification. It does not contain or relicense the full dataset.
 
 ## Standalone software
 
-The current [software ZIP](../output/software/BioGraph_Steward_Software.zip)
+The [software ZIP](../output/software/BioGraph_Steward_Software.zip)
 contains the Python core and its upstream notices. Its instructions lead to
 the hosted real-data review and separately explain the optional invented local
 fixture. The [acceptance summary](evaluations/reviewer_journey_delivery_20261115/software_acceptance.json)
 records clean Python construction, actual graph/decision exports, source
 recovery and saved-answer replay after restart. It includes no real source
 snapshots, credentials, reference labels or model weights.
+
+Its recorded acceptance identifies its exact source version. Packaging and
+acceptance for the newer agent increment remain a separate pending step.
 
 A fresh checkout is a software delivery, not the complete mixed-source dataset.
 Use the hosted app for the real demonstration. The [release index](releases/20261115/README.md)

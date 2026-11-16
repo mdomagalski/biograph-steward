@@ -1,8 +1,53 @@
 # NVIDIA integration and compute status
 
+## November 16: current-source agent integration
+
+The product now implements a model-directed [current-source workflow](SOURCE_AGENT.md)
+for the actual native STRING physical, native GO location and native-supported
+archived-pathway tools. The controller plans a query, executes an existing
+source engine, materializes a focused contextual graph and cited answer,
+inspects model-prioritized citation groups, and records adapter-bound review
+proposals. Complete query results, source passports and model/tool traces stay
+available. It neither changes the full graph nor applies biological acceptance
+or pruning.
+
+The implementation reuses the existing `JSONModelClient`, pinned model connection
+settings and bounded read-tool controller pattern. It is a first-class app/CLI
+route, rather than the older optional one-call planner. The shared saved-data
+site can replay verified recorded jobs; new model execution belongs to the
+explicit live operator route. Live evaluation and deployment receipts must be
+recorded separately: code availability is not evidence that inference occurred.
+
+The [fixed current-tool protocol](evaluations/SOURCE_AGENT_PROTOCOL_20261116.md)
+compared explicit deterministic execution and this agent on the same saved
+source frames and caps. The [completed assessment](evaluations/SOURCE_AGENT_RESULTS_20261116.md)
+passed five supported full-query/answer/focused-graph parity checks: four
+nonempty source questions and one valid empty accepted-only query. Three other
+requests were blocked by preflight guards with zero model calls. Those guard
+outcomes are controller behavior, not model reasoning.
+
+The supported executions used **13 Nemotron calls and 972 completion tokens**.
+Application code grounded all exact identities. Only the TP53 location case had
+two available query choices; other supported planning schemas offered one tool
+plus abstention. These eight behavioral checks do not establish unrestricted
+routing or scientific accuracy. Original source, graph and review hashes were
+unchanged, so no prediction improvement is attributed to this agent run.
+The [aggregate receipt](evaluations/source_agent_20261116/summary.json) preserves
+its separate endpoints and model/source commitments.
+
+The featured recorded job is `source_agent_eval_dc7b597201da_S01`. It is
+prepared for hosted replay; deployment remains pending a separately accepted
+restart/source-check receipt. A saved replay does not make new model calls.
+
+The older planning and BioRED audit results below retain their original model,
+corpus and dates. They are not replaced or converted into results for this new
+controller. The NeMo Agent Toolkit wrapper still registers the older bounded
+workflow; no new NAT, NemoClaw or other agent platform is required by the current
+Python controller.
+
 ## November 14 update: completed source-audit comparison
 
-The latest completed NVIDIA evaluation used the exact served model
+The November 14 source-audit evaluation used the exact served model
 `nvidia/Llama-3.1-Nemotron-Nano-8B-v1`, revision
 `54641c1611fcff44fa4865626462445e0a153fc7`, in bfloat16 on the existing
 vLLM **0.8.5 V0** service. XGrammar **0.1.18** is installed and configured as the
@@ -50,7 +95,7 @@ across restart. This deployment used no Brev model, GPU inference, new cloud
 resources, new rule/reasoner execution or new biological comparison. Fresh
 software installations remain unconfigured; another agent platform is unnecessary.
 
-## What the project actually uses
+## Recorded roles at the November 13 checkpoint
 
 | Component | Current role and boundary |
 |---|---|

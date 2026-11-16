@@ -148,6 +148,28 @@ def list_source_agent_jobs(runs_dir, *, source_run=None):
         if not folder.is_dir() and not folder.is_symlink():
             continue
         try:
+            if source_run is not None:
+                # This bounded header is an exclusion hint, never a verified
+                # result. Avoid replaying another workspace just to filter it
+                # out, while malformed records remain visibly unavailable.
+                _need(_ID.fullmatch(folder.name) and folder.is_dir() and not folder.is_symlink()
+                      and folder.resolve().parent == root, 'Saved agent job not found.')
+                metadata_file = folder / 'manifest.json'
+                _need(metadata_file.is_file() and not metadata_file.is_symlink()
+                      and metadata_file.stat().st_size <= 20_000,
+                      'Agent job manifest must be an ordinary bounded file.')
+                metadata = json.loads(metadata_file.read_text(encoding='utf-8'))
+                _need(isinstance(metadata, dict) and metadata.get('format') == FORMAT
+                      and metadata.get('job_id') == folder.name,
+                      'Invalid agent job manifest.')
+                claimed_source = metadata.get('source_run')
+                _need(isinstance(claimed_source, str) and _RUN.fullmatch(claimed_source),
+                      'Invalid agent source workspace.')
+                _need(metadata.get('content_sha256') == digest({k: v for k, v in metadata.items()
+                                                              if k != 'content_sha256'}),
+                      'Agent job manifest seal does not match.')
+                if claimed_source != source_run:
+                    continue
             job = read_source_agent_job(folder, root)
             if source_run is None or job['source_run'] == source_run:
                 jobs.append({k: v for k, v in job.items() if k != 'result'})

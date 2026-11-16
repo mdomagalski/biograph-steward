@@ -1,33 +1,37 @@
 BioGraph Steward - teammate feedback
-Please return by Monday, November 16, 2026.
+Current instructions: November 16, 2026. Please return by Monday, November 16.
 
 Name / date:
-Access route and workspace:
+Access route and workspace / recorded run:
 Browser / operating system:
+Was the updated Agent workflow available? If not, mark unavailable tasks A.
 
 Status: I = independent; H = with help; N = not completed; A = not attempted.
-Separate hands-on time from waiting and downloads.
+Separate hands-on time from waiting and downloads. No biological adjudication needed.
 
-T1 - Find the answer:
+T1 - Follow the recorded question and model plan:
 status | hands-on time | waiting | exact obstacle or note
+What was being inspected, and did replay make a new model call?
 
-T2 - Inspect the original source:
+T2 - Read the answer and trace one source:
 status | hands-on time | waiting | exact obstacle or note
+What does candidate mean? Does physical association establish direct binding?
 
-T3 - Explain an applied qualification and uncertain records:
+T3 - Understand the review proposal:
 status | hands-on time | waiting | exact obstacle or note
+Does Retain candidate context / Needs review accept or remove evidence?
 
-T4 - Interpret the measured result and its limits:
+T4 - Distinguish an applied change from a measured comparison:
 status | hands-on time | waiting | exact obstacle or note
+Which result concerns identifier exclusions, and which concerns known-label recovery?
 
-T5 - Download and understand graph / decisions / baseline:
+T5 - Understand the agent record and workspace export:
 status | hands-on time | waiting | exact obstacle or note
+Can you distinguish the focused answer/graph, retained graph, ledger and baseline?
 
 What did you expect the app to do? Did its result match?
 
-What term, warning, source link or review label was unclear?
-
-What did you think the exported package contains?
+What term, source link, review label or limitation was unclear or misleading?
 
 Top three changes before submission (mark any blocking issue):
 1.

@@ -1,32 +1,54 @@
 # Start here
 
-## Review the real application
+## Follow the recorded agent workflow
 
-1. Open the [shared reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/).
-2. Sign in with the workspace access token supplied privately.
-3. Follow **Start here**, then **Read the cited answer**, **Inspect its source**
-   and **What changed**. The [five-minute guide](docs/JUDGE_WALKTHROUGH.md)
-   explains the example and what to look for.
+The current-source agent has completed its fixed local check: five supported
+queries matched deterministic source execution, including an empty accepted-only
+view; three unsupported requests were stopped by the controller without model
+calls. This used 13 Nemotron calls and 972 completion tokens. These are workflow
+checks, not scientific-accuracy or graph-prediction scores.
 
-Prefer to watch first? The
-[3:42 narrated tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
-shows the actual hosted workflow with captions. A
-[short presentation](output/presentations/BioGraph_Steward_Overview.pptx) is also available.
+**The updated agent replay is prepared locally; its hosted rollout is pending.**
+Check [delivery status](docs/DELIVERY_STATUS_20261115.json) for the accepted
+checkpoint. The protected site may still show the preceding guided-reader
+version until that update is accepted.
 
-The hosted example uses real saved Pharos data and separately recorded source
-context. It replays the completed workflow. Reviewers can inspect questions,
-sources, results and downloads. It does not run new model calls, retrieval,
-pruning or review edits during this shared session.
+1. Open the [reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
+   and sign in with the token supplied privately.
+2. In the updated **Start here**, open **Agent workflow** and the verified
+   recorded KRAS run. Replaying checks saved sources without calling a model.
+3. Follow its **question → plan → evidence → review proposals**. Check the
+   complete answer and source passports; inspection priority does not remove
+   other results. The [agent guide](docs/SOURCE_AGENT.md) explains the steps.
+4. Use **Review applied graph qualifications** and **What changed** to inspect
+   the separate retained TP53 example and biological-reference measurements.
+   These are distinct from agent execution checks.
 
-No AWS account, Brev instance, local tunnel or installation is needed. Repository
-access alone does not include the full real-data packet. If you see an
-**invented offline demo**, you have opened the software test route. Use the
-shared app above for biological review.
+The prepared featured job is `source_agent_eval_dc7b597201da_S01`. It uses the
+99-target native-evidence workspace and an eight-result cap. The separate saved
+manual KRAS answer displays all 14 matching partners. Do not interpret those
+caps as a change to the source evidence.
+
+The existing [3:42 guided-source tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+and [five-minute reader guide](docs/JUDGE_WALKTHROUGH.md) cover saved-source
+inspection. The [short presentation](output/presentations/BioGraph_Steward_Overview.pptx)
+provides the overall project context. Existing captures are not evidence of new
+live inference.
+
+Shared review needs only a browser—no AWS account, repository setup, Brev or
+running model. It allows saved inspection and downloads; new retrieval,
+inference and review edits are disabled. In an authorized local operator
+installation, **Run the source agent** makes a new bounded model run and records
+its actual outcome; see the [operator instructions](docs/SOURCE_AGENT.md).
+
+Repository access alone does not include the full real-data packet. An
+**invented offline demo** is a software fixture, not the real agent example.
+Use the authorized real workspace for source review.
 
 ## What to assess
 
-- Can you state the question and find its answer?
-- Can you follow one claim to its source and explain its review state?
+- Can you follow the question, model plan and executed tool to the cited answer?
+- Can you follow one claim to its source and distinguish a review proposal from acceptance?
 - Can you distinguish added evidence, an applied qualification and a measured result?
 - Can you find an unresolved limitation and export the workspace?
 

@@ -44,9 +44,10 @@ function updateReviewerHome(){
   const entryURL=reviewerSavedURL(reviewerEntry?.example_url),ready=reviewerAnswerReady(),synthetic=graph?.data_kind==='synthetic_demo';
   const primaryLoaded=entryURL&&runId===entryURL.searchParams.get('run');
   $('reviewerDataLabel').textContent=synthetic?'Invented offline records':graph?.data_kind==='live_pharos'?'Saved Pharos evidence':'Saved evidence, with its source trail';
-  $('reviewerHomeTitle').textContent=synthetic?'You are viewing the invented offline demonstration.':reviewerEntry?.display_title||'A question. Its evidence. A transparent assessment.';
+  $('reviewerHomeTitle').textContent=synthetic?'You are viewing the invented offline demonstration.':reviewerEntry?.agent_job_id?'Guided source reader':reviewerEntry?.display_title||'A question. Its evidence. A transparent assessment.';
   const status=$('reviewerHomeStatus');status.className='notice'+(synthetic?' warn':'');
   status.textContent=synthetic?'These records are invented. Use the real-data example for source inspection and scientific assessment.':graph?.data_kind==='live_pharos'?'Real source records are open. Candidate annotations and local acceptance remain distinct.':entryURL?'Opening the real saved example and checking its sources…':'No real reviewer workspace is available in this installation. A code-only checkout needs its source packet separately.';
+  if(reviewerEntry?.agent_entry_unavailable){status.textContent+=' '+reviewerEntry.note;status.className='notice warn';}
   $('reviewerAnswer').disabled=!ready&&!entryURL;
   $('reviewerAnswer').textContent=ready?'Read the cited answer':'Open the real-data example';
   if(primaryLoaded&&!ready)$('reviewerAnswer').disabled=true;

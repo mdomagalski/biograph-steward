@@ -69,6 +69,14 @@ function updateQuestionPlan(){
   $('questionScope').textContent=JSON.stringify({disease:graph.disease,cohort:graph.scope||graph.cohort||graph.question_scope?.cohort,protein:t?.id,cohort_targets:graph.targets.length,target_cohort_capped:graph.retrieval.truncated,limits:graph.question_scope?.limits,context_scope:graph.retrieval.context?.scope,filters:(cohort?'Declared cohort membership':'Exact-term disease associations')+' and structurally usable context. Rejected, quarantined and obsolete assertions are excluded.'},null,2);
 }
 function questionScopeChanged(){updateQuestionPlan();questionAnswer=null;questionId=null;questionSelection=null;$('questionOutput').classList.add('hidden');$('questionCitation').replaceChildren();$('questionStatus').textContent='Scope changed. Find evidence paths to refresh the answer.';if(runId)history.replaceState(null,'','?run='+encodeURIComponent(runId));updateWorkNavigation();}
+function savedQuestionURL(id,search=typeof location==='undefined'?'':location.search){
+  const base='?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id);if(!search)return base;
+  const current=new URLSearchParams(search),agent=current.get('agent_job');
+  // An automatic reopen of this exact saved question preserves its recorded
+  // agent/view link. A changed or newly executed question keeps the clean URL.
+  if(current.get('run')!==runId||current.get('question')!==id||current.getAll('agent_job').length!==1||!/^source_agent_[A-Za-z0-9_-]{1,67}$/.test(agent||''))return base;
+  const view=current.get('view');return base+'&agent_job='+encodeURIComponent(agent)+(view&&['data','ask','evidence','compare','export'].includes(view)?'&view='+view:'');
+}
 function bindQuestionAnswer(answer,id){
   if(answer.source_run!==runId||answer.graph_basis_sha256!==graph.question_basis_sha256)throw new Error('This question result belongs to a different source run or review state. Run the question again.');
   questionAnswer=answer;questionId=id;questionSelection=answer.results[0]?.protein.id||null;
@@ -76,7 +84,7 @@ function bindQuestionAnswer(answer,id){
   $('questionRelations').value=answer.template==='native_string_physical.v1'?'native_physical':answer.template==='qualified_pathway_source_context.v1'?'qualified_pathway_sources':answer.plan.relations.length===2?'both':answer.plan.relations[0];
   $('questionLimit').value=answer.plan.max_results;$('questionPaths').value=answer.plan.max_paths_per_protein;
   $('questionRanking').value=answer.plan.ranking||'alphabetical';
-  updateQuestionPlan();history.replaceState(null,'','?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id));renderQuestion();if(typeof updateReviewerHome==='function')updateReviewerHome();
+  updateQuestionPlan();history.replaceState(null,'',savedQuestionURL(id));renderQuestion();if(typeof updateReviewerHome==='function')updateReviewerHome();
 }
 async function runQuestion(){
   if(questionBusy||!runId)return;

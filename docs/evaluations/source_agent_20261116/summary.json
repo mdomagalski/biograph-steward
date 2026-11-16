@@ -1,0 +1,433 @@
+{
+  "format": "biograph-steward.source-agent-frozen-evaluation.v1.report",
+  "created_at": "2026-11-16T13:32:55.843123+00:00",
+  "status": "completed",
+  "execution_kind": "frozen_real_sources",
+  "execution_file_sha256": "f09a28621a89cb566b1f3ae7c5fe5ec63bf7e076788aeb5eb7e1c56b5b756d53",
+  "prepared_file_sha256": "648f4d9e245ebe68946abb925611f1186a0376be6dedf81a7204e00c433d1226",
+  "cases_expected": 8,
+  "cases_recorded": 8,
+  "behavioral_cases_passed": 8,
+  "result_statuses": {
+    "completed": 4,
+    "completed_empty": 1,
+    "scope_rejected": 3
+  },
+  "cases": [
+    {
+      "case_id": "S01",
+      "source_run": "native_evidence_workspace_20261115",
+      "status": "completed",
+      "model_calls": 3,
+      "agency": {
+        "decision_origin": "model_output",
+        "actual_plan_query_branches": 1,
+        "actual_plan_tool_choices": [
+          "native_physical"
+        ],
+        "actual_plan_anchor_choices": [
+          "UniProtKB:P01116"
+        ],
+        "model_multi_tool_selection_opportunity": false,
+        "model_entity_selection_opportunity": false,
+        "model_refusal_credit": false
+      },
+      "graph_changes": 0,
+      "review_changes": 0,
+      "proposals_applied": false,
+      "scientific_accuracy_evaluated": false,
+      "intent_matches_frozen_request": true,
+      "deterministic_parity": {
+        "query": true,
+        "answer": true,
+        "focused_graph": true
+      },
+      "all_query_results_retained": true,
+      "inspection_priority": [
+        "E001",
+        "E002",
+        "E003"
+      ],
+      "fixed_deterministic_priority": [
+        "E001",
+        "E002",
+        "E003"
+      ],
+      "priority_differs_from_fixed_order": false,
+      "source_passports_replayed": true,
+      "query_sha256": "8843d96bafec22c24b6a7880a9f3a9f5f24e3d75a2fde74f09197d33e7d85979",
+      "answer_sha256": "72d6262a902ee10c993e5fdb5b23ef2241cbb69c3e8e626916132f8dc9efe7c9",
+      "focus_graph_sha256": "b7553d70a051c01dfbc4ff81500da0d90ec871ea408bf3c397ae1a68cbf81b90",
+      "case_passed": true,
+      "source_binding_unchanged": true,
+      "prepared_source_binding_matched": true,
+      "saved_job_id": "source_agent_eval_dc7b597201da_S01",
+      "saved_job_manifest_sha256": "e3bdcc524aefcc533d046965e9dd3e49728823ded677b17a97c81e430df252a1",
+      "captured_pharos_only": {
+        "status": "native_source_contract_unavailable",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "biological_correctness_scored": false
+      },
+      "reserved_transport_calls": 3,
+      "trace_transport_accounting_matches": true,
+      "event_files": 10
+    },
+    {
+      "case_id": "S02",
+      "source_run": "native_evidence_workspace_20261115",
+      "status": "completed",
+      "model_calls": 3,
+      "agency": {
+        "decision_origin": "model_output",
+        "actual_plan_query_branches": 1,
+        "actual_plan_tool_choices": [
+          "native_physical"
+        ],
+        "actual_plan_anchor_choices": [
+          "UniProtKB:P00533"
+        ],
+        "model_multi_tool_selection_opportunity": false,
+        "model_entity_selection_opportunity": false,
+        "model_refusal_credit": false
+      },
+      "graph_changes": 0,
+      "review_changes": 0,
+      "proposals_applied": false,
+      "scientific_accuracy_evaluated": false,
+      "intent_matches_frozen_request": true,
+      "deterministic_parity": {
+        "query": true,
+        "answer": true,
+        "focused_graph": true
+      },
+      "all_query_results_retained": true,
+      "inspection_priority": [
+        "E001",
+        "E002",
+        "E003"
+      ],
+      "fixed_deterministic_priority": [
+        "E001",
+        "E002",
+        "E003"
+      ],
+      "priority_differs_from_fixed_order": false,
+      "source_passports_replayed": true,
+      "query_sha256": "94ed53edf52cdf177e9fbf2765538f538ed307938d4658524f0555a8f0f354c8",
+      "answer_sha256": "93948635947c66a55ae69646b3c73d24b60689cbfaf08db4a4560fadfed144b1",
+      "focus_graph_sha256": "3763678d1a5e93b0f3d5f1594d511662a9b92d2b91b9924ba995e2c02cc8f62b",
+      "case_passed": true,
+      "source_binding_unchanged": true,
+      "prepared_source_binding_matched": true,
+      "saved_job_id": "source_agent_eval_dc7b597201da_S02",
+      "saved_job_manifest_sha256": "438dd8a3e656ea1ecd839f716f8dd5ba794ca9bd66735c7087c1f4dbc126baab",
+      "captured_pharos_only": {
+        "status": "native_source_contract_unavailable",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "biological_correctness_scored": false
+      },
+      "reserved_transport_calls": 3,
+      "trace_transport_accounting_matches": true,
+      "event_files": 10
+    },
+    {
+      "case_id": "S03",
+      "source_run": "native_evidence_workspace_20261115",
+      "status": "completed",
+      "model_calls": 3,
+      "agency": {
+        "decision_origin": "model_output",
+        "actual_plan_query_branches": 2,
+        "actual_plan_tool_choices": [
+          "native_location",
+          "native_physical"
+        ],
+        "actual_plan_anchor_choices": [
+          "UniProtKB:P04637"
+        ],
+        "model_multi_tool_selection_opportunity": true,
+        "model_entity_selection_opportunity": false,
+        "model_refusal_credit": false
+      },
+      "graph_changes": 0,
+      "review_changes": 0,
+      "proposals_applied": false,
+      "scientific_accuracy_evaluated": false,
+      "intent_matches_frozen_request": true,
+      "deterministic_parity": {
+        "query": true,
+        "answer": true,
+        "focused_graph": true
+      },
+      "all_query_results_retained": true,
+      "inspection_priority": [
+        "E001",
+        "E002",
+        "E003"
+      ],
+      "fixed_deterministic_priority": [
+        "E001",
+        "E002",
+        "E003"
+      ],
+      "priority_differs_from_fixed_order": false,
+      "source_passports_replayed": true,
+      "query_sha256": "fa6507116c0f42b68a43fafbf94bf2dca3880d1884a717cc1718f58453ab5c7c",
+      "answer_sha256": "c350a01c5e6a71a499b9aca6d3cc206a8ccfbbdd23559501f2245d2c55e27310",
+      "focus_graph_sha256": "2345bd57f3c7637f9857e8d0a6c97eaa94e2514da7f5ae21cf7d5416c6a130a1",
+      "case_passed": true,
+      "source_binding_unchanged": true,
+      "prepared_source_binding_matched": true,
+      "saved_job_id": "source_agent_eval_dc7b597201da_S03",
+      "saved_job_manifest_sha256": "c1a533eef0efa32ff63bb43db1fb0e239fbc9d73347e0c27f7bf0a192fd4e230",
+      "captured_pharos_only": {
+        "status": "native_source_contract_unavailable",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "biological_correctness_scored": false
+      },
+      "reserved_transport_calls": 3,
+      "trace_transport_accounting_matches": true,
+      "event_files": 10
+    },
+    {
+      "case_id": "S04",
+      "source_run": "source_faithful_workspace_20261113",
+      "status": "completed",
+      "model_calls": 3,
+      "agency": {
+        "decision_origin": "model_output",
+        "actual_plan_query_branches": 1,
+        "actual_plan_tool_choices": [
+          "archived_pathway"
+        ],
+        "actual_plan_anchor_choices": [
+          "UniProtKB:P15056"
+        ],
+        "model_multi_tool_selection_opportunity": false,
+        "model_entity_selection_opportunity": false,
+        "model_refusal_credit": false
+      },
+      "graph_changes": 0,
+      "review_changes": 0,
+      "proposals_applied": false,
+      "scientific_accuracy_evaluated": false,
+      "intent_matches_frozen_request": true,
+      "deterministic_parity": {
+        "query": true,
+        "answer": true,
+        "focused_graph": true
+      },
+      "all_query_results_retained": true,
+      "inspection_priority": [
+        "E001",
+        "E002",
+        "E005"
+      ],
+      "fixed_deterministic_priority": [
+        "E001",
+        "E002",
+        "E003"
+      ],
+      "priority_differs_from_fixed_order": true,
+      "source_passports_replayed": true,
+      "query_sha256": "d3cc1cbc10f6663042b7d784b1dcf7e838a4db808bc00e7942ac435a9af72a02",
+      "answer_sha256": "47ea47d9d7772f0bccd38052b8084972f3cda86ebbd8da62912214a156b65a34",
+      "focus_graph_sha256": "d0032e1f7ff68923192223642e385c666fe0e655f0329aa099e842cf716489c6",
+      "case_passed": true,
+      "source_binding_unchanged": true,
+      "prepared_source_binding_matched": true,
+      "saved_job_id": "source_agent_eval_dc7b597201da_S04",
+      "saved_job_manifest_sha256": "594e2158c49022149b4073f0ff0422497d121d026f0ba1c40e2a1331040ad21e",
+      "captured_pharos_only": {
+        "status": "native_source_contract_unavailable",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "biological_correctness_scored": false
+      },
+      "reserved_transport_calls": 3,
+      "trace_transport_accounting_matches": true,
+      "event_files": 10
+    },
+    {
+      "case_id": "S05",
+      "source_run": "native_evidence_workspace_20261115",
+      "status": "completed_empty",
+      "model_calls": 1,
+      "agency": {
+        "decision_origin": "model_output",
+        "actual_plan_query_branches": 1,
+        "actual_plan_tool_choices": [
+          "native_physical"
+        ],
+        "actual_plan_anchor_choices": [
+          "UniProtKB:P01116"
+        ],
+        "model_multi_tool_selection_opportunity": false,
+        "model_entity_selection_opportunity": false,
+        "model_refusal_credit": false
+      },
+      "graph_changes": 0,
+      "review_changes": 0,
+      "proposals_applied": false,
+      "scientific_accuracy_evaluated": false,
+      "intent_matches_frozen_request": true,
+      "deterministic_parity": {
+        "query": true,
+        "answer": true,
+        "focused_graph": true
+      },
+      "all_query_results_retained": true,
+      "inspection_priority": [],
+      "fixed_deterministic_priority": [],
+      "priority_differs_from_fixed_order": false,
+      "source_passports_replayed": true,
+      "query_sha256": "8a682308838f5df9a7740a290d84e0b77484d4c63fc06577f5008d8d072e3e46",
+      "answer_sha256": "dad34cadd4005755a25b774d09b8a6c54a700f247dfe3eacbfca2fa799ae1db1",
+      "focus_graph_sha256": "c90b56e7279166064570a8aceb5922c704cddcd3cf7ea15077d4ebee23e3171e",
+      "case_passed": true,
+      "source_binding_unchanged": true,
+      "prepared_source_binding_matched": true,
+      "saved_job_id": "source_agent_eval_dc7b597201da_S05",
+      "saved_job_manifest_sha256": "9d76babd39091d625312725851c1128a8c8de6d03f1c1d7c1315c681ef213117",
+      "captured_pharos_only": {
+        "status": "native_source_contract_unavailable",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "biological_correctness_scored": false
+      },
+      "reserved_transport_calls": 1,
+      "trace_transport_accounting_matches": true,
+      "event_files": 3
+    },
+    {
+      "case_id": "S06",
+      "source_run": "native_evidence_workspace_20261115",
+      "status": "scope_rejected",
+      "model_calls": 0,
+      "agency": {
+        "decision_origin": "preflight_guard",
+        "actual_plan_query_branches": 0,
+        "actual_plan_tool_choices": [],
+        "actual_plan_anchor_choices": [],
+        "model_multi_tool_selection_opportunity": false,
+        "model_entity_selection_opportunity": false,
+        "model_refusal_credit": false
+      },
+      "graph_changes": 0,
+      "review_changes": 0,
+      "proposals_applied": false,
+      "scientific_accuracy_evaluated": false,
+      "safe_refusal": true,
+      "case_passed": true,
+      "source_binding_unchanged": true,
+      "prepared_source_binding_matched": true,
+      "saved_job_id": "source_agent_eval_dc7b597201da_S06",
+      "saved_job_manifest_sha256": "ae30b2812ede24465aa54d4c641955efaf39081399e9a614c5cfcd2867c4a520",
+      "captured_pharos_only": {
+        "status": "unsupported_or_unresolved_request",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "biological_correctness_scored": false
+      },
+      "reserved_transport_calls": 0,
+      "trace_transport_accounting_matches": true,
+      "event_files": 0
+    },
+    {
+      "case_id": "S07",
+      "source_run": "native_evidence_workspace_20261115",
+      "status": "scope_rejected",
+      "model_calls": 0,
+      "agency": {
+        "decision_origin": "preflight_guard",
+        "actual_plan_query_branches": 0,
+        "actual_plan_tool_choices": [],
+        "actual_plan_anchor_choices": [],
+        "model_multi_tool_selection_opportunity": false,
+        "model_entity_selection_opportunity": false,
+        "model_refusal_credit": false
+      },
+      "graph_changes": 0,
+      "review_changes": 0,
+      "proposals_applied": false,
+      "scientific_accuracy_evaluated": false,
+      "safe_refusal": true,
+      "case_passed": true,
+      "source_binding_unchanged": true,
+      "prepared_source_binding_matched": true,
+      "saved_job_id": "source_agent_eval_dc7b597201da_S07",
+      "saved_job_manifest_sha256": "44ed73f2432fd1a1c85e320a3db0bd0126cda986169e0ccd3fa8fbe11f3f38d4",
+      "captured_pharos_only": {
+        "status": "unsupported_or_unresolved_request",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "biological_correctness_scored": false
+      },
+      "reserved_transport_calls": 0,
+      "trace_transport_accounting_matches": true,
+      "event_files": 0
+    },
+    {
+      "case_id": "S08",
+      "source_run": "native_evidence_workspace_20261115",
+      "status": "scope_rejected",
+      "model_calls": 0,
+      "agency": {
+        "decision_origin": "preflight_guard",
+        "actual_plan_query_branches": 0,
+        "actual_plan_tool_choices": [],
+        "actual_plan_anchor_choices": [],
+        "model_multi_tool_selection_opportunity": false,
+        "model_entity_selection_opportunity": false,
+        "model_refusal_credit": false
+      },
+      "graph_changes": 0,
+      "review_changes": 0,
+      "proposals_applied": false,
+      "scientific_accuracy_evaluated": false,
+      "safe_refusal": true,
+      "case_passed": true,
+      "source_binding_unchanged": true,
+      "prepared_source_binding_matched": true,
+      "saved_job_id": "source_agent_eval_dc7b597201da_S08",
+      "saved_job_manifest_sha256": "1647df80864f8d690ac9d3dbc4a81791d8e8352c51f28263320d5e5b959e1441",
+      "captured_pharos_only": {
+        "status": "unsupported_or_unresolved_request",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "biological_correctness_scored": false
+      },
+      "reserved_transport_calls": 0,
+      "trace_transport_accounting_matches": true,
+      "event_files": 0
+    }
+  ],
+  "captured_pharos_native_contract_statuses": {
+    "native_source_contract_unavailable": 5,
+    "unsupported_or_unresolved_request": 3
+  },
+  "deterministic_agent_exact_answer_and_focus_parity_cases": 5,
+  "model_calls_reserved": 13,
+  "maximum_requested_output_tokens": 15600,
+  "reported_output_tokens": 972,
+  "learner_input_artifacts_unchanged": true,
+  "learner_input_artifacts": 0,
+  "prediction_input_applicability": "not_applicable_no_source_compatible_prediction_artifact",
+  "predictor_invoked": false,
+  "prediction_gain_evaluated": false,
+  "scientific_accuracy_evaluated": false,
+  "interpretation": "Fixed development task/source parity and guard behavior. Unavailable native semantics in captured Pharos are not biological falsehoods. No new accuracy, independence or prediction-gain claim.",
+  "raw_source_or_model_text_included": false,
+  "content_sha256": "fc36b709836542c5a50ce4a3e22d9914eb197b7940bf14a79922bfd74165e85d"
+}

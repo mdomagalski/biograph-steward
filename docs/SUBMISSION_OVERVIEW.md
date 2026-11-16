@@ -1,9 +1,15 @@
 # BioGraph Steward | Submission overview
 
-BioGraph Steward turns a supported research question into a focused Pharos
-evidence graph, a cited answer and a source-preserving export. A researcher can
-follow a connection to its original record, see what was added or excluded,
-and carry the graph and its decisions into further work.
+BioGraph Steward uses a bounded NVIDIA Nemotron agent to guide a research
+question through supported source tools. It returns a focused Pharos evidence
+graph, a cited answer, inspected source records and grounded review proposals.
+A researcher can trace a connection, inspect qualifications and reuse the
+graph with its source context.
+
+The new agent's actual development comparison is complete. Hosted replay,
+updated media and refreshed software packaging await their own acceptance.
+The protected site and current video still show the preceding guided reader
+until the [delivery status](DELIVERY_STATUS_20261115.json) records the update.
 
 **[Open the protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
 and follow the **[five-minute judge walkthrough](JUDGE_WALKTHROUGH.md)**.
@@ -17,6 +23,12 @@ deployment and release identities are recorded in the
 The two real examples share a **99-target colorectal-cancer cohort** and show
 different operations, rather than interchangeable graph versions:
 
+- **Follow the recorded agent:** inspect its question, validated tool plan,
+  cited results, complete selected-source inspections and proposed review
+  decisions. The primary KRAS agent run displays eight of 14 matching proteins
+  under its fixed cap, while the older manual answer displays all 14. Proposals
+  retain candidate context or request review; they apply no graph decisions.
+  Four sequential tabs separate the plan, evidence graph, inspections and proposals.
 - **Explore added source context:** read the KRAS answer, follow one of its 14
   candidate protein connections and inspect its native STRING source. The full
   addition includes 330 physical associations and 3,309 native GO records across
@@ -41,6 +53,15 @@ they do not measure the fraction of the whole graph that is correct.
 Same-learner held-out graph comparisons were executed without establishing
 consistent enriched-graph superiority over Pharos and the strongest controls.
 
+The [current-source agent comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md)
+completed all eight fixed behavioral checks: four nonempty queries and one
+valid accepted-only empty query matched the deterministic query, cited answer
+and focused graph exactly. Three unsupported or unresolved requests stopped at
+preflight without calling a model. These results demonstrate bounded execution
+and source fidelity. Most requests already fixed one tool and protein; only
+the TP53 location case offered two tool choices. The agent changed no source
+graph or learner input and therefore supplies no new prediction-gain result.
+
 ## What is delivered
 
 The working tools cover bounded construction, explicit identifier checks,
@@ -48,8 +69,11 @@ versioned assertions, source passports, guided multihop inspection, guarded
 snapshot comparison and reproducible graph/decision exports. Stable identifiers,
 Biolink references and bounded KGX/SSSOM profiles have recorded limits. AWS hosts
 the protected workbench; Neptune supplies a private mirror/inspection route.
-The optional Nemotron planner and source-audit agent were evaluated but are
-not trusted to make automatic biological acceptance or pruning decisions.
+The current-source Nemotron agent orchestrates these existing tools and source
+inspections. Its adapter-grounded proposals remain for a reviewer. Earlier
+planner and literature-audit experiments retain their separate results and
+limits; the auditor did not outperform its specialist control. No model result
+automatically accepts or biologically prunes evidence.
 The shared reviewer route replays saved work; live construction, retrieval,
 model calls and review edits are disabled there.
 
@@ -60,7 +84,9 @@ preserved research appendix. The
 [narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 shows actual hosted-app captures in 3:42, with captions; the
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
-provides a concise presentation.
+provides the preceding guided presentation. Their replacement will show the
+actual accepted agent workflow. Earlier files remain in the
+[dated media history](../output/history/20261115_guided_review/README.md).
 
 For code or separate operator execution, use [START_HERE](../START_HERE.md) and
 [delivery instructions](DELIVERY.md). The code-only synthetic fixture is labeled

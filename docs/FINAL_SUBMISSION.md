@@ -1,9 +1,14 @@
 # BioGraph Steward | Challenge submission
 
-BioGraph Steward helps a researcher turn a supported question into a focused
-Pharos evidence graph, a readable cited answer and a reproducible handoff.
-Each connection retains its original source and conditions. The researcher can
-see what was added, what was excluded and what remains uncertain.
+BioGraph Steward uses a bounded NVIDIA Nemotron agent to guide a supported
+research question through existing source tools. It returns a focused Pharos
+evidence graph, a cited answer, inspected source records and grounded review
+proposals. Each connection retains its original source and conditions.
+
+The actual current-source agent comparison is complete. Its protected hosted
+replay and replacement media are awaiting deployment acceptance; until then,
+the shared site and canonical video show the earlier guided evidence reader.
+The [delivery status](DELIVERY_STATUS_20261115.json) records actual acceptance.
 
 **Start with the [five-minute judge walkthrough](JUDGE_WALKTHROUGH.md)** and
 [protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/).
@@ -15,7 +20,7 @@ uses actual hosted-app captures, focused crops and captions. The
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
 provides its presentation.
 
-## One research cohort, two useful tasks
+## One research cohort, connected research tasks
 
 Both examples concern **99 primary protein targets from a captured colorectal
 cancer cohort**. They demonstrate different operations, with different source
@@ -23,6 +28,7 @@ collections; their total record counts are not a paired before/after comparison.
 
 | Task | What a reviewer can see | Concrete outcome |
 |---|---|---|
+| **Follow the agent's work** | A recorded model plan, validated tool call, complete selected-citation inspections and source-bound review proposals | The primary KRAS run displays eight of 14 matching proteins under its frozen cap. Three selected citations lead to three original source inspections. Proposals retain candidate context without applying decisions. The complete returned answer remains available. |
 | **Explore added source context** | A KRAS question, small graph, cited answer and preserved native STRING source record | 14 candidate result proteins. The full added physical source has 330 qualified pairs: 243 already represented in the captured graph and 87 absent there. Native GO adds 3,309 records describing 429 protein-location concepts across 94 targets. Additional rows are not automatically independent experiments or accepted claims. |
 | **Review applied graph qualifications** | A TP53 pathway question using the graph after explicit qualification decisions | 16,985 input records become 16,687 retained records. The 298 excluded records have obsolete GO identifiers in the pinned ontology. All original rows and decisions remain recoverable; 11,636 abstained records stay retained. This is identifier qualification, not 298 experimentally disproved biological links. |
 
@@ -32,6 +38,11 @@ assert direct binding. Native archived models preserve connections that a
 current-only flat list can omit, and unresolved source claims are not pruned
 merely because a current lookup fails.
 
+The recorded agent work appears in four sequential tabs: **Question & plan**,
+**Evidence graph**, **Source inspection** and **Review proposals**. Continue
+buttons keep one step visible at a time; source records and technical traces
+remain available through disclosures.
+
 ## Evidence for the judging criteria
 
 The organizer brief assigns the following weights and permits autonomous
@@ -39,7 +50,7 @@ The organizer brief assigns the following weights and permits autonomous
 
 | Criterion | Visible demonstration | Evidence and boundary |
 |---|---|---|
-| **Usability (40%)** | Start here → Question & graph → Inspect sources → What changed → Export | Guided real examples answer a concrete question without graph syntax. A small graph and readable claim lead to the source. Independent intended-user feedback is still pending. |
+| **Usability (40%)** | Question, agent plan, tool execution, inspected sources and proposed decisions | A recorded model run leads to a readable cited answer without graph syntax. Existing manual guidance remains available. Independent intended-user feedback is still pending. |
 | **Accuracy & pruning (30%)** | Review applied qualification and its exhaustive decisions | 298 obsolete-ID exclusions are applied and reversible; unknowns remain retained. Public-reference recovery measures additional support. Automatic biological error removal and whole-graph correctness are not established. |
 | **Explainability (20%)** | Select an answer citation and inspect its source passport | Provider/version, original fields, exact identifiers, sequence or native-model checks, missing context and local review state remain visible. Database agreement is not counted as independent experimental replication. |
 | **Standards (10%)** | Inspect identifiers/categories and export the graph with provenance | UniProt, GO, MONDO/Reactome and explicit Biolink references are used. Bounded KGX and SSSOM profiles have recorded validation and mapping limits; full interoperability is not claimed. |
@@ -54,9 +65,24 @@ replace that endpoint.
 
 ## What improved, and what the measurements mean
 
-The app now puts richer source context into the actual question, inspection and
-export flow, alongside applied source qualification. The public-reference
-assessment gives a bounded measure of the added information:
+The agent now orchestrates actual source tools and inspections. In the
+[frozen development comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md),
+four nonempty queries and one valid accepted-only empty query preserved the
+deterministic tool's complete query, answer and focused graph. Three unsupported
+or unresolved requests stopped at preflight with zero model calls. All eight
+behavioral checks passed, using 13 calls and 972 reported output tokens, with
+no retries or repairs. The refusals establish controller guards, not learned
+model refusal. Only the TP53 location request offered two source-tool choices;
+the other supported requests already constrained the tool and exact protein.
+
+Captured Pharos alone lacks these separately attached native-source contracts;
+that is a source-availability distinction, not a biological-error label.
+Agent and deterministic execution use the same fixed sources and result caps.
+Neither changes the source graph or learner inputs, so this comparison measures
+source fidelity and workflow execution rather than prediction improvement.
+
+The separate public-reference assessment measures information recovered by
+the source views:
 
 - **Known protein locations:** among 31 matching proteins, the captured Pharos
   view recovers 41 of 51 positive reference labels; qualified native annotations
@@ -95,14 +121,20 @@ tests reusable execution within the same cohort, separately from scientific accu
 The shared reviewer site is deliberately a **saved-workflow demonstration**:
 fresh construction, retrieval, model calls and review edits are disabled there.
 
-Optional Nemotron planning, a NeMo Agent Toolkit wrapper and a bounded
-source-audit agent were implemented and evaluated. Their recorded results are
-available in the [NVIDIA integration record](NVIDIA_INTEGRATION_STATUS_20261113.md).
-The model planner remains experimental, and the audit agent did not outperform
-the specialist baseline. Consequently, explicit choices and deterministic
-source checks are the dependable path; model outputs do not automatically
-accept or biologically prune claims. The entry is semi-autonomous, not a claim
-of validated unrestricted autonomous scientific curation.
+The [current-source agent](SOURCE_AGENT.md) uses up to three model calls:
+propose a tool plan, prioritize returned citations for complete source
+inspection, then select adapter-grounded review proposals. The application
+validates the plan and preserves the deterministic cited answer. **Retain
+candidate context** and **Needs review** change no assertion or local decision.
+All selected citations retain every original source assertion, with explicit
+inspection coverage; compact model context binds to the complete passports.
+
+The earlier one-call planner, NeMo Agent Toolkit wrapper and literature-audit
+agent retain their separate [NVIDIA integration record](NVIDIA_INTEGRATION_STATUS_20261113.md).
+The literature auditor did not outperform its specialist baseline and has not
+become an automatic acceptance or biological-pruning authority. Its result
+does not replace the new current-source workflow evaluation. This is bounded
+semi-autonomous research support, with explicit source and decision limits.
 
 Versioned snapshots, guarded comparison and review history support maintenance;
 unattended literature monitoring is outside the delivered scope. A working
@@ -117,6 +149,10 @@ includes the retained graph, complete keep/prune/abstain ledger and original
 baseline/source packet. The small answer diagram and focused answer ZIP are
 separate views. Original and retained graphs stay distinguishable, and
 abstentions do not disappear.
+
+The verified agent-record download preserves its question, plan, model/tool
+trace, source inspections and proposals. It replays beside the original source
+workspace; that small record does not silently include the full source packet.
 
 - [Code and build instructions](../START_HERE.md): MIT software with a local
   synthetic demonstration, explicitly labeled as invented data.

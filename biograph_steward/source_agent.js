@@ -2,10 +2,25 @@
 // The server controls model/tool budgets, source verification and write policy.
 let sourceAgentEpoch=0,sourceAgentBusy=false,sourceAgentConfig=null,sourceAgentJob=null;
 const sourceAgentNames={native_physical:'Native physical interaction records',native_location:'Native GO location annotations',archived_pathway:'Verified archived pathway records'};
+function sourceAgentGuardRecord(job){return (job.status||job.result?.status)==='scope_rejected'&&(job.model_calls??job.result?.trace?.model_calls)===0;}
+function sourceAgentRecordLabel(job){return job.actual_model_run===true?'Recorded model run':sourceAgentGuardRecord(job)?'Controller guard · no model call':job.provider_kind==='injected_test_model'?'Development/test record':'Recorded attempt · model run not established';}
 const sourceAgentScopeNotes={one_exact_mentioned_primary_protein_required:'Name one exact protein from this workspace.',explicit_anchor_differs_from_question:'The selected protein and the question name different targets.',explicit_review_view_conflict:'The question and the selected candidate/accepted view conflict.',requested_source_tool_unavailable:'This workspace does not contain the requested source tool.',no_current_source_tools_attached:'This workspace has none of the current source tools attached.',direct_binding_requirement:'The physical source reports associations; it cannot verify direct binding.',assay_requirement:'These tools cannot filter records by an assay or construct.',tissue_or_cell_condition:'These tools do not support the requested tissue or cell-line filter.',disease_specific_requirement:'Cohort membership does not make the native evidence disease-specific.',experimental_only_filter:'This source tool does not implement an experimental-only evidence filter.',multiple_source_tool_requirements:'Choose one source family for this bounded run.',multiple_source_execution:'This workflow executes one source query per run.',unresolved_protein_identifier:'The question includes a protein identifier outside this saved cohort.'};
 function sourceAgentDisclosure(label,value){const box=el('details');box.append(el('summary',label),el('pre',JSON.stringify(value,null,2)));return box;}
+function sourceAgentSteps(){
+  // Reuse the main workspace's WAI-ARIA tab pattern for one readable step at a time.
+  const box=el('div'),nav=el('div',undefined,'source-agent-steps');nav.setAttribute('role','tablist');nav.setAttribute('aria-label','Recorded agent workflow steps');
+  const labels=['1. Question & plan','2. Evidence graph','3. Source inspection','4. Review proposals'],panels=[],buttons=[];
+  function show(index,focus=false){for(let i=0;i<buttons.length;i++){buttons[i].setAttribute('aria-selected',String(i===index));buttons[i].tabIndex=i===index?0:-1;panels[i].hidden=i!==index;}if(focus){buttons[index].focus?.();nav.scrollIntoView?.({block:'nearest'});}}
+  labels.forEach((label,index)=>{const button=el('button',label),panel=el('section');button.type='button';button.id='sourceAgentStepTab'+index;panel.id='sourceAgentStepPanel'+index;
+    button.setAttribute('role','tab');button.setAttribute('aria-controls',panel.id);panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby',button.id);panel.tabIndex=0;
+    button.onclick=()=>show(index);button.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%labels.length;if(event.key==='ArrowLeft')next=(index+labels.length-1)%labels.length;if(event.key==='Home')next=0;if(event.key==='End')next=labels.length-1;if(next!==undefined){event.preventDefault();show(next,true);}});
+    buttons.push(button);panels.push(panel);nav.append(button);
+  });
+  box.append(nav,...panels);show(0);
+  return {box,panels,finish(){panels.slice(0,-1).forEach((panel,index)=>{const next=el('button','Continue: '+labels[index+1].slice(3),'secondary');next.type='button';next.onclick=()=>show(index+1,true);panel.append(next);});}};
+}
 function sourceAgentToolCount(trace){return Array.isArray(trace?.tool_calls)?trace.tool_calls.length:(trace?.tool_calls||0);}
-function sourceAgentMessage(text,error=false){$('sourceAgentStatus').textContent=text;$('sourceAgentStatus').className='notice'+(error?' error':'');}
+function sourceAgentMessage(text,error=false){$('sourceAgentStatus').textContent=text;$('sourceAgentStatus').className=error?'notice error':'small';}
 function sourceAgentSetBusy(value){sourceAgentBusy=value;$('sourceAgentRun').disabled=value||!sourceAgentConfig?.enabled;$('sourceAgentReplay').disabled=value||!$('sourceAgentJobs').value;}
 async function sourceAgentRead(path){const response=await fetch(path),value=await response.json();if(!response.ok)throw new Error(value.error||'Agent record could not be verified.');return value;}
 async function setupSourceAgent(){
@@ -20,11 +35,11 @@ async function setupSourceAgent(){
     if(epoch!==sourceAgentEpoch||source!==runId)return;sourceAgentConfig=config;
     const available=(config.catalogue?.tools||[]).filter(tool=>tool.available!==false).map(tool=>sourceAgentNames[tool.name||tool.id]||tool.name||tool.id).filter(Boolean);
     $('sourceAgentTools').textContent=available.length?'Tools in this workspace: '+available.join(' · '):'No supported current-source tool is available in this workspace.';
-    $('sourceAgentConfig').textContent=config.saved_data_only?'Saved review mode. Live model requests and new agent jobs are disabled.':config.configured?'Configured model: '+config.model+' ('+config.provider+'). Connectivity has not been checked; a request may still fail.':(config.reason||'No model has been configured.');
+    $('sourceAgentConfig').textContent=config.saved_data_only?'':config.configured?'Configured model: '+config.model+' ('+config.provider+'). Connectivity has not been checked; a request may still fail.':(config.reason||'No model has been configured.');
     const listing=await sourceAgentRead('/api/source-agent/jobs?run_id='+encodeURIComponent(source));
     if(epoch!==sourceAgentEpoch||source!==runId)return;
     const jobs=listing.jobs||[];$('sourceAgentJobs').replaceChildren(el('option','Choose a recorded agent run'));$('sourceAgentJobs').options[0].value='';
-    for(const job of jobs){const option=el('option',(job.actual_model_run?'Recorded model run':'Development/test record')+' · '+job.status+' · '+job.question);option.value=job.job_id;$('sourceAgentJobs').append(option);}
+    for(const job of jobs){const option=el('option',sourceAgentRecordLabel(job)+' · '+job.status+' · '+job.question);option.value=job.job_id;$('sourceAgentJobs').append(option);}
     $('sourceAgentRecordNote').textContent=jobs.length?jobs.length+' verified recorded runs. Replaying uses saved results and source checks; it does not call a model.':'No verified agent run has been recorded for this workspace. The manual cited example below is not an agent run.';
     if(listing.unavailable_jobs?.length)$('sourceAgentRecordNote').textContent+=' '+listing.unavailable_jobs.length+' saved records could not be verified and are unavailable.';
     sourceAgentSetBusy(false);
@@ -55,6 +70,7 @@ function renderSourceAgentPassport(inspection){
     if(passports.length>1)item.append(el('summary','Source assertion '+(index+1)+' of '+passports.length));
     item.append(el('p',passport.summary||'Recorded source inspection'),el('p',passport.review?.note||'Local source review state: '+(passport.review?.state||'not supplied'),'notice'));
     if(passport.qualifiers)item.append(fieldList(passport.qualifiers));
+    for(const section of passport.sections||[]){const details=el('details');details.append(el('summary',section.title),el('p',section.text),fieldList(section.fields||{}));item.append(details);}
     for(const question of passport.questions||[])item.append(el('h4',question.question),el('p',question.answer));
     for(const link of passport.links||[]){if(typeof link.url==='string'&&/^https:\/\//.test(link.url)){const p=el('p');p.append(guideLink(link));item.append(p);}}
     item.append(sourceAgentDisclosure('Complete recorded source passport',passport));if(item!==box)box.append(item);
@@ -64,30 +80,39 @@ function renderSourceAgentPassport(inspection){
 function renderSourceAgentJob(job,{replay=true}={}){
   if(job.source_run!==runId)throw new Error('This agent record belongs to a different saved workspace. Open its source workspace first.');
   sourceAgentJob=job;const result=job.result,output=$('sourceAgentOutput');output.replaceChildren();
-  const actual=job.actual_model_run===true,kind=actual?'Recorded model run':'Development/test record';
+  const actual=job.actual_model_run===true,kind=sourceAgentRecordLabel(job);
+  if(savedReviewOnly())$('sourceAgentReplayMode').hidden=true;
   output.append(el('p',(replay?kind+' replay. No model or external retrieval runs; saved-source checks verify this record.':'New agent attempt recorded.')+' Status: '+result.status+'. Graph and review decisions were not changed.','notice'+(actual?'':' warn')));
-  if(!actual)output.append(el('p','This record does not demonstrate a live model run. Its provider kind is '+job.provider_kind+'.','notice warn'));
-  const question=el('section',undefined,'path-step');question.append(el('h3','1. Research question'),el('p',result.question));output.append(question);
-  const plan=el('section',undefined,'path-step');plan.append(el('h3','2. Validated tool plan'));
+  if(actual)output.append(el('p','Recorded model: '+(result.trace?.model_requested||'see verified trace')+' · '+(result.trace?.model_calls||0)+' model calls.','small'));
+  if(!actual)output.append(el('p',sourceAgentGuardRecord(job)?'The application blocked this unsupported or unresolved request before inference. No model judgment was made.':'This record does not demonstrate a live model run. Its provider kind is '+job.provider_kind+'.','notice warn'));
+  const steps=sourceAgentSteps();output.append(steps.box);
+  const question=el('section',undefined,'path-step');question.append(el('h3','Research question'),el('p',result.question));steps.panels[0].append(question);
+  const plan=el('section',undefined,'path-step');plan.append(el('h3','Validated tool plan'));
   if(result.plan?.action==='query'){plan.append(el('p',sourceAgentNames[result.plan.tool]||result.plan.tool),fieldList(result.plan.arguments||{}));}else plan.append(el('p',result.plan?.reason||'No executable plan was validated.'));
   for(const issue of result.scope?.unsupported_requirements||[])plan.append(el('p',sourceAgentScopeNotes[issue]||'Unsupported requirement: '+issue.replaceAll('_',' '),'notice warn'));
-  if(result.plan?.reason)plan.append(el('p','Model explanation of its scope (not verified scientific evidence): '+result.plan.reason,'small'));output.append(plan);
-  const evidence=el('section',undefined,'path-step');evidence.append(el('h3','3. Evidence and source inspection'));
-  if(result.answer){evidence.append(el('p',result.answer.overview));for(const statement of result.answer.statements||[])evidence.append(el('p',statement.text+' '+(statement.citation_ids||[]).map(id=>'['+id+']').join(' ')));
+  if(result.plan?.reason)plan.append(el('p','Model explanation of its scope (not verified scientific evidence): '+result.plan.reason,'small'));steps.panels[0].append(plan);
+  const evidence=el('section',undefined,'path-step');evidence.append(el('h3','Cited answer and evidence graph'));
+  if(result.answer){evidence.append(el('p',result.answer.overview));
     evidence.append(renderSourceAgentGraph(result.focus_graph,result.plan?.arguments?.protein_id));
+    const statements=result.answer.statements||[],statementNode=statement=>el('p',statement.text+' '+(statement.citation_ids||[]).map(id=>'['+id+']').join(' '));
+    if(statements.length)evidence.append(statementNode(statements[0]));
+    if(statements.length>1){const remaining=el('details');remaining.append(el('summary','Read '+(statements.length-1)+' more cited statements'));for(const statement of statements.slice(1))remaining.append(statementNode(statement));evidence.append(remaining);}
     evidence.append(el('p','Dashed lines retain candidate review status. The diagram shows source annotations, not proven direct binding or a causal mechanism.','small'));
     const reads=(result.inspections||[]).reduce((total,item)=>total+(Array.isArray(item.passports)?item.passports.length:item.passport?1:0),0);
     evidence.append(el('p',(result.answer.citations||[]).length+' returned citations; '+(result.inspections||[]).length+' selected for source inspection. '+reads+' source assertions inspected. All returned evidence remains in the saved result.','small'));
     const citations=el('details');citations.append(el('summary','All returned source citations'));
-    for(const citation of result.answer.citations||[]){const card=el('div',undefined,'evidence');card.append(el('p','['+citation.id+'] '+(citation.subject||'')+' → '+(citation.object||'')+' · '+(citation.review_state||'review state not supplied')));const aid=(citation.source_assertion_ids||[])[0]||citation.assertion_id;if(aid){const open=el('button','Inspect this claim manually','secondary');open.type='button';open.onclick=()=>{showWorkspaceView('evidence');loadSourceGuide(aid);};card.append(open);}citations.append(card);}evidence.append(citations);
+    for(const citation of result.answer.citations||[]){const card=el('div',undefined,'evidence');card.append(el('p','['+citation.id+'] '+(citation.subject||'')+' → '+(citation.object||'')+' · '+(citation.review_state||'review state not supplied')));const aid=(citation.source_assertion_ids||[])[0]||citation.assertion_id;if(aid){const open=el('button','Inspect this claim manually','secondary');open.type='button';open.onclick=()=>{showWorkspaceView('evidence');loadSourceGuide(aid);};card.append(open);}citations.append(card);}steps.panels[2].append(citations);
   }else evidence.append(el('p','No query evidence was returned. This does not establish biological absence.'));
-  for(const inspection of result.inspections||[])evidence.append(renderSourceAgentPassport(inspection));
-  for(const limit of result.answer?.limitations||[])evidence.append(el('p',typeof limit==='string'?limit:JSON.stringify(limit),'small'));
-  output.append(evidence);
-  const proposals=el('section',undefined,'path-step');proposals.append(el('h3','4. Proposed review decisions'),el('p','These are proposals for a reviewer. No assertion was accepted, removed or changed. A model proposal is not independent scientific validation.','notice warn'));
+  const sources=el('section',undefined,'path-step');sources.append(el('h3','Inspected source records'),el('p','Open a selected citation to inspect its recorded source, qualifications and references. All returned citations are also available here.'));
+  for(const inspection of result.inspections||[])sources.append(renderSourceAgentPassport(inspection));
+  if(!(result.inspections||[]).length)sources.append(el('p','No source inspection was performed for this recorded outcome.'));
+  steps.panels[2].append(sources);
+  if(result.answer?.limitations?.length){const limits=el('details');limits.append(el('summary','Interpretation and source limitations'));for(const limit of result.answer.limitations)limits.append(el('p',typeof limit==='string'?limit:JSON.stringify(limit),'small'));evidence.append(limits);}
+  steps.panels[1].append(evidence);
+  const proposals=el('section',undefined,'path-step');proposals.append(el('h3','Proposed review decisions'),el('p','These are proposals for a reviewer. No assertion was accepted, removed or changed. A model proposal is not independent scientific validation.','notice warn'));
   if(!(result.proposals||[]).length)proposals.append(el('p','No valid decision proposal was produced.'));
   for(const proposal of result.proposals||[]){const card=el('div',undefined,'evidence'),label=proposal.decision==='keep'?'Retain candidate context':proposal.decision==='abstain'?'Needs review':proposal.decision;card.append(el('strong','['+proposal.citation_id+'] '+label+' · proposal only'),el('p',proposal.reason));if(proposal.review_question)card.append(el('p','Review question: '+proposal.review_question,'small'));proposals.append(card);}
-  output.append(proposals);
+  steps.panels[3].append(proposals);steps.finish();
   if(result.error)output.append(el('p','Recorded issue: '+result.error,'notice warn'));
   const trace=el('details');trace.append(el('summary','Model/tool trace and source bindings'),el('p',(result.trace?.model_calls||0)+' model calls · '+sourceAgentToolCount(result.trace)+' tool calls'),el('pre',JSON.stringify({source_bindings:result.source_bindings,scope:result.scope,trace:result.trace,content_sha256:result.content_sha256},null,2)));output.append(trace);
   const download=el('a','Download this verified agent record');download.href='/api/source-agent/job/'+encodeURIComponent(job.job_id)+'/download';output.append(download);
