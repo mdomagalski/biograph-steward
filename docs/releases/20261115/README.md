@@ -11,7 +11,7 @@ records the actual restart and saved-source checks; research history stays separ
 
 | File | Use |
 |---|---|
-| [Narrated walkthrough](../../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | Current 3:54 captioned agent tour, using actual local-app captures and verified saved real data. |
+| [Narrated walkthrough](../../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | Current 3:58 captioned agent tour, using actual local-app captures and verified saved real data. |
 | [Plain transcript](../../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) | Read the same explanation or use it when presenting. |
 | [Captions](../../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Load the timed captions separately when needed. Captions are also visible in the video. |
 | [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise editable overview, with the detailed research linked separately. |

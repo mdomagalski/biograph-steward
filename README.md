@@ -6,12 +6,20 @@ evidence graph and cited answer, and the agent selects source inspections and
 review proposals. Original evidence, qualifiers and local review states stay
 traceable; the agent does not automatically accept or prune biological claims.
 
+In the captured 99-target cohort, qualified native sources add **87 physical
+association pairs** and **68 protein–location concepts** absent from the
+baseline annotations. Under the same ontology-qualified mapping, location-label
+recovery improves **41/51 → 44/51**. A separate historical function-prediction
+study improves Fmax **0.17155 → 0.21009** over retained Pharos-derived LocalPlus.
+The [submission overview](docs/SUBMISSION_OVERVIEW.md) shows these improvements,
+their distinct comparison frames and a concrete added connection.
+
 **[Open the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
 with the token supplied privately. The [agent guide](docs/SOURCE_AGENT.md)
 explains question → plan → evidence → proposed review. The updated recorded-agent
 workflow is **available on the protected site**, with restart and source checks
 recorded in [delivery status](docs/DELIVERY_STATUS_20261115.json). The
-[3:54 narrated tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4) and
+[3:58 narrated tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4) and
 [five-minute walkthrough](docs/JUDGE_WALKTHROUGH.md) follow the actual recorded
 model run. The tour uses local-app captures of the saved evidence; replay makes
 no new inference calls.

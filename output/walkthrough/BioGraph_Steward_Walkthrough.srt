@@ -4,244 +4,246 @@ Actual local app with saved research data
 Edited and narrated still states
 
 2
-00:00:04,000 --> 00:00:08,776
-BioGraph Steward helps a researcher investigate a biological
-connection and
+00:00:04,000 --> 00:00:08,605
+BioGraph Steward builds on Pharos with added source context,
+traceable
 
 3
-00:00:08,776 --> 00:00:12,797
-see exactly what supports it. This workspace starts with Pharos
+00:00:08,605 --> 00:00:14,117
+answers and recoverable graph qualification. In our ninety-nine-
+target workspace, we
 
 4
-00:00:12,797 --> 00:00:17,070
-data for ninety-nine human protein targets. Our question asks
-which
+00:00:14,117 --> 00:00:21,186
+add eighty-seven sequence-qualified physical-association pairs and
+sixty-eight protein-location links absent
 
 5
-00:00:17,070 --> 00:00:20,966
-saved proteins have a physical association with KRAS. We will
+00:00:21,186 --> 00:00:25,531
+from the captured Pharos annotations. The agent makes this context
 
 6
-00:00:20,966 --> 00:00:23,982
-follow the agent's work and inspect one answer.
+00:00:25,531 --> 00:00:28,580
+searchable and traceable. Here is one example.
 
 7
-00:00:26,000 --> 00:00:27,650
-The agent's plan and tool call
+00:00:30,100 --> 00:00:31,750
+One concrete addition: KRAS–CDC42BPB
 
 8
-00:00:28,000 --> 00:00:31,998
-The NVIDIA Nemotron model proposes a plan within the available
+00:00:32,100 --> 00:00:36,032
+Here is one concrete addition. For KRAS and CDC42BPB, the
 
 9
-00:00:31,998 --> 00:00:36,693
-source tools. The application checks the protein identity,
-requested view
+00:00:36,032 --> 00:00:40,845
+source passport shows a qualified physical association absent from
+our
 
 10
-00:00:36,693 --> 00:00:40,437
-and result limits before executing it. Here the saved plan
+00:00:40,845 --> 00:00:45,658
+captured Pharos graph. The same record preserves STRING release
+twelve
 
 11
-00:00:40,437 --> 00:00:45,196
-uses the native STRING physical source. Other supported operations
-inspect
+00:00:45,658 --> 00:00:49,183
+point five, its score of two hundred and three, and
 
 12
-00:00:45,196 --> 00:00:50,018
-recorded protein locations or archived pathway models. Unsupported
-assay or
+00:00:49,183 --> 00:00:54,064
+the sequence identity checks. The agent actually selected and
+inspected
 
 13
-00:00:50,018 --> 00:00:54,206
-tissue requirements stop at the scope check, rather than silently
+00:00:54,064 --> 00:00:58,877
+this citation, and proposed keeping it available as candidate
+context.
 
 14
-00:00:54,206 --> 00:00:56,046
-becoming a broader question.
+00:01:00,400 --> 00:01:02,050
+Matched source-view recovery
+Full table also retains coarse-map Pharos control:44/51
 
 15
-00:00:58,100 --> 00:00:59,750
-The answer and its meaning
+00:01:02,400 --> 00:01:07,509
+Published protein-location labels give us a measurable comparison.
+Using the
 
 16
-00:01:00,100 --> 00:01:04,368
-The answer displays eight of fourteen matching proteins under its
+00:01:07,509 --> 00:01:13,413
+same ontology-qualified mapping, captured Pharos recovers forty-
+one of fifty-one labels;
 
 17
-00:01:04,368 --> 00:01:09,347
-recorded limit. Follow AKT1's source link. STRING reports physical
-proximity
+00:01:13,413 --> 00:01:19,318
+qualified native annotations recover forty-four. In the already-
+used OpenCell reference,
 
 18
-00:01:09,347 --> 00:01:13,098
-or a shared protein complex. It does not establish direct
+00:01:19,318 --> 00:01:23,630
+recovery rises from thirty of forty to thirty-one. The qualified
 
 19
-00:01:13,098 --> 00:01:17,172
-binding. Its recorded score is not a probability of scientific
+00:01:23,630 --> 00:01:27,810
+native source recovers additional recorded biological context.
 
 20
-00:01:17,172 --> 00:01:21,893
-truth. The source preserves protein identity checks and release
-details.
+00:01:29,400 --> 00:01:31,050
+The agent turns a question into inspectable evidence
 
 21
-00:01:21,893 --> 00:01:26,614
-Reused database evidence does not become another independent
-experiment.
+00:01:31,400 --> 00:01:35,779
+The NVIDIA Nemotron agent makes that evidence easier to
+investigate.
 
 22
-00:01:28,700 --> 00:01:30,350
-Source inspection and review proposals
+00:01:35,779 --> 00:01:39,841
+It plans a supported source query, the application executes the
 
 23
-00:01:30,700 --> 00:01:35,004
-After the query, the agent selected three citations for
-inspection.
+00:01:39,841 --> 00:01:44,537
+validated tool, and the agent prioritizes citations for
+inspection. Every
 
 24
-00:01:35,004 --> 00:01:39,687
-The application opened every original record grouped under those
-selected
+00:01:44,537 --> 00:01:48,408
+original record under a selected citation is opened before a
 
 25
-00:01:39,687 --> 00:01:44,054
-citations. The model then selected review proposals grounded in
-what
+00:01:48,408 --> 00:01:52,660
+grounded review proposal is produced. In our fixed comparison, all
 
 26
-00:01:44,054 --> 00:01:48,801
-was actually inspected. Retain candidate means keep the evidence
-available
+00:01:52,660 --> 00:01:57,674
+five allowed queries preserved the deterministic tools' complete
+results. This
 
 27
-00:01:48,801 --> 00:01:53,168
-for review. Needs review records an unresolved issue. Neither
-action
+00:01:57,674 --> 00:02:02,053
+saved example displays eight of fourteen matching proteins under
+its
 
 28
-00:01:53,168 --> 00:01:56,776
-accepts a scientific claim or edits the graph. All eight
+00:02:02,053 --> 00:02:03,068
+recorded limit.
 
 29
-00:01:56,776 --> 00:02:01,143
-returned results remain available, including those the agent did
-not
+00:02:04,600 --> 00:02:06,250
+Separate historical protein-function study
+Rendered saved report; not an agent prediction
 
 30
-00:02:01,143 --> 00:02:01,902
-prioritize.
+00:02:06,600 --> 00:02:10,276
+We also tested an established learning method in a separate
 
 31
-00:02:04,000 --> 00:02:05,650
-What the measurements show
+00:02:10,276 --> 00:02:14,564
+protein-function study. On a historical graph of twenty thousand
+four
 
 32
-00:02:06,000 --> 00:02:11,129
-Five allowed agent queries preserved the deterministic tool's
-complete results.
+00:02:14,564 --> 00:02:19,526
+hundred and twelve proteins, a context-aware model increased
+fixed-ontology Fmax
 
 33
-00:02:11,129 --> 00:02:15,744
-Three unsupported or unresolved requests stopped before any model
-call.
+00:02:19,526 --> 00:02:22,466
+from about point one seven two to point two one
 
 34
-00:02:15,744 --> 00:02:20,937
-This checks execution and source fidelity. Separately, among
-thirty-one proteins
+00:02:22,466 --> 00:02:26,509
+zero. Its paired ninety-five percent interval for the gain stayed
 
 35
-00:02:20,937 --> 00:02:26,002
-with published location labels, Pharos recovers forty-one of
-fifty-one labels.
+00:02:26,509 --> 00:02:31,104
+above zero. Both reference views improved over our retained
+Pharos-derived
 
 36
-00:02:26,002 --> 00:02:32,092
-Qualified native annotations recover forty-four. Among twenty-
-three matched OpenCell proteins,
+00:02:31,104 --> 00:02:35,637
+baseline predictor. Updating annotations alone also helped. We
+reused the
 
 37
-00:02:32,092 --> 00:02:36,836
-recovery changes from thirty of forty to thirty-one. Known-label
-recovery
+00:02:35,637 --> 00:02:39,680
+published ProtBoost approach; this is separate from the agent and
 
 38
-00:02:36,836 --> 00:02:41,644
-does not estimate whole-graph precision. Shared sources and prior
-OpenCell
+00:02:39,680 --> 00:02:41,395
+the ninety-nine-target app.
 
 39
-00:02:41,644 --> 00:02:43,824
-use limit independent validation.
+00:02:42,900 --> 00:02:44,550
+Qualification with recoverable decisions
 
 40
-00:02:45,900 --> 00:02:47,550
-An applied graph qualification
+00:02:44,900 --> 00:02:50,671
+The retained graph example adds another improvement: explicit
+identifier qualification.
 
 41
-00:02:47,900 --> 00:02:52,380
-The separate TP53 example shows a qualification already applied to
+00:02:50,671 --> 00:02:55,195
+It excludes two hundred and ninety-eight records using obsolete
+Gene
 
 42
-00:02:52,380 --> 00:02:56,793
-its graph. It excludes two hundred and ninety-eight records using
+00:02:55,195 --> 00:03:00,704
+Ontology identifiers, while retaining sixteen thousand six hundred
+and eighty-seven
 
 43
-00:02:56,793 --> 00:03:02,075
-obsolete Gene Ontology identifiers, retaining sixteen thousand six
-hundred and
+00:03:00,704 --> 00:03:05,360
+records. The original sources, input graph and decision reasons
+remain
 
 44
-00:03:02,075 --> 00:03:07,691
-eighty-seven records. Their original sources and every decision
-remain recoverable.
+00:03:05,360 --> 00:03:09,557
+recoverable, so a colleague can inspect or revisit each change.
 
 45
-00:03:07,691 --> 00:03:12,104
-Unresolved evidence stays retained. This is a check of identifier
+00:03:11,100 --> 00:03:12,750
+How to interpret these measured gains
 
 46
-00:03:12,104 --> 00:03:16,918
-currency. It does not establish that those biological
-relationships are
+00:03:13,100 --> 00:03:18,945
+These are qualified annotation-recovery results, not whole-graph
+precision. Shared sources
 
 47
-00:03:16,918 --> 00:03:17,386
-false.
+00:03:18,945 --> 00:03:23,955
+and prior reference use limit independence. Physical association
+is candidate
 
 48
-00:03:19,400 --> 00:03:21,050
-A result a colleague can inspect
+00:03:23,955 --> 00:03:29,094
+context, not confirmed direct binding. Additional primary learning
+benefit over
 
 49
-00:03:21,400 --> 00:03:25,764
-The agent record preserves the plan, source inspections and
-proposals.
+00:03:29,094 --> 00:03:32,113
+fully refreshed annotations remains uncertain.
 
 50
-00:03:25,764 --> 00:03:29,759
-The workspace download keeps its graph and sources. The retained
+00:03:33,700 --> 00:03:35,350
+A more useful, inspectable starting point
 
 51
-00:03:29,759 --> 00:03:33,816
-example includes every decision and the input baseline. The agent
+00:03:35,700 --> 00:03:39,340
+The result is a more useful starting point for research:
 
 52
-00:03:33,816 --> 00:03:39,287
-now drives source inspection through one reproducible question-to-
-evidence workflow. The
+00:03:39,340 --> 00:03:45,024
+additional qualified context, measurable source coverage, a
+source-inspection agent, and
 
 53
-00:03:39,287 --> 00:03:43,405
-result shown here is faithful source execution and measured source
+00:03:45,024 --> 00:03:49,814
+recoverable graph decisions. Start with a biological question,
+inspect the
 
 54
-00:03:43,405 --> 00:03:49,244
-coverage. Learned-model prediction results are reported
-separately. This demonstration replays
+00:03:49,814 --> 00:03:53,710
+evidence behind the answer, and share the complete record so
 
 55
-00:03:49,244 --> 00:03:51,580
-actual saved work with the model off.
+00:03:53,710 --> 00:03:56,073
+the next researcher can build on it.

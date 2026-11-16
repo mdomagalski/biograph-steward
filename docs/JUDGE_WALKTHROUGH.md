@@ -40,24 +40,32 @@ of 14 matching proteins**. Six remain outside this recorded display limit.
 The older manual KRAS question displays all 14 under its different cap.
 Neither count measures biological truth or local acceptance.
 
-Read the AKT1 statement, then choose **Continue: Source inspection** and
-expand **Inspected citation [E001]**. The agent
+Read the CDC42BPB statement, then choose **Continue: Source inspection** and
+expand **Inspected citation [E002]**. The agent
 selected this returned citation for inspection; the application checked every
 source assertion grouped under it. All returned results remain in the saved
 answer, including citations the agent did not prioritize.
-`[E001]` identifies preserved database evidence. A publication link appears
+`[E002]` identifies preserved database evidence. A publication link appears
 only when the source supplies one.
+
+Expand **Native physical source coverage and identity**. The existing fields
+show **baseline pair present: false** and **integration state:
+new_workspace_pair**. This is the concrete addition: a source-qualified
+KRAS–CDC42BPB connection absent from the captured Pharos graph. It is one of
+87 such pairs across this source profile. The [addition audit](evaluations/source_agent_20261116/demonstrated_additions.json)
+keeps additions separate from connections already represented in the baseline.
 
 For fuller source context, expand **All returned source citations** and choose
 **Inspect this claim manually**. Read the native STRING source explanation.
-The KRAS–AKT1 record preserves score **459** on its provider's 0–1000 scale.
+The KRAS–CDC42BPB record preserves score **203** on its provider's 0–1000 scale.
 That score describes source confidence, not a probability of scientific truth.
 Physical association can mean proximity or a shared protein complex. It does
 not establish direct binding, an assay result or a cancer-specific mechanism.
 STRING already contributes to Pharos, so another row is not automatically
 another independent experiment.
 
-**Find:** one source qualification and one scientific limit.
+**Find:** the flag showing what was added, its provider and one qualification
+that helps you interpret it.
 
 ## 3. Understand the proposed decision
 
@@ -113,8 +121,8 @@ For the retained TP53 example, **Export → saved workspace ZIP** also preserves
 An abstention retains its record. The native KRAS workspace ZIP preserves its
 candidate graph and sources; it does not acquire the separate TP53 decisions.
 
-For feedback: Can you identify the agent's tool, read its answer, explain one
-source limitation and distinguish a proposal from an applied decision? Can you
+For feedback: Can you identify one connection added beyond the captured baseline,
+trace its source and distinguish a proposal from an applied decision? Can you
 find the measured result and the files another researcher would need?
 
 See [Current-source agent](SOURCE_AGENT.md), the
@@ -123,11 +131,12 @@ See [Current-source agent](SOURCE_AGENT.md), the
 
 ## Watch or present the work
 
-The [3:54 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4),
+The [3:58 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4),
 [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
 are the current reviewer files. The video uses actual local-app captures of
-verified saved real data, including the existing assessment report. It combines
+verified saved real data, including the existing assessment report. A separate,
+labelled rendering shows the prediction study's unchanged result tables. It combines
 edited screenshot states and focused crops with synthetic narration; it is
 not a continuous interaction recording. Authentication stays off camera and
 loading waits are omitted. Capture and replay make zero model requests,
@@ -137,13 +146,14 @@ comparison records 13. See the [media receipt](../output/walkthrough/BioGraph_St
 
 | Chapter | What it shows |
 |---|---|
-| 0:00 | One real research question |
-| 0:26 | The agent's validated tool plan |
-| 0:58 | The capped answer and its evidence graph |
-| 1:29 | Source inspection and grounded review proposals |
-| 2:04 | Measured source recovery and its interpretation |
-| 2:46 | Applied identifier qualification |
-| 3:19 | Saved agent work and graph handoff |
+| 0:00 | What Steward adds to the captured Pharos baseline |
+| 0:30 | Actual addition: KRAS–CDC42BPB and its source |
+| 1:00 | More published location labels recovered |
+| 1:29 | The agent's question-to-source workflow |
+| 2:04 | Separate measured function-prediction gain |
+| 2:42 | Applied identifier qualification |
+| 3:11 | Interpretation of the measured comparisons |
+| 3:33 | Inspectable results and reusable graph handoff |
 
 [Earlier guided-review media](../output/history/20261115_guided_review/README.md)
 remains preserved with its original scope and dates.

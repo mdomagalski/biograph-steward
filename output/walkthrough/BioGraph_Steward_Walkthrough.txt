@@ -1,38 +1,43 @@
 BioGraph Steward walkthrough
 
-Actual application running locally on verified saved real research data. Hosted agent update is recorded separately. Edited screenshot states, not a continuous screen recording. Synthetic narration. No new inference, source retrieval or review edits during capture.
+Actual application running locally on verified saved real research data. Hosted agent update is recorded separately. The separate protein-function scene is a labeled rendering of two unchanged scientific-report tables, not application UI or new statistics. Edited screenshot states, not a continuous screen recording. Synthetic narration. No new inference, source retrieval or review edits during capture.
 
-00:00:00  A question with a traceable answer
-Open the actual real-data entry and saved current-source agent run. Show the question and available source tools; no login or new request execution on camera.
+00:00:00  What Steward adds to Pharos
+Show the actual current app entry, then its existing native graph. Introduce qualified source context before tool mechanics.
 
-BioGraph Steward helps a researcher investigate a biological connection and see exactly what supports it. This workspace starts with Pharos data for ninety-nine human protein targets. Our question asks which saved proteins have a physical association with KRAS. We will follow the agent's work and inspect one answer.
+BioGraph Steward builds on Pharos with added source context, traceable answers and recoverable graph qualification. In our ninety-nine-target workspace, we add eighty-seven sequence-qualified physical-association pairs and sixty-eight protein-location links absent from the captured Pharos annotations. The agent makes this context searchable and traceable. Here is one example.
 
-00:00:26  The agent's plan and tool call
-In the recorded run, open 1. Question & plan. Show the research question, KRAS protein identity, candidate view and validated native-physical tool plan. No new inference.
+00:00:30  One concrete addition: KRAS–CDC42BPB
+Use the new checked E002 graph/source frames. Point to baseline_pair_present:false and integration_state:new_workspace_pair, then the preserved203 score, release and identity checks.
 
-The NVIDIA Nemotron model proposes a plan within the available source tools. The application checks the protein identity, requested view and result limits before executing it. Here the saved plan uses the native STRING physical source. Other supported operations inspect recorded protein locations or archived pathway models. Unsupported assay or tissue requirements stop at the scope check, rather than silently becoming a broader question.
+Here is one concrete addition. For KRAS and CDC42BPB, the source passport shows a qualified physical association absent from our captured Pharos graph. The same record preserves STRING release twelve point five, its score of two hundred and three, and the sequence identity checks. The agent actually selected and inspected this citation, and proposed keeping it available as candidate context.
 
-00:00:58  The answer and its meaning
-Choose 2. Evidence graph. Show eight of fourteen matches and the capped answer. In 3. Source inspection, use All returned source citations and Inspect this claim manually for E001 to open its readable native source explanation.
+00:01:00  More published location labels recovered
+Show the existing exact HOU and OpenCell saved-report tables with the numerical changes readable.
 
-The answer displays eight of fourteen matching proteins under its recorded limit. Follow AKT1's source link. STRING reports physical proximity or a shared protein complex. It does not establish direct binding. Its recorded score is not a probability of scientific truth. The source preserves protein identity checks and release details. Reused database evidence does not become another independent experiment.
+Published protein-location labels give us a measurable comparison. Using the same ontology-qualified mapping, captured Pharos recovers forty-one of fifty-one labels; qualified native annotations recover forty-four. In the already-used OpenCell reference, recovery rises from thirty of forty to thirty-one. The qualified native source recovers additional recorded biological context.
 
-00:01:28  Source inspection and review proposals
-Use Continue: Source inspection, or the 3. Source inspection tab. Expand Inspected citation E001. Then choose 4. Review proposals and show its grounded retain-candidate proposal. Keep complete raw source details collapsed.
+00:01:29  The agent turns a question into inspectable evidence
+Show the actual saved Nemotron plan, capped eight-result graph, E002 inspection and grounded candidate proposal. Keep original returned results accessible.
 
-After the query, the agent selected three citations for inspection. The application opened every original record grouped under those selected citations. The model then selected review proposals grounded in what was actually inspected. Retain candidate means keep the evidence available for review. Needs review records an unresolved issue. Neither action accepts a scientific claim or edits the graph. All eight returned results remain available, including those the agent did not prioritize.
+The NVIDIA Nemotron agent makes that evidence easier to investigate. It plans a supported source query, the application executes the validated tool, and the agent prioritizes citations for inspection. Every original record under a selected citation is opened before a grounded review proposal is produced. In our fixed comparison, all five allowed queries preserved the deterministic tools' complete results. This saved example displays eight of fourteen matching proteins under its recorded limit.
 
-00:02:04  What the measurements show
-Show actual fixed-agent result summary, then What changed location-reference comparison. Keep operational parity separate from biological source-view recovery.
+00:02:04  A separate, measured protein-function prediction gain
+Show the existing contextual-combination primary result table or forest plot, clearly labeled separate20,412-protein historical study. Show retained.17155/current.18277/context.21009 and paired gain interval.
 
-Five allowed agent queries preserved the deterministic tool's complete results. Three unsupported or unresolved requests stopped before any model call. This checks execution and source fidelity. Separately, among thirty-one proteins with published location labels, Pharos recovers forty-one of fifty-one labels. Qualified native annotations recover forty-four. Among twenty-three matched OpenCell proteins, recovery changes from thirty of forty to thirty-one. Known-label recovery does not estimate whole-graph precision. Shared sources and prior OpenCell use limit independent validation.
+We also tested an established learning method in a separate protein-function study. On a historical graph of twenty thousand four hundred and twelve proteins, a context-aware model increased fixed-ontology Fmax from about point one seven two to point two one zero. Its paired ninety-five percent interval for the gain stayed above zero. Both reference views improved over our retained Pharos-derived baseline predictor. Updating annotations alone also helped. We reused the published ProtBoost approach; this is separate from the agent and the ninety-nine-target app.
 
-00:02:45  An applied graph qualification
-Open the matched retained TP53 companion. Show the applied 298 obsolete-GO-ID exclusion reason, retained count and preserved undecided rows.
+00:02:42  Qualification with recoverable decisions
+Show the existing real applied298 obsolete-GO-identifier qualification and retained16,687 records, then preserved decision/baseline export scope.
 
-The separate TP53 example shows a qualification already applied to its graph. It excludes two hundred and ninety-eight records using obsolete Gene Ontology identifiers, retaining sixteen thousand six hundred and eighty-seven records. Their original sources and every decision remain recoverable. Unresolved evidence stays retained. This is a check of identifier currency. It does not establish that those biological relationships are false.
+The retained graph example adds another improvement: explicit identifier qualification. It excludes two hundred and ninety-eight records using obsolete Gene Ontology identifiers, while retaining sixteen thousand six hundred and eighty-seven records. The original sources, input graph and decision reasons remain recoverable, so a colleague can inspect or revisit each change.
 
-00:03:19  A result a colleague can inspect
-Show Download this verified agent record after 4. Review proposals. Show the retained TP53 Export package when naming its decisions and baseline; distinguish it from the native candidate workspace and focused answer download.
+00:03:11  How to interpret these measured gains
+Keep the actual comparison report or source passport visible. Consolidate essential scientific qualifications in this short segment.
 
-The agent record preserves the plan, source inspections and proposals. The workspace download keeps its graph and sources. The retained example includes every decision and the input baseline. The agent now drives source inspection through one reproducible question-to-evidence workflow. The result shown here is faithful source execution and measured source coverage. Learned-model prediction results are reported separately. This demonstration replays actual saved work with the model off.
+These are qualified annotation-recovery results, not whole-graph precision. Shared sources and prior reference use limit independence. Physical association is candidate context, not confirmed direct binding. Additional primary learning benefit over fully refreshed annotations remains uncertain.
+
+00:03:33  A more useful, inspectable starting point
+Show existing verified-agent-record download and retained graph/source/decision exports; finish on the actual question-to-source workflow.
+
+The result is a more useful starting point for research: additional qualified context, measurable source coverage, a source-inspection agent, and recoverable graph decisions. Start with a biological question, inspect the evidence behind the answer, and share the complete record so the next researcher can build on it.

@@ -37,12 +37,13 @@ runtime check establishes software operation, rather than biological truth.
 
 The [narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 uses actual local-app captures of verified saved real data, readable crops and
-captions. It runs for 3:54;
+captions. It runs for 3:58;
 its [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
 provide the same current agent introduction. The video combines edited
 screenshot states and synthetic narration, including the existing aggregate
-assessment report. It makes no new model requests or source updates. Actual
+assessment report and a clearly labelled rendering of the completed prediction
+study's unchanged result tables. It makes no new model requests or source updates. Actual
 prior model execution is recorded separately from model-free capture/replay.
 The [dated history](../output/history/20261115_guided_review/README.md)
 preserves the previous guided media and software unchanged.

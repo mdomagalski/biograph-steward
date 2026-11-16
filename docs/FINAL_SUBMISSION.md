@@ -16,7 +16,7 @@ the tour's local filming provenance remains separate.
 The workspace token is supplied privately. No AWS account, graph-query language,
 GPU or model server is needed for saved review. The
 [delivery status](DELIVERY_STATUS_20261115.json) identifies accepted deployments;
-the [3:54 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+the [3:58 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 uses actual local-app captures of verified saved real data, edited screenshot
 states and synthetic narration. It makes no new model requests. The
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)

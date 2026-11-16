@@ -18,7 +18,9 @@ passed; [delivery status](docs/DELIVERY_STATUS_20261115.json) links the receipts
    recorded KRAS run. Replaying checks saved sources without calling a model.
 3. Follow its **question → plan → evidence → review proposals**. Check the
    complete answer and source passports; inspection priority does not remove
-   other results. The [agent guide](docs/SOURCE_AGENT.md) explains the steps.
+   other results. Start with **E002, KRAS–CDC42BPB**: its source passport shows
+   **baseline pair present: false**, making one actual addition visible.
+   The [agent guide](docs/SOURCE_AGENT.md) explains the steps.
 4. Use **Review applied graph qualifications** and **What changed** to inspect
    the separate retained TP53 example and biological-reference measurements.
    These are distinct from agent execution checks.
@@ -28,7 +30,7 @@ The featured recorded job is `source_agent_eval_dc7b597201da_S01`. It uses the
 manual KRAS answer displays all 14 matching partners. Do not interpret those
 caps as a change to the source evidence.
 
-The [3:54 narrated tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4),
+The [3:58 narrated tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4),
 [five-minute walkthrough](docs/JUDGE_WALKTHROUGH.md) and
 [two-page team guide](output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) explain
 the current workflow. The [short presentation](output/presentations/BioGraph_Steward_Overview.pptx)

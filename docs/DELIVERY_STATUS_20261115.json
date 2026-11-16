@@ -594,7 +594,7 @@
       "new_inference_needed": false,
       "owned_tunnel_closed": true
     },
-    "owned_local_preview_18542": "Stopped after final media; PID91807/session35442 ownership checked, exit0, no listener remains. Other servers and user compute untouched."
+    "owned_local_preview_18542": "Stopped after final E002 source captures; current PID41092/session59059 ownership verified, exit0, no listener remains. All owned Chrome instances closed; user compute and other servers untouched."
   },
   "science": {
     "annotation_prior_followup": {
@@ -1239,7 +1239,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-16T15:24:13.281992+00:00",
+  "updated_at_UTC": "2026-11-16T16:38:50.877114+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,
@@ -1304,28 +1304,88 @@
   },
   "walkthrough": {
     "path": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
-    "bytes": 6105296,
-    "sha256": "66248c09cd85c78efda3266839599f8d323e4deca7851796c9e5c8f17b461b09",
+    "bytes": 6744181,
+    "sha256": "8ae3a27059bd74e797ead9fa2796cbfbdee396137cf08edc7306fdfeff3adfed",
     "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
-    "seconds": 233.7,
-    "capture_method": "Narrated edited still states from the actual local ee3c61c app and verified saved real data; separate hosted acceptance is not represented as hosted filming.",
+    "seconds": 237.7,
+    "timeline_seconds": 237.6,
+    "capture_method": "Narrated edited still states from the actual local application with verified saved research data, plus one clearly labeled rendering of two unchanged scientific-report tables.",
     "continuous_screen_recording": false,
-    "new_model_calls_for_capture": 0,
-    "new_scientific_source_retrievals": 0,
+    "value_first_story": true,
+    "demonstrated_citation": "E002: KRAS\u2013CDC42BPB",
+    "demonstrated_source_additions": {
+      "path": "docs/evaluations/source_agent_20261116/demonstrated_additions.json",
+      "bytes": 5853,
+      "sha256": "650819aad10b8d567839c9e32b82496f5c8faa6e39d84c968c8621c469c11ee6"
+    },
+    "chapters": [
+      {
+        "id": "start",
+        "title": "What Steward adds to Pharos",
+        "start_seconds": 0.0,
+        "end_seconds": 30.1
+      },
+      {
+        "id": "added_pair",
+        "title": "One concrete addition: KRAS\u2013CDC42BPB",
+        "start_seconds": 30.1,
+        "end_seconds": 60.4
+      },
+      {
+        "id": "measured",
+        "title": "More published location labels recovered",
+        "start_seconds": 60.4,
+        "end_seconds": 89.4
+      },
+      {
+        "id": "agent",
+        "title": "The agent turns a question into inspectable evidence",
+        "start_seconds": 89.4,
+        "end_seconds": 124.6
+      },
+      {
+        "id": "prediction",
+        "title": "A separate, measured protein-function prediction gain",
+        "start_seconds": 124.6,
+        "end_seconds": 162.9
+      },
+      {
+        "id": "review",
+        "title": "Qualification with recoverable decisions",
+        "start_seconds": 162.9,
+        "end_seconds": 191.1
+      },
+      {
+        "id": "interpretation",
+        "title": "How to interpret these measured gains",
+        "start_seconds": 191.1,
+        "end_seconds": 213.7
+      },
+      {
+        "id": "export",
+        "title": "A more useful, inspectable starting point",
+        "start_seconds": 213.7,
+        "end_seconds": 237.6
+      }
+    ],
+    "contains_separately_labeled_scientific_report_tables": true,
     "transcript": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
     "captions": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
     "alternate_captions": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
     "receipt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
-      "bytes": 7371,
-      "sha256": "517a48b51b5cfba9e49d74c645c8d129bcbe1a4fd74e073499b57e711414f7f9"
+      "bytes": 11964,
+      "sha256": "1c5fb7c343d7f6e75f4150988ad4c6118fd4b28dfa4a247d223adb6044c003ac"
     },
     "acceptance": {
       "path": "docs/evaluations/source_agent_20261116/media_delivery.json",
-      "bytes": 1903,
-      "sha256": "a9d90eacbc8df1866799160b8a86b3ccf8a66087c98675f037f01549e68c50e7"
+      "bytes": 2652,
+      "sha256": "62ba9a373e53f00a852becdd776bb04f0e472d06e6be76e647732417753f02e7"
     },
     "full_decode_audio_and_visual_checks_passed": true,
+    "new_model_calls": 0,
+    "new_scientific_source_retrievals": 0,
+    "new_statistics": false,
     "no_login_tokens_shown": true
   },
   "previous_presentation_before_current_agent": {
@@ -1481,7 +1541,29 @@
   },
   "final_artifact_audit": {
     "path": "docs/evaluations/source_agent_20261116/delivery_artifact_audit.json",
-    "bytes": 3132,
-    "sha256": "d74bd02068f3962bed76a5a628ddb30a8191aa929861e8a342f805143858b1e9"
+    "bytes": 3266,
+    "sha256": "9ad8dc17c6bf13972be93d2dce856a434a0b97a557c19ee81b02f854896b63c5"
+  },
+  "previous_walkthrough_before_value_first_revision": {
+    "available_at_git_commit": "3e086d387563e24f027d3b8bf33c601515a1aea2",
+    "file_at_commit": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
+    "bytes": 6105296,
+    "sha256": "66248c09cd85c78efda3266839599f8d323e4deca7851796c9e5c8f17b461b09",
+    "seconds": 233.7,
+    "status": "Preserved at earlier delivery commit; not the current video."
+  },
+  "value_first_delivery_update": {
+    "runtime_code_changed": false,
+    "AWS_runtime_changed": false,
+    "new_scientific_evaluation": false,
+    "source_additions": {
+      "path": "docs/evaluations/source_agent_20261116/demonstrated_additions.json",
+      "bytes": 5853,
+      "sha256": "650819aad10b8d567839c9e32b82496f5c8faa6e39d84c968c8621c469c11ee6"
+    },
+    "positive_existing_outcomes_foregrounded": true,
+    "bounds_explained_in_one_short_segment": true,
+    "software_and_presentation_unchanged": true,
+    "prior_video_preserved_in_git": "3e086d387563e24f027d3b8bf33c601515a1aea2"
   }
 }

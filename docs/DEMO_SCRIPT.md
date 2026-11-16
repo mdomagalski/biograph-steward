@@ -6,6 +6,14 @@ source query, cited evidence, complete source inspection and grounded review
 proposals. The reviewer can then inspect the applied graph qualifications and
 measured reference result.
 
+**Lead with the improvement.** Qualified native sources add **87 physical
+association pairs** and **68 protein–location concepts** absent from the captured
+Pharos annotations. Show one actual addition before explaining tool mechanics:
+**E002, KRAS–CDC42BPB**. Its saved source passport explicitly records
+**baseline pair present: false**, native STRING 12.5 score **203/1000** and the
+identity checks. The [saved-artifact audit](evaluations/source_agent_20261116/demonstrated_additions.json)
+separates additions from overlapping pairs and source rows.
+
 The recorded run uses four small steps: **Question & plan**, **Evidence graph**,
 **Source inspection** and **Review proposals**. Continue buttons keep one
 step visible at a time.
@@ -29,16 +37,32 @@ The agent's citation priorities preserve the complete returned answer.
 **Retain candidate context** and **Needs review** are proposals, not acceptance
 or graph edits.
 
-Present the outcomes separately: the agent executes source-bound work with
-deterministic result parity; the native location view recovers more known
-reference labels; the retained TP53 workspace applies explicit identifier
-qualifications and preserves every decision. Agent orchestration does not add
-new prediction inputs or establish a prediction gain.
+Show the measured outcomes early: the qualified location view recovers
+**44/51** positive labels versus **41/51** for the captured Pharos view under
+the same mapping, and OpenCell recovery changes **30/40 → 31/40**. Keep the
+complete comparison table, including its coarser-mapping control, visible.
 
-The [3:54 narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+The separate [historical function study](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+also has a positive result: fixed-ontology Fmax **0.17155 → 0.21009** over
+retained Pharos-derived LocalPlus, with paired gain interval
+**[+0.00803, +0.06914]**. Its scene must say **separate 20,412-protein source
+study**, show the **0.18277** annotation-refreshed control, and identify the
+visual as a rendering of the saved scientific report. This result belongs to
+the prediction method, separately from agent orchestration and the 99-target app.
+
+Then show how the agent makes source investigation usable, the applied
+298 obsolete-ID qualifications and recoverable exports. Put the essential
+interpretation boundaries together once: defined reference frames, source
+sharing/prior reference use, candidate physical associations and the uncertain
+extra primary learning gain over fully refreshed annotations. Finish with what
+a researcher can inspect and reuse.
+
+The [3:58 narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 and [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) provide
 the current recorded presentation. It uses actual local-app screenshot states,
 including the saved aggregate report, with focused crops and synthetic narration.
+One separately labelled visual renders the existing prediction result tables;
+it is not app UI or a new experiment.
 It is not a continuous recording or a new live model run. Earlier media stays
 in the [dated history](../output/history/20261115_guided_review/README.md).
 
