@@ -14,6 +14,7 @@ model is needed.
 **[How to use it](HOW_TO_USE.md)** ·
 **[Watch the 3:58 walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)** ·
 [Short presentation](output/presentations/BioGraph_Steward_Overview.pptx) ·
+[Final report](output/docx/BioGraph_Steward_Final_Report.docx) ·
 [Local setup](START_HERE.md#local-setup)
 
 ## What we improved
@@ -54,9 +55,13 @@ sources. The [single user guide](HOW_TO_USE.md) explains the steps and files.
 ## Current app, saved data and new runs
 
 The protected AWS reviewer app runs the recorded source-agent workflow. Its
-[deployment and restart checks](docs/evaluations/delivery_readiness_20261116/hosted_acceptance.json)
-and [hosted four-step browser walkthrough](docs/evaluations/delivery_readiness_20261116/hosted_browser_acceptance.json)
-have passed.
+[deployment and restart checks](docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json)
+have passed for the final review interface, including readable loading feedback.
+[Hosted desktop checks](docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
+observed the four agent steps, sources, current assessments, applied qualification
+and export controls. Two browser transport interruptions left the final return
+and mobile recheck incomplete; their cause remains unresolved. The same saved
+question was separately available over normal TLS.
 The shared site is a **read-only replay**: it verifies saved work without new
 model calls, source retrieval or review edits. An authorized operator can
 [run a new agent question](docs/SOURCE_AGENT.md#operator-cli) with a complete
@@ -72,9 +77,14 @@ workspace. Updating application code does not refresh its upstream datasets. The
 application and saved artifacts.
 The [designated primary graph handoff](docs/GOLD_SET_INTERFACE.md) now has its
 own verified decision ledger, preserved sources and exact captured Pharos-only
-comparator, prepared privately for permitted organizer access.
+comparator, now available through the protected downloads described there.
 
 ## Run locally
+
+The [code-only software ZIP](output/software/BioGraph_Steward_Software.zip)
+has [clean acceptance](docs/evaluations/final_prod_ui_20261116/software_acceptance.json)
+for the final review interface and loading feedback. Its source revision and the separately
+accepted hosted runtime are recorded in the [release index](docs/releases/20261115/README.md).
 
 The core app needs **Python 3.10+**, with no pip install, GPU or API key:
 

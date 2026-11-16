@@ -1,0 +1,51 @@
+{
+  "format": "biograph-steward.standalone-source-agent-delivery-summary.v1",
+  "status": "passed",
+  "source_revision": "2fd516149376cc217d4e2fdf16c78892ed943df8",
+  "software_archive": {
+    "file": "BioGraph_Steward_Software.zip",
+    "sha256": "7caad765875ef03298fc71490bdce0859a1292bc5009b69676f0c3e04d48eb36",
+    "bytes": 725912,
+    "file_count": 133
+  },
+  "private_acceptance_receipt_sha256": "2df072f5483995fe9b099304b29ae2f754240659e048844a8254b9613aba52d0",
+  "clean_python": {
+    "version": "3.12.14",
+    "no_site": 1,
+    "site_loaded": false,
+    "site_package_paths": []
+  },
+  "code_only_no_real_datasets": true,
+  "invented_portability_fixture_explicitly_separate": true,
+  "upstream_notices_preserved": true,
+  "current_source_agent_stdlib_imports_CLI_help_and_no_model_catalogue_passed": true,
+  "current_source_agent_four_step_UI_in_archive": true,
+  "actual_CLI_HTTP_export_recovery_restart_reopen_passed": true,
+  "saved_data_only_denied_new_actions": [
+    "/api/question",
+    "/api/build",
+    "/api/plan",
+    "/api/submission-export",
+    "/api/source-agent/run"
+  ],
+  "saved_data_only_source_agent_model_factory_calls": 0,
+  "source_fetches": 0,
+  "model_calls": 0,
+  "cloud_calls": 0,
+  "all_owned_servers_stopped": true,
+  "actual_live_model_comparison_in_this_acceptance": false,
+  "separate_actual_model_comparison": "docs/evaluations/SOURCE_AGENT_RESULTS_20261116.md",
+  "biological_accuracy_or_independent_user_validation_claimed": false,
+  "no_tokens_credentials_raw_HTTP_headers_real_source_records_reference_labels_or_weights_in_archive": true,
+  "hosted_deployment_has_separate_acceptance": true,
+  "bundled_how_to_link_is_absolute_repository_URL": true,
+  "core_archive_roots": [
+    "app.py",
+    "LICENSE",
+    "README_DEMO.md",
+    "biograph_steward/"
+  ],
+  "prior_canonical_software_preserved_in_git": "637f6f24dff219196e9996c2fa93abdfd08d17f3",
+  "presentation_PDF_and_walkthrough_not_modified_by_this_acceptance": true,
+  "UI_mode_functional_validation_is_separate": "docs/evaluations/final_prod_ui_20261116/UI_validation.json"
+}

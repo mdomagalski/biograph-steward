@@ -7,9 +7,17 @@ proposals. Each connection retains its original source and conditions.
 
 The actual current-source agent comparison, narrated local demonstration and
 protected hosted replay are complete. The
-[hosted acceptance](evaluations/delivery_readiness_20261116/hosted_acceptance.json)
+[hosted acceptance](evaluations/final_prod_ui_20261116/hosted_acceptance.json)
 and [delivery status](DELIVERY_STATUS_20261115.json) record the verified deployment;
 the tour's local filming provenance remains separate.
+
+The final shared interface now includes loading/error feedback and keeps current
+assessment results while hiding development dashboards. Its
+[partial hosted desktop checks](evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
+covered the agent, sources, qualification and export controls. Two browser
+transport interruptions left the final return/mobile recheck incomplete; the
+cause is unresolved. This does not change the separately passed server/source
+acceptance or establish a completed independent user walkthrough.
 
 **Start with [How to use BioGraph Steward](../HOW_TO_USE.md)**, the
 [judge evidence route](JUDGE_WALKTHROUGH.md), and
@@ -146,11 +154,21 @@ role listed in the original proposal.
 
 ## Reuse and handoff
 
+The [four-page final report](../output/docx/BioGraph_Steward_Final_Report.docx)
+preserves the organizer's original form and adds a two-page methods/results
+supplement. The [format and review receipt](evaluations/final_prod_ui_20261116/final_report.json)
+records it as prepared for user review, not submitted. The
+[code-only software ZIP](../output/software/BioGraph_Steward_Software.zip)
+has [clean acceptance for tested source `d05f54f`](evaluations/final_prod_ui_20261116/software_acceptance.json);
+its deployment status is tracked separately.
+
 The native KRAS workspace ZIP includes its candidate graph and preserved source
 files. The **designated primary submission package** also has its own complete
 19,310-row abstention ledger and an exact same-snapshot Pharos-only comparator;
-its [verified handoff receipt](evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
-records the privately prepared package. All records remain unassessed; these
+its [protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json)
+records both actual HTTPS archives and complete member checks. The
+[download instructions](GOLD_SET_INTERFACE.md#protected-downloads) require only
+sign-in at the reviewer site. All primary records remain unassessed; these
 abstentions are not biological acceptance. In the applied-qualification TP53 example, the workspace ZIP also
 includes the retained graph, complete keep/prune/abstain ledger and original
 baseline/source packet. The small answer diagram and focused answer ZIP are
@@ -177,4 +195,4 @@ workspace; that small record does not silently include the full source packet.
 The repository is private during preparation and is intended to become public
 for final open-source submission. Publication and actual submission must be
 recorded when performed. Software licensing does not relicense upstream data;
-provide judges the graph, ledger and baseline through a permitted access route.
+the graph, ledger and baseline use the protected access route above.

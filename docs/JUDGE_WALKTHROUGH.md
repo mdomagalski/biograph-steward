@@ -42,9 +42,10 @@ different source collections in the same 99-target cohort. Their total record
 counts are not a before/after comparison. Use each graph with its own source
 baseline and decision ledger; the [Gold interface](GOLD_SET_INTERFACE.md)
 explains retained graphs, complete dispositions and abstentions.
-The [prepared primary package](evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
-binds its 19,310-row abstention ledger and exact captured Pharos comparator;
-the complete mixed-source packet uses permitted private access.
+The [protected graph downloads](GOLD_SET_INTERFACE.md#protected-downloads)
+provide the primary package with its 19,310-row abstention ledger and the
+separate exact captured Pharos comparator. Both archives passed actual HTTPS
+download and complete member checks; their source terms remain applicable.
 
 [How to use → Download the result you need](../HOW_TO_USE.md#4-download-the-result-you-need) distinguishes the focused answer,
 recorded-agent trace and full workspace. The [delivery index](releases/20261115/README.md)

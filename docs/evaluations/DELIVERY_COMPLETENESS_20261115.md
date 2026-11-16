@@ -6,22 +6,24 @@ scientific limits below are not missing graph-store or agent-framework
 components. This is a project audit against the user-supplied materials,
 not organizer acceptance.
 
-The [current hosted acceptance](delivery_readiness_20261116/hosted_acceptance.json)
-records the current source-agent interface, five actual-model saved records,
-a real service restart, authenticated source/saved-answer checks and full
-read-only Neptune parity. The [browser check](delivery_readiness_20261116/hosted_browser_acceptance.json)
-passed the explicit hosted four-step flow and source/download-pointer checks.
-Earlier client transport failures remain preserved separately. Local visual QA
-and independent human feedback retain their own scopes.
+The [current hosted acceptance](final_prod_ui_20261116/hosted_acceptance.json)
+records the final reviewer interface, preserved actual-model records, a real
+service restart, authenticated source/saved-answer checks and full read-only
+Neptune parity. The [browser evidence](final_prod_ui_20261116/hosted_browser_acceptance.json)
+verifies loading feedback, the four-step source workflow, both example views,
+current assessment controls and export pointers. Browser network-change errors
+interrupted the final return and mobile checks; those remain unverified on this
+runtime. Both failures are preserved. Independent human feedback retains its
+own scope.
 The earlier [source-profile rollout](native_profiles_hosted_20261115/summary.json)
 remains a separate dated receipt; this interface update changes no source graph.
 
 | Expected item | Concrete review route | Status / remaining action |
 |---|---|---|
-| Pharos represented in a contextual graph | KRAS native-evidence profile and separate qualified TP53 example in the [overview](../SUBMISSION_OVERVIEW.md); both use the same 99-target cohort | Accepted 09e95a7 runtime: native profile has 9,724 entities / 19,310 records; retained profile has 9,865 / 16,687. These are different source collections, not paired before/after totals. Original source records and decisions remain preserved; neither is the entire Pharos database. |
+| Pharos represented in a contextual graph | KRAS native-evidence profile and separate qualified TP53 example in the [overview](../SUBMISSION_OVERVIEW.md); both use the same 99-target cohort | Accepted d05f54f runtime: native profile has 9,724 entities / 19,310 records; retained profile has 9,865 / 16,687. These are different source collections, not paired before/after totals. Original source records and decisions remain preserved; neither is the entire Pharos database. |
 | Accessible question → graph → answer workflow | [Canonical user guide](../../HOW_TO_USE.md), four agent steps within task navigation, and [presentation script](../DEMO_SCRIPT.md) | The model plans bounded source queries, prioritizes complete source inspections and proposes adapter-grounded review states. Five fixed supported queries matched deterministic execution. Shared review replays actual records without new inference or edits; arbitrary-language biological adjudication is not claimed. |
 | Original evidence and interpretations | Source passports, historical GPML, native GO records, complete clinical combinations, assay/source guides | Implemented where attached, including native GOA and 330 identity-qualified physical source records (243 existing pairs, 87 absent from captured Pharos). Source reuse and missing identities remain explicit. |
-| Pruning and review handoff | Workspace Export: retained graph + exhaustive decisions + original baseline/source packet | The [primary native handoff](delivery_readiness_20261116/primary_graph_handoff.json) now has 19,310 unique abstentions, preserved sources and an exact captured Pharos-only comparator; prepared privately for permitted organizer access. The applied-qualification companion stays separate. Implemented and replayed. Abstentions stay retained. The 298 obsolete-GO-ID exclusions are source qualification, not proven biological falsehoods. |
+| Pruning and review handoff | [Protected graph downloads](../GOLD_SET_INTERFACE.md#protected-downloads): retained graph + exhaustive decisions + original baseline/source packet | The [verified primary handoff](final_prod_ui_20261116/protected_graph_downloads.json) has 19,310 unique abstentions, preserved sources and an exact captured Pharos-only comparator. Both packages passed actual HTTPS downloads and all member checks. The applied-qualification companion stays separate. Abstentions stay retained. The 298 obsolete-GO-ID exclusions are source qualification, not proven biological falsehoods. |
 | Experimental link-prediction comparison | Same-learner R-GCN and source/count/degree controls linked in [alignment](../PROJECT_ALIGNMENT.md) | Executed; consistent enriched-graph superiority is unestablished. Do not substitute the separate function task for this endpoint. |
 | Credible scientific assessment | [New fixed contextual comparison](CONTEXTUAL_COMBINATION_RESULTS_20261115.md), complete controls/intervals/provenance | HOU positive location labels improve 41/51 to 44/51 (31/99 matching proteins); OpenCell 30/40 to 31/40 (23/99), with reuse/context limits. Supported primary function-recovery gain over retained LocalPlus; data refresh also helps. Learning beyond refreshed LocalPlus is uncertain for primary BP. MF/CC improve over LocalPlus but do not beat the stronger direct nonexperimental-GOA control (CC favors that control). Whole-graph accuracy is not identified. |
 | Agents and NVIDIA integration | Current-source Nemotron workflow, NAT adapters, [fixed comparison](SOURCE_AGENT_RESULTS_20261116.md) and [NVIDIA status](../NVIDIA_INTEGRATION_STATUS_20261113.md) | Thirteen actual calls: five supported query/answer/graph parity checks passed; three additional requests stopped by controller preflight with zero calls. Review proposals remain unapplied. Prior failed approaches and separate learned prediction endpoints remain preserved. |
@@ -30,6 +32,7 @@ remains a separate dated receipt; this interface update changes no source graph.
 | Presentation and explanation | [Seven-slide overview](../../output/presentations/BioGraph_Steward_Overview.pptx), actual source/answer captures and separately preserved scientific appendix | Rendered and visually checked; the source-view results table is editable. Selected paths are distinguished from the full workspace. Native PowerPoint application execution is untested. |
 | Guided screen walkthrough | [3:58 narrated tour](../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4), [transcript](../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and [captions](../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Actual local ee3c61c app screenshot states with verified saved real data, readable crops, narration and captions; explicitly an edited screen tour. Hosted acceptance is separate. Full decode, audio and representative-frame checks passed. It makes no live model calls or edits. |
 | Human usability feedback | [Weekend guide](../TEAM_REVIEW_GUIDE_20261113.md) and [reply template](../TEAM_REVIEW_FEEDBACK_20261113.txt) | Partial offline/Pharos-only teammate feedback received: features and exports reported working, with four navigation/control issues addressed. Full saved-source walkthrough remains requested; operator checks are not an independent intended-user study. The current two-page PDF explains source scope and five tasks. |
+| Report in the requested format | [Final report](../../output/docx/BioGraph_Steward_Final_Report.docx) and [form-fidelity receipt](final_prod_ui_20261116/final_report.json) | Prepared for user review: the original two-page midpoint form, followed by two pages of methods and evaluation detail. It has not been submitted. |
 | Final submission | MIT repository/release, code/demo access, permitted resulting graph +ledger +baseline access, results and deck | Final public visibility and actual submission remain to be performed. The exact final file/scoring contract was not supplied; finish the existing handoff without waiting for hidden labels. |
 
 ## Priorities through submission

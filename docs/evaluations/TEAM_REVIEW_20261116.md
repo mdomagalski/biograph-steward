@@ -31,3 +31,38 @@ The [current team guide](../TEAM_REVIEW_GUIDE_20261113.md) and
 [reply template](../TEAM_REVIEW_FEEDBACK_20261113.txt) retain the five full-source
 tasks for that follow-up. Operator checks, the fixed agent comparison and this
 partial external review remain separate evidence.
+
+
+## Additional access and navigation feedback
+
+A second teammate reported reviewing the code and instructions over the weekend,
+trying some questions, and being unable to find
+`source_faithful_workspace_20261113`. The reviewer also reported differences
+between the numbered instructions and the screens they used. Only a screenshot
+filename was supplied in the quoted feedback; its image, installation URL and
+code version were not available. This does not establish that the workspace is
+missing from the hosted service or that an end-to-end review succeeded.
+
+The follow-up supplies direct links to the recorded KRAS agent and retained
+TP53 examples, the current November 16 PDF and a request for the actual URL,
+step and screenshot if a mismatch remains. The named workspace is saved data;
+a fresh software checkout does not automatically include it. Current browser
+checks confirm the initial hosted KRAS flow separately from this human feedback.
+
+The project owner also asked that final production exclude development views.
+The scientific **What changed** comparison has a product purpose: it explains
+applied graph qualifications and measured source-view results. Development
+catalogues, experimental controls and research-history menus should be kept in
+the operator workflow. The implementation and acceptance of that final
+presentation change have their own
+[deployment record](final_prod_ui_20261116/hosted_acceptance.json). It is now
+installed, while a repeated independent reviewer walkthrough remains pending.
+
+The owner additionally requested loading feedback when opening examples.
+Workspace/question opening and recorded-agent checks now display task-specific
+status text and a spinner. Failure paths stop the indicator and preserve an
+error; a rejected saved question no longer announces success. Actual hosted
+desktop checks observed the loading and ready states. Two browser transport
+interruptions left the final return/mobile recheck open, as recorded in the
+[partial browser evidence](final_prod_ui_20261116/hosted_browser_acceptance.json).
+These operator observations are separate from intended-user comprehension.

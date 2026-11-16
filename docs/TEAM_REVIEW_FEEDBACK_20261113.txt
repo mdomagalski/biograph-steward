@@ -2,7 +2,9 @@ BioGraph Steward - teammate feedback
 Current instructions: November 16, 2026. Please return by Monday, November 16.
 
 Name / date:
-Access route and workspace / recorded run:
+Access route (hosted reviewer site / local installation):
+Page URL, workspace and recorded run (no token):
+For a local installation only, branch / commit / supplied source packet:
 Browser / operating system:
 Was the updated Agent workflow available? If not, mark unavailable tasks A.
 

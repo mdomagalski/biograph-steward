@@ -1,0 +1,94 @@
+{
+  "format": "biograph-steward.final-report-original-form-fidelity.v1",
+  "status": "prepared_ready_for_user_review",
+  "file": "output/docx/BioGraph_Steward_Final_Report.docx",
+  "bytes": 12442,
+  "sha256": "915b56465d06ed944dc401ff97995597bacf4d9e2fb1f93fe85387d6732dae3d",
+  "pages": 4,
+  "main_form_pages": 2,
+  "methods_and_evaluation_supplement_pages": 2,
+  "source_reference": {
+    "path": "runs/midpoint_report_final_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+    "sha256": "1548809286a5dcd5912c6bd183baab191df57cbda34c81ca7c570f0703b60bb8",
+    "role": "Retained organizer-format report and its original template contract; retained source unchanged."
+  },
+  "template_fidelity": {
+    "section_order": [
+      "Team Information",
+      "Key Accomplishments",
+      "Blockers & Help Needed",
+      "Final delivery plan",
+      "Reminder",
+      "Approach and evidence integration",
+      "Evaluation and final delivery"
+    ],
+    "team_information_fields": [
+      "Team Name",
+      "Track",
+      "Overall Status",
+      "Brief status summary"
+    ],
+    "five_accomplishments": true,
+    "three_blocker_paragraphs": true,
+    "three_dated_plan_rows": true,
+    "original_main_form_tables_and_page_geometry_preserved": true,
+    "source_Arial_body_and_blue_title_heading_format_preserved": true,
+    "styles_numbering_theme_and_other_unchanged_package_parts_preserved": true,
+    "obsolete_optional_illustration_removed": true,
+    "intentional_updates": [
+      "Midpoint title changed to Final Report",
+      "Obsolete October27email deadline replaced with November16authored-format note",
+      "Existing Yellow Minor Risks status retained with plain progress",
+      "Remaining three weeks changed to Final delivery plan",
+      "Week column changed to Date and rows set to November16,November16-17,November17",
+      "Original November17submission reminder retained and obsolete template-coming-soon note removed",
+      "Approved supplementary area replaced with current methods and scoped evaluation/delivery detail",
+      "Repository label changed to Project repository",
+      "Private-during-review status explicitly plans public final submission on November17",
+      "Completed reviewer presentation/loading feedback reflected; independent user walkthrough remains pending"
+    ]
+  },
+  "quality_review": {
+    "all_pages_rendered_with_bundled_canonical_renderer": true,
+    "every_page_inspected_at_full_resolution": true,
+    "independent_root_visual_review_passed": true,
+    "independent_root_primary_source_text_review_passed": true,
+    "source_package_fidelity_passed": true,
+    "main_body_font_pt": 12,
+    "supplement_table_font_pt": 11,
+    "clipping_overlap_or_unintended_blank_pages": false,
+    "access_token_or_credentials_in_report": false,
+    "low_level_test_counts_or_source_hashes_in_report": false,
+    "private_quality_receipt_sha256": "297d1889fa257d1e00384d76491f1790192bd5ca2c1281c1d369255d2dac9278",
+    "private_delivery_revision_quality_sha256": "1ed12f29795bd64c594cac7948d1999390767294531ccbfb69f4ca08823e5ed3"
+  },
+  "scientific_scope": {
+    "source_additions_are_absent_captured_pairs_or_concepts_not_discoveries": true,
+    "physical_source_context_not_direct_binding_proof": true,
+    "location_recovery_uses_same_ontology_qualified_mapping_and_retains_coarse_control": true,
+    "shared_provider_and_prior_reference_use_retained": true,
+    "function_study_separate_from_app_and_agent": true,
+    "scored_protein_frames_and_residual_positive_function_labels_explicit": true,
+    "refreshed_annotation_control_and_uncertain_additional_primary_gain_retained": true,
+    "primary_graph_records_remain_unassessed": true,
+    "obsolete_identifier_qualification_not_experimental_false_claim_pruning": true
+  },
+  "current_limitations": [
+    "Independent whole-graph precision and automatic biological-error pruning are not established.",
+    "Source sharing, incomplete labels and prior reference use bound interpretation.",
+    "The separate historical function study does not establish an agent-caused gain or a reliable extra primary gain over fully refreshed annotations.",
+    "A complete independent hosted-user walkthrough remains pending. The final return/mobile browser recheck was interrupted by preserved browser transport failures; their cause is unresolved.",
+    "The repository is private; public visibility, final tag/release and actual organizer submission remain separate closing actions.",
+    "Permitted mixed-source graph/source access and redistribution follow provider terms; no organizer gold-set access or approval is claimed."
+  ],
+  "prepared_not_published_or_submitted": true,
+  "report_sent": false,
+  "repository_visibility_changed": false,
+  "organizer_submission_performed": false,
+  "email_cloud_or_model_actions_for_report": false,
+  "basis": "Accepted November16final reviewer runtime with frozen source graphs and measurements. Report delivery wording reflects completed review presentation/loading feedback; scientific results and controls are unchanged.",
+  "production_review_presentation_completed": true,
+  "accepted_hosted_runtime": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+  "hosted_browser_validation": "partial_checks_passed_with_browser_network_limit; not an uninterrupted journey or completed mobile recheck",
+  "new_protected_graph_download_enabled_claimed": false
+}

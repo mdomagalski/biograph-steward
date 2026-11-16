@@ -4,8 +4,13 @@ Start with the **[hosted application](https://bi-3a117d5e2b3942678dc518fce65ab5d
 and the **[step-by-step user guide](../../../HOW_TO_USE.md)**. Sign in with
 the workspace token supplied privately. The current app opens a verified
 Nemotron source-agent record, with four steps from question to review proposals.
-The [hosted acceptance](../../evaluations/delivery_readiness_20261116/hosted_acceptance.json)
-records the actual restart and saved-source checks; research history stays separate.
+The [hosted acceptance](../../evaluations/final_prod_ui_20261116/hosted_acceptance.json)
+records the actual final-interface restart and saved-source checks. Loading
+feedback and current assessment/qualification/export controls are implemented.
+[Partial hosted desktop checks](../../evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
+observed the main features; two transport interruptions left the final return
+and mobile recheck incomplete, with cause unresolved. Research history and the
+tour's genuine local capture provenance stay separate.
 
 ## Current reviewer files
 
@@ -15,16 +20,20 @@ records the actual restart and saved-source checks; research history stays separ
 | [Plain transcript](../../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) | Read the same explanation or use it when presenting. |
 | [Captions](../../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Load the timed captions separately when needed. Captions are also visible in the video. |
 | [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise editable overview, with the detailed research linked separately. |
-| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run the tested 09e95a7 Python core. Real source data are supplied separately. |
-| [Team review guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) | Two pages: source-scope explanation, five tasks and feedback prompts. |
+| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run tested source `d05f54f`, with the final review interface. Real source data are supplied separately; hosted acceptance is recorded separately. |
+| [Team review guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) | Two pages: direct example links, loading feedback, five tasks and feedback prompts. |
+| [Final report](../../../output/docx/BioGraph_Steward_Final_Report.docx) | Four pages: the original organizer form plus a methods/results supplement. Prepared for user review; not submitted. |
 
 The canonical software archive is
 [BioGraph Steward Software](../../../output/software/BioGraph_Steward_Software.zip).
 It leads to the real hosted review and separately documents the optional
 invented software fixture. The complete real-data snapshot is not bundled in
-the software archive. Its [current clean acceptance](../../evaluations/delivery_readiness_20261116/software_acceptance.json)
-records the byte-bound saved-agent verification update; the recorded model
-comparison and presentation retain their original source/runtime pins.
+the software archive. Its [current clean acceptance](../../evaluations/final_prod_ui_20261116/software_acceptance.json)
+records the final review interface, CLI/HTTP exports, recovery and saved replay.
+The recorded model comparison and presentation retain their original source/runtime pins.
+The final report's [format and review receipt](../../evaluations/final_prod_ui_20261116/final_report.json)
+records preservation of the original form and the approved final-title/date updates.
+The revised guide has its own [current acceptance](../../evaluations/final_prod_ui_20261116/team_review_guide.json).
 
 [Current product and scoring summary](../../FINAL_SUBMISSION.md) ·
 [Accepted deployment and artifact status](../../DELIVERY_STATUS_20261115.json)
@@ -42,8 +51,8 @@ merge or publish the repository.
    Include the tested software ZIP, [user guide](../../../HOW_TO_USE.md),
    narrated tour with transcript/captions, overview slides and linked results.
 3. Supply the [designated primary graph, complete decision ledger and captured
-   Pharos comparator](../../evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
-   through a permitted data-access route. Include the separately labelled
+   Pharos comparator](../../GOLD_SET_INTERFACE.md#protected-downloads)
+   through the verified protected downloads. Include the separately labelled
    applied-qualification companion if useful. The software license does not
    authorize blanket public redistribution of the source data.
 4. Send the submission and protected reviewer URL through the organizer's

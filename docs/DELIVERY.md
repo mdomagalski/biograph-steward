@@ -11,19 +11,21 @@ real saved evidence and guides the reviewer through **Start here**, **Question
 The current-source agent has completed its
 [actual fixed comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
 Its protected hosted replay has passed
-[deployment acceptance](evaluations/delivery_readiness_20261116/hosted_acceptance.json),
+[deployment acceptance](evaluations/final_prod_ui_20261116/hosted_acceptance.json),
 including a real service restart, all five recorded model jobs and complete
 Neptune parity without fallback. The local-app tour demonstrates the same
 verified workflow; its filming provenance and the model evaluation remain
 separate from that deployment receipt.
 
-The [hosted browser walkthrough](evaluations/delivery_readiness_20261116/hosted_browser_acceptance.json)
-passed 15 checks using matching Playwright 1.57 / Chromium 143: all four agent
-steps, E002 source and identity fields, the candidate proposal and exact download
-pointer. The complete check took about 106 seconds; initial source verification
-remains a usability cost. [Earlier Chrome transport failures](evaluations/source_agent_20261116/hosted_browser_acceptance.json)
-remain preserved. This pass verifies the bounded saved flow; it does not explain
-those earlier failures or replace an independent human walkthrough.
+The [hosted desktop check](evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
+recorded 39 observations covering actual loading feedback, all four agent steps,
+E002 source and identity fields, current scientific assessments, applied TP53
+qualification and export controls. These are partial UI observations, not a
+completed user study. Two `ERR_NETWORK_CHANGED` interruptions left the final
+return to current evidence and mobile recheck unverified. Their cause remains
+unresolved; a separate normal-TLS request returned the original saved question
+successfully. Server/source acceptance has passed independently of this browser
+limitation. Both attempts and their observed coverage remain in the receipt.
 
 Reviewers need only a browser. No AWS account, local tunnel or Brev/model server
 is needed. The shared site reads completed real-data work. Construction, fresh
@@ -50,13 +52,26 @@ prior model execution is recorded separately from model-free capture/replay.
 The [dated history](../output/history/20261115_guided_review/README.md)
 preserves the previous guided media and software unchanged.
 
-The latest runtime changes only saved-agent verification reuse. Its
-[functional and tamper checks](evaluations/delivery_readiness_20261116/cache_validation.json)
-preserve cold validation and invalidate reuse when source, result or reader
-bytes change. One [external loading observation](evaluations/delivery_readiness_20261116/listing_latency.json)
-returned the identical four-record listing in **33.487 seconds**, versus the
-previous **94.640 seconds**. This is a warmed-route observation, not a repeated
-performance benchmark or a scientific-accuracy result.
+The [four-page final report](../output/docx/BioGraph_Steward_Final_Report.docx)
+uses the original organizer form, followed by a two-page methods/results
+supplement. It is ready for user review; it has not been submitted. The
+[format and review receipt](evaluations/final_prod_ui_20261116/final_report.json)
+records the preserved form and intentional final-title/date updates.
+
+The accepted final runtime focuses the shared site on the question, graph,
+source inspection, current assessments and exports. Loading indicators show
+when saved workspace or agent verification is pending; failures have readable
+feedback. **What changed** keeps the applied decisions and scientific results.
+Development-history catalogues and database diagnostics remain operator views.
+The source-agent controller, source records and scientific outcomes are unchanged.
+
+The earlier `09e95a7` cache update retains its own
+[functional/tamper evidence](evaluations/delivery_readiness_20261116/cache_validation.json)
+and [hosted browser pass](evaluations/delivery_readiness_20261116/hosted_browser_acceptance.json).
+Its [dated loading observation](evaluations/delivery_readiness_20261116/listing_latency.json)
+returned the same four-record listing in **33.487 seconds**, versus an earlier
+**94.640 seconds**. These are warmed-route observations from that checkpoint,
+not final-runtime timings, a repeated benchmark or a scientific-accuracy result.
 
 ## Recorded agent workflow
 
@@ -90,14 +105,17 @@ it for verification. It does not contain or relicense the full dataset.
 The [software ZIP](../output/software/BioGraph_Steward_Software.zip)
 contains the Python core and its upstream notices. Its instructions lead to
 the hosted real-data review and separately explain the optional invented local
-fixture. The [current acceptance summary](evaluations/delivery_readiness_20261116/software_acceptance.json)
+fixture. The [current acceptance summary](evaluations/final_prod_ui_20261116/software_acceptance.json)
 records clean Python construction, actual graph/decision exports, source
 recovery and saved-answer replay after restart. It includes no real source
 snapshots, credentials, reference labels or model weights.
 
-Its recorded acceptance pins source `09e95a7` and includes the current-source
+Its recorded acceptance pins tested source `d05f54f` and includes the current-source
 agent, four-step interface, saved-review guards and byte-bound verification reuse.
-The complete agent controller and scientific results are unchanged. The invented catalogue
+The final review interface retains graph changes, sources and current results
+while keeping development catalogues and database diagnostics in operator views.
+The agent controller, source records and scientific results are unchanged.
+This software acceptance is separate from hosted deployment acceptance. The invented catalogue
 check makes no model request; the separate actual model comparison retains its
 own evidence. Hosted deployment has a separate acceptance record.
 
@@ -155,25 +173,27 @@ The two saved downloads and separate graph-decision handoff serve different purp
 - **Answer ZIP** contains the focused answer, selected paths and cited evidence.
 - **Run ZIP** preserves the complete saved workspace and attached source files.
   Saved questions have their own ZIPs and are opened beside the workspace.
-- **Prepared graph and decision handoff** contains `retained_graph.json`, every decision
+- **Graph and decision handoff** contains `retained_graph.json`, every decision
   in `edge_dispositions.jsonl`, and the input workspace in
   `baseline_packet/source/graph.json`. Abstentions remain retained. This input
   may already contain source extensions; “baseline” in that packet does not
   universally mean the Pharos-only graph.
 
-The primary native graph also has a **prepared submission handoff**:
+The primary native graph also has a **verified submission handoff**:
 19,310 explicit abstentions, the complete preserved enriched input, and a
 separate exact same-snapshot Pharos-only comparator. Its
-[verified receipt](evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
-records 52 files, 977,230,442 bytes and per-file identities. It is prepared under
-`/srv/biograph-data/delivery-native-gold-20261116/assembly/submission` on the
-existing private AWS workbench. An operator can supply it to authorized judges
-under the source terms. This is separate from the existing workspace downloads;
-no new public data release or shared-app route was created.
+[protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json)
+records both actual HTTPS downloads and complete member verification. Sign in
+and use the [two graph package links](GOLD_SET_INTERFACE.md#protected-downloads):
+the primary sealed package has 48 files, and the separate replayable Pharos
+control has 185. Neither download requires an AWS account or server-folder
+access. The earlier outer assembly remains recorded in its
+[assembly receipt](evaluations/delivery_readiness_20261116/primary_graph_handoff.json).
 
-The protected reviewer site enables the two saved downloads. It blocks creating
-a new graph-decision package. That third handoff is generated by the operator or
-normal local app; the earlier qualified workspace already preserves its
+The protected reviewer site serves these prepared packages and the ordinary
+answer/workspace downloads. It blocks creating a new graph-decision package.
+New packages are generated by the operator or normal local app;
+the earlier qualified workspace already preserves its
 retained graph and decisions inside the Run ZIP.
 
 The native data profile and aggregate assessment have separate source terms and

@@ -19,11 +19,15 @@ questions can be run in an authorized [operator installation](docs/SOURCE_AGENT.
 
 ## 1. Open the recorded question
 
+[Open the recorded KRAS example directly](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data).
+
 In **Start here → Agent workflow**, use the designated recorded KRAS run.
 If it is not already open, expand **Open a recorded agent run**, select the
 verified KRAS model record and choose **Replay the recorded run**.
 Allow the recorded run to finish loading before continuing; the app checks its
 saved sources before displaying the result.
+A spinner and message identify what is loading. If a load fails, the spinner
+stops and the error stays visible.
 
 The question asks which proteins in the saved cohort have physical-association
 records with **KRAS**. KRAS is the protein at the centre of this example; the
@@ -58,9 +62,13 @@ inspected; complete technical details are available in the disclosures.
 
 ## 3. See what changed and what was measured
 
+[Open the qualified TP53 example directly](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask).
+
 Return to **Start here** and choose **Review applied graph qualifications**.
 This opens the matched retained TP53 example, which has a different source
 collection from the KRAS candidate example. Open **What changed**.
+The page heading is **Graph changes and assessment**: it explains applied
+qualifications and measured scientific results for the saved data.
 
 - **Applied qualification:** 16,985 input records become **16,687 retained**.
   The **298 exclusions use obsolete Gene Ontology identifiers**. Original
@@ -94,6 +102,11 @@ In the **retained TP53 example**, the run ZIP also contains
 `baseline_packet` holds the original graph and sources. An undecided record
 remains retained. The native KRAS ZIP contains its candidate graph and sources;
 it does not include the separate TP53 qualification decisions.
+
+For the challenge graph-and-ledger package and its separate Pharos-only
+comparator, use the [protected graph downloads](docs/GOLD_SET_INTERFACE.md#protected-downloads).
+Those assessment packages are separate from the focused answer and ordinary
+workspace downloads above.
 
 ## Try another question or give feedback
 

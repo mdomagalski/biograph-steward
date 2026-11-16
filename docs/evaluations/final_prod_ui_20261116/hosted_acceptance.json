@@ -1,0 +1,114 @@
+{
+  "format": "biograph-steward.final-product-ui-hosted-acceptance.v1",
+  "status": "accepted_after_real_restart",
+  "passed": true,
+  "verified_at_UTC": "2026-11-16T20:17:07.872867+00:00",
+  "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+  "image_id": "sha256:e1cedbaf58c088a55f84c54e1ea5214567048acb5aa781f37c4a2f0edcec1033",
+  "previous_runtime_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+  "previous_image_id": "sha256:5d14116f0910b8226ef652401b9bc050bfaace1cf4e83b666ae6a050ddde72a2",
+  "actual_restart_and_authenticated_smoke_passed": true,
+  "service_active": true,
+  "shared_review_saved_data_only": true,
+  "source_data_written": false,
+  "all_original_graph_review_source_question_function_index_registration_and_environment_bytes_preserved": true,
+  "original_profile_ids_verified": [
+    "source_faithful_workspace_20261113",
+    "question_20261113T075313Z_1a76b00f",
+    "scientific_assessment_complete_20261113",
+    "scientific_assessment_delivery_20261113",
+    "scientific_assessment_reference_20261114",
+    "historical_function_context_20261113",
+    "historical_function_context_notes_v2_20261113",
+    "historical_function_content_notes_20261114",
+    "scientific_assessment_public_reference_20261115_v3",
+    "native_evidence_workspace_20261115",
+    "native_physical_KRAS_question_v3_20261115",
+    "native_physical_KRAS_accepted_v3_20261115",
+    "source_agent_eval_dc7b597201da_S01",
+    "source_agent_eval_dc7b597201da_S02",
+    "source_agent_eval_dc7b597201da_S03",
+    "source_agent_eval_dc7b597201da_S04",
+    "source_agent_eval_dc7b597201da_S05"
+  ],
+  "preserved_recorded_agent_jobs": [
+    "source_agent_eval_dc7b597201da_S01",
+    "source_agent_eval_dc7b597201da_S02",
+    "source_agent_eval_dc7b597201da_S03",
+    "source_agent_eval_dc7b597201da_S04",
+    "source_agent_eval_dc7b597201da_S05"
+  ],
+  "Neptune_read_only_full_parity_no_file_fallback": true,
+  "rollback_needed": false,
+  "previous_app_image_and_configuration_retained": true,
+  "cloud_resources_or_permissions_created": false,
+  "environment_replaced": false,
+  "new_model_calls": 0,
+  "fresh_biomedical_retrievals": 0,
+  "graph_or_review_edits": 0,
+  "changed_runtime_files": [
+    "biograph_steward/guided.js",
+    "biograph_steward/navigation.js",
+    "biograph_steward/refresh.js",
+    "biograph_steward/scientific_assessment.js",
+    "biograph_steward/source_agent.js",
+    "biograph_steward/ui.html",
+    "biograph_steward/webapp.py",
+    "biograph_steward/workspaces.js"
+  ],
+  "webapp_backend_comparison": {
+    "same_interpreter_comparison": true,
+    "python_version": "3.9.25",
+    "before_raw_sha256": "0556174b11eaf081e13ce73a0875c6f8e516609a8fd110dfc6d8dbfdf2854f52",
+    "after_raw_sha256": "0148284b5a828632e0684f300e3780de5ae82b6cd0a3c13f6f6d953e62050c12",
+    "before_AST_excluding_report_html_sha256": "0445c6823b85d9cf053e40b66480f7e9131bfabdc7672fa65a29c43b6c18cb6f",
+    "after_AST_excluding_report_html_sha256": "0445c6823b85d9cf053e40b66480f7e9131bfabdc7672fa65a29c43b6c18cb6f",
+    "AST_equal": true
+  },
+  "primary_recorded_agent_and_E002_source_context_verified": true,
+  "both_source_graphs_and_saved_answers_verified": true,
+  "source_bound_298_qualification_and_complete_assessment_verified": true,
+  "private_receipt_pins": {
+    "candidate_build_sha256": "c9b106ddc0ed93c28ea15ba6df05841b958f6a78ca4f84b5dced1f5dc284bfe1",
+    "candidate_build_bytes": 34371,
+    "actual_activation_sha256": "f6bfb319d5d8b95752a9e8dbd29329162c51e7b438082671ae891753bbca64f1",
+    "actual_activation_bytes": 4322,
+    "actual_API_after_restart_sha256": "c55b0d9aafd16107f23ca82251aede9ff2ea5145db50efb65209829a81172159",
+    "actual_API_after_restart_bytes": 2754
+  },
+  "reused_previous_evidence": {
+    "runtime_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+    "git_delivery_commit": "637f6f24dff219196e9996c2fa93abdfd08d17f3",
+    "hosted_acceptance": {
+      "path": "docs/evaluations/delivery_readiness_20261116/hosted_acceptance.json",
+      "sha256": "d4a17d9f74d9bb8bf801abe6eebb3b1e2837bd872f46155fd0587761a0b26c6a"
+    },
+    "hosted_browser_acceptance": {
+      "path": "docs/evaluations/delivery_readiness_20261116/hosted_browser_acceptance.json",
+      "sha256": "dbcab2eb50caef6784085cacb9b958b43605ff72324e46cef091853a1af0abdb"
+    },
+    "cache_validation": {
+      "path": "docs/evaluations/delivery_readiness_20261116/cache_validation.json",
+      "sha256": "2fbcce5a7e4734adb291c5dc9ba69c120deed9824d8501eb7e87edb8c2f3e0a3"
+    },
+    "primary_graph_handoff": {
+      "path": "docs/evaluations/delivery_readiness_20261116/primary_graph_handoff.json",
+      "sha256": "c29f4fc493263d01ceecf905b302377eca13edbaac1e3ca996babc593cc9f6c2"
+    },
+    "software_acceptance": {
+      "path": "docs/evaluations/delivery_readiness_20261116/software_acceptance.json",
+      "sha256": "0ebf09969353289f6d517016b4f7cb90c012dc67ccd5ff5faa460057e8f604c8"
+    },
+    "scope": "Prior09 full scientific/source/five-job/GO/export checks are reused only with unchanged data and scientific/backend bytes. New focused checks do not claim these evaluations were repeated."
+  },
+  "full_five_job_GO_and_scientific_evaluations_repeated": false,
+  "new_focused_checks_are_software_checks_not_biological_validation": true,
+  "browser_acceptance_is_separate": true,
+  "independent_intended_user_walkthrough_completed": false,
+  "prior_attempts": {
+    "first_operator_gate_failed_before_live_changes": "A cross-Python AST dump hash was incorrectly treated as portable; same-host raw-bound comparison fixes the integration.",
+    "second_candidate_passed_but_not_activated": "User requested visible loading feedback before deployment.",
+    "current_candidate_and_actual_restart": "passed"
+  },
+  "scientific_graphs_source_dates_results_and_controller_unchanged": true
+}
