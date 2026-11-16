@@ -53,16 +53,30 @@ async function setupSourceAgent(){
 function renderSourceAgentGraph(focus,anchor){
   const box=el('div',undefined,'graph-box'),nodes=focus?.nodes||[],edges=focus?.edges||[];
   if(!nodes.length){box.append(el('p','No evidence graph was returned for this scope.','small'));return box;}
-  const height=Math.max(260,Math.ceil(nodes.length/3)*85+40),svg=svgEl('svg',{viewBox:'0 0 1000 '+height,role:'img','aria-label':'Source-bound evidence returned by the agent query'}),positions=new Map();svg.style.minWidth='540px';
-  nodes.forEach((node,index)=>positions.set(node.id,{x:170+(index%3)*330,y:55+Math.floor(index/3)*85}));
+  if(!nodes.some(node=>node.id===anchor)){box.append(el('p','The graph anchor is unavailable. Inspect the complete recorded source graph instead.','small'));return box;}
+  // Reuse the guided source-path columns. Facing border ports keep each line
+  // in the clear gap between columns, never behind an unrelated protein box.
+  const others=nodes.filter(node=>node.id!==anchor),star=edges.every(edge=>(edge.subject||edge.source)===anchor||(edge.object||edge.target)===anchor);
+  const contexts=star?[]:others.filter(node=>node.category!=='biolink:Protein'),partners=star?others:others.filter(node=>node.category==='biolink:Protein');
+  const height=Math.max(270,Math.max(contexts.length,partners.length)*64+40),svg=svgEl('svg',{viewBox:'0 0 1000 '+height,role:'img','aria-label':'Source-bound evidence returned by the agent query'}),positions=new Map([[anchor,{x:170,y:height/2}]]);svg.style.minWidth='540px';
+  for(const [rows,x] of [[contexts,500],[partners,830]])rows.forEach((node,index)=>positions.set(node.id,{x,y:(index+1)*height/(rows.length+1)}));
   const states=new Map();for(const assertion of focus.assertions||[])for(const eid of assertion.evidence_edge_ids||[])states.set(eid,assertion.lifecycle_state);
-  for(const edge of edges){const a=positions.get(edge.subject||edge.source),b=positions.get(edge.object||edge.target);if(!a||!b)continue;const state=states.get(edge.id)||edge.review_state||edge.lifecycle_state,accepted=state==='accepted',line=svgEl('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:accepted?'#147c83':'#b58236','stroke-width':2,'stroke-dasharray':accepted?'':'6 4'}),title=svgEl('title');title.textContent=[edge.predicate,edge.citation_id,state].filter(Boolean).join(' · ');line.append(title);svg.append(line);}
+  let omitted=0;
+  for(const edge of edges){const a=positions.get(edge.subject||edge.source),b=positions.get(edge.object||edge.target);if(!a||!b||a.x===b.x||(!star&&Math.abs(a.x-b.x)>330)){omitted++;continue;}const direction=a.x<b.x?1:-1,state=states.get(edge.id)||edge.review_state||edge.lifecycle_state,accepted=state==='accepted',line=svgEl('line',{x1:a.x+135*direction,y1:a.y,x2:b.x-135*direction,y2:b.y,stroke:accepted?'#147c83':'#b58236','stroke-width':2,'stroke-dasharray':accepted?'':'6 4'}),title=svgEl('title');title.textContent=[edge.predicate,edge.citation_id,state].filter(Boolean).join(' · ');line.append(title);svg.append(line);}
   for(const node of nodes){const p=positions.get(node.id),g=svgEl('g'),name=node.sym||node.symbol||node.name||node.id;g.append(svgEl('rect',{x:p.x-135,y:p.y-24,width:270,height:48,rx:8,fill:node.id===anchor?'#dcefed':'#edf3f7',stroke:'#76909d'}));const label=svgEl('text',{x:p.x,y:p.y+5,'text-anchor':'middle','font-size':13,fill:'#172b3a'});label.textContent=name.length>34?name.slice(0,33)+'…':name;const title=svgEl('title');title.textContent=name+' · '+node.id;g.append(label,title);svg.append(g);}
-  box.append(svg);return box;
+  box.append(svg);if(omitted)box.append(el('p',omitted+' source edges are not drawn in this column layout. Every edge remains in the downloadable recorded graph.','small'));return box;
 }
-function renderSourceAgentPassport(inspection){
+function renderSourceAgentPassport(inspection,citation=null){
   const passports=Array.isArray(inspection.passports)?inspection.passports:[inspection.passport].filter(Boolean),box=el('details',undefined,'evidence');
   box.append(el('summary','Inspected citation ['+inspection.citation_id+'] · '+passports.length+' source '+(passports.length===1?'assertion':'assertions')));
+  if(citation?.historical_source){
+    const native=citation.historical_source,status=native.status,label=status==='explicitly_encoded_protein_xref'?'literal protein reference':status==='compatible_gene_level_xref'?'compatible gene-level reference':'native support unresolved';
+    box.append(el('h4','Archived model '+citation.source_model_id+' · '+label));
+    box.append(el('p',status==='compatible_gene_level_xref'?'This archived model supports a compatible gene-level reference. It does not establish an exact historical protein form.':'Read the recorded native model and identifier qualification for the precise source identity claim.'));
+    box.append(el('p','Shared model context does not establish direct protein binding.','small'));
+    const url=native.selected_archive_proof?.source_url;if(typeof url==='string'&&/^https:\/\//.test(url)){const link=el('p');link.append(guideLink({label:'Open the publisher archive',url}));box.append(link);}
+    box.append(sourceAgentDisclosure('Archived model and identifier qualification',native));
+  }
   if(inspection.complete_citation_inspection===true)box.append(el('p','Every source assertion in this selected citation was inspected.','small'));
   if(inspection.omitted_assertion_ids?.length)box.append(el('p',inspection.omitted_assertion_ids.length+' source assertions were not inspected; this citation inspection is incomplete.','notice warn'));
   for(const [index,passport] of passports.entries()){
@@ -104,7 +118,7 @@ function renderSourceAgentJob(job,{replay=true}={}){
     for(const citation of result.answer.citations||[]){const card=el('div',undefined,'evidence');card.append(el('p','['+citation.id+'] '+(citation.subject||'')+' → '+(citation.object||'')+' · '+(citation.review_state||'review state not supplied')));const aid=(citation.source_assertion_ids||[])[0]||citation.assertion_id;if(aid){const open=el('button','Inspect this claim manually','secondary');open.type='button';open.onclick=()=>{showWorkspaceView('evidence');loadSourceGuide(aid);};card.append(open);}citations.append(card);}steps.panels[2].append(citations);
   }else evidence.append(el('p','No query evidence was returned. This does not establish biological absence.'));
   const sources=el('section',undefined,'path-step');sources.append(el('h3','Inspected source records'),el('p','Open a selected citation to inspect its recorded source, qualifications and references. All returned citations are also available here.'));
-  for(const inspection of result.inspections||[])sources.append(renderSourceAgentPassport(inspection));
+  for(const inspection of result.inspections||[])sources.append(renderSourceAgentPassport(inspection,(result.answer?.citations||[]).find(citation=>citation.id===inspection.citation_id)));
   if(!(result.inspections||[]).length)sources.append(el('p','No source inspection was performed for this recorded outcome.'));
   steps.panels[2].append(sources);
   if(result.answer?.limitations?.length){const limits=el('details');limits.append(el('summary','Interpretation and source limitations'));for(const limit of result.answer.limitations)limits.append(el('p',typeof limit==='string'?limit:JSON.stringify(limit),'small'));evidence.append(limits);}

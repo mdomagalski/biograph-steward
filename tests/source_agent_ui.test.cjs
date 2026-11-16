@@ -23,7 +23,7 @@ function job(kind='live_nim',status='completed'){
 }
 function harness({saved=false,query='',responses={}}={}){
   const elements=new Map(),calls=[],manual=[],posts=[],$=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id);};
-  const context=vm.createContext({$,el:element,svgEl:element,URLSearchParams,location:{search:query},runId:'invented',savedReviewOnly:()=>saved,
+  const context=vm.createContext({$,el:element,svgEl:(tag,attrs)=>{const node=element(tag);for(const [key,value]of Object.entries(attrs||{}))node.setAttribute(key,value);return node;},URLSearchParams,location:{search:query},runId:'invented',savedReviewOnly:()=>saved,
     fieldList:value=>element('dl',JSON.stringify(value)),guideLink:link=>element('a',link.label),showWorkspaceView:view=>manual.push(view),loadSourceGuide:id=>manual.push(id),
     api:async(...args)=>{posts.push(args);return job();},fetch:async route=>{calls.push(route);const value=responses[route];if(value===undefined)throw new Error('Unexpected fetch '+route);return {ok:true,json:async()=>value};}});
   vm.runInContext(script,context);return {$,context,calls,manual,posts};
@@ -118,4 +118,19 @@ test('source inspection exposes recorded source sections without requiring raw J
  function nodes(n){return [n,...n.children.flatMap(c=>typeof c==='string'?[]:nodes(c))];}
  const section=nodes(h.$('sourceAgentOutput')).find(n=>n.tagName==='DETAILS'&&n.children.some(c=>c.tagName==='SUMMARY'&&c.textContent==='Native STRING physical association'));
  assert.ok(section);assert.match(text(section),/12.5/);assert.match(text(section),/459/);assert.match(text(section),/Recorded source-release context/);assert.deepEqual(h.posts,[]);
+});
+
+test('star graph lines cannot visually pass through an unrelated protein box',()=>{
+ const h=harness(),nodes=['EGFR','HRAS','KRAS','AKT1','CTNNB1','CDK8','MAP2K1','FBXW7','CDC42BPB'].map(id=>({id,sym:id,category:'biolink:Protein'}));
+ h.context.focus={nodes,edges:nodes.filter(n=>n.id!=='KRAS').map((n,i)=>({id:'edge:'+i,subject:'KRAS',object:n.id})),assertions:[]};
+ const box=vm.runInContext('renderSourceAgentGraph(focus,"KRAS")',h.context),svg=box.children[0],lines=svg.children.filter(n=>n.tagName==='LINE'),rects=svg.children.filter(n=>n.tagName==='G').map(g=>({name:g.children.find(n=>n.tagName==='TITLE').textContent.split(' · ')[0],...g.children[0].attributes}));
+ assert.equal(lines.length,8);assert.equal(rects.length,9);
+ lines.forEach((line,i)=>{const a=line.attributes,target=h.context.focus.edges[i].object;for(const rect of rects.filter(r=>!['KRAS',target].includes(r.name)))for(let sample=0;sample<=100;sample++){const t=sample/100,x=Number(a.x1)+(Number(a.x2)-Number(a.x1))*t,y=Number(a.y1)+(Number(a.y2)-Number(a.y1))*t;assert.ok(!(x>Number(rect.x)&&x<Number(rect.x)+Number(rect.width)&&y>Number(rect.y)&&y<Number(rect.y)+Number(rect.height)),'Unrelated '+rect.name+' must not appear on the source edge to '+target);}});
+ assert.deepEqual(h.posts,[]);
+});
+
+test('archived citation source inspection exposes gene-level qualification outside raw JSON',()=>{
+ const h=harness(),record=job();record.result.answer.citations[0].source_model_id='WP23_r105541';record.result.answer.citations[0].historical_source={status:'compatible_gene_level_xref',selected_archive_proof:{source_url:'https://archive.example.invalid/source'}};
+ record.result.inspections[0].passport.sections=[];h.context.renderSourceAgentJob(record);
+ const visible=text(h.$('sourceAgentOutput'));assert.match(visible,/Archived model WP23_r105541 · compatible gene-level reference/);assert.match(visible,/does not establish an exact historical protein form/);assert.match(visible,/Shared model context does not establish direct protein binding/);assert.deepEqual(h.posts,[]);
 });
