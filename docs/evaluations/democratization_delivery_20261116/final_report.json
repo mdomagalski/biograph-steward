@@ -1,0 +1,129 @@
+{
+  "format": "biograph-steward.final-report-original-form-fidelity.v3",
+  "status": "prepared_for_final_submission",
+  "file": "output/docx/BioGraph_Steward_Final_Report.docx",
+  "bytes": 12468,
+  "sha256": "106bf2b8e826d51593cbcec488f8894a505d82f77a5d456fb9ad464460e72225",
+  "pages": 4,
+  "main_form_pages": 2,
+  "methods_and_evaluation_supplement_pages": 2,
+  "source_reference": {
+    "path": "runs/midpoint_report_final_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+    "sha256": "1548809286a5dcd5912c6bd183baab191df57cbda34c81ca7c570f0703b60bb8",
+    "role": "Retained organizer-format report and its original template contract; retained source unchanged."
+  },
+  "template_fidelity": {
+    "section_order": [
+      "Team Information",
+      "Key Accomplishments",
+      "Scope and future improvements",
+      "Final deliverables",
+      "Reminder",
+      "Approach and evidence integration",
+      "Evaluation and final delivery"
+    ],
+    "team_information_fields": [
+      "Team Name",
+      "Track",
+      "Overall Status",
+      "Brief status summary"
+    ],
+    "five_accomplishments": true,
+    "original_main_form_tables_and_page_geometry_preserved": true,
+    "source_Arial_body_and_blue_title_heading_format_preserved": true,
+    "styles_numbering_theme_and_other_unchanged_package_parts_preserved": true,
+    "obsolete_optional_illustration_removed": true,
+    "intentional_updates": [
+      "Final project title and concise date/purpose in the original instruction slot",
+      "Overall status states Delivered proof of concept, without a progress traffic light",
+      "Final limitations replace Blockers and Help Needed in the same section position",
+      "Final deliverables replace a future plan, retaining the original table geometry",
+      "Deliverable and Delivered capability columns replace dates and milestones",
+      "Private review and planned public November17 submission are stated once in the access note",
+      "The supplement explains methodology, CIViC scope, causes of gains and supported reuse",
+      "No organizer help request, future work timetable or scientific measurement was added",
+      "Plain language and short sentences throughout; zero authored semicolons",
+      "Scope and future improvements consolidate remaining validation opportunities",
+      "Delivered scientist workflow and positive measured outcomes lead",
+      "Formal full-author ProtBoost preprint reference with clickable primary source"
+    ],
+    "three_limitation_paragraphs": true,
+    "three_delivered_output_rows": true
+  },
+  "quality_review": {
+    "all_pages_rendered_with_bundled_canonical_renderer": true,
+    "every_page_inspected_at_full_resolution": true,
+    "independent_root_visual_review_passed": true,
+    "independent_root_primary_source_text_review_passed": true,
+    "source_package_fidelity_passed": true,
+    "main_body_font_pt": 12,
+    "supplement_table_font_pt": 11,
+    "clipping_overlap_or_unintended_blank_pages": false,
+    "access_token_or_credentials_in_report": false,
+    "low_level_test_counts_or_source_hashes_in_report": false,
+    "authored_semicolon_count": 0,
+    "formal_ProtBoost_reference_and_primary_link_verified": true,
+    "private_plain_language_quality_receipt_sha256": "bd933ea42ab4aa4aa96d67c08856f0c66ad8dbecfd3ff683ea441c4eac8ef224"
+  },
+  "scientific_scope": {
+    "source_additions_are_absent_captured_pairs_or_concepts_not_discoveries": true,
+    "physical_source_context_not_direct_binding_proof": true,
+    "location_recovery_uses_same_ontology_qualified_mapping_and_retains_coarse_control": true,
+    "shared_provider_and_prior_reference_use_retained": true,
+    "function_study_separate_from_app_and_agent": true,
+    "scored_protein_frames_and_residual_positive_function_labels_explicit": true,
+    "refreshed_annotation_control_and_uncertain_additional_primary_gain_retained": true,
+    "primary_graph_records_remain_unassessed": true,
+    "obsolete_identifier_qualification_not_experimental_false_claim_pruning": true,
+    "civic_separate_clinical_evidence_workflow_not_current_native_agent_tool": true,
+    "clinical_profiles_and_whole_therapy_sets_not_flattened": true,
+    "location_gain_from_additional_admitted_annotations_not_identifier_pruning": true,
+    "published_ProtBoost_and_author_source_update_reused": true,
+    "current_LLM_not_credited_for_offline_prediction_gain": true,
+    "same_cohort_task_reuse_separate_from_external_cohort_generalization": true
+  },
+  "current_limitations": [
+    "Independent whole-graph precision and automatic biological-error pruning are not established.",
+    "Source sharing, incomplete labels and prior reference use bound interpretation.",
+    "The separate historical function study does not establish an agent-caused gain or a reliable extra primary gain over fully refreshed annotations.",
+    "A complete independent hosted-user walkthrough remains pending. The final return/mobile browser recheck was interrupted by preserved browser transport failures; their cause is unresolved.",
+    "The repository is private; public visibility, final tag/release and actual organizer submission remain separate closing actions.",
+    "Permitted mixed-source graph/source access and redistribution follow provider terms; no organizer gold-set access or approval is claimed."
+  ],
+  "prepared_not_published_or_submitted": true,
+  "report_sent": false,
+  "repository_visibility_changed": false,
+  "organizer_submission_performed": false,
+  "email_cloud_or_model_actions_for_report": false,
+  "basis": "Plain-language final-delivery revision. Scientist benefit and delivered workflow lead. Scope and further validation opportunities are grouped. Formal ProtBoost citation added. All source graphs, biological measurements and controls unchanged.",
+  "production_review_presentation_completed": true,
+  "accepted_hosted_runtime": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "hosted_browser_validation": "Current84 focused construction-card desktop/mobile checks passed. Prior d05 full-workflow partial coverage remains unchanged. No complete independent user walkthrough is claimed.",
+  "new_protected_graph_download_enabled_claimed": true,
+  "organizer_presentation_alignment": {
+    "democratization_and_general_scientist_usability_explicit": true,
+    "source": "Organizer email quoted by user on November16; linked response document returned401 and was not read",
+    "agent_scope": "Model-directed saved-source query, focused graph, citation inspections and nonmutating proposals",
+    "construction_scope": "Separate deterministic explicit1\u201325-protein cohort construction",
+    "generalizability": "Different supported questions in one cohort and reusable construction; no independently validated cross-cohort transfer",
+    "hosted_demo_and_video_software_graph_deliverables_explicit": true
+  },
+  "graph_download_basis": "Existing verified authenticated graph/ledger and exact captured Pharos comparator download receipt",
+  "previous_report_preserved_at_git_commit": "b710f7e",
+  "ProtBoost_reference": {
+    "authors": [
+      "Alexander Chervov",
+      "Anton Vakhrushev",
+      "Sergei Fironov",
+      "Loredana Martignetti"
+    ],
+    "year": 2024,
+    "title": "ProtBoost: protein function prediction with Py-Boost and Graph Neural Networks -- CAFA5 top2 solution",
+    "arxiv": "2412.04529",
+    "doi": "10.48550/arXiv.2412.04529",
+    "url": "https://arxiv.org/abs/2412.04529",
+    "publication_type": "preprint",
+    "full_ensemble_reproduction_claimed": false
+  },
+  "scientific_source_and_controller_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0"
+}

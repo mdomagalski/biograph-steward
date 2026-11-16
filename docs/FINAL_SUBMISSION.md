@@ -7,7 +7,7 @@ proposals. Each connection retains its original source and conditions.
 
 The actual current-source agent comparison, narrated local demonstration and
 protected hosted replay are complete. The
-[hosted acceptance](evaluations/final_prod_ui_20261116/hosted_acceptance.json)
+[hosted acceptance](evaluations/democratization_delivery_20261116/hosted_acceptance.json)
 and [delivery status](DELIVERY_STATUS_20261115.json) record the verified deployment;
 the tour's local filming provenance remains separate.
 
@@ -118,7 +118,7 @@ the source views:
   sensitivity check, not new blind validation or a new biological discovery.
 - **Later curator function recovery:** a fixed historical comparison improves
   over retained LocalPlus in its primary views. We reused the published
-  **ProtBoost** context-aware stacker and the authors' CAFA6 update to combine
+  [**ProtBoost**](https://arxiv.org/abs/2412.04529) context-aware stacker and the authors' CAFA6 update to combine
   graph and sequence forecasts with GO evidence-code, relation and ontology
   context. These are qualified views of one GOA source. Refreshing the baseline's
   annotations also helps; additional learned benefit over that refreshed
@@ -180,13 +180,15 @@ role listed in the original proposal.
 ## Reuse and handoff
 
 The [four-page final report](../output/docx/BioGraph_Steward_Final_Report.docx)
-preserves the organizer's form layout and section order, with final limitations
-and delivered outputs replacing help requests and a future work plan. Its
-two-page supplement explains methods, CIViC's separate role, measured gains and
-the demonstrated scope of reuse. The [format and review receipt](evaluations/final_prod_ui_20261116/final_report.json)
+preserves the organizer's form layout and section order. Delivered outputs and
+opportunities for further validation replace help requests and a future work
+plan. Its two-page supplement explains methods, CIViC's separate role, measured
+gains and the demonstrated scope of reuse. It cites the original ProtBoost paper
+and uses short sentences to distinguish each contribution. The
+[format and review receipt](evaluations/democratization_delivery_20261116/final_report.json)
 records it as prepared for user review, not submitted. The
 [code-only software ZIP](../output/software/BioGraph_Steward_Software.zip)
-has [clean acceptance for tested source `d05f54f`](evaluations/final_prod_ui_20261116/software_acceptance.json);
+has [clean acceptance for tested source `84ef6a0`](evaluations/democratization_delivery_20261116/software_acceptance.json);
 its deployment status is tracked separately.
 
 The native KRAS workspace ZIP includes its candidate graph and preserved source

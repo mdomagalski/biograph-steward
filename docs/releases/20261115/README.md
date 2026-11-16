@@ -4,7 +4,7 @@ Start with the **[hosted application](https://bi-3a117d5e2b3942678dc518fce65ab5d
 and the **[step-by-step user guide](../../../HOW_TO_USE.md)**. Sign in with
 the workspace token supplied privately. The current app opens a verified
 Nemotron source-agent record, with four steps from question to review proposals.
-The [hosted acceptance](../../evaluations/final_prod_ui_20261116/hosted_acceptance.json)
+The [hosted acceptance](../../evaluations/democratization_delivery_20261116/hosted_acceptance.json)
 records the actual final-interface restart and saved-source checks. Loading
 feedback and current assessment/qualification/export controls are implemented.
 [Partial hosted desktop checks](../../evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
@@ -20,18 +20,18 @@ tour's genuine local capture provenance stay separate.
 | [Plain transcript](../../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) | Read the same explanation or use it when presenting. |
 | [Captions](../../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Load the timed captions separately when needed. Captions are also visible in the video. |
 | [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise editable overview, with the detailed research linked separately. |
-| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run tested source `d05f54f`, with the final review interface. Real source data are supplied separately; hosted acceptance is recorded separately. |
+| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run tested source `84ef6a0`, with the final review interface. Real source data are supplied separately; hosted acceptance is recorded separately. |
 | [Team review guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) | Two pages: direct example links, loading feedback, five tasks and feedback prompts. |
-| [Final report](../../../output/docx/BioGraph_Steward_Final_Report.docx) | Four pages: the organizer's form layout with delivered outputs and limitations, plus methods/results explaining usability, reuse, CIViC and measured gains. Prepared for user review; not submitted. |
+| [Final report](../../../output/docx/BioGraph_Steward_Final_Report.docx) | Four pages: the organizer's form layout with delivered outputs and validation opportunities, plus methods/results explaining usability, reuse, CIViC and measured gains. Prepared for user review; not submitted. |
 
 The canonical software archive is
 [BioGraph Steward Software](../../../output/software/BioGraph_Steward_Software.zip).
 It leads to the real hosted review and separately documents the optional
 invented software fixture. The complete real-data snapshot is not bundled in
-the software archive. Its [current clean acceptance](../../evaluations/final_prod_ui_20261116/software_acceptance.json)
+the software archive. Its [current clean acceptance](../../evaluations/democratization_delivery_20261116/software_acceptance.json)
 records the final review interface, CLI/HTTP exports, recovery and saved replay.
 The recorded model comparison and presentation retain their original source/runtime pins.
-The final report's [format and review receipt](../../evaluations/final_prod_ui_20261116/final_report.json)
+The final report's [format and review receipt](../../evaluations/democratization_delivery_20261116/final_report.json)
 records preservation of the original form and the approved final-title/date updates.
 The revised guide has its own [current acceptance](../../evaluations/final_prod_ui_20261116/team_review_guide.json).
 

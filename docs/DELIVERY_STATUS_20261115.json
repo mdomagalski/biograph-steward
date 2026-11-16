@@ -1,5 +1,5 @@
 {
-  "AWS_graph_change_scope": "Final reviewer presentation/loading feedback updated and two verified copies published through existing authenticated downloads. All original graphs, source data, reviews, five actual model records, default registration, environment and Neptune remain unchanged.",
+  "AWS_graph_change_scope": "Two UI files expose the existing real-cohort constructor for operators and clarify local construction instructions on saved review. No source, agent controller, scientific engine, graph, decision, environment or access-policy change.",
   "authorized_AWS_interpretation_update_complete": true,
   "browser_visual_check": {
     "format": "biograph-steward.final-product-ui-hosted-browser-check.v1",
@@ -129,7 +129,7 @@
   "format": "biograph-steward.delivery-status.v1",
   "github_review_delivery": {
     "branch": "codex/contextual-gain-delivery",
-    "current_runtime_source_revision": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "current_runtime_source_revision": "84ef6a0b991f9560e777ec06fb6151303a380112",
     "private_repository": true,
     "main_modified": false,
     "main_commit_unchanged": "586ec35d33e9429dde91057c4130542988a7ca02",
@@ -151,9 +151,9 @@
   },
   "hosted_review": {
     "authenticated_acceptance_receipt": {
-      "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
-      "bytes": 5806,
-      "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+      "path": "docs/evaluations/democratization_delivery_20261116/hosted_acceptance.json",
+      "bytes": 3385,
+      "sha256": "4181864a5c85696eead5ea9e001639581aa54c3519fe60d67d56ce417911c1c2"
     },
     "current_authenticated_acceptance_repeated_in_this_audit": true,
     "interpretation_update": {
@@ -164,7 +164,7 @@
       "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
       "term_explanations": 27
     },
-    "last_verified_authenticated_runtime": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "last_verified_authenticated_runtime": "84ef6a0b991f9560e777ec06fb6151303a380112",
     "native_profiles_update": {
       "actual_restart_and_full_Neptune_parity_passed": true,
       "browser_and_restore_checks": "Passed actual Chrome physical/source/reference and GO/accepted read views plus390px layout;235-file scoped restore/Gold export and approved S3 checksums passed.",
@@ -330,6 +330,30 @@
       },
       "graph_source_review_environment_unchanged": true,
       "model_calls_for_update": 0
+    },
+    "focused_construction_entry_browser_check": {
+      "path": "docs/evaluations/democratization_delivery_20261116/hosted_browser_acceptance.json",
+      "bytes": 1680,
+      "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
+    },
+    "democratization_runtime_update": {
+      "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+      "acceptance": {
+        "path": "docs/evaluations/democratization_delivery_20261116/hosted_acceptance.json",
+        "bytes": 3385,
+        "sha256": "4181864a5c85696eead5ea9e001639581aa54c3519fe60d67d56ce417911c1c2"
+      },
+      "runtime_bridge": {
+        "path": "docs/evaluations/democratization_delivery_20261116/runtime_bridge.json",
+        "bytes": 1620,
+        "sha256": "dd8b310268a127c8289fd63c9004496fa1904c3119863128fe5ffe2310d261a2"
+      },
+      "focused_browser_check": {
+        "path": "docs/evaluations/democratization_delivery_20261116/hosted_browser_acceptance.json",
+        "bytes": 1680,
+        "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
+      },
+      "prior_full_workflow_browser_limits_preserved": true
     }
   },
   "no_AWS_graph_or_review_changes": true,
@@ -398,7 +422,7 @@
   "purpose": "Current judge-facing artifact and capability boundary; prior release manifests remain dated records.",
   "reader_date": "2026-11-16",
   "resources": {
-    "AWS_reviewer_service": "Keep the existing HTTPS reviewer service and private Neptune available. Runtime d05f54f passed source-preserving acceptance and full read-only Neptune parity after a real restart.",
+    "AWS_reviewer_service": "Keep the existing HTTPS reviewer app and private Neptune available. Runtime84ef6a0 passed a real restart, source preservation and read-only Neptune parity. Its focused construction-entry check does not replace prior full-workflow browser qualifications.",
     "Brev_GPU_or_model_needed_for_review": false,
     "Brev_can_stop_compute_keep_persistent_disk": true,
     "Brev_compute_needed_for_current_work": false,
@@ -792,17 +816,17 @@
     "final_public_repository_handoff_completed_by_this_audit": false,
     "latest_indexed_software_ZIP": {
       "path": "output/software/BioGraph_Steward_Software.zip",
-      "bytes": 726558,
-      "sha256": "e568bc7a948d8be8503a9e3a6a4423dc99d834e4adc68018a82783fe4e53aa5e",
+      "bytes": 727692,
+      "sha256": "b180fbde0ead24d31602a5d1425ad7cbc0e0c97a22f0a8f8408417fa8b9cfe4b",
       "file_count": 133
     },
-    "latest_indexed_software_ZIP_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "latest_indexed_software_ZIP_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
     "latest_indexed_software_acceptance": {
-      "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
-      "bytes": 2564,
-      "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
+      "path": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
+      "bytes": 2976,
+      "sha256": "9e8975a6f441e7b7e32db01905e5f9d35417d16c9581e6d4f2d7f8c242941097"
     },
-    "latest_indexed_software_scope": "Final reviewer UI/loading feedback, current bounded source agent and stdlib core. Code only; invented portability fixture remains separate from real source data. Clean CLI/HTTP/export/recovery/restart/saved-review acceptance passed. Controller and scientific results unchanged.",
+    "latest_indexed_software_scope": "Current stdlib core with visible operator cohort construction and saved-review local-build instructions. Code-only fixture acceptance passed. Existing constructor, bounded source agent and scientific results are unchanged.",
     "native_location_source_profile": {
       "AWS_updated": false,
       "ND_root_no_data_excluded": true,
@@ -851,14 +875,14 @@
     "new_core_archive_acceptance": {
       "format": "biograph-steward.standalone-source-agent-delivery-summary.v1",
       "status": "passed",
-      "source_revision": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+      "source_revision": "84ef6a0b991f9560e777ec06fb6151303a380112",
       "software_archive": {
         "file": "BioGraph_Steward_Software.zip",
-        "sha256": "e568bc7a948d8be8503a9e3a6a4423dc99d834e4adc68018a82783fe4e53aa5e",
-        "bytes": 726558,
+        "sha256": "b180fbde0ead24d31602a5d1425ad7cbc0e0c97a22f0a8f8408417fa8b9cfe4b",
+        "bytes": 727692,
         "file_count": 133
       },
-      "private_acceptance_receipt_sha256": "1a0431b75cde6b725a4aad59b1989e9f993373f6047c63e3f2f1c8f78b531aa1",
+      "private_acceptance_receipt_sha256": "15df2a7e2816855a70ad21c22dc544a62cd589356b67465d27cdd12385487e37",
       "clean_python": {
         "version": "3.12.14",
         "no_site": 1,
@@ -898,14 +922,19 @@
       "presentation_PDF_and_walkthrough_not_modified_by_this_acceptance": true,
       "UI_mode_functional_validation_is_separate": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
       "previous_product_UI_acceptance": {
-        "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance_2fd.json",
-        "bytes": 2081,
-        "sha256": "71dbe27169d31e6c785909d7f9f71ad279fbd7e11d5e8024e9ee0dacfb628862"
+        "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
+        "bytes": 2564,
+        "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
       },
-      "previous_product_UI_software_preserved_private_copy_SHA256": "7caad765875ef03298fc71490bdce0859a1292bc5009b69676f0c3e04d48eb36",
+      "previous_product_UI_software_preserved_private_copy_SHA256": "e568bc7a948d8be8503a9e3a6a4423dc99d834e4adc68018a82783fe4e53aa5e",
       "loading_UI_in_archive": true,
       "loading_and_question_error_functional_checks_are_separate": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
-      "new_source_or_model_behavior_in_this_release": false
+      "new_source_or_model_behavior_in_this_release": false,
+      "created_at": "2026-11-16T22:08:46.666277+00:00",
+      "private_acceptance_receipt_bytes": 6569,
+      "new_construction_entry_readme_in_archive": true,
+      "new_construction_entry_functional_validation_is_separate": true,
+      "UI_mode_functional_validation_scope": "The linked prior product-mode/loading checks remain separate; this acceptance does not repeat or count the separately reported construction-entry UI tests."
     },
     "preserved_November_13_indexed_software_checkpoint": {
       "acceptance": {
@@ -956,7 +985,7 @@
       "qualification": "docs/evaluations/saved_native_cache_20261115/qualification.json",
       "qualified_original_reader_files_unchanged": true
     },
-    "source_code_commit_at_local_check": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "source_code_commit_at_local_check": "84ef6a0b991f9560e777ec06fb6151303a380112",
     "previous_indexed_software": {
       "archive": {
         "bytes": 688047,
@@ -1122,7 +1151,7 @@
       "status": "Final report follows the requested midpoint form. A distinct final template and the exact final graph/reference scoring contract were not supplied; hidden gold labels are not needed for delivery."
     }
   ],
-  "updated_at_UTC": "2026-11-16T21:05:30.167548+00:00",
+  "updated_at_UTC": "2026-11-16T22:39:28.739015+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,
@@ -1413,7 +1442,7 @@
   },
   "source_agent": {
     "evaluation_implementation": "12d70a261ba75920e136d7bba1d42c2391b9228a",
-    "delivery_runtime": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "delivery_runtime": "84ef6a0b991f9560e777ec06fb6151303a380112",
     "result": "Five supported bounded source queries exactly matched deterministic query, answer and focused graph; three controller preflight checks made no model calls.",
     "actual_model_calls": 13,
     "completion_tokens": 972,
@@ -1434,6 +1463,11 @@
       "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
       "bytes": 5806,
       "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+    },
+    "democratization_delivery_acceptance": {
+      "path": "docs/evaluations/democratization_delivery_20261116/hosted_acceptance.json",
+      "bytes": 3385,
+      "sha256": "4181864a5c85696eead5ea9e001639581aa54c3519fe60d67d56ce417911c1c2"
     }
   },
   "independent_team_feedback": {
@@ -1496,7 +1530,7 @@
     "bytes": 3266,
     "sha256": "9ad8dc17c6bf13972be93d2dce856a434a0b97a557c19ee81b02f854896b63c5"
   },
-  "artifact_audit_path": "docs/evaluations/final_prod_ui_20261116/final_report_artifact_audit.json",
+  "artifact_audit_path": "docs/evaluations/democratization_delivery_20261116/artifact_audit.json",
   "previous_browser_visual_check": {
     "format": "biograph.source-agent-hosted-browser-acceptance.v1",
     "recorded_at_UTC": "2026-11-16T15:23:43.097798+00:00",
@@ -1812,7 +1846,7 @@
     "receipt": "docs/evaluations/source_agent_20261116/hosted_browser_acceptance.json"
   },
   "current_delivery_pass": {
-    "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
     "runtime_and_restart_acceptance_passed": true,
     "explicit_hosted_browser_checks_passed": 39,
     "source_and_review_bytes_preserved": true,
@@ -1827,9 +1861,9 @@
       "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
     },
     "code_only_software_acceptance": {
-      "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
-      "bytes": 2564,
-      "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
+      "path": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
+      "bytes": 2976,
+      "sha256": "9e8975a6f441e7b7e32db01905e5f9d35417d16c9581e6d4f2d7f8c242941097"
     },
     "presentation_and_media_unchanged": true,
     "final_publication_and_submission_performed": false,
@@ -1850,9 +1884,9 @@
       "both_failures_preserved": true
     },
     "final_report": {
-      "path": "docs/evaluations/final_prod_ui_20261116/final_report.json",
-      "bytes": 6519,
-      "sha256": "271de55dc6d4bfff858184932581e6241f23489d1d74bfe7829e4e4e7a6dc50a"
+      "path": "docs/evaluations/democratization_delivery_20261116/final_report.json",
+      "bytes": 7615,
+      "sha256": "fbfce3ba33c4c48c781d44b740eda5296a283b63c2d711a863656d3a61cb3fdc"
     },
     "team_review_guide": {
       "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
@@ -1860,9 +1894,9 @@
       "sha256": "51d98210d0d64f8ff53c5e4350171c53e777ce9910914fc35c1ae05e694294cc"
     },
     "final_UI_validation": {
-      "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
-      "bytes": 6062,
-      "sha256": "6c84c8d535642c3601a18726825f6bcaddf0d36f8a08da65772a1340b74b1844"
+      "path": "docs/evaluations/democratization_delivery_20261116/UI_validation.json",
+      "bytes": 2293,
+      "sha256": "3a60ae1be55199ec4c263f646efaea8fe3ca1868ba684f4779940bce022b4cd6"
     },
     "browser_observation_scope": "Recorded partial UI assertions and visual states; not an uninterrupted completed journey, unique user-study count or independent intended-user validation.",
     "remaining_browser_release_checks": [
@@ -1880,7 +1914,13 @@
       "primary_graph_handoff_20261116",
       "captured_pharos_comparator_20261116"
     ],
-    "new_scientific_results_claimed": false
+    "new_scientific_results_claimed": false,
+    "focused_construction_entry_browser_check": {
+      "path": "docs/evaluations/democratization_delivery_20261116/hosted_browser_acceptance.json",
+      "bytes": 1680,
+      "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
+    },
+    "prior_full_workflow_browser_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0"
   },
   "previous_final_product_delivery": {
     "snapshot_of_pre_update_status": true,
@@ -2632,8 +2672,8 @@
     },
     "output/software/BioGraph_Steward_Software.zip": {
       "path": "output/software/BioGraph_Steward_Software.zip",
-      "bytes": 726558,
-      "sha256": "e568bc7a948d8be8503a9e3a6a4423dc99d834e4adc68018a82783fe4e53aa5e"
+      "bytes": 727692,
+      "sha256": "b180fbde0ead24d31602a5d1425ad7cbc0e0c97a22f0a8f8408417fa8b9cfe4b"
     },
     "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf": {
       "path": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
@@ -2642,16 +2682,16 @@
     },
     "output/docx/BioGraph_Steward_Final_Report.docx": {
       "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12372,
-      "sha256": "3f8da3ffb2a7df42ac710cd0a613e28215c7c0e5aac17a22ecbe540a3d9dd13b"
+      "bytes": 12468,
+      "sha256": "106bf2b8e826d51593cbcec488f8894a505d82f77a5d456fb9ad464460e72225"
     }
   },
   "final_report": {
-    "format": "biograph-steward.final-report-original-form-fidelity.v2",
+    "format": "biograph-steward.final-report-original-form-fidelity.v3",
     "status": "prepared_for_final_submission",
     "file": "output/docx/BioGraph_Steward_Final_Report.docx",
-    "bytes": 12372,
-    "sha256": "3f8da3ffb2a7df42ac710cd0a613e28215c7c0e5aac17a22ecbe540a3d9dd13b",
+    "bytes": 12468,
+    "sha256": "106bf2b8e826d51593cbcec488f8894a505d82f77a5d456fb9ad464460e72225",
     "pages": 4,
     "main_form_pages": 2,
     "methods_and_evaluation_supplement_pages": 2,
@@ -2664,7 +2704,7 @@
       "section_order": [
         "Team Information",
         "Key Accomplishments",
-        "Final limitations",
+        "Scope and future improvements",
         "Final deliverables",
         "Reminder",
         "Approach and evidence integration",
@@ -2689,7 +2729,11 @@
         "Deliverable and Delivered capability columns replace dates and milestones",
         "Private review and planned public November17 submission are stated once in the access note",
         "The supplement explains methodology, CIViC scope, causes of gains and supported reuse",
-        "No organizer help request, future work timetable or scientific measurement was added"
+        "No organizer help request, future work timetable or scientific measurement was added",
+        "Plain language and short sentences throughout; zero authored semicolons",
+        "Scope and future improvements consolidate remaining validation opportunities",
+        "Delivered scientist workflow and positive measured outcomes lead",
+        "Formal full-author ProtBoost preprint reference with clickable primary source"
       ],
       "three_limitation_paragraphs": true,
       "three_delivered_output_rows": true
@@ -2704,7 +2748,10 @@
       "supplement_table_font_pt": 11,
       "clipping_overlap_or_unintended_blank_pages": false,
       "access_token_or_credentials_in_report": false,
-      "low_level_test_counts_or_source_hashes_in_report": false
+      "low_level_test_counts_or_source_hashes_in_report": false,
+      "authored_semicolon_count": 0,
+      "formal_ProtBoost_reference_and_primary_link_verified": true,
+      "private_plain_language_quality_receipt_sha256": "bd933ea42ab4aa4aa96d67c08856f0c66ad8dbecfd3ff683ea441c4eac8ef224"
     },
     "scientific_scope": {
       "source_additions_are_absent_captured_pairs_or_concepts_not_discoveries": true,
@@ -2736,10 +2783,10 @@
     "repository_visibility_changed": false,
     "organizer_submission_performed": false,
     "email_cloud_or_model_actions_for_report": false,
-    "basis": "Final-delivery editorial revision against the supplied organizer email and existing code/source evidence. Original form layout retained, with delivered outputs and limitations in place of future plans and help requests. Methods and causal attribution clarified; frozen scientific results, hosted runtime, media and source graphs unchanged.",
+    "basis": "Plain-language final-delivery revision. Scientist benefit and delivered workflow lead. Scope and further validation opportunities are grouped. Formal ProtBoost citation added. All source graphs, biological measurements and controls unchanged.",
     "production_review_presentation_completed": true,
-    "accepted_hosted_runtime": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
-    "hosted_browser_validation": "partial_checks_passed_with_browser_network_limit; not an uninterrupted journey or completed mobile recheck",
+    "accepted_hosted_runtime": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "hosted_browser_validation": "Current84 focused construction-card desktop/mobile checks passed. Prior d05 full-workflow partial coverage remains unchanged. No complete independent user walkthrough is claimed.",
     "new_protected_graph_download_enabled_claimed": true,
     "organizer_presentation_alignment": {
       "democratization_and_general_scientist_usability_explicit": true,
@@ -2750,9 +2797,25 @@
       "hosted_demo_and_video_software_graph_deliverables_explicit": true
     },
     "graph_download_basis": "Existing verified authenticated graph/ledger and exact captured Pharos comparator download receipt",
-    "previous_report_preserved_at_git_commit": "53e7250b07cf9cf0b8dd53417d6e933453327de6",
+    "previous_report_preserved_at_git_commit": "b710f7e",
+    "ProtBoost_reference": {
+      "authors": [
+        "Alexander Chervov",
+        "Anton Vakhrushev",
+        "Sergei Fironov",
+        "Loredana Martignetti"
+      ],
+      "year": 2024,
+      "title": "ProtBoost: protein function prediction with Py-Boost and Graph Neural Networks -- CAFA5 top2 solution",
+      "arxiv": "2412.04529",
+      "doi": "10.48550/arXiv.2412.04529",
+      "url": "https://arxiv.org/abs/2412.04529",
+      "publication_type": "preprint",
+      "full_ensemble_reproduction_claimed": false
+    },
+    "scientific_source_and_controller_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
     "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-    "receipt": "docs/evaluations/final_prod_ui_20261116/final_report.json"
+    "receipt": "docs/evaluations/democratization_delivery_20261116/final_report.json"
   },
   "final_product_delivery_receipts": {
     "hosted": {
@@ -2906,5 +2969,684 @@
     "path": "docs/evaluations/final_prod_ui_20261116/artifact_audit.json",
     "bytes": 11245,
     "sha256": "127918162469803aded016ef15e99be08c52298bacbd9038e6aab64b2fc6a850"
+  },
+  "previous_report_before_democratization_delivery": {
+    "format": "biograph-steward.final-report-original-form-fidelity.v2",
+    "status": "prepared_for_final_submission",
+    "file": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "bytes": 12372,
+    "sha256": "3f8da3ffb2a7df42ac710cd0a613e28215c7c0e5aac17a22ecbe540a3d9dd13b",
+    "pages": 4,
+    "main_form_pages": 2,
+    "methods_and_evaluation_supplement_pages": 2,
+    "source_reference": {
+      "path": "runs/midpoint_report_final_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "1548809286a5dcd5912c6bd183baab191df57cbda34c81ca7c570f0703b60bb8",
+      "role": "Retained organizer-format report and its original template contract; retained source unchanged."
+    },
+    "template_fidelity": {
+      "section_order": [
+        "Team Information",
+        "Key Accomplishments",
+        "Final limitations",
+        "Final deliverables",
+        "Reminder",
+        "Approach and evidence integration",
+        "Evaluation and final delivery"
+      ],
+      "team_information_fields": [
+        "Team Name",
+        "Track",
+        "Overall Status",
+        "Brief status summary"
+      ],
+      "five_accomplishments": true,
+      "original_main_form_tables_and_page_geometry_preserved": true,
+      "source_Arial_body_and_blue_title_heading_format_preserved": true,
+      "styles_numbering_theme_and_other_unchanged_package_parts_preserved": true,
+      "obsolete_optional_illustration_removed": true,
+      "intentional_updates": [
+        "Final project title and concise date/purpose in the original instruction slot",
+        "Overall status states Delivered proof of concept, without a progress traffic light",
+        "Final limitations replace Blockers and Help Needed in the same section position",
+        "Final deliverables replace a future plan, retaining the original table geometry",
+        "Deliverable and Delivered capability columns replace dates and milestones",
+        "Private review and planned public November17 submission are stated once in the access note",
+        "The supplement explains methodology, CIViC scope, causes of gains and supported reuse",
+        "No organizer help request, future work timetable or scientific measurement was added"
+      ],
+      "three_limitation_paragraphs": true,
+      "three_delivered_output_rows": true
+    },
+    "quality_review": {
+      "all_pages_rendered_with_bundled_canonical_renderer": true,
+      "every_page_inspected_at_full_resolution": true,
+      "independent_root_visual_review_passed": true,
+      "independent_root_primary_source_text_review_passed": true,
+      "source_package_fidelity_passed": true,
+      "main_body_font_pt": 12,
+      "supplement_table_font_pt": 11,
+      "clipping_overlap_or_unintended_blank_pages": false,
+      "access_token_or_credentials_in_report": false,
+      "low_level_test_counts_or_source_hashes_in_report": false
+    },
+    "scientific_scope": {
+      "source_additions_are_absent_captured_pairs_or_concepts_not_discoveries": true,
+      "physical_source_context_not_direct_binding_proof": true,
+      "location_recovery_uses_same_ontology_qualified_mapping_and_retains_coarse_control": true,
+      "shared_provider_and_prior_reference_use_retained": true,
+      "function_study_separate_from_app_and_agent": true,
+      "scored_protein_frames_and_residual_positive_function_labels_explicit": true,
+      "refreshed_annotation_control_and_uncertain_additional_primary_gain_retained": true,
+      "primary_graph_records_remain_unassessed": true,
+      "obsolete_identifier_qualification_not_experimental_false_claim_pruning": true,
+      "civic_separate_clinical_evidence_workflow_not_current_native_agent_tool": true,
+      "clinical_profiles_and_whole_therapy_sets_not_flattened": true,
+      "location_gain_from_additional_admitted_annotations_not_identifier_pruning": true,
+      "published_ProtBoost_and_author_source_update_reused": true,
+      "current_LLM_not_credited_for_offline_prediction_gain": true,
+      "same_cohort_task_reuse_separate_from_external_cohort_generalization": true
+    },
+    "current_limitations": [
+      "Independent whole-graph precision and automatic biological-error pruning are not established.",
+      "Source sharing, incomplete labels and prior reference use bound interpretation.",
+      "The separate historical function study does not establish an agent-caused gain or a reliable extra primary gain over fully refreshed annotations.",
+      "A complete independent hosted-user walkthrough remains pending. The final return/mobile browser recheck was interrupted by preserved browser transport failures; their cause is unresolved.",
+      "The repository is private; public visibility, final tag/release and actual organizer submission remain separate closing actions.",
+      "Permitted mixed-source graph/source access and redistribution follow provider terms; no organizer gold-set access or approval is claimed."
+    ],
+    "prepared_not_published_or_submitted": true,
+    "report_sent": false,
+    "repository_visibility_changed": false,
+    "organizer_submission_performed": false,
+    "email_cloud_or_model_actions_for_report": false,
+    "basis": "Final-delivery editorial revision against the supplied organizer email and existing code/source evidence. Original form layout retained, with delivered outputs and limitations in place of future plans and help requests. Methods and causal attribution clarified; frozen scientific results, hosted runtime, media and source graphs unchanged.",
+    "production_review_presentation_completed": true,
+    "accepted_hosted_runtime": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "hosted_browser_validation": "partial_checks_passed_with_browser_network_limit; not an uninterrupted journey or completed mobile recheck",
+    "new_protected_graph_download_enabled_claimed": true,
+    "organizer_presentation_alignment": {
+      "democratization_and_general_scientist_usability_explicit": true,
+      "source": "Organizer email quoted by user on November16; linked response document returned401 and was not read",
+      "agent_scope": "Model-directed saved-source query, focused graph, citation inspections and nonmutating proposals",
+      "construction_scope": "Separate deterministic explicit1–25-protein cohort construction",
+      "generalizability": "Different supported questions in one cohort and reusable construction; no independently validated cross-cohort transfer",
+      "hosted_demo_and_video_software_graph_deliverables_explicit": true
+    },
+    "graph_download_basis": "Existing verified authenticated graph/ledger and exact captured Pharos comparator download receipt",
+    "previous_report_preserved_at_git_commit": "53e7250b07cf9cf0b8dd53417d6e933453327de6",
+    "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "receipt": "docs/evaluations/final_prod_ui_20261116/final_report.json"
+  },
+  "previous_software_before_democratization_delivery": {
+    "LICENSE": {
+      "bytes": 1246,
+      "path": "LICENSE",
+      "sha256": "57a15858e9851bdbfd32521359fca17661b8a0b0903400561350fab7931308f2"
+    },
+    "core_python": ">=3.10",
+    "core_requires_GPU_or_model": false,
+    "core_requires_pip": false,
+    "final_public_repository_handoff_completed_by_this_audit": false,
+    "latest_indexed_software_ZIP": {
+      "path": "output/software/BioGraph_Steward_Software.zip",
+      "bytes": 726558,
+      "sha256": "e568bc7a948d8be8503a9e3a6a4423dc99d834e4adc68018a82783fe4e53aa5e",
+      "file_count": 133
+    },
+    "latest_indexed_software_ZIP_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "latest_indexed_software_acceptance": {
+      "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
+      "bytes": 2564,
+      "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
+    },
+    "latest_indexed_software_scope": "Final reviewer UI/loading feedback, current bounded source agent and stdlib core. Code only; invented portability fixture remains separate from real source data. Clean CLI/HTTP/export/recovery/restart/saved-review acceptance passed. Controller and scientific results unchanged.",
+    "native_location_source_profile": {
+      "AWS_updated": false,
+      "ND_root_no_data_excluded": true,
+      "accepted_views_checked": 99,
+      "all99_target_questions_checked": true,
+      "all_native_assertions_remain_candidates": true,
+      "all_target_question_census": "docs/evaluations/public_gold_20261115/native_location_question_census.json",
+      "benchmark_inputs_used_for_source_publication": false,
+      "candidate_native_assertions": 429,
+      "candidate_pages_checked": 135,
+      "concepts_absent_from_historical_Pharos": 68,
+      "counts_are_independent_studies": false,
+      "full_GO_pipeline_conformance_claimed": false,
+      "guide": "docs/evaluations/NATIVE_LOCATION_WORKSPACE_20261115.md",
+      "historical_Pharos_pair_overlap": 361,
+      "local_regressions": {
+        "GOA_source_question_HTTP_export_tests": 41,
+        "all_final_groups_passed": true,
+        "clinical_human_gold_tests": 8,
+        "existing_source_inspection_tests": 24,
+        "native_GO_JavaScript_tests": 20,
+        "optional_scientific_dependencies_needed_by_core_fixtures": false,
+        "reference_accuracy_tests": 91
+      },
+      "native_source_records": 3309,
+      "new_source_profile_in_previously_prepared_core_ZIP": false,
+      "original_Pharos_records_preserved": 15671,
+      "original_or_default_workspaces_changed": false,
+      "original_primary_targets": 99,
+      "profile": "complete-cohort-positive-active-CC-located-in-all-codes.v1",
+      "separate_saved_workspace": "native_location_workspace_20261115",
+      "source_profile_summary": "docs/evaluations/public_gold_20261115/native_location_application.json",
+      "source_record_and_concept_union_exact": true,
+      "source_recovery_v1_behavior_preserved": true,
+      "status": "implemented and locally replayed through existing GOA source, question, inspection and export flow",
+      "targets_with_native_records": 94,
+      "status_scope": "Historical local standalone native_location workspace/census; its source profile is also included in the separately accepted hosted native_evidence workspace."
+    },
+    "native_physical_and_saved_review_features": {
+      "new_source_data_bundled_in_core_ZIP": false,
+      "ordinary_source_questions": "CLI and app share the native physical reader; source values and identifier/sequence qualifications retained",
+      "review_policy": "docs/SAVED_DATA_REVIEW_MODE.md",
+      "source_guide": "docs/NATIVE_PHYSICAL_SOURCE.md",
+      "status": "deployed and authenticated after real restart"
+    },
+    "new_core_archive_acceptance": {
+      "format": "biograph-steward.standalone-source-agent-delivery-summary.v1",
+      "status": "passed",
+      "source_revision": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+      "software_archive": {
+        "file": "BioGraph_Steward_Software.zip",
+        "sha256": "e568bc7a948d8be8503a9e3a6a4423dc99d834e4adc68018a82783fe4e53aa5e",
+        "bytes": 726558,
+        "file_count": 133
+      },
+      "private_acceptance_receipt_sha256": "1a0431b75cde6b725a4aad59b1989e9f993373f6047c63e3f2f1c8f78b531aa1",
+      "clean_python": {
+        "version": "3.12.14",
+        "no_site": 1,
+        "site_loaded": false,
+        "site_package_paths": []
+      },
+      "code_only_no_real_datasets": true,
+      "invented_portability_fixture_explicitly_separate": true,
+      "upstream_notices_preserved": true,
+      "current_source_agent_stdlib_imports_CLI_help_and_no_model_catalogue_passed": true,
+      "current_source_agent_four_step_UI_in_archive": true,
+      "actual_CLI_HTTP_export_recovery_restart_reopen_passed": true,
+      "saved_data_only_denied_new_actions": [
+        "/api/question",
+        "/api/build",
+        "/api/plan",
+        "/api/submission-export",
+        "/api/source-agent/run"
+      ],
+      "saved_data_only_source_agent_model_factory_calls": 0,
+      "source_fetches": 0,
+      "model_calls": 0,
+      "cloud_calls": 0,
+      "all_owned_servers_stopped": true,
+      "actual_live_model_comparison_in_this_acceptance": false,
+      "separate_actual_model_comparison": "docs/evaluations/SOURCE_AGENT_RESULTS_20261116.md",
+      "biological_accuracy_or_independent_user_validation_claimed": false,
+      "no_tokens_credentials_raw_HTTP_headers_real_source_records_reference_labels_or_weights_in_archive": true,
+      "hosted_deployment_has_separate_acceptance": true,
+      "bundled_how_to_link_is_absolute_repository_URL": true,
+      "core_archive_roots": [
+        "app.py",
+        "LICENSE",
+        "README_DEMO.md",
+        "biograph_steward/"
+      ],
+      "presentation_PDF_and_walkthrough_not_modified_by_this_acceptance": true,
+      "UI_mode_functional_validation_is_separate": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+      "previous_product_UI_acceptance": {
+        "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance_2fd.json",
+        "bytes": 2081,
+        "sha256": "71dbe27169d31e6c785909d7f9f71ad279fbd7e11d5e8024e9ee0dacfb628862"
+      },
+      "previous_product_UI_software_preserved_private_copy_SHA256": "7caad765875ef03298fc71490bdce0859a1292bc5009b69676f0c3e04d48eb36",
+      "loading_UI_in_archive": true,
+      "loading_and_question_error_functional_checks_are_separate": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+      "new_source_or_model_behavior_in_this_release": false
+    },
+    "preserved_November_13_indexed_software_checkpoint": {
+      "acceptance": {
+        "bytes": 2214,
+        "path": "docs/evaluations/software_release_native_go_export_20261113_summary.json",
+        "sha256": "420534e73bf2ff6456ef5ba52f101204abbdbb7c00c1686f9c9278eb7f31ac3c"
+      },
+      "archive": {
+        "bytes": 905085,
+        "file": "biograph_steward_software.zip",
+        "file_count": 165,
+        "sha256": "ed473c27ee1331d06cf78e4f4edcee27e1231a4c0e609653195d9af1eb1c20ad"
+      },
+      "commit": "5362b50b80e38505f24e21d97e7034005a7a51e1"
+    },
+    "prior_indexed_software_before_native_profiles": {
+      "latest_indexed_software_ZIP": {
+        "bytes": 661594,
+        "file": "biograph_steward_core_software.zip",
+        "file_count": 124,
+        "path": "runs/software_delivery_core_20261115/biograph_steward_core_software.zip",
+        "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
+      },
+      "latest_indexed_software_ZIP_commit": "9bf202f84949c76904ba8e51a5f83b68f2d58843",
+      "latest_indexed_software_acceptance": {
+        "bytes": 3549,
+        "path": "docs/evaluations/software_release_core_20261115_summary.json",
+        "sha256": "fa88a9bc527c412f25b5be6a3edbe68bd6dbeaceda12c7f86f0ebfb03fd30576"
+      }
+    },
+    "prior_native_profiles_055_software": {
+      "latest_indexed_software_ZIP": {
+        "bytes": 686402,
+        "file": "biograph_steward_core_saved_review_software.zip",
+        "file_count": 128,
+        "sha256": "220a763d1cd5a0a15b423e8843c4c7196c64dddcefc56ff900b9b8450984a26d"
+      },
+      "latest_indexed_software_ZIP_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+      "latest_indexed_software_acceptance": {
+        "path": "docs/evaluations/software_release_saved_review_20261115_summary.json",
+        "sha256": "cfb9744c0b761a6f6aacbfc2bf1b7277ae8f5de6b73ca532978c952121887b4e"
+      }
+    },
+    "published_release_asset_created_by_this_audit": false,
+    "repository_visibility": "Verified private during draft-release API handoff; no visibility change",
+    "saved_native_cache": {
+      "new_cached_core_archive_acceptance": "docs/evaluations/software_release_cached_review_20261115_summary.json",
+      "qualification": "docs/evaluations/saved_native_cache_20261115/qualification.json",
+      "qualified_original_reader_files_unchanged": true
+    },
+    "source_code_commit_at_local_check": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "previous_indexed_software": {
+      "archive": {
+        "bytes": 688047,
+        "file": "biograph_steward_core_saved_review_software.zip",
+        "file_count": 129,
+        "sha256": "f688f894ff3933f4b85fdbf62425cbf1e805a01d6852526adcf2bce261a0e993"
+      },
+      "commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+      "acceptance": {
+        "path": "docs/evaluations/software_release_cached_review_20261115_summary.json",
+        "sha256": "bd20359b2e6642fd950af71bd956d0e3f1ee462b73322bdd01f80532143d7009"
+      }
+    },
+    "previous_core_archive_acceptance": {
+      "actual_graph_ledger_and_answer_exports_verified": true,
+      "all_owned_servers_stopped": true,
+      "browser_visual_check": false,
+      "clean_python": {
+        "no_site": 1,
+        "site_loaded": false,
+        "site_package_paths": [],
+        "version": "3.12.14"
+      },
+      "cloud_calls": 0,
+      "fresh_extraction_and_saved_answer_reopen_passed": true,
+      "model_calls": 0,
+      "source_fetches": 0
+    },
+    "historical_local_synthetic_check": {
+      "UI_browser_visual_check": "unavailable: browser plugin native module rejected by macOS code-signature check",
+      "cloud_calls": 0,
+      "created_at": "2026-11-15T02:19:46.665164+00:00",
+      "format": "biograph-steward.delivery-local-synthetic-check.v1",
+      "graph": {
+        "assertions": 17,
+        "edges": 18,
+        "nodes": 12
+      },
+      "loopback_only": true,
+      "model_calls": 0,
+      "no_parent_paths": true,
+      "page_status": 200,
+      "question_id": "question_20261115T021946Z_ec276f7e",
+      "returned_results": 2,
+      "run_zip_bytes": 123529,
+      "run_zip_sha256": "44916e12a5db399bfce1d3e19f7fffe98aa91c655e636cf51399f4140eee4605",
+      "saved_answer_equal": true,
+      "source_guide_returned": true,
+      "source_retrievals": 0,
+      "synthetic": true,
+      "zip_files": 20
+    },
+    "previous_311_software_acceptance": {
+      "acceptance_receipt": {
+        "file": "acceptance.json",
+        "sha256": "600b41c38cd7dd0f6764b44b3bfa47cf808b6f91e62d90ab10bd697276517356"
+      },
+      "actual_CLI_HTTP_export_recovery_restart_reopen_passed": true,
+      "all_owned_servers_stopped": true,
+      "biological_accuracy_or_independent_user_validation_claimed": false,
+      "clean_python": {
+        "no_site": 1,
+        "site_loaded": false,
+        "site_package_paths": [],
+        "version": "3.12.14"
+      },
+      "cloud_calls": 0,
+      "code_only_no_real_datasets": true,
+      "format": "biograph-steward.standalone-reviewer-delivery-summary.v1",
+      "hosted_first_readme_and_five_current_tasks_verified": true,
+      "independent_actual_catalogue_same_snapshot_review": {
+        "actual_catalogue_primary": "/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115",
+        "actual_companion": "/?run=source_faithful_workspace_20261113&question=question_20261113T070731Z_1079c2ac",
+        "same_source_snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "source_or_graph_mutation": false,
+        "source_validation_still_on_open": true,
+        "status": "passed"
+      },
+      "invented_local_fixture_explicitly_separate": true,
+      "model_calls": 0,
+      "saved_data_only_actual_HTTP_and_zero_forbidden_factories_passed": true,
+      "software_archive": {
+        "bytes": 696121,
+        "file": "BioGraph_Steward_Software.zip",
+        "file_count": 129,
+        "sha256": "6f752794432bc5bf8aebd66827d26caba21b43d1e05b7ff1927673606df0169b"
+      },
+      "source_fetches": 0,
+      "source_revision": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+      "status": "passed",
+      "uploaded": false,
+      "upstream_notices_preserved": true
+    }
+  },
+  "previous_hosted_review_before_democratization_delivery": {
+    "authenticated_acceptance_receipt": {
+      "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+      "bytes": 5806,
+      "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+    },
+    "current_authenticated_acceptance_repeated_in_this_audit": true,
+    "interpretation_update": {
+      "actual_restart_verified": true,
+      "displayed_candidates": 36,
+      "graph_scores_or_model_changed": false,
+      "saved_queries": 6,
+      "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "term_explanations": 27
+    },
+    "last_verified_authenticated_runtime": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "native_profiles_update": {
+      "actual_restart_and_full_Neptune_parity_passed": true,
+      "browser_and_restore_checks": "Passed actual Chrome physical/source/reference and GO/accepted read views plus390px layout;235-file scoped restore/Gold export and approved S3 checksums passed.",
+      "cache_update": "Source-verified web reuse accepted after real restart; original source-reader files and graph/answer hashes unchanged.",
+      "gateway_route_sync": {
+        "existing_stack_image_update_complete": true,
+        "native_GO_and_protein_context_saved_routes_synchronized": true,
+        "new_unsafe_actions_permitted": false,
+        "receipt": "docs/evaluations/native_profiles_hosted_20261115/gateway_route_sync.json"
+      },
+      "new_workspace": "native_evidence_workspace_20261115",
+      "original_qualified_default_and_Neptune_mirror_unchanged": true,
+      "runtime_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+      "saved_accepted_answer_proteins": 0,
+      "saved_candidate_answer_proteins": 14,
+      "scoped_recovery_and_Gold_export": "passed for235sourcefiles; explicitlyapprovedprivateS3copychecksumverified",
+      "server_saved_data_only": true,
+      "summary": "docs/evaluations/native_profiles_hosted_20261115/summary.json"
+    },
+    "native_reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask",
+    "previous_authenticated_acceptance_receipt": {
+      "bytes": 3673,
+      "path": "docs/evaluations/scientific_hosted_delivery_20261114_summary.json",
+      "sha256": "4bca4913524b4a813e2da3c889054dd2a6ae721240a7fe09fc5dcc61142e8c41"
+    },
+    "previous_interpretation_update": {
+      "actual_restart_verified": true,
+      "displayed_candidates": 36,
+      "graph_scores_or_model_changed": false,
+      "saved_queries": 6,
+      "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "term_explanations": 27,
+      "runtime_commit": "f6c527a84b68ac0155df4b2c19548c8b88736540"
+    },
+    "previous_verified_runtime": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "private_Neptune_mirror": "Full read-only parity reverified after the actual d05f54f restart. Neptune mirrors the retained companion; native-profile answers read their saved source files.",
+    "public_entry_check": {
+      "TLS_default_verification": true,
+      "authenticated_saved_graph_checked": false,
+      "body_sha256": "d2848f9cc5f1202ca3145c2904e197922ab91965c7edce9e67696593488d7493",
+      "bytes_read": 1790,
+      "cookies_or_tokens_supplied": false,
+      "created_at": "2026-11-15T10:00:53.432801+00:00",
+      "final_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+      "has_workspace_login": true,
+      "status": 200,
+      "url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/"
+    },
+    "reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+    "shared_ingress": "Saved-data inspection, recorded agent replay and export; new inference, construction, retrieval and review edits blocked.",
+    "workspace_token": "supplied privately; not included in repository or this manifest",
+    "previous_interpretation_authenticated_acceptance_receipt": {
+      "bytes": 2868,
+      "path": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "sha256": "9fc6449b60a5f21133e2e9d73439bbc2494ec7aaf2f88c3573b6f0033a571361"
+    },
+    "previous_authenticated_acceptance_receipt_before_reviewer_redesign": {
+      "path": "docs/evaluations/native_profiles_hosted_20261115/summary.json",
+      "bytes": 7896,
+      "sha256": "8fb559ec00336098a90db89b5029ca3b71bf3f7dac31f5fb06cf9093276a6405"
+    },
+    "previous_verified_runtime_before_reviewer_redesign": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "retained_reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
+    "reviewer_experience_update": {
+      "runtime_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+      "actual_restart_and_full_Neptune_parity_passed": true,
+      "real_saved_data_default_after_login": true,
+      "five_tasks": [
+        "Start here",
+        "Question & graph",
+        "Inspect sources",
+        "What changed",
+        "Export"
+      ],
+      "same_snapshot_source_supported_companion_required": true,
+      "source_proof_expandable_without_inline_JSON_dump": true,
+      "saved_graphs_answers_decisions_and_sources_changed": false,
+      "summary": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_acceptance.json",
+      "actual_hosted_browser_workflow_passed": true,
+      "browser_summary": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_browser_acceptance.json"
+    },
+    "previous_authenticated_acceptance_before_source_agent": {
+      "path": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_acceptance.json",
+      "bytes": 3421,
+      "sha256": "772216fe2e5d49e4dae5e03cd96e9e90301a27b4b55742f0f4118677baf9999e"
+    },
+    "previous_runtime_before_source_agent": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+    "agent_reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+    "source_agent_update": {
+      "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+      "recorded_actual_model_jobs": [
+        "source_agent_eval_dc7b597201da_S01",
+        "source_agent_eval_dc7b597201da_S02",
+        "source_agent_eval_dc7b597201da_S03",
+        "source_agent_eval_dc7b597201da_S04",
+        "source_agent_eval_dc7b597201da_S05"
+      ],
+      "actual_restart_and_full_Neptune_parity_passed": true,
+      "saved_sources_replayed_without_new_inference": true,
+      "four_steps": [
+        "Question & plan",
+        "Evidence graph",
+        "Source inspection",
+        "Review proposals"
+      ],
+      "summary": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+      "existing_graphs_sources_answers_reviews_and_environment_unchanged": true,
+      "new_proposals_applied": false,
+      "original_model_workflow_delivery_runtime": "ee3c61c23262e57669090a7608658c16517d87cb"
+    },
+    "previous_source_agent_runtime_acceptance": {
+      "path": "docs/evaluations/source_agent_20261116/hosted_acceptance.json",
+      "bytes": 7022,
+      "sha256": "4c54ae9d926f0e1b89227b88cb2da091629901dd24b0bffe5a83e042e7ad3488"
+    },
+    "verification_cache_update": {
+      "acceptance": {
+        "path": "docs/evaluations/delivery_readiness_20261116/hosted_acceptance.json",
+        "bytes": 8799,
+        "sha256": "d4a17d9f74d9bb8bf801abe6eebb3b1e2837bd872f46155fd0587761a0b26c6a"
+      },
+      "runtime_bridge": {
+        "path": "docs/evaluations/delivery_readiness_20261116/runtime_bridge.json",
+        "bytes": 1579,
+        "sha256": "e0207cb28f133563c4e576993f15466fb97431b56f5313fba8299232a2beb09b"
+      },
+      "performance_observations": {
+        "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+        "bytes": 1692,
+        "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+      },
+      "cold_source_validation_preserved": true,
+      "actual_controller_and_model_results_unchanged": true,
+      "existing_jobs_or_registration_reinstalled": false
+    },
+    "current_browser_acceptance": {
+      "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+      "bytes": 5956,
+      "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
+    },
+    "loading_latency_observation": {
+      "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+      "bytes": 1692,
+      "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+    },
+    "initial_source_verification_latency_remains_material": true,
+    "final_product_update": {
+      "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+      "acceptance": {
+        "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+        "bytes": 5806,
+        "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+      },
+      "browser_acceptance": {
+        "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+        "bytes": 5956,
+        "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
+      },
+      "UI_validation": {
+        "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+        "bytes": 6062,
+        "sha256": "6c84c8d535642c3601a18726825f6bcaddf0d36f8a08da65772a1340b74b1844"
+      },
+      "graph_source_review_environment_unchanged": true,
+      "model_calls_for_update": 0
+    }
+  },
+  "previous_current_delivery_pass_before_democratization_delivery": {
+    "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "runtime_and_restart_acceptance_passed": true,
+    "explicit_hosted_browser_checks_passed": 39,
+    "source_and_review_bytes_preserved": true,
+    "new_model_or_source_retrieval_calls": 0,
+    "primary_graph_handoff_prepared": true,
+    "private_Gold_worker_and_isolated_candidate_stopped": true,
+    "owned_browser_closed": true,
+    "canonical_user_guide": "HOW_TO_USE.md",
+    "loading_observation": {
+      "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+      "bytes": 1692,
+      "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+    },
+    "code_only_software_acceptance": {
+      "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
+      "bytes": 2564,
+      "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
+    },
+    "presentation_and_media_unchanged": true,
+    "final_publication_and_submission_performed": false,
+    "browser_feature_checks_passed": false,
+    "partial_UI_checks_verified": true,
+    "browser_validation_complete": false,
+    "uninterrupted_journey_passed": false,
+    "browser_qualification": {
+      "status": "partial_checks_passed_with_browser_network_limit",
+      "receipt": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+      "feature_checks_passed": false,
+      "partial_UI_checks_verified": true,
+      "uninterrupted_journey_passed": false,
+      "return_and_mobile_recheck_completed": false,
+      "focused_completion_passed": false,
+      "transport_cause_resolved": false,
+      "original_failure_preserved": true,
+      "both_failures_preserved": true
+    },
+    "final_report": {
+      "path": "docs/evaluations/final_prod_ui_20261116/final_report.json",
+      "bytes": 6519,
+      "sha256": "271de55dc6d4bfff858184932581e6241f23489d1d74bfe7829e4e4e7a6dc50a"
+    },
+    "team_review_guide": {
+      "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
+      "bytes": 2614,
+      "sha256": "51d98210d0d64f8ff53c5e4350171c53e777ce9910914fc35c1ae05e694294cc"
+    },
+    "final_UI_validation": {
+      "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+      "bytes": 6062,
+      "sha256": "6c84c8d535642c3601a18726825f6bcaddf0d36f8a08da65772a1340b74b1844"
+    },
+    "browser_observation_scope": "Recorded partial UI assertions and visual states; not an uninterrupted completed journey, unique user-study count or independent intended-user validation.",
+    "remaining_browser_release_checks": [
+      "Exact current-question return and mobile recheck",
+      "Independent intended-user walkthrough"
+    ],
+    "loading_observation_scope": "Preserved09cache observation; not a new final-runtime performance benchmark.",
+    "protected_graph_downloads": {
+      "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
+      "bytes": 4543,
+      "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
+    },
+    "primary_graph_and_comparator_downloads_verified": true,
+    "new_source_artifact_folders_published": [
+      "primary_graph_handoff_20261116",
+      "captured_pharos_comparator_20261116"
+    ],
+    "new_scientific_results_claimed": false
+  },
+  "previous_artifact_audit_before_democratization_delivery": {
+    "path": "docs/evaluations/final_prod_ui_20261116/final_report_artifact_audit.json",
+    "bytes": 11245,
+    "sha256": "e1d6417d6b42098b3a6f38e65ec600adaef5fe201c67c287d325ac7209c843a1"
+  },
+  "democratization_delivery": {
+    "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "scope": "Construction-entry UI and plain-language report. No new science or model evaluation.",
+    "note": "docs/evaluations/DEMOCRATIZATION_DELIVERY_20261116.md",
+    "receipts": {
+      "hosted": {
+        "path": "docs/evaluations/democratization_delivery_20261116/hosted_acceptance.json",
+        "bytes": 3385,
+        "sha256": "4181864a5c85696eead5ea9e001639581aa54c3519fe60d67d56ce417911c1c2"
+      },
+      "bridge": {
+        "path": "docs/evaluations/democratization_delivery_20261116/runtime_bridge.json",
+        "bytes": 1620,
+        "sha256": "dd8b310268a127c8289fd63c9004496fa1904c3119863128fe5ffe2310d261a2"
+      },
+      "browser": {
+        "path": "docs/evaluations/democratization_delivery_20261116/hosted_browser_acceptance.json",
+        "bytes": 1680,
+        "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
+      },
+      "software": {
+        "path": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
+        "bytes": 2976,
+        "sha256": "9e8975a6f441e7b7e32db01905e5f9d35417d16c9581e6d4f2d7f8c242941097"
+      },
+      "report": {
+        "path": "docs/evaluations/democratization_delivery_20261116/final_report.json",
+        "bytes": 7615,
+        "sha256": "fbfce3ba33c4c48c781d44b740eda5296a283b63c2d711a863656d3a61cb3fdc"
+      },
+      "ui": {
+        "path": "docs/evaluations/democratization_delivery_20261116/UI_validation.json",
+        "bytes": 2293,
+        "sha256": "3a60ae1be55199ec4c263f646efaea8fe3ca1868ba684f4779940bce022b4cd6"
+      }
+    },
+    "full_workflow_browser_limits_changed": false,
+    "new_model_calls": 0,
+    "new_scientific_results": false,
+    "report_submitted_by_this_update": false
   }
 }

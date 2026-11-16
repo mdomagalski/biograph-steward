@@ -56,9 +56,11 @@ links directly to both examples. A reviewer does not need to find a server-side
 workspace folder or obtain a local source archive. The
 [final report](../../output/docx/BioGraph_Steward_Final_Report.docx) follows the
 organizer's midpoint form, with separate methods and results supplements.
-Final-report labels describe delivered outputs and limitations. The narrative
+Final-report labels describe delivered outputs, scope and further improvements. The narrative
 foregrounds use by scientists, the agent's actual role, reusable construction,
 CIViC's separate clinical workflow and the methods behind the measured gains.
+The methods supplement cites ProtBoost directly. Scope and validation
+opportunities are consolidated so the report leads with the delivered solution.
 The narrated tour and scientific outcomes retain their recorded provenance.
 
 The [graph handoff](../GOLD_SET_INTERFACE.md#protected-downloads) now supplies

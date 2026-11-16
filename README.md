@@ -55,7 +55,7 @@ sources. The [single user guide](HOW_TO_USE.md) explains the steps and files.
 ## Current app, saved data and new runs
 
 The protected AWS reviewer app runs the recorded source-agent workflow. Its
-[deployment and restart checks](docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json)
+[deployment and restart checks](docs/evaluations/democratization_delivery_20261116/hosted_acceptance.json)
 have passed for the final review interface, including readable loading feedback.
 [Hosted desktop checks](docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
 observed the four agent steps, sources, current assessments, applied qualification
@@ -82,8 +82,8 @@ comparator, now available through the protected downloads described there.
 ## Run locally
 
 The [code-only software ZIP](output/software/BioGraph_Steward_Software.zip)
-has [clean acceptance](docs/evaluations/final_prod_ui_20261116/software_acceptance.json)
-for the final review interface and loading feedback. Its source revision and the separately
+has [clean acceptance](docs/evaluations/democratization_delivery_20261116/software_acceptance.json)
+for the review interface, loading feedback and guided construction entry. Its source revision and the separately
 accepted hosted runtime are recorded in the [release index](docs/releases/20261115/README.md).
 
 The core app needs **Python 3.10+**, with no pip install, GPU or API key:

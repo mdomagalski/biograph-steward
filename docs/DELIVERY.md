@@ -11,7 +11,7 @@ real saved evidence and guides the reviewer through **Start here**, **Question
 The current-source agent has completed its
 [actual fixed comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
 Its protected hosted replay has passed
-[deployment acceptance](evaluations/final_prod_ui_20261116/hosted_acceptance.json),
+[deployment acceptance](evaluations/democratization_delivery_20261116/hosted_acceptance.json),
 including a real service restart, all five recorded model jobs and complete
 Neptune parity without fallback. The local-app tour demonstrates the same
 verified workflow; its filming provenance and the model evaluation remain
@@ -53,12 +53,13 @@ The [dated history](../output/history/20261115_guided_review/README.md)
 preserves the previous guided media and software unchanged.
 
 The [four-page final report](../output/docx/BioGraph_Steward_Final_Report.docx)
-uses the organizer's form layout, with final limitations and delivered outputs
-in place of help requests and a future plan, followed by a two-page
+uses the organizer's form layout, with scope, future improvements and delivered
+outputs in place of help requests and a future plan, followed by a two-page
 methods/results supplement. It explains usability, reuse, CIViC's clinical
-workflow and the methods behind the bounded gains. It is ready for user review;
+workflow and the methods behind the bounded gains, including a formal ProtBoost
+reference. It is ready for user review;
 it has not been submitted. The
-[format and review receipt](evaluations/final_prod_ui_20261116/final_report.json)
+[format and review receipt](evaluations/democratization_delivery_20261116/final_report.json)
 records the preserved layout and intentional final-report label updates.
 
 The accepted final runtime focuses the shared site on the question, graph,
@@ -108,12 +109,12 @@ it for verification. It does not contain or relicense the full dataset.
 The [software ZIP](../output/software/BioGraph_Steward_Software.zip)
 contains the Python core and its upstream notices. Its instructions lead to
 the hosted real-data review and separately explain the optional invented local
-fixture. The [current acceptance summary](evaluations/final_prod_ui_20261116/software_acceptance.json)
+fixture. The [current acceptance summary](evaluations/democratization_delivery_20261116/software_acceptance.json)
 records clean Python construction, actual graph/decision exports, source
 recovery and saved-answer replay after restart. It includes no real source
 snapshots, credentials, reference labels or model weights.
 
-Its recorded acceptance pins tested source `d05f54f` and includes the current-source
+Its recorded acceptance pins tested source `84ef6a0` and includes the current-source
 agent, four-step interface, saved-review guards and byte-bound verification reuse.
 The final review interface retains graph changes, sources and current results
 while keeping development catalogues and database diagnostics in operator views.

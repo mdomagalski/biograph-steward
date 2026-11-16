@@ -1,0 +1,27 @@
+{
+  "format": "biograph-steward.presentation-only-runtime-bridge.v2",
+  "status": "passed",
+  "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "previous_runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+  "changed_runtime_files": [
+    "biograph_steward/construction.js",
+    "biograph_steward/ui.html"
+  ],
+  "scope": "Discoverable existing operator graph construction and clear local-build instructions in saved shared review. Existing scientific and source methods are unchanged.",
+  "exact_backend_bytes_equal": true,
+  "backend_raw_sha256": "0148284b5a828632e0684f300e3780de5ae82b6cd0a3c13f6f6d953e62050c12",
+  "source_agent_controller_sha256": "8b21470d3258c45effba6a97220502cdafb11045a60beccaec51fceb7c6558a3",
+  "source_agent_job_verifier_sha256": "e94a4e229d78c0528672ae582671256b943c8b3143fd260d7d18d06350230c13",
+  "candidate_build_raw_sha256": "50b379450192bb8ced0cda45c4f7fe1a132a5202e437ac93b25176a240bb6ab9",
+  "source_snapshot_or_decision_changes": false,
+  "access_policy_changes": false,
+  "new_model_calls": 0,
+  "new_scientific_comparisons": false,
+  "actual_hosted_restart_acceptance_is_separate": "docs/evaluations/democratization_delivery_20261116/hosted_acceptance.json",
+  "prior_full_workflow_browser_qualification_unchanged": true,
+  "prior_scientific_results_reused_without_relabelling_as_new_runs": {
+    "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "hosted_receipt": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+    "partial_browser_receipt": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json"
+  }
+}
