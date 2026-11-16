@@ -163,9 +163,10 @@ function renderQuestionGraph(){
   for(const citation of answer.citations.filter(c=>required.has(c.assertion_id))){
     const a=pos[citation.subject],b=pos[citation.object];if(!a||!b)continue;
     const from=compact?boundary(a,b,citation.subject):a,to=compact?boundary(b,a,citation.object):b;
-    const accepted=citation.review_state==='accepted',line=svgEl('line',{x1:from.x,y1:from.y,x2:to.x,y2:to.y,stroke:accepted?'#147c83':'#b58236','stroke-width':compact?2:3,'stroke-dasharray':accepted?'':'7 4',tabindex:0,role:'button','aria-label':'Inspect evidence '+citation.id});
+    const accepted=citation.review_state==='accepted',coordinates={x1:from.x,y1:from.y,x2:to.x,y2:to.y},line=svgEl('line',{...coordinates,stroke:accepted?'#147c83':'#b58236','stroke-width':compact?2:3,'stroke-dasharray':accepted?'':'7 4','pointer-events':'none','aria-hidden':'true'});
     if(compact)line.setAttribute('marker-end','url(#sourceModelArrow'+(accepted?'accepted':'candidate')+')');
-    const title=svgEl('title');title.textContent='['+citation.id+'] '+relationLabel(citation.predicate)+' | '+citation.review_state;line.append(title);line.style.cursor='pointer';line.onclick=()=>inspectQuestionCitation(citation.id);line.onkeydown=e=>{if(e.key==='Enter')inspectQuestionCitation(citation.id);};svg.append(line);
+    const hit=svgEl('line',{...coordinates,stroke:'transparent','stroke-width':14,'stroke-dasharray':'none','stroke-linecap':'round','vector-effect':'non-scaling-stroke','pointer-events':'stroke',tabindex:0,role:'button','aria-label':'Inspect evidence '+citation.id});
+    const title=svgEl('title');title.textContent='['+citation.id+'] '+relationLabel(citation.predicate)+' | '+citation.review_state;hit.append(title);hit.style.cursor='pointer';hit.onclick=()=>inspectQuestionCitation(citation.id);hit.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();inspectQuestionCitation(citation.id);}};svg.append(line,hit);
   }
   for(const [id,p] of Object.entries(pos)){
     const n=nodes.get(id);if(!n)continue;const label=n.sym||n.name||id,g=svgEl('g'),size=halfSize(id),pathway=n.category==='biolink:Pathway';
