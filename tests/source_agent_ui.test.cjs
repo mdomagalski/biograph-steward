@@ -134,3 +134,34 @@ test('archived citation source inspection exposes gene-level qualification outsi
  record.result.inspections[0].passport.sections=[];h.context.renderSourceAgentJob(record);
  const visible=text(h.$('sourceAgentOutput'));assert.match(visible,/Archived model WP23_r105541 · compatible gene-level reference/);assert.match(visible,/does not establish an exact historical protein form/);assert.match(visible,/Shared model context does not establish direct protein binding/);assert.deepEqual(h.posts,[]);
 });
+
+test('record listing remains visibly busy while pending, then settles on success or error',async()=>{
+ for(const fail of [false,true]){
+  const h=harness({saved:true}),waiting={};waiting.promise=new Promise(resolve=>{waiting.resolve=resolve;});
+  h.context.fetch=async route=>{h.calls.push(route);if(route.includes('/status?'))return {ok:true,json:async()=>({saved_data_only:true,enabled:false,catalogue:{tools:[]}})};await waiting.promise;if(fail)throw new Error('Recorded sources unavailable.');return {ok:true,json:async()=>({jobs:[]})};};
+  const done=h.context.setupSourceAgent();await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(h.$('sourceAgentStatus').attributes['data-loading'],'true');assert.equal(h.$('sourceAgentOutput').attributes['aria-busy'],'true');
+  assert.match(h.$('sourceAgentStatus').textContent,/Checking recorded agent sources/);assert.equal(h.$('sourceAgentJobs').disabled,true);
+  waiting.resolve();await done;
+  assert.equal(h.$('sourceAgentStatus').attributes['data-loading'],'false');assert.equal(h.$('sourceAgentOutput').attributes['aria-busy'],'false');
+  if(fail){assert.match(h.$('sourceAgentStatus').className,/error/);assert.match(h.$('sourceAgentStatus').textContent,/unavailable/);}
+  assert.deepEqual(h.posts,[]);
+ }
+});
+
+test('failed recorded replay clears loading while preserving its source-check error',async()=>{
+ const h=harness({saved:true}),waiting={};waiting.promise=new Promise(resolve=>{waiting.resolve=resolve;});
+ h.$('sourceAgentJobs').value='source_agent_invented';h.context.fetch=async()=>{await waiting.promise;throw new Error('Recorded source check rejected.');};
+ const done=h.context.replaySourceAgent();assert.equal(h.$('sourceAgentStatus').attributes['data-loading'],'true');
+ waiting.resolve();await done;
+ assert.equal(h.$('sourceAgentStatus').attributes['data-loading'],'false');assert.equal(h.$('sourceAgentOutput').attributes['aria-busy'],'false');
+ assert.match(h.$('sourceAgentStatus').className,/error/);assert.match(h.$('sourceAgentStatus').textContent,/source check rejected/);assert.deepEqual(h.posts,[]);
+});
+
+test('a replaced source selection cannot leave the old setup spinner active',async()=>{
+ const h=harness({saved:true}),waiting={};waiting.promise=new Promise(resolve=>{waiting.resolve=resolve;});
+ h.context.fetch=async()=>{await waiting.promise;return {ok:true,json:async()=>({saved_data_only:true,catalogue:{tools:[]}})};};
+ const old=h.context.setupSourceAgent();assert.equal(h.$('sourceAgentStatus').attributes['data-loading'],'true');
+ h.context.runId=null;await h.context.setupSourceAgent();waiting.resolve();await old;
+ assert.equal(h.$('sourceAgentStatus').attributes['data-loading'],'false');assert.match(h.$('sourceAgentStatus').textContent,/Open a saved source workspace/);
+});

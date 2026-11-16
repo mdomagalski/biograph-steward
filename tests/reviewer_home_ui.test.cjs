@@ -172,3 +172,13 @@ test('shared bare historical controls return to the actual current entry instead
   const h=harness('?pruning=historical_preview',true);h.location.hash='#refreshPanel';h.configure({reviewer_entry:entry,runs:[]});
   assert.deepEqual(h.calls.replace,['/?run=real_current&question=cited_current&view=data']);
 });
+
+test('workspace catalogue loading is visible while pending and settles after failure',async()=>{
+ const h=harness('?run=real_current',true);let finish;const waiting=new Promise(resolve=>{finish=resolve;});
+ h.context.fetch=async()=>{await waiting;throw new Error('Saved catalogue unavailable.');};
+ const done=h.context.loadSavedWork();
+ assert.equal(h.$('reviewerHomeStatus').attributes['data-loading'],'true');assert.equal(h.$('reloadSavedWork').disabled,true);
+ finish();await done;
+ assert.equal(h.$('reviewerHomeStatus').attributes['data-loading'],'false');assert.equal(h.$('reloadSavedWork').disabled,false);
+ assert.match(h.$('reviewerHomeStatus').textContent,/Saved catalogue unavailable/);assert.match(h.$('reviewerHomeStatus').className,/error/);
+});

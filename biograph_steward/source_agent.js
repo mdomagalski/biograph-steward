@@ -21,21 +21,22 @@ function sourceAgentSteps(){
 }
 function sourceAgentToolCount(trace){return Array.isArray(trace?.tool_calls)?trace.tool_calls.length:(trace?.tool_calls||0);}
 function sourceAgentMessage(text,error=false){$('sourceAgentStatus').textContent=text;$('sourceAgentStatus').className=error?'notice error':'small';}
-function sourceAgentSetBusy(value){sourceAgentBusy=value;$('sourceAgentRun').disabled=value||!sourceAgentConfig?.enabled;$('sourceAgentReplay').disabled=value||!$('sourceAgentJobs').value;}
+function sourceAgentSetBusy(value){sourceAgentBusy=value;$('sourceAgentStatus').setAttribute('data-loading',String(value));$('sourceAgentOutput').setAttribute('aria-busy',String(value));$('sourceAgentJobs').disabled=value;$('sourceAgentRun').disabled=value||!sourceAgentConfig?.enabled;$('sourceAgentReplay').disabled=value||!$('sourceAgentJobs').value;}
 async function sourceAgentRead(path){const response=await fetch(path),value=await response.json();if(!response.ok)throw new Error(value.error||'Agent record could not be verified.');return value;}
 async function setupSourceAgent(){
   const epoch=++sourceAgentEpoch,source=runId;sourceAgentConfig=null;sourceAgentJob=null;
   $('sourceAgentOutput').replaceChildren();$('sourceAgentRun').disabled=true;$('sourceAgentReplay').disabled=true;
   $('sourceAgentLive').hidden=savedReviewOnly();$('sourceAgentReplayMode').hidden=!savedReviewOnly();
-  $('sourceAgentConfig').textContent='';$('sourceAgentJobs').replaceChildren(el('option','No recorded runs selected'));
+  $('sourceAgentConfig').textContent='';$('sourceAgentJobs').replaceChildren(el('option','No recorded runs selected'));$('sourceAgentJobs').value='';sourceAgentSetBusy(false);
   if(!source){sourceAgentMessage('Open a saved source workspace to use the agent workflow. The guided evidence reader remains available below.');return;}
-  sourceAgentMessage('Checking local tool coverage and recorded agent runs. No model request is made.');
+  sourceAgentSetBusy(true);sourceAgentMessage('Checking local tool coverage and recorded agent runs. No model request is made.');
   try{
     const config=await sourceAgentRead('/api/source-agent/status?run_id='+encodeURIComponent(source));
     if(epoch!==sourceAgentEpoch||source!==runId)return;sourceAgentConfig=config;
     const available=(config.catalogue?.tools||[]).filter(tool=>tool.available!==false).map(tool=>sourceAgentNames[tool.name||tool.id]||tool.name||tool.id).filter(Boolean);
     $('sourceAgentTools').textContent=available.length?'Tools in this workspace: '+available.join(' · '):'No supported current-source tool is available in this workspace.';
     $('sourceAgentConfig').textContent=config.saved_data_only?'':config.configured?'Configured model: '+config.model+' ('+config.provider+'). Connectivity has not been checked; a request may still fail.':(config.reason||'No model has been configured.');
+    sourceAgentMessage('Checking recorded agent sources. No model request is made.');
     const listing=await sourceAgentRead('/api/source-agent/jobs?run_id='+encodeURIComponent(source));
     if(epoch!==sourceAgentEpoch||source!==runId)return;
     const jobs=listing.jobs||[];$('sourceAgentJobs').replaceChildren(el('option','Choose a recorded agent run'));$('sourceAgentJobs').options[0].value='';
@@ -48,7 +49,8 @@ async function setupSourceAgent(){
     if(requestedJob){$('sourceAgentJobs').value=requested;await replaySourceAgent();}
     else if(requested)sourceAgentMessage('The linked record is not a verified actual-model run for this workspace. Choose a matching recorded run below; no other workspace or model was opened.',true);
     else sourceAgentMessage(config.saved_data_only?'Choose a verified recorded run to follow its question, plan, sources and proposed decisions. No agent is running now.':config.enabled?'Ask a source-evidence question. The model will plan one query, select sources to inspect, then propose review decisions.':'Live agent unavailable. Use a recorded run or the guided evidence reader below.');
-  }catch(error){if(epoch===sourceAgentEpoch)sourceAgentMessage(error.message,true);}
+  }catch(error){if(epoch===sourceAgentEpoch&&source===runId)sourceAgentMessage(error.message,true);}
+  finally{if(epoch===sourceAgentEpoch&&source===runId)sourceAgentSetBusy(false);}
 }
 function renderSourceAgentGraph(focus,anchor){
   const box=el('div',undefined,'graph-box'),nodes=focus?.nodes||[],edges=focus?.edges||[];

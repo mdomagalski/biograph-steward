@@ -72,7 +72,7 @@ $('reviewerAssess').onclick=()=>{showWorkspaceView('compare');$('appliedQualific
 $('reviewerOpenOffline').onclick=()=>{if(savedReviewOnly())return;$('controls').open=true;document.querySelector('input[name="mode"][value="demo"]').checked=true;switchMode();$('controls').scrollIntoView({block:'start'});};
 
 // Existing saved-run and saved-question routes remain responsible for validation.
-let savedWork = [];
+let savedWork = [],savedWorkRequest=0;
 function reviewWorkspaceChoices(runs){
   if(!savedReviewOnly())return runs;
   const urls=[reviewerEntry?.example_url,...(reviewerEntry?.guided_examples||[]).map(row=>row.url)];
@@ -95,9 +95,13 @@ function chooseSavedRun(){
   select.disabled=!run;$('openSavedWork').disabled=!run;
 }
 async function loadSavedWork(){
-  $('savedWorkStatus').textContent='Loading saved graphs and questions…';
+  const request=++savedWorkRequest;
+  $('savedWorkStatus').className='small';$('savedWorkStatus').textContent='Loading saved graphs and questions…';
+  for(const id of ['savedWorkStatus','reviewerHomeStatus'])$(id).setAttribute('data-loading','true');
+  $('reloadSavedWork').disabled=true;
   try{
     const response=await fetch('/api/workspaces'),data=await response.json();
+    if(request!==savedWorkRequest)return;
     if(!response.ok)throw new Error(data.error||'Could not load saved work.');
     configureReviewerEntry(data);savedWork=reviewWorkspaceChoices(data.runs);const selected=$('savedRun').value||runId||new URLSearchParams(location.search).get('run');
     $('savedRun').replaceChildren();
@@ -108,7 +112,8 @@ async function loadSavedWork(){
     $('savedExample').classList.toggle('hidden',!current);
     if(current)$('savedExample').href=current.pathname+current.search;
     $('savedWorkStatus').textContent=savedReviewOnly()?savedWork.length+' saved workspaces for this review. Opening one checks its sources and answer basis.':savedWork.length+' saved graphs. '+data.note+(data.withheld?' '+data.withheld+' incomplete or unsupported entries omitted.':'');
-  }catch(error){$('savedWorkStatus').textContent=error.message;if($('reviewerHomeStatus'))$('reviewerHomeStatus').textContent='Saved evidence could not be opened: '+error.message;}
+  }catch(error){if(request===savedWorkRequest){$('savedWorkStatus').textContent=error.message;$('savedWorkStatus').className='notice error';if($('reviewerHomeStatus')){$('reviewerHomeStatus').textContent='Saved evidence could not be opened: '+error.message;$('reviewerHomeStatus').className='notice error';}}}
+  finally{if(request===savedWorkRequest){for(const id of ['savedWorkStatus','reviewerHomeStatus'])$(id).setAttribute('data-loading','false');$('reloadSavedWork').disabled=false;}}
 }
 function updateWorkNavigation(){
   const mode=$('questionWorkflow').value, therapy=mode==='therapy',answer=mode==='assay'?assayAnswer:therapy?civicAnswer:questionAnswer;
