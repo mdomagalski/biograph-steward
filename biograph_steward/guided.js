@@ -76,7 +76,7 @@ function bindQuestionAnswer(answer,id){
   $('questionRelations').value=answer.template==='native_string_physical.v1'?'native_physical':answer.template==='qualified_pathway_source_context.v1'?'qualified_pathway_sources':answer.plan.relations.length===2?'both':answer.plan.relations[0];
   $('questionLimit').value=answer.plan.max_results;$('questionPaths').value=answer.plan.max_paths_per_protein;
   $('questionRanking').value=answer.plan.ranking||'alphabetical';
-  updateQuestionPlan();history.replaceState(null,'','?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id));renderQuestion();
+  updateQuestionPlan();history.replaceState(null,'','?run='+encodeURIComponent(runId)+'&question='+encodeURIComponent(id));renderQuestion();if(typeof updateReviewerHome==='function')updateReviewerHome();
 }
 async function runQuestion(){
   if(questionBusy||!runId)return;
@@ -177,7 +177,7 @@ function inspectQuestionCitation(id){
   for(const note of c.normalization_notes)box.append(el('p',note,'notice'));
   const sourceIds=c.source_assertion_ids,originalId=sourceIds?.[0]||c.assertion_id;
   if(sourceIds)box.append(el('p',sourceIds.length+(sourceIds.length===1?' original assertion is grouped':' original assertions are grouped')+' in this reference. Open the first below; all identifiers and records are included in the JSON and evidence ZIP.','small'));
-  const full=el('button',sourceIds?'Open first original assertion':'Open full assertion and review','secondary');full.onclick=()=>{
+  const full=el('button',sourceIds?'Inspect the first original source claim':'Inspect this source claim','secondary');full.onclick=()=>{
     $('inspectionDetails').open=true;$('evidenceView').value=c.review_state==='accepted'?'accepted':'inspection';$('assertionFamily').value=c.kind;$('assertionProtein').value=c.subject;tablePage=0;activeTab='assertions';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab==='assertions'));render();inspectAssertion(originalId);const back=el('button','Back to guided question','secondary');back.onclick=()=>{const target=$('guidedQuestion');if(typeof revealWorkspaceTarget==='function')revealWorkspaceTarget(target);target.scrollIntoView({block:'start'});};$('inspector').prepend(back);$('inspector').scrollIntoView({block:'start'});
   };box.append(full);
   if(c.historical_source)appendPathwayNativePassport(box,c);

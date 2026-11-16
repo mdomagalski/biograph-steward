@@ -829,10 +829,12 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 try:
                     verify_saved_refresh(folder)
                     _, _, graph = read_run(folder)
-                    self.json_reply({"run_id": match.group(1), "graph": graph})
+                    from .workspaces import qualification_summary
+                    self.json_reply({"run_id": match.group(1), "graph": graph,
+                                     "qualification_summary": qualification_summary(folder, graph)})
                 except RefreshRuntimeMismatch as exc:
                     self.refresh_failure(folder, exc)
-                except (ValueError, TypeError, OSError) as exc:
+                except (ValueError, TypeError, KeyError, OSError) as exc:
                     self.json_reply({"error": str(exc)}, 400)
                 return
             match = re.fullmatch(r"/api/question/([A-Za-z0-9_-]{1,80})", path)

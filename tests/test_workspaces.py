@@ -10,7 +10,7 @@ from unittest.mock import patch
 from biograph_steward.client import digest
 from biograph_steward.graph import save_run
 from biograph_steward.questions import answer_question, save_answer
-from biograph_steward.workspaces import saved_workspaces
+from biograph_steward.workspaces import saved_workspaces, reviewer_entry
 from test_questions import fixture
 from test_civic import fixture as civic_fixture
 import test_native_pathway_question as native_fixture
@@ -59,6 +59,44 @@ class SavedWorkTests(unittest.TestCase):
         result = saved_workspaces(self.root)
         self.assertEqual(result['runs'][0]['data_kind'], 'synthetic_demo')
         self.assertIsNone(result['example_url'])
+
+
+class ReviewerEntryTests(unittest.TestCase):
+    """Catalogue routing fixtures only; these records are not biological labels."""
+
+    def run_row(self, name, *, synthetic=False, qualified=False, template='native_string_physical.v1', view='candidates'):
+        url='/?run='+name
+        return {'run_id':name, 'url':url, 'data_kind':'synthetic_demo' if synthetic else 'live_pharos',
+                'qualified_view':qualified, 'questions':[{'question_id':name+'_answer',
+                'template':template, 'view':view, 'url':url+'&question='+name+'_answer'}]}
+
+    def test_root_prefers_real_native_question_and_keeps_qualification_separate(self):
+        native=self.run_row('native')
+        retained=self.run_row('retained',qualified=True,template='qualified_pathway_source_context.v1')
+        rows=[self.run_row('invented',synthetic=True),retained,native]
+        before=deepcopy(rows)
+        result=reviewer_entry(rows,retained['questions'][0]['url'])
+        self.assertEqual(result['example_url'],native['questions'][0]['url'])
+        self.assertEqual(result['data_kind'],'live_pharos')
+        self.assertEqual([e['url'] for e in result['guided_examples']],
+                         [native['questions'][0]['url'],retained['questions'][0]['url']])
+        self.assertEqual(rows,before)
+
+    def test_synthetic_only_install_has_no_real_entry_even_with_example_url(self):
+        invented=self.run_row('invented',synthetic=True)
+        self.assertIsNone(reviewer_entry([invented],invented['questions'][0]['url']))
+
+    def test_explicit_accepted_or_unknown_native_view_does_not_replace_real_fallback(self):
+        retained=self.run_row('retained',qualified=True,template='qualified_pathway_source_context.v1')
+        for view in ['accepted','future']:
+            with self.subTest(view=view):
+                result=reviewer_entry([self.run_row('native',view=view),retained],retained['questions'][0]['url'])
+                self.assertEqual(result['example_url'],retained['questions'][0]['url'])
+                self.assertEqual(len(result['guided_examples']),1)
+
+    def test_no_eligible_entry_does_not_invent_one(self):
+        self.assertIsNone(reviewer_entry([]))
+        self.assertIsNone(reviewer_entry([self.run_row('real',template='other')], '/?run=missing'))
 
 
 class QualifiedExampleSelectionTests(unittest.TestCase):

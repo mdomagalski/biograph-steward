@@ -76,7 +76,8 @@ async function loadPruningAssessments(){
     const selected=[previous,requested,result.previews[0].id].find(id=>result.previews.some(p=>p.id===id));
     select.value=selected;select.disabled=false;
     const reopenPair=!previous&&requested===selected?url.searchParams.get('pruning_pair'):null;
-    await loadPruningAssessment(selected,reopenPair);
+    if(previous||requested||$('comparisonPruningControls')?.open)await loadPruningAssessment(selected,reopenPair);
+    else pruningStatus('Saved development controls are available. Open this section to inspect their trade-offs.');
   }catch(error){if(request===pruningCatalogRequest)pruningStatus(error.message,true);}
   finally{if(request===pruningCatalogRequest)$('pruningReload').disabled=false;}
 }
@@ -236,6 +237,8 @@ function initializePruningPreview(){
     const id=pruningAssessmentId,request=pruningListRequest+1,result=await loadPruningPairs();
     if(result?.rows?.length===1&&id===pruningAssessmentId&&request===pruningListRequest)await inspectPruningPair(result.rows[0].pair_id);
   };
+  const holder=$('comparisonPruningControls');
+  if(holder){holder.addEventListener('toggle',()=>{if(holder.open&&!pruningSummary&&!$('pruningAssessment').disabled&&$('pruningAssessment').value)loadPruningAssessment($('pruningAssessment').value);});if(new URL(location.href).searchParams.has('pruning')){holder.open=true;if(typeof showWorkspaceView==='function')showWorkspaceView('compare',{persist:false});}}
   if(['http:','https:'].includes(location.protocol))loadPruningAssessments();
   else{pruningStatus('Open this report in the running workspace to browse verified saved pruning assessments.');$('pruningReload').disabled=true;}
 }

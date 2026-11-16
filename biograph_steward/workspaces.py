@@ -1,10 +1,93 @@
 """Discover saved work without rebuilding graphs, fetching sources or running models."""
 import json
+import hashlib
+from collections import Counter
 from pathlib import Path
 import re
 
 from .questions import verify_answer
 from .client import digest
+
+
+def qualification_summary(folder: Path, graph: dict) -> dict | None:
+    """Read display reasons bound to an already-verified retained graph.
+
+    Keep this outside the scientific graph/answer basis. Reuse the existing
+    Gold report seal and ledger hash rather than introduce new policy labels.
+    """
+    qualified = graph.get('qualified_view')
+    if not qualified:
+        return None
+    if not isinstance(qualified, dict):
+        raise ValueError('Qualification display: invalid retained graph metadata.')
+    package = Path(folder) / 'source_retained_package'
+    report_path, ledger_path = package / 'report.json', package / 'edge_dispositions.jsonl'
+    for path in (package, report_path, ledger_path):
+        if path.is_symlink():
+            raise ValueError('Qualification display: linked source is not allowed.')
+    if report_path.stat().st_size > 20_000_000 or ledger_path.stat().st_size > 120_000_000:
+        return {'available': False, 'interpretation': 'The full source decision ledger is available in the workspace export.'}
+    report = json.loads(report_path.read_bytes())
+    if (not isinstance(report, dict) or not isinstance(report.get('files'), dict)
+            or not isinstance(report.get('counts'), dict)):
+        raise ValueError('Qualification display: invalid report metadata.')
+    pin = qualified['disposition_report_content_sha256']
+    if report.get('content_sha256') != pin or digest({k: v for k, v in report.items() if k != 'content_sha256'}) != pin:
+        raise ValueError('Qualification display: report does not match the loaded graph.')
+    raw = ledger_path.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != report['files']['edge_dispositions.jsonl']:
+        raise ValueError('Qualification display: decision ledger bytes changed.')
+    rows = [json.loads(line) for line in raw.splitlines() if line.strip()]
+    counts = Counter(row['decision'] for row in rows)
+    if (set(counts) - {'keep', 'prune', 'abstain'} or
+            any(counts[key] != report['counts'].get(key, 0) for key in ('keep', 'prune', 'abstain')) or
+            len(rows) != qualified['baseline_evidence_edges'] or
+            len(rows) - counts['prune'] != qualified['retained_evidence_edges']):
+        raise ValueError('Qualification display: counts differ from the verified retained graph.')
+    reasons = Counter(row['reason'] for row in rows if row['decision'] == 'prune')
+    return {'available': True, 'baseline_records': len(rows),
+            'retained_records': qualified['retained_evidence_edges'], 'excluded_records': counts['prune'],
+            'abstained_records': counts['abstain'],
+            'reason_groups': [{'decision': 'prune', 'reason': reason, 'records': count}
+                              for reason, count in sorted(reasons.items())],
+            'interpretation': 'These are the recorded source-qualification reasons. Exclusion does not itself establish false biology. Undecided records remain retained.',
+            'disposition_report_content_sha256': pin,
+            'decision_ledger_sha256': report['files']['edge_dispositions.jsonl']}
+
+
+def reviewer_entry(runs: list[dict], example_url: str | None = None) -> dict | None:
+    """Describe a real saved entry point, never promote the offline fixture.
+
+    This is a catalogue preference, not source or biological validation. The
+    existing run/question routes still verify sources and sealed answer basis.
+    """
+    real = [run for run in runs if run['data_kind'] == 'live_pharos']
+    native = next(((run, question) for run in real for question in run['questions']
+                   if question['template'] == 'native_string_physical.v1'
+                   and question['view'] == 'candidates'), None)
+    if native:
+        primary, question = native
+        example_url = question['url']
+    else:
+        primary = next((run for run in real if example_url and
+                        (example_url == run['url'] or
+                         any(q['url'] == example_url for q in run['questions']))), None)
+    if primary is None:
+        return None
+    examples = [{'label': 'Explore the cited evidence', 'url': example_url,
+                 'description': 'Open a real saved question, its graph and the records behind its answer.'}]
+    qualified = next(((run, question) for run in real if run.get('qualified_view')
+                      for question in run['questions']
+                      if question['template'] == 'qualified_pathway_source_context.v1'
+                      and question['view'] == 'candidates'), None)
+    if qualified and qualified[1]['url'] != example_url:
+        examples.append({'label': 'Review applied graph qualifications', 'url': qualified[1]['url'],
+                         'description': 'Inspect the retained Pharos graph. Its export preserves exclusions, decisions and the original input.'})
+    return {'example_url': example_url, 'display_title': 'Explore real Pharos evidence',
+            'data_kind': primary['data_kind'], 'guided_examples': examples,
+            'assessment_id': None,
+            'note': 'Real saved source data. Opening a question verifies its source basis. '
+                    'The shared reviewer site uses saved data without model calls or new retrieval.'}
 
 
 def saved_workspaces(root: Path) -> dict:
@@ -89,6 +172,9 @@ def saved_workspaces(root: Path) -> dict:
         if example:
             question = next((q for q in example['questions'] if q['view'] == 'candidates'), None)
             example_url = question['url'] if question else example['url']
-    return {'runs': runs, 'example_url': example_url, 'withheld': withheld,
+    entry = reviewer_entry(runs, example_url)
+    if entry:
+        example_url = entry['example_url']
+    return {'runs': runs, 'example_url': example_url, 'reviewer_entry': entry, 'withheld': withheld,
             'note': 'Saved-run metadata only. Opening a run checks its sources and answer basis. '
                     'Historical answers may require their recorded implementation.'}

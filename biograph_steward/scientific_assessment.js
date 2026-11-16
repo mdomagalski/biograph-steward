@@ -282,10 +282,11 @@
     if(typeof container==='string')container=document.querySelector(container);
     if(!container)throw new Error('Scientific assessment container is unavailable.');
     container.replaceChildren();add(container,'h3',summary.title);add(container,'p',summary.scope,'small');
+    if(summary.public_reference||summary.opencell_localization)add(container,'p','Label recovery asks whether the graph retrieves known protein locations. It does not estimate the fraction of every graph edge that is correct.','small');
     if(summary.public_reference)renderPublicReference(container,summary.public_reference,options);
     if(summary.opencell_localization)renderOpenCell(container,summary.opencell_localization,options);
-    if(summary.function_recovery)renderFunctionRecovery(container,summary.function_recovery,options);
-    if(summary.agent_reference_agreement)renderAgentReference(container,summary.agent_reference_agreement,options);
+    if(summary.INMC)add(container,'p','The matched graph-learning comparisons did not establish a consistent prediction advantage.','notice');
+    if(summary.function_recovery||summary.agent_reference_agreement){const research=add(container,'details');add(research,'summary','Prediction and agent comparisons · research');if(summary.function_recovery)renderFunctionRecovery(research,summary.function_recovery,options);if(summary.agent_reference_agreement)renderAgentReference(research,summary.agent_reference_agreement,options);}
     const legacy=add(container,'details');add(legacy,'summary','99-target source workspace and earlier component assessments');
     let shown=false;
     legacy.ontoggle=()=>{if(legacy.open&&!shown){const body=add(legacy,'div');renderSnapshot(body,{...summary,title:'99-target source workspace',scope:summary.workspace_scope},options);shown=true;}};
@@ -309,7 +310,7 @@ async function initializeScientificAssessments(){
     select.replaceChildren();
     for(const row of rows){if(!/^[A-Za-z0-9_-]{1,80}$/.test(row.id))throw new Error('Invalid assessment identifier.');const option=document.createElement('option');option.value=row.id;option.textContent=row.created_at+' · '+row.id;select.append(option);}
     select.disabled=!rows.length;
-    function show(){const row=rows.find(item=>item.id===select.value);if(!row)return;ScientificAssessment.render(body,row.summary,{publicationId:row.id});status.textContent='Verified aggregate receipts for a fixed source snapshot. Complete source replay remains in the workspace package.';}
+    function show(){const row=rows.find(item=>item.id===select.value);if(!row)return;ScientificAssessment.render(body,row.summary,{publicationId:row.id});const current=document.getElementById('scientificAssessmentCurrent');if(current)current.textContent='Current saved assessment. Other versions remain available in the collapsed history menu.';status.textContent='Verified aggregate results for the stated cohorts. Viewing results changes no graph or review decision.';}
     select.onchange=show;
     if(rows.length)show();else{body.replaceChildren();status.textContent='No verified scientific assessment is published in this workspace.';}
   }catch(error){if(epoch===scientificAssessmentRequest){body.replaceChildren();status.textContent=error.message;}}

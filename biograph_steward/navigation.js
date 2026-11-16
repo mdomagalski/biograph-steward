@@ -21,18 +21,23 @@ function showWorkspaceView(name,{focus=false,persist=true,scroll=false}={}){
 }
 function revealWorkspaceTarget(target){
   if(!target)return;
+  let ancestor=target.closest('details');while(ancestor){ancestor.open=true;ancestor=ancestor.parentElement?.closest('details');}
   const panel=target.closest('[data-workspace-panel]');
   if(panel)showWorkspaceView(panel.dataset.workspacePanel);
 }
 function initializeWorkspaceNavigation(){
   const move=(id,view)=>{const item=$(id);if(item)$('workspace'+workspaceSuffix[view]).append(item);};
   for(const key of workspaceNames)$('workspace'+workspaceSuffix[key]).dataset.workspacePanel=key;
-  for(const id of ['savedWorkPanel','controls','constructionPublication'])move(id,'data');
+  for(const id of ['savedWorkPanel','constructionPublication'])$('otherSavedExamples').append($(id));
+  move('controls','data');
+  const scopeRow=$('diseaseTitle')?.closest('.row');if(scopeRow)$('workspaceProvenance').append(scopeRow);
+  if($('stats'))$('workspaceProvenance').append($('stats'));
   for(const id of ['answerNavigation','workspaceQuestionChoice','plannerPanel','guidedQuestion','civicQuestion'])move(id,'ask');
   // Put broad exploration after the existing focused question flow.
-  move('pathExplorer','ask');
+  const advanced=el('details',undefined,'card');advanced.id='advancedPathExploration';advanced.append(el('summary','Explore a different path · advanced'));advanced.append($('pathExplorer'));$('workspaceAsk').append(advanced);
   for(const id of ['assayPanel','inspectionDetails'])move(id,'evidence');
-  for(const id of ['benchmarkPanel','refreshPanel'])move(id,'compare');
+  for(const id of ['functionContextPanel','biologicalComparisonPanel','supportComparatorPanel','benchmarkPanel','refreshPanel']){const item=$(id);if(item)$('comparisonResearchHistory').append(item);}
+  $('comparisonPruningControls').append($('pruningPreviewPanel'));
   move('submissionPanel','export');
   for(const id of ['downloadJson','downloadZip'])$('workspaceDownloads').append($(id));
   $('workspaceContext').append($('results'));
@@ -60,6 +65,7 @@ function initializeWorkspaceNavigation(){
   if(location.hash)followHash();
 }
 function setupWorkspace(){
+  if(typeof reviewerQualificationSummary!=='undefined')reviewerQualificationSummary=null;
   inspectionRequest++;pathRequest++;
   for(const key of ['ask','evidence','export'])$('workspaceTab'+workspaceSuffix[key]).disabled=false;
   $('sourceGuideOutput').replaceChildren();$('pathExploreResults').replaceChildren();
@@ -78,6 +84,7 @@ function setupWorkspace(){
     workspaceLoaded=true;
   }
   if(location.hash)revealWorkspaceTarget(workspaceHashTarget());
+  if(typeof updateReviewerHome==='function')updateReviewerHome();
 }
 function claimLabel(a){return nodeLabel(a.subject)+' → '+relationLabel(a.predicate)+' → '+nodeLabel(a.object)+' ['+a.lifecycle_state+'] · '+a.id;}
 function populateSourceGuide(){
