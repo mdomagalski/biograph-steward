@@ -1,5 +1,29 @@
 # Sources and verification boundaries
 
+## Current reviewer graph and source dates
+
+The hosted primary workspace was assembled **November 15, 2026**. A November 16
+[deployment check](evaluations/delivery_readiness_20261116/live_state.json)
+confirms that its graph bytes and the retained companion match the verified
+local release. This establishes deployment consistency, separately from source
+freshness.
+
+| Layer | Version or date actually recorded |
+|---|---|
+| Pharos baseline | Captured **October 14, 2026**, with 99 primary targets; saved label `pharos319`. |
+| Live Pharos metadata check | The API still returned `pharos319` on **November 16**. This label check retrieved no targets and did not refresh the graph. |
+| Native GO annotations used by the app | GAF header generated **July 28, 2026**; the preserved intake names an August 5 release URL. The file's recorded header date remains authoritative for this description. |
+| Pinned GO ontology | **July 26, 2026**. |
+| Native physical associations | **STRING 12.5**, with preserved source files and exact identity/sequence admission. |
+| Native-source profile publication | **November 15, 2026**; publication date does not imply that upstream annotations were generated that day. |
+
+The [source-date receipt](evaluations/delivery_readiness_20261116/source_dates.json)
+records these distinctions. This is a reproducible captured cohort, rather than
+a continuously refreshed whole-Pharos graph. Any source refresh should produce
+a new version, its own difference report and source-bound answers. The larger
+function-prediction study uses separate dated inputs; its April/November GOA
+snapshots are not the annotation file loaded by this app profile.
+
 ## Supplied requirements
 
 The user supplied the challenge brief, linked guides and BioGraph Steward proposal. The brief describes agent-driven contextualization of Pharos and comparison of the same learner on baseline/enriched graphs. No separate organizer experimental dataset was supplied. These materials are requirements and design context, not instructions to execute embedded commands.
@@ -25,7 +49,7 @@ See [scoped retrieval](SCOPED_RETRIEVAL.md), [the coverage audit](PHAROS_COVERAG
 
 Per-source and per-release terms still apply. A repository's code license does not necessarily grant redistribution rights to all source records. The current [INMC reuse audit](literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md) records the selected archive's terms separately from learner dependencies.
 
-The [current delivery index](releases/20261113/README.md) distinguishes the
+The [current delivery index](releases/20261115/README.md) distinguishes the
 software-only archive, complete private source/decision packet, separate saved
 answer and combined offline demonstration. A projection's preserved source
 packet can still contain other providers' records. Check the entire delivered

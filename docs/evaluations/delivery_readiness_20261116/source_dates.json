@@ -1,0 +1,33 @@
+{
+  "format": "biograph-steward.delivery-source-dates.v1",
+  "checked_at_UTC": "2026-11-16T17:10:45.542407+00:00",
+  "primary_workspace": "native_evidence_workspace_20261115",
+  "assembled_at_UTC": "2026-11-15T19:35:38.510423+00:00",
+  "captured_Pharos_snapshot_at_UTC": "2026-10-14T20:36:51.667312+00:00",
+  "database_label_in_saved_manifest": "pharos319",
+  "live_Pharos_API_metadata_check": {
+    "checked_at_UTC": "2026-11-16T17:00:46.151188+00:00",
+    "purpose": "Source version metadata only; no target data or graph updates",
+    "query": "query DatabaseVersion { dbVersion }",
+    "endpoint": "https://pharos-api.ncats.io/graphql",
+    "target_records_requested": 0,
+    "existing_graphs_changed": false,
+    "status": "metadata_response_received",
+    "result": {
+      "dbVersion": "pharos319"
+    },
+    "requests": 1
+  },
+  "native_GOA": {
+    "file_header_generated_at": "2026-07-28 19:42",
+    "gaf_version": "2.2",
+    "provided_release_URL": "https://release.geneontology.org/2026-08-05/annotations/gaf/HUMAN-uniprot.gaf.gz",
+    "provided_URL_authentication_performed": false,
+    "GAF_sha256": "a0afba19dfb1f8fa996bc1bdcd61fd0c9bd4cf0d2bf2509d09ac86993c0e70a2",
+    "publication_created_at_UTC": "2026-11-15T16:45:18.618777+00:00"
+  },
+  "GO_ontology_version": "http://purl.obolibrary.org/obo/go/releases/2026-07-26/go.owl",
+  "native_STRING_release": "12.5",
+  "scope": "Fixed 99-target captured Pharos cohort with separately qualified native sources. Assembly/publication date is not the upstream annotation date. Not a latest-whole-Pharos or continuously refreshed graph.",
+  "existing_snapshots_or_evaluations_refreshed": false
+}

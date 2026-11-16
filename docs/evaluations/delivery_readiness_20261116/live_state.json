@@ -1,0 +1,32 @@
+{
+  "format": "biograph-steward.delivery-live-state.v1",
+  "status": "accepted_after_real_restart_with_graph_identity_preserved",
+  "verified_at_UTC": "2026-11-16T18:20:04.823046+00:00",
+  "runtime_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+  "active_image_id": "sha256:5d14116f0910b8226ef652401b9bc050bfaace1cf4e83b666ae6a050ddde72a2",
+  "service": "active",
+  "current_checkout_runtime_code_matches_deployed": true,
+  "hosted_graph_raw_files_match_latest_verified_local_files": true,
+  "graph_files": {
+    "native_evidence_workspace_20261115": {
+      "file_bytes": 153904270,
+      "file_sha256": "eff8c04a0030dcdfc85e72788167626988052cfe5ed5126ae29edd213e532345"
+    },
+    "source_faithful_workspace_20261113": {
+      "file_bytes": 118993722,
+      "file_sha256": "eb0df5a47b8a2523033c8229a49528b2ecd537dd90dc6f865e346d760d68cf0c"
+    }
+  },
+  "graph_contents_retrieved_from_live_upstreams": false,
+  "runtime_or_data_writes_requested": true,
+  "hosted_browser_acceptance_is_separate": true,
+  "pre_cache_read_only_identity_check_at_UTC": "2026-11-16T17:10:45.525402+00:00",
+  "runtime_changes": [
+    "biograph_steward/source_agent_jobs.py"
+  ],
+  "original_graph_files_preserved_by_full_before_after_inventories": true,
+  "current_acceptance": "docs/evaluations/delivery_readiness_20261116/hosted_acceptance.json",
+  "current_acceptance_SHA256": "d4a17d9f74d9bb8bf801abe6eebb3b1e2837bd872f46155fd0587761a0b26c6a",
+  "runtime_only_update_completed": true,
+  "source_data_writes": false
+}

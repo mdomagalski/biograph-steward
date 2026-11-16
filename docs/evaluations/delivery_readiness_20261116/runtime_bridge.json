@@ -1,0 +1,23 @@
+{
+  "format": "biograph-steward.source-agent-cache-runtime-bridge.v1",
+  "evaluated_controller_commit": "12d70a261ba75920e136d7bba1d42c2391b9228a",
+  "previous_delivered_interface_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "current_delivery_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+  "controller_SHA256_unchanged": "8b21470d3258c45effba6a97220502cdafb11045a60beccaec51fceb7c6558a3",
+  "runtime_change": [
+    "biograph_steward/source_agent_jobs.py"
+  ],
+  "query_engines_planning_constraints_transport_verifier_and_frontend_unchanged": true,
+  "actual_model_evaluation_repeated": false,
+  "deployment_new_model_calls": 0,
+  "all_five_existing_actual_model_results_replayed_and_downloaded_before_and_after_actual_restart": true,
+  "source_graphs_and_review_state_unchanged": true,
+  "actual_semantic_outputs_unchanged": true,
+  "new_feature": "Bounded positive source-verification reuse after unchanged complete source/result/reader fingerprints; cold and changed inputs retain full verification.",
+  "excluded_workflows": "Qualified/history, refresh/construction, assay and external-reference-dependent modes retain full replay.",
+  "functional_and_tamper_tests": "docs/evaluations/delivery_readiness_20261116/cache_validation.json",
+  "hosted_acceptance": "docs/evaluations/delivery_readiness_20261116/hosted_acceptance.json",
+  "existing_model_evaluation": "docs/evaluations/source_agent_20261116/summary.json",
+  "media_capture_runtime_remains": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "scientific_or_prediction_gain_from_cache_claimed": false
+}

@@ -34,12 +34,13 @@ controls and qualifications remain in the linked reports below.
 
 The agent's actual development comparison, portable software acceptance,
 narrated local demonstration and protected hosted replay are complete. The
-[hosted acceptance](evaluations/source_agent_20261116/hosted_acceptance.json)
+[hosted acceptance](evaluations/delivery_readiness_20261116/hosted_acceptance.json)
 and [delivery status](DELIVERY_STATUS_20261115.json) record the verified deployment;
 the tour remains explicitly filmed in the local application.
 
 **[Open the protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
-and follow the **[five-minute judge walkthrough](JUDGE_WALKTHROUGH.md)**.
+and follow **[How to use BioGraph Steward](../HOW_TO_USE.md)**. The
+[judge evidence route](JUDGE_WALKTHROUGH.md) maps that workflow to the rubric.
 Use the token supplied privately. Saved review needs only a browser; no AWS
 account, local setup, Brev instance or model server is required. Exact accepted
 deployment and release identities are recorded in the

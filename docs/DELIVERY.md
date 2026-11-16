@@ -4,24 +4,26 @@
 
 [Open BioGraph Steward](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
 and sign in with the privately supplied workspace token. Follow the
-[five-minute walkthrough](JUDGE_WALKTHROUGH.md). The current entry point opens
+[step-by-step user guide](../HOW_TO_USE.md). The current entry point opens
 real saved evidence and guides the reviewer through **Start here**, **Question
 & graph**, **Inspect sources**, **What changed** and **Export**.
 
 The current-source agent has completed its
 [actual fixed comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
 Its protected hosted replay has passed
-[deployment acceptance](evaluations/source_agent_20261116/hosted_acceptance.json),
+[deployment acceptance](evaluations/delivery_readiness_20261116/hosted_acceptance.json),
 including a real service restart, all five recorded model jobs and complete
 Neptune parity without fallback. The local-app tour demonstrates the same
 verified workflow; its filming provenance and the model evaluation remain
 separate from that deployment receipt.
 
-The separate [hosted browser check](evaluations/source_agent_20261116/hosted_browser_acceptance.json)
-was interrupted twice by Chrome's `ERR_NETWORK_CHANGED`. Authenticated HTTPS
-retrieval of the recorded result passed. The cause remains unresolved, so this
-increment claims server/API acceptance and local visual QA, with the complete
-hosted browser walkthrough still awaiting confirmation.
+The [hosted browser walkthrough](evaluations/delivery_readiness_20261116/hosted_browser_acceptance.json)
+passed 15 checks using matching Playwright 1.57 / Chromium 143: all four agent
+steps, E002 source and identity fields, the candidate proposal and exact download
+pointer. The complete check took about 106 seconds; initial source verification
+remains a usability cost. [Earlier Chrome transport failures](evaluations/source_agent_20261116/hosted_browser_acceptance.json)
+remain preserved. This pass verifies the bounded saved flow; it does not explain
+those earlier failures or replace an independent human walkthrough.
 
 Reviewers need only a browser. No AWS account, local tunnel or Brev/model server
 is needed. The shared site reads completed real-data work. Construction, fresh
@@ -47,6 +49,14 @@ study's unchanged result tables. It makes no new model requests or source update
 prior model execution is recorded separately from model-free capture/replay.
 The [dated history](../output/history/20261115_guided_review/README.md)
 preserves the previous guided media and software unchanged.
+
+The latest runtime changes only saved-agent verification reuse. Its
+[functional and tamper checks](evaluations/delivery_readiness_20261116/cache_validation.json)
+preserve cold validation and invalidate reuse when source, result or reader
+bytes change. One [external loading observation](evaluations/delivery_readiness_20261116/listing_latency.json)
+returned the identical four-record listing in **33.487 seconds**, versus the
+previous **94.640 seconds**. This is a warmed-route observation, not a repeated
+performance benchmark or a scientific-accuracy result.
 
 ## Recorded agent workflow
 
@@ -80,13 +90,14 @@ it for verification. It does not contain or relicense the full dataset.
 The [software ZIP](../output/software/BioGraph_Steward_Software.zip)
 contains the Python core and its upstream notices. Its instructions lead to
 the hosted real-data review and separately explain the optional invented local
-fixture. The [acceptance summary](evaluations/source_agent_20261116/software_acceptance.json)
+fixture. The [current acceptance summary](evaluations/delivery_readiness_20261116/software_acceptance.json)
 records clean Python construction, actual graph/decision exports, source
 recovery and saved-answer replay after restart. It includes no real source
 snapshots, credentials, reference labels or model weights.
 
-Its recorded acceptance pins source `ee3c61c2` and includes the current-source
-agent, four-step interface and saved-review guards. The invented catalogue
+Its recorded acceptance pins source `09e95a7` and includes the current-source
+agent, four-step interface, saved-review guards and byte-bound verification reuse.
+The complete agent controller and scientific results are unchanged. The invented catalogue
 check makes no model request; the separate actual model comparison retains its
 own evidence. Hosted deployment has a separate acceptance record.
 
@@ -103,6 +114,14 @@ Two separate saved workspaces remain available:
 |---|---|
 | Enriched candidate-evidence view | **99 primary targets, 9,724 entities and 19,310 evidence records**: 15,671 original Pharos records, 3,309 native GOA rows and 330 STRING physical associations. Additions remain candidates. Use the KRAS answer and public-reference comparison. |
 | Retained graph after qualification | **99 primary targets, 9,865 entities and 16,687 retained records**, with the 16,985-record input and every keep/prune/abstain decision preserved. Its 298 obsolete-GO-ID exclusions concern identifier currency, not experimentally disproved biology. Use the TP53 pathway example. |
+
+The native workspace was assembled on **November 15** from a **Pharos capture
+of October 14**. A November 16 metadata-only API check still returned
+`pharos319`. Its GO annotation file was generated **July 28**, with the
+**July 26** ontology; STRING is **12.5**. The [source-date audit](evaluations/delivery_readiness_20261116/source_dates.json)
+records these separately. This is a reproducible scoped snapshot, not a
+continuously refreshed copy of all Pharos data. A new data refresh must preserve
+this comparison and generate new source-bound answers.
 
 The two views have different source collections. Their total record counts
 are not a paired before/after comparison. The enrichment view preserves the
@@ -141,6 +160,16 @@ The two saved downloads and separate graph-decision handoff serve different purp
   `baseline_packet/source/graph.json`. Abstentions remain retained. This input
   may already contain source extensions; “baseline” in that packet does not
   universally mean the Pharos-only graph.
+
+The primary native graph also has a **prepared submission handoff**:
+19,310 explicit abstentions, the complete preserved enriched input, and a
+separate exact same-snapshot Pharos-only comparator. Its
+[verified receipt](evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
+records 52 files, 977,230,442 bytes and per-file identities. It is prepared under
+`/srv/biograph-data/delivery-native-gold-20261116/assembly/submission` on the
+existing private AWS workbench. An operator can supply it to authorized judges
+under the source terms. This is separate from the existing workspace downloads;
+no new public data release or shared-app route was created.
 
 The protected reviewer site enables the two saved downloads. It blocks creating
 a new graph-decision package. That third handoff is generated by the operator or

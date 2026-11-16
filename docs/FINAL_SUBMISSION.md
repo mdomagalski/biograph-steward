@@ -7,11 +7,12 @@ proposals. Each connection retains its original source and conditions.
 
 The actual current-source agent comparison, narrated local demonstration and
 protected hosted replay are complete. The
-[hosted acceptance](evaluations/source_agent_20261116/hosted_acceptance.json)
+[hosted acceptance](evaluations/delivery_readiness_20261116/hosted_acceptance.json)
 and [delivery status](DELIVERY_STATUS_20261115.json) record the verified deployment;
 the tour's local filming provenance remains separate.
 
-**Start with the [five-minute judge walkthrough](JUDGE_WALKTHROUGH.md)** and
+**Start with [How to use BioGraph Steward](../HOW_TO_USE.md)**, the
+[judge evidence route](JUDGE_WALKTHROUGH.md), and
 [protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/).
 The workspace token is supplied privately. No AWS account, graph-query language,
 GPU or model server is needed for saved review. The
@@ -146,7 +147,11 @@ role listed in the original proposal.
 ## Reuse and handoff
 
 The native KRAS workspace ZIP includes its candidate graph and preserved source
-files. In the applied-qualification TP53 example, the workspace ZIP also
+files. The **designated primary submission package** also has its own complete
+19,310-row abstention ledger and an exact same-snapshot Pharos-only comparator;
+its [verified handoff receipt](evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
+records the privately prepared package. All records remain unassessed; these
+abstentions are not biological acceptance. In the applied-qualification TP53 example, the workspace ZIP also
 includes the retained graph, complete keep/prune/abstain ledger and original
 baseline/source packet. The small answer diagram and focused answer ZIP are
 separate views. Original and retained graphs stay distinguishable, and

@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "created_at": "2026-11-16T17:40:14.955609+00:00",
+  "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "packet_id": "packet:a5853471c3bf1dc4df44b35ea2250b92e19f2844162e74dd20b148baa32f6b6d",
+  "primary_edge_count": 19310,
+  "primary_graph_content_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+  "retained_graph_content_sha256": "a868f19f4f53eb7d06c0bbe4c23d5874dd945fa256fbcd6346b978d16481fbb8",
+  "snapshot_content_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+  "dispositions": {
+    "keep": 0,
+    "prune": 0,
+    "abstain": 19310
+  },
+  "captured_Pharos_only_graph_content_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+  "submission_bytes": 977230442,
+  "steps": [
+    {
+      "step": "01_gold_export",
+      "seconds": 470.136,
+      "exit_code": 0
+    },
+    {
+      "step": "02_gold_verify",
+      "seconds": 87.166,
+      "exit_code": 0
+    },
+    {
+      "step": "03_gold_decisions",
+      "seconds": 345.995,
+      "exit_code": 0
+    },
+    {
+      "step": "04_gold_decisions_verify",
+      "seconds": 114.838,
+      "exit_code": 0
+    },
+    {
+      "step": "05_captured_pharos_comparison",
+      "seconds": 12.058,
+      "exit_code": 0
+    }
+  ],
+  "elapsed_seconds": 1038.566,
+  "output_scope": "private_authorized_review_only",
+  "model_calls": 0,
+  "source_fetches": 0,
+  "old_qualification_decisions_reused": false,
+  "live_app_or_graph_changes": false,
+  "format": "biograph-steward.primary-graph-handoff-summary.v1",
+  "private_complete_receipt_sha256": "e1cef582d2ecc2a054d15cf0bb695209cb6163e8c386e6793d442b23492cd08c",
+  "submission_files": 52,
+  "designated_primary_workspace": "native_evidence_workspace_20261115",
+  "selected_file_pins": {
+    "native_graph_and_decisions/retained_graph.json": {
+      "bytes": 167005551,
+      "sha256": "f5967f3f40925204c220997e9112bfce226bd33d5a2ad6530d9cca28c8408ff7"
+    },
+    "native_graph_and_decisions/edge_dispositions.jsonl": {
+      "bytes": 1996190,
+      "sha256": "803d82954175641ca58c24a849b1b31c47ac46388d0450fb449d5b2474730328"
+    },
+    "native_graph_and_decisions/baseline_packet/source/graph.json": {
+      "bytes": 153904270,
+      "sha256": "eff8c04a0030dcdfc85e72788167626988052cfe5ed5126ae29edd213e532345"
+    },
+    "captured_pharos_comparison/graph.json": {
+      "bytes": 70222873,
+      "sha256": "3bd0bf8851da6bb89d3a702cb5d26ebd99662a0f0bab66f1c59278a2f41228e2"
+    },
+    "SHA256SUMS": {
+      "bytes": 7151,
+      "sha256": "a21b854cef5fb841a70927b9c1e5e183c464f79e6536f84e1a0a8c11320c4b6e"
+    }
+  },
+  "original_native_and_companion_graph_files_unchanged": true,
+  "scientific_acceptance_or_new_pruning": false,
+  "abstention_confidence": null,
+  "companion": "Separate source_faithful_workspace_20261113 with its own 298 obsolete-ID exclusions; no decisions transplanted.",
+  "access": "Prepared on the existing private AWS workbench, /srv/biograph-data/delivery-native-gold-20261116/assembly/submission . An operator can hand it to authorized reviewers under source terms; no public data release or new app download route.",
+  "no_new_source_data_in_repository": true
+}

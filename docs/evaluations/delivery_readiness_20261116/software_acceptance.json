@@ -1,0 +1,51 @@
+{
+  "format": "biograph-steward.standalone-source-agent-delivery-summary.v1",
+  "status": "passed",
+  "source_revision": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+  "software_archive": {
+    "file": "BioGraph_Steward_Software.zip",
+    "sha256": "80e5f86ff0d4d4ac0f313eb6bf9ffb73007f52141c1ae3b4434c61b0a840fcac",
+    "bytes": 725260,
+    "file_count": 133
+  },
+  "private_acceptance_receipt_sha256": "0b0e26a11b52210cb852c032e7c159e1d8ff0f9e72bfb870ecaba4c1a223b64f",
+  "clean_python": {
+    "version": "3.12.14",
+    "no_site": 1,
+    "site_loaded": false,
+    "site_package_paths": []
+  },
+  "code_only_no_real_datasets": true,
+  "invented_portability_fixture_explicitly_separate": true,
+  "upstream_notices_preserved": true,
+  "current_source_agent_stdlib_imports_CLI_help_and_no_model_catalogue_passed": true,
+  "current_source_agent_four_step_UI_in_archive": true,
+  "actual_CLI_HTTP_export_recovery_restart_reopen_passed": true,
+  "saved_data_only_denied_new_actions": [
+    "/api/question",
+    "/api/build",
+    "/api/plan",
+    "/api/submission-export",
+    "/api/source-agent/run"
+  ],
+  "saved_data_only_source_agent_model_factory_calls": 0,
+  "source_fetches": 0,
+  "model_calls": 0,
+  "cloud_calls": 0,
+  "all_owned_servers_stopped": true,
+  "actual_live_model_comparison_in_this_acceptance": false,
+  "separate_actual_model_comparison": "docs/evaluations/SOURCE_AGENT_RESULTS_20261116.md",
+  "biological_accuracy_or_independent_user_validation_claimed": false,
+  "no_tokens_credentials_raw_HTTP_headers_real_source_records_reference_labels_or_weights_in_archive": true,
+  "hosted_deployment_has_separate_acceptance": true,
+  "bundled_how_to_link_is_absolute_repository_URL": true,
+  "core_archive_roots": [
+    "app.py",
+    "LICENSE",
+    "README_DEMO.md",
+    "biograph_steward/"
+  ],
+  "prior_canonical_software_preserved_in_git": "87bface",
+  "presentation_PDF_and_walkthrough_not_modified_by_this_acceptance": true,
+  "cache_functional_regressions_are_separate_from_this_portability_check": true
+}

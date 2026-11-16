@@ -1,0 +1,29 @@
+{
+  "format": "biograph-steward.saved-agent-listing-latency-observations.v1",
+  "status": "same_payload_verified",
+  "route": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/source-agent/jobs?run_id=native_evidence_workspace_20261115",
+  "before_runtime": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "after_runtime": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+  "before_seconds": 94.64,
+  "after_seconds": 33.487,
+  "before_started_at_UTC": "2026-11-16T17:15:44.341338+00:00",
+  "after_started_at_UTC": "2026-11-16T18:18:51.093938+00:00",
+  "same_decoded_response_bytes": 2351,
+  "same_response_SHA256": "c6456452f786dcacedf50d8fc808ad1157b251fadd9e9fbea1ebf4476385bcf1",
+  "same_four_record_ids": [
+    "source_agent_eval_dc7b597201da_S01",
+    "source_agent_eval_dc7b597201da_S02",
+    "source_agent_eval_dc7b597201da_S03",
+    "source_agent_eval_dc7b597201da_S05"
+  ],
+  "each_observation_normal_TLS_requests": 1,
+  "redirects_and_retries": false,
+  "after_state": "Warm verification markers after full deployment acceptance and actual restart.",
+  "interpretation": "Observed loading improvement for the same exact saved-job listing. One observation per runtime, not a randomized or repeated performance benchmark; cold first-source verification still performs full replay.",
+  "new_model_or_biomedical_source_requests": 0,
+  "graph_or_review_edits": 0,
+  "receipt_pins": {
+    "runs/delivery_readiness_20261116/jobs_route_probe/receipt.json": "c0067e04b0b66d1bea350aebff3c54e757f0542e85d1f2c96aac73ef08e10ddb",
+    "runs/delivery_readiness_20261116/jobs_route_probe_cache09/receipt.json": "34409701a53d3feecd29d367e0c207560786be982a766850384bdc418eb41131"
+  }
+}

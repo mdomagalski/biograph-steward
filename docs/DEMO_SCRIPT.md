@@ -1,6 +1,7 @@
 # BioGraph Steward demonstration
 
-Use the **[five-minute judge walkthrough](JUDGE_WALKTHROUGH.md)**. Its central
+Use the **[step-by-step user guide](../HOW_TO_USE.md)** and
+[judge evidence route](JUDGE_WALKTHROUGH.md). Its central
 task follows an actual recorded Nemotron run: a research question, validated
 source query, cited evidence, complete source inspection and grounded review
 proposals. The reviewer can then inspect the applied graph qualifications and
@@ -22,7 +23,7 @@ The current-source agent has completed its
 [fixed development comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
 The current tour demonstrates the actual local application using verified saved
 real data. The protected site now replays the recorded agent workflow, with
-[hosted acceptance](evaluations/source_agent_20261116/hosted_acceptance.json)
+[hosted acceptance](evaluations/delivery_readiness_20261116/hosted_acceptance.json)
 and the exact [delivery status](DELIVERY_STATUS_20261115.json) recorded separately.
 
 Open the

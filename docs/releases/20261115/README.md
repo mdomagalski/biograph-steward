@@ -1,10 +1,10 @@
 # Reviewer deliverables
 
 Start with the **[hosted application](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
-and the **[five-minute walkthrough](../../JUDGE_WALKTHROUGH.md)**. Sign in with
+and the **[step-by-step user guide](../../../HOW_TO_USE.md)**. Sign in with
 the workspace token supplied privately. The current app opens a verified
 Nemotron source-agent record, with four steps from question to review proposals.
-The [hosted acceptance](../../evaluations/source_agent_20261116/hosted_acceptance.json)
+The [hosted acceptance](../../evaluations/delivery_readiness_20261116/hosted_acceptance.json)
 records the actual restart and saved-source checks; research history stays separate.
 
 ## Current reviewer files
@@ -15,17 +15,43 @@ records the actual restart and saved-source checks; research history stays separ
 | [Plain transcript](../../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) | Read the same explanation or use it when presenting. |
 | [Captions](../../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Load the timed captions separately when needed. Captions are also visible in the video. |
 | [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise editable overview, with the detailed research linked separately. |
-| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run the tested ee3c61c Python core. Real source data are supplied separately. |
+| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run the tested 09e95a7 Python core. Real source data are supplied separately. |
 | [Team review guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) | Two pages: source-scope explanation, five tasks and feedback prompts. |
 
 The canonical software archive is
 [BioGraph Steward Software](../../../output/software/BioGraph_Steward_Software.zip).
 It leads to the real hosted review and separately documents the optional
 invented software fixture. The complete real-data snapshot is not bundled in
-the software archive.
+the software archive. Its [current clean acceptance](../../evaluations/delivery_readiness_20261116/software_acceptance.json)
+records the byte-bound saved-agent verification update; the recorded model
+comparison and presentation retain their original source/runtime pins.
 
 [Current product and scoring summary](../../FINAL_SUBMISSION.md) ·
 [Accepted deployment and artifact status](../../DELIVERY_STATUS_20261115.json)
+
+## Final submission actions
+
+These publication steps remain to be performed; preparing this index does not
+merge or publish the repository.
+
+1. Resolve material teammate feedback and choose the final tested checkpoint.
+   Merge the reviewed delivery branch into `main`, then create the final tag
+   and release. The current [draft PR](https://github.com/mdomagalski/biograph-steward/pull/1)
+   remains a review route.
+2. Make the MIT software repository public for the open-source submission.
+   Include the tested software ZIP, [user guide](../../../HOW_TO_USE.md),
+   narrated tour with transcript/captions, overview slides and linked results.
+3. Supply the [designated primary graph, complete decision ledger and captured
+   Pharos comparator](../../evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
+   through a permitted data-access route. Include the separately labelled
+   applied-qualification companion if useful. The software license does not
+   authorize blanket public redistribution of the source data.
+4. Send the submission and protected reviewer URL through the organizer's
+   requested route; supply the workspace token privately. Keep AWS available
+   for review. Saved review requires no Brev, GPU or model server.
+
+The supplied brief lists **November 17** as the final deadline, without a
+submission timezone. Hidden gold labels are not needed to complete this handoff.
 
 <details>
 <summary>Earlier private draft assets and preservation receipts</summary>
@@ -92,14 +118,5 @@ receipts remain on the AWS data disk; replay used the separately retained
 approved private S3 copy also has verified archive, manifest and receipt checksums.
 This is not a full VM or Neptune recovery, and the source archive is not part of
 these GitHub assets.
-
-## Final submission actions
-
-[Draft PR #1](https://github.com/mdomagalski/biograph-steward/pull/1) remains open
-against the older `main`. Main and private repository visibility are unchanged.
-Final merge/tag, intended public MIT release, permitted graph/source access and
-actual organizer submission remain separate actions before November 17.
-Independent teammate feedback is due November 16. Keep the AWS reviewer site
-available; saved-data review needs no Brev, GPU or model server.
 
 </details>

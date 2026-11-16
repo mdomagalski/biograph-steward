@@ -1,148 +1,63 @@
-# Five-minute judge walkthrough
+# Judge review route
 
-> The protected reviewer site now replays the recorded agent workflow. The
-> narrated tour demonstrates the same workflow in the actual local application
-> using verified saved real data. [Hosted acceptance](evaluations/source_agent_20261116/hosted_acceptance.json)
-> is recorded separately from the local filming provenance.
+Use the **[single step-by-step user guide](../HOW_TO_USE.md)** for operating the
+app. This page identifies the evidence to assess against the supplied rubric.
+The [current submission overview](SUBMISSION_OVERVIEW.md) explains the measured
+improvements; the [full alignment crosswalk](PROJECT_ALIGNMENT.md) separates
+requirements, delivered features and remaining release actions.
 
-**Question:** Which retrieved proteins have physical-association records with
-KRAS, and what can their evidence justify?
-
-BioGraph Steward starts with a captured Pharos workspace covering **99 primary
-human protein targets**. The current agent proposes a supported source query,
-prioritizes citations for inspection, and returns grounded review proposals.
-Existing source tools supply the graph and cited statements.
+## Open the real example
 
 [Open the protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
-and use the privately supplied token. You need only a browser. This review opens
-an actual recorded model run and verifies its saved sources; it makes no model
-requests, retrieves no new data and changes no graph or review decisions.
+and use the token supplied privately. The recorded KRAS run uses real saved
+sources, with no new inference during replay. Reviewers need no AWS account,
+local setup or running model. New operator-run questions are documented in the
+[source-agent guide](SOURCE_AGENT.md#operator-cli).
 
-## 1. Follow the recorded agent run
+Follow **Question & plan → Evidence graph → Source inspection → Review
+proposals**. In **E002, KRAS–CDC42BPB**, find **baseline pair present: false**
+and **integration state: new_workspace_pair**. That is an actual source-qualified
+addition to the captured graph. Its STRING 12.5 score 203 and identity checks
+remain visible. The [addition audit](evaluations/source_agent_20261116/demonstrated_additions.json)
+preserves the original baseline comparison and all counts.
 
-In **Start here → Agent workflow**, open the designated recorded KRAS run.
-If needed, expand **Open a recorded agent run**, choose its verified model
-record and select **Replay the recorded run**.
+## Match the supplied scoring criteria
 
-In **1. Question & plan**, read the research question and validated tool plan. The run names
-KRAS's exact protein identity, the native physical source, the candidate view
-and its limits. The application validates this plan before executing it. The
-model's explanation of its scope remains an unverified rationale.
-Here **native** means the provider's separately saved record, with its own
-release and identity checks, rather than only its summary inside Pharos.
+| Criterion | Where to look | Evidence to assess |
+|---|---|---|
+| **Usability — 40%** | The user guide, four-step agent workflow and result downloads | Can a reviewer find what was added, trace a source and share the right result without graph-query syntax? Record loading/access problems and unclear next actions. |
+| **Accuracy and pruning — 30%** | What changed; applied qualification companion; linked scientific comparisons | Known-label recovery increases 41/51 → 44/51 under the same mapping. The separate companion applies 298 obsolete-ID exclusions. Keep source additions, identifier checks and the separate function-prediction benchmark distinct. |
+| **Explainability — 20%** | E002 source passport, model/tool trace and exported decision reasons | Provider/version, baseline membership, exact identity evidence, review state and uncertainty remain inspectable. A proposal is separate from an applied decision. |
+| **Standards — 10%** | [Export audit](STANDARD_EXPORT.md), [mapping/overlap audit](EVIDENCE_OVERLAP.md) and graph/source files | Inspect stable identifiers, declared predicates, source provenance and the validated bounded profiles. Their full-graph conformance limits are recorded. |
 
-**Find:** the selected tool and the result cap of eight.
+The weights come from the supplied brief; this is an evidence map, not a
+predicted judging score. The [same-learner graph comparisons](PROJECT_ALIGNMENT.md#scientific-comparisons-and-their-distinct-scopes)
+remain part of the submission record. The positive function-prediction result
+has its own task and controls and does not replace that endpoint.
 
-## 2. Read the answer and inspect the agent's evidence
+## Inspect the graph handoff
 
-Choose **Continue: Evidence graph**. The recorded query displays **eight
-of 14 matching proteins**. Six remain outside this recorded display limit.
-The older manual KRAS question displays all 14 under its different cap.
-Neither count measures biological truth or local acceptance.
+The primary native-source example and the applied-qualification companion are
+different source collections in the same 99-target cohort. Their total record
+counts are not a before/after comparison. Use each graph with its own source
+baseline and decision ledger; the [Gold interface](GOLD_SET_INTERFACE.md)
+explains retained graphs, complete dispositions and abstentions.
+The [prepared primary package](evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
+binds its 19,310-row abstention ledger and exact captured Pharos comparator;
+the complete mixed-source packet uses permitted private access.
 
-Read the CDC42BPB statement, then choose **Continue: Source inspection** and
-expand **Inspected citation [E002]**. The agent
-selected this returned citation for inspection; the application checked every
-source assertion grouped under it. All returned results remain in the saved
-answer, including citations the agent did not prioritize.
-`[E002]` identifies preserved database evidence. A publication link appears
-only when the source supplies one.
+[How to use → Download the result you need](../HOW_TO_USE.md#4-download-the-result-you-need) distinguishes the focused answer,
+recorded-agent trace and full workspace. The [delivery index](releases/20261115/README.md)
+identifies current reviewer artifacts and protected source access.
 
-Expand **Native physical source coverage and identity**. The existing fields
-show **baseline pair present: false** and **integration state:
-new_workspace_pair**. This is the concrete addition: a source-qualified
-KRAS–CDC42BPB connection absent from the captured Pharos graph. It is one of
-87 such pairs across this source profile. The [addition audit](evaluations/source_agent_20261116/demonstrated_additions.json)
-keeps additions separate from connections already represented in the baseline.
+## Watch or present
 
-For fuller source context, expand **All returned source citations** and choose
-**Inspect this claim manually**. Read the native STRING source explanation.
-The KRAS–CDC42BPB record preserves score **203** on its provider's 0–1000 scale.
-That score describes source confidence, not a probability of scientific truth.
-Physical association can mean proximity or a shared protein complex. It does
-not establish direct binding, an assay result or a cancer-specific mechanism.
-STRING already contributes to Pharos, so another row is not automatically
-another independent experiment.
-
-**Find:** the flag showing what was added, its provider and one qualification
-that helps you interpret it.
-
-## 3. Understand the proposed decision
-
-Return to the recorded run and choose **4. Review proposals**.
-**Retain candidate context** keeps eligible source evidence available for
-review. **Needs review** identifies an unresolved issue. These proposals name
-their inspected citations. They accept no assertion, remove no edge and
-change no local review state.
-
-**Find:** the citation supporting one proposal. Explain whether it changes the
-graph. A valid source inspection supports traceability; it does not independently
-prove the biological claim.
-
-## 4. Check actual qualification and measured benefit
-
-From **Start here**, open **Review applied graph qualifications**. This matched
-TP53 companion has a different source collection. In **What changed**, find
-the applied reduction from **16,985 input records to 16,687 retained records**.
-The **298 exclusions use obsolete Gene Ontology identifiers**. Originals and
-reasons remain available. Abstained records stay retained. This checks identifier
-currency rather than identifying 298 experimentally disproved relationships.
-
-Then read the featured location-reference comparison. Among **31 matching
-proteins**, Pharos recovers **41/51** known positive location labels and the
-qualified native GO view recovers **44/51**. The already-used OpenCell reference
-changes **30/40 to 31/40** among **23 matching proteins**. These are fixed source
-views, not a newly evaluated union of the whole graph. Shared-source context
-and prior reference exposure remain explicit.
-
-The [saved assessment report](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/scientific-assessment/scientific_assessment_public_reference_20261115_v3/report)
-also shows the complete fixed location-reference table and its source limits.
-
-In the fixed development comparison, four nonempty queries and one valid
-accepted-only empty query preserved the deterministic tool's complete result.
-Three unsupported or unresolved requests stopped before any model call. This
-checks source fidelity and scope guards. The agent adds no source data or
-learner inputs, so these results do not measure a prediction gain. Positive-label recovery likewise does not
-measure the fraction of the entire graph that is scientifically correct.
-
-## 5. Take away a reproducible result
-
-Use **Download this verified agent record** for its question, model/tool trace,
-inspections and proposals. The source workspace must accompany it for replay.
-The focused answer ZIP and complete workspace ZIP serve different purposes.
-
-For the retained TP53 example, **Export → saved workspace ZIP** also preserves
-`source_retained_package` with:
-
-- `retained_graph.json`, the graph after the recorded decisions;
-- `edge_dispositions.jsonl`, every input record's decision and reason;
-- `baseline_packet`, the preserved input graph and source records.
-
-An abstention retains its record. The native KRAS workspace ZIP preserves its
-candidate graph and sources; it does not acquire the separate TP53 decisions.
-
-For feedback: Can you identify one connection added beyond the captured baseline,
-trace its source and distinguish a proposal from an applied decision? Can you
-find the measured result and the files another researcher would need?
-
-See [Current-source agent](SOURCE_AGENT.md), the
-[recorded evaluation](evaluations/SOURCE_AGENT_RESULTS_20261116.md) and
-[submission summary](FINAL_SUBMISSION.md) for precise scope and limitations.
-
-## Watch or present the work
-
-The [3:58 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4),
+The **[3:58 narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)**,
 [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
-are the current reviewer files. The video uses actual local-app captures of
-verified saved real data, including the existing assessment report. A separate,
-labelled rendering shows the prediction study's unchanged result tables. It combines
-edited screenshot states and focused crops with synthetic narration; it is
-not a continuous interaction recording. Authentication stays off camera and
-loading waits are omitted. Capture and replay make zero model requests,
-retrieve no new scientific source data and apply no review decisions. The
-depicted primary job records three actual model calls; the separate frozen
-comparison records 13. See the [media receipt](../output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json).
+are the current presentation files. The tour uses actual local-app screenshots,
+a precomputed app assessment and a separately labelled rendering of existing
+prediction-result tables. It makes no new model calls or statistical experiment.
 
 | Chapter | What it shows |
 |---|---|
@@ -152,8 +67,10 @@ comparison records 13. See the [media receipt](../output/walkthrough/BioGraph_St
 | 1:29 | The agent's question-to-source workflow |
 | 2:04 | Separate measured function-prediction gain |
 | 2:42 | Applied identifier qualification |
-| 3:11 | Interpretation of the measured comparisons |
+| 3:11 | Interpretation of the comparisons |
 | 3:33 | Inspectable results and reusable graph handoff |
 
-[Earlier guided-review media](../output/history/20261115_guided_review/README.md)
-remains preserved with its original scope and dates.
+The [deployment record](DELIVERY_STATUS_20261115.json) keeps server/API checks
+separate from browser and human usability checks. [Source notes](SOURCE_NOTES.md)
+record the actual snapshot and upstream annotation dates. Earlier media and
+research results remain in their labelled history.

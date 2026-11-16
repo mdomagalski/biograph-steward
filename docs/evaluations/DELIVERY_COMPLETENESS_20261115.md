@@ -6,20 +6,22 @@ scientific limits below are not missing graph-store or agent-framework
 components. This is a project audit against the user-supplied materials,
 not organizer acceptance.
 
-The [current hosted acceptance](source_agent_20261116/hosted_acceptance.json)
+The [current hosted acceptance](delivery_readiness_20261116/hosted_acceptance.json)
 records the current source-agent interface, five actual-model saved records,
 a real service restart, authenticated source/saved-answer checks and full
-read-only Neptune parity. The [browser check](source_agent_20261116/hosted_browser_acceptance.json)
-records the bounded hosted Chrome verification separately, including any client transport interruptions. Local four-step visual QA is also preserved.
+read-only Neptune parity. The [browser check](delivery_readiness_20261116/hosted_browser_acceptance.json)
+passed the explicit hosted four-step flow and source/download-pointer checks.
+Earlier client transport failures remain preserved separately. Local visual QA
+and independent human feedback retain their own scopes.
 The earlier [source-profile rollout](native_profiles_hosted_20261115/summary.json)
 remains a separate dated receipt; this interface update changes no source graph.
 
 | Expected item | Concrete review route | Status / remaining action |
 |---|---|---|
-| Pharos represented in a contextual graph | KRAS native-evidence profile and separate qualified TP53 example in the [overview](../SUBMISSION_OVERVIEW.md); both use the same 99-target cohort | Accepted ee3c61c interface: native profile has 9,724 entities / 19,310 records; retained profile has 9,865 / 16,687. These are different source collections, not paired before/after totals. Original source records and decisions remain preserved; neither is the entire Pharos database. |
-| Accessible question → graph → answer workflow | Five task tabs and [five-minute script](../DEMO_SCRIPT.md) | The model plans bounded source queries, prioritizes complete source inspections and proposes adapter-grounded review states. Five fixed supported queries matched deterministic execution. Shared review replays actual records without new inference or edits; arbitrary-language biological adjudication is not claimed. |
+| Pharos represented in a contextual graph | KRAS native-evidence profile and separate qualified TP53 example in the [overview](../SUBMISSION_OVERVIEW.md); both use the same 99-target cohort | Accepted 09e95a7 runtime: native profile has 9,724 entities / 19,310 records; retained profile has 9,865 / 16,687. These are different source collections, not paired before/after totals. Original source records and decisions remain preserved; neither is the entire Pharos database. |
+| Accessible question → graph → answer workflow | [Canonical user guide](../../HOW_TO_USE.md), four agent steps within task navigation, and [presentation script](../DEMO_SCRIPT.md) | The model plans bounded source queries, prioritizes complete source inspections and proposes adapter-grounded review states. Five fixed supported queries matched deterministic execution. Shared review replays actual records without new inference or edits; arbitrary-language biological adjudication is not claimed. |
 | Original evidence and interpretations | Source passports, historical GPML, native GO records, complete clinical combinations, assay/source guides | Implemented where attached, including native GOA and 330 identity-qualified physical source records (243 existing pairs, 87 absent from captured Pharos). Source reuse and missing identities remain explicit. |
-| Pruning and review handoff | Workspace Export:retained graph + exhaustive decisions + original baseline/source packet | Implemented and replayed. Abstentions stay retained. The298 obsolete-GO-ID exclusions are source qualification, not proven biological falsehoods. |
+| Pruning and review handoff | Workspace Export: retained graph + exhaustive decisions + original baseline/source packet | The [primary native handoff](delivery_readiness_20261116/primary_graph_handoff.json) now has 19,310 unique abstentions, preserved sources and an exact captured Pharos-only comparator; prepared privately for permitted organizer access. The applied-qualification companion stays separate. Implemented and replayed. Abstentions stay retained. The 298 obsolete-GO-ID exclusions are source qualification, not proven biological falsehoods. |
 | Experimental link-prediction comparison | Same-learner R-GCN and source/count/degree controls linked in [alignment](../PROJECT_ALIGNMENT.md) | Executed; consistent enriched-graph superiority is unestablished. Do not substitute the separate function task for this endpoint. |
 | Credible scientific assessment | [New fixed contextual comparison](CONTEXTUAL_COMBINATION_RESULTS_20261115.md), complete controls/intervals/provenance | HOU positive location labels improve 41/51 to 44/51 (31/99 matching proteins); OpenCell 30/40 to 31/40 (23/99), with reuse/context limits. Supported primary function-recovery gain over retained LocalPlus; data refresh also helps. Learning beyond refreshed LocalPlus is uncertain for primary BP. MF/CC improve over LocalPlus but do not beat the stronger direct nonexperimental-GOA control (CC favors that control). Whole-graph accuracy is not identified. |
 | Agents and NVIDIA integration | Current-source Nemotron workflow, NAT adapters, [fixed comparison](SOURCE_AGENT_RESULTS_20261116.md) and [NVIDIA status](../NVIDIA_INTEGRATION_STATUS_20261113.md) | Thirteen actual calls: five supported query/answer/graph parity checks passed; three additional requests stopped by controller preflight with zero calls. Review proposals remain unapplied. Prior failed approaches and separate learned prediction endpoints remain preserved. |

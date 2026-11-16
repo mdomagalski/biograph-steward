@@ -1,9 +1,20 @@
 # Pharos reference handoff
 
-Updated October 26, 2026.
+Updated November 16, 2026.
 
-Verified on invented fixtures and an existing scoped Pharos/CIViC graph; see the
-[verification record](evaluations/GOLD_SET_INTERFACE_20261023.md).
+The designated primary native-source graph has now passed the existing
+export → verify → dispositions → verify chain. Its
+[current handoff receipt](evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
+records **19,310 unique abstentions with null confidence**, the retained graph,
+complete sources and an exactly reproduced same-snapshot Pharos-only comparator.
+All original app graph files remain unchanged. The separate applied-qualification
+companion retains its own 298 exclusions; those decisions are not transplanted.
+
+The complete package is prepared privately on the existing AWS workbench for
+permitted organizer access. It is not included in the public software ZIP or
+exposed by a new shared-app download route. Source terms remain applicable.
+Earlier [fixture and scoped-graph verification](evaluations/GOLD_SET_INTERFACE_20261023.md)
+remains a separate dated record.
 
 The workbench can now export a source-bound graph packet, record explicit edge
 dispositions, and align a declared reference table to that packet. This is the
@@ -49,7 +60,8 @@ python3 app.py gold-export --run runs/gold_demo_source --out runs/gold_demo_pack
 python3 app.py gold-verify --packet runs/gold_demo_packet
 ```
 
-For real data, replace `--run` with an existing ordinary saved Pharos/CIViC run.
+For real data, replace `--run` with a supported saved source workspace, such as
+the current native-source example. Keep its complete attached sources together.
 The export requires its saved graph to reproduce exactly from the preserved
 snapshots and review events, and requires consistent source metadata. It rejects
 drift rather than rebuilding a different graph silently. Historical runs that

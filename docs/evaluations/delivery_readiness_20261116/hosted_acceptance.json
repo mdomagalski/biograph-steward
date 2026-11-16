@@ -1,0 +1,182 @@
+{
+  "format": "biograph-steward.saved-agent-cache-hosted-acceptance.v1",
+  "status": "accepted_after_real_restart",
+  "passed": true,
+  "recorded_at_UTC": "2026-11-16T18:20:04.823046+00:00",
+  "runtime_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+  "previous_runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "active_image_id": "sha256:5d14116f0910b8226ef652401b9bc050bfaace1cf4e83b666ae6a050ddde72a2",
+  "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+  "only_changed_runtime_files": [
+    "biograph_steward/source_agent_jobs.py"
+  ],
+  "controller_SHA256_unchanged": "8b21470d3258c45effba6a97220502cdafb11045a60beccaec51fceb7c6558a3",
+  "actual_restart_and_authenticated_smoke_passed": true,
+  "before_and_after_checks_passed": true,
+  "existing_profiles_preserved": 17,
+  "preserved_source_agent_job_ids": [
+    "source_agent_eval_dc7b597201da_S01",
+    "source_agent_eval_dc7b597201da_S02",
+    "source_agent_eval_dc7b597201da_S03",
+    "source_agent_eval_dc7b597201da_S04",
+    "source_agent_eval_dc7b597201da_S05"
+  ],
+  "source_agent_records_and_downloads_after_restart": {
+    "source_agent_eval_dc7b597201da_S01": {
+      "status": "completed",
+      "actual_model_run": true,
+      "model_calls": 3,
+      "result_content_sha256": "1656d08af8a8eced4625554b6fe523ebb8bc87d32a66e4a69253695f5c5b2537",
+      "graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+      "source_passports": 3,
+      "complete_citation_source_coverage": true,
+      "non_mutating_proposals_verified": true,
+      "recorded_job_JSON_download_verified": true,
+      "download_bytes": 611596,
+      "download_sha256": "ab701bc5657a28a658645f7afbeb6e07f2abe99db0855c04d34f6063c5d7f8f7"
+    },
+    "source_agent_eval_dc7b597201da_S02": {
+      "status": "completed",
+      "actual_model_run": true,
+      "model_calls": 3,
+      "result_content_sha256": "d28e0ecaef688a8bed832c25a2f2d7fd192fe02161596830e20385dce0af5a90",
+      "graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+      "source_passports": 3,
+      "complete_citation_source_coverage": true,
+      "non_mutating_proposals_verified": true,
+      "recorded_job_JSON_download_verified": true,
+      "download_bytes": 611112,
+      "download_sha256": "f39366c1c87f4fbab5b297ab093ee2c624d2e46e01bce82b0d81dec983014e5c"
+    },
+    "source_agent_eval_dc7b597201da_S03": {
+      "status": "completed",
+      "actual_model_run": true,
+      "model_calls": 3,
+      "result_content_sha256": "a7628e8484e01a62303bd54846d270cdac12fb4c0acd2e62e99f59cd9b67e160",
+      "graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+      "source_passports": 3,
+      "complete_citation_source_coverage": true,
+      "non_mutating_proposals_verified": true,
+      "recorded_job_JSON_download_verified": true,
+      "download_bytes": 7358752,
+      "download_sha256": "1fd279cee1f5cba0630eccb3eb4c624d4b2550a179ed9aa2977664cb8b43af55"
+    },
+    "source_agent_eval_dc7b597201da_S04": {
+      "status": "completed",
+      "actual_model_run": true,
+      "model_calls": 3,
+      "result_content_sha256": "1189a73fa8948896e49748c355de8b87791febc3cb5f79e43892454b3e2da22c",
+      "graph_basis_sha256": "d473c7626ffdb32cdb813ac1649d1ccd93551fdd65ef8e8621315ce3bdf1d8e8",
+      "source_passports": 3,
+      "complete_citation_source_coverage": true,
+      "non_mutating_proposals_verified": true,
+      "recorded_job_JSON_download_verified": true,
+      "download_bytes": 12704661,
+      "download_sha256": "70eb5898e1e6db209c3e959753689d00dad735b3f426816597edd88972594352"
+    },
+    "source_agent_eval_dc7b597201da_S05": {
+      "status": "completed_empty",
+      "actual_model_run": true,
+      "model_calls": 1,
+      "result_content_sha256": "3b8dfd5eff789a5ec0292b03013603369aec4a6b9724db05d6d6dd3a925dcb8c",
+      "graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+      "source_passports": 0,
+      "complete_citation_source_coverage": true,
+      "non_mutating_proposals_verified": true,
+      "recorded_job_JSON_download_verified": true,
+      "download_bytes": 267024,
+      "download_sha256": "b4e99821d0080ace250c08e02b130975bc45a0b4cbf27bbe1b8e98dff9582ba9"
+    }
+  },
+  "source_agent_fields_refer_to_original_recorded_model_work": "Deployment only replays saved results; model_calls on job records describe the prior fixed evaluation. No new inference was made.",
+  "all_original_graph_review_source_question_function_index_registration_and_environment_bytes_preserved": true,
+  "registration_SHA256": "c17ea3d00013270b3d1445cd318f5de2d2bb2d9da46b598a359ba14e37ae6526",
+  "existing_agent_records_reinstalled": false,
+  "Neptune_read_only_full_parity_no_file_fallback": true,
+  "Neptune_mirror_scope": "Separate retained qualified companion; primary native-source answers continue to read their saved workspace files.",
+  "saved_data_only_server_policy_verified": true,
+  "unauthenticated_workspace_read_denied": true,
+  "fresh_ranking_denied_by_backend": true,
+  "saved_publications_preserved": {
+    "scientific_assessment_public_reference_20261115_v3": {
+      "content_sha256": "845d992a33b40d117380dd68ae1bdb939f575969aae4b06d64931d1b1f7d2d30"
+    }
+  },
+  "native_workspace_graph_identities": {
+    "native_evidence_workspace_20261115": {
+      "graph_content_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf"
+    }
+  },
+  "saved_answer_downloads_preserved": {
+    "native_physical_KRAS_question_v3_20261115": {
+      "answer_sha256": "5d32db49ca6db7718ef37d3ee6394d3c444b08ddca2fd840bf12965888362e56",
+      "answer_ZIP_bytes": 77088,
+      "answer_ZIP_sha256": "30a1b5b18448f7165b7a5861b5ce7e16063189d71533b85201ef1b9709de717d"
+    },
+    "native_physical_KRAS_accepted_v3_20261115": {
+      "answer_sha256": "288c015dd17349d08b248beb5872fd3cdadc8b98215e4e7db1391526fb68fe44",
+      "answer_ZIP_bytes": 60050,
+      "answer_ZIP_sha256": "da93a27934105795a1a7ff387e249c9242eda62ef55080e4c3cbf7321ca76a01"
+    }
+  },
+  "native_GO_candidate_and_accepted_empty_queries_unchanged": [
+    {
+      "run_id": "native_evidence_workspace_20261115",
+      "candidate_content_sha256": "98804c7386034526f9565ae8559f37cc92d0a6b5b387267c2014e1ff84b0b259",
+      "accepted_content_sha256": "7dcac33b671f08efd3904b58b16f73f37d96e0e0293b7573ce4dadf8cc648da7",
+      "source_passport_verified": true
+    }
+  ],
+  "warm_listing_candidate_seconds": 35.449188,
+  "warm_listing_before_restart_seconds": 34.160268,
+  "warm_listing_after_restart": {
+    "path": "/api/source-agent/jobs?run_id=native_evidence_workspace_20261115",
+    "job_ids": [
+      "source_agent_eval_dc7b597201da_S01",
+      "source_agent_eval_dc7b597201da_S02",
+      "source_agent_eval_dc7b597201da_S03",
+      "source_agent_eval_dc7b597201da_S05"
+    ],
+    "job_count": 4,
+    "elapsed_seconds": 34.684554,
+    "decoded_bytes": 2351,
+    "response_sha256": "c6456452f786dcacedf50d8fc808ad1157b251fadd9e9fbea1ebf4476385bcf1",
+    "baseline_normal_TLS_seconds": 94.64,
+    "all_five_jobs_verified_before_timing": true,
+    "timing_scope": "Warm in-container route after five checked records; external EE3 baseline is diagnostic, not a paired performance benchmark."
+  },
+  "warm_listing_timing_scope": "In-container observations on a warmed server. External baseline94.64 seconds is a separate diagnostic; these are not a controlled paired performance benchmark.",
+  "new_model_calls": 0,
+  "fresh_biomedical_retrievals": 0,
+  "graph_or_review_edits": 0,
+  "source_data_writes": false,
+  "new_cloud_resources_or_permissions": false,
+  "environment_writes": false,
+  "rollback_needed": false,
+  "previous_app_image_and_configuration_retained": true,
+  "isolated_candidate_network": "none",
+  "isolated_candidate_memory": "3GiB",
+  "isolated_candidate_CPUs": 1,
+  "operator_plan_SHA256": "5c3bb4b04171e4b285338bd2e523fd704408a62d2c8b8352c2fb24f792888c0a",
+  "private_receipt_pins": {
+    "activation.json": {
+      "bytes": 2318,
+      "sha256": "33bc88ef011279d6264b48c182c35f53042fecd32cbe80164df7b65bcfe95ce8"
+    },
+    "api_before_restart.json": {
+      "bytes": 5809,
+      "sha256": "f0c1f1a2a2ac6453aa1da1ae3e192dca6ea2bb611b4555b27a98d0a79f04e3be"
+    },
+    "api_after_restart.json": {
+      "bytes": 5857,
+      "sha256": "ea0ac4b4e9bf3560c5382f8b8dbe956e5e6cc68bcebed5fb1c34b530824c474c"
+    },
+    "preserved_records.json": {
+      "bytes": 2434,
+      "sha256": "1ac9ca0476d351d2da0fa2a2b447369f63cf52281befa2a8ffbb4372f9857f87"
+    }
+  },
+  "candidate_build_receipt_SHA256": "8c16a22facdbc233c148f34d349527eca342a4569e6059dd14389ca96cffe9e4",
+  "hosted_browser_and_human_validation_are_separate": true,
+  "scientific_scores_and_frozen_model_evaluation_unchanged": true
+}

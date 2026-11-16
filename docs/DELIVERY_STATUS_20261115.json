@@ -1,319 +1,79 @@
 {
-  "AWS_graph_change_scope": "Runtime interface updated; five immutable actual-model records and one pinned reviewer-entry registration appended. Original graph, source, review, function-index and environment bytes unchanged.",
+  "AWS_graph_change_scope": "Latest increment changes only the saved-agent verification-cache runtime. Five existing actual-model records and reviewer registration remain unchanged; graphs, sources, review decisions, function index and environment bytes are preserved.",
   "authorized_AWS_interpretation_update_complete": true,
   "browser_visual_check": {
-    "format": "biograph.source-agent-hosted-browser-acceptance.v1",
-    "recorded_at_UTC": "2026-11-16T15:23:43.097798+00:00",
-    "status": "limited_by_browser_network",
-    "passed": false,
-    "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
-    "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
-    "scope": "Actual authenticated hosted read-only browser smoke after guarded deployment. This is not a human usability study or biological validation.",
-    "summary": "Two fresh normal-TLS, sandboxed Chrome attempts authenticated successfully but did not complete the hosted four-step UI checks. Each recorded net::ERR_NETWORK_CHANGED on the same three read routes. No hosted browser pass is claimed.",
-    "attempts": [
+    "recorded_at_UTC": "2026-11-16T18:22:20.741Z",
+    "source_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+    "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws",
+    "entry_path": "/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+    "browser_mode": "headless matching Playwright1.57 default executable",
+    "browser_version": "143.0.7499.4",
+    "playwright_version": "1.57.0",
+    "chromium_revision": "1200",
+    "custom_executablePath": false,
+    "security_settings": "Sandbox enabled, normal TLS, isolated Playwright browser root; same route restrictions.",
+    "scope": "One actual authenticated HOSTED read-only matching-browser explicit-permalink check of S01, four steps, E002 source and download pointer. Not an independent human or scientific validation.",
+    "status": "passed",
+    "passed": true,
+    "checks": [
+      "Login form preserves the exact source/question/job permalink",
+      "Authenticated navigation preserves explicit permalink without bare-root redirect",
+      "Shared saved-review mode hides live model controls",
+      "Primary job labels its three recorded model calls",
+      "Visible agent step 1",
+      "Recorded plan retains exact KRAS scope",
+      "Visible agent step 2",
+      "Evidence graph shows CDC42BPB with eight-of-fourteen candidate display cap",
+      "Visible agent step 3",
+      "Hosted E002 source retains native203/release12.5/nonprobability qualification",
+      "Hosted E002 shows baseline pair absent and new captured-workspace-pair status",
+      "Visible agent step 4",
+      "Hosted E002 proposal remains nonmutating candidate context",
+      "Download pointer targets the exact verified agent job",
+      "No JavaScript error, known network failure or forbidden request"
+    ],
+    "errors": [],
+    "known_network_failure": null,
+    "scope_change": null,
+    "owned_browser_closed": true,
+    "authentication_kept_off_camera": true,
+    "new_model_requests": 0,
+    "new_source_fetches": 0,
+    "graph_or_review_changes": 0,
+    "security_or_network_settings_changed": false,
+    "elapsed_ms": 105952,
+    "previous_attempts_preserved": [
+      "runs/source_agent_delivery_20261116/hosted_ui_acceptance_01/receipt.json",
+      "runs/source_agent_delivery_20261116/hosted_ui_acceptance_02/receipt.json",
+      "runs/delivery_readiness_20261116/hosted_browser/receipt.json",
+      "runs/delivery_readiness_20261116/hosted_browser_headed/receipt.json",
+      "runs/delivery_readiness_20261116/hosted_browser_matching143/receipt.json"
+    ],
+    "format": "biograph-steward.hosted-browser-cache-acceptance-summary.v1",
+    "private_full_receipt_SHA256": "bcf6fd46077f4ba82bd66ff371fe39702910138ecf3d3bcaafa499425a104552",
+    "explicit_UI_checks": 15,
+    "elapsed_seconds": 105.952,
+    "prior_failures_not_deleted_or_reclassified": true,
+    "earlier_NETWORK_CHANGED_cause_established": false,
+    "independent_human_or_biological_validation": false,
+    "initial_source_validation_latency_remains_material": true,
+    "download_browser_scope": "Exact verified-record download pointer; actual five record downloads are separately checked by authenticated API acceptance.",
+    "source_screenshots_visually_checked": true,
+    "source_screenshot_pins": [
       {
-        "attempt": 1,
-        "receipt": "runs/source_agent_delivery_20261116/hosted_ui_acceptance_01/receipt.json",
-        "receipt_sha256": "9ac8a798e6ca1c4d171fa49603f6e438b359cc89f5abf3b2de242a5c71c73b2c",
-        "passed": false,
-        "elapsed_ms": 241207,
-        "completed_UI_checks": 0,
-        "javascript_errors": [],
-        "owned_browser_closed": true,
-        "request_outcomes": [
-          {
-            "path": "/",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/auth/login",
-            "method": "POST",
-            "status": 303
-          },
-          {
-            "path": "/",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/refresh-runs",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/biological-comparisons",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/refresh-history",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/function-contexts",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/scientific-assessments",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/pruning-previews",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/workspaces",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/refresh-runs",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/biological-comparisons",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/refresh-history",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/function-contexts",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/pruning-previews",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/scientific-assessments",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/run/native_evidence_workspace_20261115",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/neptune-status",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/workspaces",
-            "method": "GET",
-            "error": "net::ERR_NETWORK_CHANGED"
-          },
-          {
-            "path": "/api/source-agent/status",
-            "method": "GET",
-            "error": "net::ERR_NETWORK_CHANGED"
-          },
-          {
-            "path": "/api/question/native_physical_KRAS_question_v3_20261115",
-            "method": "GET",
-            "error": "net::ERR_NETWORK_CHANGED"
-          }
-        ],
-        "visible_result": "The agent and manual question panes reported Failed to fetch before the four-step workflow became ready.",
-        "termination": "Preserved after known network failures; owned browser closed."
+        "sha256": "1b1a3072fb5f3ccdf3895c564eb081a82037fe3b8bb2953ea4c1c04210bf12d5",
+        "bytes": 158078,
+        "width": 1209,
+        "height": 474
       },
       {
-        "attempt": 2,
-        "receipt": "runs/source_agent_delivery_20261116/hosted_ui_acceptance_02/receipt.json",
-        "receipt_sha256": "53b9439cb21b6a86c8e48de5b92817d172133f455bd2868540c1f9f90acca512",
-        "passed": false,
-        "elapsed_ms": 69230,
-        "completed_UI_checks": 0,
-        "javascript_errors": [],
-        "owned_browser_closed": true,
-        "request_outcomes": [
-          {
-            "path": "/",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/auth/login",
-            "method": "POST",
-            "status": 303
-          },
-          {
-            "path": "/",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/refresh-runs",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/biological-comparisons",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/refresh-history",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/pruning-previews",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/function-contexts",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/scientific-assessments",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/workspaces",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/refresh-runs",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/biological-comparisons",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/refresh-history",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/pruning-previews",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/function-contexts",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/scientific-assessments",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/run/native_evidence_workspace_20261115",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/neptune-status",
-            "method": "GET",
-            "status": 200
-          },
-          {
-            "path": "/api/workspaces",
-            "method": "GET",
-            "error": "net::ERR_NETWORK_CHANGED"
-          },
-          {
-            "path": "/api/source-agent/status",
-            "method": "GET",
-            "error": "net::ERR_NETWORK_CHANGED"
-          },
-          {
-            "path": "/api/question/native_physical_KRAS_question_v3_20261115",
-            "method": "GET",
-            "error": "net::ERR_NETWORK_CHANGED"
-          }
-        ],
-        "visible_result": "The agent and manual question panes reported Failed to fetch before the four-step workflow became ready.",
-        "termination": "Failed-fetch readiness predicate stopped this attempt; no automatic reload."
+        "sha256": "76d5494439f64c613badade648655d18295b15fd1883a0d40d99da396cf34722",
+        "bytes": 229224,
+        "width": 1209,
+        "height": 692
       }
     ],
-    "normal_TLS_diagnostic": {
-      "receipt": "runs/source_agent_delivery_20261116/hosted_ui_acceptance_01/normal_tls_S01_probe.json",
-      "receipt_sha256": "56840b5864d0a655c816e5b64aa6e17733fe3ceff0ce129253be1462193619e5",
-      "request": "one authenticated recorded-S01 GET",
-      "url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/source-agent/job/source_agent_eval_dc7b597201da_S01",
-      "TLS_verification": "default system certificate validation",
-      "redirects": "disabled",
-      "new_inference_requests": 0,
-      "source_retrieval_requests": 0,
-      "HTTP_status": 200,
-      "passed": true,
-      "response_bytes": 611395,
-      "response_sha256": "dc36257bfb2a7bda95256781fea743ebb591700fc6d035caa221bf9f9567cecf",
-      "recorded_model_calls": 3,
-      "source_run": "native_evidence_workspace_20261115",
-      "elapsed_seconds": 19.176
-    },
-    "diagnosis": {
-      "observed_error": "net::ERR_NETWORK_CHANGED",
-      "Chromium_error_code": -21,
-      "primary_reference": "https://chromium.googlesource.com/chromium/src/+/main/net/base/net_error_list.h",
-      "primary_reference_blob": "51d5349547a4a41589cdab18a5496529445d3b42",
-      "documented_meaning": "The network changed.",
-      "qualification": "The Chromium error identifies a browser network-change condition. Its cause is unresolved. These receipts establish neither an application bug nor a particular VPN, firewall, browser or operating-system cause. The successful normal-TLS source-agent GET establishes that this authenticated endpoint responded; it does not substitute for a completed hosted visual walkthrough."
-    },
-    "separate_evidence": {
-      "guarded_server_activation": {
-        "SSM_command_id": "1a30d437-22e8-4814-ae81-15f351dea221",
-        "reported_status": "Success",
-        "qualification": "Server/API, restart and source-preservation acceptance are separate from browser ingress acceptance; root deployment receipts are authoritative."
-      },
-      "earlier_local_visual_review": {
-        "receipt": "runs/source_agent_delivery_20261116/local_ui_final588/operator_reviewed_receipt.json",
-        "receipt_sha256": "bf88d8eca198c6c4628a9fc330887d215abedfc858b4b4af6b78c657f5f449cd",
-        "source_commit": "588e098e9524fe79acd32666cab1a07af6863e43",
-        "scope": "Actual local saved-data reproduction, not hosted; 33 UI checks plus a documented operator resolution of a mistaken automation expectation; original script failure retained."
-      },
-      "current_local_visual_review": {
-        "receipt": "runs/source_agent_delivery_20261116/local_capture_ee3/receipt.json",
-        "receipt_sha256": "38d8b1be5b79f90ddbe2d6d914387a2bfab1d87eedf0f941570afcc754c246f4",
-        "source_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
-        "passed": true,
-        "scope": "Actual final ee3 saved-data app capture, fourteen frames with source/graph bookends; GET-only capture, no new inference/retrieval/edits. This is local visual QA, not hosted browser acceptance.",
-        "public_media_acceptance": "docs/evaluations/source_agent_20261116/media_delivery.json"
-      }
-    },
-    "new_inference_requests": 0,
-    "new_source_retrievals": 0,
-    "graph_or_review_edits": 0,
-    "authentication_kept_off_camera": true,
-    "security_relaxations": [],
-    "changes_to_runtime_network_TLS_or_OS_settings": false,
-    "follow_up": "Use the actual endpoint and local walkthrough with this explicit qualification. Any further browser retry requires a specific diagnostic reason; no automatic retries or runtime workarounds were added.",
-    "receipt": "docs/evaluations/source_agent_20261116/hosted_browser_acceptance.json"
+    "screenshots_contain_no_login_or_token": true
   },
   "closing_delivery_checklist": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
@@ -321,7 +81,7 @@
   "format": "biograph-steward.delivery-status.v1",
   "github_review_delivery": {
     "branch": "codex/contextual-gain-delivery",
-    "current_runtime_source_revision": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "current_runtime_source_revision": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
     "private_repository": true,
     "main_modified": false,
     "main_commit_unchanged": "586ec35d33e9429dde91057c4130542988a7ca02",
@@ -342,9 +102,9 @@
   },
   "hosted_review": {
     "authenticated_acceptance_receipt": {
-      "path": "docs/evaluations/source_agent_20261116/hosted_acceptance.json",
-      "bytes": 7022,
-      "sha256": "4c54ae9d926f0e1b89227b88cb2da091629901dd24b0bffe5a83e042e7ad3488"
+      "path": "docs/evaluations/delivery_readiness_20261116/hosted_acceptance.json",
+      "bytes": 8799,
+      "sha256": "d4a17d9f74d9bb8bf801abe6eebb3b1e2837bd872f46155fd0587761a0b26c6a"
     },
     "current_authenticated_acceptance_repeated_in_this_audit": true,
     "interpretation_update": {
@@ -355,7 +115,7 @@
       "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
       "term_explanations": 27
     },
-    "last_verified_authenticated_runtime": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "last_verified_authenticated_runtime": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
     "native_profiles_update": {
       "actual_restart_and_full_Neptune_parity_passed": true,
       "browser_and_restore_checks": "Passed actual Chrome physical/source/reference and GO/accepted read views plus390px layout;235-file scoped restore/Gold export and approved S3 checksums passed.",
@@ -390,8 +150,8 @@
       "term_explanations": 27,
       "runtime_commit": "f6c527a84b68ac0155df4b2c19548c8b88736540"
     },
-    "previous_verified_runtime": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
-    "private_Neptune_mirror": "Read-only full parity reverified after the actual ee3c61c service restart. The mirror remains the separate retained Pharos workspace; native-evidence questions read their saved source files.",
+    "previous_verified_runtime": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "private_Neptune_mirror": "Read-only full parity reverified after the actual 09e95a7 service restart. The mirror remains the separate retained qualified workspace; native-source questions use saved files.",
     "public_entry_check": {
       "TLS_default_verification": true,
       "authenticated_saved_graph_checked": false,
@@ -464,7 +224,43 @@
       "summary": "docs/evaluations/source_agent_20261116/hosted_acceptance.json",
       "existing_graphs_sources_answers_reviews_and_environment_unchanged": true,
       "new_proposals_applied": false
-    }
+    },
+    "previous_source_agent_runtime_acceptance": {
+      "path": "docs/evaluations/source_agent_20261116/hosted_acceptance.json",
+      "bytes": 7022,
+      "sha256": "4c54ae9d926f0e1b89227b88cb2da091629901dd24b0bffe5a83e042e7ad3488"
+    },
+    "verification_cache_update": {
+      "acceptance": {
+        "path": "docs/evaluations/delivery_readiness_20261116/hosted_acceptance.json",
+        "bytes": 8799,
+        "sha256": "d4a17d9f74d9bb8bf801abe6eebb3b1e2837bd872f46155fd0587761a0b26c6a"
+      },
+      "runtime_bridge": {
+        "path": "docs/evaluations/delivery_readiness_20261116/runtime_bridge.json",
+        "bytes": 1579,
+        "sha256": "e0207cb28f133563c4e576993f15466fb97431b56f5313fba8299232a2beb09b"
+      },
+      "performance_observations": {
+        "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+        "bytes": 1692,
+        "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+      },
+      "cold_source_validation_preserved": true,
+      "actual_controller_and_model_results_unchanged": true,
+      "existing_jobs_or_registration_reinstalled": false
+    },
+    "current_browser_acceptance": {
+      "path": "docs/evaluations/delivery_readiness_20261116/hosted_browser_acceptance.json",
+      "bytes": 3619,
+      "sha256": "dbcab2eb50caef6784085cacb9b958b43605ff72324e46cef091853a1af0abdb"
+    },
+    "loading_latency_observation": {
+      "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+      "bytes": 1692,
+      "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+    },
+    "initial_source_verification_latency_remains_material": true
   },
   "no_AWS_graph_or_review_changes": true,
   "no_AWS_workbench_mutations": false,
@@ -530,7 +326,7 @@
   "purpose": "Current judge-facing artifact and capability boundary; prior release manifests remain dated records.",
   "reader_date": "2026-11-16",
   "resources": {
-    "AWS_reviewer_service": "Keep the existing app, HTTPS gateway and private Neptune available for team review. Current source-agent interface accepted after an actual restart and full read-only Neptune parity.",
+    "AWS_reviewer_service": "Keep the existing HTTPS reviewer app and private Neptune available for review. Runtime 09e95a7 passed source-preserving acceptance and full read-only Neptune parity after an actual restart.",
     "Brev_GPU_or_model_needed_for_review": false,
     "Brev_can_stop_compute_keep_persistent_disk": true,
     "Brev_compute_needed_for_current_work": false,
@@ -924,17 +720,17 @@
     "final_public_repository_handoff_completed_by_this_audit": false,
     "latest_indexed_software_ZIP": {
       "path": "output/software/BioGraph_Steward_Software.zip",
-      "bytes": 724892,
-      "sha256": "2896d53b435c45a2bd054b77e0a02069cca253f21acfa83fcb2e2699e4c27ff0",
+      "bytes": 725260,
+      "sha256": "80e5f86ff0d4d4ac0f313eb6bf9ffb73007f52141c1ae3b4434c61b0a840fcac",
       "file_count": 133
     },
-    "latest_indexed_software_ZIP_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "latest_indexed_software_ZIP_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
     "latest_indexed_software_acceptance": {
-      "path": "docs/evaluations/source_agent_20261116/software_acceptance.json",
-      "bytes": 1641,
-      "sha256": "2edd37853c93e53b34ea738706bd2206e885b21cbe0607ee34caa6f847fc31e0"
+      "path": "docs/evaluations/delivery_readiness_20261116/software_acceptance.json",
+      "bytes": 2020,
+      "sha256": "0ebf09969353289f6d517016b4f7cb90c012dc67ccd5ff5faa460057e8f604c8"
     },
-    "latest_indexed_software_scope": "Current source-agent interface and stdlib core. Code only; explicit invented portability fixture separate from the hosted real data. Actual clean-Python CLI/HTTP/export/recovery/restart/saved-mode acceptance passed.",
+    "latest_indexed_software_scope": "Current source-agent interface and stdlib core, with byte-bound positive-verification reuse. Code only; invented portability fixture separate from real hosted data. Clean Python CLI/HTTP/export/recovery/restart/saved-mode acceptance passed.",
     "native_location_source_profile": {
       "AWS_updated": false,
       "ND_root_no_data_excluded": true,
@@ -983,14 +779,14 @@
     "new_core_archive_acceptance": {
       "format": "biograph-steward.standalone-source-agent-delivery-summary.v1",
       "status": "passed",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb",
+      "source_revision": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
       "software_archive": {
         "file": "BioGraph_Steward_Software.zip",
-        "sha256": "2896d53b435c45a2bd054b77e0a02069cca253f21acfa83fcb2e2699e4c27ff0",
-        "bytes": 724892,
+        "sha256": "80e5f86ff0d4d4ac0f313eb6bf9ffb73007f52141c1ae3b4434c61b0a840fcac",
+        "bytes": 725260,
         "file_count": 133
       },
-      "private_acceptance_receipt_sha256": "0f606b2f594e71eac7b6776046f5a61393bd1fd8929e0ddf3062e5a51298bd9a",
+      "private_acceptance_receipt_sha256": "0b0e26a11b52210cb852c032e7c159e1d8ff0f9e72bfb870ecaba4c1a223b64f",
       "clean_python": {
         "version": "3.12.14",
         "no_site": 1,
@@ -1019,7 +815,17 @@
       "separate_actual_model_comparison": "docs/evaluations/SOURCE_AGENT_RESULTS_20261116.md",
       "biological_accuracy_or_independent_user_validation_claimed": false,
       "no_tokens_credentials_raw_HTTP_headers_real_source_records_reference_labels_or_weights_in_archive": true,
-      "hosted_deployment_has_separate_acceptance": true
+      "hosted_deployment_has_separate_acceptance": true,
+      "bundled_how_to_link_is_absolute_repository_URL": true,
+      "core_archive_roots": [
+        "app.py",
+        "LICENSE",
+        "README_DEMO.md",
+        "biograph_steward/"
+      ],
+      "prior_canonical_software_preserved_in_git": "87bface",
+      "presentation_PDF_and_walkthrough_not_modified_by_this_acceptance": true,
+      "cache_functional_regressions_are_separate_from_this_portability_check": true
     },
     "preserved_November_13_indexed_software_checkpoint": {
       "acceptance": {
@@ -1166,17 +972,17 @@
     }
   },
   "source_version_metadata_check": {
-    "biological_target_or_GO_records_requested": false,
-    "created_at": "2026-11-15T03:46:58.138195+00:00",
-    "endpoint": "https://pharos-api.ncats.io/graphql",
-    "frozen_source_graph_retrieved_or_replaced": false,
-    "purpose": "delivery source-version metadata only",
+    "checked_at_UTC": "2026-11-16T17:00:46.151188+00:00",
+    "purpose": "Source version metadata only; no target data or graph updates",
     "query": "query DatabaseVersion { dbVersion }",
-    "request_count": 1,
+    "endpoint": "https://pharos-api.ncats.io/graphql",
+    "target_records_requested": 0,
+    "existing_graphs_changed": false,
+    "status": "metadata_response_received",
     "result": {
       "dbVersion": "pharos319"
     },
-    "scope": "Service-reported database label only; no claim about completeness or equivalence of Pharos400 artifacts."
+    "requests": 1
   },
   "team_review_guide_link_refresh": {
     "format": "biograph-steward.team-review-guide.v1",
@@ -1220,7 +1026,7 @@
   "unresolved_release_actions": [
     {
       "item": "Final reviewed code checkpoint and code-only software archive",
-      "status": "Tested ee3c61c software archive, accepted hosted agent interface and current canonical media prepared. Final submission tag/public publication remain separate actions."
+      "status": "Tested 09e95a7 code-only software and actual hosted acceptance after restart are complete. Final submission tag/public publication remain separate owner actions."
     },
     {
       "item": "Public MIT GitHub/release handoff for open-source track",
@@ -1228,7 +1034,7 @@
     },
     {
       "item": "Permitted complete graph/source access for judges",
-      "status": "mixed-source redistribution route unresolved; protected reviewer route, code-only demo and CC0 annex remain distinct options"
+      "status": "Complete primary graph + 19,310-row abstention ledger + exact captured Pharos comparator prepared on private AWS workbench. Deliver through a permitted organizer access route; mixed-source blanket public redistribution remains uncleared."
     },
     {
       "item": "Independent intended-user feedback",
@@ -1239,7 +1045,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-16T16:38:50.877114+00:00",
+  "updated_at_UTC": "2026-11-16T18:24:05.300550+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,
@@ -1287,7 +1093,15 @@
     "candidate_answer_proteins": 14,
     "locally_accepted_answer_proteins": 0,
     "relationship_to_companion": "Same input snapshot; different source collection. Their totals are not a paired before/after comparison.",
-    "complete_baseline_and_applied_disposition_package_present": false
+    "designated_primary_submission_graph": true,
+    "complete_baseline_and_own_disposition_package_prepared": true,
+    "primary_graph_handoff_receipt": {
+      "path": "docs/evaluations/delivery_readiness_20261116/primary_graph_handoff.json",
+      "bytes": 3197,
+      "sha256": "c29f4fc493263d01ceecf905b302377eca13edbaac1e3ca996babc593cc9f6c2"
+    },
+    "decision_scope": "All 19,310 unassessed abstentions with null confidence. No new biological acceptance or pruning.",
+    "handoff_location": "Private existing AWS workbench; separate from current workspace files and shared-app downloads."
   },
   "additional_question_applicability": {
     "guide": "docs/evaluations/VARIED_QUESTION_CHECK_20261115.md",
@@ -1312,7 +1126,7 @@
     "capture_method": "Narrated edited still states from the actual local application with verified saved research data, plus one clearly labeled rendering of two unchanged scientific-report tables.",
     "continuous_screen_recording": false,
     "value_first_story": true,
-    "demonstrated_citation": "E002: KRAS\u2013CDC42BPB",
+    "demonstrated_citation": "E002: KRAS–CDC42BPB",
     "demonstrated_source_additions": {
       "path": "docs/evaluations/source_agent_20261116/demonstrated_additions.json",
       "bytes": 5853,
@@ -1327,7 +1141,7 @@
       },
       {
         "id": "added_pair",
-        "title": "One concrete addition: KRAS\u2013CDC42BPB",
+        "title": "One concrete addition: KRAS–CDC42BPB",
         "start_seconds": 30.1,
         "end_seconds": 60.4
       },
@@ -1522,7 +1336,7 @@
   },
   "source_agent": {
     "evaluation_implementation": "12d70a261ba75920e136d7bba1d42c2391b9228a",
-    "delivery_runtime": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "delivery_runtime": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
     "result": "Five supported bounded source queries exactly matched deterministic query, answer and focused graph; three controller preflight checks made no model calls.",
     "actual_model_calls": 13,
     "completion_tokens": 972,
@@ -1531,18 +1345,20 @@
     "scientific_accuracy_or_prediction_gain_from_agent_claimed": false,
     "case_scope": "Eight fixed questions from the same 99-target cohort; application-grounded identities; one query tool plus abstention in most plans, two query choices in the location case.",
     "results": "docs/evaluations/SOURCE_AGENT_RESULTS_20261116.md",
-    "implementation_bridge": "docs/evaluations/source_agent_20261116/runtime_bridge.json"
+    "implementation_bridge": "docs/evaluations/source_agent_20261116/runtime_bridge.json",
+    "previous_delivery_runtime": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "verification_cache_delivery_bridge": {
+      "path": "docs/evaluations/delivery_readiness_20261116/runtime_bridge.json",
+      "bytes": 1579,
+      "sha256": "e0207cb28f133563c4e576993f15466fb97431b56f5313fba8299232a2beb09b"
+    },
+    "new_model_calls_for_delivery_update": 0
   },
   "independent_team_feedback": {
     "status": "Partial offline/Pharos-only teammate review received; features/exports reported working, four UI/workflow issues addressed.",
     "record": "docs/evaluations/TEAM_REVIEW_20261116.md",
     "full_saved_source_walkthrough_completed": false,
     "observed_timed_user_study_or_biological_adjudication": false
-  },
-  "final_artifact_audit": {
-    "path": "docs/evaluations/source_agent_20261116/delivery_artifact_audit.json",
-    "bytes": 3266,
-    "sha256": "9ad8dc17c6bf13972be93d2dce856a434a0b97a557c19ee81b02f854896b63c5"
   },
   "previous_walkthrough_before_value_first_revision": {
     "available_at_git_commit": "3e086d387563e24f027d3b8bf33c601515a1aea2",
@@ -1564,6 +1380,376 @@
     "positive_existing_outcomes_foregrounded": true,
     "bounds_explained_in_one_short_segment": true,
     "software_and_presentation_unchanged": true,
-    "prior_video_preserved_in_git": "3e086d387563e24f027d3b8bf33c601515a1aea2"
+    "prior_video_preserved_in_git": "3e086d387563e24f027d3b8bf33c601515a1aea2",
+    "checkpoint_commit": "87bfacefffa12a7a14ac63d42bbd90f2241a957a",
+    "scope": "Earlier media/documentation revision. Its unchanged-software statement applies to that checkpoint; current cache-runtime/software acceptance is recorded separately."
+  },
+  "source_freshness_audit": {
+    "path": "docs/evaluations/delivery_readiness_20261116/source_dates.json",
+    "bytes": 1653,
+    "sha256": "13f68291bdf0fab8fd214e2a0e4c1ed96ea047e38f441ad0e5a81143c8f3df48"
+  },
+  "observed_hosted_graph_identity_audit": {
+    "path": "docs/evaluations/delivery_readiness_20261116/live_state.json",
+    "bytes": 1506,
+    "sha256": "a531db85bd7dacd5488d80613778693601a8378639faa042972da0afa9ca2e95"
+  },
+  "delivery_documentation": {
+    "canonical_user_guide": "HOW_TO_USE.md",
+    "overview": "README.md",
+    "local_setup_and_operator_routes": "START_HERE.md",
+    "judge_evidence_map": "docs/JUDGE_WALKTHROUGH.md",
+    "scoring_and_proposal_crosswalk": "docs/PROJECT_ALIGNMENT.md",
+    "final_release_actions": "docs/releases/20261115/README.md#final-submission-actions",
+    "source_dates": "docs/SOURCE_NOTES.md#current-reviewer-graph-and-source-dates",
+    "research_history_is_separate": true
+  },
+  "verification_cache_validation": {
+    "path": "docs/evaluations/delivery_readiness_20261116/cache_validation.json",
+    "bytes": 2532,
+    "sha256": "2fbcce5a7e4734adb291c5dc9ba69c120deed9824d8501eb7e87edb8c2f3e0a3"
+  },
+  "previous_value_first_artifact_audit": {
+    "path": "docs/evaluations/source_agent_20261116/delivery_artifact_audit.json",
+    "bytes": 3266,
+    "sha256": "9ad8dc17c6bf13972be93d2dce856a434a0b97a557c19ee81b02f854896b63c5"
+  },
+  "artifact_audit_path": "docs/evaluations/delivery_readiness_20261116/artifact_audit.json",
+  "previous_browser_visual_check": {
+    "format": "biograph.source-agent-hosted-browser-acceptance.v1",
+    "recorded_at_UTC": "2026-11-16T15:23:43.097798+00:00",
+    "status": "limited_by_browser_network",
+    "passed": false,
+    "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+    "scope": "Actual authenticated hosted read-only browser smoke after guarded deployment. This is not a human usability study or biological validation.",
+    "summary": "Two fresh normal-TLS, sandboxed Chrome attempts authenticated successfully but did not complete the hosted four-step UI checks. Each recorded net::ERR_NETWORK_CHANGED on the same three read routes. No hosted browser pass is claimed.",
+    "attempts": [
+      {
+        "attempt": 1,
+        "receipt": "runs/source_agent_delivery_20261116/hosted_ui_acceptance_01/receipt.json",
+        "receipt_sha256": "9ac8a798e6ca1c4d171fa49603f6e438b359cc89f5abf3b2de242a5c71c73b2c",
+        "passed": false,
+        "elapsed_ms": 241207,
+        "completed_UI_checks": 0,
+        "javascript_errors": [],
+        "owned_browser_closed": true,
+        "request_outcomes": [
+          {
+            "path": "/",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/auth/login",
+            "method": "POST",
+            "status": 303
+          },
+          {
+            "path": "/",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/refresh-runs",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/biological-comparisons",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/refresh-history",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/function-contexts",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/scientific-assessments",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/pruning-previews",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/workspaces",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/refresh-runs",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/biological-comparisons",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/refresh-history",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/function-contexts",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/pruning-previews",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/scientific-assessments",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/run/native_evidence_workspace_20261115",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/neptune-status",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/workspaces",
+            "method": "GET",
+            "error": "net::ERR_NETWORK_CHANGED"
+          },
+          {
+            "path": "/api/source-agent/status",
+            "method": "GET",
+            "error": "net::ERR_NETWORK_CHANGED"
+          },
+          {
+            "path": "/api/question/native_physical_KRAS_question_v3_20261115",
+            "method": "GET",
+            "error": "net::ERR_NETWORK_CHANGED"
+          }
+        ],
+        "visible_result": "The agent and manual question panes reported Failed to fetch before the four-step workflow became ready.",
+        "termination": "Preserved after known network failures; owned browser closed."
+      },
+      {
+        "attempt": 2,
+        "receipt": "runs/source_agent_delivery_20261116/hosted_ui_acceptance_02/receipt.json",
+        "receipt_sha256": "53b9439cb21b6a86c8e48de5b92817d172133f455bd2868540c1f9f90acca512",
+        "passed": false,
+        "elapsed_ms": 69230,
+        "completed_UI_checks": 0,
+        "javascript_errors": [],
+        "owned_browser_closed": true,
+        "request_outcomes": [
+          {
+            "path": "/",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/auth/login",
+            "method": "POST",
+            "status": 303
+          },
+          {
+            "path": "/",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/refresh-runs",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/biological-comparisons",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/refresh-history",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/pruning-previews",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/function-contexts",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/scientific-assessments",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/workspaces",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/refresh-runs",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/biological-comparisons",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/refresh-history",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/pruning-previews",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/function-contexts",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/scientific-assessments",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/run/native_evidence_workspace_20261115",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/neptune-status",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/workspaces",
+            "method": "GET",
+            "error": "net::ERR_NETWORK_CHANGED"
+          },
+          {
+            "path": "/api/source-agent/status",
+            "method": "GET",
+            "error": "net::ERR_NETWORK_CHANGED"
+          },
+          {
+            "path": "/api/question/native_physical_KRAS_question_v3_20261115",
+            "method": "GET",
+            "error": "net::ERR_NETWORK_CHANGED"
+          }
+        ],
+        "visible_result": "The agent and manual question panes reported Failed to fetch before the four-step workflow became ready.",
+        "termination": "Failed-fetch readiness predicate stopped this attempt; no automatic reload."
+      }
+    ],
+    "normal_TLS_diagnostic": {
+      "receipt": "runs/source_agent_delivery_20261116/hosted_ui_acceptance_01/normal_tls_S01_probe.json",
+      "receipt_sha256": "56840b5864d0a655c816e5b64aa6e17733fe3ceff0ce129253be1462193619e5",
+      "request": "one authenticated recorded-S01 GET",
+      "url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/source-agent/job/source_agent_eval_dc7b597201da_S01",
+      "TLS_verification": "default system certificate validation",
+      "redirects": "disabled",
+      "new_inference_requests": 0,
+      "source_retrieval_requests": 0,
+      "HTTP_status": 200,
+      "passed": true,
+      "response_bytes": 611395,
+      "response_sha256": "dc36257bfb2a7bda95256781fea743ebb591700fc6d035caa221bf9f9567cecf",
+      "recorded_model_calls": 3,
+      "source_run": "native_evidence_workspace_20261115",
+      "elapsed_seconds": 19.176
+    },
+    "diagnosis": {
+      "observed_error": "net::ERR_NETWORK_CHANGED",
+      "Chromium_error_code": -21,
+      "primary_reference": "https://chromium.googlesource.com/chromium/src/+/main/net/base/net_error_list.h",
+      "primary_reference_blob": "51d5349547a4a41589cdab18a5496529445d3b42",
+      "documented_meaning": "The network changed.",
+      "qualification": "The Chromium error identifies a browser network-change condition. Its cause is unresolved. These receipts establish neither an application bug nor a particular VPN, firewall, browser or operating-system cause. The successful normal-TLS source-agent GET establishes that this authenticated endpoint responded; it does not substitute for a completed hosted visual walkthrough."
+    },
+    "separate_evidence": {
+      "guarded_server_activation": {
+        "SSM_command_id": "1a30d437-22e8-4814-ae81-15f351dea221",
+        "reported_status": "Success",
+        "qualification": "Server/API, restart and source-preservation acceptance are separate from browser ingress acceptance; root deployment receipts are authoritative."
+      },
+      "earlier_local_visual_review": {
+        "receipt": "runs/source_agent_delivery_20261116/local_ui_final588/operator_reviewed_receipt.json",
+        "receipt_sha256": "bf88d8eca198c6c4628a9fc330887d215abedfc858b4b4af6b78c657f5f449cd",
+        "source_commit": "588e098e9524fe79acd32666cab1a07af6863e43",
+        "scope": "Actual local saved-data reproduction, not hosted; 33 UI checks plus a documented operator resolution of a mistaken automation expectation; original script failure retained."
+      },
+      "current_local_visual_review": {
+        "receipt": "runs/source_agent_delivery_20261116/local_capture_ee3/receipt.json",
+        "receipt_sha256": "38d8b1be5b79f90ddbe2d6d914387a2bfab1d87eedf0f941570afcc754c246f4",
+        "source_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+        "passed": true,
+        "scope": "Actual final ee3 saved-data app capture, fourteen frames with source/graph bookends; GET-only capture, no new inference/retrieval/edits. This is local visual QA, not hosted browser acceptance.",
+        "public_media_acceptance": "docs/evaluations/source_agent_20261116/media_delivery.json"
+      }
+    },
+    "new_inference_requests": 0,
+    "new_source_retrievals": 0,
+    "graph_or_review_edits": 0,
+    "authentication_kept_off_camera": true,
+    "security_relaxations": [],
+    "changes_to_runtime_network_TLS_or_OS_settings": false,
+    "follow_up": "Use the actual endpoint and local walkthrough with this explicit qualification. Any further browser retry requires a specific diagnostic reason; no automatic retries or runtime workarounds were added.",
+    "receipt": "docs/evaluations/source_agent_20261116/hosted_browser_acceptance.json"
+  },
+  "current_delivery_pass": {
+    "runtime_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+    "runtime_and_restart_acceptance_passed": true,
+    "explicit_hosted_browser_checks_passed": 15,
+    "source_and_review_bytes_preserved": true,
+    "new_model_or_source_retrieval_calls": 0,
+    "primary_graph_handoff_prepared": true,
+    "private_Gold_worker_and_isolated_candidate_stopped": true,
+    "owned_browser_closed": true,
+    "canonical_user_guide": "HOW_TO_USE.md",
+    "loading_observation": {
+      "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+      "bytes": 1692,
+      "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+    },
+    "code_only_software_acceptance": {
+      "path": "docs/evaluations/delivery_readiness_20261116/software_acceptance.json",
+      "bytes": 2020,
+      "sha256": "0ebf09969353289f6d517016b4f7cb90c012dc67ccd5ff5faa460057e8f604c8"
+    },
+    "presentation_and_media_unchanged": true,
+    "final_publication_and_submission_performed": false
   }
 }
