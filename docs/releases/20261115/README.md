@@ -1,4 +1,32 @@
-# November 15 review deliverables
+# Reviewer deliverables
+
+Start with the **[hosted application](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
+and the **[five-minute walkthrough](../../JUDGE_WALKTHROUGH.md)**. Sign in with
+the workspace token supplied privately. The current app presents one guided
+entry point, with research history available separately.
+
+## Current reviewer files
+
+| File | Use |
+|---|---|
+| [Narrated walkthrough](../../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | A captioned screen tour using actual hosted-app captures and readable crops. |
+| [Plain transcript](../../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) | Read the same explanation or use it when presenting. |
+| [Captions](../../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Load the timed captions separately when needed. Captions are also visible in the video. |
+| [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise editable overview, with the detailed research linked separately. |
+| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run the tested Python core. Real source data are supplied separately. |
+
+The canonical software archive is
+[BioGraph Steward Software](../../../output/software/BioGraph_Steward_Software.zip).
+It leads to the real hosted review and separately documents the optional
+invented software fixture. The complete real-data snapshot is not bundled in
+the software archive.
+
+[Current product and scoring summary](../../FINAL_SUBMISSION.md) ·
+[Accepted deployment and artifact status](../../DELIVERY_STATUS_20261115.json)
+
+<details>
+<summary>Earlier private draft assets and preservation receipts</summary>
+
 
 Use the [private review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery)
 for a current checkout, or the named assets in the existing
@@ -70,3 +98,5 @@ Final merge/tag, intended public MIT release, permitted graph/source access and
 actual organizer submission remain separate actions before November 17.
 Independent teammate feedback is due November 16. Keep the AWS reviewer site
 available; saved-data review needs no Brev, GPU or model server.
+
+</details>

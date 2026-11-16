@@ -1,0 +1,254 @@
+{
+  "format": "biograph-steward.varied-saved-source-questions.v1",
+  "status": "completed",
+  "purpose": "Check supported source-aware question applicability beyond the KRAS walkthrough, not biological accuracy or prediction gain. Preserve empty answers, failures and qualifications.",
+  "source_revision": "4c916813144a5bb2267b707642b94ef648c8195c",
+  "frozen_plan_sha256": "3a18521aed0fe2795832ba1ab4de7e29f687b2b0721f0dd25cda77df1b48fcee",
+  "CPU_seconds": 72.886,
+  "elapsed_wall_seconds": 74.363,
+  "scientific_accuracy_or_prediction_gain_estimated": false,
+  "graph_or_review_edits": false,
+  "model_calls": 0,
+  "new_source_fetches": 0,
+  "source_inventory_after_matches_before": {
+    "native_evidence_workspace_20261115": true,
+    "source_faithful_workspace_20261113": true
+  },
+  "workspace_bindings": {
+    "native_evidence_workspace_20261115": {
+      "collection_counts": {
+        "assertions": 16430,
+        "edges": 19310,
+        "nodes": 9724,
+        "targets": 99
+      },
+      "complete_source_replay_seconds": 26.064,
+      "file_inventory_sha256": "76cdca0094a1fc4915363e01f46e0f17499501b9ad6ecfd6155978b33b8b452c",
+      "graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+      "graph_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+      "review_events_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+      "source_files": 207
+    },
+    "source_faithful_workspace_20261113": {
+      "collection_counts": {
+        "assertions": 16682,
+        "edges": 16687,
+        "nodes": 9865,
+        "targets": 99
+      },
+      "complete_source_replay_seconds": 32.375,
+      "file_inventory_sha256": "0abb1cb0e2cdca5c205582ddcf1090e4d62fd40e4926ce1d55523aa626721433",
+      "graph_basis_sha256": "d473c7626ffdb32cdb813ac1649d1ccd93551fdd65ef8e8621315ce3bdf1d8e8",
+      "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "review_events_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+      "source_files": 394
+    }
+  },
+  "complete_local_results_sha256": "1473e29ea184fe62fef24942d731caf6a5e0cce51bf50145c66a275de4a5757d",
+  "tasks": [
+    {
+      "id": "egfr_native_physical",
+      "question": "Which retrieved proteins have native STRING physical associations with EGFR?",
+      "protein": "UniProtKB:P00533",
+      "template": "native_string_physical.v1",
+      "workspace": "native_evidence_workspace_20261115",
+      "status": "completed",
+      "scope_interpretation": "Physical proximity or co-complex association within the exact mapped 99-target cohort; not universal direct binding or disease-specific causation.",
+      "graph_unchanged_after_question_and_source_inspection": true,
+      "views": [
+        {
+          "answer_sha256": "6c1f9f200cf78c25bb190cd32fc2a9467d9a8cbe59db299d887cc0ce47f4cede",
+          "availability": {
+            "accepted_paths": 0,
+            "accepted_proteins": 0,
+            "inspectable_paths": 35,
+            "inspectable_proteins": 35
+          },
+          "citation_groups": 30,
+          "matching_proteins": 35,
+          "omitted_proteins": 5,
+          "outcome": "supported_source_paths_returned",
+          "overview": "Showing 30 of 35 matching proteins in the saved retrieved colorectal adenocarcinoma protein cohort, using accepted and candidate paths for inspection. Saved native physical source only; original functional and assay views remain available separately. The source lists 35 physical pairs for this protein; 41 pairs are not listed and 22 have unavailable participant identity. Both missing states remain unknown.",
+          "returned_proteins": 30,
+          "view": "candidates"
+        },
+        {
+          "answer_sha256": "3c9e23250fb02f6a6a2ad67db5ec8ec36fc8732490a125d4a7d7fd7719c0e81f",
+          "availability": {
+            "accepted_paths": 0,
+            "accepted_proteins": 0,
+            "inspectable_paths": 35,
+            "inspectable_proteins": 35
+          },
+          "citation_groups": 0,
+          "matching_proteins": 0,
+          "omitted_proteins": 0,
+          "outcome": "no_paths_in_this_local_review_view",
+          "overview": "No fully accepted evidence paths were found in this saved cohort. Saved native physical source only; original functional and assay views remain available separately. The source lists 35 physical pairs for this protein; 41 pairs are not listed and 22 have unavailable participant identity. Both missing states remain unknown.",
+          "returned_proteins": 0,
+          "view": "accepted"
+        }
+      ],
+      "execution_parameters": {
+        "graph_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+        "max_paths": 5,
+        "max_results": 30,
+        "mechanism": "questions.answer_question",
+        "protein": "UniProtKB:P00533",
+        "ranking": "alphabetical",
+        "relations": [
+          "interactions"
+        ],
+        "template": "native_string_physical.v1",
+        "views": [
+          "candidates",
+          "accepted"
+        ],
+        "workspace": "native_evidence_workspace_20261115"
+      }
+    },
+    {
+      "id": "tp53_native_location",
+      "question": "Which native GO cell-location annotations describe TP53 in this saved positive active cellular-component profile?",
+      "protein": "UniProtKB:P04637",
+      "template": "native_go_evidence.v1",
+      "workspace": "native_evidence_workspace_20261115",
+      "status": "completed",
+      "scope_interpretation": "Retain literal located_in relation, native evidence code, assigning database and references. Records and concepts are distinct; repeated references are not independent experiments. Not all source evidence codes are experimental.",
+      "graph_unchanged_after_question_and_source_inspection": true,
+      "views": [
+        {
+          "all_records_relation_located_in": true,
+          "assigning_databases_in_returned_rows": {
+            "BHF-UCL": 5,
+            "CAFA": 2,
+            "HPA": 2,
+            "MGI": 5,
+            "ParkinsonsUK-UCL": 1,
+            "Reactome": 133,
+            "UniProt": 43
+          },
+          "evidence_codes_in_returned_rows": {
+            "EXP": 13,
+            "IDA": 43,
+            "IMP": 2,
+            "TAS": 133
+          },
+          "matching_concepts": 12,
+          "matching_native_records": 191,
+          "outcome": "source_records_returned",
+          "page_answer_sha256": [
+            "0aea511003c62fbf195e6b8b09438dc797b51e1dea17fe5a5a6b98ae025561d8"
+          ],
+          "page_cap_reached": false,
+          "returned_concepts": 12,
+          "returned_native_records": 191,
+          "source_publication_sha256": "88de77e9804eea59953d5c68eb332a292e3cfeaf83bce98c2af80c40bad32069",
+          "view": "candidates"
+        },
+        {
+          "all_records_relation_located_in": true,
+          "assigning_databases_in_returned_rows": {},
+          "evidence_codes_in_returned_rows": {},
+          "matching_concepts": 0,
+          "matching_native_records": 0,
+          "outcome": "no_records_in_this_local_review_view",
+          "page_answer_sha256": [
+            "e786a2d622b28f15775db2fcc3404e538e53b2ea69b3427e2f5b2c0dcca78aa5"
+          ],
+          "page_cap_reached": false,
+          "returned_concepts": 0,
+          "returned_native_records": 0,
+          "source_publication_sha256": "88de77e9804eea59953d5c68eb332a292e3cfeaf83bce98c2af80c40bad32069",
+          "view": "accepted"
+        }
+      ],
+      "execution_parameters": {
+        "graph_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+        "limit": 25,
+        "max_pages": 4,
+        "mechanism": "goa_questions.answer_native_go_question",
+        "protein": "UniProtKB:P04637",
+        "source_profile": "complete-cohort-positive-active-CC-located-in-all-codes.v1",
+        "template": "native_go_evidence.v1",
+        "views": [
+          "candidates",
+          "accepted"
+        ],
+        "workspace": "native_evidence_workspace_20261115"
+      }
+    },
+    {
+      "id": "braf_qualified_pathway",
+      "question": "Which retrieved proteins share native-supported exact-revision WikiPathways source context with BRAF?",
+      "protein": "UniProtKB:P15056",
+      "template": "qualified_pathway_source_context.v1",
+      "workspace": "source_faithful_workspace_20261113",
+      "status": "completed",
+      "scope_interpretation": "A \u2192 archived pathway model \u2190 B is shared source context. Distinguish literal protein and compatible gene references; do not assert direct interaction or pathway activity.",
+      "graph_unchanged_after_question_and_source_inspection": true,
+      "views": [
+        {
+          "answer_sha256": "201be4567f1ab7618373001a148cb2fc920b3221447e7841a0d263b8d70a9453",
+          "availability": {
+            "accepted_paths": 0,
+            "accepted_proteins": 0,
+            "inspectable_paths": 267,
+            "inspectable_proteins": 50
+          },
+          "citation_groups": 114,
+          "historical_packet_content_sha256": "4eea8e4abc0368b33bcad3fefaa8b61657adba99ba64ed5bcab230b61e45668d",
+          "matching_proteins": 50,
+          "native_xref_status_counts_in_cited_groups": {
+            "compatible_gene_level_xref": 110,
+            "explicitly_encoded_protein_xref": 4
+          },
+          "omitted_proteins": 20,
+          "outcome": "supported_source_paths_returned",
+          "overview": "Showing 30 of 50 matching proteins in the qualified retained source view. Each path represents one exact cited model shared by two retrieved proteins, not a new protein interaction. Archived native support is required; unresolved source annotations stay in the workspace.",
+          "returned_proteins": 30,
+          "view": "candidates"
+        },
+        {
+          "answer_sha256": "3b872e779de42ecf34919ffae77ed358fcff9ce6f8cbec4dd46a078e237449c9",
+          "availability": {
+            "accepted_paths": 0,
+            "accepted_proteins": 0,
+            "inspectable_paths": 267,
+            "inspectable_proteins": 50
+          },
+          "citation_groups": 0,
+          "historical_packet_content_sha256": "4eea8e4abc0368b33bcad3fefaa8b61657adba99ba64ed5bcab230b61e45668d",
+          "matching_proteins": 0,
+          "native_xref_status_counts_in_cited_groups": {},
+          "omitted_proteins": 0,
+          "outcome": "no_paths_in_this_local_review_view",
+          "overview": "Showing 0 of 0 matching proteins in the qualified retained source view. Each path represents one exact cited model shared by two retrieved proteins, not a new protein interaction. Archived native support is required; unresolved source annotations stay in the workspace.",
+          "returned_proteins": 0,
+          "view": "accepted"
+        }
+      ],
+      "execution_parameters": {
+        "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+        "max_paths": 5,
+        "max_results": 30,
+        "mechanism": "questions.answer_question + qualified_workspace.read_pathway_history",
+        "protein": "UniProtKB:P15056",
+        "ranking": "alphabetical",
+        "relations": [
+          "shared_pathways"
+        ],
+        "source_support": "native_supported",
+        "template": "qualified_pathway_source_context.v1",
+        "views": [
+          "candidates",
+          "accepted"
+        ],
+        "workspace": "source_faithful_workspace_20261113"
+      }
+    }
+  ],
+  "frozen_plan_file": "varied_question_plan.json"
+}

@@ -1,0 +1,92 @@
+{
+  "format": "biograph-steward.walkthrough-delivery.v1",
+  "title": "BioGraph Steward walkthrough",
+  "runtime_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+  "capture_method": "Narrated edited still states from actual protected hosted-application screenshots; focused crops preserve the original UI.",
+  "continuous_screen_recording": false,
+  "actual_screenshot_states": 14,
+  "unique_source_images": 11,
+  "synthetic_voice": "Installed macOS Samantha, with no external speech service",
+  "login_token_account_or_raw_JSON_shown": false,
+  "model_calls_fresh_retrieval_or_graph_edits_for_capture": false,
+  "encoded_duration_seconds": 222.46,
+  "timeline_seconds": 222.315,
+  "video": {
+    "codec": "H.264",
+    "width": 1280,
+    "height": 816
+  },
+  "audio": {
+    "codec": "AAC",
+    "mean_volume_db": -16.4,
+    "peak_volume_db": -1.6
+  },
+  "chapters": [
+    {
+      "id": "start",
+      "title": "Start with real research data",
+      "start_seconds": 0.0,
+      "end_seconds": 24.802
+    },
+    {
+      "id": "answer",
+      "title": "Read the answer",
+      "start_seconds": 24.802,
+      "end_seconds": 55.604
+    },
+    {
+      "id": "source",
+      "title": "Inspect one source",
+      "start_seconds": 55.604,
+      "end_seconds": 88.507
+    },
+    {
+      "id": "measured",
+      "title": "Read the measured comparison",
+      "start_seconds": 88.507,
+      "end_seconds": 128.308
+    },
+    {
+      "id": "review",
+      "title": "Understand review and pruning",
+      "start_seconds": 128.308,
+      "end_seconds": 174.813
+    },
+    {
+      "id": "export",
+      "title": "Share a traceable result",
+      "start_seconds": 174.813,
+      "end_seconds": 222.315
+    }
+  ],
+  "checks": {
+    "full_video_decode": true,
+    "audio_present_without_clipping": true,
+    "outside_app_caption_band": true,
+    "canonical_gene_spellings_in_captions_and_transcript": true,
+    "15_representative_frames_visually_reviewed": true,
+    "independent_root_visual_review": true,
+    "original_UI_not_reconstructed": true,
+    "grey_band_absent": true
+  },
+  "accepted_activation_sha256": "3d51be79ffe0f9cf4ea7dce7ef0a4227e9c75e2fc56ff8bcabc75ab094a006e1",
+  "source_capture_config_sha256": "35ec959235b90d60819dbdf7d129b4635abcf1a41a1c995af842b8ead550e281",
+  "files": {
+    "BioGraph_Steward_Walkthrough.mp4": {
+      "bytes": 6214571,
+      "sha256": "df7265c97d288b493fffd55e880dd1681401a331729289e556a27932e59c57ee"
+    },
+    "BioGraph_Steward_Walkthrough.vtt": {
+      "bytes": 4897,
+      "sha256": "6366cdebd4f88ea52dfd9df668d34c363d3e4361103187879613c5b7cb1c91b2"
+    },
+    "BioGraph_Steward_Walkthrough.srt": {
+      "bytes": 5042,
+      "sha256": "2589a66fc9e01ce1fa201ba64c1a0e9f0bc671a8a485c3efdea896fed6908328"
+    },
+    "BioGraph_Steward_Walkthrough.txt": {
+      "bytes": 4569,
+      "sha256": "1e38fd65fe316bf4b149dd93a6083195c75464f7332a36fa8095f63eab5d1702"
+    }
+  }
+}

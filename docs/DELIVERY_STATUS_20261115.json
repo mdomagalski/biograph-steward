@@ -1,12 +1,14 @@
 {
-  "AWS_graph_change_scope": "Four new separately named saved runs added. Earlier qualified default, reviews and Neptune mirror preserved.",
+  "AWS_graph_change_scope": "Latest reviewer-interface increment changes runtime code only. The earlier four separately named native-profile saved runs and original retained graph remain intact.",
   "authorized_AWS_interpretation_update_complete": true,
   "browser_visual_check": {
-    "in_app_browser": "Unavailable due previously recorded native-module signature issue; no OS/security bypass",
+    "status": "Passed actual final311 hosted fresh-signin, root/native/source/canonical companion/reference/export workflows in installed Chrome; prior390px layout proof retained.",
+    "runtime_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
     "in_app_browser_used": false,
+    "in_app_browser": "Unavailable due recorded native-module signature issue; no OS/security bypass. Normal installed Chrome used.",
     "independent_user_usability_test": false,
-    "receipt": "docs/evaluations/native_profiles_hosted_20261115/browser_acceptance.json",
-    "status": "Passed selected actual hosted workflows in installed Chrome desktop and390px viewport"
+    "receipt": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_browser_acceptance.json",
+    "local_desktop_mobile_receipt": "docs/evaluations/reviewer_journey_delivery_20261115/local_browser_acceptance.json"
   },
   "closing_delivery_checklist": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
@@ -69,13 +71,24 @@
         "name": "SHA256SUMS_NATIVE_PROFILES_20261115.txt",
         "sha256": "d7bef8c9bc47b79976c93d3c50b7dcda3d57fd7e63c5b43808a381c5ffc81cf4"
       }
-    ]
+    ],
+    "current_review_assets_scope": "Draft-release asset records describe preserved earlier checkpoints. Canonical current reviewer files are tracked separately on the private review branch; no release was published.",
+    "current_runtime_source_revision": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+    "canonical_current_reviewer_files": [
+      "output/presentations/BioGraph_Steward_Overview.pptx",
+      "output/software/BioGraph_Steward_Software.zip",
+      "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
+      "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
+      "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
+      "output/walkthrough/BioGraph_Steward_Walkthrough.txt"
+    ],
+    "canonical_file_delivery": "Tracked on private codex/contextual-gain-delivery branch; no new release publication or main merge."
   },
   "hosted_review": {
     "authenticated_acceptance_receipt": {
-      "path": "docs/evaluations/native_profiles_hosted_20261115/summary.json",
-      "bytes": 7896,
-      "sha256": "8fb559ec00336098a90db89b5029ca3b71bf3f7dac31f5fb06cf9093276a6405"
+      "path": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_acceptance.json",
+      "bytes": 3421,
+      "sha256": "772216fe2e5d49e4dae5e03cd96e9e90301a27b4b55742f0f4118677baf9999e"
     },
     "current_authenticated_acceptance_repeated_in_this_audit": true,
     "interpretation_update": {
@@ -86,7 +99,7 @@
       "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
       "term_explanations": 27
     },
-    "last_verified_authenticated_runtime": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "last_verified_authenticated_runtime": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
     "native_profiles_update": {
       "actual_restart_and_full_Neptune_parity_passed": true,
       "browser_and_restore_checks": "Passed actual Chrome physical/source/reference and GO/accepted read views plus390px layout;235-file scoped restore/Gold export and approved S3 checksums passed.",
@@ -122,7 +135,7 @@
       "runtime_commit": "f6c527a84b68ac0155df4b2c19548c8b88736540"
     },
     "previous_verified_runtime": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
-    "private_Neptune_mirror": "Full read-only record parity reverified after real restart of47a2e5a; mirror remains the earlier qualified default. New native source profile uses its saved workspace files.",
+    "private_Neptune_mirror": "Full read-only parity reverified after actual31123ae service restart; the mirror remains the separate retained Pharos workspace. Native evidence questions read their saved source workspace files.",
     "public_entry_check": {
       "TLS_default_verification": true,
       "authenticated_saved_graph_checked": false,
@@ -135,13 +148,38 @@
       "status": 200,
       "url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/"
     },
-    "reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
+    "reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
     "shared_ingress": "saved-data inspection and export only; construction, fresh retrieval, model planning and review edits blocked",
     "workspace_token": "supplied privately; not included in repository or this manifest",
     "previous_interpretation_authenticated_acceptance_receipt": {
       "bytes": 2868,
       "path": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
       "sha256": "9fc6449b60a5f21133e2e9d73439bbc2494ec7aaf2f88c3573b6f0033a571361"
+    },
+    "previous_authenticated_acceptance_receipt_before_reviewer_redesign": {
+      "path": "docs/evaluations/native_profiles_hosted_20261115/summary.json",
+      "bytes": 7896,
+      "sha256": "8fb559ec00336098a90db89b5029ca3b71bf3f7dac31f5fb06cf9093276a6405"
+    },
+    "previous_verified_runtime_before_reviewer_redesign": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "retained_reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
+    "reviewer_experience_update": {
+      "runtime_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+      "actual_restart_and_full_Neptune_parity_passed": true,
+      "real_saved_data_default_after_login": true,
+      "five_tasks": [
+        "Start here",
+        "Question & graph",
+        "Inspect sources",
+        "What changed",
+        "Export"
+      ],
+      "same_snapshot_source_supported_companion_required": true,
+      "source_proof_expandable_without_inline_JSON_dump": true,
+      "saved_graphs_answers_decisions_and_sources_changed": false,
+      "summary": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_acceptance.json",
+      "actual_hosted_browser_workflow_passed": true,
+      "browser_summary": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_browser_acceptance.json"
     }
   },
   "no_AWS_graph_or_review_changes": false,
@@ -182,20 +220,20 @@
     "suggested_whole_graph_handoff": "resulting scoped graph, exhaustive edge decisions, complete retrieved baseline; final organizer schema/version unspecified"
   },
   "presentation": {
-    "actual_native_answer_and_source_captures_runtime": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
-    "all_ten_slides_visually_reviewed": true,
-    "bytes": 472850,
-    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx",
-    "latest_receipt": "docs/evaluations/presentation_native_evidence_v8_20261115_summary.json",
-    "latest_receipt_sha256": "f885ec38978a7733ab828fd596749c7189a8d02044c7a8cbec61857cb0be79b5",
-    "main_slides": 6,
-    "native_PowerPoint_application_tested": false,
-    "optional_PDF_export": "Unavailable because bundled renderer lacks a standard font module; editablePPTX/renderedQA complete.",
-    "previous_v7_retained": true,
+    "file": "output/presentations/BioGraph_Steward_Overview.pptx",
+    "bytes": 419652,
+    "sha256": "8e920247cfa30c0521cad9e89032df9daaf8b3604a5504668d70f052516c8577",
+    "slides": 7,
+    "all_slides_rendered_and_visually_reviewed": true,
     "root_contact_sheet_reviewed": true,
-    "sha256": "c6f3331b7cb9d554024e6d2b658d25e8efdaa70313011792695f877c5e3ed1f1",
-    "source_scope": "Nativeprofile candidatecontext,positivepublicreferencecoverage,alloriginalpredictioncontrols and qualifications retained.",
-    "technical_appendix_slides": 4
+    "native_editable_reference_table": true,
+    "actual_saved_data_screen_captures": true,
+    "capture_scope": "Actual local4c navigation/answer/qualification and final311 source/export on unchanged saved real data; per-image runtime provenance in notes. No claim of hosted capture for these stills.",
+    "selected_path_distinguished_from_full_workspace": true,
+    "historical_v8_preserved": true,
+    "native_PowerPoint_application_tested": false,
+    "latest_receipt": "docs/evaluations/reviewer_journey_delivery_20261115/presentation_acceptance.json",
+    "latest_receipt_sha256": "17ae1f003e4e5bf0f826dc650b406d1129d70e143236ccf91c0a0bb888cade0e"
   },
   "purpose": "Current judge-facing artifact and capability boundary; prior release manifests remain dated records.",
   "reader_date": {
@@ -204,7 +242,7 @@
     "timezone": "America/New_York"
   },
   "resources": {
-    "AWS_reviewer_service": "Retain app/gateway/privateNeptune for team review. Runtime47a2e5a accepted after restart and full Neptune parity; native profile and prior qualified default remain separate.",
+    "AWS_reviewer_service": "Keep existing app, HTTPS gateway and private Neptune available for team review. Final31123ae interface accepted after real restart and full Neptune parity; earlier graph, sources and decisions unchanged.",
     "Brev_GPU_or_model_needed_for_review": false,
     "Brev_can_stop_compute_keep_persistent_disk": true,
     "Brev_compute_needed_for_current_work": false,
@@ -589,17 +627,17 @@
     "core_requires_pip": false,
     "final_public_repository_handoff_completed_by_this_audit": false,
     "latest_indexed_software_ZIP": {
-      "bytes": 688047,
-      "file": "biograph_steward_core_saved_review_software.zip",
-      "file_count": 129,
-      "sha256": "f688f894ff3933f4b85fdbf62425cbf1e805a01d6852526adcf2bce261a0e993"
+      "file": "output/software/BioGraph_Steward_Software.zip",
+      "bytes": 696121,
+      "sha256": "6f752794432bc5bf8aebd66827d26caba21b43d1e05b7ff1927673606df0169b",
+      "file_count": 129
     },
-    "latest_indexed_software_ZIP_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "latest_indexed_software_ZIP_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
     "latest_indexed_software_acceptance": {
-      "path": "docs/evaluations/software_release_cached_review_20261115_summary.json",
-      "sha256": "bd20359b2e6642fd950af71bd956d0e3f1ee462b73322bdd01f80532143d7009"
+      "path": "docs/evaluations/reviewer_journey_delivery_20261115/software_acceptance.json",
+      "sha256": "397930959741dbb873e2ba6fbb39ed07eb5d40b7626fab8b215b16d907d2b12d"
     },
-    "latest_indexed_software_scope": "Code-only standard-library core; no real source snapshots, weights or reference cases. Normal synthetic export/reopen and explicit saved-data-only policy checked.",
+    "latest_indexed_software_scope": "Hosted-first guide and current five-tab core; explicit invented fixture separate. Code only, no real source datasets or credentials; actual cleanPython CLI/HTTP/export/recovery/restart/saved-mode checks passed.",
     "native_location_source_profile": {
       "AWS_updated": false,
       "ND_root_no_data_excluded": true,
@@ -635,7 +673,8 @@
       "source_record_and_concept_union_exact": true,
       "source_recovery_v1_behavior_preserved": true,
       "status": "implemented and locally replayed through existing GOA source, question, inspection and export flow",
-      "targets_with_native_records": 94
+      "targets_with_native_records": 94,
+      "status_scope": "Historical local standalone native_location workspace/census; its source profile is also included in the separately accepted hosted native_evidence workspace."
     },
     "native_physical_and_saved_review_features": {
       "new_source_data_bundled_in_core_ZIP": false,
@@ -645,9 +684,13 @@
       "status": "deployed and authenticated after real restart"
     },
     "new_core_archive_acceptance": {
-      "actual_graph_ledger_and_answer_exports_verified": true,
+      "acceptance_receipt": {
+        "file": "acceptance.json",
+        "sha256": "600b41c38cd7dd0f6764b44b3bfa47cf808b6f91e62d90ab10bd697276517356"
+      },
+      "actual_CLI_HTTP_export_recovery_restart_reopen_passed": true,
       "all_owned_servers_stopped": true,
-      "browser_visual_check": false,
+      "biological_accuracy_or_independent_user_validation_claimed": false,
       "clean_python": {
         "no_site": 1,
         "site_loaded": false,
@@ -655,33 +698,31 @@
         "version": "3.12.14"
       },
       "cloud_calls": 0,
-      "fresh_extraction_and_saved_answer_reopen_passed": true,
-      "model_calls": 0,
-      "source_fetches": 0
-    },
-    "new_local_synthetic_check": {
-      "UI_browser_visual_check": "unavailable: browser plugin native module rejected by macOS code-signature check",
-      "cloud_calls": 0,
-      "created_at": "2026-11-15T02:19:46.665164+00:00",
-      "format": "biograph-steward.delivery-local-synthetic-check.v1",
-      "graph": {
-        "assertions": 17,
-        "edges": 18,
-        "nodes": 12
+      "code_only_no_real_datasets": true,
+      "format": "biograph-steward.standalone-reviewer-delivery-summary.v1",
+      "hosted_first_readme_and_five_current_tasks_verified": true,
+      "independent_actual_catalogue_same_snapshot_review": {
+        "actual_catalogue_primary": "/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115",
+        "actual_companion": "/?run=source_faithful_workspace_20261113&question=question_20261113T070731Z_1079c2ac",
+        "same_source_snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "source_or_graph_mutation": false,
+        "source_validation_still_on_open": true,
+        "status": "passed"
       },
-      "loopback_only": true,
+      "invented_local_fixture_explicitly_separate": true,
       "model_calls": 0,
-      "no_parent_paths": true,
-      "page_status": 200,
-      "question_id": "question_20261115T021946Z_ec276f7e",
-      "returned_results": 2,
-      "run_zip_bytes": 123529,
-      "run_zip_sha256": "44916e12a5db399bfce1d3e19f7fffe98aa91c655e636cf51399f4140eee4605",
-      "saved_answer_equal": true,
-      "source_guide_returned": true,
-      "source_retrievals": 0,
-      "synthetic": true,
-      "zip_files": 20
+      "saved_data_only_actual_HTTP_and_zero_forbidden_factories_passed": true,
+      "software_archive": {
+        "bytes": 696121,
+        "file": "BioGraph_Steward_Software.zip",
+        "file_count": 129,
+        "sha256": "6f752794432bc5bf8aebd66827d26caba21b43d1e05b7ff1927673606df0169b"
+      },
+      "source_fetches": 0,
+      "source_revision": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+      "status": "passed",
+      "uploaded": false,
+      "upstream_notices_preserved": true
     },
     "preserved_November_13_indexed_software_checkpoint": {
       "acceptance": {
@@ -732,7 +773,59 @@
       "qualification": "docs/evaluations/saved_native_cache_20261115/qualification.json",
       "qualified_original_reader_files_unchanged": true
     },
-    "source_code_commit_at_local_check": "47a2e5aebeabe555c35bfb9e9e46343213752c69"
+    "source_code_commit_at_local_check": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "previous_indexed_software": {
+      "archive": {
+        "bytes": 688047,
+        "file": "biograph_steward_core_saved_review_software.zip",
+        "file_count": 129,
+        "sha256": "f688f894ff3933f4b85fdbf62425cbf1e805a01d6852526adcf2bce261a0e993"
+      },
+      "commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+      "acceptance": {
+        "path": "docs/evaluations/software_release_cached_review_20261115_summary.json",
+        "sha256": "bd20359b2e6642fd950af71bd956d0e3f1ee462b73322bdd01f80532143d7009"
+      }
+    },
+    "previous_core_archive_acceptance": {
+      "actual_graph_ledger_and_answer_exports_verified": true,
+      "all_owned_servers_stopped": true,
+      "browser_visual_check": false,
+      "clean_python": {
+        "no_site": 1,
+        "site_loaded": false,
+        "site_package_paths": [],
+        "version": "3.12.14"
+      },
+      "cloud_calls": 0,
+      "fresh_extraction_and_saved_answer_reopen_passed": true,
+      "model_calls": 0,
+      "source_fetches": 0
+    },
+    "historical_local_synthetic_check": {
+      "UI_browser_visual_check": "unavailable: browser plugin native module rejected by macOS code-signature check",
+      "cloud_calls": 0,
+      "created_at": "2026-11-15T02:19:46.665164+00:00",
+      "format": "biograph-steward.delivery-local-synthetic-check.v1",
+      "graph": {
+        "assertions": 17,
+        "edges": 18,
+        "nodes": 12
+      },
+      "loopback_only": true,
+      "model_calls": 0,
+      "no_parent_paths": true,
+      "page_status": 200,
+      "question_id": "question_20261115T021946Z_ec276f7e",
+      "returned_results": 2,
+      "run_zip_bytes": 123529,
+      "run_zip_sha256": "44916e12a5db399bfce1d3e19f7fffe98aa91c655e636cf51399f4140eee4605",
+      "saved_answer_equal": true,
+      "source_guide_returned": true,
+      "source_retrievals": 0,
+      "synthetic": true,
+      "zip_files": 20
+    }
   },
   "source_version_metadata_check": {
     "biological_target_or_GO_records_requested": false,
@@ -762,7 +855,7 @@
   "unresolved_release_actions": [
     {
       "item": "Final reviewed code checkpoint and code-only software archive",
-      "status": "Tested47a2e5a code-onlycore archive and accepted hostedruntime prepared; final submissiontag/publicpublication remain separate actions."
+      "status": "Tested31123ae code-only core archive and accepted hosted interface prepared; final submission tag/public publication remain separate actions."
     },
     {
       "item": "Public MIT GitHub/release handoff for open-source track",
@@ -781,7 +874,7 @@
       "status": "not supplied; hidden gold labels are not needed to finish a clear reproducible handoff"
     }
   ],
-  "updated_at_UTC": "2026-11-15T21:56:09.747883+00:00",
+  "updated_at_UTC": "2026-11-16T02:37:04.061766+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,
@@ -799,6 +892,83 @@
     "retained_evidence": 16687,
     "source_capture": "Pharos319, 2026-10-14; extension/publisher context retain separate dates",
     "source_redistribution": "not cleared as a blanket mixed-source public packet; includes 1,588 KEGG records",
-    "statement_basis": "recorded verified hosted/source packet receipts, not a fresh full graph extraction in this audit"
+    "statement_basis": "Original source-packet receipts and actual final311 authenticated restart/source-preservation checks.",
+    "role": "Applied-qualification companion and private Neptune mirror; not the native-source primary example."
+  },
+  "previous_presentation": {
+    "actual_native_answer_and_source_captures_runtime": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "all_ten_slides_visually_reviewed": true,
+    "bytes": 472850,
+    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx",
+    "latest_receipt": "docs/evaluations/presentation_native_evidence_v8_20261115_summary.json",
+    "latest_receipt_sha256": "f885ec38978a7733ab828fd596749c7189a8d02044c7a8cbec61857cb0be79b5",
+    "main_slides": 6,
+    "native_PowerPoint_application_tested": false,
+    "optional_PDF_export": "Unavailable because bundled renderer lacks a standard font module; editablePPTX/renderedQA complete.",
+    "previous_v7_retained": true,
+    "root_contact_sheet_reviewed": true,
+    "sha256": "c6f3331b7cb9d554024e6d2b658d25e8efdaa70313011792695f877c5e3ed1f1",
+    "source_scope": "Nativeprofile candidatecontext,positivepublicreferencecoverage,alloriginalpredictioncontrols and qualifications retained.",
+    "technical_appendix_slides": 4
+  },
+  "primary_reviewer_workspace": {
+    "name": "native_evidence_workspace_20261115",
+    "role": "Default real-data source-enrichment example",
+    "primary_targets": 99,
+    "entities": 9724,
+    "evidence_records": 19310,
+    "assertions": 16430,
+    "graph_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+    "candidate_answer_proteins": 14,
+    "locally_accepted_answer_proteins": 0,
+    "relationship_to_companion": "Same input snapshot; different source collection. Their totals are not a paired before/after comparison.",
+    "complete_baseline_and_applied_disposition_package_present": false
+  },
+  "additional_question_applicability": {
+    "guide": "docs/evaluations/VARIED_QUESTION_CHECK_20261115.md",
+    "aggregate_receipt": "docs/evaluations/reviewer_journey_delivery_20261115/varied_question_check.json",
+    "source_revision": "4c916813144a5bb2267b707642b94ef648c8195c",
+    "tasks": [
+      "EGFR native physical partners",
+      "TP53 native location records",
+      "BRAF archived pathway context"
+    ],
+    "same_99_target_cohort_only": true,
+    "accuracy_or_prediction_gain_claimed": false,
+    "models_or_new_retrieval_requested": false
+  },
+  "walkthrough": {
+    "file": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
+    "runtime_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+    "seconds": 222.46,
+    "capture_method": "Narrated edited still states from actual protected hosted-application screenshots; focused crops preserve the original UI.",
+    "continuous_screen_recording": false,
+    "narration_and_burned_in_captions": true,
+    "transcript": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
+    "captions": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
+    "alternate_captions": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
+    "receipt": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
+    "receipt_sha256": "9396b7bae053cc91f3f540a3cccf524a6f798ab9709a77b10971a323ebafffbb",
+    "files": {
+      "BioGraph_Steward_Walkthrough.mp4": {
+        "bytes": 6214571,
+        "sha256": "df7265c97d288b493fffd55e880dd1681401a331729289e556a27932e59c57ee"
+      },
+      "BioGraph_Steward_Walkthrough.vtt": {
+        "bytes": 4897,
+        "sha256": "6366cdebd4f88ea52dfd9df668d34c363d3e4361103187879613c5b7cb1c91b2"
+      },
+      "BioGraph_Steward_Walkthrough.srt": {
+        "bytes": 5042,
+        "sha256": "2589a66fc9e01ce1fa201ba64c1a0e9f0bc671a8a485c3efdea896fed6908328"
+      },
+      "BioGraph_Steward_Walkthrough.txt": {
+        "bytes": 4569,
+        "sha256": "1e38fd65fe316bf4b149dd93a6083195c75464f7332a36fa8095f63eab5d1702"
+      }
+    },
+    "full_decode_audio_and_visual_checks_passed": true,
+    "no_login_tokens_shown": true,
+    "models_or_fresh_retrieval_requested": false
   }
 }

@@ -14,16 +14,13 @@ status | hands-on time | waiting | exact obstacle or note
 T2 - Inspect the original source:
 status | hands-on time | waiting | exact obstacle or note
 
-T3 - Explain GO source/QC differences:
+T3 - Explain an applied qualification and uncertain records:
 status | hands-on time | waiting | exact obstacle or note
 
-T4 - Download and understand exports:
+T4 - Interpret the measured result and its limits:
 status | hands-on time | waiting | exact obstacle or note
 
-T5 - Assessment / another question:
-status | hands-on time | waiting | exact obstacle or note
-
-Optional real Reactome annex:
+T5 - Download and understand graph / decisions / baseline:
 status | hands-on time | waiting | exact obstacle or note
 
 What did you expect the app to do? Did its result match?

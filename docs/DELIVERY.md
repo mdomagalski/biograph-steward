@@ -2,28 +2,43 @@
 
 ## Shared reviewer site
 
-[Open the new saved KRAS example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask), or use the
-[earlier qualified TP53 example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask). Follow the
-[ten-minute native-evidence guide](REVIEW_NATIVE_EVIDENCE_20261115.md) for the
-new example and the [weekend guide](TEAM_REVIEW_GUIDE_20261113.md) for the earlier
-workflow. Independent teammate feedback remains pending.
+[Open BioGraph Steward](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
+and sign in with the privately supplied workspace token. Follow the
+[five-minute walkthrough](JUDGE_WALKTHROUGH.md). The current entry point opens
+real saved evidence and guides the reviewer through **Start here**, **Question
+& graph**, **Inspect sources**, **What changed** and **Export**.
 
-The shared reviewer route runs code **`47a2e5a`** with an explicit saved-data-only
-server policy. It supports saved questions, source inspection and downloads.
-Construction, fresh retrieval, model calls and review edits are blocked. The
-shared token admits the valid saved workspaces; it does not create individual
-reviewer roles. Reviewers need a browser and the token supplied privately, with
-no AWS account, Brev instance or model server. The
-[hosted acceptance receipt](evaluations/native_profiles_hosted_20261115/summary.json) records a real service
-restart, authenticated saved-answer/source checks and preservation of the
-older graph, review states, environment and private Neptune connection.
+Reviewers need only a browser. No AWS account, local tunnel or Brev/model server
+is needed. The shared site reads completed real-data work. Construction, fresh
+retrieval, live model planning and review edits are disabled during this shared
+review. The token admits the valid saved workspaces; it does not create
+individual reviewer roles. Independent teammate feedback remains pending.
 
-The [current delivery status](DELIVERY_STATUS_20261115.json) separates runtime,
-code-only software, saved data and scientific results. The new
-[47a2e5a core software ZIP acceptance](evaluations/software_release_cached_review_20261115_summary.json)
-checks clean Python construction, real synthetic exports, fresh reopen and
-saved-data-only denials without real source data, model or cloud access.
-Final tagging, public visibility and actual submission remain separate actions.
+The [delivery status](DELIVERY_STATUS_20261115.json) identifies the exact accepted
+runtime and deployment receipts. Source profiles, qualification decisions and
+scientific outcomes retain their separate evidence records. A successful
+runtime check establishes software operation, rather than biological truth.
+
+The [narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+uses actual hosted-app captures, readable crops and captions. It runs for 3:42;
+its [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and
+[seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
+provide the same task-focused introduction.
+
+## Standalone software
+
+The current [software ZIP](../output/software/BioGraph_Steward_Software.zip)
+contains the Python core and its upstream notices. Its instructions lead to
+the hosted real-data review and separately explain the optional invented local
+fixture. The [acceptance summary](evaluations/reviewer_journey_delivery_20261115/software_acceptance.json)
+records clean Python construction, actual graph/decision exports, source
+recovery and saved-answer replay after restart. It includes no real source
+snapshots, credentials, reference labels or model weights.
+
+A fresh checkout is a software delivery, not the complete mixed-source dataset.
+Use the hosted app for the real demonstration. The [release index](releases/20261115/README.md)
+separates canonical reviewer artifacts from retained historical packages. Final
+public visibility, tagging and actual submission remain separate actions.
 
 ## Saved graph and assessment scope
 
@@ -31,11 +46,12 @@ Two separate saved workspaces remain available:
 
 | Workspace | Scope and use |
 |---|---|
-| New native-evidence profile | **99 primary targets, 9,724 entities and 19,310 evidence records**: 15,671 original Pharos records, 3,309 native GOA rows and 330 STRING physical associations. Additions remain candidates. Use the KRAS answer and public-reference comparison. |
-| Earlier qualified retained graph | **99 primary targets, 9,865 entities and 16,687 retained records**, with the 16,985-record input and every keep/prune/abstain decision preserved. Its 298 obsolete-GO-ID exclusions concern identifier currency, not experimentally disproved biology. Use the TP53 pathway example. |
+| Enriched candidate-evidence view | **99 primary targets, 9,724 entities and 19,310 evidence records**: 15,671 original Pharos records, 3,309 native GOA rows and 330 STRING physical associations. Additions remain candidates. Use the KRAS answer and public-reference comparison. |
+| Retained graph after qualification | **99 primary targets, 9,865 entities and 16,687 retained records**, with the 16,985-record input and every keep/prune/abstain decision preserved. Its 298 obsolete-GO-ID exclusions concern identifier currency, not experimentally disproved biology. Use the TP53 pathway example. |
 
-The new source profile does not replace the earlier retained graph or its
-reviews. The private Neptune mirror continues to hold that earlier qualified
+The two views have different source collections. Their total record counts
+are not a paired before/after comparison. The enrichment view preserves the
+separate retained graph and its reviews. The private Neptune mirror continues to hold that earlier qualified
 graph. Ordinary saved answers, including the new native profile, use their
 saved workspace files.
 
@@ -80,6 +96,9 @@ The native data profile and aggregate assessment have separate source terms and
 identities. A successful runtime update is not evidence of biological truth.
 Mixed-source public redistribution, including KEGG material in the earlier
 graph, has not been cleared. Source inspection remains protected.
+
+<details>
+<summary>Earlier verified checkpoints and recovery records</summary>
 
 ## Earlier verified checkpoints
 
@@ -317,3 +336,5 @@ during preparation and is intended to become public at final submission
 (planned for November 17, 2026). Repository visibility, source permission and
 the actual organizer handoff remain separate delivery actions. Do not claim an
 official score while the organizer's final scoring contract is unavailable.
+
+</details>
