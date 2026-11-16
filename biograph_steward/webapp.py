@@ -182,6 +182,7 @@ def report_html(graph: dict | None = None, *, protected=False, saved_data_only=F
             'body[data-saved-data-only="true"] #assayQuestionControls,'
             'body[data-saved-data-only="true"] #civicForm,'
             'body[data-saved-data-only="true"] #regulatoryForm,'
+            'body[data-saved-data-only="true"] #sourceAgentLive,'
             'body[data-saved-data-only="true"] #submissionCreateNote,'
             'body[data-saved-data-only="true"] #submissionExport{display:none!important}</style></head>')
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
@@ -202,6 +203,7 @@ def report_html(graph: dict | None = None, *, protected=False, saved_data_only=F
     script += '\n' + Path(__file__).with_name("scientific_assessment.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("function_context.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("protein_context.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("source_agent.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("navigation.js").read_text(encoding="utf-8")
     script += '\ninitializePruningPreview();\n'
     script += '\ninitializeBiologicalComparisons();\n'
@@ -242,11 +244,22 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
     neptune_region = os.environ.get('BIOGRAPH_AWS_REGION', '').strip()
     neptune_state = {'mirror': neptune_mirror}
     neptune_lock = Lock()
+    source_agent_lock = Lock()
     neptune_configured = neptune_mirror is not None or bool(neptune_endpoint)
     # Operator-owned paths only: browsers cannot select a local context/QC path.
     # Keep these optional packets outside strict saved workspace inventories.
     go_context_dir = go_context_dir or os.environ.get('BIOGRAPH_GO_CONTEXT_DIR', '').strip() or None
     go_qc_dir = go_qc_dir or os.environ.get('BIOGRAPH_GO_QC_DIR', '').strip() or None
+
+    def source_agent_source(identifier):
+        if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+            raise ValueError('Supply an exact saved source workspace identifier.')
+        folder = runs_dir / identifier
+        if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+            raise ValueError('Saved source workspace not found.')
+        from .saved_run_cache import read_run
+        verify_saved_refresh(folder)
+        return folder, read_run(folder)[2]
 
     def get_neptune_mirror():
         if not neptune_configured:
@@ -394,6 +407,52 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             if path == '/api/neptune-status':
                 self.json_reply({'configured': neptune_configured,
                                  'backend': 'neptune' if neptune_configured else None})
+                return
+            if path in {'/api/source-agent/status', '/api/source-agent/jobs'}:
+                try:
+                    options = parse_qs(urlparse(self.path).query, keep_blank_values=True, max_num_fields=1)
+                    if set(options) - {'run_id'} or any(len(value) != 1 for value in options.values()):
+                        raise ValueError('Use only one optional source workspace identifier.')
+                    identifier = options.get('run_id', [None])[0]
+                    folder, graph = source_agent_source(identifier) if identifier is not None else (None, None)
+                    if path == '/api/source-agent/jobs':
+                        from .source_agent_jobs import list_source_agent_jobs
+                        self.json_reply(list_source_agent_jobs(runs_dir, source_run=identifier))
+                        return
+                    from .source_agent import source_catalogue, configured_source_agent_client
+                    catalogue = source_catalogue(graph, source_run=identifier) if graph is not None else None
+                    config = {'saved_data_only': policy.saved_data_only, 'configured': None,
+                              'enabled': False, 'availability': 'not_probed', 'model': None, 'provider': None,
+                              'catalogue': catalogue, 'caps': {'model_calls': 3, 'evidence_queries': 1,
+                                  'citation_inspection_groups': 3, 'source_assertions_per_group': 32, 'source_reads': 96},
+                              'proposal_only': True, 'graph_writes': False, 'review_writes': False}
+                    if policy.saved_data_only:
+                        config['reason'] = 'Saved review mode: recorded agent replay only. No model configuration or connectivity was checked.'
+                    else:
+                        try:
+                            client = configured_source_agent_client()
+                            config.update(configured=True, model=client.model, provider=client.provider,
+                                          enabled=bool(catalogue and catalogue.get('tools')))
+                        except (ValueError, TypeError) as exc:
+                            config.update(configured=False, reason=str(exc))
+                    self.json_reply(config)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
+            agent_job = re.fullmatch(r'/api/source-agent/job/(source_agent_[A-Za-z0-9_-]{1,67})(/download)?', path)
+            if agent_job:
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('A recorded agent replay takes no query options.')
+                    from .source_agent_jobs import read_source_agent_job
+                    job = read_source_agent_job(runs_dir / agent_job.group(1), runs_dir)
+                    if agent_job.group(2):
+                        self.reply(json.dumps(job, ensure_ascii=True, allow_nan=False).encode('utf-8'),
+                                   content_type='application/json', filename=job['job_id'] + '.json')
+                    else:
+                        self.json_reply(job)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
                 return
             if path == '/api/workspaces':
                 from .workspaces import saved_workspaces
@@ -969,7 +1028,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     if (marker.exists() or marker.is_symlink() or metadata.get('run_mode') == 'qualified_workspace'
                             or (source_folder/'source_retained_package').exists()
                             or (source_folder/'source_retained_package').is_symlink()):
-                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/native-go-question', '/api/protein-context'}:
+                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/native-go-question', '/api/protein-context', '/api/source-agent/run'}:
                             raise ValueError('This qualified retained workspace is read-only. Query or download it; use its preserved baseline for new retrieval or review.')
                 if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/protein-context'}:
                     from .saved_run_cache import read_run
@@ -1262,6 +1321,30 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                                      'comparison': result['comparison'],
                                      'report_url': '/api/refresh/' + run_id + '/',
                                      'download_url': '/api/download/' + run_id})
+                    return
+                if path == '/api/source-agent/run':
+                    from .source_agent import run_source_agent
+                    from .source_agent_jobs import new_source_agent_progress, save_source_agent_job
+                    if set(body) - {'run_id', 'question', 'constraints'} or not {'run_id', 'question'} <= set(body):
+                        raise ValueError('Use only run_id, question and optional bounded constraints for the source agent.')
+                    folder, graph = source_agent_source(body['run_id'])
+                    if not isinstance(body['question'], str) or not 1 <= len(body['question'].strip()) <= 4000:
+                        raise ValueError('The source-agent question must contain 1–4000 characters.')
+                    if 'constraints' in body and not isinstance(body['constraints'], dict):
+                        raise ValueError('Agent constraints must be a JSON object.')
+                    if not source_agent_lock.acquire(blocking=False):
+                        self.json_reply({'error': 'Another source-agent job is running. Wait for it to finish.'}, 409)
+                        return
+                    try:
+                        progress_id, record_event = new_source_agent_progress(runs_dir)
+                        record_event({'event': 'job_request', 'source_run': body['run_id'],
+                                      'question': body['question'], 'constraints': body.get('constraints')})
+                        result = run_source_agent(body['question'], graph, source_run=body['run_id'],
+                            source_folder=folder,
+                            constraints=body.get('constraints'), event_callback=record_event)
+                        self.json_reply(save_source_agent_job(result, runs_dir, progress_id=progress_id))
+                    finally:
+                        source_agent_lock.release()
                     return
                 if path=='/api/plan':
                     from .planning import configured_planner,execute_plan

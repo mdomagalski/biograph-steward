@@ -11,6 +11,8 @@ from .client import PharosClient, PharosError, ENDPOINT, VERSION, SEARCH, DISEAS
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="BioGraph Steward: inspect and trace bounded biomedical evidence.")
     sub = parser.add_subparsers(dest="command")
+    from .source_agent_cli import add_commands as add_source_agent_commands
+    add_source_agent_commands(sub)
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--endpoint", default=ENDPOINT)
     common.add_argument("--cache-dir", type=Path, default=cache_directory())
@@ -289,6 +291,11 @@ def main(argv: list[str] | None = None) -> int:
             p.add_argument('--limit', type=int, default=100)
     args = parser.parse_args(argv)
     try:
+        if args.command in {'source-agent-catalogue', 'source-agent-run', 'source-agent-verify'}:
+            from .source_agent_cli import run_command
+            result, status = run_command(args)
+            print(json.dumps(result, indent=2))
+            return status
         if args.command and args.command.startswith('neptune-'):
             from .client import write_json
             from .neptune import export_projection, Mirror

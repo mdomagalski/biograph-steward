@@ -93,6 +93,16 @@ test('catalogue URLs cannot navigate to external endpoints or mutate query scope
     const h=harness();h.configure({reviewer_entry:{...entry,example_url:url},runs:[]});assert.deepEqual(h.calls.replace,[]);
   }
 });
+test('catalogue accepts only a syntactically bounded recorded-agent link and preserves the manual question',()=>{
+  const h=harness();h.configure({reviewer_entry:{...entry,example_url:'/?run=real_current&question=cited_current&agent_job=source_agent_recorded'},runs:[]});
+  assert.deepEqual(h.calls.replace,['/?run=real_current&question=cited_current&agent_job=source_agent_recorded&view=data']);
+  // Actual source match and live-vs-injected provenance are rechecked by the
+  // separate source-agent reader before it opens any recorded result.
+  for(const suffix of ['agent_job=','agent_job=plan_recorded','agent_job=..%2Foutside',
+    'agent_job=source_agent_a&agent_job=source_agent_b','agent_job=source_agent_'+'a'.repeat(68)]){
+    const bad=harness();bad.configure({reviewer_entry:{...entry,example_url:'/?run=real_current&'+suffix},runs:[]});assert.deepEqual(bad.calls.replace,[]);
+  }
+});
 test('shared reviewer mode exposes no invented builder route on empty setup',()=>{
   const h=harness('',true);h.configure({reviewer_entry:null,runs:[]});assert.equal(h.$('reviewerOffline').hidden,true);
   h.$('reviewerOpenOffline').onclick();assert.equal(h.$('controls').open,false);

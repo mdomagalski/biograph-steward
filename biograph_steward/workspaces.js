@@ -2,8 +2,10 @@
 let reviewerEntry=null,reviewerQualificationSummary=null;
 function reviewerSavedURL(value){
   if(typeof value!=='string'||!value.startsWith('/?'))return null;
-  try{const url=new URL(value,location.href);if(url.origin!==new URL(location.href).origin||url.pathname!=='/'||!(/^[A-Za-z0-9_-]{1,80}$/).test(url.searchParams.get('run')||'')||[...url.searchParams.keys()].some(key=>!['run','question','view'].includes(key)))return null;
-    const question=url.searchParams.get('question');if(question&&!(/^[A-Za-z0-9_-]{1,80}$/).test(question))return null;return url;
+  try{const url=new URL(value,location.href);if(url.origin!==new URL(location.href).origin||url.pathname!=='/'||!(/^[A-Za-z0-9_-]{1,80}$/).test(url.searchParams.get('run')||'')||[...url.searchParams.keys()].some(key=>!['run','question','view','agent_job'].includes(key)))return null;
+    const question=url.searchParams.get('question');if(question&&!(/^[A-Za-z0-9_-]{1,80}$/).test(question))return null;
+    if(url.searchParams.has('agent_job')&&(url.searchParams.getAll('agent_job').length!==1||!/^source_agent_[A-Za-z0-9_-]{1,67}$/.test(url.searchParams.get('agent_job'))))return null;
+    return url;
   }catch(_){return null;}
 }
 function reviewerAnswerReady(){return typeof questionAnswer!=='undefined'&&questionAnswer&&questionAnswer.source_run===runId&&Array.isArray(questionAnswer.citations);}
