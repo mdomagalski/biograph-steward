@@ -1,0 +1,296 @@
+{
+  "format": "biograph-steward.delivery-artifact-audit.v2",
+  "checked_at_UTC": "2026-11-16T21:33:43.349592+00:00",
+  "status": "passed",
+  "scope": "Bounded named-document/link/anchor, current canonical artifact/receipt pin and preserved historical-member check. No runtime tests, source data, network, inference or new statistics.",
+  "named_documents_checked": [
+    "README.md",
+    "HOW_TO_USE.md",
+    "START_HERE.md",
+    "docs/JUDGE_WALKTHROUGH.md",
+    "docs/PROJECT_ALIGNMENT.md",
+    "docs/SOURCE_NOTES.md",
+    "docs/GOLD_SET_INTERFACE.md",
+    "docs/DELIVERY.md",
+    "docs/FINAL_SUBMISSION.md",
+    "docs/SUBMISSION_OVERVIEW.md",
+    "docs/DEMO_SCRIPT.md",
+    "docs/releases/20261115/README.md",
+    "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
+    "docs/TEAM_REVIEW_GUIDE_20261113.md",
+    "docs/evaluations/FINAL_PRODUCT_UI_20261116.md"
+  ],
+  "status_snapshot": {
+    "path": "docs/DELIVERY_STATUS_20261115.json",
+    "bytes": 147994,
+    "sha256": "71118a72121132f039e5aa3e6762a75057891886e4f2d7fb96f253cad9bdaddf"
+  },
+  "local_markdown_targets_checked": 335,
+  "local_anchors_checked": [
+    {
+      "document": "README.md",
+      "target": "START_HERE.md",
+      "anchor": "local-setup"
+    },
+    {
+      "document": "README.md",
+      "target": "docs/SOURCE_AGENT.md",
+      "anchor": "operator-cli"
+    },
+    {
+      "document": "README.md",
+      "target": "docs/SOURCE_NOTES.md",
+      "anchor": "current-reviewer-graph-and-source-dates"
+    },
+    {
+      "document": "README.md",
+      "target": "START_HERE.md",
+      "anchor": "local-setup"
+    },
+    {
+      "document": "HOW_TO_USE.md",
+      "target": "docs/SOURCE_NOTES.md",
+      "anchor": "current-reviewer-graph-and-source-dates"
+    },
+    {
+      "document": "HOW_TO_USE.md",
+      "target": "docs/SOURCE_AGENT.md",
+      "anchor": "operator-cli"
+    },
+    {
+      "document": "HOW_TO_USE.md",
+      "target": "docs/GOLD_SET_INTERFACE.md",
+      "anchor": "protected-downloads"
+    },
+    {
+      "document": "HOW_TO_USE.md",
+      "target": "docs/SOURCE_AGENT.md",
+      "anchor": "operator-cli"
+    },
+    {
+      "document": "START_HERE.md",
+      "target": "docs/SOURCE_AGENT.md",
+      "anchor": "operator-cli"
+    },
+    {
+      "document": "docs/JUDGE_WALKTHROUGH.md",
+      "target": "docs/SOURCE_AGENT.md",
+      "anchor": "operator-cli"
+    },
+    {
+      "document": "docs/JUDGE_WALKTHROUGH.md",
+      "target": "docs/PROJECT_ALIGNMENT.md",
+      "anchor": "scientific-comparisons-and-their-distinct-scopes"
+    },
+    {
+      "document": "docs/JUDGE_WALKTHROUGH.md",
+      "target": "docs/GOLD_SET_INTERFACE.md",
+      "anchor": "protected-downloads"
+    },
+    {
+      "document": "docs/JUDGE_WALKTHROUGH.md",
+      "target": "HOW_TO_USE.md",
+      "anchor": "4-download-the-result-you-need"
+    },
+    {
+      "document": "docs/PROJECT_ALIGNMENT.md",
+      "target": "docs/GOLD_SET_INTERFACE.md",
+      "anchor": "protected-downloads"
+    },
+    {
+      "document": "docs/DELIVERY.md",
+      "target": "docs/GOLD_SET_INTERFACE.md",
+      "anchor": "protected-downloads"
+    },
+    {
+      "document": "docs/FINAL_SUBMISSION.md",
+      "target": "docs/GOLD_SET_INTERFACE.md",
+      "anchor": "protected-downloads"
+    },
+    {
+      "document": "docs/releases/20261115/README.md",
+      "target": "docs/GOLD_SET_INTERFACE.md",
+      "anchor": "protected-downloads"
+    },
+    {
+      "document": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
+      "target": "docs/GOLD_SET_INTERFACE.md",
+      "anchor": "protected-downloads"
+    },
+    {
+      "document": "docs/evaluations/FINAL_PRODUCT_UI_20261116.md",
+      "target": "docs/GOLD_SET_INTERFACE.md",
+      "anchor": "protected-downloads"
+    }
+  ],
+  "canonical_artifacts": {
+    "output/walkthrough/BioGraph_Steward_Walkthrough.mp4": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
+      "bytes": 6744181,
+      "sha256": "8ae3a27059bd74e797ead9fa2796cbfbdee396137cf08edc7306fdfeff3adfed"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.txt": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
+      "bytes": 5272,
+      "sha256": "2c3509228c4968ca54d2d6a83fc6fb98a9d5da8e8a0b018f9d553140535c5e3f"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.vtt": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
+      "bytes": 5393,
+      "sha256": "bb9160c572d62b4df0f3c817aaa7cf70d10c6462309dc2ef33acce6b4c61a30d"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.srt": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
+      "bytes": 5541,
+      "sha256": "e45a3333e7591176674fd02b20a3bfa73017b30d5d50b8c06eff4ceaf5d24a77"
+    },
+    "output/presentations/BioGraph_Steward_Overview.pptx": {
+      "path": "output/presentations/BioGraph_Steward_Overview.pptx",
+      "bytes": 587786,
+      "sha256": "ff7fc489a40b0b73baa58df885f9df7ad581253f44ca53b72c144983688d6e7c"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
+      "bytes": 11964,
+      "sha256": "1c5fb7c343d7f6e75f4150988ad4c6118fd4b28dfa4a247d223adb6044c003ac"
+    },
+    "output/software/BioGraph_Steward_Software.zip": {
+      "path": "output/software/BioGraph_Steward_Software.zip",
+      "bytes": 726558,
+      "sha256": "e568bc7a948d8be8503a9e3a6a4423dc99d834e4adc68018a82783fe4e53aa5e"
+    },
+    "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf": {
+      "path": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
+      "bytes": 47699,
+      "sha256": "16c3faba6e5f130d71044b367b72901027ce09f3c9f1341be212cc454822598c"
+    },
+    "output/docx/BioGraph_Steward_Final_Report.docx": {
+      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+      "bytes": 12372,
+      "sha256": "3f8da3ffb2a7df42ac710cd0a613e28215c7c0e5aac17a22ecbe540a3d9dd13b"
+    }
+  },
+  "current_pin_locations": {
+    "output/docx/BioGraph_Steward_Final_Report.docx": [
+      "final_report"
+    ],
+    "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json": [
+      "protected_graph_downloads"
+    ],
+    "output/software/BioGraph_Steward_Software.zip": [
+      "software.latest_indexed_software_ZIP",
+      "software_acceptance.archive"
+    ],
+    "docs/evaluations/final_prod_ui_20261116/software_acceptance.json": [
+      "software.latest_indexed_software_acceptance"
+    ],
+    "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json": [
+      "hosted_review.authenticated_acceptance_receipt"
+    ],
+    "output/walkthrough/BioGraph_Steward_Walkthrough.mp4": [
+      "walkthrough",
+      "media_acceptance.canonical_files"
+    ],
+    "docs/evaluations/source_agent_20261116/demonstrated_additions.json": [
+      "walkthrough.demonstrated_source_additions"
+    ],
+    "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json": [
+      "walkthrough.receipt",
+      "media_acceptance.canonical_files"
+    ],
+    "docs/evaluations/source_agent_20261116/media_delivery.json": [
+      "walkthrough.acceptance"
+    ],
+    "output/presentations/BioGraph_Steward_Overview.pptx": [
+      "presentation",
+      "media_acceptance.canonical_files",
+      "presentation_receipt"
+    ],
+    "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf": [
+      "team_review_guide_link_refresh",
+      "team_review_guide_link_refresh_receipt"
+    ],
+    "docs/evaluations/delivery_readiness_20261116/primary_graph_handoff.json": [
+      "primary_reviewer_workspace.primary_graph_handoff_receipt"
+    ],
+    "output/walkthrough/BioGraph_Steward_Walkthrough.txt": [
+      "media_acceptance.canonical_files"
+    ],
+    "output/walkthrough/BioGraph_Steward_Walkthrough.vtt": [
+      "media_acceptance.canonical_files"
+    ],
+    "output/walkthrough/BioGraph_Steward_Walkthrough.srt": [
+      "media_acceptance.canonical_files"
+    ]
+  },
+  "indexed_public_receipts_checked": {
+    "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json": {
+      "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
+      "bytes": 4543,
+      "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
+    },
+    "docs/evaluations/final_prod_ui_20261116/software_acceptance.json": {
+      "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
+      "bytes": 2564,
+      "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
+    },
+    "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json": {
+      "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+      "bytes": 5806,
+      "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+    },
+    "docs/evaluations/source_agent_20261116/demonstrated_additions.json": {
+      "path": "docs/evaluations/source_agent_20261116/demonstrated_additions.json",
+      "bytes": 5853,
+      "sha256": "650819aad10b8d567839c9e32b82496f5c8faa6e39d84c968c8621c469c11ee6"
+    },
+    "docs/evaluations/source_agent_20261116/media_delivery.json": {
+      "path": "docs/evaluations/source_agent_20261116/media_delivery.json",
+      "bytes": 2652,
+      "sha256": "62ba9a373e53f00a852becdd776bb04f0e472d06e6be76e647732417753f02e7"
+    },
+    "docs/evaluations/delivery_readiness_20261116/primary_graph_handoff.json": {
+      "path": "docs/evaluations/delivery_readiness_20261116/primary_graph_handoff.json",
+      "bytes": 3197,
+      "sha256": "c29f4fc493263d01ceecf905b302377eca13edbaac1e3ca996babc593cc9f6c2"
+    },
+    "docs/evaluations/source_agent_20261116/presentation_delivery.json": {
+      "path": "docs/evaluations/source_agent_20261116/presentation_delivery.json",
+      "bytes": 1156,
+      "sha256": "46c9476797726408cd79fcd217e71aef9569acf50dd4f8505b089da68e89a9cb"
+    },
+    "docs/evaluations/final_prod_ui_20261116/team_review_guide.json": {
+      "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
+      "bytes": 2614,
+      "sha256": "51d98210d0d64f8ff53c5e4350171c53e777ce9910914fc35c1ae05e694294cc"
+    },
+    "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json": {
+      "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+      "bytes": 5956,
+      "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
+    }
+  },
+  "dated_history_members_verified": 8,
+  "dated_history_manifest": {
+    "path": "output/history/20261115_guided_review/manifest.json",
+    "bytes": 1682,
+    "sha256": "a06f538d814682556b8fac7500fc8012c5cf90ad0d44057eeb84a818f7d1ec1e"
+  },
+  "named_inputs_stable_during_audit": true,
+  "server_acceptance": {
+    "status": "accepted_after_real_restart",
+    "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "repeated_by_this_audit": false
+  },
+  "browser_outcome": {
+    "status": "partial_checks_passed_with_browser_network_limit",
+    "passed": false,
+    "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0"
+  },
+  "previous_delivery_audit_preserved_at_git_commit": "53e7250b07cf9cf0b8dd53417d6e933453327de6",
+  "protected_files_not_opened_or_hashed": true,
+  "new_model_calls": 0,
+  "new_statistics": false,
+  "external_links_fetched": false,
+  "issues": []
+}

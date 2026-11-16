@@ -53,10 +53,13 @@ The [dated history](../output/history/20261115_guided_review/README.md)
 preserves the previous guided media and software unchanged.
 
 The [four-page final report](../output/docx/BioGraph_Steward_Final_Report.docx)
-uses the original organizer form, followed by a two-page methods/results
-supplement. It is ready for user review; it has not been submitted. The
+uses the organizer's form layout, with final limitations and delivered outputs
+in place of help requests and a future plan, followed by a two-page
+methods/results supplement. It explains usability, reuse, CIViC's clinical
+workflow and the methods behind the bounded gains. It is ready for user review;
+it has not been submitted. The
 [format and review receipt](evaluations/final_prod_ui_20261116/final_report.json)
-records the preserved form and intentional final-title/date updates.
+records the preserved layout and intentional final-report label updates.
 
 The accepted final runtime focuses the shared site on the question, graph,
 source inspection, current assessments and exports. Loading indicators show

@@ -56,6 +56,16 @@ remain available through disclosures.
 
 ## Evidence for the judging criteria
 
+The organizers' final-presentation email makes **democratization** the central
+goal: scientists should be able to use agents to build knowledge graphs without
+being KG specialists. It also asks teams to demonstrate generalizability and
+provide a hosted or launchable demonstration, or a short video/writeup with the
+graph. Our evidence is the guided question-to-graph workflow, readable answers
+and source inspections, reusable cohort construction, protected hosted examples,
+portable software, narrated tour and downloadable graph/comparator packages.
+The supplied email is the source of this clarification. Its linked response
+document could not be read without access; no additional rules are inferred.
+
 The organizer brief assigns the following weights and permits autonomous
 **or semi-autonomous** software. This is our evidence map, not an official score.
 
@@ -98,13 +108,19 @@ the source views:
 - **Known protein locations:** among 31 matching proteins, the captured Pharos
   view recovers 41 of 51 positive reference labels; qualified native annotations
   recover 44 of 51. These fixed source views are not a newly scored union of the
-  full integrated graph. Shared-source context remains explicit.
+  full integrated graph. The additional admitted location annotations supply
+  the gain under the same ontology mapping; obsolete-ID exclusions alone do
+  not improve recovery. The coarse-map control also recovers 44 labels, with
+  more truth-unknown outputs. Shared-source context remains explicit.
 - **OpenCell source-exclusion check:** among 23 matching proteins, positive
   label recovery changes 30 of 40 to 31 of 40. The gain remains after the stated
   HPA/OpenCell source exclusions. This already-exposed reference is a
   sensitivity check, not new blind validation or a new biological discovery.
 - **Later curator function recovery:** a fixed historical comparison improves
-  over retained LocalPlus in its primary views. Refreshing the baseline's
+  over retained LocalPlus in its primary views. We reused the published
+  **ProtBoost** context-aware stacker and the authors' CAFA6 update to combine
+  graph and sequence forecasts with GO evidence-code, relation and ontology
+  context. These are qualified views of one GOA source. Refreshing the baseline's
   annotations also helps; additional learned benefit over that refreshed
   baseline remains uncertain for the primary task. Stronger direct-annotation
   controls and unfavorable results are retained.
@@ -118,6 +134,15 @@ and [fixed function comparison](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261
 for complete scopes, controls and denominators.
 
 ## Construction and agents
+
+Clinical evidence inspection is also implemented through a separate, bounded
+**CIViC** workflow for KRAS and colorectal cancer. It preserves the complete
+molecular profile, whole therapy set and interaction type, disease, response
+direction, evidence level, publication and source curation status rather than flattening a clinical
+claim into a generic protein–drug edge. Source editorial acceptance remains
+distinct from local review. CIViC is not an input to the current native
+GO/STRING agent demonstration or the separate historical function-prediction
+comparison; those gains are not attributed to it.
 
 The executable workflow retrieves bounded structured Pharos data, resolves
 explicit identifiers, constructs versioned assertions and publishes the graph,
@@ -155,8 +180,10 @@ role listed in the original proposal.
 ## Reuse and handoff
 
 The [four-page final report](../output/docx/BioGraph_Steward_Final_Report.docx)
-preserves the organizer's original form and adds a two-page methods/results
-supplement. The [format and review receipt](evaluations/final_prod_ui_20261116/final_report.json)
+preserves the organizer's form layout and section order, with final limitations
+and delivered outputs replacing help requests and a future work plan. Its
+two-page supplement explains methods, CIViC's separate role, measured gains and
+the demonstrated scope of reuse. The [format and review receipt](evaluations/final_prod_ui_20261116/final_report.json)
 records it as prepared for user review, not submitted. The
 [code-only software ZIP](../output/software/BioGraph_Steward_Software.zip)
 has [clean acceptance for tested source `d05f54f`](evaluations/final_prod_ui_20261116/software_acceptance.json);

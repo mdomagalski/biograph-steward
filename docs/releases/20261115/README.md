@@ -22,7 +22,7 @@ tour's genuine local capture provenance stay separate.
 | [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise editable overview, with the detailed research linked separately. |
 | [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run tested source `d05f54f`, with the final review interface. Real source data are supplied separately; hosted acceptance is recorded separately. |
 | [Team review guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) | Two pages: direct example links, loading feedback, five tasks and feedback prompts. |
-| [Final report](../../../output/docx/BioGraph_Steward_Final_Report.docx) | Four pages: the original organizer form plus a methods/results supplement. Prepared for user review; not submitted. |
+| [Final report](../../../output/docx/BioGraph_Steward_Final_Report.docx) | Four pages: the organizer's form layout with delivered outputs and limitations, plus methods/results explaining usability, reuse, CIViC and measured gains. Prepared for user review; not submitted. |
 
 The canonical software archive is
 [BioGraph Steward Software](../../../output/software/BioGraph_Steward_Software.zip).

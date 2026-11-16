@@ -368,7 +368,7 @@
     ],
     "same_learner_experimental_heldout_comparison": "implemented; consistent enriched-graph superiority not established",
     "suggested_whole_graph_handoff": "resulting scoped graph, exhaustive edge decisions, complete retrieved baseline; final organizer schema/version unspecified",
-    "final_report_format_instruction": "Ben requested reuse of the midpoint report format; no distinct new final-report template was provided.",
+    "final_report_format_instruction": "Keep the midpoint form layout for the final report. Final limitations and actual delivered outputs replace help requests and future plans; add concise methodology and evidence for democratization and supported generalizability.",
     "final_report_prepared_in_requested_format": true
   },
   "presentation": {
@@ -1496,7 +1496,7 @@
     "bytes": 3266,
     "sha256": "9ad8dc17c6bf13972be93d2dce856a434a0b97a557c19ee81b02f854896b63c5"
   },
-  "artifact_audit_path": "docs/evaluations/final_prod_ui_20261116/artifact_audit.json",
+  "artifact_audit_path": "docs/evaluations/final_prod_ui_20261116/final_report_artifact_audit.json",
   "previous_browser_visual_check": {
     "format": "biograph.source-agent-hosted-browser-acceptance.v1",
     "recorded_at_UTC": "2026-11-16T15:23:43.097798+00:00",
@@ -1851,8 +1851,8 @@
     },
     "final_report": {
       "path": "docs/evaluations/final_prod_ui_20261116/final_report.json",
-      "bytes": 5383,
-      "sha256": "7cbe49d4c8066e417c4f9ad1ead29d25bac97ca17b787c9af5ce28b45dc8cde0"
+      "bytes": 6519,
+      "sha256": "271de55dc6d4bfff858184932581e6241f23489d1d74bfe7829e4e4e7a6dc50a"
     },
     "team_review_guide": {
       "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
@@ -2642,11 +2642,171 @@
     },
     "output/docx/BioGraph_Steward_Final_Report.docx": {
       "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12442,
-      "sha256": "915b56465d06ed944dc401ff97995597bacf4d9e2fb1f93fe85387d6732dae3d"
+      "bytes": 12372,
+      "sha256": "3f8da3ffb2a7df42ac710cd0a613e28215c7c0e5aac17a22ecbe540a3d9dd13b"
     }
   },
   "final_report": {
+    "format": "biograph-steward.final-report-original-form-fidelity.v2",
+    "status": "prepared_for_final_submission",
+    "file": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "bytes": 12372,
+    "sha256": "3f8da3ffb2a7df42ac710cd0a613e28215c7c0e5aac17a22ecbe540a3d9dd13b",
+    "pages": 4,
+    "main_form_pages": 2,
+    "methods_and_evaluation_supplement_pages": 2,
+    "source_reference": {
+      "path": "runs/midpoint_report_final_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "1548809286a5dcd5912c6bd183baab191df57cbda34c81ca7c570f0703b60bb8",
+      "role": "Retained organizer-format report and its original template contract; retained source unchanged."
+    },
+    "template_fidelity": {
+      "section_order": [
+        "Team Information",
+        "Key Accomplishments",
+        "Final limitations",
+        "Final deliverables",
+        "Reminder",
+        "Approach and evidence integration",
+        "Evaluation and final delivery"
+      ],
+      "team_information_fields": [
+        "Team Name",
+        "Track",
+        "Overall Status",
+        "Brief status summary"
+      ],
+      "five_accomplishments": true,
+      "original_main_form_tables_and_page_geometry_preserved": true,
+      "source_Arial_body_and_blue_title_heading_format_preserved": true,
+      "styles_numbering_theme_and_other_unchanged_package_parts_preserved": true,
+      "obsolete_optional_illustration_removed": true,
+      "intentional_updates": [
+        "Final project title and concise date/purpose in the original instruction slot",
+        "Overall status states Delivered proof of concept, without a progress traffic light",
+        "Final limitations replace Blockers and Help Needed in the same section position",
+        "Final deliverables replace a future plan, retaining the original table geometry",
+        "Deliverable and Delivered capability columns replace dates and milestones",
+        "Private review and planned public November17 submission are stated once in the access note",
+        "The supplement explains methodology, CIViC scope, causes of gains and supported reuse",
+        "No organizer help request, future work timetable or scientific measurement was added"
+      ],
+      "three_limitation_paragraphs": true,
+      "three_delivered_output_rows": true
+    },
+    "quality_review": {
+      "all_pages_rendered_with_bundled_canonical_renderer": true,
+      "every_page_inspected_at_full_resolution": true,
+      "independent_root_visual_review_passed": true,
+      "independent_root_primary_source_text_review_passed": true,
+      "source_package_fidelity_passed": true,
+      "main_body_font_pt": 12,
+      "supplement_table_font_pt": 11,
+      "clipping_overlap_or_unintended_blank_pages": false,
+      "access_token_or_credentials_in_report": false,
+      "low_level_test_counts_or_source_hashes_in_report": false
+    },
+    "scientific_scope": {
+      "source_additions_are_absent_captured_pairs_or_concepts_not_discoveries": true,
+      "physical_source_context_not_direct_binding_proof": true,
+      "location_recovery_uses_same_ontology_qualified_mapping_and_retains_coarse_control": true,
+      "shared_provider_and_prior_reference_use_retained": true,
+      "function_study_separate_from_app_and_agent": true,
+      "scored_protein_frames_and_residual_positive_function_labels_explicit": true,
+      "refreshed_annotation_control_and_uncertain_additional_primary_gain_retained": true,
+      "primary_graph_records_remain_unassessed": true,
+      "obsolete_identifier_qualification_not_experimental_false_claim_pruning": true,
+      "civic_separate_clinical_evidence_workflow_not_current_native_agent_tool": true,
+      "clinical_profiles_and_whole_therapy_sets_not_flattened": true,
+      "location_gain_from_additional_admitted_annotations_not_identifier_pruning": true,
+      "published_ProtBoost_and_author_source_update_reused": true,
+      "current_LLM_not_credited_for_offline_prediction_gain": true,
+      "same_cohort_task_reuse_separate_from_external_cohort_generalization": true
+    },
+    "current_limitations": [
+      "Independent whole-graph precision and automatic biological-error pruning are not established.",
+      "Source sharing, incomplete labels and prior reference use bound interpretation.",
+      "The separate historical function study does not establish an agent-caused gain or a reliable extra primary gain over fully refreshed annotations.",
+      "A complete independent hosted-user walkthrough remains pending. The final return/mobile browser recheck was interrupted by preserved browser transport failures; their cause is unresolved.",
+      "The repository is private; public visibility, final tag/release and actual organizer submission remain separate closing actions.",
+      "Permitted mixed-source graph/source access and redistribution follow provider terms; no organizer gold-set access or approval is claimed."
+    ],
+    "prepared_not_published_or_submitted": true,
+    "report_sent": false,
+    "repository_visibility_changed": false,
+    "organizer_submission_performed": false,
+    "email_cloud_or_model_actions_for_report": false,
+    "basis": "Final-delivery editorial revision against the supplied organizer email and existing code/source evidence. Original form layout retained, with delivered outputs and limitations in place of future plans and help requests. Methods and causal attribution clarified; frozen scientific results, hosted runtime, media and source graphs unchanged.",
+    "production_review_presentation_completed": true,
+    "accepted_hosted_runtime": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "hosted_browser_validation": "partial_checks_passed_with_browser_network_limit; not an uninterrupted journey or completed mobile recheck",
+    "new_protected_graph_download_enabled_claimed": true,
+    "organizer_presentation_alignment": {
+      "democratization_and_general_scientist_usability_explicit": true,
+      "source": "Organizer email quoted by user on November16; linked response document returned401 and was not read",
+      "agent_scope": "Model-directed saved-source query, focused graph, citation inspections and nonmutating proposals",
+      "construction_scope": "Separate deterministic explicit1–25-protein cohort construction",
+      "generalizability": "Different supported questions in one cohort and reusable construction; no independently validated cross-cohort transfer",
+      "hosted_demo_and_video_software_graph_deliverables_explicit": true
+    },
+    "graph_download_basis": "Existing verified authenticated graph/ledger and exact captured Pharos comparator download receipt",
+    "previous_report_preserved_at_git_commit": "53e7250b07cf9cf0b8dd53417d6e933453327de6",
+    "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "receipt": "docs/evaluations/final_prod_ui_20261116/final_report.json"
+  },
+  "final_product_delivery_receipts": {
+    "hosted": {
+      "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+      "bytes": 5806,
+      "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+    },
+    "browser": {
+      "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+      "bytes": 5956,
+      "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
+    },
+    "software": {
+      "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
+      "bytes": 2564,
+      "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
+    },
+    "guide": {
+      "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
+      "bytes": 2614,
+      "sha256": "51d98210d0d64f8ff53c5e4350171c53e777ce9910914fc35c1ae05e694294cc"
+    },
+    "report": {
+      "path": "docs/evaluations/final_prod_ui_20261116/final_report.json",
+      "bytes": 6519,
+      "sha256": "271de55dc6d4bfff858184932581e6241f23489d1d74bfe7829e4e4e7a6dc50a"
+    },
+    "ui": {
+      "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+      "bytes": 6062,
+      "sha256": "6c84c8d535642c3601a18726825f6bcaddf0d36f8a08da65772a1340b74b1844"
+    }
+  },
+  "protected_graph_downloads": {
+    "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
+    "bytes": 4543,
+    "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
+  },
+  "completed_release_checks": [
+    {
+      "item": "Tested code, hosted runtime and current report/guide",
+      "status": "d05f54f software and actual restart/source/Neptune acceptance complete; browser coverage is separately marked partial."
+    },
+    {
+      "item": "Permitted graph/source access for judges",
+      "status": "Primary graph plus19310-row ledger and separate captured Pharos-only control passed authenticated HTTPS downloads and complete member checks. The current example and original data/configuration are unchanged.",
+      "receipt": {
+        "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
+        "bytes": 4543,
+        "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
+      }
+    }
+  ],
+  "previous_report_before_final_delivery_revision": {
     "format": "biograph-steward.final-report-original-form-fidelity.v1",
     "status": "prepared_ready_for_user_review",
     "file": "output/docx/BioGraph_Steward_Final_Report.docx",
@@ -2742,56 +2902,9 @@
     "path": "output/docx/BioGraph_Steward_Final_Report.docx",
     "receipt": "docs/evaluations/final_prod_ui_20261116/final_report.json"
   },
-  "final_product_delivery_receipts": {
-    "hosted": {
-      "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
-      "bytes": 5806,
-      "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
-    },
-    "browser": {
-      "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
-      "bytes": 5956,
-      "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
-    },
-    "software": {
-      "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
-      "bytes": 2564,
-      "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
-    },
-    "guide": {
-      "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
-      "bytes": 2614,
-      "sha256": "51d98210d0d64f8ff53c5e4350171c53e777ce9910914fc35c1ae05e694294cc"
-    },
-    "report": {
-      "path": "docs/evaluations/final_prod_ui_20261116/final_report.json",
-      "bytes": 5383,
-      "sha256": "7cbe49d4c8066e417c4f9ad1ead29d25bac97ca17b787c9af5ce28b45dc8cde0"
-    },
-    "ui": {
-      "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
-      "bytes": 6062,
-      "sha256": "6c84c8d535642c3601a18726825f6bcaddf0d36f8a08da65772a1340b74b1844"
-    }
-  },
-  "protected_graph_downloads": {
-    "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
-    "bytes": 4543,
-    "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
-  },
-  "completed_release_checks": [
-    {
-      "item": "Tested code, hosted runtime and current report/guide",
-      "status": "d05f54f software and actual restart/source/Neptune acceptance complete; browser coverage is separately marked partial."
-    },
-    {
-      "item": "Permitted graph/source access for judges",
-      "status": "Primary graph plus19310-row ledger and separate captured Pharos-only control passed authenticated HTTPS downloads and complete member checks. The current example and original data/configuration are unchanged.",
-      "receipt": {
-        "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
-        "bytes": 4543,
-        "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
-      }
-    }
-  ]
+  "previous_product_ui_artifact_audit": {
+    "path": "docs/evaluations/final_prod_ui_20261116/artifact_audit.json",
+    "bytes": 11245,
+    "sha256": "127918162469803aded016ef15e99be08c52298bacbd9038e6aab64b2fc6a850"
+  }
 }
