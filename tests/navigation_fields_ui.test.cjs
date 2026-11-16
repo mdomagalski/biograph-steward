@@ -49,6 +49,20 @@ test('zero, false, empty source strings and null stay distinct and HTML stays te
   assert.equal(text(descriptions[4]),value);assert.equal(descendants(result,'img').length,0);
 });
 
+test('native source summaries keep technical proof in closed disclosures without changing it',()=>{
+  const fields={native_scores:{physical_combined_score:459},mapping_proof:[{canonical_accession:'P01116',sequence_sha256:'retained-hash'}],
+    complete_source_files:{aliases:{url:'https://example.org/source',sha256:'retained-file-hash'}}};
+  const before=JSON.stringify(fields),result=harness()(fields);
+  const visible=node=>node.tag==='details'?'':node.textContent+node.children.map(visible).join(' ');
+  assert.match(visible(result),/physical combined score: 459/);
+  assert.match(visible(result),/not probabilities/);
+  assert.match(visible(result),/Protein identity records: 1/);
+  assert.match(visible(result),/Preserved source files: 1/);
+  assert.doesNotMatch(visible(result),/sequence_sha256|retained-hash|retained-file-hash/);
+  assert.deepEqual(descendants(result,'pre').map(n=>JSON.parse(n.textContent)),Object.values(fields));
+  assert.equal(JSON.stringify(fields),before);
+});
+
 test('source trail distinguishes the retrieval aggregator from supplied source labels',()=>{
   const source=fs.readFileSync(path.join(__dirname,'../biograph_steward/navigation.js'),'utf8');
   const start=source.indexOf('function renderSourceGuide(result){'),end=source.indexOf('\nasync function runPathExploration',start);

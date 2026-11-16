@@ -185,7 +185,21 @@ function fieldList(fields){
   };
   for(const field of rows){
     const value=field.value,description=el('dd');
-    if(Array.isArray(value)){
+    const nativeField=!Array.isArray(fields);
+    const technicalLabels={
+      'mapping proof':['Protein identity records','Expand the recorded value for exact aliases, sequences and checksums.'],
+      'complete source files':['Preserved source files','Expand the recorded value for source URLs, paths and checksums.'],
+      'all source channels':['Recorded source channels','Expand the recorded value for the complete source fields.']
+    };
+    if(nativeField&&Object.hasOwn(technicalLabels,field.label)&&value!==null&&typeof value==='object'){
+      const [label,note]=technicalLabels[field.label];description.append(el('span',label+': '+Object.keys(value).length+'. '+note));
+    }else if(nativeField&&field.label==='native scores'&&value!==null&&!Array.isArray(value)&&typeof value==='object'&&Object.values(value).every(v=>v===null||typeof v!=='object')){
+      const scores=Object.entries(value);
+      if(scores.length){
+        const items=el('ul');for(const [key,score] of scores)items.append(el('li',key.replaceAll('_',' ')+': '+valueText(score)));description.append(items);
+        description.append(el('p','These are recorded source scores, not probabilities that a biological claim is true.','small'));
+      }else description.append(el('span','No source scores supplied'));
+    }else if(Array.isArray(value)){
       if(!value.length)description.append(el('span','No values supplied'));
       else{const items=el('ul');for(const item of value)items.append(el('li',valueText(item)));description.append(items);}
     }else description.append(el('span',valueText(value)));
