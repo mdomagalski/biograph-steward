@@ -1,4 +1,4 @@
-# Closing delivery audit — November 15
+# Closing delivery audit — updated November 16
 
 The bounded workbench and its review material are implemented. The remaining
 submission work is a release/access handoff and intended-user feedback. The
@@ -6,26 +6,28 @@ scientific limits below are not missing graph-store or agent-framework
 components. This is a project audit against the user-supplied materials,
 not organizer acceptance.
 
-The [current hosted acceptance](reviewer_journey_delivery_20261115/hosted_acceptance.json)
-records the revised real-data entry and guided interface after a real restart,
-authenticated source/saved-answer checks and full read-only Neptune parity.
+The [current hosted acceptance](source_agent_20261116/hosted_acceptance.json)
+records the current source-agent interface, five actual-model saved records,
+a real service restart, authenticated source/saved-answer checks and full
+read-only Neptune parity. The [browser check](source_agent_20261116/hosted_browser_acceptance.json)
+records the bounded hosted Chrome verification separately, including any client transport interruptions. Local four-step visual QA is also preserved.
 The earlier [source-profile rollout](native_profiles_hosted_20261115/summary.json)
 remains a separate dated receipt; this interface update changes no source graph.
 
 | Expected item | Concrete review route | Status / remaining action |
 |---|---|---|
-| Pharos represented in a contextual graph | KRAS native-evidence profile and separate qualified TP53 example in the [overview](../SUBMISSION_OVERVIEW.md); both use the same 99-target cohort | Accepted 31123ae interface: native profile has 9,724 entities / 19,310 records; retained profile has 9,865 / 16,687. These are different source collections, not paired before/after totals. Original source records and decisions remain preserved; neither is the entire Pharos database. |
-| Accessible question → graph → answer workflow | Five task tabs and [five-minute script](../DEMO_SCRIPT.md) | Guided execution works. Arbitrary-language planning is experimental; shared reviewer ingress is saved-data/read-only. |
+| Pharos represented in a contextual graph | KRAS native-evidence profile and separate qualified TP53 example in the [overview](../SUBMISSION_OVERVIEW.md); both use the same 99-target cohort | Accepted ee3c61c interface: native profile has 9,724 entities / 19,310 records; retained profile has 9,865 / 16,687. These are different source collections, not paired before/after totals. Original source records and decisions remain preserved; neither is the entire Pharos database. |
+| Accessible question → graph → answer workflow | Five task tabs and [five-minute script](../DEMO_SCRIPT.md) | The model plans bounded source queries, prioritizes complete source inspections and proposes adapter-grounded review states. Five fixed supported queries matched deterministic execution. Shared review replays actual records without new inference or edits; arbitrary-language biological adjudication is not claimed. |
 | Original evidence and interpretations | Source passports, historical GPML, native GO records, complete clinical combinations, assay/source guides | Implemented where attached, including native GOA and 330 identity-qualified physical source records (243 existing pairs, 87 absent from captured Pharos). Source reuse and missing identities remain explicit. |
 | Pruning and review handoff | Workspace Export:retained graph + exhaustive decisions + original baseline/source packet | Implemented and replayed. Abstentions stay retained. The298 obsolete-GO-ID exclusions are source qualification, not proven biological falsehoods. |
 | Experimental link-prediction comparison | Same-learner R-GCN and source/count/degree controls linked in [alignment](../PROJECT_ALIGNMENT.md) | Executed; consistent enriched-graph superiority is unestablished. Do not substitute the separate function task for this endpoint. |
 | Credible scientific assessment | [New fixed contextual comparison](CONTEXTUAL_COMBINATION_RESULTS_20261115.md), complete controls/intervals/provenance | HOU positive location labels improve 41/51 to 44/51 (31/99 matching proteins); OpenCell 30/40 to 31/40 (23/99), with reuse/context limits. Supported primary function-recovery gain over retained LocalPlus; data refresh also helps. Learning beyond refreshed LocalPlus is uncertain for primary BP. MF/CC improve over LocalPlus but do not beat the stronger direct nonexperimental-GOA control (CC favors that control). Whole-graph accuracy is not identified. |
-| Agents and NVIDIA integration | Optional bounded Nemotron planning, NAT tools, captured agent comparisons and [NVIDIA status](../NVIDIA_INTEGRATION_STATUS_20261113.md) | Implemented and evaluated, with failures retained. The product's dependable path is semi-autonomous; no claim of validated autonomous biological review. |
+| Agents and NVIDIA integration | Current-source Nemotron workflow, NAT adapters, [fixed comparison](SOURCE_AGENT_RESULTS_20261116.md) and [NVIDIA status](../NVIDIA_INTEGRATION_STATUS_20261113.md) | Thirteen actual calls: five supported query/answer/graph parity checks passed; three additional requests stopped by controller preflight with zero calls. Review proposals remain unapplied. Prior failed approaches and separate learned prediction endpoints remain preserved. |
 | Vocabulary/schema references | [KGX profile](../STANDARD_EXPORT.md), Biolink references and [SSSOM/overlap audit](../EVIDENCE_OVERLAP.md) | Delivered bounded profiles with explicit conformance limits; comprehensive PROV-O/JSON-LD interoperability is not claimed. |
 | Reproducible code/build/demo | MIT core, Python 3.10+, tested [core ZIP](../releases/20261115/README.md), synthetic demo and CC0 Reactome annex | The isolated core package passed construction/answer/export/reopen checks. Real source attachments and optional research runtimes are separate. |
 | Presentation and explanation | [Seven-slide overview](../../output/presentations/BioGraph_Steward_Overview.pptx), actual source/answer captures and separately preserved scientific appendix | Rendered and visually checked; the source-view results table is editable. Selected paths are distinguished from the full workspace. Native PowerPoint application execution is untested. |
-| Guided screen walkthrough | [3:42 narrated tour](../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4), [transcript](../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and [captions](../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Actual hosted-app screenshot states with readable crops, narration and captions; explicitly an edited screen tour. Full decode, audio and representative-frame checks passed. It makes no live model calls or edits. |
-| Human usability feedback | [Weekend guide](../TEAM_REVIEW_GUIDE_20261113.md) and [reply template](../TEAM_REVIEW_FEEDBACK_20261113.txt) | Pending teammate feedback on Monday, November 16. Operator checks are not an independent intended-user study. |
+| Guided screen walkthrough | [3:54 narrated tour](../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4), [transcript](../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and [captions](../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Actual local ee3c61c app screenshot states with verified saved real data, readable crops, narration and captions; explicitly an edited screen tour. Hosted acceptance is separate. Full decode, audio and representative-frame checks passed. It makes no live model calls or edits. |
+| Human usability feedback | [Weekend guide](../TEAM_REVIEW_GUIDE_20261113.md) and [reply template](../TEAM_REVIEW_FEEDBACK_20261113.txt) | Partial offline/Pharos-only teammate feedback received: features and exports reported working, with four navigation/control issues addressed. Full saved-source walkthrough remains requested; operator checks are not an independent intended-user study. The current two-page PDF explains source scope and five tasks. |
 | Final submission | MIT repository/release, code/demo access, permitted resulting graph +ledger +baseline access, results and deck | Final public visibility and actual submission remain to be performed. The exact final file/scoring contract was not supplied; finish the existing handoff without waiting for hidden labels. |
 
 ## Priorities through submission

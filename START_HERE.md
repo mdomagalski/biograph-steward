@@ -8,14 +8,13 @@ view; three unsupported requests were stopped by the controller without model
 calls. This used 13 Nemotron calls and 972 completion tokens. These are workflow
 checks, not scientific-accuracy or graph-prediction scores.
 
-**The updated agent replay is prepared locally; its hosted rollout is pending.**
-Check [delivery status](docs/DELIVERY_STATUS_20261115.json) for the accepted
-checkpoint. The protected site may still show the preceding guided-reader
-version until that update is accepted.
+**The recorded agent workflow is available on the protected reviewer site.**
+Its actual service restart, saved-source replay and private Neptune parity
+passed; [delivery status](docs/DELIVERY_STATUS_20261115.json) links the receipts.
 
 1. Open the [reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
    and sign in with the token supplied privately.
-2. In the updated **Start here**, open **Agent workflow** and the verified
+2. In **Start here**, open **Agent workflow** and the verified
    recorded KRAS run. Replaying checks saved sources without calling a model.
 3. Follow its **question → plan → evidence → review proposals**. Check the
    complete answer and source passports; inspection priority does not remove
@@ -24,16 +23,17 @@ version until that update is accepted.
    the separate retained TP53 example and biological-reference measurements.
    These are distinct from agent execution checks.
 
-The prepared featured job is `source_agent_eval_dc7b597201da_S01`. It uses the
+The featured recorded job is `source_agent_eval_dc7b597201da_S01`. It uses the
 99-target native-evidence workspace and an eight-result cap. The separate saved
 manual KRAS answer displays all 14 matching partners. Do not interpret those
 caps as a change to the source evidence.
 
-The existing [3:42 guided-source tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
-and [five-minute reader guide](docs/JUDGE_WALKTHROUGH.md) cover saved-source
-inspection. The [short presentation](output/presentations/BioGraph_Steward_Overview.pptx)
-provides the overall project context. Existing captures are not evidence of new
-live inference.
+The [3:54 narrated tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4),
+[five-minute walkthrough](docs/JUDGE_WALKTHROUGH.md) and
+[two-page team guide](output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) explain
+the current workflow. The [short presentation](output/presentations/BioGraph_Steward_Overview.pptx)
+provides the project context. The tour uses actual local-app screenshot states
+and saved evidence; it does not make new model calls.
 
 Shared review needs only a browser—no AWS account, repository setup, Brev or
 running model. It allows saved inspection and downloads; new retrieval,

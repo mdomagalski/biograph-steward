@@ -35,9 +35,12 @@ unchanged, so no prediction improvement is attributed to this agent run.
 The [aggregate receipt](evaluations/source_agent_20261116/summary.json) preserves
 its separate endpoints and model/source commitments.
 
-The featured recorded job is `source_agent_eval_dc7b597201da_S01`. It is
-prepared for hosted replay; deployment remains pending a separately accepted
-restart/source-check receipt. A saved replay does not make new model calls.
+The featured recorded job is `source_agent_eval_dc7b597201da_S01`. The protected
+site now serves the five actual recorded jobs after an accepted runtime update
+and real restart. The [hosted acceptance receipt](evaluations/source_agent_20261116/hosted_acceptance.json)
+records unchanged original graphs, sources, reviews and environment settings.
+A saved replay does not make new model calls; live inference stays disabled on
+the shared reviewer site.
 
 The older planning and BioRED audit results below retain their original model,
 corpus and dates. They are not replaced or converted into results for this new

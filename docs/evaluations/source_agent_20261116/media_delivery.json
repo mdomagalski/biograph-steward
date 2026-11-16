@@ -1,0 +1,45 @@
+{
+  "format": "biograph-steward.current-source-agent-media-acceptance.v1",
+  "status": "passed",
+  "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "actual_capture_mode": "local",
+  "depicted_actual_primary_model_calls": 3,
+  "separate_fixed_comparison_actual_model_calls": 13,
+  "new_model_calls_for_capture": 0,
+  "new_scientific_source_retrievals": 0,
+  "full_video_decode_and_audio_check": true,
+  "representative_frames_reviewed": 15,
+  "independent_root_visual_review": true,
+  "whole_graph_precision_qualified_in_measurement_not_blanket_negative_closing": true,
+  "canonical_files": {
+    "output/walkthrough/BioGraph_Steward_Walkthrough.mp4": {
+      "bytes": 6105296,
+      "sha256": "66248c09cd85c78efda3266839599f8d323e4deca7851796c9e5c8f17b461b09"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.txt": {
+      "bytes": 5096,
+      "sha256": "907b0ffd0902bcb2606a3bc5f5cc0dbac4883ace3fd2d2427536671fbb6ad6d0"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.vtt": {
+      "bytes": 5162,
+      "sha256": "50a99819adfc56fe2f30f3a7570e29b86f5a5bc53bec88ae17efdd73fb7343ee"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.srt": {
+      "bytes": 5310,
+      "sha256": "b7bd1d12c008d238aaa6655863b624709ea25701671c64f574a1bbd5fe853a43"
+    },
+    "output/presentations/BioGraph_Steward_Overview.pptx": {
+      "bytes": 587786,
+      "sha256": "ff7fc489a40b0b73baa58df885f9df7ad581253f44ca53b72c144983688d6e7c"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json": {
+      "bytes": 7371,
+      "sha256": "517a48b51b5cfba9e49d74c645c8d129bcbe1a4fd74e073499b57e711414f7f9"
+    }
+  },
+  "presentation_receipt": {
+    "path": "docs/evaluations/source_agent_20261116/presentation_delivery.json",
+    "sha256": "46c9476797726408cd79fcd217e71aef9569acf50dd4f8505b089da68e89a9cb"
+  },
+  "hosted_rollout_is_separately_recorded": true
+}

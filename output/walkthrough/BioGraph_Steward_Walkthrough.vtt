@@ -1,186 +1,194 @@
 WEBVTT
 
 00:00:00.000 --> 00:00:03.650
-Actual hosted application screenshots
+Actual local app with saved research data
 Edited and narrated still states
 
-00:00:04.000 --> 00:00:08.395
-BioGraph Steward helps a researcher check what supports a
-biological
+00:00:04.000 --> 00:00:08.776
+BioGraph Steward helps a researcher investigate a biological
+connection and
 
-00:00:08.395 --> 00:00:12.154
-claim. We start with a saved research workspace built from
+00:00:08.776 --> 00:00:12.797
+see exactly what supports it. This workspace starts with Pharos
 
-00:00:12.154 --> 00:00:17.122
-Pharos, covering ninety-nine human protein targets. Choose the
-main real-data
+00:00:12.797 --> 00:00:17.070
+data for ninety-nine human protein targets. Our question asks
+which
 
-00:00:17.122 --> 00:00:21.454
-example. This walkthrough follows one question, its answer, and
-the
+00:00:17.070 --> 00:00:20.966
+saved proteins have a physical association with KRAS. We will
 
-00:00:21.454 --> 00:00:22.728
-evidence behind it.
+00:00:20.966 --> 00:00:23.982
+follow the agent's work and inspect one answer.
 
-00:00:24.802 --> 00:00:26.452
-Read the answer
+00:00:26.000 --> 00:00:27.650
+The agent's plan and tool call
 
-00:00:26.802 --> 00:00:31.532
-The question asks which proteins have a recorded physical
-association
+00:00:28.000 --> 00:00:31.998
+The NVIDIA Nemotron model proposes a plan within the available
 
-00:00:31.532 --> 00:00:35.923
-with KRAS. The answer lists fourteen partners. The diagram shows
+00:00:31.998 --> 00:00:36.693
+source tools. The application checks the protein identity,
+requested view
 
-00:00:35.923 --> 00:00:39.707
-one selected path. Open one result, AKT1. The text says
+00:00:36.693 --> 00:00:40.437
+and result limits before executing it. Here the saved plan
 
-00:00:39.707 --> 00:00:43.896
-what STRING reported and gives a source link. Candidate means
+00:00:40.437 --> 00:00:45.196
+uses the native STRING physical source. Other supported operations
+inspect
 
-00:00:43.896 --> 00:00:48.963
-the record still needs review. Physical association can include
-membership
+00:00:45.196 --> 00:00:50.018
+recorded protein locations or archived pathway models. Unsupported
+assay or
 
-00:00:48.963 --> 00:00:52.882
-in the same protein complex. It does not establish direct
+00:00:50.018 --> 00:00:54.206
+tissue requirements stop at the scope check, rather than silently
 
-00:00:52.882 --> 00:00:53.490
-binding.
+00:00:54.206 --> 00:00:56.046
+becoming a broader question.
 
-00:00:55.604 --> 00:00:57.254
-Inspect one source
+00:00:58.100 --> 00:00:59.750
+The answer and its meaning
 
-00:00:57.604 --> 00:01:01.481
-Follow the source link. Read who supplied the record, which
+00:01:00.100 --> 00:01:04.368
+The answer displays eight of fourteen matching proteins under its
 
-00:01:01.481 --> 00:01:05.229
-release it came from, and what the relationship means. We
+00:01:04.368 --> 00:01:09.347
+recorded limit. Follow AKT1's source link. STRING reports physical
+proximity
 
-00:01:05.229 --> 00:01:09.365
-check which protein record each source uses, including its full
+00:01:09.347 --> 00:01:13.098
+or a shared protein complex. It does not establish direct
 
-00:01:09.365 --> 00:01:14.147
-sequence. Unmatched identities stay unknown. This does not
-guarantee that
+00:01:13.098 --> 00:01:17.172
+binding. Its recorded score is not a probability of scientific
 
-00:01:14.147 --> 00:01:18.025
-an old assay used the identical protein construct or tissue
+00:01:17.172 --> 00:01:21.893
+truth. The source preserves protein identity checks and release
+details.
 
-00:01:18.025 --> 00:01:22.419
-context. STRING already contributes to Pharos, so a second
-database
+00:01:21.893 --> 00:01:26.614
+Reused database evidence does not become another independent
+experiment.
 
-00:01:22.419 --> 00:01:26.361
-record is not automatically a second independent experiment.
+00:01:28.700 --> 00:01:30.350
+Source inspection and review proposals
 
-00:01:28.507 --> 00:01:30.157
-Read the measured comparison
+00:01:30.700 --> 00:01:35.004
+After the query, the agent selected three citations for
+inspection.
 
-00:01:30.507 --> 00:01:35.053
-What changed shows a measured comparison with published location
-labels.
+00:01:35.004 --> 00:01:39.687
+The application opened every original record grouped under those
+selected
 
-00:01:35.053 --> 00:01:40.285
-Among thirty-one matching proteins, Pharos recovered forty-one of
+00:01:39.687 --> 00:01:44.054
+citations. The model then selected review proposals grounded in
+what
+
+00:01:44.054 --> 00:01:48.801
+was actually inspected. Retain candidate means keep the evidence
+available
+
+00:01:48.801 --> 00:01:53.168
+for review. Needs review records an unresolved issue. Neither
+action
+
+00:01:53.168 --> 00:01:56.776
+accepts a scientific claim or edits the graph. All eight
+
+00:01:56.776 --> 00:02:01.143
+returned results remain available, including those the agent did
+not
+
+00:02:01.143 --> 00:02:01.902
+prioritize.
+
+00:02:04.000 --> 00:02:05.650
+What the measurements show
+
+00:02:06.000 --> 00:02:11.129
+Five allowed agent queries preserved the deterministic tool's
+complete results.
+
+00:02:11.129 --> 00:02:15.744
+Three unsupported or unresolved requests stopped before any model
+call.
+
+00:02:15.744 --> 00:02:20.937
+This checks execution and source fidelity. Separately, among
+thirty-one proteins
+
+00:02:20.937 --> 00:02:26.002
+with published location labels, Pharos recovers forty-one of
 fifty-one labels.
 
-00:01:40.285 --> 00:01:45.579
-Qualified native annotations recovered forty-four. A separate
-check against OpenCell
+00:02:26.002 --> 00:02:32.092
+Qualified native annotations recover forty-four. Among twenty-
+three matched OpenCell proteins,
 
-00:01:45.579 --> 00:01:49.938
-imaging recovered thirty-one of forty labels instead of thirty,
-among
+00:02:32.092 --> 00:02:36.836
+recovery changes from thirty of forty to thirty-one. Known-label
+recovery
 
-00:01:49.938 --> 00:01:54.983
-twenty-three matching proteins. We had already used OpenCell
-during development.
+00:02:36.836 --> 00:02:41.644
+does not estimate whole-graph precision. Shared sources and prior
+OpenCell
 
-00:01:54.983 --> 00:01:59.093
-These are coverage gains on known positive labels. Shared sources
+00:02:41.644 --> 00:02:43.824
+use limit independent validation.
 
-00:01:59.093 --> 00:02:02.519
-and cell context limit the conclusion. They are not an
+00:02:45.900 --> 00:02:47.550
+An applied graph qualification
 
-00:02:02.519 --> 00:02:06.069
-accuracy percentage for every relationship in the graph.
+00:02:47.900 --> 00:02:52.380
+The separate TP53 example shows a qualification already applied to
 
-00:02:08.308 --> 00:02:09.958
-Understand review and pruning
+00:02:52.380 --> 00:02:56.793
+its graph. It excludes two hundred and ninety-eight records using
 
-00:02:10.308 --> 00:02:14.544
-The accepted view is empty because no local acceptance decision
+00:02:56.793 --> 00:03:02.075
+obsolete Gene Ontology identifiers, retaining sixteen thousand six
+hundred and
 
-00:02:14.544 --> 00:02:19.045
-has been made. Fourteen partners remain available to inspect.
-Empty
+00:03:02.075 --> 00:03:07.691
+eighty-seven records. Their original sources and every decision
+remain recoverable.
 
-00:02:19.045 --> 00:02:22.289
-does not mean there is no evidence. Now open the
+00:03:07.691 --> 00:03:12.104
+Unresolved evidence stays retained. This is a check of identifier
 
-00:02:22.289 --> 00:02:27.121
-separate TP53 qualification example. Its input had sixteen
-thousand nine
+00:03:12.104 --> 00:03:16.918
+currency. It does not establish that those biological
+relationships are
 
-00:02:27.121 --> 00:02:32.350
-hundred and eighty-five records. Sixteen thousand six hundred and
-eighty-seven
+00:03:16.918 --> 00:03:17.386
+false.
 
-00:02:32.350 --> 00:02:36.851
-remain, with two hundred and ninety-eight excluded because they
-use
+00:03:19.400 --> 00:03:21.050
+A result a colleague can inspect
 
-00:02:36.851 --> 00:02:41.881
-obsolete Gene Ontology identifiers. The original records and every
-decision
+00:03:21.400 --> 00:03:25.764
+The agent record preserves the plan, source inspections and
+proposals.
 
-00:02:41.881 --> 00:02:46.978
-remain available. Gene Ontology labels protein functions and
-locations. This
+00:03:25.764 --> 00:03:29.759
+The workspace download keeps its graph and sources. The retained
 
-00:02:46.978 --> 00:02:51.082
-rule checks the identifiers. It does not prove the biological
+00:03:29.759 --> 00:03:33.816
+example includes every decision and the input baseline. The agent
 
-00:02:51.082 --> 00:02:52.472
-relationships false.
+00:03:33.816 --> 00:03:39.287
+now drives source inspection through one reproducible question-to-
+evidence workflow. The
 
-00:02:54.813 --> 00:02:56.463
-Share a traceable result
+00:03:39.287 --> 00:03:43.405
+result shown here is faithful source execution and measured source
 
-00:02:56.813 --> 00:03:01.119
-Return to the KRAS example. The question's answer download
-contains
+00:03:43.405 --> 00:03:49.244
+coverage. Learned-model prediction results are reported
+separately. This demonstration replays
 
-00:03:01.119 --> 00:03:05.046
-this focused summary, its paths and cited evidence. Then open
-
-00:03:05.046 --> 00:03:09.289
-Export. The full workspace download keeps the complete saved graph
-
-00:03:09.289 --> 00:03:13.659
-and source material. A separate graph handoff records every
-decision
-
-00:03:13.659 --> 00:03:17.712
-and preserves the input baseline. The contribution is an answer
-
-00:03:17.712 --> 00:03:22.715
-a colleague can inspect and reproduce, with measured reference-
-coverage gains.
-
-00:03:22.715 --> 00:03:27.274
-We have not established whole-graph scientific accuracy or a
-consistent
-
-00:03:27.274 --> 00:03:31.327
-gain in graph prediction. An optional NVIDIA Nemotron agent can
-
-00:03:31.327 --> 00:03:34.874
-propose a bounded plan. The app checks the allowed tool
-
-00:03:34.874 --> 00:03:39.117
-calls before execution. This shared review replays saved data with
-
-00:03:39.117 --> 00:03:40.067
-the model off.
+00:03:49.244 --> 00:03:51.580
+actual saved work with the model off.

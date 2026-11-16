@@ -1,0 +1,41 @@
+{
+  "acceptance_receipt": {
+    "file": "acceptance.json",
+    "sha256": "600b41c38cd7dd0f6764b44b3bfa47cf808b6f91e62d90ab10bd697276517356"
+  },
+  "actual_CLI_HTTP_export_recovery_restart_reopen_passed": true,
+  "all_owned_servers_stopped": true,
+  "biological_accuracy_or_independent_user_validation_claimed": false,
+  "clean_python": {
+    "no_site": 1,
+    "site_loaded": false,
+    "site_package_paths": [],
+    "version": "3.12.14"
+  },
+  "cloud_calls": 0,
+  "code_only_no_real_datasets": true,
+  "format": "biograph-steward.standalone-reviewer-delivery-summary.v1",
+  "hosted_first_readme_and_five_current_tasks_verified": true,
+  "independent_actual_catalogue_same_snapshot_review": {
+    "actual_catalogue_primary": "/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115",
+    "actual_companion": "/?run=source_faithful_workspace_20261113&question=question_20261113T070731Z_1079c2ac",
+    "same_source_snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+    "source_or_graph_mutation": false,
+    "source_validation_still_on_open": true,
+    "status": "passed"
+  },
+  "invented_local_fixture_explicitly_separate": true,
+  "model_calls": 0,
+  "saved_data_only_actual_HTTP_and_zero_forbidden_factories_passed": true,
+  "software_archive": {
+    "bytes": 696121,
+    "file": "BioGraph_Steward_Software.zip",
+    "file_count": 129,
+    "sha256": "6f752794432bc5bf8aebd66827d26caba21b43d1e05b7ff1927673606df0169b"
+  },
+  "source_fetches": 0,
+  "source_revision": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+  "status": "passed",
+  "uploaded": false,
+  "upstream_notices_preserved": true
+}

@@ -5,18 +5,20 @@ research question through existing source tools. It returns a focused Pharos
 evidence graph, a cited answer, inspected source records and grounded review
 proposals. Each connection retains its original source and conditions.
 
-The actual current-source agent comparison is complete. Its protected hosted
-replay and replacement media are awaiting deployment acceptance; until then,
-the shared site and canonical video show the earlier guided evidence reader.
-The [delivery status](DELIVERY_STATUS_20261115.json) records actual acceptance.
+The actual current-source agent comparison, narrated local demonstration and
+protected hosted replay are complete. The
+[hosted acceptance](evaluations/source_agent_20261116/hosted_acceptance.json)
+and [delivery status](DELIVERY_STATUS_20261115.json) record the verified deployment;
+the tour's local filming provenance remains separate.
 
 **Start with the [five-minute judge walkthrough](JUDGE_WALKTHROUGH.md)** and
 [protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/).
 The workspace token is supplied privately. No AWS account, graph-query language,
 GPU or model server is needed for saved review. The
 [delivery status](DELIVERY_STATUS_20261115.json) identifies accepted deployments;
-the [3:42 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
-uses actual hosted-app captures, focused crops and captions. The
+the [3:54 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+uses actual local-app captures of verified saved real data, edited screenshot
+states and synthetic narration. It makes no new model requests. The
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
 provides its presentation.
 
@@ -50,7 +52,7 @@ The organizer brief assigns the following weights and permits autonomous
 
 | Criterion | Visible demonstration | Evidence and boundary |
 |---|---|---|
-| **Usability (40%)** | Question, agent plan, tool execution, inspected sources and proposed decisions | A recorded model run leads to a readable cited answer without graph syntax. Existing manual guidance remains available. Independent intended-user feedback is still pending. |
+| **Usability (40%)** | Question, agent plan, tool execution, inspected sources and proposed decisions | A recorded model run leads to a readable cited answer without graph syntax. Teammate feedback has informed control/navigation fixes. A structured independent walkthrough remains pending. |
 | **Accuracy & pruning (30%)** | Review applied qualification and its exhaustive decisions | 298 obsolete-ID exclusions are applied and reversible; unknowns remain retained. Public-reference recovery measures additional support. Automatic biological error removal and whole-graph correctness are not established. |
 | **Explainability (20%)** | Select an answer citation and inspect its source passport | Provider/version, original fields, exact identifiers, sequence or native-model checks, missing context and local review state remain visible. Database agreement is not counted as independent experimental replication. |
 | **Standards (10%)** | Inspect identifiers/categories and export the graph with provenance | UniProt, GO, MONDO/Reactome and explicit Biolink references are used. Bounded KGX and SSSOM profiles have recorded validation and mapping limits; full interoperability is not claimed. |

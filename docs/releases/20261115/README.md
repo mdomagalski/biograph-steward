@@ -2,18 +2,21 @@
 
 Start with the **[hosted application](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
 and the **[five-minute walkthrough](../../JUDGE_WALKTHROUGH.md)**. Sign in with
-the workspace token supplied privately. The current app presents one guided
-entry point, with research history available separately.
+the workspace token supplied privately. The current app opens a verified
+Nemotron source-agent record, with four steps from question to review proposals.
+The [hosted acceptance](../../evaluations/source_agent_20261116/hosted_acceptance.json)
+records the actual restart and saved-source checks; research history stays separate.
 
 ## Current reviewer files
 
 | File | Use |
 |---|---|
-| [Narrated walkthrough](../../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | A captioned screen tour using actual hosted-app captures and readable crops. |
+| [Narrated walkthrough](../../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | Current 3:54 captioned agent tour, using actual local-app captures and verified saved real data. |
 | [Plain transcript](../../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) | Read the same explanation or use it when presenting. |
 | [Captions](../../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Load the timed captions separately when needed. Captions are also visible in the video. |
 | [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise editable overview, with the detailed research linked separately. |
-| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run the tested Python core. Real source data are supplied separately. |
+| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run the tested ee3c61c Python core. Real source data are supplied separately. |
+| [Team review guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) | Two pages: source-scope explanation, five tasks and feedback prompts. |
 
 The canonical software archive is
 [BioGraph Steward Software](../../../output/software/BioGraph_Steward_Software.zip).

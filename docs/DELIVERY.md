@@ -10,16 +10,25 @@ real saved evidence and guides the reviewer through **Start here**, **Question
 
 The current-source agent has completed its
 [actual fixed comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
-Its hosted replay is awaiting deployment acceptance. Until the delivery status
-records that update, the protected site and canonical media continue to show
-the earlier guided reader. The new agent record and all evaluation outcomes
-are preserved separately; no hosted availability follows merely from code.
+Its protected hosted replay has passed
+[deployment acceptance](evaluations/source_agent_20261116/hosted_acceptance.json),
+including a real service restart, all five recorded model jobs and complete
+Neptune parity without fallback. The local-app tour demonstrates the same
+verified workflow; its filming provenance and the model evaluation remain
+separate from that deployment receipt.
+
+The separate [hosted browser check](evaluations/source_agent_20261116/hosted_browser_acceptance.json)
+was interrupted twice by Chrome's `ERR_NETWORK_CHANGED`. Authenticated HTTPS
+retrieval of the recorded result passed. The cause remains unresolved, so this
+increment claims server/API acceptance and local visual QA, with the complete
+hosted browser walkthrough still awaiting confirmation.
 
 Reviewers need only a browser. No AWS account, local tunnel or Brev/model server
 is needed. The shared site reads completed real-data work. Construction, fresh
 retrieval, live model planning and review edits are disabled during this shared
 review. The token admits the valid saved workspaces; it does not create
-individual reviewer roles. Independent teammate feedback remains pending.
+individual reviewer roles. Teammate feedback has informed navigation and
+control fixes; a structured independent walkthrough remains pending.
 
 The [delivery status](DELIVERY_STATUS_20261115.json) identifies the exact accepted
 runtime and deployment receipts. Source profiles, qualification decisions and
@@ -27,12 +36,16 @@ scientific outcomes retain their separate evidence records. A successful
 runtime check establishes software operation, rather than biological truth.
 
 The [narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
-uses actual hosted-app captures, readable crops and captions. It runs for 3:42;
+uses actual local-app captures of verified saved real data, readable crops and
+captions. It runs for 3:54;
 its [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
-provide the earlier guided introduction. Replacement agent media awaits actual
-accepted-host capture. The [dated history](../output/history/20261115_guided_review/README.md)
-preserves those original files unchanged.
+provide the same current agent introduction. The video combines edited
+screenshot states and synthetic narration, including the existing aggregate
+assessment report. It makes no new model requests or source updates. Actual
+prior model execution is recorded separately from model-free capture/replay.
+The [dated history](../output/history/20261115_guided_review/README.md)
+preserves the previous guided media and software unchanged.
 
 ## Recorded agent workflow
 
@@ -53,8 +66,8 @@ task and source-fidelity results, distinct from scientific accuracy or predictio
 gain. Every case outcome remains in the
 [evaluation record](evaluations/source_agent_20261116/summary.json).
 
-After the hosted update is accepted, reviewers can open the designated verified
-model run in **Start here → Agent workflow** and replay it without inference.
+Reviewers can open the designated verified model run in **Start here → Agent
+workflow** and replay it without inference.
 Its four inner tabs separate **Question & plan**, **Evidence graph**,
 **Source inspection** and **Review proposals**, with a Continue button for each
 next step.
@@ -66,13 +79,15 @@ it for verification. It does not contain or relicense the full dataset.
 The [software ZIP](../output/software/BioGraph_Steward_Software.zip)
 contains the Python core and its upstream notices. Its instructions lead to
 the hosted real-data review and separately explain the optional invented local
-fixture. The [acceptance summary](evaluations/reviewer_journey_delivery_20261115/software_acceptance.json)
+fixture. The [acceptance summary](evaluations/source_agent_20261116/software_acceptance.json)
 records clean Python construction, actual graph/decision exports, source
 recovery and saved-answer replay after restart. It includes no real source
 snapshots, credentials, reference labels or model weights.
 
-Its recorded acceptance identifies its exact source version. Packaging and
-acceptance for the newer agent increment remain a separate pending step.
+Its recorded acceptance pins source `ee3c61c2` and includes the current-source
+agent, four-step interface and saved-review guards. The invented catalogue
+check makes no model request; the separate actual model comparison retains its
+own evidence. Hosted deployment has a separate acceptance record.
 
 A fresh checkout is a software delivery, not the complete mixed-source dataset.
 Use the hosted app for the real demonstration. The [release index](releases/20261115/README.md)
@@ -112,8 +127,8 @@ HOU has shared HPA provider exposure. OpenCell is a previously used, coarse
 HEK293T reference with incomplete sequence/context qualification and unresolved
 indirect reuse. These are positive-label recovery measurements, not precision
 or whole-graph biological-accuracy percentages. The earlier predictor,
-stronger direct GOA controls, unfavorable graph-learner comparisons and failed
-agent results remain reported separately.
+stronger direct GOA controls, unfavorable graph-learner comparisons and earlier
+literature-audit results remain reported separately.
 
 The two saved downloads and separate graph-decision handoff serve different purposes:
 
@@ -238,23 +253,24 @@ files are under `runs/hosted_workspace_export_20261113/`; data access and source
 terms still apply.
 
 
-## Current offline handoff
+## Earlier offline handoff (November 15 checkpoint)
 
-For the latest code-only download, use
+At this earlier checkpoint, the code-only download was
 `runs/software_delivery_cached_review_20261115/biograph_steward_core_saved_review_software.zip`
 at commit `47a2e5a`, verified by the
 [clean extracted check](evaluations/software_release_cached_review_20261115_summary.json).
 The [release index](releases/20261115/README.md) records its checksum and exact
 core-only scope. Optional research/deployment scripts remain in the full
-repository. The hosted app has its separately accepted `47a2e5a` checkpoint; real source
+repository. The hosted app then had its separately accepted `47a2e5a` checkpoint; real source
 packets, native GO/QC attachments and aggregate publications remain separately
 supplied data.
 The earlier `9bf202f` code-only ZIP remains an asset in the existing private
 [draft review release](https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab),
 with the completed aggregate study and slides. Repository writers can review
-those draft assets. Use the tracked `codex/contextual-gain-delivery` review branch for a checkout;
-the default main still has the older checkpoint. Neither the
-main branch nor repository visibility was changed.
+those draft assets. That handoff used the tracked `codex/contextual-gain-delivery`
+review branch while the default main retained an older checkpoint. Neither
+main nor repository visibility changed at that point. These preserved packages
+do not replace the current software ZIP described above.
 The GO attachment is absent from this ZIP and fresh installations leave its
 inspector and native packet download disabled until the source paths are configured.
 The earlier `5362b50` software ZIP and its

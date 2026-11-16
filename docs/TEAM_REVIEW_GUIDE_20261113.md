@@ -6,13 +6,13 @@ adjudication or graph expertise is required: we need to know what is clear,
 what is misleading and where you get stuck.
 
 Open the [reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
-and use the token supplied privately. The new recorded-agent update is prepared
-and locally checked; hosted acceptance is still pending. Check
-[delivery status](DELIVERY_STATUS_20261115.json). If **Agent workflow** and its
-verified record are not available yet, mark those tasks **not attempted**
-rather than treating the older manual answer as an agent run.
+and use the token supplied privately. The current recorded-agent workflow
+is installed and checked after a real restart; see
+[delivery status](DELIVERY_STATUS_20261115.json). A
+[two-page PDF](../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) provides
+the same review tasks.
 
-Once installed, open **Agent workflow** on **Start here**, expand **Open a
+Open **Agent workflow** on **Start here**, expand **Open a
 recorded agent run**, choose the recorded KRAS example and select **Replay the
 recorded run**. The featured record is `source_agent_eval_dc7b597201da_S01`.
 This is real saved evidence from the 99-target cohort. Replay checks the saved

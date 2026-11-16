@@ -1,9 +1,9 @@
 # Five-minute judge walkthrough
 
-> The actual current-source agent evaluation is complete. Its hosted replay
-> update is awaiting deployment acceptance. Until the delivery status records
-> that update, the shared site and current narrated tour show the earlier
-> guided evidence reader. The steps below describe the prepared agent route.
+> The protected reviewer site now replays the recorded agent workflow. The
+> narrated tour demonstrates the same workflow in the actual local application
+> using verified saved real data. [Hosted acceptance](evaluations/source_agent_20261116/hosted_acceptance.json)
+> is recorded separately from the local filming provenance.
 
 **Question:** Which retrieved proteins have physical-association records with
 KRAS, and what can their evidence justify?
@@ -45,6 +45,8 @@ expand **Inspected citation [E001]**. The agent
 selected this returned citation for inspection; the application checked every
 source assertion grouped under it. All returned results remain in the saved
 answer, including citations the agent did not prioritize.
+`[E001]` identifies preserved database evidence. A publication link appears
+only when the source supplies one.
 
 For fuller source context, expand **All returned source citations** and choose
 **Inspect this claim manually**. Read the native STRING source explanation.
@@ -85,6 +87,9 @@ changes **30/40 to 31/40** among **23 matching proteins**. These are fixed sourc
 views, not a newly evaluated union of the whole graph. Shared-source context
 and prior reference exposure remain explicit.
 
+The [saved assessment report](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/scientific-assessment/scientific_assessment_public_reference_20261115_v3/report)
+also shows the complete fixed location-reference table and its source limits.
+
 In the fixed development comparison, four nonempty queries and one valid
 accepted-only empty query preserved the deterministic tool's complete result.
 Three unsupported or unresolved requests stopped before any model call. This
@@ -118,9 +123,27 @@ See [Current-source agent](SOURCE_AGENT.md), the
 
 ## Watch or present the work
 
-The [current screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4),
+The [3:54 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4),
 [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
-are canonical reviewer files. The agent update to these files awaits actual
-hosted capture. [Earlier guided-review media](../output/history/20261115_guided_review/README.md)
+are the current reviewer files. The video uses actual local-app captures of
+verified saved real data, including the existing assessment report. It combines
+edited screenshot states and focused crops with synthetic narration; it is
+not a continuous interaction recording. Authentication stays off camera and
+loading waits are omitted. Capture and replay make zero model requests,
+retrieve no new scientific source data and apply no review decisions. The
+depicted primary job records three actual model calls; the separate frozen
+comparison records 13. See the [media receipt](../output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json).
+
+| Chapter | What it shows |
+|---|---|
+| 0:00 | One real research question |
+| 0:26 | The agent's validated tool plan |
+| 0:58 | The capped answer and its evidence graph |
+| 1:29 | Source inspection and grounded review proposals |
+| 2:04 | Measured source recovery and its interpretation |
+| 2:46 | Applied identifier qualification |
+| 3:19 | Saved agent work and graph handoff |
+
+[Earlier guided-review media](../output/history/20261115_guided_review/README.md)
 remains preserved with its original scope and dates.

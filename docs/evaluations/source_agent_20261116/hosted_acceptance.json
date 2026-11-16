@@ -1,0 +1,146 @@
+{
+  "format": "biograph-steward.source-agent-hosted-delivery.v1",
+  "status": "accepted",
+  "verified_at_UTC": "2026-11-16T15:12:49.110418+00:00",
+  "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "previous_runtime": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+  "image_id": "sha256:367ea66c2e7025b952057f03da7c4253b1bf3fbbec6316db26208fb675b6a867",
+  "actual_service_restart_passed": true,
+  "Neptune_read_only_full_parity_no_fallback": true,
+  "graph_answers_sources_reviews_function_index_and_environment_preserved": true,
+  "source_data_or_graph_decisions_written": false,
+  "new_agent_job_ids": [
+    "source_agent_eval_dc7b597201da_S01",
+    "source_agent_eval_dc7b597201da_S02",
+    "source_agent_eval_dc7b597201da_S03",
+    "source_agent_eval_dc7b597201da_S04",
+    "source_agent_eval_dc7b597201da_S05"
+  ],
+  "reviewer_entry_sha256": "c17ea3d00013270b3d1445cd318f5de2d2bb2d9da46b598a359ba14e37ae6526",
+  "actual_model_records_appended": 5,
+  "new_model_calls_for_deployment": 0,
+  "models_or_fresh_retrieval_requested": false,
+  "cloud_resources_or_permissions_created": false,
+  "shared_review_saved_data_only": true,
+  "rollback_needed": false,
+  "accepted_remote_receipt_sha256": {
+    "activation.json": "a8c201df56184bd25c1a7c8cf1b7d6d7dd15a7fcb31fcaf0163137ad458dc936",
+    "api_before_restart.json": "07613fbc1132dc9b95faa8c27505b91bae8da7930c68e4b212428e147b0b6888",
+    "api_after_restart.json": "6cdf7de78c1aa5dd892769f6eb4c863fe8158a4455710d053e247df6313d3a40"
+  },
+  "authenticated_API_after_restart": {
+    "format": "biograph-steward.native-profiles-authenticated-smoke.v1",
+    "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "default_workspace_unchanged": true,
+    "default_saved_answer_unchanged": true,
+    "intended_real_reviewer_entry_verified": true,
+    "source_bound_qualification_display_verified": true,
+    "unauthenticated_workspace_access_denied": true,
+    "saved_data_only_enabled": true,
+    "live_ranking_denied_by_backend": true,
+    "publications": {
+      "scientific_assessment_public_reference_20261115_v3": {
+        "content_sha256": "845d992a33b40d117380dd68ae1bdb939f575969aae4b06d64931d1b1f7d2d30"
+      }
+    },
+    "workspaces": {
+      "native_evidence_workspace_20261115": {
+        "graph_content_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf"
+      }
+    },
+    "questions": {
+      "native_physical_KRAS_question_v3_20261115": {
+        "answer_sha256": "5d32db49ca6db7718ef37d3ee6394d3c444b08ddca2fd840bf12965888362e56",
+        "answer_ZIP_bytes": 77088,
+        "answer_ZIP_sha256": "30a1b5b18448f7165b7a5861b5ce7e16063189d71533b85201ef1b9709de717d"
+      },
+      "native_physical_KRAS_accepted_v3_20261115": {
+        "answer_sha256": "288c015dd17349d08b248beb5872fd3cdadc8b98215e4e7db1391526fb68fe44",
+        "answer_ZIP_bytes": 60050,
+        "answer_ZIP_sha256": "da93a27934105795a1a7ff387e249c9242eda62ef55080e4c3cbf7321ca76a01"
+      }
+    },
+    "native_location_queries": [
+      {
+        "run_id": "native_evidence_workspace_20261115",
+        "candidate_content_sha256": "98804c7386034526f9565ae8559f37cc92d0a6b5b387267c2014e1ff84b0b259",
+        "accepted_content_sha256": "7dcac33b671f08efd3904b58b16f73f37d96e0e0293b7573ce4dadf8cc648da7",
+        "source_passport_verified": true
+      }
+    ],
+    "source_agent_jobs": {
+      "source_agent_eval_dc7b597201da_S01": {
+        "status": "completed",
+        "actual_model_run": true,
+        "model_calls": 3,
+        "result_content_sha256": "1656d08af8a8eced4625554b6fe523ebb8bc87d32a66e4a69253695f5c5b2537",
+        "graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+        "source_passports": 3,
+        "complete_citation_source_coverage": true,
+        "non_mutating_proposals_verified": true,
+        "recorded_job_JSON_download_verified": true,
+        "download_bytes": 611596,
+        "download_sha256": "ab701bc5657a28a658645f7afbeb6e07f2abe99db0855c04d34f6063c5d7f8f7"
+      },
+      "source_agent_eval_dc7b597201da_S02": {
+        "status": "completed",
+        "actual_model_run": true,
+        "model_calls": 3,
+        "result_content_sha256": "d28e0ecaef688a8bed832c25a2f2d7fd192fe02161596830e20385dce0af5a90",
+        "graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+        "source_passports": 3,
+        "complete_citation_source_coverage": true,
+        "non_mutating_proposals_verified": true,
+        "recorded_job_JSON_download_verified": true,
+        "download_bytes": 611112,
+        "download_sha256": "f39366c1c87f4fbab5b297ab093ee2c624d2e46e01bce82b0d81dec983014e5c"
+      },
+      "source_agent_eval_dc7b597201da_S03": {
+        "status": "completed",
+        "actual_model_run": true,
+        "model_calls": 3,
+        "result_content_sha256": "a7628e8484e01a62303bd54846d270cdac12fb4c0acd2e62e99f59cd9b67e160",
+        "graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+        "source_passports": 3,
+        "complete_citation_source_coverage": true,
+        "non_mutating_proposals_verified": true,
+        "recorded_job_JSON_download_verified": true,
+        "download_bytes": 7358752,
+        "download_sha256": "1fd279cee1f5cba0630eccb3eb4c624d4b2550a179ed9aa2977664cb8b43af55"
+      },
+      "source_agent_eval_dc7b597201da_S04": {
+        "status": "completed",
+        "actual_model_run": true,
+        "model_calls": 3,
+        "result_content_sha256": "1189a73fa8948896e49748c355de8b87791febc3cb5f79e43892454b3e2da22c",
+        "graph_basis_sha256": "d473c7626ffdb32cdb813ac1649d1ccd93551fdd65ef8e8621315ce3bdf1d8e8",
+        "source_passports": 3,
+        "complete_citation_source_coverage": true,
+        "non_mutating_proposals_verified": true,
+        "recorded_job_JSON_download_verified": true,
+        "download_bytes": 12704661,
+        "download_sha256": "70eb5898e1e6db209c3e959753689d00dad735b3f426816597edd88972594352"
+      },
+      "source_agent_eval_dc7b597201da_S05": {
+        "status": "completed_empty",
+        "actual_model_run": true,
+        "model_calls": 1,
+        "result_content_sha256": "3b8dfd5eff789a5ec0292b03013603369aec4a6b9724db05d6d6dd3a925dcb8c",
+        "graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+        "source_passports": 0,
+        "complete_citation_source_coverage": true,
+        "non_mutating_proposals_verified": true,
+        "recorded_job_JSON_download_verified": true,
+        "download_bytes": 267024,
+        "download_sha256": "b4e99821d0080ace250c08e02b130975bc45a0b4cbf27bbe1b8e98dff9582ba9"
+      }
+    },
+    "Neptune_read_only_parity_no_fallback": true,
+    "models_or_fresh_retrieval_requested": false,
+    "review_or_graph_edits_requested": false,
+    "Neptune_mutation_requested": false,
+    "public_resources_created": false
+  },
+  "entry_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+  "independent_intended_user_study": false
+}

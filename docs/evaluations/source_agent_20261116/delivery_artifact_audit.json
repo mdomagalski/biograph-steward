@@ -1,0 +1,70 @@
+{
+  "format": "biograph-steward.delivery-artifact-audit.v1",
+  "checked_at_UTC": "2026-11-16T15:27:51.310650+00:00",
+  "status": "passed",
+  "scope": "One bounded local audit of named current reviewer documents, canonical artifacts and exact dated history. No rendering, inference, external HTTP, scientific-source loading or full test suite.",
+  "named_documents_checked": [
+    "README.md",
+    "START_HERE.md",
+    "docs/JUDGE_WALKTHROUGH.md",
+    "docs/DEMO_SCRIPT.md",
+    "docs/FINAL_SUBMISSION.md",
+    "docs/DELIVERY.md",
+    "docs/SUBMISSION_OVERVIEW.md",
+    "docs/TEAM_REVIEW_GUIDE_20261113.md",
+    "docs/releases/20261115/README.md",
+    "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md"
+  ],
+  "local_markdown_targets_checked": 179,
+  "missing_local_targets": [],
+  "external_or_protected_document_targets_not_opened": 0,
+  "canonical_artifacts": {
+    "output/software/BioGraph_Steward_Software.zip": {
+      "bytes": 724892,
+      "sha256": "2896d53b435c45a2bd054b77e0a02069cca253f21acfa83fcb2e2699e4c27ff0"
+    },
+    "output/presentations/BioGraph_Steward_Overview.pptx": {
+      "bytes": 587786,
+      "sha256": "ff7fc489a40b0b73baa58df885f9df7ad581253f44ca53b72c144983688d6e7c"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.mp4": {
+      "bytes": 6105296,
+      "sha256": "66248c09cd85c78efda3266839599f8d323e4deca7851796c9e5c8f17b461b09"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.txt": {
+      "bytes": 5096,
+      "sha256": "907b0ffd0902bcb2606a3bc5f5cc0dbac4883ace3fd2d2427536671fbb6ad6d0"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.vtt": {
+      "bytes": 5162,
+      "sha256": "50a99819adfc56fe2f30f3a7570e29b86f5a5bc53bec88ae17efdd73fb7343ee"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.srt": {
+      "bytes": 5310,
+      "sha256": "b7bd1d12c008d238aaa6655863b624709ea25701671c64f574a1bbd5fe853a43"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json": {
+      "bytes": 7371,
+      "sha256": "517a48b51b5cfba9e49d74c645c8d129bcbe1a4fd74e073499b57e711414f7f9"
+    },
+    "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf": {
+      "bytes": 47194,
+      "sha256": "a57f35e244c61bc898e1bfaab49e590a2710bb7c2d7a532261b29c2b08f92672"
+    }
+  },
+  "canonical_artifact_metadata_hash_claims_checked": 19,
+  "dated_history_members_verified": 8,
+  "dated_history_manifest_sha256": "a06f538d814682556b8fac7500fc8012c5cf90ad0d44057eeb84a818f7d1ec1e",
+  "server_acceptance": "accepted_after_restart",
+  "hosted_browser_acceptance": "limited_by_browser_network; two failed fresh Chrome attempts preserved; not passed",
+  "current_media_capture": "actual local ee3 screenshot states and existing saved aggregate report, model-free capture",
+  "checks": {
+    "current_receipts_do_not_claim_hosted_browser_pass": true,
+    "server_API_acceptance_and_local_visual_QA_distinguished": true,
+    "PDF_matches_approved_two_page_file": true,
+    "no_3m42s_references_in_named_current_docs": true,
+    "named_documents_stable_during_audit": true,
+    "protected_Word_or_unpromoted_GOA_note_not_opened_or_hashed": true
+  },
+  "issues": []
+}

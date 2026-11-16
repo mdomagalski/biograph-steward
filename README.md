@@ -8,12 +8,13 @@ traceable; the agent does not automatically accept or prune biological claims.
 
 **[Open the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
 with the token supplied privately. The [agent guide](docs/SOURCE_AGENT.md)
-explains question → plan → evidence → proposed review. The latest recorded-agent
-update is **prepared and checked locally; hosted rollout is pending**. The
-[delivery status](docs/DELIVERY_STATUS_20261115.json) identifies accepted hosted
-checkpoints. The existing [3:42 guided-source tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
-and [five-minute reader walkthrough](docs/JUDGE_WALKTHROUGH.md) show the separate
-saved-source inspection path; they should not be mistaken for live model execution.
+explains question → plan → evidence → proposed review. The updated recorded-agent
+workflow is **available on the protected site**, with restart and source checks
+recorded in [delivery status](docs/DELIVERY_STATUS_20261115.json). The
+[3:54 narrated tour](output/walkthrough/BioGraph_Steward_Walkthrough.mp4) and
+[five-minute walkthrough](docs/JUDGE_WALKTHROUGH.md) follow the actual recorded
+model run. The tour uses local-app captures of the saved evidence; replay makes
+no new inference calls.
 The [seven-slide overview](output/presentations/BioGraph_Steward_Overview.pptx)
 provides a concise presentation.
 

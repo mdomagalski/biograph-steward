@@ -12,12 +12,12 @@ step visible at a time.
 
 The current-source agent has completed its
 [fixed development comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
-Its hosted replay and replacement media are awaiting deployment acceptance.
-Until then, the protected site and canonical tour show the earlier guided
-evidence reader. Check the [delivery status](DELIVERY_STATUS_20261115.json)
-before describing the agent route as hosted.
+The current tour demonstrates the actual local application using verified saved
+real data. The protected site now replays the recorded agent workflow, with
+[hosted acceptance](evaluations/source_agent_20261116/hosted_acceptance.json)
+and the exact [delivery status](DELIVERY_STATUS_20261115.json) recorded separately.
 
-After acceptance, open the
+Open the
 [shared reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
 with the privately supplied token and follow the designated recorded agent run.
 The shared session replays genuine saved model work. It does not call a model,
@@ -35,10 +35,11 @@ reference labels; the retained TP53 workspace applies explicit identifier
 qualifications and preserves every decision. Agent orchestration does not add
 new prediction inputs or establish a prediction gain.
 
-The [canonical narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+The [3:54 narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 and [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) provide
-the current recorded presentation. Its successor will use actual accepted
-hosted UI captures, with edited still states disclosed. Earlier media stays
+the current recorded presentation. It uses actual local-app screenshot states,
+including the saved aggregate report, with focused crops and synthetic narration.
+It is not a continuous recording or a new live model run. Earlier media stays
 in the [dated history](../output/history/20261115_guided_review/README.md).
 
 For the scoring map and limits, use the [submission summary](FINAL_SUBMISSION.md).

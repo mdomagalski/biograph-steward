@@ -30,12 +30,14 @@ This does not establish general free-text routing or scientific accuracy.
 Original source, full-graph and review hashes stayed unchanged. See the
 [aggregate receipt](evaluations/source_agent_20261116/summary.json).
 
-The prepared featured job is `source_agent_eval_dc7b597201da_S01` in
+The featured job is `source_agent_eval_dc7b597201da_S01` in
 `native_evidence_workspace_20261115`. Its eight-result limit differs from the
-separate manual KRAS answer's 14 displayed partners. Hosted installation is
-pending an accepted deployment receipt; code and a local recording do not
-establish that the protected site has been updated. The eventual source-bound
-replay path is:
+separate manual KRAS answer's 14 displayed partners. It is now available on the
+protected reviewer site after the accepted runtime update and real restart,
+with the original graphs, sources and reviews preserved. See the
+[hosted acceptance receipt](evaluations/source_agent_20261116/hosted_acceptance.json).
+New inference remains disabled on that shared site. The source-bound replay
+path is:
 
 ```text
 /?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data

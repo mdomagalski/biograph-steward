@@ -6,10 +6,11 @@ graph, a cited answer, inspected source records and grounded review proposals.
 A researcher can trace a connection, inspect qualifications and reuse the
 graph with its source context.
 
-The new agent's actual development comparison is complete. Hosted replay,
-updated media and refreshed software packaging await their own acceptance.
-The protected site and current video still show the preceding guided reader
-until the [delivery status](DELIVERY_STATUS_20261115.json) records the update.
+The agent's actual development comparison, portable software acceptance,
+narrated local demonstration and protected hosted replay are complete. The
+[hosted acceptance](evaluations/source_agent_20261116/hosted_acceptance.json)
+and [delivery status](DELIVERY_STATUS_20261115.json) record the verified deployment;
+the tour remains explicitly filmed in the local application.
 
 **[Open the protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
 and follow the **[five-minute judge walkthrough](JUDGE_WALKTHROUGH.md)**.
@@ -50,8 +51,13 @@ the full graph. Coverage and shared-source limits remain explicit. A separate
 source-exclusion sensitivity check recovers 30 of 40 to 31 of 40 labels among 23
 OpenCell-matched proteins. These are known-annotation recovery results;
 they do not measure the fraction of the whole graph that is correct.
-Same-learner held-out graph comparisons were executed without establishing
-consistent enriched-graph superiority over Pharos and the strongest controls.
+The challenge's same-learner link-prediction panels did not show a reliable
+enriched-graph advantage. A separate historical function-recovery study
+improved retained LocalPlus in both primary views. Updating the baseline's
+annotations also helped, and additional primary benefit over that stronger
+baseline was uncertain. These [learned-model results](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+retain their own endpoints and controls; the current agent check does not
+claim their gains.
 
 The [current-source agent comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md)
 completed all eight fixed behavioral checks: four nonempty queries and one
@@ -82,10 +88,11 @@ the organizer's 40% usability, 30% accuracy/pruning, 20% explainability and 10%
 standards criteria. It links complete results and clearly separates the
 preserved research appendix. The
 [narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
-shows actual hosted-app captures in 3:42, with captions; the
+shows the actual local app using verified saved real data in 3:54, with
+synthetic narration, captions and edited screenshot states; the
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
-provides the preceding guided presentation. Their replacement will show the
-actual accepted agent workflow. Earlier files remain in the
+provides the same current agent presentation. Hosted deployment and its
+acceptance remain separately recorded. Earlier files remain in the
 [dated media history](../output/history/20261115_guided_review/README.md).
 
 For code or separate operator execution, use [START_HERE](../START_HERE.md) and

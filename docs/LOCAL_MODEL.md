@@ -20,7 +20,9 @@ parity and three zero-call preflight guards. It used 13 Nemotron calls and 972
 completion tokens. This demonstrates the bounded controller on those cases;
 identities were application-grounded and most plans had one available query
 tool. It is not a general routing, biological-accuracy or prediction-gain result.
-The prepared recorded job still requires its separate hosted rollout receipt.
+The recorded examples are now available on the protected reviewer site after
+the [accepted hosted rollout and real restart](evaluations/source_agent_20261116/hosted_acceptance.json).
+Saved replay verifies the recorded sources without starting the model service.
 
 ## Fixed configuration
 

@@ -1,16 +1,26 @@
 {
-  "format": "biograph-steward.walkthrough-delivery.v1",
+  "format": "biograph-steward.walkthrough-delivery.v2",
   "title": "BioGraph Steward walkthrough",
-  "runtime_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
-  "capture_method": "Narrated edited still states from actual protected hosted-application screenshots; focused crops preserve the original UI.",
+  "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "capture_mode": "local",
+  "capture_method": "Narrated edited screenshot states from the actual local application using verified saved real research data, including its direct precomputed assessment report.",
   "continuous_screen_recording": false,
   "actual_screenshot_states": 14,
-  "unique_source_images": 11,
+  "unique_source_images": 13,
   "synthetic_voice": "Installed macOS Samantha, with no external speech service",
   "login_token_account_or_raw_JSON_shown": false,
-  "model_calls_fresh_retrieval_or_graph_edits_for_capture": false,
-  "encoded_duration_seconds": 222.46,
-  "timeline_seconds": 222.315,
+  "new_model_calls_for_capture": 0,
+  "fresh_scientific_source_retrievals_for_capture": 0,
+  "read_only_direct_saved_report_GETs": 1,
+  "graph_or_review_changes_for_capture": 0,
+  "depicted_actual_recorded_model_job": {
+    "job_id": "source_agent_eval_dc7b597201da_S01",
+    "recorded_model_calls": 3,
+    "separate_frozen_development_comparison_model_calls": 13,
+    "capture_model_calls": 0
+  },
+  "encoded_duration_seconds": 233.7,
+  "timeline_seconds": 233.6,
   "video": {
     "codec": "H.264",
     "width": 1280,
@@ -19,44 +29,50 @@
   "audio": {
     "codec": "AAC",
     "mean_volume_db": -16.4,
-    "peak_volume_db": -1.6
+    "peak_volume_db": -1.5
   },
   "chapters": [
     {
       "id": "start",
-      "title": "Start with real research data",
+      "title": "A question with a traceable answer",
       "start_seconds": 0.0,
-      "end_seconds": 24.802
+      "end_seconds": 26.0
+    },
+    {
+      "id": "plan",
+      "title": "The agent's plan and tool call",
+      "start_seconds": 26.0,
+      "end_seconds": 58.1
     },
     {
       "id": "answer",
-      "title": "Read the answer",
-      "start_seconds": 24.802,
-      "end_seconds": 55.604
+      "title": "The answer and its meaning",
+      "start_seconds": 58.1,
+      "end_seconds": 88.7
     },
     {
-      "id": "source",
-      "title": "Inspect one source",
-      "start_seconds": 55.604,
-      "end_seconds": 88.507
+      "id": "inspection",
+      "title": "Source inspection and review proposals",
+      "start_seconds": 88.7,
+      "end_seconds": 124.0
     },
     {
       "id": "measured",
-      "title": "Read the measured comparison",
-      "start_seconds": 88.507,
-      "end_seconds": 128.308
+      "title": "What the measurements show",
+      "start_seconds": 124.0,
+      "end_seconds": 165.9
     },
     {
       "id": "review",
-      "title": "Understand review and pruning",
-      "start_seconds": 128.308,
-      "end_seconds": 174.813
+      "title": "An applied graph qualification",
+      "start_seconds": 165.9,
+      "end_seconds": 199.4
     },
     {
       "id": "export",
-      "title": "Share a traceable result",
-      "start_seconds": 174.813,
-      "end_seconds": 222.315
+      "title": "A result a colleague can inspect",
+      "start_seconds": 199.4,
+      "end_seconds": 233.6
     }
   ],
   "checks": {
@@ -67,26 +83,156 @@
     "15_representative_frames_visually_reviewed": true,
     "independent_root_visual_review": true,
     "original_UI_not_reconstructed": true,
-    "grey_band_absent": true
+    "visible_HOU_and_OpenCell_measurements": true,
+    "positive_agent_focused_closing": true,
+    "no_missing_capture_content_or_encoder_grey_band": true
   },
-  "accepted_activation_sha256": "3d51be79ffe0f9cf4ea7dce7ef0a4227e9c75e2fc56ff8bcabc75ab094a006e1",
-  "source_capture_config_sha256": "35ec959235b90d60819dbdf7d129b4635abcf1a41a1c995af842b8ead550e281",
+  "local_capture_receipt_sha256": "38d8b1be5b79f90ddbe2d6d914387a2bfab1d87eedf0f941570afcc754c246f4",
+  "direct_saved_report_capture_receipt_sha256": "651b90c30a45234f6d32a881749a688034aa9e6d17e3ef67999f764f796811c7",
+  "unchanged_v3_publication_manifest_sha256": "915359919951c2cb8aff0a3d13f95f24e2ded95db00c9983822e367a76f3e725",
+  "source_capture_config_sha256": "929bcde23d047a1d683e3ac5b37a1dcd842dca3c3f305058e6f153300fd5fa93",
+  "image_sources": [
+    {
+      "scene": "start",
+      "filename": "current_local_agent_start.png",
+      "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+      "seconds": 8,
+      "crop": null
+    },
+    {
+      "scene": "start",
+      "filename": "current_local_agent_start.png",
+      "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+      "seconds": 18.0,
+      "crop": {
+        "x": 60,
+        "y": 360,
+        "width": 1320,
+        "height": 570
+      }
+    },
+    {
+      "scene": "plan",
+      "filename": "current_local_agent_plan.png",
+      "sha256": "1461dc45b541f25f840c433ccaf2be43b0367f17b8a3b7b3d3726ac53ab83646",
+      "seconds": 32.1,
+      "crop": null
+    },
+    {
+      "scene": "answer",
+      "filename": "current_local_agent_overview.png",
+      "sha256": "3b886727b96c90d191352a0ab2ccb27d813e67c78a6af2f126ea571c3674c19d",
+      "seconds": 5,
+      "crop": null
+    },
+    {
+      "scene": "answer",
+      "filename": "current_local_agent_star.png",
+      "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
+      "seconds": 15,
+      "crop": null
+    },
+    {
+      "scene": "answer",
+      "filename": "current_local_agent_first_claim.png",
+      "sha256": "8140b79458909fa6c09a9e2a8a08f9673a84fc263673db8471b7367c5feed505",
+      "seconds": 10.6,
+      "crop": null
+    },
+    {
+      "scene": "inspection",
+      "filename": "current_local_agent_native_source.png",
+      "sha256": "6486601b15147b61e10126e3614d1212d6210e56f01e115cddd835b15673b1af",
+      "seconds": 18,
+      "crop": null
+    },
+    {
+      "scene": "inspection",
+      "filename": "current_local_agent_proposals.png",
+      "sha256": "7ea6e5fe3cea4f2a8940fa969eb4e5805c33b9f9490a5c3fc57297ae1c70ff8d",
+      "seconds": 17.3,
+      "crop": null
+    },
+    {
+      "scene": "measured",
+      "filename": "direct_location_reference.png",
+      "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
+      "seconds": 28.9,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 400
+      }
+    },
+    {
+      "scene": "measured",
+      "filename": "direct_opencell_reference.png",
+      "sha256": "ae90d99ea6df72d4474181d80362b78631e1c72cb2ecdf4c6b6c3c78c9e4b334",
+      "seconds": 13,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 286
+      }
+    },
+    {
+      "scene": "review",
+      "filename": "current_local_applied_qualification.png",
+      "sha256": "eead630ee0d754f7ac3191ddd029522b64b2bf74a37417cb7795ca225741956e",
+      "seconds": 33.5,
+      "crop": null
+    },
+    {
+      "scene": "export",
+      "filename": "current_local_agent_record_download.png",
+      "sha256": "ba201b0b67e00c6f9c63e909774db7806d3f6231593f5d875e92166eaf7c2c14",
+      "seconds": 12,
+      "crop": {
+        "x": 60,
+        "y": 250,
+        "width": 1320,
+        "height": 690
+      }
+    },
+    {
+      "scene": "export",
+      "filename": "current_local_retained_export.png",
+      "sha256": "d08adcab4374cd005c29ec61add768a3781aea5a45c766887e0cb7d12ab6de3f",
+      "seconds": 12,
+      "crop": {
+        "x": 60,
+        "y": 310,
+        "width": 1320,
+        "height": 605
+      }
+    },
+    {
+      "scene": "export",
+      "filename": "current_local_retained_files.png",
+      "sha256": "fbdd5467d8796d17255ed4ef9d74b48f9777df1eacf32aa345c64ff8d5965262",
+      "seconds": 10.2,
+      "crop": null
+    }
+  ],
   "files": {
     "BioGraph_Steward_Walkthrough.mp4": {
-      "bytes": 6214571,
-      "sha256": "df7265c97d288b493fffd55e880dd1681401a331729289e556a27932e59c57ee"
-    },
-    "BioGraph_Steward_Walkthrough.vtt": {
-      "bytes": 4897,
-      "sha256": "6366cdebd4f88ea52dfd9df668d34c363d3e4361103187879613c5b7cb1c91b2"
-    },
-    "BioGraph_Steward_Walkthrough.srt": {
-      "bytes": 5042,
-      "sha256": "2589a66fc9e01ce1fa201ba64c1a0e9f0bc671a8a485c3efdea896fed6908328"
+      "bytes": 6105296,
+      "sha256": "66248c09cd85c78efda3266839599f8d323e4deca7851796c9e5c8f17b461b09"
     },
     "BioGraph_Steward_Walkthrough.txt": {
-      "bytes": 4569,
-      "sha256": "1e38fd65fe316bf4b149dd93a6083195c75464f7332a36fa8095f63eab5d1702"
+      "bytes": 5096,
+      "sha256": "907b0ffd0902bcb2606a3bc5f5cc0dbac4883ace3fd2d2427536671fbb6ad6d0"
+    },
+    "BioGraph_Steward_Walkthrough.vtt": {
+      "bytes": 5162,
+      "sha256": "50a99819adfc56fe2f30f3a7570e29b86f5a5bc53bec88ae17efdd73fb7343ee"
+    },
+    "BioGraph_Steward_Walkthrough.srt": {
+      "bytes": 5310,
+      "sha256": "b7bd1d12c008d238aaa6655863b624709ea25701671c64f574a1bbd5fe853a43"
     }
-  }
+  },
+  "hosted_deployment_acceptance_has_separate_receipt": true
 }
