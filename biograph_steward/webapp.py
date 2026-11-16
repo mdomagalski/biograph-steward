@@ -181,7 +181,9 @@ def report_html(graph: dict | None = None, *, protected=False, saved_data_only=F
             'body[data-saved-data-only="true"] #assayAttachForm,'
             'body[data-saved-data-only="true"] #assayQuestionControls,'
             'body[data-saved-data-only="true"] #civicForm,'
-            'body[data-saved-data-only="true"] #regulatoryForm{display:none!important}</style></head>')
+            'body[data-saved-data-only="true"] #regulatoryForm,'
+            'body[data-saved-data-only="true"] #submissionCreateNote,'
+            'body[data-saved-data-only="true"] #submissionExport{display:none!important}</style></head>')
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     capabilities = {"saved_data_only": saved_data_only, "live_physical_ranking": not saved_data_only, "model_planning": not saved_data_only}
     script = "const appCapabilities=Object.freeze(" + json.dumps(capabilities) + ");\n"
