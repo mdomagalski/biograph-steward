@@ -64,7 +64,7 @@ function configureReviewerEntry(data){
   if(!reviewerEntry&&data.example_url){const url=reviewerSavedURL(data.example_url),run=url&&(data.runs||[]).find(row=>row.run_id===url.searchParams.get('run')&&row.data_kind==='live_pharos');if(run)reviewerEntry={example_url:data.example_url,data_kind:'live_pharos',display_title:'Explore real Pharos evidence',guided_examples:[]};}
   updateReviewerHome();
   const params=new URLSearchParams(location.search);
-  if(reviewerEntry&&!params.has('run')&&!params.has('pruning')&&!location.hash){const url=reviewerSavedURL(reviewerEntry.example_url);url.searchParams.set('view','data');location.replace(url.pathname+url.search);}
+  if(reviewerEntry&&!params.has('run')&&(!params.has('pruning')||savedReviewOnly())&&(!location.hash||savedReviewOnly())){const url=reviewerSavedURL(reviewerEntry.example_url);url.searchParams.set('view','data');location.replace(url.pathname+url.search);}
 }
 $('reviewerAnswer').onclick=()=>{if(reviewerAnswerReady()){showWorkspaceView('ask');navigateWork('question');}else{const url=reviewerSavedURL(reviewerEntry?.example_url);if(url)location.assign(url.pathname+url.search);}};
 $('reviewerSource').onclick=()=>{const id=reviewerSourceClaim();if(!id)return;showWorkspaceView('evidence');$('sourceGuideSelection').value=id;loadSourceGuide(id);$('sourceGuide').scrollIntoView({block:'start'});};
@@ -73,11 +73,25 @@ $('reviewerOpenOffline').onclick=()=>{if(savedReviewOnly())return;$('controls').
 
 // Existing saved-run and saved-question routes remain responsible for validation.
 let savedWork = [];
+function reviewWorkspaceChoices(runs){
+  if(!savedReviewOnly())return runs;
+  const urls=[reviewerEntry?.example_url,...(reviewerEntry?.guided_examples||[]).map(row=>row.url)];
+  const allowed=new Set(urls.map(reviewerSavedURL).filter(Boolean).map(url=>url.searchParams.get('run')));
+  if(runId)allowed.add(runId);
+  const requested=new URLSearchParams(location.search).get('run');
+  if(/^[A-Za-z0-9_-]{1,80}$/.test(requested||''))allowed.add(requested);
+  return runs.filter(run=>allowed.has(run.run_id));
+}
+function savedWorkspaceLabel(run){
+  const primary=reviewerSavedURL(reviewerEntry?.example_url);
+  const label=run.data_kind==='synthetic_demo'?'Invented offline demonstration':primary?.searchParams.get('run')===run.run_id?'Current evidence workspace':run.qualified_view?'Applied qualifications · retained Pharos graph':run.has_civic?'Pharos + CIViC source evidence':(run.questions||[]).some(row=>row.template==='native_string_physical.v1')?'Pharos + native source context':'Saved Pharos evidence';
+  return savedReviewOnly()?label:label+' · '+run.run_id;
+}
 function chooseSavedRun(){
   const run=savedWork.find(r=>r.run_id===$('savedRun').value),select=$('savedQuestion');
   select.replaceChildren();
   const graphOption=el('option','Open graph and choose a question');graphOption.value=run?.url||'';select.append(graphOption);
-  for(const q of run?.questions||[]){const option=el('option',q.question+' · '+q.view+' · '+q.question_id);option.value=q.url;select.append(option);}
+  for(const q of run?.questions||[]){const view=q.view==='accepted'?'Accepted locally only':q.view==='candidates'?'Candidate and accepted source records':q.view;const option=el('option',q.question+' · '+(savedReviewOnly()?view:q.view+' · '+q.question_id));option.value=q.url;select.append(option);}
   select.disabled=!run;$('openSavedWork').disabled=!run;
 }
 async function loadSavedWork(){
@@ -85,14 +99,15 @@ async function loadSavedWork(){
   try{
     const response=await fetch('/api/workspaces'),data=await response.json();
     if(!response.ok)throw new Error(data.error||'Could not load saved work.');
-    savedWork=data.runs;configureReviewerEntry(data);const selected=$('savedRun').value||runId;
+    configureReviewerEntry(data);savedWork=reviewWorkspaceChoices(data.runs);const selected=$('savedRun').value||runId||new URLSearchParams(location.search).get('run');
     $('savedRun').replaceChildren();
-    for(const run of savedWork){const label=run.data_kind==='synthetic_demo'?'Synthetic demonstration':run.qualified_view?'Qualified retained graph':run.has_civic?'Pharos + CIViC':'Pharos';const option=el('option',label+' · '+run.run_id+' · '+run.questions.length+' saved answers');option.value=run.run_id;$('savedRun').append(option);}
+    for(const run of savedWork){const option=el('option',savedWorkspaceLabel(run)+' · '+run.questions.length+' saved answers');option.value=run.run_id;$('savedRun').append(option);}
     if(savedWork.some(r=>r.run_id===selected))$('savedRun').value=selected;
     $('savedRun').disabled=!savedWork.length;chooseSavedRun();
-    $('savedExample').classList.toggle('hidden',!data.example_url);
-    if(data.example_url)$('savedExample').href=data.example_url;
-    $('savedWorkStatus').textContent=savedWork.length+' saved graphs. '+data.note+(data.withheld?' '+data.withheld+' incomplete or unsupported entries omitted.':'');
+    const current=reviewerSavedURL(reviewerEntry?.example_url||data.example_url);
+    $('savedExample').classList.toggle('hidden',!current);
+    if(current)$('savedExample').href=current.pathname+current.search;
+    $('savedWorkStatus').textContent=savedReviewOnly()?savedWork.length+' saved workspaces for this review. Opening one checks its sources and answer basis.':savedWork.length+' saved graphs. '+data.note+(data.withheld?' '+data.withheld+' incomplete or unsupported entries omitted.':'');
   }catch(error){$('savedWorkStatus').textContent=error.message;if($('reviewerHomeStatus'))$('reviewerHomeStatus').textContent='Saved evidence could not be opened: '+error.message;}
 }
 function updateWorkNavigation(){
@@ -131,4 +146,4 @@ $('reloadSavedWork').onclick=loadSavedWork;
 $('savedWorkForm').onsubmit=event=>{event.preventDefault();const url=$('savedQuestion').value;if(url)location.assign(url);};
 if(!JSON.parse($('embeddedData').textContent))loadSavedWork();
 else $('savedWorkPanel').classList.add('hidden');
-if(location.hash==='#refreshPanel')$('refreshPanel').open=true;
+if(!savedReviewOnly()&&location.hash==='#refreshPanel')$('refreshPanel').open=true;

@@ -137,3 +137,38 @@ test('a featured agent entry leaves the separate manual card clearly labelled as
  const h=harness();real(h);h.configure({reviewer_entry:{...entry,agent_job_id:'source_agent_recorded',display_title:'Follow a recorded source-agent workflow'},runs:[]});
  assert.equal(h.$('reviewerHomeTitle').textContent,'Guided source reader');
 });
+
+test('shared picker identifies the primary and retained companion without listing research workspaces',async()=>{
+  const h=harness('?run=real_retained',true);h.context.runId='real_retained';h.$('savedRun').value='real_retained';
+  const question={question:'What source context supports this?',question_id:'q_technical',url:'/?run=real_retained&question=q_technical',view:'candidates'};
+  const runs=[{run_id:'real_current',data_kind:'live_pharos',questions:[]},
+    {run_id:'real_retained',data_kind:'live_pharos',qualified_view:true,questions:[question]},
+    {run_id:'older_development',data_kind:'live_pharos',questions:[]},
+    {run_id:'offline_fixture',data_kind:'synthetic_demo',questions:[]}];
+  h.context.fetch=async()=>({ok:true,json:async()=>({reviewer_entry:entry,runs,example_url:entry.example_url,note:'Original catalogue note.'})});
+  await h.context.loadSavedWork();
+  const options=h.$('savedRun').children;
+  assert.deepEqual(options.map(row=>row.value),['real_current','real_retained']);
+  assert.match(options[0].textContent,/Current evidence workspace/);
+  assert.match(options[1].textContent,/Applied qualifications · retained Pharos graph/);
+  assert.doesNotMatch(options.map(row=>row.textContent).join(' '),/real_current|real_retained|older_development/);
+  assert.match(text(h.$('savedQuestion')),/Candidate and accepted source records/);
+  assert.doesNotMatch(text(h.$('savedQuestion')),/q_technical/);
+  assert.equal(h.$('savedExample').href,entry.example_url);
+  assert.deepEqual(h.calls.assign,[]);
+});
+
+test('operator picker preserves all saved workspace IDs and explicit shared work stays reachable',()=>{
+  const runs=[{run_id:'real_current',data_kind:'live_pharos',questions:[]},{run_id:'historic',data_kind:'live_pharos',questions:[]}];
+  const operator=harness('?run=historic');operator.configure({reviewer_entry:entry,runs});
+  assert.deepEqual(Array.from(operator.context.reviewWorkspaceChoices(runs),row=>row.run_id),['real_current','historic']);
+  assert.match(operator.context.savedWorkspaceLabel(runs[1]),/historic/);
+  const shared=harness('?run=historic',true);shared.configure({reviewer_entry:entry,runs});
+  assert.deepEqual(Array.from(shared.context.reviewWorkspaceChoices(runs),row=>row.run_id),['real_current','historic']);
+  assert.deepEqual(shared.calls.replace,[]);
+});
+
+test('shared bare historical controls return to the actual current entry instead of an empty development view',()=>{
+  const h=harness('?pruning=historical_preview',true);h.location.hash='#refreshPanel';h.configure({reviewer_entry:entry,runs:[]});
+  assert.deepEqual(h.calls.replace,['/?run=real_current&question=cited_current&view=data']);
+});

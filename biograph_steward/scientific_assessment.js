@@ -310,7 +310,7 @@ async function initializeScientificAssessments(){
     select.replaceChildren();
     for(const row of rows){if(!/^[A-Za-z0-9_-]{1,80}$/.test(row.id))throw new Error('Invalid assessment identifier.');const option=document.createElement('option');option.value=row.id;option.textContent=row.created_at+' · '+row.id;select.append(option);}
     select.disabled=!rows.length;
-    function show(){const row=rows.find(item=>item.id===select.value);if(!row)return;ScientificAssessment.render(body,row.summary,{publicationId:row.id});const current=document.getElementById('scientificAssessmentCurrent');if(current)current.textContent='Current saved assessment. Other versions remain available in the collapsed history menu.';status.textContent='Verified aggregate results for the stated cohorts. Viewing results changes no graph or review decision.';}
+    function show(){const row=rows.find(item=>item.id===select.value);if(!row)return;ScientificAssessment.render(body,row.summary,{publicationId:row.id});const current=document.getElementById('scientificAssessmentCurrent');if(current)current.textContent=typeof savedReviewOnly==='function'&&savedReviewOnly()?'Current scientific assessment, including its controls and limitations.':'Current saved assessment. Other versions remain available in the collapsed history menu.';status.textContent='Verified aggregate results for the stated cohorts. Viewing results changes no graph or review decision.';}
     select.onchange=show;
     if(rows.length)show();else{body.replaceChildren();status.textContent='No verified scientific assessment is published in this workspace.';}
   }catch(error){if(epoch===scientificAssessmentRequest){body.replaceChildren();status.textContent=error.message;}}

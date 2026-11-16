@@ -5,6 +5,13 @@ const workspaceSuffix={data:'Data',ask:'Ask',evidence:'Evidence',compare:'Compar
 let workspaceView='data',workspaceLoaded=false,inspectionRequest=0,pathRequest=0;
 let neptuneRequest=0,neptuneStatusRequest=0,neptuneConfigured=false;
 function workspaceHashTarget(){try{return $(decodeURIComponent(location.hash.slice(1)));}catch(_){return null;}}
+function initializeWorkspaceAssessments(){
+  initializeScientificAssessments();
+  if(savedReviewOnly())return;
+  initializePruningPreview();
+  initializeBiologicalComparisons();
+  initializeFunctionContexts();
+}
 function showWorkspaceView(name,{focus=false,persist=true,scroll=false}={}){
   if(!workspaceNames.includes(name))return;
   const button=$('workspaceTab'+workspaceSuffix[name]);
@@ -20,10 +27,12 @@ function showWorkspaceView(name,{focus=false,persist=true,scroll=false}={}){
   if(scroll)$('workspace'+workspaceSuffix[name]).scrollIntoView({block:'start'});
 }
 function revealWorkspaceTarget(target){
-  if(!target)return;
+  if(!target)return false;
+  if(savedReviewOnly()&&target.closest('[data-development-view]'))return false;
   let ancestor=target.closest('details');while(ancestor){ancestor.open=true;ancestor=ancestor.parentElement?.closest('details');}
   const panel=target.closest('[data-workspace-panel]');
   if(panel)showWorkspaceView(panel.dataset.workspacePanel);
+  return true;
 }
 function initializeWorkspaceNavigation(){
   const move=(id,view)=>{const item=$(id);if(item)$('workspace'+workspaceSuffix[view]).append(item);};
@@ -38,6 +47,7 @@ function initializeWorkspaceNavigation(){
   for(const id of ['assayPanel','inspectionDetails'])move(id,'evidence');
   for(const id of ['functionContextPanel','biologicalComparisonPanel','supportComparatorPanel','benchmarkPanel','refreshPanel']){const item=$(id);if(item)$('comparisonResearchHistory').append(item);}
   $('comparisonPruningControls').append($('pruningPreviewPanel'));
+  if(savedReviewOnly())$('savedWorkspaceSummary').textContent='Saved workspaces and source versions';
   move('submissionPanel','export');
   for(const id of ['downloadJson','downloadZip'])$('workspaceDownloads').append($(id));
   $('workspaceContext').append($('results'));
@@ -54,7 +64,7 @@ function initializeWorkspaceNavigation(){
       if(next){event.preventDefault();showWorkspaceView(next.dataset.workspace,{focus:true,scroll:true});}
     });
   }
-  const followHash=()=>{const target=workspaceHashTarget();if(target){revealWorkspaceTarget(target);if(target.tagName==='DETAILS')target.open=true;}};
+  const followHash=()=>{const target=workspaceHashTarget();if(target&&revealWorkspaceTarget(target)&&target.tagName==='DETAILS')target.open=true;};
   document.addEventListener('click',event=>{
     const link=event.target.closest('a[href^="#"]');
     if(link&&link.hash.length>1){let target;try{target=$(decodeURIComponent(link.hash.slice(1)));}catch(_){return;}if(target)revealWorkspaceTarget(target);}
@@ -73,7 +83,7 @@ function setupWorkspace(){
   $('pathExploreStatus').textContent='Searches this saved graph only. No source retrieval or model call is made.';
   $('sourceGuideButton').disabled=!runId;$('pathExploreButton').disabled=!runId;
   $('sourceGuideSearch').value='';populateSourceGuide();populatePathEntities();
-  setupNeptune();
+  if(!savedReviewOnly())setupNeptune();
   setupNativeGoa();
   const relations=[...new Set((graph.assertions||[]).map(a=>a.predicate))].sort();
   $('pathPredicate').replaceChildren(el('option','All saved relationship types'));$('pathPredicate').options[0].value='';
@@ -457,6 +467,7 @@ $('neptuneLimit').addEventListener('change',invalidateNeptuneSelection);
 $('neptuneForm').addEventListener('submit',event=>{event.preventDefault();readNeptuneSelection();});
 $('pathExploreForm').addEventListener('submit',event=>{event.preventDefault();runPathExploration();});
 $('loadSupportComparators').onclick=async()=>{
+  if(savedReviewOnly())return;
   $('supportComparatorStatus').textContent='Checking saved local assessments…';
   try{
     const response=await fetch('/api/support-comparators'),result=await response.json();

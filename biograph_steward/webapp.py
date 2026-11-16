@@ -183,6 +183,7 @@ def report_html(graph: dict | None = None, *, protected=False, saved_data_only=F
             'body[data-saved-data-only="true"] #civicForm,'
             'body[data-saved-data-only="true"] #regulatoryForm,'
             'body[data-saved-data-only="true"] #sourceAgentLive,'
+            'body[data-saved-data-only="true"] [data-development-view],'
             'body[data-saved-data-only="true"] #submissionCreateNote,'
             'body[data-saved-data-only="true"] #submissionExport{display:none!important}</style></head>')
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
@@ -205,10 +206,7 @@ def report_html(graph: dict | None = None, *, protected=False, saved_data_only=F
     script += '\n' + Path(__file__).with_name("protein_context.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("source_agent.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("navigation.js").read_text(encoding="utf-8")
-    script += '\ninitializePruningPreview();\n'
-    script += '\ninitializeBiologicalComparisons();\n'
-    script += '\ninitializeScientificAssessments();\n'
-    script += '\ninitializeFunctionContexts();\n'
+    script += '\ninitializeWorkspaceAssessments();\n'
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
