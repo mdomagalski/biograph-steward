@@ -6,15 +6,19 @@ const path = require('node:path');
 const vm = require('node:vm');
 const {test} = require('node:test');
 
-function harness() {
+function harness({shared = false} = {}) {
   const elements = new Map();
   function element(value = '') {
     const listeners = new Map();
+    const classes = new Set();
     return {value, textContent: '', disabled: false, checked: false, children: [], options: [],
-      elements: [], classList: {toggle() {}},
+      elements: [], classList: {toggle(name, on) { on ? classes.add(name) : classes.delete(name); },
+        contains(name) { return classes.has(name); }},
       addEventListener(event, callback) { listeners.set(event, callback); },
       dispatch(event) { listeners.get(event)?.({preventDefault() {}}); },
       reportValidity: () => true,
+      scrollIntoView() { this.scrolled = true; },
+      focus() { this.focused = true; },
       replaceChildren() { this.children = []; },
       append(child) { this.children.push(child); }};
   }
@@ -33,12 +37,82 @@ function harness() {
   let resolve, reject;
   const pending = new Promise((yes, no) => { resolve = yes; reject = no; });
   const calls = [];
+  const modes = ['demo', 'live', 'cohort'].map(value => ({value, checked: value === 'demo'}));
+  const views = [];
   const context = vm.createContext({$, el: () => element(), table: (headers, rows) => ({headers, rows}),
     api: (url, body) => { calls.push({url, body}); return calls.length === 1 ? pending : Promise.reject(new Error('Build inspection only')); },
-    busy() {}, status() {}, switchQuestionWorkflow() {}, runId: 'original'});
+    busy() {}, status() {}, switchQuestionWorkflow() {}, runId: 'original', buildBusy: false,
+    savedReviewOnly: () => shared, showWorkspaceView: value => views.push(value), updateBuildAvailability() {},
+    document: {querySelectorAll: () => modes, querySelector: () => modes.find(mode => mode.checked)}});
+  // Exercise the real mode switch used by the existing page, not a new builder.
+  const html = fs.readFileSync(path.join(__dirname, '../biograph_steward/ui.html'), 'utf8');
+  for (const prefix of ['function mode(){', 'function switchMode(){']) {
+    vm.runInContext(html.split('\n').find(line => line.startsWith(prefix)), context);
+  }
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../biograph_steward/construction.js'), 'utf8'), context);
-  return {$, context, resolve, reject, calls};
+  return {$, context, resolve, reject, calls, modes, views};
 }
+
+test('the operator entry opens the real cohort form without submitting or selecting invented data', () => {
+  const h = harness();
+  assert.equal(h.$('openProteinConstruction').hidden, false);
+  assert.equal(h.$('constructionLocalRecipe').hidden, true);
+  assert.equal(h.$('constructionSharedNote').hidden, true);
+  assert.equal(h.$('openProteinConstruction').onclick(), true);
+  assert.deepEqual(h.modes.filter(mode => mode.checked).map(mode => mode.value), ['cohort']);
+  assert.equal(h.$('constructionForm').classList.contains('hidden'), false);
+  assert.equal(h.$('demoNote').classList.contains('hidden'), true);
+  assert.equal(h.$('liveControls').classList.contains('hidden'), true);
+  assert.equal(h.$('controls').open, true);
+  assert.equal(h.$('constructionForm').scrolled, true);
+  assert.equal(h.$('constructionProteins').focused, true);
+  assert.equal(h.$('constructionProteins').value, 'P22674, P38936');
+  assert.equal(h.$('constructionFocus').value, 'P22674');
+  assert.equal(h.context.runId, 'original');
+  assert.deepEqual(h.views, ['data']);
+  assert.deepEqual(h.calls, []);
+});
+
+test('submitting after the operator entry reuses the existing live-construction API', async () => {
+  const h = harness(); h.$('openProteinConstruction').onclick();
+  const work = vm.runInContext('constructGraph()', h.context);
+  assert.deepEqual(JSON.parse(JSON.stringify(h.calls)), [{url: '/api/construct', body: {
+    mode: 'live', accessions: ['P22674', 'P38936'], focus_uniprot: 'P22674',
+    profile: 'ppi', relations: ['interactions'], refresh: false}}]);
+  h.reject(new Error('Stopped at the injected transport; no source retrieval.'));
+  await work;
+});
+
+test('shared review exposes the local recipe and cannot open or submit the constructor from this entry', () => {
+  const h = harness({shared: true});
+  assert.equal(h.$('openProteinConstruction').hidden, true);
+  assert.equal(h.$('constructionLocalRecipe').hidden, false);
+  assert.equal(h.$('constructionSharedNote').hidden, false);
+  assert.equal(h.$('openProteinConstruction').onclick(), false);
+  assert.deepEqual(h.modes.filter(mode => mode.checked).map(mode => mode.value), ['demo']);
+  assert.notEqual(h.$('controls').open, true);
+  assert.equal(h.context.runId, 'original');
+  assert.deepEqual(h.views, []);
+  assert.deepEqual(h.calls, []);
+});
+
+test('an active build prevents the entry from changing the selected workflow', () => {
+  const h = harness(); h.context.buildBusy = true;
+  assert.equal(h.$('openProteinConstruction').onclick(), false);
+  assert.deepEqual(h.modes.filter(mode => mode.checked).map(mode => mode.value), ['demo']);
+  assert.deepEqual(h.calls, []);
+});
+
+test('the entry explains three steps, local prerequisites and the native-agent boundary', () => {
+  const html = fs.readFileSync(path.join(__dirname, '../biograph_steward/ui.html'), 'utf8');
+  const entry = html.slice(html.indexOf('<section id="proteinConstructionEntry"'), html.indexOf('<section id="reviewerHome"'));
+  assert.equal((entry.match(/<li>/g) || []).length, 3);
+  for (const text of ['Build a graph from your proteins', 'Python 3.10+', 'internet access to Pharos',
+    'no GPU, model, API key or AWS account', 'python3 app.py', 'http://127.0.0.1:8765/',
+    'A new Pharos-only graph opens its cited reader']) assert.ok(entry.includes(text), text);
+  assert.match(entry, /id="openProteinConstruction"[^>]*hidden/);
+  assert.ok(entry.includes('This shared reviewer site opens saved work only.'));
+});
 
 const selection = {accessions: ['P22674', 'P38936'],
   focus_uniprot: 'P22674', profile: 'ppi', relations: ['interactions']};

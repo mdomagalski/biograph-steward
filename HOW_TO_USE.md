@@ -120,7 +120,10 @@ accepted-only answer does not mean there is no biological evidence.
 
 To run a new agent question or construct a new cohort, follow
 [operator instructions](docs/SOURCE_AGENT.md#operator-cli) or
-[cohort construction](docs/CONSTRUCTION.md). Those are separate from the
+[the three-step graph-building guide](docs/CONSTRUCTION.md#build-through-the-app).
+The existing constructor accepts your protein list and builds a real Pharos
+graph with a cited answer. It needs an internet connection and no model or GPU.
+These operator actions are separate from the
 read-only shared review above.
 
 For usability feedback, send the step where you got stuck, what you expected,

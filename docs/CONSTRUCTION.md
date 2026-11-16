@@ -12,6 +12,28 @@ experimental; explicit cohort selection is the working construction path.
 
 The product milestone is a reproducible graph publication. It does not establish improved predictions, scientific accuracy, independent experimental evidence or accepted biological claims.
 
+## Build through the app
+
+You can construct a real Pharos graph without writing graph queries or calling
+the CLI construction command. This route needs a local/operator installation,
+Python 3.10+ and an internet connection. It needs no language model or GPU.
+
+1. Start the application with `python3 app.py` and open
+   `http://127.0.0.1:8765/`. On **Start here**, choose **Build a graph from your
+   proteins** to open the existing protein-cohort form.
+2. Paste 1–25 exact UniProt accessions. Choose the protein to explore and the
+   evidence to retrieve. For example, `P01116, P00533, P15056` selects human
+   KRAS, EGFR and BRAF. Check the protein and organism in UniProt before using
+   an accession. The form previews the question it will answer.
+3. Choose **Build graph and answer**. When retrieval finishes, follow the
+   cited answer to its source records. **Export** provides the graph and source
+   trace. Review the coverage summary for unresolved proteins or capped results.
+
+The protected reviewer site offers saved real-source examples and local-build
+instructions. It does not perform this live retrieval. The constructor's cited
+answer is deterministic. The current Nemotron source agent operates on
+workspaces with its supported native source profiles attached.
+
 ## Run a construction
 
 From the repository root, choose a new output directory. This example requests Pharos interaction annotations for three exact accessions and inspects connections to `P04637`:

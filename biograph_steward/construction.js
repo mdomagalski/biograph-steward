@@ -1,5 +1,19 @@
 // A bounded, deterministic construction request. Evidence answers come from Python.
 let constructionBusy=false,constructionPlanId=null,constructionPlanGeneration=0,constructionPlanContext=null;
+function openProteinConstruction(){
+  if((typeof savedReviewOnly==='function'&&savedReviewOnly())||constructionBusy||(typeof buildBusy!=='undefined'&&buildBusy))return false;
+  for(const control of document.querySelectorAll('input[name="mode"]'))control.checked=control.value==='cohort';
+  clearConstructionPlan();switchMode();updateConstructionQuestion();
+  showWorkspaceView('data');$('controls').open=true;
+  $('constructionForm').scrollIntoView({block:'start'});$('constructionProteins').focus({preventScroll:true});
+  return true;
+}
+function setupConstructionEntry(){
+  const shared=typeof savedReviewOnly==='function'&&savedReviewOnly();
+  $('openProteinConstruction').hidden=shared;$('constructionLocalRecipe').hidden=!shared;
+  $('constructionSharedNote').hidden=!shared;
+  $('openProteinConstruction').onclick=openProteinConstruction;
+}
 function clearConstructionPlan(){constructionPlanGeneration++;constructionPlanId=null;constructionPlanContext=null;$('constructionPlanReviewed').checked=false;$('constructionPlanReviewed').disabled=true;$('constructionPlannedBuild').disabled=true;$('constructionPlanPreview').replaceChildren();$('constructionPlanStatus').textContent='';}
 function constructionAccessions(){return $('constructionProteins').value.split(/[\s,]+/).filter(Boolean);}
 function constructionExactSelection(){const relation=$('constructionRelations').value;return {accessions:constructionAccessions(),focus_uniprot:$('constructionFocus').value,profile:$('constructionProfile').value,relations:relation==='both'?['interactions','shared_pathways']:[relation]};}
@@ -121,3 +135,4 @@ $('constructionForm').addEventListener('submit',event=>{event.preventDefault();c
 $('constructionDemo').addEventListener('click',()=>constructGraph('demo'));
 for(const id of ['constructionProteins','constructionFocus','constructionProfile','constructionRelations'])$(id).addEventListener(id==='constructionProteins'?'input':'change',()=>{clearConstructionPlan();updateConstructionQuestion();});
 updateConstructionQuestion();
+setupConstructionEntry();
