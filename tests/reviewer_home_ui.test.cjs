@@ -57,6 +57,13 @@ test('a genuinely synthetic workspace keeps its warning even when a real example
   assert.match(text(h.$('reviewerHomeTitle')),/invented offline/);
   assert.match(text(h.$('reviewerHomeStatus')),/records are invented/);
 });
+test('an explicitly opened different cohort does not inherit another cohort companion link',()=>{
+  const h=harness('?run=other_cohort');h.context.runId='other_cohort';
+  h.context.graph={data_kind:'live_pharos',snapshot_sha256:'b'.repeat(64)};
+  h.configure({reviewer_entry:{...entry,snapshot_sha256:'a'.repeat(64)},runs:[]});
+  assert.equal(h.$('reviewerExampleLinks').children.length,0);
+  assert.equal(h.$('appliedQualificationLinks').children.length,0);
+});
 test('loaded cited answer and source actions reuse the existing question and exact source claim',()=>{
   const h=harness('?run=real_current');real(h);h.configure({reviewer_entry:entry,runs:[]});
   h.$('reviewerAnswer').onclick();h.$('reviewerSource').onclick();

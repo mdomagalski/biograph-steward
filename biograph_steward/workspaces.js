@@ -10,6 +10,7 @@ function reviewerAnswerReady(){return typeof questionAnswer!=='undefined'&&quest
 function reviewerSourceClaim(){if(!reviewerAnswerReady())return null;const citation=questionAnswer.citations[0];return citation?.source_assertion_ids?.[0]||citation?.assertion_id||null;}
 function reviewerExampleLinks(target){
   if(!target)return;target.replaceChildren();
+  if(graph?.snapshot_sha256&&reviewerEntry?.snapshot_sha256&&graph.snapshot_sha256!==reviewerEntry.snapshot_sha256)return;
   const primary=reviewerSavedURL(reviewerEntry?.example_url);
   for(const item of reviewerEntry?.guided_examples||[]){const url=reviewerSavedURL(item.url);if(!url||!primary||url.searchParams.get('run')===primary.searchParams.get('run')||url.searchParams.get('run')===runId)continue;
     const box=el('div',undefined,'reviewer-example'),link=el('a',item.label||'Review applied graph qualifications');link.href=url.pathname+url.search;box.append(link);

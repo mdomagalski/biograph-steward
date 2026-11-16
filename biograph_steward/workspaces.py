@@ -55,7 +55,7 @@ def qualification_summary(folder: Path, graph: dict) -> dict | None:
             'decision_ledger_sha256': report['files']['edge_dispositions.jsonl']}
 
 
-def reviewer_entry(runs: list[dict], example_url: str | None = None) -> dict | None:
+def reviewer_entry(runs: list[dict], example_url: str | None = None, *, native_question_ids=()) -> dict | None:
     """Describe a real saved entry point, never promote the offline fixture.
 
     This is a catalogue preference, not source or biological validation. The
@@ -76,15 +76,20 @@ def reviewer_entry(runs: list[dict], example_url: str | None = None) -> dict | N
         return None
     examples = [{'label': 'Explore the cited evidence', 'url': example_url,
                  'description': 'Open a real saved question, its graph and the records behind its answer.'}]
-    qualified = next(((run, question) for run in real if run.get('qualified_view')
+    snapshot = primary.get('snapshot_sha256')
+    same_snapshot = isinstance(snapshot, str) and re.fullmatch(r'[a-f0-9]{64}', snapshot)
+    qualified = next(((run, question) for run in real if same_snapshot and run.get('qualified_view')
+                      and run.get('snapshot_sha256') == snapshot
                       for question in run['questions']
                       if question['template'] == 'qualified_pathway_source_context.v1'
-                      and question['view'] == 'candidates'), None)
+                      and question['view'] == 'candidates'
+                      and question['question_id'] in native_question_ids), None)
     if qualified and qualified[1]['url'] != example_url:
         examples.append({'label': 'Review applied graph qualifications', 'url': qualified[1]['url'],
                          'description': 'Inspect the retained Pharos graph. Its export preserves exclusions, decisions and the original input.'})
     return {'example_url': example_url, 'display_title': 'Explore real Pharos evidence',
             'data_kind': primary['data_kind'], 'guided_examples': examples,
+            'snapshot_sha256': snapshot,
             'assessment_id': None,
             'note': 'Real saved source data. Opening a question verifies its source basis. '
                     'The shared reviewer site uses saved data without model calls or new retrieval.'}
@@ -125,6 +130,7 @@ def saved_workspaces(root: Path) -> dict:
                     raise ValueError('Incomplete construction publication')
             runs.append({'run_id': folder.name, 'created_at': manifest['created_at'],
                          'data_kind': manifest['data_kind'], 'has_civic': bool(manifest.get('civic')),
+                         'snapshot_sha256': manifest.get('snapshot_sha256'),
                          'qualified_view': manifest.get('run_mode') == 'qualified_workspace',
                          'url': '/?run=' + folder.name, 'questions': []})
         except (ValueError, TypeError, AttributeError, OSError):
@@ -172,7 +178,7 @@ def saved_workspaces(root: Path) -> dict:
         if example:
             question = next((q for q in example['questions'] if q['view'] == 'candidates'), None)
             example_url = question['url'] if question else example['url']
-    entry = reviewer_entry(runs, example_url)
+    entry = reviewer_entry(runs, example_url, native_question_ids=native_questions)
     if entry:
         example_url = entry['example_url']
     return {'runs': runs, 'example_url': example_url, 'reviewer_entry': entry, 'withheld': withheld,

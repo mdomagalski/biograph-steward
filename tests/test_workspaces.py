@@ -64,9 +64,9 @@ class SavedWorkTests(unittest.TestCase):
 class ReviewerEntryTests(unittest.TestCase):
     """Catalogue routing fixtures only; these records are not biological labels."""
 
-    def run_row(self, name, *, synthetic=False, qualified=False, template='native_string_physical.v1', view='candidates'):
+    def run_row(self, name, *, synthetic=False, qualified=False, template='native_string_physical.v1', view='candidates', snapshot='a'*64):
         url='/?run='+name
-        return {'run_id':name, 'url':url, 'data_kind':'synthetic_demo' if synthetic else 'live_pharos',
+        return {'run_id':name, 'url':url, 'snapshot_sha256':snapshot, 'data_kind':'synthetic_demo' if synthetic else 'live_pharos',
                 'qualified_view':qualified, 'questions':[{'question_id':name+'_answer',
                 'template':template, 'view':view, 'url':url+'&question='+name+'_answer'}]}
 
@@ -75,12 +75,27 @@ class ReviewerEntryTests(unittest.TestCase):
         retained=self.run_row('retained',qualified=True,template='qualified_pathway_source_context.v1')
         rows=[self.run_row('invented',synthetic=True),retained,native]
         before=deepcopy(rows)
-        result=reviewer_entry(rows,retained['questions'][0]['url'])
+        result=reviewer_entry(rows,retained['questions'][0]['url'],native_question_ids={'retained_answer'})
         self.assertEqual(result['example_url'],native['questions'][0]['url'])
         self.assertEqual(result['data_kind'],'live_pharos')
         self.assertEqual([e['url'] for e in result['guided_examples']],
                          [native['questions'][0]['url'],retained['questions'][0]['url']])
         self.assertEqual(rows,before)
+
+    def test_companion_must_share_snapshot_and_have_native_source_support(self):
+        native=self.run_row('native')
+        unrelated=self.run_row('newer_unrelated',qualified=True,template='qualified_pathway_source_context.v1',snapshot='b'*64)
+        unsupported=self.run_row('same_snapshot_unresolved',qualified=True,template='qualified_pathway_source_context.v1')
+        retained=self.run_row('matched',qualified=True,template='qualified_pathway_source_context.v1')
+        result=reviewer_entry([native,unrelated,unsupported,retained],native_question_ids={'newer_unrelated_answer','matched_answer'})
+        self.assertEqual([item['url'] for item in result['guided_examples']],
+                         [native['questions'][0]['url'],retained['questions'][0]['url']])
+
+    def test_missing_snapshot_does_not_assume_same_cohort(self):
+        native=self.run_row('native',snapshot=None)
+        retained=self.run_row('retained',qualified=True,template='qualified_pathway_source_context.v1',snapshot=None)
+        result=reviewer_entry([native,retained],native_question_ids={'retained_answer'})
+        self.assertEqual(len(result['guided_examples']),1)
 
     def test_synthetic_only_install_has_no_real_entry_even_with_example_url(self):
         invented=self.run_row('invented',synthetic=True)
