@@ -4,15 +4,15 @@ Choose the route that matches what you want to do.
 
 | I want to… | Start here |
 |---|---|
-| **Use the app and inspect the real examples** | [How to use BioGraph Steward](HOW_TO_USE.md), the single user walkthrough. It links the protected reviewer app and follows an actual added connection. |
+| **Use the app and inspect the real examples** | [How to use BioGraph Steward](HOW_TO_USE.md), the single user walkthrough. It links the public browser demo and follows an actual added connection. |
 | **Watch the result first** | [3:58 narrated walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4) · [transcript](output/walkthrough/BioGraph_Steward_Walkthrough.txt) · [short presentation](output/presentations/BioGraph_Steward_Overview.pptx). |
 | **Run the software on my computer** | The local setup below. Python 3.10+ is enough; no GPU, API key or pip install is needed for saved review. |
 | **Run new agent questions** | [Source-agent operator guide](docs/SOURCE_AGENT.md#operator-cli). Supply an authorized source workspace and configure a live model endpoint. |
 | **Construct a new graph or deploy the app** | [Cohort construction](docs/CONSTRUCTION.md) · [portability and hosting](docs/PORTABILITY.md) · [AWS deployment](deploy/aws/README.md). |
 | **Assess results or prepare the submission** | [Submission summary](docs/FINAL_SUBMISSION.md) · [research appendix](docs/RESEARCH_APPENDIX_20261115.md) · [release files](docs/releases/20261115/README.md). |
 
-The protected reviewer site needs only a browser and the privately supplied
-token—no AWS account or running model. It replays completed real agent work;
+The public demo opens directly in a browser with no sign-in, AWS account or
+running model. It replays completed real agent work;
 new inference, retrieval and edits are disabled. The narrated tour uses actual
 local-app screenshot states and a labeled saved-report table, with no new
 model calls during capture.

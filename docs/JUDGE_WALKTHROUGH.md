@@ -8,8 +8,8 @@ requirements, delivered features and remaining release actions.
 
 ## Open the real example
 
-[Open the protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
-and use the token supplied privately. The recorded KRAS run uses real saved
+[Open the public demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)
+directly, with no sign-in. The recorded KRAS run uses real saved
 sources, with no new inference during replay. Reviewers need no AWS account,
 local setup or running model. New operator-run questions are documented in the
 [source-agent guide](SOURCE_AGENT.md#operator-cli).
@@ -42,14 +42,16 @@ different source collections in the same 99-target cohort. Their total record
 counts are not a before/after comparison. Use each graph with its own source
 baseline and decision ledger; the [Gold interface](GOLD_SET_INTERFACE.md)
 explains retained graphs, complete dispositions and abstentions.
-The [protected graph downloads](GOLD_SET_INTERFACE.md#protected-downloads)
-provide the primary package with its 19,310-row abstention ledger and the
-separate exact captured Pharos comparator. Both archives passed actual HTTPS
-download and complete member checks; their source terms remain applicable.
+The [separate graph/source handoff](GOLD_SET_INTERFACE.md#protected-downloads)
+provides the primary package with its 19,310-row abstention ledger and exact
+captured Pharos comparator for submission or authorized operator access. Both
+archives previously passed authenticated HTTPS download and complete member
+checks. Their source terms remain applicable. The public demo does not expose
+these bulk archives.
 
 [How to use → Download the result you need](../HOW_TO_USE.md#4-download-the-result-you-need) distinguishes the focused answer,
 recorded-agent trace and full workspace. The [delivery index](releases/20261115/README.md)
-identifies current reviewer artifacts and protected source access.
+identifies current reviewer artifacts and separate source-packet access.
 
 ## Watch or present
 

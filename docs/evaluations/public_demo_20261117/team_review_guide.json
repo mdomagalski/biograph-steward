@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "public_access_acceptance": {
+    "file": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+    "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+  },
+  "canonical_copy_verified": true,
+  "scientific_data_or_results_changed": false,
+  "new_model_source_or_cloud_calls_for_artifact_preparation": false,
+  "format": "biograph-steward.public-demo-team-review-guide.v1",
+  "file": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
+  "bytes": 47680,
+  "sha256": "287baaf0a533eb570210638494e6d87c257a4a75c7f6d92d1d8f986e04cf2108",
+  "previous_canonical_sha256": "16c3faba6e5f130d71044b367b72901027ce09f3c9f1341be212cc454822598c",
+  "page_count": 2,
+  "source_guide": "docs/TEAM_REVIEW_GUIDE_20261113.md",
+  "source_guide_sha256": "52025e5fed71047f7d54a7ac2ea7defd08d571f202e0d337d2356243836ec9a9",
+  "tasks": 5,
+  "estimated_minutes": 15,
+  "link_count": 7,
+  "current_KRAS_and_TP53_direct_links_preserved": true,
+  "current_navigation_and_loading_instructions_preserved": true,
+  "expert_biological_adjudication_required": false,
+  "reviewer_sign_in_or_AWS_account_required": false,
+  "download_task": "Recorded-agent JSON with focused graph, source inspections and trace. Full source packets supplied separately for submission or operator use.",
+  "all_two_pages_rendered_and_visually_checked": true,
+  "root_visual_review_passed": true,
+  "clipping_overlap_or_missing_glyph_detected": false,
+  "independent_teammate_walkthrough_claimed": false,
+  "original_canonical_preserved_in_private_history": true
+}

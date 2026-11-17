@@ -1,127 +1,112 @@
 {
-  "AWS_graph_change_scope": "Two UI files expose the existing real-cohort constructor for operators and clarify local construction instructions on saved review. No source, agent controller, scientific engine, graph, decision, environment or access-policy change.",
+  "AWS_graph_change_scope": "Approved two-instance Neptune resize and separate public saved-demo backend/gateway. Original application, graph, sources, decisions and operator environment unchanged. No new VM, gateway service or ALB.",
   "authorized_AWS_interpretation_update_complete": true,
   "browser_visual_check": {
-    "format": "biograph-steward.final-product-ui-hosted-browser-check.v1",
-    "status": "partial_checks_passed_with_browser_network_limit",
-    "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
-    "source_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
-    "passed": false,
-    "partial_UI_checks_verified": true,
-    "uninterrupted_journey_passed": false,
-    "return_and_mobile_recheck_completed": false,
-    "both_failures_preserved": true,
-    "transport_cause_resolved": false,
-    "owned_browser_closed": true,
-    "all_owned_browser_processes_closed": true,
-    "explicit_UI_checks": 39,
-    "checks": [
-      "A real pending workspace/question read displays its loading indicator",
-      "The visible loader is an accessible polite status",
-      "The workspace loading indicator clears after its saved question is ready",
-      "The recorded-agent loader and busy state clear after replay verification",
-      "Actual DOM transitions record workspace and agent busy states during real reads",
-      "Bare root opens the exact operator-pinned actual model job",
-      "The primary job labels three recorded model calls",
-      "Every marked development view is explicitly display:none in shared mode",
-      "Live model and package-creation controls stay hidden",
-      "Five task tabs retain clear product labels",
-      "Recorded agent step 1 is visible",
-      "Recorded question and plan retain KRAS scope",
-      "Recorded agent step 2 is visible",
-      "Cited graph shows CDC42BPB under the explicit8-of14 display cap",
-      "Recorded agent step 3 is visible",
-      "E002 retains STRING12.5 score203 and its nonprobability qualification",
-      "E002 remains a new captured-workspace pair with baseline absence explicit",
-      "Recorded agent step 4 is visible",
-      "The agent proposal applies no acceptance or graph changes",
-      "Verified model-record download points to the exact saved job",
-      "Product tab Compare is selected",
-      "What changed explains its product purpose",
-      "All five current HOU source/control rows and unknown outputs remain displayed",
-      "OpenCell prior-use qualification stays visible",
-      "Every marked development view is explicitly display:none in shared mode",
-      "Live model and package-creation controls stay hidden",
-      "A legacy hash cannot expose hidden history or database diagnostics",
-      "Product tab Data is selected",
-      "The companion link selects the same saved qualified source",
-      "Product tab Compare is selected",
-      "Applied qualification preserves298 retired-ID exclusions and the exact retained counts",
-      "Every marked development view is explicitly display:none in shared mode",
-      "Live model and package-creation controls stay hidden",
-      "Product tab Export is selected",
-      "Companion export points to its full retained workspace ZIP",
-      "Export distinguishes the existing decision package and hides new-package creation",
-      "Product tab Data is selected",
-      "The workspace picker is labelled by source role rather than research history",
-      "Return-to-current link preserves the actual model job"
-    ],
-    "observation_count_is_not_an_independent_user_study_or_distinct_task_count": true,
-    "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws",
-    "browser_version": "143.0.7499.4",
-    "playwright_version": "1.57.0",
+    "format": "biograph-steward.public-demo-hosted-browser-acceptance.v1",
+    "status": "direct_featured_workflow_passed_with_prior_navigation_transport_failure_preserved",
+    "passed": true,
+    "checked_at_UTC": "2026-11-17T02:55:19.368390+00:00",
+    "scope": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
+    "primary_demo_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+    "application_runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "gateway_config_sha256": "19a9f9948328dab7e4d8b450759b52b164479fa5b88b0cd281080505ab009a83",
+    "gateway_image_config_sha256": "6686bc0c8a700785afa5c8bfae949badf9ec57a3ed6f4076085867e37df1fdc7",
+    "direct_featured_workflow_passed": true,
     "normal_TLS_verification": true,
-    "browser_sandbox_enabled": true,
-    "authentication_kept_off_camera": true,
-    "errors": [],
-    "preserved_first_failure": {
-      "phase": "return to current evidence and mobile navigation",
-      "message": "net::ERR_NETWORK_CHANGED /api/question/native_physical_KRAS_question_v3_20261115"
-    },
-    "focused_completion": "A single fresh-context return/mobile completion also stopped at /api/workspaces with ERR_NETWORK_CHANGED before any completion assertion. It was closed without another attempt.",
-    "normal_TLS_same_question_route_diagnostic": "HTTP200 with original saved answer/source identity; this demonstrates route availability, not the cause of the browser interruption.",
-    "remaining_automated_checks": [
-      "Finish return-to-current evidence after the qualified example",
-      "Verify final primary export pointer after return",
-      "Recheck390px layout on the new runtime"
+    "Chrome_sandbox_enabled": true,
+    "fresh_isolated_context": true,
+    "token_entry_required": false,
+    "real_credentials_or_cookies_supplied": false,
+    "session_cookies_created": false,
+    "browser_new_model_calls": 0,
+    "new_source_retrievals": 0,
+    "graph_or_review_edits": 0,
+    "recorded_S01_model_calls": 3,
+    "operator_browser_check_assertions": 48,
+    "assertions_are_independent_users_or_cases": false,
+    "direct_check_HTTP_JS_or_transport_errors": 0,
+    "direct_check_elapsed_seconds": 128.325,
+    "features_checked": [
+      "Actual recorded KRAS question and bounded plan",
+      "Eight of fourteen recorded results and source graph",
+      "Inspected E002 STRING12.5 physical association score203",
+      "Citation-bound proposal-only review actions",
+      "Actual production HTTPS source-inspection POST",
+      "Five task tabs and existing measured assessments",
+      "Displayed graph JSON export with write/bulk controls hidden",
+      "390px mobile navigation",
+      "No token form, sign-out or session cookies"
     ],
-    "actual_hosted_frames_visually_reviewed": 5,
+    "prior_bare_root_attempt": {
+      "passed": false,
+      "error": "net::ERR_NETWORK_CHANGED",
+      "observed_after_automatic_featured_navigation": true,
+      "server_HTTP_failure_established": false,
+      "root_navigation_cause_resolved": false,
+      "original_failure_preserved": true,
+      "proof": {
+        "path": "runs/public_demo_20261117/browser_https/receipt.json",
+        "bytes": 2717,
+        "sha256": "4b9518ceb2a4b0ce948d68f5db491dd41d55d397a7303686b91487e8f2b10203"
+      }
+    },
+    "no_OS_proxy_TLS_or_browser_security_changes": true,
+    "no_additional_browser_retries_planned": true,
+    "owned_browser_closed": true,
+    "direct_proof": {
+      "path": "runs/public_demo_20261117/browser_https_direct/receipt.json",
+      "bytes": 8349,
+      "sha256": "8ae9a44f0e0d3daf49127de8fe2ee52735ecfd44d693a2f4b7067a92e839885e"
+    },
     "frames": [
       {
-        "file": "product_loading_indicator.png",
-        "bytes": 6711,
-        "sha256": "5d040f03782711fc1d852d8754fe8a9d809361d3312736ee0037c258a8c7e120",
-        "width": 1320,
-        "height": 47
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_start.png",
+        "bytes": 188120,
+        "sha256": "2ed76771b0c16cf0c949bcb65161b5a410ad719bcee1db574a686b1359874652"
       },
       {
-        "file": "product_home_desktop.png",
-        "bytes": 195459,
-        "sha256": "68f9f921cb2134e6b1cfbdd78e27cb839477918780a29d26dcd7bb844bbbf96e",
-        "width": 1440,
-        "height": 1000
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_agent_graph.png",
+        "bytes": 35824,
+        "sha256": "0c24ff7907bcb233eca035b40bee7d9c12e9fbfda24ba9efdc5ae719381bf08f"
       },
       {
-        "file": "product_E002_source.png",
-        "bytes": 229224,
-        "sha256": "76d5494439f64c613badade648655d18295b15fd1883a0d40d99da396cf34722",
-        "width": 1209,
-        "height": 692
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_E002_source.png",
+        "bytes": 130902,
+        "sha256": "183f88fbd39a4e5d72937d8ddf2fc4595fc29ec168b3aa9f801cc732904cd90e"
       },
       {
-        "file": "product_current_all_five_reference_controls.png",
-        "bytes": 26245,
-        "sha256": "83177db554387e8312ca3191c85ad3c2fd44f792fbf1fa040ac297deff00b86f",
-        "width": 1278,
-        "height": 244
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_proposals.png",
+        "bytes": 151653,
+        "sha256": "1356a4f11fb19a61b1d0bd4c60c2d63159f9e391a8f10190db343b96a4390862"
       },
       {
-        "file": "product_applied_qualification.png",
-        "bytes": 47190,
-        "sha256": "dbcaa57adb4082f6a66a4b4c527578e3ac754524077f84ae41920ceb3ee9beb4",
-        "width": 1278,
-        "height": 274
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_source_guide.png",
+        "bytes": 272640,
+        "sha256": "3381bc92d0a966746318a81a43ef8bafef8292a50e2e39aed6c40a883e91c82a"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/public_WhatChanged.png",
+        "bytes": 228236,
+        "sha256": "dbbdc09d0b099e2d8a0dca01e16139c8944f528d81ca408b59c108fb7383b29b"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/public_export.png",
+        "bytes": 115527,
+        "sha256": "4263b971b0c9e8b45c144ce667a2a9e03aa2a9e860f33717e91d2b9c8771d988"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/public_export_mobile.png",
+        "bytes": 66272,
+        "sha256": "fd1e2a7c14a840d7299d60a3d9274076c62aa47e76ba235ac613cfaafd7a5438"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/public_recorded_agent_mobile.png",
+        "bytes": 72561,
+        "sha256": "742251253f0cdbd0a67ec99b518ce904c8a2d6d2daa357d9506c933028cc7ff0"
       }
     ],
-    "private_combined_evidence_sha256": "cac033cddef2cbb208c8d60ff62514188645e83489f8e6c3099271e78b5d9e80",
-    "private_failed_journey_sha256": "f399563d2a8732f205e941699f940880a28674bbb57b57ac46610d251ec5a957",
-    "separate_server_acceptance": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
-    "independent_human_usability_review_completed": false,
-    "new_model_calls": 0,
-    "fresh_biomedical_retrievals": 0,
-    "graph_or_review_edits": 0,
-    "scope": "Actual hosted desktop feature checks with a preserved browser transport limitation; no claim that the entire planned journey or mobile follow-up passed.",
-    "receipt": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json"
+    "receipt": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+    "root_independent_visual_review_of_actual_start_source_and_mobile_frames_passed": true
   },
   "closing_delivery_checklist": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
@@ -155,7 +140,7 @@
       "bytes": 3385,
       "sha256": "4181864a5c85696eead5ea9e001639581aa54c3519fe60d67d56ce417911c1c2"
     },
-    "current_authenticated_acceptance_repeated_in_this_audit": true,
+    "current_authenticated_acceptance_repeated_in_this_audit": false,
     "interpretation_update": {
       "actual_restart_verified": true,
       "displayed_candidates": 36,
@@ -200,22 +185,24 @@
       "runtime_commit": "f6c527a84b68ac0155df4b2c19548c8b88736540"
     },
     "previous_verified_runtime": "ee3c61c23262e57669090a7608658c16517d87cb",
-    "private_Neptune_mirror": "Full read-only parity reverified after the actual d05f54f restart. Neptune mirrors the retained companion; native-profile answers read their saved source files.",
+    "private_Neptune_mirror": "Retained companion mirror; four full parity checks passed across the staged two-T4g resize and failover. The public snapshot reads saved source files.",
     "public_entry_check": {
-      "TLS_default_verification": true,
-      "authenticated_saved_graph_checked": false,
-      "body_sha256": "d2848f9cc5f1202ca3145c2904e197922ab91965c7edce9e67696593488d7493",
-      "bytes_read": 1790,
-      "cookies_or_tokens_supplied": false,
-      "created_at": "2026-11-15T10:00:53.432801+00:00",
+      "checked_at_UTC": "2026-11-17T02:36:39.038581+00:00",
+      "url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
       "final_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
-      "has_workspace_login": true,
-      "status": 200,
-      "url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/"
+      "HTTP_status": 200,
+      "cookies_or_credentials_supplied": false,
+      "normal_TLS_verification": true,
+      "response_sets_cookie": false,
+      "login_form_present": false,
+      "public_saved_banner_present": true,
+      "bytes": 430990,
+      "sha256": "07b471046fd1be495dbe474d7909eaf14f2dda79ee1d59eef360748300508122",
+      "steady_service_and_full_journey_not_established_by_this_probe": true
     },
-    "reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
-    "shared_ingress": "Saved-data inspection, recorded agent replay and export; new inference, construction, retrieval and review edits blocked.",
-    "workspace_token": "supplied privately; not included in repository or this manifest",
+    "reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+    "shared_ingress": "Approved saved examples, citation/path/protein context inspection, recorded-agent JSON and browser graph JSON. Bulk sources, new questions, inference, retrieval and review edits are blocked.",
+    "workspace_token": "Not required for the public demo. The separate private operator application retains its own credential.",
     "previous_interpretation_authenticated_acceptance_receipt": {
       "bytes": 2868,
       "path": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
@@ -301,9 +288,9 @@
       "existing_jobs_or_registration_reinstalled": false
     },
     "current_browser_acceptance": {
-      "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
-      "bytes": 5956,
-      "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
+      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+      "bytes": 4822,
+      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
     },
     "loading_latency_observation": {
       "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
@@ -354,6 +341,18 @@
         "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
       },
       "prior_full_workflow_browser_limits_preserved": true
+    },
+    "public_demo_acceptance": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+      "bytes": 3555,
+      "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+    },
+    "public_demo_requires_sign_in": false,
+    "public_demo_browser_scope": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
+    "public_demo_final_operations": {
+      "path": "docs/evaluations/public_demo_20261117/final_operations.json",
+      "bytes": 4012,
+      "sha256": "0177a6e86061576c1dd69fd6ca06874dcca2059f62fde3c0e116981a747f61f8"
     }
   },
   "no_AWS_graph_or_review_changes": true,
@@ -422,7 +421,7 @@
   "purpose": "Current judge-facing artifact and capability boundary; prior release manifests remain dated records.",
   "reader_date": "2026-11-16",
   "resources": {
-    "AWS_reviewer_service": "Keep the existing HTTPS reviewer app and private Neptune available. Runtime84ef6a0 passed a real restart, source preservation and read-only Neptune parity. Its focused construction-entry check does not replace prior full-workflow browser qualifications.",
+    "AWS_reviewer_service": "Keep the existing public saved-demo gateway, separate read-only backend and private Neptune available for review. Public access needs no token, account or model.",
     "Brev_GPU_or_model_needed_for_review": false,
     "Brev_can_stop_compute_keep_persistent_disk": true,
     "Brev_compute_needed_for_current_work": false,
@@ -494,6 +493,13 @@
       "new_inference_needed": false,
       "assessment_owned_local_forward_closed": true,
       "remote_instance_stopped_by_this_work": false
+    },
+    "AWS_Neptune": {
+      "state": "Two available db.t4g.medium instances",
+      "roles": "writer and failover reader",
+      "region": "us-east-2",
+      "verification": "docs/evaluations/neptune_rightsize_20261117/receipt.json",
+      "base_database_compute_USD_per_day": 4.464
     }
   },
   "science": {
@@ -824,17 +830,17 @@
     "final_public_repository_handoff_completed_by_this_audit": false,
     "latest_indexed_software_ZIP": {
       "path": "output/software/BioGraph_Steward_Software.zip",
-      "bytes": 727692,
-      "sha256": "b180fbde0ead24d31602a5d1425ad7cbc0e0c97a22f0a8f8408417fa8b9cfe4b",
+      "bytes": 727760,
+      "sha256": "466bd4cf7d90cd109757d4bb2818308f5dd9581759a693ee4c6ef949fc021e74",
       "file_count": 133
     },
     "latest_indexed_software_ZIP_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
     "latest_indexed_software_acceptance": {
-      "path": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
-      "bytes": 2976,
-      "sha256": "9e8975a6f441e7b7e32db01905e5f9d35417d16c9581e6d4f2d7f8c242941097"
+      "path": "docs/evaluations/public_demo_20261117/software_access_copy.json",
+      "bytes": 1514,
+      "sha256": "7dc9aef3aa0ec9ccfc3e17048a92328139bdd2fe84366febcfdabe73a9504617"
     },
-    "latest_indexed_software_scope": "Current stdlib core with visible operator cohort construction and saved-review local-build instructions. Code-only fixture acceptance passed. Existing constructor, bounded source agent and scientific results are unchanged.",
+    "latest_indexed_software_scope": "The previously tested 84ef6a0 core, with only README_DEMO.md updated for direct public access; all 132 other members byte-identical. Original executable acceptance remains separate.",
     "native_location_source_profile": {
       "AWS_updated": false,
       "ND_root_no_data_excluded": true,
@@ -1086,6 +1092,11 @@
       "status": "passed",
       "uploaded": false,
       "upstream_notices_preserved": true
+    },
+    "public_access_instruction_revision": {
+      "path": "docs/evaluations/public_demo_20261117/software_access_copy.json",
+      "bytes": 1514,
+      "sha256": "7dc9aef3aa0ec9ccfc3e17048a92328139bdd2fe84366febcfdabe73a9504617"
     }
   },
   "source_version_metadata_check": {
@@ -1105,14 +1116,12 @@
     "format": "biograph-steward.team-review-guide.v1",
     "status": "passed",
     "file": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
-    "bytes": 47699,
-    "sha256": "16c3faba6e5f130d71044b367b72901027ce09f3c9f1341be212cc454822598c",
+    "bytes": 47680,
+    "sha256": "287baaf0a533eb570210638494e6d87c257a4a75c7f6d92d1d8f986e04cf2108",
     "pages": 2,
-    "source_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
-    "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
-    "hosted_acceptance": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
-    "hosted_acceptance_sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23",
-    "source_guide_sha256": "173e23cef16f75350d972f00a035ee79f1a658005e409392fd52bf9a5f2dc8e6",
+    "hosted_acceptance": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+    "hosted_acceptance_sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63",
+    "source_guide_sha256": "52025e5fed71047f7d54a7ac2ea7defd08d571f202e0d337d2356243836ec9a9",
     "links": [
       "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
       "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
@@ -1142,24 +1151,27 @@
     "tokens_or_credentials_in_artifact": false,
     "earlier_PDF_preserved_in_private_run_and_git": true,
     "guide_is_instruction_not_claim_of_completed_independent_review": true,
-    "automated_browser_coverage_is_separate_and_partial": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
-    "receipt": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json"
+    "receipt": "docs/evaluations/public_demo_20261117/team_review_guide.json",
+    "path": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
+    "application_runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "reviewer_sign_in_required": false,
+    "automated_browser_coverage": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+      "bytes": 4822,
+      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
+    }
   },
   "unresolved_release_actions": [
     {
-      "item": "Public MIT GitHub/release handoff for open-source track",
-      "status": "Private review branch, draft PR and draft release prepared; final public release and actual submission remain separate publication actions."
+      "item": "Final open-source publication and submission",
+      "status": "Private delivery branch and release material are ready. Merging main, making the MIT repository public and submitting the report/graph remain separate publication actions."
     },
     {
-      "item": "Independent intended-user feedback",
-      "status": "Partial teammate feedback informed navigation/direct-link/loading fixes. A complete independent hosted walkthrough and the final return/mobile recheck remain open after recorded browser transport interruptions."
-    },
-    {
-      "item": "Final report format and organizer scoring details",
-      "status": "Final report follows the requested midpoint form. A distinct final template and the exact final graph/reference scoring contract were not supplied; hidden gold labels are not needed for delivery."
+      "item": "Broader intended-user feedback",
+      "status": "The updated public guide supports independent review. Existing feedback and functional browser checks retain their own scopes; no completed independent user study is claimed."
     }
   ],
-  "updated_at_UTC": "2026-11-17T00:39:27.644227+00:00",
+  "updated_at_UTC": "2026-11-17T03:08:39.160816+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,
@@ -1538,7 +1550,7 @@
     "bytes": 3266,
     "sha256": "9ad8dc17c6bf13972be93d2dce856a434a0b97a557c19ee81b02f854896b63c5"
   },
-  "artifact_audit_path": "docs/evaluations/mechanistic_claim_review_20261117/delivery_audit.json",
+  "artifact_audit_path": "docs/evaluations/public_demo_20261117/delivery_audit.json",
   "previous_browser_visual_check": {
     "format": "biograph.source-agent-hosted-browser-acceptance.v1",
     "recorded_at_UTC": "2026-11-16T15:23:43.097798+00:00",
@@ -1856,7 +1868,7 @@
   "current_delivery_pass": {
     "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
     "runtime_and_restart_acceptance_passed": true,
-    "explicit_hosted_browser_checks_passed": 39,
+    "explicit_hosted_browser_checks_passed": 48,
     "source_and_review_bytes_preserved": true,
     "new_model_or_source_retrieval_calls": 0,
     "primary_graph_handoff_prepared": true,
@@ -1875,31 +1887,18 @@
     },
     "presentation_and_media_unchanged": true,
     "final_publication_and_submission_performed": false,
-    "browser_feature_checks_passed": false,
-    "partial_UI_checks_verified": true,
-    "browser_validation_complete": false,
-    "uninterrupted_journey_passed": false,
-    "browser_qualification": {
-      "status": "partial_checks_passed_with_browser_network_limit",
-      "receipt": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
-      "feature_checks_passed": false,
-      "partial_UI_checks_verified": true,
-      "uninterrupted_journey_passed": false,
-      "return_and_mobile_recheck_completed": false,
-      "focused_completion_passed": false,
-      "transport_cause_resolved": false,
-      "original_failure_preserved": true,
-      "both_failures_preserved": true
-    },
+    "browser_feature_checks_passed": 48,
+    "browser_validation_complete": true,
+    "browser_qualification": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
     "final_report": {
-      "path": "docs/evaluations/mechanistic_claim_review_20261117/final_report.json",
-      "bytes": 4934,
-      "sha256": "3b8a1813a1b1ef76d1e61bfcf53fa1ea8aada6e8be09e06d74c56aeb29fd8902"
+      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+      "bytes": 12647,
+      "sha256": "18a52108e624a98155fcd3edc4bd8f379246441cd6ea8e65842488bc7117feda"
     },
     "team_review_guide": {
-      "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
-      "bytes": 2614,
-      "sha256": "51d98210d0d64f8ff53c5e4350171c53e777ce9910914fc35c1ae05e694294cc"
+      "path": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
+      "bytes": 47680,
+      "sha256": "287baaf0a533eb570210638494e6d87c257a4a75c7f6d92d1d8f986e04cf2108"
     },
     "final_UI_validation": {
       "path": "docs/evaluations/democratization_delivery_20261116/UI_validation.json",
@@ -1907,17 +1906,14 @@
       "sha256": "3a60ae1be55199ec4c263f646efaea8fe3ca1868ba684f4779940bce022b4cd6"
     },
     "browser_observation_scope": "Recorded partial UI assertions and visual states; not an uninterrupted completed journey, unique user-study count or independent intended-user validation.",
-    "remaining_browser_release_checks": [
-      "Exact current-question return and mobile recheck",
-      "Independent intended-user walkthrough"
-    ],
+    "remaining_browser_release_checks": [],
     "loading_observation_scope": "Preserved09cache observation; not a new final-runtime performance benchmark.",
     "protected_graph_downloads": {
       "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
       "bytes": 4543,
       "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
     },
-    "primary_graph_and_comparator_downloads_verified": true,
+    "primary_graph_and_comparator_downloads_verified": "Historical authenticated download checks preserved; complete packets remain separate submission or private operator assets. No anonymous bulk download.",
     "new_source_artifact_folders_published": [
       "primary_graph_handoff_20261116",
       "captured_pharos_comparator_20261116"
@@ -1929,7 +1925,25 @@
       "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
     },
     "prior_full_workflow_browser_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
-    "later_report_revision_scope": "Latest report adds a separate expert source-claim assessment. The runtime/UI pass model counters, prior scientific results and browser qualifications remain unchanged; additional assessment calls are recorded separately."
+    "later_report_revision_scope": "Latest report adds a separate expert source-claim assessment. The runtime/UI pass model counters, prior scientific results and browser qualifications remain unchanged; additional assessment calls are recorded separately.",
+    "public_access_receipt": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+      "bytes": 3555,
+      "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+    },
+    "new_public_model_or_source_calls": 0,
+    "browser_validation_scope": "The direct featured public HTTPS workflow; earlier bare-root automatic-navigation transport failure is preserved and its cause unresolved.",
+    "uninterrupted_direct_example_journey_passed": true,
+    "final_hosted_browser_acceptance": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+      "bytes": 4822,
+      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
+    },
+    "public_final_operations": {
+      "path": "docs/evaluations/public_demo_20261117/final_operations.json",
+      "bytes": 4012,
+      "sha256": "0177a6e86061576c1dd69fd6ca06874dcca2059f62fde3c0e116981a747f61f8"
+    }
   },
   "previous_final_product_delivery": {
     "snapshot_of_pre_update_status": true,
@@ -2681,18 +2695,18 @@
     },
     "output/software/BioGraph_Steward_Software.zip": {
       "path": "output/software/BioGraph_Steward_Software.zip",
-      "bytes": 727692,
-      "sha256": "b180fbde0ead24d31602a5d1425ad7cbc0e0c97a22f0a8f8408417fa8b9cfe4b"
+      "bytes": 727760,
+      "sha256": "466bd4cf7d90cd109757d4bb2818308f5dd9581759a693ee4c6ef949fc021e74"
     },
     "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf": {
       "path": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
-      "bytes": 47699,
-      "sha256": "16c3faba6e5f130d71044b367b72901027ce09f3c9f1341be212cc454822598c"
+      "bytes": 47680,
+      "sha256": "287baaf0a533eb570210638494e6d87c257a4a75c7f6d92d1d8f986e04cf2108"
     },
     "output/docx/BioGraph_Steward_Final_Report.docx": {
       "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12624,
-      "sha256": "78de54ffa440a111cb4373e3c26ea9c03dbf2fbe81454a0e895a4b01fe514a6b"
+      "bytes": 12647,
+      "sha256": "18a52108e624a98155fcd3edc4bd8f379246441cd6ea8e65842488bc7117feda"
     }
   },
   "final_report": {
@@ -2700,8 +2714,8 @@
     "status": "prepared_for_final_submission",
     "file": "output/docx/BioGraph_Steward_Final_Report.docx",
     "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-    "bytes": 12624,
-    "sha256": "78de54ffa440a111cb4373e3c26ea9c03dbf2fbe81454a0e895a4b01fe514a6b",
+    "bytes": 12647,
+    "sha256": "18a52108e624a98155fcd3edc4bd8f379246441cd6ea8e65842488bc7117feda",
     "pages": 4,
     "main_form_pages": 2,
     "methods_and_evaluation_supplement_pages": 2,
@@ -2727,7 +2741,7 @@
       ],
       "intentional_updates": [
         "Final project wording replaces midpoint progress language",
-        "Judge access means a browser demo with a privately supplied application token, not AWS credentials",
+        "Judge access is a direct public saved-demo URL without sign-in or an AWS account; complete source packets are separate assets.",
         "Slides are described plainly and teammate/user-study narration is omitted",
         "A fourth supplementary row records the completed expert source-faithfulness test",
         "Cross-question examples are consolidated in the main scope paragraph",
@@ -2749,7 +2763,8 @@
       "formal_ProtBoost_reference_and_primary_link_verified": true,
       "primary_expert_paper_DOI_link_verified": true,
       "private_quality_receipt_sha256": "621fdceca0d95c197a8f6e71fc8570d8b09b0b0ad3f840006533074fad6d32e8",
-      "private_package_fidelity_receipt_sha256": "9d998e6f633badd67946f86c754ee570b62ee319e1a3879d50e8933d4f43b044"
+      "private_package_fidelity_receipt_sha256": "9d998e6f633badd67946f86c754ee570b62ee319e1a3879d50e8933d4f43b044",
+      "public_access_copy_all_four_pages_root_visually_reviewed": true
     },
     "scientific_scope": {
       "prior_three_result_rows_scores_denominators_stronger_controls_and_ProtBoost_reference_unchanged": true,
@@ -2788,33 +2803,38 @@
     "organizer_submission_performed": false,
     "runtime_source_graph_review_or_policy_changes_from_report": false,
     "new_model_or_cloud_actions_for_report_authoring": false,
-    "receipt": "docs/evaluations/mechanistic_claim_review_20261117/final_report.json"
+    "receipt": "docs/evaluations/public_demo_20261117/final_report.json",
+    "public_access_revision": {
+      "path": "docs/evaluations/public_demo_20261117/final_report.json",
+      "bytes": 1707,
+      "sha256": "c44335e241b22dda298b083aaaf23b955fd22be3909e4ad8e5535fa2dd27b681"
+    }
   },
   "final_product_delivery_receipts": {
     "hosted": {
-      "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
-      "bytes": 5806,
-      "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+      "path": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+      "bytes": 3555,
+      "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
     },
     "browser": {
-      "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
-      "bytes": 5956,
-      "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
+      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+      "bytes": 4822,
+      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
     },
     "software": {
-      "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
-      "bytes": 2564,
-      "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
+      "path": "docs/evaluations/public_demo_20261117/software_access_copy.json",
+      "bytes": 1514,
+      "sha256": "7dc9aef3aa0ec9ccfc3e17048a92328139bdd2fe84366febcfdabe73a9504617"
     },
     "guide": {
-      "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
-      "bytes": 2614,
-      "sha256": "51d98210d0d64f8ff53c5e4350171c53e777ce9910914fc35c1ae05e694294cc"
+      "path": "docs/evaluations/public_demo_20261117/team_review_guide.json",
+      "bytes": 1572,
+      "sha256": "5d605498389ef85ec18bf6f12b9bfdbf104a7a0e71a3e61e2334000f4f55fa9a"
     },
     "report": {
-      "path": "docs/evaluations/final_prod_ui_20261116/final_report.json",
-      "bytes": 6519,
-      "sha256": "271de55dc6d4bfff858184932581e6241f23489d1d74bfe7829e4e4e7a6dc50a"
+      "path": "docs/evaluations/public_demo_20261117/final_report.json",
+      "bytes": 1707,
+      "sha256": "c44335e241b22dda298b083aaaf23b955fd22be3909e4ad8e5535fa2dd27b681"
     },
     "ui": {
       "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
@@ -2825,7 +2845,9 @@
   "protected_graph_downloads": {
     "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
     "bytes": 4543,
-    "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
+    "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c",
+    "scope": "Historical authenticated graph-package verification. Current public gateway does not serve bulk graph/source packets.",
+    "public_endpoint_serves_full_packets": false
   },
   "completed_release_checks": [
     {
@@ -2840,6 +2862,16 @@
         "bytes": 4543,
         "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
       }
+    },
+    {
+      "item": "Anonymous public saved-demo access",
+      "status": "Actual HTTPS server and direct KRAS desktop/mobile workflow passed without token entry. Original operator service and full source packets remain separate.",
+      "receipt": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json"
+    },
+    {
+      "item": "Approved Neptune capacity reduction",
+      "status": "Two T4g.medium instances available with writer/reader retained; four full graph parity checks passed.",
+      "receipt": "docs/evaluations/neptune_rightsize_20261117/receipt.json"
     }
   ],
   "previous_report_before_final_delivery_revision": {
@@ -3794,5 +3826,942 @@
     "path": "docs/evaluations/democratization_delivery_20261116/artifact_audit.json",
     "bytes": 14683,
     "sha256": "d90895d2e92352606ad1862b3808231d83faa17675b73e3eb333ba6eaa1881ab"
+  },
+  "neptune_rightsize_20261117": {
+    "status": "completed_verified",
+    "receipt": {
+      "path": "docs/evaluations/neptune_rightsize_20261117/receipt.json",
+      "bytes": 13234,
+      "sha256": "4f40445018e705ae0cb584eaf8193ce462770a7b797ddddea8cfb92809ce1908"
+    },
+    "assessment": "docs/evaluations/NEPTUNE_RIGHTSIZE_20261117.md",
+    "instances": 2,
+    "instance_class": "db.t4g.medium",
+    "writer_and_failover_reader_retained": true,
+    "engine_version": "1.4.8.0",
+    "manual_prechange_snapshot_available": true,
+    "full_parity_checks_passed": 4,
+    "source_graph_and_reviews_unchanged": true,
+    "verification_workers_closed": true,
+    "base_DB_compute_USD_day_before": 15.7776,
+    "base_DB_compute_USD_day_after": 4.464,
+    "exclusions": "Storage, I/O, backups, other AWS services, taxes and possible burst CPU surcharges",
+    "capacity_scope": "Verified for the current saved reviewer workload; bounded observations, with limited memory headroom and possible burst CPU charges."
+  },
+  "previous_final_report_before_public_demo_20261117": {
+    "format": "biograph-steward.final-report-original-form-fidelity.v4",
+    "status": "prepared_for_final_submission",
+    "file": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "bytes": 12624,
+    "sha256": "78de54ffa440a111cb4373e3c26ea9c03dbf2fbe81454a0e895a4b01fe514a6b",
+    "pages": 4,
+    "main_form_pages": 2,
+    "methods_and_evaluation_supplement_pages": 2,
+    "previous_report_before_expert_assessment": {
+      "bytes": 12468,
+      "sha256": "106bf2b8e826d51593cbcec488f8894a505d82f77a5d456fb9ad464460e72225",
+      "preserved_private_copy": "runs/final_report_20261116/judge_revision_20261117/history_before_expert_reference/BioGraph_Steward_Final_Report.docx",
+      "previous_public_receipt": "docs/evaluations/democratization_delivery_20261116/final_report.json"
+    },
+    "template_fidelity": {
+      "original_main_form_order_geometry_styles_and_field_counts_preserved": true,
+      "five_accomplishments": true,
+      "three_scope_paragraphs": true,
+      "three_deliverable_rows": true,
+      "section_order": [
+        "Team Information",
+        "Key Accomplishments",
+        "Scope and future improvements",
+        "Final deliverables",
+        "Reminder",
+        "Approach and evidence integration",
+        "Evaluation and final delivery"
+      ],
+      "intentional_updates": [
+        "Final project wording replaces midpoint progress language",
+        "Judge access means a browser demo with a privately supplied application token, not AWS credentials",
+        "Slides are described plainly and teammate/user-study narration is omitted",
+        "A fourth supplementary row records the completed expert source-faithfulness test",
+        "Cross-question examples are consolidated in the main scope paragraph",
+        "The new expert-paper reference and full assessment are linked alongside the preserved formal ProtBoost citation"
+      ]
+    },
+    "quality_review": {
+      "all_pages_rendered_with_bundled_canonical_renderer": true,
+      "every_page_inspected_at_full_resolution": true,
+      "independent_root_visual_review_passed": true,
+      "independent_root_primary_source_text_review_passed": true,
+      "source_package_fidelity_passed": true,
+      "main_body_font_pt": 12,
+      "supplement_table_and_reference_font_pt": 11,
+      "font_shrink_to_fit": false,
+      "clipping_overlap_or_unintended_blank_pages": false,
+      "authored_semicolon_count": 0,
+      "access_token_or_credentials_in_report": false,
+      "formal_ProtBoost_reference_and_primary_link_verified": true,
+      "primary_expert_paper_DOI_link_verified": true,
+      "private_quality_receipt_sha256": "621fdceca0d95c197a8f6e71fc8570d8b09b0b0ad3f840006533074fad6d32e8",
+      "private_package_fidelity_receipt_sha256": "9d998e6f633badd67946f86c754ee570b62ee319e1a3879d50e8933d4f43b044"
+    },
+    "scientific_scope": {
+      "prior_three_result_rows_scores_denominators_stronger_controls_and_ProtBoost_reference_unchanged": true,
+      "expert_reference": {
+        "task": "Agreement with expert source-faithfulness curations, not whole-Pharos biological truth",
+        "claims": 134,
+        "supported": 64,
+        "unsupported": 70,
+        "consensus_rule": "Prespecified agreement of the native source-count baseline and Nemotron",
+        "unsupported_flagged": 3,
+        "supported_flagged": 0,
+        "supported_retained": 64,
+        "previously_used_corpus_not_a_new_blind_gold_set": true,
+        "wider_precision_gain_established": false,
+        "pruning_precision_100_percent_claimed": false,
+        "more_aggressive_controls_lose_supported_claims": true,
+        "primary_graph_or_review_changes": false,
+        "full_counts_and_intervals": "docs/evaluations/MECHANISTIC_CLAIM_REVIEW_20261117.md",
+        "primary_paper": "https://doi.org/10.15252/msb.202211325",
+        "raw_labels_or_source_text_redistributed_in_report": false
+      },
+      "source_additions_are_context_not_discoveries": true,
+      "CIViC_clinical_context_separate_from_current_agent_and_GO_STRING_gains": true,
+      "historical_function_study_separate_from_current99_graph_and_agent": true,
+      "primary19310_decisions_remain_unresolved": true,
+      "same99_target_question_scope_and_broader_transfer_opportunities_explicit": true
+    },
+    "current_limitations": [
+      "The new134-claim source-faithfulness sample uses a previously evaluated corpus and supports no whole-graph biological-accuracy estimate.",
+      "Three unsupported claims were flagged without a supported claim flagged in this sample. Broader precision improvement remains uncertain.",
+      "Shared sources, limited positive reference coverage and prior reference use still qualify the unchanged location and historical function comparisons."
+    ],
+    "prepared_not_published_or_submitted": true,
+    "report_sent": false,
+    "repository_visibility_changed": false,
+    "organizer_submission_performed": false,
+    "runtime_source_graph_review_or_policy_changes_from_report": false,
+    "new_model_or_cloud_actions_for_report_authoring": false,
+    "receipt": "docs/evaluations/mechanistic_claim_review_20261117/final_report.json"
+  },
+  "previous_team_review_guide_link_refresh_before_public_demo_20261117": {
+    "format": "biograph-steward.team-review-guide.v1",
+    "status": "passed",
+    "file": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
+    "bytes": 47699,
+    "sha256": "16c3faba6e5f130d71044b367b72901027ce09f3c9f1341be212cc454822598c",
+    "pages": 2,
+    "source_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "hosted_acceptance": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+    "hosted_acceptance_sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23",
+    "source_guide_sha256": "173e23cef16f75350d972f00a035ee79f1a658005e409392fd52bf9a5f2dc8e6",
+    "links": [
+      "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+      "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
+      "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+      "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
+      "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/TEAM_REVIEW_FEEDBACK_20261113.txt",
+      "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/TEAM_REVIEW_GUIDE_20261113.md",
+      "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/SOURCE_AGENT.md"
+    ],
+    "link_count": 7,
+    "visual_review": {
+      "all_pages_rendered_and_inspected": true,
+      "independent_root_review_of_both_final_page_images": true,
+      "clipping_or_overlap_detected": false,
+      "date_branding_and_both_page_numbers_verified": true
+    },
+    "scope": {
+      "tasks": 5,
+      "hosted_examples_use_direct_links": true,
+      "no_server_folder_or_local_archive_search_required": true,
+      "loading_feedback_explained": true,
+      "what_changed_is_graph_assessment_not_development_history": true,
+      "biological_expertise_required": false,
+      "AWS_account_or_Brev_required": false,
+      "sources_and_decisions_distinguished": true
+    },
+    "tokens_or_credentials_in_artifact": false,
+    "earlier_PDF_preserved_in_private_run_and_git": true,
+    "guide_is_instruction_not_claim_of_completed_independent_review": true,
+    "automated_browser_coverage_is_separate_and_partial": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+    "receipt": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json"
+  },
+  "previous_software_before_public_demo_20261117": {
+    "LICENSE": {
+      "bytes": 1246,
+      "path": "LICENSE",
+      "sha256": "57a15858e9851bdbfd32521359fca17661b8a0b0903400561350fab7931308f2"
+    },
+    "core_python": ">=3.10",
+    "core_requires_GPU_or_model": false,
+    "core_requires_pip": false,
+    "final_public_repository_handoff_completed_by_this_audit": false,
+    "latest_indexed_software_ZIP": {
+      "path": "output/software/BioGraph_Steward_Software.zip",
+      "bytes": 727692,
+      "sha256": "b180fbde0ead24d31602a5d1425ad7cbc0e0c97a22f0a8f8408417fa8b9cfe4b",
+      "file_count": 133
+    },
+    "latest_indexed_software_ZIP_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "latest_indexed_software_acceptance": {
+      "path": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
+      "bytes": 2976,
+      "sha256": "9e8975a6f441e7b7e32db01905e5f9d35417d16c9581e6d4f2d7f8c242941097"
+    },
+    "latest_indexed_software_scope": "Current stdlib core with visible operator cohort construction and saved-review local-build instructions. Code-only fixture acceptance passed. Existing constructor, bounded source agent and scientific results are unchanged.",
+    "native_location_source_profile": {
+      "AWS_updated": false,
+      "ND_root_no_data_excluded": true,
+      "accepted_views_checked": 99,
+      "all99_target_questions_checked": true,
+      "all_native_assertions_remain_candidates": true,
+      "all_target_question_census": "docs/evaluations/public_gold_20261115/native_location_question_census.json",
+      "benchmark_inputs_used_for_source_publication": false,
+      "candidate_native_assertions": 429,
+      "candidate_pages_checked": 135,
+      "concepts_absent_from_historical_Pharos": 68,
+      "counts_are_independent_studies": false,
+      "full_GO_pipeline_conformance_claimed": false,
+      "guide": "docs/evaluations/NATIVE_LOCATION_WORKSPACE_20261115.md",
+      "historical_Pharos_pair_overlap": 361,
+      "local_regressions": {
+        "GOA_source_question_HTTP_export_tests": 41,
+        "all_final_groups_passed": true,
+        "clinical_human_gold_tests": 8,
+        "existing_source_inspection_tests": 24,
+        "native_GO_JavaScript_tests": 20,
+        "optional_scientific_dependencies_needed_by_core_fixtures": false,
+        "reference_accuracy_tests": 91
+      },
+      "native_source_records": 3309,
+      "new_source_profile_in_previously_prepared_core_ZIP": false,
+      "original_Pharos_records_preserved": 15671,
+      "original_or_default_workspaces_changed": false,
+      "original_primary_targets": 99,
+      "profile": "complete-cohort-positive-active-CC-located-in-all-codes.v1",
+      "separate_saved_workspace": "native_location_workspace_20261115",
+      "source_profile_summary": "docs/evaluations/public_gold_20261115/native_location_application.json",
+      "source_record_and_concept_union_exact": true,
+      "source_recovery_v1_behavior_preserved": true,
+      "status": "implemented and locally replayed through existing GOA source, question, inspection and export flow",
+      "targets_with_native_records": 94,
+      "status_scope": "Historical local standalone native_location workspace/census; its source profile is also included in the separately accepted hosted native_evidence workspace."
+    },
+    "native_physical_and_saved_review_features": {
+      "new_source_data_bundled_in_core_ZIP": false,
+      "ordinary_source_questions": "CLI and app share the native physical reader; source values and identifier/sequence qualifications retained",
+      "review_policy": "docs/SAVED_DATA_REVIEW_MODE.md",
+      "source_guide": "docs/NATIVE_PHYSICAL_SOURCE.md",
+      "status": "deployed and authenticated after real restart"
+    },
+    "new_core_archive_acceptance": {
+      "format": "biograph-steward.standalone-source-agent-delivery-summary.v1",
+      "status": "passed",
+      "source_revision": "84ef6a0b991f9560e777ec06fb6151303a380112",
+      "software_archive": {
+        "file": "BioGraph_Steward_Software.zip",
+        "sha256": "b180fbde0ead24d31602a5d1425ad7cbc0e0c97a22f0a8f8408417fa8b9cfe4b",
+        "bytes": 727692,
+        "file_count": 133
+      },
+      "private_acceptance_receipt_sha256": "15df2a7e2816855a70ad21c22dc544a62cd589356b67465d27cdd12385487e37",
+      "clean_python": {
+        "version": "3.12.14",
+        "no_site": 1,
+        "site_loaded": false,
+        "site_package_paths": []
+      },
+      "code_only_no_real_datasets": true,
+      "invented_portability_fixture_explicitly_separate": true,
+      "upstream_notices_preserved": true,
+      "current_source_agent_stdlib_imports_CLI_help_and_no_model_catalogue_passed": true,
+      "current_source_agent_four_step_UI_in_archive": true,
+      "actual_CLI_HTTP_export_recovery_restart_reopen_passed": true,
+      "saved_data_only_denied_new_actions": [
+        "/api/question",
+        "/api/build",
+        "/api/plan",
+        "/api/submission-export",
+        "/api/source-agent/run"
+      ],
+      "saved_data_only_source_agent_model_factory_calls": 0,
+      "source_fetches": 0,
+      "model_calls": 0,
+      "cloud_calls": 0,
+      "all_owned_servers_stopped": true,
+      "actual_live_model_comparison_in_this_acceptance": false,
+      "separate_actual_model_comparison": "docs/evaluations/SOURCE_AGENT_RESULTS_20261116.md",
+      "biological_accuracy_or_independent_user_validation_claimed": false,
+      "no_tokens_credentials_raw_HTTP_headers_real_source_records_reference_labels_or_weights_in_archive": true,
+      "hosted_deployment_has_separate_acceptance": true,
+      "bundled_how_to_link_is_absolute_repository_URL": true,
+      "core_archive_roots": [
+        "app.py",
+        "LICENSE",
+        "README_DEMO.md",
+        "biograph_steward/"
+      ],
+      "presentation_PDF_and_walkthrough_not_modified_by_this_acceptance": true,
+      "UI_mode_functional_validation_is_separate": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+      "previous_product_UI_acceptance": {
+        "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
+        "bytes": 2564,
+        "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
+      },
+      "previous_product_UI_software_preserved_private_copy_SHA256": "e568bc7a948d8be8503a9e3a6a4423dc99d834e4adc68018a82783fe4e53aa5e",
+      "loading_UI_in_archive": true,
+      "loading_and_question_error_functional_checks_are_separate": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+      "new_source_or_model_behavior_in_this_release": false,
+      "created_at": "2026-11-16T22:08:46.666277+00:00",
+      "private_acceptance_receipt_bytes": 6569,
+      "new_construction_entry_readme_in_archive": true,
+      "new_construction_entry_functional_validation_is_separate": true,
+      "UI_mode_functional_validation_scope": "The linked prior product-mode/loading checks remain separate; this acceptance does not repeat or count the separately reported construction-entry UI tests."
+    },
+    "preserved_November_13_indexed_software_checkpoint": {
+      "acceptance": {
+        "bytes": 2214,
+        "path": "docs/evaluations/software_release_native_go_export_20261113_summary.json",
+        "sha256": "420534e73bf2ff6456ef5ba52f101204abbdbb7c00c1686f9c9278eb7f31ac3c"
+      },
+      "archive": {
+        "bytes": 905085,
+        "file": "biograph_steward_software.zip",
+        "file_count": 165,
+        "sha256": "ed473c27ee1331d06cf78e4f4edcee27e1231a4c0e609653195d9af1eb1c20ad"
+      },
+      "commit": "5362b50b80e38505f24e21d97e7034005a7a51e1"
+    },
+    "prior_indexed_software_before_native_profiles": {
+      "latest_indexed_software_ZIP": {
+        "bytes": 661594,
+        "file": "biograph_steward_core_software.zip",
+        "file_count": 124,
+        "path": "runs/software_delivery_core_20261115/biograph_steward_core_software.zip",
+        "sha256": "aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94"
+      },
+      "latest_indexed_software_ZIP_commit": "9bf202f84949c76904ba8e51a5f83b68f2d58843",
+      "latest_indexed_software_acceptance": {
+        "bytes": 3549,
+        "path": "docs/evaluations/software_release_core_20261115_summary.json",
+        "sha256": "fa88a9bc527c412f25b5be6a3edbe68bd6dbeaceda12c7f86f0ebfb03fd30576"
+      }
+    },
+    "prior_native_profiles_055_software": {
+      "latest_indexed_software_ZIP": {
+        "bytes": 686402,
+        "file": "biograph_steward_core_saved_review_software.zip",
+        "file_count": 128,
+        "sha256": "220a763d1cd5a0a15b423e8843c4c7196c64dddcefc56ff900b9b8450984a26d"
+      },
+      "latest_indexed_software_ZIP_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+      "latest_indexed_software_acceptance": {
+        "path": "docs/evaluations/software_release_saved_review_20261115_summary.json",
+        "sha256": "cfb9744c0b761a6f6aacbfc2bf1b7277ae8f5de6b73ca532978c952121887b4e"
+      }
+    },
+    "published_release_asset_created_by_this_audit": false,
+    "repository_visibility": "Verified private during draft-release API handoff; no visibility change",
+    "saved_native_cache": {
+      "new_cached_core_archive_acceptance": "docs/evaluations/software_release_cached_review_20261115_summary.json",
+      "qualification": "docs/evaluations/saved_native_cache_20261115/qualification.json",
+      "qualified_original_reader_files_unchanged": true
+    },
+    "source_code_commit_at_local_check": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "previous_indexed_software": {
+      "archive": {
+        "bytes": 688047,
+        "file": "biograph_steward_core_saved_review_software.zip",
+        "file_count": 129,
+        "sha256": "f688f894ff3933f4b85fdbf62425cbf1e805a01d6852526adcf2bce261a0e993"
+      },
+      "commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+      "acceptance": {
+        "path": "docs/evaluations/software_release_cached_review_20261115_summary.json",
+        "sha256": "bd20359b2e6642fd950af71bd956d0e3f1ee462b73322bdd01f80532143d7009"
+      }
+    },
+    "previous_core_archive_acceptance": {
+      "actual_graph_ledger_and_answer_exports_verified": true,
+      "all_owned_servers_stopped": true,
+      "browser_visual_check": false,
+      "clean_python": {
+        "no_site": 1,
+        "site_loaded": false,
+        "site_package_paths": [],
+        "version": "3.12.14"
+      },
+      "cloud_calls": 0,
+      "fresh_extraction_and_saved_answer_reopen_passed": true,
+      "model_calls": 0,
+      "source_fetches": 0
+    },
+    "historical_local_synthetic_check": {
+      "UI_browser_visual_check": "unavailable: browser plugin native module rejected by macOS code-signature check",
+      "cloud_calls": 0,
+      "created_at": "2026-11-15T02:19:46.665164+00:00",
+      "format": "biograph-steward.delivery-local-synthetic-check.v1",
+      "graph": {
+        "assertions": 17,
+        "edges": 18,
+        "nodes": 12
+      },
+      "loopback_only": true,
+      "model_calls": 0,
+      "no_parent_paths": true,
+      "page_status": 200,
+      "question_id": "question_20261115T021946Z_ec276f7e",
+      "returned_results": 2,
+      "run_zip_bytes": 123529,
+      "run_zip_sha256": "44916e12a5db399bfce1d3e19f7fffe98aa91c655e636cf51399f4140eee4605",
+      "saved_answer_equal": true,
+      "source_guide_returned": true,
+      "source_retrievals": 0,
+      "synthetic": true,
+      "zip_files": 20
+    },
+    "previous_311_software_acceptance": {
+      "acceptance_receipt": {
+        "file": "acceptance.json",
+        "sha256": "600b41c38cd7dd0f6764b44b3bfa47cf808b6f91e62d90ab10bd697276517356"
+      },
+      "actual_CLI_HTTP_export_recovery_restart_reopen_passed": true,
+      "all_owned_servers_stopped": true,
+      "biological_accuracy_or_independent_user_validation_claimed": false,
+      "clean_python": {
+        "no_site": 1,
+        "site_loaded": false,
+        "site_package_paths": [],
+        "version": "3.12.14"
+      },
+      "cloud_calls": 0,
+      "code_only_no_real_datasets": true,
+      "format": "biograph-steward.standalone-reviewer-delivery-summary.v1",
+      "hosted_first_readme_and_five_current_tasks_verified": true,
+      "independent_actual_catalogue_same_snapshot_review": {
+        "actual_catalogue_primary": "/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115",
+        "actual_companion": "/?run=source_faithful_workspace_20261113&question=question_20261113T070731Z_1079c2ac",
+        "same_source_snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "source_or_graph_mutation": false,
+        "source_validation_still_on_open": true,
+        "status": "passed"
+      },
+      "invented_local_fixture_explicitly_separate": true,
+      "model_calls": 0,
+      "saved_data_only_actual_HTTP_and_zero_forbidden_factories_passed": true,
+      "software_archive": {
+        "bytes": 696121,
+        "file": "BioGraph_Steward_Software.zip",
+        "file_count": 129,
+        "sha256": "6f752794432bc5bf8aebd66827d26caba21b43d1e05b7ff1927673606df0169b"
+      },
+      "source_fetches": 0,
+      "source_revision": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+      "status": "passed",
+      "uploaded": false,
+      "upstream_notices_preserved": true
+    }
+  },
+  "previous_hosted_review_before_public_demo_20261117": {
+    "authenticated_acceptance_receipt": {
+      "path": "docs/evaluations/democratization_delivery_20261116/hosted_acceptance.json",
+      "bytes": 3385,
+      "sha256": "4181864a5c85696eead5ea9e001639581aa54c3519fe60d67d56ce417911c1c2"
+    },
+    "current_authenticated_acceptance_repeated_in_this_audit": true,
+    "interpretation_update": {
+      "actual_restart_verified": true,
+      "displayed_candidates": 36,
+      "graph_scores_or_model_changed": false,
+      "saved_queries": 6,
+      "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "term_explanations": 27
+    },
+    "last_verified_authenticated_runtime": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "native_profiles_update": {
+      "actual_restart_and_full_Neptune_parity_passed": true,
+      "browser_and_restore_checks": "Passed actual Chrome physical/source/reference and GO/accepted read views plus390px layout;235-file scoped restore/Gold export and approved S3 checksums passed.",
+      "cache_update": "Source-verified web reuse accepted after real restart; original source-reader files and graph/answer hashes unchanged.",
+      "gateway_route_sync": {
+        "existing_stack_image_update_complete": true,
+        "native_GO_and_protein_context_saved_routes_synchronized": true,
+        "new_unsafe_actions_permitted": false,
+        "receipt": "docs/evaluations/native_profiles_hosted_20261115/gateway_route_sync.json"
+      },
+      "new_workspace": "native_evidence_workspace_20261115",
+      "original_qualified_default_and_Neptune_mirror_unchanged": true,
+      "runtime_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+      "saved_accepted_answer_proteins": 0,
+      "saved_candidate_answer_proteins": 14,
+      "scoped_recovery_and_Gold_export": "passed for235sourcefiles; explicitlyapprovedprivateS3copychecksumverified",
+      "server_saved_data_only": true,
+      "summary": "docs/evaluations/native_profiles_hosted_20261115/summary.json"
+    },
+    "native_reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask",
+    "previous_authenticated_acceptance_receipt": {
+      "bytes": 3673,
+      "path": "docs/evaluations/scientific_hosted_delivery_20261114_summary.json",
+      "sha256": "4bca4913524b4a813e2da3c889054dd2a6ae721240a7fe09fc5dcc61142e8c41"
+    },
+    "previous_interpretation_update": {
+      "actual_restart_verified": true,
+      "displayed_candidates": 36,
+      "graph_scores_or_model_changed": false,
+      "saved_queries": 6,
+      "summary": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "term_explanations": 27,
+      "runtime_commit": "f6c527a84b68ac0155df4b2c19548c8b88736540"
+    },
+    "previous_verified_runtime": "ee3c61c23262e57669090a7608658c16517d87cb",
+    "private_Neptune_mirror": "Full read-only parity reverified after the actual d05f54f restart. Neptune mirrors the retained companion; native-profile answers read their saved source files.",
+    "public_entry_check": {
+      "TLS_default_verification": true,
+      "authenticated_saved_graph_checked": false,
+      "body_sha256": "d2848f9cc5f1202ca3145c2904e197922ab91965c7edce9e67696593488d7493",
+      "bytes_read": 1790,
+      "cookies_or_tokens_supplied": false,
+      "created_at": "2026-11-15T10:00:53.432801+00:00",
+      "final_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+      "has_workspace_login": true,
+      "status": 200,
+      "url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/"
+    },
+    "reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+    "shared_ingress": "Saved-data inspection, recorded agent replay and export; new inference, construction, retrieval and review edits blocked.",
+    "workspace_token": "supplied privately; not included in repository or this manifest",
+    "previous_interpretation_authenticated_acceptance_receipt": {
+      "bytes": 2868,
+      "path": "docs/evaluations/interpretation_hosted_delivery_20261115/summary.json",
+      "sha256": "9fc6449b60a5f21133e2e9d73439bbc2494ec7aaf2f88c3573b6f0033a571361"
+    },
+    "previous_authenticated_acceptance_receipt_before_reviewer_redesign": {
+      "path": "docs/evaluations/native_profiles_hosted_20261115/summary.json",
+      "bytes": 7896,
+      "sha256": "8fb559ec00336098a90db89b5029ca3b71bf3f7dac31f5fb06cf9093276a6405"
+    },
+    "previous_verified_runtime_before_reviewer_redesign": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "retained_reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
+    "reviewer_experience_update": {
+      "runtime_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+      "actual_restart_and_full_Neptune_parity_passed": true,
+      "real_saved_data_default_after_login": true,
+      "five_tasks": [
+        "Start here",
+        "Question & graph",
+        "Inspect sources",
+        "What changed",
+        "Export"
+      ],
+      "same_snapshot_source_supported_companion_required": true,
+      "source_proof_expandable_without_inline_JSON_dump": true,
+      "saved_graphs_answers_decisions_and_sources_changed": false,
+      "summary": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_acceptance.json",
+      "actual_hosted_browser_workflow_passed": true,
+      "browser_summary": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_browser_acceptance.json"
+    },
+    "previous_authenticated_acceptance_before_source_agent": {
+      "path": "docs/evaluations/reviewer_journey_delivery_20261115/hosted_acceptance.json",
+      "bytes": 3421,
+      "sha256": "772216fe2e5d49e4dae5e03cd96e9e90301a27b4b55742f0f4118677baf9999e"
+    },
+    "previous_runtime_before_source_agent": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+    "agent_reviewer_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+    "source_agent_update": {
+      "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+      "recorded_actual_model_jobs": [
+        "source_agent_eval_dc7b597201da_S01",
+        "source_agent_eval_dc7b597201da_S02",
+        "source_agent_eval_dc7b597201da_S03",
+        "source_agent_eval_dc7b597201da_S04",
+        "source_agent_eval_dc7b597201da_S05"
+      ],
+      "actual_restart_and_full_Neptune_parity_passed": true,
+      "saved_sources_replayed_without_new_inference": true,
+      "four_steps": [
+        "Question & plan",
+        "Evidence graph",
+        "Source inspection",
+        "Review proposals"
+      ],
+      "summary": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+      "existing_graphs_sources_answers_reviews_and_environment_unchanged": true,
+      "new_proposals_applied": false,
+      "original_model_workflow_delivery_runtime": "ee3c61c23262e57669090a7608658c16517d87cb"
+    },
+    "previous_source_agent_runtime_acceptance": {
+      "path": "docs/evaluations/source_agent_20261116/hosted_acceptance.json",
+      "bytes": 7022,
+      "sha256": "4c54ae9d926f0e1b89227b88cb2da091629901dd24b0bffe5a83e042e7ad3488"
+    },
+    "verification_cache_update": {
+      "acceptance": {
+        "path": "docs/evaluations/delivery_readiness_20261116/hosted_acceptance.json",
+        "bytes": 8799,
+        "sha256": "d4a17d9f74d9bb8bf801abe6eebb3b1e2837bd872f46155fd0587761a0b26c6a"
+      },
+      "runtime_bridge": {
+        "path": "docs/evaluations/delivery_readiness_20261116/runtime_bridge.json",
+        "bytes": 1579,
+        "sha256": "e0207cb28f133563c4e576993f15466fb97431b56f5313fba8299232a2beb09b"
+      },
+      "performance_observations": {
+        "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+        "bytes": 1692,
+        "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+      },
+      "cold_source_validation_preserved": true,
+      "actual_controller_and_model_results_unchanged": true,
+      "existing_jobs_or_registration_reinstalled": false
+    },
+    "current_browser_acceptance": {
+      "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+      "bytes": 5956,
+      "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
+    },
+    "loading_latency_observation": {
+      "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+      "bytes": 1692,
+      "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+    },
+    "initial_source_verification_latency_remains_material": true,
+    "final_product_update": {
+      "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+      "acceptance": {
+        "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+        "bytes": 5806,
+        "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+      },
+      "browser_acceptance": {
+        "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+        "bytes": 5956,
+        "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
+      },
+      "UI_validation": {
+        "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+        "bytes": 6062,
+        "sha256": "6c84c8d535642c3601a18726825f6bcaddf0d36f8a08da65772a1340b74b1844"
+      },
+      "graph_source_review_environment_unchanged": true,
+      "model_calls_for_update": 0
+    },
+    "focused_construction_entry_browser_check": {
+      "path": "docs/evaluations/democratization_delivery_20261116/hosted_browser_acceptance.json",
+      "bytes": 1680,
+      "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
+    },
+    "democratization_runtime_update": {
+      "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+      "acceptance": {
+        "path": "docs/evaluations/democratization_delivery_20261116/hosted_acceptance.json",
+        "bytes": 3385,
+        "sha256": "4181864a5c85696eead5ea9e001639581aa54c3519fe60d67d56ce417911c1c2"
+      },
+      "runtime_bridge": {
+        "path": "docs/evaluations/democratization_delivery_20261116/runtime_bridge.json",
+        "bytes": 1620,
+        "sha256": "dd8b310268a127c8289fd63c9004496fa1904c3119863128fe5ffe2310d261a2"
+      },
+      "focused_browser_check": {
+        "path": "docs/evaluations/democratization_delivery_20261116/hosted_browser_acceptance.json",
+        "bytes": 1680,
+        "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
+      },
+      "prior_full_workflow_browser_limits_preserved": true
+    }
+  },
+  "previous_current_delivery_pass_before_public_demo_20261117": {
+    "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "runtime_and_restart_acceptance_passed": true,
+    "explicit_hosted_browser_checks_passed": 39,
+    "source_and_review_bytes_preserved": true,
+    "new_model_or_source_retrieval_calls": 0,
+    "primary_graph_handoff_prepared": true,
+    "private_Gold_worker_and_isolated_candidate_stopped": true,
+    "owned_browser_closed": true,
+    "canonical_user_guide": "HOW_TO_USE.md",
+    "loading_observation": {
+      "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+      "bytes": 1692,
+      "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+    },
+    "code_only_software_acceptance": {
+      "path": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
+      "bytes": 2976,
+      "sha256": "9e8975a6f441e7b7e32db01905e5f9d35417d16c9581e6d4f2d7f8c242941097"
+    },
+    "presentation_and_media_unchanged": true,
+    "final_publication_and_submission_performed": false,
+    "browser_feature_checks_passed": false,
+    "partial_UI_checks_verified": true,
+    "browser_validation_complete": false,
+    "uninterrupted_journey_passed": false,
+    "browser_qualification": {
+      "status": "partial_checks_passed_with_browser_network_limit",
+      "receipt": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+      "feature_checks_passed": false,
+      "partial_UI_checks_verified": true,
+      "uninterrupted_journey_passed": false,
+      "return_and_mobile_recheck_completed": false,
+      "focused_completion_passed": false,
+      "transport_cause_resolved": false,
+      "original_failure_preserved": true,
+      "both_failures_preserved": true
+    },
+    "final_report": {
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/final_report.json",
+      "bytes": 4934,
+      "sha256": "3b8a1813a1b1ef76d1e61bfcf53fa1ea8aada6e8be09e06d74c56aeb29fd8902"
+    },
+    "team_review_guide": {
+      "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
+      "bytes": 2614,
+      "sha256": "51d98210d0d64f8ff53c5e4350171c53e777ce9910914fc35c1ae05e694294cc"
+    },
+    "final_UI_validation": {
+      "path": "docs/evaluations/democratization_delivery_20261116/UI_validation.json",
+      "bytes": 2293,
+      "sha256": "3a60ae1be55199ec4c263f646efaea8fe3ca1868ba684f4779940bce022b4cd6"
+    },
+    "browser_observation_scope": "Recorded partial UI assertions and visual states; not an uninterrupted completed journey, unique user-study count or independent intended-user validation.",
+    "remaining_browser_release_checks": [
+      "Exact current-question return and mobile recheck",
+      "Independent intended-user walkthrough"
+    ],
+    "loading_observation_scope": "Preserved09cache observation; not a new final-runtime performance benchmark.",
+    "protected_graph_downloads": {
+      "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
+      "bytes": 4543,
+      "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
+    },
+    "primary_graph_and_comparator_downloads_verified": true,
+    "new_source_artifact_folders_published": [
+      "primary_graph_handoff_20261116",
+      "captured_pharos_comparator_20261116"
+    ],
+    "new_scientific_results_claimed": false,
+    "focused_construction_entry_browser_check": {
+      "path": "docs/evaluations/democratization_delivery_20261116/hosted_browser_acceptance.json",
+      "bytes": 1680,
+      "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
+    },
+    "prior_full_workflow_browser_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "later_report_revision_scope": "Latest report adds a separate expert source-claim assessment. The runtime/UI pass model counters, prior scientific results and browser qualifications remain unchanged; additional assessment calls are recorded separately."
+  },
+  "previous_browser_visual_check_before_public_demo_20261117": {
+    "format": "biograph-steward.final-product-ui-hosted-browser-check.v1",
+    "status": "partial_checks_passed_with_browser_network_limit",
+    "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "source_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "passed": false,
+    "partial_UI_checks_verified": true,
+    "uninterrupted_journey_passed": false,
+    "return_and_mobile_recheck_completed": false,
+    "both_failures_preserved": true,
+    "transport_cause_resolved": false,
+    "owned_browser_closed": true,
+    "all_owned_browser_processes_closed": true,
+    "explicit_UI_checks": 39,
+    "checks": [
+      "A real pending workspace/question read displays its loading indicator",
+      "The visible loader is an accessible polite status",
+      "The workspace loading indicator clears after its saved question is ready",
+      "The recorded-agent loader and busy state clear after replay verification",
+      "Actual DOM transitions record workspace and agent busy states during real reads",
+      "Bare root opens the exact operator-pinned actual model job",
+      "The primary job labels three recorded model calls",
+      "Every marked development view is explicitly display:none in shared mode",
+      "Live model and package-creation controls stay hidden",
+      "Five task tabs retain clear product labels",
+      "Recorded agent step 1 is visible",
+      "Recorded question and plan retain KRAS scope",
+      "Recorded agent step 2 is visible",
+      "Cited graph shows CDC42BPB under the explicit8-of14 display cap",
+      "Recorded agent step 3 is visible",
+      "E002 retains STRING12.5 score203 and its nonprobability qualification",
+      "E002 remains a new captured-workspace pair with baseline absence explicit",
+      "Recorded agent step 4 is visible",
+      "The agent proposal applies no acceptance or graph changes",
+      "Verified model-record download points to the exact saved job",
+      "Product tab Compare is selected",
+      "What changed explains its product purpose",
+      "All five current HOU source/control rows and unknown outputs remain displayed",
+      "OpenCell prior-use qualification stays visible",
+      "Every marked development view is explicitly display:none in shared mode",
+      "Live model and package-creation controls stay hidden",
+      "A legacy hash cannot expose hidden history or database diagnostics",
+      "Product tab Data is selected",
+      "The companion link selects the same saved qualified source",
+      "Product tab Compare is selected",
+      "Applied qualification preserves298 retired-ID exclusions and the exact retained counts",
+      "Every marked development view is explicitly display:none in shared mode",
+      "Live model and package-creation controls stay hidden",
+      "Product tab Export is selected",
+      "Companion export points to its full retained workspace ZIP",
+      "Export distinguishes the existing decision package and hides new-package creation",
+      "Product tab Data is selected",
+      "The workspace picker is labelled by source role rather than research history",
+      "Return-to-current link preserves the actual model job"
+    ],
+    "observation_count_is_not_an_independent_user_study_or_distinct_task_count": true,
+    "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws",
+    "browser_version": "143.0.7499.4",
+    "playwright_version": "1.57.0",
+    "normal_TLS_verification": true,
+    "browser_sandbox_enabled": true,
+    "authentication_kept_off_camera": true,
+    "errors": [],
+    "preserved_first_failure": {
+      "phase": "return to current evidence and mobile navigation",
+      "message": "net::ERR_NETWORK_CHANGED /api/question/native_physical_KRAS_question_v3_20261115"
+    },
+    "focused_completion": "A single fresh-context return/mobile completion also stopped at /api/workspaces with ERR_NETWORK_CHANGED before any completion assertion. It was closed without another attempt.",
+    "normal_TLS_same_question_route_diagnostic": "HTTP200 with original saved answer/source identity; this demonstrates route availability, not the cause of the browser interruption.",
+    "remaining_automated_checks": [
+      "Finish return-to-current evidence after the qualified example",
+      "Verify final primary export pointer after return",
+      "Recheck390px layout on the new runtime"
+    ],
+    "actual_hosted_frames_visually_reviewed": 5,
+    "frames": [
+      {
+        "file": "product_loading_indicator.png",
+        "bytes": 6711,
+        "sha256": "5d040f03782711fc1d852d8754fe8a9d809361d3312736ee0037c258a8c7e120",
+        "width": 1320,
+        "height": 47
+      },
+      {
+        "file": "product_home_desktop.png",
+        "bytes": 195459,
+        "sha256": "68f9f921cb2134e6b1cfbdd78e27cb839477918780a29d26dcd7bb844bbbf96e",
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "file": "product_E002_source.png",
+        "bytes": 229224,
+        "sha256": "76d5494439f64c613badade648655d18295b15fd1883a0d40d99da396cf34722",
+        "width": 1209,
+        "height": 692
+      },
+      {
+        "file": "product_current_all_five_reference_controls.png",
+        "bytes": 26245,
+        "sha256": "83177db554387e8312ca3191c85ad3c2fd44f792fbf1fa040ac297deff00b86f",
+        "width": 1278,
+        "height": 244
+      },
+      {
+        "file": "product_applied_qualification.png",
+        "bytes": 47190,
+        "sha256": "dbcaa57adb4082f6a66a4b4c527578e3ac754524077f84ae41920ceb3ee9beb4",
+        "width": 1278,
+        "height": 274
+      }
+    ],
+    "private_combined_evidence_sha256": "cac033cddef2cbb208c8d60ff62514188645e83489f8e6c3099271e78b5d9e80",
+    "private_failed_journey_sha256": "f399563d2a8732f205e941699f940880a28674bbb57b57ac46610d251ec5a957",
+    "separate_server_acceptance": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+    "independent_human_usability_review_completed": false,
+    "new_model_calls": 0,
+    "fresh_biomedical_retrievals": 0,
+    "graph_or_review_edits": 0,
+    "scope": "Actual hosted desktop feature checks with a preserved browser transport limitation; no claim that the entire planned journey or mobile follow-up passed.",
+    "receipt": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json"
+  },
+  "previous_final_product_delivery_receipts_before_public_demo_20261117": {
+    "hosted": {
+      "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+      "bytes": 5806,
+      "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+    },
+    "browser": {
+      "path": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json",
+      "bytes": 5956,
+      "sha256": "f9f7ffd5d395ee1b69c51a4ca144a3733a542d4c6e87b765f22fcc05647fb6e0"
+    },
+    "software": {
+      "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance.json",
+      "bytes": 2564,
+      "sha256": "2cb1740d4fbfa16c4ec59f9e237c5bd2bde85c946c022ea404861d3e6e1a333d"
+    },
+    "guide": {
+      "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
+      "bytes": 2614,
+      "sha256": "51d98210d0d64f8ff53c5e4350171c53e777ce9910914fc35c1ae05e694294cc"
+    },
+    "report": {
+      "path": "docs/evaluations/final_prod_ui_20261116/final_report.json",
+      "bytes": 6519,
+      "sha256": "271de55dc6d4bfff858184932581e6241f23489d1d74bfe7829e4e4e7a6dc50a"
+    },
+    "ui": {
+      "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+      "bytes": 6062,
+      "sha256": "6c84c8d535642c3601a18726825f6bcaddf0d36f8a08da65772a1340b74b1844"
+    }
+  },
+  "previous_protected_graph_downloads_before_public_demo_20261117": {
+    "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
+    "bytes": 4543,
+    "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
+  },
+  "public_demo_20261117": {
+    "status": "completed_verified",
+    "server": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+      "bytes": 3555,
+      "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+    },
+    "candidate": {
+      "path": "docs/evaluations/public_demo_20261117/candidate_acceptance.json",
+      "bytes": 3998,
+      "sha256": "a8af0c5982ff0743f96111ed903e94336cf6895cb0dc08e67dc7de6d438cd1a6"
+    },
+    "artifacts": {
+      "final_report": {
+        "path": "docs/evaluations/public_demo_20261117/final_report.json",
+        "bytes": 1707,
+        "sha256": "c44335e241b22dda298b083aaaf23b955fd22be3909e4ad8e5535fa2dd27b681"
+      },
+      "team_review_guide": {
+        "path": "docs/evaluations/public_demo_20261117/team_review_guide.json",
+        "bytes": 1572,
+        "sha256": "5d605498389ef85ec18bf6f12b9bfdbf104a7a0e71a3e61e2334000f4f55fa9a"
+      },
+      "software_access_copy": {
+        "path": "docs/evaluations/public_demo_20261117/software_access_copy.json",
+        "bytes": 1514,
+        "sha256": "7dc9aef3aa0ec9ccfc3e17048a92328139bdd2fe84366febcfdabe73a9504617"
+      }
+    },
+    "application_runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "gateway_source_commit": "0e62a8e780179c5f01245aab49923d0fbfdc844a",
+    "public_workspace_count": 2,
+    "public_snapshot_is_read_only": true,
+    "private_operator_and_original_graphs_unchanged": true,
+    "new_model_calls": 0,
+    "new_scientific_results": false,
+    "browser_acceptance_pending": false,
+    "full_source_packets_are_separate_submission_or_private_operator_assets": true,
+    "browser": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+      "bytes": 4822,
+      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
+    },
+    "primary_demo_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+    "direct_featured_workflow_passed": true,
+    "bare_root_navigation_transport_failure_preserved": true,
+    "root_navigation_failure_cause_resolved": false,
+    "final_operations": {
+      "path": "docs/evaluations/public_demo_20261117/final_operations.json",
+      "bytes": 4012,
+      "sha256": "0177a6e86061576c1dd69fd6ca06874dcca2059f62fde3c0e116981a747f61f8"
+    },
+    "public_backend_enabled_at_boot": true,
+    "original_and_snapshot_source_bytes_verified": true,
+    "owned_test_proxy_tunnel_and_browsers_closed": true,
+    "temporary_public_token_copy_removed": true
   }
 }

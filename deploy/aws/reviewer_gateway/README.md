@@ -5,9 +5,14 @@ opt-in [public saved-demo preparation](#prepare-a-scoped-public-demo-without-tok
 uses a separate backend, token and read-only data snapshot. Preparing either
 packet makes no AWS calls and does not change the currently deployed site.
 
-Reusable configuration for the [deployed reviewer gateway](../../../docs/evaluations/reviewer_https_delivery_20261113_summary.json).
+The [current public rollout](../../../docs/evaluations/public_demo_20261117/hosted_acceptance.json)
+opens the designated saved examples at the existing URL without token entry.
+
+## Default authenticated gateway
+
+Reusable configuration for the [original authenticated gateway](../../../docs/evaluations/reviewer_https_delivery_20261113_summary.json).
 See the [team guide](../../../docs/TEAM_REVIEW_GUIDE_20261113.md) for its checked
-address and sign-in instructions. Running the renderer below only prepares
+address and current access instructions. Running the renderer below only prepares
 files; deploying another instance requires its own authorized scope.
 
 This adds an AWS-provided HTTPS

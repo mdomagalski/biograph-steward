@@ -7,9 +7,8 @@ Pharos cohort, with additional qualified protein-association and location data.
 This is a frozen research workspace; [source dates](docs/SOURCE_NOTES.md#current-reviewer-graph-and-source-dates)
 are recorded separately from the date the app was updated.
 
-**[Open the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
-and sign in with the token supplied privately. No AWS account, installation or
-running model is needed. Prefer to watch first? Use the
+**[Open the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
+directly. No sign-in, AWS account, installation or running model is needed. Prefer to watch first? Use the
 [3:58 narrated walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 or its [transcript](output/walkthrough/BioGraph_Steward_Walkthrough.txt).
 
@@ -90,23 +89,25 @@ the displayed KRAS graph selects only the records relevant to that question.
 
 ## 4. Download the result you need
 
-| Download | Use it for |
+| Public demo download | What it contains |
 |---|---|
-| **Download this verified agent record** | The question, model/tool trace, source inspections and review proposals. Its source workspace is also needed for replay. |
-| Focused answer ZIP | The selected question, cited answer and focused graph. |
-| **Export → Download run ZIP** | The complete saved workspace graph, source files and provenance. |
+| **Download this verified agent record** | The question, focused graph, model/tool trace, source inspections and review proposals. Its complete source workspace is supplied separately when full replay is required. |
 
-In the **retained TP53 example**, the run ZIP also contains
-`source_retained_package`: `retained_graph.json` is the resulting graph,
-`edge_dispositions.jsonl` holds each input record's decision and reason, and
-`baseline_packet` holds the original graph and sources. An undecided record
-remains retained. The native KRAS ZIP contains its candidate graph and sources;
-it does not include the separate TP53 qualification decisions.
+In the **retained TP53 example**, open **Export** to read how the full graph,
+decision ledger and baseline relate. These bulk files are separate submission
+or authorized operator assets, rather than public-demo downloads.
 
-For the challenge graph-and-ledger package and its separate Pharos-only
-comparator, use the [protected graph downloads](docs/GOLD_SET_INTERFACE.md#protected-downloads).
-Those assessment packages are separate from the focused answer and ordinary
-workspace downloads above.
+The retained workspace package includes `source_retained_package`:
+`retained_graph.json` is the resulting graph, `edge_dispositions.jsonl` holds
+each input record's decision and reason, and `baseline_packet` holds the original
+graph and sources. An undecided record remains retained. The native KRAS package
+contains its candidate graph and sources; it does not include the separate TP53
+qualification decisions.
+
+The focused answer ZIP, complete saved-workspace ZIP and challenge graph/ledger
+package serve different purposes. See the [graph and source package instructions](docs/GOLD_SET_INTERFACE.md#protected-downloads)
+for the primary handoff and separate Pharos-only comparator. A public agent
+record does not silently contain these complete source packets.
 
 ## Try another question or give feedback
 
@@ -127,6 +128,6 @@ These operator actions are separate from the
 read-only shared review above.
 
 For usability feedback, send the step where you got stuck, what you expected,
-and what happened. A screenshot is useful if it shows no token. Can you identify
+and what happened. A screenshot of the exact step is useful. Can you identify
 one added connection, trace its source, distinguish a proposal from an applied
 decision, and find the files another researcher would need?

@@ -7,9 +7,8 @@ prioritizes citations for inspection and produces grounded review proposals.
 The app preserves the original records and makes applied graph decisions
 recoverable.
 
-**[Open the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
-with the privately supplied token. No AWS account, installation or running
-model is needed.
+**[Open the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
+directly. No sign-in, AWS account, installation or running model is needed.
 
 **[How to use it](HOW_TO_USE.md)** ·
 **[Watch the 3:58 walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)** ·
@@ -56,19 +55,21 @@ not a biological-accuracy percentage. Proposals do not automatically accept
 claims or prune the graph.
 
 For another task, inspect recorded location or archived-pathway questions,
-review the separate retained TP53 graph, or download the workspace with its
-sources. The [single user guide](HOW_TO_USE.md) explains the steps and files.
+or review the separate retained TP53 graph. Download the recorded-agent JSON
+from the demo. Complete graph and source packets are supplied separately for
+submission or authorized operator use. The [single user guide](HOW_TO_USE.md) explains the steps and files.
 
 ## Current app, saved data and new runs
 
-The protected AWS reviewer app runs the recorded source-agent workflow. Its
-[deployment and restart checks](docs/evaluations/democratization_delivery_20261116/hosted_acceptance.json)
-have passed for the final review interface, including readable loading feedback.
-[Hosted desktop checks](docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
-observed the four agent steps, sources, current assessments, applied qualification
-and export controls. Two browser transport interruptions left the final return
-and mobile recheck incomplete; their cause remains unresolved. The same saved
-question was separately available over normal TLS.
+The public AWS browser demo replays the recorded source-agent workflow. Its
+[anonymous HTTPS deployment checks](docs/evaluations/public_demo_20261117/hosted_acceptance.json)
+verify direct access without a token, using a separate read-only snapshot of
+the two real-data workspaces. The original operator application remains separate.
+The [live browser check](docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json)
+follows the direct KRAS example through its agent steps, source inspection,
+five task tabs, export and mobile navigation. Applied qualifications and path
+inspection also have [separate checks](docs/evaluations/public_demo_20261117/candidate_acceptance.json).
+Earlier checkpoints remain dated records.
 The shared site is a **read-only replay**: it verifies saved work without new
 model calls, source retrieval or review edits. An authorized operator can
 [run a new agent question](docs/SOURCE_AGENT.md#operator-cli) with a complete
@@ -84,7 +85,8 @@ workspace. Updating application code does not refresh its upstream datasets. The
 application and saved artifacts.
 The [designated primary graph handoff](docs/GOLD_SET_INTERFACE.md) now has its
 own verified decision ledger, preserved sources and exact captured Pharos-only
-comparator, now available through the protected downloads described there.
+comparator. These full graph/source packets are separate submission assets or
+authorized operator downloads; the public demo offers the recorded-agent JSON.
 
 ## Run locally
 
@@ -92,6 +94,8 @@ The [code-only software ZIP](output/software/BioGraph_Steward_Software.zip)
 has [clean acceptance](docs/evaluations/democratization_delivery_20261116/software_acceptance.json)
 for the review interface, loading feedback and guided construction entry. Its source revision and the separately
 accepted hosted runtime are recorded in the [release index](docs/releases/20261115/README.md).
+The [public-access instruction update](docs/evaluations/public_demo_20261117/software_access_copy.json)
+changes only the packaged README, preserving every executable file.
 
 The core app needs **Python 3.10+**, with no pip install, GPU or API key:
 

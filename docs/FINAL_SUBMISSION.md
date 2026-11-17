@@ -6,23 +6,23 @@ evidence graph, a cited answer, inspected source records and grounded review
 proposals. Each connection retains its original source and conditions.
 
 The actual current-source agent comparison, narrated local demonstration and
-protected hosted replay are complete. The
-[hosted acceptance](evaluations/democratization_delivery_20261116/hosted_acceptance.json)
+hosted saved replay are complete. The
+[public HTTPS acceptance](evaluations/public_demo_20261117/hosted_acceptance.json)
 and [delivery status](DELIVERY_STATUS_20261115.json) record the verified deployment;
 the tour's local filming provenance remains separate.
 
-The final shared interface now includes loading/error feedback and keeps current
-assessment results while hiding development dashboards. Its
-[partial hosted desktop checks](evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
-covered the agent, sources, qualification and export controls. Two browser
-transport interruptions left the final return/mobile recheck incomplete; the
-cause is unresolved. This does not change the separately passed server/source
-acceptance or establish a completed independent user walkthrough.
+The shared interface opens the recorded KRAS example directly, includes
+loading/error feedback and keeps scientific assessments visible. Its
+[live browser check](evaluations/public_demo_20261117/hosted_browser_acceptance.json)
+passed the four agent steps, source inspection, five task tabs, graph export
+and mobile navigation without sign-in. These are functional checks, distinct
+from an independent user study. Earlier browser transport failures remain in
+the dated evidence.
 
 **Start with [How to use BioGraph Steward](../HOW_TO_USE.md)**, the
 [judge evidence route](JUDGE_WALKTHROUGH.md), and
-[protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/).
-The workspace token is supplied privately. No AWS account, graph-query language,
+[public browser demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data).
+No sign-in, AWS account, graph-query language,
 GPU or model server is needed for saved review. The
 [delivery status](DELIVERY_STATUS_20261115.json) identifies accepted deployments;
 the [3:58 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
@@ -61,7 +61,7 @@ goal: scientists should be able to use agents to build knowledge graphs without
 being KG specialists. It also asks teams to demonstrate generalizability and
 provide a hosted or launchable demonstration, or a short video/writeup with the
 graph. Our evidence is the guided question-to-graph workflow, readable answers
-and source inspections, reusable cohort construction, protected hosted examples,
+and source inspections, reusable cohort construction, public saved examples,
 portable software, narrated tour and downloadable graph/comparator packages.
 The supplied email is the source of this clarification. Its linked response
 document could not be read without access; no additional rules are inferred.
@@ -188,7 +188,7 @@ and includes the completed expert-curated source-claim assessment. The latter
 reports three unsupported consensus flags and no supported flags in a
 134-claim reference check, with wider precision improvement still uncertain.
 It uses short sentences to distinguish each contribution. The
-[format and review receipt](evaluations/mechanistic_claim_review_20261117/final_report.json)
+[format and review receipt](evaluations/public_demo_20261117/final_report.json)
 records it as prepared for user review, not submitted. The
 [code-only software ZIP](../output/software/BioGraph_Steward_Software.zip)
 has [clean acceptance for tested source `84ef6a0`](evaluations/democratization_delivery_20261116/software_acceptance.json);
@@ -198,9 +198,10 @@ The native KRAS workspace ZIP includes its candidate graph and preserved source
 files. The **designated primary submission package** also has its own complete
 19,310-row abstention ledger and an exact same-snapshot Pharos-only comparator;
 its [protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json)
-records both actual HTTPS archives and complete member checks. The
-[download instructions](GOLD_SET_INTERFACE.md#protected-downloads) require only
-sign-in at the reviewer site. All primary records remain unassessed; these
+records both prior authenticated HTTPS archives and complete member checks.
+The [graph/source handoff instructions](GOLD_SET_INTERFACE.md#protected-downloads)
+cover separately supplied final-submission assets or authorized operator
+retrieval, rather than public-demo bulk downloads. All primary records remain unassessed; these
 abstentions are not biological acceptance. In the applied-qualification TP53 example, the workspace ZIP also
 includes the retained graph, complete keep/prune/abstain ledger and original
 baseline/source packet. The small answer diagram and focused answer ZIP are
@@ -214,7 +215,7 @@ workspace; that small record does not silently include the full source packet.
 - [Code and build instructions](../START_HERE.md): MIT software with a local
   synthetic demonstration, explicitly labeled as invented data.
 - [Delivery and source-access instructions](DELIVERY.md): tested code release,
-  protected real examples and separate source packets under their own terms.
+  public saved examples and separate source packets under their own terms.
 - [Standard export](STANDARD_EXPORT.md) and [mapping/overlap audit](EVIDENCE_OVERLAP.md):
   declared vocabularies, admitted mappings and known compatibility limits.
 - [Submission overview](SUBMISSION_OVERVIEW.md) and
@@ -227,4 +228,6 @@ workspace; that small record does not silently include the full source packet.
 The repository is private during preparation and is intended to become public
 for final open-source submission. Publication and actual submission must be
 recorded when performed. Software licensing does not relicense upstream data;
-the graph, ledger and baseline use the protected access route above.
+the full graph, ledger, baseline and comparator are separate submission or
+authorized operator assets. The public demo offers the recorded-agent JSON,
+with its focused graph, trace and inspected sources.

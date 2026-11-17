@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "public_access_acceptance": {
+    "file": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+    "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+  },
+  "canonical_copy_verified": true,
+  "scientific_data_or_results_changed": false,
+  "new_model_source_or_cloud_calls_for_artifact_preparation": false,
+  "format": "biograph-steward.public-demo-software-access-copy.v1",
+  "file": "output/software/BioGraph_Steward_Software.zip",
+  "bytes": 727760,
+  "sha256": "466bd4cf7d90cd109757d4bb2818308f5dd9581759a693ee4c6ef949fc021e74",
+  "previous_canonical_sha256": "b180fbde0ead24d31602a5d1425ad7cbc0e0c97a22f0a8f8408417fa8b9cfe4b",
+  "source_revision": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "member_count": 133,
+  "only_changed_member": "README_DEMO.md",
+  "other_members_byte_identical": 132,
+  "entry_order_permissions_dates_compression_methods_and_archive_comment_preserved": true,
+  "executable_code_changed": false,
+  "new_functional_tests_run": false,
+  "prior_clean_core_acceptance": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
+  "prior_clean_core_acceptance_still_applies_to_unchanged_executable_members": true,
+  "upstream_notices_and_licenses_unchanged": true,
+  "real_datasets_reference_labels_credentials_or_model_weights_added": false,
+  "readme_access_copy": "Public browser demo without sign-in; full graph/source packets separate.",
+  "original_canonical_preserved_in_private_history": true
+}

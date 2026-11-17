@@ -1,0 +1,79 @@
+{
+  "format": "biograph-steward.public-demo-final-operations.v1",
+  "status": "passed",
+  "passed": true,
+  "checked_at_UTC": "2026-11-17T03:07:13.330986+00:00",
+  "scope": "Final source/private preservation, public boot enable and owned temporary cleanup after accepted anonymous HTTPS and browser checks. No new scientific evaluation.",
+  "application_runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "public_service_enabled_at_boot": true,
+  "public_service_active": true,
+  "public_or_private_application_restarted": false,
+  "original_private_application_environment_and_unit_unchanged": true,
+  "private_direct_backend_still_requires_token": true,
+  "public_direct_backend_still_requires_distinct_server_token": true,
+  "public_gateway_token_entry_required": false,
+  "public_read_only_root_and_snapshot_mount_verified": true,
+  "public_backend_memory_bytes": 2147483648,
+  "public_backend_CPU_limit": 1,
+  "public_backend_model_or_Neptune_environment_names_present": false,
+  "snapshot_source_folders": 17,
+  "snapshot_index_files": 2,
+  "snapshot_file_count": 732,
+  "snapshot_bytes": 1974425426,
+  "snapshot_inventory_sha256": "423c6caa38a75bf93f008b0f1e51a6977da065acb47bcbdf1f3f8887039e019c",
+  "all_snapshot_and_selected_original_source_bytes_match": true,
+  "source_bytes_hashed_at_least": 3948850852,
+  "source_graph_or_review_changes": 0,
+  "new_model_calls": 0,
+  "new_source_retrievals": 0,
+  "actual_HTTPS_origin_source_inspection_and_path_exploration_passed": true,
+  "owned_temporary_loopback_proxy_removed": true,
+  "owned_forwarding_session_closed": true,
+  "owned_browser_processes_closed": true,
+  "temporary_registry_credentials_removed": true,
+  "redundant_Mac_image_transport_archive_removed_bytes": 64335872,
+  "private_S3_archive_and_ECR_image_retained": true,
+  "temporary_Mac_public_token_copy_removed": "Confirmed by parent after matching SSM-injected gateway and VM backend authentication succeeded. The value was not read or printed.",
+  "original_operator_token_file_touched": false,
+  "failed_candidate_images_and_evidence_preserved": true,
+  "initial_final_operations_attempt": "Failed closed while transferring checker, before boot/service changes. Preserved separately. A later inline transfer of the exact pinned checker passed.",
+  "unrelated_user_source_or_scientific_artifacts_deleted": false,
+  "credentials_exposed_in_public_receipt": false,
+  "proofs": {
+    "actual_final_operations": {
+      "path": "runs/public_demo_20261117/operator/final_operations_result_v2.json",
+      "bytes": 3884,
+      "sha256": "05671843812f1a692538fd11e9d6a0f9a95953f2ef9b45012e1884c211a21b49"
+    },
+    "exact_final_preservation": {
+      "path": "runs/public_demo_20261117/operator/final_preservation_receipt.json",
+      "bytes": 2027,
+      "sha256": "780d25958ff45fe084b198a89420aca79cb4e4c6eebbabf463015f9dc0ddb539"
+    },
+    "pinned_read_only_checker": {
+      "path": "runs/public_demo_20261117/operator/verify_final_preservation.py",
+      "bytes": 12618,
+      "sha256": "bf306f9ab5113668fb1c19c64ffaac98383930027a292fd51a0d8f02f6c2f84d"
+    },
+    "owned_tunnel_cleanup": {
+      "path": "runs/public_demo_20261117/operator/owned_tunnel_cleanup.json",
+      "bytes": 438,
+      "sha256": "0185797633b0548eefb0ce510e5a03bcdb5c0d9759610d82cb5131953527560d"
+    },
+    "owned_transport_cleanup": {
+      "path": "runs/public_demo_20261117/promotion_v4/local_transport_cleanup.json",
+      "bytes": 432,
+      "sha256": "ebcbf30a30506d5c052c99aa3d53c37e557083504760a642d2c2077936f97a0a"
+    },
+    "HTTPS_read_only_source_actions": {
+      "path": "runs/public_demo_20261117/deployment/HTTPS_source_actions.json",
+      "bytes": 1479,
+      "sha256": "9b40b2c9fc86b2fce94fc219aebe38cf6360fb30bb7e087c2468f6b07e0ad685"
+    },
+    "failed_closed_initial_attempt": {
+      "path": "runs/public_demo_20261117/operator/final_operations_result.json",
+      "bytes": 1449,
+      "sha256": "7fbae5795b1a9ed4783b3e2e4d7f02ea4b939bb0b20e3f89c8b46d95316d6505"
+    }
+  }
+}

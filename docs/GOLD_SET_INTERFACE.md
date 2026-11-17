@@ -11,8 +11,9 @@ All original app graph files remain unchanged. The separate applied-qualificatio
 companion retains its own 298 exclusions; those decisions are not transplanted.
 
 The complete graph-and-decisions package and its separate Pharos comparator
-are available through the existing protected reviewer site. Both real HTTPS
-downloads passed complete file-inventory, size, CRC and SHA256 checks; see the
+are prepared as separate submission or authorized operator assets. Both prior
+authenticated HTTPS downloads passed complete file-inventory, size, CRC and
+SHA256 checks; see the
 [protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json).
 They are separate from the code-only software ZIP. Source terms remain applicable.
 Earlier [fixture and scoped-graph verification](evaluations/GOLD_SET_INTERFACE_20261023.md)
@@ -20,15 +21,17 @@ remains a separate dated record.
 
 ## Protected downloads
 
-First [sign in to the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
-with the privately supplied token, then choose the package you need. No AWS
-account is required. Large packages verify their source records before the
-download starts; allow that preparation to finish.
+The public browser demo opens saved examples without sign-in, but does not
+serve these bulk graph/source archives. They are supplied separately for final
+submission or retrieved through an authorized operator installation. The
+existing authenticated original workbench remains the operator download route.
+Large packages verify their source records before a download starts. Preserve
+all included source terms.
 
 | Package | Contents and purpose |
 |---|---|
-| [Primary graph, decisions and source baseline](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/download/primary_graph_handoff_20261116) — about 116 MB | The sealed 48-file native graph-and-decisions package. It retains all 19,310 records with explicit `abstain` decisions and null confidence. Its `baseline_packet` preserves the complete enriched input and sources. |
-| [Captured Pharos-only comparator](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/download/captured_pharos_comparator_20261116) — about 27 MB | A separate replayable saved workspace built from the exact original Pharos snapshot, with byte-identical Pharos graph and its own source terms. This is the control for the source additions. |
+| Primary graph, decisions and source baseline (`primary_graph_handoff_20261116`) — about 116 MB | The sealed 48-file native graph-and-decisions package. It retains all 19,310 records with explicit `abstain` decisions and null confidence. Its `baseline_packet` preserves the complete enriched input and sources. |
+| Captured Pharos-only comparator (`captured_pharos_comparator_20261116`) — about 27 MB | A separate replayable saved workspace built from the exact original Pharos snapshot, with byte-identical Pharos graph and its own source terms. This is the control for the source additions. |
 
 The primary package's enriched input baseline and the Pharos-only comparator
 have different roles. These are captured scoped graphs, not the entire Pharos

@@ -33,15 +33,15 @@ the prediction study includes a stronger annotation-refreshed baseline. Full
 controls and qualifications remain in the linked reports below.
 
 The agent's actual development comparison, portable software acceptance,
-narrated local demonstration and protected hosted replay are complete. The
+narrated local demonstration and hosted saved replay are complete. The
 [hosted acceptance](evaluations/delivery_readiness_20261116/hosted_acceptance.json)
 and [delivery status](DELIVERY_STATUS_20261115.json) record the verified deployment;
 the tour remains explicitly filmed in the local application.
 
-**[Open the protected reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
+**[Open the public browser demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
 and follow **[How to use BioGraph Steward](../HOW_TO_USE.md)**. The
 [judge evidence route](JUDGE_WALKTHROUGH.md) maps that workflow to the rubric.
-Use the token supplied privately. Saved review needs only a browser; no AWS
+Open it directly, with no sign-in. Saved review needs only a browser; no AWS
 account, local setup, Brev instance or model server is required. Exact accepted
 deployment and release identities are recorded in the
 [delivery status](DELIVERY_STATUS_20261115.json).
@@ -103,14 +103,17 @@ The working tools cover bounded construction, explicit identifier checks,
 versioned assertions, source passports, guided multihop inspection, guarded
 snapshot comparison and reproducible graph/decision exports. Stable identifiers,
 Biolink references and bounded KGX/SSSOM profiles have recorded limits. AWS hosts
-the protected workbench; Neptune supplies a private mirror/inspection route.
+the public saved-demo workbench; Neptune supplies a separate private
+mirror/inspection route.
 The current-source Nemotron agent orchestrates these existing tools and source
 inspections. Its adapter-grounded proposals remain for a reviewer. Earlier
 planner and literature-audit experiments retain their separate results and
 limits; the auditor did not outperform its specialist control. No model result
 automatically accepts or biologically prunes evidence.
 The shared reviewer route replays saved work; live construction, retrieval,
-model calls and review edits are disabled there.
+model calls and review edits are disabled there. The public download is the
+recorded-agent JSON. Complete graph/source packets remain separate submission
+or authorized operator assets.
 
 The **[final submission summary](FINAL_SUBMISSION.md)** maps these outcomes to
 the organizer's 40% usability, 30% accuracy/pruning, 20% explainability and 10%

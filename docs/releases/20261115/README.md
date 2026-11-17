@@ -1,16 +1,15 @@
 # Reviewer deliverables
 
-Start with the **[hosted application](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)**
-and the **[step-by-step user guide](../../../HOW_TO_USE.md)**. Sign in with
-the workspace token supplied privately. The current app opens a verified
+Start with the **[hosted application](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
+and the **[step-by-step user guide](../../../HOW_TO_USE.md)**. Open it directly,
+with no sign-in. The current app opens a verified
 Nemotron source-agent record, with four steps from question to review proposals.
-The [hosted acceptance](../../evaluations/democratization_delivery_20261116/hosted_acceptance.json)
-records the actual final-interface restart and saved-source checks. Loading
-feedback and current assessment/qualification/export controls are implemented.
-[Partial hosted desktop checks](../../evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
-observed the main features; two transport interruptions left the final return
-and mobile recheck incomplete, with cause unresolved. Research history and the
-tour's genuine local capture provenance stay separate.
+The [public HTTPS acceptance](../../evaluations/public_demo_20261117/hosted_acceptance.json)
+records the deployment without token entry. The
+[live direct-example browser check](../../evaluations/public_demo_20261117/hosted_browser_acceptance.json)
+passed the agent steps, source inspection, task navigation, graph export and
+mobile view. Research history, earlier browser failures and the tour's local
+capture provenance stay separate.
 
 ## Current reviewer files
 
@@ -19,7 +18,7 @@ tour's genuine local capture provenance stay separate.
 | [Narrated walkthrough](../../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | Current 3:58 captioned agent tour, using actual local-app captures and verified saved real data. |
 | [Plain transcript](../../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) | Read the same explanation or use it when presenting. |
 | [Captions](../../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Load the timed captions separately when needed. Captions are also visible in the video. |
-| [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise editable overview, with the detailed research linked separately. |
+| [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise overview, with the detailed research linked separately. |
 | [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run tested source `84ef6a0`, with the final review interface. Real source data are supplied separately; hosted acceptance is recorded separately. |
 | [Team review guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) | Two pages: direct example links, loading feedback, five tasks and feedback prompts. |
 | [Final report](../../../output/docx/BioGraph_Steward_Final_Report.docx) | Four pages: the organizer's form layout with delivered outputs and validation opportunities, plus methods/results explaining usability, reuse, CIViC and measured gains. Prepared for user review; not submitted. |
@@ -30,10 +29,10 @@ It leads to the real hosted review and separately documents the optional
 invented software fixture. The complete real-data snapshot is not bundled in
 the software archive. Its [current clean acceptance](../../evaluations/democratization_delivery_20261116/software_acceptance.json)
 records the final review interface, CLI/HTTP exports, recovery and saved replay.
-The recorded model comparison and presentation retain their original source/runtime pins.
-The final report's [format and review receipt](../../evaluations/mechanistic_claim_review_20261117/final_report.json)
+The [access-copy receipt](../../evaluations/public_demo_20261117/software_access_copy.json) verifies that only the packaged README changed. The recorded model comparison and presentation retain their original source/runtime pins.
+The final report's [format and review receipt](../../evaluations/public_demo_20261117/final_report.json)
 records preservation of the original form and the approved final-title/date updates.
-The revised guide has its own [current acceptance](../../evaluations/final_prod_ui_20261116/team_review_guide.json).
+The revised guide has its own [current acceptance](../../evaluations/public_demo_20261117/team_review_guide.json).
 
 [Current product and scoring summary](../../FINAL_SUBMISSION.md) ·
 [Accepted deployment and artifact status](../../DELIVERY_STATUS_20261115.json)
@@ -52,11 +51,12 @@ merge or publish the repository.
    narrated tour with transcript/captions, overview slides and linked results.
 3. Supply the [designated primary graph, complete decision ledger and captured
    Pharos comparator](../../GOLD_SET_INTERFACE.md#protected-downloads)
-   through the verified protected downloads. Include the separately labelled
+   as separate submission or authorized operator assets. The public demo does
+   not expose their bulk source archives. Include the separately labelled
    applied-qualification companion if useful. The software license does not
    authorize blanket public redistribution of the source data.
-4. Send the submission and protected reviewer URL through the organizer's
-   requested route; supply the workspace token privately. Keep AWS available
+4. Send the submission and public demo URL through the organizer's
+   requested route. No demo sign-in is required. Keep AWS available
    for review. Saved review requires no Brev, GPU or model server.
 
 The supplied brief lists **November 17** as the final deadline, without a

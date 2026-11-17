@@ -1,12 +1,11 @@
 # Team review: question → plan → evidence → proposals
 
-**Current instructions: November 16, 2026.** Please send feedback by Monday,
-November 16. Allow about 15 minutes, plus loading or downloads. No biological
+**Current public-demo instructions: November 17, 2026.** Allow about 15 minutes, plus loading or downloads. No biological
 adjudication or graph expertise is required: we need to know what is clear,
 what is misleading and where you get stuck.
 
 Open the [reviewer site](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
-and use the token supplied privately. The current recorded-agent workflow
+directly. No sign-in or AWS account is required. The recorded-agent workflow
 is installed and checked after a real restart; see
 [delivery status](DELIVERY_STATUS_20261115.json). A
 [two-page PDF](../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) provides
@@ -29,8 +28,7 @@ not an AWS account, repository setup, Brev instance or running model.
 ## Five things to try
 
 Try each before opening an explanation. If stuck for about two minutes, record
-where and continue. Separate waiting/loading time from hands-on time. Keep
-access tokens out of screenshots.
+where and continue. Separate waiting/loading time from hands-on time. A screenshot of the exact step is useful.
 The loading message and spinner identify source checks in progress. Please
 report any indicator that is unclear or remains after a result or error appears.
 
@@ -40,7 +38,7 @@ report any indicator that is unclear or remains after a result or error appears.
 | **T2. Read and trace one answer** | Read one cited statement and its focused graph; open that citation's source passport. | Could you find the provider and source meaning? Does physical association establish direct binding? What does candidate mean here? |
 | **T3. Understand the proposed review** | Find **Retain candidate context** or **Needs review**, its reason and inspected source assertions. | Does this proposal accept a claim or remove it from the graph? Could you distinguish a source fact from an agent choice? |
 | **T4. Find what actually changed** | Open the separate **Review applied graph qualifications** example, then **What changed**. Compare its exclusion explanation with the featured location-reference result. | Which number describes applied filtering and which describes known-label recovery? Could you explain the difference without judging the biology? |
-| **T5. Understand the reusable files** | Find the agent-record download. In the applied-qualification example, open **Export** and its package explanation; download the saved workspace if practical. | Can you distinguish the focused answer/agent graph, full retained graph, decision ledger and original baseline? |
+| **T5. Understand the reusable files** | Download the verified recorded-agent JSON. Find its focused graph, source inspections and trace. In the applied-qualification example, read **Export** and its package explanation. | Can you distinguish the focused answer/agent record from the full retained graph, decision ledger and original baseline? Full source packets are supplied separately for final submission or operator use. |
 
 Use the [step-by-step user guide](../HOW_TO_USE.md) or
 [agent guide](SOURCE_AGENT.md) if needed, and mark the
@@ -69,7 +67,7 @@ claim seem more certain than the cited evidence supports.
 
 The [product summary](FINAL_SUBMISSION.md) explains the tools, measured outcomes
 and their limits. A fresh repository checkout contains code and an explicit
-invented fixture; the authorized real-data route is separate. Operator checks
+invented fixture; the public real-data demonstration is separate. Full source packets are supplied separately for final submission or operator use. Operator checks
 and this prepared guide do not replace independent teammate feedback.
 
 [Earlier instructions](TEAM_REVIEW_GUIDE_ARCHIVED_20261114.md) remain preserved.

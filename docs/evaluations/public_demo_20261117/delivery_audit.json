@@ -1,0 +1,318 @@
+{
+  "GitHub_main_verified_unchanged": "586ec35d33e9429dde91057c4130542988a7ca02",
+  "GitHub_public_release_main_merge_email_or_organizer_submission_performed": false,
+  "Neptune_base_compute_USD_day_after": 4.464,
+  "Neptune_base_compute_USD_day_before": 15.7776,
+  "Neptune_instance_class": "db.t4g.medium",
+  "Neptune_instance_count": 2,
+  "actual_NGINX_invented_upstream_checks": 536,
+  "actual_Neptune_full_parity_phases": 4,
+  "actual_direct_featured_desktop_source_and_mobile_workflow_passed": true,
+  "actual_public_HTTPS_without_client_credentials": true,
+  "all732_snapshot_files_and_selected_original_bytes_verified": true,
+  "all_owned_test_workers_proxies_tunnels_and_browsers_closed": true,
+  "browser_check_scope": "48 functional assertions through the direct KRAS example. A separate bare-root navigation network-change error is preserved; its cause is not claimed resolved. No independent user study.",
+  "canonical_artifacts_verified": 9,
+  "checked_at_UTC": "2026-11-17T03:09:40.981438+00:00",
+  "cost_exclusions": "Storage, I/O, backups, other AWS services, taxes and possible burst CPU surcharges",
+  "files": [
+    {
+      "bytes": 8417,
+      "path": "HOW_TO_USE.md",
+      "sha256": "830e3c449a58244e5da1e0297bb0c41bbada915284068684291cacbcdf05040a"
+    },
+    {
+      "bytes": 8530,
+      "path": "README.md",
+      "sha256": "45755460b42f0dbad676d7785e729e031943ccb7696ac2551f6391d0d118d194"
+    },
+    {
+      "bytes": 2728,
+      "path": "START_HERE.md",
+      "sha256": "19b64d1668ee4c443300bb9688324f27420814b26024e84a82402017635e86a0"
+    },
+    {
+      "bytes": 15463,
+      "path": "deploy/aws/NEPTUNE.md",
+      "sha256": "2480778312cccea7965be7ed4fb73c6c2911e95b36e459db4d13c90cbdb7f64b"
+    },
+    {
+      "bytes": 17262,
+      "path": "deploy/aws/neptune.template.json",
+      "sha256": "63f1b25cd3f824a145e03c7e2ae0337acfb1184b4d01c5639aa139ee53a8d04f"
+    },
+    {
+      "bytes": 201,
+      "path": "deploy/aws/reviewer_gateway/Dockerfile.in",
+      "sha256": "2a41b9799d99436ead31b29543d8f91f2ef642f74303d608b2520077bdafe672"
+    },
+    {
+      "bytes": 334,
+      "path": "deploy/aws/reviewer_gateway/Dockerfile.public.in",
+      "sha256": "a38ff806c9116ebe3855dfb6be624e9af7f45b46bb874779e4b77ddd1e5f12b7"
+    },
+    {
+      "bytes": 24179,
+      "path": "deploy/aws/reviewer_gateway/README.md",
+      "sha256": "728ccd52383166201379c109165e597932f0dce9ba750a6fe75de545c3905cb1"
+    },
+    {
+      "bytes": 213,
+      "path": "deploy/aws/reviewer_gateway/alb_attributes.json",
+      "sha256": "67f3ca8c41b0386dafe2bef06aaa97fbc5b8b615b077523681c368bbadc8872d"
+    },
+    {
+      "bytes": 12278,
+      "path": "deploy/aws/reviewer_gateway/express.schema.json",
+      "sha256": "67fb976a9812a78b94d24212f9c73d83f71be9973c1692b2f8fc9a07a2610846"
+    },
+    {
+      "bytes": 5432,
+      "path": "deploy/aws/reviewer_gateway/gateway.template.json",
+      "sha256": "589692a1d875bd8c76e6a6b4893886157886d2b040b228740e85816ee701092d"
+    },
+    {
+      "bytes": 761,
+      "path": "deploy/aws/reviewer_gateway/image.lock.json",
+      "sha256": "a3654416f218f3439823e33a974da2918051aceefe5afe622edfa8b85c2d7775"
+    },
+    {
+      "bytes": 2933,
+      "path": "deploy/aws/reviewer_gateway/nginx.conf.in",
+      "sha256": "61f497943be5103320cf3be28433a2c08d9ca7e67c7bb9e84135dd8a0a5fb48d"
+    },
+    {
+      "bytes": 2852,
+      "path": "deploy/aws/reviewer_gateway/nginx.public.conf.in",
+      "sha256": "c91d69e10db53475c539b4ee982a235940b601318837d987e4ab7e6eaff6b7c6"
+    },
+    {
+      "bytes": 1042,
+      "path": "deploy/aws/reviewer_gateway/public-entrypoint.sh",
+      "sha256": "d400c6c469a30925117ec1834b4eb32fd81b9990f5406d4a1af17a9a3d55f0a4"
+    },
+    {
+      "bytes": 11623,
+      "path": "deploy/aws/reviewer_gateway/public_demo.py",
+      "sha256": "b47823862e8f6027246e6cd3d5858f4107009d3136338a79edd4b2f89fb7cb40"
+    },
+    {
+      "bytes": 10815,
+      "path": "deploy/aws/reviewer_gateway/public_scope.example.json",
+      "sha256": "ab2a46574bf5756194405db4f8d36eb6c282a23cf6e3010925d3b141c3f8d08e"
+    },
+    {
+      "bytes": 711,
+      "path": "deploy/aws/reviewer_gateway/registry.template.json",
+      "sha256": "e082d37762f65957c322ed0cd1102f20e017b5f8b35cd35302ad0fdaa7855cf7"
+    },
+    {
+      "bytes": 8609,
+      "path": "deploy/aws/reviewer_gateway/render.py",
+      "sha256": "f1cf707125a027b4a6174896d7ab1293696173612ab04c15093f3bc67263ac66"
+    },
+    {
+      "bytes": 1237,
+      "path": "deploy/aws/reviewer_gateway/schema_validation.json",
+      "sha256": "c5ba1f6dae82c0ba2823417039125dfa33f5c9297d09fbb0800e57f6d83ea182"
+    },
+    {
+      "bytes": 3199,
+      "path": "deploy/aws/reviewer_gateway/test_prepare.py",
+      "sha256": "9a0693efb8b13ca1a2e31b46200c393cea1f94dc9c7e961a6af197d6ab97f2d6"
+    },
+    {
+      "bytes": 12382,
+      "path": "deploy/aws/reviewer_gateway/test_public_demo.py",
+      "sha256": "e329c6a35559e8423d2b976de9bc1ee5bc2388b05546e0b5815ca47e131dc8ac"
+    },
+    {
+      "bytes": 28668,
+      "path": "docs/DELIVERY.md",
+      "sha256": "61a5fb886646d7f25f992e1e4e310d445bae3b5216f8601437054eec0136c7e3"
+    },
+    {
+      "bytes": 243926,
+      "path": "docs/DELIVERY_STATUS_20261115.json",
+      "sha256": "168901485c11a35e68abf1cc006b7e565fc50920c64c42d54eaaade3a8617707"
+    },
+    {
+      "bytes": 16664,
+      "path": "docs/FINAL_SUBMISSION.md",
+      "sha256": "87c892795d24dc14cd844d36bb4464376235e10288c644eb6b179ac12eb5b157"
+    },
+    {
+      "bytes": 16338,
+      "path": "docs/GOLD_SET_INTERFACE.md",
+      "sha256": "4dbe65e1669ac046d1738b07727a950ec3bb5c363d03a3a41c3cf9928c3d18cc"
+    },
+    {
+      "bytes": 5382,
+      "path": "docs/JUDGE_WALKTHROUGH.md",
+      "sha256": "7ffb8e1f830070d07d3c972555f32405a84c7d9898a2711330f6d48afda74b15"
+    },
+    {
+      "bytes": 10896,
+      "path": "docs/SOURCE_AGENT.md",
+      "sha256": "377fa29d83b0677be3e293588ae985250abceb028b807e0786165c5d167278c5"
+    },
+    {
+      "bytes": 9557,
+      "path": "docs/SUBMISSION_OVERVIEW.md",
+      "sha256": "bdad9c9fad0d45ce4e02424038e944f7a9e3b3b600b5eb648d4754799febf9e4"
+    },
+    {
+      "bytes": 5668,
+      "path": "docs/TEAM_REVIEW_GUIDE_20261113.md",
+      "sha256": "52025e5fed71047f7d54a7ac2ea7defd08d571f202e0d337d2356243836ec9a9"
+    },
+    {
+      "bytes": 12168,
+      "path": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
+      "sha256": "1fb876b1ca9b7357ccad1d275ac31ddc2bc463a526e88ad108bf4ee507040e14"
+    },
+    {
+      "bytes": 10630,
+      "path": "docs/evaluations/MECHANISTIC_CLAIM_REVIEW_20261117.md",
+      "sha256": "e6a8b6bb00228b968f27a065d276e0936b8abffd857d3b6e5f7bec35e077ed42"
+    },
+    {
+      "bytes": 4594,
+      "path": "docs/evaluations/NEPTUNE_RIGHTSIZE_20261117.md",
+      "sha256": "7a15b2c7376038538ceb92ce2696796962b554c2ed1ec1aaf42f654173b42c41"
+    },
+    {
+      "bytes": 12508,
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/aggregate.json",
+      "sha256": "e6d4fbf0045672cfc7f541a3b134ba56ec2151649da74178744efdeda8fb1c90"
+    },
+    {
+      "bytes": 6910,
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/protocol.json",
+      "sha256": "fd362356cdde3f594ab221acf7c258dd22250b60b2a90edd3ea5171069120a7a"
+    },
+    {
+      "bytes": 8603,
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/report.html",
+      "sha256": "200466bfe37eca2c8de3a2bd65b2548338991af70da2ad935f5fd11eb1602886"
+    },
+    {
+      "bytes": 13234,
+      "path": "docs/evaluations/neptune_rightsize_20261117/receipt.json",
+      "sha256": "4f40445018e705ae0cb584eaf8193ce462770a7b797ddddea8cfb92809ce1908"
+    },
+    {
+      "bytes": 2395,
+      "path": "docs/evaluations/public_demo_20261117/README.md",
+      "sha256": "8bb4b5a6508c1f4d4aa084eadc2f40eb3c4ed28e6488ef6b1cbd18e075e1237b"
+    },
+    {
+      "bytes": 3998,
+      "path": "docs/evaluations/public_demo_20261117/candidate_acceptance.json",
+      "sha256": "a8af0c5982ff0743f96111ed903e94336cf6895cb0dc08e67dc7de6d438cd1a6"
+    },
+    {
+      "bytes": 4012,
+      "path": "docs/evaluations/public_demo_20261117/final_operations.json",
+      "sha256": "0177a6e86061576c1dd69fd6ca06874dcca2059f62fde3c0e116981a747f61f8"
+    },
+    {
+      "bytes": 1707,
+      "path": "docs/evaluations/public_demo_20261117/final_report.json",
+      "sha256": "c44335e241b22dda298b083aaaf23b955fd22be3909e4ad8e5535fa2dd27b681"
+    },
+    {
+      "bytes": 3555,
+      "path": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+      "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+    },
+    {
+      "bytes": 4822,
+      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
+    },
+    {
+      "bytes": 1514,
+      "path": "docs/evaluations/public_demo_20261117/software_access_copy.json",
+      "sha256": "7dc9aef3aa0ec9ccfc3e17048a92328139bdd2fe84366febcfdabe73a9504617"
+    },
+    {
+      "bytes": 1572,
+      "path": "docs/evaluations/public_demo_20261117/team_review_guide.json",
+      "sha256": "5d605498389ef85ec18bf6f12b9bfdbf104a7a0e71a3e61e2334000f4f55fa9a"
+    },
+    {
+      "bytes": 9220,
+      "path": "docs/releases/20261115/README.md",
+      "sha256": "e76e821572ddaf634408741305c7d81a8a125ecb0675e10e856d7814538c02b2"
+    },
+    {
+      "bytes": 12647,
+      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+      "sha256": "18a52108e624a98155fcd3edc4bd8f379246441cd6ea8e65842488bc7117feda"
+    },
+    {
+      "bytes": 47680,
+      "path": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
+      "sha256": "287baaf0a533eb570210638494e6d87c257a4a75c7f6d92d1d8f986e04cf2108"
+    },
+    {
+      "bytes": 587786,
+      "path": "output/presentations/BioGraph_Steward_Overview.pptx",
+      "sha256": "ff7fc489a40b0b73baa58df885f9df7ad581253f44ca53b72c144983688d6e7c"
+    },
+    {
+      "bytes": 727760,
+      "path": "output/software/BioGraph_Steward_Software.zip",
+      "sha256": "466bd4cf7d90cd109757d4bb2818308f5dd9581759a693ee4c6ef949fc021e74"
+    },
+    {
+      "bytes": 6744181,
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
+      "sha256": "8ae3a27059bd74e797ead9fa2796cbfbdee396137cf08edc7306fdfeff3adfed"
+    },
+    {
+      "bytes": 11964,
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
+      "sha256": "1c5fb7c343d7f6e75f4150988ad4c6118fd4b28dfa4a247d223adb6044c003ac"
+    },
+    {
+      "bytes": 5541,
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
+      "sha256": "e45a3333e7591176674fd02b20a3bfa73017b30d5d50b8c06eff4ceaf5d24a77"
+    },
+    {
+      "bytes": 5272,
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
+      "sha256": "2c3509228c4968ca54d2d6a83fc6fb98a9d5da8e8a0b018f9d553140535c5e3f"
+    },
+    {
+      "bytes": 5393,
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
+      "sha256": "bb9160c572d62b4df0f3c817aaa7cf70d10c6462309dc2ef33acce6b4c61a30d"
+    },
+    {
+      "bytes": 13633,
+      "path": "tests/test_aws_deployment.py",
+      "sha256": "49abc9f6eacce28094dae1162c5eb954b21d62d9f919ffa25ee941eef7300101"
+    }
+  ],
+  "format": "biograph-steward.public-demo-delivery-audit.v1",
+  "known_authenticated_repository_anonymous_GitHub_HTTP": 404,
+  "local_markdown_file_links_checked": 277,
+  "missing_local_file_links": [],
+  "no_raw_reference_cases_passages_labels_credentials_or_weights_added": true,
+  "original_operator_app_graph_source_reviews_and_environment_unchanged": true,
+  "protected_user_root_DOCX_and_GOA_note_accessed": false,
+  "public_service_enabled_at_boot": true,
+  "scope": "Current public-access documentation/artifacts and separate verified Neptune resize. Scientific inputs/results unchanged by this access update.",
+  "source_and_model_calls_by_public_access_increment": 0,
+  "status": "passed",
+  "task_owned_temporary_public_token_copy_removed_without_printing": true,
+  "unit_checks": {
+    "Neptune_template": 12,
+    "earlier_expert_reference_fixture_checks": 29,
+    "public_gateway_preparation": 9
+  },
+  "unit_checks_are_not_scientific_accuracy": true
+}

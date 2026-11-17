@@ -1,38 +1,39 @@
 # Delivery and reviewer access
 
-## Shared reviewer site
+## Public browser demo
 
-[Open BioGraph Steward](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
-and sign in with the privately supplied workspace token. Follow the
+[Open BioGraph Steward](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)
+directly, with no sign-in. Follow the
 [step-by-step user guide](../HOW_TO_USE.md). The current entry point opens
 real saved evidence and guides the reviewer through **Start here**, **Question
 & graph**, **Inspect sources**, **What changed** and **Export**.
 
 The current-source agent has completed its
 [actual fixed comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
-Its protected hosted replay has passed
+Its authenticated application replay previously passed
 [deployment acceptance](evaluations/democratization_delivery_20261116/hosted_acceptance.json),
 including a real service restart, all five recorded model jobs and complete
 Neptune parity without fallback. The local-app tour demonstrates the same
 verified workflow; its filming provenance and the model evaluation remain
 separate from that deployment receipt.
 
-The [hosted desktop check](evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json)
-recorded 39 observations covering actual loading feedback, all four agent steps,
-E002 source and identity fields, current scientific assessments, applied TP53
-qualification and export controls. These are partial UI observations, not a
-completed user study. Two `ERR_NETWORK_CHANGED` interruptions left the final
-return to current evidence and mobile recheck unverified. Their cause remains
-unresolved; a separate normal-TLS request returned the original saved question
-successfully. Server/source acceptance has passed independently of this browser
-limitation. Both attempts and their observed coverage remain in the receipt.
+The [public HTTPS acceptance](evaluations/public_demo_20261117/hosted_acceptance.json)
+verifies anonymous entry at the same URL, one healthy gateway task and the
+existing 600-second load-balancer timeout. A separate read-only snapshot exposes
+only the two designated workspaces and saved agent records. The
+[live browser check](evaluations/public_demo_20261117/hosted_browser_acceptance.json)
+follows the direct KRAS example through the four agent steps, source inspection,
+five task tabs, graph export and mobile navigation. Qualification and path
+inspection have [separate candidate checks](evaluations/public_demo_20261117/candidate_acceptance.json).
+Earlier authenticated browser attempts remain in their
+[dated receipt](evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json).
 
 Reviewers need only a browser. No AWS account, local tunnel or Brev/model server
 is needed. The shared site reads completed real-data work. Construction, fresh
 retrieval, live model planning and review edits are disabled during this shared
-review. The token admits the valid saved workspaces; it does not create
-individual reviewer roles. Teammate feedback has informed navigation and
-control fixes; a structured independent walkthrough remains pending.
+review. The public demo opens the two designated real-data workspaces and
+five recorded-agent examples. The private operator app retains its own
+authentication and complete source packets.
 
 The [delivery status](DELIVERY_STATUS_20261115.json) identifies the exact accepted
 runtime and deployment receipts. Source profiles, qualification decisions and
@@ -59,7 +60,7 @@ methods/results supplement. It explains usability, reuse, CIViC's clinical
 workflow and the methods behind the bounded gains, including a formal ProtBoost
 reference. It is ready for user review;
 it has not been submitted. The
-[format and review receipt](evaluations/mechanistic_claim_review_20261117/final_report.json)
+[format and review receipt](evaluations/public_demo_20261117/final_report.json)
 records the preserved layout and intentional final-report label updates.
 
 The accepted final runtime focuses the shared site on the question, graph,
@@ -113,6 +114,8 @@ fixture. The [current acceptance summary](evaluations/democratization_delivery_2
 records clean Python construction, actual graph/decision exports, source
 recovery and saved-answer replay after restart. It includes no real source
 snapshots, credentials, reference labels or model weights.
+The [public-access copy receipt](evaluations/public_demo_20261117/software_access_copy.json)
+verifies that only the packaged README changed after those executable checks.
 
 Its recorded acceptance pins tested source `84ef6a0` and includes the current-source
 agent, four-step interface, saved-review guards and byte-bound verification reuse.
@@ -172,7 +175,10 @@ or whole-graph biological-accuracy percentages. The earlier predictor,
 stronger direct GOA controls, unfavorable graph-learner comparisons and earlier
 literature-audit results remain reported separately.
 
-The two saved downloads and separate graph-decision handoff serve different purposes:
+The public demo offers the verified recorded-agent JSON, including its focused
+graph, trace and source inspections. Full source packets are supplied separately
+for final submission or authorized operator use. In those packets, the saved
+files and graph-decision handoff serve different purposes:
 
 - **Answer ZIP** contains the focused answer, selected paths and cited evidence.
 - **Run ZIP** preserves the complete saved workspace and attached source files.
@@ -187,23 +193,25 @@ The primary native graph also has a **verified submission handoff**:
 19,310 explicit abstentions, the complete preserved enriched input, and a
 separate exact same-snapshot Pharos-only comparator. Its
 [protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json)
-records both actual HTTPS downloads and complete member verification. Sign in
-and use the [two graph package links](GOLD_SET_INTERFACE.md#protected-downloads):
-the primary sealed package has 48 files, and the separate replayable Pharos
-control has 185. Neither download requires an AWS account or server-folder
-access. The earlier outer assembly remains recorded in its
+records both prior authenticated HTTPS downloads and complete member
+verification. The [separate graph packages](GOLD_SET_INTERFACE.md#protected-downloads)
+remain final-submission or authorized operator assets: the primary sealed
+package has 48 files, and the replayable Pharos control has 185. Their bulk
+archives are not exposed by the public demo. The earlier assembly remains recorded in its
 [assembly receipt](evaluations/delivery_readiness_20261116/primary_graph_handoff.json).
 
-The protected reviewer site serves these prepared packages and the ordinary
-answer/workspace downloads. It blocks creating a new graph-decision package.
-New packages are generated by the operator or normal local app;
-the earlier qualified workspace already preserves its
-retained graph and decisions inside the Run ZIP.
+The public demo supports recorded-example reading and source inspection, with
+recorded-agent JSON downloads. It does not serve full workspace, raw source,
+Gold or comparator archives. New packages are generated by the operator or
+normal local app. The qualified workspace preserves its retained graph and
+decisions inside the separate Run ZIP.
 
 The native data profile and aggregate assessment have separate source terms and
 identities. A successful runtime update is not evidence of biological truth.
 Mixed-source public redistribution, including KEGG material in the earlier
-graph, has not been cleared. Source inspection remains protected.
+graph, has not been cleared. The approved saved-example source passports are
+visible in the public demo. Complete source packets remain separately supplied
+under their original terms.
 
 <details>
 <summary>Earlier verified checkpoints and recovery records</summary>

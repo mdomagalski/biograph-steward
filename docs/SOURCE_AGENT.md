@@ -32,10 +32,13 @@ Original source, full-graph and review hashes stayed unchanged. See the
 
 The featured job is `source_agent_eval_dc7b597201da_S01` in
 `native_evidence_workspace_20261115`. Its eight-result limit differs from the
-separate manual KRAS answer's 14 displayed partners. It is now available on the
-protected reviewer site after the accepted runtime update and real restart,
-with the original graphs, sources and reviews preserved. See the
-[hosted acceptance receipt](evaluations/source_agent_20261116/hosted_acceptance.json).
+separate manual KRAS answer's 14 displayed partners. It is available directly
+in the public browser demo, with no token or AWS account required. The original
+graphs, sources and reviews are preserved. See the current
+[public HTTPS acceptance](evaluations/public_demo_20261117/hosted_acceptance.json)
+and [direct-example browser check](evaluations/public_demo_20261117/hosted_browser_acceptance.json).
+The earlier [authenticated rollout](evaluations/source_agent_20261116/hosted_acceptance.json)
+remains a separate dated record.
 New inference remains disabled on that shared site. The source-bound replay
 path is:
 
