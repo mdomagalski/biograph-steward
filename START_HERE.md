@@ -21,6 +21,21 @@ model calls during capture.
 
 ## Local setup
 
+The same application supports saved examples and new work. Its common flow is
+**open or build a source workspace → ask a supported question → inspect the
+graph, cited answer and sources → save a review in a new run → export**.
+The demonstration workspaces provide prepared inputs for that flow. Scientific
+reference comparisons and prediction results assess the approach separately.
+A workspace is a saved project containing its graph, source records, questions
+and reviews. Opening a different example changes that project, not the app.
+
+| Local activity | Model needed? | Other requirement |
+|---|---|---|
+| Replay saved agent work, inspect sources or record a review | No | Complete saved source workspace |
+| Run a supported deterministic question or explore saved paths | No | The corresponding evidence must be attached |
+| Construct a new explicit Pharos cohort | No | Internet access for retrieval |
+| Ask the source agent to plan and inspect a new question | Yes | Configured model endpoint and supported source tools |
+
 For the same graph as the public KRAS demo, download its complete editable copy
 from the app. Extract it into a new folder, follow **OPEN_WORKSPACE** and run
 `python3 START_EDITABLE_LOCAL.py`. The launcher chooses a free loopback port,
@@ -56,7 +71,9 @@ also included for standalone real-source inspection.
 
 Running a new agent question requires a model service. Saved replay and the
 deterministic Pharos cohort constructor do not. The constructor uses internet
-access to retrieve the requested proteins. Brev/GPU
+access to retrieve the requested proteins. It does not automatically attach
+the native GO, STRING or archived-pathway profiles used by the source agent.
+Brev/GPU
 compute is needed only when the selected live model is hosted there. See the
 [source-agent guide](docs/SOURCE_AGENT.md), [local model setup](docs/LOCAL_MODEL.md)
 and [delivery guide](docs/DELIVERY.md) for the operator details.

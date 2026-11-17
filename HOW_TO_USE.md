@@ -2,12 +2,19 @@
 
 Use BioGraph Steward to follow a biological question to its graph, inspect the
 supporting source records, and share a result someone else can check.
+A **workspace** is a saved project containing its graph, source records,
+questions and review history. You open different workspaces in the same app.
 The real-data example covers **99 primary human protein targets** from a captured
 Pharos cohort. One application offers two saved examples: **Added source
 context workspace**, with additional qualified association and location data,
 and **Qualified Pharos workspace**, with applied identifier decisions. Each
 preserves its own input. The larger historical function-prediction study is a
 separate assessment, not another version of these app graphs.
+The common workflow is **choose or build a workspace → ask a supported question
+→ inspect its graph and cited answer → review the evidence → save and export**.
+The saved examples let you follow that workflow with prepared data. The
+reference comparisons and prediction results verify parts of the approach;
+they are not required steps in your own investigation.
 These are frozen research workspaces; [source dates](docs/SOURCE_NOTES.md#current-reviewer-graph-and-source-dates)
 are recorded separately from the date the app was updated.
 
@@ -122,8 +129,11 @@ decisions, then read the separate scientific comparisons.
   published human location benchmark, supplying **51 known protein-location
   labels**. Captured Pharos recovers **41/51**, and the native GO view recovers
   **44/51** under the same ontology mapping. The other 68 targets lack a matching
-  reference label. Some annotations and the reference reuse Human Protein Atlas
-  observations, so agreement is not fully independent experimental support.
+  reference label in this benchmark, so those proteins cannot contribute to
+  this recovery comparison. This does not mean they lack location annotations
+  in Pharos or native GO. Some native GOA location records and the reference
+  reuse Human Protein Atlas (HPA) observations. Agreement can therefore repeat
+  the same underlying observations rather than supply independent experimental support.
   The previously used OpenCell imaging reference changes **30/40 to 31/40**
   labels among **23 matched targets**, after the stated source exclusions.
 
@@ -226,6 +236,9 @@ accepted-only answer does not mean there is no biological evidence.
 
 New questions and new data belong in a local or operator installation:
 
+- **Ask without a model:** the supported deterministic question forms and saved
+  path reader query the attached evidence directly. A model is not required
+  just because the question or selected protein is new.
 - **Construct a new cohort:** follow the
   [graph-building instructions](docs/CONSTRUCTION.md#build-through-the-app).
   Supply an explicit list of 1–25 proteins per request to build a Pharos graph
@@ -235,6 +248,10 @@ New questions and new data belong in a local or operator installation:
   [source-agent instructions](docs/SOURCE_AGENT.md#operator-cli). Supply a
   complete source workspace and configure a model endpoint. The agent can use
   the source tools actually attached to that workspace.
+
+Constructing a new Pharos graph does not automatically attach the native GO,
+STRING or archived-pathway profiles used by the current source agent. Inspect
+the available tools before asking it to investigate a new workspace.
 
 The public demo keeps its saved data and decisions fixed. It provides the same
 inspection workflow without executing these new-run operations.

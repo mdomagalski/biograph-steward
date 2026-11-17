@@ -14,6 +14,14 @@ applied identifier decisions. Each preserves its own input and exports. The
 historical function-prediction study is a separate research assessment, not a
 third app version.
 
+Explain why both examples appear before switching between them: the common
+workflow is **open or build a source workspace → ask a supported question →
+inspect its graph, cited answer and sources → save a review in a new run →
+export**. KRAS demonstrates additional evidence and source inspection; the
+qualified example demonstrates recorded decisions and the retained graph.
+The source-reference and prediction results assess the approach separately.
+They are not different applications or studies that users must run to ask a question.
+
 **Lead with the improvement.** Qualified native sources add **87 physical
 association pairs** and **68 protein–location concepts** absent from the captured
 Pharos annotations. Show one actual addition before explaining tool mechanics:

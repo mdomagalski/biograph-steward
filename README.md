@@ -8,6 +8,14 @@ prioritizes citations for inspection and produces grounded review proposals.
 The app preserves the original records and makes applied graph decisions
 recoverable.
 
+The common workflow is **open or construct a source workspace → ask a supported
+question → read its graph and cited answer → inspect the sources → save a
+review in a new run → export**. A workspace is a saved collection of graph data,
+source records and decisions opened by this same application. The prepared
+examples demonstrate different parts of that workflow. Reference comparisons
+and the historical prediction study assess parts of the approach; they are not
+steps a scientist must perform to use the app.
+
 **[Open the public demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
 directly. No sign-in, AWS account, installation or running model is needed.
 
@@ -108,14 +116,18 @@ and the separate measured assessments.
 [browser evidence](docs/evaluations/question_graph_usability_20261117/browser.json)
 record this saved-example mode.
 
-To ask a new agent question, use a local or operator installation with a complete
-source workspace and a configured model endpoint. To construct a new Pharos
+To ask a new **agent** question, use a local or operator installation with a complete
+source workspace and a configured model endpoint. New deterministic questions
+and path exploration use the existing source tools without a model. To construct a new Pharos
 graph, the [cohort constructor](docs/CONSTRUCTION.md#build-through-the-app)
 accepts an explicit list of 1–25 proteins per request and needs internet access,
 but no model or GPU. This is the interactive request limit, not a saved-graph
 size limit. The [agent instructions](docs/SOURCE_AGENT.md#operator-cli) explain how
 supported source tools execute a new question. These reusable entry points
 support evaluation on new cohorts beyond the delivered examples.
+The constructor retrieves Pharos data; it does not automatically attach the
+native GO, STRING or archived-pathway profiles used by the source agent.
+That agent exposes only the source tools actually available in the selected workspace.
 
 The demonstration uses a **captured Pharos319 baseline**, with separately saved
 native GO and STRING profiles. It was assembled November 15 from an October 14

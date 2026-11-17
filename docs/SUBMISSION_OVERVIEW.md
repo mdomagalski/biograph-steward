@@ -6,6 +6,13 @@ graph, a cited answer, inspected source records and grounded review proposals.
 A researcher can trace a connection, inspect qualifications and reuse the
 graph with its source context.
 
+The common application workflow is **open or construct a source workspace →
+ask a supported question → inspect the graph, cited answer and sources → save
+an evidence review in a new run → export**. A workspace is its saved input and
+review state. The two demonstrations illustrate different capabilities of this
+same product. Reference comparisons and the historical prediction study verify
+parts of the approach rather than form separate products or required user steps.
+
 ## Improvements over the captured Pharos baseline
 
 | Improvement | Demonstrated result | What it gives a researcher |
@@ -70,13 +77,16 @@ assessment, not another saved version of the app graph.
   then distinguish the focused answer from the retained graph, complete
   decision ledger and original baseline/source packet.
 
-Only **31 of the 99 targets** match the published human location reference,
-supplying **51 positive protein-location labels**. The captured Pharos view
+Matching all **99 cohort proteins** to the published human location reference
+finds labels for **31 proteins**, supplying **51 positive protein-location pairs**
+for comparing the same proteins across both source views. The captured Pharos view
 recovers 41 of 51 and qualified native annotations recover 44 of 51. These are
-fixed source views, not a newly scored union of the full graph. The other 68
-targets have no matching reference labels. Some annotations and the benchmark
-reuse Human Protein Atlas observations, so agreement is not fully independent
-experimental confirmation. A source-exclusion sensitivity check recovers
+fixed source views, not a newly scored union of the full graph. The benchmark
+has no matching labels for the other 68 proteins, so this comparison cannot
+assess them. They may still have location annotations in Pharos or native GO.
+Some native GOA location records and the benchmark reuse Human Protein Atlas
+(HPA) observations. Agreement can repeat the same underlying experiment rather
+than provide independent experimental confirmation. A source-exclusion sensitivity check recovers
 30 of 40 to 31 of 40 labels among 23 OpenCell-matched proteins. OpenCell is a
 published HEK293T imaging reference previously used during development. This
 is a saved research sensitivity check, not a fresh blind test or a step executed

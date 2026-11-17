@@ -7,6 +7,14 @@ prioritizes citations for inspection. The result combines a focused Pharos
 graph, a cited answer, source records and grounded review proposals. Each
 connection retains its original source and conditions.
 
+The final product is one application with a common workflow: **open or build a
+source workspace → ask a supported question → inspect the graph, cited answer
+and sources → save a review in a new run → export**. A workspace holds the
+saved graph, attached evidence and decisions. The prepared examples below
+illustrate that workflow. The source-reference comparisons and historical
+prediction study assess specific parts of the approach; they are not separate
+applications or steps required for every user question.
+
 **Start with [How to use BioGraph Steward](../HOW_TO_USE.md)** and the
 [public browser demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data).
 No sign-in, AWS account, graph-query language,
@@ -97,16 +105,21 @@ source fidelity and workflow execution rather than prediction improvement.
 The separate public-reference assessment measures information recovered by
 the source views:
 
-- **Known protein locations:** only 31 of the 99 targets match the published
-  human location reference, supplying 51 positive protein-location labels. The captured Pharos
+- **Known protein locations:** matching all 99 cohort proteins to the published
+  human location reference finds labels for 31 proteins, supplying 51 positive
+  protein-location pairs for comparison. This matching is the same for both
+  source views. The captured Pharos
   view recovers 41 of 51 positive reference labels; qualified native annotations
   recover 44 of 51. These fixed source views are not a newly scored union of the
   full integrated graph. The additional admitted location annotations supply
   the gain under the same ontology mapping; obsolete-ID exclusions alone do
   not improve recovery. The coarse-map control also recovers 44 labels, with
-  more truth-unknown outputs. The other 68 targets lack matching reference
-  labels. Both the reference and some added annotations reuse Human Protein
-  Atlas observations, so agreement is not fully independent experimental support.
+  more truth-unknown outputs. The benchmark supplies no matching labels for the
+  other 68 proteins, so this comparison cannot assess their location coverage.
+  Those proteins may still have location annotations in Pharos or native GO.
+  Some native GOA location records and the benchmark reuse Human Protein Atlas
+  (HPA) observations. Their agreement can therefore repeat the same underlying
+  experiment rather than add independent experimental confirmation.
 - **OpenCell source-exclusion check:** among 23 matching proteins, positive
   label recovery changes 30 of 40 to 31 of 40. The gain remains after the stated
   HPA/OpenCell source exclusions. This already-exposed reference is a

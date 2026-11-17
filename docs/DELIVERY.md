@@ -12,6 +12,13 @@ inspect its sources and examine proposed decisions without writing graph-query
 syntax. The recorded Nemotron workflow has four steps: **Question & plan**,
 **Evidence graph**, **Source inspection** and **Review proposals**.
 
+These are views within one application. Its common workflow is **open or build
+a source workspace → ask a supported question → inspect the graph, cited
+answer and sources → record a review in a new run → export**. The two saved
+examples demonstrate that workflow with different prepared inputs. The
+reference assessments test source recovery and prediction; a user does not
+need to rerun those studies to investigate a question.
+
 | Activity | What to open |
 |---|---|
 | See added source context | In the KRAS run, inspect **E002, KRAS–CDC42BPB**. Its source passport shows a pair absent from the captured Pharos graph, STRING 12.5 score 203 and preserved identity checks. |
@@ -40,6 +47,9 @@ archives retain their own download scope.
 
 Use a local or authorized operator installation for new work:
 
+- **Ask a supported deterministic question:** use the existing question forms,
+  saved-path reader or [question command](CONSTRUCTION.md#inspect-the-saved-graph-and-answer).
+  These query available evidence without a model.
 - **Construct a Pharos graph:** follow [cohort construction](CONSTRUCTION.md#build-through-the-app).
   Supply an explicit list of 1–25 proteins per request. This interactive request
   limit does not limit saved-graph size. The constructor retrieves bounded
@@ -50,6 +60,8 @@ Use a local or authorized operator installation for new work:
   agent uses only source tools actually attached to that workspace. Supported
   tools cover native physical associations, native locations and exact archived
   pathway context.
+  A newly constructed Pharos graph does not automatically include these
+  separately attached native profiles; check its source-tool catalogue first.
 - **Open saved work locally:** use [local setup](../START_HERE.md#local-setup).
   Keep the workspace and saved-question folders beside one another, with their
   original names and complete source files. A graph JSON alone is not a complete
@@ -154,12 +166,17 @@ protein–location concepts** and 361 overlapping concepts. Additional rows are
 candidate source context, not independent experiments or new biological discoveries.
 Physical association can describe a shared complex without direct binding.
 
-Using the same ontology-qualified mapping, native annotations recover **44/51**
-HOU location labels against captured Pharos's **41/51** among 31 matching proteins.
+Reference matching starts from all 99 cohort proteins. Only 31 have matching
+labels in the published human location benchmark, providing 51 protein-location
+pairs to compare. Under the same ontology-qualified mapping, native GO location
+records recover **44/51** against captured Pharos's **41/51**. The other 68 have
+no matching benchmark labels; they may still have annotations in both source views.
 The already-used OpenCell reference changes **30/40 to 31/40** among 23 proteins,
 including after the specified source exclusions. The coarse-map HOU control
-also reaches 44/51 with more truth-unknown outputs. Shared sources and prior
-reference exposure limit independence. The [full location comparison](evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md)
+also reaches 44/51 with more truth-unknown outputs. Some native GOA location
+records and the benchmark reuse Human Protein Atlas (HPA) observations, so
+agreement can repeat the same underlying experiment. Prior reference exposure
+also limits independence. The [full location comparison](evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md)
 retains the complete controls and coverage denominators.
 
 The [separate ProtBoost-based function study](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)

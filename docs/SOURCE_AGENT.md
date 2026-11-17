@@ -6,6 +6,19 @@ proposals. It uses the configured model to direct the workflow. The graph query,
 source statements, identity checks and permitted proposal meanings come from
 the existing source adapters.
 
+This is one route through the application, alongside deterministic questions
+and cohort construction. The common workflow is to open or build a source
+workspace, ask a supported question, inspect its graph and citations, then
+save an evidence review in a new run and export. The saved demonstrations
+provide prepared inputs. The separate reference and prediction studies assess
+parts of the approach rather than implement a different app for each result.
+
+**A new agent investigation needs a live model endpoint.** Saved replay,
+source inspection, supported deterministic questions and personal evidence
+reviews do not. Constructing an explicit Pharos cohort needs network retrieval
+but no model; it does not automatically attach the native source profiles
+required by this agent. Inspect the selected workspace's catalogue first.
+
 This is the current agent route in the application and operator CLI. The older
 one-call question planner and BioRED literature-audit experiment are separate
 components; their recorded results have not been replaced. Live evaluation and

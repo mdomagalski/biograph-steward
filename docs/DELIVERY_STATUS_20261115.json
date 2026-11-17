@@ -1100,7 +1100,7 @@
     "Owner: merge the delivery branch pull request into main and change repository visibility in GitHub settings.",
     "Owner: provide the final report, repository/demo links and separate graph/example assets through the organizer submission channel."
   ],
-  "updated_at_UTC": "2026-11-17T20:18:02.834284+00:00",
+  "updated_at_UTC": "2026-11-17T21:05:59.986311+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,
@@ -1179,7 +1179,58 @@
     "new_agent_LLM_calls": 0,
     "new_prediction_runs": 0,
     "fresh_scientific_source_retrievals": 0,
-    "local_neural_TTS_sections_generated": 10,
+    "local_neural_TTS_sections_generated": 6,
+    "local_neural_TTS_sections_reused": 5,
+    "unique_revised_TTS_sections": 5,
+    "last_correction_TTS_sections_generated": 1,
+    "last_correction_TTS_sections_reused": 9,
+    "unchanged_encoded_clips_copied": [
+      {
+        "scene": "start",
+        "sha256": "46fbd0b05f53a855a1143743566862ee976440bb1252db37c11602c03cf6e24b",
+        "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/01_start.mp4"
+      },
+      {
+        "scene": "added_pair",
+        "sha256": "59ba7f4aef5e1c2826a850dc4daf2774c08f3797ed0269be80f7aa83a3b30f8f",
+        "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/02_added_pair.mp4"
+      },
+      {
+        "scene": "agent",
+        "sha256": "c096b29c4d5e31c5e4460c4e2d45bd88bcb2c96a0e005036c45f752350593d67",
+        "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/04_agent.mp4"
+      },
+      {
+        "scene": "explore_answer_paths_results",
+        "sha256": "21ef636cea79bb575c143a670b33a55b6f137d5b769a9a16e660568b9185ffe2",
+        "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/05_explore_answer_paths_results.mp4"
+      },
+      {
+        "scene": "edit_copy",
+        "sha256": "0c9ec58cf39b0dfb9472f956e1e3e771e6f9a8bf2a924e0350c4ba8a14494be1",
+        "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/06_edit_copy.mp4"
+      },
+      {
+        "scene": "prediction",
+        "sha256": "a68b4f2e9ef6e3fe0faaa359f37edcb5d2f4d1620461594d23da506fa1330640",
+        "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/07_prediction.mp4"
+      },
+      {
+        "scene": "review",
+        "sha256": "0d98127668a3e4ff21c97a252f72c0ef0e847a736fbba17d3ab3e8d360506d05",
+        "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/08_review.mp4"
+      },
+      {
+        "scene": "interpretation",
+        "sha256": "c0aa1b5dce72b5bd6ddd3a55394d4b8379906d422c38a59f3f1ea0ff365467c1",
+        "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/09_interpretation.mp4"
+      },
+      {
+        "scene": "export",
+        "sha256": "3a200ccff483770811e35a269dbd7011e52eab3f8b0729d01fed56b3f1248c3c",
+        "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/10_export.mp4"
+      }
+    ],
     "local_neural_TTS_inferences_performed": true,
     "speech_text_uploaded_to_cloud": false,
     "paid_compute_started": false,
@@ -1194,8 +1245,8 @@
     "scientific_report_image_and_values_unchanged": true,
     "only_crop_scale_letterbox_and_caption_band_added": true,
     "new_source_agent_run_or_personal_review_performed": false,
-    "source_narration_receipt_sha256": "263c67d658c69f6b122704aedad9a209a7e5262660c9c0def61a747f0875229a",
-    "final_report_content_sha256": "bebcf15cbdb56c87e5a63c07638ebae8c55812f98fd2d129ceaa6dedfcc81a38",
+    "source_narration_receipt_sha256": "1ca0239b0fbdb3cee20863447167d8bdeb3a893bbc8110ef6165d06d19282ccc",
+    "final_report_content_sha256": "53441869383cc54b697f5948e1b6123808de291a018818adbff4e9f373319dd2",
     "ffmpeg": {
       "file": "/Users/42573/biograph-steward-pharos/runs/final_clarity_delivery_20261117/voice_research/venv/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v7.1",
       "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
@@ -1210,26 +1261,26 @@
     "sentence_cues_from_author_phoneme_durations": true,
     "independent_ASR_or_manual_audio_audition_claimed": false,
     "caption_numerals_and_gene_symbols_formatted_without_changing_values": true,
-    "timeline_seconds": 243.12,
+    "timeline_seconds": 261.52000000000004,
     "chapters": [
       {
         "id": "start",
-        "title": "A protein question, connected to evidence",
+        "title": "One workflow, from question to reviewed evidence",
         "start_seconds": 0.0,
-        "end_seconds": 20.96,
+        "end_seconds": 28.4,
         "lead_seconds": 1.5,
-        "speech_seconds": 18.97533333333333,
+        "speech_seconds": 26.442,
         "cuts": [
           0,
-          13.372666666666667,
-          20.96
+          17.905,
+          28.4
         ]
       },
       {
         "id": "added_pair",
         "title": "An inspectable addition to Pharos",
-        "start_seconds": 20.96,
-        "end_seconds": 44.64,
+        "start_seconds": 28.4,
+        "end_seconds": 52.08,
         "lead_seconds": 0.45,
         "speech_seconds": 22.772666666666666,
         "cuts": [
@@ -1242,22 +1293,22 @@
       },
       {
         "id": "measured",
-        "title": "Published location labels recovered",
-        "start_seconds": 44.64,
-        "end_seconds": 70.0,
+        "title": "A shared reference subset measures location recovery",
+        "start_seconds": 52.08,
+        "end_seconds": 87.44,
         "lead_seconds": 0.45,
-        "speech_seconds": 24.426666666666666,
+        "speech_seconds": 34.425333333333334,
         "cuts": [
           0,
-          19.419,
-          25.36
+          29.910333333333334,
+          35.36
         ]
       },
       {
         "id": "agent",
         "title": "The agent follows a supported investigation",
-        "start_seconds": 70.0,
-        "end_seconds": 93.76,
+        "start_seconds": 87.44,
+        "end_seconds": 111.2,
         "lead_seconds": 0.45,
         "speech_seconds": 22.826666666666668,
         "cuts": [
@@ -1270,8 +1321,8 @@
       {
         "id": "explore_answer_paths_results",
         "title": "Explore the complete question result",
-        "start_seconds": 93.76,
-        "end_seconds": 117.92,
+        "start_seconds": 111.2,
+        "end_seconds": 135.36,
         "lead_seconds": 0.45,
         "speech_seconds": 23.220666666666666,
         "cuts": [
@@ -1288,8 +1339,8 @@
       {
         "id": "edit_copy",
         "title": "Continue with the same evidence locally",
-        "start_seconds": 117.92,
-        "end_seconds": 138.84,
+        "start_seconds": 135.36,
+        "end_seconds": 156.28000000000003,
         "lead_seconds": 0.45,
         "speech_seconds": 19.983333333333334,
         "cuts": [
@@ -1303,8 +1354,8 @@
       {
         "id": "prediction",
         "title": "A separate historical prediction study",
-        "start_seconds": 138.84,
-        "end_seconds": 183.28,
+        "start_seconds": 156.28000000000003,
+        "end_seconds": 200.72000000000003,
         "lead_seconds": 0.45,
         "speech_seconds": 43.525,
         "cuts": [
@@ -1316,42 +1367,42 @@
       },
       {
         "id": "review",
-        "title": "A retained graph with explicit decisions",
-        "start_seconds": 183.28,
-        "end_seconds": 206.2,
+        "title": "The same workflow makes graph decisions inspectable",
+        "start_seconds": 200.72000000000003,
+        "end_seconds": 224.24000000000004,
         "lead_seconds": 0.45,
-        "speech_seconds": 21.993333333333332,
+        "speech_seconds": 22.592,
         "cuts": [
           0,
-          22.92
+          23.52
         ]
       },
       {
         "id": "interpretation",
-        "title": "Understand each result in context",
-        "start_seconds": 206.2,
-        "end_seconds": 224.12,
+        "title": "Examples demonstrate the workflow; studies assess it",
+        "start_seconds": 224.24000000000004,
+        "end_seconds": 244.76000000000005,
         "lead_seconds": 0.45,
-        "speech_seconds": 17.002666666666666,
+        "speech_seconds": 19.584,
         "cuts": [
           0,
-          4.45,
-          8.543999999999999,
-          17.92
+          5.222666666666667,
+          10.897666666666666,
+          20.52
         ]
       },
       {
         "id": "export",
-        "title": "One application and a clear handoff",
-        "start_seconds": 224.12,
-        "end_seconds": 243.12,
+        "title": "Use the app, follow a question, continue locally",
+        "start_seconds": 244.76000000000005,
+        "end_seconds": 261.52000000000004,
         "lead_seconds": 0.45,
-        "speech_seconds": 18.079333333333334,
+        "speech_seconds": 15.840666666666667,
         "cuts": [
           0,
-          3.794,
-          11.818999999999999,
-          19.0
+          6.072666666666667,
+          13.172666666666666,
+          16.76
         ]
       }
     ],
@@ -1362,7 +1413,7 @@
         "sha256": "7dfcc904868ddd87a28fb3779e6f61a485784db4d4500edee060adbf92a6b8a6",
         "crop": null,
         "start_seconds_in_scene": 0,
-        "end_seconds_in_scene": 13.372666666666667
+        "end_seconds_in_scene": 17.905
       },
       {
         "scene": "start",
@@ -1374,8 +1425,8 @@
           "width": 1320,
           "height": 570
         },
-        "start_seconds_in_scene": 13.372666666666667,
-        "end_seconds_in_scene": 20.96
+        "start_seconds_in_scene": 17.905,
+        "end_seconds_in_scene": 28.4
       },
       {
         "scene": "added_pair",
@@ -1420,7 +1471,7 @@
           "height": 400
         },
         "start_seconds_in_scene": 0,
-        "end_seconds_in_scene": 19.419
+        "end_seconds_in_scene": 29.910333333333334
       },
       {
         "scene": "measured",
@@ -1432,8 +1483,8 @@
           "width": 1280,
           "height": 286
         },
-        "start_seconds_in_scene": 19.419,
-        "end_seconds_in_scene": 25.36
+        "start_seconds_in_scene": 29.910333333333334,
+        "end_seconds_in_scene": 35.36
       },
       {
         "scene": "agent",
@@ -1642,7 +1693,7 @@
         "sha256": "eead630ee0d754f7ac3191ddd029522b64b2bf74a37417cb7795ca225741956e",
         "crop": null,
         "start_seconds_in_scene": 0,
-        "end_seconds_in_scene": 22.92
+        "end_seconds_in_scene": 23.52
       },
       {
         "scene": "interpretation",
@@ -1655,23 +1706,23 @@
           "height": 400
         },
         "start_seconds_in_scene": 0,
-        "end_seconds_in_scene": 4.45
+        "end_seconds_in_scene": 5.222666666666667
       },
       {
         "scene": "interpretation",
         "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/E002_actual_native_STRING_source.png",
         "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
         "crop": null,
-        "start_seconds_in_scene": 4.45,
-        "end_seconds_in_scene": 8.543999999999999
+        "start_seconds_in_scene": 5.222666666666667,
+        "end_seconds_in_scene": 10.897666666666666
       },
       {
         "scene": "interpretation",
         "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report.png",
         "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
         "crop": null,
-        "start_seconds_in_scene": 8.543999999999999,
-        "end_seconds_in_scene": 17.92
+        "start_seconds_in_scene": 10.897666666666666,
+        "end_seconds_in_scene": 20.52
       },
       {
         "scene": "export",
@@ -1684,7 +1735,7 @@
           "height": 690
         },
         "start_seconds_in_scene": 0,
-        "end_seconds_in_scene": 3.794
+        "end_seconds_in_scene": 6.072666666666667
       },
       {
         "scene": "export",
@@ -1696,8 +1747,8 @@
           "width": 1320,
           "height": 605
         },
-        "start_seconds_in_scene": 3.794,
-        "end_seconds_in_scene": 11.818999999999999
+        "start_seconds_in_scene": 6.072666666666667,
+        "end_seconds_in_scene": 13.172666666666666
       },
       {
         "scene": "export",
@@ -1709,49 +1760,44 @@
           "width": 1320,
           "height": 570
         },
-        "start_seconds_in_scene": 11.818999999999999,
-        "end_seconds_in_scene": 19.0
+        "start_seconds_in_scene": 13.172666666666666,
+        "end_seconds_in_scene": 16.76
       }
     ],
-    "caption_cues": 45,
+    "caption_cues": 50,
     "full_video_decode_and_audio_analysis_passed": true,
     "visual_review_pending": false,
     "canonical_media_changed": true,
     "files": {
       "BioGraph_Steward_Walkthrough.mp4": {
-        "bytes": 7323004,
-        "sha256": "b722658bff37309a5de0b593d7e5c7815d10571afe79c72ab302226934d31b73"
+        "bytes": 7789767,
+        "sha256": "401ddd09b570a75c2bdb2b06b81ef8e63f5c1a382774ec8f233d3253810a9387"
       },
       "BioGraph_Steward_Walkthrough.vtt": {
-        "bytes": 4695,
-        "sha256": "4f47a113fcdc0c1e0c8db6a68ae12cf3276a62341c85d7b2039631f73a9b6f1f"
+        "bytes": 5116,
+        "sha256": "674ce077f4b3141ce06b39e269a4f0e7888c73cfe0c9a457fc4973ad08c8b448"
       },
       "BioGraph_Steward_Walkthrough.srt": {
-        "bytes": 4813,
-        "sha256": "cc084d32bf483f84c3943976dc71ef7276400b81408af71ad6bb42e745f3544a"
+        "bytes": 5249,
+        "sha256": "30d8fbb001d30d390dfa631607ae2e76bf24ac47dd4d1dc3ce85a520ffc8de07"
       },
       "BioGraph_Steward_Walkthrough.txt": {
-        "bytes": 4128,
-        "sha256": "82420d972cf231e10ab13cdef763643201baee1867a762a19815a4cf868155c7"
+        "bytes": 4460,
+        "sha256": "f6105ae3b40de1e6b670a37d79497f01262176a279af185c12bdc1607271300f"
       }
     },
-    "fourteen_sampled_frames_visually_reviewed": true,
-    "visual_qa_receipt": "/Users/42573/biograph-steward-pharos/runs/final_clarity_delivery_20261117/voice_research/neural_video_v2/visual_QA/qa.json",
-    "root_visual_QA": true,
     "agent_visual_QA": true,
-    "manual_audio_audition": false,
+    "sampled_frames_checked": 15,
     "actual_current_browser_capture": false,
+    "manual_audio_audition": false,
+    "visual_qa_receipt": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v3/visual_QA/qa.json",
+    "root_visual_QA": true,
     "previous_canonical_preserved_privately": true,
     "latest_delivery_receipt": {
-      "path": "docs/evaluations/final_clarity_delivery_20261117/media.json",
-      "bytes": 2157,
-      "sha256": "9a4dbc77e6b1173afcfc9d91011eebd2e2ed93cec831c9e2881c4332e16a87cc"
-    },
-    "current_application_core_commit": "7eea236cdeacf2d0a0ee33e11b01bc3ae5dac151",
-    "local_neural_TTS_performed": true,
-    "local_TTS_sections_generated": 10,
-    "new_scientific_prediction_runs": 0,
-    "inference_scope": "Local neural speech synthesis occurred; no new agent LLM or scientific prediction execution is claimed."
+      "path": "docs/evaluations/product_workflow_clarity_20261117/delivery.json",
+      "bytes": 6731,
+      "sha256": "57c51787960dda56cd8d5b5e55e6d16a68f565fa5ef6fe9faad3680d06f076bf"
+    }
   },
   "previous_presentation_before_current_agent": {
     "file": "output/presentations/BioGraph_Steward_Overview.pptx",
@@ -2314,14 +2360,14 @@
       "actual_current_browser_verified": false
     },
     "final_report": {
-      "path": "docs/evaluations/final_clarity_delivery_20261117/report.json",
-      "bytes": 1886,
-      "sha256": "97d752f3da7a0c8a9c25a56e2c4975a17ffe6d7bac4fe1ecd6ae712d7a41c7ae"
+      "path": "docs/evaluations/product_workflow_clarity_20261117/delivery.json",
+      "bytes": 6731,
+      "sha256": "57c51787960dda56cd8d5b5e55e6d16a68f565fa5ef6fe9faad3680d06f076bf"
     },
     "media": {
-      "path": "docs/evaluations/final_clarity_delivery_20261117/media.json",
-      "bytes": 2157,
-      "sha256": "9a4dbc77e6b1173afcfc9d91011eebd2e2ed93cec831c9e2881c4332e16a87cc"
+      "path": "docs/evaluations/product_workflow_clarity_20261117/delivery.json",
+      "bytes": 6731,
+      "sha256": "57c51787960dda56cd8d5b5e55e6d16a68f565fa5ef6fe9faad3680d06f076bf"
     },
     "software_and_real_example": {
       "path": "docs/evaluations/final_clarity_delivery_20261117/package.json",
@@ -2338,9 +2384,9 @@
     "browser_transfer_limit": "Earlier managed Chrome blocked the binary ZIP under organization policy. This update made no new browser binary-download attempt and no bypass. Server-side archive verification and prior byte-identical local review are separate checks.",
     "actual_hosted_browser_checks_scope": "Current source/test and served HTML/API/metadata/HEAD acceptance; no fresh browser render of new loading states or picker names.",
     "current_judge_handoff": {
-      "path": "docs/evaluations/final_clarity_delivery_20261117/handoff.json",
-      "bytes": 2086,
-      "sha256": "4ddcf2722894c65ed65f55212309ac6e3c5ed5f9acb7f47a23d38539c5726327"
+      "path": "docs/evaluations/product_workflow_clarity_20261117/delivery.json",
+      "bytes": 6731,
+      "sha256": "57c51787960dda56cd8d5b5e55e6d16a68f565fa5ef6fe9faad3680d06f076bf"
     },
     "current_data_export_package": {
       "path": "docs/evaluations/final_clarity_delivery_20261117/data_package.json",
@@ -2352,7 +2398,8 @@
     "new_scientific_prediction_runs": 0,
     "fresh_scientific_source_retrievals": 0,
     "local_neural_TTS_performed": true,
-    "local_TTS_sections_generated": 10
+    "local_TTS_sections_generated": 10,
+    "presentation_only_no_runtime_or_cloud_changes": true
   },
   "previous_final_product_delivery": {
     "snapshot_of_pre_update_status": true,
@@ -3074,33 +3121,33 @@
   "canonical_artifact_pins": {
     "output/docx/BioGraph_Steward_Final_Report.docx": {
       "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 13607,
-      "sha256": "564cc2d2c6509dedf909ad8da341c69170c6afec6ed085fdc22accb687894688"
+      "bytes": 13644,
+      "sha256": "25a96f5aa1cd202da7cb0d1c0f51a499745c77d0b9f8bbd3442c2ff6cf7228ea"
     },
     "output/pdf/BioGraph_Steward_Final_Report.pdf": {
       "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
-      "bytes": 124601,
-      "sha256": "5bbb5d26719dfa40c429e43875d97e78ee980e97f7bab9ebc7ba4e3724add7ec"
+      "bytes": 124767,
+      "sha256": "9d8b78f172ab65d9b149207f2941a556d71d6f8d57333edf600d56a161de31f7"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.mp4": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
-      "bytes": 7323004,
-      "sha256": "b722658bff37309a5de0b593d7e5c7815d10571afe79c72ab302226934d31b73"
+      "bytes": 7789767,
+      "sha256": "401ddd09b570a75c2bdb2b06b81ef8e63f5c1a382774ec8f233d3253810a9387"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.txt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
-      "bytes": 4128,
-      "sha256": "82420d972cf231e10ab13cdef763643201baee1867a762a19815a4cf868155c7"
+      "bytes": 4460,
+      "sha256": "f6105ae3b40de1e6b670a37d79497f01262176a279af185c12bdc1607271300f"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.vtt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
-      "bytes": 4695,
-      "sha256": "4f47a113fcdc0c1e0c8db6a68ae12cf3276a62341c85d7b2039631f73a9b6f1f"
+      "bytes": 5116,
+      "sha256": "674ce077f4b3141ce06b39e269a4f0e7888c73cfe0c9a457fc4973ad08c8b448"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.srt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
-      "bytes": 4813,
-      "sha256": "cc084d32bf483f84c3943976dc71ef7276400b81408af71ad6bb42e745f3544a"
+      "bytes": 5249,
+      "sha256": "30d8fbb001d30d390dfa631607ae2e76bf24ac47dd4d1dc3ce85a520ffc8de07"
     },
     "output/presentations/BioGraph_Steward_Overview.pptx": {
       "path": "output/presentations/BioGraph_Steward_Overview.pptx",
@@ -3109,8 +3156,8 @@
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
-      "bytes": 20373,
-      "sha256": "f281d0f7638fded0e82614f684da140cde69e9493707da315cafc727661796ba"
+      "bytes": 23152,
+      "sha256": "f06af75456acc47907ab85f138861ea3692ffa93cdcfd4740196639dacd14f49"
     },
     "output/software/BioGraph_Steward_Software.zip": {
       "path": "output/software/BioGraph_Steward_Software.zip",
@@ -3124,49 +3171,25 @@
     }
   },
   "final_report": {
-    "format": "biograph-steward.final-report-clarity.v1",
     "pages": 5,
-    "all_five_rendered_pages_visually_reviewed": true,
-    "reference_template_sha256": "18a52108e624a98155fcd3edc4bd8f379246441cd6ea8e65842488bc7117feda",
+    "all_pages_visually_reviewed": true,
     "files": [
       {
         "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-        "bytes": 13607,
-        "sha256": "564cc2d2c6509dedf909ad8da341c69170c6afec6ed085fdc22accb687894688"
+        "bytes": 13644,
+        "sha256": "25a96f5aa1cd202da7cb0d1c0f51a499745c77d0b9f8bbd3442c2ff6cf7228ea"
       },
       {
         "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
-        "bytes": 124601,
-        "sha256": "5bbb5d26719dfa40c429e43875d97e78ee980e97f7bab9ebc7ba4e3724add7ec"
+        "bytes": 124767,
+        "sha256": "9d8b78f172ab65d9b149207f2941a556d71d6f8d57333edf600d56a161de31f7"
       }
     ],
-    "content_sha256": "2c3a4c31d40ac50d165340d34f4900176acc2a5b739cbf53ad1ca8bd671416c3",
-    "clarifications": [
-      "One app and two consistently named workspace examples",
-      "Three actual source readers and controller checks",
-      "All GO aspects in Pharos; direct native extension is location-specific",
-      "Applied STRING identity and archived-pathway checks have separate purposes",
-      "25 is the interactive request cap",
-      "Brev not needed for hosted replay",
-      "Three unsupported scope guards explained",
-      "Reference matches and label denominators explicit",
-      "HPA source reuse and research-only OpenCell sensitivity explained",
-      "Published LocalPlus reference and retained/refreshed annotations dated",
-      "Primary micro-Fmax view before ontology sensitivity, with protein and positive-pair counts",
-      "Positive paired intervals versus retained baseline; extra gain beyond refreshed uncertain"
-    ],
-    "scientific_inputs_or_scores_changed": false,
-    "original_report_preserved": {
-      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12306,
-      "sha256": "911082b23f77db8e773dc3b595e0818aa17f549b39b46e17f21dafd18120a34d"
-    },
-    "render_v7_pixel_identical_to_reviewed_v6": true,
-    "method_links_target_current_delivery_branch": true,
+    "source_content_sha256": "53441869383cc54b697f5948e1b6123808de291a018818adbff4e9f373319dd2",
     "receipt": {
-      "path": "docs/evaluations/final_clarity_delivery_20261117/report.json",
-      "bytes": 1886,
-      "sha256": "97d752f3da7a0c8a9c25a56e2c4975a17ffe6d7bac4fe1ecd6ae712d7a41c7ae"
+      "path": "docs/evaluations/product_workflow_clarity_20261117/delivery.json",
+      "bytes": 6731,
+      "sha256": "57c51787960dda56cd8d5b5e55e6d16a68f565fa5ef6fe9faad3680d06f076bf"
     }
   },
   "final_product_delivery_receipts": {
@@ -3187,9 +3210,9 @@
       "sha256": "2c63ecd30faa7812630d7bda4acc5c0ac0ba7ef06d7e42f8d130b851edc6c54b"
     },
     "report": {
-      "path": "docs/evaluations/final_clarity_delivery_20261117/report.json",
-      "bytes": 1886,
-      "sha256": "97d752f3da7a0c8a9c25a56e2c4975a17ffe6d7bac4fe1ecd6ae712d7a41c7ae"
+      "path": "docs/evaluations/product_workflow_clarity_20261117/delivery.json",
+      "bytes": 6731,
+      "sha256": "57c51787960dda56cd8d5b5e55e6d16a68f565fa5ef6fe9faad3680d06f076bf"
     },
     "ui": {
       "path": "docs/evaluations/final_clarity_delivery_20261117/checks.json",
@@ -3197,14 +3220,14 @@
       "sha256": "febd72c4e8a78674f7396f9e7f6df68552f991080994072c781c564a22b9b367"
     },
     "media": {
-      "path": "docs/evaluations/final_clarity_delivery_20261117/media.json",
-      "bytes": 2157,
-      "sha256": "9a4dbc77e6b1173afcfc9d91011eebd2e2ed93cec831c9e2881c4332e16a87cc"
+      "path": "docs/evaluations/product_workflow_clarity_20261117/delivery.json",
+      "bytes": 6731,
+      "sha256": "57c51787960dda56cd8d5b5e55e6d16a68f565fa5ef6fe9faad3680d06f076bf"
     },
     "handoff": {
-      "path": "docs/evaluations/final_clarity_delivery_20261117/handoff.json",
-      "bytes": 2086,
-      "sha256": "4ddcf2722894c65ed65f55212309ac6e3c5ed5f9acb7f47a23d38539c5726327"
+      "path": "docs/evaluations/product_workflow_clarity_20261117/delivery.json",
+      "bytes": 6731,
+      "sha256": "57c51787960dda56cd8d5b5e55e6d16a68f565fa5ef6fe9faad3680d06f076bf"
     },
     "data_package": {
       "path": "docs/evaluations/final_clarity_delivery_20261117/data_package.json",
@@ -6385,5 +6408,16 @@
       "older_outer_submission_and_compact_public_release_are_archived_not_current": true
     },
     "ten_canonical_files_are_internal_build_support_not_ten_submission_requirements": true
+  },
+  "product_workflow_clarity_20261117": {
+    "receipt": {
+      "path": "docs/evaluations/product_workflow_clarity_20261117/delivery.json",
+      "bytes": 6731,
+      "sha256": "57c51787960dda56cd8d5b5e55e6d16a68f565fa5ef6fe9faad3680d06f076bf"
+    },
+    "runtime_unchanged": true,
+    "one_application_common_workflow_explained": true,
+    "final_folder_file_count": 5,
+    "new_agent_or_prediction_runs": 0
   }
 }

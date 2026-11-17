@@ -19,6 +19,13 @@ example, and **Qualified Pharos workspace**, opened through **Review applied
 graph qualifications**. These are two saved examples with different inputs.
 The historical function-prediction study is a separate assessment.
 
+Both saved examples use the common application workflow: **open or build a
+source workspace → ask a supported question → inspect the graph, cited answer
+and sources → save a review in a new run → export**. The demonstrations give
+reviewers prepared inputs for inspecting different capabilities. Reference
+comparisons and prediction results verify parts of the approach rather than
+replace that product workflow or require users to conduct those studies.
+
 Follow **Question & plan → Evidence graph → Source inspection → Review
 proposals**. In **E002, KRAS–CDC42BPB**, find **baseline pair present: false**
 and **integration state: new_workspace_pair**. That is an actual source-qualified
