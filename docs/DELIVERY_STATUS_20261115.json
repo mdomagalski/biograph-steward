@@ -426,7 +426,7 @@
     "Brev_GPU_or_model_needed_for_review": false,
     "Brev_can_stop_compute_keep_persistent_disk": true,
     "Brev_compute_needed_for_current_work": false,
-    "Brev_instance_state": "No remote stop performed. The authorized fixed source-agent evaluation is complete; dedicated operator tunnel closed. Saved review and delivery need no Brev.",
+    "Brev_instance_state": "No remote stop performed. Source-agent and new expert source-claim model assessments are complete. The assessment-owned model tunnel is closed; current review and delivery need no Brev.",
     "Brev_owned_evaluation_and_source_audit_workers": "All fixed fits and assessments are complete, including the one cross-fitted graph/frequency fit. Original Nemotron service restored exactly and healthy; no new LLM requests were made for either refit.",
     "Brev_owned_worker_completion_receipt_sha256": "357851721cc79c5d85e57fa4bd5b678ed832c604113add9bf68254f6446cc00d",
     "Brev_owned_workers_and_transfers_complete": true,
@@ -486,7 +486,15 @@
       "new_inference_needed": false,
       "owned_tunnel_closed": true
     },
-    "owned_local_preview_18542": "Stopped after final E002 source captures; current PID41092/session59059 ownership verified, exit0, no listener remains. All owned Chrome instances closed; user compute and other servers untouched."
+    "owned_local_preview_18542": "Stopped after final E002 source captures; current PID41092/session59059 ownership verified, exit0, no listener remains. All owned Chrome instances closed; user compute and other servers untouched.",
+    "Brev_source_claim_review_assessment": {
+      "completed": true,
+      "model_calls": 134,
+      "completion_tokens": 8152,
+      "new_inference_needed": false,
+      "assessment_owned_local_forward_closed": true,
+      "remote_instance_stopped_by_this_work": false
+    }
   },
   "science": {
     "annotation_prior_followup": {
@@ -1151,7 +1159,7 @@
       "status": "Final report follows the requested midpoint form. A distinct final template and the exact final graph/reference scoring contract were not supplied; hidden gold labels are not needed for delivery."
     }
   ],
-  "updated_at_UTC": "2026-11-16T22:39:28.739015+00:00",
+  "updated_at_UTC": "2026-11-17T00:39:27.644227+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,
@@ -1530,7 +1538,7 @@
     "bytes": 3266,
     "sha256": "9ad8dc17c6bf13972be93d2dce856a434a0b97a557c19ee81b02f854896b63c5"
   },
-  "artifact_audit_path": "docs/evaluations/democratization_delivery_20261116/artifact_audit.json",
+  "artifact_audit_path": "docs/evaluations/mechanistic_claim_review_20261117/delivery_audit.json",
   "previous_browser_visual_check": {
     "format": "biograph.source-agent-hosted-browser-acceptance.v1",
     "recorded_at_UTC": "2026-11-16T15:23:43.097798+00:00",
@@ -1884,9 +1892,9 @@
       "both_failures_preserved": true
     },
     "final_report": {
-      "path": "docs/evaluations/democratization_delivery_20261116/final_report.json",
-      "bytes": 7615,
-      "sha256": "fbfce3ba33c4c48c781d44b740eda5296a283b63c2d711a863656d3a61cb3fdc"
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/final_report.json",
+      "bytes": 4934,
+      "sha256": "3b8a1813a1b1ef76d1e61bfcf53fa1ea8aada6e8be09e06d74c56aeb29fd8902"
     },
     "team_review_guide": {
       "path": "docs/evaluations/final_prod_ui_20261116/team_review_guide.json",
@@ -1920,7 +1928,8 @@
       "bytes": 1680,
       "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
     },
-    "prior_full_workflow_browser_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0"
+    "prior_full_workflow_browser_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "later_report_revision_scope": "Latest report adds a separate expert source-claim assessment. The runtime/UI pass model counters, prior scientific results and browser qualifications remain unchanged; additional assessment calls are recorded separately."
   },
   "previous_final_product_delivery": {
     "snapshot_of_pre_update_status": true,
@@ -2682,25 +2691,31 @@
     },
     "output/docx/BioGraph_Steward_Final_Report.docx": {
       "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12468,
-      "sha256": "106bf2b8e826d51593cbcec488f8894a505d82f77a5d456fb9ad464460e72225"
+      "bytes": 12624,
+      "sha256": "78de54ffa440a111cb4373e3c26ea9c03dbf2fbe81454a0e895a4b01fe514a6b"
     }
   },
   "final_report": {
-    "format": "biograph-steward.final-report-original-form-fidelity.v3",
+    "format": "biograph-steward.final-report-original-form-fidelity.v4",
     "status": "prepared_for_final_submission",
     "file": "output/docx/BioGraph_Steward_Final_Report.docx",
-    "bytes": 12468,
-    "sha256": "106bf2b8e826d51593cbcec488f8894a505d82f77a5d456fb9ad464460e72225",
+    "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "bytes": 12624,
+    "sha256": "78de54ffa440a111cb4373e3c26ea9c03dbf2fbe81454a0e895a4b01fe514a6b",
     "pages": 4,
     "main_form_pages": 2,
     "methods_and_evaluation_supplement_pages": 2,
-    "source_reference": {
-      "path": "runs/midpoint_report_final_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
-      "sha256": "1548809286a5dcd5912c6bd183baab191df57cbda34c81ca7c570f0703b60bb8",
-      "role": "Retained organizer-format report and its original template contract; retained source unchanged."
+    "previous_report_before_expert_assessment": {
+      "bytes": 12468,
+      "sha256": "106bf2b8e826d51593cbcec488f8894a505d82f77a5d456fb9ad464460e72225",
+      "preserved_private_copy": "runs/final_report_20261116/judge_revision_20261117/history_before_expert_reference/BioGraph_Steward_Final_Report.docx",
+      "previous_public_receipt": "docs/evaluations/democratization_delivery_20261116/final_report.json"
     },
     "template_fidelity": {
+      "original_main_form_order_geometry_styles_and_field_counts_preserved": true,
+      "five_accomplishments": true,
+      "three_scope_paragraphs": true,
+      "three_deliverable_rows": true,
       "section_order": [
         "Team Information",
         "Key Accomplishments",
@@ -2710,33 +2725,14 @@
         "Approach and evidence integration",
         "Evaluation and final delivery"
       ],
-      "team_information_fields": [
-        "Team Name",
-        "Track",
-        "Overall Status",
-        "Brief status summary"
-      ],
-      "five_accomplishments": true,
-      "original_main_form_tables_and_page_geometry_preserved": true,
-      "source_Arial_body_and_blue_title_heading_format_preserved": true,
-      "styles_numbering_theme_and_other_unchanged_package_parts_preserved": true,
-      "obsolete_optional_illustration_removed": true,
       "intentional_updates": [
-        "Final project title and concise date/purpose in the original instruction slot",
-        "Overall status states Delivered proof of concept, without a progress traffic light",
-        "Final limitations replace Blockers and Help Needed in the same section position",
-        "Final deliverables replace a future plan, retaining the original table geometry",
-        "Deliverable and Delivered capability columns replace dates and milestones",
-        "Private review and planned public November17 submission are stated once in the access note",
-        "The supplement explains methodology, CIViC scope, causes of gains and supported reuse",
-        "No organizer help request, future work timetable or scientific measurement was added",
-        "Plain language and short sentences throughout; zero authored semicolons",
-        "Scope and future improvements consolidate remaining validation opportunities",
-        "Delivered scientist workflow and positive measured outcomes lead",
-        "Formal full-author ProtBoost preprint reference with clickable primary source"
-      ],
-      "three_limitation_paragraphs": true,
-      "three_delivered_output_rows": true
+        "Final project wording replaces midpoint progress language",
+        "Judge access means a browser demo with a privately supplied application token, not AWS credentials",
+        "Slides are described plainly and teammate/user-study narration is omitted",
+        "A fourth supplementary row records the completed expert source-faithfulness test",
+        "Cross-question examples are consolidated in the main scope paragraph",
+        "The new expert-paper reference and full assessment are linked alongside the preserved formal ProtBoost citation"
+      ]
     },
     "quality_review": {
       "all_pages_rendered_with_bundled_canonical_renderer": true,
@@ -2745,77 +2741,54 @@
       "independent_root_primary_source_text_review_passed": true,
       "source_package_fidelity_passed": true,
       "main_body_font_pt": 12,
-      "supplement_table_font_pt": 11,
+      "supplement_table_and_reference_font_pt": 11,
+      "font_shrink_to_fit": false,
       "clipping_overlap_or_unintended_blank_pages": false,
-      "access_token_or_credentials_in_report": false,
-      "low_level_test_counts_or_source_hashes_in_report": false,
       "authored_semicolon_count": 0,
+      "access_token_or_credentials_in_report": false,
       "formal_ProtBoost_reference_and_primary_link_verified": true,
-      "private_plain_language_quality_receipt_sha256": "bd933ea42ab4aa4aa96d67c08856f0c66ad8dbecfd3ff683ea441c4eac8ef224"
+      "primary_expert_paper_DOI_link_verified": true,
+      "private_quality_receipt_sha256": "621fdceca0d95c197a8f6e71fc8570d8b09b0b0ad3f840006533074fad6d32e8",
+      "private_package_fidelity_receipt_sha256": "9d998e6f633badd67946f86c754ee570b62ee319e1a3879d50e8933d4f43b044"
     },
     "scientific_scope": {
-      "source_additions_are_absent_captured_pairs_or_concepts_not_discoveries": true,
-      "physical_source_context_not_direct_binding_proof": true,
-      "location_recovery_uses_same_ontology_qualified_mapping_and_retains_coarse_control": true,
-      "shared_provider_and_prior_reference_use_retained": true,
-      "function_study_separate_from_app_and_agent": true,
-      "scored_protein_frames_and_residual_positive_function_labels_explicit": true,
-      "refreshed_annotation_control_and_uncertain_additional_primary_gain_retained": true,
-      "primary_graph_records_remain_unassessed": true,
-      "obsolete_identifier_qualification_not_experimental_false_claim_pruning": true,
-      "civic_separate_clinical_evidence_workflow_not_current_native_agent_tool": true,
-      "clinical_profiles_and_whole_therapy_sets_not_flattened": true,
-      "location_gain_from_additional_admitted_annotations_not_identifier_pruning": true,
-      "published_ProtBoost_and_author_source_update_reused": true,
-      "current_LLM_not_credited_for_offline_prediction_gain": true,
-      "same_cohort_task_reuse_separate_from_external_cohort_generalization": true
+      "prior_three_result_rows_scores_denominators_stronger_controls_and_ProtBoost_reference_unchanged": true,
+      "expert_reference": {
+        "task": "Agreement with expert source-faithfulness curations, not whole-Pharos biological truth",
+        "claims": 134,
+        "supported": 64,
+        "unsupported": 70,
+        "consensus_rule": "Prespecified agreement of the native source-count baseline and Nemotron",
+        "unsupported_flagged": 3,
+        "supported_flagged": 0,
+        "supported_retained": 64,
+        "previously_used_corpus_not_a_new_blind_gold_set": true,
+        "wider_precision_gain_established": false,
+        "pruning_precision_100_percent_claimed": false,
+        "more_aggressive_controls_lose_supported_claims": true,
+        "primary_graph_or_review_changes": false,
+        "full_counts_and_intervals": "docs/evaluations/MECHANISTIC_CLAIM_REVIEW_20261117.md",
+        "primary_paper": "https://doi.org/10.15252/msb.202211325",
+        "raw_labels_or_source_text_redistributed_in_report": false
+      },
+      "source_additions_are_context_not_discoveries": true,
+      "CIViC_clinical_context_separate_from_current_agent_and_GO_STRING_gains": true,
+      "historical_function_study_separate_from_current99_graph_and_agent": true,
+      "primary19310_decisions_remain_unresolved": true,
+      "same99_target_question_scope_and_broader_transfer_opportunities_explicit": true
     },
     "current_limitations": [
-      "Independent whole-graph precision and automatic biological-error pruning are not established.",
-      "Source sharing, incomplete labels and prior reference use bound interpretation.",
-      "The separate historical function study does not establish an agent-caused gain or a reliable extra primary gain over fully refreshed annotations.",
-      "A complete independent hosted-user walkthrough remains pending. The final return/mobile browser recheck was interrupted by preserved browser transport failures; their cause is unresolved.",
-      "The repository is private; public visibility, final tag/release and actual organizer submission remain separate closing actions.",
-      "Permitted mixed-source graph/source access and redistribution follow provider terms; no organizer gold-set access or approval is claimed."
+      "The new134-claim source-faithfulness sample uses a previously evaluated corpus and supports no whole-graph biological-accuracy estimate.",
+      "Three unsupported claims were flagged without a supported claim flagged in this sample. Broader precision improvement remains uncertain.",
+      "Shared sources, limited positive reference coverage and prior reference use still qualify the unchanged location and historical function comparisons."
     ],
     "prepared_not_published_or_submitted": true,
     "report_sent": false,
     "repository_visibility_changed": false,
     "organizer_submission_performed": false,
-    "email_cloud_or_model_actions_for_report": false,
-    "basis": "Plain-language final-delivery revision. Scientist benefit and delivered workflow lead. Scope and further validation opportunities are grouped. Formal ProtBoost citation added. All source graphs, biological measurements and controls unchanged.",
-    "production_review_presentation_completed": true,
-    "accepted_hosted_runtime": "84ef6a0b991f9560e777ec06fb6151303a380112",
-    "hosted_browser_validation": "Current84 focused construction-card desktop/mobile checks passed. Prior d05 full-workflow partial coverage remains unchanged. No complete independent user walkthrough is claimed.",
-    "new_protected_graph_download_enabled_claimed": true,
-    "organizer_presentation_alignment": {
-      "democratization_and_general_scientist_usability_explicit": true,
-      "source": "Organizer email quoted by user on November16; linked response document returned401 and was not read",
-      "agent_scope": "Model-directed saved-source query, focused graph, citation inspections and nonmutating proposals",
-      "construction_scope": "Separate deterministic explicit1–25-protein cohort construction",
-      "generalizability": "Different supported questions in one cohort and reusable construction; no independently validated cross-cohort transfer",
-      "hosted_demo_and_video_software_graph_deliverables_explicit": true
-    },
-    "graph_download_basis": "Existing verified authenticated graph/ledger and exact captured Pharos comparator download receipt",
-    "previous_report_preserved_at_git_commit": "b710f7e",
-    "ProtBoost_reference": {
-      "authors": [
-        "Alexander Chervov",
-        "Anton Vakhrushev",
-        "Sergei Fironov",
-        "Loredana Martignetti"
-      ],
-      "year": 2024,
-      "title": "ProtBoost: protein function prediction with Py-Boost and Graph Neural Networks -- CAFA5 top2 solution",
-      "arxiv": "2412.04529",
-      "doi": "10.48550/arXiv.2412.04529",
-      "url": "https://arxiv.org/abs/2412.04529",
-      "publication_type": "preprint",
-      "full_ensemble_reproduction_claimed": false
-    },
-    "scientific_source_and_controller_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
-    "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-    "receipt": "docs/evaluations/democratization_delivery_20261116/final_report.json"
+    "runtime_source_graph_review_or_policy_changes_from_report": false,
+    "new_model_or_cloud_actions_for_report_authoring": false,
+    "receipt": "docs/evaluations/mechanistic_claim_review_20261117/final_report.json"
   },
   "final_product_delivery_receipts": {
     "hosted": {
@@ -3648,5 +3621,178 @@
     "new_model_calls": 0,
     "new_scientific_results": false,
     "report_submitted_by_this_update": false
+  },
+  "previous_report_before_expert_assessment_20261117": {
+    "format": "biograph-steward.final-report-original-form-fidelity.v3",
+    "status": "prepared_for_final_submission",
+    "file": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "bytes": 12468,
+    "sha256": "106bf2b8e826d51593cbcec488f8894a505d82f77a5d456fb9ad464460e72225",
+    "pages": 4,
+    "main_form_pages": 2,
+    "methods_and_evaluation_supplement_pages": 2,
+    "source_reference": {
+      "path": "runs/midpoint_report_final_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "1548809286a5dcd5912c6bd183baab191df57cbda34c81ca7c570f0703b60bb8",
+      "role": "Retained organizer-format report and its original template contract; retained source unchanged."
+    },
+    "template_fidelity": {
+      "section_order": [
+        "Team Information",
+        "Key Accomplishments",
+        "Scope and future improvements",
+        "Final deliverables",
+        "Reminder",
+        "Approach and evidence integration",
+        "Evaluation and final delivery"
+      ],
+      "team_information_fields": [
+        "Team Name",
+        "Track",
+        "Overall Status",
+        "Brief status summary"
+      ],
+      "five_accomplishments": true,
+      "original_main_form_tables_and_page_geometry_preserved": true,
+      "source_Arial_body_and_blue_title_heading_format_preserved": true,
+      "styles_numbering_theme_and_other_unchanged_package_parts_preserved": true,
+      "obsolete_optional_illustration_removed": true,
+      "intentional_updates": [
+        "Final project title and concise date/purpose in the original instruction slot",
+        "Overall status states Delivered proof of concept, without a progress traffic light",
+        "Final limitations replace Blockers and Help Needed in the same section position",
+        "Final deliverables replace a future plan, retaining the original table geometry",
+        "Deliverable and Delivered capability columns replace dates and milestones",
+        "Private review and planned public November17 submission are stated once in the access note",
+        "The supplement explains methodology, CIViC scope, causes of gains and supported reuse",
+        "No organizer help request, future work timetable or scientific measurement was added",
+        "Plain language and short sentences throughout; zero authored semicolons",
+        "Scope and future improvements consolidate remaining validation opportunities",
+        "Delivered scientist workflow and positive measured outcomes lead",
+        "Formal full-author ProtBoost preprint reference with clickable primary source"
+      ],
+      "three_limitation_paragraphs": true,
+      "three_delivered_output_rows": true
+    },
+    "quality_review": {
+      "all_pages_rendered_with_bundled_canonical_renderer": true,
+      "every_page_inspected_at_full_resolution": true,
+      "independent_root_visual_review_passed": true,
+      "independent_root_primary_source_text_review_passed": true,
+      "source_package_fidelity_passed": true,
+      "main_body_font_pt": 12,
+      "supplement_table_font_pt": 11,
+      "clipping_overlap_or_unintended_blank_pages": false,
+      "access_token_or_credentials_in_report": false,
+      "low_level_test_counts_or_source_hashes_in_report": false,
+      "authored_semicolon_count": 0,
+      "formal_ProtBoost_reference_and_primary_link_verified": true,
+      "private_plain_language_quality_receipt_sha256": "bd933ea42ab4aa4aa96d67c08856f0c66ad8dbecfd3ff683ea441c4eac8ef224"
+    },
+    "scientific_scope": {
+      "source_additions_are_absent_captured_pairs_or_concepts_not_discoveries": true,
+      "physical_source_context_not_direct_binding_proof": true,
+      "location_recovery_uses_same_ontology_qualified_mapping_and_retains_coarse_control": true,
+      "shared_provider_and_prior_reference_use_retained": true,
+      "function_study_separate_from_app_and_agent": true,
+      "scored_protein_frames_and_residual_positive_function_labels_explicit": true,
+      "refreshed_annotation_control_and_uncertain_additional_primary_gain_retained": true,
+      "primary_graph_records_remain_unassessed": true,
+      "obsolete_identifier_qualification_not_experimental_false_claim_pruning": true,
+      "civic_separate_clinical_evidence_workflow_not_current_native_agent_tool": true,
+      "clinical_profiles_and_whole_therapy_sets_not_flattened": true,
+      "location_gain_from_additional_admitted_annotations_not_identifier_pruning": true,
+      "published_ProtBoost_and_author_source_update_reused": true,
+      "current_LLM_not_credited_for_offline_prediction_gain": true,
+      "same_cohort_task_reuse_separate_from_external_cohort_generalization": true
+    },
+    "current_limitations": [
+      "Independent whole-graph precision and automatic biological-error pruning are not established.",
+      "Source sharing, incomplete labels and prior reference use bound interpretation.",
+      "The separate historical function study does not establish an agent-caused gain or a reliable extra primary gain over fully refreshed annotations.",
+      "A complete independent hosted-user walkthrough remains pending. The final return/mobile browser recheck was interrupted by preserved browser transport failures; their cause is unresolved.",
+      "The repository is private; public visibility, final tag/release and actual organizer submission remain separate closing actions.",
+      "Permitted mixed-source graph/source access and redistribution follow provider terms; no organizer gold-set access or approval is claimed."
+    ],
+    "prepared_not_published_or_submitted": true,
+    "report_sent": false,
+    "repository_visibility_changed": false,
+    "organizer_submission_performed": false,
+    "email_cloud_or_model_actions_for_report": false,
+    "basis": "Plain-language final-delivery revision. Scientist benefit and delivered workflow lead. Scope and further validation opportunities are grouped. Formal ProtBoost citation added. All source graphs, biological measurements and controls unchanged.",
+    "production_review_presentation_completed": true,
+    "accepted_hosted_runtime": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "hosted_browser_validation": "Current84 focused construction-card desktop/mobile checks passed. Prior d05 full-workflow partial coverage remains unchanged. No complete independent user walkthrough is claimed.",
+    "new_protected_graph_download_enabled_claimed": true,
+    "organizer_presentation_alignment": {
+      "democratization_and_general_scientist_usability_explicit": true,
+      "source": "Organizer email quoted by user on November16; linked response document returned401 and was not read",
+      "agent_scope": "Model-directed saved-source query, focused graph, citation inspections and nonmutating proposals",
+      "construction_scope": "Separate deterministic explicit1–25-protein cohort construction",
+      "generalizability": "Different supported questions in one cohort and reusable construction; no independently validated cross-cohort transfer",
+      "hosted_demo_and_video_software_graph_deliverables_explicit": true
+    },
+    "graph_download_basis": "Existing verified authenticated graph/ledger and exact captured Pharos comparator download receipt",
+    "previous_report_preserved_at_git_commit": "b710f7e",
+    "ProtBoost_reference": {
+      "authors": [
+        "Alexander Chervov",
+        "Anton Vakhrushev",
+        "Sergei Fironov",
+        "Loredana Martignetti"
+      ],
+      "year": 2024,
+      "title": "ProtBoost: protein function prediction with Py-Boost and Graph Neural Networks -- CAFA5 top2 solution",
+      "arxiv": "2412.04529",
+      "doi": "10.48550/arXiv.2412.04529",
+      "url": "https://arxiv.org/abs/2412.04529",
+      "publication_type": "preprint",
+      "full_ensemble_reproduction_claimed": false
+    },
+    "scientific_source_and_controller_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "receipt": "docs/evaluations/democratization_delivery_20261116/final_report.json"
+  },
+  "expert_source_claim_assessment_20261117": {
+    "scope": "Completed public human-curator source-faithfulness benchmark and judge-report revision. No production code, Pharos data, graph decisions or access-policy changes.",
+    "note": "docs/evaluations/MECHANISTIC_CLAIM_REVIEW_20261117.md",
+    "aggregate": {
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/aggregate.json",
+      "bytes": 12508,
+      "sha256": "e6d4fbf0045672cfc7f541a3b134ba56ec2151649da74178744efdeda8fb1c90"
+    },
+    "readable_report": {
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/report.html",
+      "bytes": 8603,
+      "sha256": "200466bfe37eca2c8de3a2bd65b2548338991af70da2ad935f5fd11eb1602886"
+    },
+    "protocol": {
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/protocol.json",
+      "bytes": 6910,
+      "sha256": "fd362356cdde3f594ab221acf7c258dd22250b60b2a90edd3ea5171069120a7a"
+    },
+    "final_report_receipt": {
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/final_report.json",
+      "bytes": 4934,
+      "sha256": "3b8a1813a1b1ef76d1e61bfcf53fa1ea8aada6e8be09e06d74c56aeb29fd8902"
+    },
+    "model_calls": 134,
+    "completion_tokens": 8152,
+    "reference_claims": 134,
+    "reference_supported": 64,
+    "reference_unsupported": 70,
+    "consensus_unsupported_flagged": 3,
+    "consensus_supported_flagged": 0,
+    "strictly_positive_precision_gain_established": false,
+    "new_whole_Pharos_accuracy_estimate": false,
+    "production_graph_changed": false,
+    "existing_runtime": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "historical_UI_and_scientific_receipts_preserved": true,
+    "publication_or_submission_performed": false
+  },
+  "previous_artifact_audit_before_expert_assessment_20261117": {
+    "path": "docs/evaluations/democratization_delivery_20261116/artifact_audit.json",
+    "bytes": 14683,
+    "sha256": "d90895d2e92352606ad1862b3808231d83faa17675b73e3eb333ba6eaa1881ab"
   }
 }

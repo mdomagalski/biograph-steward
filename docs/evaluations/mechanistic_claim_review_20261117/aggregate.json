@@ -1,0 +1,303 @@
+{
+  "attribution": {
+    "cluster_bootstrap_method_url": "https://doi.org/10.1111/j.1467-9868.2007.00593.x",
+    "dataset_url": "https://doi.org/10.5281/zenodo.7559353",
+    "license_boundary": "The software license does not relicense INDRA data or source articles. Individual records and source passages are not included in this aggregate publication.",
+    "native_indra_license": "BSD-2-Clause",
+    "paper_url": "https://doi.org/10.15252/msb.202211325",
+    "reference": "Bachman, Gyori and Sorger (2023), Automated assembly of molecular mechanisms at scale from text mining and curated databases.",
+    "reference_data_license": "CC BY-NC-SA 4.0",
+    "software_adapter_license": "MIT"
+  },
+  "bootstrap": {
+    "comparisons": [
+      {
+        "candidate": "retain_all",
+        "comparator": "native_counts",
+        "defined_paired_draws": 10000,
+        "interval_scope": "all_paired_draws",
+        "observed_difference": -0.30810234541577824,
+        "percentile_95_interval": [
+          -0.518796992481203,
+          -0.08043893129771001
+        ],
+        "undefined_paired_draws": 0
+      },
+      {
+        "candidate": "native_counts",
+        "comparator": "retain_all",
+        "defined_paired_draws": 10000,
+        "interval_scope": "all_paired_draws",
+        "observed_difference": 0.30810234541577824,
+        "percentile_95_interval": [
+          0.08043893129770992,
+          0.518796992481203
+        ],
+        "undefined_paired_draws": 0
+      },
+      {
+        "candidate": "native_simple",
+        "comparator": "retain_all",
+        "defined_paired_draws": 10000,
+        "interval_scope": "all_paired_draws",
+        "observed_difference": 0.0,
+        "percentile_95_interval": [
+          0.0,
+          0.0
+        ],
+        "undefined_paired_draws": 0
+      },
+      {
+        "candidate": "native_simple",
+        "comparator": "native_counts",
+        "defined_paired_draws": 10000,
+        "interval_scope": "all_paired_draws",
+        "observed_difference": -0.30810234541577824,
+        "percentile_95_interval": [
+          -0.518796992481203,
+          -0.08043893129771001
+        ],
+        "undefined_paired_draws": 0
+      },
+      {
+        "candidate": "nemotron",
+        "comparator": "retain_all",
+        "defined_paired_draws": 10000,
+        "interval_scope": "all_paired_draws",
+        "observed_difference": 0.01076015272474834,
+        "percentile_95_interval": [
+          -0.004229033947013807,
+          0.028440517732300996
+        ],
+        "undefined_paired_draws": 0
+      },
+      {
+        "candidate": "nemotron",
+        "comparator": "native_counts",
+        "defined_paired_draws": 10000,
+        "interval_scope": "all_paired_draws",
+        "observed_difference": -0.2973421926910299,
+        "percentile_95_interval": [
+          -0.5112781954887218,
+          -0.06457498409669223
+        ],
+        "undefined_paired_draws": 0
+      },
+      {
+        "candidate": "consensus",
+        "comparator": "retain_all",
+        "defined_paired_draws": 10000,
+        "interval_scope": "all_paired_draws",
+        "observed_difference": 0.010937678022103214,
+        "percentile_95_interval": [
+          0.0,
+          0.025220531644070787
+        ],
+        "undefined_paired_draws": 0
+      },
+      {
+        "candidate": "consensus",
+        "comparator": "native_counts",
+        "defined_paired_draws": 10000,
+        "interval_scope": "all_paired_draws",
+        "observed_difference": -0.29716466739367503,
+        "percentile_95_interval": [
+          -0.5074626865671642,
+          -0.06840230664857538
+        ],
+        "undefined_paired_draws": 0
+      }
+    ],
+    "draws": 10000,
+    "groups": 131,
+    "method": "Paired whole connected-source-group percentile bootstrap.",
+    "scope": "Pointwise conditional reference-corpus intervals, not simultaneous intervals, biological replication or population-wide accuracy.",
+    "seed": 20261117,
+    "status": "completed"
+  },
+  "content_sha256": "6bb49a7f7ef6c776f841e7b6da58636c61270f28ae2011a453e2b3a2c84ae94d",
+  "created_at": "2026-11-17T00:33:02.109183+00:00",
+  "definitions": {
+    "consensus": "Exclude only when both the native source-count model and Nemotron propose exclusion. Other claims remain retained.",
+    "coverage": "Non-abstaining proposals / all assessed claims; abstentions remain in the retained graph.",
+    "policy_accuracy": "Correct effective retain/prune decisions / all assessed claims; abstentions are retained, not treated as resolved model predictions.",
+    "pruning_precision": "Curator-unsupported excluded / all excluded claims.",
+    "retained_precision": "Curator-supported remaining / all remaining claims.",
+    "supported": "At least one original source was accepted under the published coarse curation policy.",
+    "supported_retention": "Curator-supported remaining / all curator-supported claims.",
+    "unsupported": "Every original source was admitted and curator-reviewed, and none was accepted; this does not establish a universally false biological relationship."
+  },
+  "execution": {
+    "model_or_source_calls_by_publisher": 0,
+    "model_requests_recorded": 134,
+    "model_status_counts": {
+      "completed": 126,
+      "invalid_output": 8
+    },
+    "native_package_versions": {
+      "indra": "1.24.0",
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1"
+    },
+    "provider_counts": {
+      "nim": 134
+    },
+    "requested_model_counts": {
+      "nvidia/Llama-3.1-Nemotron-Nano-8B-v1": 134
+    },
+    "returned_model_counts": {
+      "nvidia/Llama-3.1-Nemotron-Nano-8B-v1": 134
+    }
+  },
+  "format": "biograph-steward.mechanistic-review-public-aggregate.v1",
+  "frame": {
+    "claims": 134,
+    "connected_source_groups": 131,
+    "curator_supported": 64,
+    "curator_unsupported": 70,
+    "original_evidence_records": 328
+  },
+  "headline": "Source review retained 63/64 curator-supported claims and excluded 4/70 unsupported claims.",
+  "limitations": [
+    "This evaluates extraction/source-claim faithfulness, not independent experimental truth, clinical validity or whole-Pharos biological accuracy.",
+    "The corpus and earlier grounding endpoint were previously used in this project. This is a new retrospective endpoint, not a newly unseen independent gold set.",
+    "The assigned human-gene source frame does not independently confirm species, isoform, construct or biological context.",
+    "The published coarse positive policy includes hypothesis and activity-versus-amount tags. A curator-negative extraction does not make a relationship false in every context.",
+    "Some curations used publication context beyond the supplied evidence; insufficient context must remain an abstention.",
+    "Native source priors may share curation lineage; model pretraining independence is not established. Native counts were fitted on development data only.",
+    "This reference is not a probability sample of the application graph. Results do not establish cross-cohort generalization.",
+    "All five prespecified methods and adverse exclusions of supported claims are reported. Intervals are pointwise and conditional on the frozen reference.",
+    "Retained native graphs are separate assessment views. The original Pharos graph, application workspace and review decisions remain unchanged."
+  ],
+  "methods": {
+    "consensus": {
+      "abstained": 8,
+      "abstentions_retained": true,
+      "claims": 134,
+      "coverage": 0.9402985074626866,
+      "effective_retention_policy_balanced_accuracy": 0.5214285714285715,
+      "effective_retention_policy_correct": 67,
+      "effective_retention_policy_incorrect": 67,
+      "effective_retention_policy_reference_accuracy": 0.5,
+      "gold_supported": 64,
+      "gold_supported_retention_fraction": 1.0,
+      "gold_unsupported": 70,
+      "incorrect_claim_removal_recall": 0.04285714285714286,
+      "pruning_precision": 1.0,
+      "remaining": 131,
+      "remaining_supported": 64,
+      "remaining_unsupported": 67,
+      "removed": 3,
+      "removed_supported": 0,
+      "removed_unsupported": 3,
+      "retained_graph_supported_precision": 0.48854961832061067
+    },
+    "native_counts": {
+      "abstained": 0,
+      "abstentions_retained": true,
+      "claims": 134,
+      "coverage": 1.0,
+      "effective_retention_policy_balanced_accuracy": 0.5645089285714286,
+      "effective_retention_policy_correct": 78,
+      "effective_retention_policy_incorrect": 56,
+      "effective_retention_policy_reference_accuracy": 0.582089552238806,
+      "gold_supported": 64,
+      "gold_supported_retention_fraction": 0.171875,
+      "gold_unsupported": 70,
+      "incorrect_claim_removal_recall": 0.9571428571428572,
+      "pruning_precision": 0.5583333333333333,
+      "remaining": 14,
+      "remaining_supported": 11,
+      "remaining_unsupported": 3,
+      "removed": 120,
+      "removed_supported": 53,
+      "removed_unsupported": 67,
+      "retained_graph_supported_precision": 0.7857142857142857
+    },
+    "native_simple": {
+      "abstained": 42,
+      "abstentions_retained": true,
+      "claims": 134,
+      "coverage": 0.6865671641791045,
+      "effective_retention_policy_balanced_accuracy": 0.5,
+      "effective_retention_policy_correct": 64,
+      "effective_retention_policy_incorrect": 70,
+      "effective_retention_policy_reference_accuracy": 0.47761194029850745,
+      "gold_supported": 64,
+      "gold_supported_retention_fraction": 1.0,
+      "gold_unsupported": 70,
+      "incorrect_claim_removal_recall": 0.0,
+      "pruning_precision": null,
+      "remaining": 134,
+      "remaining_supported": 64,
+      "remaining_unsupported": 70,
+      "removed": 0,
+      "removed_supported": 0,
+      "removed_unsupported": 0,
+      "retained_graph_supported_precision": 0.47761194029850745
+    },
+    "nemotron": {
+      "abstained": 8,
+      "abstentions_retained": true,
+      "claims": 134,
+      "coverage": 0.9402985074626866,
+      "effective_retention_policy_balanced_accuracy": 0.5207589285714286,
+      "effective_retention_policy_correct": 67,
+      "effective_retention_policy_incorrect": 67,
+      "effective_retention_policy_reference_accuracy": 0.5,
+      "gold_supported": 64,
+      "gold_supported_retention_fraction": 0.984375,
+      "gold_unsupported": 70,
+      "incorrect_claim_removal_recall": 0.05714285714285714,
+      "pruning_precision": 0.8,
+      "remaining": 129,
+      "remaining_supported": 63,
+      "remaining_unsupported": 66,
+      "removed": 5,
+      "removed_supported": 1,
+      "removed_unsupported": 4,
+      "retained_graph_supported_precision": 0.4883720930232558
+    },
+    "retain_all": {
+      "abstained": 0,
+      "abstentions_retained": true,
+      "claims": 134,
+      "coverage": 1.0,
+      "effective_retention_policy_balanced_accuracy": 0.5,
+      "effective_retention_policy_correct": 64,
+      "effective_retention_policy_incorrect": 70,
+      "effective_retention_policy_reference_accuracy": 0.47761194029850745,
+      "gold_supported": 64,
+      "gold_supported_retention_fraction": 1.0,
+      "gold_unsupported": 70,
+      "incorrect_claim_removal_recall": 0.0,
+      "pruning_precision": null,
+      "remaining": 134,
+      "remaining_supported": 64,
+      "remaining_unsupported": 70,
+      "removed": 0,
+      "removed_supported": 0,
+      "removed_unsupported": 0,
+      "retained_graph_supported_precision": 0.47761194029850745
+    }
+  },
+  "primary_interpretation": "Retained-reference precision increased in the observed set; the paired uncertainty does not establish an unconditional precision gain.",
+  "privacy": {
+    "aggregate_only": true,
+    "individual_cases_or_identifiers_included": false,
+    "individual_predictions_included": false,
+    "private_paths_endpoints_or_credentials_included": false,
+    "source_passages_included": false
+  },
+  "provenance": {
+    "assessment_content_sha256": "5b1a7f68ea9113b59e233f79723020fed41a4f7cd650d76ce29023d48bd9d3c8",
+    "assessment_file_sha256": "8fe2bad96150750ab62d25acff1f3bdaba4fd5df0e49b4c07e2ab2395c3dbd5a",
+    "model_predictions_file_sha256": "53c40f60c829cdd10d491f24d43cf5f419f5872d710a87c9e88ccf2aa77a1050",
+    "native_predictions_file_sha256": "5e68e3a2d52151fc16bcdaa69f00c475aa162b7a9f13e34d8814c706531157b1",
+    "protocol_sha256": "fd362356cdde3f594ab221acf7c258dd22250b60b2a90edd3ea5171069120a7a",
+    "scorer_sha256": "84ae298ab56891ce8134b54fad6a6c0af993a550c3194a379d07de09545ba022"
+  },
+  "title": "Expert-curated source-claim assessment"
+}

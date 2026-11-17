@@ -34,6 +34,13 @@ provide the supporting results. Known-label recovery is not whole-graph
 precision; shared sources and prior reference use limit independence. Additional
 primary learning benefit over fully refreshed annotations remains uncertain.
 
+A separate [expert-curated source-claim assessment](docs/evaluations/MECHANISTIC_CLAIM_REVIEW_20261117.md)
+now measures review proposals against public human labels for correct and
+incorrect extractions. A conservative INDRA/Nemotron agreement rule flags
+three unsupported claims and no supported claims in a 134-claim check. This
+small retrospective result supports measured triage, with all controls and
+removal errors reported. It does not enable automatic Pharos deletions.
+
 ## Use the app
 
 Start with the recorded KRAS question. Follow **Question & plan → Evidence

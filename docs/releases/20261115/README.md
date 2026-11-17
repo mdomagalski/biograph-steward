@@ -31,7 +31,7 @@ invented software fixture. The complete real-data snapshot is not bundled in
 the software archive. Its [current clean acceptance](../../evaluations/democratization_delivery_20261116/software_acceptance.json)
 records the final review interface, CLI/HTTP exports, recovery and saved replay.
 The recorded model comparison and presentation retain their original source/runtime pins.
-The final report's [format and review receipt](../../evaluations/democratization_delivery_20261116/final_report.json)
+The final report's [format and review receipt](../../evaluations/mechanistic_claim_review_20261117/final_report.json)
 records preservation of the original form and the approved final-title/date updates.
 The revised guide has its own [current acceptance](../../evaluations/final_prod_ui_20261116/team_review_guide.json).
 

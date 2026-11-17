@@ -1,0 +1,136 @@
+{
+  "Brev_not_remotely_stopped": true,
+  "actual_scientific_assessment_completed": true,
+  "all29_invented_fixture_tests_passed": true,
+  "all4report_pages_root_visually_reviewed": true,
+  "authenticated_full_journey_retested": false,
+  "current_report": {
+    "bytes": 12624,
+    "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "sha256": "78de54ffa440a111cb4373e3c26ea9c03dbf2fbe81454a0e895a4b01fe514a6b"
+  },
+  "emails_or_submission_sent": false,
+  "files": [
+    {
+      "bytes": 7961,
+      "path": "README.md",
+      "sha256": "ffeefc6ef021a4c4f34e45bd8595349f79e7c2f7aa4cb2b958cd8bf31a7b0526"
+    },
+    {
+      "bytes": 33594,
+      "path": "docs/PROJECT_ALIGNMENT.md",
+      "sha256": "3ed975e323224d955e81bce09dfd7942c501fa1ed8bd2f04d0e133dc15e094ce"
+    },
+    {
+      "bytes": 10630,
+      "path": "docs/evaluations/MECHANISTIC_CLAIM_REVIEW_20261117.md",
+      "sha256": "e6a8b6bb00228b968f27a065d276e0936b8abffd857d3b6e5f7bec35e077ed42"
+    },
+    {
+      "bytes": 194116,
+      "path": "docs/DELIVERY_STATUS_20261115.json",
+      "sha256": "d17c0928324c11bd4c58ddc6f0d743788719d352ca7898fe1ecc0e415b4dedf1"
+    },
+    {
+      "bytes": 12624,
+      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+      "sha256": "78de54ffa440a111cb4373e3c26ea9c03dbf2fbe81454a0e895a4b01fe514a6b"
+    },
+    {
+      "bytes": 2156,
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/README.md",
+      "sha256": "682e50ffd69d52b49d7958eedb167ebe2bbedbeabb91463eca5d2efce32f037c"
+    },
+    {
+      "bytes": 12508,
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/aggregate.json",
+      "sha256": "e6d4fbf0045672cfc7f541a3b134ba56ec2151649da74178744efdeda8fb1c90"
+    },
+    {
+      "bytes": 4934,
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/final_report.json",
+      "sha256": "3b8a1813a1b1ef76d1e61bfcf53fa1ea8aada6e8be09e06d74c56aeb29fd8902"
+    },
+    {
+      "bytes": 6910,
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/protocol.json",
+      "sha256": "fd362356cdde3f594ab221acf7c258dd22250b60b2a90edd3ea5171069120a7a"
+    },
+    {
+      "bytes": 8603,
+      "path": "docs/evaluations/mechanistic_claim_review_20261117/report.html",
+      "sha256": "200466bfe37eca2c8de3a2bd65b2548338991af70da2ad935f5fd11eb1602886"
+    },
+    {
+      "bytes": 14583,
+      "path": "tools/mechanistic_review/model_review.py",
+      "sha256": "7bdf69c9673eb983e90aa90d64a48bd8928128138bcc3dd3c591445021d2e7ca"
+    },
+    {
+      "bytes": 17824,
+      "path": "tools/mechanistic_review/native_baseline.py",
+      "sha256": "497411ba8f088059f30b4dbc3abde3bcc2245126c503d0f4d5c94d4d8393953d"
+    },
+    {
+      "bytes": 15253,
+      "path": "tools/mechanistic_review/prepare.py",
+      "sha256": "1513c0a1476b7c6435cafeba2acc4983c14947979759c69e32b42ee573a34383"
+    },
+    {
+      "bytes": 27446,
+      "path": "tools/mechanistic_review/publish.py",
+      "sha256": "7814237cd065f0fb460d3caa05a3a9d1e3ad907f2261c30ec82df1a6d855b5f2"
+    },
+    {
+      "bytes": 25856,
+      "path": "tools/mechanistic_review/score.py",
+      "sha256": "84ae298ab56891ce8134b54fad6a6c0af993a550c3194a379d07de09545ba022"
+    },
+    {
+      "bytes": 6237,
+      "path": "tools/mechanistic_review/README.md",
+      "sha256": "3d34f368ffe7bdcc2cfb49d50c035908569aaddb4f3fcf1862b944271a173b0e"
+    },
+    {
+      "bytes": 5071,
+      "path": "tests/test_mechanistic_model_review.py",
+      "sha256": "cc7a8ee29619427fc6f1ef587518361cc40c8faf3d1d8444f5e47247f1eb902f"
+    },
+    {
+      "bytes": 12481,
+      "path": "tests/test_mechanistic_native_baseline.py",
+      "sha256": "f469121c2d5bdd9246c8e0c644df697a40a8c8dc98da42f0a2c3caafd27c0706"
+    },
+    {
+      "bytes": 6723,
+      "path": "tests/test_mechanistic_publish.py",
+      "sha256": "e22ecb0baac24e16fe826857c402878d6981b126289a46834a998e4d8b386736"
+    },
+    {
+      "bytes": 12702,
+      "path": "tests/test_mechanistic_score.py",
+      "sha256": "991b4f48a50e610f03bf08062f6da91f2f6f06d9ac45d3428a4bcb60c7bdff90"
+    }
+  ],
+  "format": "biograph-steward.expert-source-claim-delivery-audit.v1",
+  "frozen_source_files_and_code_unchanged": true,
+  "hosted_public_login_reachable_HTTP": 200,
+  "last_file_pin_check_UTC": "2026-11-17T02:07:13.272606+00:00",
+  "original_source_pins_verified": 8,
+  "owned_model_tunnel_closed": true,
+  "previous_delivery_audit_preserved_private_sha256": "119da6940d6e8d6a9848ac4d50f3bda70fe1fc1a0c4b1fe4e8338073fb8693e7",
+  "production_changes": false,
+  "protected_root_midpoint_DOCX_and_GOA_note_accessed": false,
+  "scope": "Scientific assessment, local code and report checkpoint before the separately authorized public gateway and Neptune capacity update. These file pins describe this checkpoint and are retained as dated evidence.",
+  "source_agent_graph_and_old_scientific_media_receipts_unchanged": true,
+  "status": "passed",
+  "test_groups": {
+    "bounded_model_source_preservation_and_interruptions": 5,
+    "native_INDRA_optional_runtime": 11,
+    "public_aggregate_projection": 6,
+    "scoring_and_typed_graph_views": 7
+  },
+  "tests_are_not_scientific_accuracy": true,
+  "timestamp_UTC": "2026-11-17T00:39:27.644227+00:00",
+  "whole_Pharos_accuracy_claim": false
+}

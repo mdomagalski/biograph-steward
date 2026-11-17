@@ -59,7 +59,7 @@ methods/results supplement. It explains usability, reuse, CIViC's clinical
 workflow and the methods behind the bounded gains, including a formal ProtBoost
 reference. It is ready for user review;
 it has not been submitted. The
-[format and review receipt](evaluations/democratization_delivery_20261116/final_report.json)
+[format and review receipt](evaluations/mechanistic_claim_review_20261117/final_report.json)
 records the preserved layout and intentional final-report label updates.
 
 The accepted final runtime focuses the shared site on the question, graph,

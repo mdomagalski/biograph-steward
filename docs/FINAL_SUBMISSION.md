@@ -184,8 +184,11 @@ preserves the organizer's form layout and section order. Delivered outputs and
 opportunities for further validation replace help requests and a future work
 plan. Its two-page supplement explains methods, CIViC's separate role, measured
 gains and the demonstrated scope of reuse. It cites the original ProtBoost paper
-and uses short sentences to distinguish each contribution. The
-[format and review receipt](evaluations/democratization_delivery_20261116/final_report.json)
+and includes the completed expert-curated source-claim assessment. The latter
+reports three unsupported consensus flags and no supported flags in a
+134-claim reference check, with wider precision improvement still uncertain.
+It uses short sentences to distinguish each contribution. The
+[format and review receipt](evaluations/mechanistic_claim_review_20261117/final_report.json)
 records it as prepared for user review, not submitted. The
 [code-only software ZIP](../output/software/BioGraph_Steward_Software.zip)
 has [clean acceptance for tested source `84ef6a0`](evaluations/democratization_delivery_20261116/software_acceptance.json);
