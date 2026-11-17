@@ -44,7 +44,7 @@ function initializeWorkspaceNavigation(){
   if($('stats'))$('workspaceProvenance').append($('stats'));
   for(const id of ['answerNavigation','workspaceQuestionChoice','plannerPanel','guidedQuestion','civicQuestion'])move(id,'ask');
   // Put broad exploration after the existing focused question flow.
-  const advanced=el('details',undefined,'card');advanced.id='advancedPathExploration';advanced.append(el('summary','Explore a different path · advanced'));advanced.append($('pathExplorer'));$('workspaceAsk').append(advanced);
+  const advanced=el('details',undefined,'card');advanced.id='advancedPathExploration';advanced.append(el('summary','Explore paths in this saved graph'));advanced.append($('pathExplorer'));$('workspaceAsk').append(advanced);
   for(const id of ['assayPanel','inspectionDetails'])move(id,'evidence');
   for(const id of ['functionContextPanel','biologicalComparisonPanel','supportComparatorPanel','benchmarkPanel','refreshPanel']){const item=$(id);if(item)$('comparisonResearchHistory').append(item);}
   $('comparisonPruningControls').append($('pruningPreviewPanel'));
@@ -83,7 +83,7 @@ function setupWorkspace(){
   $('sourceGuideStatus').textContent='Select a claim or choose Inspect source on a path.';
   $('pathExploreStatus').textContent='Searches this saved graph only. No source retrieval or model call is made.';
   $('sourceGuideButton').disabled=!runId;$('pathExploreButton').disabled=!runId;
-  $('sourceGuideSearch').value='';populateSourceGuide();populatePathEntities();
+  $('sourceGuideSearch').value='';populateSourceGuide();
   if(typeof updateReviewWorkflow==='function')updateReviewWorkflow();
   setupEditableCopyDownload();
   if(!savedReviewOnly())setupNeptune();
@@ -91,6 +91,8 @@ function setupWorkspace(){
   const relations=[...new Set((graph.assertions||[]).map(a=>a.predicate))].sort();
   $('pathPredicate').replaceChildren(el('option','All saved relationship types'));$('pathPredicate').options[0].value='';
   for(const predicate of relations){const option=el('option',relationLabel(predicate));option.value=predicate;$('pathPredicate').append(option);}
+  $('pathEntitySearch').value='';$('pathTargetSearch').value='';$('pathSource').value='';$('pathTarget').value='';
+  $('pathView').value='candidates';populatePathEntities();
   if(!workspaceLoaded){
     const requested=new URLSearchParams(location.search).get('view');
     showWorkspaceView(workspaceNames.includes(requested)?requested:'ask',{persist:false});
@@ -113,18 +115,90 @@ function populateSourceGuide(){
 }
 function populatePathEntities(){
   if(!graph)return;
-  const query=$('pathEntitySearch').value.trim().toLowerCase();
-  const matches=graph.nodes.filter(n=>!query||[n.id,n.name,n.sym,n.symbol].some(v=>typeof v==='string'&&v.toLowerCase().includes(query)));
-  const shown=matches.slice(0,300);
-  for(const id of ['pathSource','pathTarget']){
-    const previous=$(id).value,selected=graph.nodes.find(n=>n.id===previous),items=[...shown];
-    if(selected&&!items.some(n=>n.id===previous))items.push(selected);
-    $(id).replaceChildren();
-    if(id==='pathTarget'){const option=el('option','Any reachable entity');option.value='';$(id).append(option);}
-    for(const node of items){const option=el('option',(node.sym||node.name||node.id)+' · '+node.id);option.value=node.id;$(id).append(option);}
-    if(items.some(n=>n.id===previous))$(id).value=previous;
+  const index=pathNavigationIndex(),scope=pathNavigationScope(index),query=$('pathEntitySearch').value.trim().toLowerCase();
+  const matches=[...scope.adjacency.keys()].map(id=>index.nodes.get(id)).filter(node=>pathNodeMatches(node,query)).sort(pathNodeOrder);
+  const shown=matches.slice(0,300),previous=$('pathSource').value;
+  $('pathSource').replaceChildren();
+  for(const node of shown){const option=el('option',pathNodeLabel(node));option.value=node.id;$('pathSource').append(option);}
+  const selected=shown.find(node=>node.id===previous)||shown[0];$('pathSource').value=selected?.id||'';
+  $('pathSource').disabled=!shown.length;
+  if(previous!==$('pathSource').value){$('pathTargetSearch').value='';$('pathTarget').value='';}
+  $('pathEntityCount').textContent=!scope.adjacency.size?($('pathView').value==='accepted'?'No starting entities have locally accepted assertions in this scope. Choose Candidates and accepted to inspect unreviewed evidence.':'No starting entities have eligible outgoing assertions under these filters.'):
+    matches.length+' matching starting '+(matches.length===1?'entity':'entities')+'. Proteins first, then name. '+(matches.length>300?'Showing the first 300; keep typing to narrow the list.':'');
+  const reachable=pathReachableEntities(scope.adjacency,selected?.id,Number($('pathHops').value)||2),targetQuery=$('pathTargetSearch').value.trim().toLowerCase();
+  const endpoints=[...reachable.ids].map(id=>index.nodes.get(id)).filter(node=>pathNodeMatches(node,targetQuery)).sort(pathNodeOrder),endShown=endpoints.slice(0,300),oldTarget=$('pathTarget').value;
+  $('pathTarget').replaceChildren();const any=el('option',targetQuery?'Choose a matching reachable entity':'Any reachable entity');any.value='';$('pathTarget').append(any);
+  for(const node of endShown){const option=el('option',pathNodeLabel(node));option.value=node.id;$('pathTarget').append(option);}
+  $('pathTarget').value=endShown.some(node=>node.id===oldTarget)?oldTarget:(targetQuery?endShown[0]?.id||'':'');
+  $('pathTarget').disabled=!endShown.length;
+  $('pathTargetCount').textContent=endpoints.length+' matching reachable '+(endpoints.length===1?'entity':'entities')+' within '+$('pathHops').value+' '+($('pathHops').value==='1'?'connection':'connections')+'. '+(endpoints.length>300?'Showing the first 300; keep typing to narrow the list. ':'')+(reachable.truncated?'Suggestions stop at the 2,000-expansion search bound; other routes may exist.':'Only recorded routes in the current evidence view are suggested.');
+  $('pathExploreButton').disabled=!runId||!selected||(!!targetQuery&&!endShown.length);
+  renderPathExamples(index);
+}
+let pathNavigationGraph=null,pathNavigationCache=null;
+function pathNodeLabel(node){return (node.sym||node.symbol||node.name||node.id)+' · '+node.id;}
+function pathNodeMatches(node,query){return !query||[node.id,node.name,node.sym,node.symbol].some(value=>typeof value==='string'&&value.toLowerCase().includes(query));}
+function pathNodeOrder(a,b){return Number(b.category==='biolink:Protein')-Number(a.category==='biolink:Protein')||pathNodeLabel(a).localeCompare(pathNodeLabel(b),undefined,{sensitivity:'base',numeric:true})||a.id.localeCompare(b.id);}
+function pathNavigationIndex(){
+  if(pathNavigationGraph===graph&&pathNavigationCache)return pathNavigationCache;
+  const nodes=new Map((graph.nodes||[]).map(node=>[node.id,node])),edges=new Map((graph.edges||[]).map(edge=>[edge.id,edge]));
+  // This previews exploration.py's existing source/review policy for selectors.
+  // The backend still validates and performs every submitted path query.
+  const assertions=(graph.assertions||[]).filter(assertion=>{
+    if(!['candidate','provisional','accepted'].includes(assertion.lifecycle_state)||assertion.subject===assertion.object||!nodes.has(assertion.subject)||!nodes.has(assertion.object))return false;
+    const ids=assertion.structurally_usable_evidence_ids;if(!Array.isArray(ids)||ids.some(id=>!edges.has(id)))return false;
+    const evidence=[...new Set(ids)].map(id=>edges.get(id)).filter(edge=>edge.status==='passed_structural_checks');
+    return evidence.length>0&&evidence.every(edge=>edge.subject===assertion.subject&&edge.object===assertion.object&&edge.predicate===assertion.predicate&&pathQualifierKey(edge.qualifiers||{})===pathQualifierKey(assertion.qualifiers||{}));
+  });
+  pathNavigationGraph=graph;pathNavigationCache={nodes,assertions};return pathNavigationCache;
+}
+function pathQualifierKey(value){
+  const sorted=item=>Array.isArray(item)?item.map(sorted):item&&typeof item==='object'?Object.fromEntries(Object.keys(item).sort().map(key=>[key,sorted(item[key])])):item;
+  return JSON.stringify(sorted(Object.fromEntries(Object.entries(value).filter(([,item])=>item!==null))));
+}
+function pathRawOrder(a,b){return a<b?-1:a>b?1:0;}
+function pathNavigationScope(index){
+  const adjacency=new Map(),accepted=$('pathView').value==='accepted',predicate=$('pathPredicate').value;
+  const add=(from,to,id)=>{if(!adjacency.has(from))adjacency.set(from,[]);adjacency.get(from).push({to,id});};
+  for(const assertion of index.assertions){
+    if((accepted&&assertion.lifecycle_state!=='accepted')||(predicate&&assertion.predicate!==predicate))continue;
+    add(assertion.subject,assertion.object,assertion.id);
+    if(assertion.symmetric===true&&assertion.subject!==assertion.object)add(assertion.object,assertion.subject,assertion.id);
   }
-  $('pathEntityCount').textContent=matches.length+' matching entities. '+(matches.length>300?'Showing the first 300; narrow the search. Current selections remain available.':'');
+  for(const rows of adjacency.values())rows.sort((a,b)=>pathRawOrder(a.to,b.to)||pathRawOrder(a.id,b.id));
+  return {adjacency};
+}
+function pathReachableEntities(adjacency,source,hops){
+  const ids=new Set(),queue=source?[[source]]:[];let cursor=0,expansions=0,truncated=false;
+  while(cursor<queue.length&&!truncated){
+    const route=queue[cursor++];
+    for(const {to} of adjacency.get(route.at(-1))||[]){
+      if(expansions>=2000){truncated=true;break;}expansions++;
+      if(route.includes(to))continue;
+      ids.add(to);if(route.length<hops)queue.push([...route,to]);
+    }
+  }
+  return {ids,truncated};
+}
+function pathExampleQueries(index){
+  const families=[['Recorded protein association',a=>a.kind==='protein_interaction','UniProtKB:P01116'],['GO annotation',a=>['native_go_annotation','go_annotation'].includes(a.kind),'UniProtKB:P04637'],['Pathway membership',a=>a.kind==='pathway_membership','UniProtKB:P15056']];
+  return families.map(([label,include,preferred])=>{
+    const choices=index.assertions.filter(include).map(a=>({a,source:a.object===preferred&&a.symmetric===true?a.object:a.subject,target:a.object===preferred&&a.symmetric===true?a.subject:a.object}));
+    choices.sort((x,y)=>Number(y.source===preferred)-Number(x.source===preferred)||Number(y.target==='UniProtKB:Q9Y5S2')-Number(x.target==='UniProtKB:Q9Y5S2')||Number(y.target==='GO:0005634')-Number(x.target==='GO:0005634')||Number(!!y.a.qualifiers?.evidence_type?.includes('native_physical'))-Number(!!x.a.qualifiers?.evidence_type?.includes('native_physical'))||pathNodeOrder(index.nodes.get(x.target),index.nodes.get(y.target))||x.a.id.localeCompare(y.a.id));
+    const chosen=choices[0];return chosen?{label,source:chosen.source,target:chosen.target,predicate:chosen.a.predicate,assertion_id:chosen.a.id}:null;
+  }).filter(Boolean);
+}
+function renderPathExamples(index){
+  const box=$('pathExamples');if(!box)return;box.replaceChildren();
+  const examples=pathExampleQueries(index);if(!examples.length)return;
+  box.append(el('p','Try a route that is present in this saved workspace. Examples include candidates, use one connection and show the underlying source records. They do not imply a biological mechanism.'));
+  const list=el('div',undefined,'reviewer-examples');
+  for(const example of examples){
+    const button=el('button',pathNodeLabel(index.nodes.get(example.source)).split(' · ')[0]+' → '+pathNodeLabel(index.nodes.get(example.target)).split(' · ')[0]+' · '+example.label,'secondary');button.type='button';
+    button.onclick=()=>{invalidateExploration();$('pathEntitySearch').value=example.source;$('pathTargetSearch').value='';$('pathView').value='candidates';$('pathPredicate').value=example.predicate;$('pathHops').value='1';populatePathEntities();$('pathTarget').value=example.target;runPathExploration();};
+    list.append(button);
+  }
+  box.append(list);
 }
 function populateNeptuneNodes(){
   if(!graph)return;
@@ -511,7 +585,7 @@ function renderNativeGoContext(result,box){
   for(const note of result.limitations||[])provenance.append(el('p',note,'small'));box.append(provenance);
 }
 async function runPathExploration(){
-  if(!runId)return;
+  if(!runId||!$('pathSource').value||$('pathExploreButton').disabled)return;
   const request=++pathRequest,sourceRun=runId,sourceSnapshot=graph.snapshot_sha256;
   $('pathExploreStatus').textContent='Following saved assertions…';$('pathExploreButton').disabled=true;$('pathExploreResults').replaceChildren();
   try{
@@ -520,9 +594,9 @@ async function runPathExploration(){
     if(request!==pathRequest||sourceRun!==runId)return;
     if(result.source_run!==sourceRun||result.snapshot_sha256!==sourceSnapshot)throw new Error('Path result belongs to different saved evidence.');
     renderExploration(result);
-    $('pathExploreStatus').textContent=result.search.paths_returned+' paths shown. '+(result.search.truncated?'Search stopped at '+result.search.truncation_reason.replaceAll('_',' ')+'. More paths may exist.':'Search complete within the selected bounds.')+' '+result.search.expansions+' assertion expansions.';
+    $('pathExploreStatus').textContent=result.search.paths_returned+' '+(result.search.paths_returned===1?'path':'paths')+' shown. '+(result.search.truncated?'Search stopped at '+result.search.truncation_reason.replaceAll('_',' ')+'. More paths may exist.':'Search complete within the selected bounds.')+' '+result.search.expansions+' assertion expansions.';
   }catch(error){if(request===pathRequest)$('pathExploreStatus').textContent=error.message;}
-  finally{if(request===pathRequest)$('pathExploreButton').disabled=false;}
+  finally{if(request===pathRequest)$('pathExploreButton').disabled=!runId||!$('pathSource').value||(!!$('pathTargetSearch').value.trim()&&!$('pathTarget').value);}
 }
 function renderExploration(result){
   const box=$('pathExploreResults');box.replaceChildren(el('p',result.interpretation,'notice'));
@@ -542,11 +616,14 @@ function renderExploration(result){
 }
 initializeWorkspaceNavigation();
 function invalidateSourceGuide(){inspectionRequest++;$('sourceGuideOutput').replaceChildren();$('sourceGuideStatus').textContent='Selection changed. Open the guide for this source.';}
-function invalidateExploration(){pathRequest++;$('pathExploreResults').replaceChildren();$('pathExploreStatus').textContent='Scope changed. Explore paths for the current selections.';$('pathExploreButton').disabled=!runId;}
+function invalidateExploration(){pathRequest++;$('pathExploreResults').replaceChildren();$('pathExploreStatus').textContent='Scope changed. Explore paths for the current selections.';$('pathExploreButton').disabled=!runId||!$('pathSource').value||(!!$('pathTargetSearch').value.trim()&&!$('pathTarget').value);}
 $('sourceGuideSearch').addEventListener('input',()=>{invalidateSourceGuide();populateSourceGuide();});
 $('sourceGuideSelection').addEventListener('change',invalidateSourceGuide);
 $('pathEntitySearch').addEventListener('input',()=>{invalidateExploration();populatePathEntities();});
-for(const id of ['pathSource','pathTarget','pathHops','pathView','pathPredicate'])$(id).addEventListener('change',invalidateExploration);
+$('pathTargetSearch').addEventListener('input',()=>{invalidateExploration();populatePathEntities();});
+$('pathSource').addEventListener('change',()=>{invalidateExploration();$('pathTargetSearch').value='';$('pathTarget').value='';populatePathEntities();});
+$('pathTarget').addEventListener('change',invalidateExploration);
+for(const id of ['pathHops','pathView','pathPredicate'])$(id).addEventListener('change',()=>{invalidateExploration();populatePathEntities();});
 $('sourceGuideForm').addEventListener('submit',event=>{event.preventDefault();loadSourceGuide($('sourceGuideSelection').value);});
 $('neptuneNodeSearch').addEventListener('input',()=>{populateNeptuneNodes();invalidateNeptuneSelection();});
 $('neptuneNode').addEventListener('change',invalidateNeptuneSelection);

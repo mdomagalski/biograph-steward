@@ -13,7 +13,7 @@ function workspace({questionFailure=false,deferQuestion=false}={}){
  const graph=deferred(),question=deferred(),calls=[],messages=[],bindings=[];
  const context=vm.createContext({$,URLSearchParams,savedRun:'saved',runId:null,location:{search:'?view=data&question=q'},
    busy:on=>calls.push(['busy',on]),status:(message,error)=>messages.push({message,error}),
-   showGraph:value=>calls.push(['graph',value]),showQualificationSummary(){},showWorkspaceView(){},navigateWork(){},
+   showGraph:value=>calls.push(['graph',value]),showQualificationSummary(){},showWorkspaceView:view=>calls.push(['workspace',view]),navigateWork:step=>calls.push(['navigate',step]),
    bindQuestionAnswer:()=>bindings.push('question'),bindAssayAnswer:()=>bindings.push('assay'),bindCivicAnswer:()=>bindings.push('therapy'),
    fetch:async url=>{calls.push(['fetch',url]);if(url==='/api/run/saved')return graph.promise;
     if(deferQuestion)await question.promise;
@@ -37,6 +37,14 @@ test('workspace opening shows a nonblocking top status until graph and cited que
  h.question.resolve();await done;
  assert.equal(h.$('workspaceLoadingStatus').hidden,true);assert.equal(h.$('workspaceLoadingStatus').attributes['data-loading'],'false');
  assert.equal(h.$('workspaceViews').attributes['aria-busy'],'false');assert.deepEqual(h.bindings,['question']);
+});
+
+test('ordinary saved questions open their overview while explicit agent workspace views remain unchanged',async()=>{
+ for(const view of ['ask','data']){
+  const h=workspace();h.context.location.search='?view='+view+'&question=q';h.context.questionAnswer={results:[{protein:{id:'fixture'}}]};const done=h.start();h.graph.resolve(h.response());await done;
+  if(view==='ask')assert.ok(h.calls.some(call=>call[0]==='navigate'&&call[1]==='graph'));
+  else{assert.ok(h.calls.some(call=>call[0]==='workspace'&&call[1]==='data'));assert.ok(!h.calls.some(call=>call[0]==='navigate'));}
+ }
 });
 
 test('failed graph and rejected saved-question loads settle the ring and keep a visible error without false readiness',async()=>{

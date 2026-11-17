@@ -130,6 +130,19 @@ The launcher chooses an available port, prints its local address and opens your
 browser. It listens only on 127.0.0.1, on your own computer. Keep the terminal
 running. First opening checks the saved sources and can take some time.
 
+EXPLORE THE SAVED GRAPH
+Question & graph opens an overview of the returned results. Show in graph
+focuses one result; Show all results restores the overview. Browse saved
+workspace opens its bounded graph and record tables. The question diagram
+is a selection from the workspace, rather than every saved entity at once.
+
+Under Explore paths in this saved graph, choose a connected example or type a
+name to filter starting entities. End suggestions follow saved relationships,
+direction, evidence state and connection limits. Examples use saved records;
+a path does not establish a biological mechanism. Results & evaluation explains
+source qualification and the available assessments. Hosted assessment pages
+and optional global inspectors are separate from this local source package.
+
 RECORD YOUR EVIDENCE REVIEW
 1. Read the question and graph. Under Inspect sources, select a saved claim and
    choose Guide me through this source.

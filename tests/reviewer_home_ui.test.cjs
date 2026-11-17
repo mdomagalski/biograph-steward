@@ -125,7 +125,7 @@ test('historical pruning catalogue does not auto-select a graph or rewrite a fre
 test('actual page keeps construction collapsed and reviewer steps separate from research history',()=>{
   const html=fs.readFileSync(path.join(root,'biograph_steward/ui.html'),'utf8');
   assert.match(html,/<details id="controls" class="card">/);assert.doesNotMatch(html,/<details id="controls"[^>]*\bopen\b/);
-  for(const label of ['Start here','Question &amp; graph','Inspect sources','What changed','Read the cited answer','Inspect its source'])assert.ok(html.includes(label));
+  for(const label of ['Start here','Question &amp; graph','Inspect sources','Results &amp; evaluation','Read the cited answer','Inspect its source'])assert.ok(html.includes(label));
   assert.ok(html.includes('id="comparisonPruningControls"'));assert.ok(html.includes('id="appliedQualificationPanel"'));
   assert.equal((html.match(/id="questionText"/g)||[]).length,1);
   assert.ok(html.indexOf('id="questionText"')<html.indexOf('id="customQuestionOptions"'));

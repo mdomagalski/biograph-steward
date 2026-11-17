@@ -79,7 +79,7 @@ function savedQuestionURL(id,search=typeof location==='undefined'?'':location.se
 }
 function bindQuestionAnswer(answer,id){
   if(answer.source_run!==runId||answer.graph_basis_sha256!==graph.question_basis_sha256)throw new Error('This question result belongs to a different source run or review state. Run the question again.');
-  questionAnswer=answer;questionId=id;questionSelection=answer.results[0]?.protein.id||null;
+  questionAnswer=answer;questionId=id;questionSelection=null;
   $('questionProtein').value=answer.plan.protein.id;$('questionView').value=answer.plan.view;$('nativePathwaySupport').checked=answer.plan.source_support==='native_supported';
   $('questionRelations').value=answer.template==='native_string_physical.v1'?'native_physical':answer.template==='qualified_pathway_source_context.v1'?'qualified_pathway_sources':answer.plan.relations.length===2?'both':answer.plan.relations[0];
   $('questionLimit').value=answer.plan.max_results;$('questionPaths').value=answer.plan.max_paths_per_protein;
@@ -92,7 +92,7 @@ async function runQuestion(){
   questionBusy=true;for(const input of $('questionForm').elements)input.disabled=true;
   $('questionOutput').classList.add('hidden');questionAnswer=null;questionId=null;history.replaceState(null,'','?run='+encodeURIComponent(runId));
   updateWorkNavigation();$('questionStatus').textContent='Finding exact-scope evidence paths and assembling their citations...';
-  try{const response=await api('/api/question',{run_id:runId,...questionOptions()});bindQuestionAnswer(response.answer,response.question_id);$('questionStatus').textContent='Question result saved with its source snapshot, review basis and citations.';navigateWork('answer');}
+  try{const response=await api('/api/question',{run_id:runId,...questionOptions()});bindQuestionAnswer(response.answer,response.question_id);$('questionStatus').textContent='Question result saved with its source snapshot, review basis and citations.';navigateWork('graph');}
   catch(error){$('questionStatus').textContent=error.message;}
   finally{questionBusy=false;for(const input of $('questionForm').elements)input.disabled=false;$('questionRun').disabled=!runId;updateQuestionRankingControl();}
 }
@@ -127,12 +127,23 @@ function renderQuestion(){
   $('questionGaps').replaceChildren();for(const text of answer.limitations)$('questionGaps').append(el('li',text));
   const trace={snapshot_sha256:answer.snapshot_sha256,graph_basis_sha256:answer.graph_basis_sha256,review_events_sha256:answer.review_events_sha256,answer_sha256:answer.answer_sha256,availability:answer.availability,selected_coverage:answer.plan.selected_coverage,excluded_assertions:answer.excluded_assertions};if(physical)trace.ranking=answer.ranking;
   $('questionTrace').textContent=JSON.stringify(trace,null,2);
+  const views=$('questionGraphView');if(views){views.replaceChildren();const overview=el('option','All '+answer.results.length+' returned results');overview.value='';views.append(overview);for(const result of answer.results){const option=el('option',(result.protein.sym||result.protein.name||result.protein.id)+' — individual paths');option.value=result.protein.id;views.append(option);}views.onchange=()=>selectQuestionResult(views.value||null);}
+  if($('questionGraphAll'))$('questionGraphAll').onclick=()=>selectQuestionResult(null);
+  if($('questionWorkspaceBrowse'))$('questionWorkspaceBrowse').onclick=browseQuestionWorkspaceGraph;
   $('questionGraphSection').classList.toggle('hidden',!answer.results.length);renderQuestionGraph();updateWorkNavigation();
 }
 function selectQuestionResult(id){
-  if(!questionAnswer?.results.some(result=>result.protein.id===id))return false;
+  if(!questionAnswer||(id!==null&&!questionAnswer.results.some(result=>result.protein.id===id)))return false;
   if(questionSelection!==id)$('questionCitation').replaceChildren();
   questionSelection=id;renderQuestionGraph();navigateWork('graph');return true;
+}
+function browseQuestionWorkspaceGraph(){
+  if(!questionAnswer||typeof graph==='undefined'||!graph)return false;
+  $('inspectionDetails').open=true;$('evidenceView').value='inspection';$('assertionFamily').value='all';$('tdlFilter').value='all';$('pathwaysVisible').checked=true;
+  const anchor=questionAnswer.plan.protein.id,proteins=$('assertionProtein');proteins.value=[...(proteins.options||[])].some(option=>option.value===anchor)?anchor:'all';
+  if(typeof activeTab!=='undefined')activeTab='assertions';if(typeof tablePage!=='undefined')tablePage=0;
+  if(typeof document!=='undefined')document.querySelectorAll('.tab').forEach(button=>button.classList.toggle('active',button.dataset.tab==='assertions'));
+  showWorkspaceView('evidence');render();$('graphBox').scrollIntoView?.({block:'start'});return true;
 }
 function questionRankingCoverage(ranking){
   const parts=[];
@@ -149,8 +160,33 @@ function questionPhysicalPriorityText(result,ranking){
   const states={unmapped:'Protein identifier not mapped by STRING',ambiguous:'Ambiguous STRING identifier mapping',no_functional_row:'No functional-network row returned',no_returned_functional_row:'No functional-network row returned',physical_absent:'Physical score absent or below the requested source profile',physical_absent_or_below_profile:'Physical score absent or below the requested source profile',physical_not_returned_under_profile:'Physical score absent or below the requested source profile',collapsed:'Protein pair maps to one STRING representative',collapsed_representative:'Protein pair maps to one STRING representative'};
   return 'STRING '+release+' physical score unavailable: '+(states[priority.state]||(priority.state||'not supplied').replaceAll('_',' '))+'. Retained after scored matches; this is not evidence of no interaction.';
 }
+function renderQuestionOverview(answer){
+  // Reuse the source-agent column layout and guided citation hit targets. The
+  // renderer consumes only returned paths; it never requests or invents edges.
+  const anchor=answer.plan.protein.id,index=new Map(answer.nodes.map(node=>[node.id,node])),results=answer.results.slice(0,20),resultIds=new Set(results.map(result=>result.protein.id)),allRequired=new Set(answer.results.flatMap(result=>(result.paths||[]).flatMap(path=>path.assertion_ids||[]))),required=new Set(results.flatMap(result=>(result.paths||[]).flatMap(path=>path.assertion_ids||[])));
+  const allCitations=answer.citations.filter(citation=>allRequired.has(citation.assertion_id)),citations=answer.citations.filter(citation=>required.has(citation.assertion_id)),pathIds=results.flatMap(result=>(result.paths||[]).flatMap(path=>path.node_ids||[])),allNodeIds=new Set([anchor,...answer.results.map(result=>result.protein.id),...answer.results.flatMap(result=>(result.paths||[]).flatMap(path=>path.node_ids||[])),...allCitations.flatMap(citation=>[citation.subject,citation.object])].filter(id=>index.has(id)));
+  const wanted=[...new Set([anchor,...resultIds,...pathIds,...citations.flatMap(citation=>[citation.subject,citation.object])])].filter(id=>index.has(id)),shown=wanted.slice(0,60),shownIds=new Set(shown),edges=citations.filter(citation=>citation.subject!==citation.object&&shownIds.has(citation.subject)&&shownIds.has(citation.object)).slice(0,120),partners=shown.filter(id=>id!==anchor&&resultIds.has(id)),contexts=shown.filter(id=>id!==anchor&&!resultIds.has(id));
+  const star=contexts.length===0&&edges.every(edge=>edge.subject===anchor||edge.object===anchor),left=star?partners.slice(0,Math.ceil(partners.length/2)):[],right=star?partners.slice(left.length):partners,rows=star?Math.max(left.length,right.length):Math.max(contexts.length,partners.length),height=Math.max(300,rows*60+70),positions=new Map([[anchor,{x:star?500:150,y:height/2}]]);
+  for(const [ids,x] of star?[[left,150],[right,850]]:[[contexts,500],[partners,850]])ids.forEach((id,i)=>positions.set(id,{x,y:45+i*(height-90)/Math.max(1,ids.length-1)}));
+  const svg=svgEl('svg',{viewBox:'0 0 1000 '+height,role:'img','aria-label':'Question evidence overview: '+partners.length+' of '+answer.results.length+' returned results'});svg.style.minWidth='640px';
+  function boundary(a,b){const dx=b.x-a.x,dy=b.y-a.y,ratio=1/Math.max(Math.abs(dx)/110,Math.abs(dy)/20);return{x:a.x+dx*ratio,y:a.y+dy*ratio};}
+  for(const citation of edges){const a=positions.get(citation.subject),b=positions.get(citation.object);if(!a||!b||citation.subject===citation.object)continue;const from=boundary(a,b),to=boundary(b,a),accepted=citation.review_state==='accepted',coordinates={x1:from.x,y1:from.y,x2:to.x,y2:to.y},line=svgEl('line',{...coordinates,stroke:accepted?'#147c83':'#b58236','stroke-width':2,'stroke-dasharray':accepted?'':'7 4','pointer-events':'none','aria-hidden':'true'}),hit=svgEl('line',{...coordinates,stroke:'transparent','stroke-width':14,'stroke-dasharray':'none','stroke-linecap':'round','vector-effect':'non-scaling-stroke','pointer-events':'stroke',tabindex:0,role:'button','aria-label':'Inspect evidence '+citation.id});
+    const title=svgEl('title');title.textContent='['+citation.id+'] '+relationLabel(citation.predicate)+' | '+citation.review_state;hit.append(title);hit.style.cursor='pointer';hit.onclick=()=>inspectQuestionCitation(citation.id);hit.onkeydown=event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();inspectQuestionCitation(citation.id);}};svg.append(line,hit);
+  }
+  for(const id of shown){const node=index.get(id),p=positions.get(id);if(!p)continue;const label=node.sym||node.symbol||node.name||id,protein=node.category==='biolink:Protein',disease=node.category==='biolink:Disease',group=svgEl('g');group.append(svgEl('rect',{x:p.x-110,y:p.y-20,width:220,height:40,rx:7,fill:protein?'#e2f2f1':disease?'#fff0d4':'#eeedf7',stroke:'#76909d'}));const text=svgEl('text',{x:p.x,y:p.y+4,'text-anchor':'middle','font-size':12,fill:'#172b3a'});text.textContent=label.length>29?label.slice(0,28)+'…':label;const title=svgEl('title');title.textContent=label+' | '+id;group.append(text,title);
+    if(resultIds.has(id)){group.setAttribute('tabindex',0);group.setAttribute('role','button');group.setAttribute('aria-label','Show individual paths for '+label);group.style.cursor='pointer';group.onclick=()=>selectQuestionResult(id);group.onkeydown=event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();selectQuestionResult(id);}};}svg.append(group);
+  }
+  const omittedResults=answer.results.length-partners.length,omittedNodes=allNodeIds.size-shown.length,omittedEdges=allCitations.length-edges.length;
+  $('questionGraphTitle').textContent='Question result overview: '+(answer.plan.protein.sym||index.get(anchor)?.name||anchor);
+  $('questionGraphSelection').textContent='Overview: '+partners.length+' of '+answer.results.length+' returned results · '+shown.length+' of '+allNodeIds.size+' entities · '+edges.length+' of '+allCitations.length+' cited connections.'+(omittedResults>0||omittedNodes>0||omittedEdges>0?' Drawing limits: 20 results, 60 entities and 120 cited connections. Omitted items remain in the summary and question export.':'');
+  $('questionGraph').replaceChildren(svg);$('questionGraphNote').textContent='All drawn connections come from the saved question’s returned paths. Select a result node for its individual paths, or a line to inspect its citation. Solid teal: locally accepted. Dashed amber: requires review. Shared annotations and physical associations retain their recorded meanings; the drawing does not establish direct binding or causality.';
+}
 function renderQuestionGraph(){
-  const answer=questionAnswer,result=answer?.results.find(r=>r.protein.id===questionSelection);if(!result)return;
+  const answer=questionAnswer;if(!answer)return;const result=answer.results.find(r=>r.protein.id===questionSelection);
+  if($('questionGraphView'))$('questionGraphView').value=result?questionSelection:'';
+  if($('questionGraphAll'))$('questionGraphAll').disabled=!result;
+  if($('questionGraphScope')){const workspace=typeof graph==='undefined'?null:graph,nodes=workspace?.nodes?.length,records=workspace?.edges?.length;$('questionGraphScope').textContent='These diagrams show this question’s returned evidence, not the complete workspace.'+(typeof nodes==='number'&&typeof records==='number'?' The saved workspace contains '+nodes.toLocaleString()+' entities and '+records.toLocaleString()+' source records.':'')+' Browse saved workspace opens its bounded graph and full record tables; complete data remain in the workspace exports.';}
+  if(!result){for(const button of $('questionSummary').querySelectorAll?.('[data-question-result]')||[]){button.textContent='Show in graph';button.setAttribute('aria-pressed','false');button.classList.toggle('secondary',true);}renderQuestionOverview(answer);return;}
   const selection=$('questionGraphSelection'),selectedName=result.protein.sym||result.protein.name||result.protein.id;
   const selectedText='Result shown in graph: '+selectedName+' ('+(answer.results.indexOf(result)+1)+' of '+answer.results.length+' shown results).';
   if(selection&&selection.textContent!==selectedText)selection.textContent=selectedText;
