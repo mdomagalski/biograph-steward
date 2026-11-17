@@ -101,12 +101,34 @@ class NeptuneDeploymentTests(unittest.TestCase):
         self.assertNotIn('Default', self.template['Parameters']['EngineVersion'])
         for name in ('WriterInstance', 'ReaderInstance'):
             instance = self.resources[name]['Properties']
-            self.assertEqual(instance['DBInstanceClass'], 'db.r6g.large')
+            parameter = name + 'Class'
+            self.assertEqual(instance['DBInstanceClass'], {'Ref': parameter})
+            self.assertEqual(self.template['Parameters'][parameter]['Default'], 'db.r6g.large')
             self.assertFalse(instance['PubliclyAccessible'])
         self.assertEqual(self.template['Parameters']['EnableReader']['Default'], 'false')
         self.assertEqual(self.resources['ReaderInstance']['Condition'], 'MakeReader')
         self.assertEqual(len(self.resources['DbSubnetGroup']['Properties']['SubnetIds']), 2)
         self.assertIn('DistinctSubnets', self.template['Rules'])
+
+    def test_reader_class_canary_preserves_writer_default_and_cluster_protection(self):
+        parameters = self.template['Parameters']
+        selected = {name: value.get('Default') for name, value in parameters.items()}
+        selected['ReaderInstanceClass'] = 'db.t4g.medium'
+        for name in ('WriterInstanceClass', 'ReaderInstanceClass'):
+            self.assertEqual(parameters[name]['Type'], 'String')
+            self.assertEqual(set(parameters[name]['AllowedValues']), {'db.r6g.large', 'db.t4g.medium'})
+            self.assertIn(selected[name], parameters[name]['AllowedValues'])
+        writer = self.resources['WriterInstance']['Properties']
+        reader = self.resources['ReaderInstance']['Properties']
+        self.assertEqual(selected[writer['DBInstanceClass']['Ref']], 'db.r6g.large')
+        self.assertEqual(selected[reader['DBInstanceClass']['Ref']], 'db.t4g.medium')
+        for resource in (writer, reader):
+            self.assertEqual(resource['DBClusterIdentifier'], {'Ref': 'NeptuneCluster'})
+            self.assertFalse(resource['PubliclyAccessible'])
+        cluster = self.resources['NeptuneCluster']['Properties']
+        self.assertEqual(cluster['EngineVersion'], {'Ref': 'EngineVersion'})
+        self.assertTrue(cluster['IamAuthEnabled'] and cluster['StorageEncrypted'] and cluster['DeletionProtection'])
+        self.assertEqual(cluster['BackupRetentionPeriod'], 7)
 
     def test_8182_is_scoped_to_app_group_in_both_directions(self):
         inbound = self.resources['AppToNeptuneIngress']['Properties']
