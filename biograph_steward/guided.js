@@ -117,7 +117,7 @@ function renderQuestion(){
   }
   for(const result of answer.results){
     const box=el('details',undefined,'evidence');box.open=result.protein.id===questionSelection;box.append(el('summary',(result.protein.sym||result.protein.name)+' | '+result.review_status.replaceAll('_',' ')+' | '+result.paths.length+' shown '+(result.paths.length===1?'path':'paths')));
-    box.ontoggle=()=>{if(!box.open)return;questionSelection=result.protein.id;$('questionCitation').replaceChildren();for(const other of $('questionSummary').children)if(other!==box&&other.tagName==='DETAILS')other.open=false;renderQuestionGraph();};
+    const show=el('button','Show in graph','secondary');show.type='button';show.dataset.questionResult=result.protein.id;show.setAttribute('aria-controls','questionGraphSection');show.setAttribute('aria-label','Show evidence graph for '+(result.protein.sym||result.protein.name||result.protein.id));show.onclick=()=>selectQuestionResult(result.protein.id);box.append(show);
     if(physical)box.append(el('p',questionPhysicalPriorityText(result,answer.ranking||{}),'small'));
     for(const s of answer.summary.filter(s=>s.protein_id===result.protein.id)){const p=el('p',s.text+' ');for(const cid of s.citation_ids){const b=el('button','['+cid+']','citation-link');b.type='button';b.setAttribute('aria-label','Inspect evidence '+cid);b.onclick=()=>inspectQuestionCitation(cid);p.append(b);}box.append(p);}
     if(result.omitted_paths)box.append(el('p',result.omitted_paths+' additional eligible paths omitted by the per-protein limit.','small'));
@@ -128,6 +128,11 @@ function renderQuestion(){
   const trace={snapshot_sha256:answer.snapshot_sha256,graph_basis_sha256:answer.graph_basis_sha256,review_events_sha256:answer.review_events_sha256,answer_sha256:answer.answer_sha256,availability:answer.availability,selected_coverage:answer.plan.selected_coverage,excluded_assertions:answer.excluded_assertions};if(physical)trace.ranking=answer.ranking;
   $('questionTrace').textContent=JSON.stringify(trace,null,2);
   $('questionGraphSection').classList.toggle('hidden',!answer.results.length);renderQuestionGraph();updateWorkNavigation();
+}
+function selectQuestionResult(id){
+  if(!questionAnswer?.results.some(result=>result.protein.id===id))return false;
+  if(questionSelection!==id)$('questionCitation').replaceChildren();
+  questionSelection=id;renderQuestionGraph();navigateWork('graph');return true;
 }
 function questionRankingCoverage(ranking){
   const parts=[];
@@ -146,6 +151,10 @@ function questionPhysicalPriorityText(result,ranking){
 }
 function renderQuestionGraph(){
   const answer=questionAnswer,result=answer?.results.find(r=>r.protein.id===questionSelection);if(!result)return;
+  const selection=$('questionGraphSelection'),selectedName=result.protein.sym||result.protein.name||result.protein.id;
+  const selectedText='Result shown in graph: '+selectedName+' ('+(answer.results.indexOf(result)+1)+' of '+answer.results.length+' shown results).';
+  if(selection&&selection.textContent!==selectedText)selection.textContent=selectedText;
+  for(const button of $('questionSummary').querySelectorAll?.('[data-question-result]')||[]){const selected=button.dataset.questionResult===questionSelection;button.textContent=selected?'Shown in graph':'Show in graph';button.setAttribute('aria-pressed',String(selected));button.classList.toggle('secondary',!selected);}
   const nodes=new Map(answer.nodes.map(n=>[n.id,n])),did=answer.plan.disease?.id,anchor=answer.plan.protein.id;
   const compact=answer.template==='qualified_pathway_source_context.v1';
   const pathwayIds=[...new Set(result.paths.filter(p=>p.kind==='shared_pathway').flatMap(p=>p.node_ids.filter(id=>nodes.get(id)?.category==='biolink:Pathway')))];

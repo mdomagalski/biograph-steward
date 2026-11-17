@@ -83,6 +83,7 @@ function setupWorkspace(){
   $('pathExploreStatus').textContent='Searches this saved graph only. No source retrieval or model call is made.';
   $('sourceGuideButton').disabled=!runId;$('pathExploreButton').disabled=!runId;
   $('sourceGuideSearch').value='';populateSourceGuide();populatePathEntities();
+  if(typeof updateReviewWorkflow==='function')updateReviewWorkflow();
   if(!savedReviewOnly())setupNeptune();
   setupNativeGoa();
   const relations=[...new Set((graph.assertions||[]).map(a=>a.predicate))].sort();
@@ -261,10 +262,46 @@ async function loadSourceGuide(selectionId){
     $('sourceGuideStatus').textContent='Saved-source explanation. No model call, source search or review decision was made.';
   }catch(error){if(request===inspectionRequest)$('sourceGuideStatus').textContent=error.message;}
 }
+function reviewWorkspaceMode(){
+  if(savedReviewOnly())return {editable:false,message:'Read-only example. You can inspect source records, recorded decisions and agent proposals here. To record your own evidence review, open a complete ordinary workspace in an editable local app. Saving a review creates a new run and preserves the earlier one.'};
+  if(graph?.qualified_view)return {editable:false,message:'This applied retained-graph view is read-only. Its original baseline and decision ledger are preserved. Review an ordinary source workspace in the local app, then publish a new decision view.'};
+  if(!runId)return {editable:false,message:'This exported report is read-only. Open the complete ordinary workspace in the running local app to record a review as a new run.'};
+  return {editable:true,message:'Reviews save as a new run. Inspect a source claim, choose Record evidence review, then enter Reviewer, Decision and Reason. Save review in a new run creates your reviewed copy and preserves the earlier run and sources.'};
+}
+function updateReviewWorkflow(){
+  const mode=reviewWorkspaceMode(),notice=$('workspaceReviewMode'),help=$('localReviewHelp');
+  if(notice){notice.hidden=false;notice.textContent=mode.message;}
+  if(help)help.hidden=mode.editable;
+}
+function openEvidenceReview(assertionId){
+  if(!reviewWorkspaceMode().editable)return false;
+  const assertion=(graph.assertions||[]).find(row=>row.id===assertionId);
+  if(!assertion)return false;
+  const target=$('inspectionDetails');
+  if(typeof revealWorkspaceTarget==='function'&&!revealWorkspaceTarget(target))return false;
+  target.open=true;$('evidenceView').value='inspection';$('assertionFamily').value=assertion.kind;
+  const proteins=$('assertionProtein');proteins.value=[...proteins.options].some(option=>option.value===assertion.subject)?assertion.subject:'all';
+  tablePage=0;activeTab='assertions';
+  document.querySelectorAll('.tab').forEach(button=>button.classList.toggle('active',button.dataset.tab==='assertions'));
+  render();inspectAssertion(assertionId);
+  const form=$('evidenceReviewForm');if(!form)return false;
+  form.scrollIntoView({block:'start'});form.focus({preventScroll:true});return true;
+}
+function sourceReviewControls(assertionId){
+  const mode=reviewWorkspaceMode(),box=el('section',undefined,'evidence');
+  const sourceRun=runId,sourceSnapshot=graph?.snapshot_sha256;
+  const note=el('p',mode.message,'small');note.id='sourceReviewModeNote';
+  box.append(el('h4','Record an evidence review'),note);
+  const button=el('button','Record evidence review','secondary review-action');button.type='button';button.disabled=!mode.editable;button.setAttribute('aria-describedby',note.id);
+  button.onclick=()=>{if(sourceRun!==runId||sourceSnapshot!==graph?.snapshot_sha256){$('sourceGuideStatus').textContent='The workspace changed. Reopen this claim before recording a review.';return;}openEvidenceReview(assertionId);};box.append(button);
+  if(!mode.editable){const help=el('button','How to review an editable local copy','secondary');help.type='button';help.onclick=()=>{const target=$('localReviewHelp');if(!target)return;target.hidden=false;target.open=true;target.scrollIntoView({block:'start'});};box.append(document.createTextNode(' '),help);}
+  return box;
+}
 function renderSourceGuide(result){
   const box=$('sourceGuideOutput'),a=result.assertion;
   const heading=a?nodeLabel(a.subject)+' → '+relationLabel(a.predicate)+' → '+nodeLabel(a.object):'Selected source observation';
   box.replaceChildren(el('h4',heading),el('p','Selected record: '+result.selection.id,'small'),el('p',result.summary),el('p',result.review.note,'notice'));
+  if(a)box.append(sourceReviewControls(a.id));
   const recorded=Object.fromEntries(Object.entries(result.qualifiers).filter(([key,value])=>value!==null&&value!==undefined&&key!=='observation_id'));
   if(Object.keys(recorded).length){const facts=el('div',undefined,'source-record');facts.append(el('strong','Conditions recorded on this claim'),fieldList(recorded));box.append(facts);}
   if(result.native_go_context?.configured===true&&result.native_go_context?.eligible===true)box.append(nativeGoContextPanel(result));
