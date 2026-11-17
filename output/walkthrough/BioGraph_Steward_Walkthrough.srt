@@ -1,312 +1,199 @@
 1
-00:00:00,000 --> 00:00:03,650
-Actual local app with saved research data
-Edited and narrated still states
+00:00:00,000 --> 00:00:01,400
+Edited app screenshots
+Synthetic narration
 
 2
-00:00:04,000 --> 00:00:08,605
-BioGraph Steward builds on Pharos with added source context,
-traceable
+00:00:01,500 --> 00:00:10,048
+BioGraph Steward helps scientists ask a protein question, see an evidence
+graph, and check the sources without writing graph queries.
 
 3
-00:00:08,605 --> 00:00:14,117
-answers and recoverable graph qualification. In our ninety-nine-
-target workspace, we
+00:00:10,048 --> 00:00:13,373
+One application provides two saved examples.
 
 4
-00:00:14,117 --> 00:00:21,186
-add eighty-seven sequence-qualified physical-association pairs and
-sixty-eight protein-location links absent
+00:00:13,373 --> 00:00:16,623
+We begin in the Added source context workspace.
 
 5
-00:00:21,186 --> 00:00:25,531
-from the captured Pharos annotations. The agent makes this context
+00:00:16,623 --> 00:00:20,145
+The hosted demonstration needs no account or running model.
 
 6
-00:00:25,531 --> 00:00:28,580
-searchable and traceable. Here is one example.
+00:00:21,410 --> 00:00:23,579
+Pharos supplies the backbone.
 
 7
-00:00:30,100 --> 00:00:31,750
-One concrete addition: KRAS–CDC42BPB
+00:00:23,579 --> 00:00:30,329
+Native Gene Ontology location records and sequence-checked STRING
+associations add traceable context.
 
 8
-00:00:32,100 --> 00:00:36,032
-Here is one concrete addition. For KRAS and CDC42BPB, the
+00:00:30,329 --> 00:00:38,329
+For KRAS and CDC42BPB, the source passport shows an association absent from
+captured Pharos.
 
 9
-00:00:36,032 --> 00:00:40,845
-source passport shows a qualified physical association absent from
-our
+00:00:38,329 --> 00:00:43,853
+Its provider, original record, identity checks and candidate status remain
+visible.
 
 10
-00:00:40,845 --> 00:00:45,658
-captured Pharos graph. The same record preserves STRING release
-twelve
+00:00:45,090 --> 00:00:52,659
+A published human-location benchmark matches 31 of the 99 targets, with 51
+known location labels.
 
 11
-00:00:45,658 --> 00:00:49,183
-point five, its score of two hundred and three, and
+00:00:52,659 --> 00:00:58,109
+Native annotations recover 44, compared with 41 for captured Pharos.
 
 12
-00:00:49,183 --> 00:00:54,064
-the sequence identity checks. The agent actually selected and
-inspected
+00:00:58,109 --> 00:01:04,059
+Some observations are shared with the Human Protein Atlas, limiting
+independent confirmation.
 
 13
-00:00:54,064 --> 00:00:58,877
-this citation, and proposed keeping it available as candidate
-context.
+00:01:04,059 --> 00:01:09,197
+OpenCell imaging supplies a separate, previously used research sensitivity
+check.
 
 14
-00:01:00,400 --> 00:01:02,050
-Matched source-view recovery
-Full table also retains coarse-map Pharos control: 44/51
+00:01:10,450 --> 00:01:15,576
+Nemotron selects a supported source tool, such as the STRING association
+reader.
 
 15
-00:01:02,400 --> 00:01:07,509
-Published protein-location labels give us a measurable comparison.
-Using the
+00:01:15,576 --> 00:01:22,451
+It matches the protein to the loaded cohort, checks the attached sources,
+and validates the query arguments.
 
 16
-00:01:07,509 --> 00:01:13,413
-same ontology-qualified mapping, captured Pharos recovers forty-
-one of fifty-one labels;
+00:01:22,451 --> 00:01:27,426
+The agent inspects selected citations and proposes review actions.
 
 17
-00:01:13,413 --> 00:01:19,318
-qualified native annotations recover forty-four. In the already-
-used OpenCell reference,
+00:01:27,426 --> 00:01:32,957
+This recorded investigation shows 8 of 14 matching proteins under its saved
+limit.
 
 18
-00:01:19,318 --> 00:01:23,630
-recovery rises from thirty of forty to thirty-one. The qualified
+00:01:34,210 --> 00:01:37,865
+Open the manual reader for all 14 returned partners.
 
 19
-00:01:23,630 --> 00:01:27,810
-native source recovers additional recorded biological context.
+00:01:37,865 --> 00:01:40,715
+Graph view focuses an individual result.
 
 20
-00:01:29,400 --> 00:01:31,050
-The agent turns a question into inspectable evidence
+00:01:40,715 --> 00:01:43,240
+Show all results restores the overview.
 
 21
-00:01:31,400 --> 00:01:35,779
-The NVIDIA Nemotron agent makes that evidence easier to
-investigate.
+00:01:43,240 --> 00:01:46,565
+Type a start entity and choose a connected destination.
 
 22
-00:01:35,779 --> 00:01:39,841
-It plans a supported source query, the application executes the
+00:01:46,565 --> 00:01:54,140
+Try KRAS to CDC42BPB, TP53 to nucleus, or BRAF to a pathway.
 
 23
-00:01:39,841 --> 00:01:44,537
-validated tool, and the agent prioritizes citations for
-inspection. Every
+00:01:54,140 --> 00:01:57,101
+Results and evaluation explains the comparisons.
 
 24
-00:01:44,537 --> 00:01:48,408
-original record under a selected citation is opened before a
+00:01:58,370 --> 00:02:05,044
+For the demonstration, download the editable KRAS copy, extract it and run
+its Python launcher.
 
 25
-00:01:48,408 --> 00:01:52,660
-grounded review proposal is produced. In our fixed comparison, all
+00:02:05,044 --> 00:02:08,944
+It includes the application, graph and preserved sources.
 
 26
-00:01:52,660 --> 00:01:57,674
-five allowed queries preserved the deterministic tools' complete
-results. This
+00:02:08,944 --> 00:02:14,024
+Choose a claim, enter a reviewer, decision and reason, then save a new run.
 
 27
-00:01:57,674 --> 00:02:02,053
-saved example displays eight of fourteen matching proteins under
-its
+00:02:14,024 --> 00:02:15,949
+The original is preserved.
 
 28
-00:02:02,053 --> 00:02:03,068
-recorded limit.
+00:02:15,949 --> 00:02:18,043
+The shared website stays read-only.
 
 29
-00:02:04,600 --> 00:02:06,250
-Manual question: overview, paths and results
+00:02:19,290 --> 00:02:22,990
+A separate historical study tests protein function prediction.
 
 30
-00:02:06,600 --> 00:02:10,957
-Questions open with all returned partners. Show in graph focuses
+00:02:22,990 --> 00:02:27,990
+LocalPlus is a published method that transfers known functions from
+connected proteins.
 
 31
-00:02:10,957 --> 00:02:14,844
-one. Show all results restores the overview. Type KRAS to
+00:02:27,990 --> 00:02:32,190
+A learned model combines network, sequence and annotation context.
 
 32
-00:02:14,844 --> 00:02:19,268
-filter path endpoints, then choose a reachable destination or try
+00:02:32,190 --> 00:02:35,215
+Fmax summarizes the precision-recall balance.
 
 33
-00:02:19,268 --> 00:02:23,490
-a saved example. Open Results and evaluation for source checks
+00:02:35,215 --> 00:02:38,665
+Higher is better; this is not percentage accuracy.
 
 34
-00:02:23,490 --> 00:02:25,032
-and measured outcomes.
+00:02:38,665 --> 00:02:47,965
+In the primary evaluation of 1,954 proteins, it rises from 0.055 to 0.073.
 
 35
-00:02:26,600 --> 00:02:28,250
-Take the same graph home
-Complete native KRAS workspace; provisional local review
+00:02:47,965 --> 00:02:53,740
+The sensitivity view rises from 0.172 to 0.210.
 
 36
-00:02:28,600 --> 00:02:32,215
-Choose Download an editable local copy to keep the same
+00:02:53,740 --> 00:02:58,390
+Paired intervals support both gains over retained LocalPlus within this
+study.
 
 37
-00:02:32,215 --> 00:02:36,863
-KRAS graph, sources and recorded investigation. Extract the
-package and
+00:02:58,390 --> 00:03:02,815
+Extra gain beyond refreshed annotations remains uncertain.
 
 38
-00:02:36,863 --> 00:02:40,478
-run its Python launcher. It opens the saved question on
+00:03:03,730 --> 00:03:08,399
+The Qualified Pharos workspace demonstrates recorded graph decisions.
 
 39
-00:02:40,478 --> 00:02:45,320
-your computer. Under Inspect sources, choose Record evidence
-review. Enter
+00:03:08,399 --> 00:03:18,324
+It excludes 298 records with obsolete Gene Ontology identifiers and retains
+16,687 records.
 
 40
-00:02:45,320 --> 00:02:48,870
-a reviewer, decision and reason, then Save review in a
+00:03:18,324 --> 00:03:25,383
+Every decision preserves its reason and original input, so the retained
+graph remains inspectable and recoverable.
 
 41
-00:02:48,870 --> 00:02:52,679
-new run. Your reviewed copy opens while the original graph
+00:03:26,650 --> 00:03:34,744
+Source additions, location-label recovery, graph qualification and
+historical prediction answer different questions.
 
 42
-00:02:52,679 --> 00:02:56,939
-and sources stay preserved. The shared site stays read-only. This
+00:03:34,744 --> 00:03:43,333
+The app keeps their evidence and controls visible, so scientists can
+understand what each result supports and decide what to inspect next.
 
 43
-00:02:56,939 --> 00:02:59,780
-demonstration records a provisional review.
+00:03:44,570 --> 00:03:47,914
+Explore the hosted application without signing in.
 
 44
-00:03:01,600 --> 00:03:03,250
-Historical partially known biological-process study
-Rendered saved report; not an agent prediction
+00:03:47,914 --> 00:03:55,939
+The final handoff contains the report, this demonstration, slides, and one
+clearly indexed app and graph package.
 
 45
-00:03:03,600 --> 00:03:07,376
-We also reused the published ProtBoost approach in a separate
-
-46
-00:03:07,376 --> 00:03:13,100
-protein-function study. The primary task predicts additional
-biological-process functions for
-
-47
-00:03:13,100 --> 00:03:17,120
-proteins with some functions already known. On a historical graph
-
-48
-00:03:17,120 --> 00:03:21,566
-of twenty thousand four hundred and twelve proteins, fixed-
-ontology Fmax
-
-49
-00:03:21,566 --> 00:03:24,550
-rose from about point one seven two to point two
-
-50
-00:03:24,550 --> 00:03:28,691
-one zero. The paired ninety-five percent gain interval stayed
-above
-
-51
-00:03:28,691 --> 00:03:32,832
-zero in both reference views. Annotation updates alone also
-helped.
-
-52
-00:03:32,832 --> 00:03:36,791
-This study is separate from the agent and the ninety-nine-target
-
-53
-00:03:36,791 --> 00:03:37,095
-app.
-
-54
-00:03:39,900 --> 00:03:41,550
-Qualification with recoverable decisions
-
-55
-00:03:41,900 --> 00:03:47,671
-The retained graph example adds another improvement: explicit
-identifier qualification.
-
-56
-00:03:47,671 --> 00:03:52,195
-It excludes two hundred and ninety-eight records using obsolete
-Gene
-
-57
-00:03:52,195 --> 00:03:57,704
-Ontology identifiers, while retaining sixteen thousand six hundred
-and eighty-seven
-
-58
-00:03:57,704 --> 00:04:02,360
-records. The original sources, input graph and decision reasons
-remain
-
-59
-00:04:02,360 --> 00:04:06,557
-recoverable, so a colleague can inspect or revisit each change.
-
-60
-00:04:08,100 --> 00:04:09,750
-How to interpret these measured gains
-
-61
-00:04:10,100 --> 00:04:15,945
-These are qualified annotation-recovery results, not whole-graph
-precision. Shared sources
-
-62
-00:04:15,945 --> 00:04:20,955
-and prior reference use limit independence. Physical association
-is candidate
-
-63
-00:04:20,955 --> 00:04:26,094
-context, not confirmed direct binding. Additional primary learning
-benefit over
-
-64
-00:04:26,094 --> 00:04:29,113
-fully refreshed annotations remains uncertain.
-
-65
-00:04:30,700 --> 00:04:32,350
-A more useful, inspectable starting point
-
-66
-00:04:32,700 --> 00:04:36,340
-The result is a more useful starting point for research:
-
-67
-00:04:36,340 --> 00:04:42,024
-additional qualified context, measurable source coverage, a
-source-inspection agent, and
-
-68
-00:04:42,024 --> 00:04:46,814
-recoverable graph decisions. Start with a biological question,
-inspect the
-
-69
-00:04:46,814 --> 00:04:50,710
-evidence behind the answer, and share the complete record so
-
-70
-00:04:50,710 --> 00:04:53,073
-the next researcher can build on it.
+00:03:55,939 --> 00:04:02,319
+Build a scoped cohort locally, or use a saved example to follow a question
+all the way to its evidence.

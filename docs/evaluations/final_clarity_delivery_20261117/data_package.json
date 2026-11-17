@@ -1,0 +1,12 @@
+{
+  "format": "biograph-steward.private-app-data-exports-receipt.v1",
+  "file": "BioGraph_Steward_App_Data_and_Exports.zip",
+  "bytes": 147658913,
+  "sha256": "00562b3dbd86085d289895eca7cd444169e2217547ee5da64792e8b7fc18c5e8",
+  "members": 5,
+  "archive_CRC_and_member_SHA_verified": true,
+  "both_nested_archives_byte_unchanged": true,
+  "no_source_or_result_changes": true,
+  "not_a_full_qualified_source_recovery_packet": true,
+  "uploaded_or_published": false
+}

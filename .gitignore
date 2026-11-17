@@ -14,3 +14,5 @@ dist/
 .DS_Store
 # Locally installed skill packages may contain their own Git repositories.
 /.agents/
+# Generated judge handoff; canonical report, slides and demo are tracked separately.
+/output/final_submission/

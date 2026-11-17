@@ -1,0 +1,52 @@
+{
+  "format": "biograph-steward.loading-workspace-implementation-checks.v1",
+  "status": "passed",
+  "runtime_commit": "7eea236cdeacf2d0a0ee33e11b01bc3ae5dac151",
+  "checked_at_UTC": "2026-11-17T19:43:51.356198+00:00",
+  "full_UI_suite": {
+    "passed": 183,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "seven loading-reader lifecycles; before display-label-only rename"
+  },
+  "final_affected_tests": {
+    "passed": 29,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "source loading lifecycle, product review and saved workspace picker after names changed"
+  },
+  "actual_current_browser_verified": false,
+  "browser_limit": "Provided in-app browser bootstrap failed because macOS rejected the signature of its classic-level dependency. No runtime patch, code signing, alternative browser control or security bypass was attempted.",
+  "loading_checks": [
+    "Pending source guide stays busy until success or error",
+    "Stale source responses cannot clear newer request feedback",
+    "Selection change invalidates the old wait",
+    "Paths settle busy state for empty matches/errors",
+    "Stale path replies cannot clear newer request feedback",
+    "Scientific catalogue resets after empty/error/stale reply",
+    "Workspace/agent loaders reuse the more visible existing indicator"
+  ],
+  "workspace_names": [
+    "Added source context workspace",
+    "Qualified Pharos workspace"
+  ],
+  "implementation_scope": "Existing data-loading selector, larger status panel/spinner, explicit request lifecycle attributes and display-only picker names. No server schema, source adapters, model calls, scientific inputs, graph or review changes.",
+  "core_file_sha256": {
+    "biograph_steward/ui.html": "b4ad8650922d7a6279d4ac6acde6ce6762d783671c0d09915c8545465af1fd2b",
+    "biograph_steward/navigation.js": "e9c361137fad92c51b0c9665306edd903e866fc11d726464754774f8d0486927",
+    "biograph_steward/goa.js": "5872358b532085835dfbe9cac8840dcaad5e6bf5f6e272539730a2e13bff0743",
+    "biograph_steward/guided.js": "34f7ea68a0f2c1509c6d26db0104ac251e462bfeec9c8479c5a8b1627ce70bab",
+    "biograph_steward/scientific_assessment.js": "d0bb2d7635b9e8ac605a506c81b1f6a8b7766668c91113184fea5b099930b159",
+    "biograph_steward/protein_context.js": "cd748882f75ff0bcf473997dc01962a37f332d91c8b5828d001149a704800681",
+    "biograph_steward/workspaces.js": "f9939cde8196227bdccd74fab674c0b35fb04e7e354681f04ce50fbe92c2001f"
+  },
+  "earlier_completed_state_visual_reference": {
+    "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+    "receipt": "docs/evaluations/question_graph_usability_20261117/browser.json",
+    "scope": "Earlier actual completed question/source/path views. New active spinner appearance and new picker names were not visually verified.",
+    "not_current_visual_acceptance": true
+  },
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "scientific_results_changed": false
+}

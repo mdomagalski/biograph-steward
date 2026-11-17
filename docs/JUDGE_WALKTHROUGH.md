@@ -14,6 +14,11 @@ sources, with no new inference during replay. Reviewers need no AWS account,
 local setup or running model. New operator-run questions are documented in the
 [source-agent guide](SOURCE_AGENT.md#operator-cli).
 
+One application offers **Added source context workspace**, used by the KRAS
+example, and **Qualified Pharos workspace**, opened through **Review applied
+graph qualifications**. These are two saved examples with different inputs.
+The historical function-prediction study is a separate assessment.
+
 Follow **Question & plan → Evidence graph → Source inspection → Review
 proposals**. In **E002, KRAS–CDC42BPB**, find **baseline pair present: false**
 and **integration state: new_workspace_pair**. That is an actual source-qualified
@@ -26,7 +31,7 @@ preserves the original baseline comparison and all counts.
 | Criterion | Where to look | Evidence to assess |
 |---|---|---|
 | **Usability — 40%** | The user guide, four-step agent workflow and result downloads | Can a reviewer find what was added, trace a source and share the right result without graph-query syntax? Record loading/access problems and unclear next actions. |
-| **Accuracy and pruning — 30%** | Results & evaluation; applied qualification companion; linked scientific comparisons | Known-label recovery increases 41/51 → 44/51 under the same mapping. The separate companion applies 298 obsolete-ID exclusions. Keep source additions, identifier checks and the separate function-prediction benchmark distinct. |
+| **Accuracy and pruning — 30%** | Results & evaluation; Qualified Pharos workspace; linked scientific comparisons | Known-label recovery increases 41/51 → 44/51 under the same mapping. The Qualified Pharos workspace applies 298 obsolete-ID exclusions to its own input. Keep source additions, identifier checks and the separate function-prediction benchmark distinct. |
 | **Explainability — 20%** | E002 source passport, model/tool trace and exported decision reasons | Provider/version, baseline membership, exact identity evidence, review state and uncertainty remain inspectable. A proposal is separate from an applied decision. |
 | **Standards — 10%** | [Export audit](STANDARD_EXPORT.md), [mapping/overlap audit](EVIDENCE_OVERLAP.md) and graph/source files | Inspect stable identifiers, declared predicates, source provenance and the validated bounded profiles. Their full-graph conformance limits are recorded. |
 
@@ -37,17 +42,20 @@ has its own task and controls and does not replace that endpoint.
 
 ## Inspect the graph handoff
 
-The primary native-source example and the applied-qualification companion are
+The Added source context workspace and Qualified Pharos workspace contain
 different source collections in the same 99-target cohort. Their total record
 counts are not a before/after comparison. Use each graph with its own source
 baseline and decision ledger; the [Gold interface](GOLD_SET_INTERFACE.md)
 explains retained graphs, complete dispositions and abstentions.
-The [separate graph/source handoff](GOLD_SET_INTERFACE.md#protected-downloads)
-provides the primary package with its 19,310-row abstention ledger and exact
-captured Pharos comparator for submission or authorized operator access. Both
-archives previously passed authenticated HTTPS download and complete member
-checks. Their source terms remain applicable. The public demo does not expose
-these bulk archives.
+The [five-item final folder](DELIVERY.md#final-submission-folder) supplies the
+report, narrated demonstration, slides, **START_HERE.txt** and a private
+**BioGraph_Steward_App_Data_and_Exports.zip**. The ZIP contains the complete
+KRAS app/source workspace and graph/ledger inspection exports for both examples,
+including the primary 19,310-row undecided ledger and exact captured Pharos
+comparator. Qualified Pharos exports preserve its input, retained graph and
+decisions; its full source-recovery packet remains a separate optional replay
+asset. Source terms govern this organizer data handoff. The public demo does not
+expose the bulk graph/ledger packages.
 
 [How to use → Download the result you need](../HOW_TO_USE.md#4-download-the-result-you-need) distinguishes the focused answer,
 recorded-agent trace and full workspace. The [delivery index](releases/20261115/README.md)

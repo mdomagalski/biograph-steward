@@ -17,17 +17,20 @@ states and synthetic narration. It makes no new model requests. The
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
 provides its presentation.
 
-## One research cohort, connected research tasks
+## One application, two saved examples
 
-Both examples concern **99 primary protein targets from a captured colorectal
-cancer cohort**. They demonstrate different operations, with different source
-collections; their total record counts are not a paired before/after comparison.
+The saved-workspace picker names the examples **Added source context workspace**
+and **Qualified Pharos workspace**. Both concern **99 primary protein targets
+from a captured colorectal-cancer cohort**. They demonstrate different
+operations and preserve different source collections; their totals are not a
+paired before/after comparison. The historical function-prediction study is a
+separate research assessment, not another version of the app graph.
 
 | Task | What a scientist can see | Concrete outcome |
 |---|---|---|
 | **Follow the agent's work** | A recorded model plan, validated tool call, complete selected-citation inspections and source-bound review proposals | The primary KRAS run displays eight of 14 matching proteins under its frozen cap. Three selected citations lead to three original source inspections. Proposals retain candidate context without applying decisions. The complete returned answer remains available. |
-| **Explore added source context** | A KRAS question, small graph, cited answer and preserved native STRING source record | 14 candidate result proteins. The full added physical source has 330 qualified pairs: 243 already represented in the captured graph and 87 absent there. Native GO adds 3,309 records describing 429 protein-location concepts across 94 targets. Additional rows are not automatically independent experiments or accepted claims. |
-| **Review applied graph qualifications** | A TP53 pathway question using the graph after explicit qualification decisions | 16,985 input records become 16,687 retained records. The 298 excluded records have obsolete GO identifiers in the pinned ontology. All original rows and decisions remain recoverable; 11,636 abstained records stay retained. This is identifier qualification, not 298 experimentally disproved biological links. |
+| **Added source context workspace** | A KRAS question, small graph, cited answer and preserved native STRING source record | 9,724 entities and 19,310 source records. The manual question shows 14 candidate result proteins. The added physical source has 330 qualified pairs: 243 already represented in the Pharos capture and 87 absent there. Native GO adds 3,309 records describing 429 protein-location concepts across 94 targets. Additional rows are not automatically independent experiments or accepted claims. |
+| **Qualified Pharos workspace** | Choose **Review applied graph qualifications** for a TP53 pathway question using the graph after explicit decisions | Its own 16,985 input records become 16,687 retained records. The 298 excluded records have obsolete GO identifiers in the pinned ontology. All original rows and decisions remain recoverable; 11,636 undecided records stay retained. This is identifier qualification, not 298 experimentally disproved biological links. |
 
 The pathway example supports contextual multihop reasoning: TP53 and another
 protein connect through an exact cited model. Shared model membership does not
@@ -77,8 +80,11 @@ The agent orchestrates actual source tools and inspections. In the
 [frozen development comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md),
 four nonempty queries and one valid accepted-only empty query preserved the
 deterministic tool's complete query, answer and focused graph. Three unsupported
-or unresolved requests stopped at preflight without calling the model. These
-results establish bounded tool execution and source fidelity. The guard results
+or unresolved requests stopped at preflight without calling the model:
+pull-down binding, TP53 localization specifically in colon tissue, and a protein
+outside the saved cohort. Those requests need assay, tissue or cohort support
+absent from the available tool contract. These results establish bounded tool
+execution and source fidelity. The guard results
 do not establish learned model refusal. The linked comparison preserves the
 exact source, tool-choice and result-limit controls.
 
@@ -91,27 +97,37 @@ source fidelity and workflow execution rather than prediction improvement.
 The separate public-reference assessment measures information recovered by
 the source views:
 
-- **Known protein locations:** among 31 matching proteins, the captured Pharos
+- **Known protein locations:** only 31 of the 99 targets match the published
+  human location reference, supplying 51 positive protein-location labels. The captured Pharos
   view recovers 41 of 51 positive reference labels; qualified native annotations
   recover 44 of 51. These fixed source views are not a newly scored union of the
   full integrated graph. The additional admitted location annotations supply
   the gain under the same ontology mapping; obsolete-ID exclusions alone do
   not improve recovery. The coarse-map control also recovers 44 labels, with
-  more truth-unknown outputs. Shared-source context remains explicit.
+  more truth-unknown outputs. The other 68 targets lack matching reference
+  labels. Both the reference and some added annotations reuse Human Protein
+  Atlas observations, so agreement is not fully independent experimental support.
 - **OpenCell source-exclusion check:** among 23 matching proteins, positive
   label recovery changes 30 of 40 to 31 of 40. The gain remains after the stated
   HPA/OpenCell source exclusions. This already-exposed reference is a
   sensitivity check, not new blind validation or a new biological discovery.
-- **Additional biological-process function recovery:** a fixed historical
-  comparison improves over retained LocalPlus in both primary reference views
-  for proteins already annotated in biological process (partial knowledge).
-  We reused the published
-  [**ProtBoost**](https://arxiv.org/abs/2412.04529) context-aware stacker and the authors' CAFA6 update to combine
-  graph and sequence forecasts with GO evidence-code, relation and ontology
-  context. These are qualified views of one GOA source. Refreshing the baseline's
-  annotations also helps; additional learned benefit over that refreshed
-  baseline remains uncertain for the primary task. Stronger direct-annotation
-  controls and unfavorable results are retained.
+- **Additional biological-process function recovery:** a separate historical
+  20,412-protein graph supports three parallel fixed arms: retained LocalPlus,
+  refreshed LocalPlus and the context model. LocalPlus is the published
+  positive-only weighted transfer of known GO labels from direct network
+  neighbors ([Law, Kale and Murali, 2021](https://doi.org/10.1093/bioinformatics/btaa885)); we reuse the authors' implementation on this human network.
+  The primary timepoint-ontology view gives ordinary micro-Fmax **0.055,
+  0.059 and 0.073** across 1,954 proteins with 3,254 positive protein–GO pairs.
+  The fixed-starting-ontology sensitivity view gives **0.172, 0.183 and 0.210**
+  across 319 proteins with 3,243 positive pairs. Micro-Fmax pools annotation
+  decisions and summarizes the best precision–recall balance across the declared
+  thresholds, rather than percentage accuracy. The different populations
+  prevent direct comparison of absolute scores between views. We reused
+  [**ProtBoost**](https://arxiv.org/abs/2412.04529) and the authors' CAFA6 update to combine graph and sequence
+  forecasts with GO evidence-code, relation and ontology context. These are
+  qualified views of one GOA source. Context improves over retained LocalPlus
+  in both views; its extra benefit over the refreshed arm remains uncertain.
+  Stronger direct-annotation controls and unfavorable results are retained.
 
 Positive-reference recovery counts known labels found by a view. Unmatched
 proteins and unreported labels remain unknown, so these results do not identify
@@ -140,6 +156,11 @@ explicit identifiers, constructs versioned assertions and publishes the graph,
 source snapshots and answer. Source-specific extensions retain their own
 records, mapping proof and provenance. The
 [construction recipe](CONSTRUCTION.md) documents local execution and replay.
+The interactive constructor accepts 1–25 selected proteins per request; this
+is its current request limit, not a limit on saved-graph size. Pharos GO
+annotations in all three aspects remain available. The additional native GO
+reader currently qualifies positive cellular-location records. Native process
+and function extensions need their own relation, overlap and reference checks.
 Three additional fixed questions also completed through the existing engines:
 EGFR physical partners, TP53 native location records and BRAF archived pathway
 context. This [applicability check](evaluations/VARIED_QUESTION_CHECK_20261115.md)
@@ -194,6 +215,15 @@ required by this verifier.
 
 ## Reuse and handoff
 
+The judge-facing [final handoff](DELIVERY.md#final-submission-folder), prepared
+locally at `output/final_submission/`, has five files:
+**START_HERE.txt**, **BioGraph_Steward_Project_Report.pdf**,
+**BioGraph_Steward_Demonstration.mp4**, **BioGraph_Steward_Overview.pptx** and
+**BioGraph_Steward_App_Data_and_Exports.zip**. It excludes historical media,
+internal review guides and the old combined submission archive. The data ZIP
+is a private organizer handoff under the included source terms, not a blanket
+public-data release.
+
 The [project report PDF](../output/pdf/BioGraph_Steward_Final_Report.pdf)
 ([Word copy](../output/docx/BioGraph_Steward_Final_Report.docx))
 explains the scientific problem, implemented approach, agent workflow, source
@@ -215,19 +245,16 @@ attached sources, saved question, S01 agent record and runnable local software.
 Its [delivery verification](evaluations/editable_demo_copy_20261117/README.md)
 checks exact original bytes and saving a personal review in a new run. It does
 not copy hosted assessment pages, optional global GO/QC inspector data or the
-private Neptune mirror. The **designated primary submission package** also has its own complete
-19,310-row record of unresolved decisions and an exact same-snapshot Pharos-only comparator;
-its [protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json)
-records both prior authenticated HTTPS archives and complete member checks.
-The [graph/source handoff instructions](GOLD_SET_INTERFACE.md#protected-downloads)
-cover separately supplied final-submission assets or authorized operator
-retrieval. Those graph/ledger/comparator packets are separate from the prepared
-native-workspace local-copy download. All primary records remain
-scientifically unassessed. In the applied-qualification TP53 example, the workspace ZIP also
-includes the retained graph, every keep, remove and unresolved decision, and original
-baseline/source packet. The small answer diagram and focused answer ZIP are
-separate views. Original and retained graphs stay distinguishable, and
-unresolved records remain available.
+private Neptune mirror. The final data ZIP combines this complete primary
+app/source copy with graph, decision-ledger and matched-baseline inspection
+exports. Those include all 19,310 primary undecided verdicts, the exact
+same-snapshot Pharos-only comparator, and the Qualified Pharos graph with its
+own original input and every decision. These inspection exports are not a
+complete qualified source-recovery packet. That full packet remains a separate
+optional replay asset under the [source-access instructions](GOLD_SET_INTERFACE.md#protected-downloads).
+All primary records remain scientifically unassessed. The small answer diagram
+and focused answer ZIP are separate views. Original and retained graphs stay
+distinguishable, and unresolved records remain available.
 
 The verified agent-record download preserves its question, plan, model/tool
 trace, source inspections and proposals. It replays beside the original source

@@ -12,7 +12,7 @@ graph with its source context.
 |---|---|---|
 | Additional qualified connections | **87 physical-association pairs** and **68 protein–location concepts** absent from the captured annotations | More candidate connections to investigate, with source and identity checks preserved. Overlapping connections remain identified separately. |
 | More known locations recovered | **41/51 → 44/51** positive labels across 31 matched proteins, using the same ontology-qualified mapping | Additional reference-supported location context. The OpenCell source-exclusion check also improves **30/40 → 31/40** across 23 proteins. |
-| Better additional biological-process prediction | Fixed-ontology Fmax **0.17155 → 0.21009** over retained Pharos-derived LocalPlus for proteins already annotated in biological process (partial knowledge); paired gain interval **[+0.00803, +0.06914]** | A measured improvement from adapting an established context-aware prediction method. This study uses a historical 20,412-protein graph, has its own controls and is separate from the 99-target app. |
+| Better additional biological-process prediction | Primary timepoint-ontology ordinary micro-Fmax: retained LocalPlus **0.055**, refreshed LocalPlus **0.059**, context model **0.073**. Fixed-starting-ontology sensitivity: **0.172, 0.183 and 0.210**. | A measured gain over retained LocalPlus from an established context-aware method. The extra gain over the refreshed control remains uncertain. This separate historical study uses a 20,412-protein graph. |
 | Applied identifier qualification | **298 records with obsolete GO identifiers excluded**, with originals and every decision retained | A current-identifier view that scientists can inspect, export and revise. |
 
 **See an actual addition:** in the recorded KRAS agent run, inspect citation
@@ -41,8 +41,11 @@ deployment and release identities are recorded in the
 
 ## What to try
 
-The two public-site workspaces share a **99-target colorectal-cancer cohort** and show
-different operations, rather than interchangeable graph versions:
+One application offers **Added source context workspace** and **Qualified
+Pharos workspace**. They share a **99-target colorectal-cancer cohort** and show
+different operations with their own preserved inputs, rather than interchangeable
+graph versions. The historical prediction study is a separate research
+assessment, not another saved version of the app graph.
 
 - **Follow the recorded agent:** inspect its question, validated tool plan,
   cited results, complete selected-source inspections and proposed review
@@ -50,14 +53,15 @@ different operations, rather than interchangeable graph versions:
   under its fixed cap, while the manual answer displays all 14. Proposals
   retain candidate context or request review; they apply no graph decisions.
   Four sequential tabs separate the plan, evidence graph, inspections and proposals.
-- **Explore added source context:** read the KRAS answer, follow one of its 14
+- **Added source context workspace:** read the KRAS answer, follow one of its 14
   candidate protein connections and inspect its native STRING source. Start
   with CDC42BPB to see an actual connection absent from the captured baseline.
   Of 330 physical pairs, 243 already share a pair with the baseline and 87 do
   not. Native GO supplies 3,309 rows representing 429 protein–location concepts
   across 94 targets; 361 concepts overlap the captured annotations and 68 are
   additional. These are pair/concept counts, not independent-study counts.
-- **Review applied graph qualifications:** inspect the TP53 pathway example
+- **Qualified Pharos workspace:** choose **Review applied graph qualifications**
+  to inspect the TP53 pathway example
   after explicit qualification decisions. Its 16,985 input evidence records
   become 16,687 retained records; 298 obsolete-GO-identifier exclusions have
   reasons, while uncertain records remain available. This is applied identifier
@@ -66,19 +70,39 @@ different operations, rather than interchangeable graph versions:
   then distinguish the focused answer from the retained graph, complete
   decision ledger and original baseline/source packet.
 
-Among 31 proteins with matching location-reference labels, the captured Pharos
-view recovers 41 of 51 positive labels and qualified native annotations recover
-44 of 51. These are fixed source-view comparisons, not a newly scored union of
-the full graph. Coverage and shared-source limits remain explicit. A separate
-source-exclusion sensitivity check recovers 30 of 40 to 31 of 40 labels among 23
-OpenCell-matched proteins. These are known-annotation recovery results;
-they do not measure the fraction of the whole graph that is correct.
+Only **31 of the 99 targets** match the published human location reference,
+supplying **51 positive protein-location labels**. The captured Pharos view
+recovers 41 of 51 and qualified native annotations recover 44 of 51. These are
+fixed source views, not a newly scored union of the full graph. The other 68
+targets have no matching reference labels. Some annotations and the benchmark
+reuse Human Protein Atlas observations, so agreement is not fully independent
+experimental confirmation. A source-exclusion sensitivity check recovers
+30 of 40 to 31 of 40 labels among 23 OpenCell-matched proteins. OpenCell is a
+published HEK293T imaging reference previously used during development. This
+is a saved research sensitivity check, not a fresh blind test or a step executed
+for every app question. Known-label recovery does not measure whole-graph accuracy.
+
 The challenge's same-learner link-prediction panels did not show a reliable
-enriched-graph advantage. A separate historical function-recovery study
-improved retained LocalPlus in both primary reference views for additional
-biological-process annotations in proteins already annotated in that aspect. Updating the baseline's
-annotations also helped, and additional primary benefit over that stronger
-baseline was uncertain. These [learned-model results](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+enriched-graph advantage. The separate historical function study compares
+three parallel fixed arms for additional biological-process annotations in
+proteins with prior functions. LocalPlus transfers known GO labels from direct
+weighted neighbors, using the published positive-only implementation
+([Law, Kale and Murali, 2021](https://doi.org/10.1093/bioinformatics/btaa885)).
+The retained arm uses 2023 annotations; the refreshed arm uses eligible April
+2026 annotations. The ProtBoost context arm combines graph and sequence
+forecasts with GO context. Ordinary micro-Fmax pools protein–GO decisions and
+reports the best precision–recall balance across the declared thresholds,
+rather than percentage accuracy.
+
+The primary frame scores **1,954 proteins with 3,254 positive protein–GO pairs**:
+322 proteins have new positive labels after masks, while 1,632 have none and
+can still contribute unmatched predictions. The sensitivity frame scores
+**319 proteins with 3,243 positive pairs** under the starting ontology held fixed.
+These differing populations prevent direct comparison of their absolute scores.
+The context model gains **0.019 [0.002, 0.035]** over retained LocalPlus in the
+primary view and **0.039 [0.008, 0.069]** in sensitivity, using paired 95%
+intervals from 2,000 whole-protein resamples. Its extra benefit over refreshed
+LocalPlus remains uncertain in both views. These [learned-model results](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
 retain their own endpoints and controls; the current agent check does not
 claim their gains. The [forecast coverage note](evaluations/final_delivery_20261117/prediction_coverage_feasibility.md)
 explains the complete 3,300-protein temporal-gainer frame: 3,297 in the historical
@@ -103,16 +127,30 @@ the public saved-demo workbench; Neptune supplies a separate private
 mirror/inspection route.
 The Nemotron agent orchestrates these existing tools and source inspections.
 Its adapter-grounded proposals remain for human decision. A separate local
-constructor builds Pharos graphs from explicit lists of 1–25 proteins without
-a model. A new agent question uses the source tools attached to its workspace
+constructor builds Pharos graphs from explicit lists of 1–25 proteins per
+request without a model. This is the interactive request limit, not a limit on
+saved-graph size. A new agent question uses the source tools attached to its workspace
 and requires a configured model endpoint. The separate literature auditor did
 not outperform its specialist control. The
 [research appendix](RESEARCH_APPENDIX_20261115.md) retains this and other method
 comparisons. No model result automatically accepts or biologically prunes evidence.
 The public demo replays saved work. Live construction, retrieval,
-model calls and review edits are disabled there. The public download is the
-recorded-agent JSON. Complete graph/source packets remain separate submission
-or authorized operator assets.
+model calls and review edits are disabled there. Public downloads include the
+recorded-agent JSON and a prepared complete KRAS app/source copy for personal
+local reviews saved as new runs. Bulk graph/ledger inspection exports remain
+part of the private submission handoff under source terms.
+
+The judge-facing [final handoff](DELIVERY.md#final-submission-folder), prepared
+locally at `output/final_submission/`, has only five files:
+**START_HERE.txt**, **BioGraph_Steward_Project_Report.pdf**,
+**BioGraph_Steward_Demonstration.mp4**, **BioGraph_Steward_Overview.pptx** and
+**BioGraph_Steward_App_Data_and_Exports.zip**. The data ZIP combines the complete
+native KRAS app/source copy with graph, decision-ledger and matched-baseline
+inspection exports for both named workspaces, an index and source terms. The
+full Qualified Pharos source-recovery packet remains a separate optional replay
+asset. Historical media, research adjuncts and internal guides are outside the
+front folder. MIT licensing covers the software, not a blanket public license
+for these source datasets.
 
 A separate [APP/PSEN worked example](evaluations/GENERALIZATION_EXAMPLE_20261117.md)
 uses three proteins outside the original 99. The supplied

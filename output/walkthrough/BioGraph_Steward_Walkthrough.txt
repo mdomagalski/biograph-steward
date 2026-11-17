@@ -2,42 +2,42 @@ BioGraph Steward walkthrough
 
 This tour uses actual application screenshots, edited with synthetic narration. It shows saved research data, a recorded agent investigation and local evidence review in a new run. The shared website is read-only. The function-prediction scene presents a separate saved study. Detailed capture and verification provenance accompanies the video.
 
-00:00:00  What Steward adds to Pharos
+00:00:00  A protein question, connected to evidence
 
-BioGraph Steward builds on Pharos with added source context, traceable answers and recoverable graph qualification. In our ninety-nine-target workspace, we add eighty-seven sequence-qualified physical-association pairs and sixty-eight protein-location links absent from the captured Pharos annotations. The agent makes this context searchable and traceable. Here is one example.
+BioGraph Steward helps scientists ask a protein question, see an evidence graph, and check the sources without writing graph queries. One application provides two saved examples. We begin in the Added source context workspace. The hosted demonstration needs no account or running model.
 
-00:00:30  One concrete addition: KRAS–CDC42BPB
+00:00:20  An inspectable addition to Pharos
 
-Here is one concrete addition. For KRAS and CDC42BPB, the source passport shows a qualified physical association absent from our captured Pharos graph. The same record preserves STRING release twelve point five, its score of two hundred and three, and the sequence identity checks. The agent actually selected and inspected this citation, and proposed keeping it available as candidate context.
+Pharos supplies the backbone. Native Gene Ontology location records and sequence-checked STRING associations add traceable context. For KRAS and CDC42BPB, the source passport shows an association absent from captured Pharos. Its provider, original record, identity checks and candidate status remain visible.
 
-00:01:00  More published location labels recovered
+00:00:44  Published location labels recovered
 
-Published protein-location labels give us a measurable comparison. Using the same ontology-qualified mapping, captured Pharos recovers forty-one of fifty-one labels; qualified native annotations recover forty-four. In the already-used OpenCell reference, recovery rises from thirty of forty to thirty-one. The qualified native source recovers additional recorded biological context.
+A published human-location benchmark matches 31 of the 99 targets, with 51 known location labels. Native annotations recover 44, compared with 41 for captured Pharos. Some observations are shared with the Human Protein Atlas, limiting independent confirmation. OpenCell imaging supplies a separate, previously used research sensitivity check.
 
-00:01:29  The agent turns a question into inspectable evidence
+00:01:10  The agent follows a supported investigation
 
-The NVIDIA Nemotron agent makes that evidence easier to investigate. It plans a supported source query, the application executes the validated tool, and the agent prioritizes citations for inspection. Every original record under a selected citation is opened before a grounded review proposal is produced. In our fixed comparison, all five allowed queries preserved the deterministic tools' complete results. This saved example displays eight of fourteen matching proteins under its recorded limit.
+Nemotron selects a supported source tool, such as the STRING association reader. It matches the protein to the loaded cohort, checks the attached sources, and validates the query arguments. The agent inspects selected citations and proposes review actions. This recorded investigation shows 8 of 14 matching proteins under its saved limit.
 
-00:02:04  Manual question: overview, paths and results
+00:01:33  Explore the complete question result
 
-Questions open with all returned partners. Show in graph focuses one. Show all results restores the overview. Type KRAS to filter path endpoints, then choose a reachable destination or try a saved example. Open Results and evaluation for source checks and measured outcomes.
+Open the manual reader for all 14 returned partners. Graph view focuses an individual result. Show all results restores the overview. Type a start entity and choose a connected destination. Try KRAS to CDC42BPB, TP53 to nucleus, or BRAF to a pathway. Results and evaluation explains the comparisons.
 
-00:02:26  Take the same graph home and record your review
+00:01:57  Continue with the same evidence locally
 
-Choose Download an editable local copy to keep the same KRAS graph, sources and recorded investigation. Extract the package and run its Python launcher. It opens the saved question on your computer. Under Inspect sources, choose Record evidence review. Enter a reviewer, decision and reason, then Save review in a new run. Your reviewed copy opens while the original graph and sources stay preserved. The shared site stays read-only. This demonstration records a provisional review.
+For the demonstration, download the editable KRAS copy, extract it and run its Python launcher. It includes the application, graph and preserved sources. Choose a claim, enter a reviewer, decision and reason, then save a new run. The original is preserved. The shared website stays read-only.
 
-00:03:01  A separate, measured protein-function prediction gain
+00:02:18  A separate historical prediction study
 
-We also reused the published ProtBoost approach in a separate protein-function study. The primary task predicts additional biological-process functions for proteins with some functions already known. On a historical graph of twenty thousand four hundred and twelve proteins, fixed-ontology Fmax rose from about point one seven two to point two one zero. The paired ninety-five percent gain interval stayed above zero in both reference views. Annotation updates alone also helped. This study is separate from the agent and the ninety-nine-target app.
+A separate historical study tests protein function prediction. LocalPlus is a published method that transfers known functions from connected proteins. A learned model combines network, sequence and annotation context. Fmax summarizes the precision-recall balance. Higher is better; this is not percentage accuracy. In the primary evaluation of 1,954 proteins, it rises from 0.055 to 0.073. The sensitivity view rises from 0.172 to 0.210. Paired intervals support both gains over retained LocalPlus within this study. Extra gain beyond refreshed annotations remains uncertain.
 
-00:03:39  Qualification with recoverable decisions
+00:03:03  A retained graph with explicit decisions
 
-The retained graph example adds another improvement: explicit identifier qualification. It excludes two hundred and ninety-eight records using obsolete Gene Ontology identifiers, while retaining sixteen thousand six hundred and eighty-seven records. The original sources, input graph and decision reasons remain recoverable, so a colleague can inspect or revisit each change.
+The Qualified Pharos workspace demonstrates recorded graph decisions. It excludes 298 records with obsolete Gene Ontology identifiers and retains 16,687 records. Every decision preserves its reason and original input, so the retained graph remains inspectable and recoverable.
 
-00:04:08  How to interpret these measured gains
+00:03:26  Understand each result in context
 
-These are qualified annotation-recovery results, not whole-graph precision. Shared sources and prior reference use limit independence. Physical association is candidate context, not confirmed direct binding. Additional primary learning benefit over fully refreshed annotations remains uncertain.
+Source additions, location-label recovery, graph qualification and historical prediction answer different questions. The app keeps their evidence and controls visible, so scientists can understand what each result supports and decide what to inspect next.
 
-00:04:30  A more useful, inspectable starting point
+00:03:44  One application and a clear handoff
 
-The result is a more useful starting point for research: additional qualified context, measurable source coverage, a source-inspection agent, and recoverable graph decisions. Start with a biological question, inspect the evidence behind the answer, and share the complete record so the next researcher can build on it.
+Explore the hosted application without signing in. The final handoff contains the report, this demonstration, slides, and one clearly indexed app and graph package. Build a scoped cohort locally, or use a saved example to follow a question all the way to its evidence.

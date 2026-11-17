@@ -1,0 +1,39 @@
+{
+  "format": "biograph-steward.final-five-file-handoff.v1",
+  "status": "prepared_locally_for_organizer_handoff",
+  "folder": "output/final_submission",
+  "file_count": 5,
+  "total_bytes": 155697717,
+  "files": {
+    "BioGraph_Steward_App_Data_and_Exports.zip": {
+      "bytes": 147658913,
+      "sha256": "00562b3dbd86085d289895eca7cd444169e2217547ee5da64792e8b7fc18c5e8"
+    },
+    "BioGraph_Steward_Demonstration.mp4": {
+      "bytes": 7323004,
+      "sha256": "b722658bff37309a5de0b593d7e5c7815d10571afe79c72ab302226934d31b73"
+    },
+    "BioGraph_Steward_Overview.pptx": {
+      "bytes": 587786,
+      "sha256": "ff7fc489a40b0b73baa58df885f9df7ad581253f44ca53b72c144983688d6e7c"
+    },
+    "BioGraph_Steward_Project_Report.pdf": {
+      "bytes": 124601,
+      "sha256": "5bbb5d26719dfa40c429e43875d97e78ee980e97f7bab9ebc7ba4e3724add7ec"
+    },
+    "START_HERE.txt": {
+      "bytes": 3413,
+      "sha256": "811b2647d010ca04773ea6aa7f596473053971af1ec0a31e99b2e4fbbedb9fd9"
+    }
+  },
+  "public_demo": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+  "source_code": "https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery",
+  "hosted_demo_requires_account_or_running_model": false,
+  "data_scope": "Complete native KRAS runtime, saved workspace and preserved sources; separate unchanged graph, decision-ledger and matched-comparison-input inspection archive. Qualified Pharos inspection exports are not a full source-recovery packet.",
+  "data_terms": "Private organizer handoff. Upstream data and reused tools retain their own provider terms and attribution. This package does not establish blanket public redistribution clearance.",
+  "source_archives_unchanged": true,
+  "presentation_copied_unchanged": true,
+  "internal_review_guides_history_and_duplicate_formats_in_front_folder": false,
+  "previous_final_folder_preserved_privately": true,
+  "external_upload_performed": false
+}

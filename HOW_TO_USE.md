@@ -3,8 +3,12 @@
 Use BioGraph Steward to follow a biological question to its graph, inspect the
 supporting source records, and share a result someone else can check.
 The real-data example covers **99 primary human protein targets** from a captured
-Pharos cohort, with additional qualified protein-association and location data.
-This is a frozen research workspace; [source dates](docs/SOURCE_NOTES.md#current-reviewer-graph-and-source-dates)
+Pharos cohort. One application offers two saved examples: **Added source
+context workspace**, with additional qualified association and location data,
+and **Qualified Pharos workspace**, with applied identifier decisions. Each
+preserves its own input. The larger historical function-prediction study is a
+separate assessment, not another version of these app graphs.
+These are frozen research workspaces; [source dates](docs/SOURCE_NOTES.md#current-reviewer-graph-and-source-dates)
 are recorded separately from the date the app was updated.
 
 **[Open the public demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
@@ -103,8 +107,9 @@ does not establish biological absence.
 [Open the qualified TP53 example directly](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask).
 
 Return to **Start here** and choose **Review applied graph qualifications**.
-This opens the matched retained TP53 example, which has a different source
-collection from the KRAS candidate example. Open **Results & evaluation**.
+This opens **Qualified Pharos workspace** and its matched retained TP53 example.
+Its input differs from **Added source context workspace**, used by KRAS; their
+total record counts are not a paired before/after comparison. Open **Results & evaluation**.
 The page heading is **Results and evaluation**. It explains how source records
 are qualified and how added biological context is assessed, without requiring
 familiarity with earlier app versions. Start with the selected workspace's
@@ -113,16 +118,24 @@ decisions, then read the separate scientific comparisons.
 - **Applied qualification:** 16,985 input records become **16,687 retained**.
   The **298 exclusions use obsolete Gene Ontology identifiers**. Original
   records and reasons are preserved; unresolved records stay retained.
-- **Location-reference comparison:** using the same ontology-qualified mapping,
-  captured Pharos recovers **41/51** known labels and the native source view
-  recovers **44/51** among 31 matching proteins. The previously used OpenCell
-  reference changes from **30/40 to 31/40** among 23 matching proteins.
+- **Location-reference comparison:** only **31 of the 99 targets** match the
+  published human location benchmark, supplying **51 known protein-location
+  labels**. Captured Pharos recovers **41/51**, and the native GO view recovers
+  **44/51** under the same ontology mapping. The other 68 targets lack a matching
+  reference label. Some annotations and the reference reuse Human Protein Atlas
+  observations, so agreement is not fully independent experimental support.
+  The previously used OpenCell imaging reference changes **30/40 to 31/40**
+  labels among **23 matched targets**, after the stated source exclusions.
 
 Read the whole comparison table, including its controls. These measurements
 show known-label recovery under defined source views; shared sources and prior
 reference use limit independence. The separate, larger
 [protein-function prediction study](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
-has its own graph, methods and comparisons. It is not the recorded agent's score.
+has its own historical graph, methods and comparisons. Its primary
+timepoint-ontology view precedes the fixed-starting-ontology sensitivity check.
+Ordinary micro-Fmax summarizes the precision–recall balance over protein–GO
+decisions; it is not percentage accuracy or the recorded agent's score. Neither
+location benchmark is a verification step executed for every app question.
 
 A diagram is a focused answer, not the complete workspace. For example, the
 native workspace contains **9,724 entities and 19,310 evidence records**;
@@ -141,21 +154,25 @@ and under **Export** after the prepared package verifies. It copies the full
 cloud accounts, the Neptune mirror, hosted assessment pages or optional global
 GO/QC inspector data.
 
-In the **retained TP53 example**, open **Export** to read how the full graph,
-decision ledger and baseline relate. These bulk files are separate submission
-or authorized operator assets, rather than public-demo downloads.
+In **Qualified Pharos workspace**, open **Export** to read how its full graph,
+decision ledger and original input relate. The private final data ZIP includes
+these graph and ledger inspection exports, alongside the exact primary
+Pharos-only comparator. They are separate from public-demo downloads.
 
-The retained workspace package includes `source_retained_package`:
+The separate full Qualified Pharos source-recovery package includes `source_retained_package`:
 `retained_graph.json` is the resulting graph, `edge_dispositions.jsonl` holds
 each input record's decision and reason, and `baseline_packet` holds the original
 graph and sources. An undecided record remains retained. The native KRAS package
 contains its candidate graph and sources; it does not include the separate TP53
 qualification decisions.
 
-The focused answer ZIP, complete saved-workspace ZIP and challenge graph/ledger
-package serve different purposes. See the [graph and source package instructions](docs/GOLD_SET_INTERFACE.md#protected-downloads)
-for the primary handoff and separate Pharos-only comparator. A public agent
-record does not silently contain these complete source packets.
+The focused answer ZIP, complete saved-workspace ZIP and graph/ledger inspection
+package serve different purposes. The [five-item final folder](docs/DELIVERY.md#final-submission-folder)
+contains a private **BioGraph_Steward_App_Data_and_Exports.zip**, combining the
+complete KRAS app/source copy with graph, decision-ledger and matched-baseline
+inspection exports. The full Qualified Pharos source-recovery packet is a
+separate optional replay asset. Source terms apply to this organizer handoff.
+A public agent record does not silently contain a complete source workspace.
 
 ## 5. Continue with the same graph locally
 
@@ -211,8 +228,9 @@ New questions and new data belong in a local or operator installation:
 
 - **Construct a new cohort:** follow the
   [graph-building instructions](docs/CONSTRUCTION.md#build-through-the-app).
-  Supply an explicit list of 1–25 proteins to build a Pharos graph with a cited
-  answer. This needs internet access and no model or GPU.
+  Supply an explicit list of 1–25 proteins per request to build a Pharos graph
+  with a cited answer. This is an interactive request limit, not a limit on
+  saved-graph size. It needs internet access and no model or GPU.
 - **Run a new agent question:** follow the
   [source-agent instructions](docs/SOURCE_AGENT.md#operator-cli). Supply a
   complete source workspace and configure a model endpoint. The agent can use

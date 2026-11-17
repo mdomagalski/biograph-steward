@@ -24,7 +24,7 @@ directly. No sign-in, AWS account, installation or running model is needed.
 |---|---|
 | **Added source context** | In the captured 99-target cohort, **87 physical-association pairs** and **68 protein–location concepts** are absent from the baseline annotations. KRAS–CDC42BPB is an actual inspected example. These are qualified candidate records, not claims of new biological discoveries. |
 | **More known location labels recovered** | Under the same ontology-qualified mapping, captured Pharos **41/51 → native source 44/51**. The previously used OpenCell reference changes **30/40 → 31/40**. The full comparison retains source overlap, coverage limits and mapping controls. |
-| **A separate biological-process prediction gain** | Using a historical 20,412-protein graph, context-aware learning improves fixed-ontology Fmax **0.17155 → 0.21009** for additional biological-process annotations in proteins already annotated in that aspect (partial knowledge). Both primary reference views improve over the retained Pharos-derived predictor. Annotation refresh also helps. This study is separate from the 99-target app and agent evaluation. |
+| **A separate biological-process prediction gain** | In a historical 20,412-protein network, the primary timepoint-ontology comparison gives ordinary micro-Fmax **0.055** for retained LocalPlus, **0.059** for refreshed LocalPlus and **0.073** for the context model. The fixed-starting-ontology sensitivity check gives **0.172, 0.183 and 0.210**. These three fixed arms assess additional functions in previously annotated proteins, separately from the 99-target app and agent evaluation. |
 | **Recoverable graph qualification** | The retained example excludes **298 obsolete-GO-identifier records**, leaving **16,687 of 16,985 input records**. Original sources and every decision remain available. |
 
 The [submission overview](docs/SUBMISSION_OVERVIEW.md) explains these distinct
@@ -34,6 +34,13 @@ comparisons. The [addition audit](docs/evaluations/source_agent_20261116/demonst
 provide the supporting results. Known-label recovery is not whole-graph
 precision; shared sources and prior reference use limit independence. Additional
 primary learning benefit over fully refreshed annotations remains uncertain.
+LocalPlus is the published positive-only, weighted transfer of known GO labels
+from direct network neighbors ([Law, Kale and Murali, 2021](https://doi.org/10.1093/bioinformatics/btaa885)); we reuse the authors' implementation on the historical human network.
+Ordinary micro-Fmax pools protein–GO decisions and measures the best
+precision–recall balance across the declared thresholds, rather than percentage
+accuracy. The primary frame scores 1,954 proteins with 3,254 positive
+protein–GO pairs; the sensitivity frame scores 319 with 3,243 pairs. Their
+different populations make the absolute scores incomparable across views.
 The [forecast coverage note](docs/evaluations/final_delivery_20261117/prediction_coverage_feasibility.md)
 explains the complete 3,300-protein temporal-gainer frame: 3,297 in the graph
 and three retained outside it. Further temporal testing requires later labels.
@@ -77,8 +84,14 @@ explains the local review steps.
 
 ## Current app, saved data and new runs
 
-The public AWS demo is a **read-only replay** of completed agent work over two
-real-data workspaces. It supports graph exploration, source inspection and
+One application provides two named real-data examples: **Added source context
+workspace**, used by the KRAS example, and **Qualified Pharos workspace**, opened
+through **Review applied graph qualifications**. Each has its own preserved
+input and decisions. The historical prediction study above is a separate
+research assessment, not a third version of the app graph.
+
+The public AWS demo is a **read-only replay** of completed agent work over these
+workspaces. It supports graph exploration, source inspection and
 scientific comparisons without new model calls, source retrieval or edits.
 The separate manual KRAS question opens an overview of all **14 returned
 partners**: 15 entities and 14 cited connections. **Show in graph** focuses one
@@ -98,8 +111,9 @@ record this saved-example mode.
 To ask a new agent question, use a local or operator installation with a complete
 source workspace and a configured model endpoint. To construct a new Pharos
 graph, the [cohort constructor](docs/CONSTRUCTION.md#build-through-the-app)
-accepts an explicit list of 1–25 proteins and needs internet access, but no model
-or GPU. The [agent instructions](docs/SOURCE_AGENT.md#operator-cli) explain how
+accepts an explicit list of 1–25 proteins per request and needs internet access,
+but no model or GPU. This is the interactive request limit, not a saved-graph
+size limit. The [agent instructions](docs/SOURCE_AGENT.md#operator-cli) explain how
 supported source tools execute a new question. These reusable entry points
 support evaluation on new cohorts beyond the delivered examples.
 
@@ -111,12 +125,16 @@ are recorded separately from assembly dates. This is a fixed 99-target research
 workspace. Updating application code does not refresh its upstream datasets. The
 [delivery status](docs/DELIVERY_STATUS_20261115.json) identifies the deployed
 application and saved artifacts.
-The [designated primary graph handoff](docs/GOLD_SET_INTERFACE.md) has its
-own verified decision ledger, preserved sources and exact captured Pharos-only
-comparator. Those graph-and-decision handoff packets remain separate submission
-assets or authorized operator downloads. The public complete-copy download is
-specifically the native KRAS source workspace, not the separate retained
-companion or Pharos comparator.
+The [final handoff](docs/DELIVERY.md#final-submission-folder), prepared locally in
+`output/final_submission/`, contains five items: a short
+start file, project report, narrated demonstration, slides and
+**BioGraph_Steward_App_Data_and_Exports.zip**. The data ZIP includes the complete
+KRAS app/source workspace plus graph, decision-ledger and matched-baseline
+inspection exports for both named examples. The Qualified Pharos workspace's
+full source-recovery packet remains a separate optional replay asset. The
+[delivery instructions](docs/DELIVERY.md#final-submission-folder) distinguish
+these scopes. This organizer data handoff remains private under each source's
+terms; the software's MIT license does not relicense the datasets.
 
 ## Run locally
 

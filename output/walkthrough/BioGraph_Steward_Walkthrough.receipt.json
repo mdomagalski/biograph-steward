@@ -1,727 +1,572 @@
 {
-  "format": "biograph-steward.actual-screenshot-walkthrough.v4",
-  "capture_mode": "mixed_verified_capture_revisions_with_final_hosted_button",
-  "actual_application_screenshots": true,
-  "actual_hosted_app_screenshots": true,
-  "continuous_screen_recording": false,
-  "edited_still_capture_disclosure_in_video_and_transcript": true,
-  "only_image_crop_scale_and_letterbox": true,
-  "login_token_account_or_raw_JSON_shown": false,
-  "depicted_recorded_agent_job_id": "source_agent_eval_dc7b597201da_S01",
-  "depicted_job_is_verified_prior_actual_model_execution": true,
-  "synthetic_voice": "Installed macOS Samantha",
-  "external_speech_service": false,
-  "timeline_seconds": 294.6,
+  "format": "biograph-steward.local-neural-voice-walkthrough.v1",
+  "status": "promoted_after_root_and_agent_visual_review",
+  "synthetic_voice": "Kokoro af_heart",
+  "speech_engine": "kokoro-onnx0.6.1 with official Kokoro-82M-v1.0",
+  "new_agent_LLM_calls": 0,
+  "new_prediction_runs": 0,
+  "fresh_scientific_source_retrievals": 0,
+  "local_neural_TTS_sections_generated": 10,
+  "local_neural_TTS_inferences_performed": true,
+  "speech_text_uploaded_to_cloud": false,
+  "paid_compute_started": false,
+  "accepted_layout_implementation": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/assemble_still_walkthrough.py",
+  "layout_source_sha256": "1d3ccf33391a2ac7e52b630bdc5dc654b7b27e94592ec04b6f967e1ad9d899e1",
+  "capture_config": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/media/still_capture_config.json",
+  "capture_config_sha256": "26f0dddb162556b1da298b8ad6fe63891b51745cebb6440a1eacea3dd6c14e0b",
+  "full_capture_provenance_retained_in_original_config": true,
+  "source_captures_are_prior_verified_completed_UI_states": true,
+  "current_loading_spinner_not_reconstructed_or_shown_as_fresh_capture": true,
+  "current_spinner_and_picker_only_update_does_not_change_completed_views_in_crops": true,
+  "scientific_report_image_and_values_unchanged": true,
+  "only_crop_scale_letterbox_and_caption_band_added": true,
+  "new_source_agent_run_or_personal_review_performed": false,
+  "source_narration_receipt_sha256": "263c67d658c69f6b122704aedad9a209a7e5262660c9c0def61a747f0875229a",
+  "final_report_content_sha256": "bebcf15cbdb56c87e5a63c07638ebae8c55812f98fd2d129ceaa6dedfcc81a38",
+  "ffmpeg": {
+    "file": "/Users/42573/biograph-steward-pharos/runs/final_clarity_delivery_20261117/voice_research/venv/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v7.1",
+    "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+    "version": "ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers",
+    "ass_filter": true,
+    "loudnorm_filter": true,
+    "libx264_encoder": true,
+    "source": "officialPyPIimageio-ffmpeg0.6.0installedwheel",
+    "canonical_tools_replaced": false
+  },
+  "audio_time_stretched": false,
+  "sentence_cues_from_author_phoneme_durations": true,
+  "independent_ASR_or_manual_audio_audition_claimed": false,
+  "caption_numerals_and_gene_symbols_formatted_without_changing_values": true,
+  "timeline_seconds": 243.12,
   "chapters": [
     {
       "id": "start",
-      "title": "What Steward adds to Pharos",
+      "title": "A protein question, connected to evidence",
       "start_seconds": 0.0,
-      "end_seconds": 30.1
+      "end_seconds": 20.96,
+      "lead_seconds": 1.5,
+      "speech_seconds": 18.97533333333333,
+      "cuts": [
+        0,
+        13.372666666666667,
+        20.96
+      ]
     },
     {
       "id": "added_pair",
-      "title": "One concrete addition: KRAS\u2013CDC42BPB",
-      "start_seconds": 30.1,
-      "end_seconds": 60.400000000000006
+      "title": "An inspectable addition to Pharos",
+      "start_seconds": 20.96,
+      "end_seconds": 44.64,
+      "lead_seconds": 0.45,
+      "speech_seconds": 22.772666666666666,
+      "cuts": [
+        0,
+        2.619,
+        9.369,
+        17.369,
+        23.68
+      ]
     },
     {
       "id": "measured",
-      "title": "More published location labels recovered",
-      "start_seconds": 60.400000000000006,
-      "end_seconds": 89.4
+      "title": "Published location labels recovered",
+      "start_seconds": 44.64,
+      "end_seconds": 70.0,
+      "lead_seconds": 0.45,
+      "speech_seconds": 24.426666666666666,
+      "cuts": [
+        0,
+        19.419,
+        25.36
+      ]
     },
     {
       "id": "agent",
-      "title": "The agent turns a question into inspectable evidence",
-      "start_seconds": 89.4,
-      "end_seconds": 124.60000000000001
+      "title": "The agent follows a supported investigation",
+      "start_seconds": 70.0,
+      "end_seconds": 93.76,
+      "lead_seconds": 0.45,
+      "speech_seconds": 22.826666666666668,
+      "cuts": [
+        0,
+        12.451333333333332,
+        17.426333333333332,
+        23.76
+      ]
     },
     {
       "id": "explore_answer_paths_results",
-      "title": "Manual question: overview, paths and results",
-      "start_seconds": 124.60000000000001,
-      "end_seconds": 146.60000000000002
+      "title": "Explore the complete question result",
+      "start_seconds": 93.76,
+      "end_seconds": 117.92,
+      "lead_seconds": 0.45,
+      "speech_seconds": 23.220666666666666,
+      "cuts": [
+        0,
+        1.65,
+        4.1049999999999995,
+        6.955,
+        9.479999999999999,
+        16.105,
+        20.38,
+        24.16
+      ]
     },
     {
       "id": "edit_copy",
-      "title": "Take the same graph home and record your review",
-      "start_seconds": 146.60000000000002,
-      "end_seconds": 181.60000000000002
+      "title": "Continue with the same evidence locally",
+      "start_seconds": 117.92,
+      "end_seconds": 138.84,
+      "lead_seconds": 0.45,
+      "speech_seconds": 19.983333333333334,
+      "cuts": [
+        0,
+        7.124,
+        11.024000000000001,
+        16.104,
+        20.92
+      ]
     },
     {
       "id": "prediction",
-      "title": "A separate, measured protein-function prediction gain",
-      "start_seconds": 181.60000000000002,
-      "end_seconds": 219.90000000000003
+      "title": "A separate historical prediction study",
+      "start_seconds": 138.84,
+      "end_seconds": 183.28,
+      "lead_seconds": 0.45,
+      "speech_seconds": 43.525,
+      "cuts": [
+        0,
+        19.825,
+        34.900000000000006,
+        44.44
+      ]
     },
     {
       "id": "review",
-      "title": "Qualification with recoverable decisions",
-      "start_seconds": 219.90000000000003,
-      "end_seconds": 248.10000000000002
+      "title": "A retained graph with explicit decisions",
+      "start_seconds": 183.28,
+      "end_seconds": 206.2,
+      "lead_seconds": 0.45,
+      "speech_seconds": 21.993333333333332,
+      "cuts": [
+        0,
+        22.92
+      ]
     },
     {
       "id": "interpretation",
-      "title": "How to interpret these measured gains",
-      "start_seconds": 248.10000000000002,
-      "end_seconds": 270.70000000000005
+      "title": "Understand each result in context",
+      "start_seconds": 206.2,
+      "end_seconds": 224.12,
+      "lead_seconds": 0.45,
+      "speech_seconds": 17.002666666666666,
+      "cuts": [
+        0,
+        4.45,
+        8.543999999999999,
+        17.92
+      ]
     },
     {
       "id": "export",
-      "title": "A more useful, inspectable starting point",
-      "start_seconds": 270.70000000000005,
-      "end_seconds": 294.6
+      "title": "One application and a clear handoff",
+      "start_seconds": 224.12,
+      "end_seconds": 243.12,
+      "lead_seconds": 0.45,
+      "speech_seconds": 18.079333333333334,
+      "cuts": [
+        0,
+        3.794,
+        11.818999999999999,
+        19.0
+      ]
     }
-  ],
-  "additional_capture_receipt_sha256": [
-    "651b90c30a45234f6d32a881749a688034aa9e6d17e3ef67999f764f796811c7",
-    "35cdaf101be94a9e0edd48c6a7e43e9fa8705ea1ccd1dc13ea910d7f58bdbd9a"
   ],
   "image_sources": [
     {
       "scene": "start",
-      "filename": "local_start_agent_current.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/local_start_agent_current.png",
       "sha256": "7dfcc904868ddd87a28fb3779e6f61a485784db4d4500edee060adbf92a6b8a6",
-      "seconds": 8,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 13.372666666666667
     },
     {
       "scene": "start",
-      "filename": "current_local_agent_start.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_agent_start.png",
       "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
-      "seconds": 22.1,
       "crop": {
         "x": 60,
         "y": 360,
         "width": 1320,
         "height": 570
-      }
+      },
+      "start_seconds_in_scene": 13.372666666666667,
+      "end_seconds_in_scene": 20.96
     },
     {
       "scene": "added_pair",
-      "filename": "E002_actual_evidence_graph.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/E002_actual_evidence_graph.png",
       "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
-      "seconds": 4,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 2.619
     },
     {
       "scene": "added_pair",
-      "filename": "E002_actual_pair_coverage_identity.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/missing02/E002_actual_pair_coverage_identity.png",
       "sha256": "43257b8064148d637c264e18158259f63fb98e6506bb9b6a0991503888203913",
-      "seconds": 11,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 2.619,
+      "end_seconds_in_scene": 9.369
     },
     {
       "scene": "added_pair",
-      "filename": "E002_actual_native_STRING_source.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/E002_actual_native_STRING_source.png",
       "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
-      "seconds": 10,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 9.369,
+      "end_seconds_in_scene": 17.369
     },
     {
       "scene": "added_pair",
-      "filename": "E002_actual_review_proposal.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/missing02/E002_actual_review_proposal.png",
       "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
-      "seconds": 5.3,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 17.369,
+      "end_seconds_in_scene": 23.68
     },
     {
       "scene": "measured",
-      "filename": "direct_location_reference.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_reference_report_ee3/direct_location_reference.png",
       "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
-      "seconds": 17,
       "crop": {
         "x": 0,
         "y": 0,
         "width": 1280,
         "height": 400
-      }
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 19.419
     },
     {
       "scene": "measured",
-      "filename": "direct_opencell_reference.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_reference_report_ee3/direct_opencell_reference.png",
       "sha256": "ae90d99ea6df72d4474181d80362b78631e1c72cb2ecdf4c6b6c3c78c9e4b334",
-      "seconds": 12.0,
       "crop": {
         "x": 0,
         "y": 0,
         "width": 1280,
         "height": 286
-      }
+      },
+      "start_seconds_in_scene": 19.419,
+      "end_seconds_in_scene": 25.36
     },
     {
       "scene": "agent",
-      "filename": "current_local_agent_plan.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_agent_plan.png",
       "sha256": "1461dc45b541f25f840c433ccaf2be43b0367f17b8a3b7b3d3726ac53ab83646",
-      "seconds": 10,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 12.451333333333332
     },
     {
       "scene": "agent",
-      "filename": "E002_actual_evidence_graph.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/E002_actual_evidence_graph.png",
       "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
-      "seconds": 9,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 12.451333333333332,
+      "end_seconds_in_scene": 17.426333333333332
     },
     {
       "scene": "agent",
-      "filename": "E002_actual_review_proposal.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/missing02/E002_actual_review_proposal.png",
       "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
-      "seconds": 16.2,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 17.426333333333332,
+      "end_seconds_in_scene": 23.76
     },
     {
       "scene": "explore_answer_paths_results",
-      "filename": "hosted_overview_controls.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_overview_controls.png",
       "sha256": "a0be17be362eb26c10ae35e1002b2a5a404996f8f2e8e6db3372cfbb79cbfd15",
-      "seconds": 3,
       "crop": {
         "x": 130,
         "y": 145,
         "width": 1305,
         "height": 190
-      }
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 1.65
     },
     {
       "scene": "explore_answer_paths_results",
-      "filename": "hosted_all_14_partners.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_all_14_partners.png",
       "sha256": "5818037ecdf24a8cc54fced1603bfb2002531aba66601fbe883764457c15c80d",
-      "seconds": 2,
       "crop": {
         "x": 135,
         "y": 66,
         "width": 1285,
         "height": 690
-      }
+      },
+      "start_seconds_in_scene": 1.65,
+      "end_seconds_in_scene": 4.1049999999999995
     },
     {
       "scene": "explore_answer_paths_results",
-      "filename": "hosted_focused_CDC42BPB.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_focused_CDC42BPB.png",
       "sha256": "0ff38c6f19399287e79d2ffe0a7219d76e1ff1a9fdf7f0ee3a1ad0200381f932",
-      "seconds": 2,
       "crop": {
         "x": 130,
         "y": 145,
         "width": 1305,
         "height": 580
-      }
+      },
+      "start_seconds_in_scene": 4.1049999999999995,
+      "end_seconds_in_scene": 6.955
     },
     {
       "scene": "explore_answer_paths_results",
-      "filename": "hosted_all_14_partners.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_all_14_partners.png",
       "sha256": "5818037ecdf24a8cc54fced1603bfb2002531aba66601fbe883764457c15c80d",
-      "seconds": 2,
       "crop": {
         "x": 135,
         "y": 66,
         "width": 1285,
         "height": 690
-      }
+      },
+      "start_seconds_in_scene": 6.955,
+      "end_seconds_in_scene": 9.479999999999999
     },
     {
       "scene": "explore_answer_paths_results",
-      "filename": "hosted_path_entity_search.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_path_entity_search.png",
       "sha256": "270bc90790f2294809fade394edb888a8ddf838392134f55461d0a295d5732a9",
-      "seconds": 4,
       "crop": {
         "x": 150,
         "y": 100,
         "width": 1255,
         "height": 565
-      }
+      },
+      "start_seconds_in_scene": 9.479999999999999,
+      "end_seconds_in_scene": 16.105
     },
     {
       "scene": "explore_answer_paths_results",
-      "filename": "hosted_KRAS_path_result.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_KRAS_path_result.png",
       "sha256": "0a1a52e547e9807d86eaacab43ba5b484f10fd8b19fc5a748975f5ed81e6128f",
-      "seconds": 4,
       "crop": {
         "x": 150,
         "y": 270,
         "width": 1255,
         "height": 525
-      }
+      },
+      "start_seconds_in_scene": 16.105,
+      "end_seconds_in_scene": 20.38
     },
     {
       "scene": "explore_answer_paths_results",
-      "filename": "hosted_results_intro.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_results_intro.png",
       "sha256": "5cbb61cc0710a9c3493e5b1b13cd0ac2a7929b12292827b4fd2e94cc580a3cc3",
-      "seconds": 5,
       "crop": {
         "x": 110,
         "y": 140,
         "width": 1330,
         "height": 660
-      }
+      },
+      "start_seconds_in_scene": 20.38,
+      "end_seconds_in_scene": 24.16
     },
     {
       "scene": "edit_copy",
-      "filename": "hosted_editable_copy_control.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_editable_copy_control.png",
       "sha256": "bcb34a5f54777dc7850a9b40f27fa160fb8a2c3f7613d845411affe88fc1afe2",
-      "seconds": 8,
       "crop": {
         "x": 110,
         "y": 240,
         "width": 1330,
         "height": 280
-      }
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 7.124
     },
     {
       "scene": "edit_copy",
-      "filename": "hosted_focused_CDC42BPB.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_focused_CDC42BPB.png",
       "sha256": "0ff38c6f19399287e79d2ffe0a7219d76e1ff1a9fdf7f0ee3a1ad0200381f932",
-      "seconds": 7,
       "crop": {
         "x": 130,
         "y": 145,
         "width": 1305,
         "height": 580
-      }
+      },
+      "start_seconds_in_scene": 7.124,
+      "end_seconds_in_scene": 11.024000000000001
     },
     {
       "scene": "edit_copy",
-      "filename": "local_KRAS_provisional_review_form.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/editable_demo_copy_20261117/browser/local_KRAS_provisional_review_form.png",
       "sha256": "e39aab7a15d94ff0808acf65c6235b2a815401a1b07317d545ad81b01dc2cd1b",
-      "seconds": 10,
       "crop": {
         "x": 900,
         "y": 135,
         "width": 510,
         "height": 480
-      }
+      },
+      "start_seconds_in_scene": 11.024000000000001,
+      "end_seconds_in_scene": 16.104
     },
     {
       "scene": "edit_copy",
-      "filename": "local_KRAS_review_saved_new_run.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/editable_demo_copy_20261117/browser/local_KRAS_review_saved_new_run.png",
       "sha256": "b1025560e2b64987a50c186c5c18d21bc8fb8daf034acc5ed34abd7727461492",
-      "seconds": 10,
       "crop": {
         "x": 895,
         "y": 215,
         "width": 515,
         "height": 390
-      }
+      },
+      "start_seconds_in_scene": 16.104,
+      "end_seconds_in_scene": 20.92
     },
     {
       "scene": "prediction",
-      "filename": "prediction_saved_report.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report.png",
       "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
-      "seconds": 38.3,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 19.825
+    },
+    {
+      "scene": "prediction",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report.png",
+      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+      "crop": {
+        "x": 20,
+        "y": 15,
+        "width": 1240,
+        "height": 275
+      },
+      "start_seconds_in_scene": 19.825,
+      "end_seconds_in_scene": 34.900000000000006
+    },
+    {
+      "scene": "prediction",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report.png",
+      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+      "crop": {
+        "x": 20,
+        "y": 302,
+        "width": 1240,
+        "height": 270
+      },
+      "start_seconds_in_scene": 34.900000000000006,
+      "end_seconds_in_scene": 44.44
     },
     {
       "scene": "review",
-      "filename": "current_local_applied_qualification.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_applied_qualification.png",
       "sha256": "eead630ee0d754f7ac3191ddd029522b64b2bf74a37417cb7795ca225741956e",
-      "seconds": 28.2,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 22.92
     },
     {
       "scene": "interpretation",
-      "filename": "direct_location_reference.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_reference_report_ee3/direct_location_reference.png",
       "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
-      "seconds": 10,
       "crop": {
         "x": 0,
         "y": 0,
         "width": 1280,
         "height": 400
-      }
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 4.45
     },
     {
       "scene": "interpretation",
-      "filename": "E002_actual_native_STRING_source.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/E002_actual_native_STRING_source.png",
       "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
-      "seconds": 6,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 4.45,
+      "end_seconds_in_scene": 8.543999999999999
     },
     {
       "scene": "interpretation",
-      "filename": "prediction_saved_report.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report.png",
       "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
-      "seconds": 6.6,
-      "crop": null
+      "crop": null,
+      "start_seconds_in_scene": 8.543999999999999,
+      "end_seconds_in_scene": 17.92
     },
     {
       "scene": "export",
-      "filename": "current_local_agent_record_download.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_agent_record_download.png",
       "sha256": "ba201b0b67e00c6f9c63e909774db7806d3f6231593f5d875e92166eaf7c2c14",
-      "seconds": 8,
       "crop": {
         "x": 60,
         "y": 250,
         "width": 1320,
         "height": 690
-      }
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 3.794
     },
     {
       "scene": "export",
-      "filename": "current_local_retained_export.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_retained_export.png",
       "sha256": "d08adcab4374cd005c29ec61add768a3781aea5a45c766887e0cb7d12ab6de3f",
-      "seconds": 9,
       "crop": {
         "x": 60,
         "y": 310,
         "width": 1320,
         "height": 605
-      }
+      },
+      "start_seconds_in_scene": 3.794,
+      "end_seconds_in_scene": 11.818999999999999
     },
     {
       "scene": "export",
-      "filename": "current_local_agent_start.png",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_agent_start.png",
       "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
-      "seconds": 6.9,
       "crop": {
         "x": 60,
         "y": 360,
         "width": 1320,
         "height": 570
-      }
+      },
+      "start_seconds_in_scene": 11.818999999999999,
+      "end_seconds_in_scene": 19.0
     }
   ],
-  "caption_band_outside_app_frame": true,
-  "captions_and_transcript_use_canonical_gene_spellings": true,
-  "full_video_decode_passed": true,
-  "visual_review_pending": true,
+  "caption_cues": 45,
+  "full_video_decode_and_audio_analysis_passed": true,
+  "visual_review_pending": false,
+  "canonical_media_changed": true,
   "files": {
     "BioGraph_Steward_Walkthrough.mp4": {
-      "bytes": 8577316,
-      "sha256": "27537a54171347aed2b5558c10377589b31beb54a421922862b21dc1e0165a97"
+      "bytes": 7323004,
+      "sha256": "b722658bff37309a5de0b593d7e5c7815d10571afe79c72ab302226934d31b73"
     },
     "BioGraph_Steward_Walkthrough.vtt": {
-      "bytes": 6736,
-      "sha256": "2e992e2cf910c145149bb914a221739c6772154966d5d1ae15e95e7f8dec46b9"
+      "bytes": 4695,
+      "sha256": "4f47a113fcdc0c1e0c8db6a68ae12cf3276a62341c85d7b2039631f73a9b6f1f"
     },
     "BioGraph_Steward_Walkthrough.srt": {
-      "bytes": 6929,
-      "sha256": "822d81ea1d3664c5dd46a1227d9265bd91584bceff07c2d951b55dda7fa68f1f"
+      "bytes": 4813,
+      "sha256": "cc084d32bf483f84c3943976dc71ef7276400b81408af71ad6bb42e745f3544a"
     },
     "BioGraph_Steward_Walkthrough.txt": {
-      "bytes": 4879,
-      "sha256": "eeeca12e5a752862d8ac62ee6d38af23b16d47599a37aba6fafac13c7f3b53a6"
+      "bytes": 4128,
+      "sha256": "82420d972cf231e10ab13cdef763643201baee1867a762a19815a4cf868155c7"
     }
   },
-  "source_config_sha256": "26f0dddb162556b1da298b8ad6fe63891b51745cebb6440a1eacea3dd6c14e0b",
-  "latest_application_runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
-  "local_Start_capture_revision": "79af4679c7567ccd0dc760a22e286e27320f7671",
-  "actual_app_frames_are_not_reconstructed": true,
-  "all_visuals_are_app_UI": false,
-  "contains_separately_labeled_scientific_report_tables": true,
-  "scientific_report_visuals": [
-    {
-      "capture_receipt": "runs/source_agent_delivery_20261116/media/value_first_revision/prediction_table_capture_receipt.json",
-      "capture_receipt_sha256": "ed1fa7c73adc07a0b49ac78fc1db46a4d557b756e344ae1fbbacbad0c92c8148",
-      "source_provenance": "runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report_provenance.json",
-      "source_provenance_sha256": "ec1edd1f5eb556442a57a6fa113e83c601a4ee85f6ae7975635381e67b841275",
-      "classification": "rendered_unchanged_scientific_report_tables_not_app_UI"
-    }
-  ],
-  "demonstrated_additions_receipt": {
-    "path": "docs/evaluations/source_agent_20261116/demonstrated_additions.json",
-    "sha256": "650819aad10b8d567839c9e32b82496f5c8faa6e39d84c968c8621c469c11ee6"
-  },
-  "mixed_capture_runtime_revisions": true,
-  "manual_question_all_returned_partners": 14,
-  "prior_agent_recorded_max_results": 8,
-  "question_reader_and_agent_scopes_distinguished": true,
-  "current_public_archive_metadata_and_HEAD_verified": true,
-  "current_complete_archive_SHA_verified_on_existing_VM": true,
-  "actual_Chrome_binary_download_completed": false,
-  "Chrome_binary_download_attempts": 0,
-  "prior_managed_Chrome_block_not_retried_or_bypassed": true,
-  "current_editable_package_sha256": "f63d852d1eeb584a0c238a99289639ecc325c340bf785f1f58d9e68319ffb73b",
-  "current_editable_package_bytes": 106914890,
-  "original_workspace_question_agent_files_preserved": 213,
-  "navigation_capture": {
-    "status": "verified_actual_capture",
-    "local_receipt": "runs/question_graph_usability_20261117/browser/local_browser_proof_v2.json",
-    "local_receipt_sha256": "f477e1654883a921316f214421a3a27a07f0da4161c2c576eeaee3582f8127b2",
-    "final_runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
-    "earlier_feature_capture_revision": "79af4679c7567ccd0dc760a22e286e27320f7671",
-    "runtime_bridge": {
-      "base_runtime_commit": "79af4679c7567ccd0dc760a22e286e27320f7671",
-      "final_runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
-      "application_delta": "Two call-site conditional length checks use the visible answer for zero results; other UI, all three source adapters and scientific inputs are unchanged.",
-      "three_UI_file_patch_sha256": "0c08cd5621e0bad8f0ed1b5c9d11039854b5698e1ee9c55802db94d0037ff958",
-      "earlier_feature_screenshots_reused_with_explicit_original_revision": true
-    },
-    "package_receipt": "runs/question_graph_usability_20261117/package_v2/package_receipt.json",
-    "package_receipt_sha256": "b2de9f5abf1f2f9429887073338445347af3004c754e6acaba1313d20b819228",
-    "hosted_receipt": "runs/question_graph_usability_20261117/deployment_v2/public_acceptance.json",
-    "hosted_receipt_sha256": "578c7866a778d1938d8c40edde1e3072c50c80f93b50006cf83317ab4c9a2008",
-    "delivery_receipt": "runs/question_graph_usability_20261117/deployment_v2/hosted_acceptance.json",
-    "delivery_receipt_sha256": "560f449239cb1a2df62b9130f48072b8da407dea625c41acc4f4fee6c3c4e60d",
-    "hosted_browser_receipt": "runs/question_graph_usability_20261117/browser/hosted_browser_proof.json",
-    "hosted_browser_receipt_sha256": "86de8c58cc1c8e49c365170587e28c92e0d10fe0ba14b0d3002068ae819f417b",
-    "hosted_browser_verified": true,
-    "hosted_button_image_sha256": "bcb34a5f54777dc7850a9b40f27fa160fb8a2c3f7613d845411affe88fc1afe2",
-    "all_new_question_scene_states_are_actual_final_public_UI": true
-  },
-  "prior_c134_review_capture": {
-    "receipt": "runs/editable_demo_copy_20261117/browser/capture_receipt.json",
-    "sha256": "173ec24a760e376d5948b8b4c6825ccc8aa4863c1c5591ed80a782793cfc9c11",
-    "saved_runs": 1,
-    "decision": "provisional",
-    "reused_not_new": true
-  },
-  "original_source_capture": {
-    "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
-    "receipt": "runs/source_agent_delivery_20261116/local_capture_ee3/receipt.json",
-    "sha256": "38d8b1be5b79f90ddbe2d6d914387a2bfab1d87eedf0f941570afcc754c246f4"
-  },
-  "new_model_calls": 0,
-  "new_scientific_source_retrievals": 0,
-  "new_review_writes": 0,
-  "reused_prior_review_demo_saved_runs": 1,
-  "reused_prior_review_demo_decision": "provisional",
-  "review_demo_is_biological_acceptance": false,
-  "original_workspaces_unchanged": true,
-  "original_source_files_unchanged": true,
-  "public_demo_read_only": true,
-  "personal_review_requires_editing_enabled_workspace": true,
-  "scientific_tables_and_values_unchanged": true,
-  "unchanged_scene_ids": [
-    "added_pair",
-    "measured",
-    "agent",
-    "prediction",
-    "review",
-    "interpretation",
-    "export"
-  ],
-  "primary_prediction_scope": "Partially known biological-process functions; fixed-ontology micro-Fmax is a benchmark score, not graph-assertion accuracy.",
-  "raw_input_frame_count": 30,
-  "per_state_classification": [
-    {
-      "scene": "start",
-      "filename": "local_start_agent_current.png",
-      "sha256": "7dfcc904868ddd87a28fb3779e6f61a485784db4d4500edee060adbf92a6b8a6",
-      "classification": "actual_local_app_UI_new_question_and_navigation",
-      "source_revision": "79af4679c7567ccd0dc760a22e286e27320f7671"
-    },
-    {
-      "scene": "start",
-      "filename": "current_local_agent_start.png",
-      "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "added_pair",
-      "filename": "E002_actual_evidence_graph.png",
-      "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "added_pair",
-      "filename": "E002_actual_pair_coverage_identity.png",
-      "sha256": "43257b8064148d637c264e18158259f63fb98e6506bb9b6a0991503888203913",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "added_pair",
-      "filename": "E002_actual_native_STRING_source.png",
-      "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "added_pair",
-      "filename": "E002_actual_review_proposal.png",
-      "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "measured",
-      "filename": "direct_location_reference.png",
-      "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
-      "classification": "actual_saved_app_assessment",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "measured",
-      "filename": "direct_opencell_reference.png",
-      "sha256": "ae90d99ea6df72d4474181d80362b78631e1c72cb2ecdf4c6b6c3c78c9e4b334",
-      "classification": "actual_saved_app_assessment",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "agent",
-      "filename": "current_local_agent_plan.png",
-      "sha256": "1461dc45b541f25f840c433ccaf2be43b0367f17b8a3b7b3d3726ac53ab83646",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "agent",
-      "filename": "E002_actual_evidence_graph.png",
-      "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "agent",
-      "filename": "E002_actual_review_proposal.png",
-      "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "explore_answer_paths_results",
-      "filename": "hosted_overview_controls.png",
-      "sha256": "a0be17be362eb26c10ae35e1002b2a5a404996f8f2e8e6db3372cfbb79cbfd15",
-      "classification": "actual_hosted_app_UI_final_question_reader",
-      "source_revision": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
-    },
-    {
-      "scene": "explore_answer_paths_results",
-      "filename": "hosted_all_14_partners.png",
-      "sha256": "5818037ecdf24a8cc54fced1603bfb2002531aba66601fbe883764457c15c80d",
-      "classification": "actual_hosted_app_UI_final_question_reader",
-      "source_revision": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
-    },
-    {
-      "scene": "explore_answer_paths_results",
-      "filename": "hosted_focused_CDC42BPB.png",
-      "sha256": "0ff38c6f19399287e79d2ffe0a7219d76e1ff1a9fdf7f0ee3a1ad0200381f932",
-      "classification": "actual_hosted_app_UI_final_question_reader",
-      "source_revision": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
-    },
-    {
-      "scene": "explore_answer_paths_results",
-      "filename": "hosted_all_14_partners.png",
-      "sha256": "5818037ecdf24a8cc54fced1603bfb2002531aba66601fbe883764457c15c80d",
-      "classification": "actual_hosted_app_UI_final_question_reader",
-      "source_revision": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
-    },
-    {
-      "scene": "explore_answer_paths_results",
-      "filename": "hosted_path_entity_search.png",
-      "sha256": "270bc90790f2294809fade394edb888a8ddf838392134f55461d0a295d5732a9",
-      "classification": "actual_hosted_app_UI_final_question_reader",
-      "source_revision": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
-    },
-    {
-      "scene": "explore_answer_paths_results",
-      "filename": "hosted_KRAS_path_result.png",
-      "sha256": "0a1a52e547e9807d86eaacab43ba5b484f10fd8b19fc5a748975f5ed81e6128f",
-      "classification": "actual_hosted_app_UI_final_question_reader",
-      "source_revision": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
-    },
-    {
-      "scene": "explore_answer_paths_results",
-      "filename": "hosted_results_intro.png",
-      "sha256": "5cbb61cc0710a9c3493e5b1b13cd0ac2a7929b12292827b4fd2e94cc580a3cc3",
-      "classification": "actual_hosted_app_UI_final_question_reader",
-      "source_revision": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
-    },
-    {
-      "scene": "edit_copy",
-      "filename": "hosted_editable_copy_control.png",
-      "sha256": "bcb34a5f54777dc7850a9b40f27fa160fb8a2c3f7613d845411affe88fc1afe2",
-      "classification": "actual_hosted_app_UI_prepared_native_workspace_download",
-      "source_revision": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
-    },
-    {
-      "scene": "edit_copy",
-      "filename": "hosted_focused_CDC42BPB.png",
-      "sha256": "0ff38c6f19399287e79d2ffe0a7219d76e1ff1a9fdf7f0ee3a1ad0200381f932",
-      "classification": "actual_hosted_app_UI_final_question_reader",
-      "source_revision": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
-    },
-    {
-      "scene": "edit_copy",
-      "filename": "local_KRAS_provisional_review_form.png",
-      "sha256": "e39aab7a15d94ff0808acf65c6235b2a815401a1b07317d545ad81b01dc2cd1b",
-      "classification": "actual_local_app_UI_isolated_provisional_review_demo",
-      "source_revision": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b"
-    },
-    {
-      "scene": "edit_copy",
-      "filename": "local_KRAS_review_saved_new_run.png",
-      "sha256": "b1025560e2b64987a50c186c5c18d21bc8fb8daf034acc5ed34abd7727461492",
-      "classification": "actual_local_app_UI_isolated_provisional_review_demo",
-      "source_revision": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b"
-    },
-    {
-      "scene": "prediction",
-      "filename": "prediction_saved_report.png",
-      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
-      "classification": "rendered_unchanged_scientific_report_tables_not_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "review",
-      "filename": "current_local_applied_qualification.png",
-      "sha256": "eead630ee0d754f7ac3191ddd029522b64b2bf74a37417cb7795ca225741956e",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "interpretation",
-      "filename": "direct_location_reference.png",
-      "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
-      "classification": "actual_saved_app_assessment",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "interpretation",
-      "filename": "E002_actual_native_STRING_source.png",
-      "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "interpretation",
-      "filename": "prediction_saved_report.png",
-      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
-      "classification": "rendered_unchanged_scientific_report_tables_not_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "export",
-      "filename": "current_local_agent_record_download.png",
-      "sha256": "ba201b0b67e00c6f9c63e909774db7806d3f6231593f5d875e92166eaf7c2c14",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "export",
-      "filename": "current_local_retained_export.png",
-      "sha256": "d08adcab4374cd005c29ec61add768a3781aea5a45c766887e0cb7d12ab6de3f",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    },
-    {
-      "scene": "export",
-      "filename": "current_local_agent_start.png",
-      "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
-      "classification": "actual_local_app_UI",
-      "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb"
-    }
-  ],
-  "capture_note": "Actual final 940db public question-reader overview, all 14 partners, searchable path controls, complete KRAS\u2192CDC42BPB saved route, Results and evaluation introduction and editable-copy control were captured in Chrome. The Start frame retains its explicit 79af local capture revision and the validated two-conditional bridge to 940db; no reconstructed labels are used. The manual answer displays all 14 returned partners, separate from the earlier recorded agent's eight-result cap. Older scientific/source scenes remain unchanged. The cropped c134 provisional review form and saved-new-run confirmation reuse their original actual-browser and 207-file preservation proof; no new review is claimed. Current public HTML/metadata/HEAD and the current complete ZIP hash on the VM were verified. No Chrome binary transfer was attempted or completed in this increment, and the prior managed-browser block was not bypassed. No new model inference, scientific-source retrieval, scientific measurement or review write occurred. Canonical media stay unchanged during private candidate preparation.",
-  "canonical_unchanged_during_private_preparation": true,
-  "canonical_preservation_receipt": "runs/question_graph_usability_20261117/media/prior_canonical_4343/preservation_receipt.json",
-  "assistant_visual_QA_completed": true,
-  "narration_text_and_automatic_audio_checks_passed": true,
-  "manual_audio_audition_performed": false,
-  "assistant_visual_QA_scope": [
-    "12-frame contact sheet",
-    "full-size all14 question graph",
-    "full-size completed saved path"
-  ],
-  "approved_candidate_mp4_sha256": "27537a54171347aed2b5558c10377589b31beb54a421922862b21dc1e0165a97",
-  "canonical_promotion_authorized": true,
-  "canonical_promoted_at_UTC": "2026-11-17T17:52:58.862731+00:00",
-  "prior_canonical_mp4_sha256": "4343c2e353db63df3f0c5ff3f35dc8e8f127eeae33d63e59c0da924ecc363578",
-  "prior_five_canonical_files_verified_and_preserved_before_promotion": true,
-  "paths_are_repository_relative": true,
-  "transcript_format": "Reader transcript: short preface, chapter timestamps/titles and spoken narration only.",
-  "transcript_audience_cleanup_at_UTC": "2026-11-17T17:54:08.117598+00:00",
-  "capture_connection_incident": "Mac system proxy stopped listening. User restarted the existing VPN/proxy; normal configured connection was restored. No settings changed or proxy bypass performed. Existing remote deployment result was retrieved without repeating mutation."
+  "fourteen_sampled_frames_visually_reviewed": true,
+  "visual_qa_receipt": "/Users/42573/biograph-steward-pharos/runs/final_clarity_delivery_20261117/voice_research/neural_video_v2/visual_QA/qa.json",
+  "root_visual_QA": true,
+  "agent_visual_QA": true,
+  "manual_audio_audition": false,
+  "actual_current_browser_capture": false,
+  "previous_canonical_preserved_privately": true
 }

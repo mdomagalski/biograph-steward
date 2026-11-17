@@ -21,7 +21,13 @@ syntax. The recorded Nemotron workflow has four steps: **Question & plan**,
 | Reuse a recorded result | Download the verified agent record for its focused graph, model/tool trace, inspections and proposals. |
 | Continue with the same graph locally | Choose **Download an editable local copy** in the native KRAS workspace or its **Export** tab. The complete ZIP includes runtime, source workspace, saved question, recorded agent job and launcher. Record evidence decisions locally and save a new run. |
 
-The public site replays completed real agent work over two designated saved
+One application provides two named saved examples: **Added source context
+workspace** for KRAS and additional source evidence, and **Qualified Pharos
+workspace**, opened through **Review applied graph qualifications**, for applied
+identifier decisions. Each preserves its own input and exports. The larger
+historical function-prediction study is a separate assessment.
+
+The public site replays completed real agent work over these two saved
 workspaces and five recorded-agent examples. New construction, retrieval, model
 calls and review edits are disabled. Read-only graph exploration and source
 inspection remain available. Proposals accept no assertion and change no graph.
@@ -35,9 +41,10 @@ archives retain their own download scope.
 Use a local or authorized operator installation for new work:
 
 - **Construct a Pharos graph:** follow [cohort construction](CONSTRUCTION.md#build-through-the-app).
-  Supply an explicit list of 1–25 proteins. This retrieves bounded Pharos data
-  and builds a graph with a cited answer. Internet access is required. A model
-  or GPU is not required.
+  Supply an explicit list of 1–25 proteins per request. This interactive request
+  limit does not limit saved-graph size. The constructor retrieves bounded
+  Pharos data and builds a graph with a cited answer. Internet access is required.
+  A model or GPU is not required.
 - **Ask a new agent question:** follow [source-agent execution](SOURCE_AGENT.md#operator-cli).
   Supply a complete source workspace and configure a live model endpoint. The
   agent uses only source tools actually attached to that workspace. Supported
@@ -79,7 +86,26 @@ The real-data demonstration uses separately preserved source packets under
 their source terms. The [small CC0 Reactome example](../examples/reactome_context_20261113/README.md)
 provides an included real-source inspection example.
 
-## Project files
+## Final submission folder
+
+The judge-facing folder, prepared locally at `output/final_submission/`, has five files:
+
+1. **START_HERE.txt** — application link and a short route through the delivery.
+2. **BioGraph_Steward_Project_Report.pdf** — purpose, design, methods and results.
+3. **BioGraph_Steward_Demonstration.mp4** — narrated demonstration.
+4. **BioGraph_Steward_Overview.pptx** — presentation slides.
+5. **BioGraph_Steward_App_Data_and_Exports.zip** — the complete native KRAS app,
+   saved workspace and sources, plus graph/decision-ledger/matched-baseline
+   inspection exports for both named examples, an index and source terms.
+
+The data ZIP is a private organizer handoff under the included source terms.
+It includes the complete primary KRAS replay data. Its Qualified Pharos exports
+are for graph and decision inspection; the full qualified source-recovery
+packet remains a separate optional replay asset. Code-only software, research
+adjuncts, historical media and internal review guides are outside this front
+folder. The old large combined submission archive is not the final delivery.
+
+## Repository copies and optional assets
 
 | File | Purpose |
 |---|---|
@@ -95,7 +121,8 @@ provides an included real-source inspection example.
 
 The video uses actual local-app screenshot states on verified saved real data,
 readable crops and synthetic narration. Its prediction scene renders unchanged
-scientific-report tables. Capture runs no new inference or source retrieval.
+scientific-report tables. It makes no new agent calls, prediction runs or
+scientific-source retrievals. Narration is generated locally with a neural voice.
 [Delivery status](DELIVERY_STATUS_20261115.json) and the
 [release index](releases/20261115/README.md) identify exact artifact checksums.
 
@@ -103,8 +130,8 @@ scientific-report tables. Capture runs no new inference or source retrieval.
 
 | Saved workspace | Scope and use |
 |---|---|
-| Native candidate-evidence view | **99 primary targets, 9,724 entities and 19,310 evidence records**. It preserves 15,671 captured Pharos records and adds 3,309 native GO annotation rows and 330 STRING physical associations. Use the KRAS question and location-source comparison. |
-| Retained graph after qualification | **99 primary targets, 9,865 entities and 16,687 retained records**. Its 16,985-record input, 298 records with obsolete GO identifiers, and every keep, remove or unresolved decision remain preserved. Use the TP53 pathway example. |
+| **Added source context workspace** | **99 primary targets, 9,724 entities and 19,310 evidence records**. It preserves 15,671 captured Pharos records and adds 3,309 native GO annotation rows and 330 STRING physical associations. Use the KRAS question and location-source comparison. |
+| **Qualified Pharos workspace** | **99 primary targets, 9,865 entities and 16,687 retained records**. Its own 16,985-record input, 298 records with obsolete GO identifiers, and every keep, exclude or undecided verdict remain preserved. Open **Review applied graph qualifications** for the TP53 pathway example. |
 
 The native source profile was assembled November 15 from an October 14
 **Pharos319** capture. The GO annotation file was generated July 28 and uses the
@@ -113,15 +140,16 @@ distinguish source releases from assembly dates. Updating the application does
 not refresh those datasets.
 
 The workspaces have different source collections. Their total counts are not
-a paired before/after experiment. The private Neptune mirror holds the retained
-companion graph. Ordinary saved answers use their own preserved workspace files.
+a paired before/after experiment. The private Neptune mirror holds the
+Qualified Pharos workspace's retained graph. Ordinary saved answers use their
+own preserved workspace files.
 The separate APP/PSEN packet uses a new November 17 UTC capture reporting
 Pharos319. Its three primary proteins, 466 entities and 696 records are not
 added to the public site's graph or treated as another version of the 99-target
 cohort. All source additions remain candidates.
 
-Native physical integration supplies **87 pairs absent from the captured graph**
-and 243 overlapping pairs. Native location integration supplies **68 additional
+Native physical integration supplies **87 pairs absent from the captured Pharos graph**
+and **243 pairs already represented there**. Native location integration supplies **68 additional
 protein–location concepts** and 361 overlapping concepts. Additional rows are
 candidate source context, not independent experiments or new biological discoveries.
 Physical association can describe a shared complex without direct binding.
@@ -135,11 +163,20 @@ reference exposure limit independence. The [full location comparison](evaluation
 retains the complete controls and coverage denominators.
 
 The [separate ProtBoost-based function study](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
-uses a historical 20,412-protein graph. It improves the retained Pharos-derived
-predictor in both primary reference views for additional biological-process
-annotations in proteins already annotated in that aspect (partial knowledge).
-Refreshing annotations also helps,
-and added primary benefit over that stronger baseline remains uncertain.
+uses a historical 20,412-protein graph to predict additional biological-process
+annotations for proteins with prior functions. LocalPlus is the published
+positive-only weighted transfer of known GO labels from direct network
+neighbors ([Law, Kale and Murali, 2021](https://doi.org/10.1093/bioinformatics/btaa885)); our human-network adapter reuses the authors' implementation.
+Three parallel fixed arms compare retained LocalPlus, annotation-refreshed
+LocalPlus and the context model. Their ordinary micro-Fmax scores are
+**0.055, 0.059 and 0.073** in the primary timepoint-ontology view, followed by
+**0.172, 0.183 and 0.210** in the fixed-starting-ontology sensitivity view.
+Micro-Fmax pools protein–GO decisions and reports the best precision–recall
+balance across the declared thresholds, not percentage accuracy. The views
+score different populations: 1,954 proteins/3,254 positive protein–GO pairs
+and 319 proteins/3,243 pairs, respectively. Context improves over retained
+LocalPlus in both views; its extra benefit over refreshed LocalPlus remains
+uncertain.
 Same-learner graph-prediction and literature-audit comparisons did not show
 consistent superiority over their strongest controls. These source, prediction
 and workflow endpoints are not pooled into a whole-graph accuracy percentage.
@@ -166,7 +203,9 @@ for this verifier, and it has not been adopted for automatic Pharos pruning.
 
 The designated primary handoff records all **19,310** native-view records as
 unresolved and includes an exact same-snapshot **Pharos-only comparator**.
-The retained TP53 package separately records the applied obsolete-ID exclusions.
+The Qualified Pharos inspection export separately records its applied
+obsolete-ID exclusions and preserved input graph. It is not a complete
+source-recovery packet.
 The [protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json)
 records complete archive/member verification. These bulk graph, source and
 recovery archives are not anonymous public-demo downloads.

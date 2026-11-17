@@ -7,6 +7,13 @@ source query, cited evidence, complete source inspection and grounded review
 proposals. The reviewer can then inspect the applied graph qualifications and
 measured reference result.
 
+Introduce **one application with two saved examples**: **Added source context
+workspace** for the KRAS/source-addition story, and **Qualified Pharos
+workspace**, opened through **Review applied graph qualifications**, for the
+applied identifier decisions. Each preserves its own input and exports. The
+historical function-prediction study is a separate research assessment, not a
+third app version.
+
 **Lead with the improvement.** Qualified native sources add **87 physical
 association pairs** and **68 protein–location concepts** absent from the captured
 Pharos annotations. Show one actual addition before explaining tool mechanics:
@@ -61,19 +68,41 @@ the same mapping, and OpenCell recovery changes **30/40 → 31/40**. Keep the
 complete comparison table, including its coarser-mapping control, visible.
 
 The separate [historical function study](evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
-also has a positive result: fixed-ontology Fmax **0.17155 → 0.21009** over
-retained Pharos-derived LocalPlus, with paired gain interval
-**[+0.00803, +0.06914]**. Its scene must say **separate 20,412-protein source
-study**, show the **0.18277** annotation-refreshed control, and identify the
-visual as a rendering of the saved scientific report. This result belongs to
-the prediction method, separately from agent orchestration and the 99-target app.
+also has a positive result. Lead with its **primary timepoint-ontology view**:
+ordinary micro-Fmax is **0.055** for retained LocalPlus, **0.059** for refreshed
+LocalPlus and **0.073** for the context model. Then identify the
+fixed-starting-ontology sensitivity check: **0.172, 0.183 and 0.210**.
+The primary scores cover 1,954 proteins and 3,254 positive protein–GO pairs;
+the sensitivity scores cover 319 proteins and 3,243 pairs. Do not compare the
+absolute values across these different populations.
+
+LocalPlus transfers known GO labels from direct weighted network neighbors,
+using the published positive-only implementation
+([Law, Kale and Murali, 2021](https://doi.org/10.1093/bioinformatics/btaa885)).
+Micro-Fmax measures the best pooled precision–recall balance across the declared
+thresholds, rather than percentage accuracy. These are three parallel fixed
+arms. The context model improves over retained LocalPlus in both views, while
+its extra benefit over refreshed annotations remains uncertain. Label this
+scene **separate historical 20,412-protein study** and the visual as a rendering
+of the saved scientific report. These are prediction-method results, separate
+from agent orchestration and the 99-target app.
 
 Then show how the agent makes source investigation usable, the applied
 298 obsolete-ID qualifications and recoverable exports. Put the essential
 interpretation boundaries together once: defined reference frames, source
 sharing/prior reference use, candidate physical associations and the uncertain
 extra primary learning gain over fully refreshed annotations. Finish with what
-a researcher can inspect and reuse.
+a researcher can inspect and reuse. Show **Download an editable local copy**
+and explain that a local evidence review saves a new run with its reviewer,
+decision and reason while preserving the original. Saved replay and reviews
+need no Brev instance; only new live agent questions need a configured model.
+
+The final judge folder contains **START_HERE.txt**, the report PDF, narrated
+demonstration, slides and **BioGraph_Steward_App_Data_and_Exports.zip**. The
+private data ZIP supplies the complete KRAS app/source copy and graph/ledger
+inspection exports for both examples under their source terms. The full
+Qualified Pharos source-recovery packet remains an optional separate replay
+asset. [Delivery scope](DELIVERY.md#final-submission-folder) identifies these files.
 
 The [narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 and [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) provide
