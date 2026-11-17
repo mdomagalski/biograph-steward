@@ -1,0 +1,59 @@
+{
+  "method": {
+    "Gilda": "1.6.1",
+    "INDRA": "1.24.0",
+    "RF_calibration_used": false,
+    "arms": [
+      "retain_all",
+      "base",
+      "disconfirm"
+    ],
+    "author_commit": "74e0ffe9ea21f6f11e906cee89a2091f45be2f7d",
+    "author_example_universe_checked": 56,
+    "categorical_uncalibrated": true,
+    "context_tokens": 16384,
+    "direct_binding_postfilter_used": false,
+    "examples_per_request": 14,
+    "grounding_resource_sha256": {
+      "gilda_models.json.gz": "62c888eeabe4afb484d17d90cf3e8304c9c3a8f1c97b5b3fb7ab41a458340e1f",
+      "grounding_terms.tsv.gz": "b53169c4735d049c0443ab04830b26372dcfeba47845c1fe97392b64f08f2bb8"
+    },
+    "max_output_tokens": 1024,
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+    "ordering_and_bootstrap_seed": 20261117,
+    "seed_is_not_an_inference_payload_parameter": true,
+    "temperature": 0.1,
+    "vLLM": "0.8.5",
+    "wire": "Unchanged author policy prefixed to the first example user message; all example content and order preserved."
+  },
+  "protocols": {
+    "primary": {
+      "adapter_sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f",
+      "groups_file_sha256": "52b694f89eeb4e8514fa50e7b92cd6c997f6238eeb994f6af869c0e7e6bd9899",
+      "protocol_sha256": "3d1c616d60ca4fea32aefc4a3490879f0a0368b3141e34834ae978989b4cd461",
+      "runner_sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113",
+      "runtime_readiness_sha256": "1bf6301afbc8d3bfc6d3caefa154493774192b1c548f40a2d321d7946c427936",
+      "source_frame_sha256": "11854919e84547adf3ca925be9aaa0b39651ac8dd07da3a01ad1b55f66928aed",
+      "source_release_sha256": "31f3bcd0cb7f4897ba9cd66da8c51da61d7899280201669a9585d9d6b6f69675",
+      "upstream_manifest_sha256": "82cbba93e4fc1c1bd63c60becab09790f53ace77276a1323fd4ba305b5fb5b61"
+    },
+    "secondary": {
+      "adapter_sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f",
+      "groups_file_sha256": "eda9cbb64c46f7d8bbe1b4d59131d9ceafd31692fb7d02b330fe1b8ed1127bf6",
+      "protocol_sha256": "d8ba17535e02df3e465e49b0ec6f35d08e61544be2e5217bc4aa3e8f1920bf48",
+      "runner_sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113",
+      "runtime_readiness_sha256": "1bf6301afbc8d3bfc6d3caefa154493774192b1c548f40a2d321d7946c427936",
+      "source_frame_sha256": "85644e3c777983bf47a97b2533273237f32e5dabc057d327b65a55d604f91b19",
+      "source_release_sha256": "64cbf8b2e293dcaeddaca5d01088cbdff315dee234efecd430366fb82d0c74ac",
+      "upstream_manifest_sha256": "82cbba93e4fc1c1bd63c60becab09790f53ace77276a1323fd4ba305b5fb5b61"
+    }
+  },
+  "provenance": {
+    "external_label_helper_sha256": "ee8e14274147def89bd69ba77e4d0fe8a5f70d89ac4bea52d1bfe95c4dea6af4",
+    "master_experiment_sha256": "0e7c1b2375ebd237f44770a6f12255bae1d8a3bbccdbe0544946193e85a20689",
+    "metric_helper_sha256": "85524d12d0d7734ddaccefcecf04f8a2d6912bdf0c6a475467fcfc66b694a7c2",
+    "private_assessment_content_sha256": "a5dfe107de554c7fda827cc33b5212db9d231d50b0688c41b53546a753fdc37c",
+    "private_assessment_file_sha256": "e01a522b45841ed2d78abb19be9702fea726fff84334636077eff270e96c1caf"
+  }
+}

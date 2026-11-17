@@ -1,0 +1,878 @@
+{
+  "all_N": 145,
+  "caveats": [
+    "The 12 author-native deterministic decisions are not LLM generations.",
+    "A difference under identical prompts cannot be attributed to restored Evidence metadata.",
+    "Component strata are descriptive, not new selected benchmarks or independently confirmed biology.",
+    "No new ablation, refit, model call, source lookup or automatic graph pruning was performed."
+  ],
+  "components": {
+    "callable": {
+      "arms": {
+        "nano_full": {
+          "balanced_accuracy_abstention_zero": 0.608734631147541,
+          "counts": {
+            "abstain_supported": 2,
+            "abstain_unsupported": 1,
+            "abstentions": 3,
+            "correct_explicit_decisions": 76,
+            "pairs": 125,
+            "reject_decisions": 64,
+            "reject_supported": 25,
+            "reject_unsupported": 39,
+            "support_decisions": 58,
+            "support_supported": 37,
+            "support_unsupported": 21,
+            "supported": 64,
+            "unsupported": 61
+          },
+          "coverage": 0.976,
+          "error_F1": 0.624,
+          "error_precision": 0.609375,
+          "error_recall": 0.639344262295082,
+          "explicit_decision_accuracy": 0.608,
+          "false_exclusion_rate": 0.390625,
+          "false_support_rate": 0.3442622950819672,
+          "retained_supported_fraction": 0.639344262295082,
+          "support_precision": 0.6379310344827587
+        },
+        "nano_partial_cached": {
+          "balanced_accuracy_abstention_zero": 0.6001536885245902,
+          "counts": {
+            "abstain_supported": 1,
+            "abstain_unsupported": 1,
+            "abstentions": 2,
+            "correct_explicit_decisions": 75,
+            "pairs": 125,
+            "reject_decisions": 62,
+            "reject_supported": 25,
+            "reject_unsupported": 37,
+            "support_decisions": 61,
+            "support_supported": 38,
+            "support_unsupported": 23,
+            "supported": 64,
+            "unsupported": 61
+          },
+          "coverage": 0.984,
+          "error_F1": 0.6016260162601627,
+          "error_precision": 0.5967741935483871,
+          "error_recall": 0.6065573770491803,
+          "explicit_decision_accuracy": 0.6,
+          "false_exclusion_rate": 0.390625,
+          "false_support_rate": 0.3770491803278688,
+          "retained_supported_fraction": 0.6190476190476191,
+          "support_precision": 0.6229508196721312
+        },
+        "qwen_full": {
+          "balanced_accuracy_abstention_zero": 0.7492315573770492,
+          "counts": {
+            "abstain_supported": 0,
+            "abstain_unsupported": 0,
+            "abstentions": 0,
+            "correct_explicit_decisions": 93,
+            "pairs": 125,
+            "reject_decisions": 89,
+            "reject_supported": 30,
+            "reject_unsupported": 59,
+            "support_decisions": 36,
+            "support_supported": 34,
+            "support_unsupported": 2,
+            "supported": 64,
+            "unsupported": 61
+          },
+          "coverage": 1.0,
+          "error_F1": 0.7866666666666666,
+          "error_precision": 0.6629213483146067,
+          "error_recall": 0.9672131147540983,
+          "explicit_decision_accuracy": 0.744,
+          "false_exclusion_rate": 0.46875,
+          "false_support_rate": 0.03278688524590164,
+          "retained_supported_fraction": 0.9444444444444444,
+          "support_precision": 0.9444444444444444
+        },
+        "qwen_partial": {
+          "balanced_accuracy_abstention_zero": 0.7648565573770492,
+          "counts": {
+            "abstain_supported": 0,
+            "abstain_unsupported": 0,
+            "abstentions": 0,
+            "correct_explicit_decisions": 95,
+            "pairs": 125,
+            "reject_decisions": 87,
+            "reject_supported": 28,
+            "reject_unsupported": 59,
+            "support_decisions": 38,
+            "support_supported": 36,
+            "support_unsupported": 2,
+            "supported": 64,
+            "unsupported": 61
+          },
+          "coverage": 1.0,
+          "error_F1": 0.7972972972972973,
+          "error_precision": 0.6781609195402298,
+          "error_recall": 0.9672131147540983,
+          "explicit_decision_accuracy": 0.76,
+          "false_exclusion_rate": 0.4375,
+          "false_support_rate": 0.03278688524590164,
+          "retained_supported_fraction": 0.9473684210526315,
+          "support_precision": 0.9473684210526315
+        }
+      },
+      "pairs": 125,
+      "qwen_partial_to_full": {
+        "BA_contribution_in_whole145_denominators_pp": -1.3888888888888888,
+        "pairs": 125,
+        "reference_classes": {
+          "supported": 64,
+          "unsupported": 61
+        },
+        "transitions": {
+          "supported:reject->reject": 28,
+          "supported:support->reject": 2,
+          "supported:support->support": 34,
+          "unsupported:reject->reject": 59,
+          "unsupported:support->support": 2
+        }
+      },
+      "reference_classes": {
+        "supported": 64,
+        "unsupported": 61
+      }
+    },
+    "deterministic_native_decision": {
+      "arms": {
+        "nano_full": {
+          "balanced_accuracy_abstention_zero": 0.5,
+          "counts": {
+            "abstain_supported": 0,
+            "abstain_unsupported": 0,
+            "abstentions": 0,
+            "correct_explicit_decisions": 6,
+            "pairs": 12,
+            "reject_decisions": 12,
+            "reject_supported": 6,
+            "reject_unsupported": 6,
+            "support_decisions": 0,
+            "support_supported": 0,
+            "support_unsupported": 0,
+            "supported": 6,
+            "unsupported": 6
+          },
+          "coverage": 1.0,
+          "error_F1": 0.6666666666666666,
+          "error_precision": 0.5,
+          "error_recall": 1.0,
+          "explicit_decision_accuracy": 0.5,
+          "false_exclusion_rate": 1.0,
+          "false_support_rate": 0.0,
+          "retained_supported_fraction": null,
+          "support_precision": null
+        },
+        "nano_partial_cached": {
+          "balanced_accuracy_abstention_zero": 0.5,
+          "counts": {
+            "abstain_supported": 0,
+            "abstain_unsupported": 0,
+            "abstentions": 0,
+            "correct_explicit_decisions": 6,
+            "pairs": 12,
+            "reject_decisions": 6,
+            "reject_supported": 3,
+            "reject_unsupported": 3,
+            "support_decisions": 6,
+            "support_supported": 3,
+            "support_unsupported": 3,
+            "supported": 6,
+            "unsupported": 6
+          },
+          "coverage": 1.0,
+          "error_F1": 0.5,
+          "error_precision": 0.5,
+          "error_recall": 0.5,
+          "explicit_decision_accuracy": 0.5,
+          "false_exclusion_rate": 0.5,
+          "false_support_rate": 0.5,
+          "retained_supported_fraction": 0.5,
+          "support_precision": 0.5
+        },
+        "qwen_full": {
+          "balanced_accuracy_abstention_zero": 0.5,
+          "counts": {
+            "abstain_supported": 0,
+            "abstain_unsupported": 0,
+            "abstentions": 0,
+            "correct_explicit_decisions": 6,
+            "pairs": 12,
+            "reject_decisions": 12,
+            "reject_supported": 6,
+            "reject_unsupported": 6,
+            "support_decisions": 0,
+            "support_supported": 0,
+            "support_unsupported": 0,
+            "supported": 6,
+            "unsupported": 6
+          },
+          "coverage": 1.0,
+          "error_F1": 0.6666666666666666,
+          "error_precision": 0.5,
+          "error_recall": 1.0,
+          "explicit_decision_accuracy": 0.5,
+          "false_exclusion_rate": 1.0,
+          "false_support_rate": 0.0,
+          "retained_supported_fraction": null,
+          "support_precision": null
+        },
+        "qwen_partial": {
+          "balanced_accuracy_abstention_zero": 0.6666666666666667,
+          "counts": {
+            "abstain_supported": 0,
+            "abstain_unsupported": 0,
+            "abstentions": 0,
+            "correct_explicit_decisions": 8,
+            "pairs": 12,
+            "reject_decisions": 8,
+            "reject_supported": 3,
+            "reject_unsupported": 5,
+            "support_decisions": 4,
+            "support_supported": 3,
+            "support_unsupported": 1,
+            "supported": 6,
+            "unsupported": 6
+          },
+          "coverage": 1.0,
+          "error_F1": 0.7142857142857143,
+          "error_precision": 0.625,
+          "error_recall": 0.8333333333333334,
+          "explicit_decision_accuracy": 0.6666666666666666,
+          "false_exclusion_rate": 0.5,
+          "false_support_rate": 0.16666666666666666,
+          "retained_supported_fraction": 0.75,
+          "support_precision": 0.75
+        }
+      },
+      "pairs": 12,
+      "qwen_partial_to_full": {
+        "BA_contribution_in_whole145_denominators_pp": -1.3984018264840181,
+        "pairs": 12,
+        "reference_classes": {
+          "supported": 6,
+          "unsupported": 6
+        },
+        "transitions": {
+          "supported:reject->reject": 3,
+          "supported:support->reject": 3,
+          "unsupported:reject->reject": 5,
+          "unsupported:support->reject": 1
+        }
+      },
+      "reference_classes": {
+        "supported": 6,
+        "unsupported": 6
+      }
+    },
+    "technical_abstention": {
+      "arms": {
+        "nano_full": {
+          "balanced_accuracy_abstention_zero": 0.0,
+          "counts": {
+            "abstain_supported": 2,
+            "abstain_unsupported": 6,
+            "abstentions": 8,
+            "correct_explicit_decisions": 0,
+            "pairs": 8,
+            "reject_decisions": 0,
+            "reject_supported": 0,
+            "reject_unsupported": 0,
+            "support_decisions": 0,
+            "support_supported": 0,
+            "support_unsupported": 0,
+            "supported": 2,
+            "unsupported": 6
+          },
+          "coverage": 0.0,
+          "error_F1": 0.0,
+          "error_precision": null,
+          "error_recall": 0.0,
+          "explicit_decision_accuracy": 0.0,
+          "false_exclusion_rate": 0.0,
+          "false_support_rate": 0.0,
+          "retained_supported_fraction": 0.25,
+          "support_precision": null
+        },
+        "nano_partial_cached": {
+          "balanced_accuracy_abstention_zero": 0.25,
+          "counts": {
+            "abstain_supported": 1,
+            "abstain_unsupported": 0,
+            "abstentions": 1,
+            "correct_explicit_decisions": 3,
+            "pairs": 8,
+            "reject_decisions": 4,
+            "reject_supported": 1,
+            "reject_unsupported": 3,
+            "support_decisions": 3,
+            "support_supported": 0,
+            "support_unsupported": 3,
+            "supported": 2,
+            "unsupported": 6
+          },
+          "coverage": 0.875,
+          "error_F1": 0.6,
+          "error_precision": 0.75,
+          "error_recall": 0.5,
+          "explicit_decision_accuracy": 0.375,
+          "false_exclusion_rate": 0.5,
+          "false_support_rate": 0.5,
+          "retained_supported_fraction": 0.25,
+          "support_precision": 0.0
+        },
+        "qwen_full": {
+          "balanced_accuracy_abstention_zero": 0.0,
+          "counts": {
+            "abstain_supported": 2,
+            "abstain_unsupported": 6,
+            "abstentions": 8,
+            "correct_explicit_decisions": 0,
+            "pairs": 8,
+            "reject_decisions": 0,
+            "reject_supported": 0,
+            "reject_unsupported": 0,
+            "support_decisions": 0,
+            "support_supported": 0,
+            "support_unsupported": 0,
+            "supported": 2,
+            "unsupported": 6
+          },
+          "coverage": 0.0,
+          "error_F1": 0.0,
+          "error_precision": null,
+          "error_recall": 0.0,
+          "explicit_decision_accuracy": 0.0,
+          "false_exclusion_rate": 0.0,
+          "false_support_rate": 0.0,
+          "retained_supported_fraction": 0.25,
+          "support_precision": null
+        },
+        "qwen_partial": {
+          "balanced_accuracy_abstention_zero": 0.5833333333333333,
+          "counts": {
+            "abstain_supported": 1,
+            "abstain_unsupported": 2,
+            "abstentions": 3,
+            "correct_explicit_decisions": 5,
+            "pairs": 8,
+            "reject_decisions": 4,
+            "reject_supported": 0,
+            "reject_unsupported": 4,
+            "support_decisions": 1,
+            "support_supported": 1,
+            "support_unsupported": 0,
+            "supported": 2,
+            "unsupported": 6
+          },
+          "coverage": 0.625,
+          "error_F1": 0.8,
+          "error_precision": 1.0,
+          "error_recall": 0.6666666666666666,
+          "explicit_decision_accuracy": 0.625,
+          "false_exclusion_rate": 0.0,
+          "false_support_rate": 0.0,
+          "retained_supported_fraction": 0.5,
+          "support_precision": 1.0
+        }
+      },
+      "pairs": 8,
+      "qwen_partial_to_full": {
+        "BA_contribution_in_whole145_denominators_pp": -3.4341704718417048,
+        "pairs": 8,
+        "reference_classes": {
+          "supported": 2,
+          "unsupported": 6
+        },
+        "transitions": {
+          "supported:abstain->abstain": 1,
+          "supported:support->abstain": 1,
+          "unsupported:abstain->abstain": 2,
+          "unsupported:reject->abstain": 4
+        }
+      },
+      "reference_classes": {
+        "supported": 2,
+        "unsupported": 6
+      }
+    }
+  },
+  "format": "biograph-steward.corrected-input-component-audit.v1",
+  "private_case_ids_text_model_responses_or_curator_records_published": false,
+  "private_source_receipt_sha256": "75fea7a488073c17580c5177e7801ea827ffd947d65c4d0f5f90580393471c71",
+  "reference_classes": {
+    "supported": 72,
+    "unsupported": 73
+  },
+  "scope": "Post-outcome descriptive component accounting. It changes no case, mask, prediction, label, model or prespecified promotion gate.",
+  "source_input_sha256": {
+    "completion.json": {
+      "sha256": "4dd6bf581ff928d974d31bbd3e95be9ef53966e339c2d7875ddadbea54e1d398"
+    },
+    "payload_equivalence.json": {
+      "sha256": "f584ecb8749dab75593678f2f6ca44260ebef9fa2d762d793829c92e93ed437b"
+    },
+    "preflight.json": {
+      "sha256": "8855cfee4cae01791500814aa8fd73963aecb0fbd0084de67ecb80f0f0008ae0"
+    },
+    "technical_mask.jsonl": {
+      "sha256": "305f83860511c05c08781615ad345e1c0282c1fc41a4b6cb2d3e7fa04466588a"
+    }
+  },
+  "technical_by_reason": {
+    "agent[1].mods_not_rendered": {
+      "supported": 1,
+      "unsupported": 0
+    },
+    "native_identity_conflict_in_shared_namespace": {
+      "supported": 0,
+      "unsupported": 2
+    },
+    "original_curated_evidence_unavailable": {
+      "supported": 0,
+      "unsupported": 3
+    },
+    "raw_mention_role_alignment_unproven": {
+      "supported": 1,
+      "unsupported": 0
+    },
+    "unrendered_epistemics_negated": {
+      "supported": 0,
+      "unsupported": 1
+    }
+  },
+  "within_model_prompt_groups": {
+    "nano:changed": {
+      "BA_contribution_in_whole145_denominators_pp": -0.7039573820395738,
+      "left": {
+        "balanced_accuracy_abstention_zero": 0.5,
+        "counts": {
+          "abstain_supported": 0,
+          "abstain_unsupported": 0,
+          "abstentions": 0,
+          "correct_explicit_decisions": 5,
+          "pairs": 10,
+          "reject_decisions": 5,
+          "reject_supported": 2,
+          "reject_unsupported": 3,
+          "support_decisions": 5,
+          "support_supported": 2,
+          "support_unsupported": 3,
+          "supported": 4,
+          "unsupported": 6
+        },
+        "coverage": 1.0,
+        "error_F1": 0.5454545454545454,
+        "error_precision": 0.6,
+        "error_recall": 0.5,
+        "explicit_decision_accuracy": 0.5,
+        "false_exclusion_rate": 0.5,
+        "false_support_rate": 0.5,
+        "retained_supported_fraction": 0.4,
+        "support_precision": 0.4
+      },
+      "pairs": 10,
+      "reference_classes": {
+        "supported": 4,
+        "unsupported": 6
+      },
+      "right": {
+        "balanced_accuracy_abstention_zero": 0.3333333333333333,
+        "counts": {
+          "abstain_supported": 1,
+          "abstain_unsupported": 0,
+          "abstentions": 1,
+          "correct_explicit_decisions": 4,
+          "pairs": 10,
+          "reject_decisions": 7,
+          "reject_supported": 3,
+          "reject_unsupported": 4,
+          "support_decisions": 2,
+          "support_supported": 0,
+          "support_unsupported": 2,
+          "supported": 4,
+          "unsupported": 6
+        },
+        "coverage": 0.9,
+        "error_F1": 0.6153846153846154,
+        "error_precision": 0.5714285714285714,
+        "error_recall": 0.6666666666666666,
+        "explicit_decision_accuracy": 0.4,
+        "false_exclusion_rate": 0.75,
+        "false_support_rate": 0.3333333333333333,
+        "retained_supported_fraction": 0.3333333333333333,
+        "support_precision": 0.0
+      },
+      "transitions": {
+        "supported:reject->reject": 2,
+        "supported:support->abstain": 1,
+        "supported:support->reject": 1,
+        "unsupported:reject->reject": 3,
+        "unsupported:support->reject": 1,
+        "unsupported:support->support": 2
+      }
+    },
+    "nano:identical": {
+      "BA_contribution_in_whole145_denominators_pp": 1.3793759512937593,
+      "left": {
+        "balanced_accuracy_abstention_zero": 0.6090909090909091,
+        "counts": {
+          "abstain_supported": 1,
+          "abstain_unsupported": 1,
+          "abstentions": 2,
+          "correct_explicit_decisions": 70,
+          "pairs": 115,
+          "reject_decisions": 57,
+          "reject_supported": 23,
+          "reject_unsupported": 34,
+          "support_decisions": 56,
+          "support_supported": 36,
+          "support_unsupported": 20,
+          "supported": 60,
+          "unsupported": 55
+        },
+        "coverage": 0.9826086956521739,
+        "error_F1": 0.6071428571428571,
+        "error_precision": 0.5964912280701754,
+        "error_recall": 0.6181818181818182,
+        "explicit_decision_accuracy": 0.6086956521739131,
+        "false_exclusion_rate": 0.38333333333333336,
+        "false_support_rate": 0.36363636363636365,
+        "retained_supported_fraction": 0.6379310344827587,
+        "support_precision": 0.6428571428571429
+      },
+      "pairs": 115,
+      "reference_classes": {
+        "supported": 60,
+        "unsupported": 55
+      },
+      "right": {
+        "balanced_accuracy_abstention_zero": 0.6265151515151515,
+        "counts": {
+          "abstain_supported": 1,
+          "abstain_unsupported": 1,
+          "abstentions": 2,
+          "correct_explicit_decisions": 72,
+          "pairs": 115,
+          "reject_decisions": 57,
+          "reject_supported": 22,
+          "reject_unsupported": 35,
+          "support_decisions": 56,
+          "support_supported": 37,
+          "support_unsupported": 19,
+          "supported": 60,
+          "unsupported": 55
+        },
+        "coverage": 0.9826086956521739,
+        "error_F1": 0.625,
+        "error_precision": 0.6140350877192983,
+        "error_recall": 0.6363636363636364,
+        "explicit_decision_accuracy": 0.6260869565217392,
+        "false_exclusion_rate": 0.36666666666666664,
+        "false_support_rate": 0.34545454545454546,
+        "retained_supported_fraction": 0.6551724137931034,
+        "support_precision": 0.6607142857142857
+      },
+      "transitions": {
+        "supported:abstain->reject": 1,
+        "supported:reject->reject": 14,
+        "supported:reject->support": 9,
+        "supported:support->abstain": 1,
+        "supported:support->reject": 7,
+        "supported:support->support": 28,
+        "unsupported:abstain->reject": 1,
+        "unsupported:reject->abstain": 1,
+        "unsupported:reject->reject": 31,
+        "unsupported:reject->support": 2,
+        "unsupported:support->reject": 3,
+        "unsupported:support->support": 17
+      }
+    },
+    "nano:noncallable": {
+      "BA_contribution_in_whole145_denominators_pp": -2.083333333333333,
+      "left": {
+        "balanced_accuracy_abstention_zero": 0.4375,
+        "counts": {
+          "abstain_supported": 1,
+          "abstain_unsupported": 0,
+          "abstentions": 1,
+          "correct_explicit_decisions": 9,
+          "pairs": 20,
+          "reject_decisions": 10,
+          "reject_supported": 4,
+          "reject_unsupported": 6,
+          "support_decisions": 9,
+          "support_supported": 3,
+          "support_unsupported": 6,
+          "supported": 8,
+          "unsupported": 12
+        },
+        "coverage": 0.95,
+        "error_F1": 0.5454545454545454,
+        "error_precision": 0.6,
+        "error_recall": 0.5,
+        "explicit_decision_accuracy": 0.45,
+        "false_exclusion_rate": 0.5,
+        "false_support_rate": 0.5,
+        "retained_supported_fraction": 0.4,
+        "support_precision": 0.3333333333333333
+      },
+      "pairs": 20,
+      "reference_classes": {
+        "supported": 8,
+        "unsupported": 12
+      },
+      "right": {
+        "balanced_accuracy_abstention_zero": 0.25,
+        "counts": {
+          "abstain_supported": 2,
+          "abstain_unsupported": 6,
+          "abstentions": 8,
+          "correct_explicit_decisions": 6,
+          "pairs": 20,
+          "reject_decisions": 12,
+          "reject_supported": 6,
+          "reject_unsupported": 6,
+          "support_decisions": 0,
+          "support_supported": 0,
+          "support_unsupported": 0,
+          "supported": 8,
+          "unsupported": 12
+        },
+        "coverage": 0.6,
+        "error_F1": 0.5,
+        "error_precision": 0.5,
+        "error_recall": 0.5,
+        "explicit_decision_accuracy": 0.3,
+        "false_exclusion_rate": 0.75,
+        "false_support_rate": 0.0,
+        "retained_supported_fraction": 0.25,
+        "support_precision": null
+      },
+      "transitions": {
+        "supported:abstain->abstain": 1,
+        "supported:reject->abstain": 1,
+        "supported:reject->reject": 3,
+        "supported:support->reject": 3,
+        "unsupported:reject->abstain": 3,
+        "unsupported:reject->reject": 3,
+        "unsupported:support->abstain": 3,
+        "unsupported:support->reject": 3
+      }
+    },
+    "qwen:changed": {
+      "BA_contribution_in_whole145_denominators_pp": -0.6944444444444444,
+      "left": {
+        "balanced_accuracy_abstention_zero": 0.5833333333333333,
+        "counts": {
+          "abstain_supported": 0,
+          "abstain_unsupported": 0,
+          "abstentions": 0,
+          "correct_explicit_decisions": 6,
+          "pairs": 10,
+          "reject_decisions": 6,
+          "reject_supported": 2,
+          "reject_unsupported": 4,
+          "support_decisions": 4,
+          "support_supported": 2,
+          "support_unsupported": 2,
+          "supported": 4,
+          "unsupported": 6
+        },
+        "coverage": 1.0,
+        "error_F1": 0.6666666666666666,
+        "error_precision": 0.6666666666666666,
+        "error_recall": 0.6666666666666666,
+        "explicit_decision_accuracy": 0.6,
+        "false_exclusion_rate": 0.5,
+        "false_support_rate": 0.3333333333333333,
+        "retained_supported_fraction": 0.5,
+        "support_precision": 0.5
+      },
+      "pairs": 10,
+      "reference_classes": {
+        "supported": 4,
+        "unsupported": 6
+      },
+      "right": {
+        "balanced_accuracy_abstention_zero": 0.4583333333333333,
+        "counts": {
+          "abstain_supported": 0,
+          "abstain_unsupported": 0,
+          "abstentions": 0,
+          "correct_explicit_decisions": 5,
+          "pairs": 10,
+          "reject_decisions": 7,
+          "reject_supported": 3,
+          "reject_unsupported": 4,
+          "support_decisions": 3,
+          "support_supported": 1,
+          "support_unsupported": 2,
+          "supported": 4,
+          "unsupported": 6
+        },
+        "coverage": 1.0,
+        "error_F1": 0.6153846153846154,
+        "error_precision": 0.5714285714285714,
+        "error_recall": 0.6666666666666666,
+        "explicit_decision_accuracy": 0.5,
+        "false_exclusion_rate": 0.75,
+        "false_support_rate": 0.3333333333333333,
+        "retained_supported_fraction": 0.3333333333333333,
+        "support_precision": 0.3333333333333333
+      },
+      "transitions": {
+        "supported:reject->reject": 2,
+        "supported:support->reject": 1,
+        "supported:support->support": 1,
+        "unsupported:reject->reject": 4,
+        "unsupported:support->support": 2
+      }
+    },
+    "qwen:identical": {
+      "BA_contribution_in_whole145_denominators_pp": -0.6944444444444444,
+      "left": {
+        "balanced_accuracy_abstention_zero": 0.7833333333333333,
+        "counts": {
+          "abstain_supported": 0,
+          "abstain_unsupported": 0,
+          "abstentions": 0,
+          "correct_explicit_decisions": 89,
+          "pairs": 115,
+          "reject_decisions": 81,
+          "reject_supported": 26,
+          "reject_unsupported": 55,
+          "support_decisions": 34,
+          "support_supported": 34,
+          "support_unsupported": 0,
+          "supported": 60,
+          "unsupported": 55
+        },
+        "coverage": 1.0,
+        "error_F1": 0.8088235294117647,
+        "error_precision": 0.6790123456790124,
+        "error_recall": 1.0,
+        "explicit_decision_accuracy": 0.7739130434782608,
+        "false_exclusion_rate": 0.43333333333333335,
+        "false_support_rate": 0.0,
+        "retained_supported_fraction": 1.0,
+        "support_precision": 1.0
+      },
+      "pairs": 115,
+      "reference_classes": {
+        "supported": 60,
+        "unsupported": 55
+      },
+      "right": {
+        "balanced_accuracy_abstention_zero": 0.775,
+        "counts": {
+          "abstain_supported": 0,
+          "abstain_unsupported": 0,
+          "abstentions": 0,
+          "correct_explicit_decisions": 88,
+          "pairs": 115,
+          "reject_decisions": 82,
+          "reject_supported": 27,
+          "reject_unsupported": 55,
+          "support_decisions": 33,
+          "support_supported": 33,
+          "support_unsupported": 0,
+          "supported": 60,
+          "unsupported": 55
+        },
+        "coverage": 1.0,
+        "error_F1": 0.8029197080291971,
+        "error_precision": 0.6707317073170732,
+        "error_recall": 1.0,
+        "explicit_decision_accuracy": 0.7652173913043478,
+        "false_exclusion_rate": 0.45,
+        "false_support_rate": 0.0,
+        "retained_supported_fraction": 1.0,
+        "support_precision": 1.0
+      },
+      "transitions": {
+        "supported:reject->reject": 26,
+        "supported:support->reject": 1,
+        "supported:support->support": 33,
+        "unsupported:reject->reject": 55
+      }
+    },
+    "qwen:noncallable": {
+      "BA_contribution_in_whole145_denominators_pp": -4.832572298325723,
+      "left": {
+        "balanced_accuracy_abstention_zero": 0.625,
+        "counts": {
+          "abstain_supported": 1,
+          "abstain_unsupported": 2,
+          "abstentions": 3,
+          "correct_explicit_decisions": 13,
+          "pairs": 20,
+          "reject_decisions": 12,
+          "reject_supported": 3,
+          "reject_unsupported": 9,
+          "support_decisions": 5,
+          "support_supported": 4,
+          "support_unsupported": 1,
+          "supported": 8,
+          "unsupported": 12
+        },
+        "coverage": 0.85,
+        "error_F1": 0.75,
+        "error_precision": 0.75,
+        "error_recall": 0.75,
+        "explicit_decision_accuracy": 0.65,
+        "false_exclusion_rate": 0.375,
+        "false_support_rate": 0.08333333333333333,
+        "retained_supported_fraction": 0.625,
+        "support_precision": 0.8
+      },
+      "pairs": 20,
+      "reference_classes": {
+        "supported": 8,
+        "unsupported": 12
+      },
+      "right": {
+        "balanced_accuracy_abstention_zero": 0.25,
+        "counts": {
+          "abstain_supported": 2,
+          "abstain_unsupported": 6,
+          "abstentions": 8,
+          "correct_explicit_decisions": 6,
+          "pairs": 20,
+          "reject_decisions": 12,
+          "reject_supported": 6,
+          "reject_unsupported": 6,
+          "support_decisions": 0,
+          "support_supported": 0,
+          "support_unsupported": 0,
+          "supported": 8,
+          "unsupported": 12
+        },
+        "coverage": 0.6,
+        "error_F1": 0.5,
+        "error_precision": 0.5,
+        "error_recall": 0.5,
+        "explicit_decision_accuracy": 0.3,
+        "false_exclusion_rate": 0.75,
+        "false_support_rate": 0.0,
+        "retained_supported_fraction": 0.25,
+        "support_precision": null
+      },
+      "transitions": {
+        "supported:abstain->abstain": 1,
+        "supported:reject->reject": 3,
+        "supported:support->abstain": 1,
+        "supported:support->reject": 3,
+        "unsupported:abstain->abstain": 2,
+        "unsupported:reject->abstain": 4,
+        "unsupported:reject->reject": 5,
+        "unsupported:support->reject": 1
+      }
+    }
+  }
+}

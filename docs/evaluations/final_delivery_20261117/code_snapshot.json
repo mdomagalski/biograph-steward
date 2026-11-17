@@ -1,0 +1,235 @@
+{
+  "CRC_and_every_member_raw_SHA_verified": true,
+  "additional_own_core_support_files": 1,
+  "artifact": {
+    "bytes": 134214,
+    "path": "output/research/BioGraph_Steward_Source_Verifier_Code.zip",
+    "sha256": "cfff53bc0752102e016fb773460555815df747efac7841a207ac4fac9cbb9782"
+  },
+  "corrected_input_protocol_pins": {
+    "master_sha256": "0e7bef90ab9acce4a8e710b3c009b5d6531d228cd5e6a2e09a0edec89878eabc",
+    "scoring_spec_sha256": "0980011d1ad47555769c28f6db7d1ff1c1bcdd1c4399a4baa89ff1e42697eff0"
+  },
+  "exclusions": [
+    "third-party source and published example-bank content",
+    "full-Evidence admission/recovery builder with identity-specific split constants",
+    "raw reference cases, source passages, curation events and individual labels",
+    "case/group/quarantine inventories",
+    "request payloads, prediction envelopes, provider responses, journals and traces",
+    "fitted models, model weights, tokenizers and native resource caches",
+    "credential values and account configuration files",
+    "cloud infrastructure/deployment operators and readiness/dependency captures",
+    "old failed code and superseded protocols"
+  ],
+  "files": [
+    {
+      "bytes": 12030,
+      "name": "MANIFEST_CODE.json",
+      "sha256": "1145f262042f174d6878221e698198f4c66c5c32d2d66a229c83a5a0ba6d23ee"
+    },
+    {
+      "bytes": 13114,
+      "name": "README_REPRODUCTION.txt",
+      "sha256": "83037fc3752f767aaec53e21fd62d335faf750988516a9064f38189e4c9fe2a2"
+    },
+    {
+      "bytes": 11751,
+      "name": "biograph_steward/model_transport.py",
+      "sha256": "5f8e2474c6921061b5cc598d1ac1f53f13ca4995fc60cad91e8150a59dd4be94"
+    },
+    {
+      "bytes": 1287,
+      "name": "runs/final_delivery_20261117/method_qualification/adapter/ATTRIBUTION.md",
+      "sha256": "1290eee8a0c3451aaebede29940f5781fb00077f516d67a366279510d148dda5"
+    },
+    {
+      "bytes": 18905,
+      "name": "runs/final_delivery_20261117/method_qualification/adapter/nano_disconfirm.py",
+      "sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f"
+    },
+    {
+      "bytes": 23495,
+      "name": "runs/final_delivery_20261117/method_qualification/adapter/run_pair_comparison.py",
+      "sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113"
+    },
+    {
+      "bytes": 15809,
+      "name": "runs/final_delivery_20261117/method_qualification/adapter/test_adapter.py",
+      "sha256": "0f669baf18c316dbe598fce292c8a8371207782a0122415bba012e14e487a1d5"
+    },
+    {
+      "bytes": 9575,
+      "name": "runs/final_delivery_20261117/method_qualification/adapter/test_runner.py",
+      "sha256": "332a99a41e636ac1952d29ee81e2394382009fabcdb5b2626986f34df733e183"
+    },
+    {
+      "bytes": 10867,
+      "name": "runs/final_delivery_20261117/method_qualification/adapter/upstream_manifest.json",
+      "sha256": "82cbba93e4fc1c1bd63c60becab09790f53ace77276a1323fd4ba305b5fb5b61"
+    },
+    {
+      "bytes": 10053,
+      "name": "runs/final_delivery_20261117/method_qualification/corrected_input/bridge.py",
+      "sha256": "8a50ce56b51d21eb5e047a8921ed2471605312a1658e7d099c2e84fc2dd3770a"
+    },
+    {
+      "bytes": 21897,
+      "name": "runs/final_delivery_20261117/method_qualification/corrected_input/run_comparison.py",
+      "sha256": "5b5091957b1d46de51e78d92aabac482fcad5df6e9a01cfbd7164843027abc75"
+    },
+    {
+      "bytes": 7382,
+      "name": "runs/final_delivery_20261117/method_qualification/corrected_input/test_bridge.py",
+      "sha256": "d23c670e40da5b2c978df1aedcefbbf3a9c745382ac42226ad7643916bb743e4"
+    },
+    {
+      "bytes": 3764,
+      "name": "runs/final_delivery_20261117/method_qualification/corrected_input/test_runner.py",
+      "sha256": "fea19322f6193058f60a6a7189aaf7d196fb415b5e6ce27a15fe63e33e01c5f8"
+    },
+    {
+      "bytes": 12561,
+      "name": "runs/final_delivery_20261117/method_qualification/larger_model/qwen_converse.py",
+      "sha256": "4fcd80b272497c7261ffd9331df03b634bae9406488b8dffda5a7b1fb931e411"
+    },
+    {
+      "bytes": 7475,
+      "name": "runs/final_delivery_20261117/method_qualification/larger_model/test_qwen_converse.py",
+      "sha256": "f61656c8b16e0a3235fb3f4afb1fb6d2d8ac54f6fb714bf60230de4eafd0ce60"
+    },
+    {
+      "bytes": 10264,
+      "name": "runs/final_delivery_20261117/protocols/corrected_input_scoring.candidate.json",
+      "sha256": "0980011d1ad47555769c28f6db7d1ff1c1bcdd1c4399a4baa89ff1e42697eff0"
+    },
+    {
+      "bytes": 8840,
+      "name": "runs/final_delivery_20261117/protocols/corrected_input_v1.json",
+      "sha256": "0e7bef90ab9acce4a8e710b3c009b5d6531d228cd5e6a2e09a0edec89878eabc"
+    },
+    {
+      "bytes": 3243,
+      "name": "runs/final_delivery_20261117/protocols/experiment_v2.json",
+      "sha256": "0e7c1b2375ebd237f44770a6f12255bae1d8a3bbccdbe0544946193e85a20689"
+    },
+    {
+      "bytes": 4020,
+      "name": "runs/final_delivery_20261117/protocols/learned_followup.json",
+      "sha256": "149dc34f328512af7f26739444017f48e989e30021a20c6b7d5dbaf8d1be4afb"
+    },
+    {
+      "bytes": 6549,
+      "name": "runs/final_delivery_20261117/protocols/primary_v2.json",
+      "sha256": "3d1c616d60ca4fea32aefc4a3490879f0a0368b3141e34834ae978989b4cd461"
+    },
+    {
+      "bytes": 6662,
+      "name": "runs/final_delivery_20261117/protocols/secondary_v2.json",
+      "sha256": "d8ba17535e02df3e465e49b0ec6f35d08e61544be2e5217bc4aa3e8f1920bf48"
+    },
+    {
+      "bytes": 5098,
+      "name": "runs/final_delivery_20261117/reference_qualification/apply_author_prompt_gate.py",
+      "sha256": "6c19a1710404941207492f08f04083c7d1b71a21dc28288d1492b19a9a5a1a6e"
+    },
+    {
+      "bytes": 3706,
+      "name": "runs/final_delivery_20261117/reference_qualification/audit_frame_groups.py",
+      "sha256": "1d6887efcaae5a3c094b4b51d9e20ac978225bf80e8993b1c3596019fe44e1f1"
+    },
+    {
+      "bytes": 18524,
+      "name": "runs/final_delivery_20261117/reference_qualification/combined_score.py",
+      "sha256": "528dd8864f8e68ca4fa9188231e7a60a4bf4f0b09053791c4ca107208e0223a3"
+    },
+    {
+      "bytes": 17376,
+      "name": "runs/final_delivery_20261117/reference_qualification/corrected_input_score.py",
+      "sha256": "f5e1e8c8c043855dd0b0311168e2536d2739954fb69b79a1115c07bf2868040b"
+    },
+    {
+      "bytes": 18189,
+      "name": "runs/final_delivery_20261117/reference_qualification/learned_followup/followup.py",
+      "sha256": "37bf597e78fcc1ee5b34dd3057c83bbaa6235a5a53ba6c1208c6b4ecbf27a09c"
+    },
+    {
+      "bytes": 10119,
+      "name": "runs/final_delivery_20261117/reference_qualification/learned_followup/test_followup_synthetic.py",
+      "sha256": "0eb6cdfaa54fd321474d3717280f6444630dd3f568c5ffa7d6a73a15669cdd18"
+    },
+    {
+      "bytes": 14401,
+      "name": "runs/final_delivery_20261117/reference_qualification/pair_reference_tools.py",
+      "sha256": "85524d12d0d7734ddaccefcecf04f8a2d6912bdf0c6a475467fcfc66b694a7c2"
+    },
+    {
+      "bytes": 26603,
+      "name": "runs/final_delivery_20261117/reference_qualification/private_publication/publish_aggregate.py",
+      "sha256": "da531dc95a19f84238f4ae6147a7c7a15f774bbdcc47be8cc34a8cc1130e902c"
+    },
+    {
+      "bytes": 5489,
+      "name": "runs/final_delivery_20261117/reference_qualification/private_publication/test_publisher_synthetic.py",
+      "sha256": "40aa19d3aaac03e146ff21c327fa6b2303e1b60dfb3bcf3e0100751ecc141eeb"
+    },
+    {
+      "bytes": 8752,
+      "name": "runs/final_delivery_20261117/reference_qualification/qualify_native_frame.py",
+      "sha256": "77dc9316942097b751cc9cedcd5bb1bdf69862477412499817312bd96c77817e"
+    },
+    {
+      "bytes": 3584,
+      "name": "runs/final_delivery_20261117/reference_qualification/secondary_external154/external_label_tools.py",
+      "sha256": "ee8e14274147def89bd69ba77e4d0fe8a5f70d89ac4bea52d1bfe95c4dea6af4"
+    },
+    {
+      "bytes": 12037,
+      "name": "runs/final_delivery_20261117/reference_qualification/secondary_external154/qualify_external_frame.py",
+      "sha256": "b247cb820380948de5107c8369564f6c22c492e4d60d6e0e4352dac9ce85657e"
+    },
+    {
+      "bytes": 5676,
+      "name": "runs/final_delivery_20261117/reference_qualification/secondary_external154/recover_native.py",
+      "sha256": "bb3f2bf73a0e07e71f3cfd4d063906dc0b6d0009f53a3d827060bf970289f103"
+    },
+    {
+      "bytes": 9292,
+      "name": "runs/final_delivery_20261117/reference_qualification/test_combined_score_synthetic.py",
+      "sha256": "be3dc8286e5d25d73c8351728a080953b456f160579036b570e3ba99a938eeba"
+    },
+    {
+      "bytes": 4263,
+      "name": "runs/final_delivery_20261117/reference_qualification/test_materializers_synthetic.py",
+      "sha256": "a0a7970bfb75e52f6dcc8d8856c20b2b25bee43ec395973a0d41bd8343a682d7"
+    }
+  ],
+  "format": "biograph-steward.research-code-delivery.v2",
+  "invented_fixtures_not_executed_during_packaging": true,
+  "license_scope": "No blanket MIT or redistribution grant for upstream code, models or data.",
+  "member_count": 36,
+  "model_or_network_requests": 0,
+  "new_frozen_corrected_input_files": 9,
+  "original_repository_files": 34,
+  "original_scientific_protocol_or_source_edits": false,
+  "packaged_code_imported_or_executed": false,
+  "prior_snapshot": {
+    "all_prior24_raw_members_byte_identical": true,
+    "preserved_privately": true,
+    "repository_members": 24,
+    "sha256": "23b8ed92d45baea7a77ad6a86fab86132e4cdf89cddf12c95c0d56e0b21b8b3b"
+  },
+  "reproduction_boundary": "Code-only research adjunct. Exact operator checkpoint needs separately licensed captures/prior inventories, separately supplied frozen admission builder, optional runtime, matching checkout and explicit local AWS executable/profile/path adaptation. Not a one-command or self-contained benchmark. The APP/PSEN package remains portable real-data saved replay.",
+  "required_separately_supplied_source": [
+    {
+      "bytes": 12129,
+      "included": false,
+      "path": "runs/final_delivery_20261117/reference_qualification/evidence_metadata_audit/build_full_input.py",
+      "role": "Required frozen admission/recovery builder, supplied separately to authorized operators. Its identity-specific split constants are not distributed in this archive.",
+      "sha256": "23b813ce249aa71a8183b30422928c2f9329ec88350726730223b68c2b12a95e"
+    }
+  ],
+  "scientific_result_claim_added": false,
+  "source_files_byte_identical": true,
+  "source_layout": "Original repository-relative source names. New frozen protocols intentionally preserve descriptive operator paths and profile/endpoint labels.",
+  "status": "passed_code_only_byte_snapshot"
+}

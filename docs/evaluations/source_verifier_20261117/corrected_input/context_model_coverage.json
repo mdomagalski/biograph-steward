@@ -1,0 +1,18 @@
+{
+  "scope": "Read-only installed model coverage for every curator-supported native automatic rejection; no new predictions/training/inference",
+  "curator_supported_auto_rejections": 6,
+  "unique_triggering_raw_strings": 3,
+  "cases_with_matching_installed_Gilda_disambiguator": 0,
+  "cases_with_matching_installed_Adeft_disambiguator": 0,
+  "Gilda_models_total": 1287,
+  "Gilda_models_above_official_F1_cutoff": 1008,
+  "installed_Adeft_models_total": 0,
+  "Gilda_version": "1.6.1",
+  "Gilda_package_license": "BSD-2-Clause",
+  "Gilda_resource_sha256": "62c888eeabe4afb484d17d90cf3e8304c9c3a8f1c97b5b3fb7ab41a458340e1f",
+  "original_author_context_parameter_used": false,
+  "exact_raw_string_key_rule_from_installed_Grounder": true,
+  "conclusion": "Gilda context API exists, but merely passing sentence context cannot activate a currently installed model for these six triggers. No context predictions were evaluated.",
+  "graph_changes": false,
+  "model_calls": 0
+}
