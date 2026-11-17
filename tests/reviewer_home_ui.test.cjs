@@ -149,8 +149,8 @@ test('shared picker identifies the primary and retained companion without listin
   await h.context.loadSavedWork();
   const options=h.$('savedRun').children;
   assert.deepEqual(options.map(row=>row.value),['real_current','real_retained']);
-  assert.match(options[0].textContent,/Current evidence workspace/);
-  assert.match(options[1].textContent,/Applied qualifications · retained Pharos graph/);
+  assert.match(options[0].textContent,/Added source context workspace/);
+  assert.match(options[1].textContent,/Qualified Pharos workspace/);
   assert.doesNotMatch(options.map(row=>row.textContent).join(' '),/real_current|real_retained|older_development/);
   assert.match(text(h.$('savedQuestion')),/Candidate and accepted source records/);
   assert.doesNotMatch(text(h.$('savedQuestion')),/q_technical/);

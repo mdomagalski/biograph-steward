@@ -23,6 +23,7 @@ function updateQuestionRankingControl(){
 function questionOptions(){if($('questionRelations').value==='native_physical')return {protein:$('questionProtein').value,relations:['interactions'],template:'native_string_physical.v1',view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};if($('questionRelations').value==='qualified_pathway_sources')return {protein:$('questionProtein').value,relations:['shared_pathways'],template:'qualified_pathway_source_context.v1',source_support:graph.qualified_view?.pathway_history&&$('nativePathwaySupport').checked?'native_supported':'all_source_annotations',view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};const value=$('questionRelations').value,options={protein:$('questionProtein').value,relations:value==='both'?['interactions','shared_pathways']:[value],view:$('questionView').value,max_results:Number($('questionLimit').value),max_paths:Number($('questionPaths').value)};if(physicalRankingAvailable()&&$('questionRanking').value==='physical')options.ranking='physical';return options;}
 function setupQuestion(){
   const previous=$('questionProtein').value;questionAnswer=null;questionId=null;questionSelection=null;
+  $('questionStatus').setAttribute('data-loading','false');$('questionOutput').setAttribute('aria-busy','false');
   $('questionProtein').replaceChildren();
   for(const t of graph.targets){const o=el('option',(t.symbol||t.id)+' | '+t.id);o.value=t.id;$('questionProtein').append(o);}
   const focus=graph.construction?.request?.focus_uniprot||graph.construction?.plan?.focus_uniprot||graph.scope?.focus_uniprot||graph.cohort?.focus_uniprot;
@@ -91,10 +92,10 @@ async function runQuestion(){
   if(!$('questionForm').reportValidity())return;
   questionBusy=true;for(const input of $('questionForm').elements)input.disabled=true;
   $('questionOutput').classList.add('hidden');questionAnswer=null;questionId=null;history.replaceState(null,'','?run='+encodeURIComponent(runId));
-  updateWorkNavigation();$('questionStatus').textContent='Finding exact-scope evidence paths and assembling their citations...';
+  updateWorkNavigation();$('questionStatus').textContent='Finding exact-scope evidence paths and assembling their citations...';$('questionStatus').setAttribute('data-loading','true');$('questionOutput').setAttribute('aria-busy','true');
   try{const response=await api('/api/question',{run_id:runId,...questionOptions()});bindQuestionAnswer(response.answer,response.question_id);$('questionStatus').textContent='Question result saved with its source snapshot, review basis and citations.';navigateWork(response.answer.results.length?'graph':'answer');}
   catch(error){$('questionStatus').textContent=error.message;}
-  finally{questionBusy=false;for(const input of $('questionForm').elements)input.disabled=false;$('questionRun').disabled=!runId;updateQuestionRankingControl();}
+  finally{questionBusy=false;$('questionStatus').setAttribute('data-loading','false');$('questionOutput').setAttribute('aria-busy','false');for(const input of $('questionForm').elements)input.disabled=false;$('questionRun').disabled=!runId;updateQuestionRankingControl();}
 }
 async function reopenQuestion(id){
   try{const response=await fetch('/api/question/'+encodeURIComponent(id)),result=await response.json();if(!response.ok)throw new Error(result.error||'Could not reopen question');if(result.answer.template==='qualified_assay_evidence.v1'){bindAssayAnswer(result.answer,result.question_id);return true;}if(result.answer.template==='civic_variant_therapy.v1'){bindCivicAnswer(result.answer,result.question_id);$('civicStatus').textContent='Saved therapy question reopened against the same sources and review state.';return true;}bindQuestionAnswer(result.answer,result.question_id);$('questionStatus').textContent='Saved question reopened against the same source and review state.';return true;}

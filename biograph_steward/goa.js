@@ -3,6 +3,7 @@ let nativeGoaAnswer=null,nativeGoaOffset=0,nativeGoaEpoch=0;
 function setupNativeGoa(){
   if(!$('nativeGoaPanel'))return;
   nativeGoaEpoch++;nativeGoaAnswer=null;nativeGoaOffset=0;
+  $('nativeGoaStatus').setAttribute('data-loading','false');$('nativeGoaRows').setAttribute('aria-busy','false');
   const records=(graph?.extension_observations||[]).filter(r=>r.source_kind==='goa');
   const locations=graph?.evidence_extension?.sources?.goa?.policy==='complete-cohort-positive-active-CC-located-in-all-codes.v1';
   $('nativeGoaPanel').querySelector('summary').textContent=locations?'Native GO locations':'Recovered native GO annotations';
@@ -28,7 +29,7 @@ async function runNativeGoaQuestion(){
     snapshot=graph.snapshot_sha256,publication=graph.evidence_extension?.sources?.goa?.publication_sha256;
   const query={run_id:sourceRun,protein:$('nativeGoaProtein').value,
     view:$('nativeGoaView').value,search:$('nativeGoaSearch').value,offset:nativeGoaOffset,limit:25};
-  $('nativeGoaAsk').disabled=true;$('nativeGoaStatus').textContent='Reading saved native GO annotations…';
+  $('nativeGoaAsk').disabled=true;$('nativeGoaStatus').textContent='Reading saved native GO annotations…';$('nativeGoaStatus').setAttribute('data-loading','true');$('nativeGoaRows').setAttribute('aria-busy','true');
   try{
     const result=await api('/api/native-go-question',query);
     if(request!==nativeGoaEpoch||sourceRun!==runId||!graph||graph.snapshot_sha256!==snapshot||
@@ -41,7 +42,7 @@ async function runNativeGoaQuestion(){
     nativeGoaAnswer=result;renderNativeGoaAnswer(result);
     $('nativeGoaStatus').textContent='Saved native annotations with their supplied evidence codes. No retrieval, model call or review decision was made.';
   }catch(error){if(request===nativeGoaEpoch)$('nativeGoaStatus').textContent=error.message;}
-  finally{if(request===nativeGoaEpoch)$('nativeGoaAsk').disabled=false;}
+  finally{if(request===nativeGoaEpoch){$('nativeGoaStatus').setAttribute('data-loading','false');$('nativeGoaRows').setAttribute('aria-busy','false');$('nativeGoaAsk').disabled=false;}}
 }
 function renderNativeGoaAnswer(answer){
   $('nativeGoaAnswer').hidden=false;
@@ -78,6 +79,7 @@ function renderNativeGoaAnswer(answer){
 }
 function invalidateNativeGoa(){
   nativeGoaEpoch++;nativeGoaOffset=0;nativeGoaAnswer=null;
+  $('nativeGoaStatus').setAttribute('data-loading','false');$('nativeGoaRows').setAttribute('aria-busy','false');
   $('nativeGoaAnswer').hidden=true;$('nativeGoaStatus').textContent='Show annotations to apply this selection.';
   $('nativeGoaAsk').disabled=!runId||!$('nativeGoaProtein').options.length;
 }

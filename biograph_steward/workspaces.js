@@ -84,7 +84,7 @@ function reviewWorkspaceChoices(runs){
 }
 function savedWorkspaceLabel(run){
   const primary=reviewerSavedURL(reviewerEntry?.example_url);
-  const label=run.data_kind==='synthetic_demo'?'Invented offline demonstration':primary?.searchParams.get('run')===run.run_id?'Current evidence workspace':run.qualified_view?'Applied qualifications · retained Pharos graph':run.has_civic?'Pharos + CIViC source evidence':(run.questions||[]).some(row=>row.template==='native_string_physical.v1')?'Pharos + native source context':'Saved Pharos evidence';
+  const label=run.data_kind==='synthetic_demo'?'Invented offline demonstration':primary?.searchParams.get('run')===run.run_id?'Added source context workspace':run.qualified_view?'Qualified Pharos workspace':run.has_civic?'Pharos + CIViC source evidence':(run.questions||[]).some(row=>row.template==='native_string_physical.v1')?'Pharos + native source context':'Saved Pharos evidence';
   return savedReviewOnly()?label:label+' · '+run.run_id;
 }
 function chooseSavedRun(){

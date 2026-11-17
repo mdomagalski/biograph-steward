@@ -80,6 +80,7 @@ function setupWorkspace(){
   inspectionRequest++;pathRequest++;
   for(const key of ['ask','evidence','export'])$('workspaceTab'+workspaceSuffix[key]).disabled=false;
   $('sourceGuideOutput').replaceChildren();$('pathExploreResults').replaceChildren();
+  for(const [status,output] of [['sourceGuideStatus','sourceGuideOutput'],['pathExploreStatus','pathExploreResults']]){$(status).setAttribute('data-loading','false');$(output).setAttribute('aria-busy','false');}
   $('sourceGuideStatus').textContent='Select a claim or choose Inspect source on a path.';
   $('pathExploreStatus').textContent='Searches this saved graph only. No source retrieval or model call is made.';
   $('sourceGuideButton').disabled=!runId;$('pathExploreButton').disabled=!runId;
@@ -329,7 +330,7 @@ async function loadSourceGuide(selectionId){
   }
   $('sourceGuideSelection').value=selectionId;
   const request=++inspectionRequest,sourceRun=runId,sourceSnapshot=graph.snapshot_sha256;
-  $('sourceGuideStatus').textContent='Reading saved source context…';$('sourceGuideOutput').replaceChildren();
+  $('sourceGuideStatus').textContent='Reading saved source context…';$('sourceGuideStatus').setAttribute('data-loading','true');$('sourceGuideOutput').setAttribute('aria-busy','true');$('sourceGuideOutput').replaceChildren();
   try{
     const result=await api('/api/inspect-source',{run_id:sourceRun,selection_id:selectionId});
     if(request!==inspectionRequest||sourceRun!==runId)return;
@@ -337,6 +338,7 @@ async function loadSourceGuide(selectionId){
     renderSourceGuide(result);
     $('sourceGuideStatus').textContent='Saved-source explanation. No model call, source search or review decision was made.';
   }catch(error){if(request===inspectionRequest)$('sourceGuideStatus').textContent=error.message;}
+  finally{if(request===inspectionRequest&&sourceRun===runId){$('sourceGuideStatus').setAttribute('data-loading','false');$('sourceGuideOutput').setAttribute('aria-busy','false');}}
 }
 function editableCopySize(bytes){return (bytes/1000000).toFixed(1)+' MB';}
 function editableCopyLink(copy){
@@ -361,7 +363,7 @@ function renderEditableCopyDownload(){
   }else if(savedReviewOnly()){
     panel.hidden=false;panel.append(el('h3','Continue working locally'));
     const message=state.status==='checking'?'Checking for a complete editable copy…':state.status==='error'?'The local-copy download could not be verified. Reopen this workspace to check again.':'A complete editable copy is not available for this selected workspace. Use a separately supplied complete source workspace with the local app.';
-    const note=el('p',message,'small');note.setAttribute('role','status');panel.append(note);
+    const note=el('p',message,'small');note.setAttribute('role','status');note.setAttribute('aria-live','polite');note.setAttribute('aria-atomic','true');note.setAttribute('data-loading',String(state.status==='checking'));panel.append(note);
   }
 }
 async function setupEditableCopyDownload(){
@@ -587,7 +589,7 @@ function renderNativeGoContext(result,box){
 async function runPathExploration(){
   if(!runId||!$('pathSource').value||$('pathExploreButton').disabled)return;
   const request=++pathRequest,sourceRun=runId,sourceSnapshot=graph.snapshot_sha256;
-  $('pathExploreStatus').textContent='Following saved assertions…';$('pathExploreButton').disabled=true;$('pathExploreResults').replaceChildren();
+  $('pathExploreStatus').textContent='Following saved assertions…';$('pathExploreStatus').setAttribute('data-loading','true');$('pathExploreResults').setAttribute('aria-busy','true');$('pathExploreButton').disabled=true;$('pathExploreResults').replaceChildren();
   try{
     const predicate=$('pathPredicate').value;
     const result=await api('/api/explore',{run_id:sourceRun,source:$('pathSource').value,target:$('pathTarget').value||null,max_hops:Number($('pathHops').value),view:$('pathView').value,predicates:predicate?[predicate]:null});
@@ -596,7 +598,7 @@ async function runPathExploration(){
     renderExploration(result);
     $('pathExploreStatus').textContent=result.search.paths_returned+' '+(result.search.paths_returned===1?'path':'paths')+' shown. '+(result.search.truncated?'Search stopped at '+result.search.truncation_reason.replaceAll('_',' ')+'. More paths may exist.':'Search complete within the selected bounds.')+' '+result.search.expansions+' assertion expansions.';
   }catch(error){if(request===pathRequest)$('pathExploreStatus').textContent=error.message;}
-  finally{if(request===pathRequest)$('pathExploreButton').disabled=!runId||!$('pathSource').value||(!!$('pathTargetSearch').value.trim()&&!$('pathTarget').value);}
+  finally{if(request===pathRequest&&sourceRun===runId){$('pathExploreStatus').setAttribute('data-loading','false');$('pathExploreResults').setAttribute('aria-busy','false');$('pathExploreButton').disabled=!runId||!$('pathSource').value||(!!$('pathTargetSearch').value.trim()&&!$('pathTarget').value);}}
 }
 function renderExploration(result){
   const box=$('pathExploreResults');box.replaceChildren(el('p',result.interpretation,'notice'));
@@ -615,8 +617,8 @@ function renderExploration(result){
   const trace=el('details');trace.append(el('summary','Query bounds, excluded assertions and source binding'),el('pre',JSON.stringify({query:result.query,search:result.search,excluded_assertions:result.excluded_assertions,graph_basis_sha256:result.graph_basis_sha256,snapshot_sha256:result.snapshot_sha256},null,2)));box.append(trace);
 }
 initializeWorkspaceNavigation();
-function invalidateSourceGuide(){inspectionRequest++;$('sourceGuideOutput').replaceChildren();$('sourceGuideStatus').textContent='Selection changed. Open the guide for this source.';}
-function invalidateExploration(){pathRequest++;$('pathExploreResults').replaceChildren();$('pathExploreStatus').textContent='Scope changed. Explore paths for the current selections.';$('pathExploreButton').disabled=!runId||!$('pathSource').value||(!!$('pathTargetSearch').value.trim()&&!$('pathTarget').value);}
+function invalidateSourceGuide(){inspectionRequest++;$('sourceGuideOutput').replaceChildren();$('sourceGuideStatus').setAttribute('data-loading','false');$('sourceGuideOutput').setAttribute('aria-busy','false');$('sourceGuideStatus').textContent='Selection changed. Open the guide for this source.';}
+function invalidateExploration(){pathRequest++;$('pathExploreResults').replaceChildren();$('pathExploreStatus').setAttribute('data-loading','false');$('pathExploreResults').setAttribute('aria-busy','false');$('pathExploreStatus').textContent='Scope changed. Explore paths for the current selections.';$('pathExploreButton').disabled=!runId||!$('pathSource').value||(!!$('pathTargetSearch').value.trim()&&!$('pathTarget').value);}
 $('sourceGuideSearch').addEventListener('input',()=>{invalidateSourceGuide();populateSourceGuide();});
 $('sourceGuideSelection').addEventListener('change',invalidateSourceGuide);
 $('pathEntitySearch').addEventListener('input',()=>{invalidateExploration();populatePathEntities();});

@@ -301,7 +301,7 @@ let scientificAssessmentRequest=0;
 async function initializeScientificAssessments(){
   const select=document.getElementById('scientificAssessmentSelection'),status=document.getElementById('scientificAssessmentStatus'),body=document.getElementById('scientificAssessmentBody');
   if(!select||!status||!body)return;
-  const epoch=++scientificAssessmentRequest;select.disabled=true;status.textContent='Checking saved scientific assessments…';
+  const epoch=++scientificAssessmentRequest;select.disabled=true;status.textContent='Checking saved scientific assessments…';status.setAttribute('data-loading','true');body.setAttribute('aria-busy','true');
   try{
     const response=await fetch('/api/scientific-assessments'),data=await response.json();
     if(!response.ok)throw new Error(data.error||'Assessment catalogue unavailable.');
@@ -314,5 +314,6 @@ async function initializeScientificAssessments(){
     select.onchange=show;
     if(rows.length)show();else{body.replaceChildren();status.textContent='No verified scientific assessment is published in this workspace.';}
   }catch(error){if(epoch===scientificAssessmentRequest){body.replaceChildren();status.textContent=error.message;}}
+  finally{if(epoch===scientificAssessmentRequest){status.setAttribute('data-loading','false');body.setAttribute('aria-busy','false');}}
   document.getElementById('scientificAssessmentReload').onclick=initializeScientificAssessments;
 }

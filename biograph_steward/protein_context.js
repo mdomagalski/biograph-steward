@@ -228,11 +228,11 @@
     const button = add(box, 'button', 'Inspect saved domains and sites', 'secondary'); button.type = 'button';
     const status = add(box, 'p', '', 'small'); status.setAttribute('role', 'status');
     const output = add(box, 'div'); let request = 0;
-    select.onchange = () => {request++; output.replaceChildren(); status.textContent = ''; button.disabled = false;};
+    select.onchange = () => {request++; output.replaceChildren(); status.textContent = ''; status.setAttribute('data-loading', 'false'); output.setAttribute('aria-busy', 'false'); button.disabled = false;};
     button.onclick = async () => {
       if (!options.isCurrent()) return;
       const selected = select.value, context = meta.proteins.find(row => row.protein === selected), round = ++request;
-      button.disabled = true; output.replaceChildren(); status.textContent = 'Reading preserved protein context…';
+      button.disabled = true; output.replaceChildren(); status.textContent = 'Reading preserved protein context…'; status.setAttribute('data-loading', 'true'); output.setAttribute('aria-busy', 'true');
       const current = () => options.isCurrent() && round === request && select.value === selected;
       try {
         const result = await options.api('/api/protein-context', {run_id: guide.source_run,
@@ -246,7 +246,7 @@
           throw new Error('Saved protein context does not match this selected source and protein.');
         render(output, result); status.textContent = 'Saved source context displayed. The graph, scores and review decisions are unchanged.';
       } catch (error) {if (current()) status.textContent = 'Protein context remains unresolved: ' + error.message;}
-      finally {if (current()) button.disabled = false;}
+      finally {if (current()) {status.setAttribute('data-loading', 'false'); output.setAttribute('aria-busy', 'false'); button.disabled = false;}}
     };
     return box;
   }

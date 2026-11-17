@@ -50,7 +50,7 @@ test('refresh script makes no hidden startup requests in saved mode and remains 
 test('shared workspace skips database diagnostics while retaining native source inspection',()=>{
   for(const saved of [true,false]){
     const calls=[],elements=new Map();
-    const element=()=>({children:[],replaceChildren(...items){this.children=items;},append(item){this.children.push(item);},get options(){return this.children;}});
+    const element=()=>({children:[],attrs:{},replaceChildren(...items){this.children=items;},append(item){this.children.push(item);},setAttribute(key,value){this.attrs[key]=String(value);},get options(){return this.children;}});
     const $=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id);};
     const context=vm.createContext({$,el:element,savedReviewOnly:()=>saved,runId:'saved',graph:{assertions:[]},
       inspectionRequest:0,pathRequest:0,workspaceLoaded:true,workspaceSuffix:{ask:'Ask',evidence:'Evidence',export:'Export'},
@@ -60,5 +60,7 @@ test('shared workspace skips database diagnostics while retaining native source 
     context.setupWorkspace();
     assert.deepEqual(calls,saved?['prepared-copy-check','native-go-source']:['prepared-copy-check','database-diagnostic','native-go-source']);
     assert.equal($('sourceGuideButton').disabled,false);
+    for(const id of ['sourceGuideStatus','pathExploreStatus'])assert.equal($(id).attrs['data-loading'],'false');
+    for(const id of ['sourceGuideOutput','pathExploreResults'])assert.equal($(id).attrs['aria-busy'],'false');
   }
 });
