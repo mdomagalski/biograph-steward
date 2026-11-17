@@ -1,0 +1,23 @@
+{
+  "format": "biograph-steward.question-graph-usability-checks.v1",
+  "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+  "full_UI_suite": {
+    "passed": 176,
+    "failed": 0,
+    "skipped": 0,
+    "timing": "after core implementation"
+  },
+  "final_directly_affected_UI_tests": {
+    "passed": 53,
+    "failed": 0,
+    "skipped": 0,
+    "timing": "after final empty-result navigation fix"
+  },
+  "git_diff_check_passed": true,
+  "source_bindings_and_all_original_213_files_unchanged": true,
+  "new_scientific_measurements": 0,
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "Brev_required": false,
+  "empty_result_callsite_regressions_tested": true
+}

@@ -1,0 +1,11 @@
+{
+  "format": "biograph-steward.final-submission-bundle.v1",
+  "file": "output/final_submission/BioGraph_Steward_Submission.zip",
+  "bytes": 344582412,
+  "sha256": "237347593e309c7feff3cbf4d5c8b15596c0a952cb6ab82bf91eabee6cbd29e5",
+  "files": 19,
+  "all_member_hashes_and_CRC_verified": true,
+  "explicit_file_allowlist": true,
+  "review_guides_included": false,
+  "public_upload_or_submission_performed": false
+}

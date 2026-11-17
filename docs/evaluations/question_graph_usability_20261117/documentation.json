@@ -1,0 +1,19 @@
+{
+  "format": "biograph-steward.current-navigation-docs-audit.v1",
+  "status": "passed",
+  "documents": [
+    "README.md",
+    "HOW_TO_USE.md",
+    "docs/DELIVERY.md",
+    "docs/DEMO_SCRIPT.md",
+    "docs/JUDGE_WALKTHROUGH.md",
+    "docs/FINAL_SUBMISSION.md",
+    "docs/SUBMISSION_OVERVIEW.md"
+  ],
+  "local_links_checked": 192,
+  "missing_links": [],
+  "old_navigation_labels_absent": true,
+  "manual_14_and_recorded_agent_8_scopes_distinct": true,
+  "bounded_drawings_and_complete_workspace_data_distinct": true,
+  "source_and_scientific_results_changed": false
+}

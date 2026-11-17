@@ -1,0 +1,77 @@
+{
+  "format": "biograph-steward.question-graph-usability-delivery.v1",
+  "status": "passed",
+  "checked_at": "2026-11-17T17:37:28.420042+00:00",
+  "public_demo_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask",
+  "download_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/editable-copy/native_evidence_workspace_20261115/download",
+  "application_core": {
+    "commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+    "three_changed_files_sha256": {
+      "biograph_steward/guided.js": "9d80b8651d82d8a6f20c590bec7f4e3500c6f0b0877d97b62979034cc61b04c1",
+      "biograph_steward/navigation.js": "94bc316ded920d440dec3fe494556c0695a2041a75cb91b5c8b16ba51c988c5d",
+      "biograph_steward/ui.html": "2f65d8cb0f58e743ee178f387a64e5726620a835c43e751d6015f7b3e7e55eb5"
+    },
+    "remaining_existing_modules_unchanged": true,
+    "full_container_not_claimed_as_git_archive": true
+  },
+  "interface": {
+    "default_question_result_overview": true,
+    "individual_result_focus_and_restore": true,
+    "saved_workspace_browser": true,
+    "results_and_evaluation_navigation": true,
+    "independent_start_and_end_entity_search": true,
+    "connected_endpoint_suggestions": true,
+    "three_source_derived_path_examples": true,
+    "accepted_only_empty_scope_explanation": true,
+    "local_actual_browser_acceptance_receipt_sha256": "f477e1654883a921316f214421a3a27a07f0da4161c2c576eeaee3582f8127b2"
+  },
+  "portable_copy": {
+    "filename": "BioGraph_Steward_KRAS_Editable_Workspace.zip",
+    "bytes": 106914890,
+    "sha256": "f63d852d1eeb584a0c238a99289639ecc325c340bf785f1f58d9e68319ffb73b",
+    "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+    "source_workspace": "native_evidence_workspace_20261115",
+    "saved_question": "native_physical_KRAS_question_v3_20261115",
+    "recorded_agent_job": "source_agent_eval_dc7b597201da_S01",
+    "source_file_counts": {
+      "workspace": 207,
+      "question": 4,
+      "agent_job": 2
+    },
+    "all213_original_workspace_question_agent_files_unchanged": true,
+    "all_archive_member_hashes_and_CRC_verified": true,
+    "saved_graph_counts": {
+      "entities": 9724,
+      "evidence_records": 19310,
+      "assertions": 16430
+    },
+    "requires": {
+      "Python": "3.10+",
+      "AWS": false,
+      "model": false
+    },
+    "launch_command": "python3 START_EDITABLE_LOCAL.py",
+    "review_scope": "Record evidence decisions and reasons in a new local run; the original captured workspace stays unchanged."
+  },
+  "delivery_checks": {
+    "anonymous_HTML_metadata_and_HEAD": true,
+    "public_archive_GET_from_Mac_attempted": false,
+    "Chrome_binary_download_attempts": 0,
+    "prior_Chrome_organization_block_not_bypassed": true,
+    "archive_complete_SHA_checked_on_existing_VM": true,
+    "original_source_snapshot_files_rehashed": 732,
+    "original_source_snapshot_unchanged": true,
+    "private_operator_app_and_environment_unchanged": true,
+    "two_read_only_source_and_copy_mounts": true,
+    "memory_GiB": 3,
+    "CPU_count": 1,
+    "OOM_or_restarts_after_activation": false,
+    "gateway_changed": false,
+    "new_resources_roles_permissions_or_network_changes": 0,
+    "new_source_retrievals": 0,
+    "new_model_calls": 0,
+    "graph_or_review_writes": 0,
+    "previous_unit_images_and_copy_preserved_for_rollback": true
+  },
+  "scientific_interpretation": "This update improves navigation and inspection of the same captured scientific evidence. It adds no biological labels, inferred mechanisms, automatic acceptance or new scientific measurements."
+}

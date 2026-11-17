@@ -26,7 +26,7 @@ preserves the original baseline comparison and all counts.
 | Criterion | Where to look | Evidence to assess |
 |---|---|---|
 | **Usability — 40%** | The user guide, four-step agent workflow and result downloads | Can a reviewer find what was added, trace a source and share the right result without graph-query syntax? Record loading/access problems and unclear next actions. |
-| **Accuracy and pruning — 30%** | What changed; applied qualification companion; linked scientific comparisons | Known-label recovery increases 41/51 → 44/51 under the same mapping. The separate companion applies 298 obsolete-ID exclusions. Keep source additions, identifier checks and the separate function-prediction benchmark distinct. |
+| **Accuracy and pruning — 30%** | Results & evaluation; applied qualification companion; linked scientific comparisons | Known-label recovery increases 41/51 → 44/51 under the same mapping. The separate companion applies 298 obsolete-ID exclusions. Keep source additions, identifier checks and the separate function-prediction benchmark distinct. |
 | **Explainability — 20%** | E002 source passport, model/tool trace and exported decision reasons | Provider/version, baseline membership, exact identity evidence, review state and uncertainty remain inspectable. A proposal is separate from an applied decision. |
 | **Standards — 10%** | [Export audit](STANDARD_EXPORT.md), [mapping/overlap audit](EVIDENCE_OVERLAP.md) and graph/source files | Inspect stable identifiers, declared predicates, source provenance and the validated bounded profiles. Their full-graph conformance limits are recorded. |
 
@@ -55,23 +55,25 @@ identifies current reviewer artifacts and separate source-packet access.
 
 ## Watch or present
 
-The **[3:58 narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)**,
+The **[narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)**,
 [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
-are the current presentation files. The tour uses actual local-app screenshots,
+are the current presentation files. The tour uses actual browser screenshots,
 a precomputed app assessment and a separately labelled rendering of existing
 prediction-result tables. It makes no new model calls or statistical experiment.
 
 | Chapter | What it shows |
 |---|---|
-| 0:00 | What Steward adds to the captured Pharos baseline |
-| 0:30 | Actual addition: KRAS–CDC42BPB and its source |
-| 1:00 | More published location labels recovered |
-| 1:29 | The agent's question-to-source workflow |
-| 2:04 | Separate measured function-prediction gain |
-| 2:42 | Applied identifier qualification |
-| 3:11 | Interpretation of the comparisons |
-| 3:33 | Inspectable results and reusable graph handoff |
+| Added context | What Steward adds to the captured Pharos baseline |
+| Source inspection | Actual addition: KRAS–CDC42BPB and its source |
+| Location reference | More published location labels recovered |
+| Agent workflow | The agent's question-to-source workflow |
+| Function prediction | Separate measured function-prediction gain |
+| Graph qualification | Applied identifier qualification |
+| Interpretation | How to read the comparisons |
+| Graph exploration | All-result overview, pair focus and searchable connected-path examples |
+| Local continuation | Complete editable workspace and review saved in a new run |
+| Reuse | Inspectable results and graph handoff |
 
 The [deployment record](DELIVERY_STATUS_20261115.json) keeps server/API checks
 separate from browser and human usability checks. [Source notes](SOURCE_NOTES.md)

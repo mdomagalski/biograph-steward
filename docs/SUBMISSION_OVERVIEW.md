@@ -129,7 +129,7 @@ the organizer's 40% usability, 30% accuracy/pruning, 20% explainability and 10%
 standards criteria. It links complete results and clearly separates the
 preserved research appendix. The
 [narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
-shows the actual local app using verified saved real data in 3:58, with
+shows actual browser views using verified saved real data, with
 synthetic narration, captions and edited screenshot states; the
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
 provides a separate project overview. [Hosted deployment](evaluations/public_demo_20261117/hosted_acceptance.json)

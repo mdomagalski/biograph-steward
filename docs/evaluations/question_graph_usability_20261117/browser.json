@@ -1,0 +1,78 @@
+{
+  "format": "biograph-steward.question-graph-hosted-browser.v1",
+  "passed": true,
+  "observed_at_UTC": "2026-11-17T17:42:19.609414+00:00",
+  "surface": "Actual Chrome through native CUA, public AWS page, no sign-in",
+  "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+  "public_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask",
+  "checks": {
+    "default_manual_overview": {
+      "partners": 14,
+      "entities": 15,
+      "citations": 14
+    },
+    "graph_selector_CDC42BPB_individual_paths": true,
+    "Show_all_results_restores_overview": true,
+    "typed_KRAS_start_one_match": true,
+    "independent_CDC42BPB_end_one_match": true,
+    "one_click_KRAS_CDC42BPB": {
+      "paths": 1,
+      "complete_within_bounds": true,
+      "expansions": 68,
+      "view": "candidates and accepted",
+      "hops": 1,
+      "relationship": "biograph:has_interaction_annotation",
+      "review": "candidate"
+    },
+    "Results_and_evaluation_title_and_first_reader_intro": true,
+    "prepared_local_copy_control_present_106_9_MB": true
+  },
+  "screenshots": {
+    "hosted_overview_controls.png": {
+      "path": "images/hosted_overview_controls.png",
+      "bytes": 94898,
+      "sha256": "a0be17be362eb26c10ae35e1002b2a5a404996f8f2e8e6db3372cfbb79cbfd15"
+    },
+    "hosted_all_14_partners.png": {
+      "path": "images/hosted_all_14_partners.png",
+      "bytes": 94786,
+      "sha256": "5818037ecdf24a8cc54fced1603bfb2002531aba66601fbe883764457c15c80d"
+    },
+    "hosted_focused_CDC42BPB.png": {
+      "path": "images/hosted_focused_CDC42BPB.png",
+      "bytes": 88887,
+      "sha256": "0ff38c6f19399287e79d2ffe0a7219d76e1ff1a9fdf7f0ee3a1ad0200381f932"
+    },
+    "hosted_path_entity_search.png": {
+      "path": "images/hosted_path_entity_search.png",
+      "bytes": 100548,
+      "sha256": "270bc90790f2294809fade394edb888a8ddf838392134f55461d0a295d5732a9"
+    },
+    "hosted_KRAS_path_result.png": {
+      "path": "images/hosted_KRAS_path_result.png",
+      "bytes": 112161,
+      "sha256": "0a1a52e547e9807d86eaacab43ba5b484f10fd8b19fc5a748975f5ed81e6128f"
+    },
+    "hosted_results_intro.png": {
+      "path": "images/hosted_results_intro.png",
+      "bytes": 128296,
+      "sha256": "5cbb61cc0710a9c3493e5b1b13cd0ac2a7929b12292827b4fd2e94cc580a3cc3"
+    },
+    "hosted_editable_copy_control.png": {
+      "path": "images/hosted_editable_copy_control.png",
+      "bytes": 122271,
+      "sha256": "bcb34a5f54777dc7850a9b40f27fa160fb8a2c3f7613d845411affe88fc1afe2"
+    }
+  },
+  "limits": {
+    "native_GO_and_pathway_examples_actual_local_and_backend_verified": "See local_browser.json and path_examples.json; not repeated as public-browser requests.",
+    "workspace_browser_actual_local_verified": "Uses the unchanged existing browser and source tables.",
+    "binary_download_attempts_this_increment": 0,
+    "actual_Chrome_binary_download_completed": false,
+    "prior_Chrome_organization_block_retained_without_bypass": true,
+    "new_review_writes": 0,
+    "new_model_calls": 0,
+    "fresh_source_retrieval": 0
+  },
+  "connection_incident": "Mac system proxy stopped listening. User restarted the existing VPN/proxy; normal configured connection was restored. No settings changed or proxy bypass performed. Existing remote deployment result was retrieved without repeating mutation."
+}

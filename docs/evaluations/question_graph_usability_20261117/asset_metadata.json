@@ -1,0 +1,41 @@
+{
+  "format": "biograph-steward.current-source-asset-navigation-metadata.v1",
+  "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+  "four_archive_sha256": {
+    "BioGraph_Steward_Applied_Qualification_Companion.zip": "3a163437e3756fb34eb90e644c35a223de0bdb300772bd9dac5a331d7ce1abd1",
+    "BioGraph_Steward_APP_PSEN_Example.zip": "4671e91ab7c3939b80dd395aced7374ea3dbb43abaf46dbffb891ebdf5bc3851",
+    "BioGraph_Steward_Primary_Graph_Decisions_and_Sources.zip": "3d4c407bee250d3c2687a234b654cf8fc3a1e1cd50cda74c30d6154637190efa",
+    "BioGraph_Steward_Captured_Pharos_Comparator.zip": "e30e3f268456141f3742e52880eb5641c66d8a00adf70774f0e0e07b949aad2d"
+  },
+  "all_four_archive_bytes_unchanged": true,
+  "native_copy": {
+    "file": "BioGraph_Steward_KRAS_Editable_Workspace.zip",
+    "bytes": 106914890,
+    "sha256": "f63d852d1eeb584a0c238a99289639ecc325c340bf785f1f58d9e68319ffb73b",
+    "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+    "source_run": "native_evidence_workspace_20261115",
+    "question_id": "native_physical_KRAS_question_v3_20261115",
+    "agent_job": "source_agent_eval_dc7b597201da_S01",
+    "download_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/editable-copy/native_evidence_workspace_20261115/download",
+    "included_in_these_four_archives": false,
+    "source_data_unchanged": true
+  },
+  "software": {
+    "filename": "BioGraph_Steward_Software.zip",
+    "bytes": 1088132,
+    "sha256": "d6499a7e00acc7c913e325b11a52485f2c29275290d3c2ee4ed544c5c1b85852",
+    "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
+  },
+  "APP_example_runtime_preserved": {
+    "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+    "runtime_bridge_sha256": "8537f1b6e36f29acf1c015896a2b9ac6216ff0dda8dd0ef5ee4bb3e57dc493d0",
+    "source_and_scientific_results_unchanged": true,
+    "new_model_calls": 0,
+    "software_archive": {
+      "filename": "BioGraph_Steward_Software.zip",
+      "bytes": 1072487,
+      "sha256": "7b9791572979266bfebcaeb7ecbb0240db8d6634ae16586ae0773a7634c30ee5"
+    }
+  },
+  "scientific_source_or_result_changes": false
+}

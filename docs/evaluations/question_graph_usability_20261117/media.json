@@ -1,0 +1,302 @@
+{
+  "format": "biograph-steward.question-graph-usability-media-delivery.v1",
+  "status": "published_canonical",
+  "published_at_UTC": "2026-11-17T17:52:58.862731+00:00",
+  "files": [
+    {
+      "file": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
+      "bytes": 8577316,
+      "sha256": "27537a54171347aed2b5558c10377589b31beb54a421922862b21dc1e0165a97"
+    },
+    {
+      "file": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
+      "bytes": 4879,
+      "sha256": "eeeca12e5a752862d8ac62ee6d38af23b16d47599a37aba6fafac13c7f3b53a6"
+    },
+    {
+      "file": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
+      "bytes": 6736,
+      "sha256": "2e992e2cf910c145149bb914a221739c6772154966d5d1ae15e95e7f8dec46b9"
+    },
+    {
+      "file": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
+      "bytes": 6929,
+      "sha256": "822d81ea1d3664c5dd46a1227d9265bd91584bceff07c2d951b55dda7fa68f1f"
+    },
+    {
+      "file": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
+      "bytes": 28697,
+      "sha256": "458b1875986c48d1cf5f58c2c37fe3b9f410c2e37b36b028a681f5f6f61ef4cd"
+    }
+  ],
+  "movie_sha256": "27537a54171347aed2b5558c10377589b31beb54a421922862b21dc1e0165a97",
+  "movie_bytes": 8577316,
+  "encoded_seconds": 294.7,
+  "scene_timeline_seconds": 294.6,
+  "under_five_minutes": true,
+  "chapters": [
+    {
+      "id": "start",
+      "title": "What Steward adds to Pharos",
+      "start_seconds": 0.0,
+      "end_seconds": 30.1
+    },
+    {
+      "id": "added_pair",
+      "title": "One concrete addition: KRAS\u2013CDC42BPB",
+      "start_seconds": 30.1,
+      "end_seconds": 60.400000000000006
+    },
+    {
+      "id": "measured",
+      "title": "More published location labels recovered",
+      "start_seconds": 60.400000000000006,
+      "end_seconds": 89.4
+    },
+    {
+      "id": "agent",
+      "title": "The agent turns a question into inspectable evidence",
+      "start_seconds": 89.4,
+      "end_seconds": 124.60000000000001
+    },
+    {
+      "id": "explore_answer_paths_results",
+      "title": "Manual question: overview, paths and results",
+      "start_seconds": 124.60000000000001,
+      "end_seconds": 146.60000000000002
+    },
+    {
+      "id": "edit_copy",
+      "title": "Take the same graph home and record your review",
+      "start_seconds": 146.60000000000002,
+      "end_seconds": 181.60000000000002
+    },
+    {
+      "id": "prediction",
+      "title": "A separate, measured protein-function prediction gain",
+      "start_seconds": 181.60000000000002,
+      "end_seconds": 219.90000000000003
+    },
+    {
+      "id": "review",
+      "title": "Qualification with recoverable decisions",
+      "start_seconds": 219.90000000000003,
+      "end_seconds": 248.10000000000002
+    },
+    {
+      "id": "interpretation",
+      "title": "How to interpret these measured gains",
+      "start_seconds": 248.10000000000002,
+      "end_seconds": 270.70000000000005
+    },
+    {
+      "id": "export",
+      "title": "A more useful, inspectable starting point",
+      "start_seconds": 270.70000000000005,
+      "end_seconds": 294.6
+    }
+  ],
+  "delivery_style": "Edited actual application screenshot states with installed local synthetic narration, not a continuous screen recording.",
+  "new_instruction_scene_seconds": 22,
+  "updated_copy_review_scene_seconds": 35,
+  "assistant_visual_QA_completed": true,
+  "narration_text_and_automatic_audio_checks_passed": true,
+  "manual_audio_audition_performed": false,
+  "assistant_visual_QA_scope": [
+    "12-frame contact sheet",
+    "full-size all14 question graph",
+    "full-size completed saved path"
+  ],
+  "automatic_media_checks": {
+    "two_full_video_decodes_passed": true,
+    "H264_video_and_AAC_audio": true,
+    "mean_volume_db": -16.5,
+    "peak_volume_db": -1.2,
+    "caption_cues": 70,
+    "canonical_gene_spellings": true
+  },
+  "capture_provenance": {
+    "final_public_feature_frames": {
+      "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+      "browser_proof": {
+        "file": "docs/evaluations/question_graph_usability_20261117/browser.json",
+        "bytes": 3430,
+        "sha256": "86de8c58cc1c8e49c365170587e28c92e0d10fe0ba14b0d3002068ae819f417b"
+      },
+      "hosted_deployment_proof": {
+        "file": "docs/evaluations/question_graph_usability_20261117/hosted_acceptance.json",
+        "bytes": 3680,
+        "sha256": "560f449239cb1a2df62b9130f48072b8da407dea625c41acc4f4fee6c3c4e60d"
+      },
+      "images": [
+        {
+          "file": "docs/evaluations/question_graph_usability_20261117/images/hosted_overview_controls.png",
+          "sha256": "a0be17be362eb26c10ae35e1002b2a5a404996f8f2e8e6db3372cfbb79cbfd15",
+          "bytes": 94898,
+          "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
+        },
+        {
+          "file": "docs/evaluations/question_graph_usability_20261117/images/hosted_all_14_partners.png",
+          "sha256": "5818037ecdf24a8cc54fced1603bfb2002531aba66601fbe883764457c15c80d",
+          "bytes": 94786,
+          "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
+        },
+        {
+          "file": "docs/evaluations/question_graph_usability_20261117/images/hosted_focused_CDC42BPB.png",
+          "sha256": "0ff38c6f19399287e79d2ffe0a7219d76e1ff1a9fdf7f0ee3a1ad0200381f932",
+          "bytes": 88887,
+          "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
+        },
+        {
+          "file": "docs/evaluations/question_graph_usability_20261117/images/hosted_path_entity_search.png",
+          "sha256": "270bc90790f2294809fade394edb888a8ddf838392134f55461d0a295d5732a9",
+          "bytes": 100548,
+          "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
+        },
+        {
+          "file": "docs/evaluations/question_graph_usability_20261117/images/hosted_KRAS_path_result.png",
+          "sha256": "0a1a52e547e9807d86eaacab43ba5b484f10fd8b19fc5a748975f5ed81e6128f",
+          "bytes": 112161,
+          "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
+        },
+        {
+          "file": "docs/evaluations/question_graph_usability_20261117/images/hosted_results_intro.png",
+          "sha256": "5cbb61cc0710a9c3493e5b1b13cd0ac2a7929b12292827b4fd2e94cc580a3cc3",
+          "bytes": 128296,
+          "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
+        },
+        {
+          "file": "docs/evaluations/question_graph_usability_20261117/images/hosted_editable_copy_control.png",
+          "sha256": "bcb34a5f54777dc7850a9b40f27fa160fb8a2c3f7613d845411affe88fc1afe2",
+          "bytes": 122271,
+          "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0"
+        }
+      ],
+      "manual_question_returned_partners": 14,
+      "separate_prior_agent_recorded_result_limit": 8,
+      "manual_question_and_recorded_agent_scopes_explicit": true,
+      "connection_incident": "Mac system proxy stopped listening. User restarted the existing VPN/proxy; normal configured connection was restored. No settings changed or proxy bypass performed. Existing remote deployment result was retrieved without repeating mutation."
+    },
+    "Start_frame": {
+      "actual_capture_runtime_commit": "79af4679c7567ccd0dc760a22e286e27320f7671",
+      "explicit_bridge_to_final_runtime": "Two conditional call-site checks affect empty-result fallback. The nonempty accepted UI remains unchanged; final-runtime actual overview and 53 affected tests are recorded.",
+      "local_browser_and_bridge_proof": {
+        "file": "docs/evaluations/question_graph_usability_20261117/local_browser.json",
+        "bytes": 5465,
+        "sha256": "f477e1654883a921316f214421a3a27a07f0da4161c2c576eeaee3582f8127b2"
+      }
+    },
+    "prior_local_review_frames": {
+      "actual_capture_runtime_commit": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+      "explicitly_reused_not_new": true,
+      "source_review_proof": {
+        "file": "docs/evaluations/editable_demo_copy_20261117/local_review.json",
+        "bytes": 1519,
+        "sha256": "b1630ae22eee21eb47620fd02a6e08fbe3c1ee2705618982d70e0f0f43eeebb3"
+      },
+      "actual_browser_proof": {
+        "file": "docs/evaluations/editable_demo_copy_20261117/browser.json",
+        "bytes": 2734,
+        "sha256": "3477bec8f56f3aa1dd83e3183d603e4a19a4d17ab26b7abfef1412c64153c9c3"
+      },
+      "prior_saved_review_runs": 1,
+      "decision": "provisional",
+      "accepted_assertions": 0,
+      "original_workspace_files_byte_unchanged": 207
+    },
+    "unchanged_source_and_scientific_scenes": {
+      "original_source_capture_revision": "ee3c61c23262e57669090a7608658c16517d87cb",
+      "seven_clips_byte_identical": [
+        {
+          "scene": "added_pair",
+          "sha256": "6d0a7136e52d8ed5dba6019ddfd86ad8284c007c34e862e7b57f0c8a79089bd2"
+        },
+        {
+          "scene": "measured",
+          "sha256": "a97dcb34166256dc5ec4e51a2479f5bc54a737ee07525c580f7a9e389e41c954"
+        },
+        {
+          "scene": "agent",
+          "sha256": "7b42df3166fb58cfafe6c46270a8158c1059dd9082220a39b281a8e3e2b0f068"
+        },
+        {
+          "scene": "prediction",
+          "sha256": "5153f8b056a2a06585d4b99e942b5be830c449aa1e29887a56a6fe8154b55d4a"
+        },
+        {
+          "scene": "review",
+          "sha256": "63691e7f8a693639e0d170eec1f46897ad360d5b60ab7c90ac502b773803d1c2"
+        },
+        {
+          "scene": "interpretation",
+          "sha256": "ad0b8d0aa663e6b2020bfbc1ad6173eaded61136877158b35cd85cb4c6701e99"
+        },
+        {
+          "scene": "export",
+          "sha256": "6ef718b301dd8433621769dfc44b3e967a4b5b05ffeeb508d874633e54d4eff6"
+        }
+      ],
+      "protein_function_report": {
+        "file": "docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md",
+        "bytes": 12248,
+        "sha256": "ddce310f6681dbd412f3871554a5c407311c0cbbefbf1039dfb1234aeda47a43"
+      },
+      "location_reference_report": {
+        "file": "docs/evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md",
+        "bytes": 12343,
+        "sha256": "09f00130bb5c8edf0bdcd14843ace040b6ec1ccd9aeb33f34f0bb7df09e15eb6"
+      },
+      "scientific_tables_and_values_unchanged": true,
+      "prediction_tables_are_separately_labeled_saved_report_rendering": true
+    }
+  },
+  "current_portable_copy": {
+    "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+    "sha256": "f63d852d1eeb584a0c238a99289639ecc325c340bf785f1f58d9e68319ffb73b",
+    "bytes": 106914890,
+    "original_workspace_question_agent_files_preserved": 213,
+    "anonymous_HTTPS_HTML_metadata_and_HEAD_verified": true,
+    "complete_current_ZIP_SHA_checked_on_existing_VM": true,
+    "Chrome_binary_download_attempts_this_increment": 0,
+    "actual_Chrome_binary_download_completed": false,
+    "prior_organization_block_not_retried_or_bypassed": true
+  },
+  "new_model_calls": 0,
+  "fresh_scientific_source_retrievals": 0,
+  "new_review_writes": 0,
+  "new_scientific_measurements": 0,
+  "public_demo_remains_read_only": true,
+  "previous_canonical_preservation": {
+    "mp4_sha256": "4343c2e353db63df3f0c5ff3f35dc8e8f127eeae33d63e59c0da924ecc363578",
+    "all_five_files_verified_and_preserved_before_replace": true,
+    "files": [
+      {
+        "filename": "BioGraph_Steward_Walkthrough.mp4",
+        "sha256": "4343c2e353db63df3f0c5ff3f35dc8e8f127eeae33d63e59c0da924ecc363578",
+        "bytes": 7679539
+      },
+      {
+        "filename": "BioGraph_Steward_Walkthrough.receipt.json",
+        "sha256": "acfa3708a6fb933a7049938ddcfe5b6e0cad59dc23f08acbb86f23ce06e0f61a",
+        "bytes": 19126
+      },
+      {
+        "filename": "BioGraph_Steward_Walkthrough.srt",
+        "sha256": "27cdbef480cb7ad5a6fedb2c519468496818ba8c0f14a8d764b6545d162e4cd2",
+        "bytes": 6405
+      },
+      {
+        "filename": "BioGraph_Steward_Walkthrough.txt",
+        "sha256": "199c6dac44354091c6722a6f753b010b68566d07c3ccfc56d6cf12ac70b98c0e",
+        "bytes": 6547
+      },
+      {
+        "filename": "BioGraph_Steward_Walkthrough.vtt",
+        "sha256": "2992cbc6e752611274de514fb5e26030808bd62c4c7ed56b5a4a0e43e606a504",
+        "bytes": 6230
+      }
+    ]
+  },
+  "transcript_format": "Reader transcript: short preface, chapter timestamps/titles and spoken narration only.",
+  "transcript_audience_cleanup_at_UTC": "2026-11-17T17:54:08.117598+00:00"
+}

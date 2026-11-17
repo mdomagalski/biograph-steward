@@ -1,0 +1,10 @@
+{
+  "format": "biograph-steward.public-release-candidate-receipt.v1",
+  "file": "output/public_release_20261117/BioGraph_Steward_Public_Release.zip",
+  "bytes": 10546855,
+  "sha256": "8ee278a82fb290f75417a7a60706e6ea0f7f6e699b4e2c6dbc518befc396ea32",
+  "members": 14,
+  "CRC_and_member_hashes_verified": true,
+  "full_source_archives_included": false,
+  "uploaded_or_published": false
+}

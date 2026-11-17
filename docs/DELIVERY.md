@@ -15,8 +15,9 @@ syntax. The recorded Nemotron workflow has four steps: **Question & plan**,
 | Activity | What to open |
 |---|---|
 | See added source context | In the KRAS run, inspect **E002, KRAS–CDC42BPB**. Its source passport shows a pair absent from the captured Pharos graph, STRING 12.5 score 203 and preserved identity checks. |
-| Inspect applied qualification | Open the matched **TP53** example, then **What changed**. It explains the 298 record exclusions and links them to the retained graph. |
-| Understand the measured results | Read the comparison tables under **Graph changes and assessment**. Source recovery and the separate historical prediction study retain their own controls. |
+| Explore the question and workspace | The manual KRAS question shows all 14 returned partners. **Show in graph** focuses one result; **Show all results** restores the overview. **Browse saved workspace** opens the bounded workspace graph and complete tables. Searchable path examples cover interaction, location and pathway context. |
+| Inspect applied qualification | Open the matched **TP53** example, then **Results & evaluation**. It explains the 298 record exclusions and links them to the retained graph. |
+| Understand the measured results | Read the comparison tables under **Results and evaluation**. Source recovery and the separate historical prediction study retain their own controls. |
 | Reuse a recorded result | Download the verified agent record for its focused graph, model/tool trace, inspections and proposals. |
 | Continue with the same graph locally | Choose **Download an editable local copy** in the native KRAS workspace or its **Export** tab. The complete ZIP includes runtime, source workspace, saved question, recorded agent job and launcher. Record evidence decisions locally and save a new run. |
 

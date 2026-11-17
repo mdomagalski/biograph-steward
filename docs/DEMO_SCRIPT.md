@@ -22,13 +22,13 @@ step visible at a time.
 The current-source agent has completed its
 [fixed development comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md).
 The current tour demonstrates the actual local application using verified saved
-real data. The protected site now replays the recorded agent workflow, with
+real data. The public site replays the recorded agent workflow, with
 [hosted acceptance](evaluations/delivery_readiness_20261116/hosted_acceptance.json)
 and the exact [delivery status](DELIVERY_STATUS_20261115.json) recorded separately.
 
 Open the
-[shared reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
-with the privately supplied token and follow the designated recorded agent run.
+[public app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/)
+without signing in and follow the designated recorded agent run.
 The shared session replays genuine saved model work. It does not call a model,
 retrieve new source data or apply review decisions during the demonstration.
 
@@ -37,6 +37,23 @@ recorded cap. The older manual answer displays all 14 under a different cap.
 The agent's citation priorities preserve the complete returned answer.
 **Retain candidate context** and **Needs review** are proposals, not acceptance
 or graph edits.
+
+In the separate manual KRAS question, start with the overview of all 14 partners
+(15 entities and 14 cited connections). Select **Show in graph** on one result
+to inspect its pair, then **Show all results** to restore the overview.
+**Browse saved workspace** opens the existing bounded graph and full source
+tables, rather than drawing all 9,724 workspace entities at once.
+
+Open **Explore paths in this saved graph** and type **KRAS** in the start search.
+Start suggestions are sorted proteins first, and the independent end search
+offers connected entities within the selected bounds. Run the one-click
+**KRAS → CDC42BPB** example to show its interaction annotation. The other
+one-hop examples show **TP53 → nucleus** as a location annotation and
+**BRAF → ARMS-mediated activation** as pathway membership. Keep the
+**Candidates and accepted** scope visible. These paths preserve recorded
+relationship meanings; an empty filtered search does not demonstrate biological
+absence. **Results & evaluation** introduces the qualifications and measured
+comparisons for a first-time reader.
 
 Show the measured outcomes early: the qualified location view recovers
 **44/51** positive labels versus **41/51** for the captured Pharos view under
@@ -58,9 +75,9 @@ sharing/prior reference use, candidate physical associations and the uncertain
 extra primary learning gain over fully refreshed annotations. Finish with what
 a researcher can inspect and reuse.
 
-The [3:58 narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+The [narrated tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 and [transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) provide
-the current recorded presentation. It uses actual local-app screenshot states,
+the current recorded presentation. It uses actual browser screenshot states,
 including the saved aggregate report, with focused crops and synthetic narration.
 One separately labelled visual renders the existing prediction result tables;
 it is not app UI or a new experiment.

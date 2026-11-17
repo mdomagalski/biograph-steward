@@ -59,19 +59,56 @@ manually**. The model prioritized three citations, but all eight returned result
 remain available. Every source assertion grouped under a selected citation was
 inspected; complete technical details are available in the disclosures.
 
-In the separate **Question & graph → Traceable summary**, expanding a result
-opens its text. Choose **Show in graph** to select its evidence diagram and
-return to it. The diagram names the selected result above the graph.
+In the separate **Question & graph**, the default overview combines the
+question's returned results. The saved manual KRAS answer shows all 14 matching
+partners. Use **Graph view** or **Show in graph** on a summary result for its
+individual evidence paths. **Show all results** restores the overview.
+Expanding summary text opens its explanation without changing the selection.
 
-## 3. See what changed and what was measured
+![The manual KRAS question overview shows all 14 returned partners](docs/evaluations/question_graph_usability_20261117/images/hosted_all_14_partners.png)
+
+The question overview is one view of the underlying workspace. **Browse saved
+workspace** opens its bounded graph and complete record tables under **Inspect
+sources**. The workspace has 9,724 entities and 19,310 evidence records. Drawing
+limits keep the display readable; the tables, searches and exports retain the
+complete data.
+
+### Explore connected paths
+
+Open **Question & graph → Explore paths in this saved graph**. Start with one
+of its example buttons. These examples use the native KRAS workspace:
+
+| Start → end | Recorded relationship | Maximum connections |
+|---|---|---|
+| **KRAS → CDC42BPB** | Interaction annotation | **1** |
+| **TP53 → nucleus** | Native GO location annotation | **1** |
+| **BRAF → ARMS-mediated activation** | Pathway membership | **1** |
+
+For your own query, type a name or accession under **Find a start entity** and
+choose its exact entry. Starts are sorted with proteins first and must have
+outgoing evidence under the selected filters. **Find a reachable end entity**
+filters the endpoint suggestions separately. Leave the end open to see paths
+from the start, or select one suggested endpoint and choose **Explore saved paths**.
+
+Use **Candidates and accepted** to inspect this example's unreviewed evidence.
+**Accepted locally only** can be empty because acceptance requires a recorded
+review. The form explains that state instead of silently broadening the query.
+Reachability follows saved direction and explicitly symmetric records, with
+the displayed connection and search limits. An annotation path is recorded
+context rather than a biological mechanism. A missing path under these filters
+does not establish biological absence.
+
+## 3. Understand the results and evaluation
 
 [Open the qualified TP53 example directly](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask).
 
 Return to **Start here** and choose **Review applied graph qualifications**.
 This opens the matched retained TP53 example, which has a different source
-collection from the KRAS candidate example. Open **What changed**.
-The page heading is **Graph changes and assessment**: it explains applied
-qualifications and measured scientific results for the saved data.
+collection from the KRAS candidate example. Open **Results & evaluation**.
+The page heading is **Results and evaluation**. It explains how source records
+are qualified and how added biological context is assessed, without requiring
+familiarity with earlier app versions. Start with the selected workspace's
+decisions, then read the separate scientific comparisons.
 
 - **Applied qualification:** 16,985 input records become **16,687 retained**.
   The **298 exclusions use obsolete Gene Ontology identifiers**. Original
@@ -125,7 +162,7 @@ record does not silently contain these complete source packets.
 The shared site remains read-only. Downloading a local copy lets you record your
 own evidence decisions without changing that shared example.
 
-![Complete KRAS workspace download beside the read-only notice](docs/evaluations/editable_demo_copy_20261117/images/hosted_KRAS_editable_download.png)
+![Complete KRAS workspace download beside the read-only notice](docs/evaluations/question_graph_usability_20261117/images/hosted_editable_copy_control.png)
 
 1. Open the native KRAS example. Choose **Download an editable local copy**
    beside the read-only notice or under **Export**. The button shows the ZIP size.

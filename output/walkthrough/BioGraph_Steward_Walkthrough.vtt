@@ -101,126 +101,144 @@ its
 recorded limit.
 
 00:02:04.600 --> 00:02:06.250
+Manual question: overview, paths and results
+
+00:02:06.600 --> 00:02:10.957
+Questions open with all returned partners. Show in graph focuses
+
+00:02:10.957 --> 00:02:14.844
+one. Show all results restores the overview. Type KRAS to
+
+00:02:14.844 --> 00:02:19.268
+filter path endpoints, then choose a reachable destination or try
+
+00:02:19.268 --> 00:02:23.490
+a saved example. Open Results and evaluation for source checks
+
+00:02:23.490 --> 00:02:25.032
+and measured outcomes.
+
+00:02:26.600 --> 00:02:28.250
 Take the same graph home
 Complete native KRAS workspace; provisional local review
 
-00:02:06.600 --> 00:02:10.215
+00:02:28.600 --> 00:02:32.215
 Choose Download an editable local copy to keep the same
 
-00:02:10.215 --> 00:02:14.863
+00:02:32.215 --> 00:02:36.863
 KRAS graph, sources and recorded investigation. Extract the
 package and
 
-00:02:14.863 --> 00:02:18.478
+00:02:36.863 --> 00:02:40.478
 run its Python launcher. It opens the saved question on
 
-00:02:18.478 --> 00:02:23.320
+00:02:40.478 --> 00:02:45.320
 your computer. Under Inspect sources, choose Record evidence
 review. Enter
 
-00:02:23.320 --> 00:02:26.870
+00:02:45.320 --> 00:02:48.870
 a reviewer, decision and reason, then Save review in a
 
-00:02:26.870 --> 00:02:30.679
+00:02:48.870 --> 00:02:52.679
 new run. Your reviewed copy opens while the original graph
 
-00:02:30.679 --> 00:02:34.939
+00:02:52.679 --> 00:02:56.939
 and sources stay preserved. The shared site stays read-only. This
 
-00:02:34.939 --> 00:02:37.780
+00:02:56.939 --> 00:02:59.780
 demonstration records a provisional review.
 
-00:02:39.600 --> 00:02:41.250
+00:03:01.600 --> 00:03:03.250
 Historical partially known biological-process study
 Rendered saved report; not an agent prediction
 
-00:02:41.600 --> 00:02:45.376
+00:03:03.600 --> 00:03:07.376
 We also reused the published ProtBoost approach in a separate
 
-00:02:45.376 --> 00:02:51.100
+00:03:07.376 --> 00:03:13.100
 protein-function study. The primary task predicts additional
 biological-process functions for
 
-00:02:51.100 --> 00:02:55.120
+00:03:13.100 --> 00:03:17.120
 proteins with some functions already known. On a historical graph
 
-00:02:55.120 --> 00:02:59.566
+00:03:17.120 --> 00:03:21.566
 of twenty thousand four hundred and twelve proteins, fixed-
 ontology Fmax
 
-00:02:59.566 --> 00:03:02.550
+00:03:21.566 --> 00:03:24.550
 rose from about point one seven two to point two
 
-00:03:02.550 --> 00:03:06.691
+00:03:24.550 --> 00:03:28.691
 one zero. The paired ninety-five percent gain interval stayed
 above
 
-00:03:06.691 --> 00:03:10.832
+00:03:28.691 --> 00:03:32.832
 zero in both reference views. Annotation updates alone also
 helped.
 
-00:03:10.832 --> 00:03:14.791
+00:03:32.832 --> 00:03:36.791
 This study is separate from the agent and the ninety-nine-target
 
-00:03:14.791 --> 00:03:15.095
+00:03:36.791 --> 00:03:37.095
 app.
 
-00:03:17.900 --> 00:03:19.550
+00:03:39.900 --> 00:03:41.550
 Qualification with recoverable decisions
 
-00:03:19.900 --> 00:03:25.671
+00:03:41.900 --> 00:03:47.671
 The retained graph example adds another improvement: explicit
 identifier qualification.
 
-00:03:25.671 --> 00:03:30.195
+00:03:47.671 --> 00:03:52.195
 It excludes two hundred and ninety-eight records using obsolete
 Gene
 
-00:03:30.195 --> 00:03:35.704
+00:03:52.195 --> 00:03:57.704
 Ontology identifiers, while retaining sixteen thousand six hundred
 and eighty-seven
 
-00:03:35.704 --> 00:03:40.360
+00:03:57.704 --> 00:04:02.360
 records. The original sources, input graph and decision reasons
 remain
 
-00:03:40.360 --> 00:03:44.557
+00:04:02.360 --> 00:04:06.557
 recoverable, so a colleague can inspect or revisit each change.
 
-00:03:46.100 --> 00:03:47.750
+00:04:08.100 --> 00:04:09.750
 How to interpret these measured gains
 
-00:03:48.100 --> 00:03:53.945
+00:04:10.100 --> 00:04:15.945
 These are qualified annotation-recovery results, not whole-graph
 precision. Shared sources
 
-00:03:53.945 --> 00:03:58.955
+00:04:15.945 --> 00:04:20.955
 and prior reference use limit independence. Physical association
 is candidate
 
-00:03:58.955 --> 00:04:04.094
+00:04:20.955 --> 00:04:26.094
 context, not confirmed direct binding. Additional primary learning
 benefit over
 
-00:04:04.094 --> 00:04:07.113
+00:04:26.094 --> 00:04:29.113
 fully refreshed annotations remains uncertain.
 
-00:04:08.700 --> 00:04:10.350
+00:04:30.700 --> 00:04:32.350
 A more useful, inspectable starting point
 
-00:04:10.700 --> 00:04:14.340
+00:04:32.700 --> 00:04:36.340
 The result is a more useful starting point for research:
 
-00:04:14.340 --> 00:04:20.024
+00:04:36.340 --> 00:04:42.024
 additional qualified context, measurable source coverage, a
 source-inspection agent, and
 
-00:04:20.024 --> 00:04:24.814
+00:04:42.024 --> 00:04:46.814
 recoverable graph decisions. Start with a biological question,
 inspect the
 
-00:04:24.814 --> 00:04:28.710
+00:04:46.814 --> 00:04:50.710
 evidence behind the answer, and share the complete record so
 
-00:04:28.710 --> 00:04:31.073
+00:04:50.710 --> 00:04:53.073
 the next researcher can build on it.

@@ -147,8 +147,15 @@ preserves source distinctions, result caps and empty accepted-only views. It
 tests reusable execution within the same cohort, separately from scientific accuracy.
 The public site is a **saved-workflow demonstration**:
 fresh construction, retrieval, model calls and review edits are disabled there.
-The summary's **Show in graph** action selects and focuses an individual result.
-Expanding a result only opens its text.
+Manual questions open an overview of all returned results, with explicit drawing
+limits. The KRAS overview shows 14 partners, 15 entities and 14 cited connections.
+The summary's **Show in graph** action focuses an individual result, while
+**Show all results** restores the overview. **Browse saved workspace** opens
+the bounded workspace graph and complete source tables. Searchable start and
+reachable-end suggestions, together with three connected-path examples, make
+recorded interaction, location and pathway relationships easier to inspect.
+**Results & evaluation** introduces the qualifications and separate scientific
+comparisons. Expanding a summary result only opens its text.
 
 In an editable local workspace, **Inspect sources → Record evidence review**
 opens the reviewer, decision and reason fields. **Save review in a new run**

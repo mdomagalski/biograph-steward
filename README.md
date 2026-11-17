@@ -80,10 +80,19 @@ explains the local review steps.
 The public AWS demo is a **read-only replay** of completed agent work over two
 real-data workspaces. It supports graph exploration, source inspection and
 scientific comparisons without new model calls, source retrieval or edits.
-In a traceable summary, expand a result to read it, then choose **Show in graph**
-to focus its diagram. Reading another result does not change the selection.
-[Deployment](docs/evaluations/usability_delivery_20261117/hosted_acceptance.json) and
-[browser evidence](docs/evaluations/usability_delivery_20261117/hosted_browser.json)
+The separate manual KRAS question opens an overview of all **14 returned
+partners**: 15 entities and 14 cited connections. **Show in graph** focuses one
+summary result; **Show all results** restores the overview. **Browse saved
+workspace** opens a bounded graph and the full source tables for the workspace's
+9,724 entities and 19,310 records. These views state their drawing limits.
+Under **Explore paths in this saved graph**, type a protein name to filter the
+sorted starts, then choose a reachable endpoint. One-click examples show
+KRAS → CDC42BPB, TP53 → nucleus and BRAF → ARMS-mediated activation.
+These are recorded source relationships, with their evidence states and
+directions preserved. **Results & evaluation** explains graph qualifications
+and the separate measured assessments.
+[Deployment](docs/evaluations/question_graph_usability_20261117/hosted_acceptance.json) and
+[browser evidence](docs/evaluations/question_graph_usability_20261117/browser.json)
 record this saved-example mode.
 
 To ask a new agent question, use a local or operator installation with a complete
