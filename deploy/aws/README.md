@@ -12,6 +12,16 @@ passed; see the [deployment assessment](../../docs/evaluations/AWS_NEPTUNE_20261
 for the tested scope and remaining checks. The CPU-only Free Plan path below
 remains a separate starting option.
 
+The final public saved-data snapshot uses the existing `t3.large` host. Its
+read-only backend container has a **3 GiB memory limit and 1 CPU**. A measured
+2.08 GiB peak exceeded its earlier 2 GiB limit while opening the full saved
+graphs. Raising that container allowance used existing host RAM and preserved
+the source files, gateway, private app and Neptune configuration. This is a
+verified setting for the supplied snapshot, not a load benchmark or evidence
+that the smaller Free Plan instance can host these full profiles. See the
+[delivery receipt](../../docs/evaluations/usability_delivery_20261117/hosted_acceptance.json)
+and Docker's [memory-limit documentation](https://docs.docker.com/engine/containers/resource_constraints/).
+
 ## Start with the Free Plan
 
 The initial deployment can use the **Free Plan and signup credits** (for

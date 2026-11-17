@@ -4,17 +4,18 @@ Start with the **[hosted application](https://bi-3a117d5e2b3942678dc518fce65ab5d
 and the **[step-by-step user guide](../../../HOW_TO_USE.md)**. Open it directly,
 with no sign-in. The current app opens a verified
 Nemotron source-agent record, with four steps from question to review proposals.
-The [public HTTPS acceptance](../../evaluations/public_demo_20261117/hosted_acceptance.json)
-records the deployment without token entry. The
-[live direct-example browser check](../../evaluations/public_demo_20261117/hosted_browser_acceptance.json)
-passed the agent steps, source inspection, task navigation, graph export and
-mobile view. The tour's local capture provenance is recorded separately.
+The [public HTTPS acceptance](../../evaluations/usability_delivery_20261117/hosted_acceptance.json)
+records the current deployment without token entry. The
+[current browser check](../../evaluations/usability_delivery_20261117/hosted_browser.json)
+verifies graph selection, source inspection and public read-only review controls.
+The earlier [complete recorded-agent and mobile check](../../evaluations/public_demo_20261117/hosted_browser_acceptance.json)
+remains preserved. The tour's local capture provenance is recorded separately.
 
 ## Current project files
 
 | File | Use |
 |---|---|
-| [Narrated walkthrough](../../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | Current 3:58 captioned agent tour, using actual local-app captures and verified saved real data. |
+| [Narrated walkthrough](../../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | Captioned agent tour with actual application captures, verified saved sources and a local review saved as a new run. |
 | [Plain transcript](../../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) | Read the same explanation or use it when presenting. |
 | [Captions](../../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Load the timed captions separately when needed. Captions are also visible in the video. |
 | [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise overview, with the detailed research linked separately. |
@@ -29,7 +30,9 @@ It leads to the real public demonstration and separately documents the optional
 invented software fixture. The complete real-data snapshot is not bundled in
 the software archive. Its [current clean acceptance](../../evaluations/democratization_delivery_20261116/software_acceptance.json)
 records the guided interface, CLI/HTTP exports, recovery and saved replay.
-The [current packaging receipt](../../evaluations/final_delivery_20261117/software_access_copy.json) verifies that only the packaged README changed. The recorded model comparison and presentation retain their original source/runtime pins.
+The [current packaging receipt](../../evaluations/usability_delivery_20261117/packaging.json)
+records the updated interface and optional editable local launcher. Original
+source files, saved answers and recorded model jobs retain their exact bytes.
 The [delivery status](../../DELIVERY_STATUS_20261115.json) identifies the current
 report and artifact checksums.
 
@@ -48,6 +51,8 @@ replacement for these graphs or an additional public-site workspace. Its
 November 17 UTC capture and recorded source-agent execution are preserved
 separately. The [reused localization comparison](../../evaluations/final_delivery_20261117/generalization_localization.json)
 reports the neutral HOU result and unavailable OpenCell coverage.
+Its optional `START_EDITABLE_LOCAL.py` opens the existing local review form.
+Saving a review creates a new run and preserves the earlier one.
 
 The [source-verifier comparison](../../evaluations/SOURCE_VERIFIER_COMPARISON_20261117.md)
 preserves adverse supported-claim exclusions under a partial Evidence-input

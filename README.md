@@ -12,7 +12,7 @@ recoverable.
 directly. No sign-in, AWS account, installation or running model is needed.
 
 **[How to use it](HOW_TO_USE.md)** ·
-**[Watch the 3:58 walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)** ·
+**[Watch the narrated walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)** ·
 [Short presentation](output/presentations/BioGraph_Steward_Overview.pptx) ·
 [Project report PDF](output/pdf/BioGraph_Steward_Final_Report.pdf) ·
 [Word copy](output/docx/BioGraph_Steward_Final_Report.docx) ·
@@ -77,8 +77,10 @@ steps and files.
 The public AWS demo is a **read-only replay** of completed agent work over two
 real-data workspaces. It supports graph exploration, source inspection and
 scientific comparisons without new model calls, source retrieval or edits.
-[Deployment](docs/evaluations/public_demo_20261117/hosted_acceptance.json) and
-[browser evidence](docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json)
+In a traceable summary, expand a result to read it, then choose **Show in graph**
+to focus its diagram. Reading another result does not change the selection.
+[Deployment](docs/evaluations/usability_delivery_20261117/hosted_acceptance.json) and
+[browser evidence](docs/evaluations/usability_delivery_20261117/hosted_browser.json)
 record this saved-example mode.
 
 To ask a new agent question, use a local or operator installation with a complete
@@ -110,6 +112,13 @@ follow **OPEN_EXAMPLE.txt**, which selects the recorded APP location-agent job
 directly. Its runtime, source data and recorded job work offline with Python
 3.10+, without a running model. This separate three-protein example does not
 replace the public demo's two 99-target workspaces.
+
+To record a review in that complete example, run `python3 START_EDITABLE_LOCAL.py`
+instead of its inspect-only launch. Under **Inspect sources**, choose a claim,
+open its guide and select **Record evidence review**. Enter **Reviewer**,
+**Decision** and **Reason**, then choose **Save review in a new run**. The app
+opens your reviewed copy and links back to the unchanged earlier run. Reviewing
+saved sources needs no model. The launcher binds only to your own computer.
 
 The [code-only software ZIP](output/software/BioGraph_Steward_Software.zip)
 contains the portable app and launch instructions. The

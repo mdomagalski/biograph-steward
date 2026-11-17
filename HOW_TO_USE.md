@@ -9,7 +9,7 @@ are recorded separately from the date the app was updated.
 
 **[Open the public demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
 directly. No sign-in, AWS account, installation or running model is needed. Prefer to watch first? Use the
-[3:58 narrated walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+[narrated walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 or its [transcript](output/walkthrough/BioGraph_Steward_Walkthrough.txt).
 
 The shared site replays actual completed agent work and checks its saved sources.
@@ -58,6 +58,10 @@ For more detail, use **All returned source citations → Inspect this claim
 manually**. The model prioritized three citations, but all eight returned results
 remain available. Every source assertion grouped under a selected citation was
 inspected; complete technical details are available in the disclosures.
+
+In the separate **Question & graph → Traceable summary**, expanding a result
+opens its text. Choose **Show in graph** to select its evidence diagram and
+return to it. The diagram names the selected result above the graph.
 
 ## 3. See what changed and what was measured
 
@@ -151,6 +155,27 @@ This new three-protein Pharos capture is dated November 17 UTC. Its candidate
 source additions and unapplied review proposals remain separate from the
 original graph's qualification decisions. The [worked-example results](docs/evaluations/GENERALIZATION_EXAMPLE_20261117.md)
 explain the source versions, complete replay and unchanged comparison rules.
+
+## Record an evidence review in a local copy
+
+The shared site is read-only. The complete APP/PSEN package also includes an
+editable local launch that needs no model:
+
+1. From the extracted package folder, run `python3 START_EDITABLE_LOCAL.py`.
+   Open the local address printed in the terminal. Keep the terminal running.
+2. Under **Inspect sources**, select a claim and choose **Guide me through this
+   source**. Read the source record and its recorded conditions.
+3. Choose **Record evidence review**. Enter **Reviewer**, **Decision** and
+   **Reason and evidence reviewed**.
+4. Choose **Save review in a new run**. The app opens your reviewed copy and
+   supplies **Open the earlier run**. The earlier graph, sources and review
+   history stay unchanged. Your new run is saved inside the package's `runs` folder.
+
+For a software demonstration, use **provisional** with a reason saying that the
+claim still needs scientific review. A local review records your judgment; it
+does not create an independent biological benchmark label. Applied retained-graph
+views remain read-only. The launcher binds only to your own computer and does
+not change public-site permissions. Stop it with Ctrl+C.
 
 The [project report PDF](output/pdf/BioGraph_Steward_Final_Report.pdf)
 ([Word copy](output/docx/BioGraph_Steward_Final_Report.docx)) explains the

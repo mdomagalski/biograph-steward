@@ -50,6 +50,12 @@ the public site's two 99-target workspaces. The [worked example](evaluations/GEN
 also runs the unchanged localization comparisons with all controls and coverage
 denominators preserved.
 
+For a personal evidence review in that package, run `python3 START_EDITABLE_LOCAL.py`.
+Under **Inspect sources**, select a claim and choose **Record evidence review**.
+Enter a reviewer, decision and reason, then choose **Save review in a new run**.
+Your reviewed copy opens with a link to the unchanged earlier run. This local
+workflow needs no model and does not enable edits on the shared site.
+
 The Python core needs **Python 3.10+**. Saved replay needs no pip install, GPU or
 API key. A fresh checkout includes an explicitly invented software example.
 The real-data demonstration uses separately preserved source packets under
@@ -61,7 +67,7 @@ provides an included real-source inspection example.
 | File | Purpose |
 |---|---|
 | [Project report PDF](../output/pdf/BioGraph_Steward_Final_Report.pdf) · [Word copy](../output/docx/BioGraph_Steward_Final_Report.docx) | Scientific purpose, approach, architecture, results, scope and reusable deliverables. |
-| [Narrated walkthrough](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | A 3:58 explanation of source additions, the agent workflow, measured outcomes and recoverable decisions. |
+| [Narrated walkthrough](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | A narrated explanation of source additions, the agent workflow, measured outcomes and saving a review as a new run. |
 | [Transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and [captions](../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | The same explanation in readable and timed text. |
 | [Slides](../output/presentations/BioGraph_Steward_Overview.pptx) | A concise illustrated overview of the question-to-evidence workflow. |
 | [Software ZIP](../output/software/BioGraph_Steward_Software.zip) | Portable Python core, launch instructions and upstream notices. No source snapshots, credentials, reference labels or model weights. |
@@ -153,8 +159,8 @@ The agent's [fixed comparison](evaluations/SOURCE_AGENT_RESULTS_20261116.md)
 preserves complete deterministic query results, answers and focused graphs
 across five supported queries. The [software check](evaluations/democratization_delivery_20261116/software_acceptance.json)
 records clean Python execution, exports, recovery and saved replay. The
-[public server](evaluations/public_demo_20261117/hosted_acceptance.json),
-[browser workflow](evaluations/public_demo_20261117/hosted_browser_acceptance.json)
+[public server](evaluations/usability_delivery_20261117/hosted_acceptance.json),
+[browser workflow](evaluations/usability_delivery_20261117/hosted_browser.json)
 and [source-preservation check](evaluations/public_demo_20261117/final_operations.json)
 record deployment operation separately from scientific validation.
 [KGX/SSSOM export](STANDARD_EXPORT.md) describes supported profiles and their limits.

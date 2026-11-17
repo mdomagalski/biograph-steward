@@ -11,7 +11,7 @@ connection retains its original source and conditions.
 [public browser demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data).
 No sign-in, AWS account, graph-query language,
 GPU or model server is needed for the saved examples. The
-[3:58 narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
+[Narrated screen tour](../output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 uses actual local-app captures of verified saved real data, edited screenshot
 states and synthetic narration. It makes no new model requests. The
 [seven-slide overview](../output/presentations/BioGraph_Steward_Overview.pptx)
@@ -147,6 +147,14 @@ preserves source distinctions, result caps and empty accepted-only views. It
 tests reusable execution within the same cohort, separately from scientific accuracy.
 The public site is a **saved-workflow demonstration**:
 fresh construction, retrieval, model calls and review edits are disabled there.
+The summary's **Show in graph** action selects and focuses an individual result.
+Expanding a result only opens its text.
+
+In an editable local workspace, **Inspect sources → Record evidence review**
+opens the reviewer, decision and reason fields. **Save review in a new run**
+creates a reviewed copy and preserves the original sources and earlier run.
+The complete APP/PSEN example includes `START_EDITABLE_LOCAL.py` for this workflow.
+A saved agent proposal remains separate from a scientist's recorded decision.
 
 The [current-source agent](SOURCE_AGENT.md) uses up to three model calls:
 propose a tool plan, prioritize returned citations for complete source
@@ -181,10 +189,11 @@ CIViC clinical evidence inspection, native-source gains, the separate ProtBoost
 prediction study and the source-verifier research comparison. The linked
 research reports preserve all controls and denominators. The
 [code-only software ZIP](../output/software/BioGraph_Steward_Software.zip)
-has [clean acceptance](evaluations/democratization_delivery_20261116/software_acceptance.json).
+reuses [clean core acceptance](evaluations/democratization_delivery_20261116/software_acceptance.json)
+with [verified interface and packaging updates](evaluations/usability_delivery_20261117/packaging.json).
 The [delivery status](DELIVERY_STATUS_20261115.json) records exact software,
-deployment and artifact identities. [Public HTTPS](evaluations/public_demo_20261117/hosted_acceptance.json)
-and [browser evidence](evaluations/public_demo_20261117/hosted_browser_acceptance.json)
+deployment and artifact identities. [Public HTTPS](evaluations/usability_delivery_20261117/hosted_acceptance.json)
+and [browser evidence](evaluations/usability_delivery_20261117/hosted_browser.json)
 document the saved-demo mode. These are functional checks, separate from an
 independent usability study.
 

@@ -1,39 +1,17 @@
 {
-  "format": "biograph-steward.walkthrough-delivery.v2",
-  "title": "BioGraph Steward walkthrough",
-  "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "format": "biograph-steward.actual-screenshot-walkthrough.v3",
   "capture_mode": "local",
-  "capture_method": "Narrated edited still states from the actual local application with verified saved research data, plus one clearly labeled rendering of two unchanged scientific-report tables.",
+  "actual_application_screenshots": true,
+  "actual_hosted_app_screenshots": false,
   "continuous_screen_recording": false,
-  "edited_still_states": 19,
-  "unique_source_images": 12,
-  "all_visuals_are_app_UI": false,
-  "actual_app_frames_are_not_reconstructed": true,
-  "synthetic_voice": "Installed macOS Samantha; no external speech service",
+  "edited_still_capture_disclosure_in_video_and_transcript": true,
+  "only_image_crop_scale_and_letterbox": true,
   "login_token_account_or_raw_JSON_shown": false,
-  "new_model_calls_for_capture": 0,
-  "fresh_scientific_source_retrievals_for_capture": 0,
-  "new_statistics": false,
-  "graph_or_review_changes_for_capture": 0,
-  "depicted_actual_recorded_model_job": {
-    "job_id": "source_agent_eval_dc7b597201da_S01",
-    "recorded_model_calls": 3,
-    "separate_frozen_development_comparison_model_calls": 13,
-    "capture_model_calls": 0,
-    "selected_citation": "E002"
-  },
-  "encoded_duration_seconds": 237.7,
-  "timeline_seconds": 237.6,
-  "video": {
-    "codec": "H.264",
-    "width": 1280,
-    "height": 816
-  },
-  "audio": {
-    "codec": "AAC",
-    "mean_volume_db": -16.4,
-    "peak_volume_db": -1.3
-  },
+  "depicted_recorded_agent_job_id": "source_agent_eval_dc7b597201da_S01",
+  "depicted_job_is_verified_prior_actual_model_execution": true,
+  "synthetic_voice": "Installed macOS Samantha",
+  "external_speech_service": false,
+  "timeline_seconds": 272.6,
   "chapters": [
     {
       "id": "start",
@@ -43,114 +21,64 @@
     },
     {
       "id": "added_pair",
-      "title": "One concrete addition: KRAS–CDC42BPB",
+      "title": "One concrete addition: KRAS\u2013CDC42BPB",
       "start_seconds": 30.1,
-      "end_seconds": 60.4
+      "end_seconds": 60.400000000000006
     },
     {
       "id": "measured",
       "title": "More published location labels recovered",
-      "start_seconds": 60.4,
+      "start_seconds": 60.400000000000006,
       "end_seconds": 89.4
     },
     {
       "id": "agent",
       "title": "The agent turns a question into inspectable evidence",
       "start_seconds": 89.4,
-      "end_seconds": 124.6
+      "end_seconds": 124.60000000000001
+    },
+    {
+      "id": "edit_copy",
+      "title": "Explore an answer and save your own review",
+      "start_seconds": 124.60000000000001,
+      "end_seconds": 159.60000000000002
     },
     {
       "id": "prediction",
       "title": "A separate, measured protein-function prediction gain",
-      "start_seconds": 124.6,
-      "end_seconds": 162.9
+      "start_seconds": 159.60000000000002,
+      "end_seconds": 197.90000000000003
     },
     {
       "id": "review",
       "title": "Qualification with recoverable decisions",
-      "start_seconds": 162.9,
-      "end_seconds": 191.1
+      "start_seconds": 197.90000000000003,
+      "end_seconds": 226.10000000000002
     },
     {
       "id": "interpretation",
       "title": "How to interpret these measured gains",
-      "start_seconds": 191.1,
-      "end_seconds": 213.7
+      "start_seconds": 226.10000000000002,
+      "end_seconds": 248.70000000000002
     },
     {
       "id": "export",
       "title": "A more useful, inspectable starting point",
-      "start_seconds": 213.7,
-      "end_seconds": 237.6
+      "start_seconds": 248.70000000000002,
+      "end_seconds": 272.6
     }
   ],
-  "story": {
-    "value_first": true,
-    "concrete_added_pair": "KRAS–CDC42BPB",
-    "pairs_absent_from_captured_Pharos": 87,
-    "protein_location_concepts_absent_from_captured_Pharos": 68,
-    "bounded_source_view_recovery": [
-      "HOU41/51→44/51 under the same ontology-qualified mapping",
-      "Previously used OpenCell30/40→31/40"
-    ],
-    "all_five_HOU_source_rows_visible_including_coarse_control": true,
-    "separate_historical_prediction_study": {
-      "historical_source_graph_proteins": 20412,
-      "sealed_target_forecasts": 3300,
-      "fixed_ontology_primary_Fmax": {
-        "retained_LocalPlus": 0.17155,
-        "current_annotation_LocalPlus": 0.18277,
-        "context_model": 0.21009
-      },
-      "context_minus_retained": 0.03854,
-      "paired_95_percent_interval": [
-        0.00803,
-        0.06914
-      ],
-      "attributed_to_current_agent": false
-    },
-    "spoken_interpretation_boundaries_grouped_in_one_brief_scene": true,
-    "positive_review_and_reuse_closing": true
-  },
-  "checks": {
-    "full_video_decode": true,
-    "audio_present_without_clipping": true,
-    "outside_app_caption_band": true,
-    "canonical_gene_spellings_in_captions_and_transcript": true,
-    "all_19_representative_states_visually_reviewed": true,
-    "independent_root_visual_review": true,
-    "visible_source_addition_and_baseline_absence": true,
-    "visible_HOU_and_OpenCell_measurements": true,
-    "separate_prediction_table_keeps_three_arms_both_views_and_all_paired_intervals": true,
-    "no_missing_content_or_encoder_grey_band": true
-  },
-  "source_capture_proofs": {
-    "original_local_app_capture_receipt_sha256": "38d8b1be5b79f90ddbe2d6d914387a2bfab1d87eedf0f941570afcc754c246f4",
-    "original_saved_assessment_capture_receipt_sha256": "651b90c30a45234f6d32a881749a688034aa9e6d17e3ef67999f764f796811c7",
-    "E002_owner_reviewed_capture_receipt_sha256": "35cdaf101be94a9e0edd48c6a7e43e9fa8705ea1ccd1dc13ea910d7f58bdbd9a",
-    "rendered_report_capture_receipt_sha256": "ed1fa7c73adc07a0b49ac78fc1db46a4d557b756e344ae1fbbacbad0c92c8148",
-    "source_config_sha256": "1a44fbcd20153b742988cb5b73a363c1c7916046ec66acc0cf9b3faa35d5e8dd"
-  },
-  "demonstrated_additions_receipt": {
-    "path": "docs/evaluations/source_agent_20261116/demonstrated_additions.json",
-    "sha256": "650819aad10b8d567839c9e32b82496f5c8faa6e39d84c968c8621c469c11ee6"
-  },
-  "rendered_scientific_report": {
-    "classification": "rendered_existing_scientific_report_tables_not_app_UI",
-    "source_path": "docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md",
-    "source_sha256": "ddce310f6681dbd412f3871554a5c407311c0cbbefbf1039dfb1234aeda47a43",
-    "verbatim_table_count": 2,
-    "rendered_image_sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
-    "new_statistics": false
-  },
+  "additional_capture_receipt_sha256": [
+    "651b90c30a45234f6d32a881749a688034aa9e6d17e3ef67999f764f796811c7",
+    "35cdaf101be94a9e0edd48c6a7e43e9fa8705ea1ccd1dc13ea910d7f58bdbd9a"
+  ],
   "image_sources": [
     {
       "scene": "start",
       "filename": "current_local_agent_start.png",
       "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
       "seconds": 8,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
     },
     {
       "scene": "start",
@@ -162,40 +90,35 @@
         "y": 360,
         "width": 1320,
         "height": 570
-      },
-      "classification": "actual_local_app_UI"
+      }
     },
     {
       "scene": "added_pair",
       "filename": "E002_actual_evidence_graph.png",
       "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
       "seconds": 4,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
     },
     {
       "scene": "added_pair",
       "filename": "E002_actual_pair_coverage_identity.png",
       "sha256": "43257b8064148d637c264e18158259f63fb98e6506bb9b6a0991503888203913",
       "seconds": 11,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
     },
     {
       "scene": "added_pair",
       "filename": "E002_actual_native_STRING_source.png",
       "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
       "seconds": 10,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
     },
     {
       "scene": "added_pair",
       "filename": "E002_actual_review_proposal.png",
       "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
       "seconds": 5.3,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
     },
     {
       "scene": "measured",
@@ -207,8 +130,7 @@
         "y": 0,
         "width": 1280,
         "height": 400
-      },
-      "classification": "actual_saved_app_assessment"
+      }
     },
     {
       "scene": "measured",
@@ -220,48 +142,90 @@
         "y": 0,
         "width": 1280,
         "height": 286
-      },
-      "classification": "actual_saved_app_assessment"
+      }
     },
     {
       "scene": "agent",
       "filename": "current_local_agent_plan.png",
       "sha256": "1461dc45b541f25f840c433ccaf2be43b0367f17b8a3b7b3d3726ac53ab83646",
       "seconds": 10,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
     },
     {
       "scene": "agent",
       "filename": "E002_actual_evidence_graph.png",
       "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
       "seconds": 9,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
     },
     {
       "scene": "agent",
       "filename": "E002_actual_review_proposal.png",
       "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
       "seconds": 16.2,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "01_selected_graph.png",
+      "sha256": "299c184109de7a50a775f0b9e85075de788781b107f649e91108ce3b97cbcf03",
+      "seconds": 9,
+      "crop": {
+        "x": 110,
+        "y": 126,
+        "width": 1340,
+        "height": 756
+      }
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "02_record_review.png",
+      "sha256": "8871b92629f17894aad962e2701fcf6d614e321a3045e097964dd353091f4f4a",
+      "seconds": 8,
+      "crop": {
+        "x": 120,
+        "y": 60,
+        "width": 1320,
+        "height": 580
+      }
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "03_review_form.png",
+      "sha256": "dfc94860d278c7f1f5928691aa218419101c049c5ce1ba6434e49f3dfe8391de",
+      "seconds": 10,
+      "crop": {
+        "x": 884,
+        "y": 150,
+        "width": 560,
+        "height": 480
+      }
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "04_new_run_confirmation.png",
+      "sha256": "3f9a7c5fbb22be787c969ed1a1ea60efebb875c8106dd8ef7408431b6ca6aed2",
+      "seconds": 8,
+      "crop": {
+        "x": 130,
+        "y": 285,
+        "width": 1310,
+        "height": 560
+      }
     },
     {
       "scene": "prediction",
       "filename": "prediction_saved_report.png",
       "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
       "seconds": 38.3,
-      "crop": null,
-      "classification": "rendered_unchanged_scientific_report_tables_not_app_UI"
+      "crop": null
     },
     {
       "scene": "review",
       "filename": "current_local_applied_qualification.png",
       "sha256": "eead630ee0d754f7ac3191ddd029522b64b2bf74a37417cb7795ca225741956e",
       "seconds": 28.2,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
     },
     {
       "scene": "interpretation",
@@ -273,24 +237,21 @@
         "y": 0,
         "width": 1280,
         "height": 400
-      },
-      "classification": "actual_saved_app_assessment"
+      }
     },
     {
       "scene": "interpretation",
       "filename": "E002_actual_native_STRING_source.png",
       "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
       "seconds": 6,
-      "crop": null,
-      "classification": "actual_local_app_UI"
+      "crop": null
     },
     {
       "scene": "interpretation",
       "filename": "prediction_saved_report.png",
       "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
       "seconds": 6.6,
-      "crop": null,
-      "classification": "rendered_unchanged_scientific_report_tables_not_app_UI"
+      "crop": null
     },
     {
       "scene": "export",
@@ -302,8 +263,7 @@
         "y": 250,
         "width": 1320,
         "height": 690
-      },
-      "classification": "actual_local_app_UI"
+      }
     },
     {
       "scene": "export",
@@ -315,8 +275,7 @@
         "y": 310,
         "width": 1320,
         "height": 605
-      },
-      "classification": "actual_local_app_UI"
+      }
     },
     {
       "scene": "export",
@@ -328,28 +287,226 @@
         "y": 360,
         "width": 1320,
         "height": 570
-      },
+      }
+    }
+  ],
+  "caption_band_outside_app_frame": true,
+  "captions_and_transcript_use_canonical_gene_spellings": true,
+  "full_video_decode_passed": true,
+  "visual_review_pending": true,
+  "files": {
+    "BioGraph_Steward_Walkthrough.mp4": {
+      "bytes": 7609388,
+      "sha256": "8eebab19f2aac21a50e8f4538636fb1ec992f44c2f0633126d250ec7c34bd5c6"
+    },
+    "BioGraph_Steward_Walkthrough.vtt": {
+      "bytes": 6143,
+      "sha256": "d23ad750c8ebf24c4928c8cc7ca12774a4a57c2cf594d2c1b688fb6d41210e3d"
+    },
+    "BioGraph_Steward_Walkthrough.srt": {
+      "bytes": 6315,
+      "sha256": "7f5170707fea2d507510c19a0cd0f1d078f55819d722e61367e9b1a70f1aa3ee"
+    },
+    "BioGraph_Steward_Walkthrough.txt": {
+      "bytes": 6261,
+      "sha256": "f0479ee3834c347b8379a703b78779848c3e534f3a32db188f8b6ae81cf12bf0"
+    }
+  },
+  "source_config_sha256": "9c19b3184dd61be631b6a83aa060b043b254c9a4443ce2ec131227000cd3247f",
+  "actual_app_frames_are_not_reconstructed": true,
+  "all_visuals_are_app_UI": false,
+  "contains_separately_labeled_scientific_report_tables": true,
+  "scientific_report_visuals": [
+    {
+      "capture_receipt": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_table_capture_receipt.json",
+      "capture_receipt_sha256": "ed1fa7c73adc07a0b49ac78fc1db46a4d557b756e344ae1fbbacbad0c92c8148",
+      "source_provenance": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report_provenance.json",
+      "source_provenance_sha256": "ec1edd1f5eb556442a57a6fa113e83c601a4ee85f6ae7975635381e67b841275",
+      "classification": "rendered_unchanged_scientific_report_tables_not_app_UI"
+    }
+  ],
+  "demonstrated_additions_receipt": {
+    "path": "/Users/42573/biograph-steward-pharos/docs/evaluations/source_agent_20261116/demonstrated_additions.json",
+    "sha256": "650819aad10b8d567839c9e32b82496f5c8faa6e39d84c968c8621c469c11ee6"
+  },
+  "mixed_capture_runtime_revisions": true,
+  "capture_provenance": {
+    "original_eight_scenes": {
+      "source_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+      "receipt": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/receipt.json",
+      "receipt_sha256": "38d8b1be5b79f90ddbe2d6d914387a2bfab1d87eedf0f941570afcc754c246f4",
+      "review_edits": 0
+    },
+    "edit_copy_scene": {
+      "receipt": "/Users/42573/biograph-steward-pharos/runs/usability_delivery_20261117/media/usability_capture_receipt.json",
+      "receipt_sha256": "ab88e7c801c61c6c57b0a3803a04aba658cc00afe4d3a553765859e328a5d974",
+      "source_revision": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+      "isolated_local_copy": true,
+      "new_saved_runs": 1,
+      "review_decision": "provisional"
+    }
+  },
+  "capture_note": "Actual local application captures on saved research data. Original eight scenes were recorded November 16. The added usability scene records one provisional review in a new run in an isolated local copy on November 17; original workspaces and sources are unchanged. No model inference or source retrieval occurs during capture. The public demo is read-only.",
+  "new_model_calls": 0,
+  "new_scientific_source_retrievals": 0,
+  "review_demo_new_saved_runs": 1,
+  "review_demo_decision": "provisional",
+  "review_demo_is_biological_acceptance": false,
+  "original_workspaces_unchanged": true,
+  "original_source_files_unchanged": true,
+  "public_demo_read_only": true,
+  "personal_review_requires_editing_enabled_workspace": true,
+  "primary_prediction_scope": "Partially known biological-process functions; fixed-ontology micro-Fmax is a benchmark score, not graph-assertion accuracy.",
+  "raw_input_frame_count": 23,
+  "per_state_classification": [
+    {
+      "scene": "start",
+      "filename": "current_local_agent_start.png",
+      "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "start",
+      "filename": "current_local_agent_start.png",
+      "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "added_pair",
+      "filename": "E002_actual_evidence_graph.png",
+      "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "added_pair",
+      "filename": "E002_actual_pair_coverage_identity.png",
+      "sha256": "43257b8064148d637c264e18158259f63fb98e6506bb9b6a0991503888203913",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "added_pair",
+      "filename": "E002_actual_native_STRING_source.png",
+      "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "added_pair",
+      "filename": "E002_actual_review_proposal.png",
+      "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "measured",
+      "filename": "direct_location_reference.png",
+      "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
+      "classification": "actual_saved_app_assessment"
+    },
+    {
+      "scene": "measured",
+      "filename": "direct_opencell_reference.png",
+      "sha256": "ae90d99ea6df72d4474181d80362b78631e1c72cb2ecdf4c6b6c3c78c9e4b334",
+      "classification": "actual_saved_app_assessment"
+    },
+    {
+      "scene": "agent",
+      "filename": "current_local_agent_plan.png",
+      "sha256": "1461dc45b541f25f840c433ccaf2be43b0367f17b8a3b7b3d3726ac53ab83646",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "agent",
+      "filename": "E002_actual_evidence_graph.png",
+      "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "agent",
+      "filename": "E002_actual_review_proposal.png",
+      "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "01_selected_graph.png",
+      "sha256": "299c184109de7a50a775f0b9e85075de788781b107f649e91108ce3b97cbcf03",
+      "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "02_record_review.png",
+      "sha256": "8871b92629f17894aad962e2701fcf6d614e321a3045e097964dd353091f4f4a",
+      "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "03_review_form.png",
+      "sha256": "dfc94860d278c7f1f5928691aa218419101c049c5ce1ba6434e49f3dfe8391de",
+      "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "04_new_run_confirmation.png",
+      "sha256": "3f9a7c5fbb22be787c969ed1a1ea60efebb875c8106dd8ef7408431b6ca6aed2",
+      "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+    },
+    {
+      "scene": "prediction",
+      "filename": "prediction_saved_report.png",
+      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+      "classification": "rendered_unchanged_scientific_report_tables_not_app_UI"
+    },
+    {
+      "scene": "review",
+      "filename": "current_local_applied_qualification.png",
+      "sha256": "eead630ee0d754f7ac3191ddd029522b64b2bf74a37417cb7795ca225741956e",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "interpretation",
+      "filename": "direct_location_reference.png",
+      "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
+      "classification": "actual_saved_app_assessment"
+    },
+    {
+      "scene": "interpretation",
+      "filename": "E002_actual_native_STRING_source.png",
+      "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "interpretation",
+      "filename": "prediction_saved_report.png",
+      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+      "classification": "rendered_unchanged_scientific_report_tables_not_app_UI"
+    },
+    {
+      "scene": "export",
+      "filename": "current_local_agent_record_download.png",
+      "sha256": "ba201b0b67e00c6f9c63e909774db7806d3f6231593f5d875e92166eaf7c2c14",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "export",
+      "filename": "current_local_retained_export.png",
+      "sha256": "d08adcab4374cd005c29ec61add768a3781aea5a45c766887e0cb7d12ab6de3f",
+      "classification": "actual_local_app_UI"
+    },
+    {
+      "scene": "export",
+      "filename": "current_local_agent_start.png",
+      "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
       "classification": "actual_local_app_UI"
     }
   ],
-  "files": {
-    "BioGraph_Steward_Walkthrough.mp4": {
-      "bytes": 6744181,
-      "sha256": "8ae3a27059bd74e797ead9fa2796cbfbdee396137cf08edc7306fdfeff3adfed"
-    },
-    "BioGraph_Steward_Walkthrough.txt": {
-      "bytes": 5272,
-      "sha256": "2c3509228c4968ca54d2d6a83fc6fb98a9d5da8e8a0b018f9d553140535c5e3f"
-    },
-    "BioGraph_Steward_Walkthrough.vtt": {
-      "bytes": 5393,
-      "sha256": "bb9160c572d62b4df0f3c817aaa7cf70d10c6462309dc2ef33acce6b4c61a30d"
-    },
-    "BioGraph_Steward_Walkthrough.srt": {
-      "bytes": 5541,
-      "sha256": "e45a3333e7591176674fd02b20a3bfa73017b30d5d50b8c06eff4ceaf5d24a77"
-    }
-  },
-  "hosted_deployment_acceptance_has_separate_receipt": true,
-  "previous_canonical_media_preserved_in_git_commit": "3e086d387563e24f027d3b8bf33c601515a1aea2"
+  "interpretation_boundaries_consolidated_in_one_brief_scene": true,
+  "value_first_story": true,
+  "canonical_unchanged": false,
+  "canonical_preservation_receipt": "/Users/42573/biograph-steward-pharos/runs/usability_delivery_20261117/media/prior_canonical_8ae3/preservation_receipt.json",
+  "visual_and_audio_review_pending": false,
+  "canonical_promoted": true,
+  "root_visually_inspected_all_four_new_UI_states_and_two_prediction_states": true,
+  "audio_and_video_decode_checks_passed": true,
+  "narration_and_caption_text_reviewed_for_accuracy": true,
+  "human_listening_review_performed": false,
+  "quality_review_scope": "ROOT visual and narration/caption-text review; automated full audiovisual decode, codec, timing and audio-level checks. No human listening study."
 }

@@ -5,7 +5,7 @@ Choose the route that matches what you want to do.
 | I want to… | Start here |
 |---|---|
 | **Use the app and inspect the real examples** | [How to use BioGraph Steward](HOW_TO_USE.md), the single user walkthrough. It links the public browser demo and follows an actual added connection. |
-| **Watch the result first** | [3:58 narrated walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4) · [transcript](output/walkthrough/BioGraph_Steward_Walkthrough.txt) · [short presentation](output/presentations/BioGraph_Steward_Overview.pptx). |
+| **Watch the result first** | [Narrated walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4) · [transcript](output/walkthrough/BioGraph_Steward_Walkthrough.txt) · [short presentation](output/presentations/BioGraph_Steward_Overview.pptx). |
 | **Run the software on my computer** | The local setup below. Python 3.10+ is enough. No GPU, API key or pip install is needed for saved replay. |
 | **Open a complete real dataset offline** | The separately supplied `BioGraph_Steward_APP_PSEN_Example.zip`. Its **OPEN_EXAMPLE.txt** opens the actual recorded APP location job. See the [worked example](docs/evaluations/GENERALIZATION_EXAMPLE_20261117.md). |
 | **Run new agent questions** | [Source-agent operator guide](docs/SOURCE_AGENT.md#operator-cli). Supply an authorized source workspace and configure a live model endpoint. |

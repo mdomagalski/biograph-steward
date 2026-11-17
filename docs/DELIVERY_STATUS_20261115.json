@@ -1,112 +1,40 @@
 {
-  "AWS_graph_change_scope": "Approved two-instance Neptune resize and separate public saved-demo backend/gateway. Original application, graph, sources, decisions and operator environment unchanged. No new VM, gateway service or ALB.",
+  "AWS_graph_change_scope": "Existing two-T4g Neptune mirror and read-only public snapshot retained. Public backend receives three UI file updates and a2\u21923GiB memory cap on its existing EC2 host. Original private application, graph, sources, decisions, environment and gateway remain unchanged. No new cloud resources.",
   "authorized_AWS_interpretation_update_complete": true,
   "browser_visual_check": {
-    "format": "biograph-steward.public-demo-hosted-browser-acceptance.v1",
-    "status": "direct_featured_workflow_passed_with_prior_navigation_transport_failure_preserved",
+    "format": "biograph-steward.review-workflow-hosted-browser.v1",
     "passed": true,
-    "checked_at_UTC": "2026-11-17T02:55:19.368390+00:00",
-    "scope": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
-    "primary_demo_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
-    "application_runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
-    "gateway_config_sha256": "19a9f9948328dab7e4d8b450759b52b164479fa5b88b0cd281080505ab009a83",
-    "gateway_image_config_sha256": "6686bc0c8a700785afa5c8bfae949badf9ec57a3ed6f4076085867e37df1fdc7",
-    "direct_featured_workflow_passed": true,
-    "normal_TLS_verification": true,
-    "Chrome_sandbox_enabled": true,
-    "fresh_isolated_context": true,
-    "token_entry_required": false,
-    "real_credentials_or_cookies_supplied": false,
-    "session_cookies_created": false,
-    "browser_new_model_calls": 0,
-    "new_source_retrievals": 0,
-    "graph_or_review_edits": 0,
-    "recorded_S01_model_calls": 3,
-    "operator_browser_check_assertions": 48,
-    "assertions_are_independent_users_or_cases": false,
-    "direct_check_HTTP_JS_or_transport_errors": 0,
-    "direct_check_elapsed_seconds": 128.325,
-    "features_checked": [
-      "Actual recorded KRAS question and bounded plan",
-      "Eight of fourteen recorded results and source graph",
-      "Inspected E002 STRING12.5 physical association score203",
-      "Citation-bound proposal-only review actions",
-      "Actual production HTTPS source-inspection POST",
-      "Five task tabs and existing measured assessments",
-      "Displayed graph JSON export with write/bulk controls hidden",
-      "390px mobile navigation",
-      "No token form, sign-out or session cookies"
-    ],
-    "prior_bare_root_attempt": {
-      "passed": false,
-      "error": "net::ERR_NETWORK_CHANGED",
-      "observed_after_automatic_featured_navigation": true,
-      "server_HTTP_failure_established": false,
-      "root_navigation_cause_resolved": false,
-      "original_failure_preserved": true,
-      "proof": {
-        "path": "runs/public_demo_20261117/browser_https/receipt.json",
-        "bytes": 2717,
-        "sha256": "4b9518ceb2a4b0ce948d68f5db491dd41d55d397a7303686b91487e8f2b10203"
-      }
-    },
-    "no_OS_proxy_TLS_or_browser_security_changes": true,
-    "no_additional_browser_retries_planned": true,
-    "owned_browser_closed": true,
-    "direct_proof": {
-      "path": "runs/public_demo_20261117/browser_https_direct/receipt.json",
-      "bytes": 8349,
-      "sha256": "8ae9a44f0e0d3daf49127de8fe2ee52735ecfd44d693a2f4b7067a92e839885e"
-    },
+    "checked_at_UTC": "2026-11-17T14:22:09.107542+00:00",
+    "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+    "actual_Chrome_browser": true,
+    "normal_HTTPS_without_security_bypass": true,
+    "token_entry_or_credential_submission": false,
+    "source_workspace": "native_evidence_workspace_20261115",
+    "saved_question": "native_physical_KRAS_question_v3_20261115",
+    "reading_CDC42BPB_summary_preserved_AKT1_diagram": true,
+    "Show_in_graph_selected_CDC42BPB_and_focused_diagram": true,
+    "source_inspection_completed_HTTP_200": true,
+    "public_Record_evidence_review_control_disabled": true,
+    "editable_local_copy_instructions_visible": true,
+    "new_model_calls": 0,
+    "fresh_source_retrieval": 0,
+    "public_graph_or_review_edits": 0,
+    "new_independent_usability_study_claimed": false,
     "frames": [
       {
-        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_start.png",
-        "bytes": 188120,
-        "sha256": "2ed76771b0c16cf0c949bcb65161b5a410ad719bcee1db574a686b1359874652"
+        "file": "runs/final_usability_20261117/hosted_browser/public_selected_graph.png",
+        "bytes": 108663,
+        "sha256": "8a0a8091759a4b6c137cce21ec0d737d6ec6ee5518ce8d6a944f8853deb71463"
       },
       {
-        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_agent_graph.png",
-        "bytes": 35824,
-        "sha256": "0c24ff7907bcb233eca035b40bee7d9c12e9fbfda24ba9efdc5ae719381bf08f"
-      },
-      {
-        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_E002_source.png",
-        "bytes": 130902,
-        "sha256": "183f88fbd39a4e5d72937d8ddf2fc4595fc29ec168b3aa9f801cc732904cd90e"
-      },
-      {
-        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_proposals.png",
-        "bytes": 151653,
-        "sha256": "1356a4f11fb19a61b1d0bd4c60c2d63159f9e391a8f10190db343b96a4390862"
-      },
-      {
-        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_source_guide.png",
-        "bytes": 272640,
-        "sha256": "3381bc92d0a966746318a81a43ef8bafef8292a50e2e39aed6c40a883e91c82a"
-      },
-      {
-        "path": "runs/public_demo_20261117/browser_https_direct/public_WhatChanged.png",
-        "bytes": 228236,
-        "sha256": "dbbdc09d0b099e2d8a0dca01e16139c8944f528d81ca408b59c108fb7383b29b"
-      },
-      {
-        "path": "runs/public_demo_20261117/browser_https_direct/public_export.png",
-        "bytes": 115527,
-        "sha256": "4263b971b0c9e8b45c144ce667a2a9e03aa2a9e860f33717e91d2b9c8771d988"
-      },
-      {
-        "path": "runs/public_demo_20261117/browser_https_direct/public_export_mobile.png",
-        "bytes": 66272,
-        "sha256": "fd1e2a7c14a840d7299d60a3d9274076c62aa47e76ba235ac613cfaafd7a5438"
-      },
-      {
-        "path": "runs/public_demo_20261117/browser_https_direct/public_recorded_agent_mobile.png",
-        "bytes": 72561,
-        "sha256": "742251253f0cdbd0a67ec99b518ce904c8a2d6d2daa357d9506c933028cc7ff0"
+        "file": "runs/final_usability_20261117/hosted_browser/public_read_only_review.png",
+        "bytes": 96235,
+        "sha256": "9be9b6f9a4f4c5db1a2fb2e9223118aa24be721472e968a3fdfd1a9d61bb0760"
       }
     ],
-    "receipt": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
-    "root_independent_visual_review_of_actual_start_source_and_mobile_frames_passed": true
+    "capacity_fix": "Existing public backend2GiB\u21923GiB; measured peak2.080GiB, no new VM/database/gateway/permissions.",
+    "private_service_updated": false,
+    "earlier_local_review_proof": "UI_checks.json"
   },
   "closing_delivery_checklist": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
@@ -114,7 +42,7 @@
   "format": "biograph-steward.delivery-status.v1",
   "github_review_delivery": {
     "branch": "codex/contextual-gain-delivery",
-    "current_runtime_source_revision": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "current_runtime_source_revision": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
     "private_repository": true,
     "main_modified": false,
     "main_commit_unchanged": "586ec35d33e9429dde91057c4130542988a7ca02",
@@ -133,7 +61,8 @@
       "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
       "output/software/BioGraph_Steward_Software.zip",
       "output/research/BioGraph_Steward_Source_Verifier_Code.zip"
-    ]
+    ],
+    "current_runtime_source_scope": "Updated code-only and APP/PSEN local packages; separate public-backend activation receipt records hosted state. Private operator service remains at its previously verified revision."
   },
   "hosted_review": {
     "authenticated_acceptance_receipt": {
@@ -876,16 +805,16 @@
     "final_public_repository_handoff_completed_by_this_audit": false,
     "latest_indexed_software_ZIP": {
       "path": "output/software/BioGraph_Steward_Software.zip",
-      "bytes": 727786,
-      "sha256": "d1fa1f6638169a9dbe7ccabf11a85b026be8f8b8e5ddd8c8451b20487890e527"
+      "bytes": 1072487,
+      "sha256": "7b9791572979266bfebcaeb7ecbb0240db8d6634ae16586ae0773a7634c30ee5"
     },
-    "latest_indexed_software_ZIP_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "latest_indexed_software_ZIP_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
     "latest_indexed_software_acceptance": {
-      "path": "docs/evaluations/final_delivery_20261117/software_access_copy.json",
-      "bytes": 697,
-      "sha256": "484700291012b56c85444908d99dc6580678b22c2a716f6fc0059bd6adcedf81"
+      "path": "docs/evaluations/usability_delivery_20261117/packaging.json",
+      "bytes": 1247,
+      "sha256": "8be7ba6cc0dc77b0e3e49b31a91573cf79bd04f348ea56c80564e608499f2195"
     },
-    "latest_indexed_software_scope": "Previously tested application core, with README_DEMO.md updated for current direct public access and instructions; other132members byte-identical. No new executable runtime claim.",
+    "latest_indexed_software_scope": "Committed UI-only runtime update; core Python backends, source tools and controller unchanged. Existing clean core acceptance reused with new UI/public-mode checks and real-source reviewed-copy replay.",
     "native_location_source_profile": {
       "AWS_updated": false,
       "ND_root_no_data_excluded": true,
@@ -1262,7 +1191,7 @@
     "capture_method": "Narrated edited still states from the actual local application with verified saved research data, plus one clearly labeled rendering of two unchanged scientific-report tables.",
     "continuous_screen_recording": false,
     "value_first_story": true,
-    "demonstrated_citation": "E002: KRAS–CDC42BPB",
+    "demonstrated_citation": "E002: KRAS\u2013CDC42BPB",
     "demonstrated_source_additions": {
       "path": "docs/evaluations/source_agent_20261116/demonstrated_additions.json",
       "bytes": 5853,
@@ -1277,7 +1206,7 @@
       },
       {
         "id": "added_pair",
-        "title": "One concrete addition: KRAS–CDC42BPB",
+        "title": "One concrete addition: KRAS\u2013CDC42BPB",
         "start_seconds": 30.1,
         "end_seconds": 60.4
       },
@@ -1876,88 +1805,48 @@
     "receipt": "docs/evaluations/source_agent_20261116/hosted_browser_acceptance.json"
   },
   "current_delivery_pass": {
-    "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
-    "runtime_and_restart_acceptance_passed": true,
-    "explicit_hosted_browser_checks_passed": 48,
-    "source_and_review_bytes_preserved": true,
+    "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+    "public_runtime_and_restart_acceptance_passed": true,
+    "actual_hosted_browser_checks_passed": true,
+    "source_and_production_review_bytes_preserved": true,
+    "public_only_memory_allowance_increased_on_existing_host": true,
     "new_model_or_source_retrieval_calls": 0,
-    "primary_graph_handoff_prepared": true,
-    "private_Gold_worker_and_isolated_candidate_stopped": true,
-    "owned_browser_closed": true,
     "canonical_user_guide": "HOW_TO_USE.md",
-    "loading_observation": {
-      "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
-      "bytes": 1692,
-      "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+    "latest_UI_proof": {
+      "path": "docs/evaluations/usability_delivery_20261117/UI_checks.json",
+      "bytes": 1223,
+      "sha256": "c0ef79c1169d43f8fc69885de579a58f7ccaf2de8d04864031b2e549ee309fe5"
     },
-    "code_only_software_acceptance": {
-      "path": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
-      "bytes": 2976,
-      "sha256": "9e8975a6f441e7b7e32db01905e5f9d35417d16c9581e6d4f2d7f8c242941097"
+    "latest_hosted_proof": {
+      "path": "docs/evaluations/usability_delivery_20261117/hosted_acceptance.json",
+      "bytes": 2193,
+      "sha256": "54d87cdd3cc09fa11bf18a3a0f7c167e24d4eb5fa572e2d015a0e11c34be2ff5"
     },
-    "presentation_and_media_unchanged": true,
-    "final_publication_and_submission_performed": false,
-    "browser_feature_checks_passed": true,
-    "browser_validation_complete": true,
-    "browser_qualification": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
+    "latest_browser_proof": {
+      "path": "docs/evaluations/usability_delivery_20261117/hosted_browser.json",
+      "bytes": 1528,
+      "sha256": "e80fc800dace71f50fd09f4a8f03528b8ff69e7f78f6879d32f2be15586f18f3"
+    },
     "final_report": {
-      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12269,
-      "sha256": "ab1fc81c7bbd3f054eecdc1d987130575a01458587fcd908802d296f276abc58"
+      "path": "docs/evaluations/usability_delivery_20261117/report.json",
+      "bytes": 881,
+      "sha256": "b33d7996c6490b0cbd7e1812739d212052479a395bac7a43299c8c08b1a31d30"
     },
-    "final_UI_validation": {
-      "path": "docs/evaluations/democratization_delivery_20261116/UI_validation.json",
-      "bytes": 2293,
-      "sha256": "3a60ae1be55199ec4c263f646efaea8fe3ca1868ba684f4779940bce022b4cd6"
+    "media": {
+      "path": "docs/evaluations/usability_delivery_20261117/media.json",
+      "bytes": 1411,
+      "sha256": "73326d08a8e38128afd9866e17795c8b7ff5888d29501e9e624f0c9f358515e7"
     },
-    "browser_observation_scope": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
-    "remaining_browser_release_checks": [],
-    "loading_observation_scope": "Preserved09cache observation; not a new final-runtime performance benchmark.",
-    "protected_graph_downloads": {
-      "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
-      "bytes": 4543,
-      "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
+    "software_and_real_example": {
+      "path": "docs/evaluations/usability_delivery_20261117/packaging.json",
+      "bytes": 1247,
+      "sha256": "8be7ba6cc0dc77b0e3e49b31a91573cf79bd04f348ea56c80564e608499f2195"
     },
-    "primary_graph_and_comparator_downloads_verified": "Historical authenticated download checks preserved; complete packets remain separate submission or private operator assets. No anonymous bulk download.",
-    "new_source_artifact_folders_published": [
-      "primary_graph_handoff_20261116",
-      "captured_pharos_comparator_20261116"
-    ],
-    "new_scientific_results_claimed": true,
-    "focused_construction_entry_browser_check": {
-      "path": "docs/evaluations/democratization_delivery_20261116/hosted_browser_acceptance.json",
-      "bytes": 1680,
-      "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
-    },
-    "prior_full_workflow_browser_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
-    "later_report_revision_scope": "Holistic four-page final project report, with functionality before measurements and explicit current/historical dataset roles. No review-guide request, subtitle, deadline reminder or publication promise.",
-    "public_access_receipt": {
-      "path": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
-      "bytes": 3555,
-      "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
-    },
-    "new_public_model_or_source_calls": 0,
-    "browser_validation_scope": "The direct featured public HTTPS workflow; earlier bare-root automatic-navigation transport failure is preserved and its cause unresolved.",
-    "uninterrupted_direct_example_journey_passed": true,
-    "final_hosted_browser_acceptance": {
-      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
-      "bytes": 4822,
-      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
-    },
-    "public_final_operations": {
-      "path": "docs/evaluations/public_demo_20261117/final_operations.json",
-      "bytes": 4012,
-      "sha256": "0177a6e86061576c1dd69fd6ca06874dcca2059f62fde3c0e116981a747f61f8"
-    },
-    "final_report_PDF": {
-      "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
-      "bytes": 95469,
-      "sha256": "d58063e142fdb54b9c32f5f32086e38401fd2880b4c285d6965bc40ca79061dc"
-    },
-    "new_model_or_source_retrieval_calls_scope": "Zero applies only to the unchanged public-runtime delivery pass. Separate research and the APP/PSEN construction/agent execution are recorded below.",
-    "team_review_guides_requested": false,
-    "application_core_changed_for_final_report": false,
-    "new_scientific_results_scope": "Separate source-verifier diagnostics and a neutral localization comparison on a new cohort. No new whole-graph truth estimate, automatic biological pruning or extra same-window prediction gain."
+    "private_operator_service_unchanged": true,
+    "older_full_core_acceptance_reused": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
+    "source_adapters_review_backend_and_agent_controller_unchanged": true,
+    "final_publication_and_submission_performed": false,
+    "owned_local_review_server_stopped": true
   },
   "previous_final_product_delivery": {
     "snapshot_of_pre_update_status": true,
@@ -2679,33 +2568,33 @@
   "canonical_artifact_pins": {
     "output/docx/BioGraph_Steward_Final_Report.docx": {
       "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12269,
-      "sha256": "ab1fc81c7bbd3f054eecdc1d987130575a01458587fcd908802d296f276abc58"
+      "bytes": 12283,
+      "sha256": "acc66ac0e1311d9e8ce1967918f58353a2b90e628aa57804fb95898d53dfdf67"
     },
     "output/pdf/BioGraph_Steward_Final_Report.pdf": {
       "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
-      "bytes": 95469,
-      "sha256": "d58063e142fdb54b9c32f5f32086e38401fd2880b4c285d6965bc40ca79061dc"
+      "bytes": 95490,
+      "sha256": "c0041aa8c0838cf41052f9675e09b295d778371f8488894813d9357c4d979946"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.mp4": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
-      "bytes": 6744181,
-      "sha256": "8ae3a27059bd74e797ead9fa2796cbfbdee396137cf08edc7306fdfeff3adfed"
+      "bytes": 7609388,
+      "sha256": "8eebab19f2aac21a50e8f4538636fb1ec992f44c2f0633126d250ec7c34bd5c6"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.txt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
-      "bytes": 5272,
-      "sha256": "2c3509228c4968ca54d2d6a83fc6fb98a9d5da8e8a0b018f9d553140535c5e3f"
+      "bytes": 6261,
+      "sha256": "f0479ee3834c347b8379a703b78779848c3e534f3a32db188f8b6ae81cf12bf0"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.vtt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
-      "bytes": 5393,
-      "sha256": "bb9160c572d62b4df0f3c817aaa7cf70d10c6462309dc2ef33acce6b4c61a30d"
+      "bytes": 6143,
+      "sha256": "d23ad750c8ebf24c4928c8cc7ca12774a4a57c2cf594d2c1b688fb6d41210e3d"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.srt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
-      "bytes": 5541,
-      "sha256": "e45a3333e7591176674fd02b20a3bfa73017b30d5d50b8c06eff4ceaf5d24a77"
+      "bytes": 6315,
+      "sha256": "7f5170707fea2d507510c19a0cd0f1d078f55819d722e61367e9b1a70f1aa3ee"
     },
     "output/presentations/BioGraph_Steward_Overview.pptx": {
       "path": "output/presentations/BioGraph_Steward_Overview.pptx",
@@ -2714,13 +2603,13 @@
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
-      "bytes": 11964,
-      "sha256": "1c5fb7c343d7f6e75f4150988ad4c6118fd4b28dfa4a247d223adb6044c003ac"
+      "bytes": 18203,
+      "sha256": "be9970b706ff86b99b04a3302940d5c8ad7d81a9332c5df58bd204e0a9b30691"
     },
     "output/software/BioGraph_Steward_Software.zip": {
       "path": "output/software/BioGraph_Steward_Software.zip",
-      "bytes": 727786,
-      "sha256": "d1fa1f6638169a9dbe7ccabf11a85b026be8f8b8e5ddd8c8451b20487890e527"
+      "bytes": 1072487,
+      "sha256": "7b9791572979266bfebcaeb7ecbb0240db8d6634ae16586ae0773a7634c30ee5"
     },
     "output/research/BioGraph_Steward_Source_Verifier_Code.zip": {
       "path": "output/research/BioGraph_Steward_Source_Verifier_Code.zip",
@@ -2731,25 +2620,25 @@
   "final_report": {
     "format": "biograph-steward.holistic-final-report.v1",
     "status": "prepared_for_final_submission",
-    "checked_at_UTC": "2026-11-17T06:04:09.338952+00:00",
+    "checked_at_UTC": "2026-11-17T14:22:09.107542+00:00",
     "docx": {
       "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12269,
-      "sha256": "ab1fc81c7bbd3f054eecdc1d987130575a01458587fcd908802d296f276abc58"
+      "bytes": 12283,
+      "sha256": "acc66ac0e1311d9e8ce1967918f58353a2b90e628aa57804fb95898d53dfdf67"
     },
     "pdf": {
       "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
-      "bytes": 95469,
-      "sha256": "d58063e142fdb54b9c32f5f32086e38401fd2880b4c285d6965bc40ca79061dc"
+      "bytes": 95490,
+      "sha256": "c0041aa8c0838cf41052f9675e09b295d778371f8488894813d9357c4d979946"
     },
     "pages": 4,
     "page_word_counts": [
-      184,
-      348,
+      189,
+      353,
       372,
       270
     ],
-    "title": "BioAgent KGCC — BioGraph Steward Project Report",
+    "title": "BioAgent KGCC \u2014 BioGraph Steward Project Report",
     "section_order": [
       "Team Information",
       "Key Accomplishments",
@@ -2798,37 +2687,41 @@
     "submitted_or_emailed": false,
     "application_graph_or_model_changed_for_authoring": false,
     "coverage_qualification": "docs/evaluations/final_delivery_20261117/prediction_coverage_feasibility.md",
-    "receipt": {
-      "path": "docs/evaluations/final_delivery_20261117/final_report.json",
-      "bytes": 2932,
-      "sha256": "df2f629e33cd23dccf3292fa56c1c8d1ec86bd5ba0c6e4e4e56a1b2ad2f47a43"
-    }
+    "receipt": "docs/evaluations/usability_delivery_20261117/report.json",
+    "review_workflow_explained": true,
+    "current_delivery_type": "Four-page final project report with public read-only and local new-run review workflows.",
+    "word_counts_method": "Whitespace-separated words in pypdf text extraction of the current canonical PDF."
   },
   "final_product_delivery_receipts": {
     "hosted": {
-      "path": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
-      "bytes": 3555,
-      "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+      "path": "docs/evaluations/usability_delivery_20261117/hosted_acceptance.json",
+      "bytes": 2193,
+      "sha256": "54d87cdd3cc09fa11bf18a3a0f7c167e24d4eb5fa572e2d015a0e11c34be2ff5"
     },
     "browser": {
-      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
-      "bytes": 4822,
-      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
+      "path": "docs/evaluations/usability_delivery_20261117/hosted_browser.json",
+      "bytes": 1528,
+      "sha256": "e80fc800dace71f50fd09f4a8f03528b8ff69e7f78f6879d32f2be15586f18f3"
     },
     "software": {
-      "path": "docs/evaluations/final_delivery_20261117/software_access_copy.json",
-      "bytes": 697,
-      "sha256": "484700291012b56c85444908d99dc6580678b22c2a716f6fc0059bd6adcedf81"
+      "path": "docs/evaluations/usability_delivery_20261117/packaging.json",
+      "bytes": 1247,
+      "sha256": "8be7ba6cc0dc77b0e3e49b31a91573cf79bd04f348ea56c80564e608499f2195"
     },
     "report": {
-      "path": "docs/evaluations/final_delivery_20261117/final_report.json",
-      "bytes": 2932,
-      "sha256": "df2f629e33cd23dccf3292fa56c1c8d1ec86bd5ba0c6e4e4e56a1b2ad2f47a43"
+      "path": "docs/evaluations/usability_delivery_20261117/report.json",
+      "bytes": 881,
+      "sha256": "b33d7996c6490b0cbd7e1812739d212052479a395bac7a43299c8c08b1a31d30"
     },
     "ui": {
-      "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
-      "bytes": 6062,
-      "sha256": "6c84c8d535642c3601a18726825f6bcaddf0d36f8a08da65772a1340b74b1844"
+      "path": "docs/evaluations/usability_delivery_20261117/UI_checks.json",
+      "bytes": 1223,
+      "sha256": "c0ef79c1169d43f8fc69885de579a58f7ccaf2de8d04864031b2e549ee309fe5"
+    },
+    "media": {
+      "path": "docs/evaluations/usability_delivery_20261117/media.json",
+      "bytes": 1411,
+      "sha256": "73326d08a8e38128afd9866e17795c8b7ff5888d29501e9e624f0c9f358515e7"
     }
   },
   "protected_graph_downloads": {
@@ -3075,7 +2968,7 @@
       "democratization_and_general_scientist_usability_explicit": true,
       "source": "Organizer email quoted by user on November16; linked response document returned401 and was not read",
       "agent_scope": "Model-directed saved-source query, focused graph, citation inspections and nonmutating proposals",
-      "construction_scope": "Separate deterministic explicit1–25-protein cohort construction",
+      "construction_scope": "Separate deterministic explicit1\u201325-protein cohort construction",
       "generalizability": "Different supported questions in one cohort and reusable construction; no independently validated cross-cohort transfer",
       "hosted_demo_and_video_software_graph_deliverables_explicit": true
     },
@@ -3761,7 +3654,7 @@
       "democratization_and_general_scientist_usability_explicit": true,
       "source": "Organizer email quoted by user on November16; linked response document returned401 and was not read",
       "agent_scope": "Model-directed saved-source query, focused graph, citation inspections and nonmutating proposals",
-      "construction_scope": "Separate deterministic explicit1–25-protein cohort construction",
+      "construction_scope": "Separate deterministic explicit1\u201325-protein cohort construction",
       "generalizability": "Different supported questions in one cohort and reusable construction; no independently validated cross-cohort transfer",
       "hosted_demo_and_video_software_graph_deliverables_explicit": true
     },
@@ -4763,7 +4656,15 @@
     "public_backend_enabled_at_boot": true,
     "original_and_snapshot_source_bytes_verified": true,
     "owned_test_proxy_tunnel_and_browsers_closed": true,
-    "temporary_public_token_copy_removed": true
+    "temporary_public_token_copy_removed": true,
+    "latest_UI_update": {
+      "path": "docs/evaluations/usability_delivery_20261117/hosted_acceptance.json",
+      "bytes": 2193,
+      "sha256": "54d87cdd3cc09fa11bf18a3a0f7c167e24d4eb5fa572e2d015a0e11c34be2ff5"
+    },
+    "current_public_runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+    "current_public_image": "sha256:e3ebcf582047de3a222b54d5637a26b487c22d79d862bbb85fce8a401875cf47",
+    "current_public_memory_limit": "3GiB"
   },
   "previous_final_report_before_holistic_final_20261117": {
     "format": "biograph-steward.final-report-original-form-fidelity.v4",
@@ -5260,6 +5161,482 @@
       "bytes": 414,
       "sha256": "65fea50f162a9e10bc63c729e218a39def2737cc12fa768a5a9d243181bcab61"
     },
-    "submission_bundle_scope": "Verified local organizer handoff, with report, media, software, research code and four distinct data/example packages. No public upload or submission performed."
+    "submission_bundle_scope": "Verified local organizer handoff, with report, media, software, research code and four distinct data/example packages. No public upload or submission performed.",
+    "current_report": {
+      "path": "docs/evaluations/usability_delivery_20261117/report.json",
+      "bytes": 881,
+      "sha256": "b33d7996c6490b0cbd7e1812739d212052479a395bac7a43299c8c08b1a31d30"
+    },
+    "current_software_and_APP_packaging": {
+      "path": "docs/evaluations/usability_delivery_20261117/packaging.json",
+      "bytes": 1247,
+      "sha256": "8be7ba6cc0dc77b0e3e49b31a91573cf79bd04f348ea56c80564e608499f2195"
+    },
+    "current_submission_bundle": {
+      "path": "docs/evaluations/usability_delivery_20261117/submission_bundle.json",
+      "bytes": 414,
+      "sha256": "414d4322e47c07686b602e220ab3162301c43c6db537156c1bc9b95135507e7c"
+    },
+    "small_public_materials_candidate": {
+      "path": "docs/evaluations/usability_delivery_20261117/compact_release.json",
+      "bytes": 386,
+      "sha256": "7181b8156456b25643f9612117bcdedce8cd46ad996fc8adfab3ad133525b524"
+    },
+    "scientific_inputs_and_results_unchanged_in_UI_increment": true,
+    "current_public_UI_deployment": {
+      "path": "docs/evaluations/usability_delivery_20261117/hosted_acceptance.json",
+      "bytes": 2193,
+      "sha256": "54d87cdd3cc09fa11bf18a3a0f7c167e24d4eb5fa572e2d015a0e11c34be2ff5"
+    },
+    "current_public_browser_check": {
+      "path": "docs/evaluations/usability_delivery_20261117/hosted_browser.json",
+      "bytes": 1528,
+      "sha256": "e80fc800dace71f50fd09f4a8f03528b8ff69e7f78f6879d32f2be15586f18f3"
+    },
+    "optional_private_judging_graph_files": {
+      "path": "docs/evaluations/usability_delivery_20261117/judging_graphs.json",
+      "bytes": 714,
+      "sha256": "4e8b03e1cd8584dc828e7fce06a17ec2677d2d7e12fa8f599601182e6f47145f"
+    }
+  },
+  "previous_canonical_artifact_pins_before_review_workflow_20261117": {
+    "output/docx/BioGraph_Steward_Final_Report.docx": {
+      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+      "bytes": 12269,
+      "sha256": "ab1fc81c7bbd3f054eecdc1d987130575a01458587fcd908802d296f276abc58"
+    },
+    "output/pdf/BioGraph_Steward_Final_Report.pdf": {
+      "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
+      "bytes": 95469,
+      "sha256": "d58063e142fdb54b9c32f5f32086e38401fd2880b4c285d6965bc40ca79061dc"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.mp4": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
+      "bytes": 6744181,
+      "sha256": "8ae3a27059bd74e797ead9fa2796cbfbdee396137cf08edc7306fdfeff3adfed"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.txt": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
+      "bytes": 5272,
+      "sha256": "2c3509228c4968ca54d2d6a83fc6fb98a9d5da8e8a0b018f9d553140535c5e3f"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.vtt": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
+      "bytes": 5393,
+      "sha256": "bb9160c572d62b4df0f3c817aaa7cf70d10c6462309dc2ef33acce6b4c61a30d"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.srt": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
+      "bytes": 5541,
+      "sha256": "e45a3333e7591176674fd02b20a3bfa73017b30d5d50b8c06eff4ceaf5d24a77"
+    },
+    "output/presentations/BioGraph_Steward_Overview.pptx": {
+      "path": "output/presentations/BioGraph_Steward_Overview.pptx",
+      "bytes": 587786,
+      "sha256": "ff7fc489a40b0b73baa58df885f9df7ad581253f44ca53b72c144983688d6e7c"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json": {
+      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
+      "bytes": 11964,
+      "sha256": "1c5fb7c343d7f6e75f4150988ad4c6118fd4b28dfa4a247d223adb6044c003ac"
+    },
+    "output/software/BioGraph_Steward_Software.zip": {
+      "path": "output/software/BioGraph_Steward_Software.zip",
+      "bytes": 727786,
+      "sha256": "d1fa1f6638169a9dbe7ccabf11a85b026be8f8b8e5ddd8c8451b20487890e527"
+    },
+    "output/research/BioGraph_Steward_Source_Verifier_Code.zip": {
+      "path": "output/research/BioGraph_Steward_Source_Verifier_Code.zip",
+      "bytes": 134214,
+      "sha256": "cfff53bc0752102e016fb773460555815df747efac7841a207ac4fac9cbb9782"
+    }
+  },
+  "previous_final_report_before_review_workflow_20261117": {
+    "format": "biograph-steward.holistic-final-report.v1",
+    "status": "prepared_for_final_submission",
+    "checked_at_UTC": "2026-11-17T06:04:09.338952+00:00",
+    "docx": {
+      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+      "bytes": 12269,
+      "sha256": "ab1fc81c7bbd3f054eecdc1d987130575a01458587fcd908802d296f276abc58"
+    },
+    "pdf": {
+      "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
+      "bytes": 95469,
+      "sha256": "d58063e142fdb54b9c32f5f32086e38401fd2880b4c285d6965bc40ca79061dc"
+    },
+    "pages": 4,
+    "page_word_counts": [
+      184,
+      348,
+      372,
+      270
+    ],
+    "title": "BioAgent KGCC \u2014 BioGraph Steward Project Report",
+    "section_order": [
+      "Team Information",
+      "Key Accomplishments",
+      "Approach and design",
+      "Measured outcomes",
+      "Scope and opportunities",
+      "Final deliverables"
+    ],
+    "user_requested_reordering": true,
+    "subtitle_reminder_deadline_and_publication_promise_removed": true,
+    "team_review_guide_included": false,
+    "template_table_geometry_styles_numbering_and_opaque_parts_preserved": true,
+    "source_reference_sha256": "18a52108e624a98155fcd3edc4bd8f379246441cd6ea8e65842488bc7117feda",
+    "changed_package_parts": [
+      "word/document.xml",
+      "word/_rels/document.xml.rels"
+    ],
+    "quality": {
+      "canonical_bundled_render_passed": true,
+      "all_four_pages_root_visually_reviewed_at_full_size": true,
+      "clipping_overlap_blank_or_orphan_pages": false,
+      "body_font_points": 12,
+      "font_shrink_to_fit": false,
+      "formal_ProtBoost_and_INDRA_references_verified": true,
+      "credentials_included": false,
+      "new_scientific_results_inferred_from_layout": false,
+      "coverage_and_PK_definition_checked_against_pinned_native_evaluator": true
+    },
+    "scientific_scope": {
+      "workflow_capability_then_methods_then_measurements": true,
+      "primary_and_companion_graph_roles_separate": true,
+      "six_fixed_supported_agent_cases_across_two_cohorts": true,
+      "three_unsupported_preflight_stops_not_model_refusals": true,
+      "new_APP_cohort_added_location_recovery_claimed": false,
+      "historical_function_forecasts_separate_from_main99_graph": true,
+      "CIViC_separate_clinical_workflow": true,
+      "source_verifier_is_research_not_automatic_Pharos_pruning": true,
+      "whole_graph_truth_or_transferable_prediction_superiority_claimed": false,
+      "complete_native_eligible_temporal_forecast_frame": 3300,
+      "graph_covered_forecast_targets": 3297,
+      "off_graph_forecast_targets_retained": 3,
+      "primary_function_endpoint": "Additional biological-process annotations for proteins with prior annotations in the same aspect (PK-BP)",
+      "all20412_graph_proteins_claimed_as_scored": false
+    },
+    "repository_visibility_changed": false,
+    "submitted_or_emailed": false,
+    "application_graph_or_model_changed_for_authoring": false,
+    "coverage_qualification": "docs/evaluations/final_delivery_20261117/prediction_coverage_feasibility.md",
+    "receipt": {
+      "path": "docs/evaluations/final_delivery_20261117/final_report.json",
+      "bytes": 2932,
+      "sha256": "df2f629e33cd23dccf3292fa56c1c8d1ec86bd5ba0c6e4e4e56a1b2ad2f47a43"
+    }
+  },
+  "previous_current_delivery_pass_before_review_workflow_20261117": {
+    "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "runtime_and_restart_acceptance_passed": true,
+    "explicit_hosted_browser_checks_passed": 48,
+    "source_and_review_bytes_preserved": true,
+    "new_model_or_source_retrieval_calls": 0,
+    "primary_graph_handoff_prepared": true,
+    "private_Gold_worker_and_isolated_candidate_stopped": true,
+    "owned_browser_closed": true,
+    "canonical_user_guide": "HOW_TO_USE.md",
+    "loading_observation": {
+      "path": "docs/evaluations/delivery_readiness_20261116/listing_latency.json",
+      "bytes": 1692,
+      "sha256": "b618046dea35ea3041d81520ea8cbfb88da023b32022431c4b89b736662eee57"
+    },
+    "code_only_software_acceptance": {
+      "path": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
+      "bytes": 2976,
+      "sha256": "9e8975a6f441e7b7e32db01905e5f9d35417d16c9581e6d4f2d7f8c242941097"
+    },
+    "presentation_and_media_unchanged": true,
+    "final_publication_and_submission_performed": false,
+    "browser_feature_checks_passed": true,
+    "browser_validation_complete": true,
+    "browser_qualification": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
+    "final_report": {
+      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+      "bytes": 12269,
+      "sha256": "ab1fc81c7bbd3f054eecdc1d987130575a01458587fcd908802d296f276abc58"
+    },
+    "final_UI_validation": {
+      "path": "docs/evaluations/democratization_delivery_20261116/UI_validation.json",
+      "bytes": 2293,
+      "sha256": "3a60ae1be55199ec4c263f646efaea8fe3ca1868ba684f4779940bce022b4cd6"
+    },
+    "browser_observation_scope": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
+    "remaining_browser_release_checks": [],
+    "loading_observation_scope": "Preserved09cache observation; not a new final-runtime performance benchmark.",
+    "protected_graph_downloads": {
+      "path": "docs/evaluations/final_prod_ui_20261116/protected_graph_downloads.json",
+      "bytes": 4543,
+      "sha256": "16168933d8b327c5dd9bca28583b921e7f16c396fd03f211217deb041331df0c"
+    },
+    "primary_graph_and_comparator_downloads_verified": "Historical authenticated download checks preserved; complete packets remain separate submission or private operator assets. No anonymous bulk download.",
+    "new_source_artifact_folders_published": [
+      "primary_graph_handoff_20261116",
+      "captured_pharos_comparator_20261116"
+    ],
+    "new_scientific_results_claimed": true,
+    "focused_construction_entry_browser_check": {
+      "path": "docs/evaluations/democratization_delivery_20261116/hosted_browser_acceptance.json",
+      "bytes": 1680,
+      "sha256": "5c3072df53e930acb3346bffb9aa5158d00d52c0d5b869854d943fc8194fc588"
+    },
+    "prior_full_workflow_browser_checkpoint": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+    "later_report_revision_scope": "Holistic four-page final project report, with functionality before measurements and explicit current/historical dataset roles. No review-guide request, subtitle, deadline reminder or publication promise.",
+    "public_access_receipt": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+      "bytes": 3555,
+      "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+    },
+    "new_public_model_or_source_calls": 0,
+    "browser_validation_scope": "The direct featured public HTTPS workflow; earlier bare-root automatic-navigation transport failure is preserved and its cause unresolved.",
+    "uninterrupted_direct_example_journey_passed": true,
+    "final_hosted_browser_acceptance": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+      "bytes": 4822,
+      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
+    },
+    "public_final_operations": {
+      "path": "docs/evaluations/public_demo_20261117/final_operations.json",
+      "bytes": 4012,
+      "sha256": "0177a6e86061576c1dd69fd6ca06874dcca2059f62fde3c0e116981a747f61f8"
+    },
+    "final_report_PDF": {
+      "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
+      "bytes": 95469,
+      "sha256": "d58063e142fdb54b9c32f5f32086e38401fd2880b4c285d6965bc40ca79061dc"
+    },
+    "new_model_or_source_retrieval_calls_scope": "Zero applies only to the unchanged public-runtime delivery pass. Separate research and the APP/PSEN construction/agent execution are recorded below.",
+    "team_review_guides_requested": false,
+    "application_core_changed_for_final_report": false,
+    "new_scientific_results_scope": "Separate source-verifier diagnostics and a neutral localization comparison on a new cohort. No new whole-graph truth estimate, automatic biological pruning or extra same-window prediction gain."
+  },
+  "previous_final_product_delivery_receipts_before_review_workflow_20261117": {
+    "hosted": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+      "bytes": 3555,
+      "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+    },
+    "browser": {
+      "path": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+      "bytes": 4822,
+      "sha256": "83e43bb2a71275b7275f58e0b6d321010c47fef6b9c161101d0ed3230d55d046"
+    },
+    "software": {
+      "path": "docs/evaluations/final_delivery_20261117/software_access_copy.json",
+      "bytes": 697,
+      "sha256": "484700291012b56c85444908d99dc6580678b22c2a716f6fc0059bd6adcedf81"
+    },
+    "report": {
+      "path": "docs/evaluations/final_delivery_20261117/final_report.json",
+      "bytes": 2932,
+      "sha256": "df2f629e33cd23dccf3292fa56c1c8d1ec86bd5ba0c6e4e4e56a1b2ad2f47a43"
+    },
+    "ui": {
+      "path": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+      "bytes": 6062,
+      "sha256": "6c84c8d535642c3601a18726825f6bcaddf0d36f8a08da65772a1340b74b1844"
+    }
+  },
+  "previous_github_review_delivery_before_review_workflow_20261117": {
+    "branch": "codex/contextual-gain-delivery",
+    "current_runtime_source_revision": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "private_repository": true,
+    "main_modified": false,
+    "main_commit_unchanged": "586ec35d33e9429dde91057c4130542988a7ca02",
+    "repository_visibility_modified": false,
+    "final_public_submission": false,
+    "canonical_file_delivery": "Current artifacts tracked on private codex/contextual-gain-delivery; runtime source pinned separately from delivery-only metadata.",
+    "current_delivery_assets_scope": "Canonical final report, narrated demonstration, slides and software. Complete source-bearing graphs and real local example are separately prepared under their source terms. Repository publication and organizer submission remain owner actions.",
+    "canonical_current_delivery_files": [
+      "output/docx/BioGraph_Steward_Final_Report.docx",
+      "output/pdf/BioGraph_Steward_Final_Report.pdf",
+      "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
+      "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
+      "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
+      "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
+      "output/presentations/BioGraph_Steward_Overview.pptx",
+      "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
+      "output/software/BioGraph_Steward_Software.zip",
+      "output/research/BioGraph_Steward_Source_Verifier_Code.zip"
+    ]
+  },
+  "review_workflow_delivery_20261117": {
+    "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+    "UI": {
+      "path": "docs/evaluations/usability_delivery_20261117/UI_checks.json",
+      "bytes": 1223,
+      "sha256": "c0ef79c1169d43f8fc69885de579a58f7ccaf2de8d04864031b2e549ee309fe5"
+    },
+    "report": {
+      "path": "docs/evaluations/usability_delivery_20261117/report.json",
+      "bytes": 881,
+      "sha256": "b33d7996c6490b0cbd7e1812739d212052479a395bac7a43299c8c08b1a31d30"
+    },
+    "media": {
+      "path": "docs/evaluations/usability_delivery_20261117/media.json",
+      "bytes": 1411,
+      "sha256": "73326d08a8e38128afd9866e17795c8b7ff5888d29501e9e624f0c9f358515e7"
+    },
+    "packaging": {
+      "path": "docs/evaluations/usability_delivery_20261117/packaging.json",
+      "bytes": 1247,
+      "sha256": "8be7ba6cc0dc77b0e3e49b31a91573cf79bd04f348ea56c80564e608499f2195"
+    },
+    "runtime_bridge": {
+      "path": "docs/evaluations/usability_delivery_20261117/runtime_bridge.json",
+      "bytes": 1545,
+      "sha256": "8537f1b6e36f29acf1c015896a2b9ac6216ff0dda8dd0ef5ee4bb3e57dc493d0"
+    },
+    "documentation": {
+      "path": "docs/evaluations/usability_delivery_20261117/documentation_checks.json",
+      "bytes": 490,
+      "sha256": "da8d6e05f7f15dafff884b5a8d1855cf58a8468f862e74ef5b7ff1ab4e4bc76c"
+    },
+    "full_organizer_bundle": {
+      "path": "docs/evaluations/usability_delivery_20261117/submission_bundle.json",
+      "bytes": 414,
+      "sha256": "414d4322e47c07686b602e220ab3162301c43c6db537156c1bc9b95135507e7c"
+    },
+    "small_public_materials_candidate": {
+      "path": "docs/evaluations/usability_delivery_20261117/compact_release.json",
+      "bytes": 386,
+      "sha256": "7181b8156456b25643f9612117bcdedce8cd46ad996fc8adfab3ad133525b524"
+    },
+    "public_demo_review_edits_enabled": false,
+    "isolated_local_provisional_browser_review_runs_created": 1,
+    "original_source_files_verified_preserved": 58,
+    "independent_biological_claim_added": false,
+    "new_model_calls": 0,
+    "fresh_source_retrieval": 0,
+    "private_source_archives_published": false,
+    "personal_email_sent": false,
+    "final_submission_performed": false,
+    "AWS_activation_pending": false,
+    "hosted": {
+      "path": "docs/evaluations/usability_delivery_20261117/hosted_acceptance.json",
+      "bytes": 2193,
+      "sha256": "54d87cdd3cc09fa11bf18a3a0f7c167e24d4eb5fa572e2d015a0e11c34be2ff5"
+    },
+    "browser": {
+      "path": "docs/evaluations/usability_delivery_20261117/hosted_browser.json",
+      "bytes": 1528,
+      "sha256": "e80fc800dace71f50fd09f4a8f03528b8ff69e7f78f6879d32f2be15586f18f3"
+    },
+    "optional_private_judging_graphs": {
+      "path": "docs/evaluations/usability_delivery_20261117/judging_graphs.json",
+      "bytes": 714,
+      "sha256": "4e8b03e1cd8584dc828e7fce06a17ec2677d2d7e12fa8f599601182e6f47145f"
+    },
+    "public_runtime_live": true,
+    "public_memory_limit": "3GiB",
+    "private_operator_runtime_updated": false
+  },
+  "previous_browser_visual_check_before_review_workflow_20261117": {
+    "format": "biograph-steward.public-demo-hosted-browser-acceptance.v1",
+    "status": "direct_featured_workflow_passed_with_prior_navigation_transport_failure_preserved",
+    "passed": true,
+    "checked_at_UTC": "2026-11-17T02:55:19.368390+00:00",
+    "scope": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
+    "primary_demo_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+    "application_runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "gateway_config_sha256": "19a9f9948328dab7e4d8b450759b52b164479fa5b88b0cd281080505ab009a83",
+    "gateway_image_config_sha256": "6686bc0c8a700785afa5c8bfae949badf9ec57a3ed6f4076085867e37df1fdc7",
+    "direct_featured_workflow_passed": true,
+    "normal_TLS_verification": true,
+    "Chrome_sandbox_enabled": true,
+    "fresh_isolated_context": true,
+    "token_entry_required": false,
+    "real_credentials_or_cookies_supplied": false,
+    "session_cookies_created": false,
+    "browser_new_model_calls": 0,
+    "new_source_retrievals": 0,
+    "graph_or_review_edits": 0,
+    "recorded_S01_model_calls": 3,
+    "operator_browser_check_assertions": 48,
+    "assertions_are_independent_users_or_cases": false,
+    "direct_check_HTTP_JS_or_transport_errors": 0,
+    "direct_check_elapsed_seconds": 128.325,
+    "features_checked": [
+      "Actual recorded KRAS question and bounded plan",
+      "Eight of fourteen recorded results and source graph",
+      "Inspected E002 STRING12.5 physical association score203",
+      "Citation-bound proposal-only review actions",
+      "Actual production HTTPS source-inspection POST",
+      "Five task tabs and existing measured assessments",
+      "Displayed graph JSON export with write/bulk controls hidden",
+      "390px mobile navigation",
+      "No token form, sign-out or session cookies"
+    ],
+    "prior_bare_root_attempt": {
+      "passed": false,
+      "error": "net::ERR_NETWORK_CHANGED",
+      "observed_after_automatic_featured_navigation": true,
+      "server_HTTP_failure_established": false,
+      "root_navigation_cause_resolved": false,
+      "original_failure_preserved": true,
+      "proof": {
+        "path": "runs/public_demo_20261117/browser_https/receipt.json",
+        "bytes": 2717,
+        "sha256": "4b9518ceb2a4b0ce948d68f5db491dd41d55d397a7303686b91487e8f2b10203"
+      }
+    },
+    "no_OS_proxy_TLS_or_browser_security_changes": true,
+    "no_additional_browser_retries_planned": true,
+    "owned_browser_closed": true,
+    "direct_proof": {
+      "path": "runs/public_demo_20261117/browser_https_direct/receipt.json",
+      "bytes": 8349,
+      "sha256": "8ae9a44f0e0d3daf49127de8fe2ee52735ecfd44d693a2f4b7067a92e839885e"
+    },
+    "frames": [
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_start.png",
+        "bytes": 188120,
+        "sha256": "2ed76771b0c16cf0c949bcb65161b5a410ad719bcee1db574a686b1359874652"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_agent_graph.png",
+        "bytes": 35824,
+        "sha256": "0c24ff7907bcb233eca035b40bee7d9c12e9fbfda24ba9efdc5ae719381bf08f"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_E002_source.png",
+        "bytes": 130902,
+        "sha256": "183f88fbd39a4e5d72937d8ddf2fc4595fc29ec168b3aa9f801cc732904cd90e"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_proposals.png",
+        "bytes": 151653,
+        "sha256": "1356a4f11fb19a61b1d0bd4c60c2d63159f9e391a8f10190db343b96a4390862"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/anonymous_source_guide.png",
+        "bytes": 272640,
+        "sha256": "3381bc92d0a966746318a81a43ef8bafef8292a50e2e39aed6c40a883e91c82a"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/public_WhatChanged.png",
+        "bytes": 228236,
+        "sha256": "dbbdc09d0b099e2d8a0dca01e16139c8944f528d81ca408b59c108fb7383b29b"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/public_export.png",
+        "bytes": 115527,
+        "sha256": "4263b971b0c9e8b45c144ce667a2a9e03aa2a9e860f33717e91d2b9c8771d988"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/public_export_mobile.png",
+        "bytes": 66272,
+        "sha256": "fd1e2a7c14a840d7299d60a3d9274076c62aa47e76ba235ac613cfaafd7a5438"
+      },
+      {
+        "path": "runs/public_demo_20261117/browser_https_direct/public_recorded_agent_mobile.png",
+        "bytes": 72561,
+        "sha256": "742251253f0cdbd0a67ec99b518ce904c8a2d6d2daa357d9506c933028cc7ff0"
+      }
+    ],
+    "receipt": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+    "root_independent_visual_review_of_actual_start_source_and_mobile_frames_passed": true
   }
 }

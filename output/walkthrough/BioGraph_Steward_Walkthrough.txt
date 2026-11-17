@@ -1,6 +1,6 @@
 BioGraph Steward walkthrough
 
-Actual application running locally on verified saved real research data. Hosted agent update is recorded separately. The separate protein-function scene is a labeled rendering of two unchanged scientific-report tables, not application UI or new statistics. Edited screenshot states, not a continuous screen recording. Synthetic narration. No new inference, source retrieval or review edits during capture.
+Actual application captures on verified saved real research data. Edited screenshot states, not a continuous screen recording. Synthetic narration. No model inference or source retrieval occurred during capture. One provisional evidence review was saved as a new run in an isolated local copy. Original workspaces and source files remained unchanged. This is a usability demonstration, not biological acceptance. The public demo is read-only; recording a personal review requires an editing-enabled local or operator workspace. The separate protein-function scene is a labeled rendering of two unchanged scientific-report tables, not application UI or new statistics.
 
 00:00:00  What Steward adds to Pharos
 Show the actual current app entry, then its existing native graph. Introduce qualified source context before tool mechanics.
@@ -22,22 +22,27 @@ Show the actual saved Nemotron plan, capped eight-result graph, E002 inspection 
 
 The NVIDIA Nemotron agent makes that evidence easier to investigate. It plans a supported source query, the application executes the validated tool, and the agent prioritizes citations for inspection. Every original record under a selected citation is opened before a grounded review proposal is produced. In our fixed comparison, all five allowed queries preserved the deterministic tools' complete results. This saved example displays eight of fourteen matching proteins under its recorded limit.
 
-00:02:04  A separate, measured protein-function prediction gain
-Show the existing contextual-combination primary result table or forest plot, clearly labeled separate20,412-protein historical study. Show retained.17155/current.18277/context.21009 and paired gain interval.
+00:02:04  Explore an answer and save your own review
+Use actual captured UI: Show in graph selects a result; Record evidence review opens Reviewer, Decision and Reason; Save review in a new run creates a provisional reviewed copy. Public demo remains read-only. Capture uses an isolated local copy and preserves original workspaces and sources.
 
-We also tested an established learning method in a separate protein-function study. On a historical graph of twenty thousand four hundred and twelve proteins, a context-aware model increased fixed-ontology Fmax from about point one seven two to point two one zero. Its paired ninety-five percent interval for the gain stayed above zero. Both reference views improved over our retained Pharos-derived baseline predictor. Updating annotations alone also helped. We reused the published ProtBoost approach; this is separate from the agent and the ninety-nine-target app.
+To explore an answer, expand a result to read its summary, then choose Show in graph to focus the diagram. The shared demo is read-only. In an editing-enabled local workspace, select Record evidence review. Enter a reviewer, choose a decision and add your reason. Save review in a new run creates a reviewed copy and preserves the original. This demonstration saves a provisional decision, not biological acceptance.
 
-00:02:42  Qualification with recoverable decisions
+00:02:39  A separate, measured protein-function prediction gain
+Show the unchanged saved-report tables. Explicitly identify the primary partially known biological-process endpoint; Fmax is a benchmark score, not a percentage of correct graph assertions.
+
+We also reused the published ProtBoost approach in a separate protein-function study. The primary task predicts additional biological-process functions for proteins with some functions already known. On a historical graph of twenty thousand four hundred and twelve proteins, fixed-ontology Fmax rose from about point one seven two to point two one zero. The paired ninety-five percent gain interval stayed above zero in both reference views. Annotation updates alone also helped. This study is separate from the agent and the ninety-nine-target app.
+
+00:03:17  Qualification with recoverable decisions
 Show the existing real applied298 obsolete-GO-identifier qualification and retained16,687 records, then preserved decision/baseline export scope.
 
 The retained graph example adds another improvement: explicit identifier qualification. It excludes two hundred and ninety-eight records using obsolete Gene Ontology identifiers, while retaining sixteen thousand six hundred and eighty-seven records. The original sources, input graph and decision reasons remain recoverable, so a colleague can inspect or revisit each change.
 
-00:03:11  How to interpret these measured gains
+00:03:46  How to interpret these measured gains
 Keep the actual comparison report or source passport visible. Consolidate essential scientific qualifications in this short segment.
 
 These are qualified annotation-recovery results, not whole-graph precision. Shared sources and prior reference use limit independence. Physical association is candidate context, not confirmed direct binding. Additional primary learning benefit over fully refreshed annotations remains uncertain.
 
-00:03:33  A more useful, inspectable starting point
+00:04:08  A more useful, inspectable starting point
 Show existing verified-agent-record download and retained graph/source/decision exports; finish on the actual question-to-source workflow.
 
 The result is a more useful starting point for research: additional qualified context, measurable source coverage, a source-inspection agent, and recoverable graph decisions. Start with a biological question, inspect the evidence behind the answer, and share the complete record so the next researcher can build on it.

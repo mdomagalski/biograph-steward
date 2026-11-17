@@ -1,0 +1,17 @@
+{
+  "format": "biograph-steward.usability-doc-links.v1",
+  "explicit_changed_documents": [
+    "README.md",
+    "HOW_TO_USE.md",
+    "START_HERE.md",
+    "docs/DELIVERY.md",
+    "docs/FINAL_SUBMISSION.md",
+    "docs/releases/20261115/README.md",
+    "deploy/aws/README.md",
+    "docs/evaluations/usability_delivery_20261117/README.md"
+  ],
+  "local_links_checked": 200,
+  "missing_local_links": [],
+  "prior_user_review_guides_created_or_requested": false,
+  "personal_email_sent": false
+}

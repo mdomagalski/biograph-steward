@@ -1,0 +1,48 @@
+{
+  "activation_receipt_sha256": "37777d5ad0e2fb64f77a2c2a31de6d682f27292579fb91dd6ec7f81b4cefab2d",
+  "api_exact_baseline_parity": true,
+  "candidate_receipt_sha256": "d4dbb76b849378c9a2c043bda55885d7558c3da24e6edf8acfe73349d2dd9e6b",
+  "changed_runtime_files": [
+    "biograph_steward/guided.js",
+    "biograph_steward/navigation.js",
+    "biograph_steward/ui.html"
+  ],
+  "current_container_no_restarts_or_oom": true,
+  "env_and_gateway_unchanged": true,
+  "existing_ec2_cost_unchanged": true,
+  "format": "biograph-steward.final-usability-hosted-delivery.v1",
+  "memory_peak_above_previous_limit": true,
+  "memory_peak_bytes": 2233810944,
+  "new_models_or_retrieval": 0,
+  "no_new_cloud_resources": true,
+  "private_identity_unchanged": true,
+  "private_service_updated": false,
+  "public_cpus": 1,
+  "public_image": "sha256:e3ebcf582047de3a222b54d5637a26b487c22d79d862bbb85fce8a401875cf47",
+  "public_memory_after": "3g",
+  "public_memory_before": "2g",
+  "public_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+  "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+  "runtime_file_sha256": {
+    "biograph_steward/guided.js": "4ee6b6ced24b6217b5f3b6bcccd2d50b739c0b57b4e1c73d38959aa1ed81097b",
+    "biograph_steward/navigation.js": "d5a44813195096104f4f5ead8a6be62b1a2b317211824ece87a0ecc96148764c",
+    "biograph_steward/ui.html": "978ab4bf76790290a48159d24b0c0de67f2d39bbf25e876a1262f68a6447ef74"
+  },
+  "single_browser_source_inspection": {
+    "additional_inspection_requests_sent": 0,
+    "completed_at_utc": "2026-11-17T14:18:56Z",
+    "http_status": 200,
+    "observed_at_utc": "2026-11-17T14:20:02Z",
+    "public_oom_events": 0,
+    "public_restarts": 0
+  },
+  "source_inventory": {
+    "bytes": 1974425426,
+    "files": 732,
+    "sha256": "423c6caa38a75bf93f008b0f1e51a6977da065acb47bcbdf1f3f8887039e019c"
+  },
+  "source_or_graph_writes": 0,
+  "status": "live_verified",
+  "retained_failure_details": "Private operator receipts preserve failed probes, the live memory-limit event and exact rollback before the successful 3GiB deployment.",
+  "Docker_memory_documentation": "https://docs.docker.com/engine/containers/resource_constraints/"
+}
