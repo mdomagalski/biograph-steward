@@ -4,6 +4,7 @@ const workspaceNames=['data','ask','evidence','compare','export'];
 const workspaceSuffix={data:'Data',ask:'Ask',evidence:'Evidence',compare:'Compare',export:'Export'};
 let workspaceView='data',workspaceLoaded=false,inspectionRequest=0,pathRequest=0;
 let neptuneRequest=0,neptuneStatusRequest=0,neptuneConfigured=false;
+let editableCopyRequest=0,editableCopyState=null;
 function workspaceHashTarget(){try{return $(decodeURIComponent(location.hash.slice(1)));}catch(_){return null;}}
 function initializeWorkspaceAssessments(){
   initializeScientificAssessments();
@@ -84,6 +85,7 @@ function setupWorkspace(){
   $('sourceGuideButton').disabled=!runId;$('pathExploreButton').disabled=!runId;
   $('sourceGuideSearch').value='';populateSourceGuide();populatePathEntities();
   if(typeof updateReviewWorkflow==='function')updateReviewWorkflow();
+  setupEditableCopyDownload();
   if(!savedReviewOnly())setupNeptune();
   setupNativeGoa();
   const relations=[...new Set((graph.assertions||[]).map(a=>a.predicate))].sort();
@@ -262,8 +264,56 @@ async function loadSourceGuide(selectionId){
     $('sourceGuideStatus').textContent='Saved-source explanation. No model call, source search or review decision was made.';
   }catch(error){if(request===inspectionRequest)$('sourceGuideStatus').textContent=error.message;}
 }
+function editableCopySize(bytes){return (bytes/1000000).toFixed(1)+' MB';}
+function editableCopyLink(copy){
+  const link=el('a','Download an editable local copy ('+editableCopySize(copy.bytes)+')','download-action');
+  link.href=copy.download_url;link.download=copy.filename;
+  link.setAttribute('aria-label','Download an editable local copy of this workspace, '+editableCopySize(copy.bytes));
+  return link;
+}
+function renderEditableCopyDownload(){
+  const quick=$('workspaceEditableCopy'),panel=$('editableCopyExport');if(!quick||!panel)return;
+  quick.replaceChildren();panel.replaceChildren();quick.hidden=true;panel.hidden=true;
+  const state=editableCopyState;if(!state||state.run_id!==runId)return;
+  if(state.status==='available'){
+    quick.hidden=false;quick.append(editableCopyLink(state.copy));
+    quick.append(el('span',' Includes the app, the full saved workspace, attached source records, its demonstration question and local launch instructions.','small'));
+    panel.hidden=false;panel.append(el('h3','Continue working with your own copy'),editableCopyLink(state.copy));
+    panel.append(el('p','This complete package opens the same saved evidence on your computer. Local editing records evidence-review decisions and reasons. Each review saves a new run and preserves the original.'));
+    panel.append(el('p','Extract the ZIP into a new folder. With Python 3.10 or newer, run:'));
+    panel.append(el('pre','python3 START_EDITABLE_LOCAL.py'));
+    panel.append(el('p','Open the address printed in the terminal. Under Inspect sources, choose a claim and Record evidence review. Enter Reviewer, Decision and Reason, then choose Save review in a new run. No model, AWS account or new data retrieval is needed.','small'));
+    const verification=el('details');verification.append(el('summary','Download identity'),el('p','Workspace: '+state.run_id,'small'),el('pre','SHA-256: '+state.copy.sha256));panel.append(verification);
+  }else if(savedReviewOnly()){
+    panel.hidden=false;panel.append(el('h3','Continue working locally'));
+    const message=state.status==='checking'?'Checking for a complete editable copy…':state.status==='error'?'The local-copy download could not be verified. Reopen this workspace to check again.':'A complete editable copy is not available for this selected workspace. Use a separately supplied complete source workspace with the local app.';
+    const note=el('p',message,'small');note.setAttribute('role','status');panel.append(note);
+  }
+}
+async function setupEditableCopyDownload(){
+  const request=++editableCopyRequest,sourceRun=runId,sourceGraph=graph,sourceSnapshot=graph?.snapshot_sha256;
+  if(!$('workspaceEditableCopy')||!$('editableCopyExport'))return;
+  editableCopyState=sourceRun?{status:'checking',run_id:sourceRun}:null;renderEditableCopyDownload();
+  if(!sourceRun)return;
+  const current=()=>request===editableCopyRequest&&sourceRun===runId&&sourceGraph===graph&&sourceSnapshot===graph?.snapshot_sha256;
+  try{
+    const response=await fetch('/api/editable-copy/'+encodeURIComponent(sourceRun)),copy=await response.json();
+    if(!current())return;
+    if(!response.ok)throw new Error('Complete copy metadata could not be verified.');
+    if(copy.run_id!==sourceRun||typeof copy.available!=='boolean')throw new Error('Complete copy belongs to a different workspace.');
+    if(!copy.available){editableCopyState={status:'unavailable',run_id:sourceRun};renderEditableCopyDownload();return;}
+    const expected='/api/editable-copy/'+encodeURIComponent(sourceRun)+'/download';
+    if(copy.download_url!==expected||!Number.isSafeInteger(copy.bytes)||copy.bytes<=0||
+       typeof copy.filename!=='string'||!/^[-A-Za-z0-9_.]+\.zip$/.test(copy.filename)||
+       typeof copy.sha256!=='string'||!/^[0-9a-f]{64}$/.test(copy.sha256)||
+       typeof copy.source_graph_sha256!=='string'||!/^[0-9a-f]{64}$/.test(copy.source_graph_sha256)||
+       copy.snapshot_sha256!==sourceSnapshot||copy.requires?.model!==false||copy.requires?.AWS!==false)
+      throw new Error('Complete copy metadata is incomplete or does not match this workspace.');
+    editableCopyState={status:'available',run_id:sourceRun,copy};renderEditableCopyDownload();
+  }catch(error){if(current()){editableCopyState={status:'error',run_id:sourceRun};renderEditableCopyDownload();}}
+}
 function reviewWorkspaceMode(){
-  if(savedReviewOnly())return {editable:false,message:'Read-only example. You can inspect source records, recorded decisions and agent proposals here. To record your own evidence review, open a complete ordinary workspace in an editable local app. Saving a review creates a new run and preserves the earlier one.'};
+  if(savedReviewOnly())return {editable:false,message:'Read-only example. You can inspect source records, recorded decisions and agent proposals here. To record your own evidence review, open a complete saved source workspace in the local app. Saving a review creates a new run and preserves the earlier one.'};
   if(graph?.qualified_view)return {editable:false,message:'This applied retained-graph view is read-only. Its original baseline and decision ledger are preserved. Review an ordinary source workspace in the local app, then publish a new decision view.'};
   if(!runId)return {editable:false,message:'This exported report is read-only. Open the complete ordinary workspace in the running local app to record a review as a new run.'};
   return {editable:true,message:'Reviews save as a new run. Inspect a source claim, choose Record evidence review, then enter Reviewer, Decision and Reason. Save review in a new run creates your reviewed copy and preserves the earlier run and sources.'};

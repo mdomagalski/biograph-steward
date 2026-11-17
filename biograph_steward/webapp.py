@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import socket
 from threading import Lock
 from urllib.parse import parse_qs, unquote, urlparse, urlsplit
@@ -231,7 +232,8 @@ def login_return_path(value):
 def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                   cache_dir: Path | None = None, timeout: float = 30, *, host='127.0.0.1',
                   allowed_origins=(), access_token=None, neptune_mirror=None,
-                  go_context_dir=None, go_qc_dir=None, saved_data_only=False) -> ThreadingHTTPServer:
+                  go_context_dir=None, go_qc_dir=None, saved_data_only=False,
+                  editable_copy_dir=None) -> ThreadingHTTPServer:
     policy = AccessPolicy(host, allowed_origins, access_token, saved_data_only=saved_data_only)
     sessions = BrowserSessions()
     runs_dir = Path(runs_dir).resolve()
@@ -248,6 +250,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
     # Keep these optional packets outside strict saved workspace inventories.
     go_context_dir = go_context_dir or os.environ.get('BIOGRAPH_GO_CONTEXT_DIR', '').strip() or None
     go_qc_dir = go_qc_dir or os.environ.get('BIOGRAPH_GO_QC_DIR', '').strip() or None
+    editable_copy_dir = editable_copy_dir or os.environ.get('BIOGRAPH_EDITABLE_COPY_DIR', '').strip() or None
 
     def source_agent_source(identifier):
         if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
@@ -354,7 +357,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             if filename:
                 self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
             self.end_headers()
-            self.wfile.write(payload)
+            if self.command != 'HEAD':
+                self.wfile.write(payload)
 
         def json_reply(self, obj: dict, status: int = 200):
             # RFC8259 network JSON uses UTF-8; escaping every native source
@@ -365,6 +369,28 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             except UnicodeEncodeError:
                 payload = json.dumps(obj, ensure_ascii=True, allow_nan=False).encode('ascii')
             self.reply(payload, status)
+
+        def editable_copy_reply(self, metadata, stream):
+            # This is a prepared, byte-verified archive. Do not create a ZIP or
+            # allocate its complete bytes inside the hosted application.
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/zip')
+            self.send_header('Content-Length', str(metadata['bytes']))
+            self.send_header('Content-Disposition', 'attachment; filename="' + metadata['filename'] + '"')
+            self.send_header('ETag', '"' + metadata['sha256'] + '"')
+            self.send_header('X-Content-Type-Options', 'nosniff')
+            self.send_header('Cache-Control', 'no-store')
+            self.send_header('Referrer-Policy', 'same-origin')
+            self.send_header('X-Frame-Options', 'DENY')
+            self.end_headers()
+            if self.command == 'HEAD':
+                return
+            try:
+                shutil.copyfileobj(stream, self.wfile, length=1024 * 1024)
+            except (OSError, ConnectionError):
+                # A cancelled download must not append a JSON error response
+                # after its archive headers/body have already been sent.
+                self.close_connection = True
 
         def refresh_failure(self, folder, exc):
             from .refresh_archive import archive_id
@@ -401,6 +427,22 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             if not policy.allows_action('GET', path):
                 self.json_reply({'error': SAVED_REVIEW_MESSAGE, 'error_code': 'saved_data_only'}, 403)
+                return
+            editable_copy = re.fullmatch(r'/api/editable-copy/([A-Za-z0-9_-]{1,80})(/download)?', path)
+            if editable_copy:
+                from .editable_copy import CopyNotRegistered, describe_editable_copy, open_editable_copy
+                identifier, download = editable_copy.groups()
+                try:
+                    if download:
+                        with open_editable_copy(editable_copy_dir, runs_dir, identifier) as (metadata, stream):
+                            self.editable_copy_reply(metadata, stream)
+                    else:
+                        self.json_reply(describe_editable_copy(editable_copy_dir, runs_dir, identifier))
+                except CopyNotRegistered:
+                    self.json_reply({'error': 'Editable workspace download not found.'}, 404)
+                except (ValueError, TypeError, KeyError, OSError):
+                    self.json_reply({'error': 'Editable workspace copy is unavailable or its recorded bytes changed.',
+                                     'error_code': 'editable_copy_integrity_failed'}, 400)
                 return
             if path == '/api/neptune-status':
                 self.json_reply({'configured': neptune_configured,
@@ -984,6 +1026,14 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 self.reply(buffer.getvalue(), content_type="application/zip", filename=folder.name + ".zip")
                 return
             self.json_reply({"error": "Not found"}, 404)
+
+        def do_HEAD(self):
+            # Only the new prepared-artifact routes acquire HEAD support.
+            # Preserve existing behavior for all other application routes.
+            if re.fullmatch(r'/api/editable-copy/[A-Za-z0-9_-]{1,80}(?:/download)?', urlparse(self.path).path):
+                self.do_GET()
+            else:
+                self.send_error(501, 'Unsupported method')
 
         def do_POST(self):
             path = urlparse(self.path).path

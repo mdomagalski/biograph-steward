@@ -36,7 +36,8 @@ function harness(apiImpl,fetchImpl){
   assert.ok(helpersStart>=0&&helpersEnd>helpersStart&&start>=0&&end>start);
   const output=element('div'),selection={value:'claim:go'},calls=[],fetchCalls=[],downloads=[],objectURLs=[],revoked=[];
   const el=(tag,value)=>{const node=element(tag,value);node.click=()=>downloads.push({href:node.href,download:node.download});return node;};
-  const context=vm.createContext({el,$:id=>id==='sourceGuideSelection'?selection:output,
+  // Review-form behavior is covered separately in evidence_review_ui.test.cjs.
+  const context=vm.createContext({el,sourceReviewControls:()=>element('section'),$:id=>id==='sourceGuideSelection'?selection:output,
     graph:{snapshot_sha256:'invented-snapshot'},runId:'invented_workspace',inspectionRequest:7,
     nodeLabel:value=>value,relationLabel:value=>value,document:{createTextNode:value=>element('text',value)},
     api:async(url,body)=>{calls.push({url,body:clone(body)});return apiImpl(url,body);},

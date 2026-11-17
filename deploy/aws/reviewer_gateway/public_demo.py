@@ -57,6 +57,13 @@ def load_scope(path):
         match = re.fullmatch(r'/api/source-agent/job/(source_agent_[A-Za-z0-9_-]{1,67})(/download)?', path)
         if match and match[1] in data['run_ids']:
             continue
+        # Each prepared-copy metadata/download endpoint must be named in the
+        # reviewed exact GET list. This does not open ordinary /api/download,
+        # source-file paths or any new write route. The backend separately
+        # binds a prepared archive to its one registered source workspace.
+        match = re.fullmatch(r'/api/editable-copy/([A-Za-z0-9_-]{1,80})(/download)?', path)
+        if match and match[1] in data['workspace_ids']:
+            continue
         match = re.fullmatch(r'/api/scientific-assessment/([A-Za-z0-9_-]{1,80})'
                             r'(?:/(?:report|files/(?:sources/[a-z_]+\.json|README\.txt)))?', path)
         if match and match[1] in data['run_ids']:

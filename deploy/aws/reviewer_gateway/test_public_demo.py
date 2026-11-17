@@ -77,6 +77,37 @@ class PublicPreparationTests(unittest.TestCase):
         for method in ('PUT', 'DELETE', 'PATCH', 'OPTIONS'):
             self.assertFalse(public.allows(scope, method, '/'))
 
+    def test_prepared_editable_copy_requires_exact_workspace_get_paths(self):
+        with tempfile.TemporaryDirectory() as folder:
+            data = fixture_scope()
+            approved = {'/api/editable-copy/native_fixture',
+                        '/api/editable-copy/native_fixture/download',
+                        '/api/editable-copy/retained_fixture'}
+            data['get_paths'] = sorted(set(data['get_paths']) | approved)
+            scope = public.load_scope(self.write_scope(folder, data))
+            for target in approved:
+                with self.subTest(target=target):
+                    self.assertTrue(public.allows(scope, 'GET', target))
+                    self.assertTrue(public.allows(scope, 'HEAD', target))
+                    self.assertFalse(public.allows(scope, 'POST', target))
+            for target in ['/api/editable-copy/retained_fixture/download',
+                           '/api/editable-copy/private_fixture/download',
+                           '/api/editable-copy/native_fixture/download?path=other.zip',
+                           '/api/editable-copy/native_fixture?run_id=private_fixture',
+                           '/api/editable-copy/NATIVE_fixture/download',
+                           '/api/editable-copy/%6eative_fixture/download',
+                           '/api/editable-copy/native_fixture/../download',
+                           '/api/download/native_fixture',
+                           '/api/extension-source/native_fixture/source/raw.gz']:
+                with self.subTest(target=target):
+                    self.assertFalse(public.allows(scope, 'GET', target))
+            for extra in ['/api/editable-copy/private_fixture',
+                          '/api/editable-copy/question_fixture/download',
+                          '/api/editable-copy/native_fixture/download/extra']:
+                changed = {**data, 'get_paths': [*data['get_paths'], extra]}
+                with self.subTest(extra=extra), self.assertRaises(ValueError):
+                    public.load_scope(self.write_scope(folder, changed))
+
     def test_scope_requires_separate_pinned_snapshot_and_cannot_grant_raw_downloads(self):
         with tempfile.TemporaryDirectory() as folder:
             changes = [{'read_only_snapshot': False}, {'snapshot_inventory_sha256': '0' * 64},

@@ -54,11 +54,11 @@ test('shared workspace skips database diagnostics while retaining native source 
     const $=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id);};
     const context=vm.createContext({$,el:element,savedReviewOnly:()=>saved,runId:'saved',graph:{assertions:[]},
       inspectionRequest:0,pathRequest:0,workspaceLoaded:true,workspaceSuffix:{ask:'Ask',evidence:'Evidence',export:'Export'},
-      populateSourceGuide(){},populatePathEntities(){},setupNeptune:()=>calls.push('database-diagnostic'),
+      populateSourceGuide(){},populatePathEntities(){},setupEditableCopyDownload:()=>calls.push('prepared-copy-check'),setupNeptune:()=>calls.push('database-diagnostic'),
       setupNativeGoa:()=>calls.push('native-go-source'),location:{hash:''}});
     vm.runInContext(declaration('function setupWorkspace(){','function claimLabel('),context);
     context.setupWorkspace();
-    assert.deepEqual(calls,saved?['native-go-source']:['database-diagnostic','native-go-source']);
+    assert.deepEqual(calls,saved?['prepared-copy-check','native-go-source']:['prepared-copy-check','database-diagnostic','native-go-source']);
     assert.equal($('sourceGuideButton').disabled,false);
   }
 });
