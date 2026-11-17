@@ -1,4 +1,9 @@
-# Optional authenticated reviewer HTTPS gateway
+# Reviewer HTTPS gateway
+
+The default renderer below retains the authenticated reviewer gateway. The
+opt-in [public saved-demo preparation](#prepare-a-scoped-public-demo-without-token-entry)
+uses a separate backend, token and read-only data snapshot. Preparing either
+packet makes no AWS calls and does not change the currently deployed site.
 
 Reusable configuration for the [deployed reviewer gateway](../../../docs/evaluations/reviewer_https_delivery_20261113_summary.json).
 See the [team guide](../../../docs/TEAM_REVIEW_GUIDE_20261113.md) for its checked
@@ -34,6 +39,126 @@ Prepare and test first. Obtain the user's approval of the concrete resources,
 network/authentication changes and intended reviewers before deploying or
 changing the existing app. Commands below are operator instructions, not steps
 the preparation script executes. No automatic deployment command is supplied.
+
+## Prepare a scoped public demo without token entry
+
+This mode reuses standard NGINX proxy-header injection and
+[ECS secret delivery from SSM Parameter Store](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-ssm-paramstore.html).
+It does **not** disable application authentication. The intended backend is a
+separate saved-data-only instance of the same application image on the existing
+VM's private port **8768**. The private operator app on **8766** and its token,
+data, permissions and model configuration remain separate.
+
+Before rendering, the operator must prepare and review a new read-only snapshot.
+It contains only the approved saved folders, the two required restricted index
+files and the native GO/QC context needed by those examples. Do not mount the
+original runs root or indexes pointing outside the snapshot. Do not provide
+model keys, the private operator token or Neptune operator configuration to the
+public backend. Run it with the existing `--saved-data-only` policy, a read-only
+container/data mount, bounded memory/CPU and writable ephemeral temporary/cache
+space. Verify the two workspace IDs and their original graph/source/answer pins.
+The renderer cannot verify the VM snapshot or its mounts.
+
+Copy [public_scope.example.json](public_scope.example.json) into ignored `runs/`
+and replace its snapshot ID and inventory-SHA placeholders with the actual
+reviewed snapshot values. The example lists the **17** selected saved folders
+and **102 exact GET paths** for the current examples. The two raw graph-handoff
+folders are deliberately excluded. The exact fields are:
+
+- `format`: `biograph-steward.public-demo-scope.v1`.
+- `snapshot_id`, `snapshot_inventory_sha256`, `read_only_snapshot: true`:
+  the separate reviewed data snapshot, not a claim made by this renderer.
+- `run_ids`: every approved snapshot-folder ID, with no private experiments or
+  synthetic fixture folders.
+- `workspace_ids`: exactly the workspaces available to graph/source inspection.
+- `get_paths`: exact approved bootstrap, saved run/question/agent-record,
+  aggregate assessment and optional saved assay-reuse paths. No prefix grants.
+
+The public mode permits only these four POST endpoints:
+`/api/explore`, `/api/inspect-source`, `/api/protein-context` and
+`/api/native-go-context`. Their request bodies can select only data mounted in
+the separate snapshot. Question creation, live model calls, retrieval, review
+edits, native-GO question creation, Neptune inspection and export-creation POSTs
+are blocked. Source-agent status/jobs require one exact approved `run_id`.
+Duplicate query keys, unexpected keys, unknown IDs, encoded paths and other
+GETs are denied. Raw source/Gold/recovery/workspace ZIP routes are not anonymous.
+An approved recorded-agent JSON download contains the same already-visible
+result/trace/passports as its GET response. Local browser JSON export of an
+already-visible graph does not obtain additional source files.
+
+The narrow HTML presentation filters remove the exact known sign-out form,
+hide creation/bulk-download controls and identify the site as a public saved
+demo. A checked one-occurrence JavaScript hook suppresses only the otherwise
+ID-less native-GO/QC packet-download control. Recorded-agent step tabs, saved
+questions and source/path inspection remain. These presentation filters are
+not security controls. NGINX's route maps, backend saved-only policy and the
+separate read-only filesystem enforce the boundary independently.
+
+```sh
+python3 deploy/aws/reviewer_gateway/render.py \
+  --public-demo --public-scope runs/PUBLIC_SCOPE.json \
+  --upstream-ip PRIVATE_APP_IP --out runs/public_gateway_build_01
+python3 -m unittest discover -s deploy/aws/reviewer_gateway -p 'test_*.py'
+```
+
+The public packet contains a token **placeholder**, never a token value. Its
+separate Dockerfile uses the same pinned/patched NGINX base and starts as UID101.
+ECS injects `BIOGRAPH_SERVER_TOKEN` from an existing SSM **SecureString holding
+only the new public-backend token**. The startup script validates a 24–256
+character base64url value, uses explicit-variable `envsubst` to render a private
+`/tmp` config with mode0600, unsets the variable and executes NGINX. Missing or
+invalid tokens fail before config creation. Config dumps, alternate configs and
+debug-log arguments are rejected. Do not run `nginx -T`, shell tracing or commands
+that print the container's environment. Query strings, headers and bodies are
+omitted from gateway access logs. Client Authorization/Cookie values are
+discarded, the public bearer is set upstream and Set-Cookie is stripped.
+The gateway requests identity encoding only for root and the exact approved
+HTML report pages that need presentation filtering. JSON forwards the browser's
+`Accept-Encoding` unchanged so the app's existing large-response gzip support,
+quality checks and response `Content-Encoding`/`Vary` remain effective.
+The explicit-variable substitution follows the
+[official NGINX image's existing envsubst mechanism](https://github.com/nginx/docker-nginx/blob/master/entrypoint/20-envsubst-on-templates.sh).
+Exact GET targets use anchored, case-sensitive expressions because
+[NGINX map string keys are case-insensitive](https://nginx.org/en/docs/http/ngx_http_map_module.html#map).
+
+For a deployment packet, add the ordinary immutable-image/network arguments
+shown below and `--ssm-parameter-arn arn:aws:ssm:us-east-2:ACCOUNT:parameter/NAME`.
+The ARN must be in the gateway image's account. The generated public CloudFormation
+template has optional `PublicDemoEnabled`/`SSMParameterARN` parameters, conditioned
+`ssm:GetParameters` for that exact ARN, ECS container `Secrets` and conditioned
+private port8768 ingress/egress rules. Existing8766 rules are preserved. It adds
+no task role. The operator should use the AWS-managed SSM encryption key. A
+customer-managed key would need separately reviewed, scoped `kms:Decrypt`
+permission, which this template does not add. Secret rotation requires a new
+task deployment, as documented by ECS. No secret or cloud resource is created by
+the local renderer.
+
+Preparation tests do not establish NGINX/CloudFormation acceptance. Before
+rollout, the authorized operator must run:
+
+1. `aws cloudformation validate-template --template-body file://PACKET/gateway.template.json`
+   and inspect the change set for only the intended existing-service/IAM/SG
+   changes. This is not permission to create another service or VM.
+2. A real `nginx -t` in the built image using a disposable canary token. Then
+   an isolated proxy test with a mock upstream. Check header overwrite,
+   Cookie/Set-Cookie suppression, token absence in response/image/logs and the
+   default-deny path/method/query cases in `test_public_demo.py`. Test invalid
+   startup values and verify the runtime config permissions and unset environment.
+3. The actual isolated public backend and candidate gateway. Open root and the
+   selected saved agent, all four recorded steps, both workspace examples, path
+   exploration, citation inspection and the aggregate assessment. Confirm there
+   are no visible actions requiring a denied write route. Use no model calls.
+4. Compare complete snapshot/private-source/review/index inventories before and
+   after. Confirm no new question folders, no source changes and no access from
+   the public backend to private operator data. The private backend must still
+   reject a request lacking its own credential.
+
+The public demo reveals the approved saved scientific content and its provenance
+to anyone with the URL. Review metadata, source terms and exact content first.
+For example, existing recorded model traces identify the old model endpoint and
+some aggregate provenance files contain local paths. Those are not credentials,
+but their disclosure must be intentional. A publicly downloadable database is
+not automatically covered by this repository's software license.
 
 ## Why these established components
 
