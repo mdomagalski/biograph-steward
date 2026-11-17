@@ -1,8 +1,6 @@
 # Pharos reference handoff
 
-Updated November 16, 2026.
-
-The designated primary native-source graph has now passed the existing
+The designated primary native-source graph passes the existing
 export → verify → dispositions → verify chain. Its
 [assembly and verification receipt](evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
 records **19,310 unique abstentions with null confidence**, the retained graph,
@@ -10,10 +8,10 @@ complete sources and an exactly reproduced same-snapshot Pharos-only comparator.
 All original app graph files remain unchanged. The separate applied-qualification
 companion retains its own 298 exclusions; those decisions are not transplanted.
 
-The complete graph-and-decisions package and its separate Pharos comparator
-are prepared as separate submission or authorized operator assets. Both prior
-authenticated HTTPS downloads passed complete file-inventory, size, CRC and
-SHA256 checks; see the
+Three verified graph archives are prepared as separate organizer handoff assets.
+The [final package receipt](evaluations/final_delivery_20261117/graph_packages.json)
+records exact archive hashes and full member verification. The primary and
+Pharos comparator also retain their prior authenticated HTTPS checks in the
 [protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json).
 They are separate from the code-only software ZIP. Source terms remain applicable.
 Earlier [fixture and scoped-graph verification](evaluations/GOLD_SET_INTERFACE_20261023.md)
@@ -32,6 +30,18 @@ all included source terms.
 |---|---|
 | Primary graph, decisions and source baseline (`primary_graph_handoff_20261116`) — about 116 MB | The sealed 48-file native graph-and-decisions package. It retains all 19,310 records with explicit `abstain` decisions and null confidence. Its `baseline_packet` preserves the complete enriched input and sources. |
 | Captured Pharos-only comparator (`captured_pharos_comparator_20261116`) — about 27 MB | A separate replayable saved workspace built from the exact original Pharos snapshot, with byte-identical Pharos graph and its own source terms. This is the control for the source additions. |
+| Applied qualification companion — about 130 MB | The separate 101-file sealed graph-and-decisions packet. It preserves 16,985 original records, 16,687 retained records, all 5,051 keep / 298 prune / 11,636 abstain decisions, original sources and terms. Its exclusions concern obsolete GO identifiers. |
+
+The prepared filenames are:
+
+- `BioGraph_Steward_Primary_Graph_Decisions_and_Sources.zip`
+- `BioGraph_Steward_Captured_Pharos_Comparator.zip`
+- `BioGraph_Steward_Applied_Qualification_Companion.zip`
+
+Extract each into its own directory. The companion archive has the sealed packet
+files at its root; it is a graph handoff, rather than a saved-question demo.
+The local handoff folder also supplies a contents note, checksums and a portable
+manifest. These source-bearing archives are excluded from the software repository.
 
 The primary package's enriched input baseline and the Pharos-only comparator
 have different roles. These are captured scoped graphs, not the entire Pharos

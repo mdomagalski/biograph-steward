@@ -1,0 +1,71 @@
+{
+  "format": "biograph-steward.holistic-final-report.v1",
+  "status": "prepared_for_final_submission",
+  "checked_at_UTC": "2026-11-17T06:04:09.338952+00:00",
+  "docx": {
+    "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+    "bytes": 12269,
+    "sha256": "ab1fc81c7bbd3f054eecdc1d987130575a01458587fcd908802d296f276abc58"
+  },
+  "pdf": {
+    "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
+    "bytes": 95469,
+    "sha256": "d58063e142fdb54b9c32f5f32086e38401fd2880b4c285d6965bc40ca79061dc"
+  },
+  "pages": 4,
+  "page_word_counts": [
+    184,
+    348,
+    372,
+    270
+  ],
+  "title": "BioAgent KGCC — BioGraph Steward Project Report",
+  "section_order": [
+    "Team Information",
+    "Key Accomplishments",
+    "Approach and design",
+    "Measured outcomes",
+    "Scope and opportunities",
+    "Final deliverables"
+  ],
+  "user_requested_reordering": true,
+  "subtitle_reminder_deadline_and_publication_promise_removed": true,
+  "team_review_guide_included": false,
+  "template_table_geometry_styles_numbering_and_opaque_parts_preserved": true,
+  "source_reference_sha256": "18a52108e624a98155fcd3edc4bd8f379246441cd6ea8e65842488bc7117feda",
+  "changed_package_parts": [
+    "word/document.xml",
+    "word/_rels/document.xml.rels"
+  ],
+  "quality": {
+    "canonical_bundled_render_passed": true,
+    "all_four_pages_root_visually_reviewed_at_full_size": true,
+    "clipping_overlap_blank_or_orphan_pages": false,
+    "body_font_points": 12,
+    "font_shrink_to_fit": false,
+    "formal_ProtBoost_and_INDRA_references_verified": true,
+    "credentials_included": false,
+    "new_scientific_results_inferred_from_layout": false,
+    "coverage_and_PK_definition_checked_against_pinned_native_evaluator": true
+  },
+  "scientific_scope": {
+    "workflow_capability_then_methods_then_measurements": true,
+    "primary_and_companion_graph_roles_separate": true,
+    "six_fixed_supported_agent_cases_across_two_cohorts": true,
+    "three_unsupported_preflight_stops_not_model_refusals": true,
+    "new_APP_cohort_added_location_recovery_claimed": false,
+    "historical_function_forecasts_separate_from_main99_graph": true,
+    "CIViC_separate_clinical_workflow": true,
+    "source_verifier_is_research_not_automatic_Pharos_pruning": true,
+    "whole_graph_truth_or_transferable_prediction_superiority_claimed": false,
+    "complete_native_eligible_temporal_forecast_frame": 3300,
+    "graph_covered_forecast_targets": 3297,
+    "off_graph_forecast_targets_retained": 3,
+    "primary_function_endpoint": "Additional biological-process annotations for proteins with prior annotations in the same aspect (PK-BP)",
+    "all20412_graph_proteins_claimed_as_scored": false
+  },
+  "repository_visibility_changed": false,
+  "submitted_or_emailed": false,
+  "application_graph_or_model_changed_for_authoring": false,
+  "coverage_qualification": "docs/evaluations/final_delivery_20261117/prediction_coverage_feasibility.md"
+}

@@ -1,5 +1,11 @@
 # Sources and verification boundaries
 
+The [public browser demonstration](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)
+opens without sign-in, a token or an AWS account. It replays verified saved
+work. New source retrieval and agent execution use a local or authorized
+operator installation. Application updates do not refresh the source snapshots
+described below.
+
 ## Current reviewer graph and source dates
 
 The hosted primary workspace was assembled **November 15, 2026**. A November 16
@@ -40,7 +46,8 @@ See [scoped retrieval](SCOPED_RETRIEVAL.md), [the coverage audit](PHAROS_COVERAG
 
 ## Meaning of local outputs
 
-- The bundled demonstration is synthetic. It is explicitly labeled and never substituted after a live failure.
+- A fresh code-only checkout includes an optional invented software fixture, explicitly labeled synthetic. It is never substituted after a live-source failure.
+- The public demonstration's two saved workspaces and the separate `BioGraph_Steward_APP_PSEN_Example.zip` use real captured source data. The [APP/PSEN worked example](evaluations/GENERALIZATION_EXAMPLE_20261117.md) is a separate three-protein snapshot, not the code-only fixture or another public-site workspace.
 - Real source snapshots, retrieval receipts and raw responses are local/ignored unless separately packaged under their applicable rights.
 - Structural validation, upstream editorial status and local human review are separate. None is an automatic scientific-truth guarantee.
 - Source-specific scores remain source-specific; the application does not turn them into a common calibrated confidence.

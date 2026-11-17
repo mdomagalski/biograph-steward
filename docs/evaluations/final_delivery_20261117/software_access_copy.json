@@ -1,0 +1,17 @@
+{
+  "format": "biograph-steward.software-access-copy.v2",
+  "artifact": {
+    "path": "output/software/BioGraph_Steward_Software.zip",
+    "bytes": 727786,
+    "sha256": "d1fa1f6638169a9dbe7ccabf11a85b026be8f8b8e5ddd8c8451b20487890e527"
+  },
+  "prior_sha256": "466bd4cf7d90cd109757d4bb2818308f5dd9581759a693ee4c6ef949fc021e74",
+  "members": 133,
+  "changed_members": [
+    "README_DEMO.md"
+  ],
+  "other132_member_bytes_identical": true,
+  "executable_runtime": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "readme_scope": "Direct public saved-demo route and current user instructions. No review-guide request or future publication promise.",
+  "original_executable_acceptance_preserved": true
+}

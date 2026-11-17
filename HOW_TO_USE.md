@@ -2,12 +2,12 @@
 
 Use BioGraph Steward to follow a biological question to its graph, inspect the
 supporting source records, and share a result someone else can check.
-The reviewer example covers **99 primary human protein targets** from a captured
+The real-data example covers **99 primary human protein targets** from a captured
 Pharos cohort, with additional qualified protein-association and location data.
 This is a frozen research workspace; [source dates](docs/SOURCE_NOTES.md#current-reviewer-graph-and-source-dates)
 are recorded separately from the date the app was updated.
 
-**[Open the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
+**[Open the public demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
 directly. No sign-in, AWS account, installation or running model is needed. Prefer to watch first? Use the
 [3:58 narrated walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)
 or its [transcript](output/walkthrough/BioGraph_Steward_Walkthrough.txt).
@@ -109,7 +109,7 @@ package serve different purposes. See the [graph and source package instructions
 for the primary handoff and separate Pharos-only comparator. A public agent
 record does not silently contain these complete source packets.
 
-## Try another question or give feedback
+## Use another supported question or construct a cohort
 
 Recorded examples also cover EGFR physical associations, TP53 locations and BRAF
 archived pathway context. For BRAF, first open **Review applied graph
@@ -119,15 +119,39 @@ be answered. **Candidate** means available for review;
 **accepted** means explicitly accepted in the local review state. An empty
 accepted-only answer does not mean there is no biological evidence.
 
-To run a new agent question or construct a new cohort, follow
-[operator instructions](docs/SOURCE_AGENT.md#operator-cli) or
-[the three-step graph-building guide](docs/CONSTRUCTION.md#build-through-the-app).
-The existing constructor accepts your protein list and builds a real Pharos
-graph with a cited answer. It needs an internet connection and no model or GPU.
-These operator actions are separate from the
-read-only shared review above.
+New questions and new data belong in a local or operator installation:
 
-For usability feedback, send the step where you got stuck, what you expected,
-and what happened. A screenshot of the exact step is useful. Can you identify
-one added connection, trace its source, distinguish a proposal from an applied
-decision, and find the files another researcher would need?
+- **Construct a new cohort:** follow the
+  [graph-building instructions](docs/CONSTRUCTION.md#build-through-the-app).
+  Supply an explicit list of 1–25 proteins to build a Pharos graph with a cited
+  answer. This needs internet access and no model or GPU.
+- **Run a new agent question:** follow the
+  [source-agent instructions](docs/SOURCE_AGENT.md#operator-cli). Supply a
+  complete source workspace and configure a model endpoint. The agent can use
+  the source tools actually attached to that workspace.
+
+The public demo keeps its saved data and decisions fixed. It provides the same
+inspection workflow without executing these new-run operations.
+
+## Open the portable APP location example
+
+The separately supplied **`BioGraph_Steward_APP_PSEN_Example.zip`** contains a
+complete real-source example for APP, PSEN1 and PSEN2. These proteins are outside
+the original 99-target cohort. It is a local packet, not an additional workspace
+on the public site.
+
+1. Extract it into a new empty directory. Keep the supplied `runs` folder names.
+2. Follow **OPEN_EXAMPLE.txt** to start its included runtime with Python 3.10+.
+   Saved replay needs no installation, model, token, AWS account or network.
+3. Open its exact **APP location-agent** link. Follow the same four step tabs.
+   The recorded query displays 10 of 24 matching location concepts. The complete
+   24-concept answer and its 75 source rows are also preserved in the packet.
+
+This new three-protein Pharos capture is dated November 17 UTC. Its candidate
+source additions and unapplied review proposals remain separate from the
+original graph's qualification decisions. The [worked-example results](docs/evaluations/GENERALIZATION_EXAMPLE_20261117.md)
+explain the source versions, complete replay and unchanged comparison rules.
+
+The [project report PDF](output/pdf/BioGraph_Steward_Final_Report.pdf)
+([Word copy](output/docx/BioGraph_Steward_Final_Report.docx)) explains the
+approach, measured improvements and opportunities for broader validation.

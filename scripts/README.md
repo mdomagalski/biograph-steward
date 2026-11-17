@@ -1,4 +1,11 @@
-# Current investigation scripts
+# Operator and research scripts
+
+Run the application with `python3 app.py`. The [delivery instructions](../docs/DELIVERY.md)
+and [user instructions](../HOW_TO_USE.md) describe the final application and
+its real-data examples. The research drivers below preserve dated experiments,
+including unsuccessful comparisons. They are not a sequence of prerequisites
+for launching the app, and their historical readiness checks do not describe
+the final application's release status.
 
 For delivery, [prepare_judge_demo.py](prepare_judge_demo.py) reuses the committed
 runtime and verified gold-packet APIs to create separate software-only and local
@@ -6,7 +13,8 @@ full-CRC archives. It preserves the original workspace and an all-abstain edge
 ledger, checks extracted byte inventories and records hashes. It neither
 retrieves data nor clears redistribution rights. See [delivery instructions](../docs/DELIVERY.md).
 
-This directory contains preparation tools for the active measured-link investigation. The workbench CLI is `python3 app.py --help`.
+This directory also contains preparation tools for the recorded measured-link
+investigations. The workbench CLI is `python3 app.py --help`.
 
 | Script | Purpose |
 |---|---|

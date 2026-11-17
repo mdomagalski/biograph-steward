@@ -1,19 +1,21 @@
 # BioGraph Steward
 
-BioGraph Steward helps a researcher turn a biological question into an
-inspectable evidence graph and cited answer. It builds on **NIH Pharos** with
-qualified source context. A **NVIDIA Nemotron agent** proposes a supported query,
+BioGraph Steward helps scientists use knowledge graphs without writing graph
+queries. A biological question leads to an inspectable evidence graph and a
+cited answer. It builds on **NIH Pharos** with
+qualified source context. An **NVIDIA Nemotron agent** proposes a supported query,
 prioritizes citations for inspection and produces grounded review proposals.
 The app preserves the original records and makes applied graph decisions
 recoverable.
 
-**[Open the reviewer app](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
+**[Open the public demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
 directly. No sign-in, AWS account, installation or running model is needed.
 
 **[How to use it](HOW_TO_USE.md)** ·
 **[Watch the 3:58 walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)** ·
 [Short presentation](output/presentations/BioGraph_Steward_Overview.pptx) ·
-[Final report](output/docx/BioGraph_Steward_Final_Report.docx) ·
+[Project report PDF](output/pdf/BioGraph_Steward_Final_Report.pdf) ·
+[Word copy](output/docx/BioGraph_Steward_Final_Report.docx) ·
 [Local setup](START_HERE.md#local-setup)
 
 ## What we improved
@@ -22,7 +24,7 @@ directly. No sign-in, AWS account, installation or running model is needed.
 |---|---|
 | **Added source context** | In the captured 99-target cohort, **87 physical-association pairs** and **68 protein–location concepts** are absent from the baseline annotations. KRAS–CDC42BPB is an actual inspected example. These are qualified candidate records, not claims of new biological discoveries. |
 | **More known location labels recovered** | Under the same ontology-qualified mapping, captured Pharos **41/51 → native source 44/51**. The previously used OpenCell reference changes **30/40 → 31/40**. The full comparison retains source overlap, coverage limits and mapping controls. |
-| **A separate function-prediction gain** | In the historical 20,412-protein study, context-aware learning improves fixed-ontology Fmax **0.17155 → 0.21009** over the retained Pharos-derived predictor. Both reference views improve; annotation refresh also helps. This is separate from the 99-target app and agent evaluation. |
+| **A separate biological-process prediction gain** | Using a historical 20,412-protein graph, context-aware learning improves fixed-ontology Fmax **0.17155 → 0.21009** for additional biological-process annotations in proteins already annotated in that aspect (partial knowledge). Both primary reference views improve over the retained Pharos-derived predictor. Annotation refresh also helps. This study is separate from the 99-target app and agent evaluation. |
 | **Recoverable graph qualification** | The retained example excludes **298 obsolete-GO-identifier records**, leaving **16,687 of 16,985 input records**. Original sources and every decision remain available. |
 
 The [submission overview](docs/SUBMISSION_OVERVIEW.md) explains these distinct
@@ -32,13 +34,17 @@ comparisons. The [addition audit](docs/evaluations/source_agent_20261116/demonst
 provide the supporting results. Known-label recovery is not whole-graph
 precision; shared sources and prior reference use limit independence. Additional
 primary learning benefit over fully refreshed annotations remains uncertain.
+The [forecast coverage note](docs/evaluations/final_delivery_20261117/prediction_coverage_feasibility.md)
+explains the complete 3,300-protein temporal-gainer frame: 3,297 in the graph
+and three retained outside it. Further temporal testing requires later labels.
 
-A separate [expert-curated source-claim assessment](docs/evaluations/MECHANISTIC_CLAIM_REVIEW_20261117.md)
-now measures review proposals against public human labels for correct and
-incorrect extractions. A conservative INDRA/Nemotron agreement rule flags
-three unsupported claims and no supported claims in a 134-claim check. This
-small retrospective result supports measured triage, with all controls and
-removal errors reported. It does not enable automatic Pharos deletions.
+A separate [source-verifier comparison](docs/evaluations/SOURCE_VERIFIER_COMPARISON_20261117.md)
+reports the official base/disconfirm methods and learned controls against
+released curator labels. Under the partial Evidence-input view, disconfirm
+scored lower than base and supported claims were wrongly excluded. The verified
+input-completeness gap and any corrected-input diagnostic are reported
+separately. Current app assertions do not carry the complete native INDRA inputs
+needed by that verifier, so these results do not enable automatic Pharos pruning.
 
 ## Use the app
 
@@ -54,48 +60,61 @@ model calls. These are [workflow checks](docs/evaluations/SOURCE_AGENT_RESULTS_2
 not a biological-accuracy percentage. Proposals do not automatically accept
 claims or prune the graph.
 
-For another task, inspect recorded location or archived-pathway questions,
-or review the separate retained TP53 graph. Download the recorded-agent JSON
-from the demo. Complete graph and source packets are supplied separately for
-submission or authorized operator use. The [single user guide](HOW_TO_USE.md) explains the steps and files.
+Recorded examples also cover EGFR associations, TP53 locations and BRAF
+archived pathways. A separate CIViC workflow preserves molecular profiles,
+disease and therapy context for clinical evidence inspection. These tasks
+demonstrate reusable execution within the captured cohort.
+A separate [APP/PSEN worked example](docs/evaluations/GENERALIZATION_EXAMPLE_20261117.md)
+reuses the constructor and agent on three proteins outside the original 99.
+It includes a complete local real-data packet and the same fixed localization
+comparison, with its neutral result and reference-coverage limits preserved.
+Download the recorded-agent JSON from the demo. Complete graph and source
+packets are supplied separately. [How to use it](HOW_TO_USE.md) explains the
+steps and files.
 
 ## Current app, saved data and new runs
 
-The public AWS browser demo replays the recorded source-agent workflow. Its
-[anonymous HTTPS deployment checks](docs/evaluations/public_demo_20261117/hosted_acceptance.json)
-verify direct access without a token, using a separate read-only snapshot of
-the two real-data workspaces. The original operator application remains separate.
-The [live browser check](docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json)
-follows the direct KRAS example through its agent steps, source inspection,
-five task tabs, export and mobile navigation. Applied qualifications and path
-inspection also have [separate checks](docs/evaluations/public_demo_20261117/candidate_acceptance.json).
-Earlier checkpoints remain dated records.
-The shared site is a **read-only replay**: it verifies saved work without new
-model calls, source retrieval or review edits. An authorized operator can
-[run a new agent question](docs/SOURCE_AGENT.md#operator-cli) with a complete
-source workspace and configured model endpoint.
+The public AWS demo is a **read-only replay** of completed agent work over two
+real-data workspaces. It supports graph exploration, source inspection and
+scientific comparisons without new model calls, source retrieval or edits.
+[Deployment](docs/evaluations/public_demo_20261117/hosted_acceptance.json) and
+[browser evidence](docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json)
+record this saved-example mode.
+
+To ask a new agent question, use a local or operator installation with a complete
+source workspace and a configured model endpoint. To construct a new Pharos
+graph, the [cohort constructor](docs/CONSTRUCTION.md#build-through-the-app)
+accepts an explicit list of 1–25 proteins and needs internet access, but no model
+or GPU. The [agent instructions](docs/SOURCE_AGENT.md#operator-cli) explain how
+supported source tools execute a new question. These reusable entry points
+support evaluation on new cohorts beyond the delivered examples.
 
 The demonstration uses a **captured Pharos319 baseline**, with separately saved
 native GO and STRING profiles. It was assembled November 15 from an October 14
-Pharos capture. The app's GO file was generated July 28 and uses the July 26
-ontology; the physical source is STRING 12.5. Exact [source dates](docs/SOURCE_NOTES.md#current-reviewer-graph-and-source-dates)
+Pharos capture. The physical source is STRING 12.5. Exact GO, ontology and other
+[source dates](docs/SOURCE_NOTES.md#current-reviewer-graph-and-source-dates)
 are recorded separately from assembly dates. This is a fixed 99-target research
 workspace. Updating application code does not refresh its upstream datasets. The
 [delivery status](docs/DELIVERY_STATUS_20261115.json) identifies the deployed
 application and saved artifacts.
-The [designated primary graph handoff](docs/GOLD_SET_INTERFACE.md) now has its
+The [designated primary graph handoff](docs/GOLD_SET_INTERFACE.md) has its
 own verified decision ledger, preserved sources and exact captured Pharos-only
 comparator. These full graph/source packets are separate submission assets or
 authorized operator downloads; the public demo offers the recorded-agent JSON.
 
 ## Run locally
 
+For a complete real-data example, open the separately supplied
+`BioGraph_Steward_APP_PSEN_Example.zip`. Extract it into an empty directory and
+follow **OPEN_EXAMPLE.txt**, which selects the recorded APP location-agent job
+directly. Its runtime, source data and recorded job work offline with Python
+3.10+, without a running model. This separate three-protein example does not
+replace the public demo's two 99-target workspaces.
+
 The [code-only software ZIP](output/software/BioGraph_Steward_Software.zip)
-has [clean acceptance](docs/evaluations/democratization_delivery_20261116/software_acceptance.json)
-for the review interface, loading feedback and guided construction entry. Its source revision and the separately
-accepted hosted runtime are recorded in the [release index](docs/releases/20261115/README.md).
-The [public-access instruction update](docs/evaluations/public_demo_20261117/software_access_copy.json)
-changes only the packaged README, preserving every executable file.
+contains the portable app and launch instructions. The
+[release index](docs/releases/20261115/README.md) records software verification,
+deployment and artifact checksums.
 
 The core app needs **Python 3.10+**, with no pip install, GPU or API key:
 
@@ -104,7 +123,7 @@ python3 app.py
 ```
 
 Open `http://127.0.0.1:8765/`. A fresh checkout includes invented software
-fixtures; the complete real-data reviewer packet is supplied separately under
+fixtures. The complete real-data source packet is supplied separately under
 its source terms. Use the hosted site for the real examples, or open an
 authorized saved workspace with all its source files.
 [START_HERE](START_HERE.md#local-setup) covers branch selection and setup.
@@ -120,6 +139,12 @@ authorized saved workspace with all its source files.
 [Testing](docs/TESTING.md) ·
 [Deployment](docs/PORTABILITY.md)
 
+The separately supplied `BioGraph_Steward_Source_Verifier_Code.zip` is a
+research-code adjunct, not the app or a self-contained benchmark. Its
+**README_REPRODUCTION.txt** specifies the matching checkout, optional runtime
+and separately obtained, licensed author/reference inputs. Raw cases, source
+passages, predictions and fitted models are excluded.
+
 The [submission summary](docs/FINAL_SUBMISSION.md) maps the work to judging
 criteria. The [research appendix](docs/RESEARCH_APPENDIX_20261115.md) and
 [experiment ledger](docs/EXPERIMENT_HISTORY.md) retain complete comparisons,
@@ -127,7 +152,6 @@ stronger controls and unsuccessful approaches. The
 [release index](docs/releases/20261115/README.md) separates software, protected
 source data and research artifacts.
 
-Development is on the private
-[`codex/contextual-gain-delivery` branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery).
+Project repository: [github.com/mdomagalski/biograph-steward](https://github.com/mdomagalski/biograph-steward).
 The core software is MIT licensed. Source datasets and reused tools retain
 their own licenses; publishing code does not relicense the mixed-source data.

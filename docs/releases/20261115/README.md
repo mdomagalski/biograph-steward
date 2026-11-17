@@ -1,4 +1,4 @@
-# Reviewer deliverables
+# Project deliverables
 
 Start with the **[hosted application](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
 and the **[step-by-step user guide](../../../HOW_TO_USE.md)**. Open it directly,
@@ -8,10 +8,9 @@ The [public HTTPS acceptance](../../evaluations/public_demo_20261117/hosted_acce
 records the deployment without token entry. The
 [live direct-example browser check](../../evaluations/public_demo_20261117/hosted_browser_acceptance.json)
 passed the agent steps, source inspection, task navigation, graph export and
-mobile view. Research history, earlier browser failures and the tour's local
-capture provenance stay separate.
+mobile view. The tour's local capture provenance is recorded separately.
 
-## Current reviewer files
+## Current project files
 
 | File | Use |
 |---|---|
@@ -19,56 +18,56 @@ capture provenance stay separate.
 | [Plain transcript](../../../output/walkthrough/BioGraph_Steward_Walkthrough.txt) | Read the same explanation or use it when presenting. |
 | [Captions](../../../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | Load the timed captions separately when needed. Captions are also visible in the video. |
 | [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise overview, with the detailed research linked separately. |
-| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Run tested source `84ef6a0`, with the final review interface. Real source data are supplied separately; hosted acceptance is recorded separately. |
-| [Team review guide](../../../output/pdf/BioGraph_Steward_Team_Review_Guide.pdf) | Two pages: direct example links, loading feedback, five tasks and feedback prompts. |
-| [Final report](../../../output/docx/BioGraph_Steward_Final_Report.docx) | Four pages: the organizer's form layout with delivered outputs and validation opportunities, plus methods/results explaining usability, reuse, CIViC and measured gains. Prepared for user review; not submitted. |
+| [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Portable application, cohort construction and saved-source inspection. Real source data are supplied separately. Hosted acceptance is recorded separately. |
+| [Project report PDF](../../../output/pdf/BioGraph_Steward_Final_Report.pdf) · [Word copy](../../../output/docx/BioGraph_Steward_Final_Report.docx) | Scientific motivation, implemented approach, source qualification, agent workflow, measured results, reusable deliverables and opportunities for broader validation. |
+| `BioGraph_Steward_APP_PSEN_Example.zip` | Separately supplied local runtime and complete real-source data for three proteins outside the original 99. **OPEN_EXAMPLE.txt** selects the recorded APP location-agent job. See the [worked example](../../evaluations/GENERALIZATION_EXAMPLE_20261117.md). |
+| `BioGraph_Steward_Source_Verifier_Code.zip` | Research-code adjunct with **README_REPRODUCTION.txt**. A matching checkout, optional runtime and separately licensed frozen author/reference inputs are required. Cases, passages and model outputs are excluded. |
 
 The canonical software archive is
 [BioGraph Steward Software](../../../output/software/BioGraph_Steward_Software.zip).
-It leads to the real hosted review and separately documents the optional
+It leads to the real public demonstration and separately documents the optional
 invented software fixture. The complete real-data snapshot is not bundled in
 the software archive. Its [current clean acceptance](../../evaluations/democratization_delivery_20261116/software_acceptance.json)
-records the final review interface, CLI/HTTP exports, recovery and saved replay.
-The [access-copy receipt](../../evaluations/public_demo_20261117/software_access_copy.json) verifies that only the packaged README changed. The recorded model comparison and presentation retain their original source/runtime pins.
-The final report's [format and review receipt](../../evaluations/public_demo_20261117/final_report.json)
-records preservation of the original form and the approved final-title/date updates.
-The revised guide has its own [current acceptance](../../evaluations/public_demo_20261117/team_review_guide.json).
+records the guided interface, CLI/HTTP exports, recovery and saved replay.
+The [current packaging receipt](../../evaluations/final_delivery_20261117/software_access_copy.json) verifies that only the packaged README changed. The recorded model comparison and presentation retain their original source/runtime pins.
+The [delivery status](../../DELIVERY_STATUS_20261115.json) identifies the current
+report and artifact checksums.
 
 [Current product and scoring summary](../../FINAL_SUBMISSION.md) ·
 [Accepted deployment and artifact status](../../DELIVERY_STATUS_20261115.json)
 
-## Final submission actions
+## Software, data and reproducibility
 
-These publication steps remain to be performed; preparing this index does not
-merge or publish the repository.
+The [designated primary graph, complete decision ledger and captured Pharos
+comparator](../../GOLD_SET_INTERFACE.md#protected-downloads) are separate
+submission or authorized operator assets. The public demo does not expose their
+bulk source archives. The applied-qualification companion preserves the original
+baseline and all keep, remove and unresolved decisions.
+The fourth APP/PSEN archive is a self-contained local workflow example, not a
+replacement for these graphs or an additional public-site workspace. Its
+November 17 UTC capture and recorded source-agent execution are preserved
+separately. The [reused localization comparison](../../evaluations/final_delivery_20261117/generalization_localization.json)
+reports the neutral HOU result and unavailable OpenCell coverage.
 
-1. Resolve material teammate feedback and choose the final tested checkpoint.
-   Merge the reviewed delivery branch into `main`, then create the final tag
-   and release. The current [draft PR](https://github.com/mdomagalski/biograph-steward/pull/1)
-   remains a review route.
-2. Make the MIT software repository public for the open-source submission.
-   Include the tested software ZIP, [user guide](../../../HOW_TO_USE.md),
-   narrated tour with transcript/captions, overview slides and linked results.
-3. Supply the [designated primary graph, complete decision ledger and captured
-   Pharos comparator](../../GOLD_SET_INTERFACE.md#protected-downloads)
-   as separate submission or authorized operator assets. The public demo does
-   not expose their bulk source archives. Include the separately labelled
-   applied-qualification companion if useful. The software license does not
-   authorize blanket public redistribution of the source data.
-4. Send the submission and public demo URL through the organizer's
-   requested route. No demo sign-in is required. Keep AWS available
-   for review. Saved review requires no Brev, GPU or model server.
+The [source-verifier comparison](../../evaluations/SOURCE_VERIFIER_COMPARISON_20261117.md)
+preserves adverse supported-claim exclusions under a partial Evidence-input
+view. Input-completeness corrections and their diagnostics have distinct scope.
+No current application assertion has the complete native INDRA inputs required
+by this verifier, and it is not an automatic Pharos pruning feature.
 
-The supplied brief lists **November 17** as the final deadline, without a
-submission timezone. Hidden gold labels are not needed to complete this handoff.
+Project repository: [github.com/mdomagalski/biograph-steward](https://github.com/mdomagalski/biograph-steward).
+The MIT software license does not authorize blanket redistribution
+of mixed-source datasets. The public demonstration requires no sign-in, AWS
+account, GPU, Brev instance or running model.
 
 <details>
 <summary>Earlier private draft assets and preservation receipts</summary>
 
 
-Use the [private review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery)
-for a current checkout, or the named assets in the existing
-[draft review release](https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab).
+At that earlier checkpoint, the [private review branch](https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery)
+and the named assets in the
+[draft review release](https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab)
+were the delivery routes. Use the current files above for this handoff.
 The [hosted native KRAS example](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask)
 and [ten-minute guide](../../REVIEW_NATIVE_EVIDENCE_20261115.md) need only a browser
 and the privately supplied workspace token. Repository access alone does not
@@ -82,7 +81,7 @@ SHA256 digests and sizes were rechecked; no remote asset re-download is claimed.
 |---|---|
 | `biograph_steward_core_saved_review_software.zip` | Tested standalone MIT core at `47a2e5a`, including native-source questions, saved-review restrictions and byte-verified web reuse. Python 3.10+; synthetic example; no real datasets or third-party dependencies. |
 | `biograph_steward_public_reference_assessment_20261115.zip` | Extract and open `index.html`: bounded HOU/OpenCell recovery, clinical source coverage, physical/functional trade-offs and all relevant qualifications. Aggregate-only; no app or raw reference cases. |
-| `BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx` | Ten editable slides: actual hosted answer/source captures, product flow, measured findings and four technical appendix slides with adverse controls. |
+| `BioGraph_Steward_Challenge_Presentation_20261115_v8.pptx` | Ten slides: actual hosted answer/source captures, product flow, measured findings and four technical appendix slides with adverse controls. |
 | `SHA256SUMS_NATIVE_PROFILES_20261115.txt` | SHA256 checksums for those three new artifacts. |
 
 The earlier contextual-prediction report ZIP and all prior assets remain available.
@@ -92,10 +91,10 @@ The newest data packet and the earlier prediction study concern different tasks;
 their scores are not combined.
 
 The draft retains its older target/tag and has not been published. Its built-in
-source-code downloads follow that older target. Use the **named tested core ZIP**
-or the **review branch** for current software. Draft-release assets require
-repository write permission; tracked reports, slides and the testing guide are
-available to repository readers through the branch.
+source-code downloads follow that older target. At that checkpoint, the named
+tested core ZIP or branch supplied the corresponding software. The draft asset
+and branch permissions described that historical handoff. Use the current
+project-file table above for this delivery.
 
 ## Tested code and protected data
 
