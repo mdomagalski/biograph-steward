@@ -23,15 +23,14 @@
   "existing_AWS_graph_and_reviews_unchanged": true,
   "format": "biograph-steward.delivery-status.v1",
   "github_review_delivery": {
-    "branch": "codex/contextual-gain-delivery",
+    "branch": "main",
     "current_runtime_source_revision": "7eea236cdeacf2d0a0ee33e11b01bc3ae5dac151",
-    "private_repository": true,
-    "main_modified": false,
-    "main_commit_unchanged": "586ec35d33e9429dde91057c4130542988a7ca02",
-    "repository_visibility_modified": false,
+    "private_repository": false,
+    "main_modified": true,
+    "repository_visibility_modified": true,
     "final_public_submission": false,
-    "canonical_file_delivery": "Current artifacts tracked on private codex/contextual-gain-delivery; runtime source pinned separately from delivery-only metadata.",
-    "current_delivery_assets_scope": "Exactly five judge-facing files: START_HERE, one PDF, video, slide deck and app/data/export ZIP. Internal formats and historical packets remain outside that folder. Publication and organizer submission remain owner actions.",
+    "canonical_file_delivery": "Current application and canonical report, narrated demonstration, slides and software are integrated into public main. The runtime source is pinned separately from presentation and delivery metadata.",
+    "current_delivery_assets_scope": "The local five-file organizer folder remains separate. The final GitHub draft release contains the report PDF, narrated MP4, slides and code-only software ZIP. The combined data-bearing archive retains its private organizer-handoff scope.",
     "canonical_current_delivery_files": [
       "output/docx/BioGraph_Steward_Final_Report.docx",
       "output/pdf/BioGraph_Steward_Final_Report.pdf",
@@ -45,14 +44,30 @@
       "output/research/BioGraph_Steward_Source_Verifier_Code.zip"
     ],
     "current_runtime_source_scope": "Seven frontend files overlaid on the existing public backend; complete committed runtime in the portable copy.",
-    "current_delivery_source_URL": "https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery",
+    "current_delivery_source_URL": "https://github.com/mdomagalski/biograph-steward/tree/main",
     "current_judge_facing_files": [
       "output/final_submission/BioGraph_Steward_App_Data_and_Exports.zip",
       "output/final_submission/BioGraph_Steward_Demonstration.mp4",
       "output/final_submission/BioGraph_Steward_Overview.pptx",
       "output/final_submission/BioGraph_Steward_Project_Report.pdf",
       "output/final_submission/START_HERE.txt"
-    ]
+    ],
+    "integrated_source_commit": "237163d4fe0c41581ea5df33980321ab1fc9f7fd",
+    "delivery_branch_retained": "codex/contextual-gain-delivery",
+    "final_release_draft_URL": "https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-a9027a50ce485d5006bc",
+    "final_release_draft_tag": "challenge-2026-final",
+    "final_release_published": false,
+    "application_CI_verification": {
+      "tested_delivery_head": "9b63d000c1619d2749ab6e9ba4b985a80baf6c9c",
+      "pull_request": "https://github.com/mdomagalski/biograph-steward/pull/1",
+      "all_push_and_PR_jobs_passed": true,
+      "job_instances": 18,
+      "offline_workflow": "https://github.com/mdomagalski/biograph-steward/actions/runs/44190354923",
+      "portability_workflow": "https://github.com/mdomagalski/biograph-steward/actions/runs/44190354898",
+      "earlier_failure_cause": "GitHub did not start jobs while the private account was blocked by billing/Actions limits. Standard public runners executed successfully after the owner made the repository public.",
+      "stale_heading_test_corrected": true,
+      "runtime_or_graph_changes_needed": false
+    }
   },
   "hosted_review": {
     "authenticated_acceptance_receipt": {
@@ -1097,8 +1112,8 @@
     "requests": 1
   },
   "unresolved_release_actions": [
-    "Owner: merge the delivery branch pull request into main and change repository visibility in GitHub settings.",
-    "Owner: provide the final report, repository/demo links and separate graph/example assets through the organizer submission channel."
+    "Owner: review and publish the prepared final GitHub Release.",
+    "Owner: send the final report and public repository/demo/release links, with a separate authorized graph/data handoff, through the organizer submission channel."
   ],
   "updated_at_UTC": "2026-11-17T21:05:59.986311+00:00",
   "workspace": {
