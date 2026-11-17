@@ -1,0 +1,253 @@
+{
+  "format": "biograph-steward.fixed-new-cohort-workflow-public-summary.v1",
+  "published_at": "2026-11-17T05:32:05.340088+00:00",
+  "status": "executed_and_offline_verified",
+  "purpose": "Observed reuse of unchanged construction and bounded source-agent workflows on a fixed explicit three-protein cohort. Not a biological accuracy or prediction benchmark.",
+  "cohort": {
+    "selection_fixed_before_source_retrieval": true,
+    "disease_membership_inferred": false,
+    "proteins": [
+      {
+        "gene": "APP",
+        "uniprot": "UniProtKB:P05067",
+        "organism": "NCBITaxon:9606",
+        "primary_identifier_source": "https://www.uniprot.org/uniprotkb/P05067/entry"
+      },
+      {
+        "gene": "PSEN1",
+        "uniprot": "UniProtKB:P49768",
+        "organism": "NCBITaxon:9606",
+        "primary_identifier_source": "https://www.uniprot.org/uniprotkb/P49768/entry"
+      },
+      {
+        "gene": "PSEN2",
+        "uniprot": "UniProtKB:P49810",
+        "organism": "NCBITaxon:9606",
+        "primary_identifier_source": "https://www.uniprot.org/uniprotkb/P49810/entry"
+      }
+    ],
+    "original99_primary_target_overlap": []
+  },
+  "software": {
+    "source_bundle_commit": "c60b85473ad89917a75427e933d59e9bd01f2319",
+    "core_bytes_equal_deployed_source_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+    "new_adapter_or_controller_code": false
+  },
+  "Pharos_capture": {
+    "captured_at_UTC": "2026-11-17T04:57:22.922249+00:00",
+    "reported_version": "pharos319",
+    "endpoint": "https://pharos-api.ncats.io/graphql",
+    "request_envelopes": 12,
+    "profile": "context",
+    "source_snapshot_sha256": "a47b07a163057c45432029cd5597db214dc8f8b1b2f86552f38326edcddc6297",
+    "limits_per_protein": {
+      "pathways": 2000,
+      "go": 500,
+      "ppis": 5000,
+      "drugs": 100,
+      "expressions": 0,
+      "publications": 20
+    },
+    "scope_notes": [
+      "All three exact protein identifiers resolved. GO, pathway, interaction and drug queries reported complete within declared limits.",
+      "Publication discovery was capped at20 per protein. Expression was not requested.",
+      "API version checks do not establish an atomic upstream database snapshot. This is a new capture separate from the original 99-target graph."
+    ]
+  },
+  "native_location": {
+    "policy": "complete-cohort-positive-active-CC-located-in-all-codes.v1",
+    "publication_content_sha256": "146db849aa11a6c2328b42bd7ed494de4d44889147020f96ea87b37f58a1ce5d",
+    "source_gaf": {
+      "scope": "Complete captured HUMAN-uniprot GAF file at its declared source URL",
+      "url": "https://release.geneontology.org/2026-08-05/annotations/gaf/HUMAN-uniprot.gaf.gz",
+      "sha256": "a0afba19dfb1f8fa996bc1bdcd61fd0c9bd4cf0d2bf2509d09ac86993c0e70a2",
+      "bytes": 12109254,
+      "headers": [
+        "!gaf-version: 2.2",
+        "!generated-by: UniProt",
+        "!date-generated: 2026-07-28 19:42",
+        "!go-version: http://purl.obolibrary.org/obo/go/releases/2026-07-26/extensions/go-plus.ofn"
+      ],
+      "scanned_rows": 910476
+    },
+    "ontology": {
+      "version": "http://purl.obolibrary.org/obo/go/releases/2026-07-26/go.owl",
+      "sha256": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273"
+    },
+    "qualification": "Positive active cellular-component located_in, single human taxon, canonical-or-empty form, no With/From or annotation extension. All admitted evidence codes retained. ND/root excluded.",
+    "cohort_native_rows_preserved": 1532,
+    "candidate_records_admitted": 144,
+    "protein_location_concepts": 57,
+    "concepts_present_in_fresh_Pharos": 47,
+    "concepts_absent_from_fresh_Pharos": 10,
+    "primary_proteins_with_admitted_locations": 3,
+    "evidence_code_counts": {
+      "EXP": 28,
+      "HDA": 1,
+      "IDA": 47,
+      "IMP": 1,
+      "TAS": 67
+    },
+    "automatic_acceptance": false
+  },
+  "native_physical": {
+    "policy": "STRING12.5-native-physical-exact-reciprocal-sequence.v1",
+    "publication_content_sha256": "1dd9b1d7e5422d8f136a5d483d385bb9a15915ccd7bee15837e222abed8af9f0",
+    "release": "12.5",
+    "canonical_reference_release": "2026_04",
+    "requested_proteins": 3,
+    "exact_reciprocal_alias_and_full_sequence_admissions": 3,
+    "source_listed_cohort_pairs": 3,
+    "pairs_already_in_fresh_Pharos": 3,
+    "new_pair_coverage": 0,
+    "source_files": {
+      "aliases": {
+        "sha256": "b65f730b993ed0c1bd72edf4565d3d425db42861101b29699704810e8f125680",
+        "bytes": 19777800,
+        "url": "https://stringdb-downloads.org/download/protein.aliases.v12.5/9606.protein.aliases.v12.5.txt.gz"
+      },
+      "canonical": {
+        "sha256": "0444b7cf4f4ddca5467aee7e2d86d45fcf440a9a879c791ecfc4cc186ac0b3d7",
+        "bytes": 13665976,
+        "url": "https://rest.uniprot.org/uniprotkb/stream?query=%28proteome%3AUP000005640%29+AND+%28organism_id%3A9606%29+AND+%28reviewed%3Atrue%29&format=fasta&includeIsoform=false"
+      },
+      "physical": {
+        "sha256": "f3a6a5f8e53e9d0a7b2841544e18d823dc13ae53d6771ca23a6011c2b63ee8c5",
+        "bytes": 7334524,
+        "url": "https://stringdb-downloads.org/download/protein.physical.links.v12.5/9606.protein.physical.links.v12.5.txt.gz"
+      },
+      "sequences": {
+        "sha256": "afe5ebc2d26777a930f947f350c01dc4261d6fa29dd3f217b22fc0225e066ee1",
+        "bytes": 6760990,
+        "url": "https://stringdb-downloads.org/download/protein.sequences.v12.5/9606.protein.sequences.v12.5.fa.gz"
+      }
+    },
+    "meaning": "Separately versioned predicted proximity/co-complex associations. Not direct-binding proof or independent experiments."
+  },
+  "graphs": {
+    "new_Pharos_input": {
+      "entities": 460,
+      "evidence_records": 549,
+      "assertions": 549
+    },
+    "combined_new_example": {
+      "entities": 466,
+      "evidence_records": 696,
+      "assertions": 609,
+      "graph_file_sha256": "2d309be00061c53c66cb98a1cc84bbcf82ec9ed7441919976ae871cd60bdb32b",
+      "graph_basis_sha256": "516af562aa84d085ce792b28ab6f065992533ba611d9b58db2b8efcd14a7b60a"
+    },
+    "all_original549records_and_assertions_preserved": true,
+    "all_additions_candidate": true,
+    "original99_target_graphs_or_public_demo_changed": false
+  },
+  "APP_location_question": {
+    "complete_matching_concepts": 24,
+    "complete_matching_source_rows": 75,
+    "complete_saved_query_page_limit": 25,
+    "complete_saved_query_pages": 1,
+    "agent_display_limit": 10,
+    "displayed_concepts": 10,
+    "accepted_concepts": 0,
+    "empty_accepted_view_means": "No locally accepted native claims, not biological absence."
+  },
+  "actual_agent": {
+    "job_id": "source_agent_20261117T051701Z_27cee9a7",
+    "question": "Where is APP located according to the qualified native GO annotations, and what source context supports those candidate locations?",
+    "fixed_constraints": {
+      "tool": "native_location",
+      "protein_id": "UniProtKB:P05067",
+      "view": "candidates",
+      "go_limit": 10,
+      "max_results": 8,
+      "max_paths": 2
+    },
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+    "model_calls": 3,
+    "maximum_calls": 3,
+    "maximum_output_tokens_per_call": 1200,
+    "maximum_output_tokens_total": 3600,
+    "observed_completion_tokens": 244,
+    "retries": 0,
+    "eligible_query_tool": "native_location constrained by caller, with abstention permitted",
+    "deterministic_parity": {
+      "query": true,
+      "cited_answer": true,
+      "focused_graph": true
+    },
+    "selected_citations": [
+      "E001",
+      "E002",
+      "E003"
+    ],
+    "selected_citation_source_assertions_inspected": 3,
+    "complete_selected_citation_inspection": true,
+    "focused_entities": 11,
+    "focused_evidence_records": 21,
+    "candidate_retention_proposals": 3,
+    "proposals_applied": false,
+    "source_graph_or_review_changes": 0,
+    "fresh_source_fetches": 0,
+    "job_manifest_sha256": "38d82645a05a04361cd36b24651aba4b5ef53ce949886d3fee3b58bc43fb8f63",
+    "job_result_sha256": "104fa6c2e6ef79bf09db46510e3001ca0f2cf1dc7edff37407eae6ca97190b75"
+  },
+  "offline_delivery": {
+    "canonical_archive_filename": "BioGraph_Steward_APP_PSEN_Example.zip",
+    "bytes": 61170245,
+    "sha256": "51053bb481806733a8311aac2ee8b8cb3a2c8445ea0b20396c110acf3fedfad4",
+    "members": 289,
+    "expanded_bytes": 101149001,
+    "includes_runtime_complete_sources_and_saved_job": true,
+    "packaged_Python_without_site_packages_Gold_replay_passed": true,
+    "packaged_source_agent_verify_passed": true,
+    "archive_extraction_member_CRC_size_SHA256_verified": true,
+    "verification_model_calls": 0,
+    "credentials_included": false,
+    "source_license_relicensed_by_software": false,
+    "public_upload_performed": false,
+    "launch_instructions": "OPEN_EXAMPLE.txt inside the separate organizer archive selects the recorded APP location job directly."
+  },
+  "interpretation": [
+    "This is a fixed additional applicability example on three proteins outside the original 99primary targets. It is not independently validated external-disease transfer.",
+    "The explicit constructor performed the source retrieval. The bounded agent selected and executed a saved-source query, inspected citations and proposed review actions. It did not autonomously ingest arbitrary sources.",
+    "Ten additional protein-location concepts measure representation coverage, not biological accuracy. All three physical pairs already occur in the new Pharos capture.",
+    "Exact replay verifies faithful execution and portability. It does not establish scientific truth, independent evidence or prediction gain."
+  ],
+  "reference_labels_used_in_this_increment": true,
+  "optional_localization_transfer_check": {
+    "status": "executed_after_operator_binding_parameterization",
+    "original99_semantic_reproduction_passed": true,
+    "qualified_crosswalk_entries": 107,
+    "qualified_crosswalk_sha256": "a8747663e27df3deea7054c4927ab210dd6dadaec0921084b479fdbca3f3c912",
+    "all_original_controls_and_policies_preserved": true,
+    "new_cohort_reference_label_join": true,
+    "new_cohort_metrics_computed": true,
+    "new_mapping_or_label_repair": false,
+    "requested_primary_proteins": 3,
+    "HOU_matched_primary_proteins": 1,
+    "HOU_reference_unknown_primary": 2,
+    "HOU_positive_labels_recovered_all5arms_all3levels": "2/2",
+    "HOU_incremental_recovery_gain": 0,
+    "OpenCell_matched_primary_proteins": 0,
+    "OpenCell_reference_unknown_primary": 3,
+    "OpenCell_recovery": "undefined",
+    "result_file": "generalization_localization.json",
+    "result_sha256": "2a7453f1ea8b023cc7b5a832fbe923e7278cdd8f97328cf2342e3b6f27ca4b30"
+  },
+  "previous_optional_localization_feasibility": {
+    "status": "stopped_before_label_join_existing_preparation_is_cohort_specific",
+    "qualified_crosswalk_entries": 107,
+    "qualified_crosswalk_sha256": "a8747663e27df3deea7054c4927ab210dd6dadaec0921084b479fdbca3f3c912",
+    "source_eligibility_preparation_requires_new_cohort_binding": true,
+    "OpenCell_original_frozen_forecasts_not_reused_as_new_cohort_predictions": true,
+    "new_cohort_reference_matches": null,
+    "new_cohort_reference_label_join": false,
+    "new_cohort_metrics_computed": false,
+    "new_mapping_or_semantics_introduced": false,
+    "reason": "Existing end-to-end preparation explicitly binds the original99-target retained workspace and completeness denominator. This bounded increment stops rather than inventing a replacement eligibility contract.",
+    "reference_scope": "Previously used HOU/OpenCell development references with known potential shared source lineage. No fresh blind validation."
+  },
+  "source_construction_and_agent_used_reference_labels": false,
+  "localization_comparison_used_previously_seen_reference_labels": true
+}

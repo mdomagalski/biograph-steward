@@ -91,6 +91,47 @@ metadata hashes differ. Pin those actual files in a reviewed contract; do not
 pretend they have the historical execution hashes. Replaying this already opened
 reference remains development evaluation, not fresh independent confirmation.
 
+### Bind another complete explicit cohort
+
+`prepare_cohort_source_eligibility.py` exposes the same eligibility rules with
+explicit source paths and a complete declared cohort. The original 99-target
+preparer and its outputs remain unchanged. The reusable entry reproduced every
+original source-eligibility row and semantic field, with only its producer
+filename and hash differing.
+
+The cohort JSON contains exact primary protein IDs, for example
+`["UniProtKB:P05067", "UniProtKB:P49768", "UniProtKB:P49810"]`. It must match
+the complete baseline snapshot and current graph. Every primary GO query must
+retain the original completeness criteria. Reciprocal reviewed-UniProt/HGNC
+mapping, canonical-form restrictions and unavailable-identity reasons are
+unchanged. The GAF is scanned in full against its explicit byte and row-count
+pins. No reference labels, predictions or model calls are used.
+
+```sh
+python3 tools/reference_accuracy/reproduction/prepare_cohort_source_eligibility.py \
+  --baseline-source /path/to/baseline/source \
+  --current-run /path/to/current/workspace \
+  --cohort /path/to/fixed_cohort.json \
+  --registry /path/to/frozen/identifier_registry \
+  --gaf /path/to/annotations.gaf.gz \
+  --gaf-sha256 PINNED_GAF_SHA256 \
+  --gaf-source-rows PINNED_COMPLETE_GAF_ROW_COUNT \
+  --ontology /path/to/source.json.gz \
+  --ontology-sha256 PINNED_ONTOLOGY_SHA256 \
+  --mitocarta-workbook /path/to/human.mitocarta3.0.xls \
+  --out /path/to/new/source_eligibility
+```
+
+The MitoCarta workbook argument preserves the original metadata-only input
+inventory. Its bytes are hashed and its outcome table is not opened. The
+result can bind the existing HOU/OpenCell operators after the new cohort,
+source views, unchanged mappings and control availability are frozen. An
+unchanged Pharos component inside a combined source workspace is a current-view
+control, not evidence that new pruning decisions were applied. Source-ineligible
+or reference-unmatched proteins must remain explicit in the requested cohort
+denominator. Do not reuse the original 99-target forecasts as predictions for
+a different cohort.
+
 MitoCarta zero/unlisted genes stay unknown. HOU's unlisted compartments stay
 unknown: the HOU adapter reports recovery of positive reference labels and
 unresolved extra outputs, not biological precision, specificity or whole-graph
