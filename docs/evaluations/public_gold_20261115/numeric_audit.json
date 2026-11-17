@@ -1,0 +1,47 @@
+{
+  "format": "biograph-steward.public-gold-independent-numeric-audit.v1",
+  "created_at": "2026-11-15T16:38:53.710261+00:00",
+  "status": "passed",
+  "scope": "Aggregate-only scientific-results snapshot; not a hosted application update or independent biological adjudication.",
+  "public_file_sha256": {
+    "summary.json": "f5f92839ac4ab435c2679ac72417b7fa28a68ef9493aeebcda643e86f6155bdb",
+    "source_qualification.json": "8f4bc546e7e7fd9ace27996f7dbad05e8477f76f29502cb04ddcd5413686ddba",
+    "execution_receipt.json": "811fd1b820d3b7f6c59f57e04d06985ad2e9d0fd4a3e9c6d47c32c9946cac95c",
+    "report.html": "5c2dc261fd957106228f007b93caa5fca40b6486cefe1e92e92229b5162ee617"
+  },
+  "source_report_sha256": {
+    "clinical": "0280f9d10ca75519557c519707361eada708b21b38bb39fa66c1ad9e157f6e15",
+    "historical_ppi": "34678fa1c3784e0717c281799d0c1137a3e7fe3f1643d2a8c8955c1ea57c55ce",
+    "localization": "5cf9221cdbd824691569fce238934a66a400094c3cc171c3c09c588fb8448c6a",
+    "localization_trace": "e41efbe782ec9b2876e72e2997e5144e64eb0414b0a917611943f0c927d6460d",
+    "mitocarta": "dc826f15c755a798f4588d95a0081f58715a64165c7e5e0a3b23b67d89e0aea9",
+    "other_coverage": "56332ff56c6f9efb71bfd224a23da6f1b6d3acc5791c918ae3b81e8333205aa6",
+    "same_release_ppi": "a02e56d3988a9f2527aa3ac7e901345430b238bc18c85a3c10a6e57e981b5511"
+  },
+  "checks": {
+    "seven_actual_source_report_pins": true,
+    "publication_source_and_receipt_pins": true,
+    "all_projected_metrics_deep_equal": true,
+    "historical_and_same_release_PPI_panels_preserved": 12,
+    "negative_study_omissions_preserved_and_anonymized": 14,
+    "HOU_fixed_arms": 5,
+    "HOU_levels": 3,
+    "MitoCarta_fixed_arms": 4,
+    "clinical_full_records": 46,
+    "clinical_full_assertions": 41,
+    "clinical_supported_projections": 2,
+    "candidate_registers": 4,
+    "candidate_register_rows_preserved": 32,
+    "HTML_localization_and_PPI_table_rows_verified": 11,
+    "narrative_gains_losses_and_missingness_verified": true,
+    "HPA_PINC_source_trace_chain_verified": true,
+    "shared_source_and_development_exposure_disclosed": true,
+    "no_global_scientific_accuracy_or_experimental_independence_claim": true,
+    "numeric_JSON_leaf_values_in_publication": 3631,
+    "public_JSON_string_values_scanned": 667,
+    "no_raw_case_protein_pair_publication_IDs_or_private_paths_published": true,
+    "bibliographic_primary_source_URLs_are_not_private_case_IDs": true
+  },
+  "new_evaluation_models_metrics_or_source_changes": false,
+  "followup_note": "The Methods and reproduction Markdown link target was not present during this audit; root is preparing that separate document. This does not change the audited numerical snapshot."
+}

@@ -5,13 +5,13 @@ scores remain unmodified and are never combined into a confidence probability.
 """
 from __future__ import annotations
 
-from collections import Counter
+from collections import Counter, defaultdict
 from copy import deepcopy
 import csv
 import json
 from pathlib import Path
 import re
-from typing import Any
+from typing import Any, TextIO
 from urllib.parse import quote, urlparse
 
 from .client import digest, utcnow, write_json
@@ -122,7 +122,7 @@ def verify_snapshot(snapshot: dict) -> None:
 
 
 def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_snapshot: dict | None = None,
-                *, assay_attachment: dict | None = None) -> dict:
+                *, assay_attachment: dict | None = None, evidence_extension: dict | None = None) -> dict:
     verify_snapshot(snapshot)
     demo = snapshot["data_kind"] == "synthetic_demo"
     cohort = (snapshot.get("scope") or {}).get("kind") == "protein_cohort"
@@ -294,14 +294,24 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
                 raise ValueError("Assay edge conflicts with a source edge or expands the resolved cohort.")
             edges[edge["id"]] = deepcopy(edge)
 
+    if evidence_extension is not None:
+        from .evidence_extension import apply_extension
+        apply_extension(snapshot, nodes, edges, evidence_extension)
+
+    # Summary fields concern outgoing records only. Index once instead of
+    # rescanning the entire evidence inventory for every selected protein.
+    outgoing = defaultdict(list)
+    for edge in edges.values():
+        outgoing[edge["subject"]].append(edge)
     for pid, row in target_rows.items():
-        associated = [e for e in edges.values() if e["subject"] == pid and e["object"] == did]
+        subject_edges = outgoing.get(pid, [])
+        associated = [e for e in subject_edges if e["object"] == did]
         row["association_record_count"] = len(associated)
         row["other_disease_record_count"] = sum(e["subject"] == pid and e["predicate"] == "biolink:associated_with"
-                                                and e["object"] != did for e in edges.values())
+                                                and e["object"] != did for e in subject_edges)
         row["reported_sources"] = sorted({text(e["primary_source_raw"]) for e in associated if text(e["primary_source_raw"])})
         row["review_record_count"] = sum(e["status"] == "needs_review" for e in associated)
-        row["pathway_count"] = len({e["object"] for e in edges.values() if e["subject"] == pid and e["predicate"] == "biolink:participates_in"})
+        row["pathway_count"] = len({e["object"] for e in subject_edges if e["predicate"] == "biolink:participates_in"})
 
     status_counts = Counter(e["status"] for e in edges.values())
     summary = {
@@ -355,6 +365,12 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
         graph["assay_observations"] = deepcopy(assay_attachment["observations"])
         graph["assay_publication_sha256"] = assay_attachment["publication_sha256"]
         graph["assay_attachment_sha256"] = assay_attachment["content_sha256"]
+    if evidence_extension is not None:
+        graph["evidence_extension"] = deepcopy(evidence_extension["summary"])
+        graph["evidence_extension_sha256"] = evidence_extension["content_sha256"]
+        graph["extension_observations"] = [deepcopy(row)
+            for kind in sorted(evidence_extension["sources"])
+            for row in evidence_extension["sources"][kind]["prepared"]["observations"]]
     graph["context_metadata"] = [{"uniprot": t.get("uniprot"), "symbol": t.get("sym"),
                                   **t["pharos_context"].get("metadata", {})}
                                  for t in snapshot["targets"] if isinstance(t, dict) and isinstance(t.get("pharos_context"), dict)]
@@ -376,6 +392,15 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
             "resolve within this cohort. Nondetection is not absence of a biological interaction; failed assays remain in the "
             "observation ledger without edges. The original frozen Pharos lookup is preserved as historical context. "
             "No automatic acceptance, pruning or independent biological validation is performed.")
+    if evidence_extension is not None:
+        if "goa" in evidence_extension.get("sources", {}):
+            graph["interpretation"] += (" Separate native GO annotations retain their recorded relations, "
+                "references and source identities. They remain candidate annotations and do not replace "
+                "historical Pharos records or establish independent experiments, CRC relevance or biological validation.")
+        else:
+            graph["interpretation"] += (" Separate source additions preserve versioned STRING associations and "
+                "qualified MAP-IT tissue proximity observations. Added source proteins are not Pharos target "
+                "seeds. Neither source agreement nor enrichment establishes independent evidence or direct binding.")
     from .assertions import build_assertions, assertion_summary
     graph["review_events"] = deepcopy(review_events) if review_events is not None else []
     graph["assertions"] = build_assertions(graph, graph["review_events"])
@@ -394,35 +419,60 @@ def build_graph(snapshot: dict, review_events: list[dict] | None = None, civic_s
     return graph
 
 
+def _write_tsv_rows(handle: TextIO, rows: list[dict], columns: list[str]) -> None:
+    """Write the existing spreadsheet-safe format to a text stream.
+
+    Both ordinary files and StringIO use newline='' so export verification
+    replays the same bytes without requiring temporary filesystem storage.
+    """
+    writer = csv.DictWriter(handle, fieldnames=columns, delimiter="\t", extrasaction="ignore", lineterminator="\n")
+    writer.writeheader()
+    for row in rows:
+        flat = {key: json.dumps(value, ensure_ascii=True) if isinstance(value, (dict, list))
+                else "" if value is None else value for key, value in row.items()}
+        # Prevent formula interpretation when a table is opened in a spreadsheet.
+        for key, value in flat.items():
+            if isinstance(value, str) and value.startswith(("=", "+", "-", "@")):
+                flat[key] = "'" + value
+        writer.writerow(flat)
+
+
 def _write_tsv(path: Path, rows: list[dict], columns: list[str]) -> None:
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=columns, delimiter="\t", extrasaction="ignore", lineterminator="\n")
-        writer.writeheader()
-        for row in rows:
-            flat = {key: json.dumps(value, ensure_ascii=True) if isinstance(value, (dict, list))
-                    else "" if value is None else value for key, value in row.items()}
-            # Prevent formula interpretation when a table is opened in a spreadsheet.
-            for key, value in flat.items():
-                if isinstance(value, str) and value.startswith(("=", "+", "-", "@")):
-                    flat[key] = "'" + value
-            writer.writerow(flat)
+        _write_tsv_rows(handle, rows, columns)
 
 
 def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review_events: list[dict] | None = None,
              civic_snapshot: dict | None = None, assay_attachment: dict | None = None,
-             assay_source: Path | None = None) -> dict:
+             assay_source: Path | None = None, evidence_extension: dict | None = None,
+             extension_source: Path | None = None) -> dict:
     if (assay_attachment is None) != (assay_source is None):
         raise ValueError("Assay replay requires both its sidecar and complete preserved source publication.")
     assay_files = None
     if assay_attachment is not None:
         from .assay_attachment import source_material
         assay_files = source_material(snapshot, assay_attachment, assay_source)
-    graph = build_graph(snapshot, review_events, civic_snapshot, assay_attachment=assay_attachment)
+    if (evidence_extension is None) != (extension_source is None):
+        raise ValueError("Biological replay requires its sidecar and complete preserved sources.")
+    extension_files = None
+    if evidence_extension is not None:
+        from .evidence_extension import source_material as extension_material
+        extension_files = extension_material(snapshot, evidence_extension, extension_source,
+                                            civic_snapshot, assay_attachment)
+    graph = build_graph(snapshot, review_events, civic_snapshot, assay_attachment=assay_attachment,
+                        evidence_extension=evidence_extension)
     directory = Path(directory)
     if directory.exists() and any(directory.iterdir()):
         raise ValueError("Output directory is not empty. Choose a new directory to preserve previous runs.")
     directory.mkdir(parents=True, exist_ok=True)
     write_json(directory / "snapshot.json", snapshot)
+    if evidence_extension is not None:
+        write_json(directory / "evidence_extension.json", evidence_extension)
+        write_json(directory / "extension_observations.json", graph["extension_observations"])
+        for name, raw in extension_files.items():
+            path = directory / "extension_sources" / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(raw)
     if assay_attachment is not None:
         write_json(directory / "assay_attachment.json", assay_attachment)
         write_json(directory / "assay_observations.json", graph["assay_observations"])
@@ -462,7 +512,8 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
     write_audit(graph['benchmark_readiness'], directory)
     write_json(directory / "source_licenses.json", snapshot.get("source_licenses", [])
                + ([civic_snapshot["source_license"]] if civic_snapshot else [])
-               + ([assay_attachment["source_license"]] if assay_attachment else []))
+               + ([assay_attachment["source_license"]] if assay_attachment else [])
+               + (evidence_extension["source_licenses"] if evidence_extension else []))
     for i, record in enumerate(snapshot.get("requests", [])):
         write_json(directory / "raw_responses" / f"{i:03d}.json", record)
     _write_tsv(directory / "nodes.tsv", graph["nodes"],
@@ -492,6 +543,8 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
             "excluded_items":len(graph["civic"]["excluded_items"]),"local_acceptance_inferred":False}})
     if assay_attachment is not None:
         trace.insert(-1, {"step": "attach_cohort_assay_observations", "result": graph["assay_evidence"]})
+    if evidence_extension is not None:
+        trace.insert(-1, {"step": "attach_versioned_biological_sources", "result": graph["evidence_extension"]})
     write_json(directory / "pipeline_trace.json", trace)
     manifest = {"starter_version": __version__, "graph_format": graph['graph_format'],
                 "assertion_summary": graph['assertion_summary'], "normalization_policy": graph["normalization"]["policy"], "review_event_count": len(graph['review_events']),
@@ -515,6 +568,9 @@ def save_run(snapshot: dict, directory: Path, *, run_mode: str = "build", review
         manifest["assay_evidence"] = graph["assay_evidence"]
         manifest["assay_publication_sha256"] = graph["assay_publication_sha256"]
         manifest["assay_attachment_sha256"] = graph["assay_attachment_sha256"]
+    if evidence_extension is not None:
+        manifest["evidence_extension"] = graph["evidence_extension"]
+        manifest["evidence_extension_sha256"] = graph["evidence_extension_sha256"]
     write_json(directory / "run_manifest.json", manifest)
     from .webapp import report_html
     (directory / "report.html").write_text(report_html(graph), encoding="utf-8")

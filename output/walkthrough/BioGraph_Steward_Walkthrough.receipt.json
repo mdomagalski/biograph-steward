@@ -1,0 +1,623 @@
+{
+  "format": "biograph-steward.local-neural-voice-walkthrough.v1",
+  "status": "promoted_after_root_and_agent_visual_review",
+  "synthetic_voice": "Kokoro af_heart",
+  "speech_engine": "kokoro-onnx0.6.1 with official Kokoro-82M-v1.0",
+  "new_agent_LLM_calls": 0,
+  "new_prediction_runs": 0,
+  "fresh_scientific_source_retrievals": 0,
+  "local_neural_TTS_sections_generated": 6,
+  "local_neural_TTS_sections_reused": 5,
+  "unique_revised_TTS_sections": 5,
+  "last_correction_TTS_sections_generated": 1,
+  "last_correction_TTS_sections_reused": 9,
+  "unchanged_encoded_clips_copied": [
+    {
+      "scene": "start",
+      "sha256": "46fbd0b05f53a855a1143743566862ee976440bb1252db37c11602c03cf6e24b",
+      "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/01_start.mp4"
+    },
+    {
+      "scene": "added_pair",
+      "sha256": "59ba7f4aef5e1c2826a850dc4daf2774c08f3797ed0269be80f7aa83a3b30f8f",
+      "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/02_added_pair.mp4"
+    },
+    {
+      "scene": "agent",
+      "sha256": "c096b29c4d5e31c5e4460c4e2d45bd88bcb2c96a0e005036c45f752350593d67",
+      "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/04_agent.mp4"
+    },
+    {
+      "scene": "explore_answer_paths_results",
+      "sha256": "21ef636cea79bb575c143a670b33a55b6f137d5b769a9a16e660568b9185ffe2",
+      "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/05_explore_answer_paths_results.mp4"
+    },
+    {
+      "scene": "edit_copy",
+      "sha256": "0c9ec58cf39b0dfb9472f956e1e3e771e6f9a8bf2a924e0350c4ba8a14494be1",
+      "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/06_edit_copy.mp4"
+    },
+    {
+      "scene": "prediction",
+      "sha256": "a68b4f2e9ef6e3fe0faaa359f37edcb5d2f4d1620461594d23da506fa1330640",
+      "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/07_prediction.mp4"
+    },
+    {
+      "scene": "review",
+      "sha256": "0d98127668a3e4ff21c97a252f72c0ef0e847a736fbba17d3ab3e8d360506d05",
+      "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/08_review.mp4"
+    },
+    {
+      "scene": "interpretation",
+      "sha256": "c0aa1b5dce72b5bd6ddd3a55394d4b8379906d422c38a59f3f1ea0ff365467c1",
+      "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/09_interpretation.mp4"
+    },
+    {
+      "scene": "export",
+      "sha256": "3a200ccff483770811e35a269dbd7011e52eab3f8b0729d01fed56b3f1248c3c",
+      "source": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v2/10_export.mp4"
+    }
+  ],
+  "local_neural_TTS_inferences_performed": true,
+  "speech_text_uploaded_to_cloud": false,
+  "paid_compute_started": false,
+  "accepted_layout_implementation": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/assemble_still_walkthrough.py",
+  "layout_source_sha256": "1d3ccf33391a2ac7e52b630bdc5dc654b7b27e94592ec04b6f967e1ad9d899e1",
+  "capture_config": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/media/still_capture_config.json",
+  "capture_config_sha256": "26f0dddb162556b1da298b8ad6fe63891b51745cebb6440a1eacea3dd6c14e0b",
+  "full_capture_provenance_retained_in_original_config": true,
+  "source_captures_are_prior_verified_completed_UI_states": true,
+  "current_loading_spinner_not_reconstructed_or_shown_as_fresh_capture": true,
+  "current_spinner_and_picker_only_update_does_not_change_completed_views_in_crops": true,
+  "scientific_report_image_and_values_unchanged": true,
+  "only_crop_scale_letterbox_and_caption_band_added": true,
+  "new_source_agent_run_or_personal_review_performed": false,
+  "source_narration_receipt_sha256": "1ca0239b0fbdb3cee20863447167d8bdeb3a893bbc8110ef6165d06d19282ccc",
+  "final_report_content_sha256": "53441869383cc54b697f5948e1b6123808de291a018818adbff4e9f373319dd2",
+  "ffmpeg": {
+    "file": "/Users/42573/biograph-steward-pharos/runs/final_clarity_delivery_20261117/voice_research/venv/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v7.1",
+    "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+    "version": "ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers",
+    "ass_filter": true,
+    "loudnorm_filter": true,
+    "libx264_encoder": true,
+    "source": "officialPyPIimageio-ffmpeg0.6.0installedwheel",
+    "canonical_tools_replaced": false
+  },
+  "audio_time_stretched": false,
+  "sentence_cues_from_author_phoneme_durations": true,
+  "independent_ASR_or_manual_audio_audition_claimed": false,
+  "caption_numerals_and_gene_symbols_formatted_without_changing_values": true,
+  "timeline_seconds": 261.52000000000004,
+  "chapters": [
+    {
+      "id": "start",
+      "title": "One workflow, from question to reviewed evidence",
+      "start_seconds": 0.0,
+      "end_seconds": 28.4,
+      "lead_seconds": 1.5,
+      "speech_seconds": 26.442,
+      "cuts": [
+        0,
+        17.905,
+        28.4
+      ]
+    },
+    {
+      "id": "added_pair",
+      "title": "An inspectable addition to Pharos",
+      "start_seconds": 28.4,
+      "end_seconds": 52.08,
+      "lead_seconds": 0.45,
+      "speech_seconds": 22.772666666666666,
+      "cuts": [
+        0,
+        2.619,
+        9.369,
+        17.369,
+        23.68
+      ]
+    },
+    {
+      "id": "measured",
+      "title": "A shared reference subset measures location recovery",
+      "start_seconds": 52.08,
+      "end_seconds": 87.44,
+      "lead_seconds": 0.45,
+      "speech_seconds": 34.425333333333334,
+      "cuts": [
+        0,
+        29.910333333333334,
+        35.36
+      ]
+    },
+    {
+      "id": "agent",
+      "title": "The agent follows a supported investigation",
+      "start_seconds": 87.44,
+      "end_seconds": 111.2,
+      "lead_seconds": 0.45,
+      "speech_seconds": 22.826666666666668,
+      "cuts": [
+        0,
+        12.451333333333332,
+        17.426333333333332,
+        23.76
+      ]
+    },
+    {
+      "id": "explore_answer_paths_results",
+      "title": "Explore the complete question result",
+      "start_seconds": 111.2,
+      "end_seconds": 135.36,
+      "lead_seconds": 0.45,
+      "speech_seconds": 23.220666666666666,
+      "cuts": [
+        0,
+        1.65,
+        4.1049999999999995,
+        6.955,
+        9.479999999999999,
+        16.105,
+        20.38,
+        24.16
+      ]
+    },
+    {
+      "id": "edit_copy",
+      "title": "Continue with the same evidence locally",
+      "start_seconds": 135.36,
+      "end_seconds": 156.28000000000003,
+      "lead_seconds": 0.45,
+      "speech_seconds": 19.983333333333334,
+      "cuts": [
+        0,
+        7.124,
+        11.024000000000001,
+        16.104,
+        20.92
+      ]
+    },
+    {
+      "id": "prediction",
+      "title": "A separate historical prediction study",
+      "start_seconds": 156.28000000000003,
+      "end_seconds": 200.72000000000003,
+      "lead_seconds": 0.45,
+      "speech_seconds": 43.525,
+      "cuts": [
+        0,
+        19.825,
+        34.900000000000006,
+        44.44
+      ]
+    },
+    {
+      "id": "review",
+      "title": "The same workflow makes graph decisions inspectable",
+      "start_seconds": 200.72000000000003,
+      "end_seconds": 224.24000000000004,
+      "lead_seconds": 0.45,
+      "speech_seconds": 22.592,
+      "cuts": [
+        0,
+        23.52
+      ]
+    },
+    {
+      "id": "interpretation",
+      "title": "Examples demonstrate the workflow; studies assess it",
+      "start_seconds": 224.24000000000004,
+      "end_seconds": 244.76000000000005,
+      "lead_seconds": 0.45,
+      "speech_seconds": 19.584,
+      "cuts": [
+        0,
+        5.222666666666667,
+        10.897666666666666,
+        20.52
+      ]
+    },
+    {
+      "id": "export",
+      "title": "Use the app, follow a question, continue locally",
+      "start_seconds": 244.76000000000005,
+      "end_seconds": 261.52000000000004,
+      "lead_seconds": 0.45,
+      "speech_seconds": 15.840666666666667,
+      "cuts": [
+        0,
+        6.072666666666667,
+        13.172666666666666,
+        16.76
+      ]
+    }
+  ],
+  "image_sources": [
+    {
+      "scene": "start",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/local_start_agent_current.png",
+      "sha256": "7dfcc904868ddd87a28fb3779e6f61a485784db4d4500edee060adbf92a6b8a6",
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 17.905
+    },
+    {
+      "scene": "start",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_agent_start.png",
+      "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+      "crop": {
+        "x": 60,
+        "y": 360,
+        "width": 1320,
+        "height": 570
+      },
+      "start_seconds_in_scene": 17.905,
+      "end_seconds_in_scene": 28.4
+    },
+    {
+      "scene": "added_pair",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/E002_actual_evidence_graph.png",
+      "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 2.619
+    },
+    {
+      "scene": "added_pair",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/missing02/E002_actual_pair_coverage_identity.png",
+      "sha256": "43257b8064148d637c264e18158259f63fb98e6506bb9b6a0991503888203913",
+      "crop": null,
+      "start_seconds_in_scene": 2.619,
+      "end_seconds_in_scene": 9.369
+    },
+    {
+      "scene": "added_pair",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/E002_actual_native_STRING_source.png",
+      "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
+      "crop": null,
+      "start_seconds_in_scene": 9.369,
+      "end_seconds_in_scene": 17.369
+    },
+    {
+      "scene": "added_pair",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/missing02/E002_actual_review_proposal.png",
+      "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
+      "crop": null,
+      "start_seconds_in_scene": 17.369,
+      "end_seconds_in_scene": 23.68
+    },
+    {
+      "scene": "measured",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_reference_report_ee3/direct_location_reference.png",
+      "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 400
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 29.910333333333334
+    },
+    {
+      "scene": "measured",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_reference_report_ee3/direct_opencell_reference.png",
+      "sha256": "ae90d99ea6df72d4474181d80362b78631e1c72cb2ecdf4c6b6c3c78c9e4b334",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 286
+      },
+      "start_seconds_in_scene": 29.910333333333334,
+      "end_seconds_in_scene": 35.36
+    },
+    {
+      "scene": "agent",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_agent_plan.png",
+      "sha256": "1461dc45b541f25f840c433ccaf2be43b0367f17b8a3b7b3d3726ac53ab83646",
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 12.451333333333332
+    },
+    {
+      "scene": "agent",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/E002_actual_evidence_graph.png",
+      "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
+      "crop": null,
+      "start_seconds_in_scene": 12.451333333333332,
+      "end_seconds_in_scene": 17.426333333333332
+    },
+    {
+      "scene": "agent",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/missing02/E002_actual_review_proposal.png",
+      "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
+      "crop": null,
+      "start_seconds_in_scene": 17.426333333333332,
+      "end_seconds_in_scene": 23.76
+    },
+    {
+      "scene": "explore_answer_paths_results",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_overview_controls.png",
+      "sha256": "a0be17be362eb26c10ae35e1002b2a5a404996f8f2e8e6db3372cfbb79cbfd15",
+      "crop": {
+        "x": 130,
+        "y": 145,
+        "width": 1305,
+        "height": 190
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 1.65
+    },
+    {
+      "scene": "explore_answer_paths_results",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_all_14_partners.png",
+      "sha256": "5818037ecdf24a8cc54fced1603bfb2002531aba66601fbe883764457c15c80d",
+      "crop": {
+        "x": 135,
+        "y": 66,
+        "width": 1285,
+        "height": 690
+      },
+      "start_seconds_in_scene": 1.65,
+      "end_seconds_in_scene": 4.1049999999999995
+    },
+    {
+      "scene": "explore_answer_paths_results",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_focused_CDC42BPB.png",
+      "sha256": "0ff38c6f19399287e79d2ffe0a7219d76e1ff1a9fdf7f0ee3a1ad0200381f932",
+      "crop": {
+        "x": 130,
+        "y": 145,
+        "width": 1305,
+        "height": 580
+      },
+      "start_seconds_in_scene": 4.1049999999999995,
+      "end_seconds_in_scene": 6.955
+    },
+    {
+      "scene": "explore_answer_paths_results",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_all_14_partners.png",
+      "sha256": "5818037ecdf24a8cc54fced1603bfb2002531aba66601fbe883764457c15c80d",
+      "crop": {
+        "x": 135,
+        "y": 66,
+        "width": 1285,
+        "height": 690
+      },
+      "start_seconds_in_scene": 6.955,
+      "end_seconds_in_scene": 9.479999999999999
+    },
+    {
+      "scene": "explore_answer_paths_results",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_path_entity_search.png",
+      "sha256": "270bc90790f2294809fade394edb888a8ddf838392134f55461d0a295d5732a9",
+      "crop": {
+        "x": 150,
+        "y": 100,
+        "width": 1255,
+        "height": 565
+      },
+      "start_seconds_in_scene": 9.479999999999999,
+      "end_seconds_in_scene": 16.105
+    },
+    {
+      "scene": "explore_answer_paths_results",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_KRAS_path_result.png",
+      "sha256": "0a1a52e547e9807d86eaacab43ba5b484f10fd8b19fc5a748975f5ed81e6128f",
+      "crop": {
+        "x": 150,
+        "y": 270,
+        "width": 1255,
+        "height": 525
+      },
+      "start_seconds_in_scene": 16.105,
+      "end_seconds_in_scene": 20.38
+    },
+    {
+      "scene": "explore_answer_paths_results",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_results_intro.png",
+      "sha256": "5cbb61cc0710a9c3493e5b1b13cd0ac2a7929b12292827b4fd2e94cc580a3cc3",
+      "crop": {
+        "x": 110,
+        "y": 140,
+        "width": 1330,
+        "height": 660
+      },
+      "start_seconds_in_scene": 20.38,
+      "end_seconds_in_scene": 24.16
+    },
+    {
+      "scene": "edit_copy",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_editable_copy_control.png",
+      "sha256": "bcb34a5f54777dc7850a9b40f27fa160fb8a2c3f7613d845411affe88fc1afe2",
+      "crop": {
+        "x": 110,
+        "y": 240,
+        "width": 1330,
+        "height": 280
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 7.124
+    },
+    {
+      "scene": "edit_copy",
+      "file": "/Users/42573/biograph-steward-pharos/runs/question_graph_usability_20261117/browser/hosted_focused_CDC42BPB.png",
+      "sha256": "0ff38c6f19399287e79d2ffe0a7219d76e1ff1a9fdf7f0ee3a1ad0200381f932",
+      "crop": {
+        "x": 130,
+        "y": 145,
+        "width": 1305,
+        "height": 580
+      },
+      "start_seconds_in_scene": 7.124,
+      "end_seconds_in_scene": 11.024000000000001
+    },
+    {
+      "scene": "edit_copy",
+      "file": "/Users/42573/biograph-steward-pharos/runs/editable_demo_copy_20261117/browser/local_KRAS_provisional_review_form.png",
+      "sha256": "e39aab7a15d94ff0808acf65c6235b2a815401a1b07317d545ad81b01dc2cd1b",
+      "crop": {
+        "x": 900,
+        "y": 135,
+        "width": 510,
+        "height": 480
+      },
+      "start_seconds_in_scene": 11.024000000000001,
+      "end_seconds_in_scene": 16.104
+    },
+    {
+      "scene": "edit_copy",
+      "file": "/Users/42573/biograph-steward-pharos/runs/editable_demo_copy_20261117/browser/local_KRAS_review_saved_new_run.png",
+      "sha256": "b1025560e2b64987a50c186c5c18d21bc8fb8daf034acc5ed34abd7727461492",
+      "crop": {
+        "x": 895,
+        "y": 215,
+        "width": 515,
+        "height": 390
+      },
+      "start_seconds_in_scene": 16.104,
+      "end_seconds_in_scene": 20.92
+    },
+    {
+      "scene": "prediction",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report.png",
+      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 19.825
+    },
+    {
+      "scene": "prediction",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report.png",
+      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+      "crop": {
+        "x": 20,
+        "y": 15,
+        "width": 1240,
+        "height": 275
+      },
+      "start_seconds_in_scene": 19.825,
+      "end_seconds_in_scene": 34.900000000000006
+    },
+    {
+      "scene": "prediction",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report.png",
+      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+      "crop": {
+        "x": 20,
+        "y": 302,
+        "width": 1240,
+        "height": 270
+      },
+      "start_seconds_in_scene": 34.900000000000006,
+      "end_seconds_in_scene": 44.44
+    },
+    {
+      "scene": "review",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_applied_qualification.png",
+      "sha256": "eead630ee0d754f7ac3191ddd029522b64b2bf74a37417cb7795ca225741956e",
+      "crop": null,
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 23.52
+    },
+    {
+      "scene": "interpretation",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_reference_report_ee3/direct_location_reference.png",
+      "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 400
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 5.222666666666667
+    },
+    {
+      "scene": "interpretation",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_E002/E002_actual_native_STRING_source.png",
+      "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
+      "crop": null,
+      "start_seconds_in_scene": 5.222666666666667,
+      "end_seconds_in_scene": 10.897666666666666
+    },
+    {
+      "scene": "interpretation",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report.png",
+      "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+      "crop": null,
+      "start_seconds_in_scene": 10.897666666666666,
+      "end_seconds_in_scene": 20.52
+    },
+    {
+      "scene": "export",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_agent_record_download.png",
+      "sha256": "ba201b0b67e00c6f9c63e909774db7806d3f6231593f5d875e92166eaf7c2c14",
+      "crop": {
+        "x": 60,
+        "y": 250,
+        "width": 1320,
+        "height": 690
+      },
+      "start_seconds_in_scene": 0,
+      "end_seconds_in_scene": 6.072666666666667
+    },
+    {
+      "scene": "export",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_retained_export.png",
+      "sha256": "d08adcab4374cd005c29ec61add768a3781aea5a45c766887e0cb7d12ab6de3f",
+      "crop": {
+        "x": 60,
+        "y": 310,
+        "width": 1320,
+        "height": 605
+      },
+      "start_seconds_in_scene": 6.072666666666667,
+      "end_seconds_in_scene": 13.172666666666666
+    },
+    {
+      "scene": "export",
+      "file": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/current_local_agent_start.png",
+      "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+      "crop": {
+        "x": 60,
+        "y": 360,
+        "width": 1320,
+        "height": 570
+      },
+      "start_seconds_in_scene": 13.172666666666666,
+      "end_seconds_in_scene": 16.76
+    }
+  ],
+  "caption_cues": 50,
+  "full_video_decode_and_audio_analysis_passed": true,
+  "visual_review_pending": false,
+  "canonical_media_changed": true,
+  "files": {
+    "BioGraph_Steward_Walkthrough.mp4": {
+      "bytes": 7789767,
+      "sha256": "401ddd09b570a75c2bdb2b06b81ef8e63f5c1a382774ec8f233d3253810a9387"
+    },
+    "BioGraph_Steward_Walkthrough.vtt": {
+      "bytes": 5116,
+      "sha256": "674ce077f4b3141ce06b39e269a4f0e7888c73cfe0c9a457fc4973ad08c8b448"
+    },
+    "BioGraph_Steward_Walkthrough.srt": {
+      "bytes": 5249,
+      "sha256": "30d8fbb001d30d390dfa631607ae2e76bf24ac47dd4d1dc3ce85a520ffc8de07"
+    },
+    "BioGraph_Steward_Walkthrough.txt": {
+      "bytes": 4460,
+      "sha256": "f6105ae3b40de1e6b670a37d79497f01262176a279af185c12bdc1607271300f"
+    }
+  },
+  "agent_visual_QA": true,
+  "sampled_frames_checked": 15,
+  "actual_current_browser_capture": false,
+  "manual_audio_audition": false,
+  "visual_qa_receipt": "/Users/42573/biograph-steward-pharos/runs/product_workflow_clarity_20261117/media/workflow_video_v3/visual_QA/qa.json",
+  "root_visual_QA": true,
+  "previous_canonical_preserved_privately": true
+}

@@ -1,0 +1,35 @@
+{
+  "format": "biograph-steward.review-workflow-demo-delivery.v1",
+  "seconds": 272.7,
+  "files": {
+    "BioGraph_Steward_Walkthrough.mp4": {
+      "bytes": 7609388,
+      "sha256": "8eebab19f2aac21a50e8f4538636fb1ec992f44c2f0633126d250ec7c34bd5c6"
+    },
+    "BioGraph_Steward_Walkthrough.vtt": {
+      "bytes": 6143,
+      "sha256": "d23ad750c8ebf24c4928c8cc7ca12774a4a57c2cf594d2c1b688fb6d41210e3d"
+    },
+    "BioGraph_Steward_Walkthrough.srt": {
+      "bytes": 6315,
+      "sha256": "7f5170707fea2d507510c19a0cd0f1d078f55819d722e61367e9b1a70f1aa3ee"
+    },
+    "BioGraph_Steward_Walkthrough.txt": {
+      "bytes": 6261,
+      "sha256": "f0479ee3834c347b8379a703b78779848c3e534f3a32db188f8b6ae81cf12bf0"
+    }
+  },
+  "contains_actual_UI_graph_selection_and_new_run_review": true,
+  "synthetic_narration": true,
+  "edited_screenshot_states_not_continuous_recording": true,
+  "isolated_local_provisional_demonstration_reviews": 1,
+  "original_workspace_and_sources_unchanged": true,
+  "public_demo_read_only": true,
+  "primary_prediction_scope": "Additional biological-process annotations for proteins already BP-annotated at the starting time.",
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "new_scientific_measurements": false,
+  "full_decode_caption_timing_and_audio_level_checks_passed": true,
+  "root_visual_and_narration_text_review_passed": true,
+  "human_listening_study_claimed": false
+}

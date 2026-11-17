@@ -1,0 +1,26 @@
+{
+  "format": "biograph-steward.current-product-overview-delivery.v1",
+  "file": "output/presentations/BioGraph_Steward_Overview.pptx",
+  "bytes": 419652,
+  "sha256": "8e920247cfa30c0521cad9e89032df9daaf8b3604a5504668d70f052516c8577",
+  "slides": 7,
+  "native_tables": 1,
+  "actual_application_images": 6,
+  "all_full_size_slides_visually_reviewed": true,
+  "all_required_baseline_and_native_reference_counts_checked": true,
+  "rubric_weights_in_editable_speaker_notes": true,
+  "capture_mode": "local",
+  "capture_runtime_commits": [
+    "4c916813144a5bb2267b707642b94ef648c8195c",
+    "31123ae956bc7c99fd311d55c064e0d4e58c729f"
+  ],
+  "hosted_runtime_update_claimed": false,
+  "agent_role_limited_to_schema_validated_bounded_planning": true,
+  "whole_graph_accuracy_or_prediction_gain_claimed": false,
+  "historical_v8_preserved_unchanged": true,
+  "canonical_current_presentation_count": 1,
+  "selected_path_vs_full_workspace_explicit": true,
+  "complete_workspace_entities": 9724,
+  "complete_workspace_evidence_records": 19310,
+  "root_contact_sheet_and_updated_slide3_visually_reviewed": true
+}

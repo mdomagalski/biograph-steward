@@ -1,0 +1,37 @@
+{
+  "format": "biograph-steward.midpoint-report-assessment-delivery.v1",
+  "created_at": "2026-10-27T19:27:22.238025+00:00",
+  "status": "ready_for_user_review_not_sent",
+  "docx": "runs/midpoint_report_assessment_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+  "docx_sha256": "6b0ee786ed70328f1edf3f916c03f1d9eaf41a6a4f75e65655eee38610df10c9",
+  "source_docx": "/Users/42573/biograph-steward-pharos/runs/midpoint_report_strong_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+  "source_sha256": "04f52bc31438d2e54fde3061030d29a16f48773e3c315642b17c9eb89951e7b5",
+  "pages": 2,
+  "narrative_words": 323,
+  "fidelity_qa": "runs/midpoint_report_assessment_20261027/fidelity_qa.json",
+  "fidelity_qa_sha256": "010329bbbd5e7bcb318509eff5278c0a7ec870a1ab6fe4b6ba8d53f571f6feb6",
+  "evidence_references": {
+    "docs/evaluations/cancer_investigation_demo_20261027_summary.json": "7134b615e2d62d3c75afb569d69e3f5f66ad24826d93486cbc870d3a29db05a5",
+    "docs/evaluations/intact_fresh_assessment_20261027_summary.json": "03f9609090f4bc65356a74f8b2ff44271eedf5b515f3ccbd149ecb35515144e0",
+    "runs/intact_fresh_assessment_20261027/independent_result_audit.json": "18e6e57eea2118eb5c24eea0449d60b9c5607015b9c6086de9267249129a6599"
+  },
+  "cancer_demo": "runs/cancer_investigation_demo_20261027/index.html",
+  "fresh_assessment_report": "runs/intact_fresh_assessment_20261027/index.html",
+  "fresh_assessment_status": "failed",
+  "fresh_coverage": {
+    "numerator": 4,
+    "denominator": 8
+  },
+  "completed_observation_field_fidelity": {
+    "numerator": 4,
+    "denominator": 4
+  },
+  "fresh_misses": "Four observations in two Pharos read-timeout batches; preserved in denominator",
+  "independent_biological_validation": false,
+  "predictive_improvement_established": false,
+  "independent_user_walkthrough_completed": false,
+  "new_model_or_gpu_used": false,
+  "emailed": false,
+  "previous_report_hashes_unchanged": true,
+  "next_step": "Use existing client and saved-response workflow to investigate retrieval reliability on now-consumed data; keep original fresh result unchanged."
+}

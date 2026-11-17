@@ -1,0 +1,124 @@
+{
+  "format": "biograph-steward.scientific-gap-qualification-summary.v1",
+  "date": "2026-11-12",
+  "scope": "Native GO context preservation and ontology primary-ID currency; no independent biological-truth score.",
+  "source_packet_id": "packet:14265d0e4990da19e1f2538be1f185cf68e378d00152fdb71ca3d8c4f9936a8e",
+  "source_graph_sha256": "f35f8e0bb66742a3b65d1887ecbc85ead33fd8c5ef9eb5e8015d28934f22d22e",
+  "whole_graph_original_edges": 16985,
+  "native_go_context": {
+    "counts": {
+      "original_go_edges": 4078,
+      "exact_go_subjects": 99,
+      "native_rows": 15888,
+      "native_subjects": 99,
+      "native_not_rows": 23,
+      "native_extension_rows": 1236,
+      "native_product_form_rows": 15888,
+      "known_consumed_reference_rows": 0,
+      "edges_with_positive_and_not_candidates": 0,
+      "no_compatible_native_record": 2930,
+      "one_compatible_native_record": 1021,
+      "multiple_compatible_native_records": 127
+    },
+    "report_content_sha256": "45c41310d10080620c828cb1fea47e40eeee5c165ca8d679ac0f0fd508b2c202",
+    "implementation_sha256": "e684c25a36622a2cc7b6cb0e78bb7301a1c57987222a859a034242796bd79f01",
+    "gaf_sha256": "a0afba19dfb1f8fa996bc1bdcd61fd0c9bd4cf0d2bf2509d09ac86993c0e70a2",
+    "historical_record_identity_established": false,
+    "original_qualifiers_backfilled": false,
+    "reference_independence_established": false,
+    "all_form_identifiers_mean_isoforms": false,
+    "mixed_polarity_count_scope": "Within exact five-field compatibility keys only; not all contexts or providers."
+  },
+  "go_ontology": {
+    "counts": {
+      "total_edges": 16985,
+      "keep": 3780,
+      "prune": 298,
+      "abstain": 12907,
+      "go_profile_edges": 4078,
+      "go_profile": {
+        "keep": 3780,
+        "prune": 298,
+        "abstain": 0
+      },
+      "outside_profile_abstain": 12907,
+      "explicit_active_replacement_proposals": 167,
+      "obsolete_without_safe_active_replacement": 131
+    },
+    "report_content_sha256": "476b5ac11b7603a4b3e0a91c6a5ed57f96055be6fe6683af10c447fd600589dd",
+    "implementation_sha256": "64e8b3c00ce0f3267b27060f0ca426d2beb6fcbc48c5ed8da0d20a38485a3cd7",
+    "ontology": {
+      "file_sha256": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273",
+      "file_bytes": 5154541,
+      "ontology_id": "http://purl.obolibrary.org/obo/go.owl",
+      "ontology_version": "http://purl.obolibrary.org/obo/go/releases/2026-07-26/go.owl",
+      "ontology_metadata_sha256": "91d361f04e15829267b4c9dfcce4998e0c1b36b601b10b2004024f880337dc99",
+      "go_class_nodes": 51986,
+      "license_metadata": [
+        "http://creativecommons.org/licenses/by/4.0/"
+      ],
+      "source_file": "ontology/source.json.gz",
+      "publisher_authenticated": false,
+      "full_standard_conformance_claimed": false
+    },
+    "retained_summary": {
+      "nodes": 9865,
+      "evidence_edges": 16687,
+      "assertions": 16682,
+      "context_records": 9152,
+      "quarantined_records": 11,
+      "isolated_nodes": 166,
+      "edge_status_counts": {
+        "needs_review": 6991,
+        "passed_structural_checks": 9696
+      },
+      "dispositions": {
+        "keep": 3780,
+        "prune": 298,
+        "abstain": 12907
+      }
+    },
+    "retained_graph_sha256": "d00289e5c162ba6b7d40cc51139a217e8b40b365f70b1424a7e2cfc659e62c69",
+    "replacement_proposals_applied": false,
+    "obsolete_annotation_edges_remaining": 0,
+    "old_nodes_preserved": true,
+    "full_GO_pipeline_executed": false,
+    "captured_upstream_method_parity_review_sha256": "3b75a0a6ad4dcb78b50f4f38eaa6ce0d97c1c4dd9ae515b6cd9eb399d6e4d288"
+  },
+  "official_current_release_check": {
+    "content_sha256": "a1d9fbb3670f45b883b17fe8129adcaaeb2e6fcfd7b7ba19caa823e25856f5f9",
+    "advertised_build": "2026-08-05",
+    "internal_ontology_release": "2026-07-26",
+    "native_annotation_generated": "2026-07-28",
+    "newer_release_assumed": false
+  },
+  "independent_software_reviews": {
+    "native_go_recount": "85eba06560ec3ea942cbb0879f1204b234dacd745ce94536a2599c7ae7afd2ab",
+    "go_ontology_recount": "2fab3028457e2949ecf29c17ec7f07730f49881d625765a974d58b28b4e6b81f",
+    "code_semantics_review": "5e240bfc8eeb93644f3c112efcf6f059c98eb9aba6f3afbb1fe20a6224eded49"
+  },
+  "reference_fit_review_content_sha256": "0baa132638d94a3b7ff7a5578c42d72df0c1c606bfcc2d643dc386470c084298",
+  "independent_whole_graph_reference_qualified": false,
+  "scientific_accuracy_measured": false,
+  "false_biological_relationships_established_by_exclusions": false,
+  "remaining_unknowns": {
+    "historical_GO_edges_without_compatible_native_record": 2930,
+    "historical_record_identity_unknown_even_when_compatible": true,
+    "independent_predicate_context_matched_reference": "not presently qualified",
+    "full_taxon_reference_relation_rules_executed": false
+  },
+  "previous_biological_comparisons_changed": false,
+  "earlier_phosphoregulation_view_combined": false,
+  "default_workspace_changed": false,
+  "source_graph_mutated": false,
+  "model_calls": 0,
+  "Brev_used": false,
+  "data_redistribution_clearance_changed": false,
+  "local_artifacts": {
+    "native_context": "runs/crc_go_context_qualification_v2_20261112",
+    "ontology_view": "runs/crc_go_ontology_qualification_20261112",
+    "retained_graph": "runs/crc_go_ontology_qualification_20261112/retained/retained_graph.json",
+    "independent_reviews": "runs/scientific_gaps_20261112/independent_review"
+  },
+  "content_sha256": "a4d65c20ed52c742bbe5bc5284413a948c0b35af9104621b21d508b4736bf270"
+}

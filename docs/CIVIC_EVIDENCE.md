@@ -14,6 +14,12 @@ Implemented and live-checked October 15, 2026. This is a deterministic research 
 
 A saved URL includes the source run and question ID. Both source hashes and the current graph/review basis must match before an answer is displayed. A review creates a new run and clears the answer; rerun the question to use the new state. Historical question exports remain intact.
 
+### Optional literature discovery
+
+Source details and the evidence passport offer **Explore related literature · Linked Discoveries** beside explicit PubMed references. The link opens NLM's documented paper-neighborhood interface in a new tab. No request occurs until it is selected, and no source records, answer hashes, graph edges or review decisions change. DOI-only or malformed references do not produce a discovery link.
+
+The [October 28 pilot](evaluations/LINKED_DISCOVERIES_PILOT_20261028.md) tested the two PMIDs in the saved G12D example. This supports literature navigation, not automatic scientific verification. Related publications, citation links and different-looking findings require context review before contributing biological assertions. [NLM's guide](https://linkeddiscoveries.ncbi.nlm.nih.gov/userguide/) documents the service; [NIH](https://www.nih.gov/news-events/news-releases/nih-launches-new-pubmed-tool-strengthen-research-replication-reproducibility) states that it does not determine study quality or successful replication.
+
 ## Exact source scope
 
 | Item | Policy |

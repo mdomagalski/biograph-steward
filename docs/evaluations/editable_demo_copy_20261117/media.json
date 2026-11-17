@@ -1,0 +1,43 @@
+{
+  "format": "biograph.editable-copy-demo-delivery.v1",
+  "canonical_promoted": true,
+  "runtime_commit_for_new_scene": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+  "new_scene_seconds": 35,
+  "eight_other_encoded_scenes_byte_identical": true,
+  "encoded_seconds": 272.7,
+  "timeline_seconds": 272.6,
+  "root_visual_and_text_review_passed": true,
+  "audio_decode_and_volume_checks_passed": true,
+  "manual_listening_claimed": false,
+  "actual_Chrome_download_completed": false,
+  "managed_Chrome_policy_block_disclosed_in_provenance": true,
+  "public_ZIP_independently_verified_over_HTTPS": true,
+  "byte_identical_locally_prepared_package_used_for_review": true,
+  "original_207_files_unchanged": true,
+  "review_provisional_not_biological_acceptance": true,
+  "model_calls": 0,
+  "fresh_source_retrievals": 0,
+  "new_scientific_statistics": false,
+  "files": {
+    "output/walkthrough/BioGraph_Steward_Walkthrough.mp4": {
+      "bytes": 7679539,
+      "sha256": "4343c2e353db63df3f0c5ff3f35dc8e8f127eeae33d63e59c0da924ecc363578"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.txt": {
+      "bytes": 6547,
+      "sha256": "199c6dac44354091c6722a6f753b010b68566d07c3ccfc56d6cf12ac70b98c0e"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.vtt": {
+      "bytes": 6230,
+      "sha256": "2992cbc6e752611274de514fb5e26030808bd62c4c7ed56b5a4a0e43e606a504"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.srt": {
+      "bytes": 6405,
+      "sha256": "27cdbef480cb7ad5a6fedb2c519468496818ba8c0f14a8d764b6545d162e4cd2"
+    },
+    "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json": {
+      "bytes": 19126,
+      "sha256": "acfa3708a6fb933a7049938ddcfe5b6e0cad59dc23f08acbb86f23ce06e0f61a"
+    }
+  }
+}

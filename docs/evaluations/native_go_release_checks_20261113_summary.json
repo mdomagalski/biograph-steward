@@ -1,0 +1,43 @@
+{
+  "format": "biograph-steward.native-go-release-checks.v1",
+  "created_at": "2026-11-13T16:09:14.309398+00:00",
+  "core_tests": {
+    "run": 1963,
+    "optional_skips": 36,
+    "status": "OK",
+    "log_sha256": "a038f73989b320575a50d2c6c8ccef5c9f9fee14ea7ce17db5137b21d4b7e6d0"
+  },
+  "JavaScript_tests": {
+    "run": 55,
+    "passed": 55,
+    "failed": 0,
+    "log_sha256": "4d995b60d80ca93f526c6f63b50f0f5eac32b9a71e89d1b0ea0de7cebc1354fd"
+  },
+  "actual_browser": {
+    "browser": "Chrome",
+    "local_loopback_port": 8805,
+    "native_GO_source_and_recorded_QC_inspection_verified": true,
+    "NRAS_GO_0005794_native_reference_visible": "PMID:21968647",
+    "NRAS_GO_0005794_relation_source": "part_of",
+    "NRAS_GO_0005794_normalized_derivative": "located_in",
+    "exact_GO_identifier_search_verified": true,
+    "NRAS_GO_0070062_related_native_rows": 1,
+    "NRAS_GO_0070062_strict_projection_candidates": 0,
+    "context_conflict_visible_without_false_base_annotation_or_taxon_claim": true,
+    "new_review_or_graph_edits_made": false,
+    "scope": "Worked examples of known source findings, not an independent biological or usability evaluation."
+  },
+  "production_source_sha256": {
+    "biograph_steward/go_context_inspection.py": "d87b2002c9a4ae8537e84bf82c606b670f4a5f559de3a5188bbd53ad947ee528",
+    "biograph_steward/go_context_qc.py": "9c90f2d63b0f181bb3102bf8390359e34de573b6d00743d3457271591444ef82",
+    "biograph_steward/webapp.py": "86dcffaed6af3a1f699c7876e70e553f3fce40bb9d7524051c74bd5deafd2385",
+    "biograph_steward/navigation.js": "eaeb50f2a4c883acc3f1fc01baa36a6f858b5f7f2a7c3868c0daf478706f62c8"
+  },
+  "actual_source_frame_receipt": "docs/evaluations/native_go_workbench_20261113_summary.json",
+  "source_graph_changed": false,
+  "source_data_in_Git": false,
+  "model_GPU_or_fresh_source_calls": 0,
+  "hosted_deployment_of_this_feature_performed": false,
+  "independent_whole_graph_scientific_accuracy_established": false,
+  "content_sha256": "d361782248e7424df6ee0fe56b0ed23aaedf3bc5a357ee392886c28d4bb328ef"
+}

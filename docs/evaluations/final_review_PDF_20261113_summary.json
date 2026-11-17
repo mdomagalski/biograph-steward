@@ -1,0 +1,87 @@
+{
+  "format": "biograph-steward.final-review-PDF.v1",
+  "created_at": "2026-11-13T15:15:50.190703+00:00",
+  "file": "output/pdf/BioGraph_Steward_Final_Review_20261113.pdf",
+  "bytes": 153681,
+  "sha256": "901ab9f276a0e720266f64e65d6fb29e51b65f76f22c691f3c7e13710c5814e7",
+  "pages": 3,
+  "reviewed_code_commit": "0529d2bc46eb07fcec00acdfe5432c9e5c23147e",
+  "hosted_runtime_commit": "902699ee41861be45529b38adeb2b289cf8300b0",
+  "PDF_text_extractable": true,
+  "final_pages_rasterized_and_visually_checked": [
+    1,
+    2,
+    3
+  ],
+  "visual_checks": [
+    "No clipping or page overflow",
+    "Tables and actual app capture readable",
+    "No placeholder code reference",
+    "Versions and scientific limits visible"
+  ],
+  "fonts": [
+    {
+      "page": 1,
+      "font": "/Helvetica",
+      "embedded": false
+    },
+    {
+      "page": 1,
+      "font": "/AAAAAA+LiberationSans-Bold",
+      "embedded": true
+    },
+    {
+      "page": 1,
+      "font": "/AAAAAA+LiberationSans",
+      "embedded": true
+    },
+    {
+      "page": 2,
+      "font": "/Helvetica",
+      "embedded": false
+    },
+    {
+      "page": 2,
+      "font": "/AAAAAA+LiberationSans-Bold",
+      "embedded": true
+    },
+    {
+      "page": 2,
+      "font": "/AAAAAA+LiberationSans",
+      "embedded": true
+    },
+    {
+      "page": 3,
+      "font": "/Helvetica",
+      "embedded": false
+    },
+    {
+      "page": 3,
+      "font": "/AAAAAA+LiberationSans-Bold",
+      "embedded": true
+    },
+    {
+      "page": 3,
+      "font": "/AAAAAA+LiberationSans",
+      "embedded": true
+    }
+  ],
+  "linked_repository_branch": "codex/scientific-accuracy-round2",
+  "link_count": 7,
+  "actual_app_capture": {
+    "file": "docs/images/hosted_source_graph_20261113.png",
+    "sha256": "fe3a51cd6edebee36867bbf37eb2ee50768a75cb85f415f00a888c4997c96b49",
+    "new_capture_created": false
+  },
+  "aggregate_source_files": {
+    "docs/evaluations/expert_grounding_20261113_aggregate.json": "c63f1262ab7355bbd714b9ecc1c1ce1f2895a8db4189fad4e42139bafc286fa7",
+    "docs/evaluations/aws_isolated_recovery_20261113_summary.json": "51bf54168935c29492b6cecf48286c6e4a353bade1559674134ed4d7de20e389",
+    "docs/evaluations/delivery_polish_20261113_summary.json": "fe2cbc8225434a7d288b873e6e1e5a8fb210aa93954337b27c27151fcf5f1eb5"
+  },
+  "older_two_page_PDF_preserved": true,
+  "older_editable_slide_deck_updated": false,
+  "raw_reference_or_private_source_data_embedded": false,
+  "uploaded_or_sent_to_organizers": false,
+  "independent_whole_graph_accuracy_claimed": false,
+  "content_sha256": "3de5885b5bb8373f629dc006eccacc3118e7a851251107076c89755114349bfb"
+}

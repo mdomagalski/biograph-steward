@@ -1,0 +1,179 @@
+{
+  "format": "biograph-steward.delivery-readiness-summary.v1",
+  "date": "2026-11-12",
+  "scope": "Software, source preservation and bounded interpretation delivery; not new biological validation.",
+  "runtime_git_commit": "41a97bbfbe091545236d4d136a65670590d73289",
+  "source_packet_id": "packet:14265d0e4990da19e1f2538be1f185cf68e378d00152fdb71ca3d8c4f9936a8e",
+  "counts": {
+    "primary_targets": 99,
+    "nodes": 9865,
+    "edges": 16985,
+    "assertions": 16980,
+    "context_records": 9152,
+    "quarantine": 11,
+    "extension_observations": 5261
+  },
+  "decisions": {
+    "keep": 0,
+    "prune": 0,
+    "abstain": 16985
+  },
+  "archives": {
+    "software": {
+      "file": "biograph_steward_software.zip",
+      "sha256": "626e26fcc2f22c24e3e2664806bbde3d9bea846d7576552ab0faa7aa82517179",
+      "bytes": 820029,
+      "file_count": 152
+    },
+    "local_crc": {
+      "file": "biograph_steward_crc_local.zip",
+      "sha256": "bbb29d1a7bda768a8105b035680009d25bb03a23e3426a8b0ee137266ff1608d",
+      "bytes": 228429774,
+      "file_count": 338
+    }
+  },
+  "original_source_packet_unchanged": true,
+  "independent_software_agent_portability_status": "PASS",
+  "actual_extracted_runtime_checks": {
+    "Python": "3.14.0",
+    "no_repository_import_path": true,
+    "synthetic_CLI_and_HTTP_answer_identical": true,
+    "synthetic_results": 2,
+    "synthetic_citations": 6,
+    "real_saved_CRC_question_matches_HTTP": true,
+    "real_CRC_results": 8,
+    "real_CRC_citations": 16,
+    "complete_original_graph_and_ledger_preserved": true,
+    "read_only_BRAF_Ser614_site_endpoint_matches_preserved_view": true,
+    "selected_site_records": 1,
+    "SIGNOR_observations_in_source": 290,
+    "all_workspace_bytes_unchanged_after_HTTP": true,
+    "test_servers_stopped": true
+  },
+  "verification_bindings": {
+    "delivery_content_sha256": "beb24477f6d3625cd341a85ac8506f088cb3d6a4cf63026c3000e55f28d38a99",
+    "consolidated_portability_content_sha256": "fcae35bb8b15c82fa0c68c067e823a544208e845bc5b9c6d7c0d0db9626914ef"
+  },
+  "test_groups": {
+    "core": {
+      "status": "PASS",
+      "verification": "GitHub Linux matrix, plain and installed core",
+      "python_versions": [
+        "3.10",
+        "3.12",
+        "3.13"
+      ],
+      "current_collected_cases": 1531,
+      "optional_skips": "Retained; see individual job logs."
+    },
+    "scientific": {
+      "status": "PASS",
+      "python": "3.12.4",
+      "tests": 64,
+      "skips": 0,
+      "verification": "Local macOS and GitHub Linux pinned dependency environment"
+    }
+  },
+  "test_case_partition_preserved": {
+    "core": 1531,
+    "scientific": 64,
+    "total": 1595,
+    "previous_cases_preserved": 1594,
+    "new_compatibility_regression_cases": 1
+  },
+  "interpretation": {
+    "site_context_view": "read_only_saved_SIGNOR",
+    "new_assertions": 0,
+    "inferred_site_effect": false,
+    "canonical_coordinate_verified": false,
+    "source_explicit_identifier_records_qualified": 9,
+    "genes_in_source_identity_check": 3,
+    "historical_bare_label_rows_still_unresolved": 13,
+    "benchmark_results_changed": false
+  },
+  "presentation": {
+    "slides": 6,
+    "saved_state_version": 9,
+    "native_charts": 2,
+    "all_slides_rendered_and_inspected": true
+  },
+  "source_fetches": 0,
+  "model_calls": 0,
+  "data_redistribution_cleared": false,
+  "source_rights_note": "Full native CRC graph includes 1,588 KEGG pathway records; local verification does not establish sharing permission. Software/data packages are separate.",
+  "github_linux_ci_execution_verified": true,
+  "repository_visibility_changed": false,
+  "biological_accuracy_established_by_increment": false,
+  "aws_brev_calls": 0,
+  "artifact_version": "v3",
+  "github_ci_verified_code_commit": "41a97bbfbe091545236d4d136a65670590d73289",
+  "github_runs": [
+    {
+      "id": 43297573720,
+      "name": "offline-tests",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/mdomagalski/biograph-steward/actions/runs/43297573720",
+      "jobs": [
+        {
+          "name": "scientific-evaluation",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "test (3.10)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "test (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "test (3.13)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        }
+      ]
+    },
+    {
+      "id": 43297573690,
+      "name": "Portability",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/mdomagalski/biograph-steward/actions/runs/43297573690",
+      "jobs": [
+        {
+          "name": "core (3.10)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "core (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "container",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        },
+        {
+          "name": "nvidia",
+          "status": "completed",
+          "conclusion": "success",
+          "failed_steps": []
+        }
+      ]
+    }
+  ],
+  "content_sha256": "ccf5af633b4e152b532b256f8df99cb072853bd2e25dfd701f1a40edc0868b0d"
+}

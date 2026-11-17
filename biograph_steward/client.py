@@ -10,6 +10,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import socket
 import ssl
 import time
@@ -106,7 +107,8 @@ def write_json(path: Path, value: Any) -> None:
 class PharosClient:
     def __init__(self, endpoint: str = ENDPOINT, cache_dir: Path | None = None,
                  timeout: float = 30, retries: int = 2, refresh: bool = False,
-                 ttl_hours: float = 24, transport: Callable | None = None):
+                 ttl_hours: float = 24, transport: Callable | None = None,
+                 attempt_observer: Callable[[dict], None] | None = None):
         parsed = urlparse(endpoint)
         local = parsed.hostname in {"127.0.0.1", "localhost", "::1"}
         if parsed.scheme != "https" and not (parsed.scheme == "http" and local):
@@ -122,40 +124,101 @@ class PharosClient:
         self.refresh = refresh
         self.ttl_hours = ttl_hours
         self.transport = transport
+        self.attempt_observer = attempt_observer
         self.records: list[dict] = []
 
     def _http(self, payload: dict) -> dict:
+        """Use the existing retry policy, exposing each native urlopen invocation.
+
+        An optional observer receives a ``started`` event just before urlopen
+        and one ``finished`` event after transport/decode succeeds or fails.
+        Success here leaves GraphQL validation to execute(). Cache hits and
+        injected transports do not make native attempts or emit these events.
+        Redirect hops handled internally by urllib are not separate events.
+        Observer exceptions always escape; in particular, a budget or durable
+        receipt failure must never trigger an HTTP retry.
+        """
         request = Request(self.endpoint, data=canonical(payload).encode("utf-8"), method="POST",
                           headers={"Content-Type": "application/json", "Accept": "application/json",
                                    "User-Agent": "BioGraphSteward-PharosStarter/0.1"})
         # Python honors HTTPS_PROXY. SSL_CERT_FILE can specify an approved CA bundle.
         context = ssl.create_default_context(cafile=os.environ.get("SSL_CERT_FILE") or None)
+        operation = re.match(r"\s*(?:query|mutation|subscription)\s+([A-Za-z_][A-Za-z0-9_]*)", payload["query"])
+        request_sha256 = digest({"endpoint": self.endpoint, **payload})
         for attempt in range(self.retries + 1):
+            event = {"phase": "started", "attempt": attempt + 1, "endpoint": self.endpoint,
+                     "request_sha256": request_sha256,
+                     "operation_name": operation.group(1) if operation else None,
+                     "timeout_seconds": self.timeout, "started_at": utcnow()}
+            # Keep observer calls outside every exception handler below. An
+            # observer may intentionally stop the next actual open at a budget.
+            if self.attempt_observer is not None:
+                self.attempt_observer(dict(event))
+            started = time.monotonic()
+            stage, status, raw, result = "open", None, b"", None
+            failure = terminal = cause = None
+            retry_wait = 0
             try:
                 with urlopen(request, timeout=self.timeout, context=context) as response:
+                    status = getattr(response, "status", None)
+                    stage = "read"
                     raw = response.read(25_000_001)
                     if len(raw) > 25_000_000:
                         raise PharosError("Response exceeded the 25 MB safety limit; reduce the page size.")
+                    stage = "decode"
                     try:
-                        return json.loads(raw)
+                        result = json.loads(raw)
                     except (ValueError, UnicodeDecodeError) as exc:
                         raise PharosError("Pharos returned non-JSON content. Check the endpoint or proxy.") from exc
+                    stage = "complete"
             except HTTPError as exc:
-                detail = exc.read(1000).decode("utf-8", errors="replace")
-                if exc.code in {429, 500, 502, 503, 504} and attempt < self.retries:
-                    retry_after = exc.headers.get("Retry-After", "")
-                    delay = min(float(retry_after), 15.0) if retry_after.isdigit() else 2 ** attempt
-                    time.sleep(delay)
-                    continue
-                raise PharosError(f"Pharos HTTP {exc.code}: {detail[:300]}. No demo fallback was used.") from exc
+                failure, status = exc, exc.code
+                stage = "read"
+                try:
+                    raw = exc.read(1000)
+                    detail = raw.decode("utf-8", errors="replace")
+                    if exc.code in {429, 500, 502, 503, 504} and attempt < self.retries:
+                        retry_after = exc.headers.get("Retry-After", "")
+                        retry_wait = min(float(retry_after), 15.0) if retry_after.isdigit() else 2 ** attempt
+                    else:
+                        terminal = PharosError(f"Pharos HTTP {exc.code}: {detail[:300]}. No demo fallback was used.")
+                        cause = exc
+                except BaseException as read_error:
+                    failure = terminal = read_error
             except (URLError, TimeoutError, socket.timeout, OSError) as exc:
+                failure = exc
                 if attempt < self.retries:
-                    time.sleep(2 ** attempt)
-                    continue
-                raise PharosError(
-                    f"Cannot reach Pharos ({exc}). Check network/VPN/proxy and run 'python app.py doctor'. "
-                    "For the offline demonstration explicitly choose Demo; it is synthetic, not Pharos data."
-                ) from exc
+                    retry_wait = 2 ** attempt
+                else:
+                    terminal = PharosError(
+                        f"Cannot reach Pharos ({exc}). Check network/VPN/proxy and run 'python app.py doctor'. "
+                        "For the offline demonstration explicitly choose Demo; it is synthetic, not Pharos data."
+                    )
+                    cause = exc
+            except BaseException as exc:
+                failure = terminal = exc
+                partial = getattr(exc, "partial", None)
+                if isinstance(partial, bytes):
+                    raw = partial
+            finished = {**event, "phase": "finished", "stage": stage,
+                        "http_status": status, "response_bytes": len(raw),
+                        "elapsed_seconds": max(0.0, time.monotonic() - started),
+                        "outcome": ("failed" if terminal is not None else
+                                    "retry_scheduled" if failure is not None else "transport_succeeded"),
+                        "error_type": type(failure).__name__ if failure is not None else None,
+                        "error": str(failure)[:300] if failure is not None else None,
+                        "retry_wait_seconds": retry_wait,
+                        "response_validation": "pending" if failure is None else "not_performed"}
+            if self.attempt_observer is not None:
+                self.attempt_observer(finished)
+            if terminal is not None:
+                if cause is not None:
+                    raise terminal from cause
+                raise terminal
+            if failure is not None:
+                time.sleep(retry_wait)
+                continue
+            return result
         raise PharosError("Pharos request failed.")
 
     def execute(self, query: str, variables: dict | None = None, *, cache: bool = True) -> dict:

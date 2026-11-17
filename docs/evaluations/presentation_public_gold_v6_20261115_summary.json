@@ -1,0 +1,27 @@
+{
+  "format": "biograph-steward.challenge-presentation-public-gold.v6",
+  "sha256": "88de87b71a4173c8b509c5d73204b3c831ef45dad295ca91342c6aa87ebb9770",
+  "bytes": 310224,
+  "slides": 10,
+  "main_slides": 6,
+  "appendix_slides": 4,
+  "source_pptx_sha256": "0df543fd5040cd73cc7d94d14ecec0c4ead48b8f9400cfdb3996b3c9338df9eb",
+  "public_gold_summary_sha256": "f5f92839ac4ab435c2679ac72417b7fa28a68ef9493aeebcda643e86f6155bdb",
+  "native_application_sha256": "58e45dfa9b8044d49f3218b36d1845f60783cd29bfa0b24e4e352f9d6a0d5b4a",
+  "changed_existing_slides": [],
+  "added_slides": [
+    10
+  ],
+  "scientific_statistics_recomputed": false,
+  "reference_cases_or_sequences_included": false,
+  "hosted_deployment_changed": false,
+  "source_workbook_bytes_or_formula_lineage_preservation_claimed": false,
+  "original_chart_literal_values_preserved": true,
+  "PowerPoint_native_application_opened": false,
+  "visual_review_pending": false,
+  "delivered_to_output": true,
+  "first_nine_slides_RGB_pixel_identical_to_v5": true,
+  "new_slide10_inspected_at_full_size": true,
+  "presentation": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v6.pptx",
+  "actual_file": "Local validated PPTX; not a remote release asset or new hosted app acceptance."
+}

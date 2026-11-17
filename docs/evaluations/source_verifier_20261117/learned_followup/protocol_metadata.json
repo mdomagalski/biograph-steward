@@ -1,0 +1,100 @@
+{
+  "bootstrap": {
+    "draws": 10000,
+    "groups": 87,
+    "method": "paired_connected_source_group_percentile_bootstrap",
+    "sample_multiplicities_sha256": "a3c089b55747916c4598f2c18a315e9bb736599f5cd68f07fa96e6df847f6f58",
+    "scope": "Pointwise conditional test-source-group intervals given the fixed primary fit; training uncertainty and population accuracy are not estimated.",
+    "seed": 20261117,
+    "undefined_draws": 0
+  },
+  "method_and_resources": {
+    "Gilda": "1.6.1",
+    "INDRA": "1.24.0",
+    "author_commit": "74e0ffe9ea21f6f11e906cee89a2091f45be2f7d",
+    "grounding_resource_sha256": {
+      "gilda_models.json.gz": "62c888eeabe4afb484d17d90cf3e8304c9c3a8f1c97b5b3fb7ab41a458340e1f",
+      "grounding_terms.tsv.gz": "b53169c4735d049c0443ab04830b26372dcfeba47845c1fe97392b64f08f2bb8"
+    },
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+    "vLLM": "0.8.5"
+  },
+  "provenance": {
+    "fit_completion_sha256": "51e95731f09f7cdb2c35077231712494a25ac471f9a78b389fb5fe9f3b11aa5c",
+    "fitter_sha256": "37bf597e78fcc1ee5b34dd3057c83bbaa6235a5a53ba6c1208c6b4ecbf27a09c",
+    "followup_protocol_sha256": "149dc34f328512af7f26739444017f48e989e30021a20c6b7d5dbaf8d1be4afb",
+    "metric_helper_sha256": "85524d12d0d7734ddaccefcecf04f8a2d6912bdf0c6a475467fcfc66b694a7c2",
+    "model_file_sha256": {
+      "combined": "8520269c678c19f774a71c1c32e727fc9c0ad0ef19620dd918686b9766f4161d",
+      "metadata_only": "81ea01372333ef7faace2d6bc90a6f50d9f0d36b3ad07627fb0de58e5602d6fb"
+    },
+    "original_study_protocols": {
+      "primary": {
+        "adapter_sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f",
+        "groups_file_sha256": "52b694f89eeb4e8514fa50e7b92cd6c997f6238eeb994f6af869c0e7e6bd9899",
+        "protocol_sha256": "3d1c616d60ca4fea32aefc4a3490879f0a0368b3141e34834ae978989b4cd461",
+        "runner_sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113",
+        "runtime_readiness_sha256": "1bf6301afbc8d3bfc6d3caefa154493774192b1c548f40a2d321d7946c427936",
+        "source_frame_sha256": "11854919e84547adf3ca925be9aaa0b39651ac8dd07da3a01ad1b55f66928aed",
+        "source_release_sha256": "31f3bcd0cb7f4897ba9cd66da8c51da61d7899280201669a9585d9d6b6f69675",
+        "upstream_manifest_sha256": "82cbba93e4fc1c1bd63c60becab09790f53ace77276a1323fd4ba305b5fb5b61"
+      },
+      "secondary": {
+        "adapter_sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f",
+        "groups_file_sha256": "eda9cbb64c46f7d8bbe1b4d59131d9ceafd31692fb7d02b330fe1b8ed1127bf6",
+        "protocol_sha256": "d8ba17535e02df3e465e49b0ec6f35d08e61544be2e5217bc4aa3e8f1920bf48",
+        "runner_sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113",
+        "runtime_readiness_sha256": "1bf6301afbc8d3bfc6d3caefa154493774192b1c548f40a2d321d7946c427936",
+        "source_frame_sha256": "85644e3c777983bf47a97b2533273237f32e5dabc057d327b65a55d604f91b19",
+        "source_release_sha256": "64cbf8b2e293dcaeddaca5d01088cbdff315dee234efecd430366fb82d0c74ac",
+        "upstream_manifest_sha256": "82cbba93e4fc1c1bd63c60becab09790f53ace77276a1323fd4ba305b5fb5b61"
+      }
+    },
+    "private_assessment_sha256": "2c56bbdde6670269fa257a8447f29d79a4c138240ca2666b65a00748bb85f04e",
+    "secondary_prediction_file_sha256": {
+      "combined": "8f6973f2814f973a60c93ae63f0195866357cadb6b0a7c42d9cea14f9aa95a78",
+      "metadata_only": "914790c28b8a4f100ac5a7b8a1ea36f60e3c3c27136034a00c00770bf9b4d90a"
+    }
+  },
+  "recipe": {
+    "combined_features": [
+      "source_api",
+      "native_claim_type",
+      "base_decision",
+      "base_confidence",
+      "disconfirm_decision",
+      "disconfirm_confidence"
+    ],
+    "confidence": "Official parsed categorical confidence only, including an explicit absent category. No raw-reply parsing, token margins or calibrated probability claim.",
+    "encoder": "Categories fit on eligible primary rows only; unknown secondary categories are ignored under the standard OneHotEncoder rule.",
+    "metadata_only_features": [
+      "source_api",
+      "native_claim_type"
+    ],
+    "parameters": {
+      "C": 1.0,
+      "calibration": false,
+      "class_weight": "balanced",
+      "encoder_drop": null,
+      "encoder_handle_unknown": "ignore",
+      "l1_ratio": 0.0,
+      "max_iter": 1000,
+      "random_state": 20261117,
+      "search": false,
+      "sklearn": "1.9.1",
+      "solver": "lbfgs",
+      "threshold": "native_predict_default"
+    }
+  },
+  "training": {
+    "abstentions_per_learned_arm": 4,
+    "eligibility": "Both original arms completed with valid categorical verdicts; the same eligibility is used for both trained models.",
+    "eligible_fit_pairs": 373,
+    "eligible_secondary_pairs": 141,
+    "primary_is_not_followup_test_data": true,
+    "primary_pairs": 382,
+    "secondary_pairs": 145,
+    "timeline": "The primary 382 pairs were first benchmarked with sealed original predictions, then their labels were consumed for this separately preregistered training follow-up. Both fitted encoders/models and all 145 secondary predictions were sealed before secondary labels were opened."
+  }
+}

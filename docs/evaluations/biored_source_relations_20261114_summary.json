@@ -1,0 +1,1945 @@
+{
+  "format": "biograph-steward.biored-reference-aggregate.v1",
+  "created_at": "2026-11-14T06:46:23.767363+00:00",
+  "scope": "Expert-curator-relative agreement for relations reported in BioCreative VIII abstracts, with gold entities supplied. Primary one-pair-per-publication, complete-gene secondary and artifact-consistency scopes remain separate. Not whole-Pharos biological truth, canonical-protein grounding or direct binding validation.",
+  "reports": {
+    "primary": {
+      "source_report_file_sha256": "b4a5b6ab6507ba2904bfea0009d0571c9641d549bb7423785361bcdfcaa91b72",
+      "source_report_content_sha256": "1c2880b0b9f586bb00ba65c776fd6eb74384c18f6b5b75ad002eb309400f1a11",
+      "report": {
+        "format": "biograph-steward.biored-source-comparison.v1",
+        "created_at": "2026-11-14T06:46:23.767363+00:00",
+        "labels_first_opened_at": "2026-11-14T06:46:19.341327+00:00",
+        "frame_content_sha256": "5724b92b96c3ea77733804f3d3fc8b45e835c9d16888fab41e40402f78eea174",
+        "comparison_content_sha256": "6fab28c3ed07caa5daa9d87dd1e5e262407943bad9586be0712776d5cab54c96",
+        "prediction_freeze_content_sha256": "ffad6df0a0500d06a28d4ca975946d9d3ac391f967efd7e4d3d17f8a9b3d2d2f",
+        "test_cases": 128,
+        "test_publications": 128,
+        "gold_label_counts": {
+          "None": 84,
+          "Association": 35,
+          "Positive_Correlation": 7,
+          "Negative_Correlation": 2
+        },
+        "metrics": {
+          "always_None": {
+            "cases": 128,
+            "exact_correct": 84,
+            "exact_accuracy": 0.65625,
+            "coverage": 1.0,
+            "unresolved": 0,
+            "exact_positive_relation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 44,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "entity_pair": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 44,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "native_None_cases": 84,
+            "confusion": {
+              "None -> None": 84,
+              "Association -> None": 35,
+              "Positive_Correlation -> None": 7,
+              "Negative_Correlation -> None": 2
+            }
+          },
+          "typed_co_mention": {
+            "cases": 128,
+            "exact_correct": 35,
+            "exact_accuracy": 0.2734375,
+            "coverage": 1.0,
+            "unresolved": 0,
+            "exact_positive_relation": {
+              "tp": 35,
+              "fp": 93,
+              "fn": 9,
+              "precision": 0.2734375,
+              "recall": 0.7954545454545454,
+              "f1": 0.4069767441860465
+            },
+            "entity_pair": {
+              "tp": 44,
+              "fp": 84,
+              "fn": 0,
+              "precision": 0.34375,
+              "recall": 1.0,
+              "f1": 0.5116279069767442
+            },
+            "native_None_cases": 84,
+            "confusion": {
+              "None -> Association": 84,
+              "Association -> Association": 35,
+              "Positive_Correlation -> Association": 7,
+              "Negative_Correlation -> Association": 2
+            }
+          },
+          "specialist_native": {
+            "cases": 128,
+            "exact_correct": 100,
+            "exact_accuracy": 0.78125,
+            "coverage": 1.0,
+            "unresolved": 0,
+            "exact_positive_relation": {
+              "tp": 25,
+              "fp": 16,
+              "fn": 19,
+              "precision": 0.6097560975609756,
+              "recall": 0.5681818181818182,
+              "f1": 0.5882352941176471
+            },
+            "entity_pair": {
+              "tp": 32,
+              "fp": 9,
+              "fn": 12,
+              "precision": 0.7804878048780488,
+              "recall": 0.7272727272727273,
+              "f1": 0.7529411764705882
+            },
+            "native_None_cases": 84,
+            "confusion": {
+              "None -> None": 75,
+              "Association -> None": 10,
+              "Association -> Association": 23,
+              "None -> Association": 9,
+              "Association -> Positive_Correlation": 2,
+              "Positive_Correlation -> Association": 4,
+              "Negative_Correlation -> Association": 1,
+              "Positive_Correlation -> None": 2,
+              "Negative_Correlation -> Negative_Correlation": 1,
+              "Positive_Correlation -> Positive_Correlation": 1
+            }
+          },
+          "specialist_type_guard": {
+            "cases": 128,
+            "exact_correct": 100,
+            "exact_accuracy": 0.78125,
+            "coverage": 1.0,
+            "unresolved": 0,
+            "exact_positive_relation": {
+              "tp": 25,
+              "fp": 16,
+              "fn": 19,
+              "precision": 0.6097560975609756,
+              "recall": 0.5681818181818182,
+              "f1": 0.5882352941176471
+            },
+            "entity_pair": {
+              "tp": 32,
+              "fp": 9,
+              "fn": 12,
+              "precision": 0.7804878048780488,
+              "recall": 0.7272727272727273,
+              "f1": 0.7529411764705882
+            },
+            "native_None_cases": 84,
+            "confusion": {
+              "None -> None": 75,
+              "Association -> None": 10,
+              "Association -> Association": 23,
+              "None -> Association": 9,
+              "Association -> Positive_Correlation": 2,
+              "Positive_Correlation -> Association": 4,
+              "Negative_Correlation -> Association": 1,
+              "Positive_Correlation -> None": 2,
+              "Negative_Correlation -> Negative_Correlation": 1,
+              "Positive_Correlation -> Positive_Correlation": 1
+            }
+          },
+          "flat_context_LLM": {
+            "cases": 128,
+            "exact_correct": 72,
+            "exact_accuracy": 0.5625,
+            "coverage": 0.96875,
+            "unresolved": 4,
+            "exact_positive_relation": {
+              "tp": 28,
+              "fp": 47,
+              "fn": 16,
+              "precision": 0.37333333333333335,
+              "recall": 0.6363636363636364,
+              "f1": 0.47058823529411764
+            },
+            "entity_pair": {
+              "tp": 38,
+              "fp": 37,
+              "fn": 6,
+              "precision": 0.5066666666666667,
+              "recall": 0.8636363636363636,
+              "f1": 0.6386554621848739
+            },
+            "native_None_cases": 84,
+            "confusion": {
+              "None -> Association": 31,
+              "Association -> None": 4,
+              "Association -> Association": 26,
+              "None -> None": 44,
+              "Association -> Negative_Correlation": 2,
+              "Association -> Positive_Correlation": 2,
+              "Positive_Correlation -> Association": 5,
+              "None -> Negative_Correlation": 6,
+              "None -> Unresolved": 3,
+              "Negative_Correlation -> Association": 1,
+              "Association -> Unresolved": 1,
+              "Positive_Correlation -> None": 1,
+              "Negative_Correlation -> Negative_Correlation": 1,
+              "Positive_Correlation -> Positive_Correlation": 1
+            }
+          },
+          "source_audit_agent": {
+            "cases": 128,
+            "exact_correct": 74,
+            "exact_accuracy": 0.578125,
+            "coverage": 0.9609375,
+            "unresolved": 5,
+            "exact_positive_relation": {
+              "tp": 28,
+              "fp": 43,
+              "fn": 16,
+              "precision": 0.39436619718309857,
+              "recall": 0.6363636363636364,
+              "f1": 0.48695652173913045
+            },
+            "entity_pair": {
+              "tp": 37,
+              "fp": 34,
+              "fn": 7,
+              "precision": 0.5211267605633803,
+              "recall": 0.8409090909090909,
+              "f1": 0.6434782608695652
+            },
+            "native_None_cases": 84,
+            "confusion": {
+              "None -> None": 46,
+              "Association -> None": 6,
+              "Association -> Association": 26,
+              "None -> Association": 27,
+              "None -> Positive_Correlation": 5,
+              "Association -> Positive_Correlation": 3,
+              "Positive_Correlation -> Association": 5,
+              "None -> Unresolved": 4,
+              "Negative_Correlation -> Association": 1,
+              "None -> Negative_Correlation": 2,
+              "Positive_Correlation -> Unresolved": 1,
+              "Negative_Correlation -> Negative_Correlation": 1,
+              "Positive_Correlation -> Positive_Correlation": 1
+            }
+          }
+        },
+        "agent_paired_comparisons": {
+          "specialist_native": {
+            "candidate_only_correct": 3,
+            "comparator_only_correct": 29,
+            "exact_McNemar_two_sided_p": 2.5560148060321808e-06,
+            "accuracy_delta_95pct_paired_bootstrap": [
+              -0.28125,
+              -0.125
+            ],
+            "exact_relation_F1_delta_95pct_paired_bootstrap": [
+              -0.18285714285714288,
+              -0.02284450994841558
+            ],
+            "bootstrap_replicates": 5000,
+            "scope": "Fixed selected source cases, not a whole-Pharos population estimate."
+          },
+          "specialist_type_guard": {
+            "candidate_only_correct": 3,
+            "comparator_only_correct": 29,
+            "exact_McNemar_two_sided_p": 2.5560148060321808e-06,
+            "accuracy_delta_95pct_paired_bootstrap": [
+              -0.28125,
+              -0.125
+            ],
+            "exact_relation_F1_delta_95pct_paired_bootstrap": [
+              -0.18285714285714288,
+              -0.02284450994841558
+            ],
+            "bootstrap_replicates": 5000,
+            "scope": "Fixed selected source cases, not a whole-Pharos population estimate."
+          },
+          "flat_context_LLM": {
+            "candidate_only_correct": 12,
+            "comparator_only_correct": 10,
+            "exact_McNemar_two_sided_p": 0.8318119049072266,
+            "accuracy_delta_95pct_paired_bootstrap": [
+              -0.0546875,
+              0.0859375
+            ],
+            "exact_relation_F1_delta_95pct_paired_bootstrap": [
+              -0.030525030525030472,
+              0.06666666666666665
+            ],
+            "bootstrap_replicates": 5000,
+            "scope": "Fixed selected source cases, not a whole-Pharos population estimate."
+          }
+        },
+        "specialist_vs_co_mention_paired_comparisons": {
+          "specialist_native": {
+            "candidate_only_correct": 77,
+            "comparator_only_correct": 12,
+            "exact_McNemar_two_sided_p": 9.03747673906413e-13,
+            "accuracy_delta_95pct_paired_bootstrap": [
+              0.3984375,
+              0.625
+            ],
+            "exact_relation_F1_delta_95pct_paired_bootstrap": [
+              0.05617977528089885,
+              0.31330532212885154
+            ],
+            "bootstrap_replicates": 5000,
+            "scope": "Fixed selected source cases, not a whole-Pharos population estimate."
+          },
+          "specialist_type_guard": {
+            "candidate_only_correct": 77,
+            "comparator_only_correct": 12,
+            "exact_McNemar_two_sided_p": 9.03747673906413e-13,
+            "accuracy_delta_95pct_paired_bootstrap": [
+              0.3984375,
+              0.625
+            ],
+            "exact_relation_F1_delta_95pct_paired_bootstrap": [
+              0.05617977528089885,
+              0.31330532212885154
+            ],
+            "bootstrap_replicates": 5000,
+            "scope": "Fixed selected source cases, not a whole-Pharos population estimate."
+          }
+        },
+        "per_entity_type_metrics": {
+          "ChemicalEntity--GeneOrGeneProduct": {
+            "always_None": {
+              "cases": 28,
+              "exact_correct": 20,
+              "exact_accuracy": 0.7142857142857143,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 8,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "entity_pair": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 8,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "native_None_cases": 20,
+              "confusion": {
+                "Association -> None": 6,
+                "None -> None": 20,
+                "Negative_Correlation -> None": 2
+              }
+            },
+            "typed_co_mention": {
+              "cases": 28,
+              "exact_correct": 6,
+              "exact_accuracy": 0.21428571428571427,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 6,
+                "fp": 22,
+                "fn": 2,
+                "precision": 0.21428571428571427,
+                "recall": 0.75,
+                "f1": 0.3333333333333333
+              },
+              "entity_pair": {
+                "tp": 8,
+                "fp": 20,
+                "fn": 0,
+                "precision": 0.2857142857142857,
+                "recall": 1.0,
+                "f1": 0.4444444444444444
+              },
+              "native_None_cases": 20,
+              "confusion": {
+                "Association -> Association": 6,
+                "None -> Association": 20,
+                "Negative_Correlation -> Association": 2
+              }
+            },
+            "specialist_native": {
+              "cases": 28,
+              "exact_correct": 17,
+              "exact_accuracy": 0.6071428571428571,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 3,
+                "fp": 7,
+                "fn": 5,
+                "precision": 0.3,
+                "recall": 0.375,
+                "f1": 0.3333333333333333
+              },
+              "entity_pair": {
+                "tp": 4,
+                "fp": 6,
+                "fn": 4,
+                "precision": 0.4,
+                "recall": 0.5,
+                "f1": 0.4444444444444444
+              },
+              "native_None_cases": 20,
+              "confusion": {
+                "Association -> None": 4,
+                "None -> Association": 6,
+                "None -> None": 14,
+                "Negative_Correlation -> Association": 1,
+                "Association -> Association": 2,
+                "Negative_Correlation -> Negative_Correlation": 1
+              }
+            },
+            "specialist_type_guard": {
+              "cases": 28,
+              "exact_correct": 17,
+              "exact_accuracy": 0.6071428571428571,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 3,
+                "fp": 7,
+                "fn": 5,
+                "precision": 0.3,
+                "recall": 0.375,
+                "f1": 0.3333333333333333
+              },
+              "entity_pair": {
+                "tp": 4,
+                "fp": 6,
+                "fn": 4,
+                "precision": 0.4,
+                "recall": 0.5,
+                "f1": 0.4444444444444444
+              },
+              "native_None_cases": 20,
+              "confusion": {
+                "Association -> None": 4,
+                "None -> Association": 6,
+                "None -> None": 14,
+                "Negative_Correlation -> Association": 1,
+                "Association -> Association": 2,
+                "Negative_Correlation -> Negative_Correlation": 1
+              }
+            },
+            "flat_context_LLM": {
+              "cases": 28,
+              "exact_correct": 15,
+              "exact_accuracy": 0.5357142857142857,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 4,
+                "fp": 11,
+                "fn": 4,
+                "precision": 0.26666666666666666,
+                "recall": 0.5,
+                "f1": 0.34782608695652173
+              },
+              "entity_pair": {
+                "tp": 6,
+                "fp": 9,
+                "fn": 2,
+                "precision": 0.4,
+                "recall": 0.75,
+                "f1": 0.5217391304347826
+              },
+              "native_None_cases": 20,
+              "confusion": {
+                "Association -> None": 2,
+                "None -> Association": 8,
+                "Association -> Negative_Correlation": 1,
+                "None -> None": 11,
+                "Negative_Correlation -> Association": 1,
+                "Association -> Association": 3,
+                "Negative_Correlation -> Negative_Correlation": 1,
+                "None -> Negative_Correlation": 1
+              }
+            },
+            "source_audit_agent": {
+              "cases": 28,
+              "exact_correct": 10,
+              "exact_accuracy": 0.35714285714285715,
+              "coverage": 0.9642857142857143,
+              "unresolved": 1,
+              "exact_positive_relation": {
+                "tp": 3,
+                "fp": 14,
+                "fn": 5,
+                "precision": 0.17647058823529413,
+                "recall": 0.375,
+                "f1": 0.24
+              },
+              "entity_pair": {
+                "tp": 5,
+                "fp": 12,
+                "fn": 3,
+                "precision": 0.29411764705882354,
+                "recall": 0.625,
+                "f1": 0.4
+              },
+              "native_None_cases": 20,
+              "confusion": {
+                "Association -> None": 3,
+                "None -> Association": 9,
+                "Association -> Positive_Correlation": 1,
+                "None -> None": 7,
+                "None -> Positive_Correlation": 2,
+                "Negative_Correlation -> Association": 1,
+                "None -> Unresolved": 1,
+                "None -> Negative_Correlation": 1,
+                "Association -> Association": 2,
+                "Negative_Correlation -> Negative_Correlation": 1
+              }
+            }
+          },
+          "DiseaseOrPhenotypicFeature--GeneOrGeneProduct": {
+            "always_None": {
+              "cases": 66,
+              "exact_correct": 38,
+              "exact_accuracy": 0.5757575757575758,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 28,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "entity_pair": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 28,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "native_None_cases": 38,
+              "confusion": {
+                "None -> None": 38,
+                "Association -> None": 22,
+                "Positive_Correlation -> None": 6
+              }
+            },
+            "typed_co_mention": {
+              "cases": 66,
+              "exact_correct": 22,
+              "exact_accuracy": 0.3333333333333333,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 22,
+                "fp": 44,
+                "fn": 6,
+                "precision": 0.3333333333333333,
+                "recall": 0.7857142857142857,
+                "f1": 0.46808510638297873
+              },
+              "entity_pair": {
+                "tp": 28,
+                "fp": 38,
+                "fn": 0,
+                "precision": 0.42424242424242425,
+                "recall": 1.0,
+                "f1": 0.5957446808510638
+              },
+              "native_None_cases": 38,
+              "confusion": {
+                "None -> Association": 38,
+                "Association -> Association": 22,
+                "Positive_Correlation -> Association": 6
+              }
+            },
+            "specialist_native": {
+              "cases": 66,
+              "exact_correct": 52,
+              "exact_accuracy": 0.7878787878787878,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 17,
+                "fp": 8,
+                "fn": 11,
+                "precision": 0.68,
+                "recall": 0.6071428571428571,
+                "f1": 0.6415094339622641
+              },
+              "entity_pair": {
+                "tp": 22,
+                "fp": 3,
+                "fn": 6,
+                "precision": 0.88,
+                "recall": 0.7857142857142857,
+                "f1": 0.8301886792452831
+              },
+              "native_None_cases": 38,
+              "confusion": {
+                "None -> None": 35,
+                "Association -> Association": 17,
+                "Association -> None": 4,
+                "None -> Association": 3,
+                "Association -> Positive_Correlation": 1,
+                "Positive_Correlation -> Association": 4,
+                "Positive_Correlation -> None": 2
+              }
+            },
+            "specialist_type_guard": {
+              "cases": 66,
+              "exact_correct": 52,
+              "exact_accuracy": 0.7878787878787878,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 17,
+                "fp": 8,
+                "fn": 11,
+                "precision": 0.68,
+                "recall": 0.6071428571428571,
+                "f1": 0.6415094339622641
+              },
+              "entity_pair": {
+                "tp": 22,
+                "fp": 3,
+                "fn": 6,
+                "precision": 0.88,
+                "recall": 0.7857142857142857,
+                "f1": 0.8301886792452831
+              },
+              "native_None_cases": 38,
+              "confusion": {
+                "None -> None": 35,
+                "Association -> Association": 17,
+                "Association -> None": 4,
+                "None -> Association": 3,
+                "Association -> Positive_Correlation": 1,
+                "Positive_Correlation -> Association": 4,
+                "Positive_Correlation -> None": 2
+              }
+            },
+            "flat_context_LLM": {
+              "cases": 66,
+              "exact_correct": 34,
+              "exact_accuracy": 0.5151515151515151,
+              "coverage": 0.9393939393939394,
+              "unresolved": 4,
+              "exact_positive_relation": {
+                "tp": 18,
+                "fp": 25,
+                "fn": 10,
+                "precision": 0.4186046511627907,
+                "recall": 0.6428571428571429,
+                "f1": 0.5070422535211268
+              },
+              "entity_pair": {
+                "tp": 24,
+                "fp": 19,
+                "fn": 4,
+                "precision": 0.5581395348837209,
+                "recall": 0.8571428571428571,
+                "f1": 0.676056338028169
+              },
+              "native_None_cases": 38,
+              "confusion": {
+                "None -> Association": 16,
+                "Association -> Association": 18,
+                "None -> None": 16,
+                "Association -> None": 2,
+                "Association -> Positive_Correlation": 1,
+                "Positive_Correlation -> Association": 5,
+                "None -> Unresolved": 3,
+                "Association -> Unresolved": 1,
+                "None -> Negative_Correlation": 3,
+                "Positive_Correlation -> None": 1
+              }
+            },
+            "source_audit_agent": {
+              "cases": 66,
+              "exact_correct": 39,
+              "exact_accuracy": 0.5909090909090909,
+              "coverage": 0.9696969696969697,
+              "unresolved": 2,
+              "exact_positive_relation": {
+                "tp": 19,
+                "fp": 23,
+                "fn": 9,
+                "precision": 0.4523809523809524,
+                "recall": 0.6785714285714286,
+                "f1": 0.5428571428571428
+              },
+              "entity_pair": {
+                "tp": 25,
+                "fp": 17,
+                "fn": 3,
+                "precision": 0.5952380952380952,
+                "recall": 0.8928571428571429,
+                "f1": 0.7142857142857143
+              },
+              "native_None_cases": 38,
+              "confusion": {
+                "None -> None": 20,
+                "Association -> Association": 19,
+                "None -> Association": 14,
+                "None -> Positive_Correlation": 3,
+                "Association -> Positive_Correlation": 1,
+                "Positive_Correlation -> Association": 5,
+                "Association -> None": 2,
+                "None -> Unresolved": 1,
+                "Positive_Correlation -> Unresolved": 1
+              }
+            }
+          },
+          "GeneOrGeneProduct--GeneOrGeneProduct": {
+            "always_None": {
+              "cases": 34,
+              "exact_correct": 26,
+              "exact_accuracy": 0.7647058823529411,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 8,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "entity_pair": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 8,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "native_None_cases": 26,
+              "confusion": {
+                "None -> None": 26,
+                "Association -> None": 7,
+                "Positive_Correlation -> None": 1
+              }
+            },
+            "typed_co_mention": {
+              "cases": 34,
+              "exact_correct": 7,
+              "exact_accuracy": 0.20588235294117646,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 7,
+                "fp": 27,
+                "fn": 1,
+                "precision": 0.20588235294117646,
+                "recall": 0.875,
+                "f1": 0.3333333333333333
+              },
+              "entity_pair": {
+                "tp": 8,
+                "fp": 26,
+                "fn": 0,
+                "precision": 0.23529411764705882,
+                "recall": 1.0,
+                "f1": 0.38095238095238093
+              },
+              "native_None_cases": 26,
+              "confusion": {
+                "None -> Association": 26,
+                "Association -> Association": 7,
+                "Positive_Correlation -> Association": 1
+              }
+            },
+            "specialist_native": {
+              "cases": 34,
+              "exact_correct": 31,
+              "exact_accuracy": 0.9117647058823529,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 5,
+                "fp": 1,
+                "fn": 3,
+                "precision": 0.8333333333333334,
+                "recall": 0.625,
+                "f1": 0.7142857142857143
+              },
+              "entity_pair": {
+                "tp": 6,
+                "fp": 0,
+                "fn": 2,
+                "precision": 1.0,
+                "recall": 0.75,
+                "f1": 0.8571428571428571
+              },
+              "native_None_cases": 26,
+              "confusion": {
+                "None -> None": 26,
+                "Association -> Association": 4,
+                "Association -> None": 2,
+                "Association -> Positive_Correlation": 1,
+                "Positive_Correlation -> Positive_Correlation": 1
+              }
+            },
+            "specialist_type_guard": {
+              "cases": 34,
+              "exact_correct": 31,
+              "exact_accuracy": 0.9117647058823529,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 5,
+                "fp": 1,
+                "fn": 3,
+                "precision": 0.8333333333333334,
+                "recall": 0.625,
+                "f1": 0.7142857142857143
+              },
+              "entity_pair": {
+                "tp": 6,
+                "fp": 0,
+                "fn": 2,
+                "precision": 1.0,
+                "recall": 0.75,
+                "f1": 0.8571428571428571
+              },
+              "native_None_cases": 26,
+              "confusion": {
+                "None -> None": 26,
+                "Association -> Association": 4,
+                "Association -> None": 2,
+                "Association -> Positive_Correlation": 1,
+                "Positive_Correlation -> Positive_Correlation": 1
+              }
+            },
+            "flat_context_LLM": {
+              "cases": 34,
+              "exact_correct": 23,
+              "exact_accuracy": 0.6764705882352942,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 6,
+                "fp": 11,
+                "fn": 2,
+                "precision": 0.35294117647058826,
+                "recall": 0.75,
+                "f1": 0.48
+              },
+              "entity_pair": {
+                "tp": 8,
+                "fp": 9,
+                "fn": 0,
+                "precision": 0.47058823529411764,
+                "recall": 1.0,
+                "f1": 0.64
+              },
+              "native_None_cases": 26,
+              "confusion": {
+                "None -> Association": 7,
+                "None -> None": 17,
+                "Association -> Association": 5,
+                "Association -> Negative_Correlation": 1,
+                "None -> Negative_Correlation": 2,
+                "Association -> Positive_Correlation": 1,
+                "Positive_Correlation -> Positive_Correlation": 1
+              }
+            },
+            "source_audit_agent": {
+              "cases": 34,
+              "exact_correct": 25,
+              "exact_accuracy": 0.7352941176470589,
+              "coverage": 0.9411764705882353,
+              "unresolved": 2,
+              "exact_positive_relation": {
+                "tp": 6,
+                "fp": 6,
+                "fn": 2,
+                "precision": 0.5,
+                "recall": 0.75,
+                "f1": 0.6
+              },
+              "entity_pair": {
+                "tp": 7,
+                "fp": 5,
+                "fn": 1,
+                "precision": 0.5833333333333334,
+                "recall": 0.875,
+                "f1": 0.7
+              },
+              "native_None_cases": 26,
+              "confusion": {
+                "None -> None": 19,
+                "Association -> Association": 5,
+                "Association -> None": 1,
+                "None -> Association": 4,
+                "None -> Unresolved": 2,
+                "Association -> Positive_Correlation": 1,
+                "None -> Negative_Correlation": 1,
+                "Positive_Correlation -> Positive_Correlation": 1
+              }
+            }
+          }
+        },
+        "execution_costs": {
+          "source_audit_agent": {
+            "model_calls": 512,
+            "tool_reads": 384,
+            "reported_token_usage": {
+              "prompt_tokens": 1144926,
+              "completion_tokens": 25354,
+              "total_tokens": 1170280,
+              "transport_requests": 512
+            },
+            "usage_fields_missing_calls": {},
+            "sum_case_elapsed_seconds": 8354.32346187433,
+            "statuses": {
+              "completed": 128
+            },
+            "tool_selection_sequences": {
+              "inspect_document -> inspect_entity_mentions -> get_specialist_relation": 128
+            },
+            "model_driven_tools": true,
+            "inference_price_assumed": false,
+            "selection_warning": "Repeatedly reading every tool in the same order does not demonstrate adaptive or efficient agent behavior."
+          },
+          "flat_context_LLM": {
+            "model_calls": 128,
+            "tool_reads": 384,
+            "reported_token_usage": {
+              "prompt_tokens": 409192,
+              "completion_tokens": 9442,
+              "total_tokens": 418634,
+              "transport_requests": 128
+            },
+            "usage_fields_missing_calls": {},
+            "sum_case_elapsed_seconds": 1192.9597949601593,
+            "statuses": {
+              "completed": 128
+            },
+            "tool_selection_sequences": {
+              "inspect_document -> inspect_entity_mentions -> get_specialist_relation": 128
+            },
+            "model_driven_tools": false,
+            "inference_price_assumed": false,
+            "selection_warning": "Repeatedly reading every tool in the same order does not demonstrate adaptive or efficient agent behavior."
+          },
+          "specialist_native": {
+            "execution_content_sha256": "26e3b1a2044f8294fb2f212035fd2615c313232a91f89e9649681f2925777cc2",
+            "model_calls": 0,
+            "note": "Published native specialist model inference; not LLM/API calls."
+          }
+        },
+        "agent_default_adoption_criterion_passed": false,
+        "live_graph_changed": false,
+        "case_scores_sha256": "653d5d1ebb7d5d5ab7850c4810e19423eda76380ad0504de4079b57a4c142aca",
+        "interpretation": "Expert source-relative relation annotation; not whole-Pharos biological truth or independent experimental validation.",
+        "limitations": [
+          "Gold entity annotations are supplied; this is not end-to-end NER/grounding.",
+          "Public pretraining/checkpoint exposure cannot be fully independently audited.",
+          "Native None is no qualifying relation in the permitted abstract, not biological irrelevance.",
+          "Novelty/direction are separate annotations, not primary outcomes; corpus Bind is not synonymous with direct physical binding."
+        ]
+      }
+    },
+    "gene": {
+      "source_report_file_sha256": "a2e9507cadf6b8c19dc5862c86f74b841c07851b827a039b263cdc4bcf714244",
+      "source_report_content_sha256": "89bad14549b8402223c8d8299e9b06d94d09c65a9028d8ee33a9f19c9d0f7bd7",
+      "report": {
+        "format": "biograph-steward.biored-full-gene-source-assessment.v1",
+        "created_at": "2026-11-14T06:46:20.074090+00:00",
+        "labels_first_opened_at": "2026-11-14T06:46:19.832727+00:00",
+        "frame_content_sha256": "d432cf2ae1f2cbe2050503c7c8ba79c402194a9c9bafaef325d96bed49712951",
+        "predeclaration_content_sha256": "a66266ad78fe05b5447c44e37b6a817c69b59f662ee3f138879c598a69d7d6e6",
+        "execution_freeze_content_sha256": "fc20143e324f749dd96c8662c59cf72b73dced0b6573f740014b36ce56eee498",
+        "analysis_freeze_content_sha256": "aac1b2c9c364ff0e543d16990f77e52e29fe805a23a6a02a03def87e4363c26f",
+        "primary_prediction_freeze_content_sha256": "ffad6df0a0500d06a28d4ca975946d9d3ac391f967efd7e4d3d17f8a9b3d2d2f",
+        "specialist_execution_content_sha256": "98cf33cd5fa515ad07b1921fcea0197e90dd3cd862f700ac7f78594a42dbfba7",
+        "predictions_sha256": "10f83274d4120ef42ace348ff1bf42b0f2a00b8de6f011ae30f4952059e2888f",
+        "analysis_implementation_sha256": "c6a6748344d582e1f9068fbbcd7b68a422bedb493661190a981d70ace2369415",
+        "cases": 16489,
+        "publications": 374,
+        "native_gold_label_counts": {
+          "Association": 2224,
+          "None": 12834,
+          "Negative_Correlation": 568,
+          "Positive_Correlation": 737,
+          "Bind": 124,
+          "Cotreatment": 2
+        },
+        "metrics": {
+          "always_None": {
+            "cases": 16489,
+            "exact_correct": 12834,
+            "exact_accuracy": 0.7783370732003153,
+            "coverage": 1.0,
+            "unresolved": 0,
+            "exact_positive_relation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3655,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "entity_pair": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3655,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "native_None_cases": 12834,
+            "confusion": {
+              "Association -> None": 2224,
+              "None -> None": 12834,
+              "Negative_Correlation -> None": 568,
+              "Positive_Correlation -> None": 737,
+              "Bind -> None": 124,
+              "Cotreatment -> None": 2
+            }
+          },
+          "typed_co_mention": {
+            "cases": 16489,
+            "exact_correct": 2224,
+            "exact_accuracy": 0.13487779731942506,
+            "coverage": 1.0,
+            "unresolved": 0,
+            "exact_positive_relation": {
+              "tp": 2224,
+              "fp": 14265,
+              "fn": 1431,
+              "precision": 0.13487779731942506,
+              "recall": 0.6084815321477428,
+              "f1": 0.22081016679904686
+            },
+            "entity_pair": {
+              "tp": 3655,
+              "fp": 12834,
+              "fn": 0,
+              "precision": 0.22166292679968463,
+              "recall": 1.0,
+              "f1": 0.3628872120730739
+            },
+            "native_None_cases": 12834,
+            "confusion": {
+              "Association -> Association": 2224,
+              "None -> Association": 12834,
+              "Negative_Correlation -> Association": 568,
+              "Positive_Correlation -> Association": 737,
+              "Bind -> Association": 124,
+              "Cotreatment -> Association": 2
+            }
+          },
+          "specialist_native": {
+            "cases": 16489,
+            "exact_correct": 14176,
+            "exact_accuracy": 0.8597246649281339,
+            "coverage": 1.0,
+            "unresolved": 0,
+            "exact_positive_relation": {
+              "tp": 2266,
+              "fp": 1635,
+              "fn": 1389,
+              "precision": 0.5808766982824917,
+              "recall": 0.6199726402188782,
+              "f1": 0.5997882477501324
+            },
+            "entity_pair": {
+              "tp": 2977,
+              "fp": 924,
+              "fn": 678,
+              "precision": 0.7631376570110228,
+              "recall": 0.814500683994528,
+              "f1": 0.7879830598200106
+            },
+            "native_None_cases": 12834,
+            "confusion": {
+              "Association -> Bind": 10,
+              "None -> None": 11910,
+              "Association -> Association": 1496,
+              "Negative_Correlation -> Association": 94,
+              "Positive_Correlation -> Positive_Correlation": 334,
+              "Positive_Correlation -> None": 85,
+              "Association -> None": 513,
+              "None -> Association": 694,
+              "Negative_Correlation -> Negative_Correlation": 398,
+              "Association -> Positive_Correlation": 100,
+              "Positive_Correlation -> Association": 299,
+              "None -> Negative_Correlation": 106,
+              "Negative_Correlation -> None": 62,
+              "Bind -> Association": 67,
+              "Bind -> None": 17,
+              "None -> Positive_Correlation": 121,
+              "Association -> Negative_Correlation": 105,
+              "Bind -> Bind": 38,
+              "Positive_Correlation -> Negative_Correlation": 17,
+              "Bind -> Positive_Correlation": 2,
+              "Positive_Correlation -> Bind": 2,
+              "Cotreatment -> Positive_Correlation": 1,
+              "Negative_Correlation -> Bind": 1,
+              "Negative_Correlation -> Positive_Correlation": 13,
+              "Cotreatment -> None": 1,
+              "None -> Bind": 3
+            }
+          },
+          "specialist_type_guard": {
+            "cases": 16489,
+            "exact_correct": 14176,
+            "exact_accuracy": 0.8597246649281339,
+            "coverage": 1.0,
+            "unresolved": 0,
+            "exact_positive_relation": {
+              "tp": 2266,
+              "fp": 1635,
+              "fn": 1389,
+              "precision": 0.5808766982824917,
+              "recall": 0.6199726402188782,
+              "f1": 0.5997882477501324
+            },
+            "entity_pair": {
+              "tp": 2977,
+              "fp": 924,
+              "fn": 678,
+              "precision": 0.7631376570110228,
+              "recall": 0.814500683994528,
+              "f1": 0.7879830598200106
+            },
+            "native_None_cases": 12834,
+            "confusion": {
+              "Association -> Bind": 10,
+              "None -> None": 11910,
+              "Association -> Association": 1496,
+              "Negative_Correlation -> Association": 94,
+              "Positive_Correlation -> Positive_Correlation": 334,
+              "Positive_Correlation -> None": 85,
+              "Association -> None": 513,
+              "None -> Association": 694,
+              "Negative_Correlation -> Negative_Correlation": 398,
+              "Association -> Positive_Correlation": 100,
+              "Positive_Correlation -> Association": 299,
+              "None -> Negative_Correlation": 106,
+              "Negative_Correlation -> None": 62,
+              "Bind -> Association": 67,
+              "Bind -> None": 17,
+              "None -> Positive_Correlation": 121,
+              "Association -> Negative_Correlation": 105,
+              "Bind -> Bind": 38,
+              "Positive_Correlation -> Negative_Correlation": 17,
+              "Bind -> Positive_Correlation": 2,
+              "Positive_Correlation -> Bind": 2,
+              "Cotreatment -> Positive_Correlation": 1,
+              "Negative_Correlation -> Bind": 1,
+              "Negative_Correlation -> Positive_Correlation": 13,
+              "Cotreatment -> None": 1,
+              "None -> Bind": 3
+            }
+          }
+        },
+        "per_entity_type_metrics": {
+          "ChemicalEntity--GeneOrGeneProduct": {
+            "always_None": {
+              "cases": 4362,
+              "exact_correct": 3248,
+              "exact_accuracy": 0.744612563044475,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 1114,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "entity_pair": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 1114,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "native_None_cases": 3248,
+              "confusion": {
+                "None -> None": 3248,
+                "Negative_Correlation -> None": 388,
+                "Positive_Correlation -> None": 271,
+                "Association -> None": 408,
+                "Bind -> None": 45,
+                "Cotreatment -> None": 2
+              }
+            },
+            "typed_co_mention": {
+              "cases": 4362,
+              "exact_correct": 408,
+              "exact_accuracy": 0.09353507565337002,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 408,
+                "fp": 3954,
+                "fn": 706,
+                "precision": 0.09353507565337002,
+                "recall": 0.36624775583482944,
+                "f1": 0.14901387874360847
+              },
+              "entity_pair": {
+                "tp": 1114,
+                "fp": 3248,
+                "fn": 0,
+                "precision": 0.255387436955525,
+                "recall": 1.0,
+                "f1": 0.40686632578524473
+              },
+              "native_None_cases": 3248,
+              "confusion": {
+                "None -> Association": 3248,
+                "Negative_Correlation -> Association": 388,
+                "Positive_Correlation -> Association": 271,
+                "Association -> Association": 408,
+                "Bind -> Association": 45,
+                "Cotreatment -> Association": 2
+              }
+            },
+            "specialist_native": {
+              "cases": 4362,
+              "exact_correct": 3726,
+              "exact_accuracy": 0.8541953232462174,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 758,
+                "fp": 437,
+                "fn": 356,
+                "precision": 0.6343096234309623,
+                "recall": 0.6804308797127468,
+                "f1": 0.6565612819402339
+              },
+              "entity_pair": {
+                "tp": 915,
+                "fp": 280,
+                "fn": 199,
+                "precision": 0.7656903765690377,
+                "recall": 0.8213644524236984,
+                "f1": 0.7925508878302295
+              },
+              "native_None_cases": 3248,
+              "confusion": {
+                "None -> None": 2968,
+                "Negative_Correlation -> Negative_Correlation": 324,
+                "Positive_Correlation -> Positive_Correlation": 194,
+                "Association -> Association": 228,
+                "Negative_Correlation -> Association": 26,
+                "None -> Negative_Correlation": 76,
+                "Negative_Correlation -> None": 38,
+                "Bind -> None": 9,
+                "Bind -> Association": 24,
+                "Association -> Positive_Correlation": 20,
+                "Positive_Correlation -> Association": 37,
+                "None -> Association": 135,
+                "Positive_Correlation -> None": 35,
+                "Association -> None": 116,
+                "Association -> Negative_Correlation": 44,
+                "None -> Positive_Correlation": 67,
+                "Bind -> Bind": 12,
+                "Positive_Correlation -> Negative_Correlation": 5,
+                "Cotreatment -> Positive_Correlation": 1,
+                "Cotreatment -> None": 1,
+                "None -> Bind": 2
+              }
+            },
+            "specialist_type_guard": {
+              "cases": 4362,
+              "exact_correct": 3726,
+              "exact_accuracy": 0.8541953232462174,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 758,
+                "fp": 437,
+                "fn": 356,
+                "precision": 0.6343096234309623,
+                "recall": 0.6804308797127468,
+                "f1": 0.6565612819402339
+              },
+              "entity_pair": {
+                "tp": 915,
+                "fp": 280,
+                "fn": 199,
+                "precision": 0.7656903765690377,
+                "recall": 0.8213644524236984,
+                "f1": 0.7925508878302295
+              },
+              "native_None_cases": 3248,
+              "confusion": {
+                "None -> None": 2968,
+                "Negative_Correlation -> Negative_Correlation": 324,
+                "Positive_Correlation -> Positive_Correlation": 194,
+                "Association -> Association": 228,
+                "Negative_Correlation -> Association": 26,
+                "None -> Negative_Correlation": 76,
+                "Negative_Correlation -> None": 38,
+                "Bind -> None": 9,
+                "Bind -> Association": 24,
+                "Association -> Positive_Correlation": 20,
+                "Positive_Correlation -> Association": 37,
+                "None -> Association": 135,
+                "Positive_Correlation -> None": 35,
+                "Association -> None": 116,
+                "Association -> Negative_Correlation": 44,
+                "None -> Positive_Correlation": 67,
+                "Bind -> Bind": 12,
+                "Positive_Correlation -> Negative_Correlation": 5,
+                "Cotreatment -> Positive_Correlation": 1,
+                "Cotreatment -> None": 1,
+                "None -> Bind": 2
+              }
+            }
+          },
+          "DiseaseOrPhenotypicFeature--GeneOrGeneProduct": {
+            "always_None": {
+              "cases": 5890,
+              "exact_correct": 4281,
+              "exact_accuracy": 0.7268251273344652,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 1609,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "entity_pair": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 1609,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "native_None_cases": 4281,
+              "confusion": {
+                "Positive_Correlation -> None": 274,
+                "Association -> None": 1262,
+                "None -> None": 4281,
+                "Negative_Correlation -> None": 73
+              }
+            },
+            "typed_co_mention": {
+              "cases": 5890,
+              "exact_correct": 1262,
+              "exact_accuracy": 0.21426146010186758,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 1262,
+                "fp": 4628,
+                "fn": 347,
+                "precision": 0.21426146010186758,
+                "recall": 0.7843380981976383,
+                "f1": 0.3365782104280571
+              },
+              "entity_pair": {
+                "tp": 1609,
+                "fp": 4281,
+                "fn": 0,
+                "precision": 0.2731748726655348,
+                "recall": 1.0,
+                "f1": 0.42912388318442457
+              },
+              "native_None_cases": 4281,
+              "confusion": {
+                "Positive_Correlation -> Association": 274,
+                "Association -> Association": 1262,
+                "None -> Association": 4281,
+                "Negative_Correlation -> Association": 73
+              }
+            },
+            "specialist_native": {
+              "cases": 5890,
+              "exact_correct": 4928,
+              "exact_accuracy": 0.8366723259762309,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 1004,
+                "fp": 635,
+                "fn": 605,
+                "precision": 0.612568639414277,
+                "recall": 0.6239900559353636,
+                "f1": 0.6182266009852216
+              },
+              "entity_pair": {
+                "tp": 1282,
+                "fp": 357,
+                "fn": 327,
+                "precision": 0.7821842586943258,
+                "recall": 0.7967681789931634,
+                "f1": 0.7894088669950738
+              },
+              "native_None_cases": 4281,
+              "confusion": {
+                "Positive_Correlation -> None": 47,
+                "Association -> None": 263,
+                "None -> None": 3924,
+                "None -> Association": 332,
+                "Association -> Association": 951,
+                "Positive_Correlation -> Association": 199,
+                "None -> Positive_Correlation": 18,
+                "Positive_Correlation -> Positive_Correlation": 26,
+                "None -> Negative_Correlation": 7,
+                "Association -> Negative_Correlation": 26,
+                "Negative_Correlation -> None": 17,
+                "Negative_Correlation -> Negative_Correlation": 27,
+                "Association -> Positive_Correlation": 22,
+                "Negative_Correlation -> Association": 29,
+                "Positive_Correlation -> Negative_Correlation": 2
+              }
+            },
+            "specialist_type_guard": {
+              "cases": 5890,
+              "exact_correct": 4928,
+              "exact_accuracy": 0.8366723259762309,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 1004,
+                "fp": 635,
+                "fn": 605,
+                "precision": 0.612568639414277,
+                "recall": 0.6239900559353636,
+                "f1": 0.6182266009852216
+              },
+              "entity_pair": {
+                "tp": 1282,
+                "fp": 357,
+                "fn": 327,
+                "precision": 0.7821842586943258,
+                "recall": 0.7967681789931634,
+                "f1": 0.7894088669950738
+              },
+              "native_None_cases": 4281,
+              "confusion": {
+                "Positive_Correlation -> None": 47,
+                "Association -> None": 263,
+                "None -> None": 3924,
+                "None -> Association": 332,
+                "Association -> Association": 951,
+                "Positive_Correlation -> Association": 199,
+                "None -> Positive_Correlation": 18,
+                "Positive_Correlation -> Positive_Correlation": 26,
+                "None -> Negative_Correlation": 7,
+                "Association -> Negative_Correlation": 26,
+                "Negative_Correlation -> None": 17,
+                "Negative_Correlation -> Negative_Correlation": 27,
+                "Association -> Positive_Correlation": 22,
+                "Negative_Correlation -> Association": 29,
+                "Positive_Correlation -> Negative_Correlation": 2
+              }
+            }
+          },
+          "GeneOrGeneProduct--GeneOrGeneProduct": {
+            "always_None": {
+              "cases": 6237,
+              "exact_correct": 5305,
+              "exact_accuracy": 0.8505691839025172,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 932,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "entity_pair": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 932,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "native_None_cases": 5305,
+              "confusion": {
+                "Association -> None": 554,
+                "None -> None": 5305,
+                "Negative_Correlation -> None": 107,
+                "Positive_Correlation -> None": 192,
+                "Bind -> None": 79
+              }
+            },
+            "typed_co_mention": {
+              "cases": 6237,
+              "exact_correct": 554,
+              "exact_accuracy": 0.08882475549142216,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 554,
+                "fp": 5683,
+                "fn": 378,
+                "precision": 0.08882475549142216,
+                "recall": 0.5944206008583691,
+                "f1": 0.15455433114799833
+              },
+              "entity_pair": {
+                "tp": 932,
+                "fp": 5305,
+                "fn": 0,
+                "precision": 0.14943081609748277,
+                "recall": 1.0,
+                "f1": 0.2600083693681127
+              },
+              "native_None_cases": 5305,
+              "confusion": {
+                "Association -> Association": 554,
+                "None -> Association": 5305,
+                "Negative_Correlation -> Association": 107,
+                "Positive_Correlation -> Association": 192,
+                "Bind -> Association": 79
+              }
+            },
+            "specialist_native": {
+              "cases": 6237,
+              "exact_correct": 5522,
+              "exact_accuracy": 0.8853615520282186,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 504,
+                "fp": 563,
+                "fn": 428,
+                "precision": 0.4723523898781631,
+                "recall": 0.5407725321888412,
+                "f1": 0.5042521260630315
+              },
+              "entity_pair": {
+                "tp": 780,
+                "fp": 287,
+                "fn": 152,
+                "precision": 0.7310215557638238,
+                "recall": 0.8369098712446352,
+                "f1": 0.7803901950975488
+              },
+              "native_None_cases": 5305,
+              "confusion": {
+                "Association -> Bind": 10,
+                "None -> None": 5018,
+                "Association -> Association": 317,
+                "Negative_Correlation -> Association": 39,
+                "Positive_Correlation -> Positive_Correlation": 114,
+                "Association -> None": 134,
+                "None -> Association": 227,
+                "Association -> Positive_Correlation": 58,
+                "Positive_Correlation -> Association": 63,
+                "Bind -> Association": 43,
+                "None -> Negative_Correlation": 23,
+                "Negative_Correlation -> Negative_Correlation": 47,
+                "Association -> Negative_Correlation": 35,
+                "Positive_Correlation -> None": 3,
+                "None -> Positive_Correlation": 36,
+                "Bind -> Bind": 26,
+                "Bind -> None": 8,
+                "Negative_Correlation -> None": 7,
+                "Positive_Correlation -> Negative_Correlation": 10,
+                "Bind -> Positive_Correlation": 2,
+                "Positive_Correlation -> Bind": 2,
+                "Negative_Correlation -> Bind": 1,
+                "Negative_Correlation -> Positive_Correlation": 13,
+                "None -> Bind": 1
+              }
+            },
+            "specialist_type_guard": {
+              "cases": 6237,
+              "exact_correct": 5522,
+              "exact_accuracy": 0.8853615520282186,
+              "coverage": 1.0,
+              "unresolved": 0,
+              "exact_positive_relation": {
+                "tp": 504,
+                "fp": 563,
+                "fn": 428,
+                "precision": 0.4723523898781631,
+                "recall": 0.5407725321888412,
+                "f1": 0.5042521260630315
+              },
+              "entity_pair": {
+                "tp": 780,
+                "fp": 287,
+                "fn": 152,
+                "precision": 0.7310215557638238,
+                "recall": 0.8369098712446352,
+                "f1": 0.7803901950975488
+              },
+              "native_None_cases": 5305,
+              "confusion": {
+                "Association -> Bind": 10,
+                "None -> None": 5018,
+                "Association -> Association": 317,
+                "Negative_Correlation -> Association": 39,
+                "Positive_Correlation -> Positive_Correlation": 114,
+                "Association -> None": 134,
+                "None -> Association": 227,
+                "Association -> Positive_Correlation": 58,
+                "Positive_Correlation -> Association": 63,
+                "Bind -> Association": 43,
+                "None -> Negative_Correlation": 23,
+                "Negative_Correlation -> Negative_Correlation": 47,
+                "Association -> Negative_Correlation": 35,
+                "Positive_Correlation -> None": 3,
+                "None -> Positive_Correlation": 36,
+                "Bind -> Bind": 26,
+                "Bind -> None": 8,
+                "Negative_Correlation -> None": 7,
+                "Positive_Correlation -> Negative_Correlation": 10,
+                "Bind -> Positive_Correlation": 2,
+                "Positive_Correlation -> Bind": 2,
+                "Negative_Correlation -> Bind": 1,
+                "Negative_Correlation -> Positive_Correlation": 13,
+                "None -> Bind": 1
+              }
+            }
+          }
+        },
+        "publication_cluster_uncertainty": {
+          "method": "Paired nonparametric publication cluster percentile bootstrap; whole papers sampled with replacement, all their candidate rows retained.",
+          "reference": "https://doi.org/10.1111/j.1467-9868.2007.00593.x",
+          "publications": 374,
+          "replicates": 5000,
+          "seed": "biograph-biored-publication-cluster-v1",
+          "confidence_level": 0.95,
+          "arm_intervals": {
+            "always_None": {
+              "exact_accuracy": [
+                0.7460306004618937,
+                0.8084613006286715
+              ],
+              "coverage": [
+                1.0,
+                1.0
+              ],
+              "exact_positive_precision": [
+                0.0,
+                0.0
+              ],
+              "exact_positive_recall": [
+                0.0,
+                0.0
+              ],
+              "exact_positive_F1": [
+                0.0,
+                0.0
+              ],
+              "pair_precision": [
+                0.0,
+                0.0
+              ],
+              "pair_recall": [
+                0.0,
+                0.0
+              ],
+              "pair_F1": [
+                0.0,
+                0.0
+              ]
+            },
+            "typed_co_mention": {
+              "exact_accuracy": [
+                0.11363510750013818,
+                0.15907555075010135
+              ],
+              "coverage": [
+                1.0,
+                1.0
+              ],
+              "exact_positive_precision": [
+                0.11363510750013818,
+                0.15907555075010135
+              ],
+              "exact_positive_recall": [
+                0.5673895141367005,
+                0.650140056022409
+              ],
+              "exact_positive_F1": [
+                0.19050766243958858,
+                0.2544690993700698
+              ],
+              "pair_precision": [
+                0.19155246471671097,
+                0.25397792158355537
+              ],
+              "pair_recall": [
+                1.0,
+                1.0
+              ],
+              "pair_F1": [
+                0.32151746631190453,
+                0.4050755873960294
+              ]
+            },
+            "specialist_native": {
+              "exact_accuracy": [
+                0.8366996802620291,
+                0.8812416406598306
+              ],
+              "coverage": [
+                1.0,
+                1.0
+              ],
+              "exact_positive_precision": [
+                0.5478495834271561,
+                0.6130119232763089
+              ],
+              "exact_positive_recall": [
+                0.5873424971363116,
+                0.6515065378055713
+              ],
+              "exact_positive_F1": [
+                0.5701500394840747,
+                0.628133704735376
+              ],
+              "pair_precision": [
+                0.7339308578745198,
+                0.792046396023198
+              ],
+              "pair_recall": [
+                0.7865591397849462,
+                0.841534612176814
+              ],
+              "pair_F1": [
+                0.7664180899687274,
+                0.808714267724468
+              ]
+            },
+            "specialist_type_guard": {
+              "exact_accuracy": [
+                0.8366996802620291,
+                0.8812416406598306
+              ],
+              "coverage": [
+                1.0,
+                1.0
+              ],
+              "exact_positive_precision": [
+                0.5478495834271561,
+                0.6130119232763089
+              ],
+              "exact_positive_recall": [
+                0.5873424971363116,
+                0.6515065378055713
+              ],
+              "exact_positive_F1": [
+                0.5701500394840747,
+                0.628133704735376
+              ],
+              "pair_precision": [
+                0.7339308578745198,
+                0.792046396023198
+              ],
+              "pair_recall": [
+                0.7865591397849462,
+                0.841534612176814
+              ],
+              "pair_F1": [
+                0.7664180899687274,
+                0.808714267724468
+              ]
+            }
+          },
+          "paired_delta_intervals": {
+            "specialist_native minus typed_co_mention": {
+              "exact_accuracy": [
+                0.6814607125760788,
+                0.7658195620978567
+              ],
+              "coverage": [
+                0.0,
+                0.0
+              ],
+              "exact_positive_precision": [
+                0.40844227919506954,
+                0.48172384030189286
+              ],
+              "exact_positive_recall": [
+                -0.04074377905386928,
+                0.06222566485928227
+              ],
+              "exact_positive_F1": [
+                0.33433923786517794,
+                0.4214937544895595
+              ],
+              "pair_precision": [
+                0.5031812054806191,
+                0.5806937655626058
+              ],
+              "pair_recall": [
+                -0.21344086021505382,
+                -0.15846538782318598
+              ],
+              "pair_F1": [
+                0.37869355247353137,
+                0.47335835759106054
+              ]
+            },
+            "specialist_type_guard minus specialist_native": {
+              "exact_accuracy": [
+                0.0,
+                0.0
+              ],
+              "coverage": [
+                0.0,
+                0.0
+              ],
+              "exact_positive_precision": [
+                0.0,
+                0.0
+              ],
+              "exact_positive_recall": [
+                0.0,
+                0.0
+              ],
+              "exact_positive_F1": [
+                0.0,
+                0.0
+              ],
+              "pair_precision": [
+                0.0,
+                0.0
+              ],
+              "pair_recall": [
+                0.0,
+                0.0
+              ],
+              "pair_F1": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "interpretation": "Descriptive uncertainty across benchmark publications, not independent candidate-row intervals or a whole-Pharos accuracy guarantee. Cross-publication entity/evidence reuse can remain."
+        },
+        "candidate_pairs_per_publication": {
+          "minimum": 1,
+          "median": 18.0,
+          "maximum": 1188
+        },
+        "runtime": {
+          "torch": "2.6.0",
+          "transformers": "4.55.0",
+          "numpy": "2.2.6",
+          "pandas": "2.3.0"
+        },
+        "device": "cuda",
+        "reported_specialist_elapsed_seconds": 283.6613966719997,
+        "comparison_interpretation": "Published specialist source-relation extraction against weak co-mention/type controls, not a measured gain over the original Pharos graph.",
+        "label_scope": "Expert abstract-relative native BioRED annotations; None is no qualifying relation in that abstract, not biological irrelevance.",
+        "sampling_scope": "Complete eligible native gene-pair benchmark, weighted by candidate rows. The primary agent assessment instead has one pair per publication; their point estimates have different denominators.",
+        "uncertainty_scope": "Correlated candidate rows are not counted as independent publication replicates. No whole-Pharos population confidence interval is inferred.",
+        "reference_limitations": [
+          "Gold entity spans/IDs are supplied; entity detection and canonical human-protein grounding are not tested.",
+          "Public model/pretraining/checkpoint exposure cannot be fully independently audited.",
+          "Native Bind is preserved as a corpus category and is not automatically direct physical binding.",
+          "No additional language-model arm or automatic graph acceptance/pruning was introduced."
+        ],
+        "source_graph_changes": 0,
+        "training_performed": false
+      }
+    },
+    "artifact": {
+      "source_report_file_sha256": "c212db3a54dac8d1d450fbb18fdb27a97076f6f5935fe0f00ead459bae32212f",
+      "source_report_content_sha256": "ee33b1841676dc93ca7ad680b3438251c1c52daa7939076d0d042bbd90e12a86",
+      "report": {
+        "format": "biograph-steward.biored-released-artifact-consistency.v1",
+        "created_at": "2026-11-14T06:46:21.372366+00:00",
+        "labels_first_opened_at": "2026-11-14T06:46:20.237221+00:00",
+        "primary_prediction_freeze_content_sha256": "ffad6df0a0500d06a28d4ca975946d9d3ac391f967efd7e4d3d17f8a9b3d2d2f",
+        "predeclaration_content_sha256": "3ad4e29664bd5d1535e9d9adc619cf34737a5ea267a5d354622b648217baa9cb",
+        "analysis_freeze_content_sha256": "bb82a81891c287624c30bf9dac199efcf71b4145f95b9410548925aa186e02c6",
+        "gene_execution_content_sha256": "98cf33cd5fa515ad07b1921fcea0197e90dd3cd862f700ac7f78594a42dbfba7",
+        "remaining_execution_content_sha256": "098a9818bfcd0e40cf0c31d8ee9b9ccb954e157952d100b60e3eae674760571f",
+        "native_candidate_rows": 28734,
+        "native_candidate_publications": 399,
+        "released_corpus_abstracts": 400,
+        "source_metric_helper_sha256": "071e33b5ebdad14b54cd66fed9bc9d244f546ab48cfabbe9a67b0dc5446580bf",
+        "author_metric_reference_agreement": {
+          "pair": {
+            "precision": 0.7438148443735035,
+            "recall": 0.7743436357593885,
+            "f1": 0.7587722869005944
+          },
+          "pair+novelty": {
+            "precision": 0.5580207501995211,
+            "recall": 0.5809238949817215,
+            "f1": 0.5692420418464544
+          },
+          "relation": {
+            "precision": 0.5572226656025538,
+            "recall": 0.5800930541708209,
+            "f1": 0.5684279084914109
+          },
+          "relation+novelty": {
+            "precision": 0.41675977653631285,
+            "recall": 0.43386507145230974,
+            "f1": 0.425140438003745
+          },
+          "relation+direction": {
+            "precision": 0.48268156424581005,
+            "recall": 0.5024925224327019,
+            "f1": 0.49238785313034283
+          },
+          "all": {
+            "precision": 0.36408619313647245,
+            "recall": 0.37902957793286807,
+            "f1": 0.3714076365708703
+          }
+        },
+        "paper_reported_10_seed_mean_F1": {
+          "pair": 0.7534,
+          "pair+novelty": 0.5726,
+          "relation": 0.5606,
+          "relation+novelty": 0.4266,
+          "relation+direction": 0.4862,
+          "all": 0.3702
+        },
+        "single_checkpoint_minus_paper_mean_F1": {
+          "pair": 0.005372286900594436,
+          "pair+novelty": -0.0033579581535455594,
+          "relation": 0.007827908491410906,
+          "relation+novelty": -0.0014595619962549655,
+          "relation+direction": 0.006187853130342813,
+          "all": 0.0012076365708703074
+        },
+        "checkpoint_training_membership_independently_audited": false,
+        "interpretation": "Author-intended BC8 reference-agreement reproduction diagnostic. One released checkpoint versus paper seed means is not an exact numerical reproduction or a test of fine-tuning independence.",
+        "scope": "All author processed candidate rows; one of the400 source abstracts has no processed candidate row. Gold entities supplied; no end-to-end NER or canonical human-protein mapping evaluation.",
+        "decoding": "Unchanged native convert_to_biored_label saved outputs; author load_gold_labels and eval helpers used for all six metric levels. No alternate threshold or synthetic score vector.",
+        "source_graph_changes": 0,
+        "additional_LLM_requests": 0
+      }
+    }
+  },
+  "raw_cases_or_predictions_included": false,
+  "source_graph_modified": false,
+  "scientific_accuracy_claimed": false,
+  "content_sha256": "9c4e8ce2f504d371cc029b805c4a23aa2f3217752cfdd2eb00e7a305db74b161"
+}

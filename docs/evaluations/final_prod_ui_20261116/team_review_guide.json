@@ -1,0 +1,43 @@
+{
+  "format": "biograph-steward.team-review-guide.v1",
+  "status": "passed",
+  "file": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
+  "bytes": 47699,
+  "sha256": "16c3faba6e5f130d71044b367b72901027ce09f3c9f1341be212cc454822598c",
+  "pages": 2,
+  "source_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+  "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+  "hosted_acceptance": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+  "hosted_acceptance_sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23",
+  "source_guide_sha256": "173e23cef16f75350d972f00a035ee79f1a658005e409392fd52bf9a5f2dc8e6",
+  "links": [
+    "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+    "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
+    "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+    "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=source_faithful_workspace_20261113&question=question_20261113T075313Z_1a76b00f&view=ask",
+    "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/TEAM_REVIEW_FEEDBACK_20261113.txt",
+    "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/TEAM_REVIEW_GUIDE_20261113.md",
+    "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/SOURCE_AGENT.md"
+  ],
+  "link_count": 7,
+  "visual_review": {
+    "all_pages_rendered_and_inspected": true,
+    "independent_root_review_of_both_final_page_images": true,
+    "clipping_or_overlap_detected": false,
+    "date_branding_and_both_page_numbers_verified": true
+  },
+  "scope": {
+    "tasks": 5,
+    "hosted_examples_use_direct_links": true,
+    "no_server_folder_or_local_archive_search_required": true,
+    "loading_feedback_explained": true,
+    "what_changed_is_graph_assessment_not_development_history": true,
+    "biological_expertise_required": false,
+    "AWS_account_or_Brev_required": false,
+    "sources_and_decisions_distinguished": true
+  },
+  "tokens_or_credentials_in_artifact": false,
+  "earlier_PDF_preserved_in_private_run_and_git": true,
+  "guide_is_instruction_not_claim_of_completed_independent_review": true,
+  "automated_browser_coverage_is_separate_and_partial": "docs/evaluations/final_prod_ui_20261116/hosted_browser_acceptance.json"
+}

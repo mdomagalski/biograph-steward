@@ -1,0 +1,325 @@
+{
+  "format": "biograph-steward.reusable-agent-tools-qualification-summary.v1",
+  "date": "2026-11-14",
+  "scope": "Public-source and native-helper qualification, not a scientific-accuracy or agent-benefit result.",
+  "installation_boundary": {
+    "globally_installed_scientific_skills": false,
+    "selected_documents_staged_only": true,
+    "automatic_NVIDIA_skill_discovery_claimed": false,
+    "explanation": "A developer-side skill document does not automatically become a tool or skill in the product model. Executable adapters and explicitly supplied procedural instructions are distinct capabilities."
+  },
+  "selected_skill_documents": [
+    {
+      "name": "biomcp",
+      "skill_version": null,
+      "repository_release": "v0.9.3",
+      "commit": "5641de7d7b79b53872f8599dbb4dba22e611dcaf",
+      "license": "MIT",
+      "document_sha256": "6ae0a1a8c64acdb2fb0deabecb2197dfecf45507ccebad463dce2fd630ad44b9",
+      "source": "https://github.com/genomoncology/biomcp/blob/5641de7d7b79b53872f8599dbb4dba22e611dcaf/skills/SKILL.md",
+      "status": "Read-only reference staged; not globally installed. Selected instructions explicitly adapted into a bounded research-agent procedure."
+    },
+    {
+      "name": "ontology-term-resolution",
+      "skill_version": "1.4",
+      "repository_release": "v2.72.0",
+      "commit": "526ebce143bc326f44471554e33d66a19c840360",
+      "license": "MIT",
+      "document_sha256": "db310515a230a47023169be207f654458789377c98b30fa593ee420738e4eefb",
+      "source": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/526ebce143bc326f44471554e33d66a19c840360/skills/ontology-term-resolution/SKILL.md",
+      "status": "Read-only reference staged; not globally installed. Selected instructions explicitly adapted into a bounded research-agent procedure."
+    },
+    {
+      "name": "scientific-critical-thinking",
+      "skill_version": "1.5",
+      "repository_release": "v2.72.0",
+      "commit": "526ebce143bc326f44471554e33d66a19c840360",
+      "license": "MIT",
+      "document_sha256": "563af70571b7dcd6a96bf2e303bedfdcba623b4e9f082d58f04aacbc961fdae4",
+      "source": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/526ebce143bc326f44471554e33d66a19c840360/skills/scientific-critical-thinking/SKILL.md",
+      "status": "Read-only reference staged; not globally installed. Selected instructions explicitly adapted into a bounded research-agent procedure."
+    },
+    {
+      "name": "peer-review",
+      "skill_version": "2.4",
+      "repository_release": "v2.72.0",
+      "commit": "526ebce143bc326f44471554e33d66a19c840360",
+      "license": "MIT",
+      "document_sha256": "a042ccdc76d3399431b9a6c4cd4f98968eab964b1c14baeea4d9e73de82c7d19",
+      "source": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/526ebce143bc326f44471554e33d66a19c840360/skills/peer-review/SKILL.md",
+      "status": "Read-only reference staged; not globally installed. Selected instructions explicitly adapted into a bounded research-agent procedure."
+    }
+  ],
+  "tools": [
+    {
+      "name": "BioMCP",
+      "selected_version": "v0.9.3",
+      "selected_commit": "5641de7d7b79b53872f8599dbb4dba22e611dcaf",
+      "license": "MIT; returned source data retain their own terms",
+      "binary": {
+        "platform": "Darwin arm64",
+        "archive_sha256": "e637062c18c6692f3ec49c5847e69b29f6feee7f7909345970bd504d72174994",
+        "executable_sha256": "54f66769d9193c569d1b65756ad766eafd1a2c5e92d08f8c855cc8964e9a7145"
+      },
+      "documented_capability": "Published CLI/MCP source retrieval, explicit entity-versus-relational routing, source-labelled records and bounded workflow playbooks.",
+      "demonstrated_here": "Pinned native binary version/help and one excluded manual source preflight qualified. PubMed-only candidate and enrichment-source plans were checked; the native ols4 source-disable flag suppresses optional keyword-suggestion calls.",
+      "verified_gap": "PubMed article source selection alone did not suppress ontology suggestion traffic in the excluded native preflight; source-disable is required for the fixed provider scope.",
+      "decision": "Use the small published PubMed retrieval surface and an attributed procedure adaptation in a separately controlled research comparison. Do not import the whole data catalogue or claim retrieval establishes biological truth.",
+      "additional_reviewed_snapshot": {
+        "manifest_version": "0.9.4",
+        "commit": "561d3fe06d9dff5485f13a82a4108371f6fdfe88",
+        "role": "Source review only; not the executed comparison binary."
+      },
+      "sources": [
+        "https://github.com/genomoncology/biomcp/tree/5641de7d7b79b53872f8599dbb4dba22e611dcaf",
+        "https://github.com/genomoncology/biomcp/releases/tag/v0.9.3"
+      ]
+    },
+    {
+      "name": "K-Dense Scientific Agent Skills",
+      "selected_release": "v2.72.0",
+      "selected_commit": "526ebce143bc326f44471554e33d66a19c840360",
+      "license": "MIT (selected skill frontmatter)",
+      "selected_skills": [
+        "ontology-term-resolution1.4",
+        "scientific-critical-thinking1.5",
+        "peer-review2.4"
+      ],
+      "documented_capability": "Ontology identity/lifecycle checks and evidence-bounded appraisal procedures; the selected ontology scripts are Python3.11+ standard-library clients.",
+      "demonstrated_here": "Selected sources were staged, not globally installed. The unchanged ontology validator was exercised on two already exposed historical GO display-label records; strict warnings/failures remained conservative.",
+      "verified_gap": "OLS detail and search representations expose different synonym-scope information, and native replacement values need not be full IRIs. The helper is a source-currency/identifier aid, not a biological truth judge.",
+      "decision": "Reuse qualified procedures and existing deterministic scripts within declared source/version boundaries. Model instructions and structured checklists do not establish correctness.",
+      "source": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/526ebce143bc326f44471554e33d66a19c840360"
+    },
+    {
+      "name": "ToolUniverse",
+      "reviewed_commit": "2e5924491ac8bf120df52824f216022a4bd5f362",
+      "license": "Apache-2.0 (official pinned repository license)",
+      "documented_capability": "Scientific tool catalogue and reusable literature-query/disambiguation workflows.",
+      "verified_gap": "The literature skill includes custom evidence tiers and model-generated appraisal aids; the PPI evidence-channel recommendation needs assay-level qualification. Neither source supplies curator truth labels.",
+      "demonstrated_here": "Pinned README/license, pyproject manifest, literature skill and protein-interaction skill source inspected; no installation, native tool execution or outcome comparison.",
+      "decision": "Reuse selected source adapters/procedures only after scope qualification. Do not install the full package into the frozen numerical environment or inherit its evidence judgments as biological truth.",
+      "sources": [
+        "https://github.com/mims-harvard/ToolUniverse/tree/2e5924491ac8bf120df52824f216022a4bd5f362",
+        "https://github.com/mims-harvard/ToolUniverse/blob/2e5924491ac8bf120df52824f216022a4bd5f362/plugin/skills/tooluniverse-literature-deep-research/SKILL.md",
+        "https://github.com/mims-harvard/ToolUniverse/blob/2e5924491ac8bf120df52824f216022a4bd5f362/plugin/skills/tooluniverse-protein-interactions/SKILL.md",
+        "https://en.string-db.org/help/scores/"
+      ],
+      "manifest_version": "1.5.10",
+      "runtime_or_release_binary_executed": false,
+      "dependency_constraint": {
+        "declared_numpy": ">=2.2.0",
+        "frozen_prediction_numpy": "1.26.4",
+        "consequence": "Use a separate environment if adopting the complete package; do not alter the pinned scientific runtime.",
+        "source": "https://github.com/mims-harvard/ToolUniverse/blob/2e5924491ac8bf120df52824f216022a4bd5f362/pyproject.toml"
+      },
+      "ppi_scope_qualification": "The reviewed PPI skill recommends STRING experimental-channel escore for physical-binding evidence. We require assay-level/source-scope inspection before any direct-binding verdict; even STRING physical proximity can include indirect co-complex association.",
+      "additional_source_pins": {
+        "manifest_sha256": "d3f824e4ea47c69aee0dcbde2c4e8a1be9119475084f66ecc968231c57c61747",
+        "ppi_skill_sha256": "283d58efaf2d3233de713b539ee7c3e566f45de2963e4db7098e4a46be9e7a97",
+        "license_sha256": "d0fd2a0c2969573ae74147b7400bbb57e6a5b334816beea15475f29fd5deeb49"
+      }
+    },
+    {
+      "name": "Biomni",
+      "release": null,
+      "commit": "400c1f366b96a35ca253e13c9b06c5076af41d65",
+      "qualification_level": "Primary paper plus pinned official README, license and named helper source inspected; no runtime/tool execution.",
+      "documented_capability": "Broad biomedical planning with code execution and a large scientific environment.",
+      "remaining_unverified_gap": "Transfer to the existing bounded Nemotron8B service, deployment cost, tool/data licensing and performance on our fixed tasks were not established.",
+      "decision": "Defer the broad platform runtime for this increment while retaining its existing PMID-preserving MCP example as a legitimate reusable alternative. Preserve exact query/source identity; do not create a custom fix based on the legacy helper alone.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12157518/",
+        "https://github.com/snap-stanford/Biomni/tree/400c1f366b96a35ca253e13c9b06c5076af41d65",
+        "https://github.com/snap-stanford/Biomni/blob/400c1f366b96a35ca253e13c9b06c5076af41d65/biomni/tool/literature.py",
+        "https://github.com/snap-stanford/Biomni/blob/400c1f366b96a35ca253e13c9b06c5076af41d65/biomni/tool/example_mcp_tools/pubmed_mcp.py"
+      ],
+      "license": "Apache-2.0 (pinned official LICENSE); integrated source data/tools retain their own terms",
+      "demonstrated_here": "Source inspection distinguishes legacy query_pubmed from a separate native typed-PMID MCP example. No live queries or new reference cases were opened.",
+      "helper_specific_findings": {
+        "legacy_query_pubmed": "On empty results, the published helper retries by removing trailing query words (default up to3retries). Its returned text contains title/abstract/journal, not the effective query or PMID.",
+        "existing_PMID_preserving_alternative": "The same revision contains a native PubMed MCP example with a typed Article.pmid search result and an exact-PMID abstract getter. The legacy helper limitation must not be generalized to all Biomni retrieval.",
+        "know_how_inventory": "The reviewed tree contains sgRNA-design and single-cell-annotation examples; this inventory is not evidence that no other biomedical workflows exist."
+      },
+      "source_sha256": {
+        "license": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "readme": "22be688843a08a1f7f0b243b6bb72e452f9aad82a8602e19716a84aec4863281",
+        "legacy_literature_helper": "c1371a87943f64d4b74d7ba02b51d06cdc370509fda8d06584af7f10c84b0e12",
+        "native_PubMed_MCP_example": "8468f76c812da89f793758732f3e5182ca00b74740a4b99f5485659677bdf5f7"
+      }
+    },
+    {
+      "name": "GeneAgent",
+      "reviewed_main_commit": "88fd1adb40dce9545bde5b904ef3a628c09d747c",
+      "archived_release": {
+        "version": "v1.1.0",
+        "doi": "10.5281/zenodo.15008591",
+        "archive_md5_verified": "c235caec269d2df62e1ad8b59464fcf9"
+      },
+      "licenses": {
+        "code": "NLM United States Government Work public-domain notice",
+        "article": "CC-BY-4.0; separately credited material and API/source data retain applicable terms"
+      },
+      "documented_capability": "Gene-set function generation with external database verification, modification and summarization; the paper masks matching GO/MSigDB resources to reduce answer leakage.",
+      "demonstrated_here": "Official code/prompts/license and exact archive metadata checked. Supplement2 sheet dimensions/headers only were inspected; its132 human outcome rows remained unopened.",
+      "verified_gap": "The132 claims from10 gene sets label correctness of the original verifier decision relative to report evidence, rather than independent support/refute truth of the biological claim. A self-contained raw source-response replay was not established. The archived/current worker specifies gpt-4o although paper Methods names GPT4-20230613.",
+      "decision": "HOLD as a scientific-accuracy/pruning reference. Reuse source selection and leakage-masking lessons; a report-correctness replay would require a separate explicit masked-input freeze.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12328209/",
+        "https://github.com/ncbi-nlp/GeneAgent/tree/88fd1adb40dce9545bde5b904ef3a628c09d747c",
+        "https://zenodo.org/records/15008591"
+      ]
+    },
+    {
+      "name": "PathAnchor",
+      "paper_version": "arXiv2609.38766v1",
+      "code_commit": null,
+      "code_license": null,
+      "paper_license": "arXiv perpetual non-exclusive distribution license; no code reuse permission inferred",
+      "documented_capability": "Bounded read-only inspection of source-linked Material-Sensor-Signal-System paths, with opened-evidence citation boundaries and a matched-resource representation comparison.",
+      "verified_gap": "The reviewed paper concerns flexible sensors and does not establish biomedical or8B-model transfer. No official executable/data release link was identified in the reviewed paper.",
+      "demonstrated_here": "Primary paper/method review only. The app already has source-bound evidence paths and exact native-source inspection; no separate PathAnchor implementation was added.",
+      "decision": "Retain its matched-access and opened-evidence lessons; do not duplicate existing app paths or reinterpret provenance paths as biological causality.",
+      "source": "https://arxiv.org/html/2609.38766v1"
+    },
+    {
+      "name": "NVIDIA NeMo Agent Toolkit",
+      "reviewed_documentation_version": "1.9 (latest page title)",
+      "reviewed_repository_commit": "9296f5311a4aebfb0e583221cc2bc774ad2f0732",
+      "license": "Apache-2.0 (pinned README SPDX)",
+      "existing_project_optional_adapter_pin": "nvidia-nat-core1.8.0",
+      "documented_lifecycle": "Deprecated as of October2026; end of life by end2026.",
+      "documented_migration_routes": {
+        "Relay": "Observability, middleware and governance",
+        "Helix": "Unified evaluation, optimization and hardening CLI",
+        "Fabric": "Consistent agent-harness/custom-agent interface"
+      },
+      "boundary": "The optional NAT orchestration wrapper is separate from the existing NVIDIA Nano model served through vLLM. The NAT notice does not establish end of life of that model endpoint.",
+      "decision": "Preserve the optional pinned wrapper for reproducibility; do not expand it into a new critical dependency or rewrite working delivery workflows now. Evaluate a supported migration only for a concrete lifecycle/capability need, separately from the fixed scientific comparisons.",
+      "install_or_migration_performed": false,
+      "sources": [
+        "https://docs.nvidia.com/nemo/agent-toolkit/latest/index.html",
+        "https://github.com/NVIDIA/NeMo-Agent-Toolkit/blob/9296f5311a4aebfb0e583221cc2bc774ad2f0732/README.md"
+      ],
+      "readme_sha256": "1e21507c1bb1849b58160953913b634a8ceafc372caccb5877fb64d03d012285"
+    },
+    {
+      "name": "NVIDIA Agent Skills catalogue",
+      "reviewed_commit": "894f2d7dfee49085e84e21c1aad2513bc44a5b6d",
+      "release_or_individual_skill_version_qualified": null,
+      "licenses": {
+        "source_code": "Apache-2.0",
+        "documentation_and_skills": "CC-BY-4.0",
+        "external_materials": "Retain separate source terms"
+      },
+      "review_scope": "Official catalogue README/licensing only; not qualification of every mirrored product skill.",
+      "documented_capability": "Portable product-specific coding guidance, including RAG deployment/evaluation and MCP-related workflows; individual skills are maintained in product repositories.",
+      "remaining_gap": "No biomedical-curator reference, biological accuracy improvement or compatibility with our specific runtime was established by this catalogue review.",
+      "decision": "Keep as an official product/version-specific reference. Do not install a broad skill catalogue or treat development guidance as a biological validator.",
+      "installed_or_executed": false,
+      "source": "https://github.com/NVIDIA/skills/blob/894f2d7dfee49085e84e21c1aad2513bc44a5b6d/README.md",
+      "readme_sha256": "d384e899b451e53e73ae9113744e7612b1d2ced534ce807b833333bf234e8be3"
+    },
+    {
+      "name": "MedCPT Cross-Encoder",
+      "official_code_commit": "11e129be74102c98d16a11c310b0b5ce74c1db5e",
+      "official_model_revision": "71caf65d4927987813984f54c284405a13fcca49",
+      "published_objective": "Biomedical article relevance ranking; not biological truth or source-claim entailment.",
+      "input_assumptions": "Query paired with title plus abstract, scalar relevance logit, native max_length512. Native negative construction differs from a lexical-search candidate union.",
+      "license_observation": "Official code carries the NLM US government public-domain notice. HF model card declares public-domain; its LICENSE file is empty, so no additional license text is inferred.",
+      "model_weight_bytes_metadata_only": 437998062,
+      "weights_fetched": false,
+      "runtime_load_tested": false,
+      "compatibility_status": "Stock BERT appears compatible with existing Torch2.6/Transformers4.51.3; not demonstrated by loading.",
+      "demonstrated_local_input_limit": "Only the excluded manual Pharos TCRD capture was inspected: four titles and no abstract fields. One exact abstract-get cannot supply complete native inputs for the candidate union.",
+      "metric_limit": "Reordering at most10 retained papers cannot improve Recall@10.",
+      "training_reference_overlap": "Search logs span2020\u20132022; released BioASQ examples do not establish checkpoint fine-tuning membership or exclusion. No checksum-bound training-log membership manifest was found.",
+      "decision": "DEFER. A larger separately frozen retrieval pool and complete source abstracts would require a distinct source/budget assessment; no new index, data pipeline or experiment is added in this round.",
+      "sources": [
+        "https://doi.org/10.1093/bioinformatics/btad651",
+        "https://github.com/ncbi/MedCPT/tree/11e129be74102c98d16a11c310b0b5ce74c1db5e",
+        "https://huggingface.co/ncbi/MedCPT-Cross-Encoder/tree/71caf65d4927987813984f54c284405a13fcca49"
+      ]
+    }
+  ],
+  "OLS_native_shape_probe": {
+    "scope": "Two already exposed display-label cases only; no new biological labels or broad API reliability estimate.",
+    "synonym_scope": {
+      "id": "GO:0062153",
+      "native_detail": "Flat synonyms with obo_synonym=null",
+      "native_search": "related_synonyms retains the old binding label",
+      "unchanged_helper_result": "unspecified for detail; related_synonym for the search representation",
+      "interpretation": "A known compatibility representation limit, not absent ontology semantics or an exact-equivalence assertion."
+    },
+    "obsolete_replacement": {
+      "id": "GO:0005615",
+      "native_term_replaced_by": "GO_0005576",
+      "native_annotation_iri": "http://purl.obolibrary.org/obo/GO_0005576",
+      "unchanged_helper_result": "Obsolete/failing; non-IRI short form remains raw",
+      "interpretation": "Native mapper shortens primitive replacement IRIs and keeps only the first. Helper documentation assumes a narrower IRI shape; no automatic replacement was applied."
+    },
+    "demonstrated_safety": "Strict validator behavior fails/warns conservatively. Existing resolver search can already retain related scope; native versioned ontology remains authoritative for historical interpretation.",
+    "upstream_source_commit": "94cf11a1c8c06dce9e5640618bfe7fc6bd44839a",
+    "exact_production_build_verified": false,
+    "sources": [
+      "https://www.ebi.ac.uk/ols4/ols3help",
+      "https://github.com/EBISPOT/ols4/issues/368",
+      "https://github.com/EBISPOT/ols4/pull/1432",
+      "https://github.com/EBISPOT/ols4/pull/1435"
+    ],
+    "client_patches": 0,
+    "automatic_replacements": 0
+  },
+  "published_global_diffusion_explanation": {
+    "status": "OPTIONAL_METHOD_READINESS_ONLY_NOT_ADOPTED_OR_EXPOSED",
+    "method_source": {
+      "doi": "10.1093/gigascience/giab082",
+      "repository": "https://github.com/Murali-group/SARS-CoV-2-network-analysis",
+      "commit": "62e5492a788c6e680f74da569a83a8bc441f0073",
+      "license": "GPL-3.0"
+    },
+    "unchanged_predictor": {
+      "repository": "https://github.com/Murali-group/multi-species-GOA-prediction",
+      "commit": "c45c21b9c937c3372eae03248f49fb008d4cb0cf",
+      "license": "GPL-3.0"
+    },
+    "demonstrated_here": "The published provenance and predictor normalization/Laplacian/solver equations match after version-stable AST normalization. Six invented native systems matched independent dense-inverse controls; residual, transpose and raw-score preservation checks passed.",
+    "implementation_boundary": "Unexecuted optional GPL research adapter preserved as investigation source, not an active product component. No external solver/normalization code copied or imported into the MIT app.",
+    "forward_parameters": {
+      "alpha": 1,
+      "tol": 1e-05
+    },
+    "adjoint_inverse_row_precision": {
+      "alpha": 1,
+      "tol": 1e-10
+    },
+    "scientific_boundary": "Historical annotation-seed influence through global graph diffusion, not a causal path, independent experimental count, calibrated probability or new accuracy result.",
+    "real_graph_forward_or_adjoint_execution": false,
+    "new_consumer_or_UI_added": false,
+    "source_or_frozen_forecast_changed": false,
+    "decision": "Keep readiness optional. The separate predeclared full-comparison retention gate governs any later product use; no promotion is inferred from synthetic correctness.",
+    "sources": [
+      "https://doi.org/10.1093/gigascience/giab082",
+      "https://doi.org/10.1093/bioinformatics/btaa885",
+      "https://doi.org/10.1016/0024-3795(75)90112-3",
+      "https://docs.scipy.org/doc/scipy-1.13.1/reference/generated/scipy.sparse.linalg.cg.html"
+    ],
+    "source_retention": {
+      "active_product_tree": false,
+      "local_archive_branch": "codex/archive-global-influence-readiness-20261114",
+      "commit": "d23cee6840037bf44f5610e27d216307cd4d19fa",
+      "exact_source_files": 6,
+      "native_synthetic_preflight_reproducible_with_separately_pinned_optional_dependencies": true
+    }
+  },
+  "content_boundary": {
+    "contains_reference_questions": false,
+    "contains_reference_PMIDs_or_answers": false,
+    "contains_BioASQ_outcomes": false,
+    "contains_GeneAgent_human_outcome_values": false,
+    "contains_local_filesystem_paths": false,
+    "contains_credentials": false,
+    "new_model_calls_or_installs_for_this_capsule": false
+  },
+  "content_sha256": "2fc510fc25cb8c5e28b65cc489b115610d598b84f09bd3d37ce5f993189be496"
+}

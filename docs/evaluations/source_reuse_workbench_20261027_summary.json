@@ -1,0 +1,40 @@
+{
+  "created_at": "2026-10-27T14:33:43.649702+00:00",
+  "workspace": "source_reuse_workbench_20261027",
+  "question_id": "assay_question_20261027T143229Z_2f33bd92",
+  "workbench_url": "http://127.0.0.1:8793/?run=source_reuse_workbench_20261027&question=assay_question_20261027T143229Z_2f33bd92",
+  "summary": {
+    "selected_observations": 2,
+    "current_string_shared_user_assisted": 1,
+    "current_string_unresolved": 1,
+    "historical_pharos_unresolved": 2,
+    "independent_evidence_count": null,
+    "graph_modified": false
+  },
+  "report_sha256": "5c9675f8a8d1dc22cc6d3dd05859c338b477e87a41ba4da2421f720793d941b5",
+  "checks": {
+    "live_metadata_and_artifact_routes": true,
+    "all_four_source_bindings": true,
+    "guided_source_answer_retains_both_records": true,
+    "ordinary_graph_unchanged": true,
+    "download_preserves_all_original_workspace_bytes": true,
+    "extracted_workspace_replays_portably": true,
+    "new_biological_retrieval": false,
+    "model_or_gpu_used": false,
+    "fresh_reference_bodies_opened": false,
+    "scientific_accuracy_measured": false,
+    "browser_layout_verified": false
+  },
+  "tests": {
+    "python_source_reuse": 15,
+    "python_http": 14,
+    "python_related_non_http": 83,
+    "javascript_assay_and_construction": 27
+  },
+  "limitations": [
+    "Source-link observation is user-assisted, not an automated browser capture.",
+    "Current STRING record reuse does not establish historical Pharos import reuse.",
+    "Saved answer and gold graph/decision exports keep their existing formats; the separate supplement travels in the run ZIP.",
+    "No independent biological benefit is measured."
+  ]
+}

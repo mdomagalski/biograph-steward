@@ -6,11 +6,13 @@ from pathlib import Path
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from scripts.prepare_intact_fidelity_reference import (
     BASE, NoRedirect, metadata_selection, verify_freeze,
 )
 from scripts.verify_intact_fidelity_preparation import amended_contract
+from scripts import verify_intact_fidelity_preparation as semantic_guard
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = ROOT / "docs/evaluations/intact_fidelity_20261026_protocol.json"
@@ -64,9 +66,26 @@ class IntactSemanticAmendmentTests(unittest.TestCase):
     def test_acknowledged_amendment_corrects_only_rule_without_rewriting_history(self):
         before = PROTOCOL.read_bytes()
         original = json.loads(before)
-        corrected = amended_contract(PROTOCOL, AMENDMENT, AMENDMENT_SHA)
+        # Test the replay contract without requiring historical, ignored source
+        # captures. The synthetic amendment binds invented evidence bytes while
+        # retaining the tracked protocol's exact field replacement and code pin.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp).resolve()
+            evidence = root / 'invented_format_metadata.txt'
+            evidence.write_text('Invented format metadata; no reference rows.')
+            amendment = json.loads(AMENDMENT.read_text())
+            amendment['evidence'] = [{'local_path': evidence.name,
+                                      'sha256': semantic_guard.sha(evidence)}]
+            path = root / 'amendment.json'
+            path.write_text(json.dumps(amendment))
+            acknowledgement = semantic_guard.sha(path)
+            with patch.object(semantic_guard, 'ROOT', root):
+                corrected = amended_contract(PROTOCOL, path, acknowledgement)
+                evidence.write_text('Changed invented metadata.')
+                with self.assertRaisesRegex(ValueError, 'Pinned semantic evidence changed'):
+                    amended_contract(PROTOCOL, path, acknowledgement)
         self.assertEqual(PROTOCOL.read_bytes(), before)
-        self.assertEqual(corrected.pop("effective_contract_amendment_sha256"), AMENDMENT_SHA)
+        self.assertEqual(corrected.pop("effective_contract_amendment_sha256"), acknowledgement)
         corrected.pop("original_protocol_sha256")
         changed = corrected["field_contract"][4]["rule"]
         self.assertIn("no expansion annotation was supplied", changed)

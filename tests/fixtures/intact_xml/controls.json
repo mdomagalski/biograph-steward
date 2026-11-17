@@ -1,0 +1,105 @@
+{
+  "format": "biograph-steward.intact-xml-controls.v1",
+  "synthetic_only": true,
+  "selected_xml_bodies_accessed": false,
+  "syntax_source": "Official PSI-JAMI 3.9.4 xml254 JAXB element declarations and Xref/Annotation constants; parser projection controls, not full PSI-MI schema conformance.",
+  "cases": [
+    {
+      "id": "typed_positive",
+      "file": "typed_positive.xml",
+      "synthetic": true,
+      "sha256": "90c7abb63bc5b45c2156e36d65d63a9e8da0d2b042a0b8a9d66146af6e314e9b",
+      "expected": {
+        "status": "parsed",
+        "evidence_count": 1,
+        "negative": false,
+        "typed_provenance": true,
+        "experiment_count": 1,
+        "host_taxids": [
+          4932
+        ],
+        "detection_method_ids": [
+          "MI:0018"
+        ]
+      }
+    },
+    {
+      "id": "typed_negative",
+      "file": "typed_negative.xml",
+      "synthetic": true,
+      "sha256": "7adde858e63691aaa215470f79898a8e3008d95409fbc626b5da30cb1b02980e",
+      "expected": {
+        "status": "parsed",
+        "evidence_count": 1,
+        "negative": true,
+        "typed_provenance": true,
+        "experiment_count": 1,
+        "host_taxids": [
+          4932
+        ],
+        "detection_method_ids": [
+          "MI:0018"
+        ]
+      }
+    },
+    {
+      "id": "missing_optional",
+      "file": "missing_optional.xml",
+      "synthetic": true,
+      "sha256": "852ffd63d8fe5cec29c4c0df67ffb898b34055bc370cbcfc5528c47b2f9c0d8f",
+      "expected": {
+        "status": "parsed",
+        "evidence_count": 1,
+        "negative": false,
+        "typed_provenance": false,
+        "experiment_count": 1,
+        "host_taxids": [],
+        "detection_method_ids": [
+          "MI:0018"
+        ]
+      }
+    },
+    {
+      "id": "multiple_experiments",
+      "file": "multiple_experiments.xml",
+      "synthetic": true,
+      "sha256": "d852797b2b8608c3f7c216b9ce9501ca28729aa349aabc18b4c0558f1510bd02",
+      "expected": {
+        "status": "parsed",
+        "evidence_count": 1,
+        "negative": false,
+        "typed_provenance": true,
+        "experiment_count": 2,
+        "host_taxids": [
+          4932
+        ],
+        "detection_method_ids": [
+          "MI:0018",
+          "MI:0001"
+        ]
+      }
+    },
+    {
+      "id": "malformed_truncated",
+      "file": "malformed_truncated.xml",
+      "synthetic": true,
+      "sha256": "e7115f434a208b27afa986d4f0178247af54b2fcf8b512018b73b464d3abef8d",
+      "expected": {
+        "status": "failed",
+        "evidence_count": 0,
+        "forbidden_text": "INTACT_SYNTHETIC_MUST_NOT_RESOLVE"
+      }
+    },
+    {
+      "id": "external_entity",
+      "file": "external_entity.xml",
+      "synthetic": true,
+      "sha256": "b50a8504a7d4dff3aa3888251998b8953e0aced9324afa7a1aba602a64281706",
+      "expected": {
+        "status": "failed",
+        "evidence_count": 0,
+        "forbidden_text": "INTACT_SYNTHETIC_MUST_NOT_RESOLVE"
+      }
+    }
+  ]
+}

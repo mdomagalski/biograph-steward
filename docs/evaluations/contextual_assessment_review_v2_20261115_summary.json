@@ -1,0 +1,19 @@
+{
+  "all_members_and_checksums_verified_after_ZIP_build": true,
+  "archive_bytes": 655716,
+  "archive_filename": "biograph_steward_contextual_assessment_20261115_v2.zip",
+  "archive_sha256": "107c6dbab8fe84d1affe8dce0162fb930db03db0df01d6f6e2526cae3288b975",
+  "created_at": "2026-11-15T08:08:25.624204+00:00",
+  "development_summary_sha256": "a72b4c75282edbb6acf9b7a832a3ff4fdef8655ff5d9bf5bebc89c01cbb39ec7",
+  "format": "biograph-steward.aggregate-review-packet-verification.v2",
+  "hosted_runtime_or_app_defaults_changed": false,
+  "manifest_sha256": "92d2caa383c9f6faf179c70cc3c73a5b31ad7b126cb614ef132e3ea5cfba7391",
+  "members": 51,
+  "new_browser_visual_or_native_PowerPoint_acceptance_claimed": false,
+  "offline_HTML_relative_links_and_anchors_verified": true,
+  "original_primary_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "raw_cases_draw_vectors_forecasts_weights_source_archives_credentials_or_mixed_graph_included": false,
+  "scope": "Aggregate-only original study, separately labeled consumed-reference development, source/transfer audits and static entry page. Software, presentation and protected graph are separate.",
+  "source_checkout_revision": "70a73556e583f0033efc4537388044fff6538257",
+  "source_files_from_clean_committed_checkout": true
+}

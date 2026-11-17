@@ -1,0 +1,13 @@
+{
+  "cells_checked": 18,
+  "method_points_and_denominators_exactly_copied": 330,
+  "original_public_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "prior_parity_gates_exactly_copied": 18,
+  "private_cases_draws_and_paths_absent": true,
+  "public_summary_sha256": "a72b4c75282edbb6acf9b7a832a3ff4fdef8655ff5d9bf5bebc89c01cbb39ec7",
+  "saved_contrast_rows_and_intervals_exactly_copied": 312,
+  "saved_score_intervals_exactly_copied": 330,
+  "scientific_scores_intervals_or_model_choices_recomputed": false,
+  "source_aggregate_sha256": "76189617f4285a9b7f8ff253280642849ca1a117d80901b893c260e420601d9d",
+  "status": "passed"
+}

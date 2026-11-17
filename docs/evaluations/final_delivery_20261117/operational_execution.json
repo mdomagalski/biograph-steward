@@ -1,0 +1,137 @@
+{
+  "format": "biograph-steward.final-pair-execution-operations.v1",
+  "status": "completed_sealed_before_label_scoring",
+  "recorded_at": "2026-11-17T05:16:57.326537+00:00",
+  "scope": "Operational acceptance for separately frozen native INDRA source-claim/evidence-pair comparisons. This receipt contains no scientific accuracy result.",
+  "model": {
+    "id": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+    "serving": "vLLM0.8.5V0",
+    "context_tokens": 16384,
+    "temperature": 0.1,
+    "maximum_output_tokens_per_request": 1024,
+    "fitted_probability_calibration": false
+  },
+  "method": {
+    "author_repository": "https://github.com/gyorilab/indra-belief-model",
+    "author_commit": "74e0ffe9ea21f6f11e906cee89a2091f45be2f7d",
+    "arms": [
+      "official_base",
+      "official_disconfirm",
+      "retain_all_constant"
+    ],
+    "published_examples_per_generated_input": 14,
+    "model_seed": "No sampling seed added;20261117 controls within-pair arm order only",
+    "full_native_conditions_not_expressible_by_author_renderer": "Retained as technical abstentions, never dropped",
+    "direct_physical_binding_second_call": false
+  },
+  "source_pairs_total": 527,
+  "generation_request_intents_total": 1048,
+  "generation_request_intent_cap": 1054,
+  "maximum_completion_tokens_per_request": 1024,
+  "wall_seconds_to_both_seals_and_binding_verification": 2435.703,
+  "combined_execution_wall_budget_seconds": 10800,
+  "automatic_retries": 0,
+  "repairs": 0,
+  "resumptions": 0,
+  "all_source_rows_retained": true,
+  "both_frames_preflighted_before_either_generation_phase": true,
+  "all_six_output_seals_and_full_case_bindings_verified": true,
+  "gold_labels_read_by_execution_worker": false,
+  "accuracy_or_proposal_distribution_analyzed_by_execution_worker": false,
+  "application_graph_operations_by_execution_worker": 0,
+  "original_application_graph_changes_by_execution_worker": 0,
+  "reference_source_frames_modified": false,
+  "frames": {
+    "primary": {
+      "source_pairs": 382,
+      "protocol_raw_sha256": "3d1c616d60ca4fea32aefc4a3490879f0a0368b3141e34834ae978989b4cd461",
+      "source_frame_raw_sha256": "11854919e84547adf3ca925be9aaa0b39651ac8dd07da3a01ad1b55f66928aed",
+      "preflight": {
+        "arm_rows": 764,
+        "tokenized_requests": 760,
+        "technical_abstention_slots_retained": 4,
+        "context_overflow_slots": 0,
+        "maximum_full_prompt_tokens": 3147,
+        "generation_requests_during_preflight": 0
+      },
+      "generation_request_intents": 760,
+      "execution_seconds": 1702.503,
+      "rows_in_each_arm": 382,
+      "completion_receipt_raw_sha256": "995ab4829ea9529e4583da1c31c204bbe32ad19cd0b0d3eea5b7f4a8fccd9d9a",
+      "completion_receipt_content_sha256": "62c24a3583eb828dcef0bdad1a8d17ea1a915fe2e7ced0737dc192890ecdc5a1",
+      "sealed_outputs": {
+        "base": {
+          "bytes": 17494805,
+          "raw_sha256": "973aadb10e4afe51f6f65acfa744e5373ceea0333047286dbd94e18c385e6129",
+          "content_sha256": "bd9de87a1c7bf830f45dbb38a8c7f455ba4a2e62b255551820258fd65c0c0232",
+          "source_rows": 382
+        },
+        "disconfirm": {
+          "bytes": 21348752,
+          "raw_sha256": "26e20111617a35cbe298e5b6bdd484240786ee8e248977358f1b71c0846eab9e",
+          "content_sha256": "0e775b2761d35a472011e0be2d32072e4e00e46c8cb1bbe739dc5dfbd116851f",
+          "source_rows": 382
+        },
+        "retain_all": {
+          "bytes": 90688,
+          "raw_sha256": "35feb04205c3013b181354bb620001b7b73d86de33ee11936d2cbd6f35ec2cb9",
+          "content_sha256": "8471115508dfacb42966314e27cb0c1348595ad41ee21b5b85330ebfa91038e0",
+          "source_rows": 382
+        }
+      }
+    },
+    "secondary": {
+      "source_pairs": 145,
+      "protocol_raw_sha256": "d8ba17535e02df3e465e49b0ec6f35d08e61544be2e5217bc4aa3e8f1920bf48",
+      "source_frame_raw_sha256": "85644e3c777983bf47a97b2533273237f32e5dabc057d327b65a55d604f91b19",
+      "preflight": {
+        "arm_rows": 290,
+        "tokenized_requests": 288,
+        "technical_abstention_slots_retained": 2,
+        "context_overflow_slots": 0,
+        "maximum_full_prompt_tokens": 3135,
+        "generation_requests_during_preflight": 0
+      },
+      "generation_request_intents": 288,
+      "execution_seconds": 640.004,
+      "rows_in_each_arm": 145,
+      "completion_receipt_raw_sha256": "18d2117b760bca12c444cc1c211cedf0861f50bd713cb4b68a0127005617061f",
+      "completion_receipt_content_sha256": "1f6e43ee85536dfaccc7ca9206029f76b76094ddb0c974588c7d62422012c0bd",
+      "sealed_outputs": {
+        "base": {
+          "bytes": 6585888,
+          "raw_sha256": "197168235a9d0e51ddbc82b4aed539c8b4186e5f19866f8919b2e36b423cebcb",
+          "content_sha256": "78d10af04914cafc684a8847426b192a260e94d3f40fbd3ea752f579673e28ec",
+          "source_rows": 145
+        },
+        "disconfirm": {
+          "bytes": 8091057,
+          "raw_sha256": "f10ea216159f6ebd99a2fafc3226a79e554542ae816ac0fc2b4c3c11ac4868d6",
+          "content_sha256": "cab6c6682d96e999abf8a405db9a2db5245394c17b54b5ea0048bf318cca4fbb",
+          "source_rows": 145
+        },
+        "retain_all": {
+          "bytes": 34682,
+          "raw_sha256": "14da6882457c10389790f2b1c2aec3fa54e1ce04eb8d14669d3ef22ca68ad6e8",
+          "content_sha256": "494bd1df4ebc89c41d1214bcc2d25b6137e7e42e47780687eaaa56e9d64078dc",
+          "source_rows": 145
+        }
+      }
+    }
+  },
+  "provenance": {
+    "master_protocol_raw_sha256": "0e7c1b2375ebd237f44770a6f12255bae1d8a3bbccdbe0544946193e85a20689",
+    "private_execution_audit_raw_sha256": "d95e0721ca929e45299d6789ddfc14b48019703e915c61ca71358657bbe20862",
+    "adapter_raw_sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f",
+    "runner_raw_sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113",
+    "native_dependency_qualification_raw_sha256": "8581835d7198843315cf4f1abd0cc12853735c6dc0f7ab45cdcb00abd073752f"
+  },
+  "boundaries": [
+    "Request counts include attempts and do not imply correct scientific answers.",
+    "Scientific label scoring is a separate controlled step after both complete output seals.",
+    "These source-pair tasks do not estimate the correctness of every application graph edge.",
+    "The native ontology cache is a qualified method dependency; no application graph enrichment or mutation was performed during execution."
+  ],
+  "raw_cases_responses_or_individual_gold_labels_included": false
+}

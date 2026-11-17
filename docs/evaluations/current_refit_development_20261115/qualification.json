@@ -1,0 +1,16 @@
+{
+  "elapsed_seconds": 0.0931844711303711,
+  "invented_data_only": true,
+  "python_version": "3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0]",
+  "real_reference_forecast_array_or_results_accessed": false,
+  "returncode": 0,
+  "source_pins": {
+    "annotation_prior_assessment.py": "0052a8834e9c1cfc29f713f74db4c2e46c7ee1f58ea57c43af216d298a4a2ceb",
+    "annotation_prior_report.py": "fd3b9616ebd90a2b21993acbcf7bbcb00661285f1ea2c2e93b646516527043fc",
+    "current_refit_assessment.py": "49b6daf18e31f9596fe1e18996b1b3317a5b457467772deb5c437f910400683d",
+    "current_refit_protocol.json": "8128b0c3cbda794cb8cd75b711609cfed1f1a150ef81ba3e90339cd4815ecca9",
+    "current_refit_report.py": "60fc04ee2ac76b1755d2ea6a060eb39e97ef924d4a3fd12f10ad5149bd15bc75",
+    "report.py": "97990ca3712b59375467850a906ceaaacc0abf285590ffd3d8e89c5bf146007a",
+    "test_current_refit_report.py": "948b5058bb79ce5e11aa327f12d1528b4222d2a73d1c4c30734566645ba69d82"
+  }
+}

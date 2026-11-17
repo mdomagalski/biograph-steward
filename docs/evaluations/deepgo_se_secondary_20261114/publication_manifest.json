@@ -1,0 +1,15 @@
+{
+  "format": "biograph-steward.deepgo-development.v1.secondary-publication-manifest",
+  "source_report_file_sha256": "6a36c63f4eeb6a5aae803f09df2c588c58956f309ababd82a3f84e582f07aec9",
+  "content_sha256_of_public_report": "66dee4d168d2dd25dee387363818599c44958985e8f26ff597008fad997d3f97",
+  "files": {
+    "secondary_uncertainty.json": "e1ee9406b5365f88b0b857acff1776c940fc5c50f83b177d89948d4ad55f302a",
+    "secondary_uncertainty.html": "33e4b7777098350a9b0c55b67c938e7c6e9eba66e9031b88eb4983ab0a774c0b",
+    "secondary_uncertainty.md": "3beee99245e83336e30e6e8839a79ad56ed082f8f8914d7eb37b82f57bc6be88"
+  },
+  "intervals": 8,
+  "posthoc_exploratory": true,
+  "primary_changed": false,
+  "operator_paths_or_raw_cases_included": false,
+  "content_sha256": "929d78dc7a71f290d0eaddb10ac1e933b2038345a90687495b6aaf98dad01a09"
+}

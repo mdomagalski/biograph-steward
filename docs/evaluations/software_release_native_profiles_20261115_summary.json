@@ -1,0 +1,97 @@
+{
+  "format": "biograph-steward.core-subset-software-acceptance.v1",
+  "created_at": "2026-11-15T19:02:49.287154+00:00",
+  "reader_date": {
+    "date": "2026-11-15",
+    "timezone": "America/New_York"
+  },
+  "git_commit": "47ebb7dab9123a25952f08b005baf3e8d29e413c",
+  "software_archive": {
+    "file": "biograph_steward_core_native_profiles_software.zip",
+    "sha256": "0f25566fdd373eeb00ef766f34ba20230947be4b9aafd85f2e3a808992586d38",
+    "bytes": 684627,
+    "file_count": 128
+  },
+  "preserved_full_runtime_builder_release": {
+    "format": "biograph-steward.aws-source-release.v1",
+    "created_at": "2026-11-15T19:02:45.581619+00:00",
+    "git_commit": "47ebb7dab9123a25952f08b005baf3e8d29e413c",
+    "bundle": "biograph-47ebb7dab9123a25952f08b005baf3e8d29e413c.tar.gz",
+    "sha256": "9b5726fa790c63b2545ec69cb3104353e90736230f837298e09a4935ffb8f50d",
+    "bytes": 883064,
+    "source_paths": [
+      ".dockerignore",
+      "Dockerfile",
+      "app.py",
+      "LICENSE",
+      "requirements-aws.txt",
+      "biograph_steward",
+      "scripts",
+      "deploy/aws/bootstrap.sh",
+      "deploy/aws/backup.sh"
+    ],
+    "cloud_resources_created": false,
+    "credentials_included": false
+  },
+  "core_archive_roots": [
+    "app.py",
+    "LICENSE",
+    "README_DEMO.md",
+    "biograph_steward/"
+  ],
+  "research_and_deployment_scripts_omitted_from_core_subset": true,
+  "upstream_vendored_license_notices_preserved": true,
+  "python": {
+    "version": "3.12.14",
+    "no_site": 1,
+    "site_loaded": false,
+    "site_package_paths": []
+  },
+  "native_source_profile_modules_stdlib_imports": {
+    "native_physical_policy": "STRING12.5-native-physical-exact-reciprocal-sequence.v1",
+    "native_GO_reader_imported": true,
+    "scientific_assessment_reader_imported": true,
+    "all_core_imports_without_site": true
+  },
+  "native_physical_source_and_question_CLI_available": true,
+  "native_source_and_v5_assessment_data_supplied_separately": true,
+  "real_native_source_data_included": false,
+  "synthetic_only": true,
+  "CLI_synthetic_recipe_passed": true,
+  "API_synthetic_answer_with_citations": true,
+  "actual_graph_and_decision_ZIP_download": {
+    "bytes": 38494,
+    "file_count": 24
+  },
+  "actual_answer_ZIP_download": {
+    "bytes": 9746,
+    "file_count": 4
+  },
+  "exhaustive_abstain_decisions": 18,
+  "retained_nodes_edges_assertions_equal_source": true,
+  "preserved_baseline_source_graph_equal": true,
+  "offline_gold_decision_verification_passed": true,
+  "fresh_export_extraction_and_baseline_source_recovery": true,
+  "actual_owned_server_restart": true,
+  "saved_answer_reopened_identically": true,
+  "synthetic_graph_sha256": "5444ca62eb8a6083bd0f177b7fcaffab8545454f708ebde004b80ecb62b22484",
+  "answer_sha256": "aa7872aae179886c2491026d7a1c57cbbea2439bc892617b05372dd78c6a4424",
+  "returned_proteins": 2,
+  "citation_groups": 6,
+  "source_fetches": 0,
+  "model_calls": 0,
+  "cloud_calls": 0,
+  "browser_visual_test": false,
+  "independent_user_or_biological_validation": false,
+  "source_data_credentials_weights_or_Git_history_in_software_archive": false,
+  "all_owned_servers_stopped": true,
+  "software_source_bytes_unchanged": true,
+  "operator_sha256": "e16737bfb499507a70a17c711af3605962044024f2107f8110db5b9ba232a4fb",
+  "distribution_status": "Prepared and checked locally; not uploaded or published.",
+  "status": "passed",
+  "archive_path": "runs/software_delivery_native_profiles_20261115/biograph_steward_core_native_profiles_software.zip",
+  "private_acceptance_content_sha256": "5ea9685a1e2c1eff990515f47bba778e1df3f7e375b826e95e80e0a52251033f",
+  "private_acceptance_file_sha256": "b3206b100895b0796c2007947bf1bf5f0cd28db382aa788f3b8a99586055de18",
+  "source_runtime_note": "The unchanged committed allowlist produced the full runtime tar; the standalone ZIP is its core software subset. Native physical, native GO location and scientific-assessment readers are included. Real source publications and v5 scientific data require separately authorized packets. The clean acceptance uses invented data and makes no biological or hosted-rollout claim.",
+  "content_sha256": "98e51e4ae881a89430faa1a751d3f1b66f2edd4545f317b6e42e471876173921"
+}

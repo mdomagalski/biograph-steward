@@ -1,0 +1,415 @@
+{
+  "format": "biograph-steward.string-component-evaluation-summary.v1",
+  "date": "2026-10-27",
+  "status": "completed",
+  "question": "STRING 12.5 functional ranking versus the physical overlay on the same measured human Y2H-v1 nominations.",
+  "dataset_status": "consumed_development",
+  "population": {
+    "all_nominations": 3222,
+    "assay_eligible": 2676,
+    "detected": 376,
+    "not_detected": 2300,
+    "assay_excluded": 546,
+    "exclusions": {
+      "autoactivator": 41,
+      "failed_sequence_confirmation": 478,
+      "test_failed": 27
+    }
+  },
+  "full_panel": {
+    "arms": {
+      "functional": {
+        "pairs": 2676,
+        "detected": 376,
+        "not_detected": 2300,
+        "explicit_numeric": 2363,
+        "average_precision": 0.17282731472462715,
+        "status": "scored"
+      },
+      "physical": {
+        "pairs": 2676,
+        "detected": 376,
+        "not_detected": 2300,
+        "explicit_numeric": 1938,
+        "average_precision": 0.19005586778358788,
+        "status": "scored"
+      }
+    },
+    "physical_minus_functional_average_precision": 0.017228553058960733
+  },
+  "jointly_numeric": {
+    "selection": "Both native scores explicitly numeric; conditional secondary population.",
+    "comparison": {
+      "arms": {
+        "functional": {
+          "pairs": 1938,
+          "detected": 317,
+          "not_detected": 1621,
+          "explicit_numeric": 1938,
+          "average_precision": 0.17691893356586308,
+          "status": "scored"
+        },
+        "physical": {
+          "pairs": 1938,
+          "detected": 317,
+          "not_detected": 1621,
+          "explicit_numeric": 1938,
+          "average_precision": 0.19927766950887116,
+          "status": "scored"
+        }
+      },
+      "physical_minus_functional_average_precision": 0.02235873594300808
+    }
+  },
+  "coverage_all": {
+    "functional": {
+      "pairs": 3222,
+      "explicit_numeric": 2819,
+      "explicit_numeric_fraction": 0.8749224084419616,
+      "unranked": 403,
+      "states": {
+        "no_returned_functional_row": 395,
+        "numeric": 2819,
+        "unmapped": 8
+      }
+    },
+    "physical": {
+      "pairs": 3222,
+      "explicit_numeric": 2298,
+      "explicit_numeric_fraction": 0.7132216014897579,
+      "unranked": 924,
+      "states": {
+        "no_returned_functional_row": 395,
+        "numeric": 2298,
+        "physical_not_returned_under_profile": 521,
+        "unmapped": 8
+      }
+    }
+  },
+  "coverage_eligible": {
+    "functional": {
+      "pairs": 2676,
+      "explicit_numeric": 2363,
+      "explicit_numeric_fraction": 0.883034379671151,
+      "unranked": 313,
+      "states": {
+        "no_returned_functional_row": 306,
+        "numeric": 2363,
+        "unmapped": 7
+      }
+    },
+    "physical": {
+      "pairs": 2676,
+      "explicit_numeric": 1938,
+      "explicit_numeric_fraction": 0.7242152466367713,
+      "unranked": 738,
+      "states": {
+        "no_returned_functional_row": 306,
+        "numeric": 1938,
+        "physical_not_returned_under_profile": 425,
+        "unmapped": 7
+      }
+    }
+  },
+  "exposure_strata": {
+    "huri=False,inmc=False": {
+      "all_nominations": 2773,
+      "assay_eligible": 2271,
+      "coverage_eligible": {
+        "functional": {
+          "pairs": 2271,
+          "explicit_numeric": 1990,
+          "explicit_numeric_fraction": 0.8762659621312198,
+          "unranked": 281,
+          "states": {
+            "no_returned_functional_row": 275,
+            "numeric": 1990,
+            "unmapped": 6
+          }
+        },
+        "physical": {
+          "pairs": 2271,
+          "explicit_numeric": 1614,
+          "explicit_numeric_fraction": 0.7107001321003963,
+          "unranked": 657,
+          "states": {
+            "no_returned_functional_row": 275,
+            "numeric": 1614,
+            "physical_not_returned_under_profile": 376,
+            "unmapped": 6
+          }
+        }
+      },
+      "full_panel": {
+        "arms": {
+          "functional": {
+            "pairs": 2271,
+            "detected": 90,
+            "not_detected": 2181,
+            "explicit_numeric": 1990,
+            "average_precision": 0.05360599752266856,
+            "status": "scored"
+          },
+          "physical": {
+            "pairs": 2271,
+            "detected": 90,
+            "not_detected": 2181,
+            "explicit_numeric": 1614,
+            "average_precision": 0.060372941718244,
+            "status": "scored"
+          }
+        },
+        "physical_minus_functional_average_precision": 0.006766944195575442
+      }
+    },
+    "huri=False,inmc=True": {
+      "all_nominations": 7,
+      "assay_eligible": 6,
+      "coverage_eligible": {
+        "functional": {
+          "pairs": 6,
+          "explicit_numeric": 5,
+          "explicit_numeric_fraction": 0.8333333333333334,
+          "unranked": 1,
+          "states": {
+            "no_returned_functional_row": 1,
+            "numeric": 5
+          }
+        },
+        "physical": {
+          "pairs": 6,
+          "explicit_numeric": 4,
+          "explicit_numeric_fraction": 0.6666666666666666,
+          "unranked": 2,
+          "states": {
+            "no_returned_functional_row": 1,
+            "numeric": 4,
+            "physical_not_returned_under_profile": 1
+          }
+        }
+      },
+      "full_panel": {
+        "arms": {
+          "functional": {
+            "pairs": 6,
+            "detected": 1,
+            "not_detected": 5,
+            "explicit_numeric": 5,
+            "average_precision": 0.25,
+            "status": "scored"
+          },
+          "physical": {
+            "pairs": 6,
+            "detected": 1,
+            "not_detected": 5,
+            "explicit_numeric": 4,
+            "average_precision": 0.25,
+            "status": "scored"
+          }
+        },
+        "physical_minus_functional_average_precision": 0.0
+      }
+    },
+    "huri=True,inmc=False": {
+      "all_nominations": 442,
+      "assay_eligible": 399,
+      "coverage_eligible": {
+        "functional": {
+          "pairs": 399,
+          "explicit_numeric": 368,
+          "explicit_numeric_fraction": 0.9223057644110275,
+          "unranked": 31,
+          "states": {
+            "no_returned_functional_row": 30,
+            "numeric": 368,
+            "unmapped": 1
+          }
+        },
+        "physical": {
+          "pairs": 399,
+          "explicit_numeric": 320,
+          "explicit_numeric_fraction": 0.8020050125313283,
+          "unranked": 79,
+          "states": {
+            "no_returned_functional_row": 30,
+            "numeric": 320,
+            "physical_not_returned_under_profile": 48,
+            "unmapped": 1
+          }
+        }
+      },
+      "full_panel": {
+        "arms": {
+          "functional": {
+            "pairs": 399,
+            "detected": 285,
+            "not_detected": 114,
+            "explicit_numeric": 368,
+            "average_precision": 0.7290561592583762,
+            "status": "scored"
+          },
+          "physical": {
+            "pairs": 399,
+            "detected": 285,
+            "not_detected": 114,
+            "explicit_numeric": 320,
+            "average_precision": 0.7331918580517852,
+            "status": "scored"
+          }
+        },
+        "physical_minus_functional_average_precision": 0.004135698793409026
+      }
+    },
+    "huri=True,inmc=True": {
+      "all_nominations": 0,
+      "assay_eligible": 0,
+      "coverage_eligible": {
+        "functional": {
+          "pairs": 0,
+          "explicit_numeric": 0,
+          "explicit_numeric_fraction": null,
+          "unranked": 0,
+          "states": {}
+        },
+        "physical": {
+          "pairs": 0,
+          "explicit_numeric": 0,
+          "explicit_numeric_fraction": null,
+          "unranked": 0,
+          "states": {}
+        }
+      },
+      "full_panel": {
+        "arms": {
+          "functional": {
+            "pairs": 0,
+            "detected": 0,
+            "not_detected": 0,
+            "explicit_numeric": 0,
+            "average_precision": null,
+            "status": "unscorable_empty_population"
+          },
+          "physical": {
+            "pairs": 0,
+            "detected": 0,
+            "not_detected": 0,
+            "explicit_numeric": 0,
+            "average_precision": null,
+            "status": "unscorable_empty_population"
+          }
+        },
+        "physical_minus_functional_average_precision": null
+      }
+    }
+  },
+  "capture": {
+    "candidate_count": 3222,
+    "mapping_states": {
+      "resolved": 3167,
+      "unmapped": 6
+    },
+    "request_count": 161,
+    "http_attempt_count": 161,
+    "body_bytes": 4552998,
+    "native_contrast": {
+      "numeric_support": {
+        "functional": 2819,
+        "physical": 2298
+      },
+      "ranking_input_sha256": {
+        "functional": "a36e9de9fbbdadc1f00f438378b2c2e1aaf204bb8fc114c1a367c0a8a8d1ac72",
+        "physical": "162ab7b2dc925557ce0584fd0d0f16b438c1fb5dbebed03d0304a101a968226b"
+      },
+      "identical_ranking_inputs": false,
+      "different_ranking_values": 1905,
+      "different_source_states": 521
+    },
+    "outcomes_used_to_select_requests": false,
+    "new_reference_outcomes_opened": false,
+    "model_calls": 0,
+    "GPU_runs": 0
+  },
+  "metric": "sklearn.metrics.average_precision_score",
+  "runtime": {
+    "python": "3.12.4",
+    "scikit_learn": "1.9.1"
+  },
+  "unranked_policy": {
+    "ordinal_value": -1,
+    "all_native_numeric_scores_above_unranked": true,
+    "meaning": "Retrieval ordering only; neither confidence nor a biological negative."
+  },
+  "checks": {
+    "capture_offline_verified": true,
+    "score_offline_verified": true,
+    "independent_arithmetic_review": "passed",
+    "independent_arithmetic_scope": "Independent arithmetic and captured-TSV score projection review; no production scoring/adapter imports.",
+    "arithmetic_checks": {
+      "exact_pair_source_construct_join": true,
+      "all_raw_native_score_projections": true,
+      "historical_consumed_outcome_bytes_unchanged": true,
+      "complete_denominators": true,
+      "every_source_state_and_sentinel": true,
+      "four_exposure_strata": true,
+      "ranking_fingerprints": true,
+      "capture_and_result_inventories_unchanged": true
+    },
+    "targeted_tests_passed": 50,
+    "test_command": "PYTHONPATH=tests runs/reactome_context_runtime_20261026/venv/bin/python -m unittest test_string_component test_string_component_capture test_string_component_scoring -q"
+  },
+  "claim_boundaries": {
+    "study_independence_established": false,
+    "steward_improvement_tested": false,
+    "scientific_accuracy_measured": false,
+    "confidence_intervals_computed": false,
+    "thresholds_tuned": false,
+    "graph_modified": false
+  },
+  "scientific_limits": [
+    "Retrospective selected consumed assay panel; not an unseen reference.",
+    "Physical overlays predict physical/co-complex association, not direct binding truth.",
+    "Historical/STRING source overlap is unresolved; HuRI/INMC flags are not a complete independence certificate.",
+    "Higher AP is a native source-view component result, not evidence of a Steward-specific graph improvement.",
+    "Most detections occur in the known HuRI-exposed stratum; report exposure-stratified results.",
+    "Physical numeric coverage is lower; conditional jointly numeric results cannot replace full-panel results."
+  ],
+  "decision": "Retain the physical overlay as a measured task-specific prioritization candidate; preserve functional associations and explicit coverage. Independent confirmation and a same-information Steward contribution test remain separate.",
+  "artifacts": {
+    "protocol": {
+      "path": "runs/string_component_protocol_20261027_attempt_01/protocol.json",
+      "raw_file_sha256": "18ebd6c85ff6d45612daa8fa6465ccc315d50029514172826abc460d49d9cc20",
+      "content_sha256": "e3bba9629cff6f2133df745dc7a3de9175710709556034a049770ee3dd0e9936"
+    },
+    "capture": {
+      "path": "runs/string_component_capture_20261027_attempt_01/report.json",
+      "raw_file_sha256": "5c5f365279f67273f2b676582d24e119af131ac2196a83687fc2dcc81c1f0216",
+      "content_sha256": "0877c1fb2da1f6c1c1a8ab80f1a75ca0d010f23d151582f77e71c742048595a9"
+    },
+    "result": {
+      "path": "runs/string_component_result_20261027_attempt_01/report.json",
+      "raw_file_sha256": "607bb97b7a63422e73b3f4d76bce5dcf499340ab74377ec2d323b9351ba7b192",
+      "content_sha256": "f71ff7e68982de387ad593eaeb08423c26c03f7ec6c7f14e1e03f4d21f0d2644"
+    },
+    "metrics": {
+      "path": "runs/string_component_result_20261027_attempt_01/metrics.json",
+      "raw_file_sha256": "ed4856130cb50a2f8e7d3bad99a7244bf6be8f497eafc43562c17dd3f808697e"
+    },
+    "arithmetic_review": {
+      "path": "runs/string_component_arithmetic_review_20261027/report.json",
+      "raw_file_sha256": "1a66abc50c9940f46a02ec90f13fec799a767c65e610d2243ab857f6c5271e12",
+      "content_sha256": "44bf1b7c7133b760f123f327bc605bc2f78510a8416cedfef838edbc7fecfe33"
+    }
+  },
+  "readable_report": "runs/string_component_result_20261027_attempt_01/report.html",
+  "artifact_distribution": "Real source packets are local separately supplied inputs; not bundled with a fresh code clone.",
+  "implementation_sha256": {
+    "scripts/run_string_component.py": "e76b51598b9ac82262127767695a7f879ba9ae9d5517f3ee94c25161bc7793f8",
+    "scripts/score_string_component.py": "e58130bd95fd5d65e624304e7c40f62191f84592dd45a50cc2f2892c0525d4c4",
+    "biograph_steward/string_component.py": "af2d927d0dfc4480a090d51f87dd5e57d883e4701cd0f0c38cf308bad2efe154",
+    "biograph_steward/assay_attachment.py": "f4b2a86cb9b0c834ea7efc6304965032f97a8d4c5c2ccf0ae016de8ec263d820",
+    "biograph_steward/client.py": "a9877c663c8790fd364d398b40f1f6cdf0d9ccd5b27378127cf4d3d3456bc3bb",
+    "biograph_steward/file_utils.py": "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6",
+    "biograph_steward/evidence_overlap.py": "603c89a51ba21d494d70754b3ef116097544cb41eba670aceeef4591a9d2c5b3",
+    "biograph_steward/gold_packet.py": "b14062d67e742306b5aeafdf51f9d7efcb7b6bddd9bc35b8181097fa8ce5efe8"
+  }
+}

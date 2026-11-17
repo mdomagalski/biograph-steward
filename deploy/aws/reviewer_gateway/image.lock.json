@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-11-13T19:25:57.960503+00:00",
+  "repository": "docker.io/library/nginx",
+  "tag": "1.30.6-alpine",
+  "index_digest": "sha256:901e593c95dc85f5a729f5765516321366ef4ac401821431d408897e95287d0a",
+  "linux_amd64_manifest_digest": "sha256:bb8f722b4be005fcd7827816a136ab779fd40185d85b5171be915cc7fc0575c7",
+  "image": "nginx:1.30.6-alpine@sha256:901e593c95dc85f5a729f5765516321366ef4ac401821431d408897e95287d0a",
+  "upstream_official_image_definition": "https://raw.githubusercontent.com/docker-library/official-images/master/library/nginx",
+  "upstream_dockerfile_commit": "4b9f658be76820b24e4ef4605413a5c08707a512",
+  "security_advisories": "https://nginx.org/en/security_advisories.html",
+  "registry_manifest_bytes_sha256_verified": true
+}

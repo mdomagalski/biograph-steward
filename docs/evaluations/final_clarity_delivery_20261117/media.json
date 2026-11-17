@@ -1,0 +1,54 @@
+{
+  "format": "biograph-steward.final-delivery-media.v1",
+  "title": "BioGraph Steward walkthrough",
+  "duration_seconds": 243.14,
+  "video_dimensions": [
+    1280,
+    816
+  ],
+  "synthetic_voice": "Kokoro af_heart",
+  "local_TTS_sections_generated": 10,
+  "new_agent_LLM_calls": 0,
+  "new_prediction_runs": 0,
+  "fresh_scientific_source_retrievals": 0,
+  "speech_text_uploaded_to_cloud": false,
+  "new_paid_compute_started": false,
+  "root_visual_QA": true,
+  "agent_visual_QA": true,
+  "sampled_frames_checked": 14,
+  "full_video_decode_and_audio_analysis_passed": true,
+  "manual_audio_audition": false,
+  "actual_current_browser_capture": false,
+  "capture_description": "Prior verified completed application screenshots, edited with synthetic narration. Original capture provenance accompanies the video. The newer loading spinner was not reconstructed or presented as a fresh browser capture.",
+  "scientific_scope": "Two named saved workspaces and a separate historical prediction study. Existing results and recorded agent investigation are shown; no new scientific model, retrieval, or agent evaluation was run for narration.",
+  "voice_licenses": {
+    "kokoro_onnx_wrapper": "MIT",
+    "Kokoro_82M_model": "Apache-2.0"
+  },
+  "voice_sources": [
+    "https://github.com/thewh1teagle/kokoro-onnx",
+    "https://huggingface.co/hexgrad/Kokoro-82M"
+  ],
+  "files": {
+    "BioGraph_Steward_Walkthrough.mp4": {
+      "bytes": 7323004,
+      "sha256": "b722658bff37309a5de0b593d7e5c7815d10571afe79c72ab302226934d31b73"
+    },
+    "BioGraph_Steward_Walkthrough.txt": {
+      "bytes": 4128,
+      "sha256": "82420d972cf231e10ab13cdef763643201baee1867a762a19815a4cf868155c7"
+    },
+    "BioGraph_Steward_Walkthrough.vtt": {
+      "bytes": 4695,
+      "sha256": "4f47a113fcdc0c1e0c8db6a68ae12cf3276a62341c85d7b2039631f73a9b6f1f"
+    },
+    "BioGraph_Steward_Walkthrough.srt": {
+      "bytes": 4813,
+      "sha256": "cc084d32bf483f84c3943976dc71ef7276400b81408af71ad6bb42e745f3544a"
+    },
+    "BioGraph_Steward_Walkthrough.receipt.json": {
+      "bytes": 20373,
+      "sha256": "f281d0f7638fded0e82614f684da140cde69e9493707da315cafc727661796ba"
+    }
+  }
+}

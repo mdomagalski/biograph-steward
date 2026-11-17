@@ -11,6 +11,8 @@ from .client import PharosClient, PharosError, ENDPOINT, VERSION, SEARCH, DISEAS
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="BioGraph Steward: inspect and trace bounded biomedical evidence.")
     sub = parser.add_subparsers(dest="command")
+    from .source_agent_cli import add_commands as add_source_agent_commands
+    add_source_agent_commands(sub)
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--endpoint", default=ENDPOINT)
     common.add_argument("--cache-dir", type=Path, default=cache_directory())
@@ -22,6 +24,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--allowed-origin", action="append", default=None, help="Exact HTTPS origin allowed for a protected reverse proxy; repeat for multiple origins.")
     p.add_argument("--runs-dir", type=Path, default=runs_directory())
     p.add_argument("--no-browser", action="store_true")
+    p.add_argument("--saved-data-only", action="store_true", help="Serve existing data and saved queries; block live retrieval, model planning and source/review edits.")
     sub.add_parser("doctor", parents=[common], help="Test live connectivity and required GraphQL fields.")
     p = sub.add_parser("search", parents=[common], help="Search disease names; choose an exact returned term.")
     p.add_argument("term")
@@ -63,10 +66,106 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--publication", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("string-source-publish", help="Replay a saved whole-cohort STRING capture into a versioned source publication offline.")
+    p.add_argument("--capture", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("string-physical-publish", help="Publish the separate pinned native STRING physical network with exact sequence admission offline.")
+    p.add_argument("--snapshot", type=Path, required=True)
+    p.add_argument("--sources", type=Path, required=True, help="Pinned four-file generic bulk source manifest.")
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("mapit-source-publish", help="Publish completed, qualified MAP-IT tissue reanalysis records offline.")
+    p.add_argument("--analysis", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("signor-source-publish", help="Publish exact-cohort regulatory records from the pinned SIGNOR release offline.")
+    p.add_argument("--source", type=Path, required=True)
+    p.add_argument("--snapshot", type=Path, required=True)
+    p.add_argument("--pubmed-xml", type=Path)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("bioplex-context-publish", help="Create a private, source-bound HCT116 context packet without new graph edges.")
+    p.add_argument("--companion", type=Path, required=True)
+    p.add_argument("--directed", type=Path, required=True)
+    p.add_argument("--snapshot", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("biological-update", help="Publish a new source-preserving workspace with versioned biological evidence and optional cell-model context.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--string-publication", type=Path)
+    p.add_argument("--string-physical-publication", type=Path)
+    p.add_argument("--append-sources", action="store_true", help="Preserve existing unreviewed source publications while adding a different source kind.")
+    p.add_argument("--mapit-publication", type=Path)
+    p.add_argument("--signor-publication", type=Path)
+    p.add_argument("--bioplex-publication", type=Path)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("biological-comparison-publish", help="Publish saved fixed-view experimental reference aggregates; no selection, fetching or inference.")
+    p.add_argument("--assessment", type=Path, required=True)
+    p.add_argument("--frozen", type=Path, required=True)
+    p.add_argument("--qualification", type=Path, required=True)
+    p.add_argument("--selection", type=Path, required=True)
+    p.add_argument("--processed-qc", type=Path)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("qualify-task", help="Create a separate source-reported direct human phosphoregulation view and complete decision ledger; not biological truth scoring.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p.add_argument("--actor", default="BioGraph Steward deterministic task qualification")
+    p = sub.add_parser("qualify-go-context", help="Recover native GAF qualifiers beside the saved graph; compatible tuples do not establish historical record identity.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--gaf", type=Path, required=True)
+    p.add_argument("--gaf-sha256", required=True)
+    p.add_argument("--source-url")
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("go-context-inspect", help="Inspect exact current GOA source records with their own references and qualifiers; no historical backfill.")
+    p.add_argument("--context", type=Path, required=True)
+    p.add_argument("--protein", required=True)
+    p.add_argument("--go", dest="go_id")
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("qualify-go-ontology", help="Create a separate view with active GO IDs from a pinned ontology; not scientific truth scoring.")
+    p.add_argument("--packet", type=Path, required=True)
+    p.add_argument("--ontology", type=Path, required=True)
+    p.add_argument("--ontology-sha256", required=True)
+    p.add_argument("--actor", default="BioGraph Steward GO ontology compatibility")
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("regulatory-sites", help="Inspect reported sites, phosphate change and experimental context from saved SIGNOR evidence.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--protein", default="UniProtKB:P00533")
+    p.add_argument("--direction", choices=("incoming", "outgoing", "both"), default="both")
+    p.add_argument("--site", default="")
+    p.add_argument("--cell-context", default="")
+    p.add_argument("--tissue-context", default="")
+    p.add_argument("--context-reporting", choices=("all", "reported", "unreported"), default="all")
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("regulatory-question", help="Inspect saved source-reported regulation with its direction, site and experimental context.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--protein", default="UniProtKB:P00533")
+    p.add_argument("--direction", choices=("incoming", "outgoing", "both"), default="outgoing")
+    p.add_argument("--search", default="")
+    p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("assay-question", help="Read source-qualified IntAct evidence, preserving experiment context; no unqualified interaction inference.")
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--protein", help="Optional exact UniProt accession inside the saved cohort.")
     p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("evidence-overlap", help="Report record-level overlap and added context from a saved assay-enriched run offline.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("evidence-overlap-verify", help="Verify a saved record-level overlap report and its source bindings offline.")
+    p.add_argument("--report", type=Path, required=True, help="Published overlap report directory.")
+    p = sub.add_parser("assay-source-reuse", help="Copy a saved assay workspace and expose its existing verified provider source-link trace offline.")
+    p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--trace", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("assay-source-reuse-verify", help="Verify a portable source-reuse supplement without changing graph or review decisions.")
+    p.add_argument("--run", type=Path, required=True)
+    p = sub.add_parser("pharos-pair-details", help="Capture the sole saved overlap pair through official Pharos details; three uncached requests.")
+    p.add_argument("--overlap", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("pharos400-intake", help="Download the official 400 identity table once and retain only exact requested protein rows and source receipts.")
+    p.add_argument("--accessions", nargs="+", required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("pharos-source-update", help="Publish a separate offline overlap supplement using saved pair details and scoped 400 identity intake.")
+    p.add_argument("--overlap", type=Path, required=True)
+    p.add_argument("--details", type=Path, required=True)
+    p.add_argument("--identities", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("pharos-source-update-verify", help="Replay a saved source supplement offline without changing the original graph.")
+    p.add_argument("--report", type=Path, required=True)
     p = sub.add_parser("standards-resources", help="Download hash-pinned official Biolink resources into a new folder.")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("standards-export", help="Publish a bounded KGX projection and actual upstream validation audit; requires optional audit environment.")
@@ -82,6 +181,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--reviews", type=Path, help="Preserve review events from this exact snapshot.")
     p.add_argument("--civic-snapshot", type=Path, help="Replay this verified CIViC sidecar without network access.")
     p.add_argument("--assay-run", type=Path, help="Preserve the validated assay sidecar and complete source publication from this run.")
+    p.add_argument("--extension-run", type=Path, help="Preserve the validated biological extension and complete source publications from this run.")
     p.add_argument("--out", type=Path, required=True)
     p = sub.add_parser("review", help="Record a human assertion decision in a new immutable run.")
     p.add_argument("--run", type=Path, required=True)
@@ -99,6 +199,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--run", type=Path, required=True)
     p = sub.add_parser("question", help="Answer a scoped protein-neighborhood question from a saved run.")
     p.add_argument("--run", type=Path, required=True)
+    p.add_argument("--template", choices=["disease_protein_neighborhood.v1", "cohort_protein_neighborhood.v1", "native_string_physical.v1"])
     p.add_argument("--protein", required=True, help="Exact protein ID or unambiguous symbol in this cohort.")
     p.add_argument("--relations", choices=["interactions", "shared_pathways"], nargs="+", default=["interactions", "shared_pathways"])
     p.add_argument("--view", choices=["accepted", "candidates"], default="accepted")
@@ -166,8 +267,69 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--receipt', type=Path, help='Reopen the same saved data from an earlier successful report; no writes/model calls.')
     p.add_argument('--timeout', type=int, default=120)
     p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('neptune-export', help='Project one verified saved graph to lossless Neptune openCypher CSV; no cloud calls.')
+    p.add_argument('--run', type=Path, required=True)
+    p.add_argument('--out', type=Path, required=True)
+    neptune_common = argparse.ArgumentParser(add_help=False)
+    neptune_common.add_argument('--neptune-endpoint', default=os.environ.get('BIOGRAPH_NEPTUNE_ENDPOINT'))
+    neptune_common.add_argument('--aws-region', default=os.environ.get('BIOGRAPH_AWS_REGION', os.environ.get('AWS_REGION')))
+    p = sub.add_parser('neptune-load', parents=[neptune_common], help='Start the official Neptune bulk loader; requires explicit temporary import permissions.')
+    p.add_argument('--source-s3-uri', required=True)
+    p.add_argument('--loader-role-arn', required=True)
+    p.add_argument('--out', type=Path, required=True)
+    p = sub.add_parser('neptune-load-status', parents=[neptune_common], help='Read an existing Neptune loader job status.')
+    p.add_argument('--load-id', required=True)
+    p.add_argument('--out', type=Path, required=True)
+    for name, help_text in [('neptune-verify', 'Compare every Neptune record and relationship with the verified saved graph.'),
+                            ('neptune-export-verified', 'Reconstruct this graph from verified Neptune records into a new export directory.'),
+                            ('neptune-inspect', 'Read an exact entity neighborhood from Neptune and verify its source bindings.')]:
+        p = sub.add_parser(name, parents=[neptune_common], help=help_text)
+        p.add_argument('--run', type=Path, required=True)
+        p.add_argument('--out', type=Path, required=True)
+        if name == 'neptune-inspect':
+            p.add_argument('--node-id', required=True)
+            p.add_argument('--limit', type=int, default=100)
     args = parser.parse_args(argv)
     try:
+        if args.command in {'source-agent-catalogue', 'source-agent-run', 'source-agent-verify'}:
+            from .source_agent_cli import run_command
+            result, status = run_command(args)
+            print(json.dumps(result, indent=2))
+            return status
+        if args.command and args.command.startswith('neptune-'):
+            from .client import write_json
+            from .neptune import export_projection, Mirror
+            if args.out.exists() or args.out.is_symlink():
+                raise ValueError('Choose a new output path for the Neptune receipt or projection.')
+            if args.command == 'neptune-export':
+                from .reviews import read_run
+                result = export_projection(read_run(args.run)[2], args.out)
+            else:
+                if not args.neptune_endpoint or not args.aws_region:
+                    raise ValueError('Supply the private Neptune HTTPS endpoint and its AWS region.')
+                mirror = Mirror(args.neptune_endpoint, args.aws_region)
+                if args.command == 'neptune-load':
+                    result = mirror.load(args.source_s3_uri, args.loader_role_arn, parallelism='LOW')
+                elif args.command == 'neptune-load-status':
+                    result = mirror.loader_status(args.load_id)
+                else:
+                    from .reviews import read_run
+                    graph = read_run(args.run)[2]
+                    if args.command == 'neptune-export-verified':
+                        result = mirror.export_graph(graph, args.out)
+                    else:
+                        result = (mirror.verify(graph) if args.command == 'neptune-verify'
+                                  else mirror.inspect(graph, args.node_id, limit=args.limit))
+                if args.command != 'neptune-export-verified':
+                    write_json(args.out, result)
+            summary = {key: result[key] for key in
+                       ('dataset_id', 'graph_sha256', 'counts', 'status', 'truncated', 'payload')
+                       if key in result}
+            if 'edge_ids' in result:
+                summary['returned_evidence_edges'] = len(result['edge_ids'])
+            print(json.dumps({'operation': args.command, 'output': str(args.out.resolve()),
+                              **summary}, indent=2))
+            return 0
         if args.command == "construction-plan":
             from .construction_planning import (configured_construction_planner,
                 validate_construction_scope, save_construction_plan)
@@ -203,6 +365,117 @@ def main(argv: list[str] | None = None) -> int:
             graph = attach_assay(args.run, args.publication, args.out)
             print(json.dumps({'output': str(args.out.resolve()), 'assay_evidence': graph['assay_evidence']}, indent=2))
             return 0
+        if args.command == 'string-source-publish':
+            from .string_source_update import publish_capture
+            manifest = publish_capture(args.capture, args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
+            return 0
+        if args.command == 'string-physical-publish':
+            from .string_physical_source import publish_sources
+            from .assay_attachment import _decode, _ordinary
+            manifest = publish_sources(_decode(_ordinary(args.snapshot)), _decode(_ordinary(args.sources)), args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
+            return 0
+        if args.command == 'mapit-source-publish':
+            from .mapit_source import publish_completed_analysis
+            manifest = publish_completed_analysis(args.analysis, args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
+            return 0
+        if args.command == 'signor-source-publish':
+            from .signor_source import publish_release
+            from .assay_attachment import _decode, _ordinary
+            manifest = publish_release(args.source, _decode(_ordinary(args.snapshot)), args.out,
+                                       pubmed_xml=args.pubmed_xml)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication': manifest}, indent=2))
+            return 0
+        if args.command == 'bioplex-context-publish':
+            from .bioplex_source import publish_release
+            from .assay_attachment import _decode, _ordinary
+            manifest = publish_release(args.companion, args.directed, _decode(_ordinary(args.snapshot)), args.out)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication_sha256': manifest['content_sha256'],
+                              'private_source_packet': True, 'new_graph_edges': 0}, indent=2))
+            return 0
+        if args.command == 'biological-update':
+            from .evidence_extension import publish_extension
+            publications = {k: v for k, v in {'string': args.string_publication, 'string_physical': args.string_physical_publication,
+                            'mapit': args.mapit_publication, 'signor': args.signor_publication,
+                            'bioplex': args.bioplex_publication}.items() if v is not None}
+            graph = publish_extension(args.run, publications, args.out, append_sources=args.append_sources)
+            print(json.dumps({'output': str(args.out.resolve()),
+                              'evidence_extension': graph['evidence_extension']}, indent=2))
+            return 0
+        if args.command == 'biological-comparison-publish':
+            from .biological_validation import publish
+            manifest = publish(args.assessment, args.frozen, args.qualification, args.selection,
+                               args.out, processed_qc=args.processed_qc)
+            print(json.dumps({'output': str(args.out.resolve()), 'publication_sha256': manifest['content_sha256'],
+                              'scientific_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'qualify-task':
+            from .task_qualification import qualify_task
+            report = qualify_task(args.packet, args.out, actor=args.actor)
+            print(json.dumps({'output': str(args.out.resolve()), 'profile': report['profile'],
+                              'counts': report['counts'], 'retained_package': report['retained_package'],
+                              'report_sha256': report['content_sha256'],
+                              'independent_biological_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'qualify-go-context':
+            from .go_qualification import qualify_go_context
+            report = qualify_go_context(args.packet, args.gaf, args.out,
+                                        expected_gaf_sha256=args.gaf_sha256,
+                                        source_url=args.source_url)
+            print(json.dumps({'output': str(args.out.resolve()),
+                              'report_sha256': report['content_sha256'],
+                              'historical_record_identity_established': False,
+                              'independent_biological_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'go-context-inspect':
+            from .go_context_inspection import inspect_go_context
+            from .client import write_json
+            from .file_utils import new_output
+            report = inspect_go_context(args.context, args.protein, go_id=args.go_id)
+            folder = new_output(args.out, args.context)
+            write_json(folder / 'go_context_inspection.json', report)
+            print(json.dumps({'output': str(folder.resolve()), 'query': report['query'],
+                              'record_count': report['record_count'],
+                              'report_sha256': report['content_sha256'],
+                              'independent_biological_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'qualify-go-ontology':
+            from .go_ontology_qualification import qualify_go_ontology
+            report = qualify_go_ontology(args.packet, args.ontology, args.out,
+                                         ontology_sha256=args.ontology_sha256,
+                                         actor=args.actor)
+            print(json.dumps({'output': str(args.out.resolve()), 'counts': report['counts'],
+                              'retained_package': report['retained_package'],
+                              'report_sha256': report['content_sha256'],
+                              'independent_biological_accuracy_established': False}, indent=2))
+            return 0
+        if args.command == 'regulatory-sites':
+            from .regulatory_sites import answer_regulatory_sites
+            from .reviews import read_run
+            from .file_utils import new_output
+            from .client import write_json
+            answer = answer_regulatory_sites(read_run(args.run)[2], args.protein,
+                direction=args.direction, site=args.site, cell_context=args.cell_context,
+                tissue_context=args.tissue_context, context_reporting=args.context_reporting,
+                source_run=args.run.name)
+            output = new_output(args.out, args.run)
+            write_json(output / 'answer.json', answer)
+            print(json.dumps({'output': str(output.resolve()), 'summary': answer['summary']}, indent=2))
+            return 0
+        if args.command == 'regulatory-question':
+            from .regulatory_questions import answer_regulatory_question
+            from .reviews import read_run
+            from .file_utils import new_output
+            from .client import write_json
+            graph = read_run(args.run)[2]
+            answer = answer_regulatory_question(graph, args.protein, direction=args.direction,
+                                                search=args.search, source_run=args.run.name)
+            output = new_output(args.out, args.run)
+            write_json(output / 'answer.json', answer)
+            print(json.dumps({'output': str(output.resolve()), 'summary': answer['summary']}, indent=2))
+            return 0
         if args.command == 'assay-question':
             from .assay_questions import answer_assay_question
             from .questions import save_answer
@@ -211,6 +484,47 @@ def main(argv: list[str] | None = None) -> int:
             answer = answer_assay_question(graph, args.protein, source_run=args.run.name)
             save_answer(answer, args.out)
             print(json.dumps({'output': str(args.out.resolve()), 'overview': answer['overview']}, indent=2))
+            return 0
+        if args.command in {"assay-source-reuse", "assay-source-reuse-verify"}:
+            from .assay_source_reuse import publish_reuse_workspace, read_reuse
+            output = args.out if args.command == "assay-source-reuse" else args.run
+            result = (publish_reuse_workspace(args.run, args.trace, output)
+                      if args.command == "assay-source-reuse" else read_reuse(output))
+            if result is None:
+                raise ValueError("This workspace has no source-reuse supplement.")
+            print(json.dumps({"operation": args.command, "summary": result["summary"],
+                "report": str((output / "source_reuse.json").resolve())}, indent=2))
+            return 0
+        if args.command in {"evidence-overlap", "evidence-overlap-verify"}:
+            from .evidence_overlap import publish_overlap, verify_overlap
+            output = args.out if args.command == "evidence-overlap" else args.report
+            result = (publish_overlap(args.run, output) if args.command == "evidence-overlap"
+                      else verify_overlap(output))
+            summary = {"operation": args.command, "summary": result["summary"],
+                       "report": str((output / "report.json").resolve())}
+            if args.command == "evidence-overlap-verify":
+                summary["status"] = "evidence_overlap_verified"
+            print(json.dumps(summary, indent=2))
+            return 0
+        if args.command == "pharos-pair-details":
+            from .pharos_source_update import capture_pair_details
+            result = capture_pair_details(args.overlap, args.out)
+            print(json.dumps({"status": result["status"], "database_version": result["db_version_before"],
+                "receipt": str((args.out / "receipt.json").resolve())}, indent=2))
+            return 0
+        if args.command == "pharos400-intake":
+            from .pharos400_identity import capture_intake
+            result = capture_intake(args.accessions, args.out)
+            print(json.dumps({"source_version": "pharos400", "selected_rows": len(result["subset"]["selected_rows"]),
+                "intake": str(args.out.resolve())}, indent=2))
+            return 0
+        if args.command in {"pharos-source-update", "pharos-source-update-verify"}:
+            from .pharos_source_update import publish_source_update, verify_source_update
+            result = (publish_source_update(args.overlap, args.details, args.identities, args.out)
+                      if args.command == "pharos-source-update" else verify_source_update(args.report))
+            output = args.out if args.command == "pharos-source-update" else args.report
+            print(json.dumps({"operation": args.command, "summary": result["summary"],
+                "report": str((output / "report.json").resolve())}, indent=2))
             return 0
         if args.command == "standards-resources":
             from .standards_validation import prepare_resources
@@ -329,7 +643,8 @@ def main(argv: list[str] | None = None) -> int:
             host = args.host if args.command else os.environ.get('BIOGRAPH_HOST', '127.0.0.1')
             origins = ((args.allowed_origin if args.allowed_origin is not None else os.environ.get('BIOGRAPH_ALLOWED_ORIGINS', ''))
                        if args.command else os.environ.get('BIOGRAPH_ALLOWED_ORIGINS', ''))
-            options = {'host': host, 'allowed_origins': origins, 'access_token': os.environ.get('BIOGRAPH_ACCESS_TOKEN')}
+            options = {'host': host, 'allowed_origins': origins, 'access_token': os.environ.get('BIOGRAPH_ACCESS_TOKEN'),
+                       'saved_data_only': args.saved_data_only if args.command else False}
             if args.command:
                 serve(args.port, args.runs_dir, args.endpoint, args.cache_dir, not args.no_browser, args.timeout, **options)
             else:
@@ -358,7 +673,7 @@ def main(argv: list[str] | None = None) -> int:
             from .questions import answer_question, save_answer
             _, _, graph = read_run(args.run)
             answer = answer_question(graph, args.protein, relations=args.relations, view=args.view,
-                                     max_results=args.max_results, max_paths=args.max_paths, source_run=args.run.name)
+                                     max_results=args.max_results, max_paths=args.max_paths, source_run=args.run.name, template=args.template)
             save_answer(answer, args.out)
             print(json.dumps({"question": answer["question"], "overview": answer["overview"],
                               "availability": answer["availability"], "report": str((args.out / "report.html").resolve())}, indent=2))
@@ -456,6 +771,7 @@ def main(argv: list[str] | None = None) -> int:
         civic = (json.loads(args.civic_snapshot.read_text(encoding="utf-8"))
                  if args.command == "replay" and args.civic_snapshot else None)
         assay, assay_source = None, None
+        extension, extension_source = None, None
         if args.command == 'replay':
             if args.assay_run:
                 from .assay_attachment import read_assay
@@ -463,15 +779,37 @@ def main(argv: list[str] | None = None) -> int:
                 if assay is None:
                     raise ValueError('The supplied assay run has no qualified assay attachment.')
                 assay_source = args.assay_run / 'assay_source'
-            elif any((args.snapshot.parent / name).exists() or (args.snapshot.parent / name).is_symlink()
+            elif not args.extension_run and any((args.snapshot.parent / name).exists() or (args.snapshot.parent / name).is_symlink()
                      for name in ('assay_attachment.json', 'assay_source')):
                 raise ValueError('Use --assay-run to preserve this snapshot’s attached assay source during replay.')
+            if args.extension_run:
+                from .evidence_extension import read_extension
+                from .reviews import read_run, read_civic, read_assay
+                original_snapshot, original_events, _ = read_run(args.extension_run)
+                if original_snapshot != snapshot:
+                    raise ValueError('The extension run belongs to another source snapshot.')
+                extension = read_extension(args.extension_run, snapshot)
+                if extension is None:
+                    raise ValueError('The supplied extension run has no biological sources.')
+                extension_source = args.extension_run / 'extension_sources'
+                if events is None:
+                    events = original_events
+                if civic is None:
+                    civic = read_civic(args.extension_run)
+                if assay is None:
+                    assay = read_assay(args.extension_run)
+                    assay_source = args.extension_run / 'assay_source' if assay else None
+            elif any((args.snapshot.parent / name).exists() or (args.snapshot.parent / name).is_symlink()
+                     for name in ('evidence_extension.json', 'extension_sources')):
+                raise ValueError('Use --extension-run to preserve the biological source additions during replay.')
         planning_source, planning_bytes = None, None
         if args.command == 'replay':
             from .reviews import read_construction_plan, preserve_construction_plan, read_run
             sources = [args.snapshot.parent]
             if args.assay_run and args.assay_run.resolve() != args.snapshot.parent.resolve():
                 sources.append(args.assay_run)
+            if args.extension_run and args.extension_run.resolve() not in {p.resolve() for p in sources}:
+                sources.append(args.extension_run)
             for source in sources:
                 raw = read_construction_plan(source)
                 if raw is not None:
@@ -490,7 +828,8 @@ def main(argv: list[str] | None = None) -> int:
             stage = Path(tempfile.mkdtemp(prefix='.planned-replay-', dir=output.parent))
             try:
                 graph = save_run(snapshot, stage, run_mode='replay', review_events=events,
-                                 civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source)
+                                 civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source,
+                                 evidence_extension=extension, extension_source=extension_source)
                 preserve_construction_plan(planning_source, stage)
                 if (stage / 'construction_planner_trace.json').read_bytes() != planning_bytes:
                     raise ValueError('Construction planner trace changed during replay preparation.')
@@ -504,7 +843,8 @@ def main(argv: list[str] | None = None) -> int:
                     shutil.rmtree(stage)
         else:
             graph = save_run(snapshot, args.out, run_mode="replay" if args.command == "replay" else "build", review_events=events,
-                             civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source)
+                             civic_snapshot=civic, assay_attachment=assay, assay_source=assay_source,
+                             evidence_extension=extension, extension_source=extension_source)
         print(json.dumps({"data_kind": graph["data_kind"], "summary": graph["summary"],
                           "report": str((args.out / "report.html").resolve())}, indent=2))
         if graph["data_kind"] == "synthetic_demo":

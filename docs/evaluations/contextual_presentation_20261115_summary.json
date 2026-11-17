@@ -1,0 +1,55 @@
+{
+  "CI_comparator_explicitly_retained_LocalPlus": true,
+  "MF_CC_stronger_control_boundary_visible": true,
+  "PowerPoint_native_application_opened": false,
+  "actual_GOA_table_numbers_and_saved_CIs_checked": true,
+  "actual_chart_values_and_workbook_verified": true,
+  "all_eight_slides_rendered": true,
+  "all_eight_slides_visually_reviewed": true,
+  "all_original_images_byte_preserved": true,
+  "appendix_slides": 2,
+  "bytes": 298030,
+  "chart_workbook_rebound_with_bundled_literal_snapshot_helper": true,
+  "content_changed_slides": [
+    7
+  ],
+  "content_visual_receipt_sha256": "e44b353c07ca3b4005f39b564ac0e0ae45ee3c9cbfa835c6da554955d2be3cec",
+  "final": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
+  "format": "biograph-steward.challenge-presentation-delivery.v3",
+  "full_BP_bootstrap_frames_explicit": true,
+  "layout_fixture_only": false,
+  "layout_validation_findings": 0,
+  "layout_validation_warnings": 0,
+  "main_BP_slide_pixel_identical_to_v3": true,
+  "main_BP_slide_unchanged": true,
+  "main_slides": 6,
+  "native_chart_slides": [
+    4
+  ],
+  "native_table_slides": [
+    7,
+    8
+  ],
+  "new_models_or_metrics": false,
+  "nonexperimental_GOA_visible_in_complete_PK_table": true,
+  "notes_changed_slides": [
+    7,
+    8
+  ],
+  "original_literal_chart_values_preserved": true,
+  "original_workbook_bytes_not_claimed_preserved": true,
+  "privacy_scan_passed": true,
+  "raw_reference_cases_or_sources_read": false,
+  "scientific_statistics_recomputed": false,
+  "sha256": "e3a96cacedc65c4907feba280156f3bafa47f64a92ea899461aff05403d4a456",
+  "slides": 8,
+  "source_data_or_cases_read": false,
+  "source_pptx_sha256": "7aa583b6f7dd4a5880a5244e1c7180ecf885b2fa1d7f70b97b6ee88dafff5bd6",
+  "source_summary_file": "docs/evaluations/contextual_combination_20261115/summary.json",
+  "source_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "source_workbook_has_no_cell_formulas_or_external_links": true,
+  "spaces_fallback": "Previously documented authoring namespace unavailable; targeted local Artifact Tool edit.",
+  "validation_receipt_sha256": "49c8c2e19115f0dd50583d91052f2ed4a1f88e84f74b80303bd2f60c89f1bf88",
+  "visual_review_method": "Updated slide7 inspected directly; all seven other final rendered slides are pixel-identical to the fully visually reviewed v3.",
+  "visual_review_pending": false
+}

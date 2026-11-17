@@ -1,0 +1,15 @@
+{
+  "curation_guide_url": "https://indra.readthedocs.io/en/latest/tutorials/html_curation.html",
+  "metric_helper_sha256": "85524d12d0d7734ddaccefcecf04f8a2d6912bdf0c6a475467fcfc66b694a7c2",
+  "nano_model_id": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+  "nano_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+  "native_author_commit": "74e0ffe9ea21f6f11e906cee89a2091f45be2f7d",
+  "original_partial_frame_sha256": "85644e3c777983bf47a97b2533273237f32e5dabc057d327b65a55d604f91b19",
+  "qwen_model_id": "qwen.qwen3-235b-a22b-2507-v1:0",
+  "reference_terms_note": "Public curation artifacts were analysed privately. No explicit new-release data redistribution grant was established. The code MIT declaration does not supersede source-data terms; original 2023 reference terms do not establish a blanket grant for the newer release. Raw cases, curator records, Evidence objects and labels are not redistributed.",
+  "runtime_protocol_sha256": "0e7bef90ab9acce4a8e710b3c009b5d6531d228cd5e6a2e09a0edec89878eabc",
+  "scorer_sha256": "f5e1e8c8c043855dd0b0311168e2536d2739954fb69b79a1115c07bf2868040b",
+  "scoring_specification_sha256": "0980011d1ad47555769c28f6db7d1ff1c1bcdd1c4399a4baa89ff1e42697eff0",
+  "source_frame_sha256": "bdfb159e024531da40c0290b9d1c786fc20e33351c8ff9d75b3fa68a9f92145e",
+  "upstream_source_url": "https://github.com/gyorilab/indra-belief-model/tree/74e0ffe9ea21f6f11e906cee89a2091f45be2f7d"
+}

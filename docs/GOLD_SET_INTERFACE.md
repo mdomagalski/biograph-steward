@@ -1,9 +1,58 @@
 # Pharos reference handoff
 
-Updated October 26, 2026.
+The designated primary native-source graph passes the existing
+export → verify → dispositions → verify chain. Its
+[assembly and verification receipt](evaluations/delivery_readiness_20261116/primary_graph_handoff.json)
+records **19,310 unique abstentions with null confidence**, the retained graph,
+complete sources and an exactly reproduced same-snapshot Pharos-only comparator.
+All original app graph files remain unchanged. The separate applied-qualification
+companion retains its own 298 exclusions; those decisions are not transplanted.
 
-Verified on invented fixtures and an existing scoped Pharos/CIViC graph; see the
-[verification record](evaluations/GOLD_SET_INTERFACE_20261023.md).
+Three verified graph archives are prepared as separate organizer handoff assets.
+The [final package receipt](evaluations/final_delivery_20261117/graph_packages.json)
+records exact archive hashes and full member verification. The primary and
+Pharos comparator also retain their prior authenticated HTTPS checks in the
+[protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json).
+They are separate from the code-only software ZIP. Source terms remain applicable.
+Earlier [fixture and scoped-graph verification](evaluations/GOLD_SET_INTERFACE_20261023.md)
+remains a separate dated record.
+
+## Protected downloads
+
+The public browser demo opens saved examples without sign-in. Its prepared
+**Download an editable local copy** serves the exact native KRAS source
+workspace with software, attached sources, saved question, S01 job and local
+launcher. That is a runnable workspace copy, not the graph-and-decision packets
+below. It supports personal evidence reviews saved as new runs while preserving
+the original. See [local-copy scope and verification](evaluations/editable_demo_copy_20261117/README.md).
+
+The bulk graph/ledger/comparator archives below remain separate. They are
+supplied for final submission or retrieved through an authorized operator installation. The
+existing authenticated original workbench remains the operator download route.
+Large packages verify their source records before a download starts. Preserve
+all included source terms.
+
+| Package | Contents and purpose |
+|---|---|
+| Primary graph, decisions and source baseline (`primary_graph_handoff_20261116`) — about 116 MB | The sealed 48-file native graph-and-decisions package. It retains all 19,310 records with explicit `abstain` decisions and null confidence. Its `baseline_packet` preserves the complete enriched input and sources. |
+| Captured Pharos-only comparator (`captured_pharos_comparator_20261116`) — about 27 MB | A separate replayable saved workspace built from the exact original Pharos snapshot, with byte-identical Pharos graph and its own source terms. This is the control for the source additions. |
+| Applied qualification companion — about 130 MB | The separate 101-file sealed graph-and-decisions packet. It preserves 16,985 original records, 16,687 retained records, all 5,051 keep / 298 prune / 11,636 abstain decisions, original sources and terms. Its exclusions concern obsolete GO identifiers. |
+
+The prepared filenames are:
+
+- `BioGraph_Steward_Primary_Graph_Decisions_and_Sources.zip`
+- `BioGraph_Steward_Captured_Pharos_Comparator.zip`
+- `BioGraph_Steward_Applied_Qualification_Companion.zip`
+
+Extract each into its own directory. The companion archive has the sealed packet
+files at its root; it is a graph handoff, rather than a saved-question demo.
+The local handoff folder also supplies a contents note, checksums and a portable
+manifest. These source-bearing archives are excluded from the software repository.
+
+The primary package's enriched input baseline and the Pharos-only comparator
+have different roles. These are captured scoped graphs, not the entire Pharos
+release. The applied-qualification TP53 companion and its 298 exclusions remain
+separate; its decisions are not transplanted into the primary package.
 
 The workbench can now export a source-bound graph packet, record explicit edge
 dispositions, and align a declared reference table to that packet. This is the
@@ -49,7 +98,8 @@ python3 app.py gold-export --run runs/gold_demo_source --out runs/gold_demo_pack
 python3 app.py gold-verify --packet runs/gold_demo_packet
 ```
 
-For real data, replace `--run` with an existing ordinary saved Pharos/CIViC run.
+For real data, replace `--run` with a supported saved source workspace, such as
+the current native-source example. Keep its complete attached sources together.
 The export requires its saved graph to reproduce exactly from the preserved
 snapshots and review events, and requires consistent source metadata. It rejects
 drift rather than rebuilding a different graph silently. Historical runs that

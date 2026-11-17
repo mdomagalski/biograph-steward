@@ -1,0 +1,227 @@
+{
+  "format": "biograph-steward.native-source-search-development-assessment.v1",
+  "created_at": "2026-11-14T17:52:48.485109+00:00",
+  "title": "Native-tool versus retained JSON paper handoff: same24 development reuse",
+  "development_reuse": true,
+  "fresh_holdout": false,
+  "reference_values_previously_exposed": true,
+  "fixed_questions": 24,
+  "all_reference_questions_scorable": true,
+  "policy": {
+    "primary": "native_base minus retained_JSON_v4_base mean question-level reference-PMID Recall@10",
+    "secondary": "native_base minus retained deterministic direct PubMed full-question query",
+    "frame": "Same24 public BioASQ questions, already evaluated; exposed-label DEVELOPMENT reuse, not a fresh holdout.",
+    "cutoff": 10,
+    "question_denominator": 24,
+    "bootstrap": {
+      "draws": 2000,
+      "seed": 20261114,
+      "unit": "question",
+      "shared": true
+    },
+    "retrieval_benefit_rule": "All guards pass and the paired95percentile interval lower bound is positive for the primary.",
+    "agent_default_rule": "Additionally require a positive paired95percentile interval lower bound versus direct PubMed; otherwise retain deterministic source-search default.",
+    "all_empty_missing_and_failed_cases": "Empty final rankings retained in the original24 denominator.",
+    "operational_counts": [
+      "valid final",
+      "valid EMPTY final",
+      "valid NONEMPTY final",
+      "typed failure",
+      "source unavailable"
+    ],
+    "cap_guard": "Numeric completion_tokens>=1200 is terminal, including possibly complete calls at cap; missing numeric usage is terminal/unknown.",
+    "protocol_factor": "Complete native-tool protocol/controller profile; not a pure formatting causal ablation.",
+    "tuning": "One base-only profile, no skill/prompt/model/query sweep.",
+    "not_measured": [
+      "biological truth",
+      "scientific entailment",
+      "independent Pharos evidence",
+      "model-unseen generalization"
+    ]
+  },
+  "metrics": {
+    "retained_direct_pubmed": {
+      "mean_reference_recall_at_10": 0.17258986928104575,
+      "mean_reference_hit_at_10": 0.2916666666666667,
+      "fixed_questions": 24
+    },
+    "retained_JSON_v4_base": {
+      "mean_reference_recall_at_10": 0.0625,
+      "mean_reference_hit_at_10": 0.08333333333333333,
+      "fixed_questions": 24
+    },
+    "native_base": {
+      "mean_reference_recall_at_10": 0.041666666666666664,
+      "mean_reference_hit_at_10": 0.041666666666666664,
+      "fixed_questions": 24
+    }
+  },
+  "paired_comparisons": [
+    {
+      "candidate": "native_base",
+      "comparator": "retained_JSON_v4_base",
+      "observed_mean_difference": -0.020833333333333336,
+      "paired_95_percentile_interval": [
+        -0.14583333333333331,
+        0.10416666666666667
+      ],
+      "fraction_draws_above_zero": 0.2935
+    },
+    {
+      "candidate": "native_base",
+      "comparator": "retained_direct_pubmed",
+      "observed_mean_difference": -0.1309232026143791,
+      "paired_95_percentile_interval": [
+        -0.26286764705882354,
+        -0.02777777777777779
+      ],
+      "fraction_draws_above_zero": 0.0
+    },
+    {
+      "candidate": "retained_JSON_v4_base",
+      "comparator": "retained_direct_pubmed",
+      "observed_mean_difference": -0.11008986928104575,
+      "paired_95_percentile_interval": [
+        -0.23508986928104575,
+        -0.01286764705882353
+      ],
+      "fraction_draws_above_zero": 0.0
+    }
+  ],
+  "native_guard_and_budget_replay_passed": true,
+  "primary_positive_reference_interval": false,
+  "agent_default_adoption_criterion_passed": false,
+  "operational_counts": {
+    "native_base": {
+      "fixed_cases": 24,
+      "valid_final_cases": 12,
+      "valid_EMPTY_final_cases": 0,
+      "valid_NONEMPTY_final_cases": 12,
+      "status_counts": {
+        "completed": 12,
+        "no_tool_calls": 10,
+        "empty_tool_calls": 2
+      }
+    },
+    "retained_JSON_v4_base": {
+      "fixed_cases": 24,
+      "valid_final_cases": 13,
+      "valid_EMPTY_final_cases": 7,
+      "valid_NONEMPTY_final_cases": 6,
+      "status_counts": {
+        "completed": 13,
+        "invalid_output": 9,
+        "invalid_action": 2
+      }
+    }
+  },
+  "native_trajectories": {
+    "tool_order_counts": {
+      "search_pubmed": 12,
+      "search_pubmed > get_abstract": 1,
+      "search_pubmed > search_pubmed > get_abstract": 11
+    },
+    "early_finish_cases_before_four_calls": 1,
+    "completed_without_source_tool_cases": 0,
+    "cases_using_second_search": 11,
+    "cases_requesting_abstract": 12,
+    "distinct_successfully_opened_article_ID_count": 12,
+    "cases_with_controller_feedback": 11,
+    "controller_feedback_event_counts": {
+      "duplicate_search": 11
+    },
+    "article_identities_in_aggregate": false,
+    "interpretation": "Choice/trajectory variation describes execution, not retrieval benefit or biological correctness."
+  },
+  "native_finish_reason_counts": {
+    "tool_calls": 61,
+    "stop": 21
+  },
+  "native_output_cap_guards": 0,
+  "native_nonparallel_policy": {
+    "version": 2,
+    "behavior": "Select provider-parsed entry0 only when parallel_tool_calls=False; never scan later entries.",
+    "upstream_url": "https://github.com/vllm-project/vllm/blob/e1dd706cd1f2b008f6295a6a64634bf9e9b202c1/vllm/entrypoints/openai/utils.py",
+    "upstream_sha256": "59441f4c1cbb34f9293af7d44da268416e7a2db9d510c9467bd0d6e5ad525cb2",
+    "upstream_pr": "https://github.com/vllm-project/vllm/pull/26233",
+    "license": "Apache-2.0; client-side nonstreaming dict adaptation",
+    "suppressed_entries": "Count only; no arguments/content/history/source execution/final handoff retained.",
+    "raw_model_singleton_or_compliance_claim": false
+  },
+  "native_api_policy": {
+    "version": 3,
+    "choice_steps": "auto with the qualified first-provider-parsed-entry return policy",
+    "finish_only_steps": "Standard named function tool_choice finish; explicit guided_decoding_backend=outlines.",
+    "named_finish_response": "Exactly one wrapped finish call, finish_reason=stop, full deterministic argument/ID/usage/cap guards.",
+    "auto_response": "finish_reason=tool_calls; stop is not a successful auto handoff.",
+    "tokenization": "Same exact tools through chat_template_kwargs and native history; tool_choice does not alter the pinned renderer.",
+    "named_finish_rationale": "Matches the retained JSON controller forced-finish catalogue; no free-text or new action budget.",
+    "source": "https://github.com/vllm-project/vllm/blob/v0.8.5/vllm/entrypoints/openai/serving_chat.py"
+  },
+  "provider_parsed_tool_call_entries": 162,
+  "suppressed_parsed_tool_call_entries": 92,
+  "decisions_with_suppressed_parsed_entries": 41,
+  "execution_costs": {
+    "native_base": {
+      "model_calls": 82,
+      "tokenizer_requests": 82,
+      "observed_usage": {
+        "prompt_tokens": 153626,
+        "total_tokens": 162099,
+        "completion_tokens": 8473
+      },
+      "native_process_executions": 0,
+      "direct_fetch_invocations": 9,
+      "cache_hits": 38,
+      "upstream_HTTP_request_count": null,
+      "dollar_cost": null
+    },
+    "retained_controls": {
+      "retained_JSON_v4_base": {
+        "model_calls": 79,
+        "tokenizer_model_service_requests": 79,
+        "native_process_executions": 0,
+        "direct_fetch_invocations": 3,
+        "cache_hits": 39,
+        "exact_upstream_HTTP_request_count": null,
+        "observed_token_counts": {
+          "prompt_tokens": 92608,
+          "total_tokens": 106674,
+          "completion_tokens": 14066
+        },
+        "usage_responses": 79,
+        "dollar_cost": null,
+        "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+      },
+      "retained_direct_pubmed": {
+        "model_calls": 0,
+        "tokenizer_model_service_requests": 0,
+        "native_process_executions": 0,
+        "direct_fetch_invocations": 0,
+        "cache_hits": 24,
+        "exact_upstream_HTTP_request_count": null,
+        "observed_token_counts": {},
+        "usage_responses": 0,
+        "dollar_cost": null,
+        "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+      }
+    }
+  },
+  "limitations": [
+    "Same24 labels were already exposed: this is development evidence, never a new blind validation.",
+    "Reference lists are incomplete positive paper judgments; unlisted papers are not false or necessarily irrelevant.",
+    "Model/public training overlap is unaudited; source retrieval responses can differ in time for new native queries.",
+    "Protocol/controller/forced-finish differences prevent a pure formatting causal claim.",
+    "Cap guard can conservatively reject a complete native call; provider reason does not reveal the raw engine cause.",
+    "Candidate identifiers, variable tool trajectories and valid finals do not establish scientific entailment or independent Pharos evidence."
+  ],
+  "lineage": {
+    "protocol_file_sha256": "ecd997f8a16b564cbc44245121c1fee67ca9d3777b8595d63d15fb878dac202e",
+    "prediction_seal_file_sha256": "117c3cac176e521e6842a0b3217fc27193c845392d13f3d726559a07bc1a875d",
+    "reference_reuse_event_content_sha256": "cae45f6f5a3bf8a14097a82b6b87d3eb72fd79a472daf8eace47283b021e955a",
+    "retained_report_file_sha256": "ada9bb5f7fbe6fd5860f5bffc557d7f849fc10716bab8e1e42fc67bdbb5b3061"
+  },
+  "raw_questions_queries_PMIDs_or_reference_cases_in_report": false,
+  "graph_changes": 0,
+  "content_sha256": "ff8605f0938cafc2ac939ba0e3dc6e2c970475bd072aa67533da3ac149ce3df5"
+}

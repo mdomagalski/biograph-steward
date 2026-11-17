@@ -1,0 +1,4083 @@
+{
+  "declared_methods": [
+    "localplus",
+    "deepgose",
+    "localplus_soft",
+    "deepgose_soft",
+    "equal_mix",
+    "development_alpha_mix",
+    "localplus_model_axis_raw",
+    "deepgose_model_axis_raw",
+    "native_T0_nonexperimental",
+    "context_mlp",
+    "context_gcn",
+    "coded_context_gcn",
+    "localplus_updated_seeds",
+    "localplus_updated_seeds_soft",
+    "fit_label_frequency",
+    "localplus_T0_curated",
+    "validation_selected_context",
+    "context_plus_T0_annotation_prior",
+    "T0_annotation_only_099",
+    "current_T0_positive_union_context_refit",
+    "retained_and_current_curated_LocalPlus",
+    "T0_nonexperimental_plus_retained_curated_prior"
+  ],
+  "development_followup_on_consumed_reference": true,
+  "development_plan_sha256": "8128b0c3cbda794cb8cd75b711609cfed1f1a150ef81ba3e90339cd4815ecca9",
+  "format": "biograph-steward.current-refit-development-public.v1",
+  "graph_pruning_or_app_promotion": false,
+  "independent_confirmation": false,
+  "interpretation": "Post-opening development on a consumed curator-annotation reference; no independent confirmation or new success gate.",
+  "namespace": "biological_process",
+  "new_fixed_method_count": 3,
+  "new_success_gate_or_model_selection": false,
+  "original_forecast_seal_sha256": "a41920a505c68dcc67891be66381b30eac4a028ddb459c52e7081a7e06250eb9",
+  "original_primary_comparison_unchanged": true,
+  "original_public_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "original_report_sha256": "2dfebc4e855df8682335484cb39b5100f518363fa74b1b24b66ca3c4cdffdf98",
+  "previous_development_report_sha256": "76189617f4285a9b7f8ff253280642849ca1a117d80901b893c260e420601d9d",
+  "previous_method_count": 19,
+  "publication_scope": "All six BP cells, declared methods and saved contrasts; aggregate scalars only.",
+  "source_aggregate_sha256": "b7792b0737835d374f2335735aa254e90a609d9a73bf0bfd9f99f9586065eac0",
+  "source_scope": {
+    "added_positive_memberships": 1941,
+    "current_source_generated_date": "2026-04-10",
+    "fitting_proteins": 4040,
+    "fitting_proteins_with_additions": 161,
+    "fixed_model_output_axis_unchanged": true,
+    "historical_positive_memberships_retained": 208835,
+    "positive_memberships_after_union": 210776,
+    "root_positive_fitting_proteins_after_union": 3567
+  },
+  "target_count": 3300,
+  "total_declared_method_count": 22,
+  "views": {
+    "fixed_T0": {
+      "cells": {
+        "LK/biological_process": {
+          "bootstrap": {
+            "comparisons": [
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus",
+                "difference_mean": 0.05541418853333817,
+                "fraction_draws_above_zero": 0.983,
+                "paired_95_percentile_interval": [
+                  0.0046024185511903916,
+                  0.1117476526846791
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose",
+                "difference_mean": 0.08415272449454614,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03595855893668483,
+                  0.13217866994142163
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_soft",
+                "difference_mean": 0.05541418853333817,
+                "fraction_draws_above_zero": 0.983,
+                "paired_95_percentile_interval": [
+                  0.0046024185511903916,
+                  0.1117476526846791
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_soft",
+                "difference_mean": 0.08115859254625313,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03514786286173545,
+                  0.12865627049992376
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "equal_mix",
+                "difference_mean": 0.047363425708444436,
+                "fraction_draws_above_zero": 0.9815,
+                "paired_95_percentile_interval": [
+                  0.0028321076914433114,
+                  0.09078856143523448
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "development_alpha_mix",
+                "difference_mean": 0.041417548466618256,
+                "fraction_draws_above_zero": 0.958,
+                "paired_95_percentile_interval": [
+                  -0.0037506790582616453,
+                  0.09129081679829203
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_model_axis_raw",
+                "difference_mean": 0.05541418853333817,
+                "fraction_draws_above_zero": 0.983,
+                "paired_95_percentile_interval": [
+                  0.0046024185511903916,
+                  0.1117476526846791
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_model_axis_raw",
+                "difference_mean": 0.08415272449454614,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03595855893668483,
+                  0.13217866994142163
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.040153677111539735,
+                "fraction_draws_above_zero": 0.9585,
+                "paired_95_percentile_interval": [
+                  -0.005456099974528126,
+                  0.08712443211778415
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_mlp",
+                "difference_mean": 0.0037169450130580266,
+                "fraction_draws_above_zero": 0.6105,
+                "paired_95_percentile_interval": [
+                  -0.027838458473917797,
+                  0.0319404570533924
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_gcn",
+                "difference_mean": 0.0035351525202547826,
+                "fraction_draws_above_zero": 0.596,
+                "paired_95_percentile_interval": [
+                  -0.022099110320645456,
+                  0.03153252396899936
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "coded_context_gcn",
+                "difference_mean": 0.00463753978207812,
+                "fraction_draws_above_zero": 0.6435,
+                "paired_95_percentile_interval": [
+                  -0.013904453433429498,
+                  0.02906258793182559
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.054369299704744106,
+                "fraction_draws_above_zero": 0.981,
+                "paired_95_percentile_interval": [
+                  0.0029369784747311197,
+                  0.11148027538028016
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds_soft",
+                "difference_mean": 0.054369299704744106,
+                "fraction_draws_above_zero": 0.981,
+                "paired_95_percentile_interval": [
+                  0.0029369784747311197,
+                  0.11148027538028016
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "fit_label_frequency",
+                "difference_mean": 0.16947664106586116,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.09657715925783103,
+                  0.24889954402249034
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": 0.03350317446593766,
+                "fraction_draws_above_zero": 0.895,
+                "paired_95_percentile_interval": [
+                  -0.017713565480336743,
+                  0.08733188429753834
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "validation_selected_context",
+                "difference_mean": 0.00463753978207812,
+                "fraction_draws_above_zero": 0.6435,
+                "paired_95_percentile_interval": [
+                  -0.013904453433429498,
+                  0.02906258793182559
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_plus_T0_annotation_prior",
+                "difference_mean": 0.005786310768532129,
+                "fraction_draws_above_zero": 0.7125,
+                "paired_95_percentile_interval": [
+                  -0.01160531023623035,
+                  0.02604577548849562
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_annotation_only_099",
+                "difference_mean": 0.040153677111539735,
+                "fraction_draws_above_zero": 0.9585,
+                "paired_95_percentile_interval": [
+                  -0.005456099974528126,
+                  0.08712443211778415
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "retained_and_current_curated_LocalPlus",
+                "difference_mean": 0.04275596315546956,
+                "fraction_draws_above_zero": 0.9395,
+                "paired_95_percentile_interval": [
+                  -0.010980111496433537,
+                  0.09943420900880749
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.05531427730199563,
+                "fraction_draws_above_zero": 0.987,
+                "paired_95_percentile_interval": [
+                  0.007473838837147322,
+                  0.10331257858604452
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus",
+                "difference_mean": 0.012658225377868608,
+                "fraction_draws_above_zero": 0.9445,
+                "paired_95_percentile_interval": [
+                  -0.0030155784967573207,
+                  0.028062562714745377
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.01161333654927455,
+                "fraction_draws_above_zero": 0.9525,
+                "paired_95_percentile_interval": [
+                  -0.0022267323702207424,
+                  0.025221107239105485
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.009252788689531895,
+                "fraction_draws_above_zero": 0.076,
+                "paired_95_percentile_interval": [
+                  -0.019487437894046306,
+                  0.005386485183210909
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.03811842337339144,
+                "fraction_draws_above_zero": 0.069,
+                "paired_95_percentile_interval": [
+                  -0.08952105633365022,
+                  0.012666946293463304
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": -0.0026022860439298273,
+                "fraction_draws_above_zero": 0.4845,
+                "paired_95_percentile_interval": [
+                  -0.08283099014733886,
+                  0.07768837218799575
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus",
+                "difference_mean": 9.991123134253443e-05,
+                "fraction_draws_above_zero": 0.4855,
+                "paired_95_percentile_interval": [
+                  -0.07805419788787173,
+                  0.08030709399628368
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": -0.0009449775972515243,
+                "fraction_draws_above_zero": 0.4805,
+                "paired_95_percentile_interval": [
+                  -0.0802262250856138,
+                  0.07816745526440226
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.021811102836057968,
+                "fraction_draws_above_zero": 0.3055,
+                "paired_95_percentile_interval": [
+                  -0.09846075747022433,
+                  0.05725172307784434
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.05067673751991752,
+                "fraction_draws_above_zero": 0.0225,
+                "paired_95_percentile_interval": [
+                  -0.10185893883763183,
+                  -0.0008132669394461679
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": -0.015160600190455903,
+                "fraction_draws_above_zero": 0.002,
+                "paired_95_percentile_interval": [
+                  -0.04750905493081447,
+                  0.0
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.012558314146526074,
+                "fraction_draws_above_zero": 0.62,
+                "paired_95_percentile_interval": [
+                  -0.06806365379163087,
+                  0.09293940560956665
+                ]
+              }
+            ],
+            "draws": 2000,
+            "original_native_gated_draws_reused_without_recomputation": true,
+            "raw_proteins": 59,
+            "scores": {
+              "T0_annotation_only_099": {
+                "bootstrap_95_percentile_interval": [
+                  0.27406926698687134,
+                  0.44968536047020635
+                ],
+                "bootstrap_mean": 0.36187178763217553
+              },
+              "T0_nonexperimental_plus_retained_curated_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.26281354592888106,
+                  0.4358074856401704
+                ],
+                "bootstrap_mean": 0.3467111874417197
+              },
+              "coded_context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.33561794931539474,
+                  0.45618483850991787
+                ],
+                "bootstrap_mean": 0.3973879249616372
+              },
+              "context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.3396350859628103,
+                  0.4576660792071654
+                ],
+                "bootstrap_mean": 0.39849031222346054
+              },
+              "context_mlp": {
+                "bootstrap_95_percentile_interval": [
+                  0.3330109906801636,
+                  0.46348839745051196
+                ],
+                "bootstrap_mean": 0.3983085197306573
+              },
+              "context_plus_T0_annotation_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.3339843205322824,
+                  0.4555126021094306
+                ],
+                "bootstrap_mean": 0.39623915397518317
+              },
+              "current_T0_positive_union_context_refit": {
+                "bootstrap_95_percentile_interval": [
+                  0.34039877395825247,
+                  0.46683583408328555
+                ],
+                "bootstrap_mean": 0.4020254647437153
+              },
+              "deepgose": {
+                "bootstrap_95_percentile_interval": [
+                  0.27538790590266915,
+                  0.3618812785014844
+                ],
+                "bootstrap_mean": 0.3178727402491692
+              },
+              "deepgose_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.27538790590266915,
+                  0.3618812785014844
+                ],
+                "bootstrap_mean": 0.3178727402491692
+              },
+              "deepgose_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.27691906005221933,
+                  0.3672349972550214
+                ],
+                "bootstrap_mean": 0.3208668721974622
+              },
+              "development_alpha_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.31035862156034266,
+                  0.41469094155635866
+                ],
+                "bootstrap_mean": 0.36060791627709704
+              },
+              "equal_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.3082975035739394,
+                  0.40430936791740113
+                ],
+                "bootstrap_mean": 0.3546620390352708
+              },
+              "fit_label_frequency": {
+                "bootstrap_95_percentile_interval": [
+                  0.19860425997549597,
+                  0.2668165088115728
+                ],
+                "bootstrap_mean": 0.23254882367785415
+              },
+              "localplus": {
+                "bootstrap_95_percentile_interval": [
+                  0.29615555040226144,
+                  0.3990220857815504
+                ],
+                "bootstrap_mean": 0.3466112762103772
+              },
+              "localplus_T0_curated": {
+                "bootstrap_95_percentile_interval": [
+                  0.3160317393561635,
+                  0.42613955674761506
+                ],
+                "bootstrap_mean": 0.36852229027777766
+              },
+              "localplus_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.29615555040226144,
+                  0.3990220857815504
+                ],
+                "bootstrap_mean": 0.3466112762103772
+              },
+              "localplus_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.29615555040226144,
+                  0.3990220857815504
+                ],
+                "bootstrap_mean": 0.3466112762103772
+              },
+              "localplus_updated_seeds": {
+                "bootstrap_95_percentile_interval": [
+                  0.2987549888497086,
+                  0.4014721487037723
+                ],
+                "bootstrap_mean": 0.34765616503897123
+              },
+              "localplus_updated_seeds_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.2987549888497086,
+                  0.4014721487037723
+                ],
+                "bootstrap_mean": 0.34765616503897123
+              },
+              "native_T0_nonexperimental": {
+                "bootstrap_95_percentile_interval": [
+                  0.27406926698687134,
+                  0.44968536047020635
+                ],
+                "bootstrap_mean": 0.36187178763217553
+              },
+              "retained_and_current_curated_LocalPlus": {
+                "bootstrap_95_percentile_interval": [
+                  0.3087134807796052,
+                  0.4174250062634818
+                ],
+                "bootstrap_mean": 0.3592695015882458
+              },
+              "validation_selected_context": {
+                "bootstrap_95_percentile_interval": [
+                  0.33561794931539474,
+                  0.45618483850991787
+                ],
+                "bootstrap_mean": 0.3973879249616372
+              }
+            },
+            "seed": 20261113
+          },
+          "methods": {
+            "T0_annotation_only_099": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3605745418524022,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "T0_nonexperimental_plus_retained_curated_prior": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3451162790697675,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "coded_context_gcn": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3887277248238707,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "context_gcn": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.38958990536277605,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "context_mlp": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3943661971830986,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "context_plus_T0_annotation_prior": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.38845997561966683,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "current_T0_positive_union_context_refit": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.39594843462246787,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "deepgose": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.31318458417849904,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "deepgose_model_axis_raw": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.31318458417849904,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "deepgose_soft": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.31525266573945293,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "development_alpha_mix": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.35477582846003897,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "equal_mix": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3516873889875666,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "fit_label_frequency": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22884012539184956,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3401709401709402,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_T0_curated": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.35987002437043053,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_model_axis_raw": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3401709401709402,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_soft": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3401709401709402,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3394145099703012,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds_soft": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3394145099703012,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "native_T0_nonexperimental": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3605745418524022,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "retained_and_current_curated_LocalPlus": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3488031265266244,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "validation_selected_context": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3887277248238707,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            }
+          },
+          "namespace": "biological_process",
+          "setting": "LK",
+          "status": "evaluated"
+        },
+        "NK/biological_process": {
+          "bootstrap": {
+            "comparisons": [
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus",
+                "difference_mean": 0.0854717480235179,
+                "fraction_draws_above_zero": 0.9335,
+                "paired_95_percentile_interval": [
+                  -0.021551034362635006,
+                  0.17700607023882042
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose",
+                "difference_mean": -0.0015699808785429874,
+                "fraction_draws_above_zero": 0.496,
+                "paired_95_percentile_interval": [
+                  -0.1193897586431833,
+                  0.1050819237706929
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_soft",
+                "difference_mean": 0.0854717480235179,
+                "fraction_draws_above_zero": 0.9335,
+                "paired_95_percentile_interval": [
+                  -0.021551034362635006,
+                  0.17700607023882042
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_soft",
+                "difference_mean": -0.0029480434398264266,
+                "fraction_draws_above_zero": 0.491,
+                "paired_95_percentile_interval": [
+                  -0.11867198629266237,
+                  0.09601012998692293
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "equal_mix",
+                "difference_mean": -0.0016571011963455132,
+                "fraction_draws_above_zero": 0.525,
+                "paired_95_percentile_interval": [
+                  -0.11987837090674464,
+                  0.0827375607725656
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "development_alpha_mix",
+                "difference_mean": 0.03518700723406813,
+                "fraction_draws_above_zero": 0.7675,
+                "paired_95_percentile_interval": [
+                  -0.06798244048798956,
+                  0.12267716101477097
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_model_axis_raw",
+                "difference_mean": 0.0854717480235179,
+                "fraction_draws_above_zero": 0.9335,
+                "paired_95_percentile_interval": [
+                  -0.021551034362635006,
+                  0.17700607023882042
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_model_axis_raw",
+                "difference_mean": -0.0015699808785429874,
+                "fraction_draws_above_zero": 0.496,
+                "paired_95_percentile_interval": [
+                  -0.1193897586431833,
+                  0.1050819237706929
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.1156879776213251,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.022237279262144468,
+                  0.27476586019326
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_mlp",
+                "difference_mean": 0.0075203381780276825,
+                "fraction_draws_above_zero": 0.657,
+                "paired_95_percentile_interval": [
+                  -0.025671606519311004,
+                  0.043099560266095405
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_gcn",
+                "difference_mean": 0.025196365116927952,
+                "fraction_draws_above_zero": 0.6885,
+                "paired_95_percentile_interval": [
+                  -0.03249660445696462,
+                  0.0809773131317752
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "coded_context_gcn",
+                "difference_mean": 0.006166600560821052,
+                "fraction_draws_above_zero": 0.651,
+                "paired_95_percentile_interval": [
+                  -0.01461272905240773,
+                  0.03657071015850783
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.081758974695028,
+                "fraction_draws_above_zero": 0.9305,
+                "paired_95_percentile_interval": [
+                  -0.019979604347184942,
+                  0.17431129156590258
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds_soft",
+                "difference_mean": 0.081758974695028,
+                "fraction_draws_above_zero": 0.9305,
+                "paired_95_percentile_interval": [
+                  -0.019979604347184942,
+                  0.17431129156590258
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "fit_label_frequency",
+                "difference_mean": 0.08428771828149155,
+                "fraction_draws_above_zero": 0.8255,
+                "paired_95_percentile_interval": [
+                  -0.03746475264359781,
+                  0.20086170050917032
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": 0.06418659651032414,
+                "fraction_draws_above_zero": 0.895,
+                "paired_95_percentile_interval": [
+                  -0.035692356971052205,
+                  0.15710575918586753
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "validation_selected_context",
+                "difference_mean": 0.006166600560821052,
+                "fraction_draws_above_zero": 0.651,
+                "paired_95_percentile_interval": [
+                  -0.01461272905240773,
+                  0.03657071015850783
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_plus_T0_annotation_prior",
+                "difference_mean": 0.003239838449889338,
+                "fraction_draws_above_zero": 0.511,
+                "paired_95_percentile_interval": [
+                  -0.01176584331252357,
+                  0.029334443627593212
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_annotation_only_099",
+                "difference_mean": 0.1156879776213251,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.022237279262144468,
+                  0.27476586019326
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "retained_and_current_curated_LocalPlus",
+                "difference_mean": 0.06782658450953004,
+                "fraction_draws_above_zero": 0.896,
+                "paired_95_percentile_interval": [
+                  -0.034074914577557285,
+                  0.1617227945632668
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.1156879776213251,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.022237279262144468,
+                  0.27476586019326
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus",
+                "difference_mean": 0.017645163513987865,
+                "fraction_draws_above_zero": 0.9325,
+                "paired_95_percentile_interval": [
+                  -0.008880244672389459,
+                  0.037415972124947454
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.013932390185497976,
+                "fraction_draws_above_zero": 0.8945,
+                "paired_95_percentile_interval": [
+                  -0.0061889555625738255,
+                  0.03524615173296711
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.003639987999205899,
+                "fraction_draws_above_zero": 0.262,
+                "paired_95_percentile_interval": [
+                  -0.016667262987034727,
+                  0.020147501950926277
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.06165998394870898,
+                "fraction_draws_above_zero": 0.09,
+                "paired_95_percentile_interval": [
+                  -0.14979938914878818,
+                  0.02664756542220319
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.04786139311179507,
+                "fraction_draws_above_zero": 0.6705,
+                "paired_95_percentile_interval": [
+                  -0.09891292340569137,
+                  0.2059740813242179
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus",
+                "difference_mean": -0.030216229597807207,
+                "fraction_draws_above_zero": 0.438,
+                "paired_95_percentile_interval": [
+                  -0.19229477395417185,
+                  0.11267871274122021
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": -0.03392900292629709,
+                "fraction_draws_above_zero": 0.407,
+                "paired_95_percentile_interval": [
+                  -0.19455239832639223,
+                  0.10947794001983933
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.051501381111000964,
+                "fraction_draws_above_zero": 0.294,
+                "paired_95_percentile_interval": [
+                  -0.2004479490820468,
+                  0.0878262662075966
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.10952137706050405,
+                "fraction_draws_above_zero": 0.0035,
+                "paired_95_percentile_interval": [
+                  -0.26418553054968485,
+                  -0.011598766423429342
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.0,
+                "fraction_draws_above_zero": 0.0,
+                "paired_95_percentile_interval": [
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.04786139311179507,
+                "fraction_draws_above_zero": 0.6705,
+                "paired_95_percentile_interval": [
+                  -0.09891292340569137,
+                  0.2059740813242179
+                ]
+              }
+            ],
+            "draws": 2000,
+            "original_native_gated_draws_reused_without_recomputation": true,
+            "raw_proteins": 8,
+            "scores": {
+              "T0_annotation_only_099": {
+                "bootstrap_95_percentile_interval": [
+                  0.022099447513812154,
+                  0.3919308357348703
+                ],
+                "bootstrap_mean": 0.20046724126952545
+              },
+              "T0_nonexperimental_plus_retained_curated_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.022099447513812154,
+                  0.3919308357348703
+                ],
+                "bootstrap_mean": 0.20046724126952545
+              },
+              "coded_context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.1850455201589275,
+                  0.43137709840316635
+                ],
+                "bootstrap_mean": 0.3099886183300295
+              },
+              "context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.18918582761866345,
+                  0.39183308248292287
+                ],
+                "bootstrap_mean": 0.29095885377392267
+              },
+              "context_mlp": {
+                "bootstrap_95_percentile_interval": [
+                  0.17670092133238838,
+                  0.4340451478982875
+                ],
+                "bootstrap_mean": 0.3086348807128229
+              },
+              "context_plus_T0_annotation_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.1825889328063241,
+                  0.44131617289946573
+                ],
+                "bootstrap_mean": 0.31291538044096123
+              },
+              "current_T0_positive_union_context_refit": {
+                "bootstrap_95_percentile_interval": [
+                  0.1743019545273235,
+                  0.45768493045020947
+                ],
+                "bootstrap_mean": 0.3161552188908506
+              },
+              "deepgose": {
+                "bootstrap_95_percentile_interval": [
+                  0.21002108310081619,
+                  0.41951619352259095
+                ],
+                "bootstrap_mean": 0.3177251997693935
+              },
+              "deepgose_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.21002108310081619,
+                  0.41951619352259095
+                ],
+                "bootstrap_mean": 0.3177251997693935
+              },
+              "deepgose_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.21008625036690273,
+                  0.41958198051948054
+                ],
+                "bootstrap_mean": 0.319103262330677
+              },
+              "development_alpha_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.18399330730619073,
+                  0.39834190210113896
+                ],
+                "bootstrap_mean": 0.2809682116567825
+              },
+              "equal_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.2134387351778656,
+                  0.42260386850550774
+                ],
+                "bootstrap_mean": 0.3178123200871961
+              },
+              "fit_label_frequency": {
+                "bootstrap_95_percentile_interval": [
+                  0.15893514138547252,
+                  0.32452830188679244
+                ],
+                "bootstrap_mean": 0.231867500609359
+              },
+              "localplus": {
+                "bootstrap_95_percentile_interval": [
+                  0.1619388544891641,
+                  0.3283640014674364
+                ],
+                "bootstrap_mean": 0.23068347086733268
+              },
+              "localplus_T0_curated": {
+                "bootstrap_95_percentile_interval": [
+                  0.17029973561476994,
+                  0.35887850467289717
+                ],
+                "bootstrap_mean": 0.2519686223805264
+              },
+              "localplus_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.1619388544891641,
+                  0.3283640014674364
+                ],
+                "bootstrap_mean": 0.23068347086733268
+              },
+              "localplus_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.1619388544891641,
+                  0.3283640014674364
+                ],
+                "bootstrap_mean": 0.23068347086733268
+              },
+              "localplus_updated_seeds": {
+                "bootstrap_95_percentile_interval": [
+                  0.16148567421358445,
+                  0.3218545237937652
+                ],
+                "bootstrap_mean": 0.23439624419582256
+              },
+              "localplus_updated_seeds_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.16148567421358445,
+                  0.3218545237937652
+                ],
+                "bootstrap_mean": 0.23439624419582256
+              },
+              "native_T0_nonexperimental": {
+                "bootstrap_95_percentile_interval": [
+                  0.022099447513812154,
+                  0.3919308357348703
+                ],
+                "bootstrap_mean": 0.20046724126952545
+              },
+              "retained_and_current_curated_LocalPlus": {
+                "bootstrap_95_percentile_interval": [
+                  0.16663793103448274,
+                  0.34975424683558287
+                ],
+                "bootstrap_mean": 0.24832863438132058
+              },
+              "validation_selected_context": {
+                "bootstrap_95_percentile_interval": [
+                  0.1850455201589275,
+                  0.43137709840316635
+                ],
+                "bootstrap_mean": 0.3099886183300295
+              }
+            },
+            "seed": 20261113
+          },
+          "methods": {
+            "T0_annotation_only_099": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22310756972111553,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "T0_nonexperimental_plus_retained_curated_prior": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22310756972111553,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "coded_context_gcn": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.31272727272727274,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "context_gcn": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.284789644012945,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "context_mlp": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3183391003460207,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "context_plus_T0_annotation_prior": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3165467625899281,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "current_T0_positive_union_context_refit": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3176470588235294,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "deepgose": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.30120481927710846,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "deepgose_model_axis_raw": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.30120481927710846,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "deepgose_soft": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.30386740331491713,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "development_alpha_mix": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.26424870466321243,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "equal_mix": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3102493074792244,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "fit_label_frequency": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.21969696969696972,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.21492537313432838,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_T0_curated": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.2382133995037221,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_model_axis_raw": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.21492537313432838,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_soft": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.21492537313432838,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22712933753943218,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds_soft": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22712933753943218,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "native_T0_nonexperimental": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22310756972111553,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "retained_and_current_curated_LocalPlus": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.23493975903614459,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "validation_selected_context": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.31272727272727274,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            }
+          },
+          "namespace": "biological_process",
+          "setting": "NK",
+          "status": "evaluated"
+        },
+        "PK/biological_process": {
+          "bootstrap": {
+            "comparisons": [
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus",
+                "difference_mean": 0.0239552551566976,
+                "fraction_draws_above_zero": 0.9375,
+                "paired_95_percentile_interval": [
+                  -0.0065207828474183665,
+                  0.055629893933317506
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose",
+                "difference_mean": 0.06484171222890353,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03921357995115022,
+                  0.09309566801812807
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_soft",
+                "difference_mean": 0.0239552551566976,
+                "fraction_draws_above_zero": 0.9375,
+                "paired_95_percentile_interval": [
+                  -0.0065207828474183665,
+                  0.055629893933317506
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_soft",
+                "difference_mean": 0.06379285446332546,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03728666734464742,
+                  0.09221881285773753
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "equal_mix",
+                "difference_mean": 0.03170878426779266,
+                "fraction_draws_above_zero": 0.9885,
+                "paired_95_percentile_interval": [
+                  0.0034205513828066505,
+                  0.06158248360624802
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "development_alpha_mix",
+                "difference_mean": 0.017803497706885767,
+                "fraction_draws_above_zero": 0.872,
+                "paired_95_percentile_interval": [
+                  -0.01111829999395939,
+                  0.04878858186437666
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_model_axis_raw",
+                "difference_mean": 0.0239552551566976,
+                "fraction_draws_above_zero": 0.9375,
+                "paired_95_percentile_interval": [
+                  -0.0065207828474183665,
+                  0.055629893933317506
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_model_axis_raw",
+                "difference_mean": 0.06484171222890353,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03921357995115022,
+                  0.09309566801812807
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.05140922451515811,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03269369528377685,
+                  0.07065628400087527
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_mlp",
+                "difference_mean": 0.0016313180190367458,
+                "fraction_draws_above_zero": 0.544,
+                "paired_95_percentile_interval": [
+                  -0.017050719526437365,
+                  0.022152895516886675
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_gcn",
+                "difference_mean": 0.014149027082933151,
+                "fraction_draws_above_zero": 0.94,
+                "paired_95_percentile_interval": [
+                  -0.00259897558830403,
+                  0.03216667499230633
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "coded_context_gcn",
+                "difference_mean": -0.013471854960569088,
+                "fraction_draws_above_zero": 0.031,
+                "paired_95_percentile_interval": [
+                  -0.027365882797954526,
+                  0.0004776028001180319
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.021039056895682095,
+                "fraction_draws_above_zero": 0.9055,
+                "paired_95_percentile_interval": [
+                  -0.009569195624242318,
+                  0.052682885910670434
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds_soft",
+                "difference_mean": 0.021039056895682095,
+                "fraction_draws_above_zero": 0.9055,
+                "paired_95_percentile_interval": [
+                  -0.009569195624242318,
+                  0.052682885910670434
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "fit_label_frequency",
+                "difference_mean": 0.08896430571447693,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.0528516119359243,
+                  0.12678078332545306
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": 0.013424415802398138,
+                "fraction_draws_above_zero": 0.794,
+                "paired_95_percentile_interval": [
+                  -0.017468043964516868,
+                  0.045732142811453956
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.013471854960569088,
+                "fraction_draws_above_zero": 0.031,
+                "paired_95_percentile_interval": [
+                  -0.027365882797954526,
+                  0.0004776028001180319
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_plus_T0_annotation_prior",
+                "difference_mean": 0.0070635248583921515,
+                "fraction_draws_above_zero": 0.8475,
+                "paired_95_percentile_interval": [
+                  -0.005568609294933539,
+                  0.02051970236956958
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_annotation_only_099",
+                "difference_mean": 0.05140922451515811,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03269369528377685,
+                  0.07065628400087527
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "retained_and_current_curated_LocalPlus",
+                "difference_mean": 0.019631328962574145,
+                "fraction_draws_above_zero": 0.8905,
+                "paired_95_percentile_interval": [
+                  -0.010996487772817002,
+                  0.05110521963129026
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.06363920913898612,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.043573337621147325,
+                  0.08502438798511656
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus",
+                "difference_mean": 0.004323926194123457,
+                "fraction_draws_above_zero": 0.9635,
+                "paired_95_percentile_interval": [
+                  -0.0003022958085436823,
+                  0.009131019477443127
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.0014077279331079489,
+                "fraction_draws_above_zero": 0.7405,
+                "paired_95_percentile_interval": [
+                  -0.00241749375434014,
+                  0.005669015120896779
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.006206913160176006,
+                "fraction_draws_above_zero": 0.004,
+                "paired_95_percentile_interval": [
+                  -0.01105432489076821,
+                  -0.0016496329039286984
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.03310318392314324,
+                "fraction_draws_above_zero": 0.0135,
+                "paired_95_percentile_interval": [
+                  -0.06440129785455155,
+                  -0.0031803458339707477
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.031777895552583965,
+                "fraction_draws_above_zero": 0.981,
+                "paired_95_percentile_interval": [
+                  0.0008980339549679801,
+                  0.06098348562590196
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus",
+                "difference_mean": -0.039683953982288515,
+                "fraction_draws_above_zero": 0.0035,
+                "paired_95_percentile_interval": [
+                  -0.06936062137425562,
+                  -0.010708309903889357
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": -0.042600152243304025,
+                "fraction_draws_above_zero": 0.0025,
+                "paired_95_percentile_interval": [
+                  -0.07198497179192606,
+                  -0.013372963814502798
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.05021479333658797,
+                "fraction_draws_above_zero": 0.0005,
+                "paired_95_percentile_interval": [
+                  -0.08055154436302366,
+                  -0.020020575719042203
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.07711106409955519,
+                "fraction_draws_above_zero": 0.0,
+                "paired_95_percentile_interval": [
+                  -0.10042705701832816,
+                  -0.054632858568195296
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": -0.012229984623828002,
+                "fraction_draws_above_zero": 0.003,
+                "paired_95_percentile_interval": [
+                  -0.019575593581408444,
+                  -0.003953017675739612
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.04400788017641197,
+                "fraction_draws_above_zero": 0.9985,
+                "paired_95_percentile_interval": [
+                  0.015083044254364842,
+                  0.07325293500143883
+                ]
+              }
+            ],
+            "draws": 2000,
+            "original_native_gated_draws_reused_without_recomputation": true,
+            "raw_proteins": 319,
+            "scores": {
+              "T0_annotation_only_099": {
+                "bootstrap_95_percentile_interval": [
+                  0.12000195972779784,
+                  0.1752845942200187
+                ],
+                "bootstrap_mean": 0.14622506423900028
+              },
+              "T0_nonexperimental_plus_retained_curated_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.10960728911542342,
+                  0.1605391115061829
+                ],
+                "bootstrap_mean": 0.13399507961517226
+              },
+              "coded_context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.17605911229116827,
+                  0.2480395782673393
+                ],
+                "bootstrap_mean": 0.21110614371472747
+              },
+              "context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.15660070344497654,
+                  0.21276208507245392
+                ],
+                "bootstrap_mean": 0.18348526167122522
+              },
+              "context_mlp": {
+                "bootstrap_95_percentile_interval": [
+                  0.16437924791943714,
+                  0.2296182889729681
+                ],
+                "bootstrap_mean": 0.19600297073512163
+              },
+              "context_plus_T0_annotation_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.15943879731357086,
+                  0.2230950040982971
+                ],
+                "bootstrap_mean": 0.19057076389576622
+              },
+              "current_T0_positive_union_context_refit": {
+                "bootstrap_95_percentile_interval": [
+                  0.16447133115635806,
+                  0.23397879724625428
+                ],
+                "bootstrap_mean": 0.19763428875415837
+              },
+              "deepgose": {
+                "bootstrap_95_percentile_interval": [
+                  0.11165338498339035,
+                  0.1562024880552569
+                ],
+                "bootstrap_mean": 0.13279257652525484
+              },
+              "deepgose_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.11165338498339035,
+                  0.1562024880552569
+                ],
+                "bootstrap_mean": 0.13279257652525484
+              },
+              "deepgose_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.11228826504808014,
+                  0.15754360590623756
+                ],
+                "bootstrap_mean": 0.13384143429083292
+              },
+              "development_alpha_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.15424264338004895,
+                  0.20801746913584304
+                ],
+                "bootstrap_mean": 0.17983079104727262
+              },
+              "equal_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.141274214097486,
+                  0.19215035652626955
+                ],
+                "bootstrap_mean": 0.16592550448636573
+              },
+              "fit_label_frequency": {
+                "bootstrap_95_percentile_interval": [
+                  0.09135215072698478,
+                  0.12755882571567242
+                ],
+                "bootstrap_mean": 0.10866998303968145
+              },
+              "localplus": {
+                "bootstrap_95_percentile_interval": [
+                  0.1485801561218814,
+                  0.20086277188971466
+                ],
+                "bootstrap_mean": 0.17367903359746079
+              },
+              "localplus_T0_curated": {
+                "bootstrap_95_percentile_interval": [
+                  0.15872366762385057,
+                  0.21190097266291802
+                ],
+                "bootstrap_mean": 0.18420987295176025
+              },
+              "localplus_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.1485801561218814,
+                  0.20086277188971466
+                ],
+                "bootstrap_mean": 0.17367903359746079
+              },
+              "localplus_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.1485801561218814,
+                  0.20086277188971466
+                ],
+                "bootstrap_mean": 0.17367903359746079
+              },
+              "localplus_updated_seeds": {
+                "bootstrap_95_percentile_interval": [
+                  0.15133457438705844,
+                  0.2034507320685845
+                ],
+                "bootstrap_mean": 0.1765952318584763
+              },
+              "localplus_updated_seeds_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.15133457438705844,
+                  0.2034507320685845
+                ],
+                "bootstrap_mean": 0.1765952318584763
+              },
+              "native_T0_nonexperimental": {
+                "bootstrap_95_percentile_interval": [
+                  0.12000195972779784,
+                  0.1752845942200187
+                ],
+                "bootstrap_mean": 0.14622506423900028
+              },
+              "retained_and_current_curated_LocalPlus": {
+                "bootstrap_95_percentile_interval": [
+                  0.15277576071922547,
+                  0.20541741952421777
+                ],
+                "bootstrap_mean": 0.17800295979158423
+              },
+              "validation_selected_context": {
+                "bootstrap_95_percentile_interval": [
+                  0.17605911229116827,
+                  0.2480395782673393
+                ],
+                "bootstrap_mean": 0.21110614371472747
+              }
+            },
+            "seed": 20261113
+          },
+          "methods": {
+            "T0_annotation_only_099": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.14616909419977592,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "T0_nonexperimental_plus_retained_curated_prior": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.13396702807069655,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "coded_context_gcn": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.210093339661446,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "context_gcn": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.1827591305633594,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "context_mlp": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.19471268006965328,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "context_plus_T0_annotation_prior": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.19009202067313752,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "current_T0_positive_union_context_refit": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.19683435198244786,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "deepgose": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.13139095111360133,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "deepgose_model_axis_raw": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.13139095111360133,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "deepgose_soft": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.13209013209013207,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "development_alpha_mix": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.1780297226903631,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "equal_mix": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.16495751538236156,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "fit_label_frequency": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.10727728983688835,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "localplus": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.17154959406989057,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "localplus_T0_curated": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.18277132332105414,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "localplus_model_axis_raw": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.17154959406989057,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "localplus_soft": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.17154959406989057,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.17518659343754403,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds_soft": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.17518659343754403,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "native_T0_nonexperimental": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.14616909419977592,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "retained_and_current_curated_LocalPlus": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.1769168684422922,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            },
+            "validation_selected_context": {
+              "eligible_proteins": 319,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.210093339661446,
+              "pre_exclusion_GT_proteins": 319,
+              "raw_native_reference_proteins": 319,
+              "status": "evaluated"
+            }
+          },
+          "namespace": "biological_process",
+          "setting": "PK",
+          "status": "evaluated"
+        }
+      },
+      "reference_sha256": {
+        "LK": "29056eb61e8a166544576a969d9198e1f7f171099b0595767beafa7e042c1836",
+        "NK": "8a54b8830694dd48bda94898b9dbc0336e512d5462f20b94defb8cd540fdd089",
+        "PK": "74b466b47fc2c8ce9183b09f0f89417d9fd28f1628431f18f874a0d6d34d66b3",
+        "PK_known": "db4cde8196b9b5cb151f871946cc90454dab0b38dfe000550814499e538ec322",
+        "obo": "a77e356737dab39a4f620dce35fc4d6eb531c4b6153af6cacaaa322b49b804bd",
+        "toi": "0c8ec3ecd80898f871c132bf108262ee6fa7a264bfa0bb5c6d4aeb615c56fdbc"
+      }
+    },
+    "native": {
+      "cells": {
+        "LK/biological_process": {
+          "bootstrap": {
+            "comparisons": [
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus",
+                "difference_mean": 0.05969194532096782,
+                "fraction_draws_above_zero": 0.984,
+                "paired_95_percentile_interval": [
+                  0.005239861926272267,
+                  0.12001141803457882
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose",
+                "difference_mean": 0.0890119176357399,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03872673433230168,
+                  0.14309370044633984
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_soft",
+                "difference_mean": 0.05969194532096782,
+                "fraction_draws_above_zero": 0.984,
+                "paired_95_percentile_interval": [
+                  0.005239861926272267,
+                  0.12001141803457882
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_soft",
+                "difference_mean": 0.08611143842533726,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03646229762226099,
+                  0.14104375730419105
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "equal_mix",
+                "difference_mean": 0.05242122141919952,
+                "fraction_draws_above_zero": 0.9835,
+                "paired_95_percentile_interval": [
+                  0.004417975621306389,
+                  0.10586309015331907
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "development_alpha_mix",
+                "difference_mean": 0.046352338002489224,
+                "fraction_draws_above_zero": 0.96,
+                "paired_95_percentile_interval": [
+                  -0.0038407222360938853,
+                  0.10456155134725328
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_model_axis_raw",
+                "difference_mean": 0.05969194532096782,
+                "fraction_draws_above_zero": 0.984,
+                "paired_95_percentile_interval": [
+                  0.005239861926272267,
+                  0.12001141803457882
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_model_axis_raw",
+                "difference_mean": 0.0890119176357399,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03872673433230168,
+                  0.14309370044633984
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.0421242992838116,
+                "fraction_draws_above_zero": 0.967,
+                "paired_95_percentile_interval": [
+                  -0.002803381071053505,
+                  0.08791198786921336
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_mlp",
+                "difference_mean": 0.0048591421088223265,
+                "fraction_draws_above_zero": 0.64,
+                "paired_95_percentile_interval": [
+                  -0.02649327358129939,
+                  0.03386044878753477
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_gcn",
+                "difference_mean": 0.0035749220822546145,
+                "fraction_draws_above_zero": 0.6045,
+                "paired_95_percentile_interval": [
+                  -0.022215056307408002,
+                  0.031889108819904005
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "coded_context_gcn",
+                "difference_mean": 0.005147636236300285,
+                "fraction_draws_above_zero": 0.6535,
+                "paired_95_percentile_interval": [
+                  -0.014464943042455113,
+                  0.030959682066373503
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.058537752080661566,
+                "fraction_draws_above_zero": 0.9815,
+                "paired_95_percentile_interval": [
+                  0.0033119204662257914,
+                  0.1189239533555634
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds_soft",
+                "difference_mean": 0.058537752080661566,
+                "fraction_draws_above_zero": 0.9815,
+                "paired_95_percentile_interval": [
+                  0.0033119204662257914,
+                  0.1189239533555634
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "fit_label_frequency",
+                "difference_mean": 0.17255320770902843,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.09618857324315443,
+                  0.25390504376627643
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": 0.03760137905908365,
+                "fraction_draws_above_zero": 0.903,
+                "paired_95_percentile_interval": [
+                  -0.015547980252259641,
+                  0.09791752681935596
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "validation_selected_context",
+                "difference_mean": 0.005147636236300285,
+                "fraction_draws_above_zero": 0.6535,
+                "paired_95_percentile_interval": [
+                  -0.014464943042455113,
+                  0.030959682066373503
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_plus_T0_annotation_prior",
+                "difference_mean": 0.005926884278526092,
+                "fraction_draws_above_zero": 0.719,
+                "paired_95_percentile_interval": [
+                  -0.011624555232406719,
+                  0.0265787360692755
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_annotation_only_099",
+                "difference_mean": 0.0421242992838116,
+                "fraction_draws_above_zero": 0.967,
+                "paired_95_percentile_interval": [
+                  -0.002803381071053505,
+                  0.08791198786921336
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "retained_and_current_curated_LocalPlus",
+                "difference_mean": 0.04667502141651957,
+                "fraction_draws_above_zero": 0.9455,
+                "paired_95_percentile_interval": [
+                  -0.010265103464598002,
+                  0.10789038490240335
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.057335959585221315,
+                "fraction_draws_above_zero": 0.9905,
+                "paired_95_percentile_interval": [
+                  0.0104175284471458,
+                  0.10393574532049163
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus",
+                "difference_mean": 0.013016923904448242,
+                "fraction_draws_above_zero": 0.953,
+                "paired_95_percentile_interval": [
+                  -0.0021630430347850836,
+                  0.02818649454039553
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.011862730664141997,
+                "fraction_draws_above_zero": 0.9595,
+                "paired_95_percentile_interval": [
+                  -0.001641527705056052,
+                  0.025066912909073487
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.009073642357435926,
+                "fraction_draws_above_zero": 0.076,
+                "paired_95_percentile_interval": [
+                  -0.01960547674555903,
+                  0.005150288918381458
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.04152738518021929,
+                "fraction_draws_above_zero": 0.072,
+                "paired_95_percentile_interval": [
+                  -0.09882758045245056,
+                  0.011056517150163597
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": -0.0045507221327079714,
+                "fraction_draws_above_zero": 0.476,
+                "paired_95_percentile_interval": [
+                  -0.08806789782589237,
+                  0.07808867665874224
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus",
+                "difference_mean": 0.0023559857357465,
+                "fraction_draws_above_zero": 0.5045,
+                "paired_95_percentile_interval": [
+                  -0.07678473490855446,
+                  0.08657126887812179
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.0012017924954402543,
+                "fraction_draws_above_zero": 0.4965,
+                "paired_95_percentile_interval": [
+                  -0.07928785469094045,
+                  0.0851146009252315
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.01973458052613767,
+                "fraction_draws_above_zero": 0.323,
+                "paired_95_percentile_interval": [
+                  -0.09797099532098735,
+                  0.06193811312522516
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.05218832334892103,
+                "fraction_draws_above_zero": 0.0185,
+                "paired_95_percentile_interval": [
+                  -0.10267648426998603,
+                  -0.0021699639299722715
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": -0.015211660301409712,
+                "fraction_draws_above_zero": 0.0015,
+                "paired_95_percentile_interval": [
+                  -0.04729404549717836,
+                  0.0
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.010660938168701742,
+                "fraction_draws_above_zero": 0.603,
+                "paired_95_percentile_interval": [
+                  -0.07225722275690903,
+                  0.09130170635938825
+                ]
+              }
+            ],
+            "draws": 2000,
+            "original_native_gated_draws_reused_without_recomputation": true,
+            "raw_proteins": 59,
+            "scores": {
+              "T0_annotation_only_099": {
+                "bootstrap_95_percentile_interval": [
+                  0.2758090809855298,
+                  0.45241265888505855
+                ],
+                "bootstrap_mean": 0.36284361549206745
+              },
+              "T0_nonexperimental_plus_retained_curated_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.2621836311578722,
+                  0.43851495994514406
+                ],
+                "bootstrap_mean": 0.3476319551906577
+              },
+              "coded_context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.3354563035942346,
+                  0.46267434888025655
+                ],
+                "bootstrap_mean": 0.39982027853957874
+              },
+              "context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.33946652990303533,
+                  0.4632198586309288
+                ],
+                "bootstrap_mean": 0.40139299269362444
+              },
+              "context_mlp": {
+                "bootstrap_95_percentile_interval": [
+                  0.3349491354019605,
+                  0.4672363660097427
+                ],
+                "bootstrap_mean": 0.40010877266705663
+              },
+              "context_plus_T0_annotation_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.33531074630341134,
+                  0.46057429130009775
+                ],
+                "bootstrap_mean": 0.39904103049735296
+              },
+              "current_T0_positive_union_context_refit": {
+                "bootstrap_95_percentile_interval": [
+                  0.33916127755939274,
+                  0.47101028447969145
+                ],
+                "bootstrap_mean": 0.40496791477587896
+              },
+              "deepgose": {
+                "bootstrap_95_percentile_interval": [
+                  0.27241737466336396,
+                  0.3604939631261217
+                ],
+                "bootstrap_mean": 0.3159559971401391
+              },
+              "deepgose_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.27241737466336396,
+                  0.3604939631261217
+                ],
+                "bootstrap_mean": 0.3159559971401391
+              },
+              "deepgose_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.27444443060100254,
+                  0.365218249710288
+                ],
+                "bootstrap_mean": 0.31885647635054176
+              },
+              "development_alpha_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.3081128692642858,
+                  0.4129705581315723
+                ],
+                "bootstrap_mean": 0.3586155767733898
+              },
+              "equal_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.30641836298315217,
+                  0.4026239768949287
+                ],
+                "bootstrap_mean": 0.3525466933566795
+              },
+              "fit_label_frequency": {
+                "bootstrap_95_percentile_interval": [
+                  0.1980048198952558,
+                  0.2672245130704015
+                ],
+                "bootstrap_mean": 0.23241470706685055
+              },
+              "localplus": {
+                "bootstrap_95_percentile_interval": [
+                  0.2961606996481582,
+                  0.3981876578924094
+                ],
+                "bootstrap_mean": 0.3452759694549112
+              },
+              "localplus_T0_curated": {
+                "bootstrap_95_percentile_interval": [
+                  0.3139019090078227,
+                  0.4258540318635227
+                ],
+                "bootstrap_mean": 0.36736653571679534
+              },
+              "localplus_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.2961606996481582,
+                  0.3981876578924094
+                ],
+                "bootstrap_mean": 0.3452759694549112
+              },
+              "localplus_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.2961606996481582,
+                  0.3981876578924094
+                ],
+                "bootstrap_mean": 0.3452759694549112
+              },
+              "localplus_updated_seeds": {
+                "bootstrap_95_percentile_interval": [
+                  0.2983293474592769,
+                  0.40037092309994005
+                ],
+                "bootstrap_mean": 0.3464301626952174
+              },
+              "localplus_updated_seeds_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.2983293474592769,
+                  0.40037092309994005
+                ],
+                "bootstrap_mean": 0.3464301626952174
+              },
+              "native_T0_nonexperimental": {
+                "bootstrap_95_percentile_interval": [
+                  0.2758090809855298,
+                  0.45241265888505855
+                ],
+                "bootstrap_mean": 0.36284361549206745
+              },
+              "retained_and_current_curated_LocalPlus": {
+                "bootstrap_95_percentile_interval": [
+                  0.3083532923691558,
+                  0.4173655996842964
+                ],
+                "bootstrap_mean": 0.3582928933593594
+              },
+              "validation_selected_context": {
+                "bootstrap_95_percentile_interval": [
+                  0.3354563035942346,
+                  0.46267434888025655
+                ],
+                "bootstrap_mean": 0.39982027853957874
+              }
+            },
+            "seed": 20261113
+          },
+          "methods": {
+            "T0_annotation_only_099": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.36138613861386143,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "T0_nonexperimental_plus_retained_curated_prior": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.34588563458856353,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "coded_context_gcn": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3905668183698801,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "context_gcn": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.39183276616431695,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "context_mlp": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.39537037037037037,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "context_plus_T0_annotation_prior": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3907580056749088,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "current_T0_positive_union_context_refit": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3990804597701149,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "deepgose": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.31130928252938794,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "deepgose_model_axis_raw": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.31130928252938794,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "deepgose_soft": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3133493205435652,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "development_alpha_mix": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3526546517291768,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "equal_mix": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.34960070984915703,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "fit_label_frequency": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22875048962005481,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.33831695856471594,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_T0_curated": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3582766439909296,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_model_axis_raw": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.33831695856471594,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_soft": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.33831695856471594,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3375742154368108,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds_soft": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3375742154368108,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "native_T0_nonexperimental": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.36138613861386143,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "retained_and_current_curated_LocalPlus": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.34765624999999994,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            },
+            "validation_selected_context": {
+              "eligible_proteins": 59,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3905668183698801,
+              "pre_exclusion_GT_proteins": 59,
+              "raw_native_reference_proteins": 59,
+              "status": "evaluated"
+            }
+          },
+          "namespace": "biological_process",
+          "setting": "LK",
+          "status": "evaluated"
+        },
+        "NK/biological_process": {
+          "bootstrap": {
+            "comparisons": [
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus",
+                "difference_mean": 0.08330684707877532,
+                "fraction_draws_above_zero": 0.927,
+                "paired_95_percentile_interval": [
+                  -0.025659854851031342,
+                  0.17556691204364416
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose",
+                "difference_mean": -0.003456998868233815,
+                "fraction_draws_above_zero": 0.4875,
+                "paired_95_percentile_interval": [
+                  -0.1249491852317656,
+                  0.10505162963615407
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_soft",
+                "difference_mean": 0.08330684707877532,
+                "fraction_draws_above_zero": 0.927,
+                "paired_95_percentile_interval": [
+                  -0.025659854851031342,
+                  0.17556691204364416
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_soft",
+                "difference_mean": -0.004514897524733283,
+                "fraction_draws_above_zero": 0.482,
+                "paired_95_percentile_interval": [
+                  -0.12203371527140111,
+                  0.09640787736206709
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "equal_mix",
+                "difference_mean": -0.0035897259294777584,
+                "fraction_draws_above_zero": 0.507,
+                "paired_95_percentile_interval": [
+                  -0.12295861740922787,
+                  0.08273390635955236
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "development_alpha_mix",
+                "difference_mean": 0.03261297653001502,
+                "fraction_draws_above_zero": 0.753,
+                "paired_95_percentile_interval": [
+                  -0.07738491131445971,
+                  0.12211051452024382
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_model_axis_raw",
+                "difference_mean": 0.08330684707877532,
+                "fraction_draws_above_zero": 0.927,
+                "paired_95_percentile_interval": [
+                  -0.025659854851031342,
+                  0.17556691204364416
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_model_axis_raw",
+                "difference_mean": -0.003456998868233815,
+                "fraction_draws_above_zero": 0.4875,
+                "paired_95_percentile_interval": [
+                  -0.1249491852317656,
+                  0.10505162963615407
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.11504613763843219,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.022239523069920296,
+                  0.27303373800748487
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_mlp",
+                "difference_mean": 0.0075569914864591055,
+                "fraction_draws_above_zero": 0.66,
+                "paired_95_percentile_interval": [
+                  -0.02556095304186906,
+                  0.043068038553824906
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_gcn",
+                "difference_mean": 0.025037400480754222,
+                "fraction_draws_above_zero": 0.6895,
+                "paired_95_percentile_interval": [
+                  -0.03190526902791999,
+                  0.08012237486002093
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "coded_context_gcn",
+                "difference_mean": 0.00626349143558914,
+                "fraction_draws_above_zero": 0.657,
+                "paired_95_percentile_interval": [
+                  -0.01437754788873175,
+                  0.03649043799360544
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.08028767526355474,
+                "fraction_draws_above_zero": 0.925,
+                "paired_95_percentile_interval": [
+                  -0.021094882620033745,
+                  0.1737884462599627
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds_soft",
+                "difference_mean": 0.08028767526355474,
+                "fraction_draws_above_zero": 0.925,
+                "paired_95_percentile_interval": [
+                  -0.021094882620033745,
+                  0.1737884462599627
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "fit_label_frequency",
+                "difference_mean": 0.08403680181165232,
+                "fraction_draws_above_zero": 0.8325,
+                "paired_95_percentile_interval": [
+                  -0.0358369151276505,
+                  0.1991908530494905
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": 0.06345479502609933,
+                "fraction_draws_above_zero": 0.8935,
+                "paired_95_percentile_interval": [
+                  -0.03728456760762752,
+                  0.1566863590697183
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "validation_selected_context",
+                "difference_mean": 0.00626349143558914,
+                "fraction_draws_above_zero": 0.657,
+                "paired_95_percentile_interval": [
+                  -0.01437754788873175,
+                  0.03649043799360544
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_plus_T0_annotation_prior",
+                "difference_mean": 0.0033224649038312445,
+                "fraction_draws_above_zero": 0.512,
+                "paired_95_percentile_interval": [
+                  -0.011586426192301559,
+                  0.029334443627593212
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_annotation_only_099",
+                "difference_mean": 0.11504613763843219,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.022239523069920296,
+                  0.27303373800748487
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "retained_and_current_curated_LocalPlus",
+                "difference_mean": 0.06729489190375211,
+                "fraction_draws_above_zero": 0.8955,
+                "paired_95_percentile_interval": [
+                  -0.034211693062969416,
+                  0.1612409875464278
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.11504613763843219,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.022239523069920296,
+                  0.27303373800748487
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus",
+                "difference_mean": 0.016011955175023213,
+                "fraction_draws_above_zero": 0.9265,
+                "paired_95_percentile_interval": [
+                  -0.00940016651947795,
+                  0.03529441832594879
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.012992783359802623,
+                "fraction_draws_above_zero": 0.8915,
+                "paired_95_percentile_interval": [
+                  -0.00618174670769939,
+                  0.033508261140171185
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.0038400968776527832,
+                "fraction_draws_above_zero": 0.2475,
+                "paired_95_percentile_interval": [
+                  -0.016757683525651736,
+                  0.01963985575827677
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.06103140046816297,
+                "fraction_draws_above_zero": 0.0915,
+                "paired_95_percentile_interval": [
+                  -0.149218042494169,
+                  0.026616350674504383
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.04775124573468009,
+                "fraction_draws_above_zero": 0.672,
+                "paired_95_percentile_interval": [
+                  -0.09827400948973418,
+                  0.20538244314521756
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus",
+                "difference_mean": -0.03173929055965687,
+                "fraction_draws_above_zero": 0.429,
+                "paired_95_percentile_interval": [
+                  -0.19230602982494055,
+                  0.11199397245967913
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": -0.034758462374877466,
+                "fraction_draws_above_zero": 0.401,
+                "paired_95_percentile_interval": [
+                  -0.1950371926720733,
+                  0.10946633366850338
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.05159134261233286,
+                "fraction_draws_above_zero": 0.2925,
+                "paired_95_percentile_interval": [
+                  -0.19889769699779353,
+                  0.0878145040781791
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.10878264620284307,
+                "fraction_draws_above_zero": 0.0035,
+                "paired_95_percentile_interval": [
+                  -0.26338139530458504,
+                  -0.01158391617516578
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.0,
+                "fraction_draws_above_zero": 0.0,
+                "paired_95_percentile_interval": [
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.04775124573468009,
+                "fraction_draws_above_zero": 0.672,
+                "paired_95_percentile_interval": [
+                  -0.09827400948973418,
+                  0.20538244314521756
+                ]
+              }
+            ],
+            "draws": 2000,
+            "original_native_gated_draws_reused_without_recomputation": true,
+            "raw_proteins": 8,
+            "scores": {
+              "T0_annotation_only_099": {
+                "bootstrap_95_percentile_interval": [
+                  0.021733286582515193,
+                  0.39080459770114945
+                ],
+                "bootstrap_mean": 0.19910878972736448
+              },
+              "T0_nonexperimental_plus_retained_curated_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.021733286582515193,
+                  0.39080459770114945
+                ],
+                "bootstrap_mean": 0.19910878972736448
+              },
+              "coded_context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.18181818181818182,
+                  0.43017456267687204
+                ],
+                "bootstrap_mean": 0.3078914359302075
+              },
+              "context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.1871733322200885,
+                  0.3914749140740079
+                ],
+                "bootstrap_mean": 0.2891175268850425
+              },
+              "context_mlp": {
+                "bootstrap_95_percentile_interval": [
+                  0.17391304347826086,
+                  0.4331420502343467
+                ],
+                "bootstrap_mean": 0.3065979358793376
+              },
+              "context_plus_T0_annotation_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.17946428571428572,
+                  0.44036816085943814
+                ],
+                "bootstrap_mean": 0.3108324624619654
+              },
+              "current_T0_positive_union_context_refit": {
+                "bootstrap_95_percentile_interval": [
+                  0.17236885111946398,
+                  0.45662280228670044
+                ],
+                "bootstrap_mean": 0.31415492736579664
+              },
+              "deepgose": {
+                "bootstrap_95_percentile_interval": [
+                  0.2091472218341018,
+                  0.4198041682621301
+                ],
+                "bootstrap_mean": 0.31761192623403045
+              },
+              "deepgose_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.2091472218341018,
+                  0.4198041682621301
+                ],
+                "bootstrap_mean": 0.31761192623403045
+              },
+              "deepgose_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.20915032679738563,
+                  0.42060619890082146
+                ],
+                "bootstrap_mean": 0.31866982489053
+              },
+              "development_alpha_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.18420595760233918,
+                  0.39821181993924315
+                ],
+                "bootstrap_mean": 0.28154195083578165
+              },
+              "equal_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.21296296296296297,
+                  0.42426854754440946
+                ],
+                "bootstrap_mean": 0.3177446532952744
+              },
+              "fit_label_frequency": {
+                "bootstrap_95_percentile_interval": [
+                  0.15735759987029022,
+                  0.3230882352941176
+                ],
+                "bootstrap_mean": 0.23011812555414435
+              },
+              "localplus": {
+                "bootstrap_95_percentile_interval": [
+                  0.16113744075829384,
+                  0.3286171034679262
+                ],
+                "bootstrap_mean": 0.23084808028702136
+              },
+              "localplus_T0_curated": {
+                "bootstrap_95_percentile_interval": [
+                  0.16948417221221368,
+                  0.35701156979840665
+                ],
+                "bootstrap_mean": 0.2507001323396974
+              },
+              "localplus_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.16113744075829384,
+                  0.3286171034679262
+                ],
+                "bootstrap_mean": 0.23084808028702136
+              },
+              "localplus_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.16113744075829384,
+                  0.3286171034679262
+                ],
+                "bootstrap_mean": 0.23084808028702136
+              },
+              "localplus_updated_seeds": {
+                "bootstrap_95_percentile_interval": [
+                  0.16091440886699507,
+                  0.32122370936902483
+                ],
+                "bootstrap_mean": 0.23386725210224196
+              },
+              "localplus_updated_seeds_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.16091440886699507,
+                  0.32122370936902483
+                ],
+                "bootstrap_mean": 0.23386725210224196
+              },
+              "native_T0_nonexperimental": {
+                "bootstrap_95_percentile_interval": [
+                  0.021733286582515193,
+                  0.39080459770114945
+                ],
+                "bootstrap_mean": 0.19910878972736448
+              },
+              "retained_and_current_curated_LocalPlus": {
+                "bootstrap_95_percentile_interval": [
+                  0.16469782433521354,
+                  0.3480392156862745
+                ],
+                "bootstrap_mean": 0.2468600354620446
+              },
+              "validation_selected_context": {
+                "bootstrap_95_percentile_interval": [
+                  0.18181818181818182,
+                  0.43017456267687204
+                ],
+                "bootstrap_mean": 0.3078914359302075
+              }
+            },
+            "seed": 20261113
+          },
+          "methods": {
+            "T0_annotation_only_099": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22134387351778656,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "T0_nonexperimental_plus_retained_curated_prior": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22134387351778656,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "coded_context_gcn": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3104693140794224,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "context_gcn": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.2829581993569132,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "context_mlp": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3161512027491409,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "context_plus_T0_annotation_prior": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3142857142857143,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "current_T0_positive_union_context_refit": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3157894736842105,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "deepgose": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.29940119760479045,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "deepgose_model_axis_raw": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.29940119760479045,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "deepgose_soft": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.30136986301369856,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "development_alpha_mix": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.26288659793814434,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "equal_mix": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3085399449035813,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "fit_label_frequency": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.2180451127819549,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.21364985163204747,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_T0_curated": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.23706896551724138,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_model_axis_raw": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.21364985163204747,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_soft": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.21364985163204747,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.225705329153605,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds_soft": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.225705329153605,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "native_T0_nonexperimental": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.22134387351778656,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "retained_and_current_curated_LocalPlus": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.23353293413173654,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            },
+            "validation_selected_context": {
+              "eligible_proteins": 8,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.3104693140794224,
+              "pre_exclusion_GT_proteins": 8,
+              "raw_native_reference_proteins": 8,
+              "status": "evaluated"
+            }
+          },
+          "namespace": "biological_process",
+          "setting": "NK",
+          "status": "evaluated"
+        },
+        "PK/biological_process": {
+          "bootstrap": {
+            "comparisons": [
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus",
+                "difference_mean": 0.01784891655364556,
+                "fraction_draws_above_zero": 0.9875,
+                "paired_95_percentile_interval": [
+                  0.0021364149350422508,
+                  0.03433445075479666
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose",
+                "difference_mean": 0.03722960999116402,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.023579812622884888,
+                  0.05290549634948909
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_soft",
+                "difference_mean": 0.01784891655364556,
+                "fraction_draws_above_zero": 0.9875,
+                "paired_95_percentile_interval": [
+                  0.0021364149350422508,
+                  0.03433445075479666
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_soft",
+                "difference_mean": 0.0367249443153334,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.02309173005852261,
+                  0.05246590903250241
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "equal_mix",
+                "difference_mean": 0.024883953294822923,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.010253888418319678,
+                  0.040941921361617284
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "development_alpha_mix",
+                "difference_mean": 0.016446041554958036,
+                "fraction_draws_above_zero": 0.987,
+                "paired_95_percentile_interval": [
+                  0.0015768821197702325,
+                  0.03180190393570759
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_model_axis_raw",
+                "difference_mean": 0.01784891655364556,
+                "fraction_draws_above_zero": 0.9875,
+                "paired_95_percentile_interval": [
+                  0.0021364149350422508,
+                  0.03433445075479666
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "deepgose_model_axis_raw",
+                "difference_mean": 0.03722960999116402,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.023579812622884888,
+                  0.05290549634948909
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.04860304978098221,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03454689226643085,
+                  0.06465403825268166
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_mlp",
+                "difference_mean": 0.0115253698257837,
+                "fraction_draws_above_zero": 0.983,
+                "paired_95_percentile_interval": [
+                  0.0010346235675987574,
+                  0.023171288571008964
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_gcn",
+                "difference_mean": 0.012584541848181814,
+                "fraction_draws_above_zero": 0.9915,
+                "paired_95_percentile_interval": [
+                  0.0023722216755107757,
+                  0.02382811293335645
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "coded_context_gcn",
+                "difference_mean": -0.0009214429799251776,
+                "fraction_draws_above_zero": 0.4095,
+                "paired_95_percentile_interval": [
+                  -0.009663417293681937,
+                  0.008048607591679685
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.017099969596324732,
+                "fraction_draws_above_zero": 0.985,
+                "paired_95_percentile_interval": [
+                  0.0018472494382262329,
+                  0.0334659711936102
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_updated_seeds_soft",
+                "difference_mean": 0.017099988691991322,
+                "fraction_draws_above_zero": 0.985,
+                "paired_95_percentile_interval": [
+                  0.0018472494382262329,
+                  0.0334659711936102
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "fit_label_frequency",
+                "difference_mean": 0.040921902678983386,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.023143192981009086,
+                  0.059837748717216185
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": 0.013637036726867117,
+                "fraction_draws_above_zero": 0.9565,
+                "paired_95_percentile_interval": [
+                  -0.0020082731683104408,
+                  0.030450109372420982
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.0009214429799251776,
+                "fraction_draws_above_zero": 0.4095,
+                "paired_95_percentile_interval": [
+                  -0.009663417293681937,
+                  0.008048607591679685
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "context_plus_T0_annotation_prior",
+                "difference_mean": 0.027103818875890383,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.017420735347943066,
+                  0.038478004708749666
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_annotation_only_099",
+                "difference_mean": 0.04860304978098221,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03454689226643085,
+                  0.06465403825268166
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "retained_and_current_curated_LocalPlus",
+                "difference_mean": 0.01581664598155419,
+                "fraction_draws_above_zero": 0.9735,
+                "paired_95_percentile_interval": [
+                  -7.568027285982918e-05,
+                  0.032285335837417904
+                ]
+              },
+              {
+                "candidate": "current_T0_positive_union_context_refit",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.050554621990823195,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.03588113902594924,
+                  0.0670921547667924
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus",
+                "difference_mean": 0.0020322705720913726,
+                "fraction_draws_above_zero": 0.9355,
+                "paired_95_percentile_interval": [
+                  -0.0005315747592745289,
+                  0.004775885766890069
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": 0.0012833236147705462,
+                "fraction_draws_above_zero": 0.89,
+                "paired_95_percentile_interval": [
+                  -0.0006695032600448283,
+                  0.0034791931697672196
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.002179609254687071,
+                "fraction_draws_above_zero": 0.06,
+                "paired_95_percentile_interval": [
+                  -0.0048604372122488144,
+                  0.0006715425915226798
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.016738088961479363,
+                "fraction_draws_above_zero": 0.0205,
+                "paired_95_percentile_interval": [
+                  -0.033957388393575254,
+                  -0.0007276660578847834
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": 0.03278640379942803,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.02000651898966132,
+                  0.04762468350417677
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus",
+                "difference_mean": -0.03270570543717764,
+                "fraction_draws_above_zero": 0.0,
+                "paired_95_percentile_interval": [
+                  -0.04788937462673045,
+                  -0.020069910461743865
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_updated_seeds",
+                "difference_mean": -0.03345465239449847,
+                "fraction_draws_above_zero": 0.0,
+                "paired_95_percentile_interval": [
+                  -0.04783718368940308,
+                  -0.02088872471679549
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "localplus_T0_curated",
+                "difference_mean": -0.03691758526395608,
+                "fraction_draws_above_zero": 0.0,
+                "paired_95_percentile_interval": [
+                  -0.052546737079765884,
+                  -0.023901844354828783
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "validation_selected_context",
+                "difference_mean": -0.05147606497074837,
+                "fraction_draws_above_zero": 0.0,
+                "paired_95_percentile_interval": [
+                  -0.06924895610627806,
+                  -0.0368781939384695
+                ]
+              },
+              {
+                "candidate": "T0_nonexperimental_plus_retained_curated_prior",
+                "comparator": "native_T0_nonexperimental",
+                "difference_mean": -0.001951572209840988,
+                "fraction_draws_above_zero": 0.002,
+                "paired_95_percentile_interval": [
+                  -0.003120799416449793,
+                  -0.0006681580738824993
+                ]
+              },
+              {
+                "candidate": "retained_and_current_curated_LocalPlus",
+                "comparator": "T0_nonexperimental_plus_retained_curated_prior",
+                "difference_mean": 0.03473797600926901,
+                "fraction_draws_above_zero": 1.0,
+                "paired_95_percentile_interval": [
+                  0.021986680997937064,
+                  0.04960577006204026
+                ]
+              }
+            ],
+            "draws": 2000,
+            "original_native_gated_draws_reused_without_recomputation": true,
+            "raw_proteins": 1954,
+            "scores": {
+              "T0_annotation_only_099": {
+                "bootstrap_95_percentile_interval": [
+                  0.01993200922121035,
+                  0.031437124874261806
+                ],
+                "bootstrap_mean": 0.025515554829131613
+              },
+              "T0_nonexperimental_plus_retained_curated_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.018816073279579588,
+                  0.028750289922521766
+                ],
+                "bootstrap_mean": 0.023563982619290623
+              },
+              "coded_context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.056718291362427904,
+                  0.09661469878462901
+                ],
+                "bootstrap_mean": 0.07504004759003899
+              },
+              "context_gcn": {
+                "bootstrap_95_percentile_interval": [
+                  0.04775276074739673,
+                  0.0765132593381976
+                ],
+                "bootstrap_mean": 0.061534062761932004
+              },
+              "context_mlp": {
+                "bootstrap_95_percentile_interval": [
+                  0.04831732277213169,
+                  0.07748899530903605
+                ],
+                "bootstrap_mean": 0.06259323478433013
+              },
+              "context_plus_T0_annotation_prior": {
+                "bootstrap_95_percentile_interval": [
+                  0.03645173864929442,
+                  0.059083379723316294
+                ],
+                "bootstrap_mean": 0.047014785734223435
+              },
+              "current_T0_positive_union_context_refit": {
+                "bootstrap_95_percentile_interval": [
+                  0.05528904574082425,
+                  0.09444115789475897
+                ],
+                "bootstrap_mean": 0.07411860461011383
+              },
+              "deepgose": {
+                "bootstrap_95_percentile_interval": [
+                  0.02890851710849595,
+                  0.04556860019925963
+                ],
+                "bootstrap_mean": 0.036888994618949796
+              },
+              "deepgose_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.02890851710849595,
+                  0.04556860019925963
+                ],
+                "bootstrap_mean": 0.036888994618949796
+              },
+              "deepgose_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.02921110810824152,
+                  0.046434069892720746
+                ],
+                "bootstrap_mean": 0.03739366029478042
+              },
+              "development_alpha_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.04416400163033419,
+                  0.07280142815072037
+                ],
+                "bootstrap_mean": 0.05767256305515579
+              },
+              "equal_mix": {
+                "bootstrap_95_percentile_interval": [
+                  0.03737164990370195,
+                  0.06260957683295616
+                ],
+                "bootstrap_mean": 0.0492346513152909
+              },
+              "fit_label_frequency": {
+                "bootstrap_95_percentile_interval": [
+                  0.024919766488192652,
+                  0.04243276374406852
+                ],
+                "bootstrap_mean": 0.03319670193113043
+              },
+              "localplus": {
+                "bootstrap_95_percentile_interval": [
+                  0.04206602370064247,
+                  0.07223233454522236
+                ],
+                "bootstrap_mean": 0.05626968805646826
+              },
+              "localplus_T0_curated": {
+                "bootstrap_95_percentile_interval": [
+                  0.04565030185133013,
+                  0.0769083737158713
+                ],
+                "bootstrap_mean": 0.060481567883246705
+              },
+              "localplus_model_axis_raw": {
+                "bootstrap_95_percentile_interval": [
+                  0.04206602370064247,
+                  0.07223233454522236
+                ],
+                "bootstrap_mean": 0.05626968805646826
+              },
+              "localplus_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.04206602370064247,
+                  0.07223233454522236
+                ],
+                "bootstrap_mean": 0.05626968805646826
+              },
+              "localplus_updated_seeds": {
+                "bootstrap_95_percentile_interval": [
+                  0.04299541940665308,
+                  0.0725491622022241
+                ],
+                "bootstrap_mean": 0.05701863501378909
+              },
+              "localplus_updated_seeds_soft": {
+                "bootstrap_95_percentile_interval": [
+                  0.04299541940665308,
+                  0.0725491622022241
+                ],
+                "bootstrap_mean": 0.0570186159181225
+              },
+              "native_T0_nonexperimental": {
+                "bootstrap_95_percentile_interval": [
+                  0.01993200922121035,
+                  0.031437124874261806
+                ],
+                "bootstrap_mean": 0.025515554829131613
+              },
+              "retained_and_current_curated_LocalPlus": {
+                "bootstrap_95_percentile_interval": [
+                  0.04394632912923006,
+                  0.07396541415469447
+                ],
+                "bootstrap_mean": 0.05830195862855963
+              },
+              "validation_selected_context": {
+                "bootstrap_95_percentile_interval": [
+                  0.056718291362427904,
+                  0.09661469878462901
+                ],
+                "bootstrap_mean": 0.07504004759003899
+              }
+            },
+            "seed": 20261113
+          },
+          "methods": {
+            "T0_annotation_only_099": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.02547564351770042,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "T0_nonexperimental_plus_retained_curated_prior": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.023529411764705882,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "coded_context_gcn": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.07343110845056372,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "context_gcn": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.05972526378658173,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "context_mlp": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.06174567080636696,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "context_plus_T0_annotation_prior": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.04633093525179856,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "current_T0_positive_union_context_refit": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.07306176084099868,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "deepgose": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.03642212902855173,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "deepgose_model_axis_raw": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.03642212902855173,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "deepgose_soft": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.03704120693537492,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "development_alpha_mix": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.05610003379520108,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "equal_mix": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.04815476816317948,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "fit_label_frequency": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.03258367274659111,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "localplus": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.05473151661492468,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "localplus_T0_curated": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.05883765609990394,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "localplus_model_axis_raw": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.05473151661492468,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "localplus_soft": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.05473151661492468,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.05529575847075231,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "localplus_updated_seeds_soft": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.05529575847075231,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "native_T0_nonexperimental": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.02547564351770042,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "retained_and_current_curated_LocalPlus": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.055951976441273074,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            },
+            "validation_selected_context": {
+              "eligible_proteins": 322,
+              "native_full_curve_point_agreement_passed": true,
+              "native_micro_fmax": 0.07343110845056372,
+              "pre_exclusion_GT_proteins": 1954,
+              "raw_native_reference_proteins": 1954,
+              "status": "evaluated"
+            }
+          },
+          "namespace": "biological_process",
+          "setting": "PK",
+          "status": "evaluated"
+        }
+      },
+      "reference_sha256": {
+        "LK": "dec8fa3858c2609e764b2987987545aeab1642ac943bfadceb5e533ac665424b",
+        "NK": "5aa8a7f8fdf04bd6470a8156078bca47c24629f2841c8cdc2b9afd0321a170d9",
+        "PK": "57ee53350cb24215649e23829ee4d128461277583bbf855c6d0d20a313b0744f",
+        "PK_known": "512ad9c45b3532afea9477b37326b43e0eb1de4d70d4ccd73880b4f1282ab4c4",
+        "obo": "b08d45b268b8c24ccb2513dbbbc7d4df9f6521c099b413f79eb31e06e0fa3bcc",
+        "toi": "0c8ec3ecd80898f871c132bf108262ee6fa7a264bfa0bb5c6d4aeb615c56fdbc"
+      }
+    }
+  }
+}

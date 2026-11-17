@@ -1,0 +1,12 @@
+InterPro MCP client
+Copyright EMBL-EBI / InterPro MCP contributors.
+
+The file mcp_client.py is an unchanged copy of eval/mcp_client.py from
+https://github.com/ebi-pf-team/interpro-mcp
+commit ceb9b2177a5f8861634972fb8b2eacff64702890.
+SHA256: ff14966eb5ceecbc5de15e68097a909c1faccb464f8c8ecadcedc447a1cac95d
+Licensed under Apache License 2.0; see LICENSE.
+
+BioGraph Steward reuses its JSON-RPC/SSE parser with a recording transport
+that retains the complete native response. This software license does not
+license Pharos, InterPro, UniProt or member-database data.

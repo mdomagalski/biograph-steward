@@ -1,0 +1,361 @@
+# Biological assessment and delivery — 13 November 2026
+
+**November 14 update:** the accepted AWS runtime is now `a6a05ff`; the new
+`scientific_assessment_reference_20261114` publication passed protected API,
+source-download and catalogue acceptance. The historical function inspector is
+live. See [current measured results](SCIENTIFIC_RESULTS_20261114.md) for the
+completed CAFA5 and BioRED assessments, including bounded secondary recovery
+gains, negative pruning/knowledge-transfer controls and the unsuccessful agent.
+The November 13 delivery and task-specific conclusions below are dated history.
+
+**November 13 delivery:** the protected shared HTTPS reviewer app runs `5362b50`,
+with Neptune remaining private. The [delivery receipt](reviewer_https_delivery_20261113_summary.json)
+records authenticated access, the separate native GO packet download and full
+extraction/reopening of both NRAS examples, plus a cold Neptune read through
+the authenticated HTTPS app.
+Source inventories remain unchanged. This closes a delivery/replay gap; it
+does not add biological labels or change the scientific results below.
+
+The corrected source graph is in use in the AWS workbench and private
+Neptune. Its strongest demonstrated improvement is more faithful, inspectable
+use of source evidence. The completed biological comparisons do **not** yet
+show a transferable predictive gain or independent whole-graph accuracy.
+
+The later [external perturbation comparison](PERTURBATION_TRANSFER_20261113.md)
+now tests a historical Reactome co-complex priority against all six existing
+rankings in K562 and RPE1 transcriptomic experiments. The candidate improves
+the previous experimental-support priority slightly but does not beat native
+STRING combined confidence on the primary in either context. Reusing the
+author's documented nonfinite-column handling restores reference coverage and
+preserves that conclusion. The first pass and post-exposure QC sensitivity
+remain separate; neither promotes automatic biological pruning or changes the
+hosted graph. These are two cell contexts from one study, not independent-study
+replication or a whole-graph accuracy percentage.
+
+The subsequent [full GO replacement census](GO_REPLACEMENT_CENSUS_20261113.md)
+accounts for all 167 explicit proposals and identifies 21 nonduplicate
+protein–GO concepts, supported by 24 qualifying native experimental annotation
+records across 15 proteins. Original sources and the hosted graph remain
+unchanged. The source-bound GAF subset is ready for a separate native-GOA
+addition adapter; current qualified-workspace replay does not permit manually
+appending records. This is recoverable annotation coverage, not a newly
+established biological-accuracy or prediction gain.
+
+That adapter gap is now closed in the separate [local native GO recovery
+workspace](NATIVE_GO_RECOVERY_20261113.md): 24 native annotations add 21 concepts
+across 15 proteins and six GO nodes, yielding 16,711 retained evidence records
+and 16,703 assertions. All 16,985 prior evidence payloads and decision rows are
+preserved; new records remain candidates with abstain dispositions. The full
+historical WikiPathways proof was recomputed from the same archived sources and
+bound to the new graph. This is verified annotation coverage recovery, not an
+independent biological-accuracy or prediction gain, and has not been deployed
+to the separate AWS reviewer app.
+
+The [three-page review packet](../../output/pdf/BioGraph_Steward_Final_Review_20261113.pdf)
+provides an overview of the product, measured results and delivery routes.
+Its hosting status predates the update below. The earlier
+[two-page project update](../../output/pdf/BioGraph_Steward_Scientific_Update_20261113.pdf)
+is preserved as a dated checkpoint. Full methods and source boundaries follow here.
+
+The subsequent [expert-labeled grounding assessment](EXPERT_GROUNDING_20261113.md)
+adds an executed source-identity check using published INDRA curations and
+native Gilda/Adeft tools. On 678 eligible reserved cases, publication context
+reduces false alarms from 25 to 18 while detecting 26 rather than 31 grounding
+errors. This measured trade-off supports assisted review; it supplies no new
+biological pruning rule. The unchanged two-page update above predates this
+addition and the [completed isolated checkpoint recovery](aws_isolated_recovery_20261113_summary.json);
+the current results and scope are recorded here and in those receipts.
+
+The [initial hosted update](hosted_polish_update_20261113_summary.json)
+deployed tested code `0529d2b` and the separately sealed grounding publication
+`09e50f8e…`. The original graph, decisions, older publications and 13 saved
+question/export files remain unchanged; real restart and Neptune parity/read
+checks passed. The hosted v3 publication contains grounding plus the earlier
+92-query/3,968-pair exploratory component. The later negative 128-gene transfer
+below remains a separate result. Deployment does not add a scientific gain.
+
+The [earlier native GO hosted update](hosted_native_go_20261113_summary.json) deployed
+`ea5752e` with the approved separate 12-file native GO/QC packet. The
+[native GO inspector](../NATIVE_GO_CONTEXT_WORKBENCH.md) exposes preserved
+qualifiers and recorded official quality findings on demand. Both NRAS cases,
+the original TP53 question, both publications and complete Neptune parity/read
+checks passed across a real restart, with source and review bytes unchanged.
+Verification at that checkpoint used the API; the earlier GO Chrome walkthrough was local.
+
+For NRAS/GO:0005794, a compatible native row's `part_of` relation and recorded
+`located_in` derivative remain separate. NRAS/GO:0070062 has a related native
+context warning, but no native row matches all five available Pharos fields.
+That warning does not refute the historical Pharos annotation or the base biological association.
+No graph repair, new label or biological pruning follows from these displays.
+Fresh software installations remain unconfigured and contain no native packet.
+
+## Delivered
+
+- **16,687 retained evidence records across 99 protein targets.** The original
+  16,985 records, reviews and complete keep/prune/abstain ledger remain available.
+  The 298 exclusions concern obsolete GO identifiers in the pinned July 2026
+  ontology; they are not 298 experimentally disproved relationships.
+- **Exact historical pathway inspection.** Publisher archives verified 253/308
+  cited WikiPathways versions, including 15/20 versions most frequent in source
+  records. Five connections rejected by the newer flat-file contrast are
+  explicitly gene-encoded in their historical models. Unknown memberships are
+  retained; gene compatibility never establishes an exact historical isoform.
+- **A working question → graph → source explanation.** The qualified pathway
+  question joins both proteins through the same cited model. It includes native
+  GPML downloads, separately scoped references and source status. Shared model
+  context is not displayed as a newly established physical interaction.
+- **Direct inspection of curator and mechanistic context.** The existing source
+  guide now opens exact complete CIViC profiles for their Assertions and exact
+  Reactome records for event/complex details. Current lookup context remains
+  separate from historical references and independent evidence counts; clinical
+  status, whole-regimen exceptions and species inference stay explicit.
+- **Original private production checkpoint.** A complete reconstruction of the corrected Neptune
+  dataset matches the retained graph. The app's native-supported TP53 answer,
+  downloads, current-GO lookup and real database inspection passed across an
+  actual service restart. The previous cloud dataset and app image remain
+  preserved. Normal read-only database permissions were restored; no public
+  access was added at that checkpoint; the later protected HTTPS reviewer route
+  is recorded above.
+
+The input remains its explicitly dated Pharos319 snapshot. Historical source
+proof and current curator lookups have separate versions; this is not a claim
+that Pharos319 is the latest available Pharos release.
+
+![Corrected hosted workspace: two proteins connected through exact cited models](../images/hosted_source_graph_20261113.png)
+
+The actual hosted walkthrough also checked the
+[native source passport](../images/hosted_source_passport_20261113.png),
+[assessment denominators](../images/hosted_scientific_assessment_20261113.png),
+[clinical context guide](../images/hosted_clinical_source_guide_20261113.png) and
+[Reactome context guide](../images/hosted_reactome_source_guide_20261113.png).
+The [sanitized deployment receipt](aws_source_faithful_release_20261113_summary.json)
+binds the deployed runtime, graph, saved answer and actual restart/database checks.
+
+The [complete app-export check](hosted_workspace_export_20261113_summary.json)
+also reopens the normal graph and question ZIPs together. All 394 exported source
+files match the current workspace, and the complete Gold/history proof and
+saved native answer replay exactly. The final standalone runtime also
+regenerates that real native answer with clean Python and no site packages.
+The graph ZIP and separately saved question ZIP must remain adjacent. This verifies the product handoff; it does not
+substitute for the separately completed
+[private checkpoint recovery](aws_isolated_recovery_20261113_summary.json),
+whose three-root scope excludes the later software and grounding assessment.
+
+## What credible public labels establish
+
+| Axis | Bounded finding | What it cannot establish |
+|---|---|---|
+| Native experimental GO curations | 373/4,078 original GO assertions have qualified compatible records; all 373 survive | Independent precision; GO/Pharos source lineage can overlap |
+| Published CRC genomic cohort | 32/100 disease assertions have eligible coding-driver cohort support; all 32 survive | Clinical causality, exact rectal-context support, or correctness of unmatched claims |
+| Expert CIViC assertions | Two accepted expert claims were recovered, but 0/41 original response contexts match exactly | Validation of different therapy, variant or disease contexts |
+
+These are **support-coverage and preservation measurements**. Missing matches
+stay unknown. A probability sample cannot turn positive-only or mismatched
+labels into a calibrated accuracy estimate. Independent whole-graph scientific
+precision remains **not estimable from the admitted labels**; no substitute
+percentage or LLM-consensus truth label is reported.
+
+A concrete clinical-scope example explains the strict matching rule:
+[CIViC Evidence Item 12264](https://civicdb.org/evidence/12264) reports a complete
+sotorasib–panitumumab regimen, while
+[Assertion 295](https://civicdb.org/assertions/295) explicitly excludes
+panitumumab given with a KRAS G12C inhibitor from its scope. These records
+cannot be turned into contradictory correctness labels by matching only a gene
+and one drug. The new current-profile lookup exposes the curator context while
+preserving that distinction. See the
+[source and reference assessment](SOURCE_FAITHFUL_WORKSPACE_20261113.md).
+
+## Controlled biological comparisons
+
+| Comparison | Result and decision |
+|---|---|
+| Matched R-GCN physical-assay comparison, 1,751 eligible measured pairs | Historical context AP 0.71027 versus normalized 0.70978, below its count control 0.72097 and degree control 0.71133. No robust predictive gain. |
+| Published coessentiality, original 92-gene development scope | Binary shared-context qualification failed its fixed control comparison. An explicitly exploratory native resource-allocation (RA) extension showed greater relative concentration, with usually lower absolute affinity. |
+| Frozen transfer to 128 new sampled genes, 7,648 nonsyntenic pairs | Neither RA nor the binary diagnostic beat baseline and all 40 fixed controls at any N=1–10. Historical context reached only 26 queries; all 102 zero-context queries remained. The development advantage did not transfer. |
+
+Independent software review replayed the preserved native column bytes,
+321,216 RA weights and all 840 curve points exactly. This verifies arithmetic, not independent
+experimental replication: both functional cohorts use the same published
+study. No favorable N, replacement sample or new method was selected after the
+transfer result. RA weighting and automatic biological pruning were **not**
+promoted to the default graph.
+
+![Development result and negative new-gene transfer together](../images/functional_concordance_20261113.png)
+
+Full curves, controls, exposure boundaries and source receipts are in the
+[prospective assessment](PROSPECTIVE_GENE_TRANSFER_20261113.md). The control
+bands are ranges across fixed draws, not confidence intervals. Pooled O/E is
+not coverage-adjusted: zero-context queries add zero to both sums. Absolute
+means and effective coverage therefore remain beside each enrichment ratio.
+
+### Separate local-cohort demonstration
+
+The [saved 128-gene pathway workspace](http://127.0.0.1:8794/?run=transfer_pathway_workspace_20261113&question=question_transfer_pathways_20261113)
+demonstrates the same workflow on different genes using the existing publishers.
+It retains all **1,470 pathway records with zero prunes**, including unresolved
+Wiki annotations; no assertions were accepted. Other annotation families were
+not retrieved. The alphabetically selected ABCC3 question returns three proteins
+with exact native source context. This link requires the complete private saved
+packet and the local server on port 8794; it is not a fresh-checkout example.
+Actual [graph](../images/transfer_source_graph_20261113.png) and
+[source-passport](../images/transfer_source_passport_20261113.png) captures show
+the second cohort using the same interface.
+
+Workflow reuse does not reverse the negative comparison above: the new genes
+were evaluated within the **same published study**, not an independent study.
+The existing answer format repeats native proof, producing a roughly **64 MB
+saved question JSON**; this remains an engineering limit. A read-only byte
+diagnosis attributes 95.2% to repeated parsed native models. Raw GPML is already
+deduplicated; the initial ASCII HTTP representation compressed to about
+3.13 MB. True model-reference deduplication needs a versioned reader/export
+migration so that old answer hashes and complete source replay remain valid.
+No unversioned change to model references was applied. No new scoring,
+retrieval, AWS deployment or Neptune load was
+needed for this local example.
+
+**November 13 delivery follow-up:** the updated checkout's normal saved-question
+route sends valid native Unicode as UTF-8. On this same frozen answer, decoded HTTP JSON
+decreases from **62.18 to 27.11 MB** and gzip from **3.13 to 1.62 MB** (48.1%
+fewer response-body bytes). The original answer hash and all ten saved export
+files are unchanged; the saved question remains 64,235,516 bytes and parsed
+proof duplication remains. This measures serialization size, not a controlled
+latency comparison or biological improvement. See the
+[delivery polish record](../DELIVERY_POLISH_20261113.md).
+
+### Existing Reactome context for a different question
+
+The [saved B3GALNT2 illustration](http://127.0.0.1:8794/?run=transfer_pathway_workspace_20261113&question=question_b3galnt2_reactome_20261113)
+uses the same 128-gene graph and ordinary shared-pathway question. This protein
+has a complete-zero Wiki response but three imported Reactome records. The
+question shows **8 of 17 matching proteins and 15 candidate paths**, all from
+already retrieved Reactome annotations. The focal protein was selected by
+alphabetical source availability, without reading outcomes. No record, review,
+fit or biological score changed.
+
+The [answer capture](../images/existing_reactome_summary_20261113.png) and
+[source guide](../images/existing_reactome_source_guide_20261113.png) show the
+preserved assertions and separate current publisher lookup. Broad shared
+“Metabolism of proteins” context does not establish a reaction role, physical
+interaction or prediction benefit. The more specific imported “O-linked
+glycosylation” record has no other member in this sampled cohort, which is
+not biological absence elsewhere. See the
+[scoped illustration receipt](b3galnt2_existing_context_20261113_summary.json).
+
+A [worked native-source walkthrough](NATIVE_REACTOME_WALKTHROUGH_20261113.md)
+then traces the exact current B3GALNT2 catalyst and DAG1 glycosylation reaction
+through Reactome's documented APIs and primary studies. Biochemical activity
+has experimental support under specified construct conditions; the localization
+study used tagged human protein in mouse cells. Current human-model metadata
+therefore remains separate from experimental host and native topology. This
+adds a concrete interpretation example, not a historical Pharos319 proof,
+automatic graph update or new independent accuracy label.
+
+## Literature-guided decisions
+
+Published pathway-coverage and multifunctionality studies support the use of
+coverage diagnostics and matched controls; they do not prove a single cause
+of this negative result. RA uses degrees in the supplied cohort, which are
+not full biological pathway sizes. The
+[focused methods review](PATHWAY_TRANSFER_LIMITS_20261113.md) distinguishes these
+verified properties from causal hypotheses.
+
+A [source-only coverage check](source_coverage_20261113_summary.json) also finds
+that 74 of 102 queries without eligible historical Wiki context are non-Tdark.
+Fifty-three genes with no Wiki rows already have other queried pathway data;
+Reactome rows cover 73/128 genes. These overlapping provider annotations supply
+an existing route for context inspection, not independent corroboration or a
+new performance result. No method or sample changed after this diagnostic.
+
+The other proposed routes were screened before execution. PROGENy requires
+appropriate expression/footprint measurements; total proteomics and this sparse
+scope do not supply them. The inspected Sanger preprocessing lacks required
+olfactory-control genes; the Horlbeck genetic-interaction panel has inadequate
+compatible coverage. No unsupported assay conversion or benchmark substitution
+was made simply to obtain a positive result.
+
+The existing source guide now supplies a bounded route to **native
+reaction/complex roles and context from already represented Reactome records**. Existing Content Service
+and BioPAX tooling can support this without treating the same source as new
+independent evidence. Any later automatic extraction still requires a bounded source question and
+explicit release lineage; the lookup is not a new pruning rule or a demonstrated
+prediction gain.
+
+## Practical limits
+
+Five of the twenty most frequent historical versions remain unresolved after
+additional official archive/repository checks. No nearby or current model was
+substituted. Their 365 source rows / 119 protein-version connections remain
+UNKNOWN. Full historical archive/registry replay requires the complete workspace
+package; compact answer ZIPs contain their cited native models and provenance.
+
+The hosted cold source replay took about 90 seconds, and the complete first
+Neptune parity check about four minutes; warm saved-data questions were about
+20 seconds on this existing host. These are observed production timings, not
+latency guarantees. HTTP gzip and bounded database projection reduce transfer
+and materialization work while preserving byte/row equality. Normal questions
+use the verified file-backed workspace; the Neptune inspector performs actual
+read-only database queries.
+
+The complete data remain in private storage under their source terms. MIT
+software licensing does not clear redistribution of every integrated source.
+No Brev/GPU/model inference was needed for this round's CPU evaluation and
+production deployment.
+
+The [software-only release check](software_release_20261113_summary.json)
+also launches the extracted committed runtime with clean Python 3.12 and no
+site packages, builds its explicitly synthetic graph, answers a supported
+question and reopens the same answer after an actual local server restart.
+This is portability evidence, separate from source permission and biological
+validation.
+
+A [private offline demonstration bundle](source_faithful_offline_delivery_20261113_summary.json)
+now combines that runtime, the complete corrected graph/source/decision package
+and saved TP53 answer. Every ZIP entry passed stream byte/CRC checks, and the
+byte-identical assembly passed actual default-example, graph, native-answer and
+download checks with clean Python. A second full physical extraction was not
+performed because local disk headroom was limited. The [delivery guide](../DELIVERY.md#current-offline-handoff)
+provides the one-directory launch route; the data-bearing ZIP remains private.
+
+## Preservation and operational handoff
+
+The corrected hosted workspace has a completed private S3 backup and a
+[successful isolated checkpoint recovery](aws_isolated_recovery_20261113_summary.json).
+The complete 2,032,300,331-byte backup matched its SHA256 sidecar. All 95,881
+archive members passed the name, traversal and duplicate checks; only the 422
+ordinary files belonging to the source workspace, its bound scientific
+publication and saved native question were restored. Unselected runtime links
+were inventoried and never extracted or followed.
+
+The initial V1 attempt stopped at unrelated runtime links. The subsequently
+approved V2 execution verified the archive and selected files, then stopped
+because its read-only validation container lacked temporary scratch space for
+native `paths.tsv` export verification. Both failures remain recorded. A
+follow-up using Docker's [documented ephemeral tmpfs](https://docs.docker.com/engine/storage/tmpfs/)
+provided a bounded 64 MiB `/tmp` while preserving the approved checker, native
+replay code, pinned image, read-only source bind and disabled network. The
+99-target, 16,687-record graph, exact native answer and saved exports replayed
+successfully. Active saved files, configuration and container identity remained
+unchanged, the existing live health endpoint returned HTTP 200 without a
+restart, and the verified task-owned temporary staging was removed.
+
+This verifies the existing checkpoint's source workspace,
+`scientific_assessment_complete_20261113` publication (`05cc28f1…`) and
+`question_20261113T063448Z_f746814c`. It is not full VM/runtime recovery and does
+not cover the later grounding publication, native GO attachment or subsequent
+software updates.
+It creates no biological accuracy or prediction-gain result.
+
+The private archive of ten source/experiment/delivery roots is retained locally at
+`runs/scientific_retention_20261113/scientific_artifacts_20261113.tar.gz`
+(488,560,385 bytes; SHA256
+`227aa64bc35a8d67ff831af6107ba6394ed4ad167db0f8af2b17aef0ec16b438`).
+It preserves 2,982 files across ten source/experiment/delivery roots, with a
+per-file manifest. Automatic approval review separately blocked its proposed
+private S3 copy until the exact payload and destination are approved. No
+alternate upload was attempted. Local retention is complete; a second remote
+research copy is not claimed. Underlying source terms still apply.
+
+The later source-only coverage diagnostic, B3GALNT2 question and native Reactome
+source/paper review have a separate local addendum archive. Its 42 files were
+stream-verified without changing their originals. It is not part of the earlier
+ten-root archive or a completed cloud copy.

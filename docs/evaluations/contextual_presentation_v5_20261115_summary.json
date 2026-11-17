@@ -1,0 +1,67 @@
+{
+  "artifact": {
+    "appendix_slides": 3,
+    "bytes": 304517,
+    "file": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v5.pptx",
+    "main_slides": 6,
+    "sha256": "0df543fd5040cd73cc7d94d14ecec0c4ead48b8f9400cfdb3996b3c9338df9eb",
+    "slides": 9
+  },
+  "date": "2026-11-15",
+  "format": "biograph-steward.contextual-presentation-delivery.v5",
+  "limits": [
+    "GO annotation recovery is a supporting task, not whole-graph biological accuracy or clinical validation.",
+    "The new refit and source-union controls use an already consumed reference and do not constitute independent confirmation.",
+    "The refit does not establish an improvement over the original selected model or stronger LocalPlus source-union control.",
+    "The original frozen primary comparison and mixed or negative graph-enrichment results remain unchanged."
+  ],
+  "public_receipt_contains_no_raw_cases_draws_or_private_paths": true,
+  "scope": {
+    "added_appendix_slide": 9,
+    "existing_eight_slides_text_notes_and_pixels_unchanged": true,
+    "independent_confirmation_claimed": false,
+    "new_appendix_is_consumed_reference_development": true,
+    "new_success_gate_winner_change_or_application_promotion": false,
+    "reference_or_prediction_arrays_read_for_deck": false,
+    "scientific_metrics_or_intervals_recomputed_for_deck": false,
+    "table_bolding_identifies_predeclared_new_arms_not_winners": true
+  },
+  "source_deck": {
+    "preserved_unchanged": true,
+    "sha256": "e3a96cacedc65c4907feba280156f3bafa47f64a92ea899461aff05403d4a456",
+    "version": "v4"
+  },
+  "sources": {
+    "current_refit_development_plan_sha256": "8128b0c3cbda794cb8cd75b711609cfed1f1a150ef81ba3e90339cd4815ecca9",
+    "current_refit_development_public_summary_sha256": "d2c00101234cfcb1146188b52e3dbad9be60b244301d7c5a892e2af1b69b3f2f",
+    "original_frozen_public_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2"
+  },
+  "verification": {
+    "all_eight_source_slides_different_pixels": 0,
+    "all_nine_finalized_pptx_reimport_renders_visually_inspected": true,
+    "native_PowerPoint_application_opened": false,
+    "native_chart_slides": [
+      4
+    ],
+    "native_table_slides": [
+      7,
+      8,
+      9
+    ],
+    "negative_and_crossing_zero_intervals_remain_visible": true,
+    "new_literal_workbook_contains_no_formulas_or_external_links": true,
+    "new_score_values_copied": 14,
+    "new_table_cells_independently_checked": 24,
+    "new_table_shape": [
+      8,
+      3
+    ],
+    "original_embedded_images_byte_preserved": 3,
+    "original_four_chart_literal_values_and_embedded_workbook_match": true,
+    "original_workbook_bytes_or_formula_lineage_preservation_claimed": false,
+    "package_integrity_layout_native_objects_fonts_and_import_checks": "passed",
+    "private_paths_credentials_raw_cases_or_sampling_vectors_found": false,
+    "saved_paired_intervals_copied": 4,
+    "visible_layout_defects_detected": 0
+  }
+}

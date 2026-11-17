@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BioGraph Steward — Free source inspection and bounded agent assessment</title><style>body{font:16px/1.55 system-ui,sans-serif;color:#182c3e;background:#f6f8fa;max-width:1180px;margin:32px auto;padding:0 24px}
+h1{font-size:30px;line-height:1.2}h2{font-size:23px}section{background:white;border:1px solid #dbe4ea;border-radius:12px;padding:24px;margin:20px 0}
+.table{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:10px;border-bottom:1px solid #dbe4ea}th{background:#edf2f6}
+a{color:#125c95}code{overflow-wrap:anywhere}.scope{border-left:5px solid #177e89;padding:12px 16px;background:#edf8f8}</style>
+<section><h1>Free PubMed source inspection and a bounded agent comparison</h1>
+<p class="scope">The retained capability is free PubMed paper search with inspectable saved records and optional exact-abstract inspection.
+Native search remains the default: it recovered more human reference papers than either final agent handoff on this fixed sample.</p>
+<p>Twenty-four public BioASQ11 questions: twelve factoid and twelve list questions selected before reference access.
+The endpoint is mean question-level known-positive PMID Recall@10. It does not measure whether a paper proves a biological claim or adds independent evidence beyond Pharos.</p></section>
+<section><h2>All final-handoff outcomes</h2><div class="table"><table><thead><tr><th>Stage</th><th>Method</th><th>Recall@10</th><th>Questions with a reference hit</th><th>Valid finals (nonempty / empty)</th><th>Model calls</th></tr></thead><tbody><tr><td>Original</td><td>Native full-question search</td><td>17.26%</td><td>7/24</td><td>not a model final</td><td>0</td></tr><tr><td>Original</td><td>Base agent</td><td>2.08%</td><td>1/24</td><td>4/24 (4 / 0)</td><td>61</td></tr><tr><td>Original</td><td>Same agent + reviewed skill</td><td>6.25%</td><td>2/24</td><td>6/24 (3 / 3)</td><td>56</td></tr><tr><td>Feedback follow-up</td><td>Base agent</td><td>6.25%</td><td>2/24</td><td>13/24 (6 / 7)</td><td>79</td></tr><tr><td>Feedback follow-up</td><td>Same agent + reviewed skill</td><td>6.25%</td><td>2/24</td><td>18/24 (3 / 15)</td><td>80</td></tr></tbody></table></div>
+<p>The same native-control rankings were retained in the follow-up through immutable captures. Empty valid finals count as completions in the fixed operational rule, not successful paper handoffs. Validity is not relevance.
+Unavailable and invalid cases remain in the full 24-question denominator.</p>
+<p><a href="original_report.html">Complete original report</a> · <a href="followup_report.html">Complete feedback follow-up</a> · <a href="execution_diagnostics.json">Execution/error counts</a></p></section>
+<section><h2>What improved—and what did not</h2><p>Standard selective duplicate-search feedback primarily increased valid empty outputs: formal valid finals rose from 10/48 to 31/48, while empty finals rose from 3 to 22. Nonempty paper handoffs rose only from 7/48 to 9/48.
+Rejected duplicates caused zero new source/cache executions and still consumed a model decision within the same four-call budget.
+Actual total agent calls increased from 117 to 159; this is not an equal-actual-cost claim.</p>
+<p>Reference retrieval did not meet the positive-interval criterion. In the follow-up, base and reviewed-skill agents both reached 6.25% Recall@10;
+skill−base was 0.00 points with a 95% paired interval of −12.50 to +12.50 points. Both final agents underperformed the native 17.26% control on this frame.</p>
+<ul><li>Base agent: feedback−original +4.17 percentage points; paired 95% interval[+0.00, +12.50].</li><li>Same agent + reviewed skill: feedback−original +0.00 percentage points; paired 95% interval[+0.00, +0.00].</li></ul><p>The procedural skill is not promoted as superior. The agent is optional and experimental; no graph was changed or assertion accepted.</p>
+<p><a href="recovery_comparison.json">Every fixed recovery contrast and actual costs</a> · <a href="operational_check.json">Guarded completion/payload check</a></p></section>
+<section><h2>Where reference papers can be lost</h2><div class="table"><table><thead><tr><th>Condition</th><th>First attempted search Recall@10</th><th>Final follow-up Recall@10</th><th>Native control Recall@10</th></tr></thead><tbody><tr><td>Base agent</td><td>11.46%</td><td>6.25%</td><td>17.26%</td></tr><tr><td>Same agent + reviewed skill</td><td>18.40%</td><td>6.25%</td><td>17.26%</td></tr></tbody></table></div>
+<p>This separately sealed pre-label diagnostic uses only the FIRST attempted search, including failed/empty/partial results, in native order through ten.
+No later/best-query or union is substituted, and no new call was made. It localizes loss after retrieval; it does not validate a new first-query pipeline or establish hypothetical savings.</p></section>
+<section><h2>One shared reference release</h2><p>Both complete forecast sets and both first-attempt outputs were sealed before the first global reference read.
+The original score opened the selected 24 positive document lists; the follow-up reused EXACTLY those same 24 references.
+It is never a second fresh holdout. Preserved raw per-invocation access flags describe each scorer process, not global exposure.</p>
+<p>The original main score, failed report-writing attempt and append-only continuation remain recorded. Only a str-to-Path call-site error was repaired;
+frozen scorer bodies, metrics, cases and forecasts were unchanged. Current code was restored and verified before later use.</p>
+<p><a href="joint_reference_timeline.json">Joint release/restore timeline</a> · <a href="independent_numeric_review.json">Independent arithmetic review: maximum difference 0</a> · <a href="test_verification.json">Tested CLI and unchanged scoring-function proof</a></p></section>
+<section><h2>How to use the delivered tool</h2><p>Run the supplied-question CLI in native mode for free PubMed search; Brev/model compute is unnecessary.
+Optional agent mode uses the existing qualified loopback Nano service with the same bounded tools. It distinguishes final model choices, native candidates already captured and successfully opened exact abstracts.</p>
+<p>Missing or empty source metadata does not establish absence of evidence. Discovered papers remain candidate context: Pharos/source reuse and scientific entailment are unassessed without a separate audit.</p>
+<p>The installed schema compiler was qualified before testing. Large query string bounds were removed only from native guidance;
+full controller length/shape/ID/budget validation remained. Selected skills are attributed procedural support, not trusted biological labels.</p></section>
+<section><h2>Limits and sources</h2><p>Public question/model/tool-development overlap is not independently auditable. Viewed examples were excluded, which does not prove unseen testing.
+Reference lists are incomplete positive judgments; unmatched papers are not automatically irrelevant or biologically false.
+Paired 2,000-draw question intervals are conditional/descriptive, not independent-study or whole-graph accuracy claims.</p>
+<p>Sources: <a href="https://doi.org/10.5281/zenodo.7655130">BioASQ11 author data (CC-BY-2.5)</a>,
+<a href="https://doi.org/10.1038/s41597-023-02068-4">BioASQ-QA paper</a>,
+<a href="https://github.com/genomoncology/biomcp/releases/tag/v0.9.3">BioMCP 0.9.3 (MIT)</a>,
+<a href="https://github.com/K-Dense-AI/scientific-agent-skills/tree/526ebce143bc326f44471554e33d66a19c840360">selected K-Dense procedures(MIT)</a>.
+<a href="NOTICE.md">Attribution/notices</a> · <a href="manifest.json">Exact file manifest</a> · <a href="report.json">Aggregate summary JSON</a></p></section><section><details><summary>Traceability</summary><p>Aggregate content seal: <code>39961646f49078c1d32fcba227460c8e482d8bd6b2742ec5a49c95fa3d220975</code>.</p>
+<p>Source abstracts, individual reference labels, model weights and credentials are excluded from this aggregate page.</p></details></section></html>

@@ -1,0 +1,20 @@
+{
+  "format": "biograph-steward.reviewer-hosted-browser-acceptance.v1",
+  "status": "passed",
+  "runtime_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+  "actual_hosted_fresh_signin_and_bare_root_checked": true,
+  "TLS_default_verification": true,
+  "Chrome_sandbox_disabled": false,
+  "real_source_not_invented_fixture": true,
+  "primary_KRAS_answer_and_source_verified": true,
+  "same_snapshot_canonical_TP53_companion_verified": true,
+  "display_limit_and_eligible_count_distinguished": true,
+  "applied_source_bound_298_exclusion_reason_verified": true,
+  "native_and_retained_export_scopes_distinguished": true,
+  "compact_source_proof_and_exact_expandable_values_verified": true,
+  "JavaScript_or_network_errors": 0,
+  "models_or_new_retrieval_or_review_writes_requested": false,
+  "independent_intended_user_study": false,
+  "operator_receipt_sha256": "5e66a1edd684d7e7e8193655a1b6ca066eafde4f11c690d58378b82dd4bc4fba",
+  "recording_was_not_running_during_QA": true
+}

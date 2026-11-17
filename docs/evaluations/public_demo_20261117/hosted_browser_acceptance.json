@@ -1,0 +1,105 @@
+{
+  "format": "biograph-steward.public-demo-hosted-browser-acceptance.v1",
+  "status": "direct_featured_workflow_passed_with_prior_navigation_transport_failure_preserved",
+  "passed": true,
+  "checked_at_UTC": "2026-11-17T02:55:19.368390+00:00",
+  "scope": "Actual public HTTPS featured permalink in one fresh isolated Chrome context, normal TLS and sandbox. Recorded source-agent workflow, source inspection, five tabs and390px mobile navigation. Not an independent usability study or arbitrary new-query evaluation.",
+  "primary_demo_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+  "application_runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "gateway_config_sha256": "19a9f9948328dab7e4d8b450759b52b164479fa5b88b0cd281080505ab009a83",
+  "gateway_image_config_sha256": "6686bc0c8a700785afa5c8bfae949badf9ec57a3ed6f4076085867e37df1fdc7",
+  "direct_featured_workflow_passed": true,
+  "normal_TLS_verification": true,
+  "Chrome_sandbox_enabled": true,
+  "fresh_isolated_context": true,
+  "token_entry_required": false,
+  "real_credentials_or_cookies_supplied": false,
+  "session_cookies_created": false,
+  "browser_new_model_calls": 0,
+  "new_source_retrievals": 0,
+  "graph_or_review_edits": 0,
+  "recorded_S01_model_calls": 3,
+  "operator_browser_check_assertions": 48,
+  "assertions_are_independent_users_or_cases": false,
+  "direct_check_HTTP_JS_or_transport_errors": 0,
+  "direct_check_elapsed_seconds": 128.325,
+  "features_checked": [
+    "Actual recorded KRAS question and bounded plan",
+    "Eight of fourteen recorded results and source graph",
+    "Inspected E002 STRING12.5 physical association score203",
+    "Citation-bound proposal-only review actions",
+    "Actual production HTTPS source-inspection POST",
+    "Five task tabs and existing measured assessments",
+    "Displayed graph JSON export with write/bulk controls hidden",
+    "390px mobile navigation",
+    "No token form, sign-out or session cookies"
+  ],
+  "prior_bare_root_attempt": {
+    "passed": false,
+    "error": "net::ERR_NETWORK_CHANGED",
+    "observed_after_automatic_featured_navigation": true,
+    "server_HTTP_failure_established": false,
+    "root_navigation_cause_resolved": false,
+    "original_failure_preserved": true,
+    "proof": {
+      "path": "runs/public_demo_20261117/browser_https/receipt.json",
+      "bytes": 2717,
+      "sha256": "4b9518ceb2a4b0ce948d68f5db491dd41d55d397a7303686b91487e8f2b10203"
+    }
+  },
+  "no_OS_proxy_TLS_or_browser_security_changes": true,
+  "no_additional_browser_retries_planned": true,
+  "owned_browser_closed": true,
+  "direct_proof": {
+    "path": "runs/public_demo_20261117/browser_https_direct/receipt.json",
+    "bytes": 8349,
+    "sha256": "8ae9a44f0e0d3daf49127de8fe2ee52735ecfd44d693a2f4b7067a92e839885e"
+  },
+  "frames": [
+    {
+      "path": "runs/public_demo_20261117/browser_https_direct/anonymous_start.png",
+      "bytes": 188120,
+      "sha256": "2ed76771b0c16cf0c949bcb65161b5a410ad719bcee1db574a686b1359874652"
+    },
+    {
+      "path": "runs/public_demo_20261117/browser_https_direct/anonymous_agent_graph.png",
+      "bytes": 35824,
+      "sha256": "0c24ff7907bcb233eca035b40bee7d9c12e9fbfda24ba9efdc5ae719381bf08f"
+    },
+    {
+      "path": "runs/public_demo_20261117/browser_https_direct/anonymous_E002_source.png",
+      "bytes": 130902,
+      "sha256": "183f88fbd39a4e5d72937d8ddf2fc4595fc29ec168b3aa9f801cc732904cd90e"
+    },
+    {
+      "path": "runs/public_demo_20261117/browser_https_direct/anonymous_proposals.png",
+      "bytes": 151653,
+      "sha256": "1356a4f11fb19a61b1d0bd4c60c2d63159f9e391a8f10190db343b96a4390862"
+    },
+    {
+      "path": "runs/public_demo_20261117/browser_https_direct/anonymous_source_guide.png",
+      "bytes": 272640,
+      "sha256": "3381bc92d0a966746318a81a43ef8bafef8292a50e2e39aed6c40a883e91c82a"
+    },
+    {
+      "path": "runs/public_demo_20261117/browser_https_direct/public_WhatChanged.png",
+      "bytes": 228236,
+      "sha256": "dbbdc09d0b099e2d8a0dca01e16139c8944f528d81ca408b59c108fb7383b29b"
+    },
+    {
+      "path": "runs/public_demo_20261117/browser_https_direct/public_export.png",
+      "bytes": 115527,
+      "sha256": "4263b971b0c9e8b45c144ce667a2a9e03aa2a9e860f33717e91d2b9c8771d988"
+    },
+    {
+      "path": "runs/public_demo_20261117/browser_https_direct/public_export_mobile.png",
+      "bytes": 66272,
+      "sha256": "fd1e2a7c14a840d7299d60a3d9274076c62aa47e76ba235ac613cfaafd7a5438"
+    },
+    {
+      "path": "runs/public_demo_20261117/browser_https_direct/public_recorded_agent_mobile.png",
+      "bytes": 72561,
+      "sha256": "742251253f0cdbd0a67ec99b518ce904c8a2d6d2daa357d9506c933028cc7ff0"
+    }
+  ]
+}

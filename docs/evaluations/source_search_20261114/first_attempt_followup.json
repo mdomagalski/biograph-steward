@@ -1,0 +1,54 @@
+{
+  "format": "biograph-steward.first-search-execution-diagnostic.v1",
+  "created_at": "2026-11-14T14:12:17.993244+00:00",
+  "rule": {
+    "selection": "FIRST ATTEMPTED executed search only, including empty/partial/unavailable. Never skip to a later search.",
+    "ranking": "Native candidate order, prefix at most10; no union, reranking or query selection.",
+    "no_search": "Empty retrieval, full24-question denominator.",
+    "readout": "Same mean question-level reference-PMID Recall@10; compare descriptively with that arm final output.",
+    "status": "Execution-failure-motivated diagnostic fixed before reference release; not original primary, independent test or replacement production arm.",
+    "literature": "https://aclanthology.org/2023.emnlp-main.322/",
+    "literature_scope": "Query rewriting is a separable retrieval role. This is not a reproduction of the paper trainable/RL method.",
+    "new_model_tool_or_reference_access": false
+  },
+  "metrics": {
+    "unskilled_agent": {
+      "fixed_questions": 24,
+      "scorable_reference_questions": 24,
+      "first_attempt_mean_reference_recall_at_10": 0.11458333333333333,
+      "final_output_mean_reference_recall_at_10": 0.0625,
+      "first_attempt_minus_final_mean_difference": 0.05208333333333333,
+      "first_attempt_statuses": {
+        "completed": 19,
+        "no_search": 3,
+        "completed_empty": 2
+      },
+      "questions_first_attempt_better_than_final": 2,
+      "questions_final_better_than_first_attempt": 0
+    },
+    "procedure_skill_agent": {
+      "fixed_questions": 24,
+      "scorable_reference_questions": 24,
+      "first_attempt_mean_reference_recall_at_10": 0.1840277777777778,
+      "final_output_mean_reference_recall_at_10": 0.0625,
+      "first_attempt_minus_final_mean_difference": 0.12152777777777779,
+      "first_attempt_statuses": {
+        "completed": 16,
+        "no_search": 4,
+        "completed_empty": 3,
+        "partial": 1
+      },
+      "questions_first_attempt_better_than_final": 4,
+      "questions_final_better_than_first_attempt": 0
+    }
+  },
+  "lineage": {
+    "main_report_file_sha256": "ada9bb5f7fbe6fd5860f5bffc557d7f849fc10716bab8e1e42fc67bdbb5b3061",
+    "derived_forecasts_file_sha256": "83b922cd5d1c2c1ba0f72a9320198da288b52c70ad4ea411b3fd521f6b23efca",
+    "diagnostic_policy_file_sha256": "2e482ec986561a6d2075f0f56e32d539c1d432098de1019a71293d3156fe3fb6"
+  },
+  "raw_questions_queries_reference_or_candidate_IDs_in_aggregate": false,
+  "new_reference_access": false,
+  "interpretation": "Error localization only. First-attempt reference recovery can be lost at later completion/ranking; these post-execution-motivated components are not new independently validated agents.",
+  "content_sha256": "ac2319131fb7c14a1d1f256e946e4233e1c31956feb6c83f5f5703c7fe9c1682"
+}

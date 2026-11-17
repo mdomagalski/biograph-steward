@@ -1,0 +1,33 @@
+BioGraph Steward walkthrough
+
+Narrated walkthrough using actual screenshots of the protected hosted application. Edited still states, not a continuous screen recording. Synthetic narration.
+
+00:00:00  Start with real research data
+Open Start here. Read the real KRAS example, then select Read the cited answer.
+
+BioGraph Steward helps a researcher check what supports a biological claim. We start with a saved research workspace built from Pharos, covering ninety-nine human protein targets. Choose the main real-data example. This walkthrough follows one question, its answer, and the evidence behind it.
+
+00:00:24  Read the answer
+In Question & graph, read the KRAS question. Scroll to Traceable summary, expand AKT1 and locate its E001 citation.
+
+The question asks which proteins have a recorded physical association with KRAS. The answer lists fourteen partners. The diagram shows one selected path. Open one result, AKT1. The text says what STRING reported and gives a source link. Candidate means the record still needs review. Physical association can include membership in the same protein complex. It does not establish direct binding.
+
+00:00:55  Inspect one source
+Select the E001 citation, then open its source explanation. Read the provider, meaning and limitations. Leave complete raw records collapsed.
+
+Follow the source link. Read who supplied the record, which release it came from, and what the relationship means. We check which protein record each source uses, including its full sequence. Unmatched identities stay unknown. This does not guarantee that an old assay used the identical protein construct or tissue context. STRING already contributes to Pharos, so a second database record is not automatically a second independent experiment.
+
+00:01:28  Read the measured comparison
+Open What changed. Show the bounded public-reference result and its denominator/limitations.
+
+What changed shows a measured comparison with published location labels. Among thirty-one matching proteins, Pharos recovered forty-one of fifty-one labels. Qualified native annotations recovered forty-four. A separate check against OpenCell imaging recovered thirty-one of forty labels instead of thirty, among twenty-three matching proteins. We had already used OpenCell during development. These are coverage gains on known positive labels. Shared sources and cell context limit the conclusion. They are not an accuracy percentage for every relationship in the graph.
+
+00:02:08  Understand review and pruning
+Open the supplied accepted-only KRAS example: zero accepted, fourteen inspectable. Return to Start here and select Review applied graph qualifications. In What changed, inspect 16,985 input records, 16,687 retained and 298 retired-GO exclusions. Select Inspect retained graph and decision export to see how the original graph and verdicts are preserved.
+
+The accepted view is empty because no local acceptance decision has been made. Fourteen partners remain available to inspect. Empty does not mean there is no evidence. Now open the separate TP53 qualification example. Its input had sixteen thousand nine hundred and eighty-five records. Sixteen thousand six hundred and eighty-seven remain, with two hundred and ninety-eight excluded because they use obsolete Gene Ontology identifiers. The original records and every decision remain available. Gene Ontology labels protein functions and locations. This rule checks the identifiers. It does not prove the biological relationships false.
+
+00:02:54  Share a traceable result
+Return to the real KRAS example. Its focused question download contains the answer, paths and evidence. Open Export for its complete candidate workspace and sources. The separately demonstrated retained TP53 workspace preserves the applied decision ledger and input baseline. A new decision package is not created by this saved-data reviewer site.
+
+Return to the KRAS example. The question's answer download contains this focused summary, its paths and cited evidence. Then open Export. The full workspace download keeps the complete saved graph and source material. A separate graph handoff records every decision and preserves the input baseline. The contribution is an answer a colleague can inspect and reproduce, with measured reference-coverage gains. We have not established whole-graph scientific accuracy or a consistent gain in graph prediction. An optional NVIDIA Nemotron agent can propose a bounded plan. The app checks the allowed tool calls before execution. This shared review replays saved data with the model off.

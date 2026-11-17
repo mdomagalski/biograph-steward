@@ -1,0 +1,2 @@
+# Optional XLSX transport only. Not an app dependency or an inference package.
+openpyxl==3.1.5

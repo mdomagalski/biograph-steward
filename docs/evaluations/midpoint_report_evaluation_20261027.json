@@ -1,0 +1,100 @@
+{
+  "format": "biograph-steward.midpoint-evaluation-report.v1",
+  "prepared_date": "2026-10-27",
+  "status": "evaluation_outcomes_revision_rendered_and_visually_verified",
+  "artifact": {
+    "path": "runs/midpoint_report_evaluation_20261027/BioGraph_Steward_Midpoint_Check_In.docx",
+    "sha256": "409a629d1d9c41300ed62633fa5b2717398262f07093715e31c8d8bf88f5122b",
+    "pages": 2
+  },
+  "organizer_format_preserved": true,
+  "previous_drafts_preserved": [
+    {
+      "path": "runs/midpoint_report_delivery_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "66ada23c3fd2cea0d679a35d308e37b1f23124fc8f29a0fb3f1d5de13e5f68e0",
+      "pages": 2
+    },
+    {
+      "path": "runs/midpoint_report_biological_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "246971ccdbd7d162fd2a856278738f572dda5f16f1a73cc8a75e87287c5975ab",
+      "pages": 2
+    },
+    {
+      "path": "runs/midpoint_report_capabilities_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "ce622a1babe4d363c7c3bcfbb62052d24aa44f4ca7bf83952805ed639d2813e5",
+      "pages": 2
+    },
+    {
+      "path": "runs/midpoint_report_revision_20261026/BioGraph_Steward_Midpoint_Check_In_Revised.docx",
+      "sha256": "872a98ddc75ec048595e2c30d023b8b0fa867266a04796ffa0af3fbebf1afb3c"
+    },
+    {
+      "path": "runs/midpoint_report_20261026/BioGraph_Steward_Midpoint_Check_In.docx",
+      "sha256": "8b93ce51f77973e3133af8b23b400d97942bbda1d813ea72c5f885cb806433c4"
+    }
+  ],
+  "narrative": {
+    "summary": "BioGraph Steward connects scoped questions to Pharos-based evidence graphs, cited answers and auditable exports. The core workflow now includes reproducible biological assessment; independent predictive benefit and user validation remain in progress.",
+    "accomplishments": [
+      "Built a guided Pharos/CIViC workbench with source inspection, review of proposed changes and exports preserving the full graph, original evidence and edge decisions.",
+      "Integrated IntAct/IMEx using the official JAMI reader and PSI-MI vocabulary. Development checks preserve identities, assay context and references through answers and exports. The reserved assessment identified a comparator limitation for structural identifiers.",
+      "Connected NVIDIA Nemotron through vLLM with explicit scope checks and plan review. Live guided assessment still found unreliable model task selection; verified deterministic construction remains the working path.",
+      "Completed reproducible PyKEEN R-GCN assessment against 1,751 experimentally tested protein pairs. Adding Reactome memberships gave a small mean average precision increase (0.7178 to 0.7196), with mixed seed effects.",
+      "Published qualified assay observations, including nondetections. MIT-licensed code passes clean local installation and real-data replay through cited answers and verified browser downloads. Assisted user feedback improved export guidance."
+    ],
+    "blockers": [
+      "Consistent predictive gain remains unproven. The assay panel was reused for development, Pharos postdates the assays, and source overlap remains uncertain.",
+      "The reserved source-fidelity run exposed a comparator error involving structural identifiers. Its correction passed a separate development check on saved records; the original run stays unscored. A fresh reference and independent user walkthrough remain next.",
+      "Clarification of the organizer baseline, scoring and submission format will guide final packaging. Brev compute and AWS credits are available; infrastructure access is not currently a blocker."
+    ],
+    "milestones": [
+      "Integrate the documented identifier comparison, qualify a fresh reference and complete study-level provenance checks; incorporate organizer scoring requirements when clarified.",
+      "Assess preservation of curated evidence under frozen rules and documented overlap exclusions; run an independent colleague walkthrough when available.",
+      "Publish the verified installation and real-data demonstration with source manifests and evaluation results; deploy on AWS if shared hosting is required."
+    ],
+    "assumptions": [
+      "Team name BioGraph Steward",
+      "Open Source track",
+      "Yellow Minor Risks status"
+    ]
+  },
+  "narrative_words": 313,
+  "evidence_references": {
+    "assessment_reference": {
+      "path": "/Users/42573/biograph-steward-pharos/docs/evaluations/reactome_context_comparison_20261026_summary.json",
+      "sha256": "98b7efdd6c4abe5bc9c147854ec64a6025eb17f459611d5a12923d8d595fb10c"
+    },
+    "delivery_reference": {
+      "path": "/Users/42573/biograph-steward-pharos/docs/evaluations/clean_install_real_demo_20261026_summary.json",
+      "sha256": "8df0b72cb5a16b5bc1aa61599759bd7791b41150b00633a44891ba21d446d772"
+    },
+    "intact_assessment_reference": {
+      "path": "/Users/42573/biograph-steward-pharos/docs/evaluations/intact_final_assessment_20261027_summary.json",
+      "sha256": "2c3752b8923e9e0109e34cbaab9349c65da0873b0a45f1dc011e7809d1482737"
+    },
+    "guided_assessment_reference": {
+      "path": "/Users/42573/biograph-steward-pharos/docs/evaluations/guided_construction_live_20261027_summary.json",
+      "sha256": "fbcbb758bbe87b3327446726fab1d8b8f0206ce8ac1e216a1a1610fb8c7626de"
+    }
+  },
+  "qa_receipt": {
+    "path": "runs/midpoint_report_evaluation_20261027/fidelity_qa.json",
+    "sha256": "4c5740348a27349d8082d6a24ff8d0732d007836d6a6141d1e9b6504fbc63e76"
+  },
+  "high_level_test_and_planner_counts_omitted": true,
+  "reserved_assessment_status": "stopped_unscored_all_four_studies_consumed",
+  "guided_planning_status": "unreliable_use_deterministic_construction",
+  "consistent_biological_improvement_claimed": false,
+  "independent_user_success_claimed": false,
+  "report_not_sent": true,
+  "component_development_evidence": [
+    {
+      "path": "runs/intact_identity_projection_development_20261027_attempt_02/development_contract.json",
+      "sha256": "87c03d2571b11d927eb104a67ed210036482adfc252a1c27516f725a732a14d5"
+    },
+    {
+      "path": "runs/intact_identity_projection_development_20261027_attempt_02/diagnostic/report.json",
+      "sha256": "f73597970eb7b42fad214d4700e1ecb44a26d193d145ea3db1abf85cf4a3565d"
+    }
+  ]
+}

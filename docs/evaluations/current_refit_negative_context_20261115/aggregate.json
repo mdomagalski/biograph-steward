@@ -1,0 +1,73 @@
+{
+  "NOT_native_row_scope": {
+    "evidence_counts": {
+      "IBA": 2,
+      "IDA": 11,
+      "IEP": 1,
+      "IGI": 1,
+      "IMP": 4,
+      "ISS": 3
+    },
+    "native_rows": 22,
+    "relation_counts": {
+      "involved_in": 22
+    },
+    "rows_with_annotation_extension": 0,
+    "rows_with_explicit_product_form": 0,
+    "rows_with_with_from": 6
+  },
+  "ancestry_or_historical_source_of_other_positive_targets_adjudicated": false,
+  "biological_contradiction_established": false,
+  "canonical_NOT_pairs_in_fixed_BP_axis": 124,
+  "canonicalization": "Unchanged native primary/alternative GO mapping; exact source rows preserved privately.",
+  "created_at": "2026-11-15T09:37:55.597292+00:00",
+  "current_opposite_polarity_pairs_with_same_NONEMPTY_extension_literal": 0,
+  "current_opposite_polarity_pairs_with_same_NONEMPTY_product_form_literal": 0,
+  "current_positive_native_row_scope": {
+    "evidence_counts": {
+      "IBA": 3,
+      "IDA": 8,
+      "IMP": 4,
+      "TAS": 6
+    },
+    "native_rows": 21,
+    "relation_counts": {
+      "involved_in": 21
+    },
+    "rows_with_annotation_extension": 0,
+    "rows_with_explicit_product_form": 0,
+    "rows_with_with_from": 3
+  },
+  "empty_form_or_extension_infers_scope_equivalence": false,
+  "fitting_proteins": 4040,
+  "flags_already_original_full_positive": 21,
+  "flags_also_current_admitted_direct_curated": 16,
+  "flags_also_current_canonical_direct_positive_any_evidence": 16,
+  "flags_also_current_canonical_direct_positive_curated_code": 16,
+  "flags_new_only_in_current_positive_union": 1,
+  "flags_without_current_admitted_direct_curated": 6,
+  "format": "biograph-steward.current-refit-NOT-source-context.v1",
+  "labels_removed_or_flipped": 0,
+  "limitations": [
+    "Native source records retain form, extension, relation, evidence and reference fields; grouping to a protein/term target loses their scope.",
+    "No interpretation that opposite-polarity canonical pairs are erroneous. GO permits conflicting findings and form-specific NOT statements.",
+    "No same-reference count or independent-study inference from multiple database identifiers.",
+    "Current canonical direct row presence does not establish historical source identity or resolve ancestor-only positives.",
+    "No NOT propagation, biological negative label, correction, model policy or comparison endpoint was introduced."
+  ],
+  "native_duplicate_rows_preserved": true,
+  "positive_target_overlap_flags": 22,
+  "private_rows_sha256": "4d20d18dcd7d3d53e4e568148e3e09286b7ccf14429f28084c29dacc543061b8",
+  "scope": "Source-only diagnostic of fitting data; no final reference, predictions, metrics, model selection or source changes.",
+  "source_pins": {
+    "GAF": "8db7f75ba9bb33f3778e1641bf4fde107f877e6a6af273b77eaf1ce60ad9e11f",
+    "configuration": "5f8968030c5df507c2deb423a9175dda873574dd849655700caa24c8e7ee1707",
+    "diagnostic_code": "09cff45eb72a2dba188db46b1fc7b72dd65de212d6e188229ace9dfb22c0c930",
+    "fit_context_manifest": "fffff6dc1be92be2ce99cab36c47aec4089903558159e88d747614a28276ad44",
+    "model_obo": "0c0062efbb1b199a6a54e62c0c48ff0038d39173aecc7edfab66a20090d5ec2d",
+    "native_reader": "d21dfb6abae206158944479e2584a455193c3c8a3b427f1993a1be75b34eaac8",
+    "official_parser": "Biopython1.88 Bio.UniProt.GOA.gafiterator",
+    "rich_adapter": "9c88a982b0f71fb78a5bcf1683770f63be14b40639be1f7bbea9d5e29f944596",
+    "target_manifest": "826addb8f14d7899e860ab31ff671a258d34538880ff3950ff68f3a02eea1da6"
+  }
+}

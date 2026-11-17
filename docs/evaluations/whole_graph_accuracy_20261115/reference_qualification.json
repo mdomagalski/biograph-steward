@@ -1,0 +1,45 @@
+{
+  "AI_assisted_reference_admission_is_not_independent_expert_adjudication": true,
+  "IntAct_negative_bulk": {
+    "absence_is_not_negative": true,
+    "base_accession_only_candidates": 0,
+    "bulk_SHA256": "3c3880139d256aad93a0d7518090fb8f4d554791edfb2df6836ab36d246fccee",
+    "exact_primary_or_alt_accession_pair_candidates": 0,
+    "human_human_explicit_negative_rows": 910,
+    "sampled_PPI_cases": 20,
+    "total_rows": 985
+  },
+  "admissible_independent_false_labels": 0,
+  "admissible_independent_true_labels": 0,
+  "all_frozen_dossiers_replayed_without_resealing": true,
+  "complete_source_packet_and_decisions_replayed": true,
+  "distinct_existing_reference_artifact_hashes_checked": 201,
+  "expert_extraction_curations": {
+    "admitted_independent_labels": 0,
+    "cases_with_partial_candidates": 4,
+    "curated_statement_payloads": 1800,
+    "curation_rows": 6022,
+    "partial_candidates": 6
+  },
+  "format": "biograph-steward.whole-workspace-reference-qualification-public.v1",
+  "graph_or_model_default_changed": false,
+  "original_probability_sample_cases": 180,
+  "pathway_GO": {
+    "GO_cases_with_current_pair_curation": 22,
+    "GO_cases_with_experimental_curation": 11,
+    "GO_cases_with_non_IEA_curation": 18,
+    "GO_cases_with_strict_five_field_curation": 10,
+    "GO_current_native_matching_rows": 49,
+    "PathwayCommons_same_lineage_exact_membership_cases": 13,
+    "Reactome_current_exact_membership_cases": 15,
+    "Reactome_pathway_records_with_external_expert_review": 16,
+    "Wiki_cases_with_exact_revision": 14,
+    "Wiki_cases_with_gene_level_context": 8,
+    "removed_GO_cases": 20
+  },
+  "primary_targets": 99,
+  "selected_project_identifiers_or_PMIDs_sent_externally": false,
+  "separate_removed_GO_cases": 20,
+  "source_and_curator_compatibility_is_not_independent_biological_truth": true,
+  "unresolved_reference_admission_cases": 200
+}

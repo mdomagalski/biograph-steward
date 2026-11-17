@@ -1,0 +1,230 @@
+{
+  "format": "biograph-steward.string-reference-independence-review.v1",
+  "date": "2026-10-27",
+  "status": "completed_bounded_review",
+  "current_string_12_5_study_independence_established": false,
+  "new_independent_confirmation_reference_qualified": false,
+  "documented_source_exposure": [
+    "HuRI in experimental channel",
+    "Complex Portal physical calibration"
+  ],
+  "per_pair_or_study_contribution_established": false,
+  "lambourne_or_inmc_study_inclusion_established": false,
+  "metadata_capture": {
+    "http_requests": 6,
+    "total_response_body_bytes": 642003,
+    "actual_schema_tables": [
+      "collections",
+      "fusion_evidence",
+      "item_pairs_sentences_physical_scores",
+      "item_pairs_sentences_regulatory_scores",
+      "items_publications",
+      "items_publications_physical",
+      "items_publications_regulatory",
+      "orthgroups_publications",
+      "orthgroups_sets",
+      "proteins_component_scores",
+      "publications",
+      "publications_items",
+      "sets",
+      "sets_items",
+      "sets_pubmedrefs",
+      "sets_scores"
+    ],
+    "collection_count": 12,
+    "archive": {
+      "archive_content_length": 57225579743,
+      "captured_bytes": 262144,
+      "captured_range": "bytes 0-262143/57225579743",
+      "decompression_limit_bytes": 2097152,
+      "extracted_metadata_prefix_bytes": 7988,
+      "gzip_prefix_is_intentionally_incomplete": true,
+      "prefix_sha256": "ea24b4352e48b7a4061153c4186159e8cb253c325d5f1cebe6da03bdd4a51be8",
+      "url": "https://stringdb-downloads.org/download/evidence_schema.v12.5.sql.gz",
+      "whole_archive_downloaded": false
+    },
+    "documented_vs_actual_schema": {
+      "actual_proteins_component_scores_columns": [
+        "protein_id_a",
+        "protein_id_b",
+        "component_name",
+        "component_score",
+        "component_link"
+      ],
+      "actual_sets_items_columns": [
+        "set_id",
+        "item_id",
+        "species_id",
+        "preferred_name",
+        "set_type",
+        "network_type"
+      ],
+      "actual_sets_scores_columns": [
+        "set_id",
+        "network_type",
+        "average_score",
+        "interaction_count"
+      ],
+      "finding": "The actual 12.5 dump supplies richer/version-specific fields and tables than the general help/database page; use the captured DDL rather than assuming older web examples are exhaustive."
+    },
+    "limits": [
+      "No HuRI/Lambourne/INMC-specific sets_pubmedrefs rows or per-pair evidence rows were retrieved in this metadata-only capture.",
+      "No absent-study inference can be made from this prefix, collection comments, API fields or bounded retrieval.",
+      "Experimental-set joins alone would not cover all text-mining, transferred-evidence, calibration or license-restricted provenance paths.",
+      "The manifest describes the evidence dump as excluding license-restricted data.",
+      "No counterfactual per-study-removed score can be reconstructed from aggregate channel scores alone."
+    ]
+  },
+  "archive_probe": {
+    "source_version": "12.0",
+    "http_requests": 4,
+    "query_accessions": [
+      "Q7RTX0",
+      "Q8TE23"
+    ],
+    "views": {
+      "functional": {
+        "columns": [
+          "stringId_A",
+          "stringId_B",
+          "preferredName_A",
+          "preferredName_B",
+          "ncbiTaxonId",
+          "score",
+          "nscore",
+          "fscore",
+          "pscore",
+          "ascore",
+          "escore",
+          "dscore",
+          "tscore"
+        ],
+        "rows": 1,
+        "score": 0.998
+      },
+      "physical": {
+        "columns": [
+          "stringId_A",
+          "stringId_B",
+          "preferredName_A",
+          "preferredName_B",
+          "ncbiTaxonId",
+          "score",
+          "nscore",
+          "fscore",
+          "pscore",
+          "ascore",
+          "escore",
+          "dscore",
+          "tscore"
+        ],
+        "rows": 1,
+        "score": 0.998
+      }
+    },
+    "cohort_capture": false,
+    "cohort_scored": false,
+    "meaning": "Official native archive API capability on one already consumed pair; equal scores are not a cohort result or independence certificate."
+  },
+  "reference_decisions": [
+    {
+      "name": "PPI-bias",
+      "methods_url": "https://github.com/JoelAAs/PPI-bias",
+      "release_url": "https://zenodo.org/records/22675356",
+      "code_license": "MIT",
+      "selected": false,
+      "reason": "IntAct reanalysis with inferred search-space/test and detection assumptions; not a newly independent experiment."
+    },
+    {
+      "name": "Flock",
+      "methods_url": "https://github.com/TernaryTx/flock",
+      "code_license": "MIT",
+      "selected": false,
+      "reason": "Structural/contact positives and geometry/literature negatives, with IntAct filtering; incompatible whole measured-Y2H endpoint and no STRING12.5 exclusion certificate."
+    },
+    {
+      "name": "BioGraphBench-PPI",
+      "primary_url": "https://pubmed.ncbi.nlm.nih.gov/42889397/",
+      "selected": false,
+      "license_assessment": "No reuse selected; not inferred from abstract.",
+      "reason": "STRING/BioGRID reconstruction with random/degree-matched/two-hop sampled nonedges; not independent measured experimental negatives."
+    }
+  ],
+  "next_control": {
+    "source": "Archived STRING12.0",
+    "status": "selected_capability_verified_not_executed",
+    "population": "Same consumed 3,222 nominations / 2,676 eligible Lambourne human Y2H-v1 pairs",
+    "reason": "Official fixed 2023 source predates panel selection from 2024 predictions.",
+    "source_history_url": "https://string-db.org/cgi/access",
+    "immutability_url": "https://string-db.org/help/scores/",
+    "assay_methods_url": "https://www.nature.com/articles/s41467-026-70942-x",
+    "api_contract_url": "https://version-12-0.string-db.org/help/api/",
+    "remaining_execution_gates": [
+      "Separate 13-column native adapter and capture tests",
+      "New implementation-bound protocol before whole-cohort access",
+      "Explicit separate native-network versus 12.5 typed-overlay boundary"
+    ],
+    "interpretation": "Temporal development sensitivity check; not an unseen reference, novel-pair test or Steward-specific comparison.",
+    "selected_after_consumed_12_5_result": true,
+    "secondary_policy": "Jointly numeric within STRING 12.0, with actual denominator; not required to equal the 12.5 subset.",
+    "evidence_metadata_overlap_proves_nonzero_score_contribution": false,
+    "version_or_threshold_sweep_selected": false
+  },
+  "new_assay_outcome_files_opened": 0,
+  "reserved_intact_study_bodies_opened": false,
+  "original_frozen_implementation_hashes_verified_unchanged": true,
+  "original_result_artifact_hashes_verified_unchanged": true,
+  "new_performance_scores": false,
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "paid_cloud_used": false,
+  "app_ui_modified": false,
+  "artifacts": {
+    "source_metadata_report": {
+      "path": "runs/string_independence_metadata_20261027_attempt_01/report.json",
+      "sha256": "f8b42b3ed0e5bd365a5bc55b399fa65d8e723aac636093a48ab293b0a1fd1029"
+    },
+    "archive_probe_report": {
+      "path": "runs/string_temporal_capability_20261027_attempt_01/report.json",
+      "sha256": "2d90a7640bb0c50047198c6a8634b72d2b7991cfed0f2d985d60c08dea6b44ed"
+    },
+    "original_comparison_summary": {
+      "path": "docs/evaluations/string_component_comparison_20261027_summary.json",
+      "sha256": "6b14ae808390d02db564588a8f9de76c45dc6af19d68ddf60b012940be988fd4"
+    }
+  },
+  "local_metadata_files": {
+    "access.html": "5f764c53961e55436edebc9e84ea34c19137b68d5a2480be6d055684edab09e6",
+    "access.html.receipt.json": "1afd6ecc3e5d65a787374fb86c3c978378c176ed50127da77add23d19f72394d",
+    "api.html": "505d9aa0229c159d69d87dc3c9099af9357f84a4aec7b282c136783729b2ee8e",
+    "api.html.receipt.json": "81f789e08ee5ad390ff5d70172391a5fd37106da133555fc43156e44990b908d",
+    "capture.py": "0b6c2b3fe88c54798b96f09a2c4ae8b282532603470a1f7a1a290e5c27b7737b",
+    "collections.json": "dba4990c41d0164ff755a41529b4c3d2f6c563f9c65d4d034220c4fe023f6798",
+    "collections_copy.sql": "bd2df1fe78258bf47bb5664ecce712735e778210cfa2203c396de23fe1a2afbb",
+    "database.html": "a21d7265da246c3a2377a7a1e8d8cfca6a0f1b8df7600e11ad1a22d0084c1d9a",
+    "database.html.receipt.json": "d2f5038e0e9f96455c59940973fc70cfab1b60bf9dd0b73a560a55d298edc71c",
+    "download_manifest.html": "bef34ceca9097f7ebf48c1c145387af9437a7792cce418523283f19d9c45a54d",
+    "download_manifest.html.receipt.json": "cf07d0a8973abd65e35150d718bfbe89e60cb715c8a22945b049299e213d618e",
+    "evidence_schema.v12.5.sql.gz.prefix": "ea24b4352e48b7a4061153c4186159e8cb253c325d5f1cebe6da03bdd4a51be8",
+    "evidence_schema.v12.5.sql.gz.prefix.receipt.json": "3b0040e61cd0ff4958bf697765abe2fb4daaae013853ef990d92c8bea50e531b",
+    "report.json": "f8b42b3ed0e5bd365a5bc55b399fa65d8e723aac636093a48ab293b0a1fd1029",
+    "schema_ddl.sql": "7bc15f7e3c36e6b7c35972f29a8cb107e93373d1111420269d3ecca789b5f9b4",
+    "scores.html": "66573d3167a8fa80d632d99f26ded31a2bfc289dce9e2c0ea6c2af805ebbae1b",
+    "scores.html.receipt.json": "efff81bd202519bfd213f3c9f376416b7f29ba1eca2feb1435d6249dc12ddaa2",
+    "verify.py": "c9543b47f4d563cfe70823732b798bdcef7d74cccd00893af58e9e0b5c5424bb"
+  },
+  "local_probe_files": {
+    "capture.py": "d50f60ad5e0670222b276e2a86b4f44c2f634fb31191b57cae75f11e2e4e0da7",
+    "functional.tsv": "b93ac1f25974af07d0f0084bfef39a45f0eae31611b1eeb546daf72f8b574618",
+    "mapping.tsv": "9848bec8fea56e17b12cd68aac1e4c6d145a050eec3e46f0b7f0bbccc43fe318",
+    "physical.tsv": "55a6c216b6e1afaf2d63d4fd2210ca551ceea9a3b2d4449af96e39daa30a4c4e",
+    "receipts.json": "f9c3e2cfc6aa445b09fb4d4317cd493d0e7cb45c2fa1e1e91075d31157eb259b",
+    "report.json": "2d90a7640bb0c50047198c6a8634b72d2b7991cfed0f2d985d60c08dea6b44ed",
+    "verify.py": "1bfe184851ac57c4ed1788b8f937cae1ead555c1f9cd5dc99f12a5cfd92835cc",
+    "version.tsv": "07414c5cf1ef6645e68854906bd27ea9b9277ad9df597ff0f5af38ef83cde481"
+  },
+  "verification_commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 runs/string_independence_metadata_20261027_attempt_01/verify.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 runs/string_temporal_capability_20261027_attempt_01/verify.py"
+  ]
+}

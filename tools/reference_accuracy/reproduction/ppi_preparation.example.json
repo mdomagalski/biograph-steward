@@ -1,0 +1,50 @@
+{
+  "format": "biograph-steward.public-ppi-reference-preparation.v1",
+  "source_profile": "SNOOPPI_HF45e4f022_IntAct251_202509",
+  "example_only": "Replace local paths and zero hashes/counts after freezing your protein frame. Source hashes are checked before parsing. Keep output outside input directories.",
+  "producer_source": {
+    "file": "tools/reference_accuracy/ppi_references.py",
+    "sha256": "2b0ca9a7a0f3e8fe1b7dd7a089fa697b7939bfb58951b87cd894c5fa112bc7dc"
+  },
+  "canonical_fasta": {
+    "file": "data/public_gold/human_canonical_2026_04.fasta",
+    "sha256": "0444b7cf4f4ddca5467aee7e2d86d45fcf440a9a879c791ecfc4cc186ac0b3d7",
+    "expected_records": 20414
+  },
+  "snooppi": {
+    "positive": {
+      "file": "data/public_gold/snooppi_positive.parquet",
+      "sha256": "5dbea543d4e425d25df99fa69650f1ba50c918f84a9a9d1b8bd7ce18cd7bbf7d",
+      "expected_rows": 33625
+    },
+    "negative": {
+      "file": "data/public_gold/snooppi_negative.parquet",
+      "sha256": "21694672c721c592b42af2b464c02c04cd16dce1027d8953b07f33f12f79f5bb",
+      "expected_rows": 5378
+    }
+  },
+  "frames": {
+    "your_frozen_scope": {
+      "file": "data/public_gold/protein_frames.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "key_path": [
+        "your_frozen_scope"
+      ],
+      "expected_proteins": 0
+    }
+  },
+  "manual_negative_sources": [
+    {
+      "file": "data/public_gold/manual_stringent.txt",
+      "sha256": "6391316c19abaf8a677ef65878891e9ae6fd9346dff53e2c0617cb34516f578c",
+      "expected_rows": 1991,
+      "status": "manual_expert_curated_filtered_against_IntAct_distinct_stratum"
+    },
+    {
+      "file": "data/public_gold/negatome1_manual_unfiltered.txt",
+      "sha256": "6516d8bd15ba6301781f7a5b5e226de4d0ca60b1fb88b439a8458069017d51fa",
+      "expected_rows": 1291,
+      "status": "unfiltered_manual_expert_curated_primary"
+    }
+  ]
+}

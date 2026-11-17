@@ -1,0 +1,173 @@
+{
+  "format": "biograph-steward.scientific-limit-resolution-summary.v1",
+  "created_at": "2026-11-12T22:52:02.738159+00:00",
+  "scope": "Exact current native GOA context and selected published GO quality rules for the 99-subject CRC workspace; not whole-graph biological-accuracy estimation.",
+  "baseline": {
+    "packet_id": "packet:14265d0e4990da19e1f2538be1f185cf68e378d00152fdb71ca3d8c4f9936a8e",
+    "graph_sha256": "f35f8e0bb66742a3b65d1887ecbc85ead33fd8c5ef9eb5e8015d28934f22d22e",
+    "source_graph_file_sha256": "09a829bcfbdf8c9c3451326d182d6b81f7448e74c4853bf3cb28e75f58e6b004"
+  },
+  "historical_projection": {
+    "original_go_edges": 4078,
+    "strict_single_candidates": 1021,
+    "strict_multiple_candidates": 127,
+    "unmatched": 2930,
+    "unmatched_same_subject_GO_other_projection_fields_differ": 1351,
+    "unmatched_no_exact_subject_GO_pair": 1579,
+    "unmatched_no_pair_obsolete_term": 298,
+    "unmatched_no_pair_active_term": 1281,
+    "historical_identity_established": false,
+    "strict_compatibility_broadened": false
+  },
+  "native_source": {
+    "advertised_release": "2026-08-05",
+    "native_ontology_version_date": "2026-07-26",
+    "exact_subjects": 99,
+    "preserved_annotations": 15888,
+    "NOT_annotations": 23,
+    "extension_annotations": 1236,
+    "gaf_sha256": "a0afba19dfb1f8fa996bc1bdcd61fd0c9bd4cf0d2bf2509d09ac86993c0e70a2",
+    "exact_source_inspector_implemented": true,
+    "BRAF_GO0004674_returned_records": 3,
+    "current_qualifiers_backfilled_into_historical_rows": false
+  },
+  "official_qc": {
+    "ontobio_version": "2.9.12",
+    "prefixcommons_version": "0.1.12",
+    "gaferencer_version": "0.5",
+    "ontology_sha256": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273",
+    "reasoning_ontology_sha256": "917606d7387d08ad7455c0d2f15dcfb1f5ec14f8b397affd030c11bc36677a4f",
+    "native_records_retained": 15888,
+    "relation_repairs": 9,
+    "extension_alternative_ID_normalizations": 49,
+    "literal_changed_records": 58,
+    "extension_normalization_details": [
+      {
+        "from": "GO:0043222",
+        "to": "GO:0008278",
+        "records": 46
+      },
+      {
+        "from": "GO:0030914",
+        "to": "GO:0000124",
+        "records": 3
+      }
+    ],
+    "non_NOT_taxon_checked": 15865,
+    "NOT_taxon_exempt": 23,
+    "taxon_violations": 0,
+    "retraction_matches": 0,
+    "retraction_table_date": "2026-06-10",
+    "published_sparse_keys": 324,
+    "satisfiable_additional_inference_keys": 314,
+    "non_taxon_extension_unsatisfiable_keys": 10,
+    "affected_extension_annotation_rows": 13,
+    "actual_rule_lookup_calls": 16095,
+    "all_native_non_NOT_released_parser_keys_verified": true,
+    "passing_sparse_entries_fabricated": false,
+    "full_GO_pipeline_conformance_claimed": false,
+    "normalized_gaf_sha256": "0be9ec1f3db2edb1dc20c0ff3cf5adbd4c383439fcb7099fee65aab11edfb237",
+    "last_complete_mode_API_fix_changes_scientific_outputs": false
+  },
+  "extension_triage": {
+    "dossier_keys": 10,
+    "dossier_native_rows": 13,
+    "rule58_context": "Noctua external-import diagnostic on copies only",
+    "rule58_warning_keys": 8,
+    "rule58_warning_rows": 8,
+    "rule58_PASS_unsatisfiable_keys": 2,
+    "rule58_PASS_unsatisfiable_rows": 5,
+    "primary_paper_reviewed_keys": 1,
+    "primary_context_discrepancy_rows": 4,
+    "publication": "PMID:20458337",
+    "doi": "10.1038/icb.2010.64",
+    "pinned_context_id": "CL:0000639",
+    "pinned_context_label": "basophil cell of pars distalis of adenohypophysis",
+    "reported_preparation": "EBV-transformed human RN B-cell line (HLA-DR15)",
+    "review_kind": "AI-assisted primary-source comparison; not independent expert adjudication",
+    "context_quarantine_status": "PROPOSED_NOT_ACCEPTED_OR_APPLIED",
+    "base_protein_exosome_associations_rejected": false,
+    "replacement_cell_id_selected": false,
+    "all_four_protein_identifications_re_adjudicated": false
+  },
+  "implementation_sha256": {
+    "biograph_steward/go_qualification.py": "d21dfb6abae206158944479e2584a455193c3c8a3b427f1993a1be75b34eaac8",
+    "biograph_steward/go_context_inspection.py": "263650445453215267473f16151aa227b5242b8d07d18b2c161bebfac5f924bb",
+    "tools/go_qualification/run_official_qc.py": "50caf289ce76335cd8c808acc9fb569facfb75022ec2622e389ff2187b48a88c",
+    "tools/go_qualification/ReleasedParserCoverage.java": "9334c3b1b5f71a8196e1230bb301d0bb1255f2d7b6fe73ff81298ad5c4aa5c32"
+  },
+  "artifacts": {
+    "native_context": {
+      "path": "runs/crc_go_context_qualification_v3_20261112/go_context_qualification.json",
+      "file_sha256": "70a0ea06efcce3ccf38edfbd6bcb64995ff0583e264181560aa5a0711bef595c",
+      "content_sha256": "a0de7e395a5e7cae276a18816f4b51b4a4b0ff71a75777a61cc75fb2dc0a0a92"
+    },
+    "current_source_inspection": {
+      "path": "runs/braf_current_go_inspection_20261112/go_context_inspection.json",
+      "file_sha256": "54a14468ecd6ef5b9f039d881f9d0f15818270fd665a47a9be0c0baf0d1fc4f3",
+      "content_sha256": "7873ba54c699c96085515677b64b7ef86ce97a305c26c15d94e8a820e8a4578e"
+    },
+    "official_native_qc": {
+      "path": "runs/go_pipeline_reuse_20261112/native_qc_sparse_v3/report.json",
+      "file_sha256": "4caaaac501ff83e9a685e680944939212109103677df4986923e49676e1c7535",
+      "content_sha256": "200c0a2d968b2415f69deb36db3da5c227af80c2b60074e30e4701a3e37ee83f"
+    },
+    "actual_reasoner_execution": {
+      "path": "runs/go_taxon_reasoning_20261112/brev/outputs/native/execution.json",
+      "file_sha256": "b4b985e0528dbe8a22de0d7e3aefa062fd8c32d99963657932bf9ca9d1e19b96",
+      "content_sha256": "4a105fba61119797f32783cb128bc4479f17ffc4ed7742296f010d6fd6d946ea"
+    },
+    "actual_parser_coverage_execution": {
+      "path": "runs/go_taxon_reasoning_20261112/brev/outputs/coverage_native/execution.json",
+      "file_sha256": "315c153d2d8ee882e31138c4ddc1b510cc9daa22ae70a9d8d15b11d3cc19a2a4",
+      "content_sha256": "68979a3ec5cb94ba6fdd9237d34897c3b1b9829e5d69784cf86bfc9ae891bffe"
+    },
+    "independent_final_qc_verification": {
+      "path": "runs/go_remaining_limits_20261112/independent_sparse_review/final_verification_v3.json",
+      "file_sha256": "d7db9148fe96f9dd0fddceb7bf5ebc406000581ae5a50747604724234d9a4895",
+      "content_sha256": "25ada9def6fd63e5d25791c200fb715c8860faaf44055638f81a6acdae89e22d"
+    },
+    "independent_source_changes_review": {
+      "path": "runs/go_remaining_limits_20261112/independent_inspection_review/base_qc_v3_qc_review.json",
+      "file_sha256": "c7012ee2f71549e558bcc2838e7a3f0a95a59087cffe1e5a33051b556d34d7ae",
+      "content_sha256": "aab10906ae945406c3313e12434071aeff41b574226647ccbf6c18703948fe1b"
+    },
+    "extension_context_dossier": {
+      "path": "runs/go_extension_triage_20261112/review.json",
+      "file_sha256": "727250d942e223621d0f08cb2de67677414bce8c8759d7db92137540aaa7be14",
+      "content_sha256": "e8c7e8e839c0f19529d9e0e7a06f80619bf9cc41dc309b6b08890f0c3e44ad3a"
+    },
+    "primary_source_context_receipt": {
+      "path": "runs/go_extension_triage_20261112/primary_source_receipt.json",
+      "file_sha256": "1de76c6da762db3355716e47eb8ce9719a6903536bd2242632b9fdc50ec82483",
+      "content_sha256": "c1f1a52c9af0238d76e9c08c2dcf8b9a85fa7164bc2e1870caf6e65884d5355b"
+    },
+    "independent_validation_methods_review": {
+      "path": "runs/independent_validation_limits_20261112/review.json",
+      "file_sha256": "eccf04b66f8b61bcac935a84927ae3a919f7e2911407afca38240bc458e65247",
+      "content_sha256": "e42e91f448808b70f494ad5e34f85395c760e736bc5bff54c760223b55fde0f3"
+    }
+  },
+  "validation": {
+    "focused_core_tests": "passed",
+    "actual_Biopython_integration_tests": "passed",
+    "actual_official_package_controls": "passed",
+    "independent_implementation_and_output_recount": "passed",
+    "verification_meaning": "Software/source consistency verification, not independent biological truth."
+  },
+  "remaining_limits": [
+    "Missing historical source keys/release/qualifiers cannot be restored by an approximate current join.",
+    "Qualified independent correctness judgments are still needed for a declared scientific accuracy endpoint.",
+    "Probability sampling can reduce review effort; a complete whole-graph gold file is not required.",
+    "The selected ontology/source checks do not prove experimental correctness or automatic biological pruning gain.",
+    "The full graph/source delivery remains subject to provider redistribution terms."
+  ],
+  "source_graph_changed": false,
+  "human_review_states_changed": false,
+  "new_hosted_model_inference_calls": 0,
+  "GPU_inference_used": false,
+  "Brev_CPU_work_complete": true,
+  "whole_graph_biological_accuracy_established": false,
+  "independent_scientific_pruning_gain_established": false,
+  "content_sha256": "0003a99dfdd96b46cf7006bbc30591a3c95b27b94d4eeb9b61a2de2e31b62de3"
+}

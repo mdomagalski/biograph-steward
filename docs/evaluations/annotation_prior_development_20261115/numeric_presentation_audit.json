@@ -1,0 +1,104 @@
+{
+  "all_18_cells_and_every_scoped_original_control_retained": true,
+  "counts": {
+    "cells": 18,
+    "intervals_below_zero_retained": 11,
+    "negative_observed_contrasts_retained": 51,
+    "new_method_cells": 36,
+    "original_bootstrap_scalar_summaries_preserved": 294,
+    "original_method_cells_preserved": 294,
+    "rendered_contrast_rows_checked": 312,
+    "rendered_method_rows_checked": 330,
+    "reported_exact_2000_draw_gate_cells": 18,
+    "saved_candidate_contrasts": 312
+  },
+  "created_at_utc": "2026-11-15T07:54:59.942469+00:00",
+  "declared_fixed_new_methods": 2,
+  "declared_original_methods": 17,
+  "declared_total_methods": 19,
+  "development_and_no_independent_confirmation_visible": true,
+  "final_wording_delta_verified": "HTML and Markdown differ from retained prior rendering only by 'original independent study' becoming 'original frozen study'; summary bytes remain identical.",
+  "format": "biograph-steward.annotation-prior-aggregate-audit.v1",
+  "material_issues": [],
+  "negative_outcomes_visible": true,
+  "no_raw_cases_draw_vectors_prediction_paths_or_private_paths_in_public_artifacts": true,
+  "original_public_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "original_public_summary_unchanged": true,
+  "original_scalar_points_counts_and_bootstrap_summaries_preserved": true,
+  "original_success_gates_models_and_presentation_unchanged_by_this_audit": true,
+  "paired_draw_gate_interpretation": "All 18 aggregate gates report exact native prior points and all 2,000 paired draw peaks. Native prior point equality was independently checked from aggregate points; draw vectors were deliberately not reopened. Gate source code and invented native fixtures were independently reviewed before execution.",
+  "pk_frames": {
+    "fixed_T0": {
+      "biological_process": {
+        "raw_bootstrap_rows": 319,
+        "residual_positive_proteins": 319
+      },
+      "cellular_component": {
+        "raw_bootstrap_rows": 1230,
+        "residual_positive_proteins": 1230
+      },
+      "molecular_function": {
+        "raw_bootstrap_rows": 228,
+        "residual_positive_proteins": 228
+      }
+    },
+    "native": {
+      "biological_process": {
+        "raw_bootstrap_rows": 1954,
+        "residual_positive_proteins": 322
+      },
+      "cellular_component": {
+        "raw_bootstrap_rows": 1296,
+        "residual_positive_proteins": 1230
+      },
+      "molecular_function": {
+        "raw_bootstrap_rows": 324,
+        "residual_positive_proteins": 229
+      }
+    }
+  },
+  "pk_interval_statuses": {
+    "fixed_T0": {
+      "biological_process": {
+        "localplus_T0_curated": "crosses_zero",
+        "native_T0_nonexperimental": "above_zero",
+        "validation_selected_context": "below_zero"
+      },
+      "cellular_component": {
+        "localplus_T0_curated": "above_zero",
+        "native_T0_nonexperimental": "below_zero",
+        "validation_selected_context": "above_zero"
+      },
+      "molecular_function": {
+        "localplus_T0_curated": "above_zero",
+        "native_T0_nonexperimental": "crosses_zero",
+        "validation_selected_context": "crosses_zero"
+      }
+    },
+    "native": {
+      "biological_process": {
+        "localplus_T0_curated": "below_zero",
+        "native_T0_nonexperimental": "above_zero",
+        "validation_selected_context": "below_zero"
+      },
+      "cellular_component": {
+        "localplus_T0_curated": "above_zero",
+        "native_T0_nonexperimental": "below_zero",
+        "validation_selected_context": "above_zero"
+      },
+      "molecular_function": {
+        "localplus_T0_curated": "above_zero",
+        "native_T0_nonexperimental": "crosses_zero",
+        "validation_selected_context": "crosses_zero"
+      }
+    }
+  },
+  "publication_manifest_filename": "publication_manifest.json",
+  "review_scope": "Independent aggregate consistency and HTML/Markdown table audit; no reference cases, forecast matrices, native count arrays or sampling vectors opened. Scores and intervals were not recomputed.",
+  "source_aggregate_sha256": "76189617f4285a9b7f8ff253280642849ca1a117d80901b893c260e420601d9d",
+  "source_publication_manifest_sha256": "fc3b632988e93703b93755f0d2d55bb5edbbf7b76de193e4db13d635cc525d7a",
+  "source_report_html_sha256": "195fefa1692c456f66f6ba712d9655309f1b51578ea5a66c0b6031106bda3dab",
+  "source_report_md_sha256": "588b5b560cb58bc5c1f9567ce43e6178f4d941ca3c3d094960cb973ef899a554",
+  "source_summary_sha256": "a72b4c75282edbb6acf9b7a832a3ff4fdef8655ff5d9bf5bebc89c01cbb39ec7",
+  "status": "passed"
+}

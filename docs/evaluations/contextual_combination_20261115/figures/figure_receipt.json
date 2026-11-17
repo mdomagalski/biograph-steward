@@ -1,0 +1,23 @@
+{
+  "format": "biograph-steward.contextual-figure.v1",
+  "source_report_file": "runs/contextual_gain_20261115/publication_v1/summary.json",
+  "source_report_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "implementation_sha256": "23e00817f16b78abe9173c424f04a5080e5933ae7ab983b3877fc3bc25b54750",
+  "python": "3.12.14",
+  "matplotlib": "3.10.6",
+  "backend": "Agg",
+  "primary_forest_panels": 2,
+  "displayed_noncontext_controls_per_view": 13,
+  "source_update_contrasts_per_view": 3,
+  "new_statistics_or_model_selection": false,
+  "raw_reference_or_forecast_rows_read": false,
+  "files": {
+    "contextual_pk_bpo_forest.png": "d56bd0233b3739f973525ada0b6c199de93f3bb31898dd2dcf687c12e513fb05",
+    "contextual_pk_bpo_forest.svg": "ff54816749874f79e00cd1dadd66594b9bbdf2e733ec3085e9292629b1dea24a",
+    "contextual_pk_bpo_forest.pdf": "a35fed7dcf0288eeff7ce17472e57159c17c44f1217dea108711f852c3dc1092",
+    "source_update_pk_bpo_forest.png": "37c9082e087c826209abdae22c5286e04f34301dd78763ee3d9ff04ccde8647f",
+    "source_update_pk_bpo_forest.svg": "4b3e49c8b82baa90226c8af86d29adedfd4312e6948fdc00331b4d2246216666",
+    "source_update_pk_bpo_forest.pdf": "c21ec143254a262a9c3d5f17f514b072a822f1c095a09c71ba224fcbada5223c",
+    "figure_data.json": "82b21f2f789cd038a02d074aaddd1c1e0f0150e7fe33777092a734b36238f2f4"
+  }
+}

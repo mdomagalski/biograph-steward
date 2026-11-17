@@ -1,0 +1,61 @@
+{
+  "format": "biograph-steward.published-ppi-reproduction-sources.v1",
+  "source_profile": "SNOOPPI_HF45e4f022_IntAct251_202509",
+  "purpose": "Fetch complete public source artifacts, pin their bytes, then run ppi_references. No gene list or selected study query is needed.",
+  "published_method": "https://doi.org/10.1093/bioinformatics/btag736",
+  "SNOOPPI_complete_labeled_splits": [
+    {
+      "split": "positive",
+      "url": "https://huggingface.co/datasets/ChatterjeeLab/SNOOPPI/resolve/45e4f02204a135eeb26158e189bb253d0e677679/data/positive-00000-of-00001.parquet?download=true",
+      "bytes": 64709871,
+      "sha256": "5dbea543d4e425d25df99fa69650f1ba50c918f84a9a9d1b8bd7ce18cd7bbf7d"
+    },
+    {
+      "split": "negative",
+      "url": "https://huggingface.co/datasets/ChatterjeeLab/SNOOPPI/resolve/45e4f02204a135eeb26158e189bb253d0e677679/data/negative-00000-of-00001.parquet?download=true",
+      "bytes": 11899042,
+      "sha256": "21694672c721c592b42af2b464c02c04cd16dce1027d8953b07f33f12f79f5bb"
+    }
+  ],
+  "unknown_split_required": false,
+  "canonical_human_FASTA": {
+    "url_at_capture": "https://rest.uniprot.org/uniprotkb/stream?query=%28proteome%3AUP000005640%29+AND+%28organism_id%3A9606%29+AND+%28reviewed%3Atrue%29&format=fasta&includeIsoform=false",
+    "release": "2026_04",
+    "release_date": "04-November-2026",
+    "bytes": 13665976,
+    "sha256": "0444b7cf4f4ddca5467aee7e2d86d45fcf440a9a879c791ecfc4cc186ac0b3d7",
+    "records": 20414,
+    "current_endpoint_is_version_mutable": true,
+    "reproduction_rule": "Retain the pinned release artifact or recover that exact official release; refuse a changed current FASTA. Do not silently substitute a later release."
+  },
+  "Negatome_manual_sources": {
+    "archive_url": "https://zenodo.org/api/records/22116351/files/snooppi_zenodo.zip/content",
+    "author_record": "https://doi.org/10.5281/zenodo.22116351",
+    "archive_license_observed": "CC-BY-4.0 for the author archive; this does not establish rights to redistribute all upstream contents.",
+    "full_archive_required": false,
+    "established_member_reader": "remotezip==0.12.3; uses standard zipfile CRC checks and HTTP Range. It was used for capture, not imported by preparation.",
+    "members": [
+      {
+        "member": "snooppi/interactome/data_files/raw/negatome2/manual_stringent.txt",
+        "bytes": 113757,
+        "sha256": "6391316c19abaf8a677ef65878891e9ae6fd9346dff53e2c0617cb34516f578c",
+        "CRC32": 836914893
+      },
+      {
+        "member": "snooppi/interactome/data_files/raw/negatome1/manual.txt",
+        "bytes": 84711,
+        "sha256": "6516d8bd15ba6301781f7a5b5e226de4d0ca60b1fb88b439a8458069017d51fa",
+        "CRC32": 4284120650
+      }
+    ]
+  },
+  "scope_cautions": [
+    "Native author labels are retained. Do not reconstruct a new curation algorithm from the paper.",
+    "Exact canonical physical labels and manual protein-pair assay labels are separate profiles.",
+    "Non-interaction is assay/state-dependent. It does not make a general functional annotation false.",
+    "No absent database record or unknown source row is negative gold.",
+    "Raw reference data and upstream author code are not included in this repository increment."
+  ],
+  "preparation_entrypoint": "python -m tools.reference_accuracy.ppi_references",
+  "source_configuration_schema_example": "ppi_preparation.example.json"
+}

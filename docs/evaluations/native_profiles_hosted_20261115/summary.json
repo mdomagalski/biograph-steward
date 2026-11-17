@@ -1,0 +1,156 @@
+{
+  "format": "biograph-steward.native-profiles-hosted-delivery-summary.v1",
+  "created_at": "2026-11-15T20:29:56.370270+00:00",
+  "status": "HOSTED_NATIVE_EVIDENCE_SAVED_REVIEW_DELIVERY_PASSED",
+  "runtime_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+  "previous_runtime_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+  "image_id": "sha256:1384a64f2e445c42847505b2fa24ee9501f357cee65e1b41fc6140e28a99cd53",
+  "actual_restart_authenticated_read_and_full_Neptune_parity_passed": true,
+  "existing_default_graph_reviews_sources_environment_function_index_unchanged": true,
+  "new_AWS_resources_or_permissions_created": false,
+  "models_or_fresh_retrieval_requested": false,
+  "saved_data_only_server_policy": true,
+  "live_source_ranking_denied_before_retrieval": true,
+  "unauthenticated_workspace_access_denied": true,
+  "old_default_Neptune_graph_not_replaced": true,
+  "new_workspace": {
+    "id": "native_evidence_workspace_20261115",
+    "primary_targets": 99,
+    "nodes": 9724,
+    "evidence_edges": 19310,
+    "assertions": 16430,
+    "graph_content_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+    "original_Pharos_records_preserved": 15671,
+    "native_GOA_rows": 3309,
+    "native_GOA_protein_location_concepts": 429,
+    "targets_with_native_GOA": 94,
+    "native_STRING_physical_rows": 330,
+    "physical_pairs_already_represented": 243,
+    "physical_pairs_absent_from_captured_Pharos": 87,
+    "exact_alias_and_full_sequence_admitted_targets": 77,
+    "sequence_mismatch_targets_unresolved": 21,
+    "missing_direct_alias_targets_unresolved": 1,
+    "additions_are_candidates": true,
+    "source_profile_replaces_qualified_retained_graph": false
+  },
+  "assessment_id": "scientific_assessment_public_reference_20261115_v3",
+  "assessment_content_sha256": "845d992a33b40d117380dd68ae1bdb939f575969aae4b06d64931d1b1f7d2d30",
+  "saved_questions": {
+    "candidate": {
+      "id": "native_physical_KRAS_question_v3_20261115",
+      "returned_proteins": 14,
+      "answer_sha256": "5d32db49ca6db7718ef37d3ee6394d3c444b08ddca2fd840bf12965888362e56"
+    },
+    "accepted": {
+      "id": "native_physical_KRAS_accepted_v3_20261115",
+      "returned_proteins": 0,
+      "inspectable_proteins": 14,
+      "answer_sha256": "288c015dd17349d08b248beb5872fd3cdadc8b98215e4e7db1391526fb68fe44"
+    }
+  },
+  "reviewer_urls": {
+    "candidate": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask",
+    "accepted": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_accepted_v3_20261115&view=ask",
+    "compare": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&view=compare"
+  },
+  "receipt_files": {
+    "cache_activation.json": {
+      "bytes": 1214,
+      "sha256": "5b9a30a21e453adaf1c24585a20d0366c11fa38781f08c5b60a90e1d485a9884"
+    },
+    "cache_api_before_restart.json": {
+      "bytes": 1784,
+      "sha256": "029b8c7b48021338a7387d439fb690e8852f33e11a1248edffa46ae6a4e07a9c"
+    },
+    "cache_api_after_restart.json": {
+      "bytes": 1832,
+      "sha256": "8d004751b43d6e3947487505b38d6f73ff4d684b808e73163eaca83efe715788"
+    }
+  },
+  "browser_visual_QA": {
+    "status": "PASSED_PHYSICAL_SOURCE_COMPARE_AND_GO_ACCEPTED_VIEWS_IN_TWO_COMPLETED_PHASES",
+    "browser": "Installed Chrome with normal browser sandbox and TLS verification",
+    "in_app_browser_used": false,
+    "backend_runtime": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "desktop_width": 1440,
+    "mobile_width": 390,
+    "physical_candidate_answer_proteins": 14,
+    "physical_accepted_answer_proteins": 0,
+    "physical_inspectable_proteins_in_accepted_view": 14,
+    "native_GO_target_menu": 94,
+    "native_GO_candidates_remain_candidates": true,
+    "native_GO_accepted_concepts": 0,
+    "full_source_passport_success_seconds_observed": 12.73,
+    "controlled_latency_benchmark_claimed": false,
+    "reference_denominators_and_source_qualifications_visible": true,
+    "credentials_logged_or_login_images_saved": false,
+    "model_or_fresh_retrieval_or_graph_review_changes_requested": false,
+    "earlier_failed_attempts_preserved": true,
+    "independent_human_usability_study": false,
+    "consolidated_receipt": "browser_acceptance.json",
+    "consolidated_receipt_sha256": "747b493afe07f1880e661e86abe4f68521fdb915244c9f0dbd43f18e3465e7f6"
+  },
+  "scoped_restore_and_Gold_export": {
+    "status": "SUCCESS_SCOPED_BACKUP_ISOLATED_RESTORE_AND_GOLD_REPLAY",
+    "receipt_file": "scoped_recovery.json",
+    "receipt_sha256": "6f60a3d5a60680afacc971a192abfb5db34a137d9c48c18fa5e6d86e8ad3ecb7",
+    "source_files": 235,
+    "archive_bytes": 103615305,
+    "archive_sha256": "cf5e6b27f8497b5bf68a0a2c2b76e205c280f0e76a8f61c1ffec38d2a8b74e2f",
+    "isolated_graph_and_both_saved_answers_exact": true,
+    "actual_Gold_export_and_verify_passed": true,
+    "live_sources_configuration_container_unchanged": true,
+    "full_VM_or_Neptune_restore_claimed": false,
+    "private_S3_copy_status": "Explicitly approved and completed; all three stored SHA256 checksums verified.",
+    "S3_copy_receipt": "approved_S3_recovery_copy.json"
+  },
+  "scientific_scope": "Added candidate source context and bounded positive-reference recovery; not independent whole-graph correctness, direct-binding confirmation or universal biological pruning.",
+  "data_redistribution": "Protected saved source packets; mixed-source public redistribution is not cleared. Aggregate receipts contain no raw reference cases or credentials.",
+  "resources": {
+    "AWS_app_gateway_and_private_Neptune": "retain for saved-data team review",
+    "Brev_model_GPU_needed": false
+  },
+  "runtime_cache_followup": {
+    "source_commit": "47a2e5aebeabe555c35bfb9e9e46343213752c69",
+    "state": "Accepted after real restart, authenticated source/API checks and full Neptune parity",
+    "candidate_image": "sha256:1384a64f2e445c42847505b2fa24ee9501f357cee65e1b41fc6140e28a99cd53",
+    "graph_questions_sources_unchanged_in_candidate": true,
+    "cold_semantic_validation_preserved": true,
+    "new_review_or_label_changes": false,
+    "qualification": "../saved_native_cache_20261115/qualification.json",
+    "core_acceptance": "../software_release_cached_review_20261115_summary.json",
+    "actual_activation_receipt": "cache_activation.json",
+    "source_data_written": false
+  },
+  "feature_introduction_runtime": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+  "feature_introduction_previous_runtime": "f6c527a84b68ac0155df4b2c19548c8b88736540",
+  "feature_introduction_receipt_files": {
+    "activation.json": {
+      "sha256": "2091d6703ddf17cb4b42404e8b0c26e2a51da38254ddf0223e1a2f88c5256acd",
+      "bytes": 1167
+    },
+    "api_before_restart.json": {
+      "sha256": "c7e717aa9f5fa0c4c8d789242ab3ce32edb1b8668806f961dd62d2c726599d78",
+      "bytes": 1784
+    },
+    "api_after_restart.json": {
+      "sha256": "cc80b1fd66b8d20b028d39845c08e5f5af76a915c84bf3f0ab64a825d77fc677",
+      "bytes": 1832
+    }
+  },
+  "updated_at": "2026-11-15T21:50:59.683801+00:00",
+  "gateway_sync": {
+    "receipt_file": "gateway_route_sync.json",
+    "receipt_sha256": "97c2ca2332d160da2106ab47c91845da82ea4bedd345a55313d70f0ad77212a9",
+    "stack_image_update_complete": true,
+    "same_endpoint_app_origin_token_network_and_ALB_preserved": true,
+    "only_two_existing_saved_data_read_routes_added": [
+      "/api/native-go-question",
+      "/api/protein-context"
+    ],
+    "new_image_manifest_digest": "sha256:1e960d9ab42b51669281e5ef9555d45061bde5ef75193088aeca171415ba431a",
+    "authenticated_native_GO_queries_work": true,
+    "unregistered_protein_context_remains_explicitly_unavailable": true,
+    "write_model_unknown_routes_still_denied": true
+  }
+}

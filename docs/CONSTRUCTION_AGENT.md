@@ -6,6 +6,13 @@ question planner could query a saved graph but could not select a new constructi
 request. This adapter closes that workflow gap without adding a model framework,
 identity resolver, evidence classifier or autonomous tool loop.
 
+The [October 27 guided live assessment](evaluations/GUIDED_CONSTRUCTION_ASSESSMENT_20261027.md)
+tested the current JSON v3 planner and explicit-selection guard. All eight
+requests completed; none of the four supported tasks succeeded. The guard blocked
+one incomplete proposal but did not improve model interpretation. The real-cohort
+request abstained, so no agent-built graph is claimed. Keep this path experimental;
+the deterministic constructor remains the working product path.
+
 ## Established capabilities reused
 
 The deployed runtime is NVIDIA `Llama-3.1-Nemotron-Nano-8B-v1`, revision
@@ -195,9 +202,9 @@ Local V2 checks passed for contract exclusions, explicit-selection mismatch,
 profile/relation compatibility, exact trace/input binding and preservation of
 prior interfaces. All twelve historical V1 traces still verify. The unchanged
 development cases and new requests were [frozen before the live comparison](evaluations/construction_planner_tool_v2_20261026_preparation.json).
-No `exact_selection` was supplied in that comparison: the new agreement guard
-has local injected-response coverage, not a measured live contribution. The
-subsequent guided UI/API integration likewise has no live performance score.
+No `exact_selection` was supplied in that historical comparison. At that checkpoint,
+the agreement guard and guided UI/API had only local injected-response coverage.
+The separate October 27 guided assessment above now measures the current guard.
 
 The experimental module exposes `validate_scope(scope)`,
 `NemotronConstructionPlannerV2(client=None).request(scope)` for an inference-free

@@ -1,0 +1,172 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.400
+Edited app screenshots
+Synthetic narration
+
+00:00:01.500 --> 00:00:06.155
+BioGraph Steward connects a protein question to an inspectable evidence
+graph.
+
+00:00:06.155 --> 00:00:10.205
+Open saved work, or create a scoped Pharos workspace locally.
+
+00:00:10.205 --> 00:00:17.905
+Ask a supported question, follow its graph and citations, inspect sources,
+then save a review as a new run or export.
+
+00:00:17.905 --> 00:00:20.805
+We begin with the Added source context workspace.
+
+00:00:20.805 --> 00:00:23.655
+The shared site replays saved agent work.
+
+00:00:23.655 --> 00:00:27.612
+New live agent questions need a model; form-based readers do not.
+
+00:00:28.850 --> 00:00:31.019
+Pharos supplies the backbone.
+
+00:00:31.019 --> 00:00:37.769
+Native Gene Ontology location records and sequence-checked STRING
+associations add traceable context.
+
+00:00:37.769 --> 00:00:45.769
+For KRAS and CDC42BPB, the source passport shows an association absent from
+captured Pharos.
+
+00:00:45.769 --> 00:00:51.293
+Its provider, original record, identity checks and candidate status remain
+visible.
+
+00:00:52.530 --> 00:00:57.420
+A published location reference covers 31 of the 99 targets.
+
+00:00:57.420 --> 00:01:02.995
+Both source views use this same subset, with 51 protein-location labels.
+
+00:01:02.995 --> 00:01:08.914
+The other 68 targets may still have app annotations; they have no matched
+entry in this reference.
+
+00:01:08.914 --> 00:01:15.690
+Native Gene Ontology recovers 44 labels, versus 41 for captured Pharos.
+
+00:01:15.690 --> 00:01:21.990
+Some GO location annotations and the reference reuse Human Protein Atlas
+observations.
+
+00:01:21.990 --> 00:01:26.615
+OpenCell supplies a separate, previously used research sensitivity check.
+
+00:01:27.890 --> 00:01:33.016
+Nemotron selects a supported source tool, such as the STRING association
+reader.
+
+00:01:33.016 --> 00:01:39.891
+It matches the protein to the loaded cohort, checks the attached sources,
+and validates the query arguments.
+
+00:01:39.891 --> 00:01:44.866
+The agent inspects selected citations and proposes review actions.
+
+00:01:44.866 --> 00:01:50.397
+This recorded investigation shows 8 of 14 matching proteins under its saved
+limit.
+
+00:01:51.650 --> 00:01:55.305
+Open the manual reader for all 14 returned partners.
+
+00:01:55.305 --> 00:01:58.155
+Graph view focuses an individual result.
+
+00:01:58.155 --> 00:02:00.680
+Show all results restores the overview.
+
+00:02:00.680 --> 00:02:04.005
+Type a start entity and choose a connected destination.
+
+00:02:04.005 --> 00:02:11.580
+Try KRAS to CDC42BPB, TP53 to nucleus, or BRAF to a pathway.
+
+00:02:11.580 --> 00:02:14.541
+Results and evaluation explains the comparisons.
+
+00:02:15.810 --> 00:02:22.484
+For the demonstration, download the editable KRAS copy, extract it and run
+its Python launcher.
+
+00:02:22.484 --> 00:02:26.384
+It includes the application, graph and preserved sources.
+
+00:02:26.384 --> 00:02:31.464
+Choose a claim, enter a reviewer, decision and reason, then save a new run.
+
+00:02:31.464 --> 00:02:33.389
+The original is preserved.
+
+00:02:33.389 --> 00:02:35.483
+The shared website stays read-only.
+
+00:02:36.730 --> 00:02:40.430
+A separate historical study tests protein function prediction.
+
+00:02:40.430 --> 00:02:45.430
+LocalPlus is a published method that transfers known functions from
+connected proteins.
+
+00:02:45.430 --> 00:02:49.630
+A learned model combines network, sequence and annotation context.
+
+00:02:49.630 --> 00:02:52.655
+Fmax summarizes the precision-recall balance.
+
+00:02:52.655 --> 00:02:56.105
+Higher is better; this is not percentage accuracy.
+
+00:02:56.105 --> 00:03:05.405
+In the primary evaluation of 1,954 proteins, it rises from 0.055 to 0.073.
+
+00:03:05.405 --> 00:03:11.180
+The sensitivity view rises from 0.172 to 0.210.
+
+00:03:11.180 --> 00:03:15.830
+Paired intervals support both gains over retained LocalPlus within this
+study.
+
+00:03:15.830 --> 00:03:20.255
+Extra gain beyond refreshed annotations remains uncertain.
+
+00:03:21.170 --> 00:03:27.539
+The second saved example, Qualified Pharos workspace, demonstrates applied
+graph decisions.
+
+00:03:27.539 --> 00:03:36.889
+It excludes 298 records with obsolete Gene Ontology identifiers and retains
+16,687.
+
+00:03:36.889 --> 00:03:43.442
+Every decision preserves its reason and original input, keeping the result
+inspectable and recoverable.
+
+00:03:44.690 --> 00:03:49.463
+These are demonstrations of one workflow, not separate applications.
+
+00:03:49.463 --> 00:03:55.138
+Source integration and applied decisions are illustrated by the two saved
+workspaces.
+
+00:03:55.138 --> 00:04:03.954
+Location benchmarks and the historical prediction study assess the approach;
+users do not need benchmark data to explore their own questions.
+
+00:04:05.210 --> 00:04:10.833
+Open the shared application without signing in, then follow a question to
+its sources.
+
+00:04:10.833 --> 00:04:17.933
+The final handoff includes the report, demonstration, slides, and one
+indexed app and graph package.
+
+00:04:17.933 --> 00:04:20.741
+Download the editable example to continue locally.

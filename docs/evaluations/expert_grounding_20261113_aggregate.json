@@ -1,0 +1,534 @@
+{
+  "format": "biograph-steward.expert-grounding-aggregate.v1",
+  "created_at": "2026-11-13T13:38:57.118253+00:00",
+  "scope": "Expert-curator-relative human-gene grounding-error triage in a published stratified mechanistic extraction corpus. Not whole-Pharos precision, protein-form validation, independent experimental biology or a biological prediction gain. The grounder merges gene/protein names; its training-paper overlap is unestablished. A candidate conflict is a review proposal, not a validated replacement or prune.",
+  "reference": {
+    "DOI": "10.15252/msb.202211325",
+    "Zenodo": 7559353,
+    "data_license": "CC-BY-NC-SA-4.0",
+    "expert_labels_assigned_by_project_AI": false
+  },
+  "split": "test",
+  "primary_frame_cases": 1045,
+  "admitted_endpoint_cases": 678,
+  "outside_endpoint_cases": 367,
+  "metrics_by_arm": {
+    "lexical": {
+      "n_cases": 678,
+      "gold_counts": {
+        "grounding_error": 80,
+        "correctly_grounded": 598
+      },
+      "status_counts": {
+        "candidate_conflict": 56,
+        "no_conflict": 519,
+        "unresolved": 103,
+        "model_error": 0
+      },
+      "resolved_cases": 575,
+      "abstention_cases": 103,
+      "confusion_resolved": {
+        "TP": 31,
+        "FP": 25,
+        "FN": 31,
+        "TN": 488
+      },
+      "abstentions_by_gold": {
+        "grounding_error": {
+          "unresolved": 18,
+          "model_error": 0
+        },
+        "correctly_grounded": {
+          "unresolved": 85,
+          "model_error": 0
+        }
+      },
+      "metric_numerators": {
+        "precision": 31,
+        "error_recall": 31,
+        "false_conflict_rate": 25,
+        "coverage": 575,
+        "resolved_accuracy": 519
+      },
+      "metric_denominators": {
+        "precision": 56,
+        "error_recall": 80,
+        "false_conflict_rate": 598,
+        "coverage": 678,
+        "resolved_accuracy": 575
+      },
+      "precision": 0.5535714285714286,
+      "error_recall": 0.3875,
+      "false_conflict_rate": 0.04180602006688963,
+      "coverage": 0.8480825958702065,
+      "resolved_accuracy": 0.9026086956521739
+    },
+    "publication": {
+      "n_cases": 678,
+      "gold_counts": {
+        "grounding_error": 80,
+        "correctly_grounded": 598
+      },
+      "status_counts": {
+        "candidate_conflict": 44,
+        "no_conflict": 531,
+        "unresolved": 103,
+        "model_error": 0
+      },
+      "resolved_cases": 575,
+      "abstention_cases": 103,
+      "confusion_resolved": {
+        "TP": 26,
+        "FP": 18,
+        "FN": 36,
+        "TN": 495
+      },
+      "abstentions_by_gold": {
+        "grounding_error": {
+          "unresolved": 18,
+          "model_error": 0
+        },
+        "correctly_grounded": {
+          "unresolved": 85,
+          "model_error": 0
+        }
+      },
+      "metric_numerators": {
+        "precision": 26,
+        "error_recall": 26,
+        "false_conflict_rate": 18,
+        "coverage": 575,
+        "resolved_accuracy": 521
+      },
+      "metric_denominators": {
+        "precision": 44,
+        "error_recall": 80,
+        "false_conflict_rate": 598,
+        "coverage": 678,
+        "resolved_accuracy": 575
+      },
+      "precision": 0.5909090909090909,
+      "error_recall": 0.325,
+      "false_conflict_rate": 0.030100334448160536,
+      "coverage": 0.8480825958702065,
+      "resolved_accuracy": 0.9060869565217391
+    },
+    "sentence": {
+      "n_cases": 678,
+      "gold_counts": {
+        "grounding_error": 80,
+        "correctly_grounded": 598
+      },
+      "status_counts": {
+        "candidate_conflict": 44,
+        "no_conflict": 531,
+        "unresolved": 103,
+        "model_error": 0
+      },
+      "resolved_cases": 575,
+      "abstention_cases": 103,
+      "confusion_resolved": {
+        "TP": 25,
+        "FP": 19,
+        "FN": 37,
+        "TN": 494
+      },
+      "abstentions_by_gold": {
+        "grounding_error": {
+          "unresolved": 18,
+          "model_error": 0
+        },
+        "correctly_grounded": {
+          "unresolved": 85,
+          "model_error": 0
+        }
+      },
+      "metric_numerators": {
+        "precision": 25,
+        "error_recall": 25,
+        "false_conflict_rate": 19,
+        "coverage": 575,
+        "resolved_accuracy": 519
+      },
+      "metric_denominators": {
+        "precision": 44,
+        "error_recall": 80,
+        "false_conflict_rate": 598,
+        "coverage": 678,
+        "resolved_accuracy": 575
+      },
+      "precision": 0.5681818181818182,
+      "error_recall": 0.3125,
+      "false_conflict_rate": 0.03177257525083612,
+      "coverage": 0.8480825958702065,
+      "resolved_accuracy": 0.9026086956521739
+    }
+  },
+  "common_resolved_secondary": {
+    "scope": "all_arms_resolved_intersection.secondary.v1",
+    "primary": false,
+    "n_cases": 575,
+    "not_a_replacement_for_full_denominator": true,
+    "metrics_by_arm": {
+      "lexical": {
+        "n_cases": 575,
+        "gold_counts": {
+          "grounding_error": 62,
+          "correctly_grounded": 513
+        },
+        "status_counts": {
+          "candidate_conflict": 56,
+          "no_conflict": 519,
+          "unresolved": 0,
+          "model_error": 0
+        },
+        "resolved_cases": 575,
+        "abstention_cases": 0,
+        "confusion_resolved": {
+          "TP": 31,
+          "FP": 25,
+          "FN": 31,
+          "TN": 488
+        },
+        "abstentions_by_gold": {
+          "grounding_error": {
+            "unresolved": 0,
+            "model_error": 0
+          },
+          "correctly_grounded": {
+            "unresolved": 0,
+            "model_error": 0
+          }
+        },
+        "metric_numerators": {
+          "precision": 31,
+          "error_recall": 31,
+          "false_conflict_rate": 25,
+          "coverage": 575,
+          "resolved_accuracy": 519
+        },
+        "metric_denominators": {
+          "precision": 56,
+          "error_recall": 62,
+          "false_conflict_rate": 513,
+          "coverage": 575,
+          "resolved_accuracy": 575
+        },
+        "precision": 0.5535714285714286,
+        "error_recall": 0.5,
+        "false_conflict_rate": 0.04873294346978557,
+        "coverage": 1.0,
+        "resolved_accuracy": 0.9026086956521739
+      },
+      "publication": {
+        "n_cases": 575,
+        "gold_counts": {
+          "grounding_error": 62,
+          "correctly_grounded": 513
+        },
+        "status_counts": {
+          "candidate_conflict": 44,
+          "no_conflict": 531,
+          "unresolved": 0,
+          "model_error": 0
+        },
+        "resolved_cases": 575,
+        "abstention_cases": 0,
+        "confusion_resolved": {
+          "TP": 26,
+          "FP": 18,
+          "FN": 36,
+          "TN": 495
+        },
+        "abstentions_by_gold": {
+          "grounding_error": {
+            "unresolved": 0,
+            "model_error": 0
+          },
+          "correctly_grounded": {
+            "unresolved": 0,
+            "model_error": 0
+          }
+        },
+        "metric_numerators": {
+          "precision": 26,
+          "error_recall": 26,
+          "false_conflict_rate": 18,
+          "coverage": 575,
+          "resolved_accuracy": 521
+        },
+        "metric_denominators": {
+          "precision": 44,
+          "error_recall": 62,
+          "false_conflict_rate": 513,
+          "coverage": 575,
+          "resolved_accuracy": 575
+        },
+        "precision": 0.5909090909090909,
+        "error_recall": 0.41935483870967744,
+        "false_conflict_rate": 0.03508771929824561,
+        "coverage": 1.0,
+        "resolved_accuracy": 0.9060869565217391
+      },
+      "sentence": {
+        "n_cases": 575,
+        "gold_counts": {
+          "grounding_error": 62,
+          "correctly_grounded": 513
+        },
+        "status_counts": {
+          "candidate_conflict": 44,
+          "no_conflict": 531,
+          "unresolved": 0,
+          "model_error": 0
+        },
+        "resolved_cases": 575,
+        "abstention_cases": 0,
+        "confusion_resolved": {
+          "TP": 25,
+          "FP": 19,
+          "FN": 37,
+          "TN": 494
+        },
+        "abstentions_by_gold": {
+          "grounding_error": {
+            "unresolved": 0,
+            "model_error": 0
+          },
+          "correctly_grounded": {
+            "unresolved": 0,
+            "model_error": 0
+          }
+        },
+        "metric_numerators": {
+          "precision": 25,
+          "error_recall": 25,
+          "false_conflict_rate": 19,
+          "coverage": 575,
+          "resolved_accuracy": 519
+        },
+        "metric_denominators": {
+          "precision": 44,
+          "error_recall": 62,
+          "false_conflict_rate": 513,
+          "coverage": 575,
+          "resolved_accuracy": 575
+        },
+        "precision": 0.5681818181818182,
+        "error_recall": 0.4032258064516129,
+        "false_conflict_rate": 0.037037037037037035,
+        "coverage": 1.0,
+        "resolved_accuracy": 0.9026086956521739
+      }
+    }
+  },
+  "paired_comparisons": [
+    {
+      "left_arm": "lexical",
+      "right_arm": "publication",
+      "all_selected_case_count": 678,
+      "status_transitions": {
+        "candidate_conflict": {
+          "candidate_conflict": 44,
+          "no_conflict": 12,
+          "unresolved": 0,
+          "model_error": 0
+        },
+        "no_conflict": {
+          "candidate_conflict": 0,
+          "no_conflict": 519,
+          "unresolved": 0,
+          "model_error": 0
+        },
+        "unresolved": {
+          "candidate_conflict": 0,
+          "no_conflict": 0,
+          "unresolved": 103,
+          "model_error": 0
+        },
+        "model_error": {
+          "candidate_conflict": 0,
+          "no_conflict": 0,
+          "unresolved": 0,
+          "model_error": 0
+        }
+      },
+      "correctness_transitions": {
+        "correct": {
+          "correct": 514,
+          "error": 5,
+          "abstention": 0
+        },
+        "error": {
+          "correct": 7,
+          "error": 49,
+          "abstention": 0
+        },
+        "abstention": {
+          "correct": 0,
+          "error": 0,
+          "abstention": 103
+        }
+      },
+      "change_direction": "right_minus_left",
+      "confusion_count_changes": {
+        "TP": -5,
+        "FP": -7,
+        "FN": 5,
+        "TN": 7
+      },
+      "resolved_case_change": 0,
+      "abstention_case_change": 0,
+      "metric_changes": {
+        "precision": 0.037337662337662336,
+        "error_recall": -0.0625,
+        "false_conflict_rate": -0.011705685618729096,
+        "coverage": 0.0,
+        "resolved_accuracy": 0.003478260869565153
+      }
+    },
+    {
+      "left_arm": "lexical",
+      "right_arm": "sentence",
+      "all_selected_case_count": 678,
+      "status_transitions": {
+        "candidate_conflict": {
+          "candidate_conflict": 43,
+          "no_conflict": 13,
+          "unresolved": 0,
+          "model_error": 0
+        },
+        "no_conflict": {
+          "candidate_conflict": 1,
+          "no_conflict": 518,
+          "unresolved": 0,
+          "model_error": 0
+        },
+        "unresolved": {
+          "candidate_conflict": 0,
+          "no_conflict": 0,
+          "unresolved": 103,
+          "model_error": 0
+        },
+        "model_error": {
+          "candidate_conflict": 0,
+          "no_conflict": 0,
+          "unresolved": 0,
+          "model_error": 0
+        }
+      },
+      "correctness_transitions": {
+        "correct": {
+          "correct": 512,
+          "error": 7,
+          "abstention": 0
+        },
+        "error": {
+          "correct": 7,
+          "error": 49,
+          "abstention": 0
+        },
+        "abstention": {
+          "correct": 0,
+          "error": 0,
+          "abstention": 103
+        }
+      },
+      "change_direction": "right_minus_left",
+      "confusion_count_changes": {
+        "TP": -6,
+        "FP": -6,
+        "FN": 6,
+        "TN": 6
+      },
+      "resolved_case_change": 0,
+      "abstention_case_change": 0,
+      "metric_changes": {
+        "precision": 0.01461038961038963,
+        "error_recall": -0.07500000000000001,
+        "false_conflict_rate": -0.010033444816053512,
+        "coverage": 0.0,
+        "resolved_accuracy": 0.0
+      }
+    },
+    {
+      "left_arm": "publication",
+      "right_arm": "sentence",
+      "all_selected_case_count": 678,
+      "status_transitions": {
+        "candidate_conflict": {
+          "candidate_conflict": 43,
+          "no_conflict": 1,
+          "unresolved": 0,
+          "model_error": 0
+        },
+        "no_conflict": {
+          "candidate_conflict": 1,
+          "no_conflict": 530,
+          "unresolved": 0,
+          "model_error": 0
+        },
+        "unresolved": {
+          "candidate_conflict": 0,
+          "no_conflict": 0,
+          "unresolved": 103,
+          "model_error": 0
+        },
+        "model_error": {
+          "candidate_conflict": 0,
+          "no_conflict": 0,
+          "unresolved": 0,
+          "model_error": 0
+        }
+      },
+      "correctness_transitions": {
+        "correct": {
+          "correct": 519,
+          "error": 2,
+          "abstention": 0
+        },
+        "error": {
+          "correct": 0,
+          "error": 54,
+          "abstention": 0
+        },
+        "abstention": {
+          "correct": 0,
+          "error": 0,
+          "abstention": 103
+        }
+      },
+      "change_direction": "right_minus_left",
+      "confusion_count_changes": {
+        "TP": -1,
+        "FP": 1,
+        "FN": 1,
+        "TN": -1
+      },
+      "resolved_case_change": 0,
+      "abstention_case_change": 0,
+      "metric_changes": {
+        "precision": -0.022727272727272707,
+        "error_recall": -0.012500000000000011,
+        "false_conflict_rate": 0.0016722408026755842,
+        "coverage": 0.0,
+        "resolved_accuracy": -0.003478260869565153
+      }
+    }
+  ],
+  "source_report_file_sha256": "b5b6a4d949ea1d19b30108cb774f3db59448e059dd659fb97619820d15d73181",
+  "source_report_content_sha256": "6c2ca75b6b95f591d115654443f4753d9f87685398c9f00fd072656eb478e2fb",
+  "evaluation_freeze_content_sha256": "acb70606b94b90bbde8a2828e835678244a5c7e8ddac5b9533ed45b3a42c0c0a",
+  "evaluator_implementation_sha256": "f500b2bc5d2d908cac9d8ecfed11a1ab9f08e3dd53ed06a1e4389cbf41845b3d",
+  "scoring_helper_sha256": "321d09a169952efa883391519f3b65a33c71d6a77962257cb3167632b787e6ee",
+  "aggregate_producer_implementation_sha256": "a216cc82629a44d8cf289ce8357f073e85ecbae07b7452e263814c43f7469e38",
+  "raw_reference_rows_or_case_ids_included": false,
+  "native_curation_tags_included": false,
+  "native_grounder_training_paper_independence_established": false,
+  "automatic_corrections_or_prunes_performed": false,
+  "new_gold_labels_created": false,
+  "underlying_biological_truth_measured": false,
+  "whole_graph_accuracy_estimated": false,
+  "source_graph_or_original_reference_changed": false,
+  "content_sha256": "fdf2844afec9a854628a5aa1b7fce12c44d1ffc809f4a0b100da53bb6f9fcc4a"
+}

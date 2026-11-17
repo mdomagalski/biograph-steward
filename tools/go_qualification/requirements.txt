@@ -1,0 +1,4 @@
+# Optional native GO quality-control runtime; tested on Python3.12.
+# Keep separate from the dependency-free application core.
+ontobio==2.9.12
+prefixcommons==0.1.12

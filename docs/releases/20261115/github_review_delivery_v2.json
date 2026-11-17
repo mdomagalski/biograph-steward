@@ -1,0 +1,113 @@
+{
+  "all_remote_assets": [
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx",
+      "digest": "sha256:7aa583b6f7dd4a5880a5244e1c7180ecf885b2fa1d7f70b97b6ee88dafff5bd6",
+      "id": 750045950,
+      "name": "BioGraph_Steward_Challenge_Presentation_20261115_v3.pptx",
+      "size": 297032
+    },
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
+      "digest": "sha256:e3a96cacedc65c4907feba280156f3bafa47f64a92ea899461aff05403d4a456",
+      "id": 750302296,
+      "name": "BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
+      "size": 298030
+    },
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/biograph_steward_contextual_assessment_20261115.zip",
+      "digest": "sha256:db6f04932a3ebc3cfc492b875313cbf4518e0153cef5a5abab9b79f058e093d5",
+      "id": 750045921,
+      "name": "biograph_steward_contextual_assessment_20261115.zip",
+      "size": 573822
+    },
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/biograph_steward_contextual_assessment_20261115_v2.zip",
+      "digest": "sha256:107c6dbab8fe84d1affe8dce0162fb930db03db0df01d6f6e2526cae3288b975",
+      "id": 750302266,
+      "name": "biograph_steward_contextual_assessment_20261115_v2.zip",
+      "size": 655716
+    },
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/biograph_steward_core_software.zip",
+      "digest": "sha256:aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94",
+      "id": 750045880,
+      "name": "biograph_steward_core_software.zip",
+      "size": 661594
+    },
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/SHA256SUMS.txt",
+      "digest": "sha256:98ffb2acee8ba7dfcf4616c112c0956d7bc1649209a61d824e8a4403d79c5023",
+      "id": 750045973,
+      "name": "SHA256SUMS.txt",
+      "size": 342
+    },
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/SHA256SUMS_CURRENT_20261115.txt",
+      "digest": "sha256:dea672f7a0ac2a513c2942c67431f62bf8eb836ca59b64aa9cc80669a77853e1",
+      "id": 750302325,
+      "name": "SHA256SUMS_CURRENT_20261115.txt",
+      "size": 345
+    }
+  ],
+  "artifact_source_revision": "70a73556e583f0033efc4537388044fff6538257",
+  "branch": "codex/contextual-gain-delivery",
+  "complete": true,
+  "created_at": "2026-11-15T08:09:39.239145+00:00",
+  "credentials_logged_or_persisted": false,
+  "current_assets": [
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/biograph_steward_core_software.zip",
+      "digest": "sha256:aa00f7fc2c8cebc24e63ab0b0f0659bba8de74793a0a37055c0a4d818be12c94",
+      "id": 750045880,
+      "name": "biograph_steward_core_software.zip",
+      "size": 661594
+    },
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/biograph_steward_contextual_assessment_20261115_v2.zip",
+      "digest": "sha256:107c6dbab8fe84d1affe8dce0162fb930db03db0df01d6f6e2526cae3288b975",
+      "id": 750302266,
+      "name": "biograph_steward_contextual_assessment_20261115_v2.zip",
+      "size": 655716
+    },
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
+      "digest": "sha256:e3a96cacedc65c4907feba280156f3bafa47f64a92ea899461aff05403d4a456",
+      "id": 750302296,
+      "name": "BioGraph_Steward_Challenge_Presentation_20261115_v4.pptx",
+      "size": 298030
+    },
+    {
+      "browser_download_url": "https://github.com/mdomagalski/biograph-steward/releases/download/untagged-28e4edec341d2cb39dab/SHA256SUMS_CURRENT_20261115.txt",
+      "digest": "sha256:dea672f7a0ac2a513c2942c67431f62bf8eb836ca59b64aa9cc80669a77853e1",
+      "id": 750302325,
+      "name": "SHA256SUMS_CURRENT_20261115.txt",
+      "size": 345
+    }
+  ],
+  "earlier_assets_preserved_and_reverified": 4,
+  "existing_assets_removed": false,
+  "format": "biograph-steward.private-draft-review-refresh.v2",
+  "main_modified": false,
+  "main_revision_after": "586ec35d33e9429dde91057c4130542988a7ca02",
+  "main_revision_before": "586ec35d33e9429dde91057c4130542988a7ca02",
+  "private": true,
+  "pull_request": {
+    "draft": true,
+    "html_url": "https://github.com/mdomagalski/biograph-steward/pull/1",
+    "number": 1,
+    "state": "open"
+  },
+  "raw_cases_source_archives_predictions_weights_credentials_or_mixed_graph_uploaded": false,
+  "release": {
+    "draft": true,
+    "html_url": "https://github.com/mdomagalski/biograph-steward/releases/tag/untagged-28e4edec341d2cb39dab",
+    "id": 445853290,
+    "prerelease": true,
+    "tag_name": "untagged-28e4edec341d2cb39dab",
+    "target_commitish": "70a73556e583f0033efc4537388044fff6538257"
+  },
+  "release_published": false,
+  "repository": "mdomagalski/biograph-steward",
+  "repository_visibility_modified": false
+}

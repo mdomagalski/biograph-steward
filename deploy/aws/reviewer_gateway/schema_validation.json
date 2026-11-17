@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-11-13T19:30:29.110567+00:00",
+  "region": "us-east-2",
+  "read_only": true,
+  "resources_created": false,
+  "checks": {
+    "regional_express_schema": {
+      "passed": true,
+      "type_name": "AWS::ECS::ExpressGatewayService",
+      "properties": [
+        "ActiveConfigurations",
+        "Cluster",
+        "Cpu",
+        "CreatedAt",
+        "ECSManagedResourceArns",
+        "Endpoint",
+        "ExecutionRoleArn",
+        "HealthCheckPath",
+        "InfrastructureRoleArn",
+        "Memory",
+        "NetworkConfiguration",
+        "PrimaryContainer",
+        "ScalingTarget",
+        "ServiceArn",
+        "ServiceName",
+        "Status",
+        "Tags",
+        "TaskDefinitionArn",
+        "TaskRoleArn",
+        "UpdatedAt"
+      ],
+      "supports_task_definition": true,
+      "endpoint_readonly": true
+    },
+    "registry.template.json": {
+      "passed": true,
+      "capabilities": [],
+      "parameters": []
+    },
+    "gateway.template.json": {
+      "passed": true,
+      "capabilities": [
+        "CAPABILITY_IAM"
+      ],
+      "parameters": [
+        "VpcId",
+        "PublicSubnetB",
+        "GatewayImage",
+        "ExistingAppSecurityGroupId",
+        "PublicSubnetA"
+      ]
+    }
+  }
+}

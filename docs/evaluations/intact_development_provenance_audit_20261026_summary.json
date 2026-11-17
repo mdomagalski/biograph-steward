@@ -1,0 +1,3611 @@
+{
+  "format": "biograph-steward.intact-development-provenance-audit.v1",
+  "prepared_date": "2026-10-26",
+  "recorded_at": "2026-10-27T01:33:21.514569+00:00",
+  "status": "bounded_development_provenance_inventory_complete_independence_not_determined",
+  "scope": "Only four already-consumed development XML/model streams and MITAB rows; prior all-eight bibliographic metadata; fixed consumed Pharos cohort; pinned official methods documentation. No source outcome expansion or final scoring.",
+  "source_bindings": [
+    {
+      "path": "docs/evaluations/intact_xml_20261026_contract.json",
+      "bytes": 8571,
+      "sha256": "fa305464e1b80288773ac7bebe46c5905801c47e01b715ee012d63e9cf22f1dc"
+    },
+    {
+      "path": "docs/evaluations/intact_fidelity_20261026_protocol.json",
+      "bytes": 13345,
+      "sha256": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a"
+    },
+    {
+      "path": "docs/evaluations/intact_fidelity_20261026_semantic_amendment.json",
+      "bytes": 4114,
+      "sha256": "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c"
+    },
+    {
+      "path": "docs/evaluations/intact_xml_development_20261026_summary.json",
+      "bytes": 17428,
+      "sha256": "8ce120a625fd44be4cb6495240161f7b9cf76cb49b2536bcb097e57922832a2c"
+    },
+    {
+      "path": "runs/intact_development_inspection_20261026/row_ledger.jsonl",
+      "bytes": 45050,
+      "sha256": "232ad603873331a0f19e3447ec8c430e93dd7b5802367190be8cd956c6a16a2b"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/report.json",
+      "bytes": 115261,
+      "sha256": "88b575f4627ac8f05f61671710553354eeb6465c15c1d8122a08e6088b9c3650"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/qualified_provenance.jsonl",
+      "bytes": 45805,
+      "sha256": "1b5b16b9b77bd5b6751245d2a00abe2ad61e13b2745f6428d96aa1f7e8ebbe83"
+    },
+    {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/report.json",
+      "bytes": 8424,
+      "sha256": "bb15e499408e8d63dc58f015a3bd0ea8fcb44e0ff0a3cad547886c2fdb09ea2f"
+    },
+    {
+      "path": "runs/intact_provenance_metadata_20261026_attempt_02/selected_esummary.json",
+      "bytes": 16704,
+      "sha256": "cc08035359cfb0ec7b3a9bcb85a5e446b374bec4d3675ea68c64b3df28f2a282"
+    },
+    {
+      "path": "runs/intact_cohort_source_20261026/assertions.json",
+      "bytes": 1566,
+      "sha256": "262adea917261d101192a7f9393b465dac78695d0effd561fced2ab1914ca243"
+    },
+    {
+      "path": "runs/intact_cohort_source_20261026/graph.json",
+      "bytes": 55895,
+      "sha256": "95c3efb8d7c9a3bfc5d2993f8838809e9c9ed72b164fd084660f6d1ccfcb814e"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158.xml",
+      "bytes": 54940,
+      "sha256": "5c1729c65ccb71ef720a0b77467a9e4a1ba870d5f2bf45ae0453e04e1d668cd6"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "bytes": 23993,
+      "sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00"
+    },
+    {
+      "path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40075158.txt",
+      "bytes": 4091,
+      "sha256": "d65a5243b53ef51719d03a797c7b15dd7f7b03cc7019897c3d311d8756149e56"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733.xml",
+      "bytes": 131729,
+      "sha256": "9637aea2ced4811c98e809f986d5d1d28fd535f5f90d5cc9c24be6016c152150"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "bytes": 188978,
+      "sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020"
+    },
+    {
+      "path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40404733.txt",
+      "bytes": 29714,
+      "sha256": "19f3325086266f76dbf7910b798756d8a13bc56bd45d826f7308267d75c86738"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126.xml",
+      "bytes": 128443,
+      "sha256": "4e66cde0481fa55ca12b8f50541ac0d83b95a081292a27a44fac7a1de73b8678"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "bytes": 158799,
+      "sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c"
+    },
+    {
+      "path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40071126.txt",
+      "bytes": 20866,
+      "sha256": "211cde6738435a6f49a9f67b932d4d2f0f9fbc9022464f188b5542ab17a576a7"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265.xml",
+      "bytes": 88388,
+      "sha256": "3bd86354b2b1c0b4143697e7688199b4250ba664deaafaf8328045f2db9fc0e3"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "bytes": 88409,
+      "sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6"
+    },
+    {
+      "path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40739265.txt",
+      "bytes": 14776,
+      "sha256": "5c28e098ea83e319a7ae7352640baef64c10ebd51d724ff0522ed4e3360f4ad8"
+    },
+    {
+      "path": "runs/intact_development_provenance_audit_20261026/method_sources/experiment.md",
+      "bytes": 52396,
+      "sha256": "4050d7e5fabf970a24fc86235d0d695df057c14cbbf246954f1b71274e05efc4"
+    },
+    {
+      "path": "runs/intact_development_provenance_audit_20261026/method_sources/publication-level.md",
+      "bytes": 8711,
+      "sha256": "e2b463aff3c5a7ce5f9effc4b7f6744b5f56c11ed9b830d6f45352f0539bad8f"
+    },
+    {
+      "path": "runs/intact_development_provenance_audit_20261026/method_sources/interaction.md",
+      "bytes": 19458,
+      "sha256": "9681f13c79c355405ca4e03d6e45275d7546cc698652bacbdfb12dcf31e11b09"
+    },
+    {
+      "path": "runs/intact_development_provenance_audit_20261026/method_sources/introduction.md",
+      "bytes": 10423,
+      "sha256": "c471aab272aa0876699ef69f96232e2a5a5d9bb49d3c10522713c542566044b3"
+    },
+    {
+      "path": "runs/intact_development_provenance_audit_20261026/method_sources/life-cycle.md",
+      "bytes": 2086,
+      "sha256": "be3864d203edfda10d243cf05d5d416b93357774f4e680492ef258573df65ac8"
+    }
+  ],
+  "development": {
+    "publication_count": 4,
+    "original_mitab_evidence_rows": 14,
+    "xml_evidence_objects": 13,
+    "distinct_curated_experiments": 10,
+    "eligible_source_rows": 4,
+    "eligible_unique_undirected_uniprot_pairs": 2,
+    "eligible_unique_exact_uniprot_participants": 4,
+    "eligible_curated_experiments": 3,
+    "eligible_publications": 2,
+    "per_publication": [
+      {
+        "publication_id": "40075158",
+        "mitab_evidence_rows": 2,
+        "xml_evidence_objects": 2,
+        "eligible_rows": 0,
+        "distinct_curated_experiments": 2,
+        "experiment_identity_ids": [
+          "EBI-64039198",
+          "EBI-64039235"
+        ],
+        "imex_publication_ids": [
+          "IM-30390"
+        ]
+      },
+      {
+        "publication_id": "40404733",
+        "mitab_evidence_rows": 5,
+        "xml_evidence_objects": 4,
+        "eligible_rows": 2,
+        "distinct_curated_experiments": 3,
+        "experiment_identity_ids": [
+          "EBI-70852425",
+          "EBI-70852440",
+          "EBI-70852453"
+        ],
+        "imex_publication_ids": [
+          "IM-30672"
+        ]
+      },
+      {
+        "publication_id": "40071126",
+        "mitab_evidence_rows": 4,
+        "xml_evidence_objects": 4,
+        "eligible_rows": 2,
+        "distinct_curated_experiments": 3,
+        "experiment_identity_ids": [
+          "EBI-70836062",
+          "EBI-70836432",
+          "EBI-70836442"
+        ],
+        "imex_publication_ids": [
+          "IM-30583"
+        ]
+      },
+      {
+        "publication_id": "40739265",
+        "mitab_evidence_rows": 3,
+        "xml_evidence_objects": 3,
+        "eligible_rows": 0,
+        "distinct_curated_experiments": 2,
+        "experiment_identity_ids": [
+          "EBI-70855560",
+          "EBI-70855681"
+        ],
+        "imex_publication_ids": [
+          "IM-30697"
+        ]
+      }
+    ]
+  },
+  "record_inventory": [
+    {
+      "publication_id": "40075158",
+      "evidence_sequence": 1,
+      "evidence_xml_id": 5618440,
+      "intact_identity_ids": [
+        "EBI-64039203"
+      ],
+      "imex_id": "IM-30390-1",
+      "experiments": [
+        {
+          "xml_id": 5618436,
+          "intact_identity_ids": [
+            "EBI-64039198"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "ensembl",
+            "id": "ENST00000440486",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 183,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-64039212",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 187,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "rnacentral",
+            "id": "URS00003AFD9B_9606",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 218,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-26363565",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 219,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 7a-b",
+          "source_locator": {
+            "line": 488,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": null,
+            "name": "causality statement",
+            "full_name": null
+          },
+          "value": "down regulate quantity by destabilization",
+          "source_locator": {
+            "line": 489,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40075158",
+      "evidence_sequence": 2,
+      "evidence_xml_id": 5618445,
+      "intact_identity_ids": [
+        "EBI-64039240"
+      ],
+      "imex_id": "IM-30390-3",
+      "experiments": [
+        {
+          "xml_id": 5618437,
+          "intact_identity_ids": [
+            "EBI-64039235"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "rnacentral",
+            "id": "URS00003AFD9B_9606",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 218,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-26363565",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 219,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "ensembl",
+            "id": "ENST00000440486",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 183,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-64039212",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 187,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 7a-c",
+          "source_locator": {
+            "line": 729,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": null,
+            "name": "causality statement",
+            "full_name": null
+          },
+          "value": "down regulate quantity by destabilization",
+          "source_locator": {
+            "line": 730,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "evidence_sequence": 1,
+      "evidence_xml_id": 5691532,
+      "intact_identity_ids": [
+        "EBI-70852459"
+      ],
+      "imex_id": "IM-30672-5",
+      "experiments": [
+        {
+          "xml_id": 5691524,
+          "intact_identity_ids": [
+            "EBI-70852453"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q9HCE5",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 245,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000373474.3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 261,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-6661081",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 266,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q8WYQ5",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 411,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000538546.1",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 417,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000263209.3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 428,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000538542.1",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 467,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000409625.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 476,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-528411",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 497,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000538547.1",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 517,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 3f",
+          "source_locator": {
+            "line": 986,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "evidence_sequence": 2,
+      "evidence_xml_id": 5691535,
+      "intact_identity_ids": [
+        "EBI-70852463"
+      ],
+      "imex_id": "IM-30672-7",
+      "experiments": [
+        {
+          "xml_id": 5691524,
+          "intact_identity_ids": [
+            "EBI-70852453"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q9HCE5",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 245,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000373474.3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 261,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-6661081",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 266,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q8WYQ5",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 411,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000538546.1",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 417,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000263209.3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 428,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000538542.1",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 467,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000409625.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 476,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-528411",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 497,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000538547.1",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 517,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 3g",
+          "source_locator": {
+            "line": 1139,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "evidence_sequence": 3,
+      "evidence_xml_id": 5691538,
+      "intact_identity_ids": [
+        "EBI-70852430"
+      ],
+      "imex_id": "IM-30672-1",
+      "experiments": [
+        {
+          "xml_id": 5691525,
+          "intact_identity_ids": [
+            "EBI-70852425"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "rnacentral",
+            "id": "URS00003380CC_9606",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 551,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-59036257",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 554,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "ensembl",
+            "id": "ENST00000225916",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 588,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-54342218",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 591,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 4a-b",
+          "source_locator": {
+            "line": 1381,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": null,
+            "name": "causality statement",
+            "full_name": null
+          },
+          "value": "down regulate quantity by destabilization",
+          "source_locator": {
+            "line": 1382,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "evidence_sequence": 4,
+      "evidence_xml_id": 5691543,
+      "intact_identity_ids": [
+        "EBI-70852445"
+      ],
+      "imex_id": "IM-30672-3",
+      "experiments": [
+        {
+          "xml_id": 5691526,
+          "intact_identity_ids": [
+            "EBI-70852440"
+          ]
+        }
+      ],
+      "participant_count": 3,
+      "participant_identity": [
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q9UKV8",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 629,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000220592.5",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 672,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-528269",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 759,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "rnacentral",
+            "id": "URS00003380CC_9606",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 551,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-59036257",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 554,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "ensembl",
+            "id": "ENST00000225916",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 588,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-54342218",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 591,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 4c-d",
+          "source_locator": {
+            "line": 1596,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "evidence_sequence": 1,
+      "evidence_xml_id": 5691204,
+      "intact_identity_ids": [
+        "EBI-70836448"
+      ],
+      "imex_id": "IM-30583-5",
+      "experiments": [
+        {
+          "xml_id": 5691196,
+          "intact_identity_ids": [
+            "EBI-70836442"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "ensembl",
+            "id": "ENST00000271715",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 261,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-54342553",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 265,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "rnacentral",
+            "id": "URS000059311D_9606",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 296,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-26352991",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 298,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 4g-h",
+          "source_locator": {
+            "line": 962,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": null,
+            "name": "causality statement",
+            "full_name": null
+          },
+          "value": "down regulate quantity by destabilization",
+          "source_locator": {
+            "line": 963,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "evidence_sequence": 2,
+      "evidence_xml_id": 5691209,
+      "intact_identity_ids": [
+        "EBI-70837425"
+      ],
+      "imex_id": "IM-30583-7",
+      "experiments": [
+        {
+          "xml_id": 5691196,
+          "intact_identity_ids": [
+            "EBI-70836442"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "rnacentral",
+            "id": "URS000059311D_9606",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 296,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-26352991",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 298,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "ensembl",
+            "id": "ENST00000670871",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 332,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-70837435",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 334,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 4g-h",
+          "source_locator": {
+            "line": 1192,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": null,
+            "name": "causality statement",
+            "full_name": null
+          },
+          "value": "down regulate quantity by destabilization",
+          "source_locator": {
+            "line": 1193,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "evidence_sequence": 3,
+      "evidence_xml_id": 5691213,
+      "intact_identity_ids": [
+        "EBI-70836068"
+      ],
+      "imex_id": "IM-30583-1",
+      "experiments": [
+        {
+          "xml_id": 5691197,
+          "intact_identity_ids": [
+            "EBI-70836062"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q9UI95",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 372,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-77889",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 395,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000365855.3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 397,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000235310.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 414,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000365882.4",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 417,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000520633.1",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 444,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000400982.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 461,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q7Z3K3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 527,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000390156.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 592,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000271715.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 653,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-1389308",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 654,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 1f",
+          "source_locator": {
+            "line": 1346,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "evidence_sequence": 4,
+      "evidence_xml_id": 5691216,
+      "intact_identity_ids": [
+        "EBI-70836438"
+      ],
+      "imex_id": "IM-30583-3",
+      "experiments": [
+        {
+          "xml_id": 5691198,
+          "intact_identity_ids": [
+            "EBI-70836432"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q7Z3K3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 527,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000390156.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 592,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000271715.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 653,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-1389308",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 654,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q9UI95",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 372,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-77889",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 395,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000365855.3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 397,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000235310.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 414,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000365882.4",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 417,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000520633.1",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 444,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSP00000400982.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 461,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 1f",
+          "source_locator": {
+            "line": 1499,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40739265",
+      "evidence_sequence": 1,
+      "evidence_xml_id": 5692766,
+      "intact_identity_ids": [
+        "EBI-70855688"
+      ],
+      "imex_id": "IM-30697-3",
+      "experiments": [
+        {
+          "xml_id": 5692759,
+          "intact_identity_ids": [
+            "EBI-70855681"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "uniprotkb",
+            "id": "O70325",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 173,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-2311124",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 176,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "uniprotkb",
+            "id": "P06869",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 250,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSMUSP00000022368.3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 255,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-8365661",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 313,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 6h",
+          "source_locator": {
+            "line": 681,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40739265",
+      "evidence_sequence": 2,
+      "evidence_xml_id": 5692769,
+      "intact_identity_ids": [
+        "EBI-70855692"
+      ],
+      "imex_id": "IM-30697-5",
+      "experiments": [
+        {
+          "xml_id": 5692759,
+          "intact_identity_ids": [
+            "EBI-70855681"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "uniprotkb",
+            "id": "P06869",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 250,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSMUSP00000022368.3",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 255,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-8365661",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 313,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "uniprotkb",
+            "id": "Q8C863",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 352,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSMUSP00000105307.2",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 353,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-851782",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 366,
+              "column": 21
+            }
+          },
+          {
+            "database": "ensembl",
+            "id": "ENSMUSP00000029126.9",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 386,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 6i",
+          "source_locator": {
+            "line": 834,
+            "column": 21
+          }
+        }
+      ]
+    },
+    {
+      "publication_id": "40739265",
+      "evidence_sequence": 3,
+      "evidence_xml_id": 5692772,
+      "intact_identity_ids": [
+        "EBI-70855565"
+      ],
+      "imex_id": "IM-30697-1",
+      "experiments": [
+        {
+          "xml_id": 5692760,
+          "intact_identity_ids": [
+            "EBI-70855560"
+          ]
+        }
+      ],
+      "participant_count": 2,
+      "participant_identity": [
+        [
+          {
+            "database": "rnacentral",
+            "id": "URS000022A78C_9606",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 466,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-54261709",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 469,
+              "column": 21
+            }
+          }
+        ],
+        [
+          {
+            "database": "ensembl",
+            "id": "ENST00000372764",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 502,
+              "column": 21
+            }
+          },
+          {
+            "database": "intact",
+            "id": "EBI-70852563",
+            "qualifier_mi_id": "MI:0356",
+            "source_locator": {
+              "line": 503,
+              "column": 21
+            }
+          }
+        ]
+      ],
+      "source_annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0599",
+            "name": "figure legend",
+            "full_name": null
+          },
+          "value": "fig. 5c-d",
+          "source_locator": {
+            "line": 1110,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": null,
+            "name": "causality statement",
+            "full_name": null
+          },
+          "value": "down regulate quantity by destabilization",
+          "source_locator": {
+            "line": 1111,
+            "column": 21
+          }
+        }
+      ]
+    }
+  ],
+  "experiment_inventory": [
+    {
+      "publication_id": "40075158",
+      "experiment_xml_id": 5618436,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-64039198",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 41,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30390",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 42,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "feili20700338@126.com;twl@smu.edu.cn",
+          "source_locator": {
+            "line": 95,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0875",
+            "name": "dataset",
+            "full_name": null
+          },
+          "value": "Cancer - Interactions investigated in the context of cancer",
+          "source_locator": {
+            "line": 97,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 101,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Cao C., Wang Y., Deng X., Zhao X., Chen Y., Tan W., Deng F., Li F., Cao C., Wang Y., Deng X., Zhao X., Chen Y., Tan W., Deng F., Li F.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "NPJ precision oncology",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:2285",
+        "name": "mirna interference luciferase assay",
+        "full_name": "miRNA interference luciferase reporter assay"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:1220",
+        "name": "tag luciferase",
+        "full_name": "tag visualisation by luciferase assay"
+      },
+      "host_organisms": [
+        {
+          "taxid": 9606,
+          "scientific_name": "Homo sapiens HEK293T embryonic kidney cell",
+          "common_name": "human-293t",
+          "aliases": [],
+          "cell_type": {
+            "mi_id": null,
+            "name": "293t",
+            "full_name": "293 cells expressing SV40 large T antigen."
+          },
+          "tissue": null,
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 45,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40075158",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 37,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40075158",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "NPJ precision oncology",
+        "authors": [
+          "Cao C.",
+          " Wang Y.",
+          " Deng X.",
+          " Zhao X.",
+          " Chen Y.",
+          " Tan W.",
+          " Deng F.",
+          " Li F.",
+          " Cao C.",
+          " Wang Y.",
+          " Deng X.",
+          " Zhao X.",
+          " Chen Y.",
+          " Tan W.",
+          " Deng F.",
+          " Li F."
+        ],
+        "source_locator": {
+          "line": 35,
+          "column": 17
+        }
+      }
+    },
+    {
+      "publication_id": "40075158",
+      "experiment_xml_id": 5618437,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-64039235",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 115,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30390",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 116,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "feili20700338@126.com;twl@smu.edu.cn",
+          "source_locator": {
+            "line": 164,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0875",
+            "name": "dataset",
+            "full_name": null
+          },
+          "value": "Cancer - Interactions investigated in the context of cancer",
+          "source_locator": {
+            "line": 166,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 170,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Cao C., Wang Y., Deng X., Zhao X., Chen Y., Tan W., Deng F., Li F., Cao C., Wang Y., Deng X., Zhao X., Chen Y., Tan W., Deng F., Li F.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "NPJ precision oncology",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 105,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:2285",
+        "name": "mirna interference luciferase assay",
+        "full_name": "miRNA interference luciferase reporter assay"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:1220",
+        "name": "tag luciferase",
+        "full_name": "tag visualisation by luciferase assay"
+      },
+      "host_organisms": [
+        {
+          "taxid": 9606,
+          "scientific_name": "Homo sapiens umbilical vein endotheliium",
+          "common_name": "human-uvec",
+          "aliases": [
+            {
+              "type": {
+                "mi_id": "MI:1041",
+                "name": "synonym",
+                "full_name": null
+              },
+              "name": "huvec"
+            }
+          ],
+          "cell_type": null,
+          "tissue": {
+            "mi_id": null,
+            "name": "umbilical_vein_endothelium",
+            "full_name": "Umbilical vein endothelial cell [Umbilical vein endothelium]"
+          },
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 119,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40075158",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 111,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40075158",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "NPJ precision oncology",
+        "authors": [
+          "Cao C.",
+          " Wang Y.",
+          " Deng X.",
+          " Zhao X.",
+          " Chen Y.",
+          " Tan W.",
+          " Deng F.",
+          " Li F.",
+          " Cao C.",
+          " Wang Y.",
+          " Deng X.",
+          " Zhao X.",
+          " Chen Y.",
+          " Tan W.",
+          " Deng F.",
+          " Li F."
+        ],
+        "source_locator": {
+          "line": 109,
+          "column": 17
+        }
+      }
+    },
+    {
+      "publication_id": "40404733",
+      "experiment_xml_id": 5691524,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-70852453",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 41,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30672",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 42,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "fxyuwyyx163@163.com",
+          "source_locator": {
+            "line": 94,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 95,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Fan X., Qiao W., Guo X., Wang J., Zhao L.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "Scientific reports",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:0006",
+        "name": "anti bait coip",
+        "full_name": "anti bait coimmunoprecipitation"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:0113",
+        "name": "western blot",
+        "full_name": "western blot"
+      },
+      "host_organisms": [
+        {
+          "taxid": 9606,
+          "scientific_name": "Homo sapiens Hep3B hepatocellular carcinoma cell",
+          "common_name": "human-hep_3b",
+          "aliases": [],
+          "cell_type": {
+            "mi_id": null,
+            "name": "hep_3b",
+            "full_name": "human hepatocellular carcinoma (HCC) cells (p53-null)."
+          },
+          "tissue": null,
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 45,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40404733",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 37,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40404733",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "Scientific reports",
+        "authors": [
+          "Fan X.",
+          " Qiao W.",
+          " Guo X.",
+          " Wang J.",
+          " Zhao L."
+        ],
+        "source_locator": {
+          "line": 35,
+          "column": 17
+        }
+      }
+    },
+    {
+      "publication_id": "40404733",
+      "experiment_xml_id": 5691525,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-70852425",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 109,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30672",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 110,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "fxyuwyyx163@163.com",
+          "source_locator": {
+            "line": 158,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 163,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Fan X., Qiao W., Guo X., Wang J., Zhao L.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "Scientific reports",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 99,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:2285",
+        "name": "mirna interference luciferase assay",
+        "full_name": "miRNA interference luciferase reporter assay"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:1220",
+        "name": "tag luciferase",
+        "full_name": "tag visualisation by luciferase assay"
+      },
+      "host_organisms": [
+        {
+          "taxid": 9606,
+          "scientific_name": "Homo sapiens Hep3B hepatocellular carcinoma cell",
+          "common_name": "human-hep_3b",
+          "aliases": [],
+          "cell_type": {
+            "mi_id": null,
+            "name": "hep_3b",
+            "full_name": "human hepatocellular carcinoma (HCC) cells (p53-null)."
+          },
+          "tissue": null,
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 113,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40404733",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 105,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40404733",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "Scientific reports",
+        "authors": [
+          "Fan X.",
+          " Qiao W.",
+          " Guo X.",
+          " Wang J.",
+          " Zhao L."
+        ],
+        "source_locator": {
+          "line": 103,
+          "column": 17
+        }
+      }
+    },
+    {
+      "publication_id": "40404733",
+      "experiment_xml_id": 5691526,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-70852440",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 177,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30672",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 178,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "fxyuwyyx163@163.com",
+          "source_locator": {
+            "line": 229,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 230,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Fan X., Qiao W., Guo X., Wang J., Zhao L.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "Scientific reports",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 167,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:1017",
+        "name": "rna-ip",
+        "full_name": "rna immunoprecipitation"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:1196",
+        "name": "qrt-pcr",
+        "full_name": "quantitative reverse transcription pcr"
+      },
+      "host_organisms": [
+        {
+          "taxid": 9606,
+          "scientific_name": "Homo sapiens Hep3B hepatocellular carcinoma cell",
+          "common_name": "human-hep_3b",
+          "aliases": [],
+          "cell_type": {
+            "mi_id": null,
+            "name": "hep_3b",
+            "full_name": "human hepatocellular carcinoma (HCC) cells (p53-null)."
+          },
+          "tissue": null,
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 181,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40404733",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 173,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40404733",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "Scientific reports",
+        "authors": [
+          "Fan X.",
+          " Qiao W.",
+          " Guo X.",
+          " Wang J.",
+          " Zhao L."
+        ],
+        "source_locator": {
+          "line": 171,
+          "column": 17
+        }
+      }
+    },
+    {
+      "publication_id": "40071126",
+      "experiment_xml_id": 5691196,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-70836442",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 41,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30583",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 42,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0618",
+            "name": "caution",
+            "full_name": null
+          },
+          "value": "la relazione con il LINC01355 non l'ho annotata perchè non riesco a trovare la sequenza giusta. nell'articolo scrivono :INC01355 (ENSG00000261326) is a newly discovered tumor-associated LncRNA. ho cercato il match della seq anche in RNA central ma non riesco a trovarla...che altro posso fare?",
+          "source_locator": {
+            "line": 94,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "gumj12345678@163.com",
+          "source_locator": {
+            "line": 95,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 100,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Lu J., Zhou X., Zhu H., Zou M., Liu L., Li X., Gu M.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "3 Biotech",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:2285",
+        "name": "mirna interference luciferase assay",
+        "full_name": "miRNA interference luciferase reporter assay"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:1220",
+        "name": "tag luciferase",
+        "full_name": "tag visualisation by luciferase assay"
+      },
+      "host_organisms": [
+        {
+          "taxid": 9606,
+          "scientific_name": "HTori-3",
+          "common_name": "human-HTori-3",
+          "aliases": [],
+          "cell_type": {
+            "mi_id": null,
+            "name": "human-htori-3",
+            "full_name": "HTori-3"
+          },
+          "tissue": null,
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 45,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40071126",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 37,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40071126",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "3 Biotech",
+        "authors": [
+          "Lu J.",
+          " Zhou X.",
+          " Zhu H.",
+          " Zou M.",
+          " Liu L.",
+          " Li X.",
+          " Gu M."
+        ],
+        "source_locator": {
+          "line": 35,
+          "column": 17
+        }
+      }
+    },
+    {
+      "publication_id": "40071126",
+      "experiment_xml_id": 5691197,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-70836062",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 114,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30583",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 115,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "gumj12345678@163.com",
+          "source_locator": {
+            "line": 173,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 174,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Lu J., Zhou X., Zhu H., Zou M., Liu L., Li X., Gu M.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "3 Biotech",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 104,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:0006",
+        "name": "anti bait coip",
+        "full_name": "anti bait coimmunoprecipitation"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:0113",
+        "name": "western blot",
+        "full_name": "western blot"
+      },
+      "host_organisms": [
+        {
+          "taxid": 9606,
+          "scientific_name": "Homo sapiens KTC-1 cell",
+          "common_name": "human-KTC-1",
+          "aliases": [],
+          "cell_type": {
+            "mi_id": null,
+            "name": "human-ktc-1",
+            "full_name": "KTC-1"
+          },
+          "tissue": null,
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 118,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40071126",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 110,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40071126",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "3 Biotech",
+        "authors": [
+          "Lu J.",
+          " Zhou X.",
+          " Zhu H.",
+          " Zou M.",
+          " Liu L.",
+          " Li X.",
+          " Gu M."
+        ],
+        "source_locator": {
+          "line": 108,
+          "column": 17
+        }
+      }
+    },
+    {
+      "publication_id": "40071126",
+      "experiment_xml_id": 5691198,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-70836432",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 188,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30583",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 189,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "gumj12345678@163.com",
+          "source_locator": {
+            "line": 247,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 248,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Lu J., Zhou X., Zhu H., Zou M., Liu L., Li X., Gu M.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "3 Biotech",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 178,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:0006",
+        "name": "anti bait coip",
+        "full_name": "anti bait coimmunoprecipitation"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:0113",
+        "name": "western blot",
+        "full_name": "western blot"
+      },
+      "host_organisms": [
+        {
+          "taxid": 9606,
+          "scientific_name": "CAL-62",
+          "common_name": "human-CAL-62",
+          "aliases": [],
+          "cell_type": {
+            "mi_id": null,
+            "name": "human-cal-62",
+            "full_name": "CAL-62"
+          },
+          "tissue": null,
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 192,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40071126",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 184,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40071126",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "3 Biotech",
+        "authors": [
+          "Lu J.",
+          " Zhou X.",
+          " Zhu H.",
+          " Zou M.",
+          " Liu L.",
+          " Li X.",
+          " Gu M."
+        ],
+        "source_locator": {
+          "line": 182,
+          "column": 17
+        }
+      }
+    },
+    {
+      "publication_id": "40739265",
+      "experiment_xml_id": 5692759,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-70855681",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 41,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30697",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 42,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "zjxsrong@163.com",
+          "source_locator": {
+            "line": 88,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 93,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Zhang Y., Dou J., Dai S., Xie Y., Wang H., Chen Z., Zhuang H., Xu S.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "Stem cell research & therapy",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:0006",
+        "name": "anti bait coip",
+        "full_name": "anti bait coimmunoprecipitation"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:0113",
+        "name": "western blot",
+        "full_name": "western blot"
+      },
+      "host_organisms": [
+        {
+          "taxid": 10090,
+          "scientific_name": "Mouse hepatocyte",
+          "common_name": "mouse-hepatocyte",
+          "aliases": [],
+          "cell_type": null,
+          "tissue": {
+            "mi_id": null,
+            "name": "primary hepatocytes",
+            "full_name": "primary hepatocytes"
+          },
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 45,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40739265",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 37,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40739265",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "Stem cell research & therapy",
+        "authors": [
+          "Zhang Y.",
+          " Dou J.",
+          " Dai S.",
+          " Xie Y.",
+          " Wang H.",
+          " Chen Z.",
+          " Zhuang H.",
+          " Xu S."
+        ],
+        "source_locator": {
+          "line": 35,
+          "column": 17
+        }
+      }
+    },
+    {
+      "publication_id": "40739265",
+      "experiment_xml_id": 5692760,
+      "xrefs": [
+        {
+          "database": "intact",
+          "id": "EBI-70855560",
+          "qualifier_mi_id": "MI:0356",
+          "source_locator": {
+            "line": 107,
+            "column": 21
+          }
+        },
+        {
+          "database": "imex",
+          "id": "IM-30697",
+          "qualifier_mi_id": "MI:0662",
+          "source_locator": {
+            "line": 108,
+            "column": 21
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "topic": {
+            "mi_id": "MI:0634",
+            "name": "contact-email",
+            "full_name": null
+          },
+          "value": "zjxsrong@163.com",
+          "source_locator": {
+            "line": 154,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0957",
+            "name": "full coverage",
+            "full_name": null
+          },
+          "value": "Only protein-protein interactions",
+          "source_locator": {
+            "line": 159,
+            "column": 21
+          }
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0955",
+            "name": "curation depth",
+            "full_name": null
+          },
+          "value": "IMEx",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0636",
+            "name": "author-list",
+            "full_name": null
+          },
+          "value": "Zhang Y., Dou J., Dai S., Xie Y., Wang H., Chen Z., Zhuang H., Xu S.",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0885",
+            "name": "journal",
+            "full_name": null
+          },
+          "value": "Stem cell research & therapy",
+          "source_locator": null
+        },
+        {
+          "topic": {
+            "mi_id": "MI:0886",
+            "name": "publication year",
+            "full_name": null
+          },
+          "value": "2025",
+          "source_locator": null
+        }
+      ],
+      "source_locator": {
+        "line": 97,
+        "column": 13
+      },
+      "detection_method": {
+        "mi_id": "MI:2285",
+        "name": "mirna interference luciferase assay",
+        "full_name": "miRNA interference luciferase reporter assay"
+      },
+      "participant_identification_method": {
+        "mi_id": "MI:1220",
+        "name": "tag luciferase",
+        "full_name": "tag visualisation by luciferase assay"
+      },
+      "host_organisms": [
+        {
+          "taxid": 10090,
+          "scientific_name": "Mouse hepatocyte",
+          "common_name": "mouse-hepatocyte",
+          "aliases": [],
+          "cell_type": null,
+          "tissue": {
+            "mi_id": null,
+            "name": "primary hepatocytes",
+            "full_name": "primary hepatocytes"
+          },
+          "compartment": null,
+          "experiments": [],
+          "source_locator": {
+            "line": 111,
+            "column": 21
+          }
+        }
+      ],
+      "publication": {
+        "identifiers": [
+          {
+            "database": {
+              "mi_id": "MI:0446",
+              "name": "pubmed",
+              "full_name": null
+            },
+            "id": "40739265",
+            "version": null,
+            "qualifier": {
+              "mi_id": "MI:0358",
+              "name": "primary-reference",
+              "full_name": null
+            },
+            "source_locator": {
+              "line": 103,
+              "column": 25
+            },
+            "secondary": null,
+            "annotations": []
+          }
+        ],
+        "xrefs": [],
+        "annotations": [],
+        "pubmed_id": "40739265",
+        "doi": null,
+        "imex_id": null,
+        "title": null,
+        "journal": "Stem cell research & therapy",
+        "authors": [
+          "Zhang Y.",
+          " Dou J.",
+          " Dai S.",
+          " Xie Y.",
+          " Wang H.",
+          " Chen Z.",
+          " Zhuang H.",
+          " Xu S."
+        ],
+        "source_locator": {
+          "line": 101,
+          "column": 17
+        }
+      }
+    }
+  ],
+  "explicit_publication_identifier_references": [
+    {
+      "publication_id": "40075158",
+      "evidence_sequence": 1,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40075158",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 37,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40075158",
+      "evidence_sequence": 2,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40075158",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 111,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40404733",
+      "evidence_sequence": 1,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40404733",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 37,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40404733",
+      "evidence_sequence": 2,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40404733",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 37,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40404733",
+      "evidence_sequence": 3,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40404733",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 105,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40404733",
+      "evidence_sequence": 4,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40404733",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 173,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40071126",
+      "evidence_sequence": 1,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40071126",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 37,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40071126",
+      "evidence_sequence": 2,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40071126",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 37,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40071126",
+      "evidence_sequence": 3,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40071126",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 110,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40071126",
+      "evidence_sequence": 4,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40071126",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 184,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40739265",
+      "evidence_sequence": 1,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40739265",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 37,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40739265",
+      "evidence_sequence": 2,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40739265",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 37,
+        "column": 25
+      }
+    },
+    {
+      "publication_id": "40739265",
+      "evidence_sequence": 3,
+      "model_path": "/experiments/0/publication/identifiers/0",
+      "database": "pubmed",
+      "id": "40739265",
+      "qualifier_mi_id": "MI:0358",
+      "source_locator": {
+        "line": 103,
+        "column": 25
+      }
+    }
+  ],
+  "external_pubmed_or_doi_references_in_retained_reader_model": [],
+  "cross_development_model_provenance_links_found": [],
+  "cross_development_independence": "not_determined_absent_model_links_not_proof",
+  "within_development_primary_id_overlap": {
+    "scope": "Exact database+accession of original MITAB primary identifiers; no alias, gene, isoform or cross-species collapse.",
+    "unique_participants": 17,
+    "unique_undirected_pair_views": 11,
+    "pairs_shared_by_distinct_development_publications": [],
+    "participants_shared_by_distinct_development_publications": []
+  },
+  "eligible_groups": [
+    {
+      "exact_undirected_pair": [
+        [
+          "uniprotkb",
+          "Q8WYQ5"
+        ],
+        [
+          "uniprotkb",
+          "Q9HCE5"
+        ]
+      ],
+      "source_rows": [
+        {
+          "publication_id": "pubmed:40404733",
+          "line": 5
+        },
+        {
+          "publication_id": "pubmed:40404733",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "exact_undirected_pair": [
+        [
+          "uniprotkb",
+          "Q7Z3K3"
+        ],
+        [
+          "uniprotkb",
+          "Q9UI95"
+        ]
+      ],
+      "source_rows": [
+        {
+          "publication_id": "pubmed:40071126",
+          "line": 2
+        },
+        {
+          "publication_id": "pubmed:40071126",
+          "line": 3
+        }
+      ]
+    }
+  ],
+  "eligible_group_interpretation": [
+    {
+      "publication_id": "40404733",
+      "pair": [
+        "Q8WYQ5",
+        "Q9HCE5"
+      ],
+      "evidence_ids": [
+        "EBI-70852459",
+        "EBI-70852463"
+      ],
+      "curated_experiments": [
+        "EBI-70852453"
+      ],
+      "figure_annotations": [
+        "fig. 3f",
+        "fig. 3g"
+      ],
+      "host": "human-hep_3b",
+      "interpretation": "Two source observations in the same curated experiment/publication; do not treat them as independent studies or deduplicate away their figure-specific source records."
+    },
+    {
+      "publication_id": "40071126",
+      "pair": [
+        "Q7Z3K3",
+        "Q9UI95"
+      ],
+      "evidence_ids": [
+        "EBI-70836068",
+        "EBI-70836438"
+      ],
+      "curated_experiments": [
+        "EBI-70836062",
+        "EBI-70836432"
+      ],
+      "figure_annotations": [
+        "fig. 1f"
+      ],
+      "hosts": [
+        "human-KTC-1",
+        "human-CAL-62"
+      ],
+      "interpretation": "Two context-qualified curated experiments in one publication/figure. Context differences do not establish independent study replication."
+    }
+  ],
+  "nary_group": {
+    "publication_id": "40404733",
+    "xml_evidence_id": "EBI-70852445",
+    "imex_id": "IM-30672-3",
+    "mitab_lines": [
+      3,
+      4
+    ],
+    "participant_count": 3,
+    "expansion_annotation": "MI:1060 spoke expansion",
+    "eligible": false,
+    "interpretation": "One source evidence object with two pair views. Retain both locators and shared evidence grouping; do not count two experiments."
+  },
+  "source_caution": {
+    "publication_id": "40071126",
+    "experiment_xml_id": 5691196,
+    "experiment_intact_identity": "EBI-70836442",
+    "topic": "MI:0618 caution",
+    "literal": "la relazione con il LINC01355 non l'ho annotata perchè non riesco a trovare la sequenza giusta. nell'articolo scrivono :INC01355 (ENSG00000261326) is a newly discovered tumor-associated LncRNA. ho cercato il match della seq anche in RNA central ma non riesco a trovarla...che altro posso fare?",
+    "affected_reader_evidence_ids": [
+      "EBI-70836448",
+      "EBI-70837425"
+    ],
+    "observed_retained_rna_evidence": {
+      "evidence_id": "EBI-70837425",
+      "participant_short_name": "lncrna_linc01355",
+      "identity_ensembl": "ENST00000670871"
+    },
+    "interpretation": "The exported warning says a LINC01355 relation was not annotated because of sequence uncertainty; the same experiment is referenced by a retained LINC01355 RNA evidence record. Export provides no annotation timestamp/resolution state. Preserve both facts; do not infer present absence, resolved mapping, stale status, or invalidity of separate protein co-IP evidence.",
+    "status": "scope_and_current_resolution_not_determined"
+  },
+  "consumed_pharos_pair_overlap": {
+    "scope": "Frozen four-protein Pharos319 cohort, not whole Pharos/TCRD/STRING.",
+    "eligible_intact_unique_pairs": 2,
+    "baseline_pharos_unique_matching_pairs": 1,
+    "matching_pair": [
+      "Q7Z3K3",
+      "Q9UI95"
+    ],
+    "source_name": "STRINGDB",
+    "baseline_publications": [],
+    "baseline_source_records": 2,
+    "baseline_evidence_edge_count": 1,
+    "other_pair": [
+      "Q8WYQ5",
+      "Q9HCE5"
+    ],
+    "other_pair_present_in_this_frozen_graph": false,
+    "source_lineage_relation_to_intact": "not_determined_reference_not_supplied",
+    "claim_limit": "Added qualified assay/publication context is observed; graph absence in this scope is not whole-Pharos novelty or independent biological confirmation."
+  },
+  "prior_bibliographic_metadata": {
+    "all_eight_selected_publications_metadata_previously_exposed": true,
+    "selected_cross_pmid_doi_aliases": [],
+    "selected_anchor_identifier_matches": [],
+    "consumed_anchor_pmids": [
+      "41935050",
+      "36949045",
+      "32296183",
+      "31467278"
+    ],
+    "claim_limit": "PMID/DOI nonidentity is not a dataset/study-reuse audit. Do not infer no shared samples, assays, authors, data or pretrained exposure."
+  },
+  "final_gate_recommendation": {
+    "final_score_run_authorized_by_this_audit": false,
+    "reserved_bodies_still_unopened_unhashed": true,
+    "separate_freeze_required": true,
+    "study_independence_established": false,
+    "required_before_final_source_fidelity": [
+      "Freeze executable lineage/overlap/exclusion rules and exact artifacts on synthetic/development data.",
+      "Audit reserved metadata/model statements only through that committed fixed execution path; log exposure.",
+      "Quarantine explicit reused-study connected components with consumed evidence, ambiguous identities/multiplicity or unresolved source projection; no replacement.",
+      "Preserve unknown-independence state and source-caution state; absent annotation is not an independence certificate.",
+      "Report publication-macro and evidence-row-micro fidelity, with exact identity/evidence/experiment/nary grouping and overlap strata; no independent biological accuracy label."
+    ],
+    "reserved_pair_participant_overlap": "not_evaluated_unopened_values",
+    "biological_improvement_eligible": false,
+    "biological_improvement_requirement": "A separately fixed scientific endpoint and reference with documented measured outcomes, graph/reference leakage exclusions, baseline comparator and study-grouped evaluation are required. The present panel measures source fidelity only."
+  },
+  "boundaries": {
+    "reserved_pmids": [
+      "39833857",
+      "40211762",
+      "39972491",
+      "40555359"
+    ],
+    "reserved_interaction_bodies_read": false,
+    "reserved_interaction_bodies_hashed": false,
+    "reserved_interaction_api_queried": false,
+    "new_original_paper_abstract_or_fulltext_access": false,
+    "model_calls": 0,
+    "gpu_runs": 0,
+    "graph_changes": false,
+    "source_rows_removed_or_rewritten": false,
+    "scientific_accuracy_measured": false
+  }
+}

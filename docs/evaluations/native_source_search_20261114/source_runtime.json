@@ -1,0 +1,59 @@
+{
+  "format": "biograph-steward.native-source-search-public-runtime.v1",
+  "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+  "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+  "runtime": "vLLM 0.8.5 V0, unchanged existing Nano8B weights; source-matched NVIDIA nonstreaming parser",
+  "model_card": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-8B-v1/tree/54641c1611fcff44fa4865626462445e0a153fc7",
+  "parser_sha256": "5dda26a379b7de9b98c628ff615c2c97803923541de46b226fb880d26a93fe9f",
+  "parser_license": "Apache-2.0; model weights have their separate model license.",
+  "source_search": {
+    "package": "BioMCP 0.9.3",
+    "license": "MIT; underlying source/data conditions remain separate.",
+    "repository": "https://github.com/genomoncology/biomcp",
+    "commit": "5641de7d7b79b53872f8599dbb4dba22e611dcaf",
+    "official_release_archive_url": "https://github.com/genomoncology/biomcp/releases/download/v0.9.3/biomcp-darwin-arm64.tar.gz",
+    "release_archive_sha256": "e637062c18c6692f3ec49c5847e69b29f6feee7f7909345970bd504d72174994",
+    "qualified_binary_sha256": "54f66769d9193c569d1b65756ad766eafd1a2c5e92d08f8c855cc8964e9a7145",
+    "provider": "PubMed only; OLS4 disabled; no paid API dependency."
+  },
+  "abstract_inspection": "Existing exact-PMID PubMed XML fetch/parser, no PMC/fulltext expansion.",
+  "native_nonparallel_policy": {
+    "version": 2,
+    "behavior": "Select provider-parsed entry0 only when parallel_tool_calls=False; never scan later entries.",
+    "upstream_url": "https://github.com/vllm-project/vllm/blob/e1dd706cd1f2b008f6295a6a64634bf9e9b202c1/vllm/entrypoints/openai/utils.py",
+    "upstream_sha256": "59441f4c1cbb34f9293af7d44da268416e7a2db9d510c9467bd0d6e5ad525cb2",
+    "upstream_pr": "https://github.com/vllm-project/vllm/pull/26233",
+    "license": "Apache-2.0; client-side nonstreaming dict adaptation",
+    "suppressed_entries": "Count only; no arguments/content/history/source execution/final handoff retained.",
+    "raw_model_singleton_or_compliance_claim": false
+  },
+  "native_api_policy": {
+    "version": 3,
+    "choice_steps": "auto with the qualified first-provider-parsed-entry return policy",
+    "finish_only_steps": "Standard named function tool_choice finish; explicit guided_decoding_backend=outlines.",
+    "named_finish_response": "Exactly one wrapped finish call, finish_reason=stop, full deterministic argument/ID/usage/cap guards.",
+    "auto_response": "finish_reason=tool_calls; stop is not a successful auto handoff.",
+    "tokenization": "Same exact tools through chat_template_kwargs and native history; tool_choice does not alter the pinned renderer.",
+    "named_finish_rationale": "Matches the retained JSON controller forced-finish catalogue; no free-text or new action budget.",
+    "source": "https://github.com/vllm-project/vllm/blob/v0.8.5/vllm/entrypoints/openai/serving_chat.py"
+  },
+  "bounded_profile": {
+    "model_decisions": 4,
+    "output_tokens_per_decision": 1200,
+    "executed_searches": 2,
+    "exact_abstract_requests": 1,
+    "maximum_unique_final_PMIDs": 10
+  },
+  "privacy": "Raw model bodies/non-tool assistant content/reasoning are discarded; accepted actions and source provenance are retained privately.",
+  "data_reference": {
+    "name": "BioASQ 11 original public training questions",
+    "doi": "10.5281/zenodo.7655130",
+    "url": "https://zenodo.org/records/7655130",
+    "license": "CC-BY-2.5",
+    "questions": 24,
+    "scope": "12 factoid+12 list; same questions/reference lists already exposed during earlier development; not a fresh holdout."
+  },
+  "source_scope": "Candidate paper discovery/inspection; not claim entailment, independent Pharos evidence or biological graph accuracy.",
+  "graph_or_application_changes": false,
+  "content_sha256": "952cd09a259fdfe8ee46f4cdfa89e19fb214679cdd1e96472c6aece781ed99e2"
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "workspace": "native_evidence_workspace_20261115",
+    "source_graph_sha256": "eff8c04a0030dcdfc85e72788167626988052cfe5ed5126ae29edd213e532345",
+    "cases": [
+      {
+        "label": "Recorded protein association",
+        "source": "UniProtKB:P01116",
+        "target": "UniProtKB:Q9Y5S2",
+        "predicate": "biograph:has_interaction_annotation",
+        "assertion_id": "assertion:830f45fee61ec7b37fe9f50a",
+        "source_label": "KRAS \u00b7 UniProtKB:P01116",
+        "target_label": "CDC42BPB \u00b7 UniProtKB:Q9Y5S2",
+        "paths_returned": 1,
+        "query": {
+          "source_id": "UniProtKB:P01116",
+          "target_id": "UniProtKB:Q9Y5S2",
+          "max_hops": 1,
+          "view": "candidates",
+          "predicates": [
+            "biograph:has_interaction_annotation"
+          ],
+          "node_categories": null,
+          "max_paths": 20,
+          "max_expansions": 2000
+        },
+        "passed": true,
+        "source_predicate_states": [
+          "candidate"
+        ]
+      },
+      {
+        "label": "GO annotation",
+        "source": "UniProtKB:P04637",
+        "target": "GO:0005634",
+        "predicate": "biograph:has_native_go_annotation",
+        "assertion_id": "assertion:66d4b21e8b360c0524b4915e",
+        "source_label": "TP53 \u00b7 UniProtKB:P04637",
+        "target_label": "nucleus \u00b7 GO:0005634",
+        "paths_returned": 1,
+        "query": {
+          "source_id": "UniProtKB:P04637",
+          "target_id": "GO:0005634",
+          "max_hops": 1,
+          "view": "candidates",
+          "predicates": [
+            "biograph:has_native_go_annotation"
+          ],
+          "node_categories": null,
+          "max_paths": 20,
+          "max_expansions": 2000
+        },
+        "passed": true,
+        "source_predicate_states": [
+          "candidate"
+        ]
+      },
+      {
+        "label": "Pathway membership",
+        "source": "UniProtKB:P15056",
+        "target": "REACT:R-HSA-170984",
+        "predicate": "biolink:participates_in",
+        "assertion_id": "assertion:259b4d87eac907628c46fbcd",
+        "source_label": "BRAF \u00b7 UniProtKB:P15056",
+        "target_label": "ARMS-mediated activation \u00b7 REACT:R-HSA-170984",
+        "paths_returned": 1,
+        "query": {
+          "source_id": "UniProtKB:P15056",
+          "target_id": "REACT:R-HSA-170984",
+          "max_hops": 1,
+          "view": "candidates",
+          "predicates": [
+            "biolink:participates_in"
+          ],
+          "node_categories": null,
+          "max_paths": 20,
+          "max_expansions": 2000
+        },
+        "passed": true,
+        "source_predicate_states": [
+          "candidate"
+        ]
+      }
+    ]
+  },
+  {
+    "workspace": "source_faithful_workspace_20261113",
+    "source_graph_sha256": "eb0df5a47b8a2523033c8229a49528b2ecd537dd90dc6f865e346d760d68cf0c",
+    "cases": [
+      {
+        "label": "Recorded protein association",
+        "source": "UniProtKB:P01116",
+        "target": "UniProtKB:P31749",
+        "predicate": "biograph:has_interaction_annotation",
+        "assertion_id": "assertion:0a57a7ad65a568e5dd2c9523",
+        "source_label": "KRAS \u00b7 UniProtKB:P01116",
+        "target_label": "AKT1 \u00b7 UniProtKB:P31749",
+        "paths_returned": 2,
+        "query": {
+          "source_id": "UniProtKB:P01116",
+          "target_id": "UniProtKB:P31749",
+          "max_hops": 1,
+          "view": "candidates",
+          "predicates": [
+            "biograph:has_interaction_annotation"
+          ],
+          "node_categories": null,
+          "max_paths": 20,
+          "max_expansions": 2000
+        },
+        "passed": true,
+        "source_predicate_states": [
+          "candidate"
+        ]
+      },
+      {
+        "label": "GO annotation",
+        "source": "UniProtKB:P04637",
+        "target": "GO:0005634",
+        "predicate": "biograph:has_go_annotation",
+        "assertion_id": "assertion:6c5c6dbd75962ebb3e22b271",
+        "source_label": "TP53 \u00b7 UniProtKB:P04637",
+        "target_label": "nucleus \u00b7 GO:0005634",
+        "paths_returned": 1,
+        "query": {
+          "source_id": "UniProtKB:P04637",
+          "target_id": "GO:0005634",
+          "max_hops": 1,
+          "view": "candidates",
+          "predicates": [
+            "biograph:has_go_annotation"
+          ],
+          "node_categories": null,
+          "max_paths": 20,
+          "max_expansions": 2000
+        },
+        "passed": true,
+        "source_predicate_states": [
+          "candidate"
+        ]
+      },
+      {
+        "label": "Pathway membership",
+        "source": "UniProtKB:P15056",
+        "target": "REACT:R-HSA-170984",
+        "predicate": "biolink:participates_in",
+        "assertion_id": "assertion:259b4d87eac907628c46fbcd",
+        "source_label": "BRAF \u00b7 UniProtKB:P15056",
+        "target_label": "ARMS-mediated activation \u00b7 REACT:R-HSA-170984",
+        "paths_returned": 1,
+        "query": {
+          "source_id": "UniProtKB:P15056",
+          "target_id": "REACT:R-HSA-170984",
+          "max_hops": 1,
+          "view": "candidates",
+          "predicates": [
+            "biolink:participates_in"
+          ],
+          "node_categories": null,
+          "max_paths": 20,
+          "max_expansions": 2000
+        },
+        "passed": true,
+        "source_predicate_states": [
+          "candidate"
+        ]
+      }
+    ]
+  }
+]

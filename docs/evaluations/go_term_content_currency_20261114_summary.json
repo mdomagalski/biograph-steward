@@ -1,0 +1,777 @@
+{
+  "format": "biograph-steward.go-term-content-public-summary.v1",
+  "created_at": "2026-11-14T07:04:19.993276+00:00",
+  "scope": "Literal ontology metadata audit of36 displayed candidate rows from6 saved queries plus3 worked-example terms; no new evaluation or model run.",
+  "counts": {
+    "audited_rows": 39,
+    "unique_terms": 30,
+    "cohorts": {
+      "displayed_candidate": {
+        "rows": 36,
+        "unique_terms": 27,
+        "flags_by_row": {
+          "name_changed": 4,
+          "definition_text_changed": 4,
+          "currently_obsolete": 4,
+          "explicit_is_a_part_of_records_changed": 8,
+          "synonym_scope_or_text_records_changed": 1
+        },
+        "active_definition_changed_rows": 0
+      },
+      "worked_case": {
+        "rows": 3,
+        "unique_terms": 3,
+        "flags_by_row": {
+          "name_changed": 1,
+          "definition_text_changed": 1,
+          "synonym_scope_or_text_records_changed": 2,
+          "explicit_is_a_part_of_records_changed": 1
+        },
+        "active_definition_changed_rows": 1
+      }
+    }
+  },
+  "ontology_versions": {
+    "historical": {
+      "release": "2023-01-01",
+      "source_profile": "go-basic OBO",
+      "file_sha256": "0c0062efbb1b199a6a54e62c0c48ff0038d39173aecc7edfab66a20090d5ec2d"
+    },
+    "current": {
+      "release": "2026-07-26",
+      "source_profile": "GO OBOGraphs JSON",
+      "file_sha256": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273",
+      "ontology_version": "http://purl.obolibrary.org/obo/go/releases/2026-07-26/go.owl",
+      "publisher_authenticated": false
+    }
+  },
+  "currently_obsolete_displayed_ids": [
+    "GO:0005615",
+    "GO:0031323",
+    "GO:0097159",
+    "GO:1901564"
+  ],
+  "active_displayed_explicit_parent_record_change_ids": [
+    "GO:0019222",
+    "GO:0019538",
+    "GO:0051246",
+    "GO:1901363"
+  ],
+  "term_stanza_provenance": [
+    {
+      "GO_ID": "GO:0001109",
+      "historical_name": "promoter clearance during DNA-templated transcription",
+      "current_name": "promoter clearance during DNA-templated transcription",
+      "historical_stanza_utf8_sha256": "db8d38774621fde72ab2d2657e520c2600c645d52b62b56f0a9d9a9cece13da3",
+      "historical_stanza_canonical_json_string_sha256": "6b2e26281f070f41f662a3df023dbea7a4bc0dfedb256efded6d7388e203b520",
+      "current_node_canonical_json_sha256": "cda48c65863367a9d11cc3a73bd4749c977e223f2d3c9bc83d7b726a502e7ec3",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0003824",
+      "historical_name": "catalytic activity",
+      "current_name": "catalytic activity",
+      "historical_stanza_utf8_sha256": "b7b2e4f44d550619f2aa2324e0edd1a500a2b7239187d519b0024c318c037344",
+      "historical_stanza_canonical_json_string_sha256": "69c2c1bf90087cf9cda21bf23cb7dd7e2f734c785900c3df964f455d3ed18c95",
+      "current_node_canonical_json_sha256": "5bb89940fa2c806f1bfe134a9aa0490eb9c0d67c81fa450ac3048b471ba9bb19",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0005102",
+      "historical_name": "signaling receptor binding",
+      "current_name": "signaling receptor binding",
+      "historical_stanza_utf8_sha256": "6773986010bd758661ed05aa39659fffb160d044f801010cfc3bfd0e326fb762",
+      "historical_stanza_canonical_json_string_sha256": "8f02be31185e299ae3891511025c8ff48f527b9baafc64d67b5b20b74cbbf780",
+      "current_node_canonical_json_sha256": "c067ae580a1fd9e6449ac779b9075f43d1277a0b9a086a4da6f513e4dea13193",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0005576",
+      "historical_name": "extracellular region",
+      "current_name": "extracellular region",
+      "historical_stanza_utf8_sha256": "f5548c4f88136eccc7a0d9b044999e1034b08fd308241fb14edcbadbe26303d6",
+      "historical_stanza_canonical_json_string_sha256": "e44f9d6ee58a0b29b29e17dc95fab75e3b889c1f5e26ff424d85b6958390116a",
+      "current_node_canonical_json_sha256": "5b64ea9408ef156144926110b174bb64d83305c2d819baab4c807e54731e642f",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0005615",
+      "historical_name": "extracellular space",
+      "current_name": "obsolete extracellular space",
+      "historical_stanza_utf8_sha256": "e566a47d4ad18fdc4eb5da481932ccd0afcfc8278984ec7ced47a3e6a64ad886",
+      "historical_stanza_canonical_json_string_sha256": "c4762c0c3e558c36e538f80ad03962b1e2ac715d98911ec1a969bd1d5b1b325c",
+      "current_node_canonical_json_sha256": "cdbb58725b97ea5d80a24096d080f595a965a54fff5cf2f511ddceb75b190329",
+      "current_lifecycle": "obsolete",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": true,
+        "definition_text_changed": true,
+        "namespace_changed": false,
+        "currently_obsolete": true,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": true,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0005634",
+      "historical_name": "nucleus",
+      "current_name": "nucleus",
+      "historical_stanza_utf8_sha256": "4f1ec8a155e009c0d25b9eb7641f6225aae3a53fed7b035fa56894defe3cb924",
+      "historical_stanza_canonical_json_string_sha256": "52e81cef8b56fcbc6b398b1f2ff41867fcfc843e376b824f6950908f3903e081",
+      "current_node_canonical_json_sha256": "38ec337a16d1f7bc270980a4ddb1cc0ae9ba58671da2d49c35a403be2e0daf7f",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0005829",
+      "historical_name": "cytosol",
+      "current_name": "cytosol",
+      "historical_stanza_utf8_sha256": "7a80e8aef5312943b9ac1a82bf87a1e9abca98de26faee868ec41090f557fe2b",
+      "historical_stanza_canonical_json_string_sha256": "265263924c3b07f6dffc7d9d50bb1a030a0d9bf0e0424836cf606f8160d6ad2f",
+      "current_node_canonical_json_sha256": "ac1a6ad2f33887b8d05b3691145c63ea5ac0ed5c72e985e9b7330684b979a5c3",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0016020",
+      "historical_name": "membrane",
+      "current_name": "membrane",
+      "historical_stanza_utf8_sha256": "22614165115f993c46c66e79be404f070658669de10ad12241a2ce9409fe6c4c",
+      "historical_stanza_canonical_json_string_sha256": "c1603283f3026d1abe864a207ca565090e3b81cd88d362fb9030f215452e2915",
+      "current_node_canonical_json_sha256": "90e68c104ea6521af6fa1cde56578776fa21b88df8c8dfd1a723f2049f75b7d9",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0016740",
+      "historical_name": "transferase activity",
+      "current_name": "transferase activity",
+      "historical_stanza_utf8_sha256": "9caf8ebb049e2abde9df5a1b9462ae036c9aac20b492053a586459f2bc487741",
+      "historical_stanza_canonical_json_string_sha256": "b757a1e4a39813d7e7ea88156fd3552b22a02dd995d1622554c248b5af1f31ee",
+      "current_node_canonical_json_sha256": "0c445c7a37d5b96fa0dfcc598922c67379965fee03553178711b143f30a0e7da",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0019222",
+      "historical_name": "regulation of metabolic process",
+      "current_name": "regulation of metabolic process",
+      "historical_stanza_utf8_sha256": "48e60c813bc8fab890c0be8500026aa24752a92a6398241b93fc572515d8f29a",
+      "historical_stanza_canonical_json_string_sha256": "5f94323aeae3c651d2821c793b35331c0ea86e1d87dd53304fc60bc17df948ae",
+      "current_node_canonical_json_sha256": "a39523493dd3f50e25db6a8c278f9f445a81ea9651ef8e98750dd255ecaeda9d",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": true,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0019538",
+      "historical_name": "protein metabolic process",
+      "current_name": "protein metabolic process",
+      "historical_stanza_utf8_sha256": "5181613f3c5c800baf785ddbfabf08386f9593521ec95fc72df5f5d10d436ec0",
+      "historical_stanza_canonical_json_string_sha256": "fc0c709bf81bcf7f5e63b327ac152f1c1b55d4e8dc88eea0d7d756767d3d1776",
+      "current_node_canonical_json_sha256": "a08a4ca5d7173583782913798fb9454f29ed5d6c234fc1b5722f546a7d9f42ec",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": true,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0019899",
+      "historical_name": "enzyme binding",
+      "current_name": "enzyme binding",
+      "historical_stanza_utf8_sha256": "e39e414c98e38e98e8bccc73c4442675e32164f089a73963b901633a5ed8f05d",
+      "historical_stanza_canonical_json_string_sha256": "e587304ba4df3dd6418ff19090f013a70b2407fcd95225e67a50d583c6fa618d",
+      "current_node_canonical_json_sha256": "e51c9e5b5aacac0755e17909ac9d57a8c87d4a21ad3f3f3b85b30b2263ddd29a",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0031323",
+      "historical_name": "regulation of cellular metabolic process",
+      "current_name": "obsolete regulation of cellular metabolic process",
+      "historical_stanza_utf8_sha256": "28725722751a2452d6177fbb48bc19d0f5d5c5b9cbce7e3867c951b503e57e0c",
+      "historical_stanza_canonical_json_string_sha256": "9baabe7acee8d68134506fe58dcc9d59781005744591da6d0e5e55f5c16e0aba",
+      "current_node_canonical_json_sha256": "8c4fcbc7c4d241ce72f62078e2f790c5c7cb18243e9734be7339b5e14ea168ae",
+      "current_lifecycle": "obsolete",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": true,
+        "definition_text_changed": true,
+        "namespace_changed": false,
+        "currently_obsolete": true,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": true,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0031974",
+      "historical_name": "membrane-enclosed lumen",
+      "current_name": "membrane-enclosed lumen",
+      "historical_stanza_utf8_sha256": "5aa6a743c4866c52912d0c8b8eb259c6b99946593525f3bbe2fbdb306ae0dd1f",
+      "historical_stanza_canonical_json_string_sha256": "9a3cb9a793db9ff57892d0caada93ff7fd0761310287748463b8f0478288b278",
+      "current_node_canonical_json_sha256": "b2cee7986d25941e055c83de37043bb906aac16c327fea96415b4647dd01f37d",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0031982",
+      "historical_name": "vesicle",
+      "current_name": "vesicle",
+      "historical_stanza_utf8_sha256": "ed22fda937d01892683dde7b6efb9cf6996cb9ca0163f85d90777e4f7d5bd748",
+      "historical_stanza_canonical_json_string_sha256": "5c98db19c8f9be3c95a447bc4ae42dcdf5afa9613f0b8db4f4247d8abb582fa1",
+      "current_node_canonical_json_sha256": "ce92450e2324164c141dedd852cf4f7c2054030c788d061e5d2b2f3cf68da540",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0032501",
+      "historical_name": "multicellular organismal process",
+      "current_name": "multicellular organismal process",
+      "historical_stanza_utf8_sha256": "46d64d9e2282ea4ce5940a8a1d81c772a65aa025c0ab87238302c89ebbbabc67",
+      "historical_stanza_canonical_json_string_sha256": "c80d55bc635c9c3a10428c746995d2625dfc2dfa89557956cf3f77fe8c224d77",
+      "current_node_canonical_json_sha256": "a6029fe5e0b9955fe68b120c10f5eebe5d12e94a54351ecf8016c44b067f147b",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0032502",
+      "historical_name": "developmental process",
+      "current_name": "developmental process",
+      "historical_stanza_utf8_sha256": "3f4bb2845797640f7345d5dcd13ff70cda36ba30daa1a7414ce0eed5b334b105",
+      "historical_stanza_canonical_json_string_sha256": "656049f2bc9e586426b03e61e4ae30dbd4c09b6634474dfbe2aa4f4a4120509a",
+      "current_node_canonical_json_sha256": "2d1d3fdd996c530e38391d90f094adfbe343c414741e9cc2c38f1f182d99d8ba",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0043233",
+      "historical_name": "organelle lumen",
+      "current_name": "organelle lumen",
+      "historical_stanza_utf8_sha256": "5d628fe36ffe560aeb444321807b99fea6c618b43412fb9b45561e5ee176f5f2",
+      "historical_stanza_canonical_json_string_sha256": "d3a696bf9cf3cd85ef81c6787f9fa777f1d6f490db151560c57f892ce3fd1a84",
+      "current_node_canonical_json_sha256": "223c66ca24572e693cfbcaf1d28c76a24610d6432157fa93fb81e39d31c36a32",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0048519",
+      "historical_name": "negative regulation of biological process",
+      "current_name": "negative regulation of biological process",
+      "historical_stanza_utf8_sha256": "ed90ee7df2a6b51a8c78efde62cca83b62347b09f6cc4a3e3d403c3b7f67ac77",
+      "historical_stanza_canonical_json_string_sha256": "115b8dad95d669cc465238745bbb2f8f3ef2650443781836bcbb57c98338ad0d",
+      "current_node_canonical_json_sha256": "b455dff5361ff96921f4808551be32ddaa79fefe717f41b4610ca4c8b2c1e3e3",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0048523",
+      "historical_name": "negative regulation of cellular process",
+      "current_name": "negative regulation of cellular process",
+      "historical_stanza_utf8_sha256": "4724b8005a06f50cd39630f8c7dc9eb8099c38444df9712eb79eaf7d9c473fa5",
+      "historical_stanza_canonical_json_string_sha256": "d4ea96cacc2ee8607089c5190a7f948e64a5453d21c94826bc8e32b103297247",
+      "current_node_canonical_json_sha256": "ff37139e1fca0fefc35bb3594277fa3d5cd1bc0a9acaefcd62e9d26a5f957f8d",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0048583",
+      "historical_name": "regulation of response to stimulus",
+      "current_name": "regulation of response to stimulus",
+      "historical_stanza_utf8_sha256": "e8bddffd31e177beac211ee32dadd8b4d771c9bc1ff62345193114f1ebc9cd79",
+      "historical_stanza_canonical_json_string_sha256": "d47f9f8114ad52a3d50f2dd5207f5d530e213e7e051d62611d6bb7a0e5574bcc",
+      "current_node_canonical_json_sha256": "1d99a10289457d8cdfeabe3be6b00bc7e76601fb595e94b5d468645b556b7832",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0048856",
+      "historical_name": "anatomical structure development",
+      "current_name": "anatomical structure development",
+      "historical_stanza_utf8_sha256": "2007cf82b26f8be055b824311d938851f46b85d3bcfdbf692d3465b84db45880",
+      "historical_stanza_canonical_json_string_sha256": "028d006365e487ae084e230df37392477b31aa45ec095dfb532b677bfe4910f6",
+      "current_node_canonical_json_sha256": "b2ce778a43760821ed2294380debfd7065d7b82bb2753cc90ca912e494e5c07b",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0051246",
+      "historical_name": "regulation of protein metabolic process",
+      "current_name": "regulation of protein metabolic process",
+      "historical_stanza_utf8_sha256": "b582abb962b83a313c3e7bb280e2831e014aa0f266a73bc1285aff9b9ea44300",
+      "historical_stanza_canonical_json_string_sha256": "eebfbbe6389d6fbd1d313b2127deba33d036ce5574808c435b158c4b28e83878",
+      "current_node_canonical_json_sha256": "6bbd459b02fb138d302b532dd080b8d1d0221c9b478582c4fd63f272538ee077",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": true,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0060090",
+      "historical_name": "molecular adaptor activity",
+      "current_name": "molecular adaptor activity",
+      "historical_stanza_utf8_sha256": "87a157815faa19750cb8d8150de7e21fd6a5555e8a531f5050994de7db97cb2a",
+      "historical_stanza_canonical_json_string_sha256": "1718993e9b3c56f5206cbebdb1eebfd2ee72d4da81bad98c9cc756f587befa5f",
+      "current_node_canonical_json_sha256": "561b8d21800f4a382853b3677671db900ef09782ec023eb7723a0e547eca34cd",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": true,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0062153",
+      "historical_name": "C5-methylcytidine-containing RNA binding",
+      "current_name": "C5-methylcytidine-containing RNA reader activity",
+      "historical_stanza_utf8_sha256": "8977dfc6eb989f0359b3fff13ec14bf0043907ecb27ff5bb40d55007d2fdb83e",
+      "historical_stanza_canonical_json_string_sha256": "2dd5ff04c356baad7e7abe8f6188e620085865e6affe7fae38144abc8c28b9ee",
+      "current_node_canonical_json_sha256": "94e9b93714b5ff34f1dee580bfe93e4d2abb48eb2276f7089827fd1e37e52a0f",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": true,
+        "definition_text_changed": true,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": true,
+        "explicit_is_a_part_of_records_changed": true,
+        "old_name_current_synonym_scopes": [
+          "RELATED"
+        ],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0097159",
+      "historical_name": "organic cyclic compound binding",
+      "current_name": "obsolete organic cyclic compound binding",
+      "historical_stanza_utf8_sha256": "bd9f36edfdaa3eb285a658c0914af73b70a7fda396b753f212febcae197f1728",
+      "historical_stanza_canonical_json_string_sha256": "91f9d894668be758177a23e38f79cab745519d4a164fcf2abce5de38199d0271",
+      "current_node_canonical_json_sha256": "74b1c6c58e3022dbe39362464fe56618527c327a243667e8e255a48b06c53f76",
+      "current_lifecycle": "obsolete",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": true,
+        "definition_text_changed": true,
+        "namespace_changed": false,
+        "currently_obsolete": true,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": true,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0098772",
+      "historical_name": "molecular function regulator activity",
+      "current_name": "molecular function regulator activity",
+      "historical_stanza_utf8_sha256": "cb250d57b9547e30b8632811f04ee370e9dc04346a0c5172a3a16c97e744112b",
+      "historical_stanza_canonical_json_string_sha256": "13db53ad95225292830ec1c1976640fb0ead08412bbca1a1bf3bb82d4fe80b0f",
+      "current_node_canonical_json_sha256": "2d5f95f7f87add524c001e56db444703573c7167c2913a5474f94510428a76f8",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:0140096",
+      "historical_name": "catalytic activity, acting on a protein",
+      "current_name": "catalytic activity, acting on a protein",
+      "historical_stanza_utf8_sha256": "3a6a0a4cd99d3d5ac93b04944b7cee82e0c27c470188d802bd6aeaf8bd233d32",
+      "historical_stanza_canonical_json_string_sha256": "049b9c3dd729464991aff7ae3b01cbe75029faac9bc5c12da4beb2fab26f913a",
+      "current_node_canonical_json_sha256": "8d6748b55328b7b204b76277f78c00e98d68db19a569c7316b5a872a46b94bf0",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": false,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:1901363",
+      "historical_name": "heterocyclic compound binding",
+      "current_name": "heterocyclic compound binding",
+      "historical_stanza_utf8_sha256": "8109976bdf0434e620b23f5e5435fa03c904eec113f2e6a9a5522601233c0260",
+      "historical_stanza_canonical_json_string_sha256": "5bdd3b7a13eeb5e6691691fa5771b6de3f424745b65b185afb8531da37b6cc59",
+      "current_node_canonical_json_sha256": "57498d075698beb9001a45a9587fcc4cf95b9f4929af9e408c2c24d60da5d615",
+      "current_lifecycle": "active",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": false,
+        "definition_text_changed": false,
+        "namespace_changed": false,
+        "currently_obsolete": false,
+        "synonym_scope_or_text_records_changed": false,
+        "explicit_is_a_part_of_records_changed": true,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    },
+    {
+      "GO_ID": "GO:1901564",
+      "historical_name": "organonitrogen compound metabolic process",
+      "current_name": "obsolete organonitrogen compound metabolic process",
+      "historical_stanza_utf8_sha256": "bd2e0234c18637d89ca791bae2aac035208e7091623db5bd04c09d2f98aaf771",
+      "historical_stanza_canonical_json_string_sha256": "c6ed4ba5c301578d7a1e85784a9cf0e0bb5c6d2a27cdbbe4b8626f2e0a5a98c7",
+      "current_node_canonical_json_sha256": "0d00a4a59836ee77a1bbcd13b0016ab9b564531f604959ffdbd754f86514c37a",
+      "current_lifecycle": "obsolete",
+      "flags": {
+        "complete_literal_comparison": true,
+        "name_changed": true,
+        "definition_text_changed": true,
+        "namespace_changed": false,
+        "currently_obsolete": true,
+        "synonym_scope_or_text_records_changed": true,
+        "explicit_is_a_part_of_records_changed": true,
+        "old_name_current_synonym_scopes": [],
+        "semantic_equivalence_inferred": false,
+        "biological_falsehood_inferred": false
+      }
+    }
+  ],
+  "GO0062153_versioned_content": {
+    "historical": {
+      "name": "C5-methylcytidine-containing RNA binding",
+      "definition": "Binding to an RNA molecule modified by C5-methylcytidine.",
+      "synonyms": [
+        {
+          "scope": "EXACT",
+          "value": "C5-methylcytosine-containing RNA binding"
+        }
+      ],
+      "explicit_is_a": [
+        "GO:0003723"
+      ]
+    },
+    "current": {
+      "name": "C5-methylcytidine-containing RNA reader activity",
+      "definition": "A protein adaptor that recognizes and binds an RNA molecule modified by C5-methylcytidine.",
+      "synonyms": [
+        {
+          "scope": "RELATED",
+          "value": "C5-methylcytidine-containing RNA binding"
+        },
+        {
+          "scope": "RELATED",
+          "value": "C5-methylcytosine-containing RNA binding"
+        }
+      ],
+      "explicit_is_a": [
+        "GO:0140517"
+      ]
+    },
+    "qualification": "Same active identifier does not establish invariant descriptive scope. Keep the historical modified-RNA-binding forecast separate from the later reader/adaptor description. These snapshots do not date the exact edit or establish semantic equivalence."
+  },
+  "official_curator_issue": {
+    "url": "https://github.com/geneontology/go-ontology/issues/25788",
+    "opened_at": "2023-07-19T04:47:25Z",
+    "closed_at": "2023-08-09T23:07:45Z",
+    "limits": "Discussion is July-August2023; closure is not independently verified as the exact GO0062153 edit commit or first released ontology version. No claim this concept was introduced in2026."
+  },
+  "methods": {
+    "reused_readers": {
+      "historical": "Pinned CAFA author obo_parser parsing unchanged; metadata collector substitutes only dense Graph materialization. No propagation/scoring/ground truth parsing.",
+      "current": "Existing core go_ontology_qualification.load_ontology and classify_term."
+    },
+    "full_OWL_equivalence_tested": false,
+    "semantic_equivalence_inferred": false,
+    "biological_falsehood_inferred": false
+  },
+  "source_provenance": {
+    "literal_audit_file_sha256": "c20d50f275509712071278ba4b3ef698673dfba63dc0d232b5f70ae798543353",
+    "literal_audit_content_sha256": "d4cc906b419fee82a51192a6e845dd70efe28766221eba890e8c8fce75cb7530",
+    "source_qualification_content_sha256": "903dba3dfc9011354b4c8f40d2907e5774f2ca2462339ac4774e3be7e38ccdd7",
+    "audit_adapter_sha256": "d37615edf1222c481f67cdf9987097cfe812f0ef0caf28f41a2f2a4db8984c46"
+  },
+  "sources": [
+    {
+      "name": "Gene Ontology overview",
+      "url": "https://geneontology.org/docs/ontology-documentation/"
+    },
+    {
+      "name": "GO2026 primary paper",
+      "url": "https://academic.oup.com/nar/article/54/D1/D1779/8383826"
+    },
+    {
+      "name": "ROBOT diff",
+      "url": "https://robot.obolibrary.org/diff"
+    },
+    {
+      "name": "OAK diff",
+      "url": "https://incatools.github.io/ontology-access-kit/cli.html#diff"
+    }
+  ],
+  "attribution": "Gene Ontology Consortium; current source declares CC BY4.0 (http://creativecommons.org/licenses/by/4.0/).",
+  "privacy_scope": {
+    "raw_experimental_reference_cases": false,
+    "protein_to_future_outcome_pairs": false,
+    "forecast_scores": false,
+    "source_annotation_bodies": false,
+    "credentials_or_absolute_local_paths": false
+  },
+  "benchmark_forecast_live_source_index_notes_or_core_changed": false,
+  "new_model_or_scoring_calls": 0,
+  "content_sha256": "d5e058357f1bb0dfd27f54556d2ade2bfae1b030b29fb935c119dd9d7fb552e5"
+}

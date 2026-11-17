@@ -1,0 +1,130 @@
+{
+  "arm": "crossfit_graph_frequency_context",
+  "compute": {
+    "CPU_workers_max": 4,
+    "GPU_memory_fraction_max": 0.8,
+    "actual_native_resource_and_CPU_parity_before_fit": true,
+    "new_LLM_requests": 0,
+    "one_GPU_phase_wall_seconds_max": 5400,
+    "original_model_container_state_restored_exactly_if_present": true,
+    "paid_VM_started_automatically": false,
+    "source_preparation_wall_seconds_max": 5400,
+    "start_original_model_server_if_initially_off": false
+  },
+  "evaluation": {
+    "all_forecasts_and_model_choice_sealed_before_development_assessment": true,
+    "bootstrap_draws": 2000,
+    "bootstrap_seed": 20261113,
+    "complete_contrast_rows": 324,
+    "complete_method_rows": 138,
+    "earlier_methods": 22,
+    "namespace": "biological_process",
+    "native_curve_count_agreement_required": true,
+    "new_candidate_comparisons": 132,
+    "no_default_or_automatic_scientific_pruning_change": true,
+    "previous_completed_report_sha256": "b7792b0737835d374f2335735aa254e90a609d9a73bf0bfd9f99f9586065eac0",
+    "prior_comparisons_retained": 192,
+    "reporting_focus": [
+      "validation_selected_context",
+      "localplus_T0_curated"
+    ],
+    "sampling_unit": "same complete native protein rows; paired with saved original draws",
+    "settings": [
+      "PK",
+      "NK",
+      "LK"
+    ],
+    "tau_grid": {
+      "start": 0.001,
+      "step": 0.001,
+      "stop_exclusive": 1.0
+    },
+    "views": [
+      "native",
+      "fixed_T0"
+    ]
+  },
+  "folds": {
+    "all_fitting_rows_held_out_exactly_once": true,
+    "empty_head_behavior": "native_runLocal_empty_positives_observed_zero",
+    "fold_source_and_full_sequence_group_hashes_sealed_before_fit": true,
+    "group_key": "exact_full_sequence_SHA256",
+    "head_axis": "full_literal_source_heads_projected_native_MAX_even_when_fold_empty",
+    "literal_alias_scores_combined_only_after_native_scoring": true,
+    "method": "sklearn.model_selection.GroupKFold",
+    "n_splits": 5,
+    "priors": "native_complement_before_root_filter",
+    "shuffle": false,
+    "splitter_actual_version_and_source_hash_pinned_before_generation": true
+  },
+  "format": "biograph-steward.crossfit-graph-frequency-development-plan.v1",
+  "graph_pruning_or_app_promotion": false,
+  "independent_confirmation": false,
+  "limitations": [
+    "Combined profile change; no isolated causal OOF effect or full ProtBoost reproduction.",
+    "Source-compatible combination is an untested hypothesis, not an established gain.",
+    "Missing labels remain zero in unchanged benchmark BCE; no PU implementation admitted.",
+    "Exact-sequence folds do not establish distant-family, study or GOA-source independence.",
+    "All April-November reference outcomes are already consumed development evidence."
+  ],
+  "model": {
+    "final_proteins": 3300,
+    "fitting_universe": 4040,
+    "model_terms": 27942,
+    "native_training_loss_optimizer_and_SWA_unchanged": true,
+    "new_fits": 1,
+    "normal_consumed_validation_checkpoint_selection": true,
+    "original_full_positive_cells": 208835,
+    "params": {
+      "architectures": [
+        8
+      ],
+      "average_best": 3,
+      "batch_size": 32,
+      "clip_grad_value": 0.1,
+      "context_profile": "source_derived_namespaced40_true_raw_prop_v1",
+      "embed_size": 8,
+      "epochs": 20,
+      "hidden_size": 16,
+      "lr": 0.001,
+      "num_workers": 0,
+      "optimizer": "Adam",
+      "postprocessing": "published_notebook_soft07_max_min_equal_fullprecision",
+      "store_swa": 10,
+      "weight_decay": 0.0
+    },
+    "root_positive_fitting_rows": 3557,
+    "seed": 20261115,
+    "validation_proteins": 797
+  },
+  "namespace": "biological_process",
+  "new_primary_success_gate": false,
+  "original_forecast_seal_sha256": "a41920a505c68dcc67891be66381b30eac4a028ddb459c52e7081a7e06250eb9",
+  "original_primary_comparison_unchanged": true,
+  "original_public_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "original_raw_report_sha256": "2dfebc4e855df8682335484cb39b5100f518363fa74b1b24b66ca3c4cdffdf98",
+  "parent_axis": [
+    "localplus",
+    "fit_label_frequency"
+  ],
+  "reference_previously_consumed": true,
+  "source_contract": {
+    "Naive_meaning": "Observed annotation frequency, not verified biological prevalence or a PU class prior.",
+    "changed_input_profile": "Original dated sources and full targets; graph and observed-label-frequency parents cross-fitted for fitting rows. DeepGO absent. Rebuild all three base-feature caches.",
+    "channel_contract_sha256": "c71fb4e43664a64fbb32e1cb15a453bbee9ee4efd66931eb2d0d7c96c16a8c8e",
+    "context_dates": {
+      "final": "2026-04-10",
+      "fit": "2023-05-18",
+      "validation": "2025-09-04"
+    },
+    "model_obo_sha256": "0c0062efbb1b199a6a54e62c0c48ff0038d39173aecc7edfab66a20090d5ec2d",
+    "no_new_source_refresh": true,
+    "original_fit_manifest_sha256": "b6c84aae2d8e21c8f99a101b54ecbc92eb5d2eb9b100ad9f26c561b3271e3fb2",
+    "raw_context_sidecars_unchanged": true,
+    "source_qualification_documents": [
+      "docs/evaluations/training_followup_20261115/oof_source_qualification.json",
+      "docs/evaluations/training_followup_20261115/pu_qualification.json"
+    ]
+  },
+  "test_outcome_based_model_selection": false
+}

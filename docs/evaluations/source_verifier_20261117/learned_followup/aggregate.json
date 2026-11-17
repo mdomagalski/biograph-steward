@@ -1,0 +1,588 @@
+{
+  "attribution": {
+    "code": "The author package declares MIT. Native INDRA and other dependencies retain their own licenses.",
+    "data": "The original 2023 Zenodo corpus specifies CC-BY-NC-SA 4.0. No separate redistribution grant was located for the newer 2026 references. Raw cases, labels and source passages remain private.",
+    "sources": {
+      "INDRA_2023_paper": "https://doi.org/10.15252/msb.202211325",
+      "author_code": "https://github.com/gyorilab/indra-belief-model/tree/74e0ffe9ea21f6f11e906cee89a2091f45be2f7d",
+      "curation_guidelines": "https://indra.readthedocs.io/en/latest/tutorials/html_curation.html",
+      "original_2023_corpus": "https://zenodo.org/records/7559353",
+      "reference_description": "https://github.com/gyorilab/indra-belief-model/blob/74e0ffe9ea21f6f11e906cee89a2091f45be2f7d/data/benchmark/README.md"
+    }
+  },
+  "balanced_accuracy_95_intervals": {
+    "base": [
+      0.5082078481862965,
+      0.6510727370307287
+    ],
+    "combined": [
+      0.43017885171923276,
+      0.6345369196065522
+    ],
+    "disconfirm": [
+      0.4325949893349166,
+      0.651283950617284
+    ],
+    "metadata_only": [
+      0.3551265242280464,
+      0.5798619791666667
+    ],
+    "retain_all": [
+      0.5,
+      0.5
+    ]
+  },
+  "base_error_tag_breakdown": {
+    "primary": {
+      "cases_with_multiple_tags": 0,
+      "distinct_pairs": 382,
+      "scope": "One canonical tag per pair. Descriptive fixed-base counts; no tag-specific winner selection.",
+      "tag_incidences": 382,
+      "tags": {
+        "act_vs_amt": {
+          "base_abstain": 0,
+          "base_reject": 6,
+          "base_support": 3,
+          "cases_with_tag": 9,
+          "false_exclusion": 0,
+          "false_support": 3,
+          "reference_supported": 0,
+          "reference_unsupported": 9
+        },
+        "agent_conditions": {
+          "base_abstain": 1,
+          "base_reject": 9,
+          "base_support": 8,
+          "cases_with_tag": 18,
+          "false_exclusion": 0,
+          "false_support": 8,
+          "reference_supported": 0,
+          "reference_unsupported": 18
+        },
+        "correct": {
+          "base_abstain": 2,
+          "base_reject": 78,
+          "base_support": 107,
+          "cases_with_tag": 187,
+          "false_exclusion": 78,
+          "false_support": 0,
+          "reference_supported": 187,
+          "reference_unsupported": 0
+        },
+        "entity_boundaries": {
+          "base_abstain": 0,
+          "base_reject": 21,
+          "base_support": 14,
+          "cases_with_tag": 35,
+          "false_exclusion": 0,
+          "false_support": 14,
+          "reference_supported": 0,
+          "reference_unsupported": 35
+        },
+        "grounding": {
+          "base_abstain": 0,
+          "base_reject": 47,
+          "base_support": 17,
+          "cases_with_tag": 64,
+          "false_exclusion": 0,
+          "false_support": 17,
+          "reference_supported": 0,
+          "reference_unsupported": 64
+        },
+        "hypothesis": {
+          "base_abstain": 0,
+          "base_reject": 2,
+          "base_support": 3,
+          "cases_with_tag": 5,
+          "false_exclusion": 0,
+          "false_support": 3,
+          "reference_supported": 0,
+          "reference_unsupported": 5
+        },
+        "mod_site": {
+          "base_abstain": 0,
+          "base_reject": 0,
+          "base_support": 0,
+          "cases_with_tag": 0,
+          "false_exclusion": 0,
+          "false_support": 0,
+          "reference_supported": 0,
+          "reference_unsupported": 0
+        },
+        "negative_result": {
+          "base_abstain": 0,
+          "base_reject": 3,
+          "base_support": 1,
+          "cases_with_tag": 4,
+          "false_exclusion": 0,
+          "false_support": 1,
+          "reference_supported": 0,
+          "reference_unsupported": 4
+        },
+        "no_relation": {
+          "base_abstain": 0,
+          "base_reject": 8,
+          "base_support": 2,
+          "cases_with_tag": 10,
+          "false_exclusion": 0,
+          "false_support": 2,
+          "reference_supported": 0,
+          "reference_unsupported": 10
+        },
+        "other": {
+          "base_abstain": 0,
+          "base_reject": 0,
+          "base_support": 0,
+          "cases_with_tag": 0,
+          "false_exclusion": 0,
+          "false_support": 0,
+          "reference_supported": 0,
+          "reference_unsupported": 0
+        },
+        "polarity": {
+          "base_abstain": 0,
+          "base_reject": 13,
+          "base_support": 6,
+          "cases_with_tag": 19,
+          "false_exclusion": 0,
+          "false_support": 6,
+          "reference_supported": 0,
+          "reference_unsupported": 19
+        },
+        "wrong_relation": {
+          "base_abstain": 0,
+          "base_reject": 22,
+          "base_support": 9,
+          "cases_with_tag": 31,
+          "false_exclusion": 0,
+          "false_support": 9,
+          "reference_supported": 0,
+          "reference_unsupported": 31
+        }
+      }
+    },
+    "secondary": {
+      "cases_with_multiple_tags": 2,
+      "distinct_pairs": 145,
+      "scope": "Tag rows overlap; do not sum incidences as distinct pairs. Pair gold remains any-incorrect-wins.",
+      "tag_incidences": 147,
+      "tags": {
+        "act_vs_amt": {
+          "base_abstain": 0,
+          "base_reject": 1,
+          "base_support": 0,
+          "cases_with_tag": 1,
+          "false_exclusion": 0,
+          "false_support": 0,
+          "reference_supported": 0,
+          "reference_unsupported": 1
+        },
+        "agent_conditions": {
+          "base_abstain": 0,
+          "base_reject": 0,
+          "base_support": 0,
+          "cases_with_tag": 0,
+          "false_exclusion": 0,
+          "false_support": 0,
+          "reference_supported": 0,
+          "reference_unsupported": 0
+        },
+        "correct": {
+          "base_abstain": 2,
+          "base_reject": 30,
+          "base_support": 41,
+          "cases_with_tag": 73,
+          "false_exclusion": 29,
+          "false_support": 0,
+          "reference_supported": 72,
+          "reference_unsupported": 1
+        },
+        "entity_boundaries": {
+          "base_abstain": 0,
+          "base_reject": 2,
+          "base_support": 2,
+          "cases_with_tag": 4,
+          "false_exclusion": 0,
+          "false_support": 2,
+          "reference_supported": 0,
+          "reference_unsupported": 4
+        },
+        "grounding": {
+          "base_abstain": 0,
+          "base_reject": 12,
+          "base_support": 13,
+          "cases_with_tag": 25,
+          "false_exclusion": 0,
+          "false_support": 13,
+          "reference_supported": 0,
+          "reference_unsupported": 25
+        },
+        "hypothesis": {
+          "base_abstain": 0,
+          "base_reject": 3,
+          "base_support": 1,
+          "cases_with_tag": 4,
+          "false_exclusion": 0,
+          "false_support": 1,
+          "reference_supported": 0,
+          "reference_unsupported": 4
+        },
+        "mod_site": {
+          "base_abstain": 0,
+          "base_reject": 0,
+          "base_support": 0,
+          "cases_with_tag": 0,
+          "false_exclusion": 0,
+          "false_support": 0,
+          "reference_supported": 0,
+          "reference_unsupported": 0
+        },
+        "negative_result": {
+          "base_abstain": 0,
+          "base_reject": 0,
+          "base_support": 0,
+          "cases_with_tag": 0,
+          "false_exclusion": 0,
+          "false_support": 0,
+          "reference_supported": 0,
+          "reference_unsupported": 0
+        },
+        "no_relation": {
+          "base_abstain": 1,
+          "base_reject": 12,
+          "base_support": 5,
+          "cases_with_tag": 18,
+          "false_exclusion": 0,
+          "false_support": 5,
+          "reference_supported": 0,
+          "reference_unsupported": 18
+        },
+        "other": {
+          "base_abstain": 0,
+          "base_reject": 0,
+          "base_support": 0,
+          "cases_with_tag": 0,
+          "false_exclusion": 0,
+          "false_support": 0,
+          "reference_supported": 0,
+          "reference_unsupported": 0
+        },
+        "polarity": {
+          "base_abstain": 0,
+          "base_reject": 11,
+          "base_support": 4,
+          "cases_with_tag": 15,
+          "false_exclusion": 0,
+          "false_support": 4,
+          "reference_supported": 0,
+          "reference_unsupported": 15
+        },
+        "wrong_relation": {
+          "base_abstain": 0,
+          "base_reject": 3,
+          "base_support": 4,
+          "cases_with_tag": 7,
+          "false_exclusion": 0,
+          "false_support": 4,
+          "reference_supported": 0,
+          "reference_unsupported": 7
+        }
+      }
+    }
+  },
+  "bootstrap": {
+    "draws": 10000,
+    "groups": 87,
+    "method": "paired_connected_source_group_percentile_bootstrap",
+    "sample_multiplicities_sha256": "a3c089b55747916c4598f2c18a315e9bb736599f5cd68f07fa96e6df847f6f58",
+    "scope": "Pointwise conditional test-source-group intervals given the fixed primary fit; training uncertainty and population accuracy are not estimated.",
+    "seed": 20261117,
+    "undefined_draws": 0
+  },
+  "content_sha256": "9282b6591aec1ab9a27c5e8ae85261137634c698145e44c0eabd4056abec0d6b",
+  "contrasts": [
+    {
+      "candidate": "combined",
+      "comparator": "base",
+      "defined_draws": 10000,
+      "difference": -0.04737442922374424,
+      "percentile_95_interval": [
+        -0.136681378871557,
+        0.03820291777188322
+      ]
+    },
+    {
+      "candidate": "combined",
+      "comparator": "disconfirm",
+      "defined_draws": 10000,
+      "difference": -0.012747336377473384,
+      "percentile_95_interval": [
+        -0.10344526397515517,
+        0.07826639790433414
+      ]
+    },
+    {
+      "candidate": "combined",
+      "comparator": "metadata_only",
+      "defined_draws": 10000,
+      "difference": 0.06202435312024357,
+      "percentile_95_interval": [
+        -0.016393442622950782,
+        0.14681955260109908
+      ]
+    }
+  ],
+  "created_at": "2026-11-17T05:33:38.928049+00:00",
+  "format": "biograph-steward.learned-source-combination-public-aggregate.v1",
+  "method_and_resources": {
+    "Gilda": "1.6.1",
+    "INDRA": "1.24.0",
+    "author_commit": "74e0ffe9ea21f6f11e906cee89a2091f45be2f7d",
+    "grounding_resource_sha256": {
+      "gilda_models.json.gz": "62c888eeabe4afb484d17d90cf3e8304c9c3a8f1c97b5b3fb7ab41a458340e1f",
+      "grounding_terms.tsv.gz": "b53169c4735d049c0443ab04830b26372dcfeba47845c1fe97392b64f08f2bb8"
+    },
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+    "vLLM": "0.8.5"
+  },
+  "methods": {
+    "base": {
+      "balanced_accuracy_abstention_zero": 0.5792427701674276,
+      "counts": {
+        "abstain_supported": 2,
+        "abstain_unsupported": 1,
+        "abstentions": 3,
+        "correct_explicit_decisions": 84,
+        "pairs": 145,
+        "reject_decisions": 72,
+        "reject_supported": 29,
+        "reject_unsupported": 43,
+        "support_decisions": 70,
+        "support_supported": 41,
+        "support_unsupported": 29,
+        "supported": 72,
+        "unsupported": 73
+      },
+      "coverage": 0.9793103448275862,
+      "error_F1": 0.593103448275862,
+      "error_precision": 0.5972222222222222,
+      "error_recall": 0.589041095890411,
+      "explicit_decision_accuracy": 0.5793103448275863,
+      "false_exclusion_rate": 0.4027777777777778,
+      "false_support_rate": 0.3972602739726027,
+      "retained_supported_fraction": 0.589041095890411,
+      "support_precision": 0.5857142857142857
+    },
+    "combined": {
+      "balanced_accuracy_abstention_zero": 0.5318683409436834,
+      "counts": {
+        "abstain_supported": 2,
+        "abstain_unsupported": 2,
+        "abstentions": 4,
+        "correct_explicit_decisions": 77,
+        "pairs": 145,
+        "reject_decisions": 53,
+        "reject_supported": 23,
+        "reject_unsupported": 30,
+        "support_decisions": 88,
+        "support_supported": 47,
+        "support_unsupported": 41,
+        "supported": 72,
+        "unsupported": 73
+      },
+      "coverage": 0.9724137931034482,
+      "error_F1": 0.47619047619047616,
+      "error_precision": 0.5660377358490566,
+      "error_recall": 0.410958904109589,
+      "explicit_decision_accuracy": 0.5310344827586206,
+      "false_exclusion_rate": 0.3194444444444444,
+      "false_support_rate": 0.5616438356164384,
+      "retained_supported_fraction": 0.532608695652174,
+      "support_precision": 0.5340909090909091
+    },
+    "disconfirm": {
+      "balanced_accuracy_abstention_zero": 0.5446156773211568,
+      "counts": {
+        "abstain_supported": 1,
+        "abstain_unsupported": 1,
+        "abstentions": 2,
+        "correct_explicit_decisions": 79,
+        "pairs": 145,
+        "reject_decisions": 76,
+        "reject_supported": 34,
+        "reject_unsupported": 42,
+        "support_decisions": 67,
+        "support_supported": 37,
+        "support_unsupported": 30,
+        "supported": 72,
+        "unsupported": 73
+      },
+      "coverage": 0.9862068965517241,
+      "error_F1": 0.5637583892617449,
+      "error_precision": 0.5526315789473685,
+      "error_recall": 0.5753424657534246,
+      "explicit_decision_accuracy": 0.5448275862068965,
+      "false_exclusion_rate": 0.4722222222222222,
+      "false_support_rate": 0.410958904109589,
+      "retained_supported_fraction": 0.5507246376811594,
+      "support_precision": 0.5522388059701493
+    },
+    "metadata_only": {
+      "balanced_accuracy_abstention_zero": 0.46984398782343983,
+      "counts": {
+        "abstain_supported": 2,
+        "abstain_unsupported": 2,
+        "abstentions": 4,
+        "correct_explicit_decisions": 68,
+        "pairs": 145,
+        "reject_decisions": 52,
+        "reject_supported": 27,
+        "reject_unsupported": 25,
+        "support_decisions": 89,
+        "support_supported": 43,
+        "support_unsupported": 46,
+        "supported": 72,
+        "unsupported": 73
+      },
+      "coverage": 0.9724137931034482,
+      "error_F1": 0.4,
+      "error_precision": 0.4807692307692308,
+      "error_recall": 0.3424657534246575,
+      "explicit_decision_accuracy": 0.4689655172413793,
+      "false_exclusion_rate": 0.375,
+      "false_support_rate": 0.6301369863013698,
+      "retained_supported_fraction": 0.4838709677419355,
+      "support_precision": 0.48314606741573035
+    },
+    "retain_all": {
+      "balanced_accuracy_abstention_zero": 0.5,
+      "counts": {
+        "abstain_supported": 0,
+        "abstain_unsupported": 0,
+        "abstentions": 0,
+        "correct_explicit_decisions": 72,
+        "pairs": 145,
+        "reject_decisions": 0,
+        "reject_supported": 0,
+        "reject_unsupported": 0,
+        "support_decisions": 145,
+        "support_supported": 72,
+        "support_unsupported": 73,
+        "supported": 72,
+        "unsupported": 73
+      },
+      "coverage": 1.0,
+      "error_F1": 0.0,
+      "error_precision": null,
+      "error_recall": 0.0,
+      "explicit_decision_accuracy": 0.496551724137931,
+      "false_exclusion_rate": 0.0,
+      "false_support_rate": 1.0,
+      "retained_supported_fraction": 0.496551724137931,
+      "support_precision": 0.496551724137931
+    }
+  },
+  "prespecified_success_over_all_three": false,
+  "privacy": {
+    "aggregate_only": true,
+    "fitted_coefficients": false,
+    "individual_records_or_labels": false,
+    "private_paths_or_credentials": false,
+    "source_passages_or_model_responses": false
+  },
+  "provenance": {
+    "fit_completion_sha256": "51e95731f09f7cdb2c35077231712494a25ac471f9a78b389fb5fe9f3b11aa5c",
+    "fitter_sha256": "37bf597e78fcc1ee5b34dd3057c83bbaa6235a5a53ba6c1208c6b4ecbf27a09c",
+    "followup_protocol_sha256": "149dc34f328512af7f26739444017f48e989e30021a20c6b7d5dbaf8d1be4afb",
+    "metric_helper_sha256": "85524d12d0d7734ddaccefcecf04f8a2d6912bdf0c6a475467fcfc66b694a7c2",
+    "model_file_sha256": {
+      "combined": "8520269c678c19f774a71c1c32e727fc9c0ad0ef19620dd918686b9766f4161d",
+      "metadata_only": "81ea01372333ef7faace2d6bc90a6f50d9f0d36b3ad07627fb0de58e5602d6fb"
+    },
+    "original_study_protocols": {
+      "primary": {
+        "adapter_sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f",
+        "groups_file_sha256": "52b694f89eeb4e8514fa50e7b92cd6c997f6238eeb994f6af869c0e7e6bd9899",
+        "protocol_sha256": "3d1c616d60ca4fea32aefc4a3490879f0a0368b3141e34834ae978989b4cd461",
+        "runner_sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113",
+        "runtime_readiness_sha256": "1bf6301afbc8d3bfc6d3caefa154493774192b1c548f40a2d321d7946c427936",
+        "source_frame_sha256": "11854919e84547adf3ca925be9aaa0b39651ac8dd07da3a01ad1b55f66928aed",
+        "source_release_sha256": "31f3bcd0cb7f4897ba9cd66da8c51da61d7899280201669a9585d9d6b6f69675",
+        "upstream_manifest_sha256": "82cbba93e4fc1c1bd63c60becab09790f53ace77276a1323fd4ba305b5fb5b61"
+      },
+      "secondary": {
+        "adapter_sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f",
+        "groups_file_sha256": "eda9cbb64c46f7d8bbe1b4d59131d9ceafd31692fb7d02b330fe1b8ed1127bf6",
+        "protocol_sha256": "d8ba17535e02df3e465e49b0ec6f35d08e61544be2e5217bc4aa3e8f1920bf48",
+        "runner_sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113",
+        "runtime_readiness_sha256": "1bf6301afbc8d3bfc6d3caefa154493774192b1c548f40a2d321d7946c427936",
+        "source_frame_sha256": "85644e3c777983bf47a97b2533273237f32e5dabc057d327b65a55d604f91b19",
+        "source_release_sha256": "64cbf8b2e293dcaeddaca5d01088cbdff315dee234efecd430366fb82d0c74ac",
+        "upstream_manifest_sha256": "82cbba93e4fc1c1bd63c60becab09790f53ace77276a1323fd4ba305b5fb5b61"
+      }
+    },
+    "private_assessment_sha256": "2c56bbdde6670269fa257a8447f29d79a4c138240ca2666b65a00748bb85f04e",
+    "secondary_prediction_file_sha256": {
+      "combined": "8f6973f2814f973a60c93ae63f0195866357cadb6b0a7c42d9cea14f9aa95a78",
+      "metadata_only": "914790c28b8a4f100ac5a7b8a1ea36f60e3c3c27136034a00c00770bf9b4d90a"
+    }
+  },
+  "recipe": {
+    "combined_features": [
+      "source_api",
+      "native_claim_type",
+      "base_decision",
+      "base_confidence",
+      "disconfirm_decision",
+      "disconfirm_confidence"
+    ],
+    "confidence": "Official parsed categorical confidence only, including an explicit absent category. No raw-reply parsing, token margins or calibrated probability claim.",
+    "encoder": "Categories fit on eligible primary rows only; unknown secondary categories are ignored under the standard OneHotEncoder rule.",
+    "metadata_only_features": [
+      "source_api",
+      "native_claim_type"
+    ],
+    "parameters": {
+      "C": 1.0,
+      "calibration": false,
+      "class_weight": "balanced",
+      "encoder_drop": null,
+      "encoder_handle_unknown": "ignore",
+      "l1_ratio": 0.0,
+      "max_iter": 1000,
+      "random_state": 20261117,
+      "search": false,
+      "sklearn": "1.9.1",
+      "solver": "lbfgs",
+      "threshold": "native_predict_default"
+    }
+  },
+  "scope": [
+    "The prespecified learned success gate failed. The learned combination and disconfirm did not resolve the false-exclusion problem.",
+    "The original base arm exceeded retain-all balanced accuracy on both selected references, but rejected 78/187 supported primary pairs and 29/72 supported external pairs. These error rates do not justify automatic pruning.",
+    "These are selected human-curator sentence/claim labels, not whole-graph biological truth. Annotator expertise and independent adjudication are not assumed for all curators.",
+    "The primary uses first qualifying correct-only labels; the secondary uses released any-incorrect-wins non-original-pair curator tags. Selection, annotator and aggregation differences remain.",
+    "Both original judgments come from the same small language model and are correlated. The small classifier is not a global biological-confidence model.",
+    "Zero current application assertions qualify for this evaluation-only verifier. No app graph or Pharos assertion was automatically changed.",
+    "No refit, threshold search, prompt change or further tuning used the 145 test labels. Future tuning requires a fresh reference boundary."
+  ],
+  "secondary_frame": {
+    "connected_source_groups": 87,
+    "pairs": 145,
+    "reference_supported": 72,
+    "reference_unsupported": 73
+  },
+  "success_rule": "Combination point gain and positive lower pointwise 95% bound versus base, disconfirm and metadata-only. All three comparisons must pass; no winner selection.",
+  "title": "Held-out learned-combination follow-up",
+  "training": {
+    "abstentions_per_learned_arm": 4,
+    "eligibility": "Both original arms completed with valid categorical verdicts; the same eligibility is used for both trained models.",
+    "eligible_fit_pairs": 373,
+    "eligible_secondary_pairs": 141,
+    "primary_is_not_followup_test_data": true,
+    "primary_pairs": 382,
+    "secondary_pairs": 145,
+    "timeline": "The primary 382 pairs were first benchmarked with sealed original predictions, then their labels were consumed for this separately preregistered training follow-up. Both fitted encoders/models and all 145 secondary predictions were sealed before secondary labels were opened."
+  }
+}

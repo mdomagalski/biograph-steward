@@ -2,15 +2,42 @@
 
 The construction flow connects an exact accession request to bounded Pharos retrieval, normalization, a saved evidence graph and a cited neighborhood answer. It uses the existing Pharos adapter and graph transformer. A deterministic plan selects the fixed retrieval profile; no language model, GPU, Brev instance or AWS account is required.
 
-The fixed form selects the cohort and supported profile directly. The optional
-[construction planner](CONSTRUCTION_AGENT.md) now selects a permitted request
-from a question and an explicitly supplied cohort, or abstains. The same
-deterministic constructor executes it after validation. The [live development
-check](evaluations/CONSTRUCTION_PLANNER_20261026.md) found that all four supported
-planning tasks still failed after a structural correction. This feature remains
-experimental; explicit cohort selection is the working construction path.
+The fixed form selects the cohort and supported profile directly. It is the
+working construction path. An earlier optional [construction-planner experiment](CONSTRUCTION_AGENT.md)
+has its own [development results](evaluations/CONSTRUCTION_PLANNER_20261026.md)
+and is separate from the current source agent.
 
 The product milestone is a reproducible graph publication. It does not establish improved predictions, scientific accuracy, independent experimental evidence or accepted biological claims.
+
+## Build through the app
+
+You can construct a real Pharos graph without writing graph queries or calling
+the CLI construction command. This route needs a local/operator installation,
+Python 3.10+ and an internet connection. It needs no language model or GPU.
+
+1. Start the application with `python3 app.py` and open
+   `http://127.0.0.1:8765/`. On **Start here**, choose **Build a graph from your
+   proteins** to open the existing protein-cohort form.
+2. Paste 1–25 exact UniProt accessions. Choose the protein to explore and the
+   evidence to retrieve. For example, `P01116, P00533, P15056` selects human
+   KRAS, EGFR and BRAF. Check the protein and organism in UniProt before using
+   an accession. The form previews the question it will answer.
+3. Choose **Build graph and answer**. When retrieval finishes, follow the
+   cited answer to its source records. **Export** provides the graph and source
+   trace. Review the coverage summary for unresolved proteins or capped results.
+
+The public demonstration offers saved real-source examples and local-build
+instructions. It does not perform this live retrieval. The constructor's cited
+answer is deterministic. The current Nemotron source agent operates on
+workspaces with its supported native source profiles attached.
+
+Construction is the first part of the same application workflow: build or open
+a source workspace, ask a supported question, inspect its graph and cited
+answer, review evidence and export. A new deterministic question on the saved
+cohort needs no model. A new agent-led investigation needs a configured model
+endpoint and one of its supported native source profiles. This constructor
+retrieves Pharos data; it does not automatically attach native GO, STRING or
+archived-pathway source profiles.
 
 ## Run a construction
 
@@ -26,6 +53,14 @@ python3 app.py construct \
 ```
 
 The request accepts 1–25 distinct exact UniProt accessions, including explicit isoform suffixes. The focus must be one of them. Symbols, ambiguous synonyms, implicit disease selection and additional source URLs are unsupported. A returned accession must exactly match the requested accession; syntactic validity does not imply Pharos can resolve it. Missing and mismatched identities remain in the scope report; they are not silently replaced or removed from the request denominator.
+
+The 25-protein value is the current engineering request cap, not a measured
+throughput optimum. Tests verify that a 26-protein request is rejected before
+source access; the recorded live constructor examples used two or three
+proteins. It does not silently truncate larger requests or limit saved graphs.
+The 99-target demonstration was retrieved through the separate disease-scoped
+workflow, with all 99 reported targets captured. Source-family and answer limits
+are separate from this constructor cap.
 
 Use `--profile context --relations interactions shared_pathways` to also retrieve the supported annotation context. The two fixed profiles have these per-protein limits:
 

@@ -1,0 +1,104 @@
+{
+  "arms": {
+    "T0_nonexperimental_plus_retained_curated_prior": [
+      "biological_process"
+    ],
+    "current_T0_positive_union_context_refit": [
+      "biological_process"
+    ],
+    "retained_and_current_curated_LocalPlus": [
+      "biological_process"
+    ]
+  },
+  "created_at": "2026-11-15T08:40:37.338203+00:00",
+  "evaluation": {
+    "cells": "All six original BP setting/view cells: PK,NK,LK x native,fixed_T0. No new MF/CC evaluation or cohort selection.",
+    "comparators": "Every original BP control/candidate remains visible, including complete current-curated LocalPlus and direct nonexperimental GOA. Retain the fixed prior-preservation development comparison as a separately labeled prior development control.",
+    "metrics": "Unchanged native ordinary micro-Fmax on .001-.999. New native curves/counts must agree; full raw-frame identities, thresholds and eligible frames must match the original per-protein arrays.",
+    "paired_intervals": "Same2000 whole-protein paired draws and seed20261113; conditional, unadjusted descriptive development intervals. Reuse unchanged original saved draw peaks; compute each new-arm peak vector once.",
+    "reference": "Only the unchanged original pinned truth, known masks, TOIs and evaluation ontologies, after the complete3300 forecasts/source/model seal. Never rebuild or relabel the reference.",
+    "required_refit_contrasts": "Refit versus every original BP method, prior preservation development candidate, and both new source-union controls in every cell.",
+    "required_source_control_contrasts": "Each new source control versus retained LocalPlus, matched-fit-update LocalPlus, current-curated LocalPlus, original selected context and original direct nonexperimental prior; also LocalPlus source union versus direct source union.",
+    "retain_losses_and_unscorable_cells": true,
+    "selection_adoption_or_new_primary_success_gate": false
+  },
+  "execution": {
+    "GPU": "One bounded fit plus3300 forecasts on the already running Brev instance, after real-source/axis/union/frozen-priority qualification and independent code review.",
+    "GPU_phase_seconds_cap": 2700,
+    "no_LLM_requests": true,
+    "no_automatic_graph_pruning_review_or_app_default_change": true,
+    "no_new_compute_resources": true,
+    "no_new_retrieval": true,
+    "no_seed_architecture_batch_threshold_or_source_policy_retry_for_a_better_result": true,
+    "on_failure": "Preserve all partial artifacts. Restore original service and report the actual integration/resource issue. No silent budget or method change.",
+    "restore_original_Nemotron_container_exactly_after_GPU_phase": true,
+    "source_preparation_and_assessment_CPU_only": true,
+    "target_finish_before_UTC": "2026-11-15T11:45:00+00:00"
+  },
+  "format": "biograph-steward.current-T0-union-refit-development-plan.v1",
+  "independent_confirmation": false,
+  "model": {
+    "adaptation_limit": "Final refitting after fixed choices is established practice, but transfer of these exact ProtBoost SWA epoch positions after this source update is a disclosed development adaptation, not a published validated improvement. Original parent in-sample/base-model exposure limitations remain.",
+    "average_swa": 3,
+    "batch_size": 32,
+    "callback_calls": 20,
+    "checkpoint_selection": "The original pre-opening20-epoch metadata supplies fixed order/tie-equivalent ordinal priorities through the existing native evaluator callback slot. No current validation data, metric, checkpoint selection or training-loss selection is allowed. Uniform native SWA must select exactly the three fixed epochs.",
+    "clip_grad_value": 0.1,
+    "context_channels": 40,
+    "embed_size": 8,
+    "epochs": 20,
+    "final_identity_count": 3300,
+    "fitting_identity_count": 4040,
+    "frozen_epoch_indices_zero_based_in_native_rank_order": [
+      10,
+      12,
+      11
+    ],
+    "hidden_size": 16,
+    "legacy_native_log_label": "Any native 'CAFA5 score' print contains a frozen checkpoint priority only; explicitly identify it as not a current validation score in logs and metadata.",
+    "loss": "unchanged native full-repertoire BCEWithLogitsLoss; unlabeled zeros remain a benchmark convention, not biological negatives",
+    "lr": 0.001,
+    "n_layers": 8,
+    "namespace": "biological_process",
+    "new_fit_count": 1,
+    "num_workers": 0,
+    "optimizer": "unchanged native Adam",
+    "original_identity_full_sequence_and_first1022_boundaries_unchanged": true,
+    "postprocessing": "Unchanged published pure-GO soft07 plus equal max/min full-precision recipe; no annotation-score insertion, routing or new threshold choice.",
+    "seed": 20261115,
+    "store_swa": 10,
+    "validation_loader": "Opaque poison placeholder; any iteration/index/length access must fail.",
+    "weight_decay_argument": 0.0
+  },
+  "original_forecast_seal_sha256": "a41920a505c68dcc67891be66381b30eac4a028ddb459c52e7081a7e06250eb9",
+  "original_primary_comparison_unchanged": true,
+  "original_public_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "original_raw_report_sha256": "2dfebc4e855df8682335484cb39b5100f518363fa74b1b24b66ca3c4cdffdf98",
+  "original_selected_BP_model_metadata_sha256": "1839d2d09ad62b4ee6770fb623dc62dbca4b9ad2ab8c7ba91680c62b5acef2dc",
+  "reference_already_consumed": true,
+  "source_adaptation": {
+    "current_source_generated_date": "2026-04-10",
+    "expected_added_BP_positive_cells": 1941,
+    "expected_augmented_BP_positive_cells": 210776,
+    "expected_augmented_root_positive_rows": 3567,
+    "expected_fitting_proteins_with_additions": 161,
+    "expected_original_full_BP_positive_cells": 208835,
+    "expected_original_root_positive_rows": 3557,
+    "final_context": "Reuse only the already qualified, source-pinned April2026 final40-channel Boolean cache; verify every axis and hash.",
+    "fit_context": "Regenerate the same qualified40 ordered Boolean nonexperimental GOA channels from the existing April2026 T0 source for all4040 fitting IDs.",
+    "native_curated_admission": "Existing source-pinned democafa reviewed-human filter and Experimental,IC,TAS retrieve_terms output; native qualifier/form/extension policies are unchanged.",
+    "parent_features": "Regenerate both fitting and final parent feature caches with those same fit priors. Retain the original two raw parent forecasts, their actual head-availability masks and fixed GO axis. No new parent predictor or sequence inference.",
+    "prior_universe": 4040,
+    "priors": "Recompute the unchanged published raw/conditional/null priors from all4040 augmented targets before native root-positive filtering.",
+    "purpose": "Test a final-model refit with legally available pre-cutoff positive additions and matching source context; not a claim that the historical adaptation was an integration bug.",
+    "source_semantics": "Counts are annotation memberships, not independent studies or biological verification. Positive retention does not assert that missing or withdrawn historical annotations remain scientifically correct. No new assay, negative-label or contextual inference rule.",
+    "target_projection": "Filter exact original 4040 fitting accessions from DIRECT current-T0 terms, then use the original native parser/alias/MAX closure on the fixed January2023 model ontology. Do not project current-ontology propagated seeds into the training labels.",
+    "target_union": "Original full fitting targets (strict historical2023 plus the original four allowed CAFA5 release2025_03 additions) UNION admitted direct-T0 projected positives. Every original full and known positive remains positive; absence in the current snapshot is unknown, not a deletion or negative judgment."
+  },
+  "source_controls": {
+    "T0_nonexperimental_plus_retained_curated_prior": "Original presealed full-vocabulary T0 nonexperimental binary memberships UNION historical retained curated graph-label memberships for all3300 final identities, score1 on the complete literal vocabulary union. Do not use old validation labels or newT1 labels. Original4040 additions cannot alter direct final memberships because the frames are disjoint. No extra ontology pass before the original evaluator.",
+    "native_generation_scope": "The unchanged native LocalPlus producer may generate other aspect files if its existing API requires it, but this plan measures BP only; keep other output unscored and unpromoted.",
+    "retained_and_current_curated_LocalPlus": "Positive membership union of the unchanged historical graph training, original matched4040-label-update information, actual augmented4040 fitting targets and the complete existing current-T0 curated graph seeds. Apply the unchanged native LocalPlus scorer, graph and parameters. Do not seed nonexperimental annotations into this control. Retain exact literal identifiers and source/aspect roles; no guessed remapping. This is a declared information-union control, not all available Pharos or independent truth."
+  },
+  "study_status": "post-opening development on the consumed April-November reference"
+}

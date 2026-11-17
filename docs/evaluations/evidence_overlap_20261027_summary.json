@@ -1,0 +1,213 @@
+{
+  "format": "biograph-steward.evidence-overlap-development-summary.v1",
+  "created_at": "2026-10-27T13:01:49.372109+00:00",
+  "status": "completed_bounded_development_audit",
+  "scope": "Three existing consumed saved assay workspaces; not an unseen reference assessment or all-resource novelty audit.",
+  "api_release_check": "The configured public API still reports pharos319. Pharos400 identity/TDL tables are separately published. No runtime version selector hardcodes 319.",
+  "results": [
+    {
+      "path": "runs/evidence_overlap_intact_20261027_attempt_02",
+      "source_workspace": "/Users/42573/biograph-steward-pharos/runs/intact_consumed_flow_20261027_attempt_01/execution/batch_0001/attached",
+      "pharos_database_version": "pharos319",
+      "workspace_observations": 2,
+      "source_evaluable_observations": 2,
+      "pair_representation_counts": {
+        "represented_in_bounded_baseline": 2
+      },
+      "records_with_added_context": 2,
+      "records_with_shared_added_publication": 2,
+      "records_with_shared_added_experiment": 0,
+      "unresolved_experiment_lineage_records": 2,
+      "verified_independent_evidence": 0,
+      "identifier_correspondence_rows": 4,
+      "source_files_unchanged": true
+    },
+    {
+      "path": "runs/evidence_overlap_development_20261027_attempt_01",
+      "source_workspace": "/Users/42573/biograph-steward-pharos/runs/intact_workbench_20261026",
+      "pharos_database_version": "pharos319",
+      "workspace_observations": 4,
+      "source_evaluable_observations": 4,
+      "pair_representation_counts": {
+        "not_represented_in_complete_bounded_baseline": 2,
+        "represented_in_bounded_baseline": 2
+      },
+      "records_with_added_context": 2,
+      "records_with_shared_added_publication": 4,
+      "records_with_shared_added_experiment": 0,
+      "unresolved_experiment_lineage_records": 4,
+      "verified_independent_evidence": 0,
+      "identifier_correspondence_rows": 8,
+      "source_files_unchanged": true
+    },
+    {
+      "path": "runs/evidence_overlap_lambourne_20261027_attempt_01",
+      "source_workspace": "/Users/42573/biograph-steward-pharos/runs/assay_workbench_v2_20261026",
+      "pharos_database_version": "pharos319",
+      "workspace_observations": 1,
+      "source_evaluable_observations": 1,
+      "pair_representation_counts": {
+        "represented_in_bounded_baseline": 1
+      },
+      "records_with_added_context": 1,
+      "records_with_shared_added_publication": 0,
+      "records_with_shared_added_experiment": 0,
+      "unresolved_experiment_lineage_records": 1,
+      "verified_independent_evidence": 0,
+      "identifier_correspondence_rows": 2,
+      "source_files_unchanged": true
+    }
+  ],
+  "source_files_and_historical_results_modified": false,
+  "fresh_reference_bodies_accessed": false,
+  "new_biomedical_target_or_assay_queries": 0,
+  "model_calls": 0,
+  "GPU_runs": 0,
+  "SSSOM": {
+    "production_profile": "Published 1.0 subset: exact source-primary UniProtKB identifier correspondence only; isoforms preserved.",
+    "official_tool": "sssom 0.4.21",
+    "official_schema": "sssom-schema 1.1.0a5",
+    "checks": [
+      "JsonSchema",
+      "PrefixMapCompleteness",
+      "StrictCurieFormat"
+    ],
+    "validation_errors": 0,
+    "input_parse_document_rows_preserved": 14,
+    "mapping_provenance_and_source_versions_preserved": true,
+    "strict_parser_upstream_issue_documented_and_unmodified": true,
+    "full_semantic_conformance_claimed": false
+  },
+  "software_verification": {
+    "focused_tests_passed": 79,
+    "focused_test_skips": 0,
+    "clean_source_tree_new_controls_passed": 27,
+    "local_source_runs_required_by_tests": false,
+    "independent_automated_review_checks_passed": 91,
+    "browser_visual_verification": "blocked by local browser integration loading/connection failures; no visual success claimed"
+  },
+  "limitations": [
+    "Evidence lineage remains unresolved against Pharos because its retrieved PPI projection exposes no supporting experiment identifiers.",
+    "The older IntAct publication lacks an XML companion in its bound workspace; supplemental identities were not silently loaded from elsewhere.",
+    "Reports cover selected workspace observations. The Lambourne case includes 1 of 3,222 source observations.",
+    "Exact primary identifier correspondence does not resolve accession history, canonical/isoform replacements, sequence identity or construct equivalence.",
+    "Source preservation, format validation and pair representation do not establish independent biological corroboration or prediction improvement."
+  ],
+  "artifact_bindings": [
+    {
+      "path": "docs/evaluations/pharos_release_check_20261027_summary.json",
+      "sha256": "0f23f4519af0708bd7939f13bd905f29fe426009e8764ef9aedef5598c9ea489"
+    },
+    {
+      "path": "runs/evidence_overlap_sssom_validation_20261027/report.json",
+      "sha256": "bf6b8cb8950540306660fcecabdefe4de61428290efa11527d2cc36dd4b1668e"
+    },
+    {
+      "path": "runs/evidence_overlap_review_20261027/report.json",
+      "sha256": "909229efc4db749e60ace7a63bbdcbc8efb90d29b811f490b3f13ea2478e7e0f"
+    },
+    {
+      "path": "runs/evidence_overlap_clean_tree_20261027/report.json",
+      "sha256": "9318f8144fe254e393d9942f5d5cddbbc8d991a8092e17beed13d13c6986ffe3"
+    },
+    {
+      "path": "runs/evidence_overlap_clean_tree_20261027/tests.log",
+      "sha256": "c4d2b61e5516da133d6a8d2fc29c5b8c4fa57b4f8f60b52fa632775743f45507"
+    },
+    {
+      "path": "runs/evidence_overlap_development_notes_20261027/attempt_01_verifier_failure.json",
+      "sha256": "ac60c8227ee186b47a0a207e99255a1359ee662627ee75f35af4daac510e84f2"
+    },
+    {
+      "path": "runs/evidence_overlap_development_notes_20261027/browser_preview.json",
+      "sha256": "2cfced566776b475e6849bbbffac9a4d044e232a8a7c767c89b5eced557e1272"
+    },
+    {
+      "path": "runs/evidence_overlap_intact_20261027_attempt_02/report.json",
+      "sha256": "a8011da56240692e8b67ab33f0ee77a21eb139d6b203400164afb7c72082b818"
+    },
+    {
+      "path": "runs/evidence_overlap_intact_20261027_attempt_02/manifest.json",
+      "sha256": "75715a17dbc41b45ee53b3edc13769da6bf8e45eabdc0e280acd1fa0d7786cae"
+    },
+    {
+      "path": "runs/evidence_overlap_intact_20261027_attempt_02/records.jsonl",
+      "sha256": "f14c0e554e08bb8049c5d35457324ef7a22a558cc3201405ad61e5e231206c66"
+    },
+    {
+      "path": "runs/evidence_overlap_intact_20261027_attempt_02/mappings.json",
+      "sha256": "ed74aaa4bfa5b9f709e0e79d530702b1d562cf1c65b7ffd377a33897310642a4"
+    },
+    {
+      "path": "runs/evidence_overlap_intact_20261027_attempt_02/mappings.sssom.tsv",
+      "sha256": "9b4e2fa2d3e0332e3c976ff108fe2a535e2ad9133da4e1f1333bef43474291f7"
+    },
+    {
+      "path": "runs/evidence_overlap_intact_20261027_attempt_02/index.html",
+      "sha256": "d052c3fe51fb9700837f4eb1fb21b82dbfdd54d13e2d07826175fd1c590e1ba7"
+    },
+    {
+      "path": "runs/evidence_overlap_development_20261027_attempt_01/report.json",
+      "sha256": "7fc730758520e62c6c5cd406d85b239e176334e446b82b803c394fecac91f9b1"
+    },
+    {
+      "path": "runs/evidence_overlap_development_20261027_attempt_01/manifest.json",
+      "sha256": "ccbf5d52763f521f7a92e8b9478f279da0c879998decebbb3e0b24a8a81998ce"
+    },
+    {
+      "path": "runs/evidence_overlap_development_20261027_attempt_01/records.jsonl",
+      "sha256": "b2dc6f4d081545608168ae7f6b06fe56f37731a4d28966772bf2d45ad6d263a7"
+    },
+    {
+      "path": "runs/evidence_overlap_development_20261027_attempt_01/mappings.json",
+      "sha256": "5af08b535e003c2406d8b0864da627a360d2a42c5e91f817c7254de0ee5a927e"
+    },
+    {
+      "path": "runs/evidence_overlap_development_20261027_attempt_01/mappings.sssom.tsv",
+      "sha256": "33feae48784f224765419ad0f0ae22611d0d7d26579c6576531d6a0ddd4d81a3"
+    },
+    {
+      "path": "runs/evidence_overlap_development_20261027_attempt_01/index.html",
+      "sha256": "0ded097a2cdabfe6cc7d5cef609b44300f4c7faa056fd6ae8eb3a19f71f824bf"
+    },
+    {
+      "path": "runs/evidence_overlap_lambourne_20261027_attempt_01/report.json",
+      "sha256": "c1b05249003b42b11b47e98fff3bab129effa6dc89f875e858d4d9c0ca998552"
+    },
+    {
+      "path": "runs/evidence_overlap_lambourne_20261027_attempt_01/manifest.json",
+      "sha256": "a8fc498aa634e52ad29f673a1145bf41e90e9ad42cb24afb770cc225262c22b0"
+    },
+    {
+      "path": "runs/evidence_overlap_lambourne_20261027_attempt_01/records.jsonl",
+      "sha256": "0a9de2f4e259600c16f71288a4f5483fd4aa88dfe91fe9503574c018a734426a"
+    },
+    {
+      "path": "runs/evidence_overlap_lambourne_20261027_attempt_01/mappings.json",
+      "sha256": "deac3704cb9a035fa3885a2865e39cf11405db855fdc799e15435d0f0034b73b"
+    },
+    {
+      "path": "runs/evidence_overlap_lambourne_20261027_attempt_01/mappings.sssom.tsv",
+      "sha256": "b3dc31713734a14410460e155358b647644f7156555e24e30c2dc9b4823e7db8"
+    },
+    {
+      "path": "runs/evidence_overlap_lambourne_20261027_attempt_01/index.html",
+      "sha256": "ae241b113e5daacf88c2edb5b72f11c990c50d120b0caba06a1454848feef731"
+    },
+    {
+      "path": "runs/pharos_release_check_20261027_dev_followup/report.json",
+      "sha256": "a7faa86550a3fd10f0bb41b26a8e03d28db8ffa185bda2b7bea851f5727b050c"
+    },
+    {
+      "path": "runs/pharos_release_check_20261027_dev_followup/http_receipt.json",
+      "sha256": "25c97c4e72f937007c66225adb600e7ac2016185c9e858dad3058caf3c61bd2e"
+    }
+  ],
+  "documented_development_endpoint_followup": {
+    "endpoint": "https://ncatsidg-dev.appspot.com/graphql",
+    "HTTP_status": 404,
+    "version_obtained": false,
+    "target_or_assay_queries": 0
+  },
+  "content_sha256": "99129de698437204296ecc53e90801b7961d1b8c24bbfc06b97e471caabe04a3"
+}

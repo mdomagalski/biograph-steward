@@ -1,0 +1,11 @@
+# Optional source preparation and curator-reference assessment only.
+# Qualified runtime: Python 3.12.4. The core application does not need these.
+biopython==1.86
+pyarrow==26.0.1
+xlrd==2.0.2
+PyYAML==6.0.3
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.7.2
+joblib==1.6.0
+threadpoolctl==3.8.0

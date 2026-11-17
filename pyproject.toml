@@ -12,6 +12,7 @@ license = {text = "MIT"}
 dependencies = []
 
 [project.optional-dependencies]
+aws = ["boto3==1.44.0"]
 # Optional toolkit environment: Python 3.11–3.13; tested separately from core.
 nvidia = ["nvidia-nat-core==1.8.0", "packaging==25.0"]
 
@@ -26,3 +27,4 @@ include = ["biograph_steward*"]
 
 [tool.setuptools.package-data]
 biograph_steward = ["*.html", "*.js", "*.json"]
+"biograph_steward._vendor.interpro_mcp" = ["LICENSE", "NOTICE"]

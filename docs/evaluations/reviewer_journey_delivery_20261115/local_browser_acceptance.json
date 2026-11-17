@@ -1,0 +1,16 @@
+{
+  "format": "biograph-steward.reviewer-local-browser-acceptance.v1",
+  "status": "passed",
+  "execution": "Installed Chrome, actual packaged application and unchanged real source workspaces over loopback",
+  "independent_intended_user_study": false,
+  "source_navigation_runtime": "4c916813144a5bb2267b707642b94ef648c8195c",
+  "final_source_display_runtime": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+  "desktop_and_390px_layout_passed": true,
+  "same_snapshot_companion_and_canonical_TP53_answer_verified": true,
+  "qualification_reason_bound_to_original_report_and_ledger": true,
+  "candidate_and_retained_export_scopes_distinguished": true,
+  "source_scores_readable_and_exact_mapping_values_preserved": true,
+  "model_calls_or_fresh_retrieval_or_graph_edits_requested": false,
+  "cloud_deployment_claimed_by_local_check": false,
+  "earlier_harness_failures_preserved_separately": true
+}

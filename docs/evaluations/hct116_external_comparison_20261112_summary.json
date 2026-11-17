@@ -1,0 +1,620 @@
+{
+  "format": "biograph-steward.HCT116-external-comparison-summary.v1",
+  "created_at": "2026-11-12T17:58:35.020243+00:00",
+  "hash_policy": "Existing client.digest sorted compact JSON, ensure_ascii=True",
+  "study": {
+    "PMID": "41669566",
+    "DOI": "10.1080/19768354.2026.2625524",
+    "cell": "HCT116",
+    "design": "Stable genetic knockout; paired total-protein/phosphosite tables; two biological samples per group inoneTMTbatch",
+    "primary_targets": [
+      "MAPK1",
+      "PLK1",
+      "PAK4"
+    ],
+    "PIK3CA": "Separate pathway context only",
+    "whole_parent_study_consumed_for_project": true,
+    "future_rechecks": "Development/technical correction, not a new unseen confirmation"
+  },
+  "conclusion": {
+    "source_cleaning_functional_gain_demonstrated": false,
+    "graph_pruning_benefit_demonstrated": false,
+    "general_scientific_accuracy_established": false,
+    "technical_import_coverage_improved": true,
+    "question_specific_biological_validity_still_required": true,
+    "default_normalization_or_source_union_changed": false
+  },
+  "execution": {
+    "failed_preaccess_plan_seal": "ca9665e932de016c795bb70094a399bac4b090b7be262cedae4f5e6ba936fc3b",
+    "failed_attempt_opened_quantitative_rows": false,
+    "first_completed_plan_seal": "f034f22ffadaa0e83ddd6073fb7f1acbefa880d2915a2bab0e4ee3561890d929",
+    "first_completed_result_seal": "91b1dc1c7b451c2253b274eae52fdba5a97c10292b842a089f62c776da79e954",
+    "technical_replay_plan_seal": "7b6288c885c916a310da17df066f521b93646a330b39a82f59a3df6896aeb752",
+    "technical_replay_result_seal": "589a52f858c3fc00f99d2162ff4939f0574226da07fd03a297aed2a7c0b0e71f",
+    "replay_after_quantitative_data_exposure": true,
+    "fresh_unseen_confirmation_claimed": false,
+    "source_targets_samples_thresholds_numerical_methods_unchanged": true,
+    "runtime": {
+      "python": "3.12.4",
+      "packages": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "openpyxl": "3.1.5"
+      }
+    },
+    "Brev_or_GPU_used": false,
+    "model_inference_calls": 0,
+    "active_graph_or_human_review_states_changed": false
+  },
+  "source_profiles": {
+    "SIGNOR_original_links": 6114,
+    "SIGNOR_strict_links": 6110,
+    "same_candidate_catalogue_size": 373,
+    "five_flagged_literals_already_excluded": true,
+    "four_counterpart_assertions_excluded_from_strict_view": true,
+    "all_three_target_memberships_unchanged": true,
+    "original_strict_predictions_and_masks_identical_everywhere": true,
+    "separate_catalogue_audit_warnings": 1,
+    "strict_prior_is_independently_validated_catalytic_truth": false,
+    "author_PSP_PTMsigDB_GPS_curated_combination_replicated": false,
+    "iKiP": "Separate partial gene-labelled site-centric in-vitro signatures; no cross-catalogue rank/defaultunion"
+  },
+  "qualification": {
+    "phosphosite_input_rows": 13215,
+    "first_pass_coordinate_compatible_rows": 1773,
+    "corrected_coordinate_compatible_rows": 9351,
+    "corrected_unresolved_rows": 3864,
+    "protein_input_rows": 7045,
+    "protein_qualified_rows": 6761,
+    "finite_site_groups_by_background": {
+      "unadjusted": {
+        "MAPK1_KO": 7046,
+        "PLK1_KO": 7045,
+        "PIK3CA_KO": 7046,
+        "PAK4_KO": 7046
+      },
+      "common_support_unadjusted": {
+        "MAPK1_KO": 5765,
+        "PLK1_KO": 5764,
+        "PIK3CA_KO": 5764,
+        "PAK4_KO": 5766
+      },
+      "protein_adjusted": {
+        "MAPK1_KO": 5765,
+        "PLK1_KO": 5764,
+        "PIK3CA_KO": 5764,
+        "PAK4_KO": 5766
+      }
+    },
+    "meaning": "Reference/transport/quantitative compatibility, not independent experiments or direct catalytic validation",
+    "missing_secondary_metadata_rule": "Caller-declared optional corroboration stays not_reported. Required primary evidence and present contradictions remain blocking. N/A is not inferred to mean zeroPTMs."
+  },
+  "primary_SIGNOR_both_source_views": {
+    "unadjusted": {
+      "cases": [
+        {
+          "condition": "MAPK1_KO",
+          "target": "MAPK1",
+          "sign": -1,
+          "cell": "HCT116",
+          "study_PMID": "41669566",
+          "score": 4.523809838345677,
+          "candidate_count": 373,
+          "rank": 19.0,
+          "finite_candidate_count": 19,
+          "rank_competition": "multiple_finite_candidates",
+          "more_than_five_finite_candidates": true,
+          "normalized_rank": 0.05093833780160858,
+          "abstained": false,
+          "direction_agreement": false,
+          "signed_top5": false,
+          "measured_signature_sites": 32
+        },
+        {
+          "condition": "PLK1_KO",
+          "target": "PLK1",
+          "sign": -1,
+          "cell": "HCT116",
+          "study_PMID": "41669566",
+          "score": 1.952516064149615,
+          "candidate_count": 373,
+          "rank": 3.0,
+          "finite_candidate_count": 19,
+          "rank_competition": "multiple_finite_candidates",
+          "more_than_five_finite_candidates": true,
+          "normalized_rank": 0.00804289544235925,
+          "abstained": false,
+          "direction_agreement": false,
+          "signed_top5": true,
+          "measured_signature_sites": 5
+        },
+        {
+          "condition": "PAK4_KO",
+          "target": "PAK4",
+          "sign": -1,
+          "cell": "HCT116",
+          "study_PMID": "41669566",
+          "score": null,
+          "candidate_count": 373,
+          "rank": 373.0,
+          "finite_candidate_count": 19,
+          "rank_competition": "multiple_finite_candidates",
+          "more_than_five_finite_candidates": true,
+          "normalized_rank": 1.0,
+          "abstained": true,
+          "direction_agreement": false,
+          "signed_top5": false,
+          "measured_signature_sites": 2
+        }
+      ],
+      "mean_normalized_rank": 0.352993744414656,
+      "direction_agreement": 0.0,
+      "signed_top5": 0.3333333333333333,
+      "target_score_coverage": 0.6666666666666666
+    },
+    "common_support_unadjusted": {
+      "cases": [
+        {
+          "condition": "MAPK1_KO",
+          "target": "MAPK1",
+          "sign": -1,
+          "cell": "HCT116",
+          "study_PMID": "41669566",
+          "score": 4.364667748004866,
+          "candidate_count": 373,
+          "rank": 16.0,
+          "finite_candidate_count": 16,
+          "rank_competition": "multiple_finite_candidates",
+          "more_than_five_finite_candidates": true,
+          "normalized_rank": 0.04289544235924933,
+          "abstained": false,
+          "direction_agreement": false,
+          "signed_top5": false,
+          "measured_signature_sites": 30
+        },
+        {
+          "condition": "PLK1_KO",
+          "target": "PLK1",
+          "sign": -1,
+          "cell": "HCT116",
+          "study_PMID": "41669566",
+          "score": 1.9354879404645418,
+          "candidate_count": 373,
+          "rank": 3.0,
+          "finite_candidate_count": 16,
+          "rank_competition": "multiple_finite_candidates",
+          "more_than_five_finite_candidates": true,
+          "normalized_rank": 0.00804289544235925,
+          "abstained": false,
+          "direction_agreement": false,
+          "signed_top5": true,
+          "measured_signature_sites": 5
+        },
+        {
+          "condition": "PAK4_KO",
+          "target": "PAK4",
+          "sign": -1,
+          "cell": "HCT116",
+          "study_PMID": "41669566",
+          "score": null,
+          "candidate_count": 373,
+          "rank": 373.0,
+          "finite_candidate_count": 16,
+          "rank_competition": "multiple_finite_candidates",
+          "more_than_five_finite_candidates": true,
+          "normalized_rank": 1.0,
+          "abstained": true,
+          "direction_agreement": false,
+          "signed_top5": false,
+          "measured_signature_sites": 2
+        }
+      ],
+      "mean_normalized_rank": 0.3503127792672029,
+      "direction_agreement": 0.0,
+      "signed_top5": 0.3333333333333333,
+      "target_score_coverage": 0.6666666666666666
+    },
+    "protein_adjusted": {
+      "cases": [
+        {
+          "condition": "MAPK1_KO",
+          "target": "MAPK1",
+          "sign": -1,
+          "cell": "HCT116",
+          "study_PMID": "41669566",
+          "score": -10.093251300643571,
+          "candidate_count": 373,
+          "rank": 2.0,
+          "finite_candidate_count": 16,
+          "rank_competition": "multiple_finite_candidates",
+          "more_than_five_finite_candidates": true,
+          "normalized_rank": 0.005361930294906166,
+          "abstained": false,
+          "direction_agreement": true,
+          "signed_top5": true,
+          "measured_signature_sites": 30
+        },
+        {
+          "condition": "PLK1_KO",
+          "target": "PLK1",
+          "sign": -1,
+          "cell": "HCT116",
+          "study_PMID": "41669566",
+          "score": -1.3304005187671541,
+          "candidate_count": 373,
+          "rank": 11.0,
+          "finite_candidate_count": 16,
+          "rank_competition": "multiple_finite_candidates",
+          "more_than_five_finite_candidates": true,
+          "normalized_rank": 0.029490616621983913,
+          "abstained": false,
+          "direction_agreement": true,
+          "signed_top5": false,
+          "measured_signature_sites": 5
+        },
+        {
+          "condition": "PAK4_KO",
+          "target": "PAK4",
+          "sign": -1,
+          "cell": "HCT116",
+          "study_PMID": "41669566",
+          "score": null,
+          "candidate_count": 373,
+          "rank": 373.0,
+          "finite_candidate_count": 16,
+          "rank_competition": "multiple_finite_candidates",
+          "more_than_five_finite_candidates": true,
+          "normalized_rank": 1.0,
+          "abstained": true,
+          "direction_agreement": false,
+          "signed_top5": false,
+          "measured_signature_sites": 2
+        }
+      ],
+      "mean_normalized_rank": 0.3449508489722967,
+      "direction_agreement": 0.6666666666666666,
+      "signed_top5": 0.3333333333333333,
+      "target_score_coverage": 0.6666666666666666
+    }
+  },
+  "secondary_iKiP_partial_diagnostic": {
+    "unadjusted": [
+      {
+        "condition": "MAPK1_KO",
+        "target": "MAPK1",
+        "sign": -1,
+        "score": 8.13990066662694,
+        "abstained": false,
+        "direction_agreement": false,
+        "cross_catalogue_rank_computed": false
+      },
+      {
+        "condition": "PLK1_KO",
+        "target": "PLK1",
+        "sign": -1,
+        "score": 3.8451904620730604,
+        "abstained": false,
+        "direction_agreement": false,
+        "cross_catalogue_rank_computed": false
+      },
+      {
+        "condition": "PAK4_KO",
+        "target": "PAK4",
+        "sign": -1,
+        "score": null,
+        "abstained": true,
+        "direction_agreement": false,
+        "cross_catalogue_rank_computed": false
+      }
+    ],
+    "common_support_unadjusted": [
+      {
+        "condition": "MAPK1_KO",
+        "target": "MAPK1",
+        "sign": -1,
+        "score": 7.697035673618541,
+        "abstained": false,
+        "direction_agreement": false,
+        "cross_catalogue_rank_computed": false
+      },
+      {
+        "condition": "PLK1_KO",
+        "target": "PLK1",
+        "sign": -1,
+        "score": 3.81165610095662,
+        "abstained": false,
+        "direction_agreement": false,
+        "cross_catalogue_rank_computed": false
+      },
+      {
+        "condition": "PAK4_KO",
+        "target": "PAK4",
+        "sign": -1,
+        "score": null,
+        "abstained": true,
+        "direction_agreement": false,
+        "cross_catalogue_rank_computed": false
+      }
+    ],
+    "protein_adjusted": [
+      {
+        "condition": "MAPK1_KO",
+        "target": "MAPK1",
+        "sign": -1,
+        "score": -11.74418520416797,
+        "abstained": false,
+        "direction_agreement": true,
+        "cross_catalogue_rank_computed": false
+      },
+      {
+        "condition": "PLK1_KO",
+        "target": "PLK1",
+        "sign": -1,
+        "score": -0.1948193618756026,
+        "abstained": false,
+        "direction_agreement": true,
+        "cross_catalogue_rank_computed": false
+      },
+      {
+        "condition": "PAK4_KO",
+        "target": "PAK4",
+        "sign": -1,
+        "score": null,
+        "abstained": true,
+        "direction_agreement": false,
+        "cross_catalogue_rank_computed": false
+      }
+    ]
+  },
+  "posthoc_background_diagnostic": {
+    "source_seal": "46e97ac680c8d4864c635a06cfb30fe18f77d145c5ae66d7cca5e331f809cb4f",
+    "classification": "Descriptive after sealed scoring; no predictions or normalization changed",
+    "conditions": {
+      "MAPK1_KO": {
+        "unadjusted": {
+          "site_background": {
+            "finite_count": 7046,
+            "mean": 0.32555919974872627,
+            "median": 0.31944898801191535,
+            "positive": 6262,
+            "negative": 784,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          },
+          "source_scores": {
+            "finite_count": 19,
+            "mean": 2.7942744137063387,
+            "median": 2.4403526161870235,
+            "positive": 19,
+            "negative": 0,
+            "zero": 0,
+            "all_finite_values_positive": true,
+            "all_finite_values_negative": false
+          }
+        },
+        "common_support_unadjusted": {
+          "site_background": {
+            "finite_count": 5765,
+            "mean": 0.3164544799601829,
+            "median": 0.31158307557435094,
+            "positive": 5090,
+            "negative": 675,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          },
+          "source_scores": {
+            "finite_count": 16,
+            "mean": 2.5267505330401656,
+            "median": 2.3906156132061023,
+            "positive": 16,
+            "negative": 0,
+            "zero": 0,
+            "all_finite_values_positive": true,
+            "all_finite_values_negative": false
+          }
+        },
+        "protein_adjusted": {
+          "site_background": {
+            "finite_count": 5765,
+            "mean": -0.5185329847537146,
+            "median": -0.51787073299786,
+            "positive": 309,
+            "negative": 5456,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          },
+          "source_scores": {
+            "finite_count": 16,
+            "mean": -5.1997808609124085,
+            "median": -4.349565411362314,
+            "positive": 0,
+            "negative": 16,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": true
+          }
+        }
+      },
+      "PLK1_KO": {
+        "unadjusted": {
+          "site_background": {
+            "finite_count": 7045,
+            "mean": 0.3583371412131555,
+            "median": 0.3263601109263625,
+            "positive": 6340,
+            "negative": 705,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          },
+          "source_scores": {
+            "finite_count": 19,
+            "mean": 3.2741317139616903,
+            "median": 2.945203325827691,
+            "positive": 19,
+            "negative": 0,
+            "zero": 0,
+            "all_finite_values_positive": true,
+            "all_finite_values_negative": false
+          }
+        },
+        "common_support_unadjusted": {
+          "site_background": {
+            "finite_count": 5764,
+            "mean": 0.365199281694994,
+            "median": 0.3316960713568262,
+            "positive": 5211,
+            "negative": 553,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          },
+          "source_scores": {
+            "finite_count": 16,
+            "mean": 3.1394089735864426,
+            "median": 2.6669585104330973,
+            "positive": 16,
+            "negative": 0,
+            "zero": 0,
+            "all_finite_values_positive": true,
+            "all_finite_values_negative": false
+          }
+        },
+        "protein_adjusted": {
+          "site_background": {
+            "finite_count": 5764,
+            "mean": -0.17199618604673156,
+            "median": -0.194903950772364,
+            "positive": 1518,
+            "negative": 4246,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          },
+          "source_scores": {
+            "finite_count": 16,
+            "mean": -1.6396705869365704,
+            "median": -1.8854128483539916,
+            "positive": 1,
+            "negative": 15,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          }
+        }
+      },
+      "PAK4_KO": {
+        "unadjusted": {
+          "site_background": {
+            "finite_count": 7046,
+            "mean": 0.3716409793244294,
+            "median": 0.39371946762323873,
+            "positive": 6396,
+            "negative": 650,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          },
+          "source_scores": {
+            "finite_count": 19,
+            "mean": 3.7612752839952903,
+            "median": 3.427757303887985,
+            "positive": 19,
+            "negative": 0,
+            "zero": 0,
+            "all_finite_values_positive": true,
+            "all_finite_values_negative": false
+          }
+        },
+        "common_support_unadjusted": {
+          "site_background": {
+            "finite_count": 5766,
+            "mean": 0.3734040771269142,
+            "median": 0.4007140252562955,
+            "positive": 5211,
+            "negative": 555,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          },
+          "source_scores": {
+            "finite_count": 16,
+            "mean": 3.576545362866469,
+            "median": 3.1235165410047583,
+            "positive": 16,
+            "negative": 0,
+            "zero": 0,
+            "all_finite_values_positive": true,
+            "all_finite_values_negative": false
+          }
+        },
+        "protein_adjusted": {
+          "site_background": {
+            "finite_count": 5766,
+            "mean": -0.5808215497396223,
+            "median": -0.5539382181885273,
+            "positive": 145,
+            "negative": 5621,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": false
+          },
+          "source_scores": {
+            "finite_count": 16,
+            "mean": -6.238339921247708,
+            "median": -5.103412973721802,
+            "positive": 0,
+            "negative": 16,
+            "zero": 0,
+            "all_finite_values_positive": false,
+            "all_finite_values_negative": true
+          }
+        }
+      }
+    },
+    "technical_or_biological_global_shift_cause_established": false,
+    "two_matching_adjusted_target_signs_establish_specific_recovery": false,
+    "PLK1_rank_improved_by_adjustment": false
+  },
+  "reusable_mechanisms": {
+    "explicit_visible_sheet_positional_columns": true,
+    "caller_declared_sample_groups_and_targets": true,
+    "required_vs_optional_metadata_tri_state": true,
+    "cell_scoped_quantitative_unavailability": true,
+    "exact_source_record_dispositions_preserve_other_support": true,
+    "catalogue_admission_policy_separate_from_identity_audit": true,
+    "partial_catalogue_ranking_guard": true,
+    "finite_candidate_and_background_sign_diagnostics": true,
+    "automatic_factual_or_normalization_repairs": false,
+    "synthetic_coverage": "Two layouts, single/multi-condition designs, alternative unavailable tokens, source-key layouts and source-support preservation; software portability only"
+  },
+  "limitations": [
+    "Three target cases inoneadaptedcellmodel; no independent-clone/timing/localization/FDR assumptions",
+    "Published intervention metadata, not a direct native kinaseactivity/catalysis assay",
+    "RawRoKAIuncentered scores are background-sensitive; all19finite rawscorespositive ineachofthreeprimaryKOconditions, most16adjustedscoresnegative",
+    "Host subtraction is a descriptive prespecified sensitivity, not MSstatsPTMmodel/occupancy or a universally better method",
+    "Same-host matching alters available sites; matched-support rawcontrols retained",
+    "No all-other-kinase biological negatives, bootstrapCI or p-values; ranks use fixedcatalogue373 and showfinitecompetition",
+    "Different question types require different assay/context/reference profiles; five measured kinase sites is not a PPI/clinical evidence rule",
+    "NCupstreamworkbooks and raw/derived memberships remainprivate/Gitignored, separately fromMITsoftware"
+  ],
+  "independent_recounts": {
+    "V2_seal": "23acc07c3a105f57a796c40dcb30628b7b6957214e3c42bd3e9d8d295dea3696",
+    "V3_seal": "52c89b5b3e039de0710f8fb2accafa31ea2a1de96a21637ef8dda829d4826834",
+    "V3_max_numeric_delta": 3.55e-15,
+    "background_companion_seal": "4d689dabf29a488db940be5bc2ba238937fff4d70f7ddd8a197c5cb9003301bd",
+    "kind": "Separate software-agent numerical checks, not independent human curation or a new experimental replication"
+  },
+  "relevant_primary_methods": [
+    "https://doi.org/10.1038/s41467-021-21211-6",
+    "https://doi.org/10.1038/s41467-025-59779-y",
+    "https://doi.org/10.1016/j.mcpro.2022.100477",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC8190506/"
+  ],
+  "output_terms": "Aggregate original analysis only; no source rows, peptide sequences, raw sample values or membership lists redistributed. Upstream input terms remain separate from softwareMIT.",
+  "top5_metric_definition": "Expected-sign-oriented top-five rank inclusion; a rank hit does not require the correct absolute direction. Direction agreement is separate.",
+  "content_sha256": "b58ae8e8aa317ade3d99b44846cb76c4ded5fc08cf3d5b53de03588603f8a0da"
+}

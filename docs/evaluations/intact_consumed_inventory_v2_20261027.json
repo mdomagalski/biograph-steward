@@ -1,0 +1,3595 @@
+{
+  "format": "biograph-steward.intact-consumed-inventory.v1",
+  "inventory_revision": 2,
+  "prepared_date": "2026-10-27",
+  "created_at": "2026-10-27T04:48:29.425759+00:00",
+  "scope": "Bounded exact exposure inventory for all eight consumed IntAct publications, all their MITAB primary participant/pair views and complete identity-qualified XML evidence aliases; four previously recorded historical publication anchors and DOI aliases. Not a complete inventory of historical CIViC, Pharos/STRING, literature, datasets, sequences or model pretraining.",
+  "article_status_scope": "Reuse only previously recorded PubMed ESummary metadata; no new correction/retraction/republication lookup, article/full-text audit or clearance. Missing alerts are unknown. No new article or publication-status query in this expansion.",
+  "publication_ids": [
+    "31467278",
+    "32296183",
+    "36949045",
+    "39833857",
+    "39972491",
+    "40071126",
+    "40075158",
+    "40211762",
+    "40404733",
+    "40555359",
+    "40739265",
+    "41935050"
+  ],
+  "dois": [
+    "10.1007/s13205-025-04231-7",
+    "10.1038/s41467-019-11809-2",
+    "10.1038/s41467-023-37079-7",
+    "10.1038/s41467-026-70942-x",
+    "10.1038/s41586-020-2188-x",
+    "10.1038/s41598-025-02129-1",
+    "10.1038/s41698-025-00859-z",
+    "10.1186/s13287-025-04526-9"
+  ],
+  "participants": [
+    [
+      "chebi",
+      "CHEBI:32159"
+    ],
+    [
+      "intact",
+      "EBI-25469973"
+    ],
+    [
+      "intact",
+      "EBI-26352991"
+    ],
+    [
+      "intact",
+      "EBI-26363565"
+    ],
+    [
+      "intact",
+      "EBI-40202193"
+    ],
+    [
+      "intact",
+      "EBI-40202355"
+    ],
+    [
+      "intact",
+      "EBI-54261709"
+    ],
+    [
+      "intact",
+      "EBI-54297662"
+    ],
+    [
+      "intact",
+      "EBI-54301569"
+    ],
+    [
+      "intact",
+      "EBI-54342218"
+    ],
+    [
+      "intact",
+      "EBI-54342553"
+    ],
+    [
+      "intact",
+      "EBI-59036257"
+    ],
+    [
+      "intact",
+      "EBI-64039212"
+    ],
+    [
+      "intact",
+      "EBI-70837435"
+    ],
+    [
+      "intact",
+      "EBI-70838437"
+    ],
+    [
+      "intact",
+      "EBI-70852563"
+    ],
+    [
+      "uniprotkb",
+      "A2A5Z6"
+    ],
+    [
+      "uniprotkb",
+      "O70325"
+    ],
+    [
+      "uniprotkb",
+      "P06869"
+    ],
+    [
+      "uniprotkb",
+      "P97393"
+    ],
+    [
+      "uniprotkb",
+      "Q7RTX0"
+    ],
+    [
+      "uniprotkb",
+      "Q7Z3K3"
+    ],
+    [
+      "uniprotkb",
+      "Q8C863"
+    ],
+    [
+      "uniprotkb",
+      "Q8TE23"
+    ],
+    [
+      "uniprotkb",
+      "Q8WYQ5"
+    ],
+    [
+      "uniprotkb",
+      "Q9HCE5"
+    ],
+    [
+      "uniprotkb",
+      "Q9UI95"
+    ],
+    [
+      "uniprotkb",
+      "Q9UKV8"
+    ]
+  ],
+  "pairs": [
+    [
+      [
+        [
+          "chebi",
+          "CHEBI:32159"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q7RTX0"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "chebi",
+          "CHEBI:32159"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q8TE23"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-25469973"
+        ]
+      ],
+      [
+        [
+          "intact",
+          "EBI-70838437"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-25469973"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-26352991"
+        ]
+      ],
+      [
+        [
+          "intact",
+          "EBI-54342553"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-26352991"
+        ]
+      ],
+      [
+        [
+          "intact",
+          "EBI-70837435"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-26363565"
+        ]
+      ],
+      [
+        [
+          "intact",
+          "EBI-64039212"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-40202193"
+        ]
+      ],
+      [
+        [
+          "intact",
+          "EBI-40202355"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-40202193"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-40202355"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-54261709"
+        ]
+      ],
+      [
+        [
+          "intact",
+          "EBI-70852563"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-54297662"
+        ]
+      ],
+      [
+        [
+          "intact",
+          "EBI-54301569"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-54342218"
+        ]
+      ],
+      [
+        [
+          "intact",
+          "EBI-59036257"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-54342218"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-59036257"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "intact",
+          "EBI-70838437"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "uniprotkb",
+          "A2A5Z6"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "P97393"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "uniprotkb",
+          "O70325"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "P06869"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "uniprotkb",
+          "P06869"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q8C863"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "uniprotkb",
+          "Q7RTX0"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q8TE23"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "uniprotkb",
+          "Q7Z3K3"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q9UI95"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "uniprotkb",
+          "Q8WYQ5"
+        ]
+      ],
+      [
+        [
+          "uniprotkb",
+          "Q9HCE5"
+        ]
+      ]
+    ]
+  ],
+  "evidence_ids": [
+    [
+      "emdb",
+      "EMD-64484"
+    ],
+    [
+      "emdb",
+      "EMD-64485"
+    ],
+    [
+      "emdb",
+      "EMD-64486"
+    ],
+    [
+      "emdb",
+      "EMD-64487"
+    ],
+    [
+      "emdb",
+      "EMD-64488"
+    ],
+    [
+      "imex",
+      "IM-30390-1"
+    ],
+    [
+      "imex",
+      "IM-30390-3"
+    ],
+    [
+      "imex",
+      "IM-30398-1"
+    ],
+    [
+      "imex",
+      "IM-30398-3"
+    ],
+    [
+      "imex",
+      "IM-30398-5"
+    ],
+    [
+      "imex",
+      "IM-30398-7"
+    ],
+    [
+      "imex",
+      "IM-30583-1"
+    ],
+    [
+      "imex",
+      "IM-30583-3"
+    ],
+    [
+      "imex",
+      "IM-30583-5"
+    ],
+    [
+      "imex",
+      "IM-30583-7"
+    ],
+    [
+      "imex",
+      "IM-30660-1"
+    ],
+    [
+      "imex",
+      "IM-30660-3"
+    ],
+    [
+      "imex",
+      "IM-30672-1"
+    ],
+    [
+      "imex",
+      "IM-30672-3"
+    ],
+    [
+      "imex",
+      "IM-30672-5"
+    ],
+    [
+      "imex",
+      "IM-30672-7"
+    ],
+    [
+      "imex",
+      "IM-30681-1"
+    ],
+    [
+      "imex",
+      "IM-30681-3"
+    ],
+    [
+      "imex",
+      "IM-30684-1"
+    ],
+    [
+      "imex",
+      "IM-30684-3"
+    ],
+    [
+      "imex",
+      "IM-30697-1"
+    ],
+    [
+      "imex",
+      "IM-30697-3"
+    ],
+    [
+      "imex",
+      "IM-30697-5"
+    ],
+    [
+      "intact",
+      "EBI-64039203"
+    ],
+    [
+      "intact",
+      "EBI-64039240"
+    ],
+    [
+      "intact",
+      "EBI-67107463"
+    ],
+    [
+      "intact",
+      "EBI-67107496"
+    ],
+    [
+      "intact",
+      "EBI-67107533"
+    ],
+    [
+      "intact",
+      "EBI-67107555"
+    ],
+    [
+      "intact",
+      "EBI-70836068"
+    ],
+    [
+      "intact",
+      "EBI-70836438"
+    ],
+    [
+      "intact",
+      "EBI-70836448"
+    ],
+    [
+      "intact",
+      "EBI-70837425"
+    ],
+    [
+      "intact",
+      "EBI-70839948"
+    ],
+    [
+      "intact",
+      "EBI-70839964"
+    ],
+    [
+      "intact",
+      "EBI-70840007"
+    ],
+    [
+      "intact",
+      "EBI-70840025"
+    ],
+    [
+      "intact",
+      "EBI-70852430"
+    ],
+    [
+      "intact",
+      "EBI-70852445"
+    ],
+    [
+      "intact",
+      "EBI-70852459"
+    ],
+    [
+      "intact",
+      "EBI-70852463"
+    ],
+    [
+      "intact",
+      "EBI-70852783"
+    ],
+    [
+      "intact",
+      "EBI-70852804"
+    ],
+    [
+      "intact",
+      "EBI-70855565"
+    ],
+    [
+      "intact",
+      "EBI-70855688"
+    ],
+    [
+      "intact",
+      "EBI-70855692"
+    ],
+    [
+      "wwpdb",
+      "9ut8"
+    ],
+    [
+      "wwpdb",
+      "9ut9"
+    ],
+    [
+      "wwpdb",
+      "9uta"
+    ],
+    [
+      "wwpdb",
+      "9utb"
+    ],
+    [
+      "wwpdb",
+      "9utc"
+    ]
+  ],
+  "qualified_see_also_links": [],
+  "coverage": {
+    "consumed_IntAct_publications": 8,
+    "original_development_publications": [
+      "40075158",
+      "40404733",
+      "40071126",
+      "40739265"
+    ],
+    "original_reserved_now_consumed_publications": [
+      "39833857",
+      "40211762",
+      "39972491",
+      "40555359"
+    ],
+    "historical_publication_anchors_preserved": [
+      "41935050",
+      "36949045",
+      "32296183",
+      "31467278"
+    ],
+    "physical_rows": 36,
+    "evidence_rows": 28,
+    "XML_evidence_objects": 23,
+    "all_source_rows_included_regardless_of_primary_eligibility": true,
+    "unique_primary_participants": 28,
+    "unique_literal_unordered_pair_views": 22,
+    "unique_MITAB_evidence_ids": 56,
+    "unique_complete_XML_evidence_aliases": 56,
+    "unique_union_evidence_ids": 56,
+    "unique_qualified_see_also_links": 0,
+    "own_publications_with_explicit_primary_qualified_XML_reference": [
+      "39833857",
+      "39972491",
+      "40071126",
+      "40075158",
+      "40211762",
+      "40404733",
+      "40555359",
+      "40739265"
+    ],
+    "new_own_DOI_aliases_from_captured_XML": []
+  },
+  "per_study": [
+    {
+      "publication_id": "40075158",
+      "mitab_reader_stream": "runs/intact_development_inspection_20261026/40075158_reader.jsonl",
+      "xml_reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "physical_rows": 3,
+      "evidence_rows": 2,
+      "XML_evidence_objects": 2,
+      "MITAB_evidence_identity_count": 4,
+      "complete_XML_identity_alias_count": 4,
+      "MITAB_evidence_identities_present_in_complete_XML": true,
+      "XML_reader_status": "completed",
+      "source_status": "Previously consumed; original development or preserved stopped-final execution."
+    },
+    {
+      "publication_id": "40404733",
+      "mitab_reader_stream": "runs/intact_development_inspection_20261026/40404733_reader.jsonl",
+      "xml_reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "physical_rows": 6,
+      "evidence_rows": 5,
+      "XML_evidence_objects": 4,
+      "MITAB_evidence_identity_count": 8,
+      "complete_XML_identity_alias_count": 8,
+      "MITAB_evidence_identities_present_in_complete_XML": true,
+      "XML_reader_status": "completed",
+      "source_status": "Previously consumed; original development or preserved stopped-final execution."
+    },
+    {
+      "publication_id": "40071126",
+      "mitab_reader_stream": "runs/intact_development_inspection_20261026/40071126_reader.jsonl",
+      "xml_reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "physical_rows": 5,
+      "evidence_rows": 4,
+      "XML_evidence_objects": 4,
+      "MITAB_evidence_identity_count": 8,
+      "complete_XML_identity_alias_count": 8,
+      "MITAB_evidence_identities_present_in_complete_XML": true,
+      "XML_reader_status": "completed",
+      "source_status": "Previously consumed; original development or preserved stopped-final execution."
+    },
+    {
+      "publication_id": "40739265",
+      "mitab_reader_stream": "runs/intact_development_inspection_20261026/40739265_reader.jsonl",
+      "xml_reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "physical_rows": 4,
+      "evidence_rows": 3,
+      "XML_evidence_objects": 3,
+      "MITAB_evidence_identity_count": 6,
+      "complete_XML_identity_alias_count": 6,
+      "MITAB_evidence_identities_present_in_complete_XML": true,
+      "XML_reader_status": "completed",
+      "source_status": "Previously consumed; original development or preserved stopped-final execution."
+    },
+    {
+      "publication_id": "39833857",
+      "mitab_reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_reader.jsonl",
+      "xml_reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "physical_rows": 4,
+      "evidence_rows": 3,
+      "XML_evidence_objects": 2,
+      "MITAB_evidence_identity_count": 4,
+      "complete_XML_identity_alias_count": 4,
+      "MITAB_evidence_identities_present_in_complete_XML": true,
+      "XML_reader_status": "completed",
+      "source_status": "Previously consumed; original development or preserved stopped-final execution."
+    },
+    {
+      "publication_id": "40211762",
+      "mitab_reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_reader.jsonl",
+      "xml_reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "physical_rows": 3,
+      "evidence_rows": 2,
+      "XML_evidence_objects": 2,
+      "MITAB_evidence_identity_count": 4,
+      "complete_XML_identity_alias_count": 4,
+      "MITAB_evidence_identities_present_in_complete_XML": true,
+      "XML_reader_status": "completed",
+      "source_status": "Previously consumed; original development or preserved stopped-final execution."
+    },
+    {
+      "publication_id": "39972491",
+      "mitab_reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_reader.jsonl",
+      "xml_reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "physical_rows": 4,
+      "evidence_rows": 3,
+      "XML_evidence_objects": 2,
+      "MITAB_evidence_identity_count": 4,
+      "complete_XML_identity_alias_count": 4,
+      "MITAB_evidence_identities_present_in_complete_XML": true,
+      "XML_reader_status": "completed",
+      "source_status": "Previously consumed; original development or preserved stopped-final execution."
+    },
+    {
+      "publication_id": "40555359",
+      "mitab_reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_reader.jsonl",
+      "xml_reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "physical_rows": 7,
+      "evidence_rows": 6,
+      "XML_evidence_objects": 4,
+      "MITAB_evidence_identity_count": 18,
+      "complete_XML_identity_alias_count": 18,
+      "MITAB_evidence_identities_present_in_complete_XML": true,
+      "XML_reader_status": "completed",
+      "source_status": "Previously consumed; original development or preserved stopped-final execution."
+    }
+  ],
+  "oriented_primary_participant_rows": [
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_development_inspection_20261026/40075158_reader.jsonl",
+      "reader_stream_sha256": "e9389e26b9169d46aff2f44d106dcc15d6f19667ce872ef47fe1eb17ff3a1cbb",
+      "source_line": 2,
+      "primary_ids_a": [
+        [
+          "intact",
+          "EBI-64039212"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-26363565"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_development_inspection_20261026/40075158_reader.jsonl",
+      "reader_stream_sha256": "e9389e26b9169d46aff2f44d106dcc15d6f19667ce872ef47fe1eb17ff3a1cbb",
+      "source_line": 3,
+      "primary_ids_a": [
+        [
+          "intact",
+          "EBI-26363565"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-64039212"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_development_inspection_20261026/40404733_reader.jsonl",
+      "reader_stream_sha256": "c588b5ebac1791957ee80f9d4f38228980c15cf65e65830c037656a3f740781c",
+      "source_line": 2,
+      "primary_ids_a": [
+        [
+          "intact",
+          "EBI-59036257"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-54342218"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_development_inspection_20261026/40404733_reader.jsonl",
+      "reader_stream_sha256": "c588b5ebac1791957ee80f9d4f38228980c15cf65e65830c037656a3f740781c",
+      "source_line": 3,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-59036257"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_development_inspection_20261026/40404733_reader.jsonl",
+      "reader_stream_sha256": "c588b5ebac1791957ee80f9d4f38228980c15cf65e65830c037656a3f740781c",
+      "source_line": 4,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-54342218"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_development_inspection_20261026/40404733_reader.jsonl",
+      "reader_stream_sha256": "c588b5ebac1791957ee80f9d4f38228980c15cf65e65830c037656a3f740781c",
+      "source_line": 5,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q9HCE5"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q8WYQ5"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_development_inspection_20261026/40404733_reader.jsonl",
+      "reader_stream_sha256": "c588b5ebac1791957ee80f9d4f38228980c15cf65e65830c037656a3f740781c",
+      "source_line": 6,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q9HCE5"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q8WYQ5"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_development_inspection_20261026/40071126_reader.jsonl",
+      "reader_stream_sha256": "a81d210892ea39df01391a632c1c62dab33d2d59d4943d9ddf7b6d8c676f82ae",
+      "source_line": 2,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q9UI95"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q7Z3K3"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_development_inspection_20261026/40071126_reader.jsonl",
+      "reader_stream_sha256": "a81d210892ea39df01391a632c1c62dab33d2d59d4943d9ddf7b6d8c676f82ae",
+      "source_line": 3,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q7Z3K3"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q9UI95"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_development_inspection_20261026/40071126_reader.jsonl",
+      "reader_stream_sha256": "a81d210892ea39df01391a632c1c62dab33d2d59d4943d9ddf7b6d8c676f82ae",
+      "source_line": 4,
+      "primary_ids_a": [
+        [
+          "intact",
+          "EBI-54342553"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-26352991"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_development_inspection_20261026/40071126_reader.jsonl",
+      "reader_stream_sha256": "a81d210892ea39df01391a632c1c62dab33d2d59d4943d9ddf7b6d8c676f82ae",
+      "source_line": 5,
+      "primary_ids_a": [
+        [
+          "intact",
+          "EBI-26352991"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-70837435"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_development_inspection_20261026/40739265_reader.jsonl",
+      "reader_stream_sha256": "f3481bdbf7d34393aabb2c6be8f6ac10dff4fae3454efbfac9ce632e142e4615",
+      "source_line": 2,
+      "primary_ids_a": [
+        [
+          "intact",
+          "EBI-54261709"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-70852563"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_development_inspection_20261026/40739265_reader.jsonl",
+      "reader_stream_sha256": "f3481bdbf7d34393aabb2c6be8f6ac10dff4fae3454efbfac9ce632e142e4615",
+      "source_line": 3,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "O70325"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "P06869"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_development_inspection_20261026/40739265_reader.jsonl",
+      "reader_stream_sha256": "f3481bdbf7d34393aabb2c6be8f6ac10dff4fae3454efbfac9ce632e142e4615",
+      "source_line": 4,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "P06869"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q8C863"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_reader.jsonl",
+      "reader_stream_sha256": "0b117f4954c9f082e17795919b92c6007d394602ba8dd6752139a75baea8d421",
+      "source_line": 2,
+      "primary_ids_a": [
+        [
+          "intact",
+          "EBI-25469973"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-70838437"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_reader.jsonl",
+      "reader_stream_sha256": "0b117f4954c9f082e17795919b92c6007d394602ba8dd6752139a75baea8d421",
+      "source_line": 3,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-70838437"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_reader.jsonl",
+      "reader_stream_sha256": "0b117f4954c9f082e17795919b92c6007d394602ba8dd6752139a75baea8d421",
+      "source_line": 4,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-25469973"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_reader.jsonl",
+      "reader_stream_sha256": "752d794e5a0d9ed276916c0b8b3aa82cf4611d0e0e6b8049123a759e1a2c5382",
+      "source_line": 2,
+      "primary_ids_a": [
+        [
+          "intact",
+          "EBI-54301569"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-54297662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_reader.jsonl",
+      "reader_stream_sha256": "752d794e5a0d9ed276916c0b8b3aa82cf4611d0e0e6b8049123a759e1a2c5382",
+      "source_line": 3,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "A2A5Z6"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "P97393"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_reader.jsonl",
+      "reader_stream_sha256": "0a544dbdcf246ffb9607233ea54b7f493605692ec23d0b41cf9e49e220322137",
+      "source_line": 2,
+      "primary_ids_a": [
+        [
+          "intact",
+          "EBI-40202355"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-40202193"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_reader.jsonl",
+      "reader_stream_sha256": "0a544dbdcf246ffb9607233ea54b7f493605692ec23d0b41cf9e49e220322137",
+      "source_line": 3,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-40202193"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_reader.jsonl",
+      "reader_stream_sha256": "0a544dbdcf246ffb9607233ea54b7f493605692ec23d0b41cf9e49e220322137",
+      "source_line": 4,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q9UKV8"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "intact",
+          "EBI-40202355"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_reader.jsonl",
+      "reader_stream_sha256": "6c9d223abf1290e3fbc7f4e5086aad1d8b9f91af8966adcc1234919e96179a61",
+      "source_line": 2,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q7RTX0"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q8TE23"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_reader.jsonl",
+      "reader_stream_sha256": "6c9d223abf1290e3fbc7f4e5086aad1d8b9f91af8966adcc1234919e96179a61",
+      "source_line": 3,
+      "primary_ids_a": [
+        [
+          "chebi",
+          "CHEBI:32159"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q8TE23"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_reader.jsonl",
+      "reader_stream_sha256": "6c9d223abf1290e3fbc7f4e5086aad1d8b9f91af8966adcc1234919e96179a61",
+      "source_line": 4,
+      "primary_ids_a": [
+        [
+          "chebi",
+          "CHEBI:32159"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q7RTX0"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_reader.jsonl",
+      "reader_stream_sha256": "6c9d223abf1290e3fbc7f4e5086aad1d8b9f91af8966adcc1234919e96179a61",
+      "source_line": 5,
+      "primary_ids_a": [
+        [
+          "uniprotkb",
+          "Q8TE23"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q7RTX0"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_reader.jsonl",
+      "reader_stream_sha256": "6c9d223abf1290e3fbc7f4e5086aad1d8b9f91af8966adcc1234919e96179a61",
+      "source_line": 6,
+      "primary_ids_a": [
+        [
+          "chebi",
+          "CHEBI:32159"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q8TE23"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_reader.jsonl",
+      "reader_stream_sha256": "6c9d223abf1290e3fbc7f4e5086aad1d8b9f91af8966adcc1234919e96179a61",
+      "source_line": 7,
+      "primary_ids_a": [
+        [
+          "chebi",
+          "CHEBI:32159"
+        ]
+      ],
+      "primary_ids_b": [
+        [
+          "uniprotkb",
+          "Q7RTX0"
+        ]
+      ]
+    }
+  ],
+  "XML_identity_reference_rows": [
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "reader_stream_sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 251,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-64039203",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30390-1",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "reader_stream_sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 492,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-64039240",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30390-3",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 836,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70852459",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30672-5",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 989,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70852463",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30672-7",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1142,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70852430",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30672-1",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 1385,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70852445",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30672-3",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 687,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70836448",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30583-5",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 966,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70837425",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30583-7",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1196,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70836068",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30583-1",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 1349,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70836438",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30583-3",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 531,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70855688",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30697-3",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 684,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70855692",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30697-5",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 837,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70855565",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30697-1",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "reader_stream_sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 463,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70852783",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30684-1",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "reader_stream_sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 858,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70852804",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30684-3",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "reader_stream_sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 407,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70840007",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30681-1",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "reader_stream_sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 687,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70840025",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30681-3",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "reader_stream_sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 458,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70839948",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30660-1",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "reader_stream_sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 749,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-70839964",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30660-3",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 385,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "wwpdb",
+          "9ut8",
+          "MI:0356"
+        ],
+        [
+          "emdb",
+          "EMD-64486",
+          "MI:0356"
+        ],
+        [
+          "intact",
+          "EBI-67107463",
+          "MI:0356"
+        ],
+        [
+          "wwpdb",
+          "9uta",
+          "MI:0356"
+        ],
+        [
+          "emdb",
+          "EMD-64484",
+          "MI:0356"
+        ],
+        [
+          "emdb",
+          "EMD-64485",
+          "MI:0356"
+        ],
+        [
+          "wwpdb",
+          "9ut9",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30398-1",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 994,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "emdb",
+          "EMD-64487",
+          "MI:0356"
+        ],
+        [
+          "intact",
+          "EBI-67107496",
+          "MI:0356"
+        ],
+        [
+          "emdb",
+          "EMD-64488",
+          "MI:0356"
+        ],
+        [
+          "wwpdb",
+          "9utb",
+          "MI:0356"
+        ],
+        [
+          "wwpdb",
+          "9utc",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30398-3",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1634,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-67107533",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30398-5",
+          "MI:0662"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 2237,
+        "column": 13
+      },
+      "identity_references": [
+        [
+          "intact",
+          "EBI-67107555",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30398-7",
+          "MI:0662"
+        ]
+      ]
+    }
+  ],
+  "XML_other_reference_rows": [
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "reader_stream_sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 251,
+        "column": 13
+      },
+      "other_references": [
+        [
+          "go",
+          "GO:1903231",
+          "MI:0355"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "reader_stream_sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 492,
+        "column": 13
+      },
+      "other_references": [
+        [
+          "go",
+          "GO:1903231",
+          "MI:0355"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 836,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 989,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1142,
+        "column": 13
+      },
+      "other_references": [
+        [
+          "go",
+          "GO:1903231",
+          "MI:0355"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 1385,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 687,
+        "column": 13
+      },
+      "other_references": [
+        [
+          "go",
+          "GO:1903231",
+          "MI:0355"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 966,
+        "column": 13
+      },
+      "other_references": [
+        [
+          "go",
+          "GO:1903231",
+          "MI:0355"
+        ]
+      ]
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1196,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 1349,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 531,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 684,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 837,
+        "column": 13
+      },
+      "other_references": [
+        [
+          "go",
+          "GO:1903231",
+          "MI:0355"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "reader_stream_sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 463,
+        "column": 13
+      },
+      "other_references": [
+        [
+          "go",
+          "GO:1903231",
+          "MI:0355"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "reader_stream_sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 858,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "reader_stream_sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 407,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "reader_stream_sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 687,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "reader_stream_sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 458,
+        "column": 13
+      },
+      "other_references": [
+        [
+          "go",
+          "GO:1903231",
+          "MI:0355"
+        ]
+      ]
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "reader_stream_sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 749,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 385,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 994,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1634,
+        "column": 13
+      },
+      "other_references": []
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 2237,
+        "column": 13
+      },
+      "other_references": []
+    }
+  ],
+  "publication_reference_rows": [
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "reader_stream_sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 251,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "40075158",
+      "references": [
+        [
+          "pubmed",
+          "40075158",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "reader_stream_sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 492,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 109,
+        "column": 17
+      },
+      "official_pubmed_id": "40075158",
+      "references": [
+        [
+          "pubmed",
+          "40075158",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 836,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "40404733",
+      "references": [
+        [
+          "pubmed",
+          "40404733",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 989,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "40404733",
+      "references": [
+        [
+          "pubmed",
+          "40404733",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1142,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 103,
+        "column": 17
+      },
+      "official_pubmed_id": "40404733",
+      "references": [
+        [
+          "pubmed",
+          "40404733",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 1385,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 171,
+        "column": 17
+      },
+      "official_pubmed_id": "40404733",
+      "references": [
+        [
+          "pubmed",
+          "40404733",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 687,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "40071126",
+      "references": [
+        [
+          "pubmed",
+          "40071126",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 966,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "40071126",
+      "references": [
+        [
+          "pubmed",
+          "40071126",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1196,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 108,
+        "column": 17
+      },
+      "official_pubmed_id": "40071126",
+      "references": [
+        [
+          "pubmed",
+          "40071126",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 1349,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 182,
+        "column": 17
+      },
+      "official_pubmed_id": "40071126",
+      "references": [
+        [
+          "pubmed",
+          "40071126",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 531,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "40739265",
+      "references": [
+        [
+          "pubmed",
+          "40739265",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 684,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "40739265",
+      "references": [
+        [
+          "pubmed",
+          "40739265",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 837,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 101,
+        "column": 17
+      },
+      "official_pubmed_id": "40739265",
+      "references": [
+        [
+          "pubmed",
+          "40739265",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "reader_stream_sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 463,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "39833857",
+      "references": [
+        [
+          "pubmed",
+          "39833857",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "reader_stream_sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 858,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 108,
+        "column": 17
+      },
+      "official_pubmed_id": "39833857",
+      "references": [
+        [
+          "pubmed",
+          "39833857",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "reader_stream_sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 407,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "40211762",
+      "references": [
+        [
+          "pubmed",
+          "40211762",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "reader_stream_sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 687,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 107,
+        "column": 17
+      },
+      "official_pubmed_id": "40211762",
+      "references": [
+        [
+          "pubmed",
+          "40211762",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "reader_stream_sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 458,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 35,
+        "column": 17
+      },
+      "official_pubmed_id": "39972491",
+      "references": [
+        [
+          "pubmed",
+          "39972491",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "reader_stream_sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 749,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 101,
+        "column": 17
+      },
+      "official_pubmed_id": "39972491",
+      "references": [
+        [
+          "pubmed",
+          "39972491",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 385,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 22,
+        "column": 17
+      },
+      "official_pubmed_id": "40555359",
+      "references": [
+        [
+          "pubmed",
+          "40555359",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 994,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 22,
+        "column": 17
+      },
+      "official_pubmed_id": "40555359",
+      "references": [
+        [
+          "pubmed",
+          "40555359",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1634,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 94,
+        "column": 17
+      },
+      "official_pubmed_id": "40555359",
+      "references": [
+        [
+          "pubmed",
+          "40555359",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 2237,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "publication_source_locator": {
+        "line": 94,
+        "column": 17
+      },
+      "official_pubmed_id": "40555359",
+      "references": [
+        [
+          "pubmed",
+          "40555359",
+          "MI:0358"
+        ]
+      ],
+      "own_selected_publication_primary_qualified": true,
+      "promoted_own_DOI_aliases": [],
+      "generic_citation_promoted_to_consumed_publication": false
+    }
+  ],
+  "experiment_reference_rows": [
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "reader_stream_sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 251,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5618436,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-64039198",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30390",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40075158",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "reader_stream_sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 492,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5618437,
+      "experiment_source_locator": {
+        "line": 105,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-64039235",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30390",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 836,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691524,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70852453",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30672",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 989,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691524,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70852453",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30672",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1142,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691525,
+      "experiment_source_locator": {
+        "line": 99,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70852425",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30672",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40404733",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "reader_stream_sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 1385,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691526,
+      "experiment_source_locator": {
+        "line": 167,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70852440",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30672",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 687,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691196,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70836442",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30583",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 966,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691196,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70836442",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30583",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1196,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691197,
+      "experiment_source_locator": {
+        "line": 104,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70836062",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30583",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40071126",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "reader_stream_sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 1349,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691198,
+      "experiment_source_locator": {
+        "line": 178,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70836432",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30583",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 531,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5692759,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70855681",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30697",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 684,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5692759,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70855681",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30697",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40739265",
+      "reader_stream": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "reader_stream_sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 837,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5692760,
+      "experiment_source_locator": {
+        "line": 97,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70855560",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30697",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "reader_stream_sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 463,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691547,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70852776",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30684",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "39833857",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "reader_stream_sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 858,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691548,
+      "experiment_source_locator": {
+        "line": 104,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70852797",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30684",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "reader_stream_sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 407,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691485,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70840002",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30681",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40211762",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "reader_stream_sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 687,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691486,
+      "experiment_source_locator": {
+        "line": 103,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70840020",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30681",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "reader_stream_sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 458,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691463,
+      "experiment_source_locator": {
+        "line": 31,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70839943",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30660",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "39972491",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "reader_stream_sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 749,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5691464,
+      "experiment_source_locator": {
+        "line": 97,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-70839958",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30660",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 1,
+      "source_locator": {
+        "line": 385,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5650145,
+      "experiment_source_locator": {
+        "line": 18,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-67107458",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30398",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 2,
+      "source_locator": {
+        "line": 994,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5650145,
+      "experiment_source_locator": {
+        "line": 18,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-67107458",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30398",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 3,
+      "source_locator": {
+        "line": 1634,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5650146,
+      "experiment_source_locator": {
+        "line": 90,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-67107528",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30398",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    },
+    {
+      "publication_id": "40555359",
+      "reader_stream": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "reader_stream_sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0",
+      "evidence_sequence": 4,
+      "source_locator": {
+        "line": 2237,
+        "column": 13
+      },
+      "experiment_source_index": 1,
+      "experiment_xml_id": 5650146,
+      "experiment_source_locator": {
+        "line": 90,
+        "column": 13
+      },
+      "references": [
+        [
+          "intact",
+          "EBI-67107528",
+          "MI:0356"
+        ],
+        [
+          "imex",
+          "IM-30398",
+          "MI:0662"
+        ]
+      ],
+      "local_id_scope": "reader source artifact + publication + evidence_sequence; not a global experiment identifier or an independence count"
+    }
+  ],
+  "qualified_see_also_reference_rows": [],
+  "exposure_semantics": "Exact literal source database+accession identities. Primary participants and unordered MITAB pair views reuse unchanged helpers, with original side orientation retained separately. No synonym, sequence, isoform, species or biological-context collapse. XML evidence aliases include only MI:0356 or IMEx MI:0662; generic see-also/method refs are not identity. XML local experiment IDs stay source-scoped. Shared participants/pairs alone do not prove shared experiments or exclude a study.",
+  "publication_semantics": "Only eight selected consumed PMIDs and preexisting historical anchors enter consumed publication_ids. New DOI aliases require matching selected publication identity and source-qualified DOI references. Other citations/see-also remain scoped references, not automatically consumed studies or evidence of data reuse.",
+  "compatibility": "Uses existing v1 inventory field schema for frozen provenance_audit compatibility, with inventory_revision2 and additional source-scoped details. No frozen helper or original inventory changed. Complete alias inventory does not widen a future auditor automatically; its query semantics must be separately frozen.",
+  "old_inventory": {
+    "path": "docs/evaluations/intact_final_consumed_inventory_20261027.json",
+    "sha256": "2478de61628d84825f23c594c366888a45d74641bb7dac05e752ebbe6d971eff",
+    "preserved_unchanged": true
+  },
+  "build_freeze": {
+    "path": "runs/intact_consumed_inventory_v2_20261027/build_freeze.json",
+    "sha256": "4ad5c019a024f09488ce9e73e48a26257557126db3902ab12ecdf78faf9b1bea"
+  },
+  "build_started": {
+    "path": "runs/intact_consumed_inventory_v2_20261027/started.json",
+    "sha256": "8f4cb5cdfc47391667b4179168d056a6ec84032a3e3efc8f204ab2b3e0a0e87d"
+  },
+  "builder": {
+    "path": "runs/intact_consumed_inventory_v2_20261027/build_inventory.py",
+    "sha256": "d7f9dbb30135c9422dcca443f4ae22d5e3a96418fc65153fb9133af3a140df21"
+  },
+  "bindings": [
+    {
+      "path": "runs/intact_development_inspection_20261026/40075158_reader.jsonl",
+      "sha256": "e9389e26b9169d46aff2f44d106dcc15d6f19667ce872ef47fe1eb17ff3a1cbb"
+    },
+    {
+      "path": "runs/intact_development_inspection_20261026/40404733_reader.jsonl",
+      "sha256": "c588b5ebac1791957ee80f9d4f38228980c15cf65e65830c037656a3f740781c"
+    },
+    {
+      "path": "runs/intact_development_inspection_20261026/40071126_reader.jsonl",
+      "sha256": "a81d210892ea39df01391a632c1c62dab33d2d59d4943d9ddf7b6d8c676f82ae"
+    },
+    {
+      "path": "runs/intact_development_inspection_20261026/40739265_reader.jsonl",
+      "sha256": "f3481bdbf7d34393aabb2c6be8f6ac10dff4fae3454efbfac9ce632e142e4615"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40075158_reader.jsonl",
+      "sha256": "a895b7d49eca0d5716168146f761835fc4b4d5242bc01c69cc295be7b4318a00"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40404733_reader.jsonl",
+      "sha256": "fccdb55af45db56da3547d8afdfefcb98046882d7403e1d6b9b642bc03e87020"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40071126_reader.jsonl",
+      "sha256": "472f5cd0ed0894c0287a01489c4016d893f87eee50b91279e795d19bc25c131c"
+    },
+    {
+      "path": "runs/intact_xml_development_inspection_20261026_attempt_01/40739265_reader.jsonl",
+      "sha256": "fab72792a8a18b4426a3a27b5daed29893cd2f9fdb98ed53dd2100d1682874a6"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_reader.jsonl",
+      "sha256": "0b117f4954c9f082e17795919b92c6007d394602ba8dd6752139a75baea8d421"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_reader.jsonl",
+      "sha256": "752d794e5a0d9ed276916c0b8b3aa82cf4611d0e0e6b8049123a759e1a2c5382"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_reader.jsonl",
+      "sha256": "0a544dbdcf246ffb9607233ea54b7f493605692ec23d0b41cf9e49e220322137"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_reader.jsonl",
+      "sha256": "6c9d223abf1290e3fbc7f4e5086aad1d8b9f91af8966adcc1234919e96179a61"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0"
+    }
+  ],
+  "metadata_bindings": {
+    "runs/intact_consumed_flow_20261027_attempt_01/consumed_flow_freeze.json": {
+      "sha256": "80d4737a734264348ccb91de57e6ce36608ad90aff49a933e24df00742655de2",
+      "bytes": 43322
+    },
+    "docs/evaluations/intact_final_consumed_inventory_20261027.json": {
+      "sha256": "2478de61628d84825f23c594c366888a45d74641bb7dac05e752ebbe6d971eff",
+      "bytes": 6767
+    },
+    "docs/evaluations/intact_xml_development_20261026_summary.json": {
+      "sha256": "8ce120a625fd44be4cb6495240161f7b9cf76cb49b2536bcb097e57922832a2c",
+      "bytes": 17428
+    },
+    "docs/evaluations/intact_fresh_reference_20261027_selection.json": {
+      "sha256": "90e84d56fbbe043db2437a29df895608215d20de40c0b784c70db95140be5a98",
+      "bytes": 11941
+    }
+  },
+  "code_bindings": {
+    "scripts/intact_final_common.py": "d899a18b4495bb90d1414ed8d5115f5647e520f91d4b78ef82572b924698c6b0",
+    "scripts/intact_identity_projection.py": "6e3e439e052619430a68b21cc6c71b966c4ea709a2c58d9949748cb0ba49fb14",
+    "scripts/inspect_intact_development.py": "04c78ad656ce42300e5cdfdee3aed0bc838822b60f5d94c95b074c3684d10bcb",
+    "scripts/validate_intact_xml_provenance.py": "fff85cdf0074a6e198c3d1e8c23e0c57564577c8ee4522387356ea13cf4da313",
+    "scripts/inspect_intact_xml_development.py": "4159ea4bf7efba403352a6cf9d4a6ba231665d18dabbb1bb181b960df5173375",
+    "biograph_steward/client.py": "a9877c663c8790fd364d398b40f1f6cdf0d9ccd5b27378127cf4d3d3456bc3bb"
+  },
+  "limitations": [
+    "No independent biology, source-fidelity score or graph improvement is established by an exposure inventory.",
+    "Publication DOI aliases may be absent from captured XML; missing aliases are not proof of disjointness.",
+    "No full-text, correction/retraction/republication review or complete historical dataset audit.",
+    "Unknown provider lineage and external evidence/sequence/proteoform equivalence remain unresolved.",
+    "MITAB expanded pair views and XML n-ary evidence objects remain different units, not independent experiments.",
+    "A local experiment XML ID cannot match across files without a supplied global reference."
+  ],
+  "fresh_interaction_bodies_listed_read_hashed_or_queried": false,
+  "new_source_calls": 0,
+  "model_calls": 0,
+  "GPU_runs": 0,
+  "graph_changes": 0,
+  "source_scoring_run": false,
+  "content_sha256": "19b3754eb6c7faa6110832c92e7ca8ba40777ee7bca7d92d6cc959617bd5c356"
+}

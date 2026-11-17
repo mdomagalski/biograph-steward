@@ -1,0 +1,16 @@
+{
+  "format": "biograph-steward.baseline-aware.v1.publication-manifest",
+  "source_report_file_sha256": "5d417f7d7b728e6f335e8f54ca514603f98e894a00ea6235ae0011e5153a1c31",
+  "source_freeze_file_sha256": "f07977f6ee115953315ea21bc9fbeddece7e7b137685950043f8ee6fdbe1cd83",
+  "files": {
+    "report.json": "4476fadaf39a2662b4b6fad24c4171539f51994b1e8fd379f038b5f0026fa253",
+    "report.html": "350e1ba1696d5dd4adef60f75b42161227a902cf2af598a284ba1327ee91c658"
+  },
+  "method_task_rows": 24,
+  "opportunity_strata": 12,
+  "paired_method_comparisons": 12,
+  "own_variant_intervals": 0,
+  "operator_paths_or_raw_cases_included": false,
+  "automatic_adoption": false,
+  "content_sha256": "cd8b671fb2121d227b5b37f69a09fe3a3614e03901fcd93db75d2411712fa033"
+}

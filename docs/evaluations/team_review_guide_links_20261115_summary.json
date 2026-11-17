@@ -1,0 +1,104 @@
+{
+  "URL_verification_scope": "All nine link annotations statically compared against the source. Eight GitHub targets use the intended private delivery branch; the hosted reviewer link is unchanged. No network or authenticated endpoint checks were performed.",
+  "all_GitHub_document_targets_exist_in_current_checkout": true,
+  "authoring_library": {
+    "name": "pypdf",
+    "version": "6.21.4"
+  },
+  "corrected_GitHub_link_annotations": 8,
+  "corrected_targets": [
+    {
+      "page": 2,
+      "target": "https://github.com/mdomagalski/biograph-steward/tree/codex/contextual-gain-delivery"
+    },
+    {
+      "page": 2,
+      "target": "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/START_HERE.md"
+    },
+    {
+      "page": 6,
+      "target": "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/TEAM_REVIEW_FEEDBACK_20261113.txt"
+    },
+    {
+      "page": 6,
+      "target": "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/START_HERE.md"
+    },
+    {
+      "page": 6,
+      "target": "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/NATIVE_GO_CONTEXT_WORKBENCH.md"
+    },
+    {
+      "page": 6,
+      "target": "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/evaluations/SCIENTIFIC_DELIVERY_20261113.md"
+    },
+    {
+      "page": 6,
+      "target": "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/EXPERIMENT_HISTORY.md"
+    },
+    {
+      "page": 6,
+      "target": "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/DELIVERY.md"
+    }
+  ],
+  "created_at_utc": "2026-11-15T08:15:01.773164+00:00",
+  "current_review_branch": "codex/contextual-gain-delivery",
+  "format": "biograph-steward.team-review-guide-link-refresh.v1",
+  "link_annotations_total": 9,
+  "material_issues": [],
+  "metadata": {
+    "link_refresh_date": "2026-11-15",
+    "review_content_date": "2026-11-13",
+    "subject_explicitly_distinguishes_dates": true
+  },
+  "old_review_branch": "codex/scientific-accuracy-round2",
+  "privacy_checks": {
+    "no_credentials_or_tokens_added": true,
+    "no_local_private_paths_in_visible_text_or_metadata": true,
+    "no_new_external_transfers_or_requests": true,
+    "protected_root_Word_file_accessed": false
+  },
+  "refreshed_pdf": {
+    "bytes": 79644,
+    "path": "output/pdf/BioGraph_Steward_Team_Review_Guide_20261115.pdf",
+    "sha256": "8d01bc46237776870c90540f03ff241aacecd46692fafa1afe2e8559dacf3087"
+  },
+  "render_checks": {
+    "all_6_pages_pixel_identical": true,
+    "all_6_pages_visually_inspected": true,
+    "all_decompressed_page_content_streams_equal": true,
+    "all_page_dimensions_and_link_rectangles_equal": true,
+    "all_page_text_equal": true,
+    "clean_final_render_exit_codes": [
+      0,
+      0
+    ],
+    "different_pixels_per_page": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "engine": "bundled Poppler pdftoppm",
+    "final_render_log_bytes": [
+      0,
+      0
+    ],
+    "resolution_DPI": 100,
+    "source_and_updated_all_pages_rendered": true,
+    "source_page_count": 6,
+    "updated_page_count": 6,
+    "visible_layout_defects_detected": 0
+  },
+  "scope": "Hyperlink annotation and metadata refresh only. Visible review content remains dated November 13, 2026. This is not a new UI-usability assessment or scientific-results update.",
+  "source_pdf": {
+    "bytes": 79215,
+    "path": "output/pdf/BioGraph_Steward_Team_Review_Guide_20261113.pdf",
+    "sha256": "dd2ccfc6f2e6b220be8d5fb9e5e6647f9f0c06b51bb933190f838141771e519d",
+    "unchanged": true
+  },
+  "status": "passed",
+  "unchanged_hosted_reviewer_link_annotations": 1,
+  "visible_anchor_text_was_generic_and_unchanged": true
+}

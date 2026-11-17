@@ -1,0 +1,23 @@
+{
+  "format": "biograph-steward.current-source-agent-presentation-delivery.v1",
+  "file": "output/presentations/BioGraph_Steward_Overview.pptx",
+  "bytes": 587786,
+  "sha256": "ff7fc489a40b0b73baa58df885f9df7ad581253f44ca53b72c144983688d6e7c",
+  "slides": 7,
+  "editable_native_tables": 1,
+  "source_revision": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "actual_capture_mode": "local",
+  "actual_saved_real_data": true,
+  "recorded_actual_model_job": "source_agent_eval_dc7b597201da_S01",
+  "new_model_calls_for_authoring": 0,
+  "full_size_slides_visually_checked": true,
+  "independent_root_visual_review": true,
+  "measurement_qualification_on_results_slide": true,
+  "positive_agent_role_in_closing": true,
+  "agent_fidelity_not_credited_as_prediction_gain": true,
+  "historical_previous_canonical_preserved": true,
+  "artifact_tool_export_reimport_layout_font_validation_passed": true,
+  "validation_receipt_sha256": "3c69519e36f984eea155c967d9e7a13ee0078cba6df41bca5fd697bcec5006e2",
+  "local_capture_receipt_sha256": "38d8b1be5b79f90ddbe2d6d914387a2bfab1d87eedf0f941570afcc754c246f4",
+  "hosted_deployment_acceptance_has_separate_receipt": true
+}

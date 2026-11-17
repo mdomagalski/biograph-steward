@@ -1,0 +1,20 @@
+{
+  "all_member_paths_sizes_and_hashes_verified": true,
+  "all_previous_statistical_archives_retained": true,
+  "archive_bytes": 1920243,
+  "archive_sha256": "531ee111f56ffe2442cd5a016c85f1965b9638c29d0426939f14d3a52859eaf0",
+  "case_level_archive_published": false,
+  "consumed_reference_development_only": true,
+  "files_extracted_for_verification": false,
+  "format": "biograph-steward.crossfit-private-numerical-retention.v1",
+  "full_report_sha256": "f011f327cdc6282e8bf67d0af0f527d19e9e3ce5b5dcf4a0425d6543932915f4",
+  "local_private_copy_and_remote_originals_preserved": true,
+  "manifest_sha256": "5e75280af7ae2a737ba0ff9c3b5ff247dd309f729200b2c6b46c8dc540a95afc",
+  "members_verified": 21,
+  "metadata_receipts": 8,
+  "metrics_regenerated": false,
+  "native_curve_files": 6,
+  "new_arm_per_protein_count_files": 6,
+  "raw_GT_annotations_dense_forecasts_or_weights_included": false,
+  "verified_at_UTC": "2026-11-15T14:47:11.681262+00:00"
+}

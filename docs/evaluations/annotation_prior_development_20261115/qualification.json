@@ -1,0 +1,81 @@
+{
+  "author_input_adaptation": "strict presealed T0nonexperimental positives replace competition label files; exactFloat32.99/literalMAX only",
+  "complete_private_qualification_sha256": "8baaf87b2da34ebdd46363e97cfa512edbfaaffae1e2daca6e7ba7d9c7019cd6",
+  "invented_native_curve_and_bootstrap_fixtures_computed": true,
+  "invented_only": true,
+  "models_fitted": false,
+  "producer_consumer_actual_invented_delivery_exercised": true,
+  "python": "3.10.12",
+  "real_forecast_scores_generated": false,
+  "real_forecasts_or_references_read": false,
+  "real_scientific_metrics_computed": false,
+  "runtime": {
+    "cafaeval.evaluation": {
+      "sha256": "515664459bec8909df138a422a713058ba3f8a8ddc7e4b0475382459a709cda2",
+      "version": null
+    },
+    "cafaeval.graph": {
+      "sha256": "3b0f523f672bab3234e6798b86801514fbd84ea43c38e57e902e7b6e2cc74111",
+      "version": null
+    },
+    "cafaeval.parser": {
+      "sha256": "825e81969a30b5075069c9a5510ae711e0159507c7618a51a05e46dfc0f45d17",
+      "version": null
+    },
+    "cafaeval.tests": {
+      "sha256": "15c764c44fcd59dfd7986aed228a01975c6575624ec88887e6c0b4c2465f6826",
+      "version": null
+    },
+    "numpy": {
+      "sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+      "version": "1.26.4"
+    },
+    "pandas": {
+      "sha256": "108be8ca3ae1a2a5c765ee6f87e8867d87c2fb5a89107e6c2d3a6acc96612b7b",
+      "version": "2.2.3"
+    },
+    "polars": {
+      "sha256": "6503454d1de7dd032172c93eb97552d5dc6fda44ac283956f14aa3c47c2105ff",
+      "version": "1.35.1"
+    },
+    "tools.contextual_combination.annotation_prior": {
+      "sha256": "6dc7a39207490036f9d0cea6edf98e1d2ee5eda7afcecb10affb046fb118b7e5",
+      "version": null
+    },
+    "tools.contextual_combination.annotation_prior_assessment": {
+      "sha256": "0052a8834e9c1cfc29f713f74db4c2e46c7ee1f58ea57c43af216d298a4a2ceb",
+      "version": null
+    },
+    "tools.contextual_combination.assessment": {
+      "sha256": "d35f913f91bf50f71e5631be9eef1b97c77e6d9d4d965bd9464743acca63f700",
+      "version": null
+    },
+    "tools.contextual_combination.postprocessing": {
+      "sha256": "19405209123d2c79d1c7f6fad3de5859493defec831bb1074817417818d9ec74",
+      "version": null
+    },
+    "tools.learned_combination.core": {
+      "sha256": "9b4e0038ee40cecdbeb1f69b5f8d429d29bd974c4da33de04d3a800d77aa28fc",
+      "version": null
+    },
+    "tools.learned_combination.native_adapter": {
+      "sha256": "d77f1994aa2dec2232a5052a63c92acbb2ff346555526286002c8d273de18c2d",
+      "version": null
+    },
+    "tools.learned_combination.runner": {
+      "sha256": "de5bffada5bda11633213dc9504299a6316a324c50c655c4631d81f31217ea87",
+      "version": null
+    }
+  },
+  "skips": 0,
+  "source_files": {
+    "author/model_scripts/postproc_and_sub.py": "fd85e98fa815ae7459f99caffb92221f76d5e4a781a4b6e4f0eda51c3ba6d5b2",
+    "tools/contextual_combination/annotation_prior.py": "6dc7a39207490036f9d0cea6edf98e1d2ee5eda7afcecb10affb046fb118b7e5",
+    "tools/contextual_combination/annotation_prior_assessment.py": "0052a8834e9c1cfc29f713f74db4c2e46c7ee1f58ea57c43af216d298a4a2ceb",
+    "tools/contextual_combination/annotation_prior_protocol.json": "af700b19aaa60c74a8f2ad901ce954710e0b9f7c11232db6abe2b7c929188669",
+    "tools/contextual_combination/test_annotation_prior.py": "1d38a3a7df91894a10cd236e4bf175c0ede9686e1e77e9fd970e6354e76b5fd5",
+    "tools/contextual_combination/test_annotation_prior_assessment.py": "fdc88513f3f1e8808c3278b44b6762a7ea39f3b48971a7bcb85b5ac4e03948fc"
+  },
+  "status": "passed",
+  "tests": 17
+}

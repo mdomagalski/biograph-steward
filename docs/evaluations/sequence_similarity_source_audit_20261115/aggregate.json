@@ -1,0 +1,180 @@
+{
+  "MMseqs2_release": "18-8cc5c",
+  "MMseqs2_version": "8cc5ce367b5638c4306c2d7cfc652dd099a4643f",
+  "binary_sha256": "b7ef6e0e33df5dd4fa9cf988cbd8b4988c11a3a1255d2c377f13e1bb40c157fb",
+  "comparisons": [
+    {
+      "directed_hits": 1239,
+      "identity_at_least": 0.3,
+      "query_coverage_at_least": 0.8,
+      "query_fraction_with_detected_hit": 0.16363636363636364,
+      "query_proteins": 3300,
+      "query_proteins_with_detected_hit": 540,
+      "query_proteins_without_detected_hit": 2760,
+      "query_role": "final",
+      "target_coverage_at_least": 0.8,
+      "target_proteins": 4040,
+      "target_role": "fit"
+    },
+    {
+      "directed_hits": 376,
+      "identity_at_least": 0.5,
+      "query_coverage_at_least": 0.8,
+      "query_fraction_with_detected_hit": 0.08424242424242424,
+      "query_proteins": 3300,
+      "query_proteins_with_detected_hit": 278,
+      "query_proteins_without_detected_hit": 3022,
+      "query_role": "final",
+      "target_coverage_at_least": 0.8,
+      "target_proteins": 4040,
+      "target_role": "fit"
+    },
+    {
+      "directed_hits": 29,
+      "identity_at_least": 0.9,
+      "query_coverage_at_least": 0.8,
+      "query_fraction_with_detected_hit": 0.007575757575757576,
+      "query_proteins": 3300,
+      "query_proteins_with_detected_hit": 25,
+      "query_proteins_without_detected_hit": 3275,
+      "query_role": "final",
+      "target_coverage_at_least": 0.8,
+      "target_proteins": 4040,
+      "target_role": "fit"
+    },
+    {
+      "directed_hits": 283,
+      "identity_at_least": 0.3,
+      "query_coverage_at_least": 0.8,
+      "query_fraction_with_detected_hit": 0.0596969696969697,
+      "query_proteins": 3300,
+      "query_proteins_with_detected_hit": 197,
+      "query_proteins_without_detected_hit": 3103,
+      "query_role": "final",
+      "target_coverage_at_least": 0.8,
+      "target_proteins": 797,
+      "target_role": "validation"
+    },
+    {
+      "directed_hits": 105,
+      "identity_at_least": 0.5,
+      "query_coverage_at_least": 0.8,
+      "query_fraction_with_detected_hit": 0.027575757575757576,
+      "query_proteins": 3300,
+      "query_proteins_with_detected_hit": 91,
+      "query_proteins_without_detected_hit": 3209,
+      "query_role": "final",
+      "target_coverage_at_least": 0.8,
+      "target_proteins": 797,
+      "target_role": "validation"
+    },
+    {
+      "directed_hits": 10,
+      "identity_at_least": 0.9,
+      "query_coverage_at_least": 0.8,
+      "query_fraction_with_detected_hit": 0.0030303030303030303,
+      "query_proteins": 3300,
+      "query_proteins_with_detected_hit": 10,
+      "query_proteins_without_detected_hit": 3290,
+      "query_role": "final",
+      "target_coverage_at_least": 0.8,
+      "target_proteins": 797,
+      "target_role": "validation"
+    },
+    {
+      "directed_hits": 297,
+      "identity_at_least": 0.3,
+      "query_coverage_at_least": 0.8,
+      "query_fraction_with_detected_hit": 0.17565872020075282,
+      "query_proteins": 797,
+      "query_proteins_with_detected_hit": 140,
+      "query_proteins_without_detected_hit": 657,
+      "query_role": "validation",
+      "target_coverage_at_least": 0.8,
+      "target_proteins": 4040,
+      "target_role": "fit"
+    },
+    {
+      "directed_hits": 82,
+      "identity_at_least": 0.5,
+      "query_coverage_at_least": 0.8,
+      "query_fraction_with_detected_hit": 0.08030112923462986,
+      "query_proteins": 797,
+      "query_proteins_with_detected_hit": 64,
+      "query_proteins_without_detected_hit": 733,
+      "query_role": "validation",
+      "target_coverage_at_least": 0.8,
+      "target_proteins": 4040,
+      "target_role": "fit"
+    },
+    {
+      "directed_hits": 3,
+      "identity_at_least": 0.9,
+      "query_coverage_at_least": 0.8,
+      "query_fraction_with_detected_hit": 0.0037641154328732747,
+      "query_proteins": 797,
+      "query_proteins_with_detected_hit": 3,
+      "query_proteins_without_detected_hit": 794,
+      "query_role": "validation",
+      "target_coverage_at_least": 0.8,
+      "target_proteins": 4040,
+      "target_role": "fit"
+    }
+  ],
+  "completed_at": "2026-11-15T08:01:19.571868+00:00",
+  "diagnostics": {
+    "all_validation_self_hits_required": false,
+    "configured_max_seqs": 5000,
+    "duplicate_directed_rows": 0,
+    "max_seqs_exceeds_target_database_size": true,
+    "maximum_reported_hits_for_any_query": 19,
+    "native_output_rows": 2843,
+    "no_hit_means_no_homology": false,
+    "rows_below_one_reported_search_gate": 0,
+    "rows_meeting_reported_search_gates": 2843,
+    "target_database_sequences": 4837,
+    "valid_rows_outside_three_declared_role_pairs": 1024,
+    "validation_query_count": 797,
+    "validation_self_queries_detected_at_search_cutoffs": 797
+  },
+  "elapsed_seconds": 58.264687148999656,
+  "existing_boundary_unchanged": true,
+  "format": "biograph-steward.sequence-similarity-source-audit.v1",
+  "input_receipt_sha256": "3116f856f72dec464f6d678fb50f17bee9983d82688c2229b9a438815bd7c8ab",
+  "interpretation_limits": [
+    "Heuristic sequence search is not an exhaustive proof of no homology.",
+    "A detected similar sequence does not itself establish label leakage or equivalent function.",
+    "The audited fit frame is the combiner fit universe; parent predictor training and base language-model exposure remain separate.",
+    "No outcome scores, labels, fitted parameters, graph assertions, partitions or success gates are changed.",
+    "This is a descriptive full-AA search after the prediction reference was consumed, not a new prediction endpoint.",
+    "Full-AA search does not establish near-homology separation of truncated first1022 model inputs."
+  ],
+  "new_training_predictions_model_selection_or_graph_changes": false,
+  "plan_sha256": "52c2b6daf5c60932d1ff29831dad7640ce807a57ab5d4e22e3fe8d9ec55ce537",
+  "query_and_target_headers_are_private_synthetic_ids": true,
+  "reference_labels_or_outcome_scores_read": false,
+  "role_counts": {
+    "final": 3300,
+    "fit": 4040,
+    "validation": 797
+  },
+  "role_exact_overlap_counts": {
+    "fit__final": {
+      "actual_first1022_hashes": 0,
+      "full_sequence_hashes": 0,
+      "literal_accessions": 0
+    },
+    "fit__validation": {
+      "actual_first1022_hashes": 0,
+      "full_sequence_hashes": 0,
+      "literal_accessions": 0
+    },
+    "validation__final": {
+      "actual_first1022_hashes": 0,
+      "full_sequence_hashes": 0,
+      "literal_accessions": 0
+    }
+  },
+  "source_only": true,
+  "tool_qualification_receipt_sha256": "9032b8419757c7dcc37d54562b980270ce893e9369706d2faf91ce62b621e156"
+}

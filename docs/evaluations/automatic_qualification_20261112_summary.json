@@ -1,0 +1,139 @@
+{
+  "format": "biograph-steward.automatic-qualification-summary.v1",
+  "date": "2026-11-12",
+  "scope": "Automatic task eligibility and complete evidence-edge accounting, not scientific truth.",
+  "profile": "source-reported-direct-human-phosphoregulation.v1",
+  "source_packet_id": "packet:14265d0e4990da19e1f2538be1f185cf68e378d00152fdb71ca3d8c4f9936a8e",
+  "original_graph_sha256": "f35f8e0bb66742a3b65d1887ecbc85ead33fd8c5ef9eb5e8015d28934f22d22e",
+  "implementation_sha256": "435afc055a8ecd55bfffcc20831a3ce799c40d9fed9a52cadb8bef7a24b8f44f",
+  "counts": {
+    "total_edges": 16985,
+    "keep": 175,
+    "prune": 76,
+    "abstain": 16734,
+    "profile_edges": 290,
+    "outside_profile_abstain": 16695,
+    "unknown_profile_abstain": 39,
+    "unprojected_source_records": 0,
+    "source_profile": {
+      "keep": 175,
+      "prune": 76,
+      "abstain": 39
+    }
+  },
+  "edge_family_counts": {
+    "expression_observation": {
+      "total": 1061,
+      "keep": 0,
+      "prune": 0,
+      "abstain": 1061
+    },
+    "pathway_membership": {
+      "total": 9540,
+      "keep": 0,
+      "prune": 0,
+      "abstain": 9540
+    },
+    "go_annotation": {
+      "total": 4078,
+      "keep": 0,
+      "prune": 0,
+      "abstain": 4078
+    },
+    "source_regulatory_observation": {
+      "total": 290,
+      "keep": 175,
+      "prune": 76,
+      "abstain": 39
+    },
+    "protein_interaction": {
+      "total": 1576,
+      "keep": 0,
+      "prune": 0,
+      "abstain": 1576
+    },
+    "drug_listing": {
+      "total": 174,
+      "keep": 0,
+      "prune": 0,
+      "abstain": 174
+    },
+    "tissue_proximity_observation": {
+      "total": 120,
+      "keep": 0,
+      "prune": 0,
+      "abstain": 120
+    },
+    "disease_association": {
+      "total": 100,
+      "keep": 0,
+      "prune": 0,
+      "abstain": 100
+    },
+    "variant_therapy_response": {
+      "total": 46,
+      "keep": 0,
+      "prune": 0,
+      "abstain": 46
+    }
+  },
+  "retained": {
+    "nodes": 9865,
+    "edges": 16909,
+    "assertions": 16904
+  },
+  "incompatibility_reason_counts": {
+    "source_mechanism_outside_phosphoregulation": 49,
+    "source_experimental_organism_other_than_human": 20,
+    "source_explicit_indirect": 15
+  },
+  "reason_counts_overlap": true,
+  "report_content_sha256": "ef7a6e02f2e4654e4d59621783b5830066bbda436ac78108bc1184b196d31ccd",
+  "independent_replay_content_sha256": "11213efe189a24696243c212ffd1c4267bdc18bf4aa4d5cffd3a8418fd19a1d2",
+  "source_and_original_review_state_unchanged": true,
+  "scientific_accuracy_measured": false,
+  "false_biological_relationships_established_by_exclusions": false,
+  "model_calls": 0,
+  "source_fetches_for_qualification": 0,
+  "negative_reference_preflight": {
+    "source": "official IntAct current count-only API",
+    "human_human_candidate_evidence_rows": 836,
+    "both_endpoints_in_original_CRC99_candidate_rows": 0,
+    "both_endpoints_in_full_CRC218_candidate_rows": 0,
+    "historical_3172_candidate_count": null,
+    "historical_count_status": "generic SOAP server fault; not interpreted as zero",
+    "reference_outcome_rows_opened": false,
+    "reference_study_and_construct_eligibility_established": false
+  },
+  "original_delivery_and_benchmark_results_changed": false,
+  "graph_data_redistribution_cleared": false,
+  "prior_full_replay_content_sha256": "315bd314797d78a6c97a59fa771ee1a229723552a5cfc2d483acb3a1e6ebbbcc",
+  "superseded_initial_materialization": {
+    "report_content_sha256": "c9ebc0982757bcec8607161c4934baf913c9f7023fde178bd2d0d30423b695da",
+    "preserved": true,
+    "record_selection_unchanged": true,
+    "reason": "Pre-release taxonomy unknown-handling correction; no changed biological outcome."
+  },
+  "illustrative_existing_path_query_replay": {
+    "content_sha256": "7522c780bf50fe688ecc395c35b20542f9af5e53bde2f9e177e51bd607c2ce89",
+    "scope": "Illustrative existing-path query replay, not an independent biological reference or accuracy metric.",
+    "queries": {
+      "binding_context": {
+        "baseline": 2,
+        "task_view": 0
+      },
+      "phosphorylation_context": {
+        "baseline": 2,
+        "task_view": 2
+      }
+    },
+    "independent_biological_accuracy": false
+  },
+  "local_artifacts": {
+    "task_report": "runs/crc_task_qualification_v2_20261112/task_qualification.json",
+    "retained_graph": "runs/crc_task_qualification_v2_20261112/retained/retained_graph.json",
+    "edge_ledger": "runs/crc_task_qualification_v2_20261112/retained/edge_dispositions.jsonl",
+    "independent_delta_review": "runs/automatic_qualification_review_20261112/independent_review/real_crc_review_v2.json"
+  },
+  "content_sha256": "86b0d8891d9f932b7fa0d4b5ec3cba3ab8a09ccf077ab82e9ae9984d99620ccc"
+}

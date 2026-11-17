@@ -1,0 +1,688 @@
+{
+  "format": "biograph-steward.kinase-utility-public-aggregate.v1",
+  "date": "2026-11-12",
+  "conclusion": "The preselected pruning rule did not demonstrate added expected-target recovery over the qualified unpruned source graph. Published propagation versus raw scoring shows descriptive secondary differences only.",
+  "previous_work_retained_commits": [
+    "f254e43",
+    "f1d1c0e"
+  ],
+  "endpoint": "Recovery of author-annotated drug targets and expected inhibition direction in processed HL60/MCF7 phosphoproteomics; not directly measured enzyme activities or PPI truth.",
+  "reference": {
+    "study_DOI": "10.1038/s41587-019-0391-9",
+    "benchmark_DOI": "10.1038/s41467-025-59779-y",
+    "data_record": "https://zenodo.org/records/14824013",
+    "deposit_license": "CC-BY-4.0",
+    "measurement_sha256": "4d804f54f5891fc1c509fdf79bb69b0ada261366d549856673d095bc3cdd1c43",
+    "expected_metadata_sha256": "7b1ea19411dfc9bccc7bbec9642d675bc3bd98467387501cb07fb758a012b84f"
+  },
+  "population": {
+    "native_conditions": 122,
+    "native_cell_lines": [
+      "HL60",
+      "MCF7"
+    ],
+    "native_treatment_ids": 61,
+    "metadata_rows": 118,
+    "qualified_conditions": 106,
+    "complete_drugs": 53,
+    "condition_target_cases": 170,
+    "qualified_target_genes": 52,
+    "fixed_candidate_M": 373,
+    "source_condition_states": {
+      "qualified_reference_condition": 106,
+      "metadata_present_no_qualified_atomic_targets": 12,
+      "no_reference_metadata": 4
+    },
+    "reference_exclusion_reasons": {
+      "reference_target_not_qualified_gene_token": 16,
+      "no_qualified_atomic_reference_targets": 12
+    },
+    "reference_scope_exclusions": 0,
+    "model_abstentions_condition_target_cases": 38,
+    "reference_targets_outside_model_universe": 0,
+    "macro_note": "Average targets within condition, the two cells within complete drug, then drugs equally. Macro coverage is not the unweighted proportion of scored target cases.",
+    "abstentions_with_zero_measured_prior_signature_sites": 38
+  },
+  "source_qualification": {
+    "source": "SIGNOR Oct2026, human direct canonical phosphorylation subset",
+    "candidate_rows": 7505,
+    "sequence_compatible_rows": 7449,
+    "coordinate_discrepancies": 52,
+    "missing_exact_primary_enzyme_accessions": 4,
+    "incompatible_records_labeled_false": false,
+    "final_prior_counts": {
+      "native_source_rows": 43727,
+      "input_sequence_qualified_rows": 7449,
+      "upstream_excluded_rows": 36278,
+      "final_stage_excluded_rows": 741,
+      "retained_source_rows": 6708,
+      "all_excluded_rows": 37019,
+      "final_stage_overlapping_reason_counts": {
+        "not_positive_numeric_source_PMID": 1,
+        "source_enzyme_gene_product_correspondence_unqualified": 740,
+        "gene_not_unshadowed_primary_or_unique_hgnc_curated_legacy": 728,
+        "requires_exactly_one_total_registry_product": 12
+      },
+      "source_enzyme_mapping_states": {
+        "eligible": 373,
+        "excluded": 20
+      },
+      "source_enzymes": 373,
+      "site_hosts": 1649,
+      "sites": 4363,
+      "binary_KS_links": 6114,
+      "source_enzymes_at_least_5_sites_diagnostic_only": 189,
+      "sites_removed_for_unmappable_host_gene": 0,
+      "duplicate_source_rows_add_no_weight": 594
+    },
+    "reference_parent_PMID": "31959955",
+    "parent_PMID_rows_after_qualification": 0,
+    "induced_PPI_pairs": {
+      "unpruned": 365,
+      "native_top80": 303,
+      "human_experimental_top80": 321,
+      "ne_top80": 287
+    },
+    "primary_native_changed_nonzero_pairs": 30,
+    "native_weights_unchanged": true,
+    "EFFECT_used_as_phosphorylation_incidence_sign": false,
+    "source_roles_independently_catalytically_validated": false,
+    "current_CRC_workspace_intersection": {
+      "workspace": "crc_biological_workspace_20261112",
+      "SIGNOR_records": 290,
+      "intersection_with_the56_specific_flags": 0,
+      "all_workspace_claims_validated": false,
+      "exact_identity_check_seal": "d2e3eda251b55b7b42a1ad43401ac2eabc2a5b8839ad5ad6b750d75518d1c391"
+    }
+  },
+  "input_coverage": {
+    "native_measurement_rows": 13249,
+    "mapping_states": {
+      "qualified": 12101,
+      "protein_context_unresolved": 719,
+      "quarantined": 429
+    },
+    "candidate_regulators": 373,
+    "source_KS_links": 6114,
+    "source_sites": 4363,
+    "union_sites": 15999,
+    "ever_observed_sites": 12101,
+    "ever_observed_sites_with_KS_annotation": 465,
+    "ever_observed_sites_without_KS_annotation": 11636,
+    "regulators_with_any_observed_signature_site_in_any_condition": 182,
+    "regulators_at_least5_prior_sites": 189,
+    "regulators_at_least5_ever_observed_prior_sites": 44,
+    "per_condition_regulators_with_measured_prior_sites": {
+      "min": 161,
+      "median": 164.0,
+      "max": 170
+    },
+    "unpruned_PPI_nonisolated_regulators": 79
+  },
+  "arm_summaries": {
+    "rokai_primary_zscore": {
+      "macro": {
+        "normalized_rank": 0.3825104962314735,
+        "signed_top5_recovery": 0.09669811320754718,
+        "sign_agreement": 0.5943396226415094,
+        "target_score_coverage": 0.70062893081761
+      },
+      "per_cell": {
+        "HL60": {
+          "normalized_rank": 0.36963849124049436,
+          "signed_top5_recovery": 0.07547169811320754,
+          "sign_agreement": 0.5933962264150944,
+          "target_score_coverage": 0.7132075471698113
+        },
+        "MCF7": {
+          "normalized_rank": 0.39538250122245266,
+          "signed_top5_recovery": 0.1179245283018868,
+          "sign_agreement": 0.5952830188679246,
+          "target_score_coverage": 0.6880503144654089
+        }
+      }
+    },
+    "rokai_native_zscore": {
+      "macro": {
+        "normalized_rank": 0.38252820071829635,
+        "signed_top5_recovery": 0.09669811320754718,
+        "sign_agreement": 0.5943396226415094,
+        "target_score_coverage": 0.70062893081761
+      },
+      "per_cell": {
+        "HL60": {
+          "normalized_rank": 0.36963849124049436,
+          "signed_top5_recovery": 0.07547169811320754,
+          "sign_agreement": 0.5933962264150944,
+          "target_score_coverage": 0.7132075471698113
+        },
+        "MCF7": {
+          "normalized_rank": 0.39541791019609823,
+          "signed_top5_recovery": 0.1179245283018868,
+          "sign_agreement": 0.5952830188679246,
+          "target_score_coverage": 0.6880503144654089
+        }
+      }
+    },
+    "rokai_unpruned_zscore": {
+      "macro": {
+        "normalized_rank": 0.3824771949348306,
+        "signed_top5_recovery": 0.09669811320754718,
+        "sign_agreement": 0.5943396226415094,
+        "target_score_coverage": 0.70062893081761
+      },
+      "per_cell": {
+        "HL60": {
+          "normalized_rank": 0.3695592425851923,
+          "signed_top5_recovery": 0.07547169811320754,
+          "sign_agreement": 0.5933962264150944,
+          "target_score_coverage": 0.7132075471698113
+        },
+        "MCF7": {
+          "normalized_rank": 0.39539514728446895,
+          "signed_top5_recovery": 0.1179245283018868,
+          "sign_agreement": 0.5952830188679246,
+          "target_score_coverage": 0.6880503144654089
+        }
+      }
+    },
+    "rokai_ne_zscore": {
+      "macro": {
+        "normalized_rank": 0.38240890619994267,
+        "signed_top5_recovery": 0.09669811320754718,
+        "sign_agreement": 0.5943396226415094,
+        "target_score_coverage": 0.70062893081761
+      },
+      "per_cell": {
+        "HL60": {
+          "normalized_rank": 0.3697405028074258,
+          "signed_top5_recovery": 0.07547169811320754,
+          "sign_agreement": 0.5933962264150944,
+          "target_score_coverage": 0.7132075471698113
+        },
+        "MCF7": {
+          "normalized_rank": 0.39507730959245957,
+          "signed_top5_recovery": 0.1179245283018868,
+          "sign_agreement": 0.5952830188679246,
+          "target_score_coverage": 0.6880503144654089
+        }
+      }
+    },
+    "rokai_ks_only_zscore": {
+      "macro": {
+        "normalized_rank": 0.3828999949415752,
+        "signed_top5_recovery": 0.09827044025157232,
+        "sign_agreement": 0.5990566037735849,
+        "target_score_coverage": 0.70062893081761
+      },
+      "per_cell": {
+        "HL60": {
+          "normalized_rank": 0.3701148262431079,
+          "signed_top5_recovery": 0.08490566037735849,
+          "sign_agreement": 0.6028301886792453,
+          "target_score_coverage": 0.7132075471698113
+        },
+        "MCF7": {
+          "normalized_rank": 0.3956851636400425,
+          "signed_top5_recovery": 0.11163522012578617,
+          "sign_agreement": 0.5952830188679246,
+          "target_score_coverage": 0.6880503144654089
+        }
+      }
+    },
+    "raw_zscore": {
+      "macro": {
+        "normalized_rank": 0.39225049319641864,
+        "signed_top5_recovery": 0.07389937106918239,
+        "sign_agreement": 0.5617924528301886,
+        "target_score_coverage": 0.70062893081761
+      },
+      "per_cell": {
+        "HL60": {
+          "normalized_rank": 0.37983374643802587,
+          "signed_top5_recovery": 0.05188679245283019,
+          "sign_agreement": 0.5776729559748428,
+          "target_score_coverage": 0.7132075471698113
+        },
+        "MCF7": {
+          "normalized_rank": 0.4046672399548114,
+          "signed_top5_recovery": 0.09591194968553458,
+          "sign_agreement": 0.5459119496855346,
+          "target_score_coverage": 0.6880503144654089
+        }
+      }
+    },
+    "raw_mean": {
+      "macro": {
+        "normalized_rank": 0.3983969008717352,
+        "signed_top5_recovery": 0.04874213836477988,
+        "sign_agreement": 0.5617924528301886,
+        "target_score_coverage": 0.70062893081761
+      },
+      "per_cell": {
+        "HL60": {
+          "normalized_rank": 0.38232333451363243,
+          "signed_top5_recovery": 0.04716981132075472,
+          "sign_agreement": 0.5776729559748428,
+          "target_score_coverage": 0.7132075471698113
+        },
+        "MCF7": {
+          "normalized_rank": 0.414470467229838,
+          "signed_top5_recovery": 0.05031446540880503,
+          "sign_agreement": 0.5459119496855346,
+          "target_score_coverage": 0.6880503144654089
+        }
+      }
+    }
+  },
+  "primary_coverage_floor": {
+    "requirements": {
+      "primary_condition_target_cases": 20,
+      "primary_distinct_resolved_target_genes": 5,
+      "primary_cells": 2,
+      "primary_complete_drugs": 5
+    },
+    "checks": {
+      "primary_condition_target_cases": true,
+      "primary_distinct_resolved_target_genes": true,
+      "primary_cells": true,
+      "primary_complete_drugs": true
+    },
+    "passed": true
+  },
+  "primary_comparison_checks": {
+    "rokai_native_zscore": {
+      "rank_lower": true,
+      "signed_top5_recovery_not_worse": true,
+      "sign_agreement_not_worse": true,
+      "target_score_coverage_not_worse": true,
+      "per_cell_rank_not_worse": {
+        "HL60": true,
+        "MCF7": true
+      },
+      "all_point_checks_pass": true
+    },
+    "rokai_unpruned_zscore": {
+      "rank_lower": false,
+      "signed_top5_recovery_not_worse": true,
+      "sign_agreement_not_worse": true,
+      "target_score_coverage_not_worse": true,
+      "per_cell_rank_not_worse": {
+        "HL60": false,
+        "MCF7": true
+      },
+      "all_point_checks_pass": false
+    }
+  },
+  "primary_paired_drug_bootstrap": {
+    "n_drugs": 53,
+    "draws": 10000,
+    "seed": 20261112,
+    "interval_method": "paired_drug_percentile_2.5_97.5_linear",
+    "scope": "Descriptive resampling within this benchmark, not independent-study or clinical uncertainty.",
+    "available": true,
+    "comparisons": {
+      "rokai_native_zscore": {
+        "mean_primary_minus_comparator": -1.770448682280318e-05,
+        "percentile95_interval": [
+          -0.0001041192439341051,
+          6.745620247188366e-05
+        ],
+        "upper95_bound_below_zero": false,
+        "unavailable_reason": null
+      },
+      "rokai_unpruned_zscore": {
+        "mean_primary_minus_comparator": 3.3301296642893285e-05,
+        "percentile95_interval": [
+          -0.00020444466926332377,
+          0.0003178376920093757
+        ],
+        "upper95_bound_below_zero": false,
+        "unavailable_reason": null
+      }
+    }
+  },
+  "primary_gate_passed": false,
+  "stronger_within_panel_gate_passed": false,
+  "primary_direction_categories": {
+    "counts": {
+      "agreement": 112,
+      "zero": 0,
+      "opposite": 20,
+      "missing": 38
+    },
+    "same_population_drug_macro_fractions": {
+      "agreement": 0.5943396226415094,
+      "zero": 0.0,
+      "opposite": 0.10628930817610062,
+      "missing": 0.2993710691823899
+    }
+  },
+  "case_rank_changes": {
+    "rokai_native_zscore": {
+      "same": 159,
+      "primary_better": 6,
+      "primary_worse": 5
+    },
+    "rokai_unpruned_zscore": {
+      "same": 152,
+      "primary_better": 9,
+      "primary_worse": 9
+    },
+    "rokai_ne_zscore": {
+      "same": 142,
+      "primary_worse": 16,
+      "primary_better": 12
+    }
+  },
+  "source_degree_secondary_diagnostic": {
+    "scope": "Predeclared source KS-degree strata, same primary condition-target cases and original candidate M. Unweighted case means are descriptive and are not the primary drug macro. No ranks, methods or primary benefit gates changed.",
+    "source_candidate_counts": {
+      "source_degree_at_least5": 189,
+      "source_degree_below5": 184
+    },
+    "primary_condition_target_cases": 170,
+    "arm_groups": {
+      "raw_mean": {
+        "source_degree_at_least5": {
+          "condition_target_cases": 154,
+          "target_genes": 47,
+          "conditions": 94,
+          "drugs": 47,
+          "unweighted_case_means": {
+            "normalized_rank": 0.28987500435221614,
+            "signed_top5_recovery": 0.05194805194805195,
+            "sign_agreement": 0.6558441558441559
+          },
+          "unweighted_case_score_coverage": 0.8311688311688312
+        },
+        "source_degree_below5": {
+          "condition_target_cases": 16,
+          "target_genes": 5,
+          "conditions": 16,
+          "drugs": 8,
+          "unweighted_case_means": {
+            "normalized_rank": 0.7774798927613941,
+            "signed_top5_recovery": 0.125,
+            "sign_agreement": 0.1875
+          },
+          "unweighted_case_score_coverage": 0.25
+        },
+        "outside_fixed_candidate_roster": {
+          "condition_target_cases": 0,
+          "target_genes": 0,
+          "conditions": 0,
+          "drugs": 0,
+          "unweighted_case_means": {
+            "normalized_rank": null,
+            "signed_top5_recovery": null,
+            "sign_agreement": null
+          },
+          "unweighted_case_score_coverage": null
+        }
+      },
+      "raw_zscore": {
+        "source_degree_at_least5": {
+          "condition_target_cases": 154,
+          "target_genes": 47,
+          "conditions": 94,
+          "drugs": 47,
+          "unweighted_case_means": {
+            "normalized_rank": 0.28195397096201386,
+            "signed_top5_recovery": 0.09090909090909091,
+            "sign_agreement": 0.6558441558441559
+          },
+          "unweighted_case_score_coverage": 0.8311688311688312
+        },
+        "source_degree_below5": {
+          "condition_target_cases": 16,
+          "target_genes": 5,
+          "conditions": 16,
+          "drugs": 8,
+          "unweighted_case_means": {
+            "normalized_rank": 0.7768096514745308,
+            "signed_top5_recovery": 0.125,
+            "sign_agreement": 0.1875
+          },
+          "unweighted_case_score_coverage": 0.25
+        },
+        "outside_fixed_candidate_roster": {
+          "condition_target_cases": 0,
+          "target_genes": 0,
+          "conditions": 0,
+          "drugs": 0,
+          "unweighted_case_means": {
+            "normalized_rank": null,
+            "signed_top5_recovery": null,
+            "sign_agreement": null
+          },
+          "unweighted_case_score_coverage": null
+        }
+      },
+      "rokai_ks_only_zscore": {
+        "source_degree_at_least5": {
+          "condition_target_cases": 154,
+          "target_genes": 47,
+          "conditions": 94,
+          "drugs": 47,
+          "unweighted_case_means": {
+            "normalized_rank": 0.271526061070297,
+            "signed_top5_recovery": 0.1038961038961039,
+            "sign_agreement": 0.7207792207792207
+          },
+          "unweighted_case_score_coverage": 0.8311688311688312
+        },
+        "source_degree_below5": {
+          "condition_target_cases": 16,
+          "target_genes": 5,
+          "conditions": 16,
+          "drugs": 8,
+          "unweighted_case_means": {
+            "normalized_rank": 0.7746313672922251,
+            "signed_top5_recovery": 0.125,
+            "sign_agreement": 0.125
+          },
+          "unweighted_case_score_coverage": 0.25
+        },
+        "outside_fixed_candidate_roster": {
+          "condition_target_cases": 0,
+          "target_genes": 0,
+          "conditions": 0,
+          "drugs": 0,
+          "unweighted_case_means": {
+            "normalized_rank": null,
+            "signed_top5_recovery": null,
+            "sign_agreement": null
+          },
+          "unweighted_case_score_coverage": null
+        }
+      },
+      "rokai_unpruned_zscore": {
+        "source_degree_at_least5": {
+          "condition_target_cases": 154,
+          "target_genes": 47,
+          "conditions": 94,
+          "drugs": 47,
+          "unweighted_case_means": {
+            "normalized_rank": 0.2711430660492323,
+            "signed_top5_recovery": 0.1038961038961039,
+            "sign_agreement": 0.7142857142857143
+          },
+          "unweighted_case_score_coverage": 0.8311688311688312
+        },
+        "source_degree_below5": {
+          "condition_target_cases": 16,
+          "target_genes": 5,
+          "conditions": 16,
+          "drugs": 8,
+          "unweighted_case_means": {
+            "normalized_rank": 0.7736260053619303,
+            "signed_top5_recovery": 0.125,
+            "sign_agreement": 0.125
+          },
+          "unweighted_case_score_coverage": 0.25
+        },
+        "outside_fixed_candidate_roster": {
+          "condition_target_cases": 0,
+          "target_genes": 0,
+          "conditions": 0,
+          "drugs": 0,
+          "unweighted_case_means": {
+            "normalized_rank": null,
+            "signed_top5_recovery": null,
+            "sign_agreement": null
+          },
+          "unweighted_case_score_coverage": null
+        }
+      },
+      "rokai_native_zscore": {
+        "source_degree_at_least5": {
+          "condition_target_cases": 154,
+          "target_genes": 47,
+          "conditions": 94,
+          "drugs": 47,
+          "unweighted_case_means": {
+            "normalized_rank": 0.2712127015076077,
+            "signed_top5_recovery": 0.1038961038961039,
+            "sign_agreement": 0.7142857142857143
+          },
+          "unweighted_case_score_coverage": 0.8311688311688312
+        },
+        "source_degree_below5": {
+          "condition_target_cases": 16,
+          "target_genes": 5,
+          "conditions": 16,
+          "drugs": 8,
+          "unweighted_case_means": {
+            "normalized_rank": 0.7734584450402144,
+            "signed_top5_recovery": 0.125,
+            "sign_agreement": 0.125
+          },
+          "unweighted_case_score_coverage": 0.25
+        },
+        "outside_fixed_candidate_roster": {
+          "condition_target_cases": 0,
+          "target_genes": 0,
+          "conditions": 0,
+          "drugs": 0,
+          "unweighted_case_means": {
+            "normalized_rank": null,
+            "signed_top5_recovery": null,
+            "sign_agreement": null
+          },
+          "unweighted_case_score_coverage": null
+        }
+      },
+      "rokai_primary_zscore": {
+        "source_degree_at_least5": {
+          "condition_target_cases": 154,
+          "target_genes": 47,
+          "conditions": 94,
+          "drugs": 47,
+          "unweighted_case_means": {
+            "normalized_rank": 0.27117788377841995,
+            "signed_top5_recovery": 0.1038961038961039,
+            "sign_agreement": 0.7142857142857143
+          },
+          "unweighted_case_score_coverage": 0.8311688311688312
+        },
+        "source_degree_below5": {
+          "condition_target_cases": 16,
+          "target_genes": 5,
+          "conditions": 16,
+          "drugs": 8,
+          "unweighted_case_means": {
+            "normalized_rank": 0.7734584450402144,
+            "signed_top5_recovery": 0.125,
+            "sign_agreement": 0.125
+          },
+          "unweighted_case_score_coverage": 0.25
+        },
+        "outside_fixed_candidate_roster": {
+          "condition_target_cases": 0,
+          "target_genes": 0,
+          "conditions": 0,
+          "drugs": 0,
+          "unweighted_case_means": {
+            "normalized_rank": null,
+            "signed_top5_recovery": null,
+            "sign_agreement": null
+          },
+          "unweighted_case_score_coverage": null
+        }
+      },
+      "rokai_ne_zscore": {
+        "source_degree_at_least5": {
+          "condition_target_cases": 154,
+          "target_genes": 47,
+          "conditions": 94,
+          "drugs": 47,
+          "unweighted_case_means": {
+            "normalized_rank": 0.27105602172626303,
+            "signed_top5_recovery": 0.1038961038961039,
+            "sign_agreement": 0.7142857142857143
+          },
+          "unweighted_case_score_coverage": 0.8311688311688312
+        },
+        "source_degree_below5": {
+          "condition_target_cases": 16,
+          "target_genes": 5,
+          "conditions": 16,
+          "drugs": 8,
+          "unweighted_case_means": {
+            "normalized_rank": 0.7736260053619303,
+            "signed_top5_recovery": 0.125,
+            "sign_agreement": 0.125
+          },
+          "unweighted_case_score_coverage": 0.25
+        },
+        "outside_fixed_candidate_roster": {
+          "condition_target_cases": 0,
+          "target_genes": 0,
+          "conditions": 0,
+          "drugs": 0,
+          "unweighted_case_means": {
+            "normalized_rank": null,
+            "signed_top5_recovery": null,
+            "sign_agreement": null
+          },
+          "unweighted_case_score_coverage": null
+        }
+      }
+    },
+    "method_or_subgroup_selected": false
+  },
+  "execution": {
+    "method": "Unchanged author RoKAI numeric core/circuit/readout with SIGNOR alternative prior and zero site-site matrix",
+    "upstream_commit": "179c23e5090350e619e82e2536aaf0af9a714137",
+    "vendor_license": "MIT",
+    "runtime": "Pinned GNUOctave11.3.0 image",
+    "elapsed_seconds": 754.575716612002,
+    "network_disabled_during_numeric_job": true,
+    "GPU_or_model_inference": false,
+    "native_fallback_used": false,
+    "prediction_sealed_at": "2026-11-12T14:16:43.524968+00:00",
+    "reference_first_parse_at": "2026-11-12T14:16:58.999915+00:00",
+    "prediction_seal": "990184db66e1e279745a41454b9b7b7cb72aaa784ad8811f3d7d9372e3484ded",
+    "runtime_verification_seal": "fbd0a45c672dcccc671c78d3b0c3bdf089188d19583e0af23993952f3323e215",
+    "scored_seal": "34ab23470112282fa54ef92f19a12242226ca394c9d67d119113e4141ba57faa",
+    "frozen_plan_seal": "ece0d709d9b7a18109be0efe4bdc2afb47375830417cc3947d061f576275a320",
+    "execution_freeze_seal": "daf125a55c4d9129a7998fe0f829b7004d9c5955320a0dd3061bd001313e3887"
+  },
+  "limits": [
+    "Expected perturbation targets/directions are author-assigned reference expectations, not direct native catalytic activity assays. Other kinases are not biological negatives.",
+    "This historical, source-qualified Pharos-derived graph is not the current99-target CRC workspace or a full human kinome graph; only79candidate regulators have a PPI neighbor.",
+    "SIGNOR is a different prior from the authors original PSP/PTMcode network; gene/canonical-coordinate mapping does not establish exact assay proteoforms.",
+    "Exact parent-study citation exclusion does not establish absence of untagged reused evidence in newer priors.",
+    "Equal global pruning budgets induce unequal regulator-subgraph densities. Score differences do not identify false individual PPI edges.",
+    "The degree diagnostic is descriptive and does not change the candidate universe or primary gate. Secondary control differences are not a replacement confirmatory result.",
+    "No whole-graph scientific accuracy, Tdark-specific, clinical or colorectal-cancer benefit is established."
+  ],
+  "original_app_graph_records_or_review_decisions_modified": false,
+  "public_delivery_contains_raw_native_rows_or_reference_labels": false,
+  "reference_consumed": true,
+  "future_reuse_boundary": "Entire Hijazi parent study and supplied processed artifacts are consumed; changed methods on this study are development/sensitivity, not a new unseen confirmation.",
+  "independent_execution_audit_seal": "38f563fae65a5921660276a9922c32d2aff43ae949113b64d45fa6bb11eeebf2",
+  "literature_interpretation": "RoKAI2021 identifies shared kinase-substrate connectivity as the main contribution, with smaller PPI gains limited by coverage/redundancy. It preserves missing measurements; indiscriminate predicted-edge expansion is not an established remedy. The2025 benchmark also identifies prior-library choice/coverage as important.",
+  "content_sha256": "6039f192a2f982198129263c7e8262e90b90707fcf06d28ee4a808ad656008fb"
+}

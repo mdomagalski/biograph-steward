@@ -1,97 +1,229 @@
 # BioGraph Steward
 
-BioGraph Steward is a source-traceable biomedical evidence workbench built around **Pharos** and bounded **CIViC** evidence. Its current product flow is:
+BioGraph Steward helps scientists use knowledge graphs without writing graph
+queries. A biological question leads to an inspectable evidence graph and a
+cited answer. It builds on **NIH Pharos** with
+qualified source context. An **NVIDIA Nemotron agent** proposes a supported query,
+prioritizes citations for inspection and produces grounded review proposals.
+The app preserves the original records and makes applied graph decisions
+recoverable.
 
-```text
-Choose an exact disease or protein cohort → retrieve a scoped graph → ask a guided question
-→ inspect the cited answer and source context → review and export
+The common workflow is **open or construct a source workspace → ask a supported
+question → read its graph and cited answer → inspect the sources → save a
+review in a new run → export**. A workspace is a saved collection of graph data,
+source records and decisions opened by this same application. The prepared
+examples demonstrate different parts of that workflow. Reference comparisons
+and the historical prediction study assess parts of the approach; they are not
+steps a scientist must perform to use the app.
+
+**[Open the public demo](https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data)**
+directly. No sign-in, AWS account, installation or running model is needed.
+
+**[How to use it](HOW_TO_USE.md)** ·
+**[Watch the narrated walkthrough](output/walkthrough/BioGraph_Steward_Walkthrough.mp4)** ·
+[Short presentation](output/presentations/BioGraph_Steward_Overview.pptx) ·
+[Project report PDF](output/pdf/BioGraph_Steward_Final_Report.pdf) ·
+[Word copy](output/docx/BioGraph_Steward_Final_Report.docx) ·
+[Local setup](START_HERE.md#local-setup)
+
+## What we improved
+
+| Improvement | What the recorded results show |
+|---|---|
+| **Added source context** | In the captured 99-target cohort, **87 physical-association pairs** and **68 protein–location concepts** are absent from the baseline annotations. KRAS–CDC42BPB is an actual inspected example. These are qualified candidate records, not claims of new biological discoveries. |
+| **More known location labels recovered** | Under the same ontology-qualified mapping, captured Pharos **41/51 → native source 44/51**. The previously used OpenCell reference changes **30/40 → 31/40**. The full comparison retains source overlap, coverage limits and mapping controls. |
+| **A separate biological-process prediction gain** | In a historical 20,412-protein network, the primary timepoint-ontology comparison gives ordinary micro-Fmax **0.055** for retained LocalPlus, **0.059** for refreshed LocalPlus and **0.073** for the context model. The fixed-starting-ontology sensitivity check gives **0.172, 0.183 and 0.210**. These three fixed arms assess additional functions in previously annotated proteins, separately from the 99-target app and agent evaluation. |
+| **Recoverable graph qualification** | The retained example excludes **298 obsolete-GO-identifier records**, leaving **16,687 of 16,985 input records**. Original sources and every decision remain available. |
+
+The [submission overview](docs/SUBMISSION_OVERVIEW.md) explains these distinct
+comparisons. The [addition audit](docs/evaluations/source_agent_20261116/demonstrated_additions.json),
+[location assessment](docs/evaluations/public_gold_20261115/report.html) and
+[function-prediction report](docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md)
+provide the supporting results. Known-label recovery is not whole-graph
+precision; shared sources and prior reference use limit independence. Additional
+primary learning benefit over fully refreshed annotations remains uncertain.
+LocalPlus is the published positive-only, weighted transfer of known GO labels
+from direct network neighbors ([Law, Kale and Murali, 2021](https://doi.org/10.1093/bioinformatics/btaa885)); we reuse the authors' implementation on the historical human network.
+Ordinary micro-Fmax pools protein–GO decisions and measures the best
+precision–recall balance across the declared thresholds, rather than percentage
+accuracy. The primary frame scores 1,954 proteins with 3,254 positive
+protein–GO pairs; the sensitivity frame scores 319 with 3,243 pairs. Their
+different populations make the absolute scores incomparable across views.
+The [forecast coverage note](docs/evaluations/final_delivery_20261117/prediction_coverage_feasibility.md)
+explains the complete 3,300-protein temporal-gainer frame: 3,297 in the graph
+and three retained outside it. Further temporal testing requires later labels.
+
+A separate [source-verifier comparison](docs/evaluations/SOURCE_VERIFIER_COMPARISON_20261117.md)
+reports the official base/disconfirm methods and learned controls against
+released curator labels. Under the partial Evidence-input view, disconfirm
+scored lower than base and supported claims were wrongly excluded. The verified
+input-completeness gap and any corrected-input diagnostic are reported
+separately. Current app assertions do not carry the complete native INDRA inputs
+needed by that verifier, so these results do not enable automatic Pharos pruning.
+
+## Use the app
+
+Start with the recorded KRAS question. Follow **Question & plan → Evidence
+graph → Source inspection → Review proposals**. Inspect **E002,
+KRAS–CDC42BPB**: its source passport shows **baseline pair present: false**,
+the provider record and the identity checks.
+
+The agent's fixed comparison preserved complete deterministic query results,
+cited answers and focused graphs across five supported queries, including a
+valid empty result. Three additional requests stopped at the scope guard without
+model calls. These are [workflow checks](docs/evaluations/SOURCE_AGENT_RESULTS_20261116.md),
+not a biological-accuracy percentage. Proposals do not automatically accept
+claims or prune the graph.
+
+Recorded examples also cover EGFR associations, TP53 locations and BRAF
+archived pathways. A separate CIViC workflow preserves molecular profiles,
+disease and therapy context for clinical evidence inspection. These tasks
+demonstrate reusable execution within the captured cohort.
+A separate [APP/PSEN worked example](docs/evaluations/GENERALIZATION_EXAMPLE_20261117.md)
+reuses the constructor and agent on three proteins outside the original 99.
+It includes a complete local real-data packet and the same fixed localization
+comparison, with its neutral result and reference-coverage limits preserved.
+To continue with the same KRAS workspace, choose **Download an editable local
+copy** beside the read-only notice or under **Export**. The complete workspace
+ZIP includes the app, saved graph, attached sources, KRAS question, recorded
+agent job and launch instructions. The smaller agent-record JSON remains a
+separate inspection download. [How to use it](HOW_TO_USE.md#5-continue-with-the-same-graph-locally)
+explains the local review steps.
+
+## Current app, saved data and new runs
+
+One application provides two named real-data examples: **Added source context
+workspace**, used by the KRAS example, and **Qualified Pharos workspace**, opened
+through **Review applied graph qualifications**. Each has its own preserved
+input and decisions. The historical prediction study above is a separate
+research assessment, not a third version of the app graph.
+
+The public AWS demo is a **read-only replay** of completed agent work over these
+workspaces. It supports graph exploration, source inspection and
+scientific comparisons without new model calls, source retrieval or edits.
+The separate manual KRAS question opens an overview of all **14 returned
+partners**: 15 entities and 14 cited connections. **Show in graph** focuses one
+summary result; **Show all results** restores the overview. **Browse saved
+workspace** opens a bounded graph and the full source tables for the workspace's
+9,724 entities and 19,310 records. These views state their drawing limits.
+Under **Explore paths in this saved graph**, type a protein name to filter the
+sorted starts, then choose a reachable endpoint. One-click examples show
+KRAS → CDC42BPB, TP53 → nucleus and BRAF → ARMS-mediated activation.
+These are recorded source relationships, with their evidence states and
+directions preserved. **Results & evaluation** explains graph qualifications
+and the separate measured assessments.
+[Deployment](docs/evaluations/question_graph_usability_20261117/hosted_acceptance.json) and
+[browser evidence](docs/evaluations/question_graph_usability_20261117/browser.json)
+record this saved-example mode.
+
+To ask a new **agent** question, use a local or operator installation with a complete
+source workspace and a configured model endpoint. New deterministic questions
+and path exploration use the existing source tools without a model. To construct a new Pharos
+graph, the [cohort constructor](docs/CONSTRUCTION.md#build-through-the-app)
+accepts an explicit list of 1–25 proteins per request and needs internet access,
+but no model or GPU. This is the interactive request limit, not a saved-graph
+size limit. The [agent instructions](docs/SOURCE_AGENT.md#operator-cli) explain how
+supported source tools execute a new question. These reusable entry points
+support evaluation on new cohorts beyond the delivered examples.
+The constructor retrieves Pharos data; it does not automatically attach the
+native GO, STRING or archived-pathway profiles used by the source agent.
+That agent exposes only the source tools actually available in the selected workspace.
+
+The demonstration uses a **captured Pharos319 baseline**, with separately saved
+native GO and STRING profiles. It was assembled November 15 from an October 14
+Pharos capture. The physical source is STRING 12.5. Exact GO, ontology and other
+[source dates](docs/SOURCE_NOTES.md#current-reviewer-graph-and-source-dates)
+are recorded separately from assembly dates. This is a fixed 99-target research
+workspace. Updating application code does not refresh its upstream datasets. The
+[delivery status](docs/DELIVERY_STATUS_20261115.json) identifies the deployed
+application and saved artifacts.
+The [final handoff](docs/DELIVERY.md#final-submission-folder), prepared locally in
+`output/final_submission/`, contains five items: a short
+start file, project report, narrated demonstration, slides and
+**BioGraph_Steward_App_Data_and_Exports.zip**. The data ZIP includes the complete
+KRAS app/source workspace plus graph, decision-ledger and matched-baseline
+inspection exports for both named examples. The Qualified Pharos workspace's
+full source-recovery packet remains a separate optional replay asset. The
+[delivery instructions](docs/DELIVERY.md#final-submission-folder) distinguish
+these scopes. This organizer data handoff remains private under each source's
+terms; the software's MIT license does not relicense the datasets.
+
+## Run locally
+
+For the exact hosted KRAS evidence graph, use **Download an editable local copy**
+in the public app. Extract the complete workspace ZIP into an empty directory,
+read **OPEN_WORKSPACE** and run:
+
+```sh
+python3 START_EDITABLE_LOCAL.py
 ```
 
-## Run the workbench
+The launcher chooses a free loopback port, opens the saved question in your
+browser and prints its address. With Python 3.10+, saved replay and reviews need
+no model, GPU, AWS account, installation or new source retrieval. Under
+**Inspect sources**, choose **Record evidence review**, enter a reviewer,
+decision and reason, then choose **Save review in a new run**. The app opens the
+reviewed copy and links back to the unchanged original. Local editing records
+evidence-review decisions and reasons; source records and identities remain
+preserved. [Copy delivery and verification](docs/evaluations/editable_demo_copy_20261117/README.md)
+records the exact package scope.
 
-Python 3.10 or newer; the core app requires no third-party packages, model, API key or cloud account.
+For another complete real-data example, open the separately supplied
+`BioGraph_Steward_APP_PSEN_Example.zip`. Extract it into an empty directory and
+follow **OPEN_EXAMPLE.txt**, which selects the recorded APP location-agent job
+directly. Its runtime, source data and recorded job work offline with Python
+3.10+, without a running model. This separate three-protein example does not
+replace the public demo's two 99-target workspaces.
+
+To record a review in that complete example, run `python3 START_EDITABLE_LOCAL.py`
+instead of its inspect-only launch. Under **Inspect sources**, choose a claim,
+open its guide and select **Record evidence review**. Enter **Reviewer**,
+**Decision** and **Reason**, then choose **Save review in a new run**. The app
+opens your reviewed copy and links back to the unchanged earlier run. Reviewing
+saved sources needs no model. The launcher binds only to your own computer.
+
+The [code-only software ZIP](output/software/BioGraph_Steward_Software.zip)
+contains the portable app and launch instructions. The
+[release index](docs/releases/20261115/README.md) records software verification,
+deployment and artifact checksums.
+
+The core app needs **Python 3.10+**, with no pip install, GPU or API key:
 
 ```sh
 python3 app.py
 ```
 
-Open `http://127.0.0.1:8765/`. A fresh checkout includes an explicitly synthetic demonstration; real source snapshots are retrieved separately and are not bundled. Start with [the walkthrough](START_HERE.md).
+Open `http://127.0.0.1:8765/`. A fresh checkout includes invented software
+fixtures. The complete KRAS workspace is available through the public app's
+prepared-copy download under its source terms. Use that package for an editable
+copy of the same real graph, or open another authorized saved workspace with all
+its source files.
+[START_HERE](START_HERE.md#local-setup) covers branch selection and setup.
 
-## Current capabilities
+## Developer, operator and research documentation
 
-- [Bounded cohort construction](docs/CONSTRUCTION.md): 1–25 exact protein accessions, a fixed source profile, published graph, cited candidate answer and offline-verifiable export. This deterministic flow needs no model.
-- [Optional construction planner](docs/CONSTRUCTION_AGENT.md): select a bounded request from a question and explicit cohort, inspect the plan, then build with the same deterministic tools. Planning provenance survives publication and export; live performance is evaluated separately.
-- Scoped Pharos retrieval with pagination, explicit limits and per-protein coverage reporting for pathways, GO, interactions, drugs, selected expression and publication discovery.
-- Qualified assertions, raw-source provenance, immutable snapshots and separate local human-review states.
-- [Qualified assay attachment](docs/ASSAY_WORKBENCH.md): selected cohort observations, original assay context, source-preserving reviews and complete run exports.
-- [Qualified IntAct source evidence](docs/INTACT_EVIDENCE_WORKBENCH.md): official-reader-backed records, readable experimental context and a dedicated traceable source question using the existing attachment/export framework. The real Pharos-attached flow preserves all four eligible development records through answer and gold export; this measures source fidelity, not biological accuracy.
-- Guided protein-neighborhood and CIViC molecular-profile/therapy questions, with compact evidence graphs, deterministic cited summaries and complete evidence-context exports.
-- Saved graphs and answers, source passports, and comparison of saved snapshots with guarded review carryover.
-- Source-bound graph handoff, materialized retained graph and exhaustive keep/prune/abstain ledger, including qualified assay sources. Exact external-reference alignment preserves raw labels; official gold scoring awaits its contract. See the [real export verification](docs/evaluations/SUBMISSION_DEMO_20261026.md).
-- [Bounded KGX export audit](docs/STANDARD_EXPORT.md), with a complete preserved source packet, mapping ledgers and separate upstream validation results. Full standard conformance remains unresolved.
-- An optional bounded model planner that selects an existing read-only query. Deterministic guided questions work without it.
-- Local/Docker/Brev operation, protected shared access and persistent data directories. Model inference is optional.
+[Current source agent](docs/SOURCE_AGENT.md) ·
+[Graph construction](docs/CONSTRUCTION.md) ·
+[Scoped retrieval](docs/SCOPED_RETRIEVAL.md) ·
+[Source qualification](docs/NATIVE_PHYSICAL_SOURCE.md) ·
+[Graph and decisions](docs/GOLD_SET_INTERFACE.md) ·
+[Standard export](docs/STANDARD_EXPORT.md) ·
+[Testing](docs/TESTING.md) ·
+[Deployment](docs/PORTABILITY.md)
 
-These capabilities preserve and expose source evidence. They do not establish clinical correctness, independent study replication, or improved biological prediction. Models do not approve or prune assertions automatically.
+The separately supplied `BioGraph_Steward_Source_Verifier_Code.zip` is a
+research-code adjunct, not the app or a self-contained benchmark. Its
+**README_REPRODUCTION.txt** specifies the matching checkout, optional runtime
+and separately obtained, licensed author/reference inputs. Raw cases, source
+passages, predictions and fitted models are excluded.
 
-## Current investigation
+The [submission summary](docs/FINAL_SUBMISSION.md) maps the work to judging
+criteria. The [research appendix](docs/RESEARCH_APPENDIX_20261115.md) and
+[experiment ledger](docs/EXPERIMENT_HISTORY.md) retain complete comparisons,
+stronger controls and unsuccessful approaches. The
+[release index](docs/releases/20261115/README.md) separates software, protected
+source data and research artifacts.
 
-The challenge calls for the **same graph learner on baseline and enriched graphs**, evaluated against held-out measured relationships. A bounded supporting comparison is now complete; the official organizer reference is still unavailable.
-
-Organizer Slack excerpts supplied October 23 also mention a **Pharos gold set**.
-Its scoring contract remains unavailable to us; final test labels can reasonably remain hidden. [Public references](docs/literature/PUBLIC_REFERENCE_OPTIONS_20261026.md) can support bounded local assessments. The [local handoff interface](docs/GOLD_SET_INTERFACE.md) now exports verified graph packets and aligns explicitly mapped references without guessing label meanings. The study below is
-a provisional supporting evaluation, not a substitute for the official reference;
-see the [updated alignment](docs/PROJECT_ALIGNMENT.md#organizer-clarifications-supplied-october-23).
-
-The published **INMC experimentally tested human protein-pair panel** was evaluated using native PyKEEN R-GCN and a ComplEx control. The [paired evaluation graphs](docs/evaluations/INMC_PAIRED_GRAPH_20261023.md) share 10,350 nodes and 2,570 qualified-scope Pharos GO annotation pairs; only 315 official GO hierarchy edges differ. All Pharos interactions are excluded from learner inputs, including the 277 reserved-pair exposures. After the graph/runtime/scorer freeze, all 12 model runs completed locally and the author reference reconciled. On 1,751 eligible measured pairs, mean AP changed from **0.719833 to 0.720135**, with mixed seed effects. [The result](docs/evaluations/INMC_COMPARISON_20261023.md) does **not** demonstrate a consistent hierarchy benefit. This is an assay-specific retrospective PPI component evaluation, not a CRC treatment-response task or an official challenge score. The panel is now a consumed holdout.
-
-Read the [reuse decision](docs/literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md), [assay/identity decision](docs/evaluations/INMC_READINESS_FOLLOWUP_20261022.md), [completed source audit](docs/evaluations/INMC_PHAROS_UNIFORM_20261022.md), [measured result](docs/evaluations/INMC_COMPARISON_20261023.md), and [next steps](docs/BUILD_PLAN.md). No general biological improvement is claimed.
-
-The subsequent [Lambourne assay corroboration](docs/evaluations/LAMBOURNE_CORROBORATION_20261025.md)
-is complete after freezing the author-consistent adapter, eligibility and Pharos
-comparator. All **3,222 nominated pairs** remain accounted for: 2,676 are assay
-eligible and 2,674 also have complete Pharos identity coverage. Detection is
-**334/1,966 (17.0%)** among represented pairs and **42/708 (5.9%)** among resolved
-no-matches. In the prespecified stratum without observed HuRI/INMC pair overlap,
-the rates are **74/1,619 (4.6%)** and **16/650 (2.5%)**. These are conditional
-assay-concordance results; study independence remains unresolved and Steward
-improvement was not tested. This panel is now consumed and cannot support new
-prediction, enrichment or protocol tuning as an unseen test.
-
-The [qualified assay evidence publication](docs/ASSAY_EVIDENCE.md) now preserves
-all 3,222 observations in a standalone immutable layer and offline inspection
-view: 2,676 qualified observation edges, 3,173 protein nodes and 546 excluded
-assays retained in the audit. The 42 detections without a bounded Pharos match
-are an inspection filter, not independently validated new interactions.
-Study/construct context, nondetections and original Pharos records remain
-explicit. See the [publication record](docs/evaluations/ASSAY_EVIDENCE_PUBLICATION_20261025.md).
-The [workbench attachment](docs/ASSAY_WORKBENCH.md) now selects both-endpoint observations for an exact live protein cohort, preserves the entire original publication and supports inspection/review/replay. Gold/KGX export and cohort refresh for attached runs remain unsupported and fail explicitly. This integration does not establish prediction gain or replace independent evaluation.
-
-## Repository scope
-
-`main` contains the current workbench, reusable source/identity adapters and the current INMC preparation tools. Retired growth-ranking, extraction, verifier and context-QA experiments are preserved on a separate **local archive branch**, rather than mixed into the active application. The [experiment ledger](docs/EXPERIMENT_HISTORY.md) records outcomes, consumed holdouts, exact archive commit and recovery instructions. The archive has not been pushed; ignored run data are not included in Git.
-
-| Area | Guide |
-|---|---|
-| Team walkthrough | [START_HERE](START_HERE.md) |
-| Current plan and challenge gaps | [Build plan](docs/BUILD_PLAN.md), [alignment](docs/PROJECT_ALIGNMENT.md) |
-| Evidence and source contracts | [Data contract](docs/DATA_CONTRACT.md), [Pharos retrieval](docs/SCOPED_RETRIEVAL.md), [CIViC](docs/CIVIC_EVIDENCE.md) |
-| Explicit cohort construction | [Request, publish, inspect and replay](docs/CONSTRUCTION.md) |
-| Questions, review and updates | [Guided questions](docs/GUIDED_QUESTIONS.md), [study context](docs/STUDY_CONTEXT.md), [snapshot comparison](docs/SNAPSHOT_REFRESH.md) |
-| Gold-reference handoff | [Packet export, edge decisions and exact alignment](docs/GOLD_SET_INTERFACE.md) |
-| Standards audit | [Bounded KGX projection and separate validator results](docs/STANDARD_EXPORT.md) |
-| Optional model and deployment | [Planner](docs/PLANNER_PROTOCOL.md), [portability](docs/PORTABILITY.md), [local Nemotron](docs/LOCAL_MODEL.md) |
-| Research and current scripts | [Literature knowledge base](docs/LITERATURE_REVIEW.md), [scripts](scripts/README.md) |
-
-## Useful commands
-
-```sh
-python3 app.py --help
-python3 app.py demo --out runs/demo_01
-python3 app.py doctor
-python3 app.py search colorectal
-python3 app.py runtime-check
-python3 -m unittest discover -s tests -q
-```
-
-Live retrieval never silently substitutes synthetic data. Keep credentials in local deployment configuration and source snapshots in the ignored data directories. A source's reuse terms still apply to its records and exports.
+Project repository: [github.com/mdomagalski/biograph-steward](https://github.com/mdomagalski/biograph-steward).
+The core software is MIT licensed. Source datasets and reused tools retain
+their own licenses; publishing code does not relicense the mixed-source data.

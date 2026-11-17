@@ -1,0 +1,1153 @@
+{
+  "format": "biograph-steward.deepgo-development.v1.public-secondary-uncertainty",
+  "created_at": "2026-11-14T19:52:15.879636+00:00",
+  "source_report_file_sha256": "6a36c63f4eeb6a5aae803f09df2c588c58956f309ababd82a3f84e582f07aec9",
+  "source_report_content_sha256": "3078f3289b1b19cd722aff978625611e5303b375e79b801582e696acc0871a80",
+  "source_freeze_file_sha256": "52a025d396ed7aeca7dff82ca593a0f39d74da663b4a04b6320bfeed2df39ed1",
+  "source_freeze_content_sha256": "b559d9b63d839265507ebe541ddacee8166c0c83faeaed04f65216778592522c",
+  "primary_source_report_file_sha256": "23164e2bb2d68a7275fd5c6caf150084797fd690194ff8a72135132a46990c9b",
+  "primary_source_report_content_sha256": "539148586962de387f3ce1185ac8e0fdadf9642fb0f4d9030457a53219382e1b",
+  "unchanged_primary_BPO_retention_gate": {
+    "passed": false,
+    "rule": "BothordinaryandIA BPOpaired95%lowerdifferenceboundsversusfullstrictLocalabovezeroinBOTHcohorts.",
+    "automatic_product_or_graph_change": false,
+    "independent_confirmatory_gain_claimed": false
+  },
+  "results": {
+    "format": "biograph-steward.deepgo-secondary-uncertainty.v1.results",
+    "created_at": "2026-11-14T19:51:05.480474+00:00",
+    "freeze_file_sha256": "52a025d396ed7aeca7dff82ca593a0f39d74da663b4a04b6320bfeed2df39ed1",
+    "posthoc_exploratory_after_all_six_point_values_seen": true,
+    "multiplicity_adjusted": false,
+    "role": "Uncertainty description for BOTH preplanned secondary aspects, never a replacement adoption gate.",
+    "reference_scope": "Same previously exposed 6100 PK targets, official native fill/ontology/known/TOI/IA/grid; no fresh confirmation.",
+    "all_eight_contrasts_retained_regardless_of_direction": true,
+    "point_count_agreements": {
+      "primary/molecular_function/deepgose": {
+        "author_point_agreement_passed": true,
+        "namespace": "molecular_function",
+        "propagation": "fill",
+        "exploratory_after_point_values_seen": true,
+        "full_original_all_namespace_parser_pipeline": true,
+        "raw_reference_proteins": 525,
+        "ordinary_eligible": 525,
+        "raw_reference_proteins_definition": "Author gt_parser protein IDs after ontology recognition, before TOI/known exclusions; raw source-target counts are recorded separately by reference release.",
+        "IA_weighted_eligible": 525,
+        "checks": {
+          "ordinary": {
+            "max_absolute_curve_difference": 1.3877787807814457e-16,
+            "author_curve_rows": 995,
+            "micro_Fmax_from_counts": 0.16259026321919404
+          },
+          "IA_weighted": {
+            "max_absolute_curve_difference": 2.7755575615628914e-16,
+            "author_curve_rows": 995,
+            "micro_Fmax_from_counts": 0.14108323163672679
+          }
+        }
+      },
+      "primary/molecular_function/strict_alias_localplus": {
+        "author_point_agreement_passed": true,
+        "namespace": "molecular_function",
+        "propagation": "fill",
+        "exploratory_after_point_values_seen": true,
+        "full_original_all_namespace_parser_pipeline": true,
+        "raw_reference_proteins": 525,
+        "ordinary_eligible": 525,
+        "raw_reference_proteins_definition": "Author gt_parser protein IDs after ontology recognition, before TOI/known exclusions; raw source-target counts are recorded separately by reference release.",
+        "IA_weighted_eligible": 525,
+        "checks": {
+          "ordinary": {
+            "max_absolute_curve_difference": 1.1102230246251565e-16,
+            "author_curve_rows": 935,
+            "micro_Fmax_from_counts": 0.11313131313131314
+          },
+          "IA_weighted": {
+            "max_absolute_curve_difference": 2.0816681711721685e-16,
+            "author_curve_rows": 935,
+            "micro_Fmax_from_counts": 0.10094851721081038
+          }
+        }
+      },
+      "primary/cellular_component/deepgose": {
+        "author_point_agreement_passed": true,
+        "namespace": "cellular_component",
+        "propagation": "fill",
+        "exploratory_after_point_values_seen": true,
+        "full_original_all_namespace_parser_pipeline": true,
+        "raw_reference_proteins": 445,
+        "ordinary_eligible": 445,
+        "raw_reference_proteins_definition": "Author gt_parser protein IDs after ontology recognition, before TOI/known exclusions; raw source-target counts are recorded separately by reference release.",
+        "IA_weighted_eligible": 445,
+        "checks": {
+          "ordinary": {
+            "max_absolute_curve_difference": 1.6653345369377348e-16,
+            "author_curve_rows": 997,
+            "micro_Fmax_from_counts": 0.24597606273215022
+          },
+          "IA_weighted": {
+            "max_absolute_curve_difference": 4.163336342344337e-16,
+            "author_curve_rows": 997,
+            "micro_Fmax_from_counts": 0.16170667672541414
+          }
+        }
+      },
+      "primary/cellular_component/strict_alias_localplus": {
+        "author_point_agreement_passed": true,
+        "namespace": "cellular_component",
+        "propagation": "fill",
+        "exploratory_after_point_values_seen": true,
+        "full_original_all_namespace_parser_pipeline": true,
+        "raw_reference_proteins": 445,
+        "ordinary_eligible": 445,
+        "raw_reference_proteins_definition": "Author gt_parser protein IDs after ontology recognition, before TOI/known exclusions; raw source-target counts are recorded separately by reference release.",
+        "IA_weighted_eligible": 445,
+        "checks": {
+          "ordinary": {
+            "max_absolute_curve_difference": 1.3877787807814457e-16,
+            "author_curve_rows": 931,
+            "micro_Fmax_from_counts": 0.24239772478669874
+          },
+          "IA_weighted": {
+            "max_absolute_curve_difference": 4.718447854656915e-16,
+            "author_curve_rows": 931,
+            "micro_Fmax_from_counts": 0.17778283650913432
+          }
+        }
+      },
+      "reserved/molecular_function/deepgose": {
+        "author_point_agreement_passed": true,
+        "namespace": "molecular_function",
+        "propagation": "fill",
+        "exploratory_after_point_values_seen": true,
+        "full_original_all_namespace_parser_pipeline": true,
+        "raw_reference_proteins": 2192,
+        "ordinary_eligible": 2192,
+        "raw_reference_proteins_definition": "Author gt_parser protein IDs after ontology recognition, before TOI/known exclusions; raw source-target counts are recorded separately by reference release.",
+        "IA_weighted_eligible": 2191,
+        "checks": {
+          "ordinary": {
+            "max_absolute_curve_difference": 1.249000902703301e-16,
+            "author_curve_rows": 997,
+            "micro_Fmax_from_counts": 0.18064344234996335
+          },
+          "IA_weighted": {
+            "max_absolute_curve_difference": 8.049116928532385e-16,
+            "author_curve_rows": 997,
+            "micro_Fmax_from_counts": 0.13352338383248344
+          }
+        }
+      },
+      "reserved/molecular_function/strict_alias_localplus": {
+        "author_point_agreement_passed": true,
+        "namespace": "molecular_function",
+        "propagation": "fill",
+        "exploratory_after_point_values_seen": true,
+        "full_original_all_namespace_parser_pipeline": true,
+        "raw_reference_proteins": 2192,
+        "ordinary_eligible": 2192,
+        "raw_reference_proteins_definition": "Author gt_parser protein IDs after ontology recognition, before TOI/known exclusions; raw source-target counts are recorded separately by reference release.",
+        "IA_weighted_eligible": 2191,
+        "checks": {
+          "ordinary": {
+            "max_absolute_curve_difference": 1.249000902703301e-16,
+            "author_curve_rows": 999,
+            "micro_Fmax_from_counts": 0.1452637392985363
+          },
+          "IA_weighted": {
+            "max_absolute_curve_difference": 7.355227538141662e-16,
+            "author_curve_rows": 999,
+            "micro_Fmax_from_counts": 0.08868879281240948
+          }
+        }
+      },
+      "reserved/cellular_component/deepgose": {
+        "author_point_agreement_passed": true,
+        "namespace": "cellular_component",
+        "propagation": "fill",
+        "exploratory_after_point_values_seen": true,
+        "full_original_all_namespace_parser_pipeline": true,
+        "raw_reference_proteins": 1450,
+        "ordinary_eligible": 1450,
+        "raw_reference_proteins_definition": "Author gt_parser protein IDs after ontology recognition, before TOI/known exclusions; raw source-target counts are recorded separately by reference release.",
+        "IA_weighted_eligible": 1450,
+        "checks": {
+          "ordinary": {
+            "max_absolute_curve_difference": 1.6653345369377348e-16,
+            "author_curve_rows": 997,
+            "micro_Fmax_from_counts": 0.2911912897434413
+          },
+          "IA_weighted": {
+            "max_absolute_curve_difference": 6.938893903907228e-16,
+            "author_curve_rows": 997,
+            "micro_Fmax_from_counts": 0.19560453705823747
+          }
+        }
+      },
+      "reserved/cellular_component/strict_alias_localplus": {
+        "author_point_agreement_passed": true,
+        "namespace": "cellular_component",
+        "propagation": "fill",
+        "exploratory_after_point_values_seen": true,
+        "full_original_all_namespace_parser_pipeline": true,
+        "raw_reference_proteins": 1450,
+        "ordinary_eligible": 1450,
+        "raw_reference_proteins_definition": "Author gt_parser protein IDs after ontology recognition, before TOI/known exclusions; raw source-target counts are recorded separately by reference release.",
+        "IA_weighted_eligible": 1450,
+        "checks": {
+          "ordinary": {
+            "max_absolute_curve_difference": 1.6653345369377348e-16,
+            "author_curve_rows": 990,
+            "micro_Fmax_from_counts": 0.28026009664141266
+          },
+          "IA_weighted": {
+            "max_absolute_curve_difference": 1.1379786002407855e-15,
+            "author_curve_rows": 990,
+            "micro_Fmax_from_counts": 0.18846619948308416
+          }
+        }
+      }
+    },
+    "paired_comparisons": [
+      {
+        "frame": "primary",
+        "namespace": "molecular_function",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "readout": "ordinary",
+        "difference_mean": 0.05026708819489161,
+        "paired_95_percentile_interval": [
+          0.023642840303962215,
+          0.07902337749635314
+        ],
+        "fraction_draws_above_zero": 1.0,
+        "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+      },
+      {
+        "frame": "primary",
+        "namespace": "molecular_function",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "readout": "IA_weighted",
+        "difference_mean": 0.04073652398052099,
+        "paired_95_percentile_interval": [
+          0.01710646744418699,
+          0.06679823698847677
+        ],
+        "fraction_draws_above_zero": 1.0,
+        "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+      },
+      {
+        "frame": "primary",
+        "namespace": "cellular_component",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "readout": "ordinary",
+        "difference_mean": 0.0016334500332151167,
+        "paired_95_percentile_interval": [
+          -0.02281778945163453,
+          0.02537244648364527
+        ],
+        "fraction_draws_above_zero": 0.559,
+        "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+      },
+      {
+        "frame": "primary",
+        "namespace": "cellular_component",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "readout": "IA_weighted",
+        "difference_mean": -0.016343574121955966,
+        "paired_95_percentile_interval": [
+          -0.037463616522515855,
+          0.005883980656262077
+        ],
+        "fraction_draws_above_zero": 0.0735,
+        "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+      },
+      {
+        "frame": "reserved",
+        "namespace": "molecular_function",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "readout": "ordinary",
+        "difference_mean": 0.034823005864388225,
+        "paired_95_percentile_interval": [
+          0.0160572424670765,
+          0.05303086577183878
+        ],
+        "fraction_draws_above_zero": 1.0,
+        "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+      },
+      {
+        "frame": "reserved",
+        "namespace": "molecular_function",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "readout": "IA_weighted",
+        "difference_mean": 0.044687151066201365,
+        "paired_95_percentile_interval": [
+          0.03314526197681636,
+          0.05618491217677366
+        ],
+        "fraction_draws_above_zero": 1.0,
+        "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+      },
+      {
+        "frame": "reserved",
+        "namespace": "cellular_component",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "readout": "ordinary",
+        "difference_mean": 0.011220032580241391,
+        "paired_95_percentile_interval": [
+          -0.0020643691737535913,
+          0.025081577837535885
+        ],
+        "fraction_draws_above_zero": 0.9455,
+        "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+      },
+      {
+        "frame": "reserved",
+        "namespace": "cellular_component",
+        "candidate": "deepgose",
+        "comparator": "strict_alias_localplus",
+        "readout": "IA_weighted",
+        "difference_mean": 0.006660686826937809,
+        "paired_95_percentile_interval": [
+          -0.005210855579124536,
+          0.019005668127641723
+        ],
+        "fraction_draws_above_zero": 0.86,
+        "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+      }
+    ],
+    "uncertainty_reports": {
+      "primary/molecular_function": {
+        "format": "biograph-steward.cafa5-paired-protein-bootstrap.v1",
+        "created_at": "2026-11-14T19:22:54.861898+00:00",
+        "config_sha256": "f8e22835a99b7b7bb23c68bdfbbb5cb5a88224200f5b5b53b54009416ba12a2b",
+        "draws": 2000,
+        "seed": 20261113,
+        "raw_proteins": 525,
+        "protein_frame_definition": "Author gt_parser protein IDs after ontology recognition, before per-protein TOI/known-term exclusions. Native release records the original source frame and any outside-ontology targets.",
+        "metric": "author micro Fmax across fixed .001... .999 threshold grid; recomputed per resample",
+        "shared_protein_samples_across_all_arms": true,
+        "scores": {
+          "deepgose": {
+            "ordinary": {
+              "bootstrap_95_percentile_interval": [
+                0.13412867812679088,
+                0.20214009526988658
+              ],
+              "bootstrap_mean": 0.16568471262862408
+            },
+            "IA_weighted": {
+              "bootstrap_95_percentile_interval": [
+                0.11648464160106496,
+                0.17526115742808038
+              ],
+              "bootstrap_mean": 0.14293005088853658
+            }
+          },
+          "strict_alias_localplus": {
+            "ordinary": {
+              "bootstrap_95_percentile_interval": [
+                0.09757055074032929,
+                0.1354606752320246
+              ],
+              "bootstrap_mean": 0.11541762443373248
+            },
+            "IA_weighted": {
+              "bootstrap_95_percentile_interval": [
+                0.08817306505652109,
+                0.11719108311378477
+              ],
+              "bootstrap_mean": 0.10219352690801559
+            }
+          }
+        },
+        "comparisons": [
+          {
+            "candidate": "deepgose",
+            "comparator": "strict_alias_localplus",
+            "readout": "ordinary",
+            "difference_mean": 0.05026708819489161,
+            "paired_95_percentile_interval": [
+              0.023642840303962215,
+              0.07902337749635314
+            ],
+            "fraction_draws_above_zero": 1.0,
+            "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+          },
+          {
+            "candidate": "deepgose",
+            "comparator": "strict_alias_localplus",
+            "readout": "IA_weighted",
+            "difference_mean": 0.04073652398052099,
+            "paired_95_percentile_interval": [
+              0.01710646744418699,
+              0.06679823698847677
+            ],
+            "fraction_draws_above_zero": 1.0,
+            "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+          }
+        ],
+        "source_files_sha256": {
+          "source_0": {
+            "file_sha256": "7c04be6f66bcc3ab681b94942833e610438703a3775d57de151ba9b807d61b58"
+          },
+          "source_1": {
+            "file_sha256": "2860358d0bc30f78c5a98c2fb553c5bced03c2cfb0acea31f03b6dc8cfc9bd4f"
+          },
+          "source_2": {
+            "file_sha256": "ee0ad10ad3e2dc611506b5464f93f7ab7982ca630acb075058d0a2033b33120b"
+          },
+          "source_3": {
+            "file_sha256": "3b68e84178bcdd4671a44480fe1fb8293de7a2ef25f7b8efe1c816d073e984d3"
+          }
+        },
+        "numpy": "1.26.4",
+        "limitations": [
+          "Proteins share graph neighbors, annotations and studies; these intervals do not establish independent biological replication.",
+          "Incomplete curator annotation is treated by the fixed CAFA benchmark convention, not asserted to be comprehensive negative biology.",
+          "Fmax optimizes an evaluation threshold; it is not a prospectively calibrated application acceptance threshold."
+        ],
+        "files": {
+          "strict_alias_localplus_ordinary_Fmax.npy": "ad3d490b3652541d81ceee948b71974e002fe321bde50d7367d2239e25a0047e",
+          "protein_multiplicities.npy": "1d1ef2c4c0b8a7a7d830589a95defcfbc3b5c711d269d94566160fe3b9872566",
+          "deepgose_ordinary_Fmax.npy": "77acf136b158da986fad4d5ba8df85b6a23d67b726b1f60bfc07c557cc6569ec",
+          "deepgose_IA_weighted_Fmax.npy": "5792d171b6445d2685c7b40322f42149e1fff19beff281a7e16c776f4e3ecd61",
+          "strict_alias_localplus_IA_weighted_Fmax.npy": "54565245f62c61298b7a0fa9cf253e7b97316fde64dd56ce22963078c77e8bff"
+        },
+        "content_sha256": "13230686842bfbeb82c621ab6cad351b14cc05fb474405d352b6dbc929256f85"
+      },
+      "primary/cellular_component": {
+        "format": "biograph-steward.cafa5-paired-protein-bootstrap.v1",
+        "created_at": "2026-11-14T19:25:44.164950+00:00",
+        "config_sha256": "b9fd2fc604bcc689d9244828fbbb02c903069b1faa08abc4bb642f3a9c344c53",
+        "draws": 2000,
+        "seed": 20261113,
+        "raw_proteins": 445,
+        "protein_frame_definition": "Author gt_parser protein IDs after ontology recognition, before per-protein TOI/known-term exclusions. Native release records the original source frame and any outside-ontology targets.",
+        "metric": "author micro Fmax across fixed .001... .999 threshold grid; recomputed per resample",
+        "shared_protein_samples_across_all_arms": true,
+        "scores": {
+          "deepgose": {
+            "ordinary": {
+              "bootstrap_95_percentile_interval": [
+                0.2210660377834748,
+                0.2746929838135619
+              ],
+              "bootstrap_mean": 0.24748068412930274
+            },
+            "IA_weighted": {
+              "bootstrap_95_percentile_interval": [
+                0.14092296954331143,
+                0.18425610864802675
+              ],
+              "bootstrap_mean": 0.16233057940366252
+            }
+          },
+          "strict_alias_localplus": {
+            "ordinary": {
+              "bootstrap_95_percentile_interval": [
+                0.22042691423395805,
+                0.27345169430425376
+              ],
+              "bootstrap_mean": 0.2458472340960876
+            },
+            "IA_weighted": {
+              "bootstrap_95_percentile_interval": [
+                0.1609397467063773,
+                0.19656605730699364
+              ],
+              "bootstrap_mean": 0.17867415352561847
+            }
+          }
+        },
+        "comparisons": [
+          {
+            "candidate": "deepgose",
+            "comparator": "strict_alias_localplus",
+            "readout": "ordinary",
+            "difference_mean": 0.0016334500332151167,
+            "paired_95_percentile_interval": [
+              -0.02281778945163453,
+              0.02537244648364527
+            ],
+            "fraction_draws_above_zero": 0.559,
+            "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+          },
+          {
+            "candidate": "deepgose",
+            "comparator": "strict_alias_localplus",
+            "readout": "IA_weighted",
+            "difference_mean": -0.016343574121955966,
+            "paired_95_percentile_interval": [
+              -0.037463616522515855,
+              0.005883980656262077
+            ],
+            "fraction_draws_above_zero": 0.0735,
+            "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+          }
+        ],
+        "source_files_sha256": {
+          "source_0": {
+            "file_sha256": "117ff32484ba84f5779ff456c52ab805e008b5ce32db7f2204c0774f4e0b9a84"
+          },
+          "source_1": {
+            "file_sha256": "9dbc12d5126bd362cafa6b128c2a99018fbc3c623bc321d2eb162da9eb618294"
+          },
+          "source_2": {
+            "file_sha256": "97aa9c3884bd103e3a2e0ac4ca2a1726d2db6e364b8fe171ea6cd5acb39dba07"
+          },
+          "source_3": {
+            "file_sha256": "dbccc97da20200c0f7b99a68249226361da16dd34eba907899bea67cb1cf0a7c"
+          }
+        },
+        "numpy": "1.26.4",
+        "limitations": [
+          "Proteins share graph neighbors, annotations and studies; these intervals do not establish independent biological replication.",
+          "Incomplete curator annotation is treated by the fixed CAFA benchmark convention, not asserted to be comprehensive negative biology.",
+          "Fmax optimizes an evaluation threshold; it is not a prospectively calibrated application acceptance threshold."
+        ],
+        "files": {
+          "strict_alias_localplus_ordinary_Fmax.npy": "a6a6303e106293e2f4bc8661987a69f75b4a9ca0487c18cdf1d365b6c544d983",
+          "protein_multiplicities.npy": "f1a301c17a3056876bfcdd11b26fd8a15cf3c97407905a6975ebe6f79fbcdf14",
+          "deepgose_ordinary_Fmax.npy": "a31f2d908b6b49626bbc5d1e4d74e09e2c4b9aa342fe0da6289978efbb421faf",
+          "deepgose_IA_weighted_Fmax.npy": "2459022d6a87f4528b0ab6a8b0f2549f07ee4578b49d040a3bbaaa388dbfe63d",
+          "strict_alias_localplus_IA_weighted_Fmax.npy": "bff071c3a582626663e6821f9bf81a4795604a6c7d7190ba45f753cef4245c70"
+        },
+        "content_sha256": "1156cd232fc104993ad3b79228ed85cb3848e670f66e6fd0fd2f5a141b025a40"
+      },
+      "reserved/molecular_function": {
+        "format": "biograph-steward.cafa5-paired-protein-bootstrap.v1",
+        "created_at": "2026-11-14T19:41:59.805996+00:00",
+        "config_sha256": "80474a7bf2a1787e16f1b11fba20e6d0f1caa6c214b099ca54feda28fd228c24",
+        "draws": 2000,
+        "seed": 20261113,
+        "raw_proteins": 2192,
+        "protein_frame_definition": "Author gt_parser protein IDs after ontology recognition, before per-protein TOI/known-term exclusions. Native release records the original source frame and any outside-ontology targets.",
+        "metric": "author micro Fmax across fixed .001... .999 threshold grid; recomputed per resample",
+        "shared_protein_samples_across_all_arms": true,
+        "scores": {
+          "deepgose": {
+            "ordinary": {
+              "bootstrap_95_percentile_interval": [
+                0.16274371356810524,
+                0.2001455696260555
+              ],
+              "bootstrap_mean": 0.1815273390363813
+            },
+            "IA_weighted": {
+              "bootstrap_95_percentile_interval": [
+                0.12176816768256787,
+                0.1489615564497922
+              ],
+              "bootstrap_mean": 0.13517088069582223
+            }
+          },
+          "strict_alias_localplus": {
+            "ordinary": {
+              "bootstrap_95_percentile_interval": [
+                0.12882494370123507,
+                0.16577806049673843
+              ],
+              "bootstrap_mean": 0.14670433317199308
+            },
+            "IA_weighted": {
+              "bootstrap_95_percentile_interval": [
+                0.08240857542765866,
+                0.09904404854313728
+              ],
+              "bootstrap_mean": 0.09048372962962085
+            }
+          }
+        },
+        "comparisons": [
+          {
+            "candidate": "deepgose",
+            "comparator": "strict_alias_localplus",
+            "readout": "ordinary",
+            "difference_mean": 0.034823005864388225,
+            "paired_95_percentile_interval": [
+              0.0160572424670765,
+              0.05303086577183878
+            ],
+            "fraction_draws_above_zero": 1.0,
+            "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+          },
+          {
+            "candidate": "deepgose",
+            "comparator": "strict_alias_localplus",
+            "readout": "IA_weighted",
+            "difference_mean": 0.044687151066201365,
+            "paired_95_percentile_interval": [
+              0.03314526197681636,
+              0.05618491217677366
+            ],
+            "fraction_draws_above_zero": 1.0,
+            "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+          }
+        ],
+        "source_files_sha256": {
+          "source_0": {
+            "file_sha256": "a523d539671aad3b5c552f934dce3968b6a90ad9ff6d9ba3f28c271ac9bb697b"
+          },
+          "source_1": {
+            "file_sha256": "8c7e0a44bb00d169f6257932936c2d7eda6e7375902fcc92699abca19cc97a4e"
+          },
+          "source_2": {
+            "file_sha256": "14e889d366cdf4d785303ca1649f5778be781b6ff655402e7752e1c9d5758eec"
+          },
+          "source_3": {
+            "file_sha256": "87726d796858a969f8694b6bc2f3bebd2b690e3c5dade5b9bb0004ce66a9797a"
+          }
+        },
+        "numpy": "1.26.4",
+        "limitations": [
+          "Proteins share graph neighbors, annotations and studies; these intervals do not establish independent biological replication.",
+          "Incomplete curator annotation is treated by the fixed CAFA benchmark convention, not asserted to be comprehensive negative biology.",
+          "Fmax optimizes an evaluation threshold; it is not a prospectively calibrated application acceptance threshold."
+        ],
+        "files": {
+          "strict_alias_localplus_ordinary_Fmax.npy": "29006137edc8d0f319e10cb009e45ea3fb41cfe6ad7439532ad6763a1271edb9",
+          "protein_multiplicities.npy": "765992c95b9103c693bfb11af1df03870817f5aa4c5a56606ba8db5a98187c40",
+          "deepgose_ordinary_Fmax.npy": "b017391f51cdd7e028c88f2b9f9cc056d9127b131c7af12cbb4acc328e0283ff",
+          "deepgose_IA_weighted_Fmax.npy": "25191b33f50ec23aa2b42458b2c354d2726ab560bb2e15ec171480e7ccf6edc8",
+          "strict_alias_localplus_IA_weighted_Fmax.npy": "cc547fbe50ac3545cdc27bb689cb63c11abd9077bcf1d464ab50d3d71c086537"
+        },
+        "content_sha256": "e70ff2b8ddf86fd19d52fe7ac68987d11f24f361a6ecc72ca7d892fac2ee0c57"
+      },
+      "reserved/cellular_component": {
+        "format": "biograph-steward.cafa5-paired-protein-bootstrap.v1",
+        "created_at": "2026-11-14T19:51:03.028132+00:00",
+        "config_sha256": "432204d9e291b322ff70b5c11ef9950b1f1302c6cd33bcfafea5af5e9c218706",
+        "draws": 2000,
+        "seed": 20261113,
+        "raw_proteins": 1450,
+        "protein_frame_definition": "Author gt_parser protein IDs after ontology recognition, before per-protein TOI/known-term exclusions. Native release records the original source frame and any outside-ontology targets.",
+        "metric": "author micro Fmax across fixed .001... .999 threshold grid; recomputed per resample",
+        "shared_protein_samples_across_all_arms": true,
+        "scores": {
+          "deepgose": {
+            "ordinary": {
+              "bootstrap_95_percentile_interval": [
+                0.27710050106574824,
+                0.30717516712051574
+              ],
+              "bootstrap_mean": 0.29214696667804774
+            },
+            "IA_weighted": {
+              "bootstrap_95_percentile_interval": [
+                0.18496142517690048,
+                0.20874695286738768
+              ],
+              "bootstrap_mean": 0.1964995300899342
+            }
+          },
+          "strict_alias_localplus": {
+            "ordinary": {
+              "bootstrap_95_percentile_interval": [
+                0.26575025918945355,
+                0.29655686832404093
+              ],
+              "bootstrap_mean": 0.28092693409780634
+            },
+            "IA_weighted": {
+              "bootstrap_95_percentile_interval": [
+                0.17979177101980331,
+                0.20079291123338278
+              ],
+              "bootstrap_mean": 0.1898388432629964
+            }
+          }
+        },
+        "comparisons": [
+          {
+            "candidate": "deepgose",
+            "comparator": "strict_alias_localplus",
+            "readout": "ordinary",
+            "difference_mean": 0.011220032580241391,
+            "paired_95_percentile_interval": [
+              -0.0020643691737535913,
+              0.025081577837535885
+            ],
+            "fraction_draws_above_zero": 0.9455,
+            "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+          },
+          {
+            "candidate": "deepgose",
+            "comparator": "strict_alias_localplus",
+            "readout": "IA_weighted",
+            "difference_mean": 0.006660686826937809,
+            "paired_95_percentile_interval": [
+              -0.005210855579124536,
+              0.019005668127641723
+            ],
+            "fraction_draws_above_zero": 0.86,
+            "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+          }
+        ],
+        "source_files_sha256": {
+          "source_0": {
+            "file_sha256": "dde171e1ef95070e31c46ea040a69bf6ddeed5cfebe9190782426304af823cd7"
+          },
+          "source_1": {
+            "file_sha256": "24c47dd727c1c7425fb1dd93d878c3d470b063768db26773cdaff1fea084afed"
+          },
+          "source_2": {
+            "file_sha256": "7e0109ed5d10a5694fba3441a2c9c0338f581d8be0b87eebdd66f94f4c03ad4e"
+          },
+          "source_3": {
+            "file_sha256": "f76d412762cf81c7396499634093a8d233687000398dba08c092bedc5226c2a5"
+          }
+        },
+        "numpy": "1.26.4",
+        "limitations": [
+          "Proteins share graph neighbors, annotations and studies; these intervals do not establish independent biological replication.",
+          "Incomplete curator annotation is treated by the fixed CAFA benchmark convention, not asserted to be comprehensive negative biology.",
+          "Fmax optimizes an evaluation threshold; it is not a prospectively calibrated application acceptance threshold."
+        ],
+        "files": {
+          "strict_alias_localplus_ordinary_Fmax.npy": "d37d5705dc0ec15be3e5d54dbfb2059e5ca984e4880253db926965983186df13",
+          "protein_multiplicities.npy": "5863cccc7411bae7d285feb74cf2360fffc21867e8c323e269a110689be965fb",
+          "deepgose_ordinary_Fmax.npy": "18e8c9b60a754e007c3ff258142b8f3bca9ee4e9b7a2034bd3cb173d4cd45a0d",
+          "deepgose_IA_weighted_Fmax.npy": "8b56b724bb53aabc5ec9c767039b1fbe88c1060398f1b3d058f445f031192e45",
+          "strict_alias_localplus_IA_weighted_Fmax.npy": "bc7b410f7c4cfa74a621ef302f08b8d1665a855f81894039efe85eed59b613d2"
+        },
+        "content_sha256": "267f330f41cc1dc0d70bc6976e29b292c39197ad4302b00168f1ad06701aebba"
+      }
+    },
+    "runtime": {
+      "python": "3.10.12",
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "pandas": "2.2.3"
+    },
+    "input_files_sha256": {
+      "source_0": {
+        "file_sha256": "89279b5bf20c642ac0d6bb5d9042cb14e957ddcc77e1440ce5f16a20aa3ff65d"
+      },
+      "source_1": {
+        "file_sha256": "329057c5903046a467e28fedc9a344a79788d3e8f6a6b9aab3e1b7e9ddd32df8"
+      },
+      "source_2": {
+        "file_sha256": "2f99315402799488349ee1198bfa864a43c5070cbbbc273f836c3436b0016ba5"
+      },
+      "source_3": {
+        "file_sha256": "5f3e084f65448ef27c27f554294a51be302b0f542bca7093822a2464466a7163"
+      },
+      "source_4": {
+        "file_sha256": "10d5404ab510534c7d7a730a188b3f1b2d37cde65011299ab9a13da2a4a7e367"
+      },
+      "source_5": {
+        "file_sha256": "89279b5bf20c642ac0d6bb5d9042cb14e957ddcc77e1440ce5f16a20aa3ff65d"
+      },
+      "source_6": {
+        "file_sha256": "f85600f75bf087e5926905b2310bbc85fee7a4f7dd463560f7119d49e14261ab"
+      },
+      "source_7": {
+        "file_sha256": "4d5763eddda5cf88d7275e4d3d30e1a154ffc4aecbf7005acc150fb09c2c7bb9"
+      },
+      "source_8": {
+        "file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "source_9": {
+        "file_sha256": "446c8a1cbe5238a2527d7d585ad56b36361597503ff30a5f1958f44dcf53a1c7"
+      },
+      "source_10": {
+        "file_sha256": "515664459bec8909df138a422a713058ba3f8a8ddc7e4b0475382459a709cda2"
+      },
+      "source_11": {
+        "file_sha256": "3b0f523f672bab3234e6798b86801514fbd84ea43c38e57e902e7b6e2cc74111"
+      },
+      "source_12": {
+        "file_sha256": "825e81969a30b5075069c9a5510ae711e0159507c7618a51a05e46dfc0f45d17"
+      },
+      "source_13": {
+        "file_sha256": "15c764c44fcd59dfd7986aed228a01975c6575624ec88887e6c0b4c2465f6826"
+      },
+      "source_14": {
+        "file_sha256": "3c0c4b9a93b860466e20fcdb2fe1dbeb8f16b0a9feb2dae3d81df14df019bd35"
+      },
+      "source_15": {
+        "file_sha256": "90641296061928357319dfd6a0c80291d580635be6bb16e32584a7f8d511f77b"
+      },
+      "source_16": {
+        "file_sha256": "e8ed19770720adbe012f62e5d2e1f3d16fb7cecee4b3304c0ae8c8a932e15676"
+      },
+      "source_17": {
+        "file_sha256": "1d569064ac0669e3f92135f085d6d0f349924445bc0e659b3be56ba1fcf49391"
+      },
+      "source_18": {
+        "file_sha256": "70ba4f18ef4af35f94d616e6d9c561ba08ebb20f1934940e0e18971785dc23cd"
+      },
+      "source_19": {
+        "file_sha256": "d558315fea00b1adbccea325e78e6e271a769fb8c5fa9e08a90953336058b041"
+      },
+      "source_20": {
+        "file_sha256": "cbaa9327766151c7ff6d2fe8b0c2d5d0715a35d0ac1f419b2735fbab2b43c191"
+      },
+      "source_21": {
+        "file_sha256": "0c0062efbb1b199a6a54e62c0c48ff0038d39173aecc7edfab66a20090d5ec2d"
+      },
+      "source_22": {
+        "file_sha256": "579b85022efc121c920cc47550546ce125dab9c1d51dacc0bbf5812b777dd917"
+      },
+      "source_23": {
+        "file_sha256": "d436bce5b0e6a26d997176b16cac7ef58c1d04a14d8f07b1ee69340d54860f0b"
+      },
+      "source_24": {
+        "file_sha256": "8a063411f3f6bc24ff9fcb663e1ed740513063f25b905ce57d0cb9503108dea0"
+      },
+      "source_25": {
+        "file_sha256": "2cffd3551aee39bd44e11bd47b26efa83ee9a7d8eeb29fbf6b292d42b7d6f62a"
+      },
+      "source_26": {
+        "file_sha256": "95f3b0ebf4e67df98296a62090e8d4f7f68f21a69a02b57f68bbde873a3c21dc"
+      },
+      "source_27": {
+        "file_sha256": "7f76a946bc4d0e40f3d7d8f004ec8062ab9a37ed3ff583fc2b216700533680e4"
+      },
+      "source_28": {
+        "file_sha256": "1bc8fa2f4ac1c33897e5e04325135369b45e142b07cdab5f58505521c2d51db8"
+      },
+      "source_29": {
+        "file_sha256": "141c526a13001629967c37fe03b95bf4987f43fbd9ea7ba9fdea401692e1fcfc"
+      },
+      "source_30": {
+        "file_sha256": "b0507121e97dd1cbbbbded717837a048442c066ebf2673ae5af61074b02cc308"
+      },
+      "source_31": {
+        "file_sha256": "c40b7000c1ad857c22e5aad966707e0fc850a6bb8e32c9e5ab6651fab8fcba6b"
+      },
+      "source_32": {
+        "file_sha256": "c0fadb44788f845e020fd6c7c87d44dc9456d6decb1d75a408bbee8fdd76a4f1"
+      },
+      "source_33": {
+        "file_sha256": "91745a6aca670286ce236170a4e4e81b4553fabff902d3c0044d0089839c6744"
+      },
+      "source_34": {
+        "file_sha256": "7885bc7b103b5a6a65c1909eb8c11ce51d7d1ed58e3182443b13c1d37d192e1d"
+      },
+      "source_35": {
+        "file_sha256": "d9f3d3c32423bc54048d16ec4cebaa6bbc84efc087014d3274b28ab77f643387"
+      },
+      "source_36": {
+        "file_sha256": "299dc41e14381f8e86a7e558da59b58a9cf56b6480815e6eab0ff330f2bd6939"
+      },
+      "source_37": {
+        "file_sha256": "faaebea3af0edf58ea51d60b3c34b10f2b2cba092d55517ef761a297e660d7bf"
+      },
+      "source_38": {
+        "file_sha256": "b4a204bd4436d6382b11cc69b73b1036de7c36b90564207e00d56f4277a34dc8"
+      },
+      "source_39": {
+        "file_sha256": "9fe3e6b245e17ca571d35b3f5c66a89498d600d5948042d320f4a25dbefe9cc0"
+      },
+      "source_40": {
+        "file_sha256": "3baea17a15cbc37a2bd3823b35ac6ebedcd2ca6faf97c9a1a366e50a5fe22621"
+      },
+      "source_41": {
+        "file_sha256": "6649710ac8cdad6f157bbeb8bdcb64c6f802eadfeb83de7720581999bb596255"
+      },
+      "source_42": {
+        "file_sha256": "2df6a6409aa0d02b8f6c5113a6935928ace6dd38c9f2cd196cb0e620fafac558"
+      },
+      "source_43": {
+        "file_sha256": "dbf301727f1008f7d24e54e88e15b0556e7ff88f6d83a35b059f3fac423d742e"
+      },
+      "source_44": {
+        "file_sha256": "93ca2b08794ac1ed85e102c3dca360a7c7bc8de706637c51ea6e59467ba6fde0"
+      },
+      "source_45": {
+        "file_sha256": "2ade7aef27ca9a401a3df27c5ed275780d54312affd1d298b8d413255ad4080b"
+      },
+      "source_46": {
+        "file_sha256": "384c9aa93ae719b758fcb888e10b1becab981854775302929dfbfffd71dd09e4"
+      },
+      "source_47": {
+        "file_sha256": "38ea95e14d9df5ce067a8b4f13efd191d527fc2fa4f057d773c2ce5bf364f59b"
+      },
+      "source_48": {
+        "file_sha256": "b5e1dec07003ea9411739c675ff32b0511981839fcbc2df376d4efd2b7da20bc"
+      },
+      "source_49": {
+        "file_sha256": "8be38fa9e5077e7d309782d7ea6fb0865c7cb47e596874becd5f2cd5cbf75f6c"
+      },
+      "source_50": {
+        "file_sha256": "d3aae88d3d5949ff96773da0da234f6eb380f8ab414385b6d367f446eb42ce01"
+      },
+      "source_51": {
+        "file_sha256": "272ebae120719310817052656eb7bec054c6c3d5200daf02a6e07c793fe5c818"
+      },
+      "source_52": {
+        "file_sha256": "0fc6a4928db0c33fabf7ea0b60bc2d2027b3e307bcd0299fb5c98e96429912ce"
+      },
+      "source_53": {
+        "file_sha256": "730873f4245dfdcb538a10c369766f0fe0e1ed32c26fc9167f06b3b6d820a1c2"
+      },
+      "source_54": {
+        "file_sha256": "0b9fe3f85ce829abbb6bbabfca10039e35cbed47a97903613d16ad9b399c93bd"
+      },
+      "source_55": {
+        "file_sha256": "056494309ff06c941e19a1ca5a6ec6dbd5cb4a8d5f4aeea49281c4b9babcd025"
+      },
+      "source_56": {
+        "file_sha256": "cdadf97d4d994028ac863c188d2c4446ade1a65e231df8157dc484f8c7fc264d"
+      },
+      "source_57": {
+        "file_sha256": "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6"
+      },
+      "source_58": {
+        "file_sha256": "23164e2bb2d68a7275fd5c6caf150084797fd690194ff8a72135132a46990c9b"
+      },
+      "source_59": {
+        "file_sha256": "82e23d4f752a9de9aef68b7c0252df0dad9ffb7a74adeb1c2a83c789578e3aad"
+      },
+      "source_60": {
+        "file_sha256": "528f2998979b33081b873304acde4233a75419dada29e8b5d1cd7a30630952e7"
+      },
+      "source_61": {
+        "file_sha256": "2b368a9aee239d5d1c5325a4d7c17ff159c40fa3cfe4768aac578adf126c36fd"
+      },
+      "source_62": {
+        "file_sha256": "bfe8000ee13cf77942706f7d8ac33215139d16ce30ecfe29be5905cb1f982019"
+      },
+      "source_63": {
+        "file_sha256": "7246d49278a34131270993609d601d8fb13b6fbede1664bee5ec8f4fc2d289f7"
+      },
+      "source_64": {
+        "file_sha256": "39b6cf7b877874b78fecdb12073dbefb6c2cdec44535d47ca02d39ede3c04db3"
+      },
+      "source_65": {
+        "file_sha256": "c376b827a2c03a87cdce14c53858c49ce221adc188394b345db91d2ea1c5b08e"
+      },
+      "source_66": {
+        "file_sha256": "5ecd8ab487ecb87f467c525f248f94f6e9bad8302a5263c8d7f52caaa043b9ec"
+      }
+    },
+    "primary_adoption_rule_changed": false,
+    "product_consumer_added": false,
+    "new_model_source_or_reference_release": false,
+    "raw_reference_or_forecast_rows_included": false,
+    "limitations": [
+      "Points were observed before this supplement was frozen; intervals are exploratory and not multiplicity adjusted.",
+      "Protein/source/graph dependencies remain; these are conditional resampling intervals, not independent biological replication.",
+      "Fmax uses the fixed evaluation threshold grid, not prospectively calibrated model confidence."
+    ],
+    "content_sha256": "3078f3289b1b19cd722aff978625611e5303b375e79b801582e696acc0871a80"
+  },
+  "already_reported_secondary_point_rows": [
+    {
+      "frame": "primary",
+      "namespace": "molecular_function",
+      "method": "deepgose",
+      "status": "scored",
+      "eligible_proteins": 525,
+      "IA_eligible_proteins": 525,
+      "micro_Fmax": 0.162590263219194,
+      "IA_micro_Fmax": 0.1410832316367269,
+      "macro_Fmax": 0.15370302812257625,
+      "IA_macro_Fmax": 0.14843994691945445,
+      "unweighted_Smin": 3.336247433685864,
+      "IA_weighted_Smin": 8.137732455366384,
+      "fixed_0_5": {
+        "filename": "deepgose.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.18154761904761907,
+        "recall": 0.10104914411927111,
+        "F1": 0.12983327421071303,
+        "coverage": 0.4114285714285714
+      }
+    },
+    {
+      "frame": "primary",
+      "namespace": "cellular_component",
+      "method": "deepgose",
+      "status": "scored",
+      "eligible_proteins": 445,
+      "IA_eligible_proteins": 445,
+      "micro_Fmax": 0.24597606273215025,
+      "IA_micro_Fmax": 0.16170667672541447,
+      "macro_Fmax": 0.24700281117024642,
+      "IA_macro_Fmax": 0.21316063707363597,
+      "unweighted_Smin": 3.968638577658691,
+      "IA_weighted_Smin": 6.757812499541998,
+      "fixed_0_5": {
+        "filename": "deepgose.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.23094688221709006,
+        "recall": 0.10851871947911014,
+        "F1": 0.14765596160944996,
+        "coverage": 0.750561797752809
+      }
+    },
+    {
+      "frame": "reserved",
+      "namespace": "molecular_function",
+      "method": "deepgose",
+      "status": "scored",
+      "eligible_proteins": 2192,
+      "IA_eligible_proteins": 2191,
+      "micro_Fmax": 0.1806434423499634,
+      "IA_micro_Fmax": 0.13352338383248308,
+      "macro_Fmax": 0.1535782549823254,
+      "IA_macro_Fmax": 0.1465693864714556,
+      "unweighted_Smin": 2.9035135173976743,
+      "IA_weighted_Smin": 7.243537219109647,
+      "fixed_0_5": {
+        "filename": "deepgose.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.2095327984898537,
+        "recall": 0.13237924865831843,
+        "F1": 0.16225105061209574,
+        "coverage": 0.47125912408759124
+      }
+    },
+    {
+      "frame": "reserved",
+      "namespace": "cellular_component",
+      "method": "deepgose",
+      "status": "scored",
+      "eligible_proteins": 1450,
+      "IA_eligible_proteins": 1450,
+      "micro_Fmax": 0.2911912897434413,
+      "IA_micro_Fmax": 0.1956045370582373,
+      "macro_Fmax": 0.3086825305130582,
+      "IA_macro_Fmax": 0.2548107671298079,
+      "unweighted_Smin": 4.342649974272478,
+      "IA_weighted_Smin": 6.6525225762529345,
+      "fixed_0_5": {
+        "filename": "deepgose.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.31815561959654176,
+        "recall": 0.15843857634902409,
+        "F1": 0.21153477677716034,
+        "coverage": 0.7744827586206896
+      }
+    },
+    {
+      "frame": "primary",
+      "namespace": "molecular_function",
+      "method": "strict_alias_localplus",
+      "status": "scored",
+      "eligible_proteins": 525,
+      "IA_eligible_proteins": 525,
+      "micro_Fmax": 0.11313131313131312,
+      "IA_micro_Fmax": 0.10094851721081056,
+      "macro_Fmax": 0.13106277284869783,
+      "IA_macro_Fmax": 0.1321832292477567,
+      "unweighted_Smin": 3.3257082855997804,
+      "IA_weighted_Smin": 8.333671724341917,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.38518518518518524,
+        "recall": 0.028713418001104364,
+        "F1": 0.05344295991778006,
+        "coverage": 0.13904761904761906
+      }
+    },
+    {
+      "frame": "primary",
+      "namespace": "cellular_component",
+      "method": "strict_alias_localplus",
+      "status": "scored",
+      "eligible_proteins": 445,
+      "IA_eligible_proteins": 445,
+      "micro_Fmax": 0.24239772478669877,
+      "IA_micro_Fmax": 0.1777828365091348,
+      "macro_Fmax": 0.2659090820457182,
+      "IA_macro_Fmax": 0.23061675891864733,
+      "unweighted_Smin": 3.6903645560767955,
+      "IA_weighted_Smin": 6.472314970113162,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.3770739064856712,
+        "recall": 0.1356483993488877,
+        "F1": 0.19952114924181966,
+        "coverage": 0.42921348314606744
+      }
+    },
+    {
+      "frame": "reserved",
+      "namespace": "molecular_function",
+      "method": "strict_alias_localplus",
+      "status": "scored",
+      "eligible_proteins": 2192,
+      "IA_eligible_proteins": 2191,
+      "micro_Fmax": 0.1452637392985363,
+      "IA_micro_Fmax": 0.0886887928124091,
+      "macro_Fmax": 0.13811909525306998,
+      "IA_macro_Fmax": 0.13073486987326646,
+      "unweighted_Smin": 2.8780587861135367,
+      "IA_weighted_Smin": 7.345914106343088,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.39155251141552516,
+        "recall": 0.05113297555158021,
+        "F1": 0.09045358649789031,
+        "coverage": 0.2281021897810219
+      }
+    },
+    {
+      "frame": "reserved",
+      "namespace": "cellular_component",
+      "method": "strict_alias_localplus",
+      "status": "scored",
+      "eligible_proteins": 1450,
+      "IA_eligible_proteins": 1450,
+      "micro_Fmax": 0.28026009664141266,
+      "IA_micro_Fmax": 0.1884661994830838,
+      "macro_Fmax": 0.2905402048451833,
+      "IA_macro_Fmax": 0.24269984741116468,
+      "unweighted_Smin": 4.196851149604686,
+      "IA_weighted_Smin": 6.4234987694262715,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.42175408426483235,
+        "recall": 0.14078645235361653,
+        "F1": 0.21110393802453198,
+        "coverage": 0.49379310344827587
+      }
+    }
+  ],
+  "delivery_boundaries": [
+    "EXPLORATORY, POST-HOC: all six fill point values were already observed before this uncertainty supplement was frozen. Both molecular function and cellular component, both cohorts and both readouts are retained irrespective of direction.",
+    "These eight conditional paired intervals are not multiplicity adjusted, fresh-reference confirmation, or independent biological replication. Protein, graph and source dependencies remain.",
+    "The same sealed full joined forecasts and unchanged native fill parser/count pipeline, ontology, known masks, terms of interest, IA and threshold grid are reused. Both methods require agreement with their saved native point curves.",
+    "Each cohort/aspect uses 2,000 shared protein draws with seed 20261113. Fmax is recomputed over the fixed benchmark grid; its threshold is not calibrated model confidence.",
+    "The original four-interval BPO adoption rule and all 252 fill-primary outcomes remain unchanged. Secondary intervals cannot promote a favorable aspect, add a DeepGO consumer, or replace the retained LocalPlus default.",
+    "This appendix is also separate from the common-MAX postprocessing sensitivity. Neither supplement changes models, sources, training, targets or the failed primary decision."
+  ],
+  "intervals": 8,
+  "posthoc_exploratory": true,
+  "multiplicity_adjusted": false,
+  "primary_outcomes_overwritten": false,
+  "automatic_adoption": false,
+  "operator_paths_or_raw_cases_included": false,
+  "publisher_implementation_sha256": "ca893ac159a67a9d12b6a2fab28a6270d92217c44a560148aad21480d61608d9",
+  "content_sha256": "66dee4d168d2dd25dee387363818599c44958985e8f26ff597008fad997d3f97"
+}

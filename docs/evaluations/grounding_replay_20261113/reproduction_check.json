@@ -1,0 +1,22 @@
+{
+  "format": "biograph-steward.grounding-public-reproduction-replay.v1",
+  "created_at": "2026-11-13T13:44:07.336161+00:00",
+  "complete_prepared_source_cases_equal": true,
+  "cases": 4294,
+  "partitions": {
+    "development": 3249,
+    "test": 1045
+  },
+  "identities_source_payloads_agent_arrays_PMIDs_groups_splits_and_projection_seals_equal": true,
+  "source_labels_or_predictions_read_by_replay": false,
+  "new_model_inference": false,
+  "reference_corpus_reacquired": false,
+  "used_existing_exact_pinned_source_bytes": true,
+  "public_reproduce_implementation_sha256": "7fc1c09504b03ab0370295db1bc45142b11e3033e610d900c4d4795424ec2dd6",
+  "public_exposure_projection_sha256": "5adac4e6429a4a0d65604fa6af3d7593afc7009f88d970eaddbaca6a5ed483fd",
+  "original_frame_content_sha256": "831bc3046dde179d5f2a678a30bffc1d7ee920aca1981bcea15fde0574d21a39",
+  "reproduced_frame_content_sha256": "d9d42a0c8e95f209cea06246eb3a6f4120546d9683b6c3efe54975133d9c3206",
+  "receipt_bytes_identical_claimed": false,
+  "interpretation": "Tracked public join/prepare commands and published exact exposure tokens recreate every prepared case and partition; receipt paths/timestamps differ. No classifier rerun, labels, scoring or source changes.",
+  "content_sha256": "6d763028392efbd185d03ff261df0b942e8bdbfa66b5eb67bd76f33aebc72a95"
+}

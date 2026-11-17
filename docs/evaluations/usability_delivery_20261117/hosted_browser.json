@@ -1,0 +1,35 @@
+{
+  "format": "biograph-steward.review-workflow-hosted-browser.v1",
+  "passed": true,
+  "checked_at_UTC": "2026-11-17T14:22:09.107542+00:00",
+  "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+  "actual_Chrome_browser": true,
+  "normal_HTTPS_without_security_bypass": true,
+  "token_entry_or_credential_submission": false,
+  "source_workspace": "native_evidence_workspace_20261115",
+  "saved_question": "native_physical_KRAS_question_v3_20261115",
+  "reading_CDC42BPB_summary_preserved_AKT1_diagram": true,
+  "Show_in_graph_selected_CDC42BPB_and_focused_diagram": true,
+  "source_inspection_completed_HTTP_200": true,
+  "public_Record_evidence_review_control_disabled": true,
+  "editable_local_copy_instructions_visible": true,
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "public_graph_or_review_edits": 0,
+  "new_independent_usability_study_claimed": false,
+  "frames": [
+    {
+      "file": "runs/final_usability_20261117/hosted_browser/public_selected_graph.png",
+      "bytes": 108663,
+      "sha256": "8a0a8091759a4b6c137cce21ec0d737d6ec6ee5518ce8d6a944f8853deb71463"
+    },
+    {
+      "file": "runs/final_usability_20261117/hosted_browser/public_read_only_review.png",
+      "bytes": 96235,
+      "sha256": "9be9b6f9a4f4c5db1a2fb2e9223118aa24be721472e968a3fdfd1a9d61bb0760"
+    }
+  ],
+  "capacity_fix": "Existing public backend2GiB\u21923GiB; measured peak2.080GiB, no new VM/database/gateway/permissions.",
+  "private_service_updated": false,
+  "earlier_local_review_proof": "UI_checks.json"
+}

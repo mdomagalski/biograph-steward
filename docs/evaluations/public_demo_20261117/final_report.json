@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "public_access_acceptance": {
+    "file": "docs/evaluations/public_demo_20261117/hosted_acceptance.json",
+    "sha256": "365ad696dc9acff2c916eec8a420dac97315cf4e52594aced0ff7c1a23150b63"
+  },
+  "canonical_copy_verified": true,
+  "scientific_data_or_results_changed": false,
+  "new_model_source_or_cloud_calls_for_artifact_preparation": false,
+  "format": "biograph-steward.public-demo-final-report.v1",
+  "file": "output/docx/BioGraph_Steward_Final_Report.docx",
+  "bytes": 12647,
+  "sha256": "18a52108e624a98155fcd3edc4bd8f379246441cd6ea8e65842488bc7117feda",
+  "previous_canonical_sha256": "78de54ffa440a111cb4373e3c26ea9c03dbf2fbe81454a0e895a4b01fe514a6b",
+  "page_count": 4,
+  "main_form_pages": 2,
+  "supplement_pages": 2,
+  "only_changed_package_part": "word/document.xml",
+  "changed_text_paragraphs": 3,
+  "organizer_form_geometry_styles_numbering_and_links_preserved": true,
+  "scientific_rows_numbers_denominators_controls_and_citations_unchanged": true,
+  "expert_source_claim_assessment_preserved": {
+    "claims": 134,
+    "supported": 64,
+    "unsupported": 70,
+    "consensus_unsupported_flagged": 3,
+    "consensus_supported_flagged": 0,
+    "source_faithfulness_not_whole_graph_accuracy": true
+  },
+  "formal_ProtBoost_and_expert_paper_references_preserved": true,
+  "authored_semicolon_count": 0,
+  "access_copy": "Direct public browser demo without sign-in or AWS account; complete graph/source packets are separate assets.",
+  "all_four_pages_rendered_and_visually_checked": true,
+  "root_visual_review_passed": true,
+  "clipping_overlap_or_missing_glyph_detected": false,
+  "submission_sent": false,
+  "original_canonical_preserved_in_private_history": true
+}

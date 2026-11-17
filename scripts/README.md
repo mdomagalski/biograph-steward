@@ -1,6 +1,20 @@
-# Current investigation scripts
+# Operator and research scripts
 
-This directory contains preparation tools for the active measured-link investigation. The workbench CLI is `python3 app.py --help`.
+Run the application with `python3 app.py`. The [delivery instructions](../docs/DELIVERY.md)
+and [user instructions](../HOW_TO_USE.md) describe the final application and
+its real-data examples. The research drivers below preserve dated experiments,
+including unsuccessful comparisons. They are not a sequence of prerequisites
+for launching the app, and their historical readiness checks do not describe
+the final application's release status.
+
+For delivery, [prepare_judge_demo.py](prepare_judge_demo.py) reuses the committed
+runtime and verified gold-packet APIs to create separate software-only and local
+full-CRC archives. It preserves the original workspace and an all-abstain edge
+ledger, checks extracted byte inventories and records hashes. It neither
+retrieves data nor clears redistribution rights. See [delivery instructions](../docs/DELIVERY.md).
+
+This directory also contains preparation tools for the recorded measured-link
+investigations. The workbench CLI is `python3 app.py --help`.
 
 | Script | Purpose |
 |---|---|
@@ -11,6 +25,8 @@ This directory contains preparation tools for the active measured-link investiga
 | [validate_intact_reader_controls.py](validate_intact_reader_controls.py) / [inspect_intact_development.py](inspect_intact_development.py) | Validate the official PSI-JAMI reader on invented controls, then inspect only the four explicitly authorized development studies. Reserved studies are forbidden. |
 | [publish_intact_development.py](publish_intact_development.py) | Publish the consumed development records, complete source ledger and readable offline viewer using verified official-reader output. No model calls or reserved-source access. |
 | [evaluate_intact_evidence_fidelity.py](evaluate_intact_evidence_fidelity.py) | Compare the development-only source publication or real attached run, readable answer and full gold packet against original raw/official-reader evidence. This is source fidelity, not biological accuracy. |
+| [replay_intact_consumed_flow.py](replay_intact_consumed_flow.py) | Freeze and replay the four already-opened studies after the standards-supported identity-comparator correction. Uses explicit consumed labels, captured official-reader streams and capped native Pharos retrieval. Preserves the original stopped assessment; cannot execute the new unopened panel. |
+| [check_intact_final_readiness.py](check_intact_final_readiness.py) | Prepare-only final-rules and safe metadata preflight. Current expected exit 1 means full-flow execution is not ready; exit 2 means invalid metadata. Never opens, hashes or authorizes reserved reference bodies and does not run a score. |
 | [audit_inmc_inputs.py](audit_inmc_inputs.py) | Verify the pinned INMC archive, input schema and identifier coverage using the existing frozen HGNC/UniProt registry. Export a deduplicated context-retrieval inventory while retaining shared products and all original genes. Does not derive binary assay labels, select a final cohort or train a model. |
 | [retrieve_pharos_inventory.py](retrieve_pharos_inventory.py) | Retrieve the audited accession inventory in resumable, integrity-checked chunks. Preserve cross-chunk interaction links, all tissue labels, unresolved identities and original gene mappings. Stages raw Pharos records; does not approve features or load assay outcomes. |
 | [audit_pharos_inventory.py](audit_pharos_inventory.py) | Verify a completed retrieval and inventory direct candidate-pair overlaps in raw and retained interaction rows. Reads only original pair identities from the pinned experimental archive; does not remove graph edges or decode outcomes. |
@@ -24,6 +40,8 @@ This directory contains preparation tools for the active measured-link investiga
 | [score_inmc_comparison.py](score_inmc_comparison.py) | Authenticate the full frozen prediction population before opening the pinned assay/author sources. Reconcile the reference and use the frozen pure outcome/metric adapter; record any holdout exposure or failure. |
 | [assess_lambourne_corroboration.py](assess_lambourne_corroboration.py) | Freeze the full-panel Pharos comparator and author-consistent assay contract, execute once with a durable first-access receipt, or explicitly replay the saved descriptive result. No model or GPU required. |
 | [publish_lambourne_evidence.py](publish_lambourne_evidence.py) | Reuse the completed assessment to publish an immutable qualified observation graph and offline inspection view, preserving all excluded/nondetected records and copied source receipts. No new assay scoring, automatic pruning or IMEx-conformance claim. |
+| [prepare_ppi_pruning_graph.py](prepare_ppi_pruning_graph.py) / [run_network_enhancement.py](run_network_enhancement.py) / [assess_ppi_pruning.py](assess_ppi_pruning.py) | Optional fixed-budget PPI pruning comparison: publish the audited source graph, invoke external GPL author NE code, freeze separate retained views, then explicitly score consumed assays. See the [CLI guide](../docs/PPI_PRUNING.md); no model/GPU or automatic app-default changes. |
+| [publish_pruning_preview.py](publish_pruning_preview.py) | Publish a verified, compact saved assessment for the app's Compare & assess tab, with per-pair policy choices and assay context. Does not rerun scoring, apply pruning or export full retained graphs. |
 
 Read the [reuse decision](../docs/literature/MEASURED_LINK_BENCHMARK_REUSE_20261022.md) and [input-readiness report](../docs/evaluations/INMC_INPUT_READINESS_20261022.md) before running these tools. Use new output directories and preserve source receipts. A runtime smoke does not show biological improvement.
 
@@ -291,3 +309,5 @@ Open its `index.html` to inspect source-qualified observations, including the
 42 detected pairs without a resolved-profile Pharos match. They are not a new
 independent accuracy benchmark. This publication has its own local contract and
 must not be passed off as an ordinary Pharos run or the validated KGX subset.
+
+The [biological source enrichment workflow](../docs/BIOLOGICAL_SOURCE_UPDATE.md) is available through the core `string-source-publish`, `mapit-source-publish` and `biological-update` commands. It reuses complete saved source artifacts and preserves the original graph.

@@ -1,0 +1,86 @@
+{
+  "format": "biograph-steward.core-packaging-summary.v1",
+  "prepared_date": "2026-10-26",
+  "status": "passed",
+  "source_commit": "586ec35d33e9429dde91057c4130542988a7ca02",
+  "scope": "Committed core application built/installed with declared backend, then synthetic graph/answer/export replay. No real study data, browser or cloud assessment.",
+  "bindings": {
+    "pinned_result": {
+      "path": "runs/fresh_clone_smoke_20261026/pinned_backend_attempt_02/report.json",
+      "sha256": "addb31bf91279f0567b5054f4ecf68e857f6d4da2af749320c4ab8482af4c27f"
+    },
+    "pinned_preparation": {
+      "path": "runs/fresh_clone_smoke_20261026/pinned_backend_attempt_02/preparation.json",
+      "sha256": "22a15b6f6baf306b4366a2665c75980f689b1939810dd7c5e3f8b155fa7677df"
+    },
+    "dependency_receipts": {
+      "path": "runs/fresh_clone_smoke_20261026/pinned_backend_attempt_02/http_receipts.json",
+      "sha256": "7bfa2d8e51587d53bcb0b1218a60d7181b5cc95cdcdd6e8d23b9ee1e784d9c53"
+    },
+    "official_dependency_metadata": {
+      "path": "runs/fresh_clone_smoke_20261026/pinned_backend_attempt_02/pypi_setuptools_80.9.0.json",
+      "sha256": "e3188a9a8921b0bd16ae2728753269376a4b90ca3413f67b77f77417ab2e503e"
+    },
+    "preserved_initial_offline_result": {
+      "path": "runs/fresh_clone_smoke_20261026/report.json",
+      "sha256": "1d873f69d71c262d9e6957726e24aa6558ee73f14a173aadc67ebf974a6252dc"
+    },
+    "postcheck": {
+      "path": "runs/fresh_clone_smoke_20261026/postcheck.json",
+      "sha256": "b6f5c5162577acbd22ed9fbd1dfdf8f7c2d5dffbf0a6322bd896912e5a86787a"
+    }
+  },
+  "declared_backend_reproduced": true,
+  "backend": {
+    "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "executable": "/Users/42573/biograph-steward-pharos/runs/fresh_clone_smoke_20261026/pinned_backend_attempt_02/build_env/bin/python",
+    "setuptools": "80.9.0",
+    "pip": "25.0.1"
+  },
+  "dependency_artifact": {
+    "filename": "setuptools-80.9.0-py3-none-any.whl",
+    "url": "https://files.pythonhosted.org/packages/a3/dc/17031897dae0efacfea57dfd3a82fdd2a2aeb58e0ff71b77b87e44edc772/setuptools-80.9.0-py3-none-any.whl",
+    "sha256": "062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922",
+    "size": 1201486
+  },
+  "source_minimum_python_check": {
+    "version": "3.10.20",
+    "site_packages_disabled": true,
+    "status": "passed"
+  },
+  "installed_assets": [
+    "biograph_steward/assay.js",
+    "biograph_steward/civic.js",
+    "biograph_steward/construction.js",
+    "biograph_steward/guided.js",
+    "biograph_steward/login.html",
+    "biograph_steward/planner.js",
+    "biograph_steward/refresh.js",
+    "biograph_steward/ui.html",
+    "biograph_steward/workspaces.js"
+  ],
+  "all_asset_bytes_preserved": true,
+  "original_source_files_unchanged": 325,
+  "synthetic_graph": {
+    "nodes": 12,
+    "edges": 18,
+    "retained_graph_unchanged": true
+  },
+  "app_network_connect_and_dns_denied": true,
+  "actual_checks": [
+    "Synthetic disease graph and exact-cohort graph creation/reopening",
+    "Cited answer generation/reopening",
+    "Complete gold packet export/reopening",
+    "All-abstain decision ledger and retained graph export/reopening",
+    "Installed console entry point and packaged static assets"
+  ],
+  "limitations": [
+    "Synthetic installation/build flow only; no scientific accuracy, real-data, user-usability, browser or cloud evaluation.",
+    "Git archive is committed code, not a test of GitHub publication or remote clone availability."
+  ],
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "real_data_accessed": false,
+  "global_packages_changed": false,
+  "github_publication_verified": false
+}

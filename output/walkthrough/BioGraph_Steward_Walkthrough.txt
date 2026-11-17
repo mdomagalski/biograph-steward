@@ -1,0 +1,43 @@
+BioGraph Steward walkthrough
+
+This tour uses actual application screenshots, edited with synthetic narration. One application supports the question-to-evidence workflow. Saved examples show source integration and graph qualification; benchmark studies assess the approach. The shared website is read-only. Detailed capture and verification provenance accompanies the video.
+
+00:00:00  One workflow, from question to reviewed evidence
+
+BioGraph Steward connects a protein question to an inspectable evidence graph. Open saved work, or create a scoped Pharos workspace locally. Ask a supported question, follow its graph and citations, inspect sources, then save a review as a new run or export. We begin with the Added source context workspace. The shared site replays saved agent work. New live agent questions need a model; form-based readers do not.
+
+00:00:28  An inspectable addition to Pharos
+
+Pharos supplies the backbone. Native Gene Ontology location records and sequence-checked STRING associations add traceable context. For KRAS and CDC42BPB, the source passport shows an association absent from captured Pharos. Its provider, original record, identity checks and candidate status remain visible.
+
+00:00:52  A shared reference subset measures location recovery
+
+A published location reference covers 31 of the 99 targets. Both source views use this same subset, with 51 protein-location labels. The other 68 targets may still have app annotations; they have no matched entry in this reference. Native Gene Ontology recovers 44 labels, versus 41 for captured Pharos. Some GO location annotations and the reference reuse Human Protein Atlas observations. OpenCell supplies a separate, previously used research sensitivity check.
+
+00:01:27  The agent follows a supported investigation
+
+Nemotron selects a supported source tool, such as the STRING association reader. It matches the protein to the loaded cohort, checks the attached sources, and validates the query arguments. The agent inspects selected citations and proposes review actions. This recorded investigation shows 8 of 14 matching proteins under its saved limit.
+
+00:01:51  Explore the complete question result
+
+Open the manual reader for all 14 returned partners. Graph view focuses an individual result. Show all results restores the overview. Type a start entity and choose a connected destination. Try KRAS to CDC42BPB, TP53 to nucleus, or BRAF to a pathway. Results and evaluation explains the comparisons.
+
+00:02:15  Continue with the same evidence locally
+
+For the demonstration, download the editable KRAS copy, extract it and run its Python launcher. It includes the application, graph and preserved sources. Choose a claim, enter a reviewer, decision and reason, then save a new run. The original is preserved. The shared website stays read-only.
+
+00:02:36  A separate historical prediction study
+
+A separate historical study tests protein function prediction. LocalPlus is a published method that transfers known functions from connected proteins. A learned model combines network, sequence and annotation context. Fmax summarizes the precision-recall balance. Higher is better; this is not percentage accuracy. In the primary evaluation of 1,954 proteins, it rises from 0.055 to 0.073. The sensitivity view rises from 0.172 to 0.210. Paired intervals support both gains over retained LocalPlus within this study. Extra gain beyond refreshed annotations remains uncertain.
+
+00:03:20  The same workflow makes graph decisions inspectable
+
+The second saved example, Qualified Pharos workspace, demonstrates applied graph decisions. It excludes 298 records with obsolete Gene Ontology identifiers and retains 16,687. Every decision preserves its reason and original input, keeping the result inspectable and recoverable.
+
+00:03:44  Examples demonstrate the workflow; studies assess it
+
+These are demonstrations of one workflow, not separate applications. Source integration and applied decisions are illustrated by the two saved workspaces. Location benchmarks and the historical prediction study assess the approach; users do not need benchmark data to explore their own questions.
+
+00:04:04  Use the app, follow a question, continue locally
+
+Open the shared application without signing in, then follow a question to its sources. The final handoff includes the report, demonstration, slides, and one indexed app and graph package. Download the editable example to continue locally.

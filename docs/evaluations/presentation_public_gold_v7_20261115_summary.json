@@ -1,0 +1,24 @@
+{
+  "format": "biograph-steward.challenge-presentation-public-gold.v7",
+  "sha256": "c751a1cf34d7637b27fc33d73b8e893d553b772a194795be74f46b0569db0dfd",
+  "bytes": 311720,
+  "source_pptx_sha256": "88de87b71a4173c8b509c5d73204b3c831ef45dad295ca91342c6aa87ebb9770",
+  "OpenCell_summary_sha256": "cd0f40d729701b3446f9596520f1a841dec7d64f85f1eda8615880da1d39bc2f",
+  "slides": 10,
+  "main_slides": 6,
+  "appendix_slides": 4,
+  "changed_slides": [
+    10
+  ],
+  "raw_reference_cases_or_sequences_included": false,
+  "scientific_statistics_recomputed": false,
+  "hosted_deployment_changed_by_presentation_work": false,
+  "original_chart_literal_values_preserved": true,
+  "PowerPoint_native_application_opened": false,
+  "visual_review_pending": false,
+  "delivered_to_output": true,
+  "first_nine_slides_RGB_pixel_identical_to_v6": true,
+  "new_OpenCell_row_and_source_profile_explanation_visually_checked": true,
+  "presentation": "output/presentations/BioGraph_Steward_Challenge_Presentation_20261115_v7.pptx",
+  "distribution": "Prepared local PPTX; no remote release-asset replacement or hosted acceptance is performed by this presentation task."
+}

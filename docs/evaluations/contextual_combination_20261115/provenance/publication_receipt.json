@@ -1,0 +1,10 @@
+{
+  "README_sha256": "81235185d2da38b0e56c424ad0cf965640f0812db2057c2104940305888daf7a",
+  "aggregate_file": "aggregate_provenance.json",
+  "aggregate_sha256": "809a8639e40396f4e21957c41d0f760ac39f5642ec4d9cfce54b0a88cc577837",
+  "cases_accessions_GO_rows_PMIDlists_and_local_casepaths_excluded": true,
+  "explanation_file": "README.md",
+  "new_scores_or_model_choices": false,
+  "private_full_report_sha256": "0001d0d6be8dce1a8c117f77e79acf9427b8d7ce1423067673203e5a24224afb",
+  "remote_original_receipt_sha256": "f20390acad887b126a60de58a409815f82c2e515a36e0d94d7f7f8ee887d0aec"
+}

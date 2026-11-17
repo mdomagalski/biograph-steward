@@ -1,0 +1,164 @@
+{
+  "format": "biograph-steward.go-replacement-census-public-summary.v1",
+  "date_local": "2026-11-13",
+  "scope": "Complete explicit main-term replacement census and native-curation compatibility/duplication; not biological truth or independent experiments.",
+  "packet_id": "packet:14265d0e4990da19e1f2538be1f185cf68e378d00152fdb71ca3d8c4f9936a8e",
+  "baseline_graph_sha256": "f35f8e0bb66742a3b65d1887ecbc85ead33fd8c5ef9eb5e8015d28934f22d22e",
+  "retained_graph_sha256": "233ff4c197165f23aaa37145a0b8bad50a19374c1e9f9fc9eecffd302a735237",
+  "counts": {
+    "proposals": 167,
+    "distinct_subject_replacement_concepts": 161,
+    "converging_proposals_beyond_distinct_concepts": 6,
+    "proposals_with_native_subject_term": 122,
+    "proposals_with_strict_projection_candidates": 61,
+    "proposals_with_qualified_experimental_support": 25,
+    "proposals_with_eligible_opposing_NOT": 0,
+    "proposals_with_concept_already_present": 35,
+    "proposals_with_same_projection_already_present": 6,
+    "distinct_qualified_experimental_concepts": 23,
+    "qualified_nonduplicate_concepts": 21,
+    "qualified_nonduplicate_native_records": 24,
+    "distinct_strict_native_records": 71,
+    "distinct_qualified_positive_native_records": 27,
+    "status_counts": {
+      "same_subject_term_only_projection_fields_differ": 61,
+      "qualified_experimental_concept_not_present": 22,
+      "strict_native_candidates_outside_experimental_context_scope": 36,
+      "no_native_subject_replacement_term": 45,
+      "qualified_experimental_concept_already_present": 3
+    },
+    "strict_candidate_context_exclusions": {
+      "not_experimental_evidence_code": 25,
+      "native_with_from_context_not_in_original_claim": 36,
+      "native_annotation_extension_not_in_original_claim": 7
+    }
+  },
+  "qualified_native_records": {
+    "records": 24,
+    "distinct_proteins": 15,
+    "distinct_subject_term_concepts": 21,
+    "experimental_code_counts": {
+      "IDA": 18,
+      "IMP": 4,
+      "HDA": 2
+    },
+    "body_lines_preserved_verbatim": true,
+    "file": "qualified_recoveries.gaf",
+    "sha256": "c93405921bf6f41a7cd3a9d1c389b61aef6603fc12a7d6bd2ef0b5a7d52091c0",
+    "source_license": "CC-BY-4.0",
+    "attribution": "Gene Ontology Consortium / UniProt and native Assigned_By providers"
+  },
+  "method": {
+    "replacement_scope": "Only one explicit active replaced_by for an obsolete main annotation term; never consider, aliases, ancestors or guessed replacements.",
+    "native_compatibility": [
+      "exact_UniProt_accession",
+      "replacement_GO_ID",
+      "evidence_code",
+      "assigned_by",
+      "aspect"
+    ],
+    "experimental_scope": {
+      "strict_projection_fields": [
+        "subject",
+        "GO_ID",
+        "evidence_code",
+        "assigned_by",
+        "aspect"
+      ],
+      "experimental_codes": [
+        "EXP",
+        "IDA",
+        "IPI",
+        "IMP",
+        "IGI",
+        "IEP",
+        "HTP",
+        "HDA",
+        "HMP",
+        "HGI",
+        "HEP"
+      ],
+      "positive_only": true,
+      "single_human_taxon_only": true,
+      "no_isoform_or_other_product_form": true,
+      "no_annotation_extensions": true,
+      "with_from_empty_for_unqualified_scope": true,
+      "opposing_strict_NOT_candidate_kept_unknown": true
+    },
+    "concept_overlap": "Exact subject and replacement GO ID among retained GO annotation edges. This does not assert equal native relation, reference, polarity, context or evidence identity.",
+    "convergence": "Multiple old edges can converge on one subject/replacement concept or one native record. Count and list each level separately.",
+    "application": "Audit only. No proposal is applied and no old review state or missing qualifier is inherited."
+  },
+  "source_versions": {
+    "ontology": "http://purl.obolibrary.org/obo/go/releases/2026-07-26/go.owl",
+    "ontology_sha256": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273",
+    "GAF_headers": [
+      "!gaf-version: 2.2",
+      "!generated-by: UniProt",
+      "!date-generated: 2026-07-28 19:42",
+      "!go-version: http://purl.obolibrary.org/obo/go/releases/2026-07-26/extensions/go-plus.ofn"
+    ],
+    "GAF_sha256": "a0afba19dfb1f8fa996bc1bdcd61fd0c9bd4cf0d2bf2509d09ac86993c0e70a2",
+    "source_url": "https://release.geneontology.org/2026-08-05/annotations/gaf/HUMAN-uniprot.gaf.gz",
+    "latest_release_today_claimed": false
+  },
+  "full_audit_report_content_sha256": "e0573df3d772b863f3bde4072ba804ce6c4fab10f06a96b13fcd1d499ee7a729",
+  "full_audit_report_file_sha256": "d11a1c12d720e900e15d8169a45742d259594d935a9515bfc43856760700dca1",
+  "artifacts_sha256": {
+    "proposal_audit.jsonl": "016c01da8e08e55adbc0206a4141a4497ac3ebb4940126e199f0f29ca80d5e1f",
+    "concept_audit.jsonl": "69d05990651767011fff2add753a2c4a2a5e336c936233a8195f6318c50fd4eb",
+    "qualified_nonduplicate_native_records.jsonl": "5c9717e441238578ae4b52fbe38a487b67d8d9c6a7fcccbe01fb7bfa57d51e48",
+    "qualified_recoveries.gaf": "c93405921bf6f41a7cd3a9d1c389b61aef6603fc12a7d6bd2ef0b5a7d52091c0"
+  },
+  "source_graph_changed": false,
+  "retained_graph_changed": false,
+  "proposals_applied": false,
+  "historical_pharos_record_identity_established": false,
+  "whole_graph_scientific_accuracy_established": false,
+  "native_subset_is_independent_experiment": false,
+  "native_subset_applied_to_app": false,
+  "validation": {
+    "synthetic_tests": 12,
+    "existing_GO_regression_tests": 65,
+    "existing_GO_optional_skips": 1,
+    "independent_raw_source_rows_scanned": 910476,
+    "independent_preserved_native_rows_rebound": 15888,
+    "independent_census_counts_agree": true,
+    "all_three_census_payload_versions_identical": true,
+    "candidate_GAF_native_bodies_unchanged": true,
+    "reused_eligibility_and_verification_helpers_pinned_before_processing": true,
+    "independent_delivery_input_pins_verified": 118,
+    "independent_delivery_review_sha256": "4031b1cc6bf36caf4bb8364bc06f2fe4e44e53d14ac84e061260d708162f22d1"
+  },
+  "application_gap": {
+    "existing_extension_lifecycle_reusable": true,
+    "native_GOA_adapter_present": false,
+    "additional_GO_nodes_required": 6,
+    "node_ids": [
+      "GO:0000781",
+      "GO:0000791",
+      "GO:0000976",
+      "GO:0005515",
+      "GO:0055013",
+      "GO:0060090"
+    ],
+    "required_boundary": "Publish separate native-GOA evidence/derived workspace; preserve original sources, complete old decisions and new candidate review states."
+  },
+  "source_fetches": 0,
+  "model_calls": 0,
+  "official_rule": {
+    "id": "GORULE:0000020",
+    "url": "https://github.com/geneontology/go-site/blob/51071321de1ee89b2597e2300a40824a35583016/metadata/rules/gorule-0000020.md",
+    "sha256": "60dc5a4f175d26479b7a816634bff4839902cb3f003442fb13e93db8727c1a0a",
+    "full_pipeline_conformance_claimed": false
+  },
+  "limitations": [
+    "Native curation may reuse Pharos evidence; no independent experiment or truth score.",
+    "Concept overlap does not establish identity of relations, qualifiers, publications or evidence.",
+    "Nonexperimental curation is outside the existing experimental-reference scope, not false.",
+    "No native match is unknown; current GAF does not identify the historical Pharos record.",
+    "Pinned July2026 ontology/GAF are not asserted to be the latest release today.",
+    "Main-term lifecycle audit is not full GORULE20 or GO pipeline conformance."
+  ],
+  "content_sha256": "81496ef7c7b6aa4f59c49f3c40a690495234c8e7109db8af0492ae16e7c7c5de"
+}

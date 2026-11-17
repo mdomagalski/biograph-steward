@@ -1,5 +1,12 @@
 # INMC input readiness
 
+**Current status — November 13:** this is the preserved first input-readiness
+audit. The [restricted Pharos/GO comparison](INMC_COMPARISON_20261023.md)
+subsequently completed, reconciled the author reference and consumed the panel.
+The later [Reactome comparison](REACTOME_CONTEXT_COMPARISON_20261026.md) is
+also completed development reuse. The unopened and pending statements below
+describe this original checkpoint, not a fresh reference or current blocker.
+
 Date: October 22, 2026. **Identifier and existing-source audits completed; assay-label contract and full-panel Pharos baseline remain pending.** No biomedical model was run.
 
 **Subsequent follow-up:** the [assay and identity review](INMC_READINESS_FOLLOWUP_20261022.md) declares a narrower complete-scored assay task and separates shared products from missing context. The updated inventory contains 1,797 accessions linked to 1,800 original genes. The dated counts and gaps below describe the first audit; its saved receipt remains unchanged.

@@ -1,0 +1,697 @@
+{
+  "format": "biograph-steward.new-cohort-localization-transfer-aggregate.v1",
+  "completed_at": "2026-11-17T05:55:31.824775+00:00",
+  "status": "executed_neutral_HOU_and_unavailable_OpenCell",
+  "cohort": [
+    "UniProtKB:P05067",
+    "UniProtKB:P49768",
+    "UniProtKB:P49810"
+  ],
+  "cohort_unchanged_from_predeclared_workflow": true,
+  "source_eligibility": {
+    "all_requested_primary_proteins": 3,
+    "source_eligible_primary_proteins": 3,
+    "excluded_primary_proteins": 0,
+    "operator_helper": "tools/reference_accuracy/reproduction/prepare_cohort_source_eligibility.py",
+    "operator_helper_sha256": "c950a086f9d846db01ade463902d810f0deaa702b3f4f888bfeff02e88c1da27",
+    "original99_semantic_reproduction_passed": true,
+    "original99_protein_rows_reproduced": 218,
+    "original99_primary_source_eligible": 99,
+    "semantic_reproduction_only_expected_difference": "New producer filename and hash. All semantic fields, protein rows and other input pins match.",
+    "source_scope_rule": "Every exact requested primary target must have a documented complete original GO query using unchanged completeness criteria and frozen reciprocal reviewed-UniProt/HGNC mapping."
+  },
+  "controls": {
+    "qualified_GO_map_entries": 107,
+    "qualified_GO_map_sha256": "a8747663e27df3deea7054c4927ab210dd6dadaec0921084b479fdbca3f3c912",
+    "coarse_control_entries": 160,
+    "no_new_mapping_or_label_repair": true,
+    "current_view_arm_meaning": "The original Pharos annotation component retained unchanged in the new combined graph. No new pruning decisions or qualified-retention packet were created.",
+    "new3_source_views_frozen_before_reference_ID_or_label_join": true,
+    "source_view_freeze_sha256": "721e53c5d27ec92c6ed6cef37cd6d4cd0c7883e8aa28a2ddc8d0704b633cb5d7",
+    "HOU_contract_sha256": "91b4cd00ba23f527debd9783651a699e58116bfe3fbda9823662d3daab4a9ea7",
+    "OpenCell_source_policy_freeze_sha256": "61c39d6d0396bc08f60e3b4aff9f56d35e8b5dcb4615ed0d7244dac2bd7dadbd",
+    "OpenCell_contract_sha256": "978f9597a306f1e9e1eb436a30c3a155b65b2e0f339f9d0b0cc250caccdf207f",
+    "HOU_forecasts_sealed_before_HOU_label_join": true,
+    "OpenCell_forecasts_sealed_before_OpenCell_label_join": true
+  },
+  "HOU": {
+    "requested_primary_proteins": 3,
+    "source_eligible_primary_proteins": 3,
+    "matched_reference_proteins": 1,
+    "reference_unavailable_primary": 2,
+    "all_five_arms_and_three_levels_preserved": true,
+    "metrics": {
+      "A_raw_Pharos_scope_qualified": {
+        "level1": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 6,
+          "extra_predicted_labels_truth_unknown": 4,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level2": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 6,
+          "extra_predicted_labels_truth_unknown": 4,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level3": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 5,
+          "extra_predicted_labels_truth_unknown": 3,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        }
+      },
+      "A_retained_scope_qualified": {
+        "level1": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 6,
+          "extra_predicted_labels_truth_unknown": 4,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level2": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 6,
+          "extra_predicted_labels_truth_unknown": 4,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level3": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 5,
+          "extra_predicted_labels_truth_unknown": 3,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        }
+      },
+      "B_native_location_scope_qualified": {
+        "level1": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 7,
+          "extra_predicted_labels_truth_unknown": 5,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level2": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 7,
+          "extra_predicted_labels_truth_unknown": 5,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level3": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 5,
+          "extra_predicted_labels_truth_unknown": 3,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        }
+      },
+      "C_native_experimental_scope_qualified": {
+        "level1": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 7,
+          "extra_predicted_labels_truth_unknown": 5,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level2": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 7,
+          "extra_predicted_labels_truth_unknown": 5,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level3": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 5,
+          "extra_predicted_labels_truth_unknown": 3,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        }
+      },
+      "A_raw_Pharos_author_coarse_control": {
+        "level1": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 8,
+          "extra_predicted_labels_truth_unknown": 6,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level2": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 6,
+          "extra_predicted_labels_truth_unknown": 4,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        },
+        "level3": {
+          "frozen_protein_rows": 1,
+          "reference_positive_labels": 2,
+          "recovered_reference_positive_labels": 2,
+          "reference_positive_labels_not_recovered": 0,
+          "predicted_labels": 5,
+          "extra_predicted_labels_truth_unknown": 3,
+          "unavailable_source_proteins": 0,
+          "micro_positive_reference_recovery": 1.0,
+          "precision": null,
+          "specificity": null,
+          "F1": null,
+          "MCC": null,
+          "confidence_interval": null
+        }
+      }
+    },
+    "paired_descriptive_differences": [
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "A_retained_scope_qualified",
+        "level": "level1",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "A_retained_scope_qualified",
+        "level": "level2",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "A_retained_scope_qualified",
+        "level": "level3",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "B_native_location_scope_qualified",
+        "level": "level1",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "B_native_location_scope_qualified",
+        "level": "level2",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "B_native_location_scope_qualified",
+        "level": "level3",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "C_native_experimental_scope_qualified",
+        "level": "level1",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "C_native_experimental_scope_qualified",
+        "level": "level2",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "C_native_experimental_scope_qualified",
+        "level": "level3",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "A_raw_Pharos_author_coarse_control",
+        "level": "level1",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "A_raw_Pharos_author_coarse_control",
+        "level": "level2",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      },
+      {
+        "baseline": "A_raw_Pharos_scope_qualified",
+        "candidate": "A_raw_Pharos_author_coarse_control",
+        "level": "level3",
+        "paired_proteins": 1,
+        "recovered_positive_label_difference": 0,
+        "micro_positive_reference_recovery_difference": 0.0,
+        "scientific_accuracy_gain_established": false,
+        "confidence_interval": null
+      }
+    ],
+    "new_positive_label_recovery_gain": 0,
+    "interpretation": "All five arms recover both released positive labels for the one matched protein at every hierarchy level. This neutral result supplies no incremental recovery gain. The two unmatched proteins remain reference-unknown. Extra outputs have unknown biological truth."
+  },
+  "OpenCell": {
+    "requested_primary_proteins": 3,
+    "reciprocal_accession_and_HGNC_ENSG_matches": 0,
+    "reference_unavailable_primary": 3,
+    "identity_exclusion_counts": {
+      "no_unique_library_accession": 3
+    },
+    "full_tested_sequence_identity_verified": false,
+    "grade_profiles": [
+      {
+        "grades": [
+          2,
+          3
+        ],
+        "matched_protein_identity_coverage": 0,
+        "evaluable_positive_reference_proteins": 0,
+        "metrics": {
+          "A_raw_Pharos_scope_qualified": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          },
+          "A_retained_scope_qualified": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          },
+          "B_native_location_scope_qualified": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          },
+          "C_native_experimental_scope_qualified": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          },
+          "D_native_without_HPA_or_explicit_OpenCell": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          }
+        },
+        "paired_descriptive_differences": [
+          {
+            "candidate": "A_retained_scope_qualified",
+            "baseline": "A_raw_Pharos_scope_qualified",
+            "improved_proteins": 0,
+            "worse_proteins": 0,
+            "unchanged_proteins": 0,
+            "net_recovered_labels": 0
+          },
+          {
+            "candidate": "B_native_location_scope_qualified",
+            "baseline": "A_raw_Pharos_scope_qualified",
+            "improved_proteins": 0,
+            "worse_proteins": 0,
+            "unchanged_proteins": 0,
+            "net_recovered_labels": 0
+          },
+          {
+            "candidate": "C_native_experimental_scope_qualified",
+            "baseline": "A_raw_Pharos_scope_qualified",
+            "improved_proteins": 0,
+            "worse_proteins": 0,
+            "unchanged_proteins": 0,
+            "net_recovered_labels": 0
+          },
+          {
+            "candidate": "D_native_without_HPA_or_explicit_OpenCell",
+            "baseline": "A_raw_Pharos_scope_qualified",
+            "improved_proteins": 0,
+            "worse_proteins": 0,
+            "unchanged_proteins": 0,
+            "net_recovered_labels": 0
+          }
+        ]
+      },
+      {
+        "grades": [
+          3
+        ],
+        "matched_protein_identity_coverage": 0,
+        "evaluable_positive_reference_proteins": 0,
+        "metrics": {
+          "A_raw_Pharos_scope_qualified": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          },
+          "A_retained_scope_qualified": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          },
+          "B_native_location_scope_qualified": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          },
+          "C_native_experimental_scope_qualified": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          },
+          "D_native_without_HPA_or_explicit_OpenCell": {
+            "frozen_protein_rows": 0,
+            "reference_positive_labels": 0,
+            "recovered_reference_positive_labels": 0,
+            "reference_positive_labels_not_recovered": 0,
+            "predicted_labels": 0,
+            "extra_predicted_labels_truth_unknown": 0,
+            "unavailable_source_proteins": 0,
+            "micro_positive_reference_recovery": null,
+            "precision": null,
+            "specificity": null,
+            "F1": null,
+            "MCC": null,
+            "confidence_interval": null
+          }
+        },
+        "paired_descriptive_differences": [
+          {
+            "candidate": "A_retained_scope_qualified",
+            "baseline": "A_raw_Pharos_scope_qualified",
+            "improved_proteins": 0,
+            "worse_proteins": 0,
+            "unchanged_proteins": 0,
+            "net_recovered_labels": 0
+          },
+          {
+            "candidate": "B_native_location_scope_qualified",
+            "baseline": "A_raw_Pharos_scope_qualified",
+            "improved_proteins": 0,
+            "worse_proteins": 0,
+            "unchanged_proteins": 0,
+            "net_recovered_labels": 0
+          },
+          {
+            "candidate": "C_native_experimental_scope_qualified",
+            "baseline": "A_raw_Pharos_scope_qualified",
+            "improved_proteins": 0,
+            "worse_proteins": 0,
+            "unchanged_proteins": 0,
+            "net_recovered_labels": 0
+          },
+          {
+            "candidate": "D_native_without_HPA_or_explicit_OpenCell",
+            "baseline": "A_raw_Pharos_scope_qualified",
+            "improved_proteins": 0,
+            "worse_proteins": 0,
+            "unchanged_proteins": 0,
+            "net_recovered_labels": 0
+          }
+        ]
+      }
+    ],
+    "source_separation": {
+      "remaining_supporting_native_rows": 90,
+      "remaining_provider_rows": {
+        "Reactome": 41,
+        "UniProt": 38,
+        "PINC": 1,
+        "BHF-UCL": 1,
+        "MGI": 3,
+        "HGNC-UCL": 6
+      },
+      "excluded_native_rows": {
+        "HPA_assigned_rows": 2
+      },
+      "hidden_indirect_citation_reuse_excluded": false
+    },
+    "interpretation": "None of the three fixed proteins has a unique reciprocal library accession in this release. All five arms and both frozen grade profiles are unevaluable. Null recovery/precision is not evidence of biological absence or failed localization."
+  },
+  "exposure_and_scope": {
+    "previously_used_reference_resources": true,
+    "shared_HPA_UniProt_OpenCell_provider_or_study_lineage_possible": true,
+    "fresh_blind_or_study_independent_validation": false,
+    "small_fixed_cohort": true,
+    "reference_missing_compartments_used_as_negatives": false,
+    "biological_precision_or_whole_graph_accuracy_estimated": false,
+    "prediction_fit_or_threshold_tuning": false,
+    "new_model_calls": 0,
+    "new_source_captures": 0,
+    "new_biological_assertions_or_graph_changes": false,
+    "original99_scientific_results_changed": false
+  },
+  "preservation": {
+    "original_operator_scorers_contracts_maps_unchanged": true,
+    "original99_HOU_and_OpenCell_output_hashes_still_match_original_execution_receipts": true,
+    "APP_source_workspace_inventory_unchanged": true,
+    "APP_example_archive_sha256_unchanged": true
+  },
+  "result_pins": {
+    "HOU_report_sha256": "e9e934d4df14d38b6f50653f2ce176105cad2489b6d35ada34afb7fd0cbbd9b9",
+    "HOU_execution_sha256": "4ae72c1b4869452a0a27f5ed963c31df7eaaa0468a01063f62dee56d15ad62e4",
+    "HOU_predictions_before_join_sha256": "41a250f6814e3ba038c292d813e81b8fe5ef52b0075fc6efc00cdfe9778cf6b9",
+    "OpenCell_report_sha256": "af4cfb77fd2487f3f451fa76e65544bb9e253b9a8bd566aef36d8388cc00cfb8",
+    "OpenCell_execution_sha256": "12fb02267ae7618ca1b27bacf5163101ce877484b2ee8b99c3ee9578a21641b2",
+    "OpenCell_predictions_before_join_sha256": "624d51f727124631ecb0f25db0b6c56455d1c18b7fadad8eb5dcc130f576527e"
+  },
+  "conclusion": "The cohort-specific operator-binding gap is closed and the same fixed localization comparisons execute on a new complete explicit cohort. This demonstrates method reuse, not a new accuracy gain. HOU already has complete positive-label recovery in its one matched protein, and OpenCell has no admissible reference identity for these three proteins."
+}

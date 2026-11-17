@@ -1,0 +1,123 @@
+{
+  "format": "biograph-steward.core-subset-software-acceptance.v1",
+  "created_at": "2026-11-15T19:22:25.451233+00:00",
+  "reader_date": {
+    "date": "2026-11-15",
+    "timezone": "America/New_York"
+  },
+  "git_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+  "software_archive": {
+    "file": "biograph_steward_core_saved_review_software.zip",
+    "sha256": "220a763d1cd5a0a15b423e8843c4c7196c64dddcefc56ff900b9b8450984a26d",
+    "bytes": 686402,
+    "file_count": 128
+  },
+  "preserved_full_runtime_builder_release": {
+    "format": "biograph-steward.aws-source-release.v1",
+    "created_at": "2026-11-15T19:22:20.407169+00:00",
+    "git_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+    "bundle": "biograph-0554977ae97e9f6e72d2fa12c9679264c1d6fad4.tar.gz",
+    "sha256": "52d3c05173b3026d3d44614b82a433612254f621f4be889cf313e4cc6c1fd192",
+    "bytes": 884623,
+    "source_paths": [
+      ".dockerignore",
+      "Dockerfile",
+      "app.py",
+      "LICENSE",
+      "requirements-aws.txt",
+      "biograph_steward",
+      "scripts",
+      "deploy/aws/bootstrap.sh",
+      "deploy/aws/backup.sh"
+    ],
+    "cloud_resources_created": false,
+    "credentials_included": false
+  },
+  "core_archive_roots": [
+    "app.py",
+    "LICENSE",
+    "README_DEMO.md",
+    "biograph_steward/"
+  ],
+  "research_and_deployment_scripts_omitted_from_core_subset": true,
+  "upstream_vendored_license_notices_preserved": true,
+  "python": {
+    "version": "3.12.14",
+    "no_site": 1,
+    "site_loaded": false,
+    "site_package_paths": []
+  },
+  "native_source_profile_modules_stdlib_imports": {
+    "native_physical_policy": "STRING12.5-native-physical-exact-reciprocal-sequence.v1",
+    "native_GO_reader_imported": true,
+    "scientific_assessment_reader_imported": true,
+    "all_core_imports_without_site": true
+  },
+  "native_physical_source_and_question_CLI_available": true,
+  "native_source_and_v5_assessment_data_supplied_separately": true,
+  "real_native_source_data_included": false,
+  "synthetic_only": true,
+  "CLI_synthetic_recipe_passed": true,
+  "API_synthetic_answer_with_citations": true,
+  "actual_graph_and_decision_ZIP_download": {
+    "bytes": 38505,
+    "file_count": 24
+  },
+  "actual_answer_ZIP_download": {
+    "bytes": 9757,
+    "file_count": 4
+  },
+  "exhaustive_abstain_decisions": 18,
+  "retained_nodes_edges_assertions_equal_source": true,
+  "preserved_baseline_source_graph_equal": true,
+  "offline_gold_decision_verification_passed": true,
+  "fresh_export_extraction_and_baseline_source_recovery": true,
+  "actual_owned_server_restart": true,
+  "saved_answer_reopened_identically": true,
+  "synthetic_graph_sha256": "eb0a86643bec0952f11b51fd447205333bcaa98902c183680769a48440c05b2b",
+  "answer_sha256": "457c7c45267eab41d1319d44a284ddae33610868d1737f1664c12429ee522a80",
+  "returned_proteins": 2,
+  "citation_groups": 6,
+  "source_fetches": 0,
+  "model_calls": 0,
+  "cloud_calls": 0,
+  "browser_visual_test": false,
+  "independent_user_or_biological_validation": false,
+  "source_data_credentials_weights_or_Git_history_in_software_archive": false,
+  "all_owned_servers_stopped": true,
+  "software_source_bytes_unchanged": true,
+  "operator_sha256": "eac8962df1b678ddbb60bad1de297af0fb2ca8be7f15ae6ed778249b08cae972",
+  "distribution_status": "Prepared and checked locally; not uploaded or published.",
+  "saved_data_only_acceptance": {
+    "CLI_flag_available_in_extracted_archive": true,
+    "actual_CLI_server_mode_health": {
+      "status": "ok",
+      "version": "0.8.0",
+      "saved_data_only": true
+    },
+    "HTTP_403_before_factories_paths": [
+      "/api/build",
+      "/api/plan",
+      "/api/planner",
+      "/api/question",
+      "/api/review",
+      "/api/submission-export"
+    ],
+    "factory_call_counts": {
+      "biograph_steward.webapp.PharosClient": 0,
+      "biograph_steward.planning.configured_planner": 0,
+      "biograph_steward.physical_ranking.collect_ranking": 0,
+      "biograph_steward.reviews.read_run": 0
+    },
+    "saved_answer_still_reopens_identically": true,
+    "saved_run_files_unchanged": true,
+    "factory_proof_json_sha256": "409147e954d4e0d9aab76f5d629e5c1fadb45cccd6a7476a9bc1ff6ead62e9cc",
+    "factory_proof_script_sha256": "a17d2f08699201c904a0aaaed3f11f60dd5bd278b8a1c1d3581967e156d6130f"
+  },
+  "status": "passed",
+  "archive_path": "runs/software_delivery_saved_review_20261115/biograph_steward_core_saved_review_software.zip",
+  "private_acceptance_content_sha256": "bf3de34ab23461a55a238da000c5da4a50908554823a0ffb234811b3e79b5527",
+  "private_acceptance_file_sha256": "6f6311d49106be7f0182d2f57a02486de48e37464fdd4654ce1d582a4a473128",
+  "source_runtime_note": "The unchanged committed source-release builder supplies the full runtime tar. The code-only ZIP is its standard-library core subset, with separately generated instructions. Native source publications and v5 scientific data remain external. Synthetic normal-mode export/reopen and explicit saved-data-only startup/denials were checked; no hosted rollout or biological accuracy claim is made.",
+  "content_sha256": "3c131232b9f30355af98089e64302be5b8bdc105865c4755b750596dde6551a3"
+}

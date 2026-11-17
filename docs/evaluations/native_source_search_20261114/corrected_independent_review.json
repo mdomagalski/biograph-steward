@@ -1,0 +1,207 @@
+{
+  "format": "biograph-steward.native-source-search-independent-review.v1",
+  "created_at": "2026-11-14T17:54:28.924531+00:00",
+  "scope": "Independent set/Fraction arithmetic and seeded resampling; frozen native guard replay. Same24 already consumed reference lists, no new cases or reference-source access.",
+  "status": "passed",
+  "reviewed_run": "unchanged-profile process-environment transport repair; same consumed24 development questions",
+  "questions": 24,
+  "reference_overlap_values_recomputed": 72,
+  "shared_bootstrap_draws_verified": 2000,
+  "maximum_absolute_numeric_difference": 1.734723475976807e-17,
+  "guard_cases_replayed": 24,
+  "guard_input_files_rechecked": 328,
+  "metrics": {
+    "retained_direct_pubmed": {
+      "mean_reference_recall_at_10": 0.17258986928104575,
+      "mean_reference_hit_at_10": 0.2916666666666667,
+      "fixed_questions": 24
+    },
+    "retained_JSON_v4_base": {
+      "mean_reference_recall_at_10": 0.0625,
+      "mean_reference_hit_at_10": 0.08333333333333333,
+      "fixed_questions": 24
+    },
+    "native_base": {
+      "mean_reference_recall_at_10": 0.041666666666666664,
+      "mean_reference_hit_at_10": 0.041666666666666664,
+      "fixed_questions": 24
+    }
+  },
+  "paired_comparisons": [
+    {
+      "candidate": "native_base",
+      "comparator": "retained_JSON_v4_base",
+      "observed_mean_difference": -0.020833333333333336,
+      "paired_95_percentile_interval": [
+        -0.14583333333333331,
+        0.10416666666666667
+      ],
+      "fraction_draws_above_zero": 0.2935
+    },
+    {
+      "candidate": "native_base",
+      "comparator": "retained_direct_pubmed",
+      "observed_mean_difference": -0.1309232026143791,
+      "paired_95_percentile_interval": [
+        -0.26286764705882354,
+        -0.02777777777777779
+      ],
+      "fraction_draws_above_zero": 0.0
+    },
+    {
+      "candidate": "retained_JSON_v4_base",
+      "comparator": "retained_direct_pubmed",
+      "observed_mean_difference": -0.11008986928104575,
+      "paired_95_percentile_interval": [
+        -0.23508986928104575,
+        -0.01286764705882353
+      ],
+      "fraction_draws_above_zero": 0.0
+    }
+  ],
+  "operational_counts": {
+    "native_base": {
+      "fixed_cases": 24,
+      "valid_final_cases": 12,
+      "valid_EMPTY_final_cases": 0,
+      "valid_NONEMPTY_final_cases": 12,
+      "status_counts": {
+        "completed": 12,
+        "no_tool_calls": 10,
+        "empty_tool_calls": 2
+      }
+    },
+    "retained_JSON_v4_base": {
+      "fixed_cases": 24,
+      "valid_final_cases": 13,
+      "valid_EMPTY_final_cases": 7,
+      "valid_NONEMPTY_final_cases": 6,
+      "status_counts": {
+        "completed": 13,
+        "invalid_output": 9,
+        "invalid_action": 2
+      }
+    }
+  },
+  "abstract_availability": {
+    "requested": 12,
+    "completed": 12,
+    "cache_hits": 3,
+    "fresh_fetch_invocations": 9,
+    "identity_resolved": 12,
+    "nonempty_abstract": 12,
+    "distinct_resolved_article_ID_count": 12
+  },
+  "search_status_counts": {
+    "completed": 34,
+    "completed_empty": 1
+  },
+  "cache_preservation": {
+    "old_cache_entry_count": 122,
+    "old_cache_files_byte_verified": 329,
+    "old_cache_unchanged": true,
+    "kept_seed_files_byte_verified": 309,
+    "kept_seed_files_are_ordinary_copies": true,
+    "recaptured_previously_omitted_statuses": [
+      {
+        "tool": "get_abstract",
+        "old_status": "unavailable",
+        "new_status": "completed",
+        "entries": 9
+      }
+    ],
+    "repair_freeze_file_sha256": "64d4fbd49603f2b5e2393d29ba627c22aaca5a8e1c016e1a00b30cb1d36e2fd6",
+    "old_cache_snapshot_file_sha256": "f30a517829bdac80cfa0f5dadb6599cbf4744829a3890276b34038ac3cc9b6f0"
+  },
+  "posthoc_candidate_localization": {
+    "selected_after_original_observed_zero_final_recall": true,
+    "counts": {
+      "cases_with_any_candidate": 24,
+      "cases_with_reference_candidate": 5,
+      "reference_candidate_pairs": 11,
+      "final_reference_pairs": 1,
+      "no_search_cases": 0,
+      "executed_search_actions": 35,
+      "exact_abstract_get_actions": 12,
+      "reference_candidate_cases_with_nonempty_final_missing_all_gold": 1,
+      "reference_candidate_cases_with_failed_final": 3
+    },
+    "all_returned_candidate_pool_mean_reference_coverage": 0.1736111111111111,
+    "candidate_pool_size_min_median_max": [
+      2,
+      10.0,
+      20
+    ],
+    "search_source_status_counts": {
+      "completed": 34,
+      "completed_empty": 1
+    },
+    "failure_stage_counts": {
+      "failed_with_candidates": 12
+    },
+    "model_mode_status_counts": [
+      {
+        "mode": "auto",
+        "status": "accepted_tool_call",
+        "calls": 48
+      },
+      {
+        "mode": "auto",
+        "status": "controller_duplicate_rejected",
+        "calls": 11
+      },
+      {
+        "mode": "auto",
+        "status": "empty_tool_calls",
+        "calls": 2
+      },
+      {
+        "mode": "auto",
+        "status": "no_tool_calls",
+        "calls": 10
+      },
+      {
+        "mode": "named_finish",
+        "status": "accepted_tool_call",
+        "calls": 11
+      }
+    ],
+    "model_mode_finish_reason_counts": [
+      {
+        "mode": "auto",
+        "finish_reason": "stop",
+        "calls": 10
+      },
+      {
+        "mode": "auto",
+        "finish_reason": "tool_calls",
+        "calls": 61
+      },
+      {
+        "mode": "named_finish",
+        "finish_reason": "stop",
+        "calls": 11
+      }
+    ],
+    "output_cap_guards": 0,
+    "query_character_lengths_min_median_max": [
+      10,
+      31,
+      49
+    ],
+    "interpretation": "Union candidate coverage (up to20 returned IDs) is an error-localization diagnostic, not the primary top10 endpoint, a new arm, a query selection procedure or a proposed default. An absent historical positive reference is not proof that a retrieved paper is irrelevant/false."
+  },
+  "source_pins": {
+    "protocol_file_sha256": "ecd997f8a16b564cbc44245121c1fee67ca9d3777b8595d63d15fb878dac202e",
+    "prediction_seal_file_sha256": "117c3cac176e521e6842a0b3217fc27193c845392d13f3d726559a07bc1a875d",
+    "assessment_file_sha256": "d97f3241b9b6ef7a8de36e355a900704310c130092dca491e22721cd79f73492",
+    "old_released_reference_case_file_sha256": "dc118e7d450ec77bb0445b62b4eb349200b32e9c09f2383c54a95b5f8bb6fe3e",
+    "private_native_results_sha256": "1dbe2400d7cb5130105e21b9eea8fd1e72be64bc799c4c5efa855c0ae315c9f4",
+    "shared_weights_sha256": "880af1f49ec987374e40c53920322c4e969291173d688cd95bdeb03b2750cddd",
+    "review_script_sha256": "e0012bf553ebc4bbc6d1dabf7e384da12c21b8cb63afe4d1c061397a701b10a5"
+  },
+  "raw_questions_queries_PMIDs_reference_values_or_model_content_in_aggregate": false,
+  "new_model_or_source_calls": 0,
+  "code_policy_graph_or_scores_changed": false,
+  "content_sha256": "265721eb47fad4d91818ac9560f64fe812de8210fc601f600d37123c3594172b"
+}

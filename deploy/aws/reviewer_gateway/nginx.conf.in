@@ -1,0 +1,75 @@
+worker_processes auto;
+pid /tmp/nginx.pid;
+error_log /dev/stderr warn;
+events { worker_connections 1024; }
+http {
+    # Logs omit query strings, cookies, Authorization and request bodies.
+    log_format review '$request_method $uri $status $body_bytes_sent $request_time';
+    access_log /dev/stdout review;
+    server_tokens off;
+    client_max_body_size 64k;
+    client_body_temp_path /tmp/client_body;
+    proxy_temp_path /tmp/proxy;
+    # All temporary module paths must be writable for non-root/read-only use.
+    # This is the maintainer's documented unprivileged NGINX configuration.
+    fastcgi_temp_path /tmp/fastcgi;
+    uwsgi_temp_path /tmp/uwsgi;
+    scgi_temp_path /tmp/scgi;
+    send_timeout 600s;
+    client_body_timeout 30s;
+    gzip off;
+    # Standard NGINX map + return gate: reads and exact saved-data query POSTs.
+    # The app still authenticates every protected request and validates Origin.
+    map "$request_method:$uri" $saved_review_allowed {
+        default 0;
+        "GET:/api/planner" 0;
+        "HEAD:/api/planner" 0;
+        ~^(GET|HEAD):/ 1;
+        "POST:/auth/login" 1;
+        "POST:/auth/logout" 1;
+        "POST:/api/question" 1;
+        "POST:/api/explore" 1;
+        "POST:/api/inspect-source" 1;
+        "POST:/api/protein-context" 1;
+        "POST:/api/neptune-inspect" 1;
+        "POST:/api/native-go-context" 1;
+        "POST:/api/download-native-go-context" 1;
+        "POST:/api/native-go-question" 1;
+    }
+
+    upstream steward {
+        server __UPSTREAM_IPV4__:8766;
+    }
+    server {
+        listen 8080;
+        default_type text/plain;
+        error_page 403 =403 @saved_review_only;
+        location @saved_review_only {
+            default_type application/json;
+            return 403 '{"error":"Saved-data review mode: construction, model planning, retrieval, review changes and refresh are unavailable on this reviewer endpoint."}';
+        }
+        # Root paths, request bodies and query strings pass through unchanged.
+        location / {
+            limit_except GET POST { deny all; }
+            if ($saved_review_allowed = 0) { return 403; }
+            proxy_pass http://steward;
+            proxy_http_version 1.1;
+            proxy_set_header Connection "";
+            proxy_set_header Host $http_host;
+            proxy_set_header Origin $http_origin;
+            proxy_set_header Authorization $http_authorization;
+            proxy_set_header Cookie $http_cookie;
+            proxy_connect_timeout 10s;
+            proxy_read_timeout 600s;
+            proxy_send_timeout 600s;
+            proxy_next_upstream off;
+            proxy_cache off;
+            proxy_buffering off;
+            proxy_request_buffering on;
+            proxy_intercept_errors off;
+            proxy_redirect off;
+            # Set-Cookie, Location, Cache-Control and Content-Encoding are
+            # preserved. TLS terminates at ALB; the app trusts exact Origin.
+        }
+    }
+}

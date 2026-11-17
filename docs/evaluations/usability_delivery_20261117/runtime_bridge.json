@@ -1,0 +1,29 @@
+{
+  "format": "biograph-steward.delivery-usability-runtime-bridge.v1",
+  "original_example_runtime_commit": "c60b85473ad89917a75427e933d59e9bd01f2319",
+  "updated_runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+  "updated_runtime_bundle_sha256": "ce81f3f352989d02c530829ab41cbe038c5206b0987129cd3d5a806f72102f73",
+  "changed_core_files": {
+    "biograph_steward/guided.js": {
+      "original_sha256": "688dc38acf48fb08eb3dc428299c7550045ee452e12fed18e8936195e2137b6f",
+      "updated_sha256": "4ee6b6ced24b6217b5f3b6bcccd2d50b739c0b57b4e1c73d38959aa1ed81097b"
+    },
+    "biograph_steward/navigation.js": {
+      "original_sha256": "cb444b546e5abe53503de1b960832d910e0eb57379561e154305d25697603ac6",
+      "updated_sha256": "d5a44813195096104f4f5ead8a6be62b1a2b317211824ece87a0ecc96148764c"
+    },
+    "biograph_steward/ui.html": {
+      "original_sha256": "bf771da8b78fd62950af5c6698baaceee0fa99846fe4305cd6328f952beaf7bc",
+      "updated_sha256": "978ab4bf76790290a48159d24b0c0de67f2d39bbf25e876a1262f68a6447ef74"
+    }
+  },
+  "all_core_Python_backends_source_tools_and_agent_controller_unchanged": true,
+  "scope": [
+    "Explicit Show in graph actions and selected-result status.",
+    "Visible evidence review entry point using the existing new-run save API.",
+    "Read-only example explanation and optional local-copy instructions."
+  ],
+  "new_biological_claim_or_model_evaluation": false,
+  "source_snapshots_recorded_queries_jobs_and_reviews_modified": false,
+  "public_write_retrieval_or_model_permission_added": false
+}

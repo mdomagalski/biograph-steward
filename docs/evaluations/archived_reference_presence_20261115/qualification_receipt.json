@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "tests": 5,
+  "skips": 0,
+  "tests_log_sha256": "29c5d5bee7541b5859c9a5d67e4e9c7d7a7cd6bc8ab1b62401415e99d3702ee3",
+  "source_files": {
+    "biograph_steward/__init__.py": "d0cf1ce10e845d71f276f8c7c5b1a7a9a5dc7def45e48d82a6ddfb38147c2641",
+    "biograph_steward/client.py": "cdadf97d4d994028ac863c188d2c4446ade1a65e231df8157dc484f8c7fc264d",
+    "biograph_steward/file_utils.py": "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6",
+    "operator/uniprot_t0_relnotes_v1.txt": "94966e78a42f20801539651f55a5296aba958e3b2698563a3ca846cda8ea5fa6",
+    "tools/contextual_combination/__init__.py": "b5932a8735a5cbfe54a093026b8c9c6644e706c2adff447ff7591a28d8edb39d",
+    "tools/contextual_combination/archived_reference_presence.py": "1fc17e91a4968e290108e7da1e6f2ec07b40589d7fd0ff49a8c9f7e0d39f32b7",
+    "tools/contextual_combination/test_archived_reference_presence.py": "dffc782b70ed2858239508185ce6e3c2315ebeb039f600e65df5e0f8ba2bf794",
+    "tools/deepgo_reference/__init__.py": "73f7719ba2433a437aa0d954bdb1c5cb9b6cd12e48750ed2199b7c9c1cbb8935",
+    "tools/deepgo_reference/archive.py": "9eaadb26a66d84d6241b0783bf89355818df5795aab5e2994f7251eb88f3cc7c"
+  },
+  "configuration_sha256": "ddbd7d148304f5d0570a6fc0287798a8aa2cef126e7aed2d114c4e72dc97078a",
+  "no_real_DAT_records_processed": true,
+  "bibliographic_requests": 0
+}

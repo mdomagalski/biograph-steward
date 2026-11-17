@@ -1,0 +1,121 @@
+{
+  "admission": "Same label-independent complete-original-evidence admission for positive/negative classes. Human-source frame means HGNC assignments in the extracted evidence, not independently validated biological species/identity.",
+  "consensus": "Secondary prespecified intersection: prune iff both native_counts and Nemotron propose prune. Otherwise retain or abstain as documented. No selecting best arm after labels.",
+  "created_at": "2026-11-17T00:24:56.676284+00:00",
+  "format": "biograph-steward.mechanistic-review-protocol.v1",
+  "frame_manifest": {
+    "file": "runs/mechanistic_claim_review_20261117/preparation/frame_v1/frame_manifest.json",
+    "sha256": "a5d3c576e3d9b8667f3560ffddf1c1169eeadf7235b60d6e2e5f7a7c767dbe87"
+  },
+  "input_files_sha256": {
+    "labels": "ee7657494ca40d3aa5ba0ce6cebbdea12aa52595526c8c844db480f11e1e967b",
+    "source_cases": "5e60b17c150422f37bac6cad8ca2ccfa8f92e48f4a795f2d523bee748896b046"
+  },
+  "labels": "Author positive tags correct/hypothesis/act_vs_amt. Mixed binary source votes are incorrect under author rule. Claim positive if any reviewed source positive; negative only if all original evidence sources reviewed and negative. Other corpus cases remain unknown/excluded.",
+  "main_app_or_Pharos_changes": 0,
+  "methods": [
+    "retain_all",
+    "native_counts",
+    "native_simple",
+    "nemotron",
+    "consensus"
+  ],
+  "model_review": {
+    "aggregate": "retain if any supports; prune_candidate if all fails; otherwise abstain. Invalid, truncated, oversized or interrupted sources abstain. Durable request intent prevents repeating an uncertain request.",
+    "code_files": [
+      {
+        "file": "tools/mechanistic_review/model_review.py",
+        "sha256": "7bdf69c9673eb983e90aa90d64a48bd8928128138bcc3dd3c591445021d2e7ca"
+      },
+      {
+        "file": "biograph_steward/model_transport.py",
+        "sha256": "5f8e2474c6921061b5cc598d1ac1f53f13ca4995fc60cad91e8150a59dd4be94"
+      }
+    ],
+    "context_preflight": "Use installed server native chat tokenizer, actual full final prompt; prompt+reserved output <=16384. No partial source inspection.",
+    "inference_concurrency": 1,
+    "max_output_tokens_per_case": "128+40*original_evidence_count",
+    "max_output_tokens_total": 30272,
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "overall_authorized_output_limit": 131072,
+    "overall_authorized_request_limit": 512,
+    "prompt_location": "INSTRUCTIONS in pinned model_review.py. One zero-shot prompt, no sweeps or repairs. Full native Statement with only released belief removed. No gold fields in requests. Source text is untrusted data.",
+    "prompt_profile": "nemotron_nano_v1",
+    "requests": 134,
+    "retries": 0,
+    "revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+    "runtime": {
+      "VLLM_USE_V1": "0",
+      "container_image_id": "sha256:d1a544bfefdcd51fb42a9cc64d29df092127a7f1706f7a284aac26e5c48c468d",
+      "context": 16384,
+      "torch": "2.6.0",
+      "transformers": "4.51.3",
+      "vllm": "0.8.5",
+      "xgrammar": "0.1.18"
+    },
+    "schema": "One required verdict/reason for every E01..En original evidence; no extra fields",
+    "temperature": 0,
+    "tokenizer_requests": 134
+  },
+  "native_baseline": {
+    "code": {
+      "file": "tools/mechanistic_review/native_baseline.py",
+      "sha256": "497411ba8f088059f30b4dbc3abde3bcc2245126c503d0f4d5c94d4d8393953d"
+    },
+    "development_count": 368,
+    "development_labels": {
+      "file": "runs/mechanistic_claim_review_20261117/preparation/frame_v1/development_labels.private.jsonl",
+      "sha256": "ff7fcf8d1bb83cdd9da689a370c9fdfc7d7e90fb3c6334ba6e0d30293b2e45a1"
+    },
+    "features": "Native CountsScorer raw source counts, DEV-only vocabulary, optional features and support ancestry off, all original evidence preserved",
+    "include_simple": true,
+    "parameters": {
+      "C": 1.0,
+      "max_iter": 1000,
+      "random_state": 20261117,
+      "solver": "lbfgs"
+    },
+    "released_belief_used": false,
+    "reserve_count": 134,
+    "source_cases": {
+      "file": "runs/mechanistic_claim_review_20261117/preparation/frame_v1/source_cases.jsonl",
+      "sha256": "5e60b17c150422f37bac6cad8ca2ccfa8f92e48f4a795f2d523bee748896b046"
+    },
+    "threshold": 0.5,
+    "unseen_source": "abstain"
+  },
+  "prior_exposure": "Existing previously inspected corpus and fixed source/publication-group development/reserve split, reused for a new endpoint. Not a fresh blind benchmark. LLM pretraining overlap unknown.",
+  "purpose": "Expert-relative source-to-mechanistic-claim faithfulness and selective pruning of a typed reference graph. Not experimental, clinical, universal biological or whole-Pharos accuracy.",
+  "reference": {
+    "data": "https://doi.org/10.5281/zenodo.7559353",
+    "data_license": "CC BY-NC-SA4.0; raw cases/text/labels kept private, not MIT relicensed",
+    "doi": "10.15252/msb.202211325",
+    "library_license": "INDRA BSD-2-Clause, project adapters MIT",
+    "official_code": "https://github.com/sorgerlab/indra_assembly_paper",
+    "title": "Automated assembly of molecular mechanisms at scale from text mining and curated databases"
+  },
+  "scoring": {
+    "automatic_deployment": "No automatic Pharos/primary graph deletions. These decisions apply only to separate source-claim reference assessment graphs.",
+    "bootstrap_replicates": 10000,
+    "code": {
+      "file": "tools/mechanistic_review/score.py",
+      "sha256": "84ae298ab56891ce8134b54fad6a6c0af993a550c3194a379d07de09545ba022"
+    },
+    "comparators": "Native count model and fixed-prior SimpleScorer reported alongside retain-all, model-only and consensus. No selecting primary by outcome.",
+    "primary": "Retained graph supported-label precision difference vs retain-all, with full removed-correct/incorrect counts and correct-label retention. Paired cluster bootstrap percentile95% intervals. Coverage and all abstentions retained.",
+    "seed": 20261117,
+    "unit": "original assembled typed claim; group connected publication/source clusters"
+  },
+  "source_inputs_immutable": true,
+  "status": "FROZEN_BEFORE_NEW_NATIVE_FIT_AND_MODEL_INFERENCE",
+  "success_interpretation": {
+    "advantage_over_native": "Claim only if prespecified paired95% interval versus native_counts above0.",
+    "bounded_gain": "Retained supported-label precision paired95% interval vs retain-all above0, with counts/coverage/correct-claim retention prominently stated.",
+    "safety": "No universal safety claim from this sample. Correct-claim removals explicit; practical deployment remains review proposals."
+  },
+  "supersedes": {
+    "file": "protocol_v1.json",
+    "reason": "Final scorer input-validation and fixture cleanup completed before any native model fit or new model inference. All scientific decisions, prompt and thresholds unchanged.",
+    "sha256": "b1db369b67fe0731a23b885bde8bc608a40f79a97cf4ae28759e10f18a044819"
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "format": "biograph.source-agent-hosted-browser-acceptance.v1",
+  "recorded_at_UTC": "2026-11-16T15:23:43.097798+00:00",
+  "status": "limited_by_browser_network",
+  "passed": false,
+  "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+  "scope": "Actual authenticated hosted read-only browser smoke after guarded deployment. This is not a human usability study or biological validation.",
+  "summary": "Two fresh normal-TLS, sandboxed Chrome attempts authenticated successfully but did not complete the hosted four-step UI checks. Each recorded net::ERR_NETWORK_CHANGED on the same three read routes. No hosted browser pass is claimed.",
+  "attempts": [
+    {
+      "attempt": 1,
+      "receipt": "runs/source_agent_delivery_20261116/hosted_ui_acceptance_01/receipt.json",
+      "receipt_sha256": "9ac8a798e6ca1c4d171fa49603f6e438b359cc89f5abf3b2de242a5c71c73b2c",
+      "passed": false,
+      "elapsed_ms": 241207,
+      "completed_UI_checks": 0,
+      "javascript_errors": [],
+      "owned_browser_closed": true,
+      "request_outcomes": [
+        {
+          "path": "/",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/auth/login",
+          "method": "POST",
+          "status": 303
+        },
+        {
+          "path": "/",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/refresh-runs",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/biological-comparisons",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/refresh-history",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/function-contexts",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/scientific-assessments",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/pruning-previews",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/workspaces",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/refresh-runs",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/biological-comparisons",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/refresh-history",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/function-contexts",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/pruning-previews",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/scientific-assessments",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/run/native_evidence_workspace_20261115",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/neptune-status",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/workspaces",
+          "method": "GET",
+          "error": "net::ERR_NETWORK_CHANGED"
+        },
+        {
+          "path": "/api/source-agent/status",
+          "method": "GET",
+          "error": "net::ERR_NETWORK_CHANGED"
+        },
+        {
+          "path": "/api/question/native_physical_KRAS_question_v3_20261115",
+          "method": "GET",
+          "error": "net::ERR_NETWORK_CHANGED"
+        }
+      ],
+      "visible_result": "The agent and manual question panes reported Failed to fetch before the four-step workflow became ready.",
+      "termination": "Preserved after known network failures; owned browser closed."
+    },
+    {
+      "attempt": 2,
+      "receipt": "runs/source_agent_delivery_20261116/hosted_ui_acceptance_02/receipt.json",
+      "receipt_sha256": "53b9439cb21b6a86c8e48de5b92817d172133f455bd2868540c1f9f90acca512",
+      "passed": false,
+      "elapsed_ms": 69230,
+      "completed_UI_checks": 0,
+      "javascript_errors": [],
+      "owned_browser_closed": true,
+      "request_outcomes": [
+        {
+          "path": "/",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/auth/login",
+          "method": "POST",
+          "status": 303
+        },
+        {
+          "path": "/",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/refresh-runs",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/biological-comparisons",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/refresh-history",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/pruning-previews",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/function-contexts",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/scientific-assessments",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/workspaces",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/refresh-runs",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/biological-comparisons",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/refresh-history",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/pruning-previews",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/function-contexts",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/scientific-assessments",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/run/native_evidence_workspace_20261115",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/neptune-status",
+          "method": "GET",
+          "status": 200
+        },
+        {
+          "path": "/api/workspaces",
+          "method": "GET",
+          "error": "net::ERR_NETWORK_CHANGED"
+        },
+        {
+          "path": "/api/source-agent/status",
+          "method": "GET",
+          "error": "net::ERR_NETWORK_CHANGED"
+        },
+        {
+          "path": "/api/question/native_physical_KRAS_question_v3_20261115",
+          "method": "GET",
+          "error": "net::ERR_NETWORK_CHANGED"
+        }
+      ],
+      "visible_result": "The agent and manual question panes reported Failed to fetch before the four-step workflow became ready.",
+      "termination": "Failed-fetch readiness predicate stopped this attempt; no automatic reload."
+    }
+  ],
+  "normal_TLS_diagnostic": {
+    "receipt": "runs/source_agent_delivery_20261116/hosted_ui_acceptance_01/normal_tls_S01_probe.json",
+    "receipt_sha256": "56840b5864d0a655c816e5b64aa6e17733fe3ceff0ce129253be1462193619e5",
+    "request": "one authenticated recorded-S01 GET",
+    "url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/source-agent/job/source_agent_eval_dc7b597201da_S01",
+    "TLS_verification": "default system certificate validation",
+    "redirects": "disabled",
+    "new_inference_requests": 0,
+    "source_retrieval_requests": 0,
+    "HTTP_status": 200,
+    "passed": true,
+    "response_bytes": 611395,
+    "response_sha256": "dc36257bfb2a7bda95256781fea743ebb591700fc6d035caa221bf9f9567cecf",
+    "recorded_model_calls": 3,
+    "source_run": "native_evidence_workspace_20261115",
+    "elapsed_seconds": 19.176
+  },
+  "diagnosis": {
+    "observed_error": "net::ERR_NETWORK_CHANGED",
+    "Chromium_error_code": -21,
+    "primary_reference": "https://chromium.googlesource.com/chromium/src/+/main/net/base/net_error_list.h",
+    "primary_reference_blob": "51d5349547a4a41589cdab18a5496529445d3b42",
+    "documented_meaning": "The network changed.",
+    "qualification": "The Chromium error identifies a browser network-change condition. Its cause is unresolved. These receipts establish neither an application bug nor a particular VPN, firewall, browser or operating-system cause. The successful normal-TLS source-agent GET establishes that this authenticated endpoint responded; it does not substitute for a completed hosted visual walkthrough."
+  },
+  "separate_evidence": {
+    "guarded_server_activation": {
+      "SSM_command_id": "1a30d437-22e8-4814-ae81-15f351dea221",
+      "reported_status": "Success",
+      "qualification": "Server/API, restart and source-preservation acceptance are separate from browser ingress acceptance; root deployment receipts are authoritative."
+    },
+    "earlier_local_visual_review": {
+      "receipt": "runs/source_agent_delivery_20261116/local_ui_final588/operator_reviewed_receipt.json",
+      "receipt_sha256": "bf88d8eca198c6c4628a9fc330887d215abedfc858b4b4af6b78c657f5f449cd",
+      "source_commit": "588e098e9524fe79acd32666cab1a07af6863e43",
+      "scope": "Actual local saved-data reproduction, not hosted; 33 UI checks plus a documented operator resolution of a mistaken automation expectation; original script failure retained."
+    },
+    "current_local_visual_review": {
+      "receipt": "runs/source_agent_delivery_20261116/local_capture_ee3/receipt.json",
+      "receipt_sha256": "38d8b1be5b79f90ddbe2d6d914387a2bfab1d87eedf0f941570afcc754c246f4",
+      "source_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+      "passed": true,
+      "scope": "Actual final ee3 saved-data app capture, fourteen frames with source/graph bookends; GET-only capture, no new inference/retrieval/edits. This is local visual QA, not hosted browser acceptance.",
+      "public_media_acceptance": "docs/evaluations/source_agent_20261116/media_delivery.json"
+    }
+  },
+  "new_inference_requests": 0,
+  "new_source_retrievals": 0,
+  "graph_or_review_edits": 0,
+  "authentication_kept_off_camera": true,
+  "security_relaxations": [],
+  "changes_to_runtime_network_TLS_or_OS_settings": false,
+  "follow_up": "Use the actual endpoint and local walkthrough with this explicit qualification. Any further browser retry requires a specific diagnostic reason; no automatic retries or runtime workarounds were added."
+}

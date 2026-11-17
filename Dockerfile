@@ -1,5 +1,6 @@
 ARG PYTHON_IMAGE=python:3.12-slim
 FROM ${PYTHON_IMAGE}
+ARG INSTALL_AWS=0
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -12,6 +13,8 @@ RUN groupadd --gid 10001 steward \
     && mkdir -p /app /data \
     && chown steward:steward /app /data
 WORKDIR /app
+COPY requirements-aws.txt /app/requirements-aws.txt
+RUN if [ "$INSTALL_AWS" = "1" ]; then python -m pip install --no-cache-dir --require-hashes -r /app/requirements-aws.txt; fi
 COPY --chown=steward:steward app.py LICENSE /app/
 COPY --chown=steward:steward biograph_steward /app/biograph_steward
 COPY --chown=steward:steward scripts /app/scripts

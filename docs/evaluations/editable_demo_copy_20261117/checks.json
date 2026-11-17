@@ -1,0 +1,23 @@
+{
+  "format": "biograph.editable-copy-test-summary.v1",
+  "runtime_commit": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+  "Python_tests": {
+    "new_editable_copy": 7,
+    "existing_saved_review_guards": 8,
+    "gateway_public_routes": 8,
+    "all_passed": true
+  },
+  "UI_tests": {
+    "files": 20,
+    "tests": 165,
+    "all_passed": true
+  },
+  "source_replay": {
+    "packaged_runtime_imported": true,
+    "network_sockets_blocked": true,
+    "original_saved_question_verified": true,
+    "recorded_actual_S01_job_verified": true,
+    "native_physical_and_location_tools_verified": true
+  },
+  "no_new_biological_model_or_source_measurement": true
+}

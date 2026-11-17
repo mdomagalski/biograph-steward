@@ -1,0 +1,78 @@
+{
+  "budgets": {
+    "CPU_seconds": 240,
+    "native_GO_max_pages": 4,
+    "native_GO_page_size": 25,
+    "wall_seconds": 300
+  },
+  "execution": "Sequential local CPU through existing source-replay/query APIs after parent confirms QA closed; no model, new retrieval, graph changes or live saved-answer writes.",
+  "format": "biograph-steward.varied-saved-source-questions-plan.v1",
+  "purpose": "Check supported source-aware question applicability beyond the KRAS walkthrough, not biological accuracy or prediction gain. Preserve empty answers, failures and qualifications.",
+  "reporting": "Compact aggregate counts, scope, abstentions, deterministic answer hashes, source bindings and existing source-inspection locators. No scientific accuracy inference from valid output or replay.",
+  "same_input_snapshot_required": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+  "source_revision": "4c916813144a5bb2267b707642b94ef648c8195c",
+  "status": "FROZEN_BEFORE_QUERY_VALUES",
+  "tasks": [
+    {
+      "graph_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+      "id": "egfr_native_physical",
+      "interpretation": "Physical proximity or co-complex association within the exact mapped 99-target cohort; not universal direct binding or disease-specific causation.",
+      "max_paths": 5,
+      "max_results": 30,
+      "mechanism": "questions.answer_question",
+      "protein": "UniProtKB:P00533",
+      "protein_symbol": "EGFR",
+      "question": "Which retrieved proteins have native STRING physical associations with EGFR?",
+      "ranking": "alphabetical",
+      "relations": [
+        "interactions"
+      ],
+      "template": "native_string_physical.v1",
+      "views": [
+        "candidates",
+        "accepted"
+      ],
+      "workspace": "native_evidence_workspace_20261115"
+    },
+    {
+      "graph_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+      "id": "tp53_native_location",
+      "interpretation": "Retain literal located_in relation, native evidence code, assigning database and references. Records and concepts are distinct; repeated references are not independent experiments. Not all source evidence codes are experimental.",
+      "limit": 25,
+      "max_pages": 4,
+      "mechanism": "goa_questions.answer_native_go_question",
+      "protein": "UniProtKB:P04637",
+      "protein_symbol": "TP53",
+      "question": "Which native GO cell-location annotations describe TP53 in this saved positive active cellular-component profile?",
+      "source_profile": "complete-cohort-positive-active-CC-located-in-all-codes.v1",
+      "template": "native_go_evidence.v1",
+      "views": [
+        "candidates",
+        "accepted"
+      ],
+      "workspace": "native_evidence_workspace_20261115"
+    },
+    {
+      "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "id": "braf_qualified_pathway",
+      "interpretation": "A \u2192 archived pathway model \u2190 B is shared source context. Distinguish literal protein and compatible gene references; do not assert direct interaction or pathway activity.",
+      "max_paths": 5,
+      "max_results": 30,
+      "mechanism": "questions.answer_question + qualified_workspace.read_pathway_history",
+      "protein": "UniProtKB:P15056",
+      "protein_symbol": "BRAF",
+      "question": "Which retrieved proteins share native-supported exact-revision WikiPathways source context with BRAF?",
+      "ranking": "alphabetical",
+      "relations": [
+        "shared_pathways"
+      ],
+      "source_support": "native_supported",
+      "template": "qualified_pathway_source_context.v1",
+      "views": [
+        "candidates",
+        "accepted"
+      ],
+      "workspace": "source_faithful_workspace_20261113"
+    }
+  ]
+}

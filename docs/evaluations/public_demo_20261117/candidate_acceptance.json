@@ -1,0 +1,82 @@
+{
+  "format": "biograph-steward.public-demo-candidate-acceptance.v1",
+  "status": "candidate_features_passed_live_rollout_not_yet_accepted",
+  "gateway_source_commit": "0e62a8e780179c5f01245aab49923d0fbfdc844a",
+  "application_runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "gateway_config_sha256": "19a9f9948328dab7e4d8b450759b52b164479fa5b88b0cd281080505ab009a83",
+  "gateway_image_config_sha256": "6686bc0c8a700785afa5c8bfae949badf9ec57a3ed6f4076085867e37df1fdc7",
+  "gateway_ECR_manifest_sha256": "7374f0abfd39b2ddc4e84899146d0f5057ff75bd16e289b09c4db26c5564c807",
+  "public_snapshot_inventory_sha256": "423c6caa38a75bf93f008b0f1e51a6977da065acb47bcbdf1f3f8887039e019c",
+  "public_saved_folders": 17,
+  "public_workspaces": 2,
+  "exact_GET_paths": 102,
+  "source_data_mounted_read_only": true,
+  "public_and_operator_credentials_separate": true,
+  "actual_NGINX_mock_checks": 536,
+  "actual_backend_checks": 12,
+  "actual_saved_proxy_checks": 15,
+  "browser_features_operator_reviewed": true,
+  "final_scoped_browser_passed": true,
+  "single_uninterrupted_full_browser_test_claimed": false,
+  "prior_QA_navigation_assumptions_preserved": true,
+  "features": [
+    "No credential entry or session cookie in fresh browser",
+    "Actual recorded KRAS question, evidence, selected source and proposals",
+    "Recorded BRAF archived-source investigation",
+    "Applied retained graph qualification16985to16687with298exclusions",
+    "Saved public-reference assessment",
+    "Displayed graph JSON export available and packet creation hidden",
+    "390px export navigation",
+    "Anonymous read-only KRAS-to-AKT1 HTTP path query returns two saved paths"
+  ],
+  "tests_are_independent_human_usability_study": false,
+  "initial_uncompressed_candidate_deployed": false,
+  "existing_JSON_gzip_restored_and_wire_hash_checked": true,
+  "private_operator_app_changed": false,
+  "new_model_calls": 0,
+  "new_source_retrievals": 0,
+  "new_scientific_measurements": 0,
+  "proofs": {
+    "actual_NGINX_mock": {
+      "path": "runs/public_demo_20261117/receipts/public_gateway_v4/mock.json",
+      "bytes": 27519,
+      "sha256": "5669ff74e8f75978a8e588d6069eeec345d81075b80a84d7ecf22ce7695458cc"
+    },
+    "isolated_backend": {
+      "path": "runs/public_demo_20261117/receipts/public_gateway_v4/backend.json",
+      "bytes": 796,
+      "sha256": "134f8d04aa3d97fd1255d0001d4584214f44e3013231838d9d38808721ee8427"
+    },
+    "actual_proxy": {
+      "path": "runs/public_demo_20261117/receipts/public_gateway_v4/real_proxy.json",
+      "bytes": 1101,
+      "sha256": "40f6bf3f14b0ce1cc124bf276fa0f0579c0503c42a8f7cfd63e61671f6e918fb"
+    },
+    "S01_browser": {
+      "path": "runs/public_demo_20261117/browser_candidate_v4/receipt.json",
+      "bytes": 8348,
+      "sha256": "5d8b8c14f41cd4c48576ff03c127d6ecd7c686cd48142340eec9211942815d49"
+    },
+    "S04_retained_browser": {
+      "path": "runs/public_demo_20261117/browser_candidate_v4_missing/receipt.json",
+      "bytes": 5644,
+      "sha256": "5d0c1228b32560defd382dcf3a42034ed512495b56e2bfdb199f801a61fdf39a"
+    },
+    "visible_qualification_browser": {
+      "path": "runs/public_demo_20261117/browser_candidate_v4_completion/receipt.json",
+      "bytes": 2625,
+      "sha256": "95d19414ff188ebb00a6379ab46f5af7f35ad31f02a6546c9d9d9f3b7b493e15"
+    },
+    "final_scoped_browser": {
+      "path": "runs/public_demo_20261117/browser_candidate_v4_final/receipt.json",
+      "bytes": 4114,
+      "sha256": "b180d089363627a6c0fee9f33225296ce02a85492cfc8c68df9e5fcff165614e"
+    },
+    "anonymous_saved_path_HTTP": {
+      "path": "runs/public_demo_20261117/receipts/anonymous_path_HTTP.json",
+      "bytes": 851,
+      "sha256": "cabc1660bbb46fc5d61f0fb401b641c9d51172554f9a0481ca44d34c10e2041f"
+    }
+  },
+  "scope_note": "Real source and browser checks are separate from the invented upstream NGINX routing tests. All referenced scientific results were already saved. Public HTTPS deployment acceptance is a separate subsequent gate."
+}

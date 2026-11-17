@@ -2,6 +2,7 @@
 !Dockerfile
 !app.py
 !LICENSE
+!requirements-aws.txt
 !biograph_steward/
 !biograph_steward/**
 !scripts/

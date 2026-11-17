@@ -1,0 +1,28 @@
+{
+  "format": "biograph-steward.editable-workspace-package.v1",
+  "created_at": "2026-11-17T19:41:09.746468+00:00",
+  "runtime_commit": "7eea236cdeacf2d0a0ee33e11b01bc3ae5dac151",
+  "file": "BioGraph_Steward_KRAS_Editable_Workspace.zip",
+  "bytes": 106915314,
+  "sha256": "87b1619ee50a990bf96787dba56173e524c8bfd13e7bbc466c107a13faecefe7",
+  "members": 413,
+  "expanded_bytes": 773408728,
+  "source_files_preserved": 213,
+  "counts": {
+    "entities": 9724,
+    "evidence_records": 19310,
+    "assertions": 16430
+  },
+  "source_run": "native_evidence_workspace_20261115",
+  "question_id": "native_physical_KRAS_question_v3_20261115",
+  "agent_job": "source_agent_eval_dc7b597201da_S01",
+  "source_manifest_sha256": "65cd3e87503cca8f088bc69a850434cbca493d562c3ed8043789131994791503",
+  "source_graph_sha256": "eff8c04a0030dcdfc85e72788167626988052cfe5ed5126ae29edd213e532345",
+  "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+  "question_sha256": "37e79cea8678fe0f291cc1eccc854010230204f575a78c30819687af2bf9febb",
+  "all_original_files_unchanged": true,
+  "archive_member_hashes_and_CRC_verified": true,
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "upload_or_publication_performed": false
+}

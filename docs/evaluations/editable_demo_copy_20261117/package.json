@@ -1,0 +1,28 @@
+{
+  "format": "biograph.editable-copy-package-verification.v1",
+  "created_at": "2026-11-17T15:06:20.781100+00:00",
+  "runtime_commit": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+  "file": "BioGraph_Steward_KRAS_Editable_Workspace.zip",
+  "bytes": 106909889,
+  "sha256": "dcae1dbbfcc5c99bca3ff51cddf62d3a2f1f287d60a3feef8923bffc8effdd55",
+  "members": 413,
+  "expanded_bytes": 773386925,
+  "source_files_preserved": 213,
+  "counts": {
+    "entities": 9724,
+    "evidence_records": 19310,
+    "assertions": 16430
+  },
+  "source_run": "native_evidence_workspace_20261115",
+  "question_id": "native_physical_KRAS_question_v3_20261115",
+  "agent_job": "source_agent_eval_dc7b597201da_S01",
+  "source_manifest_sha256": "65cd3e87503cca8f088bc69a850434cbca493d562c3ed8043789131994791503",
+  "source_graph_sha256": "eff8c04a0030dcdfc85e72788167626988052cfe5ed5126ae29edd213e532345",
+  "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+  "question_sha256": "37e79cea8678fe0f291cc1eccc854010230204f575a78c30819687af2bf9febb",
+  "all_original_files_unchanged": true,
+  "archive_member_hashes_and_CRC_verified": true,
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "prepared_package_includes_credentials_patient_data_or_model_weights": false
+}

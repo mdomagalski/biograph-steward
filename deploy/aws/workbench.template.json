@@ -1,0 +1,370 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "BioGraph Steward private CPU workbench, retained encrypted evidence volume and SSM access. Creates billable EC2/EBS/IPv4 resources.",
+  "Parameters": {
+    "VpcId": {
+      "Type": "AWS::EC2::VPC::Id"
+    },
+    "SubnetId": {
+      "Type": "AWS::EC2::Subnet::Id",
+      "Description": "A public subnet with a route to an internet gateway. No inbound app or SSH rule is created."
+    },
+    "AvailabilityZone": {
+      "Type": "AWS::EC2::AvailabilityZone::Name",
+      "Description": "Must be the selected subnet availability zone; the retained EBS volume uses it."
+    },
+    "ArtifactBucket": {
+      "Type": "String",
+      "MinLength": 3,
+      "MaxLength": 63,
+      "AllowedPattern": "[a-z0-9][a-z0-9.-]+[a-z0-9]"
+    },
+    "ArtifactKey": {
+      "Type": "String",
+      "MinLength": 1,
+      "MaxLength": 1024,
+      "AllowedPattern": "[A-Za-z0-9][A-Za-z0-9._/-]*",
+      "Description": "Exact source release object key, preferably releases/<git-commit>/<bundle>.tar.gz."
+    },
+    "ArtifactSha256": {
+      "Type": "String",
+      "AllowedPattern": "[a-f0-9]{64}"
+    },
+    "InstanceType": {
+      "Type": "String",
+      "Default": "t3.small",
+      "AllowedValues": [
+        "t3.small",
+        "t3.medium",
+        "t3.large"
+      ],
+      "Description": "t3.small is the Free Plan starting choice. Larger options require an account plan that permits them; verify current regional eligibility."
+    },
+    "DataVolumeGiB": {
+      "Type": "Number",
+      "Default": 30,
+      "MinValue": 10,
+      "MaxValue": 200
+    },
+    "PythonImage": {
+      "Type": "String",
+      "Default": "python:3.12-slim",
+      "AllowedPattern": "[A-Za-z0-9][A-Za-z0-9._/:@-]*",
+      "Description": "Existing Dockerfile base; use an approved digest for a frozen image build."
+    },
+    "AmiId": {
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+      "Default": "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
+    }
+  },
+  "Resources": {
+    "DataVolume": {
+      "Type": "AWS::EC2::Volume",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "AvailabilityZone": {
+          "Ref": "AvailabilityZone"
+        },
+        "Encrypted": true,
+        "Size": {
+          "Ref": "DataVolumeGiB"
+        },
+        "VolumeType": "gp3",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": {
+              "Fn::Sub": "${AWS::StackName}-evidence"
+            }
+          },
+          {
+            "Key": "Application",
+            "Value": "BioGraphSteward"
+          }
+        ]
+      }
+    },
+    "InstanceRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ec2.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
+          }
+        ],
+        "Policies": [
+          {
+            "PolicyName": "ExactReleaseAndOwnBackups",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "ReadExactRelease",
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:GetObjectVersion"
+                  ],
+                  "Resource": {
+                    "Fn::Sub": "arn:${AWS::Partition}:s3:::${ArtifactBucket}/${ArtifactKey}"
+                  }
+                },
+                {
+                  "Sid": "OwnWorkspaceBackups",
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:PutObject",
+                    "s3:GetObject",
+                    "s3:GetObjectVersion",
+                    "s3:AbortMultipartUpload",
+                    "s3:ListMultipartUploadParts"
+                  ],
+                  "Resource": {
+                    "Fn::Sub": "arn:${AWS::Partition}:s3:::${ArtifactBucket}/backups/${AWS::StackName}/*"
+                  }
+                },
+                {
+                  "Sid": "BootstrapSignal",
+                  "Effect": "Allow",
+                  "Action": "cloudformation:SignalResource",
+                  "Resource": {
+                    "Ref": "AWS::StackId"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "InstanceProfile": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "InstanceRole"
+          }
+        ]
+      }
+    },
+    "AppSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "No inbound access; TLS egress for SSM, artifacts and source retrieval.",
+        "VpcId": {
+          "Ref": "VpcId"
+        },
+        "SecurityGroupEgress": [
+          {
+            "IpProtocol": "tcp",
+            "FromPort": 443,
+            "ToPort": 443,
+            "CidrIp": "0.0.0.0/0"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Application",
+            "Value": "BioGraphSteward"
+          }
+        ]
+      }
+    },
+    "AppInstance": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": {
+          "Ref": "AmiId"
+        },
+        "InstanceType": {
+          "Ref": "InstanceType"
+        },
+        "IamInstanceProfile": {
+          "Ref": "InstanceProfile"
+        },
+        "AvailabilityZone": {
+          "Ref": "AvailabilityZone"
+        },
+        "CreditSpecification": {
+          "CPUCredits": "standard"
+        },
+        "MetadataOptions": {
+          "HttpTokens": "required",
+          "HttpEndpoint": "enabled",
+          "HttpPutResponseHopLimit": 1
+        },
+        "NetworkInterfaces": [
+          {
+            "AssociatePublicIpAddress": true,
+            "DeviceIndex": "0",
+            "SubnetId": {
+              "Ref": "SubnetId"
+            },
+            "GroupSet": [
+              {
+                "Ref": "AppSecurityGroup"
+              }
+            ]
+          }
+        ],
+        "BlockDeviceMappings": [
+          {
+            "DeviceName": "/dev/xvda",
+            "Ebs": {
+              "Encrypted": true,
+              "VolumeSize": 16,
+              "VolumeType": "gp3",
+              "DeleteOnTermination": true
+            }
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": {
+              "Fn::Sub": "${AWS::StackName}-workbench"
+            }
+          },
+          {
+            "Key": "Application",
+            "Value": "BioGraphSteward"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Join": [
+              "",
+              [
+                "#!/usr/bin/env bash\nset -euo pipefail\numask 077\n",
+                "export BIOGRAPH_AWS_REGION='",
+                {
+                  "Ref": "AWS::Region"
+                },
+                "'\n",
+                "export BIOGRAPH_ARTIFACT_BUCKET='",
+                {
+                  "Ref": "ArtifactBucket"
+                },
+                "'\n",
+                "export BIOGRAPH_ARTIFACT_KEY='",
+                {
+                  "Ref": "ArtifactKey"
+                },
+                "'\n",
+                "export BIOGRAPH_RELEASE_SHA256='",
+                {
+                  "Ref": "ArtifactSha256"
+                },
+                "'\n",
+                "export BIOGRAPH_DATA_VOLUME_ID='",
+                {
+                  "Ref": "DataVolume"
+                },
+                "'\n",
+                "export BIOGRAPH_AWS_STACK_NAME='",
+                {
+                  "Ref": "AWS::StackName"
+                },
+                "'\n",
+                "export BIOGRAPH_AWS_STACK_ID='",
+                {
+                  "Ref": "AWS::StackId"
+                },
+                "'\n",
+                "export BIOGRAPH_PYTHON_IMAGE='",
+                {
+                  "Ref": "PythonImage"
+                },
+                "'\n",
+                "signal_result() {\n  result=$?\n  trap - EXIT\n  state=FAILURE\n  [[ \"$result\" -eq 0 ]] && state=SUCCESS\n  if command -v aws >/dev/null; then\n    identity_token=$(curl -fsS -X PUT -H 'X-aws-ec2-metadata-token-ttl-seconds: 60' http://169.254.169.254/latest/api/token || true)\n    instance_id=$(curl -fsS -H \"X-aws-ec2-metadata-token: $identity_token\" http://169.254.169.254/latest/meta-data/instance-id || true)\n    if [[ -n \"$instance_id\" ]]; then\n      aws cloudformation signal-resource --region \"$BIOGRAPH_AWS_REGION\" --stack-name \"$BIOGRAPH_AWS_STACK_ID\" \\\n        --logical-resource-id BootstrapReady --unique-id \"$instance_id\" --status \"$state\" || true\n    fi\n  fi\n  exit \"$result\"\n}\ntrap signal_result EXIT\ndnf install -y awscli-2 python3 tar gzip\ninstall -d -m 0700 /opt/biograph\naws s3 cp \"s3://$BIOGRAPH_ARTIFACT_BUCKET/$BIOGRAPH_ARTIFACT_KEY\" /opt/biograph/release.tar.gz \\\n  --region \"$BIOGRAPH_AWS_REGION\" --only-show-errors\nprintf '%s  %s\\n' \"$BIOGRAPH_RELEASE_SHA256\" /opt/biograph/release.tar.gz | sha256sum --check --status\ninstall -d -m 0755 /opt/biograph/app\ntar -xzf /opt/biograph/release.tar.gz --no-same-owner -C /opt/biograph/app\nbash /opt/biograph/app/deploy/aws/bootstrap.sh\n"
+              ]
+            ]
+          }
+        }
+      }
+    },
+    "DataAttachment": {
+      "Type": "AWS::EC2::VolumeAttachment",
+      "Properties": {
+        "Device": "/dev/sdf",
+        "InstanceId": {
+          "Ref": "AppInstance"
+        },
+        "VolumeId": {
+          "Ref": "DataVolume"
+        }
+      }
+    },
+    "BootstrapReady": {
+      "Type": "AWS::CloudFormation::WaitCondition",
+      "DependsOn": "DataAttachment",
+      "CreationPolicy": {
+        "ResourceSignal": {
+          "Count": 1,
+          "Timeout": "PT20M"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "InstanceId": {
+      "Value": {
+        "Ref": "AppInstance"
+      }
+    },
+    "DataVolumeId": {
+      "Value": {
+        "Ref": "DataVolume"
+      }
+    },
+    "ResolvedAmiId": {
+      "Value": {
+        "Ref": "AmiId"
+      }
+    },
+    "TunnelCommand": {
+      "Value": {
+        "Fn::Sub": "aws ssm start-session --region ${AWS::Region} --target ${AppInstance} --document-name AWS-StartPortForwardingSession --parameters portNumber=8766,localPortNumber=8766"
+      }
+    },
+    "Access": {
+      "Value": "After the SSM tunnel starts, open http://127.0.0.1:8766/ . The generated workspace token is only on the instance."
+    },
+    "DataRetention": {
+      "Value": "Stack deletion retains the data volume. The separate S3 storage stack retains releases and backups."
+    },
+    "VpcId": {
+      "Value": {
+        "Ref": "VpcId"
+      }
+    },
+    "SubnetId": {
+      "Value": {
+        "Ref": "SubnetId"
+      }
+    },
+    "AppSecurityGroupId": {
+      "Value": {
+        "Ref": "AppSecurityGroup"
+      }
+    },
+    "InstanceRoleName": {
+      "Value": {
+        "Ref": "InstanceRole"
+      }
+    }
+  }
+}

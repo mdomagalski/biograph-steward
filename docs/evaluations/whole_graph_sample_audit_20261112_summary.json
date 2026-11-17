@@ -1,0 +1,362 @@
+{
+  "format": "biograph-steward.whole-workspace-sample-audit-summary.v1",
+  "created_at": "2026-11-13T01:18:10.121572+00:00",
+  "date_local": "2026-11-12",
+  "scope": "Design-weighted AI-assisted evidence-audit statuses, conditional on supplied reviews and adaptive follow-up; not biological truth",
+  "baseline": {
+    "primary_targets": 99,
+    "nodes": 9865,
+    "evidence_edges": 16985,
+    "assertions": 16980,
+    "packet_id": "packet:14265d0e4990da19e1f2538be1f185cf68e378d00152fdb71ca3d8c4f9936a8e",
+    "graph_sha256": "f35f8e0bb66742a3b65d1887ecbc85ead33fd8c5ef9eb5e8015d28934f22d22e"
+  },
+  "sample": {
+    "id": "audit:97755e5f772c5aaa7b5906a29568066ff9988ac1b0259e852d1df25235f9d97a",
+    "size": 180,
+    "seed": 2026111201,
+    "design": "Fixed stratified SRSWOR by assertion family",
+    "unit": "stored qualified assertion, not deduplicated biological fact",
+    "families": [
+      {
+        "family": "disease_association",
+        "population": 100,
+        "sample": 10,
+        "examined_support": 0,
+        "unresolved": 10,
+        "contradicted": 0
+      },
+      {
+        "family": "drug_listing",
+        "population": 174,
+        "sample": 10,
+        "examined_support": 10,
+        "unresolved": 0,
+        "contradicted": 0
+      },
+      {
+        "family": "expression_observation",
+        "population": 1061,
+        "sample": 15,
+        "examined_support": 0,
+        "unresolved": 15,
+        "contradicted": 0
+      },
+      {
+        "family": "go_annotation",
+        "population": 4078,
+        "sample": 35,
+        "examined_support": 22,
+        "unresolved": 13,
+        "contradicted": 0
+      },
+      {
+        "family": "pathway_membership",
+        "population": 9540,
+        "sample": 60,
+        "examined_support": 28,
+        "unresolved": 32,
+        "contradicted": 0
+      },
+      {
+        "family": "protein_interaction",
+        "population": 1576,
+        "sample": 20,
+        "examined_support": 1,
+        "unresolved": 19,
+        "contradicted": 0
+      },
+      {
+        "family": "source_regulatory_observation",
+        "population": 290,
+        "sample": 10,
+        "examined_support": 2,
+        "unresolved": 8,
+        "contradicted": 0
+      },
+      {
+        "family": "tissue_proximity_observation",
+        "population": 120,
+        "sample": 10,
+        "examined_support": 10,
+        "unresolved": 0,
+        "contradicted": 0
+      },
+      {
+        "family": "variant_therapy_response",
+        "population": 41,
+        "sample": 10,
+        "examined_support": 2,
+        "unresolved": 8,
+        "contradicted": 0
+      }
+    ]
+  },
+  "main_audit": {
+    "source_relative": {
+      "supported": 180,
+      "contradicted": 0,
+      "unresolved": 0
+    },
+    "examined_evidence": {
+      "supported": 75,
+      "contradicted": 0,
+      "unresolved": 105
+    },
+    "examined_supported_weighted_fraction": 0.4390055527511358,
+    "unresolved_weighted_fraction": 0.5609944472488643,
+    "conditional_design_standard_error": 0.04174021932520583,
+    "scientific_correctness_unreviewed": 180,
+    "scientific_accuracy_estimate": null,
+    "biological_confidence_interval": null
+  },
+  "fixed_go_comparison": {
+    "census_obsolete_id_assertions_removed": 298,
+    "main_sample_removed_assertions": 0,
+    "benefit_or_harm_estimated_from_main_sample": false,
+    "pinned_ontology_release": "2026-07-26",
+    "native_GAF_generated": "2026-07-28",
+    "verified_latest_November": false
+  },
+  "separate_removed_go_supplement": {
+    "sample": 20,
+    "population": 298,
+    "seed": 2026111202,
+    "inclusion_probability": {
+      "numerator": 20,
+      "denominator": 298
+    },
+    "pool_with_main_sample": false,
+    "counts": {
+      "source_faithful_original_claims": 20,
+      "original_claim_primary_unresolved": 20,
+      "independent_scientific_truth_unreviewed": 20,
+      "obsolete_terms_in_pinned_GO": 20,
+      "original_term_native_matches": 0,
+      "explicit_unique_active_replacement_proposals": 11,
+      "no_safe_replacement_proposal": 9,
+      "proposals_with_current_exact_subject_term_annotations": 8,
+      "proposals_without_current_exact_subject_term_annotations": 3,
+      "current_replacement_native_rows_not_independent_experiments": 65,
+      "proposals_with_strict_evidence_assigner_aspect_projection_match": 5,
+      "replacement_concepts_already_represented_by_retained_source_edges": 5
+    },
+    "biological_truth_assessed": false
+  },
+  "current_wiki_view": {
+    "native_release": "20261110",
+    "native_pathways": 991,
+    "unique_pathway_GeneID_pairs": 40285,
+    "raw_Wiki_rows": 3492,
+    "exact_target_provider_versioned_source_groups": 2004,
+    "excess_raw_representations": 1488,
+    "raw_keep": 1558,
+    "raw_prune_from_named_current_source_view": 1892,
+    "raw_unknown_retained": 42,
+    "exact_groups_keep": 1289,
+    "exact_groups_prune": 685,
+    "exact_groups_unknown_retained": 30,
+    "proteins_with_exclusions": 31,
+    "retained_nodes": 9865,
+    "retained_edges": 15093,
+    "retained_assertions": 15088,
+    "historical_claims_refuted": false,
+    "biological_accuracy_measured": false,
+    "exploratory_after_main_sample": true,
+    "original_graph_changed": false
+  },
+  "drug_context": {
+    "cases": 10,
+    "Pharos_activity_rows_returned": 575,
+    "exact_sampled_target_activity_rows": 173,
+    "proposed_current_native_curation_supported": 10,
+    "native_selected_source_documents_indexed_Review": 4,
+    "selected_native_assays_confidence_8": 2,
+    "selected_native_assays_explicit_variant": 1,
+    "selected_native_activity_without_quantitative_value": 1,
+    "selected_native_source_PMID_matches_exact_Pharos_activity": 9,
+    "independent_scientific_correctness_reviewed": 0
+  },
+  "RAD21": {
+    "legacy_rows": 1060,
+    "distinct_versioned_pathways": 103,
+    "current_encoded_gene_memberships": 6,
+    "current_only_gene_memberships_not_added": 3
+  },
+  "upstream_loader": {
+    "official_repository": "https://github.com/unmtransinfo/TCRD",
+    "commit": "90d072154fa7afa1eca3dc3449dae709c72cf1b6",
+    "synthetic_loop_reproduction": {
+      "true_assignments": 5,
+      "observed_assignments": 8
+    },
+    "deployed_Pharos_lineage_established": false
+  },
+  "compute": {
+    "hosted_model_calls": 0,
+    "GPU_inference": false,
+    "Brev_required": false,
+    "new_paid_API_calls": 0
+  },
+  "source_redistribution_cleared": false,
+  "inputs": {
+    "frozen_manifest": {
+      "path": "runs/whole_graph_sample_audit_20261112/frozen_v1/sample_manifest.json",
+      "file_sha256": "539cc36cfd6b3e9062d45aa4df21aec2f6910d257b8b2bdb574d79d4adc83552"
+    },
+    "sample_protocol": {
+      "path": "runs/whole_graph_sample_audit_20261112/frozen_v1/protocol.json",
+      "file_sha256": "c906a3006482cee55e2d28b42da51ca13ce82c8b7a097881b3528008c40476b2"
+    },
+    "initial_score": {
+      "path": "runs/whole_graph_sample_audit_20261112/scored_initial/report.json",
+      "file_sha256": "b30dad122deac80611ae7fc336b207d012cd96675a74853fb5795ab36808f26e"
+    },
+    "final_score": {
+      "path": "runs/whole_graph_sample_audit_20261112/scored_context_followup/report.json",
+      "file_sha256": "d0b82c03b276900624a20ae6ba1d358c5fe9403e85ed30bbb048749d83d6eb82"
+    },
+    "final_statistics": {
+      "path": "runs/whole_graph_sample_audit_20261112/scored_context_followup/statistics.json",
+      "file_sha256": "e92e91c5b07b6a76638cde00565a5622b697d16ad5ba79d041701ae119659038"
+    },
+    "initial_independent_recount": {
+      "path": "runs/whole_graph_sample_audit_20261112/independent_scored_initial_arithmetic.json",
+      "file_sha256": "312e071e8b4922d9833df0230c7062b52e992d89d406a0bcf76d75e2f4818957"
+    },
+    "fixed_go_binding": {
+      "path": "runs/whole_graph_sample_audit_20261112/intervention_binding.json",
+      "file_sha256": "ea07c2f7f1ed4e7d4955fc11b38ef94a76a6e5e251ce19b960e1e57c899f5cbd"
+    },
+    "current_wiki_view": {
+      "path": "runs/whole_graph_sample_audit_20261112/wiki_current_view_v3/wiki_current_qualification.json",
+      "file_sha256": "ef6a48c5976242280a6592f69a1537d0f8575c106f51d20792ded334fa330a58"
+    },
+    "current_wiki_graph": {
+      "path": "runs/whole_graph_sample_audit_20261112/wiki_current_view_v3/retained/retained_graph.json",
+      "file_sha256": "4ab18556020f665eb207d99b3820cade57e1329c866bdd23ee2d4264a3f19ba3"
+    },
+    "current_wiki_decisions": {
+      "path": "runs/whole_graph_sample_audit_20261112/wiki_current_view_v3/retained/edge_dispositions.jsonl",
+      "file_sha256": "0fa6414edefff250263d1bccf76eef5a324fa7fc4f22ef480d1ae36b87e9329d"
+    },
+    "wiki_native_reference": {
+      "path": "runs/whole_graph_sample_audit_20261112/wiki_native_reference_v2/reference_manifest.json",
+      "file_sha256": "a61125bb7bf7695524af08b7faa812be8d7392d4dffaf12537e7237fc4c68bcf"
+    },
+    "wiki_native_reference_replay": {
+      "path": "runs/whole_graph_sample_audit_20261112/independent_minimal_wiki_reference_v2.json",
+      "file_sha256": "5c986c586fc8d85e1da1a5b57daf78ed0f322a3bea3c5b30fa05ac2f85200135"
+    },
+    "wiki_upstream_code_review": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/pathway_upstream_review/upstream_review.json",
+      "file_sha256": "cad7cd4681704c944549ee140d336bd1d5bc63a4a3d3e7c6192385bbc369e5fe"
+    },
+    "wiki_loader_reproduction": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/pathway_upstream_review/loader_reproduction.json",
+      "file_sha256": "83cedd59de1c8296a66d29e34c8db40893c84d549d6cc6f95932e3986909f69c"
+    },
+    "drug_native_followup": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/drug_primary_followup/followup_report.json",
+      "file_sha256": "263596ea845c5a1f20b4a4932c564048a0fbb41013b17fcf111255a068dd4ed5"
+    },
+    "drug_independent_joins": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/drug_primary_followup/independent_join_review.json",
+      "file_sha256": "e609679d51f2f0fcf625baab39276755156a476536de6a516ba87d1151bce626"
+    },
+    "signor_context_followup": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/signor_case159_followup/assessment.json",
+      "file_sha256": "0eb5bcb56b0523c155a178c50b9dfdaf97e05ee38c4e601d8f07930beb24698e"
+    },
+    "signor_parent_reading": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/signor_case159_followup/parent_review.json",
+      "file_sha256": "2f3fbb5e4278863f3f44da6312359f8b3a5ac7e2b1b76ab9e0bddeef433b201c"
+    },
+    "ppi_scope_followup": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/ppi_case139_scope_followup/assessment.json",
+      "file_sha256": "32872b17ada15e8b27883220e21870c020328674e116d2df418e467872e81113"
+    },
+    "ppi_parent_review": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/ppi_case139_scope_followup/parent_review.json",
+      "file_sha256": "874fbe56c66088405f79fb72fa18333685fa75abf08a7ee80f4735934aadbd04"
+    },
+    "removed_go_manifest": {
+      "path": "runs/whole_graph_sample_audit_20261112/removed_go_supplement_v1/sample_manifest.json",
+      "file_sha256": "af51ddd2893c22373f4b3805ec73a4339e703f16fb8a4a9e10435e3caa7a45ea"
+    },
+    "removed_go_review": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/removed_go_supplement/evidence_cost_review.json",
+      "file_sha256": "dafe29b3142720394084a184d541f4829b60d79a874f20912bdc63c486940203"
+    },
+    "removed_go_independent_replay": {
+      "path": "runs/whole_graph_sample_audit_20261112/independent_removed_go_supplement.json",
+      "file_sha256": "7e987d0d2ee8bc2f8918ff1135d2576db839e8a1e83da334c2eed4d8f67188ca"
+    },
+    "wiki_topology_diagnosis": {
+      "path": "runs/whole_graph_sample_audit_20261112/evidence/wiki_topology_diagnosis/topology_diagnosis.json",
+      "file_sha256": "06564e4c27355c26745864d673e050b4eed5b525c0c13fdf0632f43e268c2f61"
+    },
+    "exact_version_projection": {
+      "path": "runs/whole_graph_sample_audit_20261112/wiki_version_projection_v2/projection_manifest.json",
+      "file_sha256": "dc19b7c4a77727f1d27dd63cd6bfffa6abb118015abbd7da76b6bcf9212bf332"
+    },
+    "exact_version_edge_ledger": {
+      "path": "runs/whole_graph_sample_audit_20261112/wiki_version_projection_v2/edge_mapping.jsonl",
+      "file_sha256": "bf1b612597f9ed1b36fde6e44c75bd1f45d625993bcfc4c6acf22cfcc64cdd20"
+    },
+    "exact_version_context_trace": {
+      "path": "runs/whole_graph_sample_audit_20261112/wiki_version_context_trace.json",
+      "file_sha256": "3c1a8dd1515bfb71c58f848561a386c182b3e6cb13fdfeac476247007399e67c"
+    },
+    "exact_version_independent_replay": {
+      "path": "runs/whole_graph_sample_audit_20261112/independent_wiki_version_projection_v2.json",
+      "file_sha256": "607aa5e6af66ba22fda8e24d97cdcdc0aab903a7a9c0536cdb5bca6a50583db2"
+    },
+    "independent_scored_context_followup_arithmetic": {
+      "path": "runs/whole_graph_sample_audit_20261112/independent_scored_context_followup_arithmetic.json",
+      "file_sha256": "0d6ed47a032968cb9efbed0c14f2fe1069a1a137e675aa5b3f84d4dc2a2e8a09"
+    },
+    "independent_scored_final_arithmetic": {
+      "path": "runs/whole_graph_sample_audit_20261112/independent_scored_final_arithmetic.json",
+      "file_sha256": "615838af85e9177530e320f65b357133a459b06072e3595bbd4d8d3a477efebc"
+    },
+    "independent_wiki_current_view_v3": {
+      "path": "runs/whole_graph_sample_audit_20261112/independent_wiki_current_view_v3.json",
+      "file_sha256": "a3b18726c5f98ebe741f3af0fb1474f26750053198faf6a7e16defc71c30e6e6"
+    }
+  },
+  "limitations": [
+    "AI-assisted reviews are not independent scientific gold.",
+    "Native database support can reuse the same study/source.",
+    "Current source membership is not historical truth or biological absence.",
+    "Unknown outcomes and the original sampling denominator are preserved.",
+    "The removed-domain supplement is not pooled into the main sample.",
+    "The stored-assertion frame includes repeated native representations.",
+    "Full source graph includes provider-restricted data and is not bundled with code."
+  ],
+  "wiki_source_version_projection": {
+    "counts": {
+      "source_nodes": 9865,
+      "source_edges": 15093,
+      "source_assertions": 15088,
+      "projected_nodes": 351,
+      "projected_edges": 1600,
+      "version_resources": 275,
+      "projected_subjects": 76,
+      "distinct_subject_version_claims": 1319,
+      "preserved_outside_projection": 13493,
+      "exclusions_by_reason": {
+        "outside_exact_version_WikiPathways_profile": 13493
+      }
+    },
+    "shared_common_object_protein_context_pairs": 1133,
+    "source_supplied_version_URLs_verbatim": true,
+    "different_revisions_collapsed": false,
+    "parallel_evidence_IDs_merged": false,
+    "source_graph_or_review_states_changed": false,
+    "new_protein_interactions_inferred": false,
+    "biological_utility_tested": false,
+    "full_KGX_Biolink_conformance_claimed": false
+  },
+  "content_sha256": "31edd637ba33668ed2022c051da2e5fce4c19fa33e0f6811610e140f9cdd45b5"
+}

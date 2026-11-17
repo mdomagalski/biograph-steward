@@ -1,0 +1,549 @@
+{
+  "format": "biograph-steward.intact-final-assessment-outcome.v1",
+  "prepared_date": "2026-10-27",
+  "recorded_at": "2026-10-27T04:21:09.720172+00:00",
+  "status": "stopped_on_reference_projection_gate_no_final_score",
+  "assessment_split": "reserved_final",
+  "publication_ids": [
+    "39833857",
+    "40211762",
+    "39972491",
+    "40555359"
+  ],
+  "all_four_reserved_studies_now_consumed": true,
+  "fixed_execution_count": 1,
+  "rerun_or_replacement_performed": false,
+  "execution_freeze_sha256": "7c1f59b4696bd5b6f4b7760d22405f04f358fc46dfd7ea5f0464a98de3492788",
+  "frozen_code_inputs_and_actual_runtime_reverified_unchanged": true,
+  "stopped_stage": "Cross-format reference projection inside inspect_sources, before provenance audit and any publication/Pharos/answer/export integration.",
+  "failure": {
+    "created_at": "2026-10-27T04:18:05.928859+00:00",
+    "status": "stopped_preserved_failure",
+    "assessment_split": "reserved_final",
+    "exception_type": "ValueError",
+    "error": "Unresolved cross-format reference projection; no repair or final score.",
+    "reserved_panel_may_now_be_consumed": true,
+    "score_available": false
+  },
+  "accounting": {
+    "physical_rows": 18,
+    "evidence_rows": 14,
+    "source_eligible_rows_before_unexecuted_lineage_gate": 2,
+    "XML_evidence_objects": 10
+  },
+  "accounting_interpretation": "Two rows pass original explicit human-protein source eligibility. These are pre-lineage descriptive counts; no final-assessment eligibility or source-fidelity denominator was finalized. Exclusions describe scope, not false source biology.",
+  "cross_format_selected_field_diagnostics": {
+    "equal": 235,
+    "different": 3,
+    "interpretation": "Diagnostic comparator outcomes, not source-fidelity accuracy."
+  },
+  "observed_stop": {
+    "publication_id": "40555359",
+    "source_lines": [
+      2,
+      3,
+      4
+    ],
+    "field": "evidence_identity_aliases",
+    "observed": "The frozen comparator expected every MITAB column14 identifier to equal a helper projection restricted to IntAct/IMEx identities. Captured MITAB includes additional EMDB and wwPDB references. Primary IntAct/IMEx identities match.",
+    "affected_originally_eligible_source_lines": [
+      2
+    ],
+    "diagnosis_status": "Verified comparator integration defect: the full captured official XML reader model contains the structural database identity references, while the frozen XML helper selects only IntAct/IMEx. No source loss, source corruption or biological conflict was demonstrated."
+  },
+  "not_executed": [
+    "full reserved provenance/connected-study-component audit",
+    "reserved participant/pair/evidence/experiment overlap assessment",
+    "source publication/import",
+    "fresh Pharos cohort retrieval",
+    "qualified answer generation",
+    "complete graph/source export",
+    "reserved source-fidelity scoring"
+  ],
+  "metrics": {
+    "coverage": null,
+    "strict_fidelity": null,
+    "conditional_fidelity": null,
+    "scientific_accuracy": null,
+    "biological_prediction_gain": null,
+    "status": "not_computed_pipeline_stopped_not_zero_accuracy"
+  },
+  "source_preservation_at_stop": {
+    "all_original_MITAB_sources_and_copies_match_freeze": true,
+    "all_XML_reader_input_fingerprints_match_saved_HTTP_bodies": true
+  },
+  "studies": [
+    {
+      "publication_id": "39833857",
+      "source_physical_rows": 4,
+      "source_evidence_rows": 3,
+      "source_metadata_rows": 1,
+      "source_eligible_rows_under_original_policy": 0,
+      "eligible_source_lines": [],
+      "exclusion_reason_counts_overlapping": {
+        "primary_identifier_missing_or_ambiguous_a": 1,
+        "participant_type_not_only_explicit_protein_a": 1,
+        "primary_identifier_missing_or_ambiguous_b": 3,
+        "participant_type_not_only_explicit_protein_b": 3
+      },
+      "XML_evidence_objects": 2,
+      "cross_format_selected_field_counts": {
+        "equal": 51
+      },
+      "unresolved_evidence_identity_alignment_rows": 0,
+      "source_original_and_copy_match_frozen_hash": true,
+      "XML_reader_version": "v2_5_4",
+      "XML_reader_input_hash_and_bytes_match_HTTP_body": true
+    },
+    {
+      "publication_id": "40211762",
+      "source_physical_rows": 3,
+      "source_evidence_rows": 2,
+      "source_metadata_rows": 1,
+      "source_eligible_rows_under_original_policy": 0,
+      "eligible_source_lines": [],
+      "exclusion_reason_counts_overlapping": {
+        "primary_identifier_missing_or_ambiguous_a": 1,
+        "participant_type_not_only_explicit_protein_a": 1,
+        "primary_identifier_missing_or_ambiguous_b": 1,
+        "participant_type_not_only_explicit_protein_b": 1,
+        "participant_taxonomy_not_only_explicit_human_a": 1,
+        "participant_taxonomy_not_only_explicit_human_b": 1
+      },
+      "XML_evidence_objects": 2,
+      "cross_format_selected_field_counts": {
+        "equal": 34
+      },
+      "unresolved_evidence_identity_alignment_rows": 0,
+      "source_original_and_copy_match_frozen_hash": true,
+      "XML_reader_version": "v2_5_4",
+      "XML_reader_input_hash_and_bytes_match_HTTP_body": true
+    },
+    {
+      "publication_id": "39972491",
+      "source_physical_rows": 4,
+      "source_evidence_rows": 3,
+      "source_metadata_rows": 1,
+      "source_eligible_rows_under_original_policy": 0,
+      "eligible_source_lines": [],
+      "exclusion_reason_counts_overlapping": {
+        "primary_identifier_missing_or_ambiguous_a": 1,
+        "participant_type_not_only_explicit_protein_a": 1,
+        "primary_identifier_missing_or_ambiguous_b": 3,
+        "participant_type_not_only_explicit_protein_b": 3
+      },
+      "XML_evidence_objects": 2,
+      "cross_format_selected_field_counts": {
+        "equal": 51
+      },
+      "unresolved_evidence_identity_alignment_rows": 0,
+      "source_original_and_copy_match_frozen_hash": true,
+      "XML_reader_version": "v2_5_4",
+      "XML_reader_input_hash_and_bytes_match_HTTP_body": true
+    },
+    {
+      "publication_id": "40555359",
+      "source_physical_rows": 7,
+      "source_evidence_rows": 6,
+      "source_metadata_rows": 1,
+      "source_eligible_rows_under_original_policy": 2,
+      "eligible_source_lines": [
+        2,
+        5
+      ],
+      "exclusion_reason_counts_overlapping": {
+        "primary_identifier_missing_or_ambiguous_a": 4,
+        "participant_taxonomy_not_only_explicit_human_a": 4,
+        "participant_type_not_only_explicit_protein_a": 4
+      },
+      "XML_evidence_objects": 4,
+      "cross_format_selected_field_counts": {
+        "different": 3,
+        "equal": 99
+      },
+      "unresolved_evidence_identity_alignment_rows": 0,
+      "source_original_and_copy_match_frozen_hash": true,
+      "XML_reader_version": "v2_5_4",
+      "XML_reader_input_hash_and_bytes_match_HTTP_body": true
+    }
+  ],
+  "consumed_inventory_scope": "All original consumed development primary participants/pair views/evidence identities plus four historical publication anchors and selected DOI aliases. Broader Pharos/STRING, CIViC, experimental dataset and model pretraining exposure are incomplete; missing annotations are not independence.",
+  "experiment_overlap": "Not assessed. The bounded consumed inventory does not enumerate experiment ACs; retained XML preserves experiment grouping, not a certified independence claim.",
+  "article_status_scope": "Previously recorded PubMed ESummary only; no new article-level correction/retraction audit or clearance.",
+  "historical_results_preserved": true,
+  "model_calls": 0,
+  "gpu_runs": 0,
+  "biological_validation_performed": false,
+  "next_boundary": "A standards-supported comparator repair can be developed on these now-consumed records and invented cases, preserving this failure. A repaired rerun is development, not another unseen final assessment. A fresh final assessment requires a separately predeclared reference.",
+  "artifact_bindings": [
+    {
+      "path": "runs/intact_final_reserved_20261027/execution_freeze.json",
+      "role": "immutable_pre_access_freeze",
+      "bytes": 37740,
+      "sha256": "7c1f59b4696bd5b6f4b7760d22405f04f358fc46dfd7ea5f0464a98de3492788"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/started.json",
+      "role": "fixed_execution_start",
+      "bytes": 240,
+      "sha256": "cb23b67da66829a4e934ac3f92cd68daa2b98534ebacb230bde9ed0d9dd16a16"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/failure.json",
+      "role": "preserved_fail_closed_outcome",
+      "bytes": 330,
+      "sha256": "f4312a242b7c0099a4a0f70dd6f0fc306d97ffd0d877dcff1a3219bb3da78c58"
+    },
+    {
+      "path": "runs/intact_final_reserved_access_20261027.json",
+      "role": "global_one_execution_claim",
+      "bytes": 428,
+      "sha256": "f464aba8320cd9b9bd37b1746871ae6656c5b9da01a08d03fc9bc16dd8c70de9"
+    },
+    {
+      "path": "runs/intact_reader_validation_20261026/controls_attempt_02/report.json",
+      "role": "passing_official_MITAB_reader_controls",
+      "bytes": 3010155,
+      "sha256": "3ffdd7023974addf30b69fd6e35461f507013374182883dfbbe2354e25286ab5"
+    },
+    {
+      "path": "runs/intact_xml_validation_20261026/controls_attempt_03/report.json",
+      "role": "passing_official_XML_reader_controls",
+      "bytes": 68018,
+      "sha256": "a2482a7d1953fb57666250e28e744a1d879eff2404cf7503db122e45cc627a12"
+    },
+    {
+      "path": "runs/intact_final_synthetic_20261027_attempt_02/report.json",
+      "role": "passing_invented_full_flow_controls",
+      "bytes": 11305,
+      "sha256": "83541151513e0c40dafe6bcf9fbd4326231f9ef514a0f5f61d24977666a1386d"
+    },
+    {
+      "path": "runs/intact_final_development_20261027_attempt_02/execution/report.json",
+      "role": "passing_consumed_development_full_flow_replay",
+      "bytes": 14601494,
+      "sha256": "2b8aa2e18b2125b2f07850228541ab462b61e25fb92311a0ffa93250c812be75"
+    },
+    {
+      "path": "runs/intact_final_development_20261027_attempt_02/execution_freeze.json",
+      "role": "consumed_development_freeze",
+      "bytes": 38587,
+      "sha256": "02011d96d62e1b504ecce291007ca13276ce1383de6502253447aa1672b38e6e"
+    },
+    {
+      "path": "docs/evaluations/intact_final_consumed_inventory_20261027.json",
+      "role": "bounded_consumed_inventory",
+      "bytes": 6767,
+      "sha256": "2478de61628d84825f23c594c366888a45d74641bb7dac05e752ebbe6d971eff"
+    },
+    {
+      "path": "runs/intact_fidelity_preparation_20261026/opaque_sources/39833857.txt",
+      "role": "now_consumed_original_MITAB_source",
+      "bytes": 15298,
+      "sha256": "7862a8d068d9a48c9ed9c5b83ed3609419d2fe6f484bb5a1802865204af10eff"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857.txt",
+      "role": "frozen_execution_source_copy",
+      "bytes": 15298,
+      "sha256": "7862a8d068d9a48c9ed9c5b83ed3609419d2fe6f484bb5a1802865204af10eff"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857.xml",
+      "role": "fixed_XML_http_body",
+      "bytes": 87080,
+      "sha256": "89f3101efd2cbb11d5e91eb11fc778ad2081bebe2cc1be58508df80621d03193"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_reader.jsonl",
+      "role": "official_MITAB_reader_stream",
+      "bytes": 98405,
+      "sha256": "0b117f4954c9f082e17795919b92c6007d394602ba8dd6752139a75baea8d421"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_reader.stderr",
+      "role": "official_MITAB_reader_stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.jsonl",
+      "role": "official_XML_reader_stream",
+      "bytes": 62394,
+      "sha256": "dc7377a3f96c35443f6e7923fb322ff6262c207ef34fea80bf0c4cfc45de1a83"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_xml_reader.stderr",
+      "role": "official_XML_reader_stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_exposure_started.json",
+      "role": "per_study_pre_read_exposure_marker",
+      "bytes": 277,
+      "sha256": "33efc5b51d8573fa869293b6a045e8c0e0c61827f0a1cc6e9c7027473c6a44d1"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_retrieval_started.json",
+      "role": "XML_retrieval_start",
+      "bytes": 268,
+      "sha256": "19b2fcaf95f45bf35bd98f90da4b0ce7f550360b365cb59a9d01abf2686d85e0"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_http_receipt.json",
+      "role": "XML_HTTP_receipt",
+      "bytes": 1069,
+      "sha256": "ce019e44c2c8dbb34c3853020adc9a6061f1bf3083c8d9cfd75ec92e07ec5bf5"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39833857_alignment.json",
+      "role": "frozen_cross_format_alignment",
+      "bytes": 18254,
+      "sha256": "95236c966c072c793b3853be0ea232e9f340cb8a2713867f19c3e390dfff08df"
+    },
+    {
+      "path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40211762.txt",
+      "role": "now_consumed_original_MITAB_source",
+      "bytes": 6849,
+      "sha256": "b52e1aeeb39a678d65d61cc7ad2e29e8dff48bc549920ed1f9953da77896428e"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762.txt",
+      "role": "frozen_execution_source_copy",
+      "bytes": 6849,
+      "sha256": "b52e1aeeb39a678d65d61cc7ad2e29e8dff48bc549920ed1f9953da77896428e"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762.xml",
+      "role": "fixed_XML_http_body",
+      "bytes": 76472,
+      "sha256": "133eaaf285764fb237376836ffc690124a3ddb33397e9a9e13e45b2316558988"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_reader.jsonl",
+      "role": "official_MITAB_reader_stream",
+      "bytes": 61209,
+      "sha256": "752d794e5a0d9ed276916c0b8b3aa82cf4611d0e0e6b8049123a759e1a2c5382"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_reader.stderr",
+      "role": "official_MITAB_reader_stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.jsonl",
+      "role": "official_XML_reader_stream",
+      "bytes": 42090,
+      "sha256": "3bd7e68900c0ee2577d68bbe14663519a06cc92f382dbdd86513c3711c04c059"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_xml_reader.stderr",
+      "role": "official_XML_reader_stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_exposure_started.json",
+      "role": "per_study_pre_read_exposure_marker",
+      "bytes": 277,
+      "sha256": "0aadb4535780740d8d23a40e2445ea529e0e936796ee2239db0567f6dec913e1"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_retrieval_started.json",
+      "role": "XML_retrieval_start",
+      "bytes": 268,
+      "sha256": "24eefe19e98f531f37399515950a6692519f3ba61188be44ed535b787563454a"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_http_receipt.json",
+      "role": "XML_HTTP_receipt",
+      "bytes": 1069,
+      "sha256": "9be78196a25347b3b9f40048d5870865b67f25ec9730fa19e9b251f45abe5feb"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40211762_alignment.json",
+      "role": "frozen_cross_format_alignment",
+      "bytes": 12126,
+      "sha256": "60feb7e294b8885ac3180bf668bf5c77f15b7567790dc62c434cb0076090786a"
+    },
+    {
+      "path": "runs/intact_fidelity_preparation_20261026/opaque_sources/39972491.txt",
+      "role": "now_consumed_original_MITAB_source",
+      "bytes": 15693,
+      "sha256": "8839f5e874e5d7c5de16aa8594662f24b9ff19d8bb277d42d5fd0a09bda03317"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491.txt",
+      "role": "frozen_execution_source_copy",
+      "bytes": 15693,
+      "sha256": "8839f5e874e5d7c5de16aa8594662f24b9ff19d8bb277d42d5fd0a09bda03317"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491.xml",
+      "role": "fixed_XML_http_body",
+      "bytes": 76899,
+      "sha256": "e5c9e4f8d2da0225a877ba3fd460ac013d0003278fe858d5f0b42fbbd01d44c9"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_reader.jsonl",
+      "role": "official_MITAB_reader_stream",
+      "bytes": 101691,
+      "sha256": "0a544dbdcf246ffb9607233ea54b7f493605692ec23d0b41cf9e49e220322137"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_reader.stderr",
+      "role": "official_MITAB_reader_stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.jsonl",
+      "role": "official_XML_reader_stream",
+      "bytes": 66378,
+      "sha256": "6e9784d4a0617328369f88650e3234ed7744fccc8bfefc260942da905bd46d05"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_xml_reader.stderr",
+      "role": "official_XML_reader_stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_exposure_started.json",
+      "role": "per_study_pre_read_exposure_marker",
+      "bytes": 277,
+      "sha256": "dc4c2eda5956eb98a0f1e155069829eea3ac671397c54c5e32a7b3ada78cddd1"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_retrieval_started.json",
+      "role": "XML_retrieval_start",
+      "bytes": 268,
+      "sha256": "9c4924fa709af34345c506373353bf22695fffdd787c7d96783f6e49598d982a"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_http_receipt.json",
+      "role": "XML_HTTP_receipt",
+      "bytes": 1069,
+      "sha256": "18b9ea2704ba6f499a04f83714cc424b460fc766113edfbced6561f2f199e470"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/39972491_alignment.json",
+      "role": "frozen_cross_format_alignment",
+      "bytes": 18266,
+      "sha256": "bc9fceffb8085b706c5e59a4d53751cce2db9601ef4fbc52def0b2ea2cda30fb"
+    },
+    {
+      "path": "runs/intact_fidelity_preparation_20261026/opaque_sources/40555359.txt",
+      "role": "now_consumed_original_MITAB_source",
+      "bytes": 23764,
+      "sha256": "77278dbce186867aa257e99196f71f2557bc3f48913e45642ffadd4df132d810"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359.txt",
+      "role": "frozen_execution_source_copy",
+      "bytes": 23764,
+      "sha256": "77278dbce186867aa257e99196f71f2557bc3f48913e45642ffadd4df132d810"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359.xml",
+      "role": "fixed_XML_http_body",
+      "bytes": 215773,
+      "sha256": "2516a409b495f3ccc06be1344fef0cd160e469851d42c5504c4ffaf0c42ea92c"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_reader.jsonl",
+      "role": "official_MITAB_reader_stream",
+      "bytes": 232532,
+      "sha256": "6c9d223abf1290e3fbc7f4e5086aad1d8b9f91af8966adcc1234919e96179a61"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_reader.stderr",
+      "role": "official_MITAB_reader_stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.jsonl",
+      "role": "official_XML_reader_stream",
+      "bytes": 148461,
+      "sha256": "9ca7ac4aba25bde0e4f3498b8cbb1e5f073b9d391240c44b9e42d6828a4d59a0"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_xml_reader.stderr",
+      "role": "official_XML_reader_stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_exposure_started.json",
+      "role": "per_study_pre_read_exposure_marker",
+      "bytes": 277,
+      "sha256": "ec5bc6a39df0bf08bfb966deb40791c7bd987cc405d30878d5d7e479dcb00062"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_retrieval_started.json",
+      "role": "XML_retrieval_start",
+      "bytes": 268,
+      "sha256": "f918db8eb025c32af284c06a527006a515cda00c0427a9c6137f4c265c3cae9d"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_http_receipt.json",
+      "role": "XML_HTTP_receipt",
+      "bytes": 1071,
+      "sha256": "6362fb737b9a00a55ef21687876777c9335afd07e07430f3c30403a0e3a1fcfc"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_alignment.json",
+      "role": "frozen_cross_format_alignment",
+      "bytes": 43247,
+      "sha256": "7c4d4c6bfda77f645787d24d0b8d5f243efb3e1b35ed82be2b9f0158c04df25d"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/execution/40555359_projection_errors.json",
+      "role": "preserved_projection_stop_errors",
+      "bytes": 3050,
+      "sha256": "6cd906df8f3960873cad12ac31b2d62da8b737ba0dbad77611ab9a1fac2864d9"
+    },
+    {
+      "path": "runs/intact_final_reserved_20261027/descriptive_accounting_post_stop.json",
+      "role": "explicit_post_stop_descriptive_accounting_not_a_rescore",
+      "bytes": 4552,
+      "sha256": "c0e080ee313334a5213d526dbe0e3288756646c720b0d367e44bd10f0d5fc127"
+    },
+    {
+      "path": "runs/intact_final_diagnosis_20261027/report.json",
+      "role": "independent_official_semantics_and_captured_projection_diagnosis",
+      "bytes": 11918,
+      "sha256": "7eb6fa7b7f6c4a17aa3449e18ab26d615e99ff36a7986796caddcf8cf280f84f"
+    },
+    {
+      "path": "runs/intact_final_diagnosis_20261027/README.md",
+      "role": "readable_independent_diagnosis",
+      "bytes": 1715,
+      "sha256": "f921708344698991a9e0b8951280126cbd2faad178942b98e0151e744611bbff"
+    }
+  ],
+  "primary_method_sources": [
+    {
+      "title": "PSI-MITAB2.7 column14 identifier semantics",
+      "url": "https://psicquic.github.io/MITAB27Format.html"
+    },
+    {
+      "title": "PSICQUIC data distribution best practices",
+      "url": "https://psicquic.github.io/DataDistributionBestPractices.html"
+    },
+    {
+      "title": "Pinned IntAct interaction identity/reference curation semantics",
+      "url": "https://github.com/intact-portal/intact-portal-documentation/blob/b5d5bb35365739d4942e9ca250a2cf4fbaa14c62/docs/curation-manual/interaction.md"
+    }
+  ],
+  "independent_diagnosis": {
+    "path": "runs/intact_final_diagnosis_20261027/report.json",
+    "sha256": "7eb6fa7b7f6c4a17aa3449e18ab26d615e99ff36a7986796caddcf8cf280f84f",
+    "status": "comparator_integration_defect_confirmed_no_rescore",
+    "raw_sources_retrieved_again": false
+  },
+  "content_sha256": "97460cc876c05ab5d7126d7aac336c0a96823188c8ba6058769f693331ad2f6d"
+}

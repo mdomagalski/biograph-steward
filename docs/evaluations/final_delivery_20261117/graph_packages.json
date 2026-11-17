@@ -1,0 +1,55 @@
+{
+  "format": "biograph-steward.final-graph-delivery-summary.v1",
+  "status": "verified_separate_local_organizer_assets",
+  "source_receipt_sha256": "86989ec4f8f8d738b7b4fca2d17bab3e14f72bd9d798ca6af9cacf801fcce098",
+  "artifacts": [
+    {
+      "path": "output/submission_assets/BioGraph_Steward_Primary_Graph_Decisions_and_Sources.zip",
+      "bytes": 116010784,
+      "sha256": "3d4c407bee250d3c2687a234b654cf8fc3a1e1cd50cda74c30d6154637190efa",
+      "artifact_id": "primary_graph_handoff_20261116",
+      "member_count": 48,
+      "expanded_bytes": 906999204,
+      "whole_archive_matches_prior_HTTPS_transport": true,
+      "all_member_names_sizes_CRC_SHA256_match_published_inventory": true
+    },
+    {
+      "path": "output/submission_assets/BioGraph_Steward_Captured_Pharos_Comparator.zip",
+      "bytes": 26823196,
+      "sha256": "e30e3f268456141f3742e52880eb5641c66d8a00adf70774f0e0e07b949aad2d",
+      "artifact_id": "captured_pharos_comparator_20261116",
+      "member_count": 185,
+      "expanded_bytes": 331698649,
+      "whole_archive_matches_prior_HTTPS_transport": true,
+      "all_member_names_sizes_CRC_SHA256_match_published_inventory": true
+    },
+    {
+      "path": "output/submission_assets/BioGraph_Steward_Applied_Qualification_Companion.zip",
+      "bytes": 130032015,
+      "sha256": "3a163437e3756fb34eb90e644c35a223de0bdb300772bd9dac5a331d7ce1abd1",
+      "artifact_id": "applied_qualification_companion",
+      "member_count": 101,
+      "expanded_bytes": 709920236,
+      "existing_source_packet_and_decisions_unchanged": true,
+      "all_member_names_sizes_CRC_SHA256_match_sealed_packet": true,
+      "full_existing_source_decision_verifier_passed": true,
+      "input_records": 16985,
+      "retained_records": 16687,
+      "decisions": {
+        "keep": 5051,
+        "prune": 298,
+        "abstain": 11636
+      },
+      "new_ZIP_wrapper_only": true,
+      "archive_layout": "sealed packet files at archive root"
+    }
+  ],
+  "original_graphs_and_decisions_changed": false,
+  "model_calls_for_packaging": 0,
+  "source_retrievals_for_packaging": 0,
+  "temporary_transfer_server_and_tunnel_closed": true,
+  "archives_excluded_from_Git": true,
+  "public_graph_publication_performed": false,
+  "organizer_submission_performed": false,
+  "scope": "The enriched primary and separately qualified companion have different inputs. The exact captured Pharos comparator controls source additions to the primary. All original terms and abstentions are preserved."
+}

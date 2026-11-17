@@ -1,0 +1,62 @@
+{
+  "format": "biograph-steward.current-source-agent-publication.v1",
+  "created_at": "2026-11-16T13:34:05.543210+00:00",
+  "evaluation_implementation_commit": "12d70a261ba75920e136d7bba1d42c2391b9228a",
+  "protocol_file_sha256": "6b4724996b1dbd0d3ed55e967e96b86553077c6aaf444c7336953280454e5a36",
+  "plan_file_sha256": "10445acc307eb2bfff2d3edaff18ae5a44e6264563d66743499324143d349fb6",
+  "prepared_file_sha256": "648f4d9e245ebe68946abb925611f1186a0376be6dedf81a7204e00c433d1226",
+  "execution_file_sha256": "f09a28621a89cb566b1f3ae7c5fe5ec63bf7e076788aeb5eb7e1c56b5b756d53",
+  "summary_file_sha256": "37fb80da78272804dccbb26e79807bd10a2ddf6d7c3dc47150d8299629df7f0d",
+  "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+  "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+  "runtime_packages": {
+    "vllm": "0.8.5",
+    "xgrammar": "0.1.18",
+    "outlines": "0.1.11",
+    "outlines_core": "0.1.26"
+  },
+  "engine": "vLLM0.8.5 V0",
+  "tool_and_source_bindings": {
+    "native_evidence_workspace_20261115": {
+      "graph_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+      "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+      "source_inventory_sha256": "f8dca8e87a070e6aa7f3040df204d98cf36ed2f8d6eb010451944765c8931f73",
+      "source_files": 207,
+      "captured_Pharos_only": {
+        "status": "captured_pharos_only_reconstructed",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "nodes": 9714,
+        "edges": 15671,
+        "assertions": 15671,
+        "attached_current_source_tools": [],
+        "membership": "Existing build_graph(snapshot), no civic_snapshot, assay_attachment, extension or qualification overlays.",
+        "interpretation": "Unavailable exact native-source contracts are not biologically false Pharos answers."
+      }
+    },
+    "source_faithful_workspace_20261113": {
+      "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+      "source_inventory_sha256": "4e948c32fc86a154960abaa309e99945f6baa04c583429c1dd50834e31b32c52",
+      "source_files": 394,
+      "captured_Pharos_only": {
+        "status": "captured_pharos_only_reconstructed",
+        "graph_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+        "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+        "primary_targets_equal": true,
+        "nodes": 9714,
+        "edges": 15671,
+        "assertions": 15671,
+        "attached_current_source_tools": [],
+        "membership": "Existing build_graph(snapshot), no civic_snapshot, assay_attachment, extension or qualification overlays.",
+        "interpretation": "Unavailable exact native-source contracts are not biologically false Pharos answers."
+      }
+    }
+  },
+  "featured_actual_job_id": "source_agent_eval_dc7b597201da_S01",
+  "featured_result_sha256": "98e6fe0ab0d4da3eaa9e485db92cd3c68ce288f2c426401ddeb9fc6ad87d585b",
+  "featured_manifest_sha256": "e3bdcc524aefcc533d046965e9dd3e49728823ded677b17a97c81e430df252a1",
+  "full_raw_traces_included": false,
+  "new_biological_accuracy_or_prediction_gain_claimed": false
+}

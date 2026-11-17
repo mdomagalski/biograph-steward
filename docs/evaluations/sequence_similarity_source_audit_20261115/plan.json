@@ -1,0 +1,73 @@
+{
+  "GPU_or_model_calls": 0,
+  "aggregation": "For every declared role pair and each fixed threshold, report directed hit count and number/fraction of query proteins with at least one detected hit. Require both reported qcov and tcov >=0.8. Include zero outcomes.",
+  "created_at": "2026-11-15T07:51:17.555353+00:00",
+  "existing_boundary_unchanged": true,
+  "external_sequence_identifier_requests": 0,
+  "fixed_descriptive_identity_thresholds": [
+    0.3,
+    0.5,
+    0.9
+  ],
+  "format": "biograph-steward.sequence-similarity-source-audit-plan.v1",
+  "interpretation_limits": [
+    "Heuristic sequence search is not an exhaustive proof of no homology.",
+    "A detected similar sequence does not itself establish label leakage or equivalent function.",
+    "The audited fit frame is the combiner fit universe; parent predictor training and base language-model exposure remain separate.",
+    "No outcome scores, labels, fitted parameters, graph assertions, partitions or success gates are changed."
+  ],
+  "new_model_fits": 0,
+  "new_predictions": 0,
+  "published_tool": {
+    "binary_sha256": "b7ef6e0e33df5dd4fa9cf988cbd8b4988c11a3a1255d2c377f13e1bb40c157fb",
+    "commit": "8cc5ce367b5638c4306c2d7cfc652dd099a4643f",
+    "qualification_receipt_sha256": "9032b8419757c7dcc37d54562b980270ce893e9369706d2faf91ce62b621e156",
+    "release": "18-8cc5c",
+    "repository": "https://github.com/soedinglab/MMseqs2",
+    "version_specific_manual": "https://github.com/soedinglab/MMseqs2/wiki/Home/67ba9c6637b4b5121a73e5de034dd0c3414d2b81"
+  },
+  "purpose": "Qualify the existing contextual-combination transfer claim by measuring detected sequence similarity; no new prediction or score assessment.",
+  "reference_terms_performance_metrics_or_case_labels_read": false,
+  "reported_role_pairs": [
+    [
+      "final",
+      "fit"
+    ],
+    [
+      "final",
+      "validation"
+    ],
+    [
+      "validation",
+      "fit"
+    ]
+  ],
+  "roles": {
+    "final": "original 3300 sealed forecast identities and exact T0 inference AA sequences",
+    "fit": "original 4040 admitted fit identities and exact historical forecast AA sequences",
+    "validation": "original 797 admitted validation identities and exact historical forecast AA sequences"
+  },
+  "search": {
+    "alignment_mode": 3,
+    "cov_mode": 0,
+    "coverage_min": 0.8,
+    "evalue_max": 0.001,
+    "format_output": "query,target,fident,alnlen,qcov,tcov,evalue,bits,qlen,tlen",
+    "identity_min": 0.3,
+    "max_seqs": 5000,
+    "query_roles": [
+      "final",
+      "validation"
+    ],
+    "sensitivity": 7.5,
+    "split_memory_limit": "8G",
+    "target_roles": [
+      "fit",
+      "validation"
+    ],
+    "threads": 2,
+    "workflow": "easy-search"
+  },
+  "source_guard": "Verify original input pins and full/first-1022 sequence hashes for every role; no substitution from another sequence epoch. Stop on mismatch.",
+  "source_only": true
+}

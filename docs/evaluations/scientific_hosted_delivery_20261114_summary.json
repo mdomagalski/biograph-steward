@@ -1,0 +1,79 @@
+{
+  "format": "biograph-steward.scientific-hosted-delivery-summary.v1",
+  "created_at": "2026-11-14T07:23:57.344145+00:00",
+  "runtime_commit": "a6a05ffca8f29cdf82e5781b87c6f3d114a430bd",
+  "research_tools_commit": "3e9ea6d",
+  "publication": {
+    "id": "scientific_assessment_reference_20261114",
+    "format": "biograph-steward.scientific-assessment-publication.v4",
+    "file_sha256": "4eb64493a1334ef8f017451cb41c26ee3bb966b1f359e5d3ebd00e1360d2df3e",
+    "content_sha256": "085468d1b6de077ca29bc87bceaa57f9a33eaf6b16f75c3dc0da6a565927bab9",
+    "files": 18,
+    "PK_declared_slots": 240,
+    "PK_scored_slots": 239,
+    "PK_no_native_curve_slots": 1,
+    "BioRED_primary_cases": 128,
+    "BioRED_fixed_arms": 6,
+    "BioRED_gene_secondary_pairs": 16489
+  },
+  "hosted_acceptance": {
+    "protected_API_and_catalogue": true,
+    "two_new_aggregate_source_downloads_and_report_match_saved_bytes": true,
+    "unauthenticated_access_denied": true,
+    "prior_graph_review_question_and_publication_bytes_unchanged": true,
+    "append_only_aggregate_install_no_service_restart": true,
+    "Chrome_actual_sign_in_and_result_display": true,
+    "Chrome_EGFR_contributions_and_CUX1_Q13948_abstention": true,
+    "new_function_and_BioRED_capsules_operator_path_free": true,
+    "inherited_legacy_operator_paths_preserved": true,
+    "raw_BioRED_cases_weights_credentials_uploaded": false
+  },
+  "checkpoint": {
+    "source_graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+    "targets": 99,
+    "retained_evidence": 16687,
+    "saved_answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+    "returned_proteins": 8,
+    "function_queries": 6,
+    "function_display_notes": 36,
+    "native_GO_source_files": 12
+  },
+  "native_backup": {
+    "completed_successfully": true,
+    "archive_bytes": 2063715464,
+    "archive_sha256": "0a8adae32e930fe8e1888ee3809b243d17bbee8c55da5a66aaba0f5b849fefcb",
+    "full_archive_checksum_verified": true
+  },
+  "isolated_recovery": {
+    "status": "SUCCESS_OFFLINE_ISOLATED_RECOVERY_VERIFIED",
+    "source_receipt_file_sha256": "59169a94c6b31c22a0e8cd369103910f8e226dccfbd5a320b512850a725c93e7",
+    "source_receipt_content_sha256": "ea2803e65e6f9809892d729df1ae0aad98eb9a6b779cec0fb189f84ec3c9a69b",
+    "selected_checkpoint_files": 454,
+    "all_selected_file_hashes_match_live": true,
+    "runtime_package_files": 111,
+    "read_only_network_none_container": true,
+    "native_GO_packet_roundtrip": true,
+    "eight_answer_question_export_replay": true,
+    "function_six_queries_36_notes_replay": true,
+    "active_data_configuration_and_container_unchanged": true,
+    "full_VM_or_environment_restore_tested": false,
+    "Neptune_restoration_tested": false,
+    "model_calls": 0,
+    "source_retrievals": 0,
+    "AWS_writes_by_checker": 0,
+    "only_own_temporary_staging_removed": true
+  },
+  "resources": {
+    "Brev_instance_or_model_required_for_saved_review": false,
+    "AWS_reviewer_site_remains_available": true
+  },
+  "separate_local_increment": {
+    "native_GO_new_records": 24,
+    "new_protein_GO_concepts": 21,
+    "new_assertions_remain_candidates": true,
+    "published_to_AWS_as_new_workspace": false,
+    "reason": "Complete local source replay passes; separate mixed-source transfer, gateway acceptance and renewed checkpoint remain a future delivery increment."
+  },
+  "scientific_scope": "Operational acceptance and selected checkpoint replay do not create biological labels or establish whole-graph accuracy. See the separately scoped CAFA5 and BioRED results.",
+  "content_sha256": "4e44355ace91f6383d879f59de94611d247a34d2d484c1c8676569271c01d6ef"
+}

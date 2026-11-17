@@ -1,0 +1,384 @@
+{
+  "format": "contextual.source-to-figure-audit.v1",
+  "status": "passed",
+  "aggregate_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "figure_receipt_sha256": "23082d0930d890ba9826cdb9bd81524b43b848c6db1c814ca3f33319c8f61d42",
+  "audit_source_sha256": "50f88d03eeaaca5e9fc0710f40228eb87b95e4edc728e4f7c7d7b0ca92f7f3cc",
+  "primary_flags_exact": {
+    "primary_success_over_literal_LocalPlus_both_views": true,
+    "primary_success_over_raw_and_soft_LocalPlus_both_views": true,
+    "primary_success_over_nonexperimental_context_both_views": true,
+    "primary_success_beyond_raw_and_soft_seed_refresh_both_views": true,
+    "updated_seed_LocalPlus_gain_raw_and_soft_both_views": false,
+    "current_T0_LocalPlus_gain_both_views": true,
+    "primary_success_beyond_current_T0_curated_LocalPlus_both_views": false,
+    "primary_success_over_all_noncontext_controls_both_views": false
+  },
+  "candidate_and_all_13_control_rows_per_view_exact": true,
+  "saved_intervals_copied_without_resampling": true,
+  "raw_reference_or_forecast_rows_read": false,
+  "views": {
+    "native": {
+      "selected_model": "coded_context_gcn",
+      "candidate_Fmax": 0.07343110845056372,
+      "control_order": [
+        "localplus",
+        "deepgose",
+        "localplus_soft",
+        "deepgose_soft",
+        "equal_mix",
+        "development_alpha_mix",
+        "localplus_model_axis_raw",
+        "deepgose_model_axis_raw",
+        "native_T0_nonexperimental",
+        "localplus_updated_seeds",
+        "localplus_updated_seeds_soft",
+        "fit_label_frequency",
+        "localplus_T0_curated"
+      ],
+      "audited_context_rows": [
+        {
+          "comparator": "localplus",
+          "observed_difference": 0.01869959183563904,
+          "copied_interval": [
+            0.002396196718535321,
+            0.03506946026592423
+          ]
+        },
+        {
+          "comparator": "deepgose",
+          "observed_difference": 0.03700897942201199,
+          "copied_interval": [
+            0.024107049122097494,
+            0.055266553943957665
+          ]
+        },
+        {
+          "comparator": "localplus_soft",
+          "observed_difference": 0.01869959183563904,
+          "copied_interval": [
+            0.002396196718535321,
+            0.03506946026592423
+          ]
+        },
+        {
+          "comparator": "deepgose_soft",
+          "observed_difference": 0.036389901515188804,
+          "copied_interval": [
+            0.023531319947324596,
+            0.055117134493349124
+          ]
+        },
+        {
+          "comparator": "equal_mix",
+          "observed_difference": 0.025276340287384243,
+          "copied_interval": [
+            0.0111701175026805,
+            0.04298715009502002
+          ]
+        },
+        {
+          "comparator": "development_alpha_mix",
+          "observed_difference": 0.01733107465536264,
+          "copied_interval": [
+            0.002409787741190193,
+            0.03349629663190209
+          ]
+        },
+        {
+          "comparator": "localplus_model_axis_raw",
+          "observed_difference": 0.01869959183563904,
+          "copied_interval": [
+            0.002396196718535321,
+            0.03506946026592423
+          ]
+        },
+        {
+          "comparator": "deepgose_model_axis_raw",
+          "observed_difference": 0.03700897942201199,
+          "copied_interval": [
+            0.024107049122097494,
+            0.055266553943957665
+          ]
+        },
+        {
+          "comparator": "native_T0_nonexperimental",
+          "observed_difference": 0.047955464932863304,
+          "copied_interval": [
+            0.03525265828354189,
+            0.06674141182762425
+          ]
+        },
+        {
+          "comparator": "localplus_updated_seeds",
+          "observed_difference": 0.018135349979811408,
+          "copied_interval": [
+            0.0023672875698890115,
+            0.03465031885444492
+          ]
+        },
+        {
+          "comparator": "localplus_updated_seeds_soft",
+          "observed_difference": 0.018135349979811408,
+          "copied_interval": [
+            0.0023672875698890115,
+            0.03465031885444492
+          ]
+        },
+        {
+          "comparator": "fit_label_frequency",
+          "observed_difference": 0.04084743570397261,
+          "copied_interval": [
+            0.024385662812380148,
+            0.06206442102073667
+          ]
+        },
+        {
+          "comparator": "localplus_T0_curated",
+          "observed_difference": 0.014593452350659779,
+          "copied_interval": [
+            -0.0019046962634954936,
+            0.03200352643444085
+          ]
+        }
+      ],
+      "audited_source_update_rows": [
+        {
+          "view": "native",
+          "title": "Native ontology",
+          "setting": "PK",
+          "namespace": "biological_process",
+          "candidate": "localplus_updated_seeds",
+          "comparator": "localplus",
+          "label": "Updated fit labels: raw",
+          "candidate_Fmax": 0.05529575847075231,
+          "comparator_Fmax": 0.05473151661492468,
+          "point_difference": 0.000564241855827631,
+          "paired_95_percentile_interval": [
+            -0.0010384935807803623,
+            0.0028394394359043643
+          ],
+          "raw_reference_proteins": 1954,
+          "residual_reference_proteins": 322
+        },
+        {
+          "view": "native",
+          "title": "Native ontology",
+          "setting": "PK",
+          "namespace": "biological_process",
+          "candidate": "localplus_updated_seeds_soft",
+          "comparator": "localplus_soft",
+          "label": "Updated fit labels: soft",
+          "candidate_Fmax": 0.05529575847075231,
+          "comparator_Fmax": 0.05473151661492468,
+          "point_difference": 0.000564241855827631,
+          "paired_95_percentile_interval": [
+            -0.0010384935807803623,
+            0.0028394394359043643
+          ],
+          "raw_reference_proteins": 1954,
+          "residual_reference_proteins": 322
+        },
+        {
+          "view": "native",
+          "title": "Native ontology",
+          "setting": "PK",
+          "namespace": "biological_process",
+          "candidate": "localplus_T0_curated",
+          "comparator": "localplus",
+          "label": "Complete T0 curated: raw",
+          "candidate_Fmax": 0.05883765609990394,
+          "comparator_Fmax": 0.05473151661492468,
+          "point_difference": 0.00410613948497926,
+          "paired_95_percentile_interval": [
+            0.0009633830754390792,
+            0.007544371897042172
+          ],
+          "raw_reference_proteins": 1954,
+          "residual_reference_proteins": 322
+        }
+      ]
+    },
+    "fixed_T0": {
+      "selected_model": "coded_context_gcn",
+      "candidate_Fmax": 0.210093339661446,
+      "control_order": [
+        "localplus",
+        "deepgose",
+        "localplus_soft",
+        "deepgose_soft",
+        "equal_mix",
+        "development_alpha_mix",
+        "localplus_model_axis_raw",
+        "deepgose_model_axis_raw",
+        "native_T0_nonexperimental",
+        "localplus_updated_seeds",
+        "localplus_updated_seeds_soft",
+        "fit_label_frequency",
+        "localplus_T0_curated"
+      ],
+      "audited_context_rows": [
+        {
+          "comparator": "localplus",
+          "observed_difference": 0.038543745591555434,
+          "copied_interval": [
+            0.008029563587861582,
+            0.06913900376583124
+          ]
+        },
+        {
+          "comparator": "deepgose",
+          "observed_difference": 0.07870238854784467,
+          "copied_interval": [
+            0.051899722540760036,
+            0.10805563140049013
+          ]
+        },
+        {
+          "comparator": "localplus_soft",
+          "observed_difference": 0.038543745591555434,
+          "copied_interval": [
+            0.008029563587861582,
+            0.06913900376583124
+          ]
+        },
+        {
+          "comparator": "deepgose_soft",
+          "observed_difference": 0.07800320757131393,
+          "copied_interval": [
+            0.050545845339033654,
+            0.10729480907614015
+          ]
+        },
+        {
+          "comparator": "equal_mix",
+          "observed_difference": 0.04513582427908444,
+          "copied_interval": [
+            0.018634262774740704,
+            0.07569440122755423
+          ]
+        },
+        {
+          "comparator": "development_alpha_mix",
+          "observed_difference": 0.0320636169710829,
+          "copied_interval": [
+            0.0031408766690300865,
+            0.06260288689525763
+          ]
+        },
+        {
+          "comparator": "localplus_model_axis_raw",
+          "observed_difference": 0.038543745591555434,
+          "copied_interval": [
+            0.008029563587861582,
+            0.06913900376583124
+          ]
+        },
+        {
+          "comparator": "deepgose_model_axis_raw",
+          "observed_difference": 0.07870238854784467,
+          "copied_interval": [
+            0.051899722540760036,
+            0.10805563140049013
+          ]
+        },
+        {
+          "comparator": "native_T0_nonexperimental",
+          "observed_difference": 0.06392424546167008,
+          "copied_interval": [
+            0.043943361492509,
+            0.08586677795477063
+          ]
+        },
+        {
+          "comparator": "localplus_updated_seeds",
+          "observed_difference": 0.03490674622390197,
+          "copied_interval": [
+            0.004884981271375094,
+            0.06621257562626565
+          ]
+        },
+        {
+          "comparator": "localplus_updated_seeds_soft",
+          "observed_difference": 0.03490674622390197,
+          "copied_interval": [
+            0.004884981271375094,
+            0.06621257562626565
+          ]
+        },
+        {
+          "comparator": "fit_label_frequency",
+          "observed_difference": 0.10281604982455765,
+          "copied_interval": [
+            0.06555286799749026,
+            0.1409694259061394
+          ]
+        },
+        {
+          "comparator": "localplus_T0_curated",
+          "observed_difference": 0.027322016340391858,
+          "copied_interval": [
+            -0.004239411749048672,
+            0.0595693381796736
+          ]
+        }
+      ],
+      "audited_source_update_rows": [
+        {
+          "view": "fixed_T0",
+          "title": "Fixed-T0 sensitivity",
+          "setting": "PK",
+          "namespace": "biological_process",
+          "candidate": "localplus_updated_seeds",
+          "comparator": "localplus",
+          "label": "Updated fit labels: raw",
+          "candidate_Fmax": 0.17518659343754403,
+          "comparator_Fmax": 0.17154959406989057,
+          "point_difference": 0.003636999367653465,
+          "paired_95_percentile_interval": [
+            5.591514130151716e-05,
+            0.006006898074053461
+          ],
+          "raw_reference_proteins": 319,
+          "residual_reference_proteins": 319
+        },
+        {
+          "view": "fixed_T0",
+          "title": "Fixed-T0 sensitivity",
+          "setting": "PK",
+          "namespace": "biological_process",
+          "candidate": "localplus_updated_seeds_soft",
+          "comparator": "localplus_soft",
+          "label": "Updated fit labels: soft",
+          "candidate_Fmax": 0.17518659343754403,
+          "comparator_Fmax": 0.17154959406989057,
+          "point_difference": 0.003636999367653465,
+          "paired_95_percentile_interval": [
+            5.591514130151716e-05,
+            0.006006898074053461
+          ],
+          "raw_reference_proteins": 319,
+          "residual_reference_proteins": 319
+        },
+        {
+          "view": "fixed_T0",
+          "title": "Fixed-T0 sensitivity",
+          "setting": "PK",
+          "namespace": "biological_process",
+          "candidate": "localplus_T0_curated",
+          "comparator": "localplus",
+          "label": "Complete T0 curated: raw",
+          "candidate_Fmax": 0.18277132332105414,
+          "comparator_Fmax": 0.17154959406989057,
+          "point_difference": 0.011221729251163576,
+          "paired_95_percentile_interval": [
+            0.0042134440313396125,
+            0.017655958722004837
+          ],
+          "raw_reference_proteins": 319,
+          "residual_reference_proteins": 319
+        }
+      ]
+    }
+  }
+}

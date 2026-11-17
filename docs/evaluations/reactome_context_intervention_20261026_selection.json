@@ -1,0 +1,316 @@
+{
+  "activity": {
+    "aws_used": false,
+    "brev_used": false,
+    "language_model_requests": 0,
+    "model_fitting": false,
+    "new_assay_scoring": false,
+    "new_intact_data_or_code_adoption": false,
+    "new_learner_implementation": false,
+    "old_contracts_modified": false,
+    "reserved_intact_interaction_bodies_listed_read_hashed_or_queried": false
+  },
+  "archived_growth_report": {
+    "bytes": 11189,
+    "git_commit": "602681bc82417720e7a465bd19db7a7500c88f38",
+    "path": "docs/evaluations/CRC_FRESH_COMPARISON_20261020.md",
+    "sha256": "3b29f9afd201a24c5ddd84611e37fb209c44065af40929143fbc831ad487825b"
+  },
+  "arms": [
+    {
+      "adjacency": "Original HuRI scaffold plus frozen reviewed-product links and restricted qualified Pharos GO annotations; no added GO hierarchy.",
+      "id": "rgcn_baseline"
+    },
+    {
+      "adjacency": "Same baseline plus exact source-listed Reactome product-to-pathway membership edges only.",
+      "id": "rgcn_reactome"
+    }
+  ],
+  "coverage_only_diagnostic": {
+    "denominator": "The same original 1,751 complete-scored off-diagonal pairs.",
+    "interpretation": "Annotation-availability ranking only; neither this diagnostic nor a positive R-GCN mean AP change identifies a causal mechanism.",
+    "outcome_fitting": false,
+    "score": "Number of original gene endpoints having at least one eligible Reactome membership through any frozen reviewed-product context mapping: 0, 1 or 2.",
+    "status": "Predeclared descriptive diagnostic, not a third trained arm or primary success criterion.",
+    "ties": "Retain tied scores; use unchanged scikit-learn AP/ROC-AUC definitions.",
+    "zero_means": "Missing eligible membership context, not biological absence."
+  },
+  "evaluation": {
+    "formal_significance_claim": false,
+    "mean_ap_is_causal_effect": false,
+    "missing_or_nonfinite_score": "Block headline metrics; preserve failure and denominator.",
+    "pair_score": "Arithmetic mean of scores in both orientations.",
+    "primary_contrast": "rgcn_reactome minus rgcn_baseline, paired within seed",
+    "primary_metric": "average_precision",
+    "report_mean_and_all_seed_deltas": true,
+    "secondary_metric": "roc_auc",
+    "uncertainty": "Descriptive leave-one-original-gene-out influence; shared-gene pair dependence prevents an independent-pair significance interpretation."
+  },
+  "format": "biograph-steward.reactome-context-intervention-selection.v1",
+  "fully_frozen": false,
+  "historical_bindings": [
+    {
+      "bytes": 10883,
+      "path": "docs/evaluations/inmc_pharos_uniform_20261022_summary.json",
+      "sha256": "fa2f3cc5c7510f8ccbac010e392fd6b353b83104beed903db7008a796befdc52"
+    },
+    {
+      "bytes": 7517,
+      "path": "docs/evaluations/inmc_paired_graph_20261023_summary.json",
+      "sha256": "027ca01823dcd0fb6f0ba6c8f94fb0bd3a6429c7c9daf1e78adc15a2a9d5f469"
+    },
+    {
+      "bytes": 8771,
+      "path": "docs/evaluations/inmc_comparison_20261023_summary.json",
+      "sha256": "f35cbb171e2344f07289baffbc653afd2919622b4236e3d5979c18935e6caa5f"
+    },
+    {
+      "bytes": 4825,
+      "path": "docs/evaluations/inmc_assay_contract_20261022.json",
+      "sha256": "af69729fae9ced83651b4dc4912e82bd2c03de51c53ab3ae3c0819d79388a4a7"
+    },
+    {
+      "bytes": 5492,
+      "path": "runs/inmc_paired_graphs_20261023/frozen_cpu/protocol.json",
+      "sha256": "606fdc338cdf2b8189ce082a7a20426be30dbbdd6a781757f4f86bf11b181592"
+    },
+    {
+      "bytes": 17243,
+      "path": "runs/inmc_paired_graphs_20261023/frozen_cpu/report.json",
+      "sha256": "d3e69ca5eebca33c7fb7d1f74b0d06f28cfb53f781521ab92e495ebbe550f5d4"
+    },
+    {
+      "bytes": 1954447,
+      "path": "runs/inmc_paired_graphs_20261023/frozen_cpu/candidates.json",
+      "sha256": "11a9d52d38d8e6e78732e96cc4b408974fdaa8e5468499396ecc9fad36899e0d"
+    },
+    {
+      "bytes": 4552405,
+      "path": "runs/inmc_paired_graphs_20261023/frozen_cpu/split.json",
+      "sha256": "a9a9cb6365516fd1079e3569e8d54957cfe3b4aab5fcb6600d0cd67f584737d5"
+    },
+    {
+      "bytes": 4273968,
+      "path": "runs/inmc_paired_graphs_20261023/frozen_cpu/supervision.tsv",
+      "sha256": "8591a1ca9a684f8e4f4595176495746a9a5cdf27096b99b35f04d5c6fd9de3bc"
+    },
+    {
+      "bytes": 2640,
+      "path": "runs/inmc_comparison_20261023/scored/exposure_started.json",
+      "sha256": "23330c4002e1d5919d9c4e745d2c64606675117321f8495cd8577d0567468992"
+    },
+    {
+      "bytes": 29777,
+      "path": "scripts/prepare_inmc_graphs.py",
+      "sha256": "a1c82d0eb9684f33fc84c47c3d35eea43877872959e5caa311344378ef90721e"
+    },
+    {
+      "bytes": 31041,
+      "path": "scripts/run_inmc_comparison.py",
+      "sha256": "906abcfb6b01c18c27bfecc04d8364718589ca7d59e7976e619836804d5674ac"
+    },
+    {
+      "bytes": 22802,
+      "path": "scripts/score_inmc_comparison.py",
+      "sha256": "4eddc9aefe2232ffbf75413fc58e63d387b3e048f86142e1db1df863d71e364b"
+    },
+    {
+      "bytes": 18127,
+      "path": "biograph_steward/inmc_outcomes.py",
+      "sha256": "081aad215925a0b7031078d5d77e34d108ca74b58f63fbebeae382ca079e7ce3"
+    },
+    {
+      "bytes": 14340,
+      "path": "biograph_steward/standard_export.py",
+      "sha256": "3dfb946184fe0334decd0df1e5f14c75231d969a70d6370a71cc9ea570f22513"
+    },
+    {
+      "bytes": 33169,
+      "path": "biograph_steward/graph.py",
+      "sha256": "26265acf7a7e55934ee399aefc7749ff0ed09fdabb0c6e9d49b5210f83a3ecd0"
+    },
+    {
+      "bytes": 9623,
+      "path": "docs/EXPERIMENT_HISTORY.md",
+      "sha256": "43ec3699ec5a0366f3dcaed0bd525d762334e7c73cdce0cfd9e7d79d7f9c608f"
+    }
+  ],
+  "hypothesis": "Typed functional pathway context may improve assay-detection ranking over the same restricted graph; no gain is presumed.",
+  "learner": {
+    "activation": "relu",
+    "batching": "Native BatchedSLCWAInstances (sampler=None), shuffled, drop_last=False",
+    "edge_dropout": null,
+    "embedding_dim": 32,
+    "library": "PyKEEN",
+    "loss": "SoftplusLoss",
+    "model": "RGCN",
+    "negative_sampler": "Native PseudoTypedNegativeSampler with PythonSetFilterer",
+    "num_bases": 4,
+    "num_layers": 3,
+    "self_loop_dropout": 0.0,
+    "torch_version": "2.6.0",
+    "version": "1.11.1"
+  },
+  "literature": [
+    {
+      "note": "2026 Reactome article and functional-context scope checked through web retrieval; raw HTTP request returned403 and is preserved.",
+      "role": "Current primary resource description",
+      "url": "https://academic.oup.com/nar/article/54/D1/D673/8326464"
+    },
+    {
+      "role": "Official meaning of Reactome reactions, pathway entities and molecular forms",
+      "url": "https://reactome.org/documentation/data-model"
+    },
+    {
+      "role": "Official distinction between pathway mappings and derived interaction exports",
+      "url": "https://reactome.org/download-data/"
+    },
+    {
+      "role": "Primary co-pathway PPI methodology motivation, not an adopted pipeline",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3851814/"
+    },
+    {
+      "code_copied_or_installed": false,
+      "license": "GPL-2",
+      "package_version": "1.9",
+      "role": "Inspected published-method source",
+      "url": "https://github.com/cran/ppiPre/blob/7d866f8362cbec234ca6a69768fef234ceb9f81c/R/GOKEGGSims.r"
+    },
+    {
+      "role": "Primary biomedical KG evaluation leakage and internal/external distinction",
+      "url": "https://academic.oup.com/bioinformatics/article/42/8/btag608/8767164"
+    }
+  ],
+  "paired_invariants": [
+    "Same union entity and relation ledgers, including the new pathway entities and membership relation in both arms.",
+    "Same positive supervision, candidate identities, original eligibility, development split, equivalent-identity masks and accepted negative-corruption filtering.",
+    "Same per-seed initial model parameters, positive minibatch schedules and optimizer update counts.",
+    "Rerun the baseline within this new paired vocabulary; do not substitute historical predictions.",
+    "No arm-specific candidate removal for missing Reactome or GO context."
+  ],
+  "population": {
+    "eligibility_changed": false,
+    "first_original_outcome_access_utc": "2026-10-23T15:10:21.168035+00:00",
+    "missing_context_drops_pairs": false,
+    "nominated_pairs": 3276,
+    "nondetection_pairs": 1014,
+    "original_complete_scored_off_diagonal_pairs": 1751,
+    "original_exposure_ledger": {
+      "bytes": 2640,
+      "path": "runs/inmc_comparison_20261023/scored/exposure_started.json",
+      "sha256": "23330c4002e1d5919d9c4e745d2c64606675117321f8495cd8577d0567468992"
+    },
+    "panel_consumed": true,
+    "positive_pairs": 737
+  },
+  "predictor_exclusions": [
+    "All direct Pharos protein-protein interaction records.",
+    "All IntAct development and reserved observations and any IntAct-derived outcome features.",
+    "INMC/Lambourne assay labels, author-positive flags and known derivatives of those evaluation outcomes.",
+    "Current GOA annotations beyond the original shared conservative exclusion diagnostics.",
+    "Co-pathway-derived protein-pair labels or inferred binding edges.",
+    "New source releases, source-threshold searches and post-result policy changes."
+  ],
+  "preflight_before_execution_freeze": [
+    "Verify bound saved source manifests and exact stable-ID membership projection, duplicate handling and source dispositions.",
+    "Keep actual eligible edge counts and original endpoint coverage visible; do not tune source filters using outcome associations.",
+    "Verify unchanged original candidates, eligibility, supervision and masks, and exclude knowingly loaded outcome derivatives.",
+    "Verify paired vocabulary, message-passing behavior, initialization, positive minibatch schedules and update counts with synthetic controls.",
+    "Pass intended-runtime resource check without undeclared assay scoring.",
+    "Seal a new packet binding exact graphs, implementation, scorer, source manifests and runtime; do not reseal historical packets."
+  ],
+  "prior_results": {
+    "crc_coverage_only_spearman": 0.2961,
+    "crc_full_restricted_pharos_spearman": 0.2607,
+    "crc_growth_endpoint": "Ridge ranking of continuous DepMap growth, pathway-only versus full restricted context.",
+    "crc_pathways_only_spearman": 0.2635,
+    "crc_primary_improvement_rule_passed": false,
+    "inmc_go_hierarchy_consistent_gain_demonstrated": false,
+    "prior_results_changed": false
+  },
+  "same_information_control_note": "This two-arm experiment is the simple-addition test; there is no fabricated third qualification/filter arm.",
+  "selected_on_local_date": "2026-10-26",
+  "selection": "Add only exact Reactome product-to-pathway memberships already retrieved from Pharos to the unchanged restricted Pharos/GO R-GCN graph.",
+  "source_independence_limit": "No direct PPI inputs does not certify removal of all reference-derived pathway context; Reactome import release and study lineage remain unknown.",
+  "source_inventory": {
+    "actual_eligible_learner_projection_counts": null,
+    "actual_endpoint_coverage": null,
+    "available_reactome_counts": {
+      "distinct_product_pathway_memberships": 11138,
+      "invalid_human_stable_ids": 0,
+      "pathway_stable_ids": 1490,
+      "pharos_pathway_id_to_multiple_stable_id_conflicts": 0,
+      "products": 982,
+      "source_rows": 11138,
+      "stable_id_label_conflicts": 0
+    },
+    "db_version": "pharos319",
+    "import_release_verified": false,
+    "metadata_files": [
+      {
+        "bytes": 26410,
+        "path": "runs/inmc_pharos_uniform_20261022/retrieval/plan.json",
+        "sha256": "cf0e5ba6543310587ee6fdfede3652b58a31a7c59f1926780d9c04512704dc6e"
+      },
+      {
+        "bytes": 29428,
+        "path": "runs/inmc_pharos_uniform_20261022/retrieval/source.json",
+        "sha256": "f97e9a45eb048eea48fa99e59e579a54ab2e23a3fc77d9c86aa2d70f8231076e"
+      },
+      {
+        "bytes": 8869,
+        "path": "runs/inmc_pharos_uniform_20261022/retrieval/summary.json",
+        "sha256": "b30e94fffd4fca897142ae45a3a095ad70f2d66817f45a46fcc320346371dcf6"
+      },
+      {
+        "bytes": 415801,
+        "path": "runs/inmc_pharos_uniform_20261022/retrieval/context_targets.json",
+        "sha256": "d671121dc17dafbafeed1963d22d9b0fa42751381364ab98da2249b0c3d4f187"
+      },
+      {
+        "bytes": 270657,
+        "path": "runs/inmc_pharos_uniform_20261022/retrieval/gene_coverage.json",
+        "sha256": "a93166b5881145f3716b57b9259794967d1439daaa7dd6537725ea56a8877a05"
+      }
+    ],
+    "projection_count_status": "Unknown until source and learner-projection preflight.",
+    "selection_source_check": {
+      "bytes": 11801,
+      "path": "runs/reactome_context_selection_20261026/source_check.json",
+      "sha256": "9ffb90d584cead3826e0744156468e65c1425cc186e2484cf6c80a3be68f3d1d"
+    },
+    "snapshot": "runs/inmc_pharos_uniform_20261022/retrieval",
+    "snapshot_postdates_assays": true,
+    "study_lineage_verified": false
+  },
+  "status": "selected_preflight_and_execution_freeze_pending",
+  "stopping": {
+    "after_fixed_result": "Report every paired change and stop; no cohort, threshold, seed, model or feature sweep.",
+    "automatic_keep_prune_authorized": false,
+    "comparisons": 1,
+    "consistent_favorable_change": "Internal development evidence only; independent confirmation remains necessary before external/general biological-improvement claims.",
+    "invalid_input_or_prediction": "Block scientific metrics; preserve failed attempt and repair integration with synthetic controls before an explicit new receipt.",
+    "mixed_negligible_or_negative_change": "Close this candidate as no demonstrated development gain."
+  },
+  "task": "Retrospective development ranking of recorded complete-scored off-diagonal INMC Y2H detection.",
+  "timezone": "America/New_York",
+  "training": {
+    "arms": 2,
+    "batch_size": 4096,
+    "contingent_on_intended_runtime_resource_preflight": true,
+    "early_stopping": false,
+    "hyperparameter_search": false,
+    "learning_rate": 0.001,
+    "num_epochs": 20,
+    "num_negs_per_pos": 16,
+    "optimizer": "Adam",
+    "optimizer_updates_per_arm_seed": 500,
+    "planned_full_runs": 6,
+    "planned_total_optimizer_updates": 3000,
+    "seeds": [
+      17,
+      43,
+      101
+    ]
+  }
+}

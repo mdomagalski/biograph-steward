@@ -1,0 +1,3426 @@
+{
+  "format": "biograph-steward.cafa5-NK-LK-standalone-assessment.v1",
+  "created_at": "2026-11-14T06:41:03.527693+00:00",
+  "title": "Temporal function recovery across different knowledge states",
+  "scope": "Post-PK transport of locked source profiles to exact native CAFA NK/LK protein/aspect frames. The five-arm comparison and separately selected GM supplement stay distinct; all six setting/aspect outcomes are retained.",
+  "expected_outcome_slots": 36,
+  "status_counts": {
+    "scored": 36
+  },
+  "rows": [
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "biological_process",
+      "method": "strict_alias_localplus",
+      "author_recognized_target_IDs": 44,
+      "eligible_proteins": 44,
+      "IA_eligible_proteins": 44,
+      "TOI_reference_pairs": 831,
+      "raw_released_target_IDs": 44,
+      "raw_released_annotation_rows": 994,
+      "status": "scored",
+      "source_curve_sha256": "11ef4488a5c2acde06456a006679da6b1ab309904b1cc56a251b24434154e8f1",
+      "native_curve_rows": 758,
+      "micro_Fmax": 0.32017870439314966,
+      "micro_Fmax_tau": 0.23500000000000001,
+      "IA_micro_Fmax": 0.26929823413104875,
+      "IA_micro_Fmax_tau": 0.169,
+      "macro_Fmax": 0.324620573070224,
+      "macro_Fmax_tau": 0.169,
+      "IA_macro_Fmax": 0.2948706136766593,
+      "IA_macro_Fmax_tau": 0.169,
+      "unweighted_Smin": 15.250152417609817,
+      "unweighted_Smin_tau": 0.28600000000000003,
+      "IA_weighted_Smin": 14.735276971610423,
+      "IA_weighted_Smin_tau": 0.23700000000000002,
+      "prediction_coverage_at_micro_Fmax": 0.8409090909090909,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.7640449438202248,
+        "recall": 0.08182912154031287,
+        "F1": 0.14782608695652172,
+        "coverage": 0.4090909090909091
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "molecular_function",
+      "method": "strict_alias_localplus",
+      "author_recognized_target_IDs": 39,
+      "eligible_proteins": 39,
+      "IA_eligible_proteins": 39,
+      "TOI_reference_pairs": 297,
+      "raw_released_target_IDs": 39,
+      "raw_released_annotation_rows": 340,
+      "status": "scored",
+      "source_curve_sha256": "11ef4488a5c2acde06456a006679da6b1ab309904b1cc56a251b24434154e8f1",
+      "native_curve_rows": 950,
+      "micro_Fmax": 0.39999999999999997,
+      "micro_Fmax_tau": 0.298,
+      "IA_micro_Fmax": 0.3090221967740426,
+      "IA_micro_Fmax_tau": 0.17500000000000002,
+      "macro_Fmax": 0.30797639443874825,
+      "macro_Fmax_tau": 0.167,
+      "IA_macro_Fmax": 0.2809049955208274,
+      "IA_macro_Fmax_tau": 0.17500000000000002,
+      "unweighted_Smin": 5.5853899771261455,
+      "unweighted_Smin_tau": 0.298,
+      "IA_weighted_Smin": 10.110703894970277,
+      "IA_weighted_Smin_tau": 0.298,
+      "prediction_coverage_at_micro_Fmax": 0.9743589743589743,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.3402061855670103,
+        "recall": 0.11111111111111112,
+        "F1": 0.16751269035532998,
+        "coverage": 0.9743589743589743
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "cellular_component",
+      "method": "strict_alias_localplus",
+      "author_recognized_target_IDs": 118,
+      "eligible_proteins": 118,
+      "IA_eligible_proteins": 118,
+      "TOI_reference_pairs": 1088,
+      "raw_released_target_IDs": 118,
+      "raw_released_annotation_rows": 1213,
+      "status": "scored",
+      "source_curve_sha256": "11ef4488a5c2acde06456a006679da6b1ab309904b1cc56a251b24434154e8f1",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.6137184115523466,
+      "micro_Fmax_tau": 0.356,
+      "IA_micro_Fmax": 0.3613882906828637,
+      "IA_micro_Fmax_tau": 0.356,
+      "macro_Fmax": 0.671411044512072,
+      "macro_Fmax_tau": 0.40900000000000003,
+      "IA_macro_Fmax": 0.5036712959955146,
+      "IA_macro_Fmax_tau": 0.35000000000000003,
+      "unweighted_Smin": 4.8123730335777415,
+      "unweighted_Smin_tau": 0.438,
+      "IA_weighted_Smin": 5.005794139189441,
+      "IA_weighted_Smin_tau": 0.444,
+      "prediction_coverage_at_micro_Fmax": 0.9152542372881356,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.6894243641231593,
+        "recall": 0.47334558823529416,
+        "F1": 0.561307901907357,
+        "coverage": 0.8559322033898306
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "biological_process",
+      "method": "official_blast",
+      "author_recognized_target_IDs": 44,
+      "eligible_proteins": 44,
+      "IA_eligible_proteins": 44,
+      "TOI_reference_pairs": 831,
+      "raw_released_target_IDs": 44,
+      "raw_released_annotation_rows": 994,
+      "status": "scored",
+      "source_curve_sha256": "6c9762f89a35a4240cd63dac4b566f02ff401e1c48a7a05c67f0cd1d9c6b766c",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.23034934497816598,
+      "micro_Fmax_tau": 0.706,
+      "IA_micro_Fmax": 0.19439830962351232,
+      "IA_micro_Fmax_tau": 0.706,
+      "macro_Fmax": 0.2725701785076006,
+      "macro_Fmax_tau": 0.509,
+      "IA_macro_Fmax": 0.23751357490743938,
+      "IA_macro_Fmax_tau": 0.631,
+      "unweighted_Smin": 18.04107457722035,
+      "unweighted_Smin_tau": 0.879,
+      "IA_weighted_Smin": 16.96847011022235,
+      "IA_weighted_Smin_tau": 0.879,
+      "prediction_coverage_at_micro_Fmax": 0.4318181818181818,
+      "fixed_0_5": {
+        "filename": "official_blast.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.1216842105263158,
+        "recall": 0.34777376654632974,
+        "F1": 0.1802869619463506,
+        "coverage": 0.7045454545454546
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "molecular_function",
+      "method": "official_blast",
+      "author_recognized_target_IDs": 39,
+      "eligible_proteins": 39,
+      "IA_eligible_proteins": 39,
+      "TOI_reference_pairs": 297,
+      "raw_released_target_IDs": 39,
+      "raw_released_annotation_rows": 340,
+      "status": "scored",
+      "source_curve_sha256": "6c9762f89a35a4240cd63dac4b566f02ff401e1c48a7a05c67f0cd1d9c6b766c",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.4131944444444445,
+      "micro_Fmax_tau": 0.556,
+      "IA_micro_Fmax": 0.2778547651634398,
+      "IA_micro_Fmax_tau": 0.491,
+      "macro_Fmax": 0.37082825170794476,
+      "macro_Fmax_tau": 0.491,
+      "IA_macro_Fmax": 0.3659994345595054,
+      "IA_macro_Fmax_tau": 0.517,
+      "unweighted_Smin": 5.997643631091737,
+      "unweighted_Smin_tau": 0.637,
+      "IA_weighted_Smin": 11.297998086144906,
+      "IA_weighted_Smin_tau": 0.637,
+      "prediction_coverage_at_micro_Fmax": 0.46153846153846156,
+      "fixed_0_5": {
+        "filename": "official_blast.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.3308457711442786,
+        "recall": 0.4478114478114478,
+        "F1": 0.3805436337625179,
+        "coverage": 0.6153846153846154
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "cellular_component",
+      "method": "official_blast",
+      "author_recognized_target_IDs": 118,
+      "eligible_proteins": 118,
+      "IA_eligible_proteins": 118,
+      "TOI_reference_pairs": 1088,
+      "raw_released_target_IDs": 118,
+      "raw_released_annotation_rows": 1213,
+      "status": "scored",
+      "source_curve_sha256": "6c9762f89a35a4240cd63dac4b566f02ff401e1c48a7a05c67f0cd1d9c6b766c",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.44259077526987245,
+      "micro_Fmax_tau": 0.587,
+      "IA_micro_Fmax": 0.3127433141551231,
+      "IA_micro_Fmax_tau": 0.636,
+      "macro_Fmax": 0.5615391556419004,
+      "macro_Fmax_tau": 0.47700000000000004,
+      "IA_macro_Fmax": 0.46919563003236225,
+      "IA_macro_Fmax_tau": 0.483,
+      "unweighted_Smin": 6.625151426778912,
+      "unweighted_Smin_tau": 0.636,
+      "IA_weighted_Smin": 5.797664597752345,
+      "IA_weighted_Smin_tau": 0.781,
+      "prediction_coverage_at_micro_Fmax": 0.5254237288135594,
+      "fixed_0_5": {
+        "filename": "official_blast.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.36381450032658397,
+        "recall": 0.5119485294117647,
+        "F1": 0.4253531882397862,
+        "coverage": 0.6610169491525424
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "biological_process",
+      "method": "official_prott5_cosine3",
+      "author_recognized_target_IDs": 44,
+      "eligible_proteins": 44,
+      "IA_eligible_proteins": 44,
+      "TOI_reference_pairs": 831,
+      "raw_released_target_IDs": 44,
+      "raw_released_annotation_rows": 994,
+      "status": "scored",
+      "source_curve_sha256": "3a9ecd412149855c786db59d897d81565941e995fabf9dd58da4a7e000f1d137",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.32447397563676633,
+      "micro_Fmax_tau": 0.811,
+      "IA_micro_Fmax": 0.2632496598321948,
+      "IA_micro_Fmax_tau": 0.725,
+      "macro_Fmax": 0.31525481936124905,
+      "macro_Fmax_tau": 0.626,
+      "IA_macro_Fmax": 0.27361204571951964,
+      "IA_macro_Fmax_tau": 0.626,
+      "unweighted_Smin": 15.948943590498168,
+      "unweighted_Smin_tau": 0.9500000000000001,
+      "IA_weighted_Smin": 16.037503356509557,
+      "IA_weighted_Smin_tau": 0.972,
+      "prediction_coverage_at_micro_Fmax": 0.7045454545454546,
+      "fixed_0_5": {
+        "filename": "official_prott5_cosine3.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.20949263502454993,
+        "recall": 0.46209386281588455,
+        "F1": 0.28828828828828834,
+        "coverage": 0.9090909090909091
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "molecular_function",
+      "method": "official_prott5_cosine3",
+      "author_recognized_target_IDs": 39,
+      "eligible_proteins": 39,
+      "IA_eligible_proteins": 39,
+      "TOI_reference_pairs": 297,
+      "raw_released_target_IDs": 39,
+      "raw_released_annotation_rows": 340,
+      "status": "scored",
+      "source_curve_sha256": "3a9ecd412149855c786db59d897d81565941e995fabf9dd58da4a7e000f1d137",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.4907407407407407,
+      "micro_Fmax_tau": 0.734,
+      "IA_micro_Fmax": 0.3786063682058596,
+      "IA_micro_Fmax_tau": 0.653,
+      "macro_Fmax": 0.4310420419363784,
+      "macro_Fmax_tau": 0.51,
+      "IA_macro_Fmax": 0.40189094296817174,
+      "IA_macro_Fmax_tau": 0.734,
+      "unweighted_Smin": 5.68057233367667,
+      "unweighted_Smin_tau": 0.924,
+      "IA_weighted_Smin": 10.522229477641515,
+      "IA_weighted_Smin_tau": 0.849,
+      "prediction_coverage_at_micro_Fmax": 0.7948717948717948,
+      "fixed_0_5": {
+        "filename": "official_prott5_cosine3.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.4143920595533499,
+        "recall": 0.5622895622895623,
+        "F1": 0.47714285714285715,
+        "coverage": 0.9230769230769231
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "cellular_component",
+      "method": "official_prott5_cosine3",
+      "author_recognized_target_IDs": 118,
+      "eligible_proteins": 118,
+      "IA_eligible_proteins": 118,
+      "TOI_reference_pairs": 1088,
+      "raw_released_target_IDs": 118,
+      "raw_released_annotation_rows": 1213,
+      "status": "scored",
+      "source_curve_sha256": "3a9ecd412149855c786db59d897d81565941e995fabf9dd58da4a7e000f1d137",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.5242184816214359,
+      "micro_Fmax_tau": 0.559,
+      "IA_micro_Fmax": 0.36372769804288113,
+      "IA_micro_Fmax_tau": 0.762,
+      "macro_Fmax": 0.6022496575369609,
+      "macro_Fmax_tau": 0.322,
+      "IA_macro_Fmax": 0.506939222397341,
+      "IA_macro_Fmax_tau": 0.762,
+      "unweighted_Smin": 6.3396684574614355,
+      "unweighted_Smin_tau": 0.782,
+      "IA_weighted_Smin": 5.152222844854133,
+      "IA_weighted_Smin_tau": 0.916,
+      "prediction_coverage_at_micro_Fmax": 0.8813559322033898,
+      "fixed_0_5": {
+        "filename": "official_prott5_cosine3.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.40646528881823,
+        "recall": 0.7049632352941176,
+        "F1": 0.5156302521008403,
+        "coverage": 0.8898305084745762
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "biological_process",
+      "method": "official_nonexperimental",
+      "author_recognized_target_IDs": 44,
+      "eligible_proteins": 44,
+      "IA_eligible_proteins": 44,
+      "TOI_reference_pairs": 831,
+      "raw_released_target_IDs": 44,
+      "raw_released_annotation_rows": 994,
+      "status": "scored",
+      "source_curve_sha256": "515ccfaa9e9418c9c1cb37d5cf5902fa90be9968af03e9c8beb894d78254c6d2",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.3599508599508599,
+      "micro_Fmax_tau": 0.001,
+      "IA_micro_Fmax": 0.3340448960929265,
+      "IA_micro_Fmax_tau": 0.001,
+      "macro_Fmax": 0.39167646359852887,
+      "macro_Fmax_tau": 0.001,
+      "IA_macro_Fmax": 0.3793215416139549,
+      "IA_macro_Fmax_tau": 0.001,
+      "unweighted_Smin": 16.754486262412087,
+      "unweighted_Smin_tau": 0.001,
+      "IA_weighted_Smin": 15.438795030868643,
+      "IA_weighted_Smin_tau": 0.001,
+      "prediction_coverage_at_micro_Fmax": 0.6818181818181818,
+      "fixed_0_5": {
+        "filename": "official_nonexperimental.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.36762860727728985,
+        "recall": 0.3525872442839952,
+        "F1": 0.3599508599508599,
+        "coverage": 0.6818181818181818
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "molecular_function",
+      "method": "official_nonexperimental",
+      "author_recognized_target_IDs": 39,
+      "eligible_proteins": 39,
+      "IA_eligible_proteins": 39,
+      "TOI_reference_pairs": 297,
+      "raw_released_target_IDs": 39,
+      "raw_released_annotation_rows": 340,
+      "status": "scored",
+      "source_curve_sha256": "515ccfaa9e9418c9c1cb37d5cf5902fa90be9968af03e9c8beb894d78254c6d2",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.5216,
+      "micro_Fmax_tau": 0.001,
+      "IA_micro_Fmax": 0.44422192373779457,
+      "IA_micro_Fmax_tau": 0.001,
+      "macro_Fmax": 0.4901673144504999,
+      "macro_Fmax_tau": 0.001,
+      "IA_macro_Fmax": 0.4913871499932031,
+      "IA_macro_Fmax_tau": 0.001,
+      "unweighted_Smin": 5.450210956837381,
+      "unweighted_Smin_tau": 0.001,
+      "IA_weighted_Smin": 9.620394369201726,
+      "IA_weighted_Smin_tau": 0.001,
+      "prediction_coverage_at_micro_Fmax": 0.7435897435897436,
+      "fixed_0_5": {
+        "filename": "official_nonexperimental.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.4969512195121951,
+        "recall": 0.5488215488215489,
+        "F1": 0.5216,
+        "coverage": 0.7435897435897436
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "cellular_component",
+      "method": "official_nonexperimental",
+      "author_recognized_target_IDs": 118,
+      "eligible_proteins": 118,
+      "IA_eligible_proteins": 118,
+      "TOI_reference_pairs": 1088,
+      "raw_released_target_IDs": 118,
+      "raw_released_annotation_rows": 1213,
+      "status": "scored",
+      "source_curve_sha256": "515ccfaa9e9418c9c1cb37d5cf5902fa90be9968af03e9c8beb894d78254c6d2",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.5477513895907024,
+      "micro_Fmax_tau": 0.001,
+      "IA_micro_Fmax": 0.4321476929286508,
+      "IA_micro_Fmax_tau": 0.001,
+      "macro_Fmax": 0.5839990435913399,
+      "macro_Fmax_tau": 0.001,
+      "IA_macro_Fmax": 0.5206475043999084,
+      "IA_macro_Fmax_tau": 0.001,
+      "unweighted_Smin": 5.491610430394586,
+      "unweighted_Smin_tau": 0.001,
+      "IA_weighted_Smin": 4.8788709350830315,
+      "IA_weighted_Smin_tau": 0.001,
+      "prediction_coverage_at_micro_Fmax": 0.7288135593220338,
+      "fixed_0_5": {
+        "filename": "official_nonexperimental.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.6083052749719416,
+        "recall": 0.49816176470588236,
+        "F1": 0.5477513895907024,
+        "coverage": 0.7288135593220338
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "biological_process",
+      "method": "official_naive",
+      "author_recognized_target_IDs": 44,
+      "eligible_proteins": 44,
+      "IA_eligible_proteins": 44,
+      "TOI_reference_pairs": 831,
+      "raw_released_target_IDs": 44,
+      "raw_released_annotation_rows": 994,
+      "status": "scored",
+      "source_curve_sha256": "61d9e5076ea02b7d14e3839bb538755396c080bbd09d45685daed09cef921bb6",
+      "native_curve_rows": 430,
+      "micro_Fmax": 0.22920517560073939,
+      "micro_Fmax_tau": 0.115,
+      "IA_micro_Fmax": 0.18249843487475867,
+      "IA_micro_Fmax_tau": 0.066,
+      "macro_Fmax": 0.24646219158781976,
+      "macro_Fmax_tau": 0.115,
+      "IA_macro_Fmax": 0.20503339684300306,
+      "IA_macro_Fmax_tau": 0.10400000000000001,
+      "unweighted_Smin": 16.59447346518644,
+      "unweighted_Smin_tau": 0.184,
+      "IA_weighted_Smin": 16.02745752951489,
+      "IA_weighted_Smin_tau": 0.184,
+      "prediction_coverage_at_micro_Fmax": 1.0,
+      "fixed_0_5": {
+        "filename": "official_naive.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "molecular_function",
+      "method": "official_naive",
+      "author_recognized_target_IDs": 39,
+      "eligible_proteins": 39,
+      "IA_eligible_proteins": 39,
+      "TOI_reference_pairs": 297,
+      "raw_released_target_IDs": 39,
+      "raw_released_annotation_rows": 340,
+      "status": "scored",
+      "source_curve_sha256": "61d9e5076ea02b7d14e3839bb538755396c080bbd09d45685daed09cef921bb6",
+      "native_curve_rows": 413,
+      "micro_Fmax": 0.15458937198067632,
+      "micro_Fmax_tau": 0.091,
+      "IA_micro_Fmax": 0.1335310981430225,
+      "IA_micro_Fmax_tau": 0.034,
+      "macro_Fmax": 0.16216878344165073,
+      "macro_Fmax_tau": 0.091,
+      "IA_macro_Fmax": 0.1440368809330141,
+      "IA_macro_Fmax_tau": 0.034,
+      "unweighted_Smin": 7.13585643593628,
+      "unweighted_Smin_tau": 0.091,
+      "IA_weighted_Smin": 11.968622956940338,
+      "IA_weighted_Smin_tau": 0.091,
+      "prediction_coverage_at_micro_Fmax": 1.0,
+      "fixed_0_5": {
+        "filename": "official_naive.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "no_knowledge",
+      "namespace": "cellular_component",
+      "method": "official_naive",
+      "author_recognized_target_IDs": 118,
+      "eligible_proteins": 118,
+      "IA_eligible_proteins": 118,
+      "TOI_reference_pairs": 1088,
+      "raw_released_target_IDs": 118,
+      "raw_released_annotation_rows": 1213,
+      "status": "scored",
+      "source_curve_sha256": "61d9e5076ea02b7d14e3839bb538755396c080bbd09d45685daed09cef921bb6",
+      "native_curve_rows": 660,
+      "micro_Fmax": 0.715778474399164,
+      "micro_Fmax_tau": 0.20700000000000002,
+      "IA_micro_Fmax": 0.3311346417928812,
+      "IA_micro_Fmax_tau": 0.20700000000000002,
+      "macro_Fmax": 0.746824543438568,
+      "macro_Fmax_tau": 0.20700000000000002,
+      "IA_macro_Fmax": 0.4721642151322728,
+      "IA_macro_Fmax_tau": 0.20700000000000002,
+      "unweighted_Smin": 3.6182570348336953,
+      "unweighted_Smin_tau": 0.20700000000000002,
+      "IA_weighted_Smin": 4.97170611418119,
+      "IA_weighted_Smin_tau": 0.20700000000000002,
+      "prediction_coverage_at_micro_Fmax": 1.0,
+      "fixed_0_5": {
+        "filename": "official_naive.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.923728813559322,
+        "recall": 0.2003676470588235,
+        "F1": 0.3293051359516616,
+        "coverage": 1.0
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "biological_process",
+      "method": "strict_alias_localplus",
+      "author_recognized_target_IDs": 227,
+      "eligible_proteins": 227,
+      "IA_eligible_proteins": 227,
+      "TOI_reference_pairs": 5307,
+      "raw_released_target_IDs": 227,
+      "raw_released_annotation_rows": 6456,
+      "status": "scored",
+      "source_curve_sha256": "8bb942ac323c590f37406a3967f6f0a9010756f6f5b2d8791c3df77df99a6924",
+      "native_curve_rows": 891,
+      "micro_Fmax": 0.3297326013812644,
+      "micro_Fmax_tau": 0.212,
+      "IA_micro_Fmax": 0.3258775131684464,
+      "IA_micro_Fmax_tau": 0.212,
+      "macro_Fmax": 0.39538413475501405,
+      "macro_Fmax_tau": 0.29,
+      "IA_macro_Fmax": 0.3784354329547211,
+      "IA_macro_Fmax_tau": 0.219,
+      "unweighted_Smin": 19.12296441593042,
+      "unweighted_Smin_tau": 0.314,
+      "IA_weighted_Smin": 16.162901073744607,
+      "IA_weighted_Smin_tau": 0.297,
+      "prediction_coverage_at_micro_Fmax": 0.9955947136563876,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.6688172043010752,
+        "recall": 0.11720369323534953,
+        "F1": 0.19945486612153276,
+        "coverage": 0.7533039647577092
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "molecular_function",
+      "method": "strict_alias_localplus",
+      "author_recognized_target_IDs": 60,
+      "eligible_proteins": 60,
+      "IA_eligible_proteins": 60,
+      "TOI_reference_pairs": 594,
+      "raw_released_target_IDs": 60,
+      "raw_released_annotation_rows": 658,
+      "status": "scored",
+      "source_curve_sha256": "8bb942ac323c590f37406a3967f6f0a9010756f6f5b2d8791c3df77df99a6924",
+      "native_curve_rows": 960,
+      "micro_Fmax": 0.4223163841807909,
+      "micro_Fmax_tau": 0.128,
+      "IA_micro_Fmax": 0.30890313466948804,
+      "IA_micro_Fmax_tau": 0.20400000000000001,
+      "macro_Fmax": 0.40952011973833297,
+      "macro_Fmax_tau": 0.121,
+      "IA_macro_Fmax": 0.36270228818371963,
+      "IA_macro_Fmax_tau": 0.121,
+      "unweighted_Smin": 7.303747135698375,
+      "unweighted_Smin_tau": 0.216,
+      "IA_weighted_Smin": 12.921726490682103,
+      "IA_weighted_Smin_tau": 0.216,
+      "prediction_coverage_at_micro_Fmax": 0.9833333333333333,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.4575163398692811,
+        "recall": 0.11784511784511786,
+        "F1": 0.18741633199464527,
+        "coverage": 0.9833333333333333
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "cellular_component",
+      "method": "strict_alias_localplus",
+      "author_recognized_target_IDs": 197,
+      "eligible_proteins": 197,
+      "IA_eligible_proteins": 197,
+      "TOI_reference_pairs": 1806,
+      "raw_released_target_IDs": 197,
+      "raw_released_annotation_rows": 2010,
+      "status": "scored",
+      "source_curve_sha256": "8bb942ac323c590f37406a3967f6f0a9010756f6f5b2d8791c3df77df99a6924",
+      "native_curve_rows": 983,
+      "micro_Fmax": 0.6022433132010353,
+      "micro_Fmax_tau": 0.435,
+      "IA_micro_Fmax": 0.36835872916016527,
+      "IA_micro_Fmax_tau": 0.41600000000000004,
+      "macro_Fmax": 0.6615556550155511,
+      "macro_Fmax_tau": 0.457,
+      "IA_macro_Fmax": 0.4966659516815039,
+      "IA_macro_Fmax_tau": 0.41600000000000004,
+      "unweighted_Smin": 4.834227920966,
+      "unweighted_Smin_tau": 0.47800000000000004,
+      "IA_weighted_Smin": 4.983020254475621,
+      "IA_weighted_Smin_tau": 0.483,
+      "prediction_coverage_at_micro_Fmax": 0.9238578680203046,
+      "fixed_0_5": {
+        "filename": "strict_alias_localplus.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.6834061135371179,
+        "recall": 0.5199335548172758,
+        "F1": 0.590566037735849,
+        "coverage": 0.9086294416243654
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "biological_process",
+      "method": "official_blast",
+      "author_recognized_target_IDs": 227,
+      "eligible_proteins": 227,
+      "IA_eligible_proteins": 227,
+      "TOI_reference_pairs": 5307,
+      "raw_released_target_IDs": 227,
+      "raw_released_annotation_rows": 6456,
+      "status": "scored",
+      "source_curve_sha256": "abc2f2ee5185fb31ff0333a8ece05efdfec15cce18ce8816e73418daa994ab42",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.1844800121368429,
+      "micro_Fmax_tau": 0.622,
+      "IA_micro_Fmax": 0.17699891233283713,
+      "IA_micro_Fmax_tau": 0.622,
+      "macro_Fmax": 0.27743313626988786,
+      "macro_Fmax_tau": 0.539,
+      "IA_macro_Fmax": 0.2670221828800888,
+      "IA_macro_Fmax_tau": 0.539,
+      "unweighted_Smin": 22.344436139429064,
+      "unweighted_Smin_tau": 0.928,
+      "IA_weighted_Smin": 18.99672450580399,
+      "IA_weighted_Smin_tau": 0.928,
+      "prediction_coverage_at_micro_Fmax": 0.5726872246696035,
+      "fixed_0_5": {
+        "filename": "official_blast.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.08938435271668171,
+        "recall": 0.3354060674580743,
+        "F1": 0.1411522144244875,
+        "coverage": 0.7048458149779736
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "molecular_function",
+      "method": "official_blast",
+      "author_recognized_target_IDs": 60,
+      "eligible_proteins": 60,
+      "IA_eligible_proteins": 60,
+      "TOI_reference_pairs": 594,
+      "raw_released_target_IDs": 60,
+      "raw_released_annotation_rows": 658,
+      "status": "scored",
+      "source_curve_sha256": "abc2f2ee5185fb31ff0333a8ece05efdfec15cce18ce8816e73418daa994ab42",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.4893992932862191,
+      "micro_Fmax_tau": 0.591,
+      "IA_micro_Fmax": 0.3316973652046311,
+      "IA_micro_Fmax_tau": 0.5730000000000001,
+      "macro_Fmax": 0.45858673633918695,
+      "macro_Fmax_tau": 0.507,
+      "IA_macro_Fmax": 0.40068311682831004,
+      "IA_macro_Fmax_tau": 0.558,
+      "unweighted_Smin": 6.772042199776634,
+      "unweighted_Smin_tau": 0.66,
+      "IA_weighted_Smin": 13.086898107892951,
+      "IA_weighted_Smin_tau": 0.718,
+      "prediction_coverage_at_micro_Fmax": 0.5,
+      "fixed_0_5": {
+        "filename": "official_blast.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.39120370370370366,
+        "recall": 0.5690235690235691,
+        "F1": 0.4636488340192044,
+        "coverage": 0.65
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "cellular_component",
+      "method": "official_blast",
+      "author_recognized_target_IDs": 197,
+      "eligible_proteins": 197,
+      "IA_eligible_proteins": 197,
+      "TOI_reference_pairs": 1806,
+      "raw_released_target_IDs": 197,
+      "raw_released_annotation_rows": 2010,
+      "status": "scored",
+      "source_curve_sha256": "abc2f2ee5185fb31ff0333a8ece05efdfec15cce18ce8816e73418daa994ab42",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.48571428571428565,
+      "micro_Fmax_tau": 0.656,
+      "IA_micro_Fmax": 0.32969717457768205,
+      "IA_micro_Fmax_tau": 0.7010000000000001,
+      "macro_Fmax": 0.5705111141122685,
+      "macro_Fmax_tau": 0.555,
+      "IA_macro_Fmax": 0.5040398492081346,
+      "IA_macro_Fmax_tau": 0.616,
+      "unweighted_Smin": 6.403001499269261,
+      "unweighted_Smin_tau": 0.737,
+      "IA_weighted_Smin": 5.599195840407196,
+      "IA_weighted_Smin_tau": 0.836,
+      "prediction_coverage_at_micro_Fmax": 0.6142131979695431,
+      "fixed_0_5": {
+        "filename": "official_blast.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.3370577281191806,
+        "recall": 0.601328903654485,
+        "F1": 0.431980906921241,
+        "coverage": 0.7715736040609137
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "biological_process",
+      "method": "official_prott5_cosine3",
+      "author_recognized_target_IDs": 227,
+      "eligible_proteins": 227,
+      "IA_eligible_proteins": 227,
+      "TOI_reference_pairs": 5307,
+      "raw_released_target_IDs": 227,
+      "raw_released_annotation_rows": 6456,
+      "status": "scored",
+      "source_curve_sha256": "be112613ee019c122ebe628b01c1af65a6be1038339667166d3c6c9cf892ea43",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.21225299458304725,
+      "micro_Fmax_tau": 0.503,
+      "IA_micro_Fmax": 0.20017308756534877,
+      "IA_micro_Fmax_tau": 0.503,
+      "macro_Fmax": 0.2552290090399616,
+      "macro_Fmax_tau": 0.503,
+      "IA_macro_Fmax": 0.2411247551450535,
+      "IA_macro_Fmax_tau": 0.61,
+      "unweighted_Smin": 22.205921109680812,
+      "unweighted_Smin_tau": 0.99,
+      "IA_weighted_Smin": 19.053219229367077,
+      "IA_weighted_Smin_tau": 0.992,
+      "prediction_coverage_at_micro_Fmax": 0.788546255506608,
+      "fixed_0_5": {
+        "filename": "official_prott5_cosine3.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.17715736040609137,
+        "recall": 0.2630488034671189,
+        "F1": 0.21172366724804734,
+        "coverage": 0.7929515418502202
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "molecular_function",
+      "method": "official_prott5_cosine3",
+      "author_recognized_target_IDs": 60,
+      "eligible_proteins": 60,
+      "IA_eligible_proteins": 60,
+      "TOI_reference_pairs": 594,
+      "raw_released_target_IDs": 60,
+      "raw_released_annotation_rows": 658,
+      "status": "scored",
+      "source_curve_sha256": "be112613ee019c122ebe628b01c1af65a6be1038339667166d3c6c9cf892ea43",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.5157894736842106,
+      "micro_Fmax_tau": 0.001,
+      "IA_micro_Fmax": 0.36947004519163984,
+      "IA_micro_Fmax_tau": 0.001,
+      "macro_Fmax": 0.44633132481101256,
+      "macro_Fmax_tau": 0.001,
+      "IA_macro_Fmax": 0.3779925704459853,
+      "IA_macro_Fmax_tau": 0.001,
+      "unweighted_Smin": 6.454219119649134,
+      "unweighted_Smin_tau": 0.662,
+      "IA_weighted_Smin": 12.939415613196886,
+      "IA_weighted_Smin_tau": 0.662,
+      "prediction_coverage_at_micro_Fmax": 0.75,
+      "fixed_0_5": {
+        "filename": "official_prott5_cosine3.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.5432330827067668,
+        "recall": 0.4865319865319866,
+        "F1": 0.5133214920071049,
+        "coverage": 0.7333333333333333
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "cellular_component",
+      "method": "official_prott5_cosine3",
+      "author_recognized_target_IDs": 197,
+      "eligible_proteins": 197,
+      "IA_eligible_proteins": 197,
+      "TOI_reference_pairs": 1806,
+      "raw_released_target_IDs": 197,
+      "raw_released_annotation_rows": 2010,
+      "status": "scored",
+      "source_curve_sha256": "be112613ee019c122ebe628b01c1af65a6be1038339667166d3c6c9cf892ea43",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.5596153846153846,
+      "micro_Fmax_tau": 0.001,
+      "IA_micro_Fmax": 0.3585159973673736,
+      "IA_micro_Fmax_tau": 0.001,
+      "macro_Fmax": 0.6309178128583209,
+      "macro_Fmax_tau": 0.001,
+      "IA_macro_Fmax": 0.5210185844482293,
+      "IA_macro_Fmax_tau": 0.001,
+      "unweighted_Smin": 5.910305987831615,
+      "unweighted_Smin_tau": 0.8320000000000001,
+      "IA_weighted_Smin": 5.550957091175146,
+      "IA_weighted_Smin_tau": 0.961,
+      "prediction_coverage_at_micro_Fmax": 0.8934010152284264,
+      "fixed_0_5": {
+        "filename": "official_prott5_cosine3.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.4942273534635879,
+        "recall": 0.6162790697674418,
+        "F1": 0.5485460818137013,
+        "coverage": 0.8629441624365483
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "biological_process",
+      "method": "official_nonexperimental",
+      "author_recognized_target_IDs": 227,
+      "eligible_proteins": 227,
+      "IA_eligible_proteins": 227,
+      "TOI_reference_pairs": 5307,
+      "raw_released_target_IDs": 227,
+      "raw_released_annotation_rows": 6456,
+      "status": "scored",
+      "source_curve_sha256": "724af0169a27fca036257636bd175b8c5384c885f525e3492179e57846f34d47",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.32957229073733924,
+      "micro_Fmax_tau": 0.001,
+      "IA_micro_Fmax": 0.3321684186643307,
+      "IA_micro_Fmax_tau": 0.001,
+      "macro_Fmax": 0.41776133700972395,
+      "macro_Fmax_tau": 0.001,
+      "IA_macro_Fmax": 0.40644068406753614,
+      "IA_macro_Fmax_tau": 0.001,
+      "unweighted_Smin": 24.012444860931307,
+      "unweighted_Smin_tau": 0.001,
+      "IA_weighted_Smin": 21.99762523178394,
+      "IA_weighted_Smin_tau": 0.001,
+      "prediction_coverage_at_micro_Fmax": 0.7973568281938326,
+      "fixed_0_5": {
+        "filename": "official_nonexperimental.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.3075416258570029,
+        "recall": 0.35500282645562464,
+        "F1": 0.32957229073733924,
+        "coverage": 0.7973568281938326
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "molecular_function",
+      "method": "official_nonexperimental",
+      "author_recognized_target_IDs": 60,
+      "eligible_proteins": 60,
+      "IA_eligible_proteins": 60,
+      "TOI_reference_pairs": 594,
+      "raw_released_target_IDs": 60,
+      "raw_released_annotation_rows": 658,
+      "status": "scored",
+      "source_curve_sha256": "724af0169a27fca036257636bd175b8c5384c885f525e3492179e57846f34d47",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.5979703356752537,
+      "micro_Fmax_tau": 0.001,
+      "IA_micro_Fmax": 0.4831361469082364,
+      "IA_micro_Fmax_tau": 0.001,
+      "macro_Fmax": 0.5782918848367496,
+      "macro_Fmax_tau": 0.001,
+      "IA_macro_Fmax": 0.5410064497330251,
+      "IA_macro_Fmax_tau": 0.001,
+      "unweighted_Smin": 6.167499943701301,
+      "unweighted_Smin_tau": 0.001,
+      "IA_weighted_Smin": 11.70775457568302,
+      "IA_weighted_Smin_tau": 0.001,
+      "prediction_coverage_at_micro_Fmax": 0.8166666666666667,
+      "fixed_0_5": {
+        "filename": "official_nonexperimental.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.5574963609898108,
+        "recall": 0.6447811447811448,
+        "F1": 0.5979703356752537,
+        "coverage": 0.8166666666666667
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "cellular_component",
+      "method": "official_nonexperimental",
+      "author_recognized_target_IDs": 197,
+      "eligible_proteins": 197,
+      "IA_eligible_proteins": 197,
+      "TOI_reference_pairs": 1806,
+      "raw_released_target_IDs": 197,
+      "raw_released_annotation_rows": 2010,
+      "status": "scored",
+      "source_curve_sha256": "724af0169a27fca036257636bd175b8c5384c885f525e3492179e57846f34d47",
+      "native_curve_rows": 999,
+      "micro_Fmax": 0.5885558583106267,
+      "micro_Fmax_tau": 0.001,
+      "IA_micro_Fmax": 0.4180865735272916,
+      "IA_micro_Fmax_tau": 0.001,
+      "macro_Fmax": 0.653228324956162,
+      "macro_Fmax_tau": 0.001,
+      "IA_macro_Fmax": 0.5533562015128501,
+      "IA_macro_Fmax_tau": 0.001,
+      "unweighted_Smin": 5.423952287717766,
+      "unweighted_Smin_tau": 0.001,
+      "IA_weighted_Smin": 6.099323747700039,
+      "IA_weighted_Smin_tau": 0.001,
+      "prediction_coverage_at_micro_Fmax": 0.8527918781725888,
+      "fixed_0_5": {
+        "filename": "official_nonexperimental.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.5793991416309013,
+        "recall": 0.5980066445182723,
+        "F1": 0.5885558583106267,
+        "coverage": 0.8527918781725888
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "biological_process",
+      "method": "official_naive",
+      "author_recognized_target_IDs": 227,
+      "eligible_proteins": 227,
+      "IA_eligible_proteins": 227,
+      "TOI_reference_pairs": 5307,
+      "raw_released_target_IDs": 227,
+      "raw_released_annotation_rows": 6456,
+      "status": "scored",
+      "source_curve_sha256": "9288753dc88938513b479a37ea65f0ef0dfba81eaa6505e262dad665b8fdbf94",
+      "native_curve_rows": 430,
+      "micro_Fmax": 0.2184253955926609,
+      "micro_Fmax_tau": 0.10400000000000001,
+      "IA_micro_Fmax": 0.18718374993011813,
+      "IA_micro_Fmax_tau": 0.085,
+      "macro_Fmax": 0.2321882022221922,
+      "macro_Fmax_tau": 0.10400000000000001,
+      "IA_macro_Fmax": 0.21458210463822436,
+      "IA_macro_Fmax_tau": 0.085,
+      "unweighted_Smin": 21.07643727836128,
+      "unweighted_Smin_tau": 0.184,
+      "IA_weighted_Smin": 18.334173559848665,
+      "IA_weighted_Smin_tau": 0.184,
+      "prediction_coverage_at_micro_Fmax": 1.0,
+      "fixed_0_5": {
+        "filename": "official_naive.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "molecular_function",
+      "method": "official_naive",
+      "author_recognized_target_IDs": 60,
+      "eligible_proteins": 60,
+      "IA_eligible_proteins": 60,
+      "TOI_reference_pairs": 594,
+      "raw_released_target_IDs": 60,
+      "raw_released_annotation_rows": 658,
+      "status": "scored",
+      "source_curve_sha256": "9288753dc88938513b479a37ea65f0ef0dfba81eaa6505e262dad665b8fdbf94",
+      "native_curve_rows": 413,
+      "micro_Fmax": 0.17154811715481172,
+      "micro_Fmax_tau": 0.032,
+      "IA_micro_Fmax": 0.1432475543272256,
+      "IA_micro_Fmax_tau": 0.032,
+      "macro_Fmax": 0.20063399559250672,
+      "macro_Fmax_tau": 0.091,
+      "IA_macro_Fmax": 0.1486024788867752,
+      "IA_macro_Fmax_tau": 0.034,
+      "unweighted_Smin": 9.062284480195927,
+      "unweighted_Smin_tau": 0.091,
+      "IA_weighted_Smin": 15.084753689023529,
+      "IA_weighted_Smin_tau": 0.091,
+      "prediction_coverage_at_micro_Fmax": 1.0,
+      "fixed_0_5": {
+        "filename": "official_naive.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    },
+    {
+      "analysis_scope": "five_arm_transport",
+      "setting": "limited",
+      "namespace": "cellular_component",
+      "method": "official_naive",
+      "author_recognized_target_IDs": 197,
+      "eligible_proteins": 197,
+      "IA_eligible_proteins": 197,
+      "TOI_reference_pairs": 1806,
+      "raw_released_target_IDs": 197,
+      "raw_released_annotation_rows": 2010,
+      "status": "scored",
+      "source_curve_sha256": "9288753dc88938513b479a37ea65f0ef0dfba81eaa6505e262dad665b8fdbf94",
+      "native_curve_rows": 660,
+      "micro_Fmax": 0.6668759811616954,
+      "micro_Fmax_tau": 0.20700000000000002,
+      "IA_micro_Fmax": 0.32033099958849204,
+      "IA_micro_Fmax_tau": 0.148,
+      "macro_Fmax": 0.6967109592321087,
+      "macro_Fmax_tau": 0.20700000000000002,
+      "IA_macro_Fmax": 0.4384450963658002,
+      "IA_macro_Fmax_tau": 0.20700000000000002,
+      "unweighted_Smin": 4.105168129308279,
+      "unweighted_Smin_tau": 0.20700000000000002,
+      "IA_weighted_Smin": 5.111219494835285,
+      "IA_weighted_Smin_tau": 0.186,
+      "prediction_coverage_at_micro_Fmax": 1.0,
+      "fixed_0_5": {
+        "filename": "official_naive.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "unchanged author curve at predeclared threshold",
+        "PPV": 0.9060913705583756,
+        "recall": 0.19767441860465115,
+        "F1": 0.3245454545454545,
+        "coverage": 1.0
+      }
+    },
+    {
+      "analysis_scope": "separate_GM_supplement",
+      "setting": "no_knowledge",
+      "namespace": "biological_process",
+      "method": "strict_alias_genemaniaplus",
+      "author_recognized_target_IDs": 44,
+      "eligible_proteins": 44,
+      "IA_eligible_proteins": 44,
+      "TOI_reference_pairs": 831,
+      "raw_released_target_IDs": 44,
+      "raw_released_annotation_rows": 994,
+      "status": "scored",
+      "source_curve_sha256": "63df82f08ba1f3e48b2430e9a885246f63da57cb7ce76be9348bec7d8ff9fc9e",
+      "native_curve_rows": 291,
+      "micro_Fmax": 0.31272210376687987,
+      "micro_Fmax_tau": 0.069,
+      "IA_micro_Fmax": 0.2575532325600849,
+      "IA_micro_Fmax_tau": 0.042,
+      "macro_Fmax": 0.32978261800481506,
+      "macro_Fmax_tau": 0.044000000000000004,
+      "IA_macro_Fmax": 0.3019982870192304,
+      "IA_macro_Fmax_tau": 0.051000000000000004,
+      "unweighted_Smin": 15.381679829594857,
+      "unweighted_Smin_tau": 0.08700000000000001,
+      "IA_weighted_Smin": 14.897807003780702,
+      "IA_weighted_Smin_tau": 0.08700000000000001,
+      "prediction_coverage_at_micro_Fmax": 0.8636363636363636,
+      "fixed_0_5": {
+        "filename": "strict_alias_genemaniaplus.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    },
+    {
+      "analysis_scope": "separate_GM_supplement",
+      "setting": "no_knowledge",
+      "namespace": "molecular_function",
+      "method": "strict_alias_genemaniaplus",
+      "author_recognized_target_IDs": 39,
+      "eligible_proteins": 39,
+      "IA_eligible_proteins": 39,
+      "TOI_reference_pairs": 297,
+      "raw_released_target_IDs": 39,
+      "raw_released_annotation_rows": 340,
+      "status": "scored",
+      "source_curve_sha256": "63df82f08ba1f3e48b2430e9a885246f63da57cb7ce76be9348bec7d8ff9fc9e",
+      "native_curve_rows": 445,
+      "micro_Fmax": 0.4036697247706422,
+      "micro_Fmax_tau": 0.054,
+      "IA_micro_Fmax": 0.30463796393193765,
+      "IA_micro_Fmax_tau": 0.051000000000000004,
+      "macro_Fmax": 0.33144403440092846,
+      "macro_Fmax_tau": 0.048,
+      "IA_macro_Fmax": 0.2992887345106284,
+      "IA_macro_Fmax_tau": 0.048,
+      "unweighted_Smin": 5.630059270547254,
+      "unweighted_Smin_tau": 0.089,
+      "IA_weighted_Smin": 10.21386502495655,
+      "IA_weighted_Smin_tau": 0.085,
+      "prediction_coverage_at_micro_Fmax": 0.9743589743589743,
+      "fixed_0_5": {
+        "filename": "strict_alias_genemaniaplus.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    },
+    {
+      "analysis_scope": "separate_GM_supplement",
+      "setting": "no_knowledge",
+      "namespace": "cellular_component",
+      "method": "strict_alias_genemaniaplus",
+      "author_recognized_target_IDs": 118,
+      "eligible_proteins": 118,
+      "IA_eligible_proteins": 118,
+      "TOI_reference_pairs": 1088,
+      "raw_released_target_IDs": 118,
+      "raw_released_annotation_rows": 1213,
+      "status": "scored",
+      "source_curve_sha256": "63df82f08ba1f3e48b2430e9a885246f63da57cb7ce76be9348bec7d8ff9fc9e",
+      "native_curve_rows": 440,
+      "micro_Fmax": 0.6256109481915934,
+      "micro_Fmax_tau": 0.127,
+      "IA_micro_Fmax": 0.3682008072937946,
+      "IA_micro_Fmax_tau": 0.097,
+      "macro_Fmax": 0.6766266627728402,
+      "macro_Fmax_tau": 0.132,
+      "IA_macro_Fmax": 0.4912056627011768,
+      "IA_macro_Fmax_tau": 0.135,
+      "unweighted_Smin": 4.589004569804156,
+      "unweighted_Smin_tau": 0.136,
+      "IA_weighted_Smin": 4.814098789181514,
+      "IA_weighted_Smin_tau": 0.148,
+      "prediction_coverage_at_micro_Fmax": 0.8983050847457628,
+      "fixed_0_5": {
+        "filename": "strict_alias_genemaniaplus.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    },
+    {
+      "analysis_scope": "separate_GM_supplement",
+      "setting": "limited",
+      "namespace": "biological_process",
+      "method": "strict_alias_genemaniaplus",
+      "author_recognized_target_IDs": 227,
+      "eligible_proteins": 227,
+      "IA_eligible_proteins": 227,
+      "TOI_reference_pairs": 5307,
+      "raw_released_target_IDs": 227,
+      "raw_released_annotation_rows": 6456,
+      "status": "scored",
+      "source_curve_sha256": "cc66eecb0d0bc8a3864c016ab87cf008a1f64799c9c5ceddce783c42c226e384",
+      "native_curve_rows": 419,
+      "micro_Fmax": 0.343803311590567,
+      "micro_Fmax_tau": 0.076,
+      "IA_micro_Fmax": 0.32834010101036926,
+      "IA_micro_Fmax_tau": 0.059000000000000004,
+      "macro_Fmax": 0.3874597512535106,
+      "macro_Fmax_tau": 0.08,
+      "IA_macro_Fmax": 0.37266953834316385,
+      "IA_macro_Fmax_tau": 0.067,
+      "unweighted_Smin": 18.676941280974138,
+      "unweighted_Smin_tau": 0.10500000000000001,
+      "IA_weighted_Smin": 15.996585004953543,
+      "IA_weighted_Smin_tau": 0.089,
+      "prediction_coverage_at_micro_Fmax": 0.9911894273127754,
+      "fixed_0_5": {
+        "filename": "strict_alias_genemaniaplus.tsv",
+        "namespace": "biological_process",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    },
+    {
+      "analysis_scope": "separate_GM_supplement",
+      "setting": "limited",
+      "namespace": "molecular_function",
+      "method": "strict_alias_genemaniaplus",
+      "author_recognized_target_IDs": 60,
+      "eligible_proteins": 60,
+      "IA_eligible_proteins": 60,
+      "TOI_reference_pairs": 594,
+      "raw_released_target_IDs": 60,
+      "raw_released_annotation_rows": 658,
+      "status": "scored",
+      "source_curve_sha256": "cc66eecb0d0bc8a3864c016ab87cf008a1f64799c9c5ceddce783c42c226e384",
+      "native_curve_rows": 486,
+      "micro_Fmax": 0.45917542441390463,
+      "micro_Fmax_tau": 0.048,
+      "IA_micro_Fmax": 0.32665660257709567,
+      "IA_micro_Fmax_tau": 0.046,
+      "macro_Fmax": 0.4039015737372022,
+      "macro_Fmax_tau": 0.048,
+      "IA_macro_Fmax": 0.3454061998060591,
+      "IA_macro_Fmax_tau": 0.031,
+      "unweighted_Smin": 7.3521727703070505,
+      "unweighted_Smin_tau": 0.074,
+      "IA_weighted_Smin": 13.003931495267565,
+      "IA_weighted_Smin_tau": 0.08,
+      "prediction_coverage_at_micro_Fmax": 0.9833333333333333,
+      "fixed_0_5": {
+        "filename": "strict_alias_genemaniaplus.tsv",
+        "namespace": "molecular_function",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    },
+    {
+      "analysis_scope": "separate_GM_supplement",
+      "setting": "limited",
+      "namespace": "cellular_component",
+      "method": "strict_alias_genemaniaplus",
+      "author_recognized_target_IDs": 197,
+      "eligible_proteins": 197,
+      "IA_eligible_proteins": 197,
+      "TOI_reference_pairs": 1806,
+      "raw_released_target_IDs": 197,
+      "raw_released_annotation_rows": 2010,
+      "status": "scored",
+      "source_curve_sha256": "cc66eecb0d0bc8a3864c016ab87cf008a1f64799c9c5ceddce783c42c226e384",
+      "native_curve_rows": 465,
+      "micro_Fmax": 0.6255319148936169,
+      "micro_Fmax_tau": 0.153,
+      "IA_micro_Fmax": 0.38269344046568576,
+      "IA_micro_Fmax_tau": 0.107,
+      "macro_Fmax": 0.6719065148140109,
+      "macro_Fmax_tau": 0.153,
+      "IA_macro_Fmax": 0.4975146502507075,
+      "IA_macro_Fmax_tau": 0.136,
+      "unweighted_Smin": 4.570653763716074,
+      "unweighted_Smin_tau": 0.153,
+      "IA_weighted_Smin": 4.851062677612269,
+      "IA_weighted_Smin_tau": 0.166,
+      "prediction_coverage_at_micro_Fmax": 0.9187817258883249,
+      "fixed_0_5": {
+        "filename": "strict_alias_genemaniaplus.tsv",
+        "namespace": "cellular_component",
+        "threshold": 0.5,
+        "status": "author omits thresholds with zero prediction coverage",
+        "PPV": null,
+        "recall": null,
+        "F1": null
+      }
+    }
+  ],
+  "denominators": [
+    {
+      "setting": "no_knowledge",
+      "namespace": "biological_process",
+      "author_recognized_target_IDs": 44,
+      "eligible_proteins": 44,
+      "IA_eligible_proteins": 44,
+      "TOI_reference_pairs": 831,
+      "raw_released_target_IDs": 44,
+      "raw_released_annotation_rows": 994
+    },
+    {
+      "setting": "no_knowledge",
+      "namespace": "molecular_function",
+      "author_recognized_target_IDs": 39,
+      "eligible_proteins": 39,
+      "IA_eligible_proteins": 39,
+      "TOI_reference_pairs": 297,
+      "raw_released_target_IDs": 39,
+      "raw_released_annotation_rows": 340
+    },
+    {
+      "setting": "no_knowledge",
+      "namespace": "cellular_component",
+      "author_recognized_target_IDs": 118,
+      "eligible_proteins": 118,
+      "IA_eligible_proteins": 118,
+      "TOI_reference_pairs": 1088,
+      "raw_released_target_IDs": 118,
+      "raw_released_annotation_rows": 1213
+    },
+    {
+      "setting": "limited",
+      "namespace": "biological_process",
+      "author_recognized_target_IDs": 227,
+      "eligible_proteins": 227,
+      "IA_eligible_proteins": 227,
+      "TOI_reference_pairs": 5307,
+      "raw_released_target_IDs": 227,
+      "raw_released_annotation_rows": 6456
+    },
+    {
+      "setting": "limited",
+      "namespace": "molecular_function",
+      "author_recognized_target_IDs": 60,
+      "eligible_proteins": 60,
+      "IA_eligible_proteins": 60,
+      "TOI_reference_pairs": 594,
+      "raw_released_target_IDs": 60,
+      "raw_released_annotation_rows": 658
+    },
+    {
+      "setting": "limited",
+      "namespace": "cellular_component",
+      "author_recognized_target_IDs": 197,
+      "eligible_proteins": 197,
+      "IA_eligible_proteins": 197,
+      "TOI_reference_pairs": 1806,
+      "raw_released_target_IDs": 197,
+      "raw_released_annotation_rows": 2010
+    }
+  ],
+  "runtime": [
+    {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "python": "3.10.12"
+    },
+    {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "python": "3.10.12"
+    }
+  ],
+  "knowledge_state_definitions": {
+    "no_knowledge": "No CAFA-admitted curator annotations in any GO aspect at the historical cutoff; later annotated aspects form the NK task.",
+    "limited": "Prior annotation exists in another GO aspect; the evaluated aspect had no admitted historical annotation. A protein can be LK here and PK in another aspect.",
+    "partial": "Prior and newly curated annotations occur in the same aspect. This separately evaluated PK task and its fixed 240 outcomes are unchanged.",
+    "BPO": "Biological process",
+    "MFO": "Molecular function",
+    "CCO": "Cellular component",
+    "admission_boundary": "The released reference admits experimental-family evidence and TAS/IC. A lack of admitted annotation is not a claim that no biological knowledge existed."
+  },
+  "method_labels": {
+    "strict_alias_localplus": "LocalPlus neighbor transfer",
+    "strict_alias_genemaniaplus": "GeneMANIA+ (separate supplement)",
+    "official_blast": "BLAST sequence transfer",
+    "official_prott5_cosine3": "ProtT5 three-neighbor transfer",
+    "official_nonexperimental": "Existing nonexperimental annotations",
+    "official_naive": "Naive term-frequency baseline"
+  },
+  "readout_definitions": {
+    "Micro Fmax": "Best pooled annotation F1 on the unchanged native evaluation grid.",
+    "Macro Fmax": "The author protein-averaged precision/recall readout; it gives a different view from pooled annotations.",
+    "IA": "Historical information-accretion weighting. This is not a probability that a claim is true.",
+    "Smin": "Minimum remaining-uncertainty/misinformation distance; lower values are better.",
+    "Fixed .5": "The separately retained operating point, without choosing a threshold from these test labels."
+  },
+  "historical_matching_aspect_seed_audit": {
+    "no_knowledge_BPO": {
+      "targets": 44,
+      "targets_with_training_rows_in_aspect": 0
+    },
+    "no_knowledge_MFO": {
+      "targets": 39,
+      "targets_with_training_rows_in_aspect": 0
+    },
+    "no_knowledge_CCO": {
+      "targets": 118,
+      "targets_with_training_rows_in_aspect": 0
+    },
+    "limited_BPO": {
+      "targets": 227,
+      "targets_with_training_rows_in_aspect": 0
+    },
+    "limited_MFO": {
+      "targets": 60,
+      "targets_with_training_rows_in_aspect": 0
+    },
+    "limited_CCO": {
+      "targets": 197,
+      "targets_with_training_rows_in_aspect": 0
+    }
+  },
+  "source_versions": {
+    "network": "STRINGv11 December2018",
+    "alias_support": "January2019",
+    "training": "UniProt2023_03",
+    "ontology": "2023-01-01",
+    "future_reference": "UniProt2025_03"
+  },
+  "native_evaluation_policy": {
+    "settings": [
+      "no_knowledge",
+      "limited"
+    ],
+    "aspects": [
+      "BPO",
+      "MFO",
+      "CCO"
+    ],
+    "known_exclusion": null,
+    "prop": "fill",
+    "norm": "cafa",
+    "no_orphans": true,
+    "threshold_step": 0.001,
+    "fixed_operating_threshold": 0.5,
+    "author_evaluator_revision": "e386b085e204ccfbd75a4f52c1a8b25987d8b465",
+    "expected_versions": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3"
+    },
+    "scope": "All six native NK/LK setting/aspect outcomes; post-PK transport, not independent-study replication.",
+    "no_missing_outcome_imputation": true,
+    "new_fit_or_threshold_selection": false
+  },
+  "label_release": {
+    "created_at": "2026-11-14T06:01:15.527435+00:00",
+    "all_five_arms_and_separate_GM_bound_before_decode": true,
+    "file_sha256": "453dd9c95d15d41c9dddb556405705bb20254969e79b94da2532372ecaf7b2af",
+    "content_sha256": "f6c3d3dcdc00ec7eb2d1ba4110edef9d0ecf17649ecd699836c2fd9eb5fa4b2e"
+  },
+  "source_commitments": [
+    {
+      "role": "unchanged native aggregate source",
+      "file_name": "report.json",
+      "file_sha256": "e6fe4764dcb6763da7cea7e3fcb1295c9b6d0048399eb768a353963a88a0db15",
+      "content_sha256": "9f2e6a6250b885087b21fd756de5eac4157f6f7853e8976f0f16fc36d394b6c6"
+    },
+    {
+      "role": "five-arm evaluation freeze",
+      "file_name": "evaluation_freeze_v1.json",
+      "file_sha256": "dc134f0945e7de20fa8fcc336bfbe6c220915e7597f337daed0dd9c4e77a3b79",
+      "content_sha256": "aff011bb3172e89d8789c5afb616f9e9151c05d7ce5c62e7b02c72f81b52a641"
+    },
+    {
+      "role": "historical feature/identity frame",
+      "file_name": "protocol.json",
+      "file_sha256": "9705b1c644b3a856ffd05bc367e3ac8c61838e5b133a798946b0b54f3c73dd8b",
+      "content_sha256": "e18ec57d909481931e469235d583b7829485f84b5217d9bf36a2325e2ff46d58"
+    },
+    {
+      "role": "completed Local scores",
+      "file_name": "predictions.json",
+      "file_sha256": "33384ba7debc382268c018f7e2706f2e130c7792af3df0d603e4d1b332d390a5",
+      "content_sha256": "cfd30d07fcdfc73d4ad4ba3ed7571113beb04324cfe6d69384487c51d65ac755"
+    },
+    {
+      "role": "completed official controls",
+      "file_name": "qualification.json",
+      "file_sha256": "c57cdd062129e485873b5aed3461323b3383b6e76d9f145b72d39e88ea3015dc",
+      "content_sha256": "532a850f1cd56fa46bf9af3cecbee1020e79ef1c24b3db5aeaaf1f6738c88b5b"
+    },
+    {
+      "role": "separate GM supplementary freeze",
+      "file_name": "protocol.json",
+      "file_sha256": "cb3edd13a411f50dac6532667fa302d3e35982e24e004705ed9598fcca394465",
+      "content_sha256": "5a637e6455b086c641c65125a364734d80a8b5d9caaa8e4c5ee38f6d0e93217f"
+    },
+    {
+      "role": "completed GM supplementary scores",
+      "file_name": "predictions.json",
+      "file_sha256": "3bfed493e32e8957679e3d7cf81df7df671321233efc50dd230aef47bc5f1abb",
+      "content_sha256": "9831530c9bb0fb84979241b952de6e71848c0c54d8f72c1f308b0a0469fbdcc3"
+    },
+    {
+      "role": "timestamped label-release event",
+      "file_name": "truth_access_started.json",
+      "file_sha256": "453dd9c95d15d41c9dddb556405705bb20254969e79b94da2532372ecaf7b2af",
+      "content_sha256": "f6c3d3dcdc00ec7eb2d1ba4110edef9d0ecf17649ecd699836c2fd9eb5fa4b2e"
+    },
+    {
+      "role": "exact protein/aspect reference release",
+      "file_name": "report.json",
+      "file_sha256": "ae9fa7b944356f02802a0ad2ac553dcc04a3a484e89da8a0acaba0cbf2a921ca",
+      "content_sha256": "53eb0a32dc47d0c0d12b6cd7911508e52a4fe4d0c84baa629ca7433434fc621d"
+    },
+    {
+      "role": "no_knowledge BPO paired uncertainty",
+      "file_name": "no_knowledge_bootstrap_report_v2.json",
+      "file_sha256": "25183adc53ece5b56a88e9ca2078a55aa131ef3c503c86f216b15abe9050707d",
+      "content_sha256": "ce4f2afa0cfcbe0b95e302d94ccd881d8414559cfdce7c4a4e7001b65b3c0730"
+    },
+    {
+      "role": "limited BPO paired uncertainty",
+      "file_name": "limited_bootstrap_report_v2.json",
+      "file_sha256": "36bbff5a73ff44106b913d280d2bb0823b5f21a65d9e3b0405b3342f130a85ec",
+      "content_sha256": "b603e0979636f9e8b6f50569b424c37773ec22f82e724744af356237fec8e6b4"
+    },
+    {
+      "role": "separate native count-integration diagnostics",
+      "file_name": "count_integration_diagnostics_v2.json",
+      "file_sha256": "3e6e40e4d8c429b183667df34b7ec98252683f3adc6083dd90c33b7f844ce18c",
+      "content_sha256": "d2d6db42b9273de08d7a014e3a22844fcfafe7587a7f726c575de1694b84a3f8"
+    }
+  ],
+  "native_aggregate_curve_commitments": [
+    {
+      "source_number": 0,
+      "relative_source": "five_arm_points_v1/limited/official_blast/scores/evaluation_all_exact.tsv",
+      "file_sha256": "abc2f2ee5185fb31ff0333a8ece05efdfec15cce18ce8816e73418daa994ab42"
+    },
+    {
+      "source_number": 1,
+      "relative_source": "five_arm_points_v1/limited/official_blast/scores/fixed_threshold_0_5.json",
+      "file_sha256": "dbcfa29c194509033d9cef3e5e2c5c2213ced7fa09b5f69fc74e3ecfe26cf638"
+    },
+    {
+      "source_number": 2,
+      "relative_source": "five_arm_points_v1/limited/official_blast/scores/native_outcomes.json",
+      "file_sha256": "9a90ac87be7c95badf69264f66dcd3dbf73c380cc6deb1a021c187141473fc83"
+    },
+    {
+      "source_number": 3,
+      "relative_source": "five_arm_points_v1/limited/official_naive/scores/evaluation_all_exact.tsv",
+      "file_sha256": "9288753dc88938513b479a37ea65f0ef0dfba81eaa6505e262dad665b8fdbf94"
+    },
+    {
+      "source_number": 4,
+      "relative_source": "five_arm_points_v1/limited/official_naive/scores/fixed_threshold_0_5.json",
+      "file_sha256": "bd18fa43a2bcc18860d7a7aad60d26ebe828f5d9636be55b9d652817671d423e"
+    },
+    {
+      "source_number": 5,
+      "relative_source": "five_arm_points_v1/limited/official_naive/scores/native_outcomes.json",
+      "file_sha256": "ba37ef92c891cefeb48b276b40a7e7a07f6cfaecad831629246a1b00362fe9a3"
+    },
+    {
+      "source_number": 6,
+      "relative_source": "five_arm_points_v1/limited/official_nonexperimental/scores/evaluation_all_exact.tsv",
+      "file_sha256": "724af0169a27fca036257636bd175b8c5384c885f525e3492179e57846f34d47"
+    },
+    {
+      "source_number": 7,
+      "relative_source": "five_arm_points_v1/limited/official_nonexperimental/scores/fixed_threshold_0_5.json",
+      "file_sha256": "a8d1f1c1bccc2cd94c18918cd799b2194c936553a110bb26b5672bc4886f8bed"
+    },
+    {
+      "source_number": 8,
+      "relative_source": "five_arm_points_v1/limited/official_nonexperimental/scores/native_outcomes.json",
+      "file_sha256": "9a90ac87be7c95badf69264f66dcd3dbf73c380cc6deb1a021c187141473fc83"
+    },
+    {
+      "source_number": 9,
+      "relative_source": "five_arm_points_v1/limited/official_prott5_cosine3/scores/evaluation_all_exact.tsv",
+      "file_sha256": "be112613ee019c122ebe628b01c1af65a6be1038339667166d3c6c9cf892ea43"
+    },
+    {
+      "source_number": 10,
+      "relative_source": "five_arm_points_v1/limited/official_prott5_cosine3/scores/fixed_threshold_0_5.json",
+      "file_sha256": "7379bd9baf24151818368b8d74bd66e286b2e6f007fad7d23f7713ced930af5f"
+    },
+    {
+      "source_number": 11,
+      "relative_source": "five_arm_points_v1/limited/official_prott5_cosine3/scores/native_outcomes.json",
+      "file_sha256": "9a90ac87be7c95badf69264f66dcd3dbf73c380cc6deb1a021c187141473fc83"
+    },
+    {
+      "source_number": 12,
+      "relative_source": "five_arm_points_v1/limited/strict_alias_localplus/scores/evaluation_all_exact.tsv",
+      "file_sha256": "8bb942ac323c590f37406a3967f6f0a9010756f6f5b2d8791c3df77df99a6924"
+    },
+    {
+      "source_number": 13,
+      "relative_source": "five_arm_points_v1/limited/strict_alias_localplus/scores/fixed_threshold_0_5.json",
+      "file_sha256": "8acdf5d517b163cecbe61d5bf3db96739b84bae64d6759d9a94f8e6767cc85f3"
+    },
+    {
+      "source_number": 14,
+      "relative_source": "five_arm_points_v1/limited/strict_alias_localplus/scores/native_outcomes.json",
+      "file_sha256": "068a23fa1be2134bd37b5877c7ab2e3371624709733d6e46f624054419e22bc1"
+    },
+    {
+      "source_number": 15,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_blast/scores/evaluation_all_exact.tsv",
+      "file_sha256": "6c9762f89a35a4240cd63dac4b566f02ff401e1c48a7a05c67f0cd1d9c6b766c"
+    },
+    {
+      "source_number": 16,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_blast/scores/fixed_threshold_0_5.json",
+      "file_sha256": "123153a9f46ee27afb9550c29d31b8aa9b4cd9a61a2a2f5f6b87602c40f42421"
+    },
+    {
+      "source_number": 17,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_blast/scores/native_outcomes.json",
+      "file_sha256": "5636517c7753970b12969009351e4efef600b546f324bdfe54d800bee0c8b05d"
+    },
+    {
+      "source_number": 18,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_naive/scores/evaluation_all_exact.tsv",
+      "file_sha256": "61d9e5076ea02b7d14e3839bb538755396c080bbd09d45685daed09cef921bb6"
+    },
+    {
+      "source_number": 19,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_naive/scores/fixed_threshold_0_5.json",
+      "file_sha256": "94840df59ad6133db1af65083b8939109b6125df0bcce4b0015355772114f8b6"
+    },
+    {
+      "source_number": 20,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_naive/scores/native_outcomes.json",
+      "file_sha256": "2da68421131814b021d0f60b6b32524428f4ccf12a1f7a562b339f1e617f444c"
+    },
+    {
+      "source_number": 21,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_nonexperimental/scores/evaluation_all_exact.tsv",
+      "file_sha256": "515ccfaa9e9418c9c1cb37d5cf5902fa90be9968af03e9c8beb894d78254c6d2"
+    },
+    {
+      "source_number": 22,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_nonexperimental/scores/fixed_threshold_0_5.json",
+      "file_sha256": "9c8682ec046b76e922907b30ac92a519bd840fe778562a72c1a422cf7205c96d"
+    },
+    {
+      "source_number": 23,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_nonexperimental/scores/native_outcomes.json",
+      "file_sha256": "5636517c7753970b12969009351e4efef600b546f324bdfe54d800bee0c8b05d"
+    },
+    {
+      "source_number": 24,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_prott5_cosine3/scores/evaluation_all_exact.tsv",
+      "file_sha256": "3a9ecd412149855c786db59d897d81565941e995fabf9dd58da4a7e000f1d137"
+    },
+    {
+      "source_number": 25,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_prott5_cosine3/scores/fixed_threshold_0_5.json",
+      "file_sha256": "5c1ae6c79624279ea2112c4076628b27fb4827faa8e4239023aeecc102a342e7"
+    },
+    {
+      "source_number": 26,
+      "relative_source": "five_arm_points_v1/no_knowledge/official_prott5_cosine3/scores/native_outcomes.json",
+      "file_sha256": "5636517c7753970b12969009351e4efef600b546f324bdfe54d800bee0c8b05d"
+    },
+    {
+      "source_number": 27,
+      "relative_source": "five_arm_points_v1/no_knowledge/strict_alias_localplus/scores/evaluation_all_exact.tsv",
+      "file_sha256": "11ef4488a5c2acde06456a006679da6b1ab309904b1cc56a251b24434154e8f1"
+    },
+    {
+      "source_number": 28,
+      "relative_source": "five_arm_points_v1/no_knowledge/strict_alias_localplus/scores/fixed_threshold_0_5.json",
+      "file_sha256": "4c514e0e4882a5a81c33fff9ddd1139bc61f2ca043261675510a0bdfa39803c0"
+    },
+    {
+      "source_number": 29,
+      "relative_source": "five_arm_points_v1/no_knowledge/strict_alias_localplus/scores/native_outcomes.json",
+      "file_sha256": "e9dffdf9ba426a5be5b9d94c2527b085517d220d49c57d8e3fd6da1650d2162a"
+    },
+    {
+      "source_number": 30,
+      "relative_source": "five_arm_points_v1/report.json",
+      "file_sha256": "3d063928c53c6d09b124cbb99ef0792c6e0d7effe5383590fe9ba0854880637a"
+    },
+    {
+      "source_number": 31,
+      "relative_source": "gm_supplement_points_v1/limited/strict_alias_genemaniaplus/scores/evaluation_all_exact.tsv",
+      "file_sha256": "cc66eecb0d0bc8a3864c016ab87cf008a1f64799c9c5ceddce783c42c226e384"
+    },
+    {
+      "source_number": 32,
+      "relative_source": "gm_supplement_points_v1/limited/strict_alias_genemaniaplus/scores/fixed_threshold_0_5.json",
+      "file_sha256": "2d07280894391a357e609ab6986ae243b2fee5a9083b42691261f09834401775"
+    },
+    {
+      "source_number": 33,
+      "relative_source": "gm_supplement_points_v1/limited/strict_alias_genemaniaplus/scores/native_outcomes.json",
+      "file_sha256": "d0edd55c00f6c5996e03223ab517dd99df4247a2cb483efe1ef0c17a9a193c31"
+    },
+    {
+      "source_number": 34,
+      "relative_source": "gm_supplement_points_v1/no_knowledge/strict_alias_genemaniaplus/scores/evaluation_all_exact.tsv",
+      "file_sha256": "63df82f08ba1f3e48b2430e9a885246f63da57cb7ce76be9348bec7d8ff9fc9e"
+    },
+    {
+      "source_number": 35,
+      "relative_source": "gm_supplement_points_v1/no_knowledge/strict_alias_genemaniaplus/scores/fixed_threshold_0_5.json",
+      "file_sha256": "2d07280894391a357e609ab6986ae243b2fee5a9083b42691261f09834401775"
+    },
+    {
+      "source_number": 36,
+      "relative_source": "gm_supplement_points_v1/no_knowledge/strict_alias_genemaniaplus/scores/native_outcomes.json",
+      "file_sha256": "8764df3d9b7646e5dc608696595d5b5d0de2d61eed81973de1662586a3a8108a"
+    },
+    {
+      "source_number": 37,
+      "relative_source": "gm_supplement_points_v1/report.json",
+      "file_sha256": "789a7037987ac5a544018fe4ffd84e00c85816a34aeee53ad5b11dea0909a7ec"
+    },
+    {
+      "source_number": 38,
+      "relative_source": "reference/report.json",
+      "file_sha256": "ae9fa7b944356f02802a0ad2ac553dcc04a3a484e89da8a0acaba0cbf2a921ca"
+    },
+    {
+      "source_number": 39,
+      "relative_source": "remote_gm_jobs_v1.json",
+      "file_sha256": "6d2c88329448068f10dd3abbe9ed80b19a58783b1ea2652ced50dadf051264ed"
+    },
+    {
+      "source_number": 40,
+      "relative_source": "remote_jobs_v1.json",
+      "file_sha256": "027ceed5cb6cbc252a37610bbb45ea3a044b43a43e1ac3ad8b41b417545945d7"
+    }
+  ],
+  "official_reference_archive": {
+    "key": "full_evaluation.tar.gz",
+    "bytes": 24480633,
+    "publisher_checksum": "md5:9c205cb107c638a1188203fef4026bd4",
+    "sha256": "b3ef78a05ea724232e5c03cfab57d7db33518e646c4ae464d386a7699d317394",
+    "source_url": "https://zenodo.org/api/records/22381862/files/full_evaluation.tar.gz/content"
+  },
+  "method_choices": {
+    "five_arm_transport": [
+      "strict_alias_localplus",
+      "official_blast",
+      "official_prott5_cosine3",
+      "official_nonexperimental",
+      "official_naive"
+    ],
+    "supplementary": "strict_alias_genemaniaplus",
+    "GM_choice_timing": "Supplement chosen after old-graph PK GeneMANIA+ improved over LocalPlus, before any NK/LK GO reference labels were decoded.",
+    "GM_numerical_integration_version": 2,
+    "failed_GMv1_partial_preserved_unscored": true
+  },
+  "numerical_count_integration_diagnostics": {
+    "format": "biograph-steward.cafa5-NK-LK-count-integration-diagnostics.v2",
+    "created_at": "2026-11-14T06:39:18.076419+00:00",
+    "rows": [
+      {
+        "setting": "no_knowledge",
+        "method": "strict_alias_localplus",
+        "raw_reference_proteins": 44,
+        "ordinary_eligible": 44,
+        "IA_weighted_eligible": 44,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 1.6653345369377348e-16,
+          "author_curve_rows": 758,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 1.6653345369377348e-16,
+          "author_curve_rows": 758,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 1.6653345369377348e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 1.6653345369377348e-16,
+            "f_w": 1.6653345369377348e-16,
+            "fn": 0.0,
+            "fn_w": 7.105427357601002e-15,
+            "fp": 0.0,
+            "fp_w": 1.1368683772161603e-13,
+            "mi": 0.0,
+            "mi_w": 1.1368683772161603e-13,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 2.220446049250313e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 3.3306690738754696e-16,
+            "pr_w": 1.1102230246251565e-16,
+            "rc": 2.220446049250313e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 2.220446049250313e-16,
+            "rc_w": 1.6653345369377348e-16,
+            "ru": 0.0,
+            "ru_w": 7.105427357601002e-15,
+            "s": 0.0,
+            "s_w": 1.1368683772161603e-13,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 1.7763568394002505e-15
+          },
+          "complete_raw_numeric_max_absolute_difference": 1.1368683772161603e-13,
+          "complete_raw_numeric_columns_within_1e_12": true,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "11ef4488a5c2acde06456a006679da6b1ab309904b1cc56a251b24434154e8f1",
+        "source_agreement_file_sha256": "e07513901bc2178593c53308630c78c4dfa7ce01cfe5e8b8203b93b3e978c737",
+        "source_counts_file_sha256": "596cdd8afeab30b99bec42aec0a102e18dd01d1e08df7650a4448bac959fb0e8",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "no_knowledge",
+        "method": "official_blast",
+        "raw_reference_proteins": 44,
+        "ordinary_eligible": 44,
+        "IA_weighted_eligible": 44,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 1.1102230246251565e-16,
+          "author_curve_rows": 999,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 1.1102230246251565e-16,
+          "author_curve_rows": 999,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 1.1102230246251565e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 1.1102230246251565e-16,
+            "f_w": 1.3877787807814457e-16,
+            "fn": 0.0,
+            "fn_w": 3.552713678800501e-15,
+            "fp": 0.0,
+            "fp_w": 6.821210263296962e-13,
+            "mi": 0.0,
+            "mi_w": 6.821210263296962e-13,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 1.1102230246251565e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 1.1102230246251565e-16,
+            "pr_w": 1.1102230246251565e-16,
+            "rc": 2.220446049250313e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 2.220446049250313e-16,
+            "rc_w": 2.220446049250313e-16,
+            "ru": 0.0,
+            "ru_w": 3.552713678800501e-15,
+            "s": 0.0,
+            "s_w": 6.821210263296962e-13,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 5.329070518200751e-15
+          },
+          "complete_raw_numeric_max_absolute_difference": 6.821210263296962e-13,
+          "complete_raw_numeric_columns_within_1e_12": true,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "6c9762f89a35a4240cd63dac4b566f02ff401e1c48a7a05c67f0cd1d9c6b766c",
+        "source_agreement_file_sha256": "adea53307ab97b7838f68e63afa827908d7ad724394b63df028e01574cd8938c",
+        "source_counts_file_sha256": "76cbf34b430c6fdf66ba45306d8e43783f67cb856590425ebe97784b1ba3f7bf",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "no_knowledge",
+        "method": "official_prott5_cosine3",
+        "raw_reference_proteins": 44,
+        "ordinary_eligible": 44,
+        "IA_weighted_eligible": 44,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 1.1102230246251565e-16,
+          "author_curve_rows": 999,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 1.1102230246251565e-16,
+          "author_curve_rows": 999,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 1.1102230246251565e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 1.1102230246251565e-16,
+            "f_w": 1.1102230246251565e-16,
+            "fn": 0.0,
+            "fn_w": 5.329070518200751e-15,
+            "fp": 0.0,
+            "fp_w": 7.105427357601002e-15,
+            "mi": 0.0,
+            "mi_w": 7.105427357601002e-15,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 1.6653345369377348e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 1.1102230246251565e-16,
+            "pr_w": 8.326672684688674e-17,
+            "rc": 1.1102230246251565e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 1.1102230246251565e-16,
+            "rc_w": 1.1102230246251565e-16,
+            "ru": 0.0,
+            "ru_w": 5.329070518200751e-15,
+            "s": 0.0,
+            "s_w": 7.105427357601002e-15,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 2.6645352591003757e-15
+          },
+          "complete_raw_numeric_max_absolute_difference": 7.105427357601002e-15,
+          "complete_raw_numeric_columns_within_1e_12": true,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "3a9ecd412149855c786db59d897d81565941e995fabf9dd58da4a7e000f1d137",
+        "source_agreement_file_sha256": "949c9f42ba3681124769d898ee148d49f9d636601da64d37f2d35e8dab712591",
+        "source_counts_file_sha256": "cf3efc0da5cb1a7f8044e18b79ef4c6c86510c23345dcffe9fa213c5588a1864",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "no_knowledge",
+        "method": "official_nonexperimental",
+        "raw_reference_proteins": 44,
+        "ordinary_eligible": 44,
+        "IA_weighted_eligible": 44,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 0.0,
+          "author_curve_rows": 999,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 0.0,
+          "author_curve_rows": 999,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 0.0,
+            "f_micro": 0.0,
+            "f_micro_w": 0.0,
+            "f_w": 0.0,
+            "fn": 0.0,
+            "fn_w": 0.0,
+            "fp": 0.0,
+            "fp_w": 0.0,
+            "mi": 0.0,
+            "mi_w": 0.0,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 5.551115123125783e-17,
+            "pr_micro": 0.0,
+            "pr_micro_w": 0.0,
+            "pr_w": 5.551115123125783e-17,
+            "rc": 0.0,
+            "rc_micro": 0.0,
+            "rc_micro_w": 0.0,
+            "rc_w": 5.551115123125783e-17,
+            "ru": 0.0,
+            "ru_w": 0.0,
+            "s": 0.0,
+            "s_w": 0.0,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 0.0
+          },
+          "complete_raw_numeric_max_absolute_difference": 5.551115123125783e-17,
+          "complete_raw_numeric_columns_within_1e_12": true,
+          "raw_weighted_Smin_count_bitwise_identity": true,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "515ccfaa9e9418c9c1cb37d5cf5902fa90be9968af03e9c8beb894d78254c6d2",
+        "source_agreement_file_sha256": "d2d51920028974eb948bb2c97446e01e4ad8e340eaaaedaf9ed2783f126d8e41",
+        "source_counts_file_sha256": "f8fcfcee125c2f934f6e8fd6becc0ef50800f91c2133b55c08b2bc304ce2c16d",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "no_knowledge",
+        "method": "official_naive",
+        "raw_reference_proteins": 44,
+        "ordinary_eligible": 44,
+        "IA_weighted_eligible": 44,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 1.1102230246251565e-16,
+          "author_curve_rows": 430,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 1.1102230246251565e-16,
+          "author_curve_rows": 430,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 1.1102230246251565e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 1.1102230246251565e-16,
+            "f_w": 8.326672684688674e-17,
+            "fn": 0.0,
+            "fn_w": 5.329070518200751e-15,
+            "fp": 0.0,
+            "fp_w": 4.547473508864641e-12,
+            "mi": 0.0,
+            "mi_w": 4.547473508864641e-12,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 1.6653345369377348e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 1.6653345369377348e-16,
+            "pr_w": 2.220446049250313e-16,
+            "rc": 3.3306690738754696e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 1.1102230246251565e-16,
+            "rc_w": 2.220446049250313e-16,
+            "ru": 0.0,
+            "ru_w": 5.329070518200751e-15,
+            "s": 0.0,
+            "s_w": 4.547473508864641e-12,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 3.552713678800501e-15
+          },
+          "complete_raw_numeric_max_absolute_difference": 4.547473508864641e-12,
+          "complete_raw_numeric_columns_within_1e_12": false,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "61d9e5076ea02b7d14e3839bb538755396c080bbd09d45685daed09cef921bb6",
+        "source_agreement_file_sha256": "8032857fb4fbf4a11d37a57ab20b8151c469f5f7f9d45084ed3bc4bf088fee55",
+        "source_counts_file_sha256": "0eb7344cb885eba059c02dcd28093df697214d460c45f9b979ecb5778f99e4e4",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "no_knowledge",
+        "method": "strict_alias_genemaniaplus",
+        "raw_reference_proteins": 44,
+        "ordinary_eligible": 44,
+        "IA_weighted_eligible": 44,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 1.3877787807814457e-16,
+          "author_curve_rows": 291,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 1.3877787807814457e-16,
+          "author_curve_rows": 291,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 1.6653345369377348e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 1.3877787807814457e-16,
+            "f_w": 1.6653345369377348e-16,
+            "fn": 0.0,
+            "fn_w": 7.105427357601002e-15,
+            "fp": 0.0,
+            "fp_w": 2.2737367544323206e-13,
+            "mi": 0.0,
+            "mi_w": 2.2737367544323206e-13,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 2.220446049250313e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 2.220446049250313e-16,
+            "pr_w": 3.3306690738754696e-16,
+            "rc": 2.220446049250313e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 3.3306690738754696e-16,
+            "rc_w": 2.220446049250313e-16,
+            "ru": 0.0,
+            "ru_w": 7.105427357601002e-15,
+            "s": 0.0,
+            "s_w": 2.2737367544323206e-13,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 2.6645352591003757e-15
+          },
+          "complete_raw_numeric_max_absolute_difference": 2.2737367544323206e-13,
+          "complete_raw_numeric_columns_within_1e_12": true,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "63df82f08ba1f3e48b2430e9a885246f63da57cb7ce76be9348bec7d8ff9fc9e",
+        "source_agreement_file_sha256": "29da503947a2b3173cfa34f49ec02571c3ea3a7aaa8e1c14715e6957648fe71a",
+        "source_counts_file_sha256": "adf7129995438b99a86887d093245c7da15d17231e18f0e3dffa87c886428e59",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "limited",
+        "method": "strict_alias_localplus",
+        "raw_reference_proteins": 227,
+        "ordinary_eligible": 227,
+        "IA_weighted_eligible": 227,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 2.7755575615628914e-16,
+          "author_curve_rows": 891,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 2.7755575615628914e-16,
+          "author_curve_rows": 891,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 2.7755575615628914e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 2.7755575615628914e-16,
+            "f_w": 3.885780586188048e-16,
+            "fn": 0.0,
+            "fn_w": 2.1316282072803006e-14,
+            "fp": 0.0,
+            "fp_w": 2.2737367544323206e-13,
+            "mi": 0.0,
+            "mi_w": 2.2737367544323206e-13,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 3.3306690738754696e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 3.3306690738754696e-16,
+            "pr_w": 6.106226635438361e-16,
+            "rc": 6.661338147750939e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 3.3306690738754696e-16,
+            "rc_w": 4.440892098500626e-16,
+            "ru": 0.0,
+            "ru_w": 2.1316282072803006e-14,
+            "s": 0.0,
+            "s_w": 2.2737367544323206e-13,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 1.2434497875801753e-14
+          },
+          "complete_raw_numeric_max_absolute_difference": 2.2737367544323206e-13,
+          "complete_raw_numeric_columns_within_1e_12": true,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "8bb942ac323c590f37406a3967f6f0a9010756f6f5b2d8791c3df77df99a6924",
+        "source_agreement_file_sha256": "dabf41e0785a4a61440ca2d00e34d7f48220e1f574dd1d50e49a5c6e20fa8d59",
+        "source_counts_file_sha256": "4203e2ba3dab143fba3235741cb09e0114e5674bbccc56470823f455d17139aa",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "limited",
+        "method": "official_blast",
+        "raw_reference_proteins": 227,
+        "ordinary_eligible": 227,
+        "IA_weighted_eligible": 227,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 1.3877787807814457e-16,
+          "author_curve_rows": 999,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 1.3877787807814457e-16,
+          "author_curve_rows": 999,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 1.6653345369377348e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 1.3877787807814457e-16,
+            "f_w": 1.942890293094024e-16,
+            "fn": 0.0,
+            "fn_w": 1.4210854715202004e-14,
+            "fp": 0.0,
+            "fp_w": 1.1368683772161603e-12,
+            "mi": 0.0,
+            "mi_w": 1.1368683772161603e-12,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 1.942890293094024e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 1.1102230246251565e-16,
+            "pr_w": 1.6653345369377348e-16,
+            "rc": 6.661338147750939e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 3.3306690738754696e-16,
+            "rc_w": 5.551115123125783e-16,
+            "ru": 0.0,
+            "ru_w": 1.4210854715202004e-14,
+            "s": 0.0,
+            "s_w": 1.1368683772161603e-12,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 1.0658141036401503e-14
+          },
+          "complete_raw_numeric_max_absolute_difference": 1.1368683772161603e-12,
+          "complete_raw_numeric_columns_within_1e_12": false,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "abc2f2ee5185fb31ff0333a8ece05efdfec15cce18ce8816e73418daa994ab42",
+        "source_agreement_file_sha256": "2478a54342b81cfa20e2331af17d511890f4489452c3c4590c6f2a5c37423c70",
+        "source_counts_file_sha256": "32400761fe09fb6617424169f5e70b1e880c09a10ac326ce86fc08f9a09a317b",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "limited",
+        "method": "official_prott5_cosine3",
+        "raw_reference_proteins": 227,
+        "ordinary_eligible": 227,
+        "IA_weighted_eligible": 227,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 1.3877787807814457e-16,
+          "author_curve_rows": 999,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 1.3877787807814457e-16,
+          "author_curve_rows": 999,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 1.6653345369377348e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 1.3877787807814457e-16,
+            "f_w": 1.1102230246251565e-16,
+            "fn": 0.0,
+            "fn_w": 1.4210854715202004e-14,
+            "fp": 0.0,
+            "fp_w": 1.0658141036401503e-14,
+            "mi": 0.0,
+            "mi_w": 1.0658141036401503e-14,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 2.498001805406602e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 1.1102230246251565e-16,
+            "pr_w": 1.3877787807814457e-16,
+            "rc": 1.3877787807814457e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 1.6653345369377348e-16,
+            "rc_w": 1.6653345369377348e-16,
+            "ru": 0.0,
+            "ru_w": 1.4210854715202004e-14,
+            "s": 0.0,
+            "s_w": 1.7763568394002505e-14,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 1.7763568394002505e-15
+          },
+          "complete_raw_numeric_max_absolute_difference": 1.7763568394002505e-14,
+          "complete_raw_numeric_columns_within_1e_12": true,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "be112613ee019c122ebe628b01c1af65a6be1038339667166d3c6c9cf892ea43",
+        "source_agreement_file_sha256": "2e7afb66a550dbbae18fa96eea51e295b6064280b5ac63048c00b601763b7821",
+        "source_counts_file_sha256": "fbd4951e1ebbc54036460272ba7c513d081124d52dae83f34d8e8024d2ad4b3d",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "limited",
+        "method": "official_nonexperimental",
+        "raw_reference_proteins": 227,
+        "ordinary_eligible": 227,
+        "IA_weighted_eligible": 227,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 5.551115123125783e-17,
+          "author_curve_rows": 999,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 5.551115123125783e-17,
+          "author_curve_rows": 999,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 0.0,
+            "f_micro": 0.0,
+            "f_micro_w": 5.551115123125783e-17,
+            "f_w": 1.1102230246251565e-16,
+            "fn": 0.0,
+            "fn_w": 1.7763568394002505e-15,
+            "fp": 0.0,
+            "fp_w": 1.0658141036401503e-14,
+            "mi": 0.0,
+            "mi_w": 1.0658141036401503e-14,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 0.0,
+            "pr_micro": 0.0,
+            "pr_micro_w": 1.1102230246251565e-16,
+            "pr_w": 5.551115123125783e-17,
+            "rc": 0.0,
+            "rc_micro": 0.0,
+            "rc_micro_w": 1.1102230246251565e-16,
+            "rc_w": 1.6653345369377348e-16,
+            "ru": 0.0,
+            "ru_w": 1.7763568394002505e-15,
+            "s": 0.0,
+            "s_w": 1.0658141036401503e-14,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 8.881784197001252e-16
+          },
+          "complete_raw_numeric_max_absolute_difference": 1.0658141036401503e-14,
+          "complete_raw_numeric_columns_within_1e_12": true,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "724af0169a27fca036257636bd175b8c5384c885f525e3492179e57846f34d47",
+        "source_agreement_file_sha256": "3b0e592d97d0bff91406282af0e0a0d047eb99a0ef2716471784b1dadece2f9b",
+        "source_counts_file_sha256": "0944fe304d2390feac42dbd05bda3b2cbcf015fe945a02625a900f0a20cba631",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "limited",
+        "method": "official_naive",
+        "raw_reference_proteins": 227,
+        "ordinary_eligible": 227,
+        "IA_weighted_eligible": 227,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 3.608224830031759e-16,
+          "author_curve_rows": 430,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 3.608224830031759e-16,
+          "author_curve_rows": 430,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 3.0531133177191805e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 3.608224830031759e-16,
+            "f_w": 1.942890293094024e-16,
+            "fn": 0.0,
+            "fn_w": 2.1316282072803006e-14,
+            "fp": 0.0,
+            "fp_w": 4.092726157978177e-12,
+            "mi": 0.0,
+            "mi_w": 4.092726157978177e-12,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 5.551115123125783e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 6.938893903907228e-16,
+            "pr_w": 7.771561172376096e-16,
+            "rc": 9.992007221626409e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 4.996003610813204e-16,
+            "rc_w": 4.440892098500626e-16,
+            "ru": 0.0,
+            "ru_w": 2.1316282072803006e-14,
+            "s": 0.0,
+            "s_w": 4.092726157978177e-12,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 1.4210854715202004e-14
+          },
+          "complete_raw_numeric_max_absolute_difference": 4.092726157978177e-12,
+          "complete_raw_numeric_columns_within_1e_12": false,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "9288753dc88938513b479a37ea65f0ef0dfba81eaa6505e262dad665b8fdbf94",
+        "source_agreement_file_sha256": "040606a47bb6cc9285d6607080b83b4828bea6e467614ee5c3f92041cbdf1d82",
+        "source_counts_file_sha256": "6af970b85357ae8216c3382ea32e636ea61d53b69e781021febc34b522fe12ea",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      },
+      {
+        "setting": "limited",
+        "method": "strict_alias_genemaniaplus",
+        "raw_reference_proteins": 227,
+        "ordinary_eligible": 227,
+        "IA_weighted_eligible": 227,
+        "declared_endpoint_gate": {
+          "max_absolute_curve_difference": 2.7755575615628914e-16,
+          "author_curve_rows": 419,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound."
+        },
+        "all_29_numeric_columns": {
+          "max_absolute_curve_difference": 2.7755575615628914e-16,
+          "author_curve_rows": 419,
+          "numeric_columns": 29,
+          "column_max_absolute_difference": {
+            "cov": 0.0,
+            "cov_w": 0.0,
+            "f": 2.7755575615628914e-16,
+            "f_micro": 0.0,
+            "f_micro_w": 2.7755575615628914e-16,
+            "f_w": 2.7755575615628914e-16,
+            "fn": 0.0,
+            "fn_w": 1.4210854715202004e-14,
+            "fp": 0.0,
+            "fp_w": 5.115907697472721e-13,
+            "mi": 0.0,
+            "mi_w": 5.115907697472721e-13,
+            "n": 0.0,
+            "n_w": 0.0,
+            "pr": 4.440892098500626e-16,
+            "pr_micro": 0.0,
+            "pr_micro_w": 4.440892098500626e-16,
+            "pr_w": 4.440892098500626e-16,
+            "rc": 5.551115123125783e-16,
+            "rc_micro": 0.0,
+            "rc_micro_w": 3.885780586188048e-16,
+            "rc_w": 5.551115123125783e-16,
+            "ru": 0.0,
+            "ru_w": 1.4210854715202004e-14,
+            "s": 0.0,
+            "s_w": 5.684341886080801e-13,
+            "tau": 0.0,
+            "tp": 0.0,
+            "tp_w": 1.0658141036401503e-14
+          },
+          "complete_raw_numeric_max_absolute_difference": 5.684341886080801e-13,
+          "complete_raw_numeric_columns_within_1e_12": true,
+          "raw_weighted_Smin_count_bitwise_identity": false,
+          "endpoint_scope": "Precommitted ordinary and IA-weighted micro-F curves at every native threshold; unchanged1e-12 bound.",
+          "raw_column_diagnostic_scope": "All native numeric columns retained separately. NumPy reduction layout can change large weighted raw FP/MI/Smin by final-place roundoff; no point curve or scoring formula is changed."
+        },
+        "source_point_file_sha256": "cc66eecb0d0bc8a3864c016ab87cf008a1f64799c9c5ceddce783c42c226e384",
+        "source_agreement_file_sha256": "b47ec455656a0cf2164b91d8989b10050e0b93e22c654a61b8d84196fb17e0fa",
+        "source_counts_file_sha256": "47aae964eac65b3b4337145c438fd33e6b7d99580d633037a1cfc52ac98b8404",
+        "implementation_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691"
+      }
+    ],
+    "declared_endpoint_bound": 1e-12,
+    "all_declared_endpoint_gates_passed": true,
+    "all_threshold_and_column_inventories_and_finite_checks_preserved": true,
+    "original_failed_full_29_column_v1_gate_preserved": true,
+    "original_failure": {
+      "method": "official_naive",
+      "setting": "no_knowledge",
+      "weighted_raw_fp_mi_smin_maximum_difference": 4.547473508864641e-12,
+      "ordinary_micro_F_curve_maximum_difference": 0.0,
+      "IA_micro_F_curve_maximum_difference": 1.1102230246251565e-16,
+      "columns_at_most_1e_13": 26,
+      "diagnostic_file_sha256": "f167cd1845ef75c7ed8c1412f761890a685bd661cc93dd2611f166832172ab88"
+    },
+    "v1_successful_counts_vs_fresh_v2": {
+      "strict_alias_localplus": {
+        "all_arrays_exactly_equal": true,
+        "v1_file_sha256": "596cdd8afeab30b99bec42aec0a102e18dd01d1e08df7650a4448bac959fb0e8",
+        "v2_file_sha256": "596cdd8afeab30b99bec42aec0a102e18dd01d1e08df7650a4448bac959fb0e8"
+      },
+      "official_blast": {
+        "all_arrays_exactly_equal": true,
+        "v1_file_sha256": "76cbf34b430c6fdf66ba45306d8e43783f67cb856590425ebe97784b1ba3f7bf",
+        "v2_file_sha256": "76cbf34b430c6fdf66ba45306d8e43783f67cb856590425ebe97784b1ba3f7bf"
+      },
+      "official_prott5_cosine3": {
+        "all_arrays_exactly_equal": true,
+        "v1_file_sha256": "cf3efc0da5cb1a7f8044e18b79ef4c6c86510c23345dcffe9fa213c5588a1864",
+        "v2_file_sha256": "cf3efc0da5cb1a7f8044e18b79ef4c6c86510c23345dcffe9fa213c5588a1864"
+      },
+      "official_nonexperimental": {
+        "all_arrays_exactly_equal": true,
+        "v1_file_sha256": "f8fcfcee125c2f934f6e8fd6becc0ef50800f91c2133b55c08b2bc304ce2c16d",
+        "v2_file_sha256": "f8fcfcee125c2f934f6e8fd6becc0ef50800f91c2133b55c08b2bc304ce2c16d"
+      }
+    },
+    "v1_failed_naive_diagnostic_arrays_vs_v2_all_shared_arrays_exactly_equal": true,
+    "v1_adapter_source_sha256": "30e34cbbf5d91839b40a5415715485b556e1cc1d4921fb9c601d9ead7d39ce0d",
+    "v2_adapter_source_sha256": "9fcac0aa1f0e445d27d9be3db7f42eb07e28789dfae9b3ad46752680497fd691",
+    "raw_weighted_Smin_count_bitwise_identity_claimed": false,
+    "point_curves_predictions_references_thresholds_model_choices_or_resampling_policy_changed": false,
+    "explanation": "The frozen uncertainty endpoint is ordinary/IA micro-F over the native threshold grid. The additional full29-column diagnostic exposed last-place weighted raw FP/MI/Smin reduction differences; those differences remain explicit and are not a new scoring result.",
+    "official_NumPy_1_26_reduction_documentation": "https://numpy.org/doc/1.26/reference/generated/numpy.sum.html",
+    "no_raw_reference_cases_predictions_IDs_or_count_arrays_included": true,
+    "producer_implementation_sha256": "b620d296ff123bf6b8d1d2df4da73f0cee82a2bc406d3ffe0fd8b90b3161ab78",
+    "content_sha256": "d2d6db42b9273de08d7a014e3a22844fcfafe7587a7f726c575de1694b84a3f8"
+  },
+  "paired_BPO_uncertainty": [
+    {
+      "setting": "no_knowledge",
+      "namespace": "biological_process",
+      "draws": 2000,
+      "seed": 20261113,
+      "raw_proteins": 44,
+      "metric": "author micro Fmax across fixed .001... .999 threshold grid; recomputed per resample",
+      "shared_protein_samples_across_all_arms": true,
+      "scores": {
+        "strict_alias_localplus": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.23690325346243798,
+              0.4188075845442105
+            ],
+            "bootstrap_mean": 0.32550430451420426
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.1943791638302413,
+              0.3568086417368292
+            ],
+            "bootstrap_mean": 0.2742072120102042
+          }
+        },
+        "official_blast": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.13346388214524169,
+              0.38242776757921576
+            ],
+            "bootstrap_mean": 0.24538738723845585
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.10110005124312615,
+              0.3319777035225452
+            ],
+            "bootstrap_mean": 0.2035227122212591
+          }
+        },
+        "official_prott5_cosine3": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.22393533303070337,
+              0.464689659755449
+            ],
+            "bootstrap_mean": 0.3364873525045708
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.18136026464045435,
+              0.3818282599644789
+            ],
+            "bootstrap_mean": 0.27387042970639824
+          }
+        },
+        "official_nonexperimental": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.24969925594824954,
+              0.4772327919301139
+            ],
+            "bootstrap_mean": 0.3604592658013396
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.23287815979253415,
+              0.4417821584041739
+            ],
+            "bootstrap_mean": 0.33401839370283665
+          }
+        },
+        "official_naive": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.20124869131953202,
+              0.26607979492088624
+            ],
+            "bootstrap_mean": 0.23260623574538614
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.1602276278468812,
+              0.21594788101207962
+            ],
+            "bootstrap_mean": 0.1864653326223037
+          }
+        },
+        "strict_alias_genemaniaplus": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.23583337549611538,
+              0.4052404886828853
+            ],
+            "bootstrap_mean": 0.31867454080016294
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.1953122259598723,
+              0.33992091473533464
+            ],
+            "bootstrap_mean": 0.26511577564338495
+          }
+        }
+      },
+      "comparisons": [
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_blast",
+          "readout": "ordinary",
+          "difference_mean": 0.08011691727574838,
+          "paired_95_percentile_interval": [
+            -0.07242153567344878,
+            0.2152553147129621
+          ],
+          "fraction_draws_above_zero": 0.8565,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_blast",
+          "readout": "IA_weighted",
+          "difference_mean": 0.07068449978894503,
+          "paired_95_percentile_interval": [
+            -0.061953358915526,
+            0.18614236746818852
+          ],
+          "fraction_draws_above_zero": 0.8655,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_prott5_cosine3",
+          "readout": "ordinary",
+          "difference_mean": -0.010983047990366514,
+          "paired_95_percentile_interval": [
+            -0.13996415993253639,
+            0.09551290907151895
+          ],
+          "fraction_draws_above_zero": 0.4515,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_prott5_cosine3",
+          "readout": "IA_weighted",
+          "difference_mean": 0.00033678230380589785,
+          "paired_95_percentile_interval": [
+            -0.11494319138564883,
+            0.09335227297183032
+          ],
+          "fraction_draws_above_zero": 0.524,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_nonexperimental",
+          "readout": "ordinary",
+          "difference_mean": -0.03495496128713539,
+          "paired_95_percentile_interval": [
+            -0.1543788597157119,
+            0.0640463415927713
+          ],
+          "fraction_draws_above_zero": 0.286,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_nonexperimental",
+          "readout": "IA_weighted",
+          "difference_mean": -0.05981118169263247,
+          "paired_95_percentile_interval": [
+            -0.17073099077856185,
+            0.03636218951255753
+          ],
+          "fraction_draws_above_zero": 0.1295,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_naive",
+          "readout": "ordinary",
+          "difference_mean": 0.09289806876881809,
+          "paired_95_percentile_interval": [
+            0.006459311466685408,
+            0.1834636486391901
+          ],
+          "fraction_draws_above_zero": 0.9815,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_naive",
+          "readout": "IA_weighted",
+          "difference_mean": 0.08774187938790048,
+          "paired_95_percentile_interval": [
+            0.01267040013727812,
+            0.16649646858302874
+          ],
+          "fraction_draws_above_zero": 0.992,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "strict_alias_localplus",
+          "readout": "ordinary",
+          "difference_mean": -0.006829763714041322,
+          "paired_95_percentile_interval": [
+            -0.03681305917098452,
+            0.020210294307013238
+          ],
+          "fraction_draws_above_zero": 0.3465,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "strict_alias_localplus",
+          "readout": "IA_weighted",
+          "difference_mean": -0.009091436366819214,
+          "paired_95_percentile_interval": [
+            -0.03643395162365439,
+            0.018622261583459664
+          ],
+          "fraction_draws_above_zero": 0.2705,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_blast",
+          "readout": "ordinary",
+          "difference_mean": 0.07328715356170705,
+          "paired_95_percentile_interval": [
+            -0.07192016608930232,
+            0.20316371655242943
+          ],
+          "fraction_draws_above_zero": 0.8415,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_blast",
+          "readout": "IA_weighted",
+          "difference_mean": 0.06159306342212581,
+          "paired_95_percentile_interval": [
+            -0.05757094282578817,
+            0.16539726664820265
+          ],
+          "fraction_draws_above_zero": 0.8585,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_prott5_cosine3",
+          "readout": "ordinary",
+          "difference_mean": -0.017812811704407835,
+          "paired_95_percentile_interval": [
+            -0.14503226862511315,
+            0.08162002646259521
+          ],
+          "fraction_draws_above_zero": 0.4075,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_prott5_cosine3",
+          "readout": "IA_weighted",
+          "difference_mean": -0.008754654063013314,
+          "paired_95_percentile_interval": [
+            -0.11173297463499107,
+            0.07391195090083348
+          ],
+          "fraction_draws_above_zero": 0.455,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_nonexperimental",
+          "readout": "ordinary",
+          "difference_mean": -0.04178472500117671,
+          "paired_95_percentile_interval": [
+            -0.15486522295080585,
+            0.05201665709464285
+          ],
+          "fraction_draws_above_zero": 0.2205,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_nonexperimental",
+          "readout": "IA_weighted",
+          "difference_mean": -0.06890261805945169,
+          "paired_95_percentile_interval": [
+            -0.1734628936650771,
+            0.020240362867952597
+          ],
+          "fraction_draws_above_zero": 0.0715,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_naive",
+          "readout": "ordinary",
+          "difference_mean": 0.08606830505477678,
+          "paired_95_percentile_interval": [
+            0.007204440588604206,
+            0.1711866795883905
+          ],
+          "fraction_draws_above_zero": 0.9855,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_naive",
+          "readout": "IA_weighted",
+          "difference_mean": 0.07865044302108128,
+          "paired_95_percentile_interval": [
+            0.012755395668580773,
+            0.14747574122816712
+          ],
+          "fraction_draws_above_zero": 0.9925,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        }
+      ],
+      "numpy": "1.26.4",
+      "limitations": [
+        "Proteins share graph neighbors, annotations and studies; these intervals do not establish independent biological replication.",
+        "Incomplete curator annotation is treated by the fixed CAFA benchmark convention, not asserted to be comprehensive negative biology.",
+        "Fmax optimizes an evaluation threshold; it is not a prospectively calibrated application acceptance threshold."
+      ],
+      "source_report_file_sha256": "25183adc53ece5b56a88e9ca2078a55aa131ef3c503c86f216b15abe9050707d",
+      "source_report_content_sha256": "ce4f2afa0cfcbe0b95e302d94ccd881d8414559cfdce7c4a4e7001b65b3c0730",
+      "source_count_and_gate_commitments": [
+        {
+          "source_number": 0,
+          "file_name": "agreement.json",
+          "file_sha256": "adea53307ab97b7838f68e63afa827908d7ad724394b63df028e01574cd8938c"
+        },
+        {
+          "source_number": 1,
+          "file_name": "counts.npz",
+          "file_sha256": "76cbf34b430c6fdf66ba45306d8e43783f67cb856590425ebe97784b1ba3f7bf"
+        },
+        {
+          "source_number": 2,
+          "file_name": "agreement.json",
+          "file_sha256": "8032857fb4fbf4a11d37a57ab20b8151c469f5f7f9d45084ed3bc4bf088fee55"
+        },
+        {
+          "source_number": 3,
+          "file_name": "counts.npz",
+          "file_sha256": "0eb7344cb885eba059c02dcd28093df697214d460c45f9b979ecb5778f99e4e4"
+        },
+        {
+          "source_number": 4,
+          "file_name": "agreement.json",
+          "file_sha256": "d2d51920028974eb948bb2c97446e01e4ad8e340eaaaedaf9ed2783f126d8e41"
+        },
+        {
+          "source_number": 5,
+          "file_name": "counts.npz",
+          "file_sha256": "f8fcfcee125c2f934f6e8fd6becc0ef50800f91c2133b55c08b2bc304ce2c16d"
+        },
+        {
+          "source_number": 6,
+          "file_name": "agreement.json",
+          "file_sha256": "949c9f42ba3681124769d898ee148d49f9d636601da64d37f2d35e8dab712591"
+        },
+        {
+          "source_number": 7,
+          "file_name": "counts.npz",
+          "file_sha256": "cf3efc0da5cb1a7f8044e18b79ef4c6c86510c23345dcffe9fa213c5588a1864"
+        },
+        {
+          "source_number": 8,
+          "file_name": "agreement.json",
+          "file_sha256": "29da503947a2b3173cfa34f49ec02571c3ea3a7aaa8e1c14715e6957648fe71a"
+        },
+        {
+          "source_number": 9,
+          "file_name": "counts.npz",
+          "file_sha256": "adf7129995438b99a86887d093245c7da15d17231e18f0e3dffa87c886428e59"
+        },
+        {
+          "source_number": 10,
+          "file_name": "agreement.json",
+          "file_sha256": "e07513901bc2178593c53308630c78c4dfa7ce01cfe5e8b8203b93b3e978c737"
+        },
+        {
+          "source_number": 11,
+          "file_name": "counts.npz",
+          "file_sha256": "596cdd8afeab30b99bec42aec0a102e18dd01d1e08df7650a4448bac959fb0e8"
+        }
+      ],
+      "saved_draw_file_hashes": {
+        "strict_alias_genemaniaplus_ordinary_Fmax.npy": "cddd9003c6e313c78b27634863c8db3b87818f354fafdb3b59d2dff62da070a5",
+        "official_prott5_cosine3_IA_weighted_Fmax.npy": "ece4a08ac26967e127107ab9440d9a4b52ba9e0640a5bcc7f9aec0cc3de07551",
+        "official_naive_IA_weighted_Fmax.npy": "fd30bce7e2ca990ad63bac758c87410e772dbd579583b64174f87f7db1a89811",
+        "official_blast_ordinary_Fmax.npy": "f31ff4b793a124094cbed5f54357e0f80be7aab500197fc823fdf397bf96845d",
+        "official_prott5_cosine3_ordinary_Fmax.npy": "16a45072c9409060e95890f9e39a645de7d39d33a507d518f5a765f88477a061",
+        "protein_multiplicities.npy": "0ca9b824ecfca50e200f4d31477aa10c4f51feb50f1b6a549272b7d1bdd10c87",
+        "strict_alias_localplus_IA_weighted_Fmax.npy": "de54ad74d5b2a455e09bb5ed42283acf1ca7865e43763ea97b73163aa3e9c361",
+        "strict_alias_genemaniaplus_IA_weighted_Fmax.npy": "61e409ba9e1cbd63122e5e11b98cf591128c23f77e0935401aaf05fe65715f76",
+        "official_blast_IA_weighted_Fmax.npy": "7c8312f0b36cd4a4a376c3395a4522aaef1928a989fdcec4bf9cd6d34e8eaa0b",
+        "official_nonexperimental_IA_weighted_Fmax.npy": "1dc884334c878fc77bb0e9ecc672cdbedd499239e353ee6e6d57eaa518c22244",
+        "official_naive_ordinary_Fmax.npy": "05c46f43735377c45197112ffe6d02803a87787f4529e9d3a573a6b3667a821e",
+        "strict_alias_localplus_ordinary_Fmax.npy": "e6a31e6fa87172740290747d1acd5e398e3931625638a683312fa485787e0c8b",
+        "official_nonexperimental_ordinary_Fmax.npy": "0955555e94f33a0cc262643b9b5ab48693191e1061b41c77269033dee570faba"
+      }
+    },
+    {
+      "setting": "limited",
+      "namespace": "biological_process",
+      "draws": 2000,
+      "seed": 20261113,
+      "raw_proteins": 227,
+      "metric": "author micro Fmax across fixed .001... .999 threshold grid; recomputed per resample",
+      "shared_protein_samples_across_all_arms": true,
+      "scores": {
+        "strict_alias_localplus": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.3050165132163051,
+              0.36424527307247034
+            ],
+            "bootstrap_mean": 0.3333087062231118
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.29727847311003014,
+              0.3582905850638
+            ],
+            "bootstrap_mean": 0.32745840628592204
+          }
+        },
+        "official_blast": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.1597497595427229,
+              0.22022499133998785
+            ],
+            "bootstrap_mean": 0.18843810289577942
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.15022272511596688,
+              0.21267226125424885
+            ],
+            "bootstrap_mean": 0.18012358916731572
+          }
+        },
+        "official_prott5_cosine3": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.18144502524495107,
+              0.2472245995887903
+            ],
+            "bootstrap_mean": 0.2132769243605211
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.16998198630816067,
+              0.23449291729602634
+            ],
+            "bootstrap_mean": 0.20160861200285285
+          }
+        },
+        "official_nonexperimental": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.2910235909634094,
+              0.3715661553405318
+            ],
+            "bootstrap_mean": 0.3308734292080105
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.2924708366846419,
+              0.3751010686378602
+            ],
+            "bootstrap_mean": 0.33301197057281423
+          }
+        },
+        "official_naive": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.2064287019813991,
+              0.2307561960215083
+            ],
+            "bootstrap_mean": 0.21859221350399696
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.1774835782366736,
+              0.1981649891809117
+            ],
+            "bootstrap_mean": 0.1877763243414386
+          }
+        },
+        "strict_alias_genemaniaplus": {
+          "ordinary": {
+            "bootstrap_95_percentile_interval": [
+              0.3166683629920571,
+              0.37536364058046034
+            ],
+            "bootstrap_mean": 0.34511332161423014
+          },
+          "IA_weighted": {
+            "bootstrap_95_percentile_interval": [
+              0.30302027132555825,
+              0.3600663589749218
+            ],
+            "bootstrap_mean": 0.3315333784829008
+          }
+        }
+      },
+      "comparisons": [
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_blast",
+          "readout": "ordinary",
+          "difference_mean": 0.14487060332733231,
+          "paired_95_percentile_interval": [
+            0.10917197459666692,
+            0.18112386059816374
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_blast",
+          "readout": "IA_weighted",
+          "difference_mean": 0.14733481711860627,
+          "paired_95_percentile_interval": [
+            0.10710616635714304,
+            0.18847445356073245
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_prott5_cosine3",
+          "readout": "ordinary",
+          "difference_mean": 0.1200317818625907,
+          "paired_95_percentile_interval": [
+            0.08248161154008128,
+            0.15588260442860138
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_prott5_cosine3",
+          "readout": "IA_weighted",
+          "difference_mean": 0.12584979428306917,
+          "paired_95_percentile_interval": [
+            0.08388722087503184,
+            0.16596146662111724
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_nonexperimental",
+          "readout": "ordinary",
+          "difference_mean": 0.002435277015101187,
+          "paired_95_percentile_interval": [
+            -0.03662798064581399,
+            0.039927646144466346
+          ],
+          "fraction_draws_above_zero": 0.5565,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_nonexperimental",
+          "readout": "IA_weighted",
+          "difference_mean": -0.005553564286892207,
+          "paired_95_percentile_interval": [
+            -0.050184385351625026,
+            0.03631273571116062
+          ],
+          "fraction_draws_above_zero": 0.4015,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_naive",
+          "readout": "ordinary",
+          "difference_mean": 0.11471649271911483,
+          "paired_95_percentile_interval": [
+            0.08713242447412074,
+            0.14364719571383733
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_localplus",
+          "comparator": "official_naive",
+          "readout": "IA_weighted",
+          "difference_mean": 0.1396820819444834,
+          "paired_95_percentile_interval": [
+            0.10911197939102751,
+            0.17173769107949302
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "strict_alias_localplus",
+          "readout": "ordinary",
+          "difference_mean": 0.011804615391118389,
+          "paired_95_percentile_interval": [
+            2.9925111953427203e-05,
+            0.023324230250235056
+          ],
+          "fraction_draws_above_zero": 0.9755,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "strict_alias_localplus",
+          "readout": "IA_weighted",
+          "difference_mean": 0.004074972196978841,
+          "paired_95_percentile_interval": [
+            -0.007755076155573575,
+            0.01562583864587716
+          ],
+          "fraction_draws_above_zero": 0.766,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_blast",
+          "readout": "ordinary",
+          "difference_mean": 0.1566752187184507,
+          "paired_95_percentile_interval": [
+            0.1196482822033952,
+            0.1907088291450755
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_blast",
+          "readout": "IA_weighted",
+          "difference_mean": 0.1514097893155851,
+          "paired_95_percentile_interval": [
+            0.11150993676945581,
+            0.18867898390662274
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_prott5_cosine3",
+          "readout": "ordinary",
+          "difference_mean": 0.1318363972537091,
+          "paired_95_percentile_interval": [
+            0.09536271117863288,
+            0.16780741640391872
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_prott5_cosine3",
+          "readout": "IA_weighted",
+          "difference_mean": 0.129924766480048,
+          "paired_95_percentile_interval": [
+            0.08848712309909902,
+            0.16909918211448377
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_nonexperimental",
+          "readout": "ordinary",
+          "difference_mean": 0.014239892406219572,
+          "paired_95_percentile_interval": [
+            -0.024901702125380305,
+            0.05126446780624332
+          ],
+          "fraction_draws_above_zero": 0.7735,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_nonexperimental",
+          "readout": "IA_weighted",
+          "difference_mean": -0.001478592089913365,
+          "paired_95_percentile_interval": [
+            -0.04480840743168067,
+            0.04043052317692924
+          ],
+          "fraction_draws_above_zero": 0.476,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_naive",
+          "readout": "ordinary",
+          "difference_mean": 0.1265211081102332,
+          "paired_95_percentile_interval": [
+            0.09977297295274333,
+            0.15463941607011572
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        },
+        {
+          "candidate": "strict_alias_genemaniaplus",
+          "comparator": "official_naive",
+          "readout": "IA_weighted",
+          "difference_mean": 0.14375705414146223,
+          "paired_95_percentile_interval": [
+            0.11474978417301283,
+            0.1732724660089923
+          ],
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional descriptive paired protein bootstrap; not a study-replication p-value."
+        }
+      ],
+      "numpy": "1.26.4",
+      "limitations": [
+        "Proteins share graph neighbors, annotations and studies; these intervals do not establish independent biological replication.",
+        "Incomplete curator annotation is treated by the fixed CAFA benchmark convention, not asserted to be comprehensive negative biology.",
+        "Fmax optimizes an evaluation threshold; it is not a prospectively calibrated application acceptance threshold."
+      ],
+      "source_report_file_sha256": "36bbff5a73ff44106b913d280d2bb0823b5f21a65d9e3b0405b3342f130a85ec",
+      "source_report_content_sha256": "b603e0979636f9e8b6f50569b424c37773ec22f82e724744af356237fec8e6b4",
+      "source_count_and_gate_commitments": [
+        {
+          "source_number": 0,
+          "file_name": "agreement.json",
+          "file_sha256": "2478a54342b81cfa20e2331af17d511890f4489452c3c4590c6f2a5c37423c70"
+        },
+        {
+          "source_number": 1,
+          "file_name": "counts.npz",
+          "file_sha256": "32400761fe09fb6617424169f5e70b1e880c09a10ac326ce86fc08f9a09a317b"
+        },
+        {
+          "source_number": 2,
+          "file_name": "agreement.json",
+          "file_sha256": "040606a47bb6cc9285d6607080b83b4828bea6e467614ee5c3f92041cbdf1d82"
+        },
+        {
+          "source_number": 3,
+          "file_name": "counts.npz",
+          "file_sha256": "6af970b85357ae8216c3382ea32e636ea61d53b69e781021febc34b522fe12ea"
+        },
+        {
+          "source_number": 4,
+          "file_name": "agreement.json",
+          "file_sha256": "3b0e592d97d0bff91406282af0e0a0d047eb99a0ef2716471784b1dadece2f9b"
+        },
+        {
+          "source_number": 5,
+          "file_name": "counts.npz",
+          "file_sha256": "0944fe304d2390feac42dbd05bda3b2cbcf015fe945a02625a900f0a20cba631"
+        },
+        {
+          "source_number": 6,
+          "file_name": "agreement.json",
+          "file_sha256": "2e7afb66a550dbbae18fa96eea51e295b6064280b5ac63048c00b601763b7821"
+        },
+        {
+          "source_number": 7,
+          "file_name": "counts.npz",
+          "file_sha256": "fbd4951e1ebbc54036460272ba7c513d081124d52dae83f34d8e8024d2ad4b3d"
+        },
+        {
+          "source_number": 8,
+          "file_name": "agreement.json",
+          "file_sha256": "b47ec455656a0cf2164b91d8989b10050e0b93e22c654a61b8d84196fb17e0fa"
+        },
+        {
+          "source_number": 9,
+          "file_name": "counts.npz",
+          "file_sha256": "47aae964eac65b3b4337145c438fd33e6b7d99580d633037a1cfc52ac98b8404"
+        },
+        {
+          "source_number": 10,
+          "file_name": "agreement.json",
+          "file_sha256": "dabf41e0785a4a61440ca2d00e34d7f48220e1f574dd1d50e49a5c6e20fa8d59"
+        },
+        {
+          "source_number": 11,
+          "file_name": "counts.npz",
+          "file_sha256": "4203e2ba3dab143fba3235741cb09e0114e5674bbccc56470823f455d17139aa"
+        }
+      ],
+      "saved_draw_file_hashes": {
+        "strict_alias_genemaniaplus_ordinary_Fmax.npy": "6e622decb8a882fe96759f6d76886aa14791c04cddd62f9aacc2f612e5f9fac9",
+        "official_prott5_cosine3_IA_weighted_Fmax.npy": "69c59f58d87bf703925b74737eaeeca4d8c1965406cb66c533a61eb9c43a9284",
+        "official_naive_IA_weighted_Fmax.npy": "a4673b2259e4216d42a9ec631217b120969732401d3fb168ce34249e78d814a5",
+        "official_blast_ordinary_Fmax.npy": "71f84b55008039dfec6030298df86081a386e99745ad1146cc065e5413a61a2c",
+        "official_prott5_cosine3_ordinary_Fmax.npy": "6337e83c93dde56cb6a31d631cb658a983f56e8663a2443fe6245157e49f6921",
+        "protein_multiplicities.npy": "50362f73af068c780fc735deb24eaa63ad907f9b7e3ea30d3ffcacc7b9d529cf",
+        "strict_alias_localplus_IA_weighted_Fmax.npy": "178f176884a9cfbda107220674b245e826bfa50e355c280a15de93c5c25bc357",
+        "strict_alias_genemaniaplus_IA_weighted_Fmax.npy": "125a6539b6f5f6ae64269631222c62551c0cb05211a105b15d4d05e8be780160",
+        "official_blast_IA_weighted_Fmax.npy": "a001b39fa8c8bc2a3e727bdaf7c41a129a8d48c3d89cb06282c80dbf224ca270",
+        "official_nonexperimental_IA_weighted_Fmax.npy": "473f4f6161c761a1bded32a0f0dfdce758e0864b14361edfddd382d7abf4f717",
+        "official_naive_ordinary_Fmax.npy": "ae6cb569b4117346bea5c017341b2898987da871db12af1ca36c16f5060d38ba",
+        "strict_alias_localplus_ordinary_Fmax.npy": "e304396457f89dcf28acd1a5ad3a5cf787b02f2f1d4d3f53d8efe7eaee85e682",
+        "official_nonexperimental_ordinary_Fmax.npy": "44a6f32513b85c720129b57695ce9c3141bcf0e30c90f0f4fa05a10f2469feb6"
+      }
+    }
+  ],
+  "uncertainty_status": "both BPO frames included",
+  "interpretation": "No method leads all six tasks. Existing nonexperimental annotation transfer leads both molecular-function tasks and NK biological process; naive term frequency leads both cellular-component tasks. GM leads LK biological process on point micro-Fmax. This does not establish a universally superior model.",
+  "literature_context": "The primary CAFA5 analysis also finds the PK setting harder than NK/LK and nonexperimental annotations competitive. Different metric rankings are expected; all ordinary/IA micro, macro, Smin and fixed.5 readouts are retained.",
+  "limitations": [
+    "Method/source-profile choices followed already observed PK results; the NK/LK future term columns were decoded only after all transport and supplementary predictions were sealed.",
+    "Native per-aspect tasks have no admitted experimental t0 seed rows on these target/aspect pairs, but graph nodes are transductive and LK can overlap prior PK proteins in different aspects.",
+    "This is the same CAFA source study and historical network, not independent-study replication or an inductive unseen-protein experiment.",
+    "The public curated reference admits experimental-family codes plus TAS/IC, and unannotated functions remain unknown biology despite closed-benchmark scoring.",
+    "Fmax evaluation cutoffs optimize the native test grid and are not calibrated deployment confidence thresholds. Fixed.5 readouts and all controls remain visible.",
+    "The GMv1 partial failed integration attempt remains preserved and unscored; the separately frozen v2 uses unchanged author raw scores with an independently reviewed numerical-domain certificate.",
+    "This public retrospective assessment is not fully developer-blinded: PK outcomes and prior newer GOA source inspections preceded the separately governed NK/LK release. Future annotations were excluded from every prediction feature.",
+    "The native closed benchmark convention counts unannotated functions as not positive for scoring; this is not a complete set of false biological claims.",
+    "BPO intervals, if included, are conditional paired protein resamples without multiplicity adjustment, not independent studies; the GM family is explicitly exploratory post-PK selection.",
+    "Whole-graph edge accuracy, disease mechanisms and direct physical binding are not measured by this function-annotation task."
+  ],
+  "references": [
+    {
+      "title": "CAFA5 primary study",
+      "url": "https://doi.org/10.64898/2026.04.27.716980"
+    },
+    {
+      "title": "Official CAFA5 reference v2",
+      "url": "https://zenodo.org/records/22381862"
+    },
+    {
+      "title": "Unchanged official evaluator",
+      "url": "https://github.com/claradepaolis/CAFA-evaluator-PK/tree/e386b085e204ccfbd75a4f52c1a8b25987d8b465"
+    }
+  ],
+  "raw_cases_source_text_or_predictions_included": false,
+  "operator_paths_included": false,
+  "source_graph_or_forecasts_modified": false,
+  "PK_240_slot_inventory_modified": false,
+  "new_model_or_threshold_selection_from_report": false,
+  "producer_implementation_sha256": "af96dd7bf40f639160192ff8025a48bf7b693d0cd9c76acfdcf7a987128c9a6d",
+  "content_sha256": "2676bd0bf097f5be3e2478a00d500a4314807cd7b1d93e42c334fc6f1841e0ae"
+}

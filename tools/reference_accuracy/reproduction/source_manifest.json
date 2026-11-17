@@ -1,0 +1,84 @@
+{
+  "author_artifacts": {
+    "hierarchy": {
+      "bytes": 15396,
+      "sha256": "6e94af5e5641aa63cfd1421fa1f0f2396429b35296f55b753438fd679cf24a8a"
+    },
+    "native_author_construction": {
+      "bytes": 89054,
+      "sha256": "604d6e763aae1b58e93860797be8a73d9fce669a2d4b011678ee6b68e8457621"
+    },
+    "official_UniProt_subcell_vocabulary": {
+      "bytes": 262895,
+      "sha256": "4dfa9c49ba12f794d3577cbd4981adfc72230cd8508d9964918fc257d3fd348c"
+    },
+    "ontology": {
+      "bytes": 5154541,
+      "sha256": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273"
+    },
+    "testset": {
+      "bytes": 2687788,
+      "sha256": "8636c3e23fcb6986279f1cbc924bc6c7b6e8fc8b3b974b2e4daf86b42bb0ccda"
+    }
+  },
+  "author_code_copied_into_reproduction_scripts": false,
+  "files": {
+    "prepare_hou_metadata.py": {
+      "edits": "Only input/output/dependency paths and expected parent-readiness SHA are CLI parameters; preparation/scientific body and artifact checks unchanged.",
+      "historical_successful_operator_sha256": "21271e3769a154fa1f08cbdb921b6138548f2f1a4fef3e00bf3f161270049262",
+      "parameterized_source_sha256": "53eaa3fe7e18a79087b1ef84c6487f77135927455c4d5d87e96bf43dcdcd62b5"
+    },
+    "prepare_hou_scope.py": {
+      "edits": "Only input/output/dependency paths and expected parent-readiness SHA are CLI parameters; preparation/scientific body and artifact checks unchanged.",
+      "historical_successful_operator_sha256": "ad181ca2072d075088de49e081ccf6bb550248e138260d4f6865a6272bd76892",
+      "parameterized_source_sha256": "d877930286031682d3f5b25a92203a8bc44553d709f3f2c31e3fbd1a55752884"
+    },
+    "prepare_source_eligibility.py": {
+      "edits": "Only input/output/dependency paths and expected parent-readiness SHA are CLI parameters; preparation/scientific body and artifact checks unchanged.",
+      "historical_successful_operator_sha256": "11c91cb16e5f5eeb0bef7f3969f10ae7b71c5ccfedb21626a159ba7930096adc",
+      "parameterized_source_sha256": "67771e98a104d6a384afd7069bac09d80cbdf0a54ebb0e448c0403fd9af66b4b"
+    }
+  },
+  "format": "biograph-steward.reference-preparation-reproduction-sources.v1",
+  "phase": "Source metadata and identifier coverage only; no cohort localization labels, gold metrics, model fitting or graph mutations.",
+  "raw_cases_or_sequences_included": false,
+  "reproduction_note": "Absolute operator paths, producer identities and resulting metadata hashes differ in a new checkout. Freeze freshly generated metadata before any new label join; a replay of the already-opened reference remains development, not fresh independent confirmation.",
+  "source_inputs": {
+    "HGNC": {
+      "bytes": 17006236,
+      "sha256": "86cc190fcae1abcd77a13ddba9a34327150477f4e3c6bcadd7f445b26dd31246"
+    },
+    "MitoCarta_author_workbook_bytes_only": {
+      "bytes": 10196992,
+      "sha256": "ac297e10b3e3d07715f22ac72edd4a1e89a9ec6e2208c1b94bdcd7b95906ddcd"
+    },
+    "current_graph": {
+      "bytes": 118993722,
+      "sha256": "eb0df5a47b8a2523033c8229a49528b2ecd537dd90dc6f865e346d760d68cf0c"
+    },
+    "native_GAF": {
+      "bytes": 12109254,
+      "sha256": "a0afba19dfb1f8fa996bc1bdcd61fd0c9bd4cf0d2bf2509d09ac86993c0e70a2"
+    },
+    "ontology": {
+      "bytes": 5154541,
+      "sha256": "86c2e58bd639053cabfafd831afc4049e3da8457cb900879262d164a13ba0273"
+    },
+    "original_graph": {
+      "bytes": 106240131,
+      "sha256": "09a829bcfbdf8c9c3451326d182d6b81f7448e74c4853bf3cb28e75f58e6b004"
+    },
+    "registry_manifest": {
+      "bytes": 1676,
+      "sha256": "d5787a56f8b49f5fc731bbca46f9721db394aa007bb55db4166c248b8aa64157"
+    },
+    "reviewed_human_UniProt": {
+      "bytes": 3285631,
+      "sha256": "0aea7f48d681594fa6fc882b8389b274ade1f705d68f52448686c66581b598c2"
+    },
+    "snapshot": {
+      "bytes": 79585676,
+      "sha256": "50233628e45e0c9a2602398fa117c5afeccf8d9d437bae1f959b2c8cf81a1929"
+    }
+  }
+}

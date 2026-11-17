@@ -1,0 +1,136 @@
+{
+  "format": "biograph-steward.question-graph-usability-browser.v1",
+  "status": "passed",
+  "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+  "observed_at_UTC": "2026-11-17T17:05:24.920591+00:00",
+  "surface": "actual Chrome controlled through native CUA; local saved-data-only application on loopback port18788",
+  "source_run": "native_evidence_workspace_20261115",
+  "question": "native_physical_KRAS_question_v3_20261115",
+  "checks": {
+    "default_question_overview": {
+      "returned_results": 14,
+      "shown_results": 14,
+      "entities": 15,
+      "citations": 14,
+      "passed": true
+    },
+    "focused_CDC42BPB_then_Show_all_results": true,
+    "Browse_saved_workspace_opens_existing_bounded_graph_and_full_tables": true,
+    "independent_start_end_search_KRAS_CDC42BPB": true,
+    "accepted_only_zero_evidence_disables_query_with_explanation": true,
+    "new_Results_and_evaluation_introduction": true,
+    "recorded_agent_S01_completed_without_inference": true
+  },
+  "actual_path_examples": [
+    {
+      "start": "UniProtKB:P01116",
+      "end": "UniProtKB:Q9Y5S2",
+      "predicate": "biograph:has_interaction_annotation",
+      "paths": 1,
+      "expansions": 68
+    },
+    {
+      "start": "UniProtKB:P04637",
+      "end": "GO:0005634",
+      "predicate": "biograph:has_native_go_annotation",
+      "paths": 1,
+      "expansions": 12
+    },
+    {
+      "start": "UniProtKB:P15056",
+      "end": "REACT:R-HSA-170984",
+      "predicate": "biolink:participates_in",
+      "paths": 1,
+      "expansions": 39
+    }
+  ],
+  "scope": {
+    "hop_limit": 1,
+    "evidence": "candidates and accepted",
+    "each_search_complete_within_bounds": true,
+    "scientific_source_files_modified": 0,
+    "model_requests": 0,
+    "fresh_retrieval": 0,
+    "review_writes": 0,
+    "Chrome_binary_download_attempts": 0
+  },
+  "runtime_file_sha256": {
+    "biograph_steward/guided.js": "9d80b8651d82d8a6f20c590bec7f4e3500c6f0b0877d97b62979034cc61b04c1",
+    "biograph_steward/navigation.js": "94bc316ded920d440dec3fe494556c0695a2041a75cb91b5c8b16ba51c988c5d",
+    "biograph_steward/ui.html": "2f65d8cb0f58e743ee178f387a64e5726620a835c43e751d6015f7b3e7e55eb5"
+  },
+  "screenshots": {
+    "local_BRAF_path_result.png": {
+      "bytes": 130654,
+      "sha256": "0abbaf6e28e6ceb3b2a624673a70ccb92c2571e384723b4a8f54eb16bbc50cde"
+    },
+    "local_KRAS_path_result.png": {
+      "bytes": 94714,
+      "sha256": "eb252c5ea255bd0460dd28dfe407de3fa3be0626e8bc3c789b1ea47f6c89839e"
+    },
+    "local_TP53_nucleus_path.png": {
+      "bytes": 93556,
+      "sha256": "1500bba762b3b4ee37266d0d667ba69bc2e7dfcf4b9fbf60227845b2d2ce6ded"
+    },
+    "local_accepted_scope_explanation.png": {
+      "bytes": 117242,
+      "sha256": "73cbb2a67ec03d1e876faf9cc2f64f8921dc118f18c5ec0a4bb344e96db76c0e"
+    },
+    "local_all_14_partners.png": {
+      "bytes": 93978,
+      "sha256": "07aa6a3655ce72db1e6e32c4e748cef0d964bf5ee852fb8935ba10517c6c2a3c"
+    },
+    "local_focused_CDC42BPB.png": {
+      "bytes": 86325,
+      "sha256": "1e48ee7d796e54f2a1fd1fd3af92f651d2039fcf0a0c7802c9e9ccdd65325318"
+    },
+    "local_overview_controls.png": {
+      "bytes": 97765,
+      "sha256": "f994de0a8173f89d71ca07e011e9ae4a182888eb840f51714faa1a3cd6f1ca24"
+    },
+    "local_path_entity_search.png": {
+      "bytes": 115441,
+      "sha256": "df364530827a18e714b21a1d970b6d4590c64dcf3ed8a5cbada5063db6d2402a"
+    },
+    "local_results_intro.png": {
+      "bytes": 140110,
+      "sha256": "18cddecbe0c7fb5d3b40e375ad7b97d0b334c4ba23c892a52c1795d84afc6008"
+    },
+    "local_start_agent_current.png": {
+      "bytes": 108159,
+      "sha256": "7dfcc904868ddd87a28fb3779e6f61a485784db4d4500edee060adbf92a6b8a6"
+    },
+    "local_workspace_browser.png": {
+      "bytes": 130130,
+      "sha256": "dc1b4cbc287721a01c22eed6b33ad237eb0bddc0d78b5bae827beabfe3ad141e"
+    },
+    "local_final_runtime_overview.png": {
+      "bytes": 97765,
+      "sha256": "f994de0a8173f89d71ca07e011e9ae4a182888eb840f51714faa1a3cd6f1ca24"
+    }
+  },
+  "verification_limits": [
+    "Question overview renders returned answer results; workspace browser is bounded and has full record tables.",
+    "Source context paths retain recorded predicate and direction. A path is not an inferred biological mechanism.",
+    "Prior Chrome organization binary-download block was not retried or bypassed."
+  ],
+  "initial_visual_observations_runtime_commit": "79af4679c7567ccd0dc760a22e286e27320f7671",
+  "final_runtime_check": {
+    "actual_Chrome_manual_question_initial_view": "Question result overview: KRAS",
+    "returned_results": 14,
+    "entities": 15,
+    "citations": 14,
+    "screenshot": "local_final_runtime_overview.png",
+    "empty_result_behavior": "Existing visible answer target; verified through actual runQuestion and bootstrap test contexts, not an actual browser zero-result query.",
+    "final_affected_UI_tests_passed": 53,
+    "failed": 0,
+    "skipped": 0
+  },
+  "runtime_bridge": {
+    "base_runtime_commit": "79af4679c7567ccd0dc760a22e286e27320f7671",
+    "final_runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+    "application_delta": "Two call-site conditional length checks use the visible answer for zero results; other UI, all three source adapters and scientific inputs are unchanged.",
+    "three_UI_file_patch_sha256": "0c08cd5621e0bad8f0ed1b5c9d11039854b5698e1ee9c55802db94d0037ff958",
+    "earlier_feature_screenshots_reused_with_explicit_original_revision": true
+  }
+}

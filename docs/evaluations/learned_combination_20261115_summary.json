@@ -1,0 +1,575 @@
+{
+  "all_final_forecasts_sealed_before_new_reference_terms": true,
+  "alpha_means": "LocalPlus share; remainder DeepGO-SE",
+  "bootstrap": {
+    "confidence": 0.95,
+    "draws": 2000,
+    "gate": "per-protein counts must reproduce native full curves within 1e-12",
+    "multiplicity_adjusted": false,
+    "sampling": "paired whole-protein percentile bootstrap, same multiplicities across arms",
+    "seed": 20261113
+  },
+  "development_target_count": 4948,
+  "format": "biograph-steward.learned-combination.aggregate-summary.v1",
+  "graph_or_app_defaults_changed": false,
+  "later_sequence_compatible_targets": 1163,
+  "maximum_native_curve_absolute_difference": 7.771561172376096e-16,
+  "metric": "ordinary native micro-Fmax .001-.999; IA unavailable",
+  "native_tests_passed": 37,
+  "native_tests_skipped": 0,
+  "new_reference_sources": {
+    "LK": {
+      "bytes": 254652,
+      "file": "/data/biograph_steward_research_20261114/learned_combination_v1/execution_v1/evaluation_v1/reference/groundtruth_LK.tsv",
+      "git_blob": "968ad43ce6fe466235f54bf97742f2e2a2dd02d5",
+      "sha256": "05bb36faed9796d9957ffb16ac81a30339d493587a998258f2abc454fec742e1",
+      "url": "https://raw.githubusercontent.com/FriedbergLab/CAFA_forever/c3fd5b9a5226348d88b9efadddb3214c803b80c4/data/releases/Sep_2025_Mar_2026/groundtruth_LK.tsv"
+    },
+    "NK": {
+      "bytes": 157132,
+      "file": "/data/biograph_steward_research_20261114/learned_combination_v1/execution_v1/evaluation_v1/reference/groundtruth_NK.tsv",
+      "git_blob": "3f73c7fdd0661c3b3e2894156a29a5985b11deeb",
+      "sha256": "53eaeeab5e137c842e7bce740d392943b45ba3e382c2fb7094ecdb9927e4a635",
+      "url": "https://raw.githubusercontent.com/FriedbergLab/CAFA_forever/c3fd5b9a5226348d88b9efadddb3214c803b80c4/data/releases/Sep_2025_Mar_2026/groundtruth_NK.tsv"
+    },
+    "PK": {
+      "bytes": 1044828,
+      "file": "/data/biograph_steward_research_20261114/learned_combination_v1/execution_v1/evaluation_v1/reference/groundtruth_PK.tsv",
+      "git_blob": "bee4941fe47e44d6c8f9ba09d7bd51aa9137c054",
+      "sha256": "9b224105d9a0276273e4138e1324423020b4032d700bbe70924241adceefc239",
+      "url": "https://raw.githubusercontent.com/FriedbergLab/CAFA_forever/c3fd5b9a5226348d88b9efadddb3214c803b80c4/data/releases/Sep_2025_Mar_2026/groundtruth_PK.tsv"
+    },
+    "PK_known": {
+      "bytes": 6142036,
+      "file": "/data/biograph_steward_research_20261114/learned_combination_v1/execution_v1/evaluation_v1/reference/groundtruth_PK_known.tsv",
+      "git_blob": "ac1ba9d56b5f0362d44df105964c3b610fa54583",
+      "sha256": "09819c8fa14693b63ddb52f7696749334bd7849d748b571a825e3864a6d7589d",
+      "url": "https://raw.githubusercontent.com/FriedbergLab/CAFA_forever/c3fd5b9a5226348d88b9efadddb3214c803b80c4/data/releases/Sep_2025_Mar_2026/groundtruth_PK_known.tsv"
+    },
+    "toi": {
+      "bytes": 425149,
+      "file": "/data/biograph_steward_research_20261114/learned_combination_v1/execution_v1/evaluation_v1/reference/groundtruth_terms_of_interest.txt",
+      "git_blob": "429b5bc43001ef48814df920c8af4509add3a5f9",
+      "sha256": "209a27a9a5bae0829718f6656a8e7eaf53dbed270c668bf6502ddb5f81857634",
+      "url": "https://raw.githubusercontent.com/FriedbergLab/CAFA_forever/c3fd5b9a5226348d88b9efadddb3214c803b80c4/data/releases/Sep_2025_Mar_2026/groundtruth_terms_of_interest.txt"
+    }
+  },
+  "primary_endpoint": "PK molecular_function ordinary native micro-Fmax",
+  "primary_success": false,
+  "reference": "LAFA Sep2025-Mar2026 retrospective external temporal reference, prior newer-GOA source exposure disclosed",
+  "selected_alphas": {
+    "biological_process": 0.8,
+    "cellular_component": 0.5,
+    "molecular_function": 0.4
+  },
+  "source_pins": {
+    "config_fitting_v2.json": "926033e306b8e079d32cb582606333cc37c7eabdbfa15cf1e9df0b19327e9bb6",
+    "evaluation_v1/reference_opening_gate.json": "9d03464d2e89abf6fb458438adf53ff68230d3ebbaeb45df6efde7864a57f7ef",
+    "evaluation_v1/report.json": "15f625188e58f4e352ddca4d42bf17f1aa32ca608c6e1eba1a3541e68b2f5e71",
+    "fit_v1/fit.json": "7c566d2880ea19c6e26334f560ca9e75e655fae4cdcf9083e8924da315c83878",
+    "sealed_v1/forecast_seal.json": "bcceae7ba70468cda6abc2f3b64c5a506d573b921589b463940377fec699568a"
+  },
+  "strata": {
+    "LK/biological_process": {
+      "learned_mix_paired_comparisons": [
+        {
+          "candidate": "learned_mix",
+          "comparator": "deepgose",
+          "difference_mean": 0.012148237120008221,
+          "fraction_draws_above_zero": 0.6215,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.08035119484456761,
+            0.09680230017479735
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "localplus",
+          "difference_mean": 0.029875698036918356,
+          "fraction_draws_above_zero": 0.981,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.001701438649053487,
+            0.06025742440656257
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "equal_mix",
+          "difference_mean": -0.02048158825977043,
+          "fraction_draws_above_zero": 0.221,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.0737715888320334,
+            0.0339622865519096
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "native_t0_nonexperimental",
+          "difference_mean": -0.05324083430134136,
+          "fraction_draws_above_zero": 0.27,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.21916985649417012,
+            0.12011759889157111
+          ]
+        }
+      ],
+      "methods": {
+        "deepgose": {
+          "eligible_proteins": 19,
+          "native_micro_fmax": 0.4484848484848485,
+          "pre_exclusion_GT_proteins": 19,
+          "status": "evaluated"
+        },
+        "equal_mix": {
+          "eligible_proteins": 19,
+          "native_micro_fmax": 0.4807692307692308,
+          "pre_exclusion_GT_proteins": 19,
+          "status": "evaluated"
+        },
+        "learned_mix": {
+          "eligible_proteins": 19,
+          "native_micro_fmax": 0.46484935437589675,
+          "pre_exclusion_GT_proteins": 19,
+          "status": "evaluated"
+        },
+        "localplus": {
+          "eligible_proteins": 19,
+          "native_micro_fmax": 0.43260188087774293,
+          "pre_exclusion_GT_proteins": 19,
+          "status": "evaluated"
+        },
+        "native_t0_nonexperimental": {
+          "eligible_proteins": 19,
+          "native_micro_fmax": 0.5289052890528905,
+          "pre_exclusion_GT_proteins": 19,
+          "status": "evaluated"
+        }
+      },
+      "status": "evaluated"
+    },
+    "LK/cellular_component": {
+      "learned_mix_paired_comparisons": [
+        {
+          "candidate": "learned_mix",
+          "comparator": "deepgose",
+          "difference_mean": 0.02686667275901946,
+          "fraction_draws_above_zero": 0.8675,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.020699490633691895,
+            0.08047884223975105
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "localplus",
+          "difference_mean": 0.041485564937739444,
+          "fraction_draws_above_zero": 0.9165,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.01683383710785429,
+            0.11152910606781054
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "equal_mix",
+          "difference_mean": 0.0,
+          "fraction_draws_above_zero": 0.0,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "native_t0_nonexperimental",
+          "difference_mean": 0.17525245102352727,
+          "fraction_draws_above_zero": 0.992,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.02475969442181408,
+            0.30752479968299906
+          ]
+        }
+      ],
+      "methods": {
+        "deepgose": {
+          "eligible_proteins": 16,
+          "native_micro_fmax": 0.6,
+          "pre_exclusion_GT_proteins": 16,
+          "status": "evaluated"
+        },
+        "equal_mix": {
+          "eligible_proteins": 16,
+          "native_micro_fmax": 0.6206896551724138,
+          "pre_exclusion_GT_proteins": 16,
+          "status": "evaluated"
+        },
+        "learned_mix": {
+          "eligible_proteins": 16,
+          "native_micro_fmax": 0.6206896551724138,
+          "pre_exclusion_GT_proteins": 16,
+          "status": "evaluated"
+        },
+        "localplus": {
+          "eligible_proteins": 16,
+          "native_micro_fmax": 0.5772594752186588,
+          "pre_exclusion_GT_proteins": 16,
+          "status": "evaluated"
+        },
+        "native_t0_nonexperimental": {
+          "eligible_proteins": 16,
+          "native_micro_fmax": 0.4666666666666667,
+          "pre_exclusion_GT_proteins": 16,
+          "status": "evaluated"
+        }
+      },
+      "status": "evaluated"
+    },
+    "LK/molecular_function": {
+      "learned_mix_paired_comparisons": [
+        {
+          "candidate": "learned_mix",
+          "comparator": "deepgose",
+          "difference_mean": 0.00785105909073869,
+          "fraction_draws_above_zero": 0.6045,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.10000626566416038,
+            0.09524702102021684
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "localplus",
+          "difference_mean": 0.08510505998235686,
+          "fraction_draws_above_zero": 0.717,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.07384152079804253,
+            0.33666666666666667
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "equal_mix",
+          "difference_mean": 0.0036829325274178567,
+          "fraction_draws_above_zero": 0.643,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.05894678738373701,
+            0.04264179320760185
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "native_t0_nonexperimental",
+          "difference_mean": 0.09977282641863344,
+          "fraction_draws_above_zero": 0.776,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.19556490569352042,
+            0.34928582967911015
+          ]
+        }
+      ],
+      "methods": {
+        "deepgose": {
+          "eligible_proteins": 9,
+          "native_micro_fmax": 0.3098591549295775,
+          "pre_exclusion_GT_proteins": 9,
+          "status": "evaluated"
+        },
+        "equal_mix": {
+          "eligible_proteins": 9,
+          "native_micro_fmax": 0.30769230769230765,
+          "pre_exclusion_GT_proteins": 9,
+          "status": "evaluated"
+        },
+        "learned_mix": {
+          "eligible_proteins": 9,
+          "native_micro_fmax": 0.3209876543209877,
+          "pre_exclusion_GT_proteins": 9,
+          "status": "evaluated"
+        },
+        "localplus": {
+          "eligible_proteins": 9,
+          "native_micro_fmax": 0.23880597014925373,
+          "pre_exclusion_GT_proteins": 9,
+          "status": "evaluated"
+        },
+        "native_t0_nonexperimental": {
+          "eligible_proteins": 9,
+          "native_micro_fmax": 0.2201834862385321,
+          "pre_exclusion_GT_proteins": 9,
+          "status": "evaluated"
+        }
+      },
+      "status": "evaluated"
+    },
+    "NK/biological_process": {
+      "learned_mix_paired_comparisons": [],
+      "methods": {},
+      "status": "reference_absent"
+    },
+    "NK/cellular_component": {
+      "learned_mix_paired_comparisons": [],
+      "methods": {},
+      "status": "reference_absent"
+    },
+    "NK/molecular_function": {
+      "learned_mix_paired_comparisons": [],
+      "methods": {},
+      "status": "reference_absent"
+    },
+    "PK/biological_process": {
+      "learned_mix_paired_comparisons": [
+        {
+          "candidate": "learned_mix",
+          "comparator": "deepgose",
+          "difference_mean": 0.04386316164706634,
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.029068453189622853,
+            0.058423836058771265
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "localplus",
+          "difference_mean": 0.003455683060709089,
+          "fraction_draws_above_zero": 0.829,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.003915959406375546,
+            0.01101008915765012
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "equal_mix",
+          "difference_mean": 0.01495931378182889,
+          "fraction_draws_above_zero": 0.997,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.004217231359032063,
+            0.025230375630668135
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "native_t0_nonexperimental",
+          "difference_mean": 0.06629677764866962,
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.04685943654173691,
+            0.08639896724193455
+          ]
+        }
+      ],
+      "methods": {
+        "deepgose": {
+          "eligible_proteins": 663,
+          "native_micro_fmax": 0.11777933942375263,
+          "pre_exclusion_GT_proteins": 663,
+          "status": "evaluated"
+        },
+        "equal_mix": {
+          "eligible_proteins": 663,
+          "native_micro_fmax": 0.14680459118605638,
+          "pre_exclusion_GT_proteins": 663,
+          "status": "evaluated"
+        },
+        "learned_mix": {
+          "eligible_proteins": 663,
+          "native_micro_fmax": 0.161828679901922,
+          "pre_exclusion_GT_proteins": 663,
+          "status": "evaluated"
+        },
+        "localplus": {
+          "eligible_proteins": 663,
+          "native_micro_fmax": 0.15838068181818182,
+          "pre_exclusion_GT_proteins": 663,
+          "status": "evaluated"
+        },
+        "native_t0_nonexperimental": {
+          "eligible_proteins": 663,
+          "native_micro_fmax": 0.09661552875043918,
+          "pre_exclusion_GT_proteins": 663,
+          "status": "evaluated"
+        }
+      },
+      "status": "evaluated"
+    },
+    "PK/cellular_component": {
+      "learned_mix_paired_comparisons": [
+        {
+          "candidate": "learned_mix",
+          "comparator": "deepgose",
+          "difference_mean": 0.0419301282038864,
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.023755175675716216,
+            0.05960232496237441
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "localplus",
+          "difference_mean": 0.03007914725421996,
+          "fraction_draws_above_zero": 0.9995,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.011450611451724147,
+            0.04897605761315526
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "equal_mix",
+          "difference_mean": 0.0,
+          "fraction_draws_above_zero": 0.0,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "native_t0_nonexperimental",
+          "difference_mean": 0.1354512568705747,
+          "fraction_draws_above_zero": 1.0,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.09715874652567714,
+            0.17317358237186978
+          ]
+        }
+      ],
+      "methods": {
+        "deepgose": {
+          "eligible_proteins": 447,
+          "native_micro_fmax": 0.29141414141414135,
+          "pre_exclusion_GT_proteins": 447,
+          "status": "evaluated"
+        },
+        "equal_mix": {
+          "eligible_proteins": 447,
+          "native_micro_fmax": 0.3341683366733467,
+          "pre_exclusion_GT_proteins": 447,
+          "status": "evaluated"
+        },
+        "learned_mix": {
+          "eligible_proteins": 447,
+          "native_micro_fmax": 0.3341683366733467,
+          "pre_exclusion_GT_proteins": 447,
+          "status": "evaluated"
+        },
+        "localplus": {
+          "eligible_proteins": 447,
+          "native_micro_fmax": 0.3041076147009369,
+          "pre_exclusion_GT_proteins": 447,
+          "status": "evaluated"
+        },
+        "native_t0_nonexperimental": {
+          "eligible_proteins": 447,
+          "native_micro_fmax": 0.20081878905408318,
+          "pre_exclusion_GT_proteins": 447,
+          "status": "evaluated"
+        }
+      },
+      "status": "evaluated"
+    },
+    "PK/molecular_function": {
+      "learned_mix_paired_comparisons": [
+        {
+          "candidate": "learned_mix",
+          "comparator": "deepgose",
+          "difference_mean": 0.0289330176757564,
+          "fraction_draws_above_zero": 0.995,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            0.006045069320524952,
+            0.05510216097891403
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "localplus",
+          "difference_mean": 0.0036974721240530944,
+          "fraction_draws_above_zero": 0.5495,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.04995526843049184,
+            0.06064844866264101
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "equal_mix",
+          "difference_mean": -0.005785041674228141,
+          "fraction_draws_above_zero": 0.2025,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.02015168721116963,
+            0.00682668343885123
+          ]
+        },
+        {
+          "candidate": "learned_mix",
+          "comparator": "native_t0_nonexperimental",
+          "difference_mean": 0.03089236449873321,
+          "fraction_draws_above_zero": 0.8565,
+          "interpretation": "Conditional paired protein bootstrap; incomplete reference is not negative biology.",
+          "paired_95_percentile_interval": [
+            -0.027070041414230406,
+            0.08959804038398878
+          ]
+        }
+      ],
+      "methods": {
+        "deepgose": {
+          "eligible_proteins": 240,
+          "native_micro_fmax": 0.17066369213608476,
+          "pre_exclusion_GT_proteins": 240,
+          "status": "evaluated"
+        },
+        "equal_mix": {
+          "eligible_proteins": 240,
+          "native_micro_fmax": 0.20419325432999086,
+          "pre_exclusion_GT_proteins": 240,
+          "status": "evaluated"
+        },
+        "learned_mix": {
+          "eligible_proteins": 240,
+          "native_micro_fmax": 0.19520547945205477,
+          "pre_exclusion_GT_proteins": 240,
+          "status": "evaluated"
+        },
+        "localplus": {
+          "eligible_proteins": 240,
+          "native_micro_fmax": 0.19327731092436976,
+          "pre_exclusion_GT_proteins": 240,
+          "status": "evaluated"
+        },
+        "native_t0_nonexperimental": {
+          "eligible_proteins": 240,
+          "native_micro_fmax": 0.17087206728640988,
+          "pre_exclusion_GT_proteins": 240,
+          "status": "evaluated"
+        }
+      },
+      "status": "evaluated"
+    }
+  }
+}

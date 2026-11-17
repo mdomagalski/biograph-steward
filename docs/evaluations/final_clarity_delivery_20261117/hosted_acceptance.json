@@ -1,0 +1,101 @@
+{
+  "format": "biograph-steward.final-clarity-ui-delivery.v1",
+  "status": "passed",
+  "acceptance_scope": "Committed source/deferred-response UI tests, served HTML markers, preserved APIs and source bytes. Current browser rendering is not included.",
+  "checked_at": "2026-11-17T20:00:26.420954+00:00",
+  "public_demo_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask",
+  "download_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/editable-copy/native_evidence_workspace_20261115/download",
+  "application_core": {
+    "commit": "7eea236cdeacf2d0a0ee33e11b01bc3ae5dac151",
+    "seven_changed_files_sha256": {
+      "biograph_steward/goa.js": "5872358b532085835dfbe9cac8840dcaad5e6bf5f6e272539730a2e13bff0743",
+      "biograph_steward/guided.js": "34f7ea68a0f2c1509c6d26db0104ac251e462bfeec9c8479c5a8b1627ce70bab",
+      "biograph_steward/navigation.js": "e9c361137fad92c51b0c9665306edd903e866fc11d726464754774f8d0486927",
+      "biograph_steward/protein_context.js": "cd748882f75ff0bcf473997dc01962a37f332d91c8b5828d001149a704800681",
+      "biograph_steward/scientific_assessment.js": "d0bb2d7635b9e8ac605a506c81b1f6a8b7766668c91113184fea5b099930b159",
+      "biograph_steward/ui.html": "b4ad8650922d7a6279d4ac6acde6ce6762d783671c0d09915c8545465af1fd2b",
+      "biograph_steward/workspaces.js": "f9939cde8196227bdccd74fab674c0b35fb04e7e354681f04ce50fbe92c2001f"
+    },
+    "remaining_existing_modules_unchanged": true,
+    "full_container_not_claimed_as_git_archive": true
+  },
+  "interface_configuration": {
+    "prominent_loading_status_and_spinner_CSS_served": true,
+    "current_request_loading_lifecycles_tested": true,
+    "screen_reader_busy_states_and_reduced_motion_preserved": true,
+    "workspace_display_names": [
+      "Added source context workspace",
+      "Qualified Pharos workspace"
+    ],
+    "workspace_IDs_and_scientific_source_bindings_unchanged": true,
+    "local_source_test_acceptance_receipt_sha256": "febd72c4e8a78674f7396f9e7f6df68552f991080994072c781c564a22b9b367",
+    "actual_current_browser_verified": false,
+    "browser_limitation": "The current browser helper refuses an existing native-module signature. No browser runtime, signature or security setting was modified. Earlier completed-state observations retain their earlier revision."
+  },
+  "portable_copy": {
+    "filename": "BioGraph_Steward_KRAS_Editable_Workspace.zip",
+    "bytes": 106915314,
+    "sha256": "87b1619ee50a990bf96787dba56173e524c8bfd13e7bbc466c107a13faecefe7",
+    "runtime_commit": "7eea236cdeacf2d0a0ee33e11b01bc3ae5dac151",
+    "source_workspace": "native_evidence_workspace_20261115",
+    "saved_question": "native_physical_KRAS_question_v3_20261115",
+    "recorded_agent_job": "source_agent_eval_dc7b597201da_S01",
+    "source_file_counts": {
+      "workspace": 207,
+      "question": 4,
+      "agent_job": 2
+    },
+    "all213_original_workspace_question_agent_files_unchanged": true,
+    "all_archive_member_hashes_and_CRC_verified": true,
+    "saved_graph_counts": {
+      "entities": 9724,
+      "evidence_records": 19310,
+      "assertions": 16430
+    },
+    "requires": {
+      "Python": "3.10+",
+      "AWS": false,
+      "model": false
+    },
+    "launch_command": "python3 START_EDITABLE_LOCAL.py"
+  },
+  "delivery_checks": {
+    "anonymous_HTML_metadata_and_HEAD": true,
+    "public_HTTP_checks": {
+      "anonymous_home_200": true,
+      "overview_controls": true,
+      "workspace_browser": true,
+      "results_navigation": true,
+      "path_instructions": true,
+      "old_increment_label_removed": true,
+      "prominent_loading_status_CSS_served": true,
+      "new_workspace_names_served": true,
+      "no_authentication_cookie": true,
+      "native_copy_metadata_200": true,
+      "metadata_exact_new_archive_pin": true,
+      "anonymous_archive_HEAD_200": true,
+      "archive_HEAD_exact_length": true,
+      "archive_HEAD_filename": true
+    },
+    "public_archive_GET_from_Mac_attempted": false,
+    "Chrome_binary_download_attempts": 0,
+    "prior_Chrome_organization_block_not_bypassed": true,
+    "archive_complete_SHA_checked_on_existing_VM": true,
+    "original_source_snapshot_files_rehashed": 732,
+    "original_source_snapshot_unchanged": true,
+    "private_operator_app_and_environment_unchanged": true,
+    "two_read_only_source_and_copy_mounts": true,
+    "memory_GiB": 3,
+    "CPU_count": 1,
+    "OOM_or_restarts_after_activation": false,
+    "gateway_or_Neptune_changed": false,
+    "new_cloud_compute_or_network_resources": 0,
+    "new_roles_or_permissions": 0,
+    "private_delivery_objects_uploaded": 2,
+    "new_source_retrievals": 0,
+    "new_model_calls": 0,
+    "graph_or_review_writes": 0,
+    "previous_unit_images_and_copy_preserved_for_rollback": true
+  },
+  "scientific_interpretation": "This update changes loading feedback and workspace display names for the same captured evidence. It adds no biological labels, inferred mechanisms, acceptance or new scientific measurements."
+}

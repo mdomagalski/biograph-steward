@@ -1,0 +1,17 @@
+{
+  "format": "biograph.software-editable-copy-delivery.v1",
+  "runtime_commit": "940db914a33bd88807074dd09f7b51f96b8ed4b0",
+  "runtime_bundle_sha256": "c465fb9eb84d8fdf1173a73d25c46c296e1ee552a21a8042c01e831ec74565d7",
+  "archive": {
+    "file": "BioGraph_Steward_Software.zip",
+    "sha256": "d6499a7e00acc7c913e325b11a52485f2c29275290d3c2ee4ed544c5c1b85852",
+    "bytes": 1088132,
+    "file_count": 196
+  },
+  "code_only": true,
+  "source_data_included": false,
+  "clean_python_CLI_passed": true,
+  "archive_extraction_hashes_verified": true,
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0
+}

@@ -1,0 +1,44 @@
+{
+  "format": "biograph-steward.saved-agent-verification-cache-validation.v1",
+  "status": "passed",
+  "source_revision": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+  "implementation_scope": "Adapt existing saved_run_cache full byte/inventory/reader fingerprints. Reuse only bounded positive markers for self-contained native-source queries; authoritative validation remains on first use and changes.",
+  "functional_and_regression_runs": [
+    {
+      "command": "PYTHONPATH=tests python3 -m unittest test_source_agent_job_cache test_source_agent_listing test_saved_run_cache test_reviewer_agent_entry test_source_agent test_source_agent_cli -q",
+      "tests": 62,
+      "seconds": 25.99,
+      "result": "OK",
+      "console_chunk": "413477",
+      "exact_wallclock_not_separately_recorded": true
+    },
+    {
+      "command": "PYTHONPATH=tests python3 -m unittest test_source_agent_http -q",
+      "tests": 8,
+      "seconds": 8.966,
+      "result": "OK",
+      "console_chunk": "923470",
+      "HTTP_console_window_UTC": "2026-11-16T17:29:22Z/2026-11-16T17:29:30Z",
+      "loopback_only_permission_required": true
+    }
+  ],
+  "total_tests": 70,
+  "independent_root_code_review": true,
+  "tests_use_invented_data": true,
+  "actual_model_or_source_retrieval_calls": 0,
+  "full_source_graph_or_qualifier_changes": false,
+  "verifier_guards": [
+    "Raw job bytes, manifest seals and metadata are still checked on every read.",
+    "Source bytes, same-size/mtime changes, file and directory inventory, symlinks, result resealing and changed reader/verifier bindings invalidate or fail.",
+    "Cold concurrent reads coalesce; cache stores at most eight True markers and no graph or result object.",
+    "Refresh, construction, assay, reference-dependent and qualified inherited views remain uncached."
+  ],
+  "existing_evaluation_implementation": "12d70a261ba75920e136d7bba1d42c2391b9228a",
+  "unchanged_helpers": {
+    "biograph_steward/source_agent.py": "8b21470d3258c45effba6a97220502cdafb11045a60beccaec51fceb7c6558a3",
+    "biograph_steward/planning.py": "d4acefc821e48ae95b147e22a925ccd7b47fc2fab49b524a828d473e3c1ede63",
+    "biograph_steward/portability.py": "66d61786aad7c00b101df041c087bd03a61a2740ead87dbea29bb65e83e08410"
+  },
+  "test_output_provenance": "Executed by collaborating implementation agent in this task; root reviewed diff and invalidation tests. Console output retained in task tool history, no separate test log invented.",
+  "hosted_actual_record_replay_and_performance_have_separate_receipts": true
+}

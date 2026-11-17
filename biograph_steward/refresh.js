@@ -75,5 +75,5 @@ $('refreshForm').onsubmit=async event=>{
   }catch(error){$('refreshStatus').textContent=error.message;}
   finally{$('refreshCompare').disabled=refreshChoices.length===0;}
 };
-if(!JSON.parse($('embeddedData').textContent)){loadRefreshRuns();loadRefreshHistory();}
+if(!savedReviewOnly()&&!JSON.parse($('embeddedData').textContent)){loadRefreshRuns();loadRefreshHistory();}
 else $('refreshPanel').classList.add('hidden');

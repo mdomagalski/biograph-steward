@@ -1,0 +1,37 @@
+{
+  "format": "biograph-steward.final-report-navigation.v1",
+  "canonical_files": {
+    "output/docx/BioGraph_Steward_Final_Report.docx": {
+      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+      "bytes": 12306,
+      "sha256": "911082b23f77db8e773dc3b595e0818aa17f549b39b46e17f21dafd18120a34d"
+    },
+    "output/pdf/BioGraph_Steward_Final_Report.pdf": {
+      "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
+      "bytes": 95745,
+      "sha256": "f21561cb908eb5530c148280f94dc2c2244d85efbaf219895b0832537c841dcc"
+    }
+  },
+  "source_content": "runs/question_graph_usability_20261117/report/content.json",
+  "pages": 4,
+  "all_pages_visually_reviewed": true,
+  "update_scope": "One accomplishment sentence explains question overviews and searchable path examples. Scientific methods, results and scope remain unchanged.",
+  "previous_files_preserved": {
+    "output/docx/BioGraph_Steward_Final_Report.docx": {
+      "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+      "bytes": 12266,
+      "sha256": "ebe1b1b9dcf3f12503fca1991a89704a2c541e76481a9a08245159bf4725cc73"
+    },
+    "output/pdf/BioGraph_Steward_Final_Report.pdf": {
+      "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
+      "bytes": 95499,
+      "sha256": "5f10736f28c91790f86bc9a436c20dd702c9979c2b4ec4ff3b3f8503a88234b6"
+    },
+    "output/software/BioGraph_Steward_Software.zip": {
+      "path": "output/software/BioGraph_Steward_Software.zip",
+      "bytes": 1083009,
+      "sha256": "8df05494e79d84b422596bfb80cf25adc5b64075b04246f80ded777d22419c1f"
+    }
+  },
+  "new_scientific_results": false
+}

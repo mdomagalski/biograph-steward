@@ -1,0 +1,24 @@
+{
+  "RCA_source_operator_sha256": "d470c3a6a6a5049ea1e38c8ba2f8dd1101941ab8bb49be1520a4d43134e6a65b",
+  "admission_clarification_sha256": "739bc5a2f1e100f00bd3a97f4a87993b048f25ab15171b4827368830c9928a18",
+  "aggregate_sha256": "e75def5761dae10798c44e970c2216d3ff754b0c69b258a541d75055f53d4ff5",
+  "all_private_archive_member_sizes_and_hashes_verified": true,
+  "archive_bytes": 25420,
+  "archive_sha256": "5688bff6b114643bb7ab9c75ed3d3350195bf43cef77ecec250084233dd739aa",
+  "format": "biograph-steward.current-refit-NOT-source-context-preservation.v1",
+  "initial_environment_and_preservation_failures_preserved": true,
+  "invented_canonical_and_context_count_assertions_passed": 5,
+  "members": 14,
+  "no_future_reference_models_or_forecasts_included": true,
+  "private_exact_rows_sha256": "4d20d18dcd7d3d53e4e568148e3e09286b7ccf14429f28084c29dacc543061b8",
+  "public_files_are_aggregate_only": true,
+  "source_only_no_metrics_or_model_changes": true,
+  "supplementary_private_operator_replay": {
+    "all_member_hashes_and_sizes_verified": true,
+    "bytes": 16316,
+    "includes_RCA_source_check_and_failed_preflight_recipes": true,
+    "members": 14,
+    "sha256": "3563a101524d5dca080accfc7bbed68561edaf210fb41ea6ab205273e29dac52"
+  },
+  "v2_transfer_representation_failure": "Remote archive verified; extra stdout-wrapper newline failed redundant JSON block hash. Canonical archive members verified and extracted, no remote rerun."
+}

@@ -1,0 +1,15 @@
+{
+  "all_member_hashes_and_sizes_match": true,
+  "contribution_count_files": 18,
+  "dense_forecasts_or_feature_arrays_copied": false,
+  "format": "biograph-steward.current-refit-numerical-replay-public.v1",
+  "native_curve_files": 18,
+  "original_reference_and_control_archives_separately_required": true,
+  "preserved_on_local_operator_storage": true,
+  "private_archive_bytes": 21167911,
+  "private_archive_sha256": "d573306989b06d48ce03887ec93cf4d44277b01ff9d4c8e43e6298b240be14bd",
+  "private_cases_and_arrays_not_in_publication": true,
+  "raw_assessment_sha256": "b7792b0737835d374f2335735aa254e90a609d9a73bf0bfd9f99f9586065eac0",
+  "scope": "Private numerical replay of this fixed development follow-up, not a complete VM backup. Larger forecasts and feature caches remain on the persistent research instance.",
+  "verified_regular_members": 71
+}

@@ -16,7 +16,9 @@ QUALIFIERS = ("disease", "variant", "therapy", "species", "tissue", "cell_line",
 # enter identity when supplied, so old claim IDs and human decisions survive.
 CONTEXT_QUALIFIERS = ("go_aspect", "tissue_label", "assay", "observation_id",
                       "measurement_value", "measurement_qualifier", "measurement_unit",
-                      "evidence_direction", "variant_origin", "therapy_interaction", "evidence_type")
+                      "evidence_direction", "variant_origin", "therapy_interaction", "evidence_type",
+                      "regulatory_effect", "regulatory_mechanism", "source_directness", "residue", "sequence",
+                      "go_relation")
 TRANSITIONS = {
     "candidate": {"accepted", "provisional", "quarantined", "rejected"},
     "provisional": {"accepted", "quarantined", "rejected", "obsolete"},
@@ -65,6 +67,10 @@ def build_assertions(graph: dict, events: list[dict] | None = None) -> list[dict
             group["source_names"].extend(edge["evidence_sources"])
         elif edge.get("primary_source_raw"):
             group["source_names"].append(str(edge["primary_source_raw"]))
+        if edge.get("extension_source_kind"):
+            group["data_kind"] = edge["data_kind"]
+            group["extension_source_kind"] = edge["extension_source_kind"]
+            group["evidence_extension_sha256"] = graph["evidence_extension_sha256"]
     for group in groups.values():
         if group["kind"] == "assay_observation" and graph.get("assay_publication_sha256"):
             group["data_kind"] = "published_assay_observations"
@@ -93,6 +99,8 @@ def build_assertions(graph: dict, events: list[dict] | None = None) -> list[dict
         if group["kind"] == "assay_observation" and any(
                 event.get(key) != graph.get(key) for key in ("assay_publication_sha256", "assay_attachment_sha256")):
             raise ValueError("Review belongs to a different assay publication or cohort selection; review the new evidence.")
+        if group.get("extension_source_kind") and event.get("evidence_extension_sha256") != graph.get("evidence_extension_sha256"):
+            raise ValueError("Review belongs to a different biological source extension.")
         if event.get("from_state") != group["lifecycle_state"]:
             raise ValueError("Review history has a stale lifecycle state.")
         validate_decision(group, event.get("to_state"), event.get("reviewer"), event.get("reason"))
@@ -139,6 +147,8 @@ def new_review_event(graph: dict, assertion_id: str, state: str,
     if assertion["kind"] == "assay_observation" and graph.get("assay_publication_sha256"):
         for key in ("assay_publication_sha256", "assay_attachment_sha256"):
             event[key] = graph[key]
+    if assertion.get("extension_source_kind"):
+        event["evidence_extension_sha256"] = graph["evidence_extension_sha256"]
     return event
 
 

@@ -81,6 +81,29 @@ def _graph_semantics(graph):
                 for a in sorted(graph['assertions'], key=lambda a: a['id'])]}
 
 
+def _same_graph_semantics(before, after):
+    """Compare the existing semantics exactly without materializing two copies.
+
+    Large source inventories carry original evidence on every assertion. Keep
+    the same comparison fields and ordering as _graph_semantics, but release
+    each assertion's copied content before comparing the next one.
+    """
+    if (before['graph_format'] != after['graph_format']
+            or before.get('normalization', {}).get('policy') != after.get('normalization', {}).get('policy')
+            or sorted(before['nodes'], key=lambda n: n['id']) != sorted(after['nodes'], key=lambda n: n['id'])):
+        return False
+    first = sorted(before['assertions'], key=lambda a: a['id'])
+    second = sorted(after['assertions'], key=lambda a: a['id'])
+    if len(first) != len(second):
+        return False
+    left_index, right_index = _index(before), _index(after)
+    for left, right in zip(first, second):
+        if (any(left[k] != right[k] for k in ('id', 'lifecycle_state', 'review_history'))
+                or _assertion_content(left, before, left_index) != _assertion_content(right, after, right_index)):
+            return False
+    return True
+
+
 def _metadata_shapes(snapshot):
     """Reject malformed containers before scope inspection can dereference them.
 
@@ -182,10 +205,13 @@ def _load(directory):
     if not isinstance(manifest.get('starter_version'), str) or not manifest['starter_version']:
         reasons.append('saved_manifest_starter_version_unknown')
     try:
-        if not isinstance(saved, dict) or _graph_semantics(saved) != _graph_semantics(graph):
+        if not isinstance(saved, dict) or not _same_graph_semantics(saved, graph):
             reasons.append('saved_graph_replay_semantics_mismatch')
     except (KeyError, TypeError, IndexError, AttributeError):
         reasons.append('saved_graph_replay_semantics_mismatch')
+    # Exact saved/replayed comparison is complete; its large saved copy is not
+    # needed while preparing the replay's final semantic digest.
+    del saved
     coverage = snapshot.get('retrieval', {}).get('context', {})
     family_rows = {}
     if isinstance(coverage, dict):

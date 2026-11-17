@@ -1,0 +1,54 @@
+{
+  "format": "biograph.editable-copy-actual-capture.v1",
+  "passed": true,
+  "scope": "Hosted graph/question/download control rendered in actual Chrome. Public archive verified independently over anonymous HTTPS. The byte-identical locally prepared archive was replayed and reviewed in the browser. Managed Chrome blocked its own ZIP transfer; no bypass.",
+  "source_workspace": "native_evidence_workspace_20261115",
+  "source_revision": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+  "complete_workspace_download_verified": true,
+  "download_verification_channel": "Independent anonymous HTTPS stream, before managed Chrome policy block was observed.",
+  "actual_Chrome_download_completed": false,
+  "managedChrome_policy_block": true,
+  "no_browser_security_policy_bypassed": true,
+  "same_package_bytes_prepared_locally": true,
+  "package_sha256": "dcae1dbbfcc5c99bca3ff51cddf62d3a2f1f287d60a3feef8923bffc8effdd55",
+  "native_source_replay_verified": true,
+  "launcher_opens_saved_KRAS_question": true,
+  "new_saved_runs": 1,
+  "new_run": "20261117T151428Z_1b2ea8d0",
+  "review_decision": "provisional",
+  "original_workspace_unchanged": true,
+  "original_source_files_unchanged": true,
+  "model_calls": 0,
+  "source_retrievals": 0,
+  "isolated_local_copy": true,
+  "public_demo_read_only": true,
+  "images": [
+    {
+      "file": "docs/evaluations/editable_demo_copy_20261117/images/hosted_KRAS_editable_download.png",
+      "sha256": "7063af1330610f5eff44ab9385acb31294a12e66401cd75c72f6f9f2564afd38",
+      "classification": "actual_hosted_app_UI_prepared_native_workspace_download"
+    },
+    {
+      "file": "docs/evaluations/editable_demo_copy_20261117/images/local_same_KRAS_graph.png",
+      "sha256": "8d676f4e2e57a0c140cd82ee30ec17cea981231acdad0be5026c1ca284b01039",
+      "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+    },
+    {
+      "file": "docs/evaluations/editable_demo_copy_20261117/images/local_KRAS_provisional_review_form.png",
+      "sha256": "e39aab7a15d94ff0808acf65c6235b2a815401a1b07317d545ad81b01dc2cd1b",
+      "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+    },
+    {
+      "file": "docs/evaluations/editable_demo_copy_20261117/images/local_KRAS_review_saved_new_run.png",
+      "sha256": "b1025560e2b64987a50c186c5c18d21bc8fb8daf034acc5ed34abd7727461492",
+      "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+    }
+  ],
+  "initial_network_interruption": {
+    "browser_code": "ERR_NETWORK_CHANGED",
+    "reloaded_after_diagnosis": true,
+    "graph_and_question_rendered_after_reload": true,
+    "server_restart_or_workaround_performed": false
+  },
+  "not_an_independent_usability_or_biological_accuracy_study": true
+}

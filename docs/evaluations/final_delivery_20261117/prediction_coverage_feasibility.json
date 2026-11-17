@@ -1,0 +1,166 @@
+{
+  "format": "biograph-steward.prediction-coverage-feasibility.v1",
+  "created_at": "2026-11-17T06:50:05.029737+00:00",
+  "status": "complete_no_same_window_extension_recommended",
+  "operation": "read_only_review_of_existing_contracts_code_and_aggregate_receipts",
+  "conclusion": "The complete eligible human temporal-annotation-gain target population is already forecast and evaluated under the frozen reference policies. More same-window protein forecasts would not add eligible test positives.",
+  "safe_report_sentence": "Using the 20,412-protein historical graph, the study forecast all 3,300 eligible human Swiss-Prot proteins gaining annotations in the frozen April–November window, retaining three targets outside that graph explicitly.",
+  "eligibility": {
+    "t0_GAF_generated_date": "2026-04-10",
+    "t1_GAF_generated_date": "2026-11-04",
+    "t0_GO_basic_content_date": "2026-03-25",
+    "t1_GO_basic_content_date": "2026-07-26",
+    "scope": "Captured HUMAN reference-proteome GAF filtered by exact reviewed human Swiss-Prot accessions at each epoch, restricted to unchanged full sequences shared across epochs.",
+    "native_admission": "Eleven experimental evidence codes plus IC and TAS, with unchanged source-helper qualifier, form, extension, ontology and generic-binding policy.",
+    "target_rule": "Union of every native NK/LK/PK protein gaining an admitted annotation in any GO aspect, together with the fixed-T0 sensitivity union. Propagated-term gains can reflect ontology changes. These are annotation gains, not necessarily new biological discoveries or new experiments.",
+    "selection_not_random_sample": true,
+    "native_targets": 3300,
+    "fixed_T0_targets": 1690,
+    "native_only_targets": 1610,
+    "fixed_T0_only_targets": 0,
+    "union_targets": 3300,
+    "historical_graph_proteins": 20412,
+    "target_rows_graph_covered": 3297,
+    "target_rows_graph_absent": 3,
+    "newly_eligible_same_policy_targets_outside_forecast_union": 0,
+    "union_target_ids_sha256": "ca6c77c04c22666de5332e3db1e3c630e27ea6faece9d7657482a22a1256eb4b",
+    "recorded_combined_reference_receipt_sha256": "bfd6df476fe1f2b2cbabadc90575f3ed454f9b2da07f6a2bd3783a9e6b2f9127",
+    "recorded_native_reference_receipt_sha256": "ead8f55d54b3bc77426d1974fb3c290621d588434f725ec045e27e1c8c3229b5"
+  },
+  "why_primary_denominators_are_smaller": {
+    "all_forecasts": 3300,
+    "evaluation_scope": "All NK/LK/PK settings and all three GO aspects were retained. The primary comparison is only partial-knowledge biological process.",
+    "native_PK_BP_protein_rows": 1954,
+    "native_PK_BP_residual_positive_proteins": 322,
+    "native_PK_BP_other_rows_can_contribute_false_positives": 1632,
+    "fixed_T0_PK_BP_protein_rows": 319,
+    "fixed_T0_PK_BP_residual_positive_proteins": 319,
+    "interpretation": "Different ontology construction and evaluator masks produce different primary frames. Neither count is the total graph size or a claim that all 20,412 proteins were scored.",
+    "primary_PK_meaning": "Proteins with biological-process annotations at T0 that gained additional biological-process annotations by T1. Prior annotation in a different aspect alone does not make a protein PK for biological process."
+  },
+  "training_and_control_fairness": {
+    "stacker_fit_proteins": 4040,
+    "consumed_validation_proteins": 797,
+    "final_forecast_proteins": 3300,
+    "exact_accession_full_sequence_first1022_residue_exclusions_verified": true,
+    "existing_identity_audit": {
+      "final_count": 3300,
+      "fit_count": 4040,
+      "fit_final_accession_overlap": 0,
+      "fit_final_first1022_overlap": 0,
+      "fit_final_full_sequence_overlap": 0,
+      "fit_val_accession_overlap": 0,
+      "fit_val_first1022_overlap": 0,
+      "fit_val_full_sequence_overlap": 0,
+      "val_final_accession_overlap": 0,
+      "val_final_first1022_overlap": 0,
+      "val_final_full_sequence_overlap": 0,
+      "validation_count": 797
+    },
+    "T0_protein_reuse": "Known pre-cutoff annotations on a protein can be legal context for prediction of that protein's later annotations. The native PK evaluator masks known labels. This is distinct from claiming transfer to unseen proteins.",
+    "outside_frame_warning": "Randomly scoring remaining proteins on their old annotations would change the task. Some are fitting or consumed-validation proteins. Missing later annotations are not biological negatives.",
+    "strongest_control": "Native LocalPlus on the same historical graph with the complete eligible April 10 curated repertoire, including legal T0 annotations on final-query proteins. It forecast the same 3,300 rows in every aspect before the reference opened.",
+    "strongest_control_future_reference_read": false,
+    "strongest_control_old_validation_forecasting_or_selection": false,
+    "base_model_training_protein_independence_established": false,
+    "retrospective_prior_source_QC_exposure_disclosed": true,
+    "primary_advantage_beyond_fully_refreshed_control": "uncertain"
+  },
+  "technical_and_resource_assessment": {
+    "frozen_models_can_in_principle_score_compatible_additional_features": true,
+    "existing_operator_configs_are_explicitly_final3300_only": true,
+    "additional_same_window_scientific_evaluation_justified": false,
+    "prior_fresh_sequence_forecast_proteins": 1716,
+    "prior_fresh_sequence_forecast_elapsed_seconds_approx": 1359,
+    "new_wall_time_or_budget_requested": 0,
+    "remaining_verified_gap": "A genuinely unconsumed later label population with a fresh predeclared temporal cutoff and matching source-control availability is required for another temporal test. The current frozen window has no additional eligible positives.",
+    "future_sequence_or_ontology_scope_changes": "Would require a separately declared eligibility contract, not a silent extension of this completed comparison."
+  },
+  "primary_method_sources": [
+    {
+      "title": "CAFA official temporal assessment description",
+      "url": "https://biofunctionprediction.org/cafa/",
+      "used_for": "Predictions precede annotation growth. The benchmark comprises proteins acquiring qualifying annotations, not every target treated as a negative."
+    },
+    {
+      "title": "ProtBoost: protein function prediction with Py-Boost and Graph Neural Networks - CAFA5 top2 solution",
+      "url": "https://arxiv.org/html/2412.04529v1",
+      "used_for": "Sections 4.9–4.10 separate the full forecast pool from the eventual assessment subset and distinguish temporal from protein-similarity/random splits."
+    },
+    {
+      "title": "ProtBoost official pinned implementation",
+      "url": "https://github.com/btbpanda/CAFA5-protein-function-prediction-2nd-place/tree/52dce6c471337f2820550f779a6a1bb201353b2a",
+      "commit": "52dce6c471337f2820550f779a6a1bb201353b2a"
+    },
+    {
+      "title": "Official democafa helper source used by the completed reference recipe",
+      "url": "https://github.com/FriedbergLab/democafa_package/tree/0ab84edbaddf5fef11125dc8adbd19167c3cc038",
+      "commit": "0ab84edbaddf5fef11125dc8adbd19167c3cc038"
+    }
+  ],
+  "input_pins": {
+    "tools/contextual_combination/protocol.py": {
+      "bytes": 12770,
+      "sha256": "ec7be91e50df7b77d1b5d0ef6adf80d79bd215bc14bb879ed544e404f7d638dc"
+    },
+    "tools/contextual_combination/prepare.py": {
+      "bytes": 27325,
+      "sha256": "e5c4e1a9bdc1cfb41faf0e6c05ac51622aa6b66c7c8a4b76795f87bda108fc37"
+    },
+    "tools/contextual_combination/forecast.py": {
+      "bytes": 18840,
+      "sha256": "3236eaf949d2a1a2b741b5812e2f6497a9bcab1b663c5a351d0f9e6cb98f23fa"
+    },
+    "tools/contextual_combination/current_annotation.py": {
+      "bytes": 11696,
+      "sha256": "e462cca1f40d9dba4976b120ac104ba55105b7bae4869c3faeb065d79f324967"
+    },
+    "tools/contextual_combination/reference_recipe/executed/native_window_build_v1.py": {
+      "bytes": 16281,
+      "sha256": "91a0b534089e2191793bea3649ac13a6069a215e600de05fbad0aae7d9a0a829"
+    },
+    "tools/contextual_combination/reference_recipe/executed/native_fixed_t0_sensitivity_v1.py": {
+      "bytes": 10392,
+      "sha256": "de5ef618e41d73c673853c142444893182283ce50bbdeabed724c9aee63b4348"
+    },
+    "runs/contextual_gain_20261115/operator/new_window_plan_v1.json": {
+      "bytes": 4335,
+      "sha256": "a88ad516a0578007bf58c8c970a83376b81ec05d31081b1bf5606e523a706aa8"
+    },
+    "runs/contextual_gain_20261115/operator/democafa_author_source/democafa/groundtruth/classify_ground_truth.py": {
+      "bytes": 18326,
+      "sha256": "b3d4ca0ae8ea0255da456587a4a02de3363faa198932cfd8728fd0c622fbe7af"
+    },
+    "runs/contextual_gain_20261115/operator/democafa_author_source/democafa/datacollection/compare_fasta.py": {
+      "bytes": 16716,
+      "sha256": "c44b1618673e8a51f3be6d48814667891e4a923f806f635ef166b91e8a75a8a8"
+    },
+    "runs/contextual_gain_20261115/independent_preopening_audit_v1/safe_metadata_capture.json": {
+      "bytes": 1719666,
+      "sha256": "3b096fbae87797301873f69e82e948ae65b64d5c159373400cf1002628dd993b"
+    },
+    "runs/contextual_gain_20261115/independent_preopening_audit_v1/current_T0_input_admission_v2.json": {
+      "bytes": 4318,
+      "sha256": "4384562cbe911b46c7ba1899b2d4c4744c78522dfc83885358efcc34d4e9c1d9"
+    },
+    "runs/contextual_gain_20261115/independent_preopening_audit_v1/current_T0_output_admission_v1.json": {
+      "bytes": 1850,
+      "sha256": "b0a430e1363c5a7d7708dd236e2766219297fdf8e352523f58c84fdcb2e951c0"
+    },
+    "docs/evaluations/CONTEXTUAL_COMBINATION_RESULTS_20261115.md": {
+      "bytes": 12248,
+      "sha256": "ddce310f6681dbd412f3871554a5c407311c0cbbefbf1039dfb1234aeda47a43"
+    }
+  },
+  "boundaries": {
+    "new_reference_outcomes_opened": false,
+    "new_labels_scored": false,
+    "new_predictions": false,
+    "new_training_or_model_selection": false,
+    "model_requests": 0,
+    "remote_compute_started": false,
+    "source_data_or_frozen_results_modified": false,
+    "new_scientific_source_captures": false,
+    "individual_target_IDs_or_GO_labels_in_this_receipt": false
+  }
+}

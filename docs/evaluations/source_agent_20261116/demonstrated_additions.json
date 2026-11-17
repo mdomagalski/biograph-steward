@@ -1,0 +1,100 @@
+{
+  "format": "biograph-steward.demonstrated-source-additions.v1",
+  "status": "verified_existing_saved_artifacts",
+  "assessment_kind": "Existing saved source-frame audit; no new benchmark, labels, inference or retrieval.",
+  "demonstrated_claim": "Steward adds a sequence-qualified physical association absent from our captured Pharos graph.",
+  "scope": {
+    "cohort_primary_proteins": 99,
+    "snapshot_content_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+    "captured_original_graph_content_sha256": "0a7b86550f22abb1724eae38e0e2266a26677d93cf616f27f2d2495c1168f713",
+    "native_evidence_graph_content_sha256": "8b16cd99af0fe811f082c5842ae3520d4ac355d1c0be5cb5ec127c08fa973cdf",
+    "native_evidence_graph_basis_sha256": "317f7bd0f1f481989d5a9949f08e5d2f4b2071467e8e5090c2ee76816b098202",
+    "baseline_comparison": "Unordered direct protein_interaction endpoint pairs across all original captured records, without a review-state filter. Shared-pathway paths are not counted as direct pair records.",
+    "absence_boundary": "Absent from this captured Pharos retrieval frame, not a claim of absence from the full Pharos portal or biological noninteraction."
+  },
+  "native_physical_source": {
+    "release": "STRING 12.5",
+    "qualified_pair_records": 330,
+    "pairs_already_in_captured_baseline": 243,
+    "pairs_absent_from_captured_baseline": 87,
+    "identity_admission": "Unique reciprocal literal UniProt_AC aliases and identical full canonical/source reference sequences.",
+    "source_file": {
+      "bytes": 7334524,
+      "file": "source/9606.protein.physical.links.v12.5.txt.gz",
+      "sha256": "f3a6a5f8e53e9d0a7b2841544e18d823dc13ae53d6771ca23a6011c2b63ee8c5",
+      "url": "https://stringdb-downloads.org/download/protein.physical.links.v12.5/9606.protein.physical.links.v12.5.txt.gz"
+    },
+    "pair_overlap_interpretation": "243 source records share endpoint pairs with the captured baseline; this is pair overlap, not an independent-evidence count or a duplicate-study adjudication."
+  },
+  "KRAS_complete_saved_question": {
+    "question_id": "native_physical_KRAS_question_v3_20261115",
+    "matching_partners": 14,
+    "existing_baseline_pairs": 11,
+    "absent_baseline_pairs": 3
+  },
+  "recorded_agent": {
+    "job_id": "source_agent_eval_dc7b597201da_S01",
+    "result_file_sha256": "98e6fe0ab0d4da3eaa9e485db92cd3c68ce288f2c426401ddeb9fc6ad87d585b",
+    "result_content_sha256": "1656d08af8a8eced4625554b6fe523ebb8bc87d32a66e4a69253695f5c5b2537",
+    "manifest_file_sha256": "e3bdcc524aefcc533d046965e9dd3e49728823ded677b17a97c81e430df252a1",
+    "manifest_content_sha256": "308e7abd78e7acfd5ca8a3fea43211282b548ed6019899c7cdd482dc475cfb8f",
+    "query_result_cap": 8,
+    "returned_partners": 8,
+    "existing_baseline_pairs": 7,
+    "absent_baseline_pairs": 1,
+    "actual_model_run": true,
+    "model_calls": 3,
+    "replay_url": "/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data"
+  },
+  "selected_source_passport": {
+    "citation_id": "E002",
+    "subject": "UniProtKB:P01116",
+    "subject_symbol": "KRAS",
+    "object": "UniProtKB:Q9Y5S2",
+    "object_symbol": "CDC42BPB",
+    "assertion_id": "assertion:830f45fee61ec7b37fe9f50a",
+    "edge_id": "native-string-physical:76bafd8f3f2999bffef84f32",
+    "observation_ids": [
+      "native-physical-observation:e5135a6fd2d5191c065743b3"
+    ],
+    "baseline_pair_present": false,
+    "integration_state": "new_workspace_pair",
+    "native_physical_score": 203,
+    "physical_score_0_to_1": 0.203,
+    "score_rule": "native_bulk_combined_score / 1000",
+    "STRING_pair": [
+      "9606.ENSP00000256078",
+      "9606.ENSP00000355237"
+    ],
+    "result_JSON_pointer": "/inspections/1/passports/0/sections/1/fields",
+    "workspace_source_locator": "extension_sources/string_physical/projection.json#/pair_ledger/1109",
+    "all_citation_source_assertions_inspected": true,
+    "proposal_decision": "keep",
+    "proposal_applied": false,
+    "reuse_status": "unresolved",
+    "primary_publication_identifiers": []
+  },
+  "interpretation": "The added STRING physical record reports source-scored physical proximity or co-complex association, not direct binding or newly discovered biology. Score 203/1000 is the provider score, not a measured truth probability. STRING already contributes to Pharos; these rows are not counted as independent experiments, and this bulk record supplies no primary PMID. The full graph and local review state were not changed by the agent or this audit.",
+  "audit": {
+    "aggregate_counts_match_existing_application_receipt": true,
+    "original_pair_flags_recounted_from_saved_graph": true,
+    "selected_passport_matches_frozen_record": true,
+    "new_model_calls": 0,
+    "new_source_requests": 0,
+    "graph_or_review_mutations": 0
+  },
+  "native_location_source_profile": {
+    "profile": "complete-cohort-positive-active-CC-located-in-all-codes.v1",
+    "qualified_native_annotation_rows": 3309,
+    "distinct_protein_location_concepts": 429,
+    "concepts_also_present_in_captured_Pharos": 361,
+    "concepts_absent_from_captured_Pharos": 68,
+    "targets_with_native_context": 94,
+    "complete_primary_targets": 99,
+    "snapshot_content_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+    "source_publication_sha256": "88de77e9804eea59953d5c68eb332a292e3cfeaf83bce98c2af80c40bad32069",
+    "public_application_receipt": "docs/evaluations/public_gold_20261115/native_location_application.json",
+    "public_application_receipt_sha256": "58e45dfa9b8044d49f3218b36d1845f60783cd29bfa0b24e4e352f9d6a0d5b4a",
+    "counts_scope": "Qualified protein/GO-term concepts in this source profile, not independent studies, new biological discoveries or accepted assertions."
+  }
+}

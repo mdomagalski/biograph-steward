@@ -1,0 +1,18 @@
+{
+  "format": "biograph-steward.deepgo-development.v1.publication-manifest",
+  "created_at": "2026-11-14T19:19:28.977888+00:00",
+  "source_report_file_sha256": "23164e2bb2d68a7275fd5c6caf150084797fd690194ff8a72135132a46990c9b",
+  "report_content_sha256": "2213d6ad11fd8b279f7c7e53a3eb41e7505bc40341a58bf229c88c94ad3d819b",
+  "files": {
+    "report.json": "81afbab372e4900211b826edf2e31790636fdae8d0f59d9040300c3da2278555",
+    "report.html": "8be7cd6a9efaa5e2ac4c2e43a974a71141c22d1cd33b22f8ff90dfa255d6a7e2",
+    "summary.json": "18d9a3f12363ea7041f46e0aae672ced9f87329c39bbd347d96d6e5e8aee22e4",
+    "prior_246_outcomes.json": "1c48a0246b597318f29f793f497d60ae5087d79ab57b3e8028cde38faaee5046",
+    "max_sensitivity.json": "1c71588fc8bde6967153810f2a926e8d4fcd5962fd178ee213d536775bf777bf",
+    "max_sensitivity.html": "a20eded121aff2d4aa43121bec4621447bb4bebe7cbfcf658d3155895b393840"
+  },
+  "all_outcome_slots": 252,
+  "operator_paths_or_raw_cases_included": false,
+  "app_graph_or_default_changed": false,
+  "content_sha256": "b59ec037bfae0052a43f8d54925250ae4c5066873809f0f39cfa878b460b67a2"
+}

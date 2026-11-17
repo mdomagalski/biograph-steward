@@ -1,0 +1,96 @@
+{
+  "format": "biograph-steward.pharos-release-check-summary.v1",
+  "created_at": "2026-10-27T12:42:13.160746+00:00",
+  "status": "public_api_remains_319_public_400_tdl_identity_release_confirmed",
+  "scope": "read-only metadata check; no target, interaction, article, abstract or assay records requested",
+  "configured_endpoint": "https://pharos-api.ncats.io/graphql",
+  "query": "query DatabaseVersion { dbVersion }",
+  "live_db_version": "pharos319",
+  "live_version_retrieved_at": "2026-10-27T12:41:09.585683+00:00",
+  "live_version_from_cache": false,
+  "version_selected_in_runtime_code": false,
+  "runtime_inspection": {
+    "endpoint_constant": "biograph_steward/client.py:23",
+    "version_query": "biograph_steward/client.py:55",
+    "snapshot_version_query": "biograph_steward/client.py:234",
+    "construction_version_queries": [
+      "biograph_steward/construction.py:78",
+      "biograph_steward/construction.py:107"
+    ],
+    "pharos319_or_pharos400_literals_in_runtime_package_or_queries": []
+  },
+  "http_bounds": {
+    "requests": 4,
+    "graphql_queries": 1,
+    "retries": 0,
+    "cache_dir": null,
+    "redirects_followed": false,
+    "timeout_seconds": 30,
+    "max_bytes_each": 200000
+  },
+  "official_distribution": {
+    "url": "https://opendata.ncats.nih.gov/public/pharos/",
+    "public_400_files": [
+      "pharos400_readme.html",
+      "pharos400_tdls_canonicals.csv",
+      "pharos400_tdls_full.csv"
+    ],
+    "csv_bodies_requested": false,
+    "sql_archive_url": "https://opendata.ncats.nih.gov/public/pharos/archive/",
+    "newest_numbered_sql_dump_listed": "pharos319.sql.gz"
+  },
+  "documented_400_changes": [
+    "protein-centric canonical/isoform/alternate-product grouping",
+    "UniProt public identity standard; internal IFX row IDs are traceability identifiers",
+    "TDL and supporting count summaries are publicly released; these tables do not contain the full PPI, GO or pathway records needed by the current graph"
+  ],
+  "compatibility": {
+    "public_400_full_graphql_endpoint_verified": false,
+    "public_400_full_sql_dump_discovered": false,
+    "scope_of_absence_claim": "only the configured endpoint and linked official distribution pages checked; global absence is not established",
+    "why_not_switch_default": "no verified equivalent 400 full-graph service or complete dump in checked official materials"
+  },
+  "safe_update_path": [
+    "Keep historical snapshots, evaluation inputs and observed release labels unchanged.",
+    "Expose the endpoint-reported release and access time; never relabel 319 responses as 400.",
+    "For a separately scoped current-identity/TDL update, obtain the official 400 table under a declared download contract and preserve it as a separate source release.",
+    "Before any merge, export SSSOM mappings with source and target versions, mapping relation, provenance and ambiguity; do not collapse isoforms, alternate products or one-to-many replacements into exact protein identity.",
+    "Switch graph retrieval only after an official 400 full-data location is verified, required schema/source coverage checked and a new snapshot frozen."
+  ],
+  "unresolved": [
+    "Why the official public GraphQL deployment remains labelled319 while400 summaries are distributed.",
+    "Availability and schema compatibility of a public complete400 API or database.",
+    "Per-provider import vintages for records returned by the319 service; dbVersion is not a source-version manifest.",
+    "No 400 participant mapping has been evaluated in this metadata-only audit."
+  ],
+  "historical_comparisons_changed": false,
+  "fresh_reserved_inputs_accessed": false,
+  "model_or_gpu_used": false,
+  "sources": [
+    {
+      "title": "NCATS Pharos400 release notes",
+      "url": "https://opendata.ncats.nih.gov/public/pharos/pharos400_readme.html"
+    },
+    {
+      "title": "NCATS Pharos public directory",
+      "url": "https://opendata.ncats.nih.gov/public/pharos/"
+    },
+    {
+      "title": "NCATS Pharos archive directory",
+      "url": "https://opendata.ncats.nih.gov/public/pharos/archive/"
+    },
+    {
+      "title": "NCATS GraphQL server README",
+      "url": "https://github.com/ncats/pharos-graphql-server",
+      "observation": "README links a DEV deployment; it does not identify it as400. No DEV endpoint was queried."
+    }
+  ],
+  "artifacts": {
+    "runs/pharos_release_check_20261027/api_version.json": "566012dbde484d9dad0a95b2cfdec870617918802130669e918a0c6bbf55d3d6",
+    "runs/pharos_release_check_20261027/archive_directory.html": "37397e673d5447aae2a81b3c7eaa59ac0302e811d058e9f11cf704fd836e218d",
+    "runs/pharos_release_check_20261027/http_receipts.json": "49a2b847c452e01787e913e3095edaef9f17f13f71b1b60f4d51edae640c5ac6",
+    "runs/pharos_release_check_20261027/public_directory.html": "c7882f8ac4e3bd9d952c963dde6aafcb1e63834ee83f3508e1db58de2f37a1dc",
+    "runs/pharos_release_check_20261027/release_notes.html": "40c03514cc43e8709cf513b1ba1f26308644287fc31ab15c1ee087b44f586039",
+    "runs/pharos_release_check_20261027/request_contract.json": "f4df12f46a2aa649f70b6f135a1447b78cd5f2a7dc9377a3520481a643829899"
+  }
+}

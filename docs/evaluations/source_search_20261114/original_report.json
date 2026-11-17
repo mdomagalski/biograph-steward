@@ -1,0 +1,236 @@
+{
+  "format": "biograph-steward.source-search-reference-comparison.v1",
+  "created_at": "2026-11-14T14:04:06.858430+00:00",
+  "title": "Bounded biomedical reference-paper retrieval, with and without an attributed search procedure",
+  "scope": "Small public retrospective reference-document assessment; not biological truth, model-unseen testing or an official BioASQ submission.",
+  "fixed_questions": 24,
+  "question_types": {
+    "factoid": 12,
+    "list": 12
+  },
+  "all_reference_questions_scorable": true,
+  "metrics": {
+    "direct_native_query": {
+      "fixed_questions": 24,
+      "scorable_reference_questions": 24,
+      "mean_reference_recall_at_10": 0.17258986928104575,
+      "mean_reference_hit_at_10": 0.2916666666666667,
+      "system_status_counts": {
+        "completed": 22,
+        "completed_empty": 1,
+        "partial": 1
+      },
+      "returned_IDs": 191,
+      "all_final_IDs_are_controller_checked_native_candidates": true,
+      "candidate_ID_validity_fraction": 1.0,
+      "exact_get_requested_IDs": 0,
+      "exact_get_resolved_article_IDs": 0,
+      "get_results_with_nonempty_abstract": 0,
+      "interpretation": "Identifier/provenance checks are not source entailment, comprehensive relevance or biological accuracy."
+    },
+    "unskilled_agent": {
+      "fixed_questions": 24,
+      "scorable_reference_questions": 24,
+      "mean_reference_recall_at_10": 0.020833333333333332,
+      "mean_reference_hit_at_10": 0.041666666666666664,
+      "system_status_counts": {
+        "completed": 4,
+        "invalid_action": 11,
+        "invalid_output": 9
+      },
+      "returned_IDs": 40,
+      "all_final_IDs_are_controller_checked_native_candidates": true,
+      "candidate_ID_validity_fraction": 1.0,
+      "exact_get_requested_IDs": 10,
+      "exact_get_resolved_article_IDs": 10,
+      "get_results_with_nonempty_abstract": 10,
+      "interpretation": "Identifier/provenance checks are not source entailment, comprehensive relevance or biological accuracy."
+    },
+    "procedure_skill_agent": {
+      "fixed_questions": 24,
+      "scorable_reference_questions": 24,
+      "mean_reference_recall_at_10": 0.0625,
+      "mean_reference_hit_at_10": 0.08333333333333333,
+      "system_status_counts": {
+        "completed": 6,
+        "invalid_action": 13,
+        "invalid_output": 5
+      },
+      "returned_IDs": 21,
+      "all_final_IDs_are_controller_checked_native_candidates": true,
+      "candidate_ID_validity_fraction": 1.0,
+      "exact_get_requested_IDs": 5,
+      "exact_get_resolved_article_IDs": 5,
+      "get_results_with_nonempty_abstract": 5,
+      "interpretation": "Identifier/provenance checks are not source entailment, comprehensive relevance or biological accuracy."
+    }
+  },
+  "paired_comparisons": [
+    {
+      "candidate": "procedure_skill_agent",
+      "comparator": "unskilled_agent",
+      "observed_mean_difference": 0.04166666666666667,
+      "paired_95_percentile_interval": [
+        0.0,
+        0.125
+      ],
+      "fraction_draws_above_zero": 0.651
+    },
+    {
+      "candidate": "procedure_skill_agent",
+      "comparator": "direct_native_query",
+      "observed_mean_difference": -0.11008986928104575,
+      "paired_95_percentile_interval": [
+        -0.2326388888888889,
+        -0.013863357843137247
+      ],
+      "fraction_draws_above_zero": 0.0
+    },
+    {
+      "candidate": "unskilled_agent",
+      "comparator": "direct_native_query",
+      "observed_mean_difference": -0.1517565359477124,
+      "paired_95_percentile_interval": [
+        -0.2941431781045752,
+        -0.037111928104575156
+      ],
+      "fraction_draws_above_zero": 0.0
+    }
+  ],
+  "execution_costs": {
+    "direct_native_query": {
+      "model_calls": 0,
+      "tokenizer_model_service_requests": 0,
+      "native_process_executions": 22,
+      "direct_fetch_invocations": 0,
+      "cache_hits": 2,
+      "exact_upstream_HTTP_request_count": null,
+      "observed_token_counts": {},
+      "usage_responses": 0,
+      "dollar_cost": null,
+      "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+    },
+    "unskilled_agent": {
+      "model_calls": 61,
+      "tokenizer_model_service_requests": 61,
+      "native_process_executions": 23,
+      "direct_fetch_invocations": 10,
+      "cache_hits": 4,
+      "exact_upstream_HTTP_request_count": null,
+      "observed_token_counts": {
+        "prompt_tokens": 68410,
+        "total_tokens": 81679,
+        "completion_tokens": 13269
+      },
+      "usage_responses": 61,
+      "dollar_cost": null,
+      "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+    },
+    "procedure_skill_agent": {
+      "model_calls": 56,
+      "tokenizer_model_service_requests": 56,
+      "native_process_executions": 22,
+      "direct_fetch_invocations": 3,
+      "cache_hits": 7,
+      "exact_upstream_HTTP_request_count": null,
+      "observed_token_counts": {
+        "prompt_tokens": 66077,
+        "total_tokens": 74489,
+        "completion_tokens": 8412
+      },
+      "usage_responses": 56,
+      "dollar_cost": null,
+      "cost_note": "No API/model price table assumed; failed responses can lack token usage. Native process count is not HTTP request count."
+    }
+  },
+  "agent_trajectory_summaries": {
+    "unskilled_agent": {
+      "tool_order_counts": {
+        "no_source_tool": 3,
+        "search_pubmed": 11,
+        "search_pubmed > get_abstract": 4,
+        "search_pubmed > get_abstract > search_pubmed": 4,
+        "search_pubmed > search_pubmed > get_abstract": 2
+      },
+      "early_finish_cases_before_four_calls": 0,
+      "completed_without_source_tool_cases": 0,
+      "cases_using_second_search": 6,
+      "cases_requesting_abstract": 10,
+      "distinct_successfully_opened_article_ID_count": 10,
+      "article_identities_in_aggregate": false,
+      "interpretation": "Choice/trajectory variation describes execution, not retrieval benefit or biological correctness."
+    },
+    "procedure_skill_agent": {
+      "tool_order_counts": {
+        "no_source_tool": 4,
+        "search_pubmed": 13,
+        "search_pubmed > search_pubmed": 2,
+        "search_pubmed > search_pubmed > get_abstract": 5
+      },
+      "early_finish_cases_before_four_calls": 2,
+      "completed_without_source_tool_cases": 0,
+      "cases_using_second_search": 7,
+      "cases_requesting_abstract": 5,
+      "distinct_successfully_opened_article_ID_count": 5,
+      "article_identities_in_aggregate": false,
+      "interpretation": "Choice/trajectory variation describes execution, not retrieval benefit or biological correctness."
+    }
+  },
+  "policy": {
+    "cutoff": 10,
+    "primary": [
+      "procedure_skill_agent",
+      "unskilled_agent"
+    ],
+    "metric": "Mean question-level reference-document Recall@10; each of the24 questions has equal weight.",
+    "secondary": [
+      "reference_hit_at_10",
+      "candidate_ID_provenance",
+      "resolved_exact_get_IDs",
+      "source_and_model_failures",
+      "costs"
+    ],
+    "missing_system_output": "Empty retrieval, retaining the original question denominator; not a biological false label.",
+    "empty_reference": "Unscorable reference retained explicitly; primary comparison unavailable rather than inventing a zero denominator.",
+    "bootstrap": {
+      "draws": 2000,
+      "seed": 20261114,
+      "unit": "question",
+      "shared_draws": true,
+      "percentiles": "Python statistics.quantiles(n=40,method=inclusive):2.5% and97.5%"
+    },
+    "gold_fields": [
+      "documents for exact selected question IDs only"
+    ],
+    "not_measured": [
+      "biological truth",
+      "source entailment",
+      "official BioASQ leaderboard",
+      "model-unseen generalization"
+    ],
+    "raw_cases_in_aggregate": false
+  },
+  "source": {
+    "doi": "10.5281/zenodo.7655130",
+    "version": "BioASQ11",
+    "license": "CC-BY-2.5",
+    "sha256": "6df656862ca860efc355c7805d07ddca700d64ecc3785c519a49afccaaeeac98"
+  },
+  "lineage": {
+    "protocol_file_sha256": "69ca99f0a5e4258f078d892042325bec7bc81b90521abbbf64cb185cfb6f133a",
+    "prediction_seal_file_sha256": "7977a9efe2fb1ae2ee203d2784cc15cfecfa5c8ae52b518472c3181705f85e55",
+    "policy_file_sha256": "15641ddc8dd9abf82122cc242aa31c550a24776050164ff21e2880d032e13ce6",
+    "release_event_content_sha256": "8ec52a8a659deff0574905f5ea1b7a4f776b4a5a960dd9cff69b430aa71a8569"
+  },
+  "raw_case_scores_sha256": "629b977c6fc99f3e446c92d78e2355f9717c275cda86a91a33a09b6bb2599b28",
+  "raw_questions_answers_references_in_report": false,
+  "limitations": [
+    "The public historical dataset may occur in model training; project-new is not model-unseen.",
+    "Reference document lists are incomplete positive judgments; an unlisted paper is not shown irrelevant or biologically false.",
+    "Shared live PubMed infrastructure, sources and model create dependence; question bootstrap intervals are conditional/descriptive.",
+    "All fixed cases, unavailable sources and failed model outputs remain; no post-outcome prompt/model selection.",
+    "Returning candidate IDs is a retrieval handoff, not a claim that all papers were opened/read or support a biological assertion."
+  ],
+  "app_graph_changed": false,
+  "content_sha256": "faf5bfbe77c82461e68a438fc12657fc3e7640b51e86305b551e69259bc5a1c1"
+}

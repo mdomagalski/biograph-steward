@@ -1,0 +1,447 @@
+{
+  "attribution": {
+    "code": "Author package declares MIT; native INDRA uses its own license. This does not relicense source records or article passages.",
+    "data": "Original 2023 Zenodo corpus specifies CC-BY-NC-SA 4.0. No separate redistribution grant was located for the newer 2026 references; raw cases and labels remain private.",
+    "publication": "Aggregate metrics, provenance hashes and public source links only.",
+    "sources": {
+      "INDRA_2023_paper": "https://doi.org/10.15252/msb.202211325",
+      "author_code": "https://github.com/gyorilab/indra-belief-model/tree/74e0ffe9ea21f6f11e906cee89a2091f45be2f7d",
+      "curation_guidelines": "https://indra.readthedocs.io/en/latest/tutorials/html_curation.html",
+      "original_2023_corpus": "https://zenodo.org/records/7559353",
+      "reference_description": "https://github.com/gyorilab/indra-belief-model/blob/74e0ffe9ea21f6f11e906cee89a2091f45be2f7d/data/benchmark/README.md"
+    }
+  },
+  "content_sha256": "9a3385c84530e1a0228bda314a2abff7035e1aa6c416b2aa51052173b9cbdd75",
+  "created_at": "2026-11-17T05:20:12.765317+00:00",
+  "definitions": {
+    "balanced_accuracy": "Mean of correct explicit support/class-supported and correct explicit rejection/class-unsupported. Abstentions receive zero credit and stay in both class denominators.",
+    "complex": "Uses native INDRA complex/co-complex semantics. Direct physical binding is not required or inferred.",
+    "coverage": "Explicit support or rejection divided by all admitted pairs.",
+    "false_exclusion": "Explicit rejection of a curator-supported pair; denominator is every supported pair.",
+    "false_support": "Explicit support of a curator-unsupported pair; denominator is every unsupported pair.",
+    "primary_gold": "Only correct is supported, using the first qualifying submission per exact source pair. Later votes are not aggregated.",
+    "secondary_gold": "Any incorrect non-original-pair curator tag makes the pair unsupported. No majority vote.",
+    "supported": "The supplied source passage supports the native claim under that frame's released curator rule."
+  },
+  "format": "biograph-steward.source-verifier-public-aggregate.v1",
+  "frames": {
+    "primary": {
+      "agreement_review_policy": {
+        "conditional_flag_precision": 0.6329787234042553,
+        "false_exclusions_reference_supported": 69,
+        "flagged": 188,
+        "flagged_reference_unsupported": 119,
+        "meaning": "Both arms reject: flag for review. Otherwise retain and leave unassessed. The same model supplies correlated judgments; these are not independent votes.",
+        "pairs": 382,
+        "policy_id": "agreement_reject_only",
+        "reference_supported": 187,
+        "reference_unsupported": 195,
+        "retain_all_reference_label_precision": 0.4895287958115183,
+        "retained": 194,
+        "retained_reference_label_precision": 0.6082474226804123,
+        "retained_reference_label_precision_change_vs_retain_all": 0.118718626868894,
+        "retained_reference_supported": 118,
+        "retained_reference_unsupported": 76,
+        "supported_false_exclusion_fraction": 0.3689839572192513,
+        "unsupported_flag_recall": 0.6102564102564103
+      },
+      "connected_source_groups": 382,
+      "methods": {
+        "base": {
+          "balanced_accuracy_abstention_zero": 0.6219936925819278,
+          "counts": {
+            "abstain_supported": 2,
+            "abstain_unsupported": 1,
+            "abstentions": 3,
+            "correct_explicit_decisions": 238,
+            "pairs": 382,
+            "reject_decisions": 209,
+            "reject_supported": 78,
+            "reject_unsupported": 131,
+            "support_decisions": 170,
+            "support_supported": 107,
+            "support_unsupported": 63,
+            "supported": 187,
+            "unsupported": 195
+          },
+          "coverage": 0.9921465968586387,
+          "error_F1": 0.6485148514851485,
+          "error_precision": 0.6267942583732058,
+          "error_recall": 0.6717948717948717,
+          "explicit_decision_accuracy": 0.6230366492146597,
+          "false_exclusion_rate": 0.41711229946524064,
+          "false_support_rate": 0.3230769230769231,
+          "retained_supported_fraction": 0.630057803468208,
+          "support_precision": 0.6294117647058823
+        },
+        "disconfirm": {
+          "balanced_accuracy_abstention_zero": 0.5658850952968599,
+          "counts": {
+            "abstain_supported": 2,
+            "abstain_unsupported": 6,
+            "abstentions": 8,
+            "correct_explicit_decisions": 218,
+            "pairs": 382,
+            "reject_decisions": 277,
+            "reject_supported": 122,
+            "reject_unsupported": 155,
+            "support_decisions": 97,
+            "support_supported": 63,
+            "support_unsupported": 34,
+            "supported": 187,
+            "unsupported": 195
+          },
+          "coverage": 0.9790575916230366,
+          "error_F1": 0.6567796610169492,
+          "error_precision": 0.5595667870036101,
+          "error_recall": 0.7948717948717948,
+          "explicit_decision_accuracy": 0.5706806282722513,
+          "false_exclusion_rate": 0.6524064171122995,
+          "false_support_rate": 0.17435897435897435,
+          "retained_supported_fraction": 0.6190476190476191,
+          "support_precision": 0.6494845360824743
+        },
+        "retain_all": {
+          "balanced_accuracy_abstention_zero": 0.5,
+          "counts": {
+            "abstain_supported": 0,
+            "abstain_unsupported": 0,
+            "abstentions": 0,
+            "correct_explicit_decisions": 187,
+            "pairs": 382,
+            "reject_decisions": 0,
+            "reject_supported": 0,
+            "reject_unsupported": 0,
+            "support_decisions": 382,
+            "support_supported": 187,
+            "support_unsupported": 195,
+            "supported": 187,
+            "unsupported": 195
+          },
+          "coverage": 1.0,
+          "error_F1": 0.0,
+          "error_precision": null,
+          "error_recall": 0.0,
+          "explicit_decision_accuracy": 0.4895287958115183,
+          "false_exclusion_rate": 0.0,
+          "false_support_rate": 1.0,
+          "retained_supported_fraction": 0.4895287958115183,
+          "support_precision": 0.4895287958115183
+        }
+      },
+      "pairs": 382,
+      "reference_supported": 187,
+      "reference_unsupported": 195,
+      "uncertainty": {
+        "arms": {
+          "base": {
+            "percentile_95_interval": [
+              0.5730386374355856,
+              0.6701925712719299
+            ],
+            "point": 0.6219936925819278
+          },
+          "disconfirm": {
+            "percentile_95_interval": [
+              0.5227285640315189,
+              0.6102741905259131
+            ],
+            "point": 0.5658850952968599
+          },
+          "retain_all": {
+            "percentile_95_interval": [
+              0.5,
+              0.5
+            ],
+            "point": 0.5
+          }
+        },
+        "comparisons": [
+          {
+            "candidate": "disconfirm",
+            "comparator": "base",
+            "defined_draws": 10000,
+            "difference": -0.056108597285067896,
+            "percentile_95_interval": [
+              -0.10574234386468713,
+              -0.005163771126428184
+            ]
+          },
+          {
+            "candidate": "disconfirm",
+            "comparator": "retain_all",
+            "defined_draws": 10000,
+            "difference": 0.06588509529685993,
+            "percentile_95_interval": [
+              0.022728564031518857,
+              0.11027419052591318
+            ]
+          },
+          {
+            "candidate": "base",
+            "comparator": "retain_all",
+            "defined_draws": 10000,
+            "difference": 0.12199369258192783,
+            "percentile_95_interval": [
+              0.07303863743558557,
+              0.17019257127192988
+            ]
+          }
+        ],
+        "draws": 10000,
+        "groups": 382,
+        "method": "paired_connected_source_group_percentile_bootstrap",
+        "sample_multiplicities_sha256": "d467ae7f25b28f1de529756b356ec8e7ae94041289671710031993f6d93c325c",
+        "scope": "Pointwise paired source-group percentile intervals, conditional on this selected reference. Not simultaneous intervals or biological replication.",
+        "seed": 20261117,
+        "undefined_draws": 0
+      }
+    },
+    "secondary": {
+      "agreement_review_policy": {
+        "conditional_flag_precision": 0.5925925925925926,
+        "false_exclusions_reference_supported": 22,
+        "flagged": 54,
+        "flagged_reference_unsupported": 32,
+        "meaning": "Both arms reject: flag for review. Otherwise retain and leave unassessed. The same model supplies correlated judgments; these are not independent votes.",
+        "pairs": 145,
+        "policy_id": "agreement_reject_only",
+        "reference_supported": 72,
+        "reference_unsupported": 73,
+        "retain_all_reference_label_precision": 0.496551724137931,
+        "retained": 91,
+        "retained_reference_label_precision": 0.5494505494505495,
+        "retained_reference_label_precision_change_vs_retain_all": 0.05289882531261847,
+        "retained_reference_supported": 50,
+        "retained_reference_unsupported": 41,
+        "supported_false_exclusion_fraction": 0.3055555555555556,
+        "unsupported_flag_recall": 0.4383561643835616
+      },
+      "connected_source_groups": 87,
+      "methods": {
+        "base": {
+          "balanced_accuracy_abstention_zero": 0.5792427701674276,
+          "counts": {
+            "abstain_supported": 2,
+            "abstain_unsupported": 1,
+            "abstentions": 3,
+            "correct_explicit_decisions": 84,
+            "pairs": 145,
+            "reject_decisions": 72,
+            "reject_supported": 29,
+            "reject_unsupported": 43,
+            "support_decisions": 70,
+            "support_supported": 41,
+            "support_unsupported": 29,
+            "supported": 72,
+            "unsupported": 73
+          },
+          "coverage": 0.9793103448275862,
+          "error_F1": 0.593103448275862,
+          "error_precision": 0.5972222222222222,
+          "error_recall": 0.589041095890411,
+          "explicit_decision_accuracy": 0.5793103448275863,
+          "false_exclusion_rate": 0.4027777777777778,
+          "false_support_rate": 0.3972602739726027,
+          "retained_supported_fraction": 0.589041095890411,
+          "support_precision": 0.5857142857142857
+        },
+        "disconfirm": {
+          "balanced_accuracy_abstention_zero": 0.5446156773211568,
+          "counts": {
+            "abstain_supported": 1,
+            "abstain_unsupported": 1,
+            "abstentions": 2,
+            "correct_explicit_decisions": 79,
+            "pairs": 145,
+            "reject_decisions": 76,
+            "reject_supported": 34,
+            "reject_unsupported": 42,
+            "support_decisions": 67,
+            "support_supported": 37,
+            "support_unsupported": 30,
+            "supported": 72,
+            "unsupported": 73
+          },
+          "coverage": 0.9862068965517241,
+          "error_F1": 0.5637583892617449,
+          "error_precision": 0.5526315789473685,
+          "error_recall": 0.5753424657534246,
+          "explicit_decision_accuracy": 0.5448275862068965,
+          "false_exclusion_rate": 0.4722222222222222,
+          "false_support_rate": 0.410958904109589,
+          "retained_supported_fraction": 0.5507246376811594,
+          "support_precision": 0.5522388059701493
+        },
+        "retain_all": {
+          "balanced_accuracy_abstention_zero": 0.5,
+          "counts": {
+            "abstain_supported": 0,
+            "abstain_unsupported": 0,
+            "abstentions": 0,
+            "correct_explicit_decisions": 72,
+            "pairs": 145,
+            "reject_decisions": 0,
+            "reject_supported": 0,
+            "reject_unsupported": 0,
+            "support_decisions": 145,
+            "support_supported": 72,
+            "support_unsupported": 73,
+            "supported": 72,
+            "unsupported": 73
+          },
+          "coverage": 1.0,
+          "error_F1": 0.0,
+          "error_precision": null,
+          "error_recall": 0.0,
+          "explicit_decision_accuracy": 0.496551724137931,
+          "false_exclusion_rate": 0.0,
+          "false_support_rate": 1.0,
+          "retained_supported_fraction": 0.496551724137931,
+          "support_precision": 0.496551724137931
+        }
+      },
+      "pairs": 145,
+      "reference_supported": 72,
+      "reference_unsupported": 73,
+      "uncertainty": {
+        "arms": {
+          "base": {
+            "percentile_95_interval": [
+              0.5082078481862965,
+              0.6510727370307287
+            ],
+            "point": 0.5792427701674276
+          },
+          "disconfirm": {
+            "percentile_95_interval": [
+              0.4325949893349166,
+              0.651283950617284
+            ],
+            "point": 0.5446156773211568
+          },
+          "retain_all": {
+            "percentile_95_interval": [
+              0.5,
+              0.5
+            ],
+            "point": 0.5
+          }
+        },
+        "comparisons": [
+          {
+            "candidate": "disconfirm",
+            "comparator": "base",
+            "defined_draws": 10000,
+            "difference": -0.03462709284627086,
+            "percentile_95_interval": [
+              -0.12816635622222516,
+              0.05492789432161969
+            ]
+          },
+          {
+            "candidate": "disconfirm",
+            "comparator": "retain_all",
+            "defined_draws": 10000,
+            "difference": 0.04461567732115679,
+            "percentile_95_interval": [
+              -0.06740501066508345,
+              0.15128395061728395
+            ]
+          },
+          {
+            "candidate": "base",
+            "comparator": "retain_all",
+            "defined_draws": 10000,
+            "difference": 0.07924277016742765,
+            "percentile_95_interval": [
+              0.008207848186296454,
+              0.15107273703072865
+            ]
+          }
+        ],
+        "draws": 10000,
+        "groups": 87,
+        "method": "paired_connected_source_group_percentile_bootstrap",
+        "sample_multiplicities_sha256": "a3c089b55747916c4598f2c18a315e9bb736599f5cd68f07fa96e6df847f6f58",
+        "scope": "Pointwise paired source-group percentile intervals, conditional on this selected reference. Not simultaneous intervals or biological replication.",
+        "seed": 20261117,
+        "undefined_draws": 0
+      }
+    }
+  },
+  "method": {
+    "Gilda": "1.6.1",
+    "INDRA": "1.24.0",
+    "RF_calibration_used": false,
+    "arms": [
+      "retain_all",
+      "base",
+      "disconfirm"
+    ],
+    "author_commit": "74e0ffe9ea21f6f11e906cee89a2091f45be2f7d",
+    "author_example_universe_checked": 56,
+    "categorical_uncalibrated": true,
+    "context_tokens": 16384,
+    "direct_binding_postfilter_used": false,
+    "examples_per_request": 14,
+    "grounding_resource_sha256": {
+      "gilda_models.json.gz": "62c888eeabe4afb484d17d90cf3e8304c9c3a8f1c97b5b3fb7ab41a458340e1f",
+      "grounding_terms.tsv.gz": "b53169c4735d049c0443ab04830b26372dcfeba47845c1fe97392b64f08f2bb8"
+    },
+    "max_output_tokens": 1024,
+    "model": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "model_revision": "54641c1611fcff44fa4865626462445e0a153fc7",
+    "ordering_and_bootstrap_seed": 20261117,
+    "seed_is_not_an_inference_payload_parameter": true,
+    "temperature": 0.1,
+    "vLLM": "0.8.5",
+    "wire": "Unchanged author policy prefixed to the first example user message; all example content and order preserved."
+  },
+  "primary_hypothesis": "Official disconfirm improves explicit-decision balanced accuracy over official base on the primary frame; the same contrast is assessed separately on the external-curator frame.",
+  "privacy": {
+    "aggregate_only": true,
+    "individual_identifiers_or_passages": false,
+    "local_paths_or_credentials": false,
+    "raw_labels_or_model_responses": false
+  },
+  "provenance": {
+    "external_label_helper_sha256": "ee8e14274147def89bd69ba77e4d0fe8a5f70d89ac4bea52d1bfe95c4dea6af4",
+    "master_experiment_sha256": "0e7c1b2375ebd237f44770a6f12255bae1d8a3bbccdbe0544946193e85a20689",
+    "metric_helper_sha256": "85524d12d0d7734ddaccefcecf04f8a2d6912bdf0c6a475467fcfc66b694a7c2",
+    "private_assessment_content_sha256": "a5dfe107de554c7fda827cc33b5212db9d231d50b0688c41b53546a753fdc37c",
+    "private_assessment_file_sha256": "e01a522b45841ed2d78abb19be9702fea726fff84334636077eff270e96c1caf"
+  },
+  "public_protocols": {
+    "primary": {
+      "adapter_sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f",
+      "groups_file_sha256": "52b694f89eeb4e8514fa50e7b92cd6c997f6238eeb994f6af869c0e7e6bd9899",
+      "protocol_sha256": "3d1c616d60ca4fea32aefc4a3490879f0a0368b3141e34834ae978989b4cd461",
+      "runner_sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113",
+      "runtime_readiness_sha256": "1bf6301afbc8d3bfc6d3caefa154493774192b1c548f40a2d321d7946c427936",
+      "source_frame_sha256": "11854919e84547adf3ca925be9aaa0b39651ac8dd07da3a01ad1b55f66928aed",
+      "source_release_sha256": "31f3bcd0cb7f4897ba9cd66da8c51da61d7899280201669a9585d9d6b6f69675",
+      "upstream_manifest_sha256": "82cbba93e4fc1c1bd63c60becab09790f53ace77276a1323fd4ba305b5fb5b61"
+    },
+    "secondary": {
+      "adapter_sha256": "7c32763ceec2157539a0d3fa3f464d1a504eab7e5a82f473c71a4c920645796f",
+      "groups_file_sha256": "eda9cbb64c46f7d8bbe1b4d59131d9ceafd31692fb7d02b330fe1b8ed1127bf6",
+      "protocol_sha256": "d8ba17535e02df3e465e49b0ec6f35d08e61544be2e5217bc4aa3e8f1920bf48",
+      "runner_sha256": "d7071b9e40e0a612fca99b616d25cfe95cd4e339a2ef2562123b049be02c5113",
+      "runtime_readiness_sha256": "1bf6301afbc8d3bfc6d3caefa154493774192b1c548f40a2d321d7946c427936",
+      "source_frame_sha256": "85644e3c777983bf47a97b2533273237f32e5dabc057d327b65a55d604f91b19",
+      "source_release_sha256": "64cbf8b2e293dcaeddaca5d01088cbdff315dee234efecd430366fb82d0c74ac",
+      "upstream_manifest_sha256": "82cbba93e4fc1c1bd63c60becab09790f53ace77276a1323fd4ba305b5fb5b61"
+    }
+  },
+  "scope": [
+    "This is an evaluation-only comparison, not a deployed app feature. Zero current application source assertions have qualified native inputs for this verifier; it does not automatically prune Pharos or change the application graph.",
+    "The primary reference is a selected completed curation snapshot with unproven sampling randomness. The external source forced class balance. Neither estimates population prevalence or whole-graph biological accuracy.",
+    "The two frames use different released label policies and are reported separately. Human annotators are not all assumed to be independently adjudicated experts.",
+    "The native claim preserves available conditions, sites and all complex members. Original Evidence annotations, epistemics and raw spans are unavailable; both arms receive the same released sentence and available source metadata.",
+    "Prior project source/publication/claim/native-family exposure and the author example universe were screened where identifiers were available. Unknown model pretraining and exhaustive biological-family independence are not established.",
+    "The same language model supplies both judgments. Agreement-only flags are conservative review proposals, not independent evidence or automatic biological pruning.",
+    "The 2026 author method/reference artifacts are public releases, not a newly verified peer-reviewed method paper. The task builds on published INDRA source curation and the 2023 assembly work."
+  ],
+  "title": "Source-verifier comparison"
+}

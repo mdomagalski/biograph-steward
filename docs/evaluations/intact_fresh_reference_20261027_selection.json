@@ -1,0 +1,206 @@
+{
+  "format": "biograph-steward.intact-fresh-reference-metadata-selection.v1",
+  "prepared_date": "2026-10-27",
+  "created_at": "2026-10-27T04:38:36.366503+00:00",
+  "status": "metadata_only_panel_selected_no_source_access_or_execution_freeze",
+  "claim": "Prospective source-fidelity panel preparation after an explicitly preserved stopped assessment. Not a score, independent biological reference or replacement of failed studies.",
+  "bindings": {
+    "directory_metadata": {
+      "path": "runs/intact_fidelity_preparation_20261026/sources/release_directory.html",
+      "bytes": 12542,
+      "sha256": "a58c6311b8904314426333ac4c1f83059b6497128c364f197f323b5e6519ed6b"
+    },
+    "directory_http_receipt": {
+      "path": "runs/intact_fidelity_preparation_20261026/release_directory_receipt.json",
+      "bytes": 822,
+      "sha256": "419769419e1bec1e6a9ce38736fa031589f6e48f0796c993837282a6051c5d4e"
+    },
+    "original_panel": {
+      "path": "runs/intact_fidelity_preparation_20261026/panel.json",
+      "bytes": 4399,
+      "sha256": "38c0b5929bc0c02213ffd66f6c4e7d68924351c3651273a78ce851b5f873de89"
+    },
+    "original_protocol": {
+      "path": "docs/evaluations/intact_fidelity_20261026_protocol.json",
+      "bytes": 13345,
+      "sha256": "d4948f584b8eed374ddfa49084ee58f1fb352d3d68a6630a202bf25742f8920a"
+    },
+    "original_selector": {
+      "path": "scripts/prepare_intact_fidelity_reference.py",
+      "bytes": 8676,
+      "sha256": "b2d7eb064e69507dd7e4502d2088d7b8e63acde1e0af2d27629befd66c4006aa"
+    },
+    "semantic_amendment": {
+      "path": "docs/evaluations/intact_fidelity_20261026_semantic_amendment.json",
+      "bytes": 4114,
+      "sha256": "2cd2cb485836228ce71dd9d62201c61dd5de45d18563894ac883f188f245e98c"
+    },
+    "original_final_rules": {
+      "path": "docs/evaluations/intact_final_evaluation_20261026_rules.json",
+      "bytes": 9986,
+      "sha256": "46fe9949619a7ccbd9af549d1fd68d51b3f65abd042e8f87323d4bff3626f946"
+    },
+    "bounded_prior_consumed_inventory": {
+      "path": "docs/evaluations/intact_final_consumed_inventory_20261027.json",
+      "bytes": 6767,
+      "sha256": "2478de61628d84825f23c594c366888a45d74641bb7dac05e752ebbe6d971eff"
+    },
+    "preserved_stopped_assessment": {
+      "path": "docs/evaluations/intact_final_assessment_20261027_summary.json",
+      "bytes": 23266,
+      "sha256": "2c3752b8923e9e0109e34cbaab9349c65da0873b0a45f1dc011e7809d1482737"
+    },
+    "consumed_component_correction": {
+      "path": "docs/evaluations/intact_identity_projection_development_20261027_summary.json",
+      "bytes": 12425,
+      "sha256": "be69d1d593ae4644326c68495e9bb682ca90667010ac107ba855fed19f47e745"
+    }
+  },
+  "selection": {
+    "directory": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/",
+    "release_name": "2026-10-17",
+    "saved_directory_retrieval_time": "2026-10-26T22:17:36.834168+00:00",
+    "saved_directory_sha256": "a58c6311b8904314426333ac4c1f83059b6497128c364f197f323b5e6519ed6b",
+    "directory_publication_files": 56,
+    "metadata_eligible_publications": 12,
+    "previously_selected_and_consumed_publications": 8,
+    "new_selected_publications": 4,
+    "original_metadata_ranks": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "rationale": "All remaining metadata-eligible studies from the exact original saved directory and ranking; no further ranking, size-band change, publication-year change, biology/outcome filter or new source.",
+    "size_rule": "Original numeric PMID .txt filename and displayed binary K/M size 4096..65536 inclusive; rounded display is only selection metadata, not the eventual transport byte bound.",
+    "salt": "biograph-intact-fidelity-v1\n",
+    "ranking": "Ascending SHA-256(UTF-8(salt + filename)), tie-break filename; original ranks 9..12, all four remaining eligible entries.",
+    "transport_rule": "Preserve original maximum of 65,536 actual MITAB bytes per exact URL, identity encoding, bounded nonempty HTTP 200 and no redirects. A later execution contract must also pin bounded exact XML URLs before any body access.",
+    "no_replacement": "No substitute for transport/format/provenance/eligibility failures. All selected publications and source rows remain accounted; zero eligible rows means not evaluable.",
+    "not_predeclared_in_original_protocol": true,
+    "adaptive_history": "The new assessment is declared after the original comparator stop and its consumed-record diagnostic. Original selection, failure and results remain preserved; this is not a rerun labeled unseen."
+  },
+  "selected": [
+    {
+      "filename": "39938803.txt",
+      "publication_id": "pubmed:39938803",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/39938803.txt",
+      "directory_modified_display": "2026-10-23 20:50",
+      "directory_size_display": "63K",
+      "rank_sha256": "a1ad534be6add19887da2fd7f379af9b9f693e7801f7afbc24f815f66e160976",
+      "original_metadata_rank": 9
+    },
+    {
+      "filename": "40108405.txt",
+      "publication_id": "pubmed:40108405",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/40108405.txt",
+      "directory_modified_display": "2026-10-23 20:50",
+      "directory_size_display": "12K",
+      "rank_sha256": "c9f6bd06aef666ce142a28a7cd42dbc36e86bfeb6912a1dc4284c8062d796cd5",
+      "original_metadata_rank": 10
+    },
+    {
+      "filename": "40752540.txt",
+      "publication_id": "pubmed:40752540",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/40752540.txt",
+      "directory_modified_display": "2026-10-23 21:27",
+      "directory_size_display": "13K",
+      "rank_sha256": "d1f83b151de43149828975e998d945ba154daa094a5ef39ebd64bd3239954fa1",
+      "original_metadata_rank": 11
+    },
+    {
+      "filename": "40088780.txt",
+      "publication_id": "pubmed:40088780",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/intact/2026-10-17/psimitab/pmid/2025/40088780.txt",
+      "directory_modified_display": "2026-10-23 20:50",
+      "directory_size_display": "14K",
+      "rank_sha256": "e457e999beb6834f0525b476c3361f0d3f59911a8087aecf13b3a85d8f8cb51e",
+      "original_metadata_rank": 12
+    }
+  ],
+  "known_exposure_boundary": {
+    "original_development_publications": [
+      "40075158",
+      "40404733",
+      "40071126",
+      "40739265"
+    ],
+    "original_reserved_now_consumed_publications": [
+      "39833857",
+      "40211762",
+      "39972491",
+      "40555359"
+    ],
+    "previously_recorded_historical_publication_anchors": [
+      "41935050",
+      "36949045",
+      "32296183",
+      "31467278"
+    ],
+    "exact_PMID_overlap_with_these_12_known_anchors": false,
+    "DOI_alias_and_shared_primary_or_subsidiary_study_overlap": "not_audited; metadata filename disjointness does not imply independence",
+    "pair_participant_evidence_experiment_overlap": "not_audited; no new identities or interaction bodies accessed",
+    "broader_prior_CIViC_Pharos_STRING_literature_model_exposure": "incomplete; no independence claim",
+    "bounded_inventory_must_expand_before_future_freeze": "Original inventory covers only four development studies plus four historical anchors. A future executor must include all eight now-consumed IntAct studies and preserve exact evidence/experiment/study provenance where supplied."
+  },
+  "prospective_assessment_requirements": [
+    "Integrate and pass controls for identity-qualified all database interaction IDs without broadening generic see-also into identity; preserve raw-v1 failure and consumed tests.",
+    "Freeze full actual corrected code/runtime, input/reader/license pins, deterministic question/order/batching/profile/caps and Pharos retrieval policy before any selected body retrieval or decoding.",
+    "Use unchanged explicit human-protein source eligibility, exact participant accessions/orientation, original semantic amendment and field/denominator rules.",
+    "Audit qualified primary/subsidiary dataset statements against all eight consumed IntAct studies plus bounded historical anchors; record ambiguous reuse as unresolved and exclude known consumed-linked components without replacement.",
+    "Report participant/pair/evidence/experiment exposure separately; ordinary shared proteins/pairs are flags, not automatic study exclusions.",
+    "Account all physical/evidence rows and source eligibility separately from lineage-qualified assessment denominator, including zero-eligible studies.",
+    "Use all eligible rows as coverage/strict-fidelity denominators, report conditional correctness, field/critical errors, publication macro counts and unevaluated empty strata.",
+    "One new fixed execution; unresolved reader/reference semantics stops scoring. Post-access remedy remains development and consumes all exposed selected studies.",
+    "Record article correction/retraction/status scope explicitly; absence of annotation is not clearance."
+  ],
+  "license": {
+    "data": "CC-BY-4.0; attribution to IntAct/IMEx and selected publications",
+    "dedicated_statement_reused_from_original_preparation": "https://raw.githubusercontent.com/intact-portal/intact-portal-documentation/b5d5bb35365739d4942e9ca250a2cf4fbaa14c62/about/license-privacy.md",
+    "statement_sha256_from_original_preparation": "89358bd2d5a198e97754e1de5c7522dcce3f8687d9fa84828b9d61f1cb1c7202",
+    "software": "Pinned PSI-JAMI 3.9.4 Apache-2.0; no runtime change by this preparation"
+  },
+  "literature_and_official_sources": [
+    {
+      "title": "IntAct resource paper",
+      "url": "https://academic.oup.com/nar/article/50/D1/D648/6425548",
+      "supports": "Context-rich curated experimental evidence; source updates do not establish a fixed scientific gold."
+    },
+    {
+      "title": "IMEx curation/resource paper",
+      "url": "https://www.nature.com/articles/s41467-020-19942-z",
+      "supports": "Qualified evidence units, sequence/context detail, CC-BY4.0, and existing reuse by STRING/aggregators."
+    },
+    {
+      "title": "PSI-MITAB2.7 specification",
+      "url": "https://psicquic.github.io/MITAB27Format.html",
+      "supports": "Database-qualified identity/context fields and original field semantics."
+    },
+    {
+      "title": "Official distribution best practices",
+      "url": "https://psicquic.github.io/DataDistributionBestPractices.html",
+      "supports": "Separate identifiers from other cross-references; preserve expansion grouping; XML richer contextual relationships."
+    }
+  ],
+  "scientific_limits": [
+    "The technical size band can correlate with study size; four metadata-selected studies are not representative of all IntAct or human biology.",
+    "Source human-protein eligibility, eligible sample size, negative/expanded strata and biological context remain completely unknown.",
+    "The filename hash order is this project's reproducible selection rule, not an externally validated scientific benchmark.",
+    "Curated source records intentionally enter the importer; source fidelity cannot prove claim truth, prediction gain, novel biology or absence from Pharos.",
+    "Release pathname alone is not immutability; saved directory timestamps are later than the named release. Exact source-body hashes/HTTP receipts would be required later."
+  ],
+  "access": {
+    "new_interaction_source_bodies_downloaded": false,
+    "new_interaction_source_bodies_listed_read_hashed_or_queried": false,
+    "new_protein_identities_queried": false,
+    "new_reference_rows_or_labels_materialized": false,
+    "network_activity": "Official method/format/resource documentation only; attempted directory and pinned GitHub documentation opens did not retrieve interaction bodies.",
+    "selected_publication_abstracts_or_fulltexts_opened": false,
+    "method_resource_papers_or_official_documentation_opened": true
+  },
+  "model_calls": 0,
+  "GPU_runs": 0,
+  "Pharos_calls": 0,
+  "graph_changes": 0,
+  "score_available": false
+}

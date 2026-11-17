@@ -1,0 +1,78 @@
+{
+  "format": "biograph-steward.public-demo-hosted-server-acceptance.v1",
+  "status": "passed",
+  "passed": true,
+  "checked_at_UTC": "2026-11-17T02:40:01.300436+00:00",
+  "scope": "Actual existing-gateway HTTPS server activation and anonymous entry. Full browser acceptance is a separate subsequent record.",
+  "public_url": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws",
+  "public_saved_demo_requires_token_entry": false,
+  "anonymous_HTTPS_status": 200,
+  "normal_TLS_verification": true,
+  "client_credentials_or_cookies_supplied": false,
+  "response_session_cookie": false,
+  "login_form_present": false,
+  "public_saved_banner_present": true,
+  "existing_URL_preserved": true,
+  "existing_ALB_preserved": true,
+  "actual_ALB_idle_timeout_seconds": 600,
+  "ALB_timeout_restore_required": false,
+  "ALB_drop_invalid_headers": true,
+  "ALB_desync_mitigation": "defensive",
+  "stack_update_complete": true,
+  "gateway_steady_running_tasks": 1,
+  "gateway_desired_tasks": 1,
+  "gateway_pending_tasks": 0,
+  "gateway_rollout_complete": true,
+  "gateway_image_manifest_sha256": "7374f0abfd39b2ddc4e84899146d0f5057ff75bd16e289b09c4db26c5564c807",
+  "gateway_image_config_sha256": "6686bc0c8a700785afa5c8bfae949badf9ec57a3ed6f4076085867e37df1fdc7",
+  "gateway_config_sha256": "19a9f9948328dab7e4d8b450759b52b164479fa5b88b0cd281080505ab009a83",
+  "application_runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "public_snapshot_inventory_sha256": "423c6caa38a75bf93f008b0f1e51a6977da065acb47bcbdf1f3f8887039e019c",
+  "public_source_folders": 17,
+  "public_workspaces": 2,
+  "server_side_public_token_reference_only": true,
+  "public_token_separate_from_private_operator": true,
+  "task_role_added": false,
+  "private_operator_port_or_service_changed": false,
+  "new_VM_or_gateway_service_created": false,
+  "raw_source_and_recovery_downloads_exposed": false,
+  "new_model_or_retrieval_routes_enabled": false,
+  "new_model_calls": 0,
+  "new_source_retrievals": 0,
+  "scientific_results_changed": false,
+  "automated_image_scan_status": "COMPLETE",
+  "automated_image_scan_findings": {},
+  "separate_browser_receipt": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
+  "proofs": {
+    "root_anonymous_HTTPS": {
+      "path": "runs/public_demo_20261117/root_anonymous_entry_probe.json",
+      "sha256": "5b5332f850abb4e3fe1e7e385619749589c2251d86c72aec4c6e9c8c3cffaf1a",
+      "bytes": 597
+    },
+    "actual_stack": {
+      "path": "runs/public_demo_20261117/deployment/stack_rollout_latest.private.json",
+      "sha256": "aa2525a1dc8ea420c8c95b13bcaa16b45cce6c63257354b5e6c40a7cfd966b62",
+      "bytes": 4149
+    },
+    "actual_steady_ECS": {
+      "path": "runs/public_demo_20261117/deployment/ecs_after.private.json",
+      "sha256": "8c1dc20e17ca77442b2cbe433654993b4ef91a0753fe90da5916107ea9118d26",
+      "bytes": 17712
+    },
+    "actual_ALB_attributes": {
+      "path": "runs/public_demo_20261117/deployment/alb_attributes_after.private.json",
+      "sha256": "90cf2e7110af6e2509c339f5bdcd7f9acac342c2959a8955c30b7a86957f201f",
+      "bytes": 2368
+    },
+    "actual_task_definition": {
+      "path": "runs/public_demo_20261117/deployment/task_definition_after.private.json",
+      "sha256": "439585ab4784cdd2be4496b73e1ada9b46e01f4eef1c5df9be918f7e50196d54",
+      "bytes": 471
+    },
+    "promotion": {
+      "path": "runs/public_demo_20261117/promotion_v4/promoted_image.json",
+      "sha256": "8bdda25b16b764020f5a7b0b2d2653ed4f8ed0fc19b479089887abf5cef06ad9",
+      "bytes": 1038
+    }
+  }
+}

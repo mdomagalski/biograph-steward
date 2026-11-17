@@ -1,5 +1,7 @@
 name: offline-tests
 on: [push, pull_request]
+env:
+  no_proxy: 127.0.0.1,localhost,::1
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -12,3 +14,46 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m unittest discover -s tests -v
+      - uses: actions/setup-node@v4
+        if: matrix.python-version == '3.12'
+        with:
+          node-version: '22'
+      - name: Check browser source and state controls
+        if: matrix.python-version == '3.12'
+        run: node --test tests/*.test.cjs
+  scientific-evaluation:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.4'
+      - run: python -m pip install -r requirements-inmc-evaluation.txt
+      - name: Run pinned scientific evaluation tests
+        env:
+          PYTHONPATH: .:tests
+        run: python -m unittest discover -s tests -p 'evaluation_*.py' -v
+      - name: Check native reference and degree-control mechanics
+        env:
+          PYTHONPATH: .:tests
+        run: >-
+          python -m unittest
+          test_reference_accuracy_go test_reference_accuracy_civic
+          test_reference_accuracy_cornish test_reference_accuracy_design
+          test_reference_accuracy_estimation test_coessentiality_feasibility
+          test_coessentiality_comparison test_coessentiality_resource_allocation
+          test_wiki_utility test_coessentiality_transfer_sample
+          test_coessentiality_transfer_source test_coessentiality_transfer
+          test_coessentiality_transfer_report test_coessentiality_figure -v
+  go-quality:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r tools/go_qualification/requirements.txt
+      - name: Check official GO rule execution and provenance guards
+        env:
+          PYTHONPATH: .:tests:tools/go_qualification
+        run: python -m unittest discover -s tools/go_qualification -p 'test_*.py' -v

@@ -1,0 +1,273 @@
+{
+  "activity": {
+    "brev_used": false,
+    "outcomes_loaded": false,
+    "paid_compute": false,
+    "real_candidate_scoring": false,
+    "real_graph_fitting": false,
+    "reserved_IntAct_access": false,
+    "synthetic_CPU_fitting": true
+  },
+  "cache_probe": {
+    "eval_alone_retains_cache": true,
+    "native_post_parameter_update_invalidates_cache": true,
+    "status": "passed"
+  },
+  "checks": {
+    "browser": "not_applicable_no_UI_change",
+    "dry_real_packet_validation": "passed_no_fitting",
+    "existing_hierarchy_native": {
+      "log": "runs/reactome_context_runtime_20261026/existing_hierarchy_tests.log",
+      "passed": 3,
+      "sha256": "a0f863d8e387dfed9a1dab706cb283ebd7894442f4664209e88c9faf8857c77b",
+      "skipped": 0
+    },
+    "existing_runner_native": {
+      "log": "runs/reactome_context_runtime_20261026/existing_runner_native_tests.log",
+      "passed": 17,
+      "sha256": "0493003d9ab8bdbbfc531aea3ee2efb0289aa93b83434c22ec16f0f4be8ef38a",
+      "skipped": 0
+    },
+    "interpreter": "runs/reactome_context_runtime_20261026/venv/bin/python",
+    "reactome_projection_and_runner": {
+      "log": "runs/reactome_context_runtime_20261026/reactome_tests_attempt4.log",
+      "passed": 31,
+      "sha256": "c8b19e4ad6d812d05bf94eff5da3b0649e4d9bfc3a1894376e26d1b44c228056",
+      "skipped": 0
+    },
+    "typecheck": "not_configured"
+  },
+  "content_sha256": "9316f56bd26e57ed52ba1041ec4f6f3af24fc99a120cdca3c9b1c78d94475025",
+  "created_at": "2026-10-27T02:48:40.271470+00:00",
+  "execution": {
+    "cuda_runtime": null,
+    "device": "cpu",
+    "device_name": "cpu",
+    "installed_sources_sha256": {
+      "pykeen.losses": "766f793c189648dcc7b4e3aca2996cc418b3f3528a8dec0a90ca09b1aab0d0c5",
+      "pykeen.models.base": "e2b643b42a3eef16bcbfdba1169a3956ce3beba5a9719d18d6df1428f4a3ed91",
+      "pykeen.models.nbase": "db2ee08df9c7bafe68770e98d95ea7935a70c1ff9d707617200c9ddb5a310c80",
+      "pykeen.models.unimodal.rgcn": "97b1604ff52e50e01f4da7b104a2bea5305e41ece4e3d48de790f20465956716",
+      "pykeen.nn.init": "198e849882f6e1e16c19b65fc1a8a1aa1ce9bd9baa8181cb193e5d39fa8c4b10",
+      "pykeen.nn.message_passing": "6f936bd765703a158ce39e84972be7a4b730ba44c56802880576e3d01a704232",
+      "pykeen.nn.modules": "b5a22fc57515344b8b72fef8f7888ce9bef8146ab538682b3c0d538c3be53a57",
+      "pykeen.nn.representation": "7b68c825e7b9630422165a7885af2b7954350dd45af4b5d20708a8b5c84c39da",
+      "pykeen.nn.utils": "09bfdab12eecf3cb7fc30b675e7b5e7778bdef57c5d8de86b94f455b465955a4",
+      "pykeen.nn.weighting": "a87fc4d0e2288b1d4245fc69db7a05386fa55e137b8fb286fdf74c521f6a6144",
+      "pykeen.predict": "4dc982b90dc69a5e02cb12349f16ea4f37ce72db79eca04a5836c33a7853dc02",
+      "pykeen.sampling.filtering": "56660379f7f5eb122d77dce2593d97f16fc73233d84624a0fec11f13454a6319",
+      "pykeen.sampling.negative_sampler": "f0f9635cf647d9e9d6792238cdbf57e1fc1d06803337e8300c74d89d18998952",
+      "pykeen.sampling.pseudo_type": "a0f56ad6065436b24cf03080de8b027db209ad831ea9cbc81cbca21d696e50f7",
+      "pykeen.training.callbacks": "5614930aac58cefe5e7bc74a3ab7a4ded2d3e3a3f87f00c42164a9485c6f66aa",
+      "pykeen.training.slcwa": "1ca4177fd6b69c274ad92132c249a7650a511e622c709b4166ca7e2aa1374f0a",
+      "pykeen.training.training_loop": "2c1c765e42b072b364ea0ba2dd6e71bfd1cdac43c31afe69cc7f43e135329b8e",
+      "pykeen.triples.instances": "0d7f934d9dd7d456f8fcf176aac0d448f7474169b14771d6ca1ef965545ce368",
+      "pykeen.triples.triples_factory": "ee5dcb4cb4f46dfa2928ab770d2a695080203f170fe22e3365a01400cf1d29d4",
+      "pykeen.utils": "e5c35f5a514248e4ea835214332fb25ce758e095245fef3d1b2e241ed9fce94c",
+      "torch.nn.functional": "724c30072ca0cb69228553a636b2937ff88b60a2a2c80b806bd2a3827033e2b6",
+      "torch.nn.init": "eb86f725f12e5cd6256b723d6c29f0ccf0cfef90310de7bd2cffa26b69416cd7",
+      "torch.nn.modules.dropout": "1fc9974c3cf2078dd4bc257f73afb6a6714adfec2e9d099d47cf923e766d3490",
+      "torch.optim.adam": "5ba7c74c92c77703395798022e09351159fb18d235d27c212c3b8eb02920ffdb",
+      "torch.utils.data.dataloader": "f08b241c088e66361a4c7a526a55ee4e9eafd3b08beeedbfc90896ec06fcb3d3",
+      "torch.utils.data.sampler": "5e358667c9d38f298af375b95925d89270545c652b64f13049d50e53df8f4e06"
+    },
+    "machine": "arm64",
+    "packages": {
+      "networkx": "3.7",
+      "numpy": "2.5.4",
+      "pykeen": "1.11.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "torch": "2.6.0"
+    },
+    "platform": "macOS-26.7.1-arm64-arm-64bit",
+    "python": "3.12.4",
+    "torch_threads": 1
+  },
+  "format": "biograph-steward.reactome-context-native-summary.v1",
+  "fully_frozen": false,
+  "implementation_sha256": {
+    "biograph_steward/client.py": "a9877c663c8790fd364d398b40f1f6cdf0d9ccd5b27378127cf4d3d3456bc3bb",
+    "biograph_steward/file_utils.py": "578cd543b80461e43cf590e4dc4901cb7423b939ba85781455e4e8af964dfef6",
+    "biograph_steward/graph.py": "26265acf7a7e55934ee399aefc7749ff0ed09fdabb0c6e9d49b5210f83a3ecd0",
+    "scripts/audit_pharos_inventory.py": "68f97be0ee72a60f9464193c5f99fc947401567e015ebacf079e3c48259d236f",
+    "scripts/prepare_inmc_graphs.py": "a1c82d0eb9684f33fc84c47c3d35eea43877872959e5caa311344378ef90721e",
+    "scripts/prepare_reactome_context_graphs.py": "3b169670850b9cbca395fc1c3acdded37d2f4711447e38bb0ec5a6d5b5381131",
+    "scripts/retrieve_pharos_inventory.py": "6b64d8753188d57965513f1ce54b147a00f7b44579c72157735323af00ec4391",
+    "scripts/run_inmc_comparison.py": "906abcfb6b01c18c27bfecc04d8364718589ca7d59e7976e619836804d5674ac",
+    "scripts/run_reactome_context.py": "81bf9ff1834b82810c3b1705c95e822be16e5809c3858caeae4503ad373855bb"
+  },
+  "limits": [
+    "Engineering proof only; no biological performance measured.",
+    "Exact-device real-resource proof and separate final freeze remain mandatory.",
+    "Three layers do not span the four-hop gene-product-pathway-product-gene path.",
+    "Consumed retrospective panel; source release/study lineage remains unresolved.",
+    "Python source fingerprints do not cover all compiled numerical kernels."
+  ],
+  "next_resource_command_not_executed": "runs/reactome_context_runtime_20261026/venv/bin/python scripts/run_reactome_context.py --graph runs/reactome_context_graphs_20261026_final --output-dir runs/reactome_context_resource_20261026_cpu --device cpu --resource-check",
+  "paired_fingerprints": [
+    {
+      "accepted_negative_sha256": "7a0309a8591ab1e2bd9a0370182934ca527e36d3565cccbd5efcdcca47d4967d",
+      "arm": "rgcn_baseline",
+      "initial_parameters_sha256": "5cb2a8bae3ca8848e27611eeaaaae1a0071ab184f11995a1eaf690c8c5a25a37",
+      "negative_filter_mask_sha256": "1c5424ed6e4d123c51d884ac0e496e6a3f3ebdfa0531ce35c53038a71da7736d",
+      "negative_proposal_sha256": "9dd5a52c85679893adbefd7001c76243f0b90dfeee4955e5533b7450a1ec6834",
+      "optimizer_state_steps": [
+        4
+      ],
+      "optimizer_steps": 4,
+      "positive_batch_sha256": "693f65e4932ca9e510c5732df6fcbc293fdcae3422a3193e91b4086b7c3696ba",
+      "seed": 17
+    },
+    {
+      "accepted_negative_sha256": "7a0309a8591ab1e2bd9a0370182934ca527e36d3565cccbd5efcdcca47d4967d",
+      "arm": "rgcn_reactome",
+      "initial_parameters_sha256": "5cb2a8bae3ca8848e27611eeaaaae1a0071ab184f11995a1eaf690c8c5a25a37",
+      "negative_filter_mask_sha256": "1c5424ed6e4d123c51d884ac0e496e6a3f3ebdfa0531ce35c53038a71da7736d",
+      "negative_proposal_sha256": "9dd5a52c85679893adbefd7001c76243f0b90dfeee4955e5533b7450a1ec6834",
+      "optimizer_state_steps": [
+        4
+      ],
+      "optimizer_steps": 4,
+      "positive_batch_sha256": "693f65e4932ca9e510c5732df6fcbc293fdcae3422a3193e91b4086b7c3696ba",
+      "seed": 17
+    },
+    {
+      "accepted_negative_sha256": "aaab4049f2a599bcf0d3e420eed57afcefec51ad011782313288b3dcfd132a94",
+      "arm": "rgcn_baseline",
+      "initial_parameters_sha256": "26d577a2cff44ee2d2bef9df13194fb932267846746a7d39aa345afd51c66f99",
+      "negative_filter_mask_sha256": "e77a0b5d37445fed8e51f982742961af5cd17abdef14a727f3c16ad2e62e7875",
+      "negative_proposal_sha256": "a9833da07f42c9ba9d31dbbcc604b49312b172ed732aef469c2f95273580118e",
+      "optimizer_state_steps": [
+        4
+      ],
+      "optimizer_steps": 4,
+      "positive_batch_sha256": "3e7c463e6824e4a7d90cc340b20340abfe6ab5901bcdc4427280ca5d1efdbc21",
+      "seed": 43
+    },
+    {
+      "accepted_negative_sha256": "aaab4049f2a599bcf0d3e420eed57afcefec51ad011782313288b3dcfd132a94",
+      "arm": "rgcn_reactome",
+      "initial_parameters_sha256": "26d577a2cff44ee2d2bef9df13194fb932267846746a7d39aa345afd51c66f99",
+      "negative_filter_mask_sha256": "e77a0b5d37445fed8e51f982742961af5cd17abdef14a727f3c16ad2e62e7875",
+      "negative_proposal_sha256": "a9833da07f42c9ba9d31dbbcc604b49312b172ed732aef469c2f95273580118e",
+      "optimizer_state_steps": [
+        4
+      ],
+      "optimizer_steps": 4,
+      "positive_batch_sha256": "3e7c463e6824e4a7d90cc340b20340abfe6ab5901bcdc4427280ca5d1efdbc21",
+      "seed": 43
+    },
+    {
+      "accepted_negative_sha256": "24ade52536547a4a2e13b9eb39ad7dd4e07a7c801c0d4ec4f28c604d1eecb579",
+      "arm": "rgcn_baseline",
+      "initial_parameters_sha256": "56ec206d9063e354d69f515273c86c870ad085661fbb89b1737ffad2858d5813",
+      "negative_filter_mask_sha256": "8349a5f07bc3323ef095c99081a3b3e4d343f3d8b3df87fa708fa8cdd45b896e",
+      "negative_proposal_sha256": "690575acb23527f0ab6dcad0f1b58a45674c85fe2df3b791431d2c81ba0e0102",
+      "optimizer_state_steps": [
+        4
+      ],
+      "optimizer_steps": 4,
+      "positive_batch_sha256": "a5ad726499a466c35a50766fa2396cd051037093ec5449eb13389700727da1b4",
+      "seed": 101
+    },
+    {
+      "accepted_negative_sha256": "24ade52536547a4a2e13b9eb39ad7dd4e07a7c801c0d4ec4f28c604d1eecb579",
+      "arm": "rgcn_reactome",
+      "initial_parameters_sha256": "56ec206d9063e354d69f515273c86c870ad085661fbb89b1737ffad2858d5813",
+      "negative_filter_mask_sha256": "8349a5f07bc3323ef095c99081a3b3e4d343f3d8b3df87fa708fa8cdd45b896e",
+      "negative_proposal_sha256": "690575acb23527f0ab6dcad0f1b58a45674c85fe2df3b791431d2c81ba0e0102",
+      "optimizer_state_steps": [
+        4
+      ],
+      "optimizer_steps": 4,
+      "positive_batch_sha256": "a5ad726499a466c35a50766fa2396cd051037093ec5449eb13389700727da1b4",
+      "seed": 101
+    }
+  ],
+  "prepared_graph": {
+    "path": "runs/reactome_context_graphs_20261026_final",
+    "report_sha256": "6e3d23033d29fcd25c0c05ced35d4f6d8ec215c5b6afdc3edfb9c2c1c3bd43ad"
+  },
+  "profile": {
+    "arms": [
+      "rgcn_baseline",
+      "rgcn_reactome"
+    ],
+    "batching": {
+      "automatic_memory_optimization": false,
+      "drop_last": false,
+      "num_workers": 0,
+      "sampler": null
+    },
+    "decoder": "DistMultInteraction",
+    "loss": "SoftplusLoss",
+    "model": {
+      "activation": "relu",
+      "edge_dropout": null,
+      "embedding_dim": 32,
+      "num_bases": 4,
+      "num_layers": 3,
+      "self_loop_dropout": 0.0
+    },
+    "optimizer_updates_per_arm_seed": 500,
+    "planned_full_runs": 6,
+    "planned_total_optimizer_updates": 3000,
+    "training": {
+      "batch_size": 4096,
+      "learning_rate": 0.001,
+      "num_epochs": 20,
+      "num_negs_per_pos": 16,
+      "optimizer": "Adam",
+      "seeds": [
+        17,
+        43,
+        101
+      ]
+    }
+  },
+  "real_planned_schedule": {
+    "batch_size": 4096,
+    "batches_per_epoch": 25,
+    "epochs": 20,
+    "runs": 6,
+    "supervision_triples": 99394,
+    "total_updates": 3000,
+    "updates_per_arm_seed": 500
+  },
+  "status": "synthetic_native_passed_real_resource_and_freeze_pending",
+  "story": "REACTOME-002",
+  "synthetic_proof": {
+    "content_sha256": "da0571bef0095cae2d0fe478fc3424502f21acf79e68ea46b8ab06fa1b351d45",
+    "path": "runs/reactome_context_native_20261026_final/report.json",
+    "sha256": "ca91c41347ec616d4f16ffcf394aa9e23e0b7efa651ccc9387afe9cd2f3cc03a"
+  },
+  "synthetic_schedule": {
+    "batch_size": 8,
+    "epochs": 2,
+    "runs": 6,
+    "seeds": [
+      17,
+      43,
+      101
+    ],
+    "total_updates": 24,
+    "updates_per_arm_seed": 4
+  },
+  "transport_probe": {
+    "complete_gene_product_pathway_product_gene_hops": 4,
+    "decomposition": "bases",
+    "model": {
+      "activation": "relu",
+      "edge_dropout": null,
+      "embedding_dim": 32,
+      "num_bases": 4,
+      "num_layers": 3,
+      "self_loop_dropout": 0.0
+    },
+    "other_product_to_pathway_to_product_to_gene_hops": 3,
+    "pathway_to_product_to_gene_hops": 2,
+    "status": "passed",
+    "three_layers_claim_four_hop_transport": false
+  }
+}

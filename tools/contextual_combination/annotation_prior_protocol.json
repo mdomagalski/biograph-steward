@@ -1,0 +1,55 @@
+{
+  "application_graph_pruning_or_default_changes": false,
+  "control": "matched annotation-only0.99 output on the same union axis; every Fmaxpoint and paired-draw peak must equal the original1.0 binary-prior control or stopfor integration review",
+  "created_at": "2026-11-15T07:21:03.058417+00:00",
+  "evaluation": {
+    "comparators": "all original declared controls/candidates with their unchanged saved arrays and aspect scopes",
+    "intervals": "same 2000paired whole-protein draws,seed20261113,shared across arms; conditional unadjusted descriptive intervals",
+    "metrics": "unchanged native ordinary micro-Fmax at .001-.999; nativecount/curve agreement required",
+    "primary_substitution": false,
+    "reference": "reuse original pinned truth/known/ontology/TOI files; never rebuild/relabel",
+    "selection_or_adoption": "none from this follow-up; report every result including losses; a new untouched reference is needed for confirmation"
+  },
+  "excluded_inputs": [
+    "competition no/limited/partial-knowledge labels",
+    "T1or futurecurated labels",
+    "new retrieval",
+    "current-outcome fitted parameters",
+    "new losses/models/alphas/sourcecode subsets"
+  ],
+  "format": "biograph-steward.annotation-prior-development-plan.v1",
+  "independent_confirmation": false,
+  "legal_prior": "only the original sealed native_T0_nonexperimental control; original complete source vocabulary and all3300ordered targets",
+  "original_forecast_seal_sha256": "a41920a505c68dcc67891be66381b30eac4a028ddb459c52e7081a7e06250eb9",
+  "original_model_choice": "validation_selected_context, separately fixed for each aspect before the original reference opening",
+  "original_model_index_sha256": "801163073e0823bbf9ced795be28118f11e9c4045104d1428447e59d3b04d26c",
+  "original_primary_comparison_unchanged": true,
+  "original_public_summary_sha256": "b29079b576756272b3098ed3cbaf8eb60e9415693edb75d3d524a429209481a2",
+  "original_raw_report_sha256": "2dfebc4e855df8682335484cb39b5100f518363fa74b1b24b66ca3c4cdffdf98",
+  "published_operator": {
+    "adaptation": "replace competition known-label input with only the previously sealed legal T0nonexperimental source; not a literal full-pipeline reproduction",
+    "annotation_score_as_float64": 0.9900000095367432,
+    "annotation_score_is_calibrated_confidence": false,
+    "ontology_operations_after_merge": "only the unchanged existing evaluator canonicalization/fill; no extra MIN or soft pass",
+    "operation": "after existing pure-GO soft processing, concatenate existing predictions and annotation rows scored Float32(0.99), then group by literal target/term and take MAX",
+    "path": "model_scripts/postproc_and_sub.py",
+    "repository": "https://github.com/btbpanda/CAFA6-updates",
+    "revision": "0ee85d2f07f724be1721ea39211f1b364535f976",
+    "source_sha256": "fd85e98fa815ae7459f99caffb92221f76d5e4a781a4b6e4f0eda51c3ba6d5b2"
+  },
+  "real_variants": {
+    "count": 1,
+    "preserve": "full literal term-ID union; complete target order; original model precision; Float32 annotation-score value",
+    "scope": "same fixed operator across all3aspects, all18originalsetting/aspect/viewcells; no outcome-based routing or droppingnegative cells"
+  },
+  "reference_already_consumed": true,
+  "source_only_qualification": {
+    "interpretation": "small vocabulary omission exists; it does not explain the large CC strong-prior gap. Prior suppression/calibration is a hypothesis, not an established cause.",
+    "missing_positive_prior_memberships_outside_model_axis": {
+      "biological_process": 51,
+      "cellular_component": 7,
+      "molecular_function": 64
+    }
+  },
+  "study_status": "post-opening development follow-up on consumed reference"
+}

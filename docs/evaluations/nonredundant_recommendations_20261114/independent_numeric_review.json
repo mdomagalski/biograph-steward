@@ -1,0 +1,35 @@
+{
+  "format": "biograph-steward.baseline-aware.v1.independent-review",
+  "created_at": "2026-11-14T23:05:02.659333+00:00",
+  "passed": true,
+  "reviewer_file_sha256": "5a45b6bb0caa13d526e968e3f8bdade3f9fc2afce37c5d016cd077e53fdf196c",
+  "source_freeze_file_sha256": "f07977f6ee115953315ea21bc9fbeddece7e7b137685950043f8ee6fdbe1cd83",
+  "source_report_file_sha256": "5d417f7d7b728e6f335e8f54ca514603f98e894a00ea6235ae0011e5153a1c31",
+  "source_report_content_sha256": "7b9e99926bc222e1e8f562c58c8d04318ea95b4b1caaf9ddf46fbc134156cfeb",
+  "runtime": {
+    "python": "3.10.12",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "pandas": "2.2.3"
+  },
+  "method_strata_reviewed": 24,
+  "full_score_rank_reconstructions": 24,
+  "independent_six_column_array_reconstructions": 72,
+  "paired_bootstrap_replays": 12,
+  "all_original_native_orders_masks_denominators_and_counts_retained": true,
+  "old_after_budget_and_new_before_budget_membership_partitions_checked": true,
+  "all_TP_unmatched_IA_utility_and_opportunity_partitions_checked": true,
+  "all_saved_summaries_and_bootstrap_distributions_reproduced": true,
+  "scope": {
+    "official_native_parsers_reexecuted": true,
+    "native_confusion_functions_reexecuted": false,
+    "independent_count_arithmetic_from_same_native_parsed_labels": true,
+    "independent_partition_then_canonical_tie_full_score_ranking": true,
+    "independent_SciPy_paired_bootstrap": true,
+    "fresh_biological_labels_or_reference": false,
+    "scientific_accuracy_or_model_superiority_established_by_this_audit": false
+  },
+  "private_arrays_or_case_identifiers_in_receipt": false,
+  "app_or_graph_changed": false,
+  "content_sha256": "186794f8587fc9bc3b3509155c247ef7b00dca0c94ee3029bc3e6b5d8eb23142"
+}

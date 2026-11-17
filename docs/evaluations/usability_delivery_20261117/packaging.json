@@ -1,0 +1,29 @@
+{
+  "format": "biograph-steward.aggregate-usability-package-delivery.v1",
+  "completed_at": "2026-11-17T13:42:38.335731+00:00",
+  "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+  "runtime_bridge_sha256": "8537f1b6e36f29acf1c015896a2b9ac6216ff0dda8dd0ef5ee4bb3e57dc493d0",
+  "graph_asset_archives": 4,
+  "unchanged_graph_asset_archives": 3,
+  "APP_archive": {
+    "filename": "BioGraph_Steward_APP_PSEN_Example.zip",
+    "bytes": 61174413,
+    "sha256": "4671e91ab7c3939b80dd395aced7374ea3dbb43abaf46dbffb891ebdf5bc3851"
+  },
+  "software_archive": {
+    "filename": "BioGraph_Steward_Software.zip",
+    "bytes": 1072487,
+    "sha256": "7b9791572979266bfebcaeb7ecbb0240db8d6634ae16586ae0773a7634c30ee5"
+  },
+  "source_question_job_and_review_bytes_preserved": true,
+  "original_experiment_receipt_unchanged": true,
+  "optional_editable_local_launch_included": true,
+  "default_inspect_only_launch_preserved": true,
+  "public_write_retrieval_or_model_permission_added": false,
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "new_biological_accuracy_or_prediction_claim": false,
+  "old_archives_and_metadata_privately_preserved": true,
+  "canonical_archives_promoted": true,
+  "public_upload_or_submission_performed": false
+}

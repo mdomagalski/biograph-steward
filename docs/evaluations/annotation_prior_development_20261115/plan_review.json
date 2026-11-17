@@ -1,0 +1,16 @@
+{
+  "all_aspects_cells_controls_and_matched_prior_parity_required": true,
+  "automatic_graph_pruning_or_app_promotion": false,
+  "created_at": "2026-11-15T07:29:29.303168+00:00",
+  "development_followup_on_consumed_reference": true,
+  "fixed_author_Float32_099_MAX_after_existing_soft": true,
+  "format": "biograph-steward.development-plan-review.v1",
+  "independent_confirmation": false,
+  "new_model_training_parameter_search_or_outcome_routing": false,
+  "only_original_presealed_T0_nonexperimental_prior": true,
+  "original_primary_study_preserved": true,
+  "plan_commit": "de6be2b",
+  "plan_sha256": "af700b19aaa60c74a8f2ad901ce954710e0b9f7c11232db6abe2b7c929188669",
+  "qualified": true,
+  "review_scope": "Separate development-team review of source/method plan; no raw labels, real new forecasts or scores inspected. Not independent biological expert review."
+}

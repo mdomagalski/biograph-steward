@@ -1,0 +1,45 @@
+BioGraph Steward - teammate feedback
+Current instructions: November 16, 2026. Please return by Monday, November 16.
+
+Name / date:
+Access route (hosted reviewer site / local installation):
+Page URL, workspace and recorded run (no token):
+For a local installation only, branch / commit / supplied source packet:
+Browser / operating system:
+Was the updated Agent workflow available? If not, mark unavailable tasks A.
+
+Status: I = independent; H = with help; N = not completed; A = not attempted.
+Separate hands-on time from waiting and downloads. No biological adjudication needed.
+
+T1 - Follow the recorded question and model plan:
+status | hands-on time | waiting | exact obstacle or note
+What was being inspected, and did replay make a new model call?
+
+T2 - Read the answer and trace one source:
+status | hands-on time | waiting | exact obstacle or note
+What does candidate mean? Does physical association establish direct binding?
+
+T3 - Understand the review proposal:
+status | hands-on time | waiting | exact obstacle or note
+Does Retain candidate context / Needs review accept or remove evidence?
+
+T4 - Distinguish an applied change from a measured comparison:
+status | hands-on time | waiting | exact obstacle or note
+Which result concerns identifier exclusions, and which concerns known-label recovery?
+
+T5 - Understand the agent record and workspace export:
+status | hands-on time | waiting | exact obstacle or note
+Can you distinguish the focused answer/graph, retained graph, ledger and baseline?
+
+What did you expect the app to do? Did its result match?
+
+What term, source link, review label or limitation was unclear or misleading?
+
+Top three changes before submission (mark any blocking issue):
+1.
+2.
+3.
+
+Useful research question you would try next:
+
+Unexpected result / screenshot reference (no access tokens):

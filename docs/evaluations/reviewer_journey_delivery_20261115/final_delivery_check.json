@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "intended_text_files_checked": 26,
+  "local_Markdown_links_checked": 211,
+  "missing_local_links": 0,
+  "actual_token_or_account_exposure_found": false,
+  "canonical_video_hash_verified": true,
+  "runtime_source_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+  "video_capture_method": "actual hosted screenshot states, narrated and captioned; not continuous recording",
+  "graph_or_scientific_scores_changed_by_delivery": false,
+  "independent_intended_user_study": false,
+  "main_merge_or_publication_performed": false
+}

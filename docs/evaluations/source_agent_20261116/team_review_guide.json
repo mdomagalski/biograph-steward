@@ -1,0 +1,38 @@
+{
+  "format": "biograph-steward.team-review-guide.v1",
+  "status": "passed",
+  "file": "output/pdf/BioGraph_Steward_Team_Review_Guide.pdf",
+  "bytes": 47194,
+  "sha256": "a57f35e244c61bc898e1bfaab49e590a2710bb7c2d7a532261b29c2b08f92672",
+  "pages": 2,
+  "links": [
+    "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data",
+    "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/",
+    "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/TEAM_REVIEW_FEEDBACK_20261113.txt",
+    "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/TEAM_REVIEW_GUIDE_20261113.md",
+    "https://github.com/mdomagalski/biograph-steward/blob/codex/contextual-gain-delivery/docs/SOURCE_AGENT.md"
+  ],
+  "link_count": 5,
+  "source_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "hosted_acceptance": "docs/evaluations/source_agent_20261116/hosted_acceptance.json",
+  "activation_receipt_sha256": "a8c201df56184bd25c1a7c8cf1b7d6d7dd15a7fcb31fcaf0163137ad458dc936",
+  "visual_review": {
+    "all_pages_rendered_and_inspected": true,
+    "clipping_or_overlap_detected": false,
+    "page_numbers_and_current_date_verified": true
+  },
+  "scope": {
+    "tasks": 5,
+    "estimated_minutes": 15,
+    "expert_biological_adjudication_required": false,
+    "hosted_reviewer_AWS_account_required": false,
+    "access_routes_distinguished": [
+      "offline_invented",
+      "Pharos_only_build",
+      "full_saved_reviewer_site"
+    ],
+    "source_packets_required_for_full_local_equivalent": true,
+    "Neptune_inspection_optional": true
+  },
+  "historical_PDFs_preserved": true
+}

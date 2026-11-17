@@ -1,0 +1,68 @@
+{
+  "format": "biograph-steward.source-faithful-workspace-summary.v1",
+  "baseline": {
+    "primary_targets": 99,
+    "nodes": 9865,
+    "evidence_edges": 16985,
+    "assertions": 16980,
+    "source_database": "pharos319",
+    "source_snapshot_utc": "2026-10-14T20:36:51.667312+00:00"
+  },
+  "retained": {
+    "evidence_edges": 16687,
+    "keep": 5051,
+    "prune": 298,
+    "abstain": 11636,
+    "wiki_prunes": 0,
+    "go_prunes_scope": "obsolete identifiers in pinned2026-07-26ontology; not biological falsehood"
+  },
+  "workspace_receipt_content_sha256": "b1ad659b3827038775af553f6c528bf610eda00384974b34e2095d557d25ef5b",
+  "history": {
+    "packet_content_sha256": "4eea8e4abc0368b33bcad3fefaa8b61657adba99ba64ed5bcab230b61e45668d",
+    "exact_models": 253,
+    "requested_models": 308,
+    "covered_source_rows": 2764,
+    "original_source_rows": 3492,
+    "literal_protein_connections": 59,
+    "gene_compatible_connections": 996,
+    "unknown_connections": 949,
+    "unique_connections": 2004,
+    "top20_original_row_frequency_models_verified": 15
+  },
+  "source_reference_support": {
+    "go_experimental_compatible": 373,
+    "go_assertions": 4078,
+    "crc_cohort_compatible": 32,
+    "original_disease_assertions": 100,
+    "civic_expert_assertions": 2,
+    "exact_original_civic_context_matches": 0,
+    "original_civic_assertions": 41,
+    "whole_graph_precision_identified": false
+  },
+  "ppi_assay_development": {
+    "evaluated_pairs": 1751,
+    "detected": 737,
+    "recorded_non_detected": 1014,
+    "mean_average_precision": {
+      "normalized": 0.70978,
+      "current_eligibility": 0.68417,
+      "current_count_control": 0.71191,
+      "current_degree_control": 0.71391,
+      "historical_native_xref": 0.71027,
+      "historical_count_control": 0.72097,
+      "historical_degree_control": 0.71133
+    },
+    "optimization_seeds": [
+      17,
+      43,
+      101
+    ],
+    "fresh_confirmatory_reference": false,
+    "predictive_gain_established": false
+  },
+  "actual_ui_verified": true,
+  "actual_native_download_sha256": "b86ce54942eec3b2a5d2f811575f678f7ce10174c1f48b04b18bdcfab06491bd",
+  "local_app_model_calls": 0,
+  "clinical_use_validated": false,
+  "content_sha256": "bc9643d81a8e13953173544a542791eaac863705b4d1599d5981c9719e7a4b05"
+}

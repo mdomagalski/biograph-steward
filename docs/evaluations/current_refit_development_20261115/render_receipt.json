@@ -1,0 +1,17 @@
+{
+  "completed_assessment_JSON_including_embedded_private_fields_decoded": true,
+  "counts": {
+    "cells": 6,
+    "comparisons": 192,
+    "methods": 132,
+    "new_native_curve_agreements": 18
+  },
+  "new_evaluation_or_model_selection": false,
+  "private_fields_filtered_from_public_projection": true,
+  "public_summary_sha256": "d2c00101234cfcb1146188b52e3dbad9be60b244301d7c5a892e2af1b69b3f2f",
+  "qualification_sha256": "c15b7b0339a0e43953a4b8b478363cd032d78e8b248e09a7ca7c708164cad7c0",
+  "renderer_source_sha256": "60fc04ee2ac76b1755d2ea6a060eb39e97ef924d4a3fd12f10ad5149bd15bc75",
+  "separate_reference_forecast_or_per_protein_files_opened": false,
+  "source_aggregate_sha256": "b7792b0737835d374f2335735aa254e90a609d9a73bf0bfd9f99f9586065eac0",
+  "status": "complete"
+}

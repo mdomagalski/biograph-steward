@@ -1,0 +1,51 @@
+{
+  "format": "biograph-steward.construction-entry-hosted-browser.v1",
+  "status": "passed",
+  "passed": true,
+  "runtime_commit": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "scope": "Focused new construction card on actual authenticated hosted HTML, not a complete saved-source or mobile workflow.",
+  "full_user_journey_claimed": false,
+  "authenticated": true,
+  "checks": [
+    "Hosted Start here includes the graph-construction path",
+    "Hosted explanation is visible before expanding local instructions",
+    "Hosted review keeps live construction disabled",
+    "Hosted card provides the actual local start command",
+    "Operator build controls remain hidden on the shared site",
+    "Hosted guide has three construction steps",
+    "Hosted entry has no horizontal overflow at390px",
+    "No JavaScript error occurs during the focused hosted check"
+  ],
+  "errors": [],
+  "failure": null,
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/workspaces"
+    },
+    {
+      "method": "GET",
+      "path": "/api/scientific-assessments"
+    },
+    {
+      "method": "GET",
+      "path": "/api/run/native_evidence_workspace_20261115"
+    }
+  ],
+  "owned_browser_closed": true,
+  "new_model_calls": 0,
+  "source_retrievals": 0,
+  "new_graphs": 0,
+  "existing_scientific_or_independent_human_validation_claimed": false,
+  "independent_root_visual_review_of_hosted_card_passed": true,
+  "private_receipt_sha256": "ce0b898217d0e6adb561b66a56957d98f534ee5f9d0a53cc2ebdffa1b1f69fdc",
+  "prior_full_workflow_browser_limitations_replaced": false
+}

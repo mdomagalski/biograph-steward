@@ -1,0 +1,91 @@
+{
+  "format": "biograph-steward.exact-source-grounding-alerts.v1",
+  "date": "2026-11-12",
+  "hash_policy": "Existing client.digest sorted compact JSON, ensure_ascii=True",
+  "source_release": "SIGNOR Oct2026",
+  "source_release_sha256": "63db6f65e9148e81354f564c3c3cdfc9ee45dc421553bd0926e5fae511ef9d06",
+  "source_license": "CC-BY-4.0; SIGNOR contributors, https://signor.uniroma2.it/",
+  "scope": "Five reviewed citation/entity correspondence flags, not a global biological-truth classifier. No node-wide remapping.",
+  "alerts": [
+    {
+      "source_record_id": "SIGNOR-114289",
+      "source_data_record_ordinal": 30484,
+      "project_canonical_source_row_sha256": "e860156ef69a631a505a5e78a39a50bba59f660d988393797ce3a71de618abfa",
+      "reported_source_protein": "UniProtKB:P26927",
+      "captured_current_identity": "MST1, hepatocyte growth factor-like protein",
+      "citation_entity_description": "Mammalian STE20-like serine/threonine kinase, represented by current STK4/Q13043",
+      "status": "citation_entity_mismatch_requires_source_grounding_review",
+      "source_PMID": "11805089",
+      "primary_review_bounds": "This checks entity grounding, not every substrate-site or direct-catalysis claim. PMID21212262 mentions H2B in its abstract but studies Sirt1/p53; PMID26414765 directly measures Mst2 site phosphorylation with broader Mst1/Mst2 conclusions; PMID11805089 abstract concerns STE20-like MST and does not independently resolve every construct detail.",
+      "same_study_site_counterpart_in_old_prior": null,
+      "same_assay_or_independent_experiment_established": false,
+      "automatic_correction_applied": false
+    },
+    {
+      "source_record_id": "SIGNOR-171005",
+      "source_data_record_ordinal": 733,
+      "project_canonical_source_row_sha256": "c18cbc69e9a21645d407a240debd29a887c0a8c4878124d5f3cb956382c93984",
+      "reported_source_protein": "UniProtKB:P26927",
+      "captured_current_identity": "MST1, hepatocyte growth factor-like protein",
+      "citation_entity_description": "Mammalian STE20-like serine/threonine kinase, represented by current STK4/Q13043",
+      "status": "citation_entity_mismatch_requires_source_grounding_review",
+      "source_PMID": "21212262",
+      "primary_review_bounds": "This checks entity grounding, not every substrate-site or direct-catalysis claim. PMID21212262 mentions H2B in its abstract but studies Sirt1/p53; PMID26414765 directly measures Mst2 site phosphorylation with broader Mst1/Mst2 conclusions; PMID11805089 abstract concerns STE20-like MST and does not independently resolve every construct detail.",
+      "same_study_site_counterpart_in_old_prior": "SIGNOR-171009",
+      "same_assay_or_independent_experiment_established": false,
+      "automatic_correction_applied": false
+    },
+    {
+      "source_record_id": "SIGNOR-250265",
+      "source_data_record_ordinal": 37677,
+      "project_canonical_source_row_sha256": "371ed166a41344cc52c5cf4bfec08852495060386fb9e2c611e0f745dbd769b3",
+      "reported_source_protein": "UniProtKB:Q15118",
+      "captured_current_identity": "PDK1, mitochondrial pyruvate-dehydrogenase kinase isozyme1",
+      "citation_entity_description": "3-phosphoinositide-dependent protein kinase1, current PDPK1/O15530; PDK1 is its published synonym",
+      "status": "citation_entity_mismatch_requires_source_grounding_review",
+      "source_PMID": "10753910",
+      "primary_review_bounds": "Do not exclude all PDK1 rows: SIGNOR-143966 source PDHA2 context is consistent with mitochondrial PDK1, without an independent site/assay verdict here.",
+      "same_study_site_counterpart_in_old_prior": "SIGNOR-76710",
+      "same_assay_or_independent_experiment_established": false,
+      "automatic_correction_applied": false
+    },
+    {
+      "source_record_id": "SIGNOR-277178",
+      "source_data_record_ordinal": 34297,
+      "project_canonical_source_row_sha256": "810cce73c79d56d7f35f0a1e7aaf26a536149b32ffd1065753e48c407c6cc58e",
+      "reported_source_protein": "UniProtKB:P26927",
+      "captured_current_identity": "MST1, hepatocyte growth factor-like protein",
+      "citation_entity_description": "Mammalian STE20-like serine/threonine kinase, represented by current STK4/Q13043",
+      "status": "citation_entity_mismatch_requires_source_grounding_review",
+      "source_PMID": "26414765",
+      "primary_review_bounds": "This checks entity grounding, not every substrate-site or direct-catalysis claim. PMID21212262 mentions H2B in its abstract but studies Sirt1/p53; PMID26414765 directly measures Mst2 site phosphorylation with broader Mst1/Mst2 conclusions; PMID11805089 abstract concerns STE20-like MST and does not independently resolve every construct detail.",
+      "same_study_site_counterpart_in_old_prior": "SIGNOR-280147",
+      "same_assay_or_independent_experiment_established": false,
+      "automatic_correction_applied": false
+    },
+    {
+      "source_record_id": "SIGNOR-277179",
+      "source_data_record_ordinal": 13071,
+      "project_canonical_source_row_sha256": "964b20bc994e7f6486b1d7d619d5dd8e04c83510e16a4e86503aa484a42d90bd",
+      "reported_source_protein": "UniProtKB:P26927",
+      "captured_current_identity": "MST1, hepatocyte growth factor-like protein",
+      "citation_entity_description": "Mammalian STE20-like serine/threonine kinase, represented by current STK4/Q13043",
+      "status": "citation_entity_mismatch_requires_source_grounding_review",
+      "source_PMID": "26414765",
+      "primary_review_bounds": "This checks entity grounding, not every substrate-site or direct-catalysis claim. PMID21212262 mentions H2B in its abstract but studies Sirt1/p53; PMID26414765 directly measures Mst2 site phosphorylation with broader Mst1/Mst2 conclusions; PMID11805089 abstract concerns STE20-like MST and does not independently resolve every construct detail.",
+      "same_study_site_counterpart_in_old_prior": "SIGNOR-280146",
+      "same_assay_or_independent_experiment_established": false,
+      "automatic_correction_applied": false
+    }
+  ],
+  "source_claims_independently_biologically_validated": false,
+  "known_current_CRC_intersection": {
+    "SIGNOR_records": 290,
+    "exact_flag_matches": 0,
+    "all_other_claims_validated": false
+  },
+  "candidate_prior_receipt_seal": "e071030cef67d25389b6a351ef6fa0eba873ddf03bd8e230cc49039da3c4d3c4",
+  "candidate_status": "HOLD_not_eligible_for_inference_until_source_grounding_review",
+  "underlying_grounding_review_seal": "5fd08273c2a42861021bb0744754318667d5d7858455789d876b8f1b6f5ffdd2",
+  "content_sha256": "0b09cd612af461f9b80e32be09b5b1b02796ef87c62084e2f063b354e0a1bd0c"
+}

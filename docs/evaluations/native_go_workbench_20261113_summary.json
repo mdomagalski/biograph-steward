@@ -1,0 +1,115 @@
+{
+  "format": "biograph-steward.native-go-workbench-delivery.v1",
+  "created_at": "2026-11-13T15:57:09.349030+00:00",
+  "feature_scope": "Optional read-only display of separately preserved native GO context and saved official QC; no source graph/review edits.",
+  "actual_source_replay": {
+    "format": "biograph-steward.native-go-workbench-source-replay.v1",
+    "created_at": "2026-11-13T15:55:25.338526+00:00",
+    "graph_content_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+    "source_frame_content_sha256": "a0de7e395a5e7cae276a18816f4b51b4a4b0ff71a75777a61cc75fb2dc0a0a92",
+    "quality_output_content_sha256": "200c0a2d968b2415f69deb36db3da5c227af80c2b60074e30e4701a3e37ee83f",
+    "native_frame_rows": 15888,
+    "normalization_rows": 58,
+    "relation_change_rows": 9,
+    "extension_normalization_rows": 49,
+    "extension_unsatisfiable_records": 13,
+    "all_source_files_unchanged": true,
+    "source_file_counts": {
+      "runs/source_faithful_workspace_20261113": 394,
+      "runs/crc_go_context_qualification_v3_20261112": 4,
+      "runs/go_pipeline_reuse_20261112/native_qc_sparse_v3": 8
+    },
+    "source_input_inventories_sha256": "8a994b77a05bc1d40f28bbd0b6d44fafbdfdaffbdb4c5a87075d2b1567ef315e",
+    "cases": [
+      {
+        "protein": "P15056",
+        "GO_ID": "GO:0004674",
+        "selected_assertion_id": "assertion:93468780a77be25666d197e7",
+        "matched_native_rows": 3,
+        "counts": {
+          "positive_records": 3,
+          "not_records": 0
+        },
+        "strict_projection_candidate_count": 0,
+        "relation_change_rows": 0,
+        "extension_normalization_rows": 0,
+        "extension_unsatisfiable_rows": 0,
+        "source_context_result_content_sha256": "3188aa2ff10a32bd0283398d896a2762e00c47fd0db24a9d9a9a01a26d820b03",
+        "elapsed_seconds_not_latency_benchmark": 3.0398178750183433
+      },
+      {
+        "protein": "P01111",
+        "GO_ID": "GO:0005794",
+        "selected_assertion_id": "assertion:4ac61dbe47647d68cc336ff4",
+        "matched_native_rows": 1,
+        "counts": {
+          "positive_records": 1,
+          "not_records": 0
+        },
+        "strict_projection_candidate_count": 1,
+        "relation_change_rows": 1,
+        "extension_normalization_rows": 0,
+        "extension_unsatisfiable_rows": 0,
+        "source_context_result_content_sha256": "62d311f120ed2099472329f5c6496d40e935c1826d1f72ff71fb7918ac7c0df1",
+        "elapsed_seconds_not_latency_benchmark": 2.8246018750360236
+      },
+      {
+        "protein": "O60216",
+        "GO_ID": "GO:0005515",
+        "status": "no_selected_GO_claim_in_active_workspace",
+        "native_source_rows": 67,
+        "extension_normalization_rows": 46,
+        "original_scope_expanded": false
+      },
+      {
+        "protein": "P01111",
+        "GO_ID": "GO:0070062",
+        "selected_assertion_id": "assertion:19eb11ae22722515120386df",
+        "matched_native_rows": 1,
+        "counts": {
+          "positive_records": 1,
+          "not_records": 0
+        },
+        "strict_projection_candidate_count": 0,
+        "relation_change_rows": 0,
+        "extension_normalization_rows": 0,
+        "extension_unsatisfiable_rows": 1,
+        "source_context_result_content_sha256": "f1c2d64a5034885bb120e8d559816f57a95b65414a49a98dbf5fa0b3b4fad9e3",
+        "elapsed_seconds_not_latency_benchmark": 2.660552292014472
+      }
+    ],
+    "new_biological_labels_or_outcomes": false,
+    "GO_rules_or_reasoner_reexecuted": false,
+    "model_GPU_Brev_AWS_calls": 0,
+    "source_retrievals": 0,
+    "graph_or_review_changes": false,
+    "content_sha256": "6b7fe6c722f7d30c107837bb0e704fdf28bd46961bd16368e4e3a8ac0724d025"
+  },
+  "actual_source_replay_mode": "Existing verified reader functions on real saved source packets; authenticated HTTP behavior separately checked with invented fixtures.",
+  "implementation_file_sha256": {
+    "biograph_steward/go_context_inspection.py": "d87b2002c9a4ae8537e84bf82c606b670f4a5f559de3a5188bbd53ad947ee528",
+    "biograph_steward/go_context_qc.py": "9c90f2d63b0f181bb3102bf8390359e34de573b6d00743d3457271591444ef82"
+  },
+  "focused_regression_checks": {
+    "tests_run": 19,
+    "status": "OK",
+    "log_sha256": "1dd0f87aee0f7a9c33b36101afc40ec185a35026461347214a6e301df38051f9"
+  },
+  "demonstration_selection": "Source-only worked examples of already detected QC classes; not a prospective sample or new scientific comparison.",
+  "early_operator_diagnostics_preserved": {
+    "digest_domains": "Execution receipt content seals differ from input-file byte hashes; consumer correction is covered with deliberately distinct fixture hashes.",
+    "RAD21_display_scope": "The requested native RAD21/GO:0005515 example has no selected GO claim in the active graph; no historical scope was expanded to display it."
+  },
+  "validation_boundary": [
+    "Existing dependency-free source-frame and raw-line loader reused.",
+    "Original producer execution proofs remain recorded metadata, not rerun or publisher authentication.",
+    "NOT/exempt, missing sparse entries, non-taxon extension conflicts and relation normalization remain separate.",
+    "No biological accuracy estimate, prediction gain, automatic ID replacement or pruning is established."
+  ],
+  "configured_by_default": false,
+  "source_packets_in_Git": false,
+  "hosted_feature_or_packet_deployed_by_this_increment": false,
+  "source_packet_transfer_or_cloud_calls": 0,
+  "Brev_or_model_required": false,
+  "content_sha256": "20550aa6a2e5828a55ed82154c473e1c43494bceb6c6ba78436c3405912c9285"
+}

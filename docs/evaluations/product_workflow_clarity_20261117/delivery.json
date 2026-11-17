@@ -1,0 +1,134 @@
+{
+  "format": "biograph-steward.product-workflow-clarity.v1",
+  "created_at_UTC": "2026-11-17T21:05:59.978150+00:00",
+  "purpose": "Explain one common application workflow, illustrative saved projects, separate scientific verification and local model requirements.",
+  "runtime_commit_unchanged": "7eea236cdeacf2d0a0ee33e11b01bc3ae5dac151",
+  "graph_sources_counts_scores_reviews_and_cloud_configuration_unchanged": true,
+  "new_application_agent_calls": 0,
+  "new_biological_prediction_runs": 0,
+  "new_source_records_added_to_graph": 0,
+  "report": {
+    "pages": 5,
+    "all_pages_visually_reviewed": true,
+    "files": [
+      {
+        "path": "output/docx/BioGraph_Steward_Final_Report.docx",
+        "bytes": 13644,
+        "sha256": "25a96f5aa1cd202da7cb0d1c0f51a499745c77d0b9f8bbd3442c2ff6cf7228ea"
+      },
+      {
+        "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
+        "bytes": 124767,
+        "sha256": "9d8b78f172ab65d9b149207f2941a556d71d6f8d57333edf600d56a161de31f7"
+      }
+    ],
+    "source_content_sha256": "53441869383cc54b697f5948e1b6123808de291a018818adbff4e9f373319dd2"
+  },
+  "media": {
+    "format": "biograph-steward.workflow-clarity-final-media.v1",
+    "status": "promoted_locally_after_visual_review",
+    "duration_seconds": 261.54,
+    "voice": "Kokoro preset af_heart",
+    "speech_engine": "kokoro-onnx0.6.1 with official Kokoro-82M-v1.0",
+    "root_visual_QA": true,
+    "agent_visual_QA": true,
+    "new_application_agent_calls": 0,
+    "new_biological_prediction_runs": 0,
+    "fresh_scientific_source_retrievals": 0,
+    "local_TTS_section_generations": 6,
+    "unique_changed": 5,
+    "reused": 5,
+    "manual_audio_audition": false,
+    "actual_current_browser_capture": false,
+    "sampled_frames_checked": 15,
+    "full_video_decode_and_audio_analysis_passed": true,
+    "capture_scope": "Prior verified completed application screenshots reused with preserved original provenance; no fresh current-browser capture or reconstructed loading state.",
+    "audio_time_stretched": false,
+    "cloud_speech_calls": 0,
+    "new_paid_compute_started": false,
+    "external_upload_performed": false,
+    "previous_canonical_preserved_privately": true,
+    "files": {
+      "BioGraph_Steward_Walkthrough.mp4": {
+        "bytes": 7789767,
+        "sha256": "401ddd09b570a75c2bdb2b06b81ef8e63f5c1a382774ec8f233d3253810a9387"
+      },
+      "BioGraph_Steward_Walkthrough.txt": {
+        "bytes": 4460,
+        "sha256": "f6105ae3b40de1e6b670a37d79497f01262176a279af185c12bdc1607271300f"
+      },
+      "BioGraph_Steward_Walkthrough.vtt": {
+        "bytes": 5116,
+        "sha256": "674ce077f4b3141ce06b39e269a4f0e7888c73cfe0c9a457fc4973ad08c8b448"
+      },
+      "BioGraph_Steward_Walkthrough.srt": {
+        "bytes": 5249,
+        "sha256": "30d8fbb001d30d390dfa631607ae2e76bf24ac47dd4d1dc3ce85a520ffc8de07"
+      },
+      "BioGraph_Steward_Walkthrough.receipt.json": {
+        "bytes": 23152,
+        "sha256": "f06af75456acc47907ab85f138861ea3692ffa93cdcfd4740196639dacd14f49"
+      }
+    },
+    "final_submission_video": {
+      "file": "BioGraph_Steward_Demonstration.mp4",
+      "bytes": 7789767,
+      "sha256": "401ddd09b570a75c2bdb2b06b81ef8e63f5c1a382774ec8f233d3253810a9387"
+    }
+  },
+  "handoff": {
+    "folder": "output/final_submission",
+    "files": {
+      "BioGraph_Steward_App_Data_and_Exports.zip": {
+        "path": "output/final_submission/BioGraph_Steward_App_Data_and_Exports.zip",
+        "bytes": 147658913,
+        "sha256": "00562b3dbd86085d289895eca7cd444169e2217547ee5da64792e8b7fc18c5e8"
+      },
+      "BioGraph_Steward_Demonstration.mp4": {
+        "path": "output/final_submission/BioGraph_Steward_Demonstration.mp4",
+        "bytes": 7789767,
+        "sha256": "401ddd09b570a75c2bdb2b06b81ef8e63f5c1a382774ec8f233d3253810a9387"
+      },
+      "BioGraph_Steward_Overview.pptx": {
+        "path": "output/final_submission/BioGraph_Steward_Overview.pptx",
+        "bytes": 587786,
+        "sha256": "ff7fc489a40b0b73baa58df885f9df7ad581253f44ca53b72c144983688d6e7c"
+      },
+      "BioGraph_Steward_Project_Report.pdf": {
+        "path": "output/final_submission/BioGraph_Steward_Project_Report.pdf",
+        "bytes": 124767,
+        "sha256": "9d8b78f172ab65d9b149207f2941a556d71d6f8d57333edf600d56a161de31f7"
+      },
+      "START_HERE.txt": {
+        "path": "output/final_submission/START_HERE.txt",
+        "bytes": 4280,
+        "sha256": "9b4341ba6b06da2a3c5412d71468942e132936cbc638483ccac455434efa2a86"
+      }
+    },
+    "file_count": 5,
+    "total_bytes": 156165513,
+    "history_or_internal_reviews_included": false,
+    "app_data_ZIP_byte_unchanged": true,
+    "data_ZIP_published": false
+  },
+  "clarifications": {
+    "workspace": "A saved project opened in the same application.",
+    "workflow": "Open/build a source workspace; ask a supported question; inspect graph, citations and sources; save a review in a new run; export.",
+    "prepared_examples": "Integration and applied decisions illustrated with different saved inputs.",
+    "benchmarks": "Separate verification of outputs, not prerequisites for the user workflow.",
+    "model": "Saved replay, deterministic questions, paths and reviews require none. Fresh Pharos retrieval needs network. New agent planning/inspection requires a configured live model and attached source tools.",
+    "constructor_cap": "25 is a guarded engineering request bound, not a calibrated maximum. 26 rejection is tested; recorded live constructor examples used 2 or3. The original99target capture is separate.",
+    "TP53_colon_guard": "The admitted native location profile omits nonempty extensions and has no tissue query filter; general cellular location is not colon-specific localization.",
+    "reference": "31 of99primary proteins have entries in this benchmark. Both views use the same51positive protein-location labels; the other68are unassessed by it.",
+    "HPA": "Some nativeGOA location rows and benchmark labels reuse Human Protein Atlas observations; source agreement is not independent experimental replication."
+  },
+  "source_checks": {
+    "constructor": "biograph_steward/construction.py",
+    "rejection_tests": "tests/test_construction.py",
+    "guards": "biograph_steward/source_agent.py",
+    "native_location_admission": "biograph_steward/goa_locations.py",
+    "reference_audit": "docs/evaluations/PUBLIC_GOLD_REFERENCE_RESULTS_20261115.md",
+    "official_GO_documentation": "https://geneontology.org/docs/go-annotations/"
+  },
+  "verification": "Five-page rendered report visually checked. Revised media sampled and fully decoded. Documentation-only changes require no rerun of unchanged biological or application tests. No new hosted browser observation is claimed."
+}

@@ -1,0 +1,67 @@
+{
+  "format": "biograph-steward.source-search-independent-numeric-review.v1",
+  "created_at": "2026-11-14T14:15:01.212254+00:00",
+  "status": "PASS",
+  "source_files_sha256": {
+    "runs/source_search_skill_20261114/results_v3/report.json": "c5965d887ef24dfeea586267b7f34b3bec41b88297c9bc925ae9c858d1ad0121",
+    "runs/source_search_skill_20261114/results_v3/case_scores.private.json": "629b977c6fc99f3e446c92d78e2355f9717c275cda86a91a33a09b6bb2599b28",
+    "runs/source_search_skill_20261114/results_v3/question_multiplicities.json": "880af1f49ec987374e40c53920322c4e969291173d688cd95bdeb03b2750cddd",
+    "runs/source_search_skill_20261114/predictions_seal_v3.json": "7977a9efe2fb1ae2ee203d2784cc15cfecfa5c8ae52b518472c3181705f85e55",
+    "runs/source_search_skill_20261114/comparison_v3/direct_native_query/results.json": "c720b6160d85ac43ef27d19db9d014e4f86bf310d9e5e69eae542b4f84661f38",
+    "runs/source_search_skill_20261114/comparison_v3/unskilled_agent/results.json": "b2ebf3e02585618ae4d2e3a2ce781f483e84745ac04b57dcf7c28878305eb424",
+    "runs/source_search_skill_20261114/comparison_v3/procedure_skill_agent/results.json": "b48c18ad3a35c98797e74830f5c4194219f50c532a4aad440d4718dd3d7e1585",
+    "runs/source_search_skill_20261114/first_search_derived_v3.json": "0a12de5a6128f016131198f5ad27fe07eb138b477079635f9671142e5002a3c1",
+    "runs/source_search_skill_20261114/first_search_results_v3.json": "fbadac6f7a86561f25b69b5d33e1a77aff4f24291be6fab0c3ca854a584f4837",
+    "runs/source_search_skill_20261114/results_v4/report.json": "ada9bb5f7fbe6fd5860f5bffc557d7f849fc10716bab8e1e42fc67bdbb5b3061",
+    "runs/source_search_skill_20261114/results_v4/case_scores.private.json": "dc118e7d450ec77bb0445b62b4eb349200b32e9c09f2383c54a95b5f8bb6fe3e",
+    "runs/source_search_skill_20261114/results_v4/question_multiplicities.json": "880af1f49ec987374e40c53920322c4e969291173d688cd95bdeb03b2750cddd",
+    "runs/source_search_skill_20261114/predictions_seal_v4.json": "0cce2a0624aa2890fb2a85a1358db3c7be937aa5c1f00355bb4f57f67d87143d",
+    "runs/source_search_skill_20261114/comparison_v4/direct_native_query/results.json": "bd9c9e13390283ca604f696aa695041dd39b2db898e28078c08615494f221f1d",
+    "runs/source_search_skill_20261114/comparison_v4/unskilled_agent/results.json": "1627c187c2f9b094e1fa0bb514783cf8073af886422753a42746b8340fef78ad",
+    "runs/source_search_skill_20261114/comparison_v4/procedure_skill_agent/results.json": "86071d759aa8987a46bb8beb30cd96d3464cc9c272930eef896d3450ffed3e21",
+    "runs/source_search_skill_20261114/first_search_derived_v4.json": "83b922cd5d1c2c1ba0f72a9320198da288b52c70ad4ea411b3fd521f6b23efca",
+    "runs/source_search_skill_20261114/first_search_results_v4.json": "14f86fd8a8337271b592ef0f49d81e896df34a62fbd9b670f2ce7164860bef34",
+    "runs/source_search_skill_20261114/recovery_reference_comparison_v1.json": "bd85fe626c89aa6a891839f23dec0ebf5ee991a47da1f72e80a2f8306c60ec39",
+    "runs/source_search_skill_20261114/joint_release_resume_v2/timeline.json": "7ab287df2c97a97a240ae383defa4ff06954d0409684829b598af0b75647dfdb"
+  },
+  "review_implementation_sha256": "a5bd8a4b2c5f6ee57906e740d3316184e5487d3c6d97e8dadcf8fae801d68480",
+  "reference_scope": "Only already globally released selected24case projections, identical betweenv3/v4. No full BioASQ source or additional reference fields.",
+  "checks": {
+    "main_case_level_overlap_recalculations": 144,
+    "first_attempt_overlap_recalculations": 96,
+    "main_paired_contrasts": 6,
+    "same_condition_recovery_contrasts": 2,
+    "question_draws": 2000,
+    "draw_width": 24,
+    "seed": 20261114,
+    "exact_saved_weight_regeneration_both_runs": true,
+    "all_24_denominators_retained": true,
+    "same_question_reference_IDs_both_runs": true,
+    "direct_control_exact_ID_lists_same": true,
+    "first_attempt_is_first_executed_not_best_or_later": true,
+    "old_and_followup_primary_contrasts_preserved": true,
+    "timeline_report_FILE_bindings_verified": true
+  },
+  "max_numeric_difference": 0.0,
+  "valid_final_completions": {
+    "v3": 10,
+    "v4": 31
+  },
+  "mean_reference_recall_at_10": {
+    "v3": {
+      "direct_native_query": 0.17258986928104575,
+      "unskilled_agent": 0.020833333333333332,
+      "procedure_skill_agent": 0.0625
+    },
+    "v4": {
+      "direct_native_query": 0.17258986928104575,
+      "unskilled_agent": 0.0625,
+      "procedure_skill_agent": 0.0625
+    }
+  },
+  "interpretation": "Operational completion increased but fixed positive-reference retrieval improvement criterion did not pass. Native direct control remains stronger; first-attempt diagnostic is not a new confirmed winner.",
+  "no_new_source_reference_or_model_calls": true,
+  "no_result_source_or_policy_modified": true,
+  "raw_question_article_reference_IDs_in_receipt": false,
+  "content_sha256": "9b80fe6ee3faf0672bddcf932b398020bdf7bf0eb430ca6808dc8e57b1fccb67"
+}

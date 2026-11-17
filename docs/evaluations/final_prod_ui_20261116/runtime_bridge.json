@@ -1,0 +1,52 @@
+{
+  "format": "biograph-steward.presentation-only-runtime-bridge.v1",
+  "status": "passed",
+  "runtime_commit": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+  "previous_runtime_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+  "changed_runtime_files": [
+    "biograph_steward/guided.js",
+    "biograph_steward/navigation.js",
+    "biograph_steward/refresh.js",
+    "biograph_steward/scientific_assessment.js",
+    "biograph_steward/source_agent.js",
+    "biograph_steward/ui.html",
+    "biograph_steward/webapp.py",
+    "biograph_steward/workspaces.js"
+  ],
+  "scope": "Production review navigation and task-scoped loading/error feedback; existing scientific engines, access policies, source-agent controller and saved model results remain byte-bound.",
+  "webapp_backend_AST_excluding_report_html_identical_under_same_host_interpreter": true,
+  "source_agent_controller_sha256": "8b21470d3258c45effba6a97220502cdafb11045a60beccaec51fceb7c6558a3",
+  "source_agent_job_verifier_sha256": "e94a4e229d78c0528672ae582671256b943c8b3143fd260d7d18d06350230c13",
+  "new_model_calls": 0,
+  "new_scientific_comparisons": false,
+  "earlier_scientific_receipts_reused_without_relabelling_as_new_runs": {
+    "runtime_commit": "09e95a7b58c142fc0d633e3eebc20750cd5aa45b",
+    "git_delivery_commit": "637f6f24dff219196e9996c2fa93abdfd08d17f3",
+    "hosted_acceptance": {
+      "path": "docs/evaluations/delivery_readiness_20261116/hosted_acceptance.json",
+      "sha256": "d4a17d9f74d9bb8bf801abe6eebb3b1e2837bd872f46155fd0587761a0b26c6a"
+    },
+    "hosted_browser_acceptance": {
+      "path": "docs/evaluations/delivery_readiness_20261116/hosted_browser_acceptance.json",
+      "sha256": "dbcab2eb50caef6784085cacb9b958b43605ff72324e46cef091853a1af0abdb"
+    },
+    "cache_validation": {
+      "path": "docs/evaluations/delivery_readiness_20261116/cache_validation.json",
+      "sha256": "2fbcce5a7e4734adb291c5dc9ba69c120deed9824d8501eb7e87edb8c2f3e0a3"
+    },
+    "primary_graph_handoff": {
+      "path": "docs/evaluations/delivery_readiness_20261116/primary_graph_handoff.json",
+      "sha256": "c29f4fc493263d01ceecf905b302377eca13edbaac1e3ca996babc593cc9f6c2"
+    },
+    "software_acceptance": {
+      "path": "docs/evaluations/delivery_readiness_20261116/software_acceptance.json",
+      "sha256": "0ebf09969353289f6d517016b4f7cb90c012dc67ccd5ff5faa460057e8f604c8"
+    },
+    "scope": "Prior09 full scientific/source/five-job/GO/export checks are reused only with unchanged data and scientific/backend bytes. New focused checks do not claim these evaluations were repeated."
+  },
+  "actual_hosted_acceptance": {
+    "path": "docs/evaluations/final_prod_ui_20261116/hosted_acceptance.json",
+    "bytes": 5806,
+    "sha256": "e6f74eb443174c425fa5562f67bb81183c104540667e7c471def15d3bc7b1b23"
+  }
+}

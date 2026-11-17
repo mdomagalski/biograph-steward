@@ -1,0 +1,159 @@
+{
+  "format": "biograph-steward.linked-discoveries-pilot-summary.v1",
+  "date_local": "2026-10-28",
+  "status": "documented_ui_exports_compared_and_optional_linkouts_verified",
+  "report": "runs/linked_discoveries_pilot_20261028/report.html",
+  "source_run": "crc_civic_final_20261015",
+  "seed_pmids": [
+    "20619739",
+    "19223544"
+  ],
+  "counts": {
+    "exported_rows": 100,
+    "unique_pmids": 90,
+    "shared_between_neighborhoods": 10,
+    "already_saved_including_excluded": 8,
+    "already_normalized_civic": 7,
+    "already_saved_only_excluded": 1,
+    "absent_from_saved_inventory": 82,
+    "source_reported_publication_updates_unique_records": 12,
+    "source_reported_update_category_record_counts": {
+      "Comment": 11,
+      "Erratum": 1
+    },
+    "records_with_review_marker": 17
+  },
+  "per_seed": {
+    "20619739": {
+      "rows": 50,
+      "unique_pmids": 50,
+      "overlap_by_saved_role": {
+        "pharos_supporting": 0,
+        "pharos_target_discovery": 0,
+        "civic_normalized_supporting": 6,
+        "civic_retrieved_including_excluded": 7,
+        "normalized_and_target_discovery_union": 6,
+        "all_saved_reference_union_including_excluded": 7
+      },
+      "already_retrieved_including_excluded": 7,
+      "absent_from_all_saved_references": 43
+    },
+    "19223544": {
+      "rows": 50,
+      "unique_pmids": 50,
+      "overlap_by_saved_role": {
+        "pharos_supporting": 0,
+        "pharos_target_discovery": 0,
+        "civic_normalized_supporting": 3,
+        "civic_retrieved_including_excluded": 4,
+        "normalized_and_target_discovery_union": 3,
+        "all_saved_reference_union_including_excluded": 4
+      },
+      "already_retrieved_including_excluded": 4,
+      "absent_from_all_saved_references": 46
+    }
+  },
+  "abstract_screen": {
+    "method": "Assistant source-based title/abstract inspection of first five nonseed rows per export, descriptive development review; not independent expert adjudication or scientific accuracy labels",
+    "rows": 10,
+    "unique_pmids": 10,
+    "broadly_relevant": 10,
+    "explicit_g12d_response_in_title_abstract": 0,
+    "absent_from_saved_inventory": 7,
+    "full_text_examined": false
+  },
+  "publication_status_issue": {
+    "pmid": "PMID:18339877",
+    "exported_value": "Erratum: https://pubmed.ncbi.nlm.nih.gov/18339877/",
+    "status": "unresolved self-referential exported update link",
+    "independent_notice_verification": "Documented NCBI EFetch request failed with DNS resolution error; no correction XML received",
+    "action": "Preserve source value; do not infer retraction or automatically exclude evidence"
+  },
+  "identifier_policy": "CSV PMID strings are mapped to the project PMID: CURIE representation before exact set comparison; seed/known-positive membership is asserted.",
+  "scientific_conclusion": "Useful literature-discovery and context navigation in this example; no demonstrated biological prediction or scientific accuracy improvement.",
+  "recommendation": "Keep optional PMID linkouts. Preserve raw exports for exploration; do not import neighborhood similarity or citation links as biological assertions.",
+  "baseline_limits": {
+    "scope": "Saved99-targetPharos319/CIViCworkspace",
+    "pharos_discovery_publications_capped_targets": 90,
+    "per_target_publication_limit": 25,
+    "all_saved_unique_pmids_including_excluded": 2182,
+    "intact_attachment_present": false,
+    "underlying_string_supporting_studies_complete": false
+  },
+  "product": {
+    "changed": "Optional external discovery link in existing CIViC source details and evidence passport",
+    "automatic_requests": false,
+    "graph_mutation": false,
+    "review_decisions": false,
+    "source_answer_changes": false,
+    "new_library_dependencies": false
+  },
+  "verification": {
+    "node_test_command": "node --test tests/civic_discovery_ui.test.cjs tests/guided_ranking_ui.test.cjs",
+    "node_tests_passed": 14,
+    "node_tests_failed": 0,
+    "node_syntax_check": "pass",
+    "browser": {
+      "app_url": "http://127.0.0.1:8794/?run=crc_civic_final_20261015&question=therapy_cancer_demo_20261027",
+      "link_text": "Explore related literature \u00b7 Linked Discoveries",
+      "href": "https://linkeddiscoveries.ncbi.nlm.nih.gov/20619739/",
+      "external_navigation_verified": true,
+      "no_automatic_ld_requests": true,
+      "non_get_local_requests": [],
+      "javascript_errors": [],
+      "report_filter_counts": {
+        "absent": 82,
+        "existing": 8,
+        "single_pmid": 1
+      },
+      "graph_or_review_writes": 0
+    },
+    "independent_arithmetic_audit": "runs/linked_discoveries_pilot_20261028/comparison_audit.json",
+    "root_visual_review": "Actual app source card and report preview inspected; no clipping or overlap observed",
+    "historical_source_hashes_unchanged": true
+  },
+  "artifacts": {
+    "runs/linked_discoveries_pilot_20261028/plan.json": "ece02568df517b4487fa8dd0af652cd834a678fbcca048c6a4ef22f852891d41",
+    "runs/linked_discoveries_pilot_20261028/baseline/baseline.json": "4e93fc114dcafb4fff8fbb58bccdeb9e9616a910bec1a6ad096d94bbe0861ca8",
+    "runs/linked_discoveries_pilot_20261028/baseline/verification.json": "17452f91be1905445c1b1c5e11544aadfccd82259cff6400f45175bc3f114234",
+    "runs/linked_discoveries_pilot_20261028/retrieval/downloads.json": "72b8acaa3112b125da78913a7c9c44413264fb513464df0f039bbbb6718958ef",
+    "runs/linked_discoveries_pilot_20261028/retrieval/seed_20619739_unfiltered_50.csv": "700da649da5fb98a7e5768656c5b87e7ab9cdb20cd8e2db801a8f44a81b2c84b",
+    "runs/linked_discoveries_pilot_20261028/retrieval/seed_19223544_unfiltered_50.csv": "b49db43b7badfb863efb4e1d2defff83af24e493ff9db34e7c6df129855db0de",
+    "runs/linked_discoveries_pilot_20261028/comparison.json": "834a20d175eb6b605231009f62e926bd84cc2e58a0114e3d70c0eeb7b7b77479",
+    "runs/linked_discoveries_pilot_20261028/comparison_audit.json": "6cf5081568c2ad17aefecfd834b9a25572a26e0dc1cd113cd949c160b19f2d07",
+    "runs/linked_discoveries_pilot_20261028/browser_verification.json": "1d7530f841ee9372a0e4a0b91d4e55437a468a07f7216bef467f1463c31a307b",
+    "runs/linked_discoveries_pilot_20261028/report.html": "3a1f056aa1a71e35bc8ef113212e330a1514eedb9dd2e295d0a0716acd828d02",
+    "runs/linked_discoveries_pilot_20261028/app_linkout.png": "eb3a8b140a3ebeb3a3d2e67de6ffef463d79528d5244fced5b6bbc8a59c0c08b",
+    "runs/linked_discoveries_pilot_20261028/report_preview.png": "ec3b5bf4657c81206ce55ba2c944deafd03490e91293de1289ac8e87e00ad5c3"
+  },
+  "implementation": {
+    "biograph_steward/civic.js": "9ef4b1ec7609a4f4eaf854d849a74f5302af21dfa69e625c01b95c08a7467919",
+    "tests/civic_discovery_ui.test.cjs": "89b6f604c4d67ec196f6270573379acdc418d0e17cabb3fce3371bcbda283c7a"
+  },
+  "primary_sources": [
+    "https://linkeddiscoveries.ncbi.nlm.nih.gov/userguide/",
+    "https://www.nih.gov/news-events/news-releases/nih-launches-new-pubmed-tool-strengthen-research-replication-reproducibility",
+    "https://pubmed.ncbi.nlm.nih.gov/19366826/",
+    "https://pubmed.ncbi.nlm.nih.gov/19223544/"
+  ],
+  "limitations": [
+    "This inventory covers the saved, scoped 99-target workspace, not the whole Pharos database or full upstream resources.",
+    "Pharos target publication discovery is capped at 25 records per target; 90 of 99 targets were capped. The saved 2403 target-publication occurrences are not a complete literature search.",
+    "Most graph evidence records do not carry an explicit supporting PMID. Absence here cannot establish absence from Pharos or from its upstream source.",
+    "STRING functional scores and source labels do not enumerate all supporting experiment or curated-database publications in this saved graph. Those upstream papers remain unassessed.",
+    "CIViC retrieved/excluded references are not equivalent to usable or accepted local assertions.",
+    "A shared PMID does not establish an identical claim; a different PMID does not establish an independent experiment, study population or data set.",
+    "Topic similarity, citation connection or new-to-this-inventory status does not establish support or contradiction of the KRAS G12D response claim.",
+    "No new article status, full text, retraction/correction audit or scientific accuracy determination is performed by this offline baseline.",
+    "Only two existing seed papers and default unfiltered 50-record neighborhoods were tested.",
+    "No comparison against PubMed Similar Articles or systematic-review recall was performed.",
+    "The other 80 unique records have not been assessed for exact-claim relevance.",
+    "Source-reported comments are not retractions; blank metadata is not publication-status clearance.",
+    "No full-text synthesis, study-independence audit, contradiction adjudication, clinical advice or gold-label evaluation was performed."
+  ],
+  "new_biological_assertions": 0,
+  "configured_model_calls": 0,
+  "gpu_used": false,
+  "paid_compute_used": false,
+  "commit_created": false
+}

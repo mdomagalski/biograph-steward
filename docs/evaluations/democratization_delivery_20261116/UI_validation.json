@@ -1,0 +1,47 @@
+{
+  "format": "biograph-steward.construction-entry-ui-verification.v1",
+  "status": "passed",
+  "source_revision": "84ef6a0b991f9560e777ec06fb6151303a380112",
+  "runtime_changes": [
+    "biograph_steward/ui.html",
+    "biograph_steward/construction.js"
+  ],
+  "reuses_existing_constructor": true,
+  "backend_controller_source_or_policy_changes": false,
+  "focused_JS_suites": [
+    "tests/construction_ui.test.cjs",
+    "tests/reviewer_home_ui.test.cjs",
+    "tests/product_review_ui.test.cjs"
+  ],
+  "focused_JS_checks_passed": 44,
+  "actual_local_browser_checks": [
+    "Operator has a visible real-construction entry",
+    "Operator does not display shared-review instructions",
+    "Entry selects the actual cohort workflow",
+    "Entry does not open invented data",
+    "Existing form previews the selected focus question",
+    "Existing real build action is reached",
+    "Shared reviewer hides the mutating construction action",
+    "Shared reviewer exposes local-build instructions",
+    "Shared reviewer distinction is visible before expanding details",
+    "Shared recipe provides the executable local start command",
+    "Shared entry fits the mobile viewport without horizontal overflow",
+    "Both real rendered pages have no JavaScript errors",
+    "Opening and completing selections makes no mutating request"
+  ],
+  "actual_local_browser_check_count": 13,
+  "local_browser_scope": "Actual isolated operator and saved-only web pages; no build submission, source data or human-study claim.",
+  "browser_channel": "installed Chrome through official Playwright channel",
+  "private_browser_receipt_sha256": "291dfeb2a3269d1c67a96c2d21e5904d42a9bf93e42b024e19705071ee5ce5c2",
+  "initial_automation_failures_preserved": [
+    "In-app browser native module signature prevents connection",
+    "Default Playwright Chromium cache absent",
+    "Installed-Chrome first harness selector ambiguous between two labels; scoped to actual form and rerun with unchanged app code"
+  ],
+  "source_retrievals": 0,
+  "model_calls": 0,
+  "human_usability_study_claimed": false,
+  "mobile_scope": "Construction card only, isolated shared-review page at390px; no complete mobile-user-journey claim",
+  "owned_browsers_and_local_servers_stopped": true,
+  "hosted_update_has_separate_acceptance": true
+}

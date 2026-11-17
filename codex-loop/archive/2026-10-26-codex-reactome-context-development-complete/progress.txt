@@ -1,0 +1,59 @@
+## Codebase Patterns
+- Read AGENTS.md and the selected Reactome intervention before implementation. Prefer supported upstream behavior over a new algorithm or workaround.
+- Historical scientific scripts, packets, exposure ledgers and hash-bound receipts are immutable inputs. New experiments need a separate explicit contract.
+- Source fidelity, biological prediction, study independence and usability are different assessments. Passing engineering checks proves none of the other claims.
+- The core test runner is python -m unittest discover -s tests. Use focused tests first and the pinned optional graph environment for native checks; an optional skip does not satisfy a story's required native check.
+- Never scan runs/ broadly or follow unreviewed paths inside metadata. Reserved IntAct interaction bodies must remain unread, unlisted, unhashed and unqueried.
+- This backlog permits local source preparation and invented CPU controls only. Announce real resource checks or experiments separately; do not start Brev or paid compute.
+
+## 2026-10-26 - Backlog preparation
+- Prepared: three sequential, dependent stories for the selected Reactome-context development comparison.
+- Status: no story started; all passes fields are false. No branch created, loop worker launched, experiment fitted or real outcomes scored.
+- Existing-solution review: pathway context is an established candidate feature; Pharos already supplies the exact membership records. Current GO-only preparation and four-arm runner intentionally cannot execute the selected two-arm experiment unchanged.
+- Launch prerequisite: review and checkpoint the current report/selection changes separately so loop workers do not include unrelated work in story commits. The installed .agents skill source is not an implementation change from this backlog.
+- Intended completion: validated paired graphs, native synthetic controls and guarded execution/scoring handoff. Actual-device resource proof, final real freeze and the six-run comparison follow as a separately announced phase.
+- Scientific stopping rule: preserve all original results and report the one fixed comparison, including no improvement. No repeated search until a favorable score appears.
+
+## 2026-10-26 - Authorized sequential run
+- User requested implementation of the selected next steps and a fixed biological comparison for the report; an independent colleague walkthrough is unavailable and is not a blocker.
+- Preparation stories run sequentially on codex/reactome-context-development. The subsequent announced real-data execution is outside these implementation stories.
+- Prior report/selection/backlog checkpoint: 9887b00. Locally installed nested skill checkout remains ignored and unchanged.
+- Preflight: Git/main resolve, clean checkpoint, Python3.12.4, unittest command and subagents available. No static typecheck configured; no UI story requires a browser. Native scientific dependencies are being restored in an isolated writable environment.
+
+## 2026-10-26T22:34:52-04:00 - REACTOME-001
+- Implemented: separate source-bound Reactome projection and fail-closed validator. Exact saved memberships join the pinned original graph without changing candidates, masks, supervision, GO policy or original identities. Every pathway source row retains disposition, raw hashes, source locators and qualifications.
+- Files changed: scripts/prepare_reactome_context_graphs.py; tests/test_reactome_projection.py; docs/evaluations/REACTOME_CONTEXT_GRAPH_20261026.md; docs/evaluations/reactome_context_graph_20261026_summary.json; docs/BUILD_PLAN.md; this log and PRD story status.
+- Actual preparation: runs/reactome_context_graphs_20261026_final; 11,138 eligible memberships / 982 products / 1,490 pathways; shared 11,840 entities / 5 relations. Baseline 103,768 adjacency triples, Reactome 114,906. All 3,276 nominations retained. Outcome-independent endpoint coverage 0/1/2: 712 / 1,207 / 1,357. These are nominations, not the later 1,751 complete-scored denominator. Earlier preparation drafts remain preserved and are not the handoff.
+- Checks: pinned native project interpreter; 16 Reactome controls, 13 existing GO projection controls, 34 Pharos inventory/source controls pass without skips. Actual preparation and independent --validate pass; git diff --check clean. No static typecheck is configured.
+- Browser verification: not applicable; no UI changed.
+- Boundaries: no model fitting, assay scoring, outcome decoding, reserved IntAct access, Brev/AWS access or old-contract modification. Real execution remains unfrozen pending native synthetic proof and exact-device resource proof.
+- Learnings for future iterations:
+  - The saved target pathways live at target.pathways, while other context families live under target.pharos_context. Raw source_rows(..., 'pathways') and target.pathways are reconciled independently.
+  - Use validate_prepared_packet(folder) and the ARMS/RELATION constants for the next explicit two-arm adapter; returned arms are already mapped to the same ordered union vocabularies. Native library fitting is intentionally outside this story.
+---
+
+## 2026-10-26T22:49:02-04:00 - REACTOME-002
+- Implemented: separate fixed native two-arm adapter with exact selected R-GCN/loss/optimizer/batching/typed-negative behavior, graph/source/code validation, complete arm/seed budget checks, five matched audit fingerprints, no-query resource mode and a separate freeze-proof interface. Historical scripts and prepared packet remain unchanged.
+- Files changed: scripts/run_reactome_context.py; tests/test_reactome_runner.py; docs/evaluations/REACTOME_CONTEXT_NATIVE_20261026.md; docs/evaluations/reactome_context_native_20261026_summary.json; this log and PRD story status.
+- Native proof: runs/reactome_context_native_20261026_final/report.json; invented CPU fixture only, six runs at four updates each (24 total), identical per-seed initial parameters/positive batches/negative proposals/filter masks/accepted negatives, finite symmetric exact-query predictions. Analytical probes retain the actual 32D/four-basis/three-layer architecture and demonstrate two-hop pathway-to-gene and three-hop other-product-to-gene transport, isolated/missing-context exclusion and native cache invalidation. This does not claim four-hop gene-to-gene transport or biological accuracy.
+- Checks: 31 Reactome projection/runner tests; 17 existing runner tests with BIOGRAPH_TEST_GRAPH_ML=1; three existing hierarchy tests, all in pinned project interpreter, no skips. Real prepared-packet dry validator passed with unchanged 99,394 supervision triples, 25 batches/epoch, 500 updates per arm/seed and 3,000 planned total. git diff --check passed; no static typecheck configured.
+- Browser verification: not applicable; no UI changed.
+- Boundaries: no real graph fitting/resource fitting, real assay queries, outcome loading, reserved IntAct access, Brev access or paid compute. Exact-device resource proof, final freeze and real execution remain pending. Earlier attempts/test-failure logs remain preserved.
+- Learnings for future iterations:
+  - Native train() resets parameters; first pre_batch observes the actual initial named parameters. User post_batch callbacks precede the optimizer callback, so validate callback counts against final Adam state.
+  - Native numeric-zero edge dropout consumes adjacency-sized RNG; use its supported None branch after verifying zero self-loop dropout. Observe both negative proposals and masks without changing sampling.
+  - The adapter exposes profile(), implementation_bindings(), runtime_binding(device), validate_packet(), validate_proof(), validate_execution(), run_synthetic() and run(). The separate execution.json contract is documented in code; resource mode is both arms/seed17/one epoch and constructs zero prediction queries.
+---
+
+## 2026-10-26T23:01:37-04:00 - REACTOME-003
+- Implemented: separate immutable execution freeze and fixed two-arm scorer using the original file/proof safety, source parser, assay eligibility and native metrics. Full fitting now validates handoff/helper hashes and reporting contract before training; all six complete prediction/checkpoint/query/adjacency/runtime/code/source bindings precede any outcome read. Reporting retains 1751 eligible off-diagonal pairs (737 detected/1014 nondetected), paired AP/ROC-AUC and arithmetic means, tied 0/1/2 coverage diagnostic and strata, original context coverage and descriptive gene-removal influence.
+- Files changed: scripts/freeze_reactome_context.py; scripts/score_reactome_context.py; narrow admission update in scripts/run_reactome_context.py; tests/test_reactome_handoff.py; docs/evaluations/REACTOME_CONTEXT_HANDOFF_20261026.md and machine-readable readiness summary; docs/BUILD_PLAN.md; this log and PRD status.
+- Checks: 44 Reactome controls including 13 new handoff controls and actual invented native prepare/validate/resource/freeze/six-fit/score wiring; original freeze (9), scoring (16) and outcomes (14) controls, all pass with no skips in the pinned interpreter. Real graph dry validation passes without fitting; selected 500 updates per arm/seed and 3000 total unchanged. git diff --check passes; no typecheck configured.
+- Current native proof: runs/reactome_context_native_20261026_handoff_final/report.json, invented CPU, 24 updates across 6 runs. It supersedes the prior story 002 proof for current-code admission only; earlier receipts and proof are preserved unchanged. The readiness summary binds its SHA, current code, prepared graphs and exact next commands.
+- Browser verification: not applicable; no UI changed.
+- Boundaries: real resource proof, actual execution freeze, six real fits and consumed-panel scoring remain pending separately announced compute. No real outcome/source archive/workbook body read, reserved IntAct access, Brev/paid compute or historical-result changes occurred. No biological improvement, significance, independent validation or usability claim is made; the midpoint report remains unchanged.
+- Learnings for future iterations:
+  - Separate execution packets must be checked before spending the full fitting budget as well as at scoring; bind reused source/parser/scorer helpers alongside the outcome adapter.
+  - Freeze creation authenticates native proof artifacts, not only report seals. An earlier proof becomes stale after a bound runner edit; preserve it and create a new immutable current proof.
+  - Scoring requires the exact frozen runtime/device, including installed native source fingerprints. Test-only tiny schedules/populations cannot satisfy the real 1751 denominator.
+---

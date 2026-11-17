@@ -1,0 +1,24 @@
+{
+  "format": "biograph-steward.review-workflow-usability.v1",
+  "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+  "existing_capability_reused": "Existing POST /api/review creates a new ordinary workspace run; no new cloud editing API.",
+  "implementation": [
+    "Explicit Show in graph action selects and focuses its result; expanding text alone preserves diagram selection.",
+    "Readable source guide exposes Record evidence review in an editable ordinary run.",
+    "Save review in a new run preserves the earlier run and supplies its link.",
+    "Public, exported and applied-retained views explain their read-only state."
+  ],
+  "local_UI_checks_passed": true,
+  "existing_public_saved_only_guard_checks_passed": true,
+  "actual_Chrome_browser_checks_passed": true,
+  "actual_provisional_demo_review_saved": true,
+  "isolated_original_files_verified_unchanged": 58,
+  "new_review_run_full_native_source_replay_passed": true,
+  "accepted_assertions_added": 0,
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "production_source_or_graph_writes": 0,
+  "independent_usability_study_claimed": false,
+  "independent_biological_validation_claimed": false,
+  "protected_user_files_accessed": false
+}

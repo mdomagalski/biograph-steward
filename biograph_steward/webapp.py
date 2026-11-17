@@ -3,19 +3,87 @@ from __future__ import annotations
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from html import escape
 from io import BytesIO
+import gzip
 import json
+import os
 from pathlib import Path
 import re
+import shutil
 import socket
-from urllib.parse import parse_qs, urlparse, urlsplit
+from threading import Lock
+from urllib.parse import parse_qs, unquote, urlparse, urlsplit
 from uuid import uuid4
 import webbrowser
 import zipfile
 from datetime import datetime, timezone
 
 from .client import PharosClient, ENDPOINT, PharosError
-from .runtime import AccessPolicy, BrowserSessions, runs_directory, cache_directory
+from .runtime import AccessPolicy, BrowserSessions, runs_directory, cache_directory, SAVED_REVIEW_MESSAGE
 from . import __version__
+
+
+def _function_context_sources(runs_dir, *, include_notes=False):
+    """Only operator-registered, byte-pinned saved forecasts are exposed."""
+    from .function_context import need
+    root = Path(runs_dir).resolve()
+    index = root / 'function_context_index.json'
+    if not index.exists():
+        return []
+    need(index.is_file() and not index.is_symlink() and index.stat().st_size <= 100_000,
+         'the saved-context index must be an ordinary bounded file.')
+    value = json.loads(index.read_text())
+    need(isinstance(value, dict) and set(value) == {'format', 'publications'}
+         and value['format'] == 'biograph-steward.function-context-index.v1'
+         and isinstance(value['publications'], list) and len(value['publications']) <= 25,
+         'invalid saved-context index.')
+    result, seen = [], set()
+    for row in value['publications']:
+        need(isinstance(row, dict) and {'id', 'manifest_sha256'} <= set(row)
+             and set(row) <= {'id', 'manifest_sha256', 'display_notes', 'content_notes'}
+             and isinstance(row['id'], str) and re.fullmatch(r'[A-Za-z0-9_-]{1,80}', row['id'])
+             and row['id'] not in seen and isinstance(row['manifest_sha256'], str)
+             and re.fullmatch(r'[0-9a-f]{64}', row['manifest_sha256']),
+             'invalid or duplicate saved-context registration.')
+        folder = root / row['id']
+        need(folder.is_dir() and not folder.is_symlink() and folder.resolve().parent == root,
+             'a registered context must be an ordinary directory in this data folder.')
+        seen.add(row['id'])
+        source = {'id': row['id'], 'path': folder, 'sha256': row['manifest_sha256']}
+        for registration, path_key, sha_key in (('display_notes', 'notes_path', 'notes_sha256'),
+                                                 ('content_notes', 'content_notes_path', 'content_notes_sha256')):
+            if registration not in row:
+                continue
+            notes = row[registration]
+            need(isinstance(notes, dict) and set(notes) == {'id', 'file_sha256'}
+                 and isinstance(notes['id'], str) and re.fullmatch(r'[A-Za-z0-9_-]{1,80}', notes['id'])
+                 and isinstance(notes['file_sha256'], str) and re.fullmatch(r'[0-9a-f]{64}', notes['file_sha256']),
+                 'invalid separate content/annotation notes registration.')
+            note_folder = root / notes['id']
+            need(note_folder.is_dir() and not note_folder.is_symlink() and note_folder.resolve().parent == root,
+                 'separate notes must use an ordinary directory in this data folder.')
+            if include_notes:
+                source.update({path_key: note_folder/'notes.json', sha_key: notes['file_sha256']})
+        result.append(source)
+    return result
+
+
+def _accepts_gzip(headers):
+    """Require explicit positive gzip weight (RFC9110 12.4.2/12.5.3).
+
+    Wildcards do not opt this application into compression. Any explicit zero
+    weight or malformed gzip entry conservatively retains the identity response.
+    """
+    weights = []
+    for field in headers.get_all('Accept-Encoding', []):
+        for member in field.split(','):
+            if member.split(';', 1)[0].strip().lower() != 'gzip':
+                continue
+            match = re.fullmatch(r'\s*gzip\s*(?:;\s*q\s*=\s*(0(?:\.[0-9]{0,3})?|1(?:\.0{0,3})?)\s*)?',
+                                 member, re.IGNORECASE)
+            if match is None:
+                return False
+            weights.append(float(match.group(1) or '1'))
+    return bool(weights) and all(weight > 0 for weight in weights)
 
 
 def verify_saved_refresh(folder: Path) -> None:
@@ -33,9 +101,62 @@ def verify_saved_refresh(folder: Path) -> None:
 
 def verify_qualified_question_source(answer, runs_dir):
     """A saved qualified answer cannot outlive changed or missing source bytes."""
+    if answer.get('template') == 'qualified_pathway_source_context.v1':
+        from .saved_run_cache import read_run
+        from .questions import answer_question
+        source_id = answer.get('source_run')
+        if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+            raise ValueError('Qualified pathway answer source is missing or invalid.')
+        source = Path(runs_dir) / source_id
+        if source.is_symlink() or source.resolve().parent != Path(runs_dir).resolve() or not source.is_dir():
+            raise ValueError('Qualified pathway answer source is unavailable.')
+        graph = read_run(source)[2]
+        from .qualified_workspace import read_pathway_history
+        plan = answer['plan']
+        expected = answer_question(graph, plan['protein']['id'], template=answer['template'],
+            relations=plan['relations'], view=plan['view'], max_results=plan['max_results'],
+            max_paths=plan['max_paths_per_protein'], source_run=source_id,
+            source_support=plan.get('source_support'), pathway_history_source=read_pathway_history(source, graph))
+        if answer != expected:
+            raise ValueError('Qualified pathway answer differs from its retained graph, review state or saved query.')
+        return
+    if answer.get('template') == 'native_string_physical.v1':
+        from .saved_run_cache import read_run
+        from .questions import answer_question
+        source_id = answer.get('source_run')
+        if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+            raise ValueError('Native physical answer source is missing or invalid.')
+        source = Path(runs_dir) / source_id
+        if source.is_symlink() or source.resolve().parent != Path(runs_dir).resolve() or not source.is_dir():
+            raise ValueError('Native physical answer source is unavailable.')
+        plan = answer['plan']
+        expected = answer_question(read_run(source)[2], plan['protein']['id'], template=answer['template'],
+            relations=plan['relations'], view=plan['view'], max_results=plan['max_results'],
+            max_paths=plan['max_paths_per_protein'], source_run=source_id)
+        if expected != answer:
+            raise ValueError('Native physical answer differs from its source records, identity coverage or review state.')
+        return
+    if answer.get('plan', {}).get('ranking') == 'physical':
+        from .saved_run_cache import read_run
+        from .questions import answer_question
+        source_id = answer.get('source_run')
+        if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+            raise ValueError('Physical priority answer source run is missing or invalid.')
+        source = Path(runs_dir) / source_id
+        if source.is_symlink() or source.resolve().parent != Path(runs_dir).resolve() or not source.is_dir():
+            raise ValueError('Physical priority answer source run is unavailable.')
+        graph = read_run(source)[2]
+        plan = answer['plan']
+        expected = answer_question(graph, plan['protein']['id'], relations=plan['relations'],
+            view=plan['view'], max_results=plan['max_results'], max_paths=plan['max_paths_per_protein'],
+            template=answer['template'], source_run=source_id, ranking='physical',
+            ranking_source=answer['physical_ranking_source'])
+        if expected != answer:
+            raise ValueError('Physical priority answer differs from its source graph, review state or saved query.')
+        return
     if answer.get('template') != 'qualified_assay_evidence.v1':
         return
-    from .reviews import read_run
+    from .saved_run_cache import read_run
     from .questions import graph_basis
     source_id = answer.get('source_run')
     if not isinstance(source_id, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
@@ -50,16 +171,43 @@ def verify_qualified_question_source(answer, runs_dir):
         raise ValueError('Qualified answer belongs to different source evidence or review state.')
 
 
-def report_html(graph: dict | None = None, *, protected=False) -> str:
+def report_html(graph: dict | None = None, *, protected=False, saved_data_only=False) -> str:
     template = Path(__file__).with_name("ui.html").read_text(encoding="utf-8")
+    if saved_data_only:
+        template = template.replace('<body>', '<body data-saved-data-only="true">')
+        template = template.replace('</head>', '<style>body[data-saved-data-only="true"] #controls,'
+            'body[data-saved-data-only="true"] #plannerPanel,'
+            'body[data-saved-data-only="true"] #refreshPanel,'
+            'body[data-saved-data-only="true"] #civicRetrievePanel,'
+            'body[data-saved-data-only="true"] #assayAttachForm,'
+            'body[data-saved-data-only="true"] #assayQuestionControls,'
+            'body[data-saved-data-only="true"] #civicForm,'
+            'body[data-saved-data-only="true"] #regulatoryForm,'
+            'body[data-saved-data-only="true"] #sourceAgentLive,'
+            'body[data-saved-data-only="true"] [data-development-view],'
+            'body[data-saved-data-only="true"] #submissionCreateNote,'
+            'body[data-saved-data-only="true"] #submissionExport{display:none!important}</style></head>')
     data = json.dumps(graph, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
-    script = Path(__file__).with_name("guided.js").read_text(encoding="utf-8")
+    capabilities = {"saved_data_only": saved_data_only, "live_physical_ranking": not saved_data_only, "model_planning": not saved_data_only}
+    script = "const appCapabilities=Object.freeze(" + json.dumps(capabilities) + ");\n"
+    script += Path(__file__).with_name("guided.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("civic.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("planner.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("refresh.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("workspaces.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("construction.js").read_text(encoding="utf-8")
     script += '\n' + Path(__file__).with_name("assay.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("biological.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("regulatory.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("goa.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("pruning.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("validation.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("scientific_assessment.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("function_context.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("protein_context.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("source_agent.js").read_text(encoding="utf-8")
+    script += '\n' + Path(__file__).with_name("navigation.js").read_text(encoding="utf-8")
+    script += '\ninitializeWorkspaceAssessments();\n'
     auth = '<form method="post" action="/auth/logout"><button type="submit">Sign out</button></form>' if protected else ''
     return template.replace("__AUTH_CONTROL__", auth).replace("__GUIDED_SCRIPT__", script).replace("__EMBEDDED_GRAPH__", data)
 
@@ -71,7 +219,8 @@ def login_return_path(value):
         return '/'
     try:
         parsed = urlsplit(value)
-        report = re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', parsed.path)
+        report = (re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', parsed.path)
+            or re.fullmatch(r'/api/scientific-assessment/[A-Za-z0-9_-]{1,80}/report', parsed.path))
         if (parsed.scheme or parsed.netloc or parsed.fragment or not value.startswith('/') or
                 not (parsed.path == '/' or (report and not parsed.query))):
             return '/'
@@ -82,11 +231,45 @@ def login_return_path(value):
 
 def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                   cache_dir: Path | None = None, timeout: float = 30, *, host='127.0.0.1',
-                  allowed_origins=(), access_token=None) -> ThreadingHTTPServer:
-    policy = AccessPolicy(host, allowed_origins, access_token)
+                  allowed_origins=(), access_token=None, neptune_mirror=None,
+                  go_context_dir=None, go_qc_dir=None, saved_data_only=False,
+                  editable_copy_dir=None) -> ThreadingHTTPServer:
+    policy = AccessPolicy(host, allowed_origins, access_token, saved_data_only=saved_data_only)
     sessions = BrowserSessions()
     runs_dir = Path(runs_dir).resolve()
     runs_dir.mkdir(parents=True, exist_ok=True)
+    # One mirror per server preserves its verified-dataset cache across reads.
+    # Configuration/status never resolves credentials or contacts AWS.
+    neptune_endpoint = os.environ.get('BIOGRAPH_NEPTUNE_ENDPOINT', '').strip()
+    neptune_region = os.environ.get('BIOGRAPH_AWS_REGION', '').strip()
+    neptune_state = {'mirror': neptune_mirror}
+    neptune_lock = Lock()
+    source_agent_lock = Lock()
+    neptune_configured = neptune_mirror is not None or bool(neptune_endpoint)
+    # Operator-owned paths only: browsers cannot select a local context/QC path.
+    # Keep these optional packets outside strict saved workspace inventories.
+    go_context_dir = go_context_dir or os.environ.get('BIOGRAPH_GO_CONTEXT_DIR', '').strip() or None
+    go_qc_dir = go_qc_dir or os.environ.get('BIOGRAPH_GO_QC_DIR', '').strip() or None
+    editable_copy_dir = editable_copy_dir or os.environ.get('BIOGRAPH_EDITABLE_COPY_DIR', '').strip() or None
+
+    def source_agent_source(identifier):
+        if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+            raise ValueError('Supply an exact saved source workspace identifier.')
+        folder = runs_dir / identifier
+        if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+            raise ValueError('Saved source workspace not found.')
+        from .saved_run_cache import read_run
+        verify_saved_refresh(folder)
+        return folder, read_run(folder)[2]
+
+    def get_neptune_mirror():
+        if not neptune_configured:
+            return None
+        with neptune_lock:
+            if neptune_state['mirror'] is None:
+                from .neptune import Mirror
+                neptune_state['mirror'] = Mirror(neptune_endpoint, neptune_region)
+            return neptune_state['mirror']
 
     class Handler(BaseHTTPRequestHandler):
         def authenticated(self):
@@ -148,9 +331,20 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             self.end_headers()
 
         def reply(self, payload: bytes, status: int = 200, content_type: str = "application/json", filename: str | None = None, *, content_security_policy: str | None = None):
+            negotiable = (not filename and len(payload) >= 65_536
+                and content_type.split(';', 1)[0].strip().lower() in {'application/json', 'text/html'})
+            compressed = False
+            if negotiable and _accepts_gzip(self.headers):
+                encoded = gzip.compress(payload, compresslevel=1, mtime=0)
+                if len(encoded) < len(payload):
+                    payload, compressed = encoded, True
             self.send_response(status)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(payload)))
+            if negotiable:
+                self.send_header('Vary', 'Accept-Encoding')
+            if compressed:
+                self.send_header('Content-Encoding', 'gzip')
             self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header("Cache-Control", "no-store")
             # no-referrer turns native form POST origins into "null" in browsers,
@@ -163,10 +357,40 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             if filename:
                 self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
             self.end_headers()
-            self.wfile.write(payload)
+            if self.command != 'HEAD':
+                self.wfile.write(payload)
 
         def json_reply(self, obj: dict, status: int = 200):
-            self.reply(json.dumps(obj, ensure_ascii=True, allow_nan=False).encode(), status)
+            # RFC8259 network JSON uses UTF-8; escaping every native source
+            # character needlessly expands large evidence responses. Preserve
+            # the previous ASCII representation for legacy lone surrogates.
+            try:
+                payload = json.dumps(obj, ensure_ascii=False, allow_nan=False).encode('utf-8')
+            except UnicodeEncodeError:
+                payload = json.dumps(obj, ensure_ascii=True, allow_nan=False).encode('ascii')
+            self.reply(payload, status)
+
+        def editable_copy_reply(self, metadata, stream):
+            # This is a prepared, byte-verified archive. Do not create a ZIP or
+            # allocate its complete bytes inside the hosted application.
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/zip')
+            self.send_header('Content-Length', str(metadata['bytes']))
+            self.send_header('Content-Disposition', 'attachment; filename="' + metadata['filename'] + '"')
+            self.send_header('ETag', '"' + metadata['sha256'] + '"')
+            self.send_header('X-Content-Type-Options', 'nosniff')
+            self.send_header('Cache-Control', 'no-store')
+            self.send_header('Referrer-Policy', 'same-origin')
+            self.send_header('X-Frame-Options', 'DENY')
+            self.end_headers()
+            if self.command == 'HEAD':
+                return
+            try:
+                shutil.copyfileobj(stream, self.wfile, length=1024 * 1024)
+            except (OSError, ConnectionError):
+                # A cancelled download must not append a JSON error response
+                # after its archive headers/body have already been sent.
+                self.close_connection = True
 
         def refresh_failure(self, folder, exc):
             from .refresh_archive import archive_id
@@ -183,7 +407,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
         def do_GET(self):
             path = urlparse(self.path).path
             if path == '/healthz':
-                self.json_reply({'status': 'ok', 'version': __version__})
+                self.json_reply({'status': 'ok', 'version': __version__, 'saved_data_only': policy.saved_data_only})
                 return
             if path == '/auth/login':
                 try:
@@ -193,16 +417,315 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return_to = '/'
                 self.login_page(return_to)
                 return
-            report_navigation = (re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', path)
+            report_navigation = ((re.fullmatch(r'/api/(?:refresh|refresh-archive)/[A-Za-z0-9_-]{1,80}/(?:report\.html)?', path)
+                                 or re.fullmatch(r'/api/scientific-assessment/[A-Za-z0-9_-]{1,80}/report', path))
                                  and 'text/html' in self.headers.get('Accept', '').lower())
             if (path == '/' or report_navigation) and not self.authenticated():
                 self.login_page(self.path)
                 return
             if not self.authenticate():
                 return
+            if not policy.allows_action('GET', path):
+                self.json_reply({'error': SAVED_REVIEW_MESSAGE, 'error_code': 'saved_data_only'}, 403)
+                return
+            editable_copy = re.fullmatch(r'/api/editable-copy/([A-Za-z0-9_-]{1,80})(/download)?', path)
+            if editable_copy:
+                from .editable_copy import CopyNotRegistered, describe_editable_copy, open_editable_copy
+                identifier, download = editable_copy.groups()
+                try:
+                    if download:
+                        with open_editable_copy(editable_copy_dir, runs_dir, identifier) as (metadata, stream):
+                            self.editable_copy_reply(metadata, stream)
+                    else:
+                        self.json_reply(describe_editable_copy(editable_copy_dir, runs_dir, identifier))
+                except CopyNotRegistered:
+                    self.json_reply({'error': 'Editable workspace download not found.'}, 404)
+                except (ValueError, TypeError, KeyError, OSError):
+                    self.json_reply({'error': 'Editable workspace copy is unavailable or its recorded bytes changed.',
+                                     'error_code': 'editable_copy_integrity_failed'}, 400)
+                return
+            if path == '/api/neptune-status':
+                self.json_reply({'configured': neptune_configured,
+                                 'backend': 'neptune' if neptune_configured else None})
+                return
+            if path in {'/api/source-agent/status', '/api/source-agent/jobs'}:
+                try:
+                    options = parse_qs(urlparse(self.path).query, keep_blank_values=True, max_num_fields=1)
+                    if set(options) - {'run_id'} or any(len(value) != 1 for value in options.values()):
+                        raise ValueError('Use only one optional source workspace identifier.')
+                    identifier = options.get('run_id', [None])[0]
+                    folder, graph = source_agent_source(identifier) if identifier is not None else (None, None)
+                    if path == '/api/source-agent/jobs':
+                        from .source_agent_jobs import list_source_agent_jobs
+                        self.json_reply(list_source_agent_jobs(runs_dir, source_run=identifier))
+                        return
+                    from .source_agent import source_catalogue, configured_source_agent_client
+                    catalogue = source_catalogue(graph, source_run=identifier) if graph is not None else None
+                    config = {'saved_data_only': policy.saved_data_only, 'configured': None,
+                              'enabled': False, 'availability': 'not_probed', 'model': None, 'provider': None,
+                              'catalogue': catalogue, 'caps': {'model_calls': 3, 'evidence_queries': 1,
+                                  'citation_inspection_groups': 3, 'source_assertions_per_group': 32, 'source_reads': 96},
+                              'proposal_only': True, 'graph_writes': False, 'review_writes': False}
+                    if policy.saved_data_only:
+                        config['reason'] = 'Saved review mode: recorded agent replay only. No model configuration or connectivity was checked.'
+                    else:
+                        try:
+                            client = configured_source_agent_client()
+                            config.update(configured=True, model=client.model, provider=client.provider,
+                                          enabled=bool(catalogue and catalogue.get('tools')))
+                        except (ValueError, TypeError) as exc:
+                            config.update(configured=False, reason=str(exc))
+                    self.json_reply(config)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
+            agent_job = re.fullmatch(r'/api/source-agent/job/(source_agent_[A-Za-z0-9_-]{1,67})(/download)?', path)
+            if agent_job:
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('A recorded agent replay takes no query options.')
+                    from .source_agent_jobs import read_source_agent_job
+                    job = read_source_agent_job(runs_dir / agent_job.group(1), runs_dir)
+                    if agent_job.group(2):
+                        self.reply(json.dumps(job, ensure_ascii=True, allow_nan=False).encode('utf-8'),
+                                   content_type='application/json', filename=job['job_id'] + '.json')
+                    else:
+                        self.json_reply(job)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
             if path == '/api/workspaces':
                 from .workspaces import saved_workspaces
                 self.json_reply(saved_workspaces(runs_dir))
+                return
+            if path == '/api/pruning-previews':
+                from .pruning_preview import list_previews
+                if urlparse(self.path).query:
+                    self.json_reply({'error': 'This assessment list takes no query options.'}, 400)
+                    return
+                self.json_reply(list_previews(runs_dir))
+                return
+            if path == '/api/biological-comparisons':
+                from .biological_validation import list_publications
+                if urlparse(self.path).query:
+                    self.json_reply({'error': 'This comparison list takes no query options.'}, 400)
+                else:
+                    self.json_reply(list_publications(runs_dir))
+                return
+            if path == '/api/scientific-assessments':
+                from .scientific_assessment import list_publications
+                if urlparse(self.path).query:
+                    self.json_reply({'error': 'The assessment list takes no query options.'}, 400)
+                else:
+                    self.json_reply(list_publications(runs_dir))
+                return
+            if path == '/api/function-contexts':
+                from .function_context import list_publications
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('Saved function contexts take no query options.')
+                    self.json_reply({'contexts': list_publications(_function_context_sources(runs_dir))})
+                except (ValueError, KeyError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
+            function_context = re.fullmatch(
+                r'/api/function-context/([A-Za-z0-9_-]{1,80})/'
+                r'(query/([A-Z0-9]{6}(?:[A-Z0-9]{4})?)|download/([a-z_]{1,80}))/?', path)
+            if function_context:
+                from .function_context import load_publication, get_query, download_path, load_display_notes, load_content_notes
+                identifier, _, protein, download = function_context.groups()
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('This saved context takes no query options.')
+                    source = next((r for r in _function_context_sources(runs_dir, include_notes=True) if r['id'] == identifier), None)
+                    if source is None:
+                        self.json_reply({'error': 'Saved function context not found.'}, 404)
+                        return
+                    if protein:
+                        manifest, queries = load_publication(source['path'], source['sha256'])
+                        display_notes = None
+                        if source.get('notes_path'):
+                            display_notes = load_display_notes(source['notes_path'], source['notes_sha256'], manifest, queries,
+                                                               manifest_file_sha256=source['sha256'])
+                        content_notes = None
+                        if source.get('content_notes_path'):
+                            content_notes = load_content_notes(source['content_notes_path'], source['content_notes_sha256'], manifest, queries,
+                                                               manifest_file_sha256=source['sha256'])
+                        self.json_reply({'context_id': identifier, 'manifest_sha256': source['sha256'],
+                                         'answer': get_query(manifest, queries, protein), 'display_notes': display_notes,
+                                         'content_notes': content_notes})
+                    elif download == 'annotation_overlap' and source.get('notes_path'):
+                        manifest, queries = load_publication(source['path'], source['sha256'])
+                        load_display_notes(source['notes_path'], source['notes_sha256'], manifest, queries,
+                                           manifest_file_sha256=source['sha256'])
+                        self.reply(source['notes_path'].read_bytes(), content_type='application/json', filename='historical_annotation_overlap.json')
+                    elif download == 'term_content' and source.get('content_notes_path'):
+                        manifest, queries = load_publication(source['path'], source['sha256'])
+                        load_content_notes(source['content_notes_path'], source['content_notes_sha256'], manifest, queries,
+                                           manifest_file_sha256=source['sha256'])
+                        self.reply(source['content_notes_path'].read_bytes(), content_type='application/json', filename='historical_term_content.json')
+                    else:
+                        file = download_path(source['path'], download, source['sha256'])
+                        content_type = {'.gz': 'application/gzip', '.json': 'application/json',
+                                        '.py': 'text/plain; charset=utf-8'}.get(file.suffix, 'application/octet-stream')
+                        self.reply(file.read_bytes(), content_type=content_type, filename=file.name)
+                except (ValueError, KeyError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
+            assessment = re.fullmatch(r'/api/scientific-assessment/([A-Za-z0-9_-]{1,80})'
+                r'(?:/(report|files/(?:sources/[a-z_]+\.json|README\.txt)))?/?', path)
+            if assessment:
+                from .scientific_assessment import load_publication, V5_PUBLIC_FILES as PUBLIC_FILES
+                identifier, action = assessment.groups()
+                folder = runs_dir/identifier
+                if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                    self.json_reply({'error': 'Scientific assessment not found.'}, 404)
+                    return
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('This fixed assessment takes no query options.')
+                    _, summary, files = load_publication(folder)
+                    if action is None:
+                        self.json_reply({'id': identifier, 'summary': summary})
+                    elif action == 'report':
+                        self.reply(files['report.html'], content_type='text/html; charset=utf-8')
+                    elif action[6:] in PUBLIC_FILES and action[6:] in files:
+                        name = action[6:]
+                        self.reply(files[name], content_type='application/json' if name.endswith('.json') else 'text/plain',
+                            filename=Path(name).name)
+                    else:
+                        self.json_reply({'error': 'Assessment proof not found.'}, 404)
+                except (ValueError, KeyError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
+            comparison = re.fullmatch(
+                r'/api/biological-comparison/([A-Za-z0-9_-]{1,80})'
+                r'(?:/(report\.html|files/[A-Za-z0-9_.-]+))?', path)
+            if comparison:
+                from .biological_validation import load_publication, render_html, FILES, QC_FILES
+                identifier, action = comparison.groups()
+                folder = runs_dir / identifier
+                if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                    self.json_reply({'error': 'Saved experimental comparison not found.'}, 404)
+                    return
+                try:
+                    if urlparse(self.path).query:
+                        raise ValueError('This saved comparison takes no query options.')
+                    if action and action.startswith('files/') and action[6:] not in FILES | QC_FILES:
+                        self.json_reply({'error': 'Comparison download not found.'}, 404)
+                        return
+                    _, summary, files = load_publication(folder)
+                    base = '/api/biological-comparison/' + identifier
+                    if action is None:
+                        summary['id'] = identifier
+                        summary['report_url'] = base + '/report.html'
+                        summary['downloads'] = {name: base + '/files/' + name for name in sorted(files)
+                                                if name in FILES | QC_FILES}
+                        self.json_reply(summary)
+                    elif action == 'report.html':
+                        self.reply(render_html(summary).encode(), content_type='text/html; charset=utf-8')
+                    elif action[6:] in files:
+                        self.reply(files[action[6:]], content_type='application/json', filename=action[6:])
+                    else:
+                        self.json_reply({'error': 'Comparison download not found.'}, 404)
+                except (KeyError, ValueError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc), 'error_code': 'biological_comparison_unavailable'}, 400)
+                return
+            match = re.fullmatch(
+                r'/api/pruning-preview/([A-Za-z0-9_-]{1,80})'
+                r'(?:/(pairs|pair/(?:ppi:|ppi%3[Aa])[0-9a-f]{24}|files/[A-Za-z0-9_.-]+))?', path)
+            if match:
+                from .pruning_preview import load_preview, query_pairs, pair_detail, read_download, DOWNLOAD_FILES
+                identifier, action = match.groups()
+                folder = runs_dir / identifier
+                prepared = folder / 'pruning_preview'
+                if (folder.is_symlink() or prepared.is_symlink() or not prepared.is_dir()
+                        or folder.resolve().parent != runs_dir):
+                    self.json_reply({'error': 'Saved pruning assessment not found.'}, 404)
+                    return
+                try:
+                    query = urlparse(self.path).query
+                    if action == 'pairs':
+                        # Python 3.10 rejects an empty query in strict mode.
+                        fields = (parse_qs(query, keep_blank_values=True, strict_parsing=True,
+                                           errors='strict', max_num_fields=5) if query else {})
+                        if (set(fields) - {'arm', 'selection', 'search', 'offset', 'limit'}
+                                or any(len(value) != 1 for value in fields.values())):
+                            raise ValueError('Use each supported pair filter once.')
+                        options = {name: values[0] for name, values in fields.items()}
+                        for name, default in (('offset', '0'), ('limit', '25')):
+                            value = options.get(name, default)
+                            if len(value) > 10 or not re.fullmatch(r'[0-9]+', value):
+                                raise ValueError('Pagination requires whole nonnegative numbers.')
+                            options[name] = int(value)
+                        if not 1 <= options['limit'] <= 100:
+                            raise ValueError('Page size must be between 1 and 100 pairs.')
+                        search = options.get('search', '')
+                        if len(search) > 200 or (search and not search.isprintable()):
+                            raise ValueError('Search must contain at most 200 printable characters.')
+                        self.json_reply(query_pairs(prepared, **options))
+                    else:
+                        if query:
+                            raise ValueError('This assessment resource takes no query options.')
+                        if action is None:
+                            summary = load_preview(prepared)
+                            summary['id'] = identifier
+                            summary['downloads'] = {name: '/api/pruning-preview/' + identifier + '/files/' + name
+                                                    for name in sorted(DOWNLOAD_FILES)}
+                            self.json_reply(summary)
+                        elif action.startswith('pair/'):
+                            pair_identifier = unquote(action[len('pair/'):])
+                            self.json_reply(pair_detail(prepared, pair_identifier))
+                        else:
+                            name = action[len('files/'):]
+                            if name not in DOWNLOAD_FILES:
+                                self.json_reply({'error': 'Assessment download not found.'}, 404)
+                                return
+                            content_type = ('application/json' if name.endswith('.json')
+                                            else 'application/x-ndjson')
+                            self.reply(read_download(prepared, name), content_type=content_type, filename=name)
+                except KeyError:
+                    self.json_reply({'error': 'Pair not found in this saved assessment.'}, 404)
+                except (ValueError, TypeError, OSError) as exc:
+                    self.json_reply({'error': str(exc), 'error_code': 'pruning_preview_unavailable'}, 400)
+                return
+            if path == '/api/support-comparators':
+                from .support_comparator import load_preparation
+                reports = []
+                for folder in sorted(runs_dir.iterdir(), reverse=True):
+                    prepared = folder / 'prepared'
+                    if (folder.is_symlink() or not folder.is_dir()
+                            or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', folder.name)
+                            or prepared.is_symlink() or not (prepared / 'manifest.json').is_file()):
+                        continue
+                    try:
+                        report, _ = load_preparation(prepared)
+                    except (ValueError, TypeError, KeyError, OSError):
+                        continue
+                    reports.append({'id': folder.name, 'status': report['status'],
+                        'case_count': report['case_count'], 'unique_query_count': report['unique_query_count'],
+                        'hosted_model_calls': report['hosted_model_calls'],
+                        'url': '/api/support-comparator/' + folder.name + '/report.html'})
+                self.json_reply({'reports': reports[:20]})
+                return
+            match = re.fullmatch(r'/api/support-comparator/([A-Za-z0-9_-]{1,80})/(report\.html|report\.json|cases\.json|manifest\.json|sampled_edges_development\.csv|OPTIMUSKG_LICENSE\.txt)', path)
+            if match:
+                from .support_comparator import load_preparation
+                folder = runs_dir / match.group(1)
+                prepared = folder / 'prepared'
+                if (folder.is_symlink() or prepared.is_symlink() or not prepared.is_dir()
+                        or folder.resolve().parent != runs_dir):
+                    self.json_reply({'error': 'Comparator assessment not found.'}, 404)
+                    return
+                try:
+                    load_preparation(prepared)
+                    name = match.group(2)
+                    content_type = ('text/html; charset=utf-8' if name.endswith('.html') else
+                                    'application/json' if name.endswith('.json') else
+                                    'text/csv; charset=utf-8' if name.endswith('.csv') else 'text/plain; charset=utf-8')
+                    self.reply((prepared / name).read_bytes(), content_type=content_type)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
                 return
             if path == '/api/assay-publications':
                 from .client import digest
@@ -230,7 +753,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             match = re.fullmatch(r'/api/assay-source/([A-Za-z0-9_-]{1,80})/(.+)', path)
             if match:
-                from .reviews import read_run
+                from .saved_run_cache import read_run
                 folder = runs_dir / match.group(1)
                 relative = Path(match.group(2))
                 try:
@@ -251,6 +774,45 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     # Source files are data, never active same-origin HTML or scripts.
                     self.reply(file.read_bytes(), content_type='application/json' if file.suffix == '.json'
                                else 'text/plain; charset=utf-8', filename=file.name)
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({'error': str(exc)}, 400)
+                return
+            match = re.fullmatch(r'/api/extension-source/([A-Za-z0-9_-]{1,80})/extension_sources/(string|string_physical|mapit|signor|bioplex|goa)/(.+)', path)
+            if match:
+                from .saved_run_cache import read_run
+                from .reviews import read_civic, read_assay
+                from .assay_attachment import _decode, _ordinary
+                from .evidence_extension import SIDECAR, SOURCE, source_material
+                identifier, kind, relative = match.groups()
+                folder = runs_dir / identifier
+                try:
+                    if (folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir
+                            or not re.fullmatch(r'[A-Za-z0-9_./-]+', relative)
+                            or any(part in {'', '.', '..'} for part in relative.split('/'))):
+                        raise ValueError('Invalid biological source path.')
+                    # read_run replays read_extension. Return only bytes from the
+                    # verified publication material, never an arbitrary file path.
+                    snapshot, _, graph = read_run(folder)
+                    if not graph.get('evidence_extension'):
+                        raise ValueError('This workspace has no biological source extension.')
+                    source_folder = folder
+                    if graph.get('qualified_view'):
+                        from .qualified_workspace import PACKAGE
+                        source_folder = folder / PACKAGE / 'baseline_packet/source'
+                    extension = _decode(_ordinary(source_folder / SIDECAR))
+                    if (extension.get('content_sha256') != graph.get('evidence_extension_sha256')
+                            or extension.get('summary') != graph['evidence_extension']):
+                        raise ValueError('Preserved biological source belongs to a different workspace.')
+                    material = source_material(snapshot, extension, source_folder / SOURCE,
+                        civic=read_civic(source_folder), assay=read_assay(source_folder))
+                    key = kind + '/' + relative
+                    if key not in material:
+                        raise ValueError('File is outside the preserved biological publication.')
+                    file = Path(relative)
+                    content_type = ('application/json' if file.suffix == '.json' else
+                                    'application/octet-stream' if file.suffix in {'.rds', '.xlsx'} else
+                                    'text/plain; charset=utf-8')
+                    self.reply(material[key], content_type=content_type, filename=file.name)
                 except (ValueError, TypeError, KeyError, OSError) as exc:
                     self.json_reply({'error': str(exc)}, 400)
                 return
@@ -327,14 +889,39 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 except (ValueError,TypeError) as exc:self.json_reply({'configured':False,'reason':str(exc)})
                 return
             if path == "/":
-                self.reply(report_html(protected=policy.token is not None).encode(), content_type="text/html; charset=utf-8")
+                self.reply(report_html(protected=policy.token is not None, saved_data_only=policy.saved_data_only).encode(), content_type="text/html; charset=utf-8")
                 return
             if path == "/health":
                 self.json_reply({"status": "local_server_running", "live_pharos_checked": False})
                 return
+            match = re.fullmatch(r"/api/assay-source-reuse/([A-Za-z0-9_-]{1,80})(?:/(report\.html|report\.json|records\.jsonl))?", path)
+            if match:
+                from .assay_source_reuse import read_reuse, reuse_view
+                folder = runs_dir / match.group(1)
+                if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                    self.json_reply({"error": "Run not found"}, 404)
+                    return
+                try:
+                    from .saved_run_cache import read_run
+                    verify_saved_refresh(folder)
+                    read_run(folder)
+                    if match.group(2) is None:
+                        self.json_reply(reuse_view(folder, match.group(1)))
+                    else:
+                        if read_reuse(folder) is None:
+                            self.json_reply({"error": "No source-reuse supplement for this run"}, 404)
+                            return
+                        name = {"report.html": "source_reuse.html", "report.json": "source_reuse.json",
+                                "records.jsonl": "source_reuse_records.jsonl"}[match.group(2)]
+                        self.reply((folder / name).read_bytes(), content_type=(
+                            "text/html; charset=utf-8" if name.endswith(".html") else
+                            "application/x-ndjson" if name.endswith(".jsonl") else "application/json"))
+                except (ValueError, TypeError, KeyError, OSError) as exc:
+                    self.json_reply({"error": str(exc)}, 400)
+                return
             match = re.fullmatch(r"/api/run/([A-Za-z0-9_-]{1,80})", path)
             if match:
-                from .reviews import read_run
+                from .saved_run_cache import read_run
                 folder = (runs_dir / match.group(1)).resolve()
                 if folder.parent != runs_dir or not folder.is_dir():
                     self.json_reply({"error": "Run not found"}, 404)
@@ -343,16 +930,18 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 try:
                     verify_saved_refresh(folder)
                     _, _, graph = read_run(folder)
-                    self.json_reply({"run_id": match.group(1), "graph": graph})
+                    from .workspaces import qualification_summary
+                    self.json_reply({"run_id": match.group(1), "graph": graph,
+                                     "qualification_summary": qualification_summary(folder, graph)})
                 except RefreshRuntimeMismatch as exc:
                     self.refresh_failure(folder, exc)
-                except (ValueError, TypeError, OSError) as exc:
+                except (ValueError, TypeError, KeyError, OSError) as exc:
                     self.json_reply({"error": str(exc)}, 400)
                 return
             match = re.fullmatch(r"/api/question/([A-Za-z0-9_-]{1,80})", path)
             if match:
-                from .questions import verify_answer
-                from .reviews import read_run
+                from .questions import verify_answer, verify_ranking_files
+                from .saved_run_cache import read_run
                 if (runs_dir / match.group(1)).is_symlink():
                     self.json_reply({"error": "Question result not found"}, 404)
                     return
@@ -363,6 +952,7 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 try:
                     answer = json.loads((folder / "question.json").read_text(encoding="utf-8"))
                     verify_answer(answer)
+                    verify_ranking_files(answer, folder)
                     verify_qualified_question_source(answer, runs_dir)
                     if answer.get('source_run') == folder.name:
                         # Construction publishes the graph and initial answer in
@@ -393,15 +983,18 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                            for name in ('source_fact_manifest.json', 'biomedbert_manifest.json', 'metrics.json')):
                         raise ValueError('Historical study artifacts are available through the research archive.')
                     if (folder / 'run_manifest.json').is_file():
-                        from .reviews import read_run
+                        from .saved_run_cache import read_run
                         read_run(folder)
+                        from .assay_source_reuse import read_reuse
+                        read_reuse(folder)
                     elif (folder / 'question.json').is_file():
-                        from .questions import verify_answer
+                        from .questions import verify_answer, verify_ranking_files
                         answer = json.loads((folder / 'question.json').read_text(encoding='utf-8'))
                         verify_answer(answer)
+                        verify_ranking_files(answer, folder)
                         verify_qualified_question_source(answer, runs_dir)
                         if answer.get('source_run') == folder.name:
-                            from .reviews import read_run
+                            from .saved_run_cache import read_run
                             read_run(folder)
                     elif (folder / 'retained_graph.json').is_file():
                         from .gold_packet import load_decisions
@@ -434,6 +1027,14 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 return
             self.json_reply({"error": "Not found"}, 404)
 
+        def do_HEAD(self):
+            # Only the new prepared-artifact routes acquire HEAD support.
+            # Preserve existing behavior for all other application routes.
+            if re.fullmatch(r'/api/editable-copy/[A-Za-z0-9_-]{1,80}(?:/download)?', urlparse(self.path).path):
+                self.do_GET()
+            else:
+                self.send_error(501, 'Unsupported method')
+
         def do_POST(self):
             path = urlparse(self.path).path
             if path in {'/auth/login', '/auth/logout'}:
@@ -446,6 +1047,9 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
             if (cookie_auth and not origin) or not policy.allows_origin(origin, self.server.server_port):
                 self.json_reply({"error": "Browser origin is not explicitly allowed."}, 403)
                 return
+            if not policy.allows_action('POST', path):
+                self.json_reply({'error': SAVED_REVIEW_MESSAGE, 'error_code': 'saved_data_only'}, 403)
+                return
             if self.headers.get("Content-Type", "").split(";")[0] != "application/json":
                 self.json_reply({"error": "Use application/json."}, 415)
                 return
@@ -457,6 +1061,146 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                 if not isinstance(body, dict):
                     raise ValueError("Expected a JSON object.")
                 path = urlparse(self.path).path
+                if not policy.allows_action('POST', path, body):
+                    self.json_reply({'error': SAVED_REVIEW_MESSAGE, 'error_code': 'saved_data_only'}, 403)
+                    return
+                # Retained packages are immutable decision views. Every other
+                # product action must use their preserved ordinary baseline;
+                # rebuilding from the raw snapshot would discard the filter.
+                source_id = body.get('run_id')
+                if isinstance(source_id, str) and re.fullmatch(r'[A-Za-z0-9_-]{1,80}', source_id):
+                    source_folder = runs_dir / source_id
+                    marker = source_folder / 'qualified_workspace.json'
+                    metadata_path = source_folder / 'run_manifest.json'
+                    metadata = json.loads(metadata_path.read_text(encoding='utf-8')) if metadata_path.is_file() else {}
+                    if (marker.exists() or marker.is_symlink() or metadata.get('run_mode') == 'qualified_workspace'
+                            or (source_folder/'source_retained_package').exists()
+                            or (source_folder/'source_retained_package').is_symlink()):
+                        if path not in {'/api/question', '/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/native-go-question', '/api/protein-context', '/api/source-agent/run'}:
+                            raise ValueError('This qualified retained workspace is read-only. Query or download it; use its preserved baseline for new retrieval or review.')
+                if path in {'/api/explore', '/api/inspect-source', '/api/neptune-inspect', '/api/native-go-context', '/api/download-native-go-context', '/api/protein-context'}:
+                    from .saved_run_cache import read_run
+                    if path == '/api/neptune-inspect':
+                        if set(body) - {'run_id', 'node_id', 'limit'} or not {'run_id', 'node_id'} <= set(body):
+                            raise ValueError('Supply only the saved run, exact entity identifier and optional record limit.')
+                        if (not isinstance(body['node_id'], str) or not body['node_id']
+                                or len(body['node_id']) > 300):
+                            raise ValueError('Choose an exact saved entity identifier.')
+                        if type(body.get('limit', 20)) is not int or not 1 <= body.get('limit', 20) <= 100:
+                            raise ValueError('Use a record limit from 1 to 100.')
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved run identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    graph = read_run(folder)[2]
+                    if path == '/api/protein-context':
+                        if set(body) != {'run_id', 'selection_id', 'protein'}:
+                            raise ValueError('Supply only the saved run, selected source assertion and exact protein.')
+                        from .protein_context import inspect_selection as inspect_protein_context
+                        native_go = None
+                        native_go_unverified = False
+                        if go_context_dir is not None:
+                            from .inspection import inspect_selection
+                            guide = inspect_selection(graph, body['selection_id'], run_id=identifier)
+                            assertion = guide.get('assertion') or {}
+                            if assertion.get('kind') == 'go_annotation' and assertion.get('subject') == body['protein']:
+                                from .go_context_inspection import inspect_go_selection
+                                try:
+                                    native_go = inspect_go_selection(go_context_dir, graph, body['selection_id'],
+                                        source_run=identifier, source_folder=folder)
+                                except (ValueError, KeyError, TypeError, OSError):
+                                    native_go_unverified = True
+                        result = inspect_protein_context(runs_dir, graph, body['selection_id'],
+                            body['protein'], source_run=identifier, native_go=native_go)
+                        if native_go_unverified:
+                            from .client import digest
+                            result.setdefault('warnings', []).append('The optional native GOA source could not be verified. Its mapping lineage is unresolved; the sequence context remains available.')
+                            result.pop('content_sha256', None)
+                            result['content_sha256'] = digest(result)
+                        self.json_reply(result)
+                        return
+                    if path in {'/api/native-go-context', '/api/download-native-go-context'}:
+                        if set(body) != {'run_id', 'selection_id'}:
+                            raise ValueError('Supply only the saved run and selected GO source assertion.')
+                        if go_context_dir is None:
+                            self.json_reply({'error': 'Preserved native GO context is not configured for this workspace.'}, 503)
+                            return
+                        if path == '/api/download-native-go-context':
+                            if go_qc_dir is None:
+                                self.json_reply({'error': 'Both preserved native GO context and saved QC must be configured for this separate download.'}, 503)
+                                return
+                            from .go_context_export import build_go_context_archive
+                            result = build_go_context_archive(go_context_dir, go_qc_dir, graph,
+                                body['selection_id'], source_run=identifier, source_folder=folder)
+                            self.reply(result['content'], content_type='application/zip', filename=result['filename'])
+                            return
+                        from .go_context_inspection import inspect_go_selection
+                        result = inspect_go_selection(go_context_dir, graph, body['selection_id'],
+                            source_run=identifier, source_folder=folder, qc=go_qc_dir)
+                        self.json_reply(result)
+                        return
+                    if path == '/api/neptune-inspect':
+                        from .client import digest
+                        from .inspection import inspect_selection
+                        if body['node_id'] not in {node['id'] for node in graph['nodes']}:
+                            raise ValueError('Entity is outside this saved workspace.')
+                        if not neptune_configured:
+                            self.json_reply({'error': 'AWS Neptune is not configured for this workspace.',
+                                             'backend': None}, 503)
+                            return
+                        try:
+                            result = get_neptune_mirror().inspect(graph, body['node_id'], limit=body.get('limit', 20))
+                            if (result.get('graph_sha256') != digest(graph)
+                                    or result.get('node_id') != body['node_id']):
+                                raise ValueError('Neptune selection does not match the verified saved workspace.')
+                            selection_ids = list(dict.fromkeys(result['assertion_ids'] or result['edge_ids']))
+                            guides = [inspect_selection(graph, selection, run_id=identifier)
+                                      for selection in selection_ids[:3]]
+                        except Exception:
+                            # SDK errors can include signed URLs or account details. No file
+                            # fallback may masquerade as a successful Neptune read.
+                            self.json_reply({'error': 'Neptune read or source-parity verification failed. No saved-file fallback was used.',
+                                             'backend': 'neptune'}, 503)
+                            return
+                        self.json_reply({**result, 'backend': 'neptune', 'source_run': identifier,
+                            'snapshot_sha256': graph['snapshot_sha256'], 'read_only': True,
+                            'source_guides': guides, 'guides_omitted': max(0, len(selection_ids) - len(guides))})
+                        return
+                    if path == '/api/explore':
+                        from .exploration import explore_paths
+                        if set(body) - {'run_id', 'source', 'target', 'max_hops', 'view', 'predicates'}:
+                            raise ValueError('Unsupported path exploration option.')
+                        result = explore_paths(graph, body.get('source'), body.get('target'),
+                            max_hops=body.get('max_hops', 2), view=body.get('view', 'candidates'),
+                            predicates=body.get('predicates'), max_paths=20, max_expansions=2000)
+                        result['source_run'] = identifier
+                    else:
+                        from .inspection import inspect_selection
+                        from .assay_source_reuse import reuse_view
+                        if set(body) != {'run_id', 'selection_id'}:
+                            raise ValueError('Supply only the saved run and selected source assertion.')
+                        try:
+                            source_reuse = reuse_view(folder, identifier)
+                        except ValueError:
+                            source_reuse = {'status': 'unverifiable', 'source_run': identifier,
+                                'observations': [], 'reason': 'Saved source-reuse supplement could not be verified; reuse remains unresolved.'}
+                        result = inspect_selection(graph, body['selection_id'], run_id=identifier,
+                            source_reuse=source_reuse)
+                        if go_context_dir is not None:
+                            result['native_go_context'] = {'configured': True,
+                                'eligible': (result.get('assertion') or {}).get('kind') == 'go_annotation'}
+                        from .protein_context import selection_contexts
+                        try:
+                            result['protein_context'] = selection_contexts(runs_dir, graph, body['selection_id'])
+                        except (ValueError, KeyError, TypeError, OSError):
+                            # A damaged optional context must not hide the original source guide.
+                            result['protein_context'] = {'configured': True, 'eligible': False,
+                                'status': 'unverifiable_saved_context', 'proteins': []}
+                    self.json_reply(result)
+                    return
                 if path == '/api/construction-plan':
                     from .construction_planning import (validate_construction_scope,
                         configured_construction_planner, save_construction_plan)
@@ -515,10 +1259,83 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     graph = attach_assay(*sources, runs_dir / run_id)
                     self.json_reply({'run_id': run_id, 'graph': graph})
                     return
+                if path == '/api/regulatory-sites':
+                    from .regulatory_sites import answer_regulatory_sites
+                    from .saved_run_cache import read_run
+                    if set(body) - {'run_id', 'protein', 'direction', 'site', 'cell_context',
+                                    'tissue_context', 'context_reporting', 'offset', 'limit'}:
+                        raise ValueError('Unsupported site/context question option.')
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved workspace identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    result = answer_regulatory_sites(read_run(folder)[2],
+                        body.get('protein', 'UniProtKB:P00533'), direction=body.get('direction', 'both'),
+                        site=body.get('site', ''), cell_context=body.get('cell_context', ''),
+                        tissue_context=body.get('tissue_context', ''),
+                        context_reporting=body.get('context_reporting', 'all'),
+                        offset=body.get('offset', 0), limit=body.get('limit', 25), source_run=identifier)
+                    self.json_reply(result)
+                    return
+                if path == '/api/native-go-question':
+                    from .goa_questions import answer_native_go_question
+                    from .saved_run_cache import read_run
+                    if set(body) - {'run_id', 'protein', 'view', 'search', 'offset', 'limit'}:
+                        raise ValueError('Unsupported native GO source question option.')
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved workspace identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    result = answer_native_go_question(read_run(folder)[2], body.get('protein', 'UniProtKB:P04637'),
+                        view=body.get('view', 'candidates'), search=body.get('search', ''),
+                        offset=body.get('offset', 0), limit=body.get('limit', 25), source_run=identifier)
+                    self.json_reply(result)
+                    return
+                if path == '/api/regulatory-question':
+                    from .regulatory_questions import answer_regulatory_question
+                    from .saved_run_cache import read_run
+                    if set(body) - {'run_id', 'protein', 'direction', 'search', 'offset', 'limit'}:
+                        raise ValueError('Unsupported regulatory source question option.')
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved workspace identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    result = answer_regulatory_question(read_run(folder)[2],
+                        body.get('protein', 'UniProtKB:P00533'), direction=body.get('direction', 'outgoing'),
+                        search=body.get('search', ''), offset=body.get('offset', 0),
+                        limit=body.get('limit', 25), source_run=identifier)
+                    self.json_reply(result)
+                    return
+                if path == '/api/biological-question':
+                    from .biological_questions import answer_biological_question
+                    from .saved_run_cache import read_run
+                    if set(body) - {'run_id', 'protein', 'search', 'offset', 'limit'}:
+                        raise ValueError('Unsupported biological evidence question option.')
+                    identifier = body.get('run_id')
+                    if not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', identifier):
+                        raise ValueError('Supply an exact saved workspace identifier.')
+                    folder = runs_dir / identifier
+                    if folder.is_symlink() or not folder.is_dir() or folder.resolve().parent != runs_dir:
+                        raise ValueError('Saved workspace not found.')
+                    verify_saved_refresh(folder)
+                    result = answer_biological_question(read_run(folder)[2],
+                        body.get('protein', 'UniProtKB:P00533'), search=body.get('search', ''),
+                        offset=body.get('offset', 0), limit=body.get('limit', 25), source_run=identifier)
+                    self.json_reply(result)
+                    return
                 if path == '/api/assay-question':
                     from .assay_questions import answer_assay_question
                     from .questions import save_answer
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     if set(body) - {'run_id', 'protein'}:
                         raise ValueError('Use only run_id and an optional exact protein for qualified evidence.')
                     source_id = body.get('run_id', '')
@@ -553,9 +1370,33 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                                      'report_url': '/api/refresh/' + run_id + '/',
                                      'download_url': '/api/download/' + run_id})
                     return
+                if path == '/api/source-agent/run':
+                    from .source_agent import run_source_agent
+                    from .source_agent_jobs import new_source_agent_progress, save_source_agent_job
+                    if set(body) - {'run_id', 'question', 'constraints'} or not {'run_id', 'question'} <= set(body):
+                        raise ValueError('Use only run_id, question and optional bounded constraints for the source agent.')
+                    folder, graph = source_agent_source(body['run_id'])
+                    if not isinstance(body['question'], str) or not 1 <= len(body['question'].strip()) <= 4000:
+                        raise ValueError('The source-agent question must contain 1–4000 characters.')
+                    if 'constraints' in body and not isinstance(body['constraints'], dict):
+                        raise ValueError('Agent constraints must be a JSON object.')
+                    if not source_agent_lock.acquire(blocking=False):
+                        self.json_reply({'error': 'Another source-agent job is running. Wait for it to finish.'}, 409)
+                        return
+                    try:
+                        progress_id, record_event = new_source_agent_progress(runs_dir)
+                        record_event({'event': 'job_request', 'source_run': body['run_id'],
+                                      'question': body['question'], 'constraints': body.get('constraints')})
+                        result = run_source_agent(body['question'], graph, source_run=body['run_id'],
+                            source_folder=folder,
+                            constraints=body.get('constraints'), event_callback=record_event)
+                        self.json_reply(save_source_agent_job(result, runs_dir, progress_id=progress_id))
+                    finally:
+                        source_agent_lock.release()
+                    return
                 if path=='/api/plan':
                     from .planning import configured_planner,execute_plan
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     from .client import write_json
                     from .questions import save_answer
                     if set(body)!={'run_id','question'}:raise ValueError('Use only run_id and question for one bounded plan.')
@@ -635,8 +1476,8 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                     return
                 if path == "/api/question":
                     from .questions import answer_question, save_answer
-                    from .reviews import read_run
-                    allowed = {"run_id", "protein", "relations", "view", "max_results", "max_paths", "template"}
+                    from .saved_run_cache import read_run
+                    allowed = {"run_id", "protein", "relations", "view", "max_results", "max_paths", "template", "ranking", "source_support"}
                     if set(body) - allowed:
                         raise ValueError("Unsupported question fields; use the guided protein-neighborhood scope.")
                     source_id = body.get("run_id", "")
@@ -647,13 +1488,16 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
                         raise ValueError("Source run not found.")
                     _, _, graph = read_run(source)
                     options = {k: v for k, v in body.items() if k not in {"run_id", "protein"}}
+                    if options.get('template') == 'qualified_pathway_source_context.v1':
+                        from .qualified_workspace import read_pathway_history
+                        options['pathway_history_source'] = read_pathway_history(source, graph)
                     answer = answer_question(graph, body.get("protein"), source_run=source_id, **options)
                     question_id = "question_" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "_" + uuid4().hex[:8]
                     save_answer(answer, runs_dir / question_id)
                     self.json_reply({"question_id": question_id, "answer": answer})
                     return
                 if path in {"/api/civic", "/api/therapy-question"}:
-                    from .reviews import read_run
+                    from .saved_run_cache import read_run
                     from .civic import CivicClient
                     from .graph import save_run
                     from .civic_questions import answer_civic_question
@@ -732,11 +1576,11 @@ def create_server(port: int, runs_dir: Path, endpoint: str = ENDPOINT,
 
 def serve(port: int = 8765, runs_dir: Path | None = None, endpoint: str = ENDPOINT,
           cache_dir: Path | None = None, open_browser: bool = True,
-          timeout: float = 30, *, host='127.0.0.1', allowed_origins=(), access_token=None):
+          timeout: float = 30, *, host='127.0.0.1', allowed_origins=(), access_token=None, saved_data_only=False):
     runs_dir = runs_directory() if runs_dir is None else runs_dir
     cache_dir = cache_directory() if cache_dir is None else cache_dir
     server = create_server(port, runs_dir, endpoint, cache_dir, timeout, host=host,
-                           allowed_origins=allowed_origins, access_token=access_token)
+                           allowed_origins=allowed_origins, access_token=access_token, saved_data_only=saved_data_only)
     address = f'[{host}]' if ':' in host else host
     url = f"http://{address}:{server.server_port}"
     print(f"BioGraph Steward: {url}\nRuns: {Path(runs_dir).resolve()}\nCtrl+C stops it.", flush=True)

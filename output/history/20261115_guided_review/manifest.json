@@ -1,0 +1,48 @@
+{
+  "format": "biograph-steward.historical-guided-review-media.v1",
+  "scope": "Previous canonical guided-review media and311software, preserved unchanged before current-source-agent delivery.",
+  "runtime_commit": "31123ae956bc7c99fd311d55c064e0d4e58c729f",
+  "not_current_agent_demo": true,
+  "files": [
+    {
+      "filename": "BioGraph_Steward_Overview.pptx",
+      "bytes": 419652,
+      "sha256": "8e920247cfa30c0521cad9e89032df9daaf8b3604a5504668d70f052516c8577"
+    },
+    {
+      "filename": "BioGraph_Steward_Walkthrough.mp4",
+      "bytes": 6214571,
+      "sha256": "df7265c97d288b493fffd55e880dd1681401a331729289e556a27932e59c57ee"
+    },
+    {
+      "filename": "BioGraph_Steward_Walkthrough.txt",
+      "bytes": 4569,
+      "sha256": "1e38fd65fe316bf4b149dd93a6083195c75464f7332a36fa8095f63eab5d1702"
+    },
+    {
+      "filename": "BioGraph_Steward_Walkthrough.vtt",
+      "bytes": 4897,
+      "sha256": "6366cdebd4f88ea52dfd9df668d34c363d3e4361103187879613c5b7cb1c91b2"
+    },
+    {
+      "filename": "BioGraph_Steward_Walkthrough.srt",
+      "bytes": 5042,
+      "sha256": "2589a66fc9e01ce1fa201ba64c1a0e9f0bc671a8a485c3efdea896fed6908328"
+    },
+    {
+      "filename": "BioGraph_Steward_Walkthrough.receipt.json",
+      "bytes": 2902,
+      "sha256": "9396b7bae053cc91f3f540a3cccf524a6f798ab9709a77b10971a323ebafffbb"
+    },
+    {
+      "filename": "BioGraph_Steward_Software.zip",
+      "bytes": 696121,
+      "sha256": "6f752794432bc5bf8aebd66827d26caba21b43d1e05b7ff1927673606df0169b"
+    },
+    {
+      "filename": "software_acceptance.json",
+      "bytes": 1664,
+      "sha256": "397930959741dbb873e2ba6fbb39ed07eb5d40b7626fab8b215b16d907d2b12d"
+    }
+  ]
+}

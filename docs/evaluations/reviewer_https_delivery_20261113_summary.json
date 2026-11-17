@@ -1,0 +1,164 @@
+{
+  "format": "biograph-steward.reviewer-https-delivery.v1",
+  "created_at": "2026-11-13T20:38:31.639440+00:00",
+  "status": "PASSED_AUTHENTICATED_HTTPS_NATIVE_EXPORT_REPLAY_AND_COLD_NEPTUNE_READ",
+  "origin": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws",
+  "application_authentication_required": true,
+  "AWS_login_required_for_browser_reviewers": false,
+  "runtime_commit": "5362b50b80e38505f24e21d97e7034005a7a51e1",
+  "service_version": "0.8.0",
+  "app_container_image_id": "sha256:a63980673300b8876c33f00c334f058a94de5adcbd2081f995db60e840e4719d",
+  "runtime_reconstruction": {
+    "method": "Exact git diff applied with system patch to the verified previous runtime copy, then complete ordinary-file inventory verified against the committed git archive reference.",
+    "previous_commit": "ea5752e56bad38a7828fcbb3df09303c778470d5",
+    "runtime_files": 164,
+    "full_runtime_inventory_sha256": "9692397bc64085bd58566363e5c922b3cf6bc83872f2360adc8e96d79a97d757",
+    "patch_sha256": "25fa9f3cb25f3be583f84f131836033f7f4b1aa9ff7d7d99e687fb6c9ecb101f",
+    "committed_release_archive_sha256_reference": "b685d13d18cf8d57a66212e8a36126ca8b9dd272730bef21e648a539ba03fddb",
+    "full_runtime_source_archive_uploaded_for_this_update": false,
+    "prior_runtime_preserved_for_rollback": true
+  },
+  "gateway": {
+    "implementation": "Native ECS Express Mode with standard NGINX reverse proxy",
+    "region": "us-east-2",
+    "registry_manifest_digest": "sha256:dc76ac11253d5538005dfe5f827847a8da5f4296358ac1634414acd89c50551c",
+    "one_vCPU": true,
+    "memory_MiB": 2048,
+    "minimum_tasks": 1,
+    "maximum_tasks": 1,
+    "new_billable_gateway_resources_created": true,
+    "TLS_certificate_and_hostname_verified": true,
+    "exact_endpoint_service_ALB_binding_verified": true,
+    "app_ingress_restricted_to_gateway_task_identity_security_group": true,
+    "all_ALB_forward_targets_owned_by_reviewed_service": true,
+    "other_ECS_services_sharing_ALB": 0,
+    "attributes_verified": {
+      "idle_timeout.timeout_seconds": "600",
+      "routing.http.desync_mitigation_mode": "defensive",
+      "routing.http.drop_invalid_header_fields.enabled": "true"
+    },
+    "credentials_injected_by_gateway": false,
+    "saved_data_query_mode": true,
+    "blocked_POST_routes_tested": [
+      "/api/build",
+      "/api/construct",
+      "/api/plan",
+      "/api/construction-plan",
+      "/api/review",
+      "/api/refresh",
+      "/api/refresh-compare"
+    ],
+    "planner_GET_blocked": true,
+    "query_scope": "Authenticated reads of the saved workspace/publication catalogue and reviewed saved-data query/download routes. New deterministic question artifacts may be saved; construction, live retrieval, model planning and review/source edits are blocked at this ingress.",
+    "security_scan_snapshot": {
+      "initial_finding_count": 5,
+      "final_finding_count": 0,
+      "final_scan_status": "COMPLETE",
+      "scope": "Point-in-time ECR basic image scan; zero reported findings is not a permanent vulnerability-free guarantee.",
+      "vendor_package_fixes_applied": true
+    }
+  },
+  "authentication": {
+    "anonymous_API_denied": true,
+    "anonymous_saved_page_serves_sign_in": true,
+    "wrong_token_denied": true,
+    "session_cookie_Secure_HttpOnly_SameSiteStrict": true,
+    "missing_foreign_null_POST_origins_denied": true,
+    "exact_saved_return_to_preserved": true,
+    "logout_revoked_session": true,
+    "existing_access_token_unchanged": true,
+    "SSM_loopback_access_preserved": true,
+    "shared_workspace_credential_not_individual_reviewer_identity": true
+  },
+  "native_GO_download": {
+    "authenticated_HTTPS_download_passed": true,
+    "source_files": 12,
+    "original_source_bytes": 79181773,
+    "archive_bytes": 16635274,
+    "archive_member_count": 14,
+    "archive_sha256": "f86d29e8023c0f03a22ce6b0aaa957ea51869a0d21135187092c67741f779c15",
+    "export_manifest_content_sha256": "2eef795448e4edd7ef87196fa4e28af3a50fbf512fe3bbb5acc3de388b70b7b6",
+    "native_source_inventory_sha256": "d3df19471bdf5f482bb67fc8333594f9c9df7eaa4ab185563544ebaef7e494af",
+    "all_downloaded_source_bytes_equal_preserved_originals": true,
+    "archive_physically_extracted": true,
+    "reopened_selected_examples": 2,
+    "both_reopened_results_equal_original_packet": true,
+    "source_files_changed": false,
+    "historical_Pharos_qualifiers_backfilled": false,
+    "rules_or_reasoner_reexecuted": false,
+    "scope": "Separate current native GO source/QC attachment; not included in the software-only ZIP or ordinary workspace ZIP and not an independent biological truth label."
+  },
+  "preservation": {
+    "graph_content_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+    "targets": 99,
+    "retained_evidence_records": 16687,
+    "saved_question_id": "question_20261113T075313Z_1a76b00f",
+    "saved_answer_sha256": "5b702dcff2fbc64040414a45ef3d0d99125bae13253dc81c2d3971c745f5766d",
+    "saved_question_and_exports_unchanged": true,
+    "preserved_run_file_counts": {
+      "question_20261113T075313Z_1a76b00f": 13,
+      "scientific_assessment_complete_20261113": 15,
+      "scientific_assessment_delivery_20261113": 16,
+      "source_faithful_workspace_20261113": 394
+    },
+    "native_source_files_unchanged": 12,
+    "preserved_assessment_publication_seals": {
+      "scientific_assessment_complete_20261113": "05cc28f1dd520adbb974bac735f8323108ec37e4f82ac4ee8d3df0d1da46e9f7",
+      "scientific_assessment_delivery_20261113": "09e50f8e47bddfea53729d754dad5121b0e99b741d61b30ee8530904e7223ae2"
+    },
+    "both_assessment_summaries_verified_over_HTTPS": true,
+    "real_app_restart_and_original_API_acceptance_passed": true,
+    "existing_Neptune_read_only_policy_changed": false,
+    "new_backup_recovery_performed": false
+  },
+  "cold_Neptune_HTTPS_check": {
+    "performed_after_real_service_restart": true,
+    "complete_database_parity_then_incident_read_passed": true,
+    "elapsed_seconds": 247.25315386999864,
+    "saved_file_fallback_used": false,
+    "scope": "A complete parity verification followed by an actual read-only incident query, through the HTTPS gateway; no general latency improvement is claimed."
+  },
+  "operator_browser_observation": {
+    "completed": true,
+    "browser": "Chrome",
+    "authenticated": true,
+    "saved_graph_catalogue_count": 3,
+    "exact_saved_TP53_question_opened_in_Ask_tab": true,
+    "returned_proteins": 8,
+    "matching_proteins": 54,
+    "candidate_qualifiers_visible": true,
+    "initial_Chrome_connection_error_cleared_before_saved_work_retry": true,
+    "saved_work_fetch_recovered_using_existing_reload_button": true,
+    "network_root_cause_established": false,
+    "independent_teammate_walkthrough": false,
+    "expert_biological_adjudication": false,
+    "scope": "Operator-observed authenticated browser inspection, separate from automated HTTPS acceptance."
+  },
+  "scientific_scope": {
+    "fresh_source_retrievals": 0,
+    "model_GPU_or_Brev_calls": 0,
+    "GO_rules_or_reasoner_reexecuted": false,
+    "new_graph_assertions_or_pruning_decisions": 0,
+    "whole_graph_biological_accuracy_established": false,
+    "transferable_prediction_gain_established": false,
+    "independent_expert_review_completed": false
+  },
+  "cost_estimate": {
+    "steady_state_incremental_USD_per_day_before_usage_dependent_items": 2.08488,
+    "scope": "One 1-vCPU/2-GiB Fargate task, one ALB and three public IPv4 addresses at the captured Ohio public rates. Excludes LCU, ECR/log/storage/transfer, temporary deployment tasks and existing EC2/Neptune. Estimate, not cap.",
+    "public_rate_snapshot_checked_at": "2026-11-13T19:29:07.986082+00:00"
+  },
+  "private_evidence_file_sha256": {
+    "completed_reviewer_receipts_private.json": "97e168076e8e98ef9e7efcf1dd2ee5ec38cf29ba78fbdaae0558488a01f2ae90",
+    "runtime_activation.json": "db3ed7e39acb617495ab0b1c5c056c4afa589118408b613c6d8d752474c1baf5",
+    "runtime_app_prepare.json": "04b0be725c25c6a8a1ed469f5b561d4071b495402a681f6f0b13fe8b9e1b209a",
+    "runtime_app_complete.json": "1b94ed0924b791e402a810d5be10bafbc31186a23477b64ff5a38d294fc6b296",
+    "gateway_alb_r2_v2_summary.json": "39642cf6f60750e05c95830d620258ab18b72221f9004ac71702b8d0431bf6df",
+    "gateway_patched_ecr_scan_private.json": "283eb92d29a5a6e3ff30cf4dfbd0f1aa5e2cb4bcd929cbf8c4094fa5415c38ea",
+    "image_patched_promoted_private.json": "eb6c68c44d46220c967a7b39c44f0113c7948aa2085688d3afabc62f445b6e5b",
+    "pricing_summary.json": "14b5e6b62baf267691e8a60274449750847ed519341b9d770a8b7feb68598693"
+  },
+  "preserved_prior_failures": "Initial ECS cluster creation could not assume the newly created service-linked role. That failed stack rolled back. The first ALB finalizer stopped before mutation on a CANARY metadata shape mismatch. These attempts remain in private history; the final checks above passed.",
+  "integrity_scope": "Unsigned file/content hashes bind this delivery record; they do not establish publisher authenticity, source redistribution rights or scientific correctness.",
+  "content_sha256": "14480f2e731df6953332682cf24172f71144d591b33ff3103954ce909137be2e"
+}

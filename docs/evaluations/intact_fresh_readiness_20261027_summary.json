@@ -1,0 +1,91 @@
+{
+  "format": "biograph-steward.intact-fresh-readiness-summary.v1",
+  "prepared_date": "2026-10-27",
+  "recorded_at": "2026-10-27T18:32:20.225245+00:00",
+  "status": "readiness_investigation_complete_fresh_assessment_prepared_not_executed",
+  "architecture_status": "Existing Pharos construction, qualified assay attachment, cited answers and verified export are operational; remaining work is a bounded fresh evaluation execution adapter.",
+  "fresh_assessment_status": "not_executed_no_execution_freeze",
+  "fresh_publication_ids": [
+    "pubmed:39938803",
+    "pubmed:40108405",
+    "pubmed:40752540",
+    "pubmed:40088780"
+  ],
+  "fresh_source_eligible_rows": null,
+  "fresh_metrics": null,
+  "fresh_sources_opened": false,
+  "fresh_abstracts_fulltexts_or_identities_opened": false,
+  "authorizes_source_access": false,
+  "existing_corrected_full_flow": {
+    "status": "passed_on_consumed_material_only",
+    "summary_path": "docs/evaluations/intact_consumed_flow_20261027_summary.json",
+    "summary_sha256": "8890c5dd1c3ecde8cd32c69d3e7c1ca1839a4fd8023693d14c09cf370717b287",
+    "eligible_observations": 2,
+    "protein_pairs": 1,
+    "eligible_publications": 1,
+    "independent_biological_validation": false
+  },
+  "reused_methods": [
+    "IntAct/IMEx experimental curation and sequence/context identities",
+    "Pinned PSI-JAMI3.9.4 MITAB/XML readers",
+    "Original source eligibility and mandatory semantic amendment",
+    "Existing complete qualified-field projection and raw-reader fidelity oracle",
+    "Ordinary Pharos construction, assay attachment, cited answer and verified export"
+  ],
+  "remaining_scope": [
+    "Separately bound exact fresh4 execution contract; retain original entrypoint/split guards.",
+    "Explicit fresh publication split/envelope through the ordinary verified flow.",
+    "Complete all-database identity-qualified alias overlap in addition to existing qualified primary/subsidiary lineage checks.",
+    "Exact-path invented controls and consumed rehearsal, independent automated review, then actual immutable pre-access freeze with transport/Pharos budgets and all denominators."
+  ],
+  "complete_alias_semantics": {
+    "identities": "All database references qualified MI:0356, plus IMEx references qualified MI:0662; retain exact database and accession.",
+    "generic_see_also_is_identity": false,
+    "shared_participant_or_pair_is_automatic_study_exclusion": false,
+    "unknown_lineage_proves_independence": false,
+    "historical_auditor_widened_by_this_review": false
+  },
+  "bounded_reference": {
+    "selection_path": "docs/evaluations/intact_fresh_reference_20261027_selection.json",
+    "selection_sha256": "90e84d56fbbe043db2437a29df895608215d20de40c0b784c70db95140be5a98",
+    "consumed_inventory_path": "docs/evaluations/intact_consumed_inventory_v2_20261027.json",
+    "consumed_inventory_sha256": "60e0a4db76cdda74279da1280e45c43b40413b435d25120141da0b8e38369dbc",
+    "inventory_counts": {
+      "revision": 2,
+      "publication_ids": 12,
+      "participants": 28,
+      "pairs": 22,
+      "qualified_evidence_aliases": 56
+    },
+    "no_replacement": true
+  },
+  "verification": {
+    "reader_runtimes_match_consumed_freeze": true,
+    "JAMI": "3.9.4",
+    "Java": "21.0.1",
+    "invented_controls": {
+      "command": "PYTHONPATH=tests python3 -m unittest tests.test_intact_consumed_flow tests.test_intact_consumed_publication tests.test_intact_identity_projection tests.test_intact_final_execution -q",
+      "status": "passed",
+      "tests": 50,
+      "skips": 0,
+      "source_reference_reads": false
+    }
+  },
+  "receipt": {
+    "path": "runs/midpoint_fresh_readiness_20261027/readiness.json",
+    "sha256": "a4bd73caecc28af025bacabcde8d0059b3022273bfd7f3808ce99664e455087f",
+    "content_sha256": "5a93eb5f859cce51bef904d017095cbef93e072853c2d99c176cf8226d34a995",
+    "execution_freeze": false
+  },
+  "new_IntAct_source_calls": 0,
+  "new_Pharos_calls": 0,
+  "model_calls": 0,
+  "GPU_runs": 0,
+  "production_code_changed": false,
+  "old_results_changed": false,
+  "scientific_accuracy_measured": false,
+  "independent_biological_validation": false,
+  "biological_prediction_improvement_measured": false,
+  "claim_boundary": "Even a completed fresh result would measure preservation of supplied curation on this finite panel, not biological truth, independent prediction performance or Steward-specific improvement.",
+  "content_sha256": "af1e2d2a16ff08093c5d4456a6ce5af9a010da7762802967b13069cfa5bd12c7"
+}

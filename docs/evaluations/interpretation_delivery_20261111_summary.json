@@ -1,0 +1,60 @@
+{
+  "format": "biograph-steward.interpretation-delivery.v1",
+  "date": "2026-11-11",
+  "scope": "Small interpretation/display fixes using existing source fields and standards. No new evidence classifier, confidence scale or biological experiment.",
+  "changes": [
+    {
+      "gap": "IntAct official-reader field groups were rendered with numeric list indexes and raw JSON instead of their supplied labels.",
+      "remedy": "Reuse label/value/columns directly; preserve original fields, grouping and source columns in expandable details."
+    },
+    {
+      "gap": "A source label could hide the saved resource used to retrieve the record.",
+      "remedy": "Display Retrieved through and Source labels supplied as separate stored facts; infer no primary-source role."
+    },
+    {
+      "gap": "CIViC study category and complete treatment scope were mainly in collapsed context.",
+      "remedy": "Promote the existing case-study level, source direction/significance, full molecular profile, exact disease and complete therapy list into the first explanation."
+    }
+  ],
+  "existing_strategies": [
+    {
+      "name": "Source-specific controlled labels and qualifications",
+      "source": "https://docs.civicdb.org/en/latest/model/evidence/level.html"
+    },
+    {
+      "name": "Retrieval-resource role distinct from upstream/source record",
+      "source": "https://biolink.github.io/biolink-model/RetrievalSource/"
+    },
+    {
+      "name": "Existing PSI-MI/IntAct field definitions",
+      "source": "biograph_steward/intact_evidence.py"
+    }
+  ],
+  "checks": {
+    "python_inspection_tests": 13,
+    "javascript_field_tests": 5,
+    "browser_checks": 5,
+    "browser_receipt": "runs/interpretation_delivery_20261111/browser_01/verification.json",
+    "browser_javascript_errors": [],
+    "real_intact_source_groups": 8,
+    "real_intact_source_fields_preserved": 43,
+    "source_graphs_unchanged": true,
+    "external_source_requests": 0,
+    "models_called": 0,
+    "paid_compute_used": false
+  },
+  "presentation": {
+    "slides": 6,
+    "status": "saved_private_draft",
+    "contains_actual_app_captures": true,
+    "native_editable_charts": 2,
+    "all_slide_renders_reviewed": true,
+    "results_scope": "Retrospective native STRING ranking and its coverage trade-off; graph-learning mixed/negative results remain visible."
+  },
+  "scientific_accuracy_measured": false,
+  "new_biological_gain_claimed": false,
+  "remaining": [
+    "Review final presentation wording and record the walkthrough",
+    "Publish current release code and assemble organizer handoff"
+  ]
+}

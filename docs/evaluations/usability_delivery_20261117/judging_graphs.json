@@ -1,0 +1,13 @@
+{
+  "format": "biograph-steward.optional-private-judge-graphs.v1",
+  "file": "output/judging_graphs/BioGraph_Steward_Graphs_and_Decisions_Private.zip",
+  "bytes": 40739204,
+  "sha256": "19d39b3b8fbdbd814dbe2f64f28e2bc82275458ffa32b17816eae44e1fb479dc",
+  "purpose": "Complete native graph/decision files and exact inputs for inspection; full source/replay archives remain separate.",
+  "original_graph_and_ledger_member_bytes_preserved": true,
+  "full_native_graph_scope_preserved": true,
+  "bounded_KGX_projection_not_substituted": true,
+  "source_response_caches_runtime_media_or_reference_cases_included": false,
+  "public_upload_or_publication_performed": false,
+  "email_attachment_size_recommended": false
+}

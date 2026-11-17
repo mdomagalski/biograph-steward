@@ -1,0 +1,386 @@
+{
+  "format": "biograph-steward.reactome-context-comparison-summary.v1",
+  "prepared_date": "2026-10-26",
+  "completed_at": "2026-10-27T03:18:01.113089+00:00",
+  "status": "completed_fixed_development_comparison_mixed_seed_effects",
+  "conclusion": "No consistent incremental benefit from the selected Reactome-context addition is demonstrated.",
+  "task": "Ranking recorded complete-scored Y2H detection; consumed retrospective INMC development panel.",
+  "population": {
+    "nominations": 3276,
+    "off_diagonal_nominations": 2781,
+    "primary_eligible_pairs": 1751,
+    "detected": 737,
+    "nondetected": 1014,
+    "excluded_off_diagonal_pairs": 1030,
+    "complete_self_pairs_separate": 287,
+    "constant_score_ap": 0.4209023415191319
+  },
+  "graph": {
+    "shared_entities": 11840,
+    "shared_relations": 5,
+    "baseline_adjacency_triples": 103768,
+    "reactome_adjacency_triples": 114906,
+    "exact_memberships_added": 11138,
+    "products_with_memberships": 982,
+    "pathways": 1490,
+    "supervision_triples": 99394,
+    "direct_pharos_ppi_included": false,
+    "go_hierarchy_addition": false
+  },
+  "profile": {
+    "arms": [
+      "rgcn_baseline",
+      "rgcn_reactome"
+    ],
+    "batching": {
+      "automatic_memory_optimization": false,
+      "drop_last": false,
+      "num_workers": 0,
+      "sampler": null
+    },
+    "decoder": "DistMultInteraction",
+    "loss": "SoftplusLoss",
+    "model": {
+      "activation": "relu",
+      "edge_dropout": null,
+      "embedding_dim": 32,
+      "num_bases": 4,
+      "num_layers": 3,
+      "self_loop_dropout": 0.0
+    },
+    "optimizer_updates_per_arm_seed": 500,
+    "planned_full_runs": 6,
+    "planned_total_optimizer_updates": 3000,
+    "training": {
+      "batch_size": 4096,
+      "learning_rate": 0.001,
+      "num_epochs": 20,
+      "num_negs_per_pos": 16,
+      "optimizer": "Adam",
+      "seeds": [
+        17,
+        43,
+        101
+      ]
+    }
+  },
+  "runtime": {
+    "device": "cpu",
+    "python": "3.12.4",
+    "packages": {
+      "networkx": "3.7",
+      "numpy": "2.5.4",
+      "pykeen": "1.11.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "torch": "2.6.0"
+    },
+    "machine": "arm64",
+    "torch_threads": 1
+  },
+  "full_runs": 6,
+  "optimizer_updates_per_run": 500,
+  "total_optimizer_updates": 3000,
+  "total_training_seconds": 447.37443437607726,
+  "metrics_by_arm_seed": {
+    "rgcn_baseline": {
+      "101": {
+        "average_precision": 0.7126146393526138,
+        "roc_auc": 0.813805501807798
+      },
+      "17": {
+        "average_precision": 0.7114028781694486,
+        "roc_auc": 0.8104167168461084
+      },
+      "43": {
+        "average_precision": 0.7293635296735297,
+        "roc_auc": 0.8197541073545666
+      }
+    },
+    "rgcn_reactome": {
+      "101": {
+        "average_precision": 0.7231191655276814,
+        "roc_auc": 0.8153021872884101
+      },
+      "17": {
+        "average_precision": 0.7302247371308513,
+        "roc_auc": 0.825549498339395
+      },
+      "43": {
+        "average_precision": 0.7054724032610716,
+        "roc_auc": 0.8120184446246445
+      }
+    }
+  },
+  "means_by_arm": {
+    "rgcn_baseline": {
+      "average_precision": 0.7177936823985306,
+      "roc_auc": 0.8146587753361576
+    },
+    "rgcn_reactome": {
+      "average_precision": 0.7196054353065348,
+      "roc_auc": 0.8176233767508165
+    }
+  },
+  "paired_comparison": {
+    "baseline_arm": "rgcn_baseline",
+    "deltas_by_seed": {
+      "101": {
+        "average_precision": 0.010504526175067586,
+        "roc_auc": 0.0014966854806121033
+      },
+      "17": {
+        "average_precision": 0.01882185896140276,
+        "roc_auc": 0.015132781493286562
+      },
+      "43": {
+        "average_precision": -0.023891126412458052,
+        "roc_auc": -0.007735662729922099
+      }
+    },
+    "enriched_arm": "rgcn_reactome",
+    "mean_deltas": {
+      "average_precision": 0.0018117529080040977,
+      "roc_auc": 0.0029646014146588553
+    }
+  },
+  "reactome_coverage_only_diagnostic": {
+    "definition": "Original gene endpoints with any eligible frozen Reactome membership (0/1/2).",
+    "eligible_pairs": 1751,
+    "metrics": {
+      "average_precision": 0.4975476305844747,
+      "roc_auc": 0.6159720493819232
+    },
+    "ties_preserved": true,
+    "trained_arm": false
+  },
+  "reactome_endpoint_coverage_strata": {
+    "0": {
+      "pairs": 279,
+      "detected": 77,
+      "nondetected": 202,
+      "means_by_arm": {
+        "rgcn_baseline": {
+          "average_precision": 0.6945251598481557,
+          "roc_auc": 0.8971754318288973
+        },
+        "rgcn_reactome": {
+          "average_precision": 0.69070090828656,
+          "roc_auc": 0.8935750717928936
+        }
+      },
+      "mean_deltas": {
+        "average_precision": -0.0038242515615955672,
+        "roc_auc": -0.003600360036003577
+      },
+      "paired_deltas_by_seed": {
+        "101": {
+          "average_precision": 0.0025563954007417067,
+          "roc_auc": -0.004114697184004035
+        },
+        "17": {
+          "average_precision": 0.013761054123082261,
+          "roc_auc": 0.0009643821525009422
+        },
+        "43": {
+          "average_precision": -0.02779020420861067,
+          "roc_auc": -0.007650765076507637
+        }
+      }
+    },
+    "1": {
+      "pairs": 791,
+      "detected": 285,
+      "nondetected": 506,
+      "means_by_arm": {
+        "rgcn_baseline": {
+          "average_precision": 0.6463048243139006,
+          "roc_auc": 0.8106095277719992
+        },
+        "rgcn_reactome": {
+          "average_precision": 0.6523782081368749,
+          "roc_auc": 0.8145967686013454
+        }
+      },
+      "mean_deltas": {
+        "average_precision": 0.0060733838229741766,
+        "roc_auc": 0.0039872408293461685
+      },
+      "paired_deltas_by_seed": {
+        "101": {
+          "average_precision": 0.0118119619050151,
+          "roc_auc": 0.005221551903474175
+        },
+        "17": {
+          "average_precision": 0.027272750748239538,
+          "roc_auc": 0.011094931003397868
+        },
+        "43": {
+          "average_precision": -0.02086456118433211,
+          "roc_auc": -0.0043547604188335365
+        }
+      }
+    },
+    "2": {
+      "pairs": 681,
+      "detected": 375,
+      "nondetected": 306,
+      "means_by_arm": {
+        "rgcn_baseline": {
+          "average_precision": 0.7841686084720848,
+          "roc_auc": 0.7743384168482207
+        },
+        "rgcn_reactome": {
+          "average_precision": 0.7796761308240866,
+          "roc_auc": 0.7760232389251996
+        }
+      },
+      "mean_deltas": {
+        "average_precision": -0.004492477647998168,
+        "roc_auc": 0.0016848220769789535
+      },
+      "paired_deltas_by_seed": {
+        "101": {
+          "average_precision": 0.005381414691079778,
+          "roc_auc": -0.002126361655773401
+        },
+        "17": {
+          "average_precision": 0.0005288232706552876,
+          "roc_auc": 0.016854030501089245
+        },
+        "43": {
+          "average_precision": -0.01938767090572957,
+          "roc_auc": -0.009673202614378984
+        }
+      }
+    }
+  },
+  "leave_one_original_gene_out": {
+    "scored_genes": 1055,
+    "per_seed_delta_ranges": {
+      "101": {
+        "average_precision": {
+          "maximum": 0.014314435986377494,
+          "minimum": 0.00632671389871986
+        },
+        "roc_auc": {
+          "maximum": 0.0021571489555075596,
+          "minimum": 0.0006716076992835385
+        }
+      },
+      "17": {
+        "average_precision": {
+          "maximum": 0.02908540979853036,
+          "minimum": 0.012819757715735736
+        },
+        "roc_auc": {
+          "maximum": 0.017261232176486674,
+          "minimum": 0.012932208746063378
+        }
+      },
+      "43": {
+        "average_precision": {
+          "maximum": -0.019229247702401975,
+          "minimum": -0.028222521493055708
+        },
+        "roc_auc": {
+          "maximum": -0.0061643084347922095,
+          "minimum": -0.009008801260617205
+        }
+      }
+    },
+    "minimum_mean_ap_delta": {
+      "original_gene": "ENSG00000125991",
+      "removed_pairs": 19,
+      "mean_ap_delta": -0.0010155455910315636
+    },
+    "maximum_mean_ap_delta": {
+      "original_gene": "ENSG00000185962",
+      "removed_pairs": 19,
+      "mean_ap_delta": 0.005435249854966647
+    },
+    "negative_mean_ap_delta_omissions": 1,
+    "retraining_performed": false,
+    "interpretation": "Descriptive influence; correlated deletions are not independent samples, confidence intervals or significance tests."
+  },
+  "reference_reconciliation": {
+    "author_complement_used_for_negatives": false,
+    "author_positives_outside_eligible_subset": 314,
+    "eligible_negative_pairs": 1175,
+    "eligible_pairs_checked": 2038,
+    "eligible_positive_pairs": 863,
+    "status": "passed"
+  },
+  "author_reference_rows": 1177,
+  "matched_initialization_batch_sampling_fingerprints": true,
+  "all_original_candidates_predicted": true,
+  "scores_fixed_before_new_outcome_access": true,
+  "artifacts": [
+    {
+      "path": "docs/evaluations/reactome_context_intervention_20261026_selection.json",
+      "sha256": "ed7d0efb4995c605f986943842be9d3d45e8fba1dbffad2405a29e9b9c6a08fe"
+    },
+    {
+      "path": "runs/reactome_context_graphs_20261026_final/report.json",
+      "sha256": "6e3d23033d29fcd25c0c05ced35d4f6d8ec215c5b6afdc3edfb9c2c1c3bd43ad"
+    },
+    {
+      "path": "runs/reactome_context_native_20261026_handoff_final/report.json",
+      "sha256": "dc6e2b8f5a61029b91d901c66381b775101e3a3ad72d92ed2e2e9f1762c1b4e4"
+    },
+    {
+      "path": "runs/reactome_context_resource_20261026_cpu/report.json",
+      "sha256": "13e4ba8a35233b15fb5ed332a5d741183b1214e44dc58277082078209807efa1"
+    },
+    {
+      "path": "runs/reactome_context_execution_20261026_cpu/execution.json",
+      "sha256": "a6d81ec3e6bb9e283f9e0cef4d34f86f36afc26d78cef93a2d17290079a91470"
+    },
+    {
+      "path": "runs/reactome_context_comparison_20261026_cpu/predictions/report.json",
+      "sha256": "3491bfc1d83528101488763954987341be940887395bf58753a06ac1ee5e01d9"
+    },
+    {
+      "path": "runs/reactome_context_comparison_20261026_cpu/scored/report.json",
+      "sha256": "62975874b209c32ee899e2fce0c1f54179341ab932f12ed5bf401835365ea4b0"
+    },
+    {
+      "path": "runs/reactome_context_comparison_20261026_cpu/scored/metrics.json",
+      "sha256": "14bddcb5163a05c6581296256263b6cb65dbb1a9ecfe5bca428f11afe3345885"
+    },
+    {
+      "path": "runs/reactome_context_comparison_20261026_cpu/scored/outcomes.json",
+      "sha256": "7f3dc99b4e3fd6226b221ac1472bbef3592168671a6a742faecc78aecc36fee7"
+    },
+    {
+      "path": "runs/reactome_context_comparison_20261026_cpu/scored/exposure_started.json",
+      "sha256": "78f7d25bc39bc231c3fc328fb6bec025556e50d9b11498f1551d418345a167bd"
+    }
+  ],
+  "historical_boundaries": {
+    "receipt": "runs/reactome_comparison_20261026/before_boundaries.json",
+    "sha256": "19b8b2a5bb69a06599559b6af2bdadc888882b4e68aab8efff06dba4eefc7d1f",
+    "checked_paths": 20,
+    "all_unchanged": true
+  },
+  "scientific_accuracy_claimed": false,
+  "independent_validation": false,
+  "statistical_significance_claimed": false,
+  "reserved_intact_bodies_accessed": false,
+  "brev_or_aws_used": false,
+  "limitations": [
+    "The panel was consumed before this comparison was selected; this is development, not unseen validation.",
+    "Pharos snapshot postdates assays; Reactome import release and underlying study lineage remain unverified.",
+    "Pathway membership is functional context and does not assert direct binding.",
+    "Nondetection is specific to these assays; incomplete and self-pairs are not primary negatives.",
+    "A small positive mean with mixed seeds and influence sensitivity does not establish consistent benefit or a biological mechanism.",
+    "Original graph, assay eligibility, masks and historical negative comparisons remain unchanged."
+  ],
+  "decision": "Close this fixed candidate without a parameter/source/seed sweep. Separate independent confirmation and organizer scoring remain open.",
+  "separate_arithmetic_review": {
+    "path": "runs/reactome_context_comparison_20261026_cpu/arithmetic_review.json",
+    "sha256": "dc36fe1930b7f6c15d75c50603e7b6f16479b88fbce8e04b0445ac93ad6cc42b",
+    "passed": true,
+    "scope": "Stored artifacts, native metrics, coverage and influence arithmetic; not independent biological validation."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "format": "biograph.source-transport-technical-diagnostic.v1",
+  "created_at": "2026-11-14T16:56:00.815841+00:00",
+  "scope": "One previously requested public PubMed record; transport diagnostic only, no reference labels or new model calls.",
+  "request_url_sha256": "17ece6e70ea6cb29c3c264226613b1d4b4c4fb891e6bdd7dc153a54649ec4ae4",
+  "proxy_variable_names_present": [],
+  "default_proxy_scheme_keys": [
+    "http",
+    "https"
+  ],
+  "source_reader_sha256": "22025c84b74e123305630f57c90017623cec6a3c6434f5b17980c6cde3cda1e7",
+  "results": [
+    {
+      "profile": "inherited_default",
+      "started_at": "2026-11-14T16:55:57.610945+00:00",
+      "TLS_certificate_verification_disabled": false,
+      "status": "unavailable",
+      "error_type": "URLError",
+      "nested_reason_type": "ConnectionRefusedError",
+      "os_errno": 61,
+      "wall_seconds": 0.005145000002812594
+    },
+    {
+      "profile": "explicit_direct",
+      "started_at": "2026-11-14T16:55:58.026387+00:00",
+      "TLS_certificate_verification_disabled": false,
+      "status": "downloaded",
+      "bytes": 14687,
+      "sha256": "dab6e7cefeb8de7cc4df6804f2d681eedec51a40da574cbcf6acf4d08e3c3a8e",
+      "exact_identity_present": true,
+      "nonempty_abstract": true,
+      "wall_seconds": 2.3792740419739857
+    }
+  ],
+  "model_calls": 0,
+  "source_cache_modified": false,
+  "private_exception_messages_or_proxy_values_retained": false,
+  "content_sha256": "0d800561256aa4b1c65491ba9ae45478ed5ffe0e4302d41da5348b4c47efaa27"
+}

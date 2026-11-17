@@ -1,0 +1,85 @@
+{
+  "Python": "3.12.14",
+  "all_source_contract_files_byte_unchanged": true,
+  "base_runtime_commit": "0554977ae97e9f6e72d2fa12c9679264c1d6fad4",
+  "files": {
+    "biograph_steward/saved_run_cache.py": {
+      "bytes": 4087,
+      "sha256": "6b4d0ca4649dbcfb81e240081936d70314f44f1036ac9f56bfbf9c2b1e107229"
+    },
+    "biograph_steward/webapp.py": {
+      "bytes": 99535,
+      "sha256": "5f84447ec8feb67fffbdfb5b821f300c8afd06b47dbd6835ff832a5097f2b3c7"
+    },
+    "docs/evaluations/SAVED_NATIVE_READ_CACHE_20261115.md": {
+      "bytes": 5836,
+      "sha256": "be2ddaa217419de79012cde4af9ca313309a63fc6f58c9a934013a30a19d7806"
+    },
+    "tests/test_saved_run_cache.py": {
+      "bytes": 11750,
+      "sha256": "5d05c44a1226ffc613c2a8c2ddc1e84b2e8897c0cbf4ccaea76598042a95125c"
+    },
+    "tests/test_saved_run_cache_http.py": {
+      "bytes": 5703,
+      "sha256": "ffc944e39149c85115143472f1ec880f03095c5bb9344b64556a4052f2b94913"
+    }
+  },
+  "format": "biograph-steward.saved-native-cache-qualification.v1",
+  "hosted_latency_or_biological_gain_proven": false,
+  "local_process_read_wall_seconds": {
+    "original_uncached": 18.531591292005032,
+    "wrapper_cold": 22.216963207931258,
+    "wrapper_warm": 4.159118582960218
+  },
+  "new_HTTP_original_replay_calls_for_graph_answers_passport_exports": 1,
+  "new_HTTP_source_model_live_STRING_factories": 0,
+  "new_runtime_commit": null,
+  "real_full_graph_sha256": "fa366b17c7090e352d6269d31956b0c5201697b1f40eb7417350f81d3a44e4b8",
+  "real_graph_snapshot_reviews_and_two_question_hashes_equal": true,
+  "real_proof_receipt_sha256": "8c854e4bdc3bd540a3cbdb247ca2eaac2c841bc437b26e7236401b6344d938f3",
+  "real_source_all_file_hashes_unchanged": true,
+  "real_source_file_count": 199,
+  "real_source_no_copy": true,
+  "scope": "Web-only cached full replay of ordinary biological_extension runs; original reader and immutable publication contracts unchanged.",
+  "source_contract_file_sha256_before_and_after": {
+    "assay_source_reuse.py": "b562f7008956b7e9daa7b55693ec67d4a96e40634825d4151ff1f56c39af3d64",
+    "evidence_extension.py": "d5f2b46c2996630e9f4ed7e3ddcc1f179a7b7f00977e6067f8c209aba5d13029",
+    "goa_locations.py": "9903d0e0f92fcd99d4becab2a0a36e18749c58e653c6745d25e863dfef32c6ca",
+    "goa_source.py": "694f4f97303c3f4790acef49f6009810b0be2372cec6d89d8166f1a38a128bc6",
+    "gold_packet.py": "33b444f521585bd9c310df14f32c38e2034eb612bbb124180f470946b8971717",
+    "qualified_workspace.py": "377f0715d61e28cd67c7ecc65965c6163d292f323b69d7d554a07250638199a2",
+    "questions.py": "b01b0e29595628daae96055a474453bb1f2ad9b053e0443fcaaa90be09b9e366",
+    "reviews.py": "547cd8ed9ccc48e300941e76ba26767e01433bfed92687659bf657f149d42921",
+    "string_native.py": "a45261d74a35497a6dff803ad60dceedf2f815d0087abd53a0cfbf78b31f5893",
+    "string_physical_source.py": "ddabc7b1113185aa7b89ea1db4551e7b1c20df7b92a7f018ba70b23f4e846624"
+  },
+  "source_retrieval_cloud_deployments_or_Git_mutations_performed": false,
+  "status": "qualified-locally-not-deployed",
+  "test_groups": [
+    {
+      "modules": [
+        "test_saved_run_cache",
+        "test_saved_run_cache_http",
+        "test_saved_review_mode",
+        "test_qualified_workspace_cache",
+        "test_qualified_workspace_http",
+        "test_physical_ranking_http"
+      ],
+      "seconds": 29.874,
+      "status": "passed",
+      "tests": 49
+    },
+    {
+      "modules": [
+        "test_assay_source_reuse",
+        "test_assay_source_reuse_http",
+        "test_goa_source_http",
+        "test_evidence_extension_export"
+      ],
+      "seconds": 56.689,
+      "status": "passed",
+      "tests": 44
+    }
+  ],
+  "total_tests_passed": 93
+}

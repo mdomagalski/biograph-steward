@@ -1,0 +1,35 @@
+{
+  "format": "biograph-steward.agent-evaluation-runtime-bridge.v1",
+  "evaluation_commit": "12d70a261ba75920e136d7bba1d42c2391b9228a",
+  "prepared_file_sha256": "648f4d9e245ebe68946abb925611f1186a0376be6dedf81a7204e00c433d1226",
+  "prepared_runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+  "changed_python_files": {
+    "biograph_steward/source_agent_jobs.py": {
+      "evaluation_sha256": "0674972f4751790a9aeaaff932c094bab12b362c174ce50afeecea8007e1cd2d",
+      "runtime_sha256": "e6a948f39496f96074f4011baee605eb0c1913590ac78cb8f2dfec5cfa0faa57"
+    },
+    "biograph_steward/workspaces.py": {
+      "evaluation_sha256": "45b1c27927c3d4d0b5e28cb65c80ec28b0734b0534620d9dd7b4330e70f96ab4",
+      "runtime_sha256": "80144c1ce4ba3f06fc369b8d8bba1addf254bd2704b1c57d2a184425a92418af"
+    }
+  },
+  "all_other_frozen_implementation_files_identical": true,
+  "saved_job_source_read_write_verification_functions_AST_equal": {
+    "_source": true,
+    "_header": true,
+    "save_source_agent_job": true,
+    "read_source_agent_job": true
+  },
+  "controller_policy_queries_source_inspection_and_proposal_validation_unchanged": true,
+  "delivery_changes": [
+    "Source-filtered listing skips unrelated workspaces before full matching verification.",
+    "Separate pinned featured-job registration selects the current reviewer entry without editing source folders.",
+    "Frontend step navigation, source fields and exact saved-question URL preservation.",
+    "Graph columns and facing ports prevent a source edge appearing to pass through an unrelated protein.",
+    "Archived source inspection exposes its actual compatible-gene versus literal-protein qualification.",
+    "Independent offline-review feedback informed legacy click targets, heading alignment and prerequisite controls; valid requests retain their original shape."
+  ],
+  "actual_model_call_result_repaired_or_retried": false,
+  "new_prediction_or_scientific_accuracy_claim": false,
+  "interpretation": "Implementation bridge only. Local/browser and hosted acceptance receipts record actual delivery checks separately."
+}

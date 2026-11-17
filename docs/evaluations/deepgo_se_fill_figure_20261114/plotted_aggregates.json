@@ -1,0 +1,257 @@
+{
+  "format": "biograph-steward.deepgo-development.v1.plotted-fill-contrasts",
+  "contrasts": [
+    {
+      "frame": "primary",
+      "namespace": "biological_process",
+      "readout": "ordinary",
+      "label": "Ordinary",
+      "metric": "micro_Fmax",
+      "eligible_proteins": 833,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.1158244891493743,
+      "comparator_saved_point": 0.13528970930461875,
+      "observed_point_difference": -0.01946522015524446,
+      "saved_paired_95_interval": [
+        -0.033266235023868745,
+        -0.008459840638421107
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": -0.02059075034681554,
+      "role": "fixed BPO primary"
+    },
+    {
+      "frame": "primary",
+      "namespace": "biological_process",
+      "readout": "IA_weighted",
+      "label": "IA weighted",
+      "metric": "IA_micro_Fmax",
+      "eligible_proteins": 832,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.10434036074847665,
+      "comparator_saved_point": 0.1300173781200556,
+      "observed_point_difference": -0.025677017371578945,
+      "saved_paired_95_interval": [
+        -0.03681245656234793,
+        -0.014331182750228306
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": -0.025545212882665376,
+      "role": "fixed BPO primary"
+    },
+    {
+      "frame": "reserved",
+      "namespace": "biological_process",
+      "readout": "ordinary",
+      "label": "Ordinary",
+      "metric": "micro_Fmax",
+      "eligible_proteins": 2826,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.12539149731043103,
+      "comparator_saved_point": 0.13996622232945294,
+      "observed_point_difference": -0.014574725019021906,
+      "saved_paired_95_interval": [
+        -0.02196881657789086,
+        -0.006800416440816835
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": -0.014313575980598323,
+      "role": "fixed BPO primary"
+    },
+    {
+      "frame": "reserved",
+      "namespace": "biological_process",
+      "readout": "IA_weighted",
+      "label": "IA weighted",
+      "metric": "IA_micro_Fmax",
+      "eligible_proteins": 2825,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.11241206871716004,
+      "comparator_saved_point": 0.1326771483345221,
+      "observed_point_difference": -0.020265079617362056,
+      "saved_paired_95_interval": [
+        -0.027064499827098912,
+        -0.012448546467356776
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": -0.019709648711850113,
+      "role": "fixed BPO primary"
+    },
+    {
+      "frame": "primary",
+      "namespace": "molecular_function",
+      "readout": "ordinary",
+      "label": "Ordinary",
+      "metric": "micro_Fmax",
+      "eligible_proteins": 525,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.162590263219194,
+      "comparator_saved_point": 0.11313131313131312,
+      "observed_point_difference": 0.049458950087880885,
+      "saved_paired_95_interval": [
+        0.023642840303962215,
+        0.07902337749635314
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": 0.05026708819489161,
+      "role": "post-hoc exploratory; unadjusted"
+    },
+    {
+      "frame": "primary",
+      "namespace": "molecular_function",
+      "readout": "IA_weighted",
+      "label": "IA weighted",
+      "metric": "IA_micro_Fmax",
+      "eligible_proteins": 525,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.1410832316367269,
+      "comparator_saved_point": 0.10094851721081056,
+      "observed_point_difference": 0.04013471442591633,
+      "saved_paired_95_interval": [
+        0.01710646744418699,
+        0.06679823698847677
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": 0.04073652398052099,
+      "role": "post-hoc exploratory; unadjusted"
+    },
+    {
+      "frame": "reserved",
+      "namespace": "molecular_function",
+      "readout": "ordinary",
+      "label": "Ordinary",
+      "metric": "micro_Fmax",
+      "eligible_proteins": 2192,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.1806434423499634,
+      "comparator_saved_point": 0.1452637392985363,
+      "observed_point_difference": 0.0353797030514271,
+      "saved_paired_95_interval": [
+        0.0160572424670765,
+        0.05303086577183878
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": 0.034823005864388225,
+      "role": "post-hoc exploratory; unadjusted"
+    },
+    {
+      "frame": "reserved",
+      "namespace": "molecular_function",
+      "readout": "IA_weighted",
+      "label": "IA weighted",
+      "metric": "IA_micro_Fmax",
+      "eligible_proteins": 2191,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.13352338383248308,
+      "comparator_saved_point": 0.0886887928124091,
+      "observed_point_difference": 0.04483459102007398,
+      "saved_paired_95_interval": [
+        0.03314526197681636,
+        0.05618491217677366
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": 0.044687151066201365,
+      "role": "post-hoc exploratory; unadjusted"
+    },
+    {
+      "frame": "primary",
+      "namespace": "cellular_component",
+      "readout": "ordinary",
+      "label": "Ordinary",
+      "metric": "micro_Fmax",
+      "eligible_proteins": 445,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.24597606273215025,
+      "comparator_saved_point": 0.24239772478669877,
+      "observed_point_difference": 0.003578337945451482,
+      "saved_paired_95_interval": [
+        -0.02281778945163453,
+        0.02537244648364527
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": 0.0016334500332151167,
+      "role": "post-hoc exploratory; unadjusted"
+    },
+    {
+      "frame": "primary",
+      "namespace": "cellular_component",
+      "readout": "IA_weighted",
+      "label": "IA weighted",
+      "metric": "IA_micro_Fmax",
+      "eligible_proteins": 445,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.16170667672541447,
+      "comparator_saved_point": 0.1777828365091348,
+      "observed_point_difference": -0.016076159783720317,
+      "saved_paired_95_interval": [
+        -0.037463616522515855,
+        0.005883980656262077
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": -0.016343574121955966,
+      "role": "post-hoc exploratory; unadjusted"
+    },
+    {
+      "frame": "reserved",
+      "namespace": "cellular_component",
+      "readout": "ordinary",
+      "label": "Ordinary",
+      "metric": "micro_Fmax",
+      "eligible_proteins": 1450,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.2911912897434413,
+      "comparator_saved_point": 0.28026009664141266,
+      "observed_point_difference": 0.010931193102028613,
+      "saved_paired_95_interval": [
+        -0.0020643691737535913,
+        0.025081577837535885
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": 0.011220032580241391,
+      "role": "post-hoc exploratory; unadjusted"
+    },
+    {
+      "frame": "reserved",
+      "namespace": "cellular_component",
+      "readout": "IA_weighted",
+      "label": "IA weighted",
+      "metric": "IA_micro_Fmax",
+      "eligible_proteins": 1450,
+      "candidate": "deepgose",
+      "comparator": "strict_alias_localplus",
+      "candidate_saved_point": 0.1956045370582373,
+      "comparator_saved_point": 0.1884661994830838,
+      "observed_point_difference": 0.007138337575153503,
+      "saved_paired_95_interval": [
+        -0.005210855579124536,
+        0.019005668127641723
+      ],
+      "saved_bootstrap_mean_difference_NOT_plotted_as_dot": 0.006660686826937809,
+      "role": "post-hoc exploratory; unadjusted"
+    }
+  ],
+  "source_pins": {
+    "primary_publication_manifest_sha256": "922a37c7875b8c5e9d4f541caa4fe9830e8c66423cadb8580f50a7062be5e338",
+    "primary_public_report_sha256": "81afbab372e4900211b826edf2e31790636fdae8d0f59d9040300c3da2278555",
+    "primary_public_report_content_sha256": "2213d6ad11fd8b279f7c7e53a3eb41e7505bc40341a58bf229c88c94ad3d819b",
+    "prior_246_file_sha256": "1c48a0246b597318f29f793f497d60ae5087d79ab57b3e8028cde38faaee5046",
+    "secondary_publication_manifest_sha256": "a1ca1ee6ab9e3532ff0d7a810e186f286a1a3e0f7edea2f59addd40a8be372f5",
+    "secondary_public_report_sha256": "e1ee9406b5365f88b0b857acff1776c940fc5c50f83b177d89948d4ad55f302a",
+    "secondary_public_report_content_sha256": "66dee4d168d2dd25dee387363818599c44958985e8f26ff597008fad997d3f97",
+    "common_raw_primary_source_report_sha256": "23164e2bb2d68a7275fd5c6caf150084797fd690194ff8a72135132a46990c9b"
+  },
+  "fixed_BPO_retention_gate": {
+    "passed": false,
+    "rule": "BothordinaryandIA BPOpaired95%lowerdifferenceboundsversusfullstrictLocalabovezeroinBOTHcohorts.",
+    "automatic_product_or_graph_change": false,
+    "independent_confirmatory_gain_claimed": false
+  },
+  "all_fill_contrasts": 12,
+  "BPO_fixed": 4,
+  "MF_CC_exploratory_unadjusted": 8,
+  "dot_definition": "Saved native point candidate minus matched comparator, not bootstrap mean.",
+  "MAX_results_included": false,
+  "raw_reference_or_forecast_rows_read": false,
+  "new_scientific_estimator_or_scores": false,
+  "content_sha256": "f95b33ee3e9e3fc186139c980088eda73064536b9cc8bb331d6ab846bb3e2778"
+}

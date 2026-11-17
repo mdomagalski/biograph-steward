@@ -1,0 +1,14 @@
+{
+  "format": "biograph-steward.combined-development-publication.v1.manifest",
+  "created_at": "2026-11-14T13:12:11.310205+00:00",
+  "report_content_sha256": "a9e305507a78df03c3117d838176f41623f5bff7bc23a6144d95b9ce232f4482",
+  "files": {
+    "report.json": "acb8ead82fbbe1bb1994ba858b6b202997fcde0ce7e48e7670ab1cce2ad4a15b",
+    "report.html": "f6a9bd8fe8d3ba733b2268848eaa55b1781bdc4d8917684ccd13fd75bab9a5e3",
+    "summary.json": "8a1947b1493e6b79e01416524e446f3b5ade8734d1608ea46c139c70c23cee09",
+    "prior_240_outcomes.json": "1d6290f659e5e4791b4fbd33b37058a696aa250beca5ff1b3c61695463ca5457"
+  },
+  "operator_paths_or_raw_cases_included": false,
+  "app_or_graph_modified": false,
+  "content_sha256": "073473e00e7f5ceee0e12811fe212aa5e601f36a41d9a06087af59bde5256415"
+}

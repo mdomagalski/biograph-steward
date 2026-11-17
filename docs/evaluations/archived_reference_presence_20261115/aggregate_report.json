@@ -1,0 +1,59 @@
+{
+  "archive": {
+    "bytes": 1722763542,
+    "md5": "6042adf20dad1ab62112c9053bdebd20",
+    "sha256": "b7fb9d3b1b442050b9672a8089e58c392a4d3f28a329bb17e6b18e356ac42e36"
+  },
+  "archive_index_sha256": "20458c1f0c25284755a85f8ac0f78110f86eeaaa49290e1327f4f0d5d2394d96",
+  "before_reference_start": "2026-04-10",
+  "dat_member": {
+    "bytes": 692563345,
+    "file": "uniprot_sprot.dat.gz",
+    "sha256": "bb3815e7b6445566ad9c8479f659033aa2115ed3cf2b06e61ae37c1dabc60438"
+  },
+  "format": "biograph-steward.archived-reference-presence.v1",
+  "interpretation": "Presence establishes citation in an exact pre-T0 reviewed-human publisher archive, not availability of the evaluated claim or newly performed experiments. Absence does not establish publication novelty or lack of earlier public availability.",
+  "inventory_counts": {
+    "distinct_human_PubMed_identifiers": 90324,
+    "human_PubMed_occurrences": 231293,
+    "human_reference_objects": 256233,
+    "record_classes": {
+      "Reviewed": 574627
+    },
+    "reviewed_human_records": 20431,
+    "reviewed_human_records_with_PubMed": 20371,
+    "total_records": 574627
+  },
+  "models_labels_exclusions_or_scores_changed": false,
+  "network_requests": 0,
+  "private_inventory_sha256": "aed1be0e0be76b32281fd33ae0c0dab049708a8ca5256c898a7b1dd6e61b229a",
+  "publication_years_or_experiment_dates_inferred": false,
+  "release": "2026_01",
+  "release_date": "2026-01-28",
+  "release_notes_sha256": "94966e78a42f20801539651f55a5296aba958e3b2698563a3ca846cda8ea5fa6",
+  "runtime": {
+    "Bio": "1.85",
+    "SwissProt_reader_sha256": "e6798061a95b2e8c14d5515c37f500b721f83e4610ffbbc21e74c6d056f0d33c",
+    "python": "3.10.12"
+  },
+  "selected_identifier_export": false,
+  "status": "complete",
+  "views": {
+    "fixed_T0": {
+      "absent_from_dated_reviewed_human_references": 164,
+      "distinct_support_PMIDs": 271,
+      "distinct_support_rows": 472,
+      "present_in_dated_reviewed_human_references": 107,
+      "residual_reference_pairs": 3243,
+      "support_file_sha256": "84656c3a26e4372e8344aa423d493d5aecba55ee6c4059a732caafbeac73ea9e"
+    },
+    "native": {
+      "absent_from_dated_reviewed_human_references": 165,
+      "distinct_support_PMIDs": 272,
+      "distinct_support_rows": 475,
+      "present_in_dated_reviewed_human_references": 107,
+      "residual_reference_pairs": 3254,
+      "support_file_sha256": "baf4342e42e83ab621d9af5c044563196c529cba40738013ab67e85bae15ae1d"
+    }
+  }
+}

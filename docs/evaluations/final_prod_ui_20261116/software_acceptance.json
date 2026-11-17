@@ -1,0 +1,59 @@
+{
+  "format": "biograph-steward.standalone-source-agent-delivery-summary.v1",
+  "status": "passed",
+  "source_revision": "d05f54fc07a6a74094b1afb1132878e6ac251cc0",
+  "software_archive": {
+    "file": "BioGraph_Steward_Software.zip",
+    "sha256": "e568bc7a948d8be8503a9e3a6a4423dc99d834e4adc68018a82783fe4e53aa5e",
+    "bytes": 726558,
+    "file_count": 133
+  },
+  "private_acceptance_receipt_sha256": "1a0431b75cde6b725a4aad59b1989e9f993373f6047c63e3f2f1c8f78b531aa1",
+  "clean_python": {
+    "version": "3.12.14",
+    "no_site": 1,
+    "site_loaded": false,
+    "site_package_paths": []
+  },
+  "code_only_no_real_datasets": true,
+  "invented_portability_fixture_explicitly_separate": true,
+  "upstream_notices_preserved": true,
+  "current_source_agent_stdlib_imports_CLI_help_and_no_model_catalogue_passed": true,
+  "current_source_agent_four_step_UI_in_archive": true,
+  "actual_CLI_HTTP_export_recovery_restart_reopen_passed": true,
+  "saved_data_only_denied_new_actions": [
+    "/api/question",
+    "/api/build",
+    "/api/plan",
+    "/api/submission-export",
+    "/api/source-agent/run"
+  ],
+  "saved_data_only_source_agent_model_factory_calls": 0,
+  "source_fetches": 0,
+  "model_calls": 0,
+  "cloud_calls": 0,
+  "all_owned_servers_stopped": true,
+  "actual_live_model_comparison_in_this_acceptance": false,
+  "separate_actual_model_comparison": "docs/evaluations/SOURCE_AGENT_RESULTS_20261116.md",
+  "biological_accuracy_or_independent_user_validation_claimed": false,
+  "no_tokens_credentials_raw_HTTP_headers_real_source_records_reference_labels_or_weights_in_archive": true,
+  "hosted_deployment_has_separate_acceptance": true,
+  "bundled_how_to_link_is_absolute_repository_URL": true,
+  "core_archive_roots": [
+    "app.py",
+    "LICENSE",
+    "README_DEMO.md",
+    "biograph_steward/"
+  ],
+  "presentation_PDF_and_walkthrough_not_modified_by_this_acceptance": true,
+  "UI_mode_functional_validation_is_separate": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+  "previous_product_UI_acceptance": {
+    "path": "docs/evaluations/final_prod_ui_20261116/software_acceptance_2fd.json",
+    "bytes": 2081,
+    "sha256": "71dbe27169d31e6c785909d7f9f71ad279fbd7e11d5e8024e9ee0dacfb628862"
+  },
+  "previous_product_UI_software_preserved_private_copy_SHA256": "7caad765875ef03298fc71490bdce0859a1292bc5009b69676f0c3e04d48eb36",
+  "loading_UI_in_archive": true,
+  "loading_and_question_error_functional_checks_are_separate": "docs/evaluations/final_prod_ui_20261116/UI_validation.json",
+  "new_source_or_model_behavior_in_this_release": false
+}
