@@ -1,0 +1,32 @@
+{
+  "format": "biograph.native-portable-browser-review-fork.v1",
+  "checked_at": "2026-11-17T15:16:59.922099+00:00",
+  "source_run": "native_evidence_workspace_20261115",
+  "new_run": "20261117T151428Z_1b2ea8d0",
+  "source_files": 207,
+  "original_207_files_byte_unchanged": true,
+  "recorded_review_event": {
+    "sequence": 1,
+    "assertion_id": "assertion:830f45fee61ec7b37fe9f50a",
+    "revision": "7cb1f7d0d203ba18db7f77570fdd0eb4e99249f8d06f6401c75fe646c16d409f",
+    "snapshot_sha256": "7caee0c53c57972c5510a52d65b3346a9b95375670cdc48500f13302e71a7dc0",
+    "from_state": "candidate",
+    "to_state": "provisional",
+    "reviewer": "Demo workflow check",
+    "reason": "Demonstration of saving a review in a new local run. Keep this source claim provisional pending scientific review. This is not biological acceptance.",
+    "created_at": "2026-11-17T15:14:50.534656+00:00",
+    "evidence_extension_sha256": "3f91e90fd7354ee105762e52a931a4e461599d6810e0797589348978de1269a8"
+  },
+  "source_snapshot_byte_unchanged": true,
+  "native_source_profile_pins_preserved": true,
+  "full_packaged_source_replay_verified": true,
+  "native_physical_question_reopened": true,
+  "native_go_candidate_concepts": 9,
+  "native_go_accepted_concepts": 0,
+  "accepted_assertions": 0,
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "production_graph_changed": false,
+  "new_run_HTTP200_and_graph_equal": true,
+  "scope": "One provisional browser workflow check in an isolated extracted copy; no biological acceptance."
+}

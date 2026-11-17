@@ -19,9 +19,15 @@ remains a separate dated record.
 
 ## Protected downloads
 
-The public browser demo opens saved examples without sign-in, but does not
-serve these bulk graph/source archives. They are supplied separately for final
-submission or retrieved through an authorized operator installation. The
+The public browser demo opens saved examples without sign-in. Its prepared
+**Download an editable local copy** serves the exact native KRAS source
+workspace with software, attached sources, saved question, S01 job and local
+launcher. That is a runnable workspace copy, not the graph-and-decision packets
+below. It supports personal evidence reviews saved as new runs while preserving
+the original. See [local-copy scope and verification](evaluations/editable_demo_copy_20261117/README.md).
+
+The bulk graph/ledger/comparator archives below remain separate. They are
+supplied for final submission or retrieved through an authorized operator installation. The
 existing authenticated original workbench remains the operator download route.
 Large packages verify their source records before a download starts. Preserve
 all included source terms.

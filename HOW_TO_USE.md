@@ -95,7 +95,14 @@ the displayed KRAS graph selects only the records relevant to that question.
 
 | Public demo download | What it contains |
 |---|---|
-| **Download this verified agent record** | The question, focused graph, model/tool trace, source inspections and review proposals. Its complete source workspace is supplied separately when full replay is required. |
+| **Download an editable local copy** | The complete native KRAS workspace ZIP: app, full saved graph, attached source records, saved KRAS question, recorded agent job and local launcher. Use this to record your own evidence reviews. The download size is shown before you choose it. |
+| **Download this verified agent record** | The question, focused graph, model/tool trace, source inspections and review proposals. This smaller inspection record is not the complete editable workspace. |
+
+The complete-copy button appears beside the native workspace's read-only notice
+and under **Export** after the prepared package verifies. It copies the full
+99-target saved workspace, not only the small answer diagram. It does not copy
+cloud accounts, the Neptune mirror, hosted assessment pages or optional global
+GO/QC inspector data.
 
 In the **retained TP53 example**, open **Export** to read how the full graph,
 decision ledger and baseline relate. These bulk files are separate submission
@@ -112,6 +119,46 @@ The focused answer ZIP, complete saved-workspace ZIP and challenge graph/ledger
 package serve different purposes. See the [graph and source package instructions](docs/GOLD_SET_INTERFACE.md#protected-downloads)
 for the primary handoff and separate Pharos-only comparator. A public agent
 record does not silently contain these complete source packets.
+
+## 5. Continue with the same graph locally
+
+The shared site remains read-only. Downloading a local copy lets you record your
+own evidence decisions without changing that shared example.
+
+![Complete KRAS workspace download beside the read-only notice](docs/evaluations/editable_demo_copy_20261117/images/hosted_KRAS_editable_download.png)
+
+1. Open the native KRAS example. Choose **Download an editable local copy**
+   beside the read-only notice or under **Export**. The button shows the ZIP size.
+2. Extract it into a new empty folder and read **OPEN_WORKSPACE.txt**. Keep its
+   source folders intact. Allow disk space for the extracted workspace and the
+   new reviewed run.
+3. With Python 3.10 or newer, run `python3 START_EDITABLE_LOCAL.py` from the
+   extracted folder. The launcher chooses a free port on your own computer,
+   opens the saved KRAS question in your browser and prints the address.
+   No model, GPU, AWS account, package installation or new data retrieval is needed.
+4. Under **Inspect sources**, select a claim and choose **Guide me through this
+   source**. Read the source record and its recorded conditions. Choose
+   **Record evidence review**, then enter **Reviewer**, **Decision** and
+   **Reason and evidence reviewed**.
+5. Choose **Save review in a new run**. The app opens your reviewed copy and
+   supplies **Open the earlier run**. The earlier graph, source files and review
+   history stay unchanged. The new run is saved inside the package's `runs` folder.
+
+Local editing means recording evidence-review decisions and reasons. It is not
+a general-purpose node-and-edge drawing editor. For a software demonstration,
+use **provisional** with a reason saying that the claim still needs scientific
+review. A local decision records your judgment rather than creating an
+independent biological benchmark label. Stop the local app with Ctrl+C.
+
+Applied retained-graph views stay read-only. The native KRAS copy does not
+include the separate TP53 decisions or Pharos-only comparator. The submission
+graph-and-decision archives remain separate. See the
+[copy verification and scope](docs/evaluations/editable_demo_copy_20261117/README.md).
+
+If Chrome reports **Blocked by your organization**, follow your organization's
+approved process for downloading software archives. Managed browsers can block
+website downloads through [Chrome Enterprise policies](https://support.google.com/chrome/a/answer/7579271?hl=en).
+The website cannot override that policy.
 
 ## Use another supported question or construct a cohort
 
@@ -155,27 +202,8 @@ This new three-protein Pharos capture is dated November 17 UTC. Its candidate
 source additions and unapplied review proposals remain separate from the
 original graph's qualification decisions. The [worked-example results](docs/evaluations/GENERALIZATION_EXAMPLE_20261117.md)
 explain the source versions, complete replay and unchanged comparison rules.
-
-## Record an evidence review in a local copy
-
-The shared site is read-only. The complete APP/PSEN package also includes an
-editable local launch that needs no model:
-
-1. From the extracted package folder, run `python3 START_EDITABLE_LOCAL.py`.
-   Open the local address printed in the terminal. Keep the terminal running.
-2. Under **Inspect sources**, select a claim and choose **Guide me through this
-   source**. Read the source record and its recorded conditions.
-3. Choose **Record evidence review**. Enter **Reviewer**, **Decision** and
-   **Reason and evidence reviewed**.
-4. Choose **Save review in a new run**. The app opens your reviewed copy and
-   supplies **Open the earlier run**. The earlier graph, sources and review
-   history stay unchanged. Your new run is saved inside the package's `runs` folder.
-
-For a software demonstration, use **provisional** with a reason saying that the
-claim still needs scientific review. A local review records your judgment; it
-does not create an independent biological benchmark label. Applied retained-graph
-views remain read-only. The launcher binds only to your own computer and does
-not change public-site permissions. Stop it with Ctrl+C.
+Its optional `START_EDITABLE_LOCAL.py` supports the same
+[local review workflow](#5-continue-with-the-same-graph-locally).
 
 The [project report PDF](output/pdf/BioGraph_Steward_Final_Report.pdf)
 ([Word copy](output/docx/BioGraph_Steward_Final_Report.docx)) explains the

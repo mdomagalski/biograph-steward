@@ -1,0 +1,42 @@
+{
+  "format": "biograph.editable-copy-runtime-bridge.v1",
+  "previous_runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+  "runtime_commit": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+  "runtime_bundle_sha256": "d3426539ccb6b716050282d436704c58fb637a49fafd7373a705f9bd8c7bc693",
+  "changed_core_files": {
+    "biograph_steward/editable_copy.py": {
+      "before_sha256": null,
+      "after_sha256": "d0d6ccee589d25bf5db8d7499918008334a429bbd20331fb9d6e5d2e55554919"
+    },
+    "biograph_steward/navigation.js": {
+      "before_sha256": "d5a44813195096104f4f5ead8a6be62b1a2b317211824ece87a0ecc96148764c",
+      "after_sha256": "ae06ba132584557f2cbb3a1fe4c8dccafb51efcafd7bb6846b32f378ab707026"
+    },
+    "biograph_steward/ui.html": {
+      "before_sha256": "978ab4bf76790290a48159d24b0c0de67f2d39bbf25e876a1262f68a6447ef74",
+      "after_sha256": "357619efb01ecc87911c5a50e81bfecea9d570d430152995b02e232c7fb36992"
+    },
+    "biograph_steward/webapp.py": {
+      "before_sha256": "0148284b5a828632e0684f300e3780de5ae82b6cd0a3c13f6f6d953e62050c12",
+      "after_sha256": "0888f3b13ff858ff05da967b3f5e0dca7fafb0535303c5b6cade615ffdac7363"
+    }
+  },
+  "scope": [
+    "Serve a prepared, pinned workspace ZIP as a streaming GET/HEAD download.",
+    "Expose the exact registered download and local-launch instructions in the existing interface."
+  ],
+  "reused_existing_source_question_agent_and_review_apis": true,
+  "unchanged_source_and_review_modules": {
+    "biograph_steward/reviews.py": "547cd8ed9ccc48e300941e76ba26767e01433bfed92687659bf657f149d42921",
+    "biograph_steward/source_agent.py": "8b21470d3258c45effba6a97220502cdafb11045a60beccaec51fceb7c6558a3",
+    "biograph_steward/source_agent_jobs.py": "e94a4e229d78c0528672ae582671256b943c8b3143fd260d7d18d06350230c13",
+    "biograph_steward/questions.py": "b01b0e29595628daae96055a474453bb1f2ad9b053e0443fcaaa90be09b9e366",
+    "biograph_steward/goa_locations.py": "9903d0e0f92fcd99d4becab2a0a36e18749c58e653c6745d25e863dfef32c6ca",
+    "biograph_steward/physical_ranking.py": "f3782347d33069b7bdb6e81e78d436973fec144f2fc73c2f3db20268956f2e7b",
+    "biograph_steward/string_physical_source.py": "ddabc7b1113185aa7b89ea1db4551e7b1c20df7b92a7f018ba70b23f4e846624"
+  },
+  "source_snapshots_and_scientific_results_changed": false,
+  "new_model_calls": 0,
+  "fresh_source_retrieval": 0,
+  "public_write_model_or_retrieval_enabled": false
+}

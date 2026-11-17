@@ -13,6 +13,15 @@ remains preserved. The tour's local capture provenance is recorded separately.
 
 ## Current project files
 
+In the native KRAS workspace, **Download an editable local copy** provides the
+same saved evidence for personal work. The button beside the read-only notice
+and under **Export** shows its size. Extract the complete workspace ZIP, read
+**OPEN_WORKSPACE** and run `python3 START_EDITABLE_LOCAL.py`. Python 3.10+ is
+enough; the loopback launcher needs no model, GPU, AWS account or new retrieval.
+Evidence reviews save as new runs with reviewer, decision and reason, preserving
+the original. The [copy delivery record](../../evaluations/editable_demo_copy_20261117/README.md)
+identifies exact package and source scope. The shared site remains read-only.
+
 | File | Use |
 |---|---|
 | [Narrated walkthrough](../../../output/walkthrough/BioGraph_Steward_Walkthrough.mp4) | Captioned agent tour with actual application captures, verified saved sources and a local review saved as a new run. |
@@ -21,6 +30,7 @@ remains preserved. The tour's local capture provenance is recorded separately.
 | [Presentation](../../../output/presentations/BioGraph_Steward_Overview.pptx) | One concise overview, with the detailed research linked separately. |
 | [Software ZIP](../../../output/software/BioGraph_Steward_Software.zip) | Portable application, cohort construction and saved-source inspection. Real source data are supplied separately. Hosted acceptance is recorded separately. |
 | [Project report PDF](../../../output/pdf/BioGraph_Steward_Final_Report.pdf) · [Word copy](../../../output/docx/BioGraph_Steward_Final_Report.docx) | Scientific motivation, implemented approach, source qualification, agent workflow, measured results, reusable deliverables and opportunities for broader validation. |
+| Complete editable native KRAS workspace ZIP | Available through the hosted app. Includes runtime, the same saved source graph, attached sources, saved question, S01 record and local launcher. Personal evidence reviews save as new runs. |
 | `BioGraph_Steward_APP_PSEN_Example.zip` | Separately supplied local runtime and complete real-source data for three proteins outside the original 99. **OPEN_EXAMPLE.txt** selects the recorded APP location-agent job. See the [worked example](../../evaluations/GENERALIZATION_EXAMPLE_20261117.md). |
 | `BioGraph_Steward_Source_Verifier_Code.zip` | Research-code adjunct with **README_REPRODUCTION.txt**. A matching checkout, optional runtime and separately licensed frozen author/reference inputs are required. Cases, passages and model outputs are excluded. |
 

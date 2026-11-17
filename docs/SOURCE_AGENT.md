@@ -39,8 +39,18 @@ graphs, sources and reviews are preserved. See the current
 and [direct-example browser check](evaluations/public_demo_20261117/hosted_browser_acceptance.json).
 The earlier [authenticated rollout](evaluations/source_agent_20261116/hosted_acceptance.json)
 remains a separate dated record.
-New inference remains disabled on that shared site. The source-bound replay
-path is:
+New inference remains disabled on that shared site. To continue locally, choose
+**Download an editable local copy** in the native KRAS workspace or its
+**Export** tab. The ZIP supplies the app, exact source workspace, saved KRAS
+question, S01 job and `START_EDITABLE_LOCAL.py`. With Python 3.10+, the launcher
+opens a free loopback port and saved review needs no model, GPU, AWS account or
+new retrieval. **Record evidence review → Save review in a new run** records
+reviewer, decision and reason while preserving the original. This is personal
+evidence-review editing; it does not apply an agent proposal automatically.
+The [copy delivery record](evaluations/editable_demo_copy_20261117/README.md)
+distinguishes the local workspace from other hosted features and graph handoffs.
+
+The source-bound replay path is:
 
 ```text
 /?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&agent_job=source_agent_eval_dc7b597201da_S01&view=data
@@ -127,8 +137,9 @@ recorded agent run.
 ## Operator CLI
 
 The core requires Python 3.10+ and no third-party package installation. Real
-source workspaces must be supplied separately with their complete authorized
-source packets; a fresh code checkout contains no such packet. First inspect
+source workspaces need their complete source packets; a fresh code checkout
+contains no such packet. The native KRAS demo supplies one prepared complete
+local-copy download. Other workspaces are supplied separately. First inspect
 what is actually available, without creating a model client:
 
 ```sh

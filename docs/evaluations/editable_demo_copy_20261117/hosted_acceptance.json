@@ -1,0 +1,67 @@
+{
+  "format": "biograph-steward.editable-copy-delivery.v1",
+  "status": "passed",
+  "checked_at": "2026-11-17T15:37:13.634869+00:00",
+  "public_demo_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/?run=native_evidence_workspace_20261115&question=native_physical_KRAS_question_v3_20261115&view=ask",
+  "download_URL": "https://bi-3a117d5e2b3942678dc518fce65ab5d2.ecs.us-east-2.on.aws/api/editable-copy/native_evidence_workspace_20261115/download",
+  "public_access": {
+    "token_needed": false,
+    "hosted_workspace_read_only": true,
+    "ordinary_download_and_mutation_routes_blocked": true
+  },
+  "portable_copy": {
+    "filename": "BioGraph_Steward_KRAS_Editable_Workspace.zip",
+    "bytes": 106909889,
+    "sha256": "dcae1dbbfcc5c99bca3ff51cddf62d3a2f1f287d60a3feef8923bffc8effdd55",
+    "runtime_commit": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+    "source_workspace": "native_evidence_workspace_20261115",
+    "saved_question": "native_physical_KRAS_question_v3_20261115",
+    "recorded_agent_job": "source_agent_eval_dc7b597201da_S01",
+    "native_workspace_files_preserved": 207,
+    "all_original_workspace_question_agent_files_unchanged": true,
+    "saved_graph_counts": {
+      "entities": 9724,
+      "evidence_records": 19310,
+      "assertions": 16430
+    },
+    "Python_required": "3.10+",
+    "AWS_required": false,
+    "model_required": false,
+    "launch_command": "python3 START_EDITABLE_LOCAL.py",
+    "editing_scope": "Evidence decisions and reasons are saved in a new local run. The original captured workspace stays unchanged.",
+    "provider_terms_and_provenance_preserved": true
+  },
+  "hosted_application_core": {
+    "commit": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+    "four_changed_core_files_sha256": {
+      "biograph_steward/editable_copy.py": "d0d6ccee589d25bf5db8d7499918008334a429bbd20331fb9d6e5d2e55554919",
+      "biograph_steward/navigation.js": "ae06ba132584557f2cbb3a1fe4c8dccafb51efcafd7bb6846b32f378ab707026",
+      "biograph_steward/ui.html": "357619efb01ecc87911c5a50e81bfecea9d570d430152995b02e232c7fb36992",
+      "biograph_steward/webapp.py": "0888f3b13ff858ff05da967b3f5e0dca7fafb0535303c5b6cade615ffdac7363"
+    },
+    "remaining_existing_modules_unchanged": true,
+    "full_container_is_not_represented_as_a_pristine_git_archive": true
+  },
+  "delivery_checks": {
+    "anonymous_metadata_GET": true,
+    "anonymous_archive_GET_and_HEAD": true,
+    "archive_byte_count_and_SHA_match": true,
+    "other_workspaces_not_exportable": true,
+    "public_write_requests_denied": true,
+    "original_source_snapshot_files_rehashed": 732,
+    "original_source_snapshot_unchanged": true,
+    "private_operator_app_and_environments_unchanged": true,
+    "read_only_source_and_prepared_bundle_mounts": true,
+    "memory_GiB": 3,
+    "CPU_count": 1,
+    "OOM_or_restarts_after_activation": false,
+    "gateway_actual_NGINX_mock_checks": 595,
+    "new_infrastructure_resources": 0,
+    "new_roles_permissions_or_network_changes": 0,
+    "new_source_retrievals": 0,
+    "new_model_calls": 0,
+    "graph_or_review_writes": 0,
+    "reversible_previous_unit_and_images_preserved": true
+  },
+  "scientific_interpretation": "This delivery makes the same captured graph, attached source records and recorded agent replay available for local evidence review. Source identity and prior scientific results are preserved while users can record their own decisions in a new local run."
+}

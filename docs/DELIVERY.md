@@ -17,12 +17,17 @@ syntax. The recorded Nemotron workflow has four steps: **Question & plan**,
 | See added source context | In the KRAS run, inspect **E002, KRAS–CDC42BPB**. Its source passport shows a pair absent from the captured Pharos graph, STRING 12.5 score 203 and preserved identity checks. |
 | Inspect applied qualification | Open the matched **TP53** example, then **What changed**. It explains the 298 record exclusions and links them to the retained graph. |
 | Understand the measured results | Read the comparison tables under **Graph changes and assessment**. Source recovery and the separate historical prediction study retain their own controls. |
-| Reuse a recorded result | Download the verified agent record. It contains the question, focused graph, model/tool trace, inspections and proposals. Complete source packets are separate. |
+| Reuse a recorded result | Download the verified agent record for its focused graph, model/tool trace, inspections and proposals. |
+| Continue with the same graph locally | Choose **Download an editable local copy** in the native KRAS workspace or its **Export** tab. The complete ZIP includes runtime, source workspace, saved question, recorded agent job and launcher. Record evidence decisions locally and save a new run. |
 
 The public site replays completed real agent work over two designated saved
 workspaces and five recorded-agent examples. New construction, retrieval, model
 calls and review edits are disabled. Read-only graph exploration and source
 inspection remain available. Proposals accept no assertion and change no graph.
+The prepared native KRAS download lets another scientist continue with the same
+saved graph on their own computer. Its source files remain unchanged; their
+personal reviews save as new runs. The separate graph/ledger/comparator handoff
+archives retain their own download scope.
 
 ## Run new questions or construct a graph
 
@@ -42,7 +47,18 @@ Use a local or authorized operator installation for new work:
   original names and complete source files. A graph JSON alone is not a complete
   replay packet.
 
-For a complete real-data launch, use the separately supplied
+For the exact public native KRAS workspace, choose **Download an editable local
+copy** beside the read-only notice or under **Export**. Extract the ZIP, read
+**OPEN_WORKSPACE.txt** and run `python3 START_EDITABLE_LOCAL.py`. The launcher binds to
+a free loopback port, opens the saved question and prints its address. Review
+saved claims through **Inspect sources → Record evidence review → Save review
+in a new run**. Each decision retains its reviewer and reason; the earlier run
+and sources stay preserved. This is evidence-review editing, not a general
+node-and-edge drawing editor. The [copy delivery record](evaluations/editable_demo_copy_20261117/README.md)
+identifies its exact source/runtime scope. Hosted assessment pages, optional
+global GO/QC inspector data and the private Neptune mirror are not copied.
+
+For another complete real-data launch, use the separately supplied
 `BioGraph_Steward_APP_PSEN_Example.zip`. Its **OPEN_EXAMPLE.txt** selects the
 actual recorded APP location-agent job. The runtime, complete sources and
 saved result work offline. This local three-protein example is separate from
@@ -71,6 +87,7 @@ provides an included real-source inspection example.
 | [Transcript](../output/walkthrough/BioGraph_Steward_Walkthrough.txt) and [captions](../output/walkthrough/BioGraph_Steward_Walkthrough.vtt) | The same explanation in readable and timed text. |
 | [Slides](../output/presentations/BioGraph_Steward_Overview.pptx) | A concise illustrated overview of the question-to-evidence workflow. |
 | [Software ZIP](../output/software/BioGraph_Steward_Software.zip) | Portable Python core, launch instructions and upstream notices. No source snapshots, credentials, reference labels or model weights. |
+| Complete editable native KRAS workspace ZIP | Available in the public app beside its read-only notice and under **Export**. It includes the same saved graph, attached sources, saved KRAS question, recorded job and local launcher. See **OPEN_WORKSPACE**. |
 | [Graph and source packages](GOLD_SET_INTERFACE.md#protected-downloads) | Complete graph, decisions, preserved input and exact Pharos-only comparator. Separate authorized assets under source terms. |
 | `BioGraph_Steward_APP_PSEN_Example.zip` | Self-contained local APP/PSEN example, with code, real source data and the recorded APP location-agent job. See its **OPEN_EXAMPLE.txt**. |
 | `BioGraph_Steward_Source_Verifier_Code.zip` | Code-only research adjunct. **README_REPRODUCTION.txt** specifies its matching checkout, optional runtime and separately licensed pinned inputs. It contains no reference cases or model outputs. |

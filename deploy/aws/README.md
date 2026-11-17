@@ -22,6 +22,16 @@ that the smaller Free Plan instance can host these full profiles. See the
 [delivery receipt](../../docs/evaluations/usability_delivery_20261117/hosted_acceptance.json)
 and Docker's [memory-limit documentation](https://docs.docker.com/engine/containers/resource_constraints/).
 
+The public KRAS example also offers **Download an editable local copy**. Its prepared
+ZIP includes the app, full saved graph, source files, question and recorded
+agent job. A local Python launcher opens the copy for evidence reviews that
+save in a new run. The hosted snapshot stays read-only. The backend streams a
+checksum-verified archive from a separate read-only `BIOGRAPH_EDITABLE_COPY_DIR`
+mount on the persistent data volume, outside the immutable source snapshot.
+The gateway permits only the registered metadata and archive GET/HEAD routes;
+it does not enable public writes, model calls or fresh retrieval. See the
+[editable-copy delivery record](../../docs/evaluations/editable_demo_copy_20261117/README.md).
+
 ## Start with the Free Plan
 
 The initial deployment can use the **Free Plan and signup credits** (for

@@ -68,9 +68,12 @@ A separate [APP/PSEN worked example](docs/evaluations/GENERALIZATION_EXAMPLE_202
 reuses the constructor and agent on three proteins outside the original 99.
 It includes a complete local real-data packet and the same fixed localization
 comparison, with its neutral result and reference-coverage limits preserved.
-Download the recorded-agent JSON from the demo. Complete graph and source
-packets are supplied separately. [How to use it](HOW_TO_USE.md) explains the
-steps and files.
+To continue with the same KRAS workspace, choose **Download an editable local
+copy** beside the read-only notice or under **Export**. The complete workspace
+ZIP includes the app, saved graph, attached sources, KRAS question, recorded
+agent job and launch instructions. The smaller agent-record JSON remains a
+separate inspection download. [How to use it](HOW_TO_USE.md#5-continue-with-the-same-graph-locally)
+explains the local review steps.
 
 ## Current app, saved data and new runs
 
@@ -101,12 +104,32 @@ workspace. Updating application code does not refresh its upstream datasets. The
 application and saved artifacts.
 The [designated primary graph handoff](docs/GOLD_SET_INTERFACE.md) has its
 own verified decision ledger, preserved sources and exact captured Pharos-only
-comparator. These full graph/source packets are separate submission assets or
-authorized operator downloads; the public demo offers the recorded-agent JSON.
+comparator. Those graph-and-decision handoff packets remain separate submission
+assets or authorized operator downloads. The public complete-copy download is
+specifically the native KRAS source workspace, not the separate retained
+companion or Pharos comparator.
 
 ## Run locally
 
-For a complete real-data example, open the separately supplied
+For the exact hosted KRAS evidence graph, use **Download an editable local copy**
+in the public app. Extract the complete workspace ZIP into an empty directory,
+read **OPEN_WORKSPACE** and run:
+
+```sh
+python3 START_EDITABLE_LOCAL.py
+```
+
+The launcher chooses a free loopback port, opens the saved question in your
+browser and prints its address. With Python 3.10+, saved replay and reviews need
+no model, GPU, AWS account, installation or new source retrieval. Under
+**Inspect sources**, choose **Record evidence review**, enter a reviewer,
+decision and reason, then choose **Save review in a new run**. The app opens the
+reviewed copy and links back to the unchanged original. Local editing records
+evidence-review decisions and reasons; source records and identities remain
+preserved. [Copy delivery and verification](docs/evaluations/editable_demo_copy_20261117/README.md)
+records the exact package scope.
+
+For another complete real-data example, open the separately supplied
 `BioGraph_Steward_APP_PSEN_Example.zip`. Extract it into an empty directory and
 follow **OPEN_EXAMPLE.txt**, which selects the recorded APP location-agent job
 directly. Its runtime, source data and recorded job work offline with Python
@@ -132,9 +155,10 @@ python3 app.py
 ```
 
 Open `http://127.0.0.1:8765/`. A fresh checkout includes invented software
-fixtures. The complete real-data source packet is supplied separately under
-its source terms. Use the hosted site for the real examples, or open an
-authorized saved workspace with all its source files.
+fixtures. The complete KRAS workspace is available through the public app's
+prepared-copy download under its source terms. Use that package for an editable
+copy of the same real graph, or open another authorized saved workspace with all
+its source files.
 [START_HERE](START_HERE.md#local-setup) covers branch selection and setup.
 
 ## Developer, operator and research documentation

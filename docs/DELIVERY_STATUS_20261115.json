@@ -1,40 +1,59 @@
 {
-  "AWS_graph_change_scope": "Existing two-T4g Neptune mirror and read-only public snapshot retained. Public backend receives three UI file updates and a2\u21923GiB memory cap on its existing EC2 host. Original private application, graph, sources, decisions, environment and gateway remain unchanged. No new cloud resources.",
+  "AWS_graph_change_scope": "Existing public backend application-core update and image-only gateway update enable one registered, checksum-verified complete KRAS workspace download. The archive has a separate read-only EBS mount. The immutable732-file source snapshot, private app/environment,3GiB/1CPU allowance and two-T4g Neptune mirror stay unchanged. No new cloud resources or public writes.",
   "authorized_AWS_interpretation_update_complete": true,
   "browser_visual_check": {
-    "format": "biograph-steward.review-workflow-hosted-browser.v1",
+    "format": "biograph.editable-copy-actual-capture.v1",
     "passed": true,
-    "checked_at_UTC": "2026-11-17T14:22:09.107542+00:00",
-    "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
-    "actual_Chrome_browser": true,
-    "normal_HTTPS_without_security_bypass": true,
-    "token_entry_or_credential_submission": false,
+    "scope": "Hosted graph/question/download control rendered in actual Chrome. Public archive verified independently over anonymous HTTPS. The byte-identical locally prepared archive was replayed and reviewed in the browser. Managed Chrome blocked its own ZIP transfer; no bypass.",
     "source_workspace": "native_evidence_workspace_20261115",
-    "saved_question": "native_physical_KRAS_question_v3_20261115",
-    "reading_CDC42BPB_summary_preserved_AKT1_diagram": true,
-    "Show_in_graph_selected_CDC42BPB_and_focused_diagram": true,
-    "source_inspection_completed_HTTP_200": true,
-    "public_Record_evidence_review_control_disabled": true,
-    "editable_local_copy_instructions_visible": true,
-    "new_model_calls": 0,
-    "fresh_source_retrieval": 0,
-    "public_graph_or_review_edits": 0,
-    "new_independent_usability_study_claimed": false,
-    "frames": [
+    "source_revision": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+    "complete_workspace_download_verified": true,
+    "download_verification_channel": "Independent anonymous HTTPS stream, before managed Chrome policy block was observed.",
+    "actual_Chrome_download_completed": false,
+    "managedChrome_policy_block": true,
+    "no_browser_security_policy_bypassed": true,
+    "same_package_bytes_prepared_locally": true,
+    "package_sha256": "dcae1dbbfcc5c99bca3ff51cddf62d3a2f1f287d60a3feef8923bffc8effdd55",
+    "native_source_replay_verified": true,
+    "launcher_opens_saved_KRAS_question": true,
+    "new_saved_runs": 1,
+    "new_run": "20261117T151428Z_1b2ea8d0",
+    "review_decision": "provisional",
+    "original_workspace_unchanged": true,
+    "original_source_files_unchanged": true,
+    "model_calls": 0,
+    "source_retrievals": 0,
+    "isolated_local_copy": true,
+    "public_demo_read_only": true,
+    "images": [
       {
-        "file": "runs/final_usability_20261117/hosted_browser/public_selected_graph.png",
-        "bytes": 108663,
-        "sha256": "8a0a8091759a4b6c137cce21ec0d737d6ec6ee5518ce8d6a944f8853deb71463"
+        "file": "docs/evaluations/editable_demo_copy_20261117/images/hosted_KRAS_editable_download.png",
+        "sha256": "7063af1330610f5eff44ab9385acb31294a12e66401cd75c72f6f9f2564afd38",
+        "classification": "actual_hosted_app_UI_prepared_native_workspace_download"
       },
       {
-        "file": "runs/final_usability_20261117/hosted_browser/public_read_only_review.png",
-        "bytes": 96235,
-        "sha256": "9be9b6f9a4f4c5db1a2fb2e9223118aa24be721472e968a3fdfd1a9d61bb0760"
+        "file": "docs/evaluations/editable_demo_copy_20261117/images/local_same_KRAS_graph.png",
+        "sha256": "8d676f4e2e57a0c140cd82ee30ec17cea981231acdad0be5026c1ca284b01039",
+        "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+      },
+      {
+        "file": "docs/evaluations/editable_demo_copy_20261117/images/local_KRAS_provisional_review_form.png",
+        "sha256": "e39aab7a15d94ff0808acf65c6235b2a815401a1b07317d545ad81b01dc2cd1b",
+        "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+      },
+      {
+        "file": "docs/evaluations/editable_demo_copy_20261117/images/local_KRAS_review_saved_new_run.png",
+        "sha256": "b1025560e2b64987a50c186c5c18d21bc8fb8daf034acc5ed34abd7727461492",
+        "classification": "actual_local_app_UI_isolated_provisional_review_demo"
       }
     ],
-    "capacity_fix": "Existing public backend2GiB\u21923GiB; measured peak2.080GiB, no new VM/database/gateway/permissions.",
-    "private_service_updated": false,
-    "earlier_local_review_proof": "UI_checks.json"
+    "initial_network_interruption": {
+      "browser_code": "ERR_NETWORK_CHANGED",
+      "reloaded_after_diagnosis": true,
+      "graph_and_question_rendered_after_reload": true,
+      "server_restart_or_workaround_performed": false
+    },
+    "not_an_independent_usability_or_biological_accuracy_study": true
   },
   "closing_delivery_checklist": "docs/evaluations/DELIVERY_COMPLETENESS_20261115.md",
   "created_at_UTC": "2026-11-15T03:10:28.576030+00:00",
@@ -42,14 +61,14 @@
   "format": "biograph-steward.delivery-status.v1",
   "github_review_delivery": {
     "branch": "codex/contextual-gain-delivery",
-    "current_runtime_source_revision": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+    "current_runtime_source_revision": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
     "private_repository": true,
     "main_modified": false,
     "main_commit_unchanged": "586ec35d33e9429dde91057c4130542988a7ca02",
     "repository_visibility_modified": false,
     "final_public_submission": false,
     "canonical_file_delivery": "Current artifacts tracked on private codex/contextual-gain-delivery; runtime source pinned separately from delivery-only metadata.",
-    "current_delivery_assets_scope": "Canonical final report, narrated demonstration, slides and software. Complete source-bearing graphs and real local example are separately prepared under their source terms. Repository publication and organizer submission remain owner actions.",
+    "current_delivery_assets_scope": "Final report, demo, software and operating documentation include the complete KRAS local-copy workflow. The public app supplies the data-bearing download under its source terms. Repository publication and organizer submission remain owner actions.",
     "canonical_current_delivery_files": [
       "output/docx/BioGraph_Steward_Final_Report.docx",
       "output/pdf/BioGraph_Steward_Final_Report.pdf",
@@ -62,7 +81,7 @@
       "output/software/BioGraph_Steward_Software.zip",
       "output/research/BioGraph_Steward_Source_Verifier_Code.zip"
     ],
-    "current_runtime_source_scope": "Updated code-only and APP/PSEN local packages; separate public-backend activation receipt records hosted state. Private operator service remains at its previously verified revision."
+    "current_runtime_source_scope": "Four changed application-core files. Public deployment verifies the overlay against this commit; the portable archive contains its full committed runtime."
   },
   "hosted_review": {
     "authenticated_acceptance_receipt": {
@@ -348,10 +367,10 @@
     "hosted_deployment_acceptance_has_separate_receipt": true,
     "latest_receipt": "docs/evaluations/source_agent_20261116/presentation_delivery.json"
   },
-  "purpose": "Final delivery artifact identities, deployed saved-demo capability and qualified scientific scope. Earlier checkpoints remain dated history.",
+  "purpose": "Final application delivery, including a verified complete copy of the hosted KRAS evidence workspace for personal local review.",
   "reader_date": "2026-11-17",
   "resources": {
-    "AWS_reviewer_service": "Keep the existing public saved-demo gateway/backend and private Neptune available for judging. Public access requires no token, account or model.",
+    "AWS_reviewer_service": "Keep the existing AWS public reviewer site available for judging. It serves saved real evidence and one prepared local-copy download without a token, account or running model.",
     "Brev_GPU_or_model_needed_for_review": false,
     "Brev_can_stop_compute_keep_persistent_disk": true,
     "Brev_compute_needed_for_current_work": false,
@@ -805,16 +824,16 @@
     "final_public_repository_handoff_completed_by_this_audit": false,
     "latest_indexed_software_ZIP": {
       "path": "output/software/BioGraph_Steward_Software.zip",
-      "bytes": 1072487,
-      "sha256": "7b9791572979266bfebcaeb7ecbb0240db8d6634ae16586ae0773a7634c30ee5"
+      "bytes": 1083009,
+      "sha256": "8df05494e79d84b422596bfb80cf25adc5b64075b04246f80ded777d22419c1f"
     },
-    "latest_indexed_software_ZIP_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+    "latest_indexed_software_ZIP_commit": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
     "latest_indexed_software_acceptance": {
-      "path": "docs/evaluations/usability_delivery_20261117/packaging.json",
-      "bytes": 1247,
-      "sha256": "8be7ba6cc0dc77b0e3e49b31a91573cf79bd04f348ea56c80564e608499f2195"
+      "path": "docs/evaluations/editable_demo_copy_20261117/software.json",
+      "bytes": 701,
+      "sha256": "a3c76e42256cc581b6c74527f96d4426c14d88655f55aed35df9ffc88a27eefc"
     },
-    "latest_indexed_software_scope": "Committed UI-only runtime update; core Python backends, source tools and controller unchanged. Existing clean core acceptance reused with new UI/public-mode checks and real-source reviewed-copy replay.",
+    "latest_indexed_software_scope": "Committed application core with prepared streaming workspace downloads and local-copy instructions. Existing source adapters, question/agent verifiers and new-run review mechanism remain unchanged.",
     "native_location_source_profile": {
       "AWS_updated": false,
       "ND_root_no_data_excluded": true,
@@ -1110,7 +1129,7 @@
     "Owner: merge the delivery branch pull request into main and change repository visibility in GitHub settings.",
     "Owner: provide the final report, repository/demo links and separate graph/example assets through the organizer submission channel."
   ],
-  "updated_at_UTC": "2026-11-17T06:58:44.681558+00:00",
+  "updated_at_UTC": "2026-11-17T15:52:31.035452+00:00",
   "workspace": {
     "baseline_evidence": 16985,
     "complete_original_baseline_and_abstentions_preserved": true,
@@ -1182,21 +1201,19 @@
     "models_or_new_retrieval_requested": false
   },
   "walkthrough": {
-    "path": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
-    "bytes": 6744181,
-    "sha256": "8ae3a27059bd74e797ead9fa2796cbfbdee396137cf08edc7306fdfeff3adfed",
-    "runtime_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
-    "seconds": 237.7,
-    "timeline_seconds": 237.6,
-    "capture_method": "Narrated edited still states from the actual local application with verified saved research data, plus one clearly labeled rendering of two unchanged scientific-report tables.",
+    "format": "biograph-steward.actual-screenshot-walkthrough.v3",
+    "capture_mode": "mixed_hosted_button_and_local_identical_build",
+    "actual_application_screenshots": true,
+    "actual_hosted_app_screenshots": true,
     "continuous_screen_recording": false,
-    "value_first_story": true,
-    "demonstrated_citation": "E002: KRAS\u2013CDC42BPB",
-    "demonstrated_source_additions": {
-      "path": "docs/evaluations/source_agent_20261116/demonstrated_additions.json",
-      "bytes": 5853,
-      "sha256": "650819aad10b8d567839c9e32b82496f5c8faa6e39d84c968c8621c469c11ee6"
-    },
+    "edited_still_capture_disclosure_in_video_and_transcript": true,
+    "only_image_crop_scale_and_letterbox": true,
+    "login_token_account_or_raw_JSON_shown": false,
+    "depicted_recorded_agent_job_id": "source_agent_eval_dc7b597201da_S01",
+    "depicted_job_is_verified_prior_actual_model_execution": true,
+    "synthetic_voice": "Installed macOS Samantha",
+    "external_speech_service": false,
+    "timeline_seconds": 272.6,
     "chapters": [
       {
         "id": "start",
@@ -1208,64 +1225,503 @@
         "id": "added_pair",
         "title": "One concrete addition: KRAS\u2013CDC42BPB",
         "start_seconds": 30.1,
-        "end_seconds": 60.4
+        "end_seconds": 60.400000000000006
       },
       {
         "id": "measured",
         "title": "More published location labels recovered",
-        "start_seconds": 60.4,
+        "start_seconds": 60.400000000000006,
         "end_seconds": 89.4
       },
       {
         "id": "agent",
         "title": "The agent turns a question into inspectable evidence",
         "start_seconds": 89.4,
-        "end_seconds": 124.6
+        "end_seconds": 124.60000000000001
+      },
+      {
+        "id": "edit_copy",
+        "title": "Take the same graph home and record your review",
+        "start_seconds": 124.60000000000001,
+        "end_seconds": 159.60000000000002
       },
       {
         "id": "prediction",
         "title": "A separate, measured protein-function prediction gain",
-        "start_seconds": 124.6,
-        "end_seconds": 162.9
+        "start_seconds": 159.60000000000002,
+        "end_seconds": 197.90000000000003
       },
       {
         "id": "review",
         "title": "Qualification with recoverable decisions",
-        "start_seconds": 162.9,
-        "end_seconds": 191.1
+        "start_seconds": 197.90000000000003,
+        "end_seconds": 226.10000000000002
       },
       {
         "id": "interpretation",
         "title": "How to interpret these measured gains",
-        "start_seconds": 191.1,
-        "end_seconds": 213.7
+        "start_seconds": 226.10000000000002,
+        "end_seconds": 248.70000000000002
       },
       {
         "id": "export",
         "title": "A more useful, inspectable starting point",
-        "start_seconds": 213.7,
-        "end_seconds": 237.6
+        "start_seconds": 248.70000000000002,
+        "end_seconds": 272.6
       }
     ],
+    "additional_capture_receipt_sha256": [
+      "651b90c30a45234f6d32a881749a688034aa9e6d17e3ef67999f764f796811c7",
+      "35cdaf101be94a9e0edd48c6a7e43e9fa8705ea1ccd1dc13ea910d7f58bdbd9a"
+    ],
+    "image_sources": [
+      {
+        "scene": "start",
+        "filename": "current_local_agent_start.png",
+        "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+        "seconds": 8,
+        "crop": null
+      },
+      {
+        "scene": "start",
+        "filename": "current_local_agent_start.png",
+        "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+        "seconds": 22.1,
+        "crop": {
+          "x": 60,
+          "y": 360,
+          "width": 1320,
+          "height": 570
+        }
+      },
+      {
+        "scene": "added_pair",
+        "filename": "E002_actual_evidence_graph.png",
+        "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
+        "seconds": 4,
+        "crop": null
+      },
+      {
+        "scene": "added_pair",
+        "filename": "E002_actual_pair_coverage_identity.png",
+        "sha256": "43257b8064148d637c264e18158259f63fb98e6506bb9b6a0991503888203913",
+        "seconds": 11,
+        "crop": null
+      },
+      {
+        "scene": "added_pair",
+        "filename": "E002_actual_native_STRING_source.png",
+        "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
+        "seconds": 10,
+        "crop": null
+      },
+      {
+        "scene": "added_pair",
+        "filename": "E002_actual_review_proposal.png",
+        "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
+        "seconds": 5.3,
+        "crop": null
+      },
+      {
+        "scene": "measured",
+        "filename": "direct_location_reference.png",
+        "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
+        "seconds": 17,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 400
+        }
+      },
+      {
+        "scene": "measured",
+        "filename": "direct_opencell_reference.png",
+        "sha256": "ae90d99ea6df72d4474181d80362b78631e1c72cb2ecdf4c6b6c3c78c9e4b334",
+        "seconds": 12.0,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 286
+        }
+      },
+      {
+        "scene": "agent",
+        "filename": "current_local_agent_plan.png",
+        "sha256": "1461dc45b541f25f840c433ccaf2be43b0367f17b8a3b7b3d3726ac53ab83646",
+        "seconds": 10,
+        "crop": null
+      },
+      {
+        "scene": "agent",
+        "filename": "E002_actual_evidence_graph.png",
+        "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
+        "seconds": 9,
+        "crop": null
+      },
+      {
+        "scene": "agent",
+        "filename": "E002_actual_review_proposal.png",
+        "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
+        "seconds": 16.2,
+        "crop": null
+      },
+      {
+        "scene": "edit_copy",
+        "filename": "hosted_KRAS_editable_download.png",
+        "sha256": "7063af1330610f5eff44ab9385acb31294a12e66401cd75c72f6f9f2564afd38",
+        "seconds": 8,
+        "crop": {
+          "x": 110,
+          "y": 240,
+          "width": 1330,
+          "height": 280
+        }
+      },
+      {
+        "scene": "edit_copy",
+        "filename": "local_same_KRAS_graph.png",
+        "sha256": "8d676f4e2e57a0c140cd82ee30ec17cea981231acdad0be5026c1ca284b01039",
+        "seconds": 7,
+        "crop": {
+          "x": 125,
+          "y": 145,
+          "width": 1305,
+          "height": 458
+        }
+      },
+      {
+        "scene": "edit_copy",
+        "filename": "local_KRAS_provisional_review_form.png",
+        "sha256": "e39aab7a15d94ff0808acf65c6235b2a815401a1b07317d545ad81b01dc2cd1b",
+        "seconds": 10,
+        "crop": {
+          "x": 900,
+          "y": 135,
+          "width": 510,
+          "height": 480
+        }
+      },
+      {
+        "scene": "edit_copy",
+        "filename": "local_KRAS_review_saved_new_run.png",
+        "sha256": "b1025560e2b64987a50c186c5c18d21bc8fb8daf034acc5ed34abd7727461492",
+        "seconds": 10,
+        "crop": {
+          "x": 895,
+          "y": 215,
+          "width": 515,
+          "height": 390
+        }
+      },
+      {
+        "scene": "prediction",
+        "filename": "prediction_saved_report.png",
+        "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+        "seconds": 38.3,
+        "crop": null
+      },
+      {
+        "scene": "review",
+        "filename": "current_local_applied_qualification.png",
+        "sha256": "eead630ee0d754f7ac3191ddd029522b64b2bf74a37417cb7795ca225741956e",
+        "seconds": 28.2,
+        "crop": null
+      },
+      {
+        "scene": "interpretation",
+        "filename": "direct_location_reference.png",
+        "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
+        "seconds": 10,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 400
+        }
+      },
+      {
+        "scene": "interpretation",
+        "filename": "E002_actual_native_STRING_source.png",
+        "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
+        "seconds": 6,
+        "crop": null
+      },
+      {
+        "scene": "interpretation",
+        "filename": "prediction_saved_report.png",
+        "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+        "seconds": 6.6,
+        "crop": null
+      },
+      {
+        "scene": "export",
+        "filename": "current_local_agent_record_download.png",
+        "sha256": "ba201b0b67e00c6f9c63e909774db7806d3f6231593f5d875e92166eaf7c2c14",
+        "seconds": 8,
+        "crop": {
+          "x": 60,
+          "y": 250,
+          "width": 1320,
+          "height": 690
+        }
+      },
+      {
+        "scene": "export",
+        "filename": "current_local_retained_export.png",
+        "sha256": "d08adcab4374cd005c29ec61add768a3781aea5a45c766887e0cb7d12ab6de3f",
+        "seconds": 9,
+        "crop": {
+          "x": 60,
+          "y": 310,
+          "width": 1320,
+          "height": 605
+        }
+      },
+      {
+        "scene": "export",
+        "filename": "current_local_agent_start.png",
+        "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+        "seconds": 6.9,
+        "crop": {
+          "x": 60,
+          "y": 360,
+          "width": 1320,
+          "height": 570
+        }
+      }
+    ],
+    "caption_band_outside_app_frame": true,
+    "captions_and_transcript_use_canonical_gene_spellings": true,
+    "full_video_decode_passed": true,
+    "visual_review_pending": true,
+    "files": {
+      "BioGraph_Steward_Walkthrough.mp4": {
+        "bytes": 7679539,
+        "sha256": "4343c2e353db63df3f0c5ff3f35dc8e8f127eeae33d63e59c0da924ecc363578"
+      },
+      "BioGraph_Steward_Walkthrough.vtt": {
+        "bytes": 6230,
+        "sha256": "2992cbc6e752611274de514fb5e26030808bd62c4c7ed56b5a4a0e43e606a504"
+      },
+      "BioGraph_Steward_Walkthrough.srt": {
+        "bytes": 6405,
+        "sha256": "27cdbef480cb7ad5a6fedb2c519468496818ba8c0f14a8d764b6545d162e4cd2"
+      },
+      "BioGraph_Steward_Walkthrough.txt": {
+        "bytes": 6547,
+        "sha256": "199c6dac44354091c6722a6f753b010b68566d07c3ccfc56d6cf12ac70b98c0e"
+      }
+    },
+    "source_config_sha256": "e02475d015c917d30a5e15a453b862dee1a0fa35d0437dae32e7571f5ab31953",
+    "actual_app_frames_are_not_reconstructed": true,
+    "all_visuals_are_app_UI": false,
     "contains_separately_labeled_scientific_report_tables": true,
-    "transcript": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
-    "captions": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
-    "alternate_captions": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
-    "receipt": {
-      "path": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
-      "bytes": 11964,
-      "sha256": "1c5fb7c343d7f6e75f4150988ad4c6118fd4b28dfa4a247d223adb6044c003ac"
+    "scientific_report_visuals": [
+      {
+        "capture_receipt": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_table_capture_receipt.json",
+        "capture_receipt_sha256": "ed1fa7c73adc07a0b49ac78fc1db46a4d557b756e344ae1fbbacbad0c92c8148",
+        "source_provenance": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/media/value_first_revision/prediction_saved_report_provenance.json",
+        "source_provenance_sha256": "ec1edd1f5eb556442a57a6fa113e83c601a4ee85f6ae7975635381e67b841275",
+        "classification": "rendered_unchanged_scientific_report_tables_not_app_UI"
+      }
+    ],
+    "demonstrated_additions_receipt": {
+      "path": "/Users/42573/biograph-steward-pharos/docs/evaluations/source_agent_20261116/demonstrated_additions.json",
+      "sha256": "650819aad10b8d567839c9e32b82496f5c8faa6e39d84c968c8621c469c11ee6"
     },
-    "acceptance": {
-      "path": "docs/evaluations/source_agent_20261116/media_delivery.json",
-      "bytes": 2652,
-      "sha256": "62ba9a373e53f00a852becdd776bb04f0e472d06e6be76e647732417753f02e7"
+    "mixed_capture_runtime_revisions": true,
+    "editable_copy_workspace": "native_evidence_workspace_20261115",
+    "editable_copy_download_verified": true,
+    "editable_copy_download_verification_channel": "Independent anonymous HTTPS stream, before managed Chrome policy block was observed.",
+    "actual_Chrome_download_completed": false,
+    "managedChrome_policy_block": true,
+    "no_browser_security_policy_bypassed": true,
+    "same_package_bytes_prepared_locally": true,
+    "editable_copy_package_sha256": "dcae1dbbfcc5c99bca3ff51cddf62d3a2f1f287d60a3feef8923bffc8effdd55",
+    "editable_copy_native_replay_verified": true,
+    "capture_provenance": {
+      "original_eight_scenes": {
+        "source_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
+        "receipt": "/Users/42573/biograph-steward-pharos/runs/source_agent_delivery_20261116/local_capture_ee3/receipt.json",
+        "receipt_sha256": "38d8b1be5b79f90ddbe2d6d914387a2bfab1d87eedf0f941570afcc754c246f4",
+        "review_edits": 0
+      },
+      "edit_copy_scene": {
+        "receipt": "/Users/42573/biograph-steward-pharos/runs/editable_demo_copy_20261117/browser/capture_receipt.json",
+        "receipt_sha256": "173ec24a760e376d5948b8b4c6825ccc8aa4863c1c5591ed80a782793cfc9c11",
+        "source_revision": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+        "isolated_local_copy": true,
+        "new_saved_runs": 1,
+        "review_decision": "provisional"
+      }
     },
-    "full_decode_audio_and_visual_checks_passed": true,
+    "capture_note": "Eight unchanged scenes retain accepted saved-data capture receipts. The replacement scene shows the actual hosted native KRAS editable-copy button and an isolated local graph, provisional review form and saved new run. The complete public ZIP was independently verified over anonymous HTTPS; its byte-identical locally prepared build was launched and reviewed. Managed Chrome blocked its own ZIP transfer; no completed browser transfer or security-policy bypass is claimed. Exactly one provisional review was saved as a new run; original 207 workspace files and sources remained byte-identical. No new model inference or scientific-source retrieval occurred. The shared site remains read-only.",
     "new_model_calls": 0,
     "new_scientific_source_retrievals": 0,
-    "new_statistics": false,
-    "no_login_tokens_shown": true
+    "review_demo_new_saved_runs": 1,
+    "review_demo_decision": "provisional",
+    "review_demo_is_biological_acceptance": false,
+    "original_workspaces_unchanged": true,
+    "original_source_files_unchanged": true,
+    "public_demo_read_only": true,
+    "personal_review_requires_editing_enabled_workspace": true,
+    "primary_prediction_scope": "Partially known biological-process functions; fixed-ontology micro-Fmax is a benchmark score, not graph-assertion accuracy.",
+    "raw_input_frame_count": 23,
+    "per_state_classification": [
+      {
+        "scene": "start",
+        "filename": "current_local_agent_start.png",
+        "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "start",
+        "filename": "current_local_agent_start.png",
+        "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "added_pair",
+        "filename": "E002_actual_evidence_graph.png",
+        "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "added_pair",
+        "filename": "E002_actual_pair_coverage_identity.png",
+        "sha256": "43257b8064148d637c264e18158259f63fb98e6506bb9b6a0991503888203913",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "added_pair",
+        "filename": "E002_actual_native_STRING_source.png",
+        "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "added_pair",
+        "filename": "E002_actual_review_proposal.png",
+        "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "measured",
+        "filename": "direct_location_reference.png",
+        "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
+        "classification": "actual_saved_app_assessment"
+      },
+      {
+        "scene": "measured",
+        "filename": "direct_opencell_reference.png",
+        "sha256": "ae90d99ea6df72d4474181d80362b78631e1c72cb2ecdf4c6b6c3c78c9e4b334",
+        "classification": "actual_saved_app_assessment"
+      },
+      {
+        "scene": "agent",
+        "filename": "current_local_agent_plan.png",
+        "sha256": "1461dc45b541f25f840c433ccaf2be43b0367f17b8a3b7b3d3726ac53ab83646",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "agent",
+        "filename": "E002_actual_evidence_graph.png",
+        "sha256": "b948b4c810c6bef6640552b02b28b5481a9c219e4bddb95491f2265df19bb2c7",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "agent",
+        "filename": "E002_actual_review_proposal.png",
+        "sha256": "30c54b8f163b43399fbab85fafd2fdba5d623e291aa1d49e2d3e418d9cfe9784",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "edit_copy",
+        "filename": "hosted_KRAS_editable_download.png",
+        "sha256": "7063af1330610f5eff44ab9385acb31294a12e66401cd75c72f6f9f2564afd38",
+        "classification": "actual_hosted_app_UI_prepared_native_workspace_download"
+      },
+      {
+        "scene": "edit_copy",
+        "filename": "local_same_KRAS_graph.png",
+        "sha256": "8d676f4e2e57a0c140cd82ee30ec17cea981231acdad0be5026c1ca284b01039",
+        "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+      },
+      {
+        "scene": "edit_copy",
+        "filename": "local_KRAS_provisional_review_form.png",
+        "sha256": "e39aab7a15d94ff0808acf65c6235b2a815401a1b07317d545ad81b01dc2cd1b",
+        "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+      },
+      {
+        "scene": "edit_copy",
+        "filename": "local_KRAS_review_saved_new_run.png",
+        "sha256": "b1025560e2b64987a50c186c5c18d21bc8fb8daf034acc5ed34abd7727461492",
+        "classification": "actual_local_app_UI_isolated_provisional_review_demo"
+      },
+      {
+        "scene": "prediction",
+        "filename": "prediction_saved_report.png",
+        "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+        "classification": "rendered_unchanged_scientific_report_tables_not_app_UI"
+      },
+      {
+        "scene": "review",
+        "filename": "current_local_applied_qualification.png",
+        "sha256": "eead630ee0d754f7ac3191ddd029522b64b2bf74a37417cb7795ca225741956e",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "interpretation",
+        "filename": "direct_location_reference.png",
+        "sha256": "181ec45e2215c994d8e2612c0b378bc6cc026ee5808a939b2fa47cde42cee8c5",
+        "classification": "actual_saved_app_assessment"
+      },
+      {
+        "scene": "interpretation",
+        "filename": "E002_actual_native_STRING_source.png",
+        "sha256": "70cb7f794fa7c67bf4d306cb14679b98b1f615d1781941fdab50cc33b9263e10",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "interpretation",
+        "filename": "prediction_saved_report.png",
+        "sha256": "124d0af3e72addb6829d76ce71a564bfa321a002f30b1e1cbca87740dc780ff9",
+        "classification": "rendered_unchanged_scientific_report_tables_not_app_UI"
+      },
+      {
+        "scene": "export",
+        "filename": "current_local_agent_record_download.png",
+        "sha256": "ba201b0b67e00c6f9c63e909774db7806d3f6231593f5d875e92166eaf7c2c14",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "export",
+        "filename": "current_local_retained_export.png",
+        "sha256": "d08adcab4374cd005c29ec61add768a3781aea5a45c766887e0cb7d12ab6de3f",
+        "classification": "actual_local_app_UI"
+      },
+      {
+        "scene": "export",
+        "filename": "current_local_agent_start.png",
+        "sha256": "858c1ad6c493999d0c23c461db7e5b2d35bdcb973a98055171425a6e71d415b3",
+        "classification": "actual_local_app_UI"
+      }
+    ],
+    "interpretation_boundaries_consolidated_in_one_brief_scene": true,
+    "value_first_story": true,
+    "canonical_unchanged": true,
+    "canonical_preservation_receipt": "/Users/42573/biograph-steward-pharos/runs/editable_demo_copy_20261117/media/prior_canonical_8eebab/preservation_receipt.json",
+    "visual_and_audio_review_pending": true,
+    "root_visual_and_text_review_passed": true,
+    "changed_scene_review": "Public button, same KRAS graph, complete provisional review form and new-run preservation message inspected at full size.",
+    "audio_verification": "Full decode and volume analysis passed. Narration source text checked; no claim of manual listening.",
+    "latest_delivery_receipt": {
+      "path": "docs/evaluations/editable_demo_copy_20261117/media.json",
+      "bytes": 1742,
+      "sha256": "47000add3db69a6918e649d947561787613cd4b84cff529d30d4a483e4e66888"
+    }
   },
   "previous_presentation_before_current_agent": {
     "file": "output/presentations/BioGraph_Steward_Overview.pptx",
@@ -1805,48 +2261,51 @@
     "receipt": "docs/evaluations/source_agent_20261116/hosted_browser_acceptance.json"
   },
   "current_delivery_pass": {
-    "runtime_commit": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+    "runtime_commit": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
     "public_runtime_and_restart_acceptance_passed": true,
-    "actual_hosted_browser_checks_passed": true,
+    "actual_hosted_browser_checks_passed": false,
     "source_and_production_review_bytes_preserved": true,
     "public_only_memory_allowance_increased_on_existing_host": true,
     "new_model_or_source_retrieval_calls": 0,
     "canonical_user_guide": "HOW_TO_USE.md",
     "latest_UI_proof": {
-      "path": "docs/evaluations/usability_delivery_20261117/UI_checks.json",
-      "bytes": 1223,
-      "sha256": "c0ef79c1169d43f8fc69885de579a58f7ccaf2de8d04864031b2e549ee309fe5"
+      "path": "docs/evaluations/editable_demo_copy_20261117/checks.json",
+      "bytes": 654,
+      "sha256": "aa690e25f953aa72776797f672a274f969ea84b5be6c83c959325fd14d24069a"
     },
     "latest_hosted_proof": {
-      "path": "docs/evaluations/usability_delivery_20261117/hosted_acceptance.json",
-      "bytes": 2193,
-      "sha256": "54d87cdd3cc09fa11bf18a3a0f7c167e24d4eb5fa572e2d015a0e11c34be2ff5"
+      "path": "docs/evaluations/editable_demo_copy_20261117/hosted_acceptance.json",
+      "bytes": 3445,
+      "sha256": "017ff88143440314d58b1b97e2a69e528562481fa4c602395d2dd98d0f192098"
     },
     "latest_browser_proof": {
-      "path": "docs/evaluations/usability_delivery_20261117/hosted_browser.json",
-      "bytes": 1528,
-      "sha256": "e80fc800dace71f50fd09f4a8f03528b8ff69e7f78f6879d32f2be15586f18f3"
+      "path": "docs/evaluations/editable_demo_copy_20261117/browser.json",
+      "bytes": 2734,
+      "sha256": "3477bec8f56f3aa1dd83e3183d603e4a19a4d17ab26b7abfef1412c64153c9c3"
     },
     "final_report": {
-      "path": "docs/evaluations/usability_delivery_20261117/report.json",
-      "bytes": 881,
-      "sha256": "b33d7996c6490b0cbd7e1812739d212052479a395bac7a43299c8c08b1a31d30"
+      "path": "docs/evaluations/editable_demo_copy_20261117/report.json",
+      "bytes": 929,
+      "sha256": "da4d0a5c900e7f1e66e1194733d8cd8e397c993671416e39c4b34a510900507b"
     },
     "media": {
-      "path": "docs/evaluations/usability_delivery_20261117/media.json",
-      "bytes": 1411,
-      "sha256": "73326d08a8e38128afd9866e17795c8b7ff5888d29501e9e624f0c9f358515e7"
+      "path": "docs/evaluations/editable_demo_copy_20261117/media.json",
+      "bytes": 1742,
+      "sha256": "47000add3db69a6918e649d947561787613cd4b84cff529d30d4a483e4e66888"
     },
     "software_and_real_example": {
-      "path": "docs/evaluations/usability_delivery_20261117/packaging.json",
-      "bytes": 1247,
-      "sha256": "8be7ba6cc0dc77b0e3e49b31a91573cf79bd04f348ea56c80564e608499f2195"
+      "path": "docs/evaluations/editable_demo_copy_20261117/package.json",
+      "bytes": 1280,
+      "sha256": "11d40cd9353582b574d992ec100056404f6547de663c6788fc376751beb3a406"
     },
     "private_operator_service_unchanged": true,
     "older_full_core_acceptance_reused": "docs/evaluations/democratization_delivery_20261116/software_acceptance.json",
     "source_adapters_review_backend_and_agent_controller_unchanged": true,
     "final_publication_and_submission_performed": false,
-    "owned_local_review_server_stopped": true
+    "owned_local_review_server_stopped": true,
+    "actual_hosted_graph_question_download_control_rendering_passed": true,
+    "actual_Chrome_download_completed": false,
+    "browser_transfer_limit": "Managed Chrome blocked the ZIP with its organization policy. No bypass. Earlier anonymous HTTPS byte verification and byte-identical local review are separate passed checks."
   },
   "previous_final_product_delivery": {
     "snapshot_of_pre_update_status": true,
@@ -2568,33 +3027,33 @@
   "canonical_artifact_pins": {
     "output/docx/BioGraph_Steward_Final_Report.docx": {
       "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12283,
-      "sha256": "acc66ac0e1311d9e8ce1967918f58353a2b90e628aa57804fb95898d53dfdf67"
+      "bytes": 12266,
+      "sha256": "ebe1b1b9dcf3f12503fca1991a89704a2c541e76481a9a08245159bf4725cc73"
     },
     "output/pdf/BioGraph_Steward_Final_Report.pdf": {
       "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
-      "bytes": 95490,
-      "sha256": "c0041aa8c0838cf41052f9675e09b295d778371f8488894813d9357c4d979946"
+      "bytes": 95499,
+      "sha256": "5f10736f28c91790f86bc9a436c20dd702c9979c2b4ec4ff3b3f8503a88234b6"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.mp4": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.mp4",
-      "bytes": 7609388,
-      "sha256": "8eebab19f2aac21a50e8f4538636fb1ec992f44c2f0633126d250ec7c34bd5c6"
+      "bytes": 7679539,
+      "sha256": "4343c2e353db63df3f0c5ff3f35dc8e8f127eeae33d63e59c0da924ecc363578"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.txt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.txt",
-      "bytes": 6261,
-      "sha256": "f0479ee3834c347b8379a703b78779848c3e534f3a32db188f8b6ae81cf12bf0"
+      "bytes": 6547,
+      "sha256": "199c6dac44354091c6722a6f753b010b68566d07c3ccfc56d6cf12ac70b98c0e"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.vtt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.vtt",
-      "bytes": 6143,
-      "sha256": "d23ad750c8ebf24c4928c8cc7ca12774a4a57c2cf594d2c1b688fb6d41210e3d"
+      "bytes": 6230,
+      "sha256": "2992cbc6e752611274de514fb5e26030808bd62c4c7ed56b5a4a0e43e606a504"
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.srt": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.srt",
-      "bytes": 6315,
-      "sha256": "7f5170707fea2d507510c19a0cd0f1d078f55819d722e61367e9b1a70f1aa3ee"
+      "bytes": 6405,
+      "sha256": "27cdbef480cb7ad5a6fedb2c519468496818ba8c0f14a8d764b6545d162e4cd2"
     },
     "output/presentations/BioGraph_Steward_Overview.pptx": {
       "path": "output/presentations/BioGraph_Steward_Overview.pptx",
@@ -2603,13 +3062,13 @@
     },
     "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json": {
       "path": "output/walkthrough/BioGraph_Steward_Walkthrough.receipt.json",
-      "bytes": 18203,
-      "sha256": "be9970b706ff86b99b04a3302940d5c8ad7d81a9332c5df58bd204e0a9b30691"
+      "bytes": 19126,
+      "sha256": "acfa3708a6fb933a7049938ddcfe5b6e0cad59dc23f08acbb86f23ce06e0f61a"
     },
     "output/software/BioGraph_Steward_Software.zip": {
       "path": "output/software/BioGraph_Steward_Software.zip",
-      "bytes": 1072487,
-      "sha256": "7b9791572979266bfebcaeb7ecbb0240db8d6634ae16586ae0773a7634c30ee5"
+      "bytes": 1083009,
+      "sha256": "8df05494e79d84b422596bfb80cf25adc5b64075b04246f80ded777d22419c1f"
     },
     "output/research/BioGraph_Steward_Source_Verifier_Code.zip": {
       "path": "output/research/BioGraph_Steward_Source_Verifier_Code.zip",
@@ -2618,110 +3077,72 @@
     }
   },
   "final_report": {
-    "format": "biograph-steward.holistic-final-report.v1",
-    "status": "prepared_for_final_submission",
-    "checked_at_UTC": "2026-11-17T14:22:09.107542+00:00",
+    "format": "biograph.editable-copy-report-revision.v1",
+    "pages": 4,
+    "page_word_counts": [
+      193,
+      354,
+      372,
+      269
+    ],
+    "title": "BioAgent KGCC \u2014 BioGraph Steward Project Report",
+    "changes": [
+      "Complete KRAS workspace download and local new-run review workflow."
+    ],
+    "all_pages_visually_inspected": true,
+    "body_font_or_template_layout_changed": false,
+    "changed_docx_parts": [
+      "word/document.xml"
+    ],
+    "scientific_measurements_unchanged": true,
+    "review_guides_or_deadline_reminders_added": false,
     "docx": {
       "path": "output/docx/BioGraph_Steward_Final_Report.docx",
-      "bytes": 12283,
-      "sha256": "acc66ac0e1311d9e8ce1967918f58353a2b90e628aa57804fb95898d53dfdf67"
+      "bytes": 12266,
+      "sha256": "ebe1b1b9dcf3f12503fca1991a89704a2c541e76481a9a08245159bf4725cc73"
     },
     "pdf": {
       "path": "output/pdf/BioGraph_Steward_Final_Report.pdf",
-      "bytes": 95490,
-      "sha256": "c0041aa8c0838cf41052f9675e09b295d778371f8488894813d9357c4d979946"
+      "bytes": 95499,
+      "sha256": "5f10736f28c91790f86bc9a436c20dd702c9979c2b4ec4ff3b3f8503a88234b6"
     },
-    "pages": 4,
-    "page_word_counts": [
-      189,
-      353,
-      372,
-      270
-    ],
-    "title": "BioAgent KGCC \u2014 BioGraph Steward Project Report",
-    "section_order": [
-      "Team Information",
-      "Key Accomplishments",
-      "Approach and design",
-      "Measured outcomes",
-      "Scope and opportunities",
-      "Final deliverables"
-    ],
-    "user_requested_reordering": true,
-    "subtitle_reminder_deadline_and_publication_promise_removed": true,
-    "team_review_guide_included": false,
-    "template_table_geometry_styles_numbering_and_opaque_parts_preserved": true,
-    "source_reference_sha256": "18a52108e624a98155fcd3edc4bd8f379246441cd6ea8e65842488bc7117feda",
-    "changed_package_parts": [
-      "word/document.xml",
-      "word/_rels/document.xml.rels"
-    ],
-    "quality": {
-      "canonical_bundled_render_passed": true,
-      "all_four_pages_root_visually_reviewed_at_full_size": true,
-      "clipping_overlap_blank_or_orphan_pages": false,
-      "body_font_points": 12,
-      "font_shrink_to_fit": false,
-      "formal_ProtBoost_and_INDRA_references_verified": true,
-      "credentials_included": false,
-      "new_scientific_results_inferred_from_layout": false,
-      "coverage_and_PK_definition_checked_against_pinned_native_evaluator": true
-    },
-    "scientific_scope": {
-      "workflow_capability_then_methods_then_measurements": true,
-      "primary_and_companion_graph_roles_separate": true,
-      "six_fixed_supported_agent_cases_across_two_cohorts": true,
-      "three_unsupported_preflight_stops_not_model_refusals": true,
-      "new_APP_cohort_added_location_recovery_claimed": false,
-      "historical_function_forecasts_separate_from_main99_graph": true,
-      "CIViC_separate_clinical_workflow": true,
-      "source_verifier_is_research_not_automatic_Pharos_pruning": true,
-      "whole_graph_truth_or_transferable_prediction_superiority_claimed": false,
-      "complete_native_eligible_temporal_forecast_frame": 3300,
-      "graph_covered_forecast_targets": 3297,
-      "off_graph_forecast_targets_retained": 3,
-      "primary_function_endpoint": "Additional biological-process annotations for proteins with prior annotations in the same aspect (PK-BP)",
-      "all20412_graph_proteins_claimed_as_scored": false
-    },
-    "repository_visibility_changed": false,
-    "submitted_or_emailed": false,
-    "application_graph_or_model_changed_for_authoring": false,
-    "coverage_qualification": "docs/evaluations/final_delivery_20261117/prediction_coverage_feasibility.md",
-    "receipt": "docs/evaluations/usability_delivery_20261117/report.json",
-    "review_workflow_explained": true,
-    "current_delivery_type": "Four-page final project report with public read-only and local new-run review workflows.",
-    "word_counts_method": "Whitespace-separated words in pypdf text extraction of the current canonical PDF."
+    "canonical_promoted": true,
+    "receipt": {
+      "path": "docs/evaluations/editable_demo_copy_20261117/report.json",
+      "bytes": 929,
+      "sha256": "da4d0a5c900e7f1e66e1194733d8cd8e397c993671416e39c4b34a510900507b"
+    }
   },
   "final_product_delivery_receipts": {
     "hosted": {
-      "path": "docs/evaluations/usability_delivery_20261117/hosted_acceptance.json",
-      "bytes": 2193,
-      "sha256": "54d87cdd3cc09fa11bf18a3a0f7c167e24d4eb5fa572e2d015a0e11c34be2ff5"
+      "path": "docs/evaluations/editable_demo_copy_20261117/hosted_acceptance.json",
+      "bytes": 3445,
+      "sha256": "017ff88143440314d58b1b97e2a69e528562481fa4c602395d2dd98d0f192098"
     },
     "browser": {
-      "path": "docs/evaluations/usability_delivery_20261117/hosted_browser.json",
-      "bytes": 1528,
-      "sha256": "e80fc800dace71f50fd09f4a8f03528b8ff69e7f78f6879d32f2be15586f18f3"
+      "path": "docs/evaluations/editable_demo_copy_20261117/browser.json",
+      "bytes": 2734,
+      "sha256": "3477bec8f56f3aa1dd83e3183d603e4a19a4d17ab26b7abfef1412c64153c9c3"
     },
     "software": {
-      "path": "docs/evaluations/usability_delivery_20261117/packaging.json",
-      "bytes": 1247,
-      "sha256": "8be7ba6cc0dc77b0e3e49b31a91573cf79bd04f348ea56c80564e608499f2195"
+      "path": "docs/evaluations/editable_demo_copy_20261117/software.json",
+      "bytes": 701,
+      "sha256": "a3c76e42256cc581b6c74527f96d4426c14d88655f55aed35df9ffc88a27eefc"
     },
     "report": {
-      "path": "docs/evaluations/usability_delivery_20261117/report.json",
-      "bytes": 881,
-      "sha256": "b33d7996c6490b0cbd7e1812739d212052479a395bac7a43299c8c08b1a31d30"
+      "path": "docs/evaluations/editable_demo_copy_20261117/report.json",
+      "bytes": 929,
+      "sha256": "da4d0a5c900e7f1e66e1194733d8cd8e397c993671416e39c4b34a510900507b"
     },
     "ui": {
-      "path": "docs/evaluations/usability_delivery_20261117/UI_checks.json",
-      "bytes": 1223,
-      "sha256": "c0ef79c1169d43f8fc69885de579a58f7ccaf2de8d04864031b2e549ee309fe5"
+      "path": "docs/evaluations/editable_demo_copy_20261117/checks.json",
+      "bytes": 654,
+      "sha256": "aa690e25f953aa72776797f672a274f969ea84b5be6c83c959325fd14d24069a"
     },
     "media": {
-      "path": "docs/evaluations/usability_delivery_20261117/media.json",
-      "bytes": 1411,
-      "sha256": "73326d08a8e38128afd9866e17795c8b7ff5888d29501e9e624f0c9f358515e7"
+      "path": "docs/evaluations/editable_demo_copy_20261117/media.json",
+      "bytes": 1742,
+      "sha256": "47000add3db69a6918e649d947561787613cd4b84cff529d30d4a483e4e66888"
     }
   },
   "protected_graph_downloads": {
@@ -5638,5 +6059,81 @@
     ],
     "receipt": "docs/evaluations/public_demo_20261117/hosted_browser_acceptance.json",
     "root_independent_visual_review_of_actual_start_source_and_mobile_frames_passed": true
+  },
+  "editable_demo_copy_delivery_20261117": {
+    "receipts": {
+      "report": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/report.json",
+        "bytes": 929,
+        "sha256": "da4d0a5c900e7f1e66e1194733d8cd8e397c993671416e39c4b34a510900507b"
+      },
+      "submission_bundle": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/submission_bundle.json",
+        "bytes": 414,
+        "sha256": "eb22d34dd8886c3e36540363f368454aa3ef959b38ffa31d375173d7377f5e13"
+      },
+      "checks": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/checks.json",
+        "bytes": 654,
+        "sha256": "aa690e25f953aa72776797f672a274f969ea84b5be6c83c959325fd14d24069a"
+      },
+      "documentation_checks": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/documentation_checks.json",
+        "bytes": 650,
+        "sha256": "36b40b8169f9b7e942f8be77b52d8f3a27547ee9101a39b8f346c9f0fa970f1d"
+      },
+      "package": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/package.json",
+        "bytes": 1280,
+        "sha256": "11d40cd9353582b574d992ec100056404f6547de663c6788fc376751beb3a406"
+      },
+      "media": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/media.json",
+        "bytes": 1742,
+        "sha256": "47000add3db69a6918e649d947561787613cd4b84cff529d30d4a483e4e66888"
+      },
+      "hosted_acceptance": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/hosted_acceptance.json",
+        "bytes": 3445,
+        "sha256": "017ff88143440314d58b1b97e2a69e528562481fa4c602395d2dd98d0f192098"
+      },
+      "compact_release": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/compact_release.json",
+        "bytes": 386,
+        "sha256": "62800c7c1f9e5bf24f34b43e00080b0e0b5683dffc7df8f9bc629a7be7f69330"
+      },
+      "runtime_bridge": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/runtime_bridge.json",
+        "bytes": 2405,
+        "sha256": "304221ffa68f8afa4c73292c10980206db98a0a4538e01fa436a7ab841650f02"
+      },
+      "software": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/software.json",
+        "bytes": 701,
+        "sha256": "a3c76e42256cc581b6c74527f96d4426c14d88655f55aed35df9ffc88a27eefc"
+      },
+      "local_review": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/local_review.json",
+        "bytes": 1519,
+        "sha256": "b1630ae22eee21eb47620fd02a6e08fbe3c1ee2705618982d70e0f0f43eeebb3"
+      },
+      "browser": {
+        "path": "docs/evaluations/editable_demo_copy_20261117/browser.json",
+        "bytes": 2734,
+        "sha256": "3477bec8f56f3aa1dd83e3183d603e4a19a4d17ab26b7abfef1412c64153c9c3"
+      }
+    },
+    "runtime_commit": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
+    "complete_native_KRAS_copy_available": true,
+    "public_shared_example_read_only": true,
+    "local_review_new_run_verified": true,
+    "original_source_files_preserved": 207,
+    "new_provisional_demo_runs_in_isolated_copy": 1,
+    "accepted_assertions_added": 0,
+    "original_scientific_results_changed": false,
+    "model_calls": 0,
+    "fresh_source_retrieval": 0,
+    "resources_created": 0,
+    "copy_scope": "Evidence-review decisions and reasons in a new local run; no arbitrary graph drawing."
   }
 }

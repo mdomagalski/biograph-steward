@@ -1,8 +1,8 @@
 {
   "format": "biograph-steward.actual-screenshot-walkthrough.v3",
-  "capture_mode": "local",
+  "capture_mode": "mixed_hosted_button_and_local_identical_build",
   "actual_application_screenshots": true,
-  "actual_hosted_app_screenshots": false,
+  "actual_hosted_app_screenshots": true,
   "continuous_screen_recording": false,
   "edited_still_capture_disclosure_in_video_and_transcript": true,
   "only_image_crop_scale_and_letterbox": true,
@@ -39,7 +39,7 @@
     },
     {
       "id": "edit_copy",
-      "title": "Explore an answer and save your own review",
+      "title": "Take the same graph home and record your review",
       "start_seconds": 124.60000000000001,
       "end_seconds": 159.60000000000002
     },
@@ -167,50 +167,50 @@
     },
     {
       "scene": "edit_copy",
-      "filename": "01_selected_graph.png",
-      "sha256": "299c184109de7a50a775f0b9e85075de788781b107f649e91108ce3b97cbcf03",
-      "seconds": 9,
-      "crop": {
-        "x": 110,
-        "y": 126,
-        "width": 1340,
-        "height": 756
-      }
-    },
-    {
-      "scene": "edit_copy",
-      "filename": "02_record_review.png",
-      "sha256": "8871b92629f17894aad962e2701fcf6d614e321a3045e097964dd353091f4f4a",
+      "filename": "hosted_KRAS_editable_download.png",
+      "sha256": "7063af1330610f5eff44ab9385acb31294a12e66401cd75c72f6f9f2564afd38",
       "seconds": 8,
       "crop": {
-        "x": 120,
-        "y": 60,
-        "width": 1320,
-        "height": 580
+        "x": 110,
+        "y": 240,
+        "width": 1330,
+        "height": 280
       }
     },
     {
       "scene": "edit_copy",
-      "filename": "03_review_form.png",
-      "sha256": "dfc94860d278c7f1f5928691aa218419101c049c5ce1ba6434e49f3dfe8391de",
+      "filename": "local_same_KRAS_graph.png",
+      "sha256": "8d676f4e2e57a0c140cd82ee30ec17cea981231acdad0be5026c1ca284b01039",
+      "seconds": 7,
+      "crop": {
+        "x": 125,
+        "y": 145,
+        "width": 1305,
+        "height": 458
+      }
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "local_KRAS_provisional_review_form.png",
+      "sha256": "e39aab7a15d94ff0808acf65c6235b2a815401a1b07317d545ad81b01dc2cd1b",
       "seconds": 10,
       "crop": {
-        "x": 884,
-        "y": 150,
-        "width": 560,
+        "x": 900,
+        "y": 135,
+        "width": 510,
         "height": 480
       }
     },
     {
       "scene": "edit_copy",
-      "filename": "04_new_run_confirmation.png",
-      "sha256": "3f9a7c5fbb22be787c969ed1a1ea60efebb875c8106dd8ef7408431b6ca6aed2",
-      "seconds": 8,
+      "filename": "local_KRAS_review_saved_new_run.png",
+      "sha256": "b1025560e2b64987a50c186c5c18d21bc8fb8daf034acc5ed34abd7727461492",
+      "seconds": 10,
       "crop": {
-        "x": 130,
-        "y": 285,
-        "width": 1310,
-        "height": 560
+        "x": 895,
+        "y": 215,
+        "width": 515,
+        "height": 390
       }
     },
     {
@@ -296,23 +296,23 @@
   "visual_review_pending": true,
   "files": {
     "BioGraph_Steward_Walkthrough.mp4": {
-      "bytes": 7609388,
-      "sha256": "8eebab19f2aac21a50e8f4538636fb1ec992f44c2f0633126d250ec7c34bd5c6"
+      "bytes": 7679539,
+      "sha256": "4343c2e353db63df3f0c5ff3f35dc8e8f127eeae33d63e59c0da924ecc363578"
     },
     "BioGraph_Steward_Walkthrough.vtt": {
-      "bytes": 6143,
-      "sha256": "d23ad750c8ebf24c4928c8cc7ca12774a4a57c2cf594d2c1b688fb6d41210e3d"
+      "bytes": 6230,
+      "sha256": "2992cbc6e752611274de514fb5e26030808bd62c4c7ed56b5a4a0e43e606a504"
     },
     "BioGraph_Steward_Walkthrough.srt": {
-      "bytes": 6315,
-      "sha256": "7f5170707fea2d507510c19a0cd0f1d078f55819d722e61367e9b1a70f1aa3ee"
+      "bytes": 6405,
+      "sha256": "27cdbef480cb7ad5a6fedb2c519468496818ba8c0f14a8d764b6545d162e4cd2"
     },
     "BioGraph_Steward_Walkthrough.txt": {
-      "bytes": 6261,
-      "sha256": "f0479ee3834c347b8379a703b78779848c3e534f3a32db188f8b6ae81cf12bf0"
+      "bytes": 6547,
+      "sha256": "199c6dac44354091c6722a6f753b010b68566d07c3ccfc56d6cf12ac70b98c0e"
     }
   },
-  "source_config_sha256": "9c19b3184dd61be631b6a83aa060b043b254c9a4443ce2ec131227000cd3247f",
+  "source_config_sha256": "e02475d015c917d30a5e15a453b862dee1a0fa35d0437dae32e7571f5ab31953",
   "actual_app_frames_are_not_reconstructed": true,
   "all_visuals_are_app_UI": false,
   "contains_separately_labeled_scientific_report_tables": true,
@@ -330,6 +330,15 @@
     "sha256": "650819aad10b8d567839c9e32b82496f5c8faa6e39d84c968c8621c469c11ee6"
   },
   "mixed_capture_runtime_revisions": true,
+  "editable_copy_workspace": "native_evidence_workspace_20261115",
+  "editable_copy_download_verified": true,
+  "editable_copy_download_verification_channel": "Independent anonymous HTTPS stream, before managed Chrome policy block was observed.",
+  "actual_Chrome_download_completed": false,
+  "managedChrome_policy_block": true,
+  "no_browser_security_policy_bypassed": true,
+  "same_package_bytes_prepared_locally": true,
+  "editable_copy_package_sha256": "dcae1dbbfcc5c99bca3ff51cddf62d3a2f1f287d60a3feef8923bffc8effdd55",
+  "editable_copy_native_replay_verified": true,
   "capture_provenance": {
     "original_eight_scenes": {
       "source_commit": "ee3c61c23262e57669090a7608658c16517d87cb",
@@ -338,15 +347,15 @@
       "review_edits": 0
     },
     "edit_copy_scene": {
-      "receipt": "/Users/42573/biograph-steward-pharos/runs/usability_delivery_20261117/media/usability_capture_receipt.json",
-      "receipt_sha256": "ab88e7c801c61c6c57b0a3803a04aba658cc00afe4d3a553765859e328a5d974",
-      "source_revision": "a83420ae2a2dbf0c5ef3756eddb1b643b22c5893",
+      "receipt": "/Users/42573/biograph-steward-pharos/runs/editable_demo_copy_20261117/browser/capture_receipt.json",
+      "receipt_sha256": "173ec24a760e376d5948b8b4c6825ccc8aa4863c1c5591ed80a782793cfc9c11",
+      "source_revision": "c134e5f35b53ed2739f4b4f177c00a90d0c6196b",
       "isolated_local_copy": true,
       "new_saved_runs": 1,
       "review_decision": "provisional"
     }
   },
-  "capture_note": "Actual local application captures on saved research data. Original eight scenes were recorded November 16. The added usability scene records one provisional review in a new run in an isolated local copy on November 17; original workspaces and sources are unchanged. No model inference or source retrieval occurs during capture. The public demo is read-only.",
+  "capture_note": "Eight unchanged scenes retain accepted saved-data capture receipts. The replacement scene shows the actual hosted native KRAS editable-copy button and an isolated local graph, provisional review form and saved new run. The complete public ZIP was independently verified over anonymous HTTPS; its byte-identical locally prepared build was launched and reviewed. Managed Chrome blocked its own ZIP transfer; no completed browser transfer or security-policy bypass is claimed. Exactly one provisional review was saved as a new run; original 207 workspace files and sources remained byte-identical. No new model inference or scientific-source retrieval occurred. The shared site remains read-only.",
   "new_model_calls": 0,
   "new_scientific_source_retrievals": 0,
   "review_demo_new_saved_runs": 1,
@@ -427,26 +436,26 @@
     },
     {
       "scene": "edit_copy",
-      "filename": "01_selected_graph.png",
-      "sha256": "299c184109de7a50a775f0b9e85075de788781b107f649e91108ce3b97cbcf03",
+      "filename": "hosted_KRAS_editable_download.png",
+      "sha256": "7063af1330610f5eff44ab9385acb31294a12e66401cd75c72f6f9f2564afd38",
+      "classification": "actual_hosted_app_UI_prepared_native_workspace_download"
+    },
+    {
+      "scene": "edit_copy",
+      "filename": "local_same_KRAS_graph.png",
+      "sha256": "8d676f4e2e57a0c140cd82ee30ec17cea981231acdad0be5026c1ca284b01039",
       "classification": "actual_local_app_UI_isolated_provisional_review_demo"
     },
     {
       "scene": "edit_copy",
-      "filename": "02_record_review.png",
-      "sha256": "8871b92629f17894aad962e2701fcf6d614e321a3045e097964dd353091f4f4a",
+      "filename": "local_KRAS_provisional_review_form.png",
+      "sha256": "e39aab7a15d94ff0808acf65c6235b2a815401a1b07317d545ad81b01dc2cd1b",
       "classification": "actual_local_app_UI_isolated_provisional_review_demo"
     },
     {
       "scene": "edit_copy",
-      "filename": "03_review_form.png",
-      "sha256": "dfc94860d278c7f1f5928691aa218419101c049c5ce1ba6434e49f3dfe8391de",
-      "classification": "actual_local_app_UI_isolated_provisional_review_demo"
-    },
-    {
-      "scene": "edit_copy",
-      "filename": "04_new_run_confirmation.png",
-      "sha256": "3f9a7c5fbb22be787c969ed1a1ea60efebb875c8106dd8ef7408431b6ca6aed2",
+      "filename": "local_KRAS_review_saved_new_run.png",
+      "sha256": "b1025560e2b64987a50c186c5c18d21bc8fb8daf034acc5ed34abd7727461492",
       "classification": "actual_local_app_UI_isolated_provisional_review_demo"
     },
     {
@@ -500,13 +509,10 @@
   ],
   "interpretation_boundaries_consolidated_in_one_brief_scene": true,
   "value_first_story": true,
-  "canonical_unchanged": false,
-  "canonical_preservation_receipt": "/Users/42573/biograph-steward-pharos/runs/usability_delivery_20261117/media/prior_canonical_8ae3/preservation_receipt.json",
-  "visual_and_audio_review_pending": false,
-  "canonical_promoted": true,
-  "root_visually_inspected_all_four_new_UI_states_and_two_prediction_states": true,
-  "audio_and_video_decode_checks_passed": true,
-  "narration_and_caption_text_reviewed_for_accuracy": true,
-  "human_listening_review_performed": false,
-  "quality_review_scope": "ROOT visual and narration/caption-text review; automated full audiovisual decode, codec, timing and audio-level checks. No human listening study."
+  "canonical_unchanged": true,
+  "canonical_preservation_receipt": "/Users/42573/biograph-steward-pharos/runs/editable_demo_copy_20261117/media/prior_canonical_8eebab/preservation_receipt.json",
+  "visual_and_audio_review_pending": true,
+  "root_visual_and_text_review_passed": true,
+  "changed_scene_review": "Public button, same KRAS graph, complete provisional review form and new-run preservation message inspected at full size.",
+  "audio_verification": "Full decode and volume analysis passed. Narration source text checked; no claim of manual listening."
 }

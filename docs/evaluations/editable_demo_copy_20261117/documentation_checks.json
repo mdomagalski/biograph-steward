@@ -1,0 +1,17 @@
+{
+  "format": "biograph.editable-copy-documentation-checks.v1",
+  "documents_checked": 10,
+  "local_file_links_checked": 231,
+  "markdown_anchors_checked": 23,
+  "all_resolved": true,
+  "independent_scope_review_passed": true,
+  "copy_corrections": [
+    "99primary targets distinguish seed scope from connected entities.",
+    "Extract archive before reading OPEN_WORKSPACE.txt.",
+    "Use exact Download an editable local copy label."
+  ],
+  "historical_scientific_results_and_receipts_rewritten": false,
+  "JSON_receipts_parsed": 12,
+  "safe_actual_screenshots": 4,
+  "managed_Chrome_block_and_independent_transfer_channels_distinguished": true
+}

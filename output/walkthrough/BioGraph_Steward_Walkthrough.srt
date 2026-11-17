@@ -128,157 +128,161 @@ recorded limit.
 
 29
 00:02:04,600 --> 00:02:06,250
-Explore the graph; save your own review
-Public demo is read-only; editable local copy shown
+Take the same graph home
+Complete native KRAS workspace; provisional local review
 
 30
-00:02:06,600 --> 00:02:09,832
-To explore an answer, expand a result to read its
+00:02:06,600 --> 00:02:10,215
+Choose Download an editable local copy to keep the same
 
 31
-00:02:09,832 --> 00:02:13,516
-summary, then choose Show in graph to focus the diagram.
+00:02:10,215 --> 00:02:14,863
+KRAS graph, sources and recorded investigation. Extract the
+package and
 
 32
-00:02:13,516 --> 00:02:17,977
-The shared demo is read-only. In an editing-enabled local
-workspace,
+00:02:14,863 --> 00:02:18,478
+run its Python launcher. It opens the saved question on
 
 33
-00:02:17,977 --> 00:02:22,307
-select Record evidence review. Enter a reviewer, choose a decision
+00:02:18,478 --> 00:02:23,320
+your computer. Under Inspect sources, choose Record evidence
+review. Enter
 
 34
-00:02:22,307 --> 00:02:25,281
-and add your reason. Save review in a new run
+00:02:23,320 --> 00:02:26,870
+a reviewer, decision and reason, then Save review in a
 
 35
-00:02:25,281 --> 00:02:29,870
-creates a reviewed copy and preserves the original. This
-demonstration
+00:02:26,870 --> 00:02:30,679
+new run. Your reviewed copy opens while the original graph
 
 36
-00:02:29,870 --> 00:02:33,555
-saves a provisional decision, not biological acceptance.
+00:02:30,679 --> 00:02:34,939
+and sources stay preserved. The shared site stays read-only. This
 
 37
+00:02:34,939 --> 00:02:37,780
+demonstration records a provisional review.
+
+38
 00:02:39,600 --> 00:02:41,250
 Historical partially known biological-process study
 Rendered saved report; not an agent prediction
 
-38
+39
 00:02:41,600 --> 00:02:45,376
 We also reused the published ProtBoost approach in a separate
 
-39
+40
 00:02:45,376 --> 00:02:51,100
 protein-function study. The primary task predicts additional
 biological-process functions for
 
-40
+41
 00:02:51,100 --> 00:02:55,120
 proteins with some functions already known. On a historical graph
 
-41
+42
 00:02:55,120 --> 00:02:59,566
 of twenty thousand four hundred and twelve proteins, fixed-
 ontology Fmax
 
-42
+43
 00:02:59,566 --> 00:03:02,550
 rose from about point one seven two to point two
 
-43
+44
 00:03:02,550 --> 00:03:06,691
 one zero. The paired ninety-five percent gain interval stayed
 above
 
-44
+45
 00:03:06,691 --> 00:03:10,832
 zero in both reference views. Annotation updates alone also
 helped.
 
-45
+46
 00:03:10,832 --> 00:03:14,791
 This study is separate from the agent and the ninety-nine-target
 
-46
+47
 00:03:14,791 --> 00:03:15,095
 app.
 
-47
+48
 00:03:17,900 --> 00:03:19,550
 Qualification with recoverable decisions
 
-48
+49
 00:03:19,900 --> 00:03:25,671
 The retained graph example adds another improvement: explicit
 identifier qualification.
 
-49
+50
 00:03:25,671 --> 00:03:30,195
 It excludes two hundred and ninety-eight records using obsolete
 Gene
 
-50
+51
 00:03:30,195 --> 00:03:35,704
 Ontology identifiers, while retaining sixteen thousand six hundred
 and eighty-seven
 
-51
+52
 00:03:35,704 --> 00:03:40,360
 records. The original sources, input graph and decision reasons
 remain
 
-52
+53
 00:03:40,360 --> 00:03:44,557
 recoverable, so a colleague can inspect or revisit each change.
 
-53
+54
 00:03:46,100 --> 00:03:47,750
 How to interpret these measured gains
 
-54
+55
 00:03:48,100 --> 00:03:53,945
 These are qualified annotation-recovery results, not whole-graph
 precision. Shared sources
 
-55
+56
 00:03:53,945 --> 00:03:58,955
 and prior reference use limit independence. Physical association
 is candidate
 
-56
+57
 00:03:58,955 --> 00:04:04,094
 context, not confirmed direct binding. Additional primary learning
 benefit over
 
-57
+58
 00:04:04,094 --> 00:04:07,113
 fully refreshed annotations remains uncertain.
 
-58
+59
 00:04:08,700 --> 00:04:10,350
 A more useful, inspectable starting point
 
-59
+60
 00:04:10,700 --> 00:04:14,340
 The result is a more useful starting point for research:
 
-60
+61
 00:04:14,340 --> 00:04:20,024
 additional qualified context, measurable source coverage, a
 source-inspection agent, and
 
-61
+62
 00:04:20,024 --> 00:04:24,814
 recoverable graph decisions. Start with a biological question,
 inspect the
 
-62
+63
 00:04:24,814 --> 00:04:28,710
 evidence behind the answer, and share the complete record so
 
-63
+64
 00:04:28,710 --> 00:04:31,073
 the next researcher can build on it.

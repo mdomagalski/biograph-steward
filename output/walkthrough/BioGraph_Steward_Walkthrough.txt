@@ -1,6 +1,6 @@
 BioGraph Steward walkthrough
 
-Actual application captures on verified saved real research data. Edited screenshot states, not a continuous screen recording. Synthetic narration. No model inference or source retrieval occurred during capture. One provisional evidence review was saved as a new run in an isolated local copy. Original workspaces and source files remained unchanged. This is a usability demonstration, not biological acceptance. The public demo is read-only; recording a personal review requires an editing-enabled local or operator workspace. The separate protein-function scene is a labeled rendering of two unchanged scientific-report tables, not application UI or new statistics.
+Actual application captures on verified saved real research data. Edited screenshot states, not a continuous screen recording. Synthetic narration. No model inference or source retrieval occurred during capture. The prepared public native KRAS package was verified over anonymous HTTPS. Its byte-identical local build was launched and reviewed. Managed Chrome blocked its own ZIP transfer; no browser security policy was bypassed. One provisional evidence review was saved as a new run in that isolated copy. Original workspaces and source files remained unchanged. This is a usability demonstration, not biological acceptance. The public demo is read-only; recording a personal review requires an editing-enabled local or operator workspace. The separate protein-function scene is a labeled rendering of two unchanged scientific-report tables, not application UI or new statistics.
 
 00:00:00  What Steward adds to Pharos
 Show the actual current app entry, then its existing native graph. Introduce qualified source context before tool mechanics.
@@ -22,10 +22,10 @@ Show the actual saved Nemotron plan, capped eight-result graph, E002 inspection 
 
 The NVIDIA Nemotron agent makes that evidence easier to investigate. It plans a supported source query, the application executes the validated tool, and the agent prioritizes citations for inspection. Every original record under a selected citation is opened before a grounded review proposal is produced. In our fixed comparison, all five allowed queries preserved the deterministic tools' complete results. This saved example displays eight of fourteen matching proteins under its recorded limit.
 
-00:02:04  Explore an answer and save your own review
-Use actual captured UI: Show in graph selects a result; Record evidence review opens Reviewer, Decision and Reason; Save review in a new run creates a provisional reviewed copy. Public demo remains read-only. Capture uses an isolated local copy and preserves original workspaces and sources.
+00:02:04  Take the same graph home and record your review
+Actual native KRAS workspace: choose Download an editable local copy, extract and launch its complete package, inspect a source, enter a provisional review and save it as a new run. Preserve the shared example, original workspace and original sources. Do not substitute the APP/PSEN example.
 
-To explore an answer, expand a result to read its summary, then choose Show in graph to focus the diagram. The shared demo is read-only. In an editing-enabled local workspace, select Record evidence review. Enter a reviewer, choose a decision and add your reason. Save review in a new run creates a reviewed copy and preserves the original. This demonstration saves a provisional decision, not biological acceptance.
+Choose Download an editable local copy to keep the same KRAS graph, sources and recorded investigation. Extract the package and run its Python launcher. It opens the saved question on your computer. Under Inspect sources, choose Record evidence review. Enter a reviewer, decision and reason, then Save review in a new run. Your reviewed copy opens while the original graph and sources stay preserved. The shared site stays read-only. This demonstration records a provisional review.
 
 00:02:39  A separate, measured protein-function prediction gain
 Show the unchanged saved-report tables. Explicitly identify the primary partially known biological-process endpoint; Fmax is a benchmark score, not a percentage of correct graph assertions.

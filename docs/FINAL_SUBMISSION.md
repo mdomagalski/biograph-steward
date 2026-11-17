@@ -153,8 +153,14 @@ Expanding a result only opens its text.
 In an editable local workspace, **Inspect sources → Record evidence review**
 opens the reviewer, decision and reason fields. **Save review in a new run**
 creates a reviewed copy and preserves the original sources and earlier run.
-The complete APP/PSEN example includes `START_EDITABLE_LOCAL.py` for this workflow.
-A saved agent proposal remains separate from a scientist's recorded decision.
+The public native KRAS workspace offers **Download an editable local copy**.
+Its complete ZIP includes the app, exact saved graph, attached sources, saved
+question, recorded agent job and `START_EDITABLE_LOCAL.py`. The launcher opens
+a free loopback port. Python 3.10+ is sufficient for saved replay and reviews,
+with no model, GPU, AWS account or new source retrieval. Editing records
+source-review decisions and reasons rather than arbitrary node-and-edge edits.
+The separate APP/PSEN example also supports this workflow. A saved agent proposal
+remains separate from a scientist's recorded decision.
 
 The [current-source agent](SOURCE_AGENT.md) uses up to three model calls:
 propose a tool plan, prioritize returned citations for complete source
@@ -197,14 +203,19 @@ and [browser evidence](evaluations/usability_delivery_20261117/hosted_browser.js
 document the saved-demo mode. These are functional checks, separate from an
 independent usability study.
 
-The native KRAS workspace ZIP includes its candidate graph and preserved source
-files. The **designated primary submission package** also has its own complete
+The native KRAS complete-copy download includes its candidate graph, preserved
+attached sources, saved question, S01 agent record and runnable local software.
+Its [delivery verification](evaluations/editable_demo_copy_20261117/README.md)
+checks exact original bytes and saving a personal review in a new run. It does
+not copy hosted assessment pages, optional global GO/QC inspector data or the
+private Neptune mirror. The **designated primary submission package** also has its own complete
 19,310-row record of unresolved decisions and an exact same-snapshot Pharos-only comparator;
 its [protected-download receipt](evaluations/final_prod_ui_20261116/protected_graph_downloads.json)
 records both prior authenticated HTTPS archives and complete member checks.
 The [graph/source handoff instructions](GOLD_SET_INTERFACE.md#protected-downloads)
 cover separately supplied final-submission assets or authorized operator
-retrieval, rather than public-demo bulk downloads. All primary records remain
+retrieval. Those graph/ledger/comparator packets are separate from the prepared
+native-workspace local-copy download. All primary records remain
 scientifically unassessed. In the applied-qualification TP53 example, the workspace ZIP also
 includes the retained graph, every keep, remove and unresolved decision, and original
 baseline/source packet. The small answer diagram and focused answer ZIP are
@@ -217,6 +228,9 @@ workspace; that small record does not silently include the full source packet.
 
 - [Code and build instructions](../START_HERE.md): MIT software with a local
   synthetic demonstration, explicitly labeled as invented data.
+- **Download an editable local copy** in the public native KRAS workspace:
+  its complete app/source/graph/question/job ZIP, with **OPEN_WORKSPACE** and
+  `START_EDITABLE_LOCAL.py` for personal reviews saved as new runs.
 - The separately supplied `BioGraph_Steward_APP_PSEN_Example.zip`: a complete
   real-data local runtime, saved APP location-agent job and full source records.
   Its **OPEN_EXAMPLE.txt** selects the recorded location workflow directly.
@@ -238,5 +252,7 @@ workspace; that small record does not silently include the full source packet.
 Project repository: [github.com/mdomagalski/biograph-steward](https://github.com/mdomagalski/biograph-steward).
 Software licensing does not relicense upstream data.
 The full graph, ledger, baseline and comparator are separate submission or
-authorized operator assets. The public demo offers the recorded-agent JSON,
-with its focused graph, trace and inspected sources.
+authorized operator assets. The public demo offers the recorded-agent JSON
+and one prepared complete native KRAS workspace copy for local review. Source
+terms and attributions travel with that copy; local reviews do not alter the
+shared example.
