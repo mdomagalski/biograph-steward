@@ -40,7 +40,7 @@ class ProductReviewViewsTests(unittest.TestCase):
                      'workspaceDownloads', 'downloadZip'):
             self.assertIn(item, panels.ids)
             self.assertNotIn(item, panels.development)
-        self.assertIn('Graph changes and assessment', html)
+        self.assertIn('<h2>Results and evaluation</h2>', html)
         self.assertIn('initializeWorkspaceAssessments();', html)
 
     def test_operator_page_retains_research_controls_without_saved_mode_hiding(self):
