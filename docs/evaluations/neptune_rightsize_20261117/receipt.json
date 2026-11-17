@@ -1,0 +1,363 @@
+{
+  "all_four_canaries_passed": true,
+  "base_compute_estimate_usd": {
+    "before_two_instances_day": 15.7776,
+    "excluded": "Storage, I/O, backups, other AWS services, taxes and possible burst CPU surcharges",
+    "new_instance_hour": 0.093,
+    "old_instance_hour": 0.3287,
+    "private_official_pricing_artifact_sha256": "fa441102d395dbd5e9e67e25a5d5e71a69ece13cababd14cfac4da3c92569fd0",
+    "rate_scope": "Ohio Standard on-demand rates, AWS Pricing API effective 2026-08-01; no credits assumed",
+    "reduction_percent": 71.70672345603894,
+    "target_two_instances_day": 4.464
+  },
+  "completed_at": "2026-11-17T02:27:32.542219+00:00",
+  "content_sha256": "6dadabd07978f5cf2a3ce19ec45f9f10ec5b31cb549b0995b2dc8348af549628",
+  "engine_version": "1.4.8.0",
+  "final_class_only_change_accepted": true,
+  "final_class_only_change_accepted_at": "2026-11-17T01:55:26.517Z",
+  "final_instance_count": 2,
+  "final_instance_count_target": 2,
+  "final_stack_status": "UPDATE_COMPLETE",
+  "final_worker_closed": true,
+  "format": "biograph-steward.neptune-rightsize-summary.v1",
+  "graph_counts": {
+    "relationships": 16687,
+    "targets": 99,
+    "vertices": 58154
+  },
+  "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+  "instance_deletions": 0,
+  "last_verified_state": {
+    "read_completed_at_utc": "2026-11-17T02:26:18.986645+00:00",
+    "reader": {
+      "class": "db.t4g.medium",
+      "original_role": "writer",
+      "status": "available"
+    },
+    "stack_status": "UPDATE_COMPLETE",
+    "writer": {
+      "class": "db.t4g.medium",
+      "original_role": "reader",
+      "status": "available"
+    }
+  },
+  "limitations": [
+    "Single bounded read/parity observations qualify this reviewer workload; they do not establish a production throughput SLA.",
+    "Memory headroom is limited on the smaller class.",
+    "Zero charged surplus credits in the observed period does not establish a surcharge-free day.",
+    "This infrastructure change does not change graph content or establish biological accuracy."
+  ],
+  "manual_prechange_snapshot": "available",
+  "observed_final_canary_metrics": {
+    "both_instances": {
+      "reader": {
+        "CPUCreditBalance:Minimum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 1
+        },
+        "CPUSurplusCreditBalance:Maximum": {
+          "max": 4.27869155,
+          "mean": 4.27869155,
+          "min": 4.27869155,
+          "points": 1
+        },
+        "CPUSurplusCreditsCharged:Sum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 1
+        },
+        "CPUUtilization:Average": {
+          "max": 62.094771405236926,
+          "mean": 40.226902198503915,
+          "min": 13.200220003666725,
+          "points": 8
+        },
+        "FreeableMemory:Minimum": {
+          "max": 730419200.0,
+          "mean": 581224220.4444444,
+          "min": 483966976.0,
+          "points": 9
+        },
+        "MainRequestQueuePendingRequests:Maximum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 9
+        },
+        "SwapUsage:Maximum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 9
+        },
+        "TotalServerErrorsPerSec:Maximum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 9
+        },
+        "engine_uptime_monotonic_during_observed_window": true
+      },
+      "writer": {
+        "CPUCreditBalance:Minimum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 1
+        },
+        "CPUSurplusCreditBalance:Maximum": {
+          "max": 6.83201725,
+          "mean": 6.83201725,
+          "min": 6.83201725,
+          "points": 1
+        },
+        "CPUSurplusCreditsCharged:Sum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 1
+        },
+        "CPUUtilization:Average": {
+          "max": 15.891931532192201,
+          "mean": 13.884873087847566,
+          "min": 13.178747184919509,
+          "points": 8
+        },
+        "FreeableMemory:Minimum": {
+          "max": 525631488.0,
+          "mean": 513977457.7777778,
+          "min": 507244544.0,
+          "points": 9
+        },
+        "MainRequestQueuePendingRequests:Maximum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 9
+        },
+        "SwapUsage:Maximum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 9
+        },
+        "TotalServerErrorsPerSec:Maximum": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "points": 9
+        },
+        "engine_uptime_monotonic_during_observed_window": true
+      }
+    },
+    "missing_datapoints_not_imputed": true,
+    "window": "2026-11-17T02:17:00Z/2026-11-17T02:26:00Z"
+  },
+  "observed_heavy_writer_metrics": {
+    "cpu_average_percent": 38.808403621388585,
+    "cpu_credit_balance_minimum": 0,
+    "cpu_credit_periods": 1,
+    "maximum_queue": 0,
+    "maximum_server_errors_per_second": 0,
+    "maximum_swap_bytes": 0,
+    "minimum_freeable_memory_bytes": 412418048,
+    "one_minute_periods": 8,
+    "surplus_credit_balance_maximum": 7.943494566666667,
+    "surplus_credits_charged_sum": 0,
+    "window": "2026-11-17T01:47:00Z/2026-11-17T01:55:00Z"
+  },
+  "original_instances": {
+    "class": "db.r6g.large",
+    "count": 2
+  },
+  "parity_scope": "Existing 99-target retained source-faithful mirror; not all Pharos or the newer native-source workspace",
+  "phases": [
+    {
+      "all_original_source_and_app_state_preserved": true,
+      "db_graph_writes": 0,
+      "full_database_counts": {
+        "relationships": 16687,
+        "vertices": 58154
+      },
+      "full_parity_seconds": 252.54694568598643,
+      "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "instance_class": "db.r6g.large",
+      "label": "Original reader baseline",
+      "model_calls": 0,
+      "peak_client_rss_bytes": 1573974016,
+      "phase": "reader_baseline",
+      "private_client_receipt_raw_sha256": "b9268c90f9d1af74507068c70ae98ba37dc60ee9e3dcd2cf0992b19cd7e0b64c",
+      "role_when_tested": "reader",
+      "saved_source_load_seconds": 88.53105680696899,
+      "scoped_reads": [
+        {
+          "node": "UniProtKB:P04637",
+          "payload_sha256": "77105d5768c641ab05863f956c51f2c9e7743dec0774c9416ab506e4973e730e",
+          "records": 100,
+          "seconds": 10.38195807999,
+          "truncated": true
+        },
+        {
+          "node": "UniProtKB:P01116",
+          "payload_sha256": "7860c9100a0c68b6db11873e80efa13c4afde1691a61eb5a112ae4ba758153eb",
+          "records": 100,
+          "seconds": 11.52567210700363,
+          "truncated": true
+        }
+      ],
+      "source_fetches": 0,
+      "status": "passed",
+      "total_client_seconds": 365.1405027859728
+    },
+    {
+      "all_original_source_and_app_state_preserved": true,
+      "db_graph_writes": 0,
+      "full_database_counts": {
+        "relationships": 16687,
+        "vertices": 58154
+      },
+      "full_parity_seconds": 263.95886235299986,
+      "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "instance_class": "db.t4g.medium",
+      "label": "Smaller reader canary",
+      "model_calls": 0,
+      "peak_client_rss_bytes": 1513783296,
+      "phase": "reader_t4g",
+      "private_client_receipt_raw_sha256": "5e6238ee8831bf52a168aa33835341a8febfea948db36665dd7427f20b167193",
+      "role_when_tested": "reader",
+      "saved_source_load_seconds": 89.22877525701188,
+      "scoped_reads": [
+        {
+          "node": "UniProtKB:P04637",
+          "payload_sha256": "77105d5768c641ab05863f956c51f2c9e7743dec0774c9416ab506e4973e730e",
+          "records": 100,
+          "seconds": 10.907876893994398,
+          "truncated": true
+        },
+        {
+          "node": "UniProtKB:P01116",
+          "payload_sha256": "7860c9100a0c68b6db11873e80efa13c4afde1691a61eb5a112ae4ba758153eb",
+          "records": 100,
+          "seconds": 12.182603294961154,
+          "truncated": true
+        }
+      ],
+      "source_fetches": 0,
+      "status": "passed",
+      "total_client_seconds": 378.5322100719786
+    },
+    {
+      "all_original_source_and_app_state_preserved": true,
+      "db_graph_writes": 0,
+      "full_database_counts": {
+        "relationships": 16687,
+        "vertices": 58154
+      },
+      "full_parity_seconds": 246.2792811790132,
+      "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "instance_class": "db.t4g.medium",
+      "label": "Promoted smaller writer",
+      "model_calls": 0,
+      "peak_client_rss_bytes": 1573609472,
+      "phase": "promoted_writer",
+      "private_client_receipt_raw_sha256": "903751f323b7c8e02544cfb143f0282f2de684285e784571b4f32203a50496b5",
+      "role_when_tested": "writer",
+      "saved_source_load_seconds": 85.11876622901764,
+      "scoped_reads": [
+        {
+          "node": "UniProtKB:P04637",
+          "payload_sha256": "77105d5768c641ab05863f956c51f2c9e7743dec0774c9416ab506e4973e730e",
+          "records": 100,
+          "seconds": 11.030161589966156,
+          "truncated": true
+        },
+        {
+          "node": "UniProtKB:P01116",
+          "payload_sha256": "7860c9100a0c68b6db11873e80efa13c4afde1691a61eb5a112ae4ba758153eb",
+          "records": 100,
+          "seconds": 10.497960563981906,
+          "truncated": true
+        }
+      ],
+      "source_fetches": 0,
+      "status": "passed",
+      "total_client_seconds": 354.9861216759891
+    },
+    {
+      "all_original_source_and_app_state_preserved": true,
+      "db_graph_writes": 0,
+      "full_database_counts": {
+        "relationships": 16687,
+        "vertices": 58154
+      },
+      "full_parity_seconds": 278.50770650902996,
+      "graph_sha256": "e0e664a9a386fd321c2c65ed9fbb6aa61c165536e106b7c61fc75e37c0de69ff",
+      "instance_class": "db.t4g.medium",
+      "label": "Final matching reader",
+      "model_calls": 0,
+      "peak_client_rss_bytes": 1571643392,
+      "phase": "final_reader",
+      "private_client_receipt_raw_sha256": "0f042815f31d96ab4e3c1024a4b5bf696ebbdb10914ae87ea23511da1b05f1f4",
+      "private_host_receipt_raw_sha256": "ddcc3287d571b7becb3231bf1c439c1a2d7a6c2ddddf29aab270288cf3f054a5",
+      "role_when_tested": "reader",
+      "saved_source_load_seconds": 86.72327931900509,
+      "scoped_reads": [
+        {
+          "node": "UniProtKB:P04637",
+          "payload_sha256": "77105d5768c641ab05863f956c51f2c9e7743dec0774c9416ab506e4973e730e",
+          "records": 100,
+          "seconds": 11.250744004035369,
+          "truncated": true
+        },
+        {
+          "node": "UniProtKB:P01116",
+          "payload_sha256": "7860c9100a0c68b6db11873e80efa13c4afde1691a61eb5a112ae4ba758153eb",
+          "records": 100,
+          "seconds": 10.901703651004937,
+          "truncated": true
+        }
+      ],
+      "source_fetches": 0,
+      "status": "passed",
+      "total_client_seconds": 389.3710936069838
+    }
+  ],
+  "primary_sources": [
+    "https://aws.amazon.com/neptune/pricing/",
+    "https://docs.aws.amazon.com/neptune/latest/userguide/instance-types.html",
+    "https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-instances-modify.html",
+    "https://docs.aws.amazon.com/neptune/latest/userguide/best-practices-general-basic.html",
+    "https://docs.aws.amazon.com/neptune/latest/userguide/cw-metrics.html"
+  ],
+  "private_evidence_raw_sha256": {
+    "final_both_metric_summary.json": "88516daef5df3e19c77374b0f8871cbd4a8b6131e77d5151c943ef9d8d09e5f8",
+    "final_manual_snapshot_available.json": "a63a94ec67a9a33033ed88855985a62a2f08fc1e1d0ebaed27e964a91cbe8f70",
+    "final_reader_client_receipt.json": "0f042815f31d96ab4e3c1024a4b5bf696ebbdb10914ae87ea23511da1b05f1f4",
+    "final_reader_invocation.json": "897dc2dd41cccee282693af99ae5a1e14bf51144fc7f27c57e9d29a999808265",
+    "final_resize_stack_complete.json": "d834629c84f72dd53e9a3b8efdee7201f45eba69000c4b210d379bb1a29bdd86",
+    "post_final_canary_cluster.json": "0bf67c8f36ea13c14aa9ee527aa1bfd9c0e48d4262f4a4caa00ffdc18b96e76c",
+    "post_final_canary_instances.json": "2c0e401510088dcfbe26eb8e624a76e01d4c62d8f257bc57bc9172db8c5989ce"
+  },
+  "region": "us-east-2",
+  "security_and_data_preservation": {
+    "all_17_original_source_profiles_app_graph_reviews_registration_environment_and_function_index_unchanged_during_each_completed_canary": true,
+    "all_completed_canary_workers_removed": true,
+    "automated_backup_retention_days": 7,
+    "cluster_resource_and_security_group_parameter_group_unchanged": true,
+    "deletion_protection_retained": true,
+    "encryption_retained": true,
+    "endpoints_unchanged": true,
+    "engine_unchanged": true,
+    "final_reader_passed": true,
+    "final_reader_worker_started": true,
+    "iam_authentication_retained": true,
+    "original_two_instance_count_retained": true
+  },
+  "snapshot_created_at": "2026-11-17T01:06:26.816Z",
+  "status": "completed_verified",
+  "updated_at": "2026-11-17T02:27:32.542219+00:00",
+  "user_approved_target": "Two db.t4g.medium instances, preserving reader failover"
+}

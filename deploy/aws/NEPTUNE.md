@@ -1,12 +1,23 @@
 # Private Neptune comparison deployment
 
 This add-on uses **Neptune Database**, the existing EC2 workbench and the same
-private artifact bucket. It creates one provisioned **db.r6g.large** writer,
+private artifact bucket. By default it creates one provisioned **db.r6g.large** writer,
 encrypted storage, IAM-authenticated HTTPS, seven-day automated backups and a
 same-region S3 gateway endpoint for the official bulk loader. It adds no public
 8182 access or NAT gateway. One writer is an integration and recovery test;
 it does not establish high availability. An optional reader in the second AZ
 can be enabled for a separately recorded failover test.
+
+`WriterInstanceClass` and `ReaderInstanceClass` independently select
+`db.r6g.large` or `db.t4g.medium`; both default to the original R6g class.
+The existing Ohio demo now uses two T4g medium instances, with the reader
+enabled. Its [staged resize assessment](../../docs/evaluations/NEPTUNE_RIGHTSIZE_20261117.md)
+records full graph parity before and after reader resize, failover and final
+reader verification. This qualifies the smaller capacity for the current
+saved workload. Broader workloads need their own capacity assessment, including
+memory headroom and burst CPU charges. The CloudFormation logical names do not
+identify current writer/reader roles after failover; inspect the live cluster
+members before changing either instance.
 
 Neptune requires an eligible **Paid Plan** in the new AWS experience. The CPU
 workbench can run on the Free Plan, but that does not unlock Neptune. The user
