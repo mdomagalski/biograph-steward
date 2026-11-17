@@ -40,9 +40,9 @@ test('workspace opening shows a nonblocking top status until graph and cited que
 });
 
 test('ordinary saved questions open their overview while explicit agent workspace views remain unchanged',async()=>{
- for(const view of ['ask','data']){
-  const h=workspace();h.context.location.search='?view='+view+'&question=q';h.context.questionAnswer={results:[{protein:{id:'fixture'}}]};const done=h.start();h.graph.resolve(h.response());await done;
-  if(view==='ask')assert.ok(h.calls.some(call=>call[0]==='navigate'&&call[1]==='graph'));
+ for(const [view,empty]of [['ask',false],['ask',true],['data',false],['data',true]]){
+  const h=workspace();h.context.location.search='?view='+view+'&question=q';h.context.questionAnswer={results:empty?[]:[{protein:{id:'fixture'}}]};const done=h.start();h.graph.resolve(h.response());await done;
+  if(view==='ask')assert.ok(h.calls.some(call=>call[0]==='navigate'&&call[1]===(empty?'answer':'graph')));
   else{assert.ok(h.calls.some(call=>call[0]==='workspace'&&call[1]==='data'));assert.ok(!h.calls.some(call=>call[0]==='navigate'));}
  }
 });

@@ -92,7 +92,7 @@ async function runQuestion(){
   questionBusy=true;for(const input of $('questionForm').elements)input.disabled=true;
   $('questionOutput').classList.add('hidden');questionAnswer=null;questionId=null;history.replaceState(null,'','?run='+encodeURIComponent(runId));
   updateWorkNavigation();$('questionStatus').textContent='Finding exact-scope evidence paths and assembling their citations...';
-  try{const response=await api('/api/question',{run_id:runId,...questionOptions()});bindQuestionAnswer(response.answer,response.question_id);$('questionStatus').textContent='Question result saved with its source snapshot, review basis and citations.';navigateWork('graph');}
+  try{const response=await api('/api/question',{run_id:runId,...questionOptions()});bindQuestionAnswer(response.answer,response.question_id);$('questionStatus').textContent='Question result saved with its source snapshot, review basis and citations.';navigateWork(response.answer.results.length?'graph':'answer');}
   catch(error){$('questionStatus').textContent=error.message;}
   finally{questionBusy=false;for(const input of $('questionForm').elements)input.disabled=false;$('questionRun').disabled=!runId;updateQuestionRankingControl();}
 }

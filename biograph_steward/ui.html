@@ -464,7 +464,7 @@ const embedded=JSON.parse($('embeddedData').textContent);if(embedded){$('control
       if(!response.ok)throw new Error(result.error||'Could not reopen run');
       runId=result.run_id;showGraph(result.graph);showQualificationSummary(result.qualification_summary);
       const savedQuestion=new URLSearchParams(location.search).get('question');
-      if(savedQuestion){workspaceLoading(true,'Opening the saved question and its cited answer…');if(await reopenQuestion(savedQuestion)===false)throw new Error($('questionStatus').textContent||'Saved question could not be opened.');if(!requestedView||requestedView==='ask')navigateWork(typeof questionAnswer!=='undefined'&&questionAnswer?.results?'graph':'answer');else showWorkspaceView(requestedView);}
+      if(savedQuestion){workspaceLoading(true,'Opening the saved question and its cited answer…');if(await reopenQuestion(savedQuestion)===false)throw new Error($('questionStatus').textContent||'Saved question could not be opened.');if(!requestedView||requestedView==='ask')navigateWork(typeof questionAnswer!=='undefined'&&questionAnswer?.results?.length?'graph':'answer');else showWorkspaceView(requestedView);}
       if(typeof updateReviewerHome==='function')updateReviewerHome();
       status('Saved evidence opened. Follow the answer, its sources and the assessment.');
     }catch(error){openingError=error.message;status(error.message,true);if($('reviewerHomeStatus'))$('reviewerHomeStatus').textContent=error.message;}

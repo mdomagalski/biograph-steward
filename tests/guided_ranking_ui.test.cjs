@@ -6,7 +6,7 @@ const vm=require('node:vm');
 const {test}=require('node:test');
 
 function harness(){
-  const elements=new Map(),calls=[],urls=[];
+  const elements=new Map(),calls=[],urls=[],navigations=[];
   function element(tag='div',text=''){
     const classes=new Set(),listeners={};
     return {tag,tagName:tag.toUpperCase(),textContent:text,children:[],value:'',disabled:false,style:{},dataset:{},listeners,
@@ -24,12 +24,12 @@ function harness(){
   const graph={data_kind:'live_pharos',scope:{kind:'protein_cohort'},targets:[{id:'UniProtKB:P12345',symbol:'AAA'},{id:'UniProtKB:Q12345',symbol:'BBB'}],retrieval:{truncated:false},question_basis_sha256:'basis',nodes:[]};
   for(const [id,value] of Object.entries({questionProtein:'UniProtKB:P12345',questionRelations:'both',questionView:'candidates',questionLimit:'8',questionPaths:'2',questionRanking:'alphabetical'}))$(id).value=value;
   $('questionForm').elements=['questionProtein','questionRelations','questionView','questionLimit','questionPaths','questionRanking','questionRun'].map($);
-  const context=vm.createContext({$,graph,runId:'test-run',el:element,svgEl:element,history:{replaceState:(a,b,url)=>urls.push(url)},updateWorkNavigation(){},navigateWork(){},URL,URLSearchParams,
+  const context=vm.createContext({$,graph,runId:'test-run',el:element,svgEl:element,history:{replaceState:(a,b,url)=>urls.push(url)},updateWorkNavigation(){},navigateWork:step=>navigations.push(step),URL,URLSearchParams,
     api:async(url,body)=>{calls.push({url,body});return await context.response;}});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../biograph_steward/guided.js'),'utf8'),context);
   // The graph renderer is covered by existing evidence-path behavior, not this control harness.
   vm.runInContext('renderQuestionGraph=()=>{}',context);
-  return {$,graph,context,calls,urls,run:code=>vm.runInContext(code,context)};
+  return {$,graph,context,calls,urls,navigations,run:code=>vm.runInContext(code,context)};
 }
 function answer(h,{physical=false,results}={}){
   return {source_run:'test-run',graph_basis_sha256:'basis',snapshot_sha256:'snapshot',answer_sha256:'answer',
@@ -119,6 +119,17 @@ test('busy form includes order selector and restores its eligibility after succe
   finish({question_id:'saved-question',answer:answer(h,{physical:true})});await pending;
   assert.equal(h.$('questionRanking').disabled,false);assert.equal(h.run('questionBusy'),false);
   assert.equal(h.$('questionRanking').value,'physical');
+});
+test('a completed empty question opens its visible answer instead of the hidden graph',async()=>{
+  for(const empty of [false,true]){
+    const h=harness(),result=answer(h,empty?{results:[]}:{}),before=JSON.stringify(h.graph);
+    h.context.response={question_id:'saved-question',answer:result};await h.run('runQuestion()');
+    assert.deepEqual(h.navigations,[empty?'answer':'graph']);
+    assert.equal(h.$('questionGraphSection').classList.contains('hidden'),empty);
+    assert.equal(h.$('questionOutput').classList.contains('hidden'),false);
+    assert.equal(h.run('questionBusy'),false);assert.equal(JSON.stringify(h.graph),before);
+    assert.equal(h.calls.length,1);
+  }
 });
 test('failed retrieval clears the old answer and does not silently show alphabetical results',async()=>{
   const h=harness();bind(h,answer(h));h.$('questionRanking').value='physical';
